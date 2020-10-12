@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: bc0369e99552859393da206e791477040681ccc4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91281061"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Odeslání souborů do účtu Azure Media Services pomocí REST
@@ -51,7 +51,7 @@ V tomto kurzu se dozvíte, jak nahrát soubor a další operaci s ním spojenou:
 - Další informace najdete také v tématu [použití ověřování Azure AD pro přístup k rozhraní Media Services API pomocí REST](./media-services-rest-connect-with-aad.md) .
 - Nakonfigurujte **metodu post** , jak je popsáno v tématu [Configure the post for Media Services REST API Calls](media-rest-apis-with-postman.md).
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Při použití Media Services REST API platí následující předpoklady:
  
@@ -155,7 +155,7 @@ Adresa URL SAS má následující formát:
 
 `{https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}`
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 Musí být splněny určité předpoklady:
 

@@ -10,10 +10,10 @@ ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 425a7ff0553ddeac502c59e240f5ab152d6e0d79
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015149"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Integrace s protokoly Azure Monitor
@@ -30,7 +30,7 @@ Protokoly Azure Monitor poskytují větší provozní viditelnost dat konfigurac
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít odesílat sestavy konfigurace stavu automatizace do Azure Monitor protokolů, budete potřebovat:
 
@@ -100,7 +100,7 @@ Jednou z našich nejlepších žádostí o zákazníky je možnost Odeslat e-mai
 Chcete-li vytvořit pravidlo výstrahy, začněte tím, že vytvoříte hledání protokolu pro záznamy sestavy konfigurace stavu, které by měly vyvolat výstrahu. Kliknutím na tlačítko **nové pravidlo výstrahy** vytvoříte a nakonfigurujete pravidlo výstrahy.
 
 1. Na stránce Přehled pracovního prostoru Log Analytics klikněte na **protokoly**.
-1. Vytvořte dotaz hledání protokolu pro upozornění zadáním následujícího hledání do pole dotazu:`Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
+1. Vytvořte dotaz hledání protokolu pro upozornění zadáním následujícího hledání do pole dotazu:  `Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
    Pokud jste v pracovním prostoru nastavili protokoly z více než jednoho účtu Automation nebo předplatného, můžete své výstrahy seskupit podle předplatného a účtu Automation. `Resource`V poli hledání záznamů odvodit název účtu Automation `DscNodeStatusData` .
 1. Obrazovku **vytvořit pravidlo** otevřete kliknutím na **nové pravidlo výstrahy** v horní části stránky. 
@@ -112,7 +112,7 @@ Další informace o možnostech konfigurace výstrahy najdete v tématu [Vytvoř
 Jednou z výhod používání protokolů Azure Monitor je, že můžete vyhledat neúspěšné kontroly napříč uzly. Pokud chcete najít všechny instance prostředků DSC, které selhaly:
 
 1. Na stránce Přehled pracovního prostoru Log Analytics klikněte na **protokoly**.
-1. Vytvořte dotaz hledání protokolu pro upozornění zadáním následujícího hledání do pole dotazu:`Type=AzureDiagnostics Category='DscNodeStatus' OperationName='DscResourceStatusData' ResultType='Failed'`
+1. Vytvořte dotaz hledání protokolu pro upozornění zadáním následujícího hledání do pole dotazu:  `Type=AzureDiagnostics Category='DscNodeStatus' OperationName='DscResourceStatusData' ResultType='Failed'`
 
 ### <a name="view-historical-dsc-node-status"></a>Zobrazit historický stav uzlu DSC
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764974"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Dotazování na geoprostorové údaje pomocí Azure Cosmos DB
@@ -49,7 +49,7 @@ Prostorové funkce lze použít k provádění dotazů na Proximity pro prostoro
 
 Pokud zahrnete prostorové indexování do zásad indexování, pak se v indexu budou efektivně obsluhovat dotazy na Distance. Další informace o prostorovém indexování najdete v tématu [geoprostorové indexování](sql-query-geospatial-index.md). Pokud pro zadané cesty nemáte prostorový index, dotaz provede kontrolu kontejneru.
 
-`ST_WITHIN`dá se použít ke kontrole, jestli v mnohoúhelníku leží bod. Běžně se používají mnohoúhelníky, které představují hranice, jako jsou PSČ, hranice státu nebo přirozené formy. Pokud zahrnete prostorové indexování do zásad indexování, pak budou dotazy v rámci v rámci indexu obsluhovány efektivně.
+`ST_WITHIN` dá se použít ke kontrole, jestli v mnohoúhelníku leží bod. Běžně se používají mnohoúhelníky, které představují hranice, jako jsou PSČ, hranice státu nebo přirozené formy. Pokud zahrnete prostorové indexování do zásad indexování, pak budou dotazy v rámci v rámci indexu obsluhovány efektivně.
 
 Argumenty mnohoúhelníku v `ST_WITHIN` můžou obsahovat jenom jeden prstenec, to znamená, že mnohoúhelníky nesmí obsahovat v nich otvory.
 
@@ -99,7 +99,7 @@ Azure Cosmos DB také podporuje provádění inverzních dotazů, to znamená, �
     }]
 ```
 
-`ST_ISVALID`a `ST_ISVALIDDETAILED` lze ji použít ke kontrole, zda je prostorový objekt platný. Například následující dotaz kontroluje platnost bodu s hodnotou zeměpisné šířky v rozsahu (-132,8). `ST_ISVALID`Vrátí pouze logickou hodnotu a `ST_ISVALIDDETAILED` vrátí logickou hodnotu a řetězec obsahující důvod, proč se považuje za neplatnou.
+`ST_ISVALID` a `ST_ISVALIDDETAILED` lze ji použít ke kontrole, zda je prostorový objekt platný. Například následující dotaz kontroluje platnost bodu s hodnotou zeměpisné šířky v rozsahu (-132,8). `ST_ISVALID` Vrátí pouze logickou hodnotu a `ST_ISVALIDDETAILED` vrátí logickou hodnotu a řetězec obsahující důvod, proč se považuje za neplatnou.
 
 **Dotaz**
 

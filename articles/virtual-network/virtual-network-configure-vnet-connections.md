@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400702"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Konfigurace a ověření připojení k virtuální síti nebo k síti VPN
@@ -258,7 +258,7 @@ Objekt připojení musí mít povolený protokol BGP. Hodnotu můžete nastavit 
 
 ### <a name="validate-the-bgp-configuration"></a>Ověření konfigurace protokolu BGP
 
-Pokud chcete zjistit, jestli je protokol BGP správně nakonfigurovaný, můžete spustit rutinu `get-AzureRmVirtualNetworkGateway` a `get-AzureRmLocalNetworkGateway` rutin. Pak si všimnete výstupu souvisejícího s protokolem BGP v `BgpSettingsText` části. Příklad:
+Pokud chcete zjistit, jestli je protokol BGP správně nakonfigurovaný, můžete spustit rutinu `get-AzureRmVirtualNetworkGateway` a `get-AzureRmLocalNetworkGateway` rutin. Pak si všimnete výstupu souvisejícího s protokolem BGP v `BgpSettingsText` části. Například:
 
 ```
 {

@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak můžete zobrazit a analyzovat výkon 
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.openlocfilehash: 888853f0e9e7634cafa5e480752371c501376158
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90988138"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Monitorování výkonu clusteru Kubernetes s využitím Azure Monitor pro kontejnery
@@ -24,7 +24,7 @@ Hlavní rozdíly v monitorování clusteru Windows serveru s Azure Monitor pro k
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Zobrazení více clusterů z Azure Monitor
 
@@ -34,8 +34,8 @@ Pokud chcete zobrazit stav všech nasazených Kubernetes clusterů, vyberte **mo
 
 Můžete určit rozsah výsledků prezentovaných v mřížce a zobrazit tak clustery, které jsou:
 
-* Clustery **Azure** -AKS a AKS, které jsou hostované ve službě Azure Kubernetes
-* **Azure Stack (Preview)** – clustery AKS hostované v Azure Stack
+* Clustery **Azure** – AKS a AKS-Engine hostované ve službě Azure Kubernetes
+* **Azure Stack (Preview)** – AKS-Engine clustery hostované v Azure Stack
 * **Mimo Azure (Preview)** – Kubernetes clustery jsou hostované místně.
 * **Vše** – zobrazení všech clusterů Kubernetes hostovaných v Azure, Azure Stack a místních prostředích, která jsou zaregistrovaná Azure monitor pro kontejnery
 

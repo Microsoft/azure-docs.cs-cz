@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7683f5d60c5d788707e2f89774cee42e7820db87
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87924202"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Komunikace s DPS pomocí protokolu MQTT
@@ -48,7 +48,7 @@ Pokud zařízení nemůže používat sady SDK pro zařízení, může se stále
 
 * V poli **heslo** použijte token SAS. Formát tokenu SAS je stejný jako u protokolů HTTPS a AMQP:
 
-  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`ResourceURI by měl být ve formátu `{idScope}/registrations/{registration_id}` . Název zásad by měl být `registration` .
+  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration` ResourceURI by měl být ve formátu `{idScope}/registrations/{registration_id}` . Název zásad by měl být `registration` .
 
   > [!NOTE]
   > Pokud používáte ověřování pomocí certifikátu X. 509, hesla tokenů SAS se nevyžadují.

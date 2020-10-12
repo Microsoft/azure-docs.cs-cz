@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.openlocfilehash: 55c7522ad1dc6c7f91fae608a777dab3cd67d2ed
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86183166"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Konfigurace počítačů do požadovaného stavu
@@ -25,7 +25,7 @@ Konfigurace stavu Azure Automation umožňuje zadat konfigurace pro vaše server
 
 Pro tento kurz používáme jednoduchou [konfiguraci DSC](/powershell/scripting/dsc/configurations/configurations) , která zajišťuje, že se na virtuálním počítači nainstaluje služba IIS.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure Automation. Pokyny k vytvoření účtu Azure Automation Spustit jako najdete v tématu [Účet Spustit jako pro Azure](./manage-runas-account.md).
 - Azure Resource Manager virtuální počítač (ne Classic) se systémem Windows Server 2008 R2 nebo novějším. Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření prvního virtuálního počítače s Windows v Azure Portal](../virtual-machines/windows/quick-create-portal.md).

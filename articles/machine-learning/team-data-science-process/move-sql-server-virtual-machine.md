@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8350437d04fd019aab8fb22be8ad0e9a4a2831d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87012174"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Přesun dat do SQL Serveru na virtuálním počítači Azure
@@ -28,8 +28,8 @@ Následující tabulka shrnuje možnosti přesunutí dat na SQL Server na virtu�
 
 | <b>Zdrojová</b> | <b>CÍL: SQL Server na virtuálním počítači Azure</b> |
 | --- | --- |
-| <b>Plochý soubor</b> |1. <a href="#insert-tables-bcp">Nástroj příkazového řádku pro hromadné kopírování (BCP)</a><br> 2. <a href="#insert-tables-bulkquery">hromadné vložení dotazu SQL</a><br> 3. <a href="#sql-builtin-utilities">grafické integrované nástroje v SQL Server</a> |
-| <b>Místní SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">nasazení databáze SQL Server do průvodce Microsoft Azure VM VM</a><br> 2. <a href="#export-flat-file">Export do plochého souboru</a><br> 3. <a href="#sql-migration">SQL Database Průvodce migrací</a> <br> 4. <a href="#sql-backup">zálohování a obnovení databáze</a><br> |
+| <b>Plochý soubor</b> |1. <a href="#insert-tables-bcp">Nástroj příkazového řádku pro hromadné kopírování (BCP) </a><br> 2. <a href="#insert-tables-bulkquery">hromadné vložení dotazu SQL </a><br> 3. <a href="#sql-builtin-utilities">grafické integrované nástroje v SQL Server</a> |
+| <b>Místní SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">nasazení databáze SQL Server do průvodce Microsoft Azure VM VM</a><br> 2. <a href="#export-flat-file">Export do plochého souboru </a><br> 3. <a href="#sql-migration">SQL Database Průvodce migrací </a> <br> 4. <a href="#sql-backup">zálohování a obnovení databáze </a><br> |
 
 V tomto dokumentu se předpokládá, že příkazy SQL se spouštějí z SQL Server Management Studio nebo Průzkumníka databáze sady Visual Studio.
 
@@ -38,7 +38,7 @@ V tomto dokumentu se předpokládá, že příkazy SQL se spouštějí z SQL Ser
 >
 >
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Předpoklady
+## <a name="prerequisites"></a><a name="prereqs"></a>Požadavky
 V tomto kurzu se předpokládá, že máte následující:
 
 * **Předplatné Azure** Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
@@ -46,7 +46,7 @@ V tomto kurzu se předpokládá, že máte následující:
 * Zřízené **SQL Server na virtuálním počítači Azure**. Pokyny najdete v tématu [nastavení virtuálního počítače Azure SQL Server jako serveru IPython notebook pro pokročilou analýzu](../data-science-virtual-machine/setup-sql-server-virtual-machine.md).
 * Instalace a konfigurace **Azure PowerShell** lokálně. Pokyny najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/).
 
-## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a>Přesunutí dat ze zdroje plochého souboru do SQL Server na virtuálním počítači Azure
+## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a> Přesunutí dat ze zdroje plochého souboru do SQL Server na virtuálním počítači Azure
 Pokud jsou vaše data v nestrukturovaném souboru (uspořádaná ve formátu řádku nebo sloupce), můžete ji přesunout do SQL Server virtuálního počítače v Azure pomocí následujících metod:
 
 1. [Nástroj příkazového řádku pro hromadné kopírování (BCP)](#insert-tables-bcp)
@@ -209,7 +209,7 @@ Snímek obrazovky možností zálohování a obnovení databáze z SQL Server Ma
 
 ![Nástroj pro import SQL Server][1]
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 [Migrace databáze na SQL Server na virtuálním počítači Azure](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
 
 [SQL Server na Azure Virtual Machines – přehled](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)

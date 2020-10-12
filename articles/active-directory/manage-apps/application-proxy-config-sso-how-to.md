@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54673e0018f83024d1c01599d0096c71b6b1d0ae
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642125"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Konfigurace jednotného přihlašování k aplikaci proxy aplikací
@@ -39,7 +39,7 @@ Nakonfigurujte konkrétní typ jednotného přihlašování. Metody přihlašov�
 
 -   **Přihlašování založené na heslech**: přihlášení založené na heslech se dá použít pro aplikaci, která používá pole uživatelského jména a hesla k přihlášení. Postup konfigurace je v [konfiguraci jednotného přihlašování pro aplikaci Galerie Azure AD](configure-password-single-sign-on-non-gallery-applications.md).
 
--   **Integrované ověřování systému Windows**: pro aplikace používající integrované ověřování systému Windows (IWA) je jednotné přihlašování povoleno prostřednictvím omezeného delegování protokolu Kerberos (KCD). Tato metoda poskytuje proxy konektorům aplikace oprávnění ve službě Active Directory k zosobnění uživatelů a posílání a přijímání tokenů jménem. Podrobnosti o konfiguraci KCD najdete v [dokumentaci k KCD v jednotném přihlašování](application-proxy-configure-single-sign-on-with-kcd.md).
+-   **Integrované ověřování systému Windows**: pro aplikace používající integrované ověřování systému Windows (IWA) je jednotné přihlašování povoleno prostřednictvím omezeného delegování protokolu Kerberos (KCD). Tato metoda poskytuje proxy konektorům aplikace oprávnění ve službě Active Directory k zosobnění uživatelů a posílání a přijímání tokenů jménem. Podrobnosti o konfiguraci KCD najdete v [dokumentaci k KCD v jednom Sign-On](application-proxy-configure-single-sign-on-with-kcd.md).
 
 -   **Přihlašování založené na hlavičkách**: přihlašování založené na hlavičkách je povolené prostřednictvím partnerství a vyžaduje další konfiguraci. Podrobnosti o partnerství a podrobné pokyny pro konfiguraci jednotného přihlašování k aplikaci, která používá hlavičky pro ověřování, najdete v [dokumentaci k PingAccess pro Azure AD](application-proxy-configure-single-sign-on-with-ping-access.md).
 
@@ -47,7 +47,7 @@ Nakonfigurujte konkrétní typ jednotného přihlašování. Metody přihlašov�
 
 Každou z těchto možností můžete najít tak, že v části podnikové aplikace zapnete aplikaci a v nabídce vlevo otevřete stránku **jednotného přihlašování** . Všimněte si, že pokud se vaše aplikace vytvořila na starém portálu, nemusí se tyto možnosti zobrazit.
 
-Na této stránce se zobrazí také jedna možnost Další přihlášení: propojené přihlašování. Tuto možnost podporuje i proxy aplikace. Tato možnost však nepřidá do aplikace jednotné přihlašování. To, že tato aplikace už může mít jednotné přihlašování implementované pomocí jiné služby, jako je Active Directory Federation Services (AD FS). 
+Na této stránce se zobrazí také jedna další možnost Sign-On: propojené přihlašování. Tuto možnost podporuje i proxy aplikace. Tato možnost však nepřidá do aplikace jednotné přihlašování. To, že tato aplikace už může mít jednotné přihlašování implementované pomocí jiné služby, jako je Active Directory Federation Services (AD FS). 
 
 Tato možnost umožňuje správci vytvořit odkaz na aplikaci, kterou uživatelé poprvé dojdou při přístupu k aplikaci. Pokud je například aplikace konfigurovaná pro ověřování uživatelů pomocí Active Directory Federation Services (AD FS) 2,0, může správce pomocí možnosti "propojené přihlašování" vytvořit odkaz na vlastní aplikace.
 

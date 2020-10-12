@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987212"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Konfigurace Start/Stop VMs during off-hours
@@ -143,13 +143,13 @@ Chcete-li změnit e-mailová oznámení po nasazení Start/Stop VMs during off-h
 
 2. Na stránce StartStop_VM_Notification klikněte na **Upravit podrobnosti** v části **Podrobnosti**. Tím se otevře stránka E-mail/SMS/Push/Voice. Aktualizujte e-mailovou adresu a kliknutím na **OK** uložte změny.
 
-    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Snímek obrazovky se stránkou E-mail/SMS/Push/Voice ukazující ukázkovou e-mailovou adresu.":::
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Snímek obrazovky se stránkou monitor – skupiny akcí":::
 
     Případně můžete do skupiny akcí přidat další akce. Další informace o skupinách akcí naleznete v tématu [skupiny akcí](../azure-monitor/platform/action-groups.md) .
 
 Následuje příklad e-mailu, který se pošle, když funkce vypne virtuální počítače.
 
-:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="Snímek obrazovky s ukázkovým e-mailem odeslaným, když funkce vypne virtuální počítače":::
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="Snímek obrazovky se stránkou monitor – skupiny akcí":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>Přidat nebo vyloučit virtuální počítače
 

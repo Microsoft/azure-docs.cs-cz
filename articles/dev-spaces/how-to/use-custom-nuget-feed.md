@@ -9,10 +9,10 @@ description: Pomocí vlastního informačního kanálu NuGet můžete získat p�
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
 manager: gwallace
 ms.openlocfilehash: 77c7b733b12d9b352f9a806cadc0f900b9283ef3
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86229273"
 ---
 # <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Použití vlastního informačního kanálu NuGet s Azure Dev Spaces

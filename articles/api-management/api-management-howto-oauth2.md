@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4a0e8c6eb87b053c0e3ee524c60435dc45d81ff3
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87902253"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Jak autorizovat vývojářské účty pomocí OAuth 2,0 v Azure API Management
@@ -68,18 +68,18 @@ V této příručce se dozvíte, jak nakonfigurovat instanci služby API Managem
 
     ![Nový server OAuth 2,0](./media/api-management-howto-oauth2/oauth-03.png)
 
-    U Azure Active Directory serveru OAuth 2,0 bude **Adresa URL koncového bodu tokenu** mít následující formát, kde `<TenantID>` má formát `yourapp.onmicrosoft.com` .
+    U Azure Active Directory serveru OAuth 2,0 bude **Adresa URL koncového bodu tokenu** mít následující formát, kde `<TenantID>`  má formát `yourapp.onmicrosoft.com` .
 
     `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
-    Výchozí nastavení pro **metody ověřování klienta** je **Basic**a **Metoda odesílání přístupového tokenu** je **autorizační hlavičkou**. Tyto hodnoty jsou konfigurovány v této části formuláře společně s **výchozím oborem**.
+    Výchozí nastavení pro **metody ověřování klienta** je **Basic**a  **Metoda odesílání přístupového tokenu** je **autorizační hlavičkou**. Tyto hodnoty jsou konfigurovány v této části formuláře společně s **výchozím oborem**.
 
 6. Oddíl **přihlašovací údaje klienta** obsahuje **ID klienta** a **tajný klíč klienta**, které se získávají během procesu vytváření a konfigurace vašeho serveru OAuth 2,0. Jakmile zadáte **ID klienta** a **tajný klíč klienta** , vygeneruje se **redirect_uri** pro **autorizační kód** . Tento identifikátor URI se používá ke konfiguraci adresy URL odpovědi v konfiguraci serveru OAuth 2,0.
 
     Na novém portálu pro vývojáře má přípona identifikátor URI formu:
 
-    - `/signin-oauth/code/callback/{authServerName}`pro tok udělení autorizačního kódu
-    - `/signin-oauth/implicit/callback`pro implicitní tok udělení
+    - `/signin-oauth/code/callback/{authServerName}` pro tok udělení autorizačního kódu
+    - `/signin-oauth/implicit/callback` pro implicitní tok udělení
 
     ![Nový server OAuth 2,0](./media/api-management-howto-oauth2/oauth-04.png)
 

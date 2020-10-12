@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
 ms.openlocfilehash: 26a1208131f1d9d3df7dccd8e27bda37992f043f
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236645"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Analýza mínění s využitím Azure Stream Analytics a Azure Machine Learning Studio (Classic)
@@ -53,7 +53,7 @@ V tomto kroku nahrajete soubor CSV do kontejneru úložiště.
    |Skupina prostředků|Vyberte skupinu prostředků.|
    |Název účtu úložiště|Zadejte název účtu úložiště. Název musí být v rámci Azure jedinečný.|
    |Umístění|Zvolte umístění. Všechny prostředky by měly používat stejné umístění.|
-   |Druh účtu|BlobStorage|
+   |Druh účtu|Blob Storage|
 
    ![Zadejte podrobnosti účtu úložiště.](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
@@ -122,7 +122,7 @@ Přejít na [Azure Portal](https://portal.azure.com) a vytvořit úlohu Stream A
    |Pole  |Hodnota  |
    |---------|---------|
    |Alias vstupu|Zadejte název. Tento alias si zapamatujte při psaní dotazu.|
-   |Předplatné|Vyberte předplatné.|
+   |Předplatné|Vyberte své předplatné.|
    |Účet úložiště|Vyberte účet úložiště, který jste provedli v předchozím kroku.|
    |Kontejner|Vyberte kontejner, který jste vytvořili v předchozím kroku.|
    |Formát serializace události|CSV|
@@ -140,7 +140,7 @@ Přejít na [Azure Portal](https://portal.azure.com) a vytvořit úlohu Stream A
    |Pole  |Hodnota  |
    |---------|---------|
    |Alias vstupu|Zadejte název. Tento alias si zapamatujte při psaní dotazu.|
-   |Předplatné|Vyberte předplatné.|
+   |Předplatné|Vyberte své předplatné.|
    |Účet úložiště|Vyberte účet úložiště, který jste provedli v předchozím kroku.|
    |Kontejner|Vyberte kontejner, který jste vytvořili v předchozím kroku.|
    |Formát serializace události|CSV|

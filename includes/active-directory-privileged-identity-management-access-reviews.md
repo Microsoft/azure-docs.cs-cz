@@ -9,10 +9,10 @@ ms.date: 05/26/2020
 ms.author: barclayn
 ms.custom: include file
 ms.openlocfilehash: ee02200f1fb32d430a858d218e27534561ebc24a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83868013"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Vytvoření jedné nebo více kontrol přístupu
@@ -69,7 +69,7 @@ ms.locfileid: "83868013"
     - **Schválit přístup** – schválení přístupu uživatele
     - **Využijte doporučení** – Vezměte v úvahu doporučení systému při odepření nebo schvalování trvalého přístupu uživatele.
 
-### <a name="advanced-settings"></a>Upřesnit nastavení
+### <a name="advanced-settings"></a>Rozšířená nastavení
 
 1. Chcete-li zadat další nastavení, rozbalte oddíl **Upřesnit nastavení** .
 

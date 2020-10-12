@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: eab509e389c074232526aa93fcebb72f3bc986c0
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185598"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Správa řešení Change Tracking a Inventory
@@ -44,7 +44,7 @@ Ke konfiguraci sledování souborů na počítačích se systémem Windows použ
     |---------|---------|
     |Povoleno     | True, pokud je nastavení použito, a jinak false.        |
     |Název položky     | Popisný název souboru, který se má sledovat        |
-    |Skupina     | Název skupiny pro logicky seskupené soubory.        |
+    |Group (Skupina)     | Název skupiny pro logicky seskupené soubory.        |
     |Zadat cestu     | Cesta pro kontrolu souboru, například **c:\Temp \\ \* . txt**. Můžete také použít proměnné prostředí, například `%winDir%\System32\\\*.*` .       |
     |Typ cesty     | Typ cesty Možné hodnoty jsou soubor a složka.        |    
     |Rekurze     | True, pokud se používá rekurze při hledání položky, která se má sledovat, a v opačném případě false.        |    
@@ -65,7 +65,7 @@ Ke konfiguraci sledování souborů na počítačích se systémem Linux použij
     |---------|---------|
     |Povoleno     | True, pokud je nastavení použito, a jinak false.        |
     |Název položky     | Popisný název souboru, který se má sledovat        |
-    |Skupina     | Název skupiny pro logicky seskupené soubory.        |
+    |Group (Skupina)     | Název skupiny pro logicky seskupené soubory.        |
     |Zadat cestu     | Cesta pro kontrolu souboru, například **/etc/*. conf**.       |
     |Typ cesty     | Typ cesty Možné hodnoty jsou soubor a adresář.        |
     |Rekurze     | True, pokud se používá rekurze při hledání položky, která se má sledovat, a v opačném případě false.        |
@@ -134,17 +134,17 @@ Ke konfiguraci sledování klíčů registru v počítačích se systémem Windo
     |---------|---------|
     |Povoleno     | True, pokud je nastavení použito, a jinak false.        |
     |Název položky     | Popisný název klíče registru, který se má sledovat        |
-    |Skupina     | Název skupiny pro logicky seskupené klíče registru.        |
+    |Group (Skupina)     | Název skupiny pro logicky seskupené klíče registru.        |
     |Klíč registru systému Windows   | Název klíče s cestou, například `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup` .      |
 
 ## <a name="search-logs-for-change-records"></a>V protokolech hledání záznamů změn
 
 Můžete provádět různé vyhledávání v protokolech Azure Monitor pro záznamy změn. Otevřete stránku pro sledování změn, kliknutím na **Log Analytics** otevřete stránku protokoly. V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy změn.
 
-|Dotaz  |Popis  |
+|Dotaz  |Description  |
 |---------|---------|
-|`ConfigurationData`<br>&#124;`where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124;`where SvcState == "Stopped"`<br>&#124;`summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Zobrazuje nejaktuálnější záznamy inventáře pro služby společnosti Microsoft, které byly nastaveny na hodnotu automaticky, ale byly hlášeny jako zastaveno. Výsledky jsou omezené na nejnovější záznam pro zadaný název softwaru a počítač.    |
-|`ConfigurationChange`<br>&#124;`where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124;`order by TimeGenerated desc`|Zobrazuje záznamy změn pro odebraný software.|
+|`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Zobrazuje nejaktuálnější záznamy inventáře pro služby společnosti Microsoft, které byly nastaveny na hodnotu automaticky, ale byly hlášeny jako zastaveno. Výsledky jsou omezené na nejnovější záznam pro zadaný název softwaru a počítač.    |
+|`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|Zobrazuje záznamy změn pro odebraný software.|
 
 ## <a name="create-alerts-on-changes"></a>Vytváření upozornění na změny
 

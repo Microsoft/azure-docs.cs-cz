@@ -11,10 +11,10 @@ ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
 ms.openlocfilehash: 9dd9853bae324a047c673852f14d2b4c1639d914
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83739205"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>Nastavit telefon do kanceláře jako metodu ověřování dvou faktorů
@@ -41,7 +41,7 @@ Telefon do kanceláře můžete nastavit tak, aby fungoval jako metoda ověřov�
     >[!Note]
     >Informace o tom, jak používat heslo aplikace pro vaše starší aplikace, najdete v tématu [Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md). Pokud budete nadále používat starší aplikace, které nepodporují dvojúrovňové ověřování, je třeba použít hesla aplikací.
 
-4. Vyberte **Done** (Hotovo).
+4. Vyberte **Hotovo**.
 
 ## <a name="next-steps"></a>Další kroky
 

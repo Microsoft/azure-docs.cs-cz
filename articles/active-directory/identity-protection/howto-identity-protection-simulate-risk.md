@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbcc2351b7ead3714cfd21aa30b031cec75074a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84463752"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>Simulace zjišťování rizik v Identity Protection
@@ -49,7 +49,7 @@ Dokončení následujícího postupu vyžaduje, abyste použili:
 
 Přihlašování se zobrazuje na řídicím panelu Identity Protection během 10-15 minut. 
 
-## <a name="unfamiliar-sign-in-properties"></a>Neznámou vlastnost přihlášení
+## <a name="unfamiliar-sign-in-properties"></a>Neznámé vlastnosti přihlášení
 
 Abyste mohli simulovat neznámou polohu, musíte se přihlásit z umístění a zařízení, ke kterému váš zkušební účet ještě nebyl přihlášený.
 
@@ -70,7 +70,7 @@ Provedení následujícího postupu vyžaduje, abyste použili uživatelský ú�
 
 Přihlašování se zobrazuje na řídicím panelu Identity Protection během 10-15 minut.
 
-## <a name="atypical-travel"></a>Neobvyklé cestování
+## <a name="atypical-travel"></a>Neobvyklá cesta
 
 Simulace netypických cestovních cest je obtížné, protože algoritmus využívá Machine Learning k pleveli falešně pozitivních hodnot, jako je například neobvyklá cesta ze známých zařízení, nebo přihlášení z sítí VPN, které používají jiní uživatelé v adresáři. Kromě toho algoritmus vyžaduje historii přihlášení 14 dní a 10 přihlášení uživatele, než začne generovat detekci rizik. Z důvodu komplexních modelů strojového učení a výše uvedených pravidel existuje možnost, že následující kroky nebudou mít za následek detekci rizik. Tyto kroky můžete chtít replikovat pro více účtů Azure AD, abyste mohli simulovat toto zjišťování.
 

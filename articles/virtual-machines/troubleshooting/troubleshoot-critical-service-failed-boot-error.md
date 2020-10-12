@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
 ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86129850"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Při spuštění virtuálního počítače Azure se v systému Windows zobrazí modrá obrazovka "KRITICKá služba neúspěšná"
@@ -117,7 +117,7 @@ Pokud chcete protokoly výpisu paměti analyzovat sami, postupujte takto:
 3. Spusťte **Editor registru** (regedit.exe).
 4. Vyberte **HKEY_LOCAL_MACHINE** klíč. V nabídce vyberte položku **File**  >  **podregistr Load**File.
 5. Přejděte do složky **\windows\system32\config\SYSTEM** na disku s operačním systémem, který jste připojili. Jako název podregistru zadejte **BROKENSYSTEM**. Nový podregistr registru se zobrazí pod klíčem **HKEY_LOCAL_MACHINE** .
-6. Vyhledejte **HKEY_LOCAL_MACHINE \brokensystem\controlset00x\control\crashcontrol** a proveďte následující změny:
+6. Přejděte na **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** a proveďte následující změny:
 
     AutoRestart = 0
 

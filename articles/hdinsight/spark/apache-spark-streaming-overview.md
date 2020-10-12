@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: a88d4893daa12ff2c35ee7cf8f4e5b7569f854f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086190"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Přehled streamování Apache Spark
@@ -71,7 +71,7 @@ S instancí StreamingContext vytvořte vstupní DStream pro vstupní zdroj. V ta
 val lines = ssc.textFileStream("/uploads/Test/")
 ```
 
-#### <a name="apply-transformations"></a>Použít transformace
+#### <a name="apply-transformations"></a>Použití transformací
 
 Zpracování implementujete použitím transformací na DStream. Tato aplikace od souboru přijímá jeden řádek textu, každý řádek rozdělí na slova. A pak pomocí schématu pro omezení rozvržení spočítá počet, kolikrát se každé slovo zobrazí.
 
@@ -154,7 +154,7 @@ SELECT * FROM demo_numbers
 
 Výsledný výstup vypadá jako následující výstup:
 
-| hodnota | time |
+| value | time |
 | --- | --- |
 |10 | 1497314465256 |
 |11 | 1497314470272 |
@@ -222,7 +222,7 @@ ssc.start()
 
 Po první minutě se v každé z těchto dvou dávek shromážděných v okně nachází 12 záznamů – šest záznamů.
 
-| hodnota | time |
+| value | time |
 | --- | --- |
 | 1 | 1497316294139 |
 | 2 | 1497316299158

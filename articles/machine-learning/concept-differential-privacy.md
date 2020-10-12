@@ -10,10 +10,10 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.openlocfilehash: 9728bf2c86c0629b09e2325650ce288cf9b3cc7e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86199788"
 ---
 # <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package-preview"></a>Zachování ochrany soukromí dat pomocí rozdílového soukromí a balíčku WhiteNoise (Preview)
@@ -67,7 +67,7 @@ Základní knihovna nástroje zahrnuje následující mechanismy ochrany osobní
 |---------|---------|
 |Analýza     | Graf s popisem libovolných výpočtů. |
 |Hodnocení     | Knihovna Rust, která obsahuje sadu nástrojů pro kontrolu a odvozování nezbytných podmínek pro účely analýzy rozdílných privátních.          |
-|Runtime     | Médium pro provedení analýzy. Referenční modul runtime je napsaný v Rust, ale moduly runtime se dají zapisovat pomocí všech výpočetních rozhraní, jako je SQL a Spark, v závislosti na vašich datových potřebách.        |
+|Modul runtime     | Médium pro provedení analýzy. Referenční modul runtime je napsaný v Rust, ale moduly runtime se dají zapisovat pomocí všech výpočetních rozhraní, jako je SQL a Spark, v závislosti na vašich datových potřebách.        |
 |Vazby     | Vazby jazyka a pomocné knihovny pro sestavení analýz Aktuálně WhiteNoise poskytuje vazby Pythonu. |
 
 ### <a name="system"></a>Systém

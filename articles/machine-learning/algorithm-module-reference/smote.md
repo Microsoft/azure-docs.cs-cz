@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
 ms.openlocfilehash: 501f3e8946023d28d67a33fbbfca661afbc6306d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898257"
 ---
 # <a name="smote"></a>SMOTE
@@ -62,7 +62,7 @@ Chcete-li zvýšit počet případů, můžete nastavit hodnotu **SMOTE procent*
   
 4.  Modul SMOTE automaticky identifikuje třídu menšin ve sloupci Label a pak získá všechny příklady pro třídu menšin. Všechny sloupce nemůžou mít hodnoty NaN.
   
-5.  V možnosti **procento SMOTE** zadejte celé číslo, které označuje cílové procento minoritních případů ve výstupní datové sadě. Příklad:  
+5.  V možnosti **procento SMOTE** zadejte celé číslo, které označuje cílové procento minoritních případů ve výstupní datové sadě. Například:  
   
     - Zadáte **0**. Modul SMOTE vrací přesně stejnou datovou sadu, kterou jste zadali jako vstup. Nepřidává žádné nové menšinové případy. V této datové sadě se nezměnila procentní část třídy.  
   

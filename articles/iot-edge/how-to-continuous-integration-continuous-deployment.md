@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: d29a5a6d0d4745655ce5b6d0cead3eaba77ed423
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91281622"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>Průběžná integrace a průběžné nasazování pro Azure IoT Edge zařízení
@@ -101,7 +101,7 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujete, aby se kan
        | --- | --- |
        | Akce | Vyberte **Image modulu push**. |
        | Typ registru kontejneru | Použijte výchozí typ: **Azure Container Registry**. |
-       | Předplatné Azure | Vyberte předplatné. |
+       | Předplatné Azure | Vyberte své předplatné. |
        | Azure Container Registry | Vyberte registr, který chcete použít pro kanál. |
        | .template.jsv souboru | Zadejte cestu k **deployment.template.js** v souboru v úložišti, které obsahuje vaše řešení IoT Edge. |
        | Výchozí platforma | Vyberte odpovídající operační systém pro vaše moduly na základě cíleného zařízení IoT Edge. |

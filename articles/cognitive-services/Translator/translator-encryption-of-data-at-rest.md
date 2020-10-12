@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: ce7ff6ae134835de23a0d2670e8b4f44783654f8
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89079196"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Šifrování dat v klidovém umístění
@@ -37,7 +37,7 @@ U předplatných, která podporují jenom šifrovací klíče spravované Micros
 Vaše předplatné ve výchozím nastavení používá šifrovací klíče spravované Microsoftem. K dispozici je také možnost spravovat vaše předplatné s vlastními klíči nazvanými klíče spravované zákazníkem (CMK). CMK nabízí větší flexibilitu při vytváření, rotaci, zakázání a odvolávání řízení přístupu. Šifrovací klíče sloužící k ochraně vašich dat můžete také auditovat. Pokud je pro vaše předplatné nakonfigurované CMK, je k dispozici dvojité šifrování, které nabízí druhou vrstvu ochrany, a přitom vám umožní řídit šifrovací klíč pomocí Azure Key Vault.
 
 > [!IMPORTANT]
-> Klíče spravované zákazníkem jsou k dispozici pro všechny cenové úrovně služby Translator. Pokud chcete požádat o možnost použití klíčů spravovaných zákazníkem, vyplňte a odešlete [formulář žádosti o klíč spravovaný zákazníkem](https://aka.ms/cogsvc-cmk) , který bude trvat přibližně 3-5 pracovních dnů, aby se dozvěděl o stavu vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro používání CMK se službou Translator budete muset vytvořit nový prostředek překladatele. Po vytvoření prostředku překladatele můžete k nastavení spravované identity použít Azure Key Vault.
+> Klíče spravované zákazníkem jsou k dispozici pro všechny cenové úrovně služby Translator. Pokud chcete požádat o možnost použití klíčů spravovaných zákazníkem, vydejte a odešlete [překladateli Customer-Managed klíč žádosti o klíč](https://aka.ms/cogsvc-cmk) , který bude trvat přibližně 3-5 pracovních dnů, než se vrátí na stav vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro používání CMK se službou Translator budete muset vytvořit nový prostředek překladatele. Po vytvoření prostředku překladatele můžete k nastavení spravované identity použít Azure Key Vault.
 
 Pomocí těchto kroků povolíte klíčům spravovaným zákazníkem pro překladatele:
 
@@ -47,7 +47,7 @@ Pomocí těchto kroků povolíte klíčům spravovaným zákazníkem pro překla
 
 ### <a name="enable-customer-managed-keys"></a>Povolit klíče spravované zákazníkem
 
-K ukládání klíčů spravovaných zákazníkem je nutné použít Azure Key Vault. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Prostředek Cognitive Services a trezor klíčů musí být ve stejné oblasti a v rámci stejného tenanta Azure Active Directory (Azure AD), ale můžou být v různých předplatných. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+K ukládání klíčů spravovaných zákazníkem musíte použít službu Azure Key Vault. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Prostředek Cognitive Services a trezor klíčů musí být ve stejné oblasti a v rámci stejného tenanta Azure Active Directory (Azure AD), ale můžou být v různých předplatných. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
 Nový prostředek Cognitive Services je vždycky zašifrovaný pomocí klíčů spravovaných Microsoftem. Klíče spravované zákazníkem není možné povolit v době, kdy se prostředek vytvořil. Klíče spravované zákazníkem jsou uloženy v Azure Key Vault a trezor klíčů musí být zřízen pomocí zásad přístupu, které udělují klíčová oprávnění ke spravované identitě, která je přidružena k prostředku Cognitive Services. Spravovaná identita je k dispozici hned po vytvoření prostředku.
 

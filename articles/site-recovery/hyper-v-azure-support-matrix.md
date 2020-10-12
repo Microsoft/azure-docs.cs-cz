@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
 ms.openlocfilehash: 53967ab0bec9488691ff60cdabb8fedbb6b9730e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87386703"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
@@ -60,18 +60,18 @@ Přidat disk na replikovaný virtuální počítač Hyper-V | Nepodporováno Zak
 
 **Komponenta** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
-Síť hostitele: seskupování síťových adaptérů | Ano | Ano
-Síť hostitele: síť VLAN | Ano | Ano
-Síť hostitele: IPv4 | Ano | Ano
-Síť hostitele: IPv6 | Ne | Ne
-Síť virtuálních počítačů hosta: seskupování síťových adaptérů | Ne | Ne
-Síť virtuálních počítačů hosta: IPv4 | Ano | Ano
-Síť virtuálních počítačů hosta: IPv6 | Ne | Ano
-Host VM Network: statická IP adresa (Windows) | Ano | Ano
-Síť virtuálních počítačů hosta: statická IP adresa (Linux) | Ne | Ne
-Host VM Network: více síťových karet | Ano | Ano
-Proxy server https | Ne | Ne
-Přístup k Site Recovery službě přes soukromé odkazy | Yes. [Přečtěte si další informace](hybrid-how-to-enable-replication-private-endpoints.md). | Yes. [Přečtěte si další informace](hybrid-how-to-enable-replication-private-endpoints.md).
+Síť hostitele: seskupování síťových adaptérů | Yes | Yes
+Síť hostitele: síť VLAN | Yes | Yes
+Síť hostitele: IPv4 | Yes | Yes
+Síť hostitele: IPv6 | No | No
+Síť virtuálních počítačů hosta: seskupování síťových adaptérů | No | No
+Síť virtuálních počítačů hosta: IPv4 | Yes | Yes
+Síť virtuálních počítačů hosta: IPv6 | No | Yes
+Host VM Network: statická IP adresa (Windows) | Yes | Yes
+Síť virtuálních počítačů hosta: statická IP adresa (Linux) | No | No
+Host VM Network: více síťových karet | Yes | Yes
+Proxy server https | No | No
+Přístup k Site Recovery službě přes soukromé odkazy | Ano. [Další informace](hybrid-how-to-enable-replication-private-endpoints.md). | Ano. [Další informace](hybrid-how-to-enable-replication-private-endpoints.md).
 
 
 
@@ -80,16 +80,16 @@ Přístup k Site Recovery službě přes soukromé odkazy | Yes. [Přečtěte si
 
 **Komponenta** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
-Azure ExpressRoute | Ano | Ano
-INTERNÍHO nástroje | Ano | Ano
-ELB | Ano | Ano
-Azure Traffic Manager | Ano | Ano
-Více síťových karet | Ano | Ano
-Vyhrazená IP adresa | Ano | Ano
-IPv4 | Ano | Ano
-Zachovat zdrojovou IP adresu | Ano | Ano
-Koncové body služby Azure Virtual Network<br/> (bez Azure Storage firewallů) | Ano | Ano
-Akcelerované síťové služby | Ne | Ne
+Azure ExpressRoute | Yes | Yes
+INTERNÍHO nástroje | Yes | Yes
+ELB | Yes | Yes
+Azure Traffic Manager | Yes | Yes
+Více síťových karet | Yes | Yes
+Vyhrazená IP adresa | Yes | Yes
+IPv4 | Yes | Yes
+Zachovat zdrojovou IP adresu | Yes | Yes
+Koncové body služby Azure Virtual Network<br/> (bez Azure Storage firewallů) | Yes | Yes
+Akcelerované síťové služby | No | No
 
 
 ## <a name="hyper-v-host-storage"></a>Úložiště hostitele technologie Hyper-V
@@ -97,60 +97,60 @@ Akcelerované síťové služby | Ne | Ne
 **Storage** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
 --- | --- | --- 
 NFS | Není k dispozici | Není k dispozici
-SMB 3.0 | Ano | Ano
-SÍŤ SAN (ISCSI) | Ano | Ano
-Multipath (multi-Path). Testováno pomocí:<br></br> Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM pro CLARiiON | Ano | Ano
+SMB 3.0 | Yes | Yes
+SÍŤ SAN (ISCSI) | Yes | Yes
+Multipath (multi-Path). Testováno pomocí:<br></br> Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM pro CLARiiON | Yes | Yes
 
 ## <a name="hyper-v-vm-guest-storage"></a>Úložiště hostů virtuálních počítačů Hyper-V
 
 **Storage** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
 FORMÁTU | Není k dispozici | Není k dispozici
-VHD/VHDX | Ano | Ano
-Virtuální počítač generace 2 | Ano | Ano
-ROZHRANÍ EFI/UEFI<br></br>Migrovaný virtuální počítač v Azure se automaticky převede na spouštěcí virtuální počítač se systémem BIOS. Na virtuálním počítači by měl běžet jenom Windows Server 2012 a novější. Disk s operačním systémem by měl mít až pět oddílů nebo méně a velikost disku s operačním systémem by měla být menší než 300 GB.| Ano | Ano
-Disk sdíleného clusteru | Ne | Ne
-Zašifrovaný disk | Ne | Ne
+VHD/VHDX | Yes | Yes
+Virtuální počítač generace 2 | Yes | Yes
+ROZHRANÍ EFI/UEFI<br></br>Migrovaný virtuální počítač v Azure se automaticky převede na spouštěcí virtuální počítač se systémem BIOS. Na virtuálním počítači by měl běžet jenom Windows Server 2012 a novější. Disk s operačním systémem by měl mít až pět oddílů nebo méně a velikost disku s operačním systémem by měla být menší než 300 GB.| Yes | Yes
+Disk sdíleného clusteru | No | No
+Zašifrovaný disk | No | No
 NFS | Není k dispozici | Není k dispozici
-SMB 3.0 | Ne | Ne
+SMB 3.0 | No | No
 RDM | Není k dispozici | Není k dispozici
 Disk >1 TB | Ano, až 4 095 GB | Ano, až 4 095 GB
 Disk: 4K logický a fyzický sektor | Nepodporováno: Obecná 1/fin 2 | Nepodporováno: Obecná 1/fin 2
-Disk: 4K fyzický sektor a logický sektor 512-byte | Ano |  Ano
-Správa logických svazků (LVM). LVM se podporuje jenom na datových discích. Azure poskytuje jenom jeden disk s operačním systémem. | Ano | Ano
-Svazek se zakládaným diskem >1 TB | Ano | Ano
-Prostory úložiště | Ne | Ne
-Hot Add/Remove disk | Ne | Ne
-Vyloučení disku | Ano | Ano
-Multipath (multi-Path) | Ano | Ano
+Disk: 4K fyzický sektor a logický sektor 512-byte | Yes |  Yes
+Správa logických svazků (LVM). LVM se podporuje jenom na datových discích. Azure poskytuje jenom jeden disk s operačním systémem. | Yes | Yes
+Svazek se zakládaným diskem >1 TB | Yes | Yes
+Prostory úložiště | No | No
+Hot Add/Remove disk | No | No
+Vyloučení disku | Yes | Yes
+Multipath (multi-Path) | Yes | Yes
 
 ## <a name="azure-storage"></a>Azure Storage
 
 **Komponenta** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
-(Locally redundant storage) Místně redundantní úložiště | Ano | Ano
-Geograficky redundantní úložiště | Ano | Ano
-Geograficky redundantní úložiště s přístupem pro čtení | Ano | Ano
-Studené úložiště | Ne | Ne
-Horké úložiště| Ne | Ne
-Objekty blob bloku | Ne | Ne
-Šifrování v klidovém prostředí (SSE)| Ano | Ano
+(Locally redundant storage) Místně redundantní úložiště | Yes | Yes
+Geograficky redundantní úložiště | Yes | Yes
+Geograficky redundantní úložiště s přístupem pro čtení | Yes | Yes
+Studené úložiště | No | No
+Horké úložiště| No | No
+Objekty blob bloku | No | No
+Šifrování v klidovém prostředí (SSE)| Yes | Yes
 Šifrování v klidovém umístění (CMK) <br></br> (Jenom pro převzetí služeb při selhání pro Managed Disks)| Ano (přes PowerShell AZ 3.3.0 Module a vyšší) | Ano (přes PowerShell AZ 3.3.0 Module a vyšší)
 Dvojité šifrování v klidovém umístění <br></br> (Jenom pro převzetí služeb při selhání pro Managed Disks) <br></br> Další informace o podporovaných oblastech pro [Windows](../virtual-machines/windows/disk-encryption.md) a [Linux](../virtual-machines/linux/disk-encryption.md) | Ano (přes PowerShell AZ 3.3.0 Module a vyšší) | Ano (přes PowerShell AZ 3.3.0 Module a vyšší)
-Premium Storage | Ano | Ano
-Storage úrovně Standard | Ano | Ano
-Služba import/export | Ne | Ne
-Účty Azure Storage s povolenou bránou firewall | Yes. Pro cílové úložiště a mezipaměť. | Yes. Pro cílové úložiště a mezipaměť.
-Úprava účtu úložiště | Ne. Cílový Azure Storage účet se po povolení replikace nedá změnit. Chcete-li upravit, zakázat a znovu povolit zotavení po havárii. | Ne
-Možnost zabezpečeného přenosu | Ano
+Premium Storage | Yes | Yes
+Storage úrovně Standard | Yes | Yes
+Služba import/export | No | No
+Účty Azure Storage s povolenou bránou firewall | Ano. Pro cílové úložiště a mezipaměť. | Ano. Pro cílové úložiště a mezipaměť.
+Úprava účtu úložiště | Ne. Cílový Azure Storage účet se po povolení replikace nedá změnit. Chcete-li upravit, zakázat a znovu povolit zotavení po havárii. | No
+Možnost zabezpečeného přenosu | Yes
 
 
 ## <a name="azure-compute-features"></a>Funkce Azure COMPUTE
 
 **Funkce** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
-Skupiny dostupnosti | Ano | Ano
-ZDROJ | Ano | Ano  
+Skupiny dostupnosti | Yes | Yes
+ZDROJ | Yes | Yes  
 Spravované disky | Ano, pro převzetí služeb při selhání.<br/><br/> Navrácení služeb po obnovení ze spravovaných disků se nepodporuje. | Ano, pro převzetí služeb při selhání.<br/><br/> Navrácení služeb po obnovení ze spravovaných disků se nepodporuje.
 
 ## <a name="azure-vm-requirements"></a>Požadavky na virtuální počítač Azure
@@ -171,17 +171,17 @@ Disk FC | Nepodporováno | Nepodporovaná Chyba kontroly požadovaných součás
 Formát pevného disku | VHD <br/><br/> DISKU | Při převzetí služeb při selhání do Azure Site Recovery automaticky převede VHDX na VHD. Po navrácení služeb po obnovení do místního nasazení budou virtuální počítače nadále používat formát VHDX.
 BitLocker | Nepodporováno | Aby bylo možné povolit replikaci virtuálního počítače, musí být nástroj BitLocker zakázán.
 název virtuálního počítače | 1 až 63 znaků. Pouze písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí. | Aktualizujte hodnotu ve vlastnostech virtuálního počítače v Site Recovery.
-Typ virtuálního počítače | 1. generace<br/><br/> Generace 2 – Windows | Virtuální počítače 2. generace s typem disku operačního systému Basic (obsahující jeden nebo dva datové svazky formátované jako VHDX) a jsou podporované méně než 300 GB místa na disku.<br></br>Virtuální počítače se systémem Linux generace 2 nejsou podporovány. [Přečtěte si další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
+Typ virtuálního počítače | 1. generace<br/><br/> Generace 2 – Windows | Virtuální počítače 2. generace s typem disku operačního systému Basic (obsahující jeden nebo dva datové svazky formátované jako VHDX) a jsou podporované méně než 300 GB místa na disku.<br></br>Virtuální počítače se systémem Linux generace 2 nejsou podporovány. [Další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Akce trezoru Recovery Services
 
 **Akce** |  **Hyper-V s nástrojem VMM** | **Hyper-V bez nástroje VMM**
 --- | --- | ---
-Přesunout trezor mezi skupinami prostředků<br/><br/> V rámci předplatných a mezi nimi | Ne | Ne
-Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků<br/><br/> V rámci předplatných a mezi nimi | Ne | Ne
+Přesunout trezor mezi skupinami prostředků<br/><br/> V rámci předplatných a mezi nimi | No | No
+Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků<br/><br/> V rámci předplatných a mezi nimi | No | No
 
 > [!NOTE]
-> Při replikaci virtuálních počítačů Hyper-v z místního prostředí do Azure můžete replikovat jenom na jednoho tenanta AD z jednoho konkrétního prostředí – z lokality Hyper-V nebo z Hyper-V s VMM podle potřeby.
+> Když se replikuje Hyper-VMs z místního prostředí do Azure, můžete replikovat jenom na jednoho tenanta AD z jednoho konkrétního prostředí – z lokality Hyper-V nebo z Hyper-V s VMM podle potřeby.
 
 
 ## <a name="provider-and-agent"></a>Zprostředkovatel a agent

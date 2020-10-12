@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 021bfc0b87b0da800728eda26d9f5222bd52bc1e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086955"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Seznámení s chybami přijatými z WebHCatu v HDInsightu a jejich řešení
@@ -71,7 +71,7 @@ Pokud dojde k překročení následujících výchozích hodnot, může dojít k
 | --- | --- |
 | V rámci procesu WebHCat dochází k internímu uvolňování paměti. |Počkejte, až se uvolňování paměti dokončí, nebo restartujte službu WebHCat. |
 | Vypršel časový limit čekání na odpověď ze služby ResourceManager. K této chybě může dojít v případě, že počet aktivních aplikací překročí nakonfigurované maximum (výchozí 10 000). |Počkejte, než se aktuálně spuštěné úlohy dokončí, nebo zvyšte limit souběžnosti úloh úpravou `yarn.scheduler.capacity.maximum-applications` . Další informace najdete v části [Úprava konfiguračního](#modifying-configuration) oddílu. |
-| Probíhá pokus o načtení všech úloh prostřednictvím volání metody [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) , zatímco `Fields` je nastaveno na`*` |Nenačte podrobnosti o *všech* úlohách. Místo toho použijte `jobid` k načtení podrobností pro úlohy, které jsou pouze větší než určité ID úlohy. Nebo nepoužívejte`Fields` |
+| Probíhá pokus o načtení všech úloh prostřednictvím volání metody [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) , zatímco `Fields` je nastaveno na `*` |Nenačte podrobnosti o *všech* úlohách. Místo toho použijte `jobid` k načtení podrobností pro úlohy, které jsou pouze větší než určité ID úlohy. Nebo nepoužívejte `Fields` |
 | Služba WebHCat je během převzetí služeb při selhání hlavnímu uzlu vypnutá. |Počkejte dvě minuty a zkuste operaci zopakovat. |
 | Prostřednictvím WebHCat bylo odesláno více než 500 nedokončených úloh. |Před odesláním dalších úloh počkejte na dokončení probíhajících úloh. |
 

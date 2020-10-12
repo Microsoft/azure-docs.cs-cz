@@ -10,10 +10,10 @@ ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186346"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Upravit textové Runbooky v Azure Automation
@@ -62,7 +62,7 @@ Tento článek poskytuje podrobné pokyny pro provádění různých funkcí v t
 
 ## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Úprava Azure Automation sady Runbook pomocí prostředí Windows PowerShell
 
-Chcete-li upravit sadu Runbook pomocí prostředí Windows PowerShell, použijte Editor dle vlastního výběru a uložte sadu Runbook do souboru **. ps1** . K načtení obsahu Runbooku můžete použít rutinu [Export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) . Pomocí rutiny [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) můžete stávající koncept sady Runbook nahradit upravenou sadou.
+Chcete-li upravit sadu Runbook pomocí prostředí Windows PowerShell, použijte Editor dle vlastního výběru a uložte sadu Runbook do souboru **. ps1** . K načtení obsahu Runbooku můžete použít rutinu [Export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) . Pomocí rutiny  [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) můžete stávající koncept sady Runbook nahradit upravenou sadou.
 
 ### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>Načtení obsahu Runbooku pomocí Windows PowerShellu
 

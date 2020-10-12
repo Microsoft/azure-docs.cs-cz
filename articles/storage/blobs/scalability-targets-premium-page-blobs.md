@@ -10,10 +10,10 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 2c238bf3911283db5d09fdd5679d784c5e5401f8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654799"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Škálovatelnost a výkonnostní cíle pro účty úložiště objektů blob stránky úrovně Premium
@@ -43,7 +43,7 @@ Pokud používáte účty úložiště blob stránky úrovně Premium pro nespra
 
 Pokud nemůžete migrovat na Managed disks, sestavte aplikaci tak, aby používala více účtů úložiště, a vytvořte oddíly dat v rámci těchto účtů úložiště. Například pokud chcete připojit 51 TB mezi více virtuálními počítači, rozšíříte je napříč dvěma účty úložiště. 35 TB je limit pro jeden účet Premium Storage. Ujistěte se, že jeden účet úložiště výkonu Premium nemá nikdy více než 35 TB zřízených disků.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Škálovatelnost a výkonnostní cíle pro účty úložiště úrovně Standard](../common/scalability-targets-standard-account.md)
 - [Cíle škálovatelnosti pro účty úložiště objektů blob bloku úrovně Premium](../blobs/scalability-targets-premium-block-blobs.md)

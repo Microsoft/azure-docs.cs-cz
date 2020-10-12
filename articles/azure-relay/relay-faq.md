@@ -4,10 +4,10 @@ description: Tento článek obsahuje odpovědi na některé z nejčastějších 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 9d967d926c6ab59e027fe4d4cf98e8418a8ff9bc
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89299282"
 ---
 # <a name="azure-relay-faqs"></a>Nejčastější dotazy k Azure Relay
@@ -69,7 +69,7 @@ Odeslání zprávy do Azure Relay je považováno za "úplného" odesílané nas
 Přenosy, které jsou otevřeny pomocí vazby WCF **netTCPRelay** , považují zprávy za jednotlivé zprávy, ale jako proud dat přenášených systémem. Použijete-li tuto vazbu, pouze odesílatel a naslouchací proces budou mít přehled o rámcích jednotlivých odeslaných a přijímaných zpráv. U přenosů, které používají vazbu **netTCPRelay** , se všechna data považují za datový proud pro výpočet fakturovatelných zpráv. V takovém případě Service Bus vypočítá celkové množství dat odesílaných nebo přijatých prostřednictvím každého jednotlivého přenosu po dobu 5 minut. Pak rozdělí celkový objem dat o 64 KB, aby bylo možné určit počet fakturovaných zpráv pro tento přenos během daného časového období.
 
 ## <a name="quotas"></a>Kvóty
-| Název kvóty | Obor |  Poznámky | Hodnota |
+| Název kvóty | Rozsah |  Poznámky | Hodnota |
 | --- | --- | --- | --- |
 | Souběžné naslouchací procesy na Relay |Entita |Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. |25 |
 | Souběžná připojení přenosu na všechny koncové body přenosu v oboru názvů služby |Obor názvů |- |5 000 |
@@ -120,7 +120,7 @@ Popis běžných výjimek a navrhovaných akcí, které můžete provést, najde
 Sdílené přístupové podpisy (SAS) jsou mechanismy ověřování založené na zabezpečených hodnotách hash nebo identifikátorech URI SHA-256. Informace o tom, jak generovat vlastní signatury v Node.js, PHP, Pythonu, Java, C a C#, najdete v tématu [ověřování Service Bus pomocí sdílených přístupových podpisů][Shared Access Signatures].
 
 ### <a name="is-it-possible-to-allow-only-some-relay-endpoints"></a>Je možné umožnit pouze některé koncové body přenosu?
-Yes. Předávací klient umožňuje připojení ke službě Azure Relay pomocí plně kvalifikovaných názvů domén. Zákazníci můžou přidat položku pro `*.servicebus.windows.net` na brány firewall, které podporují seznam schválení DNS.
+Ano. Předávací klient umožňuje připojení ke službě Azure Relay pomocí plně kvalifikovaných názvů domén. Zákazníci můžou přidat položku pro `*.servicebus.windows.net` na brány firewall, které podporují seznam schválení DNS.
 
 ## <a name="next-steps"></a>Další kroky
 * [Vytvoření oboru názvů](relay-create-namespace-portal.md)

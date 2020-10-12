@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935751"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Vytvoření privátního koncového bodu pro zabezpečené připojení k Azure Kognitivní hledání
@@ -46,7 +46,7 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
     | ------- | ----- |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK** . |
-    | Název | Zadejte *MyVirtualNetwork* |
+    | Name | Zadejte *MyVirtualNetwork* |
     | Oblast | Vyberte požadovanou oblast. |
     |||
 
@@ -63,7 +63,7 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **PODROBNOSTI O PROJEKTU** | |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **PODROBNOSTI INSTANCE** |  |
     | URL | Zadejte jedinečný název. |
@@ -83,24 +83,24 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | Umístění | Vyberte **západní USA**.|
-    | Název | Zadejte *myPrivateEndpoint*.  |
+    | Name | Zadejte *myPrivateEndpoint*.  |
     | Cílový dílčí prostředek | Ponechte výchozí **searchService**. |
     | **SÍTĚ** |  |
     | Virtuální síť  | Vyberte *MyVirtualNetwork* ze skupiny prostředků *myResourceGroup*. |
     | Podsíť | Vyberte *mySubnet*. |
-    | **INTEGRACE PRIVÁTNÍ DNS** |  |
-    | Integrace s privátní zónou DNS  | Ponechte výchozí **hodnotu Ano**. |
+    | **INTEGRACE S PRIVÁTNÍM DNS** |  |
+    | Integrovat s privátní zónou DNS  | Ponechte výchozí **hodnotu Ano**. |
     | Zóna privátního DNS  | Ponechte výchozí * * (New) privatelink.search.windows.net * *. |
     |||
 
 1. Vyberte **OK**. 
 
-1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci. 
+1. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci. 
 
-1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**. 
+1. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**. 
 
 1. Po dokončení zřizování nové služby přejděte k prostředku, který jste právě vytvořili.
 
@@ -117,7 +117,7 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **PODROBNOSTI O PROJEKTU** | |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
     | Název virtuálního počítače | Zadejte *myVm*. |
@@ -127,18 +127,18 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
     | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
     | **ÚČET SPRÁVCE** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno, které si zvolíte. |
-    | Heslo | Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    | Heslo | Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Potvrdit heslo | Zadejte znovu heslo. |
     | **PRAVIDLA PORTŮ PRO PŘÍCHOZÍ SPOJENÍ** |  |
     | Veřejné příchozí porty | Ponechte výchozí **povoleno vybrané porty**. |
-    | Vybrat příchozí porty | Ponechte výchozí **RDP (3389)**. |
-    | **ÚSPORA PENĚZ** |  |
+    | Vyberte příchozí porty | Ponechte výchozí **RDP (3389)**. |
+    | **UŠETŘETE PENÍZE** |  |
     | Máte už licenci na Windows? | Ponechte výchozí hodnotu **ne**. |
     |||
 
 1. Vyberte **Další: disky**.
 
-1. V části **vytvořit virtuální počítač – disky**ponechte výchozí hodnoty a vyberte **Další: sítě**.
+1. V okně **Vytvořit virtuální počítač – Disky** nechte vybrané výchozí hodnoty a vyberte **Další: Sítě**.
 
 1. V nástroji **vytvořit virtuální počítač – síť**vyberte tyto informace:
 
@@ -149,19 +149,19 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
     | Podsíť | Ponechte výchozí **mySubnet (10.1.0.0/24)**.|
     | Veřejná IP adresa | Ponechte výchozí **(New) myVm-IP**. |
     | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů**. |
-    | Vybrat příchozí porty | Vyberte **http** a **RDP**.|
+    | Vyberte příchozí porty | Vyberte **http** a **RDP**.|
     ||
 
-1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
+1. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci.
 
-1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**. 
+1. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**. 
 
 
 ## <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
 
 Stáhněte si a pak se připojte k virtuálnímu počítači *myVm* následujícím způsobem:
 
-1. Na panelu hledání na portálu zadejte *myVm*.
+1. Na portálu zadejte na panelu hledání *myVm*.
 
 1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
@@ -178,7 +178,7 @@ Stáhněte si a pak se připojte k virtuálnímu počítači *myVm* následujíc
 
 1. Vyberte **OK**.
 
-1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
+1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění na certifikát, vyberte **Ano** nebo **Pokračovat**.
 
 1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.  
 

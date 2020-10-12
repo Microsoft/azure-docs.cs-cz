@@ -4,10 +4,10 @@ description: Ukazuje, jak cílit více než jeden obor během nasazování. Obor
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: 6161401ac039551a814b595715f56df1ac62dd6c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374511"
 ---
 # <a name="deploy-azure-resources-across-scopes"></a>Nasazení prostředků Azure napříč obory
@@ -127,7 +127,7 @@ az deployment group create \
 
 ## <a name="cross-subscription-management-group-and-tenant"></a>Mezi předplatnými, skupinou pro správu a klientem
 
-Při zadávání různých oborů pro předplatné, skupinu pro správu a nasazení na úrovni tenanta použijete vnořená nasazení, jako je například příklad pro skupiny prostředků. Vlastnosti, které slouží k určení rozsahu, se mohou lišit. Tyto scénáře jsou uvedené v článcích o úrovních nasazení. Další informace naleznete v tématu:
+Při zadávání různých oborů pro předplatné, skupinu pro správu a nasazení na úrovni tenanta použijete vnořená nasazení, jako je například příklad pro skupiny prostředků. Vlastnosti, které slouží k určení rozsahu, se mohou lišit. Tyto scénáře jsou uvedené v článcích o úrovních nasazení. Další informace naleznete v tématech:
 
 * [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md)
 * [Vytváření prostředků na úrovni skupiny pro správu](deploy-to-management-group.md)
@@ -143,7 +143,7 @@ Následující tabulka ukazuje, jestli se funkce překládají na nadřazenou ne
 | ------------- | ----- | ---------- |
 | vnořen        | vnější (výchozí) | Nadřazená skupina prostředků |
 | vnořen        | vnořen | Dílčí skupina prostředků |
-| Spojeného        | –   | Dílčí skupina prostředků |
+| Spojeného        | Není k dispozici   | Dílčí skupina prostředků |
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) ukazuje:
 

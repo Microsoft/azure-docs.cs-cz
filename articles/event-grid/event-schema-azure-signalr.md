@@ -4,10 +4,10 @@ description: Popisuje vlastnosti, které jsou k dispozici pro události služby 
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 2ac391f366c4b9a82741a1b6b3135f5d7b5fe331
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86106647"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>Azure Event Grid schéma událostí pro službu Signal
@@ -20,7 +20,7 @@ Tento článek poskytuje vlastnosti a schéma pro události služby signalizace.
 
 Služba signalizace emituje následující typy událostí:
 
-| Typ události | Description |
+| Typ události | Popis |
 | ---------- | ----------- |
 | Microsoft. SignalRService. ClientConnectionConnected | Vyvolá se, když se připojí připojení klienta. |
 | Microsoft. SignalRService. ClientConnectionDisconnected | Vyvolá se v případě, že bylo připojení klienta odpojeno. |
@@ -75,11 +75,11 @@ Událost má následující data nejvyšší úrovně:
 | Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
-| Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| subject | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| eventType | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
-| data | odkazy objektů | Data události služby signalizace. |
+| data | object | Data události služby signalizace. |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 

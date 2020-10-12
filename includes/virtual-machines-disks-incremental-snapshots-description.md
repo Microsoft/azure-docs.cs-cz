@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 4f40a821a0a639fa117dc0844146f28d887166e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87102554"
 ---
 Přírůstkové snímky jsou zálohy v čase pro spravované disky, které při pořízení sestávají pouze změny od posledního snímku. Při obnovení disku z přírůstkového snímku systém rekonstruuje celý disk, který představuje bod v čase zálohování disku při pořízení přírůstkového snímku. Tato nová funkce pro snímky spravovaných disků potenciálně umožňuje získat cenově výhodnější, protože pokud se nerozhodnete, nebudete muset celý disk ukládat na jednotlivé snímky. Stejně jako úplné snímky lze přírůstkové snímky použít buď k vytvoření úplného spravovaného disku, nebo úplného snímku.

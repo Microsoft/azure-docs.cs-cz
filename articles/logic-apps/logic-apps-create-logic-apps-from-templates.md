@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
 ms.openlocfilehash: 7eca9b4a8cf09f2f35d56dc22fc25169be192f47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87066245"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Vytváření pracovních postupů aplikací logiky z předem připravených šablon
@@ -21,7 +21,7 @@ Pokud chcete začít vytvářet pracovní postupy rychleji, Logic Apps poskytuje
 
 Tady je několik kategorií šablon:
 
-| Typ šablony | Popis | 
+| Typ šablony | Description | 
 | ------------- | ----------- | 
 | Šablony podnikového cloudu | Pro integraci Azure Blob, Dynamics CRM, Salesforce, box a zahrnutí dalších konektorů pro potřeby podnikového cloudu. Tyto šablony můžete například použít k organizování obchodních zájemců nebo zálohování dat podnikových souborů. | 
 | Osobní šablony produktivity | Zvýšení osobní produktivity nastavením každodenních připomenutí, zapnutím důležitých pracovních položek do seznamů úkolů a automatizací zdlouhavých úloh do jednoho kroku schválení uživatele. | 
@@ -34,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
 
 ## <a name="create-logic-apps-from-templates"></a>Vytvoření aplikací logiky ze šablon
 
-1. Pokud jste to ještě neudělali, přihlaste se k [Azure Portal](https://portal.azure.com "Portál Azure Portal").
+1. Pokud jste to ještě neudělali, přihlaste se k [Azure Portal](https://portal.azure.com "portál Azure").
 
 2. V hlavní nabídce Azure vyberte **vytvořit prostředek**  >  **Podniková integrace**  >  **aplikaci logiky**.
 
@@ -61,7 +61,7 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
    Jakmile Azure nasadí vaši aplikaci logiky, otevře se Návrhář pro Logic Apps se zobrazenou stránkou s úvodním videem. 
    Pod videem najdete šablony pro běžné vzory aplikací logiky. 
 
-5. Posuňte se za úvodní video a běžné aktivační události do **šablon**. Vyberte předem vytvořenou šablonu. Příklad:
+5. Posuňte se za úvodní video a běžné aktivační události do **šablon**. Vyberte předem vytvořenou šablonu. Například:
 
    ![Výběr šablony aplikace logiky](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
@@ -69,7 +69,7 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
    > Pokud chcete vytvořit aplikaci logiky od začátku, klikněte na **prázdná aplikace logiky**.
 
    Když vyberete předem vytvořenou šablonu, můžete zobrazit další informace o této šabloně. 
-   Příklad:
+   Například:
 
    ![Zvolit předem vytvořenou šablonu](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
@@ -83,7 +83,7 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
 
    * Pokud jste již nastavili tato připojení, klikněte na tlačítko **pokračovat**.
 
-   Příklad:
+   Například:
 
    ![Vytvoření připojení](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
@@ -99,18 +99,18 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
 
 ## <a name="update-logic-apps-with-templates"></a>Aktualizace Logic Apps pomocí šablon
 
-1. V [Azure Portal](https://portal.azure.com "Portál Azure Portal")vyhledejte a otevřete aplikaci logiky v návrháři aplikace logiky.
+1. V [Azure Portal](https://portal.azure.com "portál Azure")vyhledejte a otevřete aplikaci logiky v návrháři aplikace logiky.
 
-2. Na panelu nástrojů návrháře vyberte **šablony**. Tato akce zahodí všechny neuložené změny, takže se zobrazí varovná zpráva, abyste mohli potvrdit, že chcete pokračovat. Pro potvrzení klikněte na **tlačítko OK**. Příklad:
+2. Na panelu nástrojů návrháře vyberte **šablony**. Tato akce zahodí všechny neuložené změny, takže se zobrazí varovná zpráva, abyste mohli potvrdit, že chcete pokračovat. Pro potvrzení klikněte na **tlačítko OK**. Například:
 
    ![Zvolit šablony](./media/logic-apps-create-logic-apps-from-templates/logic-app-update-existing-with-template.png)
 
-3. Posuňte se za úvodní video a běžné aktivační události do **šablon**. Vyberte předem vytvořenou šablonu. Příklad:
+3. Posuňte se za úvodní video a běžné aktivační události do **šablon**. Vyberte předem vytvořenou šablonu. Například:
 
    ![Výběr šablony aplikace logiky](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
    Když vyberete předem vytvořenou šablonu, můžete zobrazit další informace o této šabloně. 
-   Příklad:
+   Například:
 
    ![Zvolit předem vytvořenou šablonu](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
@@ -144,7 +144,7 @@ Na panelu nástrojů návrháře zvolte **Uložit**.
 
 ![Uložení a publikování aplikace logiky](./media/logic-apps-create-logic-apps-from-templates/logic-app-save.png)  
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
 * Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).

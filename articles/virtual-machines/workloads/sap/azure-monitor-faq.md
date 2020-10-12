@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.openlocfilehash: f70aa684a089e0f21cb50932e212b71f77df0e01
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987239"
 ---
 # <a name="azure-monitor-for-sap-solutions-faq-preview"></a>Nejčastější dotazy týkající se řešení Azure monitor pro SAP (Preview)
@@ -72,7 +72,7 @@ Verze Preview jsou vyloučené ze smluv o úrovni služeb. Přečtěte si celý 
 V tuto chvíli můžete monitorovat databázi HANA, podkladovou infrastrukturu, cluster s vysokou dostupností a Microsoft SQL Server ve verzi Public Preview.  
 
  - **Nahrazuje tato služba službu SAP Solution Manager?**  
-No. Zákazníci si pořád můžou používat SAP Solution Manager pro obchodní procesy monitoring.  
+Ne. Zákazníci si pořád můžou používat SAP Solution Manager pro obchodní procesy monitoring.  
 
  - **Jaká je hodnota této služby v rámci tradičních řešení, jako je SAP HANA řídicí panel/Studio?**  
 Azure Monitor pro řešení SAP není specifická pro databázi HANA. Azure Monitor pro řešení SAP podporuje také AnyDB.  

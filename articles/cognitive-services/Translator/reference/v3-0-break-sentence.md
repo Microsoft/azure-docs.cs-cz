@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
 ms.openlocfilehash: 340b0ed02821fb98f271539ac39e0ccad8581082
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87903999"
 ---
 # <a name="translator-30-breaksentence"></a>Překladatel 3,0: BreakSentence
@@ -33,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 Parametry žádosti předané řetězci dotazu jsou:
 
-| Parametr dotazu | Popis |
+| Parametr dotazu | Description |
 | -------| ----------- |
 | verze-api <img width=200/>   | **Požadovaný parametr dotazu**.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0` . |
 | language | **Volitelný parametr dotazu**.<br/>Značka jazyka identifikující jazyk vstupního textu. Pokud není zadán kód, použije se automatické rozpoznávání jazyka. |
@@ -41,7 +41,7 @@ Parametry žádosti předané řetězci dotazu jsou:
 
 Hlavičky požadavku zahrnují:
 
-| Hlavičky | Popis |
+| Hlavičky | Description |
 | ------- | ----------- |
 | Ověřovací hlavičky (y) <img width=200/>  | **Požadovaná hlavička žádosti**<br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>. |
 | Typ obsahu | **Požadovaná hlavička žádosti**<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json` . |
@@ -97,7 +97,7 @@ Příklad odpovědi JSON:
 
 <table width="100%">
   <th width="20%">Hlavičky</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>X-RequestId</td>
     <td>Hodnota, kterou služba vygenerovala k identifikaci požadavku. Používá se pro účely řešení potíží.</td>
@@ -110,7 +110,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
 
 <table width="100%">
   <th width="20%">Stavový kód</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>Úspěch.</td>

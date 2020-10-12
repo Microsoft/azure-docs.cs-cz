@@ -1,6 +1,6 @@
 ---
-title: Ukázka v paměti
-description: Vyzkoušejte Azure SQL Database technologie v paměti pomocí ukázky OLTP a columnstore.
+title: Ukázka In-Memory
+description: Vyzkoušejte Azure SQL Database In-Memory technologie pomocí OLTP a columnstore Sample.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,23 +12,23 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 2829b1c71aebcc97452fc658e6509e4fae42da8c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91616801"
 ---
-# <a name="in-memory-sample"></a>Ukázka v paměti
+# <a name="in-memory-sample"></a>Ukázka In-Memory
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-Technologie v paměti v Azure SQL Database umožňují zvýšit výkon aplikace a potenciálně snížit náklady na vaši databázi. Pomocí technologií v paměti v Azure SQL Database můžete dosáhnout zlepšení výkonu s různými úlohami.
+Technologie In-Memory v Azure SQL Database umožňují zvýšit výkon aplikace a potenciálně snížit náklady na vaši databázi. Pomocí In-Memory technologií v Azure SQL Database můžete dosáhnout zlepšení výkonu s různými úlohami.
 
-V tomto článku se zobrazí dvě ukázky, které ilustrují použití OLTP v paměti a také indexy columnstore v Azure SQL Database.
+V tomto článku se zobrazí dvě ukázky, které ilustrují použití In-Memory OLTP a také indexy columnstore v Azure SQL Database.
 
 Další informace naleznete v tématech:
 
 - [Přehled OLTP v paměti a scénáře použití](/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios) (zahrnuje odkazy na případové studie zákazníků a informace o tom, jak začít)
-- [Dokumentace k OLTP v paměti](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
+- [Dokumentace pro In-Memory OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 - [Průvodce indexy columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview)
 - Hybridní transakční/analytické zpracování (HTAP), označované také jako [provozní analýza v reálném čase](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
 
@@ -36,11 +36,11 @@ Další informace naleznete v tématech:
 
 &nbsp;
 
-## <a name="1-install-the-in-memory-oltp-sample"></a>1. instalace ukázky OLTP v paměti
+## <a name="1-install-the-in-memory-oltp-sample"></a>1. instalace ukázky In-Memory OLTP
 
-Ukázkovou databázi AdventureWorksLT můžete vytvořit několika kliknutími v [Azure Portal](https://portal.azure.com/). Pak kroky v této části vysvětlují, jak můžete rozšířit vaši databázi AdventureWorksLT pomocí objektů OLTP v paměti a předvést výkonnostní výhody.
+Ukázkovou databázi AdventureWorksLT můžete vytvořit několika kliknutími v [Azure Portal](https://portal.azure.com/). Kroky v této části vysvětlují, jak můžete rozšířit databázi AdventureWorksLT pomocí In-Memory objektů OLTP a předvést výkonnostní výhody.
 
-Další zjednodušený, ale vizuální odvolání výkonu pro OLTP v paměti, najdete v těchto tématech:
+Další zjednodušený, ale vizuální opravení výkonu pro In-Memory OLTP, najdete v tématech:
 
 - Verze: [In-Memory-OLTP-demo-v 1.0](https://github.com/Microsoft/sql-server-samples/releases/tag/in-memory-oltp-demo-v1.0)
 - Zdrojový kód: [In-Memory-OLTP-demo-Source-Code](https://github.com/microsoft/sql-server-samples/tree/master/samples/features/in-memory-database)
@@ -51,7 +51,7 @@ Další zjednodušený, ale vizuální odvolání výkonu pro OLTP v paměti, na
 
 2. Připojte se k databázi pomocí SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx).
 
-3. Zkopírujte [skript Transact-SQL OLTP v paměti](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) do schránky. Skript T-SQL vytvoří nezbytné objekty v paměti v ukázkové databázi AdventureWorksLT, kterou jste vytvořili v kroku 1.
+3. Zkopírujte [skript Transact-SQL OLTP v paměti](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) do schránky. Skript T-SQL vytvoří potřebné objekty In-Memory v ukázkové databázi AdventureWorksLT, kterou jste vytvořili v kroku 1.
 
 4. Vložte skript T-SQL do SSMS a potom spusťte skript. `MEMORY_OPTIMIZED = ON`Klauzule CREATE TABLE příkazy jsou klíčové. Například:
 
@@ -70,15 +70,15 @@ Pokud při spuštění skriptu T-SQL dojde k chybě 40536, spusťte následujíc
 SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
-Výsledkem je **0** znamená, že v paměti není podporována, a hodnota **1** znamená, že je podporována. Pokud chcete problém diagnostikovat, ujistěte se, že je databáze na úrovni služby Premium.
+Výsledkem **0** znamená, že In-Memory nejsou podporovány a **1** znamená, že je podporována. Pokud chcete problém diagnostikovat, ujistěte se, že je databáze na úrovni služby Premium.
 
 ### <a name="about-the-created-memory-optimized-items"></a>O vytvořených paměťově optimalizovaných položkách
 
 **Tabulky**: ukázka obsahuje následující paměťově optimalizované tabulky:
 
-- Tabulky SalesLT. Product_inmem
-- Tabulky SalesLT. SalesOrderHeader_inmem
-- Tabulky SalesLT. SalesOrderDetail_inmem
+- SalesLT.Product_inmem
+- SalesLT.SalesOrderHeader_inmem
+- SalesLT.SalesOrderDetail_inmem
 - Demo. DemoSalesOrderHeaderSeed
 - Demo. DemoSalesOrderDetailSeed
 
@@ -92,7 +92,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
     WHERE is_memory_optimized = 1;
 ```
 
-**Nativně kompilovaná uložená procedura**: tabulky saleslt. usp_InsertSalesOrder_inmem můžete zkontrolovat pomocí dotazu zobrazení katalogu:
+**Nativně kompilovaná uložená procedura**: SalesLT.usp_InsertSalesOrder_inmem můžete zkontrolovat pomocí dotazu zobrazení katalogu:
 
 ```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
@@ -124,8 +124,8 @@ V této části se zobrazuje skript T-SQL, který je vložený do našeho ostres
 
 Následující skript vloží ukázkovou prodejní objednávku s pěti položkami řádků do následujících paměťově optimalizovaných *tabulek*:
 
-- Tabulky SalesLT. SalesOrderHeader_inmem
-- Tabulky SalesLT. SalesOrderDetail_inmem
+- SalesLT.SalesOrderHeader_inmem
+- SalesLT.SalesOrderDetail_inmem
 
 ```sql
 DECLARE
@@ -160,8 +160,8 @@ Na virtuálním počítači nebo na jakémkoli zvoleném hostiteli nainstalujte 
 
 Další informace naleznete v tématech:
 
-- ostress.exe diskuzi v [ukázkové databázi pro OLTP v paměti](https://msdn.microsoft.com/library/mt465764.aspx).
-- [Ukázková databáze pro OLTP v paměti](https://msdn.microsoft.com/library/mt465764.aspx)
+- ostress.exe diskuzi v [ukázkové databázi pro In-Memory OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
+- [Ukázková databáze pro In-Memory OLTP](https://msdn.microsoft.com/library/mt465764.aspx)
 - [Blog pro instalaci ostress.exe](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
 
 <!--
@@ -223,13 +223,13 @@ Po dokončení spuštění *_inmem* proveďte následující kroky pro *_ondisk*
 
 #### <a name="expected-comparison-results"></a>Očekávané výsledky porovnání
 
-Naše testy v paměti ukázaly, že výkon pro tuto úlohu zjednodušený je po **devíti časech** vylepšený a `ostress` běží na virtuálním počítači Azure ve stejné oblasti Azure jako databáze.
+Naše In-Memory testy ukázaly, že výkon v rámci této zjednodušený úlohy byl během **devíti časů** vylepšený a `ostress` běží na virtuálním počítači Azure ve stejné oblasti Azure jako databáze.
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
 &nbsp;
 
-## <a name="2-install-the-in-memory-analytics-sample"></a>2. Nainstalujte ukázku analýzy v paměti.
+## <a name="2-install-the-in-memory-analytics-sample"></a>2. Nainstalujte ukázku In-Memory Analytics.
 
 V této části porovnáte výsledky IO a STATISTICS, když používáte index columnstore oproti tradičnímu indexu b-Tree.
 
@@ -242,7 +242,7 @@ Pro analýzy v reálném čase pro OLTP úlohy je často vhodné použít neclus
    - Vyberte libovolnou úroveň služby Premium.
 
 2. Zkopírujte [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_analytics_sample.sql) do schránky.
-   - Skript T-SQL vytvoří nezbytné objekty v paměti v ukázkové databázi AdventureWorksLT, kterou jste vytvořili v kroku 1.
+   - Skript T-SQL vytvoří potřebné objekty In-Memory v ukázkové databázi AdventureWorksLT, kterou jste vytvořili v kroku 1.
    - Skript vytvoří tabulku dimenzí a dvě tabulky faktů. Do tabulek faktů se naplní 3 500 000 řádků.
    - Dokončení skriptu může trvat 15 minut.
 
@@ -250,7 +250,7 @@ Pro analýzy v reálném čase pro OLTP úlohy je často vhodné použít neclus
 
 4. Nastavte AdventureWorksLT na úroveň kompatibility 130:<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
 
-    Úroveň 130 přímo nesouvisí s funkcemi v paměti. Úroveň 130 ale obecně poskytuje rychlejší výkon dotazů než 120.
+    Úroveň 130 přímo nesouvisí s funkcemi In-Memory. Úroveň 130 ale obecně poskytuje rychlejší výkon dotazů než 120.
 
 #### <a name="key-tables-and-columnstore-indexes"></a>Klíčové tabulky a indexy columnstore
 
@@ -335,33 +335,33 @@ V databázi s cenovou úrovní P2 můžete očekávat přibližně devět časů
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Rychlý Start 1: technologie OLTP v paměti pro rychlejší výkon T-SQL](https://msdn.microsoft.com/library/mt694156.aspx)
+- [Rychlý Start 1: In-Memory OLTP technologie pro rychlejší výkon T-SQL](https://msdn.microsoft.com/library/mt694156.aspx)
 
-- [Použití OLTP v paměti v existující aplikaci Azure SQL](in-memory-oltp-configure.md)
+- [Použití In-Memory OLTP v existující aplikaci Azure SQL](in-memory-oltp-configure.md)
 
-- [Monitorování úložiště OLTP v paměti](in-memory-oltp-monitor-space.md) pro OLTP v paměti
+- [Monitorování In-Memory OLTP úložiště](in-memory-oltp-monitor-space.md) pro In-Memory OLTP
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 ### <a name="deeper-information"></a>Hlubší informace
 
-- [Přečtěte si, jak kvorum podvoje úlohy klíčové databáze při snižování DTU o 70% s OLTP v paměti v Azure SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+- [Přečtěte si, jak kvorum podvoje úlohy klíčové databáze při snižování DTU o 70% s In-Memory OLTP v Azure SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 - [OLTP v paměti v příspěvku Azure SQL Database na blogu](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
-- [Další informace o OLTP v paměti](https://msdn.microsoft.com/library/dn133186.aspx)
+- [Další informace o In-Memory OLTP](https://msdn.microsoft.com/library/dn133186.aspx)
 
 - [Další informace o indexech columnstore](https://msdn.microsoft.com/library/gg492088.aspx)
 
 - [Další informace o provozní analýze v reálném čase](https://msdn.microsoft.com/library/dn817827.aspx)
 
-- Podívejte se [na téma běžné vzorce úloh a důležité informace k migraci](https://msdn.microsoft.com/library/dn673538.aspx) (které popisují vzorce úloh, které OLTP v paměti často přináší výrazné zvýšení výkonu).
+- Podívejte [se na běžné vzory úloh a důležité informace k migraci](https://msdn.microsoft.com/library/dn673538.aspx) (které popisují vzory úloh, kde In-Memory OLTP běžně poskytuje výrazné zvýšení výkonu).
 
 #### <a name="application-design"></a>Návrh aplikací
 
 - [OLTP v paměti (optimalizace v paměti)](https://msdn.microsoft.com/library/dn133186.aspx)
 
-- [Použití OLTP v paměti v existující aplikaci Azure SQL](in-memory-oltp-configure.md)
+- [Použití In-Memory OLTP v existující aplikaci Azure SQL](in-memory-oltp-configure.md)
 
 #### <a name="tools"></a>Nástroje
 

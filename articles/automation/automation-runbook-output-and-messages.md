@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
 ms.openlocfilehash: e4be7934002730253b77b1c129165ad9f19f23b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185972"
 ---
 # <a name="monitor-runbook-output"></a>Monitorování výstupu runbooků
@@ -18,10 +18,10 @@ Většina sad Runbook Azure Automation má nějaký formu výstupu. Tento výstu
 
 Následující tabulka stručně popisuje každý datový proud s chováním v Azure Portal publikovaných runbooků a při [testování sady Runbook](./manage-runbooks.md). Výstupní datový proud je hlavní datový proud, který se používá pro komunikaci mezi sadami Runbook. Ostatní datové proudy jsou klasifikovány jako datové proudy zpráv určené k sdělování informací uživateli. 
 
-| Datový proud | Popis | Publikováno | Test |
+| Datový proud | Description | Publikováno | Test |
 |:--- |:--- |:--- |:--- |
 | Chyba |Chybová zpráva určená pro uživatele. Na rozdíl od s výjimkou, sada Runbook ve výchozím nastavení pokračuje i po chybové zprávě. |Zapsáno do historie úlohy |Zobrazuje se v podokně výstup testu. |
-| Ladění |Zprávy určené pro interaktivního uživatele. Neměl by se používat v sadách Runbook. |Nepíše se do historie úlohy. |Nezobrazuje se v podokně výstup testu. |
+| Ladit |Zprávy určené pro interaktivního uživatele. Neměl by se používat v sadách Runbook. |Nepíše se do historie úlohy. |Nezobrazuje se v podokně výstup testu. |
 | Výstup |Objekty, které mají zpracovávat jiné Runbooky. |Zapsáno do historie úlohy |Zobrazuje se v podokně výstup testu. |
 | Průběh |Záznamy automaticky generované před a po každé aktivitě v Runbooku. Runbook by se neměl pokoušet vytvořit vlastní záznamy o průběhu, protože jsou určené pro interaktivního uživatele. |Zapsáno do historie úlohy pouze v případě, že je protokolování průběhu zapnuto pro sadu Runbook |Nezobrazuje se v podokně výstup testu. |
 | Verbose |Zprávy, které poskytují obecné nebo ladicí informace. |Zapsáno do historie úlohy pouze v případě, že je pro sadu Runbook zapnuto podrobné protokolování |Zobrazuje se v podokně výstup testu pouze v případě, že `VerbosePreference` je proměnná nastavena na pokračovat v sadě Runbook. |
@@ -121,7 +121,7 @@ Druhá sada Runbook v tomto příkladu s názvem **test-ChildOutputType**jednodu
 
 První aktivita volá Runbook **AuthenticateTo-Azure** . Druhá aktivita spustí `Write-Verbose` rutinu se **zdrojem dat** nastaveným na **výstup aktivity**. Také **cesta k poli** je nastavená na **Context. Subscription. Subscription**, výstup kontextu z Runbooku **AuthenticateTo-Azure** .<br> ![Zdroj dat parametru rutiny Write-verbose](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
 
-Výsledný výstup je název předplatného.<br> ![Výsledky Runbooku test-ChildOutputType](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
+Výsledný výstup je název předplatného.<br> ![Výsledky Test-ChildOutputType sady Runbook](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
 ## <a name="monitor-message-streams"></a>Monitorování datových proudů zpráv
 

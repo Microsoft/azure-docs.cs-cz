@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
 ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87069141"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Řešení potíží při spuštění – došlo k chybě čtení z disku
@@ -91,7 +91,7 @@ Virtuální počítače 1. generace by měly nejdřív ověřit, že oddíl s op
 
    `chkdsk <DRIVE LETTER>: /f`
 
-   Přidání možnosti příkazu **/f** vyřeší všechny chyby na disku. Nezapomeňte **>písmeno jednotky<** nahradit písmenem připojeného virtuálního pevného disku s operačním systémem.
+   Přidání možnosti příkazu **/f** vyřeší všechny chyby na disku. Nezapomeňte ** >písmeno jednotky< ** nahradit písmenem připojeného virtuálního pevného disku s operačním systémem.
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>Povolení kolekce sériové konzoly a výpisu paměti
 

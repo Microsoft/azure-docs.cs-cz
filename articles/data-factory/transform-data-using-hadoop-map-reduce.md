@@ -11,10 +11,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: 48afff71d4b5241ede1783a270658e56e4b8c242
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83849242"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Hadoop MapReduce v Azure Data Factory
@@ -62,10 +62,10 @@ Podrobnosti o spouštění skriptů pro vepřové zobrazení a podregistr v clus
 
 ## <a name="syntax-details"></a>Podrobnosti syntaxe
 
-| Vlastnost          | Popis                              | Vyžadováno |
+| Vlastnost          | Popis                              | Povinné |
 | ----------------- | ---------------------------------------- | -------- |
 | name              | Název aktivity                     | Yes      |
-| description       | Text popisující, k čemu se aktivita používá | No       |
+| Popis       | Text popisující, k čemu se aktivita používá | No       |
 | typ              | Pro aktivitu MapReduce je typ aktivity HDinsightMapReduce. | Yes      |
 | linkedServiceName | Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Yes      |
 | NázevTřídy         | Název třídy, která se má provést         | Yes      |

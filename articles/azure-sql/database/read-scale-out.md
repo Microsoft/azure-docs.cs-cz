@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: bd393a897052dd0bd49851eee424c99ad1fcfb1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319422"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Přesměrování zatížení dotazů jen pro čtení pomocí replik jen pro čtení
@@ -89,14 +89,14 @@ Běžně používaná zobrazení:
 |:---|:---|
 |[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Poskytuje metriky využití prostředků za poslední hodinu, včetně CPU, v/v v/v, a využití zápisu do protokolu vzhledem k omezením cíle služby.|
 |[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Poskytuje agregované statistiky čekání pro instanci databázového stroje. |
-|[sys. dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Poskytuje stav repliky a statistiku synchronizace. Velikost fronty znovu a rychlost opakování slouží jako indikátory latence dat v replice jen pro čtení. |
-|[sys. dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Poskytuje čítače výkonu databázového stroje.|
+|[sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Poskytuje stav repliky a statistiku synchronizace. Velikost fronty znovu a rychlost opakování slouží jako indikátory latence dat v replice jen pro čtení. |
+|[sys.dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Poskytuje čítače výkonu databázového stroje.|
 |[sys.dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Poskytuje statistiku spouštění podle dotazů, jako je počet spuštění, použitý čas procesoru atd.|
-|[sys. dm_exec_query_plan ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Poskytuje plány dotazů v mezipaměti. |
-|[sys. dm_exec_sql_text ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Poskytuje text dotazu pro plán dotazů v mezipaměti.|
-|[sys. dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Poskytuje dotaz v reálném čase během provádění dotazů.|
-|[sys. dm_exec_query_plan_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Poskytuje poslední známý skutečný plán spuštění včetně statistik za běhu pro dotaz.|
-|[sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| Poskytuje statistiku vstupně-výstupních operací úložiště, propustnosti a latence pro všechny soubory databáze. |
+|[sys.dm_exec_query_plan ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Poskytuje plány dotazů v mezipaměti. |
+|[sys.dm_exec_sql_text ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Poskytuje text dotazu pro plán dotazů v mezipaměti.|
+|[sys.dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Poskytuje dotaz v reálném čase během provádění dotazů.|
+|[sys.dm_exec_query_plan_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Poskytuje poslední známý skutečný plán spuštění včetně statistik za běhu pro dotaz.|
+|[sys.dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| Poskytuje statistiku vstupně-výstupních operací úložiště, propustnosti a latence pro všechny soubory databáze. |
 
 > [!NOTE]
 > `sys.resource_stats`Zobrazení dynamické správy a `sys.elastic_pool_resource_stats` v logické hlavní databázi vrátí data o využití prostředků primární repliky.
@@ -123,7 +123,7 @@ Pokud dlouhotrvající dotaz na repliku, která je jen pro čtení, způsobuje t
 > Pokud se zobrazí chyba 3961 nebo chyba 1219 při spouštění dotazů proti replice jen pro čtení, opakujte dotaz.
 
 > [!TIP]
-> V úrovních služby Premium a Pro důležité obchodní informace se při připojení k replice jen pro čtení `redo_queue_size` `redo_rate` používají sloupce a v [Sys. dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV k monitorování procesu synchronizace dat, který slouží jako indikátory latence dat v replice jen pro čtení.
+> V úrovních služby Premium a Pro důležité obchodní informace jsou při připojení k replice jen pro čtení `redo_queue_size` `redo_rate` použity sloupce a v [Sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV k monitorování procesu synchronizace dat, který slouží jako indikátory latence dat v replice jen pro čtení.
 > 
 
 ## <a name="enable-and-disable-read-scale-out"></a>Povolit a zakázat horizontální navýšení kapacity čtení

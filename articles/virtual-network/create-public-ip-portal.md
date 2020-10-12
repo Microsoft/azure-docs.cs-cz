@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
 ms.openlocfilehash: 49a89ee90d28c9c7a3f59424b773ee0f221381e4
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89301947"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Rychlý Start: vytvoření veřejné IP adresy pomocí Azure Portal
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak vytvořit prostředek veřejné IP adresy pomo
 
 Pomocí následujících kroků vytvořte standardní veřejnou IP adresu redundantní v zóně s názvem **myStandardZRPublicIP**.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Vyberte **Vytvořit prostředek**. 
 3. Do vyhledávacího pole zadejte *veřejnou IP adresu*.
 4. Ve výsledcích hledání vyberte **Veřejná IP adresa**. Potom na stránce **Veřejná IP adresa** vyberte **vytvořit**.
@@ -40,7 +40,7 @@ Pomocí následujících kroků vytvořte standardní veřejnou IP adresu redund
     | Přiřazení IP adresy   | Všimněte si, že tato možnost bude uzamčena jako statická.                                        |
     | Časový limit nečinnosti (minuty)  | Ponechte hodnotu 4.        |
     | Popisek názvu DNS          | Ponechte hodnotu prázdnou.    |
-    | Předplatné            | Vyberte předplatné.   |
+    | Předplatné            | Vyberte své předplatné.   |
     | Skupina prostředků          | Vyberte **vytvořit nový** , zadejte myResourceGroup a pak vyberte **OK** . |
     | Umístění                | Vyberte **východní USA 2**      |
     | Zóna dostupnosti       | Vyberte **zónu – redundantní** nebo vyberte konkrétní zónu (viz poznámka níže). |
@@ -51,7 +51,7 @@ Všimněte si, že se jedná o platné výběry pouze v oblastech s [zóny dostu
 
 Pomocí následujících kroků vytvořte standardní veřejnou IP adresu jako prostředek mimo oblast s názvem **myStandardPublicIP**.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Vyberte **Vytvořit prostředek**. 
 3. Do vyhledávacího pole zadejte *veřejnou IP adresu*.
 4. Ve výsledcích hledání vyberte **Veřejná IP adresa**. Potom na stránce **Veřejná IP adresa** vyberte **vytvořit**.
@@ -65,7 +65,7 @@ Pomocí následujících kroků vytvořte standardní veřejnou IP adresu jako p
     | Přiřazení IP adresy   | Všimněte si, že tato možnost bude uzamčena jako statická.                                        |
     | Časový limit nečinnosti (minuty)  | Ponechte hodnotu 4.        |
     | Popisek názvu DNS          | Ponechte hodnotu prázdnou.    |
-    | Předplatné            | Vyberte předplatné.   |
+    | Předplatné            | Vyberte své předplatné.   |
     | Skupina prostředků          | Vyberte **vytvořit nový** , zadejte myResourceGroup a pak vyberte **OK** . |
     | Umístění                | Vyberte **východní USA 2**      |
     | Zóna dostupnosti       | Vyberte možnost **žádná zóna** (a viz poznámka níže). |
@@ -76,7 +76,7 @@ Tento výběr je platný ve všech oblastech a je výchozí volbou pro standardn
 
 Pomocí následujících kroků vytvořte základní statickou veřejnou IP adresu s názvem **myBasicPublicIP**.  Základní veřejné IP adresy nemají koncept zón dostupnosti.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Vyberte **Vytvořit prostředek**. 
 3. Do vyhledávacího pole zadejte *veřejnou IP adresu*.
 4. Ve výsledcích hledání vyberte **Veřejná IP adresa**. Potom na stránce **Veřejná IP adresa** vyberte **vytvořit**.
@@ -90,7 +90,7 @@ Pomocí následujících kroků vytvořte základní statickou veřejnou IP adre
     | Přiřazení IP adresy   | Zvolit **statickou** (viz poznámka níže)                                     |
     | Časový limit nečinnosti (minuty)  | Ponechte hodnotu 4.        |
     | Popisek názvu DNS          | Ponechte hodnotu prázdnou.    |
-    | Předplatné            | Vyberte předplatné.   |
+    | Předplatné            | Vyberte své předplatné.   |
     | Skupina prostředků          | Vyberte **vytvořit nový** , zadejte myResourceGroup a pak vyberte **OK** . |
     | Umístění                | Vyberte **východní USA 2**      |
 

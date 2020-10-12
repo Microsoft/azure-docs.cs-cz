@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 339273c091a1bcfc4f2de66ef2f79ea8cebbc49b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86026045"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Ukázková data v tabulkách Azure HDInsight Hive
@@ -31,9 +31,9 @@ Pokud je datová sada, kterou plánujete analyzovat, rozsáhlá, je obvykle vhod
 Tento úkol vzorkování je krok v rámci [vědeckého zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="how-to-submit-hive-queries"></a>Odeslání dotazů na podregistr
-Dotazy na podregistr je možné odeslat z konzoly příkazového řádku Hadoop do hlavního uzlu clusteru Hadoop.  Přihlaste se k hlavnímu uzlu clusteru Hadoop, otevřete konzolu příkazového řádku Hadoop a z ní odešlete dotazy na podregistr. Pokyny k odesílání dotazů na podregistr v konzole příkazového řádku Hadoop najdete v tématu [odeslání dotazů na podregistr](move-hive-tables.md#submit).
+Dotazy na podregistr je možné odeslat z konzoly Hadoop Command-Line v hlavním uzlu clusteru Hadoop.  Přihlaste se k hlavnímu uzlu clusteru Hadoop, otevřete konzolu Hadoop Command-Line a z ní odešlete dotazy na podregistr. Pokyny k odesílání dotazů na podregistr v konzole Command-Line Hadoop najdete v tématu [odeslání dotazů na podregistr](move-hive-tables.md#submit).
 
-## <a name="uniform-random-sampling"></a><a name="uniform"></a>Rovnoměrné náhodné vzorkování
+## <a name="uniform-random-sampling"></a><a name="uniform"></a> Rovnoměrné náhodné vzorkování
 Jednotný náhodný odběr znamená, že každý řádek v datové sadě má stejnou pravděpodobnost vzorkování. Může být implementováno přidáním dalšího pole Rand () do datové sady v rámci vnitřního dotazu Select a v vnějším dotazu Select, který je podmínkou pro toto náhodné pole.
 
 Zde je příklad dotazu:
@@ -53,7 +53,7 @@ where samplekey<='${hiveconf:sampleRate}'
 
 Zde `<sample rate, 0-1>` Určuje poměr záznamů, které uživatelé chtějí vzorkovat.
 
-## <a name="random-sampling-by-groups"></a><a name="group"></a>Náhodné vzorkování podle skupin
+## <a name="random-sampling-by-groups"></a><a name="group"></a> Náhodné vzorkování podle skupin
 Při vzorkování dat kategorií můžete chtít zahrnout nebo vyloučit všechny instance pro určitou hodnotu proměnné kategorií. Tento druh vzorkování se nazývá "vzorkování podle skupin". Například pokud máte kategorií proměnnou "State" (*stav*), která má hodnoty jako NY, MA, CA, NEWARKU a PA, budete chtít záznamy z každého stavu společně bez ohledu na to, zda jsou vzorky nebo nikoli.
 
 Tady je příklad dotazu, který ukázky seskupují:

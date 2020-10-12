@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: 8e02a47cd6ae6e4883b5113b07d4049cd723232d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86250188"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Postup zabezpečení back-endových služeb s využitím ověřování pomocí klientských certifikátů ve službě Azure API Management
@@ -26,7 +26,7 @@ API Management umožňuje zabezpečený přístup k back-endové službě rozhra
 
 Informace o správě certifikátů pomocí REST API API Management najdete v tématu věnovaném <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">certifikační entitě Azure API Management REST API</a>.
 
-## <a name="prerequisites"></a><a name="prerequisites"> </a>Předpoklady
+## <a name="prerequisites"></a><a name="prerequisites"> </a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -46,7 +46,7 @@ Pomocí následujících kroků Nahrajte nový certifikát klienta. Pokud jste i
 3. Klikněte na tlačítko **+Přidat**.
     ![Přidat klientské certifikáty](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. Vyhledejte certifikát a zadejte jeho ID a heslo.
-5. Klikněte na **Create** (Vytvořit).
+5. Klikněte na **Vytvořit**.
 
 > [!NOTE]
 > Certifikát musí být ve formátu **. pfx** . Certifikáty podepsané svým držitelem jsou povoleny.
@@ -75,7 +75,7 @@ Pokud je certifikát používán rozhraním API, zobrazí se obrazovka s upozorn
 3. Změňte **přihlašovací údaje brány** na **certifikát klienta** a vyberte svůj certifikát z rozevíracího seznamu.
     ![Povolit klientské certifikáty](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
-4. Klikněte na **Save** (Uložit).
+4. Klikněte na **Uložit**.
 
 > [!WARNING]
 > Tato změna je okamžitě účinná a volání do provozu tohoto rozhraní API použijí certifikát k ověření na back-end serveru.
