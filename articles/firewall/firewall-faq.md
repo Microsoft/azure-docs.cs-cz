@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
 ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88611173"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy ke službě Azure Firewall
@@ -62,7 +62,7 @@ Firewall webových aplikací (WAF) je funkce Application Gateway, která poskytu
 
 ## <a name="what-is-the-difference-between-network-security-groups-nsgs-and-azure-firewall"></a>Jaký je rozdíl mezi skupinami zabezpečení sítě (skupin zabezpečení sítě) a Azure Firewall?
 
-Služba Azure Firewall doplňuje funkce skupiny zabezpečení sítě. Společně poskytují lepší "zabezpečení sítě". Skupiny zabezpečení sítě poskytují distribuované filtrování přenosů síťové vrstvy, které umožňuje omezit provoz na prostředky v rámci virtuálních sítí v každém předplatném. Azure Firewall je plně stavová, centralizovaná síťová brána firewall jako služba, která zajišťuje ochranu na úrovni sítě a aplikace napříč různými předplatnými a virtuálními sítěmi.
+Služba Azure Firewall doplňuje funkce skupiny zabezpečení sítě. Společně poskytují lepší "zabezpečení sítě". Skupiny zabezpečení sítě poskytují filtrování provozu na distribuované síťové vrstvě k omezení provozu na prostředky ve virtuálních sítích v každém předplatném. Azure Firewall je plně stavová, centralizovaná síťová brána firewall jako služba, která zajišťuje ochranu na úrovni sítě a aplikace napříč různými předplatnými a virtuálními sítěmi.
 
 ## <a name="are-network-security-groups-nsgs-supported-on-the-azurefirewallsubnet"></a>Jsou v AzureFirewallSubnet podporovány skupiny zabezpečení sítě (skupin zabezpečení sítě)?
 
@@ -80,7 +80,7 @@ Viz [ceny Azure firewall](https://azure.microsoft.com/pricing/details/azure-fire
 
 Můžete použít metody *navrácení* a *přidělení* Azure PowerShell.
 
-Příklad:
+Například:
 
 ```azurepowershell
 # Stop an existing firewall

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: dffa059b18e159d04b5e3bb8555dabf801ede692
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85511799"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>Převzetí služeb při selhání a zotavení po havárii pro zařízení StorSimple řady 8000
@@ -55,7 +55,7 @@ Předpokládejme, že existují dvě zásady zálohování, *defaultPol* a *cust
 
 V takovém případě StorSimple priorit pro konzistenci havárií a používá *customPol* , protože má více svazků. Poslední záloha z těchto zásad slouží k obnovení dat. Další informace o tom, jak vytvářet a spravovat zásady zálohování, najdete v tématu [použití služby StorSimple Device Manager ke správě zásad zálohování](storsimple-8000-manage-backup-policies-u2.md).
 
-## <a name="common-considerations-for-device-failover"></a>Běžné požadavky pro převzetí služeb zařízení při selhání
+## <a name="common-considerations-for-device-failover"></a>Běžné důležité informace o převzetí služeb při selhání zařízení
 
 Před převzetím služeb při selhání zařízení si přečtěte následující informace:
 

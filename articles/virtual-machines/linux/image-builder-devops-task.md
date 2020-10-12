@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.openlocfilehash: 9f948fcc8ad36f8bef8b1ab6a1b74131faea9bd3
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068162"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Úloha DevOps služby Azure image Builder
@@ -65,7 +65,7 @@ Nastavte následující vlastnosti úlohy:
 
 V rozevírací nabídce vyberte předplatné, ve kterém chcete tvůrce imagí spustit. Použijte stejné předplatné, ve kterém jsou umístěné zdrojové image a kde se mají distribuovat obrázky. Musíte autorizovat oprávnění přispěvatele image Builder k předplatnému nebo skupině prostředků.
 
-### <a name="resource-group"></a>Skupina prostředků
+### <a name="resource-group"></a>Resource Group
 
 Použijte skupinu prostředků, do které se uloží artefakt šablony dočasné image. Při vytváření artefaktu šablony se vytvoří další dočasná skupina prostředků tvůrce imagí `IT_<DestinationResourceGroup>_<TemplateName>_guid` . Dočasná skupina prostředků ukládá metadata imagí, například skripty. Na konci úlohy se odstraní artefakt šablony imagí a dočasná skupina prostředků tvůrce imagí.
  
@@ -139,12 +139,12 @@ Vyberte tlačítko **cesta sestavení** a zvolte složku sestavení, kterou chce
 
 Následující příklad vysvětluje, jak to funguje:
 
-:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Adresářová struktura znázorňující hierarchii.":::
+:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Vyberte Přidat artefakt do kanálu vydání.":::
 
 
 * Windows – soubory existují v `C:\` . Vytvoří se adresář s názvem, `buildArtifacts` který obsahuje `webapp` adresář.
 
-* Linux – soubory existují v `/tmp` . `webapp`Vytvoří se adresář, který bude obsahovat všechny soubory a adresáře. Soubory je nutné přesunout z tohoto adresáře. V opačném případě se odstraní, protože se nachází v dočasném adresáři.
+* Linux – soubory existují v  `/tmp` . `webapp`Vytvoří se adresář, který bude obsahovat všechny soubory a adresáře. Soubory je nutné přesunout z tohoto adresáře. V opačném případě se odstraní, protože se nachází v dočasném adresáři.
 
 #### <a name="inline-customization-script"></a>Vložený skript pro přizpůsobení
 
@@ -154,7 +154,7 @@ Následující příklad vysvětluje, jak to funguje:
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
-* Linux – v systémech Linux jsou artefakty sestavení vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování odstraní obsah adresáře adresáře/TMP. Pokud chcete, aby artefakty v imagi existovaly, musíte vytvořit další adresář a zkopírovat je přes.  Příklad:
+* Linux – v systémech Linux jsou artefakty sestavení vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování odstraní obsah adresáře adresáře/TMP. Pokud chcete, aby artefakty v imagi existovaly, musíte vytvořit další adresář a zkopírovat je přes.  Například:
 
     ```bash
     sudo mkdir /lib/buildArtifacts
@@ -176,7 +176,7 @@ Následující příklad vysvětluje, jak to funguje:
 > Nástroj image Builder automaticky neodebere artefakty sestavení, důrazně doporučujeme, abyste vždy měli kód pro odebrání artefaktů sestavení.
 > 
 
-* Windows – nástroj image Builder nasadí soubory do `c:\buildArtifacts` adresáře. Adresář je trvalý, je nutné odebrat adresář. Můžete ho odebrat ve skriptu, který spustíte. Příklad:
+* Windows – nástroj image Builder nasadí soubory do `c:\buildArtifacts` adresáře. Adresář je trvalý, je nutné odebrat adresář. Můžete ho odebrat ve skriptu, který spustíte. Například:
 
     ```PowerShell
     # Clean up buildArtifacts directory
@@ -186,7 +186,7 @@ Následující příklad vysvětluje, jak to funguje:
     Remove-Item -Path "C:\buildArtifacts" -Force 
     ```
     
-* Linux – artefakty sestavení jsou vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování `/tmp` odstraní obsah adresáře. Doporučujeme, abyste měli kód pro odebrání obsahu a nespoléhá se na operační systém, aby se obsah odebral. Příklad:
+* Linux – artefakty sestavení jsou vloženy do `/tmp` adresáře. V mnoha systémech Linux OSs se ale při restartování `/tmp` odstraní obsah adresáře. Doporučujeme, abyste měli kód pro odebrání obsahu a nespoléhá se na operační systém, aby se obsah odebral. Například:
 
     ```bash
     sudo rm -R "/tmp/AppsAndImageBuilderLinux"
@@ -298,7 +298,7 @@ Publikování/nabídka/SKU/verze zdrojové image Marketplace:
 Identifikátor URI image – ResourceID distribuované Image:
 * $ (imageUri)
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="can-i-use-an-existing-image-template-i-have-already-created-outside-of-devops"></a>Můžu použít existující šablonu obrázku, kterou už jste vytvořili, mimo DevOps?
 
@@ -312,9 +312,9 @@ Ne. Použije se jedinečný název šablony, který se pak odstraní.
 
 Pokud dojde k selhání sestavení, úloha DevOps neodstraní pracovní skupinu prostředků. Můžete získat přístup k pracovní skupině prostředků, která obsahuje protokol vlastního nastavení sestavení.
 
-V protokolu DevOps se zobrazí chyba pro úlohu tvůrce imagí virtuálních počítačů a podívejte se na umístění přizpůsobení. log. Příklad:
+V protokolu DevOps se zobrazí chyba pro úlohu tvůrce imagí virtuálních počítačů a podívejte se na umístění přizpůsobení. log. Například:
 
-:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Ukázková chyba úlohy DevOps, která zobrazuje chybu.":::
+:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Vyberte Přidat artefakt do kanálu vydání.":::
 
 Další informace o řešení potíží najdete v tématu [řešení potíží se službou Azure image Builder](image-builder-troubleshoot.md). 
 

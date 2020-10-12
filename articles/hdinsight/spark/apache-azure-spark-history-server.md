@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
 ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86079288"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Použití rozšířených funkcí serveru historie Apache Spark k ladění a diagnostice aplikací Spark
@@ -26,7 +26,7 @@ Server historie Spark je webové uživatelské rozhraní pro kompletní a běž�
 ### <a name="open-the-spark-history-server-web-ui-from-the-azure-portal"></a>Otevřete webové uživatelské rozhraní serveru historie Sparku z Azure Portal
 
 1. Z [Azure Portal](https://portal.azure.com/)otevřete cluster Spark. Další informace najdete v tématech [seznam a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters).
-2. Z **řídicích panelů clusteru**vyberte možnost **Server historie Spark**. Po zobrazení výzvy zadejte přihlašovací údaje správce pro cluster Spark.
+2. Z **řídicích panelů clusteru**vyberte možnost  **Server historie Spark**. Po zobrazení výzvy zadejte přihlašovací údaje správce pro cluster Spark.
 
     ![Z Azure Portal spusťte server historie Spark.](./media/apache-azure-spark-history-server/azure-portal-dashboard-spark-history.png "Server historie Sparku")
 
@@ -97,11 +97,11 @@ Vyberte ID úlohy a potom v nabídce Nástroje vyberte **data** , aby se zobrazi
    ![Heat mapa na stránce grafu úlohy aplikace Spark &.](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
 
-    |Barva |Description |
+    |Color |Description |
     |---|---|
     |Green|Úloha se úspěšně dokončila.|
     |Oranžový|Úloha se nezdařila, ale nemá vliv na konečný výsledek úlohy. Tyto úlohy mají duplicitní nebo opakované instance, které mohou být později úspěšné.|
-    |Blue|Úloha je spuštěna.|
+    |Modrý|Úloha je spuštěna.|
     |White|Úloha čeká na spuštění, nebo byla fáze přeskočena.|
     |Červený|Úloha se nezdařila.|
 
@@ -201,7 +201,7 @@ Vyberte ikonu barvy a vyberte nebo zrušte výběr odpovídajícího obsahu ve v
 
  ![Vyberte graf na kartě analýza využití prováděcího modulu.](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="how-do-i-revert-to-the-community-version"></a>Návody se vrátit k verzi komunity?
 

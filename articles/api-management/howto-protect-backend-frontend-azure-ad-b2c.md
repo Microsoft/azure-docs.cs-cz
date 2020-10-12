@@ -15,10 +15,10 @@ ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
 ms.openlocfilehash: 60177dd00dc6326aae4cfdc0b658c85f2635f8c0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86253690"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Ochrana SPA back-endu pomocí OAuth 2,0, Azure Active Directory B2C a Azure API Management
@@ -31,7 +31,7 @@ Zjistíme, jak se dá API Management použít ve zjednodušeném scénáři s Az
 
 Pro důkladnou obranu pak používáme EasyAuth k ověření tokenu v back-endu rozhraní API.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete postupovat podle kroků v tomto článku, musíte mít:
 * Účet úložiště Azure (StorageV2) Pro obecné účely v2 pro hostování jednostránkové aplikace front-end JS
 * Instance Azure API Management 
@@ -99,7 +99,7 @@ Otevřete okno Azure AD B2C na portálu a proveďte následující kroky.
 
 ## <a name="build-the-function-api"></a>Sestavení rozhraní API funkcí
 1. V Azure Portal přepněte zpátky na standardního tenanta Azure AD, abychom mohli znovu nakonfigurovat položky v předplatném. 
-1. V okně funkce aplikace Azure Portal otevřete prázdnou aplikaci funkcí a pak pomocí rychlého startu vytvořte novou funkci Webhooku a rozhraní API v portálu.
+1. V okně funkce aplikace v Azure Portal otevřete prázdnou aplikaci funkcí a pak vytvořte novou In-Portal funkci Webhook + API pomocí rychlého startu.
 1. Vložte ukázkový kód níže do souboru run. csx, který se zobrazí v existujícím kódu.
 
    ```csharp

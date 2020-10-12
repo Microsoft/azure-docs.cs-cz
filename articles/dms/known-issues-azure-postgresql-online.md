@@ -15,10 +15,10 @@ ms.custom:
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 2d268c5ced0d427216ce4f6a7e9c97c6b5b8b0f4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330311"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>Známé problémy/omezení migrace pro online migrace z PostgreSQL do Azure DB pro PostgreSQL
@@ -44,7 +44,7 @@ Známé problémy a omezení související s online migracemi z PostgreSQL do Az
 
 - Uživatel musí mít roli replikace na serveru, který je hostitelem zdrojové databáze.
 - Zdrojové a cílové schéma databáze se musí shodovat.
-- Schéma v cílovém Azure Database for PostgreSQL-jednom serveru nesmí mít cizí klíče. K vyřazení cizích klíčů použijte následující dotaz:
+- Schéma v cílovém serveru Azure Database for PostgreSQL-Single nesmí obsahovat cizí klíče. K vyřazení cizích klíčů použijte následující dotaz:
 
     ```
                                 SELECT Queries.tablename
@@ -75,7 +75,7 @@ Známé problémy a omezení související s online migracemi z PostgreSQL do Az
 
     Spusťte skript pro odstranění cizího klíče (druhý sloupec) ve výsledku dotazu odstraňte cizí klíč.
 
-- Schéma v cílovém Azure Database for PostgreSQL – jeden server nesmí obsahovat žádné triggery. K zakázání triggerů v cílové databázi použijte následující postup:
+- Schéma v cílovém serveru Azure Database for PostgreSQL-Single nesmí obsahovat žádné triggery. K zakázání triggerů v cílové databázi použijte následující postup:
 
      ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';

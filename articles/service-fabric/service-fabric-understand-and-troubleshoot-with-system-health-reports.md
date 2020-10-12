@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260190"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Řešení problémů pomocí sestav o stavu systému
@@ -139,7 +139,7 @@ System. hosting hlásí upozornění, pokud jsou definované kapacity uzlů v ma
 ## <a name="application-system-health-reports"></a>Sestavy o stavu systému aplikace
 System.CM, která představuje službu Správce clusterů, je autoritou, která spravuje informace o aplikaci.
 
-### <a name="state"></a>Stav
+### <a name="state"></a>State
 System.CM sestavy jako OK, když byla aplikace vytvořena nebo aktualizována. Informuje Health Store při odstranění aplikace, aby ji bylo možné odebrat z úložiště.
 
 * **SourceId**: System.cm
@@ -172,7 +172,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>Sestavy stavu systému služby
 System.FM, která představuje službu Správce převzetí služeb při selhání, je autoritou, která spravuje informace o službách.
 
-### <a name="state"></a>Stav
+### <a name="state"></a>State
 System.FM sestavy jako OK po vytvoření služby. Odstraní entitu z Health Store při odstranění služby.
 
 * **SourceId**: System.FM
@@ -214,7 +214,7 @@ HealthEvents          :
 ## <a name="partition-system-health-reports"></a>Vytváření oddílů sestav stavu systému
 System.FM, která představuje službu Správce převzetí služeb při selhání, je autoritou, která spravuje informace o oddílech služeb.
 
-### <a name="state"></a>Stav
+### <a name="state"></a>State
 System.FM sestavy jako OK, když byl oddíl vytvořen a je v pořádku. Odstraní entitu z Health Store, když se oddíl odstraní.
 
 Pokud je oddíl pod minimálním počtem replik, ohlásí chybu. Pokud oddíl není pod minimálním počtem replik, ale je pod počtem cílových replik, ohlásí upozornění. Pokud je oddíl ve ztrátě kvora, System.FM hlásí chybu.
@@ -391,7 +391,7 @@ V případě příkladu je potřeba další šetření. Prozkoumejte stav každ�
 ## <a name="replica-system-health-reports"></a>Sestavy stavu systému repliky
 **System. ra**, který představuje součást agenta rekonfigurace, je autoritou pro stav repliky.
 
-### <a name="state"></a>Stav
+### <a name="state"></a>State
 Sestavy System. RA po vytvoření repliky jsou v pořádku.
 
 * **SourceId**: System. ra
@@ -647,7 +647,7 @@ Vlastnost a text indikují, které rozhraní API bylo zablokováno. Další krok
 
 - **IStatefulServiceReplica. ChangeRole (P)**: Nejčastějším případem je, že Služba nevrátila úlohu z `RunAsync` .
 
-Další volání rozhraní API, která můžou zablokovat, jsou v rozhraní **IReplicator** . Příklad:
+Další volání rozhraní API, která můžou zablokovat, jsou v rozhraní **IReplicator** . Například:
 
 - **IReplicator. CatchupReplicaSet**: Toto upozornění indikuje jednu ze dvou věcí. Neexistují žádné nedostatečné repliky. Pokud se chcete podívat, jestli se jedná o tento případ, podívejte se na stav repliky v oddílu nebo v sestavě stavu System.FM pro zablokované překonfigurování. Nebo repliky nepotvrzující operace. Pomocí rutiny PowerShellu se `Get-ServiceFabricDeployedReplicaDetail` dá určit průběh všech replik. Problém se nachází v replikách, jejichž `LastAppliedReplicationSequenceNumber` hodnota je za hodnotou primární `CommittedSequenceNumber` .
 

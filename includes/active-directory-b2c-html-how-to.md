@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
 ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91377271"
 ---
 ## <a name="use-custom-page-content"></a>Použít vlastní obsah stránky
@@ -46,7 +46,7 @@ Místo vytvoření vlastního obsahu stránky od začátku můžete přizpůsobi
 
 Následující tabulka uvádí výchozí obsah stránky, který poskytuje Azure AD B2C. Stáhněte si soubory a používejte je jako výchozí bod pro vytváření vlastních stránek.
 
-| Výchozí stránka | Popis | ID definice obsahu<br/>(jenom vlastní zásady) |
+| Výchozí stránka | Description | ID definice obsahu<br/>(jenom vlastní zásady) |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Chybová stránka**. Tato stránka se zobrazí, pokud dojde k výjimce nebo chybě. | *rozhraní API. Chyba* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Stránka s vlastním kontrolním**výrazem. Tento soubor použijte jako obsah vlastní stránky pro přihlašovací stránku účtu sociální sítě, přihlašovací stránku místního účtu, přihlašovací stránku místního účtu, resetování hesla a další. Formulář může obsahovat různé vstupní ovládací prvky, jako je například textové pole pro zadání hesla, pole pro zadávání hesla, přepínač, rozevírací seznamy s jedním výběrem a zaškrtávací políčka vícenásobného výběru. | *API. localaccountsignin*, *API. localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasserted* |
@@ -114,7 +114,7 @@ V tomto článku používáme pro hostování našeho obsahu službu Azure Blob 
 
 Chcete-li hostovat obsah HTML v úložišti objektů blob, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V nabídce **centra** vyberte **Nový**  >  **úložiště**  >  **účet**úložiště.
 1. Vyberte **předplatné** pro účet úložiště.
 1. Vytvořte **skupinu prostředků** nebo vyberte existující.

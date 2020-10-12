@@ -13,10 +13,10 @@ ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91395885"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Úložiště dat identity pro evropské zákazníky v Azure Active Directory
@@ -36,7 +36,7 @@ Pro cloudové Multi-Factor Authentication Azure se ověřování dokončí v nej
 
 Další informace o tom, jaké informace o uživateli shromažďuje služba Azure Multi-Factor Authentication Server (MFA Server) a cloudová služba Azure MFA, najdete v článku [shromažďování uživatelských dat v azure Multi-Factor Authentication](../authentication/howto-mfa-reporting-datacollection.md).
 
-## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Jednotné přihlašování založené na heslech pro podnikové aplikace
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Jeden Sign-On pro podnikové aplikace založený na heslech
  
 Pokud zákazník vytvoří novou podnikovou aplikaci (ať už přes Galerii Azure AD nebo mimo galerii) a povolí jednotné přihlašování založené na heslech, přihlašovací adresa URL aplikace a vlastní zachytávání přihlašovacích polí se ukládají do USA. Další informace o této funkci najdete v tématu [Konfigurace jednotného přihlašování založeného na heslech](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md) .
 

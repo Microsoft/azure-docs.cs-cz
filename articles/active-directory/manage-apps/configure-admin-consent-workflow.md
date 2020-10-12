@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4871af354d68a8d6dcaf3170271959146f57cba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763614"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Konfigurace pracovního postupu pro vyjádření souhlasu správce (Preview)
@@ -123,11 +123,11 @@ Následující tabulka popisuje scénáře a hodnoty auditu, které jsou k dispo
 |Správce, který povoluje pracovní postup žádosti o souhlas        |Kontroly přístupu           |UserManagement           |Vytvořit šablonu zásad správného řízení          |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.            |
 |Správce zakázal pracovní postup žádosti o souhlas.       |Kontroly přístupu           |UserManagement           |Odstranit šablonu zásad správného řízení          |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.           |
 |Správce aktualizuje Konfigurace pracovního postupu souhlasu.        |Kontroly přístupu           |UserManagement           |Aktualizovat šablonu zásad správného řízení          |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.           |
-|Koncový uživatel, který vytváří žádost o souhlas správce pro aplikaci       |Kontroly přístupu           |Zásada         |Vytvořit žádost           |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.           |
+|Koncový uživatel, který vytváří žádost o souhlas správce pro aplikaci       |Kontroly přístupu           |Zásady         |Vytvořit žádost           |Kontext aplikace            |Aktuálně nemůžete najít kontext uživatele.           |
 |Kontroloři, kteří schvalují žádost o souhlas správce       |Kontroly přístupu           |UserManagement           |Schválit všechny požadavky v podnikovém toku          |Kontext aplikace            |V současné době nemůžete najít kontext uživatele nebo ID aplikace, kterým byl udělen souhlas správce.           |
 |Kontroloři odmítající žádost o souhlas správce       |Kontroly přístupu           |UserManagement           |Schválit všechny požadavky v podnikovém toku          |Kontext aplikace            | V současné době nemůžete najít kontext uživatele objektu actor, který zamítl žádost o souhlas správce.          |
 
-## <a name="faq"></a>Nejčastější dotazy 
+## <a name="faq"></a>Časté otázky 
 
 **Mám zapnutý tento pracovní postup, ale když testujete jeho funkčnost, nemůžete mi zobrazit, že se výzva k schválení vyžaduje?**
 

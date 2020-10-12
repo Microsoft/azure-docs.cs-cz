@@ -16,10 +16,10 @@ ms.author: kenwith
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 779d1b73f45f9be5b4bd00d546987b7c1e0b6a43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763342"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Postupy: Konfigurace šifrování tokenů SAML v Azure AD
@@ -55,7 +55,7 @@ Při konfiguraci šifrování tokenů SAML postupujte takto:
 
 Veřejný certifikát můžete přidat do konfigurace aplikace v rámci Azure Portal.
 
-1. Přejít na [Azure Portal](https://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
 1. V okně **Azure Active Directory > podnikových aplikací** vyberte aplikaci, pro kterou chcete nakonfigurovat šifrování tokenu.
 

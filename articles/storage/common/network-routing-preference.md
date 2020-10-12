@@ -11,10 +11,10 @@ ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
 ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514202"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Konfigurace předvolby směrování sítě pro Azure Storage (Preview)
@@ -80,5 +80,5 @@ Podrobnosti o cenách a fakturaci najdete v části s **cenami** v tématu [co j
 ## <a name="next-steps"></a>Další kroky
 
 - [Co je předvolby směrování (Preview)?](../../virtual-network/routing-preference-overview.md)
-- [Konfigurace Azure Storage bran firewall a virtuálních sítí](storage-network-security.md)
+- [Konfigurace bran firewall Azure Storage a virtuálních sítí](storage-network-security.md)
 - [Doporučení zabezpečení pro úložiště objektů BLOB](../blobs/security-recommendations.md)

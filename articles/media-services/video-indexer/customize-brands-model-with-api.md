@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
 ms.openlocfilehash: 5fc565ecc1b501f52e934784695594dcfef2a83a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87047294"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Přizpůsobení modelu značek pomocí rozhraní Video Indexer API
@@ -94,7 +94,7 @@ Odpověď poskytuje informace o značce, kterou jste hledali (pomocí ID značky
 ```
 
 > [!NOTE]
-> `enabled`je nastavené tak `true` , že se tato značka nachází v seznamu *Include* pro video indexer rozpoznat a že je `enabled` false znamená, že se značka nachází v seznamu *vyloučení* , takže video indexer ji nerozpozná.
+> `enabled` je nastavené tak `true` , že se tato značka nachází v seznamu *Include* pro video indexer rozpoznat a že je `enabled` false znamená, že se značka nachází v seznamu *vyloučení* , takže video indexer ji nerozpozná.
 
 ## <a name="update-a-specific-brand"></a>Aktualizace konkrétní značky
 
@@ -178,7 +178,7 @@ Odpověď ukazuje, jestli jsou značky Bingu povolené, a to podle formátu ní�
 ```
 
 > [!NOTE]
-> `useBuiltIn`nastavení na hodnotu true představuje, že jsou značky Bingu povolené. Pokud `useBuiltin` je hodnota false, značky Bingu jsou zakázané. `state`Hodnota může být ignorována, protože je zastaralá.
+> `useBuiltIn` nastavení na hodnotu true představuje, že jsou značky Bingu povolené. Pokud `useBuiltin` je hodnota false, značky Bingu jsou zakázané. `state`Hodnota může být ignorována, protože je zastaralá.
 
 ## <a name="update-brands-model-settings"></a>Aktualizace nastavení modelu značek
 

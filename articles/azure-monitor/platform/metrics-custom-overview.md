@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
 ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88639898"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Vlastní metriky v Azure Monitor (Preview)
@@ -61,7 +61,7 @@ Tato vlastnost zachycuje ID prostředku Azure, pro který je nahlášená vlastn
 > Nemůžete vygenerovat vlastní metriky s ID prostředku skupiny prostředků nebo předplatného.
 
 
-### <a name="region"></a>Region
+### <a name="region"></a>Oblast
 Tato vlastnost zachycuje, co je to oblast Azure, pro kterou je prostředek, pro který vydáváte metriky, nasazený v. Metriky musí být vygenerovány do stejného Azure Monitor oblastní koncový bod jako oblast, ve které je prostředek nasazen. Například vlastní metriky pro virtuální počítač nasazený v Západní USA musí být odesílány do koncového bodu oblastní Azure Monitor WestUS. Informace o oblasti jsou také kódované v adrese URL volání rozhraní API.
 
 > [!NOTE]  
@@ -75,7 +75,7 @@ Každý datový bod odeslaný do Azure Monitor musí být označený pomocí ča
 ### <a name="namespace"></a>Obor názvů
 Obory názvů představují způsob kategorizace nebo seskupení podobných metrik dohromady. Pomocí oborů názvů můžete dosáhnout izolace mezi skupinami metrik, které mohou shromažďovat různé přehledy nebo ukazatele výkonu. Například můžete mít obor názvů s názvem **contosomemorymetrics** , který sleduje metriky využití paměti, které profilují vaši aplikaci. Jiný obor názvů s názvem **contosoapptransaction** může sledovat všechny metriky o transakcích uživatelů ve vaší aplikaci.
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 **Název** je název metriky, která je hlášena. Obvykle je název dostatečně popisný, aby mohl lépe identifikovat, co je měřené. Příkladem je metrika, která měří počet bajtů paměti použitých na daném virtuálním počítači. Může mít název metriky, například **používané paměťové bajty**.
 
 ### <a name="dimension-keys"></a>Klíče dimenzí
@@ -177,7 +177,7 @@ Až se vlastní metriky odešlou do Azure Monitor, můžete je procházet pomoc�
 > Abyste mohli zobrazit vlastní metriky, musíte být čtenář nebo role Přispěvatel.
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Procházejte vlastní metriky prostřednictvím Azure Portal
-1.    Přejděte na [Azure Portal](https://portal.azure.com).
+1.    Přejděte na web [Azure Portal](https://portal.azure.com).
 2.    Vyberte podokno **monitorování** .
 3.    Vyberte **Metriky**.
 4.    Vyberte prostředek, pro který jste vygenerovali vlastní metriky.

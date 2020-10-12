@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87050357"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Přesunout Analysis Services do jiné oblasti
@@ -48,7 +48,7 @@ Před přesunutím serveru do jiné oblasti se doporučuje vytvořit podrobný p
 > [!NOTE]
 > Pokud k připojení ke zdrojům dat používáte místní bránu dat, musíte taky přesunout prostředek brány do oblasti cílového serveru. Další informace najdete v tématu [instalace a konfigurace místní brány dat](analysis-services-gateway-install.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Účet úložiště Azure**: vyžaduje se pro uložení záložního souboru. ABF.
 - **SQL Server Management Studio (SSMS)**: vyžaduje se pro zálohování a obnovení databází modelu.
@@ -71,7 +71,7 @@ Pokud jsou nakonfigurovaná nastavení úložiště, pomocí kroků v části [z
 
 Export šablony pomocí webu Azure Portal:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Vyberte **všechny prostředky**a potom vyberte Server Analysis Services.
 
@@ -278,7 +278,7 @@ Volitelné: po obnovení databáze modelu zpracujte model a tabulky, které aktu
 
 Volitelné: [Alm Toolkit](http://alm-toolkit.com/) je *Open Source* Nástroj pro porovnávání a správu Power BI datových sad *a* Analysis Services databází tabelárních modelů. Pomocí sady nástrojů se připojte ke zdrojovému i cílovému serveru databáze a porovnejte je. Pokud je migrace databáze úspěšná, objekty modelu budou stejnou definicí. 
 
-:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="ALM Toolkit":::
+:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="Získání sdíleného přístupového podpisu":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

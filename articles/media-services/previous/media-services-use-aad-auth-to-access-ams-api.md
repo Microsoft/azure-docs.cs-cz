@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: c0d3ece75d15ae07091f613348389f845ec74ef7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89262494"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Přístup k rozhraní API služby Azure Media Services s využitím ověřování Azure AD 
@@ -29,7 +29,7 @@ ms.locfileid: "89262494"
 
 Rozhraní Azure Media Services API je rozhraní API pro RESTful. Můžete ji použít k provádění operací s prostředky médií pomocí REST API nebo pomocí dostupných klientských sad SDK. Azure Media Services nabízí Media Services klientskou sadu SDK pro Microsoft .NET. Abyste mohli získat autorizaci pro přístup k prostředkům a rozhraní API služby Media Services, musíte se nejprve ověřit. 
 
-Media Services podporuje [ověřování založené na Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md). Služba Azure Media REST vyžaduje, aby uživatel nebo aplikace, která vytváří REST API žádosti, měla roli **Přispěvatel** nebo **vlastník** pro přístup k prostředkům. Další informace najdete v tématu [Začínáme s Access Control na základě rolí v Azure Portal](../../role-based-access-control/overview.md).  
+Media Services podporuje [ověřování založené na Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md). Služba Azure Media REST vyžaduje, aby uživatel nebo aplikace, která vytváří REST API žádosti, měla roli **Přispěvatel** nebo **vlastník** pro přístup k prostředkům. Další informace najdete v tématu [Začínáme s Role-Based Access Control v Azure Portal](../../role-based-access-control/overview.md).  
 
 Tento dokument poskytuje přehled o tom, jak přistupovat k rozhraní Media Services API pomocí rozhraní REST API nebo rozhraní .NET API.
 
@@ -147,13 +147,13 @@ Výjimka: vzdálený server vrátil chybu: (401) Neautorizováno.
 
 Řešení: aby byla žádost o Media Services REST úspěšná, volající uživatel musí být rolí přispěvatel nebo Owner v účtu Media Services, ke kterému se pokouší získat přístup. Další informace najdete v části [řízení přístupu](media-services-use-aad-auth-to-access-ams-api.md#access-control) .
 
-## <a name="resources"></a>Zdroje informací
+## <a name="resources"></a>Zdroje a prostředky
 
 Následující články jsou přehledem konceptů ověřování Azure AD: 
 
 - [Scénáře ověřování řešené službou Azure AD](../../active-directory/develop/authentication-vs-authorization.md)
 - [Přidání, aktualizace nebo odebrání aplikace v Azure AD](../../active-directory/develop/quickstart-register-app.md)
-- [Konfigurace a Správa Access Control na základě rolí pomocí prostředí PowerShell](../../role-based-access-control/role-assignments-powershell.md)
+- [Konfigurace a Správa Role-Based Access Control pomocí prostředí PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>Další kroky
 

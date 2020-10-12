@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: a2fe1b8bdc80a5265add22bd3602050034471fe2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87036433"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Řešení potíží s připojením aplikace na virtuálních počítačích v Azure
@@ -140,7 +140,7 @@ Pokud máte přístup k aplikaci, ujistěte se, že vaše zařízení Internet E
 
 Další informace najdete v tématu [Přehled monitorování sítě Azure](../../network-watcher/network-watcher-monitoring-overview.md). 
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 [Řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure se systémem Windows](troubleshoot-rdp-connection.md)
 
 [Řešení potíží s připojením Secure Shell (SSH) k virtuálnímu počítači Azure se systémem Linux](troubleshoot-ssh-connection.md)

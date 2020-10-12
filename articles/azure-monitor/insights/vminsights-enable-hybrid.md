@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: d994df4d56f4958784256ff9cd92ce1e6f3b3e50
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642159"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Povolit Azure Monitor pro virtuální počítače pro hybridní virtuální počítač
@@ -19,7 +19,7 @@ Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače p
 > [!IMPORTANT]
 > Doporučenou metodou povolení hybridních virtuálních počítačů je nejprve povolit [pro servery Azure ARC](../../azure-arc/servers/overview.md) , aby bylo možné virtuální počítače povolit Azure monitor pro virtuální počítače pomocí procesů podobných virtuálním počítačům Azure. Tento článek popisuje, jak připojit hybridní virtuální počítače, pokud se rozhodnete nepoužívat ARC Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](vminsights-configure-workspace.md).
 - V části [podporované operační systémy](vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
@@ -95,7 +95,7 @@ Soubory pro agenta závislostí jsou umístěny v následujících adresářích
 | Soubory | Umístění |
 |:--|:--|
 | Základní soubory | /opt/microsoft/dependency-agent |
-| Soubory protokolu | /var/opt/microsoft/dependency-agent/log |
+| Soubory protokolů | /var/opt/microsoft/dependency-agent/log |
 | Konfigurační soubory | /etc/opt/microsoft/dependency-agent/config |
 | Spustitelné soubory služby | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
 | Binární soubory úložiště | /var/opt/microsoft/dependency-agent/storage |

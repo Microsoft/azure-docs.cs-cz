@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
 ms.openlocfilehash: c2561a6dc3ad8c0af1c266b3822a80c76f45c174
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88639677"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Vytvoření clusterů distribuovaných výpočetních serverů v programu MATLAB na virtuálních počítačích Azure
@@ -26,7 +26,7 @@ Platforma pro [MATLAB](https://www.mathworks.com/products/matlab/) je optimalizo
 
 Pomocí virtuálních počítačů Azure můžete vytvářet clustery distribuovaných výpočetních serverů v programu MATLAB, které mají všechny stejné mechanismy, které jsou k dispozici pro odesílání paralelní práce jako místních clusterů, jako jsou interaktivní úlohy, dávkové úlohy, nezávislé úkoly a komunikační úkoly. Použití Azure ve spojení s platformou pro MATLAB přináší mnoho výhod v porovnání se zřizováním a používáním tradičního místního hardwaru: škála velikostí virtuálních počítačů, vytváření clusterů na vyžádání, takže platíte jenom za výpočetní prostředky, které používáte, a možnost testovat modely ve velkém měřítku.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Klientský počítač** – pro komunikaci s Azure a clusterem distribuovaného výpočetního serveru s Windows po nasazení budete potřebovat klientský počítač se systémem Windows.
 * **Azure PowerShell** – Přečtěte si, [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/) pro instalaci do klientského počítače.
 * **Předplatné Azure** – Pokud předplatné nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/free/) . U větších clusterů Vezměte v úvahu předplatné s průběžnými platbami nebo jiné možnosti nákupu.

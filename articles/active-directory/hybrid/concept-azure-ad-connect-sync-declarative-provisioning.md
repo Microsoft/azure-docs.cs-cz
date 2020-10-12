@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313616"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect synchronizace: principy deklarativního zřizování
@@ -42,18 +42,18 @@ Kanál má několik různých modulů. Každý z nich zodpovídá za jeden konce
 * [Priorita](#precedence), řeší konfliktní příspěvky atributů
 * Cíl, cílový objekt
 
-## <a name="scope"></a>Obor
+## <a name="scope"></a>Rozsah
 Modul Scope vyhodnocuje objekt a určuje pravidla, která jsou v oboru a měla by být součástí zpracování. V závislosti na hodnotách atributů objektu jsou vyhodnocena odlišná pravidla synchronizace, která jsou v oboru. Například zakázaný uživatel, který nemá poštovní schránku Exchange, má různá pravidla, než je povolený uživatel s poštovní schránkou.  
 ![Diagram, který zobrazuje modul oboru pro objekt.](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
 Obor je definován jako skupiny a klauzule. Klauzule jsou uvnitř skupiny. Logický operátor AND se používá mezi všemi klauzulemi ve skupině. Například (oddělení = IT a země = Dánsko). Logická nebo se používá mezi skupinami.
 
-![Obor](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
+![Rozsah](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
 Obor tohoto obrázku by měl být čten jako (oddělení = IT a země = Dánsko) nebo (země = Švédsko). Pokud je skupina 1 nebo 2 vyhodnocena na hodnotu true, pak je pravidlo v rozsahu.
 
 Modul Scope podporuje následující operace.
 
-| Operace | Popis |
+| Operace | Description |
 | --- | --- |
 | ROVNÁ SE, NOTEQUAL |Porovnávání řetězců, které vyhodnocuje, zda je hodnota rovna hodnotě v atributu. Pro vícehodnotové atributy viz ISIN a ISNOTIN. |
 | LESSTHAN, LESSTHAN_OR_EQUAL |Porovnávání řetězců, které vyhodnocuje, zda je hodnota menší než hodnota v atributu. |

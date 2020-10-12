@@ -8,10 +8,10 @@ ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 33f42b1d01bd0a39a268d9425a8406f976534634
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90007685"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Škálování služby Azure Analysis Services na více instancí
@@ -133,7 +133,7 @@ Použijte operaci **synchronizace** .
 Vrátit stavové kódy:
 
 
-|Kód  |Popis  |
+|Kód  |Description  |
 |---------|---------|
 |-1     |  Neplatný       |
 |0     | Replikaci        |
@@ -172,7 +172,7 @@ V případě SSMS, sady Visual Studio a připojovacích řetězců v prostředí
 
 Cenovou úroveň můžete na serveru změnit několika replikami. Stejná cenová úroveň se vztahuje na všechny repliky. Operace škálování nejprve odnese všechny repliky najednou a pak zobrazí všechny repliky v nové cenové úrovni.
 
-## <a name="troubleshoot"></a>Odstraňování potíží
+## <a name="troubleshoot"></a>Řešení potíží
 
 **Problém:** Při načítání došlo ** \<Name of the server> k chybě. v režimu připojení se nepodařilo najít instanci serveru.**
 

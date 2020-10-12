@@ -11,10 +11,10 @@ ms.date: 08/26/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 267a69486dc91ef95c0de704346eeb1d1780ef48
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89013754"
 ---
 # <a name="get-started-with-device-twins-net"></a>Začínáme se zdvojením zařízení (.NET)
@@ -31,7 +31,7 @@ V tomto kurzu vytvoříte tyto aplikace konzoly .NET:
 > V článku sady [SDK Azure IoT](iot-hub-devguide-sdks.md) najdete informace o sadách SDK Azure IoT, které můžete použít k vytvoření zařízení i back-endové aplikace.
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Visual Studio
 
@@ -39,7 +39,7 @@ V tomto kurzu vytvoříte tyto aplikace konzoly .NET:
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -65,7 +65,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí jazyka C#, která p
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na projekt **AddTagsAndQuery** a pak vyberte **Spravovat balíčky NuGet**.
 
-1. Vyberte **Procházet** a Hledat a vyberte **Microsoft. Azure. Devices**. Vyberte **Install** (Nainstalovat).
+1. Vyberte **Procházet** a Hledat a vyberte **Microsoft. Azure. Devices**. Vyberte **Nainstalovat**.
 
     ![Okno Správce balíčků NuGet](./media/iot-hub-csharp-csharp-twin-getstarted/nuget-package-addtagsandquery-app.png)
 
@@ -145,7 +145,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která se připojí k vaš
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na projekt **ReportConnectivity** a pak vyberte **Spravovat balíčky NuGet**.
 
-1. Vyberte **Procházet** a Hledat a zvolte **Microsoft. Azure. Devices. Client**. Vyberte **Install** (Nainstalovat).
+1. Vyberte **Procházet** a Hledat a zvolte **Microsoft. Azure. Devices. Client**. Vyberte **Nainstalovat**.
 
    Tento krok stáhne a nainstaluje balíček NuGet [sady SDK pro zařízení Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) a jeho závislosti a přidá se na něj odkaz.
 

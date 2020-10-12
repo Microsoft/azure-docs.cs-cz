@@ -4,10 +4,10 @@ description: Naučte se, jak nakonfigurovat testovací prostředí v Azure DevTe
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: bc45a0c2953f8f84289fa01d4af72bf98544bd7f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288081"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurace testovacího prostředí v Azure DevTest Labs pro použití brány vzdálené plochy
@@ -21,9 +21,9 @@ Tento přístup je bezpečnější, protože se uživatel testovacího prostřed
 
 1. Akce [získat obsah souboru RDP](/rest/api/dtl/virtualmachines/getrdpfilecontents) se zavolá, když vyberete tlačítko **připojit** . 1. 
 1. Akce získat obsah souboru protokolu RDP vyvolá `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` požadavek na ověřovací token.
-    1. `{gateway-hostname}`je název hostitele brány zadaný na stránce **Nastavení testovacího prostředí** v Azure Portal. 
-    1. `{lab-machine-name}`je název počítače, ke kterému se pokoušíte připojit.
-    1. `{port-number}`je port, na kterém je nutné vytvořit připojení. Obvykle je tento port 3389. Pokud virtuální počítač testovacího prostředí používá funkci [sdílené IP adresy](devtest-lab-shared-ip.md) v DevTest Labs, port se liší.
+    1. `{gateway-hostname}` je název hostitele brány zadaný na stránce **Nastavení testovacího prostředí** v Azure Portal. 
+    1. `{lab-machine-name}` je název počítače, ke kterému se pokoušíte připojit.
+    1. `{port-number}` je port, na kterém je nutné vytvořit připojení. Obvykle je tento port 3389. Pokud virtuální počítač testovacího prostředí používá funkci [sdílené IP adresy](devtest-lab-shared-ip.md) v DevTest Labs, port se liší.
 1. Brána vzdálené plochy odloží volání `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` do funkce Azure, aby vygenerovala ověřovací token. Služba DevTest Labs automaticky obsahuje klíč funkce v hlavičce požadavku. Klíč funkce se uloží do trezoru klíčů testovacího prostředí. Název tohoto tajného klíče, který se má zobrazit jako **tajný klíč tokenu brány** na stránce **Nastavení testovacího** prostředí pro testovací prostředí.
 1. Očekává se, že funkce Azure vrátí token pro ověřování tokenů založeného na certifikátech na počítači brány.  
 1. Akce získat obsah souboru RDP pak vrátí úplný soubor RDP, včetně ověřovacích informací.
@@ -65,7 +65,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 Nakonfigurujte testovací prostředí tak, aby používalo ověřování tokenu pomocí těchto kroků:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 1. V seznamu cvičení vyberte **testovací prostředí**.
 1. Na stránce testovacího prostředí vyberte **Konfigurace a zásady**.

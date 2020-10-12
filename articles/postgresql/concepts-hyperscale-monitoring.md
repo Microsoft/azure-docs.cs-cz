@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 9a6d8843acf27a53e261d9c7180906b15d05cc33
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91314806"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Monitorování a ladění Azure Database for PostgreSQL – Citus (škálování)
@@ -28,7 +28,7 @@ Kromě zobrazení grafů metriky můžete nakonfigurovat výstrahy. Podrobné po
 
 Tyto metriky jsou k dispozici pro uzly Citus (s měřítkem):
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Popis|
+|Metrika|Zobrazovaný název metriky|Jednotka|Description|
 |---|---|---|---|
 |active_connections|Aktivní připojení|Počet|Počet aktivních připojení k serveru.|
 |cpu_percent|Procento využití procesoru|Procento|Procento využití procesoru.|

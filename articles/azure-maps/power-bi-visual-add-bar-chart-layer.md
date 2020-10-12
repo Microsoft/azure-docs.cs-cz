@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 6a686f6915e332893f619e66944591999063a07c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288162"
 ---
 # <a name="add-a-bar-chart-layer"></a>Přidání vrstvy pruhového grafu
@@ -47,7 +47,7 @@ Níže jsou všechna nastavení v podokně **Formát** , která jsou k dispozici
 | Width (Šířka)                | Šířka jednotlivých pruhů.  |
 | Šířka škály při přiblížení  | Určuje, zda se šířka pruhů má škálovat relativně k úrovni přiblížení.  |
 | Barva výplně           | Barva jednotlivých pruhů Tato možnost je skrytá při předání pole do kontejneru **legendy** podokna **pole** a v podokně **Formát** se zobrazí samostatná část **barvy dat** . |
-| Průhlednost         | Průhlednost jednotlivých pruhů. |
+| Transparentnost         | Průhlednost jednotlivých pruhů. |
 | Minimální přiblížení             | Minimální dlaždice úrovně přiblížení jsou k dispozici. |
 | Maximální přiblížení             | K dispozici jsou tyto dlaždice s maximální úrovní přiblížení. |
 | Pozice vrstvy       | Určuje umístění vrstvy vzhledem k ostatním vrstvám mapy. |

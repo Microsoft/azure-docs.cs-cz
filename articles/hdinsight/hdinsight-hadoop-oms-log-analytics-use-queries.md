@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
 ms.openlocfilehash: c2ddcd8ea3524b4afdfa7f70d21f0cba96975f72
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085357"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Dotazování protokolů Azure Monitor pro monitorování clusterů HDInsight
@@ -33,8 +33,8 @@ Musíte mít nakonfigurovaný cluster HDInsight, aby používal protokoly Azure 
 Naučte se hledat konkrétní metriky pro cluster HDInsight.
 
 1. Z Azure Portal otevřete pracovní prostor Log Analytics, který je přidružený k vašemu clusteru HDInsight.
-1. V části **Obecné**vyberte **protokoly**.
-1. Do vyhledávacího pole zadejte následující dotaz pro vyhledání všech metrik pro všechny dostupné metriky pro všechny clustery HDInsight nakonfigurované pro použití protokolů Azure Monitor a pak vyberte **Spustit**. Zkontrolujte výsledky.
+1. V části **Obecné** vyberte **Protokoly**.
+1. Do vyhledávacího pole zadejte následující dotaz pro vyhledání všech metrik pro všechny dostupné metriky pro všechny clustery HDInsight nakonfigurované pro použití protokolů Azure Monitor a pak vyberte **Spustit**. Prohlédněte si výsledky.
 
     ```kusto
     search *
@@ -55,7 +55,7 @@ Naučte se hledat konkrétní metriky pro cluster HDInsight.
     | where Type == "Heartbeat"
     ```
 
-1. Můžete Dig hlouběji pomocí možností dostupných v levé nabídce. Příklad:
+1. Můžete Dig hlouběji pomocí možností dostupných v levé nabídce. Například:
 
     - Postup zobrazení protokolů z konkrétního uzlu:
 
@@ -94,7 +94,7 @@ search in (metrics_resourcemanager_queue_root_default_CL) *
 Prvním krokem k vytvoření výstrahy je doručení dotazu, na základě kterého se výstraha aktivuje. Můžete použít libovolný dotaz, ve kterém chcete vytvořit výstrahu.
 
 1. Z Azure Portal otevřete pracovní prostor Log Analytics, který je přidružený k vašemu clusteru HDInsight.
-1. V části **Obecné**vyberte **protokoly**.
+1. V části **Obecné** vyberte **Protokoly**.
 1. Spusťte následující dotaz, na kterém chcete vytvořit výstrahu, a pak vyberte **Spustit**.
 
     ```kusto
@@ -129,5 +129,5 @@ Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah 
 
 ## <a name="see-also"></a>Viz také
 
-* [Začínáme s dotazy protokolu v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Začínáme s dotazy protokolů v Azure Monitoru](../azure-monitor/log-query/get-started-queries.md)
 * [Vytváření vlastních zobrazení pomocí návrháře zobrazení v Azure Monitor](../azure-monitor/platform/view-designer.md)

@@ -4,10 +4,10 @@ description: Pomocí sady Visual Studio vytvořte projekt skupiny prostředků A
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372642"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
@@ -41,7 +41,7 @@ V této části vytvoříte projekt skupiny prostředků Azure pomocí šablony 
 
     Vzhledem k tomu, že jste vybrali šablonu webové aplikace, zobrazí se následující soubory:
 
-   | Název souboru | Popis |
+   | Název souboru | Description |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Skript PowerShellu, který spustí příkazy PowerShellu pro nasazení Azure Resource Manageru. Visual Studio pomocí tohoto skriptu PowerShellu nasadí vaši šablonu. |
    | WebSite.jsna |Šablona Resource Manageru, která definuje infrastrukturu, kterou chcete nasadit do Azure, a parametry, které můžete během nasazení zadat. Definuje také závislosti mezi prostředky, takže je Resource Manager nasadí ve správném pořadí. |

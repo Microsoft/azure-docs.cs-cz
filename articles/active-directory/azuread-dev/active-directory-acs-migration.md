@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706247"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: migrace z Azure Access Control Service
@@ -181,7 +181,7 @@ Azure AD také nutně nepodporuje tytéž stejné ověřovací protokoly jako Ac
 
 Azure AD ale poskytuje několik potenciálních výhod Access Control zákazníkům. Nativně podporuje pracovní nebo školní účty, které jsou hostovány v cloudu, které jsou běžně používány Access Control zákazníky. 
 
-Tenant Azure AD může být taky federovaný na jednu nebo víc instancí místní služby Active Directory prostřednictvím AD FS. Tímto způsobem může vaše aplikace ověřovat cloudové uživatele a uživatele hostované místně. Podporuje také protokol WS-Federation, který umožňuje, aby bylo možné je relativně snadno integrovat s webovou aplikací pomocí WIF.
+Tenant Azure AD může být taky federovaný na jednu nebo víc instancí místní služby Active Directory prostřednictvím AD FS. Tímto způsobem může vaše aplikace ověřovat cloudové uživatele a uživatele hostované místně. Podporuje také protokol WS-Federation, který umožňuje jejich integraci s webovou aplikací, a to pomocí WIF.
 
 Následující tabulka porovnává funkce Access Control, které jsou relevantní pro webové aplikace, s funkcemi dostupnými ve službě Azure AD. 
 
@@ -266,7 +266,7 @@ Následující tabulka porovnává funkce Access Control, které jsou relevantn�
 Pokud se rozhodnete, že Azure AD B2C je nejlepší cestou migrace pro vaše aplikace a služby, začněte s následujícími prostředky:
 
 - [Dokumentace k Azure AD B2C](../../active-directory-b2c/overview.md)
-- [Azure AD B2C vlastní zásady](../../active-directory-b2c/custom-policy-overview.md)
+- [Vlastní zásady Azure AD B2C](../../active-directory-b2c/custom-policy-overview.md)
 - [Ceny Azure AD B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Migrace na test identity nebo Auth0
@@ -274,7 +274,7 @@ Pokud se rozhodnete, že Azure AD B2C je nejlepší cestou migrace pro vaše apl
 V některých případech se může stát, že Azure AD a Azure AD B2C nestačí nahradit Access Control ve vašich webových aplikacích, aniž byste museli provádět zásadní změny kódu. Mezi běžné příklady můžou patřit:
 
 - Webové aplikace, které používají WIF nebo WS-Federation pro přihlášení pomocí poskytovatelů sociálních identit, jako je Google nebo Facebook.
-- Webové aplikace, které provádějí přímou federaci poskytovateli podnikových identit prostřednictvím protokolu WS-Federation.
+- Webové aplikace, které provádějí přímou federaci zprostředkovateli identity organizace prostřednictvím WS-Federationho protokolu.
 - Webové aplikace, které vyžadují přístupový token vydaný poskytovatelem sociální identity (například Google nebo Facebook) jako deklarace v tokenech vydaných Access Control.
 - Webové aplikace s pravidly transformace složitého tokenu, které Azure AD nebo Azure AD B2C nemůžou reprodukovány.
 - Víceklientské webové aplikace, které využívají službu ACS k centrální správě federace pro celou řadu různých zprostředkovatelů identity

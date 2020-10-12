@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 2ec0bf460a73f95e18e2e9221e8cbd8d4e14ff77
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086207"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Vytváření úloh streamování s vysokou dostupností Apache Spark s využitím PŘÍZe
@@ -21,7 +21,7 @@ ms.locfileid: "86086207"
 
 Streamování Spark vytvoří dlouhotrvající úlohy, během kterých můžete použít transformace na data a pak výsledky vložit do systému souborů, databází, řídicích panelů a konzoly. Streamování Sparku zpracovává mikrodávkování dat tím, že nejprve shromažďuje dávky událostí v rámci definovaného časového intervalu. V dalším kroku se tato dávka pošle na zpracování a výstup. Časové intervaly dávky jsou obvykle definovány ve zlomcích sekundy.
 
-![Streamování Sparku](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
+![Spark Streaming](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
 
 ## <a name="dstreams"></a>DStreams
 
@@ -123,4 +123,4 @@ Pokud chcete vytvořit souhrn pomocí kontrolního bodu a spolehlivých přijím
 * [Vytváření úloh Apache Spark streamování s právě jednou zpracováním událostí](apache-spark-streaming-exactly-once.md)
 * [Dlouhotrvající úlohy streamování Apache Spark v PŘÍZi](https://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/)
 * [Strukturované streamování: sémantika odolná proti chybám](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
-* [Diskretizovaný Streams: model odolný proti chybám pro zpracování škálovatelného streamování](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)
+* [Diskretizovaný Streams: model Fault-Tolerant pro zpracování škálovatelného streamování](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

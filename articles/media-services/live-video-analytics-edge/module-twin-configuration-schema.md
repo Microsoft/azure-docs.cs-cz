@@ -4,10 +4,10 @@ description: Toto téma popisuje modul s dvojitým formátem JSON pro živé vid
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 8bd86bdc2c8de9ee586e785db2074fa772100420
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87053060"
 ---
 # <a name="module-twin-json-schema"></a>Nevlákenný modul – schéma JSON
@@ -23,17 +23,17 @@ Toto téma popisuje modul s dvojitým formátem JSON pro živé video analýzy v
 
 Live video Analytics na IoT Edge zpřístupňuje následující funkční vlastnosti modulu. 
 
-|Vlastnost |Požaduje se |Dynamická |Popis |
+|Vlastnost |Požaduje se |Dynamická |Description |
 |---|---|---|---|
 |applicationDataDirectory |Yes |No |Cesta k připojenému svazku pro trvalou konfiguraci. |
 |azureMediaServicesArmId |Yes |No |Jedinečný identifikátor správy prostředků Azure pro účet Media Services.|
 |aadTenantId |Yes |No |ID tenanta Azure AD zákazníka.|
-|aadServicePrincipalAppId |Ano |Ano |Zákazník vytvořil AppId Azure AD.|
+|aadServicePrincipalAppId |Yes |Yes |Zákazník vytvořil AppId Azure AD.|
 |aadServicePrincipalCertificate |Ano<sup>*</sup>  |Yes |Zákazník vytvořil certifikát AppId Azure AD.|
 |aadServicePrincipalPassword |Ano<sup>*</sup>  |Yes |Zákazník vytvořil heslo AppId Azure AD.|
-|aadEndpoint |No |No |Koncový bod služby Azure AD specifický pro Cloud. <br/>Výchozí`https://login.microsoftonline.com` |
-|aadResourceId |No |No |ID cílové skupiny nebo prostředku Azure AD konkrétního cloudu <br/>Výchozí`https://management.core.windows.net/` |
-|armEndpoint |No |No |Koncový bod pro správu prostředků Azure specifický pro Cloud <br/>Výchozí`https://management.azure.com/` |
+|aadEndpoint |No |No |Koncový bod služby Azure AD specifický pro Cloud. <br/>Výchozí `https://login.microsoftonline.com` |
+|aadResourceId |No |No |ID cílové skupiny nebo prostředku Azure AD konkrétního cloudu <br/>Výchozí `https://management.core.windows.net/` |
+|armEndpoint |No |No |Koncový bod pro správu prostředků Azure specifický pro Cloud <br/>Výchozí `https://management.azure.com/` |
 |diagnosticsLevel |No |Yes |Podrobnosti událostí: <br/>Informace & # x02758; Upozornění & # x02758; Chyba & # x02758; Důležité & # x02758; NTato |
 |diagnosticsEventsOutputName |No |Yes |Výstup na rozbočovači pro diagnostické události <br/>(Prázdné znamená, že diagnostika nejsou publikována)|
 |operationalEventsOutputName|No|Yes|Výstup centra pro provozní události<br/>(Prázdné znamená, že provozní události nejsou publikovány)

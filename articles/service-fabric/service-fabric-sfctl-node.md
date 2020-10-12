@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: f2cf1011db37892f71bdd06f409cec1a76463507
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257156"
 ---
 # <a name="sfctl-node"></a>sfctl node
@@ -39,9 +39,9 @@ Přidá seznam přepsání konfigurace v zadaném uzlu.
 
 Toto rozhraní API umožňuje přidat všechna existující přepsání konfigurace na zadaný uzel.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --config-parametr-override-list [povinné] | Popis pro přidání seznamu přepsání konfigurace |
 | --Node-Name [povinné] | Název uzlu |
@@ -50,7 +50,7 @@ Toto rozhraní API umožňuje přidat všechna existující přepsání konfigur
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -63,9 +63,9 @@ Deaktivuje uzel clusteru Service Fabric se zadaným záměrem deaktivace.
 
 Deaktivuje uzel clusteru Service Fabric se zadaným záměrem deaktivace. Po deaktivaci lze záměr deaktivace zvýšit, ale ne snížit (například uzel, který je deaktivován s cílem pozastavit, může být dále po restartu dezaktivován, ale nikoli jiným způsobem. Uzly mohou být znovu aktivovány pomocí operace aktivovat uzel kdykoli po jejich deaktivaci. Pokud se deaktivace nedokončí, zrušení deaktivace se zruší. Uzel, který se rozpíná a v rámci kterého se má vrátit, se před tím, než se služby umístí na tento uzel, bude stále potřeba znovu aktivovat.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Node-Name [povinné] | Název uzlu |
 | --deaktivace – záměr | Popisuje záměr nebo důvod deaktivace uzlu. Možné hodnoty jsou následující. |
@@ -73,7 +73,7 @@ Deaktivuje uzel clusteru Service Fabric se zadaným záměrem deaktivace. Po dea
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -86,16 +86,16 @@ Aktivujte uzel clusteru Service Fabric, který je v tuto chvíli deaktivovaný.
 
 Aktivuje uzel clusteru Service Fabric, který je v tuto chvíli deaktivovaný. Po aktivaci se uzel znovu stane životaschopným cílem pro umístění nových replik a všechny deaktivované repliky na uzlu se znovu aktivují.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Node-Name [povinné] | Název uzlu |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -108,16 +108,16 @@ Načte seznam přepsání konfigurace v zadaném uzlu.
 
 Toto rozhraní API umožňuje získat všechna existující přepsání konfigurace v zadaném uzlu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Node-Name [povinné] | Název uzlu |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -130,9 +130,9 @@ Získá stav uzlu Service Fabric.
 
 Získá stav uzlu Service Fabric. Pomocí EventsHealthStateFilter můžete filtrovat kolekci událostí stavu hlášených na uzlu na základě stavu. Pokud uzel, který určíte podle názvu, v Health Store neexistuje, vrátí se chyba.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Node-Name [povinné] | Název uzlu |
 | --Events – stav – filtr | Umožňuje filtrovat kolekci objektů HealthEvent vrácených na základě stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se pouze události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota by mohla být kombinací těchto hodnot získána pomocí bitového operátoru OR. Pokud je například zadaná hodnota 6, budou vráceny všechny události s hodnotou ' OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
@@ -140,7 +140,7 @@ Získá stav uzlu Service Fabric. Pomocí EventsHealthStateFilter můžete filtr
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -153,16 +153,16 @@ Získá informace o konkrétním uzlu v clusteru Service Fabric.
 
 Odpověď obsahuje název, stav, ID, stav, dobu provozu a další podrobnosti o uzlu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Node-Name [povinné] | Název uzlu |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -175,9 +175,9 @@ Načte seznam uzlů v clusteru Service Fabric.
 
 Odpověď obsahuje název, stav, ID, stav, dobu provozu a další podrobnosti o uzlech.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --pokračování-token | Parametr tokenu pokračování slouží k získání další sady výsledků. Token pokračování s neprázdnou hodnotou je zahrnut v odpovědi rozhraní API v případě, že se výsledky ze systému nevejdou do jediné odpovědi. Když se tato hodnota předává do dalšího volání rozhraní API, vrátí rozhraní API další sadu výsledků. Pokud nejsou k dispozici žádné další výsledky, token pokračování neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódovaná v adrese URL. |
 | --Max – výsledky | Maximální počet výsledků, které mají být vráceny v rámci stránkovaných dotazů. Tento parametr definuje horní mez počtu vrácených výsledků. Vrácené výsledky mohou být menší než zadané maximální výsledky, pokud se nevejdou do zprávy podle maximální velikosti omezení velikosti zprávy definované v konfiguraci. Pokud je tento parametr nula nebo není zadán, dotaz stránkovaného obsahu obsahuje tolik výsledků, kolik jich bylo možné do návratové zprávy. |
@@ -186,7 +186,7 @@ Odpověď obsahuje název, stav, ID, stav, dobu provozu a další podrobnosti o 
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -199,16 +199,16 @@ Získá informace o načtení uzlu Service Fabric.
 
 Načte informace o načtení uzlu Service Fabric pro všechny metriky, které mají definovanou zátěž nebo kapacitu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Node-Name [povinné] | Název uzlu |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -221,16 +221,16 @@ Odebere přepsání konfigurace na zadaném uzlu.
 
 Toto rozhraní API umožňuje odebrat všechna existující přepsání konfigurace v zadaném uzlu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Node-Name [povinné] | Název uzlu |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -243,16 +243,16 @@ Upozorňuje Service Fabric, že trvalý stav na uzlu se trvale odebral nebo ztra
 
 To znamená, že není možné obnovit trvalý stav tohoto uzlu. K tomu obvykle dochází v případě, že byl pevný disk vymazán nebo pokud dojde k chybě pevného disku. Aby tato operace proběhla úspěšně, musí být uzel vypnutý. Tato operace umožňuje Service Fabric zjistit, že repliky na tomto uzlu již neexistují a že Service Fabric by se měla zastavit, aby se tyto repliky staly zálohovat. Nespouštějte tuto rutinu, pokud se stav uzlu neodebral a uzel se může vrátit se stavem beze změny. Od Service Fabric 6,5, aby bylo možné použít toto rozhraní API pro uzly počáteční hodnoty, změňte uzly počátečních hodnot na běžné (nepočáteční) uzly a potom toto rozhraní API vyvolejte k odebrání stavu uzlu. Pokud je cluster spuštěn v Azure, poté, co se dokončí uzel počáteční hodnoty, Service Fabric se pokusí ho změnit na nepočáteční uzel automaticky. Aby k tomu docházelo, ujistěte se, že počet nepočátečních uzlů v primárním uzlu je nižší než počet počátečních uzlů. V případě potřeby přidejte k primárnímu typu uzlu další uzly, abyste to dosáhli. U samostatného clusteru platí, že pokud se neočekává, že uzel počátečních hodnot nezůstane k zálohování beze změny, odeberte prosím uzel z clusteru, viz protokol HTTPS \: //docs.Microsoft.com/en-US/Azure/Service-Fabric/Service-Fabric-cluster-Windows-Server-Add-Remove-Nodes.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Node-Name [povinné] | Název uzlu |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -265,9 +265,9 @@ Odešle zprávu o stavu na uzlu Service Fabric.
 
 Hlásí stav zadaného uzlu Service Fabric. Sestava musí obsahovat informace o zdroji sestavy stavu a vlastnosti, na které je hlášena. Sestava se odešle do uzlu Service Fabric brány, který se přepošle na Health Store. Tuto sestavu může přijmout brána, ale Health Store po dodatečném ověření odmítnuta. Health Store například může zprávu odmítat z důvodu neplatného parametru, jako je například zastaralé pořadové číslo. Chcete-li zjistit, zda byla sestava použita v Health Store, zkontrolujte, zda se sestava zobrazuje v části HealthEvents.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Health-vlastnost [required] | Vlastnost informací o stavu. <br><br> Entita může mít sestavy o stavu pro různé vlastnosti. Vlastnost je řetězec, nikoli pevný výčet, který umožňuje, aby se v zpravodaji mohla pružně roztřídit stav stavu, který aktivuje sestavu. Například zpravodaj s SourceId "LocalWatchdog" může monitorovat stav dostupného disku v uzlu, takže může ohlásit vlastnost "AvailableDisk" v tomto uzlu. Stejné zpravodajky můžou monitorovat připojení uzlu, takže může nahlásit vlastnost "připojení" na stejném uzlu. V Health Store jsou tyto sestavy zpracovány jako samostatné události stavu pro zadaný uzel. Společně s ID zdroje (SourceId) vlastnost jednoznačně identifikuje informace o stavu. |
 | --Health-State [povinné] | Možné hodnoty zahrnují \: "Invalid", "OK", "Warning", "Error", "unknown". |
@@ -282,7 +282,7 @@ Hlásí stav zadaného uzlu Service Fabric. Sestava musí obsahovat informace o 
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -295,9 +295,9 @@ Restartuje uzel clusteru Service Fabric.
 
 Restartuje uzel neService Fabricho clusteru, který je už spuštěný.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Node-Name [povinné] | Název uzlu |
 | --Create-Fabric-dump | Pokud chcete vytvořit výpis procesu uzlu Fabric, zadejte hodnotu true. Rozlišují se malá a velká písmena.  Výchozí hodnota je \: false. |
@@ -306,7 +306,7 @@ Restartuje uzel neService Fabricho clusteru, který je už spuštěný.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -319,9 +319,9 @@ Spustí nebo zastaví uzel clusteru.
 
 Spustí nebo zastaví uzel clusteru.  Uzel clusteru je proces, nikoli samotná instance operačního systému.  Chcete-li spustit uzel, předejte "Start" parametru NodeTransitionType. Chcete-li zastavit uzel, předejte "Stop" parametru NodeTransitionType. Toto rozhraní API spustí operaci – když rozhraní API vrátí uzel, možná se ještě nedokončil přechod. K získání průběhu operace zavolejte GetNodeTransitionProgress se stejným OperationId.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Node-instance-ID [povinné] | ID instance uzlu cílového uzlu. To lze určit prostřednictvím rozhraní GetNodeInfo API. |
 | --Node-Name [povinné] | Název uzlu |
@@ -332,7 +332,7 @@ Spustí nebo zastaví uzel clusteru.  Uzel clusteru je proces, nikoli samotná i
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -345,9 +345,9 @@ Získá průběh operace zahájené s použitím StartNodeTransition.
 
 Získá průběh operace zahájené s StartNodeTransition pomocí poskytnutého OperationId.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Node-Name [povinné] | Název uzlu |
 | --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
@@ -355,7 +355,7 @@ Získá průběh operace zahájené s StartNodeTransition pomocí poskytnutého 
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

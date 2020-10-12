@@ -12,10 +12,10 @@ ms.date: 05/23/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 2019802725e36c2400f57952fedf7af40877c8c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84759925"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Pochopení a řešení potíží s Proxy aplikací služby Azure Active Directory CORS
@@ -116,5 +116,5 @@ Některé problémy CORS nelze vyřešit, například když vaše aplikace přes
 
 ## <a name="see-also"></a>Viz také
 - [Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory](application-proxy-add-on-premises-application.md) 
-- [Plánování nasazení služby Azure Proxy aplikací služby AD](application-proxy-deployment-plan.md) 
+- [Naplánování nasazení proxy aplikací služby Azure AD](application-proxy-deployment-plan.md) 
 - [Vzdálený přístup k místním aplikacím prostřednictvím Proxy aplikací služby Azure Active Directory](application-proxy.md) 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91395766"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Přehled správy a monitorování zabezpečení Azure
@@ -27,7 +27,7 @@ Tento článek obsahuje přehled funkcí a služeb zabezpečení, které Azure p
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
 
-Access Control na základě rolí (RBAC) poskytuje podrobnou správu přístupu pro prostředky Azure. Pomocí RBAC můžete uživatelům udělit jenom množství přístupu, který potřebují k provádění svých úloh. RBAC vám taky může pomáhat zajistit, že když lidé odejdou z organizace, ztratí přístup k prostředkům v cloudu.
+Role-Based Access Control (RBAC) poskytuje podrobnou správu přístupu pro prostředky Azure. Pomocí RBAC můžete uživatelům udělit jenom množství přístupu, který potřebují k provádění svých úloh. RBAC vám taky může pomáhat zajistit, že když lidé odejdou z organizace, ztratí přístup k prostředkům v cloudu.
 
 Další informace:
 

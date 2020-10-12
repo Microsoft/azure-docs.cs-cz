@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: cf080f2a6173651fce8f306619dba60347067e0e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085607"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru Apache HBA v Azure Virtual Networks
@@ -104,7 +104,7 @@ V poslední části šablona vytvoří virtuální počítač s Ubuntu v každé
 
 Aby bylo možné službu BIND nainstalovat, Yon musí najít veřejnou IP adresu dvou virtuálních počítačů DNS.
 
-1. Otevřete [Azure Portal](https://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 2. Otevřete virtuální počítač DNS tak, že vyberete **skupiny prostředků > [název skupiny prostředků] > [vnet1DNS]**.  Název skupiny prostředků je ten, který vytvoříte v posledním postupu. Výchozí názvy virtuálních počítačů DNS jsou *vnet1DNS* a *vnet2NDS*.
 3. Výběrem **vlastnosti** otevřete stránku vlastností virtuální sítě.
 4. Zapište si **veřejnou IP adresu**a taky ověřte **privátní IP adresu**.  Privátní IP adresa musí být **10.1.0.4** pro vnet1DNS a **10.2.0.4** pro vnet2DNS.  
@@ -309,7 +309,7 @@ Následující postup popisuje, jak volat skript akce skriptu z Azure Portal. In
 
 Požadované argumenty:
 
-|Name|Description|
+|Název|Popis|
 |----|-----------|
 |-s,--src-cluster | Určuje název DNS zdrojového clusteru HBA. Příklad:-s hbsrccluster,--src-cluster = hbsrccluster |
 |-d,--DST-cluster | Určuje název DNS cílového clusteru (repliky) HBA. Příklad:-s dsthbcluster,--src-cluster = dsthbcluster |
@@ -318,7 +318,7 @@ Požadované argumenty:
 
 Nepovinné argumenty:
 
-|Name|Description|
+|Název|Popis|
 |----|-----------|
 |-Su,--src-Ambari-User | Určuje uživatelské jméno správce pro Ambari ve zdrojovém clusteru HBA. Výchozí hodnota je **admin (správce**). |
 |-du,--DST-Ambari-User | Určuje uživatelské jméno správce pro Ambari v cílovém clusteru HBA. Výchozí hodnota je **admin (správce**). |

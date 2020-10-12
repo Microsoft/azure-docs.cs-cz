@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
 ms.openlocfilehash: 33ba816227db4cf958fd30c9dac1a0745505c504
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513685"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Rychlé kroky: vytvoření a použití páru veřejných privátních klíčů SSH pro virtuální počítače se systémem Linux v Azure
@@ -37,7 +37,7 @@ Následující příkaz vytvoří pár klíčů SSH pomocí šifrování RSA a b
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-Pokud k vytvoření virtuálního počítače pomocí příkazu [AZ VM Create](/cli/azure/vm#az-vm-create) použijete rozhraní příkazového [řádku Azure CLI](/cli/azure) , můžete volitelně vygenerovat soubory veřejného a privátního klíče SSH pomocí `--generate-ssh-keys` Možnosti. Klíčové soubory jsou uloženy v adresáři ~/.ssh, pokud nejsou zadány jinak s `--ssh-dest-key-path` možností. Pokud pár klíčů ssh již existuje a `--generate-ssh-keys` možnost se použije, nový pár klíčů se nevygeneruje, ale místo toho se použije existující pár klíčů. V následujícím příkazu nahraďte *VMname* a *RGname* vlastními hodnotami:
+Pokud k vytvoření virtuálního počítače pomocí příkazu [AZ VM Create](/cli/azure/vm#az-vm-create) použijete rozhraní příkazového [řádku Azure CLI](/cli/azure) , můžete volitelně vygenerovat soubory veřejného a privátního klíče SSH pomocí `--generate-ssh-keys` Možnosti. Klíčové soubory jsou uloženy v adresáři ~/.ssh, pokud nejsou zadány jinak s `--ssh-dest-key-path` možností. Pokud pár klíčů ssh již existuje a  `--generate-ssh-keys` možnost se použije, nový pár klíčů se nevygeneruje, ale místo toho se použije existující pár klíčů. V následujícím příkazu nahraďte *VMname* a *RGname* vlastními hodnotami:
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-ssh-keys 

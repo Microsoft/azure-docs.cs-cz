@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/09/2020
 ms.author: amverma
 ms.openlocfilehash: 34e9ef3ab46f2ce11500aa87db9676635d3e9b4f
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90016278"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>Velikosti virtuálních počítačů s nejvyšší řadou
@@ -22,7 +22,7 @@ Několik testů výkonu bylo spuštěno na velikostech s velmi řadou. Níže js
 | Úloha                                        | HB                    |
 |-------------------------------------------------|-----------------------|
 | Triad STREAMu                                    | 260 GB/s (32-33 GB/s za CCX)  |
-| Vysoce výkonné Linpack (HPL)                  | 1 000 GigaFLOPS (Rpeak), 860 GigaFLOPS (Rmax) |
+| High-Performance Linpack (HPL)                  | 1 000 GigaFLOPS (Rpeak), 860 GigaFLOPS (Rmax) |
 | Latence & šířky pásma RDMA                        | 1,27 mikrosekund, 99,1 GB/s   |
 | FIO na místní disk SSD NVMe                           | čtení 1,7 GB/s, 1,0 GB/s zápisy      |  
 | IOR na 4 * Azure SSD úrovně Premium (P30 Managed Disks, RAID0) * *  | čtení z 725 MB/s, 780 MB/zápisy   |
@@ -46,7 +46,7 @@ MPI se test šířky pásma z OSU sady mikrotestů. Ukázkové skripty jsou na [
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-:::image type="content" source="./media/bandwidth-hb.png" alt-text="MPI šířka pásma v Azure.":::
+:::image type="content" source="./media/bandwidth-hb.png" alt-text="MPI latence v Azure.":::
 
 
 ## <a name="mellanox-perftest"></a>Mellanox Perftest

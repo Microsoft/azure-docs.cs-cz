@@ -1,5 +1,5 @@
 ---
-title: Cyklické dotazování na dlouhodobě běžící operace | Microsoft Docs
+title: Cyklické dotazování na operace Long-Running | Microsoft Docs
 description: Azure Media Services nabízí rozhraní API, která odesílají žádosti do Media Services spuštění operací (například vytvoření, spuštění, zastavení nebo odstranění kanálu), tyto operace jsou dlouhotrvající. V tomto tématu se dozvíte, jak se dotazovat na dlouhodobě běžící operace.
 services: media-services
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 44cecbd8d2cdc95e342d7aaf2b33f6cc0192e182
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89262021"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Živé streamování pomocí Azure Media Services
