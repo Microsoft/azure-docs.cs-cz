@@ -8,10 +8,10 @@ ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87045765"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Monitorování skupin prostředků pomocí Azure Monitor (Preview)
@@ -20,7 +20,7 @@ Moderní aplikace jsou často složité a vysoce distribuované s mnoha diskrét
 
 ## <a name="access-insights-for-resource-groups"></a>Přístup k přehledům pro skupiny prostředků
 
-1. Na panelu navigace na levé straně vyberte **skupiny prostředků** .
+1. Na panelu navigace na levé straně vyberte **skupiny prostředků**  .
 2. Vyberte jednu ze skupin prostředků, které chcete prozkoumat. (Pokud máte velký počet skupin prostředků s filtrováním podle předplatného, může být někdy užitečné.)
 3. Pokud chcete získat přístup k přehledům pro skupinu prostředků, klikněte na **přehledy** v nabídce na levé straně libovolné skupiny prostředků.
 
@@ -105,7 +105,7 @@ V takovém případě, pokud vyberete možnost upravit, uvidíte, že se tato sa
 
  ![Snímek obrazovky s zobrazeními výkonu a metrikami Azure](./media/resource-group-insights/0012-performance-metrics.png)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="enabling-access-to-alerts"></a>Povolení přístupu k výstrahám
 

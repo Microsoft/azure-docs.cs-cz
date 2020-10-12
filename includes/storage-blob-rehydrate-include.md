@@ -11,10 +11,10 @@ ms.topic: include
 ms.reviewer: hux
 ms.custom: include file
 ms.openlocfilehash: 53d2d47143c5a2cefbd50faca9a02af18ffae315
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84754674"
 ---
 Pokud chcete načíst data v archivním úložišti, musíte nejdřív změnit vrstvu příslušného objektu blob na studenou nebo horkou. Tento proces se označuje jako dosazování a může trvat hodiny, než se dokončí. Pro zajištění optimálního výkonu pro vysazování doporučujeme použít velké velikosti objektů BLOB. Současné dosazování několika malých objektů blob může dobu dokončení prodloužit. V současné době existují dva rehydratované priority, vysoké a standardní, které lze nastavit prostřednictvím volitelné vlastnosti *x-MS-rehydratované-priority* na [úrovni objektu BLOB](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) nebo operace [kopírování objektu BLOB](https://docs.microsoft.com/rest/api/storageservices/copy-blob) .

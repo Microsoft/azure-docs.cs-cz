@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87046862"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Architektura SQL Azure synapse 
@@ -59,7 +59,7 @@ SQL na vyžádání umožňuje dotazování souborů ve službě Data Lake způs
 
 ## <a name="control-node"></a>Řídicí uzel
 
-Řídicí uzel je mozek architektury. Jde o front-end, který komunikuje se všemi aplikacemi a připojeními. 
+Mozkem této architektury je řídicí uzel. Jde o front-end, který komunikuje se všemi aplikacemi a připojeními. 
 
 V rámci fondu SQL je modul MPP spuštěn v uzlu Control pro optimalizaci a koordinaci paralelních dotazů. Když odešlete dotaz T-SQL do fondu SQL, řídicí uzel ho transformuje na dotazy, které se spouštějí proti každé distribuci paralelně.
 
@@ -69,7 +69,7 @@ V SQL na vyžádání se modul DQP spouští na ovládacím uzlu za účelem opt
 
 Výpočetní uzly poskytují výpočetní výkon. 
 
-Ve fondu SQL se distribuce mapují na výpočetní uzly ke zpracování. Když platíte za více výpočetních prostředků, fond přemapuje distribuci k dostupným výpočetním uzlům. Počet výpočetních uzlů je rozsah od 1 do 60 a je určen úrovní služeb pro fond SQL. Každý výpočetní uzel má ID uzlu, které je viditelné v systémových zobrazeních. ID výpočetního uzlu můžete zobrazit tak, že vyhledáte sloupec node_id v systémových zobrazeních, jejichž názvy začínají řetězcem sys. pdw_nodes. Seznam těchto systémových zobrazení najdete v tématu [Systémová zobrazení MPP](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
+Ve fondu SQL se distribuce mapují na výpočetní uzly ke zpracování. Když platíte za více výpočetních prostředků, fond přemapuje distribuci k dostupným výpočetním uzlům. Počet výpočetních uzlů je rozsah od 1 do 60 a je určen úrovní služeb pro fond SQL. Každý výpočetní uzel má ID uzlu, které je viditelné v systémových zobrazeních. ID výpočetního uzlu můžete zobrazit tak, že vyhledáte sloupec node_id v systémových zobrazeních, jejichž názvy začínají na sys.pdw_nodes. Seznam těchto systémových zobrazení najdete v tématu [Systémová zobrazení MPP](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
 
 V SQL na vyžádání je každému výpočetnímu uzlu přiřazen úkol a sada souborů, na kterých se má úloha spustit. Úkol je jednotka provádění distribuovaného dotazu, která je ve skutečnosti součástí odeslaného uživatele dotazu. Automatické škálování je v platnosti, aby se zajistilo, že se k provádění dotazů uživatele využívají dost výpočetních uzlů.
 

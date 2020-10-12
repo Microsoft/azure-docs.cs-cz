@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84738630"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Vizualizace vzorů síťových přenosů z vašich virtuálních počítačů a z nich pomocí Open-source nástrojů
@@ -31,12 +31,12 @@ Máte jednoduchou webovou aplikaci nasazenou na virtuálním počítači v Azure
 
 ![scénář][1]
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Postup
 
 ### <a name="install-capanalysis"></a>Nainstalovat CapAnalysis
 
 Pokud chcete nainstalovat CapAnalysis na virtuální počítač, můžete si tady přečtěte oficiální pokyny https://www.capanalysis.net/ca/how-to-install-capanalysis .
-V zájmu vzdáleného přístupu k CapAnalysis je potřeba na svém VIRTUÁLNÍm počítači otevřít port 9877 přidáním nového příchozího pravidla zabezpečení. Další informace o vytváření pravidel ve skupinách zabezpečení sítě najdete v tématu [Vytvoření pravidel v existující NSG](../virtual-network/manage-network-security-group.md#create-a-security-rule). Po úspěšném přidání pravidla byste měli mít přístup k CapAnalysis z`http://<PublicIP>:9877`
+V zájmu vzdáleného přístupu k CapAnalysis je potřeba na svém VIRTUÁLNÍm počítači otevřít port 9877 přidáním nového příchozího pravidla zabezpečení. Další informace o vytváření pravidel ve skupinách zabezpečení sítě najdete v tématu [Vytvoření pravidel v existující NSG](../virtual-network/manage-network-security-group.md#create-a-security-rule). Po úspěšném přidání pravidla byste měli mít přístup k CapAnalysis z `http://<PublicIP>:9877`
 
 ### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Spuštění relace zachytávání paketů pomocí Azure Network Watcher
 
@@ -47,7 +47,7 @@ Pomocí karty importovat z adresy URL můžete přímo nahrát zachytávání pa
 
 Při zadání odkazu na CapAnalysis nezapomeňte připojit token SAS k adrese URL objektu BLOB úložiště.  Provedete to tak, že přejdete na podpis sdíleného přístupu z účtu úložiště, určíte povolená oprávnění a vytvoříte token stisknutím tlačítka generovat SAS. Pak můžete připojit token SAS k adrese URL objektu BLOB úložiště pro zachytávání paketů.
 
-Výsledná adresa URL bude vypadat přibližně podobně jako následující adresa URL:`http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
+Výsledná adresa URL bude vypadat přibližně podobně jako následující adresa URL: `http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
 
 
 ### <a name="analyzing-packet-captures"></a>Analýza zachycení paketů

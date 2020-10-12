@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: c8a1d1c0f8de742bdafa130cce6927a472efd8f7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329342"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
@@ -58,7 +58,7 @@ Azure Portal vám poskytne skript, který můžete použít k připojení sdíle
 
 Postup získání tohoto skriptu:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Přejděte do účtu úložiště, který obsahuje sdílenou složku, kterou chcete připojit.
 1. Vyberte **Sdílené složky**.
 1. Vyberte sdílenou složku, kterou chcete připojit.
@@ -67,12 +67,12 @@ Postup získání tohoto skriptu:
 
 1. Vyberte **Připojit**.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Snímek obrazovky ikony připojení pro sdílenou složku":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="případě":::
 
 1. Vyberte písmeno jednotky, ke které se má sdílená složka připojit.
 1. Zkopírujte zadaný skript.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Ukázkový text":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="případě":::
 
 1. Vložte skript do prostředí v hostiteli, ke kterému chcete sdílenou složku připojit, a spusťte ji.
 

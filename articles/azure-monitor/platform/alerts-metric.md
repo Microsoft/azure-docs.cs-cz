@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.subservice: alerts
 ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88065858"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor
@@ -74,7 +74,7 @@ Pravidla upozornění na metriky můžete zobrazit a spravovat pomocí okna spra
 
 2. Kliknutí na **výstrahy** a **Spravovat pravidla**
 
-3. V okně **Spravovat pravidla** můžete zobrazit všechna pravidla výstrah v rámci předplatných. Pravidla můžete dál filtrovat pomocí **skupiny prostředků**, **typu prostředku**a **prostředku**. Pokud chcete zobrazit jenom výstrahy metriky, vyberte **typ signálu** jako metriky.
+3. V okně **Spravovat pravidla** můžete zobrazit všechna pravidla výstrah v rámci předplatných. Pravidla můžete dál filtrovat pomocí  **skupiny prostředků**, **typu prostředku**a **prostředku**. Pokud chcete zobrazit jenom výstrahy metriky, vyberte **typ signálu** jako metriky.
 
     > [!TIP]
     > V okně **Spravovat pravidla** můžete vybrat více pravidel upozornění a povolit nebo zakázat. To může být užitečné, když je potřeba zařadit do údržby určité cílové prostředky.

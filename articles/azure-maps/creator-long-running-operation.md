@@ -1,5 +1,5 @@
 ---
-title: Azure Maps rozhraní API pro dlouhou práci
+title: Rozhraní API pro operace Azure Maps Long-Running
 description: Seznamte se s dlouhotrvajícím asynchronním zpracováním na pozadí v Azure Maps
 author: anastasia-ms
 ms.author: v-stharr
@@ -10,15 +10,15 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 360fc4af688e393bb8639ee773f0bf0de603a425
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83598385"
 ---
-# <a name="creator-long-running-operation-api"></a>Tvůrce dlouhotrvajícího rozhraní API operací
+# <a name="creator-long-running-operation-api"></a>Rozhraní API pro operaci Creator Long-Running
 
-Některé rozhraní API v Azure Maps používají [asynchronní vzor požadavků a odpovědí](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply). Tento model umožňuje Azure Maps poskytovat vysoce dostupné a reagující služby. Tento článek vysvětluje konkrétní implementaci dlouhotrvajícího asynchronního zpracování na pozadí v mapě Azure.
+Některé rozhraní API v Azure Maps používá [asynchronní vzorek Request-Reply](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply). Tento model umožňuje Azure Maps poskytovat vysoce dostupné a reagující služby. Tento článek vysvětluje konkrétní implementaci dlouhotrvajícího asynchronního zpracování na pozadí v mapě Azure.
 
 ## <a name="submitting-a-request"></a>Odesílá se žádost.
 

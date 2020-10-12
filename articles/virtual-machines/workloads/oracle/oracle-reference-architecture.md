@@ -13,10 +13,10 @@ ms.date: 12/13/2019
 ms.author: kegorman
 ms.custom: ''
 ms.openlocfilehash: 2bbc78f9a5569c8446743980cdea153883c19d4d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274431"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenční architektury pro Oracle Database Enterprise Edition v Azure
@@ -71,7 +71,7 @@ Pokud používáte Oracle data Guard, můžete také otevřít sekundární data
 > Aktivní ochrana dat vyžaduje další licencování. Tato licence je také nutná k použití funkce Far Sync. Připojte se k vašemu zástupci Oracle a proberte případné důsledky k licencování.
 
 #### <a name="oracle-data-guard-with-fsfo"></a>Oracle data Guard s FSFO
-Oracle data Guard s rychlým spuštěním převzetí služeb při selhání (FSFO) může zvýšit odolnost nastavením zprostředkovatele na samostatném počítači. Zprostředkovatel ochrany dat a sekundární databáze spouštějí pozorovatele a sledují primární databázi za výpadky. To umožňuje také redundanci v instalaci pozorovatele data Guard. 
+Oracle data Guard s Fast-Start převzetí služeb při selhání (FSFO) může poskytovat další odolnost tím, že na samostatném počítači Nastaví zprostředkovatele. Zprostředkovatel ochrany dat a sekundární databáze spouštějí pozorovatele a sledují primární databázi za výpadky. To umožňuje také redundanci v instalaci pozorovatele data Guard. 
 
 U Oracle Database verze 12,2 a vyšší je také možné nakonfigurovat více pozorovatelů s jednou konfigurací zprostředkovatele ochrany dat Oracle. Tato instalace poskytuje dodatečnou dostupnost v případě výpadku jednoho pozorovatele a sekundárního databázového prostředí. Zprostředkovatel ochrany dat je odlehčený a může být hostovaný na relativně malém virtuálním počítači. Další informace o zprostředkovateli ochrany dat a jeho výhodách najdete v [dokumentaci k Oracle](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html) v tomto tématu.
 
@@ -152,7 +152,7 @@ Oracle horizontálního dělení se primárně skládá z následujících souč
 
 - **Globální služba** – služba Global Service je podobná běžné databázové službě. Kromě všech vlastností databázové služby má globální služba vlastnosti pro databáze horizontálně dělené, jako je spřažení oblastí mezi klienty a horizontálních oddílů a tolerance prodlevy replikace. Pro čtení a zápis dat do/z databáze horizontálně dělené je potřeba vytvořit jenom jednu globální službu. Při použití Active Data Guard a nastavení replik horizontálních oddílů jen pro čtení můžete vytvořit další službu gGobal pro úlohy jen pro čtení. Klient může tyto globální služby používat pro připojení k databázi.
 
-- Databáze **horizontálních oddílů** – databáze horizontálních oddílů jsou databáze Oracle. Každá databáze se replikuje pomocí ochrany dat Oracle v konfiguraci zprostředkovatele s povoleným rychlým spuštěním převzetí služeb při selhání (FSFO). Pro každou horizontálních oddílů není nutné nastavovat převzetí služeb při selhání ochrany dat a replikaci. Tato konfigurace se automaticky nakonfiguruje a nasadí při vytvoření sdílené databáze. Pokud se konkrétní horizontálních oddílů nepovede, sdílení Oracle při převzetí služeb při selhání připojení databáze z primárního serveru do úsporného režimu automaticky nefunguje.
+- Databáze **horizontálních oddílů** – databáze horizontálních oddílů jsou databáze Oracle. Každá databáze se replikuje pomocí Oracle data Guard v konfiguraci zprostředkovatele s povoleným Fast-Start převzetí služeb při selhání (FSFO). Pro každou horizontálních oddílů není nutné nastavovat převzetí služeb při selhání ochrany dat a replikaci. Tato konfigurace se automaticky nakonfiguruje a nasadí při vytvoření sdílené databáze. Pokud se konkrétní horizontálních oddílů nepovede, sdílení Oracle při převzetí služeb při selhání připojení databáze z primárního serveru do úsporného režimu automaticky nefunguje.
 
 Databáze Oracle horizontálně dělené můžete nasadit a spravovat pomocí dvou rozhraní: Oracle Enterprise Manager Cloud Control GUI nebo `GDSCTL` Nástroj příkazového řádku. Můžete dokonce monitorovat různé horizontálních oddílů pro dostupnost a výkon pomocí řízení cloudu. `GDSCTL DEPLOY`Příkaz automaticky vytvoří horizontálních oddílů a jejich příslušné naslouchací procesy. Tento příkaz kromě toho automaticky nasadí konfiguraci replikace použitou pro vysokou dostupnost na úrovni horizontálních oddílů určenou správcem.
 
@@ -232,6 +232,6 @@ Projděte si následující články o odkazech Oracle, které se vztahují k va
 
 - [Úvod do Oracle data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)
 - [Koncepty zprostředkovatele Oracle data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html)
-- [Konfigurace Oracle GoldenGate pro zajištění vysoké dostupnosti aktivní – aktivní](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
+- [Konfigurace Oracle GoldenGate pro Active-Active vysoké dostupnosti](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
 - [Přehled Oracle horizontálního dělení](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-overview.html)
 - [Oracle Active Data Guard – vzdálená synchronizace – nulová ztráta dat v libovolné vzdálenosti](https://www.oracle.com/technetwork/database/availability/farsync-2267608.pdf)

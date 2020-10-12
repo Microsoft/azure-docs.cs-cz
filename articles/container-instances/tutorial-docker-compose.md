@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: ''
 ms.openlocfilehash: 1e8a5cd856358a0dc3e9c356cb3a55f75db29c86
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90709655"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Kurz: nasazení skupiny s více kontejnery pomocí Docker Compose 
@@ -18,7 +18,7 @@ V tomto kurzu použijete [Docker Compose](https://docs.docker.com/compose/) k de
 Při vývoji nativních aplikací cloudu s Docker můžete spouštět kontejnery v Azure Container Instances na vyžádání a chcete bez problémů přepnout z místního vývoje na nasazení v cloudu. Tato funkce je povolená [integrací mezi Docker a Azure](https://docs.docker.com/engine/context/aci-integration/). Pomocí nativních příkazů Docker můžete v Azure spustit [jednu instanci kontejneru](quickstart-docker-cli.md) nebo skupinu více kontejnerů.
 
 > [!IMPORTANT]
-> Ne všechny funkce Azure Container Instances jsou podporovány. Poskytněte zpětnou vazbu o integraci Docker – Azure vytvořením problému v úložišti GitHub [ACI Integration Docker](https://github.com/docker/aci-integration-beta) .
+> Ne všechny funkce Azure Container Instances jsou podporovány. Poskytněte zpětnou vazbu o integraci Docker-Azure vytvořením problému v úložišti GitHub [integrace Docker ACI](https://github.com/docker/aci-integration-beta) .
 
 > [!TIP]
 > [Rozšíření Docker pro Visual Studio Code](https://aka.ms/VSCodeDocker) můžete použít pro integrované prostředí pro vývoj, spouštění a správu kontejnerů, obrázků a kontextů.
@@ -33,7 +33,7 @@ V tomto článku:
 > * Vytvoření kontextu Azure pro Docker
 > * Uvedení aplikace v Azure Container Instances
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Azure CLI** – v místním počítači musíte mít nainstalované rozhraní příkazového řádku Azure. Doporučuje se verze 2.10.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
@@ -212,7 +212,7 @@ azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front   
 
 Pokud chcete zobrazit spuštěnou aplikaci v cloudu, zadejte zobrazenou IP adresu v místním webovém prohlížeči. V tomto příkladu zadejte `52.179.23.131` . Načte se ukázková aplikace, jak je znázorněno v následujícím příkladu:
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Obrázek hlasovací aplikace v ACI":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Obrázek hlasovací aplikace":::
 
 Pokud chcete zobrazit protokoly front-endu kontejneru, spusťte příkaz [Docker logs](https://docs.docker.com/engine/reference/commandline/logs) . Například:
 

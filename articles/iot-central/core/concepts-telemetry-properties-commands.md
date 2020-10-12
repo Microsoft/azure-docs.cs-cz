@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 554079ddec3332ced2817d18ea55ce1260d68817
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87291608"
 ---
-# <a name="telemetry-property-and-command-payloads"></a>Datová část telemetrie, vlastností a příkazů
+# <a name="telemetry-property-and-command-payloads"></a>Datové části telemetrie, vlastností a příkazů
 
 _Tento článek se týká vývojářů zařízení._
 
@@ -347,7 +347,7 @@ Následující fragment kódu z DCM ukazuje definici `Object` typu telemetrie. T
 }
 ```
 
-Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v následujícím příkladu. `DateTime`typy musí být kompatibilní s ISO 8061. Možné hodnoty pro `Property3` jsou `0` , `1` a, které se zobrazují v IoT Central jako `Item1` , `Item2` a `Item3` :
+Klient zařízení by měl odeslat telemetrii jako JSON, která vypadá jako v následujícím příkladu. `DateTime` typy musí být kompatibilní s ISO 8061. Možné hodnoty pro `Property3` jsou `0` , `1` a, které se zobrazují v IoT Central jako `Item1` , `Item2` a `Item3` :
 
 ```json
 {
@@ -531,7 +531,7 @@ Následující fragment kódu z DCM ukazuje definici `date` typu vlastnosti:
 }
 ```
 
-Klient zařízení by měl poslat datovou část JSON, která vypadá jako v následujícím příkladu jako vlastnost hlášená v zařízení je v nevlákna. `Date`typy musí být kompatibilní s ISO 8061:
+Klient zařízení by měl poslat datovou část JSON, která vypadá jako v následujícím příkladu jako vlastnost hlášená v zařízení je v nevlákna. `Date` typy musí být kompatibilní s ISO 8061:
 
 ```json
 { "DateProperty": "2020-05-17" }
@@ -766,18 +766,18 @@ V této části jsou uvedeny příklady typů vlastností s možností zápisu, 
 
 IoT Central očekává odpověď ze zařízení do zapisovatelných aktualizací vlastností. Zpráva odpovědi by měla zahrnovat `ac` pole a `av` . Pole `ad` je nepovinné. Příklady najdete v následujících fragmentech kódu.
 
-`ac`je číselné pole, které používá hodnoty v následující tabulce:
+`ac` je číselné pole, které používá hodnoty v následující tabulce:
 
-| Hodnota | Popisek | Popis |
+| Hodnota | Popisek | Description |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Dokončeno | Operace změny vlastnosti byla úspěšně dokončena. |
-| `'ac': 202`ani`'ac': 201` | Čekající | Operace změny vlastnosti čeká na vyřízení nebo probíhá. |
+| `'ac': 202`  ani `'ac': 201` | Čekající | Operace změny vlastnosti čeká na vyřízení nebo probíhá. |
 | `'ac': 4xx` | Chyba | Požadovaná změna vlastnosti nebyla platná nebo došlo k chybě. |
 | `'ac': 5xx` | Chyba | U zařízení došlo k neočekávané chybě při zpracování požadované změny. |
 
-`av`je číslo verze odesílané do zařízení.
+`av` je číslo verze odesílané do zařízení.
 
-`ad`je popis řetězce možností.
+`ad` je popis řetězce možností.
 
 Následující fragment kódu z DCM ukazuje definici `string` typu zapisovatelné vlastnosti:
 

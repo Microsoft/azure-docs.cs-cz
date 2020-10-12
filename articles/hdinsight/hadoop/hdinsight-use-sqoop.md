@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: 165b7d00c3cf307e7996e84a35bb2a202f448cc0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86076874"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Použití Apache Sqoopu s Hadoopem ve službě HDInsight
@@ -95,7 +95,7 @@ Cluster, SQL Database a další objekty se vytvářejí prostřednictvím Azure 
     |Název souboru BacPac |Pokud nechcete použít vlastní soubor BacPac, použijte výchozí hodnotu.|
     |Umístění |Použijte výchozí hodnotu.|
 
-    Název [logického serveru SQL Server](../../azure-sql/database/logical-servers.md) bude `<ClusterName>dbserver` . Název databáze bude `<ClusterName>db` . Výchozí název účtu úložiště bude `e6qhezrh2pdqu` .
+    Název [logického serveru SQL Server](../../azure-sql/database/logical-servers.md) bude  `<ClusterName>dbserver` . Název databáze bude `<ClusterName>db` . Výchozí název účtu úložiště bude `e6qhezrh2pdqu` .
 
 3. Vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře**.
 
@@ -118,7 +118,7 @@ HDInsight může spouštět úlohy Sqoop pomocí různých metod. Pomocí násle
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste se naučili, jak používat Sqoop. Další informace naleznete v tématu:
+Nyní jste se naučili, jak používat Sqoop. Další informace najdete v následujících tématech:
 
 * [Použití Apache Hive se službou HDInsight](../hdinsight-use-hive.md)
 * [Nahrávání dat do HDInsight](../hdinsight-upload-data.md): Najděte další metody pro nahrávání dat do služby HDInsight/Azure Blob Storage.

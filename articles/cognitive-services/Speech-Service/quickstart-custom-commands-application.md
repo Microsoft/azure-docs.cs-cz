@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289428"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Vytvoření hlasového asistenta pomocí vlastních příkazů
@@ -66,7 +66,7 @@ V současné době vlastní příkazy podporují odběry řeči vytvořené v t�
     > [!div class="mx-imgBorder"]
     > ![Vytvoření projektu](media/custom-commands/import-project.png)
 
-1.  V seznamu **prostředek pro vytváření Luis** vyberte prostředek pro vytváření obsahu. Pokud neexistují žádné platné prostředky pro vytváření obsahu, vytvořte si ho tak, že vyberete **vytvořit nový prostředek pro vytváření obsahu Luis**.
+1.  V seznamu **prostředek pro vytváření Luis** vyberte prostředek pro vytváření obsahu. Pokud neexistují žádné platné prostředky pro vytváření obsahu, vytvořte si ho tak, že vyberete  **vytvořit nový prostředek pro vytváření obsahu Luis**.
 
     > [!div class="mx-imgBorder"]
     > ![Vytvoření prostředku](media/custom-commands/create-new-luis-resource.png)
@@ -101,7 +101,7 @@ Než budete moct k této aplikaci přistupovat z vnějšího nástroje Speech St
 ### <a name="update-prediction-luis-resource"></a>Aktualizovat LUIS prostředek předpovědi
 
 
-1. V levém podokně vyberte **Nastavení** a v prostředním podokně vyberte **Luis prostředky** .
+1. V levém podokně vyberte **Nastavení** a v prostředním podokně vyberte  **Luis prostředky** .
 1. Vyberte prostředek předpovědi, nebo ho vytvořte výběrem možnosti **vytvořit nový prostředek**.
 1. Vyberte **Uložit**.
     
@@ -113,7 +113,7 @@ Než budete moct k této aplikaci přistupovat z vnějšího nástroje Speech St
 
 ### <a name="publish-the-application"></a>Publikování aplikace
 
-V pravém horním podokně vyberte **publikovat** . Po dokončení publikování se zobrazí nové okno. Poznamenejte si z něj hodnotu **ID aplikace** a **klíč prostředku pro rozpoznávání řeči** . Tyto dvě hodnoty budete potřebovat, abyste měli přístup k aplikaci z vnější řeči Studio.
+V pravém horním podokně vyberte  **publikovat** . Po dokončení publikování se zobrazí nové okno. Poznamenejte si z něj hodnotu **ID aplikace** a **klíč prostředku pro rozpoznávání řeči** . Tyto dvě hodnoty budete potřebovat, abyste měli přístup k aplikaci z vnější řeči Studio.
 
 Případně můžete tyto hodnoty získat také tak, že vyberete **Nastavení**  >  **Obecné** oddíl.
 

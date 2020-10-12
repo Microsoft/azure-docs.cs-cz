@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705992"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform Developer Glosář
@@ -54,7 +54,7 @@ Další informace naleznete v tématu [Application and Service instanční objek
 
 Aby mohla aplikace integrovat s funkcemi pro správu identit a přístupu do služby Azure AD, musí být zaregistrované v [Tenantovi](#tenant)Azure AD. Při registraci aplikace ve službě Azure AD poskytujete konfiguraci identity pro vaši aplikaci, která umožňuje integraci s Azure AD a používání funkcí, jako například:
 
-* Robustní Správa jednotného přihlašování pomocí Azure AD identity managementu a implementace protokolu [OpenID Connect][OpenIDConnect]
+* Robustní Správa jednoho Sign-On pomocí implementace protokolu Azure AD Identity Management a [OpenID Connect][OpenIDConnect]
 * Zprostředkovaný přístup k [chráněným prostředkům](#resource-server) pomocí [klientských aplikací](#client-application)prostřednictvím [autorizačního serveru](#authorization-server) OAuth 2,0
 * [Rozhraní pro vyjádření souhlasu](#consent) pro správu přístupu klientů k chráněným prostředkům na základě autorizace vlastníka prostředků.
 

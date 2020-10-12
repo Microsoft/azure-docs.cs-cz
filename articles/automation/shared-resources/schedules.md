@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 09/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: 844a45c9b596522b949443b6edc311308da7806c
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90004608"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Spravovat plány v Azure Automation
@@ -26,7 +26,7 @@ Pokud chcete naplánovat spuštění Runbooku v Azure Automation v zadanou dobu,
 
 Rutiny v následující tabulce vytvářejí a spravují plány automatizace pomocí PowerShellu. Dodávají se jako součást [AZ moduls](modules.md#az-modules).
 
-| Rutiny | Popis |
+| Rutiny | Description |
 |:--- |:--- |
 | [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule) |Načte plán. |
 | [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook) |Načte naplánované Runbooky. |
@@ -189,7 +189,7 @@ Až budete připraveni k odebrání plánů, můžete použít Azure Portal nebo
 
 1. V účtu Automation v levém podokně vyberte **plány** v části **sdílené prostředky**.
 2. Vyberte název plánu a otevřete tak podokno podrobností.
-3. Klikněte na tlačítko **Odstranit**.
+3. Klikněte na **Odstranit**.
 
 ### <a name="remove-a-schedule-with-powershell"></a>Odebrání plánu pomocí PowerShellu
 

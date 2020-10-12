@@ -10,10 +10,10 @@ ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c9c8aa86aa8a374a33750e306529ef212c9a8bfc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89012326"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serializace telemetrie pomocí vyrovnávacích pamětí protokolu
@@ -32,7 +32,7 @@ Postup v tomto návodu vám ukáže, jak:
 1. Generovat třídy Protobuf
 1. Test lokálně
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete postupovat podle kroků v tomto průvodci, budete potřebovat:
 
@@ -174,7 +174,7 @@ Když máte model zařízení a určíte formát zprávy, můžete **vytvořit s
 
 1. [Stažení kompilátoru Protobuf z GitHubu](https://github.com/protocolbuffers/protobuf/releases/download/v3.4.0/protoc-3.4.0-win32.zip)
 
-1. Spusťte kompilátor, určete zdrojový adresář, cílový adresář a **název souboru.** Příklad:
+1. Spusťte kompilátor, určete zdrojový adresář, cílový adresář a **název souboru.** Například:
 
     ```cmd
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
@@ -206,7 +206,7 @@ Otevřete soubor **WebService\appsettings.ini** a upravte nastavení následují
 
 Ve výchozím nastavení se vaše nové soubory JSON a JS modelů zařízení do sestaveného řešení nekopírují. Je nutné je explicitně zahrnout.
 
-Přidejte položku do souboru **services\services.csproj** pro každý soubor, který chcete zahrnout. Příklad:
+Přidejte položku do souboru **services\services.csproj** pro každý soubor, který chcete zahrnout. Například:
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">

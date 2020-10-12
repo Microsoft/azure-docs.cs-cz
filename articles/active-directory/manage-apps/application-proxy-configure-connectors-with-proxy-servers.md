@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88077505"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce se stávajícími místními proxy servery
@@ -144,7 +144,7 @@ Použití předávacího proxy serveru pro komunikaci směrem k back-endové apl
 Pokud to chcete povolit, postupujte prosím podle následujících kroků:
 
 ### <a name="step-1-add-the-required-registry-value-to-the-server"></a>Krok 1: přidejte do serveru požadovanou hodnotu registru
-1. Pokud chcete povolit použití výchozího proxy serveru, přidejte následující hodnotu registru (DWORD) `UseDefaultProxyForBackendRequests = 1` do klíče registru konfigurace konektoru, který najdete v části HKEY_LOCAL_MACHINE \SOFTWARE\MICROSOFT\MICROSOFT AAD App proxy Connector.
+1. Pokud chcete povolit použití výchozího proxy serveru, přidejte `UseDefaultProxyForBackendRequests = 1` do klíče registru konfigurace konektoru, který se nachází v HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft AAD App Proxy Connector, následující hodnotu registru (DWORD).
 
 ### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>Krok 2: ruční konfigurace proxy server pomocí příkazu netsh
 1.  Povolte zásadám skupiny vytvořit nastavení proxy serveru na počítač. Najdete ho v: počítač \ \ součásti systému Windows\internet Explorer. Tento postup je potřeba nastavit, aby tato zásada nebyla nastavená na jednotlivé uživatele.

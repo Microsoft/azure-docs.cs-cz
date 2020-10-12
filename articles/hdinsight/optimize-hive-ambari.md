@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084354"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Optimalizace Apache Hive s Apache Ambari v Azure HDInsight
@@ -158,7 +158,7 @@ Jako obecné pravidlo je důležité mít rozdělenou část kompresní metody, 
 
     c. V okně Přidat vlastnost zadejte `mapred.map.output.compression.codec` jako klíč a `org.apache.hadoop.io.compress.SnappyCodec` jako hodnotu.
 
-    d. Vyberte možnost **Přidat**.
+    d. Vyberte **Přidat**.
 
     ![Přidat vlastní vlastnost Apache Hive](./media/optimize-hive-ambari/hive-custom-property.png)
 
@@ -223,7 +223,7 @@ Následující části popisují další optimalizace týkající se podregistru
 
 Výchozím typem spojení v podregistru je *náhodné spojení*. V podregistru speciální mapovače přečtou vstup a vygeneruje dvojici klíč/hodnota JOIN k mezilehlému souboru. Hadoop seřadí a sloučí tyto páry v náhodně připravené fázi. Tato fáze náhodného zpracování je náročná. Výběr správného spojení na základě vašich dat může významně zlepšit výkon.
 
-| Typ spojení | Kdy | Postup | Nastavení podregistru | Komentáře |
+| Typ spojení | Když | Jak | Nastavení podregistru | Komentáře |
 | --- | --- | --- | --- | --- |
 | Náhodně připojit | <ul><li>Výchozí volba</li><li>Vždy funguje</li></ul> | <ul><li>Čtení z části jedné z tabulek</li><li>Intervaly a řazení podle klávesy JOIN</li><li>Každé omezení pošle jednu sadu.</li><li>Spojení se provádí na straně snížení</li></ul> | Není potřeba žádné významné nastavení podregistru | Funguje kdykoli |
 | Připojit k mapě | <ul><li>Jedna tabulka se může vejít do paměti.</li></ul> | <ul><li>Přečte malou tabulku do tabulky hash paměti.</li><li>Streamování prostřednictvím části velkého souboru</li><li>Spojí každý záznam z zatřiďovací tabulky.</li><li>Spojení jsou pouze mapovačem.</li></ul> | `hive.auto.confvert.join=true` | Rychlá, ale omezená |
@@ -233,7 +233,7 @@ Výchozím typem spojení v podregistru je *náhodné spojení*. V podregistru s
 
 Další doporučení pro optimalizaci spouštěcího modulu podregistru:
 
-| Nastavení | Doporučené | Výchozí nastavení HDInsight |
+| Nastavení | Doporučeno | Výchozí nastavení HDInsight |
 | --- | --- | --- |
 | `hive.mapjoin.hybridgrace.hashtable` | True = bezpečnější, pomalejší; false = rychlejší | false (nepravda) |
 | `tez.am.resource.memory.mb` | horní mez velikosti 4 GB pro většinu | Automaticky laděné |

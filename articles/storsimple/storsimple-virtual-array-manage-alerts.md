@@ -16,10 +16,10 @@ ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f32ec82c2b4c6d8b902195782b286cca82befb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85507632"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Použití Device Manager StorSimple ke správě výstrah pro virtuální pole StorSimple
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak nakonfigurovat upozornění na výstrahy, běžn�
 
 ![Stránka s výstrahami](./media/storsimple-virtual-array-manage-alerts/alerts1.png)
 
-## <a name="configure-alert-settings"></a>Konfigurace nastavení výstrah
+## <a name="configure-alert-settings"></a>Konfigurace nastavení upozornění
 
 Můžete zvolit, zda chcete být upozorňováni e-mailem s podmínkami upozornění pro každé z vašich virtuálních polí StorSimple. Kromě toho můžete určit další příjemce oznámení výstrah zadáním jejich e-mailových adres do pole **Další příjemci e-mailu** , které jsou odděleny středníky.
 

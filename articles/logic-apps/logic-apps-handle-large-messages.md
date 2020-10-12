@@ -8,10 +8,10 @@ ms.author: daberry
 ms.topic: article
 ms.date: 12/03/2019
 ms.openlocfilehash: 54828dded5196c86946d99a9cd8cec7a42533661
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83117559"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Zpracování velkých zpráv pomocí bloků dat v Azure Logic Apps
@@ -144,7 +144,7 @@ Tyto kroky popisují podrobný Logic Apps procesu, který se používá pro nahr
 
    | Pole hlavičky odpovědi koncového bodu | Typ | Vyžadováno | Popis |
    |--------------------------------|------|----------|-------------|
-   | **Oblasti** | Řetězec | Yes | Rozsah bajtů pro obsah, který byl přijat koncovým bodem, například: "bytes = 0-1023" |   
+   | **Rozsah** | Řetězec | Yes | Rozsah bajtů pro obsah, který byl přijat koncovým bodem, například: "bytes = 0-1023" |   
    | **x-MS-bloková velikost** | Integer | No | Navrhovaná velikost bloku v bajtech |
    ||||
 

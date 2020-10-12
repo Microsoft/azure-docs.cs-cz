@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083946"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Použití více clusterů HDInsight s účtem Azure Data Lake Storage
@@ -34,9 +34,9 @@ Aby bylo možné tuto strukturu složky efektivně využívat clustery HDInsight
 
 |Složka  |Oprávnění  |Vlastnící uživatel  |Vlastnící skupina  | Pojmenovaný uživatel | Pojmenovaná uživatelská oprávnění | Pojmenovaná skupina | Pojmenovaná skupina oprávnění |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |admin |admin  |Instanční objekt |--x  |FINGRP   |r-x         |
-|/clusters | rwxr-x--x |admin |admin |Instanční objekt |--x  |FINGRP |r-x         |
-|/clusters/finance | rwxr-x--t |admin |FINGRP  |Instanční objekt |RWX  |-  |-     |
+|/ | rwxr-x--x  |správce |správce  |Instanční objekt |--x  |FINGRP   |r-x         |
+|/clusters | rwxr-x--x |správce |správce |Instanční objekt |--x  |FINGRP |r-x         |
+|/clusters/finance | rwxr-x--t |správce |FINGRP  |Instanční objekt |RWX  |-  |-     |
 
 V tabulce
 
@@ -65,7 +65,7 @@ Doporučujeme, aby se vstupní data do úlohy a výstupy z úlohy ukládaly do s
 
 Omezení počtu clusterů, které můžou sdílet jeden Data Lake Storage účet, závisí na zatížení spouštěného na těchto clusterech. Pokud máte v clusterech, které sdílejí účet úložiště, moc velký počet clusterů nebo velmi náročné úlohy, může dojít k omezení počtu vstupně-výstupních přenosů účtu úložiště.
 
-## <a name="support-for-default-acls"></a>Podpora výchozích seznamů ACL
+## <a name="support-for-default-acls"></a>Podpora Default-ACLs
 
 Při vytváření instančního objektu s přístupem k pojmenovanému uživateli (jak je znázorněno v tabulce výše) doporučujeme **Nepřidávat** pojmenovaného uživatele s výchozím seznamem ACL. Zřizování přístupu s názvem s použitím výchozích seznamů ACL vede k přiřazení oprávnění 770 pro vlastnícího uživatele, vlastnící skupinu a další. I když tato výchozí hodnota 770 nebere v úvahu oprávnění od vlastnícího uživatele (7) nebo vlastnícího skupiny (7), zabírá všechna oprávnění pro ostatní (0). Výsledkem je známý problém s jedním konkrétním případem použití, který je podrobně popsán v části [známé problémy a alternativní řešení](#known-issues-and-workarounds) .
 

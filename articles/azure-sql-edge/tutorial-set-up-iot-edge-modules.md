@@ -10,10 +10,10 @@ ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 7b2432fda70e8f9a5fa8bc64ede846d977672e9e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90886476"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>Nastavení IoT Edgech modulů a připojení
@@ -44,7 +44,7 @@ Nyní zadejte pověření kontejneru v modulu IoT Edge.
 
    _Pole_|_Hodnota_
    -------|-------
-   Name|Název registru
+   Název|Název registru
    Adresa|Přihlašovací server
    Uživatelské jméno|Uživatelské jméno
    Heslo|Heslo
@@ -60,7 +60,7 @@ Nyní zadejte pověření kontejneru v modulu IoT Edge.
 
    *přihlašovací server containerregistry* / *název úložiště*:*název značky*
 
-   Příklad:
+   Například:
 
    ```
    ASEdemocontregistry.azurecr.io/silicaprediction:amd64
@@ -92,7 +92,7 @@ Nyní zadejte pověření kontejneru v modulu IoT Edge.
    BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/IronOreMeasures")
    ```
 
-   Příklad:
+   Například:
 
    ```
    FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/IronOreMeasures")
@@ -115,7 +115,7 @@ Nyní zadejte pověření kontejneru v modulu IoT Edge.
    |Server|Veřejná IP adresa zmíněná na virtuálním počítači, který se vytvořil pro tuto ukázku|
    |Uživatelské jméno|sa|
    |Heslo|Silné heslo, které se použilo při vytváření instance Azure SQL Edge|
-   |Databáze|Výchozí|
+   |databáze|Výchozí|
    |Skupina serverů|Výchozí|
    |Název (nepovinný)|Zadání volitelného názvu|
 

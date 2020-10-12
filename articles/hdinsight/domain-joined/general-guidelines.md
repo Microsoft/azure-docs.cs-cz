@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: 8d97886232eecc369746e33df484cbfb9d40da72
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87530261"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Obecné informace o podnikovém zabezpečení a pokyny v Azure HDInsight
@@ -95,7 +95,7 @@ Pro každý cluster použijte novou skupinu prostředků, abyste mohli rozlišov
 
 * Zakažte zásady podmíněného přístupu pomocí zásad na základě IP adres. To vyžaduje, aby byly na virtuální sítě, kde jsou nasazené clustery, povoleny koncové body služby. Pokud používáte externí službu pro MFA (jinou než AAD), zásady založené na IP adresách nebudou fungovat.
 
-* `AllowCloudPasswordValidation`pro federované uživatele se vyžadují zásady. Vzhledem k tomu, že HDInsight používá uživatelské jméno/heslo přímo k získání tokenů z Azure AD, musí být tato zásada povolená pro všechny federované uživatele.
+* `AllowCloudPasswordValidation` pro federované uživatele se vyžadují zásady. Vzhledem k tomu, že HDInsight používá uživatelské jméno/heslo přímo k získání tokenů z Azure AD, musí být tato zásada povolená pro všechny federované uživatele.
 
 * Povolte koncové body služby, pokud požadujete obcházení podmíněného přístupu pomocí důvěryhodných IP adres.
 

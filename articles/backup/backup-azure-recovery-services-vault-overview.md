@@ -4,10 +4,10 @@ description: Přehled trezorů Recovery Services.
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: cc09c1ffa84bc66e8fe2c48c80b8aea0977762ba
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975150"
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezorů služby Recovery Services
@@ -20,9 +20,9 @@ Tento článek popisuje funkce trezoru Recovery Services. Recovery Services trez
 
 - **Access Control na základě rolí (RBAC)**: RBAC zajišťuje v Azure jemně odstupňované řízení přístupu. [Azure poskytuje různé předdefinované role](../role-based-access-control/built-in-roles.md)a Azure Backup má tři [předdefinované role pro správu bodů obnovení](backup-rbac-rs-vault.md). Trezory Recovery Services jsou kompatibilní s RBAC, což omezuje přístup k nástroji pro zálohování a obnovení na definovanou sadu rolí uživatele. [Další informace](backup-rbac-rs-vault.md)
 
-- **Obnovitelné odstranění**: u obnovitelného odstranění, i když škodlivý objekt actor odstraní zálohu (nebo se zálohovaná data nechtěně odstraní), zálohovaná data se uchovávají po dobu 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Další 14 dní uchovávání zálohových dat ve stavu "obnovitelné odstranění" za vás neúčtují žádné náklady. [Přečtěte si další informace](backup-azure-security-feature-cloud.md).
+- **Obnovitelné odstranění**: u obnovitelného odstranění, i když škodlivý objekt actor odstraní zálohu (nebo se zálohovaná data nechtěně odstraní), zálohovaná data se uchovávají po dobu 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Další 14 dní uchovávání zálohových dat ve stavu "obnovitelné odstranění" za vás neúčtují žádné náklady. [Další informace](backup-azure-security-feature-cloud.md).
 
-- **Obnovení mezi oblastmi**: obnovení mezi oblastmi (crr) vám umožňuje obnovení virtuálních počítačů Azure v sekundární oblasti, která je spárována s oblastí Azure. Pokud Azure deklaruje havárie v primární oblasti, data replikovaná v sekundární oblasti jsou dostupná k obnovení v sekundární oblasti, aby se zmírnila Doba výpadku reálného výpadku v primární oblasti pro jejich prostředí. [Přečtěte si další informace](backup-azure-arm-restore-vms.md#cross-region-restore).
+- **Obnovení mezi oblastmi**: obnovení mezi oblastmi (crr) vám umožňuje obnovení virtuálních počítačů Azure v sekundární oblasti, která je spárována s oblastí Azure. Pokud Azure deklaruje havárie v primární oblasti, data replikovaná v sekundární oblasti jsou dostupná k obnovení v sekundární oblasti, aby se zmírnila Doba výpadku reálného výpadku v primární oblasti pro jejich prostředí. [Další informace](backup-azure-arm-restore-vms.md#cross-region-restore).
 
 ## <a name="storage-settings-in-the-recovery-services-vault"></a>Nastavení úložiště v trezoru Recovery Services
 
@@ -54,7 +54,7 @@ Azure Advisor poskytuje hodinová [doporučení](../advisor/advisor-high-availab
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Úložiště – podporované a nepodporované scénáře](backup-support-matrix.md#vault-support)
 - [Nejčastější dotazy k trezoru](backup-azure-backup-faq.md)

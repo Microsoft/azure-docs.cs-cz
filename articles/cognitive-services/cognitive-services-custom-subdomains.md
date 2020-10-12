@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
 ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83590634"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Názvy vlastních subdomén pro Cognitive Services
@@ -34,7 +34,7 @@ Pokud chcete migrovat existující prostředek, abyste mohli využívat názvy v
 
 ## <a name="do-i-need-to-update-my-existing-resources"></a>Potřebuji aktualizovat moje stávající prostředky?
 
-No. Místní koncový bod bude fungovat i nadále pro nové a stávající Cognitive Services a název vlastní subdomény je nepovinný. I když se přidá název vlastní subdomény, místní koncový bod bude i nadále pracovat s prostředkem.
+Ne. Místní koncový bod bude fungovat i nadále pro nové a stávající Cognitive Services a název vlastní subdomény je nepovinný. I když se přidá název vlastní subdomény, místní koncový bod bude i nadále pracovat s prostředkem.
 
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>Co když SDK požádá o oblast pro určitý prostředek?
 
@@ -47,7 +47,7 @@ Informace o oblasti jsou k dispozici v okně **Přehled** pro váš prostředek 
 
 ## <a name="are-custom-subdomain-names-regional"></a>Jsou názvy vlastních subdomén regionální?
 
-Yes. Použití vlastního názvu subdomény nemění žádné místní aspekty vašeho prostředku Cognitive Services.
+Ano. Použití vlastního názvu subdomény nemění žádné místní aspekty vašeho prostředku Cognitive Services.
 
 ## <a name="what-are-the-requirements-for-a-custom-subdomain-name"></a>Jaké jsou požadavky na název vlastní subdomény?
 
@@ -55,7 +55,7 @@ Název vlastní subdomény je pro váš prostředek jedinečný. Název může o
 
 ## <a name="can-i-change-a-custom-domain-name"></a>Můžu změnit vlastní název domény?
 
-No. Po vytvoření vlastního názvu subdomény a jeho přidružení k prostředku ho nelze změnit.
+Ne. Po vytvoření vlastního názvu subdomény a jeho přidružení k prostředku ho nelze změnit.
 
 ## <a name="can-i-reuse-a-custom-domain-name"></a>Můžu znovu použít vlastní název domény?
 
@@ -63,7 +63,7 @@ Každý název vlastní subdomény je jedinečný, takže pokud chcete znovu pou
 
 ## <a name="is-there-a-list-of-regional-endpoints"></a>Existuje seznam regionálních koncových bodů?
 
-Yes. Toto je seznam regionálních koncových bodů, které můžete použít s prostředky Azure Cognitive Services.
+Ano. Toto je seznam regionálních koncových bodů, které můžete použít s prostředky Azure Cognitive Services.
 
 > [!NOTE]
 > Služba Translator a rozhraní API pro vyhledávání Bingu používat globální koncové body.
@@ -72,26 +72,26 @@ Yes. Toto je seznam regionálních koncových bodů, které můžete použít s 
 |---------------|--------|----------|
 | Public | Globální (Translator & Bing) | `https://api.cognitive.microsoft.com` |
 | | Austrálie – východ | `https://australiaeast.api.cognitive.microsoft.com` |
-| | Brazílie – jih | `https://brazilsouth.api.cognitive.microsoft.com` |
+| | Brazil South | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Střední Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
-| | USA – střed | `https://centralus.api.cognitive.microsoft.com` |
+| | Střední USA | `https://centralus.api.cognitive.microsoft.com` |
 | | Východní Asie | `https://eastasia.api.cognitive.microsoft.com` |
-| | USA – východ | `https://eastus.api.cognitive.microsoft.com` |
+| | East US | `https://eastus.api.cognitive.microsoft.com` |
 | | USA – východ 2 | `https://eastus2.api.cognitive.microsoft.com` |
 | | Francie – střed | `https://francecentral.api.cognitive.microsoft.com` |
 | | Indie – střed | `https://centralindia.api.cognitive.microsoft.com` |
-| | Japonsko – východ | `https://japaneast.api.cognitive.microsoft.com` |
+| | Japan East | `https://japaneast.api.cognitive.microsoft.com` |
 | | Jižní Korea – střed | `https://koreacentral.api.cognitive.microsoft.com` |
 | | USA – středosever | `https://northcentralus.api.cognitive.microsoft.com` |
 | | Severní Evropa | `https://northeurope.api.cognitive.microsoft.com` |
 | | Jižní Afrika – sever | `https://southafricanorth.api.cognitive.microsoft.com` |
-| | USA – středojih | `https://southcentralus.api.cognitive.microsoft.com` |
-| | Jihovýchodní Asie | `https://southeastasia.api.cognitive.microsoft.com` |
+| | Středojižní USA | `https://southcentralus.api.cognitive.microsoft.com` |
+| | Southeast Asia | `https://southeastasia.api.cognitive.microsoft.com` |
 | | Spojené království – jih | `https://uksouth.api.cognitive.microsoft.com` |
 | | USA – středozápad | `https://westcentralus.api.cognitive.microsoft.com` |
-| | Západní Evropa | `https://westeurope.api.cognitive.microsoft.com` |
+| | West Europe | `https://westeurope.api.cognitive.microsoft.com` |
 | | USA – západ | `https://westus.api.cognitive.microsoft.com` |
-| | USA – západ 2 | `https://westus2.api.cognitive.microsoft.com` |
+| | Západní USA 2 | `https://westus2.api.cognitive.microsoft.com` |
 | US Gov | USA (Gov) – Virginia | `https://virginia.api.cognitive.microsoft.us` |
 | Čína | Čína – východ 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | Čína – sever | `https://chinanorth.api.cognitive.azure.cn` |

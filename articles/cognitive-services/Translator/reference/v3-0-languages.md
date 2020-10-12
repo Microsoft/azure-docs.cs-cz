@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 1f4dfc4b80aff01e4b7fe7ebae4850b28cd6a498
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83588594"
 ---
 # <a name="translator-30-languages"></a>Překladatel 3,0: jazyky
@@ -34,7 +34,7 @@ Parametry žádosti předané řetězci dotazu jsou:
 
 <table width="100%">
   <th width="20%">Parametr dotazu</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>verze-api</td>
     <td><em>Povinný parametr</em>.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0` .</td>
@@ -49,7 +49,7 @@ Hlavičky požadavku jsou:
 
 <table width="100%">
   <th width="20%">Hlavičky</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>Accept-Language</td>
     <td>*Nepovinná Hlavička požadavku*<br/>Jazyk, který se má použít pro řetězce uživatelského rozhraní. Některá pole v odpovědi jsou názvy jazyků nebo názvů oblastí. Tento parametr použijte k definování jazyka, ve kterém jsou tyto názvy vraceny. Jazyk je určen tak, že poskytuje značku jazyka BCP 47 ve správném formátu. Použijte například hodnotu `fr` pro vyžádání názvů ve francouzštině nebo použijte hodnotu `zh-Hant` pro vyžádání názvů v tradiční čínštině.<br/>Názvy jsou k dispozici v anglickém jazyce, pokud není zadán cílový jazyk nebo pokud není lokalizace k dispozici.
@@ -67,11 +67,11 @@ K získání prostředků jazyka není vyžadováno ověřování.
 
 Klient používá `scope` parametr dotazu k definování skupin jazyků, které vás zajímají.
 
-* `scope=translation`poskytuje jazyky podporované k překladu textu z jednoho jazyka do jiného jazyka.
+* `scope=translation` poskytuje jazyky podporované k překladu textu z jednoho jazyka do jiného jazyka.
 
-* `scope=transliteration`poskytuje funkce pro převod textu v jednom jazyce z jednoho skriptu na jiný skript.
+* `scope=transliteration` poskytuje funkce pro převod textu v jednom jazyce z jednoho skriptu na jiný skript.
 
-* `scope=dictionary`poskytuje páry jazyků, pro které `Dictionary` operace vracejí data.
+* `scope=dictionary` poskytuje páry jazyků, pro které `Dictionary` operace vracejí data.
 
 Klient může načíst několik skupin současně zadáním seznamu názvů oddělených čárkami. Například `scope=translation,transliteration,dictionary` by vracely podporované jazyky pro všechny skupiny.
 
@@ -93,7 +93,7 @@ Klient může načíst několik skupin současně zadáním seznamu názvů odd�
 
 Hodnota pro každou vlastnost je následující.
 
-* `translation`majetek
+* `translation` majetek
 
   Hodnota `translation` vlastnosti je slovník dvojic (klíč, hodnota). Každý klíč je značka jazyka BCP 47. Klíč identifikuje jazyk, pro který je možné převést text na nebo přeložit. Hodnota přidružená ke klíči je objekt JSON s vlastnostmi, které popisují jazyk:
 
@@ -119,7 +119,7 @@ Hodnota pro každou vlastnost je následující.
   }
   ```
 
-* `transliteration`majetek
+* `transliteration` majetek
 
   Hodnota `transliteration` vlastnosti je slovník dvojic (klíč, hodnota). Každý klíč je značka jazyka BCP 47. Klíč identifikuje jazyk, pro který je možné převést text z jednoho skriptu na jiný skript. Hodnota přidružená ke klíči je objekt JSON s vlastnostmi, které popisují jazyk a jeho podporované skripty:
 
@@ -184,7 +184,7 @@ Hodnota pro každou vlastnost je následující.
   }
   ```
 
-* `dictionary`majetek
+* `dictionary` majetek
 
   Hodnota `dictionary` vlastnosti je slovník dvojic (klíč, hodnota). Každý klíč je značka jazyka BCP 47. Klíč identifikuje jazyk, pro který jsou k dispozici alternativní překlady a back-překlady. Hodnota je objekt JSON, který popisuje zdrojový jazyk a cílové jazyky s dostupnými překlady:
 
@@ -230,7 +230,7 @@ Seznam podporovaných jazyků se často nemění. Aby se ušetřila šířka pá
 
 <table width="100%">
   <th width="20%">Hlavičky</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>Značk</td>
     <td>Aktuální hodnota značky entity pro požadované skupiny podporovaných jazyků. Aby bylo možné následné žádosti zefektivnit, může klient odeslat `ETag` hodnotu v `If-None-Match` poli záhlaví.
@@ -248,7 +248,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
 
 <table width="100%">
   <th width="20%">Stavový kód</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>Úspěch.</td>

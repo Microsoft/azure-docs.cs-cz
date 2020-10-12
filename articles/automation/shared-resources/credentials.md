@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 09/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: 4fbcf74c2c70d3dffd86728132d58430472271b0
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90004660"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Spravovat přihlašovací údaje v Azure Automation
@@ -55,7 +55,7 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 
 Funkce v následující tabulce slouží k přístupu k přihlašovacím údajům v sadě Runbook Python 2.
 
-| Funkce | Popis |
+| Funkce | Description |
 |:---|:---|
 | `automationassets.get_automation_credential` | Načte informace o assetu přihlašovacích údajů. |
 

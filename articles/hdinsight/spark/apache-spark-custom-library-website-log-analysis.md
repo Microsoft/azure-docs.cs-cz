@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
 ms.openlocfilehash: 1094235f5bc5cc25cf6d8f3762dc242503952de6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083793"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Analýza webových protokolů pomocí vlastní knihovny Pythonu s Apache Spark clusteru v HDInsight
@@ -78,7 +78,7 @@ Po uložení dat jako Apache Hive tabulky se v další části připojíme k tab
     sc.addPyFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
     ```
 
-1. `iislogparser`poskytuje funkci `parse_log_line` , která vrátí, `None` zda je řádek protokolu řádkem záhlaví a vrátí instanci `LogLine` třídy, pokud dojde k řádku protokolu. Použijte `LogLine` třídu k extrakci pouze řádků protokolu z RDD:
+1. `iislogparser` poskytuje funkci `parse_log_line` , která vrátí, `None` zda je řádek protokolu řádkem záhlaví a vrátí instanci `LogLine` třídy, pokud dojde k řádku protokolu. Použijte `LogLine` třídu k extrakci pouze řádků protokolu z RDD:
 
     ```pyspark
     def parse_line(l):

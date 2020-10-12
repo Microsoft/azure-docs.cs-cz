@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 632a1eb7b7ac53bd3d7df3f2722d6e53277c7926
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84738749"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostika místního připojení prostřednictvím bran VPN
@@ -44,7 +44,7 @@ Jedním z důležitých kroků konfigurace je konfigurace komunikačních parame
 
 ### <a name="ike-phase-1-setup"></a>Nastavení protokolu IKE fáze 1
 
-| **Vlastnost** | **PolicyBased** | **RouteBased a standardní nebo vysoce výkonná Brána VPN Gateway** |
+| **Vlastnost** | **PolicyBased** | **RouteBased a Standard nebo High-Performance VPN Gateway** |
 | --- | --- | --- |
 | Verze IKE |IKEv1 |IKEv2 |
 | Skupina Diffie-Hellman |Skupina 2 (1 024 bitů) |Skupina 2 (1 024 bitů) |
@@ -82,11 +82,11 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| NoFault | Pokud není zjištěna žádná chyba. |Yes|
-| GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |No|
-| PlannedMaintenance |  V instanci brány probíhá údržba.  |No|
-| UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti. | No |
-| VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | No |
+| NoFault | Pokud není zjištěna žádná chyba. |Ano|
+| GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |Ne|
+| PlannedMaintenance |  V instanci brány probíhá údržba.  |Ne|
+| UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti. | Ne |
+| VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | Ne |
 | PlatformInActive | Došlo k problému s platformou. | No|
 | ServiceNotRunning | Podkladová služba není spuštěná. | No|
 | NoConnectionsFoundForGateway | V bráně neexistují žádná připojení. Toto je pouze upozornění.| No|
@@ -97,10 +97,10 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| NoFault | Pokud není zjištěna žádná chyba. |Yes|
-| GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |No|
-| PlannedMaintenance | V instanci brány probíhá údržba.  |No|
-| UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti.  | No |
+| NoFault | Pokud není zjištěna žádná chyba. |Ano|
+| GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |Ne|
+| PlannedMaintenance | V instanci brány probíhá údržba.  |Ne|
+| UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti.  | Ne |
 | VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | No |
 | ConnectionEntityNotFound | Chybí konfigurace připojení. | No |
 | ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojeno. |No|

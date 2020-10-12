@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 9fc0a965869207ba8d1b4eb6f45e878ae4b93c3a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88079018"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>Nastavení testovacího prostředí pro správu a vývoj pomocí SQL Server
@@ -20,7 +20,7 @@ V tomto článku si ukážeme, jak nastavit šablonu virtuálního počítače v
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
-K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v [kurzu nastavení účtu testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account). Můžete použít i existující účet testovacího prostředí.
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v [kurzu nastavení účtu testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account). Můžete použít i existující účet testovacího prostředí.
 
 ### <a name="lab-account-settings"></a>Nastavení účtu testovacího prostředí
 
@@ -65,7 +65,7 @@ Teď, když je strana věcí v síti zpracována, umožňuje vytvořit databázi
 24. Klikněte na **Další: Další nastavení**.
 25. V nastavení **použít existující data** vyberte možnost **Ukázka**.  Data z databáze AdventureWorksLT budou použita při vytvoření databáze.
 26. Klikněte na **Zkontrolovat a vytvořit**.
-27. Klikněte na možnost **Vytvořit**.
+27. Klikněte na **Vytvořit**.
 
 Po úspěšném dokončení nasazení SQL Database můžeme vytvořit testovací prostředí a nainstalovat software do počítače šablony testovacího prostředí.
 
@@ -93,10 +93,10 @@ Visual Studio podporuje několik úloh, včetně **webových & cloudových** a *
 [Azure Data Studio](https://github.com/microsoft/azuredatastudio) je více databází, desktopové prostředí pro různé platformy pro odborníky na data s využitím řady místních a cloudových datových platforem v systémech Windows, MacOS a Linux.
 
 1. Stáhněte [instalační program Azure Data Studio *systému* pro Windows](https://go.microsoft.com/fwlink/?linkid=2127432). Instalační programy pro jiné podporované operační systémy zjistíte tak, že přejdete na stránku pro stažení [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download) .
-2. Na stránce **Licenční smlouva** vyberte možnost Souhlasím **se smlouvou**. Klikněte na **Další**.
+2. Na stránce **Licenční smlouva** vyberte možnost Souhlasím **se smlouvou**. Klikněte na **Next** (Další).
 3. Na stránce **Select Destination Location** (Vyberte cílové umístění) klikněte na tlačítko **Next** (Další).
 4. Na stránce **Select Start Menu Folder** (Vyberte složku nabídky Start) klikněte na tlačítko **Next** (Další).
-5. Na stránce **Vybrat další úlohy** zaškrtněte políčko **vytvořit ikonu plochy** , pokud chcete ikonu plochy.  Klikněte na **Další**.
+5. Na stránce **Vybrat další úlohy** zaškrtněte políčko **vytvořit ikonu plochy** , pokud chcete ikonu plochy.  Klikněte na **Next** (Další).
 6. Na stránce **připraveno k instalaci**klikněte na tlačítko **Další**.
 7. Počkejte, než se instalační program spustí.  Klikněte na **Finish** (Dokončit).
 

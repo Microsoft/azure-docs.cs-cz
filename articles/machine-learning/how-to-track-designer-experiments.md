@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: bffbf32cf5faa936a00444f1f39facaf226b8ef2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885979"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Povolit protokolování v Azure Machine Learningch kanálech návrháře
@@ -59,7 +59,7 @@ Následující příklad ukazuje, jak protokolovat střední chybu dvou vyškole
         return dataframe1,
     ```
     
-Tento kód používá sadu SDK Azure Machine Learning Python k protokolování hodnot. Pomocí rutiny run. get_context () Získá kontext aktuálního spuštění. Poté zaznamená hodnoty do tohoto kontextu pomocí metody Run. Parent. log (). Používá `parent` se k protokolování hodnot do nadřazeného spuštění kanálu namísto spuštění modulu.
+Tento kód používá sadu SDK Azure Machine Learning Python k protokolování hodnot. K získání kontextu aktuálního běhu používá Run.get_context (). Poté zaznamená hodnoty do tohoto kontextu pomocí metody Run. Parent. log (). Používá `parent` se k protokolování hodnot do nadřazeného spuštění kanálu namísto spuštění modulu.
 
 Další informace o tom, jak použít sadu Python SDK k protokolování hodnot, najdete v tématu [Povolení protokolování ve školicích kurzech Azure ml](how-to-track-experiments.md).
 

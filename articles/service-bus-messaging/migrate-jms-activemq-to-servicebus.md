@@ -15,10 +15,10 @@ ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
 ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067150"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Migrujte stávající aplikace JMS (Java Message Service) 2,0 z Apache ActiveMQ na Azure Service Bus
@@ -48,7 +48,7 @@ I tak existuje několik rozdílů mezi těmito dvěma, jak ukazuje následujíc�
 
 [!INCLUDE [service-bus-jms-features-list](../../includes/service-bus-jms-feature-list.md)]
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 Dvě vrstvená povaha Azure Service Bus zajišťuje různé možnosti kontinuity podnikových operací (vysoká dostupnost a zotavení po havárii). Existují však některé okolnosti, pokud používáte funkce JMS.
 
@@ -73,7 +73,7 @@ Při psaní aplikací JMS používáte následující komponenty a verze:
 | Součást | Verze |
 |---|---|
 | Rozhraní API pro JMS (Java Message Service) | 1,1 nebo vyšší |
-| Protokol AMQP | 1.0 |
+| Protokol AMQP | 1,0 |
 
 ### <a name="ensure-that-amqp-ports-are-open"></a>Zajistěte, aby byly porty AMQP otevřené.
 
@@ -84,7 +84,7 @@ Service Bus podporuje komunikaci přes protokol AMQP. Pro tento účel povolte k
 
 ### <a name="set-up-enterprise-configurations"></a>Nastavení podnikových konfigurací
 
-Service Bus umožňuje různé funkce pro podnikové zabezpečení a vysokou dostupnost. Další informace: 
+Service Bus umožňuje různé funkce pro podnikové zabezpečení a vysokou dostupnost. Další informace naleznete v tématech: 
 
   * [Koncové body služby pro virtuální síť](service-bus-service-endpoints.md)
   * [Brána firewall](service-bus-ip-filtering.md)
@@ -116,7 +116,7 @@ Můžete sladit metriky z mapy ActiveMQ, na které se metriky v Azure Service Bu
 |Nese|`CurrentConnectionsCount`|`activeConnections`|
 |Nese|`EstablishedConnectionsCount`|`activeConnections` + `connectionsClosed`|
 |Nese|`InactiveDurableTopicSubscribersCount`|Použití metrik předplatného|
-|Nese|`TotalMessageCount`|Použít úroveň fronty, tématu nebo předplatného`activeMessages`|
+|Nese|`TotalMessageCount`|Použít úroveň fronty, tématu nebo předplatného `activeMessages`|
 |Fronta/téma|`EnqueueCount`|`incomingMessages`|
 |Fronta/téma|`DequeueCount`|`outgoingMessages`|
 |Fronta|`QueueSize`|`sizeBytes`|

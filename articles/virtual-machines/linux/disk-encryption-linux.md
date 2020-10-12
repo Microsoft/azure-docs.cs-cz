@@ -1,5 +1,5 @@
 ---
-title: Scénáře služby Azure Disk Encryption na virtuálních počítačích s Linuxem
+title: Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux
 description: Tento článek poskytuje pokyny k povolení Microsoft Azureho šifrování disku pro virtuální počítače se systémem Linux v různých scénářích.
 author: msmbaldwin
 ms.service: virtual-machines-linux
@@ -9,16 +9,16 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: b7d19d782e9cb29cfc917293f084b78830db89bc
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797611"
 ---
-# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Linuxem
+# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux
 
 
-Azure Disk Encryption pro virtuální počítače se systémem Linux používá funkce DM-crypt systému Linux k poskytnutí úplného šifrování disku disku s operačním systémem a datových disků. Kromě toho poskytuje šifrování dočasného disku při použití funkce EncryptFormatAll.
+Azure Disk Encryption pro virtuální počítače se systémem Linux používá funkce DM-Crypt systému Linux k zajištění úplného šifrování disku s diskem operačního systému a datových disků. Kromě toho poskytuje šifrování dočasného disku při použití funkce EncryptFormatAll.
 
 Azure Disk Encryption je [integrována s Azure Key Vault](disk-encryption-key-vault.md) , která vám pomůžou řídit a spravovat klíče a tajné kódy disku. Přehled služby najdete v tématu [Azure Disk Encryption pro virtuální počítače se systémem Linux](disk-encryption-overview.md).
 
@@ -97,7 +97,7 @@ Další informace najdete v tématu [Začínáme s Azure PowerShell](/powershell
 V tomto scénáři můžete šifrování povolit pomocí šablony Správce prostředků, rutin prostředí PowerShell nebo příkazů rozhraní příkazového řádku. Pokud potřebujete informace o schématu pro rozšíření virtuálního počítače, přečtěte si článek [Azure Disk Encryption pro rozšíření pro Linux](../extensions/azure-disk-enc-linux.md) .
 
 >[!IMPORTANT]
- >Je nutné, abyste instanci virtuálního počítače na bázi spravovaného disku pocházeli z a před povolením Azure Disk Encryption. Snímek spravovaného disku se dá vzít z portálu nebo prostřednictvím [Azure Backup](../../backup/backup-azure-vms-encryption.md). Zálohy zajišťují, že možnost obnovení je možné v případě jakékoli neočekávané chyby při šifrování. Po vytvoření zálohy se dá rutina Set-AzVMDiskEncryptionExtension použít k šifrování spravovaných disků zadáním parametru-skipVmBackup. Příkaz set-AzVMDiskEncryptionExtension se u virtuálních počítačů založených na discích nezdaří, dokud se neprovede záloha a tento parametr se zadal. 
+ >Je nutné, abyste instanci virtuálního počítače na bázi spravovaného disku pocházeli z a před povolením Azure Disk Encryption. Snímek spravovaného disku se dá vzít z portálu nebo prostřednictvím [Azure Backup](../../backup/backup-azure-vms-encryption.md). Zálohy zajišťují, že možnost obnovení je možné v případě jakékoli neočekávané chyby při šifrování. Po vytvoření zálohy se rutina Set-AzVMDiskEncryptionExtension dá použít k šifrování spravovaných disků zadáním parametru-skipVmBackup. Příkaz Set-AzVMDiskEncryptionExtension se nezdařil proti virtuálním počítačům založeným na disku, dokud nebyla provedena záloha a nebyl zadán tento parametr. 
 >
 >Šifrování nebo zakázání šifrování může způsobit, že se virtuální počítač restartuje. 
 >
@@ -311,7 +311,7 @@ Pro přípravu předem šifrovaných imagí, které je možné použít v Azure,
 * [Příprava předem zašifrovaného virtuálního pevného disku se systémem Linux](disk-encryption-sample-scripts.md#prepare-a-pre-encrypted-linux-vhd)
 
 >[!IMPORTANT]
- >Je nutné, abyste instanci virtuálního počítače na bázi spravovaného disku pocházeli z a před povolením Azure Disk Encryption. Snímek spravovaného disku se dá vzít z portálu, nebo se dá použít [Azure Backup](../../backup/backup-azure-vms-encryption.md) . Zálohy zajišťují, že možnost obnovení je možné v případě jakékoli neočekávané chyby při šifrování. Po vytvoření zálohy se dá rutina Set-AzVMDiskEncryptionExtension použít k šifrování spravovaných disků zadáním parametru-skipVmBackup. Příkaz set-AzVMDiskEncryptionExtension se u virtuálních počítačů založených na discích nezdaří, dokud se neprovede záloha a tento parametr se zadal. 
+ >Je nutné, abyste instanci virtuálního počítače na bázi spravovaného disku pocházeli z a před povolením Azure Disk Encryption. Snímek spravovaného disku se dá vzít z portálu, nebo se dá použít [Azure Backup](../../backup/backup-azure-vms-encryption.md) . Zálohy zajišťují, že možnost obnovení je možné v případě jakékoli neočekávané chyby při šifrování. Po vytvoření zálohy se rutina Set-AzVMDiskEncryptionExtension dá použít k šifrování spravovaných disků zadáním parametru-skipVmBackup. Příkaz Set-AzVMDiskEncryptionExtension se nezdařil proti virtuálním počítačům založeným na disku, dokud nebyla provedena záloha a nebyl zadán tento parametr. 
 >
 > Šifrování nebo zakázání šifrování může způsobit, že se virtuální počítač restartuje. 
 

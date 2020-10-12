@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e427a68751cc348a7b0024fb01402bd15ca87d2a
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705720"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s nastavením Enterprise State Roaming v Azure Active Directory
@@ -90,7 +90,7 @@ Pro řešení potíží s pokročilými chybami se Prohlížeč událostí dá p
 
 ### <a name="sync-does-not-work-on-devices-that-have-apps-side-loaded-using-mdm-software"></a>Synchronizace nefunguje na zařízeních, která mají na straně aplikace nahraná pomocí softwaru MDM.
 
-Má vliv na zařízení s aktualizací Windows 10 pro výročí (verze 1607). V Prohlížeč událostí v rámci protokolů SettingSync – Azure se často zobrazuje ID události 6013 s chybou 80070259.
+Má vliv na zařízení s aktualizací Windows 10 pro výročí (verze 1607). V Prohlížeč událostí v protokolech SettingSync-Azure se často zobrazuje ID události 6013 s chybou 80070259.
 
 **Doporučená akce**  
 Ujistěte se, že klient Windows 10 v1607 má 23. srpna 2016 kumulativní aktualizaci ([KB3176934](https://support.microsoft.com/kb/3176934) OS Build 14393,82). 

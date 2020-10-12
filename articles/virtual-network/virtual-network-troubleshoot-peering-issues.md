@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: 9685c1739a00788a974c200ddabb8cc975696b62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83587727"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Řešení potíží s partnerskými vztahy virtuálních sítí
@@ -127,7 +127,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu, který
    1. Spusťte trasování sítě na cílovém virtuálním počítači. Pro Windows můžete použít **netsh**. Pro Linux použijte **TCPDump**.
    2. Spusťte **TcpPing** nebo **PsPing** ze zdroje do cílové IP adresy.
 
-      Toto je příklad příkazu **TcpPing** :`tcping64.exe -t <destination VM address> 3389`
+      Toto je příklad příkazu **TcpPing** : `tcping64.exe -t <destination VM address> 3389`
 
    3. Po dokončení **TcpPing** zastavte trasování sítě v cíli.
    4. Pokud pakety přicházejí ze zdroje, nedochází k potížím se sítí. Vyhledejte problém s konfigurací tím, že prověřte bránu firewall virtuálního počítače i aplikaci, která naslouchá na tomto portu.
@@ -218,7 +218,7 @@ Další informace najdete v [požadavcích a omezeních](https://docs.microsoft.
 
 Další informace najdete v následujících článcích:
 
-* [Integrace aplikace do služby Azure Virtual Network](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
+* [Integrace aplikace s virtuální sítí Azure](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 * [Směrování VPN typu Point-to-Site](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>Řešení potíží s chybovou zprávou o konfiguraci partnerského vztahu virtuálních sítí 

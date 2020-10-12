@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 2e3b2ee35352c2af4ae8196ba7c9699da761f83e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372472"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Kurz: Azure Active Directory integrace s odkazem na Springer
@@ -72,7 +72,7 @@ V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD
 Ke konfiguraci a testování jednotného přihlašování Azure AD s odkazem na Springer je potřeba dokončit následující stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Springer Link](#configure-springer-link-single-sign-on)** -pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování Springer Link](#configure-springer-link-single-sign-on)** -pro konfiguraci nastavení jednoho Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
@@ -91,7 +91,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s odkazem na Spr
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -114,13 +114,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s odkazem na Spr
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://fsso.springer.com/saml/login?idp=<entityID>&targetUrl=https://link.springer.com`
 
     > [!NOTE]
-    > Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. `<entityID>` je identifikátor Azure AD zkopírovaný z oddílu **Nastavení odkazu na Springer** , který se popisuje dále v kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte hodnotu skutečnou adresou Sign-On. `<entityID>` je identifikátor Azure AD zkopírovaný z oddílu **Nastavení odkazu na Springer** , který se popisuje dále v kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na ikonu Kopírovat a zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
+6. Na stránce **nastavit jednu Sign-On s SAML** v části **podpisový certifikát SAML** klikněte na ikonu Kopírovat a zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
     ![Odkaz ke stažení metadat](common/copy_metadataurl.png)
 
-### <a name="configure-springer-link-single-sign-on"></a>Konfigurace jednotného přihlašování Springer Link
+### <a name="configure-springer-link-single-sign-on"></a>Konfigurovat Springer Link Single Sign-On
 
 Pokud chcete nakonfigurovat jednotné přihlašování na straně **odkazu na Springer** , musíte poslat zkopírovanou **adresu URL federačních metadat aplikace** [týmu podpory Springer Link](mailto:onlineservice@springernature.com). Tým podpory propojení Springer používá tuto adresu URL k tomu, aby na obou stranách správně nastavil připojení SAML SSO.
 
