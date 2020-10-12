@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
 ms.openlocfilehash: cff2e918c7b67f6d3bccb9b56366cbf034ed1bb5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89300098"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Správa přístupu k datům protokolů a pracovním prostorům ve službě Azure Monitor
@@ -162,7 +162,7 @@ Role čtecího modulu Log Analytics zahrnuje následující akce Azure:
 
 Role Přispěvatel Log Analytics zahrnuje následující akce Azure:
 
-| Oprávnění | Popis |
+| Oprávnění | Description |
 | ---------- | ----------- |
 | `*/read`     | Možnost zobrazit všechny prostředky a jejich konfiguraci. To zahrnuje zobrazení: <br> Stavu rozšíření virtuálního počítače <br> Konfigurace diagnostiky Azure pro prostředky <br> Všechny vlastnosti a nastavení všech prostředků. <br> U pracovních prostorů umožňuje úplná neomezená oprávnění číst nastavení pracovního prostoru a provádět dotaz na data. Podívejte se na podrobnější možnosti výše. |
 | `Microsoft.Automation/automationAccounts/*` | Možnost vytvořit a konfigurovat účty služby Azure Automation, včetně přidávání a úprav runbooků |
@@ -189,7 +189,7 @@ Pro zajištění přesného řízení přístupu doporučujeme provést přiřaz
 
 Když se uživatelé dotazují v protokolech z pracovního prostoru pomocí přístupu kontextu prostředků, budou mít pro tento prostředek následující oprávnění:
 
-| Oprávnění | Popis |
+| Oprávnění | Description |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Příklady:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Možnost Zobrazit všechna data protokolu pro daný prostředek.  |
 | `Microsoft.Insights/diagnosticSettings/write` | Možnost konfigurace nastavení diagnostiky tak, aby povolovala nastavování protokolů pro tento prostředek. |
@@ -300,7 +300,7 @@ Alternativním přístupem ke správě přístupu k vlastním protokolům je př
 
 Někdy vlastní protokoly pocházejí ze zdrojů, které nejsou přímo přidružené ke konkrétnímu prostředku. V takovém případě vytvořte skupinu prostředků jenom pro správu přístupu k těmto protokolům. V této skupině prostředků se neúčtují žádné náklady, ale poskytuje platné ID prostředku pro řízení přístupu k vlastním protokolům. Pokud třeba konkrétní brána firewall odesílá vlastní protokoly, vytvořte skupinu prostředků s názvem "MyFireWallLogs" a ujistěte se, že požadavky rozhraní API obsahují ID prostředku "MyFireWallLogs". Záznamy protokolu brány firewall jsou pak přístupné jenom uživatelům, kterým byl udělen přístup k MyFireWallLogs nebo s úplným přístupem k pracovnímu prostoru.          
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 * Pokud má uživatel udělené globální oprávnění ke čtení s rolemi čtenář úrovně Standard a přispěvatel, které zahrnují akci _ \* /Read_ , potlačí řízení přístupu na jednotlivé tabulky a udělí jim přístup ke všem datům protokolu.
 * Pokud je uživateli udělen přístup pro jednotlivé tabulky, ale žádná další oprávnění, by mohl získat přístup k datům protokolu z rozhraní API, ale nikoli z Azure Portal. K poskytnutí přístupu z Azure Portal jako základní roli použijte nástroj Log Analytics Reader.

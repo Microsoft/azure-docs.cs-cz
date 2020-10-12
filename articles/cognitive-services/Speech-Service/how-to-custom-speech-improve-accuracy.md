@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: v-demjoh
 ms.openlocfilehash: bb904482f3cb5900b724803816269f1b10ab3720
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83727875"
 ---
-# <a name="improve-custom-speech-accuracy"></a>Zlepšení přesnosti Custom Speech
+# <a name="improve-custom-speech-accuracy"></a>Vylepšení přesnosti služby Custom Speech
 
 V tomto článku se dozvíte, jak vylepšit kvalitu vlastního modelu přidáním zvukového záznamu, přepisu s popiskem a souvisejícího textu.
 
@@ -89,7 +89,7 @@ Následující tabulka uvádí scénáře rozpoznávání hlasu a uvádí zdrojo
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Trénování vašeho modelu](how-to-custom-speech-train-model.md)
+- [Trénování modelu](how-to-custom-speech-train-model.md)
 
 ## <a name="additional-resources"></a>Další zdroje
 

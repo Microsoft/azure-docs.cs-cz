@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak automatizovat přidávání uživ
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b016d6edcb75016302cf652f873881008de18abb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483818"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatizace přidání uživatele testovacího prostředí do testovacího prostředí v Azure DevTest Labs
@@ -17,7 +17,7 @@ Pokud chcete přidat uživatele do testovacího prostředí, přidejte uživatel
 
 - Šablony Azure Resource Manageru
 - Rutiny Azure PowerShellu 
-- Rozhraní příkazového řádku Azure
+- Azure CLI
 
 ## <a name="use-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
 Následující vzorová Správce prostředků šablona určuje uživatele, který má být přidán do role **uživatele DevTest Labs** v testovacím prostředí. 

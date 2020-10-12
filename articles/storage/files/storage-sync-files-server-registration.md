@@ -8,10 +8,10 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: c457dacd947c7af8a6be94205ed135ce04a49a06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85509502"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Správa registrovaných serverů pomocí Azure File Sync
@@ -186,4 +186,4 @@ Pokud je Azure File Sync hostovaný na virtuálním počítači, který běží 
 - [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)
 - [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)
 - [Sledování služby Synchronizace souborů Azure](storage-sync-files-monitoring.md)
-- [Řešení problémů se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)
+- [Řešit problémy se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)

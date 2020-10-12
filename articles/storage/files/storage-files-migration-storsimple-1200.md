@@ -8,10 +8,10 @@ ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: d9cf7b3cf996e41f90e3a40a6ee08d0fd51c8457
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85510332"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>Migrace StorSimple 1200 na Azure File Sync
@@ -210,7 +210,7 @@ Dokončili jste migraci sdílené složky nebo skupiny sdílených složek do sp
 Můžete zkusit spustit několik z těchto kopií paralelně. Doporučujeme, abyste v jednom okamžiku zpracovali obor jedné sdílené složky Azure.
 
 > [!WARNING]
-> Po přesunutí všech dat StorSimple do Windows serveru a dokončení migrace se vraťte do ***všech*** skupin synchronizace v Azure Portal a nastavte hodnotu hlasitosti volného místa na úrovni cloudu na něco většího, než je procento využití mezipaměti, řekněme 20%. 
+> Po přesunutí všech dat StorSimple do Windows serveru a dokončení migrace se vraťte do ***všech***  skupin synchronizace v Azure Portal a nastavte hodnotu hlasitosti volného místa na úrovni cloudu na něco většího, než je procento využití mezipaměti, řekněme 20%. 
 
 Zásada pro volné místo svazku ve vrstvách cloudu funguje na úrovni svazku s potenciálně synchronizovanými koncovými body serveru. Pokud zapomenete upravit volné místo na jednom koncovém bodu serveru, bude synchronizace dál používat nejvíce omezující pravidlo a pokusí se zachovávat 99% volného místa na disku, takže místní mezipaměť nefunguje, protože byste mohli očekávat. Pokud se nejedná o váš cíl jenom pro svazek, který obsahuje jenom zřídka používané, archivní data.
 

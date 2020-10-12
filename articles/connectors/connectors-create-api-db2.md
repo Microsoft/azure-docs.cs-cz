@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: 6c9c54450788a89a7b1aadbb0b4682a60619c061
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334595"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Přístup k prostředkům IBM DB2 a jejich správa pomocí Azure Logic Apps
@@ -90,7 +90,7 @@ Pokud chcete nastavit připojení, zadejte tyto podrobnosti o připojení po zob
 | **Heslo** | Yes | Heslo pro databázi |
 ||||
 
-Příklad:
+Například:
 
 ![Podrobnosti o připojení cloudových databází](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
 
@@ -112,7 +112,7 @@ Před vytvořením připojení musíte mít už nainstalovanou místní bránu d
 | **Brány** | Yes | Název nainstalované místní brány dat <p><p>**Poznámka**: v seznamu vyberte tuto hodnotu, která zahrnuje všechny nainstalované brány dat v rámci předplatného Azure a skupiny prostředků. |
 ||||
 
-Příklad:
+Například:
 
 ![Podrobnosti o připojení pro místní databáze](./media/connectors-create-api-db2/create-db2-on-premises-connection.png)
 
@@ -239,7 +239,7 @@ K přidání jednoho záznamu do tabulky databáze DB2 použijte akci **Vložit 
    | **ID oblasti** | Yes | ID oblasti, která se má přidat, například "102" |
    |||| 
 
-   Příklad:
+   Například:
 
    ![Snímek obrazovky, který zobrazuje návrháře Logic Apps s akcí vložit řádek (Preview) a příklady hodnot vlastností](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
@@ -287,7 +287,7 @@ Pokud chcete aktualizovat jeden záznam v databázové tabulce DB2, použijte ak
    | **ID oblasti** | Yes | Nové ID oblasti, například "102" |
    ||||
 
-   Příklad:
+   Například:
 
    ![Snímek obrazovky, který zobrazuje návrháře Logic Apps s akcí aktualizovat řádek (Preview), kde vyberete tabulku](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
@@ -332,7 +332,7 @@ K odstranění jednoho záznamu z tabulky databáze DB2 použijte akci **Odstran
    | **ID řádku** | Yes | ID záznamu, který se má odstranit, například "99999" |
    ||||
 
-   Příklad:
+   Například:
 
    ![Snímek obrazovky, který zobrazuje návrháře Logic Apps s akcí odstranit řádek (Preview), kde vyberete tabulku, která se má odstranit](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 

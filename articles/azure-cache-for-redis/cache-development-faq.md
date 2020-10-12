@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
 ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88211306"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Nejčastější dotazy týkající se vývoje Azure cache pro Redis
 
 Tento článek obsahuje odpovědi na běžné dotazy týkající se vývoje pro službu Azure cache pro Redis.
 
-## <a name="common-questions-and-answers"></a>Běžné otázky a odpovědi
+## <a name="common-questions-and-answers"></a>Časté otázky a odpovědi
 Tato část obsahuje následující Nejčastější dotazy:
 
 * [Jak můžu začít pracovat s Azure cache pro Redis?](#how-can-i-get-started-with-azure-cache-for-redis)
@@ -34,7 +34,7 @@ Tato část obsahuje následující Nejčastější dotazy:
 Existuje několik způsobů, jak můžete začít s Azure cache pro Redis.
 
 * Můžete se podívat na jeden z našich kurzů dostupných pro [.NET](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.NET](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node.js](cache-nodejs-get-started.md)a [Python](cache-python-get-started.md).
-* Můžete sledovat, [jak vytvářet vysoce výkonné aplikace pomocí Microsoft Azure cache pro Redis](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
+* Můžete sledovat, [jak vytvářet High-Performance aplikace pomocí Microsoft Azure mezipaměti pro Redis](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
 * Pokud chcete zjistit, jak používat Redis, můžete se podívat na dokumentaci klienta pro klienty, kteří odpovídají vývojovému jazyku vašeho projektu. Existuje mnoho Redis klientů, které lze použít s Azure cache pro Redis. Seznam Redis klientů najdete v tématu [https://redis.io/clients](https://redis.io/clients) .
 
 Pokud ještě nemáte účet Azure, můžete:
@@ -45,7 +45,7 @@ Pokud ještě nemáte účet Azure, můžete:
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Co dělají konfigurační možnosti StackExchange. Redis?
 StackExchange. Redis má mnoho možností. Tato část pojednává o některých běžných nastaveních. Podrobnější informace o možnostech StackExchange. Redis najdete v tématu [Konfigurace stackexchange. Redis](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
-| ConfigurationOptions | Popis | Doporučení |
+| ConfigurationOptions | Description | Doporučení |
 | --- | --- | --- |
 | AbortOnConnectFail |Když se nastaví na true, připojení se po selhání sítě znovu nepřipojí. |Nastavte na hodnotu false a nechte StackExchange. Redis automaticky znovu připojit. |
 | ConnectRetry |Počet opakovaných pokusů o připojení při počátečním připojení. |Pokyny najdete v následujících pokynech. |

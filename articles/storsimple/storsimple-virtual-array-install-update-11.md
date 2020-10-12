@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 6f8ec56cc5747921ee786bd4c069070ff865f9fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85507921"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>Instalace aktualizace 1,1 ve virtuálním poli StorSimple
@@ -32,7 +32,7 @@ Aktualizace softwaru nebo opravy hotfix můžete použít, chcete-li, aby vaše 
 > [!IMPORTANT]
 > - Aktualizace 1,1 odpovídá verzi **10.0.10307.0** softwaru na vašem zařízení. Informace o tom, co je v této aktualizaci nové, najdete v [poznámkách k verzi pro aktualizaci 1,1](storsimple-virtual-array-update-11-release-notes.md).
 >
-> - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix se zařízení restartuje. Vzhledem k tom, že virtuální pole StorSimple je zařízení s jedním uzlem, je přerušeno jakékoli vstupně-výstupní operace a dojde k výpadku zařízení.
+> - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix dojde k restartování zařízení. Vzhledem k tom, že virtuální pole StorSimple je zařízení s jedním uzlem, je přerušeno jakékoli vstupně-výstupní operace a dojde k výpadku zařízení.
 >
 > - Aktualizace 1,1 je dostupná v Azure Portal jenom v případě, že je ve virtuálním poli spuštěná aktualizace 1. Pro virtuální pole, která používají verzi Update 0,6, je třeba nejprve nainstalovat Update 1,0 a pak použít Update 1,1.
 

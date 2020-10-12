@@ -12,10 +12,10 @@ ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 8f54ece9a932ed4cc0adc29747e1c58ee22646c8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333864"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Zjištění posunu dat (Preview) u datových sad
@@ -41,7 +41,7 @@ Metriky pro posun dat můžete zobrazit pomocí sady Python SDK nebo v Azure Mac
 ## <a name="prerequisites"></a>Požadavky
 
 K vytváření a práci s monitory datových sad potřebujete:
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 * [Nainstalovaná sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true), která zahrnuje balíček AzureML-DataSet Sets.
 * Strukturovaná (tabulková) data s časovým razítkem zadaným v cestě k souboru, názvu souboru nebo sloupci v datech.
@@ -85,12 +85,12 @@ Proveďte analýzu minulých dat. | Tento scénář se dá použít k pochopení
 
 Monitory datových sad závisí na následujících službách Azure.
 
-|Služba Azure  |Popis  |
+|Služba Azure  |Description  |
 |---------|---------|
 | *Datová sada* | Při načítání školicích dat a porovnávání dat pro školení modelů posun používá Machine Learning datové sady.  Generování profilu dat se používá ke generování některých hlášených metrik, jako jsou minimální, maximální a jedinečné hodnoty, počet jedinečných hodnot. |
 | *Kanál a výpočetní prostředí pro AzureML* | Úloha výpočtu posunu je hostovaná v kanálu AzureML.  Úloha se aktivuje na vyžádání nebo podle plánu, aby běžela na výpočetním prostředí nakonfigurovaném v době vytváření odchodu sledování.
 | *Application Insights*| Posun vygeneruje metriky pro Application Insights patřící do pracovního prostoru Machine Learning.
-| *Azure Blob Storage*| Posun vygeneruje metriky ve formátu JSON do úložiště objektů BLOB v Azure.
+| *Úložiště objektů BLOB v Azure*| Posun vygeneruje metriky ve formátu JSON do úložiště objektů BLOB v Azure.
 
 ## <a name="how-dataset-monitors-data"></a>Jak datová sada monitoruje data
 
@@ -145,7 +145,7 @@ V nastavení **schématu** zadejte sloupec časového razítka z virtuálního n
 
 Pokud jsou data rozdělená do oddílů podle data, jak je uvedeno v tomto případě, můžete také zadat partition_timestamp.  To umožňuje efektivnější zpracování dat.
 
-:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Časové razítko oddílu":::
+:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Nastavit časové razítko":::
 
 
 ## <a name="create-dataset-monitors"></a>Vytváření monitorování datových sad
@@ -213,7 +213,7 @@ monitor = monitor.enable_schedule()
 
 1. Klikněte na tlačítko **+ vytvořit monitorování** a pokračujte v průvodci kliknutím na tlačítko **Další**.  
 
-:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="Průvodce vytvořením monitorování":::
+:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="Nastavit časové razítko":::
 
 * **Vyberte cílovou datovou sadu**.  Cílová datová sada je tabulková sada se zadaným sloupcem časového razítka, která se bude analyzovat pro posun dat. Cílová datová sada musí mít funkce společné se základní datovou sadou a měla by být `timeseries` datová sada, ke které se připojí nová data. Historická data v cílové datové sadě můžete analyzovat, nebo je možné monitorovat nová data.
 
@@ -240,7 +240,7 @@ V této části se dozvíte, jaké výsledky monitorují datovou sadu **Datasets
 
 Seznamte se s přehledem vysoké úrovně, který je na velikosti posunu dat, a zvýrazněné funkce, které se mají dále prozkoumat.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="Přehled posunu":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="Nastavit časové razítko":::
 
 
 | Metrika | Popis | 
@@ -253,7 +253,7 @@ Seznamte se s přehledem vysoké úrovně, který je na velikosti posunu dat, a 
 
 Podívejte se, jak se datová sada liší od cílové datové sady v zadaném časovém období.  Čím blíž k 100%, tím více dvou datových sad se liší.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="Trend velikosti posunu":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="Nastavit časové razítko":::
 
 ### <a name="drift-magnitude-by-features"></a>Posunování velikosti podle funkcí
 
@@ -263,7 +263,7 @@ Cílová datová sada je také profilovaná v průběhu času. Statistická vzd�
 
 V Azure Machine Learning Studiu kliknutím na pruh v grafu zobrazíte podrobnosti o úrovni funkcí tohoto data. Ve výchozím nastavení se zobrazí distribuce datové sady standardních hodnot a poslední distribuce stejné funkce.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Posunování velikosti podle funkcí":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Nastavit časové razítko":::
 
 Tyto metriky lze také načíst v sadě Python SDK prostřednictvím `get_metrics()` metody `DataDriftDetector` objektu.
 
@@ -271,7 +271,7 @@ Tyto metriky lze také načíst v sadě Python SDK prostřednictvím `get_metric
 
 Nakonec se posuňte dolů a zobrazte podrobnosti o jednotlivých funkcích.  Pomocí rozevíracích seznamů nad grafem vyberte funkci a dále vyberte metriku, kterou chcete zobrazit.
 
-:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="Graf číselné funkce a porovnání":::
+:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="Nastavit časové razítko":::
 
 Metriky v grafu závisí na typu funkce.
 
@@ -293,7 +293,7 @@ Metriky v grafu závisí na typu funkce.
 
 V tomto grafu vyberte jedno datum pro porovnání distribuce funkcí mezi cílem a tímto datem zobrazené funkce. U číselných funkcí zobrazuje dvě distribuce pravděpodobnosti.  Pokud je funkce numerická, zobrazí se pruhový graf.
 
-:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="Vyberte datum, které se má porovnat s cílem.":::
+:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="Nastavit časové razítko":::
 
 ## <a name="metrics-alerts-and-events"></a>Metriky, výstrahy a události
 

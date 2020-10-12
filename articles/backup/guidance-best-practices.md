@@ -4,10 +4,10 @@ description: Seznamte se s osvědčenými postupy a pokyny pro zálohování clo
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985513"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Zálohování cloudových a místních úloh do cloudu
@@ -26,7 +26,7 @@ I když je snadné začít chránit infrastrukturu a aplikace v Azure, když zab
 
 ## <a name="architecture"></a>Architektura
 
-![Architektura Azure Backup](./media/guidance-best-practices/azure-backup-architecture.png)
+![Architektura služby Azure Backup](./media/guidance-best-practices/azure-backup-architecture.png)
 
 ### <a name="workloads"></a>Úlohy
 
@@ -240,7 +240,7 @@ Jako uživatel, který má záložního uživatele nebo správce, byste měli b�
 * Navíc
   * Do pracovního prostoru **Log Analytics** můžete odesílat data (například úlohy, zásady atd.). Tím umožníte, aby se funkce protokolů Azure Monitor povolily korelace dat s jinými daty monitorování shromážděnými pomocí Azure Monitor, Konsolidujte položky protokolu z několika předplatných Azure a klientů do jednoho umístění pro účely analýzy, pomocí dotazů protokolu provádíte komplexní analýzu a získáte podrobné přehledy o položkách protokolu. [Další informace najdete tady](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace).
   * Data můžete odesílat do centra událostí, abyste mohli odesílat položky mimo Azure, například SIEM třetí strany (informace o zabezpečení a správu událostí) nebo jiné řešení Log Analytics. [Další informace najdete tady](../azure-monitor/platform/activity-log.md#send-to-azure-event-hubs).
-  * Data můžete do účtu Azure Storage odeslat, pokud chcete uchovávat data protokolu déle než 90 dní pro audit, statickou analýzu nebo zálohování. Pokud potřebujete události jenom po dobu 90 dnů nebo i méně, nemusíte nastavovat archivy na účet úložiště, protože události protokolu aktivit jsou uchovávány na platformě Azure po dobu 90 dnů. [Přečtěte si další informace](../azure-monitor/platform/activity-log.md#send-to--azure-storage).
+  * Data můžete do účtu Azure Storage odeslat, pokud chcete uchovávat data protokolu déle než 90 dní pro audit, statickou analýzu nebo zálohování. Pokud potřebujete události jenom po dobu 90 dnů nebo i méně, nemusíte nastavovat archivy na účet úložiště, protože události protokolu aktivit jsou uchovávány na platformě Azure po dobu 90 dnů. [Další informace](../azure-monitor/platform/activity-log.md#send-to--azure-storage).
 
 ### <a name="alerting"></a>Zobrazení výstrah
 

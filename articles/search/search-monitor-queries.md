@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: a5589a46a63437fb395db280222f8a9e84775df3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935071"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Monitorování požadavků na dotazy v Azure Kognitivní hledání
@@ -36,13 +36,13 @@ Svazek se měří jako **vyhledávací dotazy za sekundu** (QPS), vestavěnou me
 
 Je běžné, že dotazy se mají spouštět v milisekundách, takže se v metrikách zobrazí jenom dotazy, které měří jenom sekundy.
 
-| Typ agregace | Popis |
+| Typ agregace | Description |
 |------------------|-------------|
 | Průměr | Průměrný počet sekund během minuty, během kterých došlo k provedení dotazu.|
 | Počet | Počet metrik, které byly vygenerovány do protokolu v rámci intervalu 1 – minut. |
 | Maximum | Nejvyšší počet vyhledávacích dotazů za sekundu zaregistrovaných během minuty. |
 | Minimum | Nejnižší počet vyhledávacích dotazů za sekundu zaregistrovaných během minuty.  |
-| Součet | Součet všech dotazů provedených během minuty.  |
+| Sum | Součet všech dotazů provedených během minuty.  |
 
 Například během jedné minuty můžete mít podobný vzor: jedna sekunda vysokého zatížení, která je maximální hodnota pro SearchQueriesPerSecond, následovaná 58 sekundami průměrného zatížení a nakonec jedna sekunda pouze jedním dotazem, což je minimální hodnota.
 

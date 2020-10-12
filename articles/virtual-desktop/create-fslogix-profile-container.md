@@ -7,10 +7,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002819"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Vytvoření kontejneru profilu pomocí Azure NetApp Files a služba AD DS
@@ -43,7 +43,7 @@ Než budete moct vytvořit kontejner profilu FSLogix pro fond hostitelů, musít
 
 Abyste mohli začít, musíte nastavit účet Azure NetApp Files.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Ujistěte se, že váš účet má oprávnění přispěvatele nebo správce.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Ujistěte se, že váš účet má oprávnění přispěvatele nebo správce.
 
 2. Vyberte **ikonu Azure Cloud Shell** napravo od panelu hledání a otevřete Azure Cloud Shell.
 
@@ -166,7 +166,7 @@ Tato část je založená na [vytvoření kontejneru profilu pro fond hostitelů
 
 5. Zaškrtněte políčko vedle Souhlasím **s licenčními podmínkami a ujednáními**.
 
-6. Vyberte **Install** (Nainstalovat).
+6. Vyberte **Nainstalovat**.
 
 7. Přejděte do **C: \\ Program Files \\ FSLogix \\ Apps** a potvrďte, že je agent nainstalovaný.
 

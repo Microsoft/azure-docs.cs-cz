@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
 ms.openlocfilehash: 5fd0f14f4bbc919efd5b3c236b13654574d456d7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334969"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>Použití Intelligent Insights protokolu diagnostiky výkonu Azure SQL Database a problémů s výkonem spravované instance Azure SQL
@@ -93,7 +93,7 @@ V závislosti na zjištěném potížích s výkonem se odpovídajícím způsob
 | Obsah databáze TempDB | <li>Dotazování hodnot hash dotazů způsobujících spory</li><li>Přidaný dotaz k celkové době čekání na pagelatchování obsahu v databázi [%]</li> |
 | Nedostatek DTU elastického fondu | <li>Elastický fond</li><li>Databáze nejvyšší úrovně DTU</li><li>Procento DTU fondu, které používá nejvyšší spotřebitel</li> |
 | Plánování regrese | <li>Hodnoty hash dotazů</li><li>ID dobrých plánů</li><li>ID špatných plánů</li> |
-| Změna hodnoty konfigurace v oboru databáze | <li>Změny konfigurace v rozsahu databáze v porovnání s výchozími hodnotami</li> |
+| Změna hodnoty konfigurace Database-Scoped | <li>Změny konfigurace v rozsahu databáze v porovnání s výchozími hodnotami</li> |
 | Pomalý klient | <li>Hodnoty hash dotazů</li><li>Čekací časy</li> |
 | Downgrade cenové úrovně | <li>Textové oznámení</li> |
 

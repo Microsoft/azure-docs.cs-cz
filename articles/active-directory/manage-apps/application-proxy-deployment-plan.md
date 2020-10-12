@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
 ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642414"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Naplánování nasazení proxy aplikací služby Azure AD
@@ -33,7 +33,7 @@ Tento článek obsahuje prostředky, které potřebujete k plánování, provozo
 
 V následující části najdete širokou škálu klíčových prvků plánování, které nastavíte jako efektivní prostředí pro nasazení.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Než začnete s implementací, musíte splnit následující požadavky. V tomto [kurzu](application-proxy-add-on-premises-application.md)můžete zobrazit další informace o nastavení prostředí, včetně těchto požadavků.
 
@@ -241,7 +241,7 @@ Ověřte, že je vaše aplikace přístupná prostřednictvím proxy aplikace, k
 
 S povoleným předběžným ověřením služba Azure AD nejdřív vyzve uživatele k ověření a pokud je nakonfigurované jednotné přihlašování, pak back-end aplikace taky ověří uživatele před tím, než se udělí přístup k aplikaci. Změna režimu předběžného ověřování z průchodu na Azure AD také nakonfiguruje externí adresu URL s protokolem HTTPS, takže všechny aplikace původně nakonfigurované pro protokol HTTP budou teď zabezpečené pomocí protokolu HTTPS.
 
-### <a name="enable-single-sign-on"></a>Povolit jednotné přihlašování
+### <a name="enable-single-sign-on"></a>Povolit jeden Sign-On
 
 Jednotné přihlašování poskytuje nejlepší možné uživatelské prostředí a zabezpečení, protože se k Azure AD potřebují přihlašovat jenom jednou. Po předběžném ověření je jednotné přihlašování provedeno pomocí konektoru proxy aplikací ověřujícího místní aplikaci jménem uživatele. Back-end aplikace zpracovává přihlášení, jako by šlo o samotného uživatele.
 

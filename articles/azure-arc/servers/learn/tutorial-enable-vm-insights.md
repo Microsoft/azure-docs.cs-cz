@@ -4,10 +4,10 @@ description: Naučte se shromažďovat a analyzovat data z hybridního počíta�
 ms.topic: tutorial
 ms.date: 09/23/2020
 ms.openlocfilehash: 97ab390570f434295a5aa836ef994640f6dc14f8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335411"
 ---
 # <a name="tutorial-monitor-a-hybrid-machine-with-azure-monitor-for-vms"></a>Kurz: monitorování hybridního počítače pomocí Azure Monitor pro virtuální počítače
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak nakonfigurovat a shromažďovat data z virtuáln�
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-azure-monitor-for-vms"></a>Povolit Azure Monitor pro virtuální počítače
 
@@ -40,15 +40,15 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně v části **monitorování** vyberte **přehledy** a pak **Povolit**.
 
-    :::image type="content" source="./media/tutorial-enable-vm-insights/insights-option.png" alt-text="Vybrat možnost Insights z nabídky na levé straně" border="false":::
+    :::image type="content" source="./media/tutorial-enable-vm-insights/insights-option.png" alt-text="Hledat servery s podporou ARC ve všech službách" border="false":::
 
 1. Na stránce pro **registraci Azure monitor Insights** se zobrazí výzva k vytvoření pracovního prostoru. Pro tento kurz nedoporučujeme vybírat existující pracovní prostor Log Analytics, pokud ho už máte. Vyberte výchozí, což je pracovní prostor s jedinečným názvem ve stejné oblasti jako registrovaný připojený počítač. Tento pracovní prostor se vytvoří a nakonfiguruje za vás.
 
-    :::image type="content" source="./media/tutorial-enable-vm-insights/enable-vm-insights.png" alt-text="Povolit Azure Monitor pro virtuální počítače stránku" border="false":::
+    :::image type="content" source="./media/tutorial-enable-vm-insights/enable-vm-insights.png" alt-text="Hledat servery s podporou ARC ve všech službách" border="false":::
 
 1. Při provádění konfigurace se zobrazí stavové zprávy. Tento proces trvá několik minut, než se na připojeném počítači nainstalují rozšíření.
 
-    :::image type="content" source="./media/tutorial-enable-vm-insights/onboard-vminsights-vm-portal-status.png" alt-text="Povolit stavovou zprávu průběhu Azure Monitor pro virtuální počítače" border="false":::
+    :::image type="content" source="./media/tutorial-enable-vm-insights/onboard-vminsights-vm-portal-status.png" alt-text="Hledat servery s podporou ARC ve všech službách" border="false":::
 
     Až se dokončí, zobrazí se zpráva, že počítač byl úspěšně připojen a přehled byl úspěšně nasazen.
 
@@ -56,11 +56,11 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 Po dokončení nasazení a konfigurace vyberte **přehledy**a pak vyberte kartu **výkon** . Na kartě výkon se zobrazuje vybraná skupina čítačů výkonu shromážděných z hostovaného operačního systému virtuálního počítače. Posuňte se dolů, abyste zobrazili další čítače a přesunuli jste ukazatel myši na graf a zobrazili průměr a percentily od doby, kdy byla na počítač nainstalovaná rozšíření Log Analytics virtuálního počítače.
 
-:::image type="content" source="./media/tutorial-enable-vm-insights/insights-performance-charts.png" alt-text="Azure Monitor pro virtuální počítače grafy výkonu pro vybraný počítač" border="false":::
+:::image type="content" source="./media/tutorial-enable-vm-insights/insights-performance-charts.png" alt-text="Hledat servery s podporou ARC ve všech službách" border="false":::
 
 Vyberte **Mapa** a otevřete funkci Maps, která zobrazuje procesy běžící na virtuálním počítači a jejich závislosti. Výběrem **vlastnosti** otevřete podokno vlastností, pokud již není otevřeno.
 
-:::image type="content" source="./media/tutorial-enable-vm-insights/insights-map.png" alt-text="Azure Monitor pro virtuální počítače mapa pro vybraný počítač" border="false":::
+:::image type="content" source="./media/tutorial-enable-vm-insights/insights-map.png" alt-text="Hledat servery s podporou ARC ve všech službách" border="false":::
 
 Rozbalíte procesy pro svůj virtuální počítač. Výběrem jednoho z procesů zobrazíte jeho podrobnosti a zvýrazníte jeho závislosti.
 

@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
 ms.openlocfilehash: ceb8b8b31963317ccbbd1aee9f1b2606afc5a5db
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91279021"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak nasadit Windows 10 v Azure s právy pro hostování s více klienty 
@@ -28,10 +28,10 @@ Pro prostředí PowerShell, rozhraní příkazového řádku a Azure Resource Ma
 
 | Operační systém  |      Název vydavatele      |  Nabídka | Skladová jednotka (SKU) |
 |:----------|:-------------:|:------|:------|
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-pro   |
-| Windows 10 pro N  | MicrosoftWindowsDesktop | Windows-10  | Náchylné k RS2  |
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-pro   |
-| Windows 10 pro N  | MicrosoftWindowsDesktop | Windows-10  | Náchylné k RS3  |
+| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
+| Windows 10 pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
+| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
+| Windows 10 pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
 
 ## <a name="uploading-windows-10-vhd-to-azure"></a>Nahrání virtuálního pevného disku s Windows 10 do Azure
 Pokud nahráváte zobecněný virtuální pevný disk s Windows 10, pamatujte na to, že ve výchozím nastavení není ve Windows 10 povolený vestavěný účet správce. Pokud chcete povolit integrovaný účet správce, zahrňte jako součást rozšíření vlastních skriptů následující příkaz.

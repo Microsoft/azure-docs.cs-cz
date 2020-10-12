@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: c4ea8db464c7cae57b80837ced9f8886a8b3cf4a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87093013"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Platba za Azure cache pro výpočetní prostředky Redis s využitím rezervované kapacity
@@ -54,7 +54,7 @@ V následující tabulce jsou popsána povinná pole.
 | Rozsah | Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: </br></br> **Shared**, na službu Azure cache pro instance Redis spuštěné v rámci vašeho fakturačního kontextu se použije sleva rezervace. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.</br></br> **Jedno předplatné**– pro instance Redis v tomto předplatném se pro instance služby Azure Cache používá sleva rezervace. </br></br> **Jedna skupina prostředků**– pro instance Redis ve vybraném předplatném a vybrané skupině prostředků v rámci tohoto předplatného se použije sleva rezervované pro Azure cache.
 | Oblast | Oblast Azure, která je pokrytá mezipamětí Azure pro rezervaci rezervované kapacity Redis
 | Cenová úroveň | Úroveň služby pro servery Azure cache pro Redis.
-| Termín | Jeden rok nebo tři roky
+| Označení | Jeden rok nebo tři roky
 | Množství | Množství výpočetních prostředků zakoupených v mezipaměti Azure pro rezervaci rezervované kapacity Redis. Množství je počet mezipamětí ve vybrané oblasti Azure a úrovni služby, které jsou rezervované, a obdrží fakturační slevu. Pokud například používáte nebo plánujete spustit mezipaměť Azure pro servery Redis s celkovou kapacitou mezipaměti 26 GB v oblasti Východní USA, zadejte množství, které vám poskytne ekvivalent 26 GB pro maximalizaci výhod všech mezipamětí. Může se jednat o 1 – P3 nebo 2 P2 Caches.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací

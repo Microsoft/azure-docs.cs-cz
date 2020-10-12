@@ -4,10 +4,10 @@ description: Popisuje, jak filtrovat události při vytváření předplatného 
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86120088"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Principy filtrování událostí pro předplatná Event Grid
@@ -57,7 +57,7 @@ Chcete-li filtrovat podle hodnot v datových polích a zadat operátor porovnán
 * klíč – pole v datech události, které používáte pro filtrování. Může to být číslo, logická hodnota nebo řetězec.
 * hodnoty – hodnota nebo hodnoty, které se mají porovnat s klíčem.
 
-Pokud zadáte jeden filtr s více hodnotami, provede se operace **nebo** , takže hodnota pole klíč musí být jedna z těchto hodnot. Zde naleznete příklad:
+Pokud zadáte jeden filtr s více hodnotami, provede se operace **nebo** , takže hodnota pole klíč musí být jedna z těchto hodnot. Tady je příklad:
 
 ```json
 "advancedFilters": [
@@ -72,7 +72,7 @@ Pokud zadáte jeden filtr s více hodnotami, provede se operace **nebo** , takž
 ]
 ```
 
-Pokud zadáte více různých filtrů, provede se operace **a** , takže je nutné splnit všechny podmínky filtru. Zde naleznete příklad: 
+Pokud zadáte více různých filtrů, provede se operace **a** , takže je nutné splnit všechny podmínky filtru. Tady je příklad: 
 
 ```json
 "advancedFilters": [
@@ -123,7 +123,7 @@ Pro události ve schématu Event Grid použijte pro klíč následující hodnot
 
 * ID
 * Téma
-* Subjekt
+* Předmět
 * Typ události
 * Dataverze
 * Data události (jako data. klíč1)
@@ -144,8 +144,8 @@ Hodnoty mohou být:
 
 * číslo
 * řetězec
-* Boolean
-* pole
+* boolean
+* array
 
 ### <a name="limitations"></a>Omezení
 

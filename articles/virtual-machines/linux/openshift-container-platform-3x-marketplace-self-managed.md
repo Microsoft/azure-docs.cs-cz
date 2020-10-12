@@ -1,6 +1,6 @@
 ---
-title: Nasazení nabídky OpenShift Container Platform 3,11 pro samoobslužnou správu v Azure
-description: Nasaďte v Azure nabídku OpenShift Container Platform 3,11, která je samostatně spravovaná.
+title: Nasazení OpenShift kontejneru Platform 3,11 Self-Managed nabídky Marketplace v Azure
+description: Nasaďte OpenShift Container Platform 3,11 Self-Managed nabídku Marketplace v Azure.
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -11,10 +11,10 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 36adf35c5fbfc3e88b7d9af425ebabc852707e69
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374095"
 ---
 # <a name="configure-prerequisites"></a>Konfigurovat požadavky
@@ -64,7 +64,7 @@ Zadejte hodnoty pro vstupní parametry a klikněte na tlačítko **OK**.
 | Uživatelské jméno správce virtuálního počítače | Uživatel s oprávněními správce, který se má vytvořit na všech instancích virtuálních počítačů |
 | Veřejný klíč SSH pro uživatele s oprávněními správce | Veřejný klíč SSH, který se používá pro přihlášení k virtuálnímu počítači, nesmí mít přístupové heslo. |
 | Předplatné | Předplatné Azure, do kterého se má cluster nasadit |
-| Skupina prostředků | Vytvořte novou skupinu prostředků nebo vyberte existující prázdnou skupinu prostředků pro prostředky clusteru. |
+| Resource Group | Vytvořte novou skupinu prostředků nebo vyberte existující prázdnou skupinu prostředků pro prostředky clusteru. |
 | Umístění | Oblast Azure, do které se má cluster nasadit |
 
    ![Okno základy nabídky](media/openshift-marketplace-self-managed/ocp-basics.png)  

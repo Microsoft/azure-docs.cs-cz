@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
 ms.openlocfilehash: fef1870c396055cb9121aa5d8c7859440d107f98
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002320"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Verze Preview: přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory
@@ -158,7 +158,7 @@ Budete vyzváni k přihlášení ke službě Azure AD s jednorázovým kódem po
 
 Po zobrazení výzvy zadejte přihlašovací údaje služby Azure AD přihlašovací údaje na přihlašovací stránce. 
 
-Ve webovém prohlížeči se po úspěšném ověření zobrazí následující zpráva:`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
+Ve webovém prohlížeči se po úspěšném ověření zobrazí následující zpráva: `You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
 
 Zavřete okno prohlížeče, vraťte se do výzvy SSH a stiskněte klávesu **ENTER** . 
 

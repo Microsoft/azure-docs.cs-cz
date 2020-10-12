@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83701491"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
@@ -43,8 +43,8 @@ Výběr **modulu** protokoluje všechny [xEvents](https://docs.microsoft.com/ana
 |Příkazy     |  Začátek příkazu       |
 |Příkazy     |  Konec příkazu       |
 |Chyby & upozornění     |   Chyba      |
-|Nenechte si ujít     |   Zjistit konec      |
-|Oznámení     |    Oznámení     |
+|Zjišťování     |   Zjistit konec      |
+|Notification (Oznámení)     |    Notification (Oznámení)     |
 |Relace     |  Inicializace relace       |
 |Zámky    |  Ukončení       |
 |Zpracování dotazů     |   VertiPaq SE – začátek dotazu      |
@@ -78,7 +78,7 @@ Kategorie metriky zapisuje stejné [metriky serveru](analysis-services-monitor.m
 
 2. V **Nastavení diagnostiky** určete následující možnosti: 
 
-    * **Název**. Zadejte název protokolů, které chcete vytvořit.
+    * **Název:** Zadejte název protokolů, které chcete vytvořit.
 
     * **Archivujte do účtu úložiště**. Pokud chcete použít tuto možnost, budete potřebovat existující účet úložiště, ke kterému se chcete připojit. Viz [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md). Podle pokynů vytvořte Správce prostředků účet pro obecné účely a pak vyberte svůj účet úložiště tak, že se vrátíte na tuto stránku na portálu. Může trvat několik minut, než se nově vytvořené účty zobrazí v rozevírací nabídce.
     * **Streamování do centra událostí**. Pokud chcete použít tuto možnost, budete potřebovat existující obor názvů centra událostí a centrum událostí, ke kterým se chcete připojit. Další informace najdete v tématu [Vytvoření oboru názvů služby Event Hubs a centra událostí pomocí webu Azure Portal](../event-hubs/event-hubs-create.md). Pak se vraťte na tuto stránku na portálu a vyberte obor názvů a název zásady centra událostí.
@@ -154,7 +154,7 @@ Protokoly jsou obvykle k dispozici během několika hodin od nastavení protokol
 
 Metriky a události serveru jsou integrovány do xEvents v prostředku pracovního prostoru Log Analytics pro souběžnou analýzu. Log Analytics pracovní prostor je taky možné nakonfigurovat tak, aby přijímal události z jiných služeb Azure, které poskytují holistický zobrazení dat protokolování diagnostiky napříč vaší architekturou.
 
-Pokud chcete zobrazit diagnostická data, v Log Analytics pracovním prostoru otevřete **protokoly** v nabídce vlevo.
+Pokud chcete zobrazit diagnostická data, v Log Analytics pracovním prostoru otevřete **protokoly**  v nabídce vlevo.
 
 ![Možnosti prohledávání protokolu v Azure Portal](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
@@ -213,7 +213,7 @@ Existují stovky dotazů, které můžete použít. Další informace o dotazech
 
 ## <a name="turn-on-logging-by-using-powershell"></a>Zapnutí protokolování pomocí PowerShellu
 
-V tomto rychlém kurzu vytvoříte účet úložiště ve stejném předplatném a skupině prostředků jako server služby Analysis Service. Pak pomocí Set-AzDiagnosticSetting zapněte protokolování diagnostiky a odešlete výstup do nového účtu úložiště.
+V tomto rychlém kurzu vytvoříte účet úložiště ve stejném předplatném a skupině prostředků jako server služby Analysis Service. Pak použijete Set-AzDiagnosticSetting k zapnutí protokolování diagnostiky a odeslání výstupu do nového účtu úložiště.
 
 ### <a name="prerequisites"></a>Požadavky
 K dokončení tohoto kurzu musíte mít následující prostředky:
@@ -269,7 +269,7 @@ $account = Get-AzResource -ResourceGroupName awsales_resgroup `
 
 ### <a name="enable-logging"></a>Povolit protokolování
 
-Pokud chcete povolit protokolování, použijte rutinu Set-AzDiagnosticSetting spolu s proměnnými pro nový účet úložiště, účet serveru a kategorii. Spusťte následující příkaz, nastavením příznaku **-Enabled** na **$true**:
+Pokud chcete povolit protokolování, použijte rutinu Set-AzDiagnosticSetting společně s proměnnými pro nový účet úložiště, účet serveru a kategorii. Spusťte následující příkaz, nastavením příznaku **-Enabled** na **$true**:
 
 ```powershell
 Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine

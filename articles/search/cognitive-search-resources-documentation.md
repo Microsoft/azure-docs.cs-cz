@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.openlocfilehash: eaafb9536a8667417c0abf4ab570609f2db290bc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935343"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Materiály k dokumentaci pro rozšíření AI v Azure Kognitivní hledání
@@ -100,4 +100,4 @@ Následuje konsolidovaný seznam dokumentace pro rozšíření AI.
 
 + [Rozhraní REST API služby Azure Cognitive Search](/rest/api/searchservice/)
 + [Indexery ve službě Azure Cognitive Search](search-indexer-overview.md)
-+ [Co je kognitivní hledání Azure?](search-what-is-azure-search.md)
++ [Co je Azure Kognitivní hledání?](search-what-is-azure-search.md)

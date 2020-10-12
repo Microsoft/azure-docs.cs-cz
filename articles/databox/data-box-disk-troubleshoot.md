@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 1c1b38c4021660b9f59098f8442d16bfd0ecc582
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87925538"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Řešení potíží s ověřováním v Azure Data Box Disk pomocí protokolů
@@ -21,7 +21,7 @@ Tento článek se týká Microsoft Azure Data Box Disk. Tento článek popisuje,
 
 ## <a name="validation-tool-log-files"></a>Soubory protokolu nástroje pro ověření
 
-Když ověříte data na discích pomocí [Nástroje pro ověření](data-box-disk-deploy-copy-data.md#validate-data), vygeneruje se *error.xml* pro protokolování chyb. Soubor protokolu je umístěný ve `Drive:\DataBoxDiskImport\logs` složce vaší jednotky. Odkaz na protokol chyb je k dispozici při spuštění ověřování.
+Když ověříte data na discích pomocí [Nástroje pro ověření](data-box-disk-deploy-copy-data.md#validate-data), vygeneruje se *error.xml* pro protokolování chyb. Soubor protokolu je umístěný ve  `Drive:\DataBoxDiskImport\logs` složce vaší jednotky. Odkaz na protokol chyb je k dispozici při spuštění ověřování.
 
 <!--![Validation tool with link to error log](media/data-box-disk-troubleshoot/validation-tool-link-error-log.png)-->
 
@@ -73,7 +73,7 @@ Pokud spustíte více relací pro ověření, je pro každou relaci vygenerován
 
 Chyby obsažené v *error.xml* s odpovídajícími doporučenými akcemi jsou shrnuty v následující tabulce.
 
-| Kód chyby| Popis                       | Doporučené akce               |
+| Kód chyby| Description                       | Doporučené akce               |
 |------------|--------------------------|-----------------------------------|
 | `None` | Data byla úspěšně ověřena. | Nevyžaduje se žádná akce. |
 | `InvalidXmlCharsInPath` |Nelze vytvořit soubor manifestu, protože cesta k souboru obsahuje neplatné znaky. | Chcete-li pokračovat, odeberte tyto znaky.  |

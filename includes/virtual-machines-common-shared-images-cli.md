@@ -9,10 +9,10 @@ ms.date: 03/24/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: b49dc6ef2bfee311bc3ca524a5ccb0a4e4b5ca9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84793690"
 ---
 ## <a name="create-an-image-gallery"></a>Vytvoření galerie imagí 
@@ -30,7 +30,7 @@ az sig create --resource-group myGalleryRG --gallery-name myGallery
 
 ## <a name="share-the-gallery"></a>Sdílení galerie
 
-Image můžete sdílet mezi předplatnými pomocí Access Control na základě rolí (RBAC). Obrázky můžete sdílet na úrovni galerie, definice obrázku nebo verze image. Každý uživatel, který má oprávnění ke čtení verze image, dokonce i přes odběry, bude moci nasadit virtuální počítač pomocí verze image.
+Image můžete sdílet mezi předplatnými pomocí Role-Based Access Control (RBAC). Obrázky můžete sdílet na úrovni galerie, definice obrázku nebo verze image. Každý uživatel, který má oprávnění ke čtení verze image, dokonce i přes odběry, bude moci nasadit virtuální počítač pomocí verze image.
 
 Doporučujeme sdílet s ostatními uživateli na úrovni galerie. Chcete-li získat ID objektu galerie, použijte příkaz [AZ SIG show](/cli/azure/sig#az-sig-show).
 

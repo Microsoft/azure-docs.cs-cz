@@ -7,10 +7,10 @@ keywords: inventory, automation, change, tracking
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 32d3c17a5f3d152f32b19ffbfd5c9793a7a34b80
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185717"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>Správa shromažďování dat pro inventarizaci z virtuálních počítačů
@@ -30,7 +30,7 @@ V tomto článku se předpokládá, že máte virtuální počítač, který se 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="enable-inventory-collection-from-the-vm-resource-page"></a>Povolit shromažďování inventáře ze stránky prostředku virtuálního počítače
 
@@ -65,7 +65,7 @@ Následující části obsahují informace o jednotlivých vlastnostech, které 
 |---------|---------|
 |Povoleno     | Určuje, jestli se nastavení používá.        |
 |Název položky     | Popisný název souboru, který se má sledovat        |
-|Skupina     | Název skupiny pro logické seskupení souborů        |
+|Group (Skupina)     | Název skupiny pro logické seskupení souborů        |
 |Klíč registru systému Windows   | Cesta, ve které se má soubor hledat. Například: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup      |
 
 ### <a name="windows-files"></a>Soubory Windows
@@ -74,7 +74,7 @@ Následující části obsahují informace o jednotlivých vlastnostech, které 
 |---------|---------|
 |Povoleno     | True, pokud je nastavení použito, a jinak false.        |
 |Název položky     | Popisný název souboru, který se má sledovat        |
-|Skupina     | Název skupiny pro logicky seskupené soubory.       |
+|Group (Skupina)     | Název skupiny pro logicky seskupené soubory.       |
 |Zadat cestu     | Cesta pro kontrolu souboru, například **c:\temp\myfile.txt**.
 
 ### <a name="linux-files"></a>Soubory Linux
@@ -83,7 +83,7 @@ Následující části obsahují informace o jednotlivých vlastnostech, které 
 |---------|---------|
 |Povoleno     | True, pokud je nastavení použito, a jinak false.        |
 |Název položky     | Popisný název souboru, který se má sledovat        |
-|Skupina     | Název skupiny pro logicky seskupené soubory.        |
+|Group (Skupina)     | Název skupiny pro logicky seskupené soubory.        |
 |Zadat cestu     | Cesta pro kontrolu souboru, například **/etc/*. conf**.       |
 |Typ cesty     | Typ položky, která se má sledovat Hodnoty jsou soubor a adresář.        |
 |Rekurze     | True, pokud se používá rekurze při hledání položky, která se má sledovat, a v opačném případě false.        |

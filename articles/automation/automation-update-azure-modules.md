@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: 9cc5e5107784d447640ef0ae77d412885b1e5668
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185768"
 ---
 # <a name="update-azure-powershell-modules"></a>Aktualizace modulů Azure PowerShellu
@@ -46,7 +46,7 @@ Chcete-li použít tuto sadu Runbook v rámci svrchovaného cloudu, použijte `A
 
 ## <a name="use-the-update-runbook-to-update-a-specific-module-version"></a>Aktualizace konkrétní verze modulu pomocí Runbooku aktualizace
 
-Pokud chcete použít konkrétní verzi modulu Azure PowerShell místo nejnovějšího modulu, který je k dispozici v Galerie prostředí PowerShell, předejte tyto verze volitelnému `ModuleVersionOverrides` parametru Runbooku **Update-AutomationAzureModulesForAccount** . Příklady najdete v tématu [Update-AutomationAzureModulesForAccount.ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1) Runbook. Azure PowerShell moduly, které nejsou uvedené v `ModuleVersionOverrides` parametru, se aktualizují pomocí nejnovějších verzí modulu v Galerie prostředí PowerShell. Pokud do parametru nepředáte žádnou hodnotu `ModuleVersionOverrides` , všechny moduly se aktualizují s nejnovějšími verzemi modulu na galerie prostředí PowerShell. Toto chování je stejné jako u tlačítka **aktualizovat moduly Azure** v Azure Portal.
+Pokud chcete použít konkrétní verzi modulu Azure PowerShell místo nejnovějšího modulu, který je k dispozici v Galerie prostředí PowerShell, předejte tyto verze volitelnému `ModuleVersionOverrides` parametru Runbooku **Update-AutomationAzureModulesForAccount** . Příklady najdete v tématu  [Update-AutomationAzureModulesForAccount.ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1) Runbook. Azure PowerShell moduly, které nejsou uvedené v `ModuleVersionOverrides` parametru, se aktualizují pomocí nejnovějších verzí modulu v Galerie prostředí PowerShell. Pokud do parametru nepředáte žádnou hodnotu `ModuleVersionOverrides` , všechny moduly se aktualizují s nejnovějšími verzemi modulu na galerie prostředí PowerShell. Toto chování je stejné jako u tlačítka **aktualizovat moduly Azure** v Azure Portal.
 
 ## <a name="next-steps"></a>Další kroky
 

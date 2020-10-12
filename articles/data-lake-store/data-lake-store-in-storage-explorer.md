@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 02/05/2018
 ms.author: jejiang
 ms.openlocfilehash: a99196cfad7abad38408c847a8a0b64ffe95fff5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85508788"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Správa prostředků Azure Data Lake Storage Gen1 pomocí Průzkumník služby Storage
@@ -26,7 +26,7 @@ K dokončení kroků v tomto článku budete potřebovat následující:
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial).
 * Účet Data Lake Storage Gen1. Pokyny, jak ho vytvořit, najdete v tématu Začínáme [s Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
 
-## <a name="install-storage-explorer"></a>Instalace Průzkumníka služby Storage
+## <a name="install-storage-explorer"></a>Nainstalujete Průzkumníka služby Storage.
 
 Nainstalujte nejnovější části Průzkumníka služby Azure Storage z [webu produktu](https://azure.microsoft.com/features/storage-explorer/). Instalace podporuje verze pro Windows, Linux a Mac.
 

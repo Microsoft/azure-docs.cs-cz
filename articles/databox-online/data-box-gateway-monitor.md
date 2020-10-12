@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: e352c2d8141f90c4dc721fe4fc0e717dfad7b88b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84339038"
 ---
 # <a name="monitor-your-azure-data-box-gateway"></a>Monitorování Azure Data Box Gateway
@@ -45,7 +45,7 @@ Tato část popisuje metriky monitorování na vašem zařízení. Metriky mohou
 
 Úplný seznam metrik je uveden v následující tabulce:
 
-|Metriky kapacity                     |Description  |
+|Kapacitní metriky                     |Description  |
 |-------------------------------------|-------------|
 |**Dostupná kapacita**               | Odkazuje na velikost dat, která se dají zapsat do zařízení. Jinými slovy, to je kapacita, kterou lze v zařízení zpřístupnit. <br></br>Kapacitu zařízení můžete uvolnit tak, že odstraníte místní kopii souborů, která má kopii na zařízení i v cloudu.        |
 |**Celková kapacita**                   | Odkazuje na celkový počet bajtů na zařízení, do kterého se mají zapisovat data. To se také označuje jako celková velikost místní mezipaměti. <br></br> Kapacitu stávajícího virtuálního zařízení teď můžete zvýšit přidáním datového disku. Přidejte datový disk prostřednictvím správy hypervisoru pro virtuální počítač a pak restartujte virtuální počítač. Místní fond úložiště zařízení brány se rozšíří tak, aby odpovídal nově přidanému datovému disku. <br></br>Další informace získáte, když přejdete na [Přidat pevný disk pro virtuální počítač Hyper-V](https://www.youtube.com/watch?v=EWdqUw9tTe4). |

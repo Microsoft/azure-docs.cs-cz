@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
 ms.openlocfilehash: 7456402605328592d4f5677767bcd985941173ec
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88639830"
 ---
-# <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
+# <a name="what-is-azure-private-endpoint"></a>Co je privátní koncový bod Azure?
 
-Privátní koncový bod Azure je síťové rozhraní, které vás privátně a zabezpečeně připojí ke službám využívajícím službu Azure Private Link. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Služba může být služba Azure, například Azure Storage, Azure Cosmos DB, SQL atd. nebo vaše vlastní [Služba privátních odkazů](private-link-service-overview.md).
+Privátní koncový bod Azure je síťové rozhraní, které vás privátně a zabezpečeně připojí ke službám využívajícím službu Azure Private Link. Privátní koncový bod používá privátní IP adresu vaší virtuální sítě a tím vlastně přináší službu do vaší virtuální sítě. Služba může být služba Azure, například Azure Storage, Azure Cosmos DB, SQL atd. nebo vaše vlastní [Služba privátních odkazů](private-link-service-overview.md).
   
 ## <a name="private-endpoint-properties"></a>Vlastnosti privátního koncového bodu 
  Soukromý koncový bod určuje následující vlastnosti: 

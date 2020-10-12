@@ -7,17 +7,17 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87007992"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Přehled rozšíření Azure Diagnostics
 Azure Diagnostics rozšíření je [Agent v Azure monitor](agents-overview.md) , který shromažďuje data monitorování z hostovaného operačního systému výpočetních prostředků Azure, včetně virtuálních počítačů. Tento článek obsahuje přehled rozšíření Azure Diagnostics, včetně specifických funkcí, které podporuje, a možností instalace a konfigurace. 
 
 > [!NOTE]
-> Azure Diagnostics rozšíření je jedním z agentů, které jsou k dispozici ke shromažďování dat monitorování z hostovaného operačního systému výpočetních prostředků. Popis různých agentů a pokynů k výběru vhodných agentů pro vaše požadavky najdete v tématu [přehled Azure Monitorch agentů](agents-overview.md) .
+> Azure Diagnostics rozšíření je jedním z agentů, které jsou k dispozici ke shromažďování dat monitorování z hostovaného operačního systému výpočetních prostředků. Popis různých agentů a pokynů k výběru vhodných agentů pro vaše požadavky najdete v tématu [přehled Azure Monitorch agentů ](agents-overview.md) .
 
 ## <a name="primary-scenarios"></a>Primární scénáře
 K primárním scénářům řešeným pomocí rozšíření pro diagnostiku patří:
@@ -44,7 +44,7 @@ V následujících tabulkách najdete seznam dat, která se můžou shromažďov
 
 ### <a name="windows-diagnostics-extension-wad"></a>Rozšíření Windows Diagnostics (WAD)
 
-| Zdroj dat | Popis |
+| Zdroj dat | Description |
 | --- | --- |
 | Protokoly událostí systému Windows   | Události z protokolu událostí systému Windows. |
 | Čítače výkonu | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
@@ -59,11 +59,11 @@ V následujících tabulkách najdete seznam dat, která se můžou shromažďov
 
 ### <a name="linux-diagnostics-extension-lad"></a>Diagnostické rozšíření pro Linux (LAD)
 
-| Zdroj dat | Popis |
+| Zdroj dat | Description |
 | --- | --- |
 | Syslog | Události odeslané do systému protokolování událostí pro Linux.   |
 | Čítače výkonu  | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
-| Soubory protokolu | Záznamy odesílané do protokolu založeného na souborech.  |
+| Soubory protokolů | Záznamy odesílané do protokolu založeného na souborech.  |
 
 ## <a name="data-destinations"></a>Cíle dat
 Diagnostické rozšíření Azure pro systémy Windows i Linux vždy shromažďuje data do účtu Azure Storage. Přečtěte si téma [instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)](diagnostics-extension-windows-install.md) a [použijte diagnostické rozšíření systému Linux k monitorování metrik a protokolů](../../virtual-machines/extensions/diagnostics-linux.md) pro seznam konkrétních tabulek a objektů blob, kde jsou tato data shromažďována.
@@ -72,7 +72,7 @@ Nakonfigurujte jednu nebo více *datových umyvadel* pro odesílání dat do dal
 
 ### <a name="windows-diagnostics-extension-wad"></a>Rozšíření Windows Diagnostics (WAD)
 
-| Cíl | Popis |
+| Cíl | Description |
 |:---|:---|
 | Azure Monitor metriky | Shromažďovat údaje o výkonu pro Azure Monitor metriky. Viz [odeslání metriky hostovaného operačního systému do databáze metriky Azure monitor](collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Event Hubs | K posílání dat mimo Azure použijte Azure Event Hubs. Přečtěte si téma [streamování dat Azure Diagnostics do Event Hubs](diagnostics-extension-stream-event-hubs.md) |
@@ -85,7 +85,7 @@ Data WAD můžete také shromažďovat z úložiště do pracovního prostoru Lo
 ### <a name="linux-diagnostics-extension-lad"></a>Diagnostické rozšíření pro Linux (LAD)
 LAD zapisuje data do tabulek v Azure Storage. Podporuje jímky v následující tabulce.
 
-| Cíl | Popis |
+| Cíl | Description |
 |:---|:---|
 | Event Hubs | K posílání dat mimo Azure použijte Azure Event Hubs. |
 | Objekty blob Azure Storage | Zápis do dat do objektů BLOB v Azure Storage kromě tabulek. |
