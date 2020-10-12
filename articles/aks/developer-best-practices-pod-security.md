@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: fab4943cad1a87bda70a4c4332ab6135ed99bf1b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022271"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení pod zabezpečením ve službě Azure Kubernetes Service (AKS)
@@ -97,7 +97,7 @@ Použití projektu identity pod umožňuje ověřování v rámci podpory služe
 
 Když aplikace potřebuje přihlašovací údaje, komunikují s digitálním trezorem, načtou nejnovější tajný obsah a pak se připojí k požadované službě. Azure Key Vault může být tento digitální trezor. Zjednodušený pracovní postup pro načtení přihlašovacích údajů z Azure Key Vault pomocí spravované identity se zobrazuje v následujícím diagramu:
 
-:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Zjednodušený pracovní postup pro načtení přihlašovacích údajů z Key Vault pomocí spravované identity pod":::
+:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Zjednodušený pracovní postup pro spravovanou identitu pod Azure":::
 
 Pomocí Key Vault ukládáte a pravidelně otáčíte tajné klíče, jako jsou přihlašovací údaje, klíče účtu úložiště nebo certifikáty. Azure Key Vault můžete integrovat s clusterem AKS pomocí [zprostředkovatele Azure Key Vault pro ovladač pro úložiště tajných klíčů](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage). Ovladač CSI úložiště tajných kódů umožňuje, aby cluster AKS nativně načetl obsah tajných kódů z Key Vault a bezpečně poskytoval pouze žadatelům nacházející se pod ním. Spolupracujte se svým operátorem clusteru, abyste nasadili ovladač do AKS pracovních uzlů pro úložiště tajných klíčů. Pomocí spravované identity pod ní můžete požádat o přístup k Key Vault a načíst obsah v tajnosti potřebný prostřednictvím ovladače v úložišti tajných kódů.
 

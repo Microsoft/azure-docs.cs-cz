@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 09d0e53840c2bf7a0d67c7c7fb0b224f9f77c587
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268301"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
@@ -75,7 +75,7 @@ Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace
 | Spouštění |Spouštění |Ne (přechodný stav) |
 | Spuštěno |Připraveno (žádné spuštěné programy)<br/>nebo<br/>Streamování (aspoň jeden spuštěný program) |ANO |
 | Zastavování |Zastavování |Ne (přechodný stav) |
-| Zastaveno |Zastaveno |Ne |
+| Zastaveno |Zastaveno |No |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>Automatické vypnutí pro nepoužívané kanály
 Od 25. ledna 2016 Media Services zavedli aktualizaci, která automaticky zastaví kanál (s povoleným živým kódováním) poté, co byl po dlouhou dobu spuštěný v nepoužívaném stavu. To platí pro kanály, které neobsahují žádné aktivní programy a které po delší dobu nedostaly vstupní příspěvek na dávky.
@@ -315,16 +315,16 @@ Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace
 | Stav kanálu | Indikátory uživatelského rozhraní portálu | Účtuje? |
 | --- | --- | --- |
 | Spouštění |Spouštění |Ne (přechodný stav) |
-| Spuštěno |Připraveno (žádné spuštěné programy)<br/>nebo<br/>Streamování (aspoň jeden spuštěný program) |Ano |
+| Spuštěno |Připraveno (žádné spuštěné programy)<br/>nebo<br/>Streamování (aspoň jeden spuštěný program) |Yes |
 | Zastavování |Zastavování |Ne (přechodný stav) |
-| Zastaveno |Zastaveno |Ne |
+| Zastaveno |Zastaveno |No |
 
 > [!NOTE]
 > V současné době je průměrem začátku kanálu přibližně 2 minuty, ale v některých případech může trvat až 20 minut. Resetování kanálu může trvat až 5 minut.
 > 
 > 
 
-## <a name="considerations"></a><a id="Considerations"></a>Požadavky
+## <a name="considerations"></a><a id="Considerations"></a>Důležité informace
 * Když se v kanálu **standardního** typu kódování vyskytne ztráta vstupního kanálu zdroje nebo příspěvků, nahradí se zdrojem videa nebo zvukem chyba SLAT a netichá. Kanál bude dál generovat SLAT, dokud se neobnoví informační kanál vstupů a příspěvků. Doporučujeme, aby živý kanál nebyl ponechán v takovém stavu déle než 2 hodiny. Po tomto okamžiku není zaručeno chování kanálu na vstupním připojení, ani v reakci na příkaz k obnovení není ani jeho chování. Budete muset kanál zastavit, odstranit ho a vytvořit nový.
 * Vstupní protokol nemůžete změnit, když kanál nebo jeho přidružené programy běží. Pokud požadujete různé protokoly, vytvořte samostatné kanály pro každý vstupní protokol.
 * Pokaždé, když znovu nakonfigurujete živý kodér, zavolejte na kanálu metodu **resetování** . Před resetováním kanálu musíte program zastavit. Po resetování kanálu restartujte program.

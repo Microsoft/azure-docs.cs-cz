@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
 ms.openlocfilehash: 554a7504e4e72eb2b2921c56e535343398cfa8b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333643"
 ---
 # <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Nasazení Next.js webů vygenerovaných serverem ve službě Azure static Web Apps Preview
@@ -63,7 +63,7 @@ Přejděte na adresu `http://localhost:3000` a otevřete aplikaci, kde by se mě
 
 Když kliknete na architekturu nebo knihovnu, měla by se zobrazit Stránka s podrobnostmi o vybrané položce:
 
-:::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="Stránka podrobností":::
+:::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="Spustit aplikaci Next.js":::
 
 ## <a name="generate-a-static-website-from-nextjs-build"></a>Vygenerování statického webu z Next.js sestavení
 
@@ -146,7 +146,7 @@ Následující kroky ukazují, jak propojit aplikaci, kterou jste právě odesla
 1. V rozevíracím seznamu *oblast* vyberte oblast, která je pro vás nejblíže.
 1. V rozevíracím seznamu SKU vyberte **volné** .
 
-   :::image type="content" source="media/deploy-nextjs/create-static-web-app.png" alt-text="Vytvoření statické webové aplikace":::
+   :::image type="content" source="media/deploy-nextjs/create-static-web-app.png" alt-text="Spustit aplikaci Next.js":::
 
 ### <a name="add-a-github-repository"></a>Přidat úložiště GitHub
 
@@ -157,7 +157,7 @@ Nový účet statického Web Apps potřebuje přístup k úložišti pomocí apl
 1. Vyhledejte a vyberte název úložiště, které jste vytvořili dříve.
 1. Z rozevíracího seznamu *větev* vyberte možnost **Hlavní** jako větev.
 
-   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="Připojení ke GitHubu":::
+   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="Spustit aplikaci Next.js":::
 
 ### <a name="configure-the-build-process"></a>Konfigurace procesu sestavení
 
@@ -165,7 +165,7 @@ Statická Web Apps Azure je sestavená tak, aby automaticky provedla běžné ú
 
 1. Chcete-li nakonfigurovat statickou výstupní složku, klikněte na kartu **sestavení** .
 
-   :::image type="content" source="media/deploy-nextjs/build-tab.png" alt-text="Karta sestavení":::
+   :::image type="content" source="media/deploy-nextjs/build-tab.png" alt-text="Spustit aplikaci Next.js":::
 
 2. Zadejte **text** do textového pole *umístění artefaktu aplikace* .
 
@@ -195,7 +195,7 @@ Vraťte se do terminálu a spusťte následující příkaz `git pull origin mas
 
 Přejděte k nově nasazenému webu a klikněte na jedno z log rozhraní nebo loga knihovny. Místo toho, abyste získali stránku s podrobnostmi, dostanete chybovou stránku 404.
 
-:::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="404 na dynamických trasách":::
+:::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="Spustit aplikaci Next.js":::
 
 Důvodem této chyby je, že Next.js jenom domovskou stránku vygenerovala na základě konfigurace aplikace.
 
@@ -231,7 +231,7 @@ Důvodem této chyby je, že Next.js jenom domovskou stránku vygenerovala na z�
 
 2. Nahrajte nové změny do úložiště GitHubu a počkejte pár minut, než akce GitHubu znovu vytvoří váš web. Po dokončení sestavení se zobrazí chyba 404.
 
-   :::image type="content" source="media/deploy-nextjs/404-in-production-fixed.png" alt-text="404 na pevných dynamických trasách":::
+   :::image type="content" source="media/deploy-nextjs/404-in-production-fixed.png" alt-text="Spustit aplikaci Next.js":::
 
 > [!div class="nextstepaction"]
 > [Nastavení vlastní domény](custom-domain.md)

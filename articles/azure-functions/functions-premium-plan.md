@@ -9,10 +9,10 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578032"
 ---
 # <a name="azure-functions-premium-plan"></a>Plán Azure Functions Premium
@@ -124,7 +124,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity
 
 Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí.  Bude se vám účtovat celkový počet jader a zřízených paměti za sekundu, které jsou pro každou instanci přiděleny.  Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.  
 
-|SKU|Cores|Memory (Paměť)|Storage|
+|SKU|Cores|Paměť|Storage|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -141,7 +141,7 @@ Níže jsou uvedeny aktuálně podporované maximální hodnoty škálování pr
 
 Kompletní regionální dostupnost funkcí najdete tady: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
-|Region (Oblast)| Windows | Linux |
+|Oblast| Windows | Linux |
 |--| -- | -- |
 |Austrálie – střed| 100 | Není k dispozici |
 |Austrálie – střed 2| 100 | Není k dispozici |
@@ -149,7 +149,7 @@ Kompletní regionální dostupnost funkcí najdete tady: [Azure.com](https://azu
 |Australia Southeast | 100 | 20 |
 |Brazil South| 100 | 20 |
 |Střední Kanada| 100 | 20 |
-|USA – střed| 100 | 20 |
+|Střední USA| 100 | 20 |
 |Čína – východ 2| 100 | 20 |
 |Čína – sever 2| 100 | 20 |
 |Východní Asie| 100 | 20 |

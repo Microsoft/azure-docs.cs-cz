@@ -5,10 +5,10 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
 ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578066"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Principy fungování upozornění na metriky ve službě Azure Monitor
@@ -53,7 +53,7 @@ Pokud v jednom pravidle používáte více podmínek, pravidlo "and" tyto podmí
 
 Po vytvoření pravidla výstrahy budou dynamické prahové hodnoty algoritmu strojového učení získávat historická data, která jsou k dispozici, vypočítat prahovou hodnotu, která nejlépe odpovídá vzoru chování metriky, a bude se průběžně učit na základě nových dat, aby byla prahová hodnota přesnější.
 
-Od okamžiku vytvoření pravidla výstrahy se monitor spouští každých 1 min a prohlíží hodnoty metriky za posledních 20 minut seskupené do 5 minut a kontroluje, jestli průměr hodnot období v každé 4 obdobích překračuje očekávanou prahovou hodnotu. Pokud je splněna podmínka, průměrná procentuální hodnota procesoru za posledních 20 minut (čtyři 5 minut) se odchyluje od očekávaného chování čtyřikrát, pravidlo výstrahy aktivuje aktivované oznámení. Pokud jste nakonfigurovali akci e-mail nebo webový zavěšení ve skupině akcí přidružené k pravidlu výstrahy, obdržíte i aktivované oznámení.
+Od okamžiku vytvoření pravidla výstrahy se monitor spouští každých 1 min a prohlíží hodnoty metriky za posledních 20 minut seskupené do 5 minut a kontroluje, jestli průměr hodnot období v každé 4 obdobích překračuje očekávanou prahovou hodnotu. Pokud je splněna podmínka, průměrná procentuální hodnota procesoru za posledních 20 minut (4 5 minut) se odchyluje od očekávaného chování čtyřikrát, pravidlo výstrahy vyvolá aktivované oznámení. Pokud jste nakonfigurovali akci e-mail nebo webový zavěšení ve skupině akcí přidružené k pravidlu výstrahy, obdržíte i aktivované oznámení.
 
 ### <a name="view-and-resolution-of-fired-alerts"></a>Zobrazit a vyřešit aktivované výstrahy
 
@@ -137,7 +137,7 @@ Tato funkce se v současné době podporuje pro metriky platforem (ne pro vlastn
 
 | Služba | Veřejné Azure | Státní správa | Čína |
 |:--------|:--------|:--------|:--------|
-| Virtuální počítače<sup>1</sup>  | **Ano** | Ne | Ne |
+| Virtuální počítače<sup>1</sup>  | **Ano** | No | No |
 | Databáze systému SQL Server | **Ano** | **Ano** | **Ano** |
 | Elastické fondy SQL serveru | **Ano** | **Ano** | **Ano** |
 | Fondy kapacity souborů NetApp | **Ano** | **Ano** | **Ano** |

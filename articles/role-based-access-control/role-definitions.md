@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511632"
 ---
 # <a name="understand-azure-role-definitions"></a>Vysvětlení definic rolí Azure
@@ -80,7 +80,7 @@ Operace jsou zadány s řetězci, které mají následující formát:
 
 `{action}`Část řetězce operace určuje typ operací, které můžete provádět u typu prostředku. Například se zobrazí následující podřetězce v `{action}` :
 
-| Podřetězec akce    | Popis         |
+| Podřetězec akce    | Description         |
 | ------------------- | ------------------- |
 | `*` | Zástupný znak uděluje přístup ke všem operacím, které odpovídají řetězci. |
 | `read` | Povoluje operace čtení (GET). |
@@ -239,7 +239,7 @@ Vlastník
 &nbsp;&nbsp;&nbsp;&nbsp;Činností<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
 
-Přispěvatel dat objektu BLOB služby Storage
+Přispěvatel dat v objektech blob služby Storage
 
 &nbsp;&nbsp;&nbsp;&nbsp;Činností<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
@@ -281,7 +281,7 @@ Chcete-li zobrazit a používat operace s daty v REST API, je nutné nastavit pa
 `Actions`Oprávnění určuje operace správy, které může role provést. Je to kolekce řetězců operací, které identifikují zabezpečitelné operace poskytovatelů prostředků Azure. Zde je několik příkladů operací správy, které lze použít v nástroji `Actions` .
 
 > [!div class="mx-tableFixed"]
-> | Řetězec operace    | Popis         |
+> | Řetězec operace    | Description         |
 > | ------------------- | ------------------- |
 > | `*/read` | Uděluje přístup k operacím čtení pro všechny typy prostředků všech poskytovatelů prostředků Azure.|
 > | `Microsoft.Compute/*` | Uděluje přístup ke všem operacím pro všechny typy prostředků v poskytovateli prostředků Microsoft. Compute.|
@@ -294,7 +294,7 @@ Chcete-li zobrazit a používat operace s daty v REST API, je nutné nastavit pa
 `NotActions`Oprávnění určuje operace správy, které jsou vyloučeny z povolených `Actions` . Oprávnění použijte v `NotActions` případě, že sada operací, které chcete zakázat, je snazší definovat s vyloučením operací s omezeným přístupem. Přístup udělený rolí (efektivní oprávnění) je vypočítán odečtením `NotActions` operací od `Actions` operací.
 
 > [!NOTE]
-> Pokud je uživateli přiřazena role, která vylučuje operaci v `NotActions` a je jí přiřazena druhá role, která uděluje přístup ke stejné operaci, uživatel může tuto operaci provést. `NotActions`není pravidlo Odepřít – jedná se o pohodlný způsob, jak vytvořit sadu povolených operací, pokud je potřeba vyloučit konkrétní operace.
+> Pokud je uživateli přiřazena role, která vylučuje operaci v `NotActions` a je jí přiřazena druhá role, která uděluje přístup ke stejné operaci, uživatel může tuto operaci provést. `NotActions` není pravidlo Odepřít – jedná se o pohodlný způsob, jak vytvořit sadu povolených operací, pokud je potřeba vyloučit konkrétní operace.
 >
 
 ## <a name="dataactions"></a>Akce dataactions
@@ -302,7 +302,7 @@ Chcete-li zobrazit a používat operace s daty v REST API, je nutné nastavit pa
 `DataActions`Oprávnění určuje operace s daty, které role umožňuje provádět na vašich datech v rámci daného objektu. Pokud má uživatel například oprávnění číst data objektů BLOB k účtu úložiště, může číst objekty BLOB v rámci tohoto účtu úložiště. Zde je několik příkladů operací s daty, které lze použít v nástroji `DataActions` .
 
 > [!div class="mx-tableFixed"]
-> | Řetězec operace    | Popis         |
+> | Řetězec operace    | Description         |
 > | ------------------- | ------------------- |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | Vrátí objekt BLOB nebo seznam objektů BLOB. |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | Vrátí výsledek zápisu objektu BLOB. |
@@ -314,7 +314,7 @@ Chcete-li zobrazit a používat operace s daty v REST API, je nutné nastavit pa
 `NotDataActions`Oprávnění určuje operace s daty, které jsou vyloučeny z povolených `DataActions` . Přístup udělený rolí (efektivní oprávnění) je vypočítán odečtením `NotDataActions` operací od `DataActions` operací. Každý poskytovatel prostředků poskytuje odpovídající sadu rozhraní API pro splnění operací s daty.
 
 > [!NOTE]
-> Pokud má uživatel přiřazenou roli, která vylučuje datovou operaci v a `NotDataActions` má přiřazenou druhou roli, která udělí přístup ke stejné datové operaci, uživatel může tuto datovou operaci provést. `NotDataActions`není pravidlo Odepřít – jedná se o pohodlný způsob, jak vytvořit sadu povolených datových operací, když je potřeba vyloučit konkrétní datové operace.
+> Pokud má uživatel přiřazenou roli, která vylučuje datovou operaci v a `NotDataActions` má přiřazenou druhou roli, která udělí přístup ke stejné datové operaci, uživatel může tuto datovou operaci provést. `NotDataActions` není pravidlo Odepřít – jedná se o pohodlný způsob, jak vytvořit sadu povolených datových operací, když je potřeba vyloučit konkrétní datové operace.
 >
 
 ## <a name="assignablescopes"></a>AssignableScopes
@@ -337,6 +337,6 @@ Informace o `AssignableScopes` vlastních rolích najdete v tématu [vlastní ro
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Předdefinované role Azure](built-in-roles.md)
+* [Předdefinované role v Azure](built-in-roles.md)
 * [Vlastní role Azure](custom-roles.md)
 * [Operace poskytovatele prostředků Azure Resource Manager](resource-provider-operations.md)

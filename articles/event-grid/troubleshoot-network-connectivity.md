@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
 ms.openlocfilehash: 5eb40d464fb718f0bd6dffe0d00f6420f4ea4995
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119000"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Řešení potíží s připojením – Azure Event Grid
@@ -30,7 +30,7 @@ Podívejte se na výpadek služby Azure Event Grid v [lokalitě stav služby Azu
 
 Ověřte, že porty používané při komunikaci s Azure Event Grid nejsou blokované v bráně firewall vaší organizace. V následující tabulce najdete Odchozí porty, které musíte otevřít ke komunikaci s Azure Event Grid.
 
-| Protocol (Protokol) | Porty |
+| Protokol | Porty |
 | -------- | ----- |
 | HTTPS    | 443   |
 
@@ -61,7 +61,7 @@ Pokud je vaše aplikace spuštěná v podsíti a máte přidruženou skupinu zab
 
 Ověřte, že veřejná IP adresa počítače, na kterém je aplikace spuštěná, není blokovaná EventGridým tématem nebo bránou firewall pro IP adresy domény.
 
-Ve výchozím nastavení jsou Event Grid tématy/doménami přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
+Ve výchozím nastavení jsou Event Grid tématy/doménami přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na další jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v zápisu [CIDR (bez třídy) (směrování Inter-Domain)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
 Pravidla brány firewall protokolu IP se používají na úrovni Event Gridho tématu nebo domény. Proto se pravidla vztahují na všechna připojení z klientů pomocí libovolného podporovaného protokolu. Všechny pokusy o připojení z IP adresy, které neodpovídají povolenému pravidlu IP v Event Gridm tématu nebo doméně, jsou odmítnuté jako zakázané. Odpověď nezmiňuje pravidlo protokolu IP.
 

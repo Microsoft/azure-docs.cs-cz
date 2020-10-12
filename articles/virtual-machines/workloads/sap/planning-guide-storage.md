@@ -17,10 +17,10 @@ ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 819ac1f01cc182c79571de35ec0753f694dc7722
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653609"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Typy služby Azure Storage pro úlohy SAP
@@ -352,7 +352,7 @@ Vzhledem k velikosti virtuálních počítačů Azure v životním cyklu systém
 
 
 ## <a name="striping-or-not-striping"></a>Prokládání nebo nepruhování
-Vytvoření Stripe nastaveného na více discích Azure do jednoho většího svazku umožňuje nashromáždit IOPS a propustnost jednotlivých disků na jednom svazku. Používá se jenom pro Azure Storage úrovně Standard a Azure Premium Storage. Azure Ultra disk, na kterém můžete nakonfigurovat propustnost a IOPS nezávisle na kapacitě disku, nevyžaduje použití sad Stripe Sets. Sdílené svazky založené na systému souborů NFS nebo SMB nelze prokládat. Z důvodu nelineárního charakteru propustnosti služby Azure Premium Storage a IOPS můžete zřídit menší kapacitu se stejnými IOPS a propustností než velké samostatné disky Azure Premium Storage. To je metoda, která dosahuje vyšší propustnosti nebo IOPS s nižšími náklady pomocí Azure Premium Storage. Příklad:
+Vytvoření Stripe nastaveného na více discích Azure do jednoho většího svazku umožňuje nashromáždit IOPS a propustnost jednotlivých disků na jednom svazku. Používá se jenom pro Azure Storage úrovně Standard a Azure Premium Storage. Azure Ultra disk, na kterém můžete nakonfigurovat propustnost a IOPS nezávisle na kapacitě disku, nevyžaduje použití sad Stripe Sets. Sdílené svazky založené na systému souborů NFS nebo SMB nelze prokládat. Z důvodu nelineárního charakteru propustnosti služby Azure Premium Storage a IOPS můžete zřídit menší kapacitu se stejnými IOPS a propustností než velké samostatné disky Azure Premium Storage. To je metoda, která dosahuje vyšší propustnosti nebo IOPS s nižšími náklady pomocí Azure Premium Storage. Například:
 
 - Proložení dvou disků úložiště P15 úrovně Premium vám umožní propustnost 
 - 250 MiB/s. Tento svazek bude mít 512 GiBou kapacitu. Pokud chcete mít jeden disk, který vám poskytne 250 propustnosti MiB za sekundu, musíte vybrat P40 disk se 2 TiB kapacitou. 

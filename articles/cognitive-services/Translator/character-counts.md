@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.openlocfilehash: 7fad90cf47591b5ffab4232c2be3180138738f01
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83992825"
 ---
 # <a name="how-the-translator-counts-characters"></a>Způsob, jakým Překladatel počítá znaky
@@ -24,8 +24,8 @@ Překladatel počítá každý bod kódu Unicode vstupního textu jako znak. Ka�
 Jaké počty jsou:
 
 * Text předaný překladateli v těle žádosti
-   * `Text`Při použití metod překladu, přepisu a slovníku vyhledávání
-   * `Text`a `Translation` při použití metody Dictionary Examples
+   * `Text` Při použití metod překladu, přepisu a slovníku vyhledávání
+   * `Text` a `Translation` při použití metody Dictionary Examples
 * Všechny značky: HTML, XML tagy atd. v textovém poli textu žádosti. Zápis JSON použitý k vytvoření žádosti (například text:) se nepočítá.
 * Jednotlivá písmena
 * Interpunkční znaménka

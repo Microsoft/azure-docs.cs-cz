@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak používat konfiguraci aplikací Azure
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: bdd077c291bd1e1c441217740daf39c8bcaad732
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86116994"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>Konfigurace aplikace Azure jako zdroj Event Grid
@@ -19,7 +19,7 @@ Tento článek popisuje vlastnosti a schéma pro události konfigurace aplikací
 
 Konfigurace aplikace Azure emituje následující typy událostí:
 
-| Typ události | Description |
+| Typ události | Popis |
 | ---------- | ----------- |
 | Microsoft. AppConfiguration. KeyValueModified | Je aktivována, když je vytvořena nebo nahrazena klíčová hodnota. |
 | Microsoft. AppConfiguration. KeyValueDeleted | Vyvolá se, když se odstraní hodnota klíče. |
@@ -71,11 +71,11 @@ Událost má následující data nejvyšší úrovně:
 | Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
-| Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| subject | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| eventType | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | ID | řetězec | Jedinečný identifikátor události |
-| data | odkazy objektů | Data události konfigurace aplikace |
+| data | object | Data události konfigurace aplikace |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 

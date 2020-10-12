@@ -4,10 +4,10 @@ description: Postup vyloučení disků z replikace do Azure pomocí Azure Site R
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333660"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Vyloučení disků z zotavení po havárii
@@ -201,7 +201,7 @@ Na zdrojovém virtuálním počítači máme tyto disky.
 **Název disku** | **Disk hostovaného operačního systému** | **Písmeno jednotky** | **Datový typ disku**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | Disk operačním systému
-DB-Disk1 (vyloučení z replikace) | Disk1 | D:\ | pagefile.sys
+DB-Disk1 (vyloučit z replikace) | Disk1 | D:\ | pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Uživatelská data 1
 DB-Disk3 | Disk3 | F:\ | Uživatelská data 2
 
@@ -210,7 +210,7 @@ Nastavení stránkovacího souboru na zdrojovém virtuálním počítači je ná
 ![Snímek obrazovky dialogového okna virtuální paměti se zvýrazněným řádkem D: Drive [Svazek svazku] ukazující velikost stránkovacího souboru (MB) 3000-7000.](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
 
 1. Povolujeme replikaci pro virtuální počítač.
-2. Z replikace vyloučíme DB-Disk1.
+2. Vyloučíme DB-Disk1 z replikace.
 
 #### <a name="disks-after-failover"></a>Disky po převzetí služeb při selhání
 
@@ -236,7 +236,7 @@ Na zdrojovém virtuálním počítači máme tyto disky.
 **Název disku** | **Disk hostovaného operačního systému** | **Písmeno jednotky** | **Datový typ disku**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | Disk operačním systému
-DB-Disk1 (vyloučení z replikace) | Disk1 | G:\ | pagefile.sys
+DB-Disk1 (vyloučit z replikace) | Disk1 | G:\ | pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Uživatelská data 1
 DB-Disk3 | Disk3 | F:\ | Uživatelská data 2
 
@@ -245,7 +245,7 @@ Nastavení stránkovacího souboru na místním virtuálním počítači je nás
 ![Nastavení stránkovacího souboru na místním virtuálním počítači](./media/exclude-disks-replication/pagefile-g-drive-source-vm.png)
 
 1. Povolujeme replikaci pro virtuální počítač.
-2. Z replikace vyloučíme DB-Disk1.
+2. Vyloučíme DB-Disk1 z replikace.
 
 #### <a name="disks-after-failover"></a>Disky po převzetí služeb při selhání
 

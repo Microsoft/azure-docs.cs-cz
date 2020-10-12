@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
 ms.openlocfilehash: 7700e151a49dbfbad452927ba4a308651a0b584a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84782808"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Správa mezi klienty v Security Center
@@ -28,7 +28,7 @@ Správa mezi klienty umožňuje zobrazit a spravovat stav zabezpečení pro víc
 
 - Bezpečnostní týmy organizací s více klienty můžou zobrazit a spravovat stav zabezpečení z jednoho místa.
 
-## <a name="set-up-cross-tenant-management"></a>Nastavení správy mezi klienty
+## <a name="set-up-cross-tenant-management"></a>Nastavení správy různých tenantů
 
 Pomocí [delegované správy prostředků Azure](../lighthouse/concepts/azure-delegated-resource-management.md)můžete nastavit správu mezi klienty tím, že delegujete přístup k prostředkům spravovaných klientů do vašeho vlastního tenanta.
 
@@ -43,7 +43,7 @@ V horním řádku nabídek klikněte na ikonu filtru a vyberte odběry z adresá
 
   ![Filtrovat klienty](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
 
-Zobrazení a akce jsou v podstatě stejné. Tady je pár příkladů:
+Zobrazení a akce jsou v podstatě stejné. Tady je několik příkladů:
 
 - **Správa zásad zabezpečení**: z jednoho zobrazení spravujte stav zabezpečení mnoha prostředků pomocí [zásad](tutorial-security-policy.md), provedete akce s doporučeními zabezpečení a shromáždíte a spravujete data související se zabezpečením.
 - **Vylepšení zabezpečeného skóre a stav dodržování předpisů**: Díky viditelnosti mezi klienty můžete zobrazit celkové stav zabezpečení všech vašich klientů a kde a jak nejlépe vylepšit zabezpečení [skóre](secure-score-security-controls.md) a [dodržování předpisů stav](security-center-compliance-dashboard.md) pro každé z nich.

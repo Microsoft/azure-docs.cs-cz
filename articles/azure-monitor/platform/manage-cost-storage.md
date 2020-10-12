@@ -15,10 +15,10 @@ ms.date: 09/29/2020
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: af168fe4c4dca71077464fdb9caf30f27c4b9fe2
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578253"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
@@ -124,7 +124,7 @@ Další podrobnosti o omezeních cenové úrovně jsou k dispozici v [limitech, 
 Žádná z cenových úrovní starší verze neobsahuje regionální ceny.  
 
 > [!NOTE]
-> Pokud chcete použít nároky, které pocházejí z nákupu sady OMS E1 Suite, OMS E2 Suite nebo doplňku OMS pro System Center, vyberte cenovou úroveň Log Analytics pro *jednotlivé uzly* .
+> Pokud chcete použít nároky, které pocházejí z nákupu sady OMS E1 Suite, OMS E2 Suite nebo OMS Add-On pro System Center, vyberte cenovou úroveň Log Analytics *na jednotlivých uzlech* .
 
 ## <a name="change-the-data-retention-period"></a>Změna doby uchovávání dat
 
@@ -567,7 +567,7 @@ union *
 Tento dotaz nepředstavuje přesnou replikaci toho, jak se vypočítává využití, ale ve většině případů bude fungovat s doporučeními cenové úrovně.  
 
 > [!NOTE]
-> Pokud chcete použít nároky, které pocházejí z nákupu sady OMS E1 Suite, OMS E2 Suite nebo doplňku OMS pro System Center, vyberte cenovou úroveň Log Analytics pro *jednotlivé uzly* .
+> Pokud chcete použít nároky, které pocházejí z nákupu sady OMS E1 Suite, OMS E2 Suite nebo OMS Add-On pro System Center, vyberte cenovou úroveň Log Analytics *na jednotlivých uzlech* .
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Vytvořit výstrahu, když je shromažďování dat vysoké
 

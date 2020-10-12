@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
 ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91277287"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Instalace a spuštění kontejneru prostorové analýzy (Preview)
@@ -65,7 +65,7 @@ V tomto článku budete stahovat a instalovat následující softwarové balíč
 
 | Požadavek | Popis |
 |--|--|
-| Camera | Kontejner prostorových analýz není svázaný s konkrétní značkou kamery. Zařízení kamery potřebuje: podporovat kódování protokolu RTSP (Real-time streaming Protocol) a H. 264, které je dostupné pro hostitelský počítač, a umožňuje streamování při řešení 15FPS a 1080p. |
+| Camera | Kontejner prostorových analýz není svázaný s konkrétní značkou kamery. Zařízení kamery potřebuje: podporuje kódování protokolu RTSP (Real-Time streaming Protocol) a H. 264, které je dostupné pro hostitelský počítač a umožňuje streamování při řešení 15FPS a 1080p. |
 | Operační systém Linux | Na hostitelském počítači musí být nainstalovaný [Ubuntu Desktop 18,04 LTS](http://releases.ubuntu.com/18.04/) .  |
 
 
@@ -178,7 +178,7 @@ Restartujte počítač a spusťte následující příkaz.
 nvidia-smi
 ```
 
-Měli byste vidět následující výstup.
+Měl by se zobrazit následující výstup.
 
 ![Výstup ovladače NVIDIA](media/spatial-analysis/nvidia-driver-output.png)
 

@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 332d9a9ec28c4309fb1cf1d3e24d3cfd2d7d13d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321968"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Zobrazení protokolů aktivit pro změny v Azure RBAC
@@ -43,7 +43,7 @@ Nejjednodušší způsob, jak začít, je zobrazit si protokoly aktivit přes Az
 
 Protokol aktivit na portálu má několik filtrů. Tady jsou filtry vztahující se ke službě Azure RBAC:
 
-| Filtr | Hodnota |
+| Filtrování | Hodnota |
 | --------- | --------- |
 | Kategorie události | <ul><li>Správcovské</li></ul> |
 | Operace | <ul><li>Vytvořit přiřazení role</li><li>Odstranit přiřazení role</li><li>Vytvořit nebo aktualizovat definici vlastní role</li><li>Odstranit definici vlastní role</li></ul> |

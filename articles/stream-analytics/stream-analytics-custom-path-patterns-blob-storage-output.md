@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1d651f3136b096eae957f0271e33cd11b1fb5571
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317850"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics vlastní dělení výstupu objektů BLOB
@@ -25,7 +25,7 @@ Vlastní pole nebo vstupní atributy zlepšují pracovní postupy pro zpracován
 
 ### <a name="partition-key-options"></a>Možnosti klíče oddílu
 
-Klíč oddílu nebo název sloupce, který se používá k dělení vstupních dat, můžou obsahovat alfanumerické znaky s pomlčkami, podtržítky a mezerami. Pokud se nepoužívají ve spojení s aliasy, není možné použít vnořená pole jako klíč oddílu. Klíč oddílu musí být NVARCHAR (MAX), BIGINT, FLOAT nebo BIT (úroveň kompatibility 1,2 nebo vyšší). Další informace najdete v tématu [Azure Stream Analytics datových typů](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+Klíč oddílu nebo název sloupce, který se používá k dělení vstupních dat, můžou obsahovat alfanumerické znaky s pomlčkami, podtržítky a mezerami. Pokud se nepoužívají ve spojení s aliasy, není možné použít vnořená pole jako klíč oddílu. Klíč oddílu musí být NVARCHAR (MAX).
 
 ### <a name="example"></a>Příklad
 
@@ -71,7 +71,7 @@ Vlastní vzorce pro cestu DateTime umožňují zadat výstupní formát, který 
 
 Následující tokeny specifikátoru formátu lze použít samostatně nebo v kombinaci k dosažení vlastních formátů data a času:
 
-|Specifikátor formátu   |Popis   |Výsledky pro příklad času 2018-01-02T10:06:08|
+|Specifikátor formátu   |Description   |Výsledky pro příklad času 2018-01-02T10:06:08|
 |----------|-----------|------------|
 |{DateTime: rrrr}|Rok jako čtyřmístné číslo|2018|
 |{DateTime: MM}|Měsíc od 01 do 12|01|

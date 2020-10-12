@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: c43b947d0c4d4fe389f156a6f724a90d2e4e60a5
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90057368"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-glint-inc"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Glint Inc
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Glint Inc s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Glint Inc pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 

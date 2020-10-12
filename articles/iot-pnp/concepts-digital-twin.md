@@ -1,5 +1,5 @@
 ---
-title: Pochopení technologie Plug and Play digitálních vláken IoT
+title: Principy digitálních dvojčat IoT Plug and Play
 description: Vysvětlení způsobu, jakým technologie Plug and Play IoT používá digitální vlákna
 author: prashmo
 ms.author: prashmo
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578049"
 ---
-# <a name="understand-iot-plug-and-play-digital-twins"></a>Pochopení technologie Plug and Play digitálních vláken IoT
+# <a name="understand-iot-plug-and-play-digital-twins"></a>Principy digitálních dvojčat IoT Plug and Play
 
 Zařízení IoT technologie Plug and Play implementuje model, který je popsaný v rámci schématu [DTDL (Digital vlákna Definition Language)](https://github.com/Azure/opendigitaltwins-dtdl) . Model popisuje sadu komponent, vlastností, příkazů a zpráv telemetrie, které může mít konkrétní zařízení. Když se zařízení IoT technologie Plug and Play připojí ke službě IoT Hub, inicializuje se nevlákenná a digitální vlákna.
 
@@ -22,7 +22,7 @@ IoT technologie Plug and Play používá DTDL verze 2. Další informace o této
 
 DTDL není výhradně pro IoT technologie Plug and Play. Další služby IoT, jako jsou třeba [digitální vlákna Azure](../digital-twins/overview.md), ji používají k vyjádření celého prostředí, jako jsou budovy a energetické sítě. Další informace najdete v tématu [pochopení zdvojených modelů v digitálních Prozdvojeních Azure](../digital-twins/concepts-models.md).
 
-Tento článek popisuje, jak jsou komponenty a vlastnosti reprezentovány v *požadovaných* a *nahlášených* částech v zařízení. Také popisuje, jak se tyto koncepty mapují na odpovídající digitální vlákna.
+Tento článek popisuje, jak jsou komponenty a vlastnosti reprezentovány v *požadovaných* a *nahlášených* částech v zařízení. Popisuje také, jak se tyto koncepty mapují na odpovídající digitální dvojče.
 
 Zařízení Plug and Play IoT v tomto článku, které implementuje [model řadiče teploty](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) se součástí [termostatu](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) .
 
@@ -131,7 +131,7 @@ Vlastnosti jsou datová pole, která představují stav entity (jako jsou vlastn
 
 #### <a name="read-only-property"></a>Vlastnost jen pro čtení
 
-Schéma:
+XSD
 
 ```json
 {
@@ -309,9 +309,9 @@ Následující fragmenty kódu znázorňují souběžnou reprezentaci `thermosta
 
 Digitální vlákna Azure jsou vybavená pomocí příkazu **získat digitální**vlákna, **aktualizovat digitální vlákna**, **vyvolat příkaz komponenty** a **vyvolat příkaz** pro správu digitálního vlákna zařízení. [Rozhraní REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) můžete buď použít přímo, nebo prostřednictvím [sady SDK služby](../iot-pnp/libraries-sdks.md).
 
-## <a name="digital-twin-change-events"></a>Události změny digitálního vlákna
+## <a name="digital-twin-change-events"></a>Události změn digitálního dvojčete
 
-Je-li povolena událost změny digitálního vlákna, je aktivována událost při každé změně aktuální nebo požadované hodnoty součásti nebo vlastnosti. Události změny digitálního vlákna jsou generovány ve formátu [opravy JSON](http://jsonpatch.com/) . V případě, že jsou povolené události změny, jsou ve formátu vlákna zařízení vygenerovány odpovídající události.
+Pokud jsou povolené události změn digitálního dvojčete, při každé změně aktuální nebo požadované hodnoty nějaké komponenty nebo vlastnosti se aktivuje událost. Události změny digitálního vlákna jsou generovány ve formátu [opravy JSON](http://jsonpatch.com/) . V případě, že jsou povolené události změny, jsou ve formátu vlákna zařízení vygenerovány odpovídající události.
 
 Informace o tom, jak povolit směrování pro zařízení a digitální události, najdete v tématu [použití IoT Hub směrování zpráv pro posílání zpráv ze zařízení do cloudu do různých koncových bodů](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events). Chcete-li porozumět formátu zprávy, přečtěte si téma [Vytvoření a čtení zpráv IoT Hub](../iot-hub/iot-hub-devguide-messages-construct.md).
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: eb508831d7a10537f27bb5b4e55f3a0627ce1f3c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89265962"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Přehled živého streamování pomocí Media Services
@@ -74,19 +74,19 @@ Počínaje verzí Media Services 2,10 můžete při vytváření kanálu určit,
 
 Následující tabulka poskytuje návod pro porovnání dvou typů kanálů podporovaných v Media Services
 
-| Funkce | Předávací kanál | Kanál Standard |
+| Příznak | Předávací kanál | Kanál Standard |
 | --- | --- | --- |
-| Vstup s jednou přenosovou rychlostí je kódovaný do více přenosových rychlostí v cloudu. |Ne |Ano |
+| Vstup s jednou přenosovou rychlostí je kódovaný do více přenosových rychlostí v cloudu. |No |Yes |
 | Maximální rozlišení, počet vrstev |1080p, 8 vrstev, 60 + fps |720p, 6 vrstev, 30 snímků za sekundu |
 | Vstupní protokoly |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Cena |Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu živé video. |Zobrazit [stránku s cenami](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maximální doba běhu |non |8 hodin |
-| Podpora pro vložení SLAT |Ne |Ano |
-| Podpora pro signalizaci AD |Ne |Ano |
-| Předávací titulky CEA 608/708 |Ano |Ano |
-| Podpora pro neuniformní vstupní GOPs |Ano |Ne – vstup musí být pevně 2sec GOPs. |
-| Podpora pro vstup variabilní frekvence snímků |Ano |Ne – vstupní hodnota musí být pevná snímková frekvence.<br/>Vedlejší variace jsou tolerovány, například při vysokém pohybu scény. Kodér ale nemůže přetahovat na 10 snímků za sekundu. |
-| Automatické shutoff kanálů při ztrátě vstupního kanálu |Ne |V případě, že není spuštěn žádný program, po 12 hodinách. |
+| Podpora pro vložení SLAT |No |Yes |
+| Podpora pro signalizaci AD |No |Yes |
+| Předávací titulky CEA 608/708 |Yes |Yes |
+| Podpora pro neuniformní vstupní GOPs |Yes |Ne – vstup musí být pevně 2sec GOPs. |
+| Podpora pro vstup variabilní frekvence snímků |Yes |Ne – vstupní hodnota musí být pevná snímková frekvence.<br/>Vedlejší variace jsou tolerovány, například při vysokém pohybu scény. Kodér ale nemůže přetahovat na 10 snímků za sekundu. |
+| Automatické shutoff kanálů při ztrátě vstupního kanálu |No |V případě, že není spuštěn žádný program, po 12 hodinách. |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Práce s kanály, které přijímají živé datové proudy s více přenosovými rychlostmi z místních kodérů (průchozí)
 
@@ -155,7 +155,7 @@ Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace
 | Spouštění |Spouštění |Ne (přechodný stav) |
 | Spuštěno |Připraveno (žádné spuštěné programy)<br/>nebo<br/>Streamování (aspoň jeden spuštěný program) |ANO |
 | Zastavování |Zastavování |Ne (přechodný stav) |
-| Zastaveno |Zastaveno |Ne |
+| Zastaveno |Zastaveno |No |
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

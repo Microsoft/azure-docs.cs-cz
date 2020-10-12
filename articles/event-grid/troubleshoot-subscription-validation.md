@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak můžete řešit problémy s ově
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 48844859013507ab684ef8879b7b85dd6b6fe8cd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86118983"
 ---
 # <a name="troubleshoot-azure-event-grid-subscription-validations"></a>Řešení potíží s Azure Event Grid ověření předplatného
@@ -72,7 +72,7 @@ Pokud Webhook vrací v odpovědi 403 (zakázáno), ověřte, jestli je Webhook z
   - 942430 (omezené zjištění anomálií znaků SQL (args): počet speciálních znaků překročen (12))
   - 920230 (bylo zjištěno více kódování adresy URL)
   - 942130 (útok injektáže SQL: byl zjištěn SQL Tautology.)
-  - 931130 (možný útok na vzdálené zahrnutí souborů (RFI) = odkaz mimo doménu/odkaz)
+  - 931130 (možný útok vzdáleného začlenění souborů (RFI) = odkaz na Off-Domain/odkaz)
 
 ## <a name="next-steps"></a>Další kroky
 Pokud potřebujete další pomoc, vystavte svůj problém ve [fóru Stack Overflow](https://stackoverflow.com/questions/tagged/azure-eventgrid) nebo otevřete [lístek podpory](https://azure.microsoft.com/support/options/). 

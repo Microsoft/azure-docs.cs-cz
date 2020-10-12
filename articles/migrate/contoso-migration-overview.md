@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: raynew
 ms.openlocfilehash: f9f7b3b64cf91019ed4e40d5d52b859419b74836
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86107627"
 ---
 # <a name="contoso-migration-series"></a>Seriál o migraci Contoso
@@ -26,7 +26,7 @@ Máme řadu článků, které ukazují, jak fiktivní organizace contoso migruje
 - Pro každý scénář nasazení poskytujeme informace o obchodních ovladačích a cílech, navržené architektuře, krocích k provedení migrace a doporučeních pro vyčištění a další kroky po dokončení migrace.
 
 
-**Předmětu** | **Podrobnosti** 
+**Článek** | **Podrobnosti** 
 --- | --- 
 [Článek 1: Přehled](/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-overview) | Přehled série článků, strategie migrace společnosti Contoso a ukázkových aplikací, které se používají v řadě. 
 [Článek 2: nasazení infrastruktury Azure](/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-infrastructure) | Společnost Contoso připraví svoji místní infrastrukturu a infrastrukturu Azure pro migraci. Stejná infrastruktura se používá pro všechny články v řadě. 

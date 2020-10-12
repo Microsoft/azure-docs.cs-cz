@@ -13,17 +13,17 @@ ms.workload: identity
 ms.date: 07/13/2020
 ms.author: rolyon
 ms.openlocfilehash: 91d2605dddd6107d09e635969f5e5d98c2a02d60
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511717"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Vytvoření nebo aktualizace vlastních rolí pomocí portálu Azure Portal
 
 Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní vlastní role Azure. Stejně jako předdefinované role můžete uživatelům, skupinám a instančním objektům přiřadit vlastní role v oborech předplatného a skupiny prostředků. Vlastní role se ukládají v adresáři Azure Active Directory (Azure AD) a můžou se sdílet mezi předplatnými. Každý adresář může mít až 5000 vlastních rolí. Vlastní role se dají vytvořit pomocí Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo REST API. Tento článek popisuje, jak pomocí Azure Portal vytvořit vlastní role.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vytvoření vlastních rolí budete potřebovat:
 
@@ -35,7 +35,7 @@ Azure má tisíce oprávnění, která můžete zahrnout do vaší vlastní role
 
 | Metoda | Popis |
 | --- | --- |
-| Podívejte se na stávající role | Můžete si prohlédnout stávající role a zjistit, jaká oprávnění jsou používána. Další informace najdete v tématu [předdefinované role Azure](built-in-roles.md). |
+| Podívejte se na stávající role | Můžete si prohlédnout stávající role a zjistit, jaká oprávnění jsou používána. Další informace najdete v tématu [Předdefinované role v Azure](built-in-roles.md). |
 | Vyhledat oprávnění podle klíčového slova | Když vytvoříte vlastní roli pomocí Azure Portal, můžete vyhledat oprávnění podle klíčového slova. Můžete například vyhledat *virtuální počítač* nebo oprávnění *fakturace* . Tato funkce hledání je podrobněji popsána v [kroku 4: oprávnění](#step-4-permissions). |
 | Stáhnout všechna oprávnění | Když vytvoříte vlastní roli pomocí Azure Portal, můžete stáhnout všechna oprávnění jako soubor CSV a potom tento soubor vyhledat. V podokně **Přidat oprávnění** kliknutím na tlačítko **Stáhnout všechna oprávnění** Stáhněte všechna oprávnění. Další informace o podokně Přidat oprávnění najdete v části [Krok 4: oprávnění](#step-4-permissions). |
 | Zobrazení oprávnění v dokumentaci | Dostupná oprávnění můžete zobrazit v [Azure Resource Manager operacích poskytovatele prostředků](resource-provider-operations.md). |

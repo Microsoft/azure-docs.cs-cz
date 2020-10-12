@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.openlocfilehash: 527d9e2e43a4003dd5300c26fc58b1e456186351
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87077391"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Vysoká dostupnost IBM DB2 LUW ve virtuálních počítačích Azure na linuxovém serveru Red Hat Enterprise
@@ -33,7 +33,7 @@ Podporované verze IBM Db2 jsou 10,5 a novější, jak je popsáno v části SAP
 
 Než začnete s instalací, přečtěte si následující poznámky a dokumentace SAP:
 
-| Poznámka SAP | Popis |
+| Poznámka SAP | Description |
 | --- | --- |
 | [1928533] | Aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure |
 | [2015553] | SAP v Azure: požadavky na podporu |
@@ -41,7 +41,7 @@ Než začnete s instalací, přečtěte si následující poznámky a dokumentac
 | [2191498] | SAP v systému Linux s Azure: rozšířené monitorování |
 | [2243692] | Virtuální počítač se systémem Linux v Azure (IaaS): problémy s licencí SAP |
 | [2002167] | Red Hat Enterprise Linux 7. x: instalace a upgrade |
-| [2694118] | Doplněk Red Hat Enterprise Linux HA v Azure |
+| [2694118] | Red Hat Enterprise Linux Add-On HA v Azure |
 | [1999351] | Řešení potíží s vylepšeným monitorováním Azure pro SAP |
 | [2233094] | DB6: aplikace SAP v Azure, které používají IBM Db2 pro Linux, UNIX a Windows – Další informace |
 | [1612105] | DB6: nejčastější dotazy k Db2 s HADR |
@@ -54,11 +54,11 @@ Než začnete s instalací, přečtěte si následující poznámky a dokumentac
 | [Nasazení Azure Virtual Machines pro SAP v systému Linux][deployment-guide] (Tento článek) |
 | Průvodce [nasazením systému správy databází Azure Virtual Machines pro SAP v Linux][dbms-guide] |
 | [Úlohy SAP v kontrolním seznamu pro plánování a nasazení Azure][azr-sap-plancheck] |
-| [Přehled doplňku vysoké dostupnosti pro Red Hat Enterprise Linux 7][rhel-ha-addon] |
-| [Správa doplňku vysoké dostupnosti][rhel-ha-admin] |
-| [Referenční informace k doplňku vysoké dostupnosti][rhel-ha-ref] |
+| [Přehled Add-On vysoké dostupnosti pro Red Hat Enterprise Linux 7][rhel-ha-addon] |
+| [Správa Add-On vysoké dostupnosti][rhel-ha-admin] |
+| [Referenční informace o Add-On vysoké dostupnosti][rhel-ha-ref] |
 | [Zásady podpory pro RHEL clustery s vysokou dostupností – Microsoft Azure Virtual Machines jako členové clusteru][rhel-azr-supp]
-| [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) cluster s vysokou dostupností v Microsoft Azure][rhel-azr-inst]
+| [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) High-Availability clusteru v Microsoft Azure][rhel-azr-inst]
 | [Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP][dbms-db2] |
 | [IBM Db2 HADR 11,1][db2-hadr-11.1] |
 | [IBM Db2 HADR 10,5][db2-hadr-10.5] |
@@ -507,7 +507,7 @@ Archivace protokolu je prováděna pouze v primární databázi. Pokud změníte
 
 Doporučujeme nakonfigurovat společné sdílené složky NFS nebo GlusterFS, ve kterých jsou protokoly napsané z obou uzlů. Sdílená složka nebo GlusterFS systému souborů NFS musí být vysoce dostupná. 
 
-Pro přenosy nebo adresář profilu můžete použít stávající vysoce dostupné sdílené složky systému souborů NFS nebo GlusterFS. Další informace najdete tady:
+Pro přenosy nebo adresář profilu můžete použít stávající vysoce dostupné sdílené složky systému souborů NFS nebo GlusterFS. Další informace naleznete v tématech:
 
 - [GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver][glusterfs] 
 - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP][anf-rhel]

@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c6c1dcb0af500c47aabbd8e8193c066bb4a921c5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89267764"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Použití Azure Queue Storage k monitorování Media Servicesch oznámení úloh pomocí .NET
@@ -37,7 +37,7 @@ Jedním z běžných scénářů, jak naslouchat oznámením Media Services, je,
 
 Tento článek ukazuje, jak získat oznamovací zprávy z fronty úložiště.  
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 Při vývoji Media Services aplikací, které používají úložiště Queue, zvažte následující:
 
 * Queue Storage neposkytuje záruku pro objednané doručení FIFO (First-in-first-out). Další informace najdete v tématu [porovnání a srovnání front Azure a front Azure Service Bus](/previous-versions/azure/hh767287(v=azure.100)).

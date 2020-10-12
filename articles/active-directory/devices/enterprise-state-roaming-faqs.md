@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268532"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Nejčastější dotazy k nastavení a datovému roamingu
@@ -66,7 +66,7 @@ Pokud se místní doména služby Active Directory připojí k Azure AD, zaříz
 Pokud jste v podnikovém zařízení uložili nějaké osobní údaje, měli byste si uvědomit, že se operační systém Windows a data aplikací začnou synchronizovat do Azure AD. To má následující důsledky:
 
 * Vaše osobní nastavení účet Microsoft přijde od nastavení vašich pracovních nebo školních účtů Azure AD. Důvodem je to, že synchronizace nastavení účet Microsoft a Azure AD teď používá samostatné účty.
-* Osobní údaje, jako jsou hesla Wi-Fi, webové přihlašovací údaje a oblíbené položky aplikace Internet Explorer, které byly dříve synchronizovány prostřednictvím připojeného účet Microsoft, budou synchronizovány prostřednictvím služby Azure AD.
+* Osobní údaje, například Wi-Fi hesla, Webová pověření a oblíbené položky aplikace Internet Explorer, které byly dříve synchronizovány prostřednictvím připojeného účet Microsoft, budou synchronizovány prostřednictvím služby Azure AD.
 
 ## <a name="how-do-microsoft-account-and-azure-ad-enterprise-state-roaming-interoperability-work"></a>Jak účet Microsoft a spolupráce Enterprise State Roaming služby Azure AD funguje?
 
@@ -77,7 +77,7 @@ V listopadu 2015 nebo novějších verzích Windows 10 se Enterprise State Roami
 Pokud jsou na stejném zařízení víc účtů Azure AD z různých tenantů Azure AD, musíte aktualizovat registr zařízení, aby komunikoval se službou Azure Rights Management pro každého tenanta Azure AD.  
 
 1. Vyhledejte identifikátor GUID pro každého tenanta Azure AD. Otevřete Azure Portal a vyberte tenanta Azure AD. Identifikátor GUID pro tenanta se nachází na stránce vlastností vybraného tenanta ( https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) s popiskem **ID adresáře**. 
-2. Po identifikátoru GUID budete muset přidat klíč registru **HKEY_LOCAL_MACHINE \software\microsoft\windows\settingsync\winmsipc \<tenant ID GUID> **.
+2. Po dokončení identifikátoru GUID budete muset přidat klíč registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID> **.
    Z klíče **GUID ID tenanta** vytvořte novou hodnotu s více řetězci (reg-multi-SZ) s názvem **AllowedRMSServerUrls**. Pro svá data zadejte adresy URL distribučního bodu pro licencování ostatních tenantů Azure, ke kterým zařízení přistupuje.
 3. Adresy URL distribučního bodu licencování můžete najít spuštěním rutiny **Get-AadrmConfiguration** z modulu aadrm. Pokud se hodnoty pro **LicensingIntranetDistributionPointUrl** a **LicensingExtranetDistributionPointUrl** liší, zadejte obě hodnoty. Pokud jsou hodnoty stejné, zadejte hodnotu pouze jednou.
 

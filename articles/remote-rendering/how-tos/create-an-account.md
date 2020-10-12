@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: 7a4e6d80d80441a1b94c1fb2bd8f82f247235fe3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318088"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Vytvoření účtu Azure Remote Renderingu
@@ -52,7 +52,7 @@ Projděte si [seznam dostupných oblastí](../reference/regions.md) pro vyplňov
 
 Hodnoty pro **`arrAccountId`** a **`arrAccountKey`** lze nalézt na portálu, jak je popsáno v následujícím postupu:
 
-* Přejít na [Azure Portal](https://www.portal.azure.com)
+* Přejděte na web [Azure Portal](https://www.portal.azure.com).
 * Najít **účet vzdáleného vykreslování** – měl by být v seznamu **Poslední prostředky** . Můžete ji také vyhledat na panelu hledání v horní části. V takovém případě se ujistěte, že odběr, který chcete použít, je vybraný ve výchozím filtru předplatného (ikona filtru vedle panelu hledání):
 
 ![Filtr předplatných](./media/azure-subscription-filter.png)

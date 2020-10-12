@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266778"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Nejčastější dotazy ke správě zařízení Azure Active Directory
@@ -215,7 +215,7 @@ Toto chování:
 
 - Vaše přihlašovací údaje uživatele již nejsou platné.
 - Počítač nemůže komunikovat s Azure Active Directory. Vyhledejte všechny problémy s připojením k síti.
-- Federované přihlašování vyžaduje federační server pro podporu koncových bodů WS-Trust, které jsou povolené a přístupné. 
+- Federované přihlašování vyžaduje federační server pro podporu WS-Trust koncových bodů, které jsou povolené a přístupné. 
 - Povolili jste předávací ověřování. Takže vaše dočasné heslo se musí po přihlášení změnit.
 
 ---

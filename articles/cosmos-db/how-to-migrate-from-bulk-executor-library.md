@@ -8,10 +8,10 @@ ms.date: 04/24/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 8f573a3e851fe428c66066e36a913d6580cabd51
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022475"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Migrace z knihovny hromadného prováděcího modulu do hromadné podpory v sadě Azure Cosmos DB .NET V3 SDK
@@ -34,15 +34,15 @@ Například pokud je vaším počátečním vstupem seznam položek, kde má ka�
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Model":::
 
-Pokud chcete hromadné importy (podobně jako v používání BulkExecutor. BulkImportAsync), musíte mít souběžné volání `CreateItemAsync` . Příklad:
+Pokud chcete hromadné importy (podobně jako v používání BulkExecutor. BulkImportAsync), musíte mít souběžné volání `CreateItemAsync` . Například:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkImport":::
 
-Chcete-li provést hromadnou *aktualizaci* (podobně jako při použití [BulkExecutor. BulkUpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)), je nutné mít souběžné volání `ReplaceItemAsync` metody po aktualizaci hodnoty položky. Příklad:
+Chcete-li provést hromadnou *aktualizaci* (podobně jako při použití [BulkExecutor. BulkUpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)), je nutné mít souběžné volání `ReplaceItemAsync` metody po aktualizaci hodnoty položky. Například:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkUpdate":::
 
-A pokud chcete hromadné *odstranění* (podobně jako při použití [BulkExecutor. BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)), musíte mít souběžné volání `DeleteItemAsync` s `id` klíčem oddílu a každé položky. Příklad:
+A pokud chcete hromadné *odstranění* (podobně jako při použití [BulkExecutor. BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)), musíte mít souběžné volání `DeleteItemAsync` s `id` klíčem oddílu a každé položky. Například:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkDelete":::
 
