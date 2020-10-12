@@ -11,10 +11,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 81c5d410599edcbbb4e216b630709541be02c9fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323005"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Pochopení a použití vláken v modulech v IoT Hub
@@ -179,7 +179,7 @@ Back-end řešení funguje v modulu s dvojím použitím následujících atomic
 
   - Vlastnosti
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | --- | --- |
     $content – typ | application/json |
     $iothub – enqueuedtime |  Čas odeslání oznámení |

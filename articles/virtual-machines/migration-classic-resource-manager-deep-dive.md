@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855922"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager
@@ -48,7 +48,7 @@ Než zahájíte migraci:
 * Naplánujte migraci mimo pracovní dobu, abyste mohli vyřešit případné neočekávané chyby, ke kterým by mohlo při migraci dojít.
 * Pro usnadnění ověření po dokončení kroku přípravy si stáhněte aktuální konfiguraci vašich virtuálních počítačů pomocí PowerShellu, příkazů rozhraní příkazového řádku nebo rozhraní REST API.
 * Než začnete s migrací, aktualizujte skripty pro automatizaci a provozní prostředí, aby zpracovávala model nasazení Správce prostředků. Volitelně můžete provádět operace načtení, když jsou prostředky v připraveném stavu.
-* Vyhodnoťte zásady Access Control na základě rolí (RBAC), které jsou nakonfigurované na IaaSch prostředcích v modelu nasazení Classic, a naplánujte po dokončení migrace.
+* Vyhodnoťte zásady Role-Based Access Control (RBAC), které jsou nakonfigurované na IaaSch prostředcích v modelu nasazení Classic, a naplánujte po dokončení migrace.
 
 Pracovní postup migrace je následující:
 

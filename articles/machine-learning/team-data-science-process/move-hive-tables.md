@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7cce0a927c2ffd69252a22ea4459f789d22721c2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86080733"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Vytváření tabulek podregistru a načítání dat z Azure Blob Storage
@@ -27,7 +27,7 @@ V tomto článku se předpokládá, že máte následující:
 
 * Vytvořili jste účet Azure Storage. Pokud potřebujete pokyny, přečtěte si téma [informace o Azure Storagech účtech](../../storage/common/storage-introduction.md).
 * Byl zřízen přizpůsobený cluster Hadoop se službou HDInsight.  Pokud potřebujete pokyny, přečtěte si téma [Instalace clusterů ve službě HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).
-* Povolen vzdálený přístup ke clusteru, přihlášený a otevřel konzolu příkazového řádku Hadoop. Pokud potřebujete pokyny, přečtěte si téma [správa Apache Hadoopch clusterů](../../hdinsight/hdinsight-administer-use-portal-linux.md).
+* Byl povolen vzdálený přístup ke clusteru, přihlášený a otevřela konzolu Hadoop Command-Line. Pokud potřebujete pokyny, přečtěte si téma [správa Apache Hadoopch clusterů](../../hdinsight/hdinsight-administer-use-portal-linux.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Nahrání dat do služby Azure Blob Storage
 Pokud jste virtuální počítač Azure vytvořili podle pokynů uvedených v části [nastavení virtuálního počítače Azure pro pokročilou analýzu](../../machine-learning/data-science-virtual-machine/overview.md), měl by se tento soubor skriptu stáhnout do adresáře *C: \\ Uživatelé \\ \<user name\> \\ soubory \\ data vědy* na virtuálním počítači. Tyto dotazy na podregistry vyžadují pouze zadání schématu dat a konfigurace služby Azure Blob Storage v příslušných polích, která budou připravena k odeslání.
@@ -86,7 +86,7 @@ hive -S -e "<Hive queries>"
 ```
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Odešlete dotazy na podregistr v konzole příkazů pro podregistr.
-Můžete taky nejdřív zadat příkazovou konzolu pro podregistr spuštěním příkazu `hive` v příkazovém řádku Hadoop a pak odeslat dotazy na podregistr v konzole příkazů pro podregistr. Zde je příklad. V tomto příkladu jsou dvě červená pole zvýrazněné příkazy, které slouží k zadání konzoly příkazového řádku, a dotaz na podregistr odeslaný do konzoly příkazového řádku v uvedeném pořadí. Zelené pole zvýrazní výstup z dotazu na podregistr.
+Můžete taky nejdřív zadat příkazovou konzolu pro podregistr spuštěním příkazu `hive` v příkazovém řádku Hadoop a pak odeslat dotazy na podregistr v konzole příkazů pro podregistr. Tady je příklad. V tomto příkladu jsou dvě červená pole zvýrazněné příkazy, které slouží k zadání konzoly příkazového řádku, a dotaz na podregistr odeslaný do konzoly příkazového řádku v uvedeném pořadí. Zelené pole zvýrazní výstup z dotazu na podregistr.
 
 ![Otevřete příkazový konzolu pro podregistr a zadejte příkaz, zobrazte výstup dotazu na podregistry.](./media/move-hive-tables/run-hive-queries-2.png)
 

@@ -4,10 +4,10 @@ description: Naučte se vytvářet a nasazovat Service Fabric aplikace pomocí C
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.openlocfilehash: 556d8dee4efd492fa98755f1ffd1cdc1c9887856
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82193645"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Vytvoření první aplikace Azure Service Fabric
@@ -118,7 +118,7 @@ Projekty Actor samy o sobě nedělají nic. Vyžadují, aby jim jiná služba ne
 
 Pokud chcete přidat další službu do aplikace již vytvořené pomocí `yo`, proveďte následující kroky:
 1. Změňte adresář na kořenovou složku stávající aplikace.  Například `cd ~/YeomanSamples/MyApplication`, pokud `MyApplication` je aplikace vytvořená pomocí Yeomanu.
-2. Spusťte `yo azuresfcsharp:AddService`.
+2. Spuštěním příkazu `yo azuresfcsharp:AddService`
 
 ## <a name="next-steps"></a>Další kroky
 

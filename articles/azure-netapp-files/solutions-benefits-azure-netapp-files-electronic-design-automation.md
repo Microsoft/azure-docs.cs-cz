@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
 ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82160149"
 ---
 # <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>Výhody použití Azure NetApp Files pro automatizaci elektronických návrhů
@@ -31,8 +31,8 @@ Testy zahrnují tři scénáře s následujícími konfiguracemi.
 
 |    Scénář    |    Svazky    |    Klienti<br> SLES15 D16s_v3  |
 |----------------|---------------|--------------------------------|
-|    Jeden         |    1          |    1                           |
-|    Dva         |    6          |    24                          |
+|    Jednu         |    1          |    1                           |
+|    Dvě         |    6          |    24                          |
 |    Tři       |    12         |    24                          |
 
 První scénář řeší, jak daleko může být řízený jeden svazek.  

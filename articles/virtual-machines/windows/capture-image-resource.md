@@ -10,10 +10,10 @@ ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
 ms.openlocfilehash: 751fa9f9fe2ba17a982b71a6332be302804f0dcc
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89047288"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Vytvoření spravované image zobecněného virtuálního počítače v Azure
@@ -85,7 +85,7 @@ K generalizaci virtuálního počítače s Windows použijte následující post
 
 7. Pokud chcete, aby se image používala v libovolné [zóně dostupnosti](../../availability-zones/az-overview.md), vyberte možnost **zapnuto** pro zajištění **odolnosti zóny**.
 
-8. Vyberte **vytvořit** a vytvořte bitovou kopii.
+8. Výběrem **Vytvořit** image vytvořte.
 
 Po vytvoření image je možné ji v seznamu prostředků ve skupině prostředků najít jako prostředek **obrázku** .
 

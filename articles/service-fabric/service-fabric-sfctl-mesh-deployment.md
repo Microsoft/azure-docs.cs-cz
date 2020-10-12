@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fb2adafab88eb1d3855cdec8268601fb4e15dcbb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257267"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
@@ -24,16 +24,16 @@ Vytvořte Service Fabric prostředky sítě.
 ## <a name="sfctl-mesh-deployment-create"></a>vytvoření nasazení sítě sfctl
 Vytvoří nasazení Service Fabricch prostředků sítě.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Input-YAML-Files [povinné] | Relativní nebo absolutní cesty k souborům YAML nebo relativní nebo absolutní cesta k adresáři (rekurzivní), který obsahuje soubory YAML, oddělených čárkami. |
 | --parametry | Relativní nebo absolutní cesta k souboru YAML nebo objektu JSON, který obsahuje parametry, které je třeba přepsat. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

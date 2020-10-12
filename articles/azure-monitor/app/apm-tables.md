@@ -6,10 +6,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
 ms.openlocfilehash: 1d7275c928b4d25e200a3a8d3d690c7575c056e7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323175"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>Změny prostředků na základě pracovního prostoru (Preview)
@@ -20,7 +20,7 @@ Data prostředků Application Insights na základě pracovního prostoru se ukl�
 
 ## <a name="table-structure"></a>Struktura tabulky
 
-| Starší verze názvu tabulky | Název nové tabulky | Popis |
+| Starší verze názvu tabulky | Název nové tabulky | Description |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  Souhrnná data z testů dostupnosti.|
 | browserTimings | AppBrowserTimings | Data o výkonu klienta, například čas potřebný ke zpracování příchozích dat.|
@@ -58,8 +58,8 @@ Starší tabulka: dostupnost
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|Dynamická|
-|customMeasurements|dynamické|Měření|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
+|customMeasurements|dynamic|Měření|Dynamická|
 |doba trvání|real|DurationMs|real|
 |`id`|řetězec|`Id`|řetězec|
 |iKey|řetězec|IKey|řetězec|
@@ -68,7 +68,7 @@ Starší tabulka: dostupnost
 |itemType|řetězec|Typ|Řetězec|
 |location|řetězec|Umístění|řetězec|
 |zpráva|řetězec|Zpráva|řetězec|
-|name|řetězec|Název|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -76,7 +76,7 @@ Starší tabulka: dostupnost
 |performanceBucket|řetězec|PerformanceBucket|řetězec|
 |sdkVersion|řetězec|SdkVersion|řetězec|
 |session_Id|řetězec|SessionId|řetězec|
-|velikost|real|Velikost|real|
+|size|real|Velikost|real|
 |úspěch|řetězec|Success|Logická hodnota|
 |časové razítko|datetime|TimeGenerated|datetime|
 |user_AccountId|řetězec|UserAccountId|řetězec|
@@ -102,13 +102,13 @@ Starší tabulka: browserTimings
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|Dynamická|
-|customMeasurements|dynamické|Měření|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
+|customMeasurements|dynamic|Měření|Dynamická|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|name|řetězec|Název|datetime|
+|name|řetězec|Name|datetime|
 |networkDuration|real|NetworkDurationMs|real|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
@@ -146,8 +146,8 @@ Starší tabulka: závislosti
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|Dynamická|
-|customMeasurements|dynamické|Měření|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
+|customMeasurements|dynamic|Měření|Dynamická|
 |data|řetězec|Data|řetězec|
 |doba trvání|real|DurationMs|real|
 |`id`|řetězec|`Id`|řetězec|
@@ -155,7 +155,7 @@ Starší tabulka: závislosti
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|Řetězec|
-|name|řetězec|Název|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -191,13 +191,13 @@ Starší tabulka: customEvents
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|Dynamická|
-|customMeasurements|dynamické|Měření|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
+|customMeasurements|dynamic|Měření|Dynamická|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|name|řetězec|Název|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -228,11 +228,11 @@ Starší tabulka: customMetrics
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
 |iKey|řetězec|IKey|řetězec|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|name|řetězec|Název|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -243,7 +243,7 @@ Starší tabulka: customMetrics
 |user_AccountId|řetězec|UserAccountId|řetězec|
 |user_AuthenticatedId|řetězec|UserAuthenticatedId|řetězec|
 |user_Id|řetězec|UserId|řetězec|
-|hodnota|real|odstraněn||
+|value|real|odstraněn||
 |valueCount|int|ValueCount|int|
 |valueMax|real|ValueMax|real|
 |valueMin|real|ValueMin|real|
@@ -269,15 +269,15 @@ Starší tabulka: pageViews
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|Dynamická|
-|customMeasurements|dynamické|Měření|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
+|customMeasurements|dynamic|Měření|Dynamická|
 |doba trvání|real|DurationMs|real|
 |`id`|řetězec|`Id`|řetězec|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|Řetězec|
-|name|řetězec|Název|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -312,12 +312,12 @@ Starší tabulka: čítače výkonu
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
 |counter|řetězec|odstraněn||
-|customDimensions|dynamické|Vlastnosti|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
 |iKey|řetězec|IKey|řetězec|
 |případě|řetězec|Instance|řetězec|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|řetězec|
-|name|řetězec|Název|řetězec|
+|name|řetězec|Name|řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -328,7 +328,7 @@ Starší tabulka: čítače výkonu
 |user_AccountId|řetězec|UserAccountId|řetězec|
 |user_AuthenticatedId|řetězec|UserAuthenticatedId|řetězec|
 |user_Id|řetězec|UserId|řetězec|
-|hodnota|real|Hodnota|real|
+|value|real|Hodnota|real|
 
 ### <a name="apprequests"></a>AppRequests
 
@@ -349,15 +349,15 @@ Starší tabulka: žádosti
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|Dynamická|
-|customMeasurements|dynamické|Měření|Dynamická|
+|customDimensions|dynamic|Vlastnosti|Dynamická|
+|customMeasurements|dynamic|Měření|Dynamická|
 |doba trvání|real|DurationMs|Skutečné|
 |`id`|řetězec|`Id`|Řetězec|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|
 |itemType|řetězec|Typ|Řetězec|
-|name|řetězec|Název|Řetězec|
+|name|řetězec|Name|Řetězec|
 |operation_Id|řetězec|OperationId|řetězec|
 |operation_Name|řetězec|OperationName|řetězec|
 |operation_ParentId|řetězec|OperationParentId|řetězec|
@@ -394,9 +394,9 @@ Starší tabulka: výjimky
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|dynamické|
-|customMeasurements|dynamické|Měření|dynamické|
-|zobrazí|dynamické|Podrobnosti|dynamické|
+|customDimensions|dynamic|Vlastnosti|dynamic|
+|customMeasurements|dynamic|Měření|dynamic|
+|zobrazí|dynamic|Podrobnosti|dynamic|
 |handledAt|řetězec|HandledAt|řetězec|
 |iKey|řetězec|IKey|řetězec|
 |innermostAssembly|řetězec|InnermostAssembly|řetězec|
@@ -445,8 +445,8 @@ Starší tabulka: trasování
 |client_Type|řetězec|ClientType|řetězec|
 |cloud_RoleInstance|řetězec|AppRoleInstance|řetězec|
 |cloud_RoleName|řetězec|AppRoleName|řetězec|
-|customDimensions|dynamické|Vlastnosti|dynamické|
-|customMeasurements|dynamické|Měření|dynamické|
+|customDimensions|dynamic|Vlastnosti|dynamic|
+|customMeasurements|dynamic|Měření|dynamic|
 |iKey|řetězec|IKey|řetězec|
 |Vlastnost ItemCount|int|Vlastnost ItemCount|int|
 |itemId|řetězec|\_ItemId|řetězec|

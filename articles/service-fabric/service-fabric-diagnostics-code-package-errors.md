@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
 ms.openlocfilehash: 983d45a7a240701fa6441d2d9edeeda16f1ed18b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86256488"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Diagnostikujte běžné chyby balíčku kódu pomocí Service Fabric
@@ -41,7 +41,7 @@ Service Fabric může být zodpovědný za ukončení balíčku kódu z nejrůzn
 >[!NOTE]
 > Pokud se proces nebo kontejner ukončí s ukončovacím kódem jiným než kódy v následující tabulce, Service Fabric není zodpovědný za jeho ukončení.
 
-Ukončovací kód | Popis
+Ukončovací kód | Description
 --------- | -----------
 7147 | Indikuje, že Service Fabric řádným vypnutím procesu nebo kontejneru odesláním signálu CTRL + C.
 7148 | Indikuje, že Service Fabric ukončil proces nebo kontejner. Někdy tento kód chyby indikuje, že proces nebo kontejner neodpověděl včas po odeslání signálu CTRL + C a musel být ukončen.
@@ -52,7 +52,7 @@ Ukončovací kód | Popis
 Ukončovací kód | Hexadecimální hodnota | Krátký popis | Původní příčina | Potenciální Oprava
 --------- | --------- | ----------------- | ---------- | -------------
 3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | Tato chyba někdy znamená, že počítač má nedostatek prostoru v haldě plochy. Tato příčina je obzvláště pravděpodobná v případě, že máte mnoho procesů, které patří do vaší aplikace spuštěné na uzlu. | Pokud váš program není sestavený tak, aby reagoval na signály CTRL + C, můžete povolit nastavení **EnableActivateNoWindow** v manifestu clusteru. Povolení tohoto nastavení znamená, že se balíček kódu spustí bez okna grafického uživatelského rozhraní a neobdrží signály CTRL + C. Tato akce také snižuje množství prostoru haldy plochy, který každý proces spotřebovává. Pokud váš balíček kódu potřebuje přijmout signály CTRL + C, můžete zvětšit velikost haldy plochy uzlu.
-3762504530 | 0xe0434352 | Nelze použít | Tato hodnota představuje kód chyby pro neošetřenou výjimku ze spravovaného kódu (tj. .NET). | Tento ukončovací kód označuje, že vaše aplikace vyvolala výjimku, která zůstává neošetřená a která ukončila proces. Jako první krok při určení toho, co aktivoval tuto chybu, proveďte ladění protokolů aplikace a souborů výpisu paměti.
+3762504530 | 0xe0434352 | Není k dispozici | Tato hodnota představuje kód chyby pro neošetřenou výjimku ze spravovaného kódu (tj. .NET). | Tento ukončovací kód označuje, že vaše aplikace vyvolala výjimku, která zůstává neošetřená a která ukončila proces. Jako první krok při určení toho, co aktivoval tuto chybu, proveďte ladění protokolů aplikace a souborů výpisu paměti.
 
 ## <a name="next-steps"></a>Další kroky
 

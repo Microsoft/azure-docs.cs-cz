@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 137959f51b08dceee150962f77110ee2ac1dc193
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85444994"
 ---
 # <a name="setup-a-lab-to-teach-matlab"></a>Nastavení testovacího prostředí pro výuku programu MATLAB
@@ -30,7 +30,7 @@ Za předpokladu, že se licenční server nachází v místní síti nebo v priv
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
-K nastavení tohoto testovacího prostředí potřebujete předplatné Azure, abyste mohli začít.  Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete. Jakmile získáte předplatné Azure, můžete buď vytvořit nový účet testovacího prostředí v Azure Lab Services nebo použít existující účet.  Pokud chcete vytvořit nový účet testovacího prostředí, přečtěte si [kurz nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure, abyste mohli začít.  Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Jakmile získáte předplatné Azure, můžete buď vytvořit nový účet testovacího prostředí v Azure Lab Services nebo použít existující účet.  Pokud chcete vytvořit nový účet testovacího prostředí, přečtěte si [kurz nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).
 
 Pokud chcete vytvořit nové testovací prostředí, postupujte podle [kurzu Vytvoření laboratorního prostředí pro učebnu](tutorial-setup-classroom-lab.md).  Použijte následující nastavení:
 
@@ -88,7 +88,7 @@ Po stažení souborů je druhým krokem spuštění instalačního programu. Po 
 3. Na stránce **Přihlásit se k účtu MathWorks** zadejte svůj účet MathWorks.
 4. Na stránce **Licenční smlouva MathWorks** přijměte podmínky a klikněte na tlačítko **Další** .
 5. Klikněte na rozevírací nabídku **Upřesnit možnosti** a vyberte **mám instalační klíč souboru**.
-6. Na stránce **instalovat pomocí instalačního klíče souboru** zadejte instalační klíč souboru pro licenční server.   Klikněte na **Další**.
+6. Na stránce **instalovat pomocí instalačního klíče souboru** zadejte instalační klíč souboru pro licenční server.   Klikněte na **Next** (Další).
 7. Na stránce **Vybrat soubor licence** přejděte na soubor s licencí uložený při stažení instalačních souborů dříve.
 8. Na stránce **Vybrat cílovou složku** klikněte na **Další**.
 9. Na stránce **vybrat produkty** klikněte na **Další**.
@@ -102,7 +102,7 @@ Pojďme pro tuto třídu pokrýt možné náklady.  Tento odhad nezahrnuje nákl
 
 Zde je příklad možného odhadu nákladů pro tuto třídu:
 
-25 studentů \* (20 naplánovaných hodin + 10 hodin kvóty) \* 55 jednotek testovacího prostředí \* 0,01 USD za hodinu = 412,50 USD
+25 studentů \* (20 naplánovaných hodin + 10 hodin kvóty) \* 55 jednotek testovacího prostředí \*  0,01 USD za hodinu = 412,50 USD
 
 >[!IMPORTANT]
 > Odhad nákladů slouží pouze jako příklad pro účely.  Aktuální podrobnosti o cenách najdete v tématu [Azure Lab Services ceny](https://azure.microsoft.com/pricing/details/lab-services/).  

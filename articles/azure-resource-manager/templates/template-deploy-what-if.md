@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: tomfitz
 ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87810067"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Operace nasazení šablony ARM – if (Preview)
@@ -110,18 +110,18 @@ Resource changes: 1 to modify.
 
 Chcete-li zobrazit náhled změn před nasazením šablony, použijte [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) nebo [New-AzSubscriptionDeployment](/powershell/module/az.resources/new-azdeployment). Přidejte `-Whatif` parametr Switch do příkazu pro nasazení.
 
-* `New-AzResourceGroupDeployment -Whatif`pro nasazení skupin prostředků
-* `New-AzSubscriptionDeployment -Whatif`a `New-AzDeployment -Whatif` pro nasazení na úrovni předplatného
+* `New-AzResourceGroupDeployment -Whatif` pro nasazení skupin prostředků
+* `New-AzSubscriptionDeployment -Whatif` a `New-AzDeployment -Whatif` pro nasazení na úrovni předplatného
 
 Pomocí `-Confirm` parametru Switch můžete zobrazit náhled změn a zobrazit výzvu k pokračování v nasazení.
 
-* `New-AzResourceGroupDeployment -Confirm`pro nasazení skupin prostředků
-* `New-AzSubscriptionDeployment -Confirm`a `New-AzDeployment -Confirm` pro nasazení na úrovni předplatného
+* `New-AzResourceGroupDeployment -Confirm` pro nasazení skupin prostředků
+* `New-AzSubscriptionDeployment -Confirm` a `New-AzDeployment -Confirm` pro nasazení na úrovni předplatného
 
 Předchozí příkazy vrátí textový souhrn, který můžete ručně zkontrolovat. Chcete-li získat objekt, který můžete programově kontrolovat změny, použijte příkaz [Get-AzResourceGroupDeploymentWhatIfResult](/powershell/module/az.resources/get-azresourcegroupdeploymentwhatifresult) nebo [Get-AzSubscriptionDeploymentWhatIfResult](/powershell/module/az.resources/get-azdeploymentwhatifresult).
 
-* `$results = Get-AzResourceGroupDeploymentWhatIfResult`pro nasazení skupin prostředků
-* `$results = Get-AzSubscriptionDeploymentWhatIfResult`nebo `$results = Get-AzDeploymentWhatIfResult` pro nasazení na úrovni předplatného
+* `$results = Get-AzResourceGroupDeploymentWhatIfResult` pro nasazení skupin prostředků
+* `$results = Get-AzSubscriptionDeploymentWhatIfResult` nebo `$results = Get-AzDeploymentWhatIfResult` pro nasazení na úrovni předplatného
 
 ### <a name="azure-cli"></a>Azure CLI
 

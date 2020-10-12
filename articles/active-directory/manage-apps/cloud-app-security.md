@@ -12,10 +12,10 @@ ms.date: 02/03/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 62a77c1b21a6d602a2d54f56a2ed294fe800ac38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763648"
 ---
 # <a name="cloud-app-visibility-and-control"></a>Řízení a viditelnost cloudových aplikací
@@ -36,8 +36,8 @@ Pomocí Microsoft Cloud App Discovery (funkce Azure Active Directory Premium P1)
  
 ### <a name="learn-more"></a>Další informace
 
-- [Zjišťování a Správa stínového IT v síti](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
-- [Zjištěné aplikace s Cloud App Security](https://docs.microsoft.com/cloud-app-security/discovered-apps)
+- [Zjišťování a Správa stínového IT v síti ](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
+- [Zjištěné aplikace s Cloud App Security ](https://docs.microsoft.com/cloud-app-security/discovered-apps)
  
 ## <a name="user-session-visibility-and-control"></a>Viditelnost a řízení uživatelské relace 
 
@@ -53,7 +53,7 @@ Pomocí tohoto ovládacího prvku můžete:
  
 ### <a name="learn-more"></a>Další informace
 
-- [Ochrana aplikací pomocí řízení relace v Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Ochrana aplikací pomocí řízení relace v Cloud App Security ](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
  
 ## <a name="advanced-app-visibility-and-controls"></a>Pokročilá viditelnost a ovládací prvky aplikace 
 
@@ -61,11 +61,11 @@ Konektory aplikací používají rozhraní API poskytovatelů aplikací k zajiš
  
 ### <a name="learn-more"></a>Další informace  
 
-- [Připojení aplikací v Cloud App Security](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [Připojení aplikací v Cloud App Security ](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zjišťování a Správa stínového IT v síti](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
-- [Zjištěné aplikace s Cloud App Security](https://docs.microsoft.com/cloud-app-security/discovered-apps)
-- [Ochrana aplikací pomocí řízení relace v Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-- [Připojení aplikací v Cloud App Security](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [Zjišťování a Správa stínového IT v síti ](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
+- [Zjištěné aplikace s Cloud App Security ](https://docs.microsoft.com/cloud-app-security/discovered-apps)
+- [Ochrana aplikací pomocí řízení relace v Cloud App Security ](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Připojení aplikací v Cloud App Security ](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)

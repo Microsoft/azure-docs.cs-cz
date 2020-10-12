@@ -14,17 +14,17 @@ ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: 5742ddf9553c3ac9187dbef93fc7927564cbc095
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116967"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Zpracování změn souborů cookie SameSite v prohlížeči Chrome
 
 ## <a name="what-is-samesite"></a>Co je SameSite?
 
-`SameSite`je vlastnost, kterou je možné nastavit v souborech cookie protokolu HTTP, aby se zabránilo útokům na CSRF (mezi lokalitami) ve webových aplikacích:
+`SameSite` je vlastnost, kterou je možné nastavit v souborech cookie protokolu HTTP, aby se zabránilo útokům na CSRF (mezi lokalitami) ve webových aplikacích:
 
 - Když `SameSite` je nastavená na **LAX**, soubor cookie se pošle v žádostech v rámci stejné lokality a v žádosti o získání požadavků z jiných lokalit. Není odesílána v požadavcích GET, které jsou mezi doménami.
 - Hodnota **Strict** zajistí, že se soubor cookie pošle v žádostech jenom v rámci stejné lokality.

@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 573ea96437cf6cb76854ffa417fd3ad3fb86138b
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88860893"
 ---
 # <a name="move-an-azure-service-bus-namespace-to-another-region"></a>Přesunutí oboru názvů Azure Service Bus do jiné oblasti
@@ -22,13 +22,13 @@ Tady je postup vysoké úrovně:
 1. Ověřte nasazení, aby se zajistilo, že obor názvů, fronty, témata a odběry pro témata jsou vytvořené v cílové oblasti. 
 1. Dokončete přesunutí odstraněním oboru názvů ze zdrojové oblasti po zpracování všech zpráv. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Ujistěte se, že Azure Service Bus a funkce, které váš účet používá, jsou podporované v cílové oblasti.
  
 ## <a name="prepare"></a>Příprava
 Začněte tím, že vyexportujete šablonu Správce prostředků. Tato šablona obsahuje nastavení, která popisují váš obor názvů Service Bus.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny prostředky** a pak vyberte svůj obor názvů Service Bus.
 3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 4. Na stránce **Exportovat šablonu** vyberte **Stáhnout** .
@@ -48,19 +48,19 @@ Nasaďte šablonu pro vytvoření oboru názvů Service Bus v cílové oblasti.
 1. V Azure Portal vyberte **vytvořit prostředek**.
 2. V **části Hledat na Marketplace**zadejte do pole hledaný text **šablonu nasazení** , vyberte možnost **template Deployment (nasadit pomocí vlastních šablon)** a potom stiskněte klávesu **ENTER**.
 
-    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="Nasazení nové šablony":::    
+    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="Stažení šablony Správce prostředků":::    
 1. Na stránce **template Deployment** vyberte **vytvořit**.
 
-    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="Nasazení nové šablony – tlačítko vytvořit":::        
+    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="Stažení šablony Správce prostředků":::        
 1. Na stránce **vlastní nasazení** vyberte **v editoru vytvořit vlastní šablonu**.
 
-    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="Vytvoření vlastní šablony v editoru – odkaz":::            
+    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="Stažení šablony Správce prostředků":::            
 1. Na stránce **Upravit šablonu** vyberte **načíst soubor** na panelu nástrojů a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
 
-    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="Vybrat šablonu":::                
+    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="Stažení šablony Správce prostředků":::                
 1. Vyberte **Uložit** a šablonu uložte. 
 
-    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="Uložení šablony":::                    
+    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="Stažení šablony Správce prostředků":::                    
 1. Na stránce **vlastní nasazení** proveďte tyto kroky: 
     1. Vyberte **předplatné**Azure. 
     2. Vyberte existující **skupinu prostředků** nebo ji vytvořte. 
@@ -68,26 +68,26 @@ Nasaďte šablonu pro vytvoření oboru názvů Service Bus v cílové oblasti.
     4. Zadejte nový **název oboru názvů**.
     1. Vyberte **Zkontrolovat a vytvořit**. 
 
-        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Nasazení šablony Správce prostředků":::
+        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Stažení šablony Správce prostředků":::
     1. Na stránce **Revize + vytvořit** vyberte **vytvořit** v dolní části stránky. 
     
 ## <a name="verify"></a>Ověření
 1. Po úspěšném nasazení vyberte **Přejít do skupiny prostředků**.
 
-    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="Přejít na odkaz skupiny prostředků":::    
+    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="Stažení šablony Správce prostředků":::    
 1. Na stránce **Skupina prostředků** vyberte obor názvů Service Bus. 
 
-    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Vybrat Service Bus obor názvů":::    
+    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Stažení šablony Správce prostředků":::    
 1. Na stránce **Service Bus obor názvů** ověřte, že se zobrazují fronty, témata a odběry ze zdrojové oblasti. 
     1. Ve spodní části pravého podokna se v oboru názvů zobrazí **fronty** .         
     
-        :::image type="content" source="./media/move-across-regions/queue-namespace.png" alt-text="Fronty v oboru názvů":::
+        :::image type="content" source="./media/move-across-regions/queue-namespace.png" alt-text="Stažení šablony Správce prostředků":::
     2. Chcete-li zobrazit témata v oboru názvů, přepněte na kartu **témata** .
     
-        :::image type="content" source="./media/move-across-regions/topics-namespace.png" alt-text="Témata v oboru názvů":::
+        :::image type="content" source="./media/move-across-regions/topics-namespace.png" alt-text="Stažení šablony Správce prostředků":::
     3. Vyberte téma pro ověření předplatných. 
 
-        :::image type="content" source="./media/move-across-regions/topic-subscriptions.png" alt-text="Odběry tématu":::      
+        :::image type="content" source="./media/move-across-regions/topic-subscriptions.png" alt-text="Stažení šablony Správce prostředků":::      
     
     
 

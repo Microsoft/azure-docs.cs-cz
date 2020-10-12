@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: dad01212be3589af7167082ff22c624fa776772a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82193118"
 ---
 # <a name="security-control-network-security"></a>Řízení zabezpečení: zabezpečení sítě
@@ -22,7 +22,7 @@ Doporučení zabezpečení sítě se zaměřují na určení, které síťové p
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 1.1 | 9,2, 9,4, 14,1, 14,2, 14,3 | Zákazník |
+| 1,1 | 9,2, 9,4, 14,1, 14,2, 14,3 | Zákazník |
 
 Zajistěte, aby všechna nasazení Virtual Network podsítí měla skupinu zabezpečení sítě použitou pro řízení přístupu k síti, která jsou specifická pro důvěryhodné porty a zdroje vaší aplikace. Pokud je k dispozici, pomocí privátních koncových bodů s privátním odkazem Zabezpečte prostředky služby Azure do vaší virtuální sítě rozšířením identity virtuální sítě na službu. Pokud privátní koncové body a soukromý odkaz nejsou k dispozici, použijte koncové body služby. Požadavky na konkrétní služby najdete v doporučení zabezpečení této konkrétní služby. 
 
@@ -42,7 +42,7 @@ Případně, pokud máte konkrétní případ použití, požadavek může být 
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 1.2 | 9,3, 12,2, 12,8 | Zákazník |
+| 1,2 | 9,3, 12,2, 12,8 | Zákazník |
 
 Použijte Azure Security Center a sledujte doporučení k ochraně síťových prostředků v Azure pomocí doporučení pro ochranu sítě. Povolte protokoly toku NSG a odešlete protokoly do účtu úložiště pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
@@ -102,7 +102,7 @@ Povolte zachytávání paketů Network Watcher pro zkoumání aktivit neobvyklé
 |--|--|--|
 | 1.6 | 12,6, 12,7 | Zákazník |
 
-Vyberte nabídku z Azure Marketplace, která podporuje funkce ID/IP adres s možnostmi kontroly zatížení.  Pokud zjišťování neoprávněných vniknutí nebo prevence na základě kontroly zatížení není požadavkem, je možné použít Azure Firewall s analýzou hrozeb. Azure Firewall filtrování na základě logiky hrozeb může upozorňovat a zamítnout provoz do a ze známých škodlivých IP adres a domén. IP adresy a domény se naúčtují z informačního kanálu Microsoft Threat Intelligence.
+Vyberte nabídku z Azure Marketplace, která podporuje funkce ID/IP adres s možnostmi kontroly zatížení.  Pokud zjišťování neoprávněných vniknutí nebo prevence na základě kontroly zatížení není požadavkem, je možné použít Azure Firewall s analýzou hrozeb. Azure Firewall filtrování na základě logiky hrozeb může upozorňovat a zamítnout provoz do a ze známých škodlivých IP adres a domén. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu.
 
 Nasaďte řešení brány firewall podle svého výběru na základě hranic sítě vaší organizace za účelem detekce nebo odepření škodlivého provozu.
 
@@ -116,7 +116,7 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 1.7 | 12,9, 12,10 | Zákazník |
+| 1,7 | 12,9, 12,10 | Zákazník |
 
 Nasaďte Azure Application Gateway pro webové aplikace s povoleným protokolem HTTPS/TLS pro důvěryhodné certifikáty.
 
@@ -144,7 +144,7 @@ Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složi
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 1.9 | 11,1 | Zákazník |
+| 1,9 | 11,1 | Zákazník |
 
 Definování a implementace standardních konfigurací zabezpečení pro síťové prostředky pomocí Azure Policy.
 
