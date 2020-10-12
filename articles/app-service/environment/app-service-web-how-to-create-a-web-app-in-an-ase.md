@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: d0ac8e0cf187d1a6a329f2c7332c9ec37018d4cf
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962515"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Vytvoření webové aplikace ve App Service Environment v1
@@ -28,14 +28,14 @@ V tomto kurzu se dozvíte, jak vytvořit plány Web Apps a App Service v [App Se
 > 
 > 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto kurzu se předpokládá, že jste vytvořili App Service Environment. Pokud jste to ještě neudělali, přečtěte si téma [vytvoření App Service Environment](app-service-web-how-to-create-an-app-service-environment.md). 
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 1. Na webu [Azure Portal](https://portal.azure.com/)klikněte na **vytvořit prostředek > web a mobilní zařízení > webovou aplikaci**. 
    
     ![Snímek obrazovky, který ukazuje, kde vytvořit webovou aplikaci v Azure Portal.][1]
-2. Vyberte předplatné.  
+2. Vyberte své předplatné.  
    
     Pokud máte více předplatných, abyste si mohli ve svém App Service Environment vytvořit aplikaci, musíte použít stejné předplatné, které jste použili při vytváření prostředí. 
 3. Vyberte nebo vytvořte skupinu prostředků.

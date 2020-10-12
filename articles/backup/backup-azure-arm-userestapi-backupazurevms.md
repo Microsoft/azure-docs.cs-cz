@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 42af6ae69699be7eefac0aca2bcd22b1e25720b2
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89506623"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes REST API
@@ -41,7 +41,7 @@ Operace Refresh je [asynchronní operace](../azure-resource-manager/management/a
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |204 bez obsahu     |         |  OK bez vráceného obsahu      |
 |202 přijato     |         |     Přijato    |
@@ -104,7 +104,7 @@ Identifikátor URI *Get* má všechny požadované parametry. Není potřeba ž�
 
 #### <a name="responses-to-get-operation"></a>Odpovědi na operaci získání
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Chcete-li vytvořit chráněnou položku, níže jsou uvedené součásti textu žádosti.
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |Vlastnosti prostředku ProtectedItem         |
 
@@ -208,7 +208,7 @@ Vytvoření chráněné položky je [asynchronní operace](../azure-resource-man
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 přijato     |         |     Přijato    |
@@ -235,7 +235,7 @@ Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000
 X-Powered-By: ASP.NET
 ```
 
-Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation s jednoduchým příkazem *Get* .
+Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation jednoduchým příkazem *Get* .
 
 ```http
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
@@ -323,7 +323,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Chcete-li aktivovat zálohování na vyžádání, níže jsou uvedené součásti textu žádosti.
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Vlastnosti BackupRequestResource         |
 
@@ -348,7 +348,7 @@ Aktivace zálohování na vyžádání je [asynchronní operace](../azure-resour
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |202 přijato     |         |     Přijato    |
 
@@ -374,7 +374,7 @@ Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000
 X-Powered-By: ASP.NET
 ```
 
-Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation s jednoduchým příkazem *Get* .
+Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation jednoduchým příkazem *Get* .
 
 ```http
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
@@ -477,7 +477,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a až 204 (obsah) po dokončení této operace.
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |204. obsah     |         |  Obsah       |
 |202 přijato     |         |     Přijato    |

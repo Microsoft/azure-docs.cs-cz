@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
 ms.openlocfilehash: 97541a4f8d86b90bf6045fc2a9e5abbe86aee5cd
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717332"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostika služby Standard Load Balancer s metrikami, upozorněními a stavem prostředků
@@ -35,7 +35,7 @@ Azure Load Balancer poskytuje multidimenzionální metriky prostřednictvím met
 
 Různé konfigurace Standard Load Balancer poskytují následující metriky:
 
-| Metrika | Typ prostředku | Popis | Doporučená agregace |
+| Metrika | Typ prostředku | Description | Doporučená agregace |
 | --- | --- | --- | --- |
 | Dostupnost cesty k datům | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer průběžně kontroluje cestu dat z určité oblasti k front-endu nástroje pro vyrovnávání zatížení, a to až ke stacku SDN, který podporuje váš virtuální počítač. Pokud zůstanou instance v pořádku, měření se řídí stejnou cestou jako provoz s vyrovnáváním zatížení vaší aplikace. Ověřuje se také cesta dat, kterou využívají vaši zákazníci. Měření je pro vaši aplikaci neviditelné a nemá vliv na ostatní operace.| Průměr |
 | Stav sondy stavu | Veřejný a interní nástroj pro vyrovnávání zatížení | Standard Load Balancer používá distribuovanou službu pro zjišťování stavu, která monitoruje stav koncového bodu vaší aplikace podle nastavení konfigurace. Tato metrika poskytuje agregované zobrazení nebo filtrované zobrazení jednotlivých koncových bodů instancí ve fondu nástroje pro vyrovnávání zatížení. Můžete zjistit, jak Load Balancer vidí stav vaší aplikace na základě vaší konfigurace sondy stavu. |  Průměr |
@@ -254,9 +254,9 @@ Zobrazení stavu prostředků veřejné Standard Load Balancer:
  
 Popis obecného stavu prostředku je k dispozici v [dokumentaci k RHC](https://docs.microsoft.com/azure/service-health/resource-health-overview). Konkrétní stavy pro Azure Load Balancer jsou uvedené v následující tabulce: 
 
-| Stav prostředku | Popis |
+| Stav prostředku | Description |
 | --- | --- |
-| K dispozici. | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
+| K dispozici | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
 | Snížený výkon | Váš standardní nástroj pro vyrovnávání zatížení má platformy nebo uživatelem iniciované události, které mají vliv na výkon. Metrika dostupnosti DataPath ohlásila méně než 90%, ale více než 25% stavu pro alespoň dvě minuty. Dosáhnete středně silného dopadu na výkon. [Postupujte podle pokynů v průvodci dostupností cesty k datům pro řešení potíží] k určení, zda existují uživatelem iniciované události, které mají vliv na dostupnost.
 | Neaktivní | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Metrika dostupnosti DataPath ohlásila méně než 25% stavu minimálně pro dvě minuty. Pro příchozí připojení budete mít výrazný dopad na výkon nebo nedostatečná dostupnost. Mohou existovat události uživatele nebo platformy, které způsobují nedostupnost. [Postupujte podle pokynů v průvodci dostupností cesty k datům pro řešení potíží] k určení, zda existují uživatelem iniciované události, které mají vliv na dostupnost. |
 | Neznámý | Stav prostředku pro prostředek standardního nástroje pro vyrovnávání zatížení se ještě neaktualizoval nebo nepřijal informace o dostupnosti cesty k datům za posledních 10 minut. Tento stav by měl být přechodný a odráží správný stav, jakmile budou data přijata. |

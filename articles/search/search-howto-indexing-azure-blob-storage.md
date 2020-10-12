@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: e3419711c9a7358914f85574f6dbd5af29def1cf
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91403602"
 ---
 # <a name="how-to-configure-a-blob-indexer-in-azure-cognitive-search"></a>Jak nakonfigurovat indexer objektů BLOB v Azure Kognitivní hledání
@@ -376,7 +376,7 @@ Azure Kognitivní hledání omezuje velikost indexovaných objektů BLOB. Tato o
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 ```
 
-Můžete také pokračovat v indexování, pokud dojde k chybám v jakémkoli okamžiku zpracování, při analýze objektů BLOB nebo při přidávání dokumentů do indexu. Chcete-li ignorovat určitý počet chyb, nastavte `maxFailedItems` `maxFailedItemsPerBatch` parametry konfigurace a na požadované hodnoty. Příklad:
+Můžete také pokračovat v indexování, pokud dojde k chybám v jakémkoli okamžiku zpracování, při analýze objektů BLOB nebo při přidávání dokumentů do indexu. Chcete-li ignorovat určitý počet chyb, nastavte `maxFailedItems` `maxFailedItemsPerBatch` parametry konfigurace a na požadované hodnoty. Například:
 
 ```http
     {

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/27/2020
 ms.openlocfilehash: 449979443577d22f8cc2ec35ec770dd1e107bb76
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998403"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Povolit Azure Monitor pro virtuální počítače – přehled
@@ -30,7 +30,7 @@ Nastavení Azure Monitor pro virtuální počítače:
 * Povolte několik virtuálních počítačů Azure, virtuálních počítačů ARC Azure, Azure VMSS nebo počítačů ARC Azure v rámci zadaného předplatného nebo skupiny prostředků pomocí PowerShellu.
 * Povolte Azure Monitor pro virtuální počítače k monitorování virtuálních počítačů nebo fyzických počítačů hostovaných ve vaší podnikové síti nebo jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že rozumíte informacím v následujících částech. 
 
@@ -94,11 +94,11 @@ Přečtěte si následující seznam důležitých informací o podpoře agenta 
 ## <a name="supported-azure-arc-machines"></a>Podporované počítače ARC Azure
 Azure Monitor pro virtuální počítače je k dispozici pro servery s podporou ARC Azure v oblastech, kde je k dispozici služba rozšíření ARC. Je nutné, abyste spustili agenta ARC verze 0,9 nebo vyšší.
 
-| Připojený zdroj | Podporováno | Popis |
+| Připojený zdroj | Podporováno | Description |
 |:--|:--|:--|
-| Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](../platform/agents-overview.md#supported-operating-systems). |
-| Agenti systému Linux | Ano | Společně s [agentem Log Analytics pro Linux](../platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
-| Skupina pro správu nástroje System Center Operations Manager | Ne | |
+| Agenti systému Windows | Yes | Společně s [agentem Log Analytics pro Windows](../platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](../platform/agents-overview.md#supported-operating-systems). |
+| Agenti systému Linux | Yes | Společně s [agentem Log Analytics pro Linux](../platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
+| Skupina pro správu nástroje System Center Operations Manager | No | |
 
 ## <a name="agents"></a>Agenti
 Azure Monitor pro virtuální počítače vyžaduje, aby byly na každém virtuálním počítači nebo sadě škálování virtuálních počítačů, které mají být monitorovány, nainstalovány následující dva agenty. Jediným požadavkem k zaregistrování prostředků je instalace těchto agentů a jejich připojení k pracovnímu prostoru.

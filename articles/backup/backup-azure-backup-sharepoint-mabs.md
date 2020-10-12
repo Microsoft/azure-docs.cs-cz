@@ -4,10 +4,10 @@ description: Pomocí Azure Backup Server můžete zálohovat a obnovovat data sl
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89375393"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Zálohování farmy služby SharePoint do Azure pomocí MABS
@@ -217,7 +217,7 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
     ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. V tomto okamžiku postupujte podle kroků pro obnovení výše v tomto článku a obnovte databázi obsahu služby SharePoint z disku.
 
-## <a name="switching-the-front-end-web-server"></a>Přepínání předřazeného webového serveru
+## <a name="switching-the-front-end-web-server"></a>Přepínání Front-Endho webového serveru
 
 Pokud máte více než jeden front-end webový server a chcete přepnout Server, který MABS používá k ochraně farmy, postupujte podle pokynů:
 

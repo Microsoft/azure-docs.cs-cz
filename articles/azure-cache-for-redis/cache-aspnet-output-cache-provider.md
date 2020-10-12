@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
 ms.openlocfilehash: cb986f1e0172c4a44381b2f9cf043025cb5abe8a
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88705023"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Zprostředkovatel výstupní mezipaměti ASP.NET pro Azure cache pro Redis
@@ -52,7 +52,7 @@ Balíček NuGet stáhne a přidá požadované odkazy na sestavení a přidá n�
 
 Nakonfigurujte atributy s hodnotami z okna cache v portál Microsoft Azure a podle potřeby nakonfigurujte další hodnoty. Pokyny k přístupu k vlastnostem mezipaměti najdete v tématu [Konfigurace nastavení služby Azure cache pro Redis](cache-configure.md#configure-azure-cache-for-redis-settings).
 
-| Atribut | Typ | Výchozí | Popis |
+| Atribut | Typ | Výchozí | Description |
 | --------- | ---- | ------- | ----------- |
 | *provoz* | řetězec | místního | IP adresa nebo název hostitele serveru Redis |
 | *přístavní* | kladné celé číslo | 6379 (bez TLS/SSL)<br/>6380 (TLS/SSL) | Port serveru Redis |
@@ -61,13 +61,13 @@ Nakonfigurujte atributy s hodnotami z okna cache v portál Microsoft Azure a pod
 | *databaseIdNumber* | kladné celé číslo | 0 | *Tento atribut lze zadat pouze pomocí web.config nebo AppSettings.*<br/><br/>Určete, která databáze Redis se má použít. |
 | *connectionTimeoutInMilliseconds* | kladné celé číslo | Poskytuje StackExchange. Redis | Slouží k nastavení *ConnectTimeout* při vytváření stackexchange. Redis. ConnectionMultiplexer. |
 | *operationTimeoutInMilliseconds* | kladné celé číslo | Poskytuje StackExchange. Redis | Slouží k nastavení *SyncTimeout* při vytváření stackexchange. Redis. ConnectionMultiplexer. |
-| *ConnectionString* (platný připojovací řetězec stackexchange. Redis) | řetězec | *Není k dispozici* | Buď odkaz na parametr AppSettings nebo web.config, nebo jinak platný připojovací řetězec StackExchange. Redis. Tento atribut může poskytovat hodnoty pro *hostitel*, *port*, *AccessKey*, *SSL*a další atributy stackexchange. Redis. Bližší pohled na *ConnectionString*najdete v tématu [Nastavení ConnectionString](#setting-connectionstring) v oddílu [poznámky k atributu](#attribute-notes) . |
-| *settingsClassName*<br/>*settingsMethodName* | řetězec<br/>řetězec | *Není k dispozici* | *Tyto atributy lze zadat pouze pomocí web.config nebo AppSettings.*<br/><br/>Tyto atributy použijte k poskytnutí připojovacího řetězce. *settingsClassName* by měl být kvalifikovaný název třídy sestavení, který obsahuje metodu určenou parametrem *settingsMethodName*.<br/><br/>Metoda určená parametrem *settingsMethodName* by měla být public, static a void (nesmí přebírat žádné parametry) s návratovým typem **řetězce**. Tato metoda vrátí skutečný připojovací řetězec. |
-| *loggingClassName*<br/>*loggingMethodName* | řetězec<br/>řetězec | *Není k dispozici* | *Tyto atributy lze zadat pouze pomocí web.config nebo AppSettings.*<br/><br/>Tyto atributy použijte k ladění aplikace poskytováním protokolů z stavu relace/výstupní mezipaměti spolu s protokoly z StackExchange. Redis. *loggingClassName* by měl být kvalifikovaný název třídy sestavení, který obsahuje metodu určenou parametrem *loggingMethodName*.<br/><br/>Metoda určená parametrem *loggingMethodName* by měla být public, static a void (nesmí přebírat žádné parametry) s návratovým typem **System. IO. TextWriter**. |
+| *ConnectionString* (platný připojovací řetězec stackexchange. Redis) | řetězec | *není k dispozici* | Buď odkaz na parametr AppSettings nebo web.config, nebo jinak platný připojovací řetězec StackExchange. Redis. Tento atribut může poskytovat hodnoty pro *hostitel*, *port*, *AccessKey*, *SSL*a další atributy stackexchange. Redis. Bližší pohled na *ConnectionString*najdete v tématu [Nastavení ConnectionString](#setting-connectionstring) v oddílu [poznámky k atributu](#attribute-notes) . |
+| *settingsClassName*<br/>*settingsMethodName* | řetězec<br/>řetězec | *není k dispozici* | *Tyto atributy lze zadat pouze pomocí web.config nebo AppSettings.*<br/><br/>Tyto atributy použijte k poskytnutí připojovacího řetězce. *settingsClassName* by měl být kvalifikovaný název třídy sestavení, který obsahuje metodu určenou parametrem *settingsMethodName*.<br/><br/>Metoda určená parametrem *settingsMethodName* by měla být public, static a void (nesmí přebírat žádné parametry) s návratovým typem **řetězce**. Tato metoda vrátí skutečný připojovací řetězec. |
+| *loggingClassName*<br/>*loggingMethodName* | řetězec<br/>řetězec | *není k dispozici* | *Tyto atributy lze zadat pouze pomocí web.config nebo AppSettings.*<br/><br/>Tyto atributy použijte k ladění aplikace poskytováním protokolů z stavu relace/výstupní mezipaměti spolu s protokoly z StackExchange. Redis. *loggingClassName* by měl být kvalifikovaný název třídy sestavení, který obsahuje metodu určenou parametrem *loggingMethodName*.<br/><br/>Metoda určená parametrem *loggingMethodName* by měla být public, static a void (nesmí přebírat žádné parametry) s návratovým typem **System. IO. TextWriter**. |
 | *applicationName* | řetězec | Název modulu aktuálního procesu nebo "/" | *Jenom SessionStateProvider*<br/>*Tento atribut lze zadat pouze pomocí web.config nebo AppSettings.*<br/><br/>Předpona názvu aplikace, která se má použít v Redis Cache Zákazník může používat stejnou mezipaměť Redis pro různé účely. Aby se zajistilo, že klíče relace nekolidují, může být předpona s názvem aplikace. |
 | *Parametr throwOnError* | boolean | true | *Jenom SessionStateProvider*<br/>*Tento atribut lze zadat pouze pomocí web.config nebo AppSettings.*<br/><br/>Určuje, zda má být při výskytu chyby vyvolána výjimka.<br/><br/>Další informace o *parametr throwOnError*naleznete v tématu [poznámky k *parametr throwOnError* ](#notes-on-throwonerror) v oddílu [poznámky k atributu](#attribute-notes) . |>*Microsoft. Web. Redis. RedisSessionStateProvider. LastException*. |
 | *retryTimeoutInMilliseconds* | kladné celé číslo | 5000 | *Jenom SessionStateProvider*<br/>*Tento atribut lze zadat pouze pomocí web.config nebo AppSettings.*<br/><br/>Doba, po kterou se bude opakovat pokus o neúspěch operace. Pokud je tato hodnota menší než *operationTimeoutInMilliseconds*, poskytovatel se nezopakuje.<br/><br/>Další informace o *retryTimeoutInMilliseconds*naleznete v tématu [poznámky k *retryTimeoutInMilliseconds* ](#notes-on-retrytimeoutinmilliseconds) v oddílu [poznámky k atributu](#attribute-notes) . |
-| *redisSerializerType* | řetězec | *Není k dispozici* | Určuje kvalifikovaný název typu sestavení třídy, která implementuje Microsoft. Web. Redis. ISerializer a obsahuje vlastní logiku k serializaci a deserializaci hodnot. Další informace naleznete v části [o *redisSerializerType* ](#about-redisserializertype) v oddílu [poznámky k atributu](#attribute-notes) . |
+| *redisSerializerType* | řetězec | *není k dispozici* | Určuje kvalifikovaný název typu sestavení třídy, která implementuje Microsoft. Web. Redis. ISerializer a obsahuje vlastní logiku k serializaci a deserializaci hodnot. Další informace naleznete v části [o *redisSerializerType* ](#about-redisserializertype) v oddílu [poznámky k atributu](#attribute-notes) . |
 
 ## <a name="attribute-notes"></a>Poznámky k atributu
 

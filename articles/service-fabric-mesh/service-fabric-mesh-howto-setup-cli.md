@@ -6,10 +6,10 @@ ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.openlocfilehash: fb059fe5dc4e64df104e026983e51f799236f916
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91842797"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Nastavení rozhraní příkazového řádku služby Service Fabric Mesh
@@ -17,7 +17,7 @@ K nasazení a správě prostředků v místním počítači a v síti Azure Serv
 
 Existují tři typy rozhraní příkazového řádku, které lze použít a které jsou shrnuty v následující tabulce.
 
-| Modul CLI | Cílové prostředí |  Popis | 
+| Modul CLI | Cílové prostředí |  Description | 
 |---|---|---|
 | AZ Mesh | Síť Azure Service Fabric | Primární rozhraní příkazového řádku, které umožňuje nasazovat aplikace a spravovat prostředky v prostředí sítě Azure Service Fabric. 
 | sfctl | Místní clustery | Service Fabric CLI, který umožňuje nasazení a testování prostředků Service Fabric na místních clusterech.  

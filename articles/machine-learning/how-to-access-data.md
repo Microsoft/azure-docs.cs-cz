@@ -12,10 +12,10 @@ ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
 ms.openlocfilehash: e118c22829bc55e8baafb87db20817ab043ef4df
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540774"
 ---
 # <a name="connect-to-azure-storage-services"></a>Připojení k službám úložiště Azure
@@ -28,10 +28,10 @@ Z [těchto řešení Azure Storage](#matrix)můžete vytvořit úložiště dat.
 
 Informace o tom, kde je úložiště dat vhodné v rámci celkového pracovního postupu pro přístup k datům v Azure Machine Learning, najdete v článku [zabezpečený přístup k datům](concept-data.md#data-workflow) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat:
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Účet úložiště Azure s [podporovaným typem úložiště](#matrix).
 
@@ -247,7 +247,7 @@ Výchozí úložiště dat můžete také změnit pomocí následujícího kódu
 
 Azure Machine Learning poskytuje několik způsobů, jak používat vaše modely pro bodování. Některé z těchto metod neposkytují přístup k úložiště dat. Následující tabulka vám pomůže pochopit, které metody umožňují přístup k úložišti dat během bodování:
 
-| Metoda | Přístup k úložišti dat | Popis |
+| Metoda | Přístup k úložišti dat | Description |
 | ----- | :-----: | ----- |
 | [Dávkové předpovědi](how-to-use-parallel-run-step.md) | ✔ | Provádějte asynchronní předpovědi velké množství dat. |
 | [Webová služba](how-to-deploy-and-where.md) | &nbsp; | Nasaďte modely jako webovou službu. |

@@ -4,10 +4,10 @@ description: V tomto článku se seznámíte s běžnými úlohami při správě
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.openlocfilehash: e257aa7771f6f76a4d53f16255c2f3cbb80c8967
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89377450"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Správa a monitorování zálohovaných databází SAP HANA
@@ -32,7 +32,7 @@ Další informace o monitorování najdete [v části monitorování v Azure Por
 
 Výstrahy představují snadný způsob, jak monitorovat zálohy databází SAP HANA. Výstrahy vám pomůžou soustředit se na události, které vás zajímají, aniž byste se museli ztratit v mnoha událostech, které zálohování vygeneruje. Azure Backup vám umožní nastavit upozornění a můžou se monitorovat takto:
 
-* Přihlaste se na [Azure Portal](https://portal.azure.com/).
+* Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 * Na řídicím panelu trezoru vyberte **výstrahy zálohování**.
 
   ![Výstrahy zálohování na řídicím panelu trezoru](./media/sap-hana-db-manage/backup-alerts-dashboard.png)

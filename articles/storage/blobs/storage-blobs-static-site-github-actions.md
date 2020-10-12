@@ -1,5 +1,5 @@
 ---
-title: K nasazení statické lokality do Azure Storage použijte akce GitHubu.
+title: Použití GitHub Actions k nasazení statického webu do Azure Storage
 description: Azure Storage statického hostování webu s akcemi GitHubu
 author: juliakm
 ms.service: storage
@@ -10,10 +10,10 @@ ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure
 ms.openlocfilehash: 919fa0d7b6dff0361e4439b442bcfe9648ed8677
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776387"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Nastavte pracovní postup akcí GitHubu pro nasazení statického webu v Azure Storage
@@ -24,7 +24,7 @@ Začněte s [akcemi GitHubu](https://docs.github.com/en/actions) pomocí pracovn
 > Pokud používáte službu [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/), nemusíte ručně nastavit pracovní postup akcí GitHubu.
 > Azure static Web Apps pro vás automaticky vytvoří pracovní postup GitHubu. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předplatné Azure a účet GitHubu. 
 
@@ -65,7 +65,7 @@ V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho 
 
 1. Do pole hodnota tajného klíče vložte celý výstup JSON z příkazu Azure CLI. Zadejte tajný kód jako název `AZURE_CREDENTIALS` .
 
-    Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Příklad:
+    Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
 
     ```yaml
     - uses: azure/login@v1

@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87438820"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s místní bránou dat
@@ -46,7 +46,7 @@ Tok dotazů a dat:
 5. Brána odešle dotaz do zdroje dat k provedení.
 6. Výsledky se pošlou ze zdroje dat zpět do brány a pak do cloudové služby a na váš server.
 
-## <a name="installing"></a>Installing
+## <a name="installing"></a>Instalace
 
 Při instalaci pro prostředí Azure Analysis Services je důležité postupovat podle kroků popsaných v tématu [instalace a konfigurace místní brány dat pro Azure Analysis Services](analysis-services-gateway-install.md). Tento článek je určený pro Azure Analysis Services. Obsahuje další kroky potřebné k nastavení místního prostředku brány dat v Azure a připojení serveru Azure Analysis Services k prostředku.
 
@@ -58,11 +58,11 @@ Doporučuje se vytvořit prostředek brány Azure ve stejném předplatném jako
 
 Brána vytvoří odchozí připojení k Azure Service Bus. Komunikuje na odchozích portech: TCP 443 (výchozí), 5671, 5672, 9350 až 9354.  Příchozí porty brána nevyžaduje.
 
-Možná budete muset v bráně firewall zahrnout IP adresy pro vaši oblast dat. [Seznam IP adres datových center Microsoft Azure si můžete stáhnout.](https://www.microsoft.com/download/details.aspx?id=56519) Tento seznam se každý týden aktualizuje. IP adresy v seznamu IP adres datacentra Azure jsou uvedené v zápisu CIDR. Další informace najdete v tématu [směrování mezi doménami bez třídy](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+Možná budete muset v bráně firewall zahrnout IP adresy pro vaši oblast dat. [Seznam IP adres datových center Microsoft Azure si můžete stáhnout.](https://www.microsoft.com/download/details.aspx?id=56519) Tento seznam se každý týden aktualizuje. IP adresy v seznamu IP adres datacentra Azure jsou uvedené v zápisu CIDR. Další informace najdete v tématu [směrování Inter-Domain bez třídy](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 Níže jsou uvedené plně kvalifikované názvy domény používané bránou.
 
-| Názvy domén | Odchozí porty | Popis |
+| Názvy domén | Odchozí porty | Description |
 | --- | --- | --- |
 | *.powerbi.com |80 |Ke stažení instalačního programu se používá HTTP. |
 | *.powerbi.com |443 |HTTPS |

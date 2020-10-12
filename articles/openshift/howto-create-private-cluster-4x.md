@@ -9,10 +9,10 @@ ms.author: jasondel
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI
 ms.custom: mvc
 ms.openlocfilehash: 11343ba668a4b74c436313f0abd4daed577c36d4
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89505341"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Vytvoření privátního clusteru Azure Red Hat OpenShift 4

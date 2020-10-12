@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 7fa49583c17c198642d4ad6d72a0faa19dcfe659
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323324"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Výstupní vazba služby Signal pro Azure Functions
@@ -636,7 +636,7 @@ Příklad *function.jsv*
 }
 ```
 
-*\_\_init. py__*
+*\_\_init.py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -663,7 +663,7 @@ Příklad *function.jsv*
 }
 ```
 
-*\_\_init. py__*
+*\_\_init.py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -728,11 +728,11 @@ public SignalRGroupAction removeFromGroup(
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `SignalRConnectionInfo` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový**| Není k dispozici | Musí být nastaven na hodnotu `signalRConnectionInfo` .|
-|**směr**| Není k dispozici | Musí být nastaven na hodnotu `in` .|
-|**Jméno**| Není k dispozici | Název proměnné použitý v kódu funkce pro objekt s informacemi o připojení. |
+|**textový**| neuvedeno | Musí být nastaven na hodnotu `signalRConnectionInfo` .|
+|**směr**| neuvedeno | Musí být nastaven na hodnotu `in` .|
+|**Jméno**| neuvedeno | Název proměnné použitý v kódu funkce pro objekt s informacemi o připojení. |
 |**hubName**|**HubName**| Tato hodnota musí být nastavena na název centra signalizace, pro které jsou vygenerovány informace o připojení.|
 |**userId**|**UserId**| Volitelné: hodnota deklarace identity identifikátoru uživatele, která se má nastavit v tokenu přístupového klíče. |
 |**connectionStringSetting**|**ConnectionStringSetting**| Název nastavení aplikace, které obsahuje připojovací řetězec služby signalizace (výchozí hodnota je "AzureSignalRConnectionString") |
@@ -741,11 +741,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `SignalR` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový**| Není k dispozici | Musí být nastaven na hodnotu `signalR` .|
-|**směr**| Není k dispozici | Musí být nastaven na hodnotu `out` .|
-|**Jméno**| Není k dispozici | Název proměnné použitý v kódu funkce pro objekt s informacemi o připojení. |
+|**textový**| neuvedeno | Musí být nastaven na hodnotu `signalR` .|
+|**směr**| neuvedeno | Musí být nastaven na hodnotu `out` .|
+|**Jméno**| neuvedeno | Název proměnné použitý v kódu funkce pro objekt s informacemi o připojení. |
 |**hubName**|**HubName**| Tato hodnota musí být nastavena na název centra signalizace, pro které jsou vygenerovány informace o připojení.|
 |**connectionStringSetting**|**ConnectionStringSetting**| Název nastavení aplikace, které obsahuje připojovací řetězec služby signalizace (výchozí hodnota je "AzureSignalRConnectionString") |
 

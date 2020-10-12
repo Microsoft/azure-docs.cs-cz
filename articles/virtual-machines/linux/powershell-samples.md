@@ -8,17 +8,17 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.openlocfilehash: b1a154e562db9f8fdd74300bb8eb3d6839cb2ef4
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89321918"
 ---
 # <a name="azure-vm-powershell-samples-for-creating-and-managing-linux-vms"></a>Ukázky PowerShellu pro virtuální počítače Azure pro vytváření a správu virtuálních počítačů se systémem Linux
 
 Následující tabulka obsahuje odkazy na ukázky skriptů PowerShellu pro vytváření a správu virtuálních počítačů se systémem Linux.
 
-| Skript | Popis |
+| Skript | Description |
 |---|---|
 |**Vytvoření virtuálních počítačů**||
 | [Vytvoření plně nakonfigurovaného virtuálního počítače](./../scripts/virtual-machines-linux-powershell-sample-create-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří skupinu prostředků, virtuální počítač a všechny související prostředky.|

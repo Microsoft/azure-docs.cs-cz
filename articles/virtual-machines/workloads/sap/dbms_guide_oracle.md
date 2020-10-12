@@ -16,10 +16,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f953d87c53bc13af623c2bfd49ceb953280f8f2a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540706"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Nasazení Azure DBMS pro úlohy SAP v Virtual Machines Oracle
@@ -416,7 +416,7 @@ Pomocí Azure Backup můžete také spustit zálohování virtuálních počíta
 
 
 ### <a name="high-availability"></a>Vysoká dostupnost
-Oracle data Guard je podporováno pro účely vysoké dostupnosti a zotavení po havárii. Aby bylo možné zajistit automatické převzetí služeb při selhání v ochraně dat, je potřeba použít rychlé spuštění převzetí služeb při selhání (FSFA). Pozorovatel (FSFA) aktivuje převzetí služeb při selhání. Pokud FSFA nepoužíváte, můžete použít jenom ruční konfiguraci převzetí služeb při selhání.
+Oracle data Guard je podporováno pro účely vysoké dostupnosti a zotavení po havárii. Chcete-li dosáhnout automatického převzetí služeb při selhání v ochraně dat, je nutné použít Fast-Start převzetí služeb při selhání (FSFA). Pozorovatel (FSFA) aktivuje převzetí služeb při selhání. Pokud FSFA nepoužíváte, můžete použít jenom ruční konfiguraci převzetí služeb při selhání.
 
 Další informace o zotavení po havárii pro databáze Oracle v Azure najdete v tématu [zotavení po havárii pro databázi Oracle Database 12c v prostředí Azure](../oracle/oracle-disaster-recovery.md).
 
@@ -511,7 +511,7 @@ V případě funkcí zálohování a obnovení jsou podporované nástroje SAP B
 Další informace o tom, jak můžete pomocí Azure Backup a Recovery Services zálohovat a obnovovat databáze Oracle, najdete v tématu [zálohování a obnovení databáze Oracle Database 12c na virtuálním počítači Azure Linux](../oracle/oracle-backup-recovery.md).
 
 ### <a name="high-availability"></a>Vysoká dostupnost
-Oracle data Guard je podporováno pro účely vysoké dostupnosti a zotavení po havárii. Chcete-li dosáhnout automatického převzetí služeb při selhání v ochraně dat, je nutné použít příkaz rychle spustit převzetí služeb při selhání (FSFA). Funkce pozorovatele (FSFA) aktivuje převzetí služeb při selhání. Pokud FSFA nepoužíváte, můžete použít jenom ruční konfiguraci převzetí služeb při selhání. Další informace najdete v tématu [implementace Oracle data Guard na virtuálním počítači Azure Linux](../oracle/configure-oracle-dataguard.md).
+Oracle data Guard je podporováno pro účely vysoké dostupnosti a zotavení po havárii. Chcete-li dosáhnout automatického převzetí služeb při selhání v ochraně dat, je nutné použít Fast-Start převzetí služeb při selhání (FSFA). Funkce pozorovatele (FSFA) aktivuje převzetí služeb při selhání. Pokud FSFA nepoužíváte, můžete použít jenom ruční konfiguraci převzetí služeb při selhání. Další informace najdete v tématu [implementace Oracle data Guard na virtuálním počítači Azure Linux](../oracle/configure-oracle-dataguard.md).
 
 
 Aspekty zotavení po havárii pro databáze Oracle v Azure jsou uvedené v článku [zotavení po havárii pro databázi Oracle Database 12c v prostředí Azure](../oracle/oracle-disaster-recovery.md).

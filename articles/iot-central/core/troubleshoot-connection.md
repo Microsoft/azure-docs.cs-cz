@@ -8,13 +8,13 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322445"
 ---
-# <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Řešení potíží s tím, proč se data z vašich zařízení nezobrazuje v Azure IoT Central
+# <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Řešení potíží v případě nezobrazování dat ze zařízení v Azure IoT Central
 
 Tento dokument pomáhá vývojářům zařízení zjistit, proč se data, která jejich zařízení odesílají do IoT Central, nemusí zobrazit v aplikaci.
 
@@ -129,9 +129,9 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Stav zřizování zařízení | Popis | Možné zmírnění |
+| Stav zřizování zařízení | Description | Možné zmírnění |
 | - | - | - |
-| Zřízené | Žádný okamžitě rozpoznatelný problém. | – |
+| Zřízené | Žádný okamžitě rozpoznatelný problém. | Není k dispozici |
 | Registrované | Zařízení ještě není připojené k IoT Central. | V protokolech zařízení ověřte problémy s připojením. |
 | Blokované | Zařízení je zablokované v připojení k IoT Central. | Zařízení je zablokované v připojení k aplikaci IoT Central. Odblokovat zařízení v IoT Central a zkuste to znovu. Další informace najdete v tématu [blokování zařízení](concepts-get-connected.md#device-status-values). |
 | Neschválených | Zařízení není schváleno. | Zařízení není schváleno pro připojení k aplikaci IoT Central. Schvalte zařízení v IoT Central a zkuste to znovu. Další informace najdete v tématu [schválení zařízení](concepts-get-connected.md#connect-without-registering-devices) . |
@@ -149,7 +149,7 @@ V následujících tabulkách jsou uvedeny běžné kódy chyb a možné akce, k
 
 Pokud se vám zobrazují problémy související s vaším tokem ověřování:
 
-| Kód chyby | Popis | Možné zmírnění |
+| Kód chyby | Description | Možné zmírnění |
 | - | - | - |
 | 400 | Tělo požadavku není platné. Nelze jej například analyzovat nebo objekt nelze ověřit. | Ujistěte se, že posíláte správné tělo žádosti v rámci toku ověření identity, nebo použijete sadu SDK pro zařízení. |
 | 401 | Autorizační token se nedá ověřit. Například vypršela platnost nebo neplatí pro identifikátor URI žádosti. Tento kód chyby se také vrátí do zařízení jako součást toku ověření čipem TPM. | Ujistěte se, že má vaše zařízení správné přihlašovací údaje. |

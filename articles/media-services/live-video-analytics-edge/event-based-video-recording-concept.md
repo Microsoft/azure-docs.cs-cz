@@ -4,10 +4,10 @@ description: Nahrávání videa založeného na událostech (EVR) se týká proc
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.openlocfilehash: f3efd2b9be41928ab4721d6db4aa84c0f1f57e2f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568478"
 ---
 # <a name="event-based-video-recording"></a>Nahrávání videa na základě událostí  
@@ -46,7 +46,7 @@ Událost z uzlu snímače pohybu aktivuje uzel procesoru brány signálu a umož
 V tomto případě použití lze signály z jiného snímače IoT použít k aktivaci záznamu videa. Následující diagram znázorňuje grafické znázornění mediálního grafu, který tento případ použití řeší. Obrázek JSON topologie grafu takového mediálního grafu najdete [tady](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-files/topology.json).
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="Záznam videa na základě událostí z jiných zdrojů":::
+> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="Záznam videa na základě detekce pohybu":::
 
 V diagramu externí senzor odesílá události do centra IoT Edge. Události se pak přesměrují do uzlu procesoru brány signálu přes uzel [zdroje IoT Hub zprávy](media-graph-concept.md#iot-hub-message-source) . Chování uzlu procesoru brány signálu je stejné jako u předchozího případu použití – otevře a zachová živý kanál videa ze zdrojového uzlu RTSP do uzlu jímky souborů (nebo uzlu jímky assetu), když ho spustí externí událost. 
 
@@ -57,7 +57,7 @@ Použijete-li uzel jímky souborů, bude video zaznamenáno do místního systé
 V tomto případě použití můžete nahrávat videoklipy na základě signálu z externího systému logiky. Příkladem takového případu použití může být záznam videoklipu jenom v případě, že se v informačním kanálu videa v provozu na dálnici zjistí nákladní vůz. Následující diagram znázorňuje grafické znázornění mediálního grafu, který tento případ použití řeší. Obrázek JSON topologie grafu takového mediálního grafu najdete [tady](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json).
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="Záznam videa na základě externího modulu Inferencing":::
+> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="Záznam videa na základě detekce pohybu":::
 
 V diagramu zdrojový uzel RTSP zachycuje kanál živého videa z kamery a doručí ho do dvou větví: jeden má uzel [procesoru brány signálu](media-graph-concept.md#signal-gate-processor) a druhý používá uzel [rozšíření http](media-graph-concept.md) k posílání dat do externího modulu Logic. Uzel rozšíření HTTP umožňuje, aby mediální graf odesílal snímky obrázků (ve formátech JPEG, BMP nebo PNG) do externí služby odvození přes REST. Tato cesta signálu obvykle podporuje pouze nízké míry snímků (<5fps). Pomocí uzlu [procesor filtru frekvence snímků](media-graph-concept.md#frame-rate-filter-processor) můžete snížit kmitočet snímků videa v uzlu rozšíření http.
 

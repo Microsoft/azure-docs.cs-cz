@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: e4e6f5b5cf28c3830a91a494ea60680eee1546f6
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89179602"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Vytvoření zásad služby Azure Recovery Services Backup pomocí REST API
@@ -29,7 +29,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 Pokud například chcete vytvořit zásadu pro zálohování virtuálního počítače Azure, níže jsou uvedené součásti textu žádosti.
 
-|Název  |Požaduje se  |Typ  |Popis  |
+|Name  |Požaduje se  |Typ  |Description  |
 |---------|---------|---------|---------|
 |properties     |   Ano      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | Vlastnosti ProtectionPolicyResource        |
 |tags     |         | Objekt        |  Značky prostředků       |
@@ -137,7 +137,7 @@ Vytvoření nebo aktualizace zásad zálohování je [asynchronní operace](../a
 
 Při vytvoření jiné operace vrátí dvě odpovědi: 202 (přijato) a po dokončení této operace pak 200 (OK).
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |200 OK     |    [PolicyResource ochrany](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 přijato     |         |     Přijato    |
@@ -164,7 +164,7 @@ Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000
 X-Powered-By: ASP.NET
 ```
 
-Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation s jednoduchým příkazem *Get* .
+Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation jednoduchým příkazem *Get* .
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13

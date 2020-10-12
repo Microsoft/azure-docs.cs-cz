@@ -9,10 +9,10 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88958384"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Řešení potíží s certifikátem v doméně a TLS/SSL v Azure App Service
@@ -88,7 +88,7 @@ K tomuto problému může dojít z některého z následujících důvodů:
 
     **Řešení**: Pokud je certifikát označený jako podvod a za 24 hodin se nevyřešil, postupujte podle těchto kroků:
 
-    1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+    1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
     2. Přejít na **App Service certifikáty**a vyberte certifikát.
     3. Vyberte **Konfigurace certifikátu**  >  **Krok 2: ověření**  >  **domény ověření**. Tento krok pošle e-mailové oznámení poskytovateli certifikátů Azure, aby problém vyřešil.
 
@@ -190,7 +190,7 @@ App Service automaticky synchronizuje certifikát během 48 hodin. Při otočen�
 
 Můžete vynutit synchronizaci certifikátu:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **App Service certifikáty**a pak vyberte certifikát.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **App Service certifikáty**a pak vyberte certifikát.
 2. Vyberte opětovné vytvoření klíče **a synchronizaci**a pak vyberte **synchronizovat**. Dokončení synchronizace trvá déle. 
 3. Po dokončení synchronizace se zobrazí následující oznámení: "úspěšně se aktualizovaly všechny prostředky s nejnovějším certifikátem".
 
@@ -266,7 +266,7 @@ K tomuto problému dochází z jednoho z následujících důvodů:
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Musím po nákupu nakonfigurovat vlastní doménu pro svůj web?**
 
@@ -306,7 +306,7 @@ Když si koupíte doménu, nebudete se vám účtovat po dobu pěti dnů, během
 
 **Můžu v předplatném použít doménu v jiné aplikaci Azure App Service?**
 
-Yes. Při přístupu k oknu vlastní domény a TLS v Azure Portal uvidíte domény, které jste zakoupili. Aplikaci můžete nakonfigurovat tak, aby používala některou z těchto domén.
+Ano. Při přístupu k oknu vlastní domény a TLS v Azure Portal uvidíte domény, které jste zakoupili. Aplikaci můžete nakonfigurovat tak, aby používala některou z těchto domén.
 
 **Můžu přenést doménu z jednoho předplatného do jiného předplatného?**
 

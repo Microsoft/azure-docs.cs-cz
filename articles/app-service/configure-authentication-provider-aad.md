@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
 ms.openlocfilehash: 4022ca97f88e2f06d3b4c1eeb103bb60d1856eda
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962141"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro použití přihlášení Azure AD
@@ -100,7 +100,7 @@ Proveďte tyto kroky:
 1. V části **Zprostředkovatelé ověřování**vyberte **Azure Active Directory**.
 1. V **režimu správy**vyberte **upřesnit** a nakonfigurujte App Service ověřování podle následující tabulky:
 
-    |Pole|Popis|
+    |Pole|Description|
     |-|-|
     |ID klienta| Použijte **ID aplikace (klienta)** registrace aplikace. |
     |Adresa URL vydavatele| Pomocí `<authentication-endpoint>/<tenant-id>/v2.0` a nahraďte *\<authentication-endpoint>* [koncovým bodem ověřování pro vaše cloudové prostředí](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (např. " https://login.microsoft.com " pro globální Azure ") nahraďte *\<tenant-id>* **ID adresáře (tenanta)** , ve kterém se vytvořila registrace aplikace. Tato hodnota se používá k přesměrování uživatelů do správného tenanta Azure AD a také ke stažení odpovídajících metadat k určení vhodného podpisového klíče tokenu a hodnoty deklarace vystavitele tokenu. U aplikací, které používají Azure AD V1 a pro aplikace Azure Functions, `/v2.0` v adrese URL vynechejte.|

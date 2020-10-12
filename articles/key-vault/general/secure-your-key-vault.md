@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
 ms.openlocfilehash: 9060c00e1523db0671d9698465c8e8fcb6340785
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91842831"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Zabezpečený přístup k trezoru klíčů
@@ -197,7 +197,7 @@ Náš příklad popisuje jednoduchý scénář. Scénáře reálného života m�
 > [!NOTE]
 > Tento příklad ukazuje, jak je přístup Key Vault uzamčen v produkčním prostředí. Vývojáři by měli mít vlastní předplatné nebo skupinu prostředků s úplnými oprávněními ke správě trezorů, virtuálních počítačů a účtu úložiště, kde aplikace vyvíjí.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 [O Azure Key Vault](overview.md) 
  [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 

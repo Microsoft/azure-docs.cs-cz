@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717893"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Nasazení ukázkového nástroje pro popisování
@@ -35,13 +35,13 @@ Nejrychlejší způsob, jak začít s označováním dat, je spustit nástroj pr
 Než začneme, je důležité si uvědomit, že existují dva způsoby, jak nasadit vzorový Nástroj pro označování do instance kontejneru Azure (ACI). Obě možnosti slouží ke spuštění ukázkového nástroje pro označování pomocí ACI: 
 
 * [Použití webu Azure Portal](#azure-portal)
-* [Použití rozhraní příkazového řádku Azure](#azure-cli)
+* [Použití Azure CLI](#azure-cli)
 
 ### <a name="azure-portal"></a>portál Azure
 
 Pomocí následujících kroků vytvořte nový prostředek pomocí Azure Portal: 
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/signin/index/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/signin/index/).
 2. Vyberte **Vytvořit prostředek**. 
 3. Pak vyberte **Webová aplikace**. 
 

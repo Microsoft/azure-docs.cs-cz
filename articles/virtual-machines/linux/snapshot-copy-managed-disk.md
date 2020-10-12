@@ -10,10 +10,10 @@ ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 6374108247b9bfb950c42495b13b501ded8a02d2
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89317991"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>Vytvoření snímku pomocí portálu nebo rozhraní příkazového řádku Azure
@@ -58,7 +58,7 @@ az snapshot list \
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Začněte v levém horním rohu, klikněte na **vytvořit prostředek** a vyhledejte **snímek**. Z výsledků hledání vyberte **snímek** .
 3. V okně **snímek** klikněte na **vytvořit**.
 4. Zadejte **název** snímku.

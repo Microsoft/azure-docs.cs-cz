@@ -4,10 +4,10 @@ description: V této části najdete popis výhod používání šablon Azure Re
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.openlocfilehash: b1c61d5eac012f2b807c0121460804c46b12c8d0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119357"
 ---
 # <a name="what-are-arm-templates"></a>Co je šablona ARM?
@@ -16,7 +16,7 @@ Díky přesunu do cloudu mnoho týmů přijalo agilní metody vývoje. Tyto tým
 
 Aby bylo možné tyto výzvy splnit, můžete automatizovat nasazení a používat postupy infrastruktury jako kód. V kódu definujete infrastrukturu, která musí být nasazena. Kód infrastruktury se stal součástí vašeho projektu. Stejně jako kód aplikace ukládáte kód infrastruktury do zdrojového úložiště a jeho verzi. Libovolný tým v týmu může spustit kód a nasadit podobná prostředí.
 
-K implementaci infrastruktury jako kódu pro řešení Azure použijte šablony Azure Resource Manager (ARM). Šablona je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci pro váš projekt. Šablona používá deklarativní syntaxi, která umožňuje určit, co máte v úmyslu nasadit bez nutnosti napsat sekvenci programovacích příkazů k jeho vytvoření. V šabloně určíte prostředky, které chcete nasadit, a vlastnosti těchto prostředků.
+K implementaci infrastruktury jako kódu pro řešení Azure použijte šablony Azure Resource Manager (ARM). Šablona je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci pro váš projekt. Tato šablona využívá deklarativní syntaxi, která umožňuje prohlásit, co máte v úmyslu vytvořit, aniž by k tomu bylo nutné psát sekvence programových příkazů. V šabloně určíte prostředky, které chcete nasadit, a vlastnosti těchto prostředků.
 
 ## <a name="why-choose-arm-templates"></a>Proč zvolit šablony ARM?
 

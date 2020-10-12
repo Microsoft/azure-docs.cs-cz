@@ -8,10 +8,10 @@ ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 0a25ae41a5f4ed73148f629799ca4865d756a769
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962447"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Osvědčené postupy pro Azure App Service
@@ -34,10 +34,10 @@ Když si všimnete, že aplikace spotřebovává více PROCESORů, než se oček
 Další informace o stavových a bezstavových aplikacích můžete sledovat v tomto videu: [plánování škálovatelné komplexní aplikace na více úrovních v Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Další informace o možnostech škálování App Service a automatického škálování najdete v tématu [škálování webové aplikace v Azure App Service](manage-scale-up.md).  
 
 ## <a name="when-socket-resources-are-exhausted"></a><a name="socketresources"></a>Při vyčerpání prostředků soketu
-Běžným důvodem pro vyčerpání odchozích připojení TCP je použití klientských knihoven, které nejsou implementované k opakovanému použití připojení TCP, nebo když se nepoužívá protokol vyšší úrovně, jako je třeba HTTP-Keep-Alive. Přečtěte si dokumentaci ke každé knihovně, na kterou odkazují aplikace v plánu App Service, abyste se ujistili, že jsou ve vašem kódu nakonfigurované nebo používané pro efektivní opakované použití odchozích připojení. Dále postupujte podle pokynů v dokumentaci ke knihovně pro správné vytvoření a vystavení nebo vyčištění, abyste zabránili nevracení připojení. I když tyto klientské knihovny probíhá šetření, dopad může být omezen škálováním na více instancí.
+Běžným důvodem pro vyčerpání odchozích připojení TCP je použití klientských knihoven, které nejsou implementované k opakovanému použití připojení TCP, nebo když se nepoužívá protokol vyšší úrovně, jako je HTTP-Keep-Alive. Přečtěte si dokumentaci ke každé knihovně, na kterou odkazují aplikace v plánu App Service, abyste se ujistili, že jsou ve vašem kódu nakonfigurované nebo používané pro efektivní opakované použití odchozích připojení. Dále postupujte podle pokynů v dokumentaci ke knihovně pro správné vytvoření a vystavení nebo vyčištění, abyste zabránili nevracení připojení. I když tyto klientské knihovny probíhá šetření, dopad může být omezen škálováním na více instancí.
 
 ### <a name="nodejs-and-outgoing-http-requests"></a>Node.js a odchozí požadavky http
-Při práci s Node.js a mnoho odchozích požadavků HTTP, které řeší protokol HTTP – Keep-Alive, je důležité. Pomocí balíčku agentkeepalive můžete [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` usnadnit práci s vaším kódem.
+Při práci s Node.js a mnoho odchozích požadavků HTTP, které řeší Keep-Alive HTTP, je důležité. Pomocí balíčku agentkeepalive můžete [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` usnadnit práci s vaším kódem.
 
 Vždy zpracujte `http` odpověď, i když neuděláte nic v obslužné rutině. Pokud odpověď nezpracujete správně, vaše aplikace se zablokuje, protože už nejsou k dispozici žádné další sokety.
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.openlocfilehash: 437fe4636fd5b93656758c9fa55f2b18d64a4b6b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540689"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Porozumění změnám v kořenové CA se mění Azure Database for MySQL
@@ -109,7 +109,7 @@ Pro konektor používající Azure Integration Runtime konektor využívá certi
 Pro konektor používající Integration Runtime v místním prostředí, kde explicitně zadáte cestu k souboru certifikátu SSL v připojovacím řetězci, budete muset stáhnout [nový certifikát](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) a aktualizovat připojovací řetězec tak, aby ho používal.
 
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. pro tuto změnu potřebuji naplánovat výpadek údržby databázového serveru?
-No. Vzhledem k tomu, že se tato změna provádí jenom na straně klienta, aby se mohla připojit k databázovému serveru, není pro tuto změnu pro databázový server potřeba žádné prostoje údržby.
+Ne. Vzhledem k tomu, že se tato změna provádí jenom na straně klienta, aby se mohla připojit k databázovému serveru, není pro tuto změnu pro databázový server potřeba žádné prostoje údržby.
 
 ### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>8. co když mi pro tuto změnu nezíská plánované výpadky před 26. října 2020 (10/26/2020)?
 Vzhledem k tomu, že klienti, kteří se používají pro připojení k serveru, musí aktualizovat informace o certifikátu, jak je popsáno [v části Oprava](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity), v tomto případě nepotřebujeme v tomto případě výpadek serveru.
@@ -138,13 +138,13 @@ Pokud pro připojení k Azure Database for MySQL používáte [replikaci dat](co
 
     Pokud se zobrazí certifikát pro CA_file, SSL_Cert a SSL_Key, budete muset soubor aktualizovat přidáním [nového certifikátu](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem).
 
-*   Pokud je replikace dat mezi dvěma Azure Database for MySQL, pak budete muset resetovat repliku tím, že vykonáte **volání MySQL. az_replication_change_master** a jako poslední parametr zadáte nový duální kořenový certifikát [master_ssl_ca](howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication)
+*   Pokud je replikace dat mezi dvěma Azure Database for MySQL, pak budete muset resetovat repliku tak, že spustíte **MySQL.az_replication_change_master volání** a jako poslední parametr zadáte nový duální kořenový certifikát [master_ssl_ca](howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication)
 
 ### <a name="13-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>13. máme dotaz na straně serveru, abyste ověřili, jestli se používá SSL?
 Chcete-li ověřit, zda používáte připojení SSL pro připojení k serveru, postupujte podle tématu [ověřování SSL](howto-configure-ssl.md#step-4-verify-the-ssl-connection).
 
 ### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. je vyžadována akce, pokud již mám v souboru certifikátu DigiCertGlobalRootG2?
-No. Pokud soubor certifikátu již má **DigiCertGlobalRootG2**, není nutná žádná akce.
+Ne. Pokud soubor certifikátu již má **DigiCertGlobalRootG2**, není nutná žádná akce.
 
 ### <a name="15-what-if-i-have-further-questions"></a>15. co když mám další dotazy?
 Pokud máte nějaké otázky, Získejte odpovědi od expertů komunity v [Microsoft Q&A](mailto:AzureDatabaseforMySQL@service.microsoft.com). Pokud máte plán podpory a potřebujete technickou pomoc, [kontaktujte nás](mailto:AzureDatabaseforMySQL@service.microsoft.com).

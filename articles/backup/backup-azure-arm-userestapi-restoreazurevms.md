@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
 ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89506673"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Obnovení virtuálních počítačů Azure pomocí REST API
@@ -31,7 +31,7 @@ Identifikátor URI *Get* má všechny požadované parametry. Není potřeba dal
 
 ### <a name="responses"></a>Odpovědi
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -144,7 +144,7 @@ Triggerem jakékoli operace obnovení je [asynchronní operace](../azure-resourc
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |202 přijato     |         |     Přijato    |
 
@@ -170,7 +170,7 @@ Location: https://management.azure.com/subscriptions//subscriptions/00000000-000
 X-Powered-By: ASP.NET
 ```
 
-Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation s jednoduchým příkazem *Get* .
+Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation jednoduchým příkazem *Get* .
 
 ```http
 GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
@@ -216,7 +216,7 @@ Pokud je potřeba přizpůsobit vytvoření virtuálního počítače ze zálož
 
 Pokud chcete aktivovat obnovení disku ze zálohy virtuálního počítače Azure, níže jsou uvedené součásti textu žádosti.
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -278,7 +278,7 @@ I když obnovení disků vytvoří disky z bodu obnovení, nahradí disky aktuá
 
 Chcete-li aktivovat nahrazení disku ze zálohy virtuálního počítače Azure, je nutné, aby tyto součásti textu žádosti byly.
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 

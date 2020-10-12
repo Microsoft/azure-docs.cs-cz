@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4afc5e554e72fc2ab78173368930b2e5317bce7
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88718913"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Souhrnné informace o registraci informací o zabezpečení pro Azure Active Directory
@@ -60,8 +60,8 @@ Kombinovaná registrace podporuje následující metody ověřování a akce:
 | Alternativní telefon | Yes | Yes | Yes |
 | Telefon do kanceláře | No | No | No |
 | E-mail | Yes | Yes | Yes |
-| Bezpečnostní otázky | Ano | No | Yes |
-| Hesla aplikací | Ano | No | Yes |
+| Bezpečnostní otázky | Yes | No | Yes |
+| Hesla aplikací | Yes | No | Yes |
 | FIDO2 klíče zabezpečení<br />*Spravovaný režim pouze ze stránky [bezpečnostní údaje](https://mysignins.microsoft.com/security-info)*| Yes | Yes | Yes |
 
 > [!NOTE]

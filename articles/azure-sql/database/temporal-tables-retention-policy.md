@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/25/2018
 ms.openlocfilehash: 1d68163a9fba3ba3bcd4c0c0f3fb5f442296e781
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619385"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Správa historických dat v dočasnách tabulkách pomocí zásad uchovávání informací
@@ -120,7 +120,7 @@ Vynikající komprese dat a efektivní vyčištění v rámci uchovávání info
 
 Je důležité si všimnout, že výchozí tabulka historie vytvořená Azure SQL Database a spravovanou instancí Azure SQL již obsahuje clusterovaný index, který je v souladu se zásadami uchovávání informací. Pokud se pokusíte tento index odstranit v tabulce s omezenou dobou uchovávání, operace se nezdařila s následující chybou:
 
-*Msg 13766, Level 16, state 1 <br> </br> nemůže vyřadit clusterovaný index ' WebsiteUserInfoHistory. IX_WebsiteUserInfoHistory ', protože je používán pro automatické čištění starých dat. Pokud potřebujete tento index odstranit, zvažte nastavení HISTORY_RETENTION_PERIOD na nekonečné v odpovídající dočasné tabulce se systémovou správou verzí.*
+*Msg 13766, Level 16, state 1 <br> </br> nemůže vyřadit clusterovaný index ' WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory ', protože je používán pro automatické vyčištění starých dat. Pokud potřebujete tento index odstranit, zvažte nastavení HISTORY_RETENTION_PERIOD na nekonečné v odpovídající dočasné tabulce se systémovou správou verzí.*
 
 Čištění v clusterovaných indexech columnstore funguje optimálně, pokud jsou historické řádky vloženy ve vzestupném pořadí (seřazené podle sloupce konec období), což je vždy případ, kdy je tabulka historie vyplněna výhradně pomocí mechanismu SYSTEM_VERSIONIOING. Pokud se řádky v tabulce historie neúčtují podle sloupce konec období (což může být případ, že jste migrovali existující historická data), měli byste znovu vytvořit clusterovaný index columnstore na rowstore indexu B-Tree, který je správně uspořádaný, abyste dosáhli optimálního výkonu.
 

@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88718811"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Zálohování a obnovení modelů pro rozpoznávání formulářů
@@ -26,7 +26,7 @@ Rozhraní API pro kopírování umožňuje tomuto scénáři kopírovat vlastní
 
 Pokud vaše aplikace nebo firma závisí na použití vlastního modelu rozpoznávání formulářů, doporučujeme model zkopírovat do jiného účtu pro rozpoznávání formulářů v jiné oblasti. Pokud dojde k oblastnímu výpadku, můžete získat přístup k modelu v oblasti, kam byl zkopírován.
 
-##  <a name="prerequisites"></a>Předpoklady
+##  <a name="prerequisites"></a>Požadavky
 
 1. Dva prostředky pro rozpoznávání formulářů v různých oblastech Azure. Pokud je nemáte, přečtěte si Azure Portal a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" vytvořte nový prostředek pro rozpoznávání formulářů " target="_blank"> vytvořit nový prostředek pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
 1. Klíč předplatného, adresa URL koncového bodu a ID předplatného prostředku pro rozpoznávání formulářů Tyto hodnoty najdete na kartě **Přehled** prostředku na Azure Portal.
@@ -82,7 +82,7 @@ Tělo vaší žádosti musí mít následující formát. Budete muset zadat ID 
 > [!NOTE]
 > Rozhraní API pro kopírování transparentně podporuje funkci [AEK/CMK](https://msazure.visualstudio.com/Cognitive%20Services/_wiki/wikis/Cognitive%20Services.wiki/52146/Customer-Managed-Keys) . To nevyžaduje žádné zvláštní zacházení, ale Všimněte si, že pokud kopírujete mezi nešifrovaným prostředkem do šifrovaného prostředku, je nutné zahrnout hlavičku požadavku `x-ms-forms-copy-degrade: true` . Pokud tato hlavička není zahrnutá, operace kopírování selže a vrátí `DataProtectionTransformServiceError` .
 
-Dostanete `202\Accepted` odpověď s hlavičkou umístění operace. Tato hodnota je adresa URL, kterou použijete ke sledování průběhu operace. Zkopírujte ho do dočasného umístění pro další krok.
+Dostanete `202\Accepted` odpověď s hlavičkou Operation-Location. Tato hodnota je adresa URL, kterou použijete ke sledování průběhu operace. Zkopírujte ho do dočasného umístění pro další krok.
 
 ```
 HTTP/1.1 202 Accepted

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3d0e608e1afae77afd44d7351b7c3f1f269bd8a8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998063"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a dávky
@@ -87,7 +87,7 @@ Ukázkové řešení je záměrně jednoduché. Je navržený tak, aby vám uká
 
 **Čas:** Pokud jste obeznámeni se základy Azure, Data Factory a Batch a dokončili jste následující požadavky, bude dokončení tohoto řešení trvat jednu až dvě hodiny.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 #### <a name="azure-subscription"></a>Předplatné Azure
 Pokud nemáte předplatné Azure, můžete rychle vytvořit bezplatný zkušební účet. Další informace najdete v článku [bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -561,7 +561,7 @@ Propojené služby propojují úložiště dat nebo výpočetní služby s datov
 
 1. Vyberte **Nasadit** na panelu příkazů a nasaďte propojenou službu.
 
-   ![Nasazení](./media/data-factory-data-processing-using-batch/image8.png)
+   ![Nasadit](./media/data-factory-data-processing-using-batch/image8.png)
 
 #### <a name="create-an-azure-batch-linked-service"></a>Vytvoření propojené služby Azure Batch
 V tomto kroku vytvoříte propojenou službu pro účet Batch, který se používá ke spuštění vlastní aktivity objektu pro vytváření dat.
@@ -965,7 +965,7 @@ Po zpracování dat je můžete využívat s online nástroji, jako je Power BI.
 * [Aktualizovat data v Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure a Power BI: základní přehled](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [Úvod do služby Data Factory](data-factory-introduction.md)

@@ -4,10 +4,10 @@ description: Naučte se konfigurovat automatické publikování Azure Event Grid
 ms.topic: conceptual
 ms.date: 04/25/2020
 ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081742"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikování do Azure Event Grid (Preview)
@@ -22,7 +22,7 @@ Tato funkce je užitečná v následujících situacích:
 
 * **Dlouhodobě běžící aktivita na pozadí**: Pokud použijete Durable Functions pro dlouhou běžící aktivitu na pozadí, tato funkce vám pomůže seznámit se s aktuálním stavem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Do projektu Durable Functions nainstalujte [Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) .
 * Nainstalujte [emulátor Azure Storage](../../storage/common/storage-use-emulator.md) (jenom Windows) nebo použijte existující účet Azure Storage.
@@ -132,11 +132,11 @@ Pomocí Azure Portal vytvořte další aplikaci Function App, která bude naslou
 
 1. Vyhledejte **Event Grid**a pak vyberte šablonu **triggeru Azure Event Grid** . 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Vyberte šablonu triggeru Event gridu v Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Přidejte funkci do Azure Portal." border="true":::
 
 1. Pojmenujte novou aktivační událost a pak vyberte **vytvořit funkci**.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Pojmenujte Trigger Event gridu v Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Přidejte funkci do Azure Portal." border="true":::
 
 
     Vytvoří se funkce s následujícím kódem:
@@ -172,11 +172,11 @@ Nyní můžete přidat Event Grid předplatné pro Event Grid téma, které jste
 
 1. V nové funkci vyberte **integrace** a pak vyberte **Event Grid Trigger (eventGridEvent)**. 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="Vyberte odkaz Event Grid aktivační události." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="Přidejte funkci do Azure Portal." border="true":::
 
 1. Vyberte **vytvořit Event Grid popis**.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Vytvořte předplatné Event Grid." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Přidejte funkci do Azure Portal." border="true":::
 
 1. Pojmenujte své předplatné události a vyberte **Event Grid témata** typ tématu. 
 
@@ -184,7 +184,7 @@ Nyní můžete přidat Event Grid předplatné pro Event Grid téma, které jste
 
 1. Vyberte **Vytvořit**.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Vytvoří odběr Event Gridu." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Přidejte funkci do Azure Portal." border="true":::
 
 Teď jste připraveni přijímat události životního cyklu.
 
@@ -237,7 +237,7 @@ V projektu Durable Functions, který jste nakonfigurovali dříve, spusťte lad�
 Následující seznam vysvětluje schéma událostí životního cyklu:
 
 * **`id`**: Jedinečný identifikátor pro událost Event Grid.
-* **`subject`**: Cesta k předmětu události. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}`budou `Running` ,, `Completed` `Failed` a `Terminated` .  
+* **`subject`**: Cesta k předmětu události. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` budou `Running` ,, `Completed` `Failed` a `Terminated` .  
 * **`data`**: Durable Functions konkrétní parametry.
   * **`hubName`**: [TaskHub](durable-functions-task-hubs.md) název.
   * **`functionName`**: Název funkce nástroje Orchestrator.

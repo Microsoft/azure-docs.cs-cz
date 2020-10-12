@@ -9,13 +9,13 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b6f0f77da639bceaea680f015dad5c0d3d6dbda6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84464972"
 ---
-Pokud chcete pro svůj účet úložiště vytvořit privátní koncový bod, musíte nejdřív získat odkaz na svůj účet úložiště a podsíť virtuální sítě, ke které chcete privátní koncový bod přidat. Nahraďte,,, `<storage-account-resource-group-name>` `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` a `<vnet-subnet-name>` níže:
+Pokud chcete pro svůj účet úložiště vytvořit privátní koncový bod, musíte nejdřív získat odkaz na svůj účet úložiště a podsíť virtuální sítě, ke které chcete privátní koncový bod přidat. Nahraďte,,, `<storage-account-resource-group-name>`  `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` a `<vnet-subnet-name>` níže:
 
 ```bash
 storageAccountResourceGroupName="<storage-account-resource-group-name>"

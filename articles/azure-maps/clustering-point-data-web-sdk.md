@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 6d0cb0c6a9cc3080ec4b2fbd2c4b707a52a88319
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285107"
 ---
 # <a name="clustering-point-data"></a>Data bodu clusteringu
@@ -48,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 Tady jsou další metody, které `DataSource` Třída poskytuje pro clusteringu:
 
-| Metoda | Návratový typ | Popis |
+| Metoda | Návratový typ | Description |
 |--------|-------------|-------------|
 | getClusterChildren (clusterId: Number) | &lt;Geometrie funkce pole promise &lt; &lt; , libovolný &gt; \| tvar&gt;&gt; | Načte podřízené objekty daného clusteru na další úrovni přiblížení. Tyto podřízené položky mohou být kombinací tvarů a podclusterů. Podclustery budou funkcemi s vlastnostmi, které odpovídají ClusteredProperties. |
 | getClusterExpansionZoom (clusterId: Number) | Číslo promise &lt;&gt; | Vypočítá úroveň přiblížení, při které se cluster začne zvětšovat nebo rozdělovat. |
@@ -92,7 +92,7 @@ Podívejte se na CodePen () na () <a href='https://codepen.io/azuremaps/pen/VRJr
 
 Pokud dojde k událostem myši na vrstvě, která obsahuje seskupené datové body, vrátí se clusterový datový bod do události jako objekt funkce bodu injson. Tato funkce Point bude mít následující vlastnosti:
 
-| Název vlastnosti             | Typ    | Popis   |
+| Název vlastnosti             | Typ    | Description   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Indikuje, že funkce představuje cluster. |
 | `cluster_id`              | řetězec  | Jedinečné ID clusteru, které lze použít s `getClusterExpansionZoom` `getClusterChildren` metodami DataSource, a `getClusterLeaves` . |

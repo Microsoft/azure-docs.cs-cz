@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: acacf617d3f1d9ab891d08b32fc2dfb14deb64a4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540519"
 ---
 # <a name="pii-detection-cognitive-skill"></a>Vnímání zjistitelnosti PII
@@ -39,7 +39,7 @@ Maximální velikost záznamu musí být 50 000 znaků měřených podle [`Strin
 
 V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 
-| Název parametru     | Popis |
+| Název parametru     | Description |
 |--------------------|-------------|
 | `defaultLanguageCode` |    Kód jazyka vstupního textu V současné době `en` se podporuje jenom. |
 | `minimumPrecision` | Hodnota mezi 0,0 a 1,0. Pokud je výsledek spolehlivosti (ve `piiEntities` výstupu) nižší než hodnota nastavená `minimumPrecision` , entita se nevrátí ani nemaskuje. Výchozí hodnota je 0,0. |
@@ -48,14 +48,14 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu      | Popis                   |
+| Název vstupu      | Description                   |
 |---------------|-------------------------------|
 | `languageCode`    | Nepovinný parametr. Výchozí je `en`.  |
 | `text`          | Text, který se má analyzovat          |
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Název výstupu      | Popis                   |
+| Název výstupu      | Description                   |
 |---------------|-------------------------------|
 | `piiEntities` | Pole komplexních typů, které obsahují následující pole: <ul><li>text (skutečný PII jako extrahovaný)</li> <li>typ</li><li>Podtyp</li><li>skóre (vyšší hodnota znamená, že je pravděpodobnější, že se jedná o skutečnou entitu)</li><li>posun (do vstupního textu)</li><li>length</li></ul> </br> [Možné typy a podtypy lze nalézt zde.](../cognitive-services/text-analytics/named-entity-types.md?tabs=personal) |
 | `maskedText` | Pokud `maskingMode` je hodnota nastavena na jinou hodnotu než `none` , bude tento výstup výsledkem řetězce maskování provedeného na vstupním textu, jak je popsáno ve vybraném `maskingMode` .  Pokud `maskingMode` je nastaveno na `none` , nebude tento výstup k dispozici. |

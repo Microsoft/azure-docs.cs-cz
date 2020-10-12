@@ -14,10 +14,10 @@ ms.author: curtand
 ms.reviewer: kexia
 metadata ms.custom: contperfq1
 ms.openlocfilehash: 3d95ad4aa100b0a185bde015dfe34d747fc77ec9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322598"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Běžné problémy s dvojúrovňovým ověřováním a pracovním nebo školním účtem
@@ -109,7 +109,7 @@ Volitelné kroky:
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>Mám problémy s přihlášením na mobilním zařízení během cestování
 
-V rámci mezinárodního umístění může být obtížnější použít metodu ověřování související s mobilním zařízením, jako je textové zasílání zpráv. Je také možné, že vaše mobilní zařízení vám může způsobit poplatky za roaming. V této situaci doporučujeme používat aplikaci Microsoft Authenticator s možností připojit se k aktivnímu bodu Wi-Fi. Další informace o tom, jak nastavit Microsoft Authenticator aplikaci na mobilním zařízení, najdete v článku o [Stažení a instalaci Microsoft Authenticator aplikace](user-help-auth-app-download-install.md) .
+V rámci mezinárodního umístění může být obtížnější použít metodu ověřování související s mobilním zařízením, jako je textové zasílání zpráv. Je také možné, že vaše mobilní zařízení vám může způsobit poplatky za roaming. Pro tuto situaci doporučujeme, abyste používali aplikaci Microsoft Authenticator s možností připojení k Wi-Fi aktivnímu bodu. Další informace o tom, jak nastavit Microsoft Authenticator aplikaci na mobilním zařízení, najdete v článku o [Stažení a instalaci Microsoft Authenticator aplikace](user-help-auth-app-download-install.md) .
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>Nejde mi získat hesla k aplikacím
 

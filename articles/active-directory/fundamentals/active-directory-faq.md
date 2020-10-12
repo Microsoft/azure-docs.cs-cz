@@ -14,10 +14,10 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: afb6adc38fd44366b837119518622dd8931f9096
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89565561"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Nejčastější dotazy týkající se Azure Active Directory
@@ -32,7 +32,7 @@ Další informace najdete v tématu [Co je Azure Active Directory?](active-direc
 **Odpověď:** Pro přístup k webu Azure Portal potřebuje každý uživatel oprávnění s předplatným Azure. Pokud nemáte placené Microsoft 365 nebo předplatné služby Azure AD, budete muset aktivovat bezplatný [účet Azure](https://azure.microsoft.com/free/
 ) nebo placené předplatné.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Jak je předplatné Azure propojeno se službou Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 
@@ -160,7 +160,7 @@ Máme bránu, která filtruje požadavky a nabízí určitou ochranu před botne
 
 **Odpověď:** Se službou Azure AD Premium můžete přidávat a konfigurovat libovolné aplikace. V závislosti na možnostech vaší aplikace a vašich předvolbách můžete nakonfigurovat jednotné přihlašování a automatizované zřizování.  
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Pomocí SCIM zapněte automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací](../app-provisioning/use-scim-to-provision-users-and-groups.md)
@@ -182,7 +182,7 @@ Další informace najdete v tématu [prostředí koncových uživatelů pro apli
 
 **Odpověď:** Azure AD podporuje mnoho standardizovaných protokolů pro ověřování a autorizaci, například SAML 2.0, OpenID Connect, OAuth 2.0 a WS-Federation. Azure AD podporuje funkce ukládání hesel do trezoru a automatického přihlašování pro aplikace, které podporují pouze ověření na základě formuláře.   
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Scénáře ověřování pro Azure AD](../develop/authentication-vs-authorization.md)
 * [Protokoly pro ověřování služby Active Directory](/previous-versions/azure/dn151124(v=azure.100))

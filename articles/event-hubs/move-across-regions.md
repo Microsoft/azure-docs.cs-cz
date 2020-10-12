@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak přesunout obor názvů Azure Eve
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: b177c3916919e3d97325f9d8c6b6027c00cb476f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89375189"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Přesunutí oboru názvů Azure Event Hubs do jiné oblasti
@@ -24,7 +24,7 @@ Pokud máte v rámci skupiny prostředků Azure, která obsahuje obor názvů Ev
 ## <a name="prepare"></a>Příprava
 Začněte tím, že vyexportujete šablonu Správce prostředků. Tato šablona obsahuje nastavení, která popisují váš obor názvů Event Hubs.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny prostředky** a pak vyberte svůj obor názvů Event Hubs.
 3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 4. Na stránce **Exportovat šablonu** vyberte **Stáhnout** .

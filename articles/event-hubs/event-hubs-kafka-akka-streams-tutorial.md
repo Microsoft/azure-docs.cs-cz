@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o tom, jak připojit Akka datov�
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 1fbbeef37c4cbdd52d2127c5242474ac46e42d25
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90061695"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Použití Akka Streams se službou Event Hubs pro Apache Kafka
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 

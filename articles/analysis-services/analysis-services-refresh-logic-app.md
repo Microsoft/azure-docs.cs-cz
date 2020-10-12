@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
 ms.openlocfilehash: c4908373035b1a3148cd77db513f4e6bd23a50d7
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540723"
 ---
 # <a name="refresh-with-logic-apps"></a>Aktualizace pomocí Logic Apps
@@ -29,7 +29,7 @@ Všechna volání musí být ověřena pomocí platného tokenu Azure Active Dir
 > [!IMPORTANT]
 > V následujících příkladech se předpokládá, že je brána firewall Azure Analysis Services zakázaná. Pokud je povolená brána firewall, musí být do seznamu schválených v bráně Azure Analysis Services firewall přidána veřejná IP adresa iniciátoru žádosti. Další informace o Azure Logic Apps rozsahech IP adres na oblast najdete v tématu [omezení a informace o konfiguraci pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#configuration).
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 #### <a name="create-a-service-principal-spn"></a>Vytvoření instančního objektu (SPN)
 
@@ -69,7 +69,7 @@ Aktivitu HTTP nakonfigurujte následujícím způsobem:
 |**Identifikátor URI**     | https://*na server region*/Servers/*AAS název serveru*/Models/*název vaší databáze*/refreshes <br /> <br /> Příklad: https: \/ /westus.asazure.Windows.NET/Servers/MyServer/Models/AdventureWorks/refreshes|
 |**Hlavičky**     |   Content-Type, Application/JSON <br /> <br />  ![Hlavičky](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Text**     |   Další informace o vytváření textu žádosti najdete v tématu [asynchronní aktualizace pomocí REST API-post/refreshes](analysis-services-async-refresh.md#post-refreshes). |
-|**Ověřování**     |Protokol OAuth pro Active Directory         |
+|**Authentication**     |Protokol OAuth pro Active Directory         |
 |**Tenant**     |Vyplňte Azure Active Directory TenantId         |
 |**Cílová skupina**     |https://*. asazure. Windows. NET         |
 |**ID klienta**     |Zadejte své hlavní název služby ClientID.         |

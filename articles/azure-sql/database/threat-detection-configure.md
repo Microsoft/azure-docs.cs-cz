@@ -11,10 +11,10 @@ ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 09/21/2020
 ms.openlocfilehash: 678de4354012dcea5b954980109fd71c1004aca4
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619283"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>Konfigurace rozšířené ochrany před internetovými útoky pro Azure SQL Database
@@ -28,7 +28,7 @@ Můžete dostávat oznámení o zjištěných hrozbách prostřednictvím [e-mai
 
 ## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>Nastavení rozšířené ochrany před internetovými útoky v Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Přejděte na stránku konfigurace serveru, který chcete chránit. V nastavení zabezpečení vyberte **Security Center**.
 3. Na stránce konfigurace v programu **Azure Defender** :
 

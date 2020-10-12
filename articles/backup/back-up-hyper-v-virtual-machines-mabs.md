@@ -4,10 +4,10 @@ description: Tento článek obsahuje postupy pro zálohování a obnovení virtu
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.openlocfilehash: fc4e34e11e2474521082b1c23f600e9a5ca7a9fe
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89377994"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Zálohování virtuálních počítačů s technologií Hyper-V pomocí Azure Backup Server
@@ -84,7 +84,7 @@ Toto jsou požadavky pro zálohování virtuálních počítačů s technologií
 
 5. Na stránce **Vyberte způsob ochrany dat** zadejte název skupiny ochrany. Pokud chcete zálohovat data na Azure pomocí služby Zálohování Azure, vyberte **Chci krátkodobou ochranu pomocí disku** a potom **Chci online ochranu** .
 
-6. V oblasti **určení krátkodobých cílů**  >  **Rozsah uchování**určete, jak dlouho chcete uchovat data na disku. V části **četnost synchronizací**určete, jak často se má spouštět přírůstkové zálohování dat. Nebo můžete místo intervalu přírůstkového zálohování vybrat možnost **Těsně před bodem obnovení**. Pokud je toto nastavení povoleno, MABS spustí expresní úplné zálohování těsně před každým naplánovaným bodem obnovení.
+6. V oblasti **Zadejte Short-Term cíle**  >  **uchování**určete, jak dlouho chcete uchovat data na disku. V části **četnost synchronizací**určete, jak často se má spouštět přírůstkové zálohování dat. Nebo můžete místo intervalu přírůstkového zálohování vybrat možnost **Těsně před bodem obnovení**. Pokud je toto nastavení povoleno, MABS spustí expresní úplné zálohování těsně před každým naplánovaným bodem obnovení.
 
     > [!NOTE]
     >

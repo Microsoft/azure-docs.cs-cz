@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: fd9117af49de9fe59ed614a9dfa730644f02cd8c
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91403632"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indexování objektů BLOB JSON pomocí indexeru objektů BLOB v Azure Kognitivní hledání
@@ -63,7 +63,7 @@ Na stránce **zdroj dat** musí být ve zdroji **BLOB Storage Azure**, a to s n�
    
 + **Kontejner úložiště** musí určovat váš účet úložiště a kontejner nebo připojovací řetězec, který se překládá na kontejner. Připojovací řetězce můžete získat na stránce Blob serviceového portálu.
 
-   :::image type="content" source="media/search-howto-index-json/import-wizard-json-data-source.png" alt-text="Definice zdroje dat objektu BLOB" border="false":::
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-data-source.png" alt-text="Příkaz Importovat data na portálu" border="false":::
 
 ### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 – přeskočí stránku "obohacení obsahu" v Průvodci
 
@@ -81,7 +81,7 @@ Další informace najdete v popisu [atributů indexu](/rest/api/searchservice/cr
 
 Věnujte prosím chvíli kontrole vašich výběrů. Po spuštění Průvodce se vytvoří fyzické datové struktury a nebudete moct tato pole upravovat, aniž byste museli odstraňovat a znovu vytvářet všechny objekty.
 
-   :::image type="content" source="media/search-howto-index-json/import-wizard-json-index.png" alt-text="Definice indexu objektu BLOB" border="false":::
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-index.png" alt-text="Příkaz Importovat data na portálu" border="false":::
 
 ### <a name="6---create-indexer"></a>6. vytvoření indexeru
 
@@ -89,7 +89,7 @@ V rámci vaší vyhledávací služby vytvoří průvodce tři odlišné objekty
 
 Pokud nejste obeznámeni s indexery, *indexer* je prostředkem v Azure kognitivní hledání, který prochází externím zdrojem dat pro prohledávatelný obsah. Výstupem průvodce **importem dat** je indexer, který prochází váš zdroj dat JSON, extrahuje prohledávatelný obsah a importuje ho do indexu v Azure kognitivní hledání.
 
-   :::image type="content" source="media/search-howto-index-json/import-wizard-json-indexer.png" alt-text="Definice indexeru objektů BLOB" border="false":::
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-indexer.png" alt-text="Příkaz Importovat data na portálu" border="false":::
 
 Kliknutím na tlačítko **OK** spusťte průvodce a vytvořte všechny objekty. Indexování se okamžitě zahájí.
 
@@ -118,7 +118,7 @@ Pořadí operací vyžaduje, abyste v tomto pořadí vytvořili objekty a volali
 
 Objekty blob JSON ve službě Azure Blob Storage jsou obvykle buď jedním dokumentem JSON, nebo polem JSON "Array". Indexer objektů BLOB v Azure Kognitivní hledání může analyzovat buď konstrukci v závislosti na nastavení parametru **parsingMode** v žádosti.
 
-| Dokument JSON | parsingMode | Popis | Dostupnost |
+| Dokument JSON | parsingMode | Description | Dostupnost |
 |--------------|-------------|--------------|--------------|
 | Jedna na objekt BLOB | `json` | Analyzuje objekty blob JSON jako jeden blok textu. Každý objekt BLOB JSON se stal jedním dokumentem Azure Kognitivní hledání. | Obecně dostupné jak v rozhraní [REST](/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
 | Víc na objekt BLOB | `jsonArray` | Analyzuje pole JSON v objektu blob, kde se každý prvek pole stal samostatným dokumentem Azure Kognitivní hledání.  | Obecně dostupné jak v rozhraní [REST](/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
@@ -291,7 +291,7 @@ Sada .NET SDK má úplnou paritu s REST API. Doporučujeme, abyste si přečtět
 
 Objekty blob JSON můžou předpokládat víc forem. Parametr **parsingMode** indexeru JSON určuje, jak se obsah objektu BLOB JSON analyzuje a strukturuje v indexu Azure kognitivní hledání:
 
-| parsingMode | Popis |
+| parsingMode | Description |
 |-------------|-------------|
 | `json`  | Indexujte každý objekt BLOB jako jeden dokument. Tato možnost je výchozí. |
 | `jsonArray` | Tento režim vyberte, pokud se objekty blob skládají z polí JSON a potřebujete, aby se každý element pole stal samostatným dokumentem v Azure Kognitivní hledání. |

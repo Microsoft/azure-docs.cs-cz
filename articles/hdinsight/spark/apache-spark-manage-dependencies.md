@@ -9,13 +9,13 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.openlocfilehash: dafb4485ae9b10d89fa36bd790dcf3a799054de3
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90064136"
 ---
-# <a name="manage-spark-application-dependencies"></a>Správa závislostí aplikace Spark
+# <a name="manage-spark-application-dependencies"></a>Správa závislostí sparkových aplikací
 
 V tomto článku se dozvíte, jak spravovat závislosti pro aplikace Spark běžící v HDInsight. Scala i PySpark se týkají aplikace Spark a oboru clusteru.
 
@@ -23,7 +23,7 @@ Pomocí rychlých odkazů můžete přejít k části na základě vašeho uživ
 * [Nastavení závislostí pro úlohy Spark pomocí poznámkového bloku Jupyter](#use-jupyter-notebook)
 * [Nastavení závislosti jar úlohy Spark pomocí Azure Toolkit for IntelliJ použít](#use-azure-toolkit-for-intellij)
 * [Konfigurace závislostí JAR pro cluster Spark](#jar-libs-for-cluster)
-* [Bezpečně spravovat závislosti jar](#safely-manage-jar-dependencies)
+* [Zabezpečená správa závislostí Jar](#safely-manage-jar-dependencies)
 * [Nastavení balíčků Python úlohy Spark pomocí poznámkového bloku Jupyter](#use-jupyter-notebook-1)
 * [Bezpečně spravovat balíčky Pythonu pro cluster Spark](#python-packages-for-cluster)
 
@@ -98,7 +98,7 @@ V některých případech můžete chtít nakonfigurovat závislosti jar na úro
 
 Kroky můžete automatizovat pomocí [akcí skriptů](../hdinsight-hadoop-customize-cluster-linux.md). Dobrým odkazem je akce skriptu pro [Přidání vlastních knihoven podregistru](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh) . Při změně konfigurace služby Spark se ujistěte, že používáte rozhraní API Ambari místo úprav konfiguračních souborů přímo. 
 
-## <a name="safely-manage-jar-dependencies"></a>Bezpečně spravovat závislosti jar
+## <a name="safely-manage-jar-dependencies"></a>Zabezpečená správa závislostí Jar
 Cluster HDInsight má integrované závislosti jar a aktualizace pro tyto verze JAR se od času stávají časem. Chcete-li se vyhnout konfliktu verzí mezi vestavěnými jar a JAR, které jste přizpůsobili pro referenci, zvažte [vystínování závislostí aplikace](./safely-manage-jar-dependency.md).
 
 ## <a name="python-packages-for-one-spark-job"></a>Balíčky Pythonu pro jednu úlohu Spark

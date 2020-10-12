@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
 ms.openlocfilehash: a003090fd610f2ac75895cccbf97750adbd4cfcd
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88258330"
 ---
-# <a name="benefits-of-using-azure-netapp-files-with-windows-virtual-desktop"></a>Výhody použití Azure NetApp Files s virtuálním počítačem s Windows 
+# <a name="benefits-of-using-azure-netapp-files-with-windows-virtual-desktop"></a>Výhody použití Azure NetApp Files s Windows Virtual Desktopem 
 
 Tento článek popisuje osvědčené postupy pro nasazení virtuálního počítače s Windows (WVD) pomocí Azure NetApp Files.
 

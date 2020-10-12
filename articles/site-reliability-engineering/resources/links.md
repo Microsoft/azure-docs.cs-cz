@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: dnb
 ms.openlocfilehash: becbc3e59663c1898cc4e635f61f63d54360a6f5
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086534"
 ---
 # <a name="sources-for-site-reliability-engineering-information"></a>Zdroje informací o technikách pro spolehlivost webu
@@ -24,7 +24,7 @@ Tady jsou některé užitečné seznamy odkazů pro SRE a témata týkající se
 
 * [Technologie Super web pro spolehlivost](https://github.com/dastergon/awesome-sre)
 * [Nástroje společnosti Super web pro spolehlivost](https://github.com/SquadcastHub/awesome-sre-tools)
-* [Vzory škálovatelných, spolehlivých a výkonných systémů s velkými Škálováními](http://awesome-scalability.com)
+* [Vzory škálovatelných, spolehlivých a výkonných Large-Scalech systémů](http://awesome-scalability.com)
 * [Super-distribuované – systémy](https://github.com/theanalyst/awesome-distributed-systems)
 * [Super konsensu](https://github.com/dgryski/awesome-consensus)
 * [Super – monitorování](https://github.com/crazy-canux/awesome-monitoring)
