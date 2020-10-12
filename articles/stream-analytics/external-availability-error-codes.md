@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
 ms.openlocfilehash: c70a3a2d0630148a077f9c149ba40d48a6b7c0ae
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045276"
 ---
 # <a name="azure-stream-analytics-external-availability-error-codes"></a>Azure Stream Analytics kódů chyb externích dostupnosti

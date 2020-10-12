@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: 6dcd2005971927de30ca96173cb2bdb063e46663
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397422"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Předávání dat úloh Azure Automation do protokolů Azure Monitoru
@@ -56,7 +56,7 @@ Pokud chcete vrátit výsledky z konkrétní skupiny prostředků, zahrňte `-Re
 
 Pokud máte ve výstupu předchozích příkazů více než jeden účet služby Automation nebo pracovní prostor, můžete najít název a další související vlastnosti, které jsou součástí úplného ID prostředku vašeho účtu Automation, a to následujícím způsobem:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V Azure Portal na stránce **účty Automation** vyberte svůj účet Automation.
 1. Na stránce vybraného účtu Automation v části **Nastavení účtu**vyberte **vlastnosti**.
 1. Na stránce **vlastnosti** si všimněte níže uvedených podrobností.

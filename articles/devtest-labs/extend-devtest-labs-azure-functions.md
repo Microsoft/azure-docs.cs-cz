@@ -4,10 +4,10 @@ description: Naučte se, jak můžete Azure DevTest Labs pomocí Azure Functions
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: bcd12d77065d231198e992fa5c459f0fc210855a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476304"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>Rozšíření DevTest Labs s využitím služby Azure Functions

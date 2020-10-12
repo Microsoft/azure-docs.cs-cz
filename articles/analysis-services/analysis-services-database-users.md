@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 8ccd9120937148043590d30232acd6b556b09dc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015268"
 ---
 # <a name="manage-database-roles-and-users"></a>Správa databázových rolí a uživatelů
@@ -42,10 +42,10 @@ Při přidávání **skupiny zabezpečení**použijte `obj:groupid@tenantid` .
   
 4.  Vyberte jedno z následujících oprávnění:  
   
-    |Oprávnění|Popis|  
+    |Oprávnění|Description|  
     |----------------|-----------------|  
     |**Žádný**|Členové nemohou číst ani upravovat schéma modelu a nemohou zadávat dotazy na data.|  
-    |**Číst**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
+    |**Oprávnění**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
     |**Čtení a zpracování**|Členové mohou zadávat dotazy na data (na základě filtrů na úrovni řádků) a spouštět proces a zpracovávat všechny operace, ale nemohou upravovat schéma modelu.|  
     |**Proces**|Členové mohou spustit proces a zpracovat všechny operace. Nelze číst ani upravovat schéma modelu a nelze zadávat dotazy na data.|  
     |**Správce**|Členové mohou upravit schéma modelu a dotazovat se na všechna data.|   
@@ -71,15 +71,15 @@ Chcete-li přidat role a uživatele do nasazené databáze modelů, musíte být
 
 3. Vyberte oprávnění.
 
-   |Oprávnění|Popis|  
+   |Oprávnění|Description|  
    |----------------|-----------------|  
    |**Úplné řízení (správce)**|Členové můžou upravovat schéma modelu, proces a můžou se dotazovat na všechna data.| 
    |**Process database**|Členové mohou spustit proces a zpracovat všechny operace. Schéma modelu nelze upravovat a nelze zadávat dotazy na data.|  
-   |**Číst**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
+   |**Oprávnění**|Členové se můžou dotazovat na data (na základě filtrů řádků), ale nemůžou upravovat schéma modelu.|  
   
 4. Klikněte na **členství**a pak zadejte uživatele nebo skupinu do svého TENANTA Azure AD podle e-mailové adresy.
 
-     ![Přidání uživatele](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
+     ![Přidat uživatele](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
 
 5. Pokud má role, kterou vytváříte, oprávnění ke čtení, můžete přidat filtry řádků pomocí vzorce DAX. Klikněte na **filtry řádků**, vyberte tabulku a potom do pole **Filtr DAX** zadejte vzorec DAX. 
 
@@ -119,7 +119,7 @@ V této ukázce je externí uživatel B2B a skupina přidaný do role analytika 
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>Přidání rolí a uživatelů pomocí prostředí PowerShell
 
-Modul [SQLServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) poskytuje rutiny pro správu databáze specifické pro úlohu a rutinu Invoke ASCmd pro obecné účely, která přijímá dotaz nebo skript TMSL (Tabular model Scripting Language). Následující rutiny se používají ke správě databázových rolí a uživatelů.
+Modul [SQLServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) poskytuje rutiny pro správu databáze specifické pro úlohu a rutinu pro obecné účely Invoke-ASCmd, která přijímá dotaz nebo skript TMSL (Tabular model Scripting Language). Následující rutiny se používají ke správě databázových rolí a uživatelů.
   
 |Rutina|Popis|
 |------------|-----------------| 

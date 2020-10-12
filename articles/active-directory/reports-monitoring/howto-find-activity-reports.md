@@ -15,10 +15,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b705cf6ac6fd25c7794db7651db5bc5c5c0e790c
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230615"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Vyhledání sestav aktivit na webu Azure Portal
@@ -33,7 +33,7 @@ Sestava protokoly auditu kombinuje několik sestav kolem aplikačních aktivit d
 2. V pravém horním rohu vyberte svůj adresář a pak v levém navigačním podokně vyberte okno **Azure Active Directory** .
 3. V části **aktivita** v okně Azure Active Directory vyberte **protokoly auditu** . 
 
-    ![Protokoly auditu](./media/howto-find-activity-reports/482.png "Protokoly auditu")
+    ![Protokoly auditování](./media/howto-find-activity-reports/482.png "Protokoly auditu")
 
 Sestava protokoly auditu slučuje následující sestavy:
 
@@ -55,7 +55,7 @@ Mezi kategorie patří:
 - Vše
 - AdministrativeUnit
 - ApplicationManagement
-- Ověřování
+- Authentication
 - Autorizace
 - Kontakt
 - Zařízení
@@ -63,8 +63,8 @@ Mezi kategorie patří:
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
-- Další
-- Zásada
+- Jiné
+- Zásady
 - ResourceManagement
 - RoleManagement
 - UserManagement
@@ -106,7 +106,7 @@ Přístup k sestavě přihlášení:
 
 Pomocí sestavy přihlášení můžete zobrazit podrobnosti o využití aplikace, a to filtrováním podle uživatelského jména nebo názvu aplikace.
 
-![Stránka filtrovat události přihlášení](./media/howto-find-activity-reports/07.png "Stránka filtrovat události přihlášení")
+![Stránka Sign-In události filtru](./media/howto-find-activity-reports/07.png "Stránka Sign-In události filtru")
 
 ## <a name="security-reports"></a>Sestavy zabezpečení
 
@@ -149,7 +149,7 @@ K sestavám zjištěných detekcí rizik můžete získat přístup v části **
 
 Ve stažených protokolech aktivity (auditu nebo přihlášení) se nezobrazují žádné záznamy pro zvolený čas. Proč? 
 
- ![Přehledy](./media/troubleshoot-missing-data-download/01.png)
+ ![Generování sestav](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>Příčina
 
@@ -165,7 +165,7 @@ Můžete využít [rozhraní API pro vytváření sestav Azure AD](concept-repor
 
 Provedl jsem nějaké akce na webu Azure Portal a očekával jsem pro tyto akce zobrazení protokolu auditu v okně `Activity logs > Audit Logs`, ale nemůžu je najít.
 
- ![Přehledy](./media/troubleshoot-missing-audit-data/01.png)
+ ![Generování sestav](./media/troubleshoot-missing-audit-data/01.png)
  
 #### <a name="cause"></a>Příčina
 
@@ -186,7 +186,7 @@ Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protoko
 
 Nedávno jsem se přihlásil/a k webu Azure Portal a očekával/a jsem, že se pro tyto akce zobrazí protokoly přihlášení v okně `Activity logs > Sign-ins`, ale nemůžu je najít.
 
- ![Přehledy](./media/troubleshoot-missing-audit-data/02.png)
+ ![Generování sestav](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>Příčina
 
@@ -207,7 +207,7 @@ Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protoko
 
 Na webu Azure Portal nemůžu zobrazit data přihlášení a auditu za více než 30 dnů. Proč? 
 
- ![Přehledy](./media/troubleshoot-missing-audit-data/03.png)
+ ![Generování sestav](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>Příčina
 

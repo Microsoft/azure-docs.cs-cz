@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84699103"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Rozbalení, připojení k racku a zapojení zařízení StorSimple 8100
@@ -178,7 +178,7 @@ Vaše zařízení je konfigurací v aktivním pohotovostním režimu: v jednom o
 Pro podporu tohoto redundantního převzetí služeb při selhání je potřeba kabelovat síť zařízení, jak je popsáno v následujícím postupu.
 
 #### <a name="to-cable-for-network-connection"></a>Pro připojení k síti
-1. Vaše zařízení má na každém řadiči šest síťových rozhraní: čtyři porty sítě Ethernet 1 GB/s a 2 10 GB/s. Identifikujte různé datové porty v rámci plánu zařízení.
+1. Vaše zařízení má na každém řadiči šest síťových rozhraní: 4 1 GB/s a porty sítě Ethernet 2 10 GB/s. Identifikujte různé datové porty v rámci plánu zařízení.
    
     ![Backplane pro zařízení 8100](./media/storsimple-8100-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
    

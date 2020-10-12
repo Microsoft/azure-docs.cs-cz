@@ -8,10 +8,10 @@ ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: b2e54545fb79120a3f9d66067da267df3b151b3f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322117"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Řízení zabezpečení v2: zálohování a obnovení
@@ -30,7 +30,7 @@ Povolte Azure Backup a nakonfigurujte zdroj zálohy (například virtuální po�
 
 V případě vyšší úrovně ochrany můžete povolit geograficky redundantní možnosti úložiště pro replikaci zálohovaných dat do sekundární oblasti a obnovení pomocí obnovení mezi oblastmi.
 
-- [Provozní kontinuita a zotavení po havárii v podnikovém měřítku](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
+- [Provozní kontinuita a zotavení po havárii na podnikové úrovni](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
 - [Postup povolení Azure Backup](/azure/backup/)
 

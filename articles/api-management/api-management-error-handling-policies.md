@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86243541"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Zpracování chyb v zásadách služby API Management
@@ -80,7 +80,7 @@ V části zásady se dají použít tyto zásady `on-error` .
 
 Pokud dojde k chybě a řízení přejde na `on-error` oddíl zásady, je chyba uložena v [kontextu. Vlastnost GetLastError](api-management-policy-expressions.md#ContextVariables) , ke které se dají přistupovat zásady v `on-error` části. Poslední z těchto vlastností je.
 
-| Name       | Typ   | Popis                                                                                               | Vyžadováno |
+| Název       | Typ   | Popis                                                                                               | Povinné |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | `Source`   | řetězec | Pojmenuje prvek, kde došlo k chybě. Může to být buď zásada, nebo vestavěný název kroku kanálu.      | Yes      |
 | `Reason`   | řetězec | Uživatelsky přívětivý kód chyby, který se dá použít při zpracování chyb.                                       | No       |
@@ -100,20 +100,20 @@ Pokud dojde k chybě a řízení přejde na `on-error` oddíl zásady, je chyba 
 
 Následující chyby jsou předdefinované pro chybové stavy, ke kterým může dojít během hodnocení integrovaných kroků zpracování.
 
-| Zdroj        | Podmínka                                 | Důvod                  | Zpráva                                                                                                                |
+| Zdroj        | Stav                                 | Důvod                  | Zpráva                                                                                                                |
 | ------------- | ----------------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | konfigurace | Identifikátor URI neodpovídá žádnému rozhraní API nebo operaci. | OperationNotFound       | Příchozí požadavek nelze spárovat s operací.                                                                      |
 | autorizace | Klíč předplatného není zadaný.             | SubscriptionKeyNotFound | Přístup byl odepřen z důvodu chybějícího klíče předplatného. Při vytváření požadavků na toto rozhraní API nezapomeňte zahrnout klíč předplatného. |
 | autorizace | Hodnota klíče předplatného není platná.         | SubscriptionKeyInvalid  | Přístup byl odepřen z důvodu neplatného klíče předplatného. Ujistěte se, že jste zadali platný klíč pro aktivní předplatné.            |
-| vícenásobné | Podřízené připojení (od klienta k bráně API Management) bylo klientem přerušeno, zatímco požadavek čekal. | ClientConnectionFailure | vícenásobné |
-| vícenásobné | Nadřazené připojení (od API Management brány k back-end službě) se nevytvořilo nebo bylo přerušeno pomocí back-endu. | BackendConnectionFailure | vícenásobné |
-| vícenásobné | Během hodnocení konkrétního výrazu došlo k výjimce za běhu. | ExpressionValueEvaluationFailure | vícenásobné |
+| multiple | Podřízené připojení (od klienta k bráně API Management) bylo klientem přerušeno, zatímco požadavek čekal. | ClientConnectionFailure | multiple |
+| multiple | Nadřazené připojení (od API Management brány k back-end službě) se nevytvořilo nebo bylo přerušeno pomocí back-endu. | BackendConnectionFailure | multiple |
+| multiple | Během hodnocení konkrétního výrazu došlo k výjimce za běhu. | ExpressionValueEvaluationFailure | multiple |
 
 ## <a name="predefined-errors-for-policies"></a>Předdefinované chyby pro zásady
 
 Následující chyby jsou předdefinované pro chybové stavy, ke kterým může dojít při vyhodnocování zásad.
 
-| Zdroj       | Podmínka                                                       | Důvod                    | Zpráva                                                                                                                              |
+| Zdroj       | Stav                                                       | Důvod                    | Zpráva                                                                                                                              |
 | ------------ | --------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | frekvence – omezení   | Překročení limitu přenosové rychlosti                                             | RateLimitExceeded         | Překročení limitu přenosové rychlosti                                                                                                               |
 | kvóta        | Překročení kvóty                                                  | QuotaExceeded             | Překročení kvóty volání. Kvóta bude doplněna v XX: xx: xx. – nebo mimo kvótu šířky pásma. Kvóta bude doplněna v XX: xx: xx. |
@@ -132,7 +132,7 @@ Následující chyby jsou předdefinované pro chybové stavy, ke kterým může
 | ověřit – JWT | V tokenu chybí požadované deklarace identity.                          | TokenClaimNotFound        | V tokenu JWT chybí následující deklarace: <C1 \> , <C2 \> ,... Přístup se odepřel.                                                            |
 | ověřit – JWT | Neshoda hodnot deklarace identity                                           | TokenClaimValueNotAllowed | Hodnota deklarace identity {Claim-Name} typu {Claim-value} není povolená. Přístup se odepřel.                                                             |
 | ověřit – JWT | Jiná selhání ověřování                                       | JwtInvalid                | <zpráva z knihovny JWT\>                                                                                                          |
-| předat požadavek nebo odeslat požadavek | V nakonfigurovaném časovém limitu se nepřijal kód stavu odpovědi HTTP a hlavičky z back-endu. | Časový limit | vícenásobné |
+| předat požadavek nebo odeslat požadavek | V nakonfigurovaném časovém limitu se nepřijal kód stavu odpovědi HTTP a hlavičky z back-endu. | Časový limit | multiple |
 
 ## <a name="example"></a>Příklad
 

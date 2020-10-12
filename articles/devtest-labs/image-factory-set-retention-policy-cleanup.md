@@ -4,10 +4,10 @@ description: Naučte se konfigurovat zásady uchovávání informací, vyčistit
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 115fdff215399a9a51171161191ecf5009e8e20e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476049"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Nastavení zásad uchovávání informací v Azure DevTest Labs
@@ -47,7 +47,7 @@ Tato úloha odebere všechny staré image a udržuje jenom historii, která odpo
 
 ![Úloha PowerShellu pro vyřazení starých imagí](./media/set-retention-policy-cleanup/retire-old-image-task.png)
 
-Parametry skriptu jsou:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
+Parametry skriptu jsou: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
 
 ## <a name="queue-the-build"></a>Zařazení sestavení do fronty
 Teď, když jste dokončili definici sestavení, zaznamenejte nové sestavení, abyste se ujistili, že všechno funguje. Po úspěšném dokončení sestavení se nové vlastní image zobrazí v cílovém testovacím prostředí. Pokud zkontrolujete testovací prostředí pro Image Factory, nezobrazí se žádné zřízené virtuální počítače. Kromě toho, pokud zařadíte další buildy do fronty, uvidíte, že úlohy čištění vybírají staré vlastní image z DevTest Labs v souladu s hodnotou uchování nastavenou v proměnných sestavení.
@@ -57,7 +57,7 @@ Teď, když jste dokončili definici sestavení, zaznamenejte nové sestavení, 
 
 
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Teď máte spuštěnou továrnu imagí, která může na vyžádání generovat a distribuovat vlastní image do vašich cvičení. V tuto chvíli je to jen pro to, aby se vaše image správně nastavily a identifikovaly cílové cvičení. Jak je uvedeno v předchozím článku, **Labs.jsv** souboru umístěném v **konfigurační** složce určuje, které Image by se měly zpřístupnit v každé cílové laboratoři. Když do své organizace přidáte další DevTest Labs, stačí přidat položku v Labs.jspro nové testovací prostředí.
 
 Přidání nového obrázku do továrny je také jednoduché. Pokud chcete do továrny zahrnout nový obrázek, otevřete [Azure Portal](https://portal.azure.com), přejděte do továrního DevTest Labs, vyberte toto tlačítko a přidejte virtuální počítač a zvolte požadovanou image na Marketplace a artefakty. Místo výběru tlačítka **vytvořit** pro vytvoření nového virtuálního počítače vyberte **Zobrazit Azure Resource Manager šablonu**a uložte šablonu jako soubor. JSON někam do složky **GoldenImages** v úložišti. Při příštím spuštění objektu pro vytváření imagí se vytvoří vlastní image.

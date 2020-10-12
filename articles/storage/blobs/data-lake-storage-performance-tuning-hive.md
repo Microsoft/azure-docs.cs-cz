@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: fb908fe94f940073753ea8e1cde3da2b2a0c4b6b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88034766"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Ladění výkonu: podregistr, & HDInsight Azure Data Lake Storage Gen2
@@ -58,7 +58,7 @@ Tady je nejdůležitější nastavení pro optimalizaci pro zlepšení výkonu D
 Souběžný počet probíhajících úloh nebo paralelismu bude svázán s celkovou pamětí PŘÍZe.  Počet kontejnerů PŘÍZe určí, kolik souběžných úloh může být spuštěno.  Pro nalezení paměti PŘÍZe na uzel můžete přejít na Ambari.  Přejděte na PŘÍZe a zobrazte kartu konfigurace.  V tomto okně se zobrazí paměť PŘÍZe.  
 
 - Celková paměť PŘÍZ = uzly * PŘÍZe paměť na uzel
-- \#kontejnerů PŘÍZ = celková paměť PŘÍZe/velikost kontejneru tez
+- \# kontejnerů PŘÍZ = celková paměť PŘÍZe/velikost kontejneru tez
 
 Klíčem ke zvýšení výkonu pomocí Data Lake Storage Gen2 je co nejvíc zvýšit souběžnost.  Tez automaticky vypočítá počet úloh, které by se měly vytvořit, takže je nemusíte nastavovat.   
 
@@ -68,7 +68,7 @@ Klíčem ke zvýšení výkonu pomocí Data Lake Storage Gen2 je co nejvíc zvý
 
 - Celková paměť PŘÍZ = uzly * PŘÍZe paměť na uzel
 - Celková paměť PŘÍZ = 8 uzlů * 96GB = 768GB
-- \#kontejnerů PŘÍZ = 768GB/3072MB = 256
+- \# kontejnerů PŘÍZ = 768GB/3072MB = 256
 
 ## <a name="further-information-on-hive-tuning"></a>Další informace o optimalizaci podregistru
 

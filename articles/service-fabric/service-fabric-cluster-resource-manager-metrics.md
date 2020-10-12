@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3cb22bc2cd032e51dcdb7429e2c0684c578b0870
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89005645"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Správa spotřeby prostředků a načítání v Service Fabric se metrikami
@@ -19,7 +19,7 @@ ms.locfileid: "89005645"
 Příklady metrik se týkají například paměti, disku a využití procesoru. Tyto metriky představují fyzické metriky, prostředky, které odpovídají fyzickým prostředkům v uzlu, který je třeba spravovat. Metriky mohou být také logickými metrikami (a obvykle). Logické metriky jsou například "MyWorkQueueDepth" nebo "MessagesToProcess" nebo "TotalRecords". Logické metriky jsou definované aplikací a nepřímo odpovídají některým fyzickým spotřebám prostředků. Logické metriky jsou běžné, protože může být obtížné změřit a ohlásit spotřebu fyzických prostředků na základě jednotlivých služeb. Složitost měření a vytváření sestav vašich vlastních fyzických metrik také znamená, proč Service Fabric poskytuje některé výchozí metriky.
 
 ## <a name="default-metrics"></a>Výchozí metriky
-Řekněme, že chcete začít s psaním a nasazením služby. V tuto chvíli nevíte, jaké fyzické nebo logické prostředky spotřebovává. To je dobré! Cluster Service Fabric Správce prostředků používá některé výchozí metriky, pokud nejsou zadány žádné jiné metriky. Jedná se o tyto peeringy:
+Řekněme, že chcete začít s psaním a nasazením služby. V tuto chvíli nevíte, jaké fyzické nebo logické prostředky spotřebovává. To je dobré! Cluster Service Fabric Správce prostředků používá některé výchozí metriky, pokud nejsou zadány žádné jiné metriky. Jsou to tyto:
 
   - PrimaryCount – počet primárních replik na uzlu 
   - ReplicaCount – počet celkových stavových replik na uzlu
@@ -136,7 +136,7 @@ Jako připomenutí: Pokud chcete používat jenom výchozí metriky, nemusíte s
 Teď projdeme každé z těchto nastavení podrobněji a podíváme se na chování, které ovlivňuje.
 
 ## <a name="load"></a>Načítání
-Celý bod definující metriky představuje určité zatížení. *Zatížení* je způsob, jakým je velká část dané metriky spotřebovaná určitou instancí služby nebo replikou na daném uzlu. Zatížení je možné nakonfigurovat prakticky v jakémkoli bodě. Příklad:
+Celý bod definující metriky představuje určité zatížení. *Zatížení* je způsob, jakým je velká část dané metriky spotřebovaná určitou instancí služby nebo replikou na daném uzlu. Zatížení je možné nakonfigurovat prakticky v jakémkoli bodě. Například:
 
   - Zatížení lze definovat při vytvoření služby. Nazývá se to _výchozí zatížení_.
   - Informace o metrikách, včetně výchozích zatížení, se pro službu můžou po vytvoření služby aktualizovat. To se označuje jako _aktualizace služby_. 

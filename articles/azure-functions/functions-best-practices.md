@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84697686"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimalizace výkonu a spolehlivosti Azure Functions
@@ -44,7 +44,7 @@ Centra událostí jsou užitečná pro podporu komunikace s vysokými objemy.
 
 ### <a name="write-functions-to-be-stateless"></a>Psaní funkcí, které mají být bezstavové 
 
-Funkce by měly být bezstavové a idempotentní, pokud je to možné. Přidružte k vašim datům všechny požadované informace o stavu. Například zpracování objednávky by pravděpodobně mělo přidruženého `state` člena. Funkce může zpracovat objednávku na základě tohoto stavu, zatímco samotná funkce zůstane Bezstavová. 
+Funkce by měly být bezstavové a idempotentní, pokud je to možné. Přidružte ke svým datům požadované informace o stavu. Například zpracování objednávky by pravděpodobně mělo přidruženého `state` člena. Funkce může zpracovat objednávku na základě tohoto stavu, zatímco samotná funkce zůstane Bezstavová. 
 
 Funkce idempotentní jsou obzvláště Doporučené s triggery časovače. Například pokud máte něco, co naprosto musí běžet jednou denně, zapište ho, aby mohl běžet kdykoli během dne se stejnými výsledky. Funkce může skončit, i když pro určitý den nebude fungovat žádná práce. I v případě, že se nepovedlo dokončit předchozí spuštění, mělo by se další spuštění vystavit tam, kde skončila.
 
@@ -118,7 +118,7 @@ Další možnosti konfigurace hostitele najdete v [host.jsčlánku o konfiguraci
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících zdrojích:
 
 * [Správa připojení v Azure Functions](manage-connections.md)
 * [Azure App Service osvědčené postupy](../app-service/app-service-best-practices.md)

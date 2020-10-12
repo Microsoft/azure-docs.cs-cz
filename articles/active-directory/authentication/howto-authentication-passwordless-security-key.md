@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e523f8cc3aa9ab2f42d2d28909c9dec2dad30b43
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90526948"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Povolit přihlašování k bezpečnostnímu klíči s nezabezpečenými hesly (Preview)
@@ -50,7 +50,7 @@ Funkce registrace pro metody ověřování nevyužívající hesla se spoléhaj�
 
 ### <a name="enable-fido2-security-key-method"></a>Povolit metodu klíče zabezpečení FIDO2
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte na **Azure Active Directory**  >  zásady**ověřování**  >  **metody**ověřování  >  **(Preview)**.
 1. V části **klíč zabezpečení FIDO2**metody vyberte následující možnosti:
    1. **Povolit** – Ano nebo ne

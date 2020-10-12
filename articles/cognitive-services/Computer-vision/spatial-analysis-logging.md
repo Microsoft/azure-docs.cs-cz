@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
 ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254070"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie a řešení potíží
 
-Prostorová analýza zahrnuje sadu funkcí pro sledování stavu systému a k diagnostice problémů.
+Prostorová analýza zahrnuje sadu funkcí pro monitorování stavu systému, které pomáhají s diagnostikou problémů.
 
 ## <a name="enable-visualizations"></a>Povolit vizualizace
 
@@ -103,7 +103,7 @@ Po nasazení modulu telegraf můžete k nahlášeným metrikám přistup prostř
 
 ### <a name="system-health-events"></a>Události stavu systému
 
-| Název události | Popis|
+| Název události | Description|
 |------|---------|
 |archon_exit    |Odesílá se, když uživatel změní stav modulu prostorové analýzy ze *spuštěno* na *Zastaveno*.  |
 |archon_error   |Odesílá se v případě, že dojde k chybě kontejneru v případě jakéhokoli procesu. Toto je kritická chyba.  |
@@ -121,7 +121,7 @@ Po nasazení modulu telegraf můžete k nahlášeným metrikám přistup prostř
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>Řešení potíží s IoT Edge zařízením
 
-`iotedge`Nástroj příkazového řádku můžete použít ke kontrole stavu a protokolů spuštěných modulů. Příklad:
+`iotedge`Nástroj příkazového řádku můžete použít ke kontrole stavu a protokolů spuštěných modulů. Například:
 * `iotedge list`: Oznamuje seznam spuštěných modulů. 
   Chyby můžete dále kontrolovat pomocí `iotedge logs edgeAgent` . Pokud se `iotedge` zablokuje, můžete ho zkusit restartovat pomocí. `iotedge restart edgeAgent`
 * `iotedge logs <module-name>`
@@ -229,7 +229,7 @@ Protokoly se nahrávají na vyžádání pomocí `getRTCVLogs` metody IoT Edge v
 >[!NOTE]
 > Vyvoláním `getRTCVLogs` metody s prázdnou datovou částí se vrátí seznam všech kontejnerů nasazených v zařízení. Název metody rozlišuje velká a malá písmena. Pokud je zadán nesprávný název metody, zobrazí se chyba 501.
 
-:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Vyvolání metody getRTCVLogs ":::
+:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Sestava telemetrie Azure Monitor":::
 ![getRTCVLogs Direct – stránka metody](./media/spatial-analysis/direct-log-collection.png)
 
  
@@ -237,7 +237,7 @@ Protokoly se nahrávají na vyžádání pomocí `getRTCVLogs` metody IoT Edge v
 
 Následující tabulka obsahuje seznam parametrů, které můžete použít při dotazování protokolů.
 
-| Klíčové slovo | Popis | Výchozí hodnota |
+| Klíčové slovo | Description | Výchozí hodnota |
 |--|--|--|
 | StartTime | Čas spuštění požadovaných protokolů v milisekundách UTC | `-1`, začátek modulu runtime kontejneru. Když `[-1.-1]` se použije jako časový rozsah, rozhraní API vrátí protokoly za poslední hodinu.|
 | EndTime | Požadovaný čas ukončení protokolů v milisekundách UTC. | `-1`, aktuální čas. Když `[-1.-1]` se použije časový rozsah, rozhraní API vrátí protokoly za poslední hodinu. |
@@ -248,7 +248,7 @@ Následující tabulka obsahuje seznam parametrů, které můžete použít při
 
 V následující tabulce jsou uvedeny atributy v odpovědi na dotaz.
 
-| Klíčové slovo | Popis|
+| Klíčové slovo | Description|
 |--|--|
 |DoPost| Buď *hodnotu true* , nebo *false*. Určuje, jestli jsou protokoly nahrané nebo ne. Pokud se rozhodnete Neodesílat protokoly, vrátí rozhraní API informace ***synchronně***. Pokud se rozhodnete odeslat protokoly, rozhraní API vrátí 200, pokud je požadavek platný, a spustí odesílání protokolů ***asynchronně***.|
 |TimeFilter| Filtr času aplikovaný na protokoly.|

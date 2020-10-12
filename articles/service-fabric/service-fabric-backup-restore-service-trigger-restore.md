@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86246686"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Obnovování zálohy v Azure Service Fabric
@@ -23,7 +23,7 @@ Můžete například nakonfigurovat službu, která bude zálohovat svá data a 
 - **Případ ztráty dat**: náhodné odstranění nebo poškození služby. Správce například omylem odstraní službu.
 - **Případ poškození dat**: chyby ve službě způsobují poškození dat. Například poškození dat může nastat, pokud upgrade kódu služby zapisuje vadná data do spolehlivé kolekce. V takovém případě může být nutné obnovit kód i data do předchozího stavu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Aby bylo možné spustit obnovení, musí být pro cluster povolená _služba analýzy chyb (v)_ .
 - _Služba obnovení záloh (BRS)_ vytvořila zálohu.
@@ -207,7 +207,7 @@ V případě _ztráty dat_ nebo _poškození dat_můžete zálohovat oddíly pro
 
 Následující příklad je pokračování v [Povolení pravidelného zálohování pro spolehlivou stavovou službu a Reliable Actors](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). V tomto příkladu jsou pro oddíl povoleny zásady zálohování a služba provádí zálohování s požadovanou frekvencí v Azure Storage.
 
-Vyberte zálohu z výstupu [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups). V tomto scénáři je záloha vygenerována ze stejného clusteru jako dříve.
+Vyberte zálohu z výstupu  [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups). V tomto scénáři je záloha vygenerována ze stejného clusteru jako dříve.
 
 Chcete-li spustit obnovení, vyberte ze seznamu zálohu. U aktuálního _data loss_ / _poškození dat_ztráty dat vyberte následující zálohu:
 
@@ -317,7 +317,7 @@ Požadavek na obnovení bude postupovat v následujícím pořadí:
 
 ## <a name="automatic-restore"></a>Automatické obnovení
 
-Pro _Automatické obnovení_můžete nakonfigurovat Reliable stavovou službu a Reliable Actors oddíly v clusteru Service Fabric. V části zásada zálohování je nastavena `AutoRestore` na _hodnotu true_. Povolení _automatického obnovení_ automaticky obnoví data z poslední zálohy oddílu při hlášení ztráty dat. Další informace najdete tady:
+Pro _Automatické obnovení_můžete nakonfigurovat Reliable stavovou službu a Reliable Actors oddíly v clusteru Service Fabric. V části zásada zálohování je nastavena `AutoRestore` na _hodnotu true_. Povolení _automatického obnovení_ automaticky obnoví data z poslední zálohy oddílu při hlášení ztráty dat. Další informace naleznete v tématech:
 
 - [Povolení automatického obnovení v zásadách zálohování](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
 - [Reference k rozhraní API RestorePartition](/rest/api/servicefabric/sfclient-api-restorepartition)

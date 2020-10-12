@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 56f266eaba76bb990a4d2bc3d902f4c5911d9c47
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86026181"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Vědecké zkoumání dat pomocí Scala a Spark v Azure
@@ -77,18 +77,18 @@ val beginningTime = Calendar.getInstance().getTime()
 
 Jádra Sparku, která jsou k dispozici s poznámkovým blokům Jupyter, mají přednastavené kontexty. Než začnete pracovat s aplikací, kterou vyvíjíte, nemusíte explicitně nastavovat kontexty Sparku nebo podregistru. Přednastavené kontexty jsou:
 
-* `sc`pro SparkContext
-* `sqlContext`pro HiveContext
+* `sc` pro SparkContext
+* `sqlContext` pro HiveContext
 
 ### <a name="spark-magics"></a>Spark Magic
 Jádro Sparku poskytuje některé předdefinované "Magic", což jsou speciální příkazy, které můžete volat pomocí `%%` . Dva z těchto příkazů jsou používány v následujících ukázkách kódu.
 
-* `%%local`Určuje, že kód v následných řádcích bude spuštěn místně. Kód musí být platný Scala kód.
-* `%%sql -o <variable name>`spustí dotaz na podregistr `sqlContext` . Pokud `-o` je předán parametr, výsledek dotazu je trvalý v `%%local` kontextu Scala jako datový rámec Spark.
+* `%%local` Určuje, že kód v následných řádcích bude spuštěn místně. Kód musí být platný Scala kód.
+* `%%sql -o <variable name>` spustí dotaz na podregistr `sqlContext` . Pokud `-o` je předán parametr, výsledek dotazu je trvalý v `%%local` kontextu Scala jako datový rámec Spark.
 
 Další informace o jádrech pro notebooky Jupyter a jejich předdefinovaných "Magic", která zavoláte `%%` (například `%%local` ), najdete v tématu [jádra dostupná pro poznámkové bloky Jupyter s clustery HDInsight Spark Linux v HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
-### <a name="import-libraries"></a>Importovat knihovny
+### <a name="import-libraries"></a>Import knihoven
 Naimportujte Spark, MLlib a další knihovny, které budete potřebovat, pomocí následujícího kódu.
 
 ```scala
@@ -257,9 +257,9 @@ sqlResultsDF.show(3)
 
 | fare_amount | passenger_count | tip_amount | po obskládkované |
 | --- | --- | --- | --- |
-|        13,5 |1.0 |2.9 |1.0 |
-|        16,0 |2.0 |3.4 |1.0 |
-|        10,5 |2.0 |1.0 |1.0 |
+|        13,5 |1,0 |2.9 |1,0 |
+|        16,0 |2,0 |3.4 |1,0 |
+|        10,5 |2,0 |1,0 |1,0 |
 
 ## <a name="data-exploration-and-visualization"></a>Zkoumání a vizualizace dat
 Po převedení dat do Sparku je dalším krokem v procesu zpracování dat, jak získat hlubší porozumění datům prostřednictvím průzkumu a vizualizace. V této části prohlížíte taxislužby data pomocí dotazů SQL. Pak importujte výsledky do datového rámce a vyznázorněte cílové proměnné a funkce pro vizuální kontrolu pomocí funkce Automatické vizualizace Jupyter.
@@ -302,8 +302,8 @@ sqlResults
 
 * Tabulka
 * Výsečový
-* Řádek
-* Oblast
+* Spojnicový
+* Plošný
 * Pruhový
 
 Zde je kód, který sekreslí data:

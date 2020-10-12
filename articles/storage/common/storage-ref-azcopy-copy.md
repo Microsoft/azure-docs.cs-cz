@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 736746cc710e4e22f61edaa7b2dfd1ceef3d90eb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89645474"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
@@ -41,7 +41,7 @@ Další informace najdete v části Příklady tohoto článku.
 - [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
-## <a name="advanced"></a>Upřesnit
+## <a name="advanced"></a>Pokročilý
 
 AzCopy automaticky detekuje typ obsahu souborů při jejich nahrávání z místního disku. AzCopy detekuje typ obsahu na základě přípony souboru nebo obsahu (Pokud není zadané žádné rozšíření).
 
@@ -306,4 +306,4 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 ## <a name="see-also"></a>Viz také
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

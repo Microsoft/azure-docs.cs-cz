@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045395"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Ladění Azure Stream Analytics dotazů místně pomocí diagramu úloh v aplikaci Visual Studio
@@ -52,7 +52,7 @@ V této části prozkoumáte metriky, které jsou k dispozici pro každou část
 
 ![Zdroje dynamických vstupních zdrojů diagramu úloh](./media/debug-locally-using-job-diagram/live-input.png)
 
-|Metric|Popis|
+|Metrika|Popis|
 |-|-|
 |**TaxiRide**| Název vstupu.|
 |**Centrum událostí** | Vstupní typ zdroje.|
@@ -68,7 +68,7 @@ V této části prozkoumáte metriky, které jsou k dispozici pro každou část
 
 ![Zdroje místních vstupů diagramu úloh](./media/debug-locally-using-job-diagram/local-input.png)
 
-|Metric|Popis|
+|Metrika|Popis|
 |-|-|
 |**TaxiRide**| Název vstupu.|
 |**Row Count**| Počet řádků vygenerovaných z kroku.|
@@ -79,7 +79,7 @@ V této části prozkoumáte metriky, které jsou k dispozici pro každou část
 
 ![Krok dotazu na diagram úlohy](./media/debug-locally-using-job-diagram/query-step.png)
 
-|Metric|Popis|
+|Metrika|Popis|
 |-|-|
 |**TripData**|Název dočasné sady výsledků.|
 |**Row Count**| Počet řádků vygenerovaných z kroku.|
@@ -89,7 +89,7 @@ V této části prozkoumáte metriky, které jsou k dispozici pro každou část
 
 ![Místní výstupní jímky diagramu úloh](./media/debug-locally-using-job-diagram/live-output.png)
 
-|Metric|Popis|
+|Metrika|Popis|
 |-|-|
 |**regionaggEH**|Název výstupu.|
 |**Události**|Počet událostí výstupu do jímky.|
@@ -98,7 +98,7 @@ V této části prozkoumáte metriky, které jsou k dispozici pro každou část
 
 ![Místní výstupní jímky diagramu úloh](./media/debug-locally-using-job-diagram/local-output.png)
 
-|Metric|Popis|
+|Metrika|Popis|
 |-|-|
 |**regionaggEH**|Název výstupu.|
 |**Místní výstup**| Výstup výsledku do místního souboru.|

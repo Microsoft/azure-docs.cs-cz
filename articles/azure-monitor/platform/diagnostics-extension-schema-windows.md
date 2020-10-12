@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: d2b1afea746410e966b43bef01a039a8471d4ae7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87007924"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schéma rozšíření diagnostiky Windows
@@ -39,11 +39,11 @@ Přidáno ve verzi 1,3.
 
 Element nejvyšší úrovně konfiguračního souboru diagnostiky.  
 
-**Atribut** xmlns-obor názvů XML pro konfigurační soubor diagnostiky je:  
+**Atribut**  xmlns-obor názvů XML pro konfigurační soubor diagnostiky je:  
 `http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration`
 
 
-|Podřízené elementy|Popis|  
+|Podřízené elementy|Description|  
 |--------------------|-----------------|  
 |**PublicConfig**|Povinná hodnota. Viz popis jinde na této stránce.|  
 |**PrivateConfig**|Nepovinný parametr. Viz popis jinde na této stránce.|  
@@ -54,12 +54,12 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Popisuje konfiguraci veřejné diagnostiky.  
 
-|Podřízené elementy|Popis|  
+|Podřízené elementy|Description|  
 |--------------------|-----------------|  
 |**WadCfg**|Povinná hodnota. Viz popis jinde na této stránce.|  
 |**StorageAccount**|Název účtu Azure Storage, do kterého se mají ukládat data Může být také zadáno jako parametr při spuštění rutiny Set-AzureServiceDiagnosticsExtension.|  
 |**StorageType**|Může být *Table*, *BLOB*nebo *TableAndBlob*. Tabulka je výchozí. Je-li zvolena možnost TableAndBlob, jsou diagnostická data do každého typu zapisována dvakrát.|  
-|**LocalResourceDirectory**|Adresář na virtuálním počítači, kde agent monitorování ukládá data událostí. Pokud ne, nastavte, že se použije výchozí adresář:<br /><br /> Pro pracovní proces nebo webovou roli:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Pro virtuální počítač:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Požadované atributy jsou:<br /><br /> - **cesta** – adresář v systému, který má Azure Diagnostics použít.<br /><br /> - **expandEnvironment** – určuje, jestli se v názvu cesty rozbalí proměnné prostředí.|  
+|**LocalResourceDirectory**|Adresář na virtuálním počítači, kde agent monitorování ukládá data událostí. Pokud ne, nastavte, že se použije výchozí adresář:<br /><br /> Pro pracovní proces nebo webovou roli: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Pro virtuální počítač: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Požadované atributy jsou:<br /><br /> - **cesta** – adresář v systému, který má Azure Diagnostics použít.<br /><br /> - **expandEnvironment** – určuje, jestli se v názvu cesty rozbalí proměnné prostředí.|  
 
 ## <a name="wadcfg-element"></a>Element WadCFG  
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG*
@@ -72,7 +72,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Vyžadováno
 
-|Atributy|Popis|  
+|Atributy|Description|  
 |----------------|-----------------|  
 | **overallQuotaInMB** | Maximální místo na místním disku, které mohou být spotřebovány různými typy diagnostických dat shromažďovaných Azure Diagnostics. Výchozí nastavení je 4096 MB.<br />
 |**useProxyServer** | Nakonfigurujte Azure Diagnostics, aby používala nastavení proxy server nastavená v nastavení IE.|
@@ -81,7 +81,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
 <br /> <br />
 
-|Podřízené elementy|Popis|  
+|Podřízené elementy|Description|  
 |--------------------|-----------------|  
 |**Verzí**|Viz popis jinde na této stránce.|  
 |**DiagnosticInfrastructureLogs**|Povolí shromažďování protokolů generovaných Azure Diagnostics. Protokoly diagnostické infrastruktury jsou užitečné při řešení problémů samotného diagnostického systému. Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** – konfiguruje minimální úroveň závažnosti protokolů, které se shromáždily.<br /><br /> - **scheduledTransferPeriod** – interval mezi plánovanými transfery do úložiště se zaokrouhluje na nejbližší minutu. Hodnota je [datový typ doba trvání "XML".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
@@ -99,13 +99,13 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Povolte shromažďování výpisů stavu systému.  
 
-|Atributy|Popis|  
+|Atributy|Description|  
 |----------------|-----------------|  
 |**containerName**|Nepovinný parametr. Název kontejneru objektů BLOB v účtu Azure Storage, který se má použít k ukládání výpisů stavu systému.|  
 |**crashDumpType**|Nepovinný parametr.  Nakonfiguruje Azure Diagnostics ke shromažďování minimálních nebo úplných výpisů stavu systému.|  
 |**directoryQuotaPercentage**|Nepovinný parametr.  Nastaví procentuální hodnotu **overallQuotaInMB** , která se má rezervovat pro výpisy stavu systému na virtuálním počítači.|  
 
-|Podřízené elementy|Popis|  
+|Podřízené elementy|Description|  
 |--------------------|-----------------|  
 |**CrashDumpConfiguration**|Povinná hodnota. Definuje hodnoty konfigurace pro každý proces.<br /><br /> Vyžaduje se taky následující atribut:<br /><br /> název **procesu** – název procesu, pro který chcete Azure Diagnostics shromažďovat výpis stavu systému.|  
 
@@ -116,7 +116,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Volitelný atribut **scheduledTransferPeriod** Viz vysvětlení výše.  
 
-|Podřízené elementy|Popis|  
+|Podřízené elementy|Description|  
 |--------------------|-----------------|  
 |**IISLogs**|Zahrnutí tohoto elementu v konfiguraci umožňuje shromažďování protokolů služby IIS:<br /><br /> **ContainerName** – název kontejneru objektů BLOB ve vašem účtu Azure Storage, který se má použít k ukládání protokolů IIS.|   
 |**FailedRequestLogs**|Zahrnutí tohoto elementu v konfiguraci umožňuje shromažďování protokolů o neúspěšných požadavcích na web nebo aplikaci služby IIS. Také je nutné povolit možnosti trasování v části **systém. WebServer** v **Web.config**.|  
@@ -130,7 +130,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Seznam adresářů, které se mají monitorovat  
 
-|Podřízené elementy|Popis|  
+|Podřízené elementy|Description|  
 |--------------------|-----------------|  
 |**DirectoryConfiguration**|Povinná hodnota. Požadovaný atribut:<br /><br /> **ContainerName** – název kontejneru objektů BLOB ve vašem účtu Azure Storage, který se má použít k ukládání souborů protokolu.|  
 
@@ -143,7 +143,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Může zahrnovat buď **absolutní** , nebo element **LocalResource** , ale ne obojí.  
 
-|Podřízené elementy|Popis|  
+|Podřízené elementy|Description|  
 |--------------------|-----------------|  
 |**Absolutní**|Absolutní cesta k adresáři, který se má monitorovat Jsou vyžadovány následující atributy:<br /><br /> - **Cesta** – absolutní cesta k adresáři, který se má monitorovat<br /><br /> - **expandEnvironment** – konfiguruje, zda jsou proměnné prostředí v cestě rozbaleny.|  
 |**LocalResource**|Cesta relativní k místnímu prostředku, který se má monitorovat Požadované atributy jsou:<br /><br /> - **Název** – místní prostředek, který obsahuje adresář, který se má monitorovat<br /><br /> - **RelativePath** – cesta relativní k názvu, který obsahuje adresář, který se má monitorovat|  
@@ -155,7 +155,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Konfiguruje shromažďování událostí ETW od zprostředkovatelů EventSource a/nebo poskytovatelů ETW založených na manifestech ETW.  
 
-|Podřízené elementy|Popis|  
+|Podřízené elementy|Description|  
 |--------------------|-----------------|  
 |**EtwEventSourceProviderConfiguration**|Konfiguruje kolekci událostí vygenerovaných z [třídy EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1). Požadovaný atribut:<br /><br /> **Provider** – název třídy události EventSource.<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** – minimální úroveň závažnosti, která se má přenést do svého účtu úložiště.<br /><br /> - **scheduledTransferPeriod** – interval mezi plánovanými transfery do úložiště se zaokrouhluje na nejbližší minutu. Hodnota je [datový typ doba trvání "XML".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**EtwManifestProviderConfiguration**|Požadovaný atribut:<br /><br /> **poskytovatel** – identifikátor GUID zprostředkovatele událostí<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** – minimální úroveň závažnosti, která se má přenést do svého účtu úložiště.<br /><br /> - **scheduledTransferPeriod** – interval mezi plánovanými transfery do úložiště se zaokrouhluje na nejbližší minutu. Hodnota je [datový typ doba trvání "XML".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
@@ -167,7 +167,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Konfiguruje kolekci událostí vygenerovaných z [třídy EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1).  
 
-|Podřízené elementy|Popis|  
+|Podřízené elementy|Description|  
 |--------------------|-----------------|  
 |**DefaultEvents**|Volitelný atribut:<br/><br/> **eventDestination** – název tabulky, do které se mají ukládat události|  
 |**Událost**|Požadovaný atribut:<br /><br /> **ID** – ID události<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** – název tabulky, do které se mají ukládat události|  
@@ -177,7 +177,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 ## <a name="etwmanifestproviderconfiguration-element"></a>Element EtwManifestProviderConfiguration  
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders-EtwManifestProviderConfiguration*
 
-|Podřízené elementy|Popis|  
+|Podřízené elementy|Description|  
 |--------------------|-----------------|  
 |**DefaultEvents**|Volitelný atribut:<br /><br /> **eventDestination** – název tabulky, do které se mají ukládat události|  
 |**Událost**|Požadovaný atribut:<br /><br /> **ID** – ID události<br /><br /> Volitelný atribut:<br /><br /> **eventDestination** – název tabulky, do které se mají ukládat události|  
@@ -191,7 +191,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Atribut **ResourceID** je povinný.  ID prostředku virtuálního počítače nebo sady škálování virtuálních počítačů, do které nasazujete Azure Diagnostics. Získá **ResourceID** z [Azure Portal](https://portal.azure.com). Vyberte **Procházet**  ->  **skupiny prostředků**  ->  **<název \> **. Klikněte na dlaždici **vlastnosti** a zkopírujte hodnotu z pole **ID** .  Tato vlastnost resourceID se používá pro odesílání vlastních metrik a pro přidání vlastnosti resourceID do dat odesílaných do Event Hubs. Všimněte si, že je nutné přidat vlastnost *ResourceID* pod element *metriky* , pokud chcete, aby události odeslané do Event Hubs měly ID prostředku.
 
-|Podřízené elementy|Popis|  
+|Podřízené elementy|Description|  
 |--------------------|-----------------|  
 |**MetricAggregation**|Požadovaný atribut:<br /><br /> **scheduledTransferPeriod** – interval mezi plánovanými transfery do úložiště se zaokrouhluje na nejbližší minutu. Hodnota je [datový typ doba trvání "XML".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
@@ -206,7 +206,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Volitelný atribut **scheduledTransferPeriod** Viz vysvětlení výše.
 
-|Podřízený element|Popis|  
+|Podřízený element|Description|  
 |-------------------|-----------------|  
 |**PerformanceCounterConfiguration**|Jsou vyžadovány následující atributy:<br /><br /> - **counterSpecifier** – název čítače výkonu. Například, `\Processor(_Total)\% Processor Time`. Chcete-li získat seznam čítačů výkonu na hostiteli, spusťte příkaz `typeperf` .<br /><br /> - **sampleRate** – jak často se má čítač vzorkovat.<br /><br /> Volitelný atribut:<br /><br /> **jednotka** – Měrná jednotka čítače. Hodnoty jsou k dispozici na [jednotkách UnitType třídě](/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet) |
 |**jímky** | Přidáno v 1,5. Nepovinný parametr. Odkazuje na umístění jímky, aby bylo možné také odeslat diagnostická data. Například Azure Monitor nebo Event Hubs. Všimněte si, že je nutné přidat vlastnost *ResourceID* pod element *metriky* , pokud chcete, aby události odeslané do Event Hubs měly ID prostředku.|    
@@ -221,9 +221,9 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Volitelný atribut **scheduledTransferPeriod** Viz vysvětlení výše.  
 
-|Podřízený element|Popis|  
+|Podřízený element|Description|  
 |-------------------|-----------------|  
-|**Datového**|Protokoly událostí systému Windows, které mají být shromažďovány. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému Windows, které mají být shromažďovány. Příklad:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Chcete-li shromáždit všechny události, zadejte "*" |
+|**Datového**|Protokoly událostí systému Windows, které mají být shromažďovány. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému Windows, které mají být shromažďovány. Například:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Chcete-li shromáždit všechny události, zadejte "*" |
 |**jímky** | Přidáno v 1,5. Nepovinný parametr. Odkazuje na umístění jímky, aby také odesílal diagnostická data pro všechny podřízené prvky, které podporují jímky. Příklad jímky je Application Insights nebo Event Hubs.|  
 
 
@@ -234,7 +234,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Definuje konfiguraci vyrovnávací paměti pro základní protokoly Azure.  
 
-|Atribut|Typ|Popis|  
+|Atribut|Typ|Description|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Nepovinný parametr. Určuje maximální velikost úložiště systému souborů, která je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
 |**scheduledTransferLogLevelFilter**|**řetezce**|Nepovinný parametr. Určuje minimální úroveň závažnosti pro přenesené položky protokolu. Výchozí hodnota není **definována**, což přenáší všechny protokoly. Další možné hodnoty (v pořadí od nejvyšších po nejnižší) jsou **podrobné**, **informace**, **varování**, **Chyba**a **kritická**.|  
@@ -246,7 +246,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Přidáno v 1,9.
 
-|Název prvku|Popis|  
+|Název prvku|Description|  
 |------------------|-----------------|  
 |**Statistické**|Oznamuje systému, aby shromáždil statistiku pro kontejnery Docker.|  
 
@@ -255,7 +255,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Seznam umístění pro odeslání diagnostických dat do a konfigurace související s těmito umístěními.  
 
-|Název prvku|Popis|  
+|Název prvku|Description|  
 |------------------|-----------------|  
 |**Jímka**|Viz popis jinde na této stránce.|  
 
@@ -266,11 +266,11 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Definuje umístění, do kterých se budou posílat diagnostická data. Například služba Application Insights.  
 
-|Atribut|Typ|Popis|  
+|Atribut|Typ|Description|  
 |---------------|----------|-----------------|  
 |**Jméno**|řetězec|Řetězec identifikující jímku.|  
 
-|Prvek|Typ|Popis|  
+|Prvek|Typ|Description|  
 |-------------|----------|-----------------|  
 |**Application Insights**|řetězec|Používá se pouze při odesílání dat do Application Insights. Obsahuje klíč instrumentace pro aktivní účet Application Insights, ke kterému máte přístup.|  
 |**Kanály**|řetězec|Jedno pro každé další filtrování, které je datového proudu|  
@@ -282,7 +282,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Definuje filtry pro streamování dat protokolu procházející jímkou.  
 
-|Prvek|Typ|Popis|  
+|Prvek|Typ|Description|  
 |-------------|----------|-----------------|  
 |**Kanál**|řetězec|Viz popis jinde na této stránce.|  
 
@@ -293,7 +293,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Definuje umístění, do kterých se budou posílat diagnostická data. Například služba Application Insights.  
 
-|Atributy|Typ|Popis|  
+|Atributy|Typ|Description|  
 |----------------|----------|-----------------|  
 |**logLevel**|**řetezce**|Určuje minimální úroveň závažnosti pro přenesené položky protokolu. Výchozí hodnota není **definována**, což přenáší všechny protokoly. Další možné hodnoty (v pořadí od nejvyšších po nejnižší) jsou **podrobné**, **informace**, **varování**, **Chyba**a **kritická**.|  
 |**Jméno**|**řetezce**|Jedinečný název kanálu, na který se má odkazovat|  
@@ -308,7 +308,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Ukládá soukromé údaje o účtu úložiště (název, klíč a koncový bod). Tyto informace se odesílají do virtuálního počítače, ale nedají se z něho načíst.  
 
-|Podřízené elementy|Popis|  
+|Podřízené elementy|Description|  
 |--------------------|-----------------|  
 |**StorageAccount**|Účet úložiště, který se má použít. Jsou vyžadovány následující atributy.<br /><br /> - **název** – název účtu úložiště.<br /><br /> - **klíč** -klíč k účtu úložiště.<br /><br /> - **koncový** bod – koncový bod pro přístup k účtu úložiště. <br /><br /> -**sasToken** (přidané 1.8.1) – v privátní konfiguraci můžete místo klíče účtu úložiště zadat token SAS. Pokud je zadaný, klíč účtu úložiště se ignoruje. <br />Požadavky na token SAS: <br />– Podporuje jenom token SAS účtu. <br />- jsou požadovány typy služeb *b*, *t* . <br /> - jsou vyžadována oprávnění *a*, *c*, *u*, *w* . <br /> - jsou požadovány typy prostředků *c*, *o* . <br /> – Podporuje jenom protokol HTTPS. <br /> – Čas zahájení a vypršení platnosti musí být platný.|  
 

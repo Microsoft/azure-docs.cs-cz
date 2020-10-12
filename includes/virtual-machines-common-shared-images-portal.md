@@ -9,10 +9,10 @@ ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 0d5947f669b600b544cd7e5265e2cce8de118374
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82788980"
 ---
 ## <a name="create-an-image-gallery"></a>Vytvoření galerie imagí
@@ -93,7 +93,7 @@ Replikace obrázku do všech cílových oblastí může chvíli trvat.
 
 Doporučujeme sdílet přístup na úrovni Galerie imagí. Následující postup vás provede sdílením galerie, kterou jste právě vytvořili.
 
-1. Otevřete [Azure Portal](https://portal.azure.com).
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**. 
 1. V seznamu skupin prostředků vyberte **myGalleryRG**. Otevře se okno pro vaši skupinu prostředků.
 1. V nabídce na levé straně stránky **myGalleryRG** vyberte **řízení přístupu (IAM)**. 

@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: e322135cfdb7aaff331367e84c603e8344436528
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906261"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>Azure Cosmos DB výstup z Azure Stream Analytics
@@ -33,7 +33,7 @@ Následující tabulka popisuje vlastnosti pro vytvoření výstupu Azure Cosmos
 | Možnost importu | Zvolte buď **možnost vybrat Cosmos DB z předplatného** , nebo **Zadejte Cosmos DB nastavení ručně**.
 | Account ID | Název nebo identifikátor URI koncového bodu účtu Azure Cosmos DB. |
 | Klíč účtu | Sdílený přístupový klíč pro účet Azure Cosmos DB. |
-| Databáze | Azure Cosmos DB název databáze. |
+| databáze | Azure Cosmos DB název databáze. |
 | Název kontejneru | Název kontejneru, který se má použít, který musí existovat v Cosmos DB. Příklad:  <br /><ul><li> _MyContainer_: musí existovat kontejner s názvem "MyContainer".</li>|
 | ID dokumentu |Nepovinný parametr. Název pole ve výstupních událostech, které slouží k určení primárního klíče, na kterém jsou založeny operace INSERT nebo Update.
 

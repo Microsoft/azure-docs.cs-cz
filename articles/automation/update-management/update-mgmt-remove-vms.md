@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.custom: mvc
 ms.openlocfilehash: 66631adbb56a98431e70f956f3e860b16e8f7ea2
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89648642"
 ---
 # <a name="remove-vms-from-update-management"></a>Odebrání virtuálních počítačů z Update Managementu
@@ -18,7 +18,7 @@ Až skončíte s správou aktualizací ve vašich virtuálních počítačích v
 
 ## <a name="sign-into-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="to-remove-your-vms"></a>Odebrání virtuálních počítačů
 

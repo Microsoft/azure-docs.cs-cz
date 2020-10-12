@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96bd6b461a5374b5f5bc578c5f58dbcd09cd7087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84699290"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Vývoj vlastních modulů IoT Edge
@@ -103,4 +103,4 @@ Pro všechny jazyky v následující tabulce IoT Edge podporuje vývoj pro zař�
 
 [Použití Visual Studio Code k vývoji modulů pro IoT Edge](how-to-vs-code-develop-module.md)
 
-[Pochopení a používání sad SDK pro Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md)
+[Principy a použití sad SDK služby Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md).

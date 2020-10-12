@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.openlocfilehash: a1b66528bee63fb123271e4277e122603ced2e75
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906513"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Volba pravého serveru MySQL v Azure
@@ -70,7 +70,7 @@ Hlavní rozdíly mezi těmito možnostmi jsou uvedené v následující tabulce:
 
 Existuje několik faktorů, které mohou mít vliv na rozhodnutí zvolit PaaS nebo IaaS k hostování databází MySQL.
 
-### <a name="cost"></a>Cost
+### <a name="cost"></a>Náklady
 
 Snížení nákladů je často zásadním aspektem, který určuje nejlepší řešení pro hostování databází. To platí bez ohledu na to, jestli se jedná o spuštění s malým hotovostem nebo týmem v zřízené společnosti, která funguje s přísnými rozpočtovými omezeními. Tato část popisuje základy fakturace a licencování v Azure, které se vztahují na Azure Database for MySQL a MySQL na virtuálních počítačích Azure.
 

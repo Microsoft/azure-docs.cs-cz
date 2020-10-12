@@ -14,10 +14,10 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84689482"
 ---
 # <a name="powershell-dsc-extension"></a>Rozšíření PowerShell DSC
@@ -106,7 +106,7 @@ Následující JSON zobrazuje schéma pro část nastavení rozšíření DSC v 
 
 ### <a name="settings-property-values"></a>Hodnoty vlastností nastavení
 
-| Name | Typ dat | Description
+| Name | Typ dat | Popis
 | ---- | ---- | ---- |
 | Settings. wmfVersion | řetězec | Určuje verzi rozhraní Windows Management Framework, která má být nainstalována na VIRTUÁLNÍm počítači. Když nastavíte tuto vlastnost na nejnovější, nainstaluje se aktualizovaná verze WMF. Pro tuto vlastnost jsou dostupné jenom aktuální hodnoty "4,0", "5,0" a "nejnovější". Tyto možné hodnoty se vztahují na aktualizace. Výchozí hodnota je ' nejnovější '. |
 | settings.configuration. URL | řetězec | Určuje umístění adresy URL, ze kterého se má stáhnout soubor zip konfigurace DSC. Pokud zadaná adresa URL vyžaduje pro přístup token SAS, bude nutné nastavit vlastnost protectedSettings.configurationUrlSasToken na hodnotu vašeho tokenu SAS. Tato vlastnost je povinná, pokud jsou definovány settings.configuration. Script a/nebo settings.configuration. Function.
@@ -120,7 +120,7 @@ Následující JSON zobrazuje schéma pro část nastavení rozšíření DSC v 
 
 ### <a name="protected-settings-property-values"></a>Hodnoty vlastností chráněných nastavení
 
-| Name | Typ dat | Description
+| Name | Typ dat | Popis
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | řetězec | Definuje všechny parametry, které byste chtěli předat konfiguraci DSC. Tato vlastnost bude zašifrována. |
 | protectedSettings.configurationUrlSasToken | řetězec | Určuje token SAS pro přístup k adrese URL definované pomocí Configuration. URL. Tato vlastnost bude zašifrována. |

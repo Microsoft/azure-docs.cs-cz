@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89229850"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Protokoly aktivit služby Azure AD v Azure Monitoru
@@ -48,7 +48,7 @@ Pomocí této funkce můžete směrovat protokoly auditu Azure AD a protokoly p�
 > Zatím není dostupná podpora protokolů aktivit auditu a přihlašování souvisejících s B2C.
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat tuto funkci, potřebujete tyto položky:
 

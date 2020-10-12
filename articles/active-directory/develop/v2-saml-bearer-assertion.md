@@ -12,10 +12,10 @@ ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.openlocfilehash: 6e7e4dd6383b1f264ff2da7893d9f86a3708217d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89227912"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity Platform a OAuth 2,0 – tok kontrolního výrazu SAML
@@ -34,7 +34,7 @@ Tok kontrolního výrazu protokolu SAML protokolu OAuth je podporován pouze pro
 ## <a name="call-graph-using-saml-bearer-assertion"></a>Graf volání pomocí kontrolního výrazu SAML nosiče
 Teď nám dejte vědět, jak můžeme skutečně načíst kontrolní výraz SAML programově. Tento přístup se testuje pomocí služby AD FS. To ale funguje u libovolného poskytovatele identity, který podporuje návrat programově kontrolního výrazu SAML. Základní proces je: Získání kontrolního výrazu SAML, získání přístupového tokenu a přístup k Microsoft Graph.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Navažte vztah důvěryhodnosti mezi autorizačním serverem/prostředím (Microsoft 365) a poskytovatelem identity nebo vystavitelem kontrolního výrazu SAML 2,0 (ADFS). Pokud chcete nakonfigurovat službu AD FS pro jednotné přihlašování a jako poskytovatele identity, můžete se na [Tento článek](/archive/blogs/canitpro/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365)podívat.
 

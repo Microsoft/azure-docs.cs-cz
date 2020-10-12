@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86044579"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Sestavte řešení IoT pomocí Stream Analytics
@@ -43,7 +43,7 @@ Toto řešení pracuje se dvěma datovými proudy. Senzory nainstalované ve vst
 ### <a name="entry-data-stream"></a>Záznam datového streamu
 Datový proud záznamu obsahuje informace o automobilůch při zadávání telefonních stanic. Události data ukončení jsou živé streamování do fronty centra událostí z webové aplikace obsažené v ukázkové aplikaci.
 
-| TollID | EntryTime | LicensePlate | Stav | Značka | Model | VehicleType | VehicleWeight | Placená | Značka |
+| TollID | EntryTime | LicensePlate | State | Značka | Model | VehicleType | VehicleWeight | Placená | Značka |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -54,12 +54,12 @@ Datový proud záznamu obsahuje informace o automobilůch při zadávání telef
 
 Tady je krátký popis sloupců:
 
-| Sloupec | Description |
+| Sloupec | Popis |
 | --- | --- |
 | TollID |ID kabiny pro telefonní číslo, které jedinečně identifikuje telefonní kabinu |
 | EntryTime |Datum a čas vstupu vozidla na telefonní kabinu v UTC |
 | LicensePlate |Číslo licenční tabulky vozidla |
-| Stav |Stav v USA |
+| State |Stav v USA |
 | Značka |Výrobce automobilu |
 | Model |Číslo modelu automobilu |
 | VehicleType |1 pro osobní vozidla nebo 2 pro komerční vozidla |
@@ -81,7 +81,7 @@ Výstupní datový proud obsahuje informace o vozidlech opouštějících telefo
 
 Tady je krátký popis sloupců:
 
-| Sloupec | Description |
+| Sloupec | Popis |
 | --- | --- |
 | TollID |ID kabiny pro telefonní číslo, které jedinečně identifikuje telefonní kabinu |
 | ExitTime |Datum a čas ukončení vozidla ze záplatku v UTC |
@@ -101,7 +101,7 @@ Tady je krátký popis sloupců:
 
 Tady je krátký popis sloupců:
 
-| Sloupec | Description |
+| Sloupec | Popis |
 | --- | --- |
 | LicensePlate |Číslo licenční tabulky vozidla |
 | RegistrationId |Registrační ID vozidla |

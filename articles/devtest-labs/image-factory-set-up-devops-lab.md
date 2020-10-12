@@ -4,10 +4,10 @@ description: Tento článek pojednává o všech přípravcích potřebných ke 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: fa7050bae1ff8681e04b6ab38220be9eaf38a64a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476134"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Spuštění objektu pro vytváření imagí z Azure DevOps
@@ -26,7 +26,7 @@ Dalším krokem při přijímání továrny imagí pro váš tým je pochopit, c
     - Rozšířeného. Vstupy do objektu pro vytváření imagí
         - GoldenImages. Tato složka obsahuje soubory JSON, které reprezentují definice vlastních imagí.
         - Labs.js. Soubor, ve kterém se týmy registrují pro příjem konkrétních vlastních imagí.
-- Znakové. Modul pro objekt pro vytváření imagí.
+- Skripty: Modul pro objekt pro vytváření imagí.
 
 Články v této části poskytují další podrobnosti o těchto skriptech a šablonách.
 
@@ -107,7 +107,7 @@ Pokud vyberete úlohu sestavení, zobrazí se všechny podrobnosti v pravém pod
 3. Vyberte **koncový bod služby**.
 4. Jako **cestu ke skriptu**vyberte **... (tři tečky)** napravo.
 5. Přejděte na **MakeGoldenImageVMs.ps1** skript.
-6. Parametry skriptu by měly vypadat takto:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
+6. Parametry skriptu by měly vypadat takto: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
 
     ![Dokončete definici sestavení.](./media/set-up-devops-lab/complete-build-definition.png)
 

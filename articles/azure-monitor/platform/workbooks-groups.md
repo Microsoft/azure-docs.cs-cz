@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
 ms.openlocfilehash: b6377cdcdb5816426eba62fdbef79eeb42659dcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82892079"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>Používání skupin v sešitech
@@ -68,7 +68,7 @@ Skupina bude načtena pouze v případě, že je položka viditelná. To umožň
 
 Pro skupiny vytvořené ze šablony se nenačte obsah šablony a položky ve skupině se nevytvoří, dokud se skupina nebude zobrazovat. Uživateli se při načtení obsahu zobrazí číselníky průběhu pro celou skupinu.
 
-### <a name="explicit"></a>Explicitně
+### <a name="explicit"></a>Explicitní
 
 V tomto režimu se zobrazí tlačítko, kde by byla skupina, a nebude načten ani vytvořen žádný obsah, dokud uživatel neklikne na tlačítko, aby načetl obsah. To je užitečné ve scénářích, kdy může být obsah nákladný pro výpočetní výkon nebo pro vzácná použití. Autor může zadat text, který se zobrazí na tlačítku.
 
@@ -98,8 +98,8 @@ Když je šablona načtena do skupiny, sešit se pokusí sloučit všechny param
 
 Zvažte šablonu, která má dva parametry v horní části.
 
-- `TimeRange`– Parametr časového rozsahu.
-- `Filter`– textový parametr.
+- `TimeRange` – Parametr časového rozsahu.
+- `Filter` – textový parametr.
 
 ![Úprava položky parametrů: "parametry nejvyšší úrovně"](./media/workbooks-groups/groups-top-level-params.png)
 
@@ -113,12 +113,12 @@ Při načtení druhé šablony do skupiny budou duplicitní parametry sloučeny.
 
 Zvažte šablonu skupiny, která má dva parametry v horní části.
 
-- `TimeRange`– Parametr časového rozsahu.
-- `FilterB`– textový parametr, Všimněte si, že se `Filter` nelíbí horní šablona.
+- `TimeRange` – Parametr časového rozsahu.
+- `FilterB` – textový parametr, Všimněte si, že se `Filter` nelíbí horní šablona.
 
 ![Úprava položky skupiny s výsledkem sloučení parametrů](./media/workbooks-groups/groups-wont-merge-away.png)
 
-Po načtení šablony item's skupiny se `TimeRange` parametr sloučí ze skupiny. Sešit bude mít krok počátečních parametrů s a a `TimeRange` `Filter` parametr skupiny bude obsahovat jenom tyto kroky:`FilterB`
+Po načtení šablony item's skupiny se `TimeRange` parametr sloučí ze skupiny. Sešit bude mít krok počátečních parametrů s a a `TimeRange` `Filter` parametr skupiny bude obsahovat jenom tyto kroky: `FilterB`
 
 ![výsledek parametrů, které se pryč nesloučí](./media/workbooks-groups/groups-wont-merge-away-result.png)
 

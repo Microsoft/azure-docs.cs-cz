@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 2fec54c19b9040e7cb44f1a5d2b7909510ab7313
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82734599"
 ---
 # <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Volba řešení vyrovnávání zatížení pro privátní cloudy CloudSimple
@@ -25,7 +25,7 @@ Můžete zvolit virtuální nebo softwarový nástroj pro vyrovnávání zatíž
 
 Virtuální zařízení nástroje pro vyrovnávání zatížení můžete nasadit v prostředí VMware přes rozhraní vCenter a nakonfigurovat je tak, aby byly přenosy aplikace front-endu.
 
-Někteří oblíbená dodavatelé jsou: NginX: http://nginx.org/en/docs/http/load_balancing.html F5-Big-IP-Traffic Manager: https://www.f5.com/products/big-ip-services/virtual-editions Citrix ADC:https://www.citrix.com/products/citrix-adc/
+Někteří oblíbená dodavatelé jsou: NginX: http://nginx.org/en/docs/http/load_balancing.html F5-Big-IP-Traffic Manager: https://www.f5.com/products/big-ip-services/virtual-editions Citrix ADC: https://www.citrix.com/products/citrix-adc/
 
 ## <a name="azure-l7-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure L7
 

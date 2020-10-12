@@ -10,10 +10,10 @@ ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: eb7d4d8a6f1c1ee55601cdd839e330147e60bcc7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87011069"
 ---
 # <a name="orchestration-modes-preview"></a>Režimy orchestrace (Preview)
@@ -42,7 +42,7 @@ Sada škálování virtuálních počítačů bude podporovat 2 odlišné režim
 
 ## <a name="orchestration-modes"></a>Režimy orchestrace
 
-| Funkce                     | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
+| Příznak                     | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
 | Model konfigurace virtuálních počítačů      | Žádné                                       | Vyžadováno |
 | Přidání nového virtuálního počítače do sady škálování  | Virtuální počítače se při vytvoření virtuálního počítače explicitně přidávají do sady škálování. | Virtuální počítače se implicitně vytvoří a přidají do sady škálování na základě modelu konfigurace virtuálního počítače, počtu instancí a pravidel automatického škálování. | |

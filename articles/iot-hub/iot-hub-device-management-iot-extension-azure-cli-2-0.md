@@ -11,10 +11,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
 ms.openlocfilehash: 88c3d1f4213b161d5e322349a7f0e1bc1dd952e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80239643"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Použití rozšíření IoT pro Azure CLI pro správu zařízení IoT Hub Azure
@@ -29,7 +29,7 @@ ms.locfileid: "80239643"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Možnost správy          | Úkol  |
+| Možnost správy          | Úloha  |
 |----------------------------|-----------|
 | Přímé metody             | Udělejte zařízení jako takové, jako je spuštění nebo zastavení odesílání zpráv nebo restartování zařízení.                                        |
 | Vyplňování požadovaných vlastností    | Vložte zařízení do určitých stavů, jako je například nastavení indikátoru LED na zelenou nebo nastavení intervalu odesílání telemetrie na 30 minut.         |
@@ -49,11 +49,11 @@ Naučíte se používat rozšíření IoT pro Azure CLI s různými možnostmi s
 
 Spusťte Azure CLI a rozšíření IoT pro Azure CLI s různými možnostmi správy.
 
-## <a name="what-you-need"></a>Co potřebujete
+## <a name="what-you-need"></a>Co budete potřebovat
 
 * Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto položky se týkají následujících požadavků:
 
-  - Aktivní předplatné Azure.
+  - Musíte mít aktivní předplatné Azure.
   - Azure IoT Hub v rámci vašeho předplatného.
   - Klientská aplikace, která odesílá zprávy do služby Azure IoT Hub.
 

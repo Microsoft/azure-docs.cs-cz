@@ -7,10 +7,10 @@ ms.date: 3/23/2020
 ms.topic: how-to
 ms.service: notification-hubs
 ms.openlocfilehash: c99af881b8f93b75633741c2352dc5df17dd2963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80146885"
 ---
 # <a name="use-apns-voip-through-notification-hubs-not-officially-supported"></a>Použití služby APN VOIP prostřednictvím Notification Hubs (není oficiálně podporováno)
@@ -21,7 +21,7 @@ V Azure Notification Hubs je možné používat oznámení APNS VOIP. pro tento 
 
 Pokud se přesto rozhodnete odesílat oznámení služby APN VOIP prostřednictvím Notification Hubs, mějte na paměti následující omezení:
 
-- Odeslání oznámení VOIP vyžaduje, aby se `apns-topic` záhlaví nastavilo na ID aplikačního kompletu + `.voip` přípona. Například pro ukázkovou aplikaci s ID sady `com.microsoft.nhubsample` `apns-topic` by měla být záhlaví nastavena na`com.microsoft.nhubsample.voip.`
+- Odeslání oznámení VOIP vyžaduje, aby se `apns-topic` záhlaví nastavilo na ID aplikačního kompletu + `.voip` přípona. Například pro ukázkovou aplikaci s ID sady `com.microsoft.nhubsample` `apns-topic` by měla být záhlaví nastavena na `com.microsoft.nhubsample.voip.`
 
    Tato metoda dobře spolupracuje se službou Azure Notification Hubs, protože ID sady prostředků aplikace musí být nakonfigurované jako součást přihlašovacích údajů služby APN pro rozbočovač a hodnotu nelze změnit. Notification Hubs také neumožňuje `apns-topic` přepsání hodnoty hlavičky za běhu.
 
