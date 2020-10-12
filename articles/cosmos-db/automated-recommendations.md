@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 8fa2fdf23a0d71b854e043b66c0aed7e944c5f39
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87450336"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Automatizovaná doporučení pro Azure Cosmos DB
@@ -28,7 +28,7 @@ Doporučení pro Azure Cosmos DB můžete zobrazit následujícími způsoby:
 
 - Doporučení můžete také najít prostřednictvím [Azure Advisor](../advisor/advisor-overview.md) v kategoriích podle různých sad, jako jsou náklady, zabezpečení, spolehlivost, výkon a provozní kvalita. Můžete vybrat konkrétní předplatná a filtrovat podle typu prostředku, který je **Azure Cosmos DB účtů**.  Když vyberete konkrétní doporučení, zobrazí se akce, které můžete využít k výhodám vašich úloh.
 
-   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Zobrazit doporučení z Azure Advisorho podokna":::
+   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Zobrazit doporučení z Azure Cosmos DBho podokna":::
 
 Ne všechna doporučení zobrazená v podokně Azure Cosmos DB jsou k dispozici v Azure Advisor a naopak. To je proto, že na základě typu doporučení, které odpovídají, do podokna Azure Advisor, Azure Cosmos DBho podokna nebo obojího.
 

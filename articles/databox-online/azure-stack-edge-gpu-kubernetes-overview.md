@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 089476980ff3e8b2d3b72cb2d229934cf7850c03
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90899246"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes na zařízení GPU pro Azure Stack Edge pro
@@ -106,7 +106,7 @@ Další informace o nasazení aplikací do clusteru Kubernetes prostřednictvím
 
 ### <a name="kubernetes-and-azure-arc"></a>Kubernetes a ARC Azure
 
-Azure ARC je hybridní Nástroj pro správu, který vám umožní nasadit aplikace do clusterů Kubernetes. Azure ARC vám taky umožňuje použít Azure Monitor pro kontejnery k zobrazení a monitorování clusterů. Další informace najdete v tom, [co je Azure-ARC s podporou Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview). Informace o cenách Azure ARC najdete v [cenách Azure ARC](https://azure.microsoft.com/services/azure-arc/#pricing).
+Azure ARC je hybridní Nástroj pro správu, který vám umožní nasadit aplikace do clusterů Kubernetes. Azure ARC vám taky umožňuje použít Azure Monitor pro kontejnery k zobrazení a monitorování clusterů. Další informace najdete v Azure-Arc s [povoleným Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview). Informace o cenách Azure ARC najdete v [cenách Azure ARC](https://azure.microsoft.com/services/azure-arc/#pricing).
 
 
 ## <a name="next-steps"></a>Další kroky

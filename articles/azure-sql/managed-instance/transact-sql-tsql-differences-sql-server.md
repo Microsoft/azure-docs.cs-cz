@@ -12,10 +12,10 @@ ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
 ms.openlocfilehash: 1298a1676d7a7ac0321ae768c3e596f481e80a8a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617869"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
@@ -165,7 +165,7 @@ Spravovaná instance SQL nemá přístup k souborům, takže zprostředkovatele 
     - Exportujte databázi ze spravované instance SQL a importujte ji do SQL Database v rámci stejné domény služby Azure AD. 
     - Exportujte databázi z SQL Database a importujte ji do spravované instance SQL ve stejné doméně Azure AD.
     - Exportujte databázi ze spravované instance SQL a importujte ji do SQL Server (verze 2012 nebo novější).
-      - V této konfiguraci se všechny uživatele Azure AD vytvoří jako SQL Server objekty databáze (uživatelé) bez přihlášení. Typ uživatelů je uveden jako `SQL` a je viditelný jako v zobrazení `SQL_USER` sys. database_principals). Jejich oprávnění a role zůstávají v SQL Server metadatech databáze a lze je použít pro zosobnění. Nedají se ale použít k přístupu k SQL Server a k jejich přihlášení pomocí svých přihlašovacích údajů.
+      - V této konfiguraci se všechny uživatele Azure AD vytvoří jako SQL Server objekty databáze (uživatelé) bez přihlášení. Typ uživatelů je uveden jako `SQL` a je viditelný jako `SQL_USER` v sys.database_principals). Jejich oprávnění a role zůstávají v SQL Server metadatech databáze a lze je použít pro zosobnění. Nedají se ale použít k přístupu k SQL Server a k jejich přihlášení pomocí svých přihlašovacích údajů.
 
 - Pouze hlavní přihlášení na úrovni serveru, které je vytvořeno procesem zřizování spravované instance SQL, členové rolí serveru, jako je například `securityadmin` nebo `sysadmin` , nebo jiná přihlášení s OPRÁVNĚNÍMI změnit libovolné přihlašovací oprávnění na úrovni serveru, mohou vytvořit objekty zabezpečení serveru Azure AD (přihlášení) v hlavní databázi pro SPRAVOVANOU instanci SQL.
 - Pokud je přihlášení objektem zabezpečení SQL, `sysadmin` můžou k vytvoření přihlašovacích údajů pro účet Azure AD používat jenom přihlášení, která jsou součástí této role.
@@ -174,11 +174,11 @@ Spravovaná instance SQL nemá přístup k souborům, takže zprostředkovatele 
 - Překrývající se objekty zabezpečení serveru Azure AD (přihlášení) s účtem správce Azure AD jsou povolené. Objekty zabezpečení serveru Azure AD (přihlášení) mají přednost před správcem Azure AD při řešení zabezpečení a uplatnění oprávnění pro spravovanou instanci SQL.
 - Při ověřování se pro řešení ověřování objektu zabezpečení používá následující sekvence:
 
-    1. Pokud účet Azure AD existuje přímo namapovaný na objekt zabezpečení serveru Azure AD (přihlášení), který se nachází v sys. server_principals jako typ "E", udělit přístup a použít oprávnění pro objekt zabezpečení serveru Azure AD (přihlášení).
-    2. Pokud je účet Azure AD členem skupiny Azure AD, která je namapovaná na objekt zabezpečení serveru Azure AD (přihlášení), který se nachází v sys. server_principals jako typ X, udělte přístup a uplatní se oprávnění k přihlášení skupiny Azure AD.
+    1. Pokud účet Azure AD existuje přímo namapovaný na objekt zabezpečení serveru Azure AD (přihlášení), který se nachází v sys.server_principals jako typ "E", udělte přístup a uplatní se oprávnění objektu zabezpečení serveru Azure AD (přihlášení).
+    2. Pokud je účet Azure AD členem skupiny Azure AD, která je namapovaná na objekt zabezpečení serveru Azure AD (přihlášení), který se nachází v sys.server_principals jako typ "X", "udělit přístup a použít oprávnění pro přihlášení ke skupině Azure AD.
     3. Pokud je účet Azure AD zvláštním portálem konfigurovaným pro správce Azure AD pro spravovanou instanci SQL, který neexistuje v systémových zobrazeních spravované instance SQL, použijte zvláštní pevná oprávnění správce Azure AD pro spravovanou instanci SQL (starší režim).
-    4. Pokud účet Azure AD existuje jako přímo mapovaný k uživateli Azure AD v databázi, která je k dispozici v zobrazení sys. database_principals jako typ "E", "udělení přístupu a oprávnění k použití pro uživatele databáze Azure AD.
-    5. Pokud je účet Azure AD členem skupiny služby Azure AD, která je namapovaná na uživatele Azure AD v databázi, která je k dispozici v zobrazení sys. database_principals jako typ "X", udělte přístup a uplatní se oprávnění pro přihlášení ke skupině Azure AD.
+    4. Pokud účet Azure AD existuje jako přímo namapovaný k uživateli Azure AD v databázi, která je k dispozici v sys.database_principals jako typ "E", udělte přístup a uplatní se oprávnění uživatele databáze Azure AD.
+    5. Pokud je účet Azure AD členem skupiny služby Azure AD, která je namapovaná na uživatele Azure AD v databázi, která je k dispozici v sys.database_principals jako typ "X", "udělit přístup a použít oprávnění pro přihlášení ke skupině Azure AD.
     6. Pokud máte přihlášení ke službě Azure AD namapované na uživatelský účet Azure AD nebo na účet skupiny Azure AD, který se přeloží na uživatele, který ověřuje, budou použita všechna oprávnění z tohoto přihlášení služby Azure AD.
 
 ### <a name="service-key-and-service-master-key"></a>Klíč služby a hlavní klíč služby
@@ -306,7 +306,7 @@ Následující funkce agenta SQL momentálně nejsou podporované:
 - Proxy
 - Plánování úloh na nečinném procesoru
 - Povolení nebo zakázání agenta
-- Upozornění
+- Výstrahy
 
 Informace o agentovi SQL Server najdete v tématu [agent SQL Server](/sql/ssms/agent/sql-server-agent).
 
@@ -433,7 +433,7 @@ Další informace o konfiguraci transakční replikace najdete v následujícíc
   - `FROM DISK`/`TAPE`zařízení/Backup se nepodporuje.
   - Zálohovací sklady nejsou podporované.
 - `WITH` možnosti nejsou podporovány. Pokusy o obnovení, včetně `WITH` Like `DIFFERENTIAL` , `STATS` , atd `REPLACE` ., selžou.
-- `ASYNC RESTORE`: Obnovení pokračuje i v případě, že dojde k přerušení připojení klienta. Pokud je připojení vyřazeno, můžete se podívat na `sys.dm_operation_status` stav operace obnovení a pro databázi pro vytvoření a odstranění. Viz [Sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
+- `ASYNC RESTORE`: Obnovení pokračuje i v případě, že dojde k přerušení připojení klienta. Pokud je připojení vyřazeno, můžete se podívat na `sys.dm_operation_status` stav operace obnovení a pro databázi pro vytvoření a odstranění. Viz [Sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 Následující možnosti databáze jsou nastaveny nebo přepsány a nelze je změnit později: 
 

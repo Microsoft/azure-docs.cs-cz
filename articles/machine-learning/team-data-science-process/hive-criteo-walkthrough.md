@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 99595e27b17db716b09325d5dd80633bf44ffb02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336645"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Vědecké zpracování týmových dat v akci – použití clusteru Azure HDInsight Hadoop s datovou sadou 1 TB
@@ -607,12 +607,12 @@ Nyní jste připraveni sestavit Azure Machine Learning model pomocí těchto tra
 #### <a name="choice-of-learner"></a>Výběr učení
 Nejdřív je potřeba vybrat si ho. Využijte ke zvýšení rozhodovacího stromu se dvěma třídami svůj náš učí. Tady jsou výchozí možnosti pro tento učí:
 
-![Parametry rozhodovacího stromu s zvýšením úrovně dvou tříd](./media/hive-criteo-walkthrough/bH3ST2z.png)
+![Two-Class se zvýšily parametry rozhodovacího stromu.](./media/hive-criteo-walkthrough/bH3ST2z.png)
 
 Pro experiment vyberte výchozí hodnoty. Výchozí hodnoty jsou smysluplné a dobrý způsob, jak získat rychlé základní hodnoty pro výkon. Pokud se rozhodnete, že budete mít směrný plán, můžete vylepšit výkon pomocí úklidu parametrů.
 
 #### <a name="train-the-model"></a>Trénování modelu
-Pro školení stačí vyvolat modul **vlakového modelu** . Těmito dvěma vstupy jsou dvě seznámení rozhodovacího stromu pro rozhodování a naši datovou sadu vlaků se dvěma třídami. Toto je znázorněno zde:
+Pro školení stačí vyvolat modul **vlakového modelu** . Do těchto dvou vstupů patří Two-Class posílený seznámení s rozhodovacím stromem a naši datovou sadu vlaků. Toto je znázorněno zde:
 
 ![Modul vlakového modelu](./media/hive-criteo-walkthrough/2bZDZTy.png)
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: pepogors
 ms.openlocfilehash: 86a02fd489ca0eec61b798db7136f963277f6c82
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261096"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Osvědčené postupy pro aplikace a Cluster Service Fabric pro Azure
@@ -29,7 +29,7 @@ Tento článek obsahuje odkazy na osvědčené postupy pro správu aplikací a c
 * [Osvědčené postupy pro škálování na výpočetní výkon](service-fabric-best-practices-capacity-scaling.md)
 * [Plánování kapacity výpočtů](./service-fabric-cluster-capacity.md)
 
-## <a name="infrastructure-as-code"></a>Infrastruktura v podobě kódu
+## <a name="infrastructure-as-code"></a>Infrastruktura jako kód
 
 * [Osvědčené postupy pro implementaci infrastruktury jako kódu](service-fabric-best-practices-infrastructure-as-code.md)
 

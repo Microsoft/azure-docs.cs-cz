@@ -7,13 +7,13 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710197"
 ---
-# <a name="retain-ip-addresses-during-failover"></a>Zachovat IP adresy během převzetí služeb při selhání
+# <a name="retain-ip-addresses-during-failover"></a>Zachování IP adres během převzetí služeb při selhání
 
 [Azure Site Recovery](site-recovery-overview.md) umožňuje zotavení po havárii pro virtuální počítače Azure replikací virtuálních počítačů do jiné oblasti Azure a převzetí služeb při selhání, pokud dojde k výpadku a navrácení služeb po obnovení do primární oblasti, když se vrátí zpátky na normální.
 

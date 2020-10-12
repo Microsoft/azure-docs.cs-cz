@@ -10,10 +10,10 @@ ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: how-to
 ms.date: 03/15/2018
 ms.openlocfilehash: 0025e35f516543c8fe703daa647ca29ed3fb87e6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87127583"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Úprava kvót a omezení ve službě Azure Data Lake Analytics
@@ -22,7 +22,7 @@ Přečtěte si, jak upravit a zvýšit kvótu a omezení v účtech Azure Data L
 
 ## <a name="azure-subscriptions-limits"></a>Omezení předplatných Azure
 
-**Maximální počet účtů ADLA na předplatné na oblast:** 5
+**Maximální počet účtů ADLA na předplatné na oblast:**  5
 
 Pokud se pokusíte vytvořit šestý účet ADLA, zobrazí se chyba "dosáhli jste maximálního počtu povolených Data Lake Analytics účtů (5) v oblasti" název předplatného ".
 
@@ -34,7 +34,7 @@ Pokud chcete tento limit přesáhnout, můžete vyzkoušet tyto možnosti:
 
 **Maximální počet jednotek analýzy (Austrálie) na účet:** 250, výchozí hodnota: 32
 
-Toto je maximální počet jednotek Austrálie, které mohou běžet souběžně ve vašem účtu. Pokud celkový počet provozního prostředí Austrálie napříč všemi úlohami překročí tento limit, novější úlohy se automaticky zařadí do fronty. Příklad:
+Toto je maximální počet jednotek Austrálie, které mohou běžet souběžně ve vašem účtu. Pokud celkový počet provozního prostředí Austrálie napříč všemi úlohami překročí tento limit, novější úlohy se automaticky zařadí do fronty. Například:
 
 * Pokud máte pouze jednu úlohu spuštěnou s 32 jednotkou Austrálie, při odeslání druhé úlohy bude čekat ve frontě úloh až do dokončení první úlohy.
 * Pokud už máte spuštěné čtyři úlohy a každý z nich používá 8 jednotek Austrálie, odešlete pátý úkol, který potřebuje 8 jednotek analýzy, dokud nebude k dispozici 8 jednotek Austrálie.

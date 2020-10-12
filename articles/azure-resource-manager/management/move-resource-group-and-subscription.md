@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319550"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
@@ -178,11 +178,11 @@ Když si zobrazíte skupinu prostředků, možnost přesunout je zakázaná.
 
 Chcete-li povolit možnost přesunout, vyberte prostředky, které chcete přesunout. Chcete-li vybrat všechny prostředky, zaškrtněte políčko v horní části seznamu. Případně vyberte prostředky jednotlivě. Po výběru prostředků je povolena možnost přesunout.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="vybrat prostředky":::
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="možnost přesunutí zakázána":::
 
 Vyberte tlačítko **přesunout** .
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="Možnosti přesunutí":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="možnost přesunutí zakázána":::
 
 Toto tlačítko nabízí tři možnosti:
 
@@ -194,11 +194,11 @@ Vyberte, jestli přesouváte prostředky do nové skupiny prostředků nebo do n
 
 Vyberte cílovou skupinu prostředků. Potvrďte, že potřebujete aktualizovat skripty pro tyto prostředky a vyberte **OK**. Pokud jste vybrali možnost přesunout se k novému předplatnému, musíte také vybrat cílové předplatné.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="vybrat cíl":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="možnost přesunutí zakázána":::
 
 Po ověření, že se prostředky dají přesunout, se zobrazí oznámení o běhu operace přesunutí.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="zveřejnění":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="možnost přesunutí zakázána":::
 
 Po dokončení budete upozorněni na výsledek.
 

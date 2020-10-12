@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
 ms.openlocfilehash: c8fdba59a8d31c064745c7a1904204359b386a7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84707850"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Konfigurace privátní IP adresy pro virtuální počítač pomocí Azure Portal
@@ -56,12 +56,12 @@ Pokud chcete vytvořit virtuální počítač s názvem *DNS01* v podsíti *fron
     | **Předplatné** | Vaše aktuální předplatné |
     | **Skupina prostředků** | **TestRG** (výběr z rozevíracího seznamu) |
     | **Název virtuálního počítače** | *DNS01* |
-    | **Věřitel** | **VYLEPŠENÍ Východní USA** |
+    | **Oblast** | **(USA) USA – východ** |
     | **Image** | **Windows Server 2019 Datacenter** |
     | **Velikost** | **Velikost virtuálního počítače** **B1ls**, **Nabídka** **Standard** |
-    | **Jmen** | Uživatelské jméno účtu správce |
+    | **Uživatelské jméno** | Uživatelské jméno účtu správce |
     | **Heslo** | Heslo pro uživatelské jméno účtu správce |
-    | **Potvrdit heslo** | Znovu heslo |
+    | **Potvrzení hesla** | Znovu heslo |
 
     ![Karta základy, vytvořit virtuální počítač, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-basics.png)
 4. V části **sítě**zadejte hodnoty pro položky, jak je popsáno v následující tabulce, a pak vyberte **Další**.

@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 9/17/2020
 ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321403"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
@@ -34,7 +34,7 @@ Výpočetní vrstva bez serveru pro izolovanou databázi v Azure SQL Database je
 - **Minimální virtuální jádra** a **Maximální virtuální jádra** jsou konfigurovatelné parametry, které definují rozsah výpočetní kapacity dostupné pro databázi. Limity paměti a vstupně-výstupních operací jsou úměrné zadanému rozsahu vCore.  
 - **Prodleva automatického pozastavení** je konfigurovatelný parametr definující časové období, po které musí být databáze neaktivní, než bude automaticky pozastavena. Databáze se automaticky obnoví, když dojde k dalšímu přihlášení nebo jiné aktivitě.  Alternativně je možné zakázat autopauzu.
 
-### <a name="cost"></a>Cost
+### <a name="cost"></a>Náklady
 
 - Náklady na databázi bez serveru jsou součtem nákladů na výpočetní prostředky a náklady na úložiště.
 - Pokud je využití COMPUTE mezi nakonfigurovanými minimálními a maximálními limity, náklady na výpočetní výkon vycházejí z vCore a využité paměti.

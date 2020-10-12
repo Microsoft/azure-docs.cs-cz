@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 09/15/2020
 ms.topic: tutorial
 ms.openlocfilehash: 81dc23c208ca9fb292c849bdf35d8b91311ed9ce
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987646"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Kurz: Vytvoření grafického Runbooku
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K dokončení tohoto kurzu potřebujete:
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free).
 * [Účet Automation](../index.yml), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure. Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
@@ -124,7 +124,7 @@ Sada Runbook, kterou jste vytvořili, je stále v režimu konceptu. Abyste ho mo
 
     Všimněte si, že podokno streamy může zobrazit další datové proudy pro úlohu Runbooku, jako jsou například podrobné a chybové streamy, pokud je do nich zapisuje sada Runbook.
 
-9. Zavřete podokno streamy a podokno úloh a vraťte se na stránku MyFirstRunbook-Graphics.
+9. Zavřete podokno datové proudy a podokno úlohy, které se vrátí na stránku MyFirstRunbook-Graphical.
 
 10. Chcete-li zobrazit všechny úlohy pro sadu Runbook, vyberte v části **prostředky**položku **úlohy** . Na stránce úlohy jsou uvedeny všechny úlohy, které sada Runbook vytvořila. V seznamu by se měla zobrazit jenom jedna úloha, protože jste úlohu spustili jenom jednou.
 
@@ -156,7 +156,7 @@ Teď, když máte proměnnou, která bude uchovávat ID předplatného, můžete
 >[!NOTE]
 >Pro PowerShellové Runbooky `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro `Connect-AzAccount` . Všimněte si, že tyto aliasy nejsou k dispozici pro vaše grafické Runbooky. Grafická sada Runbook může používat pouze `Connect-AzAccount` sebe sama.
 
-1. Přejděte na sadu Runbook a vyberte možnost **Upravit** na stránce MyFirstRunbook-Graphics.
+1. Přejděte na Runbook a na stránce MyFirstRunbook-Graphical vyberte **Upravit** .
 
 2. Tuto položku už nepotřebujete `Write Hello World to output` . Stačí kliknout na tři tečky a vybrat **Odstranit**.
 
@@ -242,13 +242,13 @@ Nyní musíte přidat `Start-AzVM` aktivitu pro spuštění virtuálního počí
 
 9. Kliknutím na **Spustit spusťte** test. Až se dokončí, ujistěte se, že je virtuální počítač spuštěný. Sada Runbook by měla v tomto okamžiku vypadat jako v následujícím.
 
-    ![Spuštění Runbooku – výstup AzVM](../media/automation-tutorial-runbook-graphical/runbook-startvm.png)
+    ![Výstup Start-AzVM Runbooku](../media/automation-tutorial-runbook-graphical/runbook-startvm.png)
 
 ## <a name="step-8---add-additional-input-parameters"></a>Krok 8 – přidání dalších vstupních parametrů
 
 Runbook aktuálně spouští virtuální počítač ve skupině prostředků, kterou jste zadali pro `Start-AzVM` rutinu. Sada Runbook bude užitečnější, pokud při spuštění Runbooku zadáte jak název, tak i skupinu prostředků. Pojďme do Runbooku přidat vstupní parametry, které tuto funkci poskytují.
 
-1. Otevřete grafický editor kliknutím na **Upravit** na stránce MyFirstRunbook-Graphics.
+1. Kliknutím na tlačítko **Upravit** na stránce MyFirstRunbook-Graphical otevřete grafický editor.
 
 2. Vyberte **vstup a výstup** a pak **přidejte vstup** . otevře se podokno vstupní parametr Runbooku.
 

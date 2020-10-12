@@ -4,10 +4,10 @@ description: Popisuje, jak vytvořit projekt Azure Migrate a přidat nástroj pr
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.openlocfilehash: a94e3cc18f46c457d6ed54ef88c62adefb07c5b9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86102527"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>První přidání nástroje pro vyhodnocení/migraci
@@ -19,10 +19,10 @@ Azure Migrate poskytuje centrální centrum pro sledování zjišťování, hodn
 
 Pokud jste ještě nevytvořili Azure Migrate projekt, ověřte, jestli máte správná oprávnění.
 
-1. V Azure Portal otevřete předplatné a vyberte **řízení přístupu (IAM)**.
+1. Na webu Azure Portal otevřete předplatné a vyberte **Řízení přístupu (IAM)** .
 2. V části kontrolovat přístup Najděte příslušný účet a kliknutím na něj Zobrazte oprávnění. Měli byste mít oprávnění Přispěvatel nebo Owner.
-    - Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého předplatného.
-    - Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte roli.
+    - Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vašeho předplatného.
+    - Pokud nejste vlastníkem předplatného, přidělte odpovídající roli ve spolupráci s vlastníkem.
 
 ## <a name="create-a-project-and-add-a-tool"></a>Vytvoření projektu a přidání nástroje
 
@@ -39,7 +39,7 @@ Nastavte nový projekt Azure Migrate v rámci předplatného Azure a přidejte n
 3. V části **Přehled** klikněte na **Posoudit a migrovat servery**.
 4. V části **zjišťování, vyhodnocení a migrace serverů**klikněte na možnost **zhodnotit a migrovat servery**.
 
-    ![Zjišťování a vyhodnocení serverů](./media/how-to-add-tool-first-time/assess-migrate.png)
+    ![Zjištění a posouzení serverů](./media/how-to-add-tool-first-time/assess-migrate.png)
 
 1. V části **Zjistit, posoudit a migrovat servery** klikněte na **Přidat nástroje**.
 2. V části **Projekt migrace** vyberte své předplatné Azure a vytvořte skupinu prostředků, pokud ji ještě nemáte.

@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987331"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Vytváření grafických runbooků v Azure Automation
@@ -95,7 +95,7 @@ Když u aktivity povolíte operaci opakovat, můžete nastavit zpoždění a pod
 
 Podmínka opakování je výraz PowerShellu, který se vyhodnocuje po každém spuštění aktivity. Pokud se výraz přeloží na hodnotu true, aktivita se znovu spustí. Pokud se výraz přeloží na false, aktivita se znovu nespustí a Runbook se přesune na další aktivitu.
 
-:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Snímek obrazovky znázorňující opakování, dokud tato podmínka není pravdivá, a příklady výrazů PowerShellu, které lze použít v podmínce opakování.":::
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Snímek obrazovky s nastavením funkcí povolit opakování":::
 
 Podmínka opakování může použít proměnnou s názvem `RetryData` , která poskytuje přístup k informacím o opakovaných pokusech o aktivitu. Tato proměnná má vlastnosti v následující tabulce:
 

@@ -9,10 +9,10 @@ ms.date: 12/20/2017
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 6b9a951787df6775b5159433c7172e767ff955b2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566071"
 ---
 # <a name="troubleshooting-network-performance"></a>Řešení potíží s výkonem sítě
@@ -80,7 +80,7 @@ Existují tři základní kroky pro použití této sady nástrojů pro testová
 
 3. Spustit test výkonnosti
 
-    Nejdřív musíte na vzdáleném hostiteli nainstalovat a spustit iPerf v režimu serveru. Ujistěte se taky, že vzdálený hostitel naslouchá buď 3389 (RDP pro Windows), nebo 22 (SSH pro Linux), a povoluje provoz na portu 5201 pro iPerf. Pokud je vzdálený hostitel Windows, nainstalujte AzureCT a spusťte příkaz Install-LinkPerformance, který nastaví iPerf a pravidla brány firewall nutná k úspěšnému spuštění iPerf v režimu serveru. 
+    Nejdřív musíte na vzdáleném hostiteli nainstalovat a spustit iPerf v režimu serveru. Ujistěte se taky, že vzdálený hostitel naslouchá buď 3389 (RDP pro Windows), nebo 22 (SSH pro Linux), a povoluje provoz na portu 5201 pro iPerf. Pokud je vzdálený hostitel Windows, nainstalujte AzureCT a spuštěním příkazu Install-LinkPerformance nastavte iPerf a pravidla brány firewall nutná k úspěšnému spuštění iPerf v režimu serveru. 
     
     Jakmile je vzdálený počítač připravený, otevřete v místním počítači prostředí PowerShell a spusťte test:
     ```powershell
@@ -160,7 +160,7 @@ Nastavení testu:
  - Okruh peering – Premium ExpressRoute v umístění identifikovaném s povoleným privátním partnerským vztahem.
  - Virtuální síť Azure s bránou UltraPerformance v zadané oblasti.
  - Virtuální počítač s DS5v2, na kterém běží Windows Server 2016 ve virtuální síti. Virtuální počítač nebyl připojený k doméně, který je vytvořený z výchozí image Azure (bez optimalizace ani přizpůsobení) s nainstalovaným AzureCT.
- - Všechny testy používaly příkaz AzureCT Get-LinkPerformance s testem zatížení na 5 minut pro každý ze šesti testovacích běhů. Například:
+ - Všechny testy používaly příkaz AzureCT Get-LinkPerformance s zátěžovým testem na 5 minut pro každé šest testovacích běhů. Například:
 
     ```powershell
     Get-LinkPerformance -RemoteHost 10.0.0.1 -TestSeconds 300
@@ -177,7 +177,7 @@ Nastavení testu:
 >
 >
 
-| ExpressRoute<br/>Umístění|Azure<br/>Region (Oblast) | –<br/>Vzdálenost (km) | Latence|1 relace<br/>Šířka pásma | Maximum<br/>Šířka pásma |
+| ExpressRoute<br/>Umístění|Azure<br/>Oblast | –<br/>Vzdálenost (km) | Latence|1 relace<br/>Šířka pásma | Maximum<br/>Šířka pásma |
 | ------------------------------------------ | --------------------------- |  - | - | - | - |
 | Seattle | Západní USA 2        |    191 km |   5 MS | 262,0 Mbit/s |  3,74 Gbits/s |
 | Seattle | USA – západ          |  1 094 km |  18 MS |  82,3 Mbit/s |  3,70 Gbits/s |

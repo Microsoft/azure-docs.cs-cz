@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: da80af9fe598186fa25d59601c9fa4faccb4286a
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87447048"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings-public-preview"></a>Import a export nastavení konfigurace Azure AD Connect (verze Public Preview)
@@ -40,7 +40,7 @@ Import dříve exportovaných nastavení:
 1. Nainstalujte **Azure AD Connect** na nový server.
 1. Jako **úvodní** stránku vyberte možnost **přizpůsobit** .
 1. Vyberte **importovat nastavení synchronizace**. Vyhledejte dříve exportovaný soubor nastavení JSON.
-1. Vyberte **Install** (Nainstalovat).
+1. Vyberte **Nainstalovat**.
 
    ![Snímek obrazovky zobrazující obrazovku instalovat požadované součásti](media/how-to-connect-import-export-config/import1.png)
 

@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
 ms.openlocfilehash: d4a08035b03c104555c39311bfb812218cca44b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482543"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Zálohování a obnovení ve fondu SQL Azure synapse
@@ -76,11 +76,11 @@ Geografické zálohování se vytvoří jednou denně pro [spárované datové c
 
 ## <a name="backup-and-restore-costs"></a>Náklady na zálohování a obnovení
 
-Všimněte si, že Azure Bill má položku řádku pro úložiště a položku řádku pro úložiště pro zotavení po havárii. Poplatek za úložiště je celková cena za ukládání dat v primární oblasti společně s přírůstkovým změnami zaznamenanými snímky. Podrobnější vysvětlení, jak se účtují snímky, najdete v tématu [Vysvětlení způsobu, jakým se účtují poplatky za snímky](/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Geograficky redundantní poplatek pokrývá náklady na ukládání geografických záloh.  
+Všimněte si, že Azure Bill má položku řádku pro úložiště a položku řádku pro úložiště pro zotavení po havárii. Poplatek za úložiště je celková cena za ukládání dat v primární oblasti společně s přírůstkovým změnami zaznamenanými snímky. Podrobnější vysvětlení, jak se účtují snímky, najdete v tématu  [Vysvětlení způsobu, jakým se účtují poplatky za snímky](/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Geograficky redundantní poplatek pokrývá náklady na ukládání geografických záloh.  
 
 Celkové náklady na váš primární datový sklad a sedm dní pro změny snímku se zaokrouhlují na nejbližší TB. Pokud je například datový sklad 1,5 TB a snímky zachytí 100 GB, bude se vám účtovat 2 TB dat za Azure Premium Storage tarify.
 
-Pokud používáte geografické redundantní úložiště, obdržíte samostatný poplatek za úložiště. Geograficky redundantní úložiště se účtuje standardní sazbou geograficky redundantního úložiště s přístupem pro čtení (RA-GRS).
+Pokud používáte geografické redundantní úložiště, obdržíte samostatný poplatek za úložiště. Geograficky redundantní úložiště se účtuje ve výši standardní Read-Access geograficky redundantního úložiště (RA-GRS).
 
 Další informace o cenách Azure synapse najdete v článku [ceny Azure synapse](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/). Při obnovování v různých oblastech se vám neúčtují odchozí data.
 

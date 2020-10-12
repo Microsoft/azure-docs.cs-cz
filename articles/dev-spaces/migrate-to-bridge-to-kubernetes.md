@@ -1,18 +1,18 @@
 ---
-title: Migrace na most do Kubernetes
+title: Migrace na Bridge to Kubernetes
 services: azure-dev-spaces
 ms.date: 09/21/2020
 ms.topic: conceptual
 description: Popisuje procesy, které Azure Dev Spaces napájení
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, most na Kubernetes
 ms.openlocfilehash: b585ee20efb7b377a041152996ef41d8c59c539e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995519"
 ---
-# <a name="migrating-to-bridge-to-kubernetes"></a>Migrace na most do Kubernetes
+# <a name="migrating-to-bridge-to-kubernetes"></a>Migrace na Bridge to Kubernetes
 
 Most na Kubernetes poskytuje světlejší důležitou alternativu k mnoha vývojářským scénářům, které pracují s Azure Dev Spaces. Most na Kubernetes je prostředí jenom na straně klienta využívající rozšíření v [aplikaci Visual Studio][vs]   a [Visual Studio Code][vsc].  
 
@@ -120,7 +120,7 @@ Pokud chcete experimentovat s mostem na Kubernetes před tím, než zakážete A
 Přečtěte si další informace o tom, jak most Kubernetes funguje.
 
 > [!div class="nextstepaction"]
-> [Jak funguje most na Kubernetes][how-it-works-bridge-to-kubernetes]
+> [Jak funguje Přemostění na Kubernetes][how-it-works-bridge-to-kubernetes]
 
 
 [azds-delete]: how-to/install-dev-spaces.md#remove-azure-dev-spaces-using-the-cli

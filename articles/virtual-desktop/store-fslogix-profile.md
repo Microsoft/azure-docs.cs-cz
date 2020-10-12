@@ -7,17 +7,17 @@ ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 0b1a5e36232e74caa34037efbbb0da0c39051998
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568689"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows
 
 Azure nabízí několik řešení úložiště, která můžete použít k uložení kontejneru profilu FSLogix. Tento článek porovnává řešení úložiště, které Azure nabízí pro kontejnery profilů uživatelů FSLogix virtuálních počítačů s Windows. Pro většinu našich zákazníků doporučujeme ukládat do souborů Azure kontejnery profilů FSLogix.
 
-Virtuální počítač s Windows nabízí kontejnery profilů FSLogix jako doporučené řešení profilace uživatele. Řešení FSLogix je určené k přesouvání profilů ve vzdálených výpočetních prostředích, jako je Windows Virtual Desktop. Při přihlašování se tento kontejner dynamicky připojuje k výpočetnímu prostředí pomocí nativně podporovaného virtuálního pevného disku (VHD) a virtuálního pevného disku Hyper-V (VHDX). Profil uživatele je hned dostupný a zobrazí se v systému přesně jako nativní profil uživatele.
+Virtuální počítač s Windows nabízí kontejnery profilů FSLogix jako doporučené řešení profilace uživatele. Řešení FSLogix je určené k přesouvání profilů ve vzdálených výpočetních prostředích, jako je Windows Virtual Desktop. Při přihlašování se tento kontejner dynamicky připojuje k výpočetnímu prostředí pomocí nativně podporovaného virtuálního pevného disku (VHD) a virtuálního pevného disku Hyper-V (VHDX). Profil uživatele je hned k dispozici a objeví se v systému úplně stejně jako nativní profil uživatele.
 
 V následujících tabulkách jsou porovnávána řešení úložiště Azure Storage nabídky pro profily uživatelů kontejnerů profilů FSLogix virtuálních počítačů s Windows.
 

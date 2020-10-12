@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 8/11/2020
 ms.author: swmachan
 ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88121013"
 ---
 # <a name="translator-v30"></a>Překladatel v 3.0
@@ -41,20 +41,20 @@ Microsoft Translator se obsluhuje z více umístění datových center. V souča
 
 Pokud chcete vynutit zpracování žádosti konkrétními geografickými oblastmi Azure, změňte globální koncový bod v požadavku rozhraní API na požadovaný oblastní koncový bod:
 
-|Popis|Geografické Azure|Základní adresa URL|
+|Description|Geografické Azure|Základní adresa URL|
 |:--|:--|:--|
 |Azure|Globální (mimo oblast)|   api.cognitive.microsofttranslator.com|
 |Azure|USA|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Evropa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Asie a Tichomoří|    api-apc.cognitive.microsofttranslator.com|
 
-## <a name="authentication"></a>Ověřování uživatelů
+## <a name="authentication"></a>Authentication
 
 Přihlaste se k odběru překladatele nebo [Cognitive Services více službami](https://azure.microsoft.com/pricing/details/cognitive-services/) ve službě Azure Cognitive Services a použijte svůj klíč předplatného (dostupný v Azure Portal) k ověření. 
 
 K ověření předplatného můžete použít tři hlavičky. Tato tabulka popisuje, jak se používají jednotlivé tyto funkce:
 
-|Hlavičky|Popis|
+|Hlavičky|Description|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|Pokud předáváte *tajný klíč, použijte u předplatného Cognitive Services*.<br/>Hodnota je tajný klíč Azure pro váš odběr překladatele.|
 |Autorizace|*Pokud předáváte ověřovací token, použijte u předplatného Cognitive Services.*<br/>Hodnota je nosným tokenem: `Bearer <token>` .|
@@ -67,7 +67,7 @@ První možností je ověřit pomocí `Ocp-Apim-Subscription-Key` hlavičky. Př
 
 Když použijete [globální prostředek překladatele](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation), je nutné zahrnout jedno záhlaví pro volání překladatele.
 
-|Hlavičky|Popis|
+|Hlavičky|Description|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Hodnota je tajný klíč Azure pro váš odběr překladatele.|
 
@@ -86,7 +86,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 Když použijete [prostředek místní překladatele](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation).
 Existují dvě hlavičky, které potřebujete k volání překladatele.
 
-|Hlavičky|Popis|
+|Hlavičky|Description|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Hodnota je tajný klíč Azure pro váš odběr překladatele.|
 |OCP – APIM – předplatné – oblast| Hodnota je oblast prostředku překladatele. |
@@ -108,7 +108,7 @@ Když použijete prostředek více služeb pro rozpoznávání služby. Díky to
 
 Když použijete tajný klíč s více službami, musíte do své žádosti zahrnout dvě ověřovací hlavičky. Existují dvě hlavičky, které potřebujete k volání překladatele.
 
-|Hlavičky|Popis|
+|Hlavičky|Description|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Hodnota je tajný klíč Azure pro prostředek s více službami.|
 |OCP – APIM – předplatné – oblast| Hodnota je oblast prostředku s více službami. |
@@ -153,10 +153,10 @@ Když tuto funkci zapnete, musíte pro volání překladatele použít vlastní 
 
 Vlastní koncový bod můžete najít po vytvoření [prostředku překladatele](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) a povolení přístupu z vybraných sítí a soukromých koncových bodů.
 
-|Hlavičky|Popis|
+|Hlavičky|Description|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Hodnota je tajný klíč Azure pro váš odběr překladatele.|
-|OCP – APIM – předplatné – oblast| Hodnota je oblast prostředku překladatele. Tato hodnota je volitelná, pokud je prostředek`global`|
+|OCP – APIM – předplatné – oblast| Hodnota je oblast prostředku překladatele. Tato hodnota je volitelná, pokud je prostředek `global`|
 
 Tady je příklad žádosti o volání překladatele pomocí vlastního koncového bodu.
 
@@ -169,7 +169,7 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
      -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
-## <a name="errors"></a>Chyby
+## <a name="errors"></a>chyby
 
 Standardní chybová odpověď je objekt JSON s dvojicí název/hodnota s názvem `error` . Hodnota je také objekt JSON s vlastnostmi:
 
@@ -188,7 +188,7 @@ Například zákazník s bezplatným zkušebním předplatným může po vyčerp
 ```
 Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb:
 
-| Kód | Popis |
+| Kód | Description |
 |:----|:-----|
 | 400000| Jeden ze vstupů požadavku není platný.|
 | 400001| Parametr scope je neplatný.|
@@ -236,7 +236,7 @@ Metriky umožňují zobrazit informace o využití a dostupnosti překladatele v
 
 Tato tabulka uvádí dostupné metriky s popisem způsobu jejich použití pro monitorování volání rozhraní API pro překlad.
 
-| Metriky | Popis |
+| Metriky | Description |
 |:----|:-----|
 | TotalCalls| Celkový počet volání rozhraní API.|
 | TotalTokenCalls| Celkový počet volání rozhraní API prostřednictvím služby tokenu pomocí ověřovacího tokenu|

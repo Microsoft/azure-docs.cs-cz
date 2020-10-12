@@ -10,10 +10,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: df8560bec3671a9f05628ee6ed8ea95c31e9b16f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998046"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>Aktualizace služby Azure Notification Hubs pro iOS 13
@@ -65,7 +65,7 @@ Pokud vám Azure Notification Hubs detekuje oznámení, které nemá nastavenou 
 
 Další menší změna, ale ta, která vyžaduje změnu aplikace back-end, která odesílá oznámení, je požadavek na to, aby oznámení na pozadí, která má `apns-priority` záhlaví obsahovat, byla teď nastavená na 5. Řada aplikací nastavuje `apns-priority` hlavičku na 10 (indikuje okamžité doručení), nebo ji nenastaví a získá výchozí hodnotu (což je také 10).
 
-Nastavení této hodnoty na hodnotu 10 již není povoleno pro oznámení na pozadí a je nutné nastavit hodnotu pro každý požadavek. Pokud tato hodnota chybí, Apple nebude doručovat oznámení na pozadí. Příklad:
+Nastavení této hodnoty na hodnotu 10 již není povoleno pro oznámení na pozadí a je nutné nastavit hodnotu pro každý požadavek. Pokud tato hodnota chybí, Apple nebude doručovat oznámení na pozadí. Například:
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);

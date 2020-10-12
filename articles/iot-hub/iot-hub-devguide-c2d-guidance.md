@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 10206aced4f38f4d157f46703aac2d28ec863274
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319146"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Pokyny pro komunikaci z cloudu na zařízení
@@ -41,7 +41,7 @@ Toto je podrobné porovnání různých možností komunikace typu cloud-zaříz
 | Stálost | Odpojená zařízení se nekontaktují. Back-end řešení oznamuje, že zařízení není připojené. | Hodnoty vlastností jsou zachovány v zařízení s dvojitou hodnotou. Zařízení se přečte při příštím opětovném připojení. Hodnoty vlastností lze získat pomocí [dotazovacího jazyka IoT Hub](iot-hub-devguide-query-language.md). | Zprávy mohou být uchovávány IoT Hub až 48 hodin. |
 | Targets | Jedno zařízení používající **deviceId**nebo více zařízení, které používá [úlohy](iot-hub-devguide-jobs.md). | Jedno zařízení používající **deviceId**nebo více zařízení, které používá [úlohy](iot-hub-devguide-jobs.md). | Jedno zařízení podle **deviceId**. |
 | Velikost | Maximální velikost datové části přímé metody je 128 KB. | Maximální velikost požadovaných vlastností je 32 KB. | Až 64 zpráv KB. |
-| Frekvence | Vysoká. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). | Střední. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). | Nízká. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). |
+| Frequency | Vysoká. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). | Střední. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). | Nízká. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). |
 | Protokol | K dispozici pomocí MQTT nebo AMQP. | K dispozici pomocí MQTT nebo AMQP. | K dispozici na všech protokolech. Zařízení se musí dotazovat při použití protokolu HTTPS. |
 
 Naučte se používat přímé metody, požadované vlastnosti a zprávy z cloudu na zařízení v následujících kurzech:

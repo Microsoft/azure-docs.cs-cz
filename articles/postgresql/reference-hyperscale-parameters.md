@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
 ms.openlocfilehash: 07f966c7b0be542f848f1a0a4eaf2b5549735b4b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336237"
 ---
 # <a name="server-parameters"></a>Parametry serveru
@@ -345,7 +345,7 @@ Ve výchozím nastavení zobrazuje Citus () výstup jedné, libovolné úlohy p�
 * [parallel_tuple_cost](https://www.postgresql.org/docs/current/runtime-config-query.html#GUC-PARALLEL-TUPLE-COST) – nastaví odhad nákladů na plánování jednotlivých řazených kolekcí členů (řádků) z pracovního procesu do hlavního back-endu.
 * [pg_stat_statements. Save](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) -uloží pg_stat_statements statistiku mezi vypínání serveru.
 * [pg_stat_statements. Track](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) – výběr příkazů, které jsou sledovány pomocí pg_stat_statements
-* [pg_stat_statements. track_utility](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) – vybírá, zda jsou příkazy nástrojů sledovány pomocí pg_stat_statements
+* [pg_stat_statements. track_utility](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) – vybere, zda jsou příkazy nástrojů sledovány pomocí pg_stat_statements
 * [quote_all_identifiers](https://www.postgresql.org/docs/current/runtime-config-compatible.html#GUC-QUOTE-ALL-IDENTIFIERS) – při generování fragmentů SQL se v uvozovkách všechny identifikátory
 * [random_page_cost](https://www.postgresql.org/docs/current/runtime-config-query.html#GUC-RANDOM-PAGE-COST) – nastaví odhad nákladů na stránku nesekvenčního načtení disku.
 * [row_security](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-ROW-SECURITY) – povolí zabezpečení řádků.

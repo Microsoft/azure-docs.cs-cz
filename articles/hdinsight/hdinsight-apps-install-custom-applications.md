@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 9fd8152b4180d44d3b822feef7e74e267b6b948a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086496"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace vlastních aplikací Apache Hadoop ve službě Azure HDInsight
@@ -129,7 +129,7 @@ Pokud se instalace aplikace nezdařila, můžete zobrazit chybové zprávy a inf
 1. Vyberte cluster, do kterého jste nainstalovali aplikaci.
 1. V nabídce **Nastavení** vyberte **aplikace**.
 1. Klikněte pravým tlačítkem na aplikaci, kterou chcete odebrat, a pak vyberte **Odstranit**.
-1. Výběrem **Ano** potvrďte.
+1. Akci potvrďte výběrem **Ano**.
 
 ### <a name="azure-cli"></a>Azure CLI
 

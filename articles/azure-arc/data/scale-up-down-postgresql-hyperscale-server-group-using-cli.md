@@ -10,17 +10,17 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: dc77b3c8bc357b63047d20afa9493bbaaff77113
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285311"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>Horizontální navýšení a snížení kapacity Azure Database for PostgreSQL skupiny serverů se škálováním na více systému pomocí rozhraní CLI (azdata nebo kubectl)
 
 
 
-V některých případech může být nutné změnit vlastnosti nebo definici skupiny serverů. Příklad:
+V některých případech může být nutné změnit vlastnosti nebo definici skupiny serverů. Například:
 
 - Horizontální navýšení nebo snížení počtu virtuální jádraů, které používá každý koordinátor nebo pracovní uzly
 - Horizontální navýšení nebo snížení kapacity paměti, kterou používá každý koordinátor nebo pracovní uzly
@@ -126,7 +126,7 @@ Tím přejdete do editoru VI, kde můžete procházet a měnit konfiguraci. K na
 > [!CAUTION]
 > Níže je uveden příklad, který ilustruje, jak můžete upravit konfiguraci. Před aktualizací konfigurace se ujistěte, že jste nastavili parametry na hodnoty, které může cluster Kubernetes akceptovat.
 
-Příklad:
+Například:
 - Min vCore = 2-> scheduling\default\resources\requests\cpu
 - Max vCore = 4 – > scheduling\default\resources\limits\cpu
 - Minimální paměť = 512 MB – > scheduling\default\resources\requests\cpu
@@ -183,7 +183,7 @@ Pro horizontální navýšení kapacity skupiny serverů spusťte stejný přík
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Horizontální navýšení kapacity Azure Database for PostgreSQL skupiny serverů s škálovatelným škálováním](scale-out-postgresql-hyperscale-server-group.md)
+- [Škálování skupiny serverů Azure Database for PostgreSQL Hyperscale na více instancí](scale-out-postgresql-hyperscale-server-group.md)
 - [Koncepty konfigurace úložiště a Kubernetes úložiště](storage-configuration.md)
 - [Rozšiřování deklarací trvalých svazků](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Model prostředků Kubernetes](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

@@ -8,10 +8,10 @@ ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
 ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320047"
 ---
 # <a name="managed-application-metered-billing"></a>Spravovaná fakturace podle objemu spravované aplikace 
@@ -67,7 +67,7 @@ Fakturační dimenze se sdílejí napříč všemi plány nabídky. Některé at
 Atributy, které definují vlastní dimenzi, jsou sdíleny ve všech plánech nabídky. Před publikováním této nabídky ovlivní změna těchto atributů z kontextu libovolného plánu definici dimenze ve všech plánech. Po publikování této nabídky již nebude možné tyto atributy upravovat. Atributy jsou:
 
 * Identifikátor
-* Název
+* Name
 * Jednotka měření
 
 Ostatní atributy dimenze jsou specifické pro každý plán a můžou mít různé hodnoty od plánu k plánování.  Před publikováním plánu můžete tyto hodnoty upravit a bude to mít vliv pouze na tento plán. Po publikování plánu už tyto atributy nebude možné upravovat. Atributy jsou:
@@ -93,7 +93,7 @@ Dimenze použitá v rámci služby měření na webu Marketplace představuje po
 Po publikování nabídky s dimenzí již nelze změnit podrobnosti na úrovni nabídky pro tuto dimenzi:
 
 * Identifikátor
-* Název
+* Name
 * Jednotka měření
 
 Po publikování plánu se podrobnosti na úrovni plánu už nedají změnit:
@@ -109,7 +109,7 @@ Po publikování plánu se podrobnosti na úrovni plánu už nedají změnit:
 
 Maximální počet dimenzí, které lze konfigurovat pro jednu nabídku, je 18 jedinečných dimenzí.
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
 Pokud máte některý z následujících problémů, můžete otevřít lístek podpory.
 

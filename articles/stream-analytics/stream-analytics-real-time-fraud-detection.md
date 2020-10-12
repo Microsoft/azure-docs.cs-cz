@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: 3bfc03dd7a04bea7e69aa1b62cef267a81b650f1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86037609"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Začínáme používat Azure Stream Analytics: zjišťování podvodů v reálném čase
@@ -37,7 +37,7 @@ V tomto kurzu simulujete data telefonního hovoru pomocí klientské aplikace, k
 
 Než začnete, ujistěte se, že jste provedli následující akce:
 
-* Účet Azure.
+* Účet Azure:
 * Aplikace generátoru událostí volání, [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), která se dá stáhnout z webu Microsoft Download Center. Rozbalí tento balíček do složky ve vašem počítači. Pokud chcete zobrazit zdrojový kód a spustit aplikaci v ladicím programu, můžete získat zdrojový kód aplikace z [GitHubu](https://aka.ms/azure-stream-analytics-telcogenerator). 
 
     >[!NOTE]
@@ -371,7 +371,7 @@ Pokud máte existující účet Blob Storage, můžete ho použít. V tomto kurz
 
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
-   |Alias pro výstup  |  CallStream – Podvodnávolání   |  Zadejte název pro identifikaci výstupu úlohy.   |
+   |Alias pro výstup  |  CallStream-FraudulentCalls   |  Zadejte název pro identifikaci výstupu úlohy.   |
    |Předplatné   |  \<Your subscription\> |  Zadejte předplatné Azure vytvořeného účtu úložiště. Účet úložiště můžete využívat v rámci stejného, ale i jiného předplatného. V tomto příkladu se předpokládá, že jste účet vytvořili v rámci stejného předplatného. |
    |Účet úložiště  |  asaehstorage |  Zadejte název účtu úložiště, který jste vytvořili. |
    |Kontejner  | ASA-podvodnávolání-demo | Vyberte vytvořit nový a zadejte název kontejneru. |
@@ -418,7 +418,7 @@ Pokud jste ale hotovi a nepotřebujete prostředky, které jste vytvořili, mů�
 5. Odstraňte centrum událostí.
 6. Odstraňte obor názvů centra událostí.
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
 Pokud chcete získat další pomoc, zkuste [Azure Stream Analytics na stránce s dotazem pro Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808158"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Řešení chyb Chybná brána ve službě Application Gateway
@@ -82,7 +82,7 @@ Při zřizování instance služby Application Gateway automaticky nakonfiguruje
 
 Následující tabulka uvádí hodnoty spojené s výchozím testem stavu:
 
-| Vlastnost sondy | Hodnota | Description |
+| Vlastnost sondy | Hodnota | Popis |
 | --- | --- | --- |
 | Adresa URL testu paměti |`http://127.0.0.1/` |Cesta URL |
 | Interval |30 |Interval testu paměti v sekundách |
@@ -106,10 +106,10 @@ Vlastní sondy stavu umožňují větší flexibilitu při výchozím chování 
 
 Jsou přidány následující další vlastnosti:
 
-| Vlastnost sondy | Description |
+| Vlastnost sondy | Popis |
 | --- | --- |
-| Name |Název sondy. Tento název se používá k odkazování na test v nastavení back-endu protokolu HTTP. |
-| Protocol (Protokol) |Protokol použitý k odeslání testu. Sonda používá protokol definovaný v nastavení back-endu HTTP. |
+| Název |Název sondy. Tento název se používá k odkazování na test v nastavení back-endu protokolu HTTP. |
+| Protokol |Protokol použitý k odeslání testu. Sonda používá protokol definovaný v nastavení back-endu HTTP. |
 | Hostitel |Název hostitele, který má odeslat test. Dá se použít jenom v případě, že je na aplikační bráně nakonfigurovaný vícenásobný Web. To se liší od názvu hostitele virtuálního počítače. |
 | Cesta |Relativní cesta sondy. Platná cesta začíná znakem/. Sonda se posílá do \<protocol\> :// \<host\> :\<port\>\<path\> |
 | Interval |Interval testu paměti v sekundách. Toto je časový interval mezi dvěma po sobě jdoucími sondami. |

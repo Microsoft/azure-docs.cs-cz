@@ -7,10 +7,10 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: 3a11f77384c520bed9824841269be4ad998adba4
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056196"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>Reakce modulu plug-in pro Application Insights JavaScript SDK
@@ -64,7 +64,7 @@ export default withAITracking(reactPlugin,appInsights, MyComponent);
 
 ## <a name="configuration"></a>Konfigurace
 
-| Name    | Výchozí | Popis                                                                                                    |
+| Name    | Výchozí | Description                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
 | historie | null    | Reagovat na historii směrovače. Další informace najdete v dokumentaci k balíčku s informacemi o [směrovači](https://reactrouter.com/web/api/history). Pokud se chcete dozvědět, jak přistupovat k objektu History mimo součásti, přečtěte si [Nejčastější dotazy k reakci – směrovač](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components) .    |
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/08/2020
 ms.author: terrylan
 ms.openlocfilehash: 3b047489f9cfa3623c11e324cf58114b707c10b7
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567859"
 ---
 # <a name="azure-network-architecture"></a>Architektura sítě Azure
@@ -61,7 +61,7 @@ Výše uvedené síťové součásti jsou navržené tak, aby poskytovaly maxim�
 ## <a name="datacenter-network-resiliency"></a>Odolnost sítě Datacenter
 Podívejme se na princip návrhu odolnosti pomocí sítě Datacenter.
 
-Síť datacenter je upravená verze [sítí Clos sítě](https://en.wikipedia.org/wiki/Clos_network), která poskytuje vysokou mezigeografickou šířku pásma pro přenosy v cloudovém měřítku. Síť je vytvořená pomocí velkého počtu komoditních zařízení, aby se snížil dopad způsobený selháním jednotlivých hardwaru. Tato zařízení jsou strategicky umístěná v různých fyzických umístěních se samostatnou elektrickou a chladicí doménou, aby se snížil dopad události prostředí.  Na rovině ovládacího prvku jsou všechna síťová zařízení spuštěná jako režim směrování vrstvy modelů OSI 3, což eliminuje historický problém s cyklem provozu. Všechny cesty mezi různými úrovněmi jsou aktivní, aby poskytovaly vysokou redundanci a šířku pásma pomocí směrování s rovnými náklady (ECMP).
+Síť datacenter je upravená verze [sítí Clos sítě](https://en.wikipedia.org/wiki/Clos_network), která poskytuje vysokou mezigeografickou šířku pásma pro přenosy v cloudovém měřítku. Síť je vytvořená pomocí velkého počtu komoditních zařízení, aby se snížil dopad způsobený selháním jednotlivých hardwaru. Tato zařízení jsou strategicky umístěná v různých fyzických umístěních se samostatnou elektrickou a chladicí doménou, aby se snížil dopad události prostředí.  Na rovině ovládacího prvku jsou všechna síťová zařízení spuštěná jako režim směrování vrstvy modelů OSI 3, což eliminuje historický problém s cyklem provozu. Všechny cesty mezi různými úrovněmi jsou aktivní, aby poskytovaly vysokou redundanci a šířku pásma pomocí směrování Equal-Cost ECMP (multi-Path).
 
 Následující diagram znázorňuje, že síť datacenter je vytvořená různými úrovněmi síťových zařízení. Pruhy v diagramu představují skupiny síťových zařízení, které poskytují redundanci a vysokou šířku pásma připojení.
 

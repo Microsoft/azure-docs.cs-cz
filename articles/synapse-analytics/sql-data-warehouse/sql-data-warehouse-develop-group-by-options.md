@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 260bd7cc6402a7cb4ed17d004d0f61b7462c51d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85213444"
 ---
 # <a name="group-by-options-in-synapse-sql-pool"></a>Možnosti seskupení v synapse fondu SQL
@@ -52,8 +52,8 @@ GROUP BY ROLLUP (
 Pomocí SOUHRNu si předchozí příklad vyžádá následující agregace:
 
 * Země a oblast
-* Země
-* Grand Total
+* Country
+* Celkový součet
 
 Chcete-li nahradit souhrn a vrátit stejné výsledky, můžete použít příkaz UNION ALL a explicitně zadat požadované agregace:
 
