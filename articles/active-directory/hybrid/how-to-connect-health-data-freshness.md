@@ -16,10 +16,10 @@ ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 63d1d87d9b576a8e181b5b339052a6b6512f18a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85359224"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Data služby Health Service nejsou aktuální. upozornění
@@ -43,12 +43,12 @@ Následující tabulka mapuje typy služby na odpovídající požadované datov
 
 | Typ služby | Agent (název služby systému Windows) | Účel | Generovaný datový typ  |
 | --- | --- | --- | --- |  
-| Azure AD Connect (synchronizace) | Služba analýz synchronizace služby Azure AD Connect Health | Shromažďování informací specifických pro AAD Connect (konektory, synchronizační pravidla atd.) | - AadSyncService-SynchronizationRules <br />  -AadSyncService-konektory <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
+| Azure AD Connect (synchronizace) | Služba analýz synchronizace služby Azure AD Connect Health | Shromažďování informací specifických pro AAD Connect (konektory, synchronizační pravidla atd.) | -AadSyncService-SynchronizationRules <br />  -AadSyncService-Connectors <br /> -AadSyncService-GlobalConfigurations  <br />  -AadSyncService-RunProfileResults <br /> -AadSyncService-ServiceConfigurations <br /> -AadSyncService-ServiceStatus   |
 |  | Služba monitorování synchronizace služby Azure AD Connect Health | Shromažďování čítačů výkonu pro AAD Connect, trasování ETW, soubory | Čítač výkonu |
 | AD DS | Služba analýz AD DS pro Azure AD Connect Health | Provádět syntetické testy, shromažďovat informace o topologii, metadata replikace |  -Přidat-TopologyInfo-JSON <br /> -Common-TestData-JSON (vytvoří výsledky testu)   | 
 |  | Služba monitorování AD DS pro Azure AD Connect Health | Shromažďování čítačů výkonu specifických pro přidání, trasování ETW, soubory | – Čítač výkonu  <br /> -Common-TestData-JSON (odesílá výsledky testu)  |
 | AD FS | Diagnostické služby AD FS pro Azure AD Connect Health | Provádět syntetické testy | TestResult (vytvoří výsledky testu) | 
-| | Služba analýz AD FS pro Azure AD Connect Health  | Shromažďovat metriky využití služby AD FS | ADFS – UsageMetrics |
+| | Služba analýz AD FS pro Azure AD Connect Health  | Shromažďovat metriky využití služby AD FS | Adfs-UsageMetrics |
 | | Služba monitorování AD FS pro Azure AD Connect Health | Shromažďování čítačů výkonu specifických pro AD FS, trasování ETW, soubory | TestResult (nahrává výsledky testu) |
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží 
@@ -58,8 +58,8 @@ Postup potřebný k diagnostice tohoto problému je uveden níže. První je sad
 > [!IMPORTANT] 
 > Tato výstraha následuje po připojení [zásady uchovávání dat](reference-connect-health-user-privacy.md#data-retention-policy) stavu.
 
-* Ujistěte se, že jsou nainstalované nejnovější verze agentů. Zobrazit [historii verzí](reference-connect-health-version-history.md). 
-* Ujistěte se, že na počítači **běží** služby Azure AD Connect Health agenti. Například Connect Health for AD FS by měl mít tři služby.
+* Ujistěte se, že jsou nainstalované nejnovější verze agentů. Projděte si [historii vydaných verzí](reference-connect-health-version-history.md). 
+* Ujistěte se, že jsou na počítači **spuštěné** služby agentů Azure AD Connect Health. Například služba Connect Health pro AD FS by měla mít tři služby.
   ![Ověření Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
 
 * Ujistěte se, že překročíte a splňujete [část požadavky](how-to-connect-health-agent-install.md#requirements).

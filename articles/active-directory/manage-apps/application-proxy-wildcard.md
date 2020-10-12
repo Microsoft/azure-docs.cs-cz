@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85367729"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikace se zástupnými znaky v proxy aplikace Azure Active Directory
@@ -68,7 +68,7 @@ Z bezpečnostních důvodů je to pevný požadavek a nebudeme podporovat zástu
 
 ### <a name="dns-updates"></a>Aktualizace DNS
 
-Při použití vlastních domén potřebujete vytvořit záznam DNS s záznamem CNAME pro externí adresu URL (například `*.adventure-works.com` ) odkazující na externí adresu URL koncového bodu proxy aplikace. V případě aplikací se zástupnými znaky musí záznam CNAME ukazovat na příslušné externí adresy URL:
+Při použití vlastních domén potřebujete vytvořit záznam DNS s záznamem CNAME pro externí adresu URL (například  `*.adventure-works.com` ) odkazující na externí adresu URL koncového bodu proxy aplikace. V případě aplikací se zástupnými znaky musí záznam CNAME ukazovat na příslušné externí adresy URL:
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
@@ -84,7 +84,7 @@ V případě aplikací se zástupnými znaky musí být **interní adresa URL** 
 
 ![Pro interní adresu URL použijte formát http (s)://*. \<> domény](./media/application-proxy-wildcard/22.png)
 
-Při konfiguraci **externí adresy URL**je nutné použít následující formát:`https://*.<custom domain>`
+Při konfiguraci **externí adresy URL**je nutné použít následující formát: `https://*.<custom domain>`
 
 ![Pro externí adresu URL použijte formát https://*. \< vlastní doména>](./media/application-proxy-wildcard/21.png)
 
@@ -132,7 +132,7 @@ Všechny tři aplikace:
 
 Pomocí kroků uvedených v části [publikování aplikací pomocí Azure proxy aplikací služby AD](application-proxy-add-on-premises-application.md)můžete publikovat aplikaci se zástupnými znaky. Tento scénář předpokládá:
 
-- Tenant s následujícím ID:`000aa000-11b1-2ccc-d333-4444eee4444e`
+- Tenant s následujícím ID: `000aa000-11b1-2ccc-d333-4444eee4444e`
 - Byla nakonfigurována ověřená doména s názvem `adventure-works.com` .
 - Záznam **CNAME** , který odkazuje `*.adventure-works.com` na, byl `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` vytvořen.
 
@@ -156,9 +156,9 @@ Konfigurace implementuje následující strukturu:
 
 ![Zobrazuje strukturu implementovanou ukázkovou konfigurací.](./media/application-proxy-wildcard/05.png)
 
-| Barva | Description |
+| Color | Popis |
 | ---   | ---         |
-| Blue  | Aplikace jsou explicitně publikované a viditelné v Azure Portal. |
+| Modrý  | Aplikace jsou explicitně publikované a viditelné v Azure Portal. |
 | Les  | Aplikace, ke kterým můžete přistupovat přes nadřazenou aplikaci. |
 
 ## <a name="scenario-2-general-wildcard-application-with-exception"></a>Scénář 2: Obecná aplikace se zástupnými znaky s výjimkou

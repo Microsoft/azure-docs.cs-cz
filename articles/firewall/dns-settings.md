@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 9c7182205df8d276bece4758d6d4430864883d32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85610638"
 ---
 # <a name="azure-firewall-dns-settings-preview"></a>Azure Firewall nastavení DNS (Preview)
@@ -66,7 +66,7 @@ Pokud chcete nakonfigurovat proxy server DNS, musíte nakonfigurovat nastavení 
 4. Zkontrolujte konfiguraci **serverů DNS** a ujistěte se, že nastavení jsou vhodná pro vaše prostředí.
 5. Vyberte **Uložit**.
 
-:::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="Proxy server DNS":::
+:::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="Servery DNS":::
 
 ## <a name="next-steps"></a>Další kroky
 

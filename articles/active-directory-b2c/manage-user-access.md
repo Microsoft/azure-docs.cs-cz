@@ -11,10 +11,10 @@ ms.date: 07/24/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 084284037b02ce02d1e46a61a69d6e60cc89a36b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85387724"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Správa přístupu uživatelů v Azure Active Directory B2C
@@ -78,7 +78,7 @@ Následující kroky ukazují logiku, která se používá k výpočtu **ageGrou
 
 4. Pokud žádný výpočet nevrátí hodnotu true, výpočet vrátí **dospělý**.
 
-Pokud aplikace spolehlivě shromáždila data DOB nebo země nebo oblasti jinými metodami, aplikace může použít Graph API k aktualizaci záznamu uživatele s těmito informacemi. Příklad:
+Pokud aplikace spolehlivě shromáždila data DOB nebo země nebo oblasti jinými metodami, aplikace může použít Graph API k aktualizaci záznamu uživatele s těmito informacemi. Například:
 
 - Pokud je uživatel známý jako dospělý, aktualizujte atribut adresáře **ageGroup** hodnotou **dospělé**.
 - Je-li uživatel znám jako nepatrný, aktualizujte atribut adresáře **ageGroup** hodnotou **podverze** a podle potřeby nastavte **consentProvidedForMinor**.

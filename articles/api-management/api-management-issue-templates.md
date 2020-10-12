@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85846855"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Vystavení šablon v Azure API Management
@@ -34,7 +34,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="issue-list"></a><a name="IssueList"></a>Seznam problémů  
+##  <a name="issue-list"></a><a name="IssueList"></a> Seznam problémů  
  Šablona **seznam problémů** vám umožní přizpůsobit tělo stránky se seznamem problémů na portálu pro vývojáře.  
   
  ![Portál pro vývojáře seznamu problémů](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "Portál pro vývojáře seznam problémů APIM")  
@@ -102,8 +102,8 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 |--------------|----------|-----------------|  
 |`Issues`|Kolekce entit [problémů](api-management-template-data-model-reference.md#Issue) .|Problémy viditelné pro aktuálního uživatele.|  
 |`Paging`|Entita [stránkování](api-management-template-data-model-reference.md#Paging)|Informace o stránkování kolekce aplikací.|  
-|`IsAuthenticated`|Boolean|Určuje, jestli je aktuální uživatel přihlášený k portálu pro vývojáře.|  
-|`CanReportIssues`|Boolean|Zda má aktuální uživatel oprávnění k zastavení problému.|  
+|`IsAuthenticated`|boolean|Určuje, jestli je aktuální uživatel přihlášený k portálu pro vývojáře.|  
+|`CanReportIssues`|boolean|Zda má aktuální uživatel oprávnění k zastavení problému.|  
 |`Search`|řetězec|Tato vlastnost je zastaralá a neměla by se používat.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  

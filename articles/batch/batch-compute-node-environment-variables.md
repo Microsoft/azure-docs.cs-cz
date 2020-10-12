@@ -4,10 +4,10 @@ description: Doprovodné materiály k proměnnou prostředí modulu runtime úlo
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.openlocfilehash: 6b8ade312146802ede6e12181a082a8fcd3842fe
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85960907"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Proměnné prostředí Azure Batch runtime
@@ -52,7 +52,7 @@ Příkazové řádky spouštěné úkoly na výpočetních uzlech neběží v pr
 | AZ_BATCH_NODE_ID                | ID uzlu, ke kterému je úkol přiřazen | Všechny úlohy. | TVM – 1219235766_3 – 20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | Pokud `true` je aktuální uzel vyhrazený uzel. `false`Je-li, jedná se o [uzel s nízkou prioritou](batch-low-pri-vms.md). | Všechny úlohy. | `true` |
 | AZ_BATCH_NODE_LIST              | Seznam uzlů, které jsou přiděleny úloze s [více instancemi][multi_instance] ve formátu `nodeIP;nodeIP` . | Primární a dílčí úkoly s více instancemi. | `10.0.0.4;10.0.0.5` |
-| AZ_BATCH_NODE_MOUNTS_DIR        | Úplná cesta k umístění pro [připojení systému souborů](virtual-file-mount.md) na úrovni uzlu, kde jsou umístěny všechny adresáře připojení. Sdílené složky systému Windows používají písmeno jednotky, takže pro Windows je připojená jednotka součástí zařízení a jednotek.  |  Všechny úlohy, včetně spouštěcího úkolu, mají přístup k uživateli, protože uživatel ví o oprávněních k připojení k připojenému adresáři. | V Ubuntu je například umístění:`/mnt/batch/tasks/fsmounts` |
+| AZ_BATCH_NODE_MOUNTS_DIR        | Úplná cesta k umístění pro [připojení systému souborů](virtual-file-mount.md) na úrovni uzlu, kde jsou umístěny všechny adresáře připojení. Sdílené složky systému Windows používají písmeno jednotky, takže pro Windows je připojená jednotka součástí zařízení a jednotek.  |  Všechny úlohy, včetně spouštěcího úkolu, mají přístup k uživateli, protože uživatel ví o oprávněních k připojení k připojenému adresáři. | V Ubuntu je například umístění: `/mnt/batch/tasks/fsmounts` |
 | AZ_BATCH_NODE_ROOT_DIR          | Úplná cesta kořene všech [adresářů Batch][files_dirs] na uzlu. | Všechny úlohy. | C:\user\tasks |
 | AZ_BATCH_NODE_SHARED_DIR        | Úplná cesta ke [sdílenému adresáři][files_dirs] na uzlu. Všechny úlohy, které se spouštějí na uzlu, mají k tomuto adresáři přístup pro čtení a zápis. Úlohy, které se spouštějí na jiných uzlech, nemají vzdálený přístup k tomuto adresáři (nejedná se o sdílený síťový adresář). | Všechny úlohy. | C:\user\tasks\shared |
 | AZ_BATCH_NODE_STARTUP_DIR       | Úplná cesta k [adresáři spouštěcího úkolu][files_dirs] na uzlu. | Všechny úlohy. | C:\user\tasks\startup |
@@ -61,7 +61,7 @@ Příkazové řádky spouštěné úkoly na výpočetních uzlech neběží v pr
 | AZ_BATCH_TASK_ID                | Číslo ID aktuálního úkolu. | Všechny úlohy s výjimkou spouštěcího úkolu. | task001 |
 | AZ_BATCH_TASK_SHARED_DIR | Cesta k adresáři, která je stejná pro primární úlohu a každý dílčí úkol úlohy s [více instancemi][multi_instance]. Cesta existuje na každém uzlu, na kterém je spuštěná úloha s více instancemi, a je přístup pro čtení a zápis dostupný pro příkazy úkolu spuštěné v tomto uzlu ( [příkaz koordinace][coord_cmd] i [příkaz aplikace][app_cmd]). Dílčí úkoly nebo primární úlohy, které se spouštějí na jiných uzlech, nemají vzdálený přístup k tomuto adresáři (nejedná se o sdílený síťový adresář). | Primární a dílčí úkoly s více instancemi. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
 | AZ_BATCH_TASK_WORKING_DIR       | Úplná cesta [pracovního adresáře úkolu][files_dirs] na uzlu. Aktuálně spuštěná úloha má k tomuto adresáři přístup pro čtení a zápis. | Všechny úlohy. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
-| CCP_NODES                       | Seznam uzlů a počet jader na uzel, které jsou přiděleny k [úloze s více instancemi][multi_instance]. Uzly a jádra jsou uvedené ve formátu.`numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, kde je počet uzlů následován jednou nebo více IP adresami uzlu a počtem jader pro každý z nich. |  Primární a dílčí úkoly s více instancemi. |`2 10.0.0.4 1 10.0.0.5 1` |
+| CCP_NODES                       | Seznam uzlů a počet jader na uzel, které jsou přiděleny k [úloze s více instancemi][multi_instance]. Uzly a jádra jsou uvedené ve formátu. `numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, kde je počet uzlů následován jednou nebo více IP adresami uzlu a počtem jader pro každý z nich. |  Primární a dílčí úkoly s více instancemi. |`2 10.0.0.4 1 10.0.0.5 1` |
 
 [files_dirs]: ./files-and-directories.md
 [multi_instance]: ./batch-mpi.md

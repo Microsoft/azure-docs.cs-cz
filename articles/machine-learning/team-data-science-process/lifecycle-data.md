@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 85d7159edb1bc8608165264578d77519bf09efc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195066"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Získávání dat a porozumění fázi vědeckého zpracování týmových dat
@@ -47,7 +47,7 @@ V této fázi jsou řešeny tři hlavní úlohy:
 ### <a name="ingest-the-data"></a>Ingestování dat
 Nastavte proces přesunu dat ze zdrojových umístění do cílových umístění, kde spouštíte analytické operace, jako je například školení a předpovědi. Technické podrobnosti a možnosti, jak přesunout data s různými datovými službami Azure, najdete v tématu [načtení dat do prostředí úložiště pro analýzu](ingest-data.md). 
 
-### <a name="explore-the-data"></a>Zkoumání dat
+### <a name="explore-the-data"></a>Prozkoumání dat
 Než začnete vytvářet své modely, je nutné vyvinout dobré znalosti dat. Reálné datové sady jsou často odolné proti chybám, neexistují žádné hodnoty nebo mají hostitele jiné nesrovnalosti. Souhrn a vizualizace dat můžete použít k auditování kvality vašich dat a poskytnutí informací, které potřebujete ke zpracování dat, než bude připravená k modelování. Tento proces je často iterativní.
 
 TDSP poskytuje automatizovaný nástroj označovaný jako [myšlenku](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils), který vám umožní vizualizovat data a připravit sestavy souhrnu dat. Doporučujeme nejprve začít s nástrojem myšlenku a prozkoumat data, která vám pomůžou při interaktivním vývoji počátečních dat bez kódování. Pak můžete napsat vlastní kód pro zkoumání a vizualizaci dat. Pokyny k čištění dat najdete v tématu [úlohy pro přípravu dat pro rozšířené strojové učení](prepare-data.md).  

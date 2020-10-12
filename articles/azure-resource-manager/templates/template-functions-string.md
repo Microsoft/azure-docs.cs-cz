@@ -4,10 +4,10 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 42df0317658971b9e9bf3fb805c9a5ff44efaf45
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85962063"
 ---
 # <a name="string-functions-for-arm-templates"></a>Řetězcové funkce pro šablony ARM
@@ -29,16 +29,16 @@ Správce prostředků poskytuje následující funkce pro práci s řetězci v �
 * [indexOf](#indexof)
 * [posledního](#last)
 * [lastIndexOf](#lastindexof)
-* [časový](#length)
+* [length](#length)
 * [newGuid](#newguid)
 * [padLeft](#padleft)
 * [náhrady](#replace)
 * [přímo](#skip)
 * [rozdělení](#split)
 * [startsWith](#startswith)
-* [řetězec](#string)
+* [řetezce](#string)
 * [podřetězec](#substring)
-* [nezbytná](#take)
+* [take](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
 * [sklon](#trim)
@@ -106,7 +106,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | base64Output | Řetězec | b25lLCB0d28sIHRocmVl |
 | toStringOutput | Řetězec | Jedna dva tři |
@@ -171,7 +171,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | base64Output | Řetězec | b25lLCB0d28sIHRocmVl |
 | toStringOutput | Řetězec | Jedna dva tři |
@@ -236,7 +236,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | base64Output | Řetězec | b25lLCB0d28sIHRocmVl |
 | toStringOutput | Řetězec | Jedna dva tři |
@@ -287,7 +287,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | concatOutput | Řetězec | prefix – 5yj4yjf5mbg72 |
 
@@ -328,7 +328,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | return | Pole | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -404,14 +404,14 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| stringTrue | Logická hodnota | True |
-| stringFalse | Logická hodnota | False |
-| objectTrue | Logická hodnota | True |
-| objectFalse | Logická hodnota | False |
-| arrayTrue | Logická hodnota | True |
-| arrayFalse | Logická hodnota | False |
+| stringTrue | Logická hodnota | Ano |
+| stringFalse | Logická hodnota | Nepravda |
+| objectTrue | Logická hodnota | Ano |
+| objectFalse | Logická hodnota | Nepravda |
+| arrayTrue | Logická hodnota | Ano |
+| arrayFalse | Logická hodnota | Nepravda |
 
 ## <a name="datauri"></a>dataUri
 
@@ -463,7 +463,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | dataUriOutput | Řetězec | data: text/prostý; charset = UTF8; Base64, SGVsbG8 = |
 | toStringOutput | Řetězec | Hello World! |
@@ -518,7 +518,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | dataUriOutput | Řetězec | data: text/prostý; charset = UTF8; Base64, SGVsbG8 = |
 | toStringOutput | Řetězec | Hello World! |
@@ -582,11 +582,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayEmpty | Logická hodnota | True |
-| objectEmpty | Logická hodnota | True |
-| stringEmpty | Logická hodnota | True |
+| arrayEmpty | Logická hodnota | Ano |
+| objectEmpty | Logická hodnota | Ano |
+| stringEmpty | Logická hodnota | Ano |
 
 ## <a name="endswith"></a>endsWith
 
@@ -645,14 +645,14 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| startsTrue | Logická hodnota | True |
-| startsCapTrue | Logická hodnota | True |
-| startsFalse | Logická hodnota | False |
-| endsTrue | Logická hodnota | True |
-| endsCapTrue | Logická hodnota | True |
-| endsFalse | Logická hodnota | False |
+| startsTrue | Logická hodnota | Ano |
+| startsCapTrue | Logická hodnota | Ano |
+| startsFalse | Logická hodnota | Nepravda |
+| endsTrue | Logická hodnota | Ano |
+| endsCapTrue | Logická hodnota | Ano |
+| endsFalse | Logická hodnota | Nepravda |
 
 ## <a name="first"></a>první
 
@@ -701,7 +701,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayOutput | Řetězec | jeden |
 | stringOutput | Řetězec | O |
@@ -759,7 +759,7 @@ Následující příklad šablony ukazuje, jak použít funkci Format.
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | formatTest | Řetězec | Hello, User. Naformátované číslo: 8 175 133 |
 
@@ -887,7 +887,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | první | Int | 0 |
 | Poslední | Int | 3 |
@@ -942,7 +942,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayOutput | Řetězec | 3 |
 | stringOutput | Řetězec | e |
@@ -1000,7 +1000,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | první | Int | 0 |
 | Poslední | Int | 3 |
@@ -1078,7 +1078,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
@@ -1135,7 +1135,7 @@ Následující příklad šablony ukazuje parametr s novým identifikátorem.
 
 Výstup z výše uvedeného příkladu se u každého nasazení liší, ale bude vypadat přibližně takto:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | guidOutput | řetězec | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
@@ -1178,7 +1178,7 @@ Následující příklad používá funkci newGuid k vytvoření jedinečného n
 
 Výstup z výše uvedeného příkladu se u každého nasazení liší, ale bude vypadat přibližně takto:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | nameOutput | řetězec | storagenziwvyru7uxie |
 
@@ -1229,7 +1229,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | stringOutput | Řetězec | 0000000123 |
 
@@ -1281,7 +1281,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | firstOutput | Řetězec | 1231231234 |
 | secondOutput | Řetězec | 123-123 – xxxx |
@@ -1349,7 +1349,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayOutput | Pole | ["tři"] |
 | stringOutput | Řetězec | 2 3 |
@@ -1365,7 +1365,7 @@ Vrátí pole řetězců, které obsahují podřetězce vstupního řetězce, kte
 | Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | inputString |Yes |řetězec |Řetězec, který má být rozdělen. |
-| delimiter |Yes |řetězec nebo pole řetězců |Oddělovač, který se má použít pro rozdělení řetězce. |
+| Oddělovač |Yes |řetězec nebo pole řetězců |Oddělovač, který se má použít pro rozdělení řetězce. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1408,7 +1408,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | firstOutput | Pole | ["One"; "Two"; "tři"] |
 | secondOutput | Pole | ["One"; "Two"; "tři"] |
@@ -1470,13 +1470,13 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| startsTrue | Logická hodnota | True |
-| startsCapTrue | Logická hodnota | True |
-| startsFalse | Logická hodnota | False |
-| endsTrue | Logická hodnota | True |
-| endsCapTrue | Logická hodnota | True |
+| startsTrue | Logická hodnota | Ano |
+| startsCapTrue | Logická hodnota | Ano |
+| startsFalse | Logická hodnota | Nepravda |
+| endsTrue | Logická hodnota | Ano |
+| endsCapTrue | Logická hodnota | Ano |
 | endsFalse | Logická hodnota | False |
 
 ## <a name="string"></a>řetězec
@@ -1544,7 +1544,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | objectOutput | Řetězec | {"valuet": 10, "Hodnotab": "example text"} |
 | arrayOutput | Řetězec | ["a", "b", "c"] |
@@ -1607,11 +1607,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | substringOutput | Řetězec | dva |
 
-## <a name="take"></a>nezbytná
+## <a name="take"></a>take
 
 `take(originalValue, numberToTake)`
 
@@ -1674,7 +1674,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayOutput | Pole | ["One"; "Two"] |
 | stringOutput | Řetězec | on |
@@ -1725,7 +1725,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | toLowerOutput | Řetězec | Jedna dva tři |
 | toUpperOutput | Řetězec | Jedna dva tři |
@@ -1776,7 +1776,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | toLowerOutput | Řetězec | Jedna dva tři |
 | toUpperOutput | Řetězec | Jedna dva tři |
@@ -1823,7 +1823,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | return | Řetězec | Jedna dva tři |
 
@@ -1926,7 +1926,7 @@ Vytvoří absolutní identifikátor URI kombinováním řetězce baseUri a relat
 
    * Pokud má **BaseUri** lomítka, ale nemá na konci lomítka, je vše od posledního lomítka odstraněno z **BaseUri** a výsledek je **BaseUri** , za nímž následuje **relativeUri**.
 
-Tady je pár příkladů:
+Tady je několik příkladů:
 
 ```
 uri('http://contoso.org/firstpath', 'myscript.sh') -> http://contoso.org/myscript.sh
@@ -1979,7 +1979,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | uriOutput | Řetězec | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | Řetězec | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
@@ -2034,7 +2034,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | uriOutput | Řetězec | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | Řetězec | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
@@ -2089,7 +2089,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | uriOutput | Řetězec | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | Řetězec | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |

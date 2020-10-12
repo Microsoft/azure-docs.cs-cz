@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: allensu
 ms.openlocfilehash: a5f3f8dbb83b23fc16fd1225e5a9cbeab16b9576
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81260237"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Azure CDN umístění POP podle zkratky
@@ -91,7 +91,7 @@ KIX | Ósaka, Japonsko | Asie
 LAA | Los Angeles, Kalifornie, USA | Severní Amerika: západní pobřeží USA
 LAB | Los Angeles, Kalifornie, USA | Severní Amerika: západní pobřeží USA
 ZPRÁVU | Los Angeles, Kalifornie, USA | Severní Amerika: západní pobřeží USA
-LAN | Los Angeles, Kalifornie, USA | Severní Amerika: západní pobřeží USA
+Síť LAN | Los Angeles, Kalifornie, USA | Severní Amerika: západní pobřeží USA
 LAX | Los Angeles, Kalifornie, USA | Severní Amerika: západní pobřeží USA
 ROVNANÝ | Londýn, Velká Británie | Evropa
 LGA | New York, New York, USA | Severní Amerika: východní pobřeží USA
@@ -144,7 +144,7 @@ SIN | Singapur | Asie
 SJC | San Jose, Kalifornie, USA | Severní Amerika: západní pobřeží USA
 SJO | San Jose, Kalifornie, USA | Severní Amerika: západní pobřeží USA
 ŠI | Stockholm, Švédsko | Evropa
-ODPIS | Sydney, Austrálie | Asie
+SYD | Sydney, Austrálie | Asie
 TIR | Čennaj, Indie | Asie
 TKA | Tokio, Japonsko | Asie
 TKB | Tokio, Japonsko | Asie

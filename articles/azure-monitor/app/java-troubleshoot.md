@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 4b6a7070b6b1b76a3f763105f4dce795f3e5c4be
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372514"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Řešení potíží a otázky a odpovědi v nástroji Application Insights
@@ -126,7 +126,7 @@ azure.application-insights.logger.level=trace
 
 ### <a name="java-agent"></a>Agent Java
 
-Pokud chcete povolit protokolování agenta JVM, aktualizujte [souborAI-Agent.xml](java-agent.md):
+Pokud chcete povolit protokolování agenta JVM, aktualizujte [ souborAI-Agent.xml](java-agent.md):
 
 ```xml
 <AgentLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
@@ -188,7 +188,7 @@ Application Insights používá `org.apache.http` . Toto je přemístěné v rá
 * [Napsat kód pro sledování využití vaší aplikace][track]
 * [Zachytávání diagnostických protokolů][javalogs]
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [Vystavení problému na GitHubu](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 

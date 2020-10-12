@@ -15,13 +15,13 @@ ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 04634a6efb6c17a823532a29ec273b088a4ad843
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272391"
 ---
-# <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Požadavky na zabezpečení pro SQL Server v Azure Virtual Machines
+# <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Důležité informace o zabezpečení pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Toto téma obsahuje obecné pokyny pro zabezpečení, které vám pomůžou navázat zabezpečený přístup k SQL Server instancí na virtuálním počítači Azure (VM).
@@ -59,7 +59,7 @@ Nakonec zvažte povolení šifrovaných připojení pro instanci databázového 
 
 ## <a name="encryption"></a>Šifrování
 
-Spravované disky nabízejí šifrování na straně serveru a Azure Disk Encryption. [Šifrování na straně serveru](/azure/virtual-machines/windows/disk-encryption) poskytuje šifrování v klidovém prostředí a chrání vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) používá technologii BITLOCKER nebo dm-crypt a integruje se s Azure Key Vault k šifrování operačního systému a datových disků. 
+Spravované disky nabízejí Server-Side šifrování a Azure Disk Encryption. [Šifrování na straně serveru](/azure/virtual-machines/windows/disk-encryption) poskytuje šifrování v klidovém prostředí a chrání vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) používá technologii Bitlocker nebo DM-Crypt a integruje se s Azure Key Vault k šifrování disků s operačním systémem a datovými disky. 
 
 ## <a name="use-a-non-default-port"></a>Použít jiný než výchozí port
 

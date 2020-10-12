@@ -4,10 +4,10 @@ description: Přečtěte si o převzetí služeb při selhání a selhání v Az
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87089528"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Místní převzetí služeb při selhání a zotavení po havárii
@@ -43,9 +43,9 @@ Převzetí služeb při selhání je dvě fáze:
 
 Pokud se chcete připojit k virtuálním počítačům Azure vytvořeným po převzetí služeb při selhání pomocí protokolu RDP/SSH, je potřeba mít několik požadavků.
 
-**Převzetí služeb** | **Umístění** | **Akce**
+**Převzetí služeb při selhání** | **Umístění** | **Akce**
 --- | --- | ---
-**Virtuální počítač Azure (Windows (** | Na místním počítači před převzetím služeb při selhání | **Přístup přes Internet**: Povolit protokol RDP. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejné**a že protokol RDP je povolený pro všechny profily v povolených aplikacích **brány Windows Firewall**  >  **Allowed Apps**.<br/><br/> **Přístup přes síť VPN typu Site-to-site**: na počítači povolte RDP. Ověřte, že je protokol RDP povolený v **bráně Windows Firewall**  ->  **povolené aplikace a funkce**pro **domény a privátní** sítě.<br/><br/>  Ujistěte se, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Přečtěte si další informace](https://support.microsoft.com/kb/3031135).<br/><br/> Při aktivaci převzetí služeb při selhání se ujistěte, že na virtuálním počítači nečekají žádné aktualizace Windows. Web Windows Update se může spustit při převzetí služeb při selhání a nebudete se moct přihlásit k virtuálnímu počítači, dokud se nedokončí aktualizace.
+**Virtuální počítač Azure (Windows (** | Na místním počítači před převzetím služeb při selhání | **Přístup přes Internet**: Povolit protokol RDP. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejné**a že protokol RDP je povolený pro všechny profily v povolených aplikacích **brány Windows Firewall**  >  **Allowed Apps**.<br/><br/> **Přístup přes síť VPN typu Site-to-site**: na počítači povolte RDP. Ověřte, že je protokol RDP povolený v **bráně Windows Firewall**  ->  **povolené aplikace a funkce**pro **domény a privátní** sítě.<br/><br/>  Ujistěte se, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135).<br/><br/> Při aktivaci převzetí služeb při selhání se ujistěte, že na virtuálním počítači nečekají žádné aktualizace Windows. Web Windows Update se může spustit při převzetí služeb při selhání a nebudete se moct přihlásit k virtuálnímu počítači, dokud se nedokončí aktualizace.
 **Virtuální počítač Azure s Windows** | Na virtuálním počítači Azure po převzetí služeb při selhání |  [Přidejte veřejnou IP adresu](https://aka.ms/addpublicip) pro tento virtuální počítač.<br/><br/> Pravidla skupiny zabezpečení sítě na virtuálním počítači služby převzetí služeb při selhání (a v podsíti Azure, ke které je připojeno), musí umožňovat příchozí připojení k portu RDP.<br/><br/> Zkontrolujte **diagnostiku spouštění** a ověřte snímek obrazovky virtuálního počítače. Pokud se nemůžete připojit, zkontrolujte, že je virtuální počítač spuštěný, a přečtěte si [tipy k odstraňování potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 **Virtuální počítač Azure se systémem Linux** | Na místním počítači před převzetím služeb při selhání | Ujistěte se, že je služba Secure Shell na virtuálním počítači nastavená tak, aby se automaticky spouštěla při spuštění systému.<br/><br/> Zkontrolujte, jestli pravidla brány firewall umožňují službě SSH připojit se k ní.
 **Virtuální počítač Azure se systémem Linux** | Na virtuálním počítači Azure po převzetí služeb při selhání | Pravidla skupiny zabezpečení sítě na virtuálním počítači služby převzetí služeb při selhání (a v podsíti Azure, ke které je připojené), musí umožňovat příchozí připojení k portu SSH.<br/><br/> [Přidejte veřejnou IP adresu](https://aka.ms/addpublicip) pro tento virtuální počítač.<br/><br/> Podívejte se na **diagnostiku spouštění** pro snímek obrazovky virtuálního počítače.<br/><br/>
@@ -54,7 +54,7 @@ Pokud se chcete připojit k virtuálním počítačům Azure vytvořeným po př
 
 Site Recovery poskytuje různé možnosti převzetí služeb při selhání.
 
-**Převzetí služeb** | **Podrobnosti** | **Obnovovací** | **Workflow** (Pracovní postup)
+**Převzetí služeb při selhání** | **Podrobnosti** | **Obnovovací** | **Workflow** (Pracovní postup)
 --- | --- | --- | ---
 **Testovací převzetí služeb při selhání** | Používá se ke spuštění podrobného postupu, který ověřuje vaši strategii BCDR bez ztráty dat nebo výpadků.| Vytvoří kopii virtuálního počítače v Azure bez dopadu na probíhající replikaci nebo v produkčním prostředí. | 1. Spusťte testovací převzetí služeb při selhání na jednom virtuálním počítači nebo na více virtuálních počítačích v plánu obnovení.<br/><br/> 2. Vyberte bod obnovení, který se použije pro testovací převzetí služeb při selhání.<br/><br/> 3. Vyberte síť Azure, ve které bude virtuální počítač Azure umístěný po jeho vytvoření po převzetí služeb při selhání. Síť se používá pouze k testovacímu převzetí služeb při selhání.<br/><br/> 4. Ověřte, zda se rozpracovalo v podrobnostech podle očekávání. Site Recovery automaticky vyčistí během přechodu k virtuálním počítačům vytvořeným v Azure.
 **Plánované převzetí služeb při selhání – Hyper-V**  | Obvykle se používá pro plánované výpadky.<br/><br/> Zdrojové virtuální počítače jsou vypnuté. Před spuštěním převzetí služeb při selhání se synchronizují nejnovější data. | Nulová ztráta dat pro plánovaný pracovní postup. | 1. Naplánování časového intervalu údržby a informování uživatelů<br/><br/> 2. Převeďte uživatelské aplikace do režimu offline.<br/><br/> 3. Inicializujte plánované převzetí služeb při selhání s nejnovějším bodem obnovení. Převzetí služeb při selhání se nespustí, pokud se počítač nevypne nebo pokud dojde k chybám.<br/><br/> 4. po převzetí služeb při selhání ověřte, že je replika virtuálního počítače Azure v Azure aktivní.<br/><br/> 5. Potvrďte převzetí služeb při selhání, aby se dokončilo. Akce potvrzení odstraní všechny body obnovení.
@@ -83,7 +83,7 @@ Během převzetí služeb při selhání můžete vybrat několik možností bod
 **Nejnovější konzistentní vzhledem k aplikacím** |  Tato možnost při převzetí služeb při selhání virtuálních počítačů na nejnovější bod obnovení, který je konzistentní vzhledem k aplikacím, zpracovaná Site Recovery, pokud jsou povolené body obnovení konzistentní vzhledem k aplikacím. V nastavení virtuálního počítače ověřte poslední bod obnovení.
 **Poslední zpracovaný vícenásobný virtuální počítač** | Tato možnost je k dispozici pro plány obnovení s povoleným konzistencí více virtuálních počítačů s jedním nebo více virtuálními počítači. Virtuální počítače s povoleným nastavením převezmou na nejnovější společný bod obnovení konzistentní s více virtuálními počítači. U všech ostatních virtuálních počítačů v plánu dojde k převzetí služeb při selhání na nejnovější zpracovaný bod obnovení.
 **Nejnovější konzistentní vzhledem k aplikacím pro více virtuálních počítačů** |  Tato možnost je k dispozici pro plány obnovení s povoleným konzistencí více virtuálních počítačů s jedním nebo více virtuálními počítači. Virtuální počítače, které jsou součástí replikační skupiny, převezmou nejnovější běžný bod obnovení konzistentní s aplikacemi pro více virtuálních počítačů. Jiné virtuální počítače převezme služby při selhání do svého nejnovějšího bodu obnovení konzistentního vzhledem k aplikacím.
-**Uživatelská** | Tuto možnost použijte, pokud chcete převzít služby při selhání určitého virtuálního počítače do konkrétního bodu obnovení v čase. Tato možnost není pro plány obnovení k dispozici.
+**Vlastní** | Tuto možnost použijte, pokud chcete převzít služby při selhání určitého virtuálního počítače do konkrétního bodu obnovení v čase. Tato možnost není pro plány obnovení k dispozici.
 
 > [!NOTE]
 > Body obnovení nelze migrovat do jiného trezoru Recovery Services.

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 725490316ef4fcbce197d5a29b7665b7de7014c9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85857125"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Ověřování služba-služba pomocí Azure Data Lake Storage Gen1 s využitím REST API
@@ -18,7 +18,7 @@ ms.locfileid: "85857125"
 > * [Pomocí Javy](data-lake-store-service-to-service-authenticate-java.md)
 > * [Pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [Pomocí Pythonu](data-lake-store-service-to-service-authenticate-python.md)
-> * [Pomocí rozhraní REST API](data-lake-store-service-to-service-authenticate-rest-api.md)
+> * [Použití REST API](data-lake-store-service-to-service-authenticate-rest-api.md)
 > 
 > 
 

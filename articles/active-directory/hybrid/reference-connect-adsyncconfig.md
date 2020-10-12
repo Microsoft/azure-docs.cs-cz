@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85850964"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: Reference prostředí PowerShell ADSyncConfig
@@ -134,7 +134,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncBasicReadPermissions udělí požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
+Funkce Set-ADSyncBasicReadPermissions poskytne požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
 1.
 Číst přístup k vlastnostem u všech atributů pro všechny objekty odvozeného počítače
 2.
@@ -307,7 +307,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncExchangeHybridPermissions udělí požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
+Funkce Set-ADSyncExchangeHybridPermissions poskytne požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
 1.
 Přístup k vlastnostem pro čtení/zápis u všech atributů pro všechny objekty potomků uživatele
 2.
@@ -475,7 +475,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncExchangeMailPublicFolderPermissions udělí požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
+Funkce Set-ADSyncExchangeMailPublicFolderPermissions poskytne požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
 1.
 Číst přístup k vlastnostem u všech atributů pro všechny objekty následníka PublicFolder
 
@@ -636,7 +636,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncMsDsConsistencyGuidPermissions udělí požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
+Funkce Set-ADSyncMsDsConsistencyGuidPermissions poskytne požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
 1.
 Přístup k vlastnostem pro čtení a zápis v atributu mS-DS-ConsistencyGuid pro všechny objekty potomků uživatelů
 
@@ -796,7 +796,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [-WhatIf] [
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncPasswordHashSyncPermissions udělí požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
+Funkce Set-ADSyncPasswordHashSyncPermissions poskytne požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
 1.
 Replikují se změny adresáře.
 2.
@@ -918,7 +918,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncPasswordWritebackPermissions udělí požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
+Funkce Set-ADSyncPasswordWritebackPermissions poskytne požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
 1.
 Resetování hesla u uživatelských objektů potomků
 2.
@@ -1078,7 +1078,7 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncRestrictedPermissions bude sestavovat oprávnění po přečtení poskytnutého účtu.
+Funkce Set-ADSyncRestrictedPermissions sebude sestupně oprávnění až po poskytnutý účet.
 Oprávnění k zpřísnění zahrnuje následující kroky:
 1. Zakázat dědění pro zadaný objekt
 2. Odebere všechny položky ACE u konkrétního objektu s výjimkou položek ACE specifických pro sebe.
@@ -1090,7 +1090,7 @@ Chceme, aby výchozí oprávnění zůstala beze změny, když se dostane do seb
    | Povolit | SYSTEM | Úplné řízení | Tento objekt |
    | Povolit | Enterprise Admins | Úplné řízení | Tento objekt |
    | Povolit | Domain Admins | Úplné řízení | Tento objekt | 
-   | Povolit | Administrators | Úplné řízení | Tento objekt |
+   | Povolit | Správci | Úplné řízení | Tento objekt |
    | Povolit | Podnikové řadiče domény | Vypsat obsah <br> Číst všechny vlastnosti <br> Oprávnění ke čtení | Tento objekt |
    | Povolit | Authenticated Users | Vypsat obsah <br> Číst všechny vlastnosti <br> Oprávnění ke čtení | Tento objekt |
 
@@ -1205,7 +1205,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
 ```
 
 ### <a name="description"></a>POPIS
-Funkce Set-ADSyncUnifiedGroupWritebackPermissions udělí požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
+Funkce Set-ADSyncUnifiedGroupWritebackPermissions poskytne požadovaná oprávnění účtu synchronizace AD, který zahrnuje následující:
 1.
 Obecný pro čtení, zápis, odstranění, odstranění stromu a Create\Delete podřízenou položku pro všechny typy objektů skupiny a podobjekty
 
@@ -1347,7 +1347,7 @@ Accept wildcard characters: False
 Tato rutina podporuje společné parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction a -WarningVariable.
 Další informace najdete v tématu about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="show-adsyncadobjectpermissions"></a>Zobrazit – ADSyncADObjectPermissions
+## <a name="show-adsyncadobjectpermissions"></a>Show-ADSyncADObjectPermissions
 
 ### <a name="synopsis"></a>SYNOPSE
 Zobrazí oprávnění zadaného objektu AD.

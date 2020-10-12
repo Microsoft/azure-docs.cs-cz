@@ -5,10 +5,10 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: 80ece6cb6bb81b7ce168da997603e17d1238171b
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921886"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Co je nového ve službě Azure blockchain?
@@ -123,7 +123,7 @@ Pokud je to možné, použijte hodnotu konzervativního plynu pro odeslání tra
 
 ### <a name="unbounded-loops-in-smart-contracts-reduces-performance"></a>Neohraničené smyčky v inteligentních kontraktech snižují výkon
 
-Vyhněte se neohraničeným smyčkám v rámci inteligentních kontraktů, protože mohou snížit výkon. Další informace najdete v následujících materiálech:
+Vyhněte se neohraničeným smyčkám v rámci inteligentních kontraktů, protože mohou snížit výkon. Další informace naleznete v následujících zdrojích:
 
 - [Vyhněte se neohraničeným smyčkám](https://blog.b9lab.com/getting-loopy-with-solidity-1d51794622ad )
 - [Doporučené postupy zabezpečení pro inteligentní kontrakty](https://github.com/ConsenSys/smart-contract-best-practices)

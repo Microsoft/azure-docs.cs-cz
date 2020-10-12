@@ -4,10 +4,10 @@ description: Naučte se, jak přenést data do projektu aplikace Azure Notebooks
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: b3669128582d3bdd6a3c4506a040856ab7b07e9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85834110"
 ---
 # <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>Práce s datovými soubory v Azure Notebooks projektech ve verzi Preview
@@ -114,4 +114,4 @@ Můžete také vybrat soubor a použít příkaz **ke stažení** (Klávesová z
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přístup ke cloudovým datům v poznámkovém bloku](access-data-resources-jupyter-notebooks.md)
+- [Přístup k datům v cloudu v poznámkovém bloku](access-data-resources-jupyter-notebooks.md)

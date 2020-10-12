@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: b0aff8298ac2335e5216252eb2cbd5a393cc37d5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86524992"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>Správa prostředků a aktivit privátního cloudu
@@ -46,7 +46,7 @@ Zobrazí komplexní souhrn vybraného privátního cloudu.  Stránka Souhrn obsa
 * [Spusťte klienta vSphere](./vcenter-access.md). Přístup k vCenter pro tento privátní cloud.
 * [Koupit uzly](create-nodes.md). Přidejte uzly do tohoto privátního cloudu.
 * [Rozbalte](expand-private-cloud.md). Přidejte uzly do tohoto privátního cloudu.
-* **Aktualizovat**. Aktualizujte informace na této stránce.
+* **Aktualizovat** Aktualizujte informace na této stránce.
 * **Odstraňte**. Privátní Cloud můžete kdykoli odstranit. **Před odstraněním se ujistěte, že jste zálohovali všechny systémy a data.** Odstranění privátního cloudu odstraní všechny virtuální počítače, konfiguraci vCenter a data. V části Souhrn pro vybraný privátní cloud klikněte na **Odstranit** . Po odstranění se všechna data privátního cloudu vymažou v bezpečném a vysoce kompatibilním procesu mazání.
 * [Změňte oprávnění vSphere](escalate-private-cloud-privileges.md).  Eskalovat vaše oprávnění v tomto privátním cloudu.
 
