@@ -11,10 +11,10 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 6221b36263b55f54faef18d6596f97c5b3798d3d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541709"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Posílení učení (Preview) s Azure Machine Learning
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak:
 
 Tento článek je založený na [příkladu RLlib pong](https://aka.ms/azureml-rl-pong) , který najdete v [úložišti GitHubu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)poznámkového bloku Azure Machine Learning.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento kód spusťte v jednom z následujících prostředí. Doporučujeme, abyste si vyzkoušeli Azure Machine Learning výpočetní instance pro nejrychlejší úvodní prostředí. K dispozici jsou ukázkové poznámkové bloky pro rychlé klonování a spouštění Azure Machine Learning výpočetní instance.
 
@@ -326,7 +326,7 @@ rl_estimator = ReinforcementLearningEstimator(
 
 [Vstupní skript](https://aka.ms/azure-rl-pong-script) `pong_rllib.py` navlacích neuronové síť pomocí [prostředí OpenAI posilovně](https://github.com/openai/gym/) `PongNoFrameSkip-v4` . OpenAI Gyms jsou standardizovaná rozhraní pro testování posílení výukových algoritmů v klasických Atari hrách.
 
-V tomto příkladu se používá školicí algoritmus, který se označuje jako [Impala](https://arxiv.org/abs/1802.01561) (vážený význam architektury actor-učí). IMPALA parallelizes každý jednotlivý aktér výukového objektu pro škálování napříč mnoha výpočetními uzly, aniž by došlo ke ztrátě rychlosti nebo stability.
+V tomto příkladu se používá školicí algoritmus známý jako [Impala](https://arxiv.org/abs/1802.01561) (vážený důležitost Actor-Learner architektura). IMPALA parallelizes každý jednotlivý aktér výukového objektu pro škálování napříč mnoha výpočetními uzly, aniž by došlo ke ztrátě rychlosti nebo stability.
 
 [Ray Intune](https://ray.readthedocs.io/en/latest/tune.html) orchestruje pracovní úkoly Impala.
 

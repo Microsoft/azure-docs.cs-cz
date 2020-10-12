@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: 6abe0ed88adbdf8263aa27d340fb2fff156d98e6
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90089339"
 ---
 # <a name="drawing-tool-events"></a>Události nástrojů pro kreslení
 
 Při použití nástrojů pro kreslení na mapě je vhodné reagovat na určité události, když uživatel na mapě nakreslí. Tato tabulka uvádí všechny události, které `DrawingManager` Třída podporuje.
 
-| Událost | Popis |
+| Událost | Description |
 |-------|-------------|
 | `drawingchanged` | Je aktivována, když dojde k přidání nebo změně jakékoli souřadnice v obrazci. | 
 | `drawingchanging` | Je aktivována, když se zobrazí libovolná souřadnice náhledu pro obrazec. Tato událost se například aktivuje víckrát, protože je přetažena souřadnice. | 

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: fc1bca1265139a438fad86bfce770026866d9a2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934907"
 ---
 # <a name="manage-zone-redundant-high-availability-in-flexible-server"></a>Správa redundantní vysoké dostupnosti zóny v flexibilním serveru
@@ -35,24 +35,24 @@ V této části najdete podrobnosti konkrétně pro pole související s HA. Pom
     :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="Zobrazení předplatného a oblasti":::
 
 2.  Vyberte si **zónu dostupnosti**. To je užitečné, pokud chcete, aby se aplikace společné umístění ve stejné zóně dostupnosti jako databáze, aby se snížila latence. Pokud chcete, aby byl flexibilní Server nasazený v jakékoli zóně dostupnosti, vyberte možnost **bez preference** .
-    ![AZ výběr ]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="zóny dostupnosti"::: výběr  
+    ![AZ výběr ]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="Zobrazení předplatného a oblasti"::: výběr  
 
 3.  V možnosti dostupnosti klikněte na zaškrtávací políčko pro **redundantní vysokou dostupnost zóny** .
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="Zaškrtávací políčko pro vysokou dostupnost":::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="Zobrazení předplatného a oblasti":::
 
 4.  Pokud chcete změnit výchozí výpočetní výkon a úložiště, klikněte na  **Konfigurovat Server**.
  
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="Konfigurace serveru – COMPUTE + Storage":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="Zobrazení předplatného a oblasti":::  
 
 5.  Pokud je zaškrtnuté políčko vysoká dostupnost, nebudete moct zvolit vrstvu s možností vysoké dostupnosti. Můžete si vybrat buď výpočetní úrovně pro **obecné účely** , nebo **paměťově optimalizované** . Pak můžete z rozevíracího seznamu vybrat **Velikost výpočetní velikosti** pro vaši volbu.
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="Výběr na výpočetní úrovni":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="Zobrazení předplatného a oblasti":::  
 
 
 6.  V GiB vyberte **velikost úložiště** pomocí posuvných pruhů a vyberte **dobu uchovávání záloh** mezi 7 dny a 35 dny.
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="Zálohování úložiště"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="Zobrazení předplatného a oblasti"::: 
 
 7. Klikněte na **Uložit**. 
 
@@ -64,11 +64,11 @@ Pomocí těchto kroků povolíte vysokou dostupnost stávajícího flexibilního
 
 2.  Na stránce flexibilní Server klikněte na tlačítko **Vysoká dostupnost** na levém panelu a otevřete stránku vysoké dostupnosti.
    
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Výběr na levém panelu"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Zobrazení předplatného a oblasti"::: 
 
 3.  Kliknutím na zaškrtávací políčko **zóna redundantního vysoké dostupnosti** **Povolte** možnost a kliknutím na **Uložit**   změny uložte.
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="Povolit vysokou dostupnost"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="Zobrazení předplatného a oblasti"::: 
 
 4.  V potvrzovacím dialogovém okně se zobrazí stav, který umožňuje vysokou dostupnost. vaše náklady se zvýší kvůli dalšímu nasazení serveru a úložiště.
 
@@ -84,11 +84,11 @@ Pomocí těchto kroků zakážete vysokou dostupnost pro flexibilní Server, kte
 
 2.  Na stránce flexibilní Server klikněte na horním panelu na možnost **Vysoká dostupnost** a otevřete stránku vysoké dostupnosti.
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Výběr na levém panelu"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Zobrazení předplatného a oblasti"::: 
 
 3.  Kliknutím na zaškrtávací políčko **zóna redundantního vysoké dostupnosti** **zakažte** možnost. Pak kliknutím na **Uložit**   změnu uložte.
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="Zakázat vysokou dostupnost"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="Zobrazení předplatného a oblasti"::: 
 
 4.  Zobrazí se potvrzovací dialogové okno, ve kterém můžete potvrdit zakázání vysoké dostupnosti.
 

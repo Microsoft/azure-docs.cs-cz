@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
 ms.openlocfilehash: 9391bb4867717b6780b50cf90b998254227d2310
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082609"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Rozšíření VM VM pro Linux a Windows
 
 Software Chef poskytuje automatizační platformu DevOps pro Linux a Windows, která umožňuje současnou správu fyzických i virtuálních serverových konfigurací. Rozšíření VM VM je rozšíření, které umožňuje pro virtuální počítače službu pro vypínání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -67,16 +67,16 @@ Následující JSON zobrazuje schéma rozšíření virtuálního počítače pr
 
 ### <a name="core-property-values"></a>Hodnoty základních vlastností
 
-| Název | Hodnota/příklad | Typ dat
+| Name | Hodnota/příklad | Typ dat
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | řetězec (datum) |
 | vydavatel | `Chef.Bootstrap.WindowsAzure` | řetězec |
-| typ | `LinuxChefClient`(Linux), `ChefClient` (Windows) | řetězec |
+| typ | `LinuxChefClient` (Linux), `ChefClient` (Windows) | řetězec |
 | typeHandlerVersion | `1210.13` | řetězec (Double) |
 
 ### <a name="settings"></a>Nastavení
 
-| Název | Hodnota/příklad | Typ dat | Povinné?
+| Name | Hodnota/příklad | Typ dat | Povinné?
 | ---- | ---- | ---- | ----
 | nastavení/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | řetězec (URL) | Y |
 | nastavení/bootstrap_options/validation_client_name | `myorg-validator` | řetězec | Y |
@@ -84,7 +84,7 @@ Následující JSON zobrazuje schéma rozšíření virtuálního počítače pr
 
 ### <a name="protected-settings"></a>Chráněná nastavení
 
-| Název | Příklad | Typ dat | Povinné?
+| Name | Příklad | Typ dat | Povinné?
 | ---- | ---- | ---- | ---- |
 | protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | řetězec | Y |
 

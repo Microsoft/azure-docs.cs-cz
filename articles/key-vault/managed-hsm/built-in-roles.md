@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 6b39c1d6fe2e84055e7c94dde076514d04a24f36
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91000692"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>Spravované místní role RBAC místního zabezpečení HSM
@@ -21,7 +21,7 @@ Spravovaná místní RBAC nástroje HSM má několik předdefinovaných rolí, k
 
 ## <a name="built-in-roles"></a>Vestavěné role
 
-|Název role|Description|ID|
+|Název role|Popis|ID|
 |---|---|---|
 |Spravovaný správce HSM| Udělí úplný přístup ke všem datovým akcím.|a290e904-7015-4bba-90c8-60543313cdb4|
 |Spravovaný pracovník kryptografických modulů HSM| Udělí úplný přístup ke všem klíčovým operacím správy klíčů a klíčovým kryptografiím.|515eb02d-2335-4d2d-92f2-b1cbdf9c3778|

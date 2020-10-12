@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 0b7b09696cbbe12a57d066e452b4c8ea7a7b8f27
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935883"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>Konfigurace a přístup k protokolům v Azure Database for PostgreSQLm flexibilním serveru
@@ -36,7 +36,7 @@ Postup povolení protokolů prostředku pomocí Azure Portal:
 4. Vyberte preferovaný koncový bod (účet úložiště, centrum událostí a Log Analytics). 
 
 5. Vyberte typ protokolu **PostgreSQLLogs**.
-   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="Zvolit protokoly PostgreSQL":::
+   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="Tlačítko Přidat nastavení diagnostiky":::
 
 7. Uložte nastavení.
 

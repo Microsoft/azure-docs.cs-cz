@@ -11,10 +11,10 @@ ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 ms.openlocfilehash: 9b90d886923f4bbdab3715130bde15ecb5921636
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326809"
 ---
 # <a name="azure-cognitive-services-security"></a>Zabezpečení Azure Cognitive Services
@@ -197,7 +197,7 @@ NSString* value =
 
 ## <a name="customer-lockbox"></a>Customer Lockbox
 
-[Customer Lockbox pro Microsoft Azure](../security/fundamentals/customer-lockbox-overview.md) poskytuje rozhraní pro zákazníky, kteří budou kontrolovat a schvalovat nebo odmítat žádosti o přístup k datům zákazníků. Používá se v případech, kdy pracovník Microsoftu potřebuje mít přístup k zákaznickým datům během žádosti o podporu. Informace o tom, jak se iniciují žádosti o Customer Lockbox, sledování a uložení pro pozdější kontroly a audity, najdete v článku [Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md). 
+[Customer Lockbox pro Microsoft Azure](../security/fundamentals/customer-lockbox-overview.md) poskytuje rozhraní pro zákazníky, kteří budou kontrolovat a schvalovat nebo odmítat žádosti o přístup k datům zákazníků. Používá se v případech, kdy technici Microsoftu potřebují získat přístup k datům zákazníků během zpracování žádostí o podporu. Informace o tom, jak se iniciují žádosti o Customer Lockbox, sledování a uložení pro pozdější kontroly a audity, najdete v článku [Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md). 
 
 Customer Lockbox je k dispozici pro tuto službu pro rozpoznávání:
 

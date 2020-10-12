@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
 ms.openlocfilehash: 81544d71db5131f76dc2f9a613b6fd89ed57d076
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326452"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Zabezpečení sítě pro prostředky Azure Event Grid
@@ -33,7 +33,7 @@ Pomocí značek služeb můžete definovat řízení přístupu k síti pro [sku
 ## <a name="ip-firewall"></a>Brána firewall protokolu IP 
 Azure Event Grid podporuje řízení přístupu na základě IP adres pro publikování do témat a domén. Pomocí ovládacích prvků založených na protokolu IP můžete omezit vydavatele na téma nebo doménu jenom na sadu schválených sad počítačů a cloudových služeb. Tato funkce doplňuje [mechanismy ověřování](security-authentication.md) podporované nástrojem Event Grid.
 
-Ve výchozím nastavení je k tématům a doménám přístup z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom sadu IP adres nebo rozsahů IP adres ve notaci [směrování mezi doménami CIDR (bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Vydavatelé pocházející z jakékoli jiné IP adresy se odmítnou a obdrží odpověď 403 (zakázáno).
+Ve výchozím nastavení je k tématům a doménám přístup z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP můžete tuto možnost omezit na více než jenom sadu IP adres nebo rozsahy IP adres v zápisu [CIDR (v Inter-Domain směrování v netřídě)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Vydavatelé pocházející z jakékoli jiné IP adresy se odmítnou a obdrží odpověď 403 (zakázáno).
 
 Podrobné pokyny ke konfiguraci brány firewall protokolu IP pro témata a domény najdete v tématu [Konfigurace brány firewall protokolu IP](configure-firewall.md).
 

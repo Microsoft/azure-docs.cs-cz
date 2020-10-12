@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 14e0b86f11c3eabf93e7d4f0ebf563e59c0c21e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081861"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Omezení kódu funkce nástroje Orchestrator
@@ -35,7 +35,7 @@ V následující tabulce jsou uvedeny příklady rozhraní API, se kterými byst
 | Náhodná čísla | Rozhraní API, která vrací náhodná čísla, jsou nedeterministické, protože vygenerovaná hodnota se pro každé přehrání liší. | Použijte funkci aktivity k vrácení náhodných čísel do orchestrace. Vrácené hodnoty funkcí aktivity jsou pro opětovné přehrání vždy bezpečné. |
 | Vazby | Vstupní a výstupní vazby obvykle dělají vstupně-výstupní operace a jsou nedeterministické. Funkce Orchestrator nesmí přímo používat ani [klient orchestrace](durable-functions-bindings.md#orchestration-client) a vazby [klienta entit](durable-functions-bindings.md#entity-client) . | Použijte vstupní a výstupní vazby v rámci funkcí klienta nebo aktivity. |
 | Síť | Síťová volání zahrnují externí systémy a nedeterministické. | K zajištění síťových volání použijte funkce aktivity. Pokud potřebujete provést volání HTTP z funkce Orchestrator, můžete použít také [trvalá rozhraní API http](durable-functions-http-features.md#consuming-http-apis). |
-| Blokující rozhraní API | Blokování rozhraní API jako `Thread.Sleep` v rozhraní .NET a podobných rozhraní API může způsobit problémy s výkonem a škálováním pro funkce nástroje Orchestrator a je třeba se jim vyhnout. V plánu Azure Functions spotřeby můžou dokonce vést k zbytečným poplatkům za modul runtime. | Používejte alternativy k blokování rozhraní API, když jsou k dispozici. Například použijte `CreateTimer` k zavedení zpoždění při provádění orchestrace. [Trvalá zpoždění časovače](durable-functions-timers.md) se nepočítají směrem k době provádění funkce Orchestrator. |
+| Blokující rozhraní API | Blokování rozhraní API jako `Thread.Sleep` v rozhraní .NET a podobných rozhraní API může způsobit problémy s výkonem a škálováním pro funkce nástroje Orchestrator a je třeba se jim vyhnout. V plánu Azure Functions spotřeby můžou dokonce vést k zbytečným poplatkům za modul runtime. | Používejte alternativy k blokování rozhraní API, když jsou k dispozici. Například použijte  `CreateTimer` k zavedení zpoždění při provádění orchestrace. [Trvalá zpoždění časovače](durable-functions-timers.md) se nepočítají směrem k době provádění funkce Orchestrator. |
 | Asynchronní rozhraní API | Kód Orchestrator nesmí spustit žádnou asynchronní operaci s výjimkou použití rozhraní `IDurableOrchestrationContext` API nebo `context.df` rozhraní API objektu. Například nemůžete použít `Task.Run` , `Task.Delay` , a `HttpClient.SendAsync` v rozhraní .NET nebo `setTimeout` a `setInterval` v jazyce JavaScript. Prostředí trvalého zpracování úloh spouští kód Orchestrator v jednom vlákně. Nemůže komunikovat s jinými vlákny, které by mohly být volány jinými asynchronními rozhraními API. | Funkce Orchestrator by měla dělat jenom trvalá asynchronní volání. Funkce aktivity by měly provádět jakákoli další asynchronní volání rozhraní API. |
 | Asynchronní funkce JavaScriptu | Funkce nástroje JavaScript Orchestrator nelze deklarovat jako, `async` protože modul runtime node.js nezaručuje, že asynchronní funkce budou deterministické. | Deklarujete funkce nástroje JavaScript Orchestrator jako synchronní funkce generátoru. |
 | Rozhraní API pro dělení na vlákna | Prostředí trvalého zpracování úloh spouští kód Orchestrator v jednom vlákně a nemůže pracovat s jinými vlákny. Zavedení nových vláken do provádění orchestrace může vést k nedeterministickému spuštění nebo zablokování. | Funkce Orchestrator by téměř nikdy neměly používat rozhraní API pro dělení na vlákna. Například v rozhraní .NET Vyhněte se použití `ConfigureAwait(continueOnCapturedContext: false)` ; tím zajistíte, že budou pokračování úlohy spuštěny na původní funkci nástroje Orchestrator `SynchronizationContext` . Pokud jsou taková rozhraní API nezbytná, omezte jejich použití jenom na funkce aktivity. |

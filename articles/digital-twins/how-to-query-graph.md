@@ -8,10 +8,10 @@ ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 72658a97f89b14529e8ccb3639cb1b78f1b92316
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91848803"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
@@ -178,7 +178,7 @@ AND Room.$dtId IN ['room1', 'room2']
 
 Můžete **zkombinovat** libovolný z výše uvedených typů dotazu pomocí operátorů kombinace pro zahrnutí více podrobností v jednom dotazu. Tady jsou některé další příklady složených dotazů, které dotazují na více než jeden typ zdvojeného popisovače najednou.
 
-| Popis | Dotaz |
+| Description | Dotaz |
 | --- | --- |
 | Ze zařízení, která jsou v *místnosti 123* , se vrátí zařízení MxChip, která obsluhují roli operátora. | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | Získejte vlákna, která mají relaci s názvem, *obsahuje* další nevlákenný identifikátor *ID1* | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
@@ -198,11 +198,11 @@ Podporovány jsou následující operátory:
 | Porovnání |=,! =, <, >, <=, >= |
 | Contains | V NZA |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkce
 
 Podporují se následující funkce kontroly a přetypování typů:
 
-| Funkce | Popis |
+| Funkce | Description |
 | -------- | ----------- |
 | IS_DEFINED | Vrátí logickou hodnotu, která znamená, zda byla vlastnost přiřazena hodnota. To je podporováno pouze v případě, že je hodnota primitivního typu. Primitivní typy zahrnují řetězec, Boolean, Numeric nebo `null` . Hodnoty DateTime, typy objektů a pole nejsou podporovány. |
 | IS_OF_MODEL | Vrátí logickou hodnotu, která označuje, jestli zadaný typ vlákna odpovídá zadanému typu modelu. |
@@ -215,7 +215,7 @@ Podporují se následující funkce kontroly a přetypování typů:
 
 Podporovány jsou následující řetězcové funkce:
 
-| Funkce | Popis |
+| Funkce | Description |
 | -------- | ----------- |
 | STARTSWITH (x, y) | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz začíná druhým. |
 | ENDSWITH (x, y) | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz končí druhým. |

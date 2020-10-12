@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 82af00c091aedb56e0cad954e554094e75df0013
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0832fe9ba65ac0df5dbff60b01b7a5eb91a2c3a2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88535766"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945239"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Kurz: Azure Active Directory integrace s LockPath
 
@@ -133,15 +133,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí LockPath
 
     b. V nabídce v horní části klikněte na **osoba**a pak vyberte nastavení pro velmi **světel**.
 
-    ![Konfigurace jednoho Sign-On](./media/keylight-tutorial/401.png)
+    ![Snímek obrazovky, na kterém je vybraná ikona osoba a v rozevíracím seznamu se vybrala možnost "vzhled světla".](./media/keylight-tutorial/401.png)
 
     c. V zobrazení stromu na levé straně klikněte na **SAML**.
 
-    ![Konfigurace jednoho Sign-On](./media/keylight-tutorial/402.png)
+    ![Snímek obrazovky, který zobrazuje "S A M L" vybraný ve stromovém zobrazení.](./media/keylight-tutorial/402.png)
 
     d. V dialogovém okně **Nastavení SAML** klikněte na **Upravit**.
 
-    ![Konfigurace jednoho Sign-On](./media/keylight-tutorial/404.png)
+    ![Snímek obrazovky, který zobrazuje okno S nastavením A M L s vybraným tlačítkem Upravit.](./media/keylight-tutorial/404.png)
 
 1. Na stránce **Upravit nastavení SAML** proveďte následující kroky:
 

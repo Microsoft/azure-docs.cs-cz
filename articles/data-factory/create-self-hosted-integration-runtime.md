@@ -12,10 +12,10 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
 ms.openlocfilehash: cac7b4f376300722762b1cedbf52a5c2e0ecb6e4
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89596107"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místního prostředí Integration Runtime
@@ -66,7 +66,7 @@ Pomocí následujících kroků můžete vytvořit prostředí IR v místním pr
 
 1. Na stránce **instalace prostředí Integration runtime** vyberte **Azure,** v místním prostředí a pak vyberte **pokračovat**. 
 
-1. Na následující stránce vyberte v místním prostředí modul **IR pro místní hostování a** pak vyberte **pokračovat**.
+1. Na následující stránce vyberte v místním prostředí **, aby se** vytvořila Self-Hosted IR, a pak vyberte **pokračovat**.
    ![Vytvoření selfhosted IR](media/create-self-hosted-integration-runtime/new-selfhosted-integration-runtime.png)
 
 1. Zadejte název pro IR a vyberte **vytvořit**.

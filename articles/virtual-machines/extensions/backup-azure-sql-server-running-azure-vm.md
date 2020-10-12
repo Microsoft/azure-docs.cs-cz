@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
 ms.openlocfilehash: 84ff3e18cf488f5536d5945d7b8fc8d78882424e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511173"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup pro SQL Server běžící na virtuálním počítači Azure
@@ -20,7 +20,7 @@ ms.locfileid: "86511173"
 Azure Backup, mimo jiné nabídky, poskytuje podporu pro zálohování úloh, jako je SQL Server spouštění na virtuálních počítačích Azure. Vzhledem k tomu, že aplikace SQL běží v rámci virtuálního počítače Azure, služba zálohování potřebuje oprávnění pro přístup k aplikaci a načtení potřebných podrobností.
 K tomu Azure Backup nainstaluje na virtuální počítač rozšíření **AzureBackupWindowsWorkload** , ve kterém je spuštěná SQL Server během procesu registrace aktivovaného uživatelem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Seznam podporovaných scénářů najdete v tématu věnovaném [podpoře](../../backup/sql-support-matrix.md#scenario-support) , které podporuje Azure Backup.
 
@@ -85,7 +85,7 @@ Následující JSON zobrazuje schéma pro rozšíření WorkloadBackup.
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-Název | Hodnota/příklad | Datový typ
+Name | Hodnota/příklad | Datový typ
  --- | --- | ---
 locale | cs-cz  |  řetězec
 taskId | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | řetězec
@@ -100,7 +100,7 @@ statusBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrexten
 
 K virtuálnímu počítači doporučujeme přidat rozšíření AzureBackupWindowsWorkload povolením zálohování SQL Server na virtuálním počítači. To je možné dosáhnout pomocí [Správce prostředků šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup) navržené pro automatizaci zálohování na SQL SERVERm virtuálním počítači.
 
-## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
+## <a name="powershell-deployment"></a>Nasazení PowerShellu
 
 Musíte zaregistrovat virtuální počítač Azure, který obsahuje aplikaci SQL, do trezoru služby Recovery Services. Během registrace se na virtuální počítač nainstaluje rozšíření AzureBackupWindowsWorkload. K registraci virtuálního počítače použijte rutinu [Register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-1.5.0) .
 

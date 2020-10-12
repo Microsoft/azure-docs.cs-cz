@@ -6,15 +6,15 @@ author: linda33wj
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/28/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: a729d470cccd4121523c767ada9077a51361c061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b346c24b6a363e66e56f6c16b70058df3864c88
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181968"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945820"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Přehled konektoru Azure Data Factory
 

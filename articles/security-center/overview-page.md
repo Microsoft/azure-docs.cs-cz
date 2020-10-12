@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cc52610eacc3916b7a8978cba17a1db3f3d50686
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f7298ec7bba82eaddc4a002723f44bc5da68433
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91447680"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945341"
 ---
 # <a name="azure-security-centers-overview-page"></a>Stránka s přehledem Azure Security Center
 
@@ -40,7 +40,7 @@ Ve středu stránky jsou **čtyři střední dlaždice**, pro které se pro dal�
 - Řešení **Secure skore** – Security Center průběžně vyhodnocuje vaše prostředky, odběry a organizace pro problémy se zabezpečením. Pak agreguje všechna zjištění do jediného skóre, abyste na první pohled mohli sdělit aktuální situaci zabezpečení: čím vyšší je skóre, tím se sníží zjištěná úroveň rizika. [Další informace](secure-score-security-controls.md).
 - **Dodržování předpisů** – Security Center poskytuje přehledy o vašich stav dodržování předpisů na základě průběžného posouzení prostředí Azure. V souladu s osvědčenými postupy zabezpečení Security Center analyzuje rizikové faktory v hybridním cloudovém prostředí. Tato posouzení jsou namapována na řízení dodržování předpisů z podporované sady standardů. [Další informace](security-center-compliance-dashboard.md)
 - **Azure Defender** – to je platforma ochrany zatížení cloudu (CWPP) integrovaná v rámci Security Center pro pokročilou, inteligentní a chráněnou službu Azure a hybridní úlohy. Tato dlaždice znázorňuje pokrytí vašich připojených prostředků (pro aktuálně vybraná předplatná) a nedávné výstrahy, barevně kódované podle závažnosti. [Další informace](azure-defender.md).
-- **Inventář** – na této dlaždici se zobrazuje počet nemonitorovaných virtuálních počítačů a jednoduché barometery prostředků monitorovaných pomocí CenterBen zabezpečení. [Další informace](asset-inventory.md).
+- **Inventář** – na této dlaždici se zobrazuje počet nemonitorovaných virtuálních počítačů a jednoduché barometery prostředků monitorovaných Security Center. [Další informace](asset-inventory.md).
 
 
 Podokno **Přehled** nabízí vlastní položky pro vaše prostředí, mezi které patří:

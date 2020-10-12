@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
 ms.openlocfilehash: 734d52dadbb849925303febb0d3d1195bbddb0df
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236634"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Použití Azure Firewall ke kontrole provozu určeného pro soukromý koncový bod
@@ -55,7 +55,7 @@ Další informace o nákladech týkajících se připojení k virtuálním sít�
 
 ## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>Scénář 2: sdílená virtuální síť architektury centra a paprsků pro privátní koncové body a virtuální počítače
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="Soukromé koncové body a Virtual Machines ve stejné Virtual Network" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="Vyhrazená Virtual Network pro privátní koncové body" border="true":::
 
 Tento scénář je implementován v těchto případech:
 
@@ -78,7 +78,7 @@ Další informace o nákladech týkajících se připojení k virtuálním sít�
 
 ## <a name="scenario-3-single-virtual-network"></a>Scénář 3: jedna virtuální síť
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="Jedna virtuální síť" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="Vyhrazená Virtual Network pro privátní koncové body" border="true":::
 
 K implementaci dochází k nějakým omezením: migrace do architektury hub a paprsků není možná. Platí stejné požadavky jako ve scénáři 2. V tomto scénáři se poplatky za partnerské vztahy virtuálních sítí nevztahují.
 
@@ -87,7 +87,7 @@ K implementaci dochází k nějakým omezením: migrace do architektury hub a pa
 
 ## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>Scénář 4: místní provoz do privátních koncových bodů
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="Místní provoz do privátních koncových bodů" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="Vyhrazená Virtual Network pro privátní koncové body" border="true":::
 
 Tuto architekturu je možné implementovat, pokud jste nakonfigurovali připojení k místní síti pomocí těchto možností: 
 
@@ -101,7 +101,7 @@ Platí stejné požadavky jako ve scénáři 2 výše. V tomto scénáři se ne�
 >[!NOTE]
 > Pokud chcete tento scénář implementovat pomocí síťové virtuální zařízení nebo Azure Firewall třetí strany, musí se pravidla sítě místo pravidel aplikací vyžadovat pro přenos dat z provozu do privátních koncových bodů. Jinak komunikace mezi virtuálními počítači a soukromými koncovými body selže.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure.
 * Pracovní prostor služby Log Analytics.  
@@ -170,9 +170,9 @@ V krocích níže nahraďte následující parametry:
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Tuto skupinu prostředků jste vytvořili v předchozí části.  |
-    | **Podrobnosti instance** |  |
+    | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM**. |
     | Oblast | Vyberte **(US) Střed USA – jih**. |
     | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
@@ -181,15 +181,15 @@ V krocích níže nahraďte následující parametry:
     | **Účet správce** |  |
     | Typ ověřování | Vyberte **heslo**. |
     | Uživatelské jméno | Zadejte uživatelské jméno, které si zvolíte. |
-    | Heslo | Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/linux/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    | Heslo | Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/linux/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Potvrdit heslo | Zadejte znovu heslo. |
-    | **Pravidla portů pro příchozí provoz** |  |
+    | **Pravidla portů pro příchozí spojení** |  |
     | Veřejné příchozí porty | Vyberte **Žádná**. |
     |||
 
 3. Vyberte **Další: disky**.
 
-4. V části **vytvořit virtuální počítač – disky**ponechte výchozí hodnoty a vyberte **Další: sítě**.
+4. V okně **Vytvořit virtuální počítač – Disky** nechte vybrané výchozí hodnoty a vyberte **Další: Sítě**.
 
 5. V nástroji **vytvořit virtuální počítač – síť**vyberte tyto informace:
 
@@ -199,12 +199,12 @@ V krocích níže nahraďte následující parametry:
     | Podsíť | Vyberte **podsíť VMSubnet (10.1.0.0/24)**.|
     | Veřejná IP adresa | Ponechte výchozí **(New) myVm-IP**. |
     | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů**. |
-    | Vybrat příchozí porty | Vyberte **SSH**.|
+    | Vyberte příchozí porty | Vyberte **SSH**.|
     ||
 
-6. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
+6. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci.
 
-7. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
+7. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 ## <a name="deploy-the-firewall"></a>Nasazení brány firewall
 
@@ -219,10 +219,10 @@ V krocích níže nahraďte následující parametry:
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**.  |
-    | **Podrobnosti instance** |  |
-    | Název | Zadejte **myAzureFirewall**. |
+    | **Podrobnosti o instancích** |  |
+    | Name | Zadejte **myAzureFirewall**. |
     | Oblast | Vyberte **střed USA – jih**. |
     | Zóna dostupnosti | Nechejte výchozí nastavení **žádné**. |
     | Volba virtuální sítě    |    Vyberte **použít existující**.    |
@@ -230,9 +230,9 @@ V krocích níže nahraďte následující parametry:
     | Veřejná IP adresa    |    Vyberte **Přidat nové** a v názvu zadejte **myFirewall-IP**.    |
     | Vynucené tunelování    | Nechte výchozí nastavení **zakázané**.    |
     |||
-5. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
+5. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci.
 
-6. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
+6. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 ## <a name="enable-firewall-logs"></a>Povolit protokoly brány firewall
 
@@ -254,7 +254,7 @@ V této části povolíte protokoly v bráně firewall.
     | Podrobnosti kategorie | |
     | protokolu | Vyberte **AzureFirewallApplicationRule** a **AzureFirewallNetworkRule**. |
     | Podrobnosti o cíli | Vyberte **odeslat Log Analytics**. |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Pracovní prostor služby Log Analytics | Vyberte pracovní prostor Log Analytics. |
 
 6. Vyberte **Uložit**.
@@ -270,7 +270,7 @@ V této části vytvoříte privátní SQL Database.
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Tuto skupinu prostředků jste vytvořili v předchozí části.|
     | **Podrobnosti databáze** |  |
     | Název databáze  | Zadejte **MyDatabase**.  |
@@ -278,15 +278,15 @@ V této části vytvoříte privátní SQL Database.
     | Název serveru | Zadejte **mydbserver**. Pokud se tento název povede, zadejte jedinečný název.   |
     | Přihlášení správce serveru | Zadejte název, který chcete vybrat. |
     | Heslo    |    Zadejte libovolné heslo.    |
-    | Potvrdit heslo | Zadejte znovu heslo.    |
+    | Potvrdit heslo | Znovu zadejte heslo.    |
     | Umístění    | Vyberte **(US) Střed USA – jih**.    |
     | Chcete použít elastický fond SQL    | Ponechte výchozí hodnotu **ne**. |
     | Výpočty + úložiště | Ponechte výchozí **pro obecné účely Gen5, 2 virtuální jádra, 32 GB úložiště**. |
     |||
 
-3. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
+3. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci.
 
-4. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
+4. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 ## <a name="create-private-endpoint"></a>Vytvořit privátní koncový bod
 
@@ -305,10 +305,10 @@ V této části vytvoříte privátní koncový bod pro Azure SQL Database v př
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. |
-    | **Podrobnosti instance** | |
-    | Název | Zadejte **SQLPrivateEndpoint**. |
+    | **Podrobnosti o instancích** | |
+    | Name | Zadejte **SQLPrivateEndpoint**. |
     | Oblast | Vyberte **(US) Střed USA – jih.** |
 
 6. Vyberte kartu **prostředek** nebo v dolní části stránky vyberte položku **Další: prostředek** .
@@ -318,7 +318,7 @@ V této části vytvoříte privátní koncový bod pro Azure SQL Database v př
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Způsob připojení | **V adresáři vyberte připojit k prostředku Azure**. |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Typ prostředku | Vyberte **Microsoft. SQL/servery**. |
     | Prostředek | Vyberte **mydbserver** nebo název serveru, který jste vytvořili v předchozím kroku.
     | Cílový dílčí prostředek | Vyberte **sqlServer**. |
@@ -333,13 +333,13 @@ V této části vytvoříte privátní koncový bod pro Azure SQL Database v př
     | Virtuální síť | Vyberte **myPEVnet**. |
     | Podsíť | Vyberte **PrivateEndpointSubnet**. |
     | **Integrace Privátní DNS** | |
-    | Integrace s privátní zónou DNS | Vyberte **Ano**. |
-    | Předplatné | Vyberte předplatné. |
+    | Integrovat s privátní zónou DNS | Vyberte **Ano**. |
+    | Předplatné | Vyberte své předplatné. |
     | Privátní zóny DNS | Ponechte výchozí **privatelink.Database.Windows.NET**. |
 
 10. Vyberte kartu **Revize + vytvořit** nebo v dolní části stránky vyberte **zkontrolovat + vytvořit** .
 
-11. Vyberte **Create** (Vytvořit).
+11. Vyberte **Vytvořit**.
 
 12. Po vytvoření koncového bodu vyberte v části **zabezpečení**možnost **brány firewall a virtuální sítě** .
 
@@ -363,7 +363,7 @@ V této části propojíme virtuální sítě **myVMVNet** a **myPEVNet** s **my
     | **Podrobnosti o partnerském vztahu** |  |
     | Model nasazení virtuální sítě  | Ponechte výchozí **Správce prostředků**.  |
     | Nevím ID prostředku | Tuto možnost nechte nezaškrtnutou.    |
-    | Předplatné | Vyberte předplatné.    |
+    | Předplatné | Vyberte své předplatné.    |
     | Virtuální síť | Vyberte **myVMVNet**. |
     | Název partnerského vztahu ze vzdálené virtuální sítě do myAzFwVNet    |    Zadejte **myVMVNet-to-myAzFwVNet**.    |
     | **Konfigurace** | |
@@ -374,7 +374,7 @@ V této části propojíme virtuální sítě **myVMVNet** a **myPEVNet** s **my
     | Povolení přesměrovaného provozu ze vzdálené virtuální sítě do myAzFwVNet    | Vyberte **Povoleno**. |
     | Povolení přesměrovaného provozu z myAzFwVNet do vzdálené virtuální sítě | Vyberte **Povoleno**. |
     | **Konfigurace nastavení přenosu brány** | |
-    | Povolení přenosu brány | Ponechat nezaškrtnutou |
+    | Povolení přenosu brány | Tuto možnost nechte nezaškrtnutou. |
     |||
 
 4. Vyberte **OK**.
@@ -389,7 +389,7 @@ V této části propojíme virtuální sítě **myVMVNet** a **myPEVNet** s **my
     | **Podrobnosti o partnerském vztahu** |  |
     | Model nasazení virtuální sítě  | Ponechte výchozí **Správce prostředků**.  |
     | Nevím ID prostředku | Tuto možnost nechte nezaškrtnutou.    |
-    | Předplatné | Vyberte předplatné.    |
+    | Předplatné | Vyberte své předplatné.    |
     | Virtuální síť | Vyberte **myPEVNet**. |
     | Název partnerského vztahu ze vzdálené virtuální sítě do myAzFwVNet    |    Zadejte **myPEVNet-to-myAzFwVNet**.    |
     | **Konfigurace** | |
@@ -400,7 +400,7 @@ V této části propojíme virtuální sítě **myVMVNet** a **myPEVNet** s **my
     | Povolení přesměrovaného provozu ze vzdálené virtuální sítě do myAzFwVNet    | Vyberte **Povoleno**. |
     | Povolení přesměrovaného provozu z myAzFwVNet do vzdálené virtuální sítě | Vyberte **Povoleno**. |
     | **Konfigurace nastavení přenosu brány** | |
-    | Povolení přenosu brány | Ponechat nezaškrtnutou |
+    | Povolení přenosu brány | Tuto možnost nechte nezaškrtnutou. |
 
 7. Vyberte **OK**.
 
@@ -428,7 +428,7 @@ Aby mohl virtuální počítač a brána firewall přeložit plně kvalifikovan�
     | Název odkazu | Zadejte **Link-to-myVMVNet**. |
     | **Podrobnosti virtuální sítě** |  |
     | Nevím s ID prostředku virtuální sítě  | Tuto možnost nechte nezaškrtnutou.  |
-    | Předplatné | Vyberte předplatné.    |
+    | Předplatné | Vyberte své předplatné.    |
     | Virtuální síť | Vyberte **myVMVNet**. |
     | **ROZŠÍŘENÉHO** | |
     | Povolit automatickou registraci | Tuto možnost nechte nezaškrtnutou.    |
@@ -461,12 +461,12 @@ Toto pravidlo umožňuje komunikaci přes bránu firewall, kterou jsme vytvořil
     | Akce | Zadejte **Allow**. |
     | **Pravidla** |  |
     | **Značky plně kvalifikovaných názvů domén** | |
-    | Název  | Ponechte prázdné.  |
+    | Name  | Ponechte prázdné.  |
     | Typ zdroje | Ponechte výchozí **IP adresu**.    |
     | Zdroj | Ponechte prázdné. |
     | Značky plně kvalifikovaných názvů domén | Ponechte vybrané výchozí nastavení **0**. |
     | **Cílové plně kvalifikované názvy domén** | |
-    | Název | Zadejte **SQLPrivateEndpoint**.    |
+    | Name | Zadejte **SQLPrivateEndpoint**.    |
     | Typ zdroje | Ponechte výchozí **IP adresu**. |
     | Zdroj | Zadejte **10.1.0.0/16**. |
     | Protokol: port | Zadejte **MSSQL: 1433**. |
@@ -494,16 +494,16 @@ Trasa odesílá provoz z podsítě **myVM** do adresního prostoru služby Virtu
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**.  |
-    | **Podrobnosti instance** |  |
+    | **Podrobnosti o instancích** |  |
     | Oblast | Vyberte **střed USA – jih**. |
-    | Název | Zadejte **VMsubnet-to-AzureFirewall**. |
+    | Name | Zadejte **VMsubnet-to-AzureFirewall**. |
     | Šíření tras brány | Vyberte **Ne**. |
 
-5. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
+5. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci.
 
-6. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
+6. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 7. Po dokončení nasazení vyberte **Přejít k prostředku**.
 
@@ -561,7 +561,7 @@ Připojte se k virtuálnímu počítači **myVm** z Internetu následujícím zp
 
 V této části se soukromě připojíte k SQL Database pomocí privátního koncového bodu.
 
-1. Napište `nslookup mydbserver.database.windows.net`
+1. Zadejte `nslookup mydbserver.database.windows.net`.
     
     Zobrazí se zpráva podobná následující:
 

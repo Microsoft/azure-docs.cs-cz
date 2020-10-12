@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: sausin
 ms.openlocfilehash: 45dba3b7f46ec558c46b8505da26fd3ef4de4cbc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284179"
 ---
 # <a name="add-configurations-to-commands-parameters"></a>Přidání konfigurací do parametrů příkazů
@@ -43,7 +43,7 @@ Pokud to chcete provést, Začněte přidáním nového webového koncového bod
 
 | Nastavení | Navrhovaná hodnota |
 |----|----|
-| Název | `getDevices` |
+| Name | `getDevices` |
 | URL | `https://aka.ms/speech/cc-sampledevices` |
 | Metoda | GET |
 
@@ -103,7 +103,7 @@ Vyberte možnost **výuka** a počkejte na dokončení školení. Po dokončení
 Otestujte ověřování pomocí příkazu **SetTemperature** . Pomocí následujících kroků přidejte ověření pro parametr **teploty** .
 
 1. V levém podokně vyberte příkaz **SetTemperature** .
-1. V prostředním podokně vyberte možnost **teplota** .
+1. V prostředním podokně vyberte možnost  **teplota** .
 1. V pravém podokně vyberte **Přidat ověření** .
 1. V okně **nové ověření** nakonfigurujte ověřování následujícím způsobem a vyberte **vytvořit**.
 
@@ -112,7 +112,7 @@ Otestujte ověřování pomocí příkazu **SetTemperature** . Pomocí následuj
     | ---- | ---- | ---- |
     | Min. hodnota | `60` | Pro parametry Number minimální hodnota, kterou tento parametr může předpokládat |
     | Max. hodnota | `80` | Pro číselné parametry maximální hodnoty, které tento parametr může předpokládat |
-    | Neúspěšná reakce |  Jednoduchý editor > první variace >`Sorry, I can only set temperature between 60 and 80 degrees. What temperature do you want?` | Výzva k zadání nové hodnoty, pokud se ověření nepovede |
+    | Neúspěšná reakce |  Jednoduchý editor > první variace > `Sorry, I can only set temperature between 60 and 80 degrees. What temperature do you want?` | Výzva k zadání nové hodnoty, pokud se ověření nepovede |
 
     > [!div class="mx-imgBorder"]
     > ![Přidat ověření rozsahu](media/custom-commands/add-validations-temperature.png)

@@ -8,10 +8,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: c315cc8c9dfcfa66999ff263fab95f414061e54e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321254"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Odesílat vlastní metriky pro prostředek Azure do úložiště metrik Azure Monitor pomocí REST API
@@ -99,7 +99,7 @@ Pokud se vám v některé části procesu zobrazí chybová zpráva, vezměte v 
 
 ## <a name="view-your-metrics"></a>Zobrazit vaše metriky 
 
-1. Přihlaste se k webu Azure Portal. 
+1. Přihlaste se k portálu Azure. 
 
 1. V nabídce na levé straně vyberte **monitor**. 
 

@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88163182"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Začínáme s vlastními zásadami v Azure Active Directory B2C
@@ -25,7 +25,7 @@ ms.locfileid: "88163182"
 
 [Vlastní zásady](custom-policy-overview.md) jsou konfigurační soubory, které definují chování klienta Azure Active Directory B2C (Azure AD B2C). V tomto článku vytvoříte vlastní zásadu, která podporuje registraci nebo přihlášení k místnímu účtu pomocí e-mailové adresy a hesla. Připravuje se také prostředí pro přidávání zprostředkovatelů identity.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud ho ještě nemáte, [Vytvořte klienta Azure AD B2C](tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
 - [Zaregistrujte svoji aplikaci](tutorial-register-applications.md) v tenantovi, kterou jste vytvořili, aby mohla komunikovat s Azure AD B2C.
@@ -33,7 +33,7 @@ ms.locfileid: "88163182"
 
 ## <a name="add-signing-and-encryption-keys"></a>Přidat podpisové a šifrovací klíče
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled v části **zásady**vyberte **Architektura prostředí identity**.
@@ -90,9 +90,9 @@ V dalším kroku vystavte rozhraní API přidáním oboru:
 1. V nabídce vlevo v části **Spravovat**vyberte možnost **zveřejnit rozhraní API**.
 1. Vyberte **Přidat obor**a pak vyberte **Uložit a pokračovat** a přijměte výchozí identifikátor URI ID aplikace.
 1. Zadejte následující hodnoty pro vytvoření oboru, který umožňuje vlastní spuštění zásad ve vašem tenantovi Azure AD B2C:
-    * **Název oboru**:`user_impersonation`
-    * **Zobrazovaný název souhlasu správce**:`Access IdentityExperienceFramework`
-    * **Popis souhlasu správce**:`Allow the application to access IdentityExperienceFramework on behalf of the signed-in user.`
+    * **Název oboru**: `user_impersonation`
+    * **Zobrazovaný název souhlasu správce**: `Access IdentityExperienceFramework`
+    * **Popis souhlasu správce**: `Allow the application to access IdentityExperienceFramework on behalf of the signed-in user.`
 1. Vybrat **Přidat obor**
 
 * * *
@@ -166,7 +166,7 @@ Přidejte ID aplikace do souboru rozšíření *TrustFrameworkExtensions.xml*.
 1. Otevřete `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** a vyhledejte element `<TechnicalProfile Id="login-NonInteractive">` .
 1. Nahraďte obě instance `IdentityExperienceFrameworkAppId` s ID aplikace aplikace IdentityExperienceFramework, kterou jste vytvořili dříve.
 1. Nahraďte obě instance `ProxyIdentityExperienceFrameworkAppId` s ID aplikace aplikace ProxyIdentityExperienceFramework, kterou jste vytvořili dříve.
-1. Soubor uložte.
+1. Uložte soubor.
 
 ## <a name="upload-the-policies"></a>Nahrajte zásady.
 

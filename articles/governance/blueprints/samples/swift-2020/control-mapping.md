@@ -4,10 +4,10 @@ description: Mapování ovládacího prvku ukázka SWIFT CSP-CSCF v2020 details 
 ms.date: 08/18/2020
 ms.topic: sample
 ms.openlocfilehash: 868971b0523e077f0f76c0340a87df550448913a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540808"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>Mapování ovládacího prvku Sample CSP-CSCF v2020 details
@@ -29,7 +29,7 @@ Tento podrobný plán vám pomůže zkontrolovat účty, které nemusí být v r
 - Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.
 
-## <a name="26-51-64-and-65a-account-management--role-based-schemes"></a>Správa účtů 2,6, 5,1, 6,4 a 6.5 | Schémata založená na rolích
+## <a name="26-51-64-and-65a-account-management--role-based-schemes"></a>Správa účtů 2,6, 5,1, 6,4 a 6.5 | Role-Based schémata
 
 [Řízení přístupu na základě role Azure](../../../../role-based-access-control/overview.md) (Azure RBAC) vám umožní spravovat, kdo má přístup k prostředkům v Azure. Pomocí Azure Portal můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán také přiřadí [Azure Policy](../../../policy/overview.md) definice k auditu používání ověřování Azure Active Directory pro servery SQL a Service Fabric. Ověřování pomocí Azure Active Directory umožňuje zjednodušenou správu oprávnění a centralizovanou správu identit uživatelů databáze a dalších služeb Microsoftu. Tento podrobný plán navíc přiřadí definici Azure Policy pro audit používání vlastních pravidel služby Azure RBAC. Princip implementace vlastních pravidel služby Azure RBAC vám může pomáhat ověřit potřebnou a správnou implementaci, protože vlastní pravidla služby Azure RBAC jsou náchylná k chybám.
 
@@ -131,7 +131,7 @@ Adaptivní řízení aplikací v Azure Security Center je inteligentní a automa
 
 - V počítačích by měly být povolené Adaptivní řízení aplikací pro definování bezpečných aplikací.
 
-## <a name="11-user-installed-software"></a>1,1 uživatelem nainstalovaný software
+## <a name="11-user-installed-software"></a>1,1 User-Installed software
 
 Adaptivní řízení aplikací v Azure Security Center je inteligentní a automatizované řešení pro filtrování aplikací, které může blokovat nebo bránit spuštění určitého softwaru na virtuálních počítačích. Řízení aplikací vám může pomáhat vymáhat a monitorovat dodržování zásad omezení softwaru. Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže monitorovat virtuální počítače, ve kterých se doporučuje seznam povolených aplikací, ale ještě není nakonfigurovaný.
 
@@ -143,7 +143,7 @@ Adaptivní řízení aplikací v Azure Security Center je inteligentní a automa
 Tento podrobný plán vám pomůže omezit a řídit privilegovaný přístup tím, že přiřadíte definice [Azure Policy](../../../policy/overview.md) k auditování účtů s oprávněním vlastníka nebo zápisu, u kterých není povolené Multi-Factor Authentication. Multi-Factor Authentication pomáhá udržet zabezpečení účtů i v případě, že dojde k ohrožení bezpečnosti některých informací o ověřování. Monitorováním účtů bez povoleného ověřování službou Multi-Factor Authentication můžete identifikovat účty, jejichž zabezpečení může být pravděpodobnější.
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
-- Pro účty s oprávněním k zápisu do vašeho předplatného by se měla povolit vícefaktorové ověřování.
+- Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA
 
 ## <a name="42-identification-and-authentication-organizational-users--network-access-to-non-privileged-accounts"></a>4,2 identifikace a ověřování (uživatelé organizace) | Přístup k síti bez privilegovaných účtů
 
@@ -162,7 +162,7 @@ Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) def
 - Zobrazit výsledky auditu z virtuálních počítačů s Windows, které neukládají hesla pomocí reverzibilního šifrování
 - Nasaďte požadavky na auditování virtuálních počítačů s Windows, které neukládají hesla pomocí reverzibilního šifrování.
 
-## <a name="23-and-41-authenticator-management--password-based-authentication"></a>Správa ověřovacích dat 2,3 a 4,1 | Ověřování založené na heslech
+## <a name="23-and-41-authenticator-management--password-based-authentication"></a>Správa ověřovacích dat 2,3 a 4,1 | Ověřování Password-Based
 
 Tento podrobný plán vám pomůže vynutilit silná hesla tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které auditují virtuální počítače s Windows, které nevyžadují minimální sílu a jiné požadavky na heslo. Povědomí o problémech s virtuálními počítači, které jsou v rozporu s zásadami složitosti hesla, vám pomůžou provést nápravné akce, které zajistí, aby hesla všech uživatelských účtů virtuálních počítačů byla v pořádku se zásadami hesel vaší organizace.
 

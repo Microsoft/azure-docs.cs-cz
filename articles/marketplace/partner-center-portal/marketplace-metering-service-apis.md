@@ -8,10 +8,10 @@ ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: ac48973653e89d43521979a5606a8a3a3c2e1346
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319979"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Rozhraní API pro fakturaci měření na webu Marketplace
@@ -34,7 +34,7 @@ Pro každou hodinu kalendářního dne se dá vygenerovat jenom jedna událost p
 
 Pro každou hodinu kalendářního dne a prostředku se dá vygenerovat jenom jedna událost použití. Pokud se více než jedna jednotka spotřebovává za hodinu, pak se nashromáždí všechny spotřebované jednotky za hodinu a pak se vygeneruje v jedné události. Události využívání se dají vygenerovat jenom za posledních 24 hodin. Pokud událost využití vygenerujete kdykoli mezi 8:00 a 8:59:59 (a je přijata) a poslat další událost pro stejný den mezi 8:00 a 8:59:59, bude odmítnuta jako duplicitní.
 
-**Příspěvek**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Příspěvek**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Parametry dotazu:*
 
@@ -65,7 +65,7 @@ Pro každou hodinu kalendářního dne a prostředku se dá vygenerovat jenom je
 ```
 
 >[!NOTE]
->`resourceId`má různý význam pro SaaS aplikaci a pro spravovanou aplikaci, která vysílá vlastní měřič. 
+>`resourceId` má různý význam pro SaaS aplikaci a pro spravovanou aplikaci, která vysílá vlastní měřič. 
 
 V případě plánů aplikací spravovaných aplikacemi Azure se `resourceId` nachází v `resourceUsageId` rámci `billingDetails` objektu metadat spravované aplikace. Ukázkový skript pro načtení najdete v [části použití tokenu identity spravovaného službou Azure](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
 
@@ -95,7 +95,7 @@ Kód: 400 <br>
 Chybný požadavek.
 
 * Byla zadána chybějící nebo neplatná data žádosti.
-* `effectiveStartTime`je v minulosti více než 24 hodin. Vypršela platnost události.
+* `effectiveStartTime` je v minulosti více než 24 hodin. Vypršela platnost události.
 * Předplatné SaaS není ve stavu odebíraného.
 
 Příklad datové části odpovědi: 
@@ -189,7 +189,7 @@ Rozhraní API události využití dávky umožňuje generovat události využit�
 ```
 
 >[!NOTE]
->`resourceId`má různý význam pro SaaS aplikaci a pro spravovanou aplikaci, která vysílá vlastní měřič. 
+>`resourceId` má různý význam pro SaaS aplikaci a pro spravovanou aplikaci, která vysílá vlastní měřič. 
 
 V případě plánů aplikací spravovaných aplikacemi Azure se `resourceId` nachází v `resourceUsageId` rámci `billingDetails` objektu metadat spravované aplikace. Ukázkový skript pro načtení najdete v [části použití tokenu identity spravovaného službou Azure](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
 
@@ -271,7 +271,7 @@ Pokud chcete testovat vlastní emise měřičů, implementujte integraci s rozhr
 
 K omezení přístupu k tomuto plánu během testování na omezenou cílovou skupinu můžete použít také soukromý plán pro stávající živou nabídku.
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
 Postupujte podle pokynů v [části Podpora programu komerčního tržiště v partnerském centru](./support.md) , abyste pochopili možnosti podpory vydavatelů a otevřeli lístek podpory s Microsoftem.
 

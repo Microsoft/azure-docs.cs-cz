@@ -4,12 +4,12 @@ description: Přečtěte si, jak řešit problémy a řešit běžné problémy 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 81adbfe7a5a04ffb8fcb3311ad3561135b77ab7b
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 930dae7ae163a04fb8b5fc5ae44b9170a7e3c6ce
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614015"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893131"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -86,7 +86,7 @@ AKS má řídicí plochy vysoké úrovně, které se vertikálně škálují pod
 
 Tyto časové limity můžou souviset s vnitřním přenosem mezi blokovanými uzly. Ověřte, že tento provoz není blokovaný, například [skupiny zabezpečení sítě](concepts-security.md#azure-network-security-groups) v podsíti pro uzly clusteru.
 
-## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>V existujícím clusteru se snažím povolit Access Control na základě rolí (RBAC). Jak to můžu udělat?
+## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>V existujícím clusteru se snažím povolit Role-Based Access Control (RBAC). Jak to můžu udělat?
 
 Povolení řízení přístupu na základě role (RBAC) na existujících clusterech se v tuto chvíli nepodporuje, musí se nastavit při vytváření nových clusterů. Při použití rozhraní příkazového řádku, portálu nebo verze rozhraní API je ve výchozím nastavení povolena RBAC `2020-03-01` .
 
@@ -197,6 +197,23 @@ To vyžaduje, `--api-server-authorized-ip-ranges` aby zahrnovaly IP (y) nebo roz
 Při omezení odchozího provozu z clusteru AKS se [vyžadují a volitelné Doporučené](limit-egress-traffic.md) Odchozí porty/pravidla sítě a plně kvalifikovaný název domény nebo pravidla použití pro AKS. Pokud jsou nastavení v konfliktu s některým z těchto pravidel, nebudou některé `kubectl` příkazy správně fungovat. Při vytváření clusteru AKS můžete také zobrazit chyby.
 
 Ověřte, že vaše nastavení nejsou v konfliktu s žádným z požadovaných nebo volitelných odchozích portů/síťových pravidel a plně kvalifikovaného názvu domény nebo pravidel pro aplikace.
+
+## <a name="im-receiving-429---too-many-requests-errors"></a>Zobrazujem chyby "429-moc velký počet žádostí" 
+
+Když cluster Kubernetes v Azure (AKS nebo No) často horizontální navýšení kapacity nebo použití automatického škálování clusteru (CA), můžou tyto operace způsobit velký počet volání HTTP, která zase překročí přidělenou kvótu předplatného, což by vedlo k selhání. Chyby budou vypadat jako
+
+```
+Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The server rejected the request because too many requests have been received for this subscription.\" Details=[{\"code\":\"TooManyRequests\",\"message\":\"{\\\"operationGroup\\\":\\\"HighCostGetVMScaleSet30Min\\\",\\\"startTime\\\":\\\"2020-09-20T07:13:55.2177346+00:00\\\",\\\"endTime\\\":\\\"2020-09-20T07:28:55.2177346+00:00\\\",\\\"allowedRequestCount\\\":1800,\\\"measuredRequestCount\\\":2208}\",\"target\":\"HighCostGetVMScaleSet30Min\"}] InnerError={\"internalErrorCode\":\"TooManyRequestsReceived\"}"}
+```
+
+Tyto chyby omezování jsou podrobně popsané [tady](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling) a [tady](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshooting-throttling-errors)
+
+Pro rezprovoznění z AKS technického týmu je potřeba zajistit, aby se verze používala aspoň 1.18. x, která obsahuje mnoho vylepšení. Další podrobnosti najdete [tady](https://github.com/Azure/AKS/issues/1413) a [tady](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247).
+
+Vzhledem k těmto chybám omezení se měří na úrovni předplatného, může se přesto vyskytnout:
+- Existují aplikace třetích stran, které provádějí požadavky GET (např. Monitorujte aplikace atd...). Doporučujeme, abyste snížili četnost těchto volání.
+- V VMSS je velký počet clusterů AKS/nodepools. Obvyklé doporučení je mít v daném předplatném méně než 20-30 clusterů.
+
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Řešení potíží s Azure Storage a AKS
 

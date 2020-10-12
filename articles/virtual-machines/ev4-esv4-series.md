@@ -9,23 +9,23 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 97d3b87edad56394d42daca19cdb8dbf962fade9
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 2c6540513c46307e4bd51b163dd77984395006c5
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649503"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945426"
 ---
 # <a name="ev4-and-esv4-series"></a>Řada Ev4 a Esv4
 
-Ev4 a Esv4-Series běží na &reg; procesorech Intel Xeon &reg; Platinum 8272CL (Cascade Lake) v konfiguraci s více vlákny, jsou ideální pro různé podnikové aplikace náročné na paměť a funkce až na 504GiB paměti RAM. Nabízí trvalou veškerou základní rychlost Turbo 3,4 GHz.
+Ev4 a Esv4-Series běží na &reg; procesorech Intel Xeon &reg; Platinum 8272CL (Cascade Lake) v konfiguraci s více vlákny, jsou ideální pro různé podnikové aplikace náročné na paměť a funkce až na 504GiB paměti RAM. Nabízí všechny základní rychlosti turbo 3,4 GHz.
 
 > [!NOTE]
 > Nejčastější dotazy najdete v tématu  [velikosti virtuálních počítačů Azure bez místního dočasného disku](azure-vms-no-temp-disk.md).
 
 ## <a name="ev4-series"></a>Ev4-Series
 
-Velikosti řady Ev4-Series běží na Intel Xeon &reg; Platinum 8272CL (Cascade Lake). Instance Ev4-Series jsou ideální pro podnikové aplikace náročné na paměť. Virtuální počítače Ev4-Series mají &reg; technologii Intel Hyper-Threading.
+Velikosti řady Ev4-Series běží na Intel Xeon &reg; Platinum 8272CL (Cascade Lake). Instance Ev4-Series jsou ideální pro podnikové aplikace náročné na paměť. Virtuální počítače Ev4-Series funkce &reg; technologie Intel Hyper-Threading.
 
 Úložiště vzdálených datových disků se fakturuje odděleně od virtuálních počítačů. Pokud chcete použít disky Premium Storage, použijte velikosti Esv4. Měřiče cen a účtování pro velikosti Esv4 jsou stejné jako pro Ev4-Series.
 
@@ -51,7 +51,7 @@ Velikosti řady Ev4-Series běží na Intel Xeon &reg; Platinum 8272CL (Cascade 
 
 ## <a name="esv4-series"></a>Esv4-Series
 
-Velikosti řady Esv4-Series běží na Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). Instance Esv4-Series jsou ideální pro podnikové aplikace náročné na paměť. Virtuální počítače Evs4-Series mají &reg; technologii Intel Hyper-Threading. Úložiště vzdálených datových disků se fakturuje odděleně od virtuálních počítačů.
+Velikosti řady Esv4-Series běží na Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). Instance Esv4-Series jsou ideální pro podnikové aplikace náročné na paměť. Virtuální počítače Evs4-Series funkce &reg; technologie Intel Hyper-Threading. Úložiště vzdálených datových disků se fakturuje odděleně od virtuálních počítačů.
 
 [ACU](acu.md): 195-210<br>
 [Premium Storage](premium-storage-performance.md): podporováno<br>

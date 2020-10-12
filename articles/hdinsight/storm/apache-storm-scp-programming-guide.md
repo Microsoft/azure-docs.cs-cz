@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
 ms.openlocfilehash: d54a06c457451fc5323ae37b34b53411cdd6abda
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89000137"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Průvodce programováním SCP pro Apache Storm ve službě Azure HDInsight
@@ -434,7 +434,7 @@ Specifikace topologie můžete odesílat přímo do clusteru s více podsystému
 
 SCP.NET přidal následující funkce pro definování transakčních topologií:
 
-| Nová funkce | Parametry | Popis |
+| Nová funkce | Parametry | Description |
 | --- | --- | --- |
 | **TX – topolopy** |*název topologie*<br />*Spout – mapa*<br />*Mapa šroubů* |Definuje transakční topologii s názvem topologie, mapou definice spoutů a mapou definice šrouby. |
 | **SCP – TX-Spout** |*Exec – název*<br />*argumentů*<br />*pole* |Definuje transakční Spout. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro Spout. |
@@ -446,7 +446,7 @@ SCP.NET přidal následující funkce pro definování transakčních topologií
 
 SCP.NET definuje následující klíčová slova:
 
-| Klíčové slovo | Popis |
+| Klíčové slovo | Description |
 | --- | --- |
 | **: název** |Název topologie |
 | **: topologie** |Topologie pomocí funkcí v předchozí tabulce a integrovaných funkcích |

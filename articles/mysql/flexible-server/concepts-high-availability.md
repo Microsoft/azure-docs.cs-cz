@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 9db5776a4d2395baf03a5ed7cf05db49de8d0321
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934972"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Koncepty vysoké dostupnosti v Azure Database for MySQL flexibilním serveru (Preview)
@@ -18,7 +18,7 @@ ms.locfileid: "90934972"
 > [!IMPORTANT] 
 > Azure Database for MySQL – flexibilní Server je momentálně ve verzi Public Preview.
 
-Azure Database for MySQL flexibilní Server (Preview) umožňuje konfigurovat vysokou dostupnost s automatickým převzetím služeb při selhání pomocí možnosti vysoké dostupnosti **zóny** . Když je nasazená v zóně redundantní konfigurace, flexibilní server automaticky zřídí a spravuje pohotovostní repliku v jiné zóně dostupnosti. Při použití replikace na úrovni úložiště se data **synchronně replikují** na pohotovostní server v sekundární zóně, aby se po převzetí služeb při selhání neztratila žádná data. Převzetí služeb při selhání je plně transparentní z klientské aplikace a nevyžaduje žádné akce uživatele. Pohotovostní server není k dispozici pro žádné operace čtení nebo zápisu, ale jedná se o pasivní pohotovostní režim, který umožňuje rychlé převzetí služeb při selhání. Časy převzetí služeb při selhání obvykle rozsahují od 60-120 sekund.
+Azure Database for MySQL flexibilní Server (Preview) umožňuje konfigurovat vysokou dostupnost s automatickým převzetím služeb při selhání pomocí možnosti vysoké dostupnosti **zóny** . Flexibilní server nasazený v zónově redundantní konfiguraci automaticky zřídí a spravuje pohotovostní repliku v jiné zóně dostupnosti. Při použití replikace na úrovni úložiště se data **synchronně replikují** na pohotovostní server v sekundární zóně, aby se po převzetí služeb při selhání neztratila žádná data. Převzetí služeb při selhání je plně transparentní z klientské aplikace a nevyžaduje žádné akce uživatele. Pohotovostní server není k dispozici pro žádné operace čtení nebo zápisu, ale jedná se o pasivní pohotovostní režim, který umožňuje rychlé převzetí služeb při selhání. Časy převzetí služeb při selhání obvykle rozsahují od 60-120 sekund.
 
 Konfigurace redundantního vysoké dostupnosti zóny umožňuje automatické převzetí služeb při selhání při plánovaných událostech, jako jsou například výpočetní operace na úrovni uživatele iniciované uživatelem, a neplánované události, jako jsou základní hardwarové a softwarové chyby, selhání sítě a dokonce selhání zóny dostupnosti.
 

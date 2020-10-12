@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89661447"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Prodloužit platnost federačních certifikátů pro Microsoft 365 a Azure Active Directory
@@ -69,13 +69,13 @@ Get-Adfsproperties
 ![AutoCertificateRollover](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
 
 >[!NOTE] 
->Pokud používáte AD FS 2,0, nejdřív spusťte rutinu Add-abyste pssnapin Microsoft. ADFS. PowerShell.
+>Pokud používáte AD FS 2,0, nejdřív spusťte Add-Pssnapin Microsoft. ADFS. PowerShell.
 
 ### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>Krok 2: potvrďte, že je synchronizace AD FS a Azure AD
 Na serveru AD FS otevřete příkazový řádek PowerShellu MSOnline a připojte se k Azure AD.
 
 > [!NOTE]
-> MSOL – rutiny jsou součástí modulu PowerShellu MSOnline.
+> MSOL-Cmdlets jsou součástí modulu PowerShellu pro MSOnline.
 > Modul PowerShellu MSOnline si můžete stáhnout přímo z Galerie prostředí PowerShell.
 > 
 >
@@ -102,13 +102,13 @@ Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCe
 Pokud se kryptografické otisky v obou výstupech shodují, vaše certifikáty se synchronizují se službou Azure AD.
 
 ### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>Krok 3: Podívejte se, jestli váš certifikát brzy vyprší.
-Ve výstupu příkazu Get-MsolFederationProperty nebo Get-AdfsCertificate zaškrtněte u položky "ne po" datum. Pokud je datum kratší než 30 dnů, měli byste provést akci.
+Ve výstupu Get-MsolFederationProperty nebo Get-AdfsCertificate ověřte, že datum není po. Pokud je datum kratší než 30 dnů, měli byste provést akci.
 
 | AutoCertificateRollover | Synchronizace certifikátů s Azure AD | Federační metadata jsou veřejně přístupná. | Obou | Akce |
 |:---:|:---:|:---:|:---:|:---:|
-| Ano |Ano |Ano |- |Není vyžadována žádná akce. Přečtěte si téma [Automatické obnovení podpisového certifikátu tokenu](#autorenew). |
-| Ano |Ne |- |Méně než 15 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
-| Ne |- |- |Méně než 30 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
+| Yes |Yes |Yes |- |Není vyžadována žádná akce. Přečtěte si téma [Automatické obnovení podpisového certifikátu tokenu](#autorenew). |
+| Yes |No |- |Méně než 15 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
+| No |- |- |Méně než 30 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
 
 \[-] Nezáleží
 
@@ -152,7 +152,7 @@ Na druhé straně, pokud je **AutoCertificateRollover** nastavené na **hodnotu 
     PS C: \> Get-ADFSCertificate – podepisování tokenů CertificateType
 
    > [!NOTE]
-   > Pokud používáte AD FS 2,0, měli byste nejdřív spustit rutinu Add-abyste pssnapin Microsoft. ADFS. PowerShell.
+   > Pokud používáte AD FS 2,0, měli byste nejdřív spustit Add-Pssnapin Microsoft. ADFS. PowerShell.
    >
    >
 3. Podívejte se na výstup příkazu na libovolných uvedených certifikátech. Pokud AD FS vygeneroval nový certifikát, měli byste vidět dva certifikáty ve výstupu: jeden, pro který je **primární** hodnota **true** , a datum **NotAfter** spadá do 5 dnů a jedna, pro kterou je **primární** hodnota **false** , a **NotAfter** je přibližně ročně v budoucnosti.
@@ -167,9 +167,9 @@ Aktualizujte Microsoft 365 s novými podpisovým certifikátem tokenu, který se
 
 1. Otevřete Modul Microsoft Azure Active Directory pro Windows PowerShell.
 2. Spusťte $cred = Get-Credential. Když tato rutina vyzve k zadání přihlašovacích údajů, zadejte přihlašovací údaje účtu správce cloudové služby.
-3. Spusťte Connect-MsolService – Credential $cred. Tato rutina vás připojí ke cloudové službě. Vytvoření kontextu, který vás připojí ke cloudové službě, je nutné před spuštěním kterékoli z dalších rutin instalovaných nástrojem.
-4. Pokud tyto příkazy spouštíte na počítači, který není AD FS primární federační server, spusťte příkaz set-MSOLAdfscontext-Computer &lt; AD FS primary server &gt; , kde &lt; AD FS primární server &gt; je vnitřní název FQDN primárního AD FS serveru. Tato rutina vytvoří kontext, který vás připojí k AD FS.
-5. Spusťte rutinu Update-MSOLFederatedDomain – domainname &lt; Doména &gt; . Tato rutina aktualizuje nastavení z AD FS do cloudové služby a nakonfiguruje vztah důvěryhodnosti mezi nimi.
+3. Spustit Connect-MsolService – přihlašovací $cred Tato rutina vás připojí ke cloudové službě. Vytvoření kontextu, který vás připojí ke cloudové službě, je nutné před spuštěním kterékoli z dalších rutin instalovaných nástrojem.
+4. Pokud tyto příkazy spouštíte na počítači, který není AD FS primární federační server, spusťte Set-MSOLAdfscontext-Computer &lt; AD FS primární server &gt; , kde &lt; AD FS primární server &gt; je interní název FQDN primárního AD FS serveru. Tato rutina vytvoří kontext, který vás připojí k AD FS.
+5. Spusťte Update-MSOLFederatedDomain – doména doména &lt; &gt; . Tato rutina aktualizuje nastavení z AD FS do cloudové služby a nakonfiguruje vztah důvěryhodnosti mezi nimi.
 
 > [!NOTE]
 > Pokud potřebujete podporovat více domén nejvyšší úrovně, například contoso.com a fabrikam.com, je nutné použít přepínač **SupportMultipleDomain** u všech rutin. Další informace najdete v tématu [Podpora více domén nejvyšší úrovně](how-to-connect-install-multiple-domains.md).

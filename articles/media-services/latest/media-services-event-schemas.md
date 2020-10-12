@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 47ba1af15101ae68cf5311ed73f7078bf9fc7f35
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336424"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid schémat pro události Media Services
@@ -136,7 +136,7 @@ Následující příklad ukazuje schéma události **JobStateChange** :
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | previousState | řetězec | Stav úlohy před událostí. |
 | state | řetězec | Nový stav úlohy, která se v této události oznamuje. Například "naplánované: úloha je připravena k zahájení" nebo "dokončeno: úloha je dokončena".|
@@ -206,7 +206,7 @@ Ukázkové schéma pro každou poslední změnu stavu úlohy (například JobFin
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | činnosti | Pole | Získá výstupy úlohy.|
 
@@ -322,7 +322,7 @@ Následující příklad ukazuje schéma události **LiveEventConnectionRejected
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | streamId | řetězec | Identifikátor datového proudu nebo připojení. Kodér nebo zákazník je zodpovědný za přidání tohoto ID do adresy URL ingestování. |  
 | ingestUrl | řetězec | Adresa URL příjmu poskytovaná živou událostí |  
@@ -358,7 +358,7 @@ Následující příklad ukazuje schéma události **LiveEventEncoderConnected**
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | streamId | řetězec | Identifikátor datového proudu nebo připojení. Kodér nebo zákazník zodpovídá za poskytnutí tohoto ID v adrese URL ingestování. |
 | ingestUrl | řetězec | Adresa URL příjmu poskytovaná živou událostí |
@@ -392,7 +392,7 @@ Následující příklad ukazuje schéma události **LiveEventEncoderDisconnecte
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | streamId | řetězec | Identifikátor datového proudu nebo připojení. Kodér nebo zákazník je zodpovědný za přidání tohoto ID do adresy URL ingestování. |  
 | ingestUrl | řetězec | Adresa URL příjmu poskytovaná živou událostí |  
@@ -404,7 +404,7 @@ Kódy výsledku chyby můžete najít v části [kódy chyb živé události](li
 
 Kódy výsledků řádného odpojení:
 
-| Kód výsledku | Popis |
+| Kód výsledku | Description |
 | ----------- | ----------- |
 | S_OK | Kodér byl úspěšně odpojen. |
 | MPE_CLIENT_TERMINATED_SESSION | Kodér byl odpojen (RTMP). |
@@ -442,7 +442,7 @@ Následující příklad ukazuje schéma události **LiveEventIncomingDataChunkD
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy |
@@ -482,7 +482,7 @@ Následující příklad ukazuje schéma události **LiveEventIncomingStreamRece
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy (poskytnutý kodérem nebo v případě RTMP vygeneruje Server ve formátu *TrackType_Bitrate* ). |
@@ -521,7 +521,7 @@ Následující příklad ukazuje schéma události **LiveEventIncomingStreamsOut
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | minLastTimestamp | řetězec | Minimální počet posledních časových razítek mezi všemi skladbami (zvuk nebo video). |
 | typeOfTrackWithMinLastTimestamp | řetězec | Typ stopy (zvuk nebo video) s minimálním posledním časovým razítkem. |
@@ -557,7 +557,7 @@ Následující příklad ukazuje schéma události **LiveEventIncomingVideoStrea
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | firstTimestamp | řetězec | Bylo přijato časové razítko pro jednu z úrovní sledování a kvality typu video. |
 | firstDuration | řetězec | Doba trvání datového bloku s prvním časovým razítkem. |
@@ -599,7 +599,7 @@ Následující příklad ukazuje schéma události **LiveEventIngestHeartbeat** 
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy (poskytnutý kodérem nebo v případě RTMP vygeneruje Server ve formátu *TrackType_Bitrate* ). |
@@ -643,7 +643,7 @@ Následující příklad ukazuje schéma události **LiveEventTrackDiscontinuity
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy (poskytnutý kodérem nebo v případě RTMP vygeneruje Server ve formátu *TrackType_Bitrate* ). |
@@ -657,7 +657,7 @@ Datový objekt má následující vlastnosti:
 
 Událost má následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | téma | řetězec | Téma EventGrid Tato vlastnost má ID prostředku pro účet Media Services. |
 | závislosti | řetězec | Cesta prostředku pro kanál Media Services pod účtem Media Services Zřetězením tématu a předmětu získáte ID prostředku pro úlohu. |

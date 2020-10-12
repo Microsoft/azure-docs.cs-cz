@@ -31,10 +31,6 @@
           href: azure-stack-edge-gpu-deploy-activate.md
         - name: 8. Konfigurace výpočetních funkcí
           href: azure-stack-edge-gpu-deploy-configure-compute.md
-        - name: '9A. Přidání, připojení ke sdílené složce'
-          href: azure-stack-edge-j-series-deploy-add-shares.md
-        - name: '9B. Přidání, připojení k účtům úložiště'
-          href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
     - name: Koncepty
       items:
         - name: Kontrola požadavků
@@ -87,6 +83,8 @@
               items:
                 - name: Bezstavová aplikace
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+                - name: Vývoj modulu jazyka C#
+                  href: azure-stack-edge-j-series-create-iot-edge-module.md
             - name: Přes Azure Arc (Preview)
               items:
                 - name: Povolení služby Arc v clusteru Kubernetes
@@ -123,12 +121,14 @@
               href: azure-stack-edge-j-series-create-certificates-tool.md
             - name: Řešení chyb certifikátů
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
-        - name: Vývoj modulu jazyka C#
-          href: azure-stack-edge-j-series-create-iot-edge-module.md
         - name: Správy výpočetních funkcí Edge
           href: azure-stack-edge-j-series-manage-compute.md
         - name: Správa brány úložiště
           items:
+            - name: 'Přidání, připojení ke sdílené složce'
+              href: azure-stack-edge-j-series-deploy-add-shares.md
+            - name: 'Přidání, připojení k účtům úložiště'
+              href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
             - name: Sdílené složky
               href: azure-stack-edge-j-series-manage-shares.md
             - name: Uživatelé
@@ -149,6 +149,10 @@
               href: azure-stack-edge-return-device.md
             - name: Výměna zařízení
               href: azure-stack-edge-replace-device.md
+            - name: Příprava na selhání zařízení
+              href: azure-stack-edge-gpu-prepare-device-failure.md
+            - name: Zotavení ze selhání zařízení
+              href: azure-stack-edge-gpu-recover-device-failure.md
         - name: Monitorování
           items:
             - name: Použití grafů metrik

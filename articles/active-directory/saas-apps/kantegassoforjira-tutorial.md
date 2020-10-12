@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 230613cc103cc851d1173f867b551af028ea898b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b22bb16c583c0385b31bde89f30763cd4fb478a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546842"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>Kurz: Azure Active Directory Integration s Kantega SSO pro JIRA
 
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Kantega SSO pro přihlašovací údaje domény JIRA a adresy URL jednotného přihlašování](common/idp-intiated.png)
+    ![Snímek obrazovky s konfigurací "základní S A M L" se zvýrazněným textovým polem "identifikátor" a "Reply U R L" a s vybraným tlačítkem Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,39 +134,39 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 1. Najeďte myší na ozubeného kola a klikněte na **Doplňky**.
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforjira-tutorial/addon1.png)
+    ![Snímek obrazovky, na kterém je vybraná ikona "ozubeného kola" a v rozevíracím seznamu je vybraná možnost Přidat doplňky](./media/kantegassoforjira-tutorial/addon1.png)
 
 1. V části karta doplňky klikněte na **najít nové doplňky**. Vyhledejte **KANTEGA SSO pro JIRA (SAML & Kerberos)** a klikněte na tlačítko **instalovat** a nainstalujte nový modul plug-in SAML.
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforjira-tutorial/addon2.png)
+    ![Snímek obrazovky s oddílem "najít nové doplňky" s "Kantego S S informacemi pro JIRA (S A M L & Kerberos)" do vyhledávacího pole a vybraného tlačítka pro instalaci.](./media/kantegassoforjira-tutorial/addon2.png)
 
 1. Spustí se instalace modulu plug-in.
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforjira-tutorial/addon3.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno "instalace" modulu plug-in.](./media/kantegassoforjira-tutorial/addon3.png)
 
 1. Po dokončení instalace. Klikněte na **Zavřít**.
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforjira-tutorial/addon33.png)
+    ![Snímek obrazovky s informacemi o tom, že je nainstalovaný a připravený k přechodu dialog s vybranou akcí zavřít](./media/kantegassoforjira-tutorial/addon33.png)
 
 1.  Klikněte na **Manage** (Spravovat).
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforjira-tutorial/addon34.png)
+    ![Snímek obrazovky zobrazující stránku aplikace Kantega s S názvem s vybraným tlačítkem spravovat.](./media/kantegassoforjira-tutorial/addon34.png)
     
 1. Nový modul plug-in je uvedený v části **integrace**. Kliknutím na **Konfigurovat** Nakonfigurujte nový modul plug-in.
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforjira-tutorial/addon35.png)
+    ![Snímek obrazovky, který zobrazuje "integrace" v navigační nabídce na levé straně a zvýrazněné tlačítko konfigurovat, které je vybráno v části "Správa doplňků".](./media/kantegassoforjira-tutorial/addon35.png)
 
 1. V části **SAML** . V rozevíracím seznamu **Přidat poskytovatele identity** vyberte **Azure Active Directory (Azure AD)** .
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforjira-tutorial/addon4.png)
+    ![Snímek obrazovky, který zobrazuje rozevírací seznam přidat zprostředkovatele identity s vybraným Azure Active Directory (Azure A D).](./media/kantegassoforjira-tutorial/addon4.png)
 
 1. Vyberte úroveň předplatného jako **základní**.
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforjira-tutorial/addon5.png)       
+    ![Snímek obrazovky, který zobrazuje oddíl "Příprava Azure A D" pomocí příkazu "Basic".](./media/kantegassoforjira-tutorial/addon5.png)     
 
 1. V části **Vlastnosti aplikace** proveďte následující kroky: 
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforjira-tutorial/addon6.png)
+    ![Snímek obrazovky s oddílem "vlastnosti aplikace" se zvýrazněným textovým polem App I D U R L a vybraným tlačítkem pro kopírování a tlačítkem Další](./media/kantegassoforjira-tutorial/addon6.png)
 
     a. Zkopírujte hodnotu **identifikátoru URI ID aplikace** a použijte ji jako **identifikátor, adresu URL odpovědi a adresu URL Sign-On** v části **základní konfigurace SAML** v Azure Portal.
 
@@ -174,7 +174,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 1. V části **import metadat** proveďte následující kroky: 
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforjira-tutorial/addon7.png)
+    ![Snímek obrazovky s vybraným oddílem "import metadat" se souborem metadat v mém počítači](./media/kantegassoforjira-tutorial/addon7.png)
 
     a. Vyberte **soubor metadat na mém počítači**a nahrajte soubor metadat, který jste stáhli z Azure Portal.
 
@@ -182,7 +182,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 1. V části **název a umístění jednotného přihlašování** proveďte následující kroky:
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforjira-tutorial/addon8.png)
+    ![Snímek obrazovky, který zobrazuje "název a S S S/S" umístění "se zvýrazněným názvem poskytovatele identity" a tlačítkem "Další".](./media/kantegassoforjira-tutorial/addon8.png)
 
     a. Do textového pole **název zprostředkovatele** identity přidejte jméno poskytovatele identity (např. Azure AD).
 
@@ -190,11 +190,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 1. Ověřte podpisový certifikát a klikněte na tlačítko **Další**.
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforjira-tutorial/addon9.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "ověření podpisu" s vybraným tlačítkem "Další".](./media/kantegassoforjira-tutorial/addon9.png)
 
 1. V části **uživatelské účty JIRA** proveďte následující kroky:
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforjira-tutorial/addon10.png)
+    ![Snímek obrazovky, který zobrazuje "uživatelské účty JIRA" se zvýrazněnou možností "vytvořit uživatele v interním adresáři JIRA", pokud je to potřeba, a vybrané tlačítko "Další".](./media/kantegassoforjira-tutorial/addon10.png)
 
     a. **V případě potřeby vyberte možnost vytvořit uživatele v interním adresáři JIRA** a zadejte vhodný název skupiny pro uživatele (může to být víc. skupin oddělených čárkami).
 
@@ -202,7 +202,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 1. Klikněte na **Finish** (Dokončit).
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforjira-tutorial/addon11.png)
+    ![Snímek obrazovky zobrazující, že se v části Souhrn zobrazuje tlačítko Dokončit.](./media/kantegassoforjira-tutorial/addon11.png)
 
 1. V části **známé domény pro Azure AD** proveďte následující kroky:
 
@@ -274,11 +274,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k JIRA, musí se zřídit v JIRA
 
 1. Najeďte myší na ozubeného kola a klikněte na **Správa uživatelů**.
 
-    ![Přidat zaměstnance](./media/kantegassoforjira-tutorial/user1.png) 
+    ![Snímek obrazovky s vybranou ikonou "ozubeného kola" a "Správa uživatelů" vybraná v rozevíracím seznamu.](./media/kantegassoforjira-tutorial/user1.png) 
 
 1. V části karta **Správa uživatelů** klikněte na možnost **vytvořit uživatele**.
 
-    ![Přidat zaměstnance](./media/kantegassoforjira-tutorial/user2.png) 
+    ![Snímek obrazovky, který zobrazuje oddíl Správa uživatelů pomocí vybraného tlačítka pro vytvoření uživatele](./media/kantegassoforjira-tutorial/user2.png) 
 
 1. Na stránce **vytvořit nového uživatele** proveďte následující kroky:
 

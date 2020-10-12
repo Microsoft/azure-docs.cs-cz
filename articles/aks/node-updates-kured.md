@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.openlocfilehash: 35c9e76c234e4b09fbb090eda363506ee3e11130
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88164236"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)
@@ -21,7 +21,7 @@ Proces udržování uzlů Windows serveru v aktuálním stavu je malý rozdíl. 
 V tomto článku se dozvíte, jak používat open source [kured (KUbernetes restart Daemon)][kured] ke sledování uzlů pro Linux, které vyžadují restart, a pak automaticky zpracuje přeplánování běžícího procesu lusků a restartování uzlu.
 
 > [!NOTE]
-> `Kured`je open source projekt od Weaveworks. Podpora pro tento projekt v AKS je poskytována na základě optimálního úsilí. Další podporu najdete v kanálu rezervy #weave-Community.
+> `Kured` je open source projekt od Weaveworks. Podpora pro tento projekt v AKS je poskytována na základě optimálního úsilí. Další podporu najdete v kanálu rezervy #weave-Community.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -78,7 +78,7 @@ Ve výchozím nastavení se uzly Linux v AKS kontrolují aktualizace každé ve�
 sudo apt-get update && sudo apt-get upgrade -y
 ```
 
-Pokud byly aplikovány aktualizace, které vyžadují restartování uzlu, soubor je zapsán do */var/run/reboot-Required*. `Kured`kontroluje uzly, které ve výchozím nastavení vyžadují restartování každých 60 minut.
+Pokud byly aplikovány aktualizace, které vyžadují restartování uzlu, soubor je zapsán do */var/run/reboot-Required*. `Kured` kontroluje uzly, které ve výchozím nastavení vyžadují restartování každých 60 minut.
 
 ## <a name="monitor-and-review-reboot-process"></a>Monitorování a Kontrola procesu restartování
 

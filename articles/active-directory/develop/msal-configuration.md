@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88854904"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Konfigurační soubor knihovny Microsoft Authentication Library pro Android
@@ -30,14 +30,14 @@ Tento článek vám pomůže porozumět různým nastavením konfiguračního so
 
 ### <a name="general-settings"></a>Obecná nastavení
 
-| Vlastnost | Typ dat | Požadováno | Poznámky |
+| Vlastnost | Typ dat | Vyžadováno | Poznámky |
 |-----------|------------|-------------|-------|
-| `client_id` | String | Ano | ID klienta vaší aplikace ze stránky pro [registraci aplikace](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
-| `redirect_uri`   | String | Ano | Identifikátor URI pro přesměrování vaší aplikace ze [stránky pro registraci aplikace](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
-| `authorities` | Seznamu\<Authority> | Ne | Seznam úřadů, které vaše aplikace potřebuje |
-| `authorization_user_agent` | AuthorizationAgent (Enum) | Ne | Možné hodnoty: `DEFAULT` , `BROWSER` , `WEBVIEW` |
-| `http` | HttpConfiguration | Ne | Konfigurace `HttpUrlConnection` `connect_timeout` a `read_timeout` |
-| `logging` | LoggingConfiguration | Ne | Určuje úroveň podrobností protokolování. Mezi volitelné konfigurace patří: `pii_enabled` , který přijímá logickou hodnotu, a `log_level` , která přijímá `ERROR` , `WARNING` , `INFO` nebo `VERBOSE` . |
+| `client_id` | Řetězec | Yes | ID klienta vaší aplikace ze stránky pro [registraci aplikace](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
+| `redirect_uri`   | Řetězec | Yes | Identifikátor URI pro přesměrování vaší aplikace ze [stránky pro registraci aplikace](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
+| `authorities` | Seznamu\<Authority> | No | Seznam úřadů, které vaše aplikace potřebuje |
+| `authorization_user_agent` | AuthorizationAgent (Enum) | No | Možné hodnoty: `DEFAULT` , `BROWSER` , `WEBVIEW` |
+| `http` | HttpConfiguration | No | Konfigurace `HttpUrlConnection` `connect_timeout` a `read_timeout` |
+| `logging` | LoggingConfiguration | No | Určuje úroveň podrobností protokolování. Mezi volitelné konfigurace patří: `pii_enabled` , který přijímá logickou hodnotu, a `log_level` , která přijímá `ERROR` , `WARNING` , `INFO` nebo `VERBOSE` . |
 
 ### <a name="client_id"></a>client_id
 
@@ -101,19 +101,19 @@ Seznam autorit, které jsou známé a důvěryhodné pro vás. Kromě zde uveden
 
 #### <a name="authority-properties"></a>Vlastnosti autority
 
-| Vlastnost | Datový typ  | Požadováno | Poznámky |
+| Vlastnost | Datový typ  | Vyžadováno | Poznámky |
 |-----------|-------------|-----------|--------|
-| `type` | String | Ano | Zrcadlí cílovou skupinu nebo typ účtu, na které vaše aplikace cílí. Možné hodnoty: `AAD` , `B2C` |
-| `audience` | Objekt | Ne | Platí pouze v případě typu Type = `AAD` . Určuje identitu, na kterou aplikace cílí. Použití hodnoty z registrace vaší aplikace |
-| `authority_url` | String | Ano | Vyžadováno pouze v případě typu Type = `B2C` . Určuje adresu URL nebo zásadu pro autoritu, kterou by měla vaše aplikace používat.  |
-| `default` | boolean | Ano | Je- `"default":true` li zadán jeden nebo více autorit, je vyžadován jeden. |
+| `type` | Řetězec | Yes | Zrcadlí cílovou skupinu nebo typ účtu, na které vaše aplikace cílí. Možné hodnoty: `AAD` , `B2C` |
+| `audience` | Objekt | No | Platí pouze v případě typu Type = `AAD` . Určuje identitu, na kterou aplikace cílí. Použití hodnoty z registrace vaší aplikace |
+| `authority_url` | Řetězec | Yes | Vyžadováno pouze v případě typu Type = `B2C` . Určuje adresu URL nebo zásadu pro autoritu, kterou by měla vaše aplikace používat.  |
+| `default` | boolean | Yes | Je- `"default":true` li zadán jeden nebo více autorit, je vyžadován jeden. |
 
 #### <a name="audience-properties"></a>Vlastnosti cílové skupiny
 
-| Vlastnost | Typ dat  | Požadováno | Poznámky |
+| Vlastnost | Typ dat  | Vyžadováno | Poznámky |
 |-----------|-------------|------------|-------|
-| `type` | String | Ano | Určuje cílovou skupinu, kterou chce vaše aplikace cílit. Možné hodnoty: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` , `AzureADMyOrg` |
-| `tenant_id` | String | Ano | Vyžadováno pouze v případě `"type":"AzureADMyOrg"` . Volitelné pro jiné `type` hodnoty. Může to být doména tenanta `contoso.com` , například, nebo ID tenanta, například). `72f988bf-86f1-41af-91ab-2d7cd011db46` |
+| `type` | Řetězec | Yes | Určuje cílovou skupinu, kterou chce vaše aplikace cílit. Možné hodnoty: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` , `AzureADMyOrg` |
+| `tenant_id` | Řetězec | Yes | Vyžadováno pouze v případě `"type":"AzureADMyOrg"` . Volitelné pro jiné `type` hodnoty. Může to být doména tenanta `contoso.com` , například, nebo ID tenanta, například). `72f988bf-86f1-41af-91ab-2d7cd011db46` |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
@@ -138,20 +138,20 @@ Pokud používáte autoritu AAD s cílovou skupinou nastavenou na `"MicrosoftPer
 
 Nakonfigurujte globální nastavení pro vypršení časových limitů protokolu HTTP, například:
 
-| Vlastnost | Datový typ | Požadováno | Poznámky |
+| Vlastnost | Datový typ | Vyžadováno | Poznámky |
 | ---------|-----------|------------|--------|
-| `connect_timeout` | int | Ne | Čas v milisekundách |
-| `read_timeout` | int | Ne | Čas v milisekundách |
+| `connect_timeout` | int | No | Čas v milisekundách |
+| `read_timeout` | int | No | Čas v milisekundách |
 
 ### <a name="logging"></a>protokolování
 
 Následující globální nastavení slouží k protokolování:
 
-| Vlastnost | Typ dat  | Požadováno | Poznámky |
+| Vlastnost | Typ dat  | Vyžadováno | Poznámky |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | boolean | Ne | Bez ohledu na to, jestli se mají posílat osobní údaje |
+| `pii_enabled`  | boolean | No | Bez ohledu na to, jestli se mají posílat osobní údaje |
 | `log_level`   | řetězec | No | Které zprávy protokolu mají být ve výstupu. Mezi podporované úrovně protokolu patří `ERROR` , `WARNING` , `INFO` a `VERBOSE` . |
-| `logcat_enabled` | boolean | Ne | Bez ohledu na to, zda se má kromě rozhraní protokolování nakládat do log Cat |
+| `logcat_enabled` | boolean | No | Bez ohledu na to, zda se má kromě rozhraní protokolování nakládat do log Cat |
 
 ### <a name="account_mode"></a>account_mode
 

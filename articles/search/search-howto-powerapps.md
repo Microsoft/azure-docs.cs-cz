@@ -10,10 +10,10 @@ ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
 ms.openlocfilehash: fd74bfca73323209012dfd1fda61bbaada84092f
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530688"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Kurz: dotazování indexu Kognitivní hledání z Power Apps
@@ -49,7 +49,7 @@ Konektor v Power Apps je připojení ke zdroji dat. V tomto kroku vytvoříte vl
 
 1. Vyberte  **+ Nový vlastní konektor**a pak vyberte **vytvořit z prázdné**.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-3-create-blank.png" alt-text="Vytvořit z prázdné nabídky" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-3-create-blank.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
 1. Zadejte název vlastního konektoru (například *AzureSearchQuery*) a potom klikněte na **pokračovat**.
 
@@ -60,15 +60,15 @@ Konektor v Power Apps je připojení ke zdroji dat. V tomto kroku vytvoříte vl
    * V hostiteli budete muset zadat adresu URL vyhledávací služby (například `<yourservicename>.search.windows.net` ).
    * Pro základní adresu URL stačí zadat "/".
 
-    :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="Obecný dialog informací" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
 1. Na stránce zabezpečení nastavte *klíč rozhraní API* jako **typ ověřování**, pro *klíč rozhraní API*nastavte jak popisek parametru, tak název parametru. V části **umístění parametru**vyberte *záhlaví* , jak je znázorněno níže.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-6-authentication-type.png" alt-text="Možnost typu ověřování" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-6-authentication-type.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
 1. Na stránce definice vyberte **+ Nová akce** a vytvořte akci, která bude dotazovat index. Zadejte hodnotu "dotaz" pro souhrn a název ID operace. Zadejte popis jako *"dotazování indexu hledání"*.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-7-new-action.png" alt-text="Možnosti nové akce" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-7-new-action.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
 1. Posuňte se dolů. V části požadavky kliknutím na **+ importovat z ukázkového** tlačítka nakonfigurujte požadavek na dotaz na vyhledávací službu:
 
@@ -80,23 +80,23 @@ Konektor v Power Apps je připojení ke zdroji dat. V tomto kroku vytvoříte vl
 
      **Power Apps** použije syntaxi k extrakci parametrů z dotazu. Všimněte si, že jsme explicitně definovali vyhledávací pole. 
 
-       :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="Importování z ukázky" border="true":::
+       :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
 1. Kliknutím na **importovat** můžete žádost automaticky vyplnit. Nastavení metadat parametru dokončíte kliknutím na symbol **...** vedle každého parametru. Po aktualizaci každého parametru se kliknutím na tlačítko **zpět** vraťte na stránku žádosti.
 
-   :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Import z ukázkového dialogu" border="true":::
+   :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
 1. For *Search*: nastavte `*` jako **výchozí hodnotu**, nastavte **Required** jako *false* a nastavte **viditelnost** na *žádná*. 
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Vyhledat metadata parametrů" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
 1. U pole *Vybrat*: nastavit `HotelName,Description,Address/City` jako **výchozí hodnotu**nastavte hodnotu **požadováno** na *false*a nastavte vlastnost **visibility** na *none*.  
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Vybrat metadata parametrů" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
 1. Pro *rozhraní API-Version*: `2020-06-30` nastavte jako **výchozí hodnotu**, nastavte **required** na *true*a nastavte **visibility** jako *interní*.  
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Metadata parametrů verze" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
 1. Pro *typ obsahu*: nastavte na `application/json` .
 
@@ -158,7 +158,7 @@ Pro tento úkol budete potřebovat [klíč rozhraní API pro dotazy](search-secu
 
 1. Vyberte konektor, rozbalte seznam akce a vyberte **Zobrazit vlastnosti**.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-11-1-test-connector.png" alt-text="Zobrazit vlastnosti" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-11-1-test-connector.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
 1. V pravém horním rohu vyberte **Upravit** .
 
@@ -170,7 +170,7 @@ Pro tento úkol budete potřebovat [klíč rozhraní API pro dotazy](search-secu
 
 1. V části operace klikněte na tlačítko **test operace** . Pokud jste úspěšní, měli byste vidět stav 200 a v těle odpovědi byste měli vidět JSON, který popisuje výsledky hledání.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-11-2-test-connector.png" alt-text="Odpověď JSON" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-11-2-test-connector.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
 ## <a name="3---visualize-results"></a>3 – vizualizace výsledků
 
@@ -178,7 +178,7 @@ V tomto kroku vytvoříte aplikaci Power, která má vyhledávací pole, tlačí
 
 1. Na levé straně rozbalte **aplikace**  >  **a nové**  >  **plátno**aplikace.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-1-create-canvas.png" alt-text="Vytvoření aplikace plátna" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-1-create-canvas.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
 1. Vyberte typ aplikace. V tomto kurzu vytvoříte **prázdnou aplikaci** s **rozložením pro telefon**. Zobrazí se **aplikace Power App Studio** .
 
@@ -186,13 +186,13 @@ V tomto kroku vytvoříte aplikaci Power, která má vyhledávací pole, tlačí
 
    Zadejte klíč rozhraní API pro dotazování.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-3-connect-connector.png" alt-text="konektor připojení" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-3-connect-connector.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
     Nyní *AzureSearchQuery* je zdroj dat, který je k dispozici pro použití z vaší aplikace.
 
 1. Na **kartě Vložení**přidejte do plátna několik ovládacích prvků.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-4-add-controls.png" alt-text="Vložit ovládací prvky" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-4-add-controls.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
 1. Vložte následující prvky:
 
@@ -203,7 +203,7 @@ V tomto kroku vytvoříte aplikaci Power, která má vyhledávací pole, tlačí
 
     Plátno by mělo vypadat přibližně takto:
 
-    :::image type="content" source="./media/search-howto-powerapps/2-5-controls-layout.png" alt-text="Rozložení ovládacích prvků" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-5-controls-layout.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
 1. Chcete-li, aby **tlačítko Hledat** vydávalo dotaz, vložte následující akci do **příkazového výběru**:
 
@@ -214,7 +214,7 @@ V tomto kroku vytvoříte aplikaci Power, která má vyhledávací pole, tlačí
 
    Na následujícím snímku obrazovky vidíte řádek vzorců pro akci při **výběru** .
 
-    :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="Tlačítko při výběru" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="Nabídka vlastních konektorů" border="true":::
 
    Tato akce způsobí, že tlačítko aktualizuje novou kolekci s názvem *azResult* s výsledkem vyhledávacího dotazu, a to pomocí textu v textovém poli *txtQuery* jako termín dotazu.
 
@@ -236,17 +236,17 @@ V tomto kroku vytvoříte aplikaci Power, která má vyhledávací pole, tlačí
 
     Vzhledem k tomu, že jsme tento konektor definovali jako výsledek ukázky, aplikace si uvědomuje pole, která jsou k dispozici ve vašem indexu.
     
-    :::image type="content" source="./media/search-howto-powerapps/2-7-gallery-select-fields.png" alt-text="Pole galerie" border="true":::   
+    :::image type="content" source="./media/search-howto-powerapps/2-7-gallery-select-fields.png" alt-text="Nabídka vlastních konektorů" border="true":::   
  
 1. Stisknutím klávesy **F5** zobrazte náhled aplikace.  
 
-    :::image type="content" source="./media/search-howto-powerapps/2-8-3-final.png" alt-text="Konečná aplikace" border="true":::    
+    :::image type="content" source="./media/search-howto-powerapps/2-8-3-final.png" alt-text="Nabídka vlastních konektorů" border="true":::    
 
 <!--     Remember that the fields can be set to calculated values.
 
     For the example, setting using the *"Image, Title and Subtitle"* layout and specifying the *Image* function as the concatenation of the root path for the data and the file name (for instance, `"https://mystore.blob.core.windows.net/multilang/" & ThisItem.metadata_storage_name`) will produce the result below.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-8-2-final.png" alt-text="Final app" border="true":::         -->
+    :::image type="content" source="./media/search-howto-powerapps/2-8-2-final.png" alt-text="Nabídka vlastních konektorů" border="true":::         -->
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

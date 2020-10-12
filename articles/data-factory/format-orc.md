@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 9e6b8511164cd7e9a855a70d9edba4ce6492c3a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a25a1ec5f2d650501a7c5da8bb1c60f57ad549d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404713"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945783"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Formát ORC v Azure Data Factory
 
@@ -59,7 +59,7 @@ Níže je příklad datové sady ORC v Azure Blob Storage:
 
 Je třeba počítat s následujícím:
 
-* Komplexní datové typy se nepodporují (struktura, mapování, seznam, SJEDNOCENí).
+* Komplexní datové typy (například MAP, LIST, STRUCT) se aktuálně podporují jenom v datových tocích, nikoli v aktivitě kopírování. Chcete-li použít komplexní typy v datových tocích, neimportujte do datové sady schéma souborů a v datové sadě nechejte schéma prázdné. Pak ve zdrojové transformaci importujte projekci.
 * Prázdné znaky v názvu sloupce nejsou podporovány.
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
 ms.openlocfilehash: 21076fe23301c189d9987f78706cc81691ce7a4f
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400530"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Použití PowerShellu ke správě Traffic Manager
@@ -267,7 +267,7 @@ Postup zakázání profilu Traffic Manager:
 Disable-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 ```
 
-Rutina Disable-AzTrafficManagerProfile vyzve k potvrzení. Tato výzva se dá potlačit pomocí parametru-Force.
+Rutina Disable-AzTrafficManagerProfile zobrazí výzvu k potvrzení. Tato výzva se dá potlačit pomocí parametru-Force.
 
 ### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>Příklad 2: povolení a zákaz Traffic Managerho koncového bodu
 

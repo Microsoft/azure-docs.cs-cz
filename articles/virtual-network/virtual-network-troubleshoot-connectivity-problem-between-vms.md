@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: eb94b67b026ed108f31f6cd802010577665ec0d8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87286083"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Řešení potíží s připojením mezi virtuálními počítači Azure
@@ -41,7 +41,7 @@ Jeden virtuální počítač Azure se nemůže připojit k jinému virtuálnímu
 6. [Ověřte, jestli je provoz v rámci seznamů ACL pro klasický virtuální počítač blokovaný.](#step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm)
 7. [Ověřte, jestli je pro klasický virtuální počítač vytvořený koncový bod.](#step-7-check-whether-the-endpoint-is-created-for-the-classic-vm)
 8. [Zkuste se připojit ke sdílené síťové složce virtuálních počítačů.](#step-8-try-to-connect-to-a-vm-network-share)
-9. [Kontrolovat připojení mezi virtuálními sítěmi](#step-9-check-inter-vnet-connectivity)
+9. [Ověřit připojení Inter-Vnet](#step-9-check-inter-vnet-connectivity)
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
@@ -67,7 +67,7 @@ Další informace najdete v tématu [přidání síťových rozhraní nebo jejic
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>Krok 2: ověření, jestli je síťový provoz blokovaný pomocí NSG nebo UDR
 
-K určení, zda existuje skupina zabezpečení sítě (NSG) nebo uživatelem definovaná trasa (UDR), která je v konfliktu s tokem provozu, použijte [Network Watcher protokolování protokolu IP](../network-watcher/network-watcher-ip-flow-verify-overview.md) a [protokolování toku NSG](../network-watcher/network-watcher-nsg-flow-logging-overview.md) .
+K určení, zda existuje skupina zabezpečení sítě (NSG) User-Defined nebo trasa (UDR), která je v konfliktu s tokem provozu, použijte [Network Watcher protokolování protokolu IP](../network-watcher/network-watcher-ip-flow-verify-overview.md) a [protokolování NSG Flow](../network-watcher/network-watcher-nsg-flow-logging-overview.md) .
 
 ### <a name="step-3-check-whether-network-traffic-is-blocked-by-vm-firewall"></a>Krok 3: ověření, jestli je síťový provoz zablokovaný branou firewall virtuálních počítačů
 
@@ -109,9 +109,9 @@ Všechny virtuální počítače, které vytvoříte v Azure pomocí modelu nasa
 
 Pokud se nemůžete připojit ke sdílené síťové složce virtuálních počítačů, problém může být způsoben nedostupnými síťovými kartami ve virtuálním počítači. Postup odstranění nedostupných síťových adaptérů najdete v tématu [odstranění nedostupných síťových karet](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics) .
 
-### <a name="step-9-check-inter-vnet-connectivity"></a>Krok 9: ověření připojení mezi virtuálními sítěmi
+### <a name="step-9-check-inter-vnet-connectivity"></a>Krok 9: ověření Inter-Vnetho připojení
 
-K určení, jestli existuje NSG nebo UDR, která je v konfliktu s tokem provozu, použijte [Network Watcher protokolování protokolu IP](../network-watcher/network-watcher-ip-flow-verify-overview.md) a [protokolování toku NSG](../network-watcher/network-watcher-nsg-flow-logging-overview.md) . Můžete taky [ověřit konfiguraci mezi](https://support.microsoft.com/en-us/help/4032151/configuring-and-validating-vnet-or-vpn-connections)virtuálními sítěmi.
+K určení, jestli existuje NSG nebo UDR, která je v konfliktu s tokem provozu, použijte [Network Watcher protokolování protokolu IP](../network-watcher/network-watcher-ip-flow-verify-overview.md) a [protokolování toku NSG](../network-watcher/network-watcher-nsg-flow-logging-overview.md) . Můžete taky [ověřit konfiguraci Inter-Vnet](https://support.microsoft.com/en-us/help/4032151/configuring-and-validating-vnet-or-vpn-connections).
 
 ### <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a ta vám pomůže váš problém rychle vyřešit.

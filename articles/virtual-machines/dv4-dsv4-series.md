@@ -9,22 +9,22 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 59c00b06f1fef613b00ade13c7cacc0b88e61bf1
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 959906f25cbae0158dfb0baf0b7664b8f9b9b5d4
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649542"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945664"
 ---
 # <a name="dv4-and-dsv4-series"></a>Řada Dv4 a Dsv4
 
-Dv4 a Dsv4-Series běží na &reg; procesorech Intel Xeon &reg; Platinum 8272CL (Cascade Lake) v konfiguraci s vlákny typu Hyper a poskytují lepší polohu pro většinu úloh pro obecné účely. Nabízí trvalou veškerou základní rychlost Turbo 3,4 GHz. 
+Dv4 a Dsv4-Series běží na &reg; procesorech Intel Xeon &reg; Platinum 8272CL (Cascade Lake) v konfiguraci s vlákny typu Hyper a poskytují lepší polohu pro většinu úloh pro obecné účely. Nabízí všechny základní rychlosti turbo 3,4 GHz. 
 
 > [!NOTE]
 > Nejčastější dotazy najdete v tématu  [velikosti virtuálních počítačů Azure bez místního dočasného disku](azure-vms-no-temp-disk.md).
 ## <a name="dv4-series"></a>Dv4-Series
 
-Velikosti řady dv4-Series běží na Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). Velikosti řady dv4-Series nabízejí kombinaci možností vCPU, paměti a vzdáleného úložiště pro většinu produkčních úloh. Virtuální počítače dv4-Series [mají &reg; technologii Intel Hyper-Threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html).
+Velikosti řady dv4-Series běží na Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). Velikosti řady dv4-Series nabízejí kombinaci možností vCPU, paměti a vzdáleného úložiště pro většinu produkčních úloh. Virtuální počítače dv4-Series [funkce &reg; technologie Intel Hyper-Threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html).
 
 Úložiště vzdálených datových disků se fakturuje odděleně od virtuálních počítačů. Pokud chcete použít disky Premium Storage, použijte velikosti Dsv4. Měřiče cen a účtování pro velikosti Dsv4 jsou stejné jako pro dv4-Series.
 
@@ -48,7 +48,7 @@ Velikosti řady dv4-Series běží na Intel &reg; Xeon &reg; Platinum 8272CL (Ca
 
 ## <a name="dsv4-series"></a>Dsv4-Series
 
-Velikosti řady Dsv4-Series běží na Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). Velikosti řady dv4-Series nabízejí kombinaci možností vCPU, paměti a vzdáleného úložiště pro většinu produkčních úloh. Virtuální počítače Dsv4-Series [mají &reg; technologii Intel Hyper-Threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html). Úložiště vzdálených datových disků se fakturuje odděleně od virtuálních počítačů.
+Velikosti řady Dsv4-Series běží na Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). Velikosti řady dv4-Series nabízejí kombinaci možností vCPU, paměti a vzdáleného úložiště pro většinu produkčních úloh. Virtuální počítače Dsv4-Series [funkce &reg; technologie Intel Hyper-Threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html). Úložiště vzdálených datových disků se fakturuje odděleně od virtuálních počítačů.
 
 [ACU](acu.md): 195-210<br>
 [Premium Storage](premium-storage-performance.md): podporováno<br>

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: baae7b097a0b696d405c0e7ea3d3bdeb326f23b1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89011680"
 ---
 # <a name="track-event-grid-asynchronous-azure-operations"></a>Sledování Event Grid asynchronních operací Azure
@@ -31,10 +31,10 @@ Odpovědi na operaci, kterou provádíte, najdete v [dokumentaci k REST API](/re
 Asynchronní operace REST vrací hodnoty hlaviček, které slouží k určení stavu operace. Existují potenciálně tři hodnoty hlaviček k prohlédnutí:
 
 * `Azure-AsyncOperation` -Adresa URL pro kontrolu průběžného stavu operace. Pokud vaše operace vrátí tuto hodnotu, vždy ji použijte (místo umístění), abyste mohli sledovat stav operace.
-* `Location` -Adresa URL pro určení, kdy byla operace dokončena. Tuto hodnotu použijte jenom v případě, že se nevrátí Azure-AsyncOperation.
+* `Location` -Adresa URL pro určení, kdy byla operace dokončena. Tuto hodnotu použijte pouze v případě, že se nevrátí Azure-AsyncOperation.
 * `Retry-After` – Počet sekund, po které se má počkat, než se zkontroluje stav asynchronní operace.
 
-Ale ne každá asynchronní operace vrátí všechny tyto hodnoty. Například může být nutné vyhodnotit hodnotu záhlaví Azure-AsyncOperation pro jednu operaci a hodnotu hlavičky umístění pro jinou operaci. 
+Ale ne každá asynchronní operace vrátí všechny tyto hodnoty. Například může být nutné vyhodnotit Azure-AsyncOperation hodnotu hlavičky pro jednu operaci a hodnotu hlavičky umístění pro jinou operaci. 
 
 Hodnoty hlaviček načtete stejně, jako byste načetli libovolnou hodnotu hlavičky pro požadavek. Například v jazyce C# načtete hodnotu hlavičky z `HttpWebResponse` objektu s názvem `response` s následujícím kódem:
 
@@ -42,9 +42,9 @@ Hodnoty hlaviček načtete stejně, jako byste načetli libovolnou hodnotu hlavi
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 ```
 
-## <a name="azure-asyncoperation-request-and-response"></a>Požadavek a odpověď Azure-AsyncOperation
+## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation žádosti a odpovědi
 
-Pokud chcete získat stav asynchronní operace, odešlete požadavek GET na adresu URL v hodnotě hlavičky Azure-AsyncOperation.
+Chcete-li získat stav asynchronní operace, odešlete požadavek GET na adresu URL v hodnotě hlavičky Azure-AsyncOperation.
 
 Tělo odpovědi z této operace obsahuje informace o operaci. Následující příklad ukazuje možné hodnoty vrácené z operace:
 
