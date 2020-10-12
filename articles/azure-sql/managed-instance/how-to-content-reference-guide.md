@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 04/16/2019
 ms.openlocfilehash: 208793d3ba8c3463abe892b368beb41d4b79f214
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617447"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Referenční dokumentace obsahu spravované instance Azure SQL
@@ -67,7 +67,7 @@ V tomto článku najdete odkaz na obsah různých průvodců, skriptů a vysvět
 - [Monitorování výkonu pomocí úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Řešení potíží s výkonem s využitím služby Intelligent Insights](../database/intelligent-insights-troubleshoot-performance.md)
 - [Použití diagnostického protokolu Intelligent Insights](../database/intelligent-insights-use-diagnostics-log.md)
-- [Monitorování OLTP místa v paměti](../in-memory-oltp-monitor-space.md)
+- [Monitorovat In-Memory OLTP místo](../in-memory-oltp-monitor-space.md)
 
 ### <a name="extended-events"></a>Rozšířené události
 

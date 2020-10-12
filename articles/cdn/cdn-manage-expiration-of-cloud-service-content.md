@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
 ms.openlocfilehash: 562d5010458fc938d9d62fed5d0d2c8284f2055d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936941"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Správa platnosti webového obsahu v Azure CDN
@@ -57,7 +57,7 @@ Upřednostňovanou metodou pro nastavení hlavičky webového serveru `Cache-Con
    ![Stránka ukládání do mezipaměti CDN](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-page.png)
 
 
-**Nastavení hlaviček pro řízení mezipaměti webového serveru pomocí globálních pravidel ukládání do mezipaměti:**
+**Nastavení hlaviček Cache-Control webového serveru pomocí globálních pravidel ukládání do mezipaměti:**
 
 1. V části **globální pravidla ukládání do**mezipaměti nastavte **chování při ukládání řetězce dotazu** na **Ignorovat řetězce dotazů** a nastavte **chování ukládání do mezipaměti** pro **přepsání**.
       
@@ -69,7 +69,7 @@ Upřednostňovanou metodou pro nastavení hlavičky webového serveru `Cache-Con
 
 1. Vyberte **Uložit**.
 
-**Postup nastavení hlaviček pro řízení mezipaměti souboru webového serveru pomocí vlastních pravidel ukládání do mezipaměti:**
+**Nastavení hlaviček souboru webového serveru Cache-Control pomocí vlastních pravidel ukládání do mezipaměti:**
 
 1. V části **vlastní pravidla ukládání do mezipaměti**vytvořte dvě podmínky shody:
 
@@ -109,7 +109,7 @@ Následující příklad konfiguračního souboru XML ukazuje, jak nastavit `<cl
 
 Chcete-li použít atribut **cacheControlMaxAge** , je nutné nastavit hodnotu atributu **cacheControlMode** na `UseMaxAge` . Toto nastavení způsobilo přidání hlavičky protokolu HTTP a direktivy do `Cache-Control: max-age=<nnn>` odpovědi. Formát hodnoty TimeSpan pro atribut **cacheControlMaxAge** je `<days>.<hours>:<min>:<sec>` . Jeho hodnota je převedena na sekundy a použije se jako hodnota `Cache-Control` `max-age` direktivy. Další informace o elementu naleznete `<clientCache>` v tématu [mezipaměť \<clientCache> klienta ](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
 
-## <a name="setting-cache-control-headers-programmatically"></a>Nastavení hlaviček pro řízení mezipaměti prostřednictvím kódu programu
+## <a name="setting-cache-control-headers-programmatically"></a>Nastavování hlaviček Cache-Control programově
 V případě aplikací ASP.NET řídíte chování ukládání do mezipaměti CDN programově nastavením vlastnosti **HttpResponse. cache** rozhraní .NET API. Informace o vlastnosti **HttpResponse. cache** naleznete v tématu [vlastnost HttpResponse. cache](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) a [třídu HttpCachePolicy](/dotnet/api/system.web.httpcachepolicy).  
 
 Pro programové ukládání obsahu aplikace do mezipaměti v ASP.NET postupujte takto:

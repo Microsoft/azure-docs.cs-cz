@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285379"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>Horizontální navýšení kapacity PostgreSQL skupiny serverů s rozšířením Azure ARC přidáním dalších pracovních uzlů
@@ -46,7 +46,7 @@ Připojte se ke skupině serverů s povoleným PostgreSQLem s rozšířením Azu
 ```console
 azdata arc postgres endpoint list -n <server name>
 ```
-Příklad:
+Například:
 ```console
 azdata arc postgres endpoint list -n postgres01
 ```
@@ -152,7 +152,7 @@ azdata arc postgres server edit -n <server group name> -w <target number of work
 ```
 
 > [!CAUTION]
-> Verze Preview nepodporuje opětovné navýšení kapacity. Například ještě není možné snížit počet pracovních uzlů. V takovém případě je třeba data extrahovat nebo zálohovat, vyřadit skupinu serverů, vytvořit novou skupinu serverů s méně pracovními uzly a následně data importovat.
+> Verze Preview nepodporuje škálování zpět na méně instancí. Například zatím není možné snížit počet pracovních uzlů. Pokud to potřebujete udělat, musíte extrahovat nebo zálohovat data, odstranit skupinu serverů, vytvořit novou skupinu serverů s méně pracovními uzly a pak do ní importovat data.
 
 V tomto příkladu zvýšíme počet pracovních uzlů od 2 na 4 spuštěním následujícího příkazu:
 
@@ -160,7 +160,7 @@ V tomto příkladu zvýšíme počet pracovních uzlů od 2 na 4 spuštěním n�
 azdata arc postgres server edit -n postgres01 -w 4
 ```
 
-Po přidání uzlů se zobrazí stav čekání na skupinu serverů. Příklad:
+Po přidání uzlů se zobrazí stav čekání na skupinu serverů. Například:
 ```console
 azdata arc postgres server list
 ```
@@ -182,7 +182,7 @@ Spusťte příkaz:
 azdata arc postgres server list
 ```
 
-Vrátí seznam skupin serverů vytvořených ve vašem oboru názvů a označuje jejich počet pracovních uzlů. Příklad:
+Vrátí seznam skupin serverů vytvořených ve vašem oboru názvů a označuje jejich počet pracovních uzlů. Například:
 ```console
 Name        State    Workers
 ----------  -------  ---------
@@ -195,7 +195,7 @@ Spusťte příkaz:
 kubectl get postgresql-12
 ```
 
-Vrátí seznam skupin serverů vytvořených ve vašem oboru názvů a označuje jejich počet pracovních uzlů. Příklad:
+Vrátí seznam skupin serverů vytvořených ve vašem oboru názvů a označuje jejich počet pracovních uzlů. Například:
 ```console
 NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
 postgres01   Ready   4/4          10.0.0.4:31066      4d20h

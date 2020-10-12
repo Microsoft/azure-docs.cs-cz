@@ -4,10 +4,10 @@ description: Naučte se, jak můžete použít Azure Data Box k osazení velkýc
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 5a4aeebeddcca4adcac511c7c225c8809dd29c93
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89180928"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Backup offline zálohování pomocí Azure Data Box
@@ -56,7 +56,7 @@ Proces pro osazení dat z agenta MARS pomocí Azure Data Box je podporován v n�
 >[!IMPORTANT]
 >Počáteční data zálohy z jednoho serveru musí být obsažena v rámci jedné Azure Data Box instance nebo Azure Data Box disku a nemohou být sdílena mezi více zařízeními stejné nebo jiné SKU. Zařízení Azure Data Box může ale obsahovat počáteční zálohy z více serverů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="azure-subscription-and-required-permissions"></a>Předplatné Azure a požadovaná oprávnění
 
@@ -302,7 +302,7 @@ Ze serveru, který se pokoušíte nakonfigurovat pro offline zálohování, prov
 
 4. Na serveru otevřete registr zadáním příkazu **Regedit** v okně Spustit.
 
-5. Přejít na počítač registru *\ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider.* Klikněte pravým tlačítkem na **CloudBackupProvider**a přidejte novou řetězcovou hodnotu s názvem `AzureADAppCertThumbprint_<Azure User Id>` .
+5. Přejít doComputer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider registru * .* Klikněte pravým tlačítkem na **CloudBackupProvider**a přidejte novou řetězcovou hodnotu s názvem `AzureADAppCertThumbprint_<Azure User Id>` .
 
     >[!NOTE]
     > Pokud chcete získat ID uživatele Azure, proveďte jednu z následujících akcí:

@@ -4,10 +4,10 @@ description: Přehled, jak bezpečně spouštět aplikace mikroslužeb na Servic
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.openlocfilehash: f17840f31d2a4c12a1d4618bd16e81dcc2cc8a14
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86256573"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric zabezpečení aplikací a služeb
@@ -20,7 +20,7 @@ Tento článek není průvodce zabezpečením mikroslužeb, ale k dispozici je m
 ## <a name="authentication-and-authorization"></a>Ověřování a autorizace
 Pro prostředky a rozhraní API vystavené službou je často potřeba omezit na určité důvěryhodné uživatele nebo klienty. Ověřování je proces spolehlivého zjišťování identity uživatele.  Autorizace je proces, který zpřístupňuje rozhraní API nebo služby pro některé ověřené uživatele, ale ne jiné.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 Prvním krokem pro rozhodování o důvěryhodnosti na úrovni rozhraní API je ověřování. Ověřování je proces spolehlivého zjišťování identity uživatele.  Ve scénářích mikroslužeb se ověřování obvykle zpracovává centrálně. Pokud používáte bránu API, můžete na bránu přesměrovat [ověřování](/azure/architecture/patterns/gateway-offloading) . Pokud použijete tento přístup, ujistěte se, že k jednotlivým službám nemůžete získat přímý přístup (bez brány API), pokud se nejedná o další zabezpečení pro ověřování zpráv bez ohledu na to, jestli pocházejí z brány, nebo ne.
 
 Pokud se k službám dají získat přístup přímo, můžete k ověřování uživatelů použít ověřovací službu, jako je Azure Active Directory nebo vyhrazená mikroslužba ověřování, která funguje jako služba tokenů zabezpečení (STS). Rozhodnutí o důvěryhodnosti se sdílí mezi službami s tokeny zabezpečení nebo soubory cookie. 

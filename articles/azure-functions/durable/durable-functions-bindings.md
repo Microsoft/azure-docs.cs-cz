@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081844"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Vazby pro Durable Functions (Azure Functions)
@@ -32,7 +32,7 @@ Při psaní funkcí Orchestrator v skriptovacích jazycích (například skripto
 }
 ```
 
-* `orchestration`je název orchestrace, kterou musí klienti používat, když chtějí začít nové instance této funkce nástroje Orchestrator. Tato vlastnost je nepovinná. Pokud není zadaný, použije se název funkce.
+* `orchestration` je název orchestrace, kterou musí klienti používat, když chtějí začít nové instance této funkce nástroje Orchestrator. Tato vlastnost je nepovinná. Pokud není zadaný, použije se název funkce.
 
 Interně se tato triggerová vazba dotazuje řady front ve výchozím účtu úložiště pro aplikaci Function App. Tyto fronty jsou podrobnosti o interní implementaci tohoto rozšíření, což znamená, proč nejsou explicitně nakonfigurované ve vlastnostech vazby.
 
@@ -139,7 +139,7 @@ Pokud používáte VS Code nebo Azure Portal pro vývoj, aktivační událost ak
 }
 ```
 
-* `activity`je název aktivity. Tato hodnota je název, který funkce Orchestrator používá k vyvolání této funkce aktivity. Tato vlastnost je nepovinná. Pokud není zadaný, použije se název funkce.
+* `activity` je název aktivity. Tato hodnota je název, který funkce Orchestrator používá k vyvolání této funkce aktivity. Tato vlastnost je nepovinná. Pokud není zadaný, použije se název funkce.
 
 Interně se tato triggerová vazba dotazuje fronty ve výchozím účtu úložiště pro aplikaci Function App. Tato fronta představuje interní podrobnosti implementace rozšíření, což je důvod, proč není explicitně nakonfigurován ve vlastnostech vazby.
 
@@ -261,8 +261,8 @@ Pokud pro vývoj používáte skriptovací jazyky (například soubory *. csx* n
 }
 ```
 
-* `taskHub`– Používá se ve scénářích, kdy více aplikací Function App sdílí stejný účet úložiště, ale musí být izolované od sebe navzájem. Pokud není zadaný, použije se výchozí hodnota z `host.json` . Tato hodnota musí odpovídat hodnotě používané cílovými funkcemi nástroje Orchestrator.
-* `connectionName`– Název nastavení aplikace, které obsahuje připojovací řetězec účtu úložiště. Účet úložiště reprezentovaný tímto připojovacím řetězcem musí být stejný jako ten, který používá cílové funkce nástroje Orchestrator. Pokud tento parametr nezadáte, použije se výchozí připojovací řetězec účtu úložiště pro aplikaci Function App.
+* `taskHub` – Používá se ve scénářích, kdy více aplikací Function App sdílí stejný účet úložiště, ale musí být izolované od sebe navzájem. Pokud není zadaný, použije se výchozí hodnota z `host.json` . Tato hodnota musí odpovídat hodnotě používané cílovými funkcemi nástroje Orchestrator.
+* `connectionName` – Název nastavení aplikace, které obsahuje připojovací řetězec účtu úložiště. Účet úložiště reprezentovaný tímto připojovacím řetězcem musí být stejný jako ten, který používá cílové funkce nástroje Orchestrator. Pokud tento parametr nezadáte, použije se výchozí připojovací řetězec účtu úložiště pro aplikaci Function App.
 
 > [!NOTE]
 > Ve většině případů doporučujeme tyto vlastnosti vynechat a spoléhat se na výchozí chování.
@@ -523,8 +523,8 @@ Pokud pro vývoj používáte skriptovací jazyky (například soubory *. csx* n
 }
 ```
 
-* `taskHub`– Používá se ve scénářích, kdy více aplikací Function App sdílí stejný účet úložiště, ale musí být izolované od sebe navzájem. Pokud není zadaný, použije se výchozí hodnota z `host.json` . Tato hodnota musí odpovídat hodnotě používané funkcemi cílové entity.
-* `connectionName`– Název nastavení aplikace, které obsahuje připojovací řetězec účtu úložiště. Účet úložiště reprezentovaný tímto připojovacím řetězcem musí být stejný, jaký používá funkce cílové entity. Pokud tento parametr nezadáte, použije se výchozí připojovací řetězec účtu úložiště pro aplikaci Function App.
+* `taskHub` – Používá se ve scénářích, kdy více aplikací Function App sdílí stejný účet úložiště, ale musí být izolované od sebe navzájem. Pokud není zadaný, použije se výchozí hodnota z `host.json` . Tato hodnota musí odpovídat hodnotě používané funkcemi cílové entity.
+* `connectionName` – Název nastavení aplikace, které obsahuje připojovací řetězec účtu úložiště. Účet úložiště reprezentovaný tímto připojovacím řetězcem musí být stejný, jaký používá funkce cílové entity. Pokud tento parametr nezadáte, použije se výchozí připojovací řetězec účtu úložiště pro aplikaci Function App.
 
 > [!NOTE]
 > Ve většině případů doporučujeme vynechat volitelné vlastnosti a spoléhat se na výchozí chování.

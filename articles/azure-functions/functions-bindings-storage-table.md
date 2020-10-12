@@ -7,10 +7,10 @@ ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 50706e1b525a3e3a39701ef2135d44c02c35077e
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89181132"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby úložiště tabulek Azure pro Azure Functions
@@ -555,11 +555,11 @@ V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/func
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Table` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový** | Není k dispozici | Musí být nastaven na hodnotu `table` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
-|**směr** | Není k dispozici | Musí být nastaven na hodnotu `in` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
-|**Jméno** | Není k dispozici | Název proměnné, která představuje tabulku nebo entitu v kódu funkce. | 
+|**textový** | neuvedeno | Musí být nastaven na hodnotu `table` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
+|**směr** | neuvedeno | Musí být nastaven na hodnotu `in` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje tabulku nebo entitu v kódu funkce. | 
 |**tableName** | **Tabulky** | Název tabulky| 
 |**partitionKey** | **PartitionKey** |Nepovinný parametr. Klíč oddílu entity tabulky, která se má přečíst Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
 |**rowKey** |**RowKey** | Nepovinný parametr. Klíč řádku entity tabulky, která se má přečíst Návod, jak tuto vlastnost používat, najdete v části věnované [používání](#input---usage) .| 
@@ -942,11 +942,11 @@ V [běhové knihovně funkcí jazyka Java](/java/api/overview/azure/functions/ru
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Table` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový** | Není k dispozici | Musí být nastaven na hodnotu `table` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
-|**směr** | Není k dispozici | Musí být nastaven na hodnotu `out` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
-|**Jméno** | Není k dispozici | Název proměnné použitý v kódu funkce, který představuje tabulku nebo entitu. Nastavte na `$return` odkaz na návratovou hodnotu funkce.| 
+|**textový** | neuvedeno | Musí být nastaven na hodnotu `table` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
+|**směr** | neuvedeno | Musí být nastaven na hodnotu `out` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné použitý v kódu funkce, který představuje tabulku nebo entitu. Nastavte na `$return` odkaz na návratovou hodnotu funkce.| 
 |**tableName** |**Tabulky** | Název tabulky| 
 |**partitionKey** |**PartitionKey** | Klíč oddílu entity tabulky, která se má zapsat Návod, jak tuto vlastnost používat, najdete v [části věnované používání](#output---usage) .| 
 |**rowKey** |**RowKey** | Klíč řádku entity tabulky, která se má zapsat Návod, jak tuto vlastnost používat, najdete v [části věnované používání](#output---usage) .| 
@@ -992,7 +992,7 @@ K dispozici jsou dvě možnosti pro výstup řádku úložiště tabulky z funkc
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba | Referenční informace |
+| Vazba | Odkaz |
 |---|---|
 | Tabulka | [Kódy chyb tabulky](/rest/api/storageservices/fileservices/table-service-error-codes) |
 | Objekt blob, tabulka, fronta | [Kódy chyb úložiště](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

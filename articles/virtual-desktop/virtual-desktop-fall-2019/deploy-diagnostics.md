@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88691407"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Nasazení diagnostického nástroje pro virtuální počítače s Windows (Classic)
@@ -32,7 +32,7 @@ Tady je postup, jak Nástroj pro diagnostiku virtuálních počítačů s Window
 - Odeslat zprávu aktivním uživatelům na konkrétním hostiteli relace.
 - Odhlaste uživatele z hostitele relace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předtím, než budete moci nasadit šablonu Azure Resource Manager pro nástroj, je nutné vytvořit registraci aplikace Azure Active Directory a pracovní prostor Log Analytics. Vy nebo správce k tomu potřebují tato oprávnění:
 
@@ -168,11 +168,11 @@ Aby bylo možné zobrazit stav virtuálních počítačů, musíte povolit Log A
 
 Nasazení šablony Azure Resource Management pro nástroj pro diagnostiku:
 
-1.  Přejít na [stránku GitHub Azure RDS-Templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy).
+1.  Přejít na [stránku Azure na webu GitHub RDS-Templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy).
 2.  Nasaďte šablonu do Azure a postupujte podle pokynů v šabloně. Ujistěte se, že máte k dispozici následující informace:
 
-    -   ID klienta
-    -   Tajný kód klienta
+    -   Client-Id
+    -   Client-Secret
     -   ID pracovního prostoru služby Log Analytics
 
 3.  Až budou zadané vstupní parametry, přijměte podmínky a ujednání a pak vyberte **koupit**.

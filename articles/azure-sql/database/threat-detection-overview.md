@@ -14,10 +14,10 @@ ms.reviewer: vanto, sstein
 ms.date: 09/21/2020
 tags: azure-synapse
 ms.openlocfilehash: bf228d31180f5c2223fde7433d2d9b335e2b8853
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91284155"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Rozšířená ochrana před internetovými útoky pro Azure SQL Database, Managed instance SQL a Azure synapse Analytics
@@ -33,7 +33,7 @@ Rozšířená ochrana před internetovými útoky poskytuje novou vrstvu zabezpe
 
 V případě úplného šetření doporučujeme povolit auditování, které zapisuje databázové události do protokolu auditu ve vašem účtu služby Azure Storage.  Pokud chcete povolit auditování, přečtěte si téma [auditování pro Azure SQL Database a Azure synapse](../../azure-sql/database/auditing-overview.md) nebo [auditování pro SPRAVOVANOU instanci Azure SQL](../managed-instance/auditing-configure.md).
 
-## <a name="alerts"></a>Upozornění
+## <a name="alerts"></a>Výstrahy
 
 Rozšířená ochrana před internetovými útoky pro Azure SQL Database detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití. Seznam výstrah pro Azure SQL Database najdete [v tématu výstrahy pro SQL Database a Azure synapse Analytics (dříve SQL Data Warehouse) v Azure Security Center](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-sql-db-and-warehouse).
 

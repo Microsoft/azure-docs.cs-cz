@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak pomocí Azure CLI vytvářet, zobrazov
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 354afb89b145e288f525e40ad700e8f8a67c6dad
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86115039"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>Vytváření, zobrazování a Správa systémových témat Event Grid pomocí Azure CLI
@@ -18,14 +18,14 @@ V případě Azure CLI potřebujete [rozšíření Event Grid](/cli/azure/azure-
 
 V Cloud Shell:
 
-- Pokud jste dříve nainstalovali rozšíření, aktualizujte ho:`az extension update -n eventgrid`
-- Pokud jste rozšíření dříve neinstalovali, nainstalujte ho:`az extension add -n eventgrid`
+- Pokud jste dříve nainstalovali rozšíření, aktualizujte ho: `az extension update -n eventgrid`
+- Pokud jste rozšíření dříve neinstalovali, nainstalujte ho:  `az extension add -n eventgrid`
 
 Pro místní instalaci:
 
 1. [Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Ujistěte se, že máte nejnovější verzi, pomocí kontroly `az --version` .
-2. Odinstalujte předchozí verze rozšíření:`az extension remove -n eventgrid`
-3. Nainstalujte rozšíření eventgrid s`az extension add -n eventgrid`
+2. Odinstalujte předchozí verze rozšíření: `az extension remove -n eventgrid`
+3. Nainstalujte rozšíření eventgrid s `az extension add -n eventgrid`
 
 ## <a name="create-a-system-topic"></a>Vytvořit systémové téma
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86113067"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Řešení potíží s konfiguračním serverem
@@ -28,8 +28,8 @@ Zdrojový počítač se registruje s konfiguračním serverem při instalaci age
    1. Ověřte, jestli je požadované ID hostitele stejné jako ID hostitele zdrojového počítače.
    2. Ověřte, zda má zdrojový počítač alespoň jednu IP adresu přiřazenou fyzické síťové kartě. Aby byla registrace agenta u konfiguračního serveru úspěšná, musí mít zdrojový počítač alespoň jednu platnou IP adresu, která je přiřazená k fyzické síťové kartě.
    3. Na zdrojovém počítači spusťte jeden z následujících příkazů, abyste získali všechny IP adresy zdrojového počítače:
-      - Pro Windows:`> ipconfig /all`
-      - Pro Linux:`# ifconfig -a`
+      - Pro Windows: `> ipconfig /all`
+      - Pro Linux: `# ifconfig -a`
 
 3. Pokud není nalezen řetězec **žádná platná IP adresa** , vyhledejte řetězec **důvod =>null**. K této chybě dochází, pokud zdrojový počítač používá k registraci na konfiguračním serveru prázdného hostitele. Pokud se řetězec najde:
     - Po vyřešení těchto potíží postupujte podle pokynů v části [registrace zdrojového počítače s konfiguračním serverem](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) a opakujte registraci ručně.
@@ -234,7 +234,7 @@ K této chybě může dojít, pokud je v databázi více položek identifikátor
 
 Řešení tohoto problému:
 
-1. Odeberte zastaralý virtuální počítač CS z vCenter. Další informace najdete v tématu [odebrání serverů a zakázání ochrany](site-recovery-manage-registration-and-protection.md).
+1. Odeberte zastaralý virtuální počítač CS z vCenter. Další informace najdete v tématu  [odebrání serverů a zakázání ochrany](site-recovery-manage-registration-and-protection.md).
 2. Přihlaste se k virtuálnímu počítači konfiguračního serveru a připojte se k databázi MySQL svsdb1. 
 3. Spusťte následující dotaz:
 
