@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69733071c5b43ee9c8e6450e3a9924bc656d5c84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84485606"
 ---
 # <a name="configure-mfa-server-settings"></a>Konfigurovat nastavení serveru MFA
@@ -27,7 +27,7 @@ Tento článek vám pomůže se správou nastavení serveru Azure MFA v Azure Po
 
 K dispozici jsou následující nastavení serveru MFA:
 
-| Funkce | Description |
+| Funkce | Popis |
 | ------- | ----------- |
 | Nastavení serveru | Stáhněte si MFA Server a vygenerujte aktivační přihlašovací údaje pro inicializaci vašeho prostředí. |
 | [Jednorázové přihlášení](#one-time-bypass) | Povolí uživateli ověřování bez provádění služby Multi-Factor Authentication po dobu omezeného času. |
@@ -42,10 +42,10 @@ Chcete-li vytvořit jednorázové přihlášení, proveďte následující kroky
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
 1. Vyhledejte a vyberte **Azure Active Directory**a pak přejděte na **zabezpečení**  >  **MFA**  >  **jednorázového přihlášení**.
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 1. V případě potřeby vyberte replikační skupinu pro vynechání.
 1. Zadejte uživatelské jméno jako `username\@domain.com` . Zadejte počet sekund, po které má být vynechání trvat, a důvod pro vynechání.
-1. Vyberte možnost **Přidat**. Časový limit se projeví okamžitě. Uživatel se musí přihlásit předtím, než vyprší doba přihlášení k jednorázovému přihlášení.
+1. Vyberte **Přidat**. Časový limit se projeví okamžitě. Uživatel se musí přihlásit předtím, než vyprší doba přihlášení k jednorázovému přihlášení.
 
 Můžete také zobrazit sestavu jednorázového přihlášení z tohoto okna.
 
@@ -61,10 +61,10 @@ Ukládání do mezipaměti se primárně používá v případě, že místní s
 Pokud chcete nastavit ukládání do mezipaměti, proveďte následující kroky:
 
 1. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  **MFA**  >  **pravidel ukládání do mezipaměti**MFA.
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 1. Z rozevíracího seznamu vyberte **typ mezipaměti** . Zadejte maximální počet **sekund mezipaměti**.
 1. V případě potřeby vyberte typ ověřování a zadejte aplikaci.
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 
 ## <a name="next-steps"></a>Další kroky
 

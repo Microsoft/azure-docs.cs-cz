@@ -4,13 +4,13 @@ description: Naučte se vytvářet a přizpůsobovat plány obnovení pro zotave
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84485328"
 ---
-# <a name="create-and-customize-recovery-plans"></a>Vytváření a přizpůsobení plánů obnovení
+# <a name="create-and-customize-recovery-plans"></a>Vytvoření a přizpůsobení plánů obnovení
 
 Tento článek popisuje, jak vytvořit a přizpůsobit plán obnovení pro převzetí služeb při selhání v [Azure Site Recovery](site-recovery-overview.md). Než začnete, [Přečtěte si další informace](recovery-plan-overview.md) o plánech obnovení.
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak vytvořit a přizpůsobit plán obnovení pro přev
 2. V části **vytvořit plán obnovení**zadejte název plánu.
 3. Zvolte zdroj a cíl na základě počítačů v plánu a vyberte **Správce prostředků** pro model nasazení. Zdrojové umístění musí mít počítače, u kterých je povolené převzetí služeb při selhání a obnovení. 
 
-    **Převzetí služeb** | **Zdroj** | **Cílové** 
+    **Převzetí služeb při selhání** | **Zdroj** | **Cílové** 
    --- | --- | ---
    Azure do Azure | Výběr oblasti Azure | Výběr oblasti Azure
    Z VMware do Azure | Vyberte konfigurační server. | Vybrat Azure
@@ -28,7 +28,7 @@ Tento článek popisuje, jak vytvořit a přizpůsobit plán obnovení pro přev
    Z Hyper-V do Azure | Vyberte název lokality Hyper-V. | Vybrat Azure
    Technologie Hyper-V (spravovaná nástrojem VMM) do Azure  | Vybrat server VMM | Vybrat Azure
   
-    Je třeba počítat s následujícím:
+    Všimněte si, že:
     - Můžete použít plán obnovení pro převzetí služeb při selhání do Azure i navrácení služeb po obnovení z Azure.
     - Zdrojové umístění musí mít počítače, u kterých je povolené převzetí služeb při selhání a obnovení.
     - Plán obnovení může obsahovat počítače se stejným zdrojem a cílem.
@@ -60,12 +60,12 @@ Plán obnovení můžete přizpůsobit přidáním skriptu nebo ruční akce. Po
 - Chcete-li vytvořit skript na serveru VMM, postupujte podle pokynů v [tomto článku](hyper-v-vmm-recovery-script.md).
 - Skripty lze použít během převzetí služeb při selhání do sekundární lokality a během navrácení služeb po obnovení ze sekundární lokality na primární. Podpora závisí na vašem scénáři replikace:
     
-    **Scénář** | **Převzetí služeb** | **Vráceny**
+    **Scénář** | **Převzetí služeb při selhání** | **Vráceny**
     --- | --- | --- 
     Azure do Azure  | Runbook | Runbook
-    Z VMware do Azure | Runbook | NA 
+    Z VMware do Azure | Runbook | Není k dispozici 
     Hyper-V s VMM do Azure | Runbook | Skript
-    Z lokality Hyper-V do Azure | Runbook | NA
+    Z lokality Hyper-V do Azure | Runbook | Není k dispozici
     VMM do sekundárního VMM | Skript | Skript
 
 1. V plánu obnovení klikněte na krok, ke kterému má být akce přidána, a určete, kdy má být provedena akce:

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 43203a756bcb42c7d00de9c11e9223f1d8b9e2a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001582"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Začínáme vytvářet internetový nástroj pro vyrovnávání zatížení s protokolem IPv6 pomocí prostředí PowerShell pro Správce prostředků
@@ -112,7 +112,7 @@ Ujistěte se, že máte nejnovější produkční verzi modulu Azure Resource Ma
     > [!IMPORTANT]
     > Nástroj pro vyrovnávání zatížení používá označení domény veřejné IP adresy jako předponu svého plně kvalifikovaného názvu domény. V tomto příkladu jsou plně kvalifikované názvy domény *lbnrpipv4.westus.cloudapp.Azure.com* a *lbnrpipv6.westus.cloudapp.Azure.com*.
 
-## <a name="create-a-front-end-ip-configurations-and-a-back-end-address-pool"></a>Vytvoření konfigurace front-endové IP adresy a fondu back-endu adres
+## <a name="create-a-front-end-ip-configurations-and-a-back-end-address-pool"></a>Vytvoření Front-End konfigurace protokolu IP a fondu adres Back-End
 
 1. Vytvořte konfiguraci front-endu adres, která používá veřejné IP adresy, které jste vytvořili.
 

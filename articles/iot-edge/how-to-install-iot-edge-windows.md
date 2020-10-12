@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: kgremban
 ms.openlocfilehash: ba3e8b9d7649d56d1639f7f608d85a2da04ff74a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84465554"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Instalace modulu runtime Azure IoT Edge ve Windows
 
-Azure IoT Edge modul runtime je tím, že zařízení přepíná do IoT Edge zařízení. Modul runtime se dá na zařízeních nasadit tak, jak malý, jako např. v/v jako průmyslový Server. Jakmile je zařízení nakonfigurované s modulem runtime IoT Edge, můžete do něj začít nasazovat obchodní logiku z cloudu.
+Azure IoT Edge modul runtime je tím, že zařízení přepíná do IoT Edge zařízení. Modul runtime se dá na zařízeních nasadit tak, jak malý, jako např. v/v jako průmyslový Server. Jakmile v zařízení nakonfigurujete modul runtime IoT Edge, můžete do něj z cloudu začít nasazovat obchodní logiku.
 
 Další informace o modulu runtime IoT Edge najdete v tématu [pochopení Azure IoT Edge runtime a jeho architektury](iot-edge-runtime.md).
 
@@ -109,7 +109,7 @@ Tento příklad ukazuje ruční instalaci pomocí kontejnerů Windows:
 
 6. Po zobrazení výzvy zadejte připojovací řetězec zařízení, který jste získali v kroku 1. Připojovací řetězec zařízení přidružuje fyzické zařízení k ID zařízení v IoT Hub.
 
-   Připojovací řetězec zařízení má následující formát a nesmí obsahovat uvozovky:`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   Připojovací řetězec zařízení má následující formát a nesmí obsahovat uvozovky: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
 7. Pomocí postupu v části [ověření úspěšné instalace](#verify-successful-installation) zkontrolujte stav IoT Edge na vašem zařízení.
 
@@ -164,7 +164,7 @@ K aktualizaci IoT Edge můžete použít taky parametr cesty k instalaci offline
 
 4. Volitelně můžete stáhnout instalační program pro Visual C++ Redistributable. Například skript PowerShellu používá tuto verzi: [vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe). Uložte instalační program do stejné složky v zařízení IoT jako soubory IoT Edge.
 
-5. Chcete [-li nainstalovat](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) nástroje s offline komponentami, poznamenejte si místní kopii skriptu PowerShellu. Pak použijte `-OfflineInstallationPath` parametr jako součást `Deploy-IoTEdge` příkazu a zadejte absolutní cestu k adresáři souborů. Třeba
+5. Chcete [-li nainstalovat](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) nástroje s offline komponentami, poznamenejte si místní kopii skriptu PowerShellu. Pak použijte `-OfflineInstallationPath` parametr jako součást `Deploy-IoTEdge` příkazu a zadejte absolutní cestu k adresáři souborů. Příklad:
 
    ```powershell
    . <path>\IoTEdgeSecurityDaemon.ps1
@@ -244,13 +244,13 @@ Pokud chcete odebrat instalaci IoT Edge ze zařízení s Windows, použijte nás
 Uninstall-IoTEdge
 ```
 
-Příkaz uninstall-IoTEdge nefunguje na Windows IoT Core. Chcete-li odebrat IoT Edge ze zařízení s Windows IoT Core, je nutné znovu nasadit bitovou kopii Windows IoT Core.
+Příkaz Uninstall-IoTEdge nefunguje v systému Windows IoT Core. Chcete-li odebrat IoT Edge ze zařízení s Windows IoT Core, je nutné znovu nasadit bitovou kopii Windows IoT Core.
 
 Další informace o možnostech odinstalace získáte pomocí příkazu `Get-Help Uninstall-IoTEdge -full` .
 
 ## <a name="verify-installation-script"></a>Ověřit instalační skript
 
-Příkazy instalace uvedené v tomto článku používají k vyžádání instalačního skriptu z nástroje rutinu Invoke-WebRequest `aka.ms/iotedge-win` . Tento odkaz odkazuje na `IoTEdgeSecurityDaemon.ps1` skript z poslední [vydané verze IoT Edge](https://github.com/Azure/azure-iotedge/releases). Můžete si také stáhnout tento skript nebo verzi skriptu z konkrétní verze a spustit instalační příkazy na zařízení IoT Edge.
+Instalační příkazy uvedené v tomto článku používají rutinu Invoke-WebRequest k vyžádání instalačního skriptu z `aka.ms/iotedge-win` . Tento odkaz odkazuje na `IoTEdgeSecurityDaemon.ps1` skript z poslední [vydané verze IoT Edge](https://github.com/Azure/azure-iotedge/releases). Můžete si také stáhnout tento skript nebo verzi skriptu z konkrétní verze a spustit instalační příkazy na zařízení IoT Edge.
 
 Zadaný skript je podepsaný ke zvýšení zabezpečení. Podpis můžete ověřit stažením skriptu na zařízení a následným spuštěním následujícího příkazu PowerShellu:
 
@@ -264,9 +264,9 @@ Stav výstupu je **platný** , pokud je podpis ověřen.
 
 Předchozí části představily běžné scénáře instalace s příklady použití parametrů pro úpravu instalačního skriptu. V této části najdete referenční tabulky se společnými parametry, které se používají k instalaci, aktualizaci nebo odinstalaci IoT Edge.
 
-### <a name="deploy-iotedge"></a>Nasazení – IoTEdge
+### <a name="deploy-iotedge"></a>Deploy-IoTEdge
 
-Příkaz Deploy-IoTEdge stáhne a nasadí démona zabezpečení IoT Edge a jeho závislosti. Příkaz nasazení akceptuje tyto společné parametry, mimo jiné. Úplný seznam získáte pomocí příkazu `Get-Help Deploy-IoTEdge -full` .  
+Příkaz Deploy-IoTEdge stáhne a nasadí proces démona zabezpečení IoT Edge a jeho závislosti. Příkaz nasazení akceptuje tyto společné parametry, mimo jiné. Úplný seznam získáte pomocí příkazu `Get-Help Deploy-IoTEdge -full` .  
 
 | Parametr | Přípustné hodnoty | Komentáře |
 | --------- | --------------- | -------- |
@@ -276,14 +276,14 @@ Příkaz Deploy-IoTEdge stáhne a nasadí démona zabezpečení IoT Edge a jeho 
 | **InvokeWebRequestParameters** | Zatřiďovací tabulka parametrů a hodnot | Během instalace se provedou několik webových požadavků. Pomocí tohoto pole můžete nastavit parametry pro tyto webové požadavky. Tento parametr je vhodný pro konfiguraci přihlašovacích údajů pro proxy servery. Další informace najdete v tématu [Konfigurace zařízení IoT Edge pro komunikaci prostřednictvím proxy server](how-to-configure-proxy-support.md). |
 | **RestartIfNeeded** | žádné | Tento příznak umožňuje skriptu pro nasazení restartovat počítač bez výzvy, pokud je to nutné. |
 
-### <a name="initialize-iotedge"></a>Inicializovat – IoTEdge
+### <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
 Příkaz Initialize-IoTEdge nakonfiguruje IoT Edge s připojovacím řetězcem zařízení a provozními podrobnostmi. Většinu informací generovaných tímto příkazem je pak Uloženo v souboru iotedge\config.yaml. Inicializační příkaz akceptuje tyto společné parametry, mimo jiné. Úplný seznam získáte pomocí příkazu `Get-Help Initialize-IoTEdge -full` .
 
 | Parametr | Přípustné hodnoty | Komentáře |
 | --------- | --------------- | -------- |
-| **Ruční** | Žádná | **Parametr Switch** Pokud není zadán žádný typ zřizování, je výchozí hodnota ruční.<br><br>Deklaruje, že budete zadat připojovací řetězec zařízení pro ruční zřízení zařízení. |
-| **DPS** | Žádná | **Parametr Switch** Pokud není zadán žádný typ zřizování, je výchozí hodnota ruční.<br><br>Deklarujete, že zadáte ID oboru služby Device Provisioning Service (DPS) a ID registrace vašeho zařízení, které se bude zřizovat prostřednictvím DPS.  |
+| **Ruční** | Žádné | **Parametr Switch** Pokud není zadán žádný typ zřizování, je výchozí hodnota ruční.<br><br>Deklaruje, že budete zadat připojovací řetězec zařízení pro ruční zřízení zařízení. |
+| **DPS** | Žádné | **Parametr Switch** Pokud není zadán žádný typ zřizování, je výchozí hodnota ruční.<br><br>Deklarujete, že zadáte ID oboru služby Device Provisioning Service (DPS) a ID registrace vašeho zařízení, které se bude zřizovat prostřednictvím DPS.  |
 | **DeviceConnectionString** | Připojovací řetězec ze zařízení IoT Edge zaregistrovaného v IoT Hub v jednoduchých uvozovkách | **Vyžaduje** se pro ruční zřizování. Pokud v parametrech skriptu nezadáte připojovací řetězec, zobrazí se výzva k zadání. |
 | **Objekt ScopeId** | ID oboru z instance služby Device Provisioning přidružené k vašemu IoT Hub. | **Vyžaduje** se pro zřizování DPS. Pokud nezadáte ID oboru v parametrech skriptu, budete vyzváni k jeho zadání. |
 | **RegistrationId** | ID registrace generované vaším zařízením | **Vyžaduje** se pro zřizování DPS, pokud používáte ověřování pomocí čipu TPM nebo symetrického klíče. **Nepovinné** , pokud se používá ověřování certifikátů X. 509. |
@@ -293,10 +293,10 @@ Příkaz Initialize-IoTEdge nakonfiguruje IoT Edge s připojovacím řetězcem z
 | **ContainerOs** | **Windows** nebo **Linux** | Pokud není zadaný žádný operační systém kontejneru, výchozí hodnota je Windows.<br><br>V případě kontejnerů Windows používá IoT Edge modul kontejnerů Moby, který je součástí instalace. V případě kontejnerů Linux je před zahájením instalace nutné nainstalovat kontejnerový modul. |
 | **InvokeWebRequestParameters** | Zatřiďovací tabulka parametrů a hodnot | Během instalace se provedou několik webových požadavků. Pomocí tohoto pole můžete nastavit parametry pro tyto webové požadavky. Tento parametr je vhodný pro konfiguraci přihlašovacích údajů pro proxy servery. Další informace najdete v tématu [Konfigurace zařízení IoT Edge pro komunikaci prostřednictvím proxy server](how-to-configure-proxy-support.md). |
 | **AgentImage** | Identifikátor URI image agenta IoT Edge | Ve výchozím nastavení používá nová instalace IoT Edge nejnovější značku pro Image agenta IoT Edge. Tento parametr použijte k nastavení konkrétní značky pro verzi obrázku nebo k poskytnutí vlastní image agenta. Další informace najdete v tématu [Vysvětlení značek IoT Edge](how-to-update-iot-edge.md#understand-iot-edge-tags). |
-| **Jmen** | Uživatelské jméno registru kontejneru | Tento parametr použijte pouze v případě, že nastavíte parametr-AgentImage na kontejner v privátním registru. Zadejte uživatelské jméno s přístupem k registru. |
+| **Uživatelské jméno** | Uživatelské jméno registru kontejneru | Tento parametr použijte pouze v případě, že nastavíte parametr-AgentImage na kontejner v privátním registru. Zadejte uživatelské jméno s přístupem k registru. |
 | **Heslo** | Řetězec zabezpečeného hesla | Tento parametr použijte pouze v případě, že nastavíte parametr-AgentImage na kontejner v privátním registru. Zadejte heslo pro přístup do registru. |
 
-### <a name="update-iotedge"></a>Update – IoTEdge
+### <a name="update-iotedge"></a>Update-IoTEdge
 
 | Parametr | Přípustné hodnoty | Komentáře |
 | --------- | --------------- | -------- |
@@ -306,7 +306,7 @@ Příkaz Initialize-IoTEdge nakonfiguruje IoT Edge s připojovacím řetězcem z
 | **OfflineInstallationPath** | Cesta k adresáři | Pokud je tento parametr zahrnutý, instalační program zkontroluje uvedený adresář pro soubory IoT Edge CAB a runtime VC, které jsou potřebné pro instalaci. Všechny soubory, které nebyly nalezeny v adresáři, se stáhnou. Pokud jsou oba soubory v adresáři, můžete nainstalovat IoT Edge bez připojení k Internetu. Tento parametr můžete použít také k použití konkrétní verze. |
 | **RestartIfNeeded** | žádné | Tento příznak umožňuje skriptu pro nasazení restartovat počítač bez výzvy, pokud je to nutné. |
 
-### <a name="uninstall-iotedge"></a>Odinstalace – IoTEdge
+### <a name="uninstall-iotedge"></a>Uninstall-IoTEdge
 
 | Parametr | Přípustné hodnoty | Komentáře |
 | --------- | --------------- | -------- |

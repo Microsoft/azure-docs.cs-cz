@@ -12,10 +12,10 @@ ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 67ea7324419d86fa5b5c23a2f0aa5f8c057495d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385973"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Sledovat chování uživatele v Azure Active Directory B2C pomocí Application Insights
@@ -104,12 +104,12 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
 
 Technické profily lze považovat za funkce v architektuře prostředí identity Azure AD B2C. Tato tabulka definuje technické profily, které se používají k otevření relace a odeslání událostí.
 
-| Technický profil | Úkol |
+| Technický profil | Úloha |
 | ----------------- | -----|
-| AppInsights – běžné | Společná sada parametrů, které se mají zahrnout do všech technických profilů Azure Insights. |
-| AppInsights – SignInRequest | Zaznamenává `SignInRequest` událost se sadou deklarací při přijetí žádosti o přihlášení. |
-| AppInsights – UserSignUp | Zaznamenává `UserSignUp` událost, když uživatel aktivuje možnost registrace v cestě pro registraci a přihlašování. |
-| AppInsights – SignInComplete | Zaznamenává `SignInComplete` událost po úspěšném dokončení ověřování, když byl token odeslán do aplikace předávající strany. |
+| AppInsights-Common | Společná sada parametrů, které se mají zahrnout do všech technických profilů Azure Insights. |
+| AppInsights-SignInRequest | Zaznamenává `SignInRequest` událost se sadou deklarací při přijetí žádosti o přihlášení. |
+| AppInsights-UserSignUp | Zaznamenává `UserSignUp` událost, když uživatel aktivuje možnost registrace v cestě pro registraci a přihlašování. |
+| AppInsights-SignInComplete | Zaznamenává `SignInComplete` událost po úspěšném dokončení ověřování, když byl token odeslán do aplikace předávající strany. |
 
 Přidejte profily do souboru *TrustFrameworkExtensions.xml* z úvodní sady. Přidejte tyto prvky do prvku **ClaimsProviders** :
 
@@ -223,11 +223,11 @@ Uložte a odešlete soubor *TrustFrameworkExtensions.xml* . Pak zavolejte zásad
 2. Vyberte **Usage**  >  **události**využití.
 3. Nastaví **During** se během **poslední hodiny** a **do** **3 minut**.  Pro zobrazení výsledků může být nutné vybrat možnost **aktualizovat** .
 
-![VYUŽITÍ Application Insights – události Blase](./media/analytics-with-application-insights/app-ins-graphic.png)
+![Application Insights USAGE-Events Blase](./media/analytics-with-application-insights/app-ins-graphic.png)
 
 ## <a name="optional-collect-more-data"></a>Volitelné Shromažďování dalších dat
 
-Přidejte do cesty uživatele typy deklarací identity a události, aby vyhovovaly vašim potřebám. Můžete použít [překladače deklarací identity](claim-resolver-overview.md) nebo jakýkoli typ deklarace identity, přidat deklarace identity přidáním prvku **vstupní deklarace identity** do události Application Insights nebo do AppInsights-Common Technical Profile.
+Přidejte do cesty uživatele typy deklarací identity a události, aby vyhovovaly vašim potřebám. Můžete použít [překladače deklarací identity](claim-resolver-overview.md) nebo jakýkoli typ deklarace identity, přidat deklarace identity přidáním prvku **vstupní deklarace identity** do události Application Insights nebo do technického profilu AppInsights-Common.
 
 - **ClaimTypeReferenceId** je odkaz na typ deklarace identity.
 - **PartnerClaimType** je název vlastnosti, která se zobrazuje v Azure Insights. Použijte syntaxi `{property:NAME}` , kde je do `NAME` události přidána vlastnost.

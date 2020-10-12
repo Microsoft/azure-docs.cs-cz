@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: ab6eb4851b9f2574fc235056f8f512edcb2054bd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321777"
 ---
 # <a name="connect-to-a-wfs-service"></a>Připojení ke službě WFS
@@ -27,7 +27,7 @@ Třída podporuje následující funkce `WfsClient` :
 - Žádosti se provádějí `HTTP GET` jenom pomocí.
 - Podporované operace:
 
-    | Operace | Popis |
+    | Operace | Description |
     | :-- | :-- |
     | GetCapabilities | Vygeneruje dokument metadat s platnými operacemi a parametry WFS. |
     | Getfeature | Vrátí výběr funkcí ze zdroje dat. |
@@ -66,7 +66,7 @@ Specifikace pro WFS Standard využívá filtry OGC. Níže uvedené filtry jsou 
 - `Mul`
 - `Div`
 
-**Operátory porovnání**
+**Relační operátory**
 
 - `PropertyIsEqualTo`
 - `PropertyIsNotEqualTo`

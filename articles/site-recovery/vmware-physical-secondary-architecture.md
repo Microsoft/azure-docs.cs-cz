@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 7c884ce839523706e67e4278f43e237e1a2b0580
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87496963"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektura pro replikaci VMware/fyzických serverů do sekundární místní lokality
@@ -42,7 +42,7 @@ Aby mohla Site Recovery fungovat podle očekávání, musíte upravit odchozí s
 
 Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, povolte přístup k těmto adresám URL:
 
-| **Název**                  | **Komerční**                               | **Státní správa**                                 | **Description** |
+| **Název**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |

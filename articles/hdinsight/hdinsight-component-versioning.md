@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
 ms.openlocfilehash: 15d7b11ed49880a81e52c48a93a72e1491a5b645
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89394325"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Součásti a verze Apache dostupné pro Azure HDInsight
@@ -44,7 +44,7 @@ Verze komponent spojené s verzemi clusterů HDInsight jsou uvedené v následuj
 | Apache Mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
 | Apache Spark           | 2.4.4         | 2.3.2.                      |
-| Apache Livy            | 0.5           | 0,4.                        |
+| Apache Livy            | 0,5           | 0,4.                        |
 | Apache Kafka           | 2.1.1         | 1,1                         |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |

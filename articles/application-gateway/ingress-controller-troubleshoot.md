@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
 ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207163"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Řešení běžných otázek nebo potíží s řadičem příchozího přenosu dat
@@ -95,7 +95,7 @@ Získat seznam příchozích dat: `kubectl get ingress` . Očekáváme, že pros
 
 ![podů](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
 
-Jedna z lusků bude AGIC. `kubectl get pods`Zobrazí seznam lusků, z nichž jedna začíná "příchozí – Azure". Získejte všechny protokoly, které jsou pod nástrojem, `kubectl logs <name-of-ingress-controller-pod>` a ověřte tak, že máme úspěšné nasazení. Úspěšné nasazení by do protokolu přidalo následující řádky:
+Jedna z lusků bude AGIC. `kubectl get pods` Zobrazí seznam lusků, z nichž jedna začíná "příchozí – Azure". Získejte všechny protokoly, které jsou pod nástrojem, `kubectl logs <name-of-ingress-controller-pod>` a ověřte tak, že máme úspěšné nasazení. Úspěšné nasazení by do protokolu přidalo následující řádky:
 ```
 I0927 22:34:51.281437       1 process.go:156] Applied Application Gateway config in 20.461335266s
 I0927 22:34:51.281585       1 process.go:165] cache: Updated with latest applied config.
@@ -142,7 +142,7 @@ Aby funkce AGIC fungovala podle očekávání, musí být na tomto místě:
      ```
 
   2. Jednu nebo více **služeb**s odkazem na lusky přes párové `selector` popisky.
-     Ověřte tuto z [Cloud Shell](https://shell.azure.com/) s`kubectl get services -o wide`
+     Ověřte tuto z [Cloud Shell](https://shell.azure.com/) s `kubectl get services -o wide`
      ```bash
      delyan@Azure:~$ kubectl get services -o wide --show-labels
 
@@ -199,9 +199,9 @@ Aby funkce AGIC fungovala podle očekávání, musí být na tomto místě:
 
 
 * Pokud AGIC pod není v pořádku ( `STATUS` sloupec z příkazu výše není `Running` ):
-  - Získejte protokoly, abyste zjistili, proč:`kubectl logs <pod-name>`
-  - pro předchozí instanci rozhraní pod:`kubectl logs <pod-name> --previous`
-  - Popište pole pod, aby se získalo více kontextu:`kubectl describe pod <pod-name>`
+  - Získejte protokoly, abyste zjistili, proč: `kubectl logs <pod-name>`
+  - pro předchozí instanci rozhraní pod: `kubectl logs <pod-name> --previous`
+  - Popište pole pod, aby se získalo více kontextu: `kubectl describe pod <pod-name>`
 
 
 * Máte [službu](https://kubernetes.io/docs/concepts/services-networking/service/) [Kubernetes a prostředky](https://kubernetes.io/docs/concepts/services-networking/ingress/) příchozího přenosu dat?
@@ -224,7 +224,7 @@ Aby funkce AGIC fungovala podle očekávání, musí být na tomto místě:
 
 
 * AGIC generuje události Kubernetes pro určité kritické chyby. Můžete je zobrazit:
-  - v terminálu prostřednictvím`kubectl get events --sort-by=.metadata.creationTimestamp`
+  - v terminálu prostřednictvím `kubectl get events --sort-by=.metadata.creationTimestamp`
   - v prohlížeči pomocí [webového uživatelského rozhraní Kubernetes (řídicí panel)](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
 
 
@@ -236,7 +236,7 @@ AGIC má 3 úrovně protokolování. První úroveň je výchozí a zobrazuje mi
 Komunita Kubernetes zřídila 9 úrovní protokolování pro nástroj [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) . V tomto úložišti využíváme 3 z těchto verzí s podobnou sémantikou:
 
 
-| Podrobnosti | Popis |
+| Podrobnosti | Description |
 |-----------|-------------|
 |  1        | Výchozí úroveň protokolu; zobrazuje podrobnosti o spuštění, upozornění a chyby. |
 |  3        | Rozšířené informace o událostech a změnách; seznamy vytvořených objektů |
@@ -245,7 +245,7 @@ Komunita Kubernetes zřídila 9 úrovní protokolování pro nástroj [kubectl](
 
 Úrovně podrobností lze nastavit přes `verbosityLevel` proměnnou v souboru [Helm-config. yaml](#sample-helm-config-file) . Zvyšte úroveň podrobností na, `5` aby se získala konfigurace JSON odeslané do [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview):
   - Přidat `verbosityLevel: 5` na sebe sebe v [Helm-config. yaml](#sample-helm-config-file) a znovu nainstalovat
-  - získat protokoly pomocí`kubectl logs <pod-name>`
+  - získat protokoly pomocí `kubectl logs <pod-name>`
 
 ### <a name="sample-helm-config-file"></a>Ukázkový konfigurační soubor Helm
 ```yaml

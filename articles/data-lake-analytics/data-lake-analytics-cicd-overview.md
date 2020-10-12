@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
 ms.openlocfilehash: 3517938ae0e08af62a6fcf0d3d0a43a5eaee48dd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87496113"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Jak nastavit kanál CI/CD pro Azure Data Lake Analytics  
@@ -355,7 +355,7 @@ Přidání testovacích případů pro funkce vracející tabulku a přímo ulo�
 
 ## <a name="deploy-u-sql-database-through-azure-pipelines"></a>Nasazení databáze U-SQL prostřednictvím Azure Pipelines
 
-`PackageDeploymentTool.exe`poskytuje rozhraní pro programování a příkazový řádek, které vám pomůžou nasadit balíčky pro nasazení databáze U-SQL, **. usqldbpack**. Sada SDK je součástí [balíčku NuGet U-SQL SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), který je umístěný v **sestavení/za běhu/PackageDeploymentTool.exe**. Pomocí nástroje `PackageDeploymentTool.exe` můžete nasadit databáze U-SQL do obou Azure Data Lake Analytics i místních účtů.
+`PackageDeploymentTool.exe` poskytuje rozhraní pro programování a příkazový řádek, které vám pomůžou nasadit balíčky pro nasazení databáze U-SQL, **. usqldbpack**. Sada SDK je součástí [balíčku NuGet U-SQL SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), který je umístěný v **sestavení/za běhu/PackageDeploymentTool.exe**. Pomocí nástroje `PackageDeploymentTool.exe` můžete nasadit databáze U-SQL do obou Azure Data Lake Analytics i místních účtů.
 
 > [!NOTE]
 >
@@ -425,7 +425,7 @@ Při nastavování úlohy nasazení databáze v Azure Pipelines proveďte násle
     copy USQLSDK\build\runtime\*.* $DBDeploymentTool
     ```
 
-2. Přidejte **úlohu příkazového řádku** do kanálu sestavení nebo vydání a zadejte do skriptu volání `PackageDeploymentTool.exe` . `PackageDeploymentTool.exe`je umístěn v rámci definované složky **$DBDeploymentTool** . Vzorový skript je následující: 
+2. Přidejte **úlohu příkazového řádku** do kanálu sestavení nebo vydání a zadejte do skriptu volání `PackageDeploymentTool.exe` . `PackageDeploymentTool.exe` je umístěn v rámci definované složky **$DBDeploymentTool** . Vzorový skript je následující: 
 
     * Místní nasazení U-SQL Database:
 
@@ -458,7 +458,7 @@ Při nastavování úlohy nasazení databáze v Azure Pipelines proveďte násle
 | Parametr | Popis | Výchozí hodnota | Vyžadováno |
 |---------|-----------|-------------|--------|
 |Balíček|Cesta k balíčku pro nasazení U-SQL Database, která se má nasadit|null|true|
-|Databáze|Název databáze, která má být nasazena nebo vytvořena.|master|false (nepravda)|
+|databáze|Název databáze, která má být nasazena nebo vytvořena.|master|false (nepravda)|
 |Protokolů|Cesta k souboru pro protokolování. Výchozí na standardní (konzola)|null|false (nepravda)|
 |LogLevel|Úroveň protokolu: Verbose, normální, varování nebo chyba.|LogLevel. Normal|false (nepravda)|
 

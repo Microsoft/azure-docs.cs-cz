@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
 ms.openlocfilehash: ed429d2f584da20439b0cb0eedcf4742b9ae4599
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84634377"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Vizualizace dat ze senzorů v reálném čase z Azure IoT Hub pomocí Power BI
@@ -34,11 +34,11 @@ Naučíte se vizualizovat data ze senzorů v reálném čase, která služba Azu
 
 * Vytvořte a publikujte sestavu Power BI k vizualizaci dat.
 
-## <a name="what-you-need"></a>Co potřebujete
+## <a name="what-you-need"></a>Co budete potřebovat
 
 * Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto články se týkají následujících požadavků:
   
-  * Aktivní předplatné Azure.
+  * Musíte mít aktivní předplatné Azure.
   * Azure IoT Hub v rámci vašeho předplatného.
   * Klientská aplikace, která odesílá zprávy do služby Azure IoT Hub.
 
@@ -122,7 +122,7 @@ Pojďme začít vytvořením úlohy Stream Analytics. Po vytvoření úlohy defi
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurace dotazu pro úlohu Stream Analytics
 
-1. V části **topologie úlohy**vyberte možnost **dotaz**.
+1. V části **Topologie úlohy** vyberte **Dotaz**.
 
 2. Nahraďte `[YourInputAlias]` názvem aliasu pro vstup úlohy.
 

@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 83e9b0278e99867cafa7e633bc382e490ec273c1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250520"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Odeslání souborů do účtu Azure Media Services pomocí .NET
@@ -33,7 +33,7 @@ Ve službě Media Services můžete digitální soubory nahrát (nebo ingestovat
 
 Soubory v prostředku se nazývají **soubory prostředku**. Instance **AssetFile** a skutečný mediální soubor jsou dva odlišné objekty. Instance AssetFile obsahuje metadata o souboru média, zatímco soubor média obsahuje skutečný mediální obsah.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Platí následující důležité informace:
  

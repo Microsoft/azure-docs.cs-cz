@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 07/09/2020
 ms.author: iainfou
 ms.openlocfilehash: 316f77b2447bd75b03a05c4e6466d153bf51201d
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88722632"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Vytvoření spravované domény Azure Active Directory Domain Services pomocí šablony Azure Resource Manager
@@ -23,7 +23,7 @@ Azure Active Directory Domain Services (Azure služba AD DS) poskytuje spravovan
 
 V tomto článku se dozvíte, jak vytvořit spravovanou doménu pomocí šablony Azure Resource Manager. Podpůrné prostředky se vytvářejí pomocí Azure PowerShell.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete tyto prostředky:
 

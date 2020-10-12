@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009252"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Vytvoření fondu tenanta a hostitele ve virtuální ploše Windows (Classic)
@@ -51,7 +51,7 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 **Oprava:** [podle tohoto průvodce](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop) udělíte souhlas.
 
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: uživatel nemá oprávnění pro dotaz na službu správy.
+### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: Uživatel nemá oprávnění k dotazování služby správy
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky okna prostředí PowerShell, ve kterém uživatel nemá oprávnění pro dotaz na službu správy.](../media/UserNotAuthorizedNewTenant.png)
@@ -177,7 +177,7 @@ Chcete-li tento problém vyřešit, proveďte následující akce:
 3. V pravé části obrazovky by se měla zobrazit nabídka servery DNS. V této nabídce vyberte možnost **vlastní**.
 4. Ujistěte se, že servery DNS uvedené v části vlastní odpovídají vašemu řadiči domény nebo doméně služby Active Directory. Pokud server DNS nevidíte, můžete ho přidat zadáním jeho hodnoty do pole **Přidat server DNS** .
 
-### <a name="error-your-deployment-failedunauthorized"></a>Chyba: nasazení selhalo. ..\Unauthorized
+### <a name="error-your-deployment-failedunauthorized"></a>Chyba: Vaše nasazení selhalo...\Neautorizováno
 
 ```Error
 {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
@@ -198,7 +198,7 @@ Chcete-li tento problém vyřešit, proveďte následující akce:
 
 **Oprava:** Ověřte, jestli je prostředí virtuálních počítačů s Windows v pořádku, když se přihlásíte pomocí PowerShellu. Dokončete registraci virtuálního počítače ručně v části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell-2019.md).
 
-### <a name="error-the-admin-username-specified-isnt-allowed"></a>Chyba: zadané uživatelské jméno správce není povolené.
+### <a name="error-the-admin-username-specified-isnt-allowed"></a>Chyba: Zadané uživatelské jméno správce není povolené
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky s vaším nasazením se nepovedl, protože zadaný správce není povolený.](../media/f2b3d3700e9517463ef88fa41875bac9.png)
@@ -218,7 +218,7 @@ Příklad nezpracované chyby:
 
 **Oprava:** Aktualizujte uživatelské jméno nebo použijte jiné uživatele.
 
-### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Chyba: virtuální počítač ohlásil selhání při zpracování rozšíření
+### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Chyba: Virtuální počítač nahlásil chybu při zpracování rozšíření
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky s operací prostředku dokončeným se stavem zřizování terminálu v nasazení se nezdařil.](../media/49c4a1836a55d91cd65125cf227f411f.png)
@@ -351,7 +351,7 @@ the VM.\\\"
 
 **Oprava:** Odebere blokující statickou trasu, pravidlo brány firewall nebo NSG. Případně můžete otevřít soubor JSON šablony Azure Resource Manager v textovém editoru, vytvořit odkaz na soubor zip a stáhnout prostředek do povoleného umístění.
 
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: uživatel nemá oprávnění pro dotaz na službu správy.
+### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: Uživatel nemá oprávnění k dotazování služby správy
 
 Příklad nezpracované chyby:
 
@@ -375,7 +375,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
 ```
 
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Chyba: uživatel vyžaduje Azure Multi-Factor Authentication (MFA).
+### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Chyba: Uživatel vyžaduje vícefaktorové ověřování Azure (MFA)
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky nasazení se nezdařil z důvodu nedostatku Multi-Factor Authentication (MFA)](../media/MFARequiredError.png)

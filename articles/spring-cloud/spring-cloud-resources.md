@@ -8,10 +8,10 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: d58827632a36a69bc9b9592c607364daa6ef7d97
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904237"
 ---
 # <a name="azure-spring-cloud-developer-resources"></a>Zdroje informací o vývojářích pro vývoj v cloudu Azure
@@ -20,7 +20,7 @@ ms.locfileid: "90904237"
 
 Jako vývojář můžete najít následující zdroje informací o jarních cloudech Azure, které jsou užitečné:
 
-* [Plán Azure](https://azure.microsoft.com/updates)
+* [Plány Azure do budoucna](https://azure.microsoft.com/updates)
 * [Nejčastější dotazy](spring-cloud-faq.md)
 * [Průvodce odstraňováním potíží](spring-cloud-troubleshoot.md)
 * [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-spring-cloud.html)

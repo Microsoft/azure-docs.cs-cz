@@ -11,10 +11,10 @@ ms.date: 11/13/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6bd93f9062f8446ce20436a7a04e2054aaf5be71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85386127"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Povolit omezení stáří v Azure Active Directory B2C
@@ -33,19 +33,19 @@ Omezení stáří zahrnuje dvě věkové hodnoty: stáří, které už někdo ne
 
 | Země/oblast | Název země nebo oblasti | Věk pro menší souhlas | Menší stáří |
 | -------------- | ------------------- | ----------------- | --------- |
-| Výchozí | Žádná | Žádná | 18 |
-| AE | Spojené arabské emiráty | Žádná | 21 |
+| Výchozí | Žádné | Žádné | 18 |
+| AE | Spojené arabské emiráty | Žádné | 21 |
 | AT | Rakousko | 14 | 18 |
 | BE | Belgie | 14 | 18 |
 | BG | Bulharsko | 16 | 18 |
-| BH | Bahrajn | Žádná | 21 |
-| CM | Kamerun | Žádná | 21 |
+| BH | Bahrajn | Žádné | 21 |
+| CM | Kamerun | Žádné | 21 |
 | CY | Kypr | 16 | 18 |
 | CZ | Česká republika | 16 | 18 |
 | DE | Německo | 16 | 18 |
 | DK | Dánsko | 16 | 18 |
 | EE | Estonsko | 16 | 18 |
-| EG | Egypt | Žádná | 21 |
+| EG | Egypt | Žádné | 21 |
 | ES | Španělsko | 13 | 18 |
 | FR | Francie | 16 | 18 |
 | GB | Spojené království | 13 | 18 |
@@ -59,18 +59,18 @@ Omezení stáří zahrnuje dvě věkové hodnoty: stáří, které už někdo ne
 | LU | Lucembursko | 16 | 18 |
 | LV | Lotyšsko | 16 | 18 |
 | MT | Malta | 16 | 18 |
-| NA | Namibie | Žádná | 21 |
+| Není k dispozici | Namibie | Žádné | 21 |
 | NL | Nizozemsko | 16 | 18 |
 | PL | Polsko | 13 | 18 |
 | PT | Portugalsko | 16 | 18 |
 | RO | Rumunsko | 16 | 18 |
 | SE | Švédsko | 13 | 18 |
-| SG | Singapur | Žádná | 21 |
+| SG | Singapur | Žádné | 21 |
 | SI | Slovinsko | 16 | 18 |
 | SK | Slovensko | 16 | 18 |
-| TD | Čad | Žádná | 21 |
-| TH | Thajsko | Žádná | 20 |
-| TW | Tchaj-wan | Žádná | 20 |
+| TD | Čad | Žádné | 21 |
+| TH | Thajsko | Žádné | 20 |
+| TW | Tchaj-wan | Žádné | 20 |
 | USA | USA | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Možnosti uzavírání stáří

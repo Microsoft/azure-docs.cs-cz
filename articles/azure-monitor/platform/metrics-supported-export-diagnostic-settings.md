@@ -6,13 +6,13 @@ ms.topic: reference
 ms.date: 07/22/2020
 ms.subservice: metrics
 ms.openlocfilehash: ca6acb97e52123a0663d988b3f217d305bce2c4b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87131680"
 ---
-# <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Monitor metriky platformy exportovatelné prostřednictvím nastavení diagnostiky
+# <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Metriky platformy Azure Monitor, které je možné exportovat prostřednictvím nastavení diagnostiky
 
 Azure Monitor poskytuje ve výchozím nastavení [metriky platforem](data-platform-metrics.md) bez konfigurace. Nabízí několik způsobů, jak pracovat s metrikami platforem, včetně jejich grafů na portálu, přístupu k nim prostřednictvím REST API nebo jejich dotazování pomocí PowerShellu nebo rozhraní příkazového řádku. Úplný seznam metrik platforem, které jsou aktuálně k dispozici v konsolidovaném kanálu metriky Azure Monitor, najdete v tématu [metriky – podporované](metrics-supported.md) . Pro dotazování a přístup k těmto metrikám použijte [verzi api 2018-01-01](/rest/api/monitor/metricdefinitions). Jiné metriky mohou být k dispozici na portálu nebo pomocí starších rozhraní API.
 
@@ -218,10 +218,10 @@ Následuje seznam metrik, u kterých došlo ke změně chování.
 | Microsoft. Insights/Components | Čítače výkonu/exceptionsPerSecond |  Míra výjimek  | 
 | Microsoft. Insights/Components | pageViews/Count |  Zobrazení stránek  | 
 | Microsoft. Insights/Components | výjimky/počet |  Výjimky  | 
-| Microsoft. Kusto/clustery | StreamingIngestResults |  Výsledek ingestování streamování  | 
-| Microsoft. Kusto/clustery | StreamingIngestDuration |  Doba ingestování streamování  | 
-| Microsoft. Kusto/clustery | StreamingIngestDataRate |  Přenosová rychlost ingestování datových proudů  | 
-| Microsoft. Kusto/clustery | SteamingIngestRequestRate |  Rychlost přijímání požadavků pro streamování  | 
+| Microsoft. Kusto/clustery | StreamingIngestResults |  Výsledek příjmu streamování  | 
+| Microsoft. Kusto/clustery | StreamingIngestDuration |  Doba trvání příjmu streamování  | 
+| Microsoft. Kusto/clustery | StreamingIngestDataRate |  Datová rychlost příjmu streamování  | 
+| Microsoft. Kusto/clustery | SteamingIngestRequestRate |  Četnost požadavků příjmu streamování  | 
 | Microsoft. Kusto/clustery | QueryDuration |  Doba trvání dotazu  | 
 | Microsoft. Kusto/clustery | Udržení |  Zachovat naživu  | 
 | Microsoft. Kusto/clustery | IngestionVolumeInMB |  Objem příjmu (v MB)  | 
@@ -372,7 +372,7 @@ Následuje seznam metrik, u kterých došlo ke změně chování.
 | Microsoft. SQL/managedInstances | avg_cpu_percent |  Průměrné procento procesoru  | 
 | Microsoft. SQL/servery | dtu_used |  Využité DTU  | 
 | Microsoft. SQL/servery | dtu_consumption_percent |  Procento DTU  | 
-| Microsoft. SQL/servery/databáze | xtp_storage_percent |  Procentuální hodnota úložiště OLTP v paměti  | 
+| Microsoft. SQL/servery/databáze | xtp_storage_percent |  In-Memory OLTP úložiště v procentech  | 
 | Microsoft. SQL/servery/databáze | workers_percent |  Procento pracovních procesů  | 
 | Microsoft. SQL/servery/databáze | sessions_percent |  Procento relací  | 
 | Microsoft. SQL/servery/databáze | physical_data_read_percent |  Procento datových V/V  | 
@@ -388,7 +388,7 @@ Následuje seznam metrik, u kterých došlo ke změně chování.
 | Microsoft. SQL/servery/databáze | connection_failed |  Neúspěšná připojení  | 
 | Microsoft. SQL/servery/databáze | cache_hit_percent |  Procento přístupů do mezipaměti  | 
 | Microsoft. SQL/servery/databáze | blocked_by_firewall |  Blokováno bránou firewall  | 
-| Microsoft. SQL/servery/elasticPools | xtp_storage_percent |  Procentuální hodnota úložiště OLTP v paměti  | 
+| Microsoft. SQL/servery/elasticPools | xtp_storage_percent |  In-Memory OLTP úložiště v procentech  | 
 | Microsoft. SQL/servery/elasticPools | workers_percent |  Procento pracovních procesů  | 
 | Microsoft. SQL/servery/elasticPools | sessions_percent |  Procento relací  | 
 | Microsoft. SQL/servery/elasticPools | physical_data_read_percent |  Procento datových V/V  | 
@@ -520,7 +520,7 @@ Následuje seznam metrik, u kterých došlo ke změně chování.
 | Microsoft. SQL/servery/databáze | connection_failed | Neúspěšná připojení | 
 | Microsoft. SQL/servery/databáze | blocked_by_firewall | Blokováno bránou firewall | 
 | Microsoft. SQL/servery/databáze | ukončení | Zablokování | 
-| Microsoft. SQL/servery/databáze | xtp_storage_percent | Procentuální hodnota úložiště OLTP v paměti | 
+| Microsoft. SQL/servery/databáze | xtp_storage_percent | In-Memory OLTP úložiště v procentech | 
 | Microsoft. SQL/servery/databáze | workers_percent | Procento pracovních procesů | 
 | Microsoft. SQL/servery/databáze | sessions_percent | Procento relací | 
 | Microsoft. SQL/servery/databáze | dtu_used | Využité DTU | 
@@ -545,7 +545,7 @@ Následuje seznam metrik, u kterých došlo ke změně chování.
 | Microsoft. SQL/servery/elasticPools | workers_percent | Procento pracovních procesů | 
 | Microsoft. SQL/servery/elasticPools | sessions_percent | Procento relací | 
 | Microsoft. SQL/servery/elasticPools | eDTU_used | využité eDTU | 
-| Microsoft. SQL/servery/elasticPools | xtp_storage_percent | Procentuální hodnota úložiště OLTP v paměti | 
+| Microsoft. SQL/servery/elasticPools | xtp_storage_percent | In-Memory OLTP úložiště v procentech | 
 | Microsoft. SQL/servery | dtu_consumption_percent | Procento DTU | 
 | Microsoft. SQL/servery | dtu_used | Využité DTU | 
 | Microsoft. SQL/managedInstances | avg_cpu_percent | Průměrné procento procesoru | 

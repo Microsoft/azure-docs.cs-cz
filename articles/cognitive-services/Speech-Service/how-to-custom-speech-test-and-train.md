@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: f43f7894c46a75894eb648f02ec378f3a8b2633d
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84628059"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro službu Custom Speech
@@ -80,7 +80,7 @@ Pomocí této tabulky zajistěte, aby byly vaše zvukové soubory správně form
 | Vzorkovací frekvence              | 8 000 Hz nebo 16 000 Hz |
 | Kanály                 | 1 (mono)              |
 | Maximální délka na zvuk | 2 hodiny               |
-| Vzorový formát            | PCM, 16 bitů           |
+| Formát ukázky            | PCM, 16 bitů           |
 | Formát archivu           | .zip                  |
 | Maximální velikost archivu     | 2 GB                  |
 
@@ -91,7 +91,7 @@ Pomocí této tabulky zajistěte, aby byly vaše zvukové soubory správně form
 
 Pomocí <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span class="docon docon-navigate-external x-hidden-focus"></span> </a> ověřte vlastnosti zvuku nebo převeďte existující zvuk do příslušných formátů. Níže jsou uvedeny některé příklady, jak lze jednotlivé aktivity provést prostřednictvím příkazového řádku SoX:
 
-| Aktivita | Popis | SoX – příkaz |
+| Aktivita | Description | SoX – příkaz |
 |----------|-------------|-------------|
 | Kontrolovat zvukový formát | Pomocí tohoto příkazu ověřte<br>formát zvukového souboru. | `sox --i <filename>` |
 | Převod zvukového formátu | Tento příkaz slouží k převodu<br>zvukový soubor do jednoho kanálu, 16bitová, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -108,7 +108,7 @@ Zvukové soubory mohou mít na začátku a na konci záznamu tiché ukončení. 
 | Vzorkovací frekvence              | 8 000 Hz nebo 16 000 Hz               |
 | Kanály                 | 1 (mono)                            |
 | Maximální délka na zvuk | 2 hodiny (testování)/60 s (školení) |
-| Vzorový formát            | PCM, 16 bitů                         |
+| Formát ukázky            | PCM, 16 bitů                         |
 | Formát archivu           | .zip                                |
 | Maximální velikost souboru ZIP         | 2 GB                                |
 
@@ -203,5 +203,5 @@ Pomocí následující tabulky ověřte, zda je váš související datový soub
 
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)
 * [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
-* [Trénování vašeho modelu](how-to-custom-speech-train-model.md)
+* [Trénování modelu](how-to-custom-speech-train-model.md)
 * [Nasazení modelu](how-to-custom-speech-deploy-model.md)

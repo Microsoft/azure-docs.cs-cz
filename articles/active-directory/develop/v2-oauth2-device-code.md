@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88272446"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity Platform a tok udělení autorizace zařízení OAuth 2,0
@@ -51,7 +51,7 @@ scope=user.read%20openid%20profile
 
 ```
 
-| Parametr | Podmínka | Popis |
+| Parametr | Stav | Popis |
 | --- | --- | --- |
 | `tenant` | Povinné | Může být/běžné,/consumers nebo/Organizations.  Může to být také tenant adresáře, ze kterého chcete požádat o oprávnění ve formátu GUID nebo popisného názvu.  |
 | `client_id` | Vyžadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
@@ -61,7 +61,7 @@ scope=user.read%20openid%20profile
 
 Úspěšná odpověď bude objekt JSON, který obsahuje požadované informace, aby se uživatel mohl přihlásit.
 
-| Parametr | Formát | Popis |
+| Parametr | Formát | Description |
 | ---              | --- | --- |
 |`device_code`     | Řetězec | Dlouhý řetězec, který slouží k ověření relace mezi klientem a autorizačním serverem. Klient používá tento parametr k vyžádání přístupového tokenu z autorizačního serveru. |
 |`user_code`       | Řetězec | Krátký řetězec zobrazený uživateli, který se používá k identifikaci relace v sekundárním zařízení.|
@@ -123,7 +123,7 @@ Tok kódu zařízení je protokol cyklického dotazování, aby klient musel obd
 }
 ```
 
-| Parametr | Formát | Popis |
+| Parametr | Formát | Description |
 | --------- | ------ | ----------- |
 | `token_type` | Řetězec| Vždy "nosič". |
 | `scope` | Řetězce oddělené mezerami | V případě vrácení přístupového tokenu zobrazí seznam oborů, pro které je přístupový token platný. |

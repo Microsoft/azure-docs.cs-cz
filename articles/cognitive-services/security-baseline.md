@@ -8,10 +8,10 @@ ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 796ef0b82c15940ce9200e0b50916ca657f10b99
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89393889"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Základní hodnoty zabezpečení Azure pro Cognitive Services
@@ -948,7 +948,7 @@ Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje 
 
 Funkci správy životního cyklu můžete také použít k zálohování dat do archivní úrovně. Navíc můžete povolit obnovitelné odstranění záloh uložených v účtu úložiště.
 
-* [Principy Azure Storage a smlouvy o úrovni služeb](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+* [Porozumění Azure Storage redundanci a Service-Level smluv](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 * [Správa životního cyklu úložiště objektů blob v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)
 
@@ -992,13 +992,13 @@ Funkci správy životního cyklu můžete také použít k zálohování dat do 
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a klíčů spravovaných zákazníkem
 
-**Pokyny**: pomocí Azure DevOps bezpečně ukládejte a spravujte šablony Azure Resource Manager. K ochraně prostředků, které spravujete v Azure DevOps, můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory (Azure AD), pokud jsou integrované s Azure DevOps, nebo Active Directory, pokud je integrovaná se sadou TFS.  Použijte řízení přístupu na základě rolí k ochraně zákaznických klíčů. Povolení ochrany před náhodným odstraněním a vyprázdněním v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění. 
+**Pokyny**: pomocí Azure DevOps bezpečně ukládejte a spravujte šablony Azure Resource Manager. K ochraně prostředků, které spravujete v Azure DevOps, můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory (Azure AD), pokud jsou integrované s Azure DevOps, nebo Active Directory, pokud je integrovaná se sadou TFS.  Použijte řízení přístupu na základě rolí k ochraně zákaznických klíčů. Povolit Soft-Delete a vyprázdnit ochranu v Key Vault a chránit tak klíče proti náhodnému nebo škodlivému odstranění. 
 
 * [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
 * [O oprávněních a skupinách v Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
 
-* [Jak povolit ochranu s možnostmi obnovitelného odstranění a vyprázdnění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Postup povolení ochrany Soft-Delete a vyprázdnění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: Ano
 

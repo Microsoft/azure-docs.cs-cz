@@ -5,10 +5,10 @@ ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.openlocfilehash: 9a3c0643f4fc965ff64106758320aeb445aaf9ae
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921735"
 ---
 # <a name="azure-functions-developer-guide"></a>Příručka pro vývojáře v Azure Functions
@@ -46,7 +46,7 @@ Další informace najdete v tématu [Azure Functions triggery a koncepty vazeb](
 | `direction` |' in ', ' out ' |Označuje, zda je vazba určena pro příjem dat do funkce nebo odesílání dat z funkce. |
 | `name` |řetězec |Název, který se používá pro vázaná data ve funkci. V jazyce C# je toto název argumentu; v případě JavaScriptu je klíč v seznamu klíč/hodnota. |
 
-## <a name="function-app"></a>Function App
+## <a name="function-app"></a>Aplikace funkcí
 Function App poskytuje kontext spuštění v Azure, ve kterém se vaše funkce spouštějí. V takovém případě je to jednotka nasazení a správy pro vaše funkce. Aplikace Function App se skládá z jedné nebo několika individuálních funkcí, které jsou spravované, nasazené a škálovat dohromady. Všechny funkce ve Function App sdílí stejný cenový plán, způsob nasazení a běhovou verzi. Aplikaci Function App si můžete představit jako způsob, jak organizovat a shromažďovat své funkce. Další informace najdete v tématu [Správa aplikace Function App](functions-how-to-use-azure-function-app-settings.md). 
 
 > [!NOTE]
@@ -65,7 +65,7 @@ Aplikace Function App lze vytvářet a publikovat pomocí různých nástrojů, 
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a>Postup úpravy funkcí v Azure Portal
+## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a> Postup úpravy funkcí v Azure Portal
 Editor funkcí integrovaný do Azure Portal umožňuje aktualizovat kód a *function.jsv* souboru přímo vloženě. Tento postup je doporučený pouze pro malé změny nebo zkoušku konceptu – osvědčeným postupem je použití místního vývojového nástroje, jako je VS Code.
 
 ## <a name="parallel-execution"></a>Paralelní provádění
@@ -96,7 +96,7 @@ Máte problémy s chybami pocházejícími z vazeb? Přečtěte si dokumentaci [
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících zdrojích:
 
 * [Aktivační události a vazby Azure Functions](functions-triggers-bindings.md)
 * [Místní psaní kódu a testování funkcí Azure Functions](./functions-develop-local.md)

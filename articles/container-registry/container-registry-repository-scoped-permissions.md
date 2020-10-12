@@ -4,10 +4,10 @@ description: Vytvoření tokenu s oprávněním vymezeným pro konkrétní úlo�
 ms.topic: article
 ms.date: 05/27/2020
 ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84509402"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Vytvoření tokenu s oprávněními vymezenými úložištěm
@@ -157,9 +157,9 @@ Následující příklad vytvoří token a vytvoří mapu oboru s následující
 1. V části **Mapa oboru**vyberte **vytvořit novou**.
 1. Nakonfigurujte mapu oboru:
     1. Zadejte název a popis mapy oboru. 
-    1. V části **úložiště**zadejte a `samples/hello-world` v části **oprávnění**vyberte `content/read` a `content/write` . Pak vyberte **+ Přidat**.  
+    1. V části **úložiště**zadejte a `samples/hello-world` v části **oprávnění**vyberte  `content/read` a `content/write` . Pak vyberte **+ Přidat**.  
 
-        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Vytvořit mapu oboru na portálu":::
+        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Vytvoření tokenu na portálu":::
 
     1. Po přidání úložišť a oprávnění vyberte **Přidat** a přidejte mapu oboru.
 1. Přijměte výchozí **stav** tokenu **Enabled** a pak vyberte **vytvořit**.
@@ -176,7 +176,7 @@ Pokud chcete použít token vytvořený na portálu, musíte vygenerovat heslo. 
 1. Na obrazovce heslo volitelně nastavte datum vypršení platnosti hesla a vyberte **Generovat**. Doporučuje se nastavit datum vypršení platnosti.
 1. Po vygenerování hesla ho zkopírujte a uložte na bezpečné místo. Po zavření obrazovky nelze načíst vygenerované heslo, ale můžete vygenerovat nové.
 
-    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Vytvořit heslo tokenu na portálu":::
+    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Vytvoření tokenu na portálu":::
 
 ## <a name="authenticate-with-token"></a>Ověřování pomocí tokenu
 
@@ -186,11 +186,11 @@ Metoda ověřování závisí na konfigurované akci nebo akcích přidruženýc
 
 |Akce  |Ověřování  |
   |---------|---------|
-  |`content/delete`    | `az acr repository delete`v Azure CLI<br/><br/>Příklad: `az acr repository delete --name myregistry --repository myrepo --username MyToken --password xxxxxxxxxx`|
-  |`content/read`     |  `docker login`<br/><br/>`az acr login`v Azure CLI<br/><br/>Příklad: `az acr login --name myregistry --username MyToken --password xxxxxxxxxx`  |
-  |`content/write`     |  `docker login`<br/><br/>`az acr login`v Azure CLI     |
-  |`metadata/read`    | `az acr repository show`<br/><br/>`az acr repository show-tags`<br/><br/>`az acr repository show-manifests`v Azure CLI   |
-  |`metadata/write`     |  `az acr repository untag`<br/><br/>`az acr repository update`v Azure CLI |
+  |`content/delete`    | `az acr repository delete` v Azure CLI<br/><br/>Příklad: `az acr repository delete --name myregistry --repository myrepo --username MyToken --password xxxxxxxxxx`|
+  |`content/read`     |  `docker login`<br/><br/>`az acr login` v Azure CLI<br/><br/>Příklad: `az acr login --name myregistry --username MyToken --password xxxxxxxxxx`  |
+  |`content/write`     |  `docker login`<br/><br/>`az acr login` v Azure CLI     |
+  |`metadata/read`    | `az acr repository show`<br/><br/>`az acr repository show-tags`<br/><br/>`az acr repository show-manifests` v Azure CLI   |
+  |`metadata/write`     |  `az acr repository untag`<br/><br/>`az acr repository update` v Azure CLI |
 
 ## <a name="examples-use-token"></a>Příklady: použití tokenu
 
@@ -341,7 +341,7 @@ Ukázkový výstup:
 
 ### <a name="list-scope-maps"></a>Seznam map oboru
 
-K vypsání všech map oboru nakonfigurovaných v registru použijte příkaz [AZ ACR Scope-map list][az-acr-scope-map-list] nebo obrazovku **Scope Maps (Preview)** na portálu. Příklad:
+K vypsání všech map oboru nakonfigurovaných v registru použijte příkaz [AZ ACR Scope-map list][az-acr-scope-map-list] nebo obrazovku **Scope Maps (Preview)** na portálu. Například:
 
 ```azurecli
 az acr scope-map list \
@@ -361,14 +361,14 @@ MyScopeMap           UserDefined    2019-11-15T21:17:34Z  Sample scope map
 
 ### <a name="show-token-details"></a>Zobrazit podrobnosti tokenu
 
-Pokud chcete zobrazit podrobnosti o tokenu, jako je jeho stav a datum vypršení platnosti hesla, spusťte příkaz [AZ ACR token show][az-acr-token-show] nebo vyberte token na obrazovce **tokeny (Preview)** na portálu. Příklad:
+Pokud chcete zobrazit podrobnosti o tokenu, jako je jeho stav a datum vypršení platnosti hesla, spusťte příkaz [AZ ACR token show][az-acr-token-show] nebo vyberte token na obrazovce **tokeny (Preview)** na portálu. Například:
 
 ```azurecli
 az acr scope-map show \
   --name MyScopeMap --registry myregistry
 ```
 
-K vypsání všech tokenů nakonfigurovaných v registru použijte příkaz [AZ ACR token list][az-acr-token-list] nebo obrazovku **tokens (Preview)** na portálu. Příklad:
+K vypsání všech tokenů nakonfigurovaných v registru použijte příkaz [AZ ACR token list][az-acr-token-list] nebo obrazovku **tokens (Preview)** na portálu. Například:
 
 ```azurecli
 az acr token list --registry myregistry --output table
@@ -390,7 +390,7 @@ Pokud chcete použít Azure Portal k vygenerování hesla tokenu, přečtěte si
 
 ### <a name="update-token-with-new-scope-map"></a>Aktualizovat token s mapou nového oboru
 
-Pokud chcete aktualizovat token s jinou mapou oboru, spusťte příkaz [AZ ACR token Update][az-acr-token-update] a zadejte novou mapu oboru. Příklad:
+Pokud chcete aktualizovat token s jinou mapou oboru, spusťte příkaz [AZ ACR token Update][az-acr-token-update] a zadejte novou mapu oboru. Například:
 
 ```azurecli
 az acr token update --name MyToken --registry myregistry \

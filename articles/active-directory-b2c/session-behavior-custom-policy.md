@@ -11,10 +11,10 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a2f20a4521efe2806c4bc66e4612b99caf84382a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385259"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurace chování relace pomocí vlastních zásad v Azure Active Directory B2C
@@ -59,7 +59,7 @@ Když uživatele přesměrujete na koncový bod Azure AD B2Cho odhlašování (p
 
 Aby bylo možné podporovat jednotné přihlašování, musí technické profily vystavitele tokenů pro tokeny JWT i SAML určovat:
 
-- Název protokolu, například`<Protocol Name="OpenIdConnect" />`
+- Název protokolu, například `<Protocol Name="OpenIdConnect" />`
 - Odkaz na technický profil relace, například `UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />` .
 
 Následující příklad znázorňuje vystavitele tokenů JWT a SAML s jednotným odhlášením:

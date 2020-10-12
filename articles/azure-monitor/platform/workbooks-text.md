@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81687326"
 ---
 # <a name="workbook-text-parameters"></a>Textové parametry sešitu
@@ -27,10 +27,10 @@ Běžné použití textových polí je jako vnitřní proměnné používané ji
 2. Vyberte možnost _přidat parametry_ z odkazů v rámci sešitu.
 3. Klikněte na modré tlačítko _Přidat parametr_ .
 4. V podokně nového parametru, které se objeví, zadejte:
-    1. Název parametru:`SlowRequestThreshold`
-    2. Typ parametru:`Text`
-    3. Požadovanou`checked`
-    4. Získat výchozí hodnotu z dotazu:`unchecked`
+    1. Název parametru: `SlowRequestThreshold`
+    2. Typ parametru: `Text`
+    3. Požadovanou `checked`
+    4. Získat výchozí hodnotu z dotazu: `unchecked`
 5. Pokud chcete vytvořit parametr, klikněte na tlačítko Uložit na panelu nástrojů.
 
     ![Obrázek znázorňující vytvoření textového parametru](./media/workbooks-text/text-create.png)
@@ -67,10 +67,10 @@ V takovém případě bude sešit vypadat jako v režimu čtení.
 2. Vyberte možnost _přidat parametry_ z odkazů v rámci sešitu.
 3. Klikněte na modré tlačítko _Přidat parametr_ .
 4. V podokně nového parametru, které se objeví, zadejte:
-    1. Název parametru:`SlowRequestThreshold`
-    2. Typ parametru:`Text`
-    3. Požadovanou`checked`
-    4. Získat výchozí hodnotu z dotazu:`checked`
+    1. Název parametru: `SlowRequestThreshold`
+    2. Typ parametru: `Text`
+    3. Požadovanou `checked`
+    4. Získat výchozí hodnotu z dotazu: `checked`
 5. Do pole KQL přidejte tento fragment kódu:
     ```kusto
     requests

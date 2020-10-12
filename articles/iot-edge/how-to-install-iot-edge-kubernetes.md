@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 4b2068c3944f9e7616b0666c7bafcafc68ee0cd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79471281"
 ---
 # <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Postup instalace IoT Edge v Kubernetes (Preview)
@@ -25,7 +25,7 @@ IoT Edge můžete integrovat s Kubernetes a používat ji jako odolnou, vysoce d
 >Dobrým duševním modelem této integrace je představit Kubernetes jako jiné operační prostředí, IoT Edge Aplikace můžou běžet kromě systémů Linux a Windows.
 
 ## <a name="architecture"></a>Architektura 
-V Kubernetes IoT Edge poskytuje pro nasazení hraničních úloh *vlastní definici prostředků* (CRD). Agent IoT Edge předpokládá, že role *řadiče CRD* sjednotí požadovaný stav cloudu spravovaného cloudu s místním stavem clusteru.
+V Kubernetes IoT Edge poskytuje pro nasazení hraničních úloh *vlastní definici prostředků* (CRD). Agent IoT Edge předpokládá, že role  *řadiče CRD* sjednotí požadovaný stav cloudu spravovaného cloudu s místním stavem clusteru.
 
 Doba života modulu je spravovaná plánovačem Kubernetes, který udržuje dostupnost modulu a volí jejich umístění. IoT Edge spravuje platformu hraniční aplikace spuštěnou nahoře a nepřetržitě slučuje požadovaný stav zadaný v IoT Hub se stavem na hraničním clusteru. Model aplikace je stále známý model založený na IoT Edgech modulech a trasách. Řadič IoT Edge agenta provádí model aplikace *automatických* IoT Edge překladu do nativních konstrukcí Kubernetes, jako jsou lusky, nasazení, služby atd.
 

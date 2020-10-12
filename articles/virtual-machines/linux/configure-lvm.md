@@ -8,10 +8,10 @@ ms.date: 09/27/2018
 ms.author: guybo
 ms.subservice: disks
 ms.openlocfilehash: 9a3498939ddf57e2520a140ff693a30de913fae0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84658295"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Konfigurace LVM na virtuálním počítači se systémem Linux v Azure
@@ -134,7 +134,7 @@ V tomto průvodci předpokládáme, že máte připojené tři datové disky, kt
     /dev/mapper/data--vg01-data--lv01 on /data type ext4 (rw)
     ```
 
-5. Volitelné Failsafe parametry spuštění v`/etc/fstab`
+5. Volitelné Failsafe parametry spuštění v `/etc/fstab`
    
     Mnoho distribucí zahrnuje buď `nobootwait` `nofail` parametry připojení nebo parametry, které mohou být přidány do `/etc/fstab` souboru. Tyto parametry umožňují selhání při připojování konkrétního systému souborů a umožňuje, aby se systém Linux spouštěl i v případě, že není schopen správně připojit systém souborů RAID. Další informace o těchto parametrech najdete v dokumentaci k distribuci.
    

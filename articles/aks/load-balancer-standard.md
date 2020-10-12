@@ -8,10 +8,10 @@ ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182118"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Použití veřejné Standard Load Balancer ve službě Azure Kubernetes (AKS)
@@ -229,7 +229,7 @@ Aby bylo možné bezpečně přejít nad 100 uzlů, je nutné přidat další IP
 > [!IMPORTANT]
 > *Abyste se* vyhnuli problémům s připojením nebo škálováním, musíte nejprve [Vypočítat požadovanou kvótu a ověřit požadavky][requirements] .
 
-Parametry můžete použít také **`load-balancer-outbound-ports`** při vytváření clusteru, ale musíte také zadat buď **`load-balancer-managed-outbound-ip-count`** , **`load-balancer-outbound-ips`** nebo **`load-balancer-outbound-ip-prefixes`** i.  Příklad:
+Parametry můžete použít také **`load-balancer-outbound-ports`** při vytváření clusteru, ale musíte také zadat buď **`load-balancer-managed-outbound-ip-count`** , **`load-balancer-outbound-ips`** nebo **`load-balancer-outbound-ip-prefixes`** i.  Například:
 
 ```azurecli-interactive
 az aks create \

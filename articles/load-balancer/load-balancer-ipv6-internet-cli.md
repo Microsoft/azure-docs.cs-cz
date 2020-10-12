@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
 ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001569"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Vytvoření veřejného nástroje pro vyrovnávání zatížení s protokolem IPv6 pomocí Azure CLI
@@ -157,7 +157,7 @@ Tento příklad vytvoří následující položky:
 * Pravidlo překladu adres (NAT) pro překlad veškerého příchozího provozu na portu 3391 na port 3389 pro protokol RDP (Remote Desktop Protocol).\*
 * Pravidlo nástroje pro vyrovnávání zatížení, které vyrovnává veškerý příchozí provoz na portu 80 na port 80 u adres ve fondu back-end.
 
-\*Pravidla překladu adres (NAT) jsou přidružená ke konkrétní instanci virtuálního počítače za nástrojem pro vyrovnávání zatížení. Síťový provoz, který se dorazí na port 3389, se pošle na konkrétní virtuální počítač a port, který je přidružený k pravidlu NAT. Pro pravidlo překladu adres (NAT) je nutné zadat protokol (UDP nebo TCP). Ke stejnému portu nemůžete přiřadit oba protokoly.
+\* Pravidla překladu adres (NAT) jsou přidružená ke konkrétní instanci virtuálního počítače za nástrojem pro vyrovnávání zatížení. Síťový provoz, který se dorazí na port 3389, se pošle na konkrétní virtuální počítač a port, který je přidružený k pravidlu NAT. Pro pravidlo překladu adres (NAT) je nutné zadat protokol (UDP nebo TCP). Ke stejnému portu nemůžete přiřadit oba protokoly.
 
 1. Nastavte proměnné PowerShellu:
 

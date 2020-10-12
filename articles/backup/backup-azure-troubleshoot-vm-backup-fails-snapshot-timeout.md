@@ -5,10 +5,10 @@ ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
 ms.openlocfilehash: e5fc26231cc5d3ad412371c2f8c187b2d0033ee4
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182033"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
@@ -57,7 +57,7 @@ Azure Backup používá rozšíření snímku virtuálního počítače k poří
   - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
-- **Zjistit, jestli je vyžadován síťový přístup**: balíčky rozšíření se stáhnou z úložiště rozšíření Azure Storage a nahrávání stavu rozšíření se publikují do Azure Storage. [Přečtěte si další informace](../virtual-machines/extensions/features-windows.md#network-access).
+- **Zjistit, jestli je vyžadován síťový přístup**: balíčky rozšíření se stáhnou z úložiště rozšíření Azure Storage a nahrávání stavu rozšíření se publikují do Azure Storage. [Další informace](../virtual-machines/extensions/features-windows.md#network-access).
   - Pokud jste v nepodporované verzi agenta, musíte z virtuálního počítače v této oblasti povolený odchozí přístup ke službě Azure Storage.
   - Pokud jste zablokovali přístup k `168.63.129.16` použití brány firewall hosta nebo proxy serveru, rozšíření selžou bez ohledu na výše uvedené. Vyžadují se porty 80, 443 a 32526. [Další informace najdete tady](../virtual-machines/extensions/features-windows.md#network-access).
 
@@ -249,10 +249,10 @@ Pokud požadujete podrobné protokolování pro waagent, postupujte takto:
 2. Změňte **log. verbose** hodnota z *n* na *y*.
 3. Uložte změnu a pak restartujte waagent, a to provedením kroků popsaných výše v této části.
 
-### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM – možnosti konfigurace agenta nejsou nastavené (pro virtuální počítače se systémem Linux)
+### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>Možnosti konfigurace VM-Agent nejsou nastavené (pro virtuální počítače se systémem Linux).
 
 Konfigurační soubor (/etc/waagent.conf) řídí akce waagent. Rozšíření možností konfiguračního souboru **. možnost Enable** by měla být nastavena na **y** a **zřizování. Agent** by měl být nastaven na hodnotu **automaticky** , aby mohla zálohování fungovat.
-Úplný seznam možností konfiguračního souboru agenta virtuálního počítače najdete v tématu. <https://github.com/Azure/WALinuxAgent#configuration-file-options>
+Úplný seznam možností konfiguračního souboru VM-Agent najdete v tématu. <https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Řešení řízení aplikací blokuje IaaSBcdrExtension.exe
 
@@ -277,7 +277,7 @@ Následující podmínky mohou způsobit selhání úlohy snímku:
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Odebrat zámek ze skupiny prostředků bodu obnovení
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Přejděte na **možnost všechny prostředky**, vyberte skupinu prostředků kolekce bodů obnovení v následujícím formátu AzureBackupRG_ `<Geo>` _ `<number>` .
 3. V části **Nastavení** vyberte **zámky** a zobrazte zámky.
 4. Pokud chcete zámek odebrat, vyberte tři tečky a vyberte **Odstranit**.
@@ -306,7 +306,7 @@ Po odebrání zámku aktivujte zálohování na vyžádání. Tato akce zajistí
 
 Chcete-li ručně vymazat kolekci bodů obnovení, která není smazána z důvodu zámku skupiny prostředků, zkuste provést následující kroky:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. V nabídce **centra** vyberte **všechny prostředky**, vyberte skupinu prostředků s následujícím formátem AzureBackupRG_ `<Geo>` _ `<number>` , kde se nachází váš virtuální počítač.
 
     ![Vyberte skupinu prostředků.](./media/backup-azure-arm-vms-prepare/resource-group.png)

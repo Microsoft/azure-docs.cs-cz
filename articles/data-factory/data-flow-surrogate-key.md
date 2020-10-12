@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
 ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81606299"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Transformace náhradního klíče v toku mapování dat 
@@ -41,7 +41,7 @@ K osazení hodnoty klíče pomocí předchozího maxima jsou k dispozici dvě me
 
 #### <a name="database-sources"></a>Zdroje databáze
 
-Pomocí možnosti dotazu SQL vyberte MAX () ze zdroje. Například`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
+Pomocí možnosti dotazu SQL vyberte MAX () ze zdroje. Například `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
 
 ![Dotaz na náhradní klíč](media/data-flow/sk002.png "Dotaz na transformaci náhradního klíče")
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: eba63ff500aad4538f5b30f11bac168cf14816c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84558165"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopírování dat z MongoDB pomocí Azure Data Factory
@@ -48,7 +48,7 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ |Vlastnost Type musí být nastavená na: **MongoDbV2** . |Yes |
 | připojovací řetězec |Zadejte připojovací řetězec MongoDB, např. `mongodb://[username:password@]host[:port][/[database][?options]]` . Další podrobnosti najdete [v MongoDB manuálně na připojovacím řetězci](https://docs.mongodb.com/manual/reference/connection-string/) . <br/><br /> Můžete také vložit heslo do Azure Key Vault a získat  `password`   konfiguraci z připojovacího řetězce. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) . |Yes |
@@ -78,7 +78,7 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, najdete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). Pro datovou sadu MongoDB jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **MongoDbV2Collection** . | Yes |
 | collectionName |Název kolekce v databázi MongoDB |Yes |
@@ -110,10 +110,10 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
 V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MongoDbV2Source** . | Yes |
-| filtrování | Určuje filtr výběru pomocí operátorů dotazu. Chcete-li vrátit všechny dokumenty v kolekci, vynechejte tento parametr nebo předejte prázdný dokument ( {} ). | No |
+| filter | Určuje filtr výběru pomocí operátorů dotazu. Chcete-li vrátit všechny dokumenty v kolekci, vynechejte tento parametr nebo předejte prázdný dokument ( {} ). | No |
 | cursorMethods. Project | Určuje pole, která se mají vrátit v dokumentech pro projekci. Chcete-li vrátit všechna pole v porovnání dokumentů, vynechejte tento parametr. | No |
 | cursorMethods. Sort | Určuje pořadí, ve kterém dotaz vrátí vyhovující dokumenty. Podívejte se na [kurzor. Sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | No |
 | cursorMethods. limit | Určuje maximální počet dokumentů vrácených serverem. Viz [Cursor. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | No |

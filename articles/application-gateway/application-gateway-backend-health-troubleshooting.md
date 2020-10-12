@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
 ms.openlocfilehash: 531a7fd8547130b4897f3dad0900e1c27fb7fe9a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132037"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Řešení potíží se stavem back-endu v Application Gateway
@@ -131,7 +131,7 @@ Také ověřte, zda jakákoli NSG/UDR/firewall blokuje přístup k IP adrese a p
 
 **Řešení:** Pokud se zobrazí tato chyba, postupujte následovně:
 
-1.  Ověřte, jestli se můžete připojit k back-end serveru na portu uvedeném v nastavení HTTP pomocí prohlížeče nebo PowerShellu. Například spusťte následující příkaz:`Test-NetConnection -ComputerName
+1.  Ověřte, jestli se můžete připojit k back-end serveru na portu uvedeném v nastavení HTTP pomocí prohlížeče nebo PowerShellu. Například spusťte následující příkaz: `Test-NetConnection -ComputerName
     www.bing.com -Port 443`
 
 1.  Pokud uvedený port není požadovaným portem, zadejte správné číslo portu pro Application Gateway připojení k back-endu serveru.
@@ -157,7 +157,7 @@ Také ověřte, zda jakákoli NSG/UDR/firewall blokuje přístup k IP adrese a p
 
     a.  Otevřete příkazový řádek (Win + R- \> cmd), zadejte `netstat` a vyberte Enter.
 
-    b.  Ověřte, zda server naslouchá na portu, který je nakonfigurován. Příklad:
+    b.  Ověřte, zda server naslouchá na portu, který je nakonfigurován. Například:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -257,7 +257,7 @@ Další informace o extrakci a nahrání důvěryhodných kořenových certifik�
 > [!NOTE]
 > K této chybě může dojít také v případě, že back-end Server nemění úplný řetěz certifikátu, včetně kořenového > zprostředkujícího (Pokud je k dispozici) > list během metody handshake TLS. K ověření můžete použít příkazy OpenSSL z libovolného klienta a připojit se k back-end serveru pomocí nakonfigurovaných nastavení v Application Gateway PROBE.
 
-Příklad:
+Například:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```

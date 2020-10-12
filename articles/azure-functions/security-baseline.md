@@ -8,10 +8,10 @@ ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89394087"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Základní hodnoty zabezpečení Azure pro Azure Functions
@@ -1031,7 +1031,7 @@ Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje 
 
 **Pokyny**: k naplánování pravidelného zálohování aplikace použijte funkci zálohování a obnovení. Aplikace Function App běžící v plánu Premium mají stejné možnosti hostování jako webové aplikace v Azure App Service, což zahrnuje funkci zálohování a obnovení.
 
-Pomocí řešení správy zdrojového kódu, jako je Azure Repos a Azure DevOps, můžete bezpečně ukládat a spravovat váš kód. Azure DevOps Services využívá mnoho funkcí úložiště Azure k zajištění dostupnosti dat v případě selhání hardwaru, přerušení služby nebo havárie v oblasti. Kromě toho tým Azure DevOps sleduje postupy, které chrání data před náhodným nebo škodlivým odstraněním.
+Pomocí řešení správy zdrojového kódu, jako je Azure Repos a Azure DevOps, můžete bezpečně ukládat a spravovat váš kód. Sada Azure DevOps Services využívá řadu funkcí úložiště Azure k zajištění dostupnosti dat v případě selhání hardwaru, přerušení služeb nebo havárie v oblasti. Tým Azure DevOps nadto dodržuje postupy, které chrání data před náhodným nebo nepřátelským odstraněním.
 
 - [Zálohování aplikace v Azure](../app-service/manage-backup.md)
 
@@ -1049,7 +1049,7 @@ Pomocí řešení správy zdrojového kódu, jako je Azure Repos a Azure DevOps,
 
 **Pokyny**: k naplánování pravidelného zálohování aplikace použijte funkci zálohování a obnovení. Aplikace Function App běžící v plánu Premium mají stejné možnosti hostování jako webové aplikace v Azure App Service, což zahrnuje funkci zálohování a obnovení. Zálohujte spravované klíče zákazníka v rámci Azure Key Vault.
 
-Pomocí řešení správy zdrojového kódu, jako je Azure Repos a Azure DevOps, můžete bezpečně ukládat a spravovat váš kód. Azure DevOps Services využívá mnoho funkcí úložiště Azure k zajištění dostupnosti dat v případě selhání hardwaru, přerušení služby nebo havárie v oblasti. Kromě toho tým Azure DevOps sleduje postupy, které chrání data před náhodným nebo škodlivým odstraněním.
+Pomocí řešení správy zdrojového kódu, jako je Azure Repos a Azure DevOps, můžete bezpečně ukládat a spravovat váš kód. Sada Azure DevOps Services využívá řadu funkcí úložiště Azure k zajištění dostupnosti dat v případě selhání hardwaru, přerušení služeb nebo havárie v oblasti. Tým Azure DevOps nadto dodržuje postupy, které chrání data před náhodným nebo nepřátelským odstraněním.
 
 - [Zálohování aplikace v Azure](../app-service/manage-backup.md)
 
@@ -1083,11 +1083,11 @@ Pomocí řešení správy zdrojového kódu, jako je Azure Repos a Azure DevOps,
 
 **Pokyny**: zálohy z funkce zálohování a obnovení používají účet Azure Storage v předplatném. Azure Storage šifruje všechna data v účtu úložiště v klidovém umístění. Ve výchozím nastavení se data šifrují pomocí klíčů spravovaných Microsoftem. Pro další kontrolu nad šifrovacími klíči můžete poskytovat klíče spravované zákazníkem pro šifrování dat úložiště.
 
-Pokud používáte spravované klíče zákazníka, zajistěte, aby se obnovitelné odstranění v Key Vault povolilo ochraně klíčů proti náhodnému nebo škodlivému odstranění.
+Pokud používáte spravované klíče zákazníka, ujistěte se, že Soft-Delete v Key Vault povolí ochranu klíčů proti náhodnému nebo škodlivému odstranění.
 
 - [Šifrování neaktivních uložených dat ve službě Azure Storage](../storage/common/storage-service-encryption.md)
 
-- [Jak povolit obnovitelné odstranění v Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [Postup povolení Soft-Delete v Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: Ano
 

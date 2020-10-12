@@ -7,15 +7,15 @@ ms.service: media-services
 ms.topic: error-reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 13d804ec39c3d7753d4ee04962a88d4451fb04d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81727252"
 ---
 # <a name="error-codes"></a>Kódy chyb #
 
-Když přehrávání nepůjde spustit nebo se zastavilo, aktivuje se událost chyby a `error()` funkce vrátí kód a volitelnou zprávu, aby vývojář aplikace mohl získat další podrobnosti. `error().message`není zobrazena zpráva uživateli.  Zpráva zobrazená uživateli je založena na `error().code` službě bits 27-20, viz tabulka níže.
+Když přehrávání nepůjde spustit nebo se zastavilo, aktivuje se událost chyby a `error()` funkce vrátí kód a volitelnou zprávu, aby vývojář aplikace mohl získat další podrobnosti. `error().message` není zobrazena zpráva uživateli.  Zpráva zobrazená uživateli je založena na `error().code` službě bits 27-20, viz tabulka níže.
 
 ```javascript
 

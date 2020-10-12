@@ -8,10 +8,10 @@ ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: f067d4c777bb9a49ac2cc50595046249479a8f7a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89393832"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Základní hodnoty zabezpečení Azure pro Azure Database for MariaDB
@@ -28,7 +28,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Chraňte prostředky pomocí skupin zabezpečení sítě nebo Azure Firewall v Virtual Network
 
-**Pokyny**: konfigurace privátního odkazu pro Azure Database for MariaDB se soukromými koncovými body. Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure prostřednictvím privátního koncového bodu. Privátní propojení Azure v podstatě přináší služby Azure do privátního Virtual Network (VNet). Přenosy mezi vaší virtuální sítí a instancí MariaDB cestují páteřní síť Microsoftu.
+**Pokyny**: konfigurace privátního odkazu pro Azure Database for MariaDB se soukromými koncovými body. Private Link umožňuje připojení k různým službám PaaS v Azure přes privátní koncový bod. Azure Private Link v podstatě přináší služby Azure do vaší privátní virtuální sítě. Přenosy mezi vaší virtuální sítí a instancí MariaDB cestují páteřní síť Microsoftu.
 
 Alternativně můžete použít koncové body služby Virtual Network k ochraně a omezení síťového přístupu k vašim Azure Database for MariaDB implementaci. Pravidla virtuální sítě jsou jednou funkcí zabezpečení brány firewall, která určuje, jestli Azure Database for MariaDB přijímá komunikaci, která se odesílají z konkrétních podsítí ve virtuálních sítích.
 
@@ -956,7 +956,7 @@ Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje 
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
-**Doprovodné**materiály: Azure Database for MariaDB přebírá úplné a rozdílové zálohy a zálohování protokolů transakcí.  Azure Database for MariaDB automaticky vytvoří zálohy serveru a uloží je v uživatelsky nakonfigurovaném místně redundantním nebo geograficky redundantním úložišti. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou důležitou součástí jakékoli strategie pro provozní kontinuitu, protože chrání vaše data před náhodným poškozením nebo odstraněním.  Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
+**Doprovodné**materiály: Azure Database for MariaDB přebírá úplné a rozdílové zálohy a zálohování protokolů transakcí.  Azure Database for MariaDB automaticky vytvoří zálohy serveru a uloží je v uživatelsky nakonfigurovaném místně redundantním nebo geograficky redundantním úložišti. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou důležitou součástí jakékoli strategie pro provozní kontinuitu, protože chrání vaše data před náhodným poškozením nebo odstraněním.  Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují s využitím 256bitového šifrování AES.
 
 Principy zálohování pro MariaDB:  https://docs.microsoft.com/azure/mariadb/concepts-backup
 
@@ -998,7 +998,7 @@ Principy zálohování a obnovení v Azure Database for MariaDB:  https://docs.m
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a spravovaných klíčů zákazníků.
 
-**Doprovodné**materiály: Azure Database for MariaDB přebírá úplné a rozdílové zálohy a zálohování protokolů transakcí. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují pomocí šifrování AES 256-bit.
+**Doprovodné**materiály: Azure Database for MariaDB přebírá úplné a rozdílové zálohy a zálohování protokolů transakcí. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují s využitím 256bitového šifrování AES.
 
 Principy zálohování a obnovení v Azure Database for MariaDB:  https://docs.microsoft.com/azure/mariadb/concepts-backup
 

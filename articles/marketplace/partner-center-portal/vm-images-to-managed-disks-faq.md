@@ -8,10 +8,10 @@ ms.date: 11/22/2019
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.openlocfilehash: 814a4012ace95e84e75bcb4071c549822b2b0633
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182424"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Přesouváme image virtuálních počítačů v Azure Marketplace do úložiště spravovaného disku.
@@ -38,11 +38,11 @@ Dokončení migrace může trvat až 24 hodin.
 
 ### <a name="do-i-need-to-take-any-action"></a>Potřebuji nějakou akci?
 
-No. Vydavatelé nebo spotřebitelé nemusí provádět žádné akce.
+Ne. Vydavatelé nebo spotřebitelé nemusí provádět žádné akce.
 
 ### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>Musím po přesunu do spravovaného diskového úložiště aktualizovat systém rozhraní API cloudového portálu jiným způsobem.
 
-No. Vaše stávající volání rozhraní API budou fungovat i nadále.
+Ne. Vaše stávající volání rozhraní API budou fungovat i nadále.
 
 ### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>Budou všechny image virtuálních počítačů přesunuty do spravovaného disku ve stejnou dobu?
 

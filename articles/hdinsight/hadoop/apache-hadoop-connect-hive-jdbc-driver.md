@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 183bc416dde941f11bd94cfcff3bf738b35f876f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207376"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotazování Apache Hivu prostřednictvím ovladače JDBC v HDInsightu
@@ -51,7 +51,7 @@ Název hostitele CLUSTERNAME.azurehdinsight.net v připojovacím řetězci je st
 
 **Port 443** můžete použít jenom pro připojení ke clusteru z některých míst mimo virtuální síť Azure. HDInsight je spravovaná služba, která znamená, že všechna připojení ke clusteru se spravují přes zabezpečenou bránu. K HiveServer 2 se nemůžete připojit přímo na portech 10001 nebo 10000. Tyto porty nejsou vystavené vně.
 
-## <a name="authentication"></a>Ověřování uživatelů
+## <a name="authentication"></a>Authentication
 
 Při navazování připojení použijte k ověření název správce clusteru HDInsight a heslo. Z JDBC klientů, jako je SQuirreL SQL, zadejte do nastavení klienta jméno správce a heslo.
 

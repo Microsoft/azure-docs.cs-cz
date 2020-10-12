@@ -4,10 +4,10 @@ description: Popisuje, jak definovat výstupní hodnoty v šabloně Azure Resour
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79460020"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Výstupy v šabloně Azure Resource Manager
@@ -110,7 +110,7 @@ az deployment group show \
 
 Následující příklady ukazují scénáře použití výstupů.
 
-|Šablona  |Description  |
+|Šablona  |Popis  |
 |---------|---------|
 |[Kopírovat proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Vytvoří komplexní proměnné a vypíše tyto hodnoty. Neimplementuje žádné prostředky. |
 |[Veřejná IP adresa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Vytvoří veřejnou IP adresu a vypíše ID prostředku. |

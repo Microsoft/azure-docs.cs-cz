@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 259b27528779c9934da6d69ca46f2794e2257d24
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723023"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: připojení virtuálního počítače s Windows serverem k spravované doméně Azure Active Directory Domain Services
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující zdroje:
 
@@ -68,7 +68,7 @@ Pokud už máte virtuální počítač, ke kterému se chcete připojit k domén
     |----------------------|-------------------|
     | Skupina prostředků       | Vyberte nebo vytvořte skupinu prostředků, například *myResourceGroup* . |
     | Název virtuálního počítače | Zadejte název virtuálního počítače, třeba *myVM* . |
-    | Region               | Vyberte oblast, ve které se má virtuální počítač vytvořit, například *východní USA* |
+    | Oblast               | Vyberte oblast, ve které se má virtuální počítač vytvořit, například *východní USA* |
     | Uživatelské jméno             | Zadejte uživatelské jméno pro účet místního správce, který se má vytvořit na virtuálním počítači, například *azureuser* . |
     | Heslo             | Zadejte a potvrďte zabezpečené heslo pro místního správce, které se má na virtuálním počítači vytvořit. Nezadávejte přihlašovací údaje účtu uživatele domény. |
 

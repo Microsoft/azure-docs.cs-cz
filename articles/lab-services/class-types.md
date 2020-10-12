@@ -4,10 +4,10 @@ description: Poskytuje některé typy tříd, pro které můžete nastavit Labs 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 21159aacfcd87bb929eaeaf9884b0275c7005e1a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001619"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Přehled typů tříd – Azure Lab Services
@@ -46,7 +46,7 @@ Můžete nastavit počítač šablony v Azure Lab Services s nástroji potřebn�
 
 Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [Nastavení testovacího prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter](class-type-jupyter-notebook.md).
 
-## <a name="big-data-analytics"></a>Analýzy velkého objemu dat
+## <a name="big-data-analytics"></a>Analýzy velkých objemů dat
 Můžete nastavit testovací prostředí GPU pro výuku třídy analýzy velkých objemů dat. U tohoto typu třídy studenti zjistí, jak zpracovávat velké objemy dat, a použít algoritmy strojového a statistického učení k odvození přehledů dat. Klíčový cíl pro studenty je Naučte se používat nástroje pro analýzu dat, jako je open source softwarový balíček Apache Hadoop, který poskytuje nástroje pro ukládání, správu a zpracování velkých objemů dat. 
 
 Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [Nastavení testovacího prostředí pro analýzu velkých objemů dat pomocí nasazení Docker pro datovou platformu Hortonworks](class-type-big-data-analytics.md).
