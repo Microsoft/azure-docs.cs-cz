@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: 26df3c49e44dd79d87a1e0a982ceb8133f425447
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423316"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Vytváření oddílů v Azure Cosmos DB rozhraní API Cassandra
@@ -58,7 +58,7 @@ V tomto návrhu jsme definovali `id` pole jako primární klíč. Primární kl�
 
 ## <a name="compound-primary-key"></a>Složený primární klíč
 
-Apache Cassandra má také koncept `compound keys` . Složený objekt `primary key` se skládá z více než jednoho sloupce. první sloupec je `partition key` a všechny další sloupce jsou `clustering keys` . Syntaxe pro `compound primary key` je zobrazena níže:
+Apache Cassandra má také koncept  `compound keys` . Složený objekt `primary key` se skládá z více než jednoho sloupce. první sloupec je `partition key` a všechny další sloupce jsou `clustering keys` . Syntaxe pro `compound primary key` je zobrazena níže:
 
 ```shell
 PRIMARY KEY (partition_key_column_name, clustering_column_name [, ...])

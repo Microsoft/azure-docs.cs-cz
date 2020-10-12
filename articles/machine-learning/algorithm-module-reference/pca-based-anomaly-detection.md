@@ -1,7 +1,7 @@
 ---
-title: 'Detekce anomálií založená na DPS: odkaz na modul'
+title: 'PCA-Based detekce anomálií: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul detekce anomálií založený na DPS k vytvoření modelu detekce anomálií založeného na analýze základní součásti (DPS).
+description: Naučte se používat PCA-Based modul pro detekci anomálií k vytvoření modelu detekce anomálií založeného na analýze základní součásti (DPS).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: fa90fcb9ebc17be9a658b08873234eada98b0fba
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898458"
 ---
-# <a name="pca-based-anomaly-detection-module"></a>Modul detekce anomálií založený na DPS
+# <a name="pca-based-anomaly-detection-module"></a>Modul detekce anomálií PCA-Based
 
-Tento článek popisuje, jak použít modul pro detekci anomálií založený na DPS v Návrháři Azure Machine Learning k vytvoření modelu detekce anomálií založeného na analýze základní součásti (DPS).
+Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul pro detekci anomálií PCA-Based, který umožňuje vytvořit model detekce anomálií založený na analýze základní součásti (DPS).
 
 Tento modul vám pomůže sestavit model ve scénářích, kde je snadné získat školicí data z jedné třídy, jako jsou například platné transakce, ale obtížné získat dostatečné vzorky cílových anomálií. 
 
-Například pro detekci podvodných transakcí často nemusíte mít k dispozici dostatek příkladů podvodů ke školení. Je ale možné, že máte spoustu příkladů dobrých transakcí. Modul pro detekci anomálií založený na přístupnosti vyřeší problém tak, že analyzuje dostupné funkce a určí, co představuje "normální" třídu. Modul pak použije metriky vzdálenosti k identifikaci případů, které reprezentují anomálie. Tento přístup umožňuje vytvořit model pomocí stávajících nevyvážených dat.
+Například pro detekci podvodných transakcí často nemusíte mít k dispozici dostatek příkladů podvodů ke školení. Je ale možné, že máte spoustu příkladů dobrých transakcí. Modul pro detekci anomálií PCA-Based vyřeší problém analýzou dostupných funkcí a určí, co představuje "normální" třídu. Modul pak použije metriky vzdálenosti k identifikaci případů, které reprezentují anomálie. Tento přístup umožňuje vytvořit model pomocí stávajících nevyvážených dat.
 
 ## <a name="more-about-principal-component-analysis"></a>Další informace o analýze základních komponent
 
@@ -38,7 +38,7 @@ Další informace o tom, jak funguje DPS a o implementaci pro detekci anomálií
 
 - [Hledání struktury s náhodností: pravděpodobnostní algoritmy pro vytváření přibližných dekompozicí matice](http://users.cms.caltech.edu/~jtropp/papers/HMT11-Finding-Structure-SIREV.pdf) (stažení PDF), podle Halko, Martinsson a Tropp
 
-## <a name="how-to-configure-pca-based-anomaly-detection"></a>Jak nakonfigurovat detekci anomálií na základě DPS
+## <a name="how-to-configure-pca-based-anomaly-detection"></a>Jak nakonfigurovat PCA-Based detekci anomálií
 
 1. Přidejte modul pro **detekci anomálií založený na DPS** do kanálu v návrháři. Tento modul můžete najít v kategorii **detekce anomálií** .
 

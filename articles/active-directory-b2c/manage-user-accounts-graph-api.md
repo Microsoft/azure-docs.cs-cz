@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8132eb72b3e448d7ae830b29ccb7dc51528c1250
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87921397"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph
@@ -60,11 +60,11 @@ Uživatel s účtem zákazníka se může přihlásit s více identitami. Např�
 
 V rozhraní Microsoft Graph API jsou místní i federované identity uloženy v `identities` atributu uživatele, který je typu [objectIdentity][graph-objectIdentity]. `identities`Kolekce představuje sadu identit, které se používají pro přihlášení k uživatelskému účtu. Tato kolekce umožňuje uživateli přihlásit se k uživatelskému účtu pomocí kterékoli z jeho přidružených identit.
 
-| Vlastnost   | Typ |Popis|
+| Vlastnost   | Typ |Description|
 |:---------------|:--------|:----------|
-|signInType|řetězec| Určuje typy přihlašování uživatelů v adresáři. Pro místní účet: `emailAddress` , `emailAddress1` , `emailAddress2` , `emailAddress3` , `userName` nebo jakýkoli jiný typ, který chcete. Účet sociálních sítí musí být nastavený na `federated` .|
-|issuer|řetězec|Určuje vystavitele identity. U místních účtů (kde **signInType** není `federated` ) Tato vlastnost je výchozí název domény místního B2C tenanta, například `contoso.onmicrosoft.com` . Pro sociální identity (kde **signInType** je `federated` ) hodnota je název vystavitele, například`facebook.com`|
-|issuerAssignedId|řetězec|Určuje jedinečný identifikátor přiřazený uživateli vystavitelem. Kombinace **vystavitele** a **issuerAssignedId** musí být ve vašem tenantovi jedinečná. Pro místní účet, pokud je **signInType** nastaveno na `emailAddress` nebo `userName` , představuje přihlašovací jméno uživatele.<br>Když je **signInType** nastaveno na: <ul><li>`emailAddress`(nebo začíná `emailAddress` jako `emailAddress1` ) **issuerAssignedId** musí být platná e-mailová adresa.</li><li>`userName`(nebo jakákoli jiná hodnota) musí být **issuerAssignedId** platná [místní část e-mailové adresy](https://tools.ietf.org/html/rfc3696#section-3) .</li><li>`federated`, **issuerAssignedId** představuje jedinečný identifikátor federovaného účtu.</li></ul>|
+|signInType|řetězec| Určuje typy přihlašování uživatelů v adresáři. Pro místní účet:  `emailAddress` , `emailAddress1` , `emailAddress2` , `emailAddress3` ,  `userName` nebo jakýkoli jiný typ, který chcete. Účet sociálních sítí musí být nastavený na  `federated` .|
+|issuer|řetězec|Určuje vystavitele identity. U místních účtů (kde **signInType** není `federated` ) Tato vlastnost je výchozí název domény místního B2C tenanta, například `contoso.onmicrosoft.com` . Pro sociální identity (kde **signInType** je  `federated` ) hodnota je název vystavitele, například `facebook.com`|
+|issuerAssignedId|řetězec|Určuje jedinečný identifikátor přiřazený uživateli vystavitelem. Kombinace **vystavitele** a **issuerAssignedId** musí být ve vašem tenantovi jedinečná. Pro místní účet, pokud je **signInType** nastaveno na `emailAddress` nebo `userName` , představuje přihlašovací jméno uživatele.<br>Když je **signInType** nastaveno na: <ul><li>`emailAddress` (nebo začíná `emailAddress` jako `emailAddress1` ) **issuerAssignedId** musí být platná e-mailová adresa.</li><li>`userName`(nebo jakákoli jiná hodnota) musí být **issuerAssignedId** platná [místní část e-mailové adresy](https://tools.ietf.org/html/rfc3696#section-3) .</li><li>`federated`, **issuerAssignedId** představuje jedinečný identifikátor federovaného účtu.</li></ul>|
 
 Následující vlastnost **identity** s identitou místního účtu s přihlašovacím jménem, e-mailovou adresou jako přihlašování a sociální identitou. 
 

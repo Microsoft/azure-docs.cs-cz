@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: 66796a819c0ca7e114d82210a988fc7e13003941
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87078200"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Monitorovat stav spuštění, zkontrolovat historii triggerů a nastavit výstrahy pro Azure Logic Apps
@@ -50,7 +50,7 @@ Pokaždé, když se Trigger aktivuje pro položku nebo událost, vytvoří modul
    |--------|-------------|
    | **Stornován** | Pracovní postup byl spuštěn, ale přijal žádost o zrušení. |
    | **Neúspěšný** | Nejméně jedna akce se nezdařila a žádné pozdější akce v pracovním postupu nebyly nastaveny pro zpracování selhání. |
-   | **Spuštěný** | Pracovní postup je aktuálně spuštěný. <p>Tento stav se může zobrazit také pro omezené pracovní postupy nebo z důvodu aktuálního cenového plánu. Další informace najdete v tématu [omezení akcí na stránce s cenami](https://azure.microsoft.com/pricing/details/logic-apps/). Pokud nastavíte [diagnostické protokolování](../logic-apps/monitor-logic-apps.md), můžete získat informace o všech událostech omezení, ke kterým dochází. |
+   | **Spuštěno** | Pracovní postup je aktuálně spuštěný. <p>Tento stav se může zobrazit také pro omezené pracovní postupy nebo z důvodu aktuálního cenového plánu. Další informace najdete v tématu [omezení akcí na stránce s cenami](https://azure.microsoft.com/pricing/details/logic-apps/). Pokud nastavíte [diagnostické protokolování](../logic-apps/monitor-logic-apps.md), můžete získat informace o všech událostech omezení, ke kterým dochází. |
    | **Úspěšný** | Všechny akce byly úspěšné. <p>**Poznámka**: Pokud došlo k nějakým chybám v určité akci, bude tato chyba zpracována později v pracovním postupu. |
    | **Čekající** | Pracovní postup nebyl spuštěn nebo byl pozastaven, například kvůli dřívějšímu pracovnímu postupu, který je stále spuštěn. |
    |||

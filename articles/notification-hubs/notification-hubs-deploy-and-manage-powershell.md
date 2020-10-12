@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: f000251009bda730b15458f3ab4d8b7d6ca1db6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87030296"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Nasazení a Správa centra oznámení pomocí PowerShellu
@@ -36,7 +36,7 @@ Pokud také potřebujete vytvořit nový obor názvů služby Service Bus pro va
 
 Správa Center oznámení není podporovaná přímo rutinami, které jsou součástí Azure PowerShell. Nejlepším přístupem z PowerShellu je odkazování na sestavení Microsoft.Azure.NotificationHubs.dll. Sestavení je distribuováno pomocí [Microsoft Azure Notification Hubs balíčku NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Azure je platforma založená na předplatném. Další informace o získání předplatného najdete v tématu [možnosti nákupu], [nabídky členů]nebo [bezplatné zkušební verze].
 - Počítač se Azure PowerShell. Pokyny najdete v tématu [instalace a konfigurace Azure PowerShell].
@@ -78,7 +78,7 @@ catch [System.Exception]
 
 Chcete-li zřídit Notification Hubs, vytvořte instanci třídy [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager?view=azure-dotnet) ze sady SDK.
 
-Pomocí rutiny [Get-AzureSBAuthorizationRule] , která je součástí nástroje Azure PowerShell, můžete načíst autorizační pravidlo, které slouží k zadání připojovacího řetězce. Odkaz na `NamespaceManager` instanci je uložen v `$NamespaceManager` proměnné. `$NamespaceManager`slouží ke zřízení Centra oznámení.
+Pomocí rutiny [Get-AzureSBAuthorizationRule] , která je součástí nástroje Azure PowerShell, můžete načíst autorizační pravidlo, které slouží k zadání připojovacího řetězce. Odkaz na `NamespaceManager` instanci je uložen v `$NamespaceManager` proměnné. `$NamespaceManager` slouží ke zřízení Centra oznámení.
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace

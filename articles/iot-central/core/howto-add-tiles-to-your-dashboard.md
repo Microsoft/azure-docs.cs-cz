@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: beeb771ea5053dd0ad867a7568aa64bbb2d0b4ed
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985322"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurace řídicího panelu aplikace
@@ -33,7 +33,7 @@ Po výběru **Upravit** nebo **Nový**je řídicí panel v režimu *úprav* . Po
 1. Vyberte jedno nebo více zařízení v rozevíracím seznamu **zařízení** , která chcete zobrazit na dlaždici. Nyní se zobrazí dostupná telemetrie, vlastnosti a příkazy ze zařízení.
 1. V části telemetrie vyberte **teplotu** a pak vyberte **Přidat dlaždici**. Dlaždice se teď zobrazuje na řídicím panelu, kde můžete změnit vizualizaci, změnit velikost dlaždice a nakonfigurovat ji:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Přidání dlaždice telemetrie na teplotu na řídicí panel":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Řídicí panel pro aplikace založené na šabloně vlastní aplikace":::
 
 Po dokončení přidávání a přizpůsobení dlaždic na řídicím panelu vyberte **Uložit**.
 
@@ -75,23 +75,23 @@ Pro dlaždice, které zobrazují agregované hodnoty, vyberte pro výběr agrega
 
 U spojnicových grafů, pruhových grafů a výsečových grafů můžete přizpůsobit barvu různých hodnot telemetrie. Vyberte ikonu palety vedle telemetrie, kterou chcete upravit:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="Změna barvy hodnoty telemetrie":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="Řídicí panel pro aplikace založené na šabloně vlastní aplikace":::
 
 Pro dlaždice, které zobrazují vlastnosti řetězce nebo hodnoty telemetrie, můžete zvolit, jak se má text zobrazit. Pokud například zařízení ukládá adresu URL do řetězcové vlastnosti, můžete ji zobrazit jako odkaz s možnostmi kliknutí. Pokud adresa URL odkazuje na obrázek, můžete obrázek vykreslit v poslední známé hodnotě nebo dlaždici Vlastnosti. Chcete-li změnit způsob zobrazení řetězce, v konfiguraci dlaždic vyberte ikonu ozubeného kolečka vedle typu nebo vlastnosti telemetrie:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Změna způsobu zobrazení řetězce na dlaždici":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Řídicí panel pro aplikace založené na šabloně vlastní aplikace":::
 
 Pro číselný **klíčový ukazatel výkonu**, **poslední známou hodnotu**a dlaždice **vlastností** můžete použít podmíněné formátování k přizpůsobení barvy dlaždice na základě její aktuální hodnoty. Pokud chcete přidat podmíněné formátování, na dlaždici vyberte **Konfigurovat** a potom vyberte ikonu **podmíněného formátování** vedle hodnoty k přizpůsobení:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Snímek obrazovky ukazující, jak najít možnost konfigurace pro dlaždici a potom ikonu podmíněného formátování":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Řídicí panel pro aplikace založené na šabloně vlastní aplikace":::
 
 Přidejte pravidla podmíněného formátování:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Snímek obrazovky zobrazující pravidla podmíněného formátování pro průměrný tok Existují tři pravidla – méně než 20 je zelených, méně než 50 je žluté a vše nad 50 je červené.":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Řídicí panel pro aplikace založené na šabloně vlastní aplikace":::
 
 Následující snímek obrazovky ukazuje efekt pravidla podmíněného formátování:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Snímek obrazovky znázorňující žlutou barvu pozadí na dlaždici Průměrná voda Flow Číslo dlaždice je 40,84.":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Řídicí panel pro aplikace založené na šabloně vlastní aplikace":::
 
 ## <a name="next-steps"></a>Další kroky
 

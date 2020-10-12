@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/07/2020
 ms.author: memildin
 ms.openlocfilehash: 63b00682af3de8c558a6ef69dd6cb8b9a7d5f2b4
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87433205"
 ---
 # <a name="reference-list-of-azure-domains-not-comprehensive"></a>Odkaz na seznam domén Azure (není vyčerpávající)
@@ -46,7 +46,7 @@ Tato stránka je částečný seznam domén Azure, které se používají. Někt
 |[Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview)|*.servicebus.windows.net|
 |[Azure SQL Database](https://azure.microsoft.com/services/sql-database/)|*. database.windows.net|
 |[Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) a [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/)|*.azureedge.net|
-|[Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview)|*. table.core.windows.net|
+|[Table Storage Azure](https://docs.microsoft.com/azure/storage/tables/table-storage-overview)|*. table.core.windows.net|
 |[Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview)|*. trafficmanager.net|
 |Azure websites|*. azurewebsites.net|
 |[Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)|*.visualstudio.com|

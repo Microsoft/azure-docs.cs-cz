@@ -9,13 +9,13 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.openlocfilehash: b5b8c014a7150ad83875b9fd361c3538d865d153
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90064106"
 ---
-# <a name="safely-manage-jar-dependencies"></a>Bezpečně spravovat závislosti jar
+# <a name="safely-manage-jar-dependencies"></a>Zabezpečená správa závislostí Jar
 
 Komponenty nainstalované v clusterech HDInsight mají závislosti na knihovnách třetích stran. V rámci těchto integrovaných komponent jsou obvykle odkazovány konkrétní verze běžných modulů, jako je guava. Když odešlete aplikaci s jejími závislostmi, může dojít ke konfliktu mezi různými verzemi stejného modulu. Pokud verze komponenty, na kterou odkazujete v rámci třídy CLASSPATH, mohou předdefinované komponenty vyvolat výjimky z důvodu nekompatibility verzí. Pokud však integrované komponenty vkládají své závislosti na cestu k cestě, může vaše aplikace vyvolat chyby jako `NoSuchMethod` .
 
@@ -27,7 +27,7 @@ Stínování nabízí způsob, jak zahrnout a přejmenovat závislosti. Přemís
 ## <a name="how-to-shade-a-package"></a>Jak vystínovat balíček?
 
 ### <a name="use-uber-jar"></a>Použít Uber – jar
-Uber-JAR je jeden soubor JAR, který obsahuje jar aplikace i jeho závislosti. Závislosti v Uber-jar nejsou ve výchozím nastavení stínové. V některých případech to může způsobit konflikt verze, pokud jiné součásti nebo aplikace odkazují na jinou verzi těchto knihoven. Pokud tomu chcete předejít, můžete vytvořit Uber soubor s některými (nebo všemi) závislostmi, které jsou ve stínovém formátu.
+Uber-JAR je jeden soubor JAR, který obsahuje jar aplikace i jeho závislosti. Závislosti v Uber-jar nejsou ve výchozím nastavení stínové. V některých případech to může způsobit konflikt verze, pokud jiné součásti nebo aplikace odkazují na jinou verzi těchto knihoven. Pokud se tomu chcete vyhnout, můžete vytvořit soubor Uber-Jar s některými (nebo všemi) závislostmi, které jsou ve stínovém formátu.
 
 ### <a name="shade-package-using-maven"></a>Stínovat balíček pomocí Maven
 Maven může sestavovat aplikace napsané v jazyce Java i v Scala. Maven-odstín – modul plug-in vám umožní snadno vytvořit stínovaný Uber.

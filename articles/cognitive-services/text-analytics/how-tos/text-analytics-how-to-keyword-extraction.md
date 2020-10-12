@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/13/2020
 ms.author: aahi
 ms.openlocfilehash: e4a652b146286965c68154bd362525861158ecb2
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91704374"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Příklad: jak extrahovat klíčové fráze pomocí Analýza textu
@@ -23,7 +23,7 @@ ms.locfileid: "91704374"
 
 Tato funkce je užitečná v případě, kdy potřebujete rychle identifikovat hlavní body v kolekci dokumentů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný), vrátí služba hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál).
 
-Další informace najdete v tématu [podporované jazyky](../text-analytics-supported-languages.md).
+Další informace najdete v části o [podporovaných jazycích](../text-analytics-supported-languages.md).
 
 > [!TIP]
 > Analýza textu taky poskytuje pro extrakci klíčových frází image kontejneru Docker pro Linux, takže můžete [nainstalovat a spustit kontejner analýza textu](text-analytics-how-to-install-containers.md) blízko k datům.
@@ -159,7 +159,7 @@ Příklad výstupu pro extrakci klíčových frází z koncového bodu verze 3.1
 ```
 Jak je uvedeno, analyzátor vyhledá a zahodí nepostradatelná slova a udržuje jednoduché termíny nebo fráze, které se jeví jako předmět nebo předmět věty.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili koncepty a pracovní postup pro extrakci klíčových frází pomocí Analýza textu v Cognitive Services. Souhrn:
 

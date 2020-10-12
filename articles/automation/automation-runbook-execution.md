@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: 883cf48fd38d79544d08a68f2c18fc2d2efb4706
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776285"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spouštění runbooků ve službě Azure Automation
@@ -79,7 +79,7 @@ ASC umisťuje omezení pro uživatele, kteří můžou na virtuálním počíta�
 
 [Předplatné](/office365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings) Azure je smlouvou s Microsoftem pro použití jedné nebo několika cloudových služeb, pro které se vám účtují poplatky. Pro Azure Automation je každé předplatné propojené s účtem Azure Automation a v účtu můžete [vytvořit víc předplatných](manage-runbooks.md#work-with-multiple-subscriptions) .
 
-## <a name="credentials"></a>Přihlašovací údaje
+## <a name="credentials"></a>Credentials
 
 Sada Runbook vyžaduje příslušné [přihlašovací údaje](shared-resources/credentials.md) pro přístup k jakémukoli prostředku bez ohledu na to, jestli se jedná o systémy Azure nebo třetích stran. Tyto přihlašovací údaje jsou uložené v Azure Automation, Key Vault atd.  
 
@@ -218,7 +218,7 @@ Runbooky, které běží v izolovaném prostoru (sandbox) Azure, nepodporují vo
 
 ## <a name="device-and-application-characteristics"></a>Vlastnosti zařízení a aplikací
 
-Úlohy Runbooku v Azure sandboxu nemají přístup k žádným charakteristikám zařízení nebo aplikací. Nejběžnější rozhraní API, které se používá k dotazování metrik výkonu ve Windows, je rozhraní WMI s některými běžnými metrikami paměti a využitím procesoru. Nezáleží ale na tom, jaké rozhraní API se používá, protože úlohy spuštěné v cloudu nemají přístup k implementaci služby WBEM (Web-Based Enterprise Management) od Microsoftu. Tato platforma je postavená na model CIM (Common Information Model) (CIM), která poskytuje oborové standardy pro definování charakteristik zařízení a aplikací.
+Úlohy Runbooku v Azure sandboxu nemají přístup k žádným charakteristikám zařízení nebo aplikací. Nejběžnější rozhraní API, které se používá k dotazování metrik výkonu ve Windows, je rozhraní WMI s některými běžnými metrikami paměti a využitím procesoru. Nezáleží ale na tom, jaké rozhraní API se používá, protože úlohy spuštěné v cloudu nemůžou získat přístup k implementaci Web-Based Enterprise Management (WBEM) od Microsoftu. Tato platforma je postavená na model CIM (Common Information Model) (CIM), která poskytuje oborové standardy pro definování charakteristik zařízení a aplikací.
 
 ## <a name="webhooks"></a>Webhooky
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84984789"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurace připojení typu Point-to-site pomocí ověřování certifikátů (Classic)
@@ -81,7 +81,7 @@ Než začnete, ověřte, že máte předplatné Azure. Pokud ještě nemáte př
 
 Pokud ještě nemáte virtuální síť (VNet), vytvořte ji. Snímky obrazovek slouží jen jako příklady. Hodnoty na obrázcích nahraďte vlastními hodnotami. Pokud chcete vytvořit virtuální síť přes Azure Portal, použijte následující postup:
 
-1. V nabídce [Azure Portal](https://portal.azure.com) nebo na **domovské** stránce vyberte **vytvořit prostředek**. Otevře se **Nová** stránka.
+1. V nabídce webu [Azure Portal](https://portal.azure.com) nebo na **domovské stránce** vyberte **Vytvořit prostředek**. Otevře se **Nová** stránka.
 
 2. Do pole **Hledat na Marketplace** zadejte *Virtual Network* a ze vráceného seznamu vyberte **virtuální síť** . Otevře se stránka **virtuální síť** .
 
@@ -93,7 +93,7 @@ Pokud ještě nemáte virtuální síť (VNet), vytvořte ji. Snímky obrazovek 
 
 5. V rozevíracím seznamu vyberte **předplatné** , které chcete použít.
 
-6. Vyberte existující **skupinu prostředků**. Případně vytvořte novou skupinu prostředků tak, že vyberete **vytvořit novou** a zadáte název. Pokud vytváříte novou skupinu prostředků, pojmenujte skupinu prostředků podle svých plánovaných hodnot konfigurace. Další informace o skupinách prostředků najdete v tématu [přehled Azure Resource Manager](../azure-resource-manager/management/overview.md#resource-groups).
+6. Vyberte existující **skupinu prostředků**. Případně vytvořte novou skupinu prostředků tak, že vyberete **vytvořit novou** a zadáte název. Pokud vytváříte novou skupinu prostředků, pojmenujte skupinu prostředků podle svých plánovaných hodnot konfigurace. Další informace o skupinách prostředků najdete v tématu [Přehled Azure Resource Manageru](../azure-resource-manager/management/overview.md#resource-groups).
 
 7. Vyberte **umístění** pro virtuální síť. Toto nastavení určuje zeměpisné umístění prostředků, které nasadíte do této virtuální sítě.
 
@@ -138,7 +138,7 @@ V tomto kroku vytvoříte podsíť brány a bránu dynamického směrování. V 
  
 ## <a name="create-certificates"></a><a name="generatecerts"></a>Vytvoření certifikátů
 
-Azure používá certifikáty k ověřování klientů VPN pro sítě VPN typu Point-to-site. Nahrajete do Azure informace o veřejném klíči kořenového certifikátu. Veřejný klíč se pak považuje za *důvěryhodný*. Klientské certifikáty musí být vygenerovány z důvěryhodného kořenového certifikátu a poté nainstalovány na každý klientský počítač v rámci certifikátů – aktuální úložiště certifikátů User\Personal\Certificates. Certifikát se používá k ověření klienta při připojení k virtuální síti. 
+Azure používá certifikáty k ověřování klientů VPN pro sítě VPN typu Point-to-site. Nahrajete do Azure informace o veřejném klíči kořenového certifikátu. Veřejný klíč se pak považuje za *důvěryhodný*. Klientské certifikáty musí být vygenerovány z důvěryhodného kořenového certifikátu a poté nainstalovány do každého klientského počítače v úložišti certifikátů Certificates-Current User\Personal\Certificates. Certifikát se používá k ověření klienta při připojení k virtuální síti. 
 
 Pokud používáte certifikáty podepsané svým držitelem, musí se vytvořit pomocí určitých parametrů. Certifikát podepsaný svým držitelem můžete vytvořit pomocí pokynů pro [PowerShell a Windows 10](vpn-gateway-certificates-point-to-site.md)nebo [Makecert](vpn-gateway-certificates-point-to-site-makecert.md). Je důležité postupovat podle kroků v těchto pokynech při použití kořenových certifikátů podepsaných svým držitelem a k vygenerování klientských certifikátů z kořenového certifikátu podepsaného svým držitelem. V opačném případě certifikáty, které vytvoříte, nebudou kompatibilní s připojeními P2S a obdržíte chybu připojení.
 
