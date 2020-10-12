@@ -8,10 +8,10 @@ ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 6ea960e93dba634573ec1ef594f1d2c49be57ca9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84945303"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Přehled protokolů platformy Azure
@@ -20,11 +20,11 @@ Protokoly platforem poskytují podrobné informace o diagnostice a auditování 
 ## <a name="types-of-platform-logs"></a>Typy protokolů platformy
 V následující tabulce jsou uvedeny konkrétní protokoly platformy, které jsou k dispozici v různých vrstvách Azure.
 
-| Protokol | Vrstva | Description |
+| Protokol | Vrstva | Popis |
 |:---|:---|:---|
 | [Protokoly prostředků](resource-logs.md) | Prostředky Azure | Poskytněte přehled o operacích, které byly provedeny v rámci prostředku Azure ( *rovina dat*), například získání tajného kódu z Key Vault nebo vytvoření žádosti do databáze. Obsah protokolů prostředků se liší podle typu prostředku a služby Azure.<br><br>*Protokoly prostředků se dřív odkazovaly na diagnostické protokoly.*  |
-| [Protokol aktivit](activity-log.md) | předplatné Azure | Poskytuje přehled o operacích u každého prostředku Azure v předplatném mimo (*rovinu správy*) kromě aktualizací Service Healthch událostí. Pomocí protokolu aktivit můžete určit, _kdo_a _kdy_ se u prostředků ve vašem předplatném mají _dělat_operace zápisu (Put, post, DELETE). Pro každé předplatné Azure existuje jeden protokol aktivit. |
-| [Protokoly Azure Active Directory](../../active-directory/reports-monitoring/overview-reports.md) | Tenant Azure |  Obsahuje historii přihlašovací aktivity a záznam pro audit změn provedených v Azure Active Directory pro konkrétního tenanta.   |
+| [Protokol aktivit](activity-log.md) | Předplatné Azure | Poskytuje přehled o operacích u každého prostředku Azure v předplatném mimo (*rovinu správy*) kromě aktualizací Service Healthch událostí. Pomocí protokolu aktivit můžete určit, _kdo_a _kdy_ se u prostředků ve vašem předplatném mají _dělat_operace zápisu (Put, post, DELETE). Pro každé předplatné Azure existuje jeden protokol aktivit. |
+| [Protokoly služby Azure Active Directory](../../active-directory/reports-monitoring/overview-reports.md) | Tenant Azure |  Obsahuje historii přihlašovací aktivity a záznam pro audit změn provedených v Azure Active Directory pro konkrétního tenanta.   |
 
 > [!NOTE]
 > Protokol aktivit Azure je primárně pro aktivity, ke kterým dochází v Azure Resource Manager. Nesleduje prostředky pomocí modelu Classic/RDFE. Některé typy klasických prostředků mají poskytovatele prostředků proxy v Azure Resource Manager (například Microsoft. ClassicCompute). Pokud pracujete s klasickým typem prostředku prostřednictvím Azure Resource Manager pomocí těchto zprostředkovatelů prostředků proxy, operace se zobrazí v protokolu aktivit. Pokud pracujete s klasickým typem prostředku mimo Azure Resource Manager proxy, vaše akce se zaznamenávají pouze do protokolu operací. Protokol operací se dá procházet v samostatné části portálu.

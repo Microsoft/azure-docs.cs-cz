@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
 ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334578"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Vytváření a Správa záznamů v Common Data Service pomocí Azure Logic Apps
@@ -87,7 +87,7 @@ Nyní přidejte Common Data Service akci, která vytvoří záznam úkolu pro no
 
       ![Vyberte výstupy triggerů, které se mají použít v záznamu úlohy.](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | Výstup triggeru | Popis |
+      | Výstup triggeru | Description |
       |----------------|-------------|
       | **Jméno** | Křestní jméno z záznamu zájemce pro použití jako primární kontakt v záznamu úkolu |
       | **Příjmení** | Příjmení ze záznamu zájemce, které se má použít jako primární kontakt v záznamu úkolu |

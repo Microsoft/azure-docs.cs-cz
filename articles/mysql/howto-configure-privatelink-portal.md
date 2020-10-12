@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.openlocfilehash: 1a99a91152f8308af122677ad3b8df3fb5005dbb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90896167"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for MySQL pomocí portálu
@@ -23,7 +23,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 > Funkce privátního odkazu je dostupná jenom pro Azure Database for MySQL servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je databázový server v jedné z těchto cenových úrovní.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="create-an-azure-vm"></a>Vytvoření virtuálního počítače Azure
 
@@ -39,7 +39,7 @@ V této části vytvoříte Virtual Network a podsíť, která bude hostovat vir
     | ------- | ----- |
     | Název | Zadejte *MyVirtualNetwork*. |
     | Adresní prostor | Zadejte *10.1.0.0/16*. |
-    | Předplatné | Vyberte předplatné.|
+    | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
     | Umístění | Vyberte **Západní Evropa**.|
     | Název podsítě | Zadejte *mySubnet*. |
@@ -56,7 +56,7 @@ V této části vytvoříte Virtual Network a podsíť, která bude hostovat vir
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **PODROBNOSTI O PROJEKTU** | |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
     | Název virtuálního počítače | Zadejte *myVm*. |
@@ -106,7 +106,7 @@ V této části vytvoříte Azure Database for MySQL server v Azure.
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **Podrobnosti serveru** |  |
     |Název serveru  | Zadejte *MyServer*. Pokud se tento název povede, vytvořte jedinečný název.|
@@ -141,7 +141,7 @@ V této části vytvoříte Server MySQL a přidáte do něj privátní koncový
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **Podrobnosti instance** |  |
     | Name | Zadejte *myPrivateEndpoint*. Pokud se tento název povede, vytvořte jedinečný název. |
@@ -154,7 +154,7 @@ V této části vytvoříte Server MySQL a přidáte do něj privátní koncový
     | Nastavení | Hodnota |
     | ------- | ----- |
     |Způsob připojení  | V adresáři vyberte připojit k prostředku Azure.|
-    | Předplatné| Vyberte předplatné. |
+    | Předplatné| Vyberte své předplatné. |
     | Typ prostředku | Vyberte **Microsoft. DBforMySQL/servery**. |
     | Prostředek |Vybrat *MyServer*|
     |Cílový dílčí prostředek |Vybrat *mysqlServer*|
@@ -178,7 +178,7 @@ V této části vytvoříte Server MySQL a přidáte do něj privátní koncový
 1. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci. 
 2. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**. 
 
-    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="Privátní odkaz se vytvořil.":::
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="Přehled privátních odkazů":::
 
     > [!NOTE] 
     > Plně kvalifikovaný název domény v nastavení DNS zákazníka se nepřekladuje na nakonfigurovanou soukromou IP adresu. Bude nutné nastavit zónu DNS pro nakonfigurovaný plně kvalifikovaný název domény, jak je znázorněno [zde](../dns/dns-operations-recordsets-portal.md).

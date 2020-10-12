@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
 ms.openlocfilehash: 23a486dfe1256cea46f6722873950ffcb1bde084
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84982692"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Kopírování dat z Dynamics AX pomocí Azure Data Factory
@@ -61,7 +61,7 @@ Chcete-li použít ověřování instančního objektu, postupujte takto:
 
 Pro propojenou službu Dynamics AX jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** musí být nastavená na **DynamicsAx**. |Yes |
 | url | Koncový bod OData instance Dynamics AX (nebo finance a operace Dynamics 365). |Yes |
@@ -105,10 +105,10 @@ V této části najdete seznam vlastností, které podporuje datová sada Dynami
 
 Chcete-li kopírovat data z Dynamics AX, nastavte vlastnost **Type** datové sady na **DynamicsAXResource**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** datové sady musí být nastavená na **DynamicsAXResource**. | Yes |
-| cesta | Cesta k entitě Dynamics AX OData | Yes |
+| program | Cesta k entitě Dynamics AX OData | Yes |
 
 **Příklad**
 
@@ -139,7 +139,7 @@ V této části najdete seznam vlastností, které podporuje zdroj Dynamics AX.
 
 Chcete-li kopírovat data z Dynamics AX, nastavte typ **zdroje** v aktivitě kopírování na **DynamicsAXSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **DynamicsAXSource**. | Yes |
 | query | Možnosti dotazu OData pro filtrování dat Příklad: `"?$select=Name,Description&$top=5"`.<br/><br/>**Poznámka**: konektor kopíruje data z kombinované adresy URL: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` . Další informace najdete v tématu [komponenty adresy URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | No |

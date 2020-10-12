@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: has-adal-ref
 ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87904798"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Řešení problémů s runbooky
@@ -122,7 +122,7 @@ Chcete-li zjistit, co je chybné, postupujte podle následujících kroků:
    }
    ```
 
-## <a name="scenario-run-login-azurermaccount-to-log-in"></a><a name="login-azurerm"></a>Scénář: Spusťte přihlášení – AzureRMAccount a přihlaste se.
+## <a name="scenario-run-login-azurermaccount-to-log-in"></a><a name="login-azurerm"></a>Scénář: spuštění Login-AzureRMAccount pro přihlášení
 
 ### <a name="issue"></a>Problém
 
@@ -677,7 +677,7 @@ Postupujte podle [kroku 5 – přidejte ověřování pro správu prostředků A
 
 ## <a name="recommended-documents"></a>Doporučené dokumenty
 
-* [Spouštění runbooků ve službě Azure Automation](../automation-runbook-execution.md)
+* [Spuštění sady Runbook v Azure Automation](../automation-runbook-execution.md)
 * [Spuštění Runbooku v Azure Automation](../start-runbooks.md)
 
 ## <a name="next-steps"></a>Další kroky

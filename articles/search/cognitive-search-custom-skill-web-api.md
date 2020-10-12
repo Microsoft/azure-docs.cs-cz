@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: cb5ee7d3549e433fb184b8c55c28b9a28ed89272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84982114"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Vlastní dovednosti webového rozhraní API v kanálu pro rozšíření Azure Kognitivní hledání
@@ -37,8 +37,8 @@ U parametrů se rozlišují malá a velká písmena.
 | Název parametru     | Description |
 |--------------------|-------------|
 | `uri` | Identifikátor URI webového rozhraní API, na které se pošle datová část _JSON_ Je povolené jenom schéma identifikátoru URI **protokolu HTTPS** . |
-| `httpMethod` | Metoda, která se má použít při odesílání datové části Povolené metody jsou `PUT` nebo`POST` |
-| `httpHeaders` | Kolekce párů klíč-hodnota, kde klíče reprezentují názvy a hodnoty hlaviček, představuje hodnoty hlaviček, které budou odeslány do webového rozhraní API spolu s datovou částí. Následující záhlaví jsou v této kolekci zakázaná: `Accept` , `Accept-Charset` , `Accept-Encoding` , `Content-Length` , `Content-Type` , `Cookie` , `Host` , `TE` , `Upgrade` ,`Via` |
+| `httpMethod` | Metoda, která se má použít při odesílání datové části Povolené metody jsou `PUT` nebo `POST` |
+| `httpHeaders` | Kolekce párů klíč-hodnota, kde klíče reprezentují názvy a hodnoty hlaviček, představuje hodnoty hlaviček, které budou odeslány do webového rozhraní API spolu s datovou částí. Následující záhlaví jsou v této kolekci zakázaná:  `Accept` , `Accept-Charset` , `Accept-Encoding` , `Content-Length` , `Content-Type` , `Cookie` , `Host` , `TE` , `Upgrade` , `Via` |
 | `timeout` | Volitelné Když se tato parametr zadá, označuje časový limit pro klienta http, který provádí volání rozhraní API. Musí být formátován jako hodnota XSD "dayTimeDuration" (omezená podmnožina hodnoty [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Například `PT60S` po dobu 60 sekund. Pokud není nastavená, vybere se výchozí hodnota 30 sekund. Časový limit lze nastavit na maximálně 230 sekund a minimálně 1 sekundu. |
 | `batchSize` | Volitelné Určuje, kolik záznamů dat (viz struktura datové části _JSON_ níže) se pošle na volání rozhraní API. Pokud není nastavená, vybere se výchozí hodnota 1000. Doporučujeme použít tento parametr k dosažení vhodného kompromisu mezi propustností indexování a zatížením v rozhraní API. |
 | `degreeOfParallelism` | Volitelné Když se tato hodnota zadá, označuje počet volání, která indexer provede paralelně se zadaným koncovým bodem. Tuto hodnotu můžete snížit, pokud se Váš koncový bod nedaří s příliš vysokým zatížením žádosti nebo ho zvýšit, pokud je váš koncový bod schopný přijmout více požadavků a vy chcete zvýšit výkon indexeru.  Pokud není nastavená, použije se výchozí hodnota 5. `degreeOfParallelism`Hodnota může být nastavená na maximálně 10 a minimálně 1. |
@@ -87,7 +87,7 @@ Pro tuto dovednost nejsou k dispozici žádné předdefinované výstupy. V záv
 Tato struktura _JSON_ představuje datovou část, která se pošle do webového rozhraní API.
 Vždy se bude řídit těmito omezeními:
 
-* Je volána entita nejvyšší úrovně `values` a bude polem objektů. Počet takových objektů bude maximálně`batchSize`
+* Je volána entita nejvyšší úrovně `values` a bude polem objektů. Počet takových objektů bude maximálně `batchSize`
 * Každý objekt v `values` poli bude mít
     * `recordId`Vlastnost, která je **jedinečný** řetězec, který slouží k identifikaci daného záznamu.
     * `data`Vlastnost, která je objektem _JSON_ . Pole `data` vlastnosti budou odpovídat "názvům" uvedeným v `inputs` části definice dovednosti. Hodnota těchto polí bude z `source` těchto polí (což může být z pole v dokumentu nebo potenciálně z jiné dovednosti).

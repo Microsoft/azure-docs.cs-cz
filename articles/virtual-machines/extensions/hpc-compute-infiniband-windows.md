@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
 ms.openlocfilehash: ccc9df8078bb7fec8be7d72b0ae18ed416bb10ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096745"
 ---
 # <a name="infiniband-driver-extension-for-windows"></a>Rozšíření ovladače InfiniBand pro Windows
@@ -25,7 +25,7 @@ Toto rozšíření nainstaluje ovladače InfiniBand ND (pro povolený non SR-IOV
 
 K dispozici je také rozšíření pro instalaci ovladačů InfiniBand pro [virtuální počítače se systémem Linux](hpc-compute-infiniband-linux.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -69,12 +69,12 @@ Následující JSON zobrazuje schéma pro rozšíření.
 
 ### <a name="properties"></a>Vlastnosti
 
-| Název | Hodnota/příklad | Typ dat |
+| Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft. HpcCompute | řetězec |
 | typ | InfiniBandDriverWindows | řetězec |
-| typeHandlerVersion | 1.2 | int |
+| typeHandlerVersion | 1,2 | int |
 
 
 
@@ -149,7 +149,7 @@ Následující příklad nainstaluje nejnovější InfiniBandDriverWindows rozš
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstranit potíže
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell a Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz.
 

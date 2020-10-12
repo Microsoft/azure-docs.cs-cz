@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
 ms.openlocfilehash: 3d07657fc3345ddd8dfadd163dc3c9f957d77af3
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90068383"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování ve službě Azure Cosmos DB – přehled
@@ -180,7 +180,7 @@ Cesty extrahované při indexování dat usnadňují vyhledání indexu při zpr
 
 Zvažte například následující dotaz: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . Predikát dotazu (filtrování položek, kde jakékoli umístění má "Francie" jako země nebo oblast) by odpovídala cestě zvýrazněné červeně:
 
-:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Odpovídá konkrétní cestě v rámci stromu." border="false":::
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Předchozí položka reprezentovaná jako strom" border="false":::
 
 > [!NOTE]
 > `ORDER BY`Klauzule, která má ORDER by jedna vlastnost, *vždy* potřebuje index rozsahu a nezdaří se, pokud cesta, na kterou odkazuje, nemá jednu. Podobně dotaz, `ORDER BY` který ORDER by má více vlastností, *vždy* potřebuje složený index.

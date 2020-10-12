@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o tom, jak používat Apache Spa
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 8535b7dc81da8c46685e12c3861793b919296cb4
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90061576"
 ---
 # <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>Připojení aplikace Apache Spark k Azure Event Hubs
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 > * Čtení ze služby Event Hubs pro ekosystém Kafka
 > * Zápis do služby Event Hubs pro ekosystém Kafka
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, ujistěte se, že máte následující:
 -   Předplatné Azure. Pokud žádné nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).

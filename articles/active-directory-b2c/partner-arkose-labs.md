@@ -12,10 +12,10 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a4d8174cd0bfdb2297099b403fb836210c5529ac
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86170220"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Arkose Labs s Azure Active Directory B2C
@@ -35,7 +35,7 @@ Následující diagram popisuje, jak se Arkose Labs integrují s Azure AD B2C.
 
 ![Diagram architektury Arkose Labs](media/partner-arkose-labs/arkose-architecture-diagram.png)
 
-| Krok  | Popis |
+| Krok  | Description |
 |---|---|
 |1     | Uživatel se přihlásí pomocí dříve vytvořeného účtu. Když uživatel vybere odeslat, zobrazí se výzva k vynucení Arkose Labs. Jakmile uživatel tuto výzvu dokončí, pošle se do Arkose Labs stav, ve kterém se vygeneruje token.        |
 |2     |  Arkose Labs pošle token zpátky do Azure AD B2C.       |

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8360eae71ddd41d3105dbd037f273139262727ad
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87419559"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Konfigurace a povolení ověřování na základě serveru SMS pomocí Azure Active Directory (Preview)
@@ -110,7 +110,7 @@ Po úspěšném zřízení se u *přihlašovacích práv SMS*zobrazí zaškrtnut
 
 Pokud chcete otestovat uživatelský účet, který je teď povolený pro přihlašování založené na SMS, proveďte následující kroky:
 
-1. Otevřete nové okno webového prohlížeče InPrivate nebo anonymním.[https://www.office.com][office]
+1. Otevřete nové okno webového prohlížeče InPrivate nebo anonymním. [https://www.office.com][office]
 1. V pravém horním rohu vyberte **Přihlásit**se.
 1. Na příkazovém řádku pro přihlášení zadejte telefonní číslo přidružené k uživateli v předchozí části a pak vyberte **Další**.
 

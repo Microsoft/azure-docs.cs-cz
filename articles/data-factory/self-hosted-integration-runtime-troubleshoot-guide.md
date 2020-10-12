@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 09/14/2020
 ms.author: abnarain
 ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90069471"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
@@ -152,7 +152,7 @@ Při řešení případů souvisejících s ověřováním SSL/TLS metodou hands
 
 `Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
  
-Příklad: 
+Například: 
 
 `Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
 
@@ -478,7 +478,7 @@ Očekává se následující odpověď:
 
 Hostující uzel integrovaného modulu runtime může mít **neaktivní** stav, jak je znázorněno na následujícím snímku obrazovky:
 
-![Neaktivní místní hostitelský uzel IR](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
+![Neaktivní Self-Hosted uzel IR](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
 
 K tomuto chování dochází, když uzly nemůžou vzájemně komunikovat.
 
@@ -635,7 +635,7 @@ Další pomoc při řešení potíží najdete v následujících zdrojích info
 
 *  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
-*  [Videa k Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Videa Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Fórum přetečení zásobníku pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87089545"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Sestava odhadu nákladů z Plánovače nasazení služby Azure Site Recovery 
@@ -167,7 +167,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Podporované měny
 Plánovač nasazení služby Site Recovery může vygenerovat sestavu nákladů s libovolnou z následujících měn.
 
-|Měna|Název|Měna|Název|Měna|Název|
+|Měna|Name|Měna|Name|Měna|Name|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentinské peso ($)|AUD|Australský dolar ($)|BRL|Brazilský real (R$)|
 |CAD|Kanadský dolar ($)|CHF|Švýcarský frank (chf)|DKK|Dánská koruna (kr)|

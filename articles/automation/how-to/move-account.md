@@ -10,10 +10,10 @@ ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 562ea5e0e9e4851ed59bd3ef917be2f9c48cd2a7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185547"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Přesunutí účtu Azure Automation do jiného předplatného
@@ -147,7 +147,7 @@ Po opětovném vytvoření účtů spustit jako je nutné znovu povolit funkce, 
 
 Po dokončení přesunu ověřte, že jsou povolené níže uvedené možnosti. 
 
-|Schopnost|Testy|Odstraňování potíží|
+|Schopnost|Testy|Řešení potíží|
 |---|---|---|
 |Runbooky|Sada Runbook může úspěšně běžet a připojovat se k prostředkům Azure.|[Řešení potíží s runbooky](../troubleshoot/runbooks.md)
 |Správa zdrojového kódu|Můžete spustit ruční synchronizaci v úložišti správy zdrojového kódu.|[Integrace správy zdrojového kódu](../source-control-integration.md)|

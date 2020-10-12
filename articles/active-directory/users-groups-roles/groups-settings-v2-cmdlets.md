@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c00c89e5f81bcb142c50e5f3438c1af2d72a9de5
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056213"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Rutiny Azure Active Directory verze 2 pro správu skupin
@@ -146,7 +146,7 @@ Pokud chcete ve svém adresáři vytvořit novou skupinu, použijte rutinu New-A
 
 ## <a name="update-groups"></a>Aktualizovat skupiny
 
-Chcete-li aktualizovat existující skupinu, použijte rutinu Set-AzureADGroup. V tomto příkladu měníme vlastnost displayName skupiny Administrators služby Intune. Nejdříve vyhledáme skupinu pomocí rutiny Get-AzureADGroup a filtru s použitím atributu DisplayName:
+Chcete-li aktualizovat existující skupinu, použijte rutinu Set-AzureADGroup. V tomto příkladu měníme vlastnost displayName skupiny Administrators služby Intune. Nejdřív vyhledáme skupinu pomocí rutiny Get-AzureADGroup a pomocí atributu DisplayName použijeme filtr:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -207,7 +207,7 @@ Pokud chcete odstranit skupiny z adresáře, použijte rutinu Remove-AzureADGrou
 
 ### <a name="add-members"></a>Přidání členů
 
-Pokud chcete přidat nové členy do skupiny, použijte rutinu Add-AzureADGroupMember. Tento příkaz přidá člena do skupiny Správci Intune, kterou jsme použili v předchozím příkladu:
+Chcete-li přidat nové členy do skupiny, použijte rutinu Add-AzureADGroupMember. Tento příkaz přidá člena do skupiny Správci Intune, kterou jsme použili v předchozím příkladu:
 
 ```powershell
     PS C:\Windows\system32> Add-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
@@ -230,7 +230,7 @@ Chcete-li získat existující členy skupiny, použijte rutinu Get-AzureADGroup
 
 ### <a name="remove-members"></a>Odebrání členů
 
-Pokud chcete odebrat člena, který jsme dřív přidali do skupiny, použijte rutinu Remove-AzureADGroupMember, jak je znázorněno zde:
+Chcete-li odebrat člena, který jste dříve přidali do skupiny, použijte rutinu Remove-AzureADGroupMember, jak je znázorněno zde:
 
 ```powershell
     PS C:\Windows\system32> Remove-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -MemberId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
@@ -260,7 +260,7 @@ Pokud teď chceme zkontrolovat členství uživatele ve skupině s ObjectID 72cd
     https://graph.windows.net/85b5ff1e-0402-400c-9e3c-0f9e965325d1/$metadata#Collection(Edm.String)             {31f1ff6c-d48c-4f8a-b2e1-abca7fd399df}
 ```
 
-Vrácená hodnota je seznam skupin, ze kterých je tento uživatel členem. Tuto metodu můžete použít také ke kontrole kontaktů, skupin nebo členství instančních objektů pro daný seznam skupin pomocí metody Select-AzureADGroupIdsContactIsMemberOf, Select-AzureADGroupIdsGroupIsMemberOf nebo Select-AzureADGroupIdsServicePrincipalIsMemberOf.
+Vrácená hodnota je seznam skupin, ze kterých je tento uživatel členem. Tuto metodu můžete použít také ke kontrole kontaktů, skupin nebo členství instančních objektů pro daný seznam skupin pomocí Select-AzureADGroupIdsContactIsMemberOf, Select-AzureADGroupIdsGroupIsMemberOf nebo Select-AzureADGroupIdsServicePrincipalIsMemberOf
 
 ## <a name="disable-group-creation-by-your-users"></a>Zakázání vytváření skupin pomocí uživatelů
 
@@ -282,7 +282,7 @@ Zakázání vytváření skupin pro uživatele, kteří nejsou správci:
   
 ## <a name="manage-owners-of-groups"></a>Správa vlastníků skupin
 
-Pokud chcete přidat vlastníky do skupiny, použijte rutinu Add-AzureADGroupOwner:
+Chcete-li přidat vlastníky do skupiny, použijte rutinu Add-AzureADGroupOwner:
 
 ```powershell
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 308958f00a3658196f124ac911d4d0195ebeb228
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119833"
 ---
 # <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>Spuštění Plánovač nasazení pro zotavení po havárii VMware
@@ -44,7 +44,7 @@ Nejprve potřebujete seznam virtuálních počítačů určených k profilaci. V
     Set-ExecutionPolicy –ExecutionPolicy AllSigned
     ```
 
-4. Pokud příkaz Connect-VIServer není rozpoznán jako název rutiny, může být volitelně nutné spustit následující příkaz.
+4. Pokud Connect-VIServer není rozpoznán jako název rutiny, možná budete muset spustit následující příkaz.
 
     ```powershell
     Add-PSSnapin VMware.VimAutomation.Core

@@ -7,17 +7,17 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: cb1af437fc663fcb95c768ec295862209a26064e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87090395"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Zobrazení a vytváření dotazů pro monitorování a sledování v protokolech Azure Monitor pro Azure Logic Apps
 
 Můžete zobrazit základní dotazy, které vytvářejí výsledky z [Azure monitor protokoly](../azure-monitor/log-query/log-query-overview.md) a vytvářet dotazy, které filtrují výsledky na základě konkrétních kritérií. Můžete například vyhledat zprávy na základě konkrétního kontrolního čísla výměny. Dotazy používají [dotazovací jazyk Kusto](https://aka.ms/LogAnalyticsLanguageReference), který můžete upravit, pokud chcete zobrazit různé výsledky. Další informace najdete v tématu [Azure monitor dotazy protokolu](../azure-monitor/log-query/query-language.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Log Analytics. Pokud nemáte pracovní prostor Log Analytics, přečtěte si, [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 

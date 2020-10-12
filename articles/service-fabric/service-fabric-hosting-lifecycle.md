@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: tugup
 ms.openlocfilehash: a39aecf16d1c3303c0a590b389ba2aa69d4472f2
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87405122"
 ---
 # <a name="azure-service-fabric-hosting-lifecycle"></a>Životní cyklus hostování Azure Service Fabric
@@ -58,7 +58,7 @@ Když dojde k selhání CodePackage, Service Fabric k opětovnému spuštění p
 Hodnota Back-off je vždycky minimální (RetryTime, **ActivationMaxRetryInterval**) a tato hodnota může být konstantní, lineární nebo exponenciální na základě konfigurace **ActivationRetryBackoffExponentiationBase** .
 
 - Konstanta: IF **ActivationRetryBackoffExponentiationBase** = = 0 then RetryTime = **ActivationRetryBackoffInterval**;
-- Lineární: Pokud **ActivationRetryBackoffExponentiationBase** = = 0 then RetryTime = ContinuousFailureCount * **ActivationRetryBackoffInterval** , kde ContinousFailureCount je počet chyb CodePackage nebo se aktivace nezdařila.
+- Lineární: Pokud  **ActivationRetryBackoffExponentiationBase** = = 0 then RetryTime = ContinuousFailureCount * **ActivationRetryBackoffInterval** , kde ContinousFailureCount je počet chyb CodePackage nebo se aktivace nezdařila.
 - Exponenciální: RetryTime = (**ActivationRetryBackoffInterval** v sekundách) * (**ActivationRetryBackoffExponentiationBase** ^ ContinuousFailureCount);
     
 Chování můžete řídit tak, jak chcete, jako je rychlé restartování. Pojďme se na to lineárně obrátit. To znamená, že pokud dojde k selhání CodePackage, pak bude interval spuštění po 10, 20, 30 40 sec až do deaktivace CodePackage. 
@@ -81,7 +81,7 @@ Service Fabric vždy používá lineární regresi, když při stahování dojde
 > [!NOTE]
 > Před změnou konfigurací je zde několik příkladů, které byste měli mít na paměti.
 
-* Pokud CodePackage zachová chybu a vrátí se zpět, ServiceType se zakáže. Pokud ale konfigurace aktivace funguje tak, že má rychlé restartování, může se CodePackage několikrát zobrazit, než uvidí zakázaný ServiceType. Příklad: Předpokládejme, že se váš CodePackage zaregistruje, zaregistruje ServiceType pomocí Service Fabric a pak dojde k chybě. V takovém případě Jakmile hostitel obdrží registraci typu, **ServiceTypeDisableGraceInterval** období se zruší. To se může opakovat, dokud se CodePackage nevrátí na hodnotu větší než **ServiceTypeDisableGraceInterval** a pak se na uzlu deaktivuje serviceType. To znamená, že před zakázáním ServiceType v uzlu může to chvíli trvat.
+* Pokud CodePackage zachová chybu a vrátí se zpět, ServiceType se zakáže. Pokud ale konfigurace aktivace funguje tak, že má rychlé restartování, může se CodePackage několikrát zobrazit, než uvidí zakázaný ServiceType. Příklad: Předpokládejme, že se váš CodePackage zaregistruje, zaregistruje ServiceType pomocí Service Fabric a pak dojde k chybě. V takovém případě Jakmile hostitel obdrží registraci typu, **ServiceTypeDisableGraceInterval** období se zruší. To se může opakovat, dokud se CodePackage nevrátí na hodnotu větší než  **ServiceTypeDisableGraceInterval** a pak se na uzlu deaktivuje serviceType. To znamená, že před zakázáním ServiceType v uzlu může to chvíli trvat.
 
 * V případě aktivací, když Service Fabric systém musí umístit repliku na uzel, RA (ReconfigurationAgent) požádá o aktivaci aplikace a znovu zkusí požadavek na aktivaci každých 15 sekund (**RAPMessageRetryInterval**). Aby systém Service Fabric zjistil, že je ServiceType zakázaný, operace aktivace v hostování musí být živá po delší dobu než interval opakování a **ServiceTypeDisableGraceInterval**. Například: Umožněte, aby cluster **ActivationMaxFailureCount** konfigurační nastavení na hodnotu 5 a **ActivationRetryBackoffInterval** nastaveno na hodnotu 1 s. To znamená, že operace aktivace se poskytne po (0 + 1 + 2 + 3 + 4) = 10 sec (první pokus je okamžitý) a po tomto hostování se bude opakovat. V tomto případě se operace aktivace dokončí a nebude se opakovat po 15 sekundách. K ní došlo, protože Service Fabric vyčerpala všechny opakované pokusy během 15 sekund. Každý pokus z ReconfigurationAgent proto vytvoří novou operaci aktivace v hostitelském subsystému a vzor se zachová opakujícím se a ServiceType se v uzlu nikdy nevypne. Vzhledem k tomu, že se ServiceType nebude na uzlu zakázaný, nepřesunou se replika komponenty SF systému (FailoverManager) do jiného uzlu.
 > 
@@ -128,23 +128,23 @@ Konfigurace s výchozími vlivem na aktivaci/decativation.
 
 ### <a name="servicetype"></a>ServiceType
 **ServiceTypeDisableFailureThreshold**: výchozí 1. Prahová hodnota počtu selhání, po které se FailoverManager (FM) upozorní na zakázání typu služby v tomto uzlu a pro umístění zkuste použít jiný uzel.
-**ServiceTypeDisableGraceInterval**: výchozí hodnota je 30 sec. časový interval, po kterém může být typ služby zakázán.
+**ServiceTypeDisableGraceInterval**: výchozí hodnota je 30 sekund. Časový interval, po kterém může být typ služby zakázán.
 **ServiceTypeRegistrationTimeout**: výchozí hodnota je 300 s. Časový limit pro ServiceType k registraci v Service Fabric.
 
 ### <a name="activation"></a>Aktivace
-**ActivationRetryBackoffInterval**: výchozí interval 10 sec. omezení rychlosti při každé chybě aktivace.
+**ActivationRetryBackoffInterval**: výchozí hodnota je 10 sekund. Interval omezení rychlosti při každé chybě aktivace
 **ActivationMaxFailureCount**: výchozí 20. Maximální počet, který systém před tím, než se znovu pokusí o aktivaci, se nezdařil. 
 **ActivationRetryBackoffExponentiationBase**: výchozí 1,5.
-**ActivationMaxRetryInterval**: výchozí hodnota 3600 s. maximální počet pro aktivaci při selhání.
+**ActivationMaxRetryInterval**: výchozí hodnota je 3600 s. Maximální počet Back-off pro aktivaci při selhání.
 **CodePackageContinuousExitFailureResetInterval**: výchozí hodnota je 300 s. Časový limit pro resetování čítače selhání nepřetržitého ukončení pro CodePackage.
 
 ### <a name="download"></a>Stáhnout
 **DeploymentRetryBackoffInterval**: výchozí hodnota 10. Záložní interval pro selhání nasazení.
-**DeploymentMaxRetryInterval**: výchozí hodnota 3600 s. Maximální doba pro nasazení při selhání.
+**DeploymentMaxRetryInterval**: výchozí hodnota je 3600 s. Maximální počet Back-off pro nasazení při selhání.
 **DeploymentMaxFailureCount**: výchozí 20. Nasazení aplikace se bude opakovat po DeploymentMaxFailureCount dobu, než dojde k selhání nasazení této aplikace na uzlu.
 
 ### <a name="deactivation"></a>Deaktivaci
-**DeactivationScanInterval**: výchozí hodnota 600 sec. minimální čas poskytnutý ServicePack k hostování repliky, pokud nikdy nehostuje žádnou repliku, tj. Pokud se nepoužívá.
+**DeactivationScanInterval**: výchozí hodnota je 600 s. Minimální doba, kterou má ServicePack hostovat repliku, pokud nikdy nehostuje žádnou repliku, tj. Pokud se nepoužívá.
 **DeactivationGraceInterval**: výchozí hodnota je 60 s. Čas poskytnutý ServicePack k hostování znovu další repliky, jakmile bude hostitelem jakékoli repliky v případě modelu **sdíleného** procesu.
 **ExclusiveModeDeactivationGraceInterval**: výchozí hodnota 1 s. Čas poskytnutý ServicePack pro opětovné hostování jiné repliky, jakmile hostuje jakoukoli repliku v případě **exkluzivního** modelu procesu.
 

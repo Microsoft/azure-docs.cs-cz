@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform
 ms.openlocfilehash: e3b4bd007ec2f4315ccd7d8581113e116db693ef
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90068423"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Povolení monitorování clusteru Azure Kubernetes Service (AKS) již nasazeného
@@ -24,9 +24,9 @@ Můžete povolit monitorování clusteru AKS, který je už nasazený, pomocí j
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
-## <a name="enable-using-azure-cli"></a>Povolit pomocí Azure CLI
+## <a name="enable-using-azure-cli"></a>Povolení pomocí Azure CLI
 
 Následující krok umožňuje monitorovat cluster AKS pomocí Azure CLI. V tomto příkladu není nutné předem vytvořit nebo zadat existující pracovní prostor. Tento příkaz zjednodušuje proces vytvořením výchozího pracovního prostoru ve výchozí skupině prostředků v rámci předplatného clusteru AKS, pokud ještě neexistuje v oblasti.  Výchozí vytvořený pracovní prostor se podobá formátu *DefaultWorkspace- \<GUID> - \<Region> *.
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 7cff009d5d1e187e8d0330fadca530b57b3e3d21
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935207"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Průvodce importem dat pro Azure Kognitivní hledání
@@ -68,14 +68,14 @@ Tuto jednu tabulku nebo zobrazení byste měli vytvořit před spuštěním prů
 | [**Azure SQL Database nebo spravovaná instance SQL**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |Název služby, přihlašovací údaje uživatele s oprávněním ke čtení a název databáze můžete zadat na této stránce nebo přes připojovací řetězec technologie ADO.NET. Chcete-li zobrazit nebo přizpůsobit vlastnosti, zvolte možnost připojovacího řetězce. <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat.|
 | **SQL Server na virtuálním počítači Azure** |Zadejte plně kvalifikovaný název služby, ID uživatele a heslo a databázi jako připojovací řetězec. Abyste mohli použít tento zdroj dat, je třeba mít v místním úložišti dříve nainstalovaný certifikát šifrující připojení. Pokyny najdete v tématu [připojení k virtuálnímu počítači SQL do Azure kognitivní hledání](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Na této stránce je třeba určit tabulku nebo zobrazení poskytující sadu řádků. Tato možnost se zobrazí po úspěšném připojení v podobě rozevíracího seznamu, ze kterého můžete vybírat. |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|Požadavky zahrnují účet, databázi a kolekci. Všechny dokumenty v kolekci budou zahrnuty v indexu. Můžete definovat dotaz pro sloučení nebo filtrování sady řádků nebo nechat dotaz prázdný. V tomto průvodci není vyžadován dotaz.|
-| [**Blob Storage Azure**](search-howto-indexing-azure-blob-storage.md) |Požadavky zahrnují účet úložiště a kontejner. Pokud se názvy objektů blob řídí zásadami virtuálního pojmenovávání pro účely seskupování, můžete volitelně zadat část názvu obsahující virtuální adresář jako složku v kontejneru. Další informace najdete v tématu [Indexování služby Blob Storage](search-howto-indexing-azure-blob-storage.md). |
-| [**Azure Table Storage**](search-howto-indexing-azure-tables.md) |Požadavky zahrnují účet úložiště a název tabulky. Volitelně můžete zadat dotaz pro načtení podmnožiny tabulek. Další informace najdete v tématu [Indexování služby Table Storage](search-howto-indexing-azure-tables.md). |
+| [**Azure Blob Storage**](search-howto-indexing-azure-blob-storage.md) |Požadavky zahrnují účet úložiště a kontejner. Pokud se názvy objektů blob řídí zásadami virtuálního pojmenovávání pro účely seskupování, můžete volitelně zadat část názvu obsahující virtuální adresář jako složku v kontejneru. Další informace najdete v tématu [Indexování služby Blob Storage](search-howto-indexing-azure-blob-storage.md). |
+| [**Table Storage Azure**](search-howto-indexing-azure-tables.md) |Požadavky zahrnují účet úložiště a název tabulky. Volitelně můžete zadat dotaz pro načtení podmnožiny tabulek. Další informace najdete v tématu [Indexování služby Table Storage](search-howto-indexing-azure-tables.md). |
 
 ## <a name="wizard-output"></a>Výstup Průvodce
 
 Na pozadí Průvodce vytvoří, nakonfiguruje a vyvolá následující objekty. Po spuštění Průvodce můžete jeho výstup najít na stránkách portálu. Stránka přehled vaší služby obsahuje seznam indexů, indexerů, zdrojů dat a dovednosti. Definice indexů se dají zobrazit v plném formátu JSON na portálu. Pro jiné definice můžete použít [REST API](/rest/api/searchservice/) k získání konkrétních objektů.
 
-| Objekt | Popis | 
+| Objekt | Description | 
 |--------|-------------|
 | [Zdroj dat](/rest/api/searchservice/create-data-source)  | Uchovává informace o připojení ke zdrojovým datům, včetně přihlašovacích údajů. Objekt zdroje dat se používá výhradně s indexery. | 
 | [Index](/rest/api/searchservice/create-index) | Fyzická datová struktura, která se používá pro fulltextové vyhledávání a další dotazy. | 

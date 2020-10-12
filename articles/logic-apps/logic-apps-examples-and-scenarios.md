@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 207b597bc865c8234d447759ab8b0f53dc35413c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87090276"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Běžné scénáře, ukázky, kurzy a návody pro Azure Logic Apps
@@ -117,7 +117,7 @@ Můžete plně vyvíjet a nasazovat aplikace logiky pomocí sady Visual Studio, 
 * [Vytváření a Správa účtů pro integraci pro podniková integrace B2B](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 * [Správa prostředí ISE (Integration Service Environment) v Azure Logic Apps](../logic-apps/ise-manage-integration-service-environment.md)
 
-### <a name="monitor"></a>Monitorování
+### <a name="monitor"></a>Monitor
 
 * [Monitorování stavu spuštění, zobrazení historie aktivačních událostí a nastavení upozornění pro Azure Logic Apps](../logic-apps/monitor-logic-apps.md)
 * [Nastavení protokolů Azure Monitor a shromažďování diagnostických dat pro Azure Logic Apps](../logic-apps/monitor-logic-apps-log-analytics.md)
@@ -128,7 +128,7 @@ Můžete plně vyvíjet a nasazovat aplikace logiky pomocí sady Visual Studio, 
 
 Pomocí mnoha funkcí v [jazyce Azure Logic Apps definice pracovního postupu](https://aka.ms/logicappsdocs)můžete získat přístup k více typům obsahu, převést je a transformovat. Například můžete převádět mezi řetězci, JSON a XML pomocí `@json()` `@xml()` výrazů pracovního postupu and. Modul Logic Apps zachovává typy obsahu pro zajištění bezztrátového přenosu obsahu mezi službami.
 
-* [Zpracování typů obsahu v Azure Logic Apps](../logic-apps/logic-apps-content-type.md), například `application/` , `application/octet-stream` a`multipart/formdata`
+* [Zpracování typů obsahu v Azure Logic Apps](../logic-apps/logic-apps-content-type.md), například `application/` , `application/octet-stream` a `multipart/formdata`
 * [Referenční příručka k používání funkcí ve výrazech pro Azure Logic Apps a automatizaci](../logic-apps/workflow-definition-language-functions-reference.md)
 * [Schéma jazyka definice pracovního postupu pro Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md)
 

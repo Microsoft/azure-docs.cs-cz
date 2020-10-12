@@ -4,10 +4,10 @@ description: Poskytuje přehled architektury, komponent a procesů, které použ
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.openlocfilehash: 6f95e8f6edaef61a7c5971a46ed4bff1a34e3dbe
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613998"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
@@ -43,8 +43,8 @@ Trezory mají následující funkce:
 - Zálohované položky můžete monitorovat v trezoru, včetně virtuálních počítačů Azure a místních počítačů.
 - Přístup k trezoru můžete spravovat pomocí [řízení přístupu na základě role Azure (RBAC)](../role-based-access-control/role-assignments-portal.md).
 - Určíte, jak se data v trezoru replikují pro redundanci:
-  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Přečtěte si další informace](../storage/common/storage-redundancy.md#locally-redundant-storage).
-  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Přečtěte si další informace](../storage/common/storage-redundancy.md#geo-redundant-storage).
+  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Další informace](../storage/common/storage-redundancy.md#locally-redundant-storage).
+  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Další informace](../storage/common/storage-redundancy.md#geo-redundant-storage).
   - **Zóna – redundantní úložiště (ZRS)**: replikuje vaše data do [zón dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)a zaručuje jejich započet a odolnost dat ve stejné oblasti. [Další informace](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Ve výchozím nastavení používají trezory Recovery Services GRS.
 
@@ -56,7 +56,7 @@ Recovery Services trezory mají následující další funkce:
 
 Azure Backup poskytuje různé agenty zálohování v závislosti na tom, jaký typ počítače se zálohuje:
 
-**Agent** | **Podrobnosti**
+**Agenta** | **Podrobnosti**
 --- | ---
 **Agent MARS** | <ul><li>Spouští se na jednotlivých místních počítačích Windows serveru pro zálohování souborů, složek a stavu systému.</li> <li>Spouští se na virtuálních počítačích Azure pro zálohování souborů, složek a stavu systému.</li> <li>Spouští na serverech DPM nebo MABS k zálohování místního úložiště aplikace DPM/MABS do Azure.</li></ul>
 **Rozšíření virtuálního počítače Azure** | Spustí se na virtuálních počítačích Azure, které je zálohují do trezoru.
@@ -98,10 +98,10 @@ Následující tabulka shrnuje podporované funkce pro různé typy zálohován�
 
 **Funkce** | **Přímé zálohování souborů a složek (pomocí agenta MARS)** | **Zálohování virtuálních počítačů Azure** | **Počítače nebo aplikace s DPM/MABS**
 --- | --- | --- | ---
-Zálohování do trezoru | ![Ano][green] | ![Ano][green] | ![Ano][green]
-Zálohování na disk DPM/MABS, potom do Azure | | | ![Ano][green]
-Komprimovat data odesílaná k zálohování | ![Ano][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Ano][green]
-Spustit přírůstkové zálohování |![Ano][green] |![Ano][green] |![Ano][green]
+Zálohování do trezoru | ![Yes][green] | ![Yes][green] | ![Yes][green]
+Zálohování na disk DPM/MABS, potom do Azure | | | ![Yes][green]
+Komprimovat data odesílaná k zálohování | ![Yes][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Yes][green]
+Spustit přírůstkové zálohování |![Yes][green] |![Yes][green] |![Yes][green]
 Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][yellow]<br/><br/> Jenom pro servery DPM/MABS nasazené místně.
 
 ![Klíč tabulky](./media/backup-architecture/table-key.png)

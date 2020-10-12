@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
 ms.openlocfilehash: ebfb175de67d7bb8ea011ac340b57f5d62d9e223
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318802"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Práce s daty s využitím průzkumníka Azure Cosmos 
@@ -35,7 +35,7 @@ Azure Cosmos DB Explorer je samostatné webové rozhraní, které umožňuje zob
 
 4. Otevřete okno **Průzkumník dat** vyberte otevřít na **celé obrazovce**. V místním dialogovém okně můžete zobrazit dvě adresy URL pro přístup – čtení i **zápis** a **čtení**. Tyto adresy URL umožňují dočasně sdílet Azure Cosmos DB účet s ostatními uživateli. Přístup k účtu vyprší během 24 hodin, po kterém se můžete znovu připojit pomocí nové adresy URL pro přístup nebo připojovacího řetězce. 
 
-   **Čtení i zápis** – když sdílíte adresu URL pro čtení i zápis s ostatními uživateli, můžou si zobrazit a upravit databáze, kolekce, dotazy a další prostředky, které jsou přidružené k tomuto konkrétnímu účtu.
+   **Čtení i zápis** – při sdílení adresy URL Read-Write s ostatními uživateli můžou zobrazit a upravit databáze, kolekce, dotazy a další prostředky, které jsou přidružené k tomuto konkrétnímu účtu.
 
    **Číst** – když sdílíte adresu URL jen pro čtení s ostatními uživateli, můžou si Zobrazit databáze, kolekce, dotazy a další prostředky, které jsou přidružené k tomuto konkrétnímu účtu. Pokud třeba chcete sdílet výsledky dotazu s ostatními týmu, kteří nemají přístup k Azure Portal nebo vašemu účtu Azure Cosmos DB, můžete je zadat pomocí této adresy URL.
 

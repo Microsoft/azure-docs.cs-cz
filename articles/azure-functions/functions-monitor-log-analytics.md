@@ -7,10 +7,10 @@ ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 51c611b2565ae0a5a054a45f0aedcb039351b46b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88208362"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Monitorování Azure Functions pomocí protokolů Azure Monitor
@@ -38,7 +38,7 @@ Azure Monitor používá verzi [dotazovacího jazyka Kusto](/azure/kusto/query/)
 
 1. Zadejte **název nastavení diagnostiky**a pak vyberte **Uložit**.
 
-   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Přidat nastavení diagnostiky":::
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Vybrat nastavení diagnostiky":::
 
 ## <a name="user-generated-logs"></a>Uživatelem vygenerované protokoly
 
@@ -89,7 +89,7 @@ Dotaz na vygenerované protokoly:
 
    Azure Functions zapisuje všechny protokoly do tabulky **FunctionAppLogs** pod **LogManagement**. 
 
-   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Okno dotazu v pracovním prostoru Log Analytics":::
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Vybrat nastavení diagnostiky":::
 
 Tady je několik ukázkových dotazů:
 

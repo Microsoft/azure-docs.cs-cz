@@ -9,10 +9,10 @@ ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: e3e2c9aa42ff3189e90f57d7c6e92b2a71f46639
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90061596"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>Kurz: Přesunutí prostředků Azure SQL Database do jiné oblasti
@@ -50,7 +50,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 ## <a name="check-sql-requirements"></a>Ověřit požadavky SQL
 
 1. [Ověřte, jestli](support-matrix-move-region-sql.md) jsou funkce databáze nebo elastického fondu podporované pro přesun do jiné oblasti.
-2. V cílové oblasti vytvořte cílový server pro každý zdrojový server. [Přečtěte si další informace](/azure/azure-sql/database/active-geo-replication-security-configure#how-to-configure-logins-and-users).
+2. V cílové oblasti vytvořte cílový server pro každý zdrojový server. [Další informace](/azure/azure-sql/database/active-geo-replication-security-configure#how-to-configure-logins-and-users).
 4. Pokud jsou databáze šifrované pomocí transparentního šifrování dat (TDE) a používáte vlastní šifrovací klíč v Azure Key Vault, [Přečtěte si, jak](../key-vault/general/move-region.md) přesunout trezory klíčů do jiné oblasti.
 5. Je-li povolena synchronizace dat SQL, je přesouvání členských databází podporováno. Po přesunutí musíte nastavit synchronizaci dat SQL s novou cílovou databází.
 6. Před přesunutím odebrat Pokročilá nastavení zabezpečení dat. Po přesunutí [nakonfigurujte nastavení](/azure/sql-database/sql-database-advanced-data-security) na úrovni SQL Server v cílové oblasti.
@@ -101,7 +101,7 @@ Vyberte prostředky, které chcete přesunout.
 > 
 > - SQL Server je nyní v *nedokončeném stavu ručního přiřazení* .
 > - Další přidané prostředky jsou ve stavu *Příprava čeká na vyřízení* .
-> - Pokud chcete odebrat prostředek z kolekce přesunutí, metoda pro to závisí na tom, kde se nacházíte v procesu přesunutí. [Přečtěte si další informace](remove-move-resources.md).
+> - Pokud chcete odebrat prostředek z kolekce přesunutí, metoda pro to závisí na tom, kde se nacházíte v procesu přesunutí. [Další informace](remove-move-resources.md).
 
 ## <a name="resolve-dependencies"></a>Vyřešit závislosti
 

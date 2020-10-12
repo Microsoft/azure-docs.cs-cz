@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
 ms.openlocfilehash: 99253aa2e7e2e1f3f58f2ab7d5c40a695c2b9690
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654850"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Zrychlené zápisy služby Azure HDInsight pro Apache HBase
@@ -32,7 +32,7 @@ Pokud dojde k selhání **RegionServer** nebo dojde k nedostupnosti předtím, n
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Funkce akcelerovaného zápisu ve službě Azure HDInsight pro Apache HBA
 
-Funkce akcelerované zápisy řeší potíže s vyšší latencí zápisu způsobenou použitím protokolů pro zápis, které jsou v cloudovém úložišti.  Funkce akcelerované zápisy pro clustery HDInsight Apache HBA, připojuje disky spravované na disk SSD ke každému RegionServer (pracovní uzel). Protokoly pro zápis se pak zapisují do systému souborů Hadoop (HDFS) připojeného na tyto úrovně Premium Managed-disks místo cloudového úložiště.  Spravované disky úrovně Premium používají disky SSD (Solid-State Disks) a nabízejí vynikající vstupně-výstupní výkon s odolností proti chybám.  Na rozdíl od nespravovaných disků v případě výpadku jedné jednotky úložiště nebude mít vliv na jiné jednotky úložiště ve stejné skupině dostupnosti.  Výsledkem je, že spravované disky poskytují nízkou latenci zápisu a lepší odolnost pro vaše aplikace. Další informace o discích spravovaných v Azure najdete v tématu [Úvod do služby Azure Managed disks](../../virtual-machines/managed-disks-overview.md).
+Funkce akcelerované zápisy řeší potíže s vyšší latencí zápisu způsobenou použitím protokolů pro zápis, které jsou v cloudovém úložišti.  Funkce akcelerované zápisy pro clustery HDInsight Apache HBA, připojuje disky spravované na disk SSD ke každému RegionServer (pracovní uzel). Protokoly pro zápis se pak zapisují do systému souborů Hadoop (HDFS) připojeného na tyto úrovně Premium Managed-disks místo cloudového úložiště.  Managed Premium – disky používají Solid-State disky (SSD) a nabízejí vynikající vstupně-výstupní výkon s odolností proti chybám.  Na rozdíl od nespravovaných disků v případě výpadku jedné jednotky úložiště nebude mít vliv na jiné jednotky úložiště ve stejné skupině dostupnosti.  Výsledkem je, že spravované disky poskytují nízkou latenci zápisu a lepší odolnost pro vaše aplikace. Další informace o discích spravovaných v Azure najdete v tématu [Úvod do služby Azure Managed disks](../../virtual-machines/managed-disks-overview.md).
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Jak povolit urychlené zápisy pro adaptéry HBA v HDInsight
 

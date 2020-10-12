@@ -12,10 +12,10 @@ ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: a5e69fe855f0c1e99dc3672425d9aeea13d4e827
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297786"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>rozhraní API Bingu pro vyhledávání na webu struktury odpovědí a typů odpovědí  
@@ -304,7 +304,7 @@ Matematický výraz může obsahovat následující symboly:
 
 Matematický výraz může obsahovat následující konstanty:
 
-|Symbol|Popis|
+|Symbol|Description|
 |------------|-----------------|
 |Pi|3,14159...|
 |Chýlení|Chýlení|
@@ -314,9 +314,9 @@ Matematický výraz může obsahovat následující konstanty:
 
 Matematický výraz může obsahovat následující funkce:
 
-|Symbol|Popis|
+|Symbol|Description|
 |------------|-----------------|
-|Seřadit|Druhá odmocnina|
+|Řazení|Druhá odmocnina|
 |Sin [x]; cos [x]; Tan [x]<br />CSc [x], SEK [x], COT [x]|Trigonometrické funkce (s argumenty v radiánech)|
 |ArcSin [x]; ArcCos [x]; ArcTan [x]<br />ArcCsc [x]; ArcSec [x]; ArcCot [x]|Inverzní trigonometrické funkce (poskytující výsledky v radiánech)|
 |EXP [x], E ^ x|Exponenciální funkce|
@@ -435,7 +435,7 @@ Pokud Bing určí, že uživatel může chtít hledat něco jiného, odpověď z
 
 Odpovědi z rozhraní API Bingu pro vyhledávání na webu mohou obsahovat následující hlavičky:
 
-| Záhlaví | Popis |
+| Záhlaví | Description |
 |-|-|
 |`X-MSEdge-ClientID`|Jedinečné ID, které Bingu přiřadilo uživateli|
 |`BingAPIs-Market`|Trh, který se použil ke splnění žádosti|

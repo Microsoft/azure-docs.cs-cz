@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b7324115c880fb1ee4d5a1730a3b84a289cee4b0
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89490135"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-formerly-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat z a do služby Azure synapse Analytics (dříve SQL Data Warehouse) pomocí Azure Data Factory
@@ -145,7 +145,7 @@ GO
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. Podrobnosti najdete v části s možností [opakování](#repeatability-during-copy). |Příkaz dotazu. |No |
-| allowPolyBase |Označuje, zda použít základ (je-li k dispozici) místo mechanismu BULKINSERT. <br/><br/> **Použití základny je doporučeným způsobem, jak načíst data do služby Azure synapse Analytics.** Omezení a podrobnosti najdete v části [použití základu k načtení dat do služby Azure synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) . |Pravda <br/>False (výchozí) |No |
+| allowPolyBase |Označuje, zda použít základ (je-li k dispozici) místo mechanismu BULKINSERT. <br/><br/> **Použití základny je doporučeným způsobem, jak načíst data do služby Azure synapse Analytics.** Omezení a podrobnosti najdete v části [použití základu k načtení dat do služby Azure synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) . |Ano <br/>False (výchozí) |No |
 | polyBaseSettings |Skupina vlastností, které lze zadat, je-li vlastnost **allowPolybase** nastavena na **hodnotu true**. |&nbsp; |No |
 | rejectValue |Určuje počet nebo procento řádků, které lze odmítnout před tím, než se dotaz nezdařil. <br/><br/>Další informace o možnostech odmítnutí základní třídy najdete v části **argumenty** v tématu [vytvoření externí tabulky (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) . |0 (výchozí), 1, 2,... |No |
 | rejectType |Určuje, zda je možnost rejectValue zadána jako hodnota literálu nebo jako procento. |Hodnota (výchozí), procenta |No |
@@ -307,7 +307,7 @@ Data Factory vytvoří tabulku v cílovém úložišti se stejným názvem tabul
 | TinyInt | TinyInt |
 | 40bitového | 40bitového |
 | Decimal | Decimal |
-| Číselný | Decimal |
+| Numeric | Decimal |
 | Float | Float |
 | Peněžní částka | Peněžní částka |
 | Skutečné | Skutečné |
@@ -315,7 +315,7 @@ Data Factory vytvoří tabulku v cílovém úložišti se stejným názvem tabul
 | Binární | Binární |
 | Varbinary | Varbinary (až 8000) |
 | Datum | Datum |
-| Datum a čas | Datum a čas |
+| DateTime | DateTime |
 | DateTime2 | DateTime2 |
 | Čas | Čas |
 | DateTimeOffset | DateTimeOffset |
@@ -348,9 +348,9 @@ Mapování je stejné jako [SQL Server mapování datových typů pro ADO.NET](h
 | binární |Byte [] |
 | bit |Logická hodnota |
 | char |Řetězec, znak [] |
-| date |Datum a čas |
-| Datum a čas |Datum a čas |
-| datetime2 |Datum a čas |
+| date |DateTime |
+| Datum a čas |DateTime |
+| datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary (max)) |Byte [] |
@@ -364,7 +364,7 @@ Mapování je stejné jako [SQL Server mapování datových typů pro ADO.NET](h
 | nvarchar |Řetězec, znak [] |
 | real |Jednoduché |
 | rowversion |Byte [] |
-| smalldatetime |Datum a čas |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Předmětů |

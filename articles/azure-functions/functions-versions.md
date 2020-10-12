@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
 ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88208101"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions – přehled verzí modulu runtime
@@ -28,7 +28,7 @@ Následující tabulka uvádí, které programovací jazyky jsou aktuálně podp
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-Další informace najdete v tématu [podporované jazyky](supported-languages.md).
+Další informace najdete v části o [podporovaných jazycích](supported-languages.md).
 
 ## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>Spustit na konkrétní verzi
 

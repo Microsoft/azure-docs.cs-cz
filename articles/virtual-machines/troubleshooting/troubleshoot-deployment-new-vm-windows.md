@@ -16,10 +16,10 @@ ms.date: 06/15/2018
 ms.author: daberry
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2b2f21cab4740013eb2de1d69f558c95461c493e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87028392"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Řešení potíží s nasazením při vytváření nového virtuálního počítače s Windows v Azure
@@ -51,7 +51,7 @@ Pokud chcete začít řešit potíže, Shromážděte protokoly aktivit a Identi
 
 **N<sup>2</sup>:** Pokud je operační systém specializovaný na Windows a nahraje se jako zobecněný, zobrazí se chyba zřizování virtuálního počítače zablokované na obrazovce OOBE, protože nový virtuální počítač běží s původním názvem počítače, uživatelským jménem a heslem.
 
-**Rozlišení**
+**Řešení**
 
 Chcete-li tyto chyby vyřešit, použijte [příkaz Add-AzVhd k nahrání původního virtuálního pevného disku](/powershell/module/az.compute/add-azvhd), který je k dispozici místně, se stejným nastavením jako v operačním systému (generalizovaná/specializovaná). Pokud se chcete nahrát jako zobecněné, nezapomeňte nejdřív spustit nástroj Sysprep.
 
@@ -61,7 +61,7 @@ Chcete-li tyto chyby vyřešit, použijte [příkaz Add-AzVhd k nahrání původ
 
 **N<sup>4</sup>:** Pokud je operační systém specializovaný na Windows a zachycuje se jako zobecněný, zobrazí se chyba při zřizování, protože nový virtuální počítač běží s původním názvem počítače, uživatelským jménem a heslem. Původní virtuální počítač také nelze použít, protože je označen jako specializovaný.
 
-**Rozlišení**
+**Řešení**
 
 Chcete-li tyto chyby vyřešit, odstraňte aktuální bitovou kopii z portálu a znovu [ji Zachyťte z aktuálních virtuálních pevných disků](../windows/create-vm-specialized.md) se stejným nastavením jako u operačního systému (generalizovaná/specializovaná).
 

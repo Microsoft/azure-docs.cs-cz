@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 49c389170e9d586a2001009226c6542d4d152f7f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87418215"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Správa uživatelských nastavení pro Azure Multi-Factor Authentication
@@ -26,7 +26,7 @@ Pro usnadnění správy uživatelů Azure Multi-Factor Authentication můžete v
 
 Pokud jste přiřadili roli *Správce ověřování* , můžete vyžadovat, aby uživatelé resetoval heslo, znovu zaregistrovali MFA nebo odvolali stávající relace MFA z jejich uživatelského objektu. Pokud chcete spravovat uživatelská nastavení, proveďte následující kroky:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Vlevo vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
 1. Zvolte uživatele, u kterého chcete provést akci, a vyberte **metody ověřování**. V horní části okna vyberte jednu z následujících možností pro uživatele:
    - **Resetovat heslo** obnoví heslo uživatele a přiřadí dočasné heslo, které se musí při příštím přihlášení změnit.
@@ -45,7 +45,7 @@ V případě potřeby můžete odstranit všechna hesla aplikací, která uživa
 
 Pokud chcete odstranit hesla aplikací uživatele, proveďte následující kroky:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Na levé straně vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 1. Vyberte **Multi-Factor Authentication**. Pokud chcete zobrazit tuto možnost nabídky, možná se budete muset posunout doprava. Kliknutím na ukázkový snímek obrazovky zobrazíte celé Azure Portal okno a umístění nabídky: [ ![ Vyberte Multi-Factor Authentication z okna uživatelé ve službě Azure AD.](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Zaškrtněte políčko u uživatelů, které chcete spravovat. Zobrazí se seznam možností rychlého kroku na pravé straně.

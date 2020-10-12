@@ -9,10 +9,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9810a34021aa039354aad24f84aff373229c0190
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87021473"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Nasazení virtuálního pole StorSimple – zřizování ve VMware
@@ -196,10 +196,10 @@ Pomocí následujících kroků spusťte své virtuální zařízení a připojt
    ![Snímek obrazovky s kartou konzoly klienta vSphere Pole pro heslo je prázdné.](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. Z bezpečnostních důvodů platnost hesla správce zařízení vyprší po prvním přihlášení. Zobrazí se výzva ke změně hesla.
 
-   ![Snímek obrazovky karty konzoly klienta vSphere. text na stránce uvádí, že je nutné změnit heslo.](./media/storsimple-virtual-array-deploy2-provision-vmware/image39.png)
+   ![Snímek obrazovky s kartou konzoly klienta vSphere Text na stránce uvádí, že je nutné změnit heslo.](./media/storsimple-virtual-array-deploy2-provision-vmware/image39.png)
 4. Zadejte heslo, které obsahuje minimálně 8 znaků. Heslo musí obsahovat 3 z 4 z těchto požadavků: velká písmena, malá písmena, číslice a speciální znaky. Znovu zadejte heslo, abyste ho potvrdili. Zobrazí se oznámení o změně hesla.
 
-   ![Snímek obrazovky karty konzoly klienta vSphere. text na stránce uvádí, že došlo ke změně hesla.](./media/storsimple-virtual-array-deploy2-provision-vmware/image40.png)
+   ![Snímek obrazovky s kartou konzoly klienta vSphere Text na stránce uvádí, že bylo změněno heslo.](./media/storsimple-virtual-array-deploy2-provision-vmware/image40.png)
 5. Po úspěšném dokončení změny hesla se virtuální zařízení může restartovat. Počkejte, než se restart dokončí. Konzola prostředí Windows PowerShell v zařízení se může zobrazit spolu s indikátorem průběhu.
 
    ![Snímek obrazovky znázorňující okno konzoly s indikátorem průběhu Text v okně uvádí, že počáteční nastavení pokračuje, a požádá uživatele, aby čekal.](./media/storsimple-virtual-array-deploy2-provision-vmware/image41.png)
@@ -210,12 +210,12 @@ Pomocí následujících kroků spusťte své virtuální zařízení a připojt
    Dále nakonfigurujte síť.
 7. Pomocí `Get-HcsIpAddress` příkazu uveďte síťová rozhraní povolená na virtuálním zařízení. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `Ethernet`.
 
-   ![Snímek obrazovky s výstupem příkazu Get-HcsIpAddress, který zobrazuje okno konzoly "Síť Ethernet" je uvedena jako název zařízení.](./media/storsimple-virtual-array-deploy2-provision-vmware/image43m.png)
+   ![Snímek obrazovky znázorňující okno konzoly s výstupem příkazu Get-HcsIpAddress. "Síť Ethernet" je uvedena jako název zařízení.](./media/storsimple-virtual-array-deploy2-provision-vmware/image43m.png)
 8. Pomocí rutiny `Set-HcsIpAddress` nakonfigurujte síť. Příklad najdete níže:
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
-    ![Snímek obrazovky s oknem konzoly s výstupem příkazu Get-Help Set-HcsIpAddress a správného použití příkazu set-HcsIpAddress](./media/storsimple-virtual-array-deploy2-provision-vmware/image44.png)
+    ![Snímek obrazovky s oknem konzoly s výstupem příkazu Get-Help Set-HcsIpAddress a správného použití příkazu Set-HcsIpAddress](./media/storsimple-virtual-array-deploy2-provision-vmware/image44.png)
 9. Po dokončení počátečního nastavení a spuštění zařízení se zobrazí text banneru zařízení. Poznamenejte si IP adresu a adresu URL pro správu zařízení, které se zobrazí v textu banneru. Pomocí této IP adresy se připojíte k webovému uživatelskému rozhraní virtuálního zařízení a dokončete místní nastavení a registraci.
 
    ![Snímek obrazovky znázorňující okno konzoly s textem banneru zařízení Tento text obsahuje IP adresu zařízení a adresu URL.](./media/storsimple-virtual-array-deploy2-provision-vmware/image45.png)

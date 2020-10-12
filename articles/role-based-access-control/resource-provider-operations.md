@@ -10,10 +10,10 @@ ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
 ms.openlocfilehash: ade4a6b791a8aca963a056800bd8c58767aeb766
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400090"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
@@ -121,7 +121,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft. DevTestLab](#microsoftdevtestlab) |
 | [Microsoft. LabServices](#microsoftlabservices) |
 | [Microsoft. VisualStudio](#microsoftvisualstudio) |
-| **Migrace** |
+| **Migrate** |
 | [Microsoft. migruje](#microsoftmigrate) |
 | [Microsoft. OffAzure](#microsoftoffazure) |
 | **Monitorování** |
@@ -1421,7 +1421,7 @@ Služba Azure: [Azure Data box](../databox/index.yml)
 > | Microsoft. DataBox/Operations/Read | Vypíše nebo získá operace. |
 > | **Akce dataaction** | **Popis** |
 > | Microsoft. DataBox/Register/Action | Registrovat poskytovatele Microsoft. Databox |
-> | Microsoft. DataBox/zrušit registraci/akce | Zrušit registraci poskytovatele Microsoft. Databox |
+> | Microsoft. DataBox/zrušit registraci/akce | Poskytovatel Un-Register Microsoft. Databox |
 > | Microsoft. DataBox/Jobs/Cancel/Action | Zruší probíhající objednávku. |
 > | Microsoft. DataBox/Jobs/bookShipmentPickUp/Action | Umožňuje rezervovat vyzvednutí pro návratové dodávky. |
 > | Microsoft. DataBox/Jobs/listCredentials/Action | Zobrazí nešifrované přihlašovací údaje související s objednávkou. |
@@ -2606,7 +2606,7 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/staticSites/customdomains/ověřit/akce | Ověření, jestli se vlastní doména dá přidat ke statické lokalitě |
 > | Microsoft. Web/staticSites/Functions/Read | Seznam funkcí pro statický Web |
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Kontejnery
 
 ### <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
@@ -5667,7 +5667,7 @@ Služba Azure: [API Management](../api-management/index.yml)
 > | Microsoft. ApiManagement/Service/policyDescriptions/Read | Zobrazí seznam všech popisů zásad. |
 > | Microsoft. ApiManagement/Service/policySnippets/Read | Vypíše všechny fragmenty zásad. |
 > | Microsoft. ApiManagement/Service/portalSettings/Read | Vypíše kolekci nastavení portálu. Můžete také získat nastavení pro přihlášení k portálu nebo získat nastavení pro registraci portálu nebo získat nastavení delegování pro portál. |
-> | Microsoft. ApiManagement/Service/portalSettings/Write | Aktualizujte nastavení přihlášení. nebo vytvořte nebo aktualizujte nastavení přihlášení. nebo aktualizovat nastavení registrace nebo aktualizovat nastavení registrace nebo aktualizovat nastavení delegování. nebo vytvořte nebo aktualizujte nastavení delegování. |
+> | Microsoft. ApiManagement/Service/portalSettings/Write | Aktualizujte nastavení Sign-In. nebo vytvořte nebo aktualizujte nastavení Sign-In. nebo aktualizovat nastavení registrace nebo aktualizovat nastavení registrace nebo aktualizovat nastavení delegování. nebo vytvořte nebo aktualizujte nastavení delegování. |
 > | Microsoft. ApiManagement/Service/portalSettings/listSecrets/Action | Získá ověřovací klíč nastavení delegování portálu. nebo Získá identifikátor URI kontejneru objektů BLOB mediálního obsahu. |
 > | Microsoft. ApiManagement/Service/Products/Read | Vypíše kolekci produktů v zadané instanci služby. nebo získá podrobnosti o produktu určeném jeho identifikátorem. |
 > | Microsoft. ApiManagement/Service/Products/Write | Vytvoří nebo aktualizuje produkt. nebo aktualizuje existující podrobnosti o produktu. |
@@ -6287,8 +6287,8 @@ Služba Azure: Azure Active Directory
 > | Microsoft. aadiam/diagnosticsettings/Read | Čtení nastavení diagnostiky |
 > | Microsoft. aadiam/diagnosticsettings/DELETE | Odstranění nastavení diagnostiky |
 > | Microsoft. aadiam/diagnosticsettingscategories/Read | Čtení kategorií nastavení diagnostiky |
-> | Microsoft. aadiam/metricDefinitions/Read | Čtení definic metrik na úrovni tenanta |
-> | Microsoft. aadiam/metriky/číst | Čtení metrik na úrovni tenanta |
+> | Microsoft. aadiam/metricDefinitions/Read | Načítají se Tenant-Level definice metrik. |
+> | Microsoft. aadiam/metriky/číst | Načítají se Tenant-Level metriky. |
 > | Microsoft. aadiam/privateLinkForAzureAD/Read | Přečíst definici zásad privátního propojení |
 > | Microsoft. aadiam/privateLinkForAzureAD/Write | Vytvoření a aktualizace definice zásad privátního propojení |
 > | Microsoft. aadiam/privateLinkForAzureAD/DELETE | Odstranit definici zásad privátního propojení |
@@ -6867,7 +6867,7 @@ Služba Azure: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 > | Microsoft. VisualStudio/Project/DELETE | Odstranit projekt |
 > | Microsoft. VisualStudio/Project/Read | Přečíst projekt |
 
-## <a name="migrate"></a>Migrace
+## <a name="migrate"></a>Migrate
 
 ### <a name="microsoftmigrate"></a>Microsoft. migruje
 
@@ -7216,7 +7216,7 @@ Služba Azure: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. OffAzure/VMwareSites/servery vCenter/Read | Získá vlastnosti VMware vCenter. |
 > | Microsoft. OffAzure/VMwareSites/servery vCenter/Write | Vytvoří nebo aktualizuje VMware vCenter. |
 
-## <a name="monitor"></a>Monitorování
+## <a name="monitor"></a>Monitor
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 

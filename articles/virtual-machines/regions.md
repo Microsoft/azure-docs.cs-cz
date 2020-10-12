@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
 ms.openlocfilehash: 094b78fa35da451101f4f5664cca46292d78d146
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88650549"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Oblasti pro virtuální počítače v Azure
@@ -75,8 +75,8 @@ V následující tabulce najdete stručný přehled rozdílů jednotlivých typ�
 
 | Strategie replikace | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| Data se replikují napříč různými zařízeními. |Ne |Ano |Ano |Ano |
-| Data je možné načíst ze sekundárního i primárního umístění. |Ne |Ne |Ne |Ano |
+| Data se replikují napříč různými zařízeními. |No |Yes |Yes |Yes |
+| Data je možné načíst ze sekundárního i primárního umístění. |No |No |No |Yes |
 | Počet kopií dat uchovávaných na samostatných uzlech |3 |3 |6 |6 |
 
 Další informace o [možnostech replikace služby Azure Storage najdete tady](../storage/common/storage-redundancy.md). Další informace o spravovaných discích najdete v tématu [Přehled služby Azure Managed Disks](./managed-disks-overview.md).
@@ -85,10 +85,10 @@ Další informace o [možnostech replikace služby Azure Storage najdete tady](.
 Ceny se liší v závislosti na zvolené dostupnosti a typu úložiště.
 
 **Spravované disky Azure**
-* Premium Managed Disks jsou zajištěny jednotkami SSD (Solid-State Drive) a standardními Managed Disks jsou zajištěny pomocí běžných rotujících disků. Spravované disky úrovně Premium i Standard se účtují na základě zřízené kapacity disku.
+* Premium Managed Disks jsou zajištěny Solid-State jednotkami (SSD) a standardními Managed Disksmi, které jsou zálohovány pomocí běžných rotujících disků. Spravované disky úrovně Premium i Standard se účtují na základě zřízené kapacity disku.
 
 **Nespravované disky**
-* Premium Storage se zálohuje na jednotky SSD (Solid-State Drive) a účtuje se na základě kapacity disku.
+* Premium Storage se zálohuje pomocí Solid-Statech jednotek (SSD) a účtuje se na základě kapacity disku.
 * Storage úrovně Standard se zálohuje pomocí běžných rotujících disků a účtuje se na základě využité kapacity a požadované dostupnosti úložiště.
   * Za přenos dat geografické replikace se u RA-GRS účtují navíc náklady na šířku pásma pro replikaci těchto dat do jiné oblasti Azure.
 

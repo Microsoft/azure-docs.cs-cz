@@ -14,10 +14,10 @@ ms.date: 07/15/2019
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 0c7b1cb8be1768e709aaf68a4db9a3a405419833
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89077802"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-with-azure-powershell-script-sample-preview"></a>Konfigurace koncových bodů IPv6 ve virtuální síti pomocí ukázkového skriptu Azure PowerShell (Preview)
@@ -28,7 +28,7 @@ Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Před nasazením duální aplikace stacku do Azure musíte nakonfigurovat předplatné jenom jednou pro tuto funkci verze Preview pomocí následujících Azure PowerShell:
 
 Zaregistrujte se následujícím způsobem:

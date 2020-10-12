@@ -6,10 +6,10 @@ ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 5ff6e0ffd4040393a040dc67a511aab47887f6e1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186261"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>Povolení řešení Change Tracking a Inventory z virtuálního počítače Azure
@@ -19,7 +19,7 @@ Tento článek popisuje, jak můžete pomocí virtuálního počítače Azure po
 > [!NOTE]
 > Při povolování Change Tracking a inventáře jsou podporovány pouze určité oblasti pro propojení Log Analyticsho pracovního prostoru a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet Automation](./index.yml) pro správu počítačů.

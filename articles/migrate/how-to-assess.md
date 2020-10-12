@@ -4,10 +4,10 @@ description: Naučte se přidávat nástroje pro posouzení do Azure Migrate.
 ms.topic: how-to
 ms.date: 04/26/2020
 ms.openlocfilehash: 5151135a57b7c2780485d85299ead5df83ea851e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86122111"
 ---
 # <a name="add-assessment-tools"></a>Přidání nástrojů pro vyhodnocení

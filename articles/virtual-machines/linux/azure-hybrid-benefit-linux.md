@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
 ms.openlocfilehash: d62eaf96354627e0c1e4e0a31bb16fb3265f66ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91279769"
 ---
 # <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Verze Preview: Zvýhodněné hybridní využití Azure – jak se vztahuje Linux Virtual Machines
@@ -47,7 +47,7 @@ Rezervované instance, vyhrazené hostitele a zvýhodněné hybridní využití 
 
 Zvýhodněné hybridní využití Azure je aktuálně ve fázi Preview pro virtuální počítače se systémem Linux. Jakmile získáte přístup k verzi Preview, můžete povolit zvýhodnění pomocí Azure Portal nebo Azure CLI.
 
-### <a name="preview"></a>Náhled
+### <a name="preview"></a>Preview
 
 V této fázi můžete získat přístup k výhodám vyplněním formuláře [zde](https://aka.ms/ahb-linux-form). Po vyplnění formuláře budou vaše předplatná Azure pro tuto výhodu povolené a obdržíte potvrzení od Microsoftu do tří pracovních dnů.
 

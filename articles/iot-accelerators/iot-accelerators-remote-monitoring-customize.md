@@ -10,10 +10,10 @@ ms.date: 11/09/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: 2789ed642979616a4491a61d146d8468552ec2e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318445"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Přizpůsobení akcelerátoru řešení vzdáleného monitorování
@@ -32,7 +32,7 @@ Následující kroky popisují proces nastavení místního prostředí pro výv
 
 1. Nasaďte **základní** instanci akcelerátoru řešení pomocí rozhraní příkazového řádku pro **počítače** . Poznamenejte si název vašeho nasazení a přihlašovací údaje, které jste zadali pro virtuální počítač. Další informace najdete v tématu [nasazení pomocí rozhraní](iot-accelerators-remote-monitoring-deploy-cli.md)příkazového řádku.
 
-1. Pokud chcete povolit přístup SSH k virtuálnímu počítači, který je hostitelem mikroslužeb ve vašem řešení, použijte Azure Portal nebo Azure Cloud Shell. Příklad:
+1. Pokud chcete povolit přístup SSH k virtuálnímu počítači, který je hostitelem mikroslužeb ve vašem řešení, použijte Azure Portal nebo Azure Cloud Shell. Například:
 
     ```azurecli-interactive
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -40,7 +40,7 @@ Následující kroky popisují proces nastavení místního prostředí pro výv
 
     Povolit přístup přes SSH jenom během testu a vývoje. Pokud povolíte SSH, [měli byste ho po dokončení používání zakázat](../security/fundamentals/network-best-practices.md#disable-rdpssh-access-to-virtual-machines).
 
-1. Pomocí Azure Portal nebo Azure Cloud Shell vyhledejte název a veřejnou IP adresu vašeho virtuálního počítače. Příklad:
+1. Pomocí Azure Portal nebo Azure Cloud Shell vyhledejte název a veřejnou IP adresu vašeho virtuálního počítače. Například:
 
     ```azurecli-interactive
     az resource list --resource-group {your solution name} -o table

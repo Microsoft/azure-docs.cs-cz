@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.openlocfilehash: f1d8715fcadeda5ccd1a98192a70939b0c359c88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84976672"
 ---
 # <a name="skillset-concepts-in-azure-cognitive-search"></a>Dovednosti koncepty v Azure Kognitivní hledání
@@ -85,7 +85,7 @@ První dvě dovednosti jsou uvedené níže:
 }
 ```
 > [!NOTE]
-> Komplexní dovednosti můžete vytvářet pomocí smyček a větvení, a to pomocí [podmíněné dovednosti](cognitive-search-skill-conditional.md) pro vytváření výrazů. Syntaxe je založena na zápisu cesty [ukazatele JSON](https://tools.ietf.org/html/rfc6901) , s několika úpravami k identifikaci uzlů ve stromu obohacení. Ve `"/"` stromové struktuře projde nižší úroveň a `"*"` funguje jako operátor for-each v kontextu. Syntaxe je znázorněna v mnoha příkladech v tomto článku. 
+> Komplexní dovednosti můžete vytvářet pomocí smyček a větvení, a to pomocí [podmíněné dovednosti](cognitive-search-skill-conditional.md) pro vytváření výrazů. Syntaxe je založena na zápisu cesty [ukazatele JSON](https://tools.ietf.org/html/rfc6901) , s několika úpravami k identifikaci uzlů ve stromu obohacení. Ve `"/"` stromové struktuře projde nižší úroveň a  `"*"` funguje jako operátor for-each v kontextu. Syntaxe je znázorněna v mnoha příkladech v tomto článku. 
 
 ### <a name="enrichment-tree"></a>Strom obohacení
 
@@ -99,7 +99,7 @@ Jakmile je dokument v kanálu obohacení, je reprezentován jako strom obsahu a 
 |---|---|---|
 |Blob Storage|/document/content<br>/Document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
 |SQL|/document/{column1}<br>/document/{column2}<br>…|Není k dispozici |
-|Databáze Cosmos|/document/{key1}<br>/document/{key2}<br>…|Není k dispozici|
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|Není k dispozici|
 
  Při provádění dovedností přidávají nové uzly do stromu obohacení. Tyto nové uzly pak mohou být použity jako vstupy pro dovednosti s využitím pro příjem dat, projekci do obchodu Knowledge Store nebo mapování na pole indexu. Rozšíření nejsou proměnlivá: po vytvoření se uzly nedají upravovat. Vzhledem k tomu, že vaše dovednostiy jsou složitější, takže se strom pro rozšíření, ale ne všechny uzly ve stromu pro rozšíření, nemusí dělat na index nebo na obchod znalostní báze. 
 
@@ -223,7 +223,7 @@ Chcete-li příklad zvětšit, můžete odebrat vložené tvarování a použít
 
 #### <a name="shaper-skill-and-projection"></a>Shaper dovednosti a projekce
 
-This 
+Tento 
 
 > [!Note]
 > Některé sloupce z tabulky dokumentů byly z tohoto příkladu odebrány pro zkrácení.

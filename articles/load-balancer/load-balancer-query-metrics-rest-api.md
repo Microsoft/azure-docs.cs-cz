@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: allensu
 ms.openlocfilehash: 3b5aedb20bc7a8d2aa6f3aa3d8691a71af4cd3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808371"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>Získat Load Balancer metriky využití pomocí REST API
@@ -38,16 +38,16 @@ Jsou vyžadovány následující hlavičky:
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
 |*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
-|*Authorization:*|Povinná hodnota. Nastavte na platný  [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients)`Bearer`. |  
+|*Authorization:*|Povinná hodnota. Nastavte na platný [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients) `Bearer`. |  
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-| Name | Description |
+| Název | Popis |
 | :--- | :---------- |
 | subscriptionId | ID předplatného, které identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | resourceGroupName | Název skupiny prostředků, která obsahuje prostředek. Tuto hodnotu můžete získat z rozhraní Azure Resource Manager API, CLI nebo na portálu. |
 | loadBalancerName | Název Azure Load Balancer. |
-| názvy metrik | Čárkami oddělený seznam platných [metrik Load Balancer](/azure/load-balancer/load-balancer-standard-diagnostics). |
+| názvy metrik | Čárkami oddělený seznam platných  [metrik Load Balancer](/azure/load-balancer/load-balancer-standard-diagnostics). |
 | verze-api | Verze rozhraní API, která se má použít pro požadavek<br /><br /> Tento dokument popisuje verzi rozhraní API `2018-01-01` , která je součástí výše uvedené adresy URL.  |
 | timespan | Časové rozpětí dotazu. Jedná se o řetězec s následujícím formátem `startDateTime_ISO/endDateTime_ISO` . Tento volitelný parametr je nastaven tak, aby v příkladu vrátil data o hodnotě dne. |
 | &nbsp; | &nbsp; |

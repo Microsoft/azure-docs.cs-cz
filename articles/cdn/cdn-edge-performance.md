@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887706"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analýza výkonu hraničního uzlu v Microsoft Azure CDN
@@ -173,8 +173,8 @@ Každá sestava v tomto modulu obsahuje graf a statistiku využití šířky pá
 | Typy komprese |Obsahuje prstencový graf, který rozděluje požadované prostředky podle toho, zda byly komprimovány našimi hraničními servery. Procento komprimovaných prostředků je rozděleno podle použitého typu komprese. Podrobné informace jsou uvedeny pod grafem pro každý typ a stav komprese. |
 | Typy souborů |Obsahuje pruhový graf, který zobrazuje prvních 10 typů souborů, které byly vyžádány prostřednictvím našeho CDN pro váš účet. Pro účely této sestavy je typ souboru definovaný příponou názvu souboru prostředku a typem internetového média (např. HTML \[ text/HTML \] ,. htm \[ text/HTML \] ,. aspx \[ text/HTML \] atd.). Podrobné informace jsou uvedené pod grafem pro nejvyšší 100 typy souborů. |
 | Jedinečné soubory |Obsahuje graf, který zobrazuje celkový počet jedinečných prostředků, které byly vyžádány v určitém dni určitého dne v zadaném časovém období. |
-| Souhrn ověření tokenu |Obsahuje výsečový graf, který poskytuje rychlý přehled o tom, zda byly požadované prostředky chráněny ověřováním na základě tokenu. Chráněné prostředky se v grafu zobrazí podle výsledků jejich pokusů o ověření. |
-| Podrobnosti zamítnutí ověření tokenu |Obsahuje pruhový graf, který umožňuje zobrazit prvních 10 požadavků, které byly zamítnuty z důvodu ověřování založeného na tokenech. |
+| Souhrn ověření tokenu |Obsahuje výsečový graf, který poskytuje rychlý přehled o tom, zda byly požadované prostředky chráněny ověřováním Token-Based. Chráněné prostředky se v grafu zobrazí podle výsledků jejich pokusů o ověření. |
+| Podrobnosti zamítnutí ověření tokenu |Obsahuje pruhový graf, který umožňuje zobrazit prvních 10 požadavků, které byly zamítnuty kvůli Token-Based ověřování. |
 | Kódy odpovědí HTTP |Poskytuje rozpis stavových kódů HTTP (např. 200 OK, 403 zakázané, 404 Nenalezeno atd.), které byly doručeny vašim klientům HTTP prostřednictvím našich hraničních serverů. Výsečový graf vám umožní rychle posoudit, jak byly vaše prostředky obsluhovány. Podrobné statistické údaje jsou k dispozici pro každý kód odpovědi pod grafem. |
 | chyby 404 |Obsahuje pruhový graf, který umožňuje zobrazit prvních 10 požadavků, jejichž výsledkem byl 404 nenalezený kód odpovědi. |
 | chyby 403 |Obsahuje pruhový graf, který umožňuje zobrazit prvních 10 požadavků, které vedly k 403 zakázanému kódu odpovědi. Pokud je žádost zamítnuta serverem původu zákazníka nebo hraničním serverem na našem místním serveru, bude kód odpovědi 403 zakázaný. |

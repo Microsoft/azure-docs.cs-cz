@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 12/18/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: 84e3ced20b828087cd3f2b9e7534826debf1706a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91279973"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Běžné vzory dotazů v Azure Stream Analytics
@@ -930,7 +930,7 @@ Dotaz umožňuje výrobci automaticky monitorovat umístění počítačů a zí
 
 Další informace najdete v článku [scénáře použití geografických zón a geoprostorové agregace s Azure Stream Analytics](geospatial-scenarios.md) článkem.
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
