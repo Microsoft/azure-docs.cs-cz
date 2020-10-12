@@ -1,5 +1,5 @@
 ---
-title: Použití Key Vaultch odkazů
+title: Použití odkazů na službu Key Vault
 description: Naučte se nastavit Azure App Service a Azure Functions používat odkazy na Azure Key Vault. Zpřístupnění Key Vault tajných kódů pro kód aplikace.
 author: mattchenderson
 ms.topic: article
@@ -7,10 +7,10 @@ ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 5b76c940066539995dbefa76d503b5412ce0c359
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85557916"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Použití Key Vault odkazů pro App Service a Azure Functions

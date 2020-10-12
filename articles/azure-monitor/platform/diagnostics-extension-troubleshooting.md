@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
 ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86515491"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Řešení potíží se službou Azure Diagnostics
@@ -30,7 +30,7 @@ Níže jsou uvedeny cesty k některým důležitým protokolům a artefaktům. N
 | Artefakt | Cesta |
 | --- | --- |
 | **Konfigurační soubor Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version>\Config.txt |
-| **Soubory protokolu** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
+| **Soubory protokolů** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
 | **Místní úložiště pro diagnostická data** | C:\Resources\Directory \<CloudServiceDeploymentID> . \<RoleName> .. DiagnosticStore\WAD0107\Tables |
 | **Konfigurační soubor agenta monitorování** | C:\Resources\Directory \<CloudServiceDeploymentID> . \<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
 | **Balíček rozšíření Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
@@ -41,7 +41,7 @@ Níže jsou uvedeny cesty k některým důležitým protokolům a artefaktům. N
 | Artefakt | Cesta |
 | --- | --- |
 | **Konfigurační soubor Azure Diagnostics** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version> \RuntimeSettings |
-| **Soubory protokolu** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
+| **Soubory protokolů** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
 | **Místní úložiště pro diagnostická data** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \WAD0107\Tables |
 | **Konfigurační soubor agenta monitorování** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
 | **Stavový soubor** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version> \Status |
@@ -49,7 +49,7 @@ Níže jsou uvedeny cesty k některým důležitým protokolům a artefaktům. N
 | **Cesta k nástroji pro shromažďování protokolů** | C:\WindowsAzure\Logs\WaAppAgent.log |
 | **Soubor protokolu MonAgentHost** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \WAD0107\Configuration\MonAgentHost. <seq_num>. log |
 
-## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Data metriky se nezobrazí v Azure Portal
+## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Data metrik se nezobrazují na webu Azure Portal
 Azure Diagnostics poskytuje data metrik, která se dají zobrazit v Azure Portal. Pokud máte problémy se zobrazením dat na portálu, zkontrolujte v \* tabulce WADMetrics v účtu úložiště Azure Diagnostics, jestli jsou k dispozici odpovídající záznamy metriky, a ujistěte se, že je [poskytovatel prostředků](../../azure-resource-manager/management/resource-providers-and-types.md) Microsoft. Insights zaregistrovaný.
 
 Tady je **PartitionKey** tabulky ID prostředku, virtuální počítač nebo sada škálování virtuálních počítačů. **RowKey** je název metriky (označuje se také jako název čítače výkonu).
@@ -79,7 +79,7 @@ Pokud nejsou k dispozici žádná data pro specifickou metriku, zkontrolujte **k
 Pokud je konfigurace správně nastavená, ale stále nevidíte data metriky, použijte následující pokyny, které vám pomůžou při odstraňování potíží.
 
 
-## <a name="azure-diagnostics-is-not-starting"></a>Azure Diagnostics se nespouští
+## <a name="azure-diagnostics-is-not-starting"></a>Azure Diagnostics nejde spustit
 Informace o tom, proč se Azure Diagnostics nepovedlo spustit, najdete v souborech protokolu **DiagnosticsPluginLauncher. log** a **DiagnosticsPlugin. log** v umístění souborů protokolu, které jste zadali dříve.
 
 Pokud tyto protokoly signalizují `Monitoring Agent not reporting success after launch` , znamená to, že při spuštění MonAgentHost.exe došlo k chybě. Podívejte se na protokoly v umístění, které je uvedené `MonAgentHost log file` v předchozí části.
@@ -91,7 +91,7 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 ```
 Pokud najdete **záporný** ukončovací kód, přečtěte si [tabulku ukončovací kód](#azure-diagnostics-plugin-exit-codes) v [části REFERENCES](#references).
 
-## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>Diagnostická data nejsou protokolována do Azure Storage
+## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>Diagnostická data se neprotokolují do služby Azure Storage
 Určí, zda se nezobrazí žádná data, nebo se zobrazí některá z dat.
 
 ### <a name="diagnostics-infrastructure-logs"></a>Protokoly diagnostické infrastruktury
@@ -151,7 +151,7 @@ Pokud jste ověřili, že se data budou zaznamenávat lokálně, ale v účtu ú
 ### <a name="capturing-and-archiving-logs"></a>Zachytávání a archivace protokolů
 Pokud si myslíte, že se obrátíte na podporu, první věc, kterou si můžete vyžádat, je shromažďovat protokoly z počítače. Můžete ušetřit čas tím, že to uděláte sami. Spusťte `CollectGuestLogs.exe` Nástroj v cestě k nástroji shromažďování protokolů. Vygeneruje soubor. zip se všemi relevantními protokoly Azure ve stejné složce.
 
-## <a name="diagnostics-data-tables-not-found"></a>Tabulky diagnostických dat nebyly nalezeny.
+## <a name="diagnostics-data-tables-not-found"></a>Tabulky diagnostických dat se nenašly
 Tabulky v úložišti Azure, které uchovávají události ETW, se nazývají pomocí následujícího kódu:
 
 ```csharp

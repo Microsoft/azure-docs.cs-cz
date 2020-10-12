@@ -4,10 +4,10 @@ description: Mapování ovládacího prvku australského plánu CHRÁNĚNÉho pl
 ms.date: 09/11/2020
 ms.topic: sample
 ms.openlocfilehash: 605e92b75da1e5363884fc6ef9457251cfbc6e4e
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90030102"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Mapování ovládacího prvku pro ukázkovou verzi plánu CHRÁNĚNÉho plánu australské vlády ISM
@@ -33,7 +33,7 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 ### <a name="0414-personnel-granted-access-to-a-system-and-its-resources-are-uniquely-identifiable"></a>0414 personál, kterému je udělený přístup k systému, a jeho prostředky jsou jednoznačně identifikovatelné
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
+- Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA.
 - Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.
 
 ### <a name="1503-standard-access-to-systems-applications-and-data-repositories-is-limited-to-that-required-for-personnel-to-undertake-their-duties"></a>1503 standardní přístup k systémům, aplikacím a úložištím dat je omezený na to, aby pracovníci mohli plnit své povinnosti.
@@ -118,7 +118,7 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 ### <a name="1173-multi-factor-authentication-is-used-to-authenticate-all-privileged-users-and-any-other-positions-of-trust"></a>1173 Multi-Factor Authentication se používá k ověřování všech privilegovaných uživatelů a všech dalších pozic důvěry.
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
+- Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA.
 
 ### <a name="0421-passphrases-used-for-single-factor-authentication-are-a-minimum-of-14-characters-with-complexity-ideally-as-4-random-words"></a>0421 přístupových hesel používaných pro jednotné vícefaktorové ověřování je minimálně 14 znaků a složitá, v ideálním případě 4 náhodná slova.
 
@@ -130,7 +130,7 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 ### <a name="1384-multi-factor-authentication-is-used-to-authenticate-users-each-time-they-perform-privileged-actions"></a>1384 Multi-Factor Authentication se používá k ověřování uživatelů při každém provedení privilegovaných akcí.
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
+- Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA.
 - Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.
 
 ### <a name="1386-management-traffic-is-only-allowed-to-originate-from-network-zones-that-are-used-to-administer-systems-and-applications"></a>1386 provoz správy je povolený jenom ze síťových zón, které se používají ke správě systémů a aplikací.

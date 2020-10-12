@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85556166"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Povolení podpory více oborů názvů v clusteru AKS s Application Gatewaym řadičem příchozího přenosu dat
@@ -29,11 +29,11 @@ Povolení podpory více oborů názvů:
    - odstraní `watchNamespace` klíč úplně z [Helm-config. yaml](#sample-helm-config-file) -AGIC bude sledovat všechny obory názvů.
    - Nastavte `watchNamespace` na prázdný řetězec – AGIC bude sledovat všechny obory názvů.
    - Přidání více oborů názvů oddělených čárkou ( `watchNamespace: default,secondNamespace` ) – AGIC budou tyto obory názvů dodržovat výhradně.
-2. použít změny šablony Helm s:`helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
+2. použít změny šablony Helm s: `helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
 
 Po nasazení s možností sledovat více oborů názvů bude AGIC:
   - Vypsat prostředky příchozího přenosu ze všech přístupných oborů názvů
-  - filtrovat na prostředky příchozího přenosu poznámek`kubernetes.io/ingress.class: azure/application-gateway`
+  - filtrovat na prostředky příchozího přenosu poznámek `kubernetes.io/ingress.class: azure/application-gateway`
   - Vytvoření kombinované [Application Gateway konfigurace](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744)
   - použít konfiguraci na přidružený Application Gateway přes [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)
 
@@ -84,11 +84,11 @@ spec:
 
 I když dva prostředky příchozího přenosu dat pro `www.contoso.com` přesměrování na příslušné obory názvů Kubernetes, může provoz obsluhovat jenom jeden back-end. AGIC by pro jeden z prostředků vytvořila konfiguraci podle "prvního přidávaného" prvního přidávaného ". Pokud jsou dva příchozí prostředky vytvářeny současně, bude mít přednost ta, která byla dříve v abecedě. Z výše uvedeného příkladu budeme moct vytvořit nastavení pro příchozí přenos dat `production` . Application Gateway budou konfigurovány s následujícími prostředky:
 
-  - Služby`fl-www.contoso.com-80`
-  - Pravidlo směrování:`rr-www.contoso.com-80`
-  - Back-end fond:`pool-production-contoso-web-service-80-bp-80`
-  - Nastavení HTTP:`bp-production-contoso-web-service-80-80-websocket-ingress`
-  - Sonda stavu:`pb-production-contoso-web-service-80-websocket-ingress`
+  - Služby `fl-www.contoso.com-80`
+  - Pravidlo směrování: `rr-www.contoso.com-80`
+  - Back-end fond: `pool-production-contoso-web-service-80-bp-80`
+  - Nastavení HTTP: `bp-production-contoso-web-service-80-80-websocket-ingress`
+  - Sonda stavu: `pb-production-contoso-web-service-80-websocket-ingress`
 
 Všimněte si, že kromě *pravidla* *naslouchacího procesu* a směrování vytvářené Application Gateway prostředky zahrnují název oboru názvů ( `production` ), pro který byly vytvořeny.
 

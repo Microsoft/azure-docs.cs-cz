@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
 ms.openlocfilehash: 6a5d4f388d9e5f47a13812687489525590c520c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87085482"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Připojení služby Azure File Storage na virtuálních počítačích se systémem Linux pomocí protokolu SMB
@@ -110,4 +110,4 @@ Pro zvýšení zabezpečení v produkčních prostředích byste měli přihlaš
 
 - [Přizpůsobení virtuálního počítače se systémem Linux během vytváření pomocí Cloud-init](using-cloud-init.md)
 - [Přidání disku do virtuálního počítače s Linuxem](add-disk.md)
-- [Azure Disk Encryption pro virtuální počítače se systémem Linux](disk-encryption-overview.md)
+- [Azure Disk Encryption pro virtuální počítače s Linuxem](disk-encryption-overview.md)

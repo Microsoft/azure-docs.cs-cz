@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-python
 ms.openlocfilehash: 2d41b48613ef7ba883a6a51b0fa67407fb730719
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846220"
 ---
 # <a name="logging-in-msal-applications"></a>Protokolování aplikací MSAL
@@ -48,10 +48,10 @@ Podrobnosti o MSAL protokolování v konkrétním jazyce získáte výběrem kar
 
 V MSAL 3. x je protokolování nastaveno na aplikaci při vytváření aplikací pomocí `.WithLogging` modifikátoru tvůrce. Tato metoda přebírá volitelné parametry:
 
-- `Level`umožňuje rozhodnout, jakou úroveň protokolování chcete. Při jejich nastavení na chyby se zobrazí jenom chyby.
-- `PiiLoggingEnabled`umožňuje protokolovat osobní a organizační data, pokud je nastaveno na hodnotu true. Ve výchozím nastavení je tato hodnota nastavena na false, aby vaše aplikace neprotokoloval osobní údaje.
-- `LogCallback`je nastaven na delegáta, který provede protokolování. Pokud `PiiLoggingEnabled` je hodnota true, bude tato metoda přijímat zprávy dvakrát: jednou s `containsPii` parametrem se rovná false a zpráva bez osobních údajů a druhá s `containsPii` parametrem se rovná hodnotě true a zpráva může obsahovat osobní údaje. V některých případech (Pokud zpráva neobsahuje osobní údaje), bude zpráva stejná.
-- `DefaultLoggingEnabled`povolí výchozí protokolování pro platformu. Ve výchozím nastavení má hodnotu false. Pokud ho nastavíte na true, používá se k trasování událostí v aplikacích Desktop/UWP NSLog v iOS a Logcat na Androidu.
+- `Level` umožňuje rozhodnout, jakou úroveň protokolování chcete. Při jejich nastavení na chyby se zobrazí jenom chyby.
+- `PiiLoggingEnabled` umožňuje protokolovat osobní a organizační data, pokud je nastaveno na hodnotu true. Ve výchozím nastavení je tato hodnota nastavena na false, aby vaše aplikace neprotokoloval osobní údaje.
+- `LogCallback` je nastaven na delegáta, který provede protokolování. Pokud `PiiLoggingEnabled` je hodnota true, bude tato metoda přijímat zprávy dvakrát: jednou s `containsPii` parametrem se rovná false a zpráva bez osobních údajů a druhá s `containsPii` parametrem se rovná hodnotě true a zpráva může obsahovat osobní údaje. V některých případech (Pokud zpráva neobsahuje osobní údaje), bude zpráva stejná.
+- `DefaultLoggingEnabled` povolí výchozí protokolování pro platformu. Ve výchozím nastavení má hodnotu false. Pokud ho nastavíte na true, používá se k trasování událostí v aplikacích Desktop/UWP NSLog v iOS a Logcat na Androidu.
 
 ```csharp
 class Program
@@ -86,10 +86,10 @@ class Program
 
 Zapněte při vytváření aplikace přihlášení vytvořením zpětného volání protokolování. Zpětné volání přebírá tyto parametry:
 
-- `tag`je řetězec předaný do zpětného volání knihovny. Je spojena s položkou protokolu a lze ji použít k řazení zpráv protokolování.
-- `logLevel`umožňuje rozhodnout, jakou úroveň protokolování chcete. Podporované úrovně protokolu jsou: `Error` , `Warning` , a `Info` `Verbose` .
-- `message`je obsah položky protokolu.
-- `containsPII`Určuje, jestli se mají protokolovat zprávy obsahující osobní údaje nebo data organizace. Ve výchozím nastavení je tato hodnota nastavená na false, aby vaše aplikace neprotokoloval osobní údaje. `containsPII`V případě `true` , tato metoda obdrží zprávy dvakrát: jednou s `containsPII` parametrem nastaveným na `false` a `message` bez osobních údajů a podruhé s `containsPii` parametrem nastaveným na `true` a zpráva může obsahovat osobní údaje. V některých případech (Pokud zpráva neobsahuje osobní údaje), bude zpráva stejná.
+- `tag` je řetězec předaný do zpětného volání knihovny. Je spojena s položkou protokolu a lze ji použít k řazení zpráv protokolování.
+- `logLevel` umožňuje rozhodnout, jakou úroveň protokolování chcete. Podporované úrovně protokolu jsou: `Error` , `Warning` , a `Info` `Verbose` .
+- `message` je obsah položky protokolu.
+- `containsPII` Určuje, jestli se mají protokolovat zprávy obsahující osobní údaje nebo data organizace. Ve výchozím nastavení je tato hodnota nastavená na false, aby vaše aplikace neprotokoloval osobní údaje. `containsPII`V případě `true` , tato metoda obdrží zprávy dvakrát: jednou s `containsPII` parametrem nastaveným na `false` a `message` bez osobních údajů a podruhé s `containsPii` parametrem nastaveným na `true` a zpráva může obsahovat osobní údaje. V některých případech (Pokud zpráva neobsahuje osobní údaje), bude zpráva stejná.
 
 ```java
 private StringBuilder mLogs;
@@ -129,9 +129,9 @@ Logger.getInstance().setEnableLogcatLog(true);
  Povolit protokolování v MSAL.js (JavaScript) předáním objektu protokolovacího nástroje během konfigurace pro vytvoření `UserAgentApplication` instance. Tento objekt protokolovacího nástroje má následující vlastnosti:
 
 - `localCallback`: instance zpětného volání, kterou může vývojář poskytnout pro využívání a publikování protokolů vlastním způsobem. Implementujte metodu localCallback v závislosti na tom, jak chcete přesměrovat protokoly.
-- `level`(volitelné): konfigurovatelná úroveň protokolu. Podporované úrovně protokolu jsou: `Error` , `Warning` , a `Info` `Verbose` . Výchozí formát je `Info`.
-- `piiLoggingEnabled`(volitelné): Pokud je nastavené na true, protokoluje osobní a organizační data. Ve výchozím nastavení je to false, aby vaše aplikace nehlásila osobní údaje. Protokoly osobních údajů se nikdy nezapisují do výchozích výstupů, jako je konzola, Logcat nebo NSLog.
-- `correlationId`(volitelné): jedinečný identifikátor, který slouží k mapování požadavku na odezvu pro účely ladění. Ve výchozím nastavení se RFC4122 identifikátor GUID verze 4 (128 bitů).
+- `level` (volitelné): konfigurovatelná úroveň protokolu. Podporované úrovně protokolu jsou: `Error` , `Warning` , a `Info` `Verbose` . Výchozí formát je `Info`.
+- `piiLoggingEnabled` (volitelné): Pokud je nastavené na true, protokoluje osobní a organizační data. Ve výchozím nastavení je to false, aby vaše aplikace nehlásila osobní údaje. Protokoly osobních údajů se nikdy nezapisují do výchozích výstupů, jako je konzola, Logcat nebo NSLog.
+- `correlationId` (volitelné): jedinečný identifikátor, který slouží k mapování požadavku na odezvu pro účely ladění. Ve výchozím nastavení se RFC4122 identifikátor GUID verze 4 (128 bitů).
 
 ```javascript
 function loggerCallback(logLevel, message, containsPii) {
@@ -177,7 +177,7 @@ Nastavte zpětné volání pro zachycení protokolování MSAL a zahrňte ho do 
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Příklad:
+Například:
 
 ```objc
 [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString *message, BOOL containsPII)
@@ -210,7 +210,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 Pokud chcete nastavit úroveň protokolování při protokolování pomocí MSAL pro iOS a macOS, použijte jednu z následujících hodnot:
 
-|Úroveň  |Popis |
+|Úroveň  |Description |
 |---------|---------|
 | `MSALLogLevelNothing`| Zakázat všechna protokolování |
 | `MSALLogLevelError` | Výchozí úroveň, vytiskne informace pouze v případě, že dojde k chybám |
@@ -218,7 +218,7 @@ Pokud chcete nastavit úroveň protokolování při protokolování pomocí MSAL
 | `MSALLogLevelInfo` |  Vstupní body knihovny s parametry a různými operacemi řetězce klíčů |
 |`MSALLogLevelVerbose`     |  Trasování rozhraní API |
 
-Příklad:
+Například:
 
 ```objc
 MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
@@ -226,9 +226,9 @@ MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
 
  ### <a name="log-message-format"></a>Formát zprávy protokolu
 
-Část zprávy protokolu MSAL je ve formátu`TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
+Část zprávy protokolu MSAL je ve formátu `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Příklad:
+Například:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
@@ -255,7 +255,7 @@ Nastavte zpětné volání pro zachycení protokolování MSAL a zahrňte ho do 
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Příklad:
+Například:
 
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
@@ -287,7 +287,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 Pokud chcete nastavit úroveň protokolování při protokolování pomocí MSAL pro iOS a macOS, použijte jednu z následujících hodnot:
 
-|Úroveň  |Popis |
+|Úroveň  |Description |
 |---------|---------|
 | `MSALLogLevelNothing`| Zakázat všechna protokolování |
 | `MSALLogLevelError` | Výchozí úroveň, vytiskne informace pouze v případě, že dojde k chybám |
@@ -295,7 +295,7 @@ Pokud chcete nastavit úroveň protokolování při protokolování pomocí MSAL
 | `MSALLogLevelInfo` |  Vstupní body knihovny s parametry a různými operacemi řetězce klíčů |
 |`MSALLogLevelVerbose`     |  Trasování rozhraní API |
 
-Příklad:
+Například:
 
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
@@ -303,9 +303,9 @@ MSALGlobalConfig.loggerConfig.logLevel = .verbose
 
 ### <a name="log-message-format"></a>Formát zprávy protokolu
 
-Část zprávy protokolu MSAL je ve formátu`TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
+Část zprávy protokolu MSAL je ve formátu `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Příklad:
+Například:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
@@ -389,6 +389,6 @@ MSAL for Python neprotokoluje osobní data ani organizační data. Neexistuje ž
 
 Pomocí standardního protokolování Pythonu se můžete přihlásit cokoli, co potřebujete, ale zodpovídáte za bezpečné zpracování citlivých dat a následujících zákonných požadavků.
 
-Další informace o protokolování v Pythonu najdete v tématu věnovaném [protokolování](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)v Pythonu.
+Další informace o protokolování v Pythonu najdete v tématu věnovaném  [protokolování](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)v Pythonu.
 
 ---

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67174682"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -70,7 +70,7 @@ Get-AzTableRow -table $cloudTable | ft
 
 Tento příkaz vrátí výsledky podobné následující tabulce:
 
-| UserID | uživatelské jméno | partition | rowkey |
+| UserID | username | partition | rowkey |
 |----|---------|---------------|----|
 | 1 | Chris | partition1 | CA |
 | 3 | Christine | partition1 | WA |
@@ -85,7 +85,7 @@ Get-AzTableRow -table $cloudTable -partitionKey $partitionKey1 | ft
 
 Výsledky vypadají podobně jako v následující tabulce:
 
-| UserID | uživatelské jméno | partition | rowkey |
+| UserID | username | partition | rowkey |
 |----|---------|---------------|----|
 | 1 | Chris | partition1 | CA |
 | 3 | Christine | partition1 | WA |
@@ -101,10 +101,10 @@ Get-AzTableRow -table $cloudTable `
 
 Tento dotaz načte jeden záznam.
 
-|pole|hodnota|
+|pole|value|
 |----|----|
 | UserID | 1 |
-| uživatelské jméno | Chris |
+| username | Chris |
 | PartitionKey | partition1 |
 | RowKey      | CA |
 
@@ -118,10 +118,10 @@ Get-AzTableRow `
 
 Tento dotaz načte jeden záznam.
 
-|pole|hodnota|
+|pole|value|
 |----|----|
 | UserID | 1 |
-| uživatelské jméno | Chris |
+| username | Chris |
 | PartitionKey | partition1 |
 | RowKey      | CA |
 
@@ -153,10 +153,10 @@ Get-AzTableRow -table $cloudTable `
 
 Ve výsledcích se zobrazí záznam Jessie2.
 
-|pole|hodnota|
+|pole|value|
 |----|----|
 | UserID | 2 |
-| uživatelské jméno | Jessie2 |
+| username | Jessie2 |
 | PartitionKey | PARTITION2 |
 | RowKey      | NM |
 

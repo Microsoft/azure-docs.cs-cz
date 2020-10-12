@@ -5,10 +5,10 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.openlocfilehash: 7ed73678e0df1e068782c2a094846132be58cfe2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86516120"
 ---
 # <a name="alerts-on-activity-log"></a>Upozornění na protokol aktivit
@@ -40,7 +40,7 @@ Výstrahy protokolu aktivit mají několik běžných možností:
     - Úroveň předplatného: například všechny virtuální počítače v předplatném (nebo) všechny prostředky v rámci předplatného
 - **Skupina prostředků**: ve výchozím nastavení se pravidlo výstrahy uloží do stejné skupiny prostředků, která je v cíli definovaná v oboru. Uživatel může také definovat skupinu prostředků, ve které se má pravidlo výstrahy ukládat.
 - **Typ prostředku**: Správce prostředků definovaný obor názvů pro cíl výstrahy.
-- **Název operace**: název [operace Azure Resource Manager](../../role-based-access-control/resource-provider-operations.md) používá pro Access Control založenou na rolích. Operace, které nejsou zaregistrované u Azure Resource Manager, se nedají použít v pravidle upozornění protokolu aktivit.
+- **Název operace**: název [operace Azure Resource Manager](../../role-based-access-control/resource-provider-operations.md) se používá pro Role-Based Access Control. Operace, které nejsou zaregistrované u Azure Resource Manager, se nedají použít v pravidle upozornění protokolu aktivit.
 - **Level**: úroveň závažnosti události (informativní, varovná, chyba nebo kritická).
 - **Stav**: stav události, obvykle spuštěno, selhalo nebo proběhlo úspěšně.
 - **Událost iniciovaná**: taky se označuje jako volající. E-mailová adresa nebo Azure Active Directory identifikátor uživatele, který operaci provedl.
@@ -48,7 +48,7 @@ Výstrahy protokolu aktivit mají několik běžných možností:
 > [!NOTE]
 > V rámci předplatného můžete vytvořit pravidla výstrah až 100, a to buď na jeden prostředek, všechny prostředky ve skupině prostředků (nebo) na celé úrovni předplatného.
 
-Když se aktivuje výstraha protokolu aktivit, vygeneruje akce nebo oznámení pomocí skupiny akcí. Skupina akcí je opakovaně použitelná sada přijímačů oznámení, jako jsou e-mailové adresy, adresy URL Webhooku nebo telefonní čísla SMS. Na přijímače se dá odkazovat z několika výstrah, abyste mohli centralizovat a seskupovat kanály oznámení. Při definování upozornění protokolu aktivit máte dvě možnosti. Další možnosti:
+Když se aktivuje výstraha protokolu aktivit, vygeneruje akce nebo oznámení pomocí skupiny akcí. Skupina akcí je opakovaně použitelná sada přijímačů oznámení, jako jsou e-mailové adresy, adresy URL Webhooku nebo telefonní čísla SMS. Na přijímače se dá odkazovat z několika výstrah, abyste mohli centralizovat a seskupovat kanály oznámení. Při definování upozornění protokolu aktivit máte dvě možnosti. Můžete:
 
 * V upozornění protokolu aktivit použijte existující skupinu akcí.
 * Vytvořte novou skupinu akcí.

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: 95386f36340aca470769c920e40bbb70e09d34fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80397867"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 0,2 a 0,1
@@ -37,7 +37,7 @@ Aktualizace 0,2 odpovídá **10.0.10280.0**verze softwaru. Aktualizace 0,1 je **
 ## <a name="issues-fixed-in-the-update-02"></a>Problémy opravené v aktualizaci 0,2
 Aktualizace 0,2 zahrnuje všechny změny z aktualizace 0,1 kromě opravy popsané v následující tabulce:
 
-| Funkce | Problém |
+| Příznak | Problém |
 | --- | --- |
 | Aktualizace |V poslední verzi se aktualizace na portálu Azure Classic nezjistily automaticky, takže k instalaci aktualizací bylo nutné použít místní webové uživatelské rozhraní. Tento problém je opravený v této verzi. Po instalaci aktualizace 0,2 můžete instalovat budoucí aktualizace pomocí portálu Azure Classic. |
 
@@ -54,7 +54,7 @@ Aktualizace 0,1 obsahuje následující opravy chyb a vylepšení.
 ## <a name="issues-fixed-in-the-update-01"></a>Problémy opravené v aktualizaci 0,1
 Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
-| Ne. | Funkce | Problém |
+| Ne. | Příznak | Problém |
 | --- | --- | --- |
 | 1 |FORMÁTU |V některých verzích VMware se disk s operačním systémem zobrazil jako zhuštěný a způsobuje výstrahy a přerušení normálních operací. Tato verze byla opravena v této verzi. |
 | 2 |Server iSCSI |V poslední vydané verzi musel uživatel zadat bránu pro každé povolené síťové rozhraní virtuálního zařízení StorSimple. Toto chování se v této verzi změní, takže uživatel musí nakonfigurovat aspoň jednu bránu pro všechna povolená síťová rozhraní. |
@@ -65,7 +65,7 @@ Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 ## <a name="known-issues-in-the-update-01"></a>Známé problémy v aktualizaci 0,1
 Následující tabulka obsahuje souhrn známých problémů pro virtuální pole StorSimple a obsahuje vydané verze zaznamenané z předchozích verzí. **Verze, kterou jsme si poznamenali v této verzi, je označená hvězdičkou. Téměř všechny problémy v tomto seznamu se přenesly z verze GA služby StorSimple Virtual Array.**
 
-| Ne. | Funkce | Problém | Alternativní řešení/komentáře |
+| Ne. | Příznak | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 | **1.** |Aktualizace |Virtuální zařízení vytvořená ve verzi Preview nejde aktualizovat na podporovanou obecnou verzi dostupnosti. |U těchto virtuálních zařízení je potřeba převzít služby při selhání pro vydání obecné dostupnosti pomocí pracovního postupu zotavení po havárii (DR). |
 | **2.** |Zřízený datový disk |Jakmile zřídíte datový disk určité zadané velikosti a vytvoříte odpovídající virtuální zařízení StorSimple, nesmíte tento datový disk rozbalit ani zmenšit. Pokus o provedení této akce způsobí ztrátu všech dat v místních vrstvách zařízení. | |

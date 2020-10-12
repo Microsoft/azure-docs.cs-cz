@@ -7,10 +7,10 @@ ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2020
 ms.openlocfilehash: 8023f3d7730a617ec502c8f181bad1fc27627694
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269161"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
@@ -68,7 +68,7 @@ Každý koncový bod žádosti v aplikaci logiky má [sdílený přístupový po
 
 Každá adresa URL obsahuje `sp` `sv` parametr dotazu, a, `sig` jak je popsáno v této tabulce:
 
-| Parametr dotazu | Popis |
+| Parametr dotazu | Description |
 |-----------------|-------------|
 | `sp` | Určuje oprávnění povolených metod HTTP, které se mají použít. |
 | `sv` | Určuje verzi SAS, která se má použít pro generování podpisu. |
@@ -646,7 +646,7 @@ Zde jsou další informace o těchto `parameters` oddílech:
 
 Tento příklad šablony s více zabezpečenými definicemi parametrů, které používají `securestring` Typ:
 
-| Název parametru | Popis |
+| Název parametru | Description |
 |----------------|-------------|
 | `TemplatePasswordParam` | Parametr šablony, který přijímá heslo, které je pak předáno parametru definice pracovního postupu `basicAuthPasswordParam` |
 | `TemplateUsernameParam` | Parametr šablony, který přijímá uživatelské jméno, které je pak předáno parametru definice pracovního postupu `basicAuthUserNameParam` |

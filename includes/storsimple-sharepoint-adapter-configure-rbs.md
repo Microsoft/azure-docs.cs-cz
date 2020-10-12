@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67175047"
 ---
 > [!NOTE]
@@ -55,7 +55,7 @@ ms.locfileid: "67175047"
    
    1. Nahrajte dokument do SharePointu. 
    2. Přejděte na cestu UNC, kterou jste nakonfigurovali. Ujistěte se, že se vytvořila adresářová struktura RBS a že obsahuje nahraný objekt.
-6. Volitelné `Migrate()`K migraci existujícího obsahu objektů blob do zařízení StorSimple můžete použít rutinu Microsoft RBS PowerShell, která je součástí SharePointu. Další informace najdete v tématu [migrace obsahu do RBS nebo z kódu RBS ve službě SharePoint 2013][6] nebo [migrace obsahu do nebo z kódu RBS (SharePoint Foundation 2010)][7].
+6. Volitelné `Migrate()` K migraci existujícího obsahu objektů blob do zařízení StorSimple můžete použít rutinu Microsoft RBS PowerShell, která je součástí SharePointu. Další informace najdete v tématu [migrace obsahu do RBS nebo z kódu RBS ve službě SharePoint 2013][6] nebo [migrace obsahu do nebo z kódu RBS (SharePoint Foundation 2010)][7].
 7. Volitelné V případě testovacích instalací můžete ověřit, že se objekty blob přesunuly z databáze obsahu následujícím způsobem: 
    
    1. Spusťte SQL Management Studio.

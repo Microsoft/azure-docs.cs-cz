@@ -11,10 +11,10 @@ author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
 ms.openlocfilehash: c92351131a60b571a102b85f7d11b79ab29d939e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883122"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>Co je Azure Machine Learning Designer? 
@@ -26,7 +26,7 @@ Azure Machine Learning Designer vám umožňuje vizuálně propojit [datové sad
 
 Návrhář používá [pracovní prostor](concept-workspace.md) Azure Machine Learning k uspořádání sdílených prostředků, jako jsou:
 
-+ [Pipelines](#pipeline)
++ [Kanály](#pipeline)
 + [Datové sady](#datasets)
 + [Výpočetní prostředky](#compute)
 + [Registrované modely](concept-azure-machine-learning-architecture.md#models)

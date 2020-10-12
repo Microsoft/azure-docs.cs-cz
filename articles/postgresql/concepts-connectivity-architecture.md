@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.openlocfilehash: 64be7f01cc9cc7ae77af5386be7a11cd16785dd1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90882402"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Architektura připojení v Azure Database for PostgreSQL
@@ -35,7 +35,7 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 | Brazil South | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Střední Kanada |40.85.224.249  |
 | Kanada – východ | 40.86.226.166    |
-| USA – střed | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
+| Střední USA | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
 | Čína – východ | 139.219.130.35    |
 | Čína – východ 2 | 40.73.82.1  |
 | Čína – sever | 139.219.15.17    |

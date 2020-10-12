@@ -1,5 +1,5 @@
 ---
-title: Get – metrika v Azure Monitor Application Insights
+title: Get-Metric v Azure Monitor Application Insights
 description: Zjistěte, jak efektivně používat volání getmetric () k zachycení místně předem agregovaných metrik pro aplikace .NET a .NET Core pomocí Azure Monitor Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,19 +8,19 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
 ms.openlocfilehash: 7aacb951d449583c875c71f260957a9d3bc8c663
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86517140"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Kolekce vlastních metrik v rozhraní .NET a .NET Core
 
-Sady SDK Azure Monitor Application Insights .NET a .NET Core mají dvě různé metody shromažďování vlastních metrik, `TrackMetric()` a `GetMetric()` . Klíčový rozdíl mezi těmito dvěma metodami je místní agregace. `TrackMetric()`neobsahuje předagregaci, zatímco `GetMetric()` má předagregaci. Doporučený postup je použít agregaci, proto už `TrackMetric()` není upřednostňovanou metodou shromažďování vlastních metrik. Tento článek vás provede použitím metody getmetric () a některých z odůvodnění, jak to funguje.
+Sady SDK Azure Monitor Application Insights .NET a .NET Core mají dvě různé metody shromažďování vlastních metrik, `TrackMetric()` a `GetMetric()` . Klíčový rozdíl mezi těmito dvěma metodami je místní agregace. `TrackMetric()` neobsahuje předagregaci, zatímco `GetMetric()` má předagregaci. Doporučený postup je použít agregaci, proto už `TrackMetric()` není upřednostňovanou metodou shromažďování vlastních metrik. Tento článek vás provede použitím metody getmetric () a některých z odůvodnění, jak to funguje.
 
 ## <a name="trackmetric-versus-getmetric"></a>TrackMetric versus getmetric
 
-`TrackMetric()`odesílá nezpracované telemetrie, která označuje metriku. Je neefektivní odeslat jednu položku telemetrie pro každou hodnotu. `TrackMetric()`je také neefektivní z pohledu výkonu, protože každý `TrackMetric(item)` projde kompletním kanálem sady SDK inicializátorů telemetrie a procesorů. Na rozdíl od `TrackMetric()` , `GetMetric()` zpracovává místní předagregaci za vás a poté odesílá agregovanou souhrnnou metriku v pevném intervalu 1 minuty. Takže pokud potřebujete úzce monitorovat určitou vlastní metriku na druhé nebo dokonce úrovni milisekund, můžete tak učinit, ale jenom náklady na úložiště a síťovou komunikaci jenom sledujete každou minutu. Tím se značně snižuje riziko omezování, protože celkový počet položek telemetrie, které je potřeba odeslat pro agregovanou metriku, se výrazně sníží.
+`TrackMetric()` odesílá nezpracované telemetrie, která označuje metriku. Je neefektivní odeslat jednu položku telemetrie pro každou hodnotu. `TrackMetric()` je také neefektivní z pohledu výkonu, protože každý `TrackMetric(item)` projde kompletním kanálem sady SDK inicializátorů telemetrie a procesorů. Na rozdíl od `TrackMetric()` , `GetMetric()` zpracovává místní předagregaci za vás a poté odesílá agregovanou souhrnnou metriku v pevném intervalu 1 minuty. Takže pokud potřebujete úzce monitorovat určitou vlastní metriku na druhé nebo dokonce úrovni milisekund, můžete tak učinit, ale jenom náklady na úložiště a síťovou komunikaci jenom sledujete každou minutu. Tím se značně snižuje riziko omezování, protože celkový počet položek telemetrie, které je potřeba odeslat pro agregovanou metriku, se výrazně sníží.
 
 V Application Insights vlastní metriky shromažďované přes `TrackMetric()` a `GetMetric()` nepodléhají [vzorkování](./sampling.md). Vzorkování důležitých metrik může vést k situacím, kdy upozornění, která jste mohli vygenerovat kolem těchto metrik, by mohla být nespolehlivá. Když si vaše vlastní metriky nikdy nevzorkování, můžete si obecně být jistí, že když dojde k porušení prahových hodnot upozornění, aktivuje se výstraha.  Ale vzhledem k tomu, že vlastní metriky nejsou vzorkované, existují potenciální obavy.
 
@@ -285,9 +285,9 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit`je maximální počet datových řad časových řad, které může metrika obsahovat. Po dosažení tohoto limitu volání `TrackValue()` .
-* `valuesPerDimensionLimit`podobným způsobem omezuje počet jedinečných hodnot na dimenzi.
-* `restrictToUInt32Values`Určuje, zda mají být sledovány pouze nezáporné celočíselné hodnoty.
+* `seriesCountLimit` je maximální počet datových řad časových řad, které může metrika obsahovat. Po dosažení tohoto limitu volání `TrackValue()` .
+* `valuesPerDimensionLimit` podobným způsobem omezuje počet jedinečných hodnot na dimenzi.
+* `restrictToUInt32Values` Určuje, zda mají být sledovány pouze nezáporné celočíselné hodnoty.
 
 Tady je příklad, jak odeslat zprávu s upozorněním na překročení limitu zakončení:
 

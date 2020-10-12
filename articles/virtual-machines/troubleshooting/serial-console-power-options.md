@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 8/6/2019
 ms.author: alsin
 ms.openlocfilehash: 11c2549d7282bae5654ede1ac34d63a43cd0f059
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75451200"
 ---
 # <a name="power-options-available-from-the-azure-serial-console"></a>Možnosti napájení dostupné z konzole Azure Serial
 
 Konzola sériového prostředí Azure poskytuje několik výkonných nástrojů pro řízení spotřeby na vašem VIRTUÁLNÍm počítači nebo v sadě škálování virtuálních počítačů. Tyto možnosti řízení spotřeby můžou být matoucí, takže se jedná o přehled jednotlivých nástrojů a zamýšleného případu použití.
 
-Funkce sériové konzoly | Description | Případ použití
+Funkce sériové konzoly | Popis | Případ použití
 :----------------------|:------------|:---------
 Restartovat virtuální počítač | Bezproblémové restartování instance virtuálního počítače nebo sady škálování virtuálních počítačů. Tato operace je stejná jako volání funkce restartu, která je k dispozici na stránce Přehled. | Ve většině případů by tato možnost měla být prvním nástrojem při pokusu o restartování virtuálního počítače. Připojení k sériové konzole bude mít krátké přerušení a automaticky se obnoví hned po restartování virtuálního počítače.
 Resetování virtuálního počítače | Vynutí se cyklus napájení virtuálního počítače nebo škálování virtuálního počítače na platformě Azure. | Tato možnost slouží k okamžitému restartování operačního systému bez ohledu na jeho aktuální stav. Vzhledem k tomu, že tato operace není plynulá, existuje riziko ztráty nebo poškození dat. Připojení k sériové konzole není nijak přerušeno. to může být užitečné při posílání příkazů v čase spuštění (například při získávání GRUB na virtuálním počítači Linux nebo v nouzovém režimu na virtuálním počítači s Windows).

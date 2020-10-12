@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85554927"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>Hybridní zařízení připojená k Azure AD
@@ -65,5 +65,5 @@ Použijte hybridní zařízení připojená k Azure AD, pokud:
 ## <a name="next-steps"></a>Další kroky
 
 - [Plánování implementace připojení k hybridní službě Azure AD](hybrid-azuread-join-plan.md)
-- [Správa identit zařízení pomocí Azure Portal](device-management-azure-portal.md)
-- [Správa zastaralých zařízení ve službě Azure AD](manage-stale-devices.md)
+- [Správa identit zařízení přes Azure Portal](device-management-azure-portal.md)
+- [Správa zastaralých zařízení v Azure AD](manage-stale-devices.md)
