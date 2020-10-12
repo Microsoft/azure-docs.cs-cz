@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3bb42886c653afbdf8975b532bd2e1e1c3c63ce9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186533"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilovat konfigurace DSC v konfiguraci stavu Azure Automation
@@ -47,7 +47,7 @@ K zahájení kompilace prostředí Windows PowerShell můžete použít rutinu [
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-`Start-AzAutomationDscCompilationJob`Vrátí objekt úlohy kompilace, který můžete použít ke sledování stavu úlohy. Pak můžete použít tento objekt úlohy kompilace s příkazem [Get-AzAutomationDscCompilationJob](/powershell/module/az.automation/get-azautomationdsccompilationjob) k určení stavu úlohy kompilace a [Get-AzAutomationDscCompilationJobOutput](/powershell/module/az.automation/get-azautomationdscconfiguration) k zobrazení datových proudů (výstup). Následující ukázka spustí kompilaci konfigurace SampleConfig, počká, až se dokončí, a pak zobrazí své streamy.
+`Start-AzAutomationDscCompilationJob` Vrátí objekt úlohy kompilace, který můžete použít ke sledování stavu úlohy. Pak můžete použít tento objekt úlohy kompilace s příkazem [Get-AzAutomationDscCompilationJob](/powershell/module/az.automation/get-azautomationdsccompilationjob) k určení stavu úlohy kompilace a [Get-AzAutomationDscCompilationJobOutput](/powershell/module/az.automation/get-azautomationdscconfiguration) k zobrazení datových proudů (výstup). Následující ukázka spustí kompilaci konfigurace SampleConfig, počká, až se dokončí, a pak zobrazí své streamy.
 
 ```powershell
 $CompilationJob = Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
@@ -127,7 +127,7 @@ Funkce **kompozitních prostředků** umožňuje používat konfigurace DSC jako
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>Správa ConfigurationData při kompilování konfigurací v Azure Automation
 
-`ConfigurationData`je vestavěný parametr DSC, který umožňuje oddělit strukturální konfiguraci z libovolné konfigurace specifické pro prostředí při použití prostředí PowerShell DSC. Další informace najdete v tématu [oddělení "co" od "Where" v prostředí POWERSHELL DSC](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/).
+`ConfigurationData` je vestavěný parametr DSC, který umožňuje oddělit strukturální konfiguraci z libovolné konfigurace specifické pro prostředí při použití prostředí PowerShell DSC. Další informace najdete v tématu [oddělení "co" od "Where" v prostředí POWERSHELL DSC](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/).
 
 > [!NOTE]
 > Při kompilaci v konfiguraci stavu Azure Automation můžete použít `ConfigurationData` v Azure PowerShell, ale ne v Azure Portal.

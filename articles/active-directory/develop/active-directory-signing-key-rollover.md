@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: b65ad1f22d20686a1ee47631f9209e1b15b0ab58
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88948126"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Výměna podpisových klíčů na platformě Microsoft identity
@@ -37,7 +37,7 @@ Způsob, jakým vaše aplikace zpracovává výměna klíčů, závisí na prom�
 * [Nativní klientské aplikace přistupující k prostředkům](#nativeclient)
 * [Webové aplikace/rozhraní API přistupující k prostředkům](#webclient)
 * [Webové aplikace/rozhraní API chrání prostředky a sestavené pomocí Azure App Services](#appservices)
-* [Webové aplikace/rozhraní API chrání prostředky pomocí rozhraní .NET OWIN OpenID Connect, WS-dodává nebo WindowsAzureActiveDirectoryBearerAuthentication middleware.](#owin)
+* [Webové aplikace/rozhraní API chrání prostředky pomocí .NET OWIN OpenID Connect, WS-Fed nebo WindowsAzureActiveDirectoryBearerAuthentication middlewaru](#owin)
 * [Webové aplikace/rozhraní API chrání prostředky pomocí middlewaru .NET Core OpenID Connect nebo JwtBearerAuthentication middleware](#owincore)
 * [Webové aplikace/rozhraní API Ochrana prostředků pomocí Node.js Passport – modul Azure-AD](#passport)
 * [Webové aplikace/rozhraní API chrání prostředky a vytvořené pomocí sady Visual Studio 2015 nebo novější](#vs2015)
@@ -65,8 +65,8 @@ Webové aplikace a webová rozhraní API, které používají tok pouze pro apli
 ### <a name="web-applications--apis-protecting-resources-and-built-using-azure-app-services"></a><a name="appservices"></a>Webové aplikace/rozhraní API chrání prostředky a sestavené pomocí Azure App Services
 Funkce ověřování/autorizace v Azure App Services (EasyAuth) již má potřebnou logiku pro automatické zpracování výměny klíčů.
 
-### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>Webové aplikace/rozhraní API chrání prostředky pomocí rozhraní .NET OWIN OpenID Connect, WS-dodává nebo WindowsAzureActiveDirectoryBearerAuthentication middleware.
-Pokud vaše aplikace používá middleware .NET OWIN OpenID Connect, WS-dodaný nebo WindowsAzureActiveDirectoryBearerAuthentication, již má logiku potřebnou k automatickému zpracování výměny klíčů.
+### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>Webové aplikace/rozhraní API chrání prostředky pomocí .NET OWIN OpenID Connect, WS-Fed nebo WindowsAzureActiveDirectoryBearerAuthentication middlewaru
+Pokud vaše aplikace používá middleware rozhraní .NET OWIN OpenID Connect, WS-Fed nebo WindowsAzureActiveDirectoryBearerAuthentication, již má potřebnou logiku pro automatické zpracování výměny klíčů.
 
 Můžete potvrdit, že aplikace používá některé z následujících fragmentů kódu v Startup.cs nebo Startup.Auth.cs vaší aplikace.
 
@@ -284,7 +284,7 @@ Použijte následující postup, chcete-li ověřit, zda je logika výměny klí
           </keys>
    ```
 2. V **\<add thumbprint="">** nastavení změňte hodnotu kryptografického otisku tak, že nahradíte libovolný znak jiným. Uložte soubor **Web.config**.
-3. Sestavte aplikaci a potom ji spusťte. Pokud můžete dokončit proces přihlášení, aplikace úspěšně aktualizuje klíč stažením požadovaných informací z dokumentu federačních metadat vašeho adresáře. Pokud máte problémy s přihlášením, ujistěte se, že změny v aplikaci jsou správné, a přečtěte si téma [Přidání přihlašování do webové aplikace pomocí platformy Microsoft Identity Platform](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) nebo stažení a kontrola následujícího příkladu kódu: [víceklientské cloudová aplikace pro Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
+3. Sestavte aplikaci a potom ji spusťte. Pokud můžete dokončit proces přihlášení, aplikace úspěšně aktualizuje klíč stažením požadovaných informací z dokumentu federačních metadat vašeho adresáře. Pokud máte problémy s přihlášením, zajistěte, aby změny v aplikaci byly správné, a přečtěte si téma [přidání Sign-On do webové aplikace pomocí platformy Microsoft Identity Platform](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) nebo stažení a kontrola následujícího příkladu kódu: [víceklientské cloudová aplikace pro Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>Webové aplikace chránící prostředky a vytvořené pomocí sady Visual Studio 2008 nebo 2010 a technologie Windows Identity Foundation (WIF) v 1.0 pro .NET 3,5
 Pokud jste vytvořili aplikaci v WIF v 1.0, není k dispozici žádný mechanismus pro automatickou aktualizaci konfigurace vaší aplikace, aby používal nový klíč.

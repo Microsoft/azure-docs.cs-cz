@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/02/2019
 ms.openlocfilehash: 0b5e255d7d108eb063ece4e5489a8762261a0bed
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88207265"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Připojení k Azure SQL Database pomocí Azure Functions
@@ -18,7 +18,7 @@ V tomto článku se dozvíte, jak pomocí Azure Functions vytvořit naplánovano
 
 Pokud se jedná o vaše první prostředí při práci s funkcemi jazyka C#, měli byste si přečíst [referenční informace pro vývojáře Azure Functions C#](functions-dotnet-class-library.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Dokončete kroky v článku [Vytvoření první funkce pomocí sady Visual Studio](functions-create-your-first-function-visual-studio.md) k vytvoření místní aplikace Function App, která cílí na verzi 2. x nebo novější verzi modulu runtime. Projekt musíte také publikovat do aplikace Function App v Azure.
 
@@ -30,7 +30,7 @@ Pokud se jedná o vaše první prostředí při práci s funkcemi jazyka C#, mě
 
 Pro databázi, kterou jste vytvořili po dokončení [vytváření databáze v Azure SQL Database pomocí Azure Portal](../azure-sql/database/single-database-create-quickstart.md), je třeba získat připojovací řetězec.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. V nabídce na levé straně vyberte **databáze SQL** a na stránce **databáze SQL** vyberte svou databázi.
 

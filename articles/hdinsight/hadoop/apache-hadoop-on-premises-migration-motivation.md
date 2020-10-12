@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87072779"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – motivace a výhody
@@ -107,7 +107,7 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |Systémy, které jsou závislé na clusteru|SQL Server, Teradata, Power BI, MongoDB|
 |Integrace třetích stran|Tableau, GridGain, Qubole, Informatica, Splunk|
 |**Téma**: **zabezpečení**|||
-|Zabezpečení hraničních|brány firewall,|
+|Zabezpečení hraničních|Firewally|
 |Ověřování clusteru & autorizaci|Active Directory, Ambari, Cloudera Manager, bez ověřování|
 |HDFS – Access Control|  Ruční, uživatelé SSH|
 |Ověřování podregistru & autorizaci|Sentry, LDAP, AD s protokolem Kerberos, Ranger|
@@ -148,14 +148,14 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |Míra růstu uzlů clusteru|5% za rok
 |**Téma**: **využití clusteru**|||
 |Průměrné využití procesoru v%|60 %||
-|Průměrná doba využití paměti%|75 %||
-|Využité místo na disku|75 %||
-|Průměrná doba využití sítě%|25 %
+|Průměrná doba využití paměti%|75%||
+|Využité místo na disku|75%||
+|Průměrná doba využití sítě%|25%
 |**Téma**: **zaměstnanci**|||
 |Počet správců|2||
 |Počet vývojářů|10||
 |Počet koncových uživatelů|100||
-|Dovedností|Hadoop, Spark||
+|Dovednosti|Hadoop, Spark||
 |Počet dostupných prostředků pro účely migrace|2||
 |**Téma**: **omezení**|||
 |Aktuální omezení|Latence je vysoká.||
@@ -170,13 +170,13 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |Upřednostňovaná virtuální síť?|Yes||
 |Je potřeba HA/DR?|Yes||
 |Integraci s dalšími Cloud Services?|ADF, CosmosDB||
-|**Téma**: **přesun dat**  |||
+|**Téma**:   **přesun dat**  |||
 |Předvolba počátečního zatížení|DistCp, data box, ADF, WANDisco||
 |Rozdíl přenosu dat|DistCp, AzCopy||
 |Pokračující přírůstkový přenos dat|DistCp, Sqoop||
-|**Téma**: **monitorování výstrah &** |||
+|**Téma**:   **monitorování výstrah &** |||
 |Použití monitorování Azure & upozorňování a integrace monitorování třetích stran|Použití upozorňování & monitorování Azure||
-|**Téma**: **Předvolby zabezpečení** |||
+|**Téma**:   **Předvolby zabezpečení** |||
 |Privátní a chráněný datový kanál?|Yes||
 |Cluster připojený k doméně (ESP)?|     Yes||
 |Místní AD Sync ke cloudu?|     Yes||
@@ -185,11 +185,11 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |Jenom uživatelé cloudu?|                 Yes||
 |Je potřeba MFA?|                       No|| 
 |Požadavky na autorizaci dat?|  Yes||
-|Access Control na základě rolí?|        Yes||
+|Access Control Role-Based?|        Yes||
 |Je vyžadováno auditování?|                  Yes||
 |Šifrování dat v klidovém umístění?|          Yes||
 |Šifrování dat při přenosu?|       Yes||
-|**Téma**: **Předvolby opětovné architektury** |||
+|**Téma**:   **Předvolby opětovné architektury** |||
 |Jeden cluster vs konkrétní typy clusterů|Konkrétní typy clusterů||
 |Společně umístěné úložiště vs – vzdálené úložiště?|Vzdálené úložiště||
 |Menší velikost clusteru jako data se ukládají vzdáleně?|Menší velikost clusteru||

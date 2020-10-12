@@ -1,5 +1,5 @@
 ---
-title: Jak monitorovat Azure cache pro Redis
+title: Monitorování Azure Cache for Redis
 description: Naučte se monitorovat stav a výkon pro instance Redis v mezipaměti Azure.
 author: yegu-ms
 ms.author: yegu
@@ -7,13 +7,13 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.openlocfilehash: 7d703c63ebdc5b70987ead3ed2ccbe5f4843a06f
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004856"
 ---
-# <a name="how-to-monitor-azure-cache-for-redis"></a>Jak monitorovat Azure cache pro Redis
+# <a name="how-to-monitor-azure-cache-for-redis"></a>Monitorování Azure Cache for Redis
 
 Azure cache pro Redis používá [Azure monitor](../azure-monitor/index.yml) k poskytnutí několika možností monitorování instancí mezipaměti. Můžete zobrazit metriky, připnout grafy metriky na úvodní panel, přizpůsobit datum a časový rozsah grafů monitorování, přidat a odebrat metriky z grafů a nastavit upozornění, když budou splněny určité podmínky. Tyto nástroje vám umožní monitorovat stav mezipaměti Azure pro instance Redis a pomáhat při správě aplikací pro ukládání do mezipaměti.
 
@@ -103,7 +103,7 @@ Každá metrika obsahuje dvě verze. Jedna metrika měří výkon celé mezipam�
 | Zápis do mezipaměti |Množství dat zapsaných do mezipaměti v megabajtech za sekundu (MB/s) během zadaného intervalu generování sestav. Tato hodnota je odvozena z síťových adaptérů, které podporují virtuální počítač, který je hostitelem mezipaměti a není Redis konkrétní. Tato hodnota odpovídá šířce pásma dat odesílaných do mezipaměti z klienta. |
 | Připojení klienti |Počet připojení klientů k mezipaměti během zadaného intervalu generování sestav. Tento počet se mapuje `connected_clients` z příkazu REDIS info. Po dosažení [limitu připojení](cache-configure.md#default-redis-server-configuration) se následné pokusy o připojení k mezipaměti nezdaří. I když nejsou k dispozici žádné aktivní klientské aplikace, může být v důsledku interních procesů a připojení stále několik instancí připojených klientů. |
 | Procesor |Využití CPU v mezipaměti Azure pro server Redis jako procento v zadaném intervalu generování sestav. Tato hodnota se mapuje na `\Processor(_Total)\% Processor Time` čítač výkonu operačního systému. |
-| Chyby | Konkrétní chyby a problémy s výkonem, ke kterým mohlo dojít během zadaného intervalu vytváření sestav. Tato metrika má osm dimenzí, které představují různé typy chyb, ale mohou být v budoucnu přičteny. Typy chyb, které jsou nyní zastoupeny, jsou následující: <br/><ul><li>Převzetí služeb při selhání – při **převzetí služeb** při selhání (u podřízeného propaguje na primární)</li><li>Datová **ztráta** – Pokud dojde ke ztrátě dat v mezipaměti</li><li>**UnresponsiveClients** – Pokud klienti nečtou data ze serveru dostatečně rychle</li><li>**AOF** – Pokud dojde k potížím souvisejícím s AOF Persistence</li><li>**RDB** – Pokud existuje problém týkající se TRVALosti RDB</li><li>**Import** – Pokud dojde k potížím souvisejícím s importem RDB</li><li>**Export** – Pokud dojde k potížím souvisejícím s EXPORTem RDB</li></ul> |
+| chyby | Konkrétní chyby a problémy s výkonem, ke kterým mohlo dojít během zadaného intervalu vytváření sestav. Tato metrika má osm dimenzí, které představují různé typy chyb, ale mohou být v budoucnu přičteny. Typy chyb, které jsou nyní zastoupeny, jsou následující: <br/><ul><li>Převzetí služeb při selhání – při **převzetí služeb** při selhání (u podřízeného propaguje na primární)</li><li>Datová **ztráta** – Pokud dojde ke ztrátě dat v mezipaměti</li><li>**UnresponsiveClients** – Pokud klienti nečtou data ze serveru dostatečně rychle</li><li>**AOF** – Pokud dojde k potížím souvisejícím s AOF Persistence</li><li>**RDB** – Pokud existuje problém týkající se TRVALosti RDB</li><li>**Import** – Pokud dojde k potížím souvisejícím s importem RDB</li><li>**Export** – Pokud dojde k potížím souvisejícím s EXPORTem RDB</li></ul> |
 | Vyloučené klíče |Počet položek vyřazených z mezipaměti během zadaného intervalu vytváření sestav z důvodu `maxmemory` limitu. Tento počet se mapuje `evicted_keys` z příkazu REDIS info. |
 | Prošlé klíče |Počet položek, jejichž platnost vypršela z mezipaměti během zadaného intervalu generování sestav. Tato hodnota se mapuje `expired_keys` z příkazu REDIS info.|
 | Příkazy Get |Počet operací GET z mezipaměti během zadaného intervalu generování sestav. Tato hodnota je součtem následujících hodnot z příkazu Redis info All: `cmdstat_get` , `cmdstat_hget` , `cmdstat_hgetall` , `cmdstat_hmget` , `cmdstat_mget` , `cmdstat_getbit` , a a `cmdstat_getrange` je ekvivalentní součtu přístupů do mezipaměti a přístupů během intervalu generování sestav. |

@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c03c2c55988df04cc45ef4a1d66d959513c1626d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908593"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Pozvání interních uživatelů ke spolupráci B2B
@@ -51,7 +51,7 @@ K odeslání pozvánky B2B internímu uživateli můžete použít PowerShell ne
 Ve výchozím nastavení Pozvánka uživateli pošle e-mail s informacemi o tom, že je pozvaní, ale můžete tento e-mail potlačit a místo toho poslat vlastní.
 
 > [!NOTE]
-> K odeslání vlastního e-mailu nebo jiné komunikaci můžete použít New-AzureADMSInvitation with-SendInvitationMessage: $false pro pozvání uživatelů v tichém režimu a odeslání vlastní e-mailové zprávy převedené uživateli. Viz [rozhraní API pro spolupráci Azure AD B2B a přizpůsobení](customize-invitation-api.md).
+> K odeslání vlastního e-mailu nebo jiné komunikaci můžete použít New-AzureADMSInvitation with-SendInvitationMessage: $false pro pozvání uživatelů v tichém režimu a odeslání vlastní e-mailové zprávy na převedeného uživatele. Viz [rozhraní API pro spolupráci Azure AD B2B a přizpůsobení](customize-invitation-api.md).
 
 ## <a name="use-powershell-to-send-a-b2b-invitation"></a>Použití PowerShellu k odeslání pozvánky B2B
 

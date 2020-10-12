@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006292"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Nasazení virtuálního pole StorSimple – nastavení jako souborového serveru prostřednictvím Azure Portal
@@ -124,7 +124,7 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte virtuáln
 Provedením následujících kroků v [Azure Portal](https://portal.azure.com/) dokončete požadované nastavení zařízení.
 
 #### <a name="to-configure-the-device-as-file-server"></a>Konfigurace zařízení jako souborového serveru
-1. Přejít do služby StorSimple Device Manager a pak přejít na **> zařízení pro správu**. V okně **zařízení** vyberte zařízení, které jste právě vytvořili. Toto zařízení se zobrazí jako **připravené k nastavení**.
+1. Přejít do služby StorSimple Device Manager a pak přejít na  **> zařízení pro správu**. V okně **zařízení** vyberte zařízení, které jste právě vytvořili. Toto zařízení se zobrazí jako **připravené k nastavení**.
    
    ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
 2. Klikněte na zařízení a zobrazí se informační zpráva oznamující, že zařízení je připravené k instalaci.

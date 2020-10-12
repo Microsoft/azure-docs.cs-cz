@@ -7,10 +7,10 @@ ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 42932d712d6c4a94cad28aec924b88fbc126662b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212797"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB vstupní vazby pro Azure Functions 2. x a vyšší
@@ -1432,11 +1432,11 @@ Z [běhové knihovny Functions jazyka Java](/java/api/overview/azure/functions/r
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `CosmosDB` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový**     | Není k dispozici | Musí být nastaven na hodnotu `cosmosDB` .        |
-|**směr**     | Není k dispozici | Musí být nastaven na hodnotu `in` .         |
-|**Jméno**     | Není k dispozici | Název parametru vazby, který představuje dokument ve funkci.  |
+|**textový**     | neuvedeno | Musí být nastaven na hodnotu `cosmosDB` .        |
+|**směr**     | neuvedeno | Musí být nastaven na hodnotu `in` .         |
+|**Jméno**     | neuvedeno | Název parametru vazby, který představuje dokument ve funkci.  |
 |**Databáze** |**DatabaseName** |Databáze obsahující dokument.        |
 |**collectionName** |**Název kolekce** | Název kolekce, která obsahuje dokument. |
 |**id**    | **Účet** | ID dokumentu, který se má načíst Tato vlastnost podporuje [výrazy vazby](./functions-bindings-expressions-patterns.md). Nenastavte `id` vlastnosti i **sqlQuery** . Pokud nenastavíte žádné nastavení, načte se celá kolekce. |

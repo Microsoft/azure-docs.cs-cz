@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: harshacs
 ms.openlocfilehash: 1d2d3b3aacc00428c96cde0f8230421a98151ae2
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90068009"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Urychlené používání sítě pomocí zotavení po havárii virtuálních počítačů Azure
@@ -24,7 +24,7 @@ Akcelerované síťové služby umožňují virtuálnímu počítači pomocí ro
 
 Azure Site Recovery vám umožní využívat výhody akcelerované sítě pro virtuální počítače Azure, u kterých došlo k převzetí služeb při selhání do jiné oblasti Azure. Tento článek popisuje, jak můžete povolit akcelerované síťové služby pro virtuální počítače Azure replikované pomocí Azure Site Recovery.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že rozumíte:
 -   [Architektura replikace](azure-to-azure-architecture.md) virtuálních počítačů Azure

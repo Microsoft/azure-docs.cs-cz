@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
 ms.openlocfilehash: b7e9491f3ddc49d49cf5301bba9d4f51fc9dd008
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91282336"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Kurz: Online migrace MySQL do služby Azure Database for MySQL pomocí DMS
@@ -100,7 +100,7 @@ Za předpokladu, že máte ukázkovou databázi MySQL **Employees** v místním 
 mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
 ```
 
-Příklad:
+Například:
 
 ```
 mysqldump -h 10.10.123.123 -u root -p --databases employees --no-data > d:\employees.sql
@@ -112,7 +112,7 @@ Pokud chcete importovat schéma do cílové služby Azure Database for MySQL, sp
 mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
  ```
 
-Příklad:
+Například:
 
 ```
 mysql.exe -h shausample.mysql.database.azure.com -u dms@shausample -p employees < d:\employees.sql

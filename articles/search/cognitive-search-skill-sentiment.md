@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 895e22d94122539ee68bcac8ee4debce2d824ff0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935275"
 ---
 # <a name="sentiment-cognitive-skill"></a>Mínění vnímání znalostí
@@ -36,20 +36,20 @@ Maximální velikost záznamu musí být 5000 znaků měřených podle [`String.
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Název parametru | Popis |
+| Název parametru | Description |
 |----------------|----------------------|
 | `defaultLanguageCode` | volitelné Kód jazyka, který se má použít pro dokumenty, které nespecifikují jazyk explicitně. <br/> Zobrazit [úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/language-support.md) |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností 
 
-| Název vstupu | Popis |
+| Název vstupu | Description |
 |--------------------|-------------|
 | `text` | Text, který má být analyzován.|
 | `languageCode`    |  Volitelné Řetězec, který označuje jazyk záznamů. Není-li tento parametr zadán, je použita výchozí hodnota "en". <br/>[Úplný seznam podporovaných jazyků](../cognitive-services/text-analytics/language-support.md)najdete v části.|
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Název výstupu | Popis |
+| Název výstupu | Description |
 |--------------------|-------------|
 | `score` | Hodnota mezi 0 a 1, která představuje mínění analyzovaného textu. Hodnoty blížící se 0 mají negativní mínění, blízko až 0,5 mají neutrální mínění a hodnoty blízko 1 mají pozitivní mínění.|
 

@@ -17,10 +17,10 @@ ms.date: 12/09/2016
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e5c3c0d9872fb4d50a0d4770e2c87b7be16c20bf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88652946"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Vytvoření konfigurace NetWeaver s více identifikátory SID pro SAP
@@ -455,7 +455,7 @@ Tento článek se zaměřuje na to, jak přejít z jedné instalace ASCS/SCS do 
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Cluster služby WSFC byl již nakonfigurován pro jednu instanci SAP ASCS/SCS, jak je popsáno v [Průvodci pro vysoce DOSTUPNOU SAP NetWeaver na virtuálních počítačích s Windows][sap-ha-guide] a jak je znázorněno v tomto diagramu.
 
 ![Instance SAP ASCS/SCS s vysokou dostupností][sap-ha-guide-figure-6001]

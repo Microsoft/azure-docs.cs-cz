@@ -7,13 +7,13 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
 ms.openlocfilehash: be660101a28d5ef289de1b25f8f7d33fbe9f617b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86107814"
 ---
-# <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Připojení k Azure Database for MySQL pomocí přesměrování
+# <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Připojení ke službě Azure Database for MySQL s přesměrováním
 
 Toto téma vysvětluje, jak připojit aplikaci Azure Database for MySQL server s režimem přesměrování. Přesměrování se zaměřuje na snížení latence sítě mezi klientskými aplikacemi a servery MySQL tím, že umožňuje aplikacím připojení přímo k uzlům back-end serverů.
 

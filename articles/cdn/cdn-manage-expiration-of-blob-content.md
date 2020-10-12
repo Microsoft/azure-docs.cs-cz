@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
 ms.openlocfilehash: 49748b3d77d097e655ee6ec5777022c038841a6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073131"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Správa vypršení platnosti služby Azure Blob Storage v Azure CDN
@@ -72,7 +72,7 @@ Upřednostňovanou metodou pro nastavení záhlaví objektu BLOB `Cache-Control`
 
 3. Vyberte **Uložit**.
  
-**Nastavení hlaviček pro řízení mezipaměti souborů objektů BLOB pomocí vlastních pravidel ukládání do mezipaměti:**
+**Nastavení hlaviček Cache-Control souboru BLOB pomocí vlastních pravidel ukládání do mezipaměti:**
 
 1. V části **vlastní pravidla ukládání do mezipaměti**vytvořte dvě podmínky shody:
 
@@ -93,7 +93,7 @@ Upřednostňovanou metodou pro nastavení záhlaví objektu BLOB `Cache-Control`
 
 [Azure PowerShell](/powershell/azure/) je jedním z nejrychlejších a nejúčinnějších způsobů správy služeb Azure. Pomocí `Get-AzStorageBlob` rutiny Získejte odkaz na objekt BLOB a pak nastavte `.ICloudBlob.Properties.CacheControl` vlastnost. 
 
-Příklad:
+Například:
 
 ```powershell
 # Create a storage context
@@ -117,7 +117,7 @@ $blob.ICloudBlob.SetProperties()
 ## <a name="setting-cache-control-headers-by-using-net"></a>Nastavení hlaviček Cache-Control pomocí .NET
 Chcete-li zadat hlavičku objektu BLOB `Cache-Control` pomocí kódu .NET, nastavte vlastnost [CloudBlob. Properties. CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) pomocí [Azure Storage klientské knihovny pro rozhraní .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) .
 
-Příklad:
+Například:
 
 ```csharp
 class Program
@@ -164,7 +164,7 @@ Aktualizace vlastnosti *CacheControl* objektu blob pomocí Průzkumník služby 
 ![Vlastnosti Průzkumník služby Azure Storage](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Rozhraní příkazového řádku Azure
-Pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure) (CLI) můžete spravovat prostředky objektů BLOB v Azure z příkazového řádku. Pokud chcete nastavit hlavičku Cache-Control při nahrávání objektu BLOB pomocí rozhraní příkazového řádku Azure, nastavte vlastnost *cacheControl* pomocí `-p` přepínače. Následující příklad ukazuje, jak nastavit hodnotu TTL na jednu hodinu (3600 sekund):
+Pomocí rozhraní příkazového řádku (CLI) [azure Command-Line](https://docs.microsoft.com/cli/azure) můžete spravovat prostředky objektů BLOB v Azure. Pokud chcete nastavit hlavičku Cache-Control při nahrávání objektu BLOB pomocí rozhraní příkazového řádku Azure, nastavte vlastnost *cacheControl* pomocí `-p` přepínače. Následující příklad ukazuje, jak nastavit hodnotu TTL na jednu hodinu (3600 sekund):
   
 ```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\<blob name> <container name> <blob name>

@@ -4,10 +4,10 @@ description: Živé video analýzy můžete použít na IoT Edge pro průběžn�
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 6222d2c05b2fe05945d4bcbef6dbb0d64bd4726a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84261076"
 ---
 # <a name="playback-of-recordings"></a>Přehrávání záznamů 
@@ -209,8 +209,8 @@ GET https://hostname/locatorId/content.ism/availableMedia?precision=day&startTim
 
 Jak je uvedeno výše, tyto filtry vám pomůžou vybrat části záznamu (například z 9:00 do 11AM v novém roce dne) pro přehrávání. Při streamování přes HLS by adresa URL streamování vypadala jako `https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl).m3u8` . Chcete-li vybrat část záznamu, přidejte Čas_spuštění a parametr čas_ukončení, například: `https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T08:00:00Z,endTime=2019-12-21T10:00:00Z).m3u8` . Proto filtry časového rozsahu jsou modifikátory adresy URL používané k popisu části časové osy nahrávky, která je obsažena v manifestu streamování:
 
-* `starttime`je razítko DateTime ISO 8601, které popisuje požadovaný počáteční čas časové osy videa ve vráceném manifestu.
-* `endtime`je razítko DateTime ISO 8601, které popisuje požadovaný koncový čas časové osy videa vrácené v manifestu.
+* `starttime` je razítko DateTime ISO 8601, které popisuje požadovaný počáteční čas časové osy videa ve vráceném manifestu.
+* `endtime` je razítko DateTime ISO 8601, které popisuje požadovaný koncový čas časové osy videa vrácené v manifestu.
 
 Maximální délka (v čase) takového manifestu nemůže být delší než 24 hodin.
 
@@ -294,7 +294,7 @@ Pomocí takového záznamu:
     `GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T14:01:00.000Z,endTime=2019-12-21T03:00:00.000Z).m3u8`
 * Pokud si vyžádáte manifest, ve kterém byly hodnoty Čas_spuštění a čas_ukončení uvnitř závorce (například z 8:00 až 10AM UTC), služba se chová stejným způsobem, jako by výsledkem filtru Assetu byl prázdný výsledek.
 
-    [Toto je požadavek, který získá prázdnou odpověď.]`GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T08:00:00.000Z,endTime=2019-12-21T10:00:00.000Z).m3u8`
+    [Toto je požadavek, který získá prázdnou odpověď.] `GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T08:00:00.000Z,endTime=2019-12-21T10:00:00.000Z).m3u8`
 * Pokud vyžádáte manifest, ve kterém je pouze jeden z Čas_spuštění nebo čas ukončení uvnitř otvoru, vrácený manifest bude obsahovat pouze část tohoto časového rozpětí. Přichycení hodnoty startTime nebo čas_ukončení k nejbližší platné hranici. Například pokud jste požádali o 3-HR datový proud z 10AM do 13:00, odpověď by měla obsahovat 1 – hod média v hodnotě od 12:00 do 13:00.
 
     `GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T10:00:00.000Z,endTime=2019-12-21T13:00:00.000Z).m3u8`
@@ -303,7 +303,7 @@ Pomocí takového záznamu:
 
 ## <a name="recording-and-playback-latencies"></a>Latence nahrávání a přehrávání
 
-Při použití živé analýzy videí na IoT Edge k nahrávání do Assetu zadáte vlastnost segmentLength, která oznámí modulu, aby agreguje minimální dobu trvání videa (v sekundách) předtím, než se nahraje do cloudu. Pokud je například segmentLength nastavené na 300, pak modul nashromáždí za 5 minut množství videí před nahráním jednoho 5 minut "bloku", přejde do režimu akumulace na dalších 5 minut a nahrajte znovu. Zvýšení segmentLength má výhodu snížit náklady transakce Azure Storage, protože počet čtení a zápisů nebude častější než jednou za segmentLength sekund.
+Při použití živé analýzy videí na IoT Edge k nahrávání do Assetu zadáte vlastnost segmentLength, která oznámí modulu, aby agreguje minimální dobu trvání videa (v sekundách) předtím, než se nahraje do cloudu. Pokud je například segmentLength nastavené na 300, pak modul nashromáždí za 5 minut množství videí před nahráním 1 5 minut "bloku", přejde do režimu akumulace na dalších 5 minut a odešle se znovu. Zvýšení segmentLength má výhodu snížit náklady transakce Azure Storage, protože počet čtení a zápisů nebude častější než jednou za segmentLength sekund.
 
 V důsledku toho se streamování videa z Media Services bude zpozdit alespoň o tolik času. 
 

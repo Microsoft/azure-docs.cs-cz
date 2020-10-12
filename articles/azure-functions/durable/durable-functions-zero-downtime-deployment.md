@@ -7,10 +7,10 @@ ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 11bbc30179cc27f4799b1fd2869cb312dfa34473
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87093064"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Nasazení s nulovou dobou výpadku pro Durable Functions
@@ -54,7 +54,7 @@ Tento scénář nastavíte pomocí následujícího postupu.
 
 1. Pro každou slot vytvořte nové nastavení aplikace, například `DurableManagementStorage` . Nastavte jeho hodnotu na připojovací řetězec různých účtů úložiště. Tyto účty úložiště používá rozšíření Durable Functions pro [spolehlivé provádění](./durable-functions-orchestrations.md). Pro jednotlivé sloty použijte samostatný účet úložiště. Toto nastavení neoznačujte jako nastavení slotu nasazení.
 
-1. V částihost.jsaplikace Function App [na durableTask souboru](durable-functions-bindings.md#hostjson-settings)zadejte `azureStorageConnectionStringName` název nastavení aplikace, které jste vytvořili v kroku 3.
+1. V částihost.jsaplikace Function App [ na durableTask souboru](durable-functions-bindings.md#hostjson-settings)zadejte `azureStorageConnectionStringName` název nastavení aplikace, které jste vytvořili v kroku 3.
 
 Následující diagram znázorňuje popsanou konfiguraci slotů pro nasazení a účtů úložiště. V tomto potenciálním scénáři přednasazení je verze 2 aplikace Function App spuštěná v produkčním slotu, zatímco verze 1 zůstává v přípravném slotu.
 

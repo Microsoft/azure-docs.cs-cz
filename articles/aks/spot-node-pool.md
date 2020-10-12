@@ -6,10 +6,10 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.openlocfilehash: dbb003c287a18810c2c14c4f2ea401fa55cca427
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87987286"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Preview – přidání fondu uzlů s přímým vložením do clusteru Azure Kubernetes Service (AKS)
@@ -26,7 +26,7 @@ Tento článek předpokládá základní znalost konceptů Kubernetes a Azure Lo
 
 Tato funkce je aktuálně ve verzi Preview.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Než začnete
 

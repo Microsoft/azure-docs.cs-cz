@@ -4,10 +4,10 @@ description: Tento článek poskytuje vlastnosti a schéma pro události Azure I
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86113645"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT Hub jako zdroj Event Grid
@@ -19,13 +19,13 @@ Tento článek poskytuje vlastnosti a schéma pro události Azure IoT Hub. Úvod
 
 Azure IoT Hub emituje následující typy událostí:
 
-| Typ události | Description |
+| Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft. Devices. DeviceCreated | Publikováno, když je zařízení zaregistrované do služby IoT Hub. |
-| Microsoft. Devices. DeviceDeleted | Publikováno při odstranění zařízení ze služby IoT Hub. | 
-| Microsoft. Devices. DeviceConnected | Publikováno, když je zařízení připojené ke IoT Hub. |
-| Microsoft. Devices. DeviceDisconnected | Publikováno, když se zařízení odpojí od služby IoT Hub. | 
-| Microsoft. Devices. DeviceTelemetry | Publikováno při odeslání zprávy telemetrie do služby IoT Hub. |
+| Microsoft.Devices.DeviceCreated | Publikováno, když je zařízení zaregistrované do služby IoT Hub. |
+| Microsoft.Devices.DeviceDeleted | Publikováno při odstranění zařízení ze služby IoT Hub. | 
+| Microsoft.Devices.DeviceConnected | Publikováno, když je zařízení připojené ke IoT Hub. |
+| Microsoft.Devices.DeviceDisconnected | Publikováno, když se zařízení odpojí od služby IoT Hub. | 
+| Microsoft.Devices.DeviceTelemetry | Publikováno při odeslání zprávy telemetrie do služby IoT Hub. |
 
 Všechny události zařízení s výjimkou událostí telemetrie zařízení jsou všeobecně dostupné ve všech oblastech podporovaných nástrojem Event Grid. Událost telemetrie zařízení je ve verzi Public Preview a je dostupná ve všech oblastech kromě Východní USA, Západní USA, Západní Evropa, [Azure Government](../azure-government/documentation-government-welcome.md), [Azure Čína 21Vianet](/azure/china/china-welcome)a [Azure Německo](https://azure.microsoft.com/global-infrastructure/germany/).
 
@@ -144,10 +144,10 @@ Všechny události obsahují stejná data nejvyšší úrovně:
 | -------- | ---- | ----------- |
 | id | řetězec | Jedinečný identifikátor události |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
-| Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| subject | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| eventType | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
-| data | odkazy objektů | IoT Hub data události.  |
+| data | object | IoT Hub data události.  |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
@@ -165,7 +165,7 @@ Pro události **připojené k zařízení** a **odpojení zařízení** IoT Hub 
 | Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | moduleId | řetězec | Jedinečný identifikátor modulu Toto pole je výstupní jenom pro zařízení modulu. Tento řetězec, který rozlišuje velká a malá písmena, může být dlouhý až 128 znaků a podporuje i 7 bitů alfanumerických znaků a navíc následující speciální znaky: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
-| deviceConnectionStateEventInfo | odkazy objektů | Informace o událostech stavu připojení zařízení
+| deviceConnectionStateEventInfo | object | Informace o událostech stavu připojení zařízení
 | sequenceNumber | řetězec | Číslo, které pomáhá indikovat pořadí připojených zařízení nebo událostí odpojení zařízení. Poslední událost bude mít pořadové číslo, které je vyšší než předchozí událost. Toto číslo se může změnit o více než 1, ale bude se striktně zvyšovat. Podívejte [se, jak použít pořadové číslo](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
 V případě **telemetrie zařízení** IoT Hub událost obsahuje datový objekt zprávu zařízení-Cloud ve [formátu zprávy služby IoT Hub](../iot-hub/iot-hub-devguide-messages-construct.md) a má následující vlastnosti:
@@ -180,7 +180,7 @@ Pro **zařízení vytvořená** a **odstraněná** IoT Hub události obsahuje da
 
 | Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
-| vyjde | odkazy objektů | Informace o dodaném zařízení, což je cloudová reprezentace metadat aplikačních zařízení. | 
+| vyjde | object | Informace o dodaném zařízení, což je cloudová reprezentace metadat aplikačních zařízení. | 
 | deviceID | řetězec | Jedinečný identifikátor vlákna zařízení. | 
 | značk | řetězec | Validátor pro zajištění konzistence aktualizací v zařízení. U každého ETag je zaručeno, že bude jedinečný pro každé zařízení. |  
 | deviceEtag| řetězec | Validátor pro zajištění konzistence aktualizací registru zařízení. Každý deviceEtag je zaručený jako jedinečný v každém registru zařízení. |
@@ -188,14 +188,14 @@ Pro **zařízení vytvořená** a **odstraněná** IoT Hub události obsahuje da
 | statusUpdateTime | řetězec | ISO8601 časové razítko poslední aktualizace stavu vystavení zařízení. |
 | Vlastnost ConnectionState | řetězec | Zda je zařízení připojeno nebo odpojeno. | 
 | lastActivityTime | řetězec | ISO8601 časové razítko poslední aktivity. | 
-| cloudToDeviceMessageCount | celé číslo | Počet zpráv z cloudu do zařízení odeslaných do tohoto zařízení | 
+| cloudToDeviceMessageCount | integer | Počet zpráv z cloudu do zařízení odeslaných do tohoto zařízení | 
 | authenticationType | řetězec | Typ ověřování, který se používá pro toto zařízení: buď `SAS` , `SelfSigned` nebo `CertificateAuthority` . |
 | x509Thumbprint | řetězec | Kryptografický otisk je jedinečná hodnota pro certifikát x509, která se běžně používá k vyhledání konkrétního certifikátu v úložišti certifikátů. Kryptografický otisk se dynamicky generuje pomocí algoritmu SHA1 a v certifikátu fyzicky neexistuje. | 
 | primaryThumbprint | řetězec | Primární kryptografický otisk pro certifikát x509 |
 | secondaryThumbprint | řetězec | Sekundární kryptografický otisk pro certifikát x509 | 
-| verze | celé číslo | Celé číslo, které je při každé aktualizaci neinteraktivního zařízení zvětšeno o jedno. |
-| dosažení | odkazy objektů | Část vlastností, které lze zapsat pouze back-end aplikací a kterou zařízení čte. | 
-| uvedené | odkazy objektů | Část vlastností, které mohou být zapsány pouze zařízením a které jsou čteny back-end aplikací. |
+| verze | integer | Celé číslo, které je při každé aktualizaci neinteraktivního zařízení zvětšeno o jedno. |
+| dosažení | object | Část vlastností, které lze zapsat pouze back-end aplikací a kterou zařízení čte. | 
+| uvedené | object | Část vlastností, které mohou být zapsány pouze zařízením a které jsou čteny back-end aplikací. |
 | lastUpdated | řetězec | ISO8601 časové razítko poslední aktualizace vlastnosti vyzdvojené ze zařízení. | 
 
 ## <a name="tutorials-and-how-tos"></a>Kurzy a postupy

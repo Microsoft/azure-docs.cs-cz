@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 7e9f4b55945afc04e5c826b26632d68cb75e502f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260280"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
@@ -28,16 +28,16 @@ Získejte konfiguraci samostatného clusteru Service Fabric.
 
 Konfigurace clusteru obsahuje vlastnosti clusteru, které zahrnují různé typy uzlů v clusteru, konfigurace zabezpečení, selhání a upgrady doménových topologií atd.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Configuration-API-Version [požadováno] | Verze rozhraní API samostatné konfigurace JSON clusteru |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -50,9 +50,9 @@ Spusťte upgrade konfigurace samostatného clusteru Service Fabric.
 
 Ověřte zadané parametry upgradu konfigurace a spusťte upgrade konfigurace clusteru, pokud jsou parametry platné.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --cluster-config [požadováno] | Konfigurace clusteru. |
 | --Application-Health-policies | Slovník kódovaný ve formátu JSON páry názvu typu aplikace a maximální procento není v pořádku před vyvoláním chyby. |
@@ -69,7 +69,7 @@ Ověřte zadané parametry upgradu konfigurace a spusťte upgrade konfigurace cl
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -90,15 +90,15 @@ Získá stav upgradu konfigurace clusteru Service Fabric samostatného clusteru.
 
 Podrobnosti o stavu upgradu konfigurace clusteru pro samostatný cluster Service Fabric
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

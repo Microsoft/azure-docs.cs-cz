@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: dd4a02ffdc062ed1940d35ca64e02a5e0a88a248
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333320"
 ---
 # <a name="read-and-write-spatial-data"></a>Čtení a zápis prostorových dat
@@ -29,7 +29,7 @@ Následující tabulka uvádí formáty prostorových souborů, které jsou podp
 | KML               | ✓  |  ✓  |
 | KMZ               | ✓  |  ✓  |
 | Prostorový CSV       | ✓  |  ✓  |
-| Dobře známý text   | ✓  |  ✓  |
+| Well-Known text   | ✓  |  ✓  |
 
 Tyto další části obsahují přehled všech různých nástrojů pro čtení a zápis prostorových dat pomocí modulu prostorového v/v.
 
@@ -41,7 +41,7 @@ Při čtení komprimovaného souboru buď jako zip, nebo jako KMZ, bude vyhledá
 
 Výsledek z funkce Read je `SpatialDataSet` objekt. Tento objekt rozšiřuje třídu rozhraní injson pro funkci. Dá se snadno předat `DataSource` jako, aby se vykreslily jeho funkce na mapě. `SpatialDataSet`Obsahuje nejen informace o funkci, ale může zahrnovat i překrytí KML, zpracování metrik a další podrobnosti, jak je uvedeno v následující tabulce.
 
-| Název vlastnosti | Typ | Popis | 
+| Název vlastnosti | Typ | Description | 
 |---------------|------|-------------|
 | `bbox` | `BoundingBox` | Ohraničující rámeček všech dat v datové sadě. |
 | `features` | `Feature[]` | Funkce pro injson v rámci datové sady. |
@@ -123,26 +123,26 @@ atlas.io.read(data, {
 );
 ```
 
-## <a name="read-and-write-well-known-text-wkt"></a>Přečíst a zapsat dobře známý text (Well)
+## <a name="read-and-write-well-known-text-wkt"></a>Čtení a zápis Well-Known textu (Well)
 
 [Dobře známý text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) (Well) je standard pro Open GEOSPATIAL CONSORTIUM (OGC), který představuje prostorové geometrií jako text. Mnohé geoprostorové systémy podporují Well, jako je Azure SQL a Azure PostgreSQL, pomocí modulu plug-in PostGIS. Podobně jako u většiny standardů OGC se souřadnice naformátují jako zeměpisná šířka, aby se zarovnaly konvenci x y. Příkladem je, že bod v délce-110 a zeměpisná šířka 45 lze zapsat jako `POINT(-110 45)` použití formátu Well.
 
 Známý text lze číst pomocí `atlas.io.ogc.WKT.read` funkce a napsaný pomocí `atlas.io.ogc.WKT.write` funkce.
 
-## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>Příklady pro čtení a zápis dobře známého textu (Well)
+## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>Příklady čtení a psaní textu Well-Known (Well)
 
 Následující kód ukazuje, jak přečíst známý textový řetězec `POINT(-122.34009 47.60995)` a vykreslit jej na mapě pomocí bublinové vrstvy.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Dobře známý text pro čtení' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>dobře známý text</a> pomocí pera Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přečíst text Well-Known' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si, jak pero <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>Well-Known Text</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Následující kód ukazuje čtení a zápis dobře známého textu zpátky a zpátky.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Přečíst a zapsat dobře známý text' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>text</a> , který je ve správném Azure Maps textu, a <a href='https://codepen.io/azuremaps'>@azuremaps</a> na <a href='https://codepen.io'>CodePen</a>() na.
+<iframe height='700' scrolling='no' title='Čtení a zápis Well-Known textu' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>Text Well-Known pro čtení a zápis</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="read-and-write-gml"></a>Čtení a zápis GML

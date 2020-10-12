@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 9e233b93a1dc054e6d9f713e790e706d589bf01e
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89503988"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrace clusteru Apache HBA na novou verzi
@@ -32,17 +32,17 @@ Tady je příklad matice kompatibility verzí. Y značí kompatibilitu a N ozna�
 
 | Typ kompatibility | Hlavní verze| Podverze | Patch |
 | --- | --- | --- | --- |
-| Kompatibilita komunikace mezi klientem a serverem | N | A | Y |
-| Server – Kompatibilita serveru | N | A | Y |
-| Kompatibilita formátu souborů | N | A | Y |
-| Kompatibilita rozhraní API klienta | N | A | Y |
-| Binární kompatibilita klienta | N | N | A |
+| Client-Server kompatibilita drátů | N | Y | Y |
+| Server-Server kompatibilita | N | Y | Y |
+| Kompatibilita formátu souborů | N | Y | Y |
+| Kompatibilita rozhraní API klienta | N | Y | Y |
+| Binární kompatibilita klienta | N | N | Y |
 | **Omezená Kompatibilita rozhraní API na straně serveru** |  |  |  |
-| Stable | N | A | Y |
-| Vyvíjejí | N | N | A |
+| Stable | N | Y | Y |
+| Vyvíjejí | N | N | Y |
 | Nestabilní | N | N | N |
-| Kompatibilita závislostí | N | A | Y |
-| Provozní kompatibilita | N | N | A |
+| Kompatibilita závislostí | N | Y | Y |
+| Provozní kompatibilita | N | N | Y |
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>Upgradovat se stejnými hlavními verzemi Apache HBA
 

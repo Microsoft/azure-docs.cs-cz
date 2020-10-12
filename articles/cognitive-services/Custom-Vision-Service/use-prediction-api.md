@@ -12,10 +12,10 @@ ms.date: 04/02/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7f1939536e033d2cf964dd2f4ee562e4ee20061b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934748"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Použití modelu s prediktivním rozhraním API
@@ -43,7 +43,7 @@ Po publikování modelu můžete požadované informace načíst výběrem možn
 
 ![Karta výkon se zobrazí s červeným obdélníkem obklopujícím tlačítko adresy URL předpovědi.](./media/use-prediction-api/published-iteration-prediction-url.png)
 
-![Karta výkon se zobrazí s červeným obdélníkem, který obklopuje hodnotu adresy URL předpovědi pro použití souboru obrázku a hodnoty předpovědi-Key.](./media/use-prediction-api/prediction-api-info.png)
+![Karta výkon se zobrazí s červeným obdélníkem, který obklopuje hodnotu adresy URL předpovědi pro použití souboru obrázku a hodnoty Prediction-Key.](./media/use-prediction-api/prediction-api-info.png)
 
 
 V tomto průvodci použijete místní bitovou kopii, takže zkopírujte adresu URL v části **Pokud máte soubor s obrázkem** do dočasného umístění. Zkopírujte také odpovídající hodnotu __pro předpověď a klíč__ .

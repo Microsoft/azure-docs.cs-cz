@@ -16,10 +16,10 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 2f835c270930734bf9963a7c7c3168b873eddaf6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84791907"
 ---
 # <a name="list-azure-deny-assignments-using-the-rest-api"></a>Výpis přiřazení odmítnutí Azure pomocí REST API
@@ -33,7 +33,7 @@ ms.locfileid: "84791907"
 
 Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následující:
 
-- `Microsoft.Authorization/denyAssignments/read`oprávnění, které je součástí většiny [předdefinovaných rolí Azure](built-in-roles.md).
+- `Microsoft.Authorization/denyAssignments/read` oprávnění, které je součástí většiny [předdefinovaných rolí Azure](built-in-roles.md).
 
 ## <a name="list-a-single-deny-assignment"></a>Vypsat jedno přiřazení zamítnutí
 
@@ -80,7 +80,7 @@ Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následuj
 1. Nahraďte *{Filter}* podmínkou, kterou chcete použít k filtrování seznamu přiřazení odepřít.
 
     > [!div class="mx-tableFixed"]
-    > | Filtr | Description |
+    > | Filtrovat | Description |
     > | --- | --- |
     > | (žádný filtr) | Zobrazí seznam všech přiřazení odepřít v, výše a pod zadaným oborem. |
     > | `$filter=atScope()` | Vypíše odmítnutá přiřazení jenom pro zadaný rozsah a vyšší. Nezahrnuje přiřazení zamítnutí v podoborech. |
@@ -102,7 +102,7 @@ Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následuj
 1. Nahraďte *{Filter}* podmínkou, kterou chcete použít k filtrování seznamu přiřazení odepřít. Je vyžadován filtr.
 
     > [!div class="mx-tableFixed"]
-    > | Filtr | Description |
+    > | Filtrovat | Description |
     > | --- | --- |
     > | `$filter=atScope()` | Vypíše přiřazení zamítnutá jenom pro kořenový obor. Nezahrnuje přiřazení zamítnutí v podoborech. |
     > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | Vypíše zamítnutá přiřazení se zadaným názvem. |
@@ -113,4 +113,4 @@ Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následuj
 
 - [Pochopení přiřazení Azure Deny](deny-assignments.md)
 - [Zvýšení úrovně přístupu pro správu všech předplatných Azure a skupin pro správu](elevate-access-global-admin.md)
-- [Reference k Azure REST API](/rest/api/azure/)
+- [Reference k rozhraní Azure REST API](/rest/api/azure/)

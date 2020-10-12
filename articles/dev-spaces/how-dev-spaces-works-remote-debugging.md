@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Popisuje procesy pro vzdálené ladění ve službě Azure Kubernetes s Azure Dev Spaces
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213381"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>Jak vzdálené ladění kódu pomocí Azure Dev Spaces funguje

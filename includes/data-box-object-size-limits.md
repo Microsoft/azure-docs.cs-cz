@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 05/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 9805f53d5901226fc9e32b24a323256cd1da6844
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88655078"
 ---
 Tady jsou velikosti objektů Azure, které se dají zapsat. Zajistěte, aby všechny nahrané soubory splňovaly tato omezení.

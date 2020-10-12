@@ -11,10 +11,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: bc8fd73b18e197c42e4750612320c1b15a6db020
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83849208"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity Sparku v Azure Data Factory
@@ -24,7 +24,7 @@ ms.locfileid: "83849208"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Aktivita Spark v [kanálu](concepts-pipelines-activities.md) Data Factory spustí program Spark na [vašem](compute-linked-services.md#azure-hdinsight-linked-service) clusteru HDInsight nebo [na vyžádání](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . Tento článek se sestavuje na článku [aktivity transformace dat](transform-data.md) , který představuje obecný přehled transformace dat a podporovaných transformačních aktivit. Když použijete propojenou službu Spark na vyžádání, Data Factory automaticky vytvoří cluster Spark za vás, abyste mohli data zpracovat a pak cluster po dokončení zpracování odstraní. 
+Aktivita Spark v [kanálu](concepts-pipelines-activities.md) Data Factory spustí program Spark na [vašem](compute-linked-services.md#azure-hdinsight-linked-service) clusteru HDInsight nebo [na vyžádání](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)  . Tento článek se sestavuje na článku [aktivity transformace dat](transform-data.md) , který představuje obecný přehled transformace dat a podporovaných transformačních aktivit. Když použijete propojenou službu Spark na vyžádání, Data Factory automaticky vytvoří cluster Spark za vás, abyste mohli data zpracovat a pak cluster po dokončení zpracování odstraní. 
 
 
 ## <a name="spark-activity-properties"></a>Vlastnosti aktivity Spark
@@ -59,10 +59,10 @@ Tady je ukázka definice JSON aktivity Spark:
 
 Následující tabulka obsahuje popis vlastností JSON použitých v definici JSON:
 
-| Vlastnost              | Popis                              | Vyžadováno |
+| Vlastnost              | Popis                              | Povinné |
 | --------------------- | ---------------------------------------- | -------- |
 | name                  | Název aktivity v kanálu.    | Yes      |
-| description           | Text popisující, co aktivita dělá.  | No       |
+| Popis           | Text popisující, co aktivita dělá.  | No       |
 | typ                  | Pro aktivitu Spark je typ aktivity HDInsightSpark. | Yes      |
 | linkedServiceName     | Název propojené služby HDInsight Spark, na které běží program Spark Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Yes      |
 | SparkJobLinkedService | Propojená služba Azure Storage, která obsahuje soubor úlohy Spark, závislosti a protokoly. Tady se podporují jenom propojené služby **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** a **[adls Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** . Pokud pro tuto vlastnost nezadáte hodnotu, použije se úložiště přidružené ke clusteru HDInsight. Hodnota této vlastnosti může být pouze propojená služba Azure Storage. | No       |
@@ -79,15 +79,15 @@ Následující tabulka obsahuje popis vlastností JSON použitých v definici JS
 
 Vytvořte ve službě Azure Blob Storage, na kterou odkazuje propojená služba HDInsight, následující strukturu složek. Pak nahrajte závislé soubory do příslušných podadresářů v kořenové složce reprezentované **entryFilePath**. Například nahrajte soubory Pythonu do podsložky pyFiles a soubory jar do podsložky jar kořenové složky. V době běhu Služba Data Factory očekává v úložišti objektů BLOB v Azure následující strukturu složek:     
 
-| Cesta                  | Description                              | Požaduje se | Typ   |
+| Cesta                  | Popis                              | Požaduje se | Typ   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
-| `.`zobrazuje            | Kořenová cesta úlohy Spark v propojené službě úložiště | Ano      | Složka |
-| &lt;definováno uživatelem&gt; | Cesta ukazující na vstupní soubor úlohy Spark | Yes      | Soubor   |
-| ./jars                | Všechny soubory v této složce se nahrají a umístí do cesty tříd Java clusteru. | No       | Složka |
-| ./pyFiles             | Všechny soubory v této složce se nahrají a umístí do PYTHONPATH clusteru. | No       | Složka |
-| ./files               | Všechny soubory v této složce se nahrají a umístí do pracovního adresáře prováděcího modulu. | No       | Složka |
-| ./archives            | Všechny soubory v této složce jsou nekomprimované. | No       | Složka |
-| ./logs                | Složka, která obsahuje protokoly z clusteru Spark. | No       | Složka |
+| `.` zobrazuje            | Kořenová cesta úlohy Spark v propojené službě úložiště | Ano      | Složka |
+| &lt;definováno uživatelem &gt; | Cesta ukazující na vstupní soubor úlohy Spark | Yes      | Soubor   |
+| ./jars                | Všechny soubory v této složce se nahrají a umístí do cesty tříd Java clusteru. | Ne       | Složka |
+| ./pyFiles             | Všechny soubory v této složce se nahrají a umístí do PYTHONPATH clusteru. | Ne       | Složka |
+| ./files               | Všechny soubory v této složce se nahrají a umístí do pracovního adresáře prováděcího modulu. | Ne       | Složka |
+| ./archives            | Všechny soubory v této složce jsou nekomprimované. | Ne       | Složka |
+| ./logs                | Složka, která obsahuje protokoly z clusteru Spark. | Ne       | Složka |
 
 Tady je příklad úložiště, které obsahuje dva soubory úloh Spark v Azure Blob Storage, na které odkazuje propojená služba HDInsight.
 

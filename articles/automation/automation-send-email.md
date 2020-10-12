@@ -6,19 +6,19 @@ ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: c01e329e4e4ab403c8966f096239abffee1c1fc5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185853"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Odeslání e-mailu z runbooku
 
 Pomocí prostředí PowerShell můžete odeslat e-mail z Runbooku pomocí [SendGrid](https://sendgrid.com/solutions) . 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ho ještě nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Předplatné Azure. Pokud ho ještě nemáte, můžete si  [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet SendGrid](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account).
 * [Účet Automation](./index.yml) pomocí **AZ** Modules.
 * [Účet Spustit jako](./manage-runas-account.md) pro uložení a spuštění Runbooku.

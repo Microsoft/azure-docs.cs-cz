@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6b2f9a6e13fdc39ab18a2056fab15982aa9fb0e4
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88948160"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Postupy: vyžadování MFA pro přístup z nedůvěryhodných sítí s podmíněným přístupem   
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD) umožňuje jednotné přihlašování k zaří
 
 Tento článek obsahuje informace, které potřebujete ke konfiguraci zásad podmíněného přístupu, které vyžadují MFA pro přístup z nedůvěryhodných sítí. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte zkušenosti s nástrojem: 
 

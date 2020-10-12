@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 03431d861ca6d469b894e45c36fe2a3d7904c3a2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935530"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Postup při odkazování na poznámky v Azure Kognitivní hledání dovednosti
@@ -25,7 +25,7 @@ Příklady v tomto článku jsou založené na poli *obsahu* generovaném automa
 
 Než začnete s syntaxí zkontrolovat, Podívejme se na několik důležitých konceptů, abychom lépe porozuměli ukázkám uvedeným dále v tomto článku.
 
-| Období | Popis |
+| Období | Description |
 |------|-------------|
 | Obohacený dokument | Obohacený dokument je interní struktura vytvořená a používaná kanálem, aby obsahovala všechny poznámky týkající se dokumentu. Obohacený dokument si můžete představit jako strom poznámek. Obecně platí, že Poznámka vytvořená z předchozí poznámky se zobrazí jako podřízená.<p/>Obohacené dokumenty existují pouze po dobu trvání provádění dovednosti. Po namapování obsahu na index vyhledávání už obohacený dokument není potřeba. I když nepracujete s obohacenými dokumenty přímo, je vhodné mít při vytváření dovednosti k dispozici duševní modely dokumentů. |
 | Kontext obohacení | Kontext, ve kterém probíhá obohacení, s ohledem na to, který prvek je obohacen. Ve výchozím nastavení je kontext rozšíření obohacen na `"/document"` úrovni a je vymezen na jednotlivé dokumenty. Když se dovednost spustí, výstupy této dovednosti se stanou [vlastnostmi definovaného kontextu](#example-2).|

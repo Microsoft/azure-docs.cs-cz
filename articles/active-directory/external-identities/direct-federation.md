@@ -1,6 +1,6 @@
 ---
 title: Přímá federace se zprostředkovatelem identity pro B2B – Azure AD
-description: Přímo se federovat se zprostředkovatelem identity SAML nebo WS-dodaným, aby se hosté mohli přihlásit k aplikacím Azure AD.
+description: Přímo se federovat se zprostředkovatelem identity SAML nebo WS-Fed, aby se hosté mohli přihlásit k aplikacím Azure AD.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908682"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Přímá federace pomocí AD FS a poskytovatelů třetích stran pro uživatele typu Host (Preview)
@@ -24,7 +24,7 @@ ms.locfileid: "87908682"
 > [!NOTE]
 >  Přímá federace je funkce veřejné verze Preview Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-Tento článek popisuje, jak nastavit přímou federaci s jinou organizací pro spolupráci B2B. Můžete nastavit přímou federaci s jakoukoli organizací, jejíž poskytovatel identity (IdP) podporuje protokol SAML 2,0 nebo WS-dodávání.
+Tento článek popisuje, jak nastavit přímou federaci s jinou organizací pro spolupráci B2B. Můžete nastavit přímou federaci s jakoukoli organizací, jejíž poskytovatel identity (IdP) podporuje protokol SAML 2,0 nebo WS-Fed.
 Když nastavíte přímou federaci s IdPem partnera, můžou noví uživatelé typu host z této domény používat vlastní účet organizace spravovaný IdP pro přihlášení k vašemu tenantovi Azure AD a začít spolupracovat s vámi. Není potřeba, aby uživatel typu Host vytvořil samostatný účet služby Azure AD.
 > [!NOTE]
 > Uživatelé typu host s přímým přístupem se musí přihlásit pomocí odkazu, který obsahuje kontext tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` nebo nebo `https://portal.azure.com/<tenant id>` v případě ověřené domény `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Přímé odkazy na aplikace a prostředky fungují i tak dlouho, dokud budou zahrnovat kontext tenanta. Uživatelé s přímými federace se momentálně nemůžou přihlásit pomocí běžných koncových bodů, které nemají kontext tenanta. Například použití `https://myapps.microsoft.com` , `https://portal.azure.com` , nebo `https://teams.microsoft.com` způsobí chybu.
@@ -83,11 +83,11 @@ Ne, v tomto scénáři by měla být použita funkce pro [jednorázové heslo e-
 Nejdřív vaše partnerská organizace potřebuje nakonfigurovat poskytovatele identity o požadované deklarace identity a vztahy důvěryhodnosti předávající strany. 
 
 > [!NOTE]
-> K ilustraci, jak nakonfigurovat poskytovatele identity pro přímou federaci, použijeme jako příklad Active Directory Federation Services (AD FS) (AD FS). Přečtěte si článek [Konfigurace přímé federace s AD FS](direct-federation-adfs.md), který poskytuje příklady, jak nakonfigurovat AD FS jako zprostředkovatele identity SAML 2,0 nebo WS-dodaného v rámci přípravy na přímou federaci.
+> K ilustraci, jak nakonfigurovat poskytovatele identity pro přímou federaci, použijeme jako příklad Active Directory Federation Services (AD FS) (AD FS). Přečtěte si článek [Konfigurace přímé federace s AD FS](direct-federation-adfs.md), který obsahuje příklady konfigurace AD FS jako zprostředkovatele identity SAML 2,0 nebo WS-Fed poskytovatele identity v přípravě na přímou federaci.
 
 ### <a name="saml-20-configuration"></a>Konfigurace SAML 2,0
 
-Azure AD B2B se dá nakonfigurovat tak, aby federovat s poskytovateli identity, kteří používají protokol SAML s konkrétními požadavky uvedenými níže. Další informace o nastavení vztahu důvěryhodnosti mezi poskytovatelem identity SAML a Azure AD najdete v tématu [použití zprostředkovatele identity saml 2,0 (IDP) pro jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).  
+Azure AD B2B se dá nakonfigurovat tak, aby federovat s poskytovateli identity, kteří používají protokol SAML s konkrétními požadavky uvedenými níže. Další informace o nastavení vztahu důvěryhodnosti mezi poskytovatelem identity SAML a Azure AD najdete v tématu  [použití zprostředkovatele identity saml 2,0 (IDP) pro jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).  
 
 > [!NOTE]
 > Cílová doména pro přímou federaci nesmí být ověřená DNS v Azure AD. Doména URL ověřování musí odpovídat cílové doméně, nebo musí být doménou povoleného zprostředkovatele identity. Podrobnosti najdete v části [omezení](#limitations) . 
@@ -101,7 +101,7 @@ Požadované atributy pro odpověď SAML 2,0 z IdP:
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Cílová skupina     |`urn:federation:MicrosoftOnline`         |
-|Vystavitel     |Identifikátor URI vystavitele partnerského IdPu, například`http://www.example.com/exk10l6w90DHM0yi...`         |
+|Vystavitel     |Identifikátor URI vystavitele partnerského IdPu, například `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
 Požadované deklarace pro token SAML 2,0 vydaný IdPem:
@@ -111,25 +111,25 @@ Požadované deklarace pro token SAML 2,0 vydaný IdPem:
 |Formát NameID     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-### <a name="ws-fed-configuration"></a>Konfigurace protokolu WS-nakrmená 
-Azure AD B2B je možné nakonfigurovat tak, aby federovat s poskytovateli identity, kteří používají protokol WS-dodávání s některými konkrétními požadavky, jak je uvedeno níže. V současné době byly dva poskytovatelé WS-dodány testováni kvůli kompatibilitě s Azure AD zahrnutí AD FS a Shibboleth. Další informace o tom, jak vytvořit vztah důvěryhodnosti předávající strany mezi poskytovatelem dodržování předpisů WS-zavedeným pomocí služby Azure AD, najdete v dokumentu věnovaném integraci služby STS pomocí protokolu WS, který je k dispozici v dokumentech pro [kompatibilitu zprostředkovatele identit Azure AD](https://www.microsoft.com/download/details.aspx?id=56843).
+### <a name="ws-fed-configuration"></a>Konfigurace WS-Fed 
+Azure AD B2B je možné nakonfigurovat tak, aby federovat s poskytovateli identity, kteří používají protokol WS-Fed s některými konkrétními požadavky, jak je uvedeno níže. V současné době byly u těchto dvou zprostředkovatelů WS-Fed testovány kompatibility s Azure AD zahrnutí AD FS a Shibboleth. Další informace o tom, jak vytvořit vztah důvěryhodnosti předávající strany mezi poskytovatelem WS-Fed kompatibilním s Azure AD, najdete v dokumentu věnovaném integraci služby STS pomocí protokolů WS, který je k dispozici v dokumentech pro [kompatibilitu zprostředkovatele identity Azure AD](https://www.microsoft.com/download/details.aspx?id=56843).
 
 > [!NOTE]
 > Cílová doména pro přímou federaci nesmí být ověřená DNS v Azure AD. Doména URL ověřování musí odpovídat cílové doméně nebo doméně povoleného poskytovatele identity. Podrobnosti najdete v části [omezení](#limitations) . 
 
-#### <a name="required-ws-fed-attributes-and-claims"></a>Požadované atributy a deklarace protokolu WS-dodávání
+#### <a name="required-ws-fed-attributes-and-claims"></a>Povinné atributy WS-Fed a deklarace identity
 
-V následujících tabulkách jsou uvedeny požadavky na konkrétní atributy a deklarace identity, které je třeba nakonfigurovat u poskytovatele identity služby WS-dodány třetí strany. Chcete-li nastavit přímou federaci, je nutné ve zprávě od poskytovatele identity přijmout následující atributy. Tyto atributy je možné nakonfigurovat tak, že propojíte se souborem XML služby token zabezpečení online nebo je zadáte ručně.
+V následujících tabulkách jsou uvedeny požadavky na konkrétní atributy a deklarace identity, které je třeba nakonfigurovat u poskytovatele identity WS-Fed třetí strany. Chcete-li nastavit přímou federaci, musí být v WS-Fed zprávě od poskytovatele identity přijaty následující atributy. Tyto atributy je možné nakonfigurovat tak, že propojíte se souborem XML služby token zabezpečení online nebo je zadáte ručně.
 
-Požadované atributy zprávy WS-dodané z IdP:
+Požadované atributy v WS-Fed zprávě z IdP:
  
 |Atribut  |Hodnota  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Cílová skupina     |`urn:federation:MicrosoftOnline`         |
-|Vystavitel     |Identifikátor URI vystavitele partnerského IdPu, například`http://www.example.com/exk10l6w90DHM0yi...`         |
+|Vystavitel     |Identifikátor URI vystavitele partnerského IdPu, například `http://www.example.com/exk10l6w90DHM0yi...`         |
 
-Požadované deklarace pro token WS-dodaný vydaný IdP:
+Požadované deklarace identity pro token WS-Fed vydané IdPem:
 
 |Atribut  |Hodnota  |
 |---------|---------|
@@ -148,11 +148,11 @@ Dále nakonfigurujete federaci s poskytovatelem identity nakonfigurovaným v kro
 2. Vyberte **externí identity**  >  **všichni zprostředkovatelé identity**.
 3. Vyberte a pak vyberte **Nový SAML/WS-IDP**.
 
-    ![Snímek obrazovky zobrazující tlačítko pro přidání nového typu SAML nebo WS-IdP](media/direct-federation/new-saml-wsfed-idp.png)
+    ![Snímek obrazovky zobrazující tlačítko pro přidání nového SAML nebo WS-Fed IdP](media/direct-federation/new-saml-wsfed-idp.png)
 
 4. Na **nové stránce IDP s podporou SAML/WS** vyberte v části **protokol poskytovatele identity**možnost **SAML** nebo **WS**.
 
-    ![Snímek obrazovky zobrazující tlačítko pro analýzu na stránce SAML nebo WS-IdPed](media/direct-federation/new-saml-wsfed-idp-parse.png)
+    ![Snímek obrazovky zobrazující tlačítko pro analýzu na stránce SAML nebo WS-Fed IdP](media/direct-federation/new-saml-wsfed-idp-parse.png)
 
 5. Zadejte název domény partnerské organizace, který bude cílovým názvem domény pro přímou federaci.
 6. Můžete nahrát soubor metadat, který vyplní podrobnosti metadat. Pokud se rozhodnete zadat metadata ručně, zadejte následující informace:

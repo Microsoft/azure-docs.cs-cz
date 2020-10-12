@@ -4,10 +4,10 @@ description: Podrobný kurz, ve kterém se dozvíte, jak připojit funkci ke slu
 ms.topic: article
 ms.date: 4/23/2020
 ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387519"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Kurz: Integrace služby Functions s virtuální sítí Azure
@@ -29,7 +29,7 @@ Následující diagram znázorňuje architekturu řešení, kterou vytvoříte:
 
 Funkce spuštěné v plánu Premium mají stejné možnosti hostování jako webové aplikace v Azure App Service, což zahrnuje funkci Integrace virtuální sítě. Další informace o integraci virtuální sítě, včetně řešení potíží a pokročilých konfigurací, najdete v tématu [integrace aplikace do služby Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro účely tohoto kurzu je důležité pochopit IP adresy a podsítě. Můžete začít s [tímto článkem, který se zabývá základy adresování a podsítí](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Mnoho dalších článků a videí je k dispozici online.
 
@@ -59,7 +59,7 @@ V dalším kroku vytvořte předkonfigurovaný virtuální počítač, který sp
     | ------------ | ---------------- | ---------------- |
     | **Předplatné** | Vaše předplatné | Předplatné, ve kterém se vaše prostředky vytvářejí. | 
     | **[Skupina prostředků](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Vyberte `myResourceGroup` nebo skupinu prostředků, kterou jste vytvořili pomocí aplikace Function App. Použití stejné skupiny prostředků pro aplikaci Function App, virtuálního počítače WordPress a plánu hostování usnadňuje vyčištění prostředků, pokud jste s tímto kurzem hotovi. |
-    | **Název virtuálního počítače** | Virtuální síť – WordPress | Název virtuálního počítače musí být ve skupině prostředků jedinečný. |
+    | **Název virtuálního počítače** | VNET-Wordpress | Název virtuálního počítače musí být ve skupině prostředků jedinečný. |
     | **[Oblast](https://azure.microsoft.com/regions/)** | Evropským Západní Evropa | Vyberte oblast poblíž nebo poblíž funkcí, které přistupují k virtuálnímu počítači. |
     | **Velikost** | B1s | Zvolte možnost **změnit velikost** a pak vyberte standardní image B1s, která má 1 vCPU a 1 GB paměti. |
     | **Typ ověřování** | Heslo | Chcete-li použít ověřování heslem, je nutné zadat také **uživatelské jméno**, zabezpečené **heslo**a **potvrzení hesla**. Pro tento kurz se nemusíte přihlašovat k virtuálnímu počítači, pokud nepotřebujete řešit problémy. |
@@ -74,7 +74,7 @@ V dalším kroku vytvořte předkonfigurovaný virtuální počítač, který sp
     | ------------ | ---------------- | ---------------- |
     | **Název** | myResourceGroup – VNet | Můžete použít výchozí název vygenerovaný pro vaši virtuální síť. |
     | **Rozsah adres** | 10.10.0.0/16 | Pro virtuální síť použijte jeden rozsah adres. |
-    | **Název podsítě** | Kurz – NET | Název podsítě. |
+    | **Název podsítě** | Tutorial-Net | Název podsítě. |
     | **Rozsah adres** (podsíť) | 10.10.1.0/24   | Velikost podsítě určuje, kolik rozhraní lze do podsítě přidat. Tuto podsíť používá web WordPress.  `/24`Podsíť poskytuje adresy hostitele 254. |
 
 1. Vyberte **OK** a vytvořte virtuální síť.
@@ -105,7 +105,7 @@ Díky webu WordPress běžícímu na virtuálním počítači ve virtuální sí
 
 1. Na stránce **Integrace virtuální sítě** vyberte **Přidat virtuální síť**.
 
-    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="Přidání verze Preview Integration VNet":::
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="Výběr možnosti sítě v aplikaci Function App":::
 
 1. V části **stav síťové funkce**použijte nastavení v tabulce pod obrázkem:
 
@@ -115,7 +115,7 @@ Díky webu WordPress běžícímu na virtuálním počítači ve virtuální sí
     | ------------ | ---------------- | ---------------- |
     | **Virtual Network** | MyResourceGroup – VNet | Tato virtuální síť je ta, kterou jste vytvořili dříve. |
     | **Podsíť** | Vytvořit novou podsíť | Vytvořte podsíť ve virtuální síti, kterou bude používat aplikace Function App. Integrace virtuální sítě musí být nakonfigurovaná tak, aby používala prázdnou podsíť. Nezáleží na tom, že vaše funkce používají jinou podsíť než váš virtuální počítač. Virtuální síť automaticky směruje přenosy mezi těmito dvěma podsítěmi. |
-    | **Název podsítě** | Funkce – NET | Název nové podsítě. |
+    | **Název podsítě** | Function-Net | Název nové podsítě. |
     | **Blok adres virtuální sítě** | 10.10.0.0/16 | Vyberte stejný blok adres používaný webem WordPress. Měli byste mít definován pouze jeden blok adres. |
     | **Rozsah adres** | 10.10.2.0/24   | Velikost podsítě omezuje celkový počet instancí, na které může vaše aplikace Functions plánu Premium škálovat. V tomto příkladu `/24` se používá podsíť s 254 dostupnými adresami hostitele. Tato podsíť je předem zřízená, ale je snadno vypočtená. |
 
@@ -127,9 +127,9 @@ Aplikace Function app teď má přístup k virtuální síti, ve které je web W
 
 Když máte povolenou integraci virtuální sítě, můžete ve své aplikaci Function App vytvořit proxy server, abyste předali požadavky na virtuální počítač běžící ve virtuální síti.
 
-1. Ve vaší aplikaci Function App vyberte v nabídce vlevo možnost **proxy** a pak vyberte **Přidat**. Použijte nastavení proxy serveru v tabulce pod obrázkem:
+1. Ve vaší aplikaci Function App vyberte v nabídce vlevo možnost  **proxy** a pak vyberte **Přidat**. Použijte nastavení proxy serveru v tabulce pod obrázkem:
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Definování nastavení proxy serveru":::
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Výběr možnosti sítě v aplikaci Function App":::
 
     | Nastavení  | Navrhovaná hodnota  | Popis      |
     | -------- | ---------------- | ---------------- |

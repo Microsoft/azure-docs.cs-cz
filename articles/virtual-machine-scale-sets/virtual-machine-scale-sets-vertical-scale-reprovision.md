@@ -10,10 +10,10 @@ ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: 37602f7b9a8669ce0e8db984f7f7617cffdd431c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87029276"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikální automatické škálování se sadami škálování virtuálních počítačů
@@ -87,7 +87,7 @@ Můžete nastavit svislé škálování, které se aktivuje na základě výstra
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Vytvoření účtu Azure Automation s možností spuštění jako
-První věc, kterou potřebujete udělat, je vytvořit účet Azure Automation, který hostuje Runbooky používané pro škálování instancí sady škálování virtuálních počítačů. Nedávno [Azure Automation](https://azure.microsoft.com/services/automation/) zavedli funkci účet Spustit jako, která umožňuje nastavit instanční objekt pro automatické spouštění Runbooků jménem uživatele. Další informace najdete tady:
+První věc, kterou potřebujete udělat, je vytvořit účet Azure Automation, který hostuje Runbooky používané pro škálování instancí sady škálování virtuálních počítačů. Nedávno [Azure Automation](https://azure.microsoft.com/services/automation/) zavedli funkci účet Spustit jako, která umožňuje nastavit instanční objekt pro automatické spouštění Runbooků jménem uživatele. Další informace naleznete v tématech:
 
 * [Ověření runbooků pomocí účtu Spustit v Azure jako](../automation/manage-runas-account.md)
 

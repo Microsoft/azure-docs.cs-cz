@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
 ms.openlocfilehash: 7692bfda16ac1b8789ee49469c46ef8276c97f8a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213306"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Zprostředkovatel stavu relací ASP.NET pro Azure Cache for Redis
@@ -125,7 +125,7 @@ Po provedení těchto kroků je vaše aplikace nakonfigurovaná tak, aby použí
 * Zprostředkovatel stavu relace systému SQL Server – tento poskytovatel ukládá stav relace do systému SQL Server. Tento zprostředkovatel použijte, pokud chcete uložit stav relace do trvalého úložiště. Můžete škálovat webovou aplikaci, ale použití SQL serveru pro relaci má dopad na výkon vaší webové aplikace. Tohoto poskytovatele můžete také použít spolu s [konfigurací OLTP v paměti](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) , což pomáhá zlepšit výkon.
 * Distribuované ve zprostředkovateli stavu relace paměti, jako je Azure cache pro poskytovatele stavu relace Redis – tento poskytovatel vám dává nejlepší z obou světů. Vaše webová aplikace může mít jednoduchého, rychlého a škálovatelného poskytovatele stavu relace. Vzhledem k tomu, že tento poskytovatel ukládá stav relace do mezipaměti, musí aplikace brát v úvahu všechny vlastnosti přidružené při komunikaci s distribuovanou mezipamětí, jako je například přechodná chyba sítě. Osvědčené postupy při používání mezipaměti najdete v tématu [pokyny k ukládání do mezipaměti](../best-practices-caching.md) z Microsoft patterns & postupy pro [navrhování cloudových aplikací Azure a pokyny k implementaci](https://github.com/mspnp/azure-guidance).
 
-Další informace o stavu relace a dalších osvědčených postupech najdete v tématu [osvědčené postupy pro Web Development (vytváření skutečných cloudových aplikací s Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).
+Další informace o stavu relace a dalších osvědčených postupech najdete v tématu [osvědčené postupy pro Web Development (vytváření Real-World cloudových aplikací s Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).
 
 ## <a name="third-party-session-state-providers"></a>Zprostředkovatelé stavu relací třetích stran
 

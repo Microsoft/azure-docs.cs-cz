@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 376cece922ca424ec78011224852b1fa5499da16
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934833"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Geografické prostorové funkce OData v Azure Kognitivní hledání – `geo.distance` a `geo.intersects`
@@ -37,7 +37,7 @@ Azure Kognitivní hledání podporuje geografické prostorové dotazy ve [výraz
 
 ## <a name="syntax"></a>Syntax
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `geo.distance` `geo.intersects` funkcí a i geografické hodnoty, na kterých pracují:
+Následující EBNF ([rozšířený Backus-Naur formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `geo.distance` funkcí a a `geo.intersects` také geografické hodnoty, na kterých pracují:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

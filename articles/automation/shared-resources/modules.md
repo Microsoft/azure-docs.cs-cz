@@ -9,10 +9,10 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 2bf3dda6e3d99b5ed67298343f5238d304df7e2b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187366"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Správa modulů ve službě Azure Automation
@@ -54,7 +54,7 @@ Automatizace neimportuje kořenový klíč AZ Module automaticky do všech nový
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0.2 |
+| GPRegistryPolicyParser | 0,2 |
 | Microsoft. PowerShell. Core | 0 |
 | Microsoft. PowerShell. Diagnostics |  |
 | Microsoft. PowerShell. Management |  |
@@ -65,7 +65,7 @@ Automatizace neimportuje kořenový klíč AZ Module automaticky do všech nový
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |
 | StateConfigCompositeResources | 1 |
-| xDSCDomainjoin | 1.1 |
+| xDSCDomainjoin | 1,1 |
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
 
@@ -87,8 +87,8 @@ Azure Automation podporuje interní `Orchestrator.AssetManagement.Cmdlets` modul
 |Get-AutomationPSCredential|`Get-AutomationPSCredential [-Name] <string> [<CommonParameters>]` |
 |Get-AutomationVariable|`Get-AutomationVariable [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]`|
 |Set-AutomationVariable|`Set-AutomationVariable [-Name] <string> -Value <Object> [<CommonParameters>]` |
-|Spustit – AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
-|Čekání – AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
+|Start-AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
+|Wait-AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
 
 Všimněte si, že se interní rutiny liší v pojmenování pomocí rutin AZ a AzureRM. Interní názvy rutin neobsahují slova jako `Azure` nebo `Az` v podstatném jméně, ale použijte slovo `Automation` . Při provádění Runbooku v izolovaném prostoru Azure nebo na Hybrid Runbook Worker Windows doporučujeme použít rutiny AZ nebo AzureRM. Vyžadují míň parametrů a běží v kontextu úlohy, která je už spuštěná.
 
@@ -144,7 +144,7 @@ Do Azure Portal můžete importovat moduly AZ Modules. Nezapomeňte importovat j
 
     ![Snímek obrazovky importování modulů do účtu Automation](../media/modules/import-module.png)
 
-Tento import můžete provést také prostřednictvím [Galerie prostředí PowerShell](https://www.powershellgallery.com), a to tak, že vyhledáte modul, který chcete importovat. Když najdete modul, vyberte ho a klikněte na kartu **Azure Automation** . Vyberte **nasadit a Azure Automation**.
+Tento import můžete provést také prostřednictvím [Galerie prostředí PowerShell](https://www.powershellgallery.com), a to tak, že vyhledáte modul, který chcete importovat. Když najdete modul, vyberte ho a klikněte na kartu **Azure Automation** . Vyberte **nasadit do Azure Automation**.
 
 ![Snímek obrazovky s importem modulů přímo z Galerie prostředí PowerShell](../media/modules/import-gallery.png)
 
@@ -242,7 +242,7 @@ Jednodušší a lepší způsob, jak získat přístup k tomuto chování, je p�
   }
   ```
 
-Podobné chování rutin můžete povolit tím, že jim umožníte přijmout objekt připojení přímo jako parametr místo pouze polí připojení pro parametry. Obvykle chcete sadu parametrů pro každý, aby uživatel, který nepoužívá automatizaci, mohl volat vaše rutiny bez vytvoření zatřiďovací tabulky, která by sloužila jako objekt připojení. Sada parametrů `UserAccount` se používá k předání vlastností pole připojení. `ConnectionObject`umožňuje předat připojení rovnou uživateli.
+Podobné chování rutin můžete povolit tím, že jim umožníte přijmout objekt připojení přímo jako parametr místo pouze polí připojení pro parametry. Obvykle chcete sadu parametrů pro každý, aby uživatel, který nepoužívá automatizaci, mohl volat vaše rutiny bez vytvoření zatřiďovací tabulky, která by sloužila jako objekt připojení. Sada parametrů `UserAccount` se používá k předání vlastností pole připojení. `ConnectionObject` umožňuje předat připojení rovnou uživateli.
 
 ### <a name="output-type"></a>Typ výstupu
 

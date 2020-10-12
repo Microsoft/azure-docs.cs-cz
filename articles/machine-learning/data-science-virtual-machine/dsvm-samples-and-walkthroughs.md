@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 98a1cd883867aa2f785b15f4c7ae4f2266a421ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87012565"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Ukázky Virtual Machines pro datové vědy v Azure
@@ -23,12 +23,12 @@ Azure Data věda Virtual Machines (DSVMs) zahrnuje komplexní sadu vzorového k�
 > [!NOTE]
 > Další informace o tom, jak spustit poznámkové bloky Jupyter na virtuálních počítačích pro datové vědy, najdete v části [Access Jupyter](#access-jupyter) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Aby bylo možné spustit tyto ukázky, je nutné zřídit [Ubuntu Data Science Virtual Machine](./dsvm-ubuntu-intro.md).
 
 ## <a name="available-samples"></a>Dostupné ukázky
-| Kategorie ukázek | Popis | Umístění |
+| Kategorie ukázek | Description | Umístění |
 | ------------- | ------------- | ------------- |
 | Jazyk R  | Ukázky ilustrují scénáře, jako je například připojení k úložištím cloudových dat založených na Azure a postup porovnání Open Source R a Microsoft Machine Learning Server. Také vysvětlují, jak zprovoznění modely na Microsoft Machine Learning Server a SQL Server. <br/> [Jazyk R](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Jazyk Python  | Ukázky popisují scénáře, jak se připojit k úložištím cloudových dat založenými na Azure a jak pracovat s Azure Machine Learning.  <br/> [Jazyk Python](#python-language) | <br/>`~notebooks` <br/><br/>|

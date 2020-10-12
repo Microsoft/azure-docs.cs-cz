@@ -1,5 +1,5 @@
 ---
-title: Konfigurace tunelového připojení typu Always-On
+title: Konfigurace tunelového připojení VPN Always-On
 titleSuffix: Azure Virtual WAN
 description: Postup konfigurace tunelového připojení zařízení VPN pro virtuální síť WAN
 services: virtual-wan
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: e814487cb4dab9c8c19daab2ea3bb81391d4a98f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983689"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel-for-virtual-wan"></a>Konfigurace tunelového připojení zařízení VPN typu Always On pro virtuální síť WAN
@@ -34,7 +34,7 @@ Musíte vytvořit konfiguraci Point-to-site a upravit přiřazení virtuálního
 
 Chcete-li odebrat profil, spusťte následující příkaz:
 
-![Snímek obrazovky se zobrazí okno PowerShellu, ve kterém se spouští příkaz Remove-VpnConnection-Name MachineCertTest.](./media/howto-always-on-device-tunnel/cleanup.png)
+![Snímek obrazovky se zobrazí okno PowerShellu, ve kterém se spustí příkaz Remove-VpnConnection-Name MachineCertTest.](./media/howto-always-on-device-tunnel/cleanup.png)
 
 ## <a name="next-steps"></a>Další kroky
 

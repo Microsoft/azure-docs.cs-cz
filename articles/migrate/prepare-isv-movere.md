@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak připravit Azure Migrate pro práci s 
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.openlocfilehash: ed7652cb34705bac56a79b5c30e6bda3dac69af0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86103921"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Příprava na práci s nástrojem ISV nebo jeho stěhovací pracovníky
@@ -42,7 +42,7 @@ Ve vašem předplatném Azure vyžaduje váš účet **Microsoft. Authorization/
 
 V případě nástrojů ISV a Azure Database Pomocník s migrací povolte přístup k adresám URL veřejného cloudu, které jsou shrnuté v tabulce. Pokud pro připojení k Internetu používáte proxy server založený na adrese URL, ujistěte se, že proxy překládá všechny záznamy CNAME přijaté při vyhledávání adres URL. 
 
-**URL** | **Podrobnosti**
+**Adresa URL** | **Podrobnosti**
 --- | ---
 *.portal.azure.com  | Přejděte na Azure Portal. 
 *.windows.net<br/> *.msftauth.net<br/> *.msauth.net <br/> *.microsoft.com<br/> *.live.com   | Přihlaste se ke svému předplatnému Azure. 

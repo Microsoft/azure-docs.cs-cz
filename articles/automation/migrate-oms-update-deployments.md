@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: dabe914ffd4e84e8ded5c0e3b519036479fe33ec
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987599"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Migrace Azure Monitor v protokolech nasazení aktualizací do Azure Portal
@@ -43,7 +43,7 @@ Portál Operations Management Suite (OMS) je [zastaralý](../azure-monitor/platf
 
 Všechna nasazení aktualizací vytvořená na portálu OMS obsahují [uložená hledání](../azure-monitor/platform/computer-groups.md) , označované také jako skupina počítačů se stejným názvem, jako má nasazení aktualizace, které existuje. Uložené výsledky hledání obsahují seznam počítačů, které byly naplánovány v nasazení aktualizace.
 
-:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Snímek obrazovky se stránkou nasazení aktualizací se zvýrazněnými poli název a servery":::
+:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Snímek obrazovky se stránkou správy aktualizací":::
 
 Pokud chcete použít toto existující uložené hledání, postupujte takto:
 

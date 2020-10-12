@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934850"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Syntaxe $filter OData v Azure Kognitivní hledání
@@ -32,7 +32,7 @@ Azure Kognitivní hledání používá [výrazy filtru OData](query-odata-filter
 
 ## <a name="syntax"></a>Syntax
 
-Filtr v jazyce OData je logický výraz, který může být jedním z několika typů výrazů, jak je znázorněno na následujícím EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)):
+Filtr v jazyce OData je logický výraz, který může být jedním z několika typů výrazů, jak ukazuje následující EBNF ([rozšířený Backus-Naur formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)):
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -75,7 +75,7 @@ Mezi typy logických výrazů patří:
 
 Pokud napíšete výraz filtru bez závorek kolem jeho dílčích výrazů, Azure Kognitivní hledání ho vyhodnotí podle sady pravidel priority operátorů. Tato pravidla jsou založena na operátorech, které slouží ke kombinování dílčích výrazů. V následující tabulce jsou uvedeny skupiny operátorů v pořadí od nejvyšší po nejnižší prioritu:
 
-| Seskupení | Operátor (y) |
+| Group (Skupina) | Operátor (y) |
 | --- | --- |
 | Logické operátory | `not` |
 | Relační operátory | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |

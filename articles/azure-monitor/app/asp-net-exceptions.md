@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/11/2019
 ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936499"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostika výjimky ve webových aplikacích pomocí služby Application Insights
@@ -95,7 +95,7 @@ Podrobnosti žádosti neobsahují data odesílaná do aplikace v příspěvku. P
 ## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> Zachycování výjimek a souvisejících diagnostických dat
 Nejdříve se na portálu nezobrazí všechny výjimky, které způsobují chyby ve vaší aplikaci. Zobrazí se všechny výjimky prohlížeče (Pokud používáte [sadu JavaScript SDK](./javascript.md) na webových stránkách). Ale většina výjimek serveru je zachycena službou IIS a je nutné napsat bitovou kopii pro jejich zobrazení.
 
-Další možnosti:
+Můžete:
 
 * **Protokolujte výjimky explicitně** vložením kódu do obslužných rutin výjimek pro hlášení výjimek.
 * **Automatické zachycení výjimek** konfigurací architektury ASP.NET Nezbytné doplňky jsou odlišné pro různé typy rozhraní.
@@ -200,7 +200,7 @@ Pokud ale máte aktivní přesměrování, přidejte následující řádky do f
 ## <a name="mvc"></a>MVC
 Počínaje verzí Application Insights web SDK verze 2,6 (beta3 a novější) Application Insights shromažďuje neošetřené výjimky vyvolané v metodách řadičů MVC 5 + automaticky. Pokud jste dříve přidali vlastní obslužnou rutinu ke sledování takových výjimek (jak je popsáno v následujících příkladech), je možné ji odebrat, aby nedocházelo k dvojímu sledování výjimek.
 
-Existuje několik případů, kdy filtry výjimek nemůžou zpracovat. Příklad:
+Existuje několik případů, kdy filtry výjimek nemůžou zpracovat. Například:
 
 * Výjimky vyvolané konstruktory kontrolerů
 * Výjimky vyvolané obslužnými rutinami zpráv
@@ -289,10 +289,10 @@ Zaregistrujte AiHandleErrorAttribute jako globální filtr v FilterConfig.cs:
 
 [Ukázka](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
-## <a name="web-api"></a>Webové rozhraní API
+## <a name="web-api"></a>Web API
 Počínaje verzí Application Insights web SDK verze 2,6 (beta3 a novější) Application Insights shromažďuje neošetřené výjimky, které jsou vyvolány v metodách kontroleru automaticky pro WebAPI 2 +. Pokud jste dříve přidali vlastní obslužnou rutinu ke sledování takových výjimek (jak je popsáno v následujících příkladech), je možné ji odebrat, aby nedocházelo k dvojímu sledování výjimek.
 
-Existuje několik případů, kdy filtry výjimek nemůžou zpracovat. Příklad:
+Existuje několik případů, kdy filtry výjimek nemůžou zpracovat. Například:
 
 * Výjimky vyvolané konstruktory kontrolerů
 * Výjimky vyvolané obslužnými rutinami zpráv

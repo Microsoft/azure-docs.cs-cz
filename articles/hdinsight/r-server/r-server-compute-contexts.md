@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087601"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Možnosti výpočetního kontextu pro služby ML v HDInsight
@@ -57,7 +57,7 @@ Který ze tří možností, které si zvolíte, nabízí paralelní provádění
 
 V následujících částech jsou uvedené některé obecné pravidla pro výběr výpočetního kontextu.
 
-### <a name="local"></a>Local
+### <a name="local"></a>Místní
 
 - Pokud je objem dat k analýze malý a nevyžaduje opakovanou analýzu, pak ji Streamujte přímo do analytické rutiny pomocí *místních* nebo *localpar*.
 - Pokud je množství dat k analýze malé nebo středně velké a vyžaduje opakovanou analýzu, zkopírujte ji do místního systému souborů, importujte ji do XDF a analyzujte ji prostřednictvím *místních* nebo *localpar*.

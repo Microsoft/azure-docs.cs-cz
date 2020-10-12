@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 7f9677bfd793e7ff21ff2c6c7e6760b630dc074b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898539"
 ---
 # <a name="decision-forest-regression-module"></a>Modul pro regresi rozhodovací doménové struktury
@@ -38,7 +38,7 @@ Stromy pro rozhodování mají tyto výhody:
 
 Tento regresní model se skládá ze kompletu rozhodovacích stromů. U každého stromu v doménové struktuře regrese se jako předpověď vytvoří Gaussovské distribuce. Agregace se provádí přes kompletování stromů, aby bylo možné najít Gaussovské rozdělení, které je nejblíže kombinované distribuci pro všechny stromy v modelu.
 
-Další informace o teoretickém rozhraní tohoto algoritmu a jeho implementaci najdete v tomto článku: [rozhodovací doménové struktury: jednotná architektura pro klasifikaci, regresi, odhad hustoty, učení kurzů a vzdělávání s částečně kontrolovaným učením](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#) .
+Další informace o teoretickém rozhraní tohoto algoritmu a jeho implementaci najdete v tomto článku: [doménové struktury pro rozhodování: jednotné rozhraní pro klasifikaci, regresi, odhad hustoty, výukové učení a Semi-Supervised učení.](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Jak nakonfigurovat regresní model doménové struktury
 

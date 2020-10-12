@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 8c8b8b0090877db7abc8fae0e44f928e8b10dcf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807993"
 ---
 # <a name="add-health-probes-to-your-service"></a>Přidání sond stavu do služby
 Adaptér příchozího přenosu dat ve výchozím nastavení zřídí test HTTP GET pro exponované lusky.
 Vlastnosti sondy je možné přizpůsobit přidáním [testu připravenosti nebo živého provozu](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) do vaší `deployment` / `pod` specifikace.
 
-## <a name="with-readinessprobe-or-livenessprobe"></a>S `readinessProbe` nebo`livenessProbe`
+## <a name="with-readinessprobe-or-livenessprobe"></a>S `readinessProbe` nebo `livenessProbe`
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -50,11 +50,11 @@ Reference k rozhraní Kubernetes API:
 * [Akce HttpGet](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#httpgetaction-v1-core)
 
 > [!NOTE]
-> * `readinessProbe`a `livenessProbe` jsou podporovány, pokud jsou nakonfigurovány pomocí `httpGet` .
+> * `readinessProbe` a `livenessProbe` jsou podporovány, pokud jsou nakonfigurovány pomocí `httpGet` .
 > * Zjišťování na jiném portu, než který je vystavený na straně, se v tuto chvíli nepodporuje.
 > * `HttpHeaders`, `InitialDelaySeconds` , `SuccessThreshold` nejsou podporovány.
 
-##  <a name="without-readinessprobe-or-livenessprobe"></a>Bez `readinessProbe` nebo`livenessProbe`
+##  <a name="without-readinessprobe-or-livenessprobe"></a>Bez `readinessProbe` nebo `livenessProbe`
 Pokud výše uvedené sondy nejsou k dispozici, pak kontroler příchozího přenosu dat předpokládá, že je služba dostupná `Path` pro zadání `backend-path-prefix` poznámky nebo pro `path` zadání v `ingress` definici služby.
 
 ## <a name="default-values-for-health-probe"></a>Výchozí hodnoty pro sondu stavu
