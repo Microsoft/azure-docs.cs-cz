@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4087d618209ab4db46f89ef4e6db7ac87ca4cf57
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331008"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Získání koncových bodů připojení a připojovacích řetězců formuláře pro PostgreSQL skupinu serverů s podporou ARC
@@ -64,7 +64,7 @@ Pomocí těchto koncových bodů můžete:
 - Vytvoření připojovacích řetězců a připojení k vašim klientským nástrojům nebo aplikacím
 - Přístup k řídicím panelům Grafana a Kibana z prohlížeče
 
-Například můžete použít koncový bod s názvem _PostgreSQL instance_ pro připojení s psql ke skupině serverů. Příklad:
+Například můžete použít koncový bod s názvem _PostgreSQL instance_ pro připojení s psql ke skupině serverů. Například:
 ```console
 psql postgresql://postgres:MyPassworkd@12.345.123.456:1234
 psql (10.14 (Ubuntu 10.14-0ubuntu0.18.04.1), server 12.4 (Ubuntu 12.4-1.pgdg16.04+1))

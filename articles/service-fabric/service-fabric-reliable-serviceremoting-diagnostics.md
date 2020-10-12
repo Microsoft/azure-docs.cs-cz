@@ -6,14 +6,14 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
 ms.openlocfilehash: 89a7a545dd334f892ee27b97995de40d7b6416dc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245921"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Monitorování diagnostiky a výkonu pro vzdálenou komunikaci spolehlivé služby
-ServiceRemoting runtime Reliable vygeneruje [čítače výkonu](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1). Poskytují přehled o tom, jak ServiceRemoting pracuje a umožňuje řešení potíží a monitorování výkonu.
+ServiceRemoting runtime Reliable vygeneruje  [čítače výkonu](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1). Poskytují přehled o tom, jak ServiceRemoting pracuje a umožňuje řešení potíží a monitorování výkonu.
 
 
 ## <a name="performance-counters"></a>Čítače výkonu
@@ -74,7 +74,7 @@ V předchozím příkladu `ivoicemailboxservice.leavemessageasync` je název met
 
 Služba Reliable Service runtime zveřejňuje následující čítače výkonu související s prováděním metod služeb.
 
-| Název kategorie | Název čítače | Popis |
+| Název kategorie | Název čítače | Description |
 | --- | --- | --- |
 | Metoda služby Service Fabric |Volání za sekundu |Počet, kolikrát se metoda služby vyvolala za sekundu |
 | Metoda služby Service Fabric |Průměrný počet milisekund na vyvolání |Čas potřebný k provedení metody služby v milisekundách |
@@ -83,7 +83,7 @@ Služba Reliable Service runtime zveřejňuje následující čítače výkonu s
 ### <a name="service-request-processing-performance-counters"></a>Čítače výkonu zpracování žádostí o služby
 Když klient vyvolá metodu prostřednictvím objektu proxy služby, má za následek odeslání zprávy požadavku prostřednictvím sítě do služby vzdálené komunikace. Služba zpracuje zprávu požadavku a pošle odpověď zpět klientovi. Reliable ServiceRemoting runtime zveřejňuje následující čítače výkonu související se zpracováním žádostí o služby.
 
-| Název kategorie | Název čítače | Popis |
+| Název kategorie | Název čítače | Description |
 | --- | --- | --- |
 | Služba Service Fabric |počet nezpracovaných žádostí |Počet požadavků zpracovávaných ve službě |
 | Služba Service Fabric |Průměrný počet milisekund na požadavek |Doba trvání (v milisekundách), po kterou služba zpracovává požadavek |

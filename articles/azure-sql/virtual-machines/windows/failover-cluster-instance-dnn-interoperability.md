@@ -13,10 +13,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: ca782e9949f990857db408919cac342d7f712d2b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272612"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>Interoperabilita funkcí s SQL Server FCI & DNN
@@ -41,7 +41,7 @@ U pojmenované instance by se mělo provést mapování síťových aliasů pro 
 
 Pro ovladače ODBC, OLEDB, ADO.NET, JDBC, PHP a Node.js musí uživatelé explicitně zadat název DNS DNN jako název serveru v připojovacím řetězci. Pokud chcete zajistit rychlé připojení při převzetí služeb při selhání, přidejte `MultiSubnetFailover=True` do připojovacího řetězce, pokud ho klient SQL podporuje. 
 
-## <a name="tools"></a>nástroje
+## <a name="tools"></a>Nástroje
 
 Uživatelé nástrojů [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms), [Sqlcmd](/sql/tools/sqlcmd-utility), [Azure Data Studio](/sql/azure-data-studio/what-is)a [SQL Server Data Tools](/sql/ssdt/sql-server-data-tools) musí explicitně zadat název DNS DNN jako název serveru v připojovacím řetězci. 
 
@@ -86,7 +86,7 @@ Předpokládejme například, že máte vydavatele, který je nakonfigurovaný j
 
 Použijte úplný název instance pro pojmenovanou instanci, například následující příklad obrázku: 
 
-:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="Při konfiguraci aliasu sítě pro pojmenovanou instanci použijte úplný název instance." :::
+:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="Nakonfigurujte název DNS DNN jako alias sítě pomocí SQL Server Configuration Manager." :::
 
 ## <a name="database-mirroring"></a>Zrcadlení databáze
 

@@ -11,13 +11,13 @@ ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
 ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81687127"
 ---
-# <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automaticky identifikovat mluvený jazyk pomocí modelu identifikace jazyka
+# <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatická identifikace mluveného jazyka s využitím modelu identifikace jazyka
 
 Video Indexer podporuje automatickou identifikaci jazyka (víka), což je proces automatického určení mluveného obsahu z zvuku a odeslání mediálního souboru, který bude přepisu v dominantním jazyce. 
 
@@ -67,4 +67,4 @@ Převládající jazyk modelu je k dispozici ve formátu JSON Insights jako `sou
 ## <a name="next-steps"></a>Další kroky
 
 * [Přehled](video-indexer-overview.md)
-* [Automatické určení a přepisovat obsahu s více jazyky](multi-language-identification-transcription.md)
+* [Automatická identifikace a přepis vícejazyčného obsahu](multi-language-identification-transcription.md)

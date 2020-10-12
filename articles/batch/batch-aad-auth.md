@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
 ms.openlocfilehash: 19042b4bb0998d104792d7511ab2972299b4f58d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533508"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
@@ -127,7 +127,7 @@ K ověřování pomocí instančního objektu je potřeba přiřadit k aplikaci 
 1. V části **Nastavení** účtu Batch vyberte možnost **Access Control (IAM)**.
 1. Vyberte kartu **přiřazení rolí** .
 1. Vyberte **Přidat přiřazení role**.
-1. V rozevíracím seznamu **role** vyberte roli *Přispěvatel* nebo *Čtenář* pro vaši aplikaci. Další informace o těchto rolích najdete v tématu [Začínáme s Access Control na základě rolí v Azure Portal](../role-based-access-control/overview.md).
+1. V rozevíracím seznamu **role** vyberte roli *Přispěvatel* nebo *Čtenář* pro vaši aplikaci. Další informace o těchto rolích najdete v tématu [Začínáme s Role-Based Access Control v Azure Portal](../role-based-access-control/overview.md).
 1. Do pole **Vybrat** zadejte název vaší aplikace. V seznamu vyberte svou aplikaci a pak vyberte **Uložit**.
 
 Vaše aplikace by se teď měla zobrazit v nastavení řízení přístupu s přiřazenou rolí Azure.

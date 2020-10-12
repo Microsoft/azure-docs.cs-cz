@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
 ms.openlocfilehash: feef35ef86a933f32949468366fea85eb87d4866
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91315775"
 ---
 # <a name="bring-your-own-key-specification"></a>Specifikace používání vlastního klíče
@@ -31,7 +31,7 @@ Požadavky jsou následující:
 
 ## <a name="terminology"></a>Terminologie
 
-|Název klíče|Typ klíče|Zdroj|Popis|
+|Název klíče|Typ klíče|Zdroj|Description|
 |---|---|---|---|
 |Klíč pro výměnu klíčů (KEK)|RSA|Modul HSM Azure Key Vault|V Azure Key Vault byl vygenerován pár klíčů RSA zálohovaný modulem HSM.
 Klíč pro zabalení|AES|HSM dodavatele|[Dočasný] klíč AES generovaný modulem HSM v-Prem

@@ -7,10 +7,10 @@ ms.date: 2/28/2018
 ms.author: gwallace
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 6df434610a8f595ecca7f16e31f8a302373b02f9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89012649"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Přidat vlastní sestavy o stavu Service Fabric
@@ -173,7 +173,7 @@ Vytváření sestav o přechodech dává smysl pro služby, které se samy hlás
 ## <a name="implement-health-reporting"></a>Implementace vytváření sestav o stavu
 Jakmile jsou informace o entitě a sestavě jasné, můžete odesílat sestavy o stavu prostřednictvím rozhraní API, PowerShellu nebo REST.
 
-### <a name="api"></a>rozhraní API
+### <a name="api"></a>Rozhraní API
 K vytváření sestav přes rozhraní API potřebujete vytvořit sestavu o stavu, která je specifická pro typ entity, na kterou chtějí nahlásit. Poskytněte zprávu klientovi stavu. Případně můžete vytvořit informace o stavu a předat je do správné metody vytváření sestav `Partition` u `CodePackageActivationContext` aktuálních entit.
 
 Následující příklad ukazuje pravidelné generování sestav z sledovacího zařízení v rámci clusteru. Sledovací zařízení kontroluje, jestli je k externímu prostředku možné přistupovat v rámci uzlu. Prostředek vyžaduje manifest služby v rámci aplikace. Pokud prostředek není k dispozici, ostatní služby v aplikaci mohou stále fungovat správně. Proto je sestava odeslána na nasazenou entitu balíčku služby každých 30 sekund.

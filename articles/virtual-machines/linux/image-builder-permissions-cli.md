@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.openlocfilehash: 58bbe01c8de0bbe606f4fc428032cd213f05d386
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068145"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Konfigurace oprávnění služby Azure image Builder pomocí Azure CLI
@@ -234,7 +234,7 @@ Nahraďte následující zástupné nastavení:
 | \<Storage account container\> | Název kontejneru účtu úložiště |
 | \<Subscription ID\> | Předplatné Azure |
 
-Další informace o uživatelsky přiřazené spravované identitě najdete v tématu [Vytvoření vlastní image, která bude používat spravovanou identitu přiřazenou uživatelem Azure k bezproblémové přístupu k souborům Azure Storage](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage). Tento rychlý Start vás provede vytvořením a konfigurací spravované identity přiřazené uživatelem pro přístup k účtu úložiště.
+Další informace o uživatelsky přiřazené spravované identitě najdete v tématu [Vytvoření vlastní image, která bude používat spravovanou identitu Azure User-Assigned k bezproblémové přístupu k souborům Azure Storage](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage). Tento rychlý Start vás provede vytvořením a konfigurací spravované identity přiřazené uživatelem pro přístup k účtu úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 

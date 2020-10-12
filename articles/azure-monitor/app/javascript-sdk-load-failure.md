@@ -7,10 +7,10 @@ ms.author: newylie
 ms.date: 06/05/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 30c7caef4143b1a7cdba959971ff7689f986cb9e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333252"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Řešení potíží s načtením sady SDK pro webové aplikace v jazyce JavaScript
@@ -64,7 +64,7 @@ Totéž platí také při použití sady SDK prostřednictvím řešení NPM Pac
 
 Můžete také zkusit použít [balíčky npm](#use-npm-packages-to-embed-the-application-insight-sdk) k vložení sady SDK Application Insights.
 
-Aby se minimalizovala přerušovaná Chyba připojení k síti, implementovali jsme do všech souborů CDN hlavičky pro řízení mezipaměti, takže jakmile prohlížeč koncového uživatele stáhne aktuální verzi sady SDK, nebude nutné ho znovu stáhnout a prohlížeč znovu použije dříve získanou kopii (viz [Jak funguje ukládání do mezipaměti](../../cdn/cdn-how-caching-works.md)). Pokud se kontrolu ukládání do mezipaměti nepovede nebo k ní dojde v nové verzi, bude si muset stáhnout aktualizovanou verzi v prohlížeči koncového uživatele. Takže se ve scénáři selhání při kontrole nebo v dočasném zásobníku může zobrazit _úroveň na pozadí_ , když dojde k nové vydaným verzím, která je všeobecně dostupná (nasazená do sítě CDN).
+Aby se minimalizovala přerušovaná Chyba připojení k síti, implementovali jsme Cache-Control hlaviček všech souborů CDN, takže jakmile prohlížeč koncového uživatele stáhne aktuální verzi sady SDK, nebude nutné ho znovu stahovat a prohlížeč bude znovu používat dřív získanou kopii (viz [Jak funguje ukládání do mezipaměti](../../cdn/cdn-how-caching-works.md)). Pokud se kontrolu ukládání do mezipaměti nepovede nebo k ní dojde v nové verzi, bude si muset stáhnout aktualizovanou verzi v prohlížeči koncového uživatele. Takže se ve scénáři selhání při kontrole nebo v dočasném zásobníku může zobrazit _úroveň na pozadí_ , když dojde k nové vydaným verzím, která je všeobecně dostupná (nasazená do sítě CDN).
  
 ## <a name="application-insights-cdn-outage"></a>Výpadek sítě CDN Application Insights
 

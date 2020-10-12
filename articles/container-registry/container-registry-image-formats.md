@@ -4,10 +4,10 @@ description: Přečtěte si o formátech obsahu podporovaných nástrojem Azure 
 ms.topic: article
 ms.date: 08/30/2019
 ms.openlocfilehash: ab915385f46f83c7b655acd1a48d66df84b50653
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84695262"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Formáty obsahu podporované v Azure Container Registry
@@ -32,7 +32,7 @@ Azure Container Registry podporuje pro ukládání, sdílení, zabezpečení a n
 
 Další informace o artefaktech rozhraní OCI najdete v části [registr OCI jako úložiště (Oras)](https://github.com/deislabs/oras) a v úložišti [artefaktů OCI](https://github.com/opencontainers/artifacts) na GitHubu.
 
-## <a name="helm-charts"></a>Grafy Helm
+## <a name="helm-charts"></a>Charty Helm
 
 Azure Container Registry mohou hostovat úložiště pro [grafy Helm](https://helm.sh/), formát balení používaný k rychlé správě a nasazování aplikací pro Kubernetes. Podporuje se [klient Helm](https://docs.helm.sh/using_helm/#installing-helm) verze 2 (2.11.0 nebo novější).
 

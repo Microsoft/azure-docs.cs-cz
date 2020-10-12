@@ -5,10 +5,10 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: ee89af311619922fa6ca585381d70ca66955f36a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91271643"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Zálohování serveru Exchange do služby Azure Backup pomocí nástroje System Center 2012 R2 DPM
@@ -83,10 +83,10 @@ Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujt
 11. Zkontrolujte dostupné místo na disku a pak vyberte **Další**.
 12. Vyberte čas, kdy bude server DPM vytvořit počáteční replikaci, a pak vyberte **Další**.
 13. Vyberte možnosti kontroly konzistence a pak vyberte **Další**.
-14. Zvolte databázi, kterou chcete zálohovat do Azure, a pak vyberte **Další**. Příklad:
+14. Zvolte databázi, kterou chcete zálohovat do Azure, a pak vyberte **Další**. Například:
 
     ![Zadat data online ochrany](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Definujte plán pro **Azure Backup**a pak vyberte **Další**. Příklad:
+15. Definujte plán pro **Azure Backup**a pak vyberte **Další**. Například:
 
     ![Zadat plán online zálohování](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 

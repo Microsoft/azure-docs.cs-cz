@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
 ms.openlocfilehash: d9efdb11ffd30c68a0ac8ea8e8156fe707f188de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322308"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Zdroje dat Syslogu ve službě Azure Monitor
@@ -155,8 +155,8 @@ log { source(src); filter(f_user_oms); destination(d_oms); };
 ### <a name="collecting-data-from-additional-syslog-ports"></a>Shromažďování dat z dalších portů syslog
 Agent Log Analytics naslouchá zprávám syslog v místním klientovi na portu 25224.  Při instalaci agenta se použije výchozí konfigurace syslog, která se nachází v následujícím umístění:
 
-* Rsyslog`/etc/rsyslog.d/95-omsagent.conf`
-* Syslog-ng:`/etc/syslog-ng/syslog-ng.conf`
+* Rsyslog `/etc/rsyslog.d/95-omsagent.conf`
+* Syslog-ng: `/etc/syslog-ng/syslog-ng.conf`
 
 Číslo portu můžete změnit vytvořením dvou konfiguračních souborů: v závislosti na procesu démona syslog, který jste nainstalovali, můžete změnit soubor s mikroprotokolem a souborem rsyslog nebo syslog-ng.  
 
@@ -219,7 +219,7 @@ Záznamy syslog mají typ **SYSLOG** a mají vlastnosti v následující tabulce
 ## <a name="log-queries-with-syslog-records"></a>Dotazy protokolu se záznamy syslog
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy syslog.
 
-| Dotaz | Popis |
+| Dotaz | Description |
 |:--- |:--- |
 | Syslog |Všechny Syslogy. |
 | Syslog &#124;, kde SeverityLevel = = "Error" |Všechny záznamy syslog se závažností chyby. |

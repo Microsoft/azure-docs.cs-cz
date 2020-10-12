@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: alkohli
 ms.openlocfilehash: c43f7ba52ed0f6018ee32583011bb92786708119
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460471"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>Zpráva k vydání verze pro obecné dostupnosti GPU (GA) Azure Stack Edge pro
@@ -35,7 +35,7 @@ Ve verzi Azure Stack Edge 2009 jsou k dispozici následující nové funkce.
 
 Následující tabulka poskytuje souhrn známých problémů pro zařízení Azure Stack Edge pro.
 
-| No. | Příznak | Problém | Alternativní řešení/komentáře |
+| Ne. | Příznak | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 |**1.**|Funkce ve verzi Preview |Pro tuto verzi GA jsou k dispozici tyto funkce: místní Azure Resource Manager, virtuální počítače, Kubernetes, Kubernetes ARC Azure, služba multi-Process (MPS) pro grafický procesor (MP) pro zařízení s Azure Stack Edge pro.  |Tyto funkce budou všeobecně dostupné v pozdější verzi. |
 | **2.** |Azure Stack Edge pro + Azure SQL | Vytvoření databáze SQL vyžaduje přístup správce.   |Proveďte následující kroky místo kroků 1-2 v [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database) . <ul><li>V místním uživatelském rozhraní zařízení povolte výpočetní rozhraní. Vyberte **compute > port # > povolit pro výpočetní > použít.**</li><li>Stáhnout `sqlcmd` na klientském počítači z https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>Připojte se k IP adrese rozhraní COMPUTE (port, který byl povolený), a přidejte na konec adresy znak ", 1401".</li><li>Poslední příkaz bude vypadat takto: Sqlcmd-S {Interface IP}, 1401-U SA-P "Strong! Passw0rd".</li>Pak by se měly shodovat kroky 3-4 z aktuální dokumentace. </li></ul> |

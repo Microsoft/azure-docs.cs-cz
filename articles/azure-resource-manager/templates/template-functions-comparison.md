@@ -4,10 +4,10 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 01d66f43cf73dcc9228118db5a9b6149b19ee66d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677827"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>Funkce porovnání pro šablony ARM
@@ -88,13 +88,13 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | stringOutput | Řetězec | default |
 | intOutput | Int | 1 |
 | objectOutput | Objekt | {"First": "default"} |
 | arrayOutput | Pole |  [1] |
-| emptyOutput | Logická hodnota | True |
+| emptyOutput | Logická hodnota | Ano |
 
 ## <a name="equals"></a>rovná se
 
@@ -199,12 +199,12 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkInts | Logická hodnota | True |
-| checkStrings | Logická hodnota | True |
-| checkArrays | Logická hodnota | True |
-| checkObjects | Logická hodnota | True |
+| checkInts | Logická hodnota | Ano |
+| checkStrings | Logická hodnota | Ano |
+| checkArrays | Logická hodnota | Ano |
+| checkObjects | Logická hodnota | Ano |
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) používá znaménko [Not](template-functions-logical.md#not) a **Equals**.
 
@@ -225,9 +225,9 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkNotEquals | Logická hodnota | True |
+| checkNotEquals | Logická hodnota | Ano |
 
 ## <a name="greater"></a>greater
 
@@ -289,10 +289,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkInts | Logická hodnota | False |
-| checkStrings | Logická hodnota | True |
+| checkInts | Logická hodnota | Nepravda |
+| checkStrings | Logická hodnota | Ano |
 
 ## <a name="greaterorequals"></a>greaterOrEquals
 
@@ -354,10 +354,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkInts | Logická hodnota | False |
-| checkStrings | Logická hodnota | True |
+| checkInts | Logická hodnota | Nepravda |
+| checkStrings | Logická hodnota | Ano |
 
 ## <a name="less"></a>less
 
@@ -419,10 +419,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkInts | Logická hodnota | True |
-| checkStrings | Logická hodnota | False |
+| checkInts | Logická hodnota | Ano |
+| checkStrings | Logická hodnota | Nepravda |
 
 ## <a name="lessorequals"></a>lessOrEquals
 
@@ -484,10 +484,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkInts | Logická hodnota | True |
-| checkStrings | Logická hodnota | False |
+| checkInts | Logická hodnota | Ano |
+| checkStrings | Logická hodnota | Nepravda |
 
 ## <a name="next-steps"></a>Další kroky
 

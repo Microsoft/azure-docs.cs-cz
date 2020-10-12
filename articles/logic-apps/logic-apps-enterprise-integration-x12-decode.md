@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 918516a5629f8570d54c641ffc29f2367937266f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74792371"
 ---
 # <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Dekódování zpráv X12 v Azure Logic Apps pomocí Enterprise Integration Packu
@@ -57,7 +57,7 @@ Tady jsou položky, které potřebujete:
 
     ![vytvořilo se připojení k účtu pro integraci.](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
 
-    Příklad:
+    Například:
 
     ![Pro dekódování vybrat zprávu plochý soubor X12](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
 

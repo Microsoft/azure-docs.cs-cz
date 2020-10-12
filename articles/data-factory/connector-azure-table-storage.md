@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
 ms.openlocfilehash: 6edd32f8f3579238d1f08f55ce9fb1528fa5d211
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417480"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopírování dat do a z Azure Table Storage pomocí služby Azure Data Factory
@@ -53,11 +53,11 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Propojenou službu Azure Storage můžete vytvořit pomocí klíče účtu. Poskytuje datovou továrnu s globálním přístupem k úložišti. Podporovány jsou následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na **AzureTableStorage**. |Ano |
 | připojovací řetězec | Zadejte informace potřebné pro připojení k úložišti pro vlastnost connectionString. <br/>Můžete také umístit klíč účtu do Azure Key Vault a získat konfiguraci z `accountKey` připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. |Ano |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 >[!NOTE]
 >Pokud jste použili propojenou službu typu "AzureStorage", je stále podporovaná tak, jak je, a když jste se rozhodli použít tento nový typ propojené služby "AzureTableStorage", který se bude přesměrovat.
@@ -122,11 +122,11 @@ Sdílený přístupový podpis poskytuje delegovaný přístup k prostředkům v
 
 Chcete-li použít ověřování pomocí sdíleného přístupového podpisu, jsou podporovány následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na **AzureTableStorage**. |Ano |
 | sasUri | Zadejte identifikátor URI SAS identifikátoru URI sdíleného přístupového podpisu k tabulce. <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Do Azure Key Vault můžete také vložit token SAS a využít tak automatické otočení a odebrat část tokenu. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít Azure Integration Runtime nebo v místním prostředí Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít Azure Integration Runtime nebo v místním prostředí Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 >[!NOTE]
 >Pokud jste použili propojenou službu typu "AzureStorage", je stále podporovaná tak, jak je, a když jste se rozhodli použít tento nový typ propojené služby "AzureTableStorage", který se bude přesměrovat.
@@ -193,7 +193,7 @@ Při vytváření identifikátoru URI sdíleného přístupového podpisu Vezmě
 
 Pokud chcete kopírovat data z tabulky Azure a z ní, nastavte vlastnost Type datové sady na **Azure**. Podporovány jsou následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na **Azure**. |Ano |
 | tableName |Název tabulky instance databáze úložiště tabulky, na kterou odkazuje propojená služba. |Ano |
@@ -233,11 +233,11 @@ Pro úložiště dat bez schémat, jako je například tabulka Azure, Data Facto
 
 Pokud chcete kopírovat data z tabulky Azure, nastavte typ zdroje v aktivitě kopírování na **AzureTableSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AzureTableSource**. |Ano |
-| azureTableSourceQuery |Pro čtení dat použijte dotaz vlastního tabulkového úložiště. Podívejte se na příklady v následující části. |Ne |
-| azureTableSourceIgnoreTableNotFound |Určuje, zda má být povolena výjimka tabulky neexistuje.<br/>Povolené hodnoty jsou **true** a **false** (výchozí). |Ne |
+| azureTableSourceQuery |Pro čtení dat použijte dotaz vlastního tabulkového úložiště. Podívejte se na příklady v následující části. |No |
+| azureTableSourceIgnoreTableNotFound |Určuje, zda má být povolena výjimka tabulky neexistuje.<br/>Povolené hodnoty jsou **true** a **false** (výchozí). |No |
 
 ### <a name="azuretablesourcequery-examples"></a>Příklady azureTableSourceQuery
 
@@ -262,13 +262,13 @@ Použijete-li parametr kanálu, přetypování hodnoty DateTime ke správnému f
 
 Pokud chcete kopírovat data do tabulky Azure, nastavte typ jímky v aktivitě kopírování na **AzureTableSink**. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na **AzureTableSink**. |Ano |
-| azureTableDefaultPartitionKeyValue |Výchozí hodnota klíče oddílu, kterou může jímka použít. |Ne |
-| azureTablePartitionKeyName |Zadejte název sloupce, jehož hodnoty se používají jako klíče oddílů. Pokud není zadaný, použije se jako klíč oddílu "AzureTableDefaultPartitionKeyValue". |Ne |
-| azureTableRowKeyName |Zadejte název sloupce, jehož hodnoty sloupce slouží jako klíč řádku. Není-li tento parametr zadán, použijte pro každý řádek identifikátor GUID. |Ne |
-| azureTableInsertType |Režim pro vložení dat do tabulky Azure. Tato vlastnost určuje, zda mají být existující řádky ve výstupní tabulce se shodnými klíči oddílů a řádky nahrazeny nebo sloučeny. <br/><br/>Povolené hodnoty jsou **Sloučit** (výchozí) a **nahradit**. <br/><br> Toto nastavení platí na úrovni řádku, nikoli na úrovni tabulky. Možnost ani neodstraní řádky ve výstupní tabulce, které neexistují ve vstupu. Další informace o tom, jak nastavení sloučit a nahradit funguje, najdete v tématu věnovaném [vložení nebo sloučení entit](https://msdn.microsoft.com/library/azure/hh452241.aspx) a [vložení nebo nahrazení entity](https://msdn.microsoft.com/library/azure/hh452242.aspx). |Ne |
+| azureTableDefaultPartitionKeyValue |Výchozí hodnota klíče oddílu, kterou může jímka použít. |No |
+| azureTablePartitionKeyName |Zadejte název sloupce, jehož hodnoty se používají jako klíče oddílů. Pokud není zadaný, použije se jako klíč oddílu "AzureTableDefaultPartitionKeyValue". |No |
+| azureTableRowKeyName |Zadejte název sloupce, jehož hodnoty sloupce slouží jako klíč řádku. Není-li tento parametr zadán, použijte pro každý řádek identifikátor GUID. |No |
+| azureTableInsertType |Režim pro vložení dat do tabulky Azure. Tato vlastnost určuje, zda mají být existující řádky ve výstupní tabulce se shodnými klíči oddílů a řádky nahrazeny nebo sloučeny. <br/><br/>Povolené hodnoty jsou **Sloučit** (výchozí) a **nahradit**. <br/><br> Toto nastavení platí na úrovni řádku, nikoli na úrovni tabulky. Možnost ani neodstraní řádky ve výstupní tabulce, které neexistují ve vstupu. Další informace o tom, jak nastavení sloučit a nahradit funguje, najdete v tématu věnovaném [vložení nebo sloučení entit](https://msdn.microsoft.com/library/azure/hh452241.aspx) a [vložení nebo nahrazení entity](https://msdn.microsoft.com/library/azure/hh452242.aspx). |No |
 | writeBatchSize |Když se writeBatchSize nebo writeBatchTimeout, vloží data do tabulky Azure.<br/>Povolené hodnoty jsou celé číslo (počet řádků). |Ne (výchozí hodnota je 10 000) |
 | writeBatchTimeout |Když se writeBatchSize nebo writeBatchTimeout, vloží data do tabulky Azure.<br/>Povolené hodnoty jsou TimeSpan. Příkladem je "00:20:00" (20 minut). |Ne (výchozí hodnota je 90 sekund, výchozí časový limit klienta úložiště) |
 

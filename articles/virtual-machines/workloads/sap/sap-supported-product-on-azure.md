@@ -17,10 +17,10 @@ ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 217d5b060ca1b7d32cd334049db9b7c68b7949a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87065078"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Který software SAP se podporuje pro nasazení Azure
@@ -117,7 +117,7 @@ Pro virtuální počítače Azure jsou tato čísla propustnosti SAP dokumentov�
 
 Při hledání [poznámky k podpoře SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533)platí následující poznámky:
 
-- Pro virtuální počítače Azure **řady M-Series a virtuální počítače Azure řady Mv2-Series se pro jiné typy virtuálních počítačů Azure použijí jiné minimální verze operačního systému**. Požadavek na další poslední vydané verze operačního systému je založený na změnách, které výrobci v operačním systému museli poskytnout, aby povolili jejich operační systémy běžící na specifických typech virtuálních počítačů Azure nebo optimalizoval výkon a propustnost úloh SAP na těchto typech virtuálních počítačů.
+- **Pro virtuální počítače Azure řady M-Series a Mv2-Series virtuálních počítačů Azure se pro jiné typy virtuálních počítačů Azure použijí jiné minimální verze operačního systému**. Požadavek na další poslední vydané verze operačního systému je založený na změnách, které výrobci v operačním systému museli poskytnout, aby povolili jejich operační systémy běžící na specifických typech virtuálních počítačů Azure nebo optimalizoval výkon a propustnost úloh SAP na těchto typech virtuálních počítačů.
 - K dispozici jsou dvě tabulky, které určují různé typy virtuálních počítačů. Druhá tabulka určuje propustnost SAP pro typy virtuálních počítačů Azure, které podporují jenom Azure Storage úrovně Standard. Nasazení DBMS na jednotkách uvedených v druhé tabulce poznámky se nepodporuje.
 
 
