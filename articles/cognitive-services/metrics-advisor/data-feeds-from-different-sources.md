@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: aahi
 ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324463"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Přidání datových kanálů z různých zdrojů dat do Poradce pro metriky
@@ -23,7 +23,7 @@ V tomto článku najdete nastavení a požadavky pro propojení různých typů 
 
 ## <a name="supported-authentication-types"></a>Podporované typy ověřování
 
-| Typy ověřování | Popis |
+| Typy ověřování | Description |
 | ---------------------|-------------|
 |**Basic** | Budete muset být schopni zadat základní parametry pro přístup ke zdrojům dat. Například připojovací řetězec nebo klíč. Správci datového kanálu můžou tyto přihlašovací údaje zobrazit. |
 | **AzureManagedIdentity** | [Spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) prostředků Azure je funkce Azure Active Directory. Poskytuje služby Azure s automaticky spravovanou identitou ve službě Azure AD. Identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD.|
@@ -43,7 +43,7 @@ V tomto článku najdete nastavení a požadavky pro propojení různých typů 
 |[**Azure Data Explorer (Kusto)**](#kusto) | Základní<br>ManagedIdentity|
 |[**Azure Data Lake Storage Gen2**](#adl) | Základní<br>DataLakeGen2SharedKey<br>Instanční objekt<br>Instanční objekt z trezoru klíčů<br> |
 |[**Azure SQL Database/SQL Server**](#sql) | Základní<br>ManagedIdentity<br>Instanční objekt<br>Instanční objekt z trezoru klíčů<br>AzureSQLConnectionString
-|[**Azure Table Storage**](#table) | Základní | 
+|[**Table Storage Azure**](#table) | Základní | 
 |[**ElasticSearch**](#es) | Základní |
 |[**Požadavek http**](#http) | Základní | 
 |[**InfluxDB (InfluxQL)**](#influxdb) | Základní |
@@ -93,7 +93,7 @@ Vytvořte **entitu přihlašovacích údajů** a použijte ji k ověřování va
   
   * V1 (výchozí hodnota)
 
-      Akceptují se jenom *hodnoty* a *název* metriky. Příklad:
+      Akceptují se jenom *hodnoty* a *název* metriky. Například:
     
       ``` JSON
       {"count":11, "revenue":1.23}
@@ -101,7 +101,7 @@ Vytvořte **entitu přihlašovacích údajů** a použijte ji k ověřování va
 
   * v2
 
-      Jsou také přijaty *dimenze* metriky a *časové razítko* . Příklad:
+      Jsou také přijaty *dimenze* metriky a *časové razítko* . Například:
       
       ``` JSON
       [
@@ -159,7 +159,7 @@ Pro každý soubor JSON je povoleno pouze jedno časové razítko.
   * `%h` je hodina formátovaná jako `HH`
   * `%M` je minuta formátovaná jako `mm`
 
-V současné době metrika podporuje schéma dat v souborech JSON následujícím způsobem. Příklad:
+V současné době metrika podporuje schéma dat v souborech JSON následujícím způsobem. Například:
 
 ``` JSON
 [
@@ -210,7 +210,7 @@ The timestamp field must match one of these two formats:
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = '2019-12-12 00:00:00'
     ```
 
-## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Table Storage</span>
+## <a name="span-idtableazure-table-storagespan"></a><span id="table">Table Storage Azure</span>
 
 * **Připojovací řetězec**: Přečtěte si téma [zobrazení a zkopírování připojovacího řetězce](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage?toc=%2Fazure%2Fstorage%2Ftables%2Ftoc.json&tabs=azure-portal#view-account-access-keys) , kde najdete informace o tom, jak načíst připojovací řetězec z Azure Table Storage.
 

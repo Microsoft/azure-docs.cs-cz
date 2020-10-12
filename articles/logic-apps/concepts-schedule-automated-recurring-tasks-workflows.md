@@ -7,10 +7,10 @@ ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: a5f01e81564561fe43ef6e55e6e9b3b67d6e1d77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84945609"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Plánování a spouštění opakujících se automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps
@@ -126,7 +126,7 @@ Bez ohledu na to, jak daleko v minulosti zadáte čas zahájení, například 20
 
 Tady jsou různé příklady opakování, které můžete nastavit pro aktivační události, které podporují tyto možnosti:
 
-| Trigger | Opakování | Interval | Frekvence | Čas spuštění | V tyto dny | V těchto hodinách | V těchto minutách | Poznámka |
+| Trigger | Opakování | Interval | Frequency | Čas spuštění | V tyto dny | V těchto hodinách | V těchto minutách | Poznámka |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
 | Vzorec <br>Posuvné okno | Spustit každých 15 minut (žádné počáteční datum a čas) | 15 | Minuta | nTato | znemožnit | nTato | nTato | Tento plán se spustí okamžitě a pak vypočítá budoucí opakování na základě posledního času spuštění. |
 | Vzorec <br>Posuvné okno | Spustit každých 15 minut (s počátečním datem a časem) | 15 | Minuta | *StartDate* T*čas_spuštění*Z | znemožnit | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas, a pak vypočítá budoucí opakování na základě posledního času spuštění. |

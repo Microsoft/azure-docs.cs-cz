@@ -1,7 +1,7 @@
 ---
 title: Zobrazení katalogu streamování (Transact-SQL) – Azure SQL Edge
 description: Přečtěte si o dostupných zobrazeních katalogu streamování a zobrazeních dynamické správy ve službě Azure SQL Edge.
-keywords: sys. external_streams, Edge SQL
+keywords: sys.external_streams, Edge SQL
 services: sql-edge
 ms.service: sql-edge
 ms.topic: reference
@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
 ms.openlocfilehash: 4a8f037cd9923564e2e214e9727ff87d63cca547
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90900518"
 ---
 # <a name="streaming-catalog-views-transact-sql"></a>Zobrazení katalogu streamování (Transact-SQL)
@@ -24,9 +24,9 @@ Tato část obsahuje dostupná zobrazení katalogu a funkce, které se týkají 
   
 |Zobrazit|Description|  
 |:---|:---|
-|[sys. external_streams](sys-external-streams.md) |Vrátí řádek pro každý objekt externího datového proudu vytvořený v rámci oboru databáze.|
-|[sys. external_streaming_jobs](sys-external-streaming-jobs.md) |Vrátí řádek pro každou externí úlohu streamování vytvořenou v rámci oboru databáze.|
-|[sys. external_job_streams](sys-external-job-streams.md)|Vrátí řádek pro vstupní nebo výstupní externí objekt datového proudu namapovaný na externí úlohu streamování.|
+|[sys.external_streams](sys-external-streams.md) |Vrátí řádek pro každý objekt externího datového proudu vytvořený v rámci oboru databáze.|
+|[sys.external_streaming_jobs](sys-external-streaming-jobs.md) |Vrátí řádek pro každou externí úlohu streamování vytvořenou v rámci oboru databáze.|
+|[sys.external_job_streams](sys-external-job-streams.md)|Vrátí řádek pro vstupní nebo výstupní externí objekt datového proudu namapovaný na externí úlohu streamování.|
 
 ## <a name="see-also"></a>Viz také
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 7a01863b3a0c29e94550be67ca957655cff32660
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935069"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>Správa Azure Database for MySQLho flexibilního serveru (ve verzi Preview) pomocí Azure Portal
@@ -22,7 +22,7 @@ ms.locfileid: "90935069"
 V tomto článku se dozvíte, jak spravovat Azure Database for MySQL flexibilní servery (Preview). Úlohy správy zahrnují škálování na výpočetní výkon a úložiště, heslo správce serveru Rest a odstranění serveru.
 
 ## <a name="sign-in"></a>Přihlásit se
-Přihlaste se k webu [Azure Portal](https://portal.azure.com). V Azure Portal přejít na prostředek flexibilního serveru.
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com). V Azure Portal přejít na prostředek flexibilního serveru.
 
 ## <a name="scale-compute-and-storage"></a>Škálování výpočetních prostředků a úložiště
 
@@ -50,7 +50,7 @@ Můžete změnit heslo role správce pomocí Azure Portal.
 2. Zadejte nové heslo a potvrďte ho. Textové pole vás vyzve k zadání požadavků na složitost hesla.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="resetování hesla pro flexibilní Server":::
+   > :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="škálování úložiště flexibilního serveru":::
 
 3. Kliknutím na **Uložit** uložte nové heslo.
 
@@ -63,7 +63,7 @@ Server můžete odstranit, pokud ho už nepotřebujete.
 2. Zadáním názvu serveru do vstupního pole potvrďte, že chcete odstranit server.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="odstranění flexibilního serveru":::
+   > :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="škálování úložiště flexibilního serveru":::
 
    > [!NOTE]
    > Odstranění serveru je nevratné.

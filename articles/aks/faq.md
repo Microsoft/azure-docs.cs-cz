@@ -4,10 +4,10 @@ description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 4150f850263aed7b8aa4317028386dc285f06ade
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905330"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy ohledně služby Azure Kubernetes Service (AKS)
@@ -20,7 +20,7 @@ Tento článek popisuje časté otázky ke službě Azure Kubernetes Service (AK
 
 ## <a name="can-i-spread-an-aks-cluster-across-regions"></a>Je možné rozložit cluster AKS napříč různými oblastmi?
 
-No. Clustery AKS jsou regionální prostředky a nemůžou zahrnovat oblasti. Pokyny k vytvoření architektury, která obsahuje více oblastí, najdete v tématu [osvědčené postupy pro provozní kontinuitu a zotavení po havárii][bcdr-bestpractices] .
+Ne. Clustery AKS jsou regionální prostředky a nemůžou zahrnovat oblasti. Pokyny k vytvoření architektury, která obsahuje více oblastí, najdete v tématu [osvědčené postupy pro provozní kontinuitu a zotavení po havárii][bcdr-bestpractices] .
 
 ## <a name="can-i-spread-an-aks-cluster-across-availability-zones"></a>Je možné rozložit cluster AKS napříč zónami dostupnosti?
 

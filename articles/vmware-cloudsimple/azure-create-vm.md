@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85847152"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>Vytvoření virtuálního počítače v Azure pomocí šablon virtuálních počítačů v infrastruktuře VMware
@@ -29,7 +29,7 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Vyhledejte **CloudSimple Virtual Machines**.
 
-3. Klikněte na tlačítko **Add** (Přidat).
+3. Klikněte na **Přidat**.
 
     ![Vytvořit virtuální počítač s CloudSimple](media/create-cloudsimple-virtual-machine.png)
 
@@ -40,10 +40,10 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
     ![Vytvořit virtuální počítač s CloudSimple – základní informace](media/create-cloudsimple-virtual-machine-basic-info.png)
 
-    | Pole | Description |
+    | Pole | Popis |
     | ------------ | ------------- |
     | Předplatné | Předplatné Azure přidružené k vašemu privátnímu cloudu.  |
-    | Skupina prostředků | Skupina prostředků, ke které se virtuální počítač přiřadí. Můžete vybrat existující skupinu nebo vytvořit novou. |
+    | Resource Group | Skupina prostředků, ke které se virtuální počítač přiřadí. Můžete vybrat existující skupinu nebo vytvořit novou. |
     | Name | Název, který identifikuje virtuální počítač.  |
     | Umístění | Oblast Azure, ve které je tento virtuální počítač hostovaný.  |
     | Privátní cloud | CloudSimple privátní cloud, ve kterém chcete vytvořit virtuální počítač. |
@@ -62,18 +62,18 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
     Pro síťová rozhraní klikněte na **Přidat síťové rozhraní** a nakonfigurujte následující nastavení.
 
-    | Řízení | Description |
+    | Řízení | Popis |
     | ------------ | ------------- |
-    | Name | Zadejte název pro identifikaci rozhraní.  |
+    | Název | Zadejte název pro identifikaci rozhraní.  |
     | Síť | V vSphere privátního cloudu vyberte ze seznamu nakonfigurované distribuované skupiny portů.  |
     | Adaptér | Vyberte adaptér vSphere ze seznamu dostupných typů nakonfigurovaných pro virtuální počítač. Další informace najdete v článku znalostní báze VMware, který [vybírá síťový adaptér pro virtuální počítač](https://kb.vmware.com/s/article/1001805). |
     | Zapnout při spuštění | Určete, jestli se má při spuštění virtuálního počítače povolit hardware síťové karty. Výchozí hodnota je **Enable**. |
 
     V části disky klikněte na **Přidat disk** a nakonfigurujte následující nastavení.
 
-    | Položka | Description |
+    | Položka | Popis |
     | ------------ | ------------- |
-    | Name | Zadejte název pro identifikaci disku.  |
+    | Název | Zadejte název pro identifikaci disku.  |
     | Velikost | Vyberte jednu z dostupných velikostí.  |
     | Řadič SCSI | Vyberte řadič SCSI pro disk.  |
     | Mode | Určuje, jak se disk podílí na snímcích. Vyberte jednu z těchto možností: <br> -Nezávislá trvalá: všechna data zapsaná na disk se napíší trvale.<br> Nezávislé na netrvalé: změny zapsané na disk se zahodí při vypnutí nebo resetování virtuálního počítače.  Nezávislý režim bez trvalého režimu umožňuje vždy restartovat virtuální počítač ve stejném stavu. Další informace najdete v [dokumentaci k VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html).

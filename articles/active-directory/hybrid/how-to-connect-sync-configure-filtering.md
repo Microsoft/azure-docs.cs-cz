@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a68d7574d16485c378f6066a652471d52fa0c30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319975"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
@@ -299,9 +299,9 @@ Proveďte následující kroky:
 Po synchronizaci jsou všechny změny připravené k exportu. Než skutečně provedete změny ve službě Azure AD, budete chtít ověřit, že jsou všechny tyto změny správné.
 
 1. Spusťte příkazový řádek a pokračujte na `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
-2. Spusťte `csexport "Name of Connector" %temp%\export.xml /f:x`.  
+2. Spusťte příkaz `csexport "Name of Connector" %temp%\export.xml /f:x`.  
    Název konektoru je v synchronizační službě. Má název podobný řetězci "contoso.com – Azure AD" pro Azure AD.
-3. Spusťte `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`.
+3. Spusťte příkaz `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`.
 4. Nyní máte soubor v% Temp% s názvem export.csv, který lze prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
 5. Proveďte potřebné změny dat nebo konfigurace a znovu spusťte tyto kroky (import, synchronizace a ověření), dokud nebudou změny, které se chystáte exportovat, odpovídat na to, co očekáváte.
 

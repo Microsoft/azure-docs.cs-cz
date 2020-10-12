@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0fc1bc3158e04c9b1f677af7ef2375ac3ed2ce7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320043"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Oprava změněných výchozích pravidel v Azure AD Connect
@@ -180,7 +180,7 @@ V okně Náhled vyberte v levém podokně **vygenerovat náhled** a **Importovat
  
 Zde si všimněte, že nově přidané pravidlo je spuštěno na objektu a má nastaven `cloudFiltered` atribut na hodnotu true.
 
-![Náhled](media/how-to-connect-fix-default-rules/default15a.png)
+![Preview](media/how-to-connect-fix-default-rules/default15a.png)
  
 Chcete-li porovnat upravené pravidlo s výchozím pravidlem, exportujte obě pravidla samostatně jako textové soubory. Tato pravidla se exportují jako soubor skriptu PowerShellu. Můžete je porovnat pomocí jakéhokoli nástroje pro porovnání souborů (například Windiff), aby se změny zobrazily. 
  

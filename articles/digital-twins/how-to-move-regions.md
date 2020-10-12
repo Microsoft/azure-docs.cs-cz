@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
 ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328491"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Přesunutí instance digitálních vláken Azure do jiné oblasti Azure
@@ -88,7 +88,7 @@ Nyní byste měli mít ukázkovou aplikaci Průzkumníka ADT spuštěnou v prohl
 
 Chcete-li ověřit připojení, můžete stisknout tlačítko *Spustit dotaz* a spustit výchozí dotaz, který v grafu zobrazí všechny vazby a relace v grafu v poli *Průzkumník grafů* .
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Tlačítko spustit dotaz poblíž horního okraje okna je zvýrazněno." lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/how-to-move-regions/run-query.png":::
 
 Můžete nechat Průzkumníka aplikace ADT spuštěnou, protože ho později budete moct později v tomto článku znovu nahrát do nové instance v cílové oblasti.
 
@@ -100,7 +100,7 @@ Chcete-li některé z těchto souborů stáhnout najednou, zajistěte, aby se v 
  
 Pak v poli *zobrazení grafu* stiskněte ikonu *Export grafu* .
 
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="V poli zobrazení grafu je zvýrazněna ikona. Zobrazuje šipku ukazující mimo Cloud." lightbox="media/how-to-move-regions/export-graph.png":::
+:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/how-to-move-regions/export-graph.png":::
 
 Tím se povolí odkaz *ke stažení* v *zobrazení grafu*. Vyberte ji a Stáhněte si výsledek dotazu založený na formátu JSON, včetně vašich modelů, vláken a vztahů. To by mělo na váš počítač stáhnout soubor *. JSON* .
 
@@ -136,7 +136,7 @@ Jinak pokračujte tím, že se vrátíte do okna prohlížeče, ve kterém je sp
 
 V současné době je Průzkumník aplikace ADT připojený k původní instanci digitálních vláken Azure. Přepněte připojení tak, aby odkazovalo na novou instanci, tak, že kliknete na tlačítko *Přihlásit* v horní části okna. 
 
-:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Průzkumník ADT – zvýrazní ikonu přihlášení v horní části okna. Ikona zobrazuje jednoduché Silhouette osoby překrývající Silhouette klíče." lightbox="media/how-to-move-regions/sign-in.png":::
+:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/how-to-move-regions/sign-in.png":::
 
 Vzhledem k tomu, že používáte registraci aplikace znovu, stačí nahradit *adresu URL programu ADT*. Změňte tuto hodnotu na ta, která načte *https://{New instance hostname}*.
 
@@ -148,7 +148,7 @@ Dále nahrajte součásti řešení, které jste stáhli dříve, do nové insta
 
 Chcete-li nahrát vaše **modely, vlákna a graf**, stiskněte ikonu *Import grafu* v poli *zobrazení grafu* . Tato možnost nahraje všechny tři tyto součásti najednou (dokonce i modely, které se v grafu aktuálně nepoužívají).
 
-:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="V poli zobrazení grafu je zvýrazněna ikona. Zobrazuje šipku ukazující na Cloud." lightbox="media/how-to-move-regions/import-graph.png":::
+:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/how-to-move-regions/import-graph.png":::
 
 V poli pro výběr souboru přejděte do staženého grafu. Vyberte soubor Graph *. JSON* a stiskněte *tlačítko otevřít*.
 
@@ -158,7 +158,7 @@ Pokud chcete potvrdit nahrávání grafu, stiskněte ikonu *Uložit* v pravém h
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="Zvýraznění ikony uložit v podokně náhledu grafu" lightbox="media/how-to-move-regions/graph-preview-save.png":::
+        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/how-to-move-regions/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -168,7 +168,7 @@ Průzkumník aplikace ADT nyní nahraje vaše modely a graf (včetně zdvojenýc
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="Dialogové okno s oznámením o úspěchu importu grafu Čte import úspěšně. 2 importované modely. 4 naimportovány zdvojené. 2 importované relace. '" lightbox="media/how-to-move-regions/import-success.png":::
+        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/how-to-move-regions/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -178,11 +178,11 @@ Průzkumník aplikace ADT nyní nahraje vaše modely a graf (včetně zdvojenýc
 
 Pokud chcete ověřit, jestli se všechno úspěšně nahrálo, klikněte na tlačítko *Spustit dotaz* v poli *Průzkumník grafů* a spusťte výchozí dotaz, který zobrazí všechny vazby a relace v grafu. Tím se také obnoví seznam modelů v *zobrazení modelu*.
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Zvýrazňovat kolem stejného tlačítka Spustit dotaz z dřívější verze v horní části okna" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/how-to-move-regions/run-query.png":::
 
 Měl by se zobrazit graf se všemi jeho dvojitými vazbymi a relacemi zobrazenými v poli *Průzkumník grafů* . Měly by se také zobrazit vaše modely uvedené v poli *zobrazení modelu* .
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Zobrazení Průzkumníka aplikace ADT zobrazující 2 modely zvýrazněné v poli zobrazení modelu a graf zvýrazněný v poli Průzkumník grafů" lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/how-to-move-regions/post-upload.png":::
 
 Tím se potvrdí, že vaše modely, vlákna a grafy se znovu nahrály do nové instance v cílové oblasti.
 
@@ -234,4 +234,4 @@ Pokud chcete instanci odstranit pomocí Azure Portal, [Otevřete portál](https:
 
 Stiskněte tlačítko *Odstranit* a dokončete odstranění podle pokynů.
 
-:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Zobrazení podrobností instance digitálních vláken Azure v Azure Portal na kartě Přehled. Tlačítko Odstranit je zvýrazněné.":::
+:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce.":::

@@ -12,10 +12,10 @@ ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, devx-track-python
 ms.openlocfilehash: 5d7956b5538b272454f3f55bcda84188c946e978
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328424"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Nasazení modelů ML na pole – programovatelné pole brány (FPGA) s Azure Machine Learning 
@@ -31,7 +31,7 @@ FPGA můžete znovu nakonfigurovat pro různé typy modelů strojového učení.
 
 ![Diagram porovnání Azure Machine Learning FPGA](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|Procesor| Zkratka |Popis|
+|Procesor| Zkratka |Description|
 |---|:-------:|------|
 |Integrované okruhy specifické pro aplikaci|ASICs|Vlastní okruhy, například jednotky procesoru Google TensorFlow (TPU), poskytují nejvyšší efektivitu. Nedají se znovu nakonfigurovat, jak se vaše potřeby mění.|
 |Pole – programovatelné pole brány|FPGA|FPGA, jako jsou ty, které jsou k dispozici v Azure, poskytují výkon blízko ASICs. Jsou také flexibilní a znovu konfigurovatelné v čase, k implementaci nové logiky.|

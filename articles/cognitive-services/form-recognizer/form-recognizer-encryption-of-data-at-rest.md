@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: c959231826125349ecd6a62afe529248f7ac2eec
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326792"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>Rozpoznávání vydaných dat v klidovém formátu
@@ -29,5 +29,5 @@ Nástroj pro rozpoznávání formulářů Azure automaticky šifruje vaše data 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Formulář žádosti o klíč spravovaný zákazníkem formuláře](https://aka.ms/cogsvc-cmk)
+* [Formulář žádosti o klíč Customer-Managed pro rozpoznávání formulářů](https://aka.ms/cogsvc-cmk)
 * [Další informace o Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

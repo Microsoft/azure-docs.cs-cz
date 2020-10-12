@@ -4,10 +4,10 @@ description: V této části najdete popis vlastností a schématu poskytnutých
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: b3d961228429c1f84e45c1df9147fa1687ab5074
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324072"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault jako zdroj Event Grid
@@ -20,7 +20,7 @@ Tento článek poskytuje vlastnosti a schéma pro události v [Azure Key Vault](
 
 Účet Azure Key Vault generuje následující typy událostí:
 
-| Úplný název události | Zobrazovaný název události | Popis |
+| Úplný název události | Zobrazovaný název události | Description |
 | ---------- | ----------- |---|
 | Microsoft. klíčů trezor. CertificateNewVersionCreated | Nově vytvořená verze certifikátu | Aktivuje se při vytvoření nového certifikátu nebo verze nového certifikátu. |
 | Microsoft. klíčů trezor. CertificateNearExpiry | Brzo vyprší platnost certifikátu | Aktivuje se v případě vypršení platnosti aktuální verze certifikátu. (Událost se aktivuje 30 dní před datem vypršení platnosti.) |
@@ -64,7 +64,7 @@ Následující příklad ukazuje schéma pro **Microsoft. SecretNewVersionCreate
 
 Událost má následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | ---------- | ----------- |---|
 | id | řetězec | ID objektu, který aktivoval tuto událost |
 | vaultName | řetězec | Název trezoru klíčů u objektu, který aktivoval tuto událost |

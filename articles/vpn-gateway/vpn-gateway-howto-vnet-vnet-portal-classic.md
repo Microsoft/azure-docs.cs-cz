@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: cherylmc
 ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84985471"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurace připojení typu VNet-to-VNet (Classic)
@@ -75,7 +75,7 @@ Následující tabulka ukazuje příklad definování virtuální sítě. Rozsah
 
 | Virtual Network | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |
 |:--- |:--- |:--- |:--- |
-| Virtuální sítě testvnet1 |Virtuální sítě testvnet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA – východ |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
+| Virtuální sítě testvnet1 |Virtuální sítě testvnet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |East US |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | Virtuální sítě testvnet4 |Virtuální sítě testvnet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA – západ |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 ## <a name="step-2---create-the-virtual-networks"></a><a name="vnetvalues"></a>Krok 2 – Vytvoření virtuálních sítí
@@ -137,7 +137,7 @@ Místní lokalita pro každou virtuální síť je druhá virtuální síť. Ná
 
 | Virtual Network | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |
 |:--- |:--- |:--- |:--- |
-| Virtuální sítě testvnet1 |Virtuální sítě testvnet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA – východ |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
+| Virtuální sítě testvnet1 |Virtuální sítě testvnet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |East US |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | Virtuální sítě testvnet4 |Virtuální sítě testvnet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA – západ |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 1. Vyhledejte virtuální sítě testvnet1 v Azure Portal. V části **připojení VPN** na stránce klikněte na **Brána**.

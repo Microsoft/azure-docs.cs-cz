@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.openlocfilehash: d0a5c1b5800bbc626453ba8896dc706a0cd5bfd4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324939"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server a DPM – Nejčastější dotazy
@@ -23,11 +23,11 @@ Ano.
 
 ### <a name="can-i-register-the-server-to-multiple-vaults"></a>Můžu server zaregistrovat do více trezorů?
 
-No. Server DPM nebo Azure Backup lze zaregistrovat pouze do jednoho trezoru.
+Ne. Server DPM nebo Azure Backup lze zaregistrovat pouze do jednoho trezoru.
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Můžu použít DPM k zálohování aplikací v Azure Stack?
 
-No. Azure Backup můžete použít k ochraně Azure Stack, Azure Backup nepodporuje použití DPM k zálohování aplikací v Azure Stack.
+Ne. Azure Backup můžete použít k ochraně Azure Stack, Azure Backup nepodporuje použití DPM k zálohování aplikací v Azure Stack.
 
 ### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Je-li nainstalován agent Azure Backup pro ochranu souborů a složek, je možné nainstalovat aplikaci System Center DPM pro zálohování místních úloh do Azure?
 

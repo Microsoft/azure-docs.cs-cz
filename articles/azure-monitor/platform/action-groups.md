@@ -7,10 +7,10 @@ ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 7937b412b1eb3f311f0212f19c4eb9fc7782459d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327727"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
@@ -159,7 +159,7 @@ Akce Webhooku skupin akcí vám umožní využít výhod Azure Active Directory 
     > [!NOTE]
     > Abyste mohli tento skript spustit, musíte být členem [role Správce aplikací Azure AD](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) .
     
-    - Pokud chcete použít ID tenanta Azure AD, upravte volání Connect-AzureAD skriptu PowerShellu.
+    - Upravte volání Connect-AzureAD skriptu PowerShellu tak, aby používalo vaše ID tenanta Azure AD.
     - Upravte $myAzureADApplicationObjectId proměnné skriptu PowerShellu tak, aby používala ID objektu vaší aplikace služby Azure AD.
     - Spusťte upravený skript.
     

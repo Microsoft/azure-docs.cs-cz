@@ -10,10 +10,10 @@ ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: 21d0587b951d909f0091eccf9a7f86a484bc5051
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324038"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Vytvoření a otestování nového simulovaného zařízení
@@ -73,7 +73,7 @@ V následující tabulce je uveden počáteční stav zařízení:
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -465,7 +465,7 @@ Nastavení post:
 
 1. Klikněte na **soubor > importovat**. Pak klikněte na **zvolit soubory**.
 
-1. Přejděte do složky **Device-simulace-dotnet-Master/docs/post** . Vyberte **akcelerátor řešení simulace zařízení Azure IoT. postman_collection** a **akcelerátor řešení pro simulaci zařízení azure IoT. postman_environment** a klikněte na **otevřít**.
+1. Přejděte do složky **Device-simulace-dotnet-Master/docs/post** . Vyberte **řešení pro simulaci zařízení Azure iot Accelerator.postman_collection** a **řešení simulace zařízení Azure IoT Accelerator.postman_environment** a klikněte na **otevřít**.
 
 1. Rozšiřte **akcelerátor řešení pro simulaci zařízení Azure IoT** na požadavky, které můžete odeslat.
 

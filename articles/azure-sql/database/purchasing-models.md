@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
 ms.openlocfilehash: aef29eef7eb53c4cc4ffcc4926f9efe533374178
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319448"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Výběr mezi modely nákupu vCore a DTU – Azure SQL Database a SQL Managed instance
@@ -104,7 +104,7 @@ Prostředky používané úlohou nemají vliv na prostředky dostupné pro jiné
 
 ![Ohraničovací rámeček](./media/purchasing-models/bounding-box.png)
 
-DTU jsou nejužitečnější pro porozumění relativním prostředkům, které jsou přiděleny pro databáze s různými výpočetními velikostmi a úrovněmi služeb. Příklad:
+DTU jsou nejužitečnější pro porozumění relativním prostředkům, které jsou přiděleny pro databáze s různými výpočetními velikostmi a úrovněmi služeb. Například:
 
 - Zdvojnásobuje se DTU zvýšením velikosti databáze, která je rovna zdvojnásobení sady prostředků, které jsou k dispozici pro danou databázi.
 - P11 databáze úrovně Premium Service s 1750 DTU poskytuje 350 dob výpočetní výkon, než je základní databáze vrstvy služeb s 5 DTU.  
@@ -127,7 +127,7 @@ Do existujícího fondu můžete přidat další eDTU bez výpadku databáze a b
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Určení počtu DTU potřebných pro zatížení
 
-Pokud chcete migrovat existující úlohu místního nebo SQL Server virtuálního počítače na SQL Database, použijte [kalkulačku DTU](https://dtucalculator.azurewebsites.net/) k aproximaci počtu potřebných DTU. Pro existující úlohu SQL Database použijte [přehledy výkonu dotazů](query-performance-insight-use.md) , které vám pomůžou pochopit využití prostředků databáze (DTU) a získat hlubší přehledy pro optimalizaci vašich úloh. Zobrazení dynamické správy [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) (DMV) umožňuje zobrazit spotřebu prostředků za poslední hodinu. V zobrazení katalogu [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) se zobrazuje spotřeba prostředků za posledních 14 dní, ale s nižší věrností průměrných průměrných rychlostí 5 minut.
+Pokud chcete migrovat existující úlohu místního nebo SQL Server virtuálního počítače na SQL Database, použijte [kalkulačku DTU](https://dtucalculator.azurewebsites.net/) k aproximaci počtu potřebných DTU. Pro existující úlohu SQL Database použijte [přehledy výkonu dotazů](query-performance-insight-use.md) , které vám pomůžou pochopit využití prostředků databáze (DTU) a získat hlubší přehledy pro optimalizaci vašich úloh. Zobrazení dynamické správy [Sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) (DMV) umožňuje zobrazit spotřebu prostředků za poslední hodinu. V zobrazení katalogu [Sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) se zobrazuje spotřeba prostředků za posledních 14 dní, ale s nižší věrností průměrných průměrných rychlostí 5 minut.
 
 ### <a name="determine-dtu-utilization"></a>Určení využití DTU
 
@@ -135,7 +135,7 @@ K určení průměrného procenta využití DTU/eDTU vzhledem k limitu DTU/eDTU 
 
 `avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
 
-Vstupní hodnoty pro tento vzorec lze získat z [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [Sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)a [Sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) zobrazení dynamické správy. Jinými slovy, chcete-li určit procento využití DTU/eDTU do limitu DTU/eDTU databáze nebo elastického fondu, vyberte nejvyšší procento z následujících hodnot: `avg_cpu_percent` , `avg_data_io_percent` a v `avg_log_write_percent` daném časovém okamžiku.
+Vstupní hodnoty pro tento vzorec lze získat z [Sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [Sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)a [Sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) zobrazení dynamické správy. Jinými slovy, chcete-li určit procento využití DTU/eDTU do limitu DTU/eDTU databáze nebo elastického fondu, vyberte nejvyšší procento z následujících hodnot: `avg_cpu_percent` , `avg_data_io_percent` a v `avg_log_write_percent` daném časovém okamžiku.
 
 > [!NOTE]
 > Omezení DTU databáze je určeno PROCESORem, čtením, zápisy a pamětí, která je k dispozici pro databázi. Vzhledem k tomu, že modul SQL Database obvykle používá veškerou dostupnou paměť pro svou datovou mezipaměť ke zvýšení výkonu, `avg_memory_usage_percent` hodnota se obvykle blíží 100 procentům bez ohledu na aktuální zatížení databáze. Proto i když paměť nepřímo ovlivňuje limit DTU, nepoužívá se ve vzorci využití DTU.
@@ -162,7 +162,7 @@ Zákazníci s pracovními postupy, které jsou citlivé na změny hardwaru nebo 
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>Potřebuji aplikaci převést do režimu offline, aby se převedla z úrovně služby založené na DTU na úroveň služby založenou na vCore?
 
-No. Nemusíte přebírat aplikaci offline. Nové úrovně služeb nabízejí jednoduchou metodu online převodu, která je podobná stávajícímu procesu upgradu databází z úrovně Standard na úroveň služby Premium a dalším způsobem. Tento převod můžete spustit pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure CLI, T-SQL nebo REST API. Viz [Správa](single-database-scale.md) izolovaných databází a [Správa elastických fondů](elastic-pool-overview.md).
+Ne. Nemusíte přebírat aplikaci offline. Nové úrovně služeb nabízejí jednoduchou metodu online převodu, která je podobná stávajícímu procesu upgradu databází z úrovně Standard na úroveň služby Premium a dalším způsobem. Tento převod můžete spustit pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure CLI, T-SQL nebo REST API. Viz [Správa](single-database-scale.md) izolovaných databází a [Správa elastických fondů](elastic-pool-overview.md).
 
 ### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>Můžu převést databázi z vrstvy služeb v nákupním modelu založeném na vCore na úroveň služby v nákupním modelu založeném na DTU?
 

@@ -10,13 +10,13 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 3eb41b868aba7e7350f54594fa43f01eeeabebc4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936744"
 ---
-# <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>Nainstalovat klientské nástroje pro nasazení a správu datových služeb s povoleným ARC Azure
+# <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>Instalace klientských nástrojů pro nasazování a správu datových služeb s podporou služby Azure Arc
 
 > [!IMPORTANT]
 > Pokud aktualizujete na novou měsíční verzi, nezapomeňte taky aktualizovat na nejnovější verzi Azure Data Studio, nástroj Azure Data CLI (azdata) a Azure Data CLI a rozšíření Azure ARC pro Azure Data Studio.
@@ -47,7 +47,7 @@ Následující tabulka obsahuje seznam běžných nástrojů vyžadovaných k vy
 
 <sup>2</sup> je nutné použít `kubectl` verzi 1,13 nebo novější. Také verze nástroje `kubectl` by měla být plus nebo minus jedna dílčí verze clusteru Kubernetes. Pokud chcete nainstalovat určitou verzi na `kubectl` klienta, přečtěte si téma [instalace `kubectl` binárního souboru prostřednictvím formátu kudrlinkou](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-binary-using-curl) (ve windows 10, použití cmd.exe, ne Windows PowerShellu pro spuštění oblé).
 
-<sup>3</sup> Pokud používáte PowerShell, je kudrlinkou aliasem rutiny Invoke-WebRequest.
+<sup>3</sup> Pokud používáte PowerShell, je k rutině Invoke-WebRequest přiřazen alias.
 
 ## <a name="next-steps"></a>Další kroky
 

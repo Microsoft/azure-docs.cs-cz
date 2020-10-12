@@ -1,6 +1,6 @@
 ---
 title: Sériová konzola Azure pro Windows | Microsoft Docs
-description: Obousměrná sériová Konzola pro Azure Virtual Machines a Virtual Machine Scale Sets pomocí příkladu Windows.
+description: Bi-Directional sériové konzole pro Azure Virtual Machines a Virtual Machine Scale Sets pomocí příkladu Windows.
 services: virtual-machines-windows
 documentationcenter: ''
 author: asinn826
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: c5c139cb94358d70d1f23b68f2a369adb953da08
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325976"
 ---
 # <a name="azure-serial-console-for-windows"></a>Sériová konzola Azure pro Windows
@@ -163,7 +163,7 @@ Pokud je uživatel připojen ke konzole sériového portu a jiný uživatel úsp
 ## <a name="accessibility"></a>Usnadnění
 Přístupnost je klíčovým fokusem pro konzolu sériového rozhraní Azure. Za tímto účelem jsme zajistili přístup ke konzole sériového rozhraní pro lidi, kteří mají zhoršené zhoršení, nebo kteří mají těžkou sluchu, a také uživatele, kteří by nemohli používat myš.
 
-### <a name="keyboard-navigation"></a>Navigace přes klávesnici
+### <a name="keyboard-navigation"></a>Procházení pomocí klávesnice
 Pomocí klávesy **TAB** na klávesnici přejděte v rozhraní sériové konzoly z Azure Portal. Vaše poloha se zvýrazní na obrazovce. Pokud chcete opustit okno konzoly sériového portu, stiskněte na své klávesnici **kombinaci kláves CTRL** + **F6** .
 
 ### <a name="use-the-serial-console-with-a-screen-reader"></a>Použití konzoly sériového portu se čtečkou obrazovky

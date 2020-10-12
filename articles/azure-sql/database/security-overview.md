@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 09/21/2020
 ms.openlocfilehash: f0ebd511d0b706d1d2066ea87f45c89ae536da69
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321420"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database a SQL Managed instance
@@ -75,9 +75,9 @@ Osvědčeným postupem je v případě potřeby vytvořit vlastní role. Přidej
 
 ### <a name="row-level-security"></a>Zabezpečení na úrovni řádků
 
-Zabezpečení na úrovni řádků umožňuje zákazníkům řídit přístup k řádkům v databázové tabulce na základě charakteristik uživatele, který spouští dotaz (například členství ve skupině nebo kontext spuštění). Zabezpečení na úrovni řádků lze také použít k implementaci vlastních konceptů zabezpečení na základě popisků. Další informace najdete v tématu [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security).
+Row-Level Security umožňuje zákazníkům řídit přístup k řádkům v databázové tabulce na základě charakteristik uživatele, který spouští dotaz (například členství ve skupině nebo kontext spuštění). Row-Level zabezpečení lze také použít k implementaci vlastních konceptů zabezpečení na základě popisků. Další informace najdete v tématu [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security).
 
-![Diagram znázorňující, že zabezpečení na úrovni řádků chrání jednotlivé řádky databáze SQL pomocí přístupu uživatelů prostřednictvím klientské aplikace.](./media/security-overview/azure-database-rls.png)
+![Diagram znázorňující, že Row-Level zabezpečení chrání jednotlivé řádky databáze SQL prostřednictvím přístupu uživatelů prostřednictvím klientské aplikace.](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>Ochrana před hrozbami
 

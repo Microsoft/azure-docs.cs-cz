@@ -7,10 +7,10 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
 ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328849"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Připojení Azure k nástrojům ITSM pomocí zabezpečeného exportu
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak nakonfigurovat připojení mezi produktem nebo
 
 Zabezpečený export je aktualizovaná verze [konektoru IT Service Management Connector (ITSMC)](./itsmc-overview.md). Obě verze umožňují vytvářet pracovní položky v nástroji ITSM, když Azure Monitor odesílá výstrahy. Mezi tyto funkce patří upozornění na metriky, protokoly a protokoly aktivit.
 
-ITSMC používá přihlašovací údaje uživatelského jména a hesla. Zabezpečený export má silnější ověřování, protože používá Azure Active Directory (Azure AD). Azure AD je cloudová služba pro správu identit a přístupu od Microsoftu. Pomůže uživatelům přihlašovat se k interním nebo externím prostředkům a přistupovat k nim. Použití Azure AD s ITSM pomáhá identifikovat výstrahy Azure (prostřednictvím ID aplikace Azure AD), které se poslaly do externího systému.
+ITSMC používá přihlašovací údaje uživatelského jména a hesla. Zabezpečený export má silnější ověřování, protože používá Azure Active Directory (Azure AD). Azure AD je cloudová služba Microsoftu, která slouží ke správě identit a přístupu. Pomůže uživatelům přihlašovat se k interním nebo externím prostředkům a přistupovat k nim. Použití Azure AD s ITSM pomáhá identifikovat výstrahy Azure (prostřednictvím ID aplikace Azure AD), které se poslaly do externího systému.
 
 > [!NOTE]
 > Možnost připojit Azure k nástrojům ITSM pomocí zabezpečeného exportu je ve verzi Preview.

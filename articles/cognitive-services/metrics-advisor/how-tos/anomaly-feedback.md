@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: aahi
 ms.openlocfilehash: 50d422edf1a4b45132d0b86eac9d4947cef5e5bf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935430"
 ---
 # <a name="adjust-anomaly-detection-using-feedback"></a>Úprava detekce anomálií pomocí zpětné vazby
@@ -37,19 +37,19 @@ V případě aktivace režimu anotace zpětné vazby klikněte na určitý bod a
 
 Zvažte možnost ponechat si komentář v textovém poli **Komentář** ve stejnou dobu a kliknutím na **Uložit** uložte svou zpětnou vazbu.
 
-:::image type="content" source="../media/feedback/feedback-menu.png" alt-text="Nabídka zpětné vazby":::
+:::image type="content" source="../media/feedback/feedback-menu.png" alt-text="Režim anotace zpětné vazby":::
 
 ## <a name="give-feedback-for-multiple-continuous-points"></a>Sdělte nám svůj názor na několik souvislých bodů
 
 Zpětnou vazbu na několik souvislých bodů můžete najednou vytvořit kliknutím na dolů a přetažením myši na body, které chcete opatřit poznámkami. Zobrazí se stejná nabídka zpětná vazba, jak je uvedeno výše. Po kliknutí na **Uložit**bude stejná zpětná vazba platit pro všechny vybrané body.
 
-:::image type="content" source="../media/feedback/continuous-points.png" alt-text="Zvolit více bodů":::
+:::image type="content" source="../media/feedback/continuous-points.png" alt-text="Režim anotace zpětné vazby":::
 
 ## <a name="how-to-view-my-feedback"></a>Jak zobrazit moji zpětnou vazbu
 
 Chcete-li zjistit, zda došlo ke změně detekce anomálií bodu, umístěte ukazatel myši na bod. Popisek se zobrazí na základě **zpětné vazby: true** , pokud se zjistilo, že došlo ke změně detekce. Pokud se zobrazí **hodnota false**, byl proveden výpočet zpětné vazby v okamžiku, ale výsledek detekce anomálií se nezměnil.
 
-:::image type="content" source="../media/feedback/affected-point.png" alt-text="Bod ovlivněný zpětnou vazbou":::
+:::image type="content" source="../media/feedback/affected-point.png" alt-text="Režim anotace zpětné vazby":::
 
 ## <a name="when-should-i-annotate-an-anomaly-as-normal"></a>Kdy bych měl opatřit anomálii jako "normální"
 

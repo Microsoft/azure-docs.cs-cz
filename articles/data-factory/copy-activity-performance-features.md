@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/24/2020
 ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324327"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Funkce optimalizace výkonu aktivity kopírování
@@ -150,10 +150,10 @@ Nakonfigurujte nastavení **enableStaging** v aktivitě kopírování, abyste ur
 
 | Vlastnost | Popis | Výchozí hodnota | Vyžadováno |
 | --- | --- | --- | --- |
-| enableStaging |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |Ne |No |
+| enableStaging |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |Nepravda |No |
 | linkedServiceName |Zadejte název [úložiště objektů BLOB v Azure](connector-azure-blob-storage.md#linked-service-properties) nebo propojené služby [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) , který odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. |Není k dispozici |Ano, pokud je **enableStaging** nastavené na true |
 | program |Zadejte cestu, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner, do kterého budou ukládat dočasná data. |Není k dispozici |No |
-| Hodnotou EnableCompression |Určuje, zda mají být data před kopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |Ne |No |
+| Hodnotou EnableCompression |Určuje, zda mají být data před kopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |Nepravda |No |
 
 >[!NOTE]
 > Pokud použijete připravené kopírování s povolenou kompresí, instanční objekt nebo ověřování MSI pro propojenou službu pracovního objektu BLOB se nepodporuje.

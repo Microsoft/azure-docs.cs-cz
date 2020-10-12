@@ -8,10 +8,10 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: bb5ff0bf7347b87fdc3a103a03f9ff58279a367d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320761"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Nastavení instance a ověřování digitálních vláken Azure (CLI)
@@ -78,7 +78,7 @@ Výsledkem tohoto příkazu jsou informace o vytvořeném přiřazení role.
 >
 > Pomocí [stránky Azure Portal Azure Active Directory uživatelé](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) vyberte uživatelský účet a otevřete jeho podrobnosti. Zkopírujte *objectID*uživatele:
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="Zobrazení stránky uživatele v Azure Portal zvýrazňování identifikátoru GUID v poli ID objektu" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="okno Příkaz s úspěšným vytvořením skupiny prostředků a instance digitálních vláken Azure" lightbox="media/includes/user-id.png":::
 >
 > Pak opakujte příkaz seznamu přiřazení role pomocí *ID objektu* uživatele pro `assignee` parametr uvedený výše.
 
@@ -115,7 +115,7 @@ Uložte tento soubor jako _**manifest.jsna**_.
 
 Potom tento soubor nahrajete do Cloud Shell. V okně Cloud Shell klikněte na ikonu nahrát/stáhnout soubory a vyberte Odeslat.
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell okno zobrazující výběr možnosti nahrání":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="okno Příkaz s úspěšným vytvořením skupiny prostředků a instance digitálních vláken Azure":::
 Přejděte na *manifest.js* právě vytvořeného a stiskněte tlačítko "otevřít".
 
 Potom spuštěním následujícího příkazu vytvořte registraci aplikace s adresou URL odpovědi *veřejného klienta/nativního (mobilní & Desktop)* `http://localhost` . Zástupné symboly nahraďte podle potřeby:
@@ -126,7 +126,7 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 Tady je ukázka výstupu z tohoto příkazu, ve kterém se zobrazují informace o registraci, kterou jste vytvořili:
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="Cloud Shell výstup nové registrace aplikace Azure AD":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="okno Příkaz s úspěšným vytvořením skupiny prostředků a instance digitálních vláken Azure":::
 
 ### <a name="verify-success"></a>Ověřit úspěch
 
@@ -140,7 +140,7 @@ Dále ověřte, že nastavení z nahraných *manifest.jsbyla v* registraci sprá
 
 V dalším kroku na řádku nabídek vyberte *Přehled* a zobrazte podrobnosti o registraci aplikace:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Zobrazení důležitých hodnot pro registraci aplikace na portálu":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="okno Příkaz s úspěšným vytvořením skupiny prostředků a instance digitálních vláken Azure":::
 
 Poznamenejte si *ID aplikace (klienta)* a *ID adresáře (tenanta)* **zobrazené na stránce** . Tyto hodnoty budete potřebovat později při [ověřování klientské aplikace proti rozhraním API pro digitální vlákna Azure](how-to-authenticate-client.md). Pokud nejste osoba, která bude psát kód pro takové aplikace, budete muset tyto hodnoty sdílet s osobou, která bude.
 

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 30c2da4ac750375c66b92cdca552e1a51a8dbc40
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936606"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Omezení Azure Database for PostgreSQL – flexibilní Server
@@ -29,17 +29,17 @@ Níže jsou uvedené maximální počty připojení na cenové úrovni a virtuá
 | **S shluky**        |        |             |                 |                      |
 | B1ms                 | 1      | 2 GiB       | 50              | 47                   |
 | B2s                  | 2      | 4 GiB       | 100             | 97                   |
-| **Pro obecné účely**  |        |             |                 |                      |
+| **Obecné použití**  |        |             |                 |                      |
 | D2s_v3               | 2      | 8 GiB       | 214             | 211                  |
 | D4s_v3               | 4      | 16 GiB      | 429             | 426                  |
-| D8s_v3               | 8      | 32 GB      | 859             | 856                  |
+| D8s_v3               | 8      | 32 GiB      | 859             | 856                  |
 | D16s_v3              | 16     | 64 GiB      | 1718            | 1715                 |
 | D32s_v3              | 32     | 128 GiB     | 3437            | 3434                 |
 | D48s_v3              | 48     | 192 GiB     | 5000            | 4997                 |
 | D64s_v3              | 64     | 256 GB     | 5000            | 4997                 |
 | **Paměťově optimalizovaná** |        |             |                 |                      |
 | E2s_v3               | 2      | 16 GiB      | 1718            | 1715                 |
-| E4s_v3               | 4      | 32 GB      | 3437            | 3434                 |
+| E4s_v3               | 4      | 32 GiB      | 3437            | 3434                 |
 | E8s_v3               | 8      | 64 GiB      | 5000            | 4997                 |
 | E16s_v3              | 16     | 128 GiB     | 5000            | 4997                 |
 | E32s_v3              | 32     | 256 GB     | 5000            | 4997                 |
@@ -75,7 +75,7 @@ Připojení PostgreSQL, dokonce nečinné, může zabírat přibližně 10 MB pa
 
 ### <a name="high-availability"></a>Vysoká dostupnost
 
-- Zóna – redundantní HA není v současné době pro servery s vysokou dostupností podporována.
+- Zone-Redundant HA se v tuto chvíli u serverů s vysokou dostupností nepodporuje.
 - IP adresa databázového serveru se změní, když dojde k převzetí služeb při selhání serveru do úsporného režimu HA. Ujistěte se, že místo IP adresy serveru použijete záznam DNS.
 
 ### <a name="availability-zones"></a>Zóny dostupnosti

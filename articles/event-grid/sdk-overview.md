@@ -4,10 +4,10 @@ description: Popisuje sady SDK pro Azure Event Grid. Tyto sady SDK poskytují sp
 ms.topic: reference
 ms.date: 07/07/2019
 ms.openlocfilehash: 5e93448ef703be88583cd59ae5eee9d1993c4054
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322525"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>Event Grid sady SDK pro správu a publikování

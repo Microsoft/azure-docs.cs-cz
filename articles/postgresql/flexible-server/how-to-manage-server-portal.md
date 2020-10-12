@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 13d78110f50d6ce72b8525914ed0e91dfcadd2cc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935676"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Správa Azure Database for PostgreSQL flexibilního serveru pomocí Azure Portal
@@ -23,7 +23,7 @@ V tomto článku se dozvíte, jak spravovat Azure Database for PostgreSQL flexib
 
 ## <a name="sign-in"></a>Přihlásit se
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com). V Azure Portal přejít na prostředek flexibilního serveru.
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com). V Azure Portal přejít na prostředek flexibilního serveru.
 
 ## <a name="scale-compute-and-storage"></a>Škálování výpočetních prostředků a úložiště
 
@@ -52,7 +52,7 @@ Můžete změnit heslo role správce pomocí Azure Portal.
 2. Zadejte nové heslo a potvrďte ho. Textové pole vás vyzve k zadání požadavků na složitost hesla.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="resetování hesla pro flexibilní Server":::
+> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="škálování úložiště flexibilního serveru":::
 
 3. Kliknutím na **Uložit** uložte nové heslo.
 
@@ -63,7 +63,7 @@ Server můžete odstranit, pokud ho už nepotřebujete.
 1. V Azure Portal vyberte svůj server. V okně **Přehled** vyberte **Odstranit**.
 2. Zadáním názvu serveru do vstupního pole potvrďte, že chcete odstranit server.
 
-   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="odstranění flexibilního serveru":::
+   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="škálování úložiště flexibilního serveru":::
 
    > [!IMPORTANT]
    > Odstranění serveru je nevratné.

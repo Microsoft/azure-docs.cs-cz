@@ -11,15 +11,15 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4e8813647211e0adbfe43a45ae0d19dc12a4a165
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936099"
 ---
-# <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>Nastavení databázového modulu pro PostgreSQL s povoleným rozšířením Azure ARC
+# <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>Nastavení databázového stroje PostgreSQL Hyperscale s podporou služby Azure Arc
 
-Tento dokument popisuje kroky pro nastavení databázového stroje PostgreSQL skupiny na vlastní (jiné než výchozí) hodnoty. Podrobnosti o tom, jaké parametry databázového stroje lze nastavit a jaké jsou jejich výchozí hodnoty, najdete [v dokumentaci k](https://www.postgresql.org/docs/current/runtime-config.html)PostgreSQL.
+Tento dokument popisuje postup nastavení databázového stroje skupiny serverů PostgreSQL Hyperscale na vlastní (jiné než výchozí) hodnoty. Podrobnosti o tom, jaké parametry databázového stroje lze nastavit a jaké jsou jejich výchozí hodnoty, najdete [v dokumentaci k](https://www.postgresql.org/docs/current/runtime-config.html)PostgreSQL.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -53,7 +53,7 @@ azdata arc postgres server edit -n <server group name>, [{--engine-settings, -e}
 azdata arc postgres server show -n <server group name>
 ```
 
-Příklad:
+Například:
 
 ```console
 azdata arc postgres server show -n postgres01
@@ -86,7 +86,7 @@ Spusťte tento příkaz:
 azdata arc postgres server show -n <server group name>
 ```
 
-Příklad:
+Například:
 
 ```console
 azdata arc postgres server show -n postgres01
@@ -115,13 +115,13 @@ Obecný formát příkazu je:
 kubectl describe <kind of the custom resource> <server group name> -n <namespace name>
 ```
 
-Příklad:
+Například:
 
 ```console
 kubectl describe postgresql-12 postgres01
 ```
 
-Pokud jsou pro nastavení modulu nastaveny vlastní hodnoty, vrátí se. Příklad:
+Pokud jsou pro nastavení modulu nastaveny vlastní hodnoty, vrátí se. Například:
 
 ```console
 Engine:
@@ -150,7 +150,7 @@ Níže uvedené příkazy nastaví parametry uzlu koordinátora a pracovní uzly
 azdata arc server edit -n <server group name> -e <parameter name>=<parameter value>
 ```
 
-Příklad:
+Například:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e shared_buffers=8MB
@@ -162,7 +162,7 @@ azdata arc postgres server edit -n postgres01 -e shared_buffers=8MB
 azdata arc postgres server edit -n <server group name> -e '<parameter name>=<parameter value>, <parameter name>=<parameter value>,...'
 ```
 
-Příklad:
+Například:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connections=50'
@@ -172,7 +172,7 @@ azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connec
 
 Chcete-li obnovit výchozí hodnotu parametru, nastavte jej bez označení hodnoty. 
 
-Příklad:
+Například:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e shared_buffers=
@@ -184,7 +184,7 @@ azdata arc postgres server edit -n postgres01 -e shared_buffers=
 azdata arc postgres server edit -n <server group name> -e '' -re
 ```
 
-Příklad:
+Například:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e '' -re
@@ -198,7 +198,7 @@ azdata arc postgres server edit -n postgres01 -e '' -re
 azdata arc postgres server edit -n <server group name> -e '<parameter name>="<parameter value>"'
 ```
 
-Příklad:
+Například:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e 'custom_variable_classes = "plpgsql,plperl"'
@@ -208,7 +208,7 @@ azdata arc postgres server edit -n postgres01 -e 'custom_variable_classes = "plp
 
 Proměnná prostředí by měla být zabalená v rámci "" "", aby se nevyřešila před nastavením.
 
-Příklad: 
+Například: 
 
 ```console
 azdata arc postgres server edit -n postgres01 -e 'search_path = "$user"'

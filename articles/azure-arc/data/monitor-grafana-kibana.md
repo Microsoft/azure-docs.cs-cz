@@ -10,15 +10,15 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: d876862d8f41ab8df646bef051629fd45c4d4601
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936327"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>Zobrazení protokolů a metrik pomocí Kibana a Grafana
 
-K dispozici jsou webové řídicí panely Kibana a Grafana, které poskytují přehled a srozumitelnost Kubernetes obory názvů, které používají datové služby s podporou ARC Azure.
+Webové řídicí panely Kibana a Grafana umožňují získat jasný přehled o oborech názvů Kubernetes používaných datovými službami s podporou služby Azure Arc.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -64,7 +64,7 @@ Tady je příklad toho, jak to udělat pro virtuální počítač Azure. Pokud j
 
 Následující postup ukazuje, jak vytvořit pravidlo NSG pro koncové body Kibana a Grafana:
 
-### <a name="find-the-name-of-the-nsg"></a>Najít název NSG
+### <a name="find-the-name-of-the-nsg"></a>Zjištění názvu skupiny zabezpečení sítě
 
 ```console
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
@@ -95,7 +95,7 @@ https://<external-ip-from-above>:30777/grafana
 https://<external-ip-from-above>:30777/kibana
 ```
 
-Příslušné řídicí panely:
+Důležité jsou tyto řídicí panely:
 
 * "Metriky spravované instance Azure SQL"
 * "Metriky hostitelských uzlů"
@@ -110,7 +110,7 @@ https://<external-ip-from-above>:30777/grafana
 https://<external-ip-from-above>:30777/kibana
 ```
 
-Příslušné řídicí panely:
+Důležité jsou tyto řídicí panely:
 
 * "Postgres metriky"
 * "Postgres metriky tabulky"
