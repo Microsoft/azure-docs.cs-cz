@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0c1d83c2dac0163cd9b9cbc07969103381e85471
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855381"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Nasazení IoT Edgech modulů ve velkém měřítku pomocí Azure Portal
@@ -115,7 +115,7 @@ Chcete-li přidat modul z Azure Stream Analytics, postupujte podle následujíc�
 
 Po přidání modulu do nasazení můžete vybrat jeho název a otevřít tak stránku **aktualizovat IoT Edge modul** . Na této stránce můžete upravit nastavení modulu, proměnné prostředí, možnosti vytváření a vlákna v modulu. Pokud jste přidali modul z webu Marketplace, může již mít některé z těchto parametrů vyplněno.
 
-Pokud vytváříte vrstvené nasazení, můžete nakonfigurovat modul, který existuje v jiných nasazeních, která cílí na stejná zařízení. Pokud chcete modul bez přepsání jiných verzí aktualizovat, otevřete kartu nastavení s **dvojitou** přesností. Vytvořte novou **vlastnost s dvojitou** přesností modulu s jedinečným názvem pro dílčí oddíl v rámci požadovaných vlastností nevlákenního modulu, například `properties.desired.settings` . Pokud definujete vlastnosti v rámci pouze `properties.desired` pole, přepíše se požadované vlastnosti pro modul definovaný v libovolném nasazení s nižší prioritou.
+Pokud vytváříte vrstvené nasazení, můžete nakonfigurovat modul, který existuje v jiných nasazeních, která cílí na stejná zařízení. Chcete-li aktualizovat modul s dvojím zápisem bez přepsání jiných verzí, otevřete kartu **nastavení s dvojitými možnostmi modulu** . Vytvoří novou **vlastnost s dvojitou** přesností modulu s jedinečným názvem pro dílčí oddíl v rámci požadovaných vlastností, například v modulu `properties.desired.settings` . Pokud definujete vlastnosti v rámci pouze `properties.desired` pole, přepíše se požadované vlastnosti pro modul definovaný v libovolném nasazení s nižší prioritou.
 
 ![Nastavit vlastnost s dvojitým modulem pro vrstvené nasazení](./media/how-to-deploy-monitor/module-twin-property.png)
 
@@ -139,7 +139,7 @@ Metriky poskytují souhrnné počty různých stavů, které může zařízení 
 
 1. Zadejte dotaz na **kritéria metriky**. Dotaz vychází z IoT Edge [nahlášených vlastností](module-edgeagent-edgehub.md#edgehub-reported-properties)modulu centra rozbočovače. Metrika představuje počet řádků vrácených dotazem.
 
-   Příklad:
+   Například:
 
    ```sql
    SELECT deviceId FROM devices
@@ -183,7 +183,7 @@ Když upravíte nasazení, změny se okamžitě replikují na všechna cílová 
 
 1. Ve službě IoT Hub vyberte v nabídce vlevo podokno **IoT Edge** .
 1. Vyberte kartu **nasazení IoT Edge** a pak vyberte nasazení, které chcete nakonfigurovat.
-1. Vyberte kartu **Podmínka cíle** . Chcete-li cílit na zamýšlená zařízení, změňte **cílovou podmínku** . Můžete také nastavit **prioritu**.  Vyberte **Uložit**.
+1. Vyberte kartu **Podmínka cíle** . Změňte **cílovou podmínku** pro cílení na zamýšlená zařízení. Můžete také nastavit **prioritu**.  Vyberte **Uložit**.
 
     Pokud aktualizujete cílovou podmínku, dojde k následujícím aktualizacím:
 

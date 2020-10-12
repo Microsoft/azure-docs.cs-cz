@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 76e2b9542d20b5788a2875dec89d447ce38276a0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88122019"
 ---
 # <a name="how-to-roll-x509-device-certificates-in-iot-central-application"></a>Postup při navrácení certifikátů zařízení X. 509 v aplikaci IoT Central
@@ -30,7 +30,7 @@ Pomocí nástroje, jako je OpenSSL, můžete vytvořit vlastní certifikáty X. 
 
 Pokud chcete aktualizovat registraci skupiny v reakci na porušení zabezpečení, měli byste použít následující postup, který okamžitě aktualizuje aktuální certifikát:
 
-1. V levém podokně přejděte do části **Správa** a klikněte na **připojení zařízení**.
+1. V levém podokně přejděte do části **Správa**  a klikněte na **připojení zařízení**.
 
 2. Klikněte na **skupiny**registrací a v seznamu klikněte na název skupiny.
 
@@ -52,7 +52,7 @@ Pokud chcete aktualizovat registraci skupiny v reakci na porušení zabezpečen�
 
 Pokud vytváříte certifikáty pro zpracování vypršení platnosti certifikátů, použijte následující postup, který okamžitě aktualizuje aktuální certifikát:
 
-1. V levém podokně přejděte do části **Správa** a klikněte na **připojení zařízení**. 
+1. V levém podokně přejděte do části **Správa**  a klikněte na **připojení zařízení**. 
 
 2. Klikněte na **skupiny**registrací a v seznamu klikněte na název skupiny.
 

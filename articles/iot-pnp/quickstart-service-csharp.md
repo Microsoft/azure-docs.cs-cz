@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b35268cd8d36901f750225713407c5392e5c429e
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ec38e0849b7f4c1a0ca98d75d4c6c82908c1e16e
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759165"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945372"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play, které je připojené k vašemu řešení (C#)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91759165"
 
 IoT technologie Plug and Play zjednodušuje IoT tím, že vám umožní pracovat s funkcemi zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí jazyka C# připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -34,7 +34,7 @@ K dokončení tohoto rychlého startu ve Windows potřebujete na svém vývojov�
 
 Pokud jste dokončili [rychlý Start: Připojte ukázkovou aplikaci IoT technologie Plug and Play zařízení běžící v systému Windows k IoT Hub (C#)](quickstart-connect-device-csharp.md), již jste naklonoval úložiště.
 
-Naklonujte ukázky ze sady Microsoft Azure IoT SDK pro úložiště GitHub .NET. Otevřete příkazový řádek ve složce podle vašeho výběru. Spuštěním následujícího příkazu naklonujte [Microsoft Azure ukázky IoT pro](https://github.com/Azure-Samples/azure-iot-samples-csharp) úložiště GitHubu .NET:
+Naklonujte ukázky ze vzorků Azure IoT pro úložiště GitHub v jazyce C#. Otevřete příkazový řádek ve složce podle vašeho výběru. Spuštěním následujícího příkazu naklonujte [Microsoft Azure ukázky IoT pro](https://github.com/Azure-Samples/azure-iot-samples-csharp) úložiště GitHubu .NET:
 
 ```cmd
 git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
@@ -55,7 +55,6 @@ V tomto rychlém startu použijete ukázkové termostatické zařízení, které
     | IOTHUB_DEVICE_DPS_ID_SCOPE | Hodnota, na kterou jste si poznamenali, když jste [nastavili prostředí](set-up-environment.md) |
     | IOTHUB_DEVICE_DPS_DEVICE_ID | Moje zařízení – PnP-Device |
     | IOTHUB_DEVICE_DPS_DEVICE_KEY | Hodnota, na kterou jste si poznamenali, když jste [nastavili prostředí](set-up-environment.md) |
-
 
 1. Nyní můžete vytvořit ukázku v aplikaci Visual Studio a spustit ji v režimu ladění.
 
@@ -81,9 +80,9 @@ V tomto rychlém startu použijete ukázkové řešení IoT v jazyce C# k intera
 
 1. Nyní můžete vytvořit ukázku v aplikaci Visual Studio a spustit ji v režimu ladění.
 
-### <a name="get-digital-twin"></a>Získání digitálního vlákna
+### <a name="get-device-twin"></a>Získat dvojitou dvojici zařízení
 
-Následující fragment kódu ukazuje, jak aplikace služby načítá digitální vlákna:
+Následující fragment kódu ukazuje, jak aplikace služby načte zdvojené zařízení:
 
 ```C#
 // Get a Twin and retrieves model Id set by Device client
@@ -92,7 +91,7 @@ s_logger.LogDebug($"Model Id of this Twin is: {twin.ModelId}");
 ```
 
 > [!NOTE]
-> Tato ukázka používá obor názvů **Microsoft. Azure. Devices. Client;** z **klienta služby IoT Hub**. Další informace o tom, jak načíst ID modelu, najdete v [příručce pro vývojáře](concepts-developer-guide-service.md).
+> Tato ukázka používá obor názvů **Microsoft. Azure. Devices. Client** z **klienta služby IoT Hub**. Další informace o rozhraních API, včetně rozhraní Digital props API, najdete v [příručce pro vývojáře služby](concepts-developer-guide-service.md).
 
 Tento kód generuje následující výstup:
 
@@ -101,7 +100,7 @@ Tento kód generuje následující výstup:
       Model Id of this Twin is: dtmi:com:example:Thermostat;1
 ```
 
-Následující fragment kódu ukazuje, jak použít *opravu* k aktualizaci vlastností prostřednictvím digitálního vlákna:
+Následující fragment kódu ukazuje, jak použít *opravu* k aktualizaci vlastností prostřednictvím vlákna zařízení:
 
 ```C#
 // Update the twin

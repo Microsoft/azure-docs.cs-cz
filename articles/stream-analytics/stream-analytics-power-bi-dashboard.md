@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 8/6/2020
 ms.openlocfilehash: 4c6d1d3877629150493ee2a57a04573760d2772a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88870013"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics a Power BI: řídicí panel analýzy v reálném čase pro streamovaná data
@@ -23,7 +23,7 @@ Tento článek pokračuje v kurzu Stream Analytics [rozpoznávání podvodů v r
 Můžete se podívat [na video](https://www.youtube.com/watch?v=SGUpT-a99MA)  , které znázorňuje tento scénář.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že jste provedli následující akce:
 
@@ -46,7 +46,7 @@ V kurzu zjišťování podvodů v reálném čase se výstup pošle do úložiš
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
    |---------|---------|
-   |Alias pro výstup  |  CallStream – PowerBI  |
+   |Alias pro výstup  |  CallStream-PowerBI  |
    |Název datové sady  |   SA – datová sada  |
    |Název tabulky |  podvodné – volání  |
 
@@ -59,7 +59,7 @@ V kurzu zjišťování podvodů v reálném čase se výstup pošle do úložiš
 
 4. Když vyberete **Autorizovat**, otevře se místní okno s výzvou k zadání přihlašovacích údajů kvůli ověření vašeho účtu Power BI. Po úspěšné autorizaci uložte nastavení výběrem možnosti **Uložit**.
 
-8. Klikněte na možnost **Vytvořit**.
+8. Klikněte na **Vytvořit**.
 
 Datová sada je vytvořena s následujícími nastaveními:
 
@@ -194,7 +194,7 @@ Pomocí následující rovnice můžete vypočítat hodnotu a poskytnout tak okn
 
 ![Rovnice k výpočtu hodnoty za účelem poskytnutí okna v sekundách](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
-Příklad:
+Například:
 
 * Máte 1 000 zařízení odesílajících data v sekundách za sekundu.
 * Používáte Power BI Pro SKU, který podporuje 1 000 000 řádků za hodinu.

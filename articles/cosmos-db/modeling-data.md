@@ -8,10 +8,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: a34544eb29f0a1417d10955bba755fb4f9965320
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88136035"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Modelování dat v Azure Cosmos DB
@@ -299,7 +299,7 @@ Ve výše uvedeném příkladu jsme zrušili nevázanou kolekci v dokumentu vyda
 V relačních databázích *mnoho: mnoho* relací je často modelů s spojovacími tabulkami, které slouží pouze k propojení záznamů z jiných tabulek.
 
 
-:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Spojování tabulek" border="false":::
+:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Model relační databáze" border="false":::
 
 Můžete se rozhodnout, že budete replikovat stejnou věc s použitím dokumentů a vytvořit datový model, který vypadá podobně jako následující.
 
@@ -442,4 +442,4 @@ Další informace o Azure Cosmos DB najdete na stránce [dokumentace](https://az
 
 Další informace o tom, jak horizontálních oddílů data napříč více oddíly, najdete [v tématu dělení dat v Azure Cosmos DB](sql-api-partition-data.md).
 
-Pokud chcete zjistit, jak modelovat data a rozdělit je na Azure Cosmos DB pomocí reálného příkladu, přečtěte si téma [modelování a vytváření oddílů dat – příklad reálného světa](how-to-model-partition-example.md).
+Pokud se chcete dozvědět, jak modelovat data a rozdělit je na Azure Cosmos DB s využitím reálného příkladu, přečtěte si téma [ modelování a dělení dat – příklad Real-World](how-to-model-partition-example.md).

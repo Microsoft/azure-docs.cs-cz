@@ -8,17 +8,17 @@ ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 63c420a7ae082cbf38b529e71d8324550a84b7bd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89319164"
 ---
 # <a name="azure-cli-samples-for-linux-virtual-machines"></a>Ukázky Azure CLI pro virtuální počítače s Linuxem
 
 Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure CLI.
 
-| Skript | Popis |
+| Skript | Description |
 |---|---|
 |**Vytvoření virtuálních počítačů**||
 | [Vytvoření virtuálního počítače](./../scripts/virtual-machines-linux-cli-sample-create-vm-quick-create.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Vytvoří virtuální počítač se systémem Linux s minimální konfigurací. |

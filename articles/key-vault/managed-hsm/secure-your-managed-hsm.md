@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 18ffa0f878effda8888200c13ab312851aaebdcd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91000718"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>Zabezpečený přístup ke spravovaným HSM
@@ -22,7 +22,7 @@ Azure Key Vault spravovaný modul HSM je cloudová služba, která chrání šif
 
 V tomto kurzu se seznámíte s jednoduchým příkladem, který vám ukáže, jak dosáhnout oddělení povinností a řízení přístupu pomocí Azure RBAC a místního spravovaného HSM RBAC. Další informace o spravovaném modelu řízení přístupu HSM najdete v tématu [spravované řízení přístupu HSM](access-control.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku musíte mít následující položky:
 
@@ -132,7 +132,7 @@ V tomto kurzu se zobrazí pouze akce týkající se řízení přístupu pro vě
 
 Náš příklad popisuje jednoduchý scénář. Scénáře reálného života můžou být složitější. V závislosti na vašich potřebách můžete upravit oprávnění k vašemu trezoru klíčů. Předpokládali jsme, že tým zabezpečení poskytuje klíče a tajné odkazy (identifikátory URI a kryptografické otisky), které jsou používány DevOps zaměstnanci ve svých aplikacích. Vývojáři a operátoři nevyžadují přístup k rovině dat. Zaměřili jsme se na to, jak váš Trezor klíčů zabezpečit. Při zabezpečování [virtuálních počítačů](https://azure.microsoft.com/services/virtual-machines/security/), [účtů úložiště](../../storage/blobs/security-recommendations.md)a dalších prostředků Azure dejte k podobným pozornost.
 
-## <a name="resources"></a>Zdroje informací
+## <a name="resources"></a>Zdroje a prostředky
 
 - [Dokumentace ke službě Azure RBAC](../../role-based-access-control/overview.md)
 - [Azure RBAC: předdefinované role](../../role-based-access-control/built-in-roles.md)

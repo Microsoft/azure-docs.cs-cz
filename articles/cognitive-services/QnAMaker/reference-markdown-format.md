@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 03/19/2020
 ms.openlocfilehash: f5f640f8895cd6defe31a68b790ce841c4679a6f
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777369"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>Formát Markdownu podporovaný v textu odpovědi QnA Maker
@@ -51,8 +51,8 @@ Pokud chcete přidat obsah pomocí direktivy Update nebo nahradit rozhraní API 
 
 | Zachovat HTML  | Reprezentace v žádosti rozhraní API  | Reprezentace v KB |
 |-----------|---------|-------------------------|
-| Ano | \&lt; br \& gt; | &lt;BR&gt; |
-| Ano | \&lt; H3 \& gt; Header \& lt;/H3 \& gt; | &lt;H3 – &gt; záhlaví &lt; /H3&gt; |
+| Yes | \&lt; br \& gt; | &lt;BR&gt; |
+| Yes | \&lt; H3 \& gt; Header \& lt;/H3 \& gt; | &lt;H3 – &gt; záhlaví &lt; /H3&gt; |
 
 Znaky CR (\r\n) se navíc v KB převádějí na \n. LF (\n) se udržuje tak, jak je. V případě, že chcete řídicí sekvenci řídicích znaků, jako je například \t nebo \n, můžete použít zpětné lomítko, například: \\ \\ r \\ \\ n a \\ \\ t.
 

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 18ab9a4108d6d9effaa25fe69ce42a18ca4ba0dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903833"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Kurz: Nasazení úlohy Azure Stream Analytics s CI/CD pomocí Azure Pipelines
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > NuGet pro CI/CD se už nepoužívá. Informace o tom, jak migrovat na nejnovější NPM, najdete v tématu [Přehled průběžné integrace a nasazení](cicd-overview.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že jste provedli následující kroky:
 
@@ -122,7 +122,7 @@ Otevřete webový prohlížeč a přejděte na projekt, který jste právě vytv
     |---------|---------|
     |Předplatné  |  Zvolte vaše předplatné.   |
     |Akce  |  Vytvoření nebo aktualizace skupiny prostředků   |
-    |Skupina prostředků  |  Zadejte název skupiny prostředků.   |
+    |Resource Group  |  Zadejte název skupiny prostředků.   |
     |Šablona  | [Cesta k vašemu řešení] \bin\Debug\Deploy\\[Název projektu]. JobTemplate.json   |
     |Parametry šablony  | [Cesta k vašemu řešení] \bin\Debug\Deploy\\[Název projektu]. JobTemplate.parameters.json   |
     |Přepsání parametrů šablony  | Do textového pole zadejte parametry šablony, které chcete přepsat. Příklad `–storageName fabrikam –adminUsername $(vmusername) -adminPassword $(password) –azureKeyVaultName $(fabrikamFibre)` :. Tato vlastnost je volitelná, ale pokud klíčové parametry nepřepíšete, sestavení skončí s chybou.    |

@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
 ms.openlocfilehash: b5a3ec1d6e33c08b460088c9aeb4fd18f6bf29ff
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88864946"
 ---
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Každá žádost vyžaduje autorizační hlavičku. Tato tabulka ukazuje, které hlavičky jsou pro každou službu podporované:
 
 | Podporované autorizační hlavičky | Převod řeči na text | Převod textu na řeč |
 |------------------------|----------------|----------------|
-| Ocp-Apim-Subscription-Key | Ano | Ne |
-| Autorizace: nosič | Ano | Ano |
+| Ocp-Apim-Subscription-Key | Yes | No |
+| Autorizace: nosič | Yes | Yes |
 
-Když použijete `Ocp-Apim-Subscription-Key` hlavičku, budete muset zadat svůj klíč předplatného. Příklad:
+Když použijete `Ocp-Apim-Subscription-Key` hlavičku, budete muset zadat svůj klíč předplatného. Například:
 
 ```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'

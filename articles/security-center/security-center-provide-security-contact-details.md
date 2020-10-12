@@ -1,6 +1,6 @@
 ---
-title: Zadání podrobností o kontaktu zabezpečení v Azure Security Center | Microsoft Docs
-description: V tomto dokumentu se dozvíte, jak zadat podrobnosti kontaktu zabezpečení v Azure Security Center.
+title: Konfigurace e-mailových oznámení pro výstrahy Azure Security Center
+description: Přečtěte si, jak vyladit typy e-mailů odesílaných Azure Security Center v případě výstrah zabezpečení.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,20 +11,23 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/11/2020
+ms.date: 10/07/2020
 ms.author: memildin
-ms.openlocfilehash: aa35d1325e339af515c8bfc052d1af524b464e09
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ac50b17826f9f3d06d01d3cce9704094fddf1b1d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91446017"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945613"
 ---
-# <a name="set-up-email-notifications-for-security-alerts"></a>Nastavení e-mailových oznámení pro výstrahy zabezpečení 
+# <a name="configure-email-notifications-for-security-alerts"></a>Konfigurace e-mailových oznámení pro výstrahy zabezpečení 
 
-Pokud chcete zajistit, aby se do vašeho prostředí zobrazovaly informace o výstrahách zabezpečení ve vaší organizaci, zadejte na stránce nastavení **e-mailových oznámení** jejich e-mailové adresy.
+Výstrahy zabezpečení musí mít přístup ke správným lidem ve vaší organizaci. Ve výchozím nastavení Security Center vlastníkům předplatného e-mailů vždy, když se u svého předplatného spustí výstraha s vysokou závažností. Tato stránka vysvětluje, jak tato oznámení přizpůsobit.
 
-Při nastavování oznámení můžete nakonfigurovat e-maily, které se mají posílat konkrétním jednotlivcům, nebo komukoli s určitou rolí Azure pro předplatné. 
+Pokud chcete definovat vlastní předvolby pro e-maily oznámení, stránka nastavení **e-mailových oznámení** Azure Security Center vám umožní vybrat tyto možnosti:
+
+- ** *kdo* má dostávat oznámení** – e-maily je možné odeslat pro výběr jednotlivců nebo pro kohokoli s určitou rolí Azure pro předplatné. 
+- k ** *čemu* by se měly informovat** – upravte úrovně závažnosti, pro které by Security Center měla odesílat oznámení.
 
 Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mailů. U každého předplatného Security Center odesílá:
 
@@ -32,9 +35,8 @@ Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mail�
 - maximálně **dva** e-maily za den pro upozornění **středních závažnosti**
 - maximálně **jeden** e-mail za den pro upozornění **s nízkou závažností**
 
-
 :::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="Konfigurace podrobností o kontaktu, který bude dostávat e-maily o výstrahách zabezpečení." :::
-
+ 
 ## <a name="availability"></a>Dostupnost
 
 |Aspekt|Podrobnosti|
@@ -42,27 +44,27 @@ Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mail�
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|Free|
 |Požadované role a oprávnění:|**Správce zabezpečení**<br>**Vlastník předplatného** |
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov (částečný)<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
-## <a name="set-up-email-notifications-for-alerts"></a>Nastavení e-mailových oznámení pro výstrahy <a name="email"></a>
+## <a name="customize-the-security-alerts-email-notifications"></a>Přizpůsobení e-mailových oznámení výstrah zabezpečení<a name="email"></a>
 
 Můžete posílat e-mailová oznámení jednotlivcům nebo všem uživatelům s konkrétními rolemi Azure.
 
-1. Z oblasti **Nastavení cenové &** Security Center, relevantní předplatné a vybrat **e-mailová oznámení**.
+1. V oblasti **nastavení & ceny** Security Center vyberte příslušné předplatné a zvolte **e-mailová oznámení**.
 
-1. Zadejte příjemce oznámení:
+1. Určete příjemce oznámení pomocí jedné nebo obou těchto možností:
 
     - V rozevíracím seznamu vyberte z dostupných rolí.
-    - A zadejte konkrétní e-mailové adresy oddělené čárkami. Počet e-mailových adres, které můžete zadat, není nijak omezený.
+    - Zadejte konkrétní e-mailové adresy oddělené čárkami. Počet e-mailových adres, které můžete zadat, není nijak omezený.
 
 1. Pokud chcete u svého předplatného použít kontaktní informace zabezpečení, vyberte **Uložit**.
 
 
 ## <a name="see-also"></a>Viz také
-Další informace o výstrahách zabezpečení najdete v následujících tématech:
+Další informace o výstrahách zabezpečení najdete na následujících stránkách:
 
-* [Výstrahy zabezpečení – referenční průvodce](alerts-reference.md) – Přečtěte si o výstrahách zabezpečení, které se můžou zobrazit v modulu Azure Security Center ochrany před internetovými útoky.
-* [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Přečtěte si, jak spravovat výstrahy zabezpečení a reagovat na ně.
-* [Automatizace pracovního postupu](workflow-automation.md) – automatizace odpovědí na výstrahy pomocí vlastní logiky oznámení
+- [Výstrahy zabezpečení – referenční průvodce](alerts-reference.md)– Přečtěte si o výstrahách zabezpečení, které se můžou zobrazit v modulu Azure Security Center ochrany před internetovými útoky.
+- [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md)– Přečtěte si, jak spravovat výstrahy zabezpečení a reagovat na ně.
+- [Automatizace pracovního postupu](workflow-automation.md)– automatizace odpovědí na výstrahy pomocí vlastní logiky oznámení

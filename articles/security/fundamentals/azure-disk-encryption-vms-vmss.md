@@ -8,10 +8,10 @@ ms.author: mbaldwin
 ms.date: 10/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 21194bf2fe76a7eb0ee034d4a502c20ee3032dd9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543669"
 ---
 # <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>Azure Disk Encryption pro virtuální počítače a škálovací sady virtuálních počítačů
@@ -25,7 +25,7 @@ Následující články obsahují pokyny k šifrování virtuálních počítač
 ### <a name="current-version-of-azure-disk-encryption"></a>Aktuální verze Azure Disk Encryption
 
 - [Přehled služby Azure Disk Encryption pro virtuální počítače s Linuxem](../../virtual-machines/linux/disk-encryption-overview.md)
-- [Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux](../../virtual-machines/linux/disk-encryption-linux.md)
+- [Scénáře služby Azure Disk Encryption na virtuálních počítačích s Linuxem](../../virtual-machines/linux/disk-encryption-linux.md)
 - [Vytvoření a šifrování virtuálního počítače s Linuxem s využitím Azure CLI](../../virtual-machines/linux/disk-encryption-cli-quickstart.md)
 - [Vytvoření a šifrování virtuálního počítače s Linuxem s využitím Azure PowerShellu](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 - [Vytvoření a šifrování virtuálního počítače s Linuxem s využitím webu Azure Portal](../../virtual-machines/linux/disk-encryption-portal-quickstart.md)
@@ -78,5 +78,5 @@ Následující články obsahují pokyny k šifrování služby Virtual Machine 
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled šifrování v Azure](encryption-overview.md)
-- [Šifrování dat v klidovém stavu](encryption-atrest.md)
+- [Šifrování v klidovém stavu](encryption-atrest.md)
 - [Osvědčené postupy šifrování a zabezpečení dat](data-encryption-best-practices.md)

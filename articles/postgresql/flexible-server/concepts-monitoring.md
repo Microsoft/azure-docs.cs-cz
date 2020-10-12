@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 1519e0b5cef6055cf8d8b0aded0d8ad323d548a2
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91707842"
 ---
 # <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>Monitorování metrik na Azure Database for PostgreSQL – flexibilní Server
@@ -29,27 +29,27 @@ Pro PostgreSQL flexibilní Server jsou k dispozici následující metriky:
 
 |Metrika|Zobrazovaný název metriky|Jednotka|Description|
 |---|---|---|---|
-| active_connections | Aktivní připojení | Count | Počet připojení k serveru | 
+| active_connections | Aktivní připojení | Počet | Počet připojení k serveru | 
 | backup_storage_used | Využité úložiště záloh | Bajty | Velikost využitého úložiště záloh Tato metrika představuje součet úložiště spotřebovaného všemi úplnými zálohami databáze, rozdílové zálohy a zálohy protokolů, které jsou zachovány na základě nastaveného období uchovávání záloh pro server. Frekvence zálohování je spravována službou. V případě geograficky redundantního úložiště je využití úložiště zálohování dvakrát místní redundantní úložiště. |
-| connections_failed | Neúspěšná připojení | Count | Připojení se nezdařila. |
-| connections_succeeded | Úspěšná připojení | Count | Úspěšná připojení. |
-| cpu_credits_consumed | Spotřebované kredity procesoru | Count | Počet kreditů používaných flexibilním serverem. Platí pro vrstvu s shluky. |
-| cpu_credits_remaining | Zbývající kredity procesoru | Count | Počet kreditů dostupných pro shlukování. Platí pro vrstvu s shluky. |
+| connections_failed | Neúspěšná připojení | Počet | Připojení se nezdařila. |
+| connections_succeeded | Úspěšná připojení | Počet | Úspěšná připojení. |
+| cpu_credits_consumed | Spotřebované kredity procesoru | Počet | Počet kreditů používaných flexibilním serverem. Platí pro vrstvu s shluky. |
+| cpu_credits_remaining | Zbývající kredity procesoru | Počet | Počet kreditů dostupných pro shlukování. Platí pro vrstvu s shluky. |
 | cpu_percent | Procento využití procesoru | Procento | Procento využití procesoru. | 
-| disk_queue_depth | Hloubka fronty disku | Count | Počet nezpracovaných vstupně-výstupních operací na datový disk. |
-| IOPS | IOPS | Count | Počet vstupně-výstupních operací na disk za sekundu. |
-| maximum_used_transactionIDs | Maximální počet použitých ID transakcí | Count | Je použito maximální ID transakce. |
+| disk_queue_depth | Hloubka fronty disku | Počet | Počet nezpracovaných vstupně-výstupních operací na datový disk. |
+| IOPS | IOPS | Počet | Počet vstupně-výstupních operací na disk za sekundu. |
+| maximum_used_transactionIDs | Maximální počet použitých ID transakcí | Počet | Je použito maximální ID transakce. |
 | memory_percent | Procentuální hodnota paměti | Procento | Procento využité paměti |
 | network_bytes_egress | Síťové výstupy | Bajty | Množství odchozího síťového provozu. |
 | network_bytes_ingress | Síťové vstupy | Bajty | Množství příchozího síťového provozu. |
-| read_iops | Čtení IOPS | Count | Počet vstupně-výstupních operací čtení datových disků za sekundu |
+| read_iops | Čtení IOPS | Počet | Počet vstupně-výstupních operací čtení datových disků za sekundu |
 | read_throughput | Propustnost čtení | Bajty | Přečtených bajtů za sekundu z disku. |
 | storage_free | Volné úložiště | Bajty | Velikost dostupného prostoru úložiště. |
 | storage_percent | Procento úložiště | Procento | Procento využitého prostoru úložiště Úložiště používané službou může zahrnovat soubory databáze, protokoly transakcí a protokoly serveru.|
 | storage_used | Využité úložiště | Bajty | Procento využitého prostoru úložiště Úložiště používané službou může zahrnovat soubory databáze, protokoly transakcí a protokoly serveru. |
 | txlogs_storage_used | Využité úložiště protokolu transakcí | Bajty | Velikost úložného prostoru, který používají transakční protokoly. | 
 | write_throughput | Propustnost zápisu | Bajty | Bajtů zapsaných za sekundu na disk. |
-| write_iops | Zápis IOPS | Count | Počet vstupně-výstupních operací zápisu datových disků za sekundu |
+| write_iops | Zápis IOPS | Počet | Počet vstupně-výstupních operací zápisu datových disků za sekundu |
 
 ## <a name="server-logs"></a>Protokoly serveru
 Azure Database for PostgreSQL umožňuje konfiguraci a přístup ke standardním protokolům Postgres. Další informace o protokolech najdete v [dokumentu koncepty protokolování](concepts-logging.md).

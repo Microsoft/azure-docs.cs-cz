@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 082e05bddd4fe12b279368e44b2d986bd4fa91a7
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89003843"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945324"
 ---
 # <a name="what-is-azure-digital-twins"></a>Co je služba Azure Digital Twins?
 
@@ -84,7 +84,7 @@ Kompletní řešení využívající digitální vlákna Azure může obsahovat 
 * Jedna nebo více klientských aplikací, které zanášejí instanci digitálního vlákna Azure pomocí konfigurace modelů, vytváření topologie a extrahování přehledů z vytvářených grafů.
 * Jeden nebo více externích výpočetních prostředků pro zpracování událostí generovaných pomocí digitálních vláken Azure nebo propojených zdrojů dat, jako jsou zařízení. Jeden běžný způsob, jak zajistit výpočetní prostředky, je prostřednictvím [Azure Functions](../azure-functions/functions-overview.md).
 * IoT Hub, který poskytuje možnosti správy zařízení a datových proudů IoT.
-* Služby pro příjem dat, jako je například integrace pracovního postupu (například [Logic Apps](../logic-apps/logic-apps-overview.md), studené úložiště, integrace časových řad nebo analýzy). 
+* Služby pro příjem dat, jako je například integrace pracovního postupu (například [Logic Apps](../logic-apps/logic-apps-overview.md), studené úložiště, integrace časových řad nebo analýza).
 
 Následující diagram znázorňuje, kde se digitální vlákna Azure nachází v kontextu většího řešení Azure IoT.
 

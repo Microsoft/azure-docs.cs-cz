@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 598e43d07c213cfeb25f0ecbc7bd02b6ec54b7ed
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962583"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurace App Service Environment v1
@@ -68,7 +68,7 @@ Pokud chcete nastavit pravidla automatického škálování na základě metrik 
 ### <a name="storage"></a>Storage
 Každý pomocného programu je nakonfigurovaný s 500 GB úložiště. Toto místo se používá napříč všemi aplikacemi v pomocném formuláři. Tento prostor úložiště je součástí pomocného mechanismu řízení a momentálně se nedá přepnout na použití prostoru úložiště. Pokud provádíte úpravy směrování nebo zabezpečení vaší virtuální sítě, je potřeba, abyste stále povolili přístup k Azure Storage--nebo nemůžete funkci pomocného mechanismu nastavovat.
 
-### <a name="database"></a>Databáze
+### <a name="database"></a>databáze
 Databáze obsahuje informace definující prostředí a také podrobnosti o aplikacích, které jsou v něm spuštěné. Toto je moc součástí předplatného Azure. Nejedná se o to, že máte přímo možnost manipulovat. Pokud provádíte úpravy směrování nebo zabezpečení vaší virtuální sítě, je potřeba, abyste stále povolili přístup k SQL Azure--nebo nemůžete funkci pomocného mechanismu nastavovat.
 
 ### <a name="network"></a>Síť

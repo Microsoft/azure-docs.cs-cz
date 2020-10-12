@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: bc731f6f6a5a60bce0851bf8fe5874f7149f3899
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90901453"
 ---
 # <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>Optimalizace shromažďování statistických údajů dotazu na Azure Database for PostgreSQL jednom serveru
@@ -37,6 +37,6 @@ Funkce [úložiště dotazů](concepts-query-store.md) v Azure Database for Post
 ## <a name="next-steps"></a>Další kroky
 Zvažte nastavení `pg_stat_statements.track = NONE` v [Azure Portal](howto-configure-server-parameters-using-portal.md) nebo pomocí [Azure CLI](howto-configure-server-parameters-using-cli.md).
 
-Další informace naleznete v tématu: 
+Další informace naleznete v tématech: 
 - [Scénáře použití úložiště dotazů](concepts-query-store-scenarios.md) 
 - [Osvědčené postupy pro úložiště dotazů](concepts-query-store-best-practices.md) 

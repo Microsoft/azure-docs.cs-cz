@@ -4,10 +4,10 @@ description: Popisuje, jak přidat nové certifikáty, certifikát výměny a od
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869741"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidání nebo odebrání certifikátů clusteru Service Fabric v Azure
@@ -263,7 +263,7 @@ Můžete přidat dva typy klientských certifikátů – správce nebo jen pro �
 Můžete zadat libovolný počet klientských certifikátů. Každé přidání nebo odstranění má za následek aktualizaci konfigurace clusteru Service Fabric.
 
 
-### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Přidání klientských certifikátů – správce nebo jen pro čtení přes portál
+### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Přidání klientských certifikátů – správce nebo Read-Only prostřednictvím portálu
 
 1. Přejděte do části zabezpečení a v části zabezpečení vyberte tlačítko + ověřování.
 2. V části přidat ověřování vyberte typ ověřování – klient jen pro čtení nebo klient pro správu.
@@ -271,7 +271,7 @@ Můžete zadat libovolný počet klientských certifikátů. Každé přidání 
 
 ![Přidat klientský certifikát][Add_Client_Cert]
 
-### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Odstranění klientských certifikátů – správce nebo jen pro čtení pomocí portálu
+### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Odstranění klientských certifikátů – správce nebo Read-Only pomocí portálu
 
 Chcete-li odebrat sekundární certifikát ze systému, který se používá pro zabezpečení clusteru, přejděte do části zabezpečení a vyberte možnost odstranit z kontextové nabídky u konkrétního certifikátu.
 

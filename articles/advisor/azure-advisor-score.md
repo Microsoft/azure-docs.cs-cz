@@ -4,10 +4,10 @@ description: Využijte skóre služby Advisor pro maximum z Azure
 ms.topic: article
 ms.date: 09/09/2020
 ms.openlocfilehash: 29d8480f501a78c1668b52034f439f998419f9d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335615"
 ---
 # <a name="optimize-azure-workloads-using-advisor-score"></a>Optimalizace úloh Azure pomocí skóre služby Advisor
@@ -17,11 +17,11 @@ ms.locfileid: "91335615"
 Azure Advisor poskytuje doporučení pro osvědčené postupy pro vaše úlohy. Tato doporučení jsou přizpůsobená a umožňují vám tyto akce:
 * Zlepšení stav vašich úloh a optimalizace nasazení Azure
 * Proaktivně Zabraňte nejdůležitějším problémům pomocí osvědčených postupů
-* Vyhodnotit vaše úlohy Azure proti pěti pilířům [Microsoft Azurech dobře navržených architektur](https://docs.microsoft.com/azure/architecture/framework/)
+* Vyhodnoťte vaše úlohy Azure s pěti pilíři [Microsoft Azure Well-Architected Framework](https://docs.microsoft.com/azure/architecture/framework/)
 
 Jako základní funkce Advisoru se navrhuje **hodnocení Advisoru** , které vám pomůže dosáhnout těchto cílů efektivně a efektivně. 
 
-Abyste mohli Azure využít na maximum, je důležité pochopit, kde se nacházíte v rámci své cesty optimalizace zatížení, které služby a prostředky jsou dobře spotřebované a které nejsou. Dále budete chtít zjistit, jak upřednostnit vaše akce na základě doporučení a maximalizovat tak výsledek. Je také důležité sledovat pokrok, který v této cestě optimalizace vytváříte, a nahlásit ho. Díky **hodnocení Advisoru**můžete všechny tyto věci snadno udělat pomocí našeho nového prostředí gamifikační. V rámci vašeho přizpůsobeného cloudového konzultanta Azure Advisor průběžně vyhodnocuje telemetrii využití a konfiguraci prostředků, aby kontroloval osvědčené postupy pro obor. Poradce pak agreguje své závěry do jednoho skóre, takže můžete na první pohled zjistit, jestli máte potřebné kroky k vytváření spolehlivých, zabezpečených a nákladově efektivních řešení. Skóre služby Advisor se skládá z celkového skóre, které může být dále rozděleno na pět kategorií, jednu pro každou kategorii Azure Advisor, která představuje pět pilířů v dobře navrženém rozhraní. Průběh můžete sledovat v průběhu času zobrazením celkového skóre a skóre kategorie pomocí denního, týdenního a měsíčního trendu a můžete nastavit srovnávací testy, které vám pomůžou dosáhnout vašich cílů. 
+Abyste mohli Azure využít na maximum, je důležité pochopit, kde se nacházíte v rámci své cesty optimalizace zatížení, které služby a prostředky jsou dobře spotřebované a které nejsou. Dále budete chtít zjistit, jak upřednostnit vaše akce na základě doporučení a maximalizovat tak výsledek. Je také důležité sledovat pokrok, který v této cestě optimalizace vytváříte, a nahlásit ho. Díky **hodnocení Advisoru**můžete všechny tyto věci snadno udělat pomocí našeho nového prostředí gamifikační. V rámci vašeho přizpůsobeného cloudového konzultanta Azure Advisor průběžně vyhodnocuje telemetrii využití a konfiguraci prostředků, aby kontroloval osvědčené postupy pro obor. Poradce pak agreguje své závěry do jednoho skóre, takže můžete na první pohled zjistit, jestli máte potřebné kroky k vytváření spolehlivých, zabezpečených a nákladově efektivních řešení. Skóre služby Advisor se skládá z celkového skóre, které může být dále rozděleno na pět kategorií, jednu pro každou kategorii Azure Advisor, která představuje pět pilířů Well-Architectedho rozhraní. Průběh můžete sledovat v průběhu času zobrazením celkového skóre a skóre kategorie pomocí denního, týdenního a měsíčního trendu a můžete nastavit srovnávací testy, které vám pomůžou dosáhnout vašich cílů. 
 
  ![Prostředí skóre Advisoru](./media/advisor-score-1.png)
 
@@ -72,7 +72,7 @@ Pokud doporučení z poradce zrušíte, bude vynecháno při výpočtu skóre. C
 * **Proč se moje skóre změnila?** Skóre se může změnit, pokud opravíte ovlivněné prostředky tím, že přijmete osvědčené postupy, které doporučuje poradce. Pokud jste vy nebo kdokoli s oprávněním k vašemu předplatnému změnili nebo vytvořili nové prostředky, můžete se také podívat na kolísání skóre, protože vaše skóre je založeno na poměru prostředků ovlivněných náklady vzhledem k celkovému počtu nákladů na všechny prostředky.
 * **Jak Advisor vypočítá maloobchodní cenu prostředků v rámci předplatného?**
 Služba Advisor používá sazby za průběžné platby, které jsou publikovány na stránce s cenami Azure.com, což neodráží žádné platné slevy vynásobené množstvím využití v posledním dni přidělení prostředku. Výsledkem vynechání slev z výpočtu nákladů na prostředky je skóre služby Advisor v rámci předplatných, klientů a registrací, kde se můžou slevy lišit. 
-* **Potřebuji zobrazit doporučení v poradci, abyste získali body pro své skóre?** No. Vaše skóre odráží, jestli jste přijali osvědčené postupy, které doporučuje poradce, a to i v případě, že tyto osvědčené postupy proaktivně nebudete zobrazovat v Advisoru.
+* **Potřebuji zobrazit doporučení v poradci, abyste získali body pro své skóre?** Ne. Vaše skóre odráží, jestli jste přijali osvědčené postupy, které doporučuje poradce, a to i v případě, že tyto osvědčené postupy proaktivně nebudete zobrazovat v Advisoru.
 * **Rozlišuje se metodologie bodování mezi provozními a testovacími a testovacími úlohami?**
 Ne, zatím ne, ale pokud se tyto prostředky používají pro vývoj a testování, můžete doporučení na jednotlivé prostředky zavřít, ale doporučení se nevztahují.
 * **Můžu porovnat skóre mezi předplatným s 100 prostředky a předplatným s 100 000mi prostředky?**

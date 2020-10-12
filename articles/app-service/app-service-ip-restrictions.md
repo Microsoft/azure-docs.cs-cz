@@ -8,10 +8,10 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: ce5882f2621dc5b8c48bcf5be6d4ea3a2f723bfe
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962957"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Omezení přístupu Azure App Service
@@ -48,7 +48,7 @@ Při vytváření pravidla musíte vybrat možnost povolit/odepřít a také typ
 
 ![Přidat pravidlo omezení přístupu k IP adrese](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
 
-Pokud chcete nastavit pravidlo na základě IP adresy, vyberte typ protokolu IPv4 nebo IPv6. Zápis IP adres musí být zadán v zápisu CIDR pro adresy IPv4 i IPv6. Pokud chcete zadat konkrétní adresu, můžete použít něco jako 1.2.3.4/32, kde první čtyři oktety reprezentují vaši IP adresu a/32 je maska. Zápis IPv4 protokolu IPv4 pro všechny adresy je 0.0.0.0/0. Pokud se chcete dozvědět víc o zápisu CIDR, můžete číst [směrování mezi doménami bez třídy](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
+Pokud chcete nastavit pravidlo na základě IP adresy, vyberte typ protokolu IPv4 nebo IPv6. Zápis IP adres musí být zadán v zápisu CIDR pro adresy IPv4 i IPv6. Pokud chcete zadat konkrétní adresu, můžete použít něco jako 1.2.3.4/32, kde první čtyři oktety reprezentují vaši IP adresu a/32 je maska. Zápis IPv4 protokolu IPv4 pro všechny adresy je 0.0.0.0/0. Pokud se chcete dozvědět víc o zápisu CIDR, můžete číst [Inter-Domain směrování bez třídy](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
 
 ## <a name="service-endpoints"></a>Koncové body služby
 

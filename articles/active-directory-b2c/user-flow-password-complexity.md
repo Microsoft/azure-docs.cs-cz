@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9c7f0ead3a2f93d7f390106b8e7471d58b709023
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87481559"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurace požadavků na složitost pro hesla v Azure Active Directory B2C
@@ -38,7 +38,7 @@ Pokud používáte vlastní zásady, můžete ([nakonfigurovat složitost hesla 
 
 ## <a name="configure-password-complexity"></a>Konfigurace složitosti hesla
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 3. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **toky uživatelů**.
@@ -47,7 +47,7 @@ Pokud používáte vlastní zásady, můžete ([nakonfigurovat složitost hesla 
 
 ### <a name="comparison-chart"></a>Srovnávací graf
 
-| Složitost | Popis |
+| Složitost | Description |
 | --- | --- |
 | Jednoduchost | Heslo, které má alespoň 8 až 64 znaků. |
 | Silná | Heslo, které má alespoň 8 až 64 znaků. Vyžaduje 3 ze 4 malých a velkých písmen, číslic a symbolů. |

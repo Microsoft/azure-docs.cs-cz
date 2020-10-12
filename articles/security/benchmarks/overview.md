@@ -9,10 +9,10 @@ ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 6628d693a8df3614097e23785ac234a451565ca3
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777101"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Přehled srovnávacích testů zabezpečení Azure (v2)
@@ -22,13 +22,13 @@ Srovnávací test zabezpečení Azure (dokumentem SSAE) poskytuje doporučené o
 Tento srovnávací test je součástí sady holistických pokynů pro zabezpečení, které také zahrnují:
 
 - **Rozhraní pro přijetí do cloudu** – doprovodné materiály k zabezpečení, včetně [strategie](/azure/cloud-adoption-framework/strategy/define-security-strategy), [rolí a odpovědností](/azure/cloud-adoption-framework/organize/cloud-security), [osvědčených postupů pro Azure Top 10](/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)a [referenční implementace](/azure/cloud-adoption-framework/ready/enterprise-scale/).
-- **Architekturu Azure ve správném prostředí** – pokyny k [zabezpečení vašich úloh](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) v Azure.
+- **Azure Well-Architected Framework** – pokyny k [zabezpečení vašich úloh](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) v Azure.
 - **Osvědčené postupy zabezpečení od Microsoftu** – [doporučení](/security/compass/microsoft-security-compass-introduction) s příklady v Azure.
 
  Srovnávací test zabezpečení Azure se zaměřuje na oblasti řízení zaměřené na Cloud. Tyto ovládací prvky jsou konzistentní s dobře známými srovnávacími testy zabezpečení, jako jsou ty, které jsou popsány v centru pro řízení internetového zabezpečení (CIS) verze 7,1 a National Institute of Standards and Technology (NIST) SP800-53.
 Srovnávací testy zabezpečení Azure obsahují následující ovládací prvky:
 
-| DOKUMENTEM SSAE – domény ovládacích prvků | Popis 
+| DOKUMENTEM SSAE – domény ovládacích prvků | Description 
 |--|--|
 | [&nbsp;Zabezpečení sítě &nbsp; (NS)](security-controls-v2-network-security.md) | Zabezpečení sítě pokrývá ovládací prvky pro zabezpečení a ochranu sítí Azure, včetně zabezpečení virtuálních sítí, vytváření privátních připojení, prevenci a zmírnění externích útoků a zabezpečení DNS. |
 | [&nbsp;Správa identit &nbsp; (IM)](security-controls-v2-identity-management.md) | Správa identit pokrývá ovládací prvky pro vytvoření zabezpečeného řízení identity a přístupu pomocí Azure Active Directory, včetně použití jednotného přihlašování, silného ověřování, spravovaných identit (a principů služeb) pro aplikace, podmíněný přístup a monitorování anomálií. |

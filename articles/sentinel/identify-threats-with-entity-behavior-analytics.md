@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
 ms.openlocfilehash: 6597baa67bcd2e26f3b8aeaa98c1776b5fc47430
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995507"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Identifikace pokročilých hrozeb pomocí analýzy chování uživatelů a entit (UEBA) v Azure Sentinel
@@ -47,15 +47,13 @@ Nechte inspirovat podle Gartner 's paradigma pro UEBA řešení poskytuje Azure 
 
 - **Analýza:** Pomocí různých algoritmů strojového učení (ML) Azure Sentinel identifikuje aktivity neobvyklé a prezentuje důkaz jasně a stručně ve formě kontextových rozšíření, které jsou uvedené níže.
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="Analýza chování mimo přístup":::
-
-Azure Sentinel prezentuje artefakty, které pomůžou vašim analytikům zabezpečení jasně pochopit aktivity neobvyklé v kontextu a porovnat s profilem standardních hodnot uživatele. Akce prováděné uživatelem (nebo hostitelem nebo adresou) jsou vyhodnocovány v kontextu, kde "true" výsledek indikuje zjištěnou anomálii:
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/behavior-analytics-top-down.png" alt-text="Architektura analýzy chování entit" výsledek indikuje zjištěnou anomálii:
 - v různých geografických umístěních, zařízeních a prostředích.
 - v rámci časových a frekvenčních horizontů (ve srovnání s vlastní historií uživatele).
 - ve srovnání s chováním partnerských vztahů.
 - ve srovnání s chováním organizace.
 
-    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="Kontext entity":::
+    :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/context.png" alt-text="Architektura analýzy chování entit":::
 
 
 ### <a name="scoring"></a>Vyhodnocování
@@ -79,7 +77,7 @@ Stránky entit se skládají ze tří částí:
 
 ### <a name="the-timeline"></a>Časová osa
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="Časová osa stránek entit":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-timeline.png" alt-text="Architektura analýzy chování entit":::
 
 Časová osa je hlavní součástí příspěvku na stránce entity k analýze chování v Azure Sentinel. Prezentuje v souvislosti s událostmi souvisejícími s entitami, které vám pomůžou pochopit aktivitu entity v určitém časovém rámci.
 
@@ -107,7 +105,7 @@ Entity Insights jsou dotazy definované výzkumníky zabezpečení Microsoftu, k
 
 Stránky entit jsou navržené tak, aby byly součástí více scénářů použití, a je možné k nim získat přístup ze správy incidentů, grafu šetření, záložek nebo přímo na stránce vyhledávání entit v části **Analýza chování entit** v hlavní nabídce Azure Sentinel.
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="Případy použití stránky entity":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="Architektura analýzy chování entit":::
 
 
 ## <a name="data-schema"></a>Schéma dat
@@ -156,7 +154,7 @@ Metadata uživatelských partnerů poskytují důležitý kontext při detekci h
 
 Služba Azure Sentinel vypočítá a rozhodne partnerské vztahy uživatele na základě členství ve skupině zabezpečení Azure AD, seznamu adresátů, et zajistila a ukládá partnerské vztahy seřazené 1-20 v tabulce **UserPeerAnalytics** . Níže uvedený snímek obrazovky ukazuje schéma tabulky UserPeerAnalytics a zobrazuje prvních osm partnerských uzlů uživatele Kendall Collins. Azure Sentinel používá algoritmus *četnosti inverzního dokumentu* (TF-IDF) k normalizování vážení pro výpočet pořadí: čím menší je, tím vyšší je váha. 
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="Snímek obrazovky tabulky metadat partnerských vztahů uživatelů":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="Architektura analýzy chování entit":::
 
 K vizualizaci metadat partnerských vztahů uživatelů můžete použít [Poznámkový blok Jupyter](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata) , který je k dispozici v úložišti GitHub Azure Sentinel. Podrobné pokyny k používání poznámkového bloku najdete v poznámkovém bloku [metadata zabezpečení uživatele s asistencí](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb) .
 
@@ -166,7 +164,7 @@ Analýza oprávnění pomáhá určit potenciální dopad na narušení organiza
 
 Azure Sentinel Určuje práva k přímým a přenosnému přístupu držené daným uživatelem a prostředky Azure vyhodnocením předplatných Azure, ke kterým může uživatel přistupovat přímo nebo prostřednictvím skupin nebo instančních objektů. Tyto informace, stejně jako úplný seznam členství uživatele ve skupině zabezpečení Azure AD, se pak ukládají do tabulky **UserAccessAnalytics** . Níže uvedený snímek obrazovky ukazuje vzorový řádek v tabulce UserAccessAnalytics pro uživatele Alex Johnsonem. **Zdrojová entita** je uživatel nebo hlavní účet služby a **Cílová entita** je prostředek, ke kterému má zdrojová entita přístup. Hodnoty **úrovně přístupu** a **typu přístupu** závisí na modelu řízení přístupu cílové entity. Můžete vidět, že Alex má přispěvatele přístup k Tenantovi Azure s předplatným *Contoso*. Model řízení přístupu předplatného je RBAC.   
 
-:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Snímek obrazovky tabulky analýzy přístupu uživatele":::
+:::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Architektura analýzy chování entit":::
 
 Pomocí [poznámkového bloku Jupyter](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/BehaviorAnalytics/UserSecurityMetadata) (výše zmíněného poznámkového bloku) z úložiště GitHub Azure Sentinel můžete vizualizovat data analýzy oprávnění. Podrobné pokyny k používání poznámkového bloku najdete v poznámkovém bloku [metadata zabezpečení uživatele s asistencí](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/BehaviorAnalytics/UserSecurityMetadata/Guided%20Analysis%20-%20User%20Security%20Metadata.ipynb) .
 

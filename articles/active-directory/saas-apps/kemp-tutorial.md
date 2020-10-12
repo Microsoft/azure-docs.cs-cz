@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 68869d464df01d3cc89493c64d66511b4a6f369d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37b21a5e9e2839fba24b3dcc861fc7c42bdb4547
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299987"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945205"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s integrací služby Azure AD v kemp LoadMaster
 
@@ -145,7 +145,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Zadejte parametry pro virtuální službu.
 
-    ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-1.png)
+    ![Snímek obrazovky, který zobrazuje "zadejte parametry pro stránku virtuální služby" s příklady hodnot v polích.](./media/kemp-tutorial/kemp-1.png)
 
     a. Virtuální adresa
     
@@ -161,7 +161,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Zadejte parametry reálného serveru.
     
-    ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-2.png)
+    ![Snímek obrazovky, který zobrazuje "zadejte parametry pro skutečný serverovou stránku s příklady hodnot v polích.](./media/kemp-tutorial/kemp-2.png)
 
     a. Vyberte možnost povolení vzdálených adres.
     
@@ -203,7 +203,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na vlastnosti SSL (které fungují ve vrstvě 7).
     
-    ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-3.png)
+    ![Snímek obrazovky s vybraným oddílem s s podporou akcelerace s povolenými možnostmi zrychlení s L a vybraným ukázkovým certifikátem](./media/kemp-tutorial/kemp-3.png)
     
     a. V akceleraci SSL klikněte na zapnuto.
     
@@ -222,7 +222,7 @@ Přejít na webovou konzolu integrace služby Azure AD v kemp LoadMaster
 
 1. Klikněte na zprostředkující certifikáty v části certifikáty a autorita.
 
-    ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-6.png)
+    ![Snímek obrazovky, který zobrazuje část aktuálně nainstalované zprostředkující certifikáty s ukázkovým certifikátem.](./media/kemp-tutorial/kemp-6.png)
 
     a. Klikněte na zvolit soubor v Přidat nový zprostředkující certifikát.
     
@@ -238,7 +238,7 @@ Přejít na webovou konzolu integrace služby Azure AD v kemp LoadMaster
  
 V části virtuální služby můžete spravovat jednotné přihlašování.
 
-   ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-7.png)
+   ![Snímek obrazovky, na které se zobrazuje stránka Správa s/O](./media/kemp-tutorial/kemp-7.png)
    
    a. Po přidělení názvu klikněte na Přidat v části Přidat novou konfiguraci na straně klienta.
 
@@ -268,7 +268,7 @@ Webová konzola integrace služby Azure AD v kemp LoadMaster
 
 1. Klikněte na Upravit a přejděte na možnosti ESP.
     
-    ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-8.png)
+    ![Snímek obrazovky zobrazující stránku zobrazit/upravit služby s rozbalenými oddíly "možnosti protokolu ESP" a "reálné servery".](./media/kemp-tutorial/kemp-8.png)
 
     a. Klikněte na Povolit protokol ESP.
     
@@ -286,7 +286,7 @@ Přejít na adresu URL aplikace
 
 V minulosti by se měla zobrazit stránka pro přihlášení klienta namísto neověřeného přístupu. 
 
-![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-9.png)
+![Snímek obrazovky s přihlašovací stránkou pro přihlášení klienta](./media/kemp-tutorial/kemp-9.png)
 
 ## <a name="configuring-kerberos-based-authentication"></a>Konfigurace ověřování založeného na protokolu Kerberos 
  
@@ -294,7 +294,7 @@ V minulosti by se měla zobrazit stránka pro přihlášení klienta namísto ne
 
 1. Vytvořte uživatelský účet (v tomto příkladu AppDelegation).
     
-    ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-10.png)
+    ![Snímek obrazovky, který zobrazuje okno "KCD User Properties" se zvolenou kartou "Account" (účet).](./media/kemp-tutorial/kemp-10.png)
 
 
     a. Vyberte kartu Editor atributů.
@@ -311,7 +311,7 @@ V minulosti by se měla zobrazit stránka pro přihlášení klienta namísto ne
 
 1. Vyberte kartu Delegování.
 
-    ![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-11.png)
+    ![Snímek obrazovky, který zobrazuje okno vlastností uživatele KCD s vybranou kartou delegování](./media/kemp-tutorial/kemp-11.png)
 
     a. Vyberte Důvěřovat tomuto uživateli pro delegování pouze určeným službám.
 
@@ -332,7 +332,7 @@ V minulosti by se měla zobrazit stránka pro přihlášení klienta namísto ne
 
 Navštivte web kemp LoadMaster Integration webová Konzola služby Azure AD > služby Virtual Services > spravovat jednotné přihlašování.
 
-![Kemp LoadMaster, webserver Integrace Azure AD](./media/kemp-tutorial/kemp-12.png)
+![Snímek obrazovky se stránkou Správa s informacemi O správě domény](./media/kemp-tutorial/kemp-12.png)
 
 a. Přejděte na konfigurace jednotného přihlašování na straně serveru.
 
