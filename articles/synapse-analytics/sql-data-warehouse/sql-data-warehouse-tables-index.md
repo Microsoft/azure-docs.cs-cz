@@ -11,11 +11,11 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 5ac32c41bd6b30c3edce68d67adc376e066d0bf5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 605c3320b0fcc7ac9663acc1578740e2cb3f3174
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797594"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>Indexování tabulek v synapse fondu SQL
@@ -142,9 +142,6 @@ GROUP BY
 ,       t.[name]
 ;
 ```
-
->[!TIP]
-> Pro zlepšení výkonu v synapse SQL zvažte použití **Sys. pdw_permanent_table_mappings** místo **Sys. pdw_table_mappings** v trvalých uživatelských tabulkách. Další informace najdete v tématu **[Sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 Teď, když jste vytvořili zobrazení, spusťte tento dotaz, abyste identifikovali tabulky se skupinami řádků s méně než 100 tisíc řádky. Je samozřejmě možné, že budete chtít zvýšit prahovou hodnotu 100 tisíc, pokud hledáte vyšší optimální kvalitu segmentů.
 

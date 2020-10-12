@@ -13,10 +13,10 @@ ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cf8ceb308fbcc2156a6df43e0167f4cb544b2d3d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331195"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Plánování nasazení Azure Active Directory vytváření sestav a monitorování
@@ -97,9 +97,9 @@ Vytváření sestav a monitorování se používá ke splnění vašich obchodn�
 
 * Vyžadováno pro řešení pro splnění obchodních potřeb
 * Skvělé vyhovět potřebám podniku
-* -
+* Nelze použít
 
-|Oblast |Popis |
+|Oblast |Description |
 |-|-|
 |Uchovávání| **Protokolujte uchovávání více než 30 dní**. Vzhledem k právním nebo podnikovým požadavkům se vyžaduje ukládání protokolů auditu a přihlášení do protokolů služby Azure AD déle než 30 dní. |
 |Analýzy| **Protokoly musí být prohledávatelné**. Uložené protokoly musí být prohledávatelné pomocí analytických nástrojů. |

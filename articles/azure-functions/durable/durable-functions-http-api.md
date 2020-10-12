@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84697839"
 ---
 # <a name="http-api-reference"></a>Reference k rozhraní HTTP API
@@ -24,7 +24,7 @@ Všechna rozhraní API HTTP implementovaná rozšířením vyžadují následuj�
 | **`connection`** | Řetězec dotazu    | **Název** připojovacího řetězce pro účet úložiště. Pokud není zadaný, předpokládá se výchozí připojovací řetězec pro aplikaci Function App. |
 | **`systemKey`**  | Řetězec dotazu    | Autorizační klíč vyžadovaný k vyvolání rozhraní API. |
 
-`systemKey`je autorizační klíč automaticky generovaný hostitelem Azure Functions. Konkrétně udělí přístup k rozhraním API rozšíření odolného úkolu a lze ho spravovat stejným způsobem jako [ostatní autorizační klíče](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Můžete generovat adresy URL, které obsahují správné `taskHub` `connection` hodnoty, a `systemKey` řetězce dotazu pomocí rozhraní API pro [vázání klienta Orchestration](durable-functions-bindings.md#orchestration-client) , jako jsou `CreateCheckStatusResponse` `CreateHttpManagementPayload` rozhraní API a rozhraní .NET, nebo `createCheckStatusResponse` `createHttpManagementPayload` rozhraní API v JavaScriptu.
+`systemKey` je autorizační klíč automaticky generovaný hostitelem Azure Functions. Konkrétně udělí přístup k rozhraním API rozšíření odolného úkolu a lze ho spravovat stejným způsobem jako [ostatní autorizační klíče](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Můžete generovat adresy URL, které obsahují správné `taskHub` `connection` hodnoty, a `systemKey` řetězce dotazu pomocí rozhraní API pro [vázání klienta Orchestration](durable-functions-bindings.md#orchestration-client) , jako jsou `CreateCheckStatusResponse` `CreateHttpManagementPayload` rozhraní API a rozhraní .NET, nebo `createCheckStatusResponse` `createHttpManagementPayload` rozhraní API v JavaScriptu.
 
 Několik dalších oddílů pokrývá konkrétní rozhraní HTTP API podporovaná rozšířením a poskytuje příklady, jak je lze použít.
 
@@ -54,7 +54,7 @@ POST /runtime/webhooks/durabletask/orchestrators/{functionName}/{instanceId?}
 
 Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
 
-| Pole              | Typ parametru  | Description |
+| Pole              | Typ parametru  | Popis |
 |--------------------|-----------------|-------------|
 | **`functionName`** | URL             | Název funkce Orchestrator, která se má spustit. |
 | **`instanceId`**   | URL             | Volitelný parametr. ID instance orchestrace. Pokud není zadán, funkce Orchestrator spustí s náhodným ID instance. |
@@ -144,7 +144,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
 
-| Pole                   | Typ parametru  | Description |
+| Pole                   | Typ parametru  | Popis |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL             | ID instance orchestrace. |
 | **`showInput`**         | Řetězec dotazu    | Volitelný parametr. Pokud je nastavená na `false` , vstup funkce nebude zahrnutý v datové části odpovědi.|
@@ -272,7 +272,7 @@ GET /runtime/webhooks/durableTask/instances?
 
 Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
 
-| Pole                   | Typ parametru  | Description |
+| Pole                   | Typ parametru  | Popis |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL             | ID instance orchestrace. |
 | **`showInput`**         | Řetězec dotazu    | Volitelný parametr. Pokud je nastavená na `false` , vstup funkce nebude zahrnutý v datové části odpovědi.|
@@ -370,7 +370,7 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 
 Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
 
-| Pole             | Typ parametru  | Description |
+| Pole             | Typ parametru  | Popis |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | ID instance orchestrace. |
 
@@ -383,9 +383,9 @@ Je možné vrátit následující hodnoty stavového kódu HTTP.
 
 Datová část odpovědi pro případ **HTTP 200** je objekt JSON s následujícím polem:
 
-| Pole                  | Datový typ | Description |
+| Pole                  | Datový typ | Popis |
 |------------------------|-----------|-------------|
-| **`instancesDeleted`** | celé číslo   | Počet odstraněných instancí. Pro případ jedné instance by tato hodnota měla být vždy `1` . |
+| **`instancesDeleted`** | integer   | Počet odstraněných instancí. Pro případ jedné instance by tato hodnota měla být vždy `1` . |
 
 Tady je příklad datové části odezvy (naformátovaná pro čitelnost):
 
@@ -445,9 +445,9 @@ Je možné vrátit následující hodnoty stavového kódu HTTP.
 
 Datová část odpovědi pro případ **HTTP 200** je objekt JSON s následujícím polem:
 
-| Pole                   | Datový typ | Description |
+| Pole                   | Datový typ | Popis |
 |-------------------------|-----------|-------------|
-| **`instancesDeleted`**  | celé číslo   | Počet odstraněných instancí. |
+| **`instancesDeleted`**  | integer   | Počet odstraněných instancí. |
 
 Tady je příklad datové části odezvy (naformátovaná pro čitelnost):
 
@@ -483,7 +483,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
 
-| Pole             | Typ parametru  | Description |
+| Pole             | Typ parametru  | Popis |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | ID instance orchestrace. |
 | **`eventName`**   | URL             | Název události, na které instance cílové orchestrace čeká. |
@@ -538,7 +538,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate
 
 Parametry žádosti pro toto rozhraní API obsahují výchozí sadu uvedenou dříve a také následující jedinečný parametr.
 
-| Pole             | Typ parametru  | Description |
+| Pole             | Typ parametru  | Popis |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | ID instance orchestrace. |
 | **`reason`**      | Řetězec dotazu    | Nepovinný parametr. Důvod ukončení instance Orchestration. |
@@ -587,7 +587,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
 
 Parametry žádosti pro toto rozhraní API obsahují výchozí sadu uvedenou dříve a také následující jedinečný parametr.
 
-| Pole             | Typ parametru  | Description |
+| Pole             | Typ parametru  | Popis |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | ID instance orchestrace. |
 | **`reason`**      | Řetězec dotazu    | Nepovinný parametr. Důvod pro převinutí instance Orchestration. |
@@ -629,7 +629,7 @@ POST /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
 
 Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
 
-| Pole             | Typ parametru  | Description |
+| Pole             | Typ parametru  | Popis |
 |-------------------|-----------------|-------------|
 | **`entityName`**  | URL             | Název (typ) entity. |
 | **`entityKey`**   | URL             | Klíč (jedinečné ID) entity |
@@ -718,7 +718,7 @@ GET /runtime/webhooks/durabletask/entities/{entityName}
 
 Parametry žádosti pro toto rozhraní API zahrnují výchozí sadu uvedenou výše a následující jedinečné parametry:
 
-| Pole                       | Typ parametru  | Description |
+| Pole                       | Typ parametru  | Popis |
 |-----------------------------|-----------------|-------------|
 | **`entityName`**            | URL             | Nepovinný parametr. Když se tato pole zadáte, vyfiltruje seznam vrácených entit podle jejich názvu (bez rozlišení velkých a malých písmen). |
 | **`fetchState`**            | Řetězec dotazu    | Volitelný parametr. Pokud je nastaveno na `true` , bude stav entity obsažen v datové části odpovědi. |

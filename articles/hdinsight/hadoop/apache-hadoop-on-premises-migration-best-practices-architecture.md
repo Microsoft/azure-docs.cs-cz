@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 7a76ac3bbe62d48de67815d09e1c8d75f03caa36
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86077894"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – osvědčené postupy pro architekturu
@@ -32,11 +32,11 @@ Clustery Azure HDInsight jsou navržené pro konkrétní typ výpočetního vyu�
 |IoT/streamování|Kafka, vyplavení, Spark|
 |Zpracování transakcí NoSQL|HBase|
 |Interaktivní a rychlejší dotazy s ukládáním do mezipaměti v paměti|Interaktivní dotaz|
-|Vědecké zpracování dat|Služby ML, Spark|
+|Datové vědy|Služby ML, Spark|
 
 V následující tabulce jsou uvedeny různé metody, které lze použít k vytvoření clusteru HDInsight.
 
-|Nástroj|Založené na prohlížeči|Příkazový řádek|Rozhraní REST API|Sada SDK|
+|Nástroj|Založené na prohlížeči|Příkazový řádek|REST API|Sada SDK|
 |---|---|---|---|---|
 |[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|×||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|

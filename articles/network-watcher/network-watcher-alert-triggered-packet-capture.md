@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: eefd67d4d150c0c8d152002a174c62d31fcb8b5f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975067"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Použití zachytávání paketů pro proaktivní monitorování sítě s výstrahami a Azure Functions
@@ -80,7 +80,7 @@ Prvním krokem je vytvoření funkce Azure pro zpracování výstrahy a vytvoře
     |**Předplatné**|[Vaše předplatné] Předplatné, pro které chcete vytvořit aplikaci Function App.||
     |**Skupina prostředků**|PacketCaptureRG|Skupina prostředků, která obsahuje aplikaci Function App|
     |**Plán hostování**|Plán Consumption| Typ plánování použití aplikace Function App Možnosti jsou spotřeba nebo plán Azure App Service. |
-    |**Umístění**|USA – střed| Oblast, ve které se má vytvořit aplikace Function App|
+    |**Umístění**|Střední USA| Oblast, ve které se má vytvořit aplikace Function App|
     |**Účet úložiště**|automaticky generované| Účet úložiště, který Azure Functions potřeby pro účely obecného úložiště.|
 
 3. V okně **aplikací funkcí PacketCaptureExample** vyberte **funkce**  >  **vlastní funkce**  > **+** .
@@ -347,9 +347,9 @@ Přejít na existující virtuální počítač a pak přidat pravidlo výstrahy
   |**Název**|TCP_Segments_Sent_Exceeded|Název pravidla výstrahy.|
   |**Popis**|Počet odeslaných segmentů TCP překročení prahové hodnoty|Popis pravidla výstrahy.|
   |**Metrika**|Odeslané segmenty TCP| Metrika, která se má použít k aktivaci výstrahy. |
-  |**Condition** (Podmínka)|Větší než| Podmínka, která se má použít při vyhodnocování metriky.|
+  |**Condition** (Podmínka)|Je větší než| Podmínka, která se má použít při vyhodnocování metriky.|
   |**Prahová hodnota**|100| Hodnota metriky, která aktivuje výstrahu. Tato hodnota by měla být nastavená na platnou hodnotu pro vaše prostředí.|
-  |**Období**|Za posledních pět minut| Určuje období, ve kterém se má hledat prahová hodnota metriky.|
+  |**Hodin**|Za posledních pět minut| Určuje období, ve kterém se má hledat prahová hodnota metriky.|
   |**Webhook**|[adresa URL Webhooku z aplikace Function app]| Adresa URL Webhooku z aplikace Function App, která byla vytvořena v předchozích krocích.|
 
 > [!NOTE]

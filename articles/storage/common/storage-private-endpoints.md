@@ -11,10 +11,10 @@ ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
 ms.openlocfilehash: 7a216b9e430c10f42d48df01746e111355cf91b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513275"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Použití privátních koncových bodů pro Azure Storage
@@ -27,7 +27,7 @@ Použití privátních koncových bodů pro váš účet úložiště vám umož
 - Zvyšte zabezpečení virtuální sítě tak, že povolíte blokování exfiltrace dat z virtuální sítě.
 - Připojte se bezpečně k účtům úložiště z místních sítí, které se připojují k virtuální síti pomocí [sítě VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoutes](../../expressroute/expressroute-locations.md) s privátním partnerským vztahem.
 
-## <a name="conceptual-overview"></a>Koncepční přehled
+## <a name="conceptual-overview"></a>Základní přehled
 
 ![Přehled privátních koncových bodů pro Azure Storage](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
@@ -79,7 +79,7 @@ Při překladu adresy URL koncového bodu úložiště mimo virtuální síť s 
 
 V zobrazeném příkladu se v záznamech o prostředcích DNS pro účet úložiště "StorageAccountA" po vyřešení mimo virtuální síť hostující soukromý koncový bod:
 
-| Name                                                  | Typ  | Hodnota                                                 |
+| Název                                                  | Typ  | Hodnota                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
@@ -89,7 +89,7 @@ Jak už jsme uvedli, můžete odepřít nebo řídit přístup pro klienty mimo 
 
 Záznamy prostředků DNS pro StorageAccountA, když je klient ve virtuální síti hostující soukromý koncový bod, budou:
 
-| Name                                                  | Typ  | Hodnota                                                 |
+| Název                                                  | Typ  | Hodnota                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | zákazníka 10.1.1.5                                              |
@@ -141,5 +141,5 @@ V současné době nemůžete konfigurovat pravidla [skupiny zabezpečení sít�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Konfigurace Azure Storage bran firewall a virtuálních sítí](storage-network-security.md)
+- [Konfigurace bran firewall Azure Storage a virtuálních sítí](storage-network-security.md)
 - [Doporučení zabezpečení pro úložiště objektů BLOB](../blobs/security-recommendations.md)

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: 7a71502ec361004079e0962d8bc6433316a4ba81
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90007634"
 ---
 # <a name="moving-azure-resources-across-regions"></a>Přesun prostředků Azure napříč oblastmi
@@ -25,7 +25,7 @@ Po nasazení prostředků v konkrétní oblasti Azure existuje několik důvodů
 - **Zarovnání pro služby/funkce**: přesunout prostředky, abyste mohli využívat služby nebo funkce, které jsou k dispozici v konkrétní oblasti.
 - **Reakce na obchodní vývoj**: Přesunutí prostředků do oblasti v reakci na změny v podniku, jako je fúze nebo akvizice.
 - **Zarovnání k blízkosti**: Přesunutí prostředků do místní oblasti do vaší firmy.
-- **Splnění požadavků na data**: Přesunutí prostředků, aby se daly v souladu s požadavky na data a nároky na data a klasifikace dat. [Přečtěte si další informace](https://azure.microsoft.com/mediahandler/files/resourcefiles/achieving-compliant-data-residency-and-security-with-azure/Achieving_Compliant_Data_Residency_and_Security_with_Azure.pdf).
+- **Splnění požadavků na data**: Přesunutí prostředků, aby se daly v souladu s požadavky na data a nároky na data a klasifikace dat. [Další informace](https://azure.microsoft.com/mediahandler/files/resourcefiles/achieving-compliant-data-residency-and-security-with-azure/Achieving_Compliant_Data_Residency_and_Security_with_Azure.pdf).
 - **Reakce na požadavky na nasazení**: přesunout prostředky, které byly nasazeny chybně, nebo je přesunout v reakci na kapacitu kapacity. 
 - **Reakce na vyřazení z provozu**: Přesunutí prostředků z důvodu vyřazení oblastí z provozu.
 
@@ -42,8 +42,8 @@ Prostředky můžete přesunout do jiné oblasti pomocí programu [Azure Resourc
 
 Prostředky můžete přesunout do jiné oblasti pomocí několika různých metod:
 
-- **Zahájení přesouvání prostředků ze skupiny prostředků**: s touto metodou jste v rámci skupiny prostředků aktivovali přesunutí oblasti. Po výběru prostředků, které chcete přesunout, proces pokračuje v centru zdrojů pro kontrolu závislostí prostředků a orchestruje proces přesunutí. [Přečtěte si další informace](../../resource-mover/move-region-within-resource-group.md).
-- **Začněte přesouvat prostředky přímo z centra pro**podávání prostředků: s touto metodou jste v oblasti přesunuli proces přesunutí přímo do centra. [Přečtěte si další informace](../../resource-mover/tutorial-move-region-virtual-machines.md).
+- **Zahájení přesouvání prostředků ze skupiny prostředků**: s touto metodou jste v rámci skupiny prostředků aktivovali přesunutí oblasti. Po výběru prostředků, které chcete přesunout, proces pokračuje v centru zdrojů pro kontrolu závislostí prostředků a orchestruje proces přesunutí. [Další informace](../../resource-mover/move-region-within-resource-group.md).
+- **Začněte přesouvat prostředky přímo z centra pro**podávání prostředků: s touto metodou jste v oblasti přesunuli proces přesunutí přímo do centra. [Další informace](../../resource-mover/tutorial-move-region-virtual-machines.md).
 
 
 ## <a name="support-for-region-move"></a>Podpora pro přesun oblasti

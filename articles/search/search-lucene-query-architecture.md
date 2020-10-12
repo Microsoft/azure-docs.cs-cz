@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329478"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Fulltextové vyhledávání v Azure Kognitivní hledání
@@ -251,7 +251,7 @@ To je běžné, ale nevyžadují se pro použití stejných analyzátorů pro op
 
 Návrat do našeho příkladu pro pole **title** má obrácený index vypadat takto:
 
-| Období | Seznam dokumentů |
+| Označení | Seznam dokumentů |
 |------|---------------|
 | atman | 1 |
 | míčů | 2 |
@@ -265,7 +265,7 @@ V poli title se pouze *Hotel* zobrazuje ve dvou dokumentech: 1, 3.
 
 Pro pole **Popis** je index následující:
 
-| Období | Seznam dokumentů |
+| Označení | Seznam dokumentů |
 |------|---------------|
 | letové | 3
 | a | 4

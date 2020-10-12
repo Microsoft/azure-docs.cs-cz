@@ -4,10 +4,10 @@ description: Získejte odpovědi na běžné otázky týkající se použití mi
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275536"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migrace Azure Migrate serveru: běžné otázky
@@ -131,7 +131,7 @@ Pro metodu replikace založenou na agentovi může Plánovač nasazení pomáhat
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Návody omezení replikace při používání zařízení Azure Migrate pro bezagentskou replikaci VMware?  
 
-Můžete omezit pomocí NetQosPolicy. Příklad:
+Můžete omezit pomocí NetQosPolicy. Například:
 
 AppNamePrefix pro použití v NetQosPolicy je "GatewayWindowsService.exe". Můžete vytvořit zásadu na zařízení Azure Migrate, abyste omezili provoz replikace ze zařízení tím, že vytvoříte zásadu, jako je tato:
 
@@ -199,7 +199,7 @@ Po zastavení replikace nástroj Azure Migrate: Server Migration Tool vyčistí 
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Potřebuji pro migraci virtuálních počítačů VMware Server VMware vCenter?
 
-Pokud chcete [migrovat virtuální počítače VMware](server-migrate-overview.md) pomocí agenta VMware nebo migrace bez agentů, musí být hostitelé ESXi, na kterých jsou virtuální počítače umístěné, spravované pomocí vCenter Server. Pokud nemáte vCenter Server, můžete migrovat virtuální počítače VMware tak, že je migrujete jako fyzické servery. [Přečtěte si další informace](migrate-support-matrix-physical-migration.md).
+Pokud chcete [migrovat virtuální počítače VMware](server-migrate-overview.md) pomocí agenta VMware nebo migrace bez agentů, musí být hostitelé ESXi, na kterých jsou virtuální počítače umístěné, spravované pomocí vCenter Server. Pokud nemáte vCenter Server, můžete migrovat virtuální počítače VMware tak, že je migrujete jako fyzické servery. [Další informace](migrate-support-matrix-physical-migration.md).
 
 ## <a name="can-i-upgrade-my-os-while-migrating"></a>Můžu upgradovat operační systém při migraci?
 

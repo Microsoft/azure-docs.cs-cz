@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2020
 ms.openlocfilehash: 7b4d00e8c0366d10fddafa66db699c1a59fd9ad7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83659786"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Nasazení a volání vlastních rozhraní API z pracovních postupů v Azure Logic Apps
@@ -27,7 +27,7 @@ Předtím, než budete moci volat vlastní rozhraní API z aplikace logiky, nasa
 
 2. V nabídce aplikace, která se otevře, vyberte v části **rozhraní API** **definice rozhraní API**. Nastavte **umístění definice rozhraní API** na adresu URL vašeho swagger.jsv souboru.
 
-   Adresa URL se obvykle zobrazuje v tomto formátu:`https://{name}.azurewebsites.net/swagger/docs/v1)`
+   Adresa URL se obvykle zobrazuje v tomto formátu: `https://{name}.azurewebsites.net/swagger/docs/v1)`
 
    ![Odkaz na dokument Swagger pro vaše vlastní rozhraní API](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
 

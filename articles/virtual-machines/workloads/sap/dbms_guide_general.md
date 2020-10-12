@@ -16,10 +16,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4ac3a43776ee71716e618d7a1698aa1915d3d1b7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331348"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP
@@ -115,7 +115,7 @@ Pokud chcete postupovat podle této kapitoly, přečtěte si informace uvedené 
 - [Který software SAP se podporuje pro nasazení Azure](./sap-supported-product-on-azure.md)
 - [Podporované scénáře pro úlohy SAP na virtuálních počítačích Azure](./sap-planning-supported-configurations.md) 
 
-Před čtením této kapitoly musíte pochopit a znát různé řady virtuálních počítačů a rozdíl mezi úložištěm Standard a Premium. 
+Před čtením této kapitoly musíte pochopit a znát různé VM-Series a rozdíly mezi úložištěm Standard a Premium. 
 
 U blokového úložiště Azure se důrazně doporučuje použití Azure Managed disks. Podrobnosti o službě Azure Managed disks najdete v článku [Úvod ke spravovaným diskům pro virtuální počítače Azure](../../managed-disks-overview.md).
 
@@ -309,7 +309,7 @@ Tyto osvědčené postupy jsou výsledkem stovek nasazení zákazníků:
 > Další scénáře, ve kterých nejsou síťová virtuální zařízení podporovaná, jsou v:
 >
 > * Cesty komunikace mezi virtuálními počítači Azure, které reprezentují uzly clusteru Linux Pacemaker a SBD zařízení, jak je popsáno v tématu [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP](./high-availability-guide-suse.md).
-> * Cesty komunikace mezi virtuálními počítači Azure a Windows Server Souborový server se škálováním na více systémů (SOFS) nastavené tak, jak se popisuje v tématu [cluster instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdílené složky v Azure](./sap-high-availability-guide-wsfc-file-share.md). 
+> * Cesty komunikace mezi virtuálními počítači Azure a souborovým serverem Windows Server Scale-Out (SOFS), jak je popsáno v tématu vytvoření [instance SAP ASCS/SCS v clusteru Windows s podporou převzetí služeb při selhání pomocí sdílené složky v Azure](./sap-high-availability-guide-wsfc-file-share.md). 
 >
 > Síťová virtuální zařízení v cestách komunikace můžou snadno zdvojnásobit latenci sítě mezi dvěma komunikačními partnery. Můžou taky omezit propustnost v kritických cestách mezi aplikační vrstvou SAP a vrstvou DBMS. V některých scénářích zákazníků může síťová virtuální zařízení způsobit selhání clusterů Pacemaker Linux. Jedná se o případy, kdy komunikace mezi uzly clusteru Pacemaker Linux komunikuje se svým zařízením SBD prostřednictvím síťového virtuálního zařízení.
 >

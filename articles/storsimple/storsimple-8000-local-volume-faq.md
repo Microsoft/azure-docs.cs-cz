@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
 ms.openlocfilehash: 483fa81b409e1bd740af85b431a86b6c814831e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85511514"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple místně připnuté svazky: nejčastější dotazy
@@ -52,9 +52,9 @@ Vzhledem k tomu, že se k hostování pracovní sady vrstvených svazků použí
 | 1 TB |176,5 TB |477,8 TB |
 | 4 TB |105,9 TB |411,1 TB |
 | 8,5 TB |0 TB |311,1 TB |
-| 10 TB |NA |277,8 TB |
-| 15 TB |NA |166,7 TB |
-| 22,5 TB |NA |0 TB |
+| 10 TB |Není k dispozici |277,8 TB |
+| 15 TB |Není k dispozici |166,7 TB |
+| 22,5 TB |Není k dispozici |0 TB |
 
 **Č.** Proč je místně připnuté vytvoření svazku dlouhodobě běžící operace?
 

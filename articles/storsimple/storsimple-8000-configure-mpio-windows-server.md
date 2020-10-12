@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
 ms.openlocfilehash: cc88d5b7a458c3666cdb4469d7021917d27115f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514343"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Konfigurace funkce Multipath I/O pro zařízení StorSimple
@@ -58,15 +58,15 @@ Pokud chcete tuto funkci nainstalovat na hostitele Windows serveru, proveďte n�
 3. V průvodci **přidáním rolí a funkcí** proveďte následující kroky:
    
    1. Na stránce **Než začnete** klikněte na **Další**.
-   2. Na stránce **Vybrat typ instalace** přijměte výchozí nastavení instalace na **základě rolí nebo na základě funkcí** . Klikněte na **Další**.
+   2. Na stránce **Vybrat typ instalace** přijměte výchozí nastavení instalace na **základě rolí nebo na základě funkcí** . Klikněte na **Next** (Další).
    
        ![Průvodce přidáním rolí a funkcí 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
-   3. Na stránce **Vybrat cílový server** zvolte **možnost vybrat server z fondu serverů**. Hostitelský server by měl být zjištěn automaticky. Klikněte na **Další**.
+   3. Na stránce **Vybrat cílový server** zvolte **možnost vybrat server z fondu serverů**. Hostitelský server by měl být zjištěn automaticky. Klikněte na **Next** (Další).
    4. Na stránce **Vybrat role serveru** klikněte na **Další**.
    5. Na stránce **Vybrat funkce** vyberte možnost **Multipath I/O**a klikněte na tlačítko **Další**.
    
        ![Průvodce přidáním rolí a funkcí 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
-   6. Na stránce **Potvrdit vybrané možnosti instalace** potvrďte výběr a v **případě potřeby vyberte možnost restartovat cílový server automaticky**, jak je uvedeno níže. Klikněte na **nainstalovat**.
+   6. Na stránce **Potvrdit vybrané možnosti instalace** potvrďte výběr a v **případě potřeby vyberte možnost restartovat cílový server automaticky**, jak je uvedeno níže. Klikněte na **Install** (Nainstalovat).
    
        ![Průvodce přidáním rolí a funkcí 8](./media/storsimple-configure-mpio-windows-server/IC741001.png)
    7. Po dokončení instalace se zobrazí oznámení. Průvodce zavřete kliknutím na **Zavřít**.

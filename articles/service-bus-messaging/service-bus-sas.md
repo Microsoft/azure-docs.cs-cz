@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/30/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fb90b2ae290752753b58b5e96c6c8a8b23f4c168
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89012071"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu Service Bus pomocí sdílených přístupových podpisů
@@ -181,7 +181,7 @@ Pokud odesilateli nebo klientovi poskytnete token SAS, nemá klíč přímo a ne
 
 ## <a name="use-the-shared-access-signature-at-amqp-level"></a>Použití sdíleného přístupového podpisu (na úrovni AMQP)
 
-V předchozí části jste viděli, jak použít token SAS s požadavkem HTTP POST k odesílání dat do Service Bus. Jak víte, můžete k Service Bus přistupovat pomocí rozšířený protokol řízení front zpráv (AMQP) (AMQP), které jsou preferovaným protokolem k použití z důvodů výkonu, a to v mnoha scénářích. Využití tokenu SAS v AMQP je popsané v dokumentu [AMQP zabezpečení založeném na deklaracích identity 1,0](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) , který je v pracovním konceptu od 2013, ale podporuje Azure ještě dnes.
+V předchozí části jste viděli, jak použít token SAS s požadavkem HTTP POST k odesílání dat do Service Bus. Jak víte, můžete k Service Bus přistupovat pomocí rozšířený protokol řízení front zpráv (AMQP) (AMQP), které jsou preferovaným protokolem k použití z důvodů výkonu, a to v mnoha scénářích. Použití tokenu SAS v AMQP je popsané v dokumentu [AMQP Claim-Based Security verze 1,0](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) , který je v pracovním konceptu od 2013, ale podporuje ho Azure ještě dnes.
 
 Předtím, než začnete odesílat data do Service Bus, musí vydavatel odeslat token SAS v rámci zprávy AMQP do dobře definovaného uzlu AMQP s názvem **$CBS** (můžete ho zobrazit jako "speciální" frontu, kterou služba používá k získání a ověření všech tokenů SAS. Vydavatel musí ve zprávě AMQP zadat pole **ReplyTo** ; Jedná se o uzel, ve kterém služba reaguje na vydavatele s výsledkem ověření tokenu (jednoduchý vzor žádosti a odpovědi mezi vydavatelem a službou). Tento uzel odpovědi se vytvoří průběžně, mluví o dynamickém vytváření vzdáleného uzlu, jak je popsáno ve specifikaci AMQP 1,0. Po kontrole platnosti tokenu SAS může vydavatel přejít do služby a začít posílat data.
 
@@ -257,7 +257,7 @@ Následující tabulka uvádí přístupová práva požadovaná pro různé ope
 
 | Operace | Požadovaná deklarace identity | Rozsah deklarací identity |
 | --- | --- | --- |
-| **Hosting** | | |
+| **Obor názvů** | | |
 | Konfigurace autorizačního pravidla pro obor názvů |Spravovat |Libovolná adresa oboru názvů |
 | **Registr služby** | | |
 | Zobrazení výčtu privátních zásad |Spravovat |Libovolná adresa oboru názvů |
@@ -277,7 +277,7 @@ Následující tabulka uvádí přístupová práva požadovaná pro různé ope
 | Získání stavu přidruženého k relaci fronty zpráv |Naslouchat |Libovolná platná adresa fronty |
 | Nastavení stavu přidruženého k relaci fronty zpráv |Naslouchat |Libovolná platná adresa fronty |
 | Naplánování zprávy pro pozdější doručení; například [ScheduleMessageAsync ()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Naslouchat | Libovolná platná adresa fronty
-| **Výklad** | | |
+| **Téma** | | |
 | Vytvoření tématu |Spravovat |Libovolná adresa oboru názvů |
 | Odstranění tématu |Spravovat |Jakákoli platná adresa tématu |
 | Vyčíslení výčtu témat |Spravovat |/Topics $Resources |

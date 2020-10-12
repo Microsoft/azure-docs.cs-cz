@@ -4,10 +4,10 @@ description: Naučte se, jak přepínat Cluster Service Fabric, aby používal k
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: a90290430616302dbbe9ab9cf717510070936529
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247910"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Změna z kryptografického otisku certifikátu clusteru na běžný název

@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
 ms.openlocfilehash: 3ee59226853f4ea5aabf57a8866ba014aa874774
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706196"
 ---
 # <a name="branding-guidelines-for-applications"></a>Pokyny pro branding aplikací
@@ -67,7 +67,7 @@ Jakmile správci souhlasí s vaší aplikací, můžou se rozhodnout přidat je 
 
 ![Tlačítko, které zobrazuje text loga Microsoftu a "Přidat k mojí organizaci"](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Příklad:
+Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Například:
 
 > *Pokud už používáte Microsoft 365 nebo jiné obchodní služby od Microsoftu, můžete <your_app_name udělit> přístup k datům vaší organizace. Uživatelé tak budou mít přístup k <your_app_name> se stávajícími pracovními účty.*
 

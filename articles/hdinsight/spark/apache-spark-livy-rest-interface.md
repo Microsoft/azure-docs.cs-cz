@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: e5ed8fd2eba175a170c12c032e7c6ecf6a926b64
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084609"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Odesílání vzdálených úloh do clusteru HDInsight Spark pomocí rozhraní Apache Spark REST API
@@ -97,7 +97,7 @@ V této části se podíváme na příklady, jak pomocí Livy Spark odeslat dáv
 * Už jste zkopírovali přes jar aplikace do účtu úložiště přidruženého ke clusteru.
 * Nastavili jste na počítač, na který se pokoušíte tyto kroky, máte nainstalovanou svou práci.
 
-Proveďte následující kroky:
+Proveďte tyto kroky:
 
 1. Pro snadné použití nastavte proměnné prostředí. Tento příklad je založený na prostředí Windows, podle potřeby si můžete prohlédnout proměnné, které jsou potřeba pro vaše prostředí. Nahraďte `CLUSTERNAME` a `PASSWORD` příslušnými hodnotami.
 

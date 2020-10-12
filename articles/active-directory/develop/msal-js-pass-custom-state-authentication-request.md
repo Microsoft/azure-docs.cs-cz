@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 840c371e63aacf8ef410cbf84cc9f68137dd77df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85477579"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Předání vlastního stavu v žádostech o ověření pomocí MSAL.js
@@ -46,12 +46,12 @@ export type AuthenticationParameters = {
 
 > [!Note]
 > Pokud chcete přeskočit token z mezipaměti a přejít na server, předejte prosím logickou hodnotu `forceRefresh` do objektu AuthenticationParameters, který se používá k vytvoření žádosti o přihlášení nebo token.
-> `forceRefresh`by neměl být ve výchozím nastavení použit, protože má vliv na výkon vaší aplikace.
+> `forceRefresh` by neměl být ve výchozím nastavení použit, protože má vliv na výkon vaší aplikace.
 > Spoléhání se na mezipaměť, aby vaši uživatelé měli lepší zkušenosti.
 > Přeskočení mezipaměti by mělo být použito pouze ve scénářích, kde víte, že data aktuálně uložených v mezipaměti nemají aktuální informace.
 > Například nástroj pro správu, který přidává role uživateli, který potřebuje získat nový token s aktualizovanými rolemi.
 
-Příklad:
+Například:
 
 ```javascript
 let loginRequest = {

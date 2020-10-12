@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
 ms.openlocfilehash: 6c1bbe48ca5205cf1db49d67a711e9a7523e1845
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88077114"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Používání modulů Node.js s aplikacemi Azure
@@ -64,7 +64,7 @@ Jedním z možných problémů s **package.jsv** souboru je, že určuje pouze v
 > [!NOTE]
 > Při nasazení na Azure App Service, pokud <b>package.jsna</b> soubor odkazuje na nativní modul, může se při publikování aplikace pomocí Gitu zobrazit chybová zpráva podobná následujícímu příkladu:
 >
-> NPM ERR! module-name@0.6.0instalace: node-gyp Configure Build
+> NPM ERR! module-name@0.6.0 instalace: node-gyp Configure Build
 >
 > NPM ERR! příkaz "cmd"/c "Node-gyp Configure Build" se nezdařil. 1
 >
@@ -78,14 +78,14 @@ Když je vaše aplikace připravená na produkční prostředí, můžete uzamkn
 > [!NOTE]
 > Při nasazení na Azure App Service, pokud <b>npm-shrinkwrap.jsna</b> soubor odkazuje na nativní modul, může se při publikování aplikace pomocí Gitu zobrazit chybová zpráva podobná následujícímu příkladu:
 >
-> NPM ERR! module-name@0.6.0instalace: node-gyp Configure Build
+> NPM ERR! module-name@0.6.0 instalace: node-gyp Configure Build
 >
 > NPM ERR! příkaz "cmd"/c "Node-gyp Configure Build" se nezdařil. 1
 >
 >
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste pochopili, jak používat Node.js moduly s Azure, se naučíte, jak [určit Node.js verzi](https://github.com/squillace/nodejs-microservice), [sestavit a nasadit Node.js webovou aplikaci](app-service/quickstart-nodejs.md)a [Jak používat rozhraní příkazového řádku Azure pro Mac a Linux](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
+Teď, když jste se seznámili s používáním modulů Node.js s Azure, se naučíte, jak [určit Node.js verzi](https://github.com/squillace/nodejs-microservice), [sestavit a nasadit Node.js webovou aplikaci](app-service/quickstart-nodejs.md)a [Jak používat rozhraní Azure Command-Line pro Mac a Linux](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
 
 Další informace najdete ve [Středisku pro vývojáře Node.js](/azure/developer/javascript/).
 

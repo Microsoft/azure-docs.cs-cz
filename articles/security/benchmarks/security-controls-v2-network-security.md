@@ -8,10 +8,10 @@ ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 9833f63d999ab7c24174853bd37f4e7a76f6dfbf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329427"
 ---
 # <a name="security-control-v2-network-security"></a>Řízení zabezpečení v2: zabezpečení sítě
@@ -116,7 +116,7 @@ Chraňte prostředky Azure před útoky z externích sítí, včetně útoků di
 -   Chraňte své prostředky proti útokům DDoS tím, že ve svých virtuálních sítích Azure povolíte standardní ochranu DDoS. 
 -   K detekci rizik s konfigurací, které souvisí s výše uvedeným, použijte Azure Security Center. 
 
-- [Dokumentace brány Azure Firewall](/azure/firewall/)
+- [Dokumentace k Azure Firewall](/azure/firewall/)
 
 - [Jak nasadit Azure WAF](../../web-application-firewall/overview.md)
 

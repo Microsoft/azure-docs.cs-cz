@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 37faf5d8e6292844245f475d9fcf0f832a0cca10
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439993"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy a nástroje pro projekty pro datové vědy
@@ -83,7 +83,7 @@ Apache Hive je systém datového skladu pro Hadoop, který umožňuje sumarizaci
 
 Podregistr umožňuje strukturování struktury na základě nestrukturovaných dat. Po definování struktury můžete použít podregistr k dotazování těchto dat v clusteru Hadoop bez nutnosti používat nebo dokonce znát jazyk Java nebo MapReduce. HiveQL (dotazovací jazyk podregistru) umožňuje zapisovat dotazy s příkazy, které jsou podobné T-SQL.
 
-Pro odborníky přes data může podregistr spouštět uživatelsky definované funkce (UDF) Pythonu v dotazech podregistru ke zpracování záznamů. Tato možnost výrazně rozšiřuje možnosti dotazů na podregistry v analýze dat. Konkrétně umožňuje, aby odborníci na data prováděli škálovatelné řízení funkcí v jazycích, které jsou většinou obeznámené s: SQL jako HiveQL a Python. 
+Pro odborníky přes data může podregistr spustit Python User-Defined Functions (UDF) v dotazech podregistru pro zpracování záznamů. Tato možnost výrazně rozšiřuje možnosti dotazů na podregistry v analýze dat. Konkrétně umožňuje, aby odborníci na data prováděli škálovatelné řízení funkcí v jazycích, které jsou většinou obeznámené s: SQL jako HiveQL a Python. 
 
 Další informace o clusterech podregistrů Azure HDInsight najdete v tématu [použití podregistru a HiveQL se systémem Hadoop ve službě HDInsight](../../hdinsight/hadoop/hdinsight-use-hive.md). Další informace o tom, jak vytvořit škálovatelné řešení pro datové vědy s clustery Azure HDInsight, najdete v článku [vědecké zpracování týmových dat v akci: používání clusterů HDInsight Hadoop](hive-walkthrough.md).
 

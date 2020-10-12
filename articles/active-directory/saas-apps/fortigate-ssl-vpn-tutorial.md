@@ -16,10 +16,10 @@ ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 187903bfbf75ada45b9a539acd1157dfe730747a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331110"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s protokolem SSL VPN FortiGate
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak integrovat FortiGate SSL VPN s Azure Active Direc
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -77,11 +77,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **VPN Fortigate SSL** v části **Spravovat** vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte tlačítko tužky pro **základní konfiguraci SAML** a upravte nastavení:
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte tlačítko tužky pro **základní konfiguraci SAML** a upravte nastavení:
 
    ![Snímek obrazovky, který zobrazuje tlačítko tužky pro úpravu základní konfigurace SAML.](common/edit-urls.png)
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** zadejte následující hodnoty:
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML zadejte následující hodnoty:
 
     a. Do pole **přihlašovací adresa URL** zadejte adresu URL ve vzoru `https://<FQDN>/remote/login` .
 
@@ -118,7 +118,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
    1. Jako **název**zadejte **Skupina**.
    1. Vyberte **Uložit**.   
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte odkaz **ke stažení** vedle **certifikátu (Base64)** a Stáhněte certifikát a uložte ho do počítače:
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** vyberte odkaz **ke stažení** vedle **certifikátu (Base64)** a Stáhněte certifikát a uložte ho do počítače:
 
     ![Snímek obrazovky, který zobrazuje odkaz na stažení certifikátu.](common/certificatebase64.png)
 

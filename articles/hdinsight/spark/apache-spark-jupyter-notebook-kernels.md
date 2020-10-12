@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: 8c3993d8208a9a9e2ab54be44d88de0b20a2e586
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084711"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jádra pro Poznámkový blok Jupyter na clusterech s Apache Spark ve službě Azure HDInsight
@@ -52,7 +52,7 @@ Cluster Apache Spark v HDInsight. Pokyny najdete v tématu [Vytváření cluster
 
 Tady je několik výhod používání nových jader s poznámkovým blokem Jupyter v clusterech Spark HDInsight.
 
-- **Přednastavené kontexty**. V prostředích **PySpark**, **PySpark3**nebo **Sparku** nemusíte před zahájením práce s aplikacemi nastavovat kontexty Sparku nebo podregistru explicitně. Tyto kontexty jsou ve výchozím nastavení k dispozici. Tyto kontexty jsou:
+- **Přednastavené kontexty**. V prostředích  **PySpark**, **PySpark3**nebo **Sparku** nemusíte před zahájením práce s aplikacemi nastavovat kontexty Sparku nebo podregistru explicitně. Tyto kontexty jsou ve výchozím nastavení k dispozici. Tyto kontexty jsou:
 
   - **SC** – pro kontext Spark
   - **kontext SqlContext** – pro kontext podregistru
@@ -74,7 +74,7 @@ Tady je několik výhod používání nových jader s poznámkovým blokem Jupyt
    | --- | --- | --- |
    | Nápověda |`%%help` |Vygeneruje tabulku všech dostupných MAGICS s příkladem a popisem. |
    | příjemce |`%%info` |Vytvoří výstup informací o relaci pro aktuální koncový bod Livy. |
-   | Konfigurace |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfiguruje parametry pro vytvoření relace. Příznak Force ( `-f` ) je povinný, pokud už je relace vytvořená, což zajistí, že se relace vynechá a znovu vytvoří. Seznam platných parametrů najdete v [textu žádosti post/Sessions pro Livy](https://github.com/cloudera/livy#request-body) . Parametry musí být předány jako řetězec JSON a musí být na dalším řádku po Magic, jak je znázorněno v příkladu sloupce. |
+   | konfigurace |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfiguruje parametry pro vytvoření relace. Příznak Force ( `-f` ) je povinný, pokud už je relace vytvořená, což zajistí, že se relace vynechá a znovu vytvoří. Seznam platných parametrů najdete v [textu žádosti post/Sessions pro Livy](https://github.com/cloudera/livy#request-body) . Parametry musí být předány jako řetězec JSON a musí být na dalším řádku po Magic, jak je znázorněno v příkladu sloupce. |
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Spustí dotaz na podregistr pro kontext SqlContext. Pokud `-o` je předán parametr, výsledek dotazu je trvalý v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. |
    | local |`%%local`<br>`a=1` |Veškerý kód v pozdějších řádcích se spustí místně. Kód musí být platný kód Python2 bez ohledu na to, kterou jádro používáte. Takže i když jste při vytváření poznámkového bloku vybrali jádro **PySpark3** nebo **Spark** , v případě, `%%local` že jste v buňce použili Magic, musí mít tato buňka platný Python2 kód. |
    | Protokoly |`%%logs` |Vytvoří výstup protokolů pro aktuální relaci Livy. |
@@ -125,7 +125,7 @@ Pokud váš cluster používá Azure Storage jako výchozí účet úložiště,
 
 Způsob ukládání poznámkových bloků do účtu úložiště je kompatibilní s [Apache HADOOP HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html). Pokud ke clusteru použijete SSH, můžete použít příkazy pro správu souborů:
 
-| Příkaz | Description |
+| Příkaz | Popis |
 |---------|-------------|
 | `hdfs dfs -ls /HdiNotebooks` | # Seznam všeho v kořenovém adresáři – všechno, co je v tomto adresáři viditelné, se Jupyter z domovské stránky. |
 | `hdfs dfs –copyToLocal /HdiNotebooks` | # Stažení obsahu složky HdiNotebooks|

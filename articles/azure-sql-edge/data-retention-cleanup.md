@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
 ms.openlocfilehash: 45ce874ffb626f63b2239c66afdefd091114cbd2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888127"
 ---
 # <a name="manage-historical-data-with-retention-policy"></a>Správa historických dat pomocí zásad uchovávání informací
@@ -79,7 +79,7 @@ Následující šest rozšířených událostí vám pomůžou sledovat stav ope
 | data_retention_cleanup_exception  | Dojde k chybě procesu čištění tabulky se zásadami uchovávání informací. |
 | data_retention_cleanup_completed  | Vyvolá se v případě, že dojde k ukončení procesu čištění tabulky se zásadami uchovávání dat. |  
 
-`RING_BUFFER_DATA_RETENTION_CLEANUP`Do zobrazení sys. dm_os_ring_buffers dynamické správy se přidal nový typ kruhové vyrovnávací paměti s názvem. Toto zobrazení lze použít k monitorování operací čištění uchovávání dat. 
+Kromě toho `RING_BUFFER_DATA_RETENTION_CLEANUP` byl do sys.dm_os_ring_buffers zobrazení dynamické správy přidán nový typ kruhové vyrovnávací paměti s názvem. Toto zobrazení lze použít k monitorování operací čištění uchovávání dat. 
 
 
 ## <a name="next-steps"></a>Další kroky

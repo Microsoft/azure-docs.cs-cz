@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: d0cffbd1fa09abef9853e0ef853696c3c8ed353c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86246805"
 ---
 # <a name="design-secure-applications-on-azure"></a>Návrh zabezpečených aplikací v Azure
@@ -25,11 +25,11 @@ V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které
 
 V tomto článku jsou uvedené tyto fáze SDL:
 
-- Probíhá trénování
+- Školení
 - Požadavky
 - Návrh
 
-## <a name="training"></a>Probíhá trénování
+## <a name="training"></a>Školení
 Než začnete vyvíjet cloudovou aplikaci, pochopíte si dobu zabezpečení a ochrany osobních údajů v Azure. Provedením tohoto kroku můžete snížit počet a závažnost zneužití ohrožení zabezpečení ve vaší aplikaci. Připravili jste příslušně na to, aby reagovala vhodně na na ni neustále se měnícím ohrožením.
 
 Během školení použijte následující zdroje, abyste se seznámili se službami Azure, které jsou dostupné vývojářům a s osvědčenými postupy zabezpečení v Azure:

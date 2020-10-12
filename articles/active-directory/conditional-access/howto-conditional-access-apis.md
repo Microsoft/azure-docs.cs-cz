@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 33f3766e02316eccb519bea15246541531750ed1
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90007995"
 ---
 # <a name="conditional-access-programmatic-access"></a>Podmíněný přístup: programový přístup
@@ -56,19 +56,19 @@ Tento příklad modeluje bezpečnější postupy nasazení s pracovními postupy
 
 - [Zvýšení úrovně zásad podmíněného přístupu z testovacích prostředí](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/02-test)
 
-## <a name="deploy"></a>Nasazení
+## <a name="deploy"></a>Nasadit
 
 V tomto příkladu je k dispozici mechanismus pro postupné provádění zásad podmíněného přístupu k naplnění uživatelů, což vám umožní včas spravovat dopad na podporu a odhalit problémy.
 
 - [Nasazení zásad podmíněného přístupu do produkčních prostředí s pracovními postupy schvalování](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/03-deploy)
 
-## <a name="monitor"></a>Monitorování
+## <a name="monitor"></a>Monitor
 
 Tento příklad poskytuje mechanismus pro monitorování změn zásad podmíněného přístupu v průběhu času a může aktivovat upozornění při změně klíčových zásad.
 
 - [Monitorování nasazených zásad podmíněného přístupu pro změny a aktivační výstrahy](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/04-monitor)
 
-## <a name="manage"></a>Správa
+## <a name="manage"></a>Spravovat
 
 ### <a name="backup-and-restore"></a>Zálohování a obnovení
 

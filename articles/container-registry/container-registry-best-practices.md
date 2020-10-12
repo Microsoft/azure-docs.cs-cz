@@ -4,10 +4,10 @@ description: Zjistěte, jak pomocí těchto osvědčených postupů efektivně p
 ms.topic: article
 ms.date: 09/27/2018
 ms.openlocfilehash: fc84fb8cb98f58e28570095370d55a7358ce3a99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83682685"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Osvědčené postupy pro službu Azure Container Registry

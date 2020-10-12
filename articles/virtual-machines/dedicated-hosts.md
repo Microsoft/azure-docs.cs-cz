@@ -9,10 +9,10 @@ ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
 ms.openlocfilehash: 351b10b68cf1c014d358032f41bb01ac1093bd68
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91373092"
 ---
 # <a name="azure-dedicated-hosts"></a>Vyhrazení hostitelé Azure
@@ -172,7 +172,7 @@ Typy velikosti a hardwaru se v jednotlivých oblastech liší. Další informace
 
 Azure monitoruje a spravuje stav hostitelů. Při dotazování hostitele se vrátí následující stavy:
 
-| Stav   | Popis       |
+| Stav   | Description       |
 |----------|----------------|
 | Dostupný hostitel     | Neexistují žádné známé problémy s hostitelem.   |
 | Hostitel v rámci šetření  | Máme nějaké problémy s hostitelem, který se chystáme najít. Toto je přechodný stav nutný k tomu, aby Azure mohl vyzkoušet a identifikovat rozsah a hlavní příčinu zjištěného problému. Může to mít vliv na virtuální počítače, které běží na hostiteli. |

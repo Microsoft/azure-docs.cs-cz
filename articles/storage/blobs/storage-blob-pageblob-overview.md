@@ -11,21 +11,21 @@ ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 542c9374b70cd765ed27dd4dd158ad81035269f0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89018837"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Přehled objektů blob stránky Azure
 
 Azure Storage nabízí tři typy úložiště objektů BLOB: objekty blob bloku, doplňovací objekty BLOB a objekty blob stránky. Objekty blob bloku se skládají z bloků a jsou ideální pro ukládání textových nebo binárních souborů a pro efektivní nahrávání velkých souborů. Doplňovací objekty BLOB se také skládají z bloků, ale jsou optimalizované pro operace připojení, které jsou ideální pro scénáře protokolování. Objekty blob stránky se skládají z 512 bajtů stránek o velikosti až 8 TB a jsou navržené pro časté operace náhodného čtení a zápisu. Objekty blob stránky jsou základem disků Azure IaaS. Tento článek se zaměřuje na vysvětlení funkcí a výhod objektů blob stránky.
 
-Objekty blob stránky jsou kolekcí 512 stránek, které poskytují možnost číst a zapisovat libovolné rozsahy bajtů. Objekty blob stránky jsou proto ideální pro ukládání indexových a zhuštěných datových struktur, jako jsou operační systémy a datové disky pro Virtual Machines a databáze. Azure SQL DB například používá objekty blob stránky jako základní trvalé úložiště pro své databáze. Kromě toho jsou objekty blob stránky často používány pro soubory s aktualizacemi založenými na rozsahu.  
+Objekty blob stránky jsou kolekcí 512 stránek, které poskytují možnost číst a zapisovat libovolné rozsahy bajtů. Objekty blob stránky jsou proto ideální pro ukládání indexových a zhuštěných datových struktur, jako jsou operační systémy a datové disky pro Virtual Machines a databáze. Azure SQL DB například používá objekty blob stránky jako základní trvalé úložiště pro své databáze. Kromě toho se objekty blob stránky často používají také pro soubory s Range-Based aktualizacemi.  
 
 Klíčové funkce objektů blob stránky Azure jsou rozhraní REST, odolnost základního úložiště a možnosti bezproblémové migrace do Azure. Tyto funkce jsou podrobněji popsány v následující části. Kromě toho se objekty blob stránky Azure v současné době podporují na dvou typech úložiště: Premium Storage a úložiště úrovně Standard. Premium Storage je navržená speciálně pro úlohy, které vyžadují konzistentní vysoký výkon a nízkou latenci vytváření objektů blob stránky úrovně Premium, které jsou ideální pro scénáře úložiště s vysokým výkonem. Účty úložiště úrovně Standard jsou cenově efektivnější pro spouštění úloh necitlivých na latenci.
 
-## <a name="sample-use-cases"></a>Příklady případů použití
+## <a name="sample-use-cases"></a>Ukázkové případy použití
 
 Pojďme si projednávat několik případů použití pro objekty blob stránky počínaje IaaS disky Azure. Objekty blob stránky Azure jsou páteřní platformou platformy virtuálních disků pro Azure IaaS. Operační systémy a datové disky Azure se implementují jako virtuální disky, kde se data trvale trvale na platformě Azure Storage a pak se doručí virtuálním počítačům pro maximální výkon. Disky Azure se ukládají ve [formátu virtuálního pevného disku](https://technet.microsoft.com/library/dd979539.aspx) Hyper-V a ukládají se jako [objekt blob stránky](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) v Azure Storage. Kromě používání virtuálních disků pro virtuální počítače Azure s IaaS můžou objekty blob stránky také povolit scénáře PaaS a DBaaS, jako je například služba Azure SQL DB, která aktuálně používá objekty blob stránky k ukládání dat SQL a umožňuje rychlé náhodné operace čtení a zápisu pro databázi. Dalším příkladem může být, že máte službu PaaS pro přístup ke sdílenému médiu pro aplikace pro úpravy videa pro spolupracovníky. objekty blob stránky umožňují rychlý přístup k náhodným umístěním v médiu. Umožňuje také rychlé a efektivní úpravy a sloučení stejného média více uživateli. 
 

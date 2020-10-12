@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 07/24/2020
 ms.openlocfilehash: a6e304e5ffeab8f0a44cbdfe1566465f2b9bf34a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88607421"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Integrujte svůj výpis na komerčním trhu s Azure Active Directory
@@ -33,11 +33,11 @@ Různé možnosti výpisu komerčního tržiště [a typy nabídek](determine-yo
 
 | Typ nabídky    | Služba Azure AD SSO vyžaduje, aby mě kontaktovala?  | Vyžaduje se jednotné přihlašování Azure AD pro zkušební verzi? | Vyžaduje se jednotné přihlašování Azure AD pro testovací jednotku?  | Pro Transact se vyžaduje jednotné přihlašování Azure AD. |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
-| Virtuální počítač | – | No | No | No |
+| Virtuální počítač | Není k dispozici | No | No | No |
 | Aplikace Azure (šablona řešení)  | N/A | N/A | N/A | N/A |
 | Spravované aplikace  | N/A | N/A | N/A | No |
 | SaaS  | No | Yes | Yes | Yes |
-| Containers  | N/A | N/A | N/A | No |
+| Kontejnery  | N/A | N/A | N/A | No |
 | Konzultační služby  | No | N/A | N/A | N/A |
 
 Další informace o technických požadavcích SaaS najdete v tématu [Azure AD a SaaS nabídky v obchodě na komerčním webu Marketplace](./azure-ad-saas.md).

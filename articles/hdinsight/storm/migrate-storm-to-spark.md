@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
 ms.openlocfilehash: e1262a4699bc42cb5b9a4398be2254854c5d5ff2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081192"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Migrace Azure HDInsight 3,6 Apache Storm do HDInsight 4,0 Apache Spark
@@ -33,9 +33,9 @@ Tento dokument poskytuje návod pro migraci z Apache Storm na streamování Spar
 
 ## <a name="comparison-between-apache-storm-and-spark-streaming-spark-structured-streaming"></a>Porovnání mezi Apache Storm a datovým proudem Spark, strukturované streamování Sparku
 
-Apache Storm můžete poskytovat různé úrovně zaručeného zpracování zprávy. Například základní aplikace pro zaplavení může zaručit alespoň jedno zpracování a [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) může zaručit přesně jedno zpracování. Datové proudy Spark a strukturované streamování Sparku zaručují, že jakákoli vstupní událost je zpracována přesně jednou, i když dojde k selhání uzlu. Operace displave má model, který zpracovává každou jednotlivou událost, a můžete také použít model mikrodávkování pomocí Trident. Streamování Sparku a strukturované streamování Spark poskytují model zpracování pro mikrodávkování.
+Apache Storm můžete poskytovat různé úrovně zaručeného zpracování zprávy. Například základní aplikace pro zaplavení může zaručit alespoň jedno zpracování a [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) může zaručit přesně jedno zpracování. Datové proudy Spark a strukturované streamování Sparku zaručují, že jakákoli vstupní událost je zpracována přesně jednou, i když dojde k selhání uzlu. Operace displave má model, který zpracovává každou jednotlivou událost, a můžete také použít model mikrodávkování pomocí Trident. Streamování Sparku a strukturované streamování Spark poskytují model Micro-Batchho zpracování.
 
-|  |Storm |Streamování Sparku | Strukturované streamování Sparku|
+|  |Bouře |Streamování Sparku | Strukturované streamování Sparku|
 |---|---|---|---|
 |**Záruka zpracování událostí**|Aspoň jednou <br> Právě jednou (Trident) |[Právě jednou](https://spark.apache.org/docs/latest/streaming-programming-guide.html)|[Právě jednou](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Model zpracování**|Reálný čas <br> Micro Batch (Trident) |Mikrodávka |Mikrodávka |
@@ -46,7 +46,7 @@ Apache Storm můžete poskytovat různé úrovně zaručeného zpracování zpr�
 
 Strukturované streamování Sparku nahrazuje Spark streamování (DStreams). Strukturované streamování bude nadále získávat vylepšení a údržbu, zatímco DStreams bude pouze v režimu údržby. **Poznámka: k zdůraznění tohoto bodu je potřeba mít odkazy**. Strukturované streamování nemá k dispozici tolik funkcí jako DStreams pro zdroje a jímky, které podporuje mimo pole. proto vyhodnoťte vaše požadavky a vyberte příslušnou možnost zpracování datového proudu Spark.
 
-## <a name="streaming-single-event-processing-vs-micro-batch-processing"></a>Zpracování datových proudů (jedna událost) vs. zpracování v mikrodávkách
+## <a name="streaming-single-event-processing-vs-micro-batch-processing"></a>Zpracování datových proudů (jedna událost) vs Micro-Batch zpracování
 
 Operace vyplavování poskytuje model, který zpracovává každou jednotlivou událost. To znamená, že všechny příchozí záznamy budou zpracovány ihned po doručení. Před odesláním této dávky ke zpracování musí aplikace streamování Sparku počkat na zlomek sekund a shromáždit každou mikrodávku událostí. Naproti tomu aplikace řízená událostmi zpracovává každou událost okamžitě. Latence streamování Sparku obvykle trvá několik sekund. Výhody mikrodávkového přístupu jsou efektivnější zpracování dat a jednodušší agregační výpočty.
 
@@ -57,7 +57,7 @@ Operace vyplavování poskytuje model, který zpracovává každou jednotlivou u
 
 Topologie Storm se skládají z několika součástí, které jsou uspořádány do orientovaného acyklického grafu (DAG). Data proudí mezi komponentami v grafu. Každá komponenta spotřebovává jeden či více datových streamů a případně může i jeden či více streamů vysílat.
 
-|Součást |Description |
+|Komponenta |Popis |
 |---|---|
 |Spout|Přinese data do topologie. Vysílají do topologie jeden nebo více datových proudů.|
 |Bolt|Spotřebovává datové proudy emitované z spoutů nebo jiného šrouby. Bolty mohou volitelně vysílat do topologie datové streamy. Bolty také odpovídají za zápis dat do externích služeb nebo úložiště, například HDFS, Kafka nebo HBase.|

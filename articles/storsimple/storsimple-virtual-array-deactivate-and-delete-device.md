@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: c787df901fc33c2dcd2c8a901202c72ea6de45d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513601"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Deaktivace a odstranění služby StorSimple Virtual Array
@@ -49,7 +49,7 @@ K deaktivaci zařízení proveďte následující kroky.
 1. V rámci služby přejdete na **správa > zařízení**. V okně **zařízení** klikněte na zařízení, které chcete deaktivovat, a vyberte ho.
    
     ![Vyberte zařízení, které chcete deaktivovat.](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
-2. V okně **řídicí panel zařízení** klikněte na **... **V seznamu vyberte možnost **deaktivovat**.
+2. V okně **řídicí panel zařízení** klikněte na **... ** V seznamu vyberte možnost **deaktivovat**.
    
     ![Klikněte na deaktivovat.](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete8.png)
 3. V okně **deaktivovat** zadejte název zařízení a klikněte na **deaktivovat**. 

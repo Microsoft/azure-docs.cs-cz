@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 5366da1048e7c6d9612ad8b6b1f1694068bb35fb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543023"
 ---
 # <a name="onboarding-and-installing"></a>Onboarding a instalace
@@ -48,9 +48,9 @@ Pokud splňujete výše uvedené kvalifikace, obraťte se na partnera z níže u
 
 >**Její**
 
-- Zóny – kontaktní údaje:cloudsupport@zones.com
-- Wortell – kontaktní údaje:info@wortell.nl
-- Logické informace – kontaktní údaje:logicalisleads@us.logicalis.com
+- Zóny – kontaktní údaje: cloudsupport@zones.com
+- Wortell – kontaktní údaje: info@wortell.nl
+- Logické informace – kontaktní údaje: logicalisleads@us.logicalis.com
 
 ### <a name="become-a-partner"></a>Stát se partnerem
 
@@ -63,7 +63,7 @@ Tým Microsoft Security Code Analysis je, aby se připojil k partnerům Premier 
 1. Vyberte **Shared**.
 1. Vyberte rozšíření Microsoft Security Code Analysis, vyberte **nainstalovat**.
 1. V rozevíracím seznamu vyberte organizaci Azure DevOps, na kterou chcete rozšíření nainstalovat.
-1. Vyberte **Install** (Nainstalovat). Po dokončení instalace můžete začít používat rozšíření.
+1. Vyberte **Nainstalovat**. Po dokončení instalace můžete začít používat rozšíření.
 
 >[!NOTE]
 > I v případě, že nemáte přístup pro instalaci rozšíření, pokračujte v postupu instalace. Během procesu instalace můžete požádat o přístup správce vaší organizace Azure DevOps.

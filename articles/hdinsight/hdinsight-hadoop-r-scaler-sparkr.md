@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
 ms.openlocfilehash: 28a97edcbe84ae63a3d3d0cad2b9275c672f5664
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082271"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinování škály a Sparku v HDInsight
@@ -529,7 +529,7 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jsme ukázali, jak je možné kombinovat použití Sparku k manipulaci s daty pomocí nástroje pro vývoj modelů v Hadoop Spark. Tento scénář vyžaduje, abyste zachovali samostatné relace Spark, běželi jenom jednu relaci najednou a data Exchange prostřednictvím souborů CSV. I když je to jasné, měl by být tento proces ještě snazší v nadcházející verzi služby ML, když Spark a služba pro škálování můžou sdílet relaci Sparku a sdílet tak datarámce Sparku.
 

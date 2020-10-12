@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
 ms.openlocfilehash: 999966192d92481a9d3eec68cfe804566a27f71e
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513464"
 ---
 # <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share"></a>Postup přidání příjemce do existující sdílené složky v Azure Data Share
@@ -21,7 +21,7 @@ Informace o tom, jak přidat příjemce při vytváření sdílené složky, naj
 
 ## <a name="navigate-to-a-sent-data-share"></a>Přejít na sdílenou složku odeslaných dat
 
-V části sdílená složka Azure přejděte do odeslané sdílené složky a vyberte kartu **pozvánky** . tady jsou všichni příjemci pozvánky k této sdílené složce dat. Pokud chcete přidat nové, klikněte na **Přidat příjemce**.
+V části Azure Data Share přejděte do odeslané sdílené složky a vyberte kartu **pozvánky** . Zde jsou uvedeni všichni příjemci pozvánky k této sdílené složce dat. Pokud chcete přidat nové, klikněte na **Přidat příjemce**.
 
 ![Přidat příjemce](./media/how-to/how-to-add-recipients/add-recipient.png)
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 71b40fe903e5a837046b9b29f62ef4875e3139e5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88545913"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler Beta pro Automatické zřizování uživatelů
@@ -23,7 +23,7 @@ ms.locfileid: "88545913"
 Cílem tohoto kurzu je předvést kroky, které je třeba provést v Zscaler Beta a Azure Active Directory (Azure AD) a nakonfigurovat tak, aby služba Azure AD automaticky zřídila a zrušila zřizování uživatelů a skupin Zscaler Beta.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../active-directory-saas-app-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../active-directory-saas-app-provisioning.md).
 >
 
 
@@ -85,17 +85,17 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Zscaler Beta**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Zscaler Beta**.
 
     ![Odkaz Zscaler Beta v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
     ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/provisioning-tab.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
     ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
 
@@ -109,7 +109,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
 
-    Vyberte **Povolit zřizování na základě SCIM** k načtení **základní adresy URL** a **nosného tokenu**a pak nastavení uložte. Zkopírujte **základní adresu URL** na **adresu URL tenanta**a **token nosiče**  do **tajného tokenu** v Azure Portal.
+    Vyberte **povolit SCIM-Based zřizování** pro načtení **základní adresy URL** a **nosného tokenu**a pak nastavení uložte. Zkopírujte **základní adresu URL** na **adresu URL tenanta**a **token nosiče**  do **tajného tokenu** v Azure Portal.
 
 7. Po vyplnění polí zobrazených v kroku 5 klikněte na **Test připojení** , aby se služba Azure AD mohla připojit k Zscaler Beta. Pokud se připojení nepovede, zajistěte, aby měl účet Zscaler Beta oprávnění správce, a zkuste to znovu.
 
@@ -137,7 +137,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/group-attribute-mappings.png)
 
-14. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](./../active-directory-saas-scoping-filters.md).
+14. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](./../active-directory-saas-scoping-filters.md).
 
 15. Pokud chcete povolit službu Azure AD Provisioning pro Zscaler Beta, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
@@ -147,7 +147,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/scoping.png)
 
-17. Až budete připraveni zřídit, klikněte na **Uložit**.
+17. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
     ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
 
@@ -162,7 +162,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../active-directory-saas-provisioning-reporting.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../active-directory-saas-provisioning-reporting.md).
 
 <!--Image references-->
 [1]: ./media/zscaler-beta-provisioning-tutorial/tutorial-general-01.png

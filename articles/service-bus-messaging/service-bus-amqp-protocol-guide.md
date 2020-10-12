@@ -4,10 +4,10 @@ description: Průvodce protokolem pro výrazy a popis AMQP 1,0 v Azure Service B
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: ffccd49d37dbf2a8fc404e9895b648e53007675c
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88064532"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 v Azure Service Bus a průvodci protokolem Event Hubs
@@ -73,7 +73,7 @@ Připojení, kanály a relace jsou dočasné. Pokud se základní připojení sb
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP požadavky na Odchozí porty
 
-Klienti, kteří používají připojení AMQP přes protokol TCP, vyžadují, aby byly v místní bráně firewall otevřené porty 5671 a 5672. Spolu s těmito porty může být potřeba otevřít další porty, pokud je povolená funkce [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) . `EnableLinkRedirect`je nová funkce zasílání zpráv, která pomáhá při přijímání zpráv přeskočit jedno směrování, což pomáhá zvýšit propustnost. Klient by začal komunikovat přímo s back-end službou přes rozsah portů 104XX, jak je znázorněno na následujícím obrázku. 
+Klienti, kteří používají připojení AMQP přes protokol TCP, vyžadují, aby byly v místní bráně firewall otevřené porty 5671 a 5672. Spolu s těmito porty může být potřeba otevřít další porty, pokud je povolená funkce [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) . `EnableLinkRedirect` je nová funkce zasílání zpráv, která pomáhá při přijímání zpráv přeskočit jedno směrování, což pomáhá zvýšit propustnost. Klient by začal komunikovat přímo s back-end službou přes rozsah portů 104XX, jak je znázorněno na následujícím obrázku. 
 
 ![Seznam cílových portů][4]
 
@@ -222,10 +222,10 @@ Jakákoli vlastnost, kterou musí aplikace definovat, by měla být namapována 
 | --- | --- | --- |
 | ID zprávy |Identifikátor volného formátu definovaného aplikací pro tuto zprávu. Používá se pro detekci duplicit. |[Parametr](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Identifikátor uživatele definovaný aplikací, není interpretován pomocí Service Bus. |Nedostupné prostřednictvím rozhraní Service Bus API. |
-| na |Identifikátor cíle definovaného aplikací, není interpretován pomocí Service Bus. |[Schopn](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| subject |Identifikátor účelu zprávy definované aplikací, není interpretován pomocí Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| na |Identifikátor cíle definovaného aplikací, není interpretován pomocí Service Bus. |[Záměr](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| závislosti |Identifikátor účelu zprávy definované aplikací, není interpretován pomocí Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | odpovědět na |Indikátor odpovědi na cestu definovaný aplikací, není interpretován pomocí Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| correlation-id |Identifikátor korelace definovaný aplikací, není interpretován pomocí Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| correlation-id |Identifikátor korelace definovaný aplikací, není interpretován pomocí Service Bus. |[ID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | typ obsahu |Indikátor typu obsahu definovaného aplikací pro tělo, které není interpretováno Service Bus. |[Třída](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | kódování obsahu |Symbol pro kódování obsahu definovaného aplikací pro tělo, které není interpretováno Service Bus. |Nedostupné prostřednictvím rozhraní Service Bus API. |
 | absolutní – doba vypršení platnosti |Deklaruje, na jakém místě vyprší absolutní Okamžitá zpráva. Ignoruje se při vstupu (pozoruje se hlavička TTL), která je pro výstup směrodatná. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -359,10 +359,10 @@ Zpráva požadavku má následující vlastnosti aplikace:
 
 | Klíč | Volitelné | Typ hodnoty | Obsah hodnoty |
 | --- | --- | --- | --- |
-| NázevOperace |Ne |řetězec |**token Put** |
-| typ |Ne |řetězec |Typ vytvářeného tokenu. |
-| name |Ne |řetězec |Cílová skupina, na kterou se vztahuje token. |
-| vypršení platnosti |Ano |časové razítko |Čas vypršení platnosti tokenu. |
+| operation |No |řetězec |**token Put** |
+| typ |No |řetězec |Typ vytvářeného tokenu. |
+| name |No |řetězec |Cílová skupina, na kterou se vztahuje token. |
+| vypršení platnosti |Yes |časové razítko |Čas vypršení platnosti tokenu. |
 
 Vlastnost *Name* určuje entitu, ke které je token přidružen. V Service Bus se jedná o cestu k frontě nebo k tématu nebo předplatnému. Vlastnost *Type* určuje typ tokenu:
 
@@ -378,8 +378,8 @@ Zpráva s odpovědí obsahuje následující hodnoty *vlastností aplikace* .
 
 | Klíč | Volitelné | Typ hodnoty | Obsah hodnoty |
 | --- | --- | --- | --- |
-| Stavový kód |Ne |int |Kód odpovědi HTTP **[RFC2616]**. |
-| Popis stavu |Ano |řetězec |Popis stavu |
+| Stavový kód |No |int |Kód odpovědi HTTP **[RFC2616]**. |
+| Popis stavu |Yes |řetězec |Popis stavu |
 
 Klient může opakovaně volat *tokeny Put* a pro každou entitu v infrastruktuře zasílání zpráv. Tokeny jsou vymezeny na aktuálního klienta a ukotveny k aktuálnímu připojení, což znamená, že server při poklesu připojení vyřazuje všechny zachované tokeny.
 
