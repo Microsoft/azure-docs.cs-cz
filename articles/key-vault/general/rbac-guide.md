@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 04b5c9464c614c32f178e35e72cee98450007a62
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91772783"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure (Preview)
@@ -48,7 +48,7 @@ Další informace o pokynech pro správu Azure Key Vault najdete v tématech:
 > [!NOTE]
 > `Key Vault Contributor` role je určena pro operace roviny správy ke správě trezorů klíčů. Neumožňuje přístup k klíčům, tajným klíčům a certifikátům.
 
-| Předdefinovaná role | Popis | ID |
+| Předdefinovaná role | Description | ID |
 | --- | --- | --- |
 | Správce Key Vault (Preview) | Proveďte všechny operace roviny dat u trezoru klíčů a všech objektů, včetně certifikátů, klíčů a tajných klíčů. Nejde spravovat prostředky trezoru klíčů ani spravovat přiřazení rolí. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
 | Key Vault úřední certifikát (Preview) | S výjimkou oprávnění spravovat je možné provést jakoukoli akci s certifikáty trezoru klíčů. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | a4417e6f-fecd-4de8-b567-7b0420556985 |
@@ -65,7 +65,7 @@ Další informace o definicích integrovaných rolí Azure najdete v tématu [p�
 
 Nový model oprávnění Azure RBAC pro Trezor klíčů poskytuje alternativu k modelu oprávnění zásad přístupu trezoru. 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Chcete-li přidat přiřazení rolí, je nutné mít následující:
 

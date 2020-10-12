@@ -12,10 +12,10 @@ author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
 ms.openlocfilehash: 4b6f2db8a8245db7dddbabc3a31a0de0d8963b84
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776081"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Použití Azure Machine Learning studia ve službě Azure Virtual Network
@@ -39,7 +39,7 @@ Podívejte se na další články v této sérii:
 > I když většina sady Studio funguje s daty uloženými ve virtuální síti, integrované poznámkové bloky __ne__. Integrované poznámkové bloky nepodporují používání úložiště, které je ve virtuální síti. Místo toho můžete použít poznámkové bloky Jupyter z výpočetní instance. Další informace najdete v části [přístup k datům v poznámkovém bloku COMPUTE instance]() .
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Přečtěte si [Přehled zabezpečení sítě](how-to-network-security-overview.md) , abyste porozuměli běžným scénářům virtuální sítě a celkové architektuře virtuální sítě.
 

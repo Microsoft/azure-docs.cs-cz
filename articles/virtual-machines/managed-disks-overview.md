@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
 ms.openlocfilehash: 773c5f95cdbec6961b063720106794e6ec00451d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89299928"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Úvod ke spravovaným diskům Azure
@@ -76,7 +76,7 @@ Můžete buď dovolit, aby Azure spravoval vaše klíče za vás, jedná se o kl
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Azure Disk Encryption umožňuje šifrovat operační systém a datové disky používané virtuálním počítačem s IaaS. Toto šifrování zahrnuje spravované disky. V systému Windows se jednotky šifrují pomocí standardní technologie šifrování BitLockeru v oboru. Pro Linux jsou disky šifrované pomocí technologie DM-crypt. Proces šifrování je integrovaný s Azure Key Vault, abyste mohli řídit a spravovat klíče pro šifrování disků. Další informace najdete v tématu [Azure Disk Encryption pro virtuální](linux/disk-encryption-overview.md) počítače se [systémem Linux nebo Azure Disk Encryption pro virtuální počítače s Windows](windows/disk-encryption-overview.md).
+Azure Disk Encryption umožňuje šifrovat operační systém a datové disky používané virtuálním počítačem s IaaS. Toto šifrování zahrnuje spravované disky. V systému Windows se jednotky šifrují pomocí standardní technologie šifrování BitLockeru v oboru. Pro Linux jsou disky šifrované pomocí technologie DM-Crypt. Proces šifrování je integrovaný s Azure Key Vault, abyste mohli řídit a spravovat klíče pro šifrování disků. Další informace najdete v tématu [Azure Disk Encryption pro virtuální](linux/disk-encryption-overview.md) počítače se [systémem Linux nebo Azure Disk Encryption pro virtuální počítače s Windows](windows/disk-encryption-overview.md).
 
 ## <a name="disk-roles"></a>Role disků
 
@@ -111,7 +111,7 @@ Další informace o tom, jak vytvořit snímky pro služby Managed disks, najdet
 - [Vytvoření snímku spravovaného disku ve Windows](windows/snapshot-copy-managed-disk.md)
 - [Vytvoření snímku spravovaného disku v systému Linux](linux/snapshot-copy-managed-disk.md)
 
-### <a name="images"></a>Image
+### <a name="images"></a>Images
 
 Spravované disky také podporují vytváření spravované vlastní image. Můžete vytvořit image z vlastního virtuálního pevného disku v účtu úložiště nebo přímo z zobecněného (nástroje Sysprep) virtuálního počítače. Tento proces zachycuje jeden obrázek. Tato image obsahuje všechny spravované disky přidružené k virtuálnímu počítači, včetně operačního systému i datových disků. Tato spravovaná vlastní image umožňuje vytvářet stovky virtuálních počítačů s využitím vlastní image bez nutnosti kopírovat ani spravovat žádné účty úložiště.
 

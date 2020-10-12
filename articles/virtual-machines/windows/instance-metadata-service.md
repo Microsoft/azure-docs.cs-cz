@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
 ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086704"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
@@ -164,7 +164,7 @@ Rozhraní API | Výchozí formát dat | Jiné formáty
 /instance | json | text
 /scheduledevents | json | žádné
 
-Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Příklad:
+Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Například:
 
 ```powershell
 Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -239,7 +239,7 @@ Rozhraní API | Popis | Představená verze
 
 Rozhraní API instance zpřístupňuje důležitá metadata pro instance virtuálních počítačů, včetně virtuálních počítačů, sítí a úložiště. K následujícím kategoriím lze přistupovat prostřednictvím instance/Compute:
 
-Data | Popis | Představená verze
+Data | Description | Představená verze
 -----|-------------|-----------------------
 azEnvironment | Prostředí Azure, ve kterém je spuštěný virtuální počítač | 2018-10-01
 customData | Tato funkce je momentálně zakázaná. Tuto dokumentaci budeme aktualizovat, jakmile bude k dispozici. | 2019-02-01
@@ -426,14 +426,14 @@ Cloud a hodnoty prostředí Azure jsou uvedené níže.
 ---------|-----------------
 [Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
-[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
+[Azure (Čína) 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
 [Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ## <a name="network-metadata"></a>Síťová metadata 
 
 Síťová metadata jsou součástí rozhraní API instance. V rámci koncového bodu instance/sítě jsou k dispozici následující kategorie sítě.
 
-Data | Popis | Představená verze
+Data | Description | Představená verze
 -----|-------------|-----------------------
 IPv4/privateIpAddress | Místní IPv4 adresa virtuálního počítače | 2017-04-02
 IPv4/publicIpAddress | Veřejná IPv4 adresa virtuálního počítače | 2017-04-02
@@ -501,7 +501,7 @@ Profil úložiště virtuálního počítače je rozdělen do tří kategorií: 
 
 Objekt odkazu na bitovou kopii obsahuje následující informace o imagi operačního systému:
 
-Data    | Popis
+Data    | Description
 --------|-----------------
 id      | ID prostředku
 offer   | Nabídka platformy nebo Image Marketplace
@@ -511,7 +511,7 @@ verze | Verze image platformy nebo webu Marketplace
 
 Objekt disku operačního systému obsahuje následující informace o disku s operačním systémem, který používá virtuální počítač:
 
-Data    | Popis
+Data    | Description
 --------|-----------------
 vyrovnávací | Požadavky na ukládání do mezipaměti
 createOption | Informace o tom, jak byl virtuální počítač vytvořen
@@ -527,7 +527,7 @@ writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAc
 
 Pole datových disků obsahuje seznam datových disků připojených k virtuálnímu počítači. Každý objekt datového disku obsahuje následující informace:
 
-Data    | Popis
+Data    | Description
 --------|-----------------
 vyrovnávací | Požadavky na ukládání do mezipaměti
 createOption | Informace o tom, jak byl virtuální počítač vytvořen
@@ -688,7 +688,7 @@ Hodnota nonce je nepovinný řetězec s deseti číslicemi. Pokud není zadán, 
 Objekt BLOB podpisu je verze dokumentu s podpisem [PKCS7](https://aka.ms/pkcs7) . Obsahuje certifikát použitý k podepsání spolu s určitými podrobnostmi specifickými pro virtuální počítače. U virtuálních počítačů ARM to zahrnuje vmId, SKU, nonce, subscriptionId, časové razítko pro vytváření a vypršení platnosti dokumentu a informace o plánu k imagi. Informace o plánu se naplní jenom pro Azure Marketplace image. U klasických virtuálních počítačů (ne ARM) je zaručeno, že se naplní pouze vmId. Certifikát se dá extrahovat z odpovědi a použít k ověření, že odpověď je platná a přichází z Azure.
 Dokument obsahuje následující pole:
 
-Data | Popis
+Data | Description
 -----|------------
 generované | Řetězec, který může být volitelně poskytnutý požadavkem. Pokud nebyla zadána žádná hodnota nonce, použije se aktuální časové razítko UTC.
 rozhraní | [Azure Marketplace plán obrázku](/rest/api/compute/virtualmachines/createorupdate#plan). Obsahuje ID plánu (název), obrázek produktu nebo nabídku (produkt) a ID vydavatele (vydavatel).
@@ -747,7 +747,7 @@ Cloud | Certifikát
 ------|------------
 [Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/) | *. metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)          | *. metadata.azure.us
-[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)     | *. metadata.azure.cn
+[Azure (Čína) 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)     | *. metadata.azure.cn
 [Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                | *. metadata.microsoftazure.de
 
 > [!NOTE]
@@ -837,7 +837,7 @@ Visual Basic  | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 
 ## <a name="error-and-debugging"></a>Chyba a ladění
 
-Pokud se nenašel datový prvek nebo dojde k chybnému požadavku, Instance Metadata Service vrátí standardní chyby protokolu HTTP. Příklad:
+Pokud se nenašel datový prvek nebo dojde k chybnému požadavku, Instance Metadata Service vrátí standardní chyby protokolu HTTP. Například:
 
 Stavový kód HTTP | Důvod
 -----------------|-------

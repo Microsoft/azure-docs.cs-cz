@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 9e7386e21442b5a76aae656a36e2858b52ecef65
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87102561"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
@@ -49,7 +49,7 @@ $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk
 New-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName -Snapshot $snapshotConfig 
 ```
 
-Můžete identifikovat přírůstkové snímky ze stejného disku s `SourceResourceId` vlastnostmi a a `SourceUniqueId` vlastnostmi snímků. `SourceResourceId`je ID prostředku Azure Resource Manager nadřazeného disku. `SourceUniqueId`je hodnota zděděná z `UniqueId` Vlastnosti disku. Pokud byste chtěli odstranit disk a pak vytvořit nový disk se stejným názvem, změní se hodnota `UniqueId` Vlastnosti.
+Můžete identifikovat přírůstkové snímky ze stejného disku s `SourceResourceId` vlastnostmi a a `SourceUniqueId` vlastnostmi snímků. `SourceResourceId` je ID prostředku Azure Resource Manager nadřazeného disku. `SourceUniqueId` je hodnota zděděná z `UniqueId` Vlastnosti disku. Pokud byste chtěli odstranit disk a pak vytvořit nový disk se stejným názvem, změní se hodnota `UniqueId` Vlastnosti.
 
 Pomocí a můžete `SourceResourceId` `SourceUniqueId` vytvořit seznam všech snímků přidružených k určitému disku. Nahraďte `<yourResourceGroupNameHere>` hodnotou a pak můžete použít následující příklad k vypsání stávajících přírůstkových snímků:
 

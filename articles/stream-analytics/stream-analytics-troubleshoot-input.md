@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87448873"
 ---
 # <a name="troubleshoot-input-connections"></a>Řešení potíží se vstupními připojeními
@@ -71,7 +71,7 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 Pokud chcete do instance Event Hubs přidat novou skupinu příjemců, postupujte takto:
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 
 2. Vyhledejte centrum událostí.
 
@@ -165,7 +165,7 @@ SELECT foo FROM DataTwo
 
 Úlohy Stream Analytics používají integrovaný [koncový bod kompatibilní](../iot-hub/iot-hub-devguide-messages-read-builtin.md) s centrem událostí IoT Hub k připojení a čtení událostí z IoT Hub. Pokud vaše čtení na oddíl překročí limity IoT Hub, můžete ho vyřešit pomocí [řešení pro centrum událostí](#readers-per-partition-exceeds-event-hubs-limit) . Můžete vytvořit skupinu příjemců pro integrovaný koncový bod prostřednictvím relace koncového bodu portálu IoT Hub nebo prostřednictvím [sady IoT Hub SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup).
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
 ms.openlocfilehash: b5ae68dea228e834b2449152bd3ef357f2a74e83
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90069488"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Nastavení mapování sítě a přidělování IP adres pro virtuální sítě
 
 Tento článek popisuje, jak namapovat dvě instance virtuálních sítí Azure (virtuální sítě) nacházejících se v různých oblastech Azure a jak nastavit IP adresy mezi sítěmi. Mapování sítě poskytuje výchozí chování pro výběr cílové sítě na základě zdrojové sítě v době povolení replikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předtím, než budete mapovat sítě, byste měli mít [Azure virtuální sítě](../virtual-network/virtual-networks-overview.md) ve zdrojové a cílové oblasti Azure. 
 

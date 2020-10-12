@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90085905"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínek použití
@@ -52,7 +52,7 @@ Funkce Azure AD terms of use mají tyto možnosti:
 - Zobrazit protokol aktivity použití pro dodržování předpisů a audit.
 - Vytvářejte a spravujte podmínek použití pomocí [rozhraní Microsoft Graph API](/graph/api/resources/agreement?view=graph-rest-beta) (aktuálně ve verzi Preview).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít a nakonfigurovat používání podmínek Azure AD, musíte mít:
 
@@ -117,7 +117,7 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 
    ![Rozevírací seznam pro podmíněný přístup pro výběr šablony zásad](./media/terms-of-use/conditional-access-templates.png)
 
-   | Šablona | Popis |
+   | Šablona | Description |
    | --- | --- |
    | **Přístup ke cloudovým aplikacím pro všechny hosty** | Vytvoří se zásada podmíněného přístupu pro všechny hosty a všechny cloudové aplikace. Tato zásada má vliv na Azure Portal. Po vytvoření budete možná muset odhlásit a přihlásit se. |
    | **Přístup ke cloudovým aplikacím pro všechny uživatele** | Vytvoří se zásada podmíněného přístupu pro všechny uživatele a všechny cloudové aplikace. Tato zásada má vliv na Azure Portal. Po vytvoření budete muset odhlásit a přihlásit se. |
@@ -225,7 +225,7 @@ Můžete upravit některé podrobnosti podmínek použití, ale nemůžete uprav
 
    ![Podokno úprav podmínek použití znázorňující možnosti název a rozbalení](./media/terms-of-use/edit-tou.png)
 
-1. Kliknutím na **Uložit** změny uložte.
+1. Kliknutím na **Uložit** uložte změny.
 
    Po uložení změn nebudou uživatelé tyto úpravy znovu přijímat.
 

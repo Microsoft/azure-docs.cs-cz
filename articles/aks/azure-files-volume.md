@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.openlocfilehash: e7f013d16b899418a5262f23dfcc595a1e270616
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281204"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ruční vytvoření a použití svazku se sdílenou složkou Azure ve službě Azure Kubernetes Service (AKS)
@@ -69,7 +69,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>Připojit sdílenou složku jako svazek
 
-Pokud chcete sdílenou složku služby soubory Azure připojit k vašemu zařízení pod, nakonfigurujte svazek ve specifikaci kontejneru. Vytvořte nový soubor `azure-files-pod.yaml` s názvem s následujícím obsahem. Pokud jste změnili název sdílené složky nebo tajného názvu, aktualizujte název souboru *název_sdílené_položky* a název *tajného*klíče. V případě potřeby aktualizujte `mountPath` cestu, která je cesta, kde je sdílená složka souborů připojená v poli pod. V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
+Pokud chcete sdílenou složku služby soubory Azure připojit k vašemu zařízení pod, nakonfigurujte svazek ve specifikaci kontejneru. Vytvořte nový soubor s názvem `azure-files-pod.yaml` s následujícím obsahem. Pokud jste změnili název sdílené složky nebo tajného názvu, aktualizujte název souboru *název_sdílené_položky* a název *tajného*klíče. V případě potřeby aktualizujte `mountPath` cestu, která je cesta, kde je sdílená složka souborů připojená v poli pod. V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
 
 ```yaml
 apiVersion: v1

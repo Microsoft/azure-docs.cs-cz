@@ -12,20 +12,20 @@ ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 2134cf1fda5f0f1699feb46582813d198304f92e
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91616376"
 ---
-# <a name="monitor-in-memory-oltp-storage-in-azure-sql-database-and-azure-sql-managed-instance"></a>Monitorování úložiště OLTP v paměti v Azure SQL Database a spravované instanci Azure SQL
+# <a name="monitor-in-memory-oltp-storage-in-azure-sql-database-and-azure-sql-managed-instance"></a>Monitorování In-Memory OLTP úložiště v Azure SQL Database a spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-Při použití [OLTP v paměti](in-memory-oltp-overview.md)se data v paměťově optimalizovaných tabulkách a proměnných tabulek nacházejí v úložišti OLTP úložiště v paměti.
+Při použití [OLTP v paměti](in-memory-oltp-overview.md)se data v paměťově optimalizovaných tabulkách a proměnných tabulek nacházejí v ÚLOŽIŠTI In-Memory OLTP.
 
-## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Určení, jestli se data vejdou do OLTP úložiště v paměti
+## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Určení, jestli se data vejdou do In-Memory limit úložiště OLTP
 
-Určete velikost úložiště pro různé úrovně služeb. Každá úroveň služby Premium a Pro důležité obchodní informace má maximální velikost úložiště OLTP v paměti.
+Určete velikost úložiště pro různé úrovně služeb. Každá úroveň služby Premium a Pro důležité obchodní informace má maximální velikost úložiště In-Memory OLTP.
 
 - [Omezení prostředků na základě DTU – samostatná databáze](database/resource-limits-dtu-single-databases.md)
 - [Omezení prostředků na základě DTU – elastické fondy](database/resource-limits-dtu-elastic-pools.md)
@@ -55,9 +55,9 @@ Nebo použijte následující dotaz k zobrazení využití úložiště v pamět
 
 ## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>Opravte situaci OLTP úložiště při nedostatku paměti – chyby 41823 a 41840
 
-Zasáhne se limit úložiště OLTP v paměti ve vaší databázi, ve kterém dojde k selhání operací vložení, aktualizace, ALTER a CREATE s chybovou zprávou 41823 (pro izolované databáze) nebo chybou 41840 (pro elastické fondy). Obě chyby způsobují přerušení aktivní transakce.
+Při neúspěchu In-Memory OLTP úložiště ve vaší databázi dojde k selhání operací vložení, aktualizace, ALTER a CREATE s chybovou zprávou 41823 (pro izolované databáze) nebo chybou 41840 (pro elastické fondy). Obě chyby způsobují přerušení aktivní transakce.
 
-Chybové zprávy 41823 a 41840 označují, že paměťově optimalizované tabulky a proměnné tabulky v databázi nebo ve fondu dosáhly maximální velikosti úložiště OLTP v paměti.
+Chybové zprávy 41823 a 41840 označují, že paměťově optimalizované tabulky a proměnné tabulky v databázi nebo ve fondu dosáhly maximální velikosti úložiště In-Memory OLTP.
 
 Chcete-li vyřešit tuto chybu, proveďte jednu z těchto akcí:
 
@@ -65,7 +65,7 @@ Chcete-li vyřešit tuto chybu, proveďte jednu z těchto akcí:
 - Upgradujte vrstvu služby na jednu s dostatečným úložištěm v paměti pro data, která potřebujete k uchování v paměťově optimalizovaných tabulkách.
 
 > [!NOTE]
-> Ve výjimečných případech můžou být chyby 41823 a 41840 přechodné, což znamená, že je k dispozici dostatek paměťového úložiště OLTP a opakování operace proběhne úspěšně. Proto doporučujeme monitorovat celkové dostupné úložiště OLTP v paměti a opakovat pokus při prvním výskytu chyby 41823 nebo 41840. Další informace o logice opakování najdete v tématu [zjištění konfliktů a logika opakování s OLTP v paměti](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
+> Ve výjimečných případech můžou být chyby 41823 a 41840 přechodné, což znamená, že je k dispozici dostatek In-Memory úložiště OLTP a opakování operace proběhne úspěšně. Proto doporučujeme monitorovat celkové dostupné In-Memory úložiště OLTP a opakovat pokus při prvním výskytu chyby 41823 nebo 41840. Další informace o logice opakování najdete v tématu [zjištění konfliktů a logika opakování s In-Memory OLTP](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
 
 ## <a name="next-steps"></a>Další kroky
 

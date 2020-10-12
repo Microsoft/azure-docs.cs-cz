@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s Windows nemůže dokončit konfiguraci systému.
+title: Řešení potíží s tím, že Windows nemůže dokončit konfiguraci systému
 titlesuffix: Azure Virtual Machines
 description: Tento článek popisuje kroky k vyřešení problémů, které proces Sysprep znemožňuje spustit virtuální počítač Azure.
 services: virtual-machines-windows, azure-resource-manager
@@ -16,13 +16,13 @@ ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.author: v-miegge
 ms.openlocfilehash: 9c170607d6300c4921285e85ac78db5a8a18ad9b
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90078802"
 ---
-# <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>Řešení potíží s Windows nemůže dokončit konfiguraci systému.
+# <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>Řešení potíží s tím, že Windows nemůže dokončit konfiguraci systému
 
 Tento článek popisuje kroky k vyřešení problémů, které proces Sysprep znemožňuje spustit virtuální počítač Azure.
 

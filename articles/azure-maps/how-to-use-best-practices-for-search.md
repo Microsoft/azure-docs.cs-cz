@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: ec2b971941f460522046d56cd097ede15a3bdcbe
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086330"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Osvědčené postupy pro Azure Maps Search Service
@@ -26,7 +26,7 @@ Tento článek vysvětluje, jak použít zvukové postupy při volání dat z Az
 > * Informace o rozdílech mezi typy výsledků
 > * Přečíst strukturu hledání adres – odpověď
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
@@ -739,7 +739,7 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
 
 ### <a name="airport-search"></a>Hledání na letišti
 
-Pomocí rozhraní Search POI API můžete hledat letiště pomocí jejich oficiálního kódu. Například můžete použít *moře* k vyhledání mezinárodního letiště v Seattlu-Tacoma: 
+Pomocí rozhraní Search POI API můžete hledat letiště pomocí jejich oficiálního kódu. Například můžete použít *moře* k vyhledání Seattle-Tacoma mezinárodního letiště: 
 
 ```HTTP
 https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=SEA 

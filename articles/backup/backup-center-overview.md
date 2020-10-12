@@ -4,10 +4,10 @@ description: Tento článek poskytuje přehled služby Backup Center pro Azure.
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.openlocfilehash: 2857433e00a678603e30c8e5fc276020c4658f2e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614274"
 ---
 # <a name="overview-of-backup-center"></a>Přehled centra zálohování

@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.workload: big-data
 ms.date: 08/30/2019
 ms.openlocfilehash: 44426598daf1808ef0aee233968b04d2dc7c165f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87129912"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Testování kódu Azure Data Lake Analytics
@@ -122,9 +122,9 @@ U testu U-SQL Zajistěte, aby se načetly do `CPPSDK` počítače sestavení, a 
 
 CPPSDK je balíček, který obsahuje Microsoft Visual C++ 14 a Windows SDK 10.0.10240.0. Tento balíček zahrnuje prostředí, které je potřeba pro modul runtime U-SQL. Tento balíček můžete získat v instalační složce Nástroje Azure Data Lake pro Visual Studio:
 
-- V případě sady Visual Studio 2015 je`C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
-- V případě sady Visual Studio 2017 je`C:\Program Files (x86)\Microsoft Visual Studio\2017\<Visual Studio Edition>\SDK\ScopeCppSDK`
-- V případě sady Visual Studio 2019 je`C:\Program Files (x86)\Microsoft Visual Studio\2019\<Visual Studio Edition>\SDK\ScopeCppSDK`
+- V případě sady Visual Studio 2015 je `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
+- V případě sady Visual Studio 2017 je `C:\Program Files (x86)\Microsoft Visual Studio\2017\<Visual Studio Edition>\SDK\ScopeCppSDK`
+- V případě sady Visual Studio 2019 je `C:\Program Files (x86)\Microsoft Visual Studio\2019\<Visual Studio Edition>\SDK\ScopeCppSDK`
 
 #### <a name="prepare-cppsdk-in-the-azure-pipelines-build-agent"></a>Příprava CPPSDK v agentovi sestavení Azure Pipelines
 

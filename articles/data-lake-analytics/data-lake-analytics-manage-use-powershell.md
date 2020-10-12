@@ -8,10 +8,10 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: how-to
 ms.date: 06/29/2018
 ms.openlocfilehash: 70a251db6c08f353f9c50512c41551e7a909a059
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87125628"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Správa Azure Data Lake Analytics pomocí Azure PowerShell
@@ -19,7 +19,7 @@ ms.locfileid: "87125628"
 
 Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí Azure PowerShell.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

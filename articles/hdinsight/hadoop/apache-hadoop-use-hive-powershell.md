@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: 327a8a0de0d144a5c1d8494a6dd22a8b89a7bd93
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081045"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Spouštění dotazů Apache Hive pomocí PowerShellu
@@ -24,7 +24,7 @@ Tento dokument poskytuje příklad použití Azure PowerShell ke spouštění do
 > [!NOTE]  
 > Tento dokument neposkytuje podrobný popis toho, co HiveQL příkazy, které jsou používány v příkladech. Informace o HiveQL, které se používají v tomto příkladu, najdete v tématu [použití Apache Hive s Apache Hadoop ve službě HDInsight](hdinsight-use-hive.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
@@ -67,7 +67,7 @@ Následující kroky ukazují, jak pomocí těchto rutin spustit úlohu v cluste
     2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
     ```
 
-4. Jak bylo zmíněno dříve, `Invoke-Hive` lze použít ke spuštění dotazu a čekání na odpověď. Pomocí následujícího skriptu můžete zjistit, jak funguje příkaz Invoke-podregistr:
+4. Jak bylo zmíněno dříve, `Invoke-Hive` lze použít ke spuštění dotazu a čekání na odpověď. Pomocí následujícího skriptu zjistíte, jak Invoke-Hive funguje:
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=50-71)]
 
@@ -86,7 +86,7 @@ Následující kroky ukazují, jak pomocí těchto rutin spustit úlohu v cluste
    >
    > Další informace o **řetězcích**najdete v tématu <a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">použití řetězců v prostředí Windows PowerShell</a>.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se po dokončení úlohy nevrátí žádné informace, podívejte se na protokoly chyb. Chcete-li zobrazit informace o chybě pro tuto úlohu, přidejte na konec `hivejob.ps1` souboru, uložte ho a pak ho znovu spusťte.
 

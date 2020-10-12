@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/23/2017
 ms.openlocfilehash: 6f2af2eed8aa01f35e1813bcd910f3ea22e2a335
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87128841"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Začínáme s U-SQL v Azure Data Lake Analytics
@@ -24,7 +24,7 @@ U-SQL je jazyk, který kombinuje deklarativní SQL s imperativně v jazyce C#, k
 * Podrobné informace o **syntaxi jazyka u-SQL**najdete v tématu Referenční dokumentace [jazyka u-SQL](https://docs.microsoft.com/u-sql/).
 * Informace o **filozofie návrhu u-SQL**najdete v příspěvku na blogu sady Visual Studio [Představujeme u-SQL – jazyk, který usnadňuje zpracování velkých](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)objemů dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než projdete ukázky U-SQL v tomto dokumentu, přečtěte si a dokončete [kurz: vývoj skriptů u-SQL pomocí data Lakech nástrojů pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md). Tento kurz vysvětluje mechanismy použití U-SQL s Nástroje Azure Data Lake pro Visual Studio.
 
@@ -56,8 +56,8 @@ Všimněte si otazníku vedle datového typu v `Duration` poli. To znamená, že
 ### <a name="key-concepts"></a>Klíčové koncepty
 
 * **Proměnné sady řádků**: každý výraz dotazu, který vytváří sadu řádků, lze přiřadit proměnné. U-SQL následuje vzor pojmenování proměnných T-SQL ( `@searchlog` například) ve skriptu.
-* Klíčové slovo **Extract** čte data ze souboru a definuje schéma při čtení. `Extractors.Tsv`je vestavěný extraktor U-SQL pro soubory s hodnotami oddělenými tabulátorem. Můžete vyvíjet vlastní extraktory.
-* **Výstup** zapisuje data ze sady řádků do souboru. `Outputters.Csv()`je vestavěný výstup U-SQL, který umožňuje vytvořit soubor s hodnotami oddělenými čárkami. Můžete vyvíjet vlastní výstupy.
+* Klíčové slovo **Extract** čte data ze souboru a definuje schéma při čtení. `Extractors.Tsv` je vestavěný extraktor U-SQL pro soubory s hodnotami oddělenými tabulátorem. Můžete vyvíjet vlastní extraktory.
+* **Výstup** zapisuje data ze sady řádků do souboru. `Outputters.Csv()` je vestavěný výstup U-SQL, který umožňuje vytvořit soubor s hodnotami oddělenými čárkami. Můžete vyvíjet vlastní výstupy.
 
 ### <a name="file-paths"></a>Cesty k souborům
 

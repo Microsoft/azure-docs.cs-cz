@@ -6,10 +6,10 @@ ms.topic: include
 ms.service: virtual-machines-linux
 manager: daberry
 ms.openlocfilehash: a5a201a9f993db2be00645d8d60a11c5be9cdbe0
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89304067"
 ---
 Standardizované image virtuálních počítačů umožňují organizacím migrovat do cloudu a zajistit konzistenci nasazení. Obrázky obvykle zahrnují předdefinovaná nastavení zabezpečení a konfigurace a potřebný software. Nastavení vlastního kanálu pro vytváření imagí vyžaduje čas, infrastrukturu a instalaci, ale s nástrojem Azure VM Image Builder stačí jednoduše zadat jednoduchou konfiguraci popisující vaši image, odeslat ji do služby a image se sestaví a distribuuje.

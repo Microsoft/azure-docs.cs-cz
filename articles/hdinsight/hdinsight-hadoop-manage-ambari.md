@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
 ms.openlocfilehash: ce078a3dad645f592bb33ed55ce508f68ce8f30a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281378"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
@@ -58,7 +58,7 @@ Po otevření stránky si poznamenejte pruh v horní části. Tento panel obsahu
 |Služby|Informace a konfigurační nastavení pro služby v clusteru.|
 |Hostitelé|Informace a nastavení konfigurace pro uzly v clusteru.|
 |Výstrahy|Protokol informací, upozornění a kritických výstrah.|
-|správce|Softwarový zásobník/služby, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
+|Správce|Softwarový zásobník/služby, které jsou nainstalovány v clusteru, informace o účtu služby a zabezpečení protokolu Kerberos.|
 |Tlačítko Správce|Správa Ambari, uživatelské nastavení a odhlášení.|
 
 ## <a name="monitoring"></a>Monitorování
@@ -163,7 +163,7 @@ Na stránce **hostitelé** jsou uvedeni všichni hostitelé v clusteru. Chcete-l
     |Vypnout režim údržby|Vrátí hostitele do normálního upozorňování.|
     |Zastavit|Zastaví na hostiteli datanode nebo NodeManagers.|
     |Spustit|Spustí na hostiteli datanode nebo NodeManagers.|
-    |Restartování|Zastaví a spustí na hostiteli datanode nebo NodeManagers.|
+    |Restartovat|Zastaví a spustí na hostiteli datanode nebo NodeManagers.|
     |Vyřazení|Odebere hostitele z clusteru. **Tuto akci nepoužívejte u clusterů HDInsight.**|
     |Reprovize|Přidá dříve vyřazeného hostitele do clusteru. **Tuto akci nepoužívejte u clusterů HDInsight.**|
 

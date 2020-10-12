@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.openlocfilehash: 0ed8b04353c50bff53d074ebdb1efa2a286c8e59
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086568"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Zabránit anonymnímu veřejnému přístupu pro čtení kontejnerů a objektů BLOB
@@ -59,7 +59,7 @@ Pomocí těchto kroků můžete vytvořit metriku, která bude sledovat anonymn�
 
 Po nakonfigurování metriky se v grafu začnou zobrazovat anonymní požadavky. Následující obrázek ukazuje anonymní požadavky agregované za posledních třicet minut.
 
-:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="Snímek obrazovky znázorňující agregované anonymní požadavky na úložiště objektů BLOB":::
+:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="Snímek obrazovky ukazující, jak nakonfigurovat metriku tak, aby součet transakcí objektů BLOB":::
 
 Můžete také nakonfigurovat pravidlo výstrahy, které vás upozorní, když se na váš účet úložiště vytvoří určitý počet anonymních požadavků. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](../../azure-monitor/platform/alerts-metric.md).
 
@@ -85,7 +85,7 @@ Pokud chcete protokolovat data Azure Storage pomocí Azure Monitor a analyzovat 
 1. V části **Podrobnosti o kategorii**v části **protokol** vyberte typy požadavků, které se mají protokolovat. Všechny anonymní požadavky budou přečteny, takže vyberte **StorageRead** pro zachycení anonymních požadavků.
 1. V části **Podrobnosti o cíli**vyberte **Odeslat do Log Analytics**. Vyberte své předplatné a Log Analytics pracovní prostor, který jste vytvořili dříve, jak je znázorněno na následujícím obrázku.
 
-    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="Snímek obrazovky ukazující, jak vytvořit nastavení diagnostiky pro požadavky protokolování":::
+    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="Snímek obrazovky ukazující, jak nakonfigurovat metriku tak, aby součet transakcí objektů BLOB":::
 
 Po vytvoření nastavení diagnostiky se požadavky na účet úložiště následně protokolují podle tohoto nastavení. Další informace najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik prostředků v Azure](../../azure-monitor/platform/diagnostic-settings.md).
 
@@ -241,7 +241,7 @@ Chcete-li zobrazit sestavu dodržování předpisů v Azure Portal, postupujte p
 1. Vyfiltrujte výsledky pro název přiřazení zásady, které jste vytvořili v předchozím kroku. V této sestavě se zobrazuje počet prostředků, které nejsou v souladu se zásadami.
 1. Můžete přejít k podrobnostem sestavy, kde najdete další podrobnosti, včetně seznamu účtů úložiště, které nedodržují předpisy.
 
-    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="Snímek obrazovky zobrazující sestavu dodržování předpisů pro zásady auditu pro veřejný přístup k objektu BLOB":::
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="Snímek obrazovky ukazující, jak nakonfigurovat metriku tak, aby součet transakcí objektů BLOB":::
 
 ## <a name="use-azure-policy-to-enforce-authorized-access"></a>Použití Azure Policy k vymáhání oprávněného přístupu
 
@@ -277,7 +277,7 @@ Když vytvoříte zásadu s použitím efektu odepřít a přiřadíte ji k obor
 
 Následující obrázek ukazuje chybu, ke které dochází, když se pokusíte vytvořit účet úložiště, který umožňuje veřejný přístup (výchozí nastavení pro nový účet), když zásada s efektem odepření vyžaduje, aby byl veřejný přístup zakázán.
 
-:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="Snímek obrazovky znázorňující chybu při vytváření účtu úložiště při porušení zásad":::
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="Snímek obrazovky ukazující, jak nakonfigurovat metriku tak, aby součet transakcí objektů BLOB":::
 
 ## <a name="next-steps"></a>Další kroky
 
