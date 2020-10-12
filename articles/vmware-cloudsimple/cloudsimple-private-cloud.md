@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: e2096e8c0ebfb233c7449510bf0bc8e80b56231e
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88140712"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>Přehled privátního cloudu CloudSimple
@@ -30,7 +30,7 @@ S CloudSimple můžete využívat výhod modelu cloudové spotřeby, který sni�
 CloudSimple je plně kompatibilní s:
 
 * Existující nástroje
-* Dovedností
+* Dovednosti
 * Procesy
 
 Díky této kompatibilitě můžou vaše týmy spravovat úlohy v cloudu Azure, aniž by narušily tyto typy zásad:

@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 236b4f47894db8aa8880b7535b6ee0921802a31c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317357"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Přehled Start/Stop VMs during off-hours
@@ -53,45 +53,45 @@ Pokud jste přispěvatelem předplatného a globálním správcem v tenantovi Az
 
 Pokud chcete povolit virtuální počítače pro funkci Start/Stop VMs during off-hours pomocí existujícího účtu Automation a pracovního prostoru Log Analytics, budete potřebovat následující oprávnění pro rozsah skupiny prostředků. Další informace o rolích najdete v tématu [vlastní role Azure](../role-based-access-control/custom-roles.md).
 
-| Oprávnění | Obor|
+| Oprávnění | Rozsah|
 | --- | --- |
-| Microsoft. Automation/automationAccounts/Read | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Variables/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Schedules/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Runbooky/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Connections/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Certificates/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/modules/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Module/Read | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/jobSchedules/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Jobs/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Jobs/Read | Skupina prostředků |
-| Microsoft. OperationsManagement/Solutions/Write | Skupina prostředků |
-| Microsoft. OperationalInsights/pracovní prostory/* | Skupina prostředků |
-| Microsoft. Insights/diagnosticSettings/Write | Skupina prostředků |
-| Microsoft. Insights/ActionGroups/Write | Skupina prostředků |
-| Microsoft. Insights/ActionGroups/Read | Skupina prostředků |
-| Microsoft. Resources/Subscriptions/resourceGroups/Read | Skupina prostředků |
-| Microsoft. Resources/nasazení/* | Skupina prostředků |
+| Microsoft. Automation/automationAccounts/Read | Resource Group |
+| Microsoft. Automation/automationAccounts/Variables/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/Schedules/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/Runbooky/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/Connections/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/Certificates/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/modules/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/Module/Read | Resource Group |
+| Microsoft. Automation/automationAccounts/jobSchedules/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/Jobs/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/Jobs/Read | Resource Group |
+| Microsoft. OperationsManagement/Solutions/Write | Resource Group |
+| Microsoft. OperationalInsights/pracovní prostory/* | Resource Group |
+| Microsoft. Insights/diagnosticSettings/Write | Resource Group |
+| Microsoft. Insights/ActionGroups/Write | Resource Group |
+| Microsoft. Insights/ActionGroups/Read | Resource Group |
+| Microsoft. Resources/Subscriptions/resourceGroups/Read | Resource Group |
+| Microsoft. Resources/nasazení/* | Resource Group |
 
 ### <a name="permissions-for-new-automation-account-and-new-log-analytics-workspace"></a>Oprávnění k novému účtu Automation a novému pracovnímu prostoru Log Analytics
 
 Virtuální počítače pro funkci Start/Stop VMs during off-hours můžete povolit pomocí nového účtu Automation a pracovního prostoru Log Analytics. V takovém případě potřebujete oprávnění definovaná v předchozí části i oprávnění definovaná v této části. Vyžadujete také následující role:
 
-- Spolusprávce předplatného. Tato role se vyžaduje k vytvoření účtu Spustit jako pro Classic, pokud budete spravovat klasické virtuální počítače. [Účty Spustit jako pro Classic](automation-create-standalone-account.md#create-a-classic-run-as-account) se už ve výchozím nastavení nevytvářejí.
+- Co-Administrator v předplatném. Tato role se vyžaduje k vytvoření účtu Spustit jako pro Classic, pokud budete spravovat klasické virtuální počítače. [Účty Spustit jako pro Classic](automation-create-standalone-account.md#create-a-classic-run-as-account) se už ve výchozím nastavení nevytvářejí.
 - Členství v roli vývojář aplikace [služby Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md) . Další informace o konfiguraci účtů spustit jako najdete v tématu [oprávnění ke konfiguraci účtů spustit jako](manage-runas-account.md#permissions).
 - Přispěvatel v rámci předplatného nebo následujících oprávnění
 
-| Oprávnění |Obor|
+| Oprávnění |Rozsah|
 | --- | --- |
 | Microsoft. Authorization/Operations/Read | Předplatné|
 | Microsoft. Authorization/oprávnění/čtení |Předplatné|
 | Microsoft. Authorization/roleAssignments/Read | Předplatné |
 | Microsoft.Authorization/roleAssignments/write | Předplatné |
-| Microsoft. Authorization/roleAssignments/DELETE | Předplatné || Microsoft. Automation/automationAccounts/Connections/Read | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Certificates/Read | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Write | Skupina prostředků |
-| Microsoft. OperationalInsights/pracovní prostory/zápis | Skupina prostředků |
+| Microsoft. Authorization/roleAssignments/DELETE | Předplatné || Microsoft. Automation/automationAccounts/Connections/Read | Resource Group |
+| Microsoft. Automation/automationAccounts/Certificates/Read | Resource Group |
+| Microsoft. Automation/automationAccounts/Write | Resource Group |
+| Microsoft. OperationalInsights/pracovní prostory/zápis | Resource Group |
 
 ## <a name="components"></a>Komponenty
 
@@ -106,7 +106,7 @@ V následující tabulce jsou uvedeny Runbooky, které funkce nasadí do vašeho
 
 Všechny nadřazené Runbooky obsahují `WhatIf` parametr. Při nastavení na hodnotu true podporuje parametr podrobné informace o přesném chování, které sada Runbook provede, když se spustí bez parametru a ověří, jestli jsou cílové správné virtuální počítače. Sada Runbook provede pouze své definované akce, pokud `WhatIf` je parametr nastaven na hodnotu false.
 
-|Runbook | Parametry | Popis|
+|Runbook | Parametry | Description|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Volá se z nadřazeného Runbooku. Tato sada Runbook vytváří výstrahy na základě jednotlivých prostředků pro scénář automatického zastavení.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true nebo false  | Vytvoří nebo aktualizuje pravidla upozornění Azure na virtuálních počítačích v cílovém předplatném nebo ve skupinách prostředků. <br> `VMList` je čárkami oddělený seznam virtuálních počítačů (bez prázdných znaků), například `vm1,vm2,vm3` .<br> `WhatIf` povolí ověřování logiky sady Runbook bez provedení.|
@@ -158,13 +158,13 @@ V následující tabulce jsou uvedeny všechny výchozí plány vytvořené v ú
 
 Nepovolujte všechny plány, protože se tak můžou vytvořit překrývající se akce plánování. Nejvhodnější je určit, které optimalizace chcete provést, a odpovídajícím způsobem je upravit. Další vysvětlení najdete v ukázkových scénářích v části Přehled.
 
-|Název plánu | Frequency | Popis|
+|Název plánu | Frequency | Description|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Každých 8 hodin | Spouští sadu Runbook **AutoStop_CreateAlert_Parent** každých 8 hodin, která zase zastavuje hodnoty založené na virtuálním počítači v `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` proměnných, a `External_ExcludeVMNames` . Případně můžete pomocí parametru zadat čárkami oddělený seznam virtuálních počítačů `VMList` .|
 |Scheduled_StopVM | Uživatelem definované, denní | Spustí **ScheduledStopStart_Parent** sadu Runbook s parametrem `Stop` každý den v zadaném čase.Automaticky zastaví všechny virtuální počítače, které splňují pravidla definovaná pomocí variabilních prostředků.Povolte související plán **naplánované – StartVM**.|
 |Scheduled_StartVM | Uživatelem definované, denní | Spustí sadu **ScheduledStopStart_Parent** Runbook s hodnotou parametru `Start` každý den v zadaném čase. Automaticky spustí všechny virtuální počítače, které splňují pravidla definovaná pomocí variabilních prostředků.Povolte související plán **naplánované – StopVM**.|
-|Sequenced – StopVM | 1:00 dop. (UTC), každý pátek | Spustí **Sequenced_StopStop_Parent** sadu Runbook s hodnotou parametru v `Stop` každém pátek v zadaném čase.Sekvenčně (vzestupně) zastaví všechny virtuální počítače s tagem **SequenceStop** definovanými příslušnými proměnnými. Další informace o hodnotách značek a proměnných prostředků naleznete v tématu [Runbooky](#runbooks).Povolí související plán, **Sequenced-StartVM**.|
-|Sequenced – StartVM | 1:00 PM (UTC), každé pondělí | Spustí sadu **SequencedStopStart_Parent** Runbook s hodnotou parametru `Start` každé pondělí v zadanou dobu. Sekvenčně (sestupně) spustí všechny virtuální počítače se značkou **SequenceStart** definovanou příslušnými proměnnými. Další informace o hodnotách značek a proměnných prostředků naleznete v tématu [Runbooky](#runbooks). Povolí související plán, **Sequenced-StopVM**.
+|Sequenced-StopVM | 1:00 dop. (UTC), každý pátek | Spustí **Sequenced_StopStop_Parent** sadu Runbook s hodnotou parametru v `Stop` každém pátek v zadaném čase.Sekvenčně (vzestupně) zastaví všechny virtuální počítače s tagem **SequenceStop** definovanými příslušnými proměnnými. Další informace o hodnotách značek a proměnných prostředků naleznete v tématu [Runbooky](#runbooks).Povolí související plán, **Sequenced-StartVM**.|
+|Sequenced-StartVM | 1:00 PM (UTC), každé pondělí | Spustí sadu **SequencedStopStart_Parent** Runbook s hodnotou parametru `Start` každé pondělí v zadanou dobu. Sekvenčně (sestupně) spustí všechny virtuální počítače se značkou **SequenceStart** definovanou příslušnými proměnnými. Další informace o hodnotách značek a proměnných prostředků naleznete v tématu [Runbooky](#runbooks). Povolí související plán, **Sequenced-StopVM**.
 
 ## <a name="use-the-feature-with-classic-vms"></a>Použití funkce u klasických virtuálních počítačů
 

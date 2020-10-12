@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 517fed0dd9eb1736344546bde9f79e52ee17182f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333099"
 ---
 # <a name="troubleshooting-azure-sql-edge-deployments"></a>Řešení potíží s nasazeními Azure SQL Edge 
@@ -58,7 +58,7 @@ Pokud se nespustí kontejner Edge SQL, zkuste následující testy:
 
 - Pokud používáte nasazení na základě Docker nebo Kubernetes, ujistěte se, že `docker run` je příkaz správně vytvořený. Další informace najdete v tématu [nasazení Azure SQL Edge pomocí Docker](disconnected-deployment.md) a [nasazení kontejneru Azure SQL Edge do Kubernetes](deploy-kubernetes.md).
 
-- Pokud se zobrazí chyba `failed to create endpoint CONTAINER_NAME on network bridge. Error starting proxy: listen tcp 0.0.0.0:1433 bind: address already in use.` , například, pokoušíte se namapovat port kontejneru 1433 na port, který je již používán. K tomu může dojít, pokud používáte SQL Edge místně na hostitelském počítači. K tomu může dojít také v případě, že spustíte dva kontejnery SQL Edge a pokusíte se je namapovat na stejný port hostitele. Pokud k tomu dojde, použijte `-p` parametr pro mapování portu kontejneru 1433 na jiný port hostitele. Příklad: 
+- Pokud se zobrazí chyba `failed to create endpoint CONTAINER_NAME on network bridge. Error starting proxy: listen tcp 0.0.0.0:1433 bind: address already in use.` , například, pokoušíte se namapovat port kontejneru 1433 na port, který je již používán. K tomu může dojít, pokud používáte SQL Edge místně na hostitelském počítači. K tomu může dojít také v případě, že spustíte dva kontejnery SQL Edge a pokusíte se je namapovat na stejný port hostitele. Pokud k tomu dojde, použijte `-p` parametr pro mapování portu kontejneru 1433 na jiný port hostitele. Například: 
 
     ```bash
     sudo docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=yourStrong(!)Password' -p 1433:1433 --name azuresqledge -d mcr.microsoft.com/azure-sql-edge-developer.

@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
 ms.openlocfilehash: dcfae72d5f15399dc4c759ab859ad8059134f11d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91279786"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Azure Disk Encryption ukázkové skripty pro virtuální počítače se systémem Linux
@@ -49,9 +49,9 @@ Následující tabulka ukazuje, které parametry lze použít ve skriptu prostř
 |$keyVaultName|Název trezoru klíčů, do kterého se mají umístit šifrovací klíče Pokud jeden z nich neexistuje, vytvoří se nový trezor s tímto názvem.| Ano|
 |$location|Umístění trezoru klíčů. Zajistěte, aby byl Trezor klíčů a virtuální počítače zašifrované ve stejném umístění. Seznam umístění získáte pomocí rutiny `Get-AzLocation`.|Ano|
 |$subscriptionId|Identifikátor předplatného Azure, který se má použít  Své ID předplatného můžete získat pomocí rutiny `Get-AzSubscription`.|Ano|
-|$aadAppName|Název aplikace služby Azure AD, která bude použita k zápisu tajných kódů do trezoru klíčů. Pokud aplikace se zadaným názvem neexistuje, vytvoří se nová. Pokud tato aplikace již existuje, předejte do skriptu parametr aadClientSecret.|Ne|
-|$aadClientSecret|Tajný kód klienta aplikace Azure AD, který byl vytvořen dříve.|Ne|
-|$keyEncryptionKeyName|Název volitelného šifrovacího klíče klíče v trezoru klíčů. Pokud neexistuje, vytvoří se nový klíč s tímto názvem.|Ne|
+|$aadAppName|Název aplikace služby Azure AD, která bude použita k zápisu tajných kódů do trezoru klíčů. Pokud aplikace se zadaným názvem neexistuje, vytvoří se nová. Pokud tato aplikace již existuje, předejte do skriptu parametr aadClientSecret.|Nepravda|
+|$aadClientSecret|Tajný kód klienta aplikace Azure AD, který byl vytvořen dříve.|Nepravda|
+|$keyEncryptionKeyName|Název volitelného šifrovacího klíče klíče v trezoru klíčů. Pokud neexistuje, vytvoří se nový klíč s tímto názvem.|Nepravda|
 
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Šifrování nebo dešifrování virtuálních počítačů bez aplikace Azure AD
@@ -108,7 +108,7 @@ Následující tabulka ukazuje, které parametry lze použít ve skriptu prostř
 
 5. Pravidelně Sledujte průběh šifrování pomocí pokynů v [následující části](#monitoring-os-encryption-progress).
 
-6. Po Get-AzVmDiskEncryptionStatus se zobrazí "VMRestartPending", restartujte virtuální počítač, a to tak, že se přihlásíte k tomuto počítači nebo pomocí portálu, PowerShellu nebo rozhraní příkazového řádku.
+6. Po Get-AzVmDiskEncryptionStatus se zobrazí "VMRestartPending", restartujte virtuální počítač, a to buď přihlášením, nebo pomocí portálu, PowerShellu nebo rozhraní příkazového řádku.
     ```powershell
     C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
@@ -401,7 +401,7 @@ Pokud chcete nakonfigurovat šifrování pro práci s Azure, proveďte následuj
     ![Instalace CentOS 7 – Spuštění/usr/sbin/Dracut-f-v](./media/disk-encryption/centos-encrypt-fig5.png)
 
 ## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>Nahrání šifrovaného virtuálního pevného disku do účtu služby Azure Storage
-Po povolení šifrování DM-crypt je potřeba odeslat místní zašifrovaný virtuální pevný disk do svého účtu úložiště.
+Po povolení šifrování DM-Crypt se místní zašifrovaný virtuální pevný disk musí nahrát do svého účtu úložiště.
 ```powershell
     Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```

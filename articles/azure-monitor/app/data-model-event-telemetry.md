@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 69685afa14352a22b58bccbea342038e4273696e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320608"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>Telemetrie událostí: datový model Application Insights
@@ -17,7 +17,7 @@ Můžete vytvořit položky telemetrie událostí (v [Application Insights](./ap
 
 Sémantika, události mohou nebo nemusí být v souvislosti s požadavky korelační. Je-li však tento příkaz použit správně, telemetrie událostí je důležitější než požadavky nebo trasování. Události reprezentují obchodní telemetrii a měly by být předmětem samostatného a méně agresivního [vzorkování](./api-filtering-sampling.md).
 
-## <a name="name"></a>Název
+## <a name="name"></a>Name
 
 Název události Chcete-li povolit správné seskupení a užitečnou metriku, omezte aplikaci tak, aby vygenerovala malý počet samostatných názvů událostí. Nepoužívejte například samostatný název pro každou vygenerovanou instanci události.
 

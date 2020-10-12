@@ -8,10 +8,10 @@ ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
 ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397075"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
@@ -47,7 +47,7 @@ Následující tabulka obsahuje přehled podporovaných možností pro dvě verz
 | --- | ------- | ----- | ----- |
 | Prostředek podle typu | Perspektiva, která počítá všechny monitorované prostředky. | Yes | Yes |
 | Insights | Poskytuje hierarchické procházení k podrobnostem Intelligent Insights do výkonu. | Yes | Yes |
-| Chyby | Poskytuje hierarchické procházení k podrobnostem o chybách SQL, k nimž došlo v databázích. | Yes | Yes |
+| chyby | Poskytuje hierarchické procházení k podrobnostem o chybách SQL, k nimž došlo v databázích. | Yes | Yes |
 | Časové limity | Poskytuje hierarchické procházení podrobností k časovým limitům SQL, k nimž došlo v databázích. | Yes | No |
 | Blokování | Poskytuje hierarchické procházení do bloků SQL, ke kterým došlo v databázích. | Yes | No |
 | Databáze čeká | Poskytuje hierarchickou hloubkovou statistiku SQL na úrovni databáze. Obsahuje souhrny celkové čekací doby a dobu čekání na typ čekání. |Yes | No |

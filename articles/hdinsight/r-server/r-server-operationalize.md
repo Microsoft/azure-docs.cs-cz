@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.openlocfilehash: 1a5a46957c92fb2c14907db728216481f3f57aac
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087686"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Cluster služeb zprovoznění ML ve službě Azure HDInsight
@@ -189,7 +189,7 @@ Jakmile budou všechny vyřazené pracovní uzly nakonfigurované tak, aby spou�
 
 1. Připojte se přes SSH k hraničnímu uzlu.
 
-1. Spusťte `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json`.
+1. Spusťte příkaz `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json`.
 
 1. Vyhledejte část URI a přidejte podrobnosti o IP a portech pracovního uzlu.
 

@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.openlocfilehash: 5569e7e3a33c4f1bbbd3214e742b0cb889c65e31
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86040771"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Analýza subjektivního hodnocení na Twitteru v reálném čase v Azure Stream Analytics
@@ -33,7 +33,7 @@ Aby bylo možné v reálném čase na Twitteru identifikovat témata týkající
 
 V této příručce se naučíte používat klientskou aplikaci, která se připojuje k Twitteru a hledá tweety s určitými hashtagy (které můžete nastavit). Pokud chcete spustit aplikaci a analyzovat tweety pomocí Azure Stream Analytics, musíte mít následující:
 
-* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
 * Účet na [Twitteru](https://twitter.com) .
 
@@ -224,7 +224,7 @@ Je určen vstup, dotaz a výstup úlohy. Jste připraveni začít úlohu Stream 
 
 3. Na stránce **Spustit úlohu** pro **čas spuštění výstupu úlohy**vyberte **nyní** a pak vyberte **Spustit**.
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky

@@ -12,10 +12,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 3838234f9f65fcf91f8de33e3d7196aa13f2b903
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83741719"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Ruční přidání účtu do aplikace
@@ -93,12 +93,12 @@ Svůj účet Amazon můžete přidat tak, že zapnete dvojúrovňové ověřová
 
 5. Na stránce **Přidat způsob ověření zálohy** zadejte na svém počítači čtyřmístný ověřovací kód, který vám poskytla metoda ověření zálohování pro váš účet Amazon, a pak vyberte **ověřit kód a pokračovat**.
 
-6. Na stránce skoro dokončeno rozhodněte, jestli počítač má mít důvěryhodné zařízení, a pak **ho vyberte. Zapněte dvoustupňové ověřování**.
+6. Na stránce skoro dokončeno rozhodněte, jestli počítač má mít důvěryhodné zařízení, a pak **ho vyberte. Zapněte Two-Step ověřování**.
 
     Zobrazí se stránka **Upřesnit nastavení zabezpečení** se zobrazenými aktualizovanými podrobnostmi o dvou faktorech ověřování.
 
     >[!NOTE]
-    >Další informace o dvojúrovňovém ověřování a účtu Amazon najdete v článku [o dvoustupňovém ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) a [přihlašování pomocí dvoustupňového ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).    
+    >Další informace o dvojúrovňovém ověřování a účtu Amazon najdete v tématu věnovaném [ověřování Two-Step](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) a [přihlašování pomocí Two-Stepho ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).    
 
 ## <a name="next-steps"></a>Další kroky
 

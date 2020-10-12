@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120894"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Rozdíly mezi MSAL JS a ADAL JS
@@ -44,7 +44,7 @@ Je však stále nutné použít ADAL.js, pokud se vaše aplikace musí přihlaš
 
 * Metoda získání a obnovení tokenů v tichém režimu bez výzvy k zadání uživatelských jmen `acquireToken` v ADAL.js. V MSAL.js je tato metoda pojmenována `acquireTokenSilent` tak, aby byla výstižnější jako tato funkce.
 
-### <a name="authority-value-common"></a>Hodnota autority`common`
+### <a name="authority-value-common"></a>Hodnota autority `common`
 
 V 1.0 se pomocí `https://login.microsoftonline.com/common` autority uživatelům umožní přihlásit pomocí účtu Azure AD (pro libovolnou organizaci).
 

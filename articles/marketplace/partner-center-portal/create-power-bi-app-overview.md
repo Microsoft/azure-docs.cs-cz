@@ -8,10 +8,10 @@ author: navits09
 ms.author: navits
 ms.date: 04/02/2020
 ms.openlocfilehash: 2f34723bec6dc2212f8897eca849e6535d737fc8
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397415"
 ---
 # <a name="power-bi-app-creation-overview"></a>Přehled vytváření aplikací Power BI

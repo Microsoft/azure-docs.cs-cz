@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/30/2018
 ms.openlocfilehash: 215835bf7f1e6676adba6541da70dcb86fc3500c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86039037"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Zpracování konfigurovatelných pravidel na základě prahových hodnot v Azure Stream Analytics
@@ -137,7 +137,7 @@ Tato ukázková data JSON představují vstupní data **metrik** , která se pou
 - Tři ukázkové události jsou uvedeny v rozmezí 1 – minuty, hodnota `T14:50` . 
 - Všechny tři mají stejnou `deviceId` hodnotu `978648` .
 - Hodnoty metrik CPU se v každé události, v `98` `95` `80` uvedeném pořadí liší. Pouze první dvě ukázkové události překračují pravidlo upozornění procesoru, které je v pravidle navázáno.
-- Pole includeDim v pravidle výstrahy bylo číslo klíče 2. Odpovídající pole klíče 2 v vzorových událostech je pojmenováno `NodeName` . Tři ukázkové události mají hodnoty `N024` , `N024` a `N014` . Ve výstupu se zobrazí jenom uzel `N024` , který je jediná data, která odpovídají kritériím výstrahy pro vysoký procesor. `N014`nesplňuje maximální prahovou hodnotu procesoru.
+- Pole includeDim v pravidle výstrahy bylo číslo klíče 2. Odpovídající pole klíče 2 v vzorových událostech je pojmenováno `NodeName` . Tři ukázkové události mají hodnoty `N024` , `N024` a `N014` . Ve výstupu se zobrazí jenom uzel `N024` , který je jediná data, která odpovídají kritériím výstrahy pro vysoký procesor. `N014` nesplňuje maximální prahovou hodnotu procesoru.
 - Pravidlo výstrahy je konfigurováno pouze s `filter` klíčem číslo 2, který odpovídá `cluster` poli v vzorových událostech. Tři ukázkové události mají hodnotu `C1` a odpovídají kritériím filtru.
 
 ```json

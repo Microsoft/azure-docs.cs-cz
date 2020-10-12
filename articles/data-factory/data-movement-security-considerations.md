@@ -1,5 +1,5 @@
 ---
-title: Aspekty zabezpečení
+title: Důležité informace o zabezpečení
 description: Popisuje základní infrastrukturu zabezpečení, kterou služby pro přesun dat v Azure Data Factory používají k lepšímu zabezpečení vašich dat.
 services: data-factory
 ms.author: abnarain
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
 ms.openlocfilehash: 458336f27f01cfb0d127b96cd3df6aa40f8db0b3
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440554"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Otázky zabezpečení při přesunu dat v Azure Data Factory
@@ -173,7 +173,7 @@ Následující tabulka obsahuje požadavky na Odchozí porty a domény pro podni
 
 Následující tabulka uvádí požadavky na porty pro bránu Windows Firewall:
 
-| Příchozí porty | Popis                              |
+| Příchozí porty | Description                              |
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)    | Vyžadovaná rutinou šifrování PowerShellu, jak je popsáno v tématu [šifrování přihlašovacích údajů pro místní úložiště dat v Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md)a aplikace Správce přihlašovacích údajů pro bezpečné nastavení přihlašovacích údajů pro místní úložiště dat v místním prostředí Integration runtime. |
 
@@ -194,7 +194,7 @@ Následující cloudová úložiště dat vyžadují, abyste povolili IP adresu 
 
 **Je možné místní prostředí Integration runtime sdílet mezi různými datovými továrnami?**
 
-Yes. Další podrobnosti [najdete tady](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/).
+Ano. Další podrobnosti [najdete tady](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/).
 
 **Jaké jsou požadavky na porty pro fungování prostředí Integration runtime v místním prostředí?**
 

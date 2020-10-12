@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.openlocfilehash: 1a14615e96d5be4fbc8994073d66677997281131
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86499881"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti škálování pro aplikace ve službě Azure Kubernetes Service (AKS)
@@ -30,7 +30,7 @@ Při horizontálním škálování uzlů volá rozhraní API Kubernetes příslu
 
 Pokud chcete začít s ručním škálováním v luskech a uzlech, přečtěte si téma [škálování aplikací v AKS][aks-scale]
 
-## <a name="horizontal-pod-autoscaler"></a>Automatické škálování vodorovně pod
+## <a name="horizontal-pod-autoscaler"></a>Horizontální automatické škálování podů
 
 Kubernetes používá k monitorování požadavků na prostředky horizontální horizontální navýšení (HPA) a automaticky škáluje počet replik. Ve výchozím nastavení automatické škálování pod automaticky kontroluje metriky rozhraní API každých 30 sekund pro všechny požadované změny v počtu replik. Když se vyžadují změny, počet replik se odpovídajícím způsobem zvýší nebo sníží. Funkce automatického škálování pod možností horizontálního navýšení funguje s clustery AKS, které nasadily Server metrik pro Kubernetes 1.8 +.
 

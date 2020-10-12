@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.openlocfilehash: cd974377637f535383c4e099ac408bea88f887a4
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88853114"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure ve Windows pomocí protokolu SMB (Azure NetApp Files) pro aplikace SAP
@@ -143,7 +143,7 @@ Od SAP budete potřebovat následující software:
 
 ### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>Instalace instance ASCS/SCS na prvním uzlu clusteru ASCS/SCS
 
-1. Nainstalujte instanci SAP ASCS/SCS do prvního uzlu clusteru. Spusťte instalační nástroj SAP SWPM a pak přejděte na: **produkt**  >  **DBMS** > instalace > aplikační server ABAP (nebo Java) > vysoce dostupného systému > ASCS/SCS instance > prvním uzlu clusteru.  
+1. Nainstalujte instanci SAP ASCS/SCS do prvního uzlu clusteru. Spusťte instalační nástroj SAP SWPM a pak přejděte na: **produkt**  >  **DBMS** > instalace > aplikační server ABAP (nebo Java) > High-Availability System > ASCS/SCS instance > prvním uzlu clusteru.  
 
 2. Jako konfiguraci sdílené složky clusteru v SWPM vyberte **cluster Shared File** .  
 3. Po zobrazení výzvy ke kroku o **parametrech systémového clusteru SAP**zadejte název hostitele pro sdílenou složku SMB Azure NetApp Files, kterou jste už vytvořili jako **název hostitele pro sdílení souborů**.  V tomto příkladu je název hostitele sdílené složky SMB **anfsmb-9562**. 
@@ -158,7 +158,7 @@ Od SAP budete potřebovat následující software:
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>Instalace instance ASCS/SCS na druhý uzel clusteru ASCS/SCS
 
-1. Nainstalujte instanci SAP ASCS/SCS na druhý uzel clusteru. Spusťte nástroj pro instalaci SAP SWPM a pak přejděte na **produkt**  >  **DBMS** > instalaci > aplikační server ABAP (nebo Java) > vysoké dostupnosti > ASCS/SCS instance > další uzel clusteru.  
+1. Nainstalujte instanci SAP ASCS/SCS na druhý uzel clusteru. Spusťte instalační nástroj SAP SWPM a pak přejděte na **produkt**  >  **DBMS** > instalace > aplikační server ABAP (nebo Java) > High-Availability System > ASCS/SCS instance > další uzel clusteru.  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>Instalace instance systému DBMS a aplikačních serverů SAP
 

@@ -1,5 +1,5 @@
 ---
-title: Použití typu obsahu JSON pro klíčové hodnoty
+title: Použití záhlaví content-type JSON pro páry klíč-hodnota
 titleSuffix: Azure App Configuration
 description: Naučte se používat typ obsahu JSON pro klíčové hodnoty.
 services: azure-app-configuration
@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
 ms.openlocfilehash: 725beb50e55852e35ee4434539ff158f082059df
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88122007"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>Využití typu obsahu k ukládání hodnot klíče JSON v konfiguraci aplikace

@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
 ms.openlocfilehash: e305795f4f45a0ea858eb8d74880aedca8ec538d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979844"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Kurz: Konfigurace zřizování SAP SuccessFactors pro uživatele služby Active Directory 
@@ -232,7 +232,7 @@ Přeneste stažený instalační program agenta na hostitele serveru a podle ní
   
    ![Ukončit obrazovku](./media/workday-inbound-tutorial/pa_install_screen_9.png "Ukončit obrazovku")
    
-1. Ověřte instalaci agenta a ujistěte se, že je spuštěný, a to tak, že otevřete modul snap-in služby a vyhledáte službu s názvem "Microsoft Azure AD připojit zřizování agent".
+1. Ověřte instalaci agenta a ujistěte se, že je spuštěný, a to tak, že otevřete Snap-In služby a vyhledáte službu s názvem "Microsoft Azure AD Connect zřizovací agent".
   
    ![Snímek obrazovky s agentem zřizování služby Microsoft Azure AD Connect, který běží v rámci služeb](./media/workday-inbound-tutorial/services.png)
 
@@ -329,7 +329,7 @@ V této části nakonfigurujete, jak budou data uživatelů z SuccessFactors do 
 
          * **Pouze během vytváření** – použít toto mapování pouze při akcích vytvoření uživatele
 
-1. Pokud chcete uložit mapování, klikněte na **Uložit** v horní části oddílu mapování atributů.
+1. Pokud chcete uložit mapování, klikněte na **Uložit** v horní části Attribute-Mapping části.
 
 Po dokončení konfigurace mapování atributů teď můžete [Povolit a spustit službu zřizování uživatelů](#enable-and-launch-user-provisioning).
 

@@ -1,19 +1,19 @@
 ---
-title: Přehled zabezpečení pro Azure Data Share
-description: Přehled zabezpečení pro Azure Data Share
+title: Přehled zabezpečení služby Azure Data Share
+description: Přehled zabezpečení služby Azure Data Share
 author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.openlocfilehash: 10f31b74b461941b15f13e45f90b5fbc408c90fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86108409"
 ---
-# <a name="security-overview-for-azure-data-share"></a>Přehled zabezpečení pro Azure Data Share
+# <a name="security-overview-for-azure-data-share"></a>Přehled zabezpečení služby Azure Data Share
 
 Tento článek poskytuje přehled zabezpečení služby Azure Data Share.
 

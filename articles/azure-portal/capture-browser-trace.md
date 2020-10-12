@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: dba321d055e64d62ca91f95461c3299bee5f90d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83714215"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Zachycení trasování prohlížeče pro řešení potíží
@@ -202,7 +202,7 @@ Následující kroky ukazují, jak používat vývojářské nástroje v prohlí
 
 1. Zastavte záznam kroků ve Windows nebo na obrazovce na Macu a záznam uložte.
 
-1. Zpátky v podokně nástroje pro vývojáře v prohlížeči vyberte kartu **Konzola** . Klikněte pravým tlačítkem myši na jednu ze zpráv, vyberte **exportovat viditelnou zprávu do**a uložte výstup konzoly do textového souboru.
+1. Zpátky v podokně nástroje pro vývojáře v prohlížeči vyberte kartu **Konzola** . Klikněte pravým tlačítkem na jednu ze zpráv, vyberte **exportovat viditelnou zprávu do**a uložte výstup konzoly do textového souboru.
 
     ![Snímek obrazovky s výstupem konzoly](media/capture-browser-trace/firefox-console-select.png)
 

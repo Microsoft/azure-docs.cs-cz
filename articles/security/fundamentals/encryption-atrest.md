@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
 ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397245"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování neaktivních uložených dat v Azure
@@ -107,7 +107,7 @@ Všechny Managed Disks, snímky a image se šifrují pomocí Šifrování služb
 
 #### <a name="custom-encryption-at-rest"></a>Vlastní šifrování v klidovém umístění
 
-Doporučuje se, aby aplikace IaaS využily Azure Disk Encryption a šifrování při možnostech REST, které poskytují všechny spotřebované služby Azure. V některých případech, například v případě neplatných požadavků na šifrování nebo úložiště založeného na neazure, může vývojář aplikace IaaS potřebovat implementovat šifrování v klidovém umístění. Vývojáři řešení IaaS se můžou lépe integrovat se správou Azure a očekáváními zákazníků díky využití určitých komponent Azure. Vývojáři by konkrétně měli používat službu Azure Key Vault k poskytování zabezpečeného úložiště klíčů a poskytovat zákazníkům s konzistentními možnostmi správy klíčů u většiny služeb platformy Azure. Vlastní řešení navíc by měla používat identity služby spravované v Azure k povolení účtů služeb pro přístup k šifrovacím klíčům. Informace o vývojářích Azure Key Vault a identitách spravované služby najdete v příslušných sadách SDK.
+Doporučuje se, aby aplikace IaaS využily Azure Disk Encryption a šifrování při možnostech REST, které poskytují všechny spotřebované služby Azure. V některých případech, například v případě neplatných požadavků na šifrování nebo úložiště založeného na neazure, může vývojář aplikace IaaS potřebovat implementovat šifrování v klidovém umístění. Vývojáři řešení IaaS se můžou lépe integrovat se správou Azure a očekáváními zákazníků díky využití určitých komponent Azure. Vývojáři by konkrétně měli používat službu Azure Key Vault k poskytování zabezpečeného úložiště klíčů a poskytovat zákazníkům s konzistentními možnostmi správy klíčů u většiny služeb platformy Azure. Vlastní řešení navíc by měla používat Azure-Managed identity služby k povolení účtů služeb pro přístup k šifrovacím klíčům. Informace o vývojářích Azure Key Vault a identitách spravované služby najdete v příslušných sadách SDK.
 
 ## <a name="azure-resource-providers-encryption-model-support"></a>Podpora modelu šifrování pro poskytovatele prostředků Azure
 

@@ -9,10 +9,10 @@ ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: 6cb0bf9ae12169f9431cf221431f442b5870d932
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816503"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-double-encryption-at-rest-for-managed-disks"></a>Použití modulu Azure PowerShell k povolení dvojitého šifrování v klidovém umístění pro spravované disky
@@ -23,7 +23,7 @@ Azure Disk Storage podporuje dvojité šifrování v klidovém umístění pro s
 
 [!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Nainstalujte nejnovější [verzi Azure PowerShell](/powershell/azure/install-az-ps)a přihlaste se k účtu Azure pomocí [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0).
 

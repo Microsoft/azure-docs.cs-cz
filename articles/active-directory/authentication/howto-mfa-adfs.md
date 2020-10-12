@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 555673d1496ac33642e04c09233ba554ee2cca95
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531237"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Zabezpečení cloudových prostředků s Azure Multi-Factor Authentication a AD FS
@@ -88,7 +88,7 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
 
 Teď, když máme vytvořené deklarace identity, můžeme nakonfigurovat důvěryhodné IP adresy.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vyberte **Azure Active Directory**  >  **zabezpečení**  >  **podmíněný přístup**  >  **pojmenované umístění**.
 3. V okně **podmíněný přístup – pojmenovaná umístění** vyberte **Konfigurovat důvěryhodné IP adresy MFA** .
 
@@ -97,4 +97,4 @@ Teď, když máme vytvořené deklarace identity, můžeme nakonfigurovat důvě
 4. Na stránce Nastavení služby v části **Důvěryhodné IP adresy** vyberte **Pro žádosti od federovaných uživatelů v mém intranetu přeskočit vícefaktorové ověřování**.  
 5. Klikněte na **Uložit**.
 
-A to je vše! V tuto chvíli by měli uživatelé federované Microsoft 365 používat MFA jenom v případě, že deklarace identity pochází mimo podnikový intranet.
+A je to! V tuto chvíli by měli uživatelé federované Microsoft 365 používat MFA jenom v případě, že deklarace identity pochází mimo podnikový intranet.

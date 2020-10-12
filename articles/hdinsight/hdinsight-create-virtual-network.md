@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
 ms.openlocfilehash: 8e68bd2d164e3a8de60a9061363b839c4dfd4777
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074765"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Vytváření virtuálních sítí pro clustery Azure HDInsight
@@ -212,7 +212,7 @@ Následující kód ukazuje, jak povolit přístup přes SSH z Internetu:
 az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
 ```
 
-## <a name="example-dns-configuration"></a><a id="example-dns"></a>Příklad: Konfigurace DNS
+## <a name="example-dns-configuration"></a><a id="example-dns"></a> Příklad: Konfigurace DNS
 
 ### <a name="name-resolution-between-a-virtual-network-and-a-connected-on-premises-network"></a>Překlad názvů mezi virtuální sítí a připojenou místní sítí
 

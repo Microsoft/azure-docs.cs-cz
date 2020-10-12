@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
 ms.openlocfilehash: 09056846ee3e531724f597ee35f92d812ce2c335
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86037830"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Řešení potíží: připojení VPN typu Site-to-Site VPN se nemůže připojit a přestane fungovat.
@@ -28,7 +28,7 @@ Problém vyřešíte tak, že se nejdřív pokusíte [resetovat bránu Azure VPN
 
 Ověřte typ brány VPN Azure.
 
-1. Přejít na [Azure Portal](https://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 
 2. Informace o typu najdete na stránce s **přehledem** služby VPN Gateway.
     
@@ -75,7 +75,7 @@ Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 -   Definice IP adresy v objektu **brány místní sítě** v Azure by měla odpovídat místní IP adrese zařízení.
 -   Definice IP adresy brány Azure nastavená na místním zařízení by se měla shodovat s IP adresou brány Azure.
 
-### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>Krok 4. Kontrolovat UDR a skupin zabezpečení sítě v podsíti brány
+### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>Krok 4: Kontrolovat UDR a skupin zabezpečení sítě v podsíti brány
 
 Zkontrolujte a odeberte uživatelsky definované směrování (UDR) nebo skupiny zabezpečení sítě (skupin zabezpečení sítě) v podsíti brány a pak otestujte výsledek. Pokud je problém vyřešen, ověřte nastavení, které UDR nebo NSG použili.
 

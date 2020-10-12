@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 56ec893de159f4c8a90c5a229ccf7669856fb066
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89020214"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Postup zpracování a extrakce informací z imagí ve scénářích obohacení AI
@@ -30,7 +30,7 @@ V rámci odhalující dokumentu je k dispozici nová sada konfiguračních param
 
 Normalizaci imagí nelze vypnout. Dovednosti, které iterují na obrázky, očekávají normalizované obrázky. Povolení normalizace imagí u indexeru vyžaduje, aby k tomuto indexeru byl připojen dovednosti.
 
-| Konfigurační parametr | Popis |
+| Konfigurační parametr | Description |
 |--------------------|-------------|
 | imageAction   | Nastavte na None, pokud by se při výskytu vložených obrázků nebo souborů obrázků neměla dělat žádná akce. <br/>Nastavte na "generateNormalizedImages", aby se vygenerovalo pole normalizovaných imagí jako součást odhalujícího dokumentu.<br/>Nastavte na "generateNormalizedImagePerPage", chcete-li generovat pole normalizovaných imagí, kde pro soubory PDF ve zdroji dat jsou jednotlivé stránky vykresleny do jedné výstupní image.  Funkce je stejná jako "generateNormalizedImages" pro typy souborů, které nejsou ve formátu PDF.<br/>V případě jakékoli možnosti, která není "none", budou obrázky zobrazeny v poli *normalized_images* . <br/>Výchozí hodnota je None. Tato konfigurace je relevantní pouze pro zdroje dat objektů blob, pokud je "dataToExtract" nastaven na "contentAndMetadata". <br/>Z daného dokumentu bude extrahováno maximálně 1000 imagí. Pokud je v dokumentu více než 1000 obrázků, bude extrahován první 1000 a bude vygenerováno upozornění. |
 |  normalizedImageMaxWidth | Maximální šířka (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000. Maximální povolená hodnota je 10000. | 
@@ -61,7 +61,7 @@ ImageAction v [definici indexeru](/rest/api/searchservice/create-indexer) zadát
 
 Pokud je *imageAction* nastaveno na jinou hodnotu než "none", pole New *normalized_images* bude obsahovat pole obrázků. Každý obrázek je komplexní typ, který má následující členy:
 
-| Člen obrázku       | Popis                             |
+| Člen obrázku       | Description                             |
 |--------------------|-----------------------------------------|
 | data               | Řetězec s kódováním BASE64 normalizovaného obrázku ve formátu JPEG.   |
 | šířka              | Šířka normalizované image v pixelech |

@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.openlocfilehash: 07cbb28b98fcbac1932424c1c72f388813ec2400
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86037558"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>Automatické škálování Stream Analytics úloh pomocí Azure Automation
@@ -29,7 +29,7 @@ Než začnete konfigurovat automatické škálování pro vaši úlohu, proveďt
 ### <a name="configure-variables"></a>Konfigurace proměnných
 Do účtu Azure Automation přidejte následující proměnné. Tyto proměnné budou použity v sadách Runbook, které jsou popsány v následujících krocích.
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | --- | --- | --- |
 | **jobName** | Řetězec | Název Stream Analytics úlohy, kterou chcete automatické škálování. |
 | **resourceGroupName** | Řetězec | Název skupiny prostředků, ve které se vaše úloha nachází |

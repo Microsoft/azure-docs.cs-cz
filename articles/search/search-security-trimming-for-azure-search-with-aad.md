@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/04/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 87337cf22bdb388c5873a2811bb9913c3e7f4d4e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019772"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Filtry zabezpečení pro oříznutí výsledků Kognitivní hledání Azure pomocí identit služby Active Directory
@@ -31,7 +31,7 @@ Tento článek se zabývá následujícími úkony:
 > [!NOTE]
 > Ukázky fragmentů kódu v tomto článku jsou napsané v jazyce C#. Úplný zdrojový kód najdete [na GitHubu](https://github.com/Azure-Samples/search-dotnet-getting-started). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Váš index v Azure Kognitivní hledání musí mít [pole zabezpečení](search-security-trimming-for-azure-search.md) pro uložení seznamu identit skupin, které mají k dokumentu přístup pro čtení. Tento případ použití předpokládá, že se jedná o korespondenci mezi zabezpečenou položkou (jako je aplikace školních aplikací jednotlivce) a bezpečnostní pole určující, kdo má přístup k této položce (zaměstnancům pro přijímání).
 

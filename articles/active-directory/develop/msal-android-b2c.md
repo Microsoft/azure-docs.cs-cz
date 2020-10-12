@@ -14,10 +14,10 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 0ad5fab685757d2efd91cd1df0e48a5f1258d17e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119874"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Použití MSAL pro Android s B2C
@@ -30,9 +30,9 @@ V MSAL pro Android jsou zásady B2C (uživatelské cesty) nakonfigurované jako 
 
 Daná aplikace B2C má dvě zásady:
 - Registrace a přihlášení
-    * Znamená`B2C_1_SISOPolicy`
+    * Znamená `B2C_1_SISOPolicy`
 - Upravit profil
-    * Znamená`B2C_1_EditProfile`
+    * Znamená `B2C_1_EditProfile`
 
 Konfigurační soubor aplikace by byl deklarován dvakrát `authorities` . Jednu pro každou zásadu. `type`Vlastnost každé autority je `B2C` .
 
@@ -58,7 +58,7 @@ Konfigurační soubor aplikace by byl deklarován dvakrát `authorities` . Jednu
 
 ## <a name="initialize-ipublicclientapplication"></a>Inicializovat IPublicClientApplication
 
-`IPublicClientApplication`je vytvořena metodou továrny, která umožňuje asynchronní analýzu konfigurace aplikace.
+`IPublicClientApplication` je vytvořena metodou továrny, která umožňuje asynchronní analýzu konfigurace aplikace.
 
 ```java
 PublicClientApplication.createMultipleAccountPublicClientApplication(
@@ -235,7 +235,7 @@ B2C považuje každou zásadu za samostatnou autoritu. Přístupové tokeny, akt
 
 Každá zásada přidá `IAccount` do mezipaměti pro každého uživatele. Pokud se uživatel přihlásí k aplikaci a vyvolá dvě zásady, budou mít dvě `IAccount` . Pokud chcete tohoto uživatele odebrat z mezipaměti, musíte zavolat `removeAccount()` za každou zásadu.
 
-Když obnovujete tokeny pro zásadu s `acquireTokenSilent` , zadejte stejný `IAccount` , který byl vrácen z předchozích vyvolání zásady do `AcquireTokenSilentParameters` . Poskytnutí účtu vráceného jinou zásadou způsobí chybu.
+Když obnovujete tokeny pro zásadu s `acquireTokenSilent` , zadejte stejný `IAccount` , který byl vrácen z předchozích vyvolání zásady do  `AcquireTokenSilentParameters` . Poskytnutí účtu vráceného jinou zásadou způsobí chybu.
 
 ## <a name="next-steps"></a>Další kroky
 

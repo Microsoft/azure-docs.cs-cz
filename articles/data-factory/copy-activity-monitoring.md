@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
 ms.openlocfilehash: 92119709aa260f3180c503a77064f6e80dece6e6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440605"
 ---
 # <a name="monitor-copy-activity"></a>Monitorování aktivity kopírování
@@ -50,7 +50,7 @@ Dolní **Podrobnosti a trvání spuštění** popisují klíčové kroky, který
 
 V části výstup **výsledků spuštění aktivity kopírování**  >  **Output** , která se používá k vykreslování zobrazení monitorování uživatelského rozhraní, se také vrátí podrobnosti o spuštění aktivity kopírování a výkonnostní charakteristiky. Následuje úplný seznam vlastností, které mohou být vráceny. Uvidíte jenom vlastnosti, které se vztahují k vašemu scénáři kopírování. Informace o tom, jak programově monitorovat spuštění aktivit prostřednictvím kódu programu, najdete v tématu [programové sledování služby Azure Data Factory](monitor-programmatically.md).
 
-| Název vlastnosti  | Popis | Jednotka ve výstupu |
+| Název vlastnosti  | Description | Jednotka ve výstupu |
 |:--- |:--- |:--- |
 | Čtení z | Skutečné množství dat načtených ze zdroje. | Hodnota Int64, v bajtech |
 | Napsáno | Skutečná připojená Data zapsaná nebo potvrzená do jímky. Velikost může být jiná než `dataRead` velikost, protože souvisí s tím, jak jednotlivé úložiště dat data ukládají. | Hodnota Int64, v bajtech |

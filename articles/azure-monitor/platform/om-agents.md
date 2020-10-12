@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
 ms.openlocfilehash: 2a4f24da51b9e9e78c3df3e7d1437a380306e300
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318347"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Připojit Operations Manager k Azure Monitor
@@ -71,16 +71,16 @@ Níže uvedené informace uvádějí informace o konfiguraci proxy serveru a br�
 
 |Prostředek | Číslo portu| Obejití kontroly protokolu HTTP|  
 |---------|------|-----------------------|  
-|**Agent**|||  
-|\*.ods.opinsights.azure.com| 443 |Ano|  
-|\*.oms.opinsights.azure.com| 443|Ano|  
-|\*.blob.core.windows.net| 443|Ano|  
-|\*.azure-automation.net| 443|Ano|  
+|**Agenta**|||  
+|\*.ods.opinsights.azure.com| 443 |Yes|  
+|\*.oms.opinsights.azure.com| 443|Yes|  
+|\*.blob.core.windows.net| 443|Yes|  
+|\*.azure-automation.net| 443|Yes|  
 |**Server pro správu**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Ano|  
-|\*.ods.opinsights.azure.com| 443| Ano|  
-|*.azure-automation.net | 443| Ano|  
+|\*.blob.core.windows.net| 443| Yes|  
+|\*.ods.opinsights.azure.com| 443| Yes|  
+|*.azure-automation.net | 443| Yes|  
 |**Operations Manager konzolu pro Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  

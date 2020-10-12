@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
 ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87797742"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
@@ -419,7 +419,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    </code></pre>
 
    >[!IMPORTANT]
-   > Nainstalovaná verze **ochranného balíčku – agenti** musí být aspoň **4.4.0** , aby mohli využívat rychlejší časy převzetí služeb při selhání s agentem Azure plot, pokud je potřeba vytvořit uzly clusteru. Pokud používáte nižší verzi, doporučujeme balíček aktualizovat.  
+   > Nainstalovaná verze **ochranného balíčku – agenti** musí být aspoň **4.4.0**  , aby mohli využívat rychlejší časy převzetí služeb při selhání s agentem Azure plot, pokud je potřeba vytvořit uzly clusteru. Pokud používáte nižší verzi, doporučujeme balíček aktualizovat.  
 
 
 1. **[A]** instalace sady Azure Python SDK 

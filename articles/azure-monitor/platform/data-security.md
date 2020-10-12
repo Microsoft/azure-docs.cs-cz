@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
 ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319792"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat Log Analytics
@@ -73,7 +73,7 @@ V následující tabulce jsou uvedeny příklady datových typů:
 | Událost |ID události, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, vydavatel, FullNumber, číslo, kategorie, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Poznámka:** Když zapisujete události s vlastními poli do protokolu událostí systému Windows, Log Analytics je shromáždí. |
 | Metadata |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, název sítě, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP adresa, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, Principaler, OffsetInMinuteFromGreenwichTime |
 | Výkon |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
-| Stav |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, prostav, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
+| State |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, prostav, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Fyzické zabezpečení
 Služba Log Analytics je spravovaná pracovníky Microsoftu a všechny aktivity se zaznamenávají do protokolu a dají se auditovat. Log Analytics se provozuje jako služba Azure a splňuje všechny požadavky na dodržování předpisů a zabezpečení Azure. Podrobnosti o fyzickém zabezpečení prostředků Azure najdete na stránce 18 [přehledu zabezpečení Microsoft Azure](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fyzická přístupová práva k zabezpečeným oblastem se mění v rámci jednoho pracovního dne pro kohokoli, kdo už nemá zodpovědnost za službu Log Analytics, včetně přenosu a ukončení. Můžete si přečíst o globální fyzické infrastruktuře, kterou používáme v datových [centrech Microsoftu](https://azure.microsoft.com/global-infrastructure/).

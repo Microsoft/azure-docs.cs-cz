@@ -17,10 +17,10 @@ ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88648985"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Podporované scénáře pro úlohy SAP na virtuálních počítačích Azure
@@ -102,7 +102,7 @@ Pro virtuální počítače Azure se na úrovni DBMS podporují tyto konfigurace
 - SAP HANA konfigurace škálované n + m pomocí [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) na SUSE a Red Hat. Podrobnosti najdete v těchto článcích:
     - [Nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files v SUSE Linux Enterprise Server}](./sap-hana-scale-out-standby-netapp-files-suse.md)
     - [Nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files v Red Hat Enterprise Linux](./sap-hana-scale-out-standby-netapp-files-rhel.md)
-- SQL Server cluster s podporou převzetí služeb při selhání založený na Souborové službě se škálováním na více systémů I když se v produkčních systémech doporučuje použít místo clusteringu SQL Server Always On. Služba SQL Server Always On nabízí lepší dostupnost pomocí samostatného úložiště. Podrobnosti jsou popsány v tomto článku: 
+- SQL Server cluster s podporou převzetí služeb při selhání založený na Souborové službě Windows Scale-Out. I když se v produkčních systémech doporučuje použít místo clusteringu SQL Server Always On. Služba SQL Server Always On nabízí lepší dostupnost pomocí samostatného úložiště. Podrobnosti jsou popsány v tomto článku: 
     - [Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání na virtuálních počítačích Azure](../../../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md)
 - SQL Server Always On se podporuje s operačním systémem Windows pro SQL Server v Azure. Toto je výchozí doporučení pro produkční SQL Server instance v Azure. Podrobnosti jsou popsány v těchto článcích:
     - [Představujeme SQL Server skupiny dostupnosti Always On na virtuálních počítačích Azure](../../../azure-sql/virtual-machines/windows/availability-group-overview.md).

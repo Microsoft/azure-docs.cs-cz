@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
 ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86498793"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
@@ -109,7 +109,7 @@ ms.locfileid: "86498793"
 > - Pokud vaše řešení neodpojení ručně, vaše data se automaticky odpojí od 31. října.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>Otázka: budou moje data přenesena do nového řešení?
-> Yes. Když odeberete řešení **Office 365** z pracovního prostoru, jeho data budou dočasně nedostupná, protože schéma se odebere. Pokud povolíte nový konektor **sady Office 365** v nástroji Sentinel, obnoví se schéma do pracovního prostoru a veškerá shromážděná data budou k dispozici. 
+> Ano. Když odeberete řešení **Office 365** z pracovního prostoru, jeho data budou dočasně nedostupná, protože schéma se odebere. Pokud povolíte nový konektor **sady Office 365** v nástroji Sentinel, obnoví se schéma do pracovního prostoru a veškerá shromážděná data budou k dispozici. 
  
 
 Řešení pro správu sady Office 365 umožňuje monitorovat prostředí sady Office 365 v Azure Monitor.
@@ -121,7 +121,7 @@ ms.locfileid: "86498793"
 - Řešení potíží s operačním systémem pomocí [dotazů protokolu](../log-query/log-query-overview.md) na data o aktivitách vaší organizace v Office 365.
 
 
-## <a name="uninstall"></a>Odinstalace
+## <a name="uninstall"></a>Odinstalovat
 
 Řešení pro správu Office 365 můžete odebrat pomocí procesu v části [Odebrání řešení pro správu](solutions.md#remove-a-monitoring-solution). Tím se nezastaví shromažďování dat ze sady Office 365 do Azure Monitor i když. Pomocí níže uvedeného postupu můžete zrušit odběr Office 365 a zastavit shromažďování dat.
 
@@ -246,7 +246,7 @@ Kliknutím na dlaždici **office 365** otevřete řídicí panel **Office 365** 
 | Sloupec | Popis |
 |:--|:--|
 | Operace | Poskytuje informace o aktivních uživatelích z monitorovaných předplatných Office 365. Uvidíte také počet aktivit, ke kterým dojde v průběhu času.
-| Výměna | Zobrazuje rozpis aktivit systému Exchange Server, jako je například oprávnění k přidání a poštovní schránce, nebo nastavit poštovní schránku. |
+| Výměna | Zobrazuje rozpis aktivit serveru Exchange, například oprávnění Add-Mailbox nebo nastavení poštovní schránky. |
 | SharePoint | Zobrazuje hlavní aktivity, které uživatelé provádějí v dokumentech služby SharePoint. Když přejdete k podrobnostem na této dlaždici, na stránce hledání se zobrazí podrobnosti o těchto aktivitách, jako je cílový dokument a umístění této aktivity. Například pro událost otevření souboru budete moci zobrazit dokument, ke kterému se přistupovalo, jeho přidružený název účtu a IP adresu. |
 | Azure Active Directory | Zahrnuje hlavní aktivity uživatelů, jako je resetování hesla uživatele a pokusů o přihlášení. Když přejdete k podrobnostem, budete moci zobrazit podrobnosti o těchto činnostech, jako je stav výsledku. To je hlavně užitečné, pokud chcete monitorovat podezřelé aktivity v Azure Active Directory. |
 
@@ -272,7 +272,7 @@ Následující vlastnosti jsou společné pro všechny záznamy sady Office 365.
 | ResultStatus | Určuje, jestli byla akce (zadaná ve vlastnosti Operation) úspěšná, nebo ne. Možné hodnoty jsou úspěšné, pravdivé hodnotě stavem nebo selhaly. V případě aktivity správce serveru Exchange je hodnota buď true, nebo false. |
 | UserId | Hlavní název uživatele (UPN) uživatele, který provedl akci, která vedla k zaznamenání záznamu; například my_name@my_domain_name . Všimněte si, že jsou zahrnuté také záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM.). | 
 | UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti UserId.  Tato vlastnost se například naplní jedinečným IDENTIFIKÁTORem (PUID) služby Passport pro události prováděné uživateli na SharePointu, OneDrivu pro firmy a Exchange. Tato vlastnost může taky určovat stejnou hodnotu jako vlastnost UserID pro události, ke kterým dochází v jiných službách a událostech, které provádí systémové účty.|
-| UserType | Typ uživatele, který provedl operaci.<br><br>správce<br>Aplikace<br>DcAdmin<br>Pravidelný<br>Vyhrazené<br>ServicePrincipal<br>Systém |
+| UserType | Typ uživatele, který provedl operaci.<br><br>Správce<br>Aplikace<br>DcAdmin<br>Pravidelný<br>Vyhrazené<br>ServicePrincipal<br>Systém |
 
 
 ### <a name="azure-active-directory-base"></a>Základ Azure Active Directory
@@ -462,7 +462,7 @@ Tyto záznamy jsou vytvořeny v reakci na operace se soubory ve službě SharePo
 
 Následující tabulka uvádí Ukázky dotazů protokolu pro záznamy aktualizací shromážděné tímto řešením.
 
-| Dotazy | Popis |
+| Dotaz | Description |
 | --- | --- |
 |Počet všech operací v předplatném sady Office 365 |OfficeActivity &#124; souhrnu počtu () podle operace |
 |Použití webů SharePointu|OfficeActivity &#124; WHERE OfficeWorkload = ~ "SharePoint" &#124; Shrnutí Count () pomocí řazení SiteUrl \| podle Count ASC|

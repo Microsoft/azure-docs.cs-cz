@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 0701e9c6428283d45cf4b4a2e24c8de99d9a286b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89265894"
 ---
 # <a name="azure-media-services-telemetry"></a>Telemetrie Azure Media Services  
@@ -79,7 +79,7 @@ Vlastnost|Hodnota|Příklady/poznámky
 ---|---|---
 PartitionKey|{ID účtu} _ {ID entity}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>ID účtu je součástí klíče oddílu, aby se zjednodušily pracovní postupy, ve kterých se do stejného účtu úložiště zapisují více účtů Media Services.
 RowKey|{sekund až půlnoc} _ {Random Value}|01688_00199<br/><br/>Klíč řádku začíná počtem sekund až půlnoci, aby bylo možné v rámci oddílu použít dotazy na horní n-Style. Další informace najdete v [tomto](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) článku. 
-Timestamp|Datum/čas|Automatické časové razítko z tabulky Azure 2016-09-09T22:43:42.241 Z
+Timestamp|Datum/Čas|Automatické časové razítko z tabulky Azure 2016-09-09T22:43:42.241 Z
 Typ|Typ entity poskytující data telemetrie|Kanál/StreamingEndpoint/archiv<br/><br/>Typ události je pouze hodnota řetězce.
 Name|Název události telemetrie|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|Čas výskytu události telemetrie (UTC)|2016-09-09T22:42:36.924 Z<br/><br/>Zjištěný čas je poskytován entitou odesílající telemetrii (například kanál). Může dojít k problémům při synchronizaci mezi komponentami, aby tato hodnota byla přibližná.

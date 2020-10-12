@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3179bb294678ee030218e67dafa1c69dcf5d77a0
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056264"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Přiřazení popisků citlivosti Microsoft 365 skupinám v Azure Active Directory
@@ -114,7 +114,7 @@ Možnost popisek citlivosti se zobrazí pouze pro skupiny, pokud jsou splněny v
 
 1. Štítky jsou publikované v centru dodržování předpisů v Microsoft 365 pro tuto organizaci Azure AD.
 1. Tato funkce je povolená, EnableMIPLabels je v modulu Azure AD PowerShellu nastavená na hodnotu true.
-1. Zapnutou se synchronizují do Azure AD pomocí rutiny Execute-AzureAdLabelSync v modulu PowerShellu pro zabezpečení & dodržování předpisů.
+1. Zapnutou se synchronizují s Azure AD pomocí rutiny Execute-AzureAdLabelSync v modulu PowerShell dodržování předpisů & zabezpečení.
 1. Skupina je skupina Microsoft 365.
 1. Organizace má aktivní licenci Azure Active Directory Premium P1.
 1. Aktuálně přihlášený uživatel má dostatečná oprávnění k přiřazování popisků. Uživatel musí být buď globální správce, správce skupiny, nebo vlastník skupiny.

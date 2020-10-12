@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: a187b31657ec2a67c306d817a75150d19a5cf9b6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86497178"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Šifrování dat v Azure Data Lake Storage Gen1
@@ -74,11 +74,11 @@ Při výběru režimu pro hlavní šifrovací klíče je důležité pamatovat n
 
 V návrhu šifrování dat používají tři typy klíčů. Následující tabulka poskytuje souhrn:
 
-| Key                   | Zkratka | Přidružený k | Umístění úložiště                             | Typ       | Poznámky                                                                                                   |
+| Klíč                   | Zkratka | Přidružený k | Umístění úložiště                             | Typ       | Poznámky                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Hlavní šifrovací klíč | MEK          | Účet Data Lake Storage Gen1 | Key Vault                              | Asymetrický | Dá se spravovat pomocí Data Lake Storage Gen1 nebo.                                                              |
 | Šifrovací klíč dat   | DEK          | Účet Data Lake Storage Gen1 | Trvalé úložiště spravované službou Data Lake Storage Gen1 | Symetrický  | Klíč DEK je šifrovaný klíčem MEK. Na trvalé médium se ukládá šifrovaný klíč DEK. |
-| Šifrovací klíč bloku  | BEK          | Blokem dat | Žádný                                         | Symetrický  | Klíč BEK je odvozený od klíče DEK a příslušného datového bloku.                                                      |
+| Šifrovací klíč bloku  | BEK          | Blokem dat | Žádné                                         | Symetrický  | Klíč BEK je odvozený od klíče DEK a příslušného datového bloku.                                                      |
 
 Následující diagram znázorňuje tyto koncepty:
 
@@ -107,7 +107,7 @@ Následující diagram znázorňuje tyto koncepty:
 
 Pokud používáte klíče spravované zákazníkem, můžete obměňovat klíč MEK. Informace o tom, jak nastavit účet Data Lake Storage Gen1 pomocí klíčů spravovaných zákazníkem, najdete v tématu [Začínáme](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Při nastavování účtu Data Lake Storage Gen1 jste se rozhodli používat vlastní klíče. Tuto možnost po vytvoření účtu nejde změnit. Následující postup předpokládá, že používáte klíče spravované zákazníkem (tedy že jste zvolili vlastní klíče ze služby Key Vault).
 

@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 05/28/2020
 ms.openlocfilehash: b8c7671e655594456621e4489cb06191d820b134
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333150"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrace Azure SQL Database z modelu založeného na DTU do modelu založeného na vCore
@@ -94,7 +94,7 @@ FROM dtu_vcore_map;
 Kromě počtu virtuální jádra (logických procesorů) a generace hardwaru mohou mít různé faktory vliv na výběr cíle služby vCore:
 
 - Mapování T-SQL dotazu odpovídá cílům DTU a vCore služeb z důvodu jejich kapacity procesoru, proto budou výsledky pro úlohy vázané na procesor přesnější.
-- Pro stejnou generaci hardwaru a stejný počet omezení prostředků propustnosti virtuální jádra, IOPS a transakčního protokolu pro databáze vCore jsou často vyšší než pro databáze DTU. U úloh vázaných na vstupně-výstupní operace může být možné snížit počet virtuální jádra v modelu vCore, aby se dosáhlo stejné úrovně výkonu. Omezení prostředků pro DTU a databáze vCore v absolutních hodnotách jsou zpřístupněna v zobrazení [Sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) . Porovnání těchto hodnot mezi databází DTU, která se má migrovat, a databází vCore s využitím přibližně odpovídajícího cíle služby vám pomůže vybrat cíl služby vCore přesněji.
+- Pro stejnou generaci hardwaru a stejný počet omezení prostředků propustnosti virtuální jádra, IOPS a transakčního protokolu pro databáze vCore jsou často vyšší než pro databáze DTU. U úloh vázaných na vstupně-výstupní operace může být možné snížit počet virtuální jádra v modelu vCore, aby se dosáhlo stejné úrovně výkonu. Limity zdrojů pro DTU a databáze vCore v absolutních hodnotách jsou zpřístupněny v zobrazení [Sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) . Porovnání těchto hodnot mezi databází DTU, která se má migrovat, a databází vCore s využitím přibližně odpovídajícího cíle služby vám pomůže vybrat cíl služby vCore přesněji.
 - Dotaz mapování také vrátí množství paměti na jádro pro migraci databáze DTU nebo elastického fondu a pro každou generaci hardwaru v modelu vCore. Zajištění podobné nebo vyšší celkové paměti po migraci na vCore je důležité pro úlohy, které vyžadují dostatečnou mezipaměť dat velké paměti, aby dosáhly dostatečného výkonu, nebo úlohy, které vyžadují velké množství paměti pro zpracování dotazů. Pro takové úlohy, v závislosti na skutečném výkonu, může být potřeba zvýšit počet virtuální jádra, aby se dosáhlo dostatečně celkového množství paměti.
 - Při volbě cíle služby vCore by se mělo vzít v úvahu [historické využití prostředků](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) databáze DTU. Databáze DTU s konzistentním využitím prostředků procesoru můžou potřebovat méně virtuální jádra než počet vrácený dotazem mapování. Databáze DTU, kde konzistentně vysoké využití procesoru způsobuje nedostatečný výkon úlohy, mohou vyžadovat více virtuální jádra, než je dotaz vrácen.
 - Pokud migrujete databáze s přerušovaným nebo nepředvídatelným vzorcem použití, zvažte použití výpočetní vrstvy bez [serveru](serverless-tier-overview.md) .  Počítejte s tím, že maximální počet souběžných pracovních procesů (požadavků) v bez serveru je 75% limitu zajištěných pro stejný počet virtuální jádra nakonfigurovaných na stejný počet.  Maximální dostupná velikost paměti v neserveru je navíc 3 GB, což je maximální počet nakonfigurovaných virtuální jádra. například maximální velikost paměti je 120 GB, pokud jsou nakonfigurovány virtuální jádra max. 40.   

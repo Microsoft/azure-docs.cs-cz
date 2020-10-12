@@ -12,10 +12,10 @@ ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
 ms.openlocfilehash: 5ad0d2c520d5347e36a9cead4ed6c5526d885ca4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319520"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Jak vybrat algoritmy pro Azure Machine Learning
@@ -50,24 +50,24 @@ Následující tabulka shrnuje některé nejdůležitější charakteristiky alg
 | **Algoritmus** | **Údajů** | **Doba trénování** | **Linearita** | **Parametry** | **Poznámky** |
 | --- |:---:|:---:|:---:|:---:| --- |
 | **Rodina klasifikace** | | | | | |
-| [Logistická regrese dvou tříd](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |Dobré  |Rychlý |Ano |4 | |
-| [Rozhodovací doménová struktura se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |5 |Zobrazuje pomalejší časy vyhodnocování. Navrhněte, že nepracuje s 1-versus-all Multiclass z důvodu pomalejších časů bodování způsobených uzamykáním běhounů při hromadění předpovědi stromu. |
-| [Zvýšení rozhodovacího stromu se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |6 |Velké nároky na paměť |
-| [Neuronové síť se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ne |8 | |
-| [Průměrná hodnota Perceptron se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ano |4 | |
-| [Vektorový počítač podpory dvou tříd](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Ano |5 |Vhodné pro velké sady funkcí |
-| [Mikrotřída logistické regrese](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Ano |4 | |
-| [Více tříd – rozhodovací doménová struktura](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |5 |Zobrazuje pomalejší časy vyhodnocování. |
-| [Více tříd pro rozhodovací strom s více třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |6 | Má za následek zlepšení přesnosti s malým rizikem méně pokrytí |
-| [Neuronové síť pro více tříd](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ne |8 | |
+| [Logistická regrese dvou tříd](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |Dobré  |Rychlý |Yes |4 | |
+| [Rozhodovací doménová struktura se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |No |5 |Zobrazuje pomalejší časy vyhodnocování. Navrhněte, že nepracuje s 1-versus-all Multiclass z důvodu pomalejších časů bodování způsobených uzamykáním běhounů při hromadění předpovědi stromu. |
+| [Zvýšení rozhodovacího stromu se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |No |6 |Velké nároky na paměť |
+| [Neuronové síť se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |No |8 | |
+| [Průměrná hodnota Perceptron se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Yes |4 | |
+| [Vektorový počítač podpory dvou tříd](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Yes |5 |Vhodné pro velké sady funkcí |
+| [Mikrotřída logistické regrese](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Yes |4 | |
+| [Více tříd – rozhodovací doménová struktura](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |No |5 |Zobrazuje pomalejší časy vyhodnocování. |
+| [Více tříd pro rozhodovací strom s více třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |No |6 | Má za následek zlepšení přesnosti s malým rizikem méně pokrytí |
+| [Neuronové síť pro více tříd](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |No |8 | |
 | [Jedna a více tříd – All](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/one-vs-all-multiclass?WT.mc_id=docs-article-lazzeri) | - | - | - | - |Zobrazí vlastnosti vybrané metody dvě třídy. |
 | **Řada regrese** | | | | | |
-| [Lineární regrese](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Ano |4 | |
-| [Regrese rozhodovací doménové struktury](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|Vynikající |Pokročilé |Ne |5 | |
-| [Zvýšila se regrese rozhodovacího stromu.](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |6 |Velké nároky na paměť |
-| [Regrese sítě neuronové](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ne |8 | |
+| [Lineární regrese](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Yes |4 | |
+| [Regrese rozhodovací doménové struktury](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|Vynikající |Pokročilé |No |5 | |
+| [Zvýšila se regrese rozhodovacího stromu.](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |No |6 |Velké nároky na paměť |
+| [Regrese sítě neuronové](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |No |8 | |
 | **Řada clusteringu** | | | | | |
-| [K-znamená clustering](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ano |8 |Algoritmus clusteringu |
+| [K-znamená clustering](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Yes |8 |Algoritmus clusteringu |
 
 ## <a name="requirements-for-a-data-science-scenario"></a>Požadavky na scénář pro datové vědy
 

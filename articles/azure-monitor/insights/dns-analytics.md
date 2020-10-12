@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
 ms.openlocfilehash: 947b509468857b98b868881bdd48adf67a5d60db
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86498997"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS pomocí řešení DNS Analytics Preview.
@@ -35,9 +35,9 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 | **Připojený zdroj** | **Podpora** | **Popis** |
 | --- | --- | --- |
-| [Agenti systému Windows](../platform/agent-windows.md) | Ano | Řešení shromažďuje informace o DNS z agentů Windows. |
+| [Agenti systému Windows](../platform/agent-windows.md) | Yes | Řešení shromažďuje informace o DNS z agentů Windows. |
 | [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace DNS z přímých agentů systému Linux. |
-| [Skupina pro správu nástroje System Center Operations Manager](../platform/om-agents.md) | Ano | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| [Skupina pro správu nástroje System Center Operations Manager](../platform/om-agents.md) | Yes | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
 | [Účet úložiště Azure](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Řešení Azure Storage se v řešení nepoužívá. |
 
 ### <a name="data-collection-details"></a>Podrobnosti shromažďování dat

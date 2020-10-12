@@ -14,17 +14,17 @@ ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.openlocfilehash: 37f305a7564382b9c6c5a031340d81a22cfedbf2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120707"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Přidání aplikace s více tenanty do galerie aplikací Azure AD
 
 ## <a name="what-is-the-azure-ad-application-gallery"></a>Co je galerie aplikací Azure AD?
 
-Azure Active Directory (Azure AD) je cloudová služba identit. [Galerie aplikací Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) je ve službě Azure Marketplace App Store, kde jsou všechny konektory aplikací publikované pro jednotné přihlašování a zřizování uživatelů. Zákazníci, kteří používají Azure AD jako zprostředkovatele identity, vyhledají různé konektory aplikací SaaS, které jsou tady publikované. Správci IT přidávají konektory z Galerie aplikací a pak tyto konektory nakonfigurují a používají pro jednotné přihlašování a zřizování. Azure AD podporuje všechny hlavní federační protokoly, včetně SAML 2,0, OpenID Connect, OAuth a WS-dodávání pro jednotné přihlašování. 
+Azure Active Directory (Azure AD) je cloudová služba identit. [Galerie aplikací Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) je ve službě Azure Marketplace App Store, kde jsou všechny konektory aplikací publikované pro jednotné přihlašování a zřizování uživatelů. Zákazníci, kteří používají Azure AD jako zprostředkovatele identity, vyhledají různé konektory aplikací SaaS, které jsou tady publikované. Správci IT přidávají konektory z Galerie aplikací a pak tyto konektory nakonfigurují a používají pro jednotné přihlašování a zřizování. Azure AD podporuje všechny hlavní federační protokoly, včetně SAML 2,0, OpenID Connect, OAuth a WS-Fed pro jednotné přihlašování. 
 
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Pokud vaše aplikace podporuje SAML nebo OpenIDConnect
 Pokud máte víceklientské aplikace, kterou chcete uvést v galerii aplikací Azure AD, musíte nejdřív zajistit, aby vaše aplikace podporovala jednu z následujících technologií jednotného přihlašování:

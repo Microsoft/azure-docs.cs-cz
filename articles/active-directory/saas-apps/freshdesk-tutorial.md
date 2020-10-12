@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 0bbfdc2463795770b52f5008fc633fe9e95244a0
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056519"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Kurz: Azure Active Directory integrace s Freshdesku
@@ -30,7 +30,7 @@ Integrace Freshdesku s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Freshdesku potřebujete následující položky:
 
@@ -64,7 +64,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-1. **[Nakonfigurujte jednotné přihlašování freshdesku](#configure-freshdesk-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+1. **[Nakonfigurujte jednotné přihlašování freshdesku](#configure-freshdesk-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
     1. **[Vytvoření freshdesku Test User](#create-freshdesk-test-user)** – pro Britta Simon v freshdesku, který je propojený s reprezentací uživatele Azure AD.
 1. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
@@ -91,7 +91,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
     ![image](common/edit-attribute.png)
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -137,7 +137,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **freshdesku**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace zadejte a vyberte **freshdesku**.
 
@@ -157,7 +157,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-freshdesk-single-sign-on"></a>Konfigurace jednotného přihlašování Freshdesku
+## <a name="configure-freshdesk-single-sign-on"></a>Nakonfigurovat Freshdesku jednu Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k webu Freshdesku společnosti jako správce.
 

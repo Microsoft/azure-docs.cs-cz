@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7acbb9aa443cde8df7016d3f2a38d58002b98dcd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317391"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Řešení potíží s rolemi přiřazenými ke cloudovým skupinám
@@ -53,8 +53,8 @@ Odpověď **: uživatel**může narazit na čtečku adresářů pomocí skupiny 
 
 Role adresáře Azure AD | Role správy oprávnění | Může přidat skupinu zabezpečení.\* | Může přidat skupinu Microsoft 365.\* | Může přidat aplikaci. | Může přidat web SharePointu Online.
 ----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------
-Globální správce | Není k dispozici | ✔️ | ✔️ | ✔️  | ✔️
-Správce uživatelů  | Není k dispozici  | ✔️  | ✔️  | ✔️
+Globální správce | neuvedeno | ✔️ | ✔️ | ✔️  | ✔️
+Správce uživatelů  | neuvedeno  | ✔️  | ✔️  | ✔️
 Správce Intune | Vlastník katalogu | ✔️  | ✔️  | &nbsp;  | &nbsp;
 Správce Exchange  | Vlastník katalogu  | &nbsp; | ✔️  | &nbsp;  | &nbsp;
 Správce služby Teams | Vlastník katalogu  | &nbsp; | ✔️  | &nbsp;  | &nbsp;
