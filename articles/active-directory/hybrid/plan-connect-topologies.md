@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7616ceed812b21f471609d95f59a0d0270dd7f52
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658518"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
@@ -29,7 +29,7 @@ Tento článek popisuje různé místní a Azure Active Directory (Azure AD) top
 
 Tady je legenda k obrázkům v článku:
 
-| Popis | Symbol |
+| Description | Symbol |
 | --- | --- |
 | Místní doménová struktura služby Active Directory |![Místní doménová struktura služby Active Directory](./media/plan-connect-topologies/LegendAD1.png) |
 | Místní služba Active Directory s filtrovaným importem |![Služba Active Directory s filtrovaným importem](./media/plan-connect-topologies/LegendAD2.png) |
@@ -165,7 +165,7 @@ Tato topologie má následující omezení pro jiné podporované scénáře:
 * Zařízení s Windows 10 se dají přidružit jenom k jednomu klientovi Azure AD.
 * Možnost jednotného přihlašování (SSO) pro synchronizaci hodnot hash hesel a předávací ověřování se dá použít jenom s jedním tenanta Azure AD.
 
-Požadavek na vzájemně exkluzivní sadu objektů platí také pro zpětný zápis. Některé funkce zpětného zápisu nejsou v této topologii podporované, protože předpokládají jednu místní konfiguraci. Patří k nim:
+Požadavek na vzájemně exkluzivní sadu objektů platí také pro zpětný zápis. Některé funkce zpětného zápisu nejsou v této topologii podporované, protože předpokládají jednu místní konfiguraci. Mezi tyto funkce patří:
 
 * Zpětný zápis skupin s výchozí konfigurací.
 * Zpětný zápis zařízení

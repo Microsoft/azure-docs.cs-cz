@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.openlocfilehash: 7e3a5fcdcead402d59e680fcba270e80b4eda8bb
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91843426"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Limity služby ve službě Azure Cognitive Search
@@ -108,8 +108,8 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 
 | Prostředek | Free | Základní | S1 | S2 | S3 | S3 HD | L1 | Paměť
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Podpora indexeru privátního koncového bodu | No | Ano | Ano | Ano | Ano | No | Ano | Ano |
-| Podpora privátního koncového bodu pro indexery s dovednosti<sup>1</sup> | No | No | No | Ano | Ano | No | Ano | Ano |
+| Podpora indexeru privátního koncového bodu | No | Yes | Yes | Yes | Yes | No | Yes | Yes |
+| Podpora privátního koncového bodu pro indexery s dovednosti<sup>1</sup> | No | No | No | Yes | Yes | No | Yes | Yes |
 | Maximální počet privátních koncových bodů | Není k dispozici | 10 nebo 30 | 100 | 400 | 400 | Není k dispozici | 20 | 20 |
 | Maximální počet různých typů prostředků<sup>2</sup> | Není k dispozici | 4 | 7 | 15 | 15 | Není k dispozici | 4 | 4 |
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: jeedes
-ms.openlocfilehash: e0ea1d3f5c2676176e2f6e15077d13ec43e673af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b40a124c9cee05e8d06df3de6539c566bb2ac76a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544294"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945120"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>Kurz: Azure Active Directory integrace se systémem jednotného přihlašování GTNexus
 
@@ -101,11 +101,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí systému
 
     a. Klikněte na **nahrát soubor metadat**.
 
-    ![image](common/upload-metadata.png)
+    ![Snímek obrazovky zobrazující stránku konfigurace "základní S A M L" se zvolenou akcí nahrát soubor metadat ".](common/upload-metadata.png)
 
     b. Kliknutím na **logo složky** vyberte soubor metadat a klikněte na **nahrát**.
 
-    ![image](common/browse-upload-metadata.png)
+    ![Snímek obrazovky s vybraným polem "vybrat soubor" s logem "složka" a tlačítkem Odeslat.](common/browse-upload-metadata.png)
 
     c. Po úspěšném nahrání souboru metadat se hodnoty **adresy URL** **identifikátoru** a odpovědi automaticky naplní v textovém poli GTNexus jednotného oddílu systému souborů SSO:
 

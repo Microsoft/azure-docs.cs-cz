@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 145f0c04cc06f09bd9a0eb47cb8b49306ee0700a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619657"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Obnovení jednoho tenanta s aplikací SaaS Database na tenanta
@@ -29,7 +29,7 @@ V tomto kurzu se seznámíte se dvěma vzory obnovení dat:
 > * Obnovení databáze do paralelní databáze (vedle sebe).
 > * Obnovte databázi na místě a nahraďte stávající databázi.
 
-| Vzor | Popis |
+| Vzor | Description |
 |:--|:--|
 | Obnovení do paralelní databáze | Tento model se dá použít pro úlohy, jako je například kontrola, auditování a dodržování předpisů, aby mohl tenant prozkoumat data z dřívějšího bodu. Aktuální databáze tenanta zůstane online a nezměněná. |
 | Obnovení na místě | Tento model se obvykle používá k obnovení tenanta do dřívějšího bodu, poté, co tenant omylem odstraní nebo poškodí data. Původní databáze je mimo řádek a nahrazuje obnovenou databází. |
@@ -134,7 +134,7 @@ V tomto kurzu jste se naučili:
 
 Vyzkoušejte kurz [Správa schématu databáze tenanta](saas-tenancy-schema-management.md) .
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Další kurzy, které se vytvářejí v aplikaci Wingtip SaaS](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Přehled provozní kontinuity se službou Azure SQL Database](business-continuity-high-availability-disaster-recover-hadr-overview.md)

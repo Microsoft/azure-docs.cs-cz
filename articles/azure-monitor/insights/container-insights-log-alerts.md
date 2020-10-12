@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak vytvořit vlastní výstrahy protokolu
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 8c02442fef9b174075065e7852b7a25233899c48
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294542"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Jak vytvořit výstrahy protokolu z Azure Monitor pro kontejnery
@@ -281,7 +281,7 @@ Tato část vás provede vytvořením pravidla výstrahy měření metriky pomoc
 >Následující postup vytvoření pravidla výstrahy pro využití prostředků kontejneru vyžaduje, abyste přešli na nové rozhraní API upozornění protokolu, jak je popsáno v tématu [předvoleb rozhraní API pro protokolování výstrah](../platform/alerts-log-api-switch.md).
 >
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V Azure Portal vyhledejte a vyberte **Log Analytics pracovní prostory**.
 3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor podporující Azure Monitor pro kontejnery. 
 4. V podokně na levé straně vyberte **protokoly** a otevřete stránku Azure monitor protokoly. Tato stránka slouží k zápisu a provádění dotazů protokolu Azure.

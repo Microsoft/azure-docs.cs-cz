@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sharrai
 ms.openlocfilehash: 3217c30737a133c1c1092fc4a8a8caaa0338e980
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89425870"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Přidání skriptu VMM do plánu obnovení
@@ -43,7 +43,7 @@ V plánech obnovení můžete použít skripty prostředí PowerShell. Aby bylo 
 
   Pokud je vaše cesta ke sdílené složce knihovny vzdálená (nebo pokud je místní, ale není sdílená s MSCVMMLibrary), nakonfigurujte sdílenou složku následujícím způsobem, a \\ to pomocí libserver2. contoso. com\share\ jako příklad:
   
-  1. Otevřete Editor registru a pak vyhledejte **HKEY_LOCAL_MACHINE \Software\microsoft\azure site Recovery\Registration**.
+  1. Otevřete Editor registru a pak pokračujte na **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration**.
 
   1. Změňte hodnotu **ScriptLibraryPath** na ** \\ \libserver2.contoso.com\share \\ **. Zadejte úplný plně kvalifikovaný název domény. Zadejte oprávnění k umístění sdílené složky. Toto je kořenový uzel sdílené složky. Chcete-li kontrolovat kořenový uzel, v nástroji VMM, přejít do kořenového uzlu v knihovně. Cesta, která se otevře, je kořenem cesty. Toto je cesta, kterou je nutné použít v proměnné.
 

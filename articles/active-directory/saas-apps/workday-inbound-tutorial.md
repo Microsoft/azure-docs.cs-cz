@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541284"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů
@@ -370,7 +370,7 @@ Přeneste stažený instalační program agenta na hostitele serveru a podle ní
    >[!div class="mx-imgBorder"]
    >![Ukončit obrazovku](./media/workday-inbound-tutorial/pa_install_screen_9.png "Ukončit obrazovku")
    
-1. Ověřte instalaci agenta a ujistěte se, že je spuštěný, a to tak, že otevřete modul snap-in služby a vyhledáte službu s názvem "Microsoft Azure AD připojit zřizování agent".
+1. Ověřte instalaci agenta a ujistěte se, že je spuštěný, a to tak, že otevřete Snap-In služby a vyhledáte službu s názvem "Microsoft Azure AD Connect zřizovací agent".
 
    >[!div class="mx-imgBorder"]
    >![Snímek obrazovky s agentem zřizování služby Microsoft Azure AD Connect, který běží v rámci služeb](./media/workday-inbound-tutorial/services.png)
@@ -390,9 +390,9 @@ V tomto kroku navážeme připojení k Workday a službě Active Directory v Azu
    
      | Formát URL | Použitá verze rozhraní API WWS | Jsou vyžadovány změny XPATH |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Ne |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Ne |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Ano |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > Pokud v adrese URL nejsou zadané žádné informace o verzi, aplikace používá WWS (Workday Web Services) v 21.1 a pro výchozí výrazy rozhraní API XPATH dodávané s aplikací se nevyžadují žádné změny. Pokud chcete použít konkrétní verzi rozhraní WWS API, zadejte v adrese URL číslo verze. <br>
@@ -478,7 +478,7 @@ V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday
 
          * **Pouze během vytváření** – použít toto mapování pouze při akcích vytvoření uživatele
 
-1. Pokud chcete uložit mapování, klikněte na **Uložit** v horní části oddílu mapování atributů.
+1. Pokud chcete uložit mapování, klikněte na **Uložit** v horní části Attribute-Mapping části.
    >[!div class="mx-imgBorder"]
    >![Snímek obrazovky zobrazující stránku mapování atributů se zvolenou akcí uložit](./media/workday-inbound-tutorial/wd_2.png)
 
@@ -1126,7 +1126,7 @@ Chcete-li provést tuto změnu, je nutné použít [Workday Studio](https://comm
 
     ![Pracovní den v studiu](./media/workday-inbound-tutorial/wdstudio_aad2.png)
 
-11. Vyberte **Uložit** výše a pak **Ano** pro dialog. Zavřete obrazovku mapování atributů, pokud je stále otevřená.
+11. Vyberte **Uložit** výše a pak **Ano** pro dialog. Pokud je tato obrazovka stále otevřená, zavřete ji Attribute-Mapping.
 
 12. Zpátky na hlavní kartě **zřizování** vyberte možnost **synchronizovat pracovní procesy Workday do místní služby Active Directory** (nebo **synchronizovat pracovní procesy s Azure AD**).
 

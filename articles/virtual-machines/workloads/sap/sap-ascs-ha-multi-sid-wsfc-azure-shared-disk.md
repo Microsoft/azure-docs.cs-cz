@@ -17,10 +17,10 @@ ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a4856b2578a007f72aeeec64588ac7f9c58158de
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88860941"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>Vysoká dostupnost služby SAP ASCS/SCS instance multi-SID s využitím clusteringu s podporou převzetí služeb při selhání Windows serveru a sdíleného disku Azure
@@ -103,11 +103,11 @@ Kromě **existující instance clusteru** SAP **PR1** ASCS/SCS budeme instalovat
 | --- | --- | --- |---| ---|
 | cluster ASCS/SCS prvního uzlu clusteru |PR1-ASCS-10 |10.0.0.4 |PR1-ASCS-avset |PR1PPG |
 | druhý cluster uzlu clusteru ASCS/SCS |PR1-ASCS-11 |10.0.0.5 |PR1-ASCS-avset |PR1PPG |
-| Název sítě s clustery | pr1clust |10.0.0.42 (**pouze** pro cluster se Win 2016) | Není k dispozici | Není k dispozici |
-| **SID1** Název sítě clusteru ASCS | pr1-ascscl |10.0.0.43 | Není k dispozici | Není k dispozici |
-| **SID1** Název sítě clusteru OLAJÍCÍCH (**jenom** pro ERS2) | pr1-erscl |10.0.0.44 | Není k dispozici | Není k dispozici |
-| **SID2** Název sítě clusteru ASCS | pr2-ascscl |10.0.0.45 | Není k dispozici | Není k dispozici |
-| **SID2** Název sítě clusteru OLAJÍCÍCH (**jenom** pro ERS2) | pr1-erscl |10.0.0.46 | Není k dispozici | Není k dispozici |
+| Název sítě s clustery | pr1clust |10.0.0.42 (**pouze** pro cluster se Win 2016) | neuvedeno | neuvedeno |
+| **SID1** Název sítě clusteru ASCS | pr1-ascscl |10.0.0.43 | neuvedeno | neuvedeno |
+| **SID1** Název sítě clusteru OLAJÍCÍCH (**jenom** pro ERS2) | pr1-erscl |10.0.0.44 | neuvedeno | neuvedeno |
+| **SID2** Název sítě clusteru ASCS | pr2-ascscl |10.0.0.45 | neuvedeno | neuvedeno |
+| **SID2** Název sítě clusteru OLAJÍCÍCH (**jenom** pro ERS2) | pr1-erscl |10.0.0.46 | neuvedeno | neuvedeno |
 
 ### <a name="create-azure-internal-load-balancer"></a>Vytvoření interního nástroje pro vyrovnávání zatížení Azure
 

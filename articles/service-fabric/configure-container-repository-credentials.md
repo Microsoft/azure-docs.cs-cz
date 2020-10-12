@@ -4,11 +4,11 @@ description: Konfigurace přihlašovacích údajů úložiště pro stahování 
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 142ede6fcc59063d83854712a966a90c7472923b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89421420"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Konfigurace přihlašovacích údajů úložiště pro vaši aplikaci ke stažení imagí kontejneru
@@ -83,10 +83,6 @@ Tady je příklad toho, co je možné přidat do `Hosting` části ClusterManife
           {
             "name": "DefaultContainerRepositoryPasswordType",
             "value": "PlainText"
-          },
-          {
-        "name": "DefaultMSIEndpointForTokenAuthentication",
-        "value": "URI"
           }
         ]
       },
@@ -121,25 +117,6 @@ Service Fabric podporuje použití tokenů jako přihlašovacích údajů ke sta
 
     > [!NOTE]
     > Příznak `UseDefaultRepositoryCredentials` nastavený na hodnotu true, pokud `UseTokenAuthenticationCredentials` je true, způsobí chybu během nasazování.
-
-### <a name="using-token-credentials-outside-of-azure-global-cloud"></a>Použití přihlašovacích údajů tokenů mimo globální cloud Azure
-
-Při použití přihlašovacích údajů registru založeného na tokenech Service Fabric načte za virtuálním počítačem token, který se má prezentovat do ACR. Ve výchozím nastavení Service Fabric žádá o token, jehož cílovou skupinou je globální koncový bod Azure cloudu. Pokud nasazujete do jiné instance cloudu, jako je například Azure Německo nebo Azure Government, bude nutné přepsat výchozí parametr `DefaultMSIEndpointForTokenAuthentication` . Pokud neprovádíte nasazení do speciálního prostředí, nepřepisujte tento parametr. Pokud jste, nahradíte výchozí, což je
-
-```
-http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.core.windows.net/
-```
-
-s odpovídajícím koncovým bodem prostředku pro vaše prostředí. Například pro [Azure Německo](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)by přepsání bylo 
-
-```json
-{
-    "name": "DefaultMSIEndpointForTokenAuthentication",
-    "value": "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.core.cloudapi.de/"
-}
-```
-
-[Přečtěte si další informace o načítání tokenů sady škálování virtuálních počítačů](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token).
 
 ## <a name="next-steps"></a>Další kroky
 

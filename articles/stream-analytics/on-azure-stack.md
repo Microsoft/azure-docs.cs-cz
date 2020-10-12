@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1fe035d99f8a5962406d5aae3f093d71d432b310
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88860846"
 ---
 # <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>Spustit Azure Stream Analytics v Azure Stack (Preview)
@@ -56,7 +56,7 @@ Hraniční úlohy ASA se spouštějí v kontejnerech nasazených do zařízení 
 * Cloudová součást, která zodpovídá za definici úlohy: uživatelé definují vstupy, výstupy, dotazy a další nastavení (události mimo pořadí atd.) v cloudu.
 * Modul spuštěný ve vašich zařízeních IoT. Obsahuje modul ASA a přijímá definici úlohy z cloudu.
 
-### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 Když vytvoříte úlohu Azure Stream Analytics, která se má spouštět na zařízení IoT Edge, je potřeba ji uložit tak, aby ji bylo možné volat ze zařízení. Můžete použít existující účet úložiště Azure nebo vytvořit nový.
 1. V Azure Portal klikněte na **vytvořit prostředek > úložiště > účet úložiště – objekt blob, soubor, tabulka, fronta**.
@@ -67,7 +67,7 @@ Když vytvoříte úlohu Azure Stream Analytics, která se má spouštět na za�
    | Název | Zadejte jedinečný název účtu úložiště. |
    | Umístění | Zvolte umístění, které je blízko vás.|
    | Předplatné | Zvolte stejné předplatné jako pro vaše centrum IoT.|
-   | Skupina prostředků | Doporučujeme použít stejnou skupinu prostředků pro všechny prostředky testu, které vytvoříte během [IoT Edge rychlý Start](https://docs.microsoft.com/azure/iot-edge/quickstart) a kurzy. Například **IoTEdgeResources**. |
+   | Resource Group | Doporučujeme použít stejnou skupinu prostředků pro všechny prostředky testu, které vytvoříte během [IoT Edge rychlý Start](https://docs.microsoft.com/azure/iot-edge/quickstart) a kurzy. Například **IoTEdgeResources**. |
 
 3. U ostatních polí ponechte výchozí hodnoty a vyberte **Vytvořit**.
 
@@ -81,7 +81,7 @@ Když vytvoříte úlohu Azure Stream Analytics, která se má spouštět na za�
    | --- | --- |
    | Název úlohy | Zadejte název úlohy. Například **IoTEdgeJob** |
    | Předplatné | Zvolte stejné předplatné jako pro vaše centrum IoT.|
-   | Skupina prostředků | Doporučujeme použít stejnou skupinu prostředků pro všechny prostředky testu, které vytvoříte během [IoT Edge rychlý Start](https://docs.microsoft.com/azure/iot-edge/quickstart) a kurzy. Například **IoTEdgeResources**. |
+   | Resource Group | Doporučujeme použít stejnou skupinu prostředků pro všechny prostředky testu, které vytvoříte během [IoT Edge rychlý Start](https://docs.microsoft.com/azure/iot-edge/quickstart) a kurzy. Například **IoTEdgeResources**. |
    | Umístění | Zvolte umístění, které je blízko vás. |
    | Hostitelské prostředí | Vyberte **Edge**. |
 

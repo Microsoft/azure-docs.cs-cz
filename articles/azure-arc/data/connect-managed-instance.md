@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 3277dc4d9c4485b117bfcfd1d6e130e7370cd8c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936093"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>Připojení ke spravované instanci SQL ARC s povoleným voláním Azure
@@ -49,7 +49,7 @@ Připojení pomocí Azure Data Studio, SQL Server Management Studio nebo SQLCMD
 
 Otevřete Azure Data Studio a připojte se k instanci s IP adresou externího koncového bodu a číslem portu uvedeným výše. Pokud používáte virtuální počítač Azure, budete potřebovat _veřejnou_ IP adresu, kterou můžete identifikovat pomocí [zvláštní poznámky o nasazeních virtuálních počítačů Azure](#special-note-about-azure-virtual-machine-deployments).
 
-Příklad:
+Například:
 
 - Server: 52.229.9.30, 30913
 - Uživatelské jméno: SA
@@ -82,7 +82,7 @@ Pokud chcete nastavit pravidlo, budete muset znát název vašeho NSGu, který m
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
-Jakmile budete mít název NSG, můžete přidat pravidlo brány firewall pomocí následujícího příkazu. Ukázkové hodnoty zde vytvoří pravidlo NSG pro port 30913 a umožní připojení z **jakékoli** zdrojové IP adresy.  Nejedná se o osvědčený postup zabezpečení.  To, co je potřeba, můžete uzamknout lépe tím, že zadáte hodnotu-Source-Address-prefixs, která je specifická pro vaši IP adresu klienta, nebo rozsah IP adres, který se vztahuje na IP adresy vašeho týmu nebo organizace.
+Jakmile budete mít název NSG, můžete přidat pravidlo brány firewall pomocí následujícího příkazu. Ukázkové hodnoty zde vytvoří pravidlo NSG pro port 30913 a umožní připojení z **jakékoli** zdrojové IP adresy.  Nejedná se o osvědčený postup zabezpečení.  V zájmu lepšího zabezpečení můžete zadat hodnotu -source-address-prefixes, která je specifická pro IP adresu vašeho klienta nebo rozsah IP adres, který pokrývá IP adresy vašeho týmu nebo vaší organizace.
 
 Nahraďte hodnotu `--destination-port-ranges` parametru níže číslem portu, který jste získali z `azdata sql instance list` příkazu F výše.
 

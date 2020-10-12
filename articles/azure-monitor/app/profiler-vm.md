@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: f514dd7b54ac091535aeab43a8a7d2a645b50a09
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87315814"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profilování webových aplikací běžících na virtuálním počítači Azure nebo v sadě škálování virtuálního počítače pomocí Application Insights Profiler
@@ -54,7 +54,7 @@ V tomto článku se dozvíte, jak můžete Application Insights Profiler spustit
 
    Použití úprav obvykle zahrnuje úplné nasazení šablony nebo publikování na základě cloudových služeb prostřednictvím rutin prostředí PowerShell nebo sady Visual Studio.  
 
-   Následující příkazy prostředí PowerShell představují alternativní přístup pro stávající virtuální počítače, které se dotýkají pouze rozšíření Azure Diagnostics. Přidejte výše zmíněné ProfilerSink do konfigurace, kterou vrátí příkaz Get-AzVMDiagnosticsExtension. Pak předejte aktualizovanou konfiguraci do příkazu set-AzVMDiagnosticsExtension.
+   Následující příkazy prostředí PowerShell představují alternativní přístup pro stávající virtuální počítače, které se dotýkají pouze rozšíření Azure Diagnostics. Přidejte výše zmíněné ProfilerSink do konfigurace, kterou vrátí příkaz Get-AzVMDiagnosticsExtension. Pak předejte aktualizovanou konfiguraci do příkazu Set-AzVMDiagnosticsExtension.
 
     ```powershell
     $ConfigFilePath = [IO.Path]::GetTempFileName()

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
 ms.openlocfilehash: 03ea1b0cdfef30935b38078d0811d1408a78c41e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935397"
 ---
 # <a name="use-power-bi-and-synapse-sql-serverless-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Použití Power BI a synapse bez SQL serveru k analýze dat Azure Cosmos DB pomocí propojení synapse (Preview)
@@ -46,7 +46,7 @@ V pracovním prostoru synapse otevřete kartu **vývoj** , vyberte **+** ikonu a
 
 Každý pracovní prostor přichází s synapse koncovým bodem bez SQL serveru. Po vytvoření skriptu SQL na panelu nástrojů v horní části se připojte k **SQL na vyžádání**.
 
-:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Povolte skript SQL, který bude používat synapse koncový bod bez SQL serveru v pracovním prostoru.":::
+:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Přidání skriptu SQL do pracovního prostoru analýzy synapse":::
 
 Vytvoří novou databázi s názvem **RetailCosmosDB**a zobrazení SQL nad kontejnery s povoleným odkazem synapse. Následující příkaz ukazuje, jak vytvořit databázi:
 
@@ -106,7 +106,7 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 Vyberte **příkaz Spustit** , který jako výsledek poskytne následující tabulku:
 
-:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="Výsledky dotazu po spojení zobrazení StoreDemographics a RetailSales":::
+:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="Přidání skriptu SQL do pracovního prostoru analýzy synapse":::
 
 ## <a name="model-views-over-containers-with-power-bi"></a>Zobrazení modelu přes kontejnery pomocí Power BI
 
@@ -141,7 +141,7 @@ Teď přejděte do okna **sestavy** a vytvořte sestavu s cílem porovnat relati
 1. Přetažením pole **productCode** ze zobrazení **RetailSales** do legendy vyberte konkrétní produktovou řadu.
 Po výběru těchto možností by se měl zobrazit graf podobný následujícímu snímku obrazovky:
 
-:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="Sestava, která porovnává relativní důležitost velikosti domácnosti s průměrnou tržbou na obchod":::
+:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="Přidání skriptu SQL do pracovního prostoru analýzy synapse":::
 
 ## <a name="next-steps"></a>Další kroky
 

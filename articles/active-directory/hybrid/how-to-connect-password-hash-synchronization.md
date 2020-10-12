@@ -16,10 +16,10 @@ search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89652076"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
@@ -63,7 +63,7 @@ V následující části jsou popsány podrobné informace o tom, jak funguje sy
 > [!NOTE]
 > Původní algoritmus hash MD4 se nepřenáší do služby Azure AD. Místo toho se přenáší hodnota hash SHA256 původního algoritmu hash MD4. Výsledkem je, že pokud se získá hodnota hash uložená v Azure AD, nedá se použít v rámci útoku typu Pass-the-hash.
 
-### <a name="security-considerations"></a>Aspekty zabezpečení
+### <a name="security-considerations"></a>Důležité informace o zabezpečení
 
 Při synchronizaci hesel není verze ve formátu prostého textu hesla vystavena funkci synchronizace hodnot hash hesel, službě Azure AD ani žádné z přidružených služeb.
 
@@ -113,7 +113,7 @@ Po povolení Služba Azure AD nepřejde na každého synchronizovaného uživate
 
 Doporučuje se povolit EnforceCloudPasswordPolicyForPasswordSyncedUsers před povolením synchronizace hodnot hash hesel, aby počáteční synchronizace hodnot hash hesel nepřidala `DisablePasswordExpiration` hodnotu do atributu PasswordPolicies pro uživatele.
 
-Výchozí zásady hesel Azure AD vyžadují, aby uživatelé změnili hesla každých 90 dní. Pokud je vaše zásada ve službě AD také 90 dní, obě tyto zásady by se měly shodovat. Pokud ale zásada AD není 90 dní, můžete aktualizovat zásady hesel Azure AD tak, aby odpovídaly pomocí příkazu Set-MsolPasswordPolicy prostředí PowerShell.
+Výchozí zásady hesel Azure AD vyžadují, aby uživatelé změnili hesla každých 90 dní. Pokud je vaše zásada ve službě AD také 90 dní, obě tyto zásady by se měly shodovat. Pokud však zásada AD není 90 dní, můžete aktualizovat zásady hesel služby Azure AD tak, aby odpovídaly pomocí příkazu Set-MsolPasswordPolicy PowerShellu.
 
 Azure AD podporuje pro každou registrovanou doménu samostatné zásady vypršení platnosti hesla.
 
@@ -122,7 +122,7 @@ Upozornění: Pokud jsou v Azure AD synchronizované účty, u kterých je potř
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> Příkaz prostředí PowerShell Set-MsolPasswordPolicy nebude fungovat u federovaných domén. 
+> Příkaz Set-MsolPasswordPolicy PowerShellu nebude fungovat u federovaných domén. 
 
 #### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Synchronizace dočasných hesel a "vynucení změny hesla při příštím přihlášení"
 

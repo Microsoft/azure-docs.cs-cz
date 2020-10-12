@@ -14,10 +14,10 @@ ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9d784e1697dfbcbfec509c1a51c9b832b533c97b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87830746"
 ---
 # <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>Použití Azure Portal k vyvolání přímých metod
@@ -26,7 +26,7 @@ IoT Hub poskytuje možnost vyvolat [přímé metody](../../iot-hub/iot-hub-devgu
 
 V tomto článku se dozvíte, jak volat přímé volání metod na živé analýzy videí pro IoT Edge modul přes Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Máte živé video analýzy na IoT Edge modulu běžícím na hraničním zařízení, a to pomocí metod popsaných v tématu [rychlý Start: Live video Analytics na IoT Edge](./get-started-detect-motion-emit-events-quickstart.md) nebo pomocí [portálu.](./deploy-iot-edge-device.md)
 
@@ -62,11 +62,11 @@ Použijte `GraphTopologyList` volání metody k načtení seznamu všech topolog
 1. V oblasti **výsledků** by se měla zobrazit zpráva o stavu 200.<br><br>
     ![časový limit připojení](media/use-azure-portal-to-invoke-directs-methods/connection-timeout.png)
 
-## <a name="responses"></a>Odezvy
+## <a name="responses"></a>Odpovědi
 
-| Podmínka             | Stavový kód | Podrobný kód chyby |
+| Stav             | Stavový kód | Podrobný kód chyby |
 |-----------------------|-------------|---------------------|
-| Success               | 200         | –                 |
+| Success               | 200         | Není k dispozici                 |
 | Obecné chyby uživatele   | Rozsah 400   |                     |
 | Obecné chyby serveru | Rozsah 500   |                     |
 

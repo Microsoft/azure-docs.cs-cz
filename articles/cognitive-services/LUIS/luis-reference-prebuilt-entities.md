@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/20/2020
 ms.openlocfilehash: 7a4654b8f389ad18010bb4ad211103f2816a18ee
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541998"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entity na jazykovou verzi v modelu LUIS
@@ -346,9 +346,9 @@ KeyPhrase is not available.
 -->
 
 ## <a name="contribute-to-prebuilt-entity-cultures"></a>Přispět k předem vytvořeným kulturám entit
-Předem připravené entity se vypracovávají v projektu pro rozpoznávání – text open source. [Přispět](https://github.com/Microsoft/Recognizers-Text) k projektu. Tento projekt obsahuje příklady měny na jazykovou verzi.
+Předem připravené entity jsou vyvíjeny v Recognizers-Text open source projektu. [Přispět](https://github.com/Microsoft/Recognizers-Text) k projektu. Tento projekt obsahuje příklady měny na jazykovou verzi.
 
-GeographyV2 a person nejsou zahrnuté do textového projektu pro rozpoznávání. V případě problémů s těmito předem vytvořenými entitami prosím otevřete [žádost o podporu](../../azure-portal/supportability/how-to-create-azure-support-request.md).
+GeographyV2 a jméno osoby nejsou součástí projektu Recognizers-Text. V případě problémů s těmito předem vytvořenými entitami prosím otevřete [žádost o podporu](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.openlocfilehash: ae8a1fa68e61e160ce08b93bf66776a050b45613
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e05a2a4ba12d5fc665090d5bf078da520000f43b
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554154"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945358"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s OfficeSpace softwarem
 
@@ -150,11 +150,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 2. Přejděte na **Nastavení** a klikněte na **konektory**.
 
-    ![Konfigurovat jednu Sign-On na straně aplikace](./media/officespace-tutorial/tutorial_officespace_002.png)
+    ![Snímek obrazovky, který zobrazuje rozevírací seznam nastavení s vybranými konektory](./media/officespace-tutorial/tutorial_officespace_002.png)
 
 3. Klikněte na **ověřování SAML**.
 
-    ![Konfigurovat jednu Sign-On na straně aplikace](./media/officespace-tutorial/tutorial_officespace_003.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "ověřování" s vybranou akcí "S A M L Authentication".](./media/officespace-tutorial/tutorial_officespace_003.png)
 
 4. V části **ověřování SAML** proveďte následující kroky:
 

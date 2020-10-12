@@ -14,10 +14,10 @@ ms.author: jingwang
 ms.custom: devx-track-csharp
 robots: noindex
 ms.openlocfilehash: fe3401354d4853b875cdd001d5074ebdf0d3377b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019534"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Kopírování dat do a z Data Lake Storage Gen1 pomocí Data Factory
@@ -72,8 +72,8 @@ Propojená služba propojuje úložiště dat s datovou továrnou. Vytvoříte p
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| **textový** | Vlastnost Type musí být nastavená na **AzureDataLakeStore**. | Ano |
-| **dataLakeStoreUri** | Informace o účtu Azure Data Lake Store. Tyto informace přebírají jeden z následujících formátů: `https://[accountname].azuredatalakestore.net/webhdfs/v1` nebo `adl://[accountname].azuredatalakestore.net/` . | Ano |
+| **textový** | Vlastnost Type musí být nastavená na **AzureDataLakeStore**. | Yes |
+| **dataLakeStoreUri** | Informace o účtu Azure Data Lake Store. Tyto informace přebírají jeden z následujících formátů: `https://[accountname].azuredatalakestore.net/webhdfs/v1` nebo `adl://[accountname].azuredatalakestore.net/` . | Yes |
 | **subscriptionId** | ID předplatného Azure, ke kterému patří účet Data Lake Store. | Vyžadováno pro jímku |
 | **resourceGroupName** | Název skupiny prostředků Azure, ke které patří účet Data Lake Store. | Vyžadováno pro jímku |
 
@@ -93,9 +93,9 @@ Použijte ověřování instančního objektu zadáním následujících vlastno
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Zadejte ID klienta aplikace. | Ano |
-| **servicePrincipalKey** | Zadejte klíč aplikace. | Ano |
-| **tenant** | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Ano |
+| **servicePrincipalId** | Zadejte ID klienta aplikace. | Yes |
+| **servicePrincipalKey** | Zadejte klíč aplikace. | Yes |
+| **tenant** | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. | Yes |
 
 **Příklad: ověřování instančního objektu**
 ```json
@@ -120,8 +120,8 @@ Alternativně můžete pomocí ověření přihlašovacích údajů uživatele z
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| **udělován** | V editoru Data Factory klikněte na tlačítko **autorizovat** a zadejte přihlašovací údaje, které přiřadí automaticky vygenerované autorizační URL k této vlastnosti. | Ano |
-| **sessionId** | ID relace OAuth z autorizační relace OAuth. Každé ID relace je jedinečné a dá se použít jenom jednou. Toto nastavení se generuje automaticky, když použijete Editor Data Factory. | Ano |
+| **udělován** | V editoru Data Factory klikněte na tlačítko **autorizovat** a zadejte přihlašovací údaje, které přiřadí automaticky vygenerované autorizační URL k této vlastnosti. | Yes |
+| **sessionId** | ID relace OAuth z autorizační relace OAuth. Každé ID relace je jedinečné a dá se použít jenom jednou. Toto nastavení se generuje automaticky, když použijete Editor Data Factory. | Yes |
 
 > [!IMPORTANT]
 > Ujistěte se, že udělíte uživateli správné oprávnění v Azure Data Lake Store:
@@ -239,11 +239,11 @@ Oddíl **typeProperties** pro datovou sadu typu **AzureDataLakeStore** obsahuje 
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| **folderPath** |Cesta ke kontejneru a složce v Data Lake Store. |Ano |
-| **fileName** |Název souboru v Azure Data Lake Store. Vlastnost **filename** je volitelná a rozlišuje velká a malá písmena. <br/><br/>Pokud zadáte **název souboru**, bude aktivita (včetně kopie) fungovat na konkrétním souboru.<br/><br/>Pokud není zadán **název souboru** , příkaz Kopírovat zahrnuje všechny soubory v **FolderPath** ve vstupní datové sadě.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu a v jímky aktivity není zadán parametr **preserveHierarchy** , je název generovaného souboru ve formátu `Data._Guid_.txt` . Například: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Ne |
-| **partitionedBy** |Vlastnost **partitionedBy** je nepovinná. Můžete ji použít k zadání dynamické cesty a názvu souboru pro data časové řady. Například **FolderPath** může být Parametrizovaná za každou hodinu dat. Podrobnosti a příklady najdete v tématu vlastnost partitionedBy. |Ne |
-| **formátovat** | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**a **ParquetFormat**. V části **Formát** nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v částech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), formát [ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a [Formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) v [souborech a kompresních formátech podporovaných](data-factory-supported-file-and-compression-formats.md) v článku Azure Data Factory. <br><br> Pokud chcete kopírovat soubory "tak jak jsou" mezi úložišti na základě souborů (binární kopie), přeskočte tento `format` oddíl jak v definici vstupní, tak výstupní datové sady. |Ne |
-| **komprese** | Zadejte typ a úroveň komprese dat. Podporované typy jsou **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně jsou **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese podporované nástrojem Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| **folderPath** |Cesta ke kontejneru a složce v Data Lake Store. |Yes |
+| **fileName** |Název souboru v Azure Data Lake Store. Vlastnost **filename** je volitelná a rozlišuje velká a malá písmena. <br/><br/>Pokud zadáte **název souboru**, bude aktivita (včetně kopie) fungovat na konkrétním souboru.<br/><br/>Pokud není zadán **název souboru** , příkaz Kopírovat zahrnuje všechny soubory v **FolderPath** ve vstupní datové sadě.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu a v jímky aktivity není zadán parametr **preserveHierarchy** , je název generovaného souboru ve formátu `Data._Guid_.txt` . Například: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |No |
+| **partitionedBy** |Vlastnost **partitionedBy** je nepovinná. Můžete ji použít k zadání dynamické cesty a názvu souboru pro data časové řady. Například **FolderPath** může být Parametrizovaná za každou hodinu dat. Podrobnosti a příklady najdete v tématu vlastnost partitionedBy. |No |
+| **formátovat** | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**a **ParquetFormat**. V části **Formát** nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v částech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), formát [ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a [Formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) v [souborech a kompresních formátech podporovaných](data-factory-supported-file-and-compression-formats.md) v článku Azure Data Factory. <br><br> Pokud chcete kopírovat soubory "tak jak jsou" mezi úložišti na základě souborů (binární kopie), přeskočte tento `format` oddíl jak v definici vstupní, tak výstupní datové sady. |No |
+| **komprese** | Zadejte typ a úroveň komprese dat. Podporované typy jsou **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně jsou **optimální** a **nejrychlejší**. Další informace naleznete v tématu [formáty souborů a komprese podporované nástrojem Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
 ### <a name="the-partitionedby-property"></a>Vlastnost partitionedBy
 Můžete zadat dynamické **FolderPath** a vlastnosti **filename** pro data časových řad pomocí vlastnosti **partitionedBy** , data Factorych funkcí a systémových proměnných. Podrobnosti najdete v článku o [Azure Data Factory funkce a systémových proměnných](data-factory-functions-variables.md) .
@@ -281,15 +281,15 @@ Vlastnosti, které jsou k dispozici v části **typeProperties** v aktivitě, se
 
 **AzureDataLakeStoreSource** podporuje následující vlastnost v části **typeProperties** :
 
-| Vlastnost | Popis | Povolené hodnoty | Požadováno |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| **zahrnout** |Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. |True (výchozí hodnota), false |Ne |
+| **zahrnout** |Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. |True (výchozí hodnota), false |No |
 
 **AzureDataLakeStoreSink** podporuje následující vlastnosti v části **typeProperties** :
 
-| Vlastnost | Popis | Povolené hodnoty | Požadováno |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| **copyBehavior** |Určuje chování při kopírování. |<b>PreserveHierarchy</b>: zachová hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru se zdrojovou složkou je shodná s relativní cestou cílového souboru do cílové složky.<br/><br/><b>FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou vytvořeny v první úrovni cílové složky. Cílové soubory jsou vytvořeny pomocí automaticky generovaných názvů.<br/><br/><b>MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název souboru nebo objektu blob, sloučený název souboru je zadaný název. V opačném případě se název souboru automaticky vygeneruje. |Ne |
+| **copyBehavior** |Určuje chování při kopírování. |<b>PreserveHierarchy</b>: zachová hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru se zdrojovou složkou je shodná s relativní cestou cílového souboru do cílové složky.<br/><br/><b>FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou vytvořeny v první úrovni cílové složky. Cílové soubory jsou vytvořeny pomocí automaticky generovaných názvů.<br/><br/><b>MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název souboru nebo objektu blob, sloučený název souboru je zadaný název. V opačném případě se název souboru automaticky vygeneruje. |No |
 
 ### <a name="recursive-and-copybehavior-examples"></a>Příklady rekurzivních a copyBehavior
 Tato část popisuje výsledné chování operace kopírování pro různé kombinace rekurzivních a copyBehavior hodnot.

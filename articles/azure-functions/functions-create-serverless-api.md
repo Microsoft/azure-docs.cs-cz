@@ -7,17 +7,17 @@ ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083017"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Přizpůsobení koncového bodu HTTP v Azure Functions
 
 V tomto článku se dozvíte, jak Azure Functions umožňuje vytvářet vysoce škálovatelná rozhraní API. Azure Functions se dodává s kolekcí integrovaných triggerů HTTP a vazeb, které usnadňují vytváření koncových bodů v nejrůznějších jazycích, včetně Node.js, C# a dalších. V tomto článku budete přizpůsobovat Trigger HTTP, který bude zpracovávat konkrétní akce v návrhu rozhraní API. Také se připravujete pro rostoucí rozhraní API integrací s Proxy služby Azure Functions a nastavením přípravných rozhraní API. Tyto úlohy se provádí na základě funkcí prostředí COMPUTE bez serveru, takže se nemusíte starat o škálování prostředků – stačí se zaměřit na logiku rozhraní API.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
@@ -37,7 +37,7 @@ Ve výchozím nastavení je funkce triggeru protokolu HTTP nakonfigurovaná tak,
 
 1. Použijte nastavení triggeru HTTP, jak je uvedeno v následující tabulce.
 
-    | Pole | Ukázková hodnota | Popis |
+    | Pole | Ukázková hodnota | Description |
     |---|---|---|
     | Šablona trasy | /hello | Určuje, jaká trasa se používá k vyvolání této funkce. |
     | Úroveň autorizace | Anonymní | Volitelné: Zpřístupňuje vaši funkci bez klíče rozhraní API. |
@@ -112,13 +112,13 @@ Zopakováním postupu v článku o [vytvoření aplikace funkcí](./functions-cr
     | Adresa URL back-endu | https://%HELLO_HOST%/api/hello | Určuje koncový bod, na který má být žádost přes proxy směrována. |
 
     
-    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="Vytvoření proxy":::
+    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="Přizpůsobení funkce HTTP":::
 
     Proxy služby Azure Functions neposkytuje `/api` předponu základní cesty, která musí být obsažena v šabloně trasy. `%HELLO_HOST%`Syntaxe odkazuje na nastavení aplikace, které jste vytvořili dříve. Přeložená adresa URL bude odkazovat na vaši původní funkci.
 
 1. Vyzkoušejte si nový proxy tak, že zkopírujete adresu URL proxy serveru a otestujete ji v prohlížeči nebo pomocí vašeho oblíbeného klienta HTTP:
-    - Pro anonymní použití funkce: `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"` .
-    - Pro funkci s autorizačním použitím: `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"` .
+    - Pro anonymní použití funkce:   `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"` .
+    - Pro funkci s autorizačním použitím:   `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"` .
 
 ## <a name="create-a-mock-api"></a>Vytvoření napodobeniny rozhraní API
 

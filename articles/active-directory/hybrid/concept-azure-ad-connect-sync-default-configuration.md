@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295222"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizace služby Azure AD Connect: Principy výchozí konfigurace
@@ -148,7 +148,7 @@ Vzhledem k tomu, že toto pravidlo je předem nastavené pravidlo, při otevřen
 
 Synchronizační pravidlo má čtyři konfigurační oddíly: Popis, filtr oboru, pravidla spojování a transformace.
 
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 První část uvádí základní informace, jako je název a popis.
 
 ![Karta Popis v editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
@@ -186,7 +186,7 @@ Oddíl transformuje všechny toky atributů, které se vztahují na cílový obj
 
 ![Karta transformace v editoru pravidel synchronizace](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
 
-Chcete-li tuto konfiguraci vložit v kontextu nasazení doménové struktury prostředků, je nutné najít povolený účet v doménové struktuře účtu a zakázaný účet v doménové struktuře prostředků s nastavením Exchange a Lync. Synchronizační pravidlo, které se chystáte, obsahuje atributy vyžadované pro přihlášení a tyto atributy by měly být předávány z doménové struktury, ve které je povolený účet. Všechny tyto toky atributů jsou spojeny do jednoho synchronizačního pravidla.
+Pokud chcete tuto konfiguraci vložit do kontextu, v Account-Resource nasazení doménové struktury se očekává, že se v doménové struktuře účtů a zakázaný účet v doménové struktuře prostředků v nastaveních Exchange a Lyncu najde povolený účet. Synchronizační pravidlo, které se chystáte, obsahuje atributy vyžadované pro přihlášení a tyto atributy by měly být předávány z doménové struktury, ve které je povolený účet. Všechny tyto toky atributů jsou spojeny do jednoho synchronizačního pravidla.
 
 Transformace může mít různé typy: konstanta, přímá a výraz.
 

@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: e7f5b6f3685a94b5497784360f8f12b22fb95012
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87298860"
 ---
 ## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Vytvoření prostředku clusteru služby Azure Kubernetes
 
 1. Přejít na [Azure Kubernetes Service](https://ms.portal.azure.com/#create/microsoft.aks)a vyberte **vytvořit**.
 
-1. Na kartě **základy** zadejte následující informace:
+1. Na kartě **Základní informace** zadejte následující údaje:
 
     |Nastavení|Hodnota|
     |--|--|
@@ -39,7 +39,7 @@ ms.locfileid: "87298860"
 
     |Nastavení|Hodnota|
     |--|--|
-    |Směrování aplikace HTTP|Ne|
+    |Směrování aplikace HTTP|No|
     |Konfigurace sítě|Základní|
 
 1. Na kartě **integrace** se ujistěte, že je **monitorování kontejneru** nastaveno na **povoleno**, a jako výchozí hodnotu ponechte **Log Analytics pracovní prostor** .

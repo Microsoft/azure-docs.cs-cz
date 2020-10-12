@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Connect: řešení bezproblémového jednotného přihlašování | Microsoft Docs'
-description: Toto téma popisuje, jak řešit potíže s Azure Active Directory bezproblémové jednotné přihlašování.
+title: 'Azure Active Directory Connect: řešení bezproblémového jednoduchého Sign-On | Microsoft Docs'
+description: Toto téma popisuje, jak řešit Azure Active Directory bezproblémovém jednoduchému Sign-On
 services: active-directory
 author: billmath
 ms.reviewer: swkrish
@@ -14,15 +14,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294814"
 ---
-# <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Řešení potíží Azure Active Directory bezproblémové jednotné přihlašování
+# <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Řešení potíží s Azure Active Directory bezproblémovému jednoduchému Sign-On
 
-Tento článek vám pomůže najít informace o řešení běžných problémů týkající se Azure Active Directory (Azure AD) bezproblémového jednotného přihlašování (bezproblémové jednotné přihlašování).
+Tento článek vám pomůže najít informace o řešení běžných problémů týkající se Azure Active Directory (Azure AD) bez problémů s jedním Sign-On (bezproblémové jednotné přihlašování).
 
 ## <a name="known-issues"></a>Známé problémy
 

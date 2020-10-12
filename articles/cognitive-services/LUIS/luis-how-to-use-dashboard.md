@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/08/2019
 ms.openlocfilehash: 4867a065a85fab1e4abc7f19401239e5b76e1da4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541403"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Vylepšení aplikace pomocí řídicího panelu
@@ -152,7 +152,7 @@ Určete procentuální prahové hodnoty, které vám vyhovuje pro vaši firmu.
 
 Filtr vám umožní najít záměry s konkrétním problémem:
 
-|Filtr|Navrhované procento|Účel|
+|Filtrování|Navrhované procento|Účel|
 |--|--|--|
 |Nejvíce problematických záměrů|-|**Začněte tady** – oprava projevy v tomto záměru vylepšuje aplikaci více než jiné opravy.|
 |Opravit předpovědi níže|60 %|Toto je procento projevy ve vybraném záměru, které jsou správné, ale mají pod prahovou hodnotou hodnocení spolehlivosti. |
