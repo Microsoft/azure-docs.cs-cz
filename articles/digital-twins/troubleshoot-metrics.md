@@ -8,10 +8,10 @@ ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.openlocfilehash: 084a823571281c91419a56b6212ddf6c44dd80bb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322627"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Řešení potíží se službou Azure Digital autovlákna: metriky
@@ -34,12 +34,12 @@ Metriky jsou ve výchozím nastavení povolené. Z [Azure Portal](https://portal
     
 3. Data metriky můžete odeslat do Event Hubsho koncového bodu nebo účet Azure Storage tak, že v nabídce vyberete **nastavení diagnostiky** a pak **přidáte nastavení diagnostiky**.
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Snímek obrazovky zobrazující stránku nastavení diagnostiky a tlačítko, které se má přidat":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Snímek obrazovky zobrazující stránku s metrikami pro digitální vlákna Azure":::
 
     Další informace o tomto procesu najdete v tématu [*řešení potíží: nastavení diagnostiky*](troubleshoot-diagnostics.md).
 
 4. Výstrahy pro data metriky si můžete nastavit tak, že v nabídce vyberete **výstrahy** a pak na **+ nové pravidlo výstrahy**.
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Snímek obrazovky se stránkou a tlačítkem pro upozornění, které se má přidat":::
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Snímek obrazovky zobrazující stránku s metrikami pro digitální vlákna Azure":::
 
     Další informace o tomto procesu najdete v tématu [*řešení potíží: nastavení výstrah*](troubleshoot-alerts.md).
 
@@ -53,7 +53,7 @@ Následující tabulky popisují metriky sledované každou instancí digitáln�
 
 Metriky, které se musí dělat s požadavky rozhraní API:
 
-| Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
+| Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Description | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | ApiRequests | Požadavky rozhraní API (Preview) | Počet | Celkem | Počet požadavků rozhraní API provedených pro digitální vlákna čtení, zápisu, odstranění a dotazování. |  Přihlašovací <br>NázevOperace <br>Protokol <br>Stavový kód, <br>Třída stavového kódu, <br>Stavový text |
 | ApiRequestsFailureRate | Frekvence neúspěšných požadavků rozhraní API (Preview) | Procento | Průměr | Procento požadavků rozhraní API, které služba obdrží pro vaši instanci, která poskytuje kód odpovědi interní chyby (500) pro digitální vlákna čtení, zápisu, odstranění a dotazování. | Přihlašovací <br>NázevOperace <br>Protokol <br>Stavový kód, <br>Třída stavového kódu, <br>Stavový text
@@ -66,7 +66,7 @@ Metriky, které je potřeba provést s fakturací:
 >[!NOTE]
 > Ve verzi Preview **je fakturace nulové**. I když se tyto metriky stále zobrazují v seznamu s možnostmi výběru, nepoužijí se ve verzi Preview a zůstanou na nule, dokud se služba nepřesune mimo verzi Preview.
 
-| Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
+| Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Description | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Fakturační operace rozhraní API (Preview) | Počet | Celkem | Metrika fakturace pro počet všech požadavků rozhraní API provedených vůči službě Azure Digital requests. | ID měřiče |
 | BillingMessagesProcessed | Zpracované účtovací zprávy (Preview) | Počet | Celkem | Metrika fakturace počtu zpráv odeslaných z digitálních vláken Azure do externích koncových bodů.<br><br>Aby bylo možné považovat za jednu zprávu pro účely účtování, datová část nesmí být větší než 1 KB. Datové části větší než tato se budou počítat jako další zprávy v přírůstcích po 1 KB (takže zpráva mezi 1 a 2 KB se bude počítat jako 2 zprávy, mezi 2 a 3 KB budou 3 zprávy atd.).<br>Toto omezení platí také pro odpovědi, takže volání, které vrátí 1,5 KB v těle odpovědi, se například bude účtovat jako 2 operace. | ID měřiče |
@@ -76,7 +76,7 @@ Metriky, které je potřeba provést s fakturací:
 
 Metriky, které se musí dělat s daty příchozího přenosu dat:
 
-| Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
+| Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Description | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | IngressEvents | Události příchozího přenosu dat (Preview) | Počet | Celkem | Počet příchozích událostí telemetrie do digitálních vláken Azure. | Výsledek |
 | IngressEventsFailureRate | Frekvence neúspěšných událostí příchozího přenosu dat (Preview) | Procento | Průměr | Procento příchozích událostí telemetrie, pro které služba vrací kód odpovědi vnitřní chyba (500). | Výsledek |
@@ -86,7 +86,7 @@ Metriky, které se musí dělat s daty příchozího přenosu dat:
 
 Metriky, které se musí dělat s směrováním:
 
-| Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
+| Metrika | Zobrazovaný název metriky | Jednotka | Typ agregace| Description | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | MessagesRouted | Směrované zprávy (Preview) | Počet | Celkem | Počet zpráv směrovaných do služby Azure Endpoint koncových bodů, jako je například centrum událostí, Service Bus nebo Event Grid. | Typ koncového bodu, <br>Výsledek |
 | RoutingFailureRate | Frekvence chyb směrování (Preview) | Procento | Průměr | Procento událostí, kvůli kterým dojde k chybě při směrování z digitálních vláken Azure do služby Azure Endpoint Services, jako je například centrum událostí, Service Bus nebo Event Grid. | Typ koncového bodu, <br>Výsledek |

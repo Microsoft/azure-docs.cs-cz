@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: e8585779a263f4ff5dbdd998bbf065c6a4e1acdf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86079254"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Řešení potíží se skripty v Azure HDInsight
@@ -47,11 +47,11 @@ Pokud se vytvoření clusteru nepovede kvůli chybě skriptu, protokoly se uchov
 
     V rámci tohoto adresáře jsou protokoly uspořádány samostatně pro **hlavnímu uzlu**, **pracovní uzel**a **Zookeeper uzel**. Podívejte se na následující příklady:
 
-    * **Hlavnímu uzlu**:`<ACTIVE-HEADNODE-NAME>.cloudapp.net`
+    * **Hlavnímu uzlu**: `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * **Pracovní uzel**:`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * **Pracovní uzel**: `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Uzel Zookeeper**:`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Uzel Zookeeper**: `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
 * Všechny **stdout** a **stderr** odpovídajícího hostitele se nahrají do účtu úložiště. Pro každou akci skriptu existuje jeden **výstup- \* . txt** a **Errors. \* txt** . Soubor **Output-*. txt** obsahuje informace o identifikátoru URI skriptu, který byl spuštěn na hostiteli. Následující text je příkladem těchto informací:
 

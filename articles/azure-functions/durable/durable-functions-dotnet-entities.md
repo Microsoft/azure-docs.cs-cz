@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d480b8db69b34eda7ca1ea8e1b2755179f9c673f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88055169"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Příručka pro vývojáře k odolným entitám v .NET
@@ -203,7 +203,7 @@ Kromě poskytování kontroly typu rozhraní jsou užitečná pro lepší odděl
 
 ### <a name="example-client-signals-entity-through-interface"></a>Příklad: klient signalizuje entitu prostřednictvím rozhraní.
 
-Klientský kód může použít `SignalEntityAsync<TEntityInterface>` k odeslání signálů do entit, které implementují `TEntityInterface` . Příklad:
+Klientský kód může použít `SignalEntityAsync<TEntityInterface>` k odeslání signálů do entit, které implementují `TEntityInterface` . Například:
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -267,7 +267,7 @@ Vynutili jsme také některá další pravidla:
 * Rozhraní entit musí definovat pouze metody.
 * Rozhraní entit nesmí obsahovat obecné parametry.
 * Metody rozhraní entit nesmí mít více než jeden parametr.
-* Metody rozhraní entit musí vracet `void` , `Task` nebo.`Task<T>` 
+* Metody rozhraní entit musí vracet `void` , `Task` nebo. `Task<T>` 
 
 V případě porušení některého z těchto pravidel `InvalidOperationException` je vyvolána za běhu, když je rozhraní použito jako argument typu `SignalEntity` nebo `CreateProxy` . Zpráva výjimky vysvětluje, které pravidlo bylo přerušeno.
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 20695d183ea8184f7ee2948b3897fa1f3a741411
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737491"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Správa připojení privátního koncového bodu
@@ -28,7 +28,7 @@ V níže uvedené tabulce jsou uvedeny různé akce poskytovatele služeb a výs
 
 |Akce poskytovatele služeb   |Stav privátního koncového bodu příjemce služby   |Description   |
 |---------|---------|---------|
-|Žádná    |    Čekající na vyřízení     |    Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu.       |
+|Žádná    |    Čekající     |    Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu.       |
 |Schválení    |  Schválené       |  Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití.     |
 |Odmítnout     | Zamítnuto        | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu.        |
 |Odebrat    |  Propojení       | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění.        |

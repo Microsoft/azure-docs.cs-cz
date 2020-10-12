@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
 ms.openlocfilehash: 86758c355566fb67ebd8a606068e2044e0b8bd64
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400173"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Nejčastější dotazy Traffic Manager
@@ -59,7 +59,7 @@ Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-man
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Můžu použít Traffic Manager s názvem domény "holé"?
 
-Yes. Informace o tom, jak vytvořit záznam aliasu pro název vaší domény, aby odkazoval na profil Azure Traffic Manager, najdete v tématu [Konfigurace záznamu aliasu pro podporu názvů vrcholu domény pomocí Traffic Manager](../dns/tutorial-alias-tm.md).
+Ano. Informace o tom, jak vytvořit záznam aliasu pro název vaší domény, aby odkazoval na profil Azure Traffic Manager, najdete v tématu [Konfigurace záznamu aliasu pro podporu názvů vrcholu domény pomocí Traffic Manager](../dns/tutorial-alias-tm.md).
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Považuje Traffic Manager adresa klientské podsítě při zpracování dotazů DNS? 
 
@@ -112,7 +112,7 @@ Ne, Traffic Manager nemůže zaručit, že geografická oblast odvozená ze zdro
 
 ###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>Musí být koncový bod fyzicky umístěný ve stejné oblasti, ve které je nakonfigurovaný pro geografické směrování?
 
-Ne, umístění koncového bodu neukládá žádná omezení, na které lze namapovat oblasti. Například koncový bod v oblasti USA-střed Azure může mít směrovaného uživatele z Indie.
+Ne, umístění koncového bodu neukládá žádná omezení, na které lze namapovat oblasti. Například koncový bod v US-Central oblasti Azure může mít směrovaného uživatele z Indie.
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Je možné přiřazovat geografické oblasti koncovým bodům v profilu, který není nakonfigurován tak, aby provedl geografické směrování?
 
@@ -310,7 +310,7 @@ U ostatních typů koncových bodů je možné použít Traffic Manager s koncov
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Můžu použít Traffic Manager s testovacími sloty cloudové služby?
 
-Yes. Sloty "fázování" cloudové služby je možné nakonfigurovat v Traffic Manager jako externí koncové body. Kontrolám stavu se pořád účtuje sazba Koncové body Azure.
+Ano. Sloty "fázování" cloudové služby je možné nakonfigurovat v Traffic Manager jako externí koncové body. Kontrolám stavu se pořád účtuje sazba Koncové body Azure.
 
 ### <a name="does-traffic-manager-support-ipv6-endpoints"></a>Podporuje Traffic Manager koncové body IPv6?
 
@@ -351,7 +351,7 @@ Můžete také použít Azure Monitor ke sledování stavu koncových bodů a k 
 
 ### <a name="can-i-monitor-https-endpoints"></a>Můžu monitorovat koncové body HTTPS?
 
-Yes. Traffic Manager podporuje zjišťování prostřednictvím protokolu HTTPS. Nakonfigurujte **https** jako protokol v konfiguraci monitorování.
+Ano. Traffic Manager podporuje zjišťování prostřednictvím protokolu HTTPS. Nakonfigurujte **https** jako protokol v konfiguraci monitorování.
 
 Traffic Manager nemůže poskytnout žádné ověření certifikátu, včetně:
 
@@ -412,7 +412,7 @@ Když je koncový bod webové aplikace Azure zastavený, Traffic Manager zastav�
 
 ### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>Můžu použít Traffic Manager i v případě, že moje aplikace nepodporuje protokol HTTP nebo HTTPS?
 
-Yes. Jako monitorovací protokol můžete zadat TCP a Traffic Manager může iniciovat připojení TCP a čekat na odpověď z koncového bodu. Pokud koncový bod odpoví na požadavek připojení s odpovědí na navázání připojení, v rámci časového limitu je tento koncový bod označený jako dobrý.
+Ano. Jako monitorovací protokol můžete zadat TCP a Traffic Manager může iniciovat připojení TCP a čekat na odpověď z koncového bodu. Pokud koncový bod odpoví na požadavek připojení s odpovědí na navázání připojení, v rámci časového limitu je tento koncový bod označený jako dobrý.
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>Jaké konkrétní odpovědi z koncového bodu vyžadují při použití monitorování protokolu TCP?
 
@@ -472,7 +472,7 @@ Profily můžete vnořovat až do 10 úrovní. ' Smyčky ' nejsou povoleny.
 
 ### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>Můžu ve stejném profilu Traffic Manager kombinovat jiné typy koncových bodů s vnořenými podřízenými profily?
 
-Yes. Neexistují žádná omezení způsobu kombinování koncových bodů různých typů v rámci profilu.
+Ano. Neexistují žádná omezení způsobu kombinování koncových bodů různých typů v rámci profilu.
 
 ### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>Jak model fakturace platí pro vnořené profily?
 
@@ -487,7 +487,7 @@ Traffic Manager fakturace má dvě komponenty: kontroly stavu koncových bodů a
 
 ### <a name="is-there-a-performance-impact-for-nested-profiles"></a>Je pro vnořené profily dopad na výkon?
 
-No. Při použití vnořených profilů se nevyskytl dopad na výkon.
+Ne. Při použití vnořených profilů se nevyskytl dopad na výkon.
 
 Traffic Manager názvové servery přecházejí hierarchii profilu interně při zpracování každého dotazu DNS. Dotaz DNS na nadřazený profil může přijmout odpověď DNS s koncovým bodem z podřízeného profilu. Jeden záznam CNAME se používá bez ohledu na to, jestli používáte jeden profil nebo vnořené profily. Pro každý profil v hierarchii není nutné vytvářet záznam CNAME.
 

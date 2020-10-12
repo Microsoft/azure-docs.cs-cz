@@ -10,10 +10,10 @@ ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b200782d10ae3637fcade63feab1e638d40acddb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89006342"
 ---
 # <a name="table-design-patterns"></a>Způsoby návrhu tabulek
@@ -264,7 +264,7 @@ V relační databázi obvykle Normalizujte data pro odebrání duplicit, což ve
 ![Entita oddělení a entita zaměstnance](media/storage-table-design-guide/storage-table-design-IMAGE16.png)
 
 ### <a name="solution"></a>Řešení
-Místo uložení dat ve dvou samostatných entitách denormalizujte data a udržujte kopii podrobností manažera v entitě oddělení. Příklad:  
+Místo uložení dat ve dvou samostatných entitách denormalizujte data a udržujte kopii podrobností manažera v entitě oddělení. Například:  
 
 ![Entita oddělení](media/storage-table-design-guide/storage-table-design-IMAGE17.png)
 
@@ -742,8 +742,8 @@ Table service je úložiště tabulek *bez schématu* , což znamená, že jedna
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Stáří</th>
-<th>E-mailu</th>
+<th>Věk</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -762,8 +762,8 @@ Table service je úložiště tabulek *bez schématu* , což znamená, že jedna
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Stáří</th>
-<th>E-mailu</th>
+<th>Věk</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -799,8 +799,8 @@ Table service je úložiště tabulek *bez schématu* , což znamená, že jedna
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Stáří</th>
-<th>E-mailu</th>
+<th>Věk</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -835,8 +835,8 @@ Každá entita musí mít stále hodnoty **PartitionKey**, **RowKey**a **timesta
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Stáří</th>
-<th>E-mailu</th>
+<th>Věk</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>
@@ -857,8 +857,8 @@ Každá entita musí mít stále hodnoty **PartitionKey**, **RowKey**a **timesta
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Stáří</th>
-<th>E-mailu</th>
+<th>Věk</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>
@@ -898,8 +898,8 @@ Každá entita musí mít stále hodnoty **PartitionKey**, **RowKey**a **timesta
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Stáří</th>
-<th>E-mailu</th>
+<th>Věk</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>

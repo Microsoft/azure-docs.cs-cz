@@ -5,10 +5,10 @@ ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651555"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Nasazení konsorcia prostředků infrastruktury pro hlavní knihu v Azure Kubernetes Service
@@ -391,7 +391,7 @@ Pokud používáte *azhlfTool* k instalaci chaincode, předejte všechny názvy 
 
 Předejte název funkce dotazu a seznam argumentů oddělených mezerami v  `<queryFunction>`    `<queryFuncArgs>`   uvedeném pořadí. Opětovné přijetí chaincode_example02. Chcete-li zadat dotaz na hodnotu "a" ve stavu World, nastavte  `<queryFunction>`   na hodnotu  `query` a  `<queryArgs>` na `"a"` .  
 
-## <a name="troubleshoot"></a>Odstraňování potíží
+## <a name="troubleshoot"></a>Řešení potíží
 
 Spusťte následující příkazy, abyste našli verzi nasazení šablony.
 

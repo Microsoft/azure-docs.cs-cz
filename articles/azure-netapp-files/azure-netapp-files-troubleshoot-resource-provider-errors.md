@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.author: b-juche
 ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483461"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Řešení potíží s chybami poskytovatele prostředků Azure NetApp Files 
@@ -126,7 +126,7 @@ Podtržítko můžete nahradit pomlčkou nebo použít místo mezer k označení
 K této chybě dojde, když se pokusíte změnit `FileSystemId` .  Změna `FileSystemdId` není podporovaná operace. 
 
 * Příčina:   
-ID systému souborů je nastaveno při vytvoření svazku. `FileSystemId`nelze následně změnit.
+ID systému souborů je nastaveno při vytvoření svazku. `FileSystemId` nelze následně změnit.
 * Řešení:   
 Nezahrnovat `FileSystemId` do žádosti o opravu a aktualizaci (Put).  Případně se ujistěte, že `FileSystemId` je to v žádosti stejné.
 
@@ -439,7 +439,7 @@ Použijte kratší název serveru. Maximální délka je 10 znaků.
 
 ***SubnetId nelze změnit.***
 
-K této chybě dojde, když se pokusíte změnit `subnetId` po vytvoření svazku.  `SubnetId`musí být nastavené, když se svazek vytvoří a nedá se později změnit.
+K této chybě dojde, když se pokusíte změnit `subnetId` po vytvoření svazku.  `SubnetId` musí být nastavené, když se svazek vytvoří a nedá se později změnit.
 
 * Příčina:   
 Pokoušíte se změnit `subnetId` po vytvoření svazku, což není podporovaná operace. 

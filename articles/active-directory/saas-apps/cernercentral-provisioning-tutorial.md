@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.openlocfilehash: 58b991f5b229d924bc933ff34987db24bc895e10
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88529861"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Kurz: Konfigurace centrálního přivisionu pro Automatické zřizování uživatelů
@@ -23,7 +23,7 @@ Cílem tohoto kurzu je Ukázat kroky, které potřebujete k tomu, abyste v rámc
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 * Tenanta Azure Active Directory.
 * Centrální tenant pro CERN
@@ -52,7 +52,7 @@ Než nakonfigurujete a povolíte službu zřizování, měli byste se rozhodnout
 V této části se seznámíte s tím, že propojíte svůj účet Azure AD s využitím rozhraní API pro zřizování uživatelských účtů SCIM CERN a nakonfigurujete službu zřizování k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v centru CERN na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout, že povolíte jednotné přihlašování založené na SAML pro standard CERN, a to podle pokynů uvedených v [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když tyto dvě funkce doplňují sebe. Další informace najdete v [kurzu centrálního jednotného přihlašování ve službě CERN](cernercentral-tutorial.md).
+> Můžete se taky rozhodnout, že pro CERN – střed je povolená jediná Sign-On založená na SAML, a to podle pokynů uvedených v [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když tyto dvě funkce doplňují sebe. Další informace najdete v [kurzu centrálního jednotného přihlašování ve službě CERN](cernercentral-tutorial.md).
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na CERN – střed v Azure AD:
 
@@ -88,7 +88,7 @@ Aby bylo možné zřídit uživatelské účty pro společnost "CERN", budete mu
 
 7. Vyberte svou instanci nástroje CERN (střed) a pak vyberte kartu **zřizování** .
 
-8. Nastavte **režim zřizování** na **automaticky**.
+8. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
    ![Centrální zřizování pro CERN](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
 
@@ -108,7 +108,7 @@ Aby bylo možné zřídit uživatelské účty pro společnost "CERN", budete mu
 
 1. Klikněte na **Uložit**.
 
-1. V části **mapování atributů** zkontrolujte atributy uživatelů a skupin, které se mají synchronizovat z Azure AD do společnosti CERN – střed. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů a skupin v centru CERN – střed pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+1. V části **mapování atributů** zkontrolujte atributy uživatelů a skupin, které se mají synchronizovat z Azure AD do společnosti CERN – střed. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů a skupin v centru CERN – střed pro operace aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
 1. Pokud chcete povolit službu Azure AD Provisioning pro CERN (střed), změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 

@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b23be9901df7ca435f412d9f49e1a7ad88382ade
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711914"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Přesun dat ze služby Amazon Simple Storage pomocí Azure Data Factory
@@ -34,8 +34,8 @@ Data z databáze Amazon S3 můžete kopírovat do libovolného podporovaného ú
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 Pokud chcete kopírovat data ze služby Amazon S3, ujistěte se, že máte udělena následující oprávnění:
 
-* `s3:GetObject`a `s3:GetObjectVersion` pro operace s objekty Amazon S3.
-* `s3:ListBucket`pro operace s kontejnerem Amazon S3. Pokud používáte Průvodce kopírováním Data Factory, `s3:ListAllMyBuckets` je také vyžadován.
+* `s3:GetObject` a `s3:GetObjectVersion` pro operace s objekty Amazon S3.
+* `s3:ListBucket` pro operace s kontejnerem Amazon S3. Pokud používáte Průvodce kopírováním Data Factory, `s3:ListAllMyBuckets` je také vyžadován.
 
 Podrobnosti o úplném seznamu oprávnění Amazon S3 najdete v tématu [určení oprávnění v zásadě](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
 
@@ -71,7 +71,7 @@ Propojená služba propojuje úložiště dat s datovou továrnou. Vytvoříte p
 >Tento konektor vyžaduje ke kopírování dat z Amazon S3 přístupové klíče pro účet IAM. [Dočasné přihlašovací údaje zabezpečení](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) nejsou podporovány.
 >
 
-Zde naleznete příklad:
+Tady je příklad:
 
 ```json
 {

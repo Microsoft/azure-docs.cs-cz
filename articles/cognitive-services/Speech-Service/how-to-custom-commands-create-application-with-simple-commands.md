@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: d166257dd28773d89a4f1fd56de3cb1a22242523
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284162"
 ---
 # <a name="create-application-with-simple-commands"></a>Vytvoření aplikace s jednoduchými příkazy
@@ -48,7 +48,7 @@ V prázdné aplikaci pro vlastní příkazy **inteligentních místností – Li
 
 V prostředním podokně jsou uvedeny různé vlastnosti příkazu. Nakonfigurujete následující vlastnosti příkazu. Vysvětlení všech vlastností konfigurace příkazu naleznete v [odkazech](./custom-commands-references.md).
 
-| Konfigurace            | Popis                                                                                                                 |
+| Konfigurace            | Description                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | **Příklady vět** | Příklad projevy, jak může uživatel aktivovat tento příkaz                                                                 |
 | **Parametry**       | Informace potřebné k dokončení příkazu                                                                                |
@@ -85,7 +85,7 @@ V dalším kroku musí mít příkaz pravidlo dokončení. Toto pravidlo přiká
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **Název**       | ConfirmationResponse                  | Název popisující účel pravidla          |
     | **Podmínky** | Žádné                                     | Podmínky, které určují, kdy se pravidlo dá spustit    |
-    | **Akce**    | Odeslat odezvu na řeč > jednoduchý editor > první variaci >`Ok, turning the tv on` | Akce, která se má provést, když je podmínka pravidla pravdivá |
+    | **Akce**    | Odeslat odezvu na řeč > jednoduchý editor > první variaci > `Ok, turning the tv on` | Akce, která se má provést, když je podmínka pravidla pravdivá |
     
 
 
@@ -125,9 +125,9 @@ Pak upravte existující pravidla dokončení **dokončeno** následujícím zp�
 
 | Nastavení    | Navrhovaná hodnota                          |
 | ---------- | ---------------------------------------- |
-| Název  | ConfirmationResponse                  |
+| Name  | ConfirmationResponse                  |
 | Podmínky | Žádné                                     |
-| Akce    | Odeslat odezvu na řeč > jednoduchý editor > první variaci >`Ok, setting temperature to 40 degrees` |
+| Akce    | Odeslat odezvu na řeč > jednoduchý editor > první variaci > `Ok, setting temperature to 40 degrees` |
 
 Výběrem **Uložit** uložte všechny změny do příkazu.
 

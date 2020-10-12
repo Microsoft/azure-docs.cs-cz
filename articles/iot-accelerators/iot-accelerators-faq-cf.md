@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82792373"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Nejčastější dotazy k akcelerátoru řešení propojené továrny
@@ -68,7 +68,7 @@ Pokud jste řešení nasadili z www.azureiotsolutions.com, nemůžete se přihl�
 1. Uživatelské jméno, které se má použít, je: `docker` .
 1. Heslo, které se má použít, závisí na verzi, kterou jste použili k nasazení:
     * Pro řešení nasazená pomocí skriptu build.ps1 do 1. června 2017 je heslo: `Passw0rd` .
-    * V případě řešení nasazených pomocí skriptu build.ps1 po 1. června 2017 můžete v souboru najít heslo `<name of your deployment>.config.user` . Heslo je uloženo v nastavení **VmAdminPassword** . Heslo se vygeneruje náhodně v době nasazení, pokud ho neurčíte pomocí `build.ps1` parametru skriptu.`-VmAdminPassword`
+    * V případě řešení nasazených pomocí skriptu build.ps1 po 1. června 2017 můžete v souboru najít heslo `<name of your deployment>.config.user` . Heslo je uloženo v nastavení **VmAdminPassword** . Heslo se vygeneruje náhodně v době nasazení, pokud ho neurčíte pomocí `build.ps1` parametru skriptu. `-VmAdminPassword`
 
 ### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Návody zastavit a spustit všechny procesy Docker v simulaci virtuálního počítače?
 
@@ -76,13 +76,13 @@ Pokud jste řešení nasadili z www.azureiotsolutions.com, nemůžete se přihl�
 1. Chcete-li zjistit, které kontejnery jsou aktivní, spusťte příkaz: `docker ps` .
 1. Chcete-li zastavit všechny kontejnery simulace, spusťte příkaz: `./stopsimulation` .
 1. Chcete-li spustit všechny kontejnery simulace:
-    * Exportujte proměnnou prostředí s názvem **IOTHUB_CONNECTIONSTRING**. Použijte hodnotu nastavení **IotHubOwnerConnectionString** v `<name of your deployment>.config.user` souboru. Příklad:
+    * Exportujte proměnnou prostředí s názvem **IOTHUB_CONNECTIONSTRING**. Použijte hodnotu nastavení **IotHubOwnerConnectionString** v `<name of your deployment>.config.user` souboru. Například:
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
-    * Spusťte `./startsimulation`.
+    * Spusťte příkaz `./startsimulation`.
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>Návody aktualizovat simulaci na virtuálním počítači?
 
@@ -186,7 +186,7 @@ Odeslání dat telemetrie ze zařízení, která nejsou OPC UA, do propojené to
     ]
     ```
 
-1. Formát `<timestamp>` je:`2017-12-08T19:24:51.886753Z`
+1. Formát `<timestamp>` je: `2017-12-08T19:24:51.886753Z`
 
 1. Restartujte App Service propojené továrny.
 

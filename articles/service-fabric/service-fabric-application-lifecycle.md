@@ -4,10 +4,10 @@ description: Popisuje vývoj, nasazení, testování, upgrade, údržbu a odebí
 ms.topic: conceptual
 ms.date: 1/19/2018
 ms.openlocfilehash: 6a36c97c6f1be96dcb8353e886f2159929e8e794
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86248306"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Životní cyklus aplikace Service Fabric
@@ -19,7 +19,7 @@ Stejně jako u jiných platforem aplikace v Azure Service Fabric obvykle prochá
 Role modelu služby jsou:
 
 * **Vývojář služeb**: vyvíjí modulární a obecné služby, které se dají změnit na účel a použít ve více aplikacích stejného typu nebo různých typů. Například služba fronty se dá použít k vytvoření aplikace pro lístky (helpdesk) nebo aplikace elektronického obchodování (nákupní košík).
-* **Vývojář aplikací**: vytváří aplikace integrací kolekce služeb, které splňují určité konkrétní požadavky nebo scénáře. Web elektronického obchodování může například integrovat "front-end službu JSON bez stavu", "" stavovou službu pro aukci "a" stavovou službu fronty "k sestavení řešení pro aukci.
+* **Vývojář aplikací**: vytváří aplikace integrací kolekce služeb, které splňují určité konkrétní požadavky nebo scénáře. Web elektronického obchodování může například integrovat "bezstavovou Front-End službu JSON," "stavovou službu pro aukci" a "stavovou službu fronty" k sestavení řešení pro aukci.
 * **Správce aplikací**: provede rozhodnutí o konfiguraci aplikace (naplňování parametrů šablony konfigurace), nasazení (mapování na dostupné prostředky) a kvalitě služby. Například správce aplikace rozhoduje o národním prostředí (například anglicky pro USA nebo japonštinu pro Japonsko) aplikace. Jiná nasazená aplikace může mít různá nastavení.
 * **Operátor**: nasadí aplikace na základě konfigurace aplikace a požadavků určených správcem aplikace. Například operátor zřídí a nasadí aplikaci a zajistí, že je spuštěná v Azure. Operátoři monitorují informace o stavu aplikace a výkonu a udržují fyzickou infrastrukturu podle potřeby.
 

@@ -1,6 +1,6 @@
 ---
 title: Vlastní data a Virtual Machines Azure
-description: Podrobnosti o používání vlastních dat a aplikace Cloud-init v Azure Virtual Machines
+description: Podrobnosti o používání vlastních dat a Cloud-Init v Azure Virtual Machines
 services: virtual-machines
 author: mimckitt
 ms.service: virtual-machines
@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
 ms.openlocfilehash: 2924caaac5fb8c512100d9e897f7f153af9a3b3e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284910"
 ---
-# <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Vlastní data a Cloud-init v Azure Virtual Machines
+# <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Vlastní data a Cloud-Init v Azure Virtual Machines
 
 Do virtuálního počítače s Microsoft Azure může být potřeba vložit skript nebo jiná metadata v době zřizování.  V jiných cloudech se tento koncept často označuje jako data uživatelů.  V Microsoft Azure máme podobnou funkci nazvanou vlastní data. 
 
@@ -80,7 +80,7 @@ Pokud chcete řešit potíže s vlastním prováděním dat, přečtěte si */va
 Řešení potíží s vlastním prováděním dat najdete v [dokumentaci k](./linux/using-cloud-init.md#troubleshooting-cloud-init)řešení problémů.
 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>Můžu aktualizovat vlastní data po vytvoření virtuálního počítače?
 Pro jednotlivé virtuální počítače se vlastní data v modelu virtuálních počítačů nedají aktualizovat, ale pro VMSS můžete aktualizovat vlastní data VMSS prostřednictvím [REST API](/rest/api/compute/virtualmachinescalesets/update) (neplatí pro PS nebo AZ CLI Clients). Když aktualizujete vlastní data v modelu VMSS:
 * Existující instance v VMSS nezískají aktualizované vlastní data, až do doby, než se obnoví z image.

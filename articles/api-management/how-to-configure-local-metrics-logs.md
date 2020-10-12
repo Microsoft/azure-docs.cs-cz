@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
 ms.openlocfilehash: ac147863fe54be3343eda653fc863ebd08dac54d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86254499"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurace místních metrik a protokolů pro bránu Azure API Management pro samoobslužnou hostování
@@ -149,12 +149,12 @@ sputnik-metrics-statsd       NodePort       10.0.41.179   <none>          8125:3
 
 Teď, když jsme nasadili jak statistiky, tak i Prometheus, můžeme aktualizovat konfigurace samoobslužné brány, aby bylo možné metriky vysílat prostřednictvím statistik. Tuto funkci můžete povolit nebo zakázat pomocí `telemetry.metrics.local` klíče v ConfigMap nasazení samoobslužné brány s dalšími možnostmi. Níže je uveden přehled dostupných možností:
 
-| Pole  | Výchozí | Popis |
+| Pole  | Výchozí | Description |
 | ------------- | ------------- | ------------- |
 | telemetrie. metriky. Local  | `none` | Povolí protokolování prostřednictvím statistik. Hodnota může být `none` , `statsd` . |
-| telemetrie. metriky. Local. stated. Endpoint  | Není k dispozici | Určuje postatový koncový bod. |
-| telemetrie. metriky. Local. stated. vzorkování  | Není k dispozici | Určuje vzorkovací frekvenci metrik. Hodnota může být mezi 0 a 1. např.:`0.5`|
-| telemetrie. metriky. Local. stated. Tag-Format  | Není k dispozici | [Formát označování značek](https://github.com/prometheus/statsd_exporter#tagging-extensions)exportéra Hodnota může být `none` , `librato` , `dogStatsD` , `influxDB` . |
+| telemetrie. metriky. Local. stated. Endpoint  | neuvedeno | Určuje postatový koncový bod. |
+| telemetrie. metriky. Local. stated. vzorkování  | neuvedeno | Určuje vzorkovací frekvenci metrik. Hodnota může být mezi 0 a 1. např.: `0.5`|
+| telemetrie. metriky. Local. stated. Tag-Format  | neuvedeno | [Formát označování značek](https://github.com/prometheus/statsd_exporter#tagging-extensions)exportéra Hodnota může být `none` , `librato` , `dogStatsD` , `influxDB` . |
 
 Tady je Ukázková konfigurace:
 
@@ -208,15 +208,15 @@ Pokud je vaše místní hostská brána nasazená ve službě Azure Kubernetes, 
 
 Samoobslužná brána také podporuje několik protokolů `localsyslog` , a to včetně, `rfc5424` a `journal` . Níže uvedená tabulka shrnuje všechny podporované možnosti. 
 
-| Pole  | Výchozí | Popis |
+| Pole  | Výchozí | Description |
 | ------------- | ------------- | ------------- |
-| telemetrie. logs. std  | `text` | Povolí protokolování do standardních datových proudů. Hodnota může být `none` , `text` ,`json` |
-| telemetrie. log. Local  | `none` | Povolí místní protokolování. Hodnota může být `none` , `auto` , `localsyslog` , `rfc5424` ,`journal`  |
-| telemetrie. log. Local. localsyslog. Endpoint  | Není k dispozici | Určuje koncový bod localsyslog.  |
-| telemetrie. log. Local. localsyslog. facilita  | Není k dispozici | Určuje [kód zařízení](https://en.wikipedia.org/wiki/Syslog#Facility)localsyslog. např.:`7` 
-| telemetrie. log. Local. rfc5424. Endpoint  | Není k dispozici | Určuje koncový bod rfc5424.  |
-| telemetrie. log. Local. rfc5424. facilita  | Není k dispozici | Určuje kód zařízení na [rfc5424](https://tools.ietf.org/html/rfc5424). např.:`7`  |
-| telemetrie. log. Local. Journal. Endpoint  | Není k dispozici | Určuje koncový bod deníku.  |
+| telemetrie. logs. std  | `text` | Povolí protokolování do standardních datových proudů. Hodnota může být `none` , `text` , `json` |
+| telemetrie. log. Local  | `none` | Povolí místní protokolování. Hodnota může být `none` , `auto` , `localsyslog` , `rfc5424` , `journal`  |
+| telemetrie. log. Local. localsyslog. Endpoint  | neuvedeno | Určuje koncový bod localsyslog.  |
+| telemetrie. log. Local. localsyslog. facilita  | neuvedeno | Určuje [kód zařízení](https://en.wikipedia.org/wiki/Syslog#Facility)localsyslog. např.: `7` 
+| telemetrie. log. Local. rfc5424. Endpoint  | neuvedeno | Určuje koncový bod rfc5424.  |
+| telemetrie. log. Local. rfc5424. facilita  | neuvedeno | Určuje kód zařízení na [rfc5424](https://tools.ietf.org/html/rfc5424). např.: `7`  |
+| telemetrie. log. Local. Journal. Endpoint  | neuvedeno | Určuje koncový bod deníku.  |
 
 Tady je ukázka konfigurace místního protokolování:
 

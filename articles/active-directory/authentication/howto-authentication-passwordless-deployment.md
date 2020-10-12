@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90526999"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Plánování nasazení ověřování s neplatnými hesly v Azure Active Directory
@@ -82,7 +82,7 @@ Požadavky na Windows Hello jsou vysoce závislé na tom, jestli nasazujete v ko
 
 Uživatelé registrují svou metodu nejenom hesla jako součást toku registrace Azure Multi-Factor Authentication. Vícefaktorové ověřování s uživatelským jménem a heslem společně s jinou registrovanou metodou se dá použít jako záložní pro případ, že v některých scénářích nemůžou použít svůj telefon nebo bezpečnostní klíč.
 
-### <a name="licensing"></a>Licencování 
+### <a name="licensing"></a>Licensing 
 Pro ověřování bez hesla se neúčtují žádné další poplatky, i když některé předpoklady můžou vyžadovat předplatné Premium. Podrobné informace o funkcích a licencování najdete na [stránce Azure Active Directory licencování](https://azure.microsoft.com/pricing/details/active-directory/). 
 
 ## <a name="develop-a-plan"></a>Vývoj plánu
@@ -118,7 +118,7 @@ Vaše komunikace s koncovými uživateli by měla obsahovat tyto informace:
 - [Registrace v aplikaci Microsoft Authenticator](howto-authentication-passwordless-phone.md)
 - [Přihlášení pomocí telefonu](../user-help/user-help-auth-app-sign-in.md)
 
-Společnost Microsoft poskytuje [šablony pro komunikaci](https://aka.ms/mfatemplates)službou Multi-Factor Authentication, [šablony komunikace](https://www.microsoft.com/download/details.aspx?id=56768)pro Samoobslužné resetování hesla (SSPR) a [dokumentaci pro koncové uživatele](../user-help/security-info-setup-signin.md) , které vám pomůžou s konceptem komunikace. Můžete odeslat uživatele do, [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) aby se zaregistrovali přímo, a to tak, že na této stránce vyberete odkazy na **informace o zabezpečení** .
+Microsoft poskytuje [komunikační](https://aka.ms/mfatemplates)šablony služby Multi-Factor Authentication, Self-Service [šablony komunikace](https://www.microsoft.com/download/details.aspx?id=56768)pro resetování hesla (SSPR) a [dokumentaci pro koncové uživatele](../user-help/security-info-setup-signin.md) , které vám pomůžou s konceptem vaší komunikace. Můžete odeslat uživatele do, [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) aby se zaregistrovali přímo, a to tak, že na této stránce vyberete odkazy na **informace o zabezpečení** .
 
 ### <a name="plan-to-pilot"></a>Plánování pilotního nasazení
 

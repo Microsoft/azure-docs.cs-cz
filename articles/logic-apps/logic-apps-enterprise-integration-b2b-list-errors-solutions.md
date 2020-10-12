@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: 6400cfe7e524dcc16e08c2bba7dfba4a62d00b2e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86232555"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Chyby a řešení B2B pro Azure Logic Apps
@@ -31,7 +31,7 @@ Tento článek vám pomůže řešit chyby, ke kterým může dojít v Logic App
 
 **Popis chyby**: nenašla se žádná smlouva s identitami: ' AS2Identity ':: ' Partner1 ' and'AS2Identity ':: ' Partner3 '
 
-**Akce uživatele**: neplatný AS2-od nebo AS2-pro konfiguraci pro smlouvu. Opravte záhlaví "AS2-from" nebo "AS2-do" zprávy AS2 nebo smlouvu tak, aby odpovídala identifikátorům AS2 v záhlavích zpráv AS2 s konfiguracemi smluv.
+**Akce uživatele**: neplatný AS2-From nebo AS2-To nakonfigurována pro smlouvu. Opravte záhlaví "AS2-from" nebo "AS2-do" zprávy AS2 nebo smlouvu tak, aby odpovídala identifikátorům AS2 v záhlavích zpráv AS2 s konfiguracemi smluv.
 
 ## <a name="as2"></a>AS2
 
@@ -39,7 +39,7 @@ Tento článek vám pomůže řešit chyby, ke kterým může dojít v Logic App
 
 **Popis chyby**: neplatné hlavičky AS2. Jedna z hlaviček "AS2-do" nebo "AS2-from" je prázdná.
 
-**Akce uživatele**: byla přijata zpráva AS2, která neobsahovala AS2-from nebo AS2-to nebo obě hlavičky. Podívejte se na hlavičky AS2 zprávy AS2-from a AS2-to a opravte je na základě konfigurace smlouvy.
+**Akce uživatele**: byla přijata zpráva AS2, která neobsahovala AS2-From nebo AS2-To nebo obě hlavičky. Ověřte, AS2-From zprávy a AS2-To záhlaví a opravte je na základě konfigurace smlouvy.
 
 ### <a name="missing-as2-message-body-and-headers"></a>Chybí text a záhlaví zprávy AS2.    
 

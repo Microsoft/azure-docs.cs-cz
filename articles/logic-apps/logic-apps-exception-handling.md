@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84704518"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Zpracování chyb a výjimek v Azure Logic Apps
@@ -32,7 +32,7 @@ Tady jsou typy zásad opakování:
 | **Výchozí** | Tato zásada odesílá až čtyři opakované pokusy ve *exponenciálně rostoucích* intervalech, které se škálují po 7,5 sekund, ale jsou omezené mezi 5 a 45 sekundami. |
 | **Exponenciální interval**  | Tato zásada počká náhodný interval vybraný z exponenciálně rostoucího rozsahu před odesláním dalšího požadavku. |
 | **Pevný interval**  | Tato zásada počká zadaný interval před odesláním dalšího požadavku. |
-| **Žádné**  | Neodešlete požadavek znovu. |
+| **Žádný**  | Neodešlete požadavek znovu. |
 |||
 
 Informace o omezeních zásad opakování najdete v tématu [omezení Logic Apps a konfigurace](../logic-apps/logic-apps-limits-and-config.md#request-limits).
@@ -71,7 +71,7 @@ Případně můžete zásady opakování zadat ručně v `inputs` části pro ak
 
 | Hodnota | Typ | Description |
 |-------|------|-------------|
-| <*opakování – typ zásad*> | Řetězec | Typ zásady opakování, který chcete použít: `default` , `none` , `fixed` nebo`exponential` |
+| <*opakování – typ zásad*> | Řetězec | Typ zásady opakování, který chcete použít: `default` , `none` , `fixed` nebo `exponential` |
 | <*interval opakování*> | Řetězec | Interval opakování, ve kterém hodnota musí používat [formát ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Výchozí minimální interval je `PT5S` a maximální interval je `PT1D` . Když použijete exponenciální zásadu intervalu, můžete zadat jiné minimální a maximální hodnoty. |
 | <*opakování – pokusy*> | Integer | Počet pokusů o opakování, který musí být mezi 1 a 90. |
 ||||
@@ -112,7 +112,7 @@ I když v akci nebo triggeru není explicitně definované, tady je způsob, jak
 }
 ```
 
-### <a name="none"></a>Žádná
+### <a name="none"></a>Žádné
 
 Pokud chcete určit, že akce nebo Trigger neopakuje neúspěšné požadavky, nastavte <*Opakovat-zásady-typ*> na `none` .
 
@@ -312,7 +312,7 @@ Tady je příklad následovaný detailním vysvětlením, který pošle požadav
 
 Tady je podrobný návod, který popisuje, co se stane v tomto příkladu:
 
-1. Chcete-li získat výsledek ze všech akcí uvnitř "My_Scope", akce **pole filtru** použije tento výraz filtru:`@result('My_Scope')`
+1. Chcete-li získat výsledek ze všech akcí uvnitř "My_Scope", akce **pole filtru** použije tento výraz filtru: `@result('My_Scope')`
 
 1. Podmínka pro **pole filtru** je jakákoli `@result()` položka, která má stav rovná se `Failed` . Tato podmínka filtruje pole, které má všechny výsledky akce z "My_Scope" dolů do pole, které obsahuje pouze výsledky neúspěšných akcí.
 

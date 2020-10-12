@@ -11,10 +11,10 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: affddf7367f58107106ae07a07b8baedac73e251
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659558"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>Referenční dokumentace jazyka SQL pro zrychlení dotazů
@@ -53,7 +53,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 <a id="data-types"></a>
 
-## <a name="data-types"></a>Datové typy
+## <a name="data-types"></a>Typy dat
 
 |Typ dat|Popis|
 |---------|-------------------------------------------|
@@ -91,9 +91,9 @@ Podporovány jsou následující standardní operátory SQL:
 |[/](https://docs.microsoft.com/sql/t-sql/language-elements/divide-transact-sql)    |Vydělí jedno číslo jiným (operátor aritmetického dělení).|
 |[*](https://docs.microsoft.com/sql/t-sql/language-elements/multiply-transact-sql)    |Vynásobí dva výrazy (aritmetický operátor násobení).|
 |[%](https://docs.microsoft.com/sql/t-sql/language-elements/modulo-transact-sql)    |Vrátí zbytek jednoho čísla vydělený jinou.|
-|[ANI](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |Provede bitovou logickou a operaci mezi dvěma celočíselnými hodnotami.|
-|[ANI](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Provede bitovou logickou hodnotu nebo operaci mezi dvěma zadanými celočíselnými hodnotami, které jsou přeloženy na binární výrazy v příkazech jazyka Transact-SQL.|
-|[MĚNÍ](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |Negace logického vstupu.|
+|[AND](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |Provede bitovou logickou a operaci mezi dvěma celočíselnými hodnotami.|
+|[OR](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Provede bitovou logickou hodnotu nebo operaci mezi dvěma zadanými celočíselnými hodnotami, které jsou přeloženy na binární výrazy v příkazech jazyka Transact-SQL.|
+|[NOT](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |Negace logického vstupu.|
 |[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |Převede výraz jednoho datového typu na jiný.|
 |[JEDNOTLIVÝCH](https://docs.microsoft.com/sql/t-sql/language-elements/between-transact-sql)    |Určuje rozsah, který se má testovat.|
 |[PRO](https://docs.microsoft.com/sql/t-sql/language-elements/in-transact-sql)    |Určuje, zda zadaná hodnota odpovídá jakékoli hodnotě v poddotazu nebo seznamu.|
@@ -114,16 +114,16 @@ Jazyk SQL pro zrychlení dotazů podporuje pouze malou podmnožinu datových typ
 
 Jazyk SQL pro zrychlení dotazů podporuje následující standardní řetězcové funkce jazyka SQL:
 
-|Funkce|Popis|
+|Funkce|Description|
 |--|--|
 |CHAR_LENGTH    | Vrátí délku ve znacích řetězcového výrazu, pokud je řetězcový výraz znakový datový typ. v opačném případě vrátí délku v bajtech řetězcového výrazu (nejmenší celé číslo, které je menší než počet bitů dělený hodnotou 8). (Tato funkce je stejná jako funkce CHARACTER_LENGTH.)|
 |CHARACTER_LENGTH    |Vrátí délku ve znacích řetězcového výrazu, pokud je řetězcový výraz znakový datový typ. v opačném případě vrátí délku v bajtech řetězcového výrazu (nejmenší celé číslo, které je menší než počet bitů dělený hodnotou 8). (Tato funkce je stejná jako funkce CHAR_LENGTH|
 |[LOWER](https://docs.microsoft.com/sql/t-sql/functions/lower-transact-sql)    |Vrátí výraz znaků po převedení velkých znakových dat na malá písmena.|
 |[UPPER](https://docs.microsoft.com/sql/t-sql/functions/upper-transact-sql)    |Vrátí znakový výraz s malými znakovými daty převedenými na velká písmena.|
-|[PODŘETĚZEC](https://docs.microsoft.com/sql/t-sql/functions/substring-transact-sql)    |Vrátí část znakového, binárního, textového nebo obrázkového výrazu v SQL Server.|
-|[SKLON](https://docs.microsoft.com/sql/t-sql/functions/trim-transact-sql)    |Odstraní znak znaku mezery (32) nebo jiné zadané znaky od začátku a konce řetězce.|
-|NULA    |Popis|
-|KONCOVÉ    |Popis|
+|[SUBSTRING](https://docs.microsoft.com/sql/t-sql/functions/substring-transact-sql)    |Vrátí část znakového, binárního, textového nebo obrázkového výrazu v SQL Server.|
+|[TRIM](https://docs.microsoft.com/sql/t-sql/functions/trim-transact-sql)    |Odstraní znak znaku mezery (32) nebo jiné zadané znaky od začátku a konce řetězce.|
+|NULA    |Description|
+|KONCOVÉ    |Description|
 
 Tady je několik příkladů:
 
@@ -184,11 +184,11 @@ TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 
 Tato tabulka popisuje řetězce, které lze použít k určení výstupního formátu ``TO_STRING`` funkce.
 
-|Řetězec formátu    |Výstup                               |
+|Formátovací řetězec    |Výstup                               |
 |-----------------|-------------------------------------|
-|RR               |Rok ve formátu 2 číslice – 1999 jako "99"|
+|yy               |Rok ve formátu 2 číslice – 1999 jako "99"|
 |y                |Rok ve formátu 4 číslice               |
-|rrrr             |Rok ve formátu 4 číslice               |
+|yyyy             |Rok ve formátu 4 číslice               |
 |M                |Měsíc roku – 1                    |
 |MM               |Nula čalouněný měsíc – 01               |
 |MMM              |Abbr. měsíc roku – LED            |
@@ -207,7 +207,7 @@ Tato tabulka popisuje řetězce, které lze použít k určení výstupního for
 |S                |Zlomek sekund (0,1 – 0.9)        |
 |SS               |Zlomek sekund (0,01 – 0,99)      |
 |POVĚŘENÍ              |Zlomek sekund (0,001 – 0.999)    |
-|X                |Posun v hodinách                      |
+|×                |Posun v hodinách                      |
 |XX nebo XXXX       |Posun v hodinách a minutách (+ 0430)  |
 |XXX nebo XXXXX     |Posun v hodinách a minutách (-07:00) |
 |x                |Posun v hodinách (7)                  |

@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5ec5db2b2fefeba3bffb7e30a77850b30dccf95e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89005628"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Popište Cluster Service Fabric pomocí Správce prostředků clusteru.
@@ -348,7 +348,7 @@ V některých případech (ve skutečnosti většinou) budete chtít zajistit, a
 
 Skvělým příkladem cílení hardwaru na konkrétní úlohy je skoro každá architektura n-vrstvá. Některé počítače slouží jako front-end nebo rozhraní API pro poskytování aplikace a jsou vystavena klientům nebo Internetu. Různé počítače, často s různými hardwarovými prostředky, zpracovávají práci výpočetních nebo úložných vrstev. Obvykle _nejsou_ vystaveny přímo klientům nebo Internetu. 
 
-Service Fabric očekává, že v některých případech může být potřeba spustit konkrétní úlohy na určitých konfiguracích hardwaru. Příklad:
+Service Fabric očekává, že v některých případech může být potřeba spustit konkrétní úlohy na určitých konfiguracích hardwaru. Například:
 
 * Existující n-vrstvá aplikace byla "vyzdvižena a přesunuta" do Service Fabricho prostředí.
 * Zatížení musí být spuštěno na konkrétním hardwaru pro účely výkonu, škálování nebo důvodů izolace zabezpečení.

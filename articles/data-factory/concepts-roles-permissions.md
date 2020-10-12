@@ -11,10 +11,10 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 40fa6bce67aa6c5643e4a153da610dce65907b56
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88036332"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role a oprávnění pro službu Azure Data Factory
@@ -59,7 +59,7 @@ Oprávnění pro Azure Repos a GitHub jsou nezávislá na oprávněních Data Fa
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Vlastní scénáře a vlastní role
 
-Někdy může být nutné udělit různým uživatelům služby Data Factory různé úrovně přístupu. Příklad:
+Někdy může být nutné udělit různým uživatelům služby Data Factory různé úrovně přístupu. Například:
 - Možná budete potřebovat skupinu, kde uživatelé mají oprávnění pouze pro konkrétní objekt pro vytváření dat.
 - Nebo možná budete potřebovat skupinu, kde uživatelé můžou monitorovat jenom objekt pro vytváření dat (nebo továrny), ale nemůžou ho upravovat.
 
@@ -80,7 +80,7 @@ Tady je několik příkladů, které ukazují, co můžete dosáhnout s vlastní
   Tento scénář vyžaduje dvě přiřazení rolí.
 
   1. Přiřaďte integrovanou roli **přispěvatele** na úrovni datové továrny.
-  2. Vytvořte vlastní roli s oprávněním **Microsoft. Resources/Deployments/**. Přiřaďte tuto vlastní roli uživateli na úrovni skupiny prostředků.
+  2. Vytvořte vlastní roli s oprávněním  **Microsoft. Resources/Deployments/**. Přiřaďte tuto vlastní roli uživateli na úrovni skupiny prostředků.
 
 - Umožní uživateli otestovat připojení v propojené službě nebo zobrazit data v datové sadě.
 
@@ -88,7 +88,7 @@ Tady je několik příkladů, které ukazují, co můžete dosáhnout s vlastní
 
 - Umožněte uživateli aktualizovat datovou továrnu z PowerShellu nebo sady SDK, ale ne v Azure Portal.
 
-  Přiřaďte k prostředku datové továrny integrovanou roli **přispěvatele** pro uživatele. Tato role uživateli umožňuje zobrazit prostředky v Azure Portal, ale uživatel nemá přístup k tlačítkům **publikovat** a **Publikovat všechna** .
+  Přiřaďte k prostředku datové továrny integrovanou roli **přispěvatele** pro uživatele. Tato role uživateli umožňuje zobrazit prostředky v Azure Portal, ale uživatel nemá přístup k tlačítkům  **publikovat** a **Publikovat všechna** .
 
 ## <a name="next-steps"></a>Další kroky
 

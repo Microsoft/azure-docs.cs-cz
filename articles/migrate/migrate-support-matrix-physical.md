@@ -4,10 +4,10 @@ description: Další informace o podpoře pro posouzení fyzického serveru pomo
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: dffa95fe717f8588f56b9dee60ede8bbf44aceb9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89660345"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Matice podpory pro posouzení fyzického serveru 
@@ -24,7 +24,7 @@ Chcete-li vyhodnotit fyzické servery, vytvořte projekt Azure Migrate a přidej
 --- | ---
 **Omezení hodnocení** | V jednom [Azure Migrate projektu](migrate-support-matrix.md#azure-migrate-projects)můžete zjistit a posoudit až 35 000 fyzických serverů.
 **Omezení projektu** | V předplatném Azure můžete vytvořit více projektů. Kromě fyzických serverů může projekt zahrnovat virtuální počítače VMware a virtuální počítače Hyper-V, a to až do limitů hodnocení pro každý z nich.
-**Rozpoznávání** | Zařízení Azure Migrate může zjistit až 1000 fyzických serverů.
+**Zjišťování** | Zařízení Azure Migrate může zjistit až 1000 fyzických serverů.
 **Posouzení** | Do jedné skupiny můžete přidat až 35 000 počítačů.<br/><br/> V jednom posouzení můžete vyhodnotit až 35 000 počítačů.
 
 [Přečtěte si další informace](concepts-assessment-calculation.md) o posouzení.

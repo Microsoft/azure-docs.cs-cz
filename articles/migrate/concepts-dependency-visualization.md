@@ -4,10 +4,10 @@ description: Popisuje, jak používat analýzu závislostí pro posouzení pomoc
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: a284d549f13595e0ce8a5d06cc017602e559b648
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530246"
 ---
 # <a name="dependency-analysis"></a>Analýza závislostí
@@ -74,7 +74,7 @@ Rozdíly mezi vizualizacemi bez agentů a vizualizací na základě agentů jsou
 **Požadavek** | **Bez agenta** | **Založené na agentovi**
 --- | --- | ---
 **Podpora** | Ve verzi Preview jenom pro virtuální počítače VMware. [Zkontrolujte](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) podporované operační systémy. | Obecně dostupná (GA).
-**Agent** | Na počítačích, které chcete analyzovat, nejsou potřeba žádní agenti. | Agenti vyžadovaná na každém místním počítači, který chcete analyzovat.
+**Agenta** | Na počítačích, které chcete analyzovat, nejsou potřeba žádní agenti. | Agenti vyžadovaná na každém místním počítači, který chcete analyzovat.
 **Log Analytics** | Nepožadováno. | Azure Migrate používá řešení [Service map](../azure-monitor/insights/service-map.md) v [protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md) k analýze závislostí.<br/><br/> Pracovní prostor Log Analytics přidružíte k projektu Azure Migrate. Pracovní prostor se musí nacházet v oblastech Východní USA, jihovýchodní Asie nebo Západní Evropa. Pracovní prostor musí být v oblasti, ve které [je podporovaná Service map](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions).
 **Proces** | Zachycuje data připojení TCP. Po zjištění se data shromáždí v intervalech po pěti minutách. | Agenti Service Map nainstalovaná na počítači shromažďují data o procesech TCP a příchozích a odchozích připojeních pro jednotlivé procesy.
 **Data** | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port. | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port.<br/><br/> Pro Log Analytics dotazy se shromažďují a k dispozici informace o počtu připojení, latenci a přenosu dat. 

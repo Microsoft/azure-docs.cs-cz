@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 2a4debda712636e577639b84845dda6b9b4228a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84725051"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Kontrola paketů pomocí Network Watcher Azure
@@ -41,7 +41,7 @@ V tomto scénáři ukážeme, jak zobrazit prvotní dobu odezvy (RTT) konverzace
 
 Po navázání připojení TCP se první tři pakety odeslané v rámci připojení řídí vzorem, který se běžně označuje jako Třícestný handshake. Kontrolou prvních dvou paketů odeslaných v této signalizaci, počáteční požadavek od klienta a odpověď ze serveru můžeme vypočítat latenci při navázání připojení. Tato latence je označována jako čas odezvy (RTT). Další informace o protokolu TCP a prostředcích metody handshake najdete v následujících zdrojích informací. [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 Spustit nástroj WireShark
 
@@ -75,7 +75,7 @@ V instanci virtuálního počítače, kterou jste nasadili v Azure, můžete mí
 
 V tomto příkladu si projdeme předchozí spuštěné zachytávání paketů pro nechtěné protokoly, které mohou ukazovat na neoprávněnou komunikaci z aplikace spuštěné na vašem počítači.
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 Použití stejného zachycení v předchozím scénáři klikněte na **Statistics**  >  **hierarchie protokolu** statistiky.
 
@@ -91,7 +91,7 @@ Jak vidíte na následujícím snímku obrazovky, probíhal provoz pomocí proto
 
 Porozumění typům provozu, koncovým bodům a portům, které jsou předávány, je důležité při monitorování nebo řešení potíží s aplikacemi a prostředky ve vaší síti. Pomocí souboru zachycení paketů z výše uvedeného se můžeme rychle naučit nejdůležitější cíle, se kterými náš virtuální počítač komunikuje, a porty, které se využívají.
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 Pomocí stejného zachycení v předchozím scénáři klikněte na **Statistika**  >  **IPv4**  >  **cíle a porty** .
 

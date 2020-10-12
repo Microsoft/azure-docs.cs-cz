@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 8c9df3393a0554d2e65b3918c6760885f89e11ed
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86254738"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Postup při integraci služby Azure API Management s Azure Application Insights
@@ -37,7 +37,7 @@ Než budete moct použít Azure Application Insights, musíte nejdřív vytvoři
 2. Klikněte na **+ Přidat**.  
     ![Vytvoření App Insights](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
 3. Vyplňte formulář. Jako **Typ aplikace**vyberte **Obecné** .
-4. Klikněte na **Create** (Vytvořit).
+4. Klikněte na **Vytvořit**.
 
 ## <a name="create-a-connection-between-azure-application-insights-and-azure-api-management-service-instance"></a>Vytvoření připojení mezi službou Azure Application Insights a instancí služby Azure API Management
 
@@ -46,7 +46,7 @@ Než budete moct použít Azure Application Insights, musíte nejdřív vytvoři
 3. Klikněte na **+ Přidat**.  
     ![Protokolovací nástroj App Insights](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
 4. Vyberte dříve vytvořenou instanci **Application Insights** a zadejte krátký popis.
-5. Klikněte na **Create** (Vytvořit).
+5. Klikněte na **Vytvořit**.
 6. Právě jste vytvořili protokolovací nástroj pro Azure Application Insights s klíčem instrumentace. Měl by se teď zobrazit v seznamu.  
     ![Protokolovací nástroj App Insights](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
@@ -64,7 +64,7 @@ Než budete moct použít Azure Application Insights, musíte nejdřív vytvoři
 6. Zaškrtněte políčko **Povolit** .
 7. V rozevíracím seznamu **cíl** vyberte připojeného protokolovacího nástroje.
 8. Zadejte **100** jako **vzorkování (%)** a zaškrtněte políčko **vždy zaznamenávat chyby** .
-9. Klikněte na **Save** (Uložit).
+9. Klikněte na **Uložit**.
 
 > [!WARNING]
 > Přepsání výchozí hodnoty **0** v **prvních bajtech pole body** může výrazně snížit výkon vašich rozhraní API.
@@ -72,14 +72,14 @@ Než budete moct použít Azure Application Insights, musíte nejdřív vytvoři
 > [!NOTE]
 > Za scénou je na úrovni rozhraní API vytvořená [diagnostická](/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) entita s názvem ApplicationInsights.
 
-| Název nastavení                        | Typ hodnoty                        | Popis                                                                                                                                                                                                                                                                                                                                      |
+| Název nastavení                        | Typ hodnoty                        | Description                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Povolit                              | Boolean                           | Určuje, jestli je povolené protokolování tohoto rozhraní API.                                                                                                                                                                                                                                                                                                |
+| Povolit                              | boolean                           | Určuje, jestli je povolené protokolování tohoto rozhraní API.                                                                                                                                                                                                                                                                                                |
 | Cíl                         | Protokolovací nástroj Azure Application Insights | Určuje protokolovací nástroj Azure Application Insights, který se má použít.                                                                                                                                                                                                                                                                                           |
 | Vzorkování (%)                        | decimal                           | Hodnoty od 0 do 100 (procenta). <br/> Určuje, jaké procento požadavků se bude protokolovat do služby Azure Application Insights. 0% vzorkování znamená nulový počet požadavků, zatímco 100% vzorkování znamená, že jsou všechny požadavky protokolovány. <br/> Toto nastavení se používá k omezení dopadu na výkon požadavků protokolování do Azure Application Insights (viz část níže). |
-| Vždycky protokolovat chyby                   | Boolean                           | Pokud je toto nastavení vybrané, všechny chyby se zaprotokolují do služby Azure Application Insights bez ohledu na nastavení **vzorkování** .                                                                                                                                                                                                                  |
+| Vždycky protokolovat chyby                   | boolean                           | Pokud je toto nastavení vybrané, všechny chyby se zaprotokolují do služby Azure Application Insights bez ohledu na nastavení **vzorkování** .                                                                                                                                                                                                                  |
 | Základní možnosti: hlavičky              | list                              | Určuje hlavičky, které se budou protokolovat do služby Azure Application Insights pro žádosti a odpovědi.  Výchozí: nejsou protokolována žádná záhlaví.                                                                                                                                                                                                             |
-| Základní možnosti: první bajty těla  | celé číslo                           | Určuje, kolik prvních bajtů textu se do Azure Application Insights zaznamená pro žádosti a odpovědi.  Výchozí: tělo není protokolováno.                                                                                                                                                                                                    |
+| Základní možnosti: první bajty těla  | integer                           | Určuje, kolik prvních bajtů textu se do Azure Application Insights zaznamená pro žádosti a odpovědi.  Výchozí: tělo není protokolováno.                                                                                                                                                                                                    |
 | Rozšířené možnosti: podrobnosti         |                                   | Určuje úroveň podrobností. Budou protokolována pouze vlastní trasování s vyšší úrovní závažnosti. Výchozí: informace.                                                                                                                                                                                                                               |
 | Rozšířené možnosti: front-end požadavek  |                                   | Určuje, jestli a jak se budou *Odeslané požadavky na front-end* protokolovat do Application Insights Azure. *Požadavek front-end* je požadavek příchozí na službu Azure API Management.                                                                                                                                                                        |
 | Rozšířené možnosti: front-endové odpovědi |                                   | Určuje, jestli se mají do Azure Application Insights zaprotokolovat *odpovědi front-endu* . *Front-end* odpověď je odpověď odchozí ze služby Azure API Management.                                                                                                                                                                   |

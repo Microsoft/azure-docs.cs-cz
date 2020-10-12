@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o ověřování aplikace s Azure
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: b12f2f294a66159a7035240c361ab93f9f84718e
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88064821"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Ověřování a autorizace aplikace s Azure Active Directory pro přístup k Azure Service Busm entitám
@@ -152,9 +152,9 @@ Když spustíte konzolovou aplikaci, zobrazí se výzva k výběru scénáře. V
 ## <a name="next-steps"></a>Další kroky
 - Další informace o službě Azure RBAC najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md)?
 - Další informace o tom, jak přiřadit a spravovat přiřazení rolí Azure pomocí Azure PowerShell, Azure CLI nebo REST API, najdete v těchto článcích:
-    - [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)  
-    - [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](../role-based-access-control/role-assignments-cli.md)
-    - [Přidání nebo odebrání přiřazení rolí Azure pomocí REST API](../role-based-access-control/role-assignments-rest.md)
+    - [Přidání nebo odebrání přiřazení rolí v Azure pomocí Azure PowerShellu](../role-based-access-control/role-assignments-powershell.md)  
+    - [Přidání nebo odebrání přiřazení rolí v Azure pomocí Azure CLI](../role-based-access-control/role-assignments-cli.md)
+    - [Přidání nebo odebrání přiřazení rolí v Azure pomocí REST API](../role-based-access-control/role-assignments-rest.md)
     - [Přidání nebo odebrání přiřazení rolí Azure pomocí šablon Azure Resource Manager](../role-based-access-control/role-assignments-template.md)
 
 Pokud se o přenosu zpráv přes Service Bus chcete dozvědět víc, pročtěte si následující témata.

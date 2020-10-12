@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483665"
 ---
 # <a name="create-a-netapp-account"></a>Vytvoření účtu NetApp
@@ -29,7 +29,7 @@ Je nutné, abyste obdrželi e-mail od Azure NetApp Files týmu potvrzujícího, 
 
 Musíte taky zaregistrovat předplatné pro používání poskytovatele prostředků NetApp. Viz [registrace poskytovatele prostředků NetApp](azure-netapp-files-register.md#resource-provider).
 
-## <a name="steps"></a>Kroky 
+## <a name="steps"></a>Postup 
 
 1. Přihlaste se k portálu Azure. 
 2. Přejděte do okna Azure NetApp Files pomocí jedné z následujících metod:  

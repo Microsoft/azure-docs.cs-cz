@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/06/2020
 ms.openlocfilehash: 9104be9975568c52f6a96994a0afb782a406fe4e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86076262"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Spouštění úloh Apache Sqoop v HDInsight pomocí kudrlinkou
@@ -77,7 +77,7 @@ Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://
 
     Parametry použité v tomto příkazu jsou následující:
 
-   * **-d** – vzhledem k tomu `-G` , že se nepoužívá, je požadavek nastaven na výchozí metodu post. `-d`Určuje hodnoty dat, které se odesílají spolu s požadavkem.
+   * **-d** – vzhledem k tomu `-G` , že se nepoužívá, je požadavek nastaven na výchozí metodu post. `-d` Určuje hodnoty dat, které se odesílají spolu s požadavkem.
 
        * **User.Name** – uživatel, který spouští příkaz.
 
@@ -120,7 +120,7 @@ Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://
 * Hromadný export – pomocí HDInsight se systémem Linux, konektor Sqoop používaný k exportu dat do Microsoft SQL Server nebo Azure SQL Database v současné době nepodporuje hromadné vložení.
 * Dávkování – se systémem Linux HDInsight při použití `-batch` přepínače při provádění operací INSERT Sqoop provede vícenásobné vkládání místo dávkování operací vložení.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Jak je znázorněno v tomto dokumentu, můžete použít nezpracovaný požadavek HTTP ke spuštění, monitorování a zobrazení výsledků úloh Sqoop v clusteru HDInsight.
 

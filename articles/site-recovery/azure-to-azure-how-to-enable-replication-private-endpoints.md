@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/14/2020
 ms.custom: references_regions
 ms.openlocfilehash: 37784c4a294ccf296818f2afb1a8a345cb9d813e
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658263"
 ---
 # <a name="replicate-machines-with-private-endpoints"></a>Replikace počítačů pomocí privátních koncových bodů
@@ -57,7 +57,7 @@ Přístup spravovaných identit je nezbytný, když používáte pro trezor slu�
 
 1. Přejít do svého trezoru Recovery Services. V části _Nastavení_vyberte **Identita** .
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="Zobrazuje Azure Portal a stránku Recovery Services.":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="Referenční architektura pro Site Recovery s privátními koncovými body.":::
 
 1. Změňte **stav** na _zapnuto_ a vyberte **Uložit**.
 
@@ -73,21 +73,21 @@ Vytvořte první privátní koncový bod vašeho trezoru v rámci zdrojové virt
 
 1. Na panelu hledání Azure Portal vyhledejte a vyberte "soukromé propojení". Tato akce přejde do centra privátních odkazů.
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="Zobrazuje hledání Azure Portal pro centrum privátních odkazů.":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="Referenční architektura pro Site Recovery s privátními koncovými body.":::
 
 1. V levém navigačním panelu vyberte **soukromé koncové body**. Po vytvoření privátního koncového bodu pro svůj trezor vyberte na stránce privátní koncové body možnost ** \+ Přidat** .
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="Ukazuje vytvoření privátního koncového bodu v centru privátních odkazů.":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="Referenční architektura pro Site Recovery s privátními koncovými body.":::
 
 1. Jednou v prostředí pro vytvoření privátního koncového bodu je nutné zadat podrobnosti pro vytvoření připojení privátního koncového bodu.
 
    1. **Základy**: Vyplňte základní podrobnosti vašich privátních koncových bodů. Oblast by měla být stejná jako u zdrojových počítačů.
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="Zobrazuje kartu Basic, podrobnosti projektu, předplatné a další související pole pro vytvoření privátního koncového bodu v Azure Portal.":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="Referenční architektura pro Site Recovery s privátními koncovými body.":::
 
    1. **Prostředek**: Tato karta vyžaduje, abyste uváděli prostředek platformy jako služby, pro který chcete vytvořit připojení. Pro vybrané předplatné vyberte _Microsoft. RecoveryServices/trezory_ z **typu prostředku** . Pak zvolte název trezoru Recovery Services pro **prostředek** a nastavte _Azure Site Recovery_ jako **cílový dílčí prostředek**.
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="Zobrazuje kartu prostředků, typ prostředku, prostředek a cíl pro propojení s privátním koncovým bodem v Azure Portal.":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="Referenční architektura pro Site Recovery s privátními koncovými body.":::
 
    1. **Konfigurace**: v části Konfigurace zadejte virtuální síť a podsíť, ve které chcete vytvořit privátní koncový bod. Tato virtuální síť je síť, ve které se virtuální počítač nachází. Vyberte **Ano**, pokud chcete povolit integraci s privátní zónou DNS. Vyberte už vytvořenou zónu DNS nebo vytvořte novou. Vyberete-li možnost **Ano** , automaticky propojí zónu se zdrojovou virtuální sítí a přidá záznamy DNS, které jsou požadovány pro překlad DNS nových IP adres a plně kvalifikované názvy domén vytvořené pro soukromý koncový bod.
 
@@ -97,7 +97,7 @@ Vytvořte první privátní koncový bod vašeho trezoru v rámci zdrojové virt
 
       Pokud chcete ručně vytvořit privátní zónu DNS, postupujte podle kroků v části [Vytvoření privátních zón DNS a ruční přidání záznamů DNS](#create-private-dns-zones-and-add-dns-records-manually).
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="Zobrazuje kartu konfigurace s poli integrace sítě a DNS pro konfiguraci privátního koncového bodu v Azure Portal.":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="Referenční architektura pro Site Recovery s privátními koncovými body.":::
 
    1. **Značky**: Volitelně můžete přidat značky pro privátní koncový bod.
 
@@ -115,7 +115,7 @@ Pokud uživatel vytvářející soukromý koncový bod je zároveň vlastníkem 
 
 Než budete pokračovat, můžete přejít na prostředek privátního koncového bodu a zkontrolovat stav připojení.
 
-:::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="Zobrazuje stránku připojení privátního koncového bodu trezoru a seznam připojení v Azure Portal.":::
+:::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="Referenční architektura pro Site Recovery s privátními koncovými body.":::
 
 ## <a name="optional-create-private-endpoints-for-the-cache-storage-account"></a><a name="create-private-endpoints-for-the-cache-storage-account"></a>Volitelné Vytvoření privátních koncových bodů pro účet úložiště mezipaměti
 
@@ -140,7 +140,7 @@ Před povolením replikace virtuálních počítačů musí mít spravovaná ide
   - [Přispěvatel dat v objektech blob služby Storage](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
 - Účty úložiště založené na Správce prostředků (typ Premium):
   - [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor)
-  - [Vlastník dat objektu BLOB služby Storage](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+  - [Vlastník dat v objektech blob služby Storage](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
 - Účty klasického úložiště:
   - [Přispěvatel klasických účtů úložiště](../role-based-access-control/built-in-roles.md#classic-storage-account-contributor)
   - [Role služby operátora klíče klasického účtu úložiště](../role-based-access-control/built-in-roles.md#classic-storage-account-key-operator-service-role)
@@ -151,11 +151,11 @@ Následující postup popisuje, jak přidat přiřazení role k účtům úloži
 
 1. Po **řízení přístupu (IAM)** v poli přidat přiřazení role vyberte **Přidat**.
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="Zobrazuje stránku řízení přístupu (IAM) na účtu úložiště a tlačítko Přidat přiřazení role v Azure Portal.":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="Referenční architektura pro Site Recovery s privátními koncovými body.":::
 
 1. Na straně přidat přiřazení role vyberte roli ze seznamu výše v rozevíracím seznamu **role** . Zadejte **název** trezoru a vyberte **Uložit**.
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="Zobrazuje stránku řízení přístupu (IAM) v účtu úložiště a možnosti pro výběr role a objektu zabezpečení, který této roli udělí v Azure Portal.":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="Referenční architektura pro Site Recovery s privátními koncovými body.":::
 
 Kromě těchto oprávnění musí být důvěryhodné služby společnosti Microsoft také povolený přístup. Přejděte do části brány firewall a virtuální sítě a zaškrtněte políčko pro přístup k tomuto účtu úložiště důvěřovat důvěryhodným službám **Microsoftu.**
 
@@ -173,13 +173,13 @@ Vytvořte jednu privátní zónu DNS, abyste mohli agent mobility přeložit na 
 
    1. Vyhledejte "Privátní DNS Zone" na panelu hledání **všechny služby** a v rozevíracím seznamu vyberte možnost privátní DNS zóny.
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Na stránce nové prostředky v Azure Portal ukazuje hledání zóny privátní DNS.":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Referenční architektura pro Site Recovery s privátními koncovými body.":::
 
    1. Jednou na stránce Privátní DNS zóny vyberte tlačítko ** \+ Přidat** a začněte vytvářet novou zónu.
 
    1. Na stránce Vytvoření privátní zóny DNS vyplňte požadované podrobnosti. Jako název zadejte název privátní zóny DNS `privatelink.siterecovery.windowsazure.com` . Pro vytvoření můžete vybrat libovolnou skupinu prostředků a všechny její odběry.
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="Zobrazí kartu základy stránky vytvořit Privátní DNS zónu a podrobnosti o souvisejícím projektu v Azure Portal.":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="Referenční architektura pro Site Recovery s privátními koncovými body.":::
 
    1. Pokračujte na kartu **Kontrola \+ Vytvoření** a zkontrolujte a vytvořte zónu DNS.
 
@@ -191,7 +191,7 @@ Vytvořte jednu privátní zónu DNS, abyste mohli agent mobility přeložit na 
 
    1. Vyplňte požadované podrobnosti. Pole **odběr** a **virtuální síť** musí být vyplněna odpovídajícími podrobnostmi o virtuální síti, ve které vaše servery existují. Ostatní pole musí být ponechána tak, jak je.
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="Zobrazuje stránku pro přidání odkazu virtuální sítě s názvem odkazu, odběrem a související virtuální sítí v Azure Portal.":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="Referenční architektura pro Site Recovery s privátními koncovými body.":::
 
 1. Přidat záznamy DNS
 
@@ -208,7 +208,7 @@ Vytvořte jednu privátní zónu DNS, abyste mohli agent mobility přeložit na 
 
       Vzor těchto plně kvalifikovaných názvů domén odpovídá vzoru: `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Zobrazí stránku, kde můžete přidat záznam typu DNS pro plně kvalifikovaný název domény do privátního koncového bodu v Azure Portal.":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Referenční architektura pro Site Recovery s privátními koncovými body.":::
 
    > [!NOTE]
    > Po povolení replikace se v obou oblastech vytvoří v privátních koncových bodech dva další plně kvalifikované názvy domén. Ujistěte se také, že jste přidali záznamy DNS pro tyto nově vytvořené názvy domén.

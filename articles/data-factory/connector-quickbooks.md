@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/03/2020
 ms.openlocfilehash: e9c1651244eecb036ca18ad5dadfe23f48b2bce6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87529258"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Kopírování dat z QuickBooks online pomocí Azure Data Factory (Preview)
@@ -60,7 +60,7 @@ Pro propojenou službu QuickBooks jsou podporovány následující vlastnosti:
 | Refreshtoken kontextového tokenu | Obnovovací token OAuth 2,0 přidružený k aplikaci QuickBooks. Další informace najdete [tady](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app). Platnost tokenu aktualizace se vyprší po 180 dnech. Zákazník musí pravidelně aktualizovat obnovovací token. <br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md).| Yes |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -128,7 +128,7 @@ Chcete-li kopírovat data z QuickBooks online, nastavte typ zdroje v aktivitě k
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **QuickBooksSource** . | Yes |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
