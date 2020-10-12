@@ -9,10 +9,10 @@ ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 77becbf4777d0668991adcd74b722cd28ac36f03
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90031173"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modulů, úlohy a směrování zpráv
@@ -454,17 +454,17 @@ Podporovány jsou následující operátory:
 | Logické |A, NEBO, NOT |
 | Porovnání |=, !=, <, >, <=, >=, <> |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkce
 
 Při dotazování na vlákna a úlohy je jedinou podporovanou funkcí:
 
-| Funkce | Popis |
+| Funkce | Description |
 | -------- | ----------- |
 | IS_DEFINED (vlastnost) | Vrátí logickou hodnotu, která znamená, zda byla vlastnost přiřazena hodnota (včetně `null` ). |
 
 V podmínkách směrování jsou podporovány následující matematické funkce:
 
-| Funkce | Popis |
+| Funkce | Description |
 | -------- | ----------- |
 | ABS (x) | Vrátí absolutní (kladnou) hodnotu zadaného číselného výrazu. |
 | EXP (x) | Vrátí exponenciální hodnotu zadaného číselného výrazu (e ^ x). |
@@ -477,7 +477,7 @@ V podmínkách směrování jsou podporovány následující matematické funkce
 
 V podmínkách směrování jsou podporovány následující funkce kontroly a přetypování typů:
 
-| Funkce | Popis |
+| Funkce | Description |
 | -------- | ----------- |
 | AS_NUMBER | Převede vstupní řetězec na číslo. `noop` Pokud je vstup číslo, `Undefined` Pokud řetězec nepředstavuje číslo.|
 | IS_ARRAY | Vrací logickou hodnotu označující, zda je typ zadaného výrazu pole Array. |
@@ -491,7 +491,7 @@ V podmínkách směrování jsou podporovány následující funkce kontroly a p
 
 V podmínkách směrování jsou podporovány následující řetězcové funkce:
 
-| Funkce | Popis |
+| Funkce | Description |
 | -------- | ----------- |
 | CONCAT (x, y,...) | Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcových hodnot. |
 | Délka (x) | Vrátí počet znaků zadaného řetězcového výrazu.|

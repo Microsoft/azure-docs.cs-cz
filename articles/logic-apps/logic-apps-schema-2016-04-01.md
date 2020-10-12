@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86520711"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Aktualizace schématu pro Azure Logic Apps – 1. června 2016
@@ -21,7 +21,7 @@ ms.locfileid: "86520711"
 
 * [Obory](#scopes) umožňují seskupit nebo vnořovat akce jako kolekci akcí.
 * [Podmínky a smyčky](#conditions-loops) jsou nyní akce první třídy.
-* Přesnější řazení pro spouštění akcí s `runAfter` vlastností, která nahrazuje`dependsOn`
+* Přesnější řazení pro spouštění akcí s `runAfter` vlastností, která nahrazuje `dependsOn`
 
 Pokud chcete upgradovat aplikace logiky ze schématu verze 1, 2015 Preview na schéma 1. června 2016, [Podívejte se do části Upgrade](#upgrade-your-schema).
 
@@ -153,7 +153,7 @@ Chcete-li filtrovat velké pole dolů na menší sadu položek, je nový `filter
 
 ### <a name="new-trackedproperties-for-actions"></a>New ' trackedProperties ' pro akce
 
-Akce teď můžou mít navolanou další vlastnost `trackedProperties` , která je stejná jako `runAfter` u `type` vlastností a. Tento objekt určuje konkrétní vstupy a výstupy akcí, které chcete zahrnout do diagnostické telemetrie Azure, které jsou vygenerovány jako součást pracovního postupu. Příklad:
+Akce teď můžou mít navolanou další vlastnost `trackedProperties` , která je stejná jako `runAfter` u `type` vlastností a. Tento objekt určuje konkrétní vstupy a výstupy akcí, které chcete zahrnout do diagnostické telemetrie Azure, které jsou vygenerovány jako součást pracovního postupu. Například:
 
 ``` json
 {

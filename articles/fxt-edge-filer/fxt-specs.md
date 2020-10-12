@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: 30af35075c06585b9c490495e9897c145e9974d9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88184682"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Specifikace souborového pro Azure FXT Edge
@@ -96,7 +96,7 @@ Tyto grafy poskytují spotřebu energie a měření na výstupu pro běžně pou
 | Frekvence (Hz) | 60 | 60 | 60 | 50 | 50 |
 | Aktuální (A) | 5,02 | 4,16 |2,40 | 2,20 | 2,16 |
 | Zdánlivá mocnina (VA) | 502 | 499 | 499 | 506 | 518|
-| Faktor výkonu | 0.99 | 0.99 |0,98 | 0,98 | 0,98 |
+| Faktor výkonu | 0.99 | 0.99 |0.98 | 0.98 | 0.98 |
 | Skutečný výkon (W) | 497 |494 | 489 | 496 | 508 |
 | Tepelné rozptyl (BTU/hr) |1696 | 1686 | 1 669 | 1692 | 1733 |
 
@@ -106,7 +106,7 @@ Tyto grafy poskytují spotřebu energie a měření na výstupu pro běžně pou
 | Frekvence (Hz) | 60 | 60 | 60 | 50 | 50 |
 | Aktuální (A) | 5,98 | 5,01 | 2,81 | 2.55 | 2,48 |
 | Zdánlivá mocnina (VA) | 598 | 601 | 584 | 587 | 595 |
-| Faktor výkonu | 0.99 | 0.99 | 0,98 | 0,98 | 0,98 |
+| Faktor výkonu | 0.99 | 0.99 | 0.98 | 0.98 | 0.98 |
 | Skutečný výkon (W) | 592 | 595 | 573 | 575 | 583 |
 | Tepelné rozptyl (BTU/hr) | 2020 |2031 | 1954 | 1961 | 1990 |
 
@@ -116,7 +116,7 @@ Tyto grafy poskytují spotřebu energie a měření na výstupu pro běžně pou
 | Frekvence (Hz) |60 | 60 | 60 | 50 | 50 |
 | Aktuální (A) | 4.63 | 3,86 | 2.24 | 2,04 | 1,94 |
 | Zdánlivá mocnina (VA) | 463 | 463 | 466 | 469 | 466 |
-| Faktor výkonu | 0.99 | 0.99 | 0,98 | 0,98 | 0,98 | 
+| Faktor výkonu | 0.99 | 0.99 | 0.98 | 0.98 | 0.98 | 
 | Skutečný výkon (W) | 458 | 459 | 457 | 460 | 456 |
 | Tepelné rozptyl (BTU/hr) | 1564 | 1565 | 1558 | 1569 | 1557 |
 
@@ -126,7 +126,7 @@ Tyto grafy poskytují spotřebu energie a měření na výstupu pro běžně pou
 | Frekvence (Hz) | 60 | 60 | 60 | 50 | 50 |
 | Aktuální (A) | 5,15 | 4,28 | 2,48 | 2,28 | 2,13 |
 | Zdánlivá mocnina (VA) | 515 | 514 | 516 | 524 | 511 |
-| Faktor výkonu | 0.99 | 0.99 | 0,98 | 0,98 | 0,98 |
+| Faktor výkonu | 0.99 | 0.99 | 0.98 | 0.98 | 0.98 |
 | Skutečný výkon (W) | 510 | 508 | 506 | 514 | 501 |
 | Tepelné rozptyl (BTU/hr) | 1740 | 1735 | 1725 | 1753 | 1709 |
 

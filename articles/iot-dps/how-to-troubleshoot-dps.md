@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
 ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75646468"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Řešení potíží s Azure IoT Hub Device Provisioning Service
@@ -32,7 +32,7 @@ Následující postup popisuje, jak zobrazit a nastavit výstrahu pro IoT Hub De
 4. Vyberte požadovanou metriku. 
    <br />V současné době existují tři metriky pro DPS:
 
-    | Název metriky | Description |
+    | Název metriky | Popis |
     |-------|------------|
     | Pokusy o ověření identity | Počet zařízení, která se pokusila ověřit pomocí služby Device Provisioning Service|
     | Pokusy o registraci | Počet zařízení, která se pokusila o registraci IoT Hub po úspěšném ověření|
@@ -58,7 +58,7 @@ Další informace najdete v tématu [co jsou klasické výstrahy v Microsoft Azu
 
 5. Povolte shromažďování požadovaných protokolů.
 
-    | Název protokolu | Description |
+    | Název protokolu | Popis |
     |-------|------------|
     | DeviceOperations | Protokoly související s událostmi připojení zařízení |
     | ServiceOperations | Protokoly událostí související s používáním sady SDK služby (např. vytvoření nebo aktualizace skupin registrací)|
@@ -75,11 +75,11 @@ Další informace najdete v tématu [co jsou klasické výstrahy v Microsoft Azu
 ## <a name="common-error-codes"></a>Běžné kódy chyb
 Pomocí této tabulky můžete pochopit a řešit běžné chyby.
 
-| Kód chyby| Description | Stavový kód HTTP |
+| Kód chyby| Popis | Stavový kód HTTP |
 |-------|------------|------------|
 | 400 | Tělo požadavku není platné. nelze jej například analyzovat nebo objekt nelze ověřit.| 400 Špatný formát |
-| 401 | Autorizační token se nedá ověřit. například vypršela platnost nebo se nevztahuje na identifikátor URI žádosti. Tento kód chyby se také vrátí do zařízení jako součást toku ověření čipem TPM. | 401 Neautorizováno|
+| 401 | Autorizační token se nedá ověřit. například vypršela platnost nebo se nevztahuje na identifikátor URI žádosti. Tento kód chyby se také vrátí do zařízení jako součást toku ověření čipem TPM. | 401 – Neautorizováno|
 | 404 | Instance služby Device Provisioning nebo prostředek (například registrace) neexistuje. |404 Nenalezeno |
 | 412 | Značka ETag v žádosti se neshoduje s ETagm existujícího prostředku, jak na RFC7232. | Předběžná podmínka 412 se nezdařila |
 | 429 | Služba omezuje operace. Omezení pro konkrétní služby najdete v tématu [omezení IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | 429 příliš mnoho požadavků |
-| 500 | Došlo k vnitřní chybě. | 500 – Interní chyba serveru|
+| 500 | Došlo k vnitřní chybě. | 500 – Vnitřní chyba serveru|

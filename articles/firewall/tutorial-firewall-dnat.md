@@ -9,10 +9,10 @@ ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 8f528c6be68258400cb3e29582943f1d657c557d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89069268"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Kurz: filtrování příchozího internetového provozu pomocí Azure Firewall DNAT pomocí Azure Portal
@@ -94,10 +94,10 @@ Teď mezi dvěma virtuálními sítěmi vytvořte partnerský vztah.
 1. Vyberte virtuální síť **centra vn** .
 2. V části **Nastavení**vyberte **partnerské vztahy**.
 3. Vyberte **Přidat**.
-4. Zadejte **peer-HubSpoke** pro **název partnerského vztahu od vn-hub do vn-paprsek**.
+4. Zadejte **peer-HubSpoke** pro **název partnerského vztahu od VN-Hub do vn-paprsek**.
 5. Jako virtuální síť vyberte **VN-Spoke**.
-6. Zadejte **peer-SpokeHub** pro **název partnerského vztahu z VN-paprsek do vn-hub**.
-7. Pro **Povolení přesměrovaného provozu z VN-paprsek na vn – výběr rozbočovače** **povolen**.
+6. Zadejte **peer-SpokeHub** pro **název partnerského vztahu od VN-Spoke do služby vn – hub**.
+7. Pro **Povolení přesměrovaného provozu od VN-Spoke do vn – vyberte rozbočovač** **povolený**.
 8. Vyberte **OK**.
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
@@ -117,7 +117,7 @@ Vytvořte virtuální počítač úloh a umístěte ho do podsítě **SN-Workloa
 1. Vyberte **Další: disky**.
 
 **Disky**
-1. Vyberte **Další: sítě**.
+1. Až skončíte, vyberte **Další: Sítě**.
 
 **Sítě**
 

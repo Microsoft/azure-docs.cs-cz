@@ -4,10 +4,10 @@ description: V tomto článku najdete odpovědi na běžné dotazy týkající s
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: dcbf1bf6b39b2afa3fb5aaf2a7f18c5d0e8e4afb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86513502"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Nejčastější dotazy – zálohování SAP HANA databází na virtuálních počítačích Azure
@@ -77,7 +77,7 @@ V současné době není k dispozici možnost k nastavení řešení pouze pro v
 
 V současné době Azure Backup nemá schopnost pochopit HSRou sadu. To znamená, že primární a sekundární uzly HSR budou považovány za dva jednotlivé nesouvisející virtuální počítače. Nejdřív budete muset nakonfigurovat zálohování na primárním uzlu. Pokud dojde k převzetí služeb při selhání, musí být záloha nakonfigurovaná na sekundárním uzlu (který se teď stane primárním uzlem). Neexistuje žádná Automatická převzetí služeb při selhání v rámci zálohování do druhého uzlu.
 
-Chcete-li zálohovat data z aktivního (primárního) uzlu v libovolném daném časovém okamžiku, můžete **Přepnout ochranu** na sekundární uzel, který se nyní stane primárním po převzetí služeb při selhání.
+Chcete-li zálohovat data z aktivního (primárního) uzlu v libovolném daném časovém okamžiku, můžete **Přepnout ochranu**  na sekundární uzel, který se nyní stane primárním po převzetí služeb při selhání.
 
 Chcete-li provést **ochranu tohoto přepínače**, postupujte podle těchto kroků:
 

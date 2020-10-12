@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 2f811c504f8871b06805d5578ed2d70c651be25d
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90029830"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT Hub
@@ -124,7 +124,7 @@ Zpráva oznámení pro zařízení:
 |operationTimestamp | ISO8601 časové razítko operace |
 |iothub-Message-Schema | deviceLifecycleNotification |
 
-Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity zařízení. Třeba
+Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity zařízení. Příklad:
 
 ```json
 {
@@ -160,7 +160,7 @@ moduleId | ID modulu |
 operationTimestamp | ISO8601 časové razítko operace |
 iothub-Message-Schema | moduleLifecycleNotification |
 
-Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity modulu. Třeba
+Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity modulu. Příklad:
 
 ```json
 {
@@ -188,7 +188,7 @@ Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identi
 
 Identity zařízení se reprezentují jako dokumenty JSON s následujícími vlastnostmi:
 
-| Vlastnost | Možnosti | Popis |
+| Vlastnost | Možnosti | Description |
 | --- | --- | --- |
 | deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |požadováno, jen pro čtení |Řetězec s rozlišováním velikosti písmen, který je v IoT Hub generovaný, je dlouhý až 128 znaků. Tato hodnota se používá k rozlišení zařízení se stejným **deviceId**, kdy byly odstraněny a znovu vytvořeny. |
@@ -212,7 +212,7 @@ Identity zařízení se reprezentují jako dokumenty JSON s následujícími vla
 
 Identity modulů jsou reprezentovány jako dokumenty JSON s následujícími vlastnostmi:
 
-| Vlastnost | Možnosti | Popis |
+| Vlastnost | Možnosti | Description |
 | --- | --- | --- |
 | deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | moduleId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |

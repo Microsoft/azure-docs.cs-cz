@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: 4de6d4ba019af75b0f6179b2794ddb6c1e35e0c1
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90030068"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Možnosti migrace místních nebo cloudových dat na Azure Cosmos DB
@@ -40,10 +40,10 @@ Následující faktory určují, jakým způsobem Nástroj pro migraci zvolíte:
 
 ## <a name="azure-cosmos-db-sql-api"></a>Rozhraní API služby Azure Cosmos DB pro SQL
 
-|Typ migrace|Řešení|Podporované zdroje|Podporované cíle|Požadavky|
+|Typ migrace|Řešení|Podporované zdroje|Podporované cíle|Důležité informace|
 |---------|---------|---------|---------|---------|
-|Offline|[Nástroj pro migraci dat](import-data.md)| &bull;Soubory JSON/CSV<br/>&bull;Rozhraní API služby Azure Cosmos DB pro SQL<br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;Table Storage<br/>&bull;AWS DynamoDB<br/>&bull;Blob Storage Azure|&bull;Rozhraní API služby Azure Cosmos DB pro SQL<br/>&bull;Rozhraní API pro Azure Cosmos DB tabulky<br/>&bull;Soubory JSON |&bull; Snadné nastavení a podpora více zdrojů. <br/>&bull; Není vhodné pro velké datové sady.|
-|Offline|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)| &bull;Soubory JSON/CSV<br/>&bull;Rozhraní API služby Azure Cosmos DB pro SQL<br/>&bull;Rozhraní API služby Azure Cosmos DB pro MongoDB<br/>&bull;MongoDB <br/>&bull;SQL Server<br/>&bull;Table Storage<br/>&bull;Blob Storage Azure <br/> <br/>Další podporované zdroje najdete v článku o [Azure Data Factory](../data-factory/connector-overview.md) .|&bull;Rozhraní API služby Azure Cosmos DB pro SQL<br/>&bull;Rozhraní API služby Azure Cosmos DB pro MongoDB<br/>&bull;Soubory JSON <br/><br/> Další podporované cíle najdete v článku o [Azure Data Factory](../data-factory/connector-overview.md) . |&bull; Snadné nastavení a podpora více zdrojů.<br/>&bull; Využívá knihovnu hromadných prováděcích knihoven Azure Cosmos DB. <br/>&bull; Vhodné pro velké datové sady. <br/>&bull; Nedostatek kontrolního bodu – znamená to, že pokud během migrace dojde k problému, budete muset celý proces migrace restartovat.<br/>&bull; Nedostatek fronty nedoručených zpráv – znamená, že několik chybných souborů může zastavit celý proces migrace.|
+|Offline|[Nástroj pro migraci dat](import-data.md)| &bull;Soubory JSON/CSV<br/>&bull;Rozhraní API služby Azure Cosmos DB pro SQL<br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;Table Storage<br/>&bull;AWS DynamoDB<br/>&bull;Azure Blob Storage|&bull;Rozhraní API služby Azure Cosmos DB pro SQL<br/>&bull;Rozhraní API pro Azure Cosmos DB tabulky<br/>&bull;Soubory JSON |&bull; Snadné nastavení a podpora více zdrojů. <br/>&bull; Není vhodné pro velké datové sady.|
+|Offline|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)| &bull;Soubory JSON/CSV<br/>&bull;Rozhraní API služby Azure Cosmos DB pro SQL<br/>&bull;Rozhraní API služby Azure Cosmos DB pro MongoDB<br/>&bull;MongoDB <br/>&bull;SQL Server<br/>&bull;Table Storage<br/>&bull;Azure Blob Storage <br/> <br/>Další podporované zdroje najdete v článku o [Azure Data Factory](../data-factory/connector-overview.md) .|&bull;Rozhraní API služby Azure Cosmos DB pro SQL<br/>&bull;Rozhraní API služby Azure Cosmos DB pro MongoDB<br/>&bull;Soubory JSON <br/><br/> Další podporované cíle najdete v článku o [Azure Data Factory](../data-factory/connector-overview.md) . |&bull; Snadné nastavení a podpora více zdrojů.<br/>&bull; Využívá knihovnu hromadných prováděcích knihoven Azure Cosmos DB. <br/>&bull; Vhodné pro velké datové sady. <br/>&bull; Nedostatek kontrolního bodu – znamená to, že pokud během migrace dojde k problému, budete muset celý proces migrace restartovat.<br/>&bull; Nedostatek fronty nedoručených zpráv – znamená, že několik chybných souborů může zastavit celý proces migrace.|
 |Offline|[Konektor Spark Azure Cosmos DB](spark-connector.md)|Azure Cosmos DB rozhraní SQL API. <br/><br/>Další zdroje můžete použít s dalšími konektory z ekosystému Spark.| Azure Cosmos DB rozhraní SQL API. <br/><br/>Další cíle můžete použít s dalšími konektory z ekosystému Spark.| &bull; Využívá knihovnu hromadných prováděcích knihoven Azure Cosmos DB. <br/>&bull; Vhodné pro velké datové sady. <br/>&bull; Potřebuje vlastní nastavení Sparku. <br/>&bull; Spark je citlivý na nekonzistence schématu a může se jednat o problém při migraci. |
 |Offline|[Vlastní nástroj s Cosmos DB knihovny hromadného prováděcího modulu](migrate-cosmosdb-data.md)| Zdroj závisí na vlastním kódu. | Rozhraní API služby Azure Cosmos DB pro SQL| &bull; Poskytuje funkce pro vytváření kontrolních bodů a možnosti neaktivních zpráv, které zvyšují odolnost migrace. <br/>&bull; Vhodné pro velmi velké datové sady (10 TB +).  <br/>&bull; Vyžaduje vlastní nastavení tohoto nástroje spouštěného jako App Service. |
 |Online|[Cosmos DB Functions + rozhraní API ChangeFeed](change-feed-functions.md)| Rozhraní API služby Azure Cosmos DB pro SQL | Rozhraní API služby Azure Cosmos DB pro SQL| &bull; Snadné nastavení. <br/>&bull; Funguje pouze v případě, že zdrojem je Azure Cosmos DB kontejner. <br/>&bull; Není vhodné pro velké datové sady. <br/>&bull; Nezachycuje odstranění ze zdrojového kontejneru. |
@@ -52,16 +52,16 @@ Následující faktory určují, jakým způsobem Nástroj pro migraci zvolíte:
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Rozhraní API pro Azure Cosmos DB Mongo
 
-|Typ migrace|Řešení|Podporované zdroje|Podporované cíle|Požadavky|
+|Typ migrace|Řešení|Podporované zdroje|Podporované cíle|Důležité informace|
 |---------|---------|---------|---------|---------|
 |Online|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)| MongoDB|Rozhraní API služby Azure Cosmos DB pro MongoDB |&bull; Využívá knihovnu hromadných prováděcích knihoven Azure Cosmos DB. <br/>&bull; Vhodné pro velké datové sady a postará se o replikaci živých změn. <br/>&bull; Funguje pouze s jinými MongoDB zdroji.|
 |Offline|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)| MongoDB| Rozhraní API služby Azure Cosmos DB pro MongoDB| &bull; Využívá knihovnu hromadných prováděcích knihoven Azure Cosmos DB. <br/>&bull; Vhodné pro velké datové sady a postará se o replikaci živých změn. <br/>&bull; Funguje pouze s jinými MongoDB zdroji.|
-|Offline|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)| &bull;Soubory JSON/CSV<br/>&bull;Rozhraní API služby Azure Cosmos DB pro SQL<br/>&bull;Rozhraní API služby Azure Cosmos DB pro MongoDB <br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;Table Storage<br/>&bull;Blob Storage Azure <br/><br/> Další podporované zdroje najdete v článku o [Azure Data Factory](../data-factory/connector-overview.md) . | &bull;Rozhraní API služby Azure Cosmos DB pro SQL<br/>&bull;Rozhraní API služby Azure Cosmos DB pro MongoDB <br/>&bull; Soubory JSON <br/><br/> Další podporované cíle najdete v článku o [Azure Data Factory](../data-factory/connector-overview.md) .| &bull; Snadné nastavení a podpora více zdrojů. <br/>&bull; Využívá knihovnu hromadných prováděcích knihoven Azure Cosmos DB. <br/>&bull; Vhodné pro velké datové sady. <br/>&bull; Nedostatečná kontrolní bod znamená, že při migraci by se vyžadovalo restartování celého procesu migrace.<br/>&bull; Nedostatku fronty nedoručených zpráv by znamenalo, že několik chybných souborů může zastavit celý proces migrace. <br/>&bull; Potřebuje vlastní kód pro zvýšení propustnosti čtení pro určité zdroje dat.|
+|Offline|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)| &bull;Soubory JSON/CSV<br/>&bull;Rozhraní API služby Azure Cosmos DB pro SQL<br/>&bull;Rozhraní API služby Azure Cosmos DB pro MongoDB <br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;Table Storage<br/>&bull;Azure Blob Storage <br/><br/> Další podporované zdroje najdete v článku o [Azure Data Factory](../data-factory/connector-overview.md) . | &bull;Rozhraní API služby Azure Cosmos DB pro SQL<br/>&bull;Rozhraní API služby Azure Cosmos DB pro MongoDB <br/>&bull; Soubory JSON <br/><br/> Další podporované cíle najdete v článku o [Azure Data Factory](../data-factory/connector-overview.md) .| &bull; Snadné nastavení a podpora více zdrojů. <br/>&bull; Využívá knihovnu hromadných prováděcích knihoven Azure Cosmos DB. <br/>&bull; Vhodné pro velké datové sady. <br/>&bull; Nedostatečná kontrolní bod znamená, že při migraci by se vyžadovalo restartování celého procesu migrace.<br/>&bull; Nedostatku fronty nedoručených zpráv by znamenalo, že několik chybných souborů může zastavit celý proces migrace. <br/>&bull; Potřebuje vlastní kód pro zvýšení propustnosti čtení pro určité zdroje dat.|
 |Offline|[Existující nástroje Mongo (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|MongoDB | Rozhraní API služby Azure Cosmos DB pro MongoDB| &bull; Snadné nastavení a integrace. <br/>&bull; Vyžaduje vlastní zpracování pro omezení.|
 
 ## <a name="azure-cosmos-db-cassandra-api"></a>API Cassandra v Azure Cosmos DB
 
-|Typ migrace|Řešení|Podporované zdroje|Podporované cíle|Požadavky|
+|Typ migrace|Řešení|Podporované zdroje|Podporované cíle|Důležité informace|
 |---------|---------|---------|---------|---------|
 |Offline|[cqlsh kopírování příkazu](cassandra-import-data.md#migrate-data-using-cqlsh-copy-command)|Soubory CSV | API Cassandra v Azure Cosmos DB| &bull; Snadné nastavení. <br/>&bull; Není vhodné pro velké datové sady. <br/>&bull; Funguje pouze v případě, že zdrojem je tabulka Cassandra.|
 |Offline|[Kopírovat tabulku pomocí Sparku](cassandra-import-data.md#migrate-data-using-spark) | &bull;Apache Cassandra<br/>&bull;API Cassandra v Azure Cosmos DB| API Cassandra v Azure Cosmos DB | &bull; Může využívat možnosti Sparku k paralelizovat transformaci a ingestování. <br/>&bull; Vyžaduje konfiguraci s vlastní zásadou opakování pro zpracování omezení.|
@@ -77,7 +77,7 @@ V případě jiných rozhraní API, než je rozhraní API SQL, Mongo API a rozhr
 * [Nástroj pro migraci dat](table-import.md#data-migration-tool)
 * [AzCopy](table-import.md#migrate-data-by-using-azcopy)
 
-**Rozhraní API pro Gremlin**
+**Rozhraní Gremlin API**
 
 * [Knihovna hromadného prováděcího modulu grafu](bulk-executor-graph-dotnet.md)
 * [Gremlin Spark](https://github.com/Azure/azure-cosmosdb-spark/blob/2.4/samples/graphframes/main.scala) 

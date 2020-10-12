@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 08/25/2020
 ms.openlocfilehash: 2dca0ae02f2d079e98b51e1222114db1f2104b96
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90030793"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Použití služby Azure Table Storage ke správě zájemců komerčních webů na webu Marketplace
@@ -38,7 +38,7 @@ Pokud se v partnerském centru pro příjem Microsoft AppSource a Azure Marketpl
 
 1. Na **domovské** stránce Azure Portal vyberte **Zobrazit všechny prostředky** pro přístup k účtu úložiště. Můžete také vybrat **všechny prostředky** z levého řádku nabídky Azure Portal.
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Přístup k účtu služby Azure Storage.":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Postup vytvoření účtu služby Azure Storage.":::
 
 1. V podokně účtu úložiště vyberte **přístupové klíče** a zkopírujte hodnotu **připojovacího řetězce** pro tento klíč. Tuto hodnotu uložte, protože se jedná o hodnotu **připojovacího řetězce účtu úložiště** , kterou budete muset zadat na portálu pro publikování a získat tak zájemce pro vaši nabídku Azure Marketplace.
 
@@ -48,7 +48,7 @@ Pokud se v partnerském centru pro příjem Microsoft AppSource a Azure Marketpl
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.screens.net
     ```
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Klíč úložiště Azure.":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Postup vytvoření účtu služby Azure Storage.":::
 
 
 1. V podokně účtu úložiště vyberte **tabulky**a vyberte **+ tabulka** pro vytvoření tabulky. Zadejte název tabulky a vyberte **OK**. Tuto hodnotu uložte, protože ji budete potřebovat, pokud chcete nakonfigurovat tok, který bude dostávat e-mailová oznámení při přijetí zájemců.
@@ -185,7 +185,7 @@ Až budete připraveni ke konfiguraci informací o správě zájemců pro vaši 
 
 1. V části **zájemci pro zákazníky** vyberte **připojit**.
 
-    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Potenciální zákazníci":::
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Postup vytvoření účtu služby Azure Storage.":::
 
 1. V místním okně **Podrobnosti připojení** vyberte pro **cíl zájemce**možnost **tabulka Azure** . 
      ![Řízení vedoucích, podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)

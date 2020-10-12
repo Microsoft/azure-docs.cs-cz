@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
 ms.openlocfilehash: 5eaf17281fef32d682a2dac17b379faf7ec23a53
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970079"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Použití editoru Video Indexer k vytváření projektů
@@ -55,7 +55,7 @@ Tento článek ukazuje, jak vytvořit projekt od začátku a také jak vytvořit
 
     Výsledky můžete dál filtrovat tak, že vyberete **výsledky filtrování**. Můžete filtrovat tak, aby zobrazovala videa, která mají určitou osobu, nebo aby bylo možné určit, že chcete zobrazit jenom výsledky videa, které jsou v určitém jazyce, nebo jestli mají konkrétního vlastníka. <br/> Můžete také zadat rozsah dotazu. Pokud například chcete v OCR vyhledat "GitHub", vyberte **vizuální text**.
 
-    ![Filtrovat](./media/video-indexer-view-edit/visual-text.png)
+    ![Filtrování](./media/video-indexer-view-edit/visual-text.png)
 
     Do dotazu můžete převrstvit více filtrů. Pomocí **+** / **-** tlačítek můžete přidat nebo odebrat filtry. Pomocí **Vymazat filtry** odeberte všechny filtry.
 1. Pokud chcete přidat videa, vyberte je a pak vyberte **Přidat**.

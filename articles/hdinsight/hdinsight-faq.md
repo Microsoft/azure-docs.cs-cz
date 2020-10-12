@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84022210"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Nejčastější dotazy
@@ -190,7 +190,7 @@ V případě požadavků auditování doporučuje společnost Microsoft povolit 
 
 ### <a name="can-i-disable-clamscan-on-my-cluster"></a>Můžu `Clamscan` v clusteru zakázat?
 
-`Clamscan`je antivirový software, který běží na clusteru HDInsight a používá ho Azure Security (azsecd) k ochraně vašich clusterů před útoky z antivirového programu. Společnost Microsoft důrazně doporučuje, aby uživatelé neprováděli změny ve výchozí `Clamscan` konfiguraci.
+`Clamscan` je antivirový software, který běží na clusteru HDInsight a používá ho Azure Security (azsecd) k ochraně vašich clusterů před útoky z antivirového programu. Společnost Microsoft důrazně doporučuje, aby uživatelé neprováděli změny ve výchozí `Clamscan` konfiguraci.
 
 Tento proces není v konfliktu s jinými procesy nebo z nich nebere žádný cyklus. Bude vždycky vracet na jiný proces. Špičky procesoru od `Clamscan` by se měly zobrazit jenom v případě, že je systém nečinný.  
 
@@ -227,7 +227,7 @@ Nastavení můžete najít v **Data Lake Storage Gen1 přístupu** ve vlastnoste
 
 Proveďte jednu z následujících akcí:
 
-- [Použití prostředí PowerShell](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
+- [Použití PowerShellu](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
 
 - Najít velikost */User/Hive/. Odpadkový koš nebo* složka v clusteru HDInsight pomocí následujícího příkazového řádku:
   

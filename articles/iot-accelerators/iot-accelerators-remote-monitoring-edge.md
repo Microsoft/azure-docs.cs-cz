@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 43ba14845765230b9a54c2b34dbc7ccd53af950b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90969992"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Kurz: zjištění anomálií na hraničních zařízeních pomocí akcelerátoru řešení vzdáleného monitorování
@@ -315,7 +315,7 @@ Pokud chcete po dosažení prahové hodnoty oznamovat operátory, můžete vytvo
     | Možnost | Hodnota |
     | ------ | ----- |
     | Název pravidla | Teplota olejového čerpadla |
-    | Description | Teplota olejového čerpadla překročila 300. |
+    | Popis | Teplota olejového čerpadla překročila 300. |
     | Skupina zařízení | OilPumps |
     | Výpočet | Okamžitě |
     | Pole | teplota |

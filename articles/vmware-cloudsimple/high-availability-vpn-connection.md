@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77025261"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Konfigurace připojení s vysokou dostupností z místního prostředí do CloudSimple VPN Gateway
@@ -44,7 +44,7 @@ Pokud chcete na vnějším rozhraní povolit fázi 1 (IKEv1), zadejte následuj�
 
 ### <a name="2-create-an-ikev1-policy"></a>2. vytvoření zásady IKEv1
 
-Vytvořte zásady IKEv1, které definují algoritmy a metody, které se mají použít k výpočtu hodnoty hash, ověřování, skupiny Diffie-Hellman, životnosti a šifrování.
+Vytvořte zásady IKEv1, které definují algoritmy a metody, které se mají použít k výpočtu hodnoty hash, ověřování, Diffie-Hellman skupiny, životnosti a šifrování.
 
 ```
 crypto ikev1 policy 1
@@ -184,7 +184,7 @@ Vyberte **síť**  >  **rozbalte položku profily sítě**  >  **IKE šifrován�
 
 * Název. Zadejte libovolný název kryptografického profilu protokolu IKE.
 * Skupina DH. Klikněte na **Přidat** a vyberte příslušnou skupinu DH.
-* Šifrování. Klikněte na tlačítko **Přidat** a vyberte příslušnou metodu šifrování.
+* Šifrování Klikněte na tlačítko **Přidat** a vyberte příslušnou metodu šifrování.
 * ověřování Klikněte na tlačítko **Přidat** a vyberte příslušnou metodu ověřování.
 * Životnost klíče. Ponechte výchozí hodnoty.
 * Ověřování IKEv2 – vícenásobné Ponechte výchozí hodnoty.
@@ -228,7 +228,7 @@ Vyberte **síť**  >  **rozbalte položku profily sítě**  >  **IPSec šifrová
 
 * Název. Zadejte název kryptografického profilu IPsec.
 * Protokol IPsec. Vyberte možnost **ESP**.
-* Šifrování. Klikněte na tlačítko **Přidat** a vyberte příslušnou metodu šifrování.
+* Šifrování Klikněte na tlačítko **Přidat** a vyberte příslušnou metodu šifrování.
 * ověřování Klikněte na tlačítko **Přidat** a vyberte příslušnou metodu ověřování.
 * Skupina DH. Vyberte možnost **ne-PFS**.
 * Platné. Nastaví se na 30 minut.

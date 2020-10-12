@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: b0df359a25810f09d530b5f0cca9cabbd485c795
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89461980"
 ---
 # <a name="data-warehouse-units-dwus"></a>Jednotky datového skladu (DWU)
@@ -108,7 +108,7 @@ Chcete-li zobrazit aktuální nastavení DWU:
 
 1. Otevřete Průzkumník objektů systému SQL Server v aplikaci Visual Studio.
 2. Připojte se k hlavní databázi přidružené k logickému SQL serveru.
-3. Vyberte ze zobrazení dynamické správy sys. database_service_objectives. Tady je příklad:
+3. Vyberte v zobrazení dynamické správy sys.database_service_objectives. Tady je příklad:
 
 ```sql
 SELECT  db.name [Database]

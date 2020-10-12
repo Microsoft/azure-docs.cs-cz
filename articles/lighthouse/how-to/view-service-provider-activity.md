@@ -4,10 +4,10 @@ description: Zákazníci si můžou zobrazit protokolované aktivity a zobrazit 
 ms.date: 07/07/2020
 ms.topic: how-to
 ms.openlocfilehash: 0c92fc9b45d17e37fb3721d9cf087c5e7a62f6d7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86131468"
 ---
 # <a name="view-service-provider-activity"></a>Zobrazení aktivity poskytovatele služeb
@@ -17,7 +17,7 @@ Zákazníci, kteří mají delegované předplatné pro [Azure Lighthouse](../ov
 > [!TIP]
 > Poskytujeme také Azure Policy vestavěnou definici zásad pro auditování delegování oborů do spravovaného tenanta. Další informace najdete v tématu [auditování delegování ve vašem prostředí](view-manage-service-providers.md#audit-delegations-in-your-environment).
 
-## <a name="view-activity-log-data"></a>Zobrazit data protokolu aktivit
+## <a name="view-activity-log-data"></a>Zobrazení dat protokolu aktivit
 
 [Protokol aktivit můžete zobrazit](../../azure-monitor/platform/activity-log.md#view-the-activity-log) v nabídce **monitorování** v Azure Portal. Pokud chcete výsledky omezit na konkrétní předplatné, použijte filtry k výběru konkrétního předplatného. [Události protokolu aktivit můžete také zobrazit a načíst](../../azure-monitor/platform/activity-log.md#view-the-activity-log) programově.
 

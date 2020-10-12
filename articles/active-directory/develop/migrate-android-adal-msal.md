@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77084049"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Příručka k migraci ADAL do MSAL pro Android
@@ -46,8 +46,8 @@ Veřejné rozhraní API MSAL přináší důležité změny, včetně:
   - Po dobu běhu již nejsou ověřeny autority. Místo toho vývojář deklaruje seznam známých autorit během vývoje.
 - Změny rozhraní API tokenu:
   - V ADAL `AcquireToken()` nejprve vytvoří tichý požadavek. V takovém případě se to provede interaktivním požadavkem. Výsledkem tohoto chování je, že někteří vývojáři se spoléhají jenom na `AcquireToken` , což by způsobilo, že se uživatel neočekávaně vyzve k zadání přihlašovacích údajů. MSAL vyžaduje, aby vývojáři byli úmyslné, kdy uživatel obdrží výzvu k zadání uživatelského rozhraní.
-    - `AcquireTokenSilent`vždy má za následek tichou žádost, která se buď zdaří, nebo selže.
-    - `AcquireToken`vždy má za následek požadavek, který vyzývá uživatele prostřednictvím uživatelského rozhraní.
+    - `AcquireTokenSilent` vždy má za následek tichou žádost, která se buď zdaří, nebo selže.
+    - `AcquireToken` vždy má za následek požadavek, který vyzývá uživatele prostřednictvím uživatelského rozhraní.
 - MSAL podporuje přihlášení buď z výchozího prohlížeče, nebo z vloženého webového zobrazení:
   - Ve výchozím nastavení se použije výchozí prohlížeč v zařízení. Díky tomu může MSAL používat stav ověřování (soubory cookie), které už mohou být k dispozici pro jeden nebo více přihlášených účtů. Pokud není k dispozici žádný stav ověřování, ověřování během autorizace prostřednictvím MSAL má za následek vytvoření stavu ověřování (cookies) pro výhody dalších webových aplikací, které budou použity ve stejném prohlížeči.
 - Nový model výjimky:
@@ -150,7 +150,7 @@ V takovém případě se platforma Microsoft Identity liší od finanční insti
 
 Sam funguje pro Contoso.com, ale spravuje virtuální počítače Azure, které patří do Fabrikam.com. Aby mohl správce Sam spravovat virtuální počítače společnosti Fabrikam, musí mít oprávnění pro přístup k nim. Tento přístup je možné udělit přidáním účtu SAM do Fabrikam.com a přidělením jeho účtu roli, která mu umožní pracovat s virtuálními počítači. To se provádí s Azure Portal.
 
-Když se účet Contoso.com účtu SAM přidá jako člen služby Fabrikam.com, vytvoří se nový záznam v Azure Active Directory Fabrikam. com pro Sam. Záznam Sam v Azure Active Directory je známý jako objekt uživatele. V takovém případě by objekt uživatele odkazoval zpátky na objekt uživatele Sam v Contoso.com. Objekt uživatele Fabrikam Sam je místní reprezentace Sam a slouží k ukládání informací o účtu přidruženém k Sam v kontextu Fabrikam.com. V Contoso.com je název SAM hlavní DevOps konzultant. Ve společnosti Fabrikam je název SAM dodavatelem Virtual Machines. V Contoso.com není pro správu virtuálních počítačů správce Sam zodpovědný ani autorizovaný. V Fabrikam.com se jedná o jeho jedinou pracovní funkci. I když Sam stále obsahuje jenom jednu sadu přihlašovacích údajů, která bude sledovat, které přihlašovací údaje vystavil Contoso.com.
+Když se účet Contoso.com účtu SAM přidá jako člen služby Fabrikam.com, vytvoří se nový záznam v Azure Active Directory Fabrikam. com pro Sam. Záznam Sam v Azure Active Directory je známý jako objekt uživatele. V takovém případě by objekt uživatele odkazoval zpátky na objekt uživatele Sam v Contoso.com. Objekt uživatele Fabrikam Sam je místní reprezentace Sam a slouží k ukládání informací o účtu přidruženém k Sam v kontextu Fabrikam.com. V Contoso.com je název SAM hlavní DevOps konzultant. Ve společnosti Fabrikam je název SAM Contractor-Virtual počítačů. V Contoso.com není pro správu virtuálních počítačů správce Sam zodpovědný ani autorizovaný. V Fabrikam.com se jedná o jeho jedinou pracovní funkci. I když Sam stále obsahuje jenom jednu sadu přihlašovacích údajů, která bude sledovat, které přihlašovací údaje vystavil Contoso.com.
 
 Po úspěšném `acquireToken` volání se zobrazí odkaz na `IAccount` objekt, který lze použít v pozdějších `acquireTokenSilent` požadavcích.
 
@@ -240,7 +240,7 @@ V MSAL existuje hierarchie výjimek a každá má vlastní sadu souvisejících 
 
 Seznam výjimek MSAL
 
-|Výjimka  | Description  |
+|Výjimka  | Popis  |
 |---------|---------|
 | `MsalException`     | Výchozí vyzkoušená výjimka vyvolaná nástrojem MSAL.  |
 | `MsalClientException`     | Vyvolána, pokud se jedná o chybu na straně klienta. |

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/20/2020
 ms.author: ilayr
 ms.openlocfilehash: d9e23e74cd980ecf44cd04ad2b6f89dc6a4cf868
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76548191"
 ---
 Následující tabulka popisuje maximální limity pro clustery Azure Průzkumník dat.
@@ -22,7 +22,7 @@ Následující tabulka popisuje maximální limity pro clustery Azure Průzkumn�
 
 Následující tabulka popisuje omezení operací správy prováděných v clusterech Azure Průzkumník dat.
 
-| Obor | Operace | Omezení |
+| Rozsah | Operace | Omezení |
 | --- | --- | --- |
 | Cluster | čtení (například získání clusteru) | 500 za 5 minut |
 | Cluster | zápis (například vytvoření databáze) | 1000 za hodinu |

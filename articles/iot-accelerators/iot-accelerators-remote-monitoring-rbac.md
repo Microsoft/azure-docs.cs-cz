@@ -10,10 +10,10 @@ ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: 817bc7624bb3a6b69d56265e40681287b7fc09fa
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90969591"
 ---
 # <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>Konfigurace řízení přístupu na základě role v akcelerátoru řešení vzdáleného monitorování
@@ -52,7 +52,7 @@ Ve výchozím nastavení se uživateli, který toto řešení nasadí, automatic
 
 Jako vlastník aplikace Azure Active Directory můžete pomocí Azure Portal přidat nebo odebrat uživatele k roli z řešení vzdáleného monitorování. Následující kroky používají [Azure Active Directory podnikovou aplikaci](../active-directory/manage-apps/view-applications-portal.md) , která byla vytvořena při nasazení řešení vzdáleného monitorování.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Ověřte, že se [uživatel nachází v adresáři](../active-directory/fundamentals/add-users-azure-active-directory.md) , který používáte. Zvolili jste adresář, který se má použít, když jste přihlášeni k webu [akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators) . Název adresáře je viditelný v pravém horním rohu [stránky](https://www.azureiotsolutions.com/Accelerators).
 
@@ -92,7 +92,7 @@ Následující postup popisuje, jak přidat roli do aplikace v Azure Active Dire
 
 1. Vyhledejte v Azure Portal **registraci aplikace** pro vaše řešení. Název aplikace je název vašeho řešení vzdáleného monitorování. Na následujícím snímku obrazovky jsou zobrazované názvy řešení a aplikace **Contoso-RM4**.
 
-    ![Registrace aplikace](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
+    ![Registrace aplikací](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
 1. Vyberte svou aplikaci a pak klikněte na **manifest**. Můžete si zobrazit dvě existující [role aplikace](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) definované pro aplikaci:
 

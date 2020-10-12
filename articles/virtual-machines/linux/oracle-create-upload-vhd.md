@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/10/2019
 ms.author: guybo
 ms.openlocfilehash: 97fd61614eff05ddc542dbe17cf199663ab4cf1b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87371902"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Oracle Linux pro Azure
@@ -137,7 +137,7 @@ Příprava virtuálního počítače s Oracle Linux 7 pro Azure je velmi podobn�
 * GRUB2 se teď používá jako výchozí zaváděcí program pro spouštění, takže se změnil postup pro úpravu parametrů jádra (viz níže).
 * XFS je teď výchozím systémem souborů. Systém souborů ext4 se může v případě potřeby i nadále použít.
 
-**Postup konfigurace**
+**Kroky konfigurace**
 
 1. Ve Správci technologie Hyper-V vyberte virtuální počítač.
 2. Kliknutím na **připojit** otevřete okno konzoly pro virtuální počítač.

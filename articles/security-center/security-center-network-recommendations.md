@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
 ms.openlocfilehash: 868470292fbacd71e1eb2d39de7e3a9c5cf6900e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883895"
 ---
 # <a name="protect-your-network-resources"></a>Ochrana síťových prostředků
@@ -48,7 +48,7 @@ Otevření mapy sítě:
 
 1. V nabídce Security Center otevřete řídicí panel Azure Defender a vyberte **Mapa sítě**.
 
-    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Otevření mapy sítě z řídicího panelu Azure Defenderu" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Typy síťových prostředků inventáře prostředků" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
 
 1. Vyberte nabídku **vrstvy** a zvolte možnost **topologie**.
  

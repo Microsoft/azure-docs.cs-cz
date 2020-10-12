@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9a32cd4db9a4c4dbd2b5f36c16feef4717790c3c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291462"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Živé události a živé výstupy v Media Services
@@ -60,7 +60,7 @@ Podívejte se na příklad kódu .NET v [MediaV3LiveApp](https://github.com/Azur
 
 ![živé kódování pomocí Media Services ukázkový diagram](./media/live-streaming/live-encoding.svg)
 
-Pokud používáte živé kódování s Media Services, nakonfigurujete místní kodér Live Encoder tak, aby odesílal video s jednou přenosovou rychlostí jako kanál příspěvků na živou událost (pomocí RTMP nebo fragmentu protokolu-MP4). Pak nastavíte živou událost tak, aby se zakódujíy příchozí datový proud s jednou přenosovou rychlostí do [více datových streamů s více přenosovými rychlostmi](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), a výstup bude dostupný pro doručování do zařízení přes protokoly, jako je MPEG-pomlčka, HLS a Smooth Streaming.
+Pokud používáte živé kódování s Media Services, nakonfigurujete místní kodér Live Encoder k odeslání videa s jednou přenosovou rychlostí jako kanálu příspěvků do živé události (pomocí RTMP nebo Fragmented-Mp4ho protokolu). Pak nastavíte živou událost tak, aby se zakódujíy příchozí datový proud s jednou přenosovou rychlostí do [více datových streamů s více přenosovými rychlostmi](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), a výstup bude dostupný pro doručování do zařízení přes protokoly, jako je MPEG-pomlčka, HLS a Smooth Streaming.
 
 Při použití živého kódování můžete odeslat kanál příspěvku pouze v rozlišení až do rozlišení 1080p za snímkovou rychlostí 30 snímků za sekundu a s použitím kodeku H. 264/AVC a zvukového kodeku AAC (AAC-LC, HE-AACv1 nebo AACv2). Upozorňujeme, že průchozí živé události můžou podporovat řešení až 4K na 60 snímků za sekundu. Další informace naleznete v tématu [porovnání typů událostí typu Live](live-event-types-comparison.md).
 

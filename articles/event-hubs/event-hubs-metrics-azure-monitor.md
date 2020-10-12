@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o tom, jak pomocí monitorován�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 7ad570a41fd9dfff01e3a1da6b2d309a7a8464cc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88931144"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Metriky Azure Event Hubs ve službě Azure Monitor
@@ -50,7 +50,7 @@ Všechny hodnoty metrik jsou odesílány do Azure Monitor každou minutu. Časov
 
 Spočítá počet požadavků na data a operace správy.
 
-| Název metriky | Popis |
+| Název metriky | Description |
 | ------------------- | ----------------- |
 | Příchozí žádosti  | Počet požadavků provedených ve službě Azure Event Hubs v zadaném období. <br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName |
 | Úspěšné požadavky    | Počet úspěšných požadavků provedených ve službě Azure Event Hubs v zadaném období. <br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName |
@@ -60,13 +60,13 @@ Spočítá počet požadavků na data a operace správy.
 
 ## <a name="throughput-metrics"></a>Metriky propustnosti
 
-| Název metriky | Popis |
+| Název metriky | Description |
 | ------------------- | ----------------- |
 |Omezené žádosti |Počet žádostí, které byly omezeny, protože bylo překročeno použití jednotek propustnosti.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
 
 ## <a name="message-metrics"></a>Metriky zpráv
 
-| Název metriky | Popis |
+| Název metriky | Description |
 | ------------------- | ----------------- |
 |Příchozí zprávy |Počet událostí nebo zpráv odeslaných do Event Hubs v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
 |Odchozí zprávy |Počet událostí nebo zpráv načtených z Event Hubs v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
@@ -75,7 +75,7 @@ Spočítá počet požadavků na data a operace správy.
 
 ## <a name="connection-metrics"></a>Metriky připojení
 
-| Název metriky | Popis |
+| Název metriky | Description |
 | ------------------- | ----------------- |
 |ActiveConnections |Počet aktivních připojení v oboru názvů i u entity.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
 |Otevřená připojení |Počet otevřených připojení.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
@@ -85,7 +85,7 @@ Spočítá počet požadavků na data a operace správy.
 
 Pokud povolíte funkci Capture pro centra událostí, můžete sledovat metriky Event Hubs zachycení. Následující metriky popisují, co můžete monitorovat s povoleným zachytáváním.
 
-| Název metriky | Popis |
+| Název metriky | Description |
 | ------------------- | ----------------- |
 |Backlog zachytávání |Počet bajtů, které se ještě mají zachytit do vybraného cíle.<br/><br/> Jednotka: bajtů <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
 |Zachycené zprávy |Počet zpráv nebo událostí, které jsou zachyceny do vybraného cíle v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
@@ -95,7 +95,7 @@ Pokud povolíte funkci Capture pro centra událostí, můžete sledovat metriky 
 
 Azure Event Hubs podporuje pro metriky v Azure Monitor následující dimenze. Přidávání dimenzí do metrik je volitelné. Pokud dimenze nepřidáte, jsou metriky zadány na úrovni oboru názvů. 
 
-| Název metriky | Popis |
+| Název metriky | Description |
 | ------------------- | ----------------- |
 |EntityName| Event Hubs podporuje entity centra událostí pod oborem názvů.|
 

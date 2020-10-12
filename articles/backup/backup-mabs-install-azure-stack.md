@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak pomocí Azure Backup Server chrá
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970242"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
@@ -29,9 +29,9 @@ Azure Backup Server chrání následující Azure Stack úlohy virtuálních po�
 | Windows Server 2012 R2 – Datacenter/Enterprise/Standard | Svazky, soubory a složky |
 | Windows Server 2012 – Datacenter/Enterprise/Standard | Svazky, soubory a složky |
 | Windows Server 2008 R2 – Datacenter/Enterprise/Standard | Svazky, soubory a složky |
-| SQL Server 2016 | Databáze |
-| SQL Server 2014 | Databáze |
-| SQL Server 2012 SP1 | Databáze |
+| SQL Server 2016 | databáze |
+| SQL Server 2014 | databáze |
+| SQL Server 2012 SP1 | databáze |
 | SharePoint 2016 | Farma, databáze, front-end, webový server |
 | SharePoint 2013 | Farma, databáze, front-end, webový server |
 | SharePoint 2010 | Farma, databáze, front-end, webový server |
@@ -255,7 +255,7 @@ Azure Backup Server sdílí kód s Data Protection Manager. V instalačním prog
    > Doporučujeme, abyste web Windows Update přesměrování na Microsoft Update, což nabízí zabezpečení a důležité aktualizace pro Windows a další produkty, jako je Microsoft Azure Backup Server.
    >
 
-    ![Microsoft Update přihlašovací obrazovka](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
+    ![Obrazovka Microsoft Update Opt-In](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
 
 8. Zkontrolujte *Souhrn nastavení* a vyberte **nainstalovat**.
 

@@ -12,10 +12,10 @@ ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 77bb53e2605913fcee6999284acb04616efc53af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201408"
 ---
 # <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování Application Insights technického profilu ve vlastních zásadách Azure AD B2C
@@ -30,11 +30,11 @@ Azure Active Directory B2C (Azure AD B2C) podporuje odesílání dat události p
 * Vytvoří oznámení z Application Insights.
 
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protokol
 
-Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `Proprietary` . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které používá Azure AD B2C pro Application Insights:`Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `Proprietary` . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které používá Azure AD B2C pro Application Insights: `Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
-Následující příklad ukazuje běžný Application Insights technický profil. Mezi další Application Insights technické profily patří AzureInsights-Common pro využití jeho konfigurace.  
+Následující příklad ukazuje běžný Application Insights technický profil. Mezi další Application Insights technické profily patří AzureInsights-Common, která využívají jeho konfiguraci.  
 
 ```xml
 <TechnicalProfile Id="AzureInsights-Common">
@@ -75,7 +75,7 @@ Element CryptographicKeys se nepoužívá.
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| InstrumentationKey| Yes | Application Insights [klíč instrumentace](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key), který se použije pro protokolování událostí. | 
+| InstrumentationKey| Ano | Application Insights [klíč instrumentace](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key), který se použije pro protokolování událostí. | 
 | DeveloperMode| No | Logická hodnota, která označuje, zda je povolen režim pro vývojáře. Možné hodnoty: `true` nebo `false` (výchozí). Tato metadata řídí, jak jsou události ukládány do vyrovnávací paměti. Když ve vývojovém prostředí s minimálním objemem událostí povolíte vývojářský režim, budou se události odesílat okamžitě Application Insights.|  
 |DisableTelemetry |No |Logická hodnota, která označuje, zda má být povolena telemetrie. Možné hodnoty: `true` nebo `false` (výchozí).| 
 

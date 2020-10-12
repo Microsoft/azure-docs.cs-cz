@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86133823"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Nastavení zotavení po havárii pro aplikaci s více vrstvami Dynamics AX   
@@ -43,9 +43,9 @@ Pro účely vytvoření tohoto článku jsme používali virtuální počítače
 
 **Scénář** | **Do sekundární lokality** | **Do Azure**
 --- | --- | ---
-**Technologie Hyper-V** | Ano | Ano
-**Hostiteli** | Ano | Ano
-**Fyzický server** | Ano | Ano
+**Hyper-V** | Yes | Yes
+**VMware** | Yes | Yes
+**Fyzický server** | Yes | Yes
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Povolení zotavení po havárii aplikace Dynamics AX pomocí Site Recovery
 ### <a name="protect-your-dynamics-ax-application"></a>Ochrana aplikace Dynamics AX
@@ -178,7 +178,7 @@ Informace specifické pro SQL Server během navrácení služeb po obnovení naj
 
 Další informace o navrácení služeb po obnovení najdete v tématu [navrácení služeb po obnovení VMware z Azure do místního](./vmware-azure-failback.md)prostředí.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Pomocí Site Recovery můžete pro aplikaci Dynamics AX vytvořit úplný automatizovaný plán zotavení po havárii. V případě přerušení můžete převzít služby při selhání v řádu sekund odkudkoli a spustit aplikaci v řádu minut.
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: bd6afa8b3776ed48d4b25a36b2902265fa0ab5c4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269756"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Blokovat připojení vytvořená pomocí konektorů v Azure Logic Apps
@@ -111,7 +111,7 @@ Pokud již máte aplikaci logiky s připojením, které chcete blokovat, postupu
 
 Pokud chcete zcela blokovat vytváření připojení v aplikaci logiky, postupujte takto:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Do vyhledávacího pole portálu zadejte `policy` a vyberte **zásady**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Do vyhledávacího pole portálu zadejte `policy` a vyberte **zásady**.
 
    ![V Azure Portal vyhledejte a vyberte zásady.](./media/block-connections-connectors/find-select-azure-policy.png)
 
@@ -232,7 +232,7 @@ Další informace o definicích zásad Azure najdete v těchto tématech:
 
 Když vytvoříte připojení v aplikaci logiky, toto připojení existuje jako samostatný prostředek Azure. Pokud odstraníte jenom aplikaci logiky, připojení se automaticky neodstraní a bude i nadále existovat, dokud ji neodstraníte. Může nastat situace, kdy připojení již existuje nebo kde je nutné vytvořit připojení pro použití mimo aplikaci logiky. Můžete pořád zablokovat možnost použít existující připojení v aplikaci logiky tak, že vytvoříte zásadu, která znemožní ukládat aplikace logiky s omezeným nebo neschváleným připojením.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Do vyhledávacího pole portálu zadejte `policy` a vyberte **zásady**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Do vyhledávacího pole portálu zadejte `policy` a vyberte **zásady**.
 
    ![V Azure Portal vyhledejte a vyberte zásady.](./media/block-connections-connectors/find-select-azure-policy.png)
 
@@ -363,7 +363,7 @@ Pokud chcete vyzkoušet zásady, začněte vytvářet připojení pomocí konekt
 
 Tato zpráva obsahuje tyto informace:
 
-| Popis | Obsah |
+| Description | Obsah |
 |-------------|---------|
 | Důvod selhání | `"Resource 'instagram' was disallowed by policy."` |
 | Název přiřazení | `"Block Instagram connections"` |

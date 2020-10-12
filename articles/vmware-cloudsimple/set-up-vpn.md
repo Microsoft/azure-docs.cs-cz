@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77087126"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>Konfigurace připojení VPN k privátnímu cloudu CloudSimple
@@ -26,7 +26,7 @@ Brány VPN vám umožňují připojit se k CloudSimple síti z místní sítě a
 
 V oblasti můžete vytvořit jednu bránu VPN typu Site-to-site a jednu bránu VPN typu Point-to-site.
 
-## <a name="point-to-site-vpn"></a>Point-to-site VPN
+## <a name="point-to-site-vpn"></a>SÍŤ VPN typu Point-to-site
 
 Pokud chcete vytvořit bránu VPN typu Point-to-site, přečtěte si téma [Vytvoření brány VPN typu Point-to-site](vpn-gateway.md#create-point-to-site-vpn-gateway).
 
@@ -37,7 +37,7 @@ Klient VPN je potřebný pro připojení k CloudSimple z počítače.  Stáhnět
 1. Spusťte portál CloudSimple a vyberte **síť**.
 2. Vyberte **VPN Gateway**.
 3. V seznamu bran VPN klikněte na bránu VPN typu Point-to-site.
-4. Vyberte možnost **Uživatelé**.
+4. Vyberte **Uživatelé**.
 5. Klikněte na **Stáhnout konfiguraci sítě VPN** .
 
     ![Stažení konfigurace zařízení VPN](media/download-p2s-vpn-configuration.png)
