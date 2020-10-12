@@ -16,10 +16,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.custom: devx-track-java, devx-track-csharp
 ms.openlocfilehash: 13b05c17cc621660576913c08a1fdbc389365a53
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89003962"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Začínáme s použitím Notification Hubs pomocí Baidu
@@ -30,7 +30,7 @@ Nabídka cloudu Baidu představuje čínskou cloudovou službu, kterou můžete 
 
 Vzhledem k nedostupnosti obchodu Google Play a služby Firebase Cloud Messaging (FCM) v Číně je nutné pro aplikace používat jiné obchody a služby nabízených oznámení. Baidu je jednou z nich a aktuálně ji používá Centrum oznámení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu budete potřebovat:
 

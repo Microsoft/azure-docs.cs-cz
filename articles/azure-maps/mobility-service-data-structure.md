@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 02d89226bd2df4bfe5d11897199c50c702e7bc1c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88033219"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Datové struktury ve službě Azure Maps mobility
@@ -25,7 +25,7 @@ Data služby mobility se seskupují podle podporovaných oblastí Metro. Oblasti
 
 `metroID`Je ID oblasti metro, které se dá použít k volání [rozhraní API pro informace o oblasti Get Metro](https://aka.ms/AzureMapsMobilityMetroAreaInfo). Pomocí Azure Maps získat rozhraní API služby Metro pro vyžádání typů přenosů, přenosných úřadů, aktivních výstrah a dalších podrobností pro zvolenou službu Metro. Můžete si také vyžádat podporované oblasti metro a metroIDs. ID oblasti metro se mohou změnit.
 
-**metroID:** 522 **Název:** Seattle-Tacoma-Bellevue
+**metroID:** 522   **Název:** Seattle-Tacoma-Bellevue
 
 ![Praha – Metro – oblast](./media/mobility-service-data-structure/seattle-metro.png)
 

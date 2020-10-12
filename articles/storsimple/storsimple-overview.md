@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: 64f91263154f7e65238acdcef9d97e5f2d09aad5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006018"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>Série StorSimple 8000: řešení hybridního cloudového úložiště
@@ -39,7 +39,7 @@ Kromě správy úložiště vám funkce ochrany dat StorSimple umožňují vytv�
 ## <a name="why-use-storsimple"></a>Proč používat StorSimple?
 Následující tabulka popisuje některé klíčové výhody, které Microsoft Azure StorSimple poskytuje.
 
-| Funkce | Výhoda |
+| Příznak | Výhoda |
 | --- | --- |
 | Transparentní integrace |Používá protokol iSCSI k neviditelnému propojení úložných zařízení s daty. Tím se zajistí, že se data uložená v cloudu, v datacentru nebo na vzdálených serverech budou ukládat do jednoho umístění. |
 | Snížení nákladů na úložiště |Přiděluje dostatečné místní nebo cloudové úložiště pro splnění aktuálních požadavků a rozšiřuje cloudové úložiště pouze v případě potřeby. Tím se snižuje nároky na úložiště a výdaje tím, že odstraňují redundantní verze stejných dat (odstranění duplicitních dat) a pomocí komprese. |
@@ -215,7 +215,7 @@ Souhrn podporovaných úloh StorSimple je v tabulce.
 | Spolupráce |SharePoint |Ano* |Podporováno pouze s místně připnuté svazky |Aktualizace 2 a novější |
 | Archivace |Jednoduché archivace souborů |Yes | |Všechny verze |
 | Virtualizace |Virtuální počítače |Ano* |Podporováno pouze s místně připnuté svazky |Aktualizace 2 a novější |
-| Databáze |SQL |Ano* |Podporováno pouze s místně připnuté svazky |Aktualizace 2 a novější |
+| databáze |SQL |Ano* |Podporováno pouze s místně připnuté svazky |Aktualizace 2 a novější |
 | Střežení kamerami |Střežení kamerami |Ano* |Podporováno, pokud je zařízení StorSimple vyhrazené jenom pro tuto úlohu. |Aktualizace 2 a novější |
 | Backup |Primární cílová záloha |Ano* |Podporováno, pokud je zařízení StorSimple vyhrazené jenom pro tuto úlohu. |Aktualizace 3 a novější |
 | Backup |Zálohování sekundárního cíle |Ano* |Podporováno, pokud je zařízení StorSimple vyhrazené jenom pro tuto úlohu. |Aktualizace 3 a novější |
@@ -258,7 +258,7 @@ Následuje seznam jiného softwaru, který se používá s StorSimple k vytvář
 Před nasazením řešení Microsoft Azure StorSimple doporučujeme projít si následující pojmy a definice.
 
 ### <a name="key-terms-and-definitions"></a>Klíčové pojmy a definice
-| Výraz (akronym nebo zkratka) | Popis |
+| Výraz (akronym nebo zkratka) | Description |
 | --- | --- |
 | záznam řízení přístupu (ACR) |Záznam přidružený ke svazku na vašem zařízení Microsoft Azure StorSimple, který určuje, kteří hostitelé se k němu mohou připojit. Stanovení vychází z kvalifikovaného názvu iSCSI (IQN) hostitelů (obsažených v ACR), které se připojují k vašemu zařízení StorSimple. |
 | AES-256 |Algoritmus 256 standard AES (Advanced Encryption Standard) (AES) pro šifrování dat při jejich přesunu do cloudu a z něj. |

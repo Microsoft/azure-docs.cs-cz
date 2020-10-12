@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
 ms.openlocfilehash: f005bdfa5643ea187fb2973cac065563c4cc2ee6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292451"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Volání koncových bodů služby přes HTTP nebo HTTPS z Azure Logic Apps
@@ -44,7 +44,7 @@ Informace o šifrování, zabezpečení a autorizaci pro odchozí volání z va�
 
 Tato integrovaná aktivační událost provede volání HTTP na zadanou adresu URL pro koncový bod a vrátí odpověď.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
 1. V poli hledání návrháře vyberte možnost **předdefinované**. Do vyhledávacího pole zadejte `http` jako filtr. V seznamu **triggery** vyberte Trigger **http** .
 
@@ -73,7 +73,7 @@ Tato integrovaná aktivační událost provede volání HTTP na zadanou adresu U
 
 Tato Vestavěná akce provede volání HTTP na zadanou adresu URL pro koncový bod a vrátí odpověď.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
 
    V tomto příkladu se jako první krok používá Trigger HTTP.
 
@@ -104,11 +104,11 @@ Tato Vestavěná akce provede volání HTTP na zadanou adresu URL pro koncový b
 
 Zde jsou další informace o výstupech z triggeru nebo akce HTTP, které vrací tyto informace:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 |----------|------|-------------|
 | `headers` | Objekt JSON | Hlavičky z požadavku |
 | `body` | Objekt JSON | Objekt s obsahem textu z požadavku |
-| `status code` | Celé číslo | Stavový kód z požadavku |
+| `status code` | Integer | Stavový kód z požadavku |
 |||
 
 | Stavový kód | Description |

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: 1c3326456fefbbef9228cf26b5821f306cd21601
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80127913"
 ---
 # <a name="search-for-exact-moments-in-videos-with-video-indexer"></a>Hledání ve videích ve videu s využitím Video Indexer
@@ -56,6 +56,6 @@ Jakmile najdete přesný okamžik ve videu, se kterým chcete pracovat, můžete
 - [Zpracování obsahu pomocí rozhraní REST API služby Video Indexer](video-indexer-use-apis.md)
 - [Vložení vizuálních widgetů do vaší aplikace](video-indexer-embed-widgets.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 [Přehled Video Indexeru](video-indexer-overview.md)

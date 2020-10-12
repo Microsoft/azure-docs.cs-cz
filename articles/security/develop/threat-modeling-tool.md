@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
 ms.openlocfilehash: dcf782a41dbb09135f7a4cd767a94ff90578b6ba
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87169357"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
@@ -37,7 +37,7 @@ Tady jsou některé možnosti nástrojů a inovace, stačí jenom pár názvů:
 
 Následující tabulka obsahuje důležité odkazy, které vám pomohou začít s Threat Modeling Tool: viz také: [požadavky na systém](threat-modeling-tool-releases.md)
 
-| Krok  | Popis                                                                                   |
+| Krok  | Description                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |
 | **1** | [Stáhnout Threat Modeling Tool](https://aka.ms/threatmodelingtool)                                |
 | **2** | [Přečtěte si Úvodní příručku](threat-modeling-tool-getting-started.md)    |

@@ -14,10 +14,10 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e1575ee02a520fd39a1c659eadaeda5822207539
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171131"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Co je SAP HANA ve velkých instancích Azure?
@@ -56,7 +56,7 @@ Různé dokumenty s pokyny pro velké instance HANA se týkají těchto oblastí
 - [Řešení potíží a monitorování v Azure SAP HANA (velké instance)](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Nastavení vysoké dostupnosti v SUSE pomocí STONITH](./ha-setup-with-stonith.md)
 - [Zálohování a obnovení operačního systému pro SKU typu II u razítek revize 3](./os-backup-type-ii-skus.md)
-- [Uložení při Velké instance SAP HANA s rezervací Azure](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
+- [Úspory pro Velké instance SAP HANA s využitím rezervace Azure](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
 
 **Další kroky**
 - Přečtěte si informace [o těchto pojmech](hana-know-terms.md)

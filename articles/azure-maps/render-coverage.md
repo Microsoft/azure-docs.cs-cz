@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 69b122196cbeb7508cddf3a890768f83fdcd4727
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88030924"
 ---
 # <a name="azure-maps-render-coverage"></a>Pokrytí vykreslování Azure Maps
@@ -247,7 +247,7 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Ázerbájdžán                | ✓ | Ř |
 | Bělorusko                   | Ř | ✓ |
 | Belgie                   | ✓ | ✓ |
-| Bosna a Hercegovina        | ✓ | ✓ |
+| Bosnia-Herzegovina        | ✓ | ✓ |
 | Bulharsko                  | ✓ | ✓ |
 | Chorvatsko                   | ✓ | ✓ |
 | Kypr                    | ✓ | ✓ |

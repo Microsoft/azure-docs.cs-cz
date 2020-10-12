@@ -8,10 +8,10 @@ ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 72a2b24ad8e05943f975f0819d8b2a872b0ab829
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89229000"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Základní hodnoty zabezpečení Azure pro Stream Analytics
@@ -856,7 +856,7 @@ Funkci správy životního cyklu můžete také použít k zálohování dat do 
 
 * [Ochrana dat v Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/data-protection#private-data-assets-that-are-stored)
 
-* [Principy Azure Storage a smlouvy o úrovni služeb](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+* [Porozumění Azure Storage redundanci a Service-Level smluv](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 * [Správa životního cyklu úložiště objektů blob v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)
 

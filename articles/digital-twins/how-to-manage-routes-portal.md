@@ -8,10 +8,10 @@ ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252829"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Správa koncových bodů a tras v Azure Digital provlákna (portál)
@@ -37,7 +37,7 @@ Tyto podrobnosti můžete najít v [Azure Portal](https://portal.azure.com) po n
 
 Výběrem vaší instance z výsledků zobrazíte stránku podrobností pro vaši instanci:
 
-:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Snímek obrazovky s podrobnostmi instance ADT" border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Snímek obrazovky s panelem hledání Azure Portal." border="false":::
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Vytvoření koncového bodu pro digitální vlákna Azure
 
@@ -62,11 +62,11 @@ Na stránce *vytvořit koncový bod* , která se otevře, můžete vytvořit kon
 
 Pak vytvořte svůj koncový bod tím, že kliknete na _Uložit_.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Snímek obrazovky s vytvářením koncového bodu typu Event Grid.":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Snímek obrazovky s panelem hledání Azure Portal.":::
 
 Pomocí ikony oznámení na horním panelu Azure Portal můžete ověřit, že je koncový bod úspěšně vytvořen: 
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Snímek obrazovky s oznámením, že se má ověřit vytvoření koncového bodu" border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Snímek obrazovky s panelem hledání Azure Portal." border="false":::
 
 Koncový bod, který byl vytvořen zpátky, můžete také zobrazit na stránce *koncových bodů* pro instanci digitálních vláken Azure.
 
@@ -88,7 +88,7 @@ Na stránce *vytvořit koncový bod* , která se otevře, můžete vytvořit kon
 
 Pak vytvořte svůj koncový bod tím, že kliknete na _Uložit_.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="Snímek obrazovky s vytvářením koncového bodu typu Event Hubs.":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="Snímek obrazovky s panelem hledání Azure Portal.":::
 
 To, jestli se koncový bod úspěšně vytvoří, můžete ověřit tak, že zkontrolujete ikonu oznámení na horním Azure Portalovém panelu. 
 
@@ -110,7 +110,7 @@ Na stránce *vytvořit koncový bod* , která se otevře, můžete vytvořit kon
 
 Pak vytvořte svůj koncový bod tím, že kliknete na _Uložit_.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="Snímek obrazovky s vytvářením koncového bodu typu Service Bus.":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="Snímek obrazovky s panelem hledání Azure Portal.":::
 
 To, jestli se koncový bod úspěšně vytvoří, můžete ověřit tak, že zkontrolujete ikonu oznámení na horním Azure Portalovém panelu. 
 
@@ -149,7 +149,7 @@ Na stránce *vytvořit trasu události* , která se otevře, vyberte minimálně
 
 Aby bylo možné trasu povolit, je nutné také **Přidat filtr trasy události** alespoň `true` . (Výchozí hodnota pole `false` vytvoří trasu, ale do ní nebudou odesílány žádné události.) Provedete to tak, že přepnete přepínač pro _Rozšířený editor_ a povolíte jeho zápis `true` do pole *filtru* .
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Snímek obrazovky s vytvářením trasy události pro vaši instanci." lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
+:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Snímek obrazovky s panelem hledání Azure Portal." lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
 Po dokončení stiskněte tlačítko _Uložit_ a vytvořte tak trasu události.
 
@@ -175,7 +175,7 @@ Chcete-li použít základní filtry, rozbalte možnost _typy událostí_ a zaš
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="Snímek obrazovky s vytvořením trasy události se základním filtrem Výběr zaškrtávacích políček událostí.":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="Snímek obrazovky s panelem hledání Azure Portal.":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -185,7 +185,7 @@ Tím se automaticky vyplní textové pole filtru textem vybraného filtru:
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="Snímek obrazovky s vytvořením trasy události se základním filtrem Zobrazuje se automaticky vyplněný text filtru po výběru událostí.":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="Snímek obrazovky s panelem hledání Azure Portal.":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -199,7 +199,7 @@ Chcete-li vytvořit trasu události s možnostmi pokročilého filtru, přepnět
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-advanced.png" alt-text="Snímek obrazovky s vytvořením trasy události s pokročilým filtrem":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-advanced.png" alt-text="Snímek obrazovky s panelem hledání Azure Portal.":::
     :::column-end:::
     :::column:::
     :::column-end:::

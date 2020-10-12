@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 3fcbc386c60611493912fdfb17226490549cdc53
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89396807"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Základní hodnoty zabezpečení Azure pro Azure Container Registry
@@ -1088,9 +1088,9 @@ Postup obnovení klíčů Azure Key Vault v Azure:  https://docs.microsoft.com/p
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a spravovaných klíčů zákazníků.
 
-**Pokyny**: můžete povolit obnovitelné odstranění v Azure Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
+**Pokyny**: můžete povolit Soft-Delete v Azure Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
-Jak povolit obnovitelné odstranění v Key Vault: https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+Postup povolení Soft-Delete v Key Vault: https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
 
 **Monitorování Azure Security Center**: nelze použít

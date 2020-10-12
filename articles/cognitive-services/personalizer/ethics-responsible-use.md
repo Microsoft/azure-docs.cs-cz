@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132717"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Pokyny pro odpovědnou implementaci přizpůsobeného přizpůsobování
@@ -48,7 +48,7 @@ Implementací přizpůsobené aplikace může být pro uživatele i vaše podnik
 
 Používání služby, která se učí přizpůsobení obsahu a uživatelských rozhraní, je užitečné. Může být také nepoužit, pokud způsob přizpůsobení vytvoří negativní vedlejší účinky v reálném světě, včetně toho, pokud uživatelé nevědí o přizpůsobení obsahu.
 
-Příklady použití přizpůsobeného přizpůsobeného doplňku s vyšším možným dopadem na negativní vedlejší účinky nebo nedostatek transparentnosti jsou scénáře, kdy "odměňování" závisí na mnoha dlouhodobých složitých faktorech, které při přestupnosti na okamžitou odměnu můžou mít neuspokojivé výsledky pro jednotlivce. Ty se obvykle považují za "následné" možnosti nebo volby, které zahrnují riziko poškození. Příklad:
+Příklady použití přizpůsobeného přizpůsobeného doplňku s vyšším možným dopadem na negativní vedlejší účinky nebo nedostatek transparentnosti jsou scénáře, kdy "odměňování" závisí na mnoha dlouhodobých složitých faktorech, které při přestupnosti na okamžitou odměnu můžou mít neuspokojivé výsledky pro jednotlivce. Ty se obvykle považují za "následné" možnosti nebo volby, které zahrnují riziko poškození. Například:
 
 
 * **Finance**: individuální nastavení nabízí úvěrové, finanční a pojišťovací produkty, kde jsou rizikové faktory založené na datech, o kterých jednotliví uživatelé neznají, nemůžou získat ani nesporit.
@@ -127,13 +127,13 @@ Níže jsou uvedené oblasti návrhu pro zodpovědné implementace AI. Další i
 * Informujte uživatele, jak se přizpůsobuje použití, k jakým účelu a s jakými daty.
 * Archivace informací a prostředků – například modelů, studijních zásad a dalších dat – tato přizpůsobená funkce používá funkci, aby mohla reprodukování výsledků reprodukuje.
 
-### <a name="transparency"></a>Průhlednost
+### <a name="transparency"></a>Transparentnost
 *Systémy AI by se měly porozumět*. Pomocí přizpůsobení:
 
 * *Poskytněte uživatelům informace o tom, jak byl obsah přizpůsobován.* Uživatelům můžete například zobrazit tlačítko s popiskem `Why These Suggestions?` ukazující, které hlavní funkce uživatele a akce přehrály roli ve výsledcích přizpůsobeného modulu.
 * Ujistěte se, že vám podmínky použití znamenají, že k přizpůsobení prostředí budete používat informace o uživatelích a jejich chování.
 
-### <a name="fairness"></a>Spravedlnost
+### <a name="fairness"></a>Nestrannost
 *Systémy AI by měly považovat za všechny osoby poměrně*.
 
 * Nepoužívejte přizpůsobený modul pro případy použití, kde jsou výsledky dlouhodobé, následné nebo zahrnuje reálné poškození.
@@ -160,7 +160,7 @@ Níže jsou uvedené oblasti návrhu pro zodpovědné implementace AI. Další i
 
 V některých případech to může být právně povinné. Zvažte možnost pravidelného přeškolení modelů, takže neobsahují trasování odstraněných dat.
 
-### <a name="inclusiveness"></a>Celková hodnota
+### <a name="inclusiveness"></a>Inkluzivnost
 *Vyřešte širokou škálu lidských potřeb a zkušeností*.
 * *Poskytněte přizpůsobené prostředí pro rozhraní s podporou usnadnění přístupu.* Efektivita, která přichází z dobrého přizpůsobení – je využita k omezení množství úsilí, pohybu a nepotřebného opakování v interakcích – může být obzvláště užitečná pro osoby s postižením.
 * *Upravte chování aplikace na kontext*. Pomocí přizpůsobeného nástroje můžete v aplikaci Chat Bot odstranit nejednoznačnost mezi záměry, například když je správný výklad kontextem a jedna velikost nemusí odpovídat všem.
@@ -186,7 +186,7 @@ Zvažte, jestli v životním cyklu aplikace využijete úlohy týkající se zod
 
 ## <a name="questions-and-feedback"></a>Dotazy a zpětná vazba
 
-Microsoft nepřetržitě zapisuje úsilí do nástrojů a dokumentů, které vám pomůžou s těmito odpovědnostmi působit. Náš tým vás vyzve k [poskytnutí zpětné vazby společnosti Microsoft](mailto:cogsvcs-RL-feedback@microsoft.com?subject%3DPersonalizer%20Responsible%20Use%20Feedback&body%3D%5BPlease%20share%20any%20question%2C%20idea%20or%20concern%5D) , pokud se domníváte, že další nástroje, funkce produktu a dokumenty vám pomůžou implementovat tyto pokyny k používání přizpůsobeného doplňku.
+Microsoft nepřetržitě zapisuje úsilí do nástrojů a dokumentů, které vám pomůžou s těmito odpovědnostmi působit. Náš tým vás vyzve k [poskytnutí zpětné vazby společnosti Microsoft](mailto:cogsvcs-RL-feedback@microsoft.com?subject%3DPersonalizer%20Responsible%20Use%20Feedback&body%3D%5BPlease%20share%20any%20question%2C%20idea%20or%20concern%5D)  , pokud se domníváte, že další nástroje, funkce produktu a dokumenty vám pomůžou implementovat tyto pokyny k používání přizpůsobeného doplňku.
 
 ## <a name="recommended-reading"></a>Doporučené čtení
 

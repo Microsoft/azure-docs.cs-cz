@@ -7,10 +7,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 05/30/2018
 ms.openlocfilehash: 9006a22c588a7f1456585d40da0b4345145c6d05
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132479"
 ---
 # <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>Konfigurace přístupu uživatelů k informacím o úloze v Azure Data Lake Analytics 
@@ -19,7 +19,7 @@ V Azure Data Lake Analytics můžete ke spouštění úloh použít více uživa
 
 Aby mohli uživatelé zobrazit podrobné informace o úlohách, musí být schopni číst obsah složek úloh. Složky úloh se nacházejí v `/system/` adresáři. 
 
-Pokud nejsou potřebná oprávnění nakonfigurovaná, může se uživateli zobrazit chyba:`Graph data not available - You don't have permissions to access the graph data.` 
+Pokud nejsou potřebná oprávnění nakonfigurovaná, může se uživateli zobrazit chyba: `Graph data not available - You don't have permissions to access the graph data.` 
 
 ## <a name="configure-user-access-to-job-information"></a>Konfigurace přístupu uživatelů k informacím o úloze
 

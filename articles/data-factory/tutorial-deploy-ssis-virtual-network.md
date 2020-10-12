@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
 ms.openlocfilehash: ef2bd2fa9badc7c299099b647e1f67c50e997024
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292298"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Konfigurace prostředí Azure-služba SSIS (SQL Server Integration Services) (SSIS) Integration runtime (IR) pro připojení k virtuální síti
@@ -72,7 +72,7 @@ Pomocí Azure Portal nakonfigurujte virtuální síť předtím, než se pokusí
 
 1. Spusťte Microsoft Edge nebo Google Chrome. V současné době pouze tyto webové prohlížeče podporují rozhraní Data Factory.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Vyberte **Další služby**. Vyfiltrujte a vyberte **virtuální sítě**.
 
@@ -92,7 +92,7 @@ Pomocí Azure Portal nakonfigurujte virtuální síť předtím, než se pokusí
 
    1. V Azure Portal v nabídce vlevo vyberte **předplatná**.
 
-   1. Vyberte předplatné.
+   1. Vyberte své předplatné.
 
    1. Na levé straně vyberte **poskytovatelé prostředků**a potvrďte, že **Microsoft.Batch** je registrovaný poskytovatel.
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
 ms.openlocfilehash: a50f85e76f16f1e5ba8823adb1ea1aa02157fcee
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88032556"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Migrace z úložiště Prem HDFS do Azure Storage s využitím Azure Data Box
@@ -161,7 +161,7 @@ Pomocí těchto kroků zkopírujte data prostřednictvím rozhraní REST API pro
 
 Pomocí těchto kroků Připravte a odešlete zařízení Data Box společnosti Microsoft.
 
-1. Nejprve [Příprava k odeslání na data box nebo data box Heavy](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest).
+1. Nejprve  [Příprava k odeslání na data box nebo data box Heavy](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest).
 
 2. Až se dokončí příprava zařízení, Stáhněte soubory BOM. Tyto soubory kusovníku nebo manifest budete později používat k ověření dat odesílaných do Azure.
 
