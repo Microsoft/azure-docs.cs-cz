@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: ripohane
 ms.openlocfilehash: b8e4cada8ac2570fa32d55e35cbcdb214d5b5188
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90018152"
 ---
 # <a name="azure-blob-storage-reference"></a>Referenční informace ke službě Azure Blob Storage
@@ -23,7 +23,7 @@ Vyhledejte Reference k rozhraní API služby Azure Blob Storage, balíčky kniho
 
 Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci pro rozhraní .NET API služby Azure Blob Storage.
 
-|  Verze  | Referenční dokumentace | Balíček | Rychlý start |
+|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Klientská knihovna pro úložiště objektů BLOB v Azure pro .NET](/dotnet/api/overview/azure/storage.blobs-readme) | [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [Rychlý start: Klientská knihovna úložiště objektů blob Azure verze 12 pro .NET](/azure/storage/blobs/storage-quickstart-blobs-dotnet) |
 | 11. x | [Obor názvů Microsoft. Azure. Storage. blob](/dotnet/api/microsoft.azure.storage.blob) | [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V11 pro .NET](/azure/storage/blobs/storage-quickstart-blobs-dotnet-legacy) |
@@ -48,7 +48,7 @@ V následující tabulce jsou uvedeny referenční dokumentace pro Azure Storage
 
 Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci pro rozhraní API Java služby Azure Blob Storage.
 
-|  Verze  | Referenční dokumentace | Balíček | Rychlý start |
+|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Azure Storage – objekty blob](/java/api/overview/azure/storage-blob-readme) | [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [Rychlý Start: Správa objektů BLOB pomocí sady Java V12 SDK](/azure/storage/blobs/storage-quickstart-blobs-java) |
 | 8.x | [com. Microsoft. Azure. Storage. blob](/java/api/com.microsoft.azure.storage.blob) | [Balíček (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Rychlý Start: Správa objektů BLOB pomocí sady Java V8 SDK](/azure/storage/blobs/storage-quickstart-blobs-java-legacy) |
@@ -65,7 +65,7 @@ V následující tabulce jsou uvedeny referenční dokumentace k rozhraním API 
 
 Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci pro rozhraní API Pythonu pro službu Azure Blob Storage.
 
-|  Verze  | Referenční dokumentace | Balíček | Rychlý start |
+|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Azure Storage klientské knihovny V12 pro Python](/azure/developer/python/sdk/storage/overview) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-blob/) | [Rychlý Start: Správa objektů BLOB pomocí sady Python V12 SDK](/azure/storage/blobs/storage-quickstart-blobs-python) |
 | 2.x | [Azure Storage klientských knihoven v2 pro Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-blob/2.1.0/) | [Rychlý Start: Správa objektů BLOB pomocí Pythonu v 2.1 SDK](/azure/storage/blobs/storage-quickstart-blobs-python-legacy) |
@@ -74,7 +74,7 @@ Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci
 
 Následující tabulka obsahuje referenční dokumentaci a ukázkovou dokumentaci pro JavaScriptová rozhraní API pro Azure Blob Storage.
 
-|  Verze  | Referenční dokumentace | Balíček | Rychlý start |
+|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Klientská knihovna Azure Storage Blob pro JavaScript](/javascript/api/overview/azure/storage-blob-readme) | [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-blob) | [Rychlý Start: Správa objektů BLOB pomocí sady JavaScript V12 SDK v Node.js](/azure/storage/blobs/storage-quickstart-blobs-nodejs) <br/> [Rychlý Start: Správa objektů BLOB pomocí sady JavaScript V12 SDK v prohlížeči](/azure/storage/blobs/quickstart-blobs-javascript-browser) |
 | 10. x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy&preserve-view=true) | [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [Rychlý Start: Správa objektů BLOB pomocí sady JavaScript v10 za účelem SDK v Node.js](/azure/storage/blobs/storage-quickstart-blobs-nodejs-legacy) <br/> [Rychlý Start: Správa objektů BLOB pomocí sady JavaScript v10 za účelem SDK v prohlížeči](/azure/storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy)|

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
 ms.openlocfilehash: baf350e23025342cc74b4d063d9a1604e8ad2ffd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087418"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Použití služby Azure Kubernetes s Apache Kafka v HDInsight
@@ -24,7 +24,7 @@ Naučte se používat službu Azure Kubernetes Service (AKS) s [Apache Kafka](ht
 > [!NOTE]  
 > Tento dokument se zaměřuje na kroky potřebné k tomu, aby služba Azure Kubernetes mohla komunikovat s Kafka v HDInsight. Samotným příkladem je pouze základní klient Kafka, který předvádí, že konfigurace funguje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Předplatné Azure
@@ -94,7 +94,7 @@ Pokud ještě nemáte cluster AKS, použijte jeden z následujících dokumentů
     |---|---|
     |Název partnerského vztahu z \<this VN> do vzdálené virtuální sítě|Zadejte jedinečný název pro tuto konfiguraci partnerského vztahu.|
     |Virtuální síť|Vyberte virtuální síť pro **cluster AKS**.|
-    |Název partnerského vztahu od \<AKS VN> do\<this VN>|Zadejte jedinečný název.|
+    |Název partnerského vztahu od \<AKS VN> do \<this VN>|Zadejte jedinečný název.|
 
     Ponechte všechna ostatní pole na výchozí hodnotě a pak výběrem __OK__ nakonfigurujte partnerský vztah.
 

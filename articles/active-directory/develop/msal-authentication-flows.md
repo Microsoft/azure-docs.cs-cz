@@ -13,10 +13,10 @@ ms.date: 07/08/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89437866"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
@@ -70,7 +70,7 @@ V předchozím diagramu aplikace:
 1. Požádá o autorizační kód, který je uplatněn pro přístupový token.
 2. Pomocí přístupového tokenu zavolá webové rozhraní API.
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 - Autorizační kód můžete použít jenom jednou pro uplatnění tokenu. Nepokusit se vícekrát získat token se stejným autorizačním kódem, protože je výslovně zakázaný standardní specifikací protokolu. Pokud kód několikrát přiřadíte, ať už úmyslně, nebo vzhledem k tomu, že si nejste vědomi, že to architektura provede za vás, zobrazí se tato chyba:
 
@@ -136,7 +136,7 @@ Tok [implicitního udělení OAuth 2](v2-oauth2-implicit-grant-flow.md) umožňu
 
 Mnoho moderních webových aplikací je postavených na straně klienta s jednou stránkou (SPA), které jsou napsané v jazyce JavaScript nebo v architektuře SPA, jako je například úhlové, Vue.js a React.js. Tyto aplikace běží ve webovém prohlížeči a mají různé charakteristiky ověřování než tradiční webové aplikace na straně serveru. Platforma Microsoft Identity Platform umožňuje uživatelům přihlašovat se pomocí jediné stránky a získat tokeny pro přístup k back-endové službě nebo webovým rozhraním API pomocí implicitního toku udělení. Implicitní tok umožňuje aplikaci získat tokeny ID, které reprezentují ověřeného uživatele, a také přístup k tokenům potřebným pro volání chráněných rozhraní API.
 
-Tento tok ověřování nezahrnuje scénáře aplikací, které používají rozhraní JavaScript pro různé platformy, jako je například elektronicky nebo reagují – nativní, protože vyžadují další možnosti pro interakci s nativními platformami.
+Tento tok ověřování neobsahuje scénáře aplikací, které používají rozhraní JavaScript pro různé platformy, jako je například elektronicky nebo React-Native, protože vyžadují další možnosti pro interakci s nativními platformami.
 
 Tokeny vydané prostřednictvím implicitního režimu toku mají **omezení délky** , protože jsou vraceny do prohlížeče podle adresy URL (kde `response_mode` je buď `query` nebo `fragment` ). Některé prohlížeče omezují délku adresy URL v panelu prohlížeče a selžou, pokud je příliš dlouhá. Proto tyto implicitní tokeny toků neobsahují `groups` ani `wids` nedeklarují deklarace identity.
 

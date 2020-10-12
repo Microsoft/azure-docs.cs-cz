@@ -12,10 +12,10 @@ ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
 ms.openlocfilehash: ea11e2f5f8d89381723011686de9e22639997c01
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90974149"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Instance Metadata Service Azure (IMDS)
@@ -44,7 +44,7 @@ Další příklady dotazů na IMDS najdete v tématu [ukázky metadat instance A
 
 Níže je uvedený ukázkový kód pro načtení všech metadat pro instanci, pro přístup ke konkrétnímu zdroji dat, viz část [rozhraní API pro metadata](#metadata-apis) . 
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-06-01"
@@ -163,7 +163,7 @@ Rozhraní API | Výchozí formát dat | Jiné formáty
 /instance | json | text
 /scheduledevents | json | žádné
 
-Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Příklad:
+Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Například:
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -204,7 +204,7 @@ Pokud není zadána žádná verze, je vrácena chyba se seznamem nejnovějšíc
 > [!NOTE]
 > Odpověď je řetězec JSON. Následující příklad označuje chybový stav, pokud není zadána verze, odpověď je poměrně vytištěna pro čitelnost.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance"
@@ -244,7 +244,7 @@ azEnvironment | Prostředí Azure, ve kterém je spuštěný virtuální počít
 customData | Tato funkce je momentálně zakázaná. Tuto dokumentaci budeme aktualizovat, jakmile bude k dispozici. | 2019-02-01
 isHostCompatibilityLayerVm | Určuje, jestli se virtuální počítač spouští na vrstvě kompatibility hostitele. | 2020-06-01
 location | Oblast Azure, ve které je spuštěný virtuální počítač | 2017-04-02
-jméno | Název virtuálního počítače | 2017-04-02
+name | Název virtuálního počítače | 2017-04-02
 offer | Informace o nabídce pro image virtuálního počítače a jsou k dispozici jenom pro Image nasazené z Galerie imagí Azure | 2017-04-02
 osType | Linux nebo Windows | 2017-04-02
 placementGroupId | [Skupina umístění](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) vaší sady škálování virtuálních počítačů | 2017-08-01
@@ -273,7 +273,7 @@ zóna | [Zóna dostupnosti](../../availability-zones/az-overview.md) virtuální
 
 Jako poskytovatel služeb budete možná potřebovat sledovat počet virtuálních počítačů, na kterých běží váš software, nebo mít agenty, kteří potřebují ke sledování jedinečnosti virtuálního počítače. Aby bylo možné získat jedinečné ID pro virtuální počítač, použijte `vmId` pole z instance metadata Service.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
@@ -291,7 +291,7 @@ V některých scénářích je umístění různých replik dat primárním výz
 K provedení těchto rozhodnutí můžete použít také [zóny dostupnosti](../../availability-zones/az-overview.md) pro instance.
 Tato data můžete zadávat přímo prostřednictvím Instance Metadata Service.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
@@ -307,7 +307,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 
 Jako poskytovatel služeb můžete obdržet volání podpory, kde byste chtěli získat další informace o virtuálním počítači. Dotazování zákazníků na sdílení výpočetních metadat může poskytnout základní informace o tom, že profesionální pracovník podpory ví o typu virtuálního počítače v Azure.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
@@ -407,7 +407,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 
 Azure má různé cloudy svrchovan jako [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Někdy potřebujete prostředí Azure, abyste mohli provádět určitá rozhodnutí za běhu. Následující příklad ukazuje, jak lze dosáhnout tohoto chování.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
@@ -446,7 +446,7 @@ macAddress | Adresa MAC virtuálního počítače | 2017-04-02
 
 #### <a name="sample-1-retrieving-network-information"></a>Ukázka 1: načítání informací o síti
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
@@ -519,7 +519,7 @@ diskSizeGB | Velikost disku v GB
 image   | Virtuální pevný disk zdrojové image uživatele
 (     | Logické číslo jednotky disku
 managedDisk | Parametry spravovaného disku
-jméno    | Název disku
+name    | Název disku
 virtuálního     | Virtuální pevný disk
 writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAccelerator
 
@@ -534,14 +534,14 @@ diskSizeGB | Velikost disku v GB
 encryptionSettings | Nastavení šifrování disku
 image   | Virtuální pevný disk zdrojové image uživatele
 managedDisk | Parametry spravovaného disku
-jméno    | Název disku
+name    | Název disku
 osType  | Typ operačního systému zahrnutý na disku
 virtuálního     | Virtuální pevný disk
 writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAccelerator
 
 Následující příklad ukazuje, jak zadat dotaz na informace o úložišti virtuálního počítače.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
@@ -613,7 +613,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 Značky virtuálních počítačů jsou součástí rozhraní API instancí pod koncovým bodem instance/výpočty/značky.
 Na VIRTUÁLNÍm počítači Azure možná byly aplikovány značky, aby je bylo možné logicky uspořádat do taxonomie. Značky přiřazené k virtuálnímu počítači se dají načíst pomocí níže uvedeného požadavku.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
@@ -627,7 +627,7 @@ Department:IT;Environment:Test;Role:WebRole
 
 `tags`Pole je řetězec, jehož značky jsou odděleny středníky. Tento výstup může být problémem, pokud se středníky používají v samotných značkách. Pokud je analyzátor napsán pro programové extrakci značek, měli byste spoléhat na `tagsList` pole. `tagsList`Pole je pole JSON bez oddělovačů, a proto je snazší ho analyzovat.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04"
@@ -661,7 +661,7 @@ Součástí scénáře, který obsluhuje Instance Metadata Service, je poskytnou
 > [!NOTE]
 > Všechny odpovědi rozhraní API jsou řetězce JSON. Následující příklad odpovědí je poměrně vytištěn z důvodu čitelnosti.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
@@ -707,7 +707,7 @@ Dodavatelé na webu Marketplace chtějí zajistit, aby byl software licencován 
 > [!NOTE]
 > Vyžaduje instalaci JQ.
 
-**Požadavek**
+**Žádost**
 
 ```bash
 # Get the signature
@@ -820,7 +820,7 @@ Ruby          | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
 
 ## <a name="error-and-debugging"></a>Chyba a ladění
 
-Pokud se nenašel datový prvek nebo dojde k chybnému požadavku, Instance Metadata Service vrátí standardní chyby protokolu HTTP. Příklad:
+Pokud se nenašel datový prvek nebo dojde k chybnému požadavku, Instance Metadata Service vrátí standardní chyby protokolu HTTP. Například:
 
 Stavový kód HTTP | Důvod
 ----------------|-------

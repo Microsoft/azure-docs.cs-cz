@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84752472"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Omezení velikosti a seznamů vyloučení požadavků firewallu webových aplikací
@@ -24,7 +24,7 @@ Firewall webových aplikací (WAF) služby Azure Application Gateway poskytuje o
 
 Seznamy vyloučení WAF umožňují vynechat určité atributy žádostí z vyhodnocení WAF. Běžným příkladem jsou vložené tokeny služby Active Directory, které se používají pro pole ověřování nebo hesla. Tyto atributy jsou náchylné k zahrnutí speciálních znaků, které mohou aktivovat falešně pozitivní hodnoty z pravidel WAF. Po přidání atributu do seznamu vyloučení WAF se tento atribut nepovažuje za žádné nakonfigurované a aktivní WAF pravidlo. Seznamy vyloučení jsou globální v oboru.
 
-Následující atributy lze přidat do seznamů vyloučení podle názvu. Hodnoty zvoleného pole nejsou vyhodnoceny proti pravidlům WAF, ale jejich názvy jsou stále (viz příklad 1 níže, hodnota hlavičky uživatelského agenta je vyloučena z vyhodnocení WAF). Seznamy vyloučení odstraňují kontrolu hodnoty pole.
+Následující atributy lze přidat do seznamů vyloučení podle názvu. Hodnoty zvoleného pole nejsou vyhodnocovány proti pravidlům WAF, ale jejich názvy stále jsou (viz příklad 1 níže, hodnota hlavičky User-Agent je vyloučena z vyhodnocení WAF). Seznamy vyloučení odstraňují kontrolu hodnoty pole.
 
 * Hlavičky požadavku
 * Soubory cookie požadavků

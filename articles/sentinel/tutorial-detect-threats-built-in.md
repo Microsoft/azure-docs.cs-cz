@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
 ms.openlocfilehash: 5d73337c25c812363b7a542bf42372ca3baa10e8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88605407"
 ---
-# <a name="tutorial-detect-threats-out-of-the-box"></a>Kurz: okamžité zjištění hrozeb
+# <a name="tutorial-detect-threats-out-of-the-box"></a>Kurz: Dodávaná detekce hrozeb
 
 
 > [!IMPORTANT]
@@ -65,7 +65,7 @@ K dispozici jsou následující typy šablon:
 
 1. Pokud chcete použít předdefinovanou šablonu, klikněte na název šablony a potom v podokně podrobností klikněte na tlačítko **vytvořit pravidlo** a vytvořte nové aktivní pravidlo založené na této šabloně. Každá šablona obsahuje seznam požadovaných zdrojů dat. Když otevřete šablonu, zdroje dat budou automaticky kontrolovány dostupnosti. Pokud dojde k problému s dostupností, tlačítko **vytvořit pravidlo** může být zakázané nebo se může zobrazit upozornění.
   
-    :::image type="content" source="media/tutorial-detect-built-in/use-built-in-template.png" alt-text="Panel náhledu pravidla detekce":::
+    :::image type="content" source="media/tutorial-detect-built-in/use-built-in-template.png" alt-text="Použití vestavěných detekcí k nalezení hrozeb pomocí Sentinel Azure":::
  
 1. Kliknutím na tlačítko **vytvořit pravidlo** otevřete Průvodce vytvořením pravidla v závislosti na vybrané šabloně. Všechny podrobnosti jsou vyplněné a pomocí **naplánovaných** nebo šablon **zabezpečení Microsoftu** můžete přizpůsobit logiku a další nastavení pravidla, aby lépe vyhovovala vašim konkrétním potřebám. Tento postup můžete opakovat a vytvořit další pravidla na základě předdefinované šablony. Po provedení kroků v Průvodci vytvořením pravidla na konci budete muset vytvořit pravidlo založené na šabloně. Nová pravidla se zobrazí na kartě **aktivní pravidla** .
 

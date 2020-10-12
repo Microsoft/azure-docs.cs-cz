@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/31/2020
 ms.author: cynthn
 ms.openlocfilehash: 34a84ed333172ea0931c529d2dbeee1b774ae8c5
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513179"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Podrobný postup: vytváření a Správa klíčů SSH pro ověřování na virtuálním počítači Linux v Azure
@@ -33,7 +33,7 @@ Pokud nechcete používat klíče SSH, můžete pro virtuální počítač se sy
 
 ## <a name="generate-keys-with-ssh-keygen"></a>Generování klíčů pomocí ssh-keygen
 
-Chcete-li vytvořit klíče, preferovaný příkaz je `ssh-keygen` , který je k dispozici u OpenSSH nástrojů v Azure Cloud Shell, na hostiteli MacOS nebo Linux a na Windows 10. `ssh-keygen`požádá o sérii otázek a pak zapíše privátní klíč a shodný veřejný klíč. 
+Chcete-li vytvořit klíče, preferovaný příkaz je `ssh-keygen` , který je k dispozici u OpenSSH nástrojů v Azure Cloud Shell, na hostiteli MacOS nebo Linux a na Windows 10. `ssh-keygen` požádá o sérii otázek a pak zapíše privátní klíč a shodný veřejný klíč. 
 
 Klíče SSH jsou ve výchozím nastavení v adresáři `~/.ssh`.  Pokud adresář `~/.ssh` nemáte, vytvoří ho za vás příkaz `ssh-keygen` se správnými oprávněními.
 
@@ -62,17 +62,17 @@ ssh-keygen \
 
 `ssh-keygen`= program použitý k vytvoření klíčů
 
-`-m PEM`= naformátovat klíč jako PEM
+`-m PEM` = naformátovat klíč jako PEM
 
-`-t rsa`= typ klíče, který se má vytvořit, v tomto případě ve formátu RSA
+`-t rsa` = typ klíče, který se má vytvořit, v tomto případě ve formátu RSA
 
-`-b 4096`= počet bitů v klíči, v tomto případě 4096
+`-b 4096` = počet bitů v klíči, v tomto případě 4096
 
 `-C "azureuser@myserver"`= komentář připojený na konec souboru veřejného klíče pro snadnější identifikaci. Obvykle se jako komentář používá e-mailová adresa, ale je vhodná pro vaši infrastrukturu.
 
-`-f ~/.ssh/mykeys/myprivatekey`= název souboru privátního klíče, pokud se rozhodnete nepoužívat výchozí název. Odpovídající soubor veřejného klíče připojený pomocí `.pub` je vygenerovaný ve stejném adresáři. Adresář musí existovat.
+`-f ~/.ssh/mykeys/myprivatekey` = název souboru privátního klíče, pokud se rozhodnete nepoužívat výchozí název. Odpovídající soubor veřejného klíče připojený pomocí `.pub` je vygenerovaný ve stejném adresáři. Adresář musí existovat.
 
-`-N mypassphrase`= Další heslo, které se používá pro přístup k souboru privátního klíče. 
+`-N mypassphrase` = Další heslo, které se používá pro přístup k souboru privátního klíče. 
 
 ### <a name="example-of-ssh-keygen"></a>Příklad ssh-keygen
 

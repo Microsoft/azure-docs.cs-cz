@@ -12,14 +12,14 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6261e31fd84b9471fa4ea5d30e1d6a4afbac9115
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085374"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Vytváření funkcí pro data v clusteru Hadoop pomocí dotazů na podregistry
-V tomto dokumentu se dozvíte, jak vytvářet funkce pro data uložená v clusteru Azure HDInsight Hadoop pomocí dotazů na podregistry. Tyto dotazy na podregistr používají vložené uživatelem definované funkce (UDF) v podregistru, které jsou k dispozici.
+V tomto dokumentu se dozvíte, jak vytvářet funkce pro data uložená v clusteru Azure HDInsight Hadoop pomocí dotazů na podregistry. Tyto dotazy na podregistr používají vložené funkce User-Defined podregistru (UDF), které jsou k dispozici.
 
 Operace potřebné k vytvoření funkcí můžou být náročné na paměť. Výkon dotazů na podregistr v takových případech bude v takovém případě méně důležitý a lze ho zlepšit optimalizací určitých parametrů. Ladění těchto parametrů je popsáno v poslední části.
 
@@ -150,10 +150,10 @@ Matematické rovnice, které vypočítávají vzdálenost mezi dvěma souřadnic
 
 Úplný seznam integrovaných UDF podregistru najdete v části **předdefinované funkce** na <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">wikiwebu Apache Hive</a>.  
 
-## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a>Pokročilá témata: ladění parametrů podregistru za účelem zlepšení rychlosti dotazů
+## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> Pokročilá témata: ladění parametrů podregistru za účelem zlepšení rychlosti dotazů
 Výchozí nastavení parametrů clusteru podregistru nemusí být vhodné pro dotazy na podregistr a data, která jsou zpracovávána dotazy. V této části jsou popsány některé parametry, které mohou uživatelé ladit pro zlepšení výkonu dotazů na podregistry. Uživatelé musí před dotazy na zpracování dat přidat dotazy ladění parametrů.
 
-1. **Místo haldy jazyka Java**: u dotazů, které zahrnují spojování velkých datových sad nebo zpracování dlouhých záznamů, je **nedostatek prostoru haldy** jednou ze běžných chyb. Tato chyba se může vyhnout nastavením parametrů *MapReduce. map. Java. výslovný* a *MapReduce. Task. IO. Sort. MB* na požadované hodnoty. Zde naleznete příklad:
+1. **Místo haldy jazyka Java**: u dotazů, které zahrnují spojování velkých datových sad nebo zpracování dlouhých záznamů, je **nedostatek prostoru haldy** jednou ze běžných chyb. Tato chyba se může vyhnout nastavením parametrů *MapReduce. map. Java. výslovný* a *MapReduce. Task. IO. Sort. MB* na požadované hodnoty. Tady je příklad:
    
     ```hiveql
     set mapreduce.map.java.opts=-Xmx4096m;

@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
 ms.openlocfilehash: c68bedb37722fb6a8b7ad9dccdeaaaa4fab9d020
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264126"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizace Media Services po postupném zavedení přístupových klíčů k úložišti
@@ -47,7 +47,7 @@ Media Services závisí na klíči úložiště, který je mu k dispozici. Konkr
 ## <a name="steps-to-rotate-storage-keys"></a>Postup pro otočení klíčů úložiště 
  
  1. Pomocí rutiny PowerShellu nebo webu [Azure](https://portal.azure.com/) Portal změňte primární klíč účtu úložiště.
- 2. Volejte rutinu Sync-AzMediaServiceStorageKeys s příslušnými parami k vynucení účtu média pro výběr klíčů účtu úložiště.
+ 2. Volejte Sync-AzMediaServiceStorageKeys rutinu s příslušnými parametry pro vynucení účtu média pro vyzvednutí klíčů účtu úložiště.
  
     Následující příklad ukazuje, jak synchronizovat klíče s účty úložiště.
   
@@ -55,7 +55,7 @@ Media Services závisí na klíči úložiště, který je mu k dispozici. Konkr
   
  3. Počkejte hodinu nebo. Ověřte, jestli fungují scénáře streamování.
  4. Pomocí rutiny PowerShellu nebo Azure Portal změňte sekundární klíč účtu úložiště.
- 5. Volání Sync-AzMediaServiceStorageKeys PowerShell s příslušnými parami k vynucení účtu média pro výběr nových klíčů účtu úložiště. 
+ 5. Pokud chcete vynutit, aby si účet média vybral nové klíče účtu úložiště, zavolejte Sync-AzMediaServiceStorageKeys PowerShell s příslušnými parametry. 
  6. Počkejte hodinu nebo. Ověřte, jestli fungují scénáře streamování.
  
 ### <a name="a-powershell-cmdlet-example"></a>Příklad rutiny PowerShellu 

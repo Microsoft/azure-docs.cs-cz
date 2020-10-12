@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 09fef350a0ff8cc8c2481acd7b8f74cee15d1b9d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075548"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Použití tunelového propojení SSH pro přístup k webovému uživatelskému rozhraní Apache Ambari, JobHistory, NameNode, Apache Oozie a dalším uživatelská rozhraní
@@ -62,9 +62,9 @@ Pomocí následujícího příkazu vytvořte tunel SSH pomocí `ssh` příkazu. 
 ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 ```
 
-Tento příkaz vytvoří připojení, které směruje provoz na místní port 9876 do clusteru přes protokol SSH. Dostupné možnosti:
+Tento příkaz vytvoří připojení, které směruje provoz na místní port 9876 do clusteru přes protokol SSH. Možnosti:
 
-|Možnost |Description |
+|Možnost |Popis |
 |---|---|
 |D 9876|Místní port, který směruje provoz přes tunel.|
 |C|Komprimuje všechna data, protože webový provoz je převážně text.|

@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: c381c6e7d692eda32fea2033779bacddafc267bb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86253673"
 ---
-# <a name="infrastructure-as-code"></a>Infrastruktura v podobě kódu
+# <a name="infrastructure-as-code"></a>Infrastruktura jako kód
 
 V produkčním scénáři Vytvořte clustery Azure Service Fabric pomocí šablon Správce prostředků. Šablony Správce prostředků poskytují větší kontrolu nad vlastnostmi prostředku a zajišťují, že máte konzistentní model prostředků.
 
@@ -104,7 +104,7 @@ Upgrade virtuálních počítačů je operace iniciovaná uživatelem. doporuču
 ```
 Pokud používáte automatické upgrady operačního systému pomocí Service Fabric, nová image operačního systému se v jednu chvíli odvede na jednu aktualizační doménu, aby se zachovala vysoká dostupnost služeb běžících v Service Fabric. Pokud chcete použít automatické upgrady operačního systému v Service Fabric musíte cluster nakonfigurovat tak, aby používal úroveň odolnosti stříbra nebo vyšší.
 
-Zajistěte, aby byl následující klíč registru nastaven na hodnotu false, aby bylo možné, aby počítače se systémem Windows nezahájily nekoordinovatelné aktualizace: HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
+Zajistěte, aby byl následující klíč registru nastaven na hodnotu false, aby bylo možné, aby hostitelské počítače s Windows nezahájily nekoordinované aktualizace: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
 
 Níže jsou uvedeny vlastnosti šablony COMPUTE Virtual Machine Scale Správce prostředků pro nastavení klíče registru WindowsUpdate na hodnotu false:
 ```json

@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: 84e2eaf71326f59102800428479768aeba9ef9ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87042154"
 ---
 # <a name="configure-runbook-input-parameters"></a>Vstupní parametry runbooku
@@ -27,7 +27,7 @@ Runbooky pracovních postupů PowerShellu a PowerShellu v Azure Automation podpo
 | **Vlastnost** | **Popis** |
 |:--- |:--- |
 | Typ |Povinná hodnota. Pro hodnotu parametru se očekával datový typ. Jakýkoli typ .NET je platný. |
-| Název |Povinná hodnota. Název parametru Tento název musí být v rámci Runbooku jedinečný, musí začínat písmenem a může obsahovat jenom písmena, číslice nebo podtržítka. |
+| Name |Povinná hodnota. Název parametru Tento název musí být v rámci Runbooku jedinečný, musí začínat písmenem a může obsahovat jenom písmena, číslice nebo podtržítka. |
 | Povinné |Nepovinný parametr. Logická hodnota určující, zda parametr vyžaduje hodnotu. Pokud nastavíte hodnotu true, musí se při spuštění Runbooku zadat hodnota. Pokud nastavíte hodnotu false, hodnota je nepovinná. Pokud nezadáte hodnotu `Mandatory` vlastnosti, PowerShell posuzuje vstupní parametr ve výchozím nastavení jako volitelný. |
 | Výchozí hodnota |Nepovinný parametr. Hodnota, která se používá pro parametr, pokud není žádná vstupní hodnota předána při spuštění Runbooku. Sada Runbook může nastavit výchozí hodnotu pro libovolný parametr. |
 
@@ -201,7 +201,7 @@ V popisku pod vstupním polem můžete zobrazit vlastnosti, které byly nastaven
     }
    ```
 
-   Chcete-li spustit tuto metodu, vytvořte slovník pro uložení parametrů Runbooku `VMName` a `resourceGroupName` a jejich hodnoty. Poté spusťte sadu Runbook. Níže je fragment kódu jazyka C# pro volání metody, která je definována výše.
+   Chcete-li spustit tuto metodu, vytvořte slovník pro uložení parametrů Runbooku `VMName` a  `resourceGroupName` a jejich hodnoty. Poté spusťte sadu Runbook. Níže je fragment kódu jazyka C# pro volání metody, která je definována výše.
 
    ```csharp
    IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
@@ -216,7 +216,7 @@ V popisku pod vstupním polem můžete zobrazit vlastnosti, které byly nastaven
 
 #### <a name="start-a-runbook-using-the-rest-api-and-assign-parameters"></a>Spuštění Runbooku pomocí REST API a přiřazení parametrů
 
-Můžete vytvořit a spustit úlohu Runbooku pomocí Azure Automation REST API pomocí `PUT` metody s následujícím identifikátorem URI požadavku:`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}?api-version=2017-05-15-preview`
+Můžete vytvořit a spustit úlohu Runbooku pomocí Azure Automation REST API pomocí `PUT` metody s následujícím identifikátorem URI požadavku: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}?api-version=2017-05-15-preview`
 
 V identifikátoru URI požadavku nahraďte následující parametry:
 
@@ -324,7 +324,7 @@ Nyní můžete sadu Runbook volat z místního počítače pomocí Azure PowerSh
     >[!NOTE]
     >Pro PowerShellové Runbooky `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro `Connect-AzAccount` . Všimněte si, že tyto aliasy nejsou k dispozici pro grafické Runbooky. Grafická sada Runbook může používat pouze `Connect-AzAccount` sebe sama.
 
-1. Získá obsah uloženého souboru JSON a převede ho na řetězec. `JsonPath`Určuje cestu, kam jste uložili soubor JSON.
+1. Získá obsah uloženého souboru JSON a převede ho na řetězec. `JsonPath` Určuje cestu, kam jste uložili soubor JSON.
 
    ```powershell
    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string

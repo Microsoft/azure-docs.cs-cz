@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: f3f35bb7002ea976305b31a27fa6efebecf07710
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087159"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning rozhraní API pro detekci anomálií
@@ -127,13 +127,13 @@ Podrobnější informace o těchto vstupních parametrech jsou uvedeny v násled
 
 | Vstupní parametry | Description | Výchozí nastavení | Typ | Platný rozsah | Navrhovaný rozsah |
 | --- | --- | --- | --- | --- | --- |
-| detektory. historywindow |Historie (v počtu datových bodů) použitá pro výpočet skóre anomálií |500 |celé číslo |10-2000 |Závislá na časové řadě |
+| detektory. historywindow |Historie (v počtu datových bodů) použitá pro výpočet skóre anomálií |500 |integer |10-2000 |Závislá na časové řadě |
 | detektory. spikesdips | Určuje, jestli se mají detekovat jenom špičky, jenom vyhrazené nebo obojí. |Obojí |Výčtový |Obě, špičky, DIP |Obojí |
-| bileveldetector. Citlivost |Citlivost pro detektor se změnou úrovně obousměrné komunikace |3.25 |double |Žádná |3,25-5 (méně hodnoty znamená citlivější) |
-| trenddetector. Citlivost |Citlivost pro pozitivní detektor trendu |3.25 |double |Žádná |3,25-5 (méně hodnoty znamená citlivější) |
-| tspikedetector. Citlivost |Citlivost pro detektor TSpike |3 |celé číslo |1-10 |3-5 (méně hodnot znamená citlivější) |
-| zspikedetector. Citlivost |Citlivost pro detektor ZSpike |3 |celé číslo |1-10 |3-5 (méně hodnot znamená citlivější) |
-| postprocess.tailRows |Počet nejnovějších datových bodů, které mají být zachovány ve výstupních výsledcích |0 |celé číslo |0 (zachovat všechny datové body) nebo zadat počet bodů, které mají být uchovávány ve výsledcích |Není k dispozici |
+| bileveldetector. Citlivost |Citlivost pro detektor se změnou úrovně obousměrné komunikace |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
+| trenddetector. Citlivost |Citlivost pro pozitivní detektor trendu |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
+| tspikedetector. Citlivost |Citlivost pro detektor TSpike |3 |integer |1-10 |3-5 (méně hodnot znamená citlivější) |
+| zspikedetector. Citlivost |Citlivost pro detektor ZSpike |3 |integer |1-10 |3-5 (méně hodnot znamená citlivější) |
+| postprocess.tailRows |Počet nejnovějších datových bodů, které mají být zachovány ve výstupních výsledcích |0 |integer |0 (zachovat všechny datové body) nebo zadat počet bodů, které mají být uchovávány ve výsledcích |Není k dispozici |
 
 ### <a name="output"></a>Výstup
 Rozhraní API spustí všechny detektory dat časových řad a vrátí skóre anomálií a binární indikátory špičky pro každý bod v čase. V tabulce níže jsou uvedeny výstupy z rozhraní API.
@@ -163,20 +163,20 @@ Podrobnější informace o těchto vstupních parametrech jsou uvedeny v násled
 
 | Vstupní parametry | Description | Výchozí nastavení | Typ | Platný rozsah | Navrhovaný rozsah |
 | --- | --- | --- | --- | --- | --- |
-| předzpracování. aggregationInterval |Interval agregace v sekundách pro agregaci vstupních časových řad |0 (není provedena žádná agregace) |celé číslo |0: přeskočit agregaci > 0 jinak |5 minut až 1 den, časová řada závislá |
+| předzpracování. aggregationInterval |Interval agregace v sekundách pro agregaci vstupních časových řad |0 (není provedena žádná agregace) |integer |0: přeskočit agregaci > 0 jinak |5 minut až 1 den, časová řada závislá |
 | předzpracování. aggregationFunc |Funkce používaná pro agregaci dat do zadaného AggregationInterval |mean |Výčtový |střední hodnota, suma, délka |Není k dispozici |
 | předzpracování. replaceMissing |Hodnoty, které slouží k imputaci chybějících dat |LKV (Poslední známá hodnota) |Výčtový |nula, LKV, střední hodnota |Není k dispozici |
-| detektory. historywindow |Historie (v počtu datových bodů) použitá pro výpočet skóre anomálií |500 |celé číslo |10-2000 |Závislá na časové řadě |
+| detektory. historywindow |Historie (v počtu datových bodů) použitá pro výpočet skóre anomálií |500 |integer |10-2000 |Závislá na časové řadě |
 | detektory. spikesdips | Určuje, jestli se mají detekovat jenom špičky, jenom vyhrazené nebo obojí. |Obojí |Výčtový |Obě, špičky, DIP |Obojí |
-| bileveldetector. Citlivost |Citlivost pro detektor se změnou úrovně obousměrné komunikace |3.25 |double |Žádná |3,25-5 (méně hodnoty znamená citlivější) |
-| postrenddetector. Citlivost |Citlivost pro pozitivní detektor trendu |3.25 |double |Žádná |3,25-5 (méně hodnoty znamená citlivější) |
-| negtrenddetector. Citlivost |Citlivost pro záporný detektor trendu |3.25 |double |Žádná |3,25-5 (méně hodnoty znamená citlivější) |
-| tspikedetector. Citlivost |Citlivost pro detektor TSpike |3 |celé číslo |1-10 |3-5 (méně hodnot znamená citlivější) |
-| zspikedetector. Citlivost |Citlivost pro detektor ZSpike |3 |celé číslo |1-10 |3-5 (méně hodnot znamená citlivější) |
-| sezónnost. Enable |Zda má být provedena analýza sezónnost |true |Boolean |true, false |Závislá na časové řadě |
-| sezónnost. numSeasonality |Maximální počet pravidelných cyklů, které se mají zjistit |1 |celé číslo |1, 2 |1-2 |
+| bileveldetector. Citlivost |Citlivost pro detektor se změnou úrovně obousměrné komunikace |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
+| postrenddetector. Citlivost |Citlivost pro pozitivní detektor trendu |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
+| negtrenddetector. Citlivost |Citlivost pro záporný detektor trendu |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
+| tspikedetector. Citlivost |Citlivost pro detektor TSpike |3 |integer |1-10 |3-5 (méně hodnot znamená citlivější) |
+| zspikedetector. Citlivost |Citlivost pro detektor ZSpike |3 |integer |1-10 |3-5 (méně hodnot znamená citlivější) |
+| sezónnost. Enable |Zda má být provedena analýza sezónnost |true |boolean |true, false |Závislá na časové řadě |
+| sezónnost. numSeasonality |Maximální počet pravidelných cyklů, které se mají zjistit |1 |integer |1, 2 |1-2 |
 | sezónnost. Transform |Zda mají být před použitím detekce anomálií odebrány sezónní (a) komponenty trendu |odsezóny |Výčtový |None, resezóny, deseasontrend |Není k dispozici |
-| postprocess.tailRows |Počet nejnovějších datových bodů, které mají být zachovány ve výstupních výsledcích |0 |celé číslo |0 (zachovat všechny datové body) nebo zadat počet bodů, které mají být uchovávány ve výsledcích |Není k dispozici |
+| postprocess.tailRows |Počet nejnovějších datových bodů, které mají být zachovány ve výstupních výsledcích |0 |integer |0 (zachovat všechny datové body) nebo zadat počet bodů, které mají být uchovávány ve výsledcích |Není k dispozici |
 
 ### <a name="output"></a>Výstup
 Rozhraní API spustí všechny detektory dat časových řad a vrátí skóre anomálií a binární indikátory špičky pro každý bod v čase. V tabulce níže jsou uvedeny výstupy z rozhraní API.

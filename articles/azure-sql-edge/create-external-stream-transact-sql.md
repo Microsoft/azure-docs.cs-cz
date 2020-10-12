@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
 ms.openlocfilehash: e28ce4cd46cb802241e02e4060441747389d3989
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888170"
 ---
 # <a name="create-external-stream-transact-sql"></a>VYTVOŘIT externí datový proud (Transact-SQL)
@@ -27,8 +27,8 @@ Azure SQL Edge aktuálně podporuje jenom následující zdroje dat jako vstupy 
 | Typ zdroje dat | Vstup | Výstup | Description |
 |------------------|-------|--------|------------------|
 | Centrum Azure IoT Edge | Y | Y | Zdroj dat pro čtení a zápis streamovaná data do centra Azure IoT Edge. Další informace najdete v tématu [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
-| SQL Database | N | A | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
-| Kafka | A | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Podpora Kafka není k dispozici pro ARM64 verze Azure SQL Edge.|
+| SQL Database | N | Y | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
+| Kafka | Y | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Podpora Kafka není k dispozici pro ARM64 verze Azure SQL Edge.|
 
 
 
@@ -96,7 +96,7 @@ WITH  ( <with_options> )
 - [FILE_FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql/)
 - **Location**: Určuje název skutečných dat nebo umístění ve zdroji dat. 
    - V případě objektů Edge nebo Kafka datových proudů určuje umístění název centra Edge nebo Kafka pro čtení nebo zápis do.
-   - Pro objekty SQL Stream (SQL Server, Azure SQL Database nebo Azure SQL Edge) umístění Určuje název tabulky. Pokud je datový proud vytvořen ve stejné databázi a schématu jako cílová tabulka, stačí pouze název tabulky. V opačném případě musíte plně kvalifikovat (<database_name. schema_name. table_name) název tabulky.
+   - Pro objekty SQL Stream (SQL Server, Azure SQL Database nebo Azure SQL Edge) umístění Určuje název tabulky. Pokud je datový proud vytvořen ve stejné databázi a schématu jako cílová tabulka, stačí pouze název tabulky. V opačném případě musíte plně kvalifikovat (<název_databáze. schema_name. TABLE_NAME) název tabulky.
    - Pro umístění objektu služby Azure Blob Storage Stream odkazuje na vzor cesty, který se má použít uvnitř kontejneru objektů BLOB. Další informace o této funkci najdete v tématu (/articles/Stream-Analytics/Stream-Analytics-define-Outputs.MD # BLOB-Storage-and-Azure-Data-Lake-Gen2).
 
 - **INPUT_OPTIONS**: Zadejte možnosti jako páry klíč-hodnota pro služby, jako je například Kafka, IoT Edge centrum, které jsou vstupy pro streamování dotazů.

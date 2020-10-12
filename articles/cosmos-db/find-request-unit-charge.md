@@ -8,10 +8,10 @@ ms.date: 09/01/2019
 ms.author: thweiss
 ms.custom: devx-track-js
 ms.openlocfilehash: 81660bee32cace458424c9975c74ca7980148e29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316184"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Najděte poplatek za jednotku žádosti v Azure Cosmos DB
@@ -26,7 +26,7 @@ Pokud používáte rozhraní API SQL, máte k dispozici několik možností, jak
 
 V současné době můžete v Azure Portal vyhledat poplatek za požadavek pouze pro dotaz SQL.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account) a zajistěte ho s daty nebo vyberte existující účet Azure Cosmos, který už obsahuje data.
 
@@ -176,7 +176,7 @@ Poplatek za RU je vystavený pomocí [příkazu vlastní databáze](https://docs
 
 V současné době můžete poplatek za požadavek najít v Azure Portal jenom pro dotaz.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account) a zajistěte ho s daty nebo vyberte existující účet, který už obsahuje data.
 
@@ -188,7 +188,7 @@ V současné době můžete poplatek za požadavek najít v Azure Portal jenom p
 
 1. Vyberte možnost **statistiky dotazů** a zobrazte si skutečný poplatek za požadavek na vámi prováděnou žádost.
 
-:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Snímek obrazovky s požadavkem na požadavek na dotaz MongoDB v Azure Portal":::
+:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Snímek obrazovky s požadavkem na požadavek na dotaz SQL v Azure Portal":::
 
 ### <a name="use-the-mongodb-net-driver"></a>Použití ovladače MongoDB .NET
 

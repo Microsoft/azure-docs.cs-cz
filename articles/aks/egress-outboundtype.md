@@ -7,13 +7,13 @@ ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
 ms.openlocfilehash: d8ae03d52691a6c30f78439a579e7e7c136dda76
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975292"
 ---
-# <a name="customize-cluster-egress-with-a-user-defined-route"></a>Přizpůsobení výstupů clusteru pomocí uživatelsky definované trasy
+# <a name="customize-cluster-egress-with-a-user-defined-route"></a>Přizpůsobení výstupů clusteru pomocí User-Defined trasy
 
 Odchozí přenos dat z clusteru AKS se dá přizpůsobit tak, aby vyhovoval specifickým scénářům. Ve výchozím nastavení AKS zřídí standardní SKU Load Balancer, který se má nastavit a použít k odchozímu přenosu dat. Výchozí nastavení ale nemusí splňovat požadavky všech scénářů, pokud jsou veřejné IP adresy zakázané nebo jsou pro odchozí přenosy nutné další segmenty směrování.
 

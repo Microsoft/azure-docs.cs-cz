@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514531"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>Bezpečné instalace a obsluha zařízení StorSimple
@@ -148,7 +148,7 @@ Pro snížení rizika krátkodobého, požáru, výbuchu, zranění nebo smrti:
 
 ![Oznámení ikony oznámení ](./media/storsimple-safety/IC740881.png) **:**
 
-Při přepravování nebo jinak přepravování baterií pomocí Air postupujte podle pokynů v dokumentu s pokyny k baterii IATA pro baterii v[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
+Při přepravování nebo jinak přepravování baterií pomocí Air postupujte podle pokynů v dokumentu s pokyny k baterii IATA pro baterii v [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
 Po kontrole těchto bezpečnostních oznámení se v dalších krocích rozbalí zařízení do racku a zapojte do jeho kabelu.
 

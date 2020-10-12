@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 646ce94587a9aa1bb8fd20a28b84658994b25cf1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90886530"
 ---
 # <a name="supported-features-of-azure-sql-edge"></a>Podporované funkce Edge SQL Azure 
@@ -52,7 +52,7 @@ Azure SQL Edge podporuje jenom databázový stroj. Nezahrnuje podporu pro dalš�
 Kromě podpory podmnožiny funkcí SQL Server on Linux zahrnuje Azure SQL Edge podporu pro následující nové funkce: 
 
 - Streamování SQL, které je založené na stejném stroji, který plní Azure Stream Analytics, poskytuje možnosti streamování dat v reálném čase v Azure SQL Edge. 
-- Volání funkce T-SQL `Date_Bucket` pro analýzu dat Time-Series.
+- Volání funkce T-SQL `Date_Bucket` pro Time-Series analýzu dat.
 - Možnosti strojového učení prostřednictvím modulu runtime ONNX, který je součástí modulu SQL.
 
 ## <a name="unsupported-features"></a>Nepodporované funkce

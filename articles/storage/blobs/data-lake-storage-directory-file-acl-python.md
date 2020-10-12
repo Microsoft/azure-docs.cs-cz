@@ -10,10 +10,10 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
 ms.openlocfilehash: fc99bc645b48739d6d6339111780047496c1984d
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90017111"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití Pythonu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
@@ -96,7 +96,7 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Kontejner funguje jako systém souborů pro vaše soubory. Můžete jej vytvořit zavoláním metody **FileSystemDataLakeServiceClient. create_file_system** .
+Kontejner funguje jako systém souborů pro vaše soubory. Můžete jej vytvořit voláním metody **FileSystemDataLakeServiceClient.create_file_system** .
 
 Tento příklad vytvoří kontejner s názvem `my-file-system` .
 
@@ -114,7 +114,7 @@ def create_file_system():
 
 ## <a name="create-a-directory"></a>Vytvoření adresáře
 
-Vytvořte odkaz na adresář voláním metody **FileSystemClient. create_directory** .
+Vytvořte odkaz na adresář voláním metody **FileSystemClient.create_directory** .
 
 Tento příklad přidá adresář s názvem `my-directory` do kontejneru. 
 
@@ -129,7 +129,7 @@ def create_directory():
 
 ## <a name="rename-or-move-a-directory"></a>Přejmenování nebo přesunutí adresáře
 
-Přejmenujte nebo přesuňte adresář voláním metody **DataLakeDirectoryClient. rename_directory** . Předejte cestu k požadovanému adresáři do parametru. 
+Přejmenujte nebo přesuňte adresář voláním metody **DataLakeDirectoryClient.rename_directory** . Předejte cestu k požadovanému adresáři do parametru. 
 
 Tento příklad přejmenuje podadresář na název `my-subdirectory-renamed` .
 
@@ -149,7 +149,7 @@ def rename_directory():
 
 ## <a name="delete-a-directory"></a>Odstranění adresáře
 
-Odstraňte adresář voláním metody **DataLakeDirectoryClient. delete_directory** .
+Odstraňte adresář voláním metody **DataLakeDirectoryClient.delete_directory** .
 
 Tento příklad odstraní adresář s názvem `my-directory` .  
 
@@ -166,7 +166,7 @@ def delete_directory():
 
 ## <a name="manage-directory-permissions"></a>Spravovat oprávnění adresáře
 
-Získejte seznam řízení přístupu (ACL) adresáře voláním metody **DataLakeDirectoryClient. get_access_control** a nastavte seznam řízení přístupu voláním metody **DataLakeDirectoryClient. set_access_control** .
+Získejte seznam řízení přístupu (ACL) adresáře voláním metody **DataLakeDirectoryClient.get_access_control** a nastavte seznam řízení přístupu voláním metody **DataLakeDirectoryClient.set_access_control** .
 
 > [!NOTE]
 > Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma  [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
@@ -196,11 +196,11 @@ def manage_directory_permissions():
      print(e) 
 ```
 
-Můžete také získat a nastavit seznam ACL kořenového adresáře kontejneru. Chcete-li získat kořenový adresář, zavolejte metodu **FileSystemClient. _get_root_directory_client** .
+Můžete také získat a nastavit seznam ACL kořenového adresáře kontejneru. Chcete-li získat kořenový adresář, zavolejte metodu **FileSystemClient._get_root_directory_client** .
 
 ## <a name="upload-a-file-to-a-directory"></a>Nahrání souboru do adresáře 
 
-Nejprve vytvořte odkaz na soubor v cílovém adresáři vytvořením instance třídy **DataLakeFileClient** . Nahrajte soubor voláním metody **DataLakeFileClient. append_data** . Ujistěte se, že jste dokončí nahrávání voláním metody **DataLakeFileClient. flush_data** .
+Nejprve vytvořte odkaz na soubor v cílovém adresáři vytvořením instance třídy **DataLakeFileClient** . Nahrajte soubor voláním metody **DataLakeFileClient.append_data** . Nezapomeňte dokončit nahrávání voláním metody **DataLakeFileClient.flush_data** .
 
 Tento příklad nahraje textový soubor do adresáře s názvem `my-directory` .   
 
@@ -226,11 +226,11 @@ def upload_file_to_directory():
 ```
 
 > [!TIP]
-> Pokud je velikost souboru velká, váš kód bude muset provést více volání metody **DataLakeFileClient. append_data** . Místo toho zvažte použití metody **DataLakeFileClient. upload_data** . Tímto způsobem můžete nahrát celý soubor v jednom volání. 
+> Pokud je velikost souboru velká, váš kód bude muset provést více volání metody **DataLakeFileClient.append_data** . Místo toho zvažte použití metody **DataLakeFileClient.upload_data** . Tímto způsobem můžete nahrát celý soubor v jednom volání. 
 
 ## <a name="upload-a-large-file-to-a-directory"></a>Nahrání velkého souboru do adresáře
 
-Pro nahrání velkých souborů použijte metodu **DataLakeFileClient. upload_data** , aniž byste museli provádět více volání metody **DataLakeFileClient. append_data** .
+Použijte metodu **DataLakeFileClient.upload_data** pro nahrání velkých souborů, aniž by bylo nutné provádět více volání metody **DataLakeFileClient.append_data** .
 
 ```python
 def upload_file_to_directory_bulk():
@@ -254,7 +254,7 @@ def upload_file_to_directory_bulk():
 
 ## <a name="manage-file-permissions"></a>Správa oprávnění k souborům
 
-Získání seznamu řízení přístupu (ACL) souboru voláním metody **DataLakeFileClient. get_access_control** a nastavením seznamu ACL voláním metody **DataLakeFileClient. set_access_control** .
+Získání seznamu řízení přístupu (ACL) souboru voláním metody **DataLakeFileClient.get_access_control** a nastavením seznamu ACL voláním metody **DataLakeFileClient.set_access_control** .
 
 > [!NOTE]
 > Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma  [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
@@ -288,7 +288,7 @@ def manage_file_permissions():
 
 ## <a name="download-from-a-directory"></a>Stažení z adresáře 
 
-Otevřete místní soubor pro zápis. Pak vytvořte instanci **DataLakeFileClient** , která představuje soubor, který chcete stáhnout. Zavolejte **DataLakeFileClient. read_file** pro čtení bajtů ze souboru a pak zapište tyto bajty do místního souboru. 
+Otevřete místní soubor pro zápis. Pak vytvořte instanci **DataLakeFileClient** , která představuje soubor, který chcete stáhnout. Zavolejte **DataLakeFileClient.read_file** pro čtení bajtů ze souboru a pak zapište tyto bajty do místního souboru. 
 
 ```python
 def download_file_from_directory():
@@ -314,7 +314,7 @@ def download_file_from_directory():
 ```
 ## <a name="list-directory-contents"></a>Výpis obsahu adresáře
 
-Výpis obsahu adresáře voláním metody **FileSystemClient. get_paths** a následným vytvořením výčtu výsledků.
+Výpis obsahu adresáře voláním metody **FileSystemClient.get_paths** a následným vytvořením výčtu výsledků.
 
 Tento příklad vytiskne cestu každého podadresáře a souboru, který se nachází v adresáři s názvem `my-directory` .
 

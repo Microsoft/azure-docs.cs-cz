@@ -10,10 +10,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 63841bd603373d0fb325bcf82511ce3fb07b4136
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91315180"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>Kurz: odeslání nabízených oznámení na zařízení s Androidem pomocí sady Firebase SDK verze 1.0.0-preview1
@@ -30,7 +30,7 @@ Tento kurz se zabývá následujícími kroky:
 - Připojte aplikaci k centru.
 - Otestujete aplikaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/free/).
 
@@ -62,23 +62,23 @@ Prvním krokem je vytvoření projektu v Android Studio:
 
 2. Po vytvoření projektu vyberte **Přidat Firebase do aplikace pro Android**.
 
-   :::image type="content" source="media/android-sdk/get-started.png" alt-text="Přidat Firebase":::
+   :::image type="content" source="media/android-sdk/get-started.png" alt-text="Konfigurovat projekt":::
 
 3. Na stránce **Přidat Firebase na svou aplikaci pro Android**   udělejte toto:
 
    1. V případě **názvu balíčku Android**Zkopírujte hodnotu **ApplicationId**   do souboru **Build. Gradle** vaší aplikace. V tomto příkladu je to  `com.fabrikam.fcmtutorial1app` .
 
-      :::image type="content" source="media/android-sdk/specify-package-name-fcm-settings.png" alt-text="Zadat název balíčku":::
+      :::image type="content" source="media/android-sdk/specify-package-name-fcm-settings.png" alt-text="Konfigurovat projekt":::
 
    2. Vyberte **Registrovat aplikaci**.
 
 4. Vyberte **stáhnout google-services.jsna**, uložte soubor do složky **aplikace**   projektu a pak vyberte **Další**.
 
-   :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="Stáhnout službu Google":::
+   :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="Konfigurovat projekt":::
 
 5. V konzole Firebase vyberte kolečko pro váš projekt. Pak vyberte **nastavení projektu**.
 
-   :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="Nastavení projektu":::
+   :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="Konfigurovat projekt":::
 
 6. Pokud jste nestáhli **google-services.js** do složky **aplikace**   projektu Android Studio, můžete to udělat na této stránce.
 
@@ -94,7 +94,7 @@ Prvním krokem je vytvoření projektu v Android Studio:
 
 3. Na stránce **Notification Hubs**   Vyberte **Přidat**   na panelu nástrojů.
 
-   :::image type="content" source="media/android-sdk/add-hub.png" alt-text="Přidat centrum":::
+   :::image type="content" source="media/android-sdk/add-hub.png" alt-text="Konfigurovat projekt":::
 
 4. Na stránce **Notification Hubs**   postupujte takto:
 
@@ -108,15 +108,15 @@ Prvním krokem je vytvoření projektu v Android Studio:
 
    5. Vyberte **vytvořit**.
 
-      :::image type="content" source="media/android-sdk/create-hub.png" alt-text="Vytvořit centrum":::
+      :::image type="content" source="media/android-sdk/create-hub.png" alt-text="Konfigurovat projekt":::
 
 5. Vyberte **oznámení**   (ikona zvonku) a pak vyberte **Přejít k prostředku**. Můžete také aktualizovat seznam na stránce **Notification Hubs**   a vybrat své centrum.
 
-   :::image type="content" source="media/android-sdk/notification-hubs.png" alt-text="Vybrat centrum":::
+   :::image type="content" source="media/android-sdk/notification-hubs.png" alt-text="Konfigurovat projekt":::
 
 6. V seznamu vyberte **zásady přístupu**   . Všimněte si, že jsou k dispozici dva připojovací řetězce. Budete je potřebovat později pro zpracování nabízených oznámení.
 
-   :::image type="content" source="media/android-sdk/access-policies.png" alt-text="Zásady přístupu":::
+   :::image type="content" source="media/android-sdk/access-policies.png" alt-text="Konfigurovat projekt":::
 
    > [!IMPORTANT]
    > V aplikaci nepoužívejte zásady **DefaultFullSharedAccessSignature**   . Tato zásada se použije jenom v back-endu aplikace.
@@ -129,7 +129,7 @@ Prvním krokem je vytvoření projektu v Android Studio:
 
 3. Na panelu nástrojů vyberte **Uložit**.
 
-   :::image type="content" source="media/android-sdk/fcm-server-key.png" alt-text="Klíč serveru":::
+   :::image type="content" source="media/android-sdk/fcm-server-key.png" alt-text="Konfigurovat projekt":::
 
 4. Azure Portal zobrazí zprávu, že centrum bylo úspěšně aktualizováno. Tlačítko **Uložit**   je zakázané.
 
@@ -143,15 +143,15 @@ Vaše centrum oznámení je teď nakonfigurované tak, aby fungovalo s Firebasem
 
 2. Vyberte cílovou verzi Android SDK, která se používá ve vašem projektu. Pak vyberte **Zobrazit podrobnosti balíčku**.
 
-   :::image type="content" source="media/android-sdk/notification-hubs-android-studio-sdk-manager.png" alt-text="Správce sady SDK":::
+   :::image type="content" source="media/android-sdk/notification-hubs-android-studio-sdk-manager.png" alt-text="Konfigurovat projekt":::
 
 3. Vyberte **Google API**, pokud ještě není nainstalovaná.
 
-   :::image type="content" source="media/android-sdk/google-apis-selected.png" alt-text="Rozhraní API":::
+   :::image type="content" source="media/android-sdk/google-apis-selected.png" alt-text="Konfigurovat projekt":::
 
 4. Přepněte na kartu **SDK Tools**   . Pokud jste ještě nenainstalovali Služby Google Play, vyberte **služby Google Play**,   jak je znázorněno na následujícím obrázku. Pak vyberte **použít**   k instalaci. Poznamenejte si cestu k sadě SDK, abyste ji mohli použít později.
 
-   :::image type="content" source="media/android-sdk/google-play-services-selected.png" alt-text="Služby hraní":::
+   :::image type="content" source="media/android-sdk/google-play-services-selected.png" alt-text="Konfigurovat projekt":::
 
 5. Pokud se zobrazí dialogové okno **Potvrdit změnu**   , vyberte **OK**. Instalační program součásti nainstaluje požadované součásti.  **Finish**   Po instalaci součástí vyberte Dokončit.
 
@@ -237,11 +237,11 @@ Vaše centrum oznámení je teď nakonfigurované tak, aby fungovalo s Firebasem
 
 4. Ujistěte se, že máte k dispozici virtuální zařízení pro spuštění aplikace. Pokud žádný nemáte, přidejte ho následujícím způsobem:
 
-   1. :::image type="content" source="media/android-sdk/open-device-manager.png" alt-text="Správce zařízení":::
-   2. :::image type="content" source="media/android-sdk/your-virtual-devices.png" alt-text="Virtuální zařízení":::
+   1. :::image type="content" source="media/android-sdk/open-device-manager.png" alt-text="Konfigurovat projekt":::
+   2. :::image type="content" source="media/android-sdk/your-virtual-devices.png" alt-text="Konfigurovat projekt":::
    3. Spusťte aplikaci na vybraném zařízení a ověřte, že se do centra úspěšně zaregistruje.
 
-      :::image type="content" source="media/android-sdk/device-registration.png" alt-text="Registrace zařízení":::
+      :::image type="content" source="media/android-sdk/device-registration.png" alt-text="Konfigurovat projekt":::
 
       > [!NOTE]
       > Při počátečním spuštění může být registrace neúspěšná, dokud nebude `onTokenRefresh()` volána metoda služby ID instance. Aktualizace by měla zahájit úspěšnou registraci v centru oznámení.
@@ -258,7 +258,7 @@ Nabízená oznámení můžete odesílat do centra oznámení z [Azure Portal](
 
 4. Podívejte se na výsledek operace v seznamu v dolní části stránky portálu.
 
-   :::image type="content" source="media/android-sdk/notification-hubs-test-send.png" alt-text="Poslat zkušební oznámení":::
+   :::image type="content" source="media/android-sdk/notification-hubs-test-send.png" alt-text="Konfigurovat projekt":::
 
 5. Na zařízení se zobrazí zpráva s oznámením.
 

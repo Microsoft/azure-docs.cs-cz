@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 278fbdf7010fe7b14488bb021ab8a366393ad512
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087358"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Použití nástroje MirrorMaker k replikaci témat Apache Kafka s využitím platformy Kafka ve službě HDInsight
@@ -65,7 +65,7 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
 
     |Skupina prostředků | Umístění |
     |---|---|
-    | Kafka – primární – RG | USA – střed |
+    | Kafka – primární – RG | Střední USA |
     | Kafka – sekundární – RG | USA – středosever |
 
 1. Vytvořte novou virtuální síť **Kafka-Primary-VNet** v **Kafka-Primary-RG**. Ponechte výchozí nastavení.
@@ -73,7 +73,7 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
 
 1. Vytvořte dva nové clustery Kafka:
 
-    | Název clusteru | Skupina prostředků | Virtual Network | Účet úložiště |
+    | Název clusteru | Resource Group | Virtual Network | Účet úložiště |
     |---|---|---|---|
     | Kafka-Primary-cluster | Kafka – primární – RG | Kafka-Primary-VNet | kafkaprimarystorage |
     | Kafka-Secondary-cluster | Kafka – sekundární – RG | Kafka-Secondary-VNet | kafkasecondarystorage |
@@ -81,7 +81,7 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
 1. Vytvořte partnerské vztahy virtuálních sítí. V tomto kroku vytvoříte dvě partnerské vztahy: jednu z **Kafka-Primary-** VNet na **Kafka-Secondary-VNet** a jednu zpět od **Kafka-Secondary-VNet** až **Kafka-Primary-VNet**.
     1. Vyberte virtuální síť **Kafka-Primary-VNet** .
     1. V části **Nastavení**vyberte **partnerské vztahy** .
-    1. Vyberte možnost **Přidat**.
+    1. Vyberte **Přidat**.
     1. Na obrazovce **Přidat partnerský vztah** zadejte podrobnosti, jak je znázorněno na snímku obrazovky níže.
 
         ![HDInsight Kafka Přidání partnerského vztahu virtuální sítě](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)

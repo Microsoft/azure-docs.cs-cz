@@ -8,10 +8,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: fcf7620f53c9bfdb51eb62598f2c8b441574eca6
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90006076"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub"></a>Zastaralost TLS 1,0 a 1,1 v IoT Hub

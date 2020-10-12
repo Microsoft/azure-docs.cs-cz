@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.openlocfilehash: 0387b4363a438ac48142d97b2a829faf38f1895d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87036654"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Monitorování a správa úloh Stream Analytics pomocí rutin Azure PowerShell
@@ -465,7 +465,7 @@ Remove-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Centra
 
 Tento příkaz PowerShellu odstraní výstupní výstup ve StreamingJob úlohy.  
 
-### <a name="start-azurestreamanalyticsjob--start-azstreamanalyticsjob"></a>Start – AzureStreamAnalyticsJob | Spustit – AzStreamAnalyticsJob
+### <a name="start-azurestreamanalyticsjob--start-azstreamanalyticsjob"></a>Start-AzureStreamAnalyticsJob | Start-AzStreamAnalyticsJob
 Asynchronně nasadí a spustí úlohu Stream Analytics v Microsoft Azure.
 
 **Příklad 1**
@@ -484,7 +484,7 @@ Start-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US
 
 Tento příkaz prostředí PowerShell spustí StreamingJob úlohy s vlastním počátečním časem výstupu nastaveným na 12. prosince 2012, 12:12:12 UTC.
 
-### <a name="stop-azurestreamanalyticsjob--stop-azstreamanalyticsjob"></a>Stop – AzureStreamAnalyticsJob | Stop – AzStreamAnalyticsJob
+### <a name="stop-azurestreamanalyticsjob--stop-azstreamanalyticsjob"></a>Stop-AzureStreamAnalyticsJob | Stop-AzStreamAnalyticsJob
 Asynchronně zastaví spuštění úlohy Stream Analytics v Microsoft Azure a zruší přidělení prostředků, které byly použity. Definice úlohy a metadata zůstanou v rámci vašeho předplatného k dispozici prostřednictvím rozhraní API pro Azure Portal i správu, aby bylo možné úlohu upravovat a restartovat. Úloha se vám nebude účtovat ve stavu Zastaveno.
 
 **Příklad 1**
@@ -503,7 +503,7 @@ Stop-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US 
 
 Tento příkaz PowerShellu zastaví StreamingJob úlohy.  
 
-### <a name="test-azurestreamanalyticsinput--test-azstreamanalyticsinput"></a>Test – AzureStreamAnalyticsInput | Test – AzStreamAnalyticsInput
+### <a name="test-azurestreamanalyticsinput--test-azstreamanalyticsinput"></a>Test-AzureStreamAnalyticsInput | Test-AzStreamAnalyticsInput
 Testuje schopnost Stream Analytics připojit k zadanému vstupu.
 
 **Příklad 1**
@@ -522,7 +522,7 @@ Test-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-U
 
 Tento příkaz prostředí PowerShell testuje stav připojení vstupních EntryStream v StreamingJob.  
 
-### <a name="test-azurestreamanalyticsoutput--test-azstreamanalyticsoutput"></a>Test – AzureStreamAnalyticsOutput | Test – AzStreamAnalyticsOutput
+### <a name="test-azurestreamanalyticsoutput--test-azstreamanalyticsoutput"></a>Test-AzureStreamAnalyticsOutput | Test-AzStreamAnalyticsOutput
 Testuje schopnost Stream Analytics připojit k zadanému výstupu.
 
 **Příklad 1**
@@ -541,7 +541,7 @@ Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-
 
 Tento příkaz prostředí PowerShell testuje stav připojení výstupního výstupu v StreamingJob.  
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html). 
 
 ## <a name="next-steps"></a>Další kroky

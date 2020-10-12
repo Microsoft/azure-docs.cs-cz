@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/22/2020
 ms.openlocfilehash: 92cc94170a01aceaa3e6bd058f4ae6628db04f18
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87529581"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopírování dat z SAP HANA pomocí Azure Data Factory
@@ -116,7 +116,7 @@ Pro SAP HANA propojenou službu jsou podporovány následující vlastnosti:
 
 Pokud jste používali SAP HANA propojenou službu s následující datovou částí, je stále podporovaná tak, jak je, a až budete chtít začít používat novinku dál.
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -150,9 +150,9 @@ Chcete-li kopírovat data z SAP HANA, jsou podporovány následující vlastnost
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **SapHanaTable** . | Yes |
 | schema | Název schématu v databázi SAP HANA. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
-| table | Název tabulky v databázi SAP HANA. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
+| stolu | Název tabulky v databázi SAP HANA. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -189,12 +189,12 @@ Chcete-li kopírovat data z SAP HANA, jsou v části **zdroje** aktivity kopíro
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SapHanaSource** . | Yes |
 | query | Určuje dotaz SQL pro čtení dat z instance SAP HANA. | Yes |
-| partitionOptions | Určuje možnosti dělení dat používané k ingestování dat z SAP HANA. Další informace najdete v části [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) .<br>Povolené hodnoty jsou: **none**   (default), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Další informace najdete v části [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) . `PhysicalPartitionsOfTable`lze ji použít pouze při kopírování dat z tabulky, ale nikoli dotazů. <br>Pokud je možnost oddílu povolena (tj. ne `None` ), stupeň paralelismu na souběžně načtená data z SAP HANA řídí [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) Nastavení aktivity kopírování. | Ne |
-| partitionSettings | Určete skupinu nastavení pro dělení dat.<br>Použijte, pokud je možnost oddílu `SapHanaDynamicRange` . | Ne |
+| partitionOptions | Určuje možnosti dělení dat používané k ingestování dat z SAP HANA. Další informace najdete v části  [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) .<br>Povolené hodnoty jsou: **none**   (default), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Další informace najdete v části  [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) . `PhysicalPartitionsOfTable` lze ji použít pouze při kopírování dat z tabulky, ale nikoli dotazů. <br>Pokud je možnost oddílu povolena (tj. ne `None` ), stupeň paralelismu na souběžně načtená data z SAP HANA řídí [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) Nastavení aktivity kopírování. | Nepravda |
+| partitionSettings | Určete skupinu nastavení pro dělení dat.<br>Použijte, pokud je možnost oddílu `SapHanaDynamicRange` . | Nepravda |
 | partitionColumnName | Zadejte název zdrojového sloupce, který bude oddíl používat pro paralelní kopírování. Pokud není zadaný, index nebo primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition.<br>Použijte, pokud je parametr partition  `SapHanaDynamicRange` . Pokud použijete dotaz k načtení zdrojových dat, zapojte  `?AdfHanaDynamicRangePartitionCondition` v klauzuli WHERE. Viz příklad v sekci [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) . | Ano Při použití `SapHanaDynamicRange` oddílu |
 | packetSize | Určuje velikost síťového paketu (v kilobajtech) pro rozdělení dat na více bloků. Pokud máte velké množství dat ke kopírování, zvýšení velikosti paketu může zvýšit rychlost čtení z SAP HANA ve většině případů. Při úpravě velikosti paketu se doporučuje testování výkonu. | Ne.<br>Výchozí hodnota je 2048 (2 MB). |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -278,17 +278,17 @@ Při kopírování dat z SAP HANA se z SAP HANA datových typů používají ná
 | PŘÍZNAKY               | Byte []                         |
 | LOGICK               | Byte                           |
 | DATOVÝ typ CLOB               | Řetězec                         |
-| DATE (Datum)               | DateTime                       |
-| NOTACI            | Desetinné číslo                        |
+| DATE               | DateTime                       |
+| NOTACI            | Decimal                        |
 | KLEPAT             | dvojité                         |
 | Plovák              | dvojité                         |
 | CELÉ ČÍSLO            | Int32                          |
 | NCLOB              | Řetězec                         |
 | NVARCHAR           | Řetězec                         |
-| REÁLNÉ               | Jeden                         |
+| REÁLNÉ               | Jednoduché                         |
 | SECONDDATE         | DateTime                       |
 | SHORTTEXT          | Řetězec                         |
-| SMALLDECIMAL       | Desetinné číslo                        |
+| SMALLDECIMAL       | Decimal                        |
 | SMALLINT           | Int16                          |
 | STGEOMETRYTYPE     | Byte []                         |
 | STPOINTTYPE        | Byte []                         |

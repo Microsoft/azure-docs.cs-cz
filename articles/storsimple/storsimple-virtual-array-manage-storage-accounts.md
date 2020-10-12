@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 8267a678f35d01119ae3e7d89a07c789dc969614
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85507496"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Použití Device Manager StorSimple ke správě přihlašovacích údajů účtu úložiště pro virtuální pole StorSimple
@@ -69,13 +69,13 @@ K přidání přihlašovacích údajů k účtu úložiště Azure použijte ná
 
 1. Přejděte ke službě Device Manager, vyberte ji a dvakrát na ni klikněte. Tím se otevře okno **Přehled** .
 2. V části **Konfigurace** vyberte **přihlašovací údaje účtu úložiště** .
-3. Klikněte na tlačítko **Add** (Přidat).
+3. Klikněte na **Přidat**.
 4. V okně **Přidat účet úložiště** udělejte toto:
    
     1. V **předplatném**vyberte **aktuální**.
     2. Zadejte název svého účtu úložiště Azure.
     3. Pokud chcete vytvořit zabezpečený kanál pro síťovou komunikaci mezi zařízením StorSimple a cloudem, vyberte **Povolit** . Vyberte možnost **Zakázat** pouze v případě, že pracujete v rámci privátního cloudu.
-    4. Klikněte na tlačítko **Add** (Přidat). Po úspěšném vytvoření účtu úložiště se zobrazí oznámení.<br></br>
+    4. Klikněte na **Přidat**. Po úspěšném vytvoření účtu úložiště se zobrazí oznámení.<br></br>
    
         ![Přidat existující přihlašovací údaje účtu úložiště](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
@@ -83,7 +83,7 @@ K přidání přihlašovacích údajů k účtu úložiště Azure použijte ná
 
 1. Přejděte ke službě Device Manager, vyberte ji a dvakrát na ni klikněte. Tím se otevře okno **Přehled** .
 2. V části **Konfigurace** vyberte **přihlašovací údaje účtu úložiště** . Tato seznam obsahuje všechna existující pověření účtu úložiště přidružená ke službě StorSimple Device Manager.
-3. Klikněte na tlačítko **Add** (Přidat).
+3. Klikněte na **Přidat**.
 4. V okně **Přidat účet úložiště** udělejte toto:
    
     1. U **předplatného**vyberte **jiné**.
@@ -94,7 +94,7 @@ K přidání přihlašovacích údajů k účtu úložiště Azure použijte ná
    
     4. Pokud chcete povolit protokol TLS, klikněte na tlačítko **Povolit** a vytvořte zabezpečený kanál pro síťovou komunikaci mezi službou StorSimple Device Manager a cloudem. Klikněte na tlačítko **Zakázat** jenom v případě, že pracujete v privátním cloudu.
    
-    5. Klikněte na tlačítko **Add** (Přidat). Po úspěšném vytvoření přihlašovacích údajů účtu úložiště se zobrazí oznámení.
+    5. Klikněte na **Přidat**. Po úspěšném vytvoření přihlašovacích údajů účtu úložiště se zobrazí oznámení.
 
 5. Nově vytvořené přihlašovací údaje účtu úložiště se zobrazí v okně StorSimple konfigurace služby Device Manager v části **přihlašovací údaje účtu úložiště**.
    

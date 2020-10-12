@@ -4,10 +4,10 @@ description: Popisuje parametry týkající se upgradu aplikace Service Fabric, 
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.openlocfilehash: 6b6116bf1188fcf191b2d672e6c698bb3c050e6c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247961"
 ---
 # <a name="application-upgrade-parameters"></a>Parametry upgradu aplikace
@@ -33,7 +33,7 @@ Parametry upgradu aplikace Visual Studio Service Fabric se nastavují prostředn
 ### <a name="required-parameters"></a>Požadované parametry
 (PS = PowerShell, VS = Visual Studio)
 
-| Parametr | Platí pro | Popis |
+| Parametr | Platí pro | Description |
 | --- | --- | --- |
 ApplicationName |PS| Název aplikace, která se upgraduje Příklady: Fabric:/VisualObjects, Fabric:/ClusterMonitor. |
 ApplicationTypeVersion|PS|Verze typu aplikace, na kterou se upgrade zaměřuje |
@@ -48,11 +48,11 @@ UnmonitoredManual | PS | Indikuje, že režim upgradu není monitorovaný ručn�
 Parametry vyhodnocení stavu jsou volitelné. Pokud kritéria hodnocení stavu nejsou určena při spuštění upgradu, Service Fabric používá zásady stavu aplikace zadané v ApplicationManifest.xml instance aplikace.
 
 > [!div class="mx-tdBreakAll"]
-> | Parametr | Platí pro | Popis |
+> | Parametr | Platí pro | Description |
 > | --- | --- | --- |
 > | ApplicationParameter |PS, VS| Určuje přepsání parametrů aplikace.<br>Parametry aplikace PowerShell jsou zadány jako páry název/hodnota zatřiďovací tabulky. Například @ {"VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1"}.<br>Parametry aplikace Visual Studio lze zadat v dialogovém okně Publikovat Service Fabric aplikaci v poli **soubor parametrů aplikace** .
 > | Confirm |PS| Povolené hodnoty jsou **true** a **false**. Před spuštěním rutiny zobrazí výzvu k potvrzení. |
-> | ConsiderWarningAsError |PS, VS |Povolené hodnoty jsou **true** a **false**. Výchozí je hodnota **False**. Považovat události stavu varování za chyby při vyhodnocování stavu aplikace během upgradu. Ve výchozím nastavení Service Fabric nevyhodnocují události stavu upozornění na chyby (chyby), takže upgrade může pokračovat i v případě, že dojde k událostem upozornění. |
+> | ConsiderWarningAsError |PS, VS |Povolené hodnoty jsou **true** a **false**. Výchozí hodnota je **false**. Považovat události stavu varování za chyby při vyhodnocování stavu aplikace během upgradu. Ve výchozím nastavení Service Fabric nevyhodnocují události stavu upozornění na chyby (chyby), takže upgrade může pokračovat i v případě, že dojde k událostem upozornění. |
 > | DefaultServiceTypeHealthPolicy | PS, VS |Určuje zásady stavu pro výchozí typ služby, který se má použít pro monitorovaný upgrade ve formátu MaxPercentUnhealthyPartitionsPerService, MaxPercentUnhealthyReplicasPerPartition, MaxPercentUnhealthyServices. Například 5, 10, 15 označuje následující hodnoty: MaxPercentUnhealthyPartitionsPerService = 5, MaxPercentUnhealthyReplicasPerPartition = 10, MaxPercentUnhealthyServices = 15. |
 > | Force | PS, VS | Povolené hodnoty jsou **true** a **false**. Indikuje, že proces upgradu přeskočí zprávu upozornění a vynutí upgrade i v případě, že se číslo verze nezměnilo. To je užitečné pro místní testování, ale nedoporučujeme je používat v produkčním prostředí, protože vyžaduje odebrání stávajícího nasazení, které způsobuje výpadky a potenciální ztrátu dat. |
 > | ForceRestart |PS, VS |Pokud aktualizujete konfigurační nebo datový balíček bez aktualizace kódu služby, služba se restartuje pouze v případě, že je vlastnost ForceRestart nastavena na **hodnotu true**. Po dokončení aktualizace Service Fabric upozorní službu, že je k dispozici nový konfigurační balíček nebo datový balíček. Služba je zodpovědná za použití změn. V případě potřeby se služba může sám restartovat. |
@@ -101,7 +101,7 @@ Služba – stav – zásady | Mapa zakódovaná pomocí formátu JSON s typem s
 timeout | Určuje časový limit pro operaci v sekundách. Výchozí: 60. |
 upgrade-doména – časový limit | Doba, po kterou musí být každá upgradovací doména dokončena před provedením *FailureAction* . Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. Výchozí hodnota není nikdy (Infinitá) a měla by být vhodně přizpůsobená pro vaši aplikaci. Výchozí: P10675199DT02H48M 05.4775807 S. |
 upgrade – časový limit | Doba, po kterou musí být každá upgradovací doména dokončena před provedením *FailureAction* . Je nejprve interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepovede, interpretuje se jako číslo představující celkový počet milisekund. Výchozí hodnota není nikdy (Infinitá) a měla by být vhodně přizpůsobená pro vaši aplikaci. Výchozí: P10675199DT02H48M 05.4775807 S.|
-upozornění – jako chyba | Povolené hodnoty jsou **true** a **false**. Výchozí je hodnota **False**. Může být předán jako příznak. Považovat události stavu varování za chyby při vyhodnocování stavu aplikace během upgradu. Ve výchozím nastavení Service Fabric nevyhodnocují události stavu upozornění na chyby (chyby), takže upgrade může pokračovat i v případě, že dojde k událostem upozornění. |
+upozornění – jako chyba | Povolené hodnoty jsou **true** a **false**. Výchozí hodnota je **false**. Může být předán jako příznak. Považovat události stavu varování za chyby při vyhodnocování stavu aplikace během upgradu. Ve výchozím nastavení Service Fabric nevyhodnocují události stavu upozornění na chyby (chyby), takže upgrade může pokračovat i v případě, že dojde k událostem upozornění. |
 
 ## <a name="next-steps"></a>Další kroky
 [Upgrade aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md) vás provede upgradem aplikace pomocí sady Visual Studio.

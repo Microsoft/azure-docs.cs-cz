@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 711f5293b205c1f500c6d9e08154342285ef959b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87033192"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft. Network. VirtualNetworkCombo – element uživatelského rozhraní
@@ -107,8 +107,8 @@ Když uživatel vybere existující virtuální síť, musí namapovat každou p
 
 - Je-li tento parametr zadán, je první překrývající se předpona adresy `defaultValue.addressPrefixSize` určena automaticky v závislosti na stávajících virtuálních sítích v rámci předplatného uživatele.
 - Výchozí hodnota pro `defaultValue.name` a `defaultValue.addressPrefixSize` je **null**.
-- `constraints.minAddressPrefixSize`je nutné zadat. Všechny existující virtuální sítě s adresním prostorem menším než zadaná hodnota nejsou k dispozici pro výběr.
-- `subnets`musí se zadat a `constraints.minAddressPrefixSize` musí se zadat pro každou podsíť.
+- `constraints.minAddressPrefixSize` je nutné zadat. Všechny existující virtuální sítě s adresním prostorem menším než zadaná hodnota nejsou k dispozici pro výběr.
+- `subnets` musí se zadat a `constraints.minAddressPrefixSize` musí se zadat pro každou podsíť.
 - Při vytváření nové virtuální sítě se předpona adresy každé podsítě počítá automaticky na základě předpony adresy virtuální sítě a příslušné `addressPrefixSize` .
 - Při použití existující virtuální sítě `constraints.minAddressPrefixSize` nejsou pro výběr k dispozici žádné podsítě, které jsou menší než příslušné. Pokud je tato možnost zadána, `minAddressCount` nebudou pro výběr k dispozici podsítě, které nemají alespoň dostupné adresy. Výchozí hodnota je **0**. Chcete-li zajistit, aby byly dostupné adresy souvislé, zadejte **hodnotu true** pro `requireContiguousAddresses` . Výchozí hodnota je **true (pravda**).
 - Vytváření podsítí v existující virtuální síti se nepodporuje.
