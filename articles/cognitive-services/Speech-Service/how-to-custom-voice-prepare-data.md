@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: 5427e9f996fb77d455aa8064fc7cb1c65e1fcf7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74805973"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Příprava dat pro vytvoření vlastního hlasu
@@ -53,7 +53,7 @@ Chcete-li vytvořit dobré písmo hlasu, vytvořte nahrávky v tiché místnosti
 
 ### <a name="audio-files"></a>Zvukové soubory
 
-Každý zvukový soubor by měl obsahovat jednu utterance (jednu větu nebo jednu sadu dialogových oken), která trvá méně než 15 sekund. Všechny soubory musí být ve stejném mluveném jazyce. Vlastní hlasy textu na řeč ve více jazycích nejsou podporované, s výjimkou české jazykové verze čínského jazyka. Každý zvukový soubor musí mít jedinečný číselný název souboru s příponou názvu souboru. wav.
+Každý zvukový soubor by měl obsahovat jednu utterance (jednu větu nebo jednu sadu dialogových oken), která trvá méně než 15 sekund. Všechny soubory musí být ve stejném mluveném jazyce. Vlastní hlasy textu na řeč ve více jazycích nejsou podporované, s výjimkou Chinese-Englishch obousměrných jazyků. Každý zvukový soubor musí mít jedinečný číselný název souboru s příponou názvu souboru. wav.
 
 Při přípravě zvuku postupujte podle těchto pokynů.
 
@@ -61,7 +61,7 @@ Při přípravě zvuku postupujte podle těchto pokynů.
 | -------- | ----- |
 | Formát souboru | RIFF (. wav) seskupené do souboru. zip |
 | Vzorkovací frekvence | Minimálně 16 000 Hz |
-| Vzorový formát | PCM, 16 bitů |
+| Formát ukázky | PCM, 16 bitů |
 | Název souboru | Číslo s příponou. wav. Nejsou povoleny žádné duplicitní názvy souborů. |
 | Délka zvuku | Kratší než 15 sekund |
 | Formát archivu | .zip |
@@ -112,7 +112,7 @@ Při přípravě zvuku pro segmentaci postupujte podle těchto pokynů.
 | Formát archivu | .zip |
 | Maximální velikost archivu | 2048 MB |
 
-Všechny zvukové soubory by se měly seskupovat do souboru ZIP. Soubory. wav a soubory. mp3 můžete vložit do jednoho zvukového souboru ZIP. Můžete například nahrát soubor ZIP obsahující zvukový soubor s názvem "kingstory. wav", 45-Second-Long a jiný zvuk s názvem "queenstory. mp3", 200-Second-Long. Všechny soubory. mp3 se po zpracování transformují do formátu. wav.
+Všechny zvukové soubory by se měly seskupovat do souboru ZIP. Soubory. wav a soubory. mp3 můžete vložit do jednoho zvukového souboru ZIP. Například můžete nahrát soubor ZIP obsahující zvukový soubor s názvem "kingstory. wav", 45-Second-Long a jiný zvuk s názvem "queenstory.mp3", 200-Second-Long. Všechny soubory. mp3 se po zpracování transformují do formátu. wav.
 
 ### <a name="transcripts"></a>Přepisů
 
@@ -126,7 +126,7 @@ Přepisy musí být připravené ke specifikacím uvedeným v této tabulce. Ka�
 | Počet promluv na řádek | Bez omezení |
 | Maximální velikost souboru | 2048 MB |
 
-Všechny soubory přepisů v tomto datovém typu by se měly seskupovat do souboru ZIP. Například jste nahráli soubor ZIP obsahující zvukový soubor s názvem "kingstory. wav", 45 sekund dlouhý a druhý s názvem "queenstory. mp3", 200 sekund. Budete potřebovat nahrát další soubor zip, který obsahuje dva přepisy, jeden s názvem ' kingstory. txt ', druhý soubor ' queenstory. txt '. V každém souboru s prostým textem vám poskytneme úplný přepis pro odpovídající zvuk.
+Všechny soubory přepisů v tomto datovém typu by se měly seskupovat do souboru ZIP. Například jste nahráli soubor ZIP obsahující zvukový soubor s názvem "kingstory. wav", 45 sekund dlouhý a druhý s názvem "queenstory.mp3", 200 sekund. Budete potřebovat nahrát další soubor zip, který obsahuje dva přepisy, jeden s názvem kingstory.txt, druhý queenstory.txt. V každém souboru s prostým textem vám poskytneme úplný přepis pro odpovídající zvuk.
 
 Po úspěšném nahrání datové sady vám pomůžeme segmentovat zvukový soubor na projevy na základě poskytnutého přepisu. Můžete kontrolovat segmentované projevy a vyhovující přepisy stažením datové sady. K segmentované projevy se automaticky přiřazují jedinečná ID. Je důležité, abyste se ujistili, že přepisy, které poskytnete, jsou 100% přesné. Chyby v přepisech můžou snížit přesnost během segmentace zvuku a dále zavádět ztráty kvality ve fázi školení, která přichází později.
 

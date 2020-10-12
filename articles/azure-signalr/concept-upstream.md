@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
 ms.openlocfilehash: c3e317a87ba888fac3c069cc5327bd89c859e9de
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89514233"
 ---
 # <a name="upstream-settings"></a>Nastavení pro upstream
@@ -34,7 +34,7 @@ V případě, že dojde k zadané události, jsou kontrolována pravidla položk
 
 Můžete parametrizovat adresu URL pro podporu různých vzorů. Existují tři předdefinované parametry:
 
-|Předdefinovaný parametr|Popis|
+|Předdefinovaný parametr|Description|
 |---------|---------|
 |zdroj| Centrum je koncept služby Azure Signal. Centrum je jednotka izolace. Rozsah uživatelů a doručování zpráv je omezen na centrum.|
 |kategorií| Kategorie může být jedna z následujících hodnot: <ul><li>**připojení**: události doby života připojení. Je aktivována, když je připojení klienta připojeno nebo odpojeno. Zahrnuje připojené a odpojené události.</li><li>**zprávy**: aktivuje se, když klienti vyvolají metodu rozbočovače. Zahrnuje všechny ostatní události kromě těch v kategorii **připojení** .</li></ul>|
@@ -82,7 +82,7 @@ Když vyberete `ManagedIdentity` , musíte povolit spravovanou identitu ve služ
 3. Přidejte adresy URL pod **vzorem nadřazených adres URL**. Pak nastavení, jako jsou **pravidla centra** , se zobrazí jako výchozí hodnota.
 4. Pokud chcete nastavit nastavení pro **pravidla centra**, **pravidla událostí**, **pravidla kategorií**a **nadřazené ověřování**, vyberte hodnotu **pravidla rozbočovače**. Zobrazí se stránka, která umožňuje upravit nastavení:
 
-    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Podrobnosti o nadřazeném nastavení":::
+    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Nastavení pro upstream":::
 
 5. Pokud chcete nastavit **nadřazené ověřování**, ujistěte se, že jste nejdřív povolili spravovanou identitu. Pak vyberte **použít spravovanou identitu**. Podle vašich potřeb můžete zvolit jakékoli možnosti v části **ID prostředku ověřování**. Podrobnosti najdete v tématu [spravované identity pro službu Azure Signal Service](howto-use-managed-identity.md) .
 
@@ -145,7 +145,7 @@ Content-Type: Application/JSON
 
 Typ obsahu: `application/json`
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |Chyba |řetězec |Chybová zpráva uzavřeného připojení. Prázdné při zavření připojení bez chyby.|
 
@@ -153,11 +153,11 @@ Typ obsahu: `application/json`
 
 Typ obsahu: `application/json` nebo `application/x-msgpack`
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |InvocationId |řetězec | Volitelný řetězec, který představuje zprávu o vyvolání. Hledání podrobností ve [voláních](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations).|
 |Cíl |řetězec | Totéž jako u události a stejné jako cíl ve [zprávě vyvolání](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding). |
-|Arguments |Pole objektu |Pole obsahující argumenty, které mají být použity pro metodu, na kterou odkazuje `Target` . |
+|Argumenty |Pole objektu |Pole obsahující argumenty, které mají být použity pro metodu, na kterou odkazuje `Target` . |
 
 ### <a name="signature"></a>Podpis
 

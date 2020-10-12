@@ -4,10 +4,10 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: c78e9481e6f2ba1f17389992aab2712719fc4c3b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378402"
 ---
 # <a name="arm-template-functions"></a>Funkce šablon ARM
@@ -40,7 +40,7 @@ Správce prostředků poskytuje několik funkcí pro práci s poli.
 
 * [array](template-functions-array.md#array)
 * [spojuje](template-functions-array.md#concat)
-* [obsahuje](template-functions-array.md#contains)
+* [zobrazí](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
 * [empty](template-functions-array.md#empty)
 * [první](template-functions-array.md#first)
@@ -66,7 +66,7 @@ Správce prostředků poskytuje několik funkcí pro práci s poli.
 Správce prostředků poskytuje několik funkcí pro porovnávání v šablonách.
 
 * [COALESCE](template-functions-comparison.md#coalesce)
-* [equals](template-functions-comparison.md#equals)
+* [rovná se](template-functions-comparison.md#equals)
 * [tolik](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
 * [greater](template-functions-comparison.md#greater)
@@ -140,7 +140,7 @@ Správce prostředků poskytuje následující funkce pro práci s celými čís
 
 Správce prostředků poskytuje několik funkcí pro práci s objekty.
 
-* [obsahuje](template-functions-object.md#contains)
+* [zobrazí](template-functions-object.md#contains)
 * [empty](template-functions-object.md#empty)
 * [průnik](template-functions-object.md#intersection)
 * [JSON](template-functions-object.md#json)
@@ -215,7 +215,7 @@ Správce prostředků poskytuje následující funkce pro práci s řetězci:
 * [base64ToJson](template-functions-string.md#base64tojson)
 * [base64ToString](template-functions-string.md#base64tostring)
 * [spojuje](template-functions-string.md#concat)
-* [obsahuje](template-functions-string.md#contains)
+* [zobrazí](template-functions-string.md#contains)
 * [dataUri](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
 * [empty](template-functions-string.md#empty)
@@ -233,7 +233,7 @@ Správce prostředků poskytuje následující funkce pro práci s řetězci:
 * [přímo](template-functions-string.md#skip)
 * [rozdělení](template-functions-string.md#split)
 * [startsWith](template-functions-string.md#startswith)
-* [řetězec](template-functions-string.md#string)
+* [řetezce](template-functions-string.md#string)
 * [podřetězec](template-functions-string.md#substring)
 * [take](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)

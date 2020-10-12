@@ -9,10 +9,10 @@ ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 754a47b3692847957de7f3d666f4dc09dc309d25
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91024945"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Jsou vlastní zásady IPsec/IKE podporovány ve všech skladových jednotkách (SKU) služby Azure VPN Gateway?
@@ -104,7 +104,7 @@ Ano. Tunel typu VNet-to-VNet se skládá ze dvou prostředků připojení v Azur
 Výchozí časový limit DPD je 45 sekund. Pro každé připojení protokolem IPsec nebo VNet-to-VNet v rozmezí 9 sekund až 3600 sekund můžete zadat jinou hodnotu časového limitu DPD.
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Fungují zásady IPsec/IKE na připojení ExpressRoute?
-No. Zásady IPsec/IKE fungují pouze na připojeních VPN typu Site-to-Site a VNet-to-VNet prostřednictvím bran Azure VPN Gateway.
+Ne. Zásady IPsec/IKE fungují pouze na připojeních VPN typu Site-to-Site a VNet-to-VNet prostřednictvím bran Azure VPN Gateway.
 
 ### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Návody vytvářet připojení s typem protokolu IKEv1 nebo IKEv2?
 Připojení IKEv1 se dají vytvořit na všech SKU typu RouteBased VPN, s výjimkou úrovně Basic SKU, Standard SKU a dalších [původních SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#gwsku). Při vytváření připojení můžete zadat typ protokolu připojení IKEv1 nebo IKEv2. Pokud nezadáte typ protokolu připojení, použije se IKEv2 jako výchozí možnost, pokud je to možné. Další informace najdete v dokumentaci k [rutinám PowerShellu](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) . U typů SKU a podpory IKEv1/IKEv2 najdete informace v tématu [připojení bran k zařízením VPN založeným na zásadách](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
@@ -113,10 +113,10 @@ Připojení IKEv1 se dají vytvořit na všech SKU typu RouteBased VPN, s výjim
 Ano. Je podporovaný přenos mezi připojeními IKEv1 a IKEv2.
 
 ### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>Můžu mít IKEv1 připojení typu Site-to-site na základních SKU typu RouteBased VPN?
-No. Základní skladová položka nepodporuje toto.
+Ne. Základní skladová položka nepodporuje toto.
 
 ### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Můžu po vytvoření připojení změnit typ protokolu připojení (IKEv1 to IKEv2 a naopak)?
-No. Po vytvoření připojení se protokoly IKEv1/IKEv2 nedají změnit. Je nutné odstranit a znovu vytvořit nové připojení s požadovaným typem protokolu.
+Ne. Po vytvoření připojení se protokoly IKEv1/IKEv2 nedají změnit. Je nutné odstranit a znovu vytvořit nové připojení s požadovaným typem protokolu.
 
 ### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Kde najdu Další informace o konfiguraci protokolu IPsec?
 Viz téma [Konfigurace zásad IPSec/IKE pro připojení S2S nebo VNet-to-VNet](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md) .

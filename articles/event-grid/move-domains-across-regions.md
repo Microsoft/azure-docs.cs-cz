@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: fff8638a819511f84f15c52ad0695cdd5759f971
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89084548"
 ---
 # <a name="move-azure-event-grid-domains-to-another-region"></a>Přesunutí domén Azure Event Grid do jiné oblasti
@@ -25,22 +25,22 @@ Tady je postup vysoké úrovně, který je popsaný v tomto článku:
 - **Ověřte nasazení**. Odešle událost do tématu domény v doméně a ověří, zda je vyvolána obslužná rutina události přidružená k předplatnému. 
 - Chcete-li **Dokončit přesunutí**, odstraňte doménu ze zdrojové oblasti. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Ujistěte se, že je služba Event Grid v cílové oblasti dostupná. Zobrazit [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
 
 ## <a name="prepare"></a>Příprava
 Začněte tím, že vyexportujete šablonu Správce prostředků pro doménu. 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Na panelu hledání zadejte **Event Grid domény**a v seznamu výsledků vyberte **Event Grid domény** . 
 
     :::image type="content" source="./media/move-domains-across-regions/search-domains.png" alt-text="Vyhledat a vybrat Event Grid domény":::
 3. Vyberte **doménu** , kterou chcete exportovat do šablony Správce prostředků. 
 
-    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="Vyberte doménu.":::   
+    :::image type="content" source="./media/move-domains-across-regions/select-domain.png" alt-text="Vyhledat a vybrat Event Grid domény":::   
 4. Na stránce **Event Grid doména** vyberte v části **Nastavení** v nabídce vlevo položku **Exportovat šablonu** a pak na panelu nástrojů vyberte **Stáhnout** . 
 
-    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="Exportovat šablonu – > stáhnout" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
+    :::image type="content" source="./media/move-domains-across-regions/export-template-download.png" alt-text="Vyhledat a vybrat Event Grid domény" lightbox="./media/move-domains-across-regions/export-template-download.png":::   
 
     > [!IMPORTANT]
     > Témata týkající se domény a domény se exportují. Předplatná pro témata domény nejsou exportována. Proto je třeba vytvořit odběry pro témata domény po přesunutí témat domény. 
@@ -62,7 +62,7 @@ Nasaďte šablonu pro vytvoření témat domény a domény v cílové oblasti.
 1. V Azure Portal vyberte **vytvořit prostředek**.
 2. V **části Hledat na Marketplace**zadejte **šablonu Deployment**a potom stiskněte **ENTER**.
 3. Vyberte **template Deployment**.
-4. Vyberte **Create** (Vytvořit).
+4. Vyberte **Vytvořit**.
 5. **V editoru vyberte vytvořit vlastní šablonu**.
 6. Vyberte **načíst soubor**a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
 7. Vyberte **Uložit** a šablonu uložte. 
@@ -73,7 +73,7 @@ Nasaďte šablonu pro vytvoření témat domény a domény v cílové oblasti.
     1. Pro **název domény**zadejte nový název domény. 
     1. Vyberte **Zkontrolovat a vytvořit**. 
     
-        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="Nasazení šablony":::        
+        :::image type="content" source="./media/move-domains-across-regions/deploy-template.png" alt-text="Vyhledat a vybrat Event Grid domény":::        
     1. Po úspěšném ověření šablony vyberte **vytvořit** v dolní části stránky a nasaďte prostředek. 
     1. Po úspěšném nasazení vyberte **Přejít do skupiny prostředků** a přejděte na stránku skupiny prostředků. Potvrďte, že je ve skupině prostředků doména. Vyberte doménu. Ověřte, že doména obsahuje témata. 
 

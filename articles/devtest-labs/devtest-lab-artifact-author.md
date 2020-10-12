@@ -4,10 +4,10 @@ description: Naučte se vytvářet artefakty pro použití s Azure DevTest Labs 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88270678"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Vytvoření vlastních artefaktů pro virtuální počítač s DevTest Labs
@@ -44,17 +44,17 @@ Následující příklad ukazuje oddíly, které tvoří základní strukturu de
   }
 ```
 
-| Název elementu | Povinné? | Popis |
+| Název elementu | Povinné? | Description |
 | --- | --- | --- |
-| $schema |Ne |Umístění souboru schématu JSON. Soubor schématu JSON vám může přispět k otestování platnosti definičního souboru. |
-| title |Ano |Název artefaktu zobrazeného v testovacím prostředí |
-| description |Ano |Popis artefaktu zobrazeného v testovacím prostředí |
-| iconUri |Ne |Identifikátor URI ikony zobrazené v testovacím prostředí |
-| targetOsType |Ano |Operační systém virtuálního počítače, ve kterém je artefakt nainstalovaný. Podporované možnosti jsou Windows a Linux. |
-| parameters |Ne |Hodnoty, které jsou k dispozici při spuštění instalačního příkazu artefaktu v počítači. To vám pomůže přizpůsobit svůj artefakt. |
-| SpustitPříkaz |Ano |Instalační příkaz artefaktu, který je spuštěný na virtuálním počítači. |
+| $schema |No |Umístění souboru schématu JSON. Soubor schématu JSON vám může přispět k otestování platnosti definičního souboru. |
+| title |Yes |Název artefaktu zobrazeného v testovacím prostředí |
+| Popis |Yes |Popis artefaktu zobrazeného v testovacím prostředí |
+| iconUri |No |Identifikátor URI ikony zobrazené v testovacím prostředí |
+| targetOsType |Yes |Operační systém virtuálního počítače, ve kterém je artefakt nainstalovaný. Podporované možnosti jsou Windows a Linux. |
+| parameters |No |Hodnoty, které jsou k dispozici při spuštění instalačního příkazu artefaktu v počítači. To vám pomůže přizpůsobit svůj artefakt. |
+| SpustitPříkaz |Yes |Instalační příkaz artefaktu, který je spuštěný na virtuálním počítači. |
 
-### <a name="artifact-parameters"></a>Parametry artefaktu
+### <a name="artifact-parameters"></a>Parametry artefaktů
 V oddílu Parameters souboru definice určete, které hodnoty může uživatel zadat při instalaci artefaktu. Na tyto hodnoty můžete odkazovat v příkazu pro instalaci artefaktů.
 
 Chcete-li definovat parametry, použijte následující strukturu:
@@ -69,11 +69,11 @@ Chcete-li definovat parametry, použijte následující strukturu:
   }
 ```
 
-| Název elementu | Povinné? | Popis |
+| Název elementu | Povinné? | Description |
 | --- | --- | --- |
-| typ |Ano |Typ hodnoty parametru Seznam povolených typů najdete v následujícím seznamu. |
-| displayName |Ano |Název parametru, který se zobrazí uživateli v testovacím prostředí. |
-| description |Ano |Popis parametru, který se zobrazí v testovacím prostředí. |
+| typ |Yes |Typ hodnoty parametru Seznam povolených typů najdete v následujícím seznamu. |
+| displayName |Yes |Název parametru, který se zobrazí uživateli v testovacím prostředí. |
+| Popis |Yes |Popis parametru, který se zobrazí v testovacím prostředí. |
 
 Povolené typy:
 

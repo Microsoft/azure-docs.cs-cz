@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74847845"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Historie verzí agenta ochrany hesel Azure AD
@@ -34,14 +34,14 @@ Datum vydání: 3/22/2019
 
 Datum vydání: 3/13/2019
 
-* Rutiny Get-AzureADPasswordProtectionProxy a Get-AzureADPasswordProtectionDCAgent teď hlásí verzi softwaru a aktuálního tenanta Azure s těmito omezeními:
+* Rutiny Get-AzureADPasswordProtectionProxy a Get-AzureADPasswordProtectionDCAgent nyní hlásí verzi softwaru a aktuálního tenanta Azure s těmito omezeními:
   * Verze softwaru a data tenanta Azure jsou k dispozici pouze pro agenty DC a proxy servery se spuštěnou verzí 1.2.116.0 nebo novější.
   * Data tenanta Azure se nemusí nahlásit, dokud nedošlo k opětovné registraci (nebo obnovení) proxy serveru nebo doménové struktury.
 * Služba proxy teď vyžaduje, aby bylo nainstalované rozhraní .NET 4,7.
   * Rozhraní .NET 4,7 by již mělo být nainstalováno na plně aktualizovaný systém Windows Server. V takovém případě si stáhněte a spusťte instalační program, který najdete v [instalačním programu .NET Framework 4,7 offline pro systém Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
   * V systémech jádra serveru může být nutné předat příznak/q instalačnímu programu .NET 4,7 a získat tak jeho úspěšnost.
 * Služba proxy teď podporuje automatický upgrade. Automatický upgrade používá službu aktualizace agenta Microsoft Azure AD Connect, která je nainstalovaná souběžně s proxy službou. Automatický upgrade je ve výchozím nastavení zapnutý.
-* Automatický upgrade lze povolit nebo zakázat pomocí rutiny Set-AzureADPasswordProtectionProxyConfiguration. Pomocí rutiny Get-AzureADPasswordProtectionProxyConfiguration se dá zadat dotaz na aktuální nastavení.
+* Automatický upgrade může být povolený nebo zakázaný pomocí rutiny Set-AzureADPasswordProtectionProxyConfiguration. Pomocí rutiny Get-AzureADPasswordProtectionProxyConfiguration se dá zadat dotaz na aktuální nastavení.
 * Binární soubor služby agenta řadiče domény byl přejmenován na AzureADPasswordProtectionDCAgent.exe.
 * Binární soubor služby pro proxy službu byl přejmenován na AzureADPasswordProtectionProxy.exe. Pokud používáte bránu firewall jiného výrobce, může být nutné změnit pravidla brány firewall.
   * Poznámka: Pokud se konfigurační soubor proxy serveru HTTP používá v předchozí instalaci proxy serveru, bude nutné po tomto upgradu přejmenovat (od *proxyservice.exe.config* do *AzureADPasswordProtectionProxy.exe.config*).
@@ -55,7 +55,7 @@ Datum vydání: 2/1/2019
 Provedeny
 
 * Agent serveru a proxy služby se teď v jádru serveru podporují. Požadavky na operační systém Mininimum se nezměnily před: Windows Server 2012 pro agenty DC a Windows Server 2012 R2 pro proxy servery.
-* Rutiny Register-AzureADPasswordProtectionProxy a Register-AzureADPasswordProtectionForest teď podporují režimy ověřování Azure založené na kódu zařízení.
+* Rutiny Register-AzureADPasswordProtectionProxy a Register-AzureADPasswordProtectionForest nyní podporují režimy ověřování Azure založené na kódu zařízení.
 * Rutina Get-AzureADPasswordProtectionDCAgent bude ignorovat pozměněný nebo neplatný spojovací body služby. Tím se vyřeší chyba, při které by se ve výstupu někdy zobrazovaly řadiče domény vícekrát.
 * Rutina Get-AzureADPasswordProtectionSummaryReport bude ignorovat pozměněný nebo neplatný spojovací body služby. Tím se vyřeší chyba, při které by se ve výstupu někdy zobrazovaly řadiče domény vícekrát.
 * Modul PowerShell proxy je teď registrovaný z%ProgramFiles%\WindowsPowerShell\Modules.. Proměnná prostředí PSModulePath počítače se už nemění.
@@ -110,8 +110,8 @@ Datum vydání: 8/17/2018
 
 Řeší
 
-* Register-AzureADPasswordProtectionProxy a Register-AzureADPasswordProtectionForest teď podporuje Multi-Factor Authentication
-* Register-AzureADPasswordProtectionProxy vyžaduje řadič domény WS2012 nebo novější v doméně, aby se předešlo chybám šifrování.
+* Register-AzureADPasswordProtectionProxy a Register-AzureADPasswordProtectionForest nyní podporují službu Multi-Factor Authentication
+* Register-AzureADPasswordProtectionProxy vyžaduje v doméně řadič domény WS2012 nebo novější, aby se předešlo chybám šifrování.
 * Služba agenta DC je spolehlivější na vyžádání nových zásad hesel z Azure při spuštění.
 * Služba agenta DC v případě potřeby vyžádá nové zásady pro hesla z Azure každou hodinu, ale teď to provede náhodně vybraným časem zahájení.
 * Služba agenta řadiče domény již nezpůsobí neomezené zpoždění při instalaci na server před povýšením jako replika v novém oznámení řadiče domény.

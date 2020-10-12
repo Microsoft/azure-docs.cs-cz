@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/17/2019
 ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74792468"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Správa metadat artefaktů v účtech integrace pomocí Azure Logic Apps a rozšíření Enterprise Integration Pack
@@ -28,7 +28,7 @@ Vlastní metadata můžete definovat pro artefakty v účtech integrace a získa
   * [Partner](logic-apps-enterprise-integration-partners.md)
   * [Smlouva](logic-apps-enterprise-integration-agreements.md)
   * [Schéma](logic-apps-enterprise-integration-schemas.md)
-  * [Mapa](logic-apps-enterprise-integration-maps.md)
+  * [Mapy](logic-apps-enterprise-integration-maps.md)
 
 * Aplikace logiky, která je propojená s integračním účtem a metadaty artefaktů, které chcete použít. Pokud vaše aplikace logiky ještě není propojená, podívejte se, [Jak propojit aplikace logiky s účty pro integraci](logic-apps-enterprise-integration-create-integration-account.md#link-account). 
 
@@ -61,10 +61,10 @@ Vlastní metadata můžete definovat pro artefakty v účtech integrace a získa
 
 1. Zadejte tyto informace pro artefakt, který chcete najít:
 
-   | Vlastnost | Požaduje se | Hodnota | Description | 
+   | Vlastnost | Požaduje se | Hodnota | Popis | 
    |----------|---------|-------|-------------| 
-   | **Typ artefaktu** | Yes | **Schéma**, **Mapa**, **partner**, **smlouva**nebo vlastní typ | Typ artefaktu, který chcete | 
-   | **Název artefaktu** | Yes | <*název artefaktu*> | Název artefaktu, který chcete | 
+   | **Typ artefaktu** | Ano | **Schéma**, **Mapa**, **partner**, **smlouva**nebo vlastní typ | Typ artefaktu, který chcete | 
+   | **Název artefaktu** | Ano | <*název artefaktu*> | Název artefaktu, který chcete | 
    ||| 
 
    Předpokládejme například, že chcete získat metadata pro artefakt obchodního partnera:
@@ -83,15 +83,15 @@ Vlastní metadata můžete definovat pro artefakty v účtech integrace a získa
 
       Předpokládejme například, že chcete získat `routingUrl` metadata, která jsou přidána dříve v tomto tématu. Tady jsou hodnoty vlastností, které můžete zadat: 
 
-      | Vlastnost | Požaduje se | Hodnota | Description | 
+      | Vlastnost | Požaduje se | Hodnota | Popis | 
       |----------|----------|-------|-------------| 
-      | **Metoda** | Yes | <*operace na spuštění*> | Operace HTTP, která se má spustit na artefaktu Tato akce HTTP například používá metodu **Get** . | 
-      | **Identifikátor URI** | Yes | <*metadata – umístění*> | Chcete-li získat přístup k `routingUrl` hodnotě metadat z artefaktu, který jste načetli, můžete použít výraz, například: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
-      | **Hlavičky** | No | <*hodnoty hlaviček*> | Všechny výstupy hlaviček z triggeru, které chcete předat akci HTTP. Například pro předání `headers` hodnoty vlastnosti triggeru: můžete použít výraz, například: <p>`@triggeroutputs()['headers']` | 
+      | **Metoda** | Ano | <*operace na spuštění*> | Operace HTTP, která se má spustit na artefaktu Tato akce HTTP například používá metodu **Get** . | 
+      | **Identifikátor URI** | Ano | <*metadata – umístění*> | Chcete-li získat přístup k `routingUrl` hodnotě metadat z artefaktu, který jste načetli, můžete použít výraz, například: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **Záhlaví** | No | <*hodnoty hlaviček*> | Všechny výstupy hlaviček z triggeru, které chcete předat akci HTTP. Například pro předání `headers` hodnoty vlastnosti triggeru: můžete použít výraz, například: <p>`@triggeroutputs()['headers']` | 
       | **Text** | No | <*text obsahu*> | Jakýkoli další obsah, který chcete předat prostřednictvím vlastnosti akce HTTP `body` . Tento příklad předá hodnoty artefaktu `properties` do akce http: <p>1. klikněte do vlastnosti **body** , aby se zobrazil seznam dynamického obsahu. Pokud se nezobrazí žádné vlastnosti, klikněte na **Zobrazit další**. <br>2. v seznamu dynamického obsahu v části **vyhledávání artefaktů účtu integrace**vyberte **vlastnosti**. | 
       |||| 
 
-      Příklad:
+      Například:
 
       ![Zadat hodnoty a výrazy pro akci HTTP](media/logic-apps-enterprise-integration-metadata/add-http-action-values.png)
 

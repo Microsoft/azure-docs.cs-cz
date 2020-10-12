@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: lcozzens
 ms.openlocfilehash: c1142ef7b37dee916118964778f6c1db2a65d591
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719648"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Nastavení nabízených oznámení do konfigurace aplikace pomocí Azure Pipelines
 
 [Nabízená úloha konfigurace aplikace Azure](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) přenáší hodnoty klíč-hodnota z konfiguračního souboru do úložiště konfigurace aplikace. Tato úloha v rámci kanálu umožňuje úplné funkce kruhů, protože teď můžete získat nastavení z úložiště konfigurace aplikace a nabízet nastavení do úložiště konfigurace aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - Prostředek konfigurace aplikace – vytvořte si ho zdarma ve [Azure Portal](https://portal.azure.com).
@@ -87,7 +87,7 @@ Následující parametry používá úloha nabízení konfigurace aplikace:
 - **Label**: řetězec, který se přidá do každé hodnoty klíč-hodnota jako popisek v rámci úložiště konfigurace aplikace.
 - **Typ obsahu**: řetězec, který se přidá do každého klíč-hodnota jako typ obsahu v rámci úložiště konfigurace aplikace.
 - **Tags**: objekt JSON ve formátu `{"tag1":"val1", "tag2":"val2"}` , který definuje značky přidané do každé hodnoty klíč-hodnota vložené do úložiště konfigurace aplikace.
-- **Odstraní všechny ostatní hodnoty klíče v úložišti se zadanou předponou a popiskem**: výchozí hodnota je **nezaškrtnutá**.
+- **Odstraní všechny ostatní Key-Values ve Storu se zadaným prefixem a popiskem**: výchozí hodnota je **nezaškrtnutá**.
   - **Checked**: Odebere všechny klíčové hodnoty v úložišti konfigurace aplikace, které odpovídají zadané předponě a popisku před vložením nových klíčových hodnot z konfiguračního souboru.
   - **Nezaškrtnuto**: vloží všechny klíčové hodnoty z konfiguračního souboru do úložiště konfigurace aplikace a ponechá všechno ostatní v úložišti konfigurace aplikace beze změny.
 

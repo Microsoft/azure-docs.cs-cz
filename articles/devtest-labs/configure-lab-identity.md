@@ -4,10 +4,10 @@ description: Naučte se konfigurovat identitu testovacího prostředí ve služb
 ms.topic: article
 ms.date: 08/20/2020
 ms.openlocfilehash: a652eb5751f9b723911a1c1baaaaf9860febc5b6
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719643"
 ---
 # <a name="configure-a-lab-identity"></a>Konfigurace identity testovacího prostředí
@@ -38,7 +38,7 @@ Tato část ukazuje, jak nakonfigurovat zásady identity testovacího prostřed�
 >
 > Pro novou laboratoř vytvořenou po 8/10/2020 je identita přiřazená systému v testovacím prostředí ve výchozím nastavení zapnutá a vlastník testovacího prostředí ho nebude moct vypnout pro životní cyklus testovacího prostředí.  
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Vyhledejte **DevTest Labs**.
 1. V seznamu cvičení vyberte testovací prostředí, které chcete.
 1. Vyberte **Konfigurace a zásady**  ->  **identita (Preview)**. 

@@ -1,5 +1,5 @@
 ---
-title: Klíče spravované zákazníkem pro Cognitive Services
+title: Customer-Managed klíče pro Cognitive Services
 titleSuffix: Cognitive Services
 description: Naučte se používat Azure Portal ke konfiguraci klíčů spravovaných zákazníkem pomocí Azure Key Vault. Klíče spravované zákazníkem umožňují vytvářet, otáčet, zakazovat a odvolávat řízení přístupu.
 services: cognitive-services
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
 ms.openlocfilehash: 1369f30c4a3bcb0a391a5f2b2a63191590afd622
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84310695"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pro Cognitive Services
 
-Proces povolení klíčů spravovaných zákazníkem Azure Key Vault pro Cognitive Services se liší podle produktu. Použijte tyto odkazy na pokyny pro konkrétní službu:
+Proces povolení Customer-Managed klíčů s Azure Key Vault pro Cognitive Services se liší podle produktu. Použijte tyto odkazy na pokyny pro konkrétní službu:
 
 ## <a name="vision"></a>Obraz
 
@@ -39,4 +39,4 @@ Proces povolení klíčů spravovaných zákazníkem Azure Key Vault pro Cogniti
 ## <a name="next-steps"></a>Další kroky
 
 * [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
-* [Formulář žádosti o klíč spravovaný zákazníkem Cognitive Services](https://aka.ms/cogsvc-cmk)
+* [Formulář žádosti o klíč Customer-Managed Cognitive Services](https://aka.ms/cogsvc-cmk)

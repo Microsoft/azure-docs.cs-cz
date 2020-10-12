@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: e6158938d01b6e5da74ed046d2a74e0dfd827f47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417908"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Spustit aktivitu čekání v Azure Data Factory
@@ -24,7 +24,7 @@ Pokud v kanálu použijete aktivitu Wait, kanál před pokračováním v provád
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
 ```json
 {
@@ -39,7 +39,7 @@ Pokud v kanálu použijete aktivitu Wait, kanál před pokračováním v provád
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Vyžadováno
+Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
 name | Název `Wait` aktivity | Řetězec | Ano
 typ | Musí být nastavené na **čekání**. | Řetězec | Ano

@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81418004"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Přepnout aktivitu v Azure Data Factory
@@ -22,7 +22,7 @@ ms.locfileid: "81418004"
 
 Aktivita Switch nabízí stejné funkce jako příkaz switch v programovacích jazycích. Vyhodnocuje sadu aktivit odpovídajících případu, který odpovídá vyhodnocení podmínky.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
 ```json
 
@@ -67,7 +67,7 @@ Aktivita Switch nabízí stejné funkce jako příkaz switch v programovacích j
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Vyžadováno
+Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
 name | Název aktivity Switch | Řetězec | Ano
 typ | Musí být nastavené na *Switch** | Řetězec | Ano

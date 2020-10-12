@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
 ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85851852"
 ---
 # <a name="create-an-azure-support-request"></a>Vytvoření žádosti o podporu Azure
@@ -23,9 +23,9 @@ Azure umožňuje vytvářet a spravovat žádosti o podporu, označované taky j
 > [!NOTE]
 > Adresa URL Azure Portal je specifická pro cloud Azure, ve kterém je vaše organizace nasazená.
 >
->* Azure Portal pro komerční použití:[https://portal.azure.com](https://portal.azure.com)
->* Azure Portal pro Německo je:[https://portal.microsoftazure.de](https://portal.microsoftazure.de)
->* Azure Portal pro USA vládu:[https://portal.azure.us](https://portal.azure.us)
+>* Azure Portal pro komerční použití: [https://portal.azure.com](https://portal.azure.com)
+>* Azure Portal pro Německo je: [https://portal.microsoftazure.de](https://portal.microsoftazure.de)
+>* Azure Portal pro USA vládu: [https://portal.azure.us](https://portal.azure.us)
 
 Prostředí žádosti o podporu se zaměřuje na tři hlavní cíle:
 
@@ -47,7 +47,7 @@ Pokud chcete vytvořit žádost o podporu, musíte být [vlastníkem](../../role
 
 Spuštění žádosti o podporu odkudkoli v Azure Portal:
 
-1. Ve službě Power BI vyberte **?** v globálním záhlaví. Pak vyberte **help + podpora**.
+1. Vyberte **?** v globálním záhlaví. Pak vyberte **help + podpora**.
 
    ![Nápověda a podpora](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
@@ -95,7 +95,7 @@ Dále shromáždíme další podrobnosti o problému. Poskytování podrobných 
 
 1. Potom dokončete část **kontaktní informace** , abychom věděli, jak vás kontaktovat.
 
-### <a name="review--create"></a>Zkontrolovat a vytvořit
+### <a name="review--create"></a>Kontrola a vytvoření
 
 Na každé kartě dokončete všechny požadované informace a pak vyberte **zkontrolovat + vytvořit**. Projděte si podrobnosti, které odešlete podpoře. Vraťte se na libovolnou kartu a v případě potřeby proveďte změnu. Až budete spokojeni se žádostí o podporu, vyberte **vytvořit**.
 

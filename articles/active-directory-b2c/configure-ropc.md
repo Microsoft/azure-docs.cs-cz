@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3dbafac99ebc1b7472bf884647ad5e8657f0de0b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87482851"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure AD B2C
@@ -127,7 +127,7 @@ Sestavte následné volání jako tu, která se tady zobrazuje s informacemi v n
 > [!NOTE]
 > Při vytváření uživatelů prostřednictvím Graph API musí aplikace mít oprávnění "OpenID", "offline_access" a "profil" z Microsoft Graph.
 
-## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementace s upřednostňovanou nativní sadou SDK nebo použití ověřování aplikací
+## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementujte s vámi upřednostňovanou nativní sadou SDK nebo použijte App-Auth
 
 Implementace Azure AD B2C splňuje předpisy OAuth 2,0 pro přihlašovací údaje k heslu veřejného klienta a měly by být kompatibilní s většinou klientských sad SDK. Tento tok jsme v produkčním prostředí důkladně otestovali s AppAuth pro iOS a AppAuth pro Android. Nejnovější informace najdete v tématu [nativní sada App SDK pro OAuth 2,0 a OpenID Connect implementující moderní osvědčené postupy](https://appauth.io/).
 

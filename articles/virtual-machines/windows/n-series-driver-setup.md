@@ -11,10 +11,10 @@ ms.date: 09/24/2018
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2dccfebed26c8064db697413e7417ae08d69a3ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86998968"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series s Windows 
@@ -47,7 +47,7 @@ Pokud chcete zadat dotaz na stav zařízení GPU, spusťte nástroj příkazové
 
 1. Otevřete příkazový řádek a přejděte do adresáře **C:\Program Files\NVIDIA Corporation\NVSMI** .
 
-2. Spusťte `nvidia-smi`. Pokud je ovladač nainstalovaný, zobrazí se výstup podobný následujícímu. **GPU-util** zobrazuje **0%** , pokud na virtuálním počítači aktuálně neběží úloha GPU. Podrobnosti o verzi ovladače a GPU se mohou lišit od zobrazených.
+2. Spusťte příkaz `nvidia-smi`. Pokud je ovladač nainstalovaný, zobrazí se výstup podobný následujícímu. **GPU-util** zobrazuje **0%** , pokud na virtuálním počítači aktuálně neběží úloha GPU. Podrobnosti o verzi ovladače a GPU se mohou lišit od zobrazených.
 
 ![Stav zařízení NVIDIA](./media/n-series-driver-setup/smi.png)  
 

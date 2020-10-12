@@ -4,10 +4,10 @@ description: Pomocí Azure Portal můžete zobrazit Azure Container Registry úl
 ms.topic: article
 ms.date: 01/05/2018
 ms.openlocfilehash: 1da72706d2554610a685f71199ab14af5e30ce1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74456289"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Zobrazení úložišť registru kontejnerů v Azure Portal
@@ -34,7 +34,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 Zobrazení úložiště:
 
-1. Přihlaste se k [Azure Portal][portal]
+1. Přihlaste se k portálu [Azure Portal][portal].
 1. Vyberte **Azure Container Registry** , do které jste posunuli obrázek Nginx.
 1. Vyberte **úložiště** a zobrazte seznam úložišť, která obsahují image v registru.
 1. Vyberte úložiště, ve kterém se mají zobrazit značky imagí v tomto úložišti.

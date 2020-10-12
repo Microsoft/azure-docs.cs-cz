@@ -11,10 +11,10 @@ ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289765"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Konfigurace Azure Defenderu pro úložiště
@@ -69,7 +69,7 @@ V tomto předplatném je teď povolený Azure Defender pro všechny účty úlo�
 1. Přejděte na svůj účet úložiště. V části **Nastavení**vyberte **Rozšířené zabezpečení**.
 1. Vyberte **Povolit Azure Defender pro úložiště**.
 
-    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Snímek obrazovky, který ukazuje, jak povolit Azure Defender pro účet Azure Storage":::
+    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Snímek obrazovky, který ukazuje, jak povolit Azure Defender pro úložiště v Security Center":::
 
 Pro tento účet úložiště je teď povolený Azure Defender.
 
@@ -84,15 +84,15 @@ Pomocí Azure Policy můžete povolit Azure Defender napříč účty úložišt
 1. Spusťte stránku Azure **Policy-definitions** .
 1. Vyhledejte zásadu **nasadit Azure Defender na účty úložiště** .
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="Použití zásad pro povolení Azure Defenderu pro účty úložiště":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="Snímek obrazovky, který ukazuje, jak povolit Azure Defender pro úložiště v Security Center":::
 
 1. Vyberte předplatné nebo skupinu prostředků Azure.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="Vyberte předplatné nebo skupinu prostředků pro obor zásad. ":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="Snímek obrazovky, který ukazuje, jak povolit Azure Defender pro úložiště v Security Center":::
 
 1. Přiřaďte zásadu.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Přiřazení zásady pro povolení služby Azure Defender pro úložiště":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Snímek obrazovky, který ukazuje, jak povolit Azure Defender pro úložiště v Security Center":::
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -125,11 +125,11 @@ Když se vyskytnou anomálie aktivity úložiště, obdržíte e-mailové oznám
 
 E-mail obsahuje také podrobnosti o možných příčinách a doporučené akce pro prošetření a zmírnění potenciální hrozby.
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="E-mail s upozorněním pro úložiště v Azure Defenderu":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="Snímek obrazovky, který ukazuje, jak povolit Azure Defender pro úložiště v Security Center":::
 
 Aktuální výstrahy zabezpečení můžete zkontrolovat a spravovat z [dlaždice výstrahy zabezpečení](../../security-center/security-center-managing-and-responding-alerts.md)Azure Security Center. Kliknutím na konkrétní výstrahu získáte podrobnosti a akce pro zkoumání aktuální hrozby a vyřešení budoucích hrozeb.
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="Upozornění pro Azure Defender na úložiště":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="Snímek obrazovky, který ukazuje, jak povolit Azure Defender pro úložiště v Security Center":::
 
 ## <a name="security-alerts"></a>Výstrahy zabezpečení
 

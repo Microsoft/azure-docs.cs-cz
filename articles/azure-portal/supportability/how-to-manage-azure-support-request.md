@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: mblythe
 ms.openlocfilehash: f3b4806bf46750d74a54f68bd2ab58e402e75091
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85852295"
 ---
 # <a name="manage-an-azure-support-request"></a>Správa žádosti o podporu Azure
@@ -45,17 +45,17 @@ Na této stránce můžete vyhledat, filtrovat a seřadit žádosti o podporu. V
 
 1. Na stránce **žádost o podporu** vyberte **změnit**.
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="Změna závažnosti žádosti o podporu":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="Všechny žádosti o podporu":::
 
 1. Azure Portal zobrazuje jednu ze dvou obrazovek v závislosti na tom, jestli je vaše žádost už přiřazená pracovníkovi podpory:
 
     - Pokud se vaše žádost nepřiřadila, zobrazí se obrazovka podobná této. Vyberte novou úroveň závažnosti a pak vyberte **změnit**.
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="Vybrat novou úroveň závažnosti":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="Všechny žádosti o podporu":::
 
     - Pokud se vaše žádost přiřadila, zobrazí se obrazovka podobná této. Vyberte **OK**a pak vytvořte [novou zprávu](#send-a-message) pro vyžádání změny úrovně závažnosti.
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="Nejde vybrat novou úroveň závažnosti.":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="Všechny žádosti o podporu":::
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>Sdílet diagnostické informace s podporou Azure
 
@@ -69,7 +69,7 @@ Když vytvoříte žádost o podporu, ve výchozím nastavení je vybraná možn
     
     1. Na stránce **žádost o podporu** vyberte **udělit oprávnění**a pak vyberte **Ano** a **OK**.
     
-        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="Udělení oprávnění pro diagnostické informace":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="Všechny žádosti o podporu":::
 
 ## <a name="upload-files"></a>Nahrání souborů
 
@@ -79,7 +79,7 @@ Možnost nahrávání souborů můžete použít k nahrání diagnostických sou
 
 1. Na stránce **žádost o podporu** vyhledejte soubor a pak vyberte **Odeslat**. Pokud máte více souborů, opakujte tento postup.
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Nahrání souboru":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Všechny žádosti o podporu":::
 
 ### <a name="file-upload-guidelines"></a>Pokyny pro nahrávání souborů
 
@@ -96,24 +96,24 @@ Při použití možnosti nahrávání souborů postupujte podle těchto pokynů:
 | .7z         | . dat  | .hwl        | . ODX  | . rar     | .tdb       | .xlam   |
 | . a          | . DB   | . ICS        | . oft  | . RDL     | .tdf       | .xlr    |
 | . ABC        | . DMP  | . ini        | . old  | . rdlc    | . text      | .xls    |
-| . adm        | . do_  | .java       | . One  | . re_     | .thmx      | .xlsb   |
+| . adm        | .do_  | .java       | . One  | .re_     | .thmx      | .xlsb   |
 | . aspx       | .doc  | .jpg        | . OSD  | . reg     | .tif       | .xlsm   |
 | . ATF        | .docm | . LDF        | . MIMO  | . Remove  | . trc       | .xlsx   |
 | . b          | .docx | . hlavičkový formát | . P1   | . Ren     | . TTD       | .xlt    |
-| . ba_        | .dotm | . lnk        | .pcap | . rename  | . tx_       | .xltx   |
-| . bak        | .dotx | . lo_        | soubor. pdb  | .rft     | .txt       | .xml    |
+| .ba_        | .dotm | . lnk        | .pcap | . rename  | .tx_       | .xltx   |
+| . bak        | .dotx | .lo_        | soubor. pdb  | .rft     | .txt       | .xml    |
 | .bat        | .dtsx | . log        | .pdf  | . rpt     | .uccapilog | . XMLA   |
 | . blg        | . EDS  | .lpk        | .piz  | .rte     | .uccplog   | .xps    |
-| . CA_        | . EMF  | . manifest   | .pmls | .rtf     | .udcx      | . xsd    |
-| . SOUBORŮ        | . eml  | . Master     | .png  | . Run     | . vb_       | . xsn    |
-| . Cap        | .emz  | . mdmp       | .potx | .saz     | . vbs_      | . xxx    |
-| .catx       | . err  | . mof        | .ppt  | SQL     | . vcf       | . z_     |
+| .CA_        | . EMF  | . manifest   | .pmls | .rtf     | .udcx      | . xsd    |
+| . SOUBORŮ        | . eml  | . Master     | .png  | . Run     | .vb_       | . xsn    |
+| . Cap        | .emz  | . mdmp       | .potx | .saz     | .vbs_      | . xxx    |
+| .catx       | . err  | . mof        | .ppt  | SQL     | . vcf       | .z_     |
 | . Priorita        | . ETL  | . mp3        | .pptm | .sqlplan | . vsd       | .z01    |
 | . komprimovaná | . evt  | . mpg        | .pptx | . STP     | . wdb       | .z02    |
-| . Konfigurace     | .evtx | . ms_        | . prn  | .svclog  | . WKS       | . Zi     |
-| .cpk        | . DODATEČNÉ   | . msg        | . PSV  |   -       | . WMA       | . zi_    |
-| . cpp        | . ex_  | .msi        | PST  |  -        | . wmv       | .zip    |
-| .cs         | .ex0  | soubor. mso        | . pub  | -         | . WMZ       | . zip_   |
+| . Konfigurace     | .evtx | .ms_        | . prn  | .svclog  | . WKS       | . Zi     |
+| .cpk        | . DODATEČNÉ   | . msg        | . PSV  |   -       | . WMA       | .zi_    |
+| . cpp        | .ex_  | .msi        | PST  |  -        | . wmv       | .zip    |
+| .cs         | .ex0  | soubor. mso        | . pub  | -         | . WMZ       | .zip_   |
 | . Formát        | . FRD  | . msu        | -      |-          | . WPS       | .zipp   |
 | .cvr        | .gif  | . nfo        | -      |-          | .wpt       | . zip |
 | -            | identifikátor. GUID | -            | -      | -         | . WSDL      | .zippy  |

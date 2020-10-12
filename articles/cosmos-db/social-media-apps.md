@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
 ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85850701"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Spolupráce s Azure Cosmos DB
@@ -171,7 +171,7 @@ Pojďme získat informace o uživateli jako příklad:
 
 Když si tyto informace prohlížíte, můžete rychle zjistit, které z nich jsou důležité a které nejsou, takže se vytvoří "žebřík":
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="Diagram vzoru žebříku" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="Diagram znázorňující relativní relační model" border="false":::
 
 Nejmenší krok se nazývá UserChunk, minimální část informací, která identifikuje uživatele a používá se pro duplikaci dat. Zmenšením velikosti duplicitních dat na jenom informace, které se zobrazí, snížíte tak možnost obrovských aktualizací.
 
@@ -248,7 +248,7 @@ Cosmos DB spustí vaše dotazy (včetně [agregací](https://azure.microsoft.com
 
 V čase budete nakonec růst provozu a spotřebu prostředků (měřené v [ru](request-units.md)nebo jednotkách žádosti) se zvýší. Při zvětšování uživatelské základny budete číst a zapisovat častěji. Uživatelskou základnu začne vytvářet a číst další obsah. Schopnost **škálování propustnosti** je proto důležitá. Zvýšení ru je snadné. Můžete to udělat několika kliknutími na Azure Portal nebo vyvoláním [příkazů prostřednictvím rozhraní API](/rest/api/cosmos-db/replace-an-offer).
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Škálování a definování klíče oddílu":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Diagram znázorňující relativní relační model":::
 
 Co se stane, když všechno pořád ještě lepší? Předpokládejme, že uživatelé z jiné oblasti, země nebo kontinentu si vyvšimli vaši platformu a začnou ji používat. Co Skvělé neočekávaně!
 
@@ -258,13 +258,13 @@ Cosmos DB umožňuje globálně a transparentně [replikovat data](../cosmos-db/
 
 Při globální replikaci dat je potřeba zajistit, aby ji vaši klienti mohli využít. Pokud používáte webový front-end nebo přístup k rozhraním API z mobilních klientů, můžete nasadit [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) a klonovat Azure App Service ve všech požadovaných oblastech pomocí konfigurace výkonu pro podporu vašeho rozšířeného globálního pokrytí. Když klienti přistupují k front-endu nebo rozhraním API, budou přesměrováni na nejbližší App Service, která se zase připojí k místní replice Cosmos DB.
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="Přidání globálního pokrytí na sociální platformu" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="Diagram znázorňující relativní relační model" border="false":::
 
 ## <a name="conclusion"></a>Závěr
 
 Tento článek se podrobněji přenese do alternativních možností vytváření sociálních sítí, které jsou zcela v Azure, s nižšími náklady. poskytuje výsledky tím, že povzbudí použití řešení úložiště s více vrstvami a distribuce dat s názvem "žebřík".
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Diagram interakce mezi službami Azure pro sociální sítě" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Diagram znázorňující relativní relační model" border="false":::
 
 Pravdy je, že pro tento druh scénářů není k dispozici žádná stříbrné odrážka. Jedná se o synergii vytvořenou kombinací skvělých služeb, které nám umožňují sestavovat Skvělé prostředí: rychlost a volnost Azure Cosmos DB poskytování Skvělé sociální aplikace, inteligentních řešení pro vyhledávání, jako je Azure Kognitivní hledání, flexibility Azure App Services pro hostování nenezávislách aplikací pro jazyky, ale výkonné procesy na pozadí a rozšiřitelné Azure Storage a Azure SQL Database pro ukládání velkých objemů dat a analytické síly počítačů Azure Naučte se vytvářet poznatky a inteligentní informace, které vám poskytnou zpětnou vazbu vašim procesům a pomáhají zajistit správnému obsahu správným uživatelům.
 

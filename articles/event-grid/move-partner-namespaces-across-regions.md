@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: 6783db6b9bb1c7d48b308234a179925d6f30e281
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89084545"
 ---
 # <a name="move-azure-event-grid-partner-namespaces-to-another-region"></a>Přesunout Azure Event Grid obory názvů partnerů do jiné oblasti
@@ -30,7 +30,7 @@ Tady je postup vysoké úrovně, který je popsaný v tomto článku:
 ## <a name="prepare"></a>Příprava
 Začněte tím, že vyexportujete šablonu Správce prostředků pro obor názvů partnera. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Na panelu hledání v horní části zadejte **Event Grid obory názvů partnerů**a v seznamu výsledků vyberte **Event Grid obory názvů partnerů** . 
 3. Vyberte **obor názvů partnera** , který chcete exportovat do šablony Správce prostředků. 
 4. Na stránce **obor názvů partnera Event Grid** v nabídce **Nastavení** v nabídce vlevo vyberte **Exportovat šablonu** a pak na panelu nástrojů vyberte **Stáhnout** . 
