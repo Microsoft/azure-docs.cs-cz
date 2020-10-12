@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/19/2020
 ms.author: yelevin
 ms.openlocfilehash: 58936066abcbe4c3f9fcfad78bf914c74079aa95
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88141784"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Nastavení klíče spravovaného zákazníkem Sentinel Azure
@@ -28,7 +28,7 @@ Tento článek popisuje základní informace a kroky ke konfiguraci klíče spra
 
 > [!NOTE]
 > -   Funkce Azure Sentinel CMK je k dispozici pouze pro zákazníky, kteří jsou **noví** a mají přístup k této funkci, a to prostřednictvím registrace funkcí Azure.Můžete požádat o přístup kontaktováním azuresentinelCMK@microsoft.com a jakmile bude dostupná kapacita, čekají na vyřízení žádosti.
-> -   Funkce Azure Sentinel CMK je k dispozici pouze v oblastech Východní USA, Západní USA 2 a Jižní Střed USA.
+> -   Funkce Azure Sentinel CMK je k dispozici pouze v oblastech Východní USA, Západní USA 2 a South-Central USA.
 > -   Funkce CMK je dostupná jenom pro zákazníky, kteří odesílají 1 TB za den. Při použití Microsoftu k zřízení CMK ve vašem předplatném Azure budete dostávat informace o dalších cenách. Přečtěte si další informace o [cenách Log Analytics](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
 
 ## <a name="how-cmk-works"></a>Jak funguje CMK 
@@ -54,7 +54,7 @@ Při zřizování CMK postupujte takto: 
 
 5.  Povolí CMK ve službě Azure Sentinel.
 
-6.  Povolte službu Azure Sentinel.
+6.  Povolit Azure Sentinel
 
 ### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>Krok 1: vytvoření Azure Key Vault a uložení klíče
 

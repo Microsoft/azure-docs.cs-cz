@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: bad81e8929cd0c5c66c87fd9f6cc11dc746b3e5f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317771"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Výstup front Service Bus z Azure Stream Analytics
@@ -24,7 +24,7 @@ Na [úrovni kompatibility 1,2](stream-analytics-compatibility-level.md)Azure Str
 
 V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vytvoření výstupu fronty.
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 | --- | --- |
 | Alias pro výstup |Popisný název, který se používá v dotazech k přesměrování výstupu dotazu do této Service Bus fronty. |
 | Obor názvů Service Bus |Kontejner pro sadu entit zasílání zpráv. |
@@ -66,7 +66,7 @@ V následujícím příkladu `DeviceId` jsou pole a `DeviceStatus` přidána do 
 
 Následující obrázek má očekávané vlastnosti výstupní zprávy, které byly zkontrolovány v centru EventHub pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer).
 
-:::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="Vlastní vlastnosti události":::
+:::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="Sloupce vlastností":::
 
 ## <a name="system-properties"></a>Systémové vlastnosti
 

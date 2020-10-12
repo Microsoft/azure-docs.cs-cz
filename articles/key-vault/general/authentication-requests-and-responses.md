@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 2100572c0bcf5bf65fe5a70ab9e552c2d7f72934
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983263"
 ---
 # <a name="authentication-requests-and-responses"></a>Ověřování, požadavky a odpovědi
@@ -24,7 +24,7 @@ Azure Key Vault poskytuje dva typy kontejnerů pro ukládání a správu tajnýc
 |Typ kontejneru|Podporované typy objektů|Koncový bod roviny dat|
 |--|--|--|
 | **Trezory**|<ul><li>Klíče chráněné softwarem</li><li>Klíče chráněné HSM (s SKU úrovně Premium)</li><li>Certifikáty</li><li>Klíče účtu úložiště</li></ul> | https://{trezor-Name}. trezor. Azure. NET
-|**Spravovaný modul HSM** |<ul><li>Klíče chráněné pomocí HSM</li></ul> | https://{HSM-Name}. managedhsm. Azure. NET
+|**Managed HSM** |<ul><li>Klíče chráněné pomocí HSM</li></ul> | https://{HSM-Name}. managedhsm. Azure. NET
 
 Tady jsou přípony adres URL používané pro přístup k jednotlivým typům objektů.
 
@@ -121,7 +121,7 @@ Authorization: Bearer <access_token>
 
 ```  
 
- Pokud není k dispozici přístupový token nebo když služba token nepřijme, vrátí se klientovi Chyba HTTP 401, která bude obsahovat hlavičku WWW-Authenticate, například:  
+ Pokud není k dispozici přístupový token nebo když služba token nepřijme, vrátí se klientovi Chyba HTTP 401 a bude obsahovat hlavičku WWW-Authenticate, například:  
 
 ```  
 401 Not Authorized  

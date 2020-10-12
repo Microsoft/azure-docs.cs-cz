@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte informace o Azure Monitor Log Analytic
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89020945"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics datový model pro Azure Backup data
@@ -33,7 +33,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s výstrahami.
 | AlertUniqueId_s |Text |Jedinečný identifikátor vygenerované výstrahy |
 | AlertType_s |Text |Typ výstrahy, například zálohování |
 | AlertStatus_s |Text |Stav výstrahy, například aktivní |
-| AlertOccurrenceDateTime_s |Datum/čas |Datum a čas vytvoření výstrahy |
+| AlertOccurrenceDateTime_s |Datum/Čas |Datum a čas vytvoření výstrahy |
 | AlertSeverity_s |Text |Závažnost výstrahy, například kritická |
 |AlertTimeToResolveInMinutes_s    | Číslo        |Čas potřebný k vyřešení výstrahy. Prázdné pro aktivní výstrahy.         |
 |AlertConsolidationStatus_s   |Text         |Zjistit, jestli je výstraha konsolidovaná výstraha nebo ne         |
@@ -152,7 +152,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 | JobOperation_s |Text |Operace, pro kterou je úloha spuštěná, například zálohování, obnovení, konfigurace zálohování |
 | JobStatus_s |Text |Stav dokončené úlohy, například dokončeno, neúspěšné |
 | JobFailureCode_s |Text |Řetězec kódu chyby, protože došlo k selhání úlohy |
-| JobStartDateTime_s |Datum/čas |Datum a čas spuštění úlohy |
+| JobStartDateTime_s |Datum/Čas |Datum a čas spuštění úlohy |
 | BackupStorageDestination_s |Text |Cíl úložiště zálohování, třeba Cloud, disk  |
 | AdHocOrScheduledJob_s |Text | Pole, které určuje, jestli má být úloha ad hoc nebo plánovaná |
 | JobDurationInSecs_s | Číslo |Celková doba trvání úlohy v sekundách |
@@ -172,7 +172,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 
 Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 
-| Pole | Typ dat | Použitelné verze | Popis |
+| Pole | Typ dat | Použitelné verze | Description |
 | --- | --- | --- | --- |
 | EventName_s |Text ||Toto pole představuje název této události. Vždycky se AzureBackupCentralReport |
 | SchemaVersion_s |Text ||Toto pole označuje aktuální verzi schématu. Je **v2** |
@@ -220,7 +220,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 
 Tato tabulka poskytuje podrobnosti o přidružení zásad s různými entitami.
 
-| Pole | Typ dat | Použitelné verze | Popis |
+| Pole | Typ dat | Použitelné verze | Description |
 | --- | --- | --- | --- |
 | EventName_s |Text ||Toto pole představuje název této události. Vždycky se AzureBackupCentralReport |
 | SchemaVersion_s |Text ||Toto pole označuje aktuální verzi schématu. Je **v2** |
@@ -349,7 +349,7 @@ Tato tabulka určuje úlohy, ke kterým je přiřazený svazek.
 
 Tato tabulka poskytuje základní pole související s chráněnými instancemi.
 
-| Pole | Typ dat |Použitelné verze | Popis |
+| Pole | Typ dat |Použitelné verze | Description |
 | --- | --- | --- | --- |
 | BackupItemUniqueId_s |Text |v2|Jedinečné ID, které slouží k identifikaci zálohované položky pro virtuální počítače, které se zálohují pomocí DPM, MABS|
 | ProtectedContainerUniqueId_s |Text |v2|Jedinečné ID, které slouží k identifikaci chráněného kontejneru pro vše kromě virtuálních počítačů zálohovaných pomocí DPM, MABS|

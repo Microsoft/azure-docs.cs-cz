@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 058862f2b274ef4e956c82fbcc44dec92a270d32
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441047"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Použití Azure Data Lake Storage Gen1 pro požadavky na velké objemy dat
@@ -78,7 +78,7 @@ Většina typů clusterů HDInsight (Hadoop, HBA, propamì) podporuje Data Lake 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>Data uložená v místních nebo IaaS clusterech Hadoop
 Velké objemy dat může být uloženo v existujících clusterech Hadoop místně na počítačích se systémem HDFS. Clustery Hadoop můžou být v místním nasazení nebo se můžou nacházet v rámci clusteru IaaS v Azure. Můžou nastat požadavky na kopírování takových dat do Azure Data Lake Storage Gen1 pro jednorázový přístup nebo pro opakovaný pokus. Existují různé možnosti, které můžete použít k dosažení tohoto. Níže je uveden seznam alternativ a Spojených kompromisů.
 
-| Přístup | Podrobnosti | Výhody | Požadavky |
+| Přístup | Podrobnosti | Výhody | Důležité informace |
 | --- | --- | --- | --- |
 | Použití Azure Data Factory (ADF) ke kopírování dat přímo z clusterů Hadoop do Azure Data Lake Storage Gen1 |[ADF podporuje HDFS jako zdroj dat.](../data-factory/connector-hdfs.md) |ADF poskytuje okamžitou podporu pro HDFS a první třídu a komplexní správu a monitorování. |Vyžaduje, aby byla Správa datá brána nasazená místně nebo v clusteru IaaS. |
 | Exportujte data ze souborů Hadoop jako soubory. Pak zkopírujte soubory do Azure Data Lake Storage Gen1 pomocí vhodného mechanismu. |Soubory můžete zkopírovat do Azure Data Lake Storage Gen1 pomocí: <ul><li>[Azure PowerShell pro operační systém Windows](data-lake-store-get-started-powershell.md)</li><li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li><li>Vlastní aplikace pomocí libovolné Data Lake Storage Gen1 sady SDK</li></ul> |Rychlé zahájení práce Může provádět přizpůsobená nahrávání |Proces s více kroky, který zahrnuje několik technologií. Správa a monitorování se budou po určitou dobu projevit jako výzvy s ohledem na vlastní povahu nástrojů. |

@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak pomocí Azure Portal zobrazit metriky 
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86114879"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Sledování Event Grid doručování zpráv 
@@ -43,53 +43,53 @@ Pokud jste publikovali vlastní téma, můžete si Zobrazit metriky pro ni.
     :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 3. V seznamu témat vyberte vlastní téma. 
 
-    :::image type="content" source="./media/monitor-event-delivery/select-custom-topic.png" alt-text="Výběr vlastního tématu":::
+    :::image type="content" source="./media/monitor-event-delivery/select-custom-topic.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 4. Zobrazit metriky pro vlastní téma události na stránce **Event Grid tématu** . Na následujícím obrázku je minimalizována část **základy** , která zobrazuje skupinu prostředků, předplatné atd. 
 
-    :::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics.png" alt-text="Zobrazit metriky událostí":::
+    :::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 
 Grafy s podporovanými metrikami můžete vytvářet pomocí karty **metriky** na stránce **Event Grid tématu** .
 
-:::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="Téma – stránka metriky":::
+:::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 
 Další informace o metrikách najdete v tématu [metriky v Azure monitor](../azure-monitor/platform/data-platform-metrics.md)
 
 Podívejte se například na graf metriky pro metriku **publikovaných událostí** .
 
-:::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics-example.png" alt-text="Metrika publikovaných událostí":::
+:::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics-example.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 
 
 ## <a name="view-subscription-metrics"></a>Zobrazit metriky předplatného
 1. Pomocí postupu v předchozí části přejděte na stránku **Event Grid tématu** . 
 2. V dolním podokně vyberte předplatné, jak je znázorněno v následujícím příkladu. 
 
-    :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="Vybrat odběr události":::    
+    :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="Vyhledat a vybrat Event Grid témata":::    
 
     Můžete také vyhledat **Event Grid odběry** na panelu hledání v Azure Portal, vybrat **typ tématu**, **předplatné**a **umístění** a zobrazit odběr událostí. 
 
-    :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="Vybrat odběr události ze stránky Event Grid odběry":::        
+    :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="Vyhledat a vybrat Event Grid témata":::        
 
     Pro vlastní témata vyberte **Event Grid témata** jako **typ tématu**. V části systémová témata vyberte typ prostředku Azure, například **účty úložiště (BLOB, GPv2)**. 
 3. Prohlédněte si metriky pro předplatné na domovské stránce pro odběr v grafu. Můžete zobrazit **Obecné**, **chyby**, **latenci**a metriky **nedoručených zpráv** pro poslední 1 hodinu, 6 hodin, 12 hodin, 1 den, 7 dní nebo 30 dní. 
 
-    :::image type="content" source="./media/monitor-event-delivery/subscription-home-page-metrics.png" alt-text="Metriky na domovské stránce předplatného":::    
+    :::image type="content" source="./media/monitor-event-delivery/subscription-home-page-metrics.png" alt-text="Vyhledat a vybrat Event Grid témata":::    
 
 ## <a name="view-system-topic-metrics"></a>Zobrazit metriky tématu systému
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 2. Do panelu hledání v tématu zadejte **Event Grid systémová témata**a v rozevíracím seznamu vyberte **Event Grid systémová témata** . 
 
-    :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="Vyhledat a vybrat Event Grid systémová témata":::
+    :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 3. V seznamu témat vyberte své systémové téma. 
 
-    :::image type="content" source="./media/monitor-event-delivery/select-system-topic.png" alt-text="Vyberte své systémové téma.":::
+    :::image type="content" source="./media/monitor-event-delivery/select-system-topic.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 4. Zobrazit metriky pro systémové téma na stránce **Event Gridho systému** . Na následujícím obrázku je minimalizována část **základy** , která zobrazuje skupinu prostředků, předplatné atd. 
 
-    :::image type="content" source="./media/monitor-event-delivery/system-topic-overview-metrics.png" alt-text="Zobrazit metriky tématu systému na stránce Přehled":::
+    :::image type="content" source="./media/monitor-event-delivery/system-topic-overview-metrics.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 
 Grafy s podporovanými metrikami můžete vytvářet pomocí karty **metriky** na stránce **Event Grid tématu** .
 
-:::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="Systémové téma – stránka metriky":::
+:::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 
 Další informace o metrikách najdete v tématu [metriky v Azure monitor](../azure-monitor/platform/data-platform-metrics.md)
 

@@ -10,10 +10,10 @@ ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91280466"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Provedení obnovení k určitému bodu v čase u dat objektů blob bloku
@@ -52,7 +52,7 @@ Následující obrázek ukazuje účet úložiště nakonfigurovaný pro obnoven
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Pokud chcete nakonfigurovat obnovení k bodu v čase pomocí PowerShellu, nejdřív nainstalujte modul [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) verze 2.6.0 nebo novější. Pak zavolejte příkaz Enable-AzStorageBlobRestorePolicy a povolte tak obnovení k bodu v čase pro účet úložiště.
+Pokud chcete nakonfigurovat obnovení k bodu v čase pomocí PowerShellu, nejdřív nainstalujte modul [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) verze 2.6.0 nebo novější. Potom zavolejte příkaz Enable-AzStorageBlobRestorePolicy a povolte tak obnovení k bodu v čase pro účet úložiště.
 
 Následující příklad umožňuje obnovitelné odstranění a nastavuje dobu uchovávání obnovitelného odstranění, umožňuje změnit kanál a správu verzí a pak umožňuje obnovení k určitému bodu v čase.    Při spuštění tohoto příkladu Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
 
@@ -122,7 +122,7 @@ Pro obnovení všech kontejnerů a objektů BLOB v účtu úložiště pomocí A
 1. Zaškrtnutím políčka potvrďte, že chcete pokračovat.
 1. Vyberte **obnovit** a spusťte operaci obnovení.
 
-    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="Snímek obrazovky ukazující obnovení všech kontejnerů do zadaného bodu obnovení":::
+    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="Snímek obrazovky, který ukazuje, jak nakonfigurovat obnovení k bodu v čase Azure Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -169,14 +169,14 @@ Chcete-li obnovit rozsah objektů BLOB v jednom nebo více kontejnerech s Azure 
 1. Zadejte rozsahy, které se mají obnovit. K vymezení názvu kontejneru z předpony objektu BLOB použijte lomítko (/).
 1. Ve výchozím nastavení podokno **Obnovit vybrané kontejnery** určuje rozsah, který zahrnuje všechny objekty BLOB v kontejneru. Tento rozsah odstraňte, pokud nechcete obnovit celý kontejner. Výchozí rozsah je zobrazen na následujícím obrázku.
 
-    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="Snímek obrazovky s výchozím rozsahem objektů blob, který se má odstranit před zadáním vlastního rozsahu":::
+    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="Snímek obrazovky, který ukazuje, jak nakonfigurovat obnovení k bodu v čase Azure Portal":::
 
 1. Zaškrtnutím políčka potvrďte, že chcete pokračovat.
 1. Vyberte **obnovit** a spusťte operaci obnovení.
 
 Následující obrázek znázorňuje operaci obnovení v sadě rozsahů.
 
-:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="Snímek obrazovky, který ukazuje, jak obnovit rozsahy objektů BLOB v jednom nebo více kontejnerech":::
+:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="Snímek obrazovky, který ukazuje, jak nakonfigurovat obnovení k bodu v čase Azure Portal":::
 
 Operace obnovení zobrazená na obrázku provádí následující akce:
 

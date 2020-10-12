@@ -4,10 +4,10 @@ description: Popisuje vlastnosti, které jsou k dispozici pro události centra u
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 960aa1fe7184e1d02d28fdc135907119fee8f123
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86113679"
 ---
 # <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure Event Hubs jako zdroj Event Grid
@@ -56,11 +56,11 @@ Událost má následující data nejvyšší úrovně:
 | Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
-| Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| subject | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| eventType | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
-| data | odkazy objektů | Data události centra událostí |
+| data | object | Data události centra událostí |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
@@ -71,10 +71,10 @@ Datový objekt má následující vlastnosti:
 | fileUrl | řetězec | Cesta k zachycenému souboru. |
 | fileType | řetězec | Typ souboru digitalizačního souboru. |
 | Oddílu | řetězec | ID horizontálních oddílů |
-| sizeInBytes | celé číslo | Velikost souboru. |
-| eventCount | celé číslo | Počet událostí v souboru. |
-| firstSequenceNumber | celé číslo | Nejmenší číslo sekvence z fronty. |
-| lastSequenceNumber | celé číslo | Poslední pořadové číslo z fronty. |
+| sizeInBytes | integer | Velikost souboru. |
+| eventCount | integer | Počet událostí v souboru. |
+| firstSequenceNumber | integer | Nejmenší číslo sekvence z fronty. |
+| lastSequenceNumber | integer | Poslední pořadové číslo z fronty. |
 | firstEnqueueTime | řetězec | Poprvé z fronty. |
 | lastEnqueueTime | řetězec | Čas posledního spuštění z fronty. |
 

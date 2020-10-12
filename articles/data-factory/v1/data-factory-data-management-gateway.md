@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 68459253114e97c5e113b863a075c210ef50bf2e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441115"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
@@ -95,7 +95,7 @@ Bránu pro správu dat je možné nainstalovat následujícími způsoby:
 2. Klikněte na tlačítko **Stáhnout**, vyberte **64** verze (32-bit není podporován) a klikněte na tlačítko **Další**.
 3. Spusťte soubor **MSI** přímo nebo ho uložte na pevný disk a spusťte příkaz.
 4. Na **úvodní** stránce vyberte **jazyk** a klikněte na tlačítko **Další**.
-5. **Přijměte** licenční smlouvu s koncovým uživatelem a klikněte na tlačítko **Další**.
+5. **Přijměte** licenční smlouvu End-User a klikněte na **Další**.
 6. Vyberte **složku** pro instalaci brány a klikněte na **Další**.
 7. Na stránce **připraveno k instalaci** klikněte na **nainstalovat**.
 8. Instalaci dokončíte kliknutím na **Dokončit** .
@@ -140,7 +140,7 @@ Je potřeba vzít v úvahu dvě brány firewall: **podniková brána firewall** 
 
 Na úrovni podnikové brány firewall je potřeba nakonfigurovat následující domény a odchozí porty:
 
-| Názvy domén | Porty | Popis |
+| Názvy domén | Porty | Description |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Používá se pro komunikaci s back-end služby pro přesun dat. |
 | *.core.windows.net |443 |Používá se pro připravené kopírování pomocí objektu blob Azure (Pokud je nakonfigurované).|
@@ -367,7 +367,7 @@ Následující tabulka uvádí popisy sloupců v seznamu **uzly brány** :
 Vlastnost monitorování | Popis
 :------------------ | :----------
 Název | Název logické brány a uzlů přidružených k bráně Uzel je místní počítač s Windows, na kterém je brána nainstalovaná. Informace o tom, jak mít více než jeden uzel (až čtyři uzly) v jedné logické bráně, najdete v tématu [Správa dat brány – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
-Stav | Stav logické brány a uzlů brány. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v části [stav brány](#gateway-status) .
+Status | Stav logické brány a uzlů brány. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v části [stav brány](#gateway-status) .
 Verze | Zobrazuje verzi logické brány a všech uzlů brány. Verze logické brány je určena na základě verze většiny uzlů ve skupině. Pokud v instalaci logické brány existují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická brána. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila).
 Dostupná paměť | Dostupná paměť v uzlu brány Tato hodnota je snímkem téměř v reálném čase.
 Využití procesoru | Využití procesoru uzlu brány Tato hodnota je snímkem téměř v reálném čase.
@@ -380,7 +380,7 @@ Na této stránce se zobrazí některá nastavení, která jsou smysluplnější
 ### <a name="gateway-status"></a>Stav brány
 Následující tabulka uvádí možné stavy **uzlu brány**:
 
-Stav  | Komentáře a scénáře
+Status  | Komentáře a scénáře
 :------- | :------------------
 Online | Uzel je připojený ke službě Data Factory.
 Offline | Uzel je offline.
@@ -390,7 +390,7 @@ Inactive | Uzel je v konfiguraci odlišnou od konfigurace jiných majoritní uzl
 
 Následující tabulka uvádí možné stavy **logické brány**. Stav brány závisí na stavech uzlů brány.
 
-Stav | Komentáře
+Status | Komentáře
 :----- | :-------
 Vyžaduje registraci | Pro tuto logickou bránu ještě není zaregistrovaný žádný uzel.
 Online | Uzly brány jsou online.

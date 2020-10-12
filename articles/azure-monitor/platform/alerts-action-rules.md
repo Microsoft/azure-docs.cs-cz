@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
 ms.openlocfilehash: 723da36093c895a3a4aefbe66c2d8ca2ac0cba32
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983138"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
@@ -54,7 +54,7 @@ Nyní byste měli vidět stránku Flow pro vytváření pravidel akcí. Nakonfig
 
 ![Tok vytváření nového pravidla akce](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
-### <a name="scope"></a>Obor
+### <a name="scope"></a>Rozsah
 
 Nejdřív vyberte obor (předplatné Azure, skupinu prostředků nebo cílový prostředek). V rámci jednoho předplatného můžete také vybrat několik kombinací oborů.
 
@@ -261,7 +261,7 @@ Chcete-li nejlépe používat výstrahy protokolu s pravidly akcí, vytvořte v�
 
 ![Pravidla akcí a výstrahy protokolu (počet výsledků)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="while-im-configuring-an-action-rule-id-like-to-see-all-the-possible-overlapping-action-rules-so-that-i-avoid-duplicate-notifications-is-it-possible-to-do-that"></a>I když konfigurujem pravidlo akce, chci zobrazit všechna možná překrývající se pravidla akcí, aby se zamezilo duplicitním oznámením. Je to možné?
 

@@ -7,10 +7,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88652844"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Přesunout sálové úložiště do Azure
@@ -51,7 +51,7 @@ Služba Azure Storage je dostupná jako [disky Azure](../../../managed-disks-ove
 
 <table>
 <thead>
-    <tr><th>Typ</th><th>Popis</th><th>Použijte v případě, že chcete:</th></tr>
+    <tr><th>Typ</th><th>Description</th><th>Použijte v případě, že chcete:</th></tr>
 </thead>
 <tbody>
 <tr><td>Soubory Azure

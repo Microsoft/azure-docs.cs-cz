@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
 ms.openlocfilehash: bdb115cf6d0f0aa2c55f6143015a323df6faa114
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83744307"
 ---
 # <a name="geomatch-custom-rules-preview"></a>Vlastní pravidla pro neshodu (Preview)
@@ -147,7 +147,7 @@ Pokud používáte operátor geografického porovnávání, selektory můžou b�
 | MX | Mexiko|
 | MY | Malajsie|
 | MZ | Mosambik|
-| NA | Namibie|
+| Není k dispozici | Namibie|
 | NE | Niger|
 | NG | Nigérie|
 | NI | Nikaragua|
@@ -173,7 +173,7 @@ Pokud používáte operátor geografického porovnávání, selektory můžou b�
 | RU | Ruská federace|
 | RW | Rwanda|
 | SA | Saúdská Arábie|
-| SD | Súdán|
+| Směrodatná odchylka | Súdán|
 | SE | Švédsko|
 | SG | Singapur|
 | SI | Slovinsko|

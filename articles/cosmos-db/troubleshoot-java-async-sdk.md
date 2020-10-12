@@ -11,10 +11,10 @@ ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-java
 ms.openlocfilehash: 60d73f8b3eae21ab399853e8d05b67b7b431ee5f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321050"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>Řešení potíží při použití Azure Cosmos DB Async Java SDK v2 s účty SQL API
@@ -73,7 +73,7 @@ Pokud je vaše aplikace nasazená v Azure Virtual Machines bez veřejné IP adre
 * Přiřaďte k VIRTUÁLNÍmu počítači Azure veřejnou IP adresu.
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Nejde se připojit ke službě – firewall
-``ConnectTimeoutException``indikuje, že sada SDK nemůže získat přístup ke službě.
+``ConnectTimeoutException`` indikuje, že sada SDK nemůže získat přístup ke službě.
 Při použití přímého režimu se může zobrazit chyba podobná této:
 ```
 GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
@@ -175,7 +175,7 @@ Pomocí nástroje `observeOn(customScheduler)` uvolníte vstupně-výstupní vl�
 
 ### <a name="connection-pool-exhausted-issue"></a>Problém vyčerpání fondu připojení
 
-`PoolExhaustedException`je selhání na straně klienta. Tato chyba znamená, že zatížení vaší aplikace je vyšší než to, co může poskytovat fond připojení sady SDK. Zvyšte velikost fondu připojení nebo distribuujte zatížení více aplikací.
+`PoolExhaustedException` je selhání na straně klienta. Tato chyba znamená, že zatížení vaší aplikace je vyšší než to, co může poskytovat fond připojení sady SDK. Zvyšte velikost fondu připojení nebo distribuujte zatížení více aplikací.
 
 ### <a name="request-rate-too-large"></a>Příliš velký počet požadavků
 Tato chyba je selhání na straně serveru. Indikuje, že jste využili zřízenou propustnost. Zkuste to znovu později. Pokud se toto selhání často dostanou, zvažte zvýšení propustnosti kolekce.

@@ -5,10 +5,10 @@ ms.date: 01/08/2020
 ms.topic: how-to
 ms.reviewer: v-umha
 ms.openlocfilehash: 7300a5dcfb0150e6182636dcb71bacfa68c787db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076912"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Monitorování služby Azure blockchain prostřednictvím Azure Monitor  
@@ -36,7 +36,7 @@ Při vytváření nastavení diagnostiky určíte, které kategorie protokolů s
 
 **Protokoly proxy serveru blockchain** – Pokud chcete monitorovat protokoly proxy serveru ngnix, vyberte kategorii. Všechny podrobnosti o transakcích zákazníka jsou k dispozici pro účely auditu a ladění.  
 
-**Blockchain Application logs** – vyberte kategorii pro získání protokolů aplikace blockchain hostované spravovanou službou. Například pro člena ABS-kvora by tyto protokoly byly protokoly ze samotného kvora.  
+**Blockchain Application logs** – vyberte kategorii pro získání protokolů aplikace blockchain hostované spravovanou službou. Například pro člena ABS-Quorum by tyto protokoly byly protokoly ze samotného kvora.  
 
 **Požadavky na metriky**: vyberte možnost shromažďování dat metrik z Azure Cosmos DB do cílových umístění v nastavení diagnostiky, které se automaticky shromáždí v metrikách Azure. Shromažďovat data metriky pomocí protokolů zdrojů k analýze obou druhů dat a k odesílání dat metriky mimo Azure Monitor.
 
@@ -79,7 +79,7 @@ Všechny protokoly prostředků sdílejí společné schéma nejvyšší úrovn�
 V následující tabulce jsou uvedeny vlastnosti pro protokoly proxy serveru Azure blockchain při jejich shromažďování v protokolu Azure Monitor nebo Azure Storage.  
 
 
-| Název vlastnosti  | Popis |
+| Název vlastnosti  | Description |
 |:---|:---|
 | time | Datum a čas (UTC), kdy došlo k operaci. |
 | Prostředku  | Prostředek služby Azure blockchain, pro který jsou protokoly povolené.  |
@@ -105,7 +105,7 @@ V následující tabulce jsou uvedeny vlastnosti pro protokoly proxy serveru Azu
 V následující tabulce jsou uvedeny vlastnosti pro protokoly aplikací Azure blockchain.
 
 
-| Název vlastnosti  | Popis |
+| Název vlastnosti  | Description |
 |:---|:---|
 | time | Datum a čas (UTC), kdy došlo k operaci. |
 | Prostředku  | Prostředek služby Azure blockchain, pro který jsou protokoly povolené.|
@@ -131,24 +131,24 @@ Seznam všech podporovaných Azure Monitor metriky (včetně služby Azure block
 Následující tabulka uvádí seznam blockchain metrik, které se shromažďují pro prostředek člena služby Azure blockchain.
 
 
-| Název metriky | Jednotka  |  Typ agregace| Popis   |
+| Název metriky | Jednotka  |  Typ agregace| Description   |
 |---|---|---|---|
-| Nedokončené transakce   | Count  |  Průměr | Počet transakcí, které čekají na dolována za účely.   |
-| Zpracované bloky   | Count  | Sčítání  |  Počet bloků zpracovaných v každém časovém intervalu. Velikost bloku je v současné době 5 sekund, proto za minutu každý uzel zpracuje 12 bloků a 60 bloků za 5 minut.   |
-|Zpracované transakce    | Count  | Sčítání  | Počet transakcí zpracovaných v bloku.    |
-|Transakce ve frontě    |  Count | Průměr  | Počet transakcí, které nemohou být okamžitě dolována za účelyy. Může to být proto, že se dostanou mimo pořadí a budoucí verze čeká na doručení předchozí transakce. Nebo může se jednat o dvě transakce, které mají stejné číslo jako jenom jednou (hodnota nonce) a stejnou hodnotu plynu, takže druhá z nich nemůže být dolována za účely.   |
+| Nedokončené transakce   | Počet  |  Průměr | Počet transakcí, které čekají na dolována za účely.   |
+| Zpracované bloky   | Počet  | Sum  |  Počet bloků zpracovaných v každém časovém intervalu. Velikost bloku je v současné době 5 sekund, proto za minutu každý uzel zpracuje 12 bloků a 60 bloků za 5 minut.   |
+|Zpracované transakce    | Počet  | Sum  | Počet transakcí zpracovaných v bloku.    |
+|Transakce ve frontě    |  Počet | Průměr  | Počet transakcí, které nemohou být okamžitě dolována za účelyy. Může to být proto, že se dostanou mimo pořadí a budoucí verze čeká na doručení předchozí transakce. Nebo může se jednat o dvě transakce, které mají stejné číslo jako jenom jednou (hodnota nonce) a stejnou hodnotu plynu, takže druhá z nich nemůže být dolována za účely.   |
 
 ### <a name="connection-metrics"></a>Metriky připojení  
 
 V následující tabulce jsou uvedeny různé metriky připojení, které jsou shromažďovány pro prostředek člena služby Azure blockchain. Jedná se o metriky NGINX proxy serveru.
 
 
-| Název metriky | Jednotka  |  Typ agregace| Popis |
+| Název metriky | Jednotka  |  Typ agregace| Description |
 |---|---|---|---|
-| Přijatá připojení   | Count  |  Sčítání | Celkový počet přijatých připojení klientů.   |
-| Aktivní připojení  | Count  | Průměr  |  Aktuální počet aktivních připojení klientů, včetně čekání na připojení.    |
-|Zpracovaná připojení    | Count  | Sčítání  | Celkový počet zpracovaných připojení. Obecně platí, že hodnota parametru je stejná jako přijatá připojení, pokud se nedosáhne omezení prostředků.     |
-|Zpracované žádosti     |  Count | Sčítání  | Celkový počet požadavků klientů.  |
+| Přijatá připojení   | Počet  |  Sum | Celkový počet přijatých připojení klientů.   |
+| Aktivní připojení  | Počet  | Průměr  |  Aktuální počet aktivních připojení klientů, včetně čekání na připojení.    |
+|Zpracovaná připojení    | Počet  | Sum  | Celkový počet zpracovaných připojení. Obecně platí, že hodnota parametru je stejná jako přijatá připojení, pokud se nedosáhne omezení prostředků.     |
+|Zpracované žádosti     |  Počet | Sum  | Celkový počet požadavků klientů.  |
 
 
 ### <a name="performance-metrics"></a>Metriky výkonu
@@ -156,11 +156,11 @@ V následující tabulce jsou uvedeny různé metriky připojení, které jsou s
 V následující tabulce jsou uvedeny metriky výkonu, které jsou shromažďovány pro každý uzel členského prostředku Azure blockchain.  
 
 
-| Název metriky | Jednotka  |  Typ agregace| Popis   |
+| Název metriky | Jednotka  |  Typ agregace| Description   |
 |---|---|---|---|
-| Procento využití procesoru   | Procento  |  Maximum | Procento využití procesoru.     |
-| Bajty čtení v/v   | Kilobajtů   | Sčítání  |  Součet čtených vstupně-výstupních bajtů ve všech uzlech členského prostředku blockchain      |
-|Bajty zápisu v/v     | Kilobajtů   | Sčítání  | Součet v/v zapisuje bajty ve všech uzlech členského prostředku blockchain.     |
+| Procento využití procesoru   | Procento  |  Max | Procento využití procesoru.     |
+| Bajty čtení v/v   | Kilobajtů   | Sum  |  Součet čtených vstupně-výstupních bajtů ve všech uzlech členského prostředku blockchain      |
+|Bajty zápisu v/v     | Kilobajtů   | Sum  | Součet v/v zapisuje bajty ve všech uzlech členského prostředku blockchain.     |
 |Omezení paměti       |  Paměti   | Průměr    | Maximální velikost paměti dostupné pro proces blockchain na uzel. |
 |Využití paměti     | Paměti  |  Průměr | Velikost využité paměti ve všech uzlech.  |
 | Procento využití paměti     | Procento   | Průměr  |  Procentuální podíl využité paměti ve všech uzlech       |

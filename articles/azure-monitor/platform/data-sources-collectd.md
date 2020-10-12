@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
 ms.openlocfilehash: 488f273336da05738609333f911fe3a90ba59496
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86111979"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Shromažďovat data shromážděná v agentech Linux v Azure Monitor
@@ -54,7 +54,7 @@ Shromážděná konfigurace používá výchozí `write_http` modul plug-in k od
 > [!NOTE]
 > Tento port můžete v případě potřeby nakonfigurovat na vlastní port definovaný.
 
-Agent Log Analytics pro Linux také naslouchá na portu 26000 pro shromážděné metriky a pak je převede na Azure Monitor metriky schématu. Následuje Log Analytics agenta pro konfiguraci systému Linux `collectd.conf` .
+Agent Log Analytics pro Linux také naslouchá na portu 26000 pro shromážděné metriky a pak je převede na Azure Monitor metriky schématu. Následuje Log Analytics agenta pro konfiguraci systému Linux  `collectd.conf` .
 
 ```xml
 <source>
@@ -123,12 +123,12 @@ Aby bylo možné udržovat známý model mezi metrikami infrastruktury již shro
 | Pole shromážděné metriky | Azure Monitor pole |
 |:--|:--|
 | `host` | Počítač |
-| `plugin` | Žádná |
+| `plugin` | Žádné |
 | `plugin_instance` | Název instance<br>Pokud **plugin_instance** má *hodnotu null* , pak je hodnota InstanceName = "*_Total*". |
 | `type` | ObjectName |
 | `type_instance` | CounterName<br>Pokud **type_instance** má *hodnotu null* , CounterName =**blank** |
 | `dsnames[]` | CounterName |
-| `dstypes` | Žádná |
+| `dstypes` | Žádné |
 | `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>Další kroky
