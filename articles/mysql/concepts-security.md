@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 5caed64beb43cbb1e884a3dde6bc0052c617f83e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378776"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>Zabezpečení ve službě Azure Database for MySQL
@@ -38,7 +38,7 @@ Pravidla brány firewall protokolu IP udělují přístup k serverům na základ
 Koncové body služby virtuální sítě prodlužují připojení k virtuální síti přes páteřní síť Azure. Pomocí pravidel virtuální sítě můžete povolit serveru Azure Database for MySQL, aby bylo možné povolit připojení z vybraných podsítí ve virtuální síti. Další informace najdete v tématu [Přehled koncového bodu služby virtuální sítě](concepts-data-access-and-security-vnet.md).
 
 ### <a name="private-ip"></a>Privátní IP adresa
-Privátní odkaz vám umožní připojit se k vašemu Azure Database for MySQL v Azure prostřednictvím privátního koncového bodu. Privátní propojení Azure v podstatě přináší služby Azure do privátního Virtual Network (VNet). K prostředkům PaaS se dá dostat pomocí privátní IP adresy stejně jako u jakéhokoli jiného prostředku ve virtuální síti. Další informace najdete v tématu [Přehled privátních odkazů](concepts-data-access-security-private-link.md) .
+Privátní odkaz vám umožní připojit se k vašemu Azure Database for MySQL v Azure prostřednictvím privátního koncového bodu. Azure Private Link v podstatě přináší služby Azure do vaší privátní virtuální sítě. K prostředkům PaaS je možné přistupovat přes privátní IP adresu stejně jako k jakýmkoli jiným prostředkům ve virtuální síti. Další informace najdete v tématu [Přehled privátních odkazů](concepts-data-access-security-private-link.md) .
 
 ## <a name="access-management"></a>Správa přístupu
 

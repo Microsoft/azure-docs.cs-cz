@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f5db99f5e8ed2ea5844acba5500bc94d8fb0db2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85358340"
 ---
 # <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>Zakázat PTA při použití Azure AD Connect nekonfigurovat
@@ -41,7 +41,7 @@ Vyžadují se tyto požadavky:
 
 ## <a name="to-disable-pta"></a>Zakázání PTA
 V rámci relace PowerShellu použijte následující příkaz, kterým zakážete PTA:
-1. PS C:\Program Files\Microsoft Azure AD Connect Authentication agent>`Import-Module .\Modules\PassthroughAuthPSModule`
+1. PS C:\Program Files\Microsoft Azure AD Connect Authentication agent> `Import-Module .\Modules\PassthroughAuthPSModule`
 2. `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth` nebo `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth -EnvironmentName <identifier>`
 3. `Disable-PassthroughAuthentication  -Feature PassthroughAuth` nebo `Disable-PassthroughAuthentication -Feature PassthroughAuth -EnvironmentName <identifier>`
 
@@ -50,7 +50,7 @@ V rámci relace PowerShellu použijte následující příkaz, kterým zakážet
 Pokud nemáte počítač agenta, můžete k instalaci agenta použít následující příkaz.
 
 1. Stáhněte si nejnovějšího agenta ověření z portal.azure.com.
-2. Nainstalujte funkci: `.\AADConnectAuthAgentSetup.exe` nebo`.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
+2. Nainstalujte funkci: `.\AADConnectAuthAgentSetup.exe` nebo `.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
 
 
 ## <a name="next-steps"></a>Další kroky

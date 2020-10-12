@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18
 ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78403232"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Rychlý Start: odeslání událostí z privátního registru kontejneru do Event Grid
@@ -19,7 +19,7 @@ Po dokončení kroků v tomto článku se v ukázkové webové aplikaci zobrazí
 
 ![Webový prohlížeč, který vykresluje ukázkovou webovou aplikaci se třemi přijatými událostmi][sample-app-01]
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet][azure-account], ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet][azure-account].
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -35,7 +35,7 @@ RESOURCE_GROUP_NAME=myResourceGroup
 az group create --name $RESOURCE_GROUP_NAME --location eastus
 ```
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
 V dalším kroku nasaďte registr kontejneru do skupiny prostředků pomocí následujících příkazů. Před spuštěním příkazu [AZ ACR Create][az-acr-create] nastavte `ACR_NAME` na název svého registru. Název musí být v rámci Azure jedinečný a omezený na 5-50 alfanumerických znaků.
 
@@ -200,7 +200,7 @@ Na následujícím snímku obrazovky vidíte ukázkovou aplikaci se třemi udál
 
 ![Webový prohlížeč, který zobrazuje ukázkovou aplikaci s ImagePushed a ImageDeletedmi událostmi][sample-app-03]
 
-Gratulujeme! Pokud se zobrazí `ImagePushed` události a `ImageDeleted` , registr odesílá události do Event Grid a Event Grid předává tyto události do koncového bodu webové aplikace.
+Blahopřejeme! Pokud se zobrazí `ImagePushed` události a `ImageDeleted` , registr odesílá události do Event Grid a Event Grid předává tyto události do koncového bodu webové aplikace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

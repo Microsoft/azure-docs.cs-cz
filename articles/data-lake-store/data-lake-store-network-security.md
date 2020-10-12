@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 9066c53fce750b1c8402c5a0ccbd10debd5ec431
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85855715"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Integrace virtuální sítě pro Azure Data Lake Storage Gen1
@@ -99,7 +99,7 @@ Mezi dostupné možnosti patří:
 
      ![Výběr koncového bodu služby Microsoft.AzureActiveDirectory](media/data-lake-store-network-security/config-vnet-2.png)
 
-6.  Vyberte podsítě, pro které chcete povolit možnosti připojení. Vyberte možnost **Přidat**.
+6.  Vyberte podsítě, pro které chcete povolit možnosti připojení. Vyberte **Přidat**.
 
     ![Výběr podsítě](media/data-lake-store-network-security/config-vnet-3.png)
 
@@ -124,7 +124,7 @@ Mezi dostupné možnosti patří:
 
     ![Přidání existující virtuální sítě](media/data-lake-store-network-security/config-adls-2.png)
 
-5.  Vyberte virtuální sítě a podsítě, kterým chcete povolit možnosti připojení. Vyberte možnost **Přidat**.
+5.  Vyberte virtuální sítě a podsítě, kterým chcete povolit možnosti připojení. Vyberte **Přidat**.
 
     ![Výběr virtuálních sítí a podsítí](media/data-lake-store-network-security/config-adls-3.png)
 

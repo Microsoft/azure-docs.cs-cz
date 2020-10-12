@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: efd6e6a93cd4ca79e6c4b6de69f8514e2d71b252
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84323310"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Azure CDN z podmínek shody modulu pravidel Verizon Premium
@@ -31,9 +31,9 @@ Podmínku shody můžete například použít k těmto akcím:
 * [Vždy](#always)
 * [Zařízení](#device)
 * [Umístění](#location)
-* [Zdroj](#origin)
+* [Zdroji](#origin)
 * [Žádost](#request)
-* [URL](#url)
+* [Adresa URL](#url)
 
 ### <a name="always"></a><a name="always"></a>Vždy
 
@@ -73,7 +73,7 @@ Tyto podmínky shody jsou navržené k identifikaci požadavků na základě už
 
 **[Zpět na začátek](#top)**
 
-### <a name="location"></a><a name="location"></a>Umístění
+### <a name="location"></a><a name="location"></a>Oblasti
 
 Tyto podmínky shody jsou navržené k identifikaci požadavků na základě umístění žadatele.
 
@@ -84,8 +84,8 @@ Tyto podmínky shody jsou navržené k identifikaci požadavků na základě um�
 | [Kontinent](https://docs.vdms.com/cdn/Content/HRE/M/Continent.htm) | Identifikuje požadavky, které pocházejí ze zadaných kontinentů. |
 | [Země](https://docs.vdms.com/cdn/Content/HRE/M/Country.htm) | Identifikuje požadavky, které pocházejí ze zadaných zemí. |
 | [DMA – kód](https://docs.vdms.com/cdn/Content/HRE/M/DMA-Code.htm) | Identifikuje požadavky, které pocházejí ze zadaného METROS (určených oblastí trhu). |
-| [Zeměpisná šířka](https://docs.vdms.com/cdn/Content/HRE/M/Latitude.htm) | Identifikuje požadavky, které pocházejí ze zadaného Latitudes. |
-| [Zeměpisná délka](https://docs.vdms.com/cdn/Content/HRE/M/Longitude.htm) | Identifikuje žádosti, které pocházejí od zadaných zeměpisných zeměpisných délky. |
+| [Šířce](https://docs.vdms.com/cdn/Content/HRE/M/Latitude.htm) | Identifikuje požadavky, které pocházejí ze zadaného Latitudes. |
+| [Bodu](https://docs.vdms.com/cdn/Content/HRE/M/Longitude.htm) | Identifikuje žádosti, které pocházejí od zadaných zeměpisných zeměpisných délky. |
 | [Kód Metro](https://docs.vdms.com/cdn/Content/HRE/M/Metro-Code.htm) | Identifikuje požadavky, které pocházejí ze zadaného METROS (určených oblastí trhu). |
 | [Poštovní směrovací číslo](https://docs.vdms.com/cdn/Content/HRE/M/Postal-Code.htm) | Identifikuje požadavky, které pocházejí ze zadaných poštovních kódů. |
 | [Kód oblasti](https://docs.vdms.com/cdn/Content/HRE/M/Region-Code.htm) | Identifikuje požadavky, které pocházejí ze zadaných oblastí. |
@@ -96,7 +96,7 @@ Obě tyto podmínky shody poskytují stejnou funkci. Nicméně doporučujeme, ab
 
 **[Zpět na začátek](#top)**
 
-### <a name="origin"></a><a name="origin"></a>Zdroj
+### <a name="origin"></a><a name="origin"></a>Zdroji
 
 Tyto podmínky shody jsou navržené k identifikaci požadavků, které odkazují na úložiště CDN nebo na server původu zákazníka.
 

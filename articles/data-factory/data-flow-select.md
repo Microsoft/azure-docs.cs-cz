@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/02/2020
 ms.openlocfilehash: 70e0a95a85920562af8bf9d3fffa6633709dccc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84322086"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>V toku mapování dat vyberte transformaci.
@@ -72,7 +72,7 @@ Pokud vaše definovaná projekce má hierarchii, můžete k mapování podsloupc
 
 ![mapování na základě pravidel](media/data-flow/rule-based-hierarchy.png "Mapování na základě pravidel")
 
-Výše uvedený příklad se shoduje se všemi podsloupci komplexního sloupce `a` . `a`obsahuje dva podsloupce `b` a `c` . Výstupní schéma bude obsahovat dva sloupce `b` a `c` jako podmínku "název jako" `$$` .
+Výše uvedený příklad se shoduje se všemi podsloupci komplexního sloupce `a` . `a` obsahuje dva podsloupce `b` a `c` . Výstupní schéma bude obsahovat dva sloupce `b` a `c` jako podmínku "název jako" `$$` .
 
 ### <a name="parameterization"></a>Parametrizace
 

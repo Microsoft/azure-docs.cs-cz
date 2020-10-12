@@ -9,10 +9,10 @@ ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
 ms.openlocfilehash: c84367a5e3ab57090f59196e8474c14cba87f32b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250143"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Přidání rozhraní API do služby Azure static Web Apps Preview pomocí Azure Functions
@@ -43,7 +43,7 @@ Po vytvoření projektu zkopírujte adresu URL v prohlížeči pro nové úloži
 1. Stisknutím klávesy **F1** otevřete příkaz v paletě příkazů.
 1. Vložte adresu URL do _Gitu: příkaz Clone_ a stiskněte klávesu **ENTER**.
 
-   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Klonování projektu GitHubu pomocí Visual Studio Code":::
+   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Vytvoření nového úložiště z Vanilla – Basic":::
 
     Podle pokynů vyberte umístění úložiště pro klonování projektu.
 
@@ -59,7 +59,7 @@ V dalším kroku vytvoříte Azure Functions projekt jako rozhraní API aplikace
 1. Vyberte složku **rozhraní API** jako adresář pracovního prostoru projektu.
 1. Zvolte **Vybrat**
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Vytvoření nové Azure Functions pomocí Visual Studio Code":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Vytvoření nového úložiště z Vanilla – Basic":::
 
 1. Zadejte následující informace na následujících dotazech:
 
@@ -145,13 +145,13 @@ Visual Studio Code se integruje s [Azure Functions Core Tools](../azure-function
 
     Základní nástroje zobrazují výstup z běžící aplikace na panelu _terminálu_ . Jako součást výstupu uvidíte koncový bod adresy URL vaší funkce aktivované protokolem HTTP spuštěnou místně.
 
-    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Vytvoření nové Azure Functions pomocí Visual Studio Code":::
+    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Vytvoření nového úložiště z Vanilla – Basic":::
 
 1. Pokud běží základní nástroje, přejděte na následující adresu URL, abyste ověřili, že rozhraní API běží správně: `http://localhost:7071/api/message` .
 
    Odpověď v prohlížeči by měla vypadat podobně jako v následujícím příkladu:
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="Vytvoření nové Azure Functions pomocí Visual Studio Code":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="Vytvoření nového úložiště z Vanilla – Basic":::
 
 1. Stisknutím **SHIFT + F5** zastavíte relaci ladění.
 
@@ -199,7 +199,7 @@ Při nasazení do Azure jsou požadavky na rozhraní API automaticky směrovány
 
     Nyní by se měla zobrazit zpráva rozhraní API na webové stránce.
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="Vytvoření nové Azure Functions pomocí Visual Studio Code":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="Vytvoření nového úložiště z Vanilla – Basic":::
 
    > [!NOTE]
    > K obsluze souboru můžete použít další servery HTTP nebo proxy `index.html` . Přístup k souboru `index.html` z `file:///` nebude fungovat.
@@ -251,11 +251,11 @@ Dále přidejte následující podrobnosti o sestavení.
 
     Po sestavení aplikace na pozadí můžete kliknout na banner, který obsahuje odkaz pro zobrazení stavu sestavení.
 
-    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="Pracovní postup GitHubu":::
+    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="Vytvoření nového úložiště z Vanilla – Basic":::
 
 1. Po dokončení nasazení může organizační jednotka přejít do webové aplikace kliknutím na odkaz _Adresa URL_ zobrazený na stránce _Přehled_ .
 
-    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="Přístup ke statické adrese URL aplikace z Azure Portal":::
+    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="Vytvoření nového úložiště z Vanilla – Basic":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

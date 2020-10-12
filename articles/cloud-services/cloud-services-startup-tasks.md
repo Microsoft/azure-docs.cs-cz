@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75360306"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Jak nakonfigurovat a spustit úlohy po spuštění pro cloudovou službu
@@ -154,7 +154,7 @@ Naučte se provádět některé [běžné úlohy po spuštění](cloud-services-
 [Zabalit](cloud-services-model-and-package.md) cloudovou službu.  
 
 [ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
-[Úkol]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Úloha]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Spuštění]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Modul runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Prostředí]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment

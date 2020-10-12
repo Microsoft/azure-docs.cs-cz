@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75364947"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>výraz pracovního prostoru () v Azure Monitor dotaz protokolu
@@ -18,11 +18,11 @@ ms.locfileid: "75364947"
 `workspace`Výraz se používá v Azure monitor dotazech k načtení dat z konkrétního pracovního prostoru ve stejné skupině prostředků, jiné skupině prostředků nebo jiném předplatném. To je užitečné, pokud chcete zahrnout data protokolu do Application Insightsho dotazu a dotazovat data napříč několika pracovními prostory v dotazu protokolu.
 
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
 `workspace(`*RID*`)`
 
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Argumenty
 
 - *Identifikátor*: identifikuje pracovní prostor pomocí jednoho z formátů v následující tabulce.
 

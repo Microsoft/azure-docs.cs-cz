@@ -18,10 +18,10 @@ ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 027165f797977311fd77f3cd3e626b126c26e47b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87494668"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Směrování síťového provozu pomocí směrovací tabulky pomocí Azure CLI
@@ -36,7 +36,7 @@ Azure ve výchozím nastavení automaticky směruje provoz mezi všemi podsítě
 * Nasazení virtuálních počítačů do různých podsítí
 * Směrování provozu z jedné podsítě do jiné přes síťové virtuální zařízení
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

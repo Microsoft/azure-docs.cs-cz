@@ -8,10 +8,10 @@ ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 4877272fc2db521977a4111317118380399d27c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84322699"
 ---
 # <a name="contains-azure-cosmos-db"></a>OBSAHUJE (Azure Cosmos DB)
@@ -82,4 +82,4 @@ Pokud je velikost vlastnosti v poli obsahuje více než 1 KB pro některé dokum
 
 - [Azure Cosmos DB funkce řetězce](sql-query-string-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

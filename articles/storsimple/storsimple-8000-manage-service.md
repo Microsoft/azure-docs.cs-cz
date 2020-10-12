@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 73373f788a4a87a36a800d69ffcdc646f4cd2084
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91249548"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Nasazení služby StorSimple Device Manager pro zařízení řady StorSimple 8000
@@ -200,7 +200,7 @@ V Azure Portal se podporují jenom zařízení StorSimple, která používají a
 | Vytvoření, úprava a odstranění svazku                                                                                             | No             |
 | Vytváření, úpravy a odstraňování zásad zálohování                                                                                      | No             |
 | Provedení ručního zálohování                                                                                                            | No             |
-| Proveďte naplánované zálohování.                                                                                                         | - |
+| Proveďte naplánované zálohování.                                                                                                         | Nelze použít |
 | Obnovení ze sady záloh                                                                                                        | No             |
 | Klonování na zařízení se systémem Update 3,0 a novějším <br> Na zdrojovém zařízení je spuštěná verze před aktualizací 3,0.                                | Yes            |
 | Klonování na zařízení s verzemi staršími než aktualizace 3,0                                                                          | No             |

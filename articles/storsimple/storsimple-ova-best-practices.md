@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81460643"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Osvědčené postupy pro StorSimple Virtual Array
@@ -149,7 +149,7 @@ Pro účty úložiště přidružené k virtuálnímu poli použijte následují
   
   * Doporučujeme, abyste ho vytvořili v oblasti nejbližší vzdálenému Office nebo pobočce, kde je vaše virtuální pole StorSimple nasazené, aby se minimalizovala latence.
   * Pamatujte na to, že účet úložiště nemůžete přesouvat mezi různými oblastmi. Nemůžete také přesunout službu mezi předplatnými.
-  * Použijte účet úložiště, který implementuje redundanci mezi datovými centry. Pro použití s virtuálním polem je podporováno geograficky redundantní úložiště (GRS), zóna redundantního úložiště (ZRS) a místně redundantní úložiště (LRS). Další informace o různých typech účtů úložiště najdete v části [replikace úložiště Azure](../storage/common/storage-redundancy.md).
+  * Použijte účet úložiště, který implementuje redundanci mezi datovými centry. Služba Geo-Redundant Storage (GRS), zóna redundantního úložiště (ZRS) a místně redundantní úložiště (LRS) jsou podporovány pro použití s virtuálním polem. Další informace o různých typech účtů úložiště najdete v části [replikace úložiště Azure](../storage/common/storage-redundancy.md).
 
 ### <a name="shares-and-volumes"></a>Sdílené složky a svazky
 Pro virtuální pole StorSimple můžete zřídit sdílené složky, pokud jsou nakonfigurované jako souborový server a svazky, pokud jsou nakonfigurované jako server iSCSI. Osvědčené postupy pro vytváření sdílených složek a svazků se týkají velikosti a typu nakonfigurovaného.
@@ -250,7 +250,7 @@ Při deaktivaci virtuálního pole mějte na paměti následující osvědčené
 * Před deaktivací StorSimple virtuálního pole nezapomeňte zastavit nebo odstranit klienty a hostitele, kteří na tomto zařízení závisejí.
 * Odstraňte deaktivované zařízení, pokud už se nepoužíváte, takže se neúčtují poplatky.
 
-### <a name="monitoring"></a>Sledování
+### <a name="monitoring"></a>Monitorování
 Aby se zajistilo, že vaše virtuální pole StorSimple je v nepřetržitém stavu, budete muset monitorovat pole a zajistit, aby se zobrazovaly informace ze systému včetně výstrah. Chcete-li monitorovat celkový stav virtuálního pole, implementujte tyto osvědčené postupy:
 
 * Nakonfigurujte monitorování a sledujte využití disku s datovým diskem virtuálního pole i disk s operačním systémem. Pokud používáte Hyper-V, můžete k monitorování hostitelů virtualizace použít kombinaci System Center Virtual Machine Manager (SCVMM) a System Center Operations Manager.
@@ -287,6 +287,6 @@ Pro rostoucí pracovní sadu dat, která by mohla přecházet do cloudu, může 
 * Pokud nasazujete více virtuálních polí, doporučujeme, abyste z perspektivy vyrovnávání zatížení rozšíříte pole napříč různými hostiteli hypervisoru.
 * V oboru názvů systém souborů DFS (Distributed File System) lze nasadit více virtuálních polí (Pokud je nakonfigurovaná jako souborový server nebo server iSCSI). Podrobný postup najdete v [systém souborů DFS (Distributed File System) řešení oboru názvů pomocí Průvodce nasazením hybridního cloudového úložiště](https://www.microsoft.com/download/details.aspx?id=45507). Replikace systém souborů DFS (Distributed File System) se momentálně nedoporučuje pro použití s virtuálním polem. 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 Naučte se [spravovat virtuální pole StorSimple](storsimple-virtual-array-manager-service-administration.md) prostřednictvím služby StorSimple Manager.
 

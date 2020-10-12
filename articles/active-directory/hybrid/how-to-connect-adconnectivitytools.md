@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7eed3e06ab42671d9674ad3893a88dfe9817e22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85360176"
 ---
 # <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>Řešení potíží s připojením služby Azure AD pomocí modulu PowerShellu pro ADConnectivityTool
@@ -54,7 +54,7 @@ Po instalaci Azure AD Connect můžete použít jakoukoli funkci v modulu PowerS
 
 Referenční informace o funkcích najdete v [referenčních](reference-connect-adconnectivitytools.md) informacích k ADConnectivityTools.
 
-### <a name="start-connectivityvalidation"></a>Spustit – ConnectivityValidation
+### <a name="start-connectivityvalidation"></a>Start-ConnectivityValidation
 
 Tuto funkci vyvoláme, protože ji můžete volat **jenom** ručně, až ADConnectivityTool. psm1 naimportujete do PowerShellu. 
 

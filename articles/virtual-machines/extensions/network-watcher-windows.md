@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
 ms.openlocfilehash: e78a18055d85e2105ea604d568c154c889ab0655
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86206021"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače Network Watcher agenta pro Windows
@@ -64,7 +64,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Network Watcher. 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad |
+| Name | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | vydavatel | Microsoft. Azure. NetworkWatcher |
@@ -76,7 +76,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Network Watcher. 
 
 Rozšíření virtuálních počítačů Azure můžete nasadit pomocí šablon Azure Resource Manager. Můžete použít schéma JSON popsané v předchozí části šablony Azure Resource Manager ke spuštění rozšíření agenta Network Watcher během nasazování šablony Azure Resource Manager.
 
-## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
+## <a name="powershell-deployment"></a>Nasazení PowerShellu
 
 Pomocí `Set-AzVMExtension` příkazu nasaďte rozšíření Network Watcher agenta virtuálního počítače do existujícího virtuálního počítače:
 

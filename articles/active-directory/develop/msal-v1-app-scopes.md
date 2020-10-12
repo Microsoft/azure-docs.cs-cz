@@ -13,10 +13,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 61d07c1ba912a0e24b2f4e5fa67243b4525db367
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81536178"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Obory pro tokeny webového rozhraní API přijímající verze 1.0
@@ -64,7 +64,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 Logika, kterou používá služba Azure AD, je následující:
 
 - Koncový bod pro ADAL (Azure AD v 1.0) s tokenem přístupu v 1.0 (jediný možný), AUD = Resource
-- Pro MSAL (Microsoft Identity Platform (v 2.0)) koncový bod žádající o přístupový token pro prostředek, který přijímá tokeny v 2.0,`aud=resource.AppId`
+- Pro MSAL (Microsoft Identity Platform (v 2.0)) koncový bod žádající o přístupový token pro prostředek, který přijímá tokeny v 2.0, `aud=resource.AppId`
 - Pro MSAL (koncový bod verze 2.0) s žádostí o přístupový token pro prostředek, který přijímá přístupový token v 1.0 (což je výše uvedený případ výše), Azure AD analyzuje požadovanou cílovou skupinu z požadovaného oboru tím, že převezme vše před poslední lomítko a použije ho jako identifikátor prostředku. Proto pokud https: \/ /Database.Windows.NET očekává cílovou skupinu "https: \/ /Database.Windows.NET/", budete muset požádat o obor "https: \/ /Database.Windows.NET//.default". Viz také problém GitHub [#747: koncové lomítko adresy URL prostředku je vynecháno, což způsobilo selhání ověřování SQL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Obory pro vyžadování přístupu ke všem oprávněním aplikace v 1.0

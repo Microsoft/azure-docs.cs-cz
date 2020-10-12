@@ -4,10 +4,10 @@ description: Popisuje způsob nasazení Azure Resource Manager šablon pomocí a
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.openlocfilehash: 313354499901bc69ec6e00f0ba7c385065cae615
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85854736"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Nasazení šablon Azure Resource Manager pomocí akcí GitHubu
@@ -62,7 +62,7 @@ Zkopírujte výstup JSON a uložte ho jako tajný kód GitHubu do vašeho úlož
 
 1. V úložišti GitHub vyberte kartu **Nastavení** .
 1. V nabídce vlevo vyberte **tajná klíčová** okna.
-1. Zadejte následující hodnoty:
+1. Zadejte tyto hodnoty:
 
     - **Název**: AZURE_CREDENTIALS
     - **Hodnota**: (vložit výstup JSON)

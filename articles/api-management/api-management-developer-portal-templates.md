@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75430791"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Postup přizpůsobení portálu Azure API Management pro vývojáře pomocí šablon
@@ -103,7 +103,7 @@ V předchozím příkladu jsou na portálu pro vývojáře zobrazeny dva produkt
 }
 ```
 
-Označení v šabloně **seznamu produktů** zpracovává data, aby poskytovala požadovaný výstup tím, že provede iteraci kolekcí produktů, aby zobrazila informace a odkaz na každý jednotlivý produkt. Poznamenejte `<search-control>` si `<page-control>` prvky a v označení. Tento ovládací prvek zobrazuje na stránce ovládací prvky hledání a stránkování. `ProductsStrings|PageTitleProducts`je lokalizovaný odkaz na řetězec, který obsahuje `h2` text záhlaví stránky. Seznam prostředků řetězců, ovládacích prvků stránky a ikon dostupných pro použití v šablonách portálu pro vývojáře naleznete v tématu [API Management Reference k šablonám portálu pro vývojáře](api-management-developer-portal-templates-reference.md).
+Označení v šabloně **seznamu produktů** zpracovává data, aby poskytovala požadovaný výstup tím, že provede iteraci kolekcí produktů, aby zobrazila informace a odkaz na každý jednotlivý produkt. Poznamenejte `<search-control>` si `<page-control>` prvky a v označení. Tento ovládací prvek zobrazuje na stránce ovládací prvky hledání a stránkování. `ProductsStrings|PageTitleProducts` je lokalizovaný odkaz na řetězec, který obsahuje `h2` text záhlaví stránky. Seznam prostředků řetězců, ovládacích prvků stránky a ikon dostupných pro použití v šablonách portálu pro vývojáře naleznete v tématu [API Management Reference k šablonám portálu pro vývojáře](api-management-developer-portal-templates-reference.md).
 
 ```html
 <search-control></search-control>

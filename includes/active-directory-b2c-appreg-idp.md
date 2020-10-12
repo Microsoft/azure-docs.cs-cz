@@ -6,13 +6,13 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: bbf1daf3a70e5ca87b4a0027b53aed5fab5691d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84317687"
 ---
-K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
+K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
@@ -41,5 +41,5 @@ Po dokončení registrace aplikace povolte tok implicitního udělení:
 1. Vyberte **aplikace**a pak vyberte **Přidat**.
 1. Zadejte název aplikace. Například *testapp1*.
 1. Pro **webovou aplikaci nebo webové rozhraní API**vyberte **Ano**.
-1. Jako **adresu URL odpovědi**zadejte`https://jwt.ms`
+1. Jako **adresu URL odpovědi**zadejte `https://jwt.ms`
 1. Vyberte **Vytvořit**.

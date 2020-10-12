@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: 29492ee6b7bce50c4807a36d0c252e18e6aadf87
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008946"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Řešení potíží se ztrátou dat ve službě Azure Cache for Redis
@@ -27,7 +27,7 @@ Azure cache pro Redis po uložení do paměti náhodně neodstraní klíče. Ode
 
 Pokud zjistíte, že klíče z mezipaměti zmizely, podívejte se na tyto možné příčiny:
 
-| Příčina | Popis |
+| Příčina | Description |
 |---|---|
 | [Vypršení platnosti klíče](#key-expiration) | Klíče se odeberou kvůli časovým limitům nastaveným pro ně. |
 | [Vyřazení klíčů](#key-eviction) | Klíče jsou odebrány v části tlak paměti. |
@@ -86,7 +86,7 @@ Jakákoli instance Azure cache for Redis v úrovni Standard nebo Premium je nako
 
 Pokud z mezipaměti nezmizí většina nebo všechny klíče, podívejte se na tyto možné příčiny:
 
-| Příčina | Popis |
+| Příčina | Description |
 |---|---|
 | [Vyprazdňování klíče](#key-flushing) | Klíče byly vymazány ručně. |
 | [Nesprávný výběr databáze](#incorrect-database-selection) | Mezipaměť Azure pro Redis je nastavená na použití jiné než výchozí databáze. |
@@ -120,5 +120,5 @@ Zvažte použití [Trvalost dat Redis](https://redis.io/topics/persistence) a [g
 
 - [Řešení potíží se službou Azure Cache for Redis na straně serveru](cache-troubleshoot-server.md)
 - [Výběr správné úrovně](cache-overview.md#choosing-the-right-tier)
-- [Jak monitorovat Azure cache pro Redis](cache-how-to-monitor.md)
+- [Monitorování Azure Cache for Redis](cache-how-to-monitor.md)
 - [Jak můžu spustit příkazy Redis?](cache-development-faq.md#how-can-i-run-redis-commands)

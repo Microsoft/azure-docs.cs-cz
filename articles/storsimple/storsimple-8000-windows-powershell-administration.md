@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: bba3666fbce6a8ea591654d1abdad319f1e0857c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86999512"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Správa zařízení pomocí rozhraní Windows PowerShell pro StorSimple
@@ -57,7 +57,7 @@ Pokud se chcete připojit k rozhraní Windows PowerShellu z konzoly sériového 
    | Klávesy funkcí a klávesnice |ESC [n ~ |
    | Počáteční stav kláves kurzoru |Normální |
    | Počáteční stav numerické klávesnice |Normální |
-   | Povolit dodatečné funkce klávesnice |CTRL-ALT se liší od klávesy AltGr. |
+   | Povolit dodatečné funkce klávesnice |Control-Alt se liší od klávesy AltGr. |
    
     ![Podporovaná nastavení výstupu](./media/storsimple-windows-powershell-administration/IC740877.png)
 3. Klikněte na **Použít**.
@@ -157,8 +157,8 @@ Následuje stručný popis typů nápovědu pro toto rozhraní Windows PowerShel
 
 ### <a name="to-get-help-for-a-cmdlet"></a>Získání nápovědu pro rutinu
 
-* Nápovědu k jakékoli rutině nebo funkci získáte pomocí následujícího příkazu:`Get-Help <cmdlet-name>`
-* Pokud chcete získat online nápovědu pro libovolnou rutinu, použijte předchozí rutinu s `-Online` parametrem:`Get-Help <cmdlet-name> -Online`
+* Nápovědu k jakékoli rutině nebo funkci získáte pomocí následujícího příkazu: `Get-Help <cmdlet-name>`
+* Pokud chcete získat online nápovědu pro libovolnou rutinu, použijte předchozí rutinu s `-Online` parametrem: `Get-Help <cmdlet-name> -Online`
 * Pro úplnou nápovědu můžete použít `–Full` parametr a příklady použít `–Examples` parametr.
 
 ### <a name="to-update-help"></a>Aktualizace pomocníka
@@ -167,7 +167,7 @@ V rozhraní Windows PowerShell můžete snadno aktualizovat tuto nápovědě. Ch
 
 #### <a name="to-update-cmdlet-help"></a>Aktualizace pomocníka s rutinou
 1. Spusťte prostředí Windows PowerShell s možností **Spustit jako správce** .
-2. Do příkazového řádku zadejte:`Update-Help`
+2. Do příkazového řádku zadejte:  `Update-Help`
 3. Dojde k instalaci aktualizovaných souborů help.
 4. Po instalaci souborů s příponou Help zadejte: `Get-Help Get-Command` . Zobrazí se seznam rutin, pro které je k dispozici nápovědu.
 

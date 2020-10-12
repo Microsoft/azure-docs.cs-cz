@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88271137"
 ---
 # <a name="configure-storage"></a>Konfigurace úložiště
@@ -49,7 +49,7 @@ Pomocí těchto kroků přidejte souborového pro NAS Core:
 
 1. Na levé straně klikněte na **Core souborového**  >  **Spravovat Core filers** .
 
-1. Klikněte na možnost **Vytvořit**.
+1. Klikněte na **Vytvořit**.
 
    ![Snímek obrazovky se stránkou přidat novou základní souborového s ukazatelem na tlačítku pro vytvoření](media/avere-vfxt-add-core-filer-start.png)
 
@@ -151,7 +151,7 @@ Pokud chcete přidat úložiště objektů BLOB po vytvoření clusteru, postupu
    * Nastavit **obsah intervalu** jako **prázdný**
    * Změnit **ověření certifikátu** na **zakázáno**
    * Změnit **režim komprese** na **žádný**
-   * Klikněte na **Další**.
+   * Klikněte na **Next** (Další).
    * Na čtvrté stránce zadejte název kontejneru do pole **název** sady jako *storage_account_name* / *container_name*.
    * Volitelně můžete nastavit **typ šifrování** na **žádný**.  Azure Storage je ve výchozím nastavení šifrovaný.
    * Klikněte na **přidat souborového**.
@@ -176,7 +176,7 @@ V rozhraní ovládacího panelu avere postupujte podle těchto kroků:
 * Zadejte cestu k oboru názvů začínající znakem/(lomítko), například ``/vfxt/data`` .
 * Vyberte si základní souborového.
 * Vyberte základní export souborového.
-* Klikněte na **Další**.
+* Klikněte na **Next** (Další).
 
   ![Snímek obrazovky se stránkou přidat nový odkaz s poli dokončenými pro spojení, Core souborového a export](media/avere-vfxt-add-junction.png)
 

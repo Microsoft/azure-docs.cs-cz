@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: d0656a4f6ec1c7431cf7111f786b0f1d779166e3
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89145331"
 ---
 # <a name="move-azure-event-grid-custom-topics-to-another-region"></a>Přesunout Azure Event Grid vlastní témata do jiné oblasti
@@ -25,35 +25,23 @@ Tady je postup vysoké úrovně, který je popsaný v tomto článku:
 - **Ověřte nasazení**. Ověřte, zda je vlastní téma vytvořeno v cílové oblasti. 
 - Chcete-li **Dokončit přesunutí**, odstraňte vlastní téma ze zdrojové oblasti. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Dokončete [rychlé zprovoznění: směrování vlastních událostí do webového koncového bodu](custom-event-quickstart-portal.md) ve zdrojové oblasti. Proveďte tento krok, abyste mohli testovat kroky v tomto článku. 
 - Ujistěte se, že je služba Event Grid v cílové oblasti dostupná. Zobrazit [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
 
 ## <a name="prepare"></a>Příprava
 Začněte tím, že vyexportujete šablonu Správce prostředků pro vlastní téma. 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Na panelu hledání zadejte **Event Grid témata**a v seznamu výsledků vyberte **Event Grid témata** . 
 
     :::image type="content" source="./media/move-custom-topics-across-regions/search-topics.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 3. Vyberte **téma** , které chcete exportovat do šablony Správce prostředků. 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="Výběr vlastního tématu":::   
+    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="Vyhledat a vybrat Event Grid témata":::   
 4. Na stránce **Event Grid téma** vyberte v části **Nastavení** v nabídce vlevo položku **Exportovat šablonu** a pak na panelu nástrojů vyberte **Stáhnout** . 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="Exportovat šablonu – > stáhnout":::   
-
-    > [!IMPORTANT]
-    > Do šablony je exportováno pouze téma. Předplatná pro téma nejsou exportována. Proto je třeba vytvořit odběry pro téma po přesunutí tématu do cílové oblasti. 
-5. Vyhledejte soubor **. zip** , který jste stáhli z portálu, a rozbalte tento soubor do složky podle vašeho výběru. Tento soubor zip obsahuje šablony a parametry soubory JSON. 
-1. Otevřete **template.js** v editoru podle svého výběru. 
-8. Aktualizace `location` pro prostředek **tématu** do cílové oblasti nebo umístění. Pokud chcete získat kódy umístění, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/). Kód oblasti je název oblasti bez mezer, například `West US` je rovno `westus` .
-
-    ```json
-    "type": "Microsoft.EventGrid/topics",
-    "apiVersion": "2020-06-01",
-    "name": "[parameters('topics_mytopic0130_name')]",
-    "location": "westus"
+    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="Vyhledat a vybrat Event Grid témata"
     ```
 1. **Uložte** šablonu. 
 
@@ -63,7 +51,7 @@ Nasaďte šablonu pro vytvoření vlastního tématu v cílové oblasti.
 1. V Azure Portal vyberte **vytvořit prostředek**.
 2. V **části Hledat na Marketplace**zadejte **šablonu Deployment**a potom stiskněte **ENTER**.
 3. Vyberte **template Deployment**.
-4. Vyberte **Create** (Vytvořit).
+4. Vyberte **Vytvořit**.
 5. **V editoru vyberte vytvořit vlastní šablonu**.
 6. Vyberte **načíst soubor**a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
 7. Vyberte **Uložit** a šablonu uložte. 
@@ -74,14 +62,14 @@ Nasaďte šablonu pro vytvoření vlastního tématu v cílové oblasti.
     1. Pro **název tématu**zadejte nový název tématu. 
     1. V dolní části stránky vyberte **zkontrolovat + vytvořit** . 
     
-        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="Vlastní nasazení":::
+        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="Vyhledat a vybrat Event Grid témata":::
     1. Na stránce **Revize + vytvořit** zkontrolujte nastavení a vyberte **vytvořit**. 
 
 ## <a name="verify"></a>Ověření
 
 1. Po úspěšném nasazení vyberte **Přejít k prostředku**. 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="Přejít k prostředku":::
+    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 1. Potvrďte, že se na vlastním tématu zobrazí stránka **Event Grid téma** .   
 1. Pokud chcete odesílat události do tématu, postupujte podle kroků v tématu [Směrování vlastních událostí do webového koncového bodu](custom-event-quickstart-portal.md#send-an-event-to-your-topic) . Ověřte, zda je vyvolána obslužná rutina události Webhooku. 
 

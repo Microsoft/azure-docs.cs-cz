@@ -8,10 +8,10 @@ ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 6e253604c57d73c2a89ccfa5cff7efe9e572d11d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89094277"
 ---
 Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durable-functions-overview.md).
@@ -94,7 +94,7 @@ Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durab
 
 Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a číslice. Pokud není zadaný, použije se výchozí název centra úloh pro aplikaci Function App **DurableFunctionsHub**. Další informace najdete v tématu [centra úloh](../articles/azure-functions/durable-functions-task-hubs.md).
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------|
 |hubName|DurableFunctionsHub|Alternativní názvy [centra úloh](../articles/azure-functions/durable-functions-task-hubs.md) se dají použít k izolaci více Durable Functionsch aplikací od sebe, i když používají stejný back-end úložiště.|
 |controlQueueBatchSize|32|Počet zpráv, které mají být vyžádané z fronty ovládacích prvků v čase.|

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75360340"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Jak aktualizovat cloudovou službu
@@ -53,7 +53,7 @@ V následující tabulce jsou uvedeny povolené změny služby během aktualizac
 | Nastavení místního úložiště |Zvýšit jenom<sup>2</sup> |Ano |Ano |
 | Přidání nebo odebrání rolí ve službě |Ano |Ano |Ano |
 | Počet instancí konkrétní role |Ano |Ano |Ano |
-| Počet nebo typ koncových bodů pro službu |Ano<sup>2</sup> |No |Yes |
+| Počet nebo typ koncových bodů pro službu |Ano<sup>2</sup> |No |Ano |
 | Názvy a hodnoty nastavení konfigurace |Ano |Ano |Ano |
 | Hodnoty (ale ne názvy) nastavení konfigurace |Ano |Ano |Ano |
 | Přidat nové certifikáty |Ano |Ano |Ano |
@@ -104,7 +104,7 @@ Při upgradování služby z jedné instance na více instancí bude služba zav
 |Restartování virtuálního počítače|Konzervován|Konzervován|Konzervován|
 |Restart portálu|Konzervován|Konzervován|Zneškodněn|
 |Přeinstalace portálu|Konzervován|Zneškodněn|Zneškodněn|
-|Místní upgrade|Konzervován|Konzervován|Zneškodněn|
+|In-Place upgrade|Konzervován|Konzervován|Zneškodněn|
 |Migrace uzlů|Zneškodněn|Zneškodněn|Zneškodněn|
 
 Všimněte si, že ve výše uvedeném seznamu představuje jednotka E: kořenovou jednotku role a neměl by být pevně zakódovaný. Místo toho použijte proměnnou prostředí **% RoleRoot%** k reprezentaci jednotky.

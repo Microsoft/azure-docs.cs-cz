@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74931786"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesunutí dat z DB2 pomocí aktivity kopírování Azure Data Factory
@@ -56,7 +56,7 @@ Konektor Data Factory DB2 podporuje následující platformy a verze IBM DB2 s a
 
 > [!TIP]
 > Pokud se zobrazí chybová zpráva "balíček odpovídající žádosti o spuštění příkazu SQL nebyl nalezen. SQLSTATE = 51002 SQLCODE =-805, "Důvodem je, že pro normálního uživatele v operačním systému není vytvořen potřebný balíček. Pokud chcete tento problém vyřešit, postupujte podle těchto pokynů pro typ serveru DB2:
-> - DB2 pro i (AS400): umožní uživateli, aby před spuštěním aktivity kopírování vytvořil kolekci pro normálního uživatele. Chcete-li vytvořit kolekci, použijte příkaz:`create collection <username>`
+> - DB2 pro i (AS400): umožní uživateli, aby před spuštěním aktivity kopírování vytvořil kolekci pro normálního uživatele. Chcete-li vytvořit kolekci, použijte příkaz: `create collection <username>`
 > - DB2 pro z/OS nebo LUW: použijte účet s vysokými oprávněními – uživatel nebo správce, který má k dispozici balíčky a BIND, BINDADD, UDĚLÍ oprávnění k VEŘEJNÉmu spouštění kopie. Potřebný balíček se vytvoří automaticky během kopírování. Potom můžete přejít zpět na normálního uživatele pro následné spuštění kopírování.
 
 ## <a name="getting-started"></a>Začínáme
@@ -78,23 +78,23 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="db2-linked-service-properties"></a>Vlastnosti propojené služby DB2
 V následující tabulce jsou uvedeny vlastnosti JSON, které jsou specifické pro propojenou službu DB2.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| **textový** |Tato vlastnost musí být nastavená na **OnPremisesDb2**. |Yes |
-| **WebServer** |Název serveru DB2. |Yes |
-| **databáze** |Název databáze DB2. |Yes |
+| **textový** |Tato vlastnost musí být nastavená na **OnPremisesDb2**. |Ano |
+| **WebServer** |Název serveru DB2. |Ano |
+| **databáze** |Název databáze DB2. |Ano |
 | **XSD** |Název schématu v databázi DB2. Tato vlastnost rozlišuje velká a malá písmena. |No |
-| **authenticationType** |Typ ověřování, který se používá pro připojení k databázi DB2. Možné hodnoty jsou: anonymní, základní a Windows. |Yes |
+| **authenticationType** |Typ ověřování, který se používá pro připojení k databázi DB2. Možné hodnoty jsou: anonymní, základní a Windows. |Ano |
 | **jmen** |Název uživatelského účtu, pokud použijete základní ověřování nebo ověřování systému Windows. |No |
 | **heslo** |Heslo pro uživatelský účet. |No |
-| **gatewayName** |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi DB2. |Yes |
+| **gatewayName** |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi DB2. |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, například **Struktura**, **dostupnost**a **zásady** pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob Storage, Azure Table Storage atd.).
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu **relačních**typů, která zahrnuje datovou sadu DB2, má následující vlastnost:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | **tableName** |Název tabulky instance databáze DB2, na kterou odkazuje propojená služba. Tato vlastnost rozlišuje velká a malá písmena. |Ne (Pokud je zadaná vlastnost **dotazu** aktivity kopírování typu **RelationalSource** ) |
 
@@ -103,7 +103,7 @@ Seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit 
 
 V případě aktivity kopírování, pokud je zdrojem typu **RelationalSource** (který zahrnuje DB2), jsou v části **typeProperties** k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
+| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
 | **zadávání** |K načtení dat použijte vlastní dotaz. |Řetězec dotazu SQL. Příklad: `"query": "select * from "MySchema"."MyTable""` |Ne (Pokud je určena vlastnost **TableName** objektu DataSet) |
 
@@ -310,15 +310,15 @@ Následující mapování se používají, když aktivita kopírování převede
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| Skutečné |Jeden |
-| Double |Double |
-| Float |Double |
-| Desetinné číslo |Desetinné číslo |
-| DecimalFloat |Desetinné číslo |
-| Numeric |Desetinné číslo |
-| Datum |DateTime |
+| Skutečné |Jednoduché |
+| dvojité |dvojité |
+| Float |dvojité |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| Numeric |Decimal |
+| Date |Datum a čas |
 | Čas |TimeSpan |
-| Časové razítko |DateTime |
+| Timestamp |DateTime |
 | XML |Byte [] |
 | Char |Řetězec |
 | VarChar |Řetězec |
@@ -331,20 +331,20 @@ Následující mapování se používají, když aktivita kopírování převede
 | VarGraphic |Řetězec |
 | LongVarGraphic |Řetězec |
 | Datový typ CLOB |Řetězec |
-| Objekt blob |Byte [] |
+| Blob |Byte [] |
 | DbClob |Řetězec |
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| Skutečné |Jeden |
-| Double |Double |
-| Float |Double |
-| Desetinné číslo |Desetinné číslo |
-| DecimalFloat |Desetinné číslo |
-| Numeric |Desetinné číslo |
-| Datum |DateTime |
+| Skutečné |Jednoduché |
+| dvojité |dvojité |
+| Float |dvojité |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| Numeric |Decimal |
+| Date |Datum a čas |
 | Čas |TimeSpan |
-| Časové razítko |DateTime |
+| Timestamp |DateTime |
 | XML |Byte [] |
 | Char |Řetězec |
 

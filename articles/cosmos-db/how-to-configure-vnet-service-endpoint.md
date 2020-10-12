@@ -8,10 +8,10 @@ ms.date: 06/04/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 995e5a1a87ee332c48641f42c4134e3e58f11cfa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87495416"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Konfigurace přístupu z virtuálních sítí (VNet)
@@ -47,7 +47,7 @@ Následující části popisují, jak nakonfigurovat koncový bod služby virtu�
 
 1. Až bude účet Azure Cosmos DB povolený pro přístup z virtuální sítě, povolí provoz jenom z této zvolené podsítě. Virtuální síť a podsíť, kterou jste přidali, by se měla zobrazit, jak je znázorněno na následujícím snímku obrazovky:
 
-   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png" alt-text="Virtuální síť a podsíť se úspěšně nakonfigurovaly.":::
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png" alt-text="Vybrat virtuální síť a podsíť":::
 
 > [!NOTE]
 > K povolení koncových bodů služby virtuální sítě budete potřebovat následující oprávnění předplatného:
@@ -67,7 +67,7 @@ Tady jsou pokyny pro registraci předplatného u poskytovatele prostředků.
 
 1. Zadejte podrobnosti požadované k vytvoření nové virtuální sítě a pak vyberte **vytvořit**. Podsíť se vytvoří s koncovým bodem služby pro Microsoft. AzureCosmosDB, který je povolený.
 
-   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="Vyberte virtuální síť a podsíť pro novou virtuální síť.":::
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="Vybrat virtuální síť a podsíť":::
 
 Pokud váš Azure Cosmos DB účet používají jiné služby Azure, jako je Azure Kognitivní hledání nebo ke kterému se přistupuje ze služby Stream Analytics nebo Power BI, povolíte přístup tak, že **v globálním datacentru Azure vyberete přijímat připojení**.
 
@@ -81,7 +81,7 @@ Abyste měli jistotu, že máte přístup k Azure Cosmos DB metriky z portálu, 
 
 1. Chcete-li odebrat virtuální síť nebo pravidlo podsítě, vyberte **...** vedle virtuální sítě nebo podsítě a vyberte možnost **Odebrat**.
 
-   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="Odebrání virtuální sítě":::
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="Vybrat virtuální síť a podsíť":::
 
 1. Vyberte **Uložit**, aby se tyto změny použily.
 

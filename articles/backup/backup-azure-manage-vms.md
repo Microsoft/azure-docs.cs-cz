@@ -4,10 +4,10 @@ description: Naučte se spravovat a monitorovat zálohy virtuálních počítač
 ms.topic: conceptual
 ms.date: 08/02/2020
 ms.openlocfilehash: 5a677221f16d00c19ee7083b72540ac7e1bb9cd0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89145429"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Správa záloh virtuálních počítačů Azure pomocí služby Azure Backup
@@ -29,16 +29,16 @@ Zálohy můžete spravovat pomocí řídicího panelu a přechodem k jednotlivý
 
 Postup zobrazení virtuálních počítačů na řídicím panelu trezoru:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
-1. V nabídce vlevo vyberte **všechny služby**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. V nabídce vlevo vyberte **Všechny služby**.
 
-    ![Vybrat všechny služby](./media/backup-azure-manage-vms/select-all-services.png)
+    ![Vyberte Všechny služby.](./media/backup-azure-manage-vms/select-all-services.png)
 
-1. V dialogovém okně **všechny služby** zadejte *Recovery Services*. Seznam prostředků se filtruje podle vašeho zadání. V seznamu prostředků vyberte **Recovery Services trezory**.
+1. V dialogovém okně **Všechny služby** zadejte *Recovery Services*. Seznam prostředků se filtruje podle vašeho zadání. Ze seznamu prostředků vyberte **Trezory služby Recovery Services**.
 
-    ![Zadejte a vyberte trezory Recovery Services.](./media/backup-azure-manage-vms/all-services.png)
+    ![Zadání a volba trezorů služby Recovery Services](./media/backup-azure-manage-vms/all-services.png)
 
-    Zobrazí se seznam trezorů Recovery Services v předplatném.
+    Zobrazí se seznam trezorů služby Recovery Services v předplatném.
 
 1. Pro snadné použití vyberte ikonu připnutí vedle názvu trezoru a vyberte **Připnout na řídicí panel**.
 1. Otevřete řídicí panel trezoru.
@@ -63,7 +63,7 @@ Postup zobrazení virtuálních počítačů na řídicím panelu trezoru:
 
 Postup úpravy existujících zásad zálohování:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/). Otevřete řídicí panel trezoru.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/). Otevřete řídicí panel trezoru.
 2. V části **Správa zásad zálohování >** vyberte zásady zálohování pro typ **virtuálního počítače Azure**.
 3. Vyberte **Upravit** a změňte nastavení.
 
@@ -71,7 +71,7 @@ Postup úpravy existujících zásad zálohování:
 
 Správa zásad zálohování:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/). Otevřete řídicí panel trezoru.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/). Otevřete řídicí panel trezoru.
 2. Na dlaždici **zálohované položky** vyberte **virtuální počítač Azure**.
 
     ![Otevřít dlaždici zálohované položky](./media/backup-azure-manage-vms/azure-virtual-machine.png)

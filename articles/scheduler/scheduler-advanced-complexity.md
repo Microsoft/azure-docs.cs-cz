@@ -10,10 +10,10 @@ ms.suite: infrastructure-services
 ms.topic: article
 ms.date: 11/14/2018
 ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78898586"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Sestavování pokročilých plánů a opakování úloh v Azure Scheduleru
@@ -66,9 +66,9 @@ Tato tabulka poskytuje podrobný přehled hlavních elementů JSON, které můž
 
 | Prvek | Povinné | Popis | 
 |---------|----------|-------------|
-| **startTime** | No | Hodnota řetězce DateTime ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , která určuje, kdy se úloha poprvé spustí podle plánu Basic. <p>U složitých plánů úloha začíná dřív než **StartTime**. | 
+| **Spuštění** | No | Hodnota řetězce DateTime ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , která určuje, kdy se úloha poprvé spustí podle plánu Basic. <p>U složitých plánů úloha začíná dřív než **StartTime**. | 
 | **vzorec** | No | Pravidla opakování při spuštění úlohy. Objekt **opakování** podporuje tyto prvky: **četnost**, **interval**, **plán**, **počet**a **čas**ukončení. <p>Použijete-li element **opakování** , je nutné také použít prvek **frekvence** , zatímco jiné prvky **opakování** jsou volitelné. |
-| **opakování** | Ano, při použití **opakování** | Časová jednotka mezi výskyty a podporuje tyto hodnoty: "minuta", "hodina", "den", "týden", "Month" a "Year" | 
+| **frequency** | Ano, při použití **opakování** | Časová jednotka mezi výskyty a podporuje tyto hodnoty: "minuta", "hodina", "den", "týden", "Month" a "Year" | 
 | **interval** | No | Celé kladné číslo určující počet časových jednotek mezi výskyty na základě **frekvence**. <p>Pokud má například **interval** hodnotu 10 a **frekvence** "týden", úloha se opakuje každých 10 týdnů. <p>Toto je nejvyšší počet intervalů pro každou frekvenci: <p>– 18 měsíců <br>– 78 týdnů <br>– 548 dní <br>– Pro hodiny a minuty je rozsah 1 <= <*intervalu*> <= 1000. | 
 | **CXL** | No | Definuje změny opakování na základě zadaných minutových značek, hodinových značek, dnů v týdnu a dnů v měsíci. | 
 | **výpočtu** | No | Kladné celé číslo, které určuje počet pokusů o spuštění úlohy před dokončením. <p>Pokud je například denní úloha v poli **počet** nastavená na hodnotu 7 a počáteční datum je pondělí, úloha skončí běžet v neděli. Pokud počáteční datum již prošlo, je první spuštění vypočítáno z času vytvoření. <p>Aniž byste měli **čas** ukončení ani **počet**, úloha se spustí nekonečně. V rámci stejné úlohy nemůžete použít současně jak **Count** , tak i **čas** , ale pravidlo, které se dokončí jako první, se respektuje. | 
@@ -160,12 +160,12 @@ Pokud zadáte více než jeden prvek plánování, pořadí vyhodnocení bude od
 
 Následující tabulka obsahuje podrobný popis elementů plánu:
 
-| Název JSON | Description | Platné hodnoty |
+| Název JSON | Popis | Platné hodnoty |
 |:--- |:--- |:--- |
 | **minuty** |Minuty hodiny, kdy se úloha spouští. |Pole celých čísel. |
 | **hodin** |Hodiny dne, kdy se úloha spouští. |Pole celých čísel. |
 | **weekDays** |Dny v týdnu, kdy úloha běží. Dá se zadat jenom s týdenní frekvencí. |Pole některé z následujících hodnot (maximální velikost pole je 7):<br />– "Pondělí"<br />– "Úterý"<br />– "Středa"<br />-"Čtvrtek"<br />-"Pátek"<br />-"Sobota"<br />-"Neděle"<br /><br />Nerozlišuje velká a malá písmena. |
-| **monthlyOccurrences** |Určuje, které dny v měsíci je úloha spuštěna. Dá se zadat jenom s měsíční frekvencí. |Pole objektů **monthlyOccurrences** :<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **Day** je den v týdnu, kdy se úloha spouští. Například *{neděle}* je každou neděli v měsíci. Povinná hodnota.<br /><br />**výskyt** je výskyt dne v měsíci. Například *{neděle,-1}* je poslední neděle v měsíci. Nepovinný parametr. |
+| **monthlyOccurrences** |Určuje, které dny v měsíci je úloha spuštěna. Dá se zadat jenom s měsíční frekvencí. |Pole objektů **monthlyOccurrences** :<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **Day** je den v týdnu, kdy se úloha spouští. Například *{neděle}* je každou neděli v měsíci. Povinná hodnota.<br /><br />**výskyt** je výskyt dne v měsíci. Například  *{neděle,-1}* je poslední neděle v měsíci. Nepovinný parametr. |
 | **monthDays** |Den v měsíci, kdy se úloha spouští. Dá se zadat jenom s měsíční frekvencí. |Pole s následujícími hodnotami:<br />– Libovolná hodnota <= −1 a >= −31<br />– Libovolná hodnota >= 1 a <= 31|
 
 ## <a name="examples-recurrence-schedules"></a>Příklady: plány opakování
@@ -174,7 +174,7 @@ Následující příklady znázorňují různé plány opakování. Příklady j
 
 V těchto plánech se předpokládá, že je tento **interval** nastavený na hodnotu 1.\. Příklady také předpokládají správné hodnoty **frekvence** pro hodnoty v **plánu**. Například nemůžete použít **frekvenci** "Day" (den) a **monthDays** změnu v **plánu**. Tato omezení jsme popsali výše v článku.
 
-| Příklad | Description |
+| Příklad | Popis |
 |:--- |:--- |
 | `{"hours":[5]}` |Spusťte každý den v intervalu 5 dop.<br /><br />Scheduler porovnává každou hodnotu v řádu "hours" s každou hodnotou v hodnotě "minuty" a vytvoří seznam všech časů spuštění úlohy. |
 | `{"minutes":[15], "hours":[5]}` |Spuštění každý den v 5:15. |

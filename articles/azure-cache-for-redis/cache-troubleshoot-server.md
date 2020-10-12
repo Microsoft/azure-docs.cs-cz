@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: 12d78846f5892e71388de6e6e76b868f9b14d4de
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008912"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Řešení potíží se službou Azure Cache for Redis na straně serveru
@@ -35,12 +35,12 @@ Tlak paměti na straně serveru vede ke všem druhům problémů s výkonem, kte
 
 Redis zpřístupňuje dvě statistiky prostřednictvím příkazu [info](https://redis.io/commands/info) , který vám může přispět k identifikaci tohoto problému: "used_memory" a "used_memory_rss". [Tyto metriky můžete zobrazit](cache-how-to-monitor.md#view-metrics-with-azure-monitor) pomocí portálu.
 
-Existuje několik možných změn, které vám pomůžou zajistit, aby využití paměti bylo v pořádku:
+Pokud chcete pomoct zajistit, aby využití paměti bylo v pořádku, můžete provést několik změn:
 
-- [Nakonfigurujte zásady paměti](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) a nastavte časy vypršení platnosti vašich klíčů. Pokud máte fragmentaci, nemusí tato zásada stačit.
+- [Nakonfigurujte zásady paměti](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) a nastavte časy vypršení platnosti vašich klíčů. Pokud dochází k fragmentaci, tyto zásady nemusí být dostatečné.
 - [Nakonfigurujte maxmemory vyhrazenou hodnotu](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) , která je dostatečně velká, aby bylo možné kompenzovat fragmentaci paměti.
-- Velké objekty uložené v mezipaměti rozdělte na menší související objekty.
-- [Vytvářejte výstrahy](cache-how-to-monitor.md#alerts) na metrikách, jako je použitá paměť, abyste byli brzy informováni o možných dopadech.
+- Rozdělte velké objekty uložené v mezipaměti na menší související objekty.
+- [Vytvořte upozornění](cache-how-to-monitor.md#alerts) na metriky, jako je metrika využité paměti, abyste včas dostávali upozornění na potenciální dopady.
 - [Škálovat](cache-how-to-scale.md) na větší velikost mezipaměti s větší kapacitou paměti.
 
 ## <a name="high-cpu-usage-or-server-load"></a>Vysoké využití procesoru nebo zatížení serveru
@@ -70,7 +70,7 @@ Metriky "čtení z mezipaměti" a "zápis do mezipaměti" lze použít k zobraze
 Omezení situací, kdy je využití šířky pásma sítě blízko maximální kapacity:
 
 - Změňte chování volání klientů tak, aby se snížilo zatížení sítě.
-- [Vytvářejte výstrahy](cache-how-to-monitor.md#alerts) na metrikách, jako je čtení mezipaměti, nebo zápis do mezipaměti, abyste se mohli včas informovat o možných dopadech.
+- [Vytvořte upozornění](cache-how-to-monitor.md#alerts) na metriky, jako je metrika čtení z mezipaměti nebo zápisu do mezipaměti, abyste včas dostávali upozornění na potenciální dopady.
 - [Škálujte](cache-how-to-scale.md) na větší velikost mezipaměti s větší kapacitou šířky pásma sítě.
 
 ## <a name="additional-information"></a>Další informace
@@ -78,5 +78,5 @@ Omezení situací, kdy je využití šířky pásma sítě blízko maximální k
 - [Řešení potíží se službou Azure Cache for Redis na straně klienta](cache-troubleshoot-client.md)
 - [Výběr správné úrovně](cache-overview.md#choosing-the-right-tier)
 - [Jak mohu srovnávací testy a testovat výkon své mezipaměti?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-- [Jak monitorovat Azure cache pro Redis](cache-how-to-monitor.md)
+- [Monitorování Azure Cache for Redis](cache-how-to-monitor.md)
 - [Jak můžu spustit příkazy Redis?](cache-development-faq.md#how-can-i-run-redis-commands)

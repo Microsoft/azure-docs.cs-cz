@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 89adc283fa9d6edc49536cb9459a479710c94435
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921155"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Použití Azure CDN s CORS
@@ -36,7 +36,7 @@ Existují dva typy požadavků CORS, *jednoduchých požadavků* a *složitých 
 
 2. Server může reagovat s některým z následujících způsobů:
 
-   * Hlavička **Access-Control-Allow-Origin** v odpovědi, která označuje, který zdrojový web je povolen. Příklad:
+   * Hlavička **Access-Control-Allow-Origin** v odpovědi, která označuje, který zdrojový web je povolen. Například:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 

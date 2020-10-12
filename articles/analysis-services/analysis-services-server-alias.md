@@ -8,10 +8,10 @@ ms.date: 06/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 435649c5431ff14461245fee88cebe4a2c571663
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85361434"
 ---
 # <a name="alias-server-names"></a>Názvy serverů s aliasem

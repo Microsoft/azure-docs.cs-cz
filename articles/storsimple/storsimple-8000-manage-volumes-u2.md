@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86204459"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Použití služby StorSimple Device Manager ke správě svazků (Update 3 nebo novější)
@@ -51,14 +51,14 @@ Pokud používáte vrstvený svazek pro Archivovaná data, zaškrtněte políčk
 
 V následující tabulce najdete maximální zřízenou kapacitu pro každé zařízení a typ svazku. (Upozorňujeme, že místně připojené svazky nejsou k dispozici na virtuálním zařízení.)
 
-| Type | Maximální velikost vrstveného svazku | Maximální velikost místně připnutého svazku |
+| Typ | Maximální velikost vrstveného svazku | Maximální velikost místně připnutého svazku |
 | --- | --- | --- |
 | **Fyzická zařízení** | | |
 | 8100 |64 TB |8 TB |
 | 8600 |64 TB |20 TB |
 | **Virtuální zařízení** | | |
-| 8010 |30 TB |Nelze použít |
-| 8020 |64 TB |Nelze použít |
+| 8010 |30 TB |Není k dispozici |
+| 8020 |64 TB |Není k dispozici |
 
 ## <a name="the-volumes-blade"></a>Okno svazky
 
@@ -112,7 +112,7 @@ Během nasazování zařízení řady StorSimple 8000 jste [vytvořili svazek](s
       
        Pokud v zařízení 8100 zřídíte místně vázaný svazek o velikosti 8.5 TB (maximální možná velikost), vyčerpáte tím veškeré volné místo dostupné v zařízení. Od této chvíle už nebudete moct vytvořit žádné vrstvené svazky, protože v zařízení už nebude žádné volné místo k hostování pracovní sady vrstveného svazku. Objem dostupného volného místa ovlivňují také vrstvené svazky. Pokud například používáte zařízení 8100, ve kterém jsou už zřízeny vrstvené svazky o velikosti zhruba 106 TB, k vytváření místně vázaných svazků zbude už jenom 4 TB dostupného volného místa.
 
-    6. V poli **Připojení hostitelé** klikněte na šipku. V okně **připojení hostitelé** vyberte existující ACR nebo přidejte nové ACR. Pokud zvolíte novou ACR, zadejte název vašeho hostitele Windows, zadejte **název** IQN ( **iSCSI Qualified Name** ). Pokud název IQN nemáte, přejděte do části Získání názvu hostitele se systémem Windows Server. Klikněte na **Create** (Vytvořit). Vytvoří se svazek se zadaným nastavením.
+    6. V poli **Připojení hostitelé** klikněte na šipku. V okně **připojení hostitelé** vyberte existující ACR nebo přidejte nové ACR. Pokud zvolíte novou ACR, zadejte název vašeho hostitele Windows, zadejte **název** IQN ( **iSCSI Qualified Name** ). Pokud název IQN nemáte, přejděte do části Získání názvu hostitele se systémem Windows Server. Klikněte na **Vytvořit**. Vytvoří se svazek se zadaným nastavením.
 
         ![Kliknutí na Vytvořit](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
@@ -157,7 +157,7 @@ Upravte svazek, pokud ho potřebujete rozšířit, nebo změňte hostitele, kte�
 
        ![Kontrola dopadu převedení svazku do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-5. Kliknutím na **Uložit** změny uložte. Po zobrazení výzvy k potvrzení klikněte na **Ano**. V Azure Portal se zobrazí zpráva o aktualizaci svazku. Po úspěšné aktualizaci svazku se zobrazí zpráva o úspěchu.
+5. Kliknutím na **Uložit** uložte změny. Po zobrazení výzvy k potvrzení klikněte na **Ano**. V Azure Portal se zobrazí zpráva o aktualizaci svazku. Po úspěšné aktualizaci svazku se zobrazí zpráva o úspěchu.
 
     ![Kontrola dopadu převedení svazku do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 

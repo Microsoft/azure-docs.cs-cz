@@ -4,17 +4,17 @@ description: Seznamte se s projektem aplikace, který jste právě vytvořili v 
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.openlocfilehash: e8fc105657bda6114851f4819be4658926ad621c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75349402"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Vaše aplikace Service Fabric a další kroky
 Vaše aplikace Azure Service Fabric se vytvořila. Tento článek popisuje některé kurzy, které si vyzkoušíte, strukturu projektu, další informace, které vás mohou zajímat, a další možné kroky.
 
 ## <a name="get-started-with-tutorials-walk-throughs-and-samples"></a>Začínáme s kurzy, návodi a ukázkami
-Chcete začít?  
+Jste připraveni začít?  
 
 Pracujte v kurzu aplikace .NET. Naučte se, jak [vytvořit aplikaci](service-fabric-tutorial-create-dotnet-app.md) s ASP.NET Core front-end a stavovým back-endu, [nasadit aplikaci](service-fabric-tutorial-deploy-app-to-party-cluster.md) do clusteru, [nakonfigurovat CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)a [nastavit monitorování a diagnostiku](service-fabric-tutorial-monitoring-aspnet.md).
 

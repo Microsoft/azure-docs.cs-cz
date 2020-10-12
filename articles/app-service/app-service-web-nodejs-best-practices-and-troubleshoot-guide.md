@@ -9,10 +9,10 @@ ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88961886"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace uzlů v Azure App Service Windows
@@ -143,7 +143,7 @@ let keepaliveAgent = new Agent({
 Můžete obdržet doporučení od Azure App Service na portálu o vysoké spotřebě procesoru. Můžete také nastavit monitory, které sledují určité [metriky](web-sites-monitor.md). Při kontrole využití CPU na [řídicím panelu webu Azure Portal](../azure-monitor/app/web-monitor-performance.md)si prohlédněte maximální hodnoty pro procesor, abyste nemuseli vysílat nejvyšší hodnoty.
 Pokud se domníváte, že vaše aplikace spotřebovává příliš mnoho CPU a nemůžete vysvětlit, proč, můžete profilovat aplikaci uzlu, abyste zjistili, jestli je.
 
-#### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>Profilování aplikace Node na Azure App Service pomocí V8-profileru
+#### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>Profilování aplikace Node na Azure App Service s využitím V8-Profiler
 
 Řekněme například, že máte aplikaci Hello World, kterou chcete profilovat následujícím způsobem:
 
@@ -205,7 +205,7 @@ Předchozí profil kódu WriteConsoleLog funkci a potom zapíše výstup profilu
 
 ![Snímek obrazovky, který zobrazuje soubor Profile. cpuprofile.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-Stáhněte si tento soubor a otevřete ho pomocí nástrojů Chrome F12. Stiskněte klávesu F12 na Chrome a pak zvolte kartu **profily** . klikněte na tlačítko **načíst** . Vyberte soubor Profile. cpuprofile, který jste stáhli. Klikněte na profil, který jste právě načetli.
+Stáhněte si tento soubor a otevřete ho pomocí nástrojů Chrome F12. Stiskněte klávesu F12 na Chrome a pak zvolte kartu **profily** . Klikněte na tlačítko **načíst** . Vyberte soubor Profile. cpuprofile, který jste stáhli. Klikněte na profil, který jste právě načetli.
 
 ![Snímek obrazovky zobrazující soubor Profile. cpuprofile, který jste načetli.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
