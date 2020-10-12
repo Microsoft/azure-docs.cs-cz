@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: ccb5e40738680181e7339b8652d029597c7d0bd4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70935087"
 ---
 1. Přihlaste se ke [konzole Firebase](https://firebase.google.com/console/). Vytvořte nový projekt Firebase, pokud jej ještě nemáte.
@@ -20,20 +20,20 @@ ms.locfileid: "70935087"
 
     ![Přidání Firebase do aplikace pro Android](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-add-firebase-to-android-app.png)
 3. Na stránce **Přidat Firebase na svou aplikaci pro Android** proveďte následující kroky: 
-    1. V případě **názvu balíčku Android**Zkopírujte hodnotu vaší hodnoty **ApplicationId** do souboru Build. Gradle vaší aplikace. V tomto příkladu je to `com.fabrikam.fcmtutorial1app`. 
+    1. V případě **názvu balíčku Android**Zkopírujte hodnotu vaší hodnoty **ApplicationId** do souboru Build. Gradle vaší aplikace. V tomto příkladu je to `com.fabrikam.fcmtutorial1app` . 
 
         ![Zadejte název balíčku.](./media/notification-hubs-enable-firebase-cloud-messaging/specify-package-name-fcm-settings.png)
     2. Vyberte **Registrovat aplikaci**. 
-4. Vyberte **Stáhnout Google-Services. JSON**, uložte soubor do složky **aplikace** vašeho projektu a pak vyberte **Další**. 
+4. Vyberte **stáhnout google-services.jsna**, uložte soubor do složky **aplikace** projektu a pak vyberte **Další**. 
 
-    ![Stáhnout Google-Services. JSON](./media/notification-hubs-enable-firebase-cloud-messaging/download-google-service-button.png)
+    ![Stáhnout google-services.js](./media/notification-hubs-enable-firebase-cloud-messaging/download-google-service-button.png)
 5. Proveďte následující **změny konfigurace** projektu v Android Studio. 
-    1.  V souboru Build. Gradle sestavení na úrovni projektu (&lt;/Build.Gradle&gt;projektu) přidejte následující příkaz do oddílu **závislosti** . 
+    1.  V souboru Build. Gradle sestavení na úrovni projektu ( &lt; &gt; /Build.Gradle projektu) přidejte následující příkaz do oddílu **závislosti** . 
 
         ```
         classpath 'com.google.gms:google-services:4.0.1'
         ```
-    2. V souboru&lt;Build. Gradle na úrovni aplikace (projekt&gt;/&lt;App-Module&gt;/Build.Gradle) přidejte následující příkazy do oddílu **závislosti** . 
+    2. V souboru Build. Gradle na úrovni aplikace ( &lt; projekt &gt; / &lt; App-Module &gt; /Build.Gradle) přidejte následující příkazy do oddílu **závislosti** . 
 
         ```
         implementation 'com.google.firebase:firebase-core:16.0.8'
@@ -55,6 +55,6 @@ ms.locfileid: "70935087"
 8. V konzole Firebase vyberte kolečko pro váš projekt. Potom vyberte **Project Settings** (Nastavení projektu).
 
     ![Výběr nastavení projektu](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-firebase-console-project-settings.png)
-4. Pokud jste nestáhli soubor Google-Services. JSON do složky **aplikace** Android Studio projektu, můžete to udělat na této stránce. 
+4. Pokud jste nestáhli google-services.jsdo složky **aplikace** projektu Android Studio, můžete to udělat na této stránce. 
 5. V horní části přepněte na kartu **Cloud Messaging** . 
 6. Zkopírujte a uložte **klíč serveru** pro pozdější použití. Tuto hodnotu použijete ke konfiguraci svého rozbočovače.

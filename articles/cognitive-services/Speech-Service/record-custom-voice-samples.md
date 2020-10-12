@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
 ms.openlocfilehash: 2897fe2e0cc8aeb929b0a33f5cdaba9c60f2a244
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81261580"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Záznam ukázek hlasu pro vytvoření vlastního hlasu
@@ -108,7 +108,7 @@ Naštěstí je možné tyto problémy zcela vyhnout. Existuje mnoho zdrojů text
 |-|-|
 |[CMU Arctic corpus](http://festvox.org/cmu_arctic/)|Přibližně 1100 vět vybraných z ochrany autorského práva fungují speciálně pro použití v projektech syntézy řeči. Vynikající počáteční bod.|
 |Už funguje<br>v části Copyright|Obvykle funguje publikace před 1923. V anglickém jazyce [Gutenberg Project](https://www.gutenberg.org/) nabízí desítky tisíců takových děl. Možná se budete chtít soustředit na novější práci, protože jazyk bude přiblížný k moderní angličtině.|
-|Vláda&nbsp;funguje|Práce vytvořená USA vládou nejsou v USA s copyrightem, i když státní správa může nárokovat na Copyright v jiných zemích nebo oblastech.|
+|Vláda &nbsp; funguje|Práce vytvořená USA vládou nejsou v USA s copyrightem, i když státní správa může nárokovat na Copyright v jiných zemích nebo oblastech.|
 |Veřejná doména|Funguje, pro která je autorská práva explicitně nenárokovaná nebo která byla vyhrazená pro veřejnou doménu. V některých předpisech nemusí být možné zcela upustit od autorského práva.|
 |Opravňující – licencovaná práce|Funguje v rámci licence, jako je například Creative, nebo licence na bezplatnou dokumentaci GNU (GFDL). Wikipedii používá GFDL. Některé licence však mohou znamenat omezení výkonu licencovaného obsahu, který může mít vliv na vytvoření vlastního hlasového modelu, takže si důkladně přečtěte licenci.|
 

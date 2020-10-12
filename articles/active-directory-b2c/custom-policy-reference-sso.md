@@ -12,10 +12,10 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4824b64236270c422f22809e9eeb191ee3be27fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202564"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Správa relací jednotného přihlašování v Azure Active Directory B2C
@@ -28,7 +28,7 @@ Azure AD B2C definovali počet zprostředkovatelů relací jednotného přihlaš
 
 |Zprostředkovatel relací  |Rozsah  |
 |---------|---------|
-|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Žádná       |       
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Žádné       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C interního správce relací.      |       
 |[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Mezi poskytovatelem identity Azure AD B2C a OAuth1, OAuth2 nebo OpenId Connect.        |         |
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | Mezi aplikací předávající strany OAuth2 nebo OpenId Connect a Azure AD B2C.        |        

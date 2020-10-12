@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
 ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135351"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>Řešení potíží se selháním zjišťování vCenter Server
@@ -20,7 +20,7 @@ Tento článek vám pomůže při řešení problémů, ke kterým dochází kv�
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>Jiné než číselné hodnoty ve vlastnosti maxSnapShots
 
-Ve verzích starších než 9,20 se vCenter odpojí, když načte nečíselnou hodnotu pro `snapshot.maxSnapShots` vlastnost Property na virtuálním počítači.
+Ve verzích starších než 9,20 se vCenter odpojí, když načte nečíselnou hodnotu pro  `snapshot.maxSnapShots` vlastnost Property na virtuálním počítači.
 
 Tento problém je identifikovaný ID chyby 95126.
 

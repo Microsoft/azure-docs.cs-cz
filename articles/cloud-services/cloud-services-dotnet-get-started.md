@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
 ms.openlocfilehash: 0d00db9909f05028b55505400d0810b00e0114c0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88932538"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
@@ -43,7 +43,7 @@ Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure.
 * Odeslání souborů a jejich uložení do služby Azure Blob service.
 * Používání služby front Azure pro komunikaci mezi vrstvami.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Kurz předpokládá, že rozumíte [základnímu konceptu cloudových služeb Azure](cloud-services-choose-me.md), například terminologii *webových rolí* a *rolí pracovních procesů*.  Předpokládá také, že víte, jak pracovat s technologií [ASP.NET MVC](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) a s projekty [webových formulářů](https://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) ve Visual Studiu. Ukázková aplikace používá MVC, ale většina kurzu platí i pro webové formuláře.
 
 Aplikaci můžete spustit místně bez předplatného Azure, ale k nasazení aplikace do cloudu budete předplatné potřebovat. Pokud nemáte účet, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) nebo [si zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668).
@@ -125,7 +125,7 @@ Cloudová služba Azure je prostředí, ve kterém bude aplikace spuštěna.
 5. Vyberte oblast, ve které chcete aplikaci nasadit.
 
     Toto pole určuje datové centrum, které bude hostovat vaše cloudové služby. V případě produkční aplikace vyberte oblast, která je nejblíž k vašim zákazníkům. V tomto kurzu vyberte oblast, která je nejblíž k vám.
-5. Klikněte na možnost **Vytvořit**.
+5. Klikněte na **Vytvořit**.
 
     Na následujícím obrázku vidíte vytvoření cloudové služby s adresou URL CSvccontosoads.cloudapp.net.
 
@@ -154,7 +154,7 @@ Když aplikace běží v cloudu, používá cloudovou databázi.
 9. Klikněte na možnost **Vybrat** u nového serveru.
 
     ![Nový server](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Klikněte na možnost **Vytvořit**.
+10. Klikněte na **Vytvořit**.
 
 ### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
 Účet úložiště Azure poskytuje prostředky pro ukládání dat front a objektů blob v cloudu.
@@ -177,7 +177,7 @@ V reálné aplikaci byste obvykle vytvořili samostatné účty pro data aplikac
     Když jsou cloudové služby a účet úložiště v různých datacentrech (různých oblastech), zvýší se latence a bude vám účtována šířka pásma mimo datové centrum. Šířka pásma v rámci datového centra je zdarma.
 
     Skupina vztahů Azure nabízí mechanismus pro minimalizaci vzdálenosti mezi prostředky v datovém centru (můžete tak omezit latenci). V tomto kurzu skupinu vztahů nepoužíváme. Další informace naleznete v článku o [vytváření skupiny vztahů v Azure](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7. Klikněte na možnost **Vytvořit**.
+7. Klikněte na **Vytvořit**.
 
     ![Nový účet úložiště](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -740,7 +740,7 @@ Tento kód čte databázi, aby získal adresu URL obrázku, převede obrázek na
 >
 >
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 Pokud by vám při procházení kurzem něco nefungovalo, následuje přehled běžných chyb a jejich řešení.
 
 ### <a name="serviceruntimeroleenvironmentexception"></a>ServiceRuntime.RoleEnvironmentException

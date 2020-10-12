@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: fa01c4a595a08ffdba56d777128431946540eee5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372667"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Povolení Azure Disk Encryption s Azure AD na virtuálních počítačích se systémem Linux (předchozí verze)
@@ -41,7 +41,7 @@ Před šifrováním [disků si poznamenejte, vytvořte](snapshot-copy-managed-di
 V tomto scénáři můžete šifrování povolit pomocí šablony Azure Resource Manager, rutin prostředí PowerShell nebo příkazů rozhraní příkazového řádku Azure CLI. 
 
 >[!IMPORTANT]
- >Je nutné pořídit snímek nebo zálohovat instanci virtuálního počítače na bázi spravovaného disku mimo rámec a před povolením Azure Disk Encryption. Můžete si pořídit snímek spravovaného disku z Azure Portal, nebo můžete použít [Azure Backup](../../backup/backup-azure-vms-encryption.md). Zálohy zajišťují, že možnost obnovení je možné v případě jakékoli neočekávané chyby při šifrování. Po vytvoření zálohy pomocí rutiny Set-AzVMDiskEncryptionExtension Zašifrujte spravované disky zadáním parametru-skipVmBackup. Příkaz set-AzVMDiskEncryptionExtension se u virtuálních počítačů založených na discích nespustí, dokud se neprovede zálohování a tento parametr není zadaný. 
+ >Je nutné pořídit snímek nebo zálohovat instanci virtuálního počítače na bázi spravovaného disku mimo rámec a před povolením Azure Disk Encryption. Můžete si pořídit snímek spravovaného disku z Azure Portal, nebo můžete použít [Azure Backup](../../backup/backup-azure-vms-encryption.md). Zálohy zajišťují, že možnost obnovení je možné v případě jakékoli neočekávané chyby při šifrování. Po provedení zálohy pomocí rutiny Set-AzVMDiskEncryptionExtension Zašifrujte spravované disky zadáním parametru-skipVmBackup. Příkaz Set-AzVMDiskEncryptionExtension se u virtuálních počítačů založených na discích nespustí, dokud se neprovede zálohování a tento parametr není zadaný. 
 >
 >Šifrování nebo zakázání šifrování může způsobit, že se virtuální počítač restartuje. 
 >
@@ -227,7 +227,7 @@ Doporučujeme LVM instalaci. Pro všechny následující příklady nahraďte za
         echo "/dev/disk/azure/scsi1/lun0 /mnt/mountpoint ext4 defaults,nofail 1 2" >> /etc/fstab
         ```
 
-    4. Spuštěním rutiny prostředí PowerShell set-AzVMDiskEncryptionExtension s-EncryptFormatAll Zašifrujte tyto disky.
+    4. Spusťte rutinu Set-AzVMDiskEncryptionExtension PowerShellu s-EncryptFormatAll a Zašifrujte tyto disky.
 
        ```azurepowershell-interactive
         Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl "https://mykeyvault.vault.azure.net/" -EncryptFormatAll
@@ -246,7 +246,7 @@ Použijte pokyny v příloze pro přípravu předem šifrovaných imagí, které
 * [Příprava předem zašifrovaného virtuálního pevného disku se systémem Linux](disk-encryption-sample-scripts.md)
 
 >[!IMPORTANT]
- >Je nutné pořídit snímek nebo zálohovat instanci virtuálního počítače na bázi spravovaného disku mimo rámec a před povolením Azure Disk Encryption. Můžete si pořídit snímek spravovaného disku z portálu nebo můžete použít [Azure Backup](../../backup/backup-azure-vms-encryption.md). Zálohy zajišťují, že možnost obnovení je možné v případě jakékoli neočekávané chyby při šifrování. Po vytvoření zálohy pomocí rutiny Set-AzVMDiskEncryptionExtension Zašifrujte spravované disky zadáním parametru-skipVmBackup. Příkaz set-AzVMDiskEncryptionExtension se u virtuálních počítačů založených na discích nespustí, dokud se neprovede zálohování a tento parametr není zadaný. 
+ >Je nutné pořídit snímek nebo zálohovat instanci virtuálního počítače na bázi spravovaného disku mimo rámec a před povolením Azure Disk Encryption. Můžete si pořídit snímek spravovaného disku z portálu nebo můžete použít [Azure Backup](../../backup/backup-azure-vms-encryption.md). Zálohy zajišťují, že možnost obnovení je možné v případě jakékoli neočekávané chyby při šifrování. Po provedení zálohy pomocí rutiny Set-AzVMDiskEncryptionExtension Zašifrujte spravované disky zadáním parametru-skipVmBackup. Příkaz Set-AzVMDiskEncryptionExtension se u virtuálních počítačů založených na discích nespustí, dokud se neprovede zálohování a tento parametr není zadaný. 
 >
 >Šifrování nebo zakázání šifrování může způsobit, že se virtuální počítač restartuje.
 

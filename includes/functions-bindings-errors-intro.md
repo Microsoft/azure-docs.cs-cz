@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 629de079f7cc7d95d10f8ff951a47b8b8fc62dad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77474256"
 ---
 Chyby vyvolané v Azure Functions můžou pocházet z některého z následujících zdrojů:
@@ -20,7 +20,7 @@ Chyby vyvolané v Azure Functions můžou pocházet z některého z následujíc
 
 Následující postupy při zpracování chyb jsou důležité k tomu, aby se zabránilo ztrátě dat nebo nezmeškaných zpráv. Doporučené postupy pro zpracování chyb zahrnují následující akce:
 
-- [Povolení Application Insights](../articles/azure-functions/functions-monitoring.md)
+- [Povolit Application Insights](../articles/azure-functions/functions-monitoring.md)
 - [Použití strukturovaného zpracování chyb](#use-structured-error-handling)
 - [Návrh pro idempotence](../articles/azure-functions/functions-idempotent.md)
 - [Implementujte zásady opakování](../articles/azure-functions/functions-reliable-event-processing.md) (tam, kde je to vhodné).
@@ -34,7 +34,7 @@ Chyby zachytávání a publikování jsou klíčové pro monitorování stavu va
 Následující triggery mají integrovanou podporu opakování:
 
 * [Azure Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)
-* [Úložiště front Azure](../articles/azure-functions/functions-bindings-storage-queue.md)
+* [Azure Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (fronta/téma)](../articles/azure-functions/functions-bindings-service-bus.md)
 
 Ve výchozím nastavení se tyto triggery spustí znovu a požádá se o pět časů. Po pátém pokusu služba Azure Queue Storage i Azure Service Bus triggery zapíše zprávu do [fronty poškození](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages).

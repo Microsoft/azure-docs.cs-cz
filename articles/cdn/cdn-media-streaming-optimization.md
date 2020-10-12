@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192613"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Optimalizace streamování médií pomocí Azure CDN 
@@ -103,7 +103,7 @@ Následující tabulka uvádí sadu kritérií, která se mají splnit pro optim
 Podporované typy streamování | Přípony souborů  
 --- | ---  
 Apple HLS | M3U8, M3U, m3ub, Key, TS, AAC
-Adobe HDS | f4m, f4x, drmmeta, Bootstrap, f4f,<br>Struktura adresy URL SEG –-Frag <br> (odpovídajícího regulárního výrazu: ^ (/. *) SEQ (\d +)-Frag (\d +)
+Adobe HDS | f4m, f4x, drmmeta, Bootstrap, f4f,<br>Seg-Frag struktura adresy URL <br> (odpovídajícího regulárního výrazu: ^ (/. *) SEQ (\d +)-Frag (\d +)
 PŘERUŠENÍ | MPD, pomlčka, DivX, ISMV, M4S, M4V, MP4, MP4V, <br> sidx, webm, mp4a, m4a, isma
 Hladké streamování | /manifest/, /QualityLevels/Fragments/
   

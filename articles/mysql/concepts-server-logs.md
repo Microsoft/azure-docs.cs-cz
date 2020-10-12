@@ -7,13 +7,13 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81271977"
 ---
-# <a name="slow-query-logs-in-azure-database-for-mysql"></a>Pomalé dotazování protokolů v Azure Database for MySQL
+# <a name="slow-query-logs-in-azure-database-for-mysql"></a>Protokoly pomalých dotazů ve službě Azure Database for MySQL
 V Azure Database for MySQL je k dispozici pro uživatele protokol pomalých dotazů. Přístup k transakčnímu protokolu není podporován. Protokol pomalých dotazů se dá použít k identifikaci problémových míst výkonu pro řešení problémů.
 
 Další informace o protokolu pomalého dotazu MySQL najdete v [části protokol pomalých dotazů](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)v referenční příručce MySQL.
@@ -59,18 +59,18 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na me
 |---|---|
 | `TenantId` | ID tenanta |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`UTC | Časové razítko, kdy se protokol zaznamenal v UTC |
-| `Type` | Typ protokolu Stál`AzureDiagnostics` |
+| `TimeGenerated` UTC | Časové razítko, kdy se protokol zaznamenal v UTC |
+| `Type` | Typ protokolu Stál `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID předplatného, ke kterému server patří |
 | `ResourceGroup` | Název skupiny prostředků, do které server patří |
-| `ResourceProvider` | Název poskytovatele prostředků Stál`MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Název poskytovatele prostředků Stál `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identifikátor URI prostředku |
 | `Resource` | Název serveru |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Název serveru |
-| `start_time_t`UTC | Čas, kdy dotaz začal |
+| `start_time_t` UTC | Čas, kdy dotaz začal |
 | `query_time_s` | Celková doba v sekundách, po kterou se dotaz trvalo spustit |
 | `lock_time_s` | Celková doba v sekundách, po kterou byl dotaz uzamčen |
 | `user_host_s` | Uživatelské jméno |

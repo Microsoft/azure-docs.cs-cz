@@ -7,10 +7,10 @@ ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462220"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) pro fond hostitelů
@@ -28,7 +28,7 @@ Soubory RDP mají ve výchozím nastavení následující vlastnosti:
 
 |Vlastnost RDP|Na ploše|Jako Vzdálená aplikace RemoteApp|
 |---|---|---|
-|Režim více monitorů|Povoleno|–|
+|Režim více monitorů|Povoleno|Není k dispozici|
 |Přesměrování jednotky povolena|Jednotky, schránka, tiskárny, porty COM, zařízení USB a čipové karty|Jednotky, schránka a tiskárny|
 |Režim vzdáleného zvuku|Přehrát místně|Přehrát místně|
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90972042"
 ---
 # <a name="weather-services-in-azure-maps"></a>Služby počasí v Azure Maps
@@ -108,22 +108,22 @@ Následující tabulka poskytuje pokyny k interpretaci paprskových obrázků a 
 
 | Šestnáctkový kód barvy | Ukázka barvy | Povětrnostní podmínka |
 |----------------|--------------|-------------------|
-| #93c701        | ![Barva pro deště – světlá.](./media/weather-services-concepts/color-93c701.png) | Deště – světlá |
-| #ffd701        | ![Barva pro deště – střední.](./media/weather-services-concepts/color-ffd701.png) | Deště – střední |
-| #f05514        | ![Barva pro deště – těžký.](./media/weather-services-concepts/color-f05514.png) | Deště – těžký |
-| #dc250e        | ![Barva pro deště – závažné.](./media/weather-services-concepts/color-dc250e.png) | Srážky – závažné |
-| #9ec8f2        | ![Barva pro sněhu-Light](./media/weather-services-concepts/color-9ec8f2.png) | Sněhu – světlá |
-| #2a8fdb        | ![Barva pro sněhu – střední](./media/weather-services-concepts/color-2a8fdb.png) | Sněhově mírný |
-| #144bed        | ![Barva pro sněhu – těžký.](./media/weather-services-concepts/color-144bed.png) | Sněhově těžký |
-| #020096        | ![Barva pro sněhu – silné](./media/weather-services-concepts/color-020096.png) | Sněhově silné |
-| #e6a5c8        | ![Barva pro LED – Light](./media/weather-services-concepts/color-e6a5c8.png) | Ice – Light |
-| #d24fa0        | ![Barva pro Ice – střední](./media/weather-services-concepts/color-d24fa0.png) | Ice – střední |
-| #b71691        | ![Barva pro Ice – závažná.](./media/weather-services-concepts/color-b71691.png) | Ice – těžké |
-| #7a1570        | ![Barva pro Ice – těžký.](./media/weather-services-concepts/color-7a1570.png) | Ice – těžký |
-| #c196e6        | ![Barva pro směs – světlá.](./media/weather-services-concepts/color-c196e6.png) | Směs – světlá |
-| #ae6ee6        | ![Barva pro kombinaci – střední](./media/weather-services-concepts/color-ae6ee6.png) | Kombinace – střední |
-| #8a32d7        | ![Barva pro směs – těžký](./media/weather-services-concepts/color-8a32d7.png) | Směs – těžký |
-| #6500ba        | ![Barva pro směs – závažná.](./media/weather-services-concepts/color-6500ba.png) | Směs – závažná |
+| #93c701        | ![Barva pro deště – světlá.](./media/weather-services-concepts/color-93c701.png) | Rain-Light |
+| #ffd701        | ![Barva pro deště – střední.](./media/weather-services-concepts/color-ffd701.png) | Rain-Moderate |
+| #f05514        | ![Barva pro deště – těžký.](./media/weather-services-concepts/color-f05514.png) | Rain-Heavy |
+| #dc250e        | ![Barva pro deště – závažné.](./media/weather-services-concepts/color-dc250e.png) | Rain-Severe |
+| #9ec8f2        | ![Barva pro sněhu-Light](./media/weather-services-concepts/color-9ec8f2.png) | Snow-Light |
+| #2a8fdb        | ![Barva pro sněhu – střední](./media/weather-services-concepts/color-2a8fdb.png) | Snow-Moderate |
+| #144bed        | ![Barva pro sněhu – těžký.](./media/weather-services-concepts/color-144bed.png) | Snow-Heavy |
+| #020096        | ![Barva pro sněhu – silné](./media/weather-services-concepts/color-020096.png) | Snow-Severe |
+| #e6a5c8        | ![Barva pro LED – Light](./media/weather-services-concepts/color-e6a5c8.png) | Ice-Light |
+| #d24fa0        | ![Barva pro Ice – střední](./media/weather-services-concepts/color-d24fa0.png) | Ice-Moderate |
+| #b71691        | ![Barva pro Ice – závažná.](./media/weather-services-concepts/color-b71691.png) | Ice-Severe |
+| #7a1570        | ![Barva pro Ice – těžký.](./media/weather-services-concepts/color-7a1570.png) | Ice-Heavy |
+| #c196e6        | ![Barva pro směs – světlá.](./media/weather-services-concepts/color-c196e6.png) | Mix-Light |
+| #ae6ee6        | ![Barva pro kombinaci – střední](./media/weather-services-concepts/color-ae6ee6.png) | Mix-Moderate |
+| #8a32d7        | ![Barva pro směs – těžký](./media/weather-services-concepts/color-8a32d7.png) | Mix-Heavy |
+| #6500ba        | ![Barva pro směs – závažná.](./media/weather-services-concepts/color-6500ba.png) | Mix-Severe |
 
 Podrobná paleta barev pro paprskové dlaždice s hexadecimálními kódy a dBZ hodnotami je uvedena níže. dBZ představuje intenzitu srážení v případě paprsků s počasí. 
 
@@ -199,7 +199,7 @@ Následující tabulka poskytuje pokyny k interpretaci satelitních satelitních
 
 | Šestnáctkový kód barvy | Ukázka barvy | Teplota v cloudu |
 |----------------|--------------|-------------------|
-| #b5b5b5        | ![Ikona barvy pro #b5b5b5](./media/weather-services-concepts/color-b5b5b5.png) | Teplota – nízká | 
+| #b5b5b5        | ![Ikona barvy pro #b5b5b5](./media/weather-services-concepts/color-b5b5b5.png) | Temperature-Low | 
 | #d24fa0        | ![Ikona barvy pro #d24fa0](./media/weather-services-concepts/color-d24fa0.png) |  |
 | #8a32d7        | ![Ikona barvy pro #8a32d7](./media/weather-services-concepts/color-8a32d7.png) |  |
 | #144bed        | ![Ikona barvy pro #144bed](./media/weather-services-concepts/color-144bed.png) |  |
@@ -210,7 +210,7 @@ Následující tabulka poskytuje pokyny k interpretaci satelitních satelitních
 | #f05514        | ![Ikona barvy pro #f05514](./media/weather-services-concepts/color-f05514.png) |  |
 | #dc250e        | ![Ikona barvy pro #dc250e](./media/weather-services-concepts/color-dc250e.png) |  |
 | #ba0808        | ![Ikona barvy pro #ba0808](./media/weather-services-concepts/color-ba0808.png) |  |
-| #1f1f1f        | ![Ikona barvy pro #1f1f1f](./media/weather-services-concepts/color-1f1f1f.png) | Teplota – vysoká |
+| #1f1f1f        | ![Ikona barvy pro #1f1f1f](./media/weather-services-concepts/color-1f1f1f.png) | Temperature-High |
 
 
 Podrobná paleta barev pro infračervené satelitní dlaždice je uvedená níže.
@@ -494,7 +494,7 @@ Níže je tabulka dostupných ID indexů, jejich názvy a odkaz na jejich sady r
   Prach & Dander              |18| [Nízká – extrémní 1](#low-extreme-1)
   Připravenost pole            |32| [Špatné – vynikající 1](#poor-excellent-1)
   Rybolov                    |13| [Špatné – vynikající 1](#poor-excellent-1)
-  Zpoždění letů              |-3|  [Velmi nepravděpodobné – velmi pravděpodobné 2](#very-unlikely-very-likely-2)
+  Zpoždění letů              |-3|  [Velmi Unlikely-Very pravděpodobná 2](#very-unlikely-very-likely-2)
   Flu                        |26|  [Výhodné – extrémní riziko](#beneficial-at-extreme-risk)
   Dolétající index cestování        |31| [Vynikající – slabý](#excellent-poor)
   Ekonomie pohonu               |37| [Špatné – vynikající 1](#poor-excellent-1)
@@ -523,7 +523,7 @@ Níže je tabulka dostupných ID indexů, jejich názvy a odkaz na jejich sady r
   Sinus starostí             |30|  [Výhodné – extrémní riziko](#beneficial-at-extreme-risk)
   Skateboarding              | 7| [Špatné – vynikající 1](#poor-excellent-1)
   Lyžařské počasí                | 15| [Špatné – vynikající 1](#poor-excellent-1)
-  Sněhové dny                  | 19| [Velmi nepravděpodobné – velmi pravděpodobné](#very-unlikely-very-likely)
+  Sněhové dny                  | 19| [Velmi Unlikely-Very pravděpodobně](#very-unlikely-very-likely)
   Vlhkost v půdě              | 34| [Špatné – vynikající 1](#poor-excellent-1)
   Stargazing                 | 12| [Špatné – vynikající 1](#poor-excellent-1)
 
@@ -549,7 +549,7 @@ Níže je uveden seznam dostupných skupin indexů (indexGroupId):
 
 [Získat denní indexy rozhraní API](https://aka.ms/AzureMapsWeatherDailyIndices) vrací hodnotu v rozsahu a její přiřazený název kategorie pro každé ID indexu. Sady rozsahů nejsou pro všechny indexy stejné. Následující tabulky znázorňují různé sady rozsahů používané podporovanými indexy uvedenými v ID [indexů a ID skupin indexů](#index-ids-and-index-groups-ids). Chcete-li zjistit, které indexy používají sady rozsahů, přejít k části ID [indexů a ID skupin indexů](#index-ids-and-index-groups-ids) v tomto dokumentu.
 
-### <a name="poor-excellent-1"></a>Špatné – vynikající 1
+### <a name="poor-excellent-1"></a>Poor-Excellent 1
 
   | Category Name | Počátek rozsahu | Koncový rozsah |
   ----------------|--------------|------------
@@ -559,7 +559,7 @@ Níže je uveden seznam dostupných skupin indexů (indexGroupId):
   Velmi dobře         |  7  |               8,99
   Vynikající         |  9  |               10
 
-### <a name="poor-excellent-2"></a>Špatné – vynikající 2
+### <a name="poor-excellent-2"></a>Poor-Excellent 2
 
  | Category Name | Počátek rozsahu | Koncový rozsah |
   ----------------|--------------|------------
@@ -569,7 +569,7 @@ Níže je uveden seznam dostupných skupin indexů (indexGroupId):
   Velmi dobře      |7,51           |  8,99
   Vynikající      |9              |  10
 
-### <a name="excellent-poor"></a>Vynikající – slabý
+### <a name="excellent-poor"></a>Excellent-Poor
 
  | Category Name | Počátek rozsahu | Koncový rozsah |
   ----------------|--------------|------------
@@ -579,7 +579,7 @@ Níže je uveden seznam dostupných skupin indexů (indexGroupId):
   Přiměřené             |   5,01          |  7,00
   Slabé             |   7,01          |  10,00
 
-### <a name="low-extreme-1"></a>Nízká – extrémní 1
+### <a name="low-extreme-1"></a>Low-Extreme 1
 
    | Category Name | Počátek rozsahu | Koncový rozsah |
   ----------------|--------------|------------
@@ -589,7 +589,7 @@ Níže je uveden seznam dostupných skupin indexů (indexGroupId):
   Velmi vysoké          |  6         |        7,99
   Extreme            |  8         |        10
 
-### <a name="low-extreme-2"></a>Nízká – extrémní 2
+### <a name="low-extreme-2"></a>Low-Extreme 2
 
    | Category Name | Počátek rozsahu | Koncový rozsah |
   ----------------|--------------|------------
@@ -599,7 +599,7 @@ Níže je uveden seznam dostupných skupin indexů (indexGroupId):
   Velmi vysoké          |  7            |      8,99
   Extreme            |  9            |      10
 
-### <a name="very-unlikely-very-likely"></a>Velmi nepravděpodobné – velmi pravděpodobné
+### <a name="very-unlikely-very-likely"></a>Velmi Unlikely-Very pravděpodobně
 
  | Category Name | Počátek rozsahu | Koncový rozsah |
   ----------------|--------------|------------
@@ -609,7 +609,7 @@ Níže je uveden seznam dostupných skupin indexů (indexGroupId):
   Pracuje             | 6     |           7,99
   Velmi nejspíš        | 8     |           10
 
-### <a name="very-unlikely-very-likely-2"></a>Velmi nepravděpodobné – velmi pravděpodobné 2
+### <a name="very-unlikely-very-likely-2"></a>Velmi Unlikely-Very pravděpodobná 2
 
  | Category Name | Počátek rozsahu | Koncový rozsah |
   ----------------|--------------|------------
@@ -619,7 +619,7 @@ Níže je uveden seznam dostupných skupin indexů (indexGroupId):
   Pracuje             |  5,01     |         7,00
   Velmi nejspíš        |  7,01     |         10,00
 
-### <a name="unlikely-emergency"></a>Nepravděpodobné – nouze
+### <a name="unlikely-emergency"></a>Unlikely-Emergency
 
 | Category Name | Počátek rozsahu | Koncový rozsah |
   ----------------|--------------|------------
@@ -629,7 +629,7 @@ Níže je uveden seznam dostupných skupin indexů (indexGroupId):
   Upozornění          |  7     |          8,99
   Zásah        |  9     |          10
 
-### <a name="beneficial-at-extreme-risk"></a>Výhodné – extrémní riziko
+### <a name="beneficial-at-extreme-risk"></a>Beneficial-At extrémních rizik
 
 | Category Name | Počátek rozsahu | Koncový rozsah |
   ----------------|--------------|------------

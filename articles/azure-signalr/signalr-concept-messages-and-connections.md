@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: zhshang
 ms.openlocfilehash: 5483e10e817ce8a0a7e7c82d817b7bdbbdd9176b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87853445"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Zprávy a připojení ve službě Azure Signal Service
@@ -42,7 +42,7 @@ Aplikační server vysílá všem připojeným klientům zprávu od 1 KB. zpráv
 
 Klient A pošle zprávu o 1 KB jinému klientovi B bez přechodu na aplikační server. Zpráva od klienta A do služby je volná příchozí zpráva. Zpráva ze služby na klienta B se účtuje jako odchozí zpráva.
 
-Pokud máte tři klienty a jeden aplikační server. Jeden klient pošle zprávu o 4 KB, aby mohl server vysílat všem klientům. Počet účtovaných zpráv je 8: jedna zpráva od služby k aplikačnímu serveru a tři zprávy od služby ke klientům. Každá zpráva se počítá jako dvě zprávy o 2 KB.
+Pokud máte tři klienty a jeden aplikační server. Jeden klient pošle zprávu o 4 KB, aby mohl server vysílat všem klientům. Počet účtovaných zpráv je 8: jedna zpráva od služby k aplikačnímu serveru a tři zprávy od služby ke klientům. Každá zpráva se počítá jako zprávy 2 2-KB.
 
 ## <a name="how-connections-are-counted"></a>Jak se počítají připojení
 

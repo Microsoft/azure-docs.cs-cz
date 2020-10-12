@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203805"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikáty a PredicateValidations
@@ -36,7 +36,7 @@ Element **predikáts** musí být uveden přímo za elementem **ClaimsSchema** v
 
 Element **predikáts** obsahuje následující element:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Predikát | 1: n | Seznam predikátů. |
 
@@ -44,28 +44,28 @@ Element **predikátu** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Yes | Identifikátor, který se používá pro predikát. Ostatní elementy můžou tento identifikátor v zásadách použít. |
-| Metoda | Yes | Typ metody, který se má použít pro ověření. Možné hodnoty: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)nebo [IsDateRange](#isdaterange).  |
+| Id | Ano | Identifikátor, který se používá pro predikát. Ostatní elementy můžou tento identifikátor v zásadách použít. |
+| Metoda | Ano | Typ metody, který se má použít pro ověření. Možné hodnoty: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)nebo [IsDateRange](#isdaterange).  |
 | HelpText | No | Chybová zpráva pro uživatele, pokud se ověření nepovede. Tento řetězec se dá lokalizovat pomocí [přizpůsobení jazyka](localization.md) . |
 
 Element **predikát** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | UserHelpText | 0:1 | Zastaralé Chybová zpráva pro uživatele, pokud se ověření nepovede. |
 | Parametry | 1:1 | Parametry pro typ metody pro ověření řetězce. |
 
 Element **Parameters** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Parametr | 1: n | Parametry pro typ metody pro ověření řetězce. |
 
 Element **Parameter** obsahuje následující atributy:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| ID | 1:1 | Identifikátor parametru |
+| Id | 1:1 | Identifikátor parametru |
 
 ### <a name="predicate-methods"></a>Metody predikátu
 
@@ -75,8 +75,8 @@ Metoda IsLengthRange ověřuje, zda délka hodnoty deklarace řetězce spadá do
 
 | Parametr | Povinné | Popis |
 | ------- | ----------- | ----------- |
-| Maximum | Yes | Maximální počet znaků, které lze zadat. |
-| Minimální | Yes | Minimální počet znaků, které je třeba zadat. |
+| Maximum | Ano | Maximální počet znaků, které lze zadat. |
+| Minimum | Ano | Minimální počet znaků, které je třeba zadat. |
 
 
 Následující příklad ukazuje metodu IsLengthRange s parametry `Minimum` a `Maximum` , která určuje rozsah délky řetězce:
@@ -96,7 +96,7 @@ Metoda MatchesRegex ověří, zda hodnota deklarace řetězce odpovídá regulá
 
 | Parametr | Povinné | Popis |
 | ------- | ----------- | ----------- |
-| RegularExpression | Yes | Vzorek regulárního výrazu, který se má shodovat. |
+| RegularExpression | Ano | Vzorek regulárního výrazu, který se má shodovat. |
 
 Následující příklad ukazuje `MatchesRegex` metodu s parametrem `RegularExpression` , který určuje regulární výraz:
 
@@ -114,7 +114,7 @@ Metoda IncludesCharacters ověří, zda hodnota deklarace řetězce obsahuje zna
 
 | Parametr | Povinné | Popis |
 | ------- | ----------- | ----------- |
-| CharacterSet | Yes | Sada znaků, které lze zadat. Například malými písmeny `a-z` , velkými písmeny `A-Z` , číslicemi `0-9` nebo seznamem symbolů, jako je například `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` . |
+| CharacterSet | Ano | Sada znaků, které lze zadat. Například malými písmeny  `a-z` , velkými písmeny `A-Z` , číslicemi `0-9` nebo seznamem symbolů, jako je například `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` . |
 
 Následující příklad ukazuje `IncludesCharacters` metodu s parametrem `CharacterSet` , který určuje množinu znaků:
 
@@ -132,8 +132,8 @@ Metoda IsDateRange ověří, zda je hodnota deklarace data v rozsahu zadaného m
 
 | Parametr | Povinné | Popis |
 | ------- | ----------- | ----------- |
-| Maximum | Yes | Největší možné datum, které lze zadat. Formát data následuje po `yyyy-mm-dd` konvenci nebo `Today` . |
-| Minimální | Yes | Nejnižší možné datum, které lze zadat. Formát data následuje po `yyyy-mm-dd` konvenci nebo `Today` .|
+| Maximum | Ano | Největší možné datum, které lze zadat. Formát data následuje po `yyyy-mm-dd` konvenci nebo `Today` . |
+| Minimum | Ano | Nejnižší možné datum, které lze zadat. Formát data následuje po `yyyy-mm-dd` konvenci nebo `Today` .|
 
 Následující příklad ukazuje `IsDateRange` metodu s parametry `Minimum` a `Maximum` , která určuje rozsah kalendářních dat formátu `yyyy-mm-dd` a `Today` .
 
@@ -172,7 +172,7 @@ Element **PredicateValidations** se musí objevit přímo za prvkem **predikáts
 
 Element **PredicateValidations** obsahuje následující element:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | PredicateValidation | 1: n | Seznam ověření predikátu |
 
@@ -180,17 +180,17 @@ Element **PredicateValidation** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Yes | Identifikátor, který se používá pro ověření predikátu. Element **ClaimType** může použít tento identifikátor v zásadách. |
+| Id | Ano | Identifikátor, který se používá pro ověření predikátu. Element **ClaimType** může použít tento identifikátor v zásadách. |
 
 Element **PredicateValidation** obsahuje následující element:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | PredicateGroups | 1: n | Seznam skupin predikátů. |
 
 Element **PredicateGroups** obsahuje následující element:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Predikátcollection | 1: n | Seznam predikátů. |
 
@@ -198,11 +198,11 @@ Element **predikátu** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Yes | Identifikátor, který se používá pro skupinu predikátů.  |
+| Id | Ano | Identifikátor, který se používá pro skupinu predikátů.  |
 
 Element **predikátu** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | UserHelpText | 0:1 |  Popis predikátu, který může být užitečný pro uživatele, aby věděli, jaká hodnota by měla být typu. |
 | PredicateReferences | 1: n | Seznam odkazů na predikáty |
@@ -215,7 +215,7 @@ Element **PredicateReferences** obsahuje následující atributy:
 
 Element **PredicateReferences** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | PredicateReference | 1: n | Odkaz na predikát. |
 
@@ -223,7 +223,7 @@ Element **PredicateReference** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Yes | Identifikátor, který se používá pro ověření predikátu.  |
+| Id | Ano | Identifikátor, který se používá pro ověření predikátu.  |
 
 
 ## <a name="configure-password-complexity"></a>Konfigurace složitosti hesla

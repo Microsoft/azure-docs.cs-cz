@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: f9b7b92fd21e12f1d86c5d5878e48c6ec6b0e748
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088015"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Referenční informace pro vývojáře v jazyce F # Azure Functions
@@ -51,7 +51,7 @@ V souboru je sdílený [host.js](functions-host-json.md) , který se dá použí
 Rozšíření vazby požadovaná ve [verzi 2. x a novějších verzích](functions-versions.md) modulu runtime Functions jsou v souboru definovány se `extensions.csproj` skutečnými soubory knihoven ve `bin` složce. Při vývoji místně je nutné [zaregistrovat rozšíření vazby](./functions-bindings-register.md#extension-bundles). Při vývoji funkcí v Azure Portal se tato registrace provede za vás.
 
 ## <a name="binding-to-arguments"></a>Vazba na argumenty
-Každá vazba podporuje určitou sadu argumentů, jak je popsáno v [referenčních Azure Functions triggerech a vývojářích vazeb](functions-triggers-bindings.md). Například jedna z vazeb argumentu, která je triggerem objektu blob, je POCO, který lze vyjádřit pomocí záznamu F #. Příklad:
+Každá vazba podporuje určitou sadu argumentů, jak je popsáno v [referenčních Azure Functions triggerech a vývojářích vazeb](functions-triggers-bindings.md). Například jedna z vazeb argumentu, která je triggerem objektu blob, je POCO, který lze vyjádřit pomocí záznamu F #. Například:
 
 ```fsharp
 type Item = { Id: string }
@@ -65,7 +65,7 @@ Vaše funkce F # Azure provede jeden nebo více argumentů. Když hovoříme o A
 
 V předchozím příkladu `blob` je vstupní argument a `output` je výstupní argument. Všimněte si, že jsme použili `byref<>` pro `output` (není nutné přidávat `[<Out>]` anotaci). Použití `byref<>` typu umožňuje vaší funkci změnit, na který záznam nebo objekt odkazuje argument.
 
-Pokud je jako vstupní typ použit záznam F #, definice záznamu musí být označena atributem, `[<CLIMutable>]` aby mohla Azure Functions Framework správně nastavit pole před předáním záznamu do funkce. V digestoři `[<CLIMutable>]` vygeneruje metody setter pro vlastnosti záznamu. Příklad:
+Pokud je jako vstupní typ použit záznam F #, definice záznamu musí být označena atributem, `[<CLIMutable>]` aby mohla Azure Functions Framework správně nastavit pole před předáním záznamu do funkce. V digestoři `[<CLIMutable>]` vygeneruje metody setter pro vlastnosti záznamu. Například:
 
 ```fsharp
 [<CLIMutable>]
@@ -77,7 +77,7 @@ let Run(req: TestObject, log: ILogger) =
     { req with Greeting = sprintf "Hello, %s" req.SenderName }
 ```
 
-Třídu jazyka F # lze také použít pro argumenty in a out. U třídy vlastnosti budou obvykle potřebovat metody getter a setter. Příklad:
+Třídu jazyka F # lze také použít pro argumenty in a out. U třídy vlastnosti budou obvykle potřebovat metody getter a setter. Například:
 
 ```fsharp
 type Item() =
@@ -89,8 +89,8 @@ let Run(input: string, item: byref<Item>) =
     item <- result
 ```
 
-## <a name="logging"></a>Protokolování
-Pokud chcete protokolovat výstup do [protokolů streamování](../app-service/troubleshoot-diagnostic-logs.md) v F #, funkce by měla převzít argument typu [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger). Pro zajištění konzistence doporučujeme tento argument pojmenovaný `log` . Příklad:
+## <a name="logging"></a>protokolování
+Pokud chcete protokolovat výstup do [protokolů streamování](../app-service/troubleshoot-diagnostic-logs.md) v F #, funkce by měla převzít argument typu [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger). Pro zajištění konzistence doporučujeme tento argument pojmenovaný `log` . Například:
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =
@@ -182,7 +182,7 @@ Kromě toho následující sestavení jsou speciální použita a mohou být odk
 Pokud potřebujete odkazovat na soukromé sestavení, můžete nahrát soubor sestavení do `bin` složky relativní vzhledem k vaší funkci a odkazovat na ni pomocí názvu souboru (např.  `#r "MyAssembly.dll"`). Informace o tom, jak nahrát soubory do složky funkcí, najdete v následující části o správě balíčků.
 
 ## <a name="editor-prelude"></a>Editor předehru
-Editor, který podporuje služby kompilátoru F #, nebude vědět o oborech názvů a sestaveních, která Azure Functions automaticky zahrnuje. V takovém případě může být užitečné zahrnout předehru, který pomáhá editoru najít sestavení, která používáte, a explicitně otevřít obory názvů. Příklad:
+Editor, který podporuje služby kompilátoru F #, nebude vědět o oborech názvů a sestaveních, která Azure Functions automaticky zahrnuje. V takovém případě může být užitečné zahrnout předehru, který pomáhá editoru najít sestavení, která používáte, a explicitně otevřít obory názvů. Například:
 
 ```fsharp
 #if !COMPILED
@@ -258,7 +258,7 @@ let Run(timer: TimerInfo, log: ILogger) =
 ```
 
 ## <a name="reusing-fsx-code"></a>Znovu se používá kód. fsx
-Pomocí direktivy můžete použít kód z jiných `.fsx` souborů `#load` . Příklad:
+Pomocí direktivy můžete použít kód z jiných `.fsx` souborů `#load` . Například:
 
 `run.fsx`
 
@@ -278,16 +278,16 @@ let mylog(log: ILogger, text: string) =
 
 Cesty poskytují `#load` direktivám relativním k umístění `.fsx` souboru.
 
-* `#load "logger.fsx"`Načte soubor umístěný ve složce Functions.
-* `#load "package\logger.fsx"`Načte soubor umístěný ve `package` složce ve složce Functions.
-* `#load "..\shared\mylogger.fsx"`Načte soubor umístěný ve `shared` složce na stejné úrovni jako složka funkce, tj. přímo pod `wwwroot` .
+* `#load "logger.fsx"` Načte soubor umístěný ve složce Functions.
+* `#load "package\logger.fsx"` Načte soubor umístěný ve `package` složce ve složce Functions.
+* `#load "..\shared\mylogger.fsx"` Načte soubor umístěný ve `shared` složce na stejné úrovni jako složka funkce, tj. přímo pod `wwwroot` .
 
 `#load`Direktiva funguje pouze se `.fsx` soubory (F # Script), nikoli se `.fs` soubory.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace naleznete v následujících zdrojích:
 
-* [Průvodce F #](/dotnet/articles/fsharp/index)
+* [F# Guide](/dotnet/articles/fsharp/index)
 * [Osvědčené postupy pro Azure Functions](functions-best-practices.md)
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)
 * [Aktivační události a vazby Azure Functions](functions-triggers-bindings.md)

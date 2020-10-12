@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: c0fcbe59aa4393f1266c0840cf05c3dc7b1f6d90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85204978"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Omezení kapacity Azure synapse Analytics (dříve SQL DW)
@@ -24,19 +24,19 @@ Maximální povolené hodnoty pro různé součásti Azure synapse
 
 ## <a name="workload-management"></a>Správa úloh
 
-| Kategorie | Description | Maximum |
+| Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
 | [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximální počet DWU pro jednu jednotku fondu SQL (datový sklad) | Gen1: DW6000<br></br>Gen2: DW30000c |
-| [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Výchozí DTU na server |54 000<br></br>Ve výchozím nastavení má každý SQL Server (například myserver.database.windows.net) kvótu DTU 54 000, což umožňuje až DW5000c. Tato kvóta je jednoduše bezpečnostní omezení. Kvótu můžete zvýšit tak, že [vytvoříte lístek podpory](sql-data-warehouse-get-started-create-support-ticket.md) a jako typ žádosti vyberete *kvótu* .  Chcete-li vypočítat potřebné DTU, vynásobte hodnotu 7,5 celkovým DWU, nebo vynásobte 9,5 celkovým počtem potřebných cDWU. Příklad:<br></br>DW6000 x 7,5 = 45 000 DTU<br></br>DW5000c x 9,5 = 47 500 DTU.<br></br>Aktuální spotřebu DTU můžete zobrazit z možnosti SQL serveru na portálu. Pozastavené i nepozastavené databáze se započítávají do kvóty DTU. |
+| [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Výchozí DTU na server |54 000<br></br>Ve výchozím nastavení má každý SQL Server (například myserver.database.windows.net) kvótu DTU 54 000, což umožňuje až DW5000c. Tato kvóta je jednoduše bezpečnostní omezení. Kvótu můžete zvýšit tak, že [vytvoříte lístek podpory](sql-data-warehouse-get-started-create-support-ticket.md) a jako typ žádosti vyberete *kvótu* .  Chcete-li vypočítat potřebné DTU, vynásobte hodnotu 7,5 celkovým DWU, nebo vynásobte 9,5 celkovým počtem potřebných cDWU. Například:<br></br>DW6000 x 7,5 = 45 000 DTU<br></br>DW5000c x 9,5 = 47 500 DTU.<br></br>Aktuální spotřebu DTU můžete zobrazit z možnosti SQL serveru na portálu. Pozastavené i nepozastavené databáze se započítávají do kvóty DTU. |
 | Připojení k databázi |Maximální počet souběžných otevřených relací |1024<br/><br/>Počet souběžných otevřených relací se bude lišit v závislosti na vybrané DWU. DWU600c a vyšší podporují maximálně 1024 otevřených relací. DWU500c a níže podporují maximální počet souběžných otevřených relací 512. Všimněte si, že počet dotazů, které mohou být spuštěny současně, je omezen. Pokud je překročen limit souběžnosti, požadavek přejde do interní fronty, ve které čeká na zpracování. |
 | Připojení k databázi |Maximální velikost paměti pro připravené příkazy |20 MB |
 | [Správa úloh](resource-classes-for-workload-management.md) |Maximální počet souběžných dotazů |128<br/><br/>  Vykoná se maximálně 128 souběžných dotazů a zbývající dotazy budou zařazeny do fronty.<br/><br/>Počet souběžných dotazů se může snížit, když jsou uživatelé přiřazeni k vyšším třídám prostředků nebo když je nastavení [jednotky datového skladu](memory-concurrency-limits.md) snížené. Některé dotazy, například dotazy DMV, vždy umožňují spuštění a nemají vliv na souběžný limit dotazu. Další informace o souběžném provádění dotazů naleznete v článku [Maximum](memory-concurrency-limits.md) souběžnosti. |
-| [databáze](sql-data-warehouse-tables-temporary.md) |Maximální GB |399 GB na DW100c. V DWU1000c má databáze tempdb velikost až 3,99 TB. |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |Maximální GB |399 GB na DW100c. V DWU1000c má databáze tempdb velikost až 3,99 TB. |
 ||||
 
 ## <a name="database-objects"></a>Objekty databáze
 
-| Kategorie | Description | Maximum |
+| Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
 | databáze |Maximální velikost | Gen1: na disku je komprimováno 240 TB. Toto místo je nezávislé na tempdb nebo v prostoru protokolu, a proto je toto místo vyhrazeno pro trvalé tabulky.  Clusterovaná komprese columnstore je odhadnuta na pětinásobné.  Tato komprese umožňuje databázi zvětšit na přibližně 1 PB, pokud jsou všechny tabulky clusterovaný cluster columnstore (výchozí typ tabulky). <br/><br/> Gen2: neomezené úložiště pro tabulky columnstore.  Rowstore část databáze je na disku stále omezená na 240 TB. |
 | Tabulka |Maximální velikost |Neomezená velikost tabulek columnstore. <br>60 TB pro tabulky rowstore komprimované na disku. |
@@ -59,14 +59,14 @@ Maximální povolené hodnoty pro různé součásti Azure synapse
 
 ## <a name="loads"></a>Zaveden
 
-| Kategorie | Description | Maximum |
+| Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
 | Základní načtení |MB na řádek |1<br/><br/>Základ databáze načítá řádky, které jsou menší než 1 MB. Načítání datových typů LOB do tabulek s clusterovaným indexem columnstore (Ski) není podporováno.<br/><br/> |
 ||||
 
 ## <a name="queries"></a>Dotazy
 
-| Kategorie | Description | Maximum |
+| Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
 | Dotaz |Dotazy zařazené do fronty v uživatelských tabulkách |1000 |
 | Dotaz |Souběžné dotazy na systémová zobrazení. |100 |
@@ -86,15 +86,15 @@ Maximální povolené hodnoty pro různé součásti Azure synapse
 
 | Systémové zobrazení | Maximální počet řádků |
 |:--- |:--- |
-| sys. dm_pdw_component_health_alerts |10 000 |
-| sys. dm_pdw_dms_cores |100 |
+| sys.dm_pdw_component_health_alerts |10 000 |
+| sys.dm_pdw_dms_cores |100 |
 | sys.dm_pdw_dms_workers |Celkový počet pracovních procesů DMS pro nejnovější požadavky 1000 SQL. |
-| sys. dm_pdw_errors |10 000 |
+| sys.dm_pdw_errors |10 000 |
 | sys.dm_pdw_exec_requests |10 000 |
-| sys. dm_pdw_exec_sessions |10 000 |
-| sys.dm_pdw_request_steps |Celkový počet kroků pro nejnovější požadavky 1000 SQL, které jsou uloženy v sys. dm_pdw_exec_requests. |
-| sys. dm_pdw_os_event_logs |10 000 |
-| sys.dm_pdw_sql_requests |Nejnovější požadavky 1000 SQL, které jsou uloženy v sys. dm_pdw_exec_requests. |
+| sys.dm_pdw_exec_sessions |10 000 |
+| sys.dm_pdw_request_steps |Celkový počet kroků pro nejnovější požadavky 1000 SQL, které jsou uloženy v sys.dm_pdw_exec_requests. |
+| sys.dm_pdw_os_event_logs |10 000 |
+| sys.dm_pdw_sql_requests |Nejnovější požadavky 1000 SQL, které jsou uloženy v sys.dm_pdw_exec_requests. |
 |||
 
 ## <a name="next-steps"></a>Další kroky

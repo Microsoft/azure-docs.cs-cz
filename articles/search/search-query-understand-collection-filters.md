@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 6af0f2b5221a737687578e939c14cecf3be14509
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88932912"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Porozumění filtrům kolekce OData v Azure Kognitivní hledání
@@ -142,7 +142,7 @@ Představte si například pole pro shromažďování řetězců, jako je třeba
 
 Hodnoty `seasons` pole jsou uloženy ve struktuře s názvem **obrácený index**, který vypadá přibližně takto:
 
-| Období | ID dokumentů |
+| Označení | ID dokumentů |
 | --- | --- |
 | návratu | 1, 2 |
 | letní | 1 |
