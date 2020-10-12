@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
 ms.openlocfilehash: 8459ab364fc0af15dd1a1b0035e4ce27d192f7a9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293454"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Provozní kontinuita a HADR pro SQL Server v Azure Virtual Machines
@@ -150,7 +150,7 @@ Další informace o připojení klientů najdete v těchto tématech:
 * [Připojení klientů k relaci zrcadlení databáze (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
 * [Připojování k naslouchacího procesu skupiny dostupnosti v hybridním IT](https://docs.microsoft.com/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
 * [Naslouchací procesy skupin dostupnosti, připojení klientů a převzetí služeb při selhání aplikací (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
-* [Použití připojovacích řetězců zrcadlení databáze se skupinami dostupnosti](https://technet.microsoft.com/library/hh213417.aspx)
+* [Použití připojovacích řetězců Database-Mirroring se skupinami dostupnosti](https://technet.microsoft.com/library/hh213417.aspx)
 
 ### <a name="network-latency-in-hybrid-it"></a>Latence sítě v hybridním IT
 Nasaďte řešení HADR s předpokladem, že mezi vaší místní sítí a Azure může nastat doba vysoké latence sítě. Při nasazování replik do Azure použijte asynchronní potvrzení místo synchronního potvrzení pro režim synchronizace. Pokud nasazujete servery zrcadlení databáze místně i v Azure, použijte vysoce výkonný režim, nikoli režim vysoké bezpečnosti.

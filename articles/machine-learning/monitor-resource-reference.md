@@ -11,10 +11,10 @@ ms.author: aashishb
 author: aashishb
 ms.date: 04/27/2020
 ms.openlocfilehash: 405b0aa051d0d1142d7dd4ccbf2bca4ef9cc3545
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89650598"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Referenční informace o monitorování služby Azure Machine Learning
@@ -128,7 +128,7 @@ V následujících tabulkách jsou uvedeny metriky platforem shromážděné pro
 
 **Model**
 
-| Metrika | Jednotka | Popis |
+| Metrika | Jednotka | Description |
 | ----- | ----- | ----- |
 | Nasazení modelu selhalo. | Počet | Počet nasazení modelů, které selhaly. |
 | Nasazení modelu začalo | Počet | Počet spuštěných nasazení modelu |
@@ -140,7 +140,7 @@ V následujících tabulkách jsou uvedeny metriky platforem shromážděné pro
 
 Informace o kvótách jsou jenom Azure Machine Learning výpočetní služby.
 
-| Metrika | Jednotka | Popis |
+| Metrika | Jednotka | Description |
 | ----- | ----- | ----- |
 | Aktivní jádra | Počet | Počet aktivních výpočetních jader. |
 | Aktivní uzly | Počet | Počet aktivních uzlů. |
@@ -158,7 +158,7 @@ Informace o kvótách jsou jenom Azure Machine Learning výpočetní služby.
 
 Níže jsou uvedené dimenze, které lze použít k filtrování metrik kvót:
 
-| Rozměr | Metriky dostupné s | Popis |
+| Rozměr | Metriky dostupné s | Description |
 | ---- | ---- | ---- |
 | Název clusteru | Všechny metriky kvót | Název výpočetní instance. |
 | Název rodiny virtuálních počítačů | Procento využití kvóty | Název rodiny virtuálních počítačů, kterou cluster používá. |
@@ -166,14 +166,14 @@ Níže jsou uvedené dimenze, které lze použít k filtrování metrik kvót:
 
 **Prostředek**
 
-| Metrika | Jednotka | Popis |
+| Metrika | Jednotka | Description |
 | ----- | ----- | ----- |
 | CpuUtilization | Procento | Kolik procent procesoru bylo využito pro daný uzel během běhu nebo úlohy. Tato metrika je publikována pouze v případě, že úloha běží na uzlu. Jedna úloha může používat jeden nebo více uzlů. Tato metrika je publikována na jeden uzel. |
 | GpuUtilization | Procento | Kolik procent GPU bylo využito pro daný uzel během běhu nebo úlohy. Jeden uzel může mít jeden nebo více GPU. Tato metrika je publikována na základě GPU na jeden uzel. |
 
 Níže jsou uvedené dimenze, které lze použít k filtrování metrik prostředků:
 
-| Rozměr | Popis |
+| Rozměr | Description |
 | ----- | ----- |
 | CreatedTime | |
 | DeviceId | ID zařízení (GPU) K dispozici pouze pro GpuUtilization. |
@@ -184,7 +184,7 @@ Níže jsou uvedené dimenze, které lze použít k filtrování metrik prostře
 
 Informace o spuštěných školicích kurzech.
 
-| Metrika | Jednotka | Popis |
+| Metrika | Jednotka | Description |
 | ----- | ----- | ----- |
 | Dokončená spuštění | Počet | Počet dokončených spuštění. |
 | Neúspěšná spuštění | Počet | Počet neúspěšných spuštění. |
@@ -192,7 +192,7 @@ Informace o spuštěných školicích kurzech.
 
 Níže jsou uvedené dimenze, které lze použít k filtrování metrik spuštění:
 
-| Rozměr | Popis |
+| Rozměr | Description |
 | ---- | ---- |
 | ComputeType | Typ výpočtu, který se používá. |
 | PipelineStepType | Typ [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py&preserve-view=true) použitý v běhu. |

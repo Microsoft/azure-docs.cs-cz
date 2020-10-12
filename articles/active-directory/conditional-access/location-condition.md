@@ -13,10 +13,10 @@ ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88055373"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Použití podmínky umístění v zásadách podmíněného přístupu 
@@ -80,7 +80,7 @@ Pokud máte nakonfigurované důvěryhodné IP adresy, zobrazí se v seznamu um�
 
 ### <a name="skipping-multi-factor-authentication"></a>Přeskakuje se Multi-Factor Authentication
 
-Na stránce nastavení služby Multi-Factor Authentication Service můžete identifikovat uživatele firemní sítě intranet tak, že **pro žádosti od federovaných uživatelů v mém intranetu vyberete přeskočit vícefaktorové ověřování**. Toto nastavení indikuje, že deklarace identity uvnitř podnikové sítě, která je vydaná AD FS, by měla být důvěryhodná a slouží k identifikaci uživatele jako v podnikové síti. Další informace najdete v tématu [Povolení funkce důvěryhodných IP adres pomocí podmíněného přístupu](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
+Na stránce nastavení služby Multi-Factor Authentication Service můžete identifikovat uživatele firemní sítě intranet tak, že  **pro žádosti od federovaných uživatelů v mém intranetu vyberete přeskočit vícefaktorové ověřování**. Toto nastavení indikuje, že deklarace identity uvnitř podnikové sítě, která je vydaná AD FS, by měla být důvěryhodná a slouží k identifikaci uživatele jako v podnikové síti. Další informace najdete v tématu [Povolení funkce důvěryhodných IP adres pomocí podmíněného přístupu](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
 
 Po zaškrtnutí této možnosti, včetně pojmenovaného umístění, **důvěryhodných IP adres MFA** budou platit pro všechny zásady s vybranou možností.
 

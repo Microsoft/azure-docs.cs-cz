@@ -4,10 +4,10 @@ description: Toto téma obsahuje odpovědi na živé video analýzy na základě
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 705c74b1ba6d3a28911185b82a558099e87dc18d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87011511"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
@@ -27,7 +27,7 @@ Jaké jsou systémové proměnné, které se dají použít v definici topologie
 ## <a name="configuration-and-deployment"></a>Konfigurace a nasazení
 
 Můžu modul Media Edge nasadit do zařízení s Windows 10?
-    * Yes. Podívejte se na článek o [kontejnerech Linux ve Windows 10](/virtualization/windowscontainers/deploy-containers/linux-containers).
+    * Ano. Podívejte se na článek o [kontejnerech Linux ve Windows 10](/virtualization/windowscontainers/deploy-containers/linux-containers).
 
 ## <a name="capture-from-ip-camera-and-rtsp-settings"></a>Zachytit z kamery IP a nastavení protokolu RTSP
 
@@ -39,16 +39,16 @@ Můžu modul Media Edge nasadit do zařízení s Windows 10?
 * Můžu u instance grafu resetovat nebo aktualizovat adresu URL zdroje RTSP?
     * Ano, pokud je instance grafu v neaktivním stavu.  
 * Je k dispozici simulátor RTSP pro použití při testování a vývoji?
-    * Yes. K dispozici je modul Edge [simulátoru RTSP](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) pro použití v rychlém startu a kurzech pro podporu procesu učení. Při poskytování tohoto modulu se snažíme všem maximálně vyhovět, ale ne vždy musí být dostupný. Důrazně doporučujeme, abyste tuto dobu nepoužívali déle než několik hodin. Než začnete vytvářet plány nasazení v produkčním prostředí, měli byste investovat do testování s vaším skutečným zdrojem RTSP.
+    * Ano. K dispozici je modul Edge [simulátoru RTSP](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) pro použití v rychlém startu a kurzech pro podporu procesu učení. Při poskytování tohoto modulu se snažíme všem maximálně vyhovět, ale ne vždy musí být dostupný. Důrazně doporučujeme, abyste tuto dobu nepoužívali déle než několik hodin. Než začnete vytvářet plány nasazení v produkčním prostředí, měli byste investovat do testování s vaším skutečným zdrojem RTSP.
 * Podporujete zjišťování ONVIF IP kamer na hraničních zařízeních?
     * Ne, zjišťování ONVIF na hraničních zařízeních se nepodporuje.
 
 ## <a name="streaming-and-playback"></a>Streamování a přehrávání
 
 * Můžou se prostředky zaznamenané do AMS z Edge přehrát zpátky pomocí Media Services technologie streamování, jako je HLS nebo POMLČKa?
-    * Yes. Nahrané prostředky mohou být streamované jako jakékoli jiné prostředky v Azure Media Services. Pokud chcete streamovat obsah, musíte mít vytvořený koncový bod streamování a ve stavu spuštěno. Pomocí standardního procesu vytváření lokátoru streamování získáte přístup k HLS nebo POMLČKám manifest pro streamování do libovolných rozhraní přehrávače, které podporuje. Podrobnosti o vytváření publikovaných manifestů HLS nebo SPOJOVNÍKů naleznete v tématu [dynamické balení](../latest/dynamic-packaging-overview.md).
+    * Ano. Nahrané prostředky mohou být streamované jako jakékoli jiné prostředky v Azure Media Services. Pokud chcete streamovat obsah, musíte mít vytvořený koncový bod streamování a ve stavu spuštěno. Pomocí standardního procesu vytváření lokátoru streamování získáte přístup k HLS nebo POMLČKám manifest pro streamování do libovolných rozhraní přehrávače, které podporuje. Podrobnosti o vytváření publikovaných manifestů HLS nebo SPOJOVNÍKů naleznete v tématu [dynamické balení](../latest/dynamic-packaging-overview.md).
 * Můžu u archivovaného assetu použít standardní ochranu obsahu a funkce DRM Media Services?
-    * Yes. Veškerá standardní funkce Ochrana obsahu a DRM v dynamickém šifrování je k dispozici pro použití na assetech zaznamenaných z mediálního grafu.
+    * Ano. Veškerá standardní funkce Ochrana obsahu a DRM v dynamickém šifrování je k dispozici pro použití na assetech zaznamenaných z mediálního grafu.
 * Jaké přehrávače můžu použít k zobrazení obsahu ze zaznamenaných assetů?
    * Podporují se všechny standardní přehrávače podporující rozhraní Apple HTTP Live Streaming (HLS) verze 3 nebo verze 4. Kromě toho se podporuje i jakýkoli přehrávač, který podporuje přehrávání kompatibilní se standardem MPEG-SPOJOVNÍK.
     Mezi Doporučené přehrávače pro testování patří:

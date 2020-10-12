@@ -1,7 +1,7 @@
 ---
-title: 'Průměrná hodnota Perceptron se dvěma třídami: odkaz na modul'
+title: 'Two-Class Averageed Perceptron: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat Perceptron modul s průměrem dvou tříd v Azure Machine Learning k vytvoření modelu Machine Learning založeného na průměrném algoritmu Perceptron.
+description: Naučte se, jak pomocí modulu Two-Class Averageed Perceptron v Azure Machine Learning vytvořit model strojového učení založený na průměrném algoritmu Perceptron.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 3e5351ed2d400e0b1a10a913bb62391851030053
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907753"
 ---
-# <a name="two-class-averaged-perceptron-module"></a>Průměrný Perceptron modul se dvěma třídami
+# <a name="two-class-averaged-perceptron-module"></a>Two-Class Averageed – modul Perceptron
 
 Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
@@ -30,7 +30,7 @@ Tento algoritmus klasifikace je metoda učení pod dohledem a vyžaduje *datovou
 
 Jednodušší modely Perceptron jsou vhodné pro učení lineárních oddělitelných vzorů, zatímco sítě neuronové (hlavně neuronové sítě) můžou modelovat složitější hranice tříd. Perceptrons jsou ale rychlejší a protože zpracovávají případy v sériovém případě, perceptrons se dají použít s průběžným školením.
 
-## <a name="how-to-configure-two-class-averaged-perceptron"></a>Jak nakonfigurovat průměrnou Perceptroni dvou tříd
+## <a name="how-to-configure-two-class-averaged-perceptron"></a>Jak nakonfigurovat Two-Class Averageed Perceptron
 
 1.  Do vašeho kanálu přidejte **Perceptron modul průměrně se dvěma třídami** .  
 

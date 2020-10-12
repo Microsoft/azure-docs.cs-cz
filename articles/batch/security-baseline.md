@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 1eb24871817f365efe58b8e687563727df74493c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400972"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Základní hodnoty zabezpečení Azure pro Batch
@@ -366,7 +366,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Zodpovědnost**: zákazník
 
-### <a name="34-utilize-single-sign-on-sso-with-azure-active-directory"></a>3,4: Využijte jednotné přihlašování (SSO) s Azure Active Directory
+### <a name="34-utilize-single-sign-on-sso-with-azure-active-directory"></a>3,4: Využijte jednotné Sign-On (SSO) s Azure Active Directory
 
 **Doprovodné**materiály: nejde použít, ale Azure Batch podporuje ověřování Azure AD, jednotné přihlašování se nepodporuje.
 
@@ -1135,7 +1135,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a spravovaných klíčů zákazníků.
 
-**Doprovodné**materiály: pokud se Azure Key Vault používá k ukládání klíčů souvisejících s účty úložiště Azure Batch fondu, povolte v Azure Key Vault obnovitelné odstranění, abyste chránili klíče před náhodným nebo úmyslným odstraněním.
+**Doprovodné**materiály: pokud se Azure Key Vault používá k ukládání klíčů souvisejících s účty úložiště Azure Batch fondu, povolte Soft-Delete v Azure Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
 Jak povolit obnovitelné odstranění v Azure Key Vault:
 

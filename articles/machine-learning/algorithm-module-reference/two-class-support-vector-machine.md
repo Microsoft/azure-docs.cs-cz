@@ -1,5 +1,5 @@
 ---
-title: 'Podpora dvou tříd – vektorový počítač: odkaz na modul'
+title: 'Two-Class podporuje vektorový počítač: odkaz na modul'
 titleSuffix: Azure Machine Learning
 description: Naučte se používat modul **vektorového počítače podpory dvou tříd** v Azure Machine Learning k vytvoření modelu, který je založený na algoritmu podpory vektorového počítače.
 services: machine-learning
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 1dc2f8bdf6ed2823b44d25bdf65766b1f7ae060c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907666"
 ---
-# <a name="two-class-support-vector-machine-module"></a>Modul Vector Machine Support pro dvě třídy
+# <a name="two-class-support-vector-machine-module"></a>Two-Class podporuje modul Vector Machine
 
 Tento článek popisuje modul v Návrháři Azure Machine Learning.
 

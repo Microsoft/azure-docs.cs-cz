@@ -1,5 +1,5 @@
 ---
-title: Konfigurace nástroje pro vyrovnávání zatížení jen pro odchozí
+title: Konfigurace nástroje pro vyrovnávání zatížení – pouze odchozí
 titleSuffix: Azure Load Balancer
 description: V tomto článku se dozvíte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí odchozího překladu adres (NAT).
 services: load-balancer
@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
 ms.openlocfilehash: b44f626546b313299701687157b37b7df021bd61
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88038205"
 ---
-# <a name="outbound-only-load-balancer-configuration"></a>Konfigurace nástroje pro vyrovnávání zatížení jen pro odchozí
+# <a name="outbound-only-load-balancer-configuration"></a>Konfigurace nástroje pro vyrovnávání zatížení – pouze odchozí
 
 Použijte kombinaci interních a externích nástrojů pro vyrovnávání zatížení k vytvoření odchozího připojení pro virtuální počítače za interním nástrojem pro vyrovnávání zatížení. 
 
@@ -63,7 +63,7 @@ Vytvořte virtuální počítač v nové virtuální síti.
 
 1. [Přihlaste se](https://portal.azure.com) na web Azure Portal.
 
-2. V levém horním rohu obrazovky vyberte **vytvořit prostředek > síť > virtuální síť** nebo ve vyhledávacím poli vyhledejte **virtuální síť** .
+2. V levém horním rohu obrazovky vyberte **Vytvořit prostředek > Sítě > Virtuální síť** nebo do vyhledávacího pole zadejte **Virtuální síť**.
 
 2. V části **vytvořit virtuální síť**zadejte nebo vyberte tyto informace na kartě **základy** :
 
@@ -71,9 +71,9 @@ Vytvořte virtuální počítač v nové virtuální síti.
     |------------------|-----------------------------------------------------------------|
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Vyberte své předplatné Azure.                                  |
-    | Skupina prostředků   | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Zadejte **myResourceGroupLB**. </br> Vyberte **OK**. |
-    | **Podrobnosti instance** |                                                                 |
-    | Název             | Zadejte **myVNet**                                    |
+    | Resource Group   | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Zadejte **myResourceGroupLB**. </br> Vyberte **OK**. |
+    | **Podrobnosti o instancích** |                                                                 |
+    | Name             | Zadejte **myVNet**                                    |
     | Oblast           | Vyberte **východní USA 2** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
@@ -82,7 +82,7 @@ Vytvořte virtuální počítač v nové virtuální síti.
 
     | Nastavení            | Hodnota                      |
     |--------------------|----------------------------|
-    | Adresní prostor IPv4 | Zadejte **10.1.0.0/16** |
+    | Adresní prostor protokolu IPv4 | Zadejte **10.1.0.0/16** |
 
 5. V části **název podsítě**vyberte slovo **výchozí**.
 
@@ -120,8 +120,8 @@ Vytvořte virtuální počítač v nové virtuální síti.
     |-----------------------|----------------------------------|
     | **Podrobnosti o projektu** |  |
     | Předplatné | Vyberte své předplatné Azure. |
-    | Skupina prostředků | Vybrat **myResourceGroupLB** |
-    | **Podrobnosti instance** |  |
+    | Resource Group | Vybrat **myResourceGroupLB** |
+    | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM** |
     | Oblast | Vyberte **východní USA 2** |
     | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury** . |
@@ -131,10 +131,10 @@ Vytvořte virtuální počítač v nové virtuální síti.
     | **Účet správce** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno. |
     | Heslo | Zadat heslo |
-    | Potvrzení hesla | Zadejte znovu heslo. |
-    | **Pravidla portů pro příchozí provoz** |  |
+    | Potvrzení hesla | Znovu zadejte heslo. |
+    | **Pravidla portů pro příchozí spojení** |  |
     | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů** . |
-    | Vybrat příchozí porty | Vybrat **RDP (3389)** |
+    | Vyberte příchozí porty | Vybrat **RDP (3389)** |
 
 3. Vyberte kartu **síť** nebo vyberte **Další: disky**a **Další: síť**.
   
@@ -179,9 +179,9 @@ Přidejte vytvořený virtuální počítač do fondu back-end každého.  Pak n
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Předplatné               | Vyberte předplatné.    |    
+    | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **myResourceGroupLB** vytvořené v předchozím kroku.|
-    | Název                   | Zadejte **myInternalLoadBalancer**                                   |
+    | Name                   | Zadejte **myInternalLoadBalancer**                                   |
     | Oblast         | Vyberte **USA – východ 2**.                                        |
     | Typ          | Vyberte **interní**.                                        |
     | SKU           | Vybrat **Standard** |
@@ -201,9 +201,9 @@ Přidejte vytvořený virtuální počítač do fondu back-end každého.  Pak n
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Předplatné               | Vyberte předplatné.    |    
+    | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte **myResourceGroupLB** .|
-    | Název                   | Zadejte **myPublicLoadBalancer**                                   |
+    | Name                   | Zadejte **myPublicLoadBalancer**                                   |
     | Oblast         | Vyberte **USA – východ 2**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
     | SKU           | Vybrat **Standard** |

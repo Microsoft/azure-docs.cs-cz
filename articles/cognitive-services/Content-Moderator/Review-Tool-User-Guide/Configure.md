@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84689839"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurace nástroje pro recenze
@@ -111,7 +111,7 @@ Karta **pracovní postupy** vám umožní spravovat [pracovní postupy](../revie
 
 ![Nastavení pracovního postupu Content Moderator](images/settings-5-workflows.png)
 
-## <a name="credentials"></a>Přihlašovací údaje
+## <a name="credentials"></a>Credentials
 
 Karta **pověření** poskytuje rychlý přístup k vašemu Content moderator klíč předplatného, který budete potřebovat k přístupu ke všem službám pro moderování z volání REST nebo klientské sady SDK.
 

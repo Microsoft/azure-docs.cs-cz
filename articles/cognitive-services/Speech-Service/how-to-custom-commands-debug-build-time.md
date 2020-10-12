@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: 9c84b35318637f5b89e6c88c0ebb3fd6616533fc
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86023121"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>Ladění chyb při vytváření vlastní aplikace příkazů
@@ -48,7 +48,7 @@ Při použití nemůžete odstranit parametr. Odeberte všechny odkazy na parame
 Při použití nemůžete odstranit webový koncový bod. Před odebráním webového koncového bodu odeberte akci pro **webový koncový bod volání** , která používá tento koncový bod webu.
 
 ## <a name="errors-when-training-an-application"></a>Chyby při školení aplikace
-### <a name="built-in-intents"></a>Předdefinované záměry
+### <a name="built-in-intents"></a>Built-In záměry
 LUIS má integrované záměry ano/ne. V případě ukázkových vět, které mají pouze "Ano", "ne" by školení nevyhovělo. 
 
 | Klíčové slovo | Odchylky | 

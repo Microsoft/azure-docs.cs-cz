@@ -4,10 +4,10 @@ description: Popis prostředků koncového bodu v manifestu služby, včetně po
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.openlocfilehash: c0c3c45c47447390901e5e0d60e77ab6b85a6a0d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91354755"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Určení prostředků v manifestu služby
@@ -198,7 +198,7 @@ Do pole níže přidejte následující parametry:
   </Parameters>
 ```
 
-Při nasazování aplikace můžete tyto hodnoty předat jako ApplicationParameters.  Příklad:
+Při nasazování aplikace můžete tyto hodnoty předat jako ApplicationParameters.  Například:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
@@ -206,7 +206,7 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 Poznámka: Pokud je hodnota zadaná pro daný ApplicationParameter prázdná, vrátíme se k výchozí hodnotě poskytnuté v ServiceManifest pro odpovídající koncový bod.
 
-Příklad:
+Například:
 
 Pokud jste zadali ServiceManifest
 

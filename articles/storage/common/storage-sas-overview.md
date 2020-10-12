@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.openlocfilehash: b9882168cd063cb4448269cc6a4949778fe93fb1
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88509854"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)
@@ -80,7 +80,7 @@ Token SAS je řetězec, který vygenerujete na straně klienta, například pomo
 
 Pokud klientská aplikace poskytne identifikátor URI SAS pro Azure Storage v rámci žádosti, služba zkontroluje parametry a signaturu SAS a ověří, zda je platný pro autorizaci žádosti. Pokud služba ověřuje, zda je podpis platný, je žádost autorizována. V opačném případě je požadavek odmítnut s kódem chyby 403 (zakázáno).
 
-Tady je příklad identifikátoru URI SAS služby, který ukazuje identifikátor URI prostředku a token SAS:
+Tady je příklad identifikátoru URI služby SAS, ve kterém je vidět identifikátor URI prostředku a token SAS:
 
 ![Součásti identifikátoru URI SAS služby](./media/storage-sas-overview/sas-storage-uri.png)
 

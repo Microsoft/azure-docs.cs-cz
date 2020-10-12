@@ -4,10 +4,10 @@ description: Přečtěte si o mechanismu Aktualizace existujícího přiřazení
 ms.date: 08/27/2020
 ms.topic: how-to
 ms.openlocfilehash: ddaac8110885d817bc96745965c1af7e522b1919
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651368"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak aktualizovat existující přiřazení podrobného plánu
@@ -20,7 +20,7 @@ Při přiřazení podrobného plánu se přiřazení dá aktualizovat. Existuje 
 
 ## <a name="updating-assignments"></a>Aktualizace přiřazení
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
 1. Na levé straně vyberte **přiřazené plány** .
 
@@ -32,11 +32,11 @@ Při přiřazení podrobného plánu se přiřazení dá aktualizovat. Existuje 
 
 1. Na stránce aktualizované Podrobnosti přiřazení se podívejte na nový stav. V tomto příkladu jsme přidali **uzamykání** k přiřazení.
 
-   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Snímek obrazovky aktualizovaného přiřazení podrobného plánu ukazující změnu režimu zámku" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Snímek stránky přiřazení podrobného plánu se zvýrazněným tlačítkem aktualizovat přiřazení" border="false":::
 
 1. Prozkoumejte podrobnosti o dalších **operacích přiřazení** pomocí rozevíracího seznamu. Tabulka s aktualizacemi **spravovaných prostředků** podle vybrané operace přiřazení
 
-   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Snímek obrazovky aktualizovaného přiřazení podrobného plánu znázorňující operace přiřazení a jejich stav" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Snímek stránky přiřazení podrobného plánu se zvýrazněným tlačítkem aktualizovat přiřazení" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>Pravidla aktualizace přiřazení
 

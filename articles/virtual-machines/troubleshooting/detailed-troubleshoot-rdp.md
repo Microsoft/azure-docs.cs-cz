@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 91f15e32866cca008553286f7585247909d9a4ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87009862"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Podrobné kroky pro řešení problémů s připojením ke vzdálené ploše virtuálních počítačů s Windows v Azure
@@ -38,7 +38,7 @@ Připojení RDP se účastní tyto komponenty:
 
 ![Diagram znázorňující součásti, které jsou součástí připojení vzdálené plochy (RDP).](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
 
-Než budete pokračovat, může to znamenat, že se od posledního úspěšného připojení vzdálené plochy k virtuálnímu počítači může zobrazit co nejdřív. Příklad:
+Než budete pokračovat, může to znamenat, že se od posledního úspěšného připojení vzdálené plochy k virtuálnímu počítači může zobrazit co nejdřív. Například:
 
 * Změnila se veřejná IP adresa virtuálního počítače nebo cloudové služby, která obsahuje virtuální počítač (označovaný také jako [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)virtuální IP adresa). Selhání protokolu RDP může být způsobeno tím, že mezipaměť klienta DNS má stále zaregistrovanou *starou IP adresu* pro název DNS. Vyprázdněte mezipaměť klienta DNS a zkuste znovu připojit virtuální počítač. Nebo se zkuste připojit přímo k nové virtuální IP adrese.
 * Používáte aplikaci třetí strany ke správě připojení ke vzdálené ploše místo použití připojení vygenerovaného Azure Portal. Ověřte, že konfigurace aplikace zahrnuje správný port TCP pro přenosy vzdálené plochy. Tento port můžete pro klasický virtuální počítač v [Azure Portal](https://portal.azure.com)ověřit kliknutím na nastavení virtuálního počítače > koncové body.
@@ -193,7 +193,7 @@ Exit-PSSession
 
 Ověřte, že koncový bod vzdálené plochy pro virtuální počítač Azure používá také port TCP 3398 jako svůj interní port. Restartujte virtuální počítač Azure a pokuste se znovu připojit ke vzdálené ploše.
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 [Postup resetování hesla nebo služby Vzdálená plocha pro virtuální počítače s Windows](./reset-rdp.md)
 
 [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/)

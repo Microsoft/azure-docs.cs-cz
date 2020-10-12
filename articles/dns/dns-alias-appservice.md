@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
 ms.openlocfilehash: e7c4db7a2fc3ba931415e3b167f7fe72ee2b3980
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710537"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Webové aplikace Azure s vyrovnáváním zatížení hostitele ve vrcholu zóny
@@ -45,8 +45,8 @@ Vytvořte dva plány Web App Service ve skupině prostředků pomocí následuj�
 
 |Name  |Operační systém  |Umístění  |Cenová úroveň  |
 |---------|---------|---------|---------|
-|ASP – 01     |Windows|USA – východ|Vývoj/testování D1 – Shared|
-|ASP-02     |Windows|USA – střed|Vývoj/testování D1 – Shared|
+|ASP – 01     |Windows|East US|D1-Shared pro vývoj a testování|
+|ASP-02     |Windows|Střední USA|D1-Shared pro vývoj a testování|
 
 ## <a name="create-app-services"></a>Vytvořit App Services
 
@@ -58,10 +58,10 @@ Vytvořte dvě webové aplikace, jednu v každém plánu App Service.
 4. Vyberte **Vytvořit**.
 5. Přijměte výchozí hodnoty a pomocí následující tabulky nakonfigurujte dvě webové aplikace:
 
-   |Name<br>(musí být jedinečné v rámci. azurewebsites.net)|Skupina prostředků |Zásobník modulu runtime|Oblast|App Service plán/umístění
+   |Name<br>(musí být jedinečné v rámci. azurewebsites.net)|Resource Group |Zásobník modulu runtime|Oblast|App Service plán/umístění
    |---------|---------|-|-|-------|
-   |App – 01|Použít existující<br>Vyberte skupinu prostředků.|.NET Core 2.2|USA – východ|ASP-01 (D1)|
-   |App-02|Použít existující<br>Vyberte skupinu prostředků.|.NET Core 2.2|USA – střed|ASP-02 (D1)|
+   |App – 01|Použít existující<br>Vyberte skupinu prostředků.|.NET Core 2.2|East US|ASP-01 (D1)|
+   |App-02|Použít existující<br>Vyberte skupinu prostředků.|.NET Core 2.2|Střední USA|ASP-02 (D1)|
 
 ### <a name="gather-some-details"></a>Shromáždit nějaké podrobnosti
 
@@ -84,13 +84,13 @@ Nyní můžete vytvořit koncové body pro tyto dvě webové aplikace.
 
 1. Otevřete skupinu prostředků a vyberte profil Traffic Manager.
 2. V levém sloupci vyberte **koncové body**.
-3. Vyberte možnost **Přidat**.
+3. Vyberte **Přidat**.
 4. Pro konfiguraci koncových bodů použijte následující tabulku:
 
    |Typ  |Name  |Cíl  |Umístění  |Vlastní nastavení hlaviček|
    |---------|---------|---------|---------|---------|
-   |Externí koncový bod     |Konec – 01|IP adresa, kterou jste si poznamenali pro App-01|USA – východ|provoz\<the URL you recorded for App-01\><br>Příklad: **Host: App-01.azurewebsites.NET**|
-   |Externí koncový bod     |Konec-02|IP adresa, kterou jste si poznamenali pro App-02|USA – střed|provoz\<the URL you recorded for App-02\><br>Příklad: **Host: App-02.azurewebsites.NET**
+   |Externí koncový bod     |Konec – 01|IP adresa, kterou jste si poznamenali pro App-01|East US|provoz\<the URL you recorded for App-01\><br>Příklad: **Host: App-01.azurewebsites.NET**|
+   |Externí koncový bod     |Konec-02|IP adresa, kterou jste si poznamenali pro App-02|Střední USA|provoz\<the URL you recorded for App-02\><br>Příklad: **Host: App-02.azurewebsites.NET**
 
 ## <a name="create-dns-zone"></a>Vytvořit zónu DNS
 
@@ -104,7 +104,7 @@ Když do svých webových aplikací přidáte vlastní název hostitele, bude vy
 2. Vyberte **Sada záznamů**.
 3. Přidejte sadu záznamů pomocí následující tabulky. Pro tuto hodnotu použijte skutečnou adresu URL webové aplikace, kterou jste předtím nahráli:
 
-   |Name  |Typ  |Hodnota|
+   |Název  |Typ  |Hodnota|
    |---------|---------|-|
    |@     |TXT|App-01.azurewebsites.net|
 
@@ -132,7 +132,7 @@ Nyní přidejte záznam aliasu pro vrchol zóny.
 2. Vyberte **Sada záznamů**.
 3. Přidejte sadu záznamů pomocí následující tabulky:
 
-   |Name  |Typ  |Sada záznamů aliasů  |Typ aliasu  |Prostředek Azure|
+   |Název  |Typ  |Sada záznamů aliasů  |Typ aliasu  |Prostředek Azure|
    |---------|---------|---------|---------|-----|
    |@     |A|Yes|Prostředek Azure|Traffic Manager – váš profil|
 

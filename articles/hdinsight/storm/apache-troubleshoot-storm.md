@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84700361"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Řešení potíží s Apache Storm pomocí Azure HDInsight
@@ -165,7 +165,7 @@ Konfigurace Log4J správce je načítána z `/usr/hdp/\<HDP version>/storm/log4j
 
 Konfigurační soubor Work Log4J je načten z `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml` .
 
-4.6`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
+4.6 `/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
 
 ---

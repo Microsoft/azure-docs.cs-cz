@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
 ms.openlocfilehash: 9f5b535a341956e5675ba96ba9570bd3f2ff3443
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710945"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Použití dynamického DNS k registraci názvů hostitelů na vlastním serveru DNS
@@ -35,7 +35,7 @@ Klienti systému Windows připojené k doméně registrují své IP adresy s řa
 ## <a name="linux-clients"></a>Klienti Linux
 Klienti se systémem Linux se většinou neregistrují společně se serverem DNS při spuštění, předpokládá, že je server DHCP. Servery DHCP v Azure nemají přihlašovací údaje k registraci záznamů na serveru DNS. K odeslání aktualizací DDNS můžete použít nástroj s názvem `nsupdate` , který je součástí balíčku BIND. Vzhledem k tomu, že je protokol DDNS standardizovaný, můžete použít `nsupdate` i v případě, že na serveru DNS nepoužíváte BIND.
 
-K vytvoření a údržbě položky hostname na serveru DNS můžete použít zavěšení, které poskytuje klient DHCP. V průběhu cyklu DHCP klient spustí skripty v */etc/DHCP/dhclient-Exit-Hooks.d/*. K registraci nové IP adresy můžete použít háky pomocí `nsupdate` . Příklad:
+K vytvoření a údržbě položky hostname na serveru DNS můžete použít zavěšení, které poskytuje klient DHCP. V průběhu cyklu DHCP klient spustí skripty v */etc/DHCP/dhclient-Exit-Hooks.d/*. K registraci nové IP adresy můžete použít háky pomocí `nsupdate` . Například:
 
 ```bash
 #!/bin/sh

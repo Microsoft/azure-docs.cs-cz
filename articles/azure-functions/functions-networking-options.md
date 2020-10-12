@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 4/11/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530080"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
@@ -74,7 +74,7 @@ Další informace najdete v tématu [požadavky na účet úložiště](./functi
 
 ## <a name="use-key-vault-references"></a>Použití odkazů na službu Key Vault
 
-Můžete použít Azure Key Vault odkazy na používání tajných kódů z Azure Key Vault v aplikaci Azure Functions bez nutnosti změny kódu. Azure Key Vault je služba, která poskytuje centralizovanou správu tajných kódů s úplnou kontrolou zásad přístupu a historie auditu.
+Můžete použít Azure Key Vault odkazy na používání tajných kódů z Azure Key Vault v aplikaci Azure Functions bez nutnosti změny kódu. Azure Key Vault je služba, která poskytuje centralizovanou správu tajných kódů s plnou kontrolou zásad přístupu a historií auditu.
 
 V současné době [Key Vault odkazy](../app-service/app-service-key-vault-references.md) nebudou fungovat, pokud je Trezor klíčů zabezpečený pomocí koncových bodů služby. Pokud se chcete připojit k trezoru klíčů pomocí integrace virtuální sítě, musíte volat Key Vault v kódu aplikace.
 

@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84707272"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Přesun dat ze SAP Business Warehouse pomocí Azure Data Factory
@@ -66,7 +66,7 @@ Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 server | Název serveru, na kterém se nachází instance SAP BW. | řetězec | Yes
 systemNumber | Číslo systému SAP BW systému | Desítkové číslo se dvěma číslicemi reprezentované jako řetězec. | Yes
 clientId | ID klienta klienta v systému SAP W. | Desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Yes
-uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Yes
+username | Jméno uživatele, který má přístup k serveru SAP | řetězec | Yes
 heslo | Heslo pro tohoto uživatele. | řetězec | Yes
 gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP BW | řetězec | Yes
 encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetězec | No
@@ -293,10 +293,10 @@ Datový typ ve slovníku ABAP | .NET – datový typ
 ACCP |  Int
 CHAR | Řetězec
 CLNT | Řetězec
-CURR | Desetinné číslo
+CURR | Decimal
 CUKY | Řetězec
-18.12 | Desetinné číslo
-FLTP | Double
+18.12 | Decimal
+FLTP | dvojité
 INT1 | Byte
 INT2 | Int16
 INT4 | Int
@@ -304,7 +304,7 @@ JAZYK | Řetězec
 LCHR | Řetězec
 LRAW | Byte []
 PREC | Int16
-QUAN | Desetinné číslo
+QUAN | Decimal
 ZÍSKÁNÍ | Byte []
 RAWSTRING | Byte []
 ŘETEZCE | Řetězec

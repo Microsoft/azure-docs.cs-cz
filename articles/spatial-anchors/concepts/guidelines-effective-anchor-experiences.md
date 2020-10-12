@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 1877934cb604d140d7700c2e537d6dc187b63cc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83005530"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Vytvoření efektivního prostředí pro kotvu pomocí prostorových kotev Azure
@@ -76,7 +76,7 @@ Podobně v prostředích, kde se vizuální funkce mění, protože většina ob
 
 V mnoha případech je kotva vstupním bodem pro prostředí vaší aplikace. Budete chtít rychle a spolehlivě projít tento krok, aby mohli uživatelé zadat své prostředí. Doba útraty, jak budou uživatelé najít vaše kotvy, je důležitým krokem pro návrh. Je vhodné si představit, jak najít kotvy v rámci dvou hlavních scénářů: *cílů* a *místností*.
 
-### <a name="targets"></a>Cíle
+### <a name="targets"></a>Targets
 
 V cílovém scénáři je umístění kotvy dobře známé. Například v aplikaci pro malování s fiktivní hybridní realitou si jeden uživatel umístí virtuální plátno na zeď. Dává ostatním uživatelům v místnosti pokyn, aby svá zařízení odkazovali na stejné místo na zdi, aby nalezla kotvu a zahájila prostředí.
 

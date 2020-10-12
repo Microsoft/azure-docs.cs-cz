@@ -4,10 +4,10 @@ description: Naučte se používat cvičení Azure DevTest Labs v rámci kanál�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8a5d35a541e079b7d39cae2ec43da608274533f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85481064"
 ---
 # <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Integrace Azure DevTest Labs a Azure DevOps
@@ -40,7 +40,7 @@ Pro agenty sestavení je schopnost testovacího prostředí omezit přístup a s
 ### <a name="test"></a>Test 
 DevTest Labs umožňuje kanálu CI/CD automatizovat vytváření prostředků Azure (virtuálních počítačů, prostředí), které se dají použít k automatizovanému a ručnímu testování. Virtuální počítače by se vytvořily pomocí artefaktů nebo vzorců, které používají informace z procesu sestavení k vytvoření různých vlastních konfigurací nezbytných pro testování.   
 
-### <a name="release"></a>Vydaná verze 
+### <a name="release"></a>Vydat 
 DevTest Labs se běžně používá pro ověření v oddílu Release před nasazením kódu. Je podobný testování v části sestavení. Produkční prostředky by se neměly nasazovat v rámci DevTest Labs. 
 
 ### <a name="customization"></a>Přizpůsobení 

@@ -5,10 +5,10 @@ services: automation
 ms.date: 08/10/2020
 ms.topic: article
 ms.openlocfilehash: 8767687f0b72d3469bef570770ac81fa8300097f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88055920"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>Monitorování runbooků s upozorněními metrik
@@ -46,7 +46,7 @@ Výstrahy umožňují definovat podmínku, kterou chcete monitorovat, a akci, kt
 
 3. V části **logika výstrahy**Definujte podmínku a prahovou hodnotu pro výstrahu. V části se zobrazí náhled definované podmínky.
 
-4. Pod položkou **vyhodnoceno na základě**vyberte časové rozpětí pro dotaz a jak často se má dotaz spouštět. Pokud například zvolíte **dobu**v intervalu **5 minut** za období a **každou 1 minutu** pro **frekvenci**, výstraha vyhledá počet sad Runbook, které splnily kritéria za posledních 5 minut. Tento dotaz se spouští každou minutu a jakmile se kritéria výstrahy, která jste definovali, už v okně 5 minut nenaleznou, výstraha se vyřeší sám. Jakmile budete hotovi, klikněte na **Hotovo**.
+4. Pod položkou **vyhodnoceno na základě**vyberte časové rozpětí pro dotaz a jak často se má dotaz spouštět. Pokud například zvolíte **dobu**v intervalu **5 minut** za období a **každou 1 minutu** pro **frekvenci**, výstraha vyhledá počet sad Runbook, které splnily kritéria za posledních 5 minut. Tento dotaz se spouští každou minutu a jakmile se kritéria výstrahy, která jste definovali, už v okně 5 minut nenaleznou, výstraha se vyřeší sám. Po dokončení klikněte na **Hotovo**.
 
    ![Vyberte prostředek pro výstrahu.](./media/automation-alert-activity-log/configure-signal-logic.png)
 

@@ -4,10 +4,10 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.openlocfilehash: abdc88ce15279b90f8f9dc05a38a2ae236498f12
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86058040"
 ---
 # <a name="date-functions-for-arm-templates"></a>Funkce data pro šablony ARM
@@ -74,7 +74,7 @@ Následující příklad šablony ukazuje různé způsoby přidávání časov�
 
 Je-li předchozí šablona nasazena se základním časem `2020-04-07 14:53:14Z` , je výstup:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | add3Years | Řetězec | 4/7/2023 2:53:14 ODP. |
 | subtract9Days | Řetězec | 3/29/2020 2:53:14 ODP. |
@@ -201,7 +201,7 @@ Následující příklad šablony ukazuje různé formáty hodnoty data a času.
 
 Výstup z výše uvedeného příkladu se u každého nasazení liší, ale bude vypadat přibližně takto:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | utcOutput | řetězec | 20190305T175318Z |
 | utcShortOutput | řetězec | 03/05/2019 |

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ecab82e43bff6c0d1d83c9c1cdc38cafd809e277
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236622"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>Řešení potíží s hybridními nasazeními klíčů zabezpečení FIDO2 ve službě Azure AD (Preview)
@@ -46,7 +46,7 @@ Pokud chcete začít s klíči zabezpečení FIDO2 a s hybridním přístupem k 
 
 Windows Hello Face je zamýšlené nejlepší prostředí pro zařízení, ve kterém je uživatel zaregistrovaný. Klíče zabezpečení FIDO2 jsou určené pro použití na sdílených zařízeních nebo na tom, kde registrace Windows Hello pro firmy je bariéra.
 
-Pokud Windows Hello Face brání uživatelům ve scénáři přihlášení k bezpečnostnímu klíči FIDO2, můžou uživatelé vypnout registraci obličeje tím, že v **nastavení > možnosti přihlášení**.
+Pokud Windows Hello Face brání uživatelům ve scénáři přihlášení k bezpečnostnímu klíči FIDO2, můžou uživatelé vypnout registraci obličeje tím, že v **nastavení > Sign-In možnosti**.
 
 ### <a name="users-arent-able-to-use-fido2-security-keys-immediately-after-they-create-a-hybrid-azure-ad-joined-machine"></a>Uživatelé nemůžou používat klíče zabezpečení FIDO2 hned po vytvoření hybridního počítače připojeného k Azure AD
 
@@ -86,9 +86,9 @@ Shromažďují se následující protokoly událostí a informace o klíči regi
 
 **Klíče registru**
 
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\FIDO [ \* ]*
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\PasswordForWork \* [ \* ]*
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Policies\PasswordForWork \* [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FIDO [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PasswordForWork\* [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Policies\PasswordForWork\* [ \* ]*
 
 **Diagnostické informace**
 

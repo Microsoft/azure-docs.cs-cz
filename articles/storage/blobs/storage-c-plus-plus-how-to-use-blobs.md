@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.openlocfilehash: 332d6da35af0eaae9d9d15258a152734f0a9eba6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88033627"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>Používání úložiště BLOB z C++
@@ -157,7 +157,7 @@ blob3.upload_text(U("other text"));
 Alternativně můžete použít metodu **upload_from_file** pro nahrání souboru do objektu blob bloku.
 
 ## <a name="how-to-list-the-blobs-in-a-container"></a>Postupy: výpis objektů BLOB v kontejneru
-Pokud chcete mít seznam objektů blob v kontejneru, nejdřív získejte odkaz na kontejner. Pak můžete použít metodu **list_blobs** kontejneru k načtení objektů BLOB a adresářů v ní. Chcete-li získat přístup k bohatě se sadou vlastností a metod vrácených **list_blob_item**, je nutné volat metodu **list_blob_item. as_blob** pro získání objektu **cloud_blob** nebo metody **list_blob. as_directory** pro získání objektu cloud_blob_directory. Následující kód ukazuje, jak načíst a vystavit výstup identifikátoru URI každé položky v kontejneru **My-Sample-Container** :
+Pokud chcete mít seznam objektů blob v kontejneru, nejdřív získejte odkaz na kontejner. Pak můžete použít metodu **list_blobs** kontejneru k načtení objektů BLOB a adresářů v ní. Chcete-li získat přístup k bohatě se sadou vlastností a metod vrácených **list_blob_item**, je nutné volat metodu **list_blob_item. as _blob** pro získání objektu  **cloud_blob** nebo metody **list_blob. as _directory** pro získání objektu cloud_blob_directory. Následující kód ukazuje, jak načíst a vystavit výstup identifikátoru URI každé položky v kontejneru **My-Sample-Container** :
 
 ```cpp
 // Retrieve storage account from connection string.

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 3aa33efa9aa416ad1dfefd2fe957ce04b2b14432
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86027456"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Přehled vědeckého zpracování dat pomocí Sparku v Azure HDInsight
@@ -50,9 +50,9 @@ Tyto poznámkové bloky se spouštějí v jádru pySpark3 serveru Jupyter notebo
 > [!NOTE]
 > Datová sada leteckých dat byla přidána do notebooků Spark 2,0, aby lépe ilustroval použití algoritmů klasifikace. V následujících odkazech najdete informace o datové sadě a počasí v době leteckého letu:
 > 
-> - Data o odchodu leteckých společností:[https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
+> - Data o odchodu leteckých společností: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
-> - Data o počasí z letiště:[https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
+> - Data o počasí z letiště: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
 
 <!-- -->
 

@@ -4,10 +4,10 @@ description: Poskytuje přehled zařízení Azure Migrate používaných při po
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.openlocfilehash: 028e0e5b0bbf83c08b5f9cd6d24d7914513ae89a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322253"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Architektura zařízení Azure Migrate
@@ -85,7 +85,7 @@ Zařízení komunikuje s vCenter servery a hostiteli nebo clustery Hyper-V pomoc
 
 Zařízení se upgraduje, protože Azure Migrate agenti, kteří běží na zařízení, se aktualizují. K tomu dochází automaticky, protože ve výchozím nastavení je na zařízení povolená Automatická aktualizace. Toto výchozí nastavení můžete změnit tak, aby se agenti aktualizovaly ručně.
 
-Automatickou aktualizaci vypnete v registru nastavením klíče HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance "AutoUpdate" na hodnotu 0 (DWORD).
+Automatickou aktualizaci vypnete v registru nastavením HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance klíč automatické aktualizace na hodnotu 0 (DWORD).
 
 
 ## <a name="next-steps"></a>Další kroky

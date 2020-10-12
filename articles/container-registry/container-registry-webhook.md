@@ -4,10 +4,10 @@ description: Naučte se, jak pomocí webhooků aktivovat události, když se akc
 ms.topic: article
 ms.date: 05/24/2019
 ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91253390"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Používání Azure Container Registry webhooků
@@ -23,7 +23,7 @@ Podrobnosti o požadavcích Webhooku najdete v tématu [Azure Container Registry
 
 ## <a name="create-webhook---azure-portal"></a>Vytvořit Webhook – Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte do registru kontejneru, ve kterém chcete vytvořit Webhook.
 1. V části **služby**vyberte **Webhooky**.
 1. Na panelu nástrojů Webhooku vyberte **Přidat** .
@@ -37,7 +37,7 @@ Podrobnosti o požadavcích Webhooku najdete v tématu [Azure Container Registry
 | Vlastní hlavičky | Hlavičky, které chcete předat spolu s požadavkem POST. Měly by být ve formátu "klíč: hodnota". |
 | Aktivační akce | Akce, které aktivují Webhook Akce zahrnují vložení obrázku, odstranění obrázku, vložení grafu Helm, odstranění grafu Helm a karanténu obrázku. Můžete vybrat jednu nebo více akcí pro aktivaci Webhooku. |
 | Status | Stav Webhooku po jeho vytvoření. Tato možnost je ve výchozím nastavení povolená. |
-| Obor | Rozsah, ve kterém Webhook pracuje. Pokud tento parametr nezadáte, bude obor pro všechny události v registru. Dá se zadat pro úložiště nebo značku pomocí formátu "úložiště: Značka" nebo "úložiště: *" pro všechny značky v úložišti. |
+| Rozsah | Rozsah, ve kterém Webhook pracuje. Pokud tento parametr nezadáte, bude obor pro všechny události v registru. Dá se zadat pro úložiště nebo značku pomocí formátu "úložiště: Značka" nebo "úložiště: *" pro všechny značky v úložišti. |
 
 Příklad formuláře Webhooku:
 
