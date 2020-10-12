@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a530a6f656f37657a198af85d93d5404ac88d0e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83651022"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrace úloh pomocí roztažené sítě vrstvy 2
@@ -154,11 +154,11 @@ Aby bylo možné vytvořit síť VPN založenou na trasách protokolu IPsec mezi
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Inzerování IP adresy rozhraní zpětné smyčky do sítě Underlay
 
-1. Vytvořte trasu s hodnotou null pro síť rozhraní zpětné smyčky. Přihlaste se ke Správci NSX-T a vyberte **sítě**  >  **Směrování**  >  **směrovače**směrování  >  **– LR**  >  **Routing**  >  **statické trasy**. Klikněte na tlačítko **Add** (Přidat). V poli **síť**zadejte IP adresu rozhraní zpětné smyčky. Pro **Další segmenty směrování**klikněte na **Přidat**, pro další segment směrování zadejte null a pro vzdálenost správce ponechte výchozí hodnotu 1.
+1. Vytvořte trasu s hodnotou null pro síť rozhraní zpětné smyčky. Přihlaste se ke Správci NSX-T a vyberte **sítě**  >  **Směrování**  >  **směrovače**směrování  >  **– LR**  >  **Routing**  >  **statické trasy**. Klikněte na **Přidat**. V poli **síť**zadejte IP adresu rozhraní zpětné smyčky. Pro **Další segmenty směrování**klikněte na **Přidat**, pro další segment směrování zadejte null a pro vzdálenost správce ponechte výchozí hodnotu 1.
 
     ![Přidat statickou trasu](media/l2vpn-routing-security01.png)
 
-2. Vytvoří seznam předpon IP adres. Přihlaste se ke Správci NSX-T a vyberte **sítě**  >  poskytovatel směrovače**Směrování směrování**  >  **Routers**  >  **–**  >  **Routing**  >  **seznamy předpon IP adres**směrování LR. Klikněte na tlačítko **Add** (Přidat). Zadejte název pro identifikaci seznamu. V případě **předpon**klikněte dvakrát na tlačítko **Přidat** . Do prvního řádku zadejte pro **akci** **Network** a Deny hodnotu 0.0.0.0/0. Ve druhém řádku vyberte možnost **kterákoli** pro **síť** a **Povolit** **akci**.
+2. Vytvoří seznam předpon IP adres. Přihlaste se ke Správci NSX-T a vyberte **sítě**  >  poskytovatel směrovače**Směrování směrování**  >  **Routers**  >  **–**  >  **Routing**  >  **seznamy předpon IP adres**směrování LR. Klikněte na **Přidat**. Zadejte název pro identifikaci seznamu. V případě **předpon**klikněte dvakrát na tlačítko **Přidat** . Do prvního řádku zadejte pro **akci** **Network** a Deny hodnotu 0.0.0.0/0. Ve druhém řádku vyberte možnost **kterákoli** pro **síť** a **Povolit** **akci**.
 3. Přiřaďte seznam předpon IP adres oběma sousedním uzlům protokolu BGP (mandát). Připojením seznamu předpony IP k sousednímu směrovači protokolu BGP znemožníte inzerování výchozí trasy v protokolu BGP k přepínačům MANDÁTu. Nicméně jakákoli jiná trasa, která obsahuje trasu s hodnotou null, bude inzerovat IP adresu rozhraní zpětné smyčky pro přepínače MANDÁTu.
 
     ![Vytvořit seznam předpon IP adres](media/l2vpn-routing-security02.png)
@@ -428,7 +428,7 @@ Před nasazením ověřte, že vaše místní pravidla brány firewall umožňuj
 
     ![Stáhnout samostatného klienta NSX Edge](media/l2vpn-deploy-client01.png)
 
-2. Přejít do složky se všemi extrahovaných souborů. Vyberte všechna VMDK (NSX-l2t-Client-large. MF a NSX-l2t-client-large. ovf pro velkou velikost zařízení nebo NSX-l2t-Client-XLarge. MF a NSX-l2t-client-Xlarge. ovf pro největší velikost zařízení s velkou velikostí). Klikněte na **Další**.
+2. Přejít do složky se všemi extrahovaných souborů. Vyberte všechna VMDK (NSX-l2t-Client-large. MF a NSX-l2t-client-large. ovf pro velkou velikost zařízení nebo NSX-l2t-Client-XLarge. MF a NSX-l2t-client-Xlarge. ovf pro největší velikost zařízení s velkou velikostí). Klikněte na **Next** (Další).
 
     ![Vybrat šablonu ](media/l2vpn-deploy-client02.png) ![ Vybrat šablonu](media/l2vpn-deploy-client03.png)
 
@@ -440,7 +440,7 @@ Před nasazením ověřte, že vaše místní pravidla brány firewall umožňuj
 
     ![Vyberte úložiště dat.](media/l2vpn-deploy-client06.png)
 
-5. Vyberte pro samostatného klienta NSX-T správné skupiny portů pro datový kmen (šachta PG), veřejné (pro odesílání) a rozhraní HA (odchozí připojení). Klikněte na **Další**.
+5. Vyberte pro samostatného klienta NSX-T správné skupiny portů pro datový kmen (šachta PG), veřejné (pro odesílání) a rozhraní HA (odchozí připojení). Klikněte na **Next** (Další).
 
     ![Výběr skupin portů](media/l2vpn-deploy-client07.png)
 

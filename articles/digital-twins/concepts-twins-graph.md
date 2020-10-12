@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 5821a1d1f6713ef39d7475fb004164e7c0fd71ec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87062054"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Pochopení digitálních vláken a jejich dvojitých grafů
@@ -21,7 +21,7 @@ V řešení digitálních vláken Azure jsou entity ve vašem prostředí reprez
 > [!TIP]
 > "Digitální vlákna Azure" odkazuje na tuto službu Azure jako celek. "Digitální vlákna" nebo pouze "vlákna" odkazují na jednotlivé zdvojené uzly v rámci vaší instance služby.
 
-## <a name="digital-twins"></a>Digitální vlákna
+## <a name="digital-twins"></a>Digitální dvojčata
 
 Než budete moct vytvořit digitální dvojitou hodnotu v instanci digitálních vláken Azure, musíte mít do této služby nahraný *model* . Model popisuje sadu vlastností, zpráv telemetrie a vztahy, které mohou mít konkrétní vlákna, mimo jiné. Typy informací, které jsou definovány v modelu, naleznete v tématu [*Koncepty: vlastní modely*](concepts-models.md).
 
@@ -105,7 +105,7 @@ Data z digitálního vlákna a data relace jsou ukládána ve formátu JSON. To 
 
 Při reprezentaci jako objektu JSON zobrazí digitální vlákna následující pole:
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | `$dtId` | Uživatelem zadaný řetězec představující ID digitálního vlákna |
 | `$etag` | Standardní pole HTTP přiřazené webovým serverem |
@@ -116,11 +116,11 @@ Při reprezentaci jako objektu JSON zobrazí digitální vlákna následující 
 | `$metadata.{propertyName}.desiredValue` | [Pouze pro zapisovatelné vlastnosti] Požadovaná hodnota zadané vlastnosti |
 | `$metadata.{propertyName}.desiredVersion` | [Pouze pro zapisovatelné vlastnosti] Verze požadované hodnoty |
 | `$metadata.{propertyName}.ackVersion` | Verze potvrzená aplikací zařízení implementující digitální dvojitou vlákenou |
-| `$metadata.{propertyName}.ackCode` | [Pouze pro zapisovatelné vlastnosti] `ack`Kód vrácený aplikací pro zařízení implementující digitální vlákna |
-| `$metadata.{propertyName}.ackDescription` | [Pouze pro zapisovatelné vlastnosti] `ack`Popis vrácený aplikací pro zařízení implementující digitální dvojitou vlákenou |
+| `$metadata.{propertyName}.ackCode` | [Pouze pro zapisovatelné vlastnosti] `ack` Kód vrácený aplikací pro zařízení implementující digitální vlákna |
+| `$metadata.{propertyName}.ackDescription` | [Pouze pro zapisovatelné vlastnosti] `ack` Popis vrácený aplikací pro zařízení implementující digitální dvojitou vlákenou |
 | `{componentName}` | Objekt JSON obsahující hodnoty a metadata vlastnosti komponenty, podobně jako u kořenového objektu. Tento objekt existuje i v případě, že komponenta nemá žádné vlastnosti. |
 | `{componentName}.{propertyName}` | Hodnota vlastnosti komponenty v kódu JSON ( `string` , typ čísla nebo objekt) |
-| `{componentName}.$metadata` | Informace metadat pro komponentu, podobně jako na úrovni kořenového adresáře`$metadata` |
+| `{componentName}.$metadata` | Informace metadat pro komponentu, podobně jako na úrovni kořenového adresáře `$metadata` |
 
 Tady je příklad digitálního vlákna formátovaného jako objekt JSON:
 
@@ -172,7 +172,7 @@ Tady je příklad digitálního vlákna formátovaného jako objekt JSON:
 
 Při reprezentaci jako objektu JSON se v relaci z digitálního vlákna zobrazí následující pole:
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | `$relationshipId` | Uživatelem zadaný řetězec představující ID tohoto vztahu. Tento řetězec je jedinečný v kontextu zdrojového digitálního vlákna, což také znamená, že `sourceId`  +  `relationshipId` je jedinečný v kontextu instance digitálního vlákna Azure. |
 | `$etag` | Standardní pole HTTP přiřazené webovým serverem |

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: d0e13f8e66e6035c22c9c2323b9653c5c4a81671
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514682"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Změna konfigurace zařízení StorSimple pomocí služby StorSimple Device Manager
@@ -44,7 +44,7 @@ Pomocí Azure Portal můžete změnit název zařízení a přiřadit mu jedine�
 
 K StorSimple zařízení, které je připojené ke službě StorSimple Device Manager, se přiřadí výchozí název. Výchozí název obvykle odráží sériové číslo zařízení. Například výchozí název zařízení, který je delší než 15 znaků, například 8600-SHX0991003G44HT, označuje následující:
 
-* **8600** – označuje model zařízení.
+* **8600**  – označuje model zařízení.
 * **SHX** – označuje pracoviště výroby.
 * **0991003** – označuje určitý produkt.
 * **G44HT**– při posledních 5 číslicích se zvýší a vytvoří se jedinečná sériová čísla. Nemusí se jednat o sekvenční sadu.

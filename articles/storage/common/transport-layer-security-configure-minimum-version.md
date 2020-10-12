@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 4c88791815d248cc20546d7942e7b0f107071186
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90018573"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Vynutila minimální požadovanou verzi protokolu TLS (Transport Layer Security) pro požadavky na účet úložiště.
@@ -69,7 +69,7 @@ StorageBlobLogs
 
 Ve výsledcích se zobrazuje počet požadavků provedených v každé z verzí TLS:
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="Snímek obrazovky zobrazující výsledky dotazu Log Analytics pro vrácení verze TLS":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="Snímek obrazovky ukazující, jak vytvořit nastavení diagnostiky pro požadavky protokolování":::
 
 ### <a name="query-logged-requests-by-caller-ip-address-and-user-agent-header"></a>Dotazování protokolovaných požadavků podle IP adresy volajícího a hlavičky uživatelského agenta
 
@@ -104,7 +104,7 @@ Pokud chcete nakonfigurovat minimální verzi TLS pro existující účet úlož
 1. Vyberte nastavení **Konfigurace** .
 1. V části **Minimální verze protokolu TLS**pomocí rozevíracího seznamu vyberte minimální verzi TLS potřebnou pro přístup k datům v tomto účtu úložiště, jak je znázorněno na následujícím obrázku.
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Snímek obrazovky ukazující, jak nakonfigurovat minimální verzi TLS v Azure Portal":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Snímek obrazovky ukazující, jak vytvořit nastavení diagnostiky pro požadavky protokolování":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -307,7 +307,7 @@ Chcete-li zobrazit sestavu dodržování předpisů v Azure Portal, postupujte p
 1. Vyfiltrujte výsledky pro název přiřazení zásady, které jste vytvořili v předchozím kroku. V této sestavě se zobrazuje počet prostředků, které nejsou v souladu se zásadami.
 1. Můžete přejít k podrobnostem sestavy, kde najdete další podrobnosti, včetně seznamu účtů úložiště, které nedodržují předpisy.
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="Snímek obrazovky zobrazující sestavu dodržování předpisů pro zásady auditu pro minimální verzi TLS":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="Snímek obrazovky ukazující, jak vytvořit nastavení diagnostiky pro požadavky protokolování":::
 
 ## <a name="use-azure-policy-to-enforce-the-minimum-tls-version"></a>Použití Azure Policy k vymáhání minimální verze protokolu TLS
 
@@ -343,7 +343,7 @@ Když vytvoříte zásadu s použitím efektu odepřít a přiřadíte ji k obor
 
 Následující obrázek ukazuje chybu, ke které dochází, když se pokusíte vytvořit účet úložiště s minimální verzí TLS nastavenou na TLS 1,0 (výchozí pro nový účet), když zásada s efektem odepření vyžaduje, aby se minimální verze protokolu TLS nastavila na TLS 1,2.
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="Snímek obrazovky znázorňující chybu při vytváření účtu úložiště při porušení zásad":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="Snímek obrazovky ukazující, jak vytvořit nastavení diagnostiky pro požadavky protokolování":::
 
 ## <a name="network-considerations"></a>Důležité informace z hlediska využívání sítě
 

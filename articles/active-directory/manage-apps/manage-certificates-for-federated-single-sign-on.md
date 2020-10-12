@@ -16,10 +16,10 @@ ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1731d5ea5d8db9ea1c5855a32d2daca0387c0bf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763206"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory
@@ -59,12 +59,12 @@ Nejdřív vytvořte a uložte nový certifikát s jiným datem vypršení platno
 1. Vyberte ovlivněnou aplikaci. Zobrazí se stránka s přehledem pro aplikaci.
 1. V levém podokně stránky přehled aplikace vyberte **jednotné přihlašování**.
 1. Pokud se zobrazí stránka **Vybrat metodu jednotného přihlašování** , vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML-Preview** Najděte hlavičku **podpisového certifikátu SAML** a vyberte ikonu pro **Úpravy** (tužka). Zobrazí se stránka **podpisový certifikát SAML** , ve kterém se zobrazí stav (**aktivní** nebo **neaktivní**), datum vypršení platnosti a kryptografický otisk (řetězec hash) každého certifikátu.
+1. Na stránce **nastavit jeden Sign-On se službou SAML-Preview** Najděte hlavičku **podpisového certifikátu SAML** a vyberte ikonu pro **Úpravy** (tužka). Zobrazí se stránka **podpisový certifikát SAML** , ve kterém se zobrazí stav (**aktivní** nebo **neaktivní**), datum vypršení platnosti a kryptografický otisk (řetězec hash) každého certifikátu.
 1. Vyberte **nový certifikát**. Pod seznamem certifikátů se zobrazí nový řádek, kde datum vypršení platnosti je ve výchozím nastavení přesně tři roky od aktuálního data. (Vaše změny se zatím neuložily, takže stále můžete upravit datum vypršení platnosti.)
 1. V řádku nový certifikát umístěte ukazatel myši na sloupec Datum vypršení platnosti a vyberte ikonu **vybrat datum** (kalendář). Zobrazí se ovládací prvek Kalendář, který zobrazuje dny v měsíci aktuálního data vypršení platnosti nového řádku.
 1. Pomocí ovládacího prvku Kalendář nastavte nové datum. Můžete nastavit jakékoli datum mezi aktuálním datem a třemi roky po aktuálním datu.
 1. Vyberte **Uložit**. Nový certifikát se teď zobrazí se stavem **neaktivní**, datum vypršení platnosti, které jste zvolili, a kryptografický otisk.
-1. Vyberte **X** a vraťte se na stránku **nastavit jednotné přihlašování pomocí SAML-Preview** .
+1. Vyberte **X** a vraťte se na stránku **nastavit jeden Sign-On se stránkou SAML-Preview** .
 
 ### <a name="upload-and-activate-a-certificate"></a>Nahrát a aktivovat certifikát
 

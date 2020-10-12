@@ -10,10 +10,10 @@ ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: abd1bc9b53c303d094d74683da0d6e3fad4d715f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90887471"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>Nasazení modelu ML na Edge Azure SQL pomocí ONNX 
@@ -35,7 +35,7 @@ V třetí části tohoto kurzu pro předpověď nečistot železa ve službě Az
    |Server|Veřejná IP adresa zmíněná na virtuálním počítači, který se vytvořil pro tuto ukázku|
    |Uživatelské jméno|sa|
    |Heslo|Silné heslo, které se použilo při vytváření instance Azure SQL Edge|
-   |Databáze|Výchozí|
+   |databáze|Výchozí|
    |Skupina serverů|Výchozí|
    |Název (nepovinný)|Zadání volitelného názvu|
 

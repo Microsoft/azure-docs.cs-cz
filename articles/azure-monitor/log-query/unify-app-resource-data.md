@@ -8,10 +8,10 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.openlocfilehash: 360578a36b92711c55b1fc65befa1b3df7927aad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330889"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Sjednocení více Azure Monitorch prostředků Application Insights 
@@ -73,7 +73,7 @@ V následující tabulce jsou uvedeny rozdíly v schématech mezi Log Analytics 
 | AvailabilityMessage | zpráva |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | jméno |
+| AvailabilityTestName | name |
 | AvailabilityTimestamp | časové razítko |
 | Prohlížeč | client_browser |
 | City (Město) | client_city |
@@ -82,7 +82,7 @@ V následující tabulce jsou uvedeny rozdíly v schématech mezi Log Analytics 
 | Země | client_CountryOrRegion | 
 | CustomEventCount | Vlastnost ItemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | jméno | 
+| CustomEventName | name | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | Vlastnost ItemCount | 
@@ -94,12 +94,12 @@ V následující tabulce jsou uvedeny rozdíly v schématech mezi Log Analytics 
 | Operační systém | client_OS | 
 | PageViewCount | Vlastnost ItemCount |
 | PageViewDuration | doba trvání | 
-| PageViewName | jméno | 
+| PageViewName | name | 
 | ParentOperationID | operation_Id | 
 | RequestCount | Vlastnost ItemCount | 
 | RequestDuration | doba trvání | 
 | ID požadavku | id | 
-| Žádost o zadání | jméno | 
+| Žádost o zadání | name | 
 | RequestSuccess | úspěch | 
 | ResponseCode | resultCode | 
 | Role | cloud_RoleName |

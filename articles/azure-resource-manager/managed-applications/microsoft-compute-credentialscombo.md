@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: 47c88e08e5d2eac09fbcd5b60a8ccd73b46c9616
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87063799"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft. Compute. CredentialsCombo – element uživatelského rozhraní
@@ -111,7 +111,7 @@ Pokud `osPlatform` je systém **Linux** a uživatel ZADAL veřejný klíč SSH, 
 
 ## <a name="remarks"></a>Poznámky
 
-- `osPlatform`musí být zadáno a může být buď **Windows** , nebo **Linux**.
+- `osPlatform` musí být zadáno a může být buď **Windows** , nebo **Linux**.
 - Pokud `constraints.required` je nastavená na **hodnotu true**, musí být v textových polích heslo nebo veřejný klíč SSH hodnoty k úspěšnému ověření. Výchozí hodnota je **true (pravda**).
 - Pokud `options.hideConfirmation` je nastaveno na **hodnotu true**, pak je skryté druhé textové pole pro potvrzení hesla uživatele. Výchozí hodnota je **false** (nepravda).
 - Pokud `options.hidePassword` je parametr nastaven na **hodnotu true**, možnost použití ověřování heslem je skrytá. Dá se použít jenom v případě, že `osPlatform` je **Linux**. Výchozí hodnota je **false** (nepravda).

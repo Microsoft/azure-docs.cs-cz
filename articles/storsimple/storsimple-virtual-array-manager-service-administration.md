@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515443"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>Použití služby StorSimple Device Manager ke správě virtuálního pole StorSimple
@@ -63,7 +63,7 @@ Chcete-li získat další informace o jednotlivých pracovních postupech, klikn
 | Informace o účtech úložiště</br>Přidat účet úložiště</br>Úprava účtu úložiště</br>Odstranění účtu úložiště |[Správa účtů úložiště pro virtuální pole StorSimple](storsimple-virtual-array-manage-storage-accounts.md) |
 | O záznamech řízení přístupu</br>Přidat nebo upravit záznam řízení přístupu </br>Odstranění záznamu řízení přístupu |[Správa záznamů řízení přístupu pro virtuální pole StorSimple](storsimple-virtual-array-manage-acrs.md) |
 | Zobrazení podrobností o úloze |[Správa úloh virtuálních polí StorSimple](storsimple-virtual-array-manage-jobs.md) |
-| Konfigurace nastavení výstrah</br>Zobrazování oznámení o výstrahách</br>Správa výstrah</br>Zkontrolovat výstrahy |[Zobrazení a správa výstrah pro virtuální pole StorSimple](storsimple-virtual-array-manage-alerts.md) |
+| Konfigurace nastavení upozornění</br>Zobrazování oznámení o výstrahách</br>Správa výstrah</br>Procházení výstrah |[Zobrazení a správa výstrah pro virtuální pole StorSimple](storsimple-virtual-array-manage-alerts.md) |
 | Úprava hesla správce zařízení |[Změna hesla správce zařízení StorSimple Virtual Array](storsimple-virtual-array-change-device-admin-password.md) |
 | Instalovat aktualizace softwaru |[Aktualizace virtuálního pole](storsimple-virtual-array-install-update.md) |
 

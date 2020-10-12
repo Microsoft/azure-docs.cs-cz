@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: guybo
 ms.openlocfilehash: 73e07c612486d5f48b1ad3eca8044a561549092b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292127"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Příprava virtuálního počítače se SLES nebo openSUSE pro Azure
@@ -133,11 +133,11 @@ Jako alternativu k vytváření vlastního virtuálního pevného disku SUSE tak
 2. Kliknutím na **připojit** otevřete okno pro virtuální počítač.
 3. V prostředí spusťte příkaz `zypper lr` . Pokud tento příkaz vrátí výstup podobný následujícímu, pak jsou úložiště konfigurována podle očekávání – nejsou nutné žádné úpravy (Všimněte si, že čísla verzí se mohou lišit):
 
-   | # | Alias                 | Název                  | Povoleno | Aktualizovat
+   | # | Alias                 | Name                  | Povoleno | Aktualizovat
    | - | :-------------------- | :-------------------- | :------ | :------
-   | 1 | Cloud: Tools_13.1      | Cloud: Tools_13.1      | Ano     | Ano
-   | 2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | Ano     | Ano
-   | 3 | openSUSE_13.1_Updates | openSUSE_13.1_Updates | Ano     | Ano
+   | 1 | Cloud: Tools_13.1      | Cloud: Tools_13.1      | Yes     | Yes
+   | 2 | openSUSE_13 openSUSE_13.1_OSS     | openSUSE_13 openSUSE_13.1_OSS     | Yes     | Yes
+   | 3 | openSUSE_13 openSUSE_13.1_Updates | openSUSE_13 openSUSE_13.1_Updates | Yes     | Yes
 
     Pokud příkaz vrátí "žádná úložiště nebyla definována..." pak pomocí následujících příkazů přidejte tato úložišť:
 

@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764685"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Potíže při instalaci konektoru agenta proxy aplikací
@@ -61,7 +61,7 @@ V případě selhání instalace konektoru je hlavní příčinou obvykle jedna 
 
 **Kontrola požadovaných požadavků:**
 
-1.  Ověřte, že počítač podporuje TLS 1.2 – všechny verze Windows po 2012 R2 by měly podporovat TLS 1,2. Pokud je váš počítač konektoru z verze 2012 R2 nebo starší, ujistěte se, že je na počítači nainstalovaný následující aktualizací KB:<https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
+1.  Ověřte, že počítač podporuje TLS 1.2 – všechny verze Windows po 2012 R2 by měly podporovat TLS 1,2. Pokud je váš počítač konektoru z verze 2012 R2 nebo starší, ujistěte se, že je na počítači nainstalovaný následující aktualizací KB: <https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
 
 2.  Obraťte se na správce sítě a požádejte ho o ověření, že back-end proxy serveru a brána firewall neblokují SHA512 pro odchozí provoz.
 
@@ -103,7 +103,7 @@ Certifikát ověříte podle pokynů:
 
 Pokud konektor není po několik měsíců připojený ke službě, můžou být jeho certifikáty zastaralé. Selhání obnovení certifikátu vede k certifikátu, jehož platnost vypršela. Díky tomu služba konektoru přestane fungovat. Událost 1000 se zaznamená do protokolu pro správu konektoru:
 
-"Opětovné registrace konektoru se nezdařila: vypršela platnost certifikátu vztahu důvěryhodnosti konektoru. Spusťte rutinu PowerShellu Register-AppProxyConnector na počítači, ve kterém je konektor spuštěný, aby se váš konektor znovu zaregistroval. "
+"Opětovné registrace konektoru se nezdařila: vypršela platnost certifikátu vztahu důvěryhodnosti konektoru. Spusťte Register-AppProxyConnector rutiny prostředí PowerShell v počítači, ve kterém je konektor spuštěný, aby se váš konektor znovu zaregistroval. "
 
 V takovém případě odinstalujte a znovu nainstalujte konektor, aby se aktivovala registrace, nebo můžete spustit následující příkazy PowerShellu:
 
@@ -112,7 +112,7 @@ Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
 
-Další informace o příkazu register-AppProxyConnector najdete v tématu [Vytvoření skriptu bezobslužné instalace pro konektor Azure proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell) .
+Další informace o příkazu Register-AppProxyConnector najdete v tématu [Vytvoření skriptu bezobslužné instalace pro konektor Azure proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell) .
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Ověření, že se k instalaci konektoru používá správce
 

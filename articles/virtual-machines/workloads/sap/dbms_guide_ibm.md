@@ -14,10 +14,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a2be5daf5bcad0f5b4530ba7a76986dae4833aa5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331263"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP
@@ -162,7 +162,7 @@ Server Microsoft Clustering (MSCS) není podporován.
 
 Podporuje se zotavení po havárii Db2 s vysokou dostupností (HADR). Pokud virtuální počítače konfigurace HA obsahují překlad IP adres, nastavení v Azure se neliší od žádného nastavení, které se provádí v místním prostředí. Nedoporučuje se spoléhat jenom na rozlišení IP.
 
-Nepoužívejte geografickou replikaci pro účty úložiště, které ukládají databázové disky. Další informace najdete v dokumentu věnovaném [nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). 
+Nepoužívejte Geo-Replication pro účty úložiště, které ukládají databázové disky. Další informace najdete v dokumentu věnovaném [nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). 
 
 ### <a name="accelerated-networking"></a>Akcelerované síťové služby
 Pro nasazení Db2 ve Windows se důrazně doporučuje používat funkce Azure pro urychlené síťové služby, jak je popsáno v dokumentu [urychlené síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Zvažte také doporučení týkající se [nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). 
@@ -177,7 +177,7 @@ Pro disky obsahující cesty úložiště Db2 pro adresáře sapdata a saptmp je
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
-### <a name="other"></a>Další
+### <a name="other"></a>Jiné
 Všechny ostatní obecné oblasti, jako jsou skupiny dostupnosti Azure nebo monitorování SAP, jsou popsané v dokumentu [týkajícím se nasazení azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) pro nasazení virtuálních počítačů s využitím i databáze IBM.
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598

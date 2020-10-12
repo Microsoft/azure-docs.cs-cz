@@ -9,10 +9,10 @@ manager: gwallace
 description: Přečtěte si, jak nastavit průběžnou integraci a průběžné nasazování pomocí Azure DevOps s využitím Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
 ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080262"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Použití CI/CD s Azure Dev Spaces
@@ -70,7 +70,7 @@ Možnost zakázání:
 
 Ve větvi _azds_updates_ jsme zahrnuli jednoduché [YAML kanálu Azure](/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) definující kroky sestavení vyžadované pro *mywebapi* a *webendu*.
 
-V závislosti na zvoleném jazyce se YAML kanálu vrátil se změnami v cestě, která vypadá přibližně takto:`samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
+V závislosti na zvoleném jazyce se YAML kanálu vrátil se změnami v cestě, která vypadá přibližně takto: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
 Vytvoření kanálu z tohoto souboru:
 1. Na hlavní stránce projektu DevOps přejděte na kanály > sestavení.
@@ -119,7 +119,7 @@ Teď máte řešení CI, které bude automaticky vytvářet *mywebapi* a *webend
 1. Klikněte na **Uložit** v pravém horním rohu a pak na **OK**.
 1. Klikněte na **+ release** (vedle tlačítka Uložit) a **vytvořte vydání**.
 1. V části **artefakty**ověřte, zda je vybráno nejnovější sestavení z kanálu sestavení.
-1. Klikněte na možnost **Vytvořit**.
+1. Klikněte na **Vytvořit**.
 
 Nyní začne proces automatizované verze, nasazování grafů *mywebapi* a *webendu* do clusteru Kubernetes v _prostoru nejvyšší úrovně_ . Průběh vydaných verzí můžete monitorovat na webovém portálu Azure DevOps:
 
@@ -160,7 +160,7 @@ Vydaná verze se provádí po dokončení všech úloh.
 
 Fáze _výroby_ kanálu CI/CD používá nástroj pro vyrovnávání zatížení namísto kontroleru pro řízení přístupu pro vývoj prostorů pro poskytování přístupu k _jednotkovým službám._ Služby nasazené v _produkční_ fázi jsou přístupné jako IP adresy místo názvů DNS. V produkčním prostředí se můžete rozhodnout vytvořit vlastní kontroler příchozího přenosu dat, který bude hostovat vaše služby, a to na základě vlastní konfigurace DNS.
 
-Pokud chcete zjistit IP adresu služby webendu, rozbalte výstup protokolu kliknutím na krok **vytištění veřejné IP adresy webendu** . Pro přístup k aplikaci **webendu** použijte IP adresu zobrazenou ve výstupu protokolu.
+Pokud chcete zjistit IP adresu služby webendu, rozbalte výstup protokolu kliknutím na krok  **vytištění veřejné IP adresy webendu** . Pro přístup k aplikaci **webendu** použijte IP adresu zobrazenou ve výstupu protokolu.
 
 ```cmd
 ...

@@ -9,17 +9,17 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
 ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87066119"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange X12 pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
 
 Pokud chcete pracovat se X12 zprávami v Azure Logic Apps, můžete použít konektor X12, který poskytuje triggery a akce pro správu komunikace X12. Informace o EDIFACT zprávách najdete v tématu [zprávy Exchange EDIFACT](logic-apps-enterprise-integration-edifact.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -316,7 +316,7 @@ Když pracujete se schématy HIPAA a typy zpráv 277 nebo 837, je nutné provés
 
 Tato tabulka uvádí seznam ovlivněných zpráv, všechny varianty a čísla verzí dokumentů, která jsou namapována na tyto typy zpráv:
 
-| Typ nebo varianta zprávy |  Popis | Číslo verze dokumentu (GS8) |
+| Typ nebo varianta zprávy |  Description | Číslo verze dokumentu (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | Oznámení o stavu informací o zdravotní péči | 005010X212 |
 | 837_I | Institucionální deklarace identity zdravotnictví | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |

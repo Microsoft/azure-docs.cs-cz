@@ -6,13 +6,13 @@ manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.openlocfilehash: 7bc8427a51a9931ca82155232569767f12a8e266
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87534018"
 ---
-# <a name="common-questions-azure-to-azure-disaster-recovery"></a>Běžné otázky: zotavení po havárii z Azure do Azure
+# <a name="common-questions-azure-to-azure-disaster-recovery"></a>Běžné dotazy: Zotavení po havárii Azure do Azure
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se zotavení po havárii virtuálních počítačů Azure do jiné oblasti Azure, pokud používáte [Azure Site Recovery](site-recovery-overview.md).
 

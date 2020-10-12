@@ -8,10 +8,10 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288950"
 ---
 # <a name="u-sql-programmability-guide"></a>Průvodce programovatelností U-SQL
@@ -83,7 +83,7 @@ OUTPUT @rs1
 
 ### <a name="use-c-expressions-for-todays-date"></a>Pro dnešní datum používat výrazy jazyka C#
 
-Aby bylo možné načíst dnešní datum, můžeme použít následující výraz jazyka C#:`DateTime.Now.ToString("M/d/yyyy")`
+Aby bylo možné načíst dnešní datum, můžeme použít následující výraz jazyka C#: `DateTime.Now.ToString("M/d/yyyy")`
 
 Tady je příklad použití tohoto výrazu ve skriptu:
 
@@ -529,9 +529,9 @@ public class MyTypeFormatter : IFormatter<MyType>
 
 * **Serializace**: serializace objektu nebo grafu objektů s daným kořenem k poskytnutému datovému proudu.
 
-`MyType`instance: instance typu.  
-`IColumnWriter`zapisovač/ `IColumnReader` Čtenář: podkladový datový proud sloupce.  
-`ISerializationContext`Context: Enum, který definuje sadu příznaků, které určují zdrojový nebo cílový kontext pro datový proud během serializace.
+`MyType` instance: instance typu.  
+`IColumnWriter` zapisovač/ `IColumnReader` Čtenář: podkladový datový proud sloupce.  
+`ISerializationContext` Context: Enum, který definuje sadu příznaků, které určují zdrojový nebo cílový kontext pro datový proud během serializace.
 
 * **Intermediate**: Určuje, že zdrojový nebo cílový kontext není trvalé úložiště.
 
@@ -947,7 +947,7 @@ Například:
 public class GuidAggregate : IAggregate<string, int, int>
 ```
 
-– nebo –
+nebo
 
 ```csharp
 public class GuidAggregate : IAggregate<string, string, string>
@@ -1259,9 +1259,9 @@ public class MyOutputter : IOutputter
 }
 ```
 
-* `Output`je volána pro každý vstupní řádek. Vrátí `IUnstructuredWriter output` sadu řádků.
+* `Output` je volána pro každý vstupní řádek. Vrátí `IUnstructuredWriter output` sadu řádků.
 * Třída konstruktoru se používá k předání parametrů do uživatelsky definovaného výstupu.
-* `Close`slouží k volitelnému přepsání pro vydání nákladného stavu nebo určení, kdy byl poslední řádek napsán.
+* `Close` slouží k volitelnému přepsání pro vydání nákladného stavu nebo určení, kdy byl poslední řádek napsán.
 
 Atribut **SqlUserDefinedOutputter** označuje, že typ by měl být zaregistrován jako uživatelsky definovaný modul pro registraci. Tuto třídu nelze zdědit.
 
@@ -2105,7 +2105,7 @@ Atribut **SqlUserDefinedReducer** označuje, že typ by měl být registrován j
 **SqlUserDefinedReducer** je volitelný atribut pro definici zúžení definované uživatelem. Slouží k definování rekurzivní vlastnosti.
 
 * logická hodnota je nerekurzivní    
-* **true** = určuje, zda je tento redukce asociativní a komutativní
+* **true**  = určuje, zda je tento redukce asociativní a komutativní
 
 Hlavními objekty programovatelnosti jsou **vstup** a **výstup**. Vstupní objekt se používá k vytvoření výčtu vstupních řádků. Výstup se používá k nastavení výstupních řádků v důsledku snížení aktivity.
 

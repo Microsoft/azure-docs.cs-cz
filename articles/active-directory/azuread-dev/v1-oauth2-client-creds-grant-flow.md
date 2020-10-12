@@ -14,10 +14,10 @@ ms.reviewer: nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 977dfea28c5c0dc3f34ada0c138556d70c979e04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85551700"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Volání služeb prostřednictvím přihlašovacích údajů klienta (sdílený tajný klíč nebo certifikát)
@@ -77,7 +77,7 @@ Požadavek na přístupový token služby na službu s certifikátem obsahuje n�
 | --- | --- | --- |
 | grant_type |vyžadováno |Určuje požadovaný typ odpovědi. V toku udělení přihlašovacích údajů klienta musí být hodnota **client_credentials**. |
 | client_id |vyžadováno |Určuje ID klienta služby Azure AD volající webové služby. Pokud chcete najít ID klienta volající aplikace, klikněte v [Azure Portal](https://portal.azure.com)na **Azure Active Directory**, klikněte na **Registrace aplikací**a pak na aplikaci. Client_id je *ID aplikace* |
-| client_assertion_type |vyžadováno |Hodnota musí být`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion_type |vyžadováno |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |vyžadováno | Kontrolní výraz (JSON Web Token), který potřebujete k vytvoření a podepsání certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [přihlašovacích údajích k certifikátu](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) , kde se dozvíte, jak zaregistrovat certifikát a formát kontrolního výrazu.|
 | prostředek | vyžadováno |Zadejte identifikátor URI ID aplikace přijímající webové služby. Pokud chcete najít identifikátor URI ID aplikace, klikněte v Azure Portal na **Azure Active Directory**, klikněte na **Registrace aplikací**, klikněte na aplikaci služby a pak klikněte na **Nastavení** a **vlastnosti**. |
 

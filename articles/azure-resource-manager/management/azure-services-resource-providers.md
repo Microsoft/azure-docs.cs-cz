@@ -4,10 +4,10 @@ description: Vypíše všechny obory názvů poskytovatele prostředků pro Azur
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.openlocfilehash: b740c8ee7c28bfeeaecc42121d0c7ce4a323ab3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330821"
 ---
 # <a name="resource-providers-for-azure-services"></a>Poskytovatelé prostředků pro služby Azure
@@ -96,7 +96,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. HardwareSecurityModules | [Azure Dedicated HSM](../../dedicated-hsm/index.yml) |
 | Microsoft. HDInsight | [HDInsight](../../hdinsight/index.yml) |
 | Microsoft. HealthcareApis | [Azure API for FHIR](../../healthcare-apis/index.yml) |
-| Microsoft. HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
+| Microsoft. HybridCompute | [ARC Azure](../../azure-arc/index.yml) |
 | Microsoft. HybridData | [StorSimple](../../storsimple/index.yml) |
 | Microsoft. HybridNetwork  | [Zóny privátního okraje](../../networking/edge-zones-overview.md) |
 | Microsoft. ImportExport | [Azure Import/Export](../../storage/common/storage-import-export-service.md) |
@@ -138,7 +138,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. Portal<sup>1</sup> | [Azure Portal](../../azure-portal/index.yml) |
 | Microsoft. PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Microsoft. PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
-| Microsoft. PowerPlatform | [Platforma Power](/power-platform/) |
+| Microsoft. PowerPlatform | [Power Platform](/power-platform/) |
 | Microsoft. ProjectBabylon | [Azure Data Catalog](../../data-catalog/overview.md) |
 | Microsoft. | [Azure](https://azure.microsoft.com/services/quantum/) |
 | Microsoft. RecoveryServices | [Azure Site Recovery](../../site-recovery/index.yml) |

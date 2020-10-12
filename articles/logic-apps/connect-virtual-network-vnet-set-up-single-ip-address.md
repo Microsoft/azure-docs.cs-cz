@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: 9ee804f7bed01ca0c7f365a04e6108afd9598157
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87066386"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Nastavte jednu IP adresu pro jedno nebo více prostředí integrační služby v Azure Logic Apps
@@ -19,7 +19,7 @@ Při práci s Azure Logic Apps můžete nastavit [ *prostředí ISE (Integration
 
 V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím Azure Firewall, ale můžete použít podobné koncepty síťového virtuálního zařízení, jako je například brána firewall jiného výrobce z Azure Marketplace. I když se toto téma zaměřuje na nastavení více instancí ISE, můžete tento přístup použít i pro jeden ISE, když váš scénář vyžaduje omezení počtu IP adres, které potřebují přístup. Zvažte, jestli další náklady na zařízení s bránou firewall nebo virtuální sítí jsou pro váš scénář smysluplné. Přečtěte si další informace o [cenách Azure firewall](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Brána firewall Azure, která běží ve stejné virtuální síti jako vaše ISE. Pokud bránu firewall nemáte, přidejte nejprve [podsíť](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) s názvem `AzureFirewallSubnet` do vaší virtuální sítě. Pak můžete [vytvořit a nasadit bránu firewall](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall) ve vaší virtuální síti.
 
@@ -52,7 +52,7 @@ V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím A
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
    | **Název trasy** | <*jedinečný název směrování*> | Jedinečný název trasy v tabulce směrování |
-   | **Předpona adresy** | <*Cílová adresa*> | Předpona adresy pro cílový systém, ve kterém chcete odchozí provoz přejít. Ujistěte se, že pro tuto adresu používáte [zápis CIDR (Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . V tomto příkladu je tato předpona adresy určena pro server SFTP, který je popsaný v části [Nastavení síťového pravidla](#set-up-network-rule). |
+   | **Předpona adresy** | <*Cílová adresa*> | Předpona adresy pro cílový systém, ve kterém chcete odchozí provoz přejít. Ujistěte se, že pro tuto adresu používáte [zápis CIDR (Inter-Domain Routing) pro třídy](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . V tomto příkladu je tato předpona adresy určena pro server SFTP, který je popsaný v části [Nastavení síťového pravidla](#set-up-network-rule). |
    | **Typ dalšího segmentu směrování** | **Virtuální zařízení** | [Typ směrování](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) používaný odchozím provozem |
    | **Adresa dalšího segmentu** | <*Brána firewall – privátní IP adresa*> | Privátní IP adresa pro bránu firewall |
    |||
@@ -95,7 +95,7 @@ V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím A
 
    * [Konfigurace pravidla sítě](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
    * [Logika zpracování pravidel Azure Firewall](../firewall/rule-processing.md#network-rules-and-applications-rules)
-   * [Nejčastější dotazy k Azure Firewall](../firewall/firewall-faq.md)
+   * [Nejčastější dotazy ke službě Azure Firewall](../firewall/firewall-faq.md)
    * [Azure PowerShell: New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
    * [Azure CLI: AZ Network firewall Network-Rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
 

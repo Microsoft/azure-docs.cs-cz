@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 42dd979f6e069addc1067d0018390c358e79a7b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764532"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Povolení vzdáleného přístupu k SharePointu s využitím Proxy aplikací služby Azure AD
@@ -47,9 +47,9 @@ Konfigurace SharePointu s proxy aplikací vyžaduje dvě adresy URL:
 > - V podnikové službě DNS (Domain Name System) vytvořte hostitele (A), který odkazuje na SharePoint WFE (nebo nástroj pro vyrovnávání zatížení), a ne na alias (CName).
 
 Tento článek používá následující hodnoty:
-- Interní adresa URL:`https://sharepoint`
-- Externí adresa URL:`https://spsites-demo1984.msappproxy.net/`
-- Účet fondu aplikací pro webovou aplikaci SharePoint:`Contoso\spapppool`
+- Interní adresa URL: `https://sharepoint`
+- Externí adresa URL: `https://spsites-demo1984.msappproxy.net/`
+- Účet fondu aplikací pro webovou aplikaci SharePoint: `Contoso\spapppool`
 
 ## <a name="step-1-configure-an-application-in-azure-ad-that-uses-application-proxy"></a>Krok 1: Konfigurace aplikace v Azure AD, která používá proxy aplikace
 

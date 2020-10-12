@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797934"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Řešení potíží s FarmBeats
@@ -17,7 +17,7 @@ ms.locfileid: "88797934"
 Tento článek popisuje řešení běžných problémů s FarmBeats Azure. Pokud chcete získat další pomoc, obraťte se na náš [Q&fórum podpory](https://aka.ms/farmbeatssupport) nebo na nás pošlete e-mail na adrese farmbeatssupport@microsoft.com .
 
 > [!NOTE]
-  > Pokud jste v dubnu v dubnu nainstalovali FarmBeats a vaše úlohy selžou s prázdnou chybovou zprávou, je možné, že instalace nebyla přidělena žádná kvóta služby Batch k určení priorit podpory pro kritické organizace v oblasti zdravotního stavu a zabezpečení. Další informace najdete [tady](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) . K úspěšnému spuštění úloh budete muset požádat o virtuální počítače, které mají být přiděleny k účtu Batch.
+  > Pokud jste v dubnu v dubnu nainstalovali FarmBeats a vaše úlohy selžou s prázdnou chybovou zprávou, je možné, že instalace nebyla přidělena žádná kvóta služby Batch k určení priorit podpory pro kritické organizace v oblasti zdravotního stavu a zabezpečení. Další informace najdete [tady](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/). K úspěšnému spuštění úloh budete muset požádat o virtuální počítače, které mají být přiděleny k účtu Batch.
 
 ## <a name="install-issues"></a>Problémy s instalací
 
@@ -285,7 +285,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Shromažďování protokolů úloh Azure Data Factory nebo protokolů App Service v DataHub
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Do **vyhledávacího** pole vyhledejte skupinu prostředků FarmBeats DataHub.
 3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *datahublogs \* * . Například *datahublogsmvxmq*.  
 4. Ve sloupci **název** vyberte účet úložiště pro zobrazení řídicího panelu **účtu úložiště** .
@@ -297,7 +297,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Shromažďovat protokoly úloh Azure Data Factory nebo protokoly App Service pro akcelerátor
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Do **vyhledávacího** pole vyhledejte skupinu prostředků akcelerátoru FarmBeats.
 3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *úložiště \* * . Například *storagedop4k \* *.
 4. Vyberte účet úložiště ve sloupci **název** pro zobrazení řídicího panelu **účtu úložiště** .

@@ -4,10 +4,10 @@ description: Pomocí příkazu vyčistit můžete odstranit více značek a mani
 ms.topic: article
 ms.date: 05/14/2020
 ms.openlocfilehash: ab6794648babd2bd491ded5788455b75c10d675a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83652631"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Automatické mazání imagí z Azure Container Registry
@@ -31,23 +31,23 @@ Pokud chcete odstranit jednotlivé značky obrázků nebo manifesty pomocí př�
 `acr purge`Příkaz kontejner odstraní obrázky podle značky v úložišti, které odpovídají filtru názvů a které jsou starší než zadaná doba trvání. Ve výchozím nastavení jsou odstraněny pouze odkazy na značky, nikoli základní [manifesty](container-registry-concepts.md#manifest) a data vrstev. Příkaz má možnost také odstranit manifesty. 
 
 > [!NOTE]
-> `acr purge`neodstraní značku obrázku nebo úložiště, kde `write-enabled` je atribut nastaven na hodnotu `false` . Informace najdete v tématu [uzamknutí image kontejneru ve službě Azure Container Registry](container-registry-image-lock.md).
+> `acr purge` neodstraní značku obrázku nebo úložiště, kde `write-enabled` je atribut nastaven na hodnotu `false` . Informace najdete v tématu [uzamknutí image kontejneru ve službě Azure Container Registry](container-registry-image-lock.md).
 
-`acr purge`je navržena tak, aby běžela jako příkaz kontejneru v [úloze ACR](container-registry-tasks-overview.md), aby se automaticky ověřovala s registrem, ve kterém je úloha spuštěna, a provádí akce. Příklady úloh v tomto článku používají `acr purge` [alias](container-registry-tasks-reference-yaml.md#aliases) příkazu místo úplného příkazu image kontejneru.
+`acr purge` je navržena tak, aby běžela jako příkaz kontejneru v [úloze ACR](container-registry-tasks-overview.md), aby se automaticky ověřovala s registrem, ve kterém je úloha spuštěna, a provádí akce. Příklady úloh v tomto článku používají `acr purge` [alias](container-registry-tasks-reference-yaml.md#aliases) příkazu místo úplného příkazu image kontejneru.
 
 Pokud spustíte následující příkaz, zadejte alespoň tento příkaz `acr purge` :
 
-* `--filter`– Úložiště a *regulární výraz* pro filtrování značek v úložišti. Příklady: `--filter "hello-world:.*"` vyhledá všechny značky v `hello-world` úložišti a `--filter "hello-world:^1.*"` porovná značky začínající na `1` . Předejte několik `--filter` parametrů pro vyprázdnění více úložišť.
-* `--ago`– [Řetězec doby trvání](https://golang.org/pkg/time/) ve stylu na cestách, který označuje dobu trvání, po které se obrázky odstraní. Doba trvání se skládá z jednoho nebo více desetinných čísel, z nichž každá má příponu jednotky. Platné časové jednotky zahrnují "d" pro dny, "h" pro hodiny a "m" pro minuty. Například `--ago 2d3h6m` vybere všechny filtrované obrázky naposledy změněné více než 2 dny, 3 hodiny a 6 minut a `--ago 1.5h` vybere obrázky naposledy upravené před více než 1,5 hodinami.
+* `--filter` – Úložiště a *regulární výraz* pro filtrování značek v úložišti. Příklady: `--filter "hello-world:.*"` vyhledá všechny značky v `hello-world` úložišti a `--filter "hello-world:^1.*"` porovná značky začínající na `1` . Předejte několik `--filter` parametrů pro vyprázdnění více úložišť.
+* `--ago` – [Řetězec doby trvání](https://golang.org/pkg/time/) ve stylu na cestách, který označuje dobu trvání, po které se obrázky odstraní. Doba trvání se skládá z jednoho nebo více desetinných čísel, z nichž každá má příponu jednotky. Platné časové jednotky zahrnují "d" pro dny, "h" pro hodiny a "m" pro minuty. Například `--ago 2d3h6m` vybere všechny filtrované obrázky naposledy změněné více než 2 dny, 3 hodiny a 6 minut a `--ago 1.5h` vybere obrázky naposledy upravené před více než 1,5 hodinami.
 
-`acr purge`podporuje několik volitelných parametrů. V příkladech v tomto článku se používají následující dvě:
+`acr purge` podporuje několik volitelných parametrů. V příkladech v tomto článku se používají následující dvě:
 
-* `--untagged`– Určuje, že se odstraní manifesty, které nemají přidružené značky (*netagované manifesty*).
-* `--dry-run`– Určuje, že nejsou odstraněna žádná data, ale výstup je stejný, jako kdyby byl příkaz spuštěn bez tohoto příznaku. Tento parametr je vhodný pro testování příkazu vyčistit, aby se zajistilo, že nechtěně neodstraní data, která máte v úmyslu zachovat.
+* `--untagged` – Určuje, že se odstraní manifesty, které nemají přidružené značky (*netagované manifesty*).
+* `--dry-run` – Určuje, že nejsou odstraněna žádná data, ale výstup je stejný, jako kdyby byl příkaz spuštěn bez tohoto příznaku. Tento parametr je vhodný pro testování příkazu vyčistit, aby se zajistilo, že nechtěně neodstraní data, která máte v úmyslu zachovat.
 
 Další parametry získáte spuštěním `acr purge --help` . 
 
-`acr purge`podporuje další funkce příkazů ACR Tasks, včetně [proměnných pro spuštění](container-registry-tasks-reference-yaml.md#run-variables) a [protokolů spuštění úloh](container-registry-tasks-logs.md) , které jsou streamované a také uložené pro pozdější načtení.
+`acr purge` podporuje další funkce příkazů ACR Tasks, včetně [proměnných pro spuštění](container-registry-tasks-reference-yaml.md#run-variables) a [protokolů spuštění úloh](container-registry-tasks-logs.md) , které jsou streamované a také uložené pro pozdější načtení.
 
 ### <a name="run-in-an-on-demand-task"></a>Spuštění v úloze na vyžádání
 
