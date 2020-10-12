@@ -8,10 +8,10 @@ ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.openlocfilehash: ae7e85624f5da06603ddc2675787b84203bc987b
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087200"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Řešení potíží se službou Azure Digital vlákna: výstrahy
@@ -44,17 +44,17 @@ Návod k vyplnění těchto polí najdete v tématu [*Přehled výstrah v Micros
 
 Tady je výpis z procesu *podmínky výběru* , který ilustruje, jaké typy signálů upozornění jsou k dispozici pro digitální vlákna Azure. Na této stránce můžete filtrovat typ signálu a vybrat požadovaný signál ze seznamu.
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="Snímek obrazovky, na které se zobrazuje první stránka konfigurovat logiku signálu V poli typ signálu se zvýrazní Výběr metrik nebo protokolů aktivit a seznam metrik, které se dají vybrat.":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="Snímek obrazovky se stránkou vytvořit pravidlo výstrahy s oddíly pro podrobnosti oboru, podmínky, skupiny akcí a pravidla výstrahy":::
 
 Po výběru signálu budete požádáni o konfiguraci logiky výstrahy. Můžete filtrovat dimenzi, nastavit prahovou hodnotu pro výstrahu a nastavit četnost kontrol pro podmínku. Tady je příklad nastavení výstrahy pro, když průměrná metrika četnosti selhání směrování překročí 5%.
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="Snímek obrazovky, na které se zobrazuje druhá stránka konfigurace logiky signálů Na stránce se zobrazuje historie metrik, která obsahuje oblast pro filtrování podle dimenze, jako je například operace Event Grid, a sekce pro definování logiky výstrah, jako je Average, je větší než 5.":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="Snímek obrazovky se stránkou vytvořit pravidlo výstrahy s oddíly pro podrobnosti oboru, podmínky, skupiny akcí a pravidla výstrahy":::
 
 ### <a name="verify-success"></a>Ověřit úspěch
 
 Po nastavení výstrah se zobrazí zpátky na stránce s *upozorněními* pro vaši instanci.
  
-:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Snímek obrazovky se stránkou s výstrahami a tlačítkem, který se má přidat Je nakonfigurovaná jedna výstraha." lightbox="media/troubleshoot-alerts/alerts-post.png":::
+:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="Snímek obrazovky se stránkou vytvořit pravidlo výstrahy s oddíly pro podrobnosti oboru, podmínky, skupiny akcí a pravidla výstrahy" lightbox="media/troubleshoot-alerts/alerts-post.png":::
 
 ## <a name="next-steps"></a>Další kroky
 

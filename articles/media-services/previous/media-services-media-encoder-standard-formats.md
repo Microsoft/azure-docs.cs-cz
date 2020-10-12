@@ -15,10 +15,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 78236a334b6c75f823819c70c0cdbb75bb30191d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89257428"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Kodeky a standardní formáty kodéru médií
@@ -34,17 +34,17 @@ Tento dokument obsahuje seznam nejběžnějších formátů souborů pro import 
 ## <a name="input-containerfile-formats"></a>Vstupní formáty kontejneru nebo souborů
 | Formáty souborů (přípony souborů) | Podporováno |
 | --- | --- |
-| FLV (s kodeky H.264 a AAC) (.flv) |Ano |
-| MXF (.mxf) |Ano |
-| GXF (.gxf) |Ano |
-| MPEG2-PS, MPEG2-TS, 3GP (.ts, .ps, .3gp, .3gpp, .mpg) |Ano |
-| Windows Media Video (WMV) a ASF (.wmv, .asf) |Ano |
-| AVI (nekomprimovaný s 8bitovým nebo 10bitovým kódováním) (.avi) |Ano |
-| MP4 (.mp4, .m4a, .m4v) a ISMV (.isma, .ismv) |Ano |
-| [Microsoft Digital Video Recording (DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) (.dvr-ms) |Ano |
-| Matroska a WebM (.mkv) |Ano |
-| WAVE a WAV (.wav) |Ano |
-| QuickTime (.mov) |Ano |
+| FLV (s kodeky H.264 a AAC) (.flv) |Yes |
+| MXF (.mxf) |Yes |
+| GXF (.gxf) |Yes |
+| MPEG2-PS, MPEG2-TS, 3GP (.ts, .ps, .3gp, .3gpp, .mpg) |Yes |
+| Windows Media Video (WMV) a ASF (.wmv, .asf) |Yes |
+| AVI (nekomprimovaný s 8bitovým nebo 10bitovým kódováním) (.avi) |Yes |
+| MP4 (.mp4, .m4a, .m4v) a ISMV (.isma, .ismv) |Yes |
+| [Microsoft Digital Video Recording (DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) (.dvr-ms) |Yes |
+| Matroska a WebM (.mkv) |Yes |
+| WAVE a WAV (.wav) |Yes |
+| QuickTime (.mov) |Yes |
 
 > [!NOTE]
 > Výše uvedený seznam obsahuje běžnější přípony souborů. Media Encoder Standard podporuje mnoho dalších (například:. m2ts,. mpeg2video,. QT). Pokud se pokusíte soubor zakódovat a zobrazí se chybová zpráva s informacemi o tom, že formát není podporován, zadejte [svou zpětnou](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)vazbu.
@@ -64,41 +64,41 @@ nebo
 | Vstupní kodeky videa | Podporováno |
 | --- | --- |
 | AVC s 8bitovou nebo 10bitovou hloubkou až do vzorkování 4:2:2, včetně AVCIntra |8bitová hloubka, 4:2:0 a 4:2:2 |
-| Avid DNxHD (v souborech MXF) |Ano |
-| DVCPro a DVCProHD (v souborech MXF) |Ano |
-| Digitální video (DV) (v souborech AVI) |Ano |
-| JPEG 2000 |Ano |
+| Avid DNxHD (v souborech MXF) |Yes |
+| DVCPro a DVCProHD (v souborech MXF) |Yes |
+| Digitální video (DV) (v souborech AVI) |Yes |
+| JPEG 2000 |Yes |
 | MPEG-2 (až do profilu 422 a vysoké úrovně; včetně variant, jako jsou XDCAM, XDCAM HD, XDCAM IMX, CableLabs® a D10) |Až do profilu 422 |
-| MPEG-1 |Ano |
-| VC-1 a WMV9 |Ano |
-| Canopus HQ a HQX |Ne |
-| MPEG-4 Part 2 |Ano |
-| [Theora](https://en.wikipedia.org/wiki/Theora) |Ano |
-| Nekomprimovaný formát YUV420 nebo Mezzanine |Ano |
-| Apple ProRes 422 |Ano |
-| Apple ProRes 422 LT |Ano |
-| Apple ProRes 422 HQ |Ano |
-| Apple ProRes Proxy |Ano |
-| Apple ProRes 4444 |Ano |
-| Apple ProRes 4444 XQ |Ano |
+| MPEG-1 |Yes |
+| VC-1 a WMV9 |Yes |
+| Canopus HQ a HQX |No |
+| MPEG-4 Part 2 |Yes |
+| [Theora](https://en.wikipedia.org/wiki/Theora) |Yes |
+| Nekomprimovaný formát YUV420 nebo Mezzanine |Yes |
+| Apple ProRes 422 |Yes |
+| Apple ProRes 422 LT |Yes |
+| Apple ProRes 422 HQ |Yes |
+| Apple ProRes Proxy |Yes |
+| Apple ProRes 4444 |Yes |
+| Apple ProRes 4444 XQ |Yes |
 | HEVC/H. 265| Hlavní a hlavní profily 10 (&#42;)<br/>Hlavní Podpora profilů pro 10 je určená pro obsah 8bit 4:2:0. |
 
 ## <a name="input-audio-codecs"></a>Vstupní zvukové kodeky
 | Kodeky vstupního zvuku | Podporováno |
 | --- | --- |
-| AAC (AAC-LC, AAC-HE a AAC-HEv2; až do prostorového zvuku 5.1) |Ano |
-| MPEG Layer 2 |Ano |
-| MP3 (MPEG-1 Audio Layer 3) |Ano |
-| Windows Media Audio |Ano |
-| WAV a PCM |Ano |
-| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Ano |
-| [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Ano |
-| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Ano |
-| AMR (adaptivní s více rychlostmi) |Ano |
-| AES (SMPTE 331M a 302M, AES3-2003) |Ne |
-| Dolby® E |Ne |
-| Dolby® Digital (AC3) |Ne |
-| Dolby® Digital Plus (E-AC3) |Ne |
+| AAC (AAC-LC, AAC-HE a AAC-HEv2; až do prostorového zvuku 5.1) |Yes |
+| MPEG Layer 2 |Yes |
+| MP3 (MPEG-1 Audio Layer 3) |Yes |
+| Windows Media Audio |Yes |
+| WAV a PCM |Yes |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Yes |
+| [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Yes |
+| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Yes |
+| AMR (adaptivní s více rychlostmi) |Yes |
+| AES (SMPTE 331M a 302M, AES3-2003) |No |
+| Dolby® E |No |
+| Dolby® Digital (AC3) |No |
+| Dolby® Digital Plus (E-AC3) |No |
 
 ## <a name="output-formats-and-codecs"></a>Formáty výstupu a kodeky
 V následující tabulce jsou uvedeny kodeky a formáty souborů, které jsou podporovány pro export.

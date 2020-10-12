@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 2cc2f954f4255c00b7c3549ab5d33d71b240fb70
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86507663"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimalizace privátního cloudu CloudSimple pro instalaci Oracle RAC
@@ -50,10 +50,10 @@ V následujícím příkladu se používají disky definované v následující 
 | MŘÍŽKY                                      | Umístění instalace pro software Oracle Grid     | No          |
 | DATABÁZE                                  | Umístění instalace pro software Oracle Database | No          |
 | ORAHOME                                   | Základní umístění pro binární soubory Oracle Database    | No          |
-| DATA1, DATA2, DATA3, DATA4                | Disk, kde jsou uloženy soubory databáze Oracle   | Ano         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Disky protokolu opětovného provedení                                | Ano         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | Hlasovací disky                                  | Ano         |
-| FRA1, FRA2                                | Rychlé disky oblasti obnovení                      | Ano         |
+| DATA1, DATA2, DATA3, DATA4                | Disk, kde jsou uloženy soubory databáze Oracle   | Yes         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Disky protokolu opětovného provedení                                | Yes         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | Hlasovací disky                                  | Yes         |
+| FRA1, FRA2                                | Rychlé disky oblasti obnovení                      | Yes         |
 
 ![Konfigurace disku virtuálního počítače Oracle](media/oracle-vmdk.png)
 

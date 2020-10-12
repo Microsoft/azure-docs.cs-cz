@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91704724"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Plánování a Správa nákladů na Azure Machine Learning
@@ -109,11 +109,11 @@ Tady je několik možností, které máte:
 
 ## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a> Použití virtuálních počítačů s nízkou prioritou
 
-Azure umožňuje používat nadbytečnou nevyužitou kapacitu jako virtuální počítače s nízkou prioritou napříč sadami Virtual Machine Scale Sets, službou Batch a službou Machine Learning. Tato přidělení jsou předem emptible, ale v porovnání s vyhrazenými virtuálními počítači se přidávají za nižší cenu. Obecně doporučujeme používat pro úlohy služby Batch virtuální počítače s nízkou prioritou. Měli byste je také použít, pokud se přerušení budou obnovovat buď prostřednictvím opětovného odeslání (pro Batch Inferencing), nebo prostřednictvím restartu (pro školení s hloubkovým učením s kontrolními body).
+Azure umožňuje používat nadbytečnou nevyužitou kapacitu jako Low-Priority virtuálních počítačů napříč sadami škálování virtuálních počítačů, službou Batch a službou Machine Learning. Tato přidělení jsou předem emptible, ale v porovnání s vyhrazenými virtuálními počítači se přidávají za nižší cenu. Obecně doporučujeme používat pro úlohy služby Batch Low-Priority virtuální počítače. Měli byste je také použít, pokud se přerušení budou obnovovat buď prostřednictvím opětovného odeslání (pro Batch Inferencing), nebo prostřednictvím restartu (pro školení s hloubkovým učením s kontrolními body).
 
-Virtuální počítače s nízkou prioritou mají jedinou kvótu oddělenou od hodnoty vyhrazené kvóty, kterou používá rodina virtuálních počítačů. Přečtěte si [Další informace o kvótách AmlCompute](how-to-manage-quotas.md).
+Virtuální počítače s Low-Priority mají jedinou kvótu oddělenou od hodnoty vyhrazené kvóty, kterou používá rodina virtuálních počítačů. Přečtěte si [Další informace o kvótách AmlCompute](how-to-manage-quotas.md).
 
- Virtuální počítače s nízkou prioritou nefungují pro výpočetní instance, protože potřebují podporovat interaktivní poznámkové bloky.
+ Low-Priority virtuální počítače nefungují pro výpočetní instance, protože potřebují podporovat interaktivní poznámkové bloky.
 
 ## <a name="use-reserved-instances"></a>Použití rezervovaných instancí
 

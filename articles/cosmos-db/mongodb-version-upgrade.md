@@ -8,10 +8,10 @@ ms.topic: guide
 ms.date: 09/22/2020
 ms.author: jasonh
 ms.openlocfilehash: c6369be39d0a964f07c64083e3269bb1c0c49c7f
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409659"
 ---
 # <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>Upgrade verze MongoDB přenosového protokolu rozhraní API vašeho Azure Cosmos DB pro účet MongoDB
@@ -62,27 +62,27 @@ Existující koncový bod musíte nahradit ve svých aplikacích a ovladačích,
 
 2. Z možností na levé straně vyberte okno `Features` . Tím se odhalí funkce na úrovni účtu, které jsou k dispozici pro váš databázový účet.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Azure Portal s přehledem účtu MongoDB s zvýrazněným oknem funkcí" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Azure Portal s přehledem účtu MongoDB" border="false":::
 
 3. Klikněte na `Upgrade to Mongo server version 3.6` řádek. Pokud tuto možnost nevidíte, váš účet možná nebude mít nárok na tento upgrade. Pokud se jedná o tento případ, uveďte [lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
 
-    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="Okno funkcí s možnostmi." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="Azure Portal s přehledem účtu MongoDB" border="false":::
 
 4. Projděte si informace o tomto konkrétním upgradu. Všimněte si, že upgrade bude dokončen, dokud vaše aplikace nepoužijí aktualizovaný koncový bod, jak je zvýrazněno v této části. `Enable`Až budete připraveni zahájit proces, klikněte na zapnuto.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Rozšířené pokyny k upgradu." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Azure Portal s přehledem účtu MongoDB" border="false":::
 
 5. Po spuštění procesu se v `Features` nabídce zobrazí stav upgradu. Stav bude přejít z `Pending` , do `In Progress` , do `Upgraded` . Tento proces nebude mít vliv na existující funkce nebo operace databázového účtu.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="Stav upgradu po zahájení." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="Azure Portal s přehledem účtu MongoDB" border="false":::
 
 6. Po dokončení upgradu se stav zobrazí jako `Upgraded` . Kliknutím na něj zobrazíte další informace o dalších krocích a akcích, které musíte provést k dokončení procesu. Pokud při zpracování vaší žádosti došlo k potížím, obraťte se prosím na [podporu](https://azure.microsoft.com/en-us/support/create-ticket/) .
 
-    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Stav upgradovaného účtu" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Azure Portal s přehledem účtu MongoDB" border="false":::
 
 7. **Chcete-li začít používat upgradovanou verzi vašeho databázového účtu**, vraťte se do okna `Overview` a zkopírujte nový připojovací řetězec, který chcete použít ve své aplikaci. Jakmile se aplikace připojí k novému koncovému bodu, začnou tuto upgradovanou verzi používat. Existující připojení nebudou přerušená a bude možné je aktualizovat na pohodlí. Aby se zajistilo konzistentní prostředí, musí všechny vaše aplikace používat nový koncový bod.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Nové okno s přehledem" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Azure Portal s přehledem účtu MongoDB" border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 

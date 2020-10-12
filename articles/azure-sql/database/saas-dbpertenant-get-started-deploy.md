@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 3851e6a784d244b101c2c71c67b4b2c9a8f5cbee
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618934"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Nasaďte a prozkoumejte aplikaci víceklientské SaaS, která používá model databáze na tenanta s Azure SQL Database
@@ -128,7 +128,7 @@ Aplikace Wingtip používá k řízení distribuce příchozích žádostí slu�
 
     Části předchozího formátu jsou vysvětleny v následující tabulce.
 
-    | Část adresy URL        | Popis       |
+    | Část adresy URL        | Description       |
     | :-------------- | :---------------- |
     | události. Wingtip-DPT | Části události aplikace Wingtip.<br /><br /> *– DPT* rozlišuje implementaci lístků Wingtip *na základě databáze* z jiných implementací. Příklady jsou implementace s *jedním* z aplikací na tenanta (*-SA*) nebo *víceklientské databáze* (*-Mt*). |
     | . * &lt; Uživatel &gt; * | *AF1* v příkladu. |
@@ -187,7 +187,7 @@ Pokud chcete řídit a monitorovat úlohy na pozadí, použijte následující r
 
 4. Pokud `$OneTime = $false` , generátor zatížení spustí úlohy na pozadí a pak pokračuje v běhu. Každých 10 sekund monitoruje všechny nově zřízené klienty. Pokud nastavíte `$OneTime = $true` , LoadGenerator spustí úlohy na pozadí a pak zastaví běh v popředí. Pro tento kurz ponechejte `$OneTime = $false` .
 
-   Pokud chcete zastavit nebo restartovat generátor zatížení, použijte CTRL-C nebo ukončit operaci Ctrl + Break.
+   Pokud chcete zastavit nebo restartovat generátor zátěže, použijte kombinaci kláves CTRL-C nebo stop Ctrl-Break.
 
    Pokud necháte generátor zatížení běžící v popředí, použijte jinou instanci prostředí PowerShell ISE ke spuštění dalších skriptů prostředí PowerShell.
 
@@ -251,7 +251,7 @@ Přejděte na server **tenants1-DPT- &lt; User &gt; **a vyberte **Pool1** pro zo
 
 Tyto dva grafy znázorňují, že elastické fondy a SQL Database jsou vhodné pro nepředvídatelné úlohy aplikací SaaS. V grafech se zobrazí, že každý z nich bude mít každý nárůst velikosti až 40 eDTU a všechny databáze jsou ale ve fondu 50-eDTU pohodlně podporované. Fond 50-eDTU může podporovat i těžší úlohy. Pokud jsou databáze zřízené jako samostatné databáze, každá z nich musí být S2 (50 DTU), aby podporovala shluky. Cena za čtyři jednotlivé databáze S2 je téměř třikrát cena fondu. V reálných situacích SQL Database zákazníkům spouštět až 500 databází ve fondech 200 eDTU. Další informace najdete v [kurzu monitorování výkonu](saas-dbpertenant-performance-monitoring.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - Další informace najdete v dalších [kurzech, které se sestavují na aplikaci Wingtip Tickets SaaS Database-per-tenant](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - Další informace o elastických fondech najdete v tématu [co je elastický fond Azure SQL?](elastic-pool-overview.md).

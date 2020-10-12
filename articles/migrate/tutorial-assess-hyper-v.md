@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: be5099aa515a2331cb05fa8bf6ea76c7544ec1df
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90089151"
 ---
 # <a name="tutorial-assess-hyper-v-vms-for-migration-to-azure"></a>Kurz: posouzení virtuálních počítačů Hyper-V pro migraci do Azure
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Než budete postupovat podle tohoto kurzu a vyhodnoťte počítače pro migraci na virtuální počítače Azure, ujistěte se, že jste zjistili počítače, které chcete vyhodnotit:
     - Pokud chcete zjistit počítače pomocí Azure Migrate zařízení, [postupujte podle tohoto kurzu](tutorial-discover-hyper-v.md). 
@@ -44,7 +44,7 @@ Rozhodněte, jestli chcete spustit posouzení pomocí kritérií pro změnu veli
 
 **Posouzení** | **Podrobnosti** | **Doporučení**
 --- | --- | ---
-**V místním prostředí** | Vyhodnoťte na základě dat nebo metadat konfigurace počítače.  | Doporučená velikost virtuálního počítače Azure je založena na velikosti místního virtuálního počítače.<br/><br> Doporučený typ disku Azure je založený na tom, co jste vybrali v nastavení typ úložiště v posouzení.
+**Jako v místním prostředí** | Vyhodnoťte na základě dat nebo metadat konfigurace počítače.  | Doporučená velikost virtuálního počítače Azure je založena na velikosti místního virtuálního počítače.<br/><br> Doporučený typ disku Azure je založený na tom, co jste vybrali v nastavení typ úložiště v posouzení.
 **Na základě výkonu** | Vyhodnoťte na základě shromážděných dynamických údajů o výkonu. | Doporučená velikost virtuálního počítače Azure vychází z dat využití procesoru a paměti.<br/><br/> Doporučený typ disku vychází z IOPS a propustnosti místních disků.
 
 
@@ -80,7 +80,7 @@ Proveďte posouzení následujícím způsobem:
         - Případně vyberte typ úložiště, který chcete použít pro virtuální počítač, když ho migrujete.
     - V části **rezervované instance**určete, jestli chcete pro virtuální počítač použít rezervované instance, když ho migrujete.
         - Pokud vyberete možnost použití rezervované instance, nemůžete zadat hodnotu "**sleva (%)**" nebo **Doba provozu virtuálního počítače**. 
-        - [Přečtěte si další informace](https://aka.ms/azurereservedinstances).
+        - [Další informace](https://aka.ms/azurereservedinstances).
 8. Ve **velikosti virtuálního počítače**:
  
     - V části **kritéria změny velikosti**vyberte, pokud chcete vyhodnotit vyhodnocení pro data konfigurace počítače/metadata nebo na data založená na výkonu. Pokud používáte údaje o výkonu:
@@ -122,12 +122,12 @@ Posouzení popisuje:
 
 - **Připravenost na Azure**: jestli jsou virtuální počítače vhodné pro migraci do Azure.
 - **Odhad měsíčních nákladů**: Odhadované měsíční náklady na výpočetní prostředky a úložiště pro provoz virtuálních počítačů v Azure.
-- **Odhad měsíčních nákladů na úložiště**: Odhadované náklady na diskové úložiště po migraci.
+- **Odhad měsíčních nákladů na úložiště:** Odhadované náklady na diskové úložiště po migraci
 
 Zobrazení posouzení:
 
 1. V části **servery**  >  **Azure Migrate: vyhodnocování serveru**klikněte na číslo vedle **posouzení**.
-2. V **posouzení**vyberte posouzení, které chcete otevřít. Příklad (odhad a náklady pouze pro příklad): 
+2. Výběrem posouzení v části **Posouzení** ho otevřete. Příklad (odhad a náklady pouze pro příklad): 
 
     ![Souhrn posouzení](./media/tutorial-assess-vmware-azure-vm/assessment-summary.png)
 
@@ -143,7 +143,7 @@ Zobrazení posouzení:
     - **Nepřipraveno pro Azure**: zobrazuje problémy a navrhovanou nápravu.
     - **Připravenost neznámá**: používá se, když Azure Migrate nemůže vyhodnotit připravenost, protože dojde k problémům s dostupností dat.
 
-3. Vyberte stav **připravenosti na Azure** . Můžete si prohlédnout podrobnosti připravenosti na virtuální počítače. Můžete také přejít k podrobnostem a zobrazit podrobnosti o virtuálním počítači, včetně výpočetních prostředků, úložiště a nastavení sítě.
+3. Vyberte stav **připravenosti pro Azure**. Můžete si prohlédnout podrobnosti připravenosti na virtuální počítače. Můžete také přejít k podrobnostem a zobrazit podrobnosti o virtuálním počítači, včetně výpočetních prostředků, úložiště a nastavení sítě.
 
 ### <a name="review-cost-estimates"></a>Přehled odhadovaných nákladů
 
@@ -152,7 +152,7 @@ Souhrn posouzení zobrazuje odhadované náklady na výpočetní prostředky a �
 1. Zkontrolujte měsíční celkové náklady. Náklady se sčítají pro všechny virtuální počítače v hodnocené skupině.
 
     - Odhad nákladů vychází z doporučení týkajících se velikosti počítače, jeho disků a vlastností.
-    - Zobrazí se Odhadované měsíční náklady na výpočetní prostředky a úložiště.
+    - Zobrazí se odhadované měsíční náklady na výpočetní prostředky a úložiště.
     - Odhad nákladů slouží ke spuštění místních virtuálních počítačů na virtuálních počítačích Azure. Odhad nebere v úvahu náklady na PaaS nebo SaaS.
 
 2. Projděte si měsíční náklady na úložiště. Zobrazení ukazuje agregované náklady na úložiště pro skupinu pohodnocenou a rozdělené přes různé typy disků úložiště. 

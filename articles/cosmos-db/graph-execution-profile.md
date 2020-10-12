@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: jasonh
 ms.openlocfilehash: 841d2bcc50b62554fac8643048a3b3534e82dfa3
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91408228"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Vyhodnocování dotazů Gremlin s využitím kroku profilu spuštění
@@ -22,7 +22,7 @@ Tento článek obsahuje přehled použití kroku profilu spuštění pro grafov�
 
 Chcete-li použít tento krok, stačí na `executionProfile()` konci dotazu Gremlin připojit volání funkce. **Dotaz Gremlin se** spustí a výsledek operace vrátí objekt odpovědi JSON s profilem spuštění dotazu.
 
-Příklad:
+Například:
 
 ```java
     // Basic traversal
@@ -155,7 +155,7 @@ Odezva funkce executionProfile () bude vracet hierarchii objektů JSON s násled
     - `storeOps.count`: Představuje počet výsledků, které tato operace úložiště vrátila.
     - `storeOps.size`: Představuje velikost výsledku dané operace úložiště v bajtech.
 
-Cosmos DB – operátor běhu Gremlin|Popis
+Cosmos DB – operátor běhu Gremlin|Description
 ---|---
 `GetVertices`| Tento krok získá predikátové sady objektů z trvalé vrstvy. 
 `GetEdges`| Tento krok získá hrany sousedící se sadou vrcholů. Tento krok může mít za následek jednu nebo více operací úložiště.

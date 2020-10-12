@@ -4,10 +4,10 @@ description: Pomocí Azure Backup můžete zálohovat a obnovovat Azure Stack so
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: cae95c10c510969cc0553a54a506789d6be427d7
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89180979"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Zálohování souborů a aplikací na Azure Stack
@@ -52,13 +52,13 @@ Pokud chcete nakonfigurovat Azure Backup Server k ochraně souborů v Azure Stac
 
     Chcete-li vybrat možnost Chci **online ochranu**, musíte nejprve vybrat možnost **Chci krátkodobou ochranu pomocí:** disk. Azure Backup Server není chráněn na pásku, takže disk je jedinou volbou pro krátkodobou ochranu.
 
-5. Na obrazovce **zadat krátkodobé cíle** zvolte, jak dlouho chcete zachovat body obnovení uložené na disk a kdy se mají ukládat přírůstkové zálohy. Vyberte **Další**.
+5. Na obrazovce **zadat Short-Termé cíle** zvolte, jak dlouho se mají zachovat body obnovení uložené na disk a kdy se mají ukládat přírůstkové zálohy. Vyberte **Další**.
 
     > [!IMPORTANT]
     > **Neměli byste uchovávat data** obnovení (zálohování) na discích s Azure Backup Server po dobu delší než pět dní.
     >
 
-    ![Zadat krátkodobé cíle](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
+    ![Určení Short-Termch cílů](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
 
     Místo výběru intervalu pro přírůstkové zálohování, aby bylo možné spustit expresní úplné zálohování těsně před každým naplánovaným bodem obnovení, vyberte možnost **těsně před bodem obnovení**. Pokud chráníte úlohy aplikací, Azure Backup Server vytvoří body obnovení podle plánu četnosti synchronizací (Pokud aplikace podporuje přírůstkové zálohování). Pokud aplikace nepodporuje přírůstkové zálohování, Azure Backup Server spustí expresní úplné zálohování.
 

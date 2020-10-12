@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
 ms.openlocfilehash: a54de6dbfb320ca530e9c885af9ebe5d833274cc
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322918"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora virtuálních počítačů 2. generace v Azure
@@ -67,7 +67,7 @@ Virtuální počítače generace 2 podporují následující image na webu Marke
 * Oracle Linux 7,7, 7,7-CI
 
 > [!NOTE]
-> Konkrétní velikosti virtuálních počítačů, jako je Mv2-Series, můžou podporovat jenom podmnožinu těchto imagí. Podrobnější informace najdete v příslušné dokumentaci k virtuálnímu počítači.
+> Konkrétní velikosti virtuálního počítače, jako je například Mv2-Series, mohou podporovat pouze podmnožinu těchto imagí. podrobné informace najdete v příslušné dokumentaci k virtuálnímu počítači.
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Místní a Azure generace 2 – virtuální počítače
 
@@ -163,10 +163,10 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 * **Jsou virtuální počítače generace 2 dostupné ve všech oblastech Azure?**  
-    Yes. Ale ne všechny [velikosti virtuálních počítačů 2. generace](#generation-2-vm-sizes) jsou dostupné v každé oblasti. Dostupnost virtuálního počítače 2. generace závisí na dostupnosti velikosti virtuálního počítače.
+    Ano. Ale ne všechny [velikosti virtuálních počítačů 2. generace](#generation-2-vm-sizes) jsou dostupné v každé oblasti. Dostupnost virtuálního počítače 2. generace závisí na dostupnosti velikosti virtuálního počítače.
 
 * **Existuje cenový rozdíl mezi virtuálními počítači generace 1 a generace 2?**  
-   No.
+   Ne.
 
 * **Mám soubor. VHD z místního virtuálního počítače 2. generace. Můžu soubor. VHD použít k vytvoření virtuálního počítače generace 2 v Azure?**
   Ano, můžete přenést soubor. VHD generace 2 do Azure a použít ho k vytvoření virtuálního počítače 2. generace. K tomu použijte následující postup:
@@ -198,7 +198,7 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
   Může se zobrazit upozornění na disky s operačním systémem větší než 2 TiB. Upozornění se nevztahuje na virtuální počítače 2. generace. Velikosti disků s operačním systémem větší než 4 TiB se ale nepodporují.
 
 * **Podporují virtuální počítače generace 2 urychlené síťové služby?**  
-    Yes. Další informace najdete v tématu [Vytvoření virtuálního počítače s akcelerovanými síťovými](../virtual-network/create-vm-accelerated-networking-cli.md)službami.
+    Ano. Další informace najdete v tématu [Vytvoření virtuálního počítače s akcelerovanými síťovými](../virtual-network/create-vm-accelerated-networking-cli.md)službami.
 
 * **Podporují virtuální počítače generace 2 v Azure zabezpečené spouštění nebo vTPM?**
     Virtuální počítače 1. generace a 2. generace v Azure nepodporují zabezpečené spouštění ani vTPM. 
@@ -207,7 +207,7 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
     Ne, virtuální počítače 2. generace podporují jenom virtuální pevný disk.
 
 * **Podporují virtuální počítače generace 2 Azure Ultra Disk Storage?**  
-    Yes.
+    Ano.
 
 * **Můžu migrovat virtuální počítač z generace 1 na generaci 2?**  
     Ne, generaci virtuálního počítače po jeho vytvoření nemůžete změnit. Pokud potřebujete přepínat mezi generací virtuálních počítačů, vytvořte nový virtuální počítač jiné generace.

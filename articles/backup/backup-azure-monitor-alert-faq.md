@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.openlocfilehash: cf6929b9b926a6e6469f3fa789a19e60d5883d21
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89181489"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Výstraha monitorování Azure Backup – Nejčastější dotazy
@@ -60,7 +60,7 @@ K vyvolání výstrahy dojde během 20 minut od Azure Backup chyby.
 
 ### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Existuje případ, kdy se e-mail neposílá, pokud jsou nakonfigurovaná oznámení?
 
-Yes. V následujících situacích se oznámení neodesílají:
+Ano. V následujících situacích se oznámení neodesílají:
 
 * Pokud jsou oznámení konfigurována každou hodinu a je vyvolána a vyřešena v průběhu hodiny
 * Při zrušení úlohy

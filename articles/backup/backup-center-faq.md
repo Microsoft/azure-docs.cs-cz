@@ -4,10 +4,10 @@ description: Tento článek obsahuje odpovědi na nejčastější dotazy týkaj�
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: b10a9e73e65cf12c43ce28b429a8f12e0b960a76
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995777"
 ---
 # <a name="backup-center---frequently-asked-questions"></a>Centrum zálohování – Nejčastější dotazy
@@ -30,7 +30,7 @@ Centrum zálohování se zaměřuje na poskytování informací v reálném čas
 
 ### <a name="do-i-need-to-configure-anything-to-see-data-in-backup-center"></a>Potřebuji něco nakonfigurovat, aby se zobrazila data v centru záloh?
 
-No. Centrum zálohování je připravené z boxu. Pokud ale chcete zobrazit [sestavy zálohování](https://docs.microsoft.com/azure/backup/configure-reports) v části Backup Center, musíte nakonfigurovat vytváření sestav pro vaše trezory.
+Ne. Centrum zálohování je připravené z boxu. Pokud ale chcete zobrazit [sestavy zálohování](https://docs.microsoft.com/azure/backup/configure-reports) v části Backup Center, musíte nakonfigurovat vytváření sestav pro vaše trezory.
 
 ### <a name="do-i-need-to-have-any-special-permissions-to-use-backup-center"></a>Musím pro používání služby Backup Center potřebovat nějaká zvláštní oprávnění?
 

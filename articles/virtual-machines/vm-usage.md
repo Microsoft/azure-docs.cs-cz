@@ -11,10 +11,10 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
 ms.openlocfilehash: d43f94d3555a660d6b7c8f755eebfec253d31dc2
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322891"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Principy využití virtuálních počítačů Azure
@@ -33,9 +33,9 @@ Začněte [stažením podrobností o použití](../cost-management-billing/manag
 | Meter Region| Určuje polohu datového centra. U některých služeb vycházejí ceny z umístění datového centra.|  `JA East`|
 | Jednotka| Určuje jednotku, po které se služba účtuje. Výpočetní prostředky se účtují za hodinu.| `Hours`|
 | Spotřebované| Množství prostředku spotřebovaného za tento den. U výpočetních prostředků účtujeme za každou minutu, po kterou se virtuální počítač spustil po určitou hodinu (až 6 desetinných míst přesnosti).| `1, 0.5`|
-| Umístění prostředku  | Určuje datové centrum, ve kterém prostředek běží.| `JA East`|
+| Resource Location  | Určuje datové centrum, ve kterém prostředek běží.| `JA East`|
 | Consumed Service | Služba platformy Azure, kterou jste použili.| `Microsoft.Compute`|
-| Skupina prostředků | Skupina prostředků, ve které nasazený prostředek běží. Další informace najdete v tématu [přehled Azure Resource Manager.](../azure-resource-manager/management/overview.md)|`MyRG`|
+| Resource Group | Skupina prostředků, ve které nasazený prostředek běží. Další informace najdete v tématu [přehled Azure Resource Manager.](../azure-resource-manager/management/overview.md)|`MyRG`|
 | Instance ID | Identifikátor prostředku. Tento identifikátor obsahuje název prostředku, který jste zadali při jeho vytváření. Pro virtuální počítače bude ID instance obsahovat SubscriptionId, ResourceGroupName a VMName (nebo název sady škálování pro použití sady škálování).| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>nebo<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
 | Značky| Značka, kterou přiřadíte prostředku. Značky můžete použít k seskupení fakturačních záznamů. Naučte se, jak pomocí rozhraní příkazového [řádku](./linux/tag.md) nebo [prostředí PowerShell](./windows/tag.md) označit Virtual Machines k dispozici pouze pro virtuální počítače s správce prostředků.| `{"myDepartment":"RD","myUser":"myName"}`|
 | Další informace | Metadata konkrétních služeb. V případě virtuálních počítačů v poli Další informace vyplníme následující data: <br><br> Obrázek konkrétního typu obrázku, který jste spustili. Úplný seznam podporovaných řetězců najdete níže v části typy imagí.<br><br> Typ služby: velikost, kterou jste nasadili.<br><br> VMName: název vašeho virtuálního počítače. Toto pole se naplní jenom pro virtuální počítače sady škálování. Pokud potřebujete název virtuálního počítače pro virtuální počítače sady škálování, najdete ho ve výše uvedeném řetězci ID instance.<br><br> Položku UsageType: Určuje typ použití, který představuje.<br><br> ComputeHR je využití výpočetních hodin pro příslušný virtuální počítač, jako je Standard_D1_v2.<br><br> ComputeHR_SW je poplatek za software Premium, pokud virtuální počítač používá software Premium, například Microsoft R Server. | Virtual Machines<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>Virtual Machine Scale Sets<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Software Premium<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
@@ -59,7 +59,7 @@ V případě některých imagí v galerii Azure se typ obrázku vyplní v poli D
 - Verze Preview Windows serveru 
 
 ## <a name="service-type"></a>Typ služby
-Pole typ služby v poli Další informace odpovídá konkrétní velikosti virtuálního počítače, kterou jste nasadili. Ceny virtuálních počítačů služby Premium Storage (založené na jednotkách SSD) a virtuálních počítačů bez úrovně Premium (založené na hard) se účtují stejně. Pokud nasadíte velikost založenou na SSD, jako je třeba standard \_ DS2 \_ v2, uvidíte ve `Standard\_D2\_v2 VM` sloupci dílčí kategorie měřiče () hodnotu non-SSD () a v `Standard\_DS2\_v2` poli Další informace velikost SSD ().
+Pole typ služby v poli Další informace odpovídá konkrétní velikosti virtuálního počítače, kterou jste nasadili. Ceny virtuálních počítačů služby Premium Storage (založené na jednotkách SSD) a virtuálních počítačů bez úrovně Premium (založené na hard) se účtují stejně. Pokud nasadíte velikost založenou na SSD, jako je třeba standard \_ DS2 \_ v2, zobrazí se ve sloupci měřič Sub-Category velikost (), která není SSD, `Standard\_D2\_v2 VM` a do pole Další informace se nastaví velikost SSD ( `Standard\_DS2\_v2` ).
 
 ## <a name="region-names"></a>Názvy oblastí
 Název oblasti naplněný v poli umístění prostředku v podrobnostech o použití se liší od názvu oblasti používaného v Azure Resource Manager. Tady je mapování mezi hodnotami oblastí:

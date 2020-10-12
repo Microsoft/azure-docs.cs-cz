@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 991e81c46a0cd6c587ac3366b63ba4da6a07f7e7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336509"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Vědecké zpracování týmových dat v akci: použití clusterů Azure HDInsight Hadoop
@@ -813,7 +813,7 @@ Chcete-li spustit tento dotaz z adresáře podregistr:
 hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 ```
 
-Teď máme interní tabulku **nyctaxidb. nyctaxi_downsampled_dataset**, ke které se dá dostat pomocí modulu [Import dat][import-data] z Machine Learning. Kromě toho můžeme použít tuto datovou sadu pro vytváření Machine Learningch modelů.  
+Teď máme interní tabulku, **nyctaxidb.nyctaxi_downsampled_dataset**, ke které se dá dostat pomocí modulu [Import dat][import-data] z Machine Learning. Kromě toho můžeme použít tuto datovou sadu pro vytváření Machine Learningch modelů.  
 
 ### <a name="use-the-import-data-module-in-machine-learning-to-access-the-down-sampled-data"></a>Použití modulu import dat v Machine Learning k získání přístupu k datům, která mají nižší vzorek
 K vydávání dotazů na podregistr v modulu Machine Learning [importu dat][import-data] potřebujete přístup k pracovnímu prostoru Machine Learning. Potřebujete také přístup k přihlašovacím údajům ke clusteru a k přidruženému účtu úložiště.
