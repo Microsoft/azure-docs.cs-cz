@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: e04da10d71eed3706b87fc728a13927aeae82826
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84660123"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Rozšiřování Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks
@@ -31,7 +31,7 @@ V této příručce se dozvíte, jak:
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ### <a name="iot-central-application"></a>IoT Central aplikace
 
@@ -158,7 +158,7 @@ Následující kroky ukazují, jak importovat knihovnu, kterou vaše ukázka pot
 
 1. Na stránce **instalovat knihovnu** vyberte jako zdroj knihovny možnost **Maven** .
 
-1. Do textového pole **souřadnice** zadejte následující hodnotu:`com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+1. Do textového pole **souřadnice** zadejte následující hodnotu: `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
 
 1. Kliknutím na **nainstalovat** nainstalujte knihovnu na cluster.
 
@@ -172,7 +172,7 @@ Pomocí následujících kroků importujte Poznámkový blok datacihly, který o
 
 1. V prostředí datacihly přejděte na stránku **pracovní prostor** . Vyberte rozevírací seznam vedle názvu účtu a pak zvolte **importovat**.
 
-1. Vyberte Import z adresy URL a zadejte následující adresu:[https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
+1. Vyberte Import z adresy URL a zadejte následující adresu: [https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
 
 1. Chcete-li importovat Poznámkový blok, klikněte na tlačítko **importovat**.
 

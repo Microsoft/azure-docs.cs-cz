@@ -11,10 +11,10 @@ ms.date: 02/25/2020
 ms.author: lcozzens
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: dc816f54a690a4c72c44d70ecbf2cc0156ac84ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87498306"
 ---
 # <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Směrování událostí konfigurace aplikace Azure do webového koncového bodu pomocí Azure CLI
@@ -135,6 +135,6 @@ az group delete --name <resource_group_name>
 
 Když teď víte, jak vytvářet témata a odběry událostí, přečtěte si další informace o událostech klíč-hodnota a o tom, co Event Grid vám může pomáhat:
 
-- [Reakce na události klíč-hodnota](concept-app-configuration-event.md)
+- [Reakce na události Key-Value](concept-app-configuration-event.md)
 - [Informace o službě Event Grid](../event-grid/overview.md)
 - [Obslužné rutiny Azure Event Grid](../event-grid/event-handlers.md)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: surmb
 ms.openlocfilehash: ebd06b0b78ee511dce535ff4220df03087fb6906
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723312"
 ---
 # <a name="application-gateway-components"></a>Komponenty aplikační brány
@@ -77,7 +77,7 @@ Existují dva typy naslouchacího procesu:
 
 Po vytvoření naslouchacího procesu ho přidružíte k pravidlu směrování požadavků. Toto pravidlo určuje, jak má být žádost o naslouchací službě směrována do back-endu. Pravidlo směrování požadavků taky obsahuje back-end fond, který se má směrovat, a nastavení HTTP, kde se zmiňuje port back-endu, protokol atd.
 
-## <a name="request-routing-rules"></a>Pravidla směrování žádostí
+## <a name="request-routing-rules"></a>Vyžádání pravidel směrování
 
 Pravidlo směrování požadavků je klíčovou součástí služby Application Gateway, protože určuje, jak směrovat provoz na naslouchací proces. Pravidlo váže naslouchací proces, fond back-end serverů a nastavení HTTP back-endu.
 

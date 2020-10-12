@@ -11,10 +11,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: de5dd051804f3a0a7d1b0d32b998262af13e8926
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85389186"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Povolit možnost zůstat přihlášeni (políčko zůstat přihlášeni) v Azure Active Directory B2C
@@ -90,9 +90,9 @@ Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatel
     </UserJourneyBehaviors>
     ```
 
-    - **SessionExpiryType** – určuje, jak je relace rozšířena o čas zadaný v `SessionExpiryInSeconds` a `KeepAliveInDays` . `Rolling`Hodnota (výchozí) znamená, že relace je rozšířena pokaždé, když uživatel provede ověření. `Absolute`Hodnota znamená, že se uživatel po uplynutí zadaného časového období nuceně znovu ověří.
+    - **SessionExpiryType** – určuje, jak je relace rozšířena o čas zadaný v `SessionExpiryInSeconds` a  `KeepAliveInDays` . `Rolling`Hodnota (výchozí) znamená, že relace je rozšířena pokaždé, když uživatel provede ověření. `Absolute`Hodnota znamená, že se uživatel po uplynutí zadaného časového období nuceně znovu ověří.
 
-    - **SessionExpiryInSeconds** – doba života souborů cookie relací v případě, že je možnost *zůstat přihlášená* , není povolená nebo uživatel nevybere možnost *zůstat přihlášeni*. Platnost relace skončí po úspěšném dokončení `SessionExpiryInSeconds` nebo když je prohlížeč zavřený.
+    - **SessionExpiryInSeconds**  – doba života souborů cookie relací v případě, že je možnost *zůstat přihlášená* , není povolená nebo uživatel nevybere možnost *zůstat přihlášeni*. Platnost relace skončí po úspěšném dokončení `SessionExpiryInSeconds` nebo když je prohlížeč zavřený.
 
     - **KeepAliveInDays** – povolený počet souborů cookie relace, pokud je zapnutá možnost *zůstat přihlášení* a uživatel vybere možnost *zůstat přihlášeni*.  Hodnota `KeepAliveInDays` má přednost před `SessionExpiryInSeconds` hodnotou a určuje čas vypršení platnosti relace. Pokud uživatel zavře prohlížeč a později ho znovu otevře, může se stále tiše přihlásit, dokud bude v KeepAliveInDays časovém období.
 

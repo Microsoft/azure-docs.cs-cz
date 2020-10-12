@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79477659"
 ---
 # <a name="convert-to-indicator-values"></a>Převod na hodnoty indikátoru
@@ -49,7 +49,7 @@ Předpokládejme, že máte sloupec s výsledky, které určují, jestli má ser
 | --------- | ------------- |
 | 10301     | Nízká           |
 | 10302     | Střední        |
-| 10303     | Vysoká          |
+| 10303     | Vysoké          |
 
 Když použijete příkaz **převést na hodnoty indikátoru**, Návrhář převede jeden sloupec popisků na více sloupců, které obsahují logické hodnoty:  
 
@@ -98,7 +98,7 @@ Tato část obsahuje podrobné informace o implementaci, tipy a odpovědi na nej
 
 -   Pouze sloupce označené jako kategorií lze převést na sloupce indikátorů. Pokud se zobrazí následující chyba, je pravděpodobný, že jeden ze sloupců, které jste vybrali, není kategorií:  
 
-     Chyba 0056: sloupec s názvem \<column name> není v povolené kategorii.  
+     Chyba 0056: sloupec s názvem  \<column name> není v povolené kategorii.  
 
      Ve výchozím nastavení je většina řetězcových sloupců zpracovávána jako řetězcové funkce, takže je musíte explicitně označit jako kategorií pomocí [Edit metadata](edit-metadata.md).  
 

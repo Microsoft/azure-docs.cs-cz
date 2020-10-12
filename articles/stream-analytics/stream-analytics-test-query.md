@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
 ms.openlocfilehash: deaa52494fce387bde2b105de7d34e8a4f0c5c2f
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89612150"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Testování úlohy Azure Stream Analytics na portálu
@@ -23,7 +23,7 @@ V Azure Stream Analytics můžete dotaz testovat bez spuštění nebo zastavení
 
 Azure Stream Analytics automaticky načítá události ze vstupů streamování. Můžete spustit dotazy ve výchozí ukázce nebo nastavit konkrétní časový rámec pro ukázku.
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 
 2. Vyhledejte a vyberte svou stávající úlohu Stream Analytics.
 
@@ -71,7 +71,7 @@ Azure Stream Analytics automaticky načítá události ze vstupů streamování.
 
 Místo používání živých dat můžete použít ukázková data z místního souboru a otestovat svůj Azure Stream Analytics dotaz.
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
    
 2. Vyhledejte existující úlohu Stream Analytics a vyberte ji.
 

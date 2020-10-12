@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak dynamicky přidávat oddíly do c
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87002535"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Dynamické přidávání oddílů do centra událostí (Apache Kafka téma) v Azure Event Hubs
@@ -74,7 +74,7 @@ Event Hubs poskytuje tři možnosti odesílatele:
 - **Odesilatel s kruhovým dotazováním (výchozí)** – v tomto scénáři služba Event Hubs zarobins události napříč oddíly. Služba Event Hubs ví o změnách počtu oddílů a během několika sekund se pošle na nové oddíly, které mění počet oddílů.
 
 ### <a name="receiverconsumer-clients"></a>Klienti pro přijímače/příjemce
-Event Hubs poskytuje přímým přijímačům a snadnou uživatelskou knihovnu nazvanou [hostitel procesoru událostí (stará sada SDK)](event-hubs-event-processor-host.md) nebo [procesor událostí (nová sada SDK)](event-processor-balance-partition-load.md).
+Event Hubs poskytuje přímým přijímačům a snadnou uživatelskou knihovnu nazvanou [hostitel procesoru událostí (stará sada SDK)](event-hubs-event-processor-host.md)  nebo [procesor událostí (nová sada SDK)](event-processor-balance-partition-load.md).
 
 - **Přímí příjemci** – přímí příjemci naslouchat konkrétním oddílům. Jejich chování za běhu není ovlivněno při horizontálním navýšení kapacity oddílů pro centrum událostí. Aplikace, která používá přímé přijímače, musí dbát na to, aby vybrala nové oddíly a přiřadila příjemce odpovídajícím způsobem.
 - **Procesor událostí hostitel** – tento klient automaticky neaktualizuje metadata entit. Proto by nebylo možné vyhodnotit zvýšení počtu oddílů. Opětovné vytvoření instance procesoru událostí způsobí načtení metadat entity, které zase vytvoří nové objekty blob pro nově přidané oddíly. Již existující objekty blob nebudou ovlivněny. Restartování všech instancí procesoru událostí se doporučuje, aby se zajistilo, že všechny instance budou znát nově přidané oddíly, a vyrovnávání zatížení se mezi spotřebiteli zpracovává správně.

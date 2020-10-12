@@ -12,10 +12,10 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 20cb5f70a5844cb2d56fc9ff357fcaf640a6c56b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388574"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidejte AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
@@ -196,9 +196,9 @@ Otevřete prohlížeč a přejděte na adresu URL. Ujistěte se, že jste zadali
     | -------------- | ------------------- |
     | Hlavní název uživatele | userPrincipalName (Hlavní název uživatele) |
     | příjmení | family_name |
-    | Křestní jméno | given_name |
+    | Given-Name | given_name |
     | E-mailová adresa | e-mail |
-    | Zobrazované jméno | name |
+    | Display-Name | name |
 
     Všimněte si, že tyto názvy se nezobrazí v rozevíracím seznamu typ odchozí deklarace. Je nutné je ručně zadat v. (Rozevírací seznam je skutečně upravitelný).
 

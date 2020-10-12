@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 11/27/2017
 ms.openlocfilehash: 05e55d1608323b8e746a1c82ccb915a2db58ce97
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132088"
 ---
 # <a name="export-a-u-sql-database"></a>Export databáze U-SQL
@@ -49,7 +49,7 @@ V tomto kroku můžete ověřit vybrané objekty v poli se **seznamem exportovat
 
 Můžete také nakonfigurovat další nastavení pro cíl exportu. Popisy konfigurace jsou uvedeny v následující tabulce:
 
-|Konfigurace|Popis|
+|Konfigurace|Description|
 |-------------|-----------|
 |Název cíle|Tento název označuje, kam chcete uložit exportované prostředky databáze. Příklady jsou sestavení, další soubory a ukázková data. Složka s tímto názvem se vytvoří v kořenové složce vašich místních dat.|
 |Adresář projektu|Tato cesta definuje, kam chcete Uložit exportovaný skript U-SQL. Všechny definice databázových objektů jsou uloženy v tomto umístění.|

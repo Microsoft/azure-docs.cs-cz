@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 444d7f1574cf1517b01250bcb9d810731030182d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79527788"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Koncepty serveru v Azure Database for MariaDB
@@ -40,9 +40,9 @@ Následující prvky vám pomůžou zajistit bezpečný přístup k vaší datab
 |||
 | :--| :--|
 | **Ověřování a autorizace** | Azure Database for MariaDB Server podporuje nativní ověřování MySQL. K serveru se můžete připojit a ověřit pomocí přihlašovacích údajů správce serveru. |
-| **Protocol (Protokol)** | Služba podporuje protokol založený na zprávách, který používá MySQL. |
+| **Protokol** | Služba podporuje protokol založený na zprávách, který používá MySQL. |
 | **TCP/IP** | Protokol je podporován přes protokoly TCP/IP a přes rozhraní UNIX-Domain Sockets. |
-| **Servery** | Pro lepší ochranu dat pravidlo brány firewall zabraňuje všem přístupům k vašemu databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Viz [pravidla brány firewall serveru Azure Database for MariaDB](./concepts-firewall-rules.md). |
+| **Brána firewall** | Pro lepší ochranu dat pravidlo brány firewall zabraňuje všem přístupům k vašemu databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Viz [pravidla brány firewall serveru Azure Database for MariaDB](./concepts-firewall-rules.md). |
 | **SSL** | Služba podporuje vynucování připojení SSL mezi vašimi aplikacemi a vaším databázovým serverem. Pokud chcete bezpečně připojit k Azure Database for MariaDB, přečtěte si téma [Konfigurace připojení SSL ve vaší aplikaci](./howto-configure-ssl.md). |
 
 ## <a name="how-do-i-manage-a-server"></a>Návody spravovat Server?

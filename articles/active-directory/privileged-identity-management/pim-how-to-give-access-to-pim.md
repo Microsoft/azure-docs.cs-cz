@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95f8991d5ba9efb8e3223dd44a8d037acf2de849
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009558"
 ---
 # <a name="delegate-access-to-privileged-identity-management"></a>Delegovat přístup k Privileged Identity Management
@@ -32,7 +32,7 @@ Zajistěte, aby v roli správce privilegované role existovaly vždycky aspoň d
 
 ## <a name="delegate-access-to-manage-pim"></a>Delegovat přístup pro správu PIM
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. V Azure AD otevřete **Privileged Identity Management**.
 
@@ -46,7 +46,7 @@ Zajistěte, aby v roli správce privilegované role existovaly vždycky aspoň d
 
     ![Správce privilegovaných rolí – členové](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
 
-1. Vyberte **Přidat člena** a otevřete tak podokno **Přidat spravované členy** .
+1. Vyberte **Přidat člena**  a otevřete tak podokno **Přidat spravované členy** .
 
 1. Vyberte **Vybrat členy** a otevřete tak podokno **Vybrat členy** .
 
@@ -70,7 +70,7 @@ Zajistěte, aby v roli správce privilegované role existovaly vždycky aspoň d
 
 Než odeberete někoho z role správce privilegované role, ujistěte se, že se k němu pořád přiřadí aspoň dva uživatelé.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 

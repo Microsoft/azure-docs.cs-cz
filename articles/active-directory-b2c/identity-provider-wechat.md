@@ -12,10 +12,10 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 462e33c836d8ca0a904e8f7b2e833dc7103311fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85387894"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu WeChat pomocí Azure Active Directory B2C
@@ -29,9 +29,9 @@ Pokud chcete účet WeChat použít jako poskytovatele identity v Azure Active D
 ### <a name="register-a-wechat-application"></a>Registrace aplikace WeChat
 
 1. Přihlaste se k [https://open.weixin.qq.com/](https://open.weixin.qq.com/) přihlašovacím údajům WeChat.
-1. Vyberte**管理中心**(centrum pro správu).
+1. Vyberte **管理中心** (centrum pro správu).
 1. Použijte postup k registraci nové aplikace.
-1. Zadejte `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` v**授权回调域**(adresa URL zpětného volání). Například pokud je název vašeho tenanta contoso, nastavte adresu URL na `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
+1. Zadejte `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` v **授权回调域** (adresa URL zpětného volání). Například pokud je název vašeho tenanta contoso, nastavte adresu URL na `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
 1. Zkopírujte **ID aplikace** a **klíč App**. Budete je potřebovat pro přidání poskytovatele identity k vašemu tenantovi.
 
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>Konfigurace WeChat jako zprostředkovatele identity ve vašem tenantovi

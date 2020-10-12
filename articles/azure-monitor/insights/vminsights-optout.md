@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 80473aa494b8fbcea5e43870b7717cd3472dd7d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79480517"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms"></a>Zakázání monitorování virtuálních počítačů v Azure Monitor pro virtuální počítače
@@ -24,7 +24,7 @@ Azure Monitor pro virtuální počítače spoléhá na následující komponenty
 * Log Analytics pracovní prostor, který ukládá data monitorování z virtuálních počítačů a jiných zdrojů.
 * Kolekce čítačů výkonu nakonfigurovaných v pracovním prostoru. Kolekce aktualizuje konfiguraci monitorování na všech virtuálních počítačích připojených k pracovnímu prostoru.
 * `VMInsights`, což je monitorovací řešení nakonfigurované v pracovním prostoru. Toto řešení aktualizuje konfiguraci monitorování na všech virtuálních počítačích připojených k pracovnímu prostoru.
-* `MicrosoftMonitoringAgent`a `DependencyAgent` , což jsou rozšíření virtuálních počítačů Azure. Tato rozšíření shromažďují a odesílají data do pracovního prostoru.
+* `MicrosoftMonitoringAgent` a `DependencyAgent` , což jsou rozšíření virtuálních počítačů Azure. Tato rozšíření shromažďují a odesílají data do pracovního prostoru.
 
 Při přípravě na zakázání monitorování virtuálních počítačů mějte na paměti tyto skutečnosti:
 

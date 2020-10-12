@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723448"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Sledování asynchronních operací Azure
@@ -40,10 +40,10 @@ Stav asynchronní operace můžete monitorovat dvěma různými způsoby. Správ
 
 Pokud `Azure-AsyncOperation` není jedna z hodnot záhlaví, vyhledejte:
 
-* `Location` -Adresa URL pro určení, kdy byla operace dokončena. Tuto hodnotu použijte jenom v případě, že se nevrátí Azure-AsyncOperation.
+* `Location` -Adresa URL pro určení, kdy byla operace dokončena. Tuto hodnotu použijte pouze v případě, že se nevrátí Azure-AsyncOperation.
 * `Retry-After` – Počet sekund, po které se má počkat, než se zkontroluje stav asynchronní operace.
 
-## <a name="azure-asyncoperation-request-and-response"></a>Požadavek a odpověď Azure-AsyncOperation
+## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation žádosti a odpovědi
 
 Pokud máte adresu URL z hodnoty v `Azure-AsyncOperation` hlavičce, pošlete požadavek GET na tuto adresu URL. Pomocí hodnoty z `Retry-After` můžete naplánovat, jak často se má stav kontrolovat. Dostanete objekt Response, který indikuje stav operace. Při kontrole stavu operace s adresou URL se vrátí jiná odpověď `Location` . Další informace o odpovědi z adresy URL umístění najdete v tématu [Vytvoření účtu úložiště (202 s umístěním a opakování)](#create-storage-account-202-with-location-and-retry-after).
 

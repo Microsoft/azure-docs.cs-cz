@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
 ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79479555"
 ---
 # <a name="install-azure-farmbeats"></a>Instalace služby Azure FarmBeats
@@ -57,13 +57,13 @@ Náklady na Azure FarmBeats jsou agregované z nákladů na základní služby A
 V současné době se Azure FarmBeats podporuje ve veřejných cloudových prostředích v následujících oblastech:
 
 - Austrálie – východ
-- USA – střed
-- USA – východ
+- Střední USA
+- East US
 - USA – východ 2
 - USA – západ
-- USA – západ 2
+- Západní USA 2
 - Severní Evropa
-- Západní Evropa
+- West Europe
 - Východní Asie
 - Jihovýchodní Asie
 
@@ -198,7 +198,7 @@ Uživatelé budou při prvním spuštění vyzváni k výběru předplatného a 
 
 Cesta k input.jssouboru je volitelná. Pokud není zadaný, skript se vyzve pro všechny požadované vstupy. Upgrade by se měl dokončit během přibližně 30 minut.
 
-## <a name="uninstall"></a>Odinstalace
+## <a name="uninstall"></a>Odinstalovat
 
 Pokud chcete odinstalovat službu Azure FarmBeats DataHub nebo akcelerátor, proveďte následující kroky:
 

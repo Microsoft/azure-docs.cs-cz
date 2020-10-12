@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
 ms.openlocfilehash: 893085179c27ce88c3e310170715e2f83a59ddc7
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723159"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Vytvoření doménové struktury prostředků Azure Active Directory Domain Services a odchozího vztahu důvěryhodnosti doménové struktury do místní domény pomocí Azure PowerShell
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 > [!IMPORTANT]
 > Doménové struktury prostředků spravované domény aktuálně nepodporují Azure HDInsight ani soubory Azure. Výchozí doménové struktury uživatelů spravované domény podporují obě tyto další služby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
@@ -105,14 +105,14 @@ Pokud chcete vytvořit doménovou strukturu prostředků spravované domény, po
     | Name                         | Parametr skriptu          | Popis |
     |:-----------------------------|---------------------------|:------------|
     | Předplatné                 | *– azureSubscriptionId*    | ID předplatného, které se používá pro fakturaci Azure služba AD DS Seznam předplatných můžete získat pomocí rutiny [Get-AzureRMSubscription][Get-AzureRMSubscription] . |
-    | Skupina prostředků               | *-aaddsResourceGroupName* | Název skupiny prostředků pro spravovanou doménu a přidružené prostředky. |
+    | Resource Group               | *-aaddsResourceGroupName* | Název skupiny prostředků pro spravovanou doménu a přidružené prostředky. |
     | Umístění                     | *-aaddsLocation*          | Oblast Azure pro hostování spravované domény. Dostupné oblasti najdete v tématu [podporované oblasti pro Azure služba AD DS.](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all) |
     | Správce Azure služba AD DS    | *-aaddsAdminUser*         | Hlavní název uživatele prvního spravovaného správce domény. Tento účet musí být ve vašem Azure Active Directory existujícím účtem cloudového uživatele. Uživatel a uživatel, který spouští skript, se přidají do skupiny *Administrators řadiče domény AAD* . |
     | Název domény pro Azure služba AD DS      | *-aaddsDomainName*        | Plně kvalifikovaný název domény spravované domény založený na předchozích pokynech k výběru názvu doménové struktury. |
 
     `New-AzureAaddsForest`Skript může vytvořit virtuální síť Azure a podsíť azure služba AD DS, pokud tyto prostředky ještě neexistují. Skript může volitelně vytvořit podsítě úloh, pokud jsou zadané:
 
-    | Name                              | Parametr skriptu                  | Popis |
+    | Name                              | Parametr skriptu                  | Description |
     |:----------------------------------|:----------------------------------|:------------|
     | Název virtuální sítě              | *-aaddsVnetName*                  | Název virtuální sítě pro spravovanou doménu.|
     | Adresní prostor                     | *-aaddsVnetCIDRAddressSpace*      | Rozsah adres virtuální sítě v zápisu CIDR (při vytváření virtuální sítě).|
@@ -193,14 +193,14 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Nyní zadejte skript následující informace:
 
-| Name                               | Parametr skriptu     | Popis |
+| Name                               | Parametr skriptu     | Description |
 |:-----------------------------------|:---------------------|:------------|
 | Název domény pro Azure služba AD DS            | *-ManagedDomainFqdn* | Plně kvalifikovaný název domény spravované domény, například *aaddscontoso.com* |
 | Název domény v místním služba AD DS      | *-TrustFqdn*         | Plně kvalifikovaný název domény důvěryhodné doménové struktury, například *OnPrem.contoso.com* |
 | Popisný název vztahu důvěryhodnosti                | *-TrustFriendlyName* | Popisný název vztahu důvěryhodnosti |
 | Místní služba AD DS IP adresy DNS | *-TrustDnsIPs*       | Seznam IPv4 adres serveru DNS, které jsou v seznamu důvěryhodných domén odděleny čárkami. |
 | Heslo vztahu důvěryhodnosti                     | *-TrustPassword*     | Složité heslo pro vztah důvěryhodnosti. Toto heslo se zadává taky při vytváření jednosměrného příchozího vztahu důvěryhodnosti v místních služba AD DS. |
-| Přihlašovací údaje                        | *– Pověření*       | Přihlašovací údaje, které se používají k ověření v Azure. Uživatel musí být ve *skupině AAD DC Administrators*. Pokud není zadaný, skript se vyzve k ověření. |
+| Credentials                        | *– Pověření*       | Přihlašovací údaje, které se používají k ověření v Azure. Uživatel musí být ve *skupině AAD DC Administrators*. Pokud není zadaný, skript se vyzve k ověření. |
 
 Následující příklad vytvoří vztah důvěryhodnosti s názvem *myAzureADDSTrust* a *OnPrem.contoso.com*. Použijte vlastní názvy parametrů a hesla:.
 

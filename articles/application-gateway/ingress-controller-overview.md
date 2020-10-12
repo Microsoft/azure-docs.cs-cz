@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: caya
 ms.openlocfilehash: c1bd41587e4f56fb0a7f3eb8285d301751f558d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84668096"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Co je Application Gateway kontroler příchozího přenosu dat?
@@ -36,16 +36,16 @@ AGIC se konfiguruje prostřednictvím [prostředku](https://kubernetes.io/docs/u
   - Podpora veřejných, privátních a hybridních webů
   - Integrovaná brána firewall webových aplikací
 
-## <a name="difference-between-helm-deployment-and-aks-add-on"></a>Rozdíl mezi nasazením Helm a doplňkem AKS
+## <a name="difference-between-helm-deployment-and-aks-add-on"></a>Rozdíl mezi nasazením Helm a AKS Add-On
 Existují dva způsoby, jak nasadit AGIC pro cluster AKS. První způsob je prostřednictvím Helm; druhý je prostřednictvím AKS jako doplněk. Hlavní výhodou nasazení AGIC jako doplňku AKS je to, že je mnohem jednodušší než nasazení prostřednictvím Helm. Pro nové nastavení můžete nasadit novou Application Gateway a nový cluster AKS s povoleným AGIC jako doplněk na jednom řádku v Azure CLI. Doplněk je také plně spravovaná služba, která poskytuje přidané výhody, jako jsou automatické aktualizace a zvýšená podpora. AGIC nasazené prostřednictvím Helm se v AKS nepodporuje, ale AGIC nasazený jako doplněk AKS podporuje AKS. 
 
 Doplněk AGIC je stále nasazený jako pod v clusteru AKS zákazníka, ale existuje několik rozdílů mezi verzí nasazení Helm a doplňkovou verzí AGIC. Níže je uveden seznam rozdílů mezi těmito dvěma verzemi: 
   - Hodnoty nasazení Helm nelze upravovat v doplňku AKS:
-    - `verbosityLevel`ve výchozím nastavení se nastaví na 5.
+    - `verbosityLevel` ve výchozím nastavení se nastaví na 5.
     - `usePrivateIp`bude ve výchozím nastavení nastavené na false. To může být přepsáno pomocí [Anotace use-Private-IP](ingress-controller-annotations.md#use-private-ip) .
-    - `shared`není podporován na doplňku. 
-    - `reconcilePeriodSeconds`není podporován na doplňku.
-    - `armAuth.type`není podporován na doplňku.
+    - `shared` není podporován na doplňku. 
+    - `reconcilePeriodSeconds` není podporován na doplňku.
+    - `armAuth.type` není podporován na doplňku.
   - AGIC nasazené prostřednictvím Helm podporuje ProhibitedTargets, což znamená, že AGIC může nakonfigurovat Application Gateway specificky pro AKS clustery, aniž by to ovlivnilo jiné stávající back-endy. Doplněk AGIC ho v tuto chvíli nepodporuje. 
   - Vzhledem k tomu, že doplněk AGIC je spravovaná služba, zákazníci se automaticky aktualizují na nejnovější verzi doplňku AGIC, na rozdíl od AGIC nasazené prostřednictvím Helm, kde zákazník musí ručně aktualizovat AGIC. 
 
@@ -69,12 +69,12 @@ Následující tabulky popisují, ve kterých scénářích se aktuálně podpor
 ### <a name="helm-deployed-agic-2-aks-clusters"></a>Helm nasazené AGIC (2 + AKS clustery)
 |                  |1 Application Gateway |2 + aplikační brány |
 |------------------|---------|--------|
-|**1 AGIC**|Není k dispozici |Není k dispozici |
+|**1 AGIC**|N/A |N/A |
 |**2 + AGICs**|Musí používat sdílené funkce ProhibitedTarget |Není k dispozici |
 
 ## <a name="next-steps"></a>Další kroky
-- [**Nasazení Bezserverová doplňků AKS**](tutorial-ingress-controller-add-on-new.md): pokyny k instalaci doplňku AGIC, AKS a Application Gateway v infrastruktuře s prázdnou a neslat.
-- [**Nasazení brownfield doplňků AKS**](tutorial-ingress-controller-add-on-existing.md): nainstalujte doplněk AGIC v clusteru AKS s existujícím Application Gateway.
+- [**Nasazení AKS Add-On bezserverová**](tutorial-ingress-controller-add-on-new.md): pokyny k instalaci doplňku AGIC, AKS a Application Gateway v infrastruktuře prázdná-SLAT.
+- [**Nasazení AKS Add-On brownfield**](tutorial-ingress-controller-add-on-existing.md): nainstalujte doplněk AGIC v clusteru AKS s existujícím Application Gateway.
 - [**Nasazení Helm bezserverová**](ingress-controller-install-new.md): Nainstalujte AGIC prostřednictvím Helm, nového AKS clusteru a nové Application Gateway v infrastruktuře s prázdným-.
 - [**Nasazení Helm brownfield**](ingress-controller-install-existing.md): nasaďte AGIC prostřednictvím Helm na stávajícím clusteru AKS a Application Gateway.
 

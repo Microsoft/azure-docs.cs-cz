@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
 ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87498833"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Operátory v Azure Cosmos DB
@@ -54,7 +54,7 @@ Vrátí `true` , pokud je jedna z podmínek `true` .
 |  | **True** | **False** | **Nedefinované** |
 | --- | --- | --- | --- |
 | **True** |Ano |Ano |Ano |
-| **False** |Ano |Ne |Nedefinované |
+| **False** |Ano |Nepravda |Nedefinované |
 | **Nedefinované** |Ano |Nedefinované |Nedefinované |
 
 **AND – operátor**
@@ -63,17 +63,17 @@ Vrátí `true` , pokud jsou oba výrazy `true` .
 
 |  | **True** | **False** | **Nedefinované** |
 | --- | --- | --- | --- |
-| **True** |Ano |Ne |Nedefinované |
-| **False** |Ne |Ne |Ne |
-| **Nedefinované** |Nedefinované |Ne |Nedefinované |
+| **True** |Ano |Nepravda |Nedefinované |
+| **False** |Nepravda |Nepravda |Nepravda |
+| **Nedefinované** |Nedefinované |Nepravda |Nedefinované |
 
 **NOT – operátor**
 
 Obrátí hodnotu libovolného logického výrazu.
 
-|  | **MĚNÍ** |
+|  | **NOT** |
 | --- | --- |
-| **True** |Ne |
+| **True** |Nepravda |
 | **False** |Ano |
 | **Nedefinované** |Nedefinované |
 
@@ -83,13 +83,13 @@ Logické operátory `OR` , `AND` a `NOT` mají úroveň priority zobrazenou ní�
 
 | **Operátor** | **Priorita** |
 | --- | --- |
-| **MĚNÍ** |1 |
-| **ANI** |2 |
-| **ANI** |3 |
+| **NOT** |1 |
+| **AND** |2 |
+| **OR** |3 |
 
 ## <a name="-operator"></a>* – operátor
 
-Speciální operátor * projektuje celou položku tak, jak je. Při použití musí být jediným projektovým polem. Dotaz, jako `SELECT * FROM Families f` je platný, ale je neplatný `SELECT VALUE * FROM Families f` `SELECT *, f.id FROM Families f` .
+Speciální operátor * projektuje celou položku tak, jak je. Při použití musí být jediným projektovým polem. Dotaz, jako `SELECT * FROM Families f` je platný, ale je neplatný `SELECT VALUE * FROM Families f`  `SELECT *, f.id FROM Families f` .
 
 ## <a name="-and--operators"></a>? a?? operátory
 

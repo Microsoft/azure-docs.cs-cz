@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
 ms.openlocfilehash: c4eb3972be85ac7e291380f64127c20424b0d0f0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87004272"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft. Common. upload – element uživatelského rozhraní
@@ -80,13 +80,13 @@ Při testování CreateUiDefinition některé prohlížeče (jako Google Chrome)
 
 ## <a name="remarks"></a>Poznámky
 
-- `constraints.accept`Určuje typy souborů, které se zobrazí v dialogovém okně souboru prohlížeče. Povolené hodnoty najdete v tématu [specifikace HTML5](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) . Výchozí hodnota je **null**.
+- `constraints.accept` Určuje typy souborů, které se zobrazí v dialogovém okně souboru prohlížeče. Povolené hodnoty najdete v tématu [specifikace HTML5](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) . Výchozí hodnota je **null**.
 - Pokud `options.multiple` je nastaveno na **hodnotu true**, může uživatel vybrat více než jeden soubor v dialogovém okně souboru prohlížeče. Výchozí hodnota je **false** (nepravda).
 - Tento prvek podporuje nahrávání souborů ve dvou režimech na základě hodnoty `options.uploadMode` . Je-li zadán **soubor** , výstup obsahuje obsah souboru jako objekt BLOB. Pokud zadáte **adresu URL** , soubor se nahraje do dočasného umístění a výstup má adresu URL objektu BLOB. Dočasné objekty blob budou vymazány po 24 hodinách. Výchozí hodnota je **File (soubor**).
 - Nahraný soubor je chráněný. Výstupní adresa URL obsahuje [token SAS](../../storage/common/storage-sas-overview.md?toc=/azure/storage/blobs/toc.json) pro přístup k souboru během nasazování.
 - Hodnota určuje, `options.openMode` jak je soubor čten. Pokud by měl být soubor prostým textem, zadejte **text**; v opačném případě zadejte **Binary**. Výchozí hodnota je **text**.
 - Pokud `options.uploadMode` je nastavená na **soubor** a `options.openMode` je nastavená na **Binary**, výstup je kódovaný v kódování Base64.
-- `options.encoding`Určuje kódování, které má být použito při čtení souboru. Výchozí hodnota je **UTF-8**a používá se jenom v případě, že `options.openMode` je nastavená na **text**.
+- `options.encoding` Určuje kódování, které má být použito při čtení souboru. Výchozí hodnota je **UTF-8**a používá se jenom v případě, že `options.openMode` je nastavená na **text**.
 
 ## <a name="next-steps"></a>Další kroky
 

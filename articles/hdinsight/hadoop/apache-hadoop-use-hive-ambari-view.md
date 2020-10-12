@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: cc04a891bb32ede6c7bb72a339b728642cf343ed
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207825"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive Apache s Apache Hadoopem v HDInsight
@@ -83,7 +83,7 @@ Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v s
     K zobrazení informací o protokolování, které vytvořila úloha, můžete použít kartu **protokol** .
 
    > [!TIP]  
-   > Stáhněte nebo uložte výsledky z rozevíracího seznamu **Akce** na kartě **výsledky** .
+   > Stáhněte nebo uložte výsledky z rozevíracího seznamu **Akce** na kartě  **výsledky** .
 
 ### <a name="visual-explain"></a>Vizuálně vysvětlit
 
@@ -148,7 +148,7 @@ add jar /myudfs.jar;
 create temporary function myawesomeudf as 'com.myudfs.Awesome';
 ```
 
-Pak můžete použít ve svém dotazu UDF. Například `SELECT myawesomeudf(name) FROM people;`.
+Pak můžete použít ve svém dotazu UDF. Například, `SELECT myawesomeudf(name) FROM people;`.
 
 Další informace o použití UDF s podregistrum v HDInsight najdete v následujících článcích:
 

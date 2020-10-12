@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: a4c97b8baaf5265f984622e2dc47e6c8c714172a
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88272633"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Vizualizace protokolů toku skupin zabezpečení sítě pomocí Power BI
@@ -50,7 +50,7 @@ Musíte mít také nainstalovaného klienta Power BI Desktop v počítači a dos
 
 ![Diagram Visia][1]
 
-### <a name="steps"></a>Kroky
+### <a name="steps"></a>Postup
 
 1. Stáhněte a otevřete následující šablonu Power BI v šabloně Power BI Desktop aplikace [Network Watcher šablona protokolů Flow PowerBI](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
 1. Zadejte požadované parametry dotazu.

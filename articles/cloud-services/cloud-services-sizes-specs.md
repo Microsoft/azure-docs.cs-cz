@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 2549cb0408c9dad3e92f2cec9625757de45a10dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82086245"
 ---
 # <a name="sizes-for-cloud-services"></a>Velikosti pro Cloud Services
@@ -63,7 +63,7 @@ Vytvořili jsme koncept výpočetní jednotky Azure (ACU), aby bylo možné poro
 | [D V3](#dv3-series) |160 – 190 * |
 | [E V3](#ev3-series) |160 – 190 * |
 | [Věcn](#g-series) |180 - 240* |
-| [H](#h-series) |290 - 300* |
+| [Y](#h-series) |290 - 300* |
 
 Hodnoty ACU s hvězdičkou označují použití technologie Intel® Turbo, která může zvýšit frekvenci procesoru podle aktuální potřeby. Množství nárůst se může lišit v závislosti na velikosti virtuálního počítače, úlohy a dalších úlohách spuštěných na stejném hostiteli.
 
@@ -79,9 +79,9 @@ Následující tabulky pro jednotlivé velikosti virtuálních počítačů uvá
 | Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště: GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | ExtraSmall      | 1         | 0,768        | 20                   | 1 / malá |
-| Malá           | 1         | 1,75         | 225                  | 1 / střední |
+| Malý           | 1         | 1.75         | 225                  | 1 / střední |
 | Střední          | 2         | 3,5          | 490                  | 1 / střední |
-| Velká           | 4         | 7            | 1000                 | 2 / vysoká |
+| Velký           | 4         | 7            | 1000                 | 2 / vysoká |
 | ExtraLarge      | 8         | 14           | 2040                 | 4 / vysoká |
 | A5              | 2         | 14           | 490                  | 1 / střední |
 | A6              | 4         | 28           | 1000                 | 2 / vysoká |
@@ -136,7 +136,7 @@ Informace a informace o použití těchto velikostí najdete v tématu [vysoké 
 | Standard_D12_v2 | 4         | 28           | 200                  | 4 / vysoká |
 | Standard_D13_v2 | 8         | 56           | 400                  | 8 / vysoká |
 | Standard_D14_v2 | 16        | 112          | 800                  | 8 / velmi vysoká |
-| Standard_D15_v2 | 20        | 140          | 1 000                | 8 / velmi vysoká |
+| Standard_D15_v2 | 20        | 140          | 1 000                | 8 / velmi vysoká |
 
 ## <a name="dv3-series"></a>Dv3-series
 
