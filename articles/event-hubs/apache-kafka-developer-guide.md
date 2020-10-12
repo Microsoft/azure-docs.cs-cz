@@ -4,10 +4,10 @@ description: Tento článek obsahuje odkazy na články, které popisují integr
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 757db4faf2a933e366bc818d5cf6aab04d0b08ba
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90061729"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka příručka pro vývojáře pro Azure Event Hubs
@@ -22,7 +22,7 @@ Rychlé starty najdete na webu GitHub a v této sadě obsahu, které vám pomů�
 ### <a name="quickstarts-in-github"></a>Rychlé starty v GitHubu
 Podívejte se na následující rychlé starty v úložišti **Azure-Event-Center-for-Kafka** : 
 
-| Jazyk nebo architektura klienta | Popis | 
+| Jazyk nebo architektura klienta | Description | 
 | ------------------------- | ----------- | 
 | [.NET](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/dotnet) | <p>V tomto rychlém startu se dozvíte, jak vytvořit a připojit se k Event Hubs koncovému bodu Kafka pomocí ukázkového výrobce a příjemce napsaného v jazyce C# pomocí .NET Core 2,0.</p><p>Tato ukázka vychází z [Apache Kafka klienta .NET](https://github.com/confluentinc/confluent-kafka-dotnet), který se změnil pro použití s Event Hubs pro Kafka.</p> | 
 | [Java](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) | V tomto rychlém startu se dozvíte, jak vytvořit a připojit se k Event Hubs koncovému bodu Kafka pomocí ukázkového výrobce a příjemce napsaného v jazyce Java. |
@@ -37,12 +37,12 @@ Podívejte se na následující rychlé starty v úložišti **Azure-Event-Cente
 Přečtěte si rychlý Start: [streamování dat pomocí Event Hubs](event-hubs-quickstart-kafka-enabled-event-hubs.md) v této sadě obsahu pomocí protokolu Kafka, který poskytuje podrobné pokyny pro streamování do Event Hubs. Naučíte se, jak používat vaše producenty a spotřebitelé ke komunikaci s Event Hubs jenom se změnou konfigurace v aplikacích. 
 
 
-## <a name="tutorials"></a>Výukové kurzy 
+## <a name="tutorials"></a>Kurzy 
 
 ### <a name="tutorials-in-github"></a>Kurzy v GitHubu
 Další informace najdete v následujících kurzech na GitHubu:
 
-| Kurz | Popis | 
+| Kurz | Description | 
 | ------------------------- | ----------- | 
 | [Akka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) | V tomto kurzu se dozvíte, jak propojit datové proudy Akka s povoleným Kafkam Event Hubs bez změny klientů protokolu nebo spuštěním vlastních clusterů. K dispozici jsou dva samostatné kurzy s použitím programovacích jazyků **Java** a **Scala** . | 
 | [Připojit](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | Tento dokument vás provede integrací Kafka Connect s Azure Event Hubs a nasazením základních konektorů FileStreamSource a FileStreamSink. I když tyto konektory nejsou určené pro použití v produkčním prostředí, ukazují kompletní scénář Kafka Connect, kde se Azure Event Hubs maskuje jako zprostředkovatel Kafka.| 
@@ -60,10 +60,10 @@ Další informace najdete v následujících kurzech na GitHubu:
 ### <a name="tutorials-in-docs"></a>Kurzy v DOCS
 Podívejte se také na kurz: [Apache Kafka procesu pro Event Hubs události pomocí služby Stream Analytics](event-hubs-kafka-stream-analytics.md) v této sadě obsahu, která ukazuje, jak streamovat data do Event Hubs a zpracovat je pomocí Azure Stream Analytics.
 
-## <a name="how-to-guides"></a>Praktičtí průvodci
+## <a name="how-to-guides"></a>Návody
 V naší dokumentaci se podívejte na následující Příručky k návodům:
 
-| Článek | Popis | 
+| Článek | Description | 
 | ------- | ----------- | 
 | [Zrcadlení zprostředkovatele Kafka v centru událostí](event-hubs-kafka-mirror-maker-tutorial.md) | Ukazuje, jak zrcadlit zprostředkovatele Kafka v centru událostí pomocí Kafka nástroje MirrorMaker. |
 | [Připojení Apache Sparku k centru událostí](event-hubs-kafka-spark-tutorial.md) | Provede vás připojením aplikace Spark k Event Hubs pro streamování v reálném čase. |

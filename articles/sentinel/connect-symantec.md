@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 67fc80b5f34cf3a98fd39ddc352cb2dd9a5e7151
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85564913"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Připojení zařízení Symantec ICDx 
@@ -50,7 +50,7 @@ Symantec ICDx může integrovat a exportovat protokoly přímo do Azure Sentinel
       > [!NOTE]
       > Archivy přijímače ICDx jsou uvedeny samostatně podle názvu. 
  
-    - **Filtr**: přidejte filtr, který určuje podmnožinu událostí, které mají být předány. Proveďte jednu z následujících akcí:
+    - **Filtr**: přidejte filtr, který určuje podmnožinu událostí, které mají být předány. Proveďte některou z následujících akcí:
         - Pokud chcete vybrat podmínku filtru, klikněte na typ, atribut, operátor a hodnotu. 
         - V poli filtr Zkontrolujte podmínku filtru. Můžete ho přímo v poli Upravit nebo ho podle potřeby odstranit.
         - Kliknutím na a nebo nebo přidejte do podmínky filtru.

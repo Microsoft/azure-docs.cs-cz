@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
 ms.openlocfilehash: b06ae396ae15c8572cf8160ce576651f47001add
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87920496"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>Jak chránit záznamy a zóny DNS
@@ -162,8 +162,8 @@ Následující příklad ukazuje definici vlastní role pro správu pouze zázna
 
 Vlastnost Actions definuje následující oprávnění specifická pro službu DNS:
 
-* `Microsoft.Network/dnsZones/CNAME/*`udělí plnou kontrolu nad záznamy CNAME.
-* `Microsoft.Network/dnsZones/read`udělí oprávnění číst zóny DNS, ale neupravuje je, takže se zobrazí zóna, ve které se vytváří záznam CNAME.
+* `Microsoft.Network/dnsZones/CNAME/*` udělí plnou kontrolu nad záznamy CNAME.
+* `Microsoft.Network/dnsZones/read` udělí oprávnění číst zóny DNS, ale neupravuje je, takže se zobrazí zóna, ve které se vytváří záznam CNAME.
 
 Zbývající akce se zkopírují z [předdefinované role Přispěvatel zóny DNS](../role-based-access-control/built-in-roles.md#dns-zone-contributor).
 

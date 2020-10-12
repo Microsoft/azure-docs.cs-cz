@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 087989638193bb59001ed33c4ee253d61682d8bf
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935989"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Rozpoznávání rozpoznávání jazyka – dovednost
@@ -39,13 +39,13 @@ Maximální velikost záznamu musí být 50 000 znaků měřených podle [`Strin
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Vstupy     | Popis |
+| Vstupy     | Description |
 |--------------------|-------------|
 | `text` | Text, který má být analyzován.|
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Název výstupu    | Popis |
+| Název výstupu    | Description |
 |--------------------|-------------|
 | `languageCode` | Kód jazyka ISO 6391 pro identifikovaný jazyk. Například "en". |
 | `languageName` | Název jazyka Například "Angličtina". |

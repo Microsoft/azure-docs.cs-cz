@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: 17d0857a8979cfcc632ab8951fb255f97229a665
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87117188"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Záznamy DNS pro oblasti Azure používané Azure Automation
@@ -88,7 +88,7 @@ Pro podporu [privátního odkazu](../../private-link/private-link-overview.md) v
 
 ![Stránka primárního klíče účtu Automation](./media/automation-region-dns-records/automation-account-keys.png)
 
-Zkopírujte hodnotu po *účtech/* z pole **Adresa URL** –`https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
+Zkopírujte hodnotu po *účtech/* z pole **Adresa URL** – `https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
 
 Doporučujeme používat adresy uvedené při definování [výjimek](../automation-runbook-execution.md#exceptions). Seznam IP adres oblastí a nikoli názvů oblastí získáte stažením souboru JSON z webu Microsoft Download Center pro následující cloudová prostředí:
 

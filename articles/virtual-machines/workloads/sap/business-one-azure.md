@@ -16,10 +16,10 @@ ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654646"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One ve službě Azure Virtual Machines
@@ -31,7 +31,7 @@ Podnik One podporuje dvě různé databáze:
 
 V případě SQL Server platí základní požadavky na nasazení, jak je popsáno v [nasazení Azure Virtual Machines DBMS pro SAP NetWeaver](./dbms_guide_general.md) . v případě SAP HANA se v tomto dokumentu zmiňují doporučení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K použití tohoto průvodce potřebujete základní znalosti následujících součástí Azure:
 
 - [Virtuální počítače Azure ve Windows](../../windows/tutorial-manage-vm.md)
@@ -58,7 +58,7 @@ Kromě dokumentace k Azure byste měli znát hlavní poznámky ke službě SAP, 
 - [2483583 – střední Poznámka pro SAP Business One 9,3](https://launchpad.support.sap.com/#/notes/2483583)
 - [2483615 – aktualizace vydané verze poznámky pro SAP Business One 9,3](https://launchpad.support.sap.com/#/notes/2483615)
 - [2483595 – kolektivní Poznámka pro SAP Business One 9,3 Obecné problémy](https://launchpad.support.sap.com/#/notes/2483595)
-- [2027458 – kolektivní poznámková Poznámka k SAP HANA Příbuzná témata týkající se SAP Business One, verze pro SAP HANA](https://launchpad.support.sap.com/#/notes/2027458)
+- [2027458 – kolektivní poznámková Poznámka pro SAP HANA-Related témata týkající se SAP Business One, verze pro SAP HANA](https://launchpad.support.sap.com/#/notes/2027458)
 
 
 ## <a name="business-one-architecture"></a>Podniková jedna architektura

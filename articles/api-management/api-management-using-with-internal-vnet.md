@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
 ms.openlocfilehash: ac9554ae5ca151a377395d3b16598f7070c87d10
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87386040"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Použití služby Azure API Management s interní virtuální sítí
@@ -39,7 +39,7 @@ Pomocí API Management v interním režimu můžete dosáhnout těchto scénář
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků popsaných v tomto článku musíte mít:
 
@@ -131,7 +131,7 @@ Pokud ve virtuální síti používáte vlastní server DNS, můžete také vytv
 * IP adresy přiřazené veřejnému a privátnímu přístupu se mohou změnit, pokud je služba odebrána z a následně přidána zpátky do virtuální sítě. Pokud k tomu dojde, může být nutné aktualizovat registrace DNS, pravidla směrování a seznamy omezení IP adres v rámci virtuální sítě.
 
 ## <a name="related-content"></a><a name="related-content"> </a>Související obsah
-Další informace najdete v následujících článcích:
+Další informace najdete v těchto článcích:
 * [Běžné problémy s konfigurací sítě při nastavování Azure API Management ve virtuální síti][Common network configuration problems]
 * [Nejčastější dotazy k virtuálním sítím](../virtual-network/virtual-networks-faq.md)
 * [Vytvoření záznamu v DNS](/previous-versions/windows/it-pro/windows-2000-server/bb727018(v=technet.10))

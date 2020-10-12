@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: b90f86576928e44e00c548f4f3ad3c22c27b8bb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85829429"
 ---
 # <a name="split-merge-security-configuration"></a>Konfigurace zabezpečení dělení a slučování
@@ -59,8 +59,8 @@ K šifrování komunikace a ověření serveru je vyžadován certifikát TLS/SS
 
 ### <a name="create-a-new-self-signed-certificate"></a>Vytvoření nového certifikátu podepsaného svým držitelem
 
-1. [Vytvoření certifikátu podepsaného svým držitelem](#create-a-self-signed-certificate)
-2. [Vytvořit soubor PFX pro certifikát TLS/SSL podepsaný svým držitelem](#create-pfx-file-for-self-signed-tlsssl-certificate)
+1. [Vytvoření certifikátu Self-Signed](#create-a-self-signed-certificate)
+2. [Vytvořit soubor PFX pro Self-Signed certifikát TLS/SSL](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [Nahrání certifikátu TLS/SSL do cloudové služby](#upload-tlsssl-certificate-to-cloud-service)
 4. [Aktualizace certifikátu TLS/SSL v konfiguračním souboru služby](#update-tlsssl-certificate-in-service-configuration-file)
 5. [Importovat certifikační autoritu TLS/SSL](#import-tlsssl-certification-authority)
@@ -78,10 +78,10 @@ K šifrování komunikace a ověření serveru je vyžadován certifikát TLS/SS
 Aby bylo možné ověřovat požadavky na službu, jsou vyžadovány klientské certifikáty. Vyberte nejvíce pro tři scénáře a proveďte všechny kroky:
 
 ### <a name="turn-off-client-certificates"></a>Vypnutí klientských certifikátů
-1. [Vypnout ověřování na základě certifikátu klienta](#turn-off-client-certificate-based-authentication)
+1. [Vypnout ověřování Certificate-Based klienta](#turn-off-client-certificate-based-authentication)
 
 ### <a name="issue-new-self-signed-client-certificates"></a>Vystavení nových klientských certifikátů podepsaných svým držitelem
-1. [Vytvoření certifikační autority podepsané svým držitelem](#create-a-self-signed-certification-authority)
+1. [Vytvoření certifikační autority Self-Signed](#create-a-self-signed-certification-authority)
 2. [Nahrání certifikátu certifikační autority do cloudové služby](#upload-ca-certificate-to-cloud-service)
 3. [Aktualizace certifikátu certifikační autority v konfiguračním souboru služby](#update-ca-certificate-in-service-configuration-file)
 4. [Vystavení certifikátů klienta](#issue-client-certificates)
@@ -105,8 +105,8 @@ Přístup k koncovým bodům služby lze omezit na konkrétní rozsahy IP adres.
 K šifrování přihlašovacích údajů, které jsou uložené v úložišti metadat, se vyžaduje certifikát. Vyberte nejvíce pro tři scénáře a proveďte všechny kroky:
 
 ### <a name="use-a-new-self-signed-certificate"></a>Použití nového certifikátu podepsaného svým držitelem
-1. [Vytvoření certifikátu podepsaného svým držitelem](#create-a-self-signed-certificate)
-2. [Vytvořit soubor PFX pro šifrovací certifikát podepsaný svým držitelem](#create-pfx-file-for-self-signed-tlsssl-certificate)
+1. [Vytvoření certifikátu Self-Signed](#create-a-self-signed-certificate)
+2. [Vytvořit soubor PFX pro Self-Signed šifrovací certifikát](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [Nahrát šifrovací certifikát do cloudové služby](#upload-encryption-certificate-to-cloud-service)
 4. [Aktualizovat šifrovací certifikát v konfiguračním souboru služby](#update-encryption-certificate-in-service-configuration-file)
 
@@ -193,7 +193,7 @@ Toto téma je pouze pro referenci. Postupujte podle kroků konfigurace popsanýc
 * Konfigurace certifikátu TLS/SSL
 * Konfigurace klientských certifikátů
 
-## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 Spustit
 
 ```console
@@ -437,12 +437,12 @@ Aktualizujte hodnotu kryptografického otisku následujícího nastavení v konf
 * Konfigurace klientských certifikátů
 
 ## <a name="find-certificate"></a>Najít certifikát
-Postupujte následovně:
+Postupujte takto:
 
 1. Spusťte mmc.exe.
 2. Soubor – > přidat nebo odebrat modul snap-in...
 3. Vyberte **certifikáty**.
-4. Klikněte na tlačítko **Add** (Přidat).
+4. Klikněte na **Přidat**.
 5. Vyberte umístění úložiště certifikátů.
 6. Klikněte na **Finish** (Dokončit).
 7. Klikněte na **OK**.
@@ -454,16 +454,16 @@ Postupujte následovně:
 ## <a name="export-certificate"></a>Export certifikátu
 V **Průvodci exportem certifikátu**:
 
-1. Klikněte na **Další**.
+1. Klikněte na **Next** (Další).
 2. Vyberte **Ano**a pak **exportujte privátní klíč**.
-3. Klikněte na **Další**.
+3. Klikněte na **Next** (Další).
 4. Vyberte požadovaný formát výstupního souboru.
 5. Ověřte požadované možnosti.
 6. Ověřte **heslo**.
 7. Zadejte silné heslo a potvrďte ho.
-8. Klikněte na **Další**.
+8. Klikněte na **Next** (Další).
 9. Zadejte nebo vyhledejte název souboru, kam se má certifikát Uložit (použijte. Přípona PFX).
-10. Klikněte na **Další**.
+10. Klikněte na **Next** (Další).
 11. Klikněte na **Finish** (Dokončit).
 12. Klikněte na **OK**.
 
@@ -474,7 +474,7 @@ V Průvodci importem certifikátu:
    
    * Vyberte **aktuálního uživatele** , pokud budou ke službě přistupovat jenom procesy spuštěné v rámci aktuálního uživatele.
    * Vyberte možnost **místní počítač** , pokud budou k této službě přistupovat jiné procesy v tomto počítači.
-2. Klikněte na **Další**.
+2. Klikněte na **Next** (Další).
 3. Při importu ze souboru potvrďte cestu k souboru.
 4. Při importu. Soubor PFX:
    1. Zadejte heslo pro ochranu privátního klíče.
@@ -488,7 +488,7 @@ V Průvodci importem certifikátu:
 9. Ve všech dialogových oknech klikněte na **OK** .
 
 ## <a name="upload-certificate"></a>Nahrání certifikátu
-Na webu [Azure Portal](https://portal.azure.com/)
+V [Azure Portal](https://portal.azure.com/)
 
 1. Vyberte **Cloud Services**.
 2. Vyberte cloudovou službu.

@@ -11,10 +11,10 @@ ms.subservice: files
 services: storage
 tags: ''
 ms.openlocfilehash: 1c50f54491e0284005c4b762b0c4b35a8460f5ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85511967"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Sdílená složka Azure – Nepodařilo se odstranit soubory ze sdílené složky Azure
@@ -92,4 +92,4 @@ Chcete-li zavřít otevřený popisovač, použijte následující příkaz:
 
 * [Řešení potíží se soubory Azure v systému Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Řešení potíží se soubory Azure v systému Linux](storage-troubleshoot-linux-file-connection-problems.md)
-* [Řešení problémů se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)
+* [Řešit problémy se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)

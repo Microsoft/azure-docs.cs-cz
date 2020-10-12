@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o tom, jak nakonfigurovat vlastn
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 18a59b74897b074fea9ee56947c78635f2a3509d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537254"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal
@@ -26,7 +26,7 @@ Pomocí Azure Key Vault můžete spravovat klíče a auditovat používání kl�
 V tomto článku se dozvíte, jak nakonfigurovat Trezor klíčů pomocí klíčů spravovaných zákazníkem pomocí Azure Portal. Informace o tom, jak vytvořit Trezor klíčů pomocí Azure Portal, najdete v tématu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure Portal](../key-vault/secrets/quick-create-portal.md).
 
 > [!IMPORTANT]
-> Použití klíčů spravovaných zákazníkem v Azure Event Hubs vyžaduje, aby měl Trezor klíčů nakonfigurované dvě požadované vlastnosti. Jsou to: **obnovitelné odstranění** a **Nemazat**. Tyto vlastnosti jsou ve výchozím nastavení povolené, když v Azure Portal vytvoříte nový trezor klíčů. Pokud ale potřebujete tyto vlastnosti v existujícím trezoru klíčů povolit, musíte použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI.
+> Použití klíčů spravovaných zákazníkem v Azure Event Hubs vyžaduje, aby měl Trezor klíčů nakonfigurované dvě požadované vlastnosti. Jsou to:  **obnovitelné odstranění** a **Nemazat**. Tyto vlastnosti jsou ve výchozím nastavení povolené, když v Azure Portal vytvoříte nový trezor klíčů. Pokud ale potřebujete tyto vlastnosti v existujícím trezoru klíčů povolit, musíte použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI.
 
 ## <a name="enable-customer-managed-keys"></a>Povolit klíče spravované zákazníkem
 Pokud chcete povolit klíčům spravovaným zákazníkem v Azure Portal, postupujte následovně:
@@ -103,7 +103,7 @@ Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON).
 | keyVault | Úplný název trezoru klíčů |
 | key | Název klíče, který slouží k šifrování oboru názvů Event Hubs. |
 | verze | Verze používaného klíče |
-| NázevOperace | Operace, která se provádí na klíči v trezoru klíčů. Můžete například zakázat/povolit klíč, zalamovat nebo rozbalení. |
+| operation | Operace, která se provádí na klíči v trezoru klíčů. Můžete například zakázat/povolit klíč, zalamovat nebo rozbalení. |
 | kód | Kód, který je přidružen k operaci. Příklad: kód chyby 404 znamená, že klíč nebyl nalezen. |
 | zpráva | Jakákoli chybová zpráva přidružená k operaci |
 
@@ -223,9 +223,9 @@ V této části se dozvíte, jak vytvořit obor názvů Azure Event Hubs s ident
 
     > [!NOTE]
     > Nahraďte následující hodnoty: 
-    > - `<EventHubsClusterName>`– Název Event Hubsho clusteru    
-    > - `<EventHubsNamespaceName>`– Název oboru názvů Event Hubs
-    > - `<Location>`– Umístění vašeho oboru názvů Event Hubs
+    > - `<EventHubsClusterName>` – Název Event Hubsho clusteru    
+    > - `<EventHubsNamespaceName>` – Název oboru názvů Event Hubs
+    > - `<Location>` – Umístění vašeho oboru názvů Event Hubs
 
     ```json
     {
@@ -360,11 +360,11 @@ V tomto kroku aktualizujete obor názvů Event Hubs s použitím informací o tr
 
     > [!NOTE]
     > Nahraďte následující hodnoty: 
-    > - `<EventHubsClusterName>`– Název Event Hubsho clusteru.        
-    > - `<EventHubsNamespaceName>`– Název oboru názvů Event Hubs
-    > - `<Location>`– Umístění vašeho oboru názvů Event Hubs
-    > - `<KeyVaultName>`– Název vašeho trezoru klíčů
-    > - `<KeyName>`– Název klíče v trezoru klíčů
+    > - `<EventHubsClusterName>` – Název Event Hubsho clusteru.        
+    > - `<EventHubsNamespaceName>` – Název oboru názvů Event Hubs
+    > - `<Location>` – Umístění vašeho oboru názvů Event Hubs
+    > - `<KeyVaultName>` – Název vašeho trezoru klíčů
+    > - `<KeyName>` – Název klíče v trezoru klíčů
 
     ```json
     {
@@ -395,7 +395,7 @@ V tomto kroku aktualizujete obor názvů Event Hubs s použitím informací o tr
     New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
     ```
 
-## <a name="troubleshoot"></a>Odstraňování potíží
+## <a name="troubleshoot"></a>Řešení potíží
 V rámci osvědčeného postupu doporučujeme vždy povolit protokoly, jako jsou uvedené v předchozí části. Pomáhá sledovat aktivity, když je povolené šifrování BYOK. Pomáhá také při určování rozsahu problémů.
 
 Níže jsou uvedené běžné kódy chyb, které se hledají, když je povolené šifrování BYOK.

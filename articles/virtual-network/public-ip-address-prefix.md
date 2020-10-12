@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2020
 ms.author: allensu
 ms.openlocfilehash: 53dd6d2dda762b3cbf53f4aaec6cd3692a9656e9
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87432578"
 ---
 # <a name="public-ip-address-prefix"></a>Předpona veřejné IP adresy
@@ -58,7 +58,7 @@ Když přiřazujete adresy k prostředkům z předpony veřejné IP adresy, aktu
 ## <a name="scenarios"></a>Scénáře
 K statické veřejné IP adrese můžete přidružit následující prostředky z předpony:
 
-|Prostředek|Scénář|Kroky|
+|Prostředek|Scénář|Postup|
 |---|---|---|
 |Virtuální počítače| Přidružení veřejných IP adres od předpony k virtuálním počítačům v Azure snižuje režijní náklady na správu při přidávání IP adres do seznamu povolených adres v bráně firewall. Můžete přidat celou předponu s jedním pravidlem brány firewall. Při škálování s virtuálními počítači v Azure můžete přidružit IP adresy ze stejné předpony ukládání nákladů, času a režijních nákladů na správu.| Přidružení IP adres k virtuálnímu počítači z předpony: </br> 1. [vytvořte předponu.](manage-public-ip-address-prefix.md) </br> 2. [vytvořte IP adresu z předpony.](manage-public-ip-address-prefix.md) </br> 3. [přiřaďte IP adresu k síťovému rozhraní virtuálního počítače.](virtual-network-network-interface-addresses.md#add-ip-addresses) </br> [IP adresy můžete taky přidružit k sadě škálování virtuálního počítače](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/).
 | Standardní nástroje pro vyrovnávání zatížení | Přidružení veřejných IP adres z předpony na konfiguraci IP adresy front-endu nebo odchozí pravidlo pro nástroj pro vyrovnávání zatížení zajišťuje zjednodušení vašeho prostoru veřejných IP adres Azure. Zjednodušte svůj scénář vymazáním odchozích připojení z rozsahu souvislých IP adres. | K přidružení IP adresy z předpony k vašemu nástroji pro vyrovnávání zatížení: </br> 1. [vytvořte předponu.](manage-public-ip-address-prefix.md) </br> 2. [vytvořte IP adresu z předpony.](manage-public-ip-address-prefix.md) </br> 3. při vytváření nástroje pro vyrovnávání zatížení vyberte nebo aktualizujte IP adresu vytvořenou v kroku 2 výše jako front-endové IP adresu vašeho nástroje pro vyrovnávání zatížení. |

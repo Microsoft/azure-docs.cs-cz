@@ -8,10 +8,10 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4d1d0f9e2a86da8213a9662b68c791a117dcc7fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515341"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Konfigurace sítě VPN typu Site-to-site pro použití se soubory Azure
@@ -54,7 +54,7 @@ Pro účely nasazení VPN Gateway Azure je nutné vyplnit následující pole:
 - **Typ sítě VPN**: v závislosti na vašem zařízení VPN můžete zvolit buď na základě *trasy**, nebo **na základě zásad** . Sítě VPN založené na směrování podporují IKEv2, zatímco sítě VPN založené na zásadách podporují jenom IKEv1. Další informace o těchto dvou typech bran sítě VPN najdete v tématu [informace o bránách sítě VPN založených na zásadách a směrování](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about) .
 - **SKU**: SKU řídí počet povolených tunelů typu Site-to-site a požadovaný výkon sítě VPN. Pokud chcete vybrat odpovídající SKLADOVOU položku pro váš případ použití, Projděte si seznam [SKU brány](../../vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) . SKU VPN Gateway může v případě potřeby změnit později.
 - **Virtuální síť**: virtuální síť, kterou jste vytvořili v předchozím kroku.
-- **Veřejná IP adresa**: ip adresa VPN Gateway, která bude zpřístupněna pro Internet. Je možné, že budete muset vytvořit novou IP adresu, ale pokud to bude vhodné, můžete také použít stávající nepoužitou IP adresu. Pokud se rozhodnete **vytvořit nový**, vytvoří se nová IP adresa prostředek Azure ve stejné skupině prostředků jako VPN Gateway a **název veřejné IP adresy** bude název nově vytvořené IP adresy. Pokud vyberete možnost **použít existující**, musíte vybrat stávající nepoužitou IP adresu.
+- **Veřejná IP adresa**: ip adresa VPN Gateway, která bude zpřístupněna pro Internet. Je možné, že budete muset vytvořit novou IP adresu, ale pokud to bude vhodné, můžete také použít stávající nepoužitou IP adresu. Pokud se rozhodnete **vytvořit nový**, vytvoří se nová IP adresa prostředek Azure ve stejné skupině prostředků jako VPN Gateway a  **název veřejné IP adresy** bude název nově vytvořené IP adresy. Pokud vyberete možnost **použít existující**, musíte vybrat stávající nepoužitou IP adresu.
 - **Povolit režim aktivní – aktivní**: Pokud vytváříte konfiguraci brány aktivní – aktivní, vyberte jenom **povoleno** . v opačném případě nechte zaškrtnuté políčko **zakázáno** . Další informace o režimu aktivní-aktivní najdete v tématu [vysoce dostupné možnosti připojení mezi různými místy a VNET-to-VNet](../../vpn-gateway/vpn-gateway-highlyavailable.md).
 - **Konfigurovat ASN protokolu BGP**: vyberte jenom **Povolit** , pokud konfigurace konkrétně vyžaduje toto nastavení. Další informace o tomto nastavení najdete v tématu [o protokolu BGP s Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md).
 
@@ -87,7 +87,7 @@ K dokončení nasazení S2S VPN je nutné vytvořit připojení mezi místním s
 - **Brána místní sítě**: Jedná se o bránu místní sítě, kterou chcete připojit k vašemu VPN Gateway. Výsledné podokno výběru by mělo mít název brány místní sítě, kterou jste vytvořili výše.
 - **Shared Key (PSK)**: kombinace písmen a číslic, která se používá k navázání šifrování pro připojení. Stejný sdílený klíč musí být použit jak v bráně virtuální sítě, tak v bráně místní sítě. Pokud vaše zařízení brány žádné neposkytuje, můžete si ho udělat tady a poskytnout zařízení.
 
-Vyberte **OK** a vytvořte připojení. Pomocí stránky **připojení** můžete ověřit, že se připojení úspěšně provedlo.
+Výběrem možnosti **OK** vytvořte připojení. Pomocí stránky **připojení** můžete ověřit, že se připojení úspěšně provedlo.
 
 ## <a name="mount-azure-file-share"></a>Připojení sdílené složky Azure 
 Posledním krokem při konfiguraci S2S VPN je ověření, že funguje pro soubory Azure. To můžete provést tak, že svou sdílenou složku Azure nasdílíte do místního prostředí s vaším preferovaným operačním systémem. Pokyny k připojení pomocí operačního systému najdete tady:
@@ -96,7 +96,7 @@ Posledním krokem při konfiguraci S2S VPN je ověření, že funguje pro soubor
 - [macOS](storage-how-to-use-files-mac.md)
 - [Linux](storage-how-to-use-files-linux.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 - [Přehled sítě Azure Files](storage-files-networking-overview.md)
 - [Konfigurace sítě VPN typu Point-to-Site (P2S) ve Windows pro použití se soubory Azure](storage-files-configure-p2s-vpn-windows.md)
 - [Konfigurace sítě VPN typu Point-to-Site (P2S) na platformě Linux pro použití se soubory Azure](storage-files-configure-p2s-vpn-linux.md)

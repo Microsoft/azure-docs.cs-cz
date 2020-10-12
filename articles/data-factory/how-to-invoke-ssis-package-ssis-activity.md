@@ -15,10 +15,10 @@ manager: mflasko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 07/20/2020
 ms.openlocfilehash: 901693c512ddfcf5d3c4dafaec71b1606b5dc5f1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89077842"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Spuštění balíčku SSIS pomocí aktivity Spustit balíček SSIS ve službě Azure Data Factory
@@ -251,7 +251,7 @@ Na kartě **Správci připojení** aktivity spustit balíček SSIS proveďte ná
 
       Například bez úprav původního balíčku na SSDT můžete převést své místní toky dat běžící na SQL Server do toků dat v místním prostředí, které běží na SSIS IR v ADF, a to přepsáním hodnot vlastností **ConnectByProxy**, **ConnectionString**a **ConnectUsingManagedIdentity** v existujících správcích připojení v době běhu.
       
-      Tyto přepisy za běhu můžou při přístupu k datům místně povolit prostředí IR (SHIR) jako proxy pro SSIS IR, a to v části [Konfigurace SHIR jako proxy serveru pro SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)a Azure SQL Database/spravované instance připojení pomocí nejnovějšího ovladače MSOLEDBSQL, který umožňuje ověřování Azure Active Directory (AAD) pomocí spravované identity přes ADF, najdete v tématu [Konfigurace ověřování AAD pomocí spravované identity ADF pro připojení OLEDB](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
+      Tyto přepisy za běhu můžou povolit Self-Hosted IR (SHIR) jako proxy pro SSIS IR při přístupu k datům místně, najdete v tématu [Konfigurace SHIR jako proxy serveru pro SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)a připojení Azure SQL Database/spravované instance pomocí nejnovějšího ovladače MSOLEDBSQL, který umožňuje ověřování Azure Active Directory (AAD) pomocí spravované identity ADF, v tématu [Konfigurace ověřování AAD pomocí spravované identity ADF pro připojení OLEDB](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
 
       ![Nastavení vlastností z SSDT na kartě Správci připojení](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
    

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85920075"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Běžné úlohy po spuštění cloudové služby
@@ -377,7 +377,7 @@ EXIT /B 0
 Tady jsou některé osvědčené postupy, které byste měli dodržovat při konfiguraci úlohy pro webovou roli nebo roli pracovního procesu.
 
 ### <a name="always-log-startup-activities"></a>Vždy protokolovat aktivity při spuštění
-Visual Studio neposkytuje ladicí program pro procházení souborů Batch, takže je dobré získat co nejvíce dat o fungování dávkových souborů. Protokolování výstupu dávkových souborů, **stdout** a **stderr**, vám může poskytnout důležité informace při pokusu o ladění a opravě dávkových souborů. Pokud chcete protokolovat **stdout** a **stderr** do souboru StartupLog.txt v adresáři, na který odkazovala proměnná prostředí **% TEMP%** , přidejte text `>>  "%TEMP%\\StartupLog.txt" 2>&1` na konec konkrétních řádků, které chcete protokolovat. Chcete-li například provést setup.exe v adresáři **% PathToApp1Install%** :`"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
+Visual Studio neposkytuje ladicí program pro procházení souborů Batch, takže je dobré získat co nejvíce dat o fungování dávkových souborů. Protokolování výstupu dávkových souborů, **stdout** a **stderr**, vám může poskytnout důležité informace při pokusu o ladění a opravě dávkových souborů. Pokud chcete protokolovat **stdout** a **stderr** do souboru StartupLog.txt v adresáři, na který odkazovala proměnná prostředí **% TEMP%** , přidejte text `>>  "%TEMP%\\StartupLog.txt" 2>&1` na konec konkrétních řádků, které chcete protokolovat. Chcete-li například provést setup.exe v adresáři **% PathToApp1Install%** : `"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 Chcete-li zjednodušit XML, můžete vytvořit soubor *cmd cmd* , který volá všechny úlohy po spuštění společně s protokolováním a zajišťuje, že každá podřízená úloha sdílí stejné proměnné prostředí.
 
@@ -499,7 +499,7 @@ Přečtěte si další informace o práci s [úkoly](cloud-services-startup-task
 [Vytvořte a nasaďte](cloud-services-how-to-create-deploy-portal.md) balíček cloudové služby.
 
 [ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
-[Úkol]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Úloha]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Prostředí]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment

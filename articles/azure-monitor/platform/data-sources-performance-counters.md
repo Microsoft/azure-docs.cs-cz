@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85955484"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Zdroje dat o výkonu pro Windows a Linux v Azure Monitor
@@ -79,7 +79,7 @@ Parametry v tomto elementu jsou popsány v následující tabulce.
 |:--|:--|
 | \_název objektu | Název objektu pro kolekci |
 | \_regulární výraz instance |  *Regulární výraz* definující, které instance se mají shromažďovat Hodnota: `.*` Určuje všechny instance. Pokud chcete shromáždit metriky procesoru jenom pro \_ celkovou instanci, můžete zadat `_Total` . Pokud chcete shromáždit metriky procesu jenom pro instance crond nebo sshd, můžete zadat: `(crond\|sshd)` . |
-| \_název čítače \_ regulárního výrazu | *Regulární výraz* definující, které čítače (pro objekt) se mají shromáždit. Chcete-li shromáždit všechny čítače pro objekt, zadejte: `.*` . Chcete-li shromažďovat pouze čítače odkládacích míst pro objekt paměti, například můžete zadat:`.+Swap.+` |
+| \_název čítače \_ regulárního výrazu | *Regulární výraz* definující, které čítače (pro objekt) se mají shromáždit. Chcete-li shromáždit všechny čítače pro objekt, zadejte: `.*` . Chcete-li shromažďovat pouze čítače odkládacích míst pro objekt paměti, například můžete zadat: `.+Swap.+` |
 | interval | Frekvence, s níž jsou shromažďovány čítače objektu. |
 
 
@@ -98,17 +98,17 @@ V následující tabulce jsou uvedeny objekty a čítače, které lze zadat v ko
 | Logický disk | Zápisy na disk/s |
 | Logický disk | Volné megabajty |
 | Logický disk | Bajty logického disku/s |
-| Memory (Paměť) | % Dostupné paměti |
-| Memory (Paměť) | % Dostupného odkládacího prostoru |
-| Memory (Paměť) | % Využité paměti |
-| Memory (Paměť) | % Využitého místa odkládacího souboru |
-| Memory (Paměť) | Dostupná paměť v MB |
-| Memory (Paměť) | Dostupný počet MB swap |
-| Memory (Paměť) | Čtení stránek/s |
-| Memory (Paměť) | Zápisy stránek/s |
-| Memory (Paměť) | Stránky/s |
-| Memory (Paměť) | Využité místo odkládacího souboru v MB |
-| Memory (Paměť) | Využitá paměť v MB |
+| Paměť | % Dostupné paměti |
+| Paměť | % Dostupného odkládacího prostoru |
+| Paměť | % Využité paměti |
+| Paměť | % Využitého místa odkládacího souboru |
+| Paměť | Dostupná paměť v MB |
+| Paměť | Dostupný počet MB swap |
+| Paměť | Čtení stránek/s |
+| Paměť | Zápisy stránek/s |
+| Paměť | Stránky/s |
+| Paměť | Využité místo odkládacího souboru v MB |
+| Paměť | Využitá paměť v MB |
 | Síť | Celkový počet odeslaných bajtů |
 | Síť | Celkový počet přijatých bajtů |
 | Síť | Bajty celkem |

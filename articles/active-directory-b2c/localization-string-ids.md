@@ -11,10 +11,10 @@ ms.date: 07/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 611d676f5f588ff32f981692456160e269642a43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87428125"
 ---
 # <a name="localization-string-ids"></a>ID řetězců lokalizací
@@ -45,7 +45,7 @@ Následující identifikátory se používají pro definici obsahu s ID `api.sig
 | **createaccount_link** | Zaregistrujte se |
 | **divider_title** | NEBO |
 | **cancel_message** | Uživatel zapomněl svoje heslo. |
-| **button_signin** | Přihlášení |
+| **button_signin** | Přihlásit se |
 | **social_intro** | Přihlaste se pomocí účtu sociální sítě. |
   **remember_me** |Neodhlašovat|
 | **unknown_error** | Máme potíže s přihlášením. Zkuste to později. |
@@ -54,7 +54,7 @@ Následující příklad ukazuje použití některých prvků uživatelského ro
 
 ![Prvky uživatelského rozhraní pro registraci nebo přihlašovací stránku](./media/localization-string-ids/localization-susi.png)
 
-ID zprostředkovatelů identity je nakonfigurováno v elementu **ClaimsExchange** na cestě uživatele. Chcete-li lokalizovat název poskytovatele identity, je typ **ElementType** nastaven na hodnotu `ClaimsProvider` , zatímco **STRINGID** je nastaven na ID `ClaimsExchange` .
+ID zprostředkovatelů identity je nakonfigurováno v elementu  **ClaimsExchange** na cestě uživatele. Chcete-li lokalizovat název poskytovatele identity, je typ **ElementType** nastaven na hodnotu `ClaimsProvider` , zatímco **STRINGID** je nastaven na ID `ClaimsExchange` .
 
 ```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -102,7 +102,7 @@ Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo l
 | **cancel_message** | Uživatel zrušil zadávání informací o vlastním vyhodnocení. |
 | **preloader_alt** | Počkejte prosím |
 | **ver_but_send** | Odeslat ověřovací kód |
-| **alert_yes** | Ano |
+| **alert_yes** | Yes |
 | **error_fieldIncorrect** | Některá pole jsou vyplněna nesprávně. Zkontrolujte prosím své položky a zkuste to znovu. |
 | **jednolet** | Year |
 | **verifying_blurb** | Počkejte prosím, než zpracujeme vaše informace. |
@@ -120,7 +120,7 @@ Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo l
 | **ver_incorrect_format** | Nesprávný formát |
 | **ver_but_edit** | Změnit e-mail |
 | **ver_but_verify** | Ověřit kód |
-| **alert_no** | Ne |
+| **alert_no** | No |
 | **ver_info_msg** | Ověřovací kód byl odeslán do vaší doručené pošty. Zkopírujte ho prosím do následujícího pole pro zadání. |
 | **dnu** | Den |
 | **ver_fail_throttled** | Existuje příliš mnoho žádostí o ověření této e-mailové adresy. Chvíli prosím počkejte a pak to zkuste znovu. |
@@ -137,11 +137,11 @@ Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo l
 | ID | Výchozí hodnota |
 | -- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | Uživatel se zadaným ID už existuje. Zvolte prosím jiný. |
-| **UserMessageIfClaimNotVerified** | Deklarace identity není ověřená:{0} |
-| **UserMessageIfIncorrectPattern** | Nesprávný vzor pro:{0} |
-| **UserMessageIfMissingRequiredElement** | Chybí požadovaný element:{0} |
-| **UserMessageIfValidationError** | Chyba při ověřování uživatelem:{0} |
-| **UserMessageIfInvalidInput** | {0}má neplatný vstup. |
+| **UserMessageIfClaimNotVerified** | Deklarace identity není ověřená: {0} |
+| **UserMessageIfIncorrectPattern** | Nesprávný vzor pro: {0} |
+| **UserMessageIfMissingRequiredElement** | Chybí požadovaný element: {0} |
+| **UserMessageIfValidationError** | Chyba při ověřování uživatelem: {0} |
+| **UserMessageIfInvalidInput** | {0} má neplatný vstup. |
 | **ServiceThrottled** | V tuto chvíli je moc velký počet požadavků. Chvíli prosím počkejte a zkuste to znovu. |
 
 Následující příklad ukazuje použití některých prvků uživatelského rozhraní na stránce pro registraci:
@@ -171,7 +171,7 @@ Níže jsou uvedené identifikátory pro definici obsahu s ID `api.phonefactor` 
 | **invalid_code** | Zadejte prosím kód o 6 číslicích, který jste dostali. |
 | **button_cancel** | Zrušit |
 | **local_number_input_placeholder_text** | Telefonní číslo |
-| **button_retry** | Retry |
+| **button_retry** | Zkusit znovu |
 | **alternative_text** | Nemám svůj telefon |
 | **intro_phone_p** | Pro vás budeme nahrávat následující čísla. Vyberte číslo, na které můžeme telefon ověřit. |
 | **intro_phone** | Pro vás budeme nahrávat následující číslo. Budeme vám telefonicky ověřit. |
@@ -239,10 +239,10 @@ Níže jsou uvedené identifikátory pro chybové zprávy [technického profilu 
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
-|DefaultUserMessageIfRequestFailed | Nepovedlo se navázat připojení ke koncovému bodu služby RESTful. Adresa URL služby RESTful:{0} |
-|UserMessageIfCircuitOpen | {0}Adresa URL služby RESTful:{1} |
-|UserMessageIfDnsResolutionFailed | Nepovedlo se přeložit název hostitele koncového bodu služby RESTful. Adresa URL služby RESTful:{0} |
-|UserMessageIfRequestTimeout | Nepovedlo se navázat připojení ke koncovému bodu služby RESTful během časového limitu {0} sekund. Adresa URL služby RESTful:{1} |
+|DefaultUserMessageIfRequestFailed | Nepovedlo se navázat připojení ke koncovému bodu služby RESTful. Adresa URL služby RESTful: {0} |
+|UserMessageIfCircuitOpen | {0} Adresa URL služby RESTful: {1} |
+|UserMessageIfDnsResolutionFailed | Nepovedlo se přeložit název hostitele koncového bodu služby RESTful. Adresa URL služby RESTful: {0} |
+|UserMessageIfRequestTimeout | Nepovedlo se navázat připojení ke koncovému bodu služby RESTful během časového limitu {0} sekund. Adresa URL služby RESTful: {1} |
 
 
 ### <a name="example"></a>Příklad

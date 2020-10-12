@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
 ms.openlocfilehash: 35acf4e9bd338a0e67b046a59d8884df0626e516
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87429258"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Získat data o počasí od partnerů počasí
@@ -151,7 +151,7 @@ Dotazování dat o počasí pomocí REST API FarmBeats:
 
 1. V nástroji FarmBeats DataHub [Swagger](https://yourdatahub.azurewebsites.net/swagger), navštivte rozhraní/WeatherDataLocation API a vytvořte žádost o získání. Odpověď zahrnuje objekty/WeatherDataLocation vytvořené pro umístění (zeměpisná šířka a délka), které úloha zadala. Poznamenejte si **ID** a **weatherDataModelId** objektů.
 
-2. Vytvořte si požadavek GET/{ID} na rozhraní/WeatherDataModel API pro **weatherDataModelId** , jak jste to provedli dříve. Datový model počasí zobrazuje všechna metadata a podrobnosti o přijatých datech o počasí. Například v objektu datového modelu počasí, míra počasí podrobně popisuje, jaké informace o počasí jsou podporovány a v jakých typech a jednotkách. Příklad:
+2. Vytvořte si požadavek GET/{ID} na rozhraní/WeatherDataModel API pro **weatherDataModelId** , jak jste to provedli dříve. Datový model počasí zobrazuje všechna metadata a podrobnosti o přijatých datech o počasí. Například v objektu datového modelu počasí, míra počasí podrobně popisuje, jaké informace o počasí jsou podporovány a v jakých typech a jednotkách. Například:
 
    ```json
    {
@@ -227,7 +227,7 @@ Pokud chcete řešit problémy s chybami úloh, [Podívejte se do protokolů úl
 | DockerDetails - partnerCredentials | Přihlašovací údaje pro volání partnerského rozhraní API v Docker Partner poskytuje tyto informace na základě podporovaného autorizačního mechanismu; například uživatelské jméno a heslo nebo klíče rozhraní API. |
 | partnerType | "Počasí". Další typy partnerů v FarmBeats jsou "senzor" a "satelitní".  |
 |  name   |   Požadovaný název partnera v systému FarmBeats.   |
-|  description |  Popis   |
+|  Popis |  Popis   |
 
 ## <a name="next-steps"></a>Další kroky
 

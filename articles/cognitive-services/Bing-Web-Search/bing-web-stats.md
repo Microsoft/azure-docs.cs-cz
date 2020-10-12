@@ -12,10 +12,10 @@ ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86147404"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Přidání analýzy do rozhraní API pro vyhledávání Bingu
@@ -90,7 +90,7 @@ Níže jsou uvedené možné metriky a omezení koncových bodů.
 
 - **Distribuce kódu odezvy**: stavové kódy http všech volání během období generování sestav.
 
-- **Distribuce zdroje volání**: typy prohlížečů používaných uživateli. Například Microsoft Edge, Chrome, Safari a FireFox. V rámci knihoven se seskupují volání z mimo prohlížeč (například roboty, post nebo using kudrlinkou z konzolové aplikace). Počátek se určuje pomocí hodnoty hlavičky User-Agent. Pokud žádost neobsahuje hlavičku User-Agent, Bing se pokusí odvodit původ z jiných signálů.  
+- **Distribuce zdroje volání**: typy prohlížečů používaných uživateli. Například Microsoft Edge, Chrome, Safari a FireFox. V rámci knihoven se seskupují volání z mimo prohlížeč (například roboty, post nebo using kudrlinkou z konzolové aplikace). Počátek se určuje pomocí hodnoty hlavičky User-Agent požadavku. Pokud žádost neobsahuje hlavičku User-Agent, Bing se pokusí odvodit původ z jiných signálů.  
 
 - **Distribuce bezpečného vyhledávání**: distribuce bezpečných vyhledávacích hodnot. Například off, mírná nebo Strict. `safeSearch`Parametr dotazu obsahuje hodnotu, je-li zadán. V opačném případě Bing nastaví hodnotu na střední.  
 
@@ -98,7 +98,7 @@ Níže jsou uvedené možné metriky a omezení koncových bodů.
 
 - Odpověď **vrátila distribuci**: odpovědi, které vyhledávání na webu rozhraní API vrátilo v odpovědi.
 
-- **Distribuce serveru odpovědí**: aplikační server, který zpracovává požadavky rozhraní API. Možné hodnoty jsou Bing.com (pro přenosy poskytované z desktopových a přenosných zařízení) a Bing.com-Mobile (pro přenos dat poskytovaných z mobilních zařízení). Server je určen pomocí hodnoty hlavičky User-Agent daného požadavku. Pokud žádost neobsahuje hlavičku User-Agent, Bing se pokusí odvodit Server z jiných signálů.
+- **Distribuce serveru odpovědí**: aplikační server, který zpracovává požadavky rozhraní API. Možné hodnoty jsou Bing.com (pro přenosy poskytované z desktopových a přenosných zařízení) a Bing.com-Mobile (pro přenos dat poskytovaných z mobilních zařízení). Server je určen pomocí hodnoty hlavičky User-Agent požadavku. Pokud žádost neobsahuje hlavičku User-Agent, Bing se pokusí odvodit Server z jiných signálů.
 
 ## <a name="next-steps"></a>Další kroky
 

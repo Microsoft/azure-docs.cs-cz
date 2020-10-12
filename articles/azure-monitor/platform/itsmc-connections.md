@@ -7,10 +7,10 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
 ms.openlocfilehash: 9d037fa0faa1419e4cd1b600eea1b3b3eb0a29c0
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90058763"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů nebo služeb ITSM s využitím ITSM konektoru
@@ -212,7 +212,7 @@ Ujistěte se, že jsou splněné následující předpoklady:
 > ![SNĚH – definice OAuth systému](media/itsmc-connections/snow-system-oauth.png)
 > 3. Klikněte na odvolat přístup a než na odvolat.
 
-- Nainstalujte uživatelskou aplikaci pro Microsoft Log Analytics Integration (aplikace ServiceNow). [Přečtěte si další informace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
+- Nainstalujte uživatelskou aplikaci pro Microsoft Log Analytics Integration (aplikace ServiceNow). [Další informace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Vytvoření role uživatele integrace pro uživatelskou aplikaci nainstalovanou. [Tady najdete](#create-integration-user-role-in-servicenow-app)informace o tom, jak vytvořit roli uživatele Integration.
 
 ### <a name="connection-procedure"></a>**Postup připojení**
@@ -340,7 +340,7 @@ Pomocí následujícího postupu vytvořte připojení k prokázání:
 | **Název připojení**   | Zadejte název instance pro prov, ke kterému se chcete připojit pomocí ITSMC.  Tento název použijete později při konfiguraci pracovních položek v tomto ITSM/zobrazení podrobné Log Analytics. |
 | **Typ partnera**   | Vyberte **prov**. |
 | **Uživatelské jméno**   | Zadejte uživatelské jméno, které se může připojit k ITSMC.    |
-| **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka:** Uživatelské jméno a heslo slouží pouze k vytváření tokenů ověřování a nejsou uloženy kdekoli v rámci služby ITSMC. _|
+| **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka:** Uživatelské jméno a heslo slouží pouze k vytváření tokenů ověřování a nejsou uloženy kdekoli v rámci ITSMC service._|
 | **Adresa URL serveru**   | Zadejte adresu URL vaší instance prov, ke které se chcete připojit ITSMC. |
 | **ID klienta**   | Zadejte ID klienta pro ověřování tohoto připojení, které jste vygenerovali v instanci prokázání.  Další informace o ID klienta najdete v tématu [Konfigurace ověřování služby Active Directory](../../app-service/configure-authentication-provider-aad.md). |
 | **Rozsah synchronizace dat**   | Pomocí ITSMC vyberte pracovní položky prov, které chcete synchronizovat s Azure Log Analytics.  Tyto pracovní položky se importují do Log Analytics.   **Možnosti:**   Incidenty, žádosti o změnu.|

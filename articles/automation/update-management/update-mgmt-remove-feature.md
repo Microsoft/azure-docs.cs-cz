@@ -6,10 +6,10 @@ ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 4b4946da9f63299c7ba2b383d6c153673595a1ab
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87450116"
 ---
 # <a name="remove-update-management-from-automation-account"></a>Odebrat Update Management z účtu Automation
@@ -18,7 +18,7 @@ Po povolení správy aktualizací na virtuálních počítačích pomocí Azure 
 
 ## <a name="sign-into-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="remove-management-of-vms"></a>Odebrání správy virtuálních počítačů
 
@@ -28,7 +28,7 @@ Před odebráním Update Management musíte nejdřív přestat spravovat vaše v
 
 Než budete moct zrušit propojení účtu Automation s pracovním prostorem, je potřeba pomocí těchto kroků úplně odebrat Update Management. Odeberete řešení **aktualizace** z pracovního prostoru.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Po zahájení psaní seznam vyfiltruje návrhy na základě vašeho vstupu. Vyberte **Log Analytics**.
 
@@ -65,7 +65,7 @@ Při pokusu o odpojení účtu Automation můžete sledovat průběh v nabídce 
 Pokud byla Update Management nakonfigurovaná tak, aby podporovala starší verze monitorování Azure SQL, mohla by instalace této funkce vytvořit prostředky automatizace, které byste měli odebrat. V případě Update Management možná budete chtít odebrat následující položky, které už nepotřebujete:
 
    * Plány aktualizací – každý má název, který odpovídá vytvořenému nasazení aktualizace.
-   * Skupiny hybridních pracovních procesů vytvořené pro Update Management – každá je pojmenována podobně jako *machine1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8)*.
+   * Skupiny hybridních pracovních procesů vytvořené pro Update Management – každá je pojmenována podobně jako *machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8)*.
 
 ## <a name="next-steps"></a>Další kroky
 

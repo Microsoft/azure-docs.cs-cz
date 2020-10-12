@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/16/2020
 ms.openlocfilehash: dabb7b8cd8023fe88a8c8d6dc507a09623bd11dd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537676"
 ---
 # <a name="create-a-predictive-pipeline-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Vytvoření prediktivního kanálu pomocí Azure Machine Learning Studio (Classic) a Azure Data Factory
@@ -128,10 +128,10 @@ Následující fragment kódu JSON definuje aktivitu spuštění dávky Azure Ma
 
 | Vlastnost          | Popis                              | Povinné |
 | :---------------- | :--------------------------------------- | :------- |
-| name              | Název aktivity v kanálu     | Ano      |
+| name              | Název aktivity v kanálu     | Yes      |
 | Popis       | Text popisující, co aktivita dělá.  | No       |
-| typ              | Pro aktivitu Data Lake Analytics U-SQL je typ aktivity **AzureMLBatchExecution**. | Ano      |
-| linkedServiceName | Propojené služby pro propojenou službu Azure Machine Learning Studio (Classic). Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Ano      |
+| typ              | Pro aktivitu Data Lake Analytics U-SQL je typ aktivity **AzureMLBatchExecution**. | Yes      |
+| linkedServiceName | Propojené služby pro propojenou službu Azure Machine Learning Studio (Classic). Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Yes      |
 | webServiceInputs  | Páry klíč-hodnota, mapování názvů vstupů webové služby Azure Machine Learning Studio (Classic). Klíč musí odpovídat vstupním parametrům definovaným v publikované webové službě Azure Machine Learning Studio (Classic). Hodnota je dvojice vlastností Azure Storage propojených služeb a FilePath určující umístění vstupních objektů BLOB. | No       |
 | webServiceOutputs | Páry klíč-hodnota, mapování názvů Azure Machine Learning Studio (klasických) výstupů webové služby. Klíč musí odpovídat výstupním parametrům definovaným v publikované webové službě Azure Machine Learning Studio (Classic). Hodnota je dvojice vlastností Azure Storage propojených služeb a FilePath určující umístění výstupního objektu BLOB. | No       |
 | globalParameters  | Páry klíč-hodnota, které mají být předány do koncového bodu služby Azure Machine Learning Studio (Classic) Batch. Klíče musí odpovídat názvům parametrů webové služby, které jsou definovány v publikované webové službě Azure Machine Learning Studio (Classic). Hodnoty se předávají do Azure Machine Learning Studio vlastnosti GlobalParameters (Classic) žádosti o spuštění dávky. | No       |

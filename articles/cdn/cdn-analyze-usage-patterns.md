@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985533"
 ---
 # <a name="core-reports-from-verizon"></a>Základní sestavy od Verizonu
@@ -100,7 +100,7 @@ Pokud chcete snížit počet přístupů do mezipaměti s vypršenou platností,
 * TCP_MISS: Tento stav indikuje, že v bodu POP, který je nejbližší klientovi, nebyla nalezena verze požadovaného prostředku uložená v mezipaměti. Asset se požaduje buď ze zdrojového serveru, nebo ze zdrojového stíněného serveru. Pokud zdrojový server nebo zdrojový chráněný server vrátí Asset, bude obsluhován klientovi a uložen do mezipaměti v klientském i hraničním serveru. V opačném případě se vrátí stavový kód, který není 200 (například 403 zakázán nebo 404 nebyl nalezen).
 * TCP_EXPIRED_HIT: Tento stav se oznamuje, když se žádost, která cílí na prostředek s hodnotou TTL, zpracovala přímo z tohoto bodu na klienta. Například po vypršení platnosti maximálního stáří prostředku. 
   
-   Požadavek na vypršení platnosti obvykle vede k replatným žádostem na zdrojový server. Aby se stav TCP_EXPIRED_HIT probíhat, musí zdrojový server indikovat, že neexistuje novější verze assetu. Tato situace obvykle vede k aktualizaci hlaviček pro řízení mezipaměti a vypršení platnosti prostředku.
+   Požadavek na vypršení platnosti obvykle vede k replatným žádostem na zdrojový server. Aby se stav TCP_EXPIRED_HIT probíhat, musí zdrojový server indikovat, že neexistuje novější verze assetu. Tato situace obvykle vede k aktualizaci hlaviček Cache-Control a vypršení platnosti assetu.
 * TCP_EXPIRED_MISS: Tento stav je hlášen, když je do klienta obsluhována novější verze prostředku v mezipaměti s vypršenou platností. K tomuto stavu dochází, pokud vypršela platnost hodnoty TTL pro prostředek v mezipaměti (například max. stáří) a zdrojový server vrátí novější verzi tohoto prostředku. Tato nová verze assetu se obsluhuje z klienta namísto verze v mezipaměti. Navíc je uložen do mezipaměti na hraničním serveru a klientovi.
 * CONFIG_NOCACHE: Tento stav indikuje konfiguraci specifickou pro konkrétního zákazníka, po které se bod POP Edge zabránil v ukládání prostředku do mezipaměti.
 * ŽÁDNÉ – tento stav označuje, že nebyla provedena kontrolu aktuálnosti obsahu mezipaměti.
@@ -132,6 +132,6 @@ Tato sestava zobrazuje distribuci využití provozu v protokolu IPV4 vs IPV6.
 
 ![Přenesená data protokolu IPV4/IPV6](./media/cdn-reports/cdn-ipv4-ipv6.png)
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 Sestavy se dají vygenerovat jenom během posledních 18 měsíců.
 

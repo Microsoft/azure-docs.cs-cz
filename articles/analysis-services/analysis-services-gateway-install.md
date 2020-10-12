@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87438969"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalace a konfigurace místní brány dat
@@ -20,7 +20,7 @@ Místní brána dat se vyžaduje v případě, že se nejmíň jeden Azure Analy
 
 Další informace o tom, jak Azure Analysis Services funguje s bránou, najdete v tématu [připojení k místním zdrojům dat](analysis-services-gateway.md). Další informace o rozšířených scénářích instalace a bráně obecně najdete v [dokumentaci k místní bráně dat](/data-integration/gateway/service-gateway-onprem).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 **Minimální požadavky:**
 
@@ -67,20 +67,20 @@ Další informace o tom, jak Azure Analysis Services funguje s bránou, najdete 
    > [!NOTE]
    > Pokud se přihlásíte pomocí účtu domény, namapuje se na účet vaší organizace ve službě Azure AD. Účet vaší organizace se používá jako Správce brány.
 
-## <a name="register"></a>Zaregistrovat
+## <a name="register"></a>Registrovat
 
 Aby bylo možné vytvořit prostředek brány v Azure, musíte zaregistrovat místní instanci, kterou jste nainstalovali s cloudovou službou brány. 
 
 1.  Vyberte možnost **zaregistrovat novou bránu na tomto počítači**.
 
-    ![Zaregistrovat](media/analysis-services-gateway-install/aas-gateway-register-new.png)
+    ![Registrovat](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
 2. Zadejte název a obnovovací klíč pro bránu. Ve výchozím nastavení používá brána výchozí oblast vašeho předplatného. Pokud potřebujete vybrat jinou oblast, vyberte **změnit oblast**.
 
     > [!IMPORTANT]
     > Uložte si obnovovací klíč na bezpečné místo. Obnovovací klíč se vyžaduje v rámci převzetí, migrace nebo obnovení brány. 
 
-   ![Zaregistrovat](media/analysis-services-gateway-install/aas-gateway-register-name.png)
+   ![Registrovat](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
 ## <a name="create-an-azure-gateway-resource"></a>Vytvoření prostředku brány Azure
@@ -156,5 +156,5 @@ A je to! Pokud potřebujete otevřít porty nebo provést nějaké řešení pot
 ## <a name="next-steps"></a>Další kroky
 
 * [Správa služby Analysis Services](analysis-services-manage.md)   
-* [Získat data ze služby Azure Analysis Services](analysis-services-connect.md)   
+* [Získání dat ze služby Azure Analysis Services](analysis-services-connect.md)   
 * [Použití brány pro zdroje dat ve službě Azure Virtual Network](analysis-services-vnet-gateway.md)

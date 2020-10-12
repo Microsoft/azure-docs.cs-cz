@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 49e6df417190071e06582be400575e1880f2543a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82692287"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování pomocí Azure Data Lake Storage Gen1 s využitím Azure Active Directory
@@ -40,7 +40,7 @@ Následující tabulka ukazuje, jak se pro Data Lake Storage Gen1 podporují mec
 <i>* Klikněte na <b>symbol \* ✔</b> . Jedná se o odkaz.</i><br>
 <i>* * MFA představuje službu Multi-Factor Authentication</i>
 
-Další informace o tom, jak používat Azure Active Directory k ověřování, najdete v tématu [scénáře ověřování pro Azure Active Directory](../active-directory/develop/authentication-scenarios.md) .
+Další informace o tom, jak používat Azure Active Directory k ověřování, najdete v tématu  [scénáře ověřování pro Azure Active Directory](../active-directory/develop/authentication-scenarios.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
