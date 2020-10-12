@@ -4,10 +4,10 @@ description: Přidání vlastníků a uživatelů v Azure DevTest Labs pomocí A
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 40173589c4798a8b00d940bca2a71f4d61f2c199
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533321"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Přidat vlastníky a uživatele v Azure DevTest Labs
@@ -30,19 +30,19 @@ Následující tabulka ilustruje akce, které mohou provádět uživatelé v ka�
 | --- | --- | --- | --- |
 | **Úlohy testovacího prostředí** | | | |
 | Přidání uživatelů do testovacího prostředí |No |Yes |No |
-| Aktualizovat nastavení nákladů |No |Ano |Ano |
+| Aktualizovat nastavení nákladů |No |Yes |Yes |
 | **Základní úlohy virtuálních počítačů** | | | |
-| Přidání a odebrání vlastních imagí |No |Ano |Ano |
-| Přidávání, aktualizace a odstraňování vzorců |Ano |Ano |Ano |
-| Seznam povolených Azure Marketplace imagí |No |Ano |Ano |
+| Přidání a odebrání vlastních imagí |No |Yes |Yes |
+| Přidávání, aktualizace a odstraňování vzorců |Yes |Yes |Yes |
+| Seznam povolených Azure Marketplace imagí |No |Yes |Yes |
 | **Úlohy virtuálních počítačů** | | | |
-| Vytvoření virtuálních počítačů |Ano |Ano |Ano |
-| Spuštění, zastavení a odstranění virtuálních počítačů |Jenom virtuální počítače vytvořené uživatelem |Ano |Ano |
-| Aktualizace zásad virtuálních počítačů |No |Ano |Ano |
-| Přidání/odebrání datových disků do/z virtuálních počítačů |Jenom virtuální počítače vytvořené uživatelem |Ano |Ano |
+| Vytvoření virtuálních počítačů |Yes |Yes |Yes |
+| Spuštění, zastavení a odstranění virtuálních počítačů |Jenom virtuální počítače vytvořené uživatelem |Yes |Yes |
+| Aktualizace zásad virtuálních počítačů |No |Yes |Yes |
+| Přidání/odebrání datových disků do/z virtuálních počítačů |Jenom virtuální počítače vytvořené uživatelem |Yes |Yes |
 | **Úlohy artefaktů** | | | |
-| Přidání a odebrání úložišť artefaktů |No |Ano |Ano |
-| Použít artefakty |Ano |Ano |Ano |
+| Přidání a odebrání úložišť artefaktů |No |Yes |Yes |
+| Použít artefakty |Yes |Yes |Yes |
 
 > [!NOTE]
 > Když uživatel vytvoří virtuální počítač, tento uživatel se automaticky přiřadí do role **vlastníka** vytvořeného virtuálního počítače.
@@ -53,7 +53,7 @@ Následující tabulka ilustruje akce, které mohou provádět uživatelé v ka�
 Vlastníky a uživatele je možné přidat na úrovni testovacího prostředí prostřednictvím Azure Portal. Uživatel může být externím uživatelem s platným [účet Microsoft (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account).
 Následující kroky vás provedou procesem přidání vlastníka nebo uživatele do testovacího prostředí v Azure DevTest Labs:
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte požadované testovací prostředí.
 4. V okně testovacího prostředí vyberte **Konfigurace a zásady**. 
@@ -110,7 +110,7 @@ Do testovacího prostředí můžete přidat další vlastníky přes okno testo
 
 K přidání vlastníka do předplatného Azure použijte tento postup:
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a potom v seznamu vyberte **odběry** .
 3. Vyberte požadované předplatné.
 4. Vyberte ikonu **přístupu** . 

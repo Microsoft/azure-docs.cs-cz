@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2020
 ms.author: sausin
 ms.openlocfilehash: 83b6e6be8764a86c41bd9156cc96f8a594dbe1e9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87294123"
 ---
 # <a name="custom-commands-encryption-of-data-at-rest"></a>Šifrování vlastních příkazů pro neaktivní uložená data
@@ -25,7 +25,7 @@ Vlastní příkazy automaticky šifrují vaše data při trvalém ukládání do
 > Služba Custom Commands (vlastní příkazy) automaticky nepovoluje šifrování pro prostředky LUIS přidružené k vaší aplikaci. V případě potřeby musíte povolit šifrování prostředku LUIS z [tohoto místa](./../LUIS/luis-encryption-of-data-at-rest.md).
 
 ## <a name="about-cognitive-services-encryption"></a>O šifrování Cognitive Services
-Data se šifrují a dešifrují s využitím [256 šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) kompatibilního se [standardem FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) . Šifrování a dešifrování je transparentní, což znamená, že se pro vás spravuje šifrování a přístup. Vaše data jsou ve výchozím nastavení zabezpečená a nemusíte upravovat kód ani aplikace, abyste mohli využívat šifrování.
+Data se šifrují a dešifrují s využitím [256 šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) kompatibilního se [standardem FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) . Šifrování a dešifrování je transparentní, což znamená, že se pro vás spravuje šifrování a přístup. Vaše data jsou zabezpečená ve výchozím nastavení, a abyste mohli využívat šifrování, nemusíte upravovat kód ani aplikace.
 
 ## <a name="about-encryption-key-management"></a>O správě šifrovacích klíčů
 
@@ -33,13 +33,13 @@ Když použijete vlastní příkazy, služba řeči bude ukládat následující
 * Konfigurace JSON za aplikací Custom Commands
 * Klíč pro vytváření a předpověď LUIS
 
-Ve výchozím nastavení používá vaše předplatné šifrovací klíče spravované Microsoftem. Svoje předplatné ale můžete spravovat i s vlastními šifrovacími klíči. Klíče spravované zákazníkem (CMK), označované také jako Přineste si vlastní klíč (BYOK), nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Můžete také auditovat šifrovací klíče používané k ochraně vašich dat.
+Vaše předplatné ve výchozím nastavení používá šifrovací klíče spravované Microsoftem. Své předplatné však můžete spravovat také s využitím vlastních šifrovacích klíčů. Klíče spravované zákazníkem (CMK), označované také jako klíče BYOK (Bring Your Own Key), nabízí větší flexibilitu při vytváření, obměně, zakazování a odvolávání řízení přístupu. Šifrovací klíče sloužící k ochraně vašich dat můžete také auditovat.
 
 
 > [!IMPORTANT]
 > Klíče spravované zákazníkem jsou dostupné jenom prostředky vytvořené po 27. června 2020. Pokud chcete používat CMK se službami Speech, budete muset vytvořit nový prostředek řeči. Po vytvoření prostředku můžete k nastavení spravované identity použít Azure Key Vault.
 
-Chcete-li požádat o možnost použití klíčů spravovaných zákazníkem, vyplňte a odešlete formulář žádosti na klíč spravovaný zákazníkem. Bude to trvat přibližně 3-5 pracovních dnů, než se vrátí na stav vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro používání CMK se službou Speech Services budete muset vytvořit nový prostředek řeči z Azure Portal.
+Chcete-li požádat o možnost použití klíčů spravovaných zákazníkem, vyplňte a odešlete formulář žádosti o klíč Customer-Managed. Bude to trvat přibližně 3-5 pracovních dnů, než se vrátí na stav vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro používání CMK se službou Speech Services budete muset vytvořit nový prostředek řeči z Azure Portal.
    > [!NOTE]
    > **Klíče spravované zákazníkem (CMK) jsou podporovány pouze pro vlastní příkazy.**
    >
@@ -151,7 +151,7 @@ Když zakážete klíče spravované zákazníkem, váš prostředek řeči se p
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Řeč – formulář žádosti o klíč spravovaný zákazníkem](https://aka.ms/cogsvc-cmk)
+* [Formulář žádosti o klíč Customer-Managed řeči](https://aka.ms/cogsvc-cmk)
 * [Další informace o Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 * [Co jsou spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 

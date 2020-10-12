@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: d612b796f85c9eaab1600c55cde7e79acb49f352
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292942"
 ---
 # <a name="go-live"></a>Přejít na Live
@@ -28,12 +28,12 @@ Toto rozhraní API spustí proces pro vložení aplikace do produkčního prost�
 
 |  **Název**      |   **Popis**                                                           | **Datový typ** |
 |  --------      |   ---------------                                                           | ------------- |
-| publisherId    | Identifikátor vydavatele pro nabídku, která se má načíst, například`contoso`       |  Řetězec       |
+| publisherId    | Identifikátor vydavatele pro nabídku, která se má načíst, například `contoso`       |  Řetězec       |
 | Hodnotami OfferId        | Identifikátor nabídky nabídky, která se má načíst                                   |  Řetězec       |
 | verze-api    | Nejnovější verze rozhraní API                                                   |  Datum         |
 |  |  |  |
 
-## <a name="header"></a>Hlavička
+## <a name="header"></a>Záhlaví
 ------
 
 |  **Název**       |     **Hodnota**       |
@@ -65,7 +65,7 @@ Toto rozhraní API spustí proces pro vložení aplikace do produkčního prost�
 
 | **Kód** |  **Popis**                                                                        |
 | -------- |  ----------------                                                                        |
-|  202     | `Accepted`-Požadavek byl úspěšně přijat. Odpověď obsahuje umístění pro sledování stavu operace. |
-|  400     | `Bad/Malformed request`-V těle odpovědi se zjistily Další informace o chybě. |
-|  404     |  `Not found`-Zadaná entita neexistuje.                                       |
+|  202     | `Accepted` -Požadavek byl úspěšně přijat. Odpověď obsahuje umístění pro sledování stavu operace. |
+|  400     | `Bad/Malformed request` -V těle odpovědi se zjistily Další informace o chybě. |
+|  404     |  `Not found` -Zadaná entita neexistuje.                                       |
 |  |  |

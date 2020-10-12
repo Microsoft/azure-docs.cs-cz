@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/14/2020
 ms.openlocfilehash: 0bf5559590b66400fc4fc4dc27ea88c3522effb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83646620"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Jaké jsou výchozí a doporučené konfigurace uzlů pro Azure HDInsight?
@@ -53,7 +53,7 @@ Další informace o specifikacích jednotlivých typů virtuálních počítač�
 > [!Note]
 > Pokud chcete získat identifikátor SKU pro použití v PowerShellu a dalších skriptech, přidejte `Standard_` na začátek všech SKU virtuálních počítačů v následujících tabulkách. Například `D12_v2` by se stala `Standard_D12_v2` .
 
-| Typ clusteru | Hadoop | HBase | Interaktivní dotaz | Storm | Spark | ML Server | Kafka |
+| Typ clusteru | Hadoop | HBase | Interaktivní dotaz | Bouře | Spark | ML Server | Kafka |
 |---|---|---|---|---|---|---|---|
 | Head: výchozí velikost virtuálního počítače | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
 | Head: Minimální doporučené velikosti virtuálních počítačů | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
@@ -64,11 +64,11 @@ Další informace o specifikacích jednotlivých typů virtuálních počítač�
 | Služby ML: výchozí velikost virtuálního počítače |  |  |  |  |  | D4_v2 |  |
 | Služby ML: Minimální doporučená velikost virtuálního počítače |  |  |  |  |  | D4_v2 |  |
 
-\*= Velikosti virtuálních počítačů pro clustery Spark Balíček zabezpečení podniku (ESP)
+\* = Velikosti virtuálních počítačů pro clustery Spark Balíček zabezpečení podniku (ESP)
 
 ### <a name="brazil-south-and-japan-west-only"></a>Brazílie – pouze jih a Japonsko – západ
 
-| Typ clusteru | Hadoop | HBase | Interaktivní dotaz | Storm | Spark | Služby ML |
+| Typ clusteru | Hadoop | HBase | Interaktivní dotaz | Bouře | Spark | Služby ML |
 |---|---|---|---|---|---|---|
 | Head: výchozí velikost virtuálního počítače | D12 | D12 | D13 | A4_v2 | D12 | D12 |
 | Head: Minimální doporučené velikosti virtuálních počítačů | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |

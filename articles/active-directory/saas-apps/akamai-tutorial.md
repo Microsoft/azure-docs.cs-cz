@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.openlocfilehash: c8978504244fbf68875ca8cff7a92f042e8e988b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329495"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Akamai
@@ -45,7 +45,7 @@ Kromě Azure Active Directory podpora nativní integrace pro moderní protokoly 
 * VNC (Virtual Network Computing)
 * Anonymní ověřování nebo žádné sestavené ověřovací aplikace
 * Aplikace ověřování NTLM (ochrana se dvěma výzvami pro uživatele)
-* Aplikace založené na formulářích (ochrana se dvěma výzvami pro uživatele)
+* Aplikace Forms-Based (ochrana se dvěma výzvami pro uživatele)
 
 ### <a name="integration-scenarios"></a>Scénáře integrace
 
@@ -313,7 +313,7 @@ Klikněte na Uložit a přejděte na ověřování.
 
     ![Snímek obrazovky s kartou nasazení konzoly Akamai EAA, která zobrazuje stavovou zprávu aplikace: "aplikace byla úspěšně nasazena".](./media/header-akamai-tutorial/configure15.png)
 
-1. Činnost koncového uživatele.
+1. Prostředí End-User.
 
     ![Snímek obrazovky s úvodní obrazovkou pro myapps.microsoft.com s obrázkem na pozadí a dialogem pro přihlášení](./media/header-akamai-tutorial/enduser01.png)
 
@@ -363,7 +363,7 @@ Klikněte na **Uložit a přejděte na Upřesnit nastavení**.
 
     ![Snímek obrazovky s vlastním nastavením hlaviček protokolu HTTP v konzole Akamai EAA pro SECRETRDPAPP pomocí tlačítka Uložit a přejít k nasazení v pravém dolním rohu.](./media/header-akamai-tutorial/configure24.png)
 
-1. Činnost koncového uživatele
+1. Prostředí End-User
 
     ![Snímek obrazovky okna myapps.microsoft.com s obrázkem na pozadí a dialogem pro přihlášení](./media/header-akamai-tutorial/enduser03.png)
 
@@ -429,7 +429,7 @@ Kliknutím na Uložit a přejít na nasazení
 
     ![Snímek obrazovky s kartou nasazení konzoly Akamai EAA pro SSH – SECURE, který zobrazuje tlačítko nasadit aplikaci.](./media/header-akamai-tutorial/configure32.png)
 
-1. Činnost koncového uživatele
+1. Prostředí End-User
 
     ![Snímek obrazovky s dialogovým oknem přihlášení k oknu myapps.microsoft.com](./media/header-akamai-tutorial/enduser03.png)
 

@@ -7,13 +7,13 @@ author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
 ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318313"
 ---
-# <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Doprovodné materiály k osobním údajům uloženým v Log Analytics a Application Insights
+# <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Doprovodné materiály pro osobní údaje uložené ve službách Log Analytics a Application Insights
 
 Log Analytics je úložiště dat, kde se pravděpodobně nacházejí osobní údaje. Application Insights ukládá data do oddílu Log Analytics. Tento článek pojednává o tom, kde v Log Analytics a Application Insights taková data se obvykle nacházejí, a možnosti, které jsou k dispozici pro zpracování takových dat.
 
@@ -78,7 +78,7 @@ Jak bylo zmíněno v předchozí [strategii pro zpracování osobních údajů](
 
 ### <a name="view-and-export"></a>Zobrazit a exportovat
 
-Pro požadavky na zobrazení a export dat by se měla použít rozhraní [API pro Log Analytics dotazů](https://dev.loganalytics.io/) nebo [rozhraní API pro Application Insights dotazování](https://dev.applicationinsights.io/quickstart) . K implementaci můžete použít logiku pro převod tvaru dat na příslušný objekt, který bude poskytovat vašim uživatelům. [Azure Functions](https://azure.microsoft.com/services/functions/) představuje pro hostování takové logiky Skvělé místo.
+Pro požadavky na zobrazení a export dat by se měla použít rozhraní [API pro Log Analytics dotazů](https://dev.loganalytics.io/) nebo  [rozhraní API pro Application Insights dotazování](https://dev.applicationinsights.io/quickstart) . K implementaci můžete použít logiku pro převod tvaru dat na příslušný objekt, který bude poskytovat vašim uživatelům. [Azure Functions](https://azure.microsoft.com/services/functions/) představuje pro hostování takové logiky Skvělé místo.
 
 > [!IMPORTANT]
 >  I když velká většina operací vyprázdnění může trvat mnohem rychlejší než smlouva SLA, **je formální smlouva SLA pro dokončení operací vyprázdnění nastavená na 30 dní** kvůli jejich těžkému dopadu na využitou datovou platformu. Toto je automatizovaný proces; neexistuje žádný způsob, jak vyžádat zpracování operace rychleji.

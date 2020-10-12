@@ -8,10 +8,10 @@ ms.date: 06/01/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87542734"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Vyhledání a odstranění nepřipojených spravovaných a nespravovaných disků Azure – Azure Portal
@@ -22,7 +22,7 @@ Při odstranění virtuálního počítače v Azure se ve výchozím nastavení 
 
 Pokud máte nepřipojené spravované disky a už je nepotřebujete, následující postup vysvětluje, jak je najít z Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Vyhledejte a vyberte **disky**.
 
     V okně **disky** se zobrazí seznam všech disků. Každý disk, který má **-** ve sloupci **vlastník** "", je nepřipojený disk.
@@ -40,22 +40,22 @@ Nespravované disky jsou soubory VHD, které se ukládají jako [objekty blob st
 
 Pokud máte nespravované disky, které nejsou připojené k virtuálnímu počítači, už je nepotřebujete, a chcete je odstranit, následující postup vysvětluje, jak to udělat z Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Vyhledejte a vyberte **disky (klasické)**.
 
     Zobrazí se seznam všech nespravovaných disků. Libovolný disk, který má **-** ve sloupci **připojeno k** , je nepřipojený disk.
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="Snímek obrazovky okna nespravované disky Disky v tomto okně, které jsou ve sloupci připojeno ke, nejsou připojené.":::
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="Snímek obrazovky okna jednotlivých spravovaných disků Toto okno se zobrazí jako nepřipojené ve stavu disku, pokud je Nepřipojeno. Tento disk můžete odstranit, pokud už nepotřebujete zachovat jeho data.":::
 
 1. Vyberte nepřipojený disk, který chcete odstranit, a zobrazí se okno disku.
 
 1. V okně disku můžete potvrdit, že je nepřipojený, protože je pořád **k** disjednotce připojené **-** .
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="Snímek obrazovky okna jednotlivého nespravovaného disku Bude mít hodnotu připojenou k hodnotě, pokud není připojená. Pokud již nepotřebujete data těchto disků, můžete je odstranit.":::
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="Snímek obrazovky okna jednotlivých spravovaných disků Toto okno se zobrazí jako nepřipojené ve stavu disku, pokud je Nepřipojeno. Tento disk můžete odstranit, pokud už nepotřebujete zachovat jeho data.":::
 
 1. Vyberte **Odstranit**.
 
-    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="Snímek obrazovky samostatného nespravovaného disku, zvýrazňování odstranit":::
+    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="Snímek obrazovky okna jednotlivých spravovaných disků Toto okno se zobrazí jako nepřipojené ve stavu disku, pokud je Nepřipojeno. Tento disk můžete odstranit, pokud už nepotřebujete zachovat jeho data.":::
 
 ## <a name="next-steps"></a>Další kroky
 

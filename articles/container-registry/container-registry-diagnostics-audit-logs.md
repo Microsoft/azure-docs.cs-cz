@@ -4,10 +4,10 @@ description: Zaznamenává a analyzuje události protokolu prostředků pro Azur
 ms.topic: article
 ms.date: 06/01/2020
 ms.openlocfilehash: 63ccb944b9c3de9941acf55ca5ea85fda70a7008
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87553372"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Protokoly Azure Container Registry pro vyhodnocení a auditování diagnostiky
@@ -37,7 +37,7 @@ V současné době jsou protokolovány následující události na úrovni úlo�
 
 Protokoly prostředků obsahují informace vydávané prostředky Azure, které popisují jejich interní operace. V případě služby Azure Container registry obsahují protokoly události na úrovni ověřování a úložiště uložené v následujících tabulkách. 
 
-* **ContainerRegistryLoginEvents** – události a stav ověřování registru, včetně příchozí identity a IP adresy
+* **ContainerRegistryLoginEvents**  – události a stav ověřování registru, včetně příchozí identity a IP adresy
 * **ContainerRegistryRepositoryEvents** – operace jako push a pull pro image a další artefakty v úložištích registru
 * **AzureMetrics**  -  [Metriky registru kontejnerů](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , jako je agregovaná nabízená oznámení a počty vyžádaného čtení.
 

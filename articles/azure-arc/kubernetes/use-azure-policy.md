@@ -9,17 +9,17 @@ ms.author: mlearned
 description: Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
 ms.openlocfilehash: e4279f3d89376320116067bf191e3196271918ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87050037"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku (Preview)
 
 ## <a name="overview"></a>Přehled
 
-Pomocí Azure Policy vynutili použití `Microsoft.Kubernetes/connectedclusters` konkrétního prostředku nebo prostředku s povoleným Git-OPS `Microsoft.ContainerService/managedClusters` `Microsoft.KubernetesConfiguration/sourceControlConfigurations` . Pokud chcete použít Azure Policy vyberte existující definici zásady a vytvořte přiřazení zásady. Při vytváření přiřazení zásad nastavíte rozsah přiřazení: Toto bude skupina prostředků nebo předplatné Azure. Nastavili jste také parametry `sourceControlConfiguration` , které budou vytvořeny. Po vytvoření přiřazení modul zásad identifikuje všechny `connectedCluster` `managedCluster` prostředky, které se nacházejí v rámci oboru, a použije je `sourceControlConfiguration` pro každé z nich.
+Použijte Azure Policy k vykonání, že `Microsoft.Kubernetes/connectedclusters` `Microsoft.ContainerService/managedClusters` se `Microsoft.KubernetesConfiguration/sourceControlConfigurations` na něj vztahují konkrétní prostředky nebo prostředky, které jsou v Git-Ops povolené. Pokud chcete použít Azure Policy vyberte existující definici zásady a vytvořte přiřazení zásady. Při vytváření přiřazení zásad nastavíte rozsah přiřazení: Toto bude skupina prostředků nebo předplatné Azure. Nastavili jste také parametry `sourceControlConfiguration` , které budou vytvořeny. Po vytvoření přiřazení modul zásad identifikuje všechny `connectedCluster` `managedCluster` prostředky, které se nacházejí v rámci oboru, a použije je `sourceControlConfiguration` pro každé z nich.
 
 Pokud používáte více úložišť Git jako zdroje pravdy pro každý cluster (například jedno úložiště pro centrálního IT/clusterový operátor a jiné úložiště pro aplikační týmy), můžete to povolit pomocí více přiřazení zásad. každé přiřazení zásady je nakonfigurované tak, aby používalo jiné úložiště Git.
 

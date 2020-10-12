@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: ad8f15f7d1cf69824bfb9298d7ccf097e4893ea8
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87542972"
 ---
 # <a name="azure-database-security-checklist"></a>Kontrolní seznam zabezpečení Azure Database
 
 Pro lepší zabezpečení zahrnuje Azure Database řadu integrovaných ovládacích prvků zabezpečení, které můžete použít k omezení a řízení přístupu.
 
-Mezi ně patří:
+Tady jsou některé z nich:
 
 -    Bránu firewall, která umožňuje vytvářet [pravidla brány firewall](../../azure-sql/database/firewall-configure.md) s omezením připojení podle IP adresy,
 -    Brána firewall na úrovni serveru dostupná z Azure Portal
@@ -41,7 +41,7 @@ Mezi ně patří:
 Cloud computing vyžaduje nové paradigma zabezpečení, které neznají mnoho uživatelů aplikací, správců databází a programátoři. V důsledku toho se některé organizace váhají k implementaci cloudové infrastruktury pro správu dat kvůli zjištěným bezpečnostním rizikům. Mnohé z těchto záležitostí je ale možné vyřešit lepším porozuměním funkcím zabezpečení integrovaným do Microsoft Azure a Microsoft Azure SQL Database.
 
 ## <a name="checklist"></a>Kontrolní seznam
-Doporučujeme, abyste si před kontrolou tohoto kontrolního seznamu přečetli článek věnované [osvědčeným postupům zabezpečení Azure Database](database-best-practices.md) . Až porozumíte osvědčeným postupům, budete moct získat co nejvíc tohoto kontrolního seznamu. Tento kontrolní seznam pak můžete použít k tomu, abyste se ujistili, že byly vyřešeny důležité problémy v zabezpečení databáze Azure.
+Doporučujeme, abyste si před kontrolou tohoto kontrolního seznamu přečetli článek věnované [osvědčeným postupům zabezpečení Azure Database](database-best-practices.md)  . Až porozumíte osvědčeným postupům, budete moct získat co nejvíc tohoto kontrolního seznamu. Tento kontrolní seznam pak můžete použít k tomu, abyste se ujistili, že byly vyřešeny důležité problémy v zabezpečení databáze Azure.
 
 
 |Kategorie kontrolního seznamu| Description|
@@ -57,7 +57,7 @@ Doporučujeme, abyste si před kontrolou tohoto kontrolního seznamu přečetli 
 |<br>Azure Security Center| <ul><li>[Monitorování dat](../../security-center/security-center-enable-auditing-on-sql-databases.md) Jako centralizované řešení pro monitorování zabezpečení pro SQL a další služby Azure použijte Azure Security Center.</li></ul>|        
 
 ## <a name="conclusion"></a>Závěr
-Azure Database je robustní databázová platforma s plnou škálou funkcí zabezpečení, které splňují mnoho požadavků organizace a dodržování předpisů. Data můžete snadno chránit pomocí řízení fyzického přístupu k datům a pomocí různých možností zabezpečení dat na úrovni souboru, sloupce nebo řádku pomocí transparentní šifrování dat, šifrování na úrovni buňky nebo zabezpečení na úrovni řádků. Always Encrypted také umožňuje operace proti šifrovaným datům, což zjednodušuje proces aktualizací aplikace. Přístup k protokolům auditování SQL Database aktivity navíc poskytuje informace, které potřebujete, což vám umožní zjistit, jak a kdy se k datům přistupuje.
+Azure Database je robustní databázová platforma s plnou škálou funkcí zabezpečení, které splňují mnoho požadavků organizace a dodržování předpisů. Data můžete snadno chránit pomocí řízení fyzického přístupu k datům a pomocí různých možností zabezpečení dat na úrovni souboru, sloupce nebo řádku pomocí transparentní šifrování dat, Cell-Level šifrování nebo Row-Level zabezpečení. Always Encrypted také umožňuje operace proti šifrovaným datům, což zjednodušuje proces aktualizací aplikace. Přístup k protokolům auditování SQL Database aktivity navíc poskytuje informace, které potřebujete, což vám umožní zjistit, jak a kdy se k datům přistupuje.
 
 ## <a name="next-steps"></a>Další kroky
 Ochranu databáze před uživateli se zlými úmysly nebo neoprávněným přístupem můžete zlepšit v několika jednoduchých krocích. V tomto kurzu se naučíte:

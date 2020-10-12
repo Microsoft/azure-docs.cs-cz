@@ -5,10 +5,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317378"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor vyřazení rozhraní API modelu nasazení Classic pro metriky a automatické škálování
@@ -31,13 +31,13 @@ Tento článek se týká, pokud používáte následující součásti:
 
 - **Klasické automatické škálování** – Pokud voláte [rozhraní API klasického nastavení automatického škálování](/previous-versions/azure/reference/mt348562(v=azure.100)) ze svých vlastních nástrojů nebo pomocí [klasické sady Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/), měli byste přepnout na použití [Správce prostředků Azure monitor REST API](/rest/api/monitor/autoscalesettings).
 
-- **Klasické metriky** – Pokud pracujete s metrikami pomocí [klasických rozhraní REST API](/previous-versions/azure/reference/dn510374(v=azure.100)) nebo [sady Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) od vlastních nástrojů, měli byste přepnout na použití [Správce prostředků Azure monitor REST API](/rest/api/monitor/autoscalesettings). 
+- **Klasické metriky** – Pokud pracujete s metrikami pomocí [klasických rozhraní REST API](/previous-versions/azure/reference/dn510374(v=azure.100)) nebo  [sady Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) od vlastních nástrojů, měli byste přepnout na použití [Správce prostředků Azure monitor REST API](/rest/api/monitor/autoscalesettings). 
 
 Pokud si nejste jistí, jestli váš kód nebo vlastní nástroje volají rozhraní API Classic, podívejte se na následující:
 
 - Zkontrolujte identifikátor URI, na který se odkazuje v kódu nebo nástroji. Rozhraní API Classic používají identifikátor URI https://management.core.windows.net . Měli byste používat novější identifikátor URI pro rozhraní API založená na Správce prostředků začíná na `https://management.azure.com/` .
 
-- Porovnejte název sestavení v počítači. Starší sestavení Classic je na https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ .
+- Porovnejte název sestavení v počítači. Starší sestavení Classic je na  https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ .
 
 - Pokud k přístupu k metrikám nebo rozhraním API automatického škálování používáte ověřování pomocí certifikátů, používáte klasický koncový bod a knihovnu. Novější rozhraní Správce prostředků API vyžadují Azure Active Directory ověřování prostřednictvím instančního objektu nebo objektu zabezpečení uživatele.
 
@@ -53,7 +53,7 @@ Pokud si nejste jistí, jestli váš kód nebo vlastní nástroje volají rozhra
 
 Všechny existující funkce pro automatické škálování a metriky budou i nadále fungovat prostřednictvím nových rozhraní API.  
 
-Migrace přes do novějších rozhraní API přináší Správce prostředků možnosti založené na rolích, jako je podpora konzistentních Access Control založených na rolích (RBAC) napříč všemi vašimi monitorovacími službami. Získáte také další funkce pro metriky: 
+Migrace přes do novějších rozhraní API přináší funkce založené na Správce prostředků, jako je podpora konzistentních Role-Based Access Control (RBAC) napříč všemi vašimi monitorovacími službami. Získáte také další funkce pro metriky: 
 
 - Podpora dimenzí
 - konzistentní členitost metriky o úrovni 1 minuty napříč všemi službami 
@@ -85,7 +85,7 @@ Oznámení o vyřazení bylo odesláno na e-mailové adresy následujících rol
 
 Pokud máte nějaké dotazy, kontaktujte nás na adrese MonitorClassicAPIhelp@microsoft.com .  
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 - [Novější rozhraní REST API pro Azure Monitor](/rest/api/monitor/) 
 - [Novější sada Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

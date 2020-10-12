@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119783"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Použití knihovny Microsoft Authentication Library pro jazyk JavaScript pro práci s Azure AD B2C
@@ -67,7 +67,7 @@ const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can u
 const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
 ```
 
-Další informace najdete v této [ukázceNode.js B2C webového rozhraní API](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi).
+Další informace najdete v této [ ukázceNode.js B2C webového rozhraní API](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi).
 
 ## <a name="javascript-spa"></a>JavaScript SPA
 
@@ -201,7 +201,7 @@ Když uživatel vybere **zapomenuté heslo**, vaše aplikace vyvolá chybu, kter
 
     Po resetování hesla se uživatel vrátí zpátky do aplikace, aby se znovu přihlásil.
 
-    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Obrazovky toku resetování hesla zobrazené Azure AD B2C" border="false":::
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Přihlašovací obrazovka zobrazovaná Azure AD B2C" border="false":::
 
     Další informace o kódech chyb a o zpracování výjimek naleznete v tématu [MSAL Error and Exception Codes](msal-handling-exceptions.md).
 
@@ -209,6 +209,6 @@ Když uživatel vybere **zapomenuté heslo**, vaše aplikace vyvolá chybu, kter
 
 Přečtěte si další informace o těchto Azure AD B2C konceptech:
 
-- [Toky uživatelů](../../active-directory-b2c/tutorial-create-user-flows.md)
+- [Toky uživatele](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [Vlastní zásady](../../active-directory-b2c/custom-policy-get-started.md)
 - [Přizpůsobení uživatelského prostředí](../../active-directory-b2c/custom-policy-configure-user-input.md)

@@ -8,10 +8,10 @@ ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
 ms.openlocfilehash: ca8f2e1721c99c79188917e5b44950b8db6895ce
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90006393"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Možnosti Transact-The pro komerční web Marketplace
@@ -107,7 +107,7 @@ V tomto scénáři vám Microsoft účtuje $1,14 za hodinu pro použití publiko
 |Microsoft udržuje 100% nákladů na využití Azure. | $0,14 za hodinu |
 ||
 
-**Používání vlastní licence (BYOL)**
+**Přineste si vlastní licenci (BYOL)**
 
 BYOL má následující nákladovou strukturu:
 

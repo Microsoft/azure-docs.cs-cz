@@ -6,10 +6,10 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318976"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Agent Application Insights (dřív pojmenovaný Monitorování stavu v2): podrobné pokyny
@@ -167,7 +167,7 @@ Nainstalujte ručně stažený modul PowerShellu do adresáře PowerShellu, aby 
 Další informace najdete v tématu [Instalace modulu PowerShellu](/powershell/scripting/developer/module/installing-a-powershell-module).
 
 
-#### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Rozbalí nupkg jako soubor ZIP pomocí expand-Archive (v 1.0.1.0).
+#### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Extrahování nupkg jako souboru ZIP pomocí Expand-Archive (v 1.0.1.0)
 
 - Popis: základní verze souboru Microsoft. PowerShell. Archive (v 1.0.1.0) nemůže dekomprimovat soubory nupkg. Přejmenujte soubor s příponou. zip.
 - Referenční informace: [expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
@@ -181,9 +181,9 @@ Další informace najdete v tématu [Instalace modulu PowerShellu](/powershell/s
     Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
     ```
 
-#### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Rozbalení nupkg pomocí expand-Archive (v 1.1.0.0)
+#### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Rozbalení nupkg pomocí Expand-Archive (v 1.1.0.0)
 
-- Popis: k rozbalení souborů nupkg bez změny rozšíření použijte aktuální verzi nástroje expand-Archive.
+- Popis: pomocí aktuální verze Expand-Archive dekomprimovat soubory nupkg beze změny rozšíření.
 - Referenční informace: [expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) a [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
 - Systému
 

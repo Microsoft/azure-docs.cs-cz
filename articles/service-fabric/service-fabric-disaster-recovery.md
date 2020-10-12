@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 9c258d8d0a7aa26c96ab4f64017770ebdd153e60
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257510"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Zotavení po havárii v Azure Service Fabric
@@ -151,7 +151,7 @@ Pokud zjistíte, že zbývající repliky nejsou dostačující pro pokračován
 > [!NOTE]
 > Systémové služby můžou také snížit ztrátu kvora. Dopad je specifický pro příslušnou službu. Například ztráta kvora ve službě pojmenování má vliv na překlad adres, zatímco ztráta kvora ve službě Správce převzetí služeb při selhání blokuje nové vytvoření a převzetí služeb při selhání. 
 > 
-> Systémové služby Service Fabric se řídí stejným vzorem jako vaše služby pro správu stavu, ale nedoporučujeme, abyste je přesunuli ze ztráty kvora a potenciální ztráty dat. Místo toho doporučujeme, abyste [vyhledali podporu](service-fabric-support.md) , abyste našli řešení, které je pro vaši situaci cílené. Obvykle je vhodné jednoduše počkat, dokud se nevrátí.
+> Systémové služby Service Fabric se řídí stejným vzorem jako vaše služby pro správu stavu, ale nedoporučujeme, abyste je přesunuli ze ztráty kvora a potenciální ztráty dat. Místo toho doporučujeme, abyste  [vyhledali podporu](service-fabric-support.md) , abyste našli řešení, které je pro vaši situaci cílené. Obvykle je vhodné jednoduše počkat, dokud se nevrátí.
 >
 
 #### <a name="troubleshooting-quorum-loss"></a>Řešení potíží s ztrátou kvora

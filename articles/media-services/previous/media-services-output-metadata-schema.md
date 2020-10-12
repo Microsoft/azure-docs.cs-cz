@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: cd81ef78ecc5ef9cea71adb387597681460d50c8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89261304"
 ---
 # <a name="output-metadata"></a>Výstupní metadata
@@ -50,14 +50,14 @@ Příklad XML příklad XML najdete v [příkladu.](#xml)
 ### <a name="attributes"></a>Atributy
 | Název | Typ | Popis |
 | --- | --- | --- |
-| **Name**<br/><br/> Vyžadováno |**xs: String** |Název souboru mediálního prostředku |
+| **Název**<br/><br/> Vyžadováno |**xs: String** |Název souboru mediálního prostředku |
 | **Velikost**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: Long** |Velikost souboru prostředků v bajtech |
 | **Doba trvání**<br/><br/> Vyžadováno |**xs: Duration** |Doba přehrávání obsahu |
 
 ### <a name="child-elements"></a>Podřízené prvky
 | Název | Popis |
 | --- | --- |
-| **zdroje** |Kolekce vstupních/zdrojových mediálních souborů, které byly zpracovány za účelem vytvoření tohoto AssetFile. Další informace naleznete v tématu Source element. |
+| **Prostředky** |Kolekce vstupních/zdrojových mediálních souborů, které byly zpracovány za účelem vytvoření tohoto AssetFile. Další informace naleznete v tématu Source element. |
 | **VideoTracks**<br/><br/> minOccurs = "0" maxOccurs = "1" |Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. Další informace naleznete v tématu VideoTracks element. |
 | **AudioTracks**<br/><br/> minOccurs = "0" maxOccurs = "1" |Každý fyzický AssetFile může v něm obsahovat nula nebo více zvukových stop, které se pronechají v příslušném formátu kontejneru. Toto je kolekce všech těchto zvukových stop. Další informace naleznete v tématu AudioTracks element. |
 
@@ -79,7 +79,7 @@ Příklad XML příklad XML najdete v [příkladu.](#xml)
 ### <a name="attributes"></a>Atributy
 | Název | Typ | Popis |
 | --- | --- | --- |
-| **Name**<br/><br/> Vyžadováno |**xs: String** |Název vstupního zdrojového souboru |
+| **Název**<br/><br/> Vyžadováno |**xs: String** |Název vstupního zdrojového souboru |
 
 ## <a name="videotracks-element"></a><a name="VideoTracks"></a> Element VideoTracks
 Každý fyzický AssetFile může v něm obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. Element **VideoTracks** reprezentuje kolekci všech stop videa.  
@@ -97,14 +97,14 @@ Konkrétní stopa videa v nadřazené AssetFile
 Příklad XML příklad XML najdete v [příkladu.](#xml)  
 
 ### <a name="attributes"></a>Atributy
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | --- | --- | --- |
 | **Účet**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: int** |Index tohoto videa na základě nuly **Poznámka:**  Toto **ID** nemusí nutně být TrackID, jak se používá v souboru MP4. |
 | **FourCC**<br/><br/> Vyžadováno |**xs: String** |FourCCový kodek pro video. |
 | **Profil** |**xs: String** |Profil H264 (platí jenom pro kodek H264). |
 | **Obsah** |**xs: String** |Úroveň H264 (platí pouze pro kodek H264). |
-| **Width (Šířka)**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: int** |Zakódovaná Šířka videa v pixelech |
-| **Height (Výška)**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: int** |Výška kódovaného videa v pixelech |
+| **Délk**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: int** |Zakódovaná Šířka videa v pixelech |
+| **Výška**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: int** |Výška kódovaného videa v pixelech |
 | **DisplayAspectRatioNumerator**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: Double** |Čítač zobrazení poměru stran videa |
 | **DisplayAspectRatioDenominator**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: Double** |Jmenovatel poměru stran zobrazení videa |
 | **Framerate**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: Decimal** |Měřená snímková frekvence videa ve formátu. 3F. |
@@ -129,7 +129,7 @@ Konkrétní záznam zvuku v nadřazené AssetFile.
 Příklad XML příklad XML najdete v [příkladu.](#xml)  
 
 ### <a name="attributes"></a>Atributy
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | --- | --- | --- |
 | **Účet**<br/><br/> minInclusive = "0"<br/><br/> Vyžadováno |**xs: int** |Index této zvukové stopy založený na nule. **Poznámka:**  To není nutně TrackID, jak se používá v souboru MP4. |
 | **Kodek** |**xs: String** |Řetězec kodeku zvukového záznamu |
@@ -150,7 +150,7 @@ Parametry výsledku měření nahlasu.
 Příklad XML příklad XML najdete v [příkladu.](#xml)  
 
 ### <a name="attributes"></a>Atributy
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | --- | --- | --- |
 | **DPLMVersionInformation** |**xs: String** |Verze vývojové sady pro měření formátu **Dolby** Professional |
 | **DialogNormalization**<br/><br/> minInclusive = "-31" maxInclusive = "-1"<br/><br/> Vyžadováno |**xs: int** |DialogNormalization generované prostřednictvím DPLM, pokud je nastavená LoudnessMetering |

@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: rohink
 ms.openlocfilehash: 4bf3ee75c9445856fb8a2ce789a3f2f345e720fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84701660"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Správa záznamů a sad záznamů DNS v Azure DNS pomocí rozhraní příkazového řádku Azure
@@ -220,7 +220,7 @@ Nemůžete přidávat, odebírat ani upravovat záznamy v sadě záznamů automa
 
 Na rozdíl od většiny ostatních typů záznamů může sada záznamů CNAME obsahovat jenom jeden záznam.  Proto nemůžete nahradit aktuální hodnotu přidáním nového záznamu a odebráním existujícího záznamu, stejně jako u jiných typů záznamů.
 
-Místo toho pro úpravu záznamu CNAME použijte `az network dns record-set cname set-record` . Nápovědu najdete v tématu.`az network dns record-set cname set-record --help`
+Místo toho pro úpravu záznamu CNAME použijte `az network dns record-set cname set-record` . Nápovědu najdete v tématu. `az network dns record-set cname set-record --help`
 
 V příkladu se změní *Webová* sada záznamů CNAME v zóně *contoso.com*ve skupině prostředků *MyResourceGroup*, aby odkazovala na ' www.fabrikam.NET ' namísto existující hodnoty:
 

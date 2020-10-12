@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: jingwang
 ms.openlocfilehash: 78e7fc6b2a4c9804fbba60aa9946cc612b494461
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87531281"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>Kopírování dat z Zoho pomocí Azure Data Factory (Preview)
@@ -163,7 +163,7 @@ Chcete-li kopírovat data z Zoho, nastavte typ zdroje v aktivitě kopírování 
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ZohoSource** . | Yes |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Accounts"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

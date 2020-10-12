@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: 8d4e78a90c5b852177c88350422bdd6ce1e398cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84704943"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostika problému s filtrováním síťového provozu virtuálního počítače
@@ -170,14 +170,14 @@ Ať už pomocí webu Azure [Portal](#diagnose-using-azure-portal), [PowerShellu]
 
 | Vlastnost                | Hodnota                                                                              |
 |---------                |---------                                                                           |
-| Zdroj                  | Všechny                                                                                |
+| Zdroj                  | Libovolný                                                                                |
 | Rozsahy zdrojových portů      | Všechny                                                                                |
 | Cíl             | IP adresa virtuálního počítače, rozsah IP adres nebo všechny adresy v podsíti. |
 | Rozsahy cílových portů | 80                                                                                 |
-| Protocol (Protokol)                | TCP                                                                                |
+| Protokol                | TCP                                                                                |
 | Akce                  | Povolit                                                                              |
 | Priorita                | 100                                                                                |
-| Name                    | Povolení – HTTP – vše                                                                     |
+| Název                    | Povolení – HTTP – vše                                                                     |
 
 Po vytvoření pravidla je port 80 povolený pro příchozí připojení z Internetu, protože priorita pravidla je vyšší než výchozí pravidlo zabezpečení s názvem *DenyAllInBound*, které zakazuje provoz. Přečtěte si, jak [vytvořit pravidlo zabezpečení](manage-network-security-group.md#create-a-security-rule). Pokud jsou k síťovému rozhraní i podsíti přidruženy různé skupin zabezpečení sítě, musíte stejné pravidlo vytvořit v obou skupin zabezpečení sítě.
 

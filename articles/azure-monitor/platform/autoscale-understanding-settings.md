@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 6d6b868f745803263339e6b27e2610aaca8f63fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317463"
 ---
 # <a name="understand-autoscale-settings"></a>Vysvětlení nastavení automatického škálování
@@ -103,10 +103,10 @@ Pro ilustraci schématu nastavení automatického škálování se používá n�
 | metricTrigger | timeGrain | Doba trvání vzorkování metriky. Například **TimeGrain = "PT1M"** znamená, že metriky by měly být agregovány každé 1 minuty pomocí metody agregace určené v prvku statistiky. |
 | metricTrigger | údaj | Agregační metoda v rámci timeGrain období Například **Statistika = "průměr"** a **TIMEGRAIN = "PT1M"** znamená, že metriky by měly být agregovány každé 1 minuty, a to tak, že vyberou průměr. Tato vlastnost určuje, jak je tato metrika vzorkovaná. |
 | metricTrigger | timeWindow | Doba, po kterou se bude hledat metrika. Například **TimeWindow = "PT10M"** znamená, že při každém spuštění automatického škálování se dotazuje metriky za posledních 10 minut. Časový interval umožňuje normalizovat metriky a vyhnout se tomu, aby se znovu zobrazovaly přechodné špičky. |
-| metricTrigger | timeAggregation | Agregační metoda sloužící k agregaci vzorků metrik. Například **TimeAggregation = "Average"** by měl agregovat vzorkování metriky tím, že přijímá průměr. V předchozím případě Vezměte deset ukázek a průměrně. |
+| metricTrigger | timeAggregation | Agregační metoda sloužící k agregaci vzorků metrik. Například **TimeAggregation = "Average"** by měl agregovat vzorkování metriky tím, že přijímá průměr. V předchozím případě vezměte v úvahu ukázky 10 1 minut a průměrně. |
 | pravidlo | scaleAction | Akce, která se má provést, když se aktivuje metricTrigger pravidla |
 | scaleAction | směr | "Zvětšit" pro horizontální navýšení kapacity nebo "zmenšení" pro horizontální navýšení kapacity.|
-| scaleAction | hodnota | Kolik se má zvýšit nebo snížit kapacita prostředku. |
+| scaleAction | value | Kolik se má zvýšit nebo snížit kapacita prostředku. |
 | scaleAction | cooldown | Doba, po kterou se má počkat po operaci škálování, než se znovu změní velikost Například pokud **cooldown = "PT10M"**, automatické škálování se znovu nepokouší o horizontální navýšení kapacity po dobu dalších 10 minut. Cooldown je, aby bylo možné metriky stabilizovat po přidání nebo odebrání instancí. |
 
 ## <a name="autoscale-profiles"></a>Profily automatického škálování

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 11a3fdd5dbaef53af321342952f786ed8119689c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89012394"
 ---
 # <a name="package-an-application"></a>Balení aplikace
@@ -44,7 +44,7 @@ Složky jsou pojmenovány tak, aby odpovídaly atributům **názvu** každého o
 
 ## <a name="use-setupentrypoint"></a>Použití SetupEntryPoint
 
-Typické scénáře použití **SetupEntryPoint** jsou, pokud potřebujete spustit spustitelný soubor před spuštěním služby nebo potřebujete provést operaci se zvýšenými oprávněními. Příklad:
+Typické scénáře použití **SetupEntryPoint** jsou, pokud potřebujete spustit spustitelný soubor před spuštěním služby nebo potřebujete provést operaci se zvýšenými oprávněními. Například:
 
 * Nastavení a inicializace proměnných prostředí, které vyžaduje spustitelný soubor služby. Není omezen pouze na spustitelné soubory napsané prostřednictvím Service Fabric programovacích modelů. npm.exe například potřebuje některé proměnné prostředí nakonfigurované pro nasazení node.js aplikace.
 * Nastavení řízení přístupu instalací certifikátů zabezpečení.

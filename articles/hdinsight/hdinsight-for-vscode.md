@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: bb2fff699b31d8b3b311180c4b85e2bfd1da892c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530149"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Použití nástrojů pro podregistr Spark & pro Visual Studio Code
@@ -21,7 +21,7 @@ Naučte se používat nástroje Apache Spark & podregistr pro Visual Studio Code
 
 Nástroje Spark & podregistr je možné nainstalovat na platformy, které Visual Studio Code podporuje. Všimněte si následujících požadavků pro různé platformy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 
@@ -115,7 +115,7 @@ Běžný cluster můžete propojit pomocí uživatelského jména spravovaného 
 3. Zadejte obecný koncový bod Livy. Například: http \: //10.172.41.42:18080.
 
 4. Vyberte typ autorizace **Basic** nebo **žádný**.  Pokud vyberete **základní**:  
-    &emsp;určitého. Zadejte své uživatelské jméno Ambari; Výchozí hodnota je **admin (správce**).  
+    &emsp;a. Zadejte své uživatelské jméno Ambari; Výchozí hodnota je **admin (správce**).  
     &emsp;b. Zadejte své heslo Ambari.
 
 5. Zkontrolujte zobrazení **výstupu** pro ověření.

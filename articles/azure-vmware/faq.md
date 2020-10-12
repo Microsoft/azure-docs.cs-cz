@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
 ms.openlocfilehash: fd0c0158106a24ba12fec42e41df69f246e7f3f5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530472"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
@@ -121,7 +121,7 @@ Zkušební clustery jsou tři hostitelské clustery, které se používají k m�
 
 #### <a name="can-i-use-high-end-hosts-for-trial-clusters"></a>Můžu pro zkušební clustery použít špičkové hostitele?
 
-No. Vysoce koncoví hostitelé ESXi jsou rezervované pro použití v produkčních clusterech.
+Ne. Vysoce koncoví hostitelé ESXi jsou rezervované pro použití v produkčních clusterech.
 
 ## <a name="azure-vmware-solution-and-vmware-software"></a>Řešení Azure VMware a software VMware
 
@@ -135,7 +135,7 @@ Ano, NSX-T 2,5 se používá pro softwarově definované sítě v privátních c
 
 #### <a name="can-i-use-vmware-nsx-v-in-a-private-cloud"></a>Můžu použít VMware NSX-V v privátním cloudu?
 
-No. NSX-T je jediná podporovaná verze NSX.
+Ne. NSX-T je jediná podporovaná verze NSX.
 
 #### <a name="is-nsx-required-in-on-premises-environments-or-networks-that-connect-to-a-private-cloud"></a>Je NSX vyžadováno v místních prostředích nebo sítích, které se připojují k privátnímu cloudu?
 
@@ -168,7 +168,7 @@ V Azure Portal povolte připojení k Internetu pro privátní cloud. Pomocí Spr
 
 #### <a name="do-i-need-to-restrict-access-from-the-internet-to-vms-on-logical-networks-in-a-private-cloud"></a>Potřebuji omezit přístup z Internetu k virtuálním počítačům v logických sítích v privátním cloudu?
 
-No. Příchozí síťový provoz z Internetu přímo do privátních cloudů není povolený.
+Ne. Příchozí síťový provoz z Internetu přímo do privátních cloudů není povolený.
 
 #### <a name="do-i-need-to-restrict-internet-access-from-vms-on-logical-networks-to-the-internet"></a>Je potřeba omezit přístup k Internetu z virtuálních počítačů v logických sítích na Internet?
 

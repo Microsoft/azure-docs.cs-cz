@@ -8,10 +8,10 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: 07848d0b1a2677595eba0da53402993103289d4f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318160"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Analýza trendů v sadě Visual Studio
@@ -69,7 +69,7 @@ Pokud chcete přecházet mezi bublinami ve vizualizaci, postupujte následovně:
 > 
 > 
 
-## <a name="filter"></a>Filtr
+## <a name="filter"></a>Filtrování
 Pomocí ovládacích prvků filtru v dolní části okna můžete zjistit konkrétnější trendy. Pokud chcete filtr použít, klikněte na jeho název. Mezi různými filtry můžete rychle přepínat a zjišťovat tak trendy, které se můžou skrývat v konkrétní dimenzi telemetrie. Použijete-li filtr v jedné dimenzi, například typ výjimky, budou mít filtry v jiných dimenzích možnost kliknutí, i když jsou zobrazeny šedě. Chcete-li zrušit použití filtru, klikněte na něj znovu. Podržením klávesy Ctrl a následným klikáním můžete vybrat několik filtrů ve stejné dimenzi.
 
 ![Filtry trendů](./media/visual-studio-trends/TrendsFiltering-750.png)

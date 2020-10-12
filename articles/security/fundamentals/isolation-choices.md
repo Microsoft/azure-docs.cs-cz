@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533899"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
@@ -54,7 +54,7 @@ Uživatelé, skupiny a aplikace z tohoto adresáře mohou spravovat prostředky 
 
 - Uživatelé Azure AD nemají přístup k fyzickým prostředkům nebo umístěním, a proto není možné obejít kontroly logických zásad RBAC uvedené níže.
 
-V případě potřeby diagnostiky a údržby je provozní model, který využívá systém zvýšení oprávnění za běhu, vyžadován a používán. Azure AD Privileged Identity Management (PIM) zavádí koncept oprávněného správce. Oprávnění [Správci](../../active-directory/privileged-identity-management/pim-configure.md) by měli být uživatelé, kteří potřebují privilegovaný přístup teď, ale ne každý den. Dokud uživatel nepotřebuje přístup, je tato role neaktivní. Jakmile uživatel bude přístup potřebovat, dokončí proces aktivace a na předem určenou dobu se stane aktivním správcem.
+V případě potřeby diagnostiky a údržby je provozní model, který využívá systém zvýšení oprávnění za běhu, vyžadován a používán. Azure AD Privileged Identity Management (PIM) zavádí koncept oprávněného správce. oprávnění [Správci](../../active-directory/privileged-identity-management/pim-configure.md) by měli být uživatelé, kteří potřebují privilegovaný přístup nyní, ale ne každý den. Dokud uživatel nepotřebuje přístup, je tato role neaktivní. Jakmile uživatel bude přístup potřebovat, dokončí proces aktivace a na předem určenou dobu se stane aktivním správcem.
 
 ![Azure AD Privileged Identity Management](./media/isolation-choices/azure-isolation-fig2.png)
 
@@ -64,7 +64,7 @@ Koncept kontejnerů tenantů je hluboko v adresářové službě na všech vrstv
 
 I v případě, že jsou metadata z více Azure Active Directory tenantů uložena na stejném fyzickém disku, neexistuje žádná relace mezi kontejnery, která je definována adresářovou službou, která je následně vyřízena správcem klienta.
 
-### <a name="azure-role-based-access-control-azure-rbac"></a>Řízení přístupu na základě role v Azure (Azure RBAC)
+### <a name="azure-role-based-access-control-azure-rbac"></a>Řízení přístupu na základě role Azure (Azure RBAC)
 
 [Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) pomáhá sdílet různé komponenty dostupné v rámci předplatného Azure tím, že poskytuje jemně odstupňovanou správu přístupu pro Azure. Azure RBAC umožňuje oddělení povinností v rámci vaší organizace a udělení přístupu na základě toho, co uživatelé potřebují k provádění svých úloh. Místo udělení všech neomezených oprávnění v předplatném Azure nebo prostředcích můžete povolení jenom určitých akcí.
 
@@ -76,7 +76,7 @@ Azure RBAC má tři základní role, které se vztahují na všechny typy prost�
 
 - **Čtenář** si může zobrazit existující prostředky Azure.
 
-![Řízení přístupu na základě role v Azure (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
+![Řízení přístupu na základě role Azure (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
 
 Zbývající role Azure v Azure umožňují správu konkrétních prostředků Azure. Role Přispěvatel virtuálních počítačů například uživateli umožňuje vytvářet a spravovat virtuální počítače. Neuděluje jim přístup k Virtual Network Azure ani k podsíti, ke které se virtuální počítač připojuje.
 

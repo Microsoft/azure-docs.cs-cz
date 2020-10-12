@@ -7,10 +7,10 @@ ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87033509"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights pro podporované funkce Azure Functions
@@ -27,24 +27,24 @@ Další informace o kompatibilních verzích Application Insights najdete v tém
 |-----------------------------------    |---------------    |------------------ |
 | | | | 
 | **Automatická kolekce**        |                 |                   |               
-| &bull;Požádal                     | Ano             | Ano               | 
-| &bull;Výjimek                   | Ano             | Ano               | 
-| &bull;Čítače výkonu         | Ano             | Ano               |
-| &bull;Závislosti                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash;HTTP      |                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash;ServiceBus|                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash;EventHub  |                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash;SQL       |                 | Yes               | 
+| &bull; Požádal                     | Yes             | Yes               | 
+| &bull; Výjimek                   | Yes             | Yes               | 
+| &bull; Čítače výkonu         | Yes             | Yes               |
+| &bull; Závislosti                   |                   |                   |               
+| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Yes               | 
 | | | | 
 | **Podporované funkce**                |                   |                   |               
-| &bull;QuickPulse/LiveMetrics       | Ano             | Ano               | 
-| &nbsp;&nbsp;&nbsp;&mdash;Kanál zabezpečeného řízení|                 | Yes               | 
-| &bull;Kontrol                     | Ano             | Ano               | 
-| &bull;Prezenčních signálů                   |                 | Yes               | 
+| &bull; QuickPulse/LiveMetrics       | Yes             | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; Kanál zabezpečeného řízení|                 | Yes               | 
+| &bull; Kontrol                     | Yes             | Yes               | 
+| &bull; Prezenčních signálů                   |                 | Yes               | 
 | | | | 
 | **Korelace**                       |                   |                   |               
-| &bull;ServiceBus                     |                   | Yes               | 
-| &bull;EventHub                       |                   | Yes               | 
+| &bull; ServiceBus                     |                   | Yes               | 
+| &bull; EventHub                       |                   | Yes               | 
 | | | | 
 | **Konfigurovatelné**                      |                   |                   |           
 | &bull;Plně konfigurovatelné.<br/>Pokyny najdete v tématu [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Všechny možnosti najdete v části [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Yes                   | 

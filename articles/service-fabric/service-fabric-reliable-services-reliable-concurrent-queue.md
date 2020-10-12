@@ -4,10 +4,10 @@ description: ReliableConcurrentQueue je fronta s vysokou propustností, která u
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257439"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Úvod do ReliableConcurrentQueue v Azure Service Fabric
@@ -215,7 +215,7 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-notification-based-processing"></a>Osvědčené zpracování založené na oznámeních
+### <a name="best-effort-notification-based-processing"></a>Zpracování Best-Effort Notification-Based
 Další zajímavý programovací model používá rozhraní API Count. Tady můžeme implementovat zpracování na základě oznámení pro frontu. Počet front lze použít k omezení fronty nebo úlohy vyřazení z fronty.  Všimněte si, že jako v předchozím příkladu, protože zpracování probíhá mimo transakci, nezpracované položky mohou být ztraceny, pokud dojde k chybě během zpracování.
 
 ```
@@ -263,7 +263,7 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-drain"></a>Vyprázdnit nejvyšší úsilí
+### <a name="best-effort-drain"></a>Vyprázdnit Best-Effort
 Vyprázdnit frontu nelze zaručit vzhledem k souběžné povaze struktury dat.  Je možné, že i když žádné operace uživatele ve frontě nejsou v letu, konkrétní volání TryDequeueAsync nemusí vracet položku, která byla dříve zařazená do fronty a potvrzena.  Je zaručeno, že se položka zařazená do fronty *bude moci kdykoli* zviditelnit, ale bez mechanismu vzdálené komunikace, nezávislí spotřebitelé nedokáže zjistit, že fronta dosáhla ustáleného stavu, i když všichni výrobci zastavili a nejsou povoleny žádné nové operace zařazení do fronty. Proto je operace vyprázdnění nejvhodnější, jak je implementováno níže.
 
 Uživatel by měl zastavit všechny další úkoly na producenta a uživatele a počkat na potvrzení nebo zrušení jakýchkoli let, než se pokusí vyprázdnit frontu.  Pokud uživatel ví očekávaný počet položek ve frontě, může nastavit oznámení, které signalizuje, že byly všechny položky vyřazení z fronty.

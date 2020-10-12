@@ -4,10 +4,10 @@ description: V tomto článku najdete techniky ochrany aplikací proti možnému
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88065620"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Osvědčené postupy pro ochranu aplikací před haváriemi a výpadky služby Service Bus
@@ -19,9 +19,9 @@ Výpadek je definován jako dočasná nedostupnost Azure Service Bus. Výpadek m
 Havárie se definuje jako trvalá ztráta jednotky škálování Service Bus nebo datacentra. Datové centrum může nebo nemusí být k dispozici znovu. Obvykle dojde ke ztrátě některých nebo všech zpráv nebo jiných dat. Příklady havárií jsou požáry, zahlcení nebo zemětřesení.
 
 ## <a name="protecting-against-outages-and-disasters---service-bus-premium"></a>Ochrana před výpadky a haváriemi – Service Bus Premium
-Koncepce vysoké dostupnosti a zotavení po havárii jsou postaveny přímo do Azure Service Bus úrovně Premium, jak v rámci stejné oblasti (přes Zóny dostupnosti), tak i napříč různými oblastmi (prostřednictvím geografického zotavení po havárii).
+Koncepce vysoké dostupnosti a zotavení po havárii jsou postaveny přímo do Azure Service Bus úrovně Premium, jak v rámci stejné oblasti (přes Zóny dostupnosti), tak i napříč různými oblastmi (prostřednictvím Geo-Disaster obnovení).
 
-### <a name="geo-disaster-recovery"></a>Geografické zotavení po havárii
+### <a name="geo-disaster-recovery"></a>Geo-Disaster obnovení
 
 Service Bus Premium podporuje obnovení geografických havárií na úrovni oboru názvů. Další informace najdete v tématu [Azure Service Busho geografického zotavení po havárii](service-bus-geo-dr.md). Funkce zotavení po havárii, která je dostupná jenom pro [SKU Premium](service-bus-premium-messaging.md) , implementuje zotavení po havárii metadat a spoléhá na primární a sekundární obory názvů pro zotavení po havárii.
 

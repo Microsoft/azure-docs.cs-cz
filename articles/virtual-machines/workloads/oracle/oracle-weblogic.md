@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: rezar
 ms.openlocfilehash: e8f1b115f8a52b4352478f91dd5849c45bfebdc1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274363"
 ---
-# <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Co jsou řešení pro provoz Oracle WebLogic serveru v Azure Virtual Machines?
+# <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Jaká jsou řešení pro spouštění Oracle WebLogic Serveru na virtuálních počítačích Azure?
 
 Tato stránka popisuje řešení pro spouštění Oracle WebLogic serveru (WLS) na virtuálních počítačích Azure. Tato řešení jsou společně vyvinutá Oracle a Microsoftem.
 
@@ -56,7 +56,7 @@ Tato nabídka vytvoří vysoce dostupný a škálovatelný dynamický cluster vi
 
 Řešení umožní široké spektrum architektur pro nasazení připravené pro produkční prostředí s relativním usnadněním. Většinu případů migrace můžete vyhovět co nejefektivnějším způsobem, a to díky tomu, že se zaměříte na vývoj obchodních aplikací.
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="V Azure jsou povolená složitá nasazení serveru WebLogic.":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="K nasazení WebLogic serveru v Azure můžete použít Azure Portal.":::
 
 Kromě toho, co jsou řešení automaticky zřízené, mají zákazníci ještě plnou flexibilitu pro přizpůsobení jejich nasazení. Zákazníci s nasazováním aplikací nejspíš budou integrovat další prostředky Azure s jejich nasazeními. Zákazníkům doporučujeme poskytovat zpětnou vazbu k dalšímu vylepšení řešení.
 

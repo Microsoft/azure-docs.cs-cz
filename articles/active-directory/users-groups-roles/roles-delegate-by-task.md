@@ -15,10 +15,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 692b20bf301bbd7bf03ea1af5527e08d947b50da
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88798359"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role správce podle úlohy správce v Azure Active Directory
@@ -27,7 +27,7 @@ V tomto článku můžete najít informace potřebné k omezení oprávnění sp
 
 ## <a name="application-proxy"></a>Proxy aplikací
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Konfigurace aplikace proxy aplikací | Správce aplikace | 
 Konfigurace vlastností skupiny konektorů | Správce aplikace | 
@@ -40,7 +40,7 @@ Načíst veškerou konfiguraci | Správce aplikace |
 
 ## <a name="external-identitiesb2c"></a>Externí identity/B2C
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Vytvoření adresářů Azure AD B2C | Všichni uživatelé bez hosta ([Viz dokumentace](../fundamentals/users-default-permissions.md)) | 
 Vytváření B2Cch aplikací | Globální správce | 
@@ -52,7 +52,7 @@ Vytváření, čtení, aktualizace a odstraňování uživatelských toků uprav
 Vytváření, čtení, aktualizace a odstraňování toků přihlašování uživatelů | Správce toku externího ID uživatele | 
 Vytváření, čtení, aktualizace a odstraňování toku uživatelů při registraci |Správce toku externího ID uživatele | 
 Vytváření, čtení, aktualizace a odstraňování atributů uživatele | Správce atributů toku uživatele externího ID | 
-Vytváření, čtení, aktualizace a odstraňování uživatelů | Správce uživatele
+Vytváření, čtení, aktualizace a odstraňování uživatelů | Správce uživatelů
 Načíst veškerou konfiguraci | Globální čtenář | 
 Čtení protokolů auditu B2C | Globální čtenář ([Viz dokumentace](../../active-directory-b2c/faq.md)) | 
 
@@ -61,20 +61,20 @@ Načíst veškerou konfiguraci | Globální čtenář |
 
 ## <a name="company-branding"></a>Branding společnosti
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Konfigurace brandingu společnosti | Globální správce | 
 Načíst veškerou konfiguraci | Čtečky adresářů | Výchozí role uživatele ([Viz dokumentace](../fundamentals/users-default-permissions.md))
 
 ## <a name="company-properties"></a>Vlastnosti společnosti
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Konfigurace vlastností společnosti | Globální správce | 
 
 ## <a name="connect"></a>Připojit
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Předávací ověřování | Globální správce  | 
 Načíst veškerou konfiguraci | Globální čtenář | Globální správce  |
@@ -82,7 +82,7 @@ Bezproblémové jednotné přihlašování | Globální správce  |
 
 ## <a name="cloud-provisioning"></a>Zřizování cloudu
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Předávací ověřování | Správce hybridní identity  | 
 Načíst veškerou konfiguraci | Globální čtenář | Správce hybridní identity  |
@@ -90,7 +90,7 @@ Bezproblémové jednotné přihlašování | Správce hybridní identity  |
 
 ## <a name="connect-health"></a>Stav připojení
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Přidat nebo odstranit služby | Vlastník ([Viz dokumentace](../hybrid/how-to-connect-health-operations.md)) | 
 Použít opravy pro chybu synchronizace | Přispěvatel ([Viz dokumentace](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | Vlastník
@@ -107,14 +107,14 @@ Zobrazení metrik a výstrah služby synchronizace | Čtenář ([Viz dokumentace
 
 ## <a name="custom-domain-names"></a>Vlastní názvy domén
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Spravovat domény | Globální správce | 
 Načíst veškerou konfiguraci | Čtečky adresářů | Výchozí role uživatele ([Viz dokumentace](../fundamentals/users-default-permissions.md))
 
 ## <a name="domain-services"></a>Domain Services
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Vytvořit instanci Azure AD Domain Services | Globální správce | 
 Provedení všech úloh Azure AD Domain Services | Skupina správců řadičů domény Azure AD ([Viz dokumentace](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
@@ -122,7 +122,7 @@ Načíst veškerou konfiguraci | Čtečka v předplatném Azure obsahující slu
 
 ## <a name="devices"></a>Zařízení
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Zakázat zařízení | Správce cloudového zařízení | 
 Povolit zařízení | Správce cloudového zařízení | 
@@ -131,7 +131,7 @@ Přečíst základní konfiguraci | Výchozí role uživatele ([Viz dokumentace]
 
 ## <a name="enterprise-applications"></a>Podnikové aplikace
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Vyjádření souhlasu s všemi delegovanými oprávněními | Správce cloudové aplikace | Správce aplikace
 Souhlas s oprávněními aplikace bez zahrnutí Microsoft Graph | Správce cloudové aplikace | Správce aplikace
@@ -150,7 +150,7 @@ Aktualizovat samoobslužnou službu podnikových aplikací | Vlastník podnikov�
 Aktualizovat vlastnosti jednotného přihlašování | Vlastník podnikové aplikace ([Viz dokumentace](../fundamentals/users-default-permissions.md)) | Správce cloudové aplikace, Správce aplikací
 
 ## <a name="entitlement-management"></a>Správa nároků
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Přidání prostředků do katalogu | Správce uživatelů | Díky správě nároků můžete tuto úlohu delegovat na vlastníka katalogu ([Viz dokumentace](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)).
 Přidat weby SharePointu Online do katalogu | Globální správce
@@ -158,13 +158,13 @@ Přidat weby SharePointu Online do katalogu | Globální správce
 
 ## <a name="groups"></a>Skupiny
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Přiřadit licenci | Správce uživatelů | 
 Vytvoření skupiny | Správce skupin | Správce uživatelů
 Vytvoření, aktualizace nebo odstranění kontroly přístupu skupiny nebo aplikace | Správce uživatelů | 
 Správa vypršení platnosti skupiny | Správce uživatelů | 
-Správa nastavení skupin | Správce skupin | Správce uživatele | 
+Správa nastavení skupin | Správce skupin | Správce uživatelů | 
 Načíst veškerou konfiguraci (s výjimkou skrytého členství) | Čtečky adresářů | Výchozí role uživatele ([Viz dokumentace](../fundamentals/users-default-permissions.md))
 Číst skryté členství | Člen skupiny | Vlastník skupiny, správce hesel, správce serveru Exchange, Správce služby SharePoint, správce týmů, Správce uživatelů
 Číst členství skupin s skrytým členstvím | Správce helpdesku | Správce uživatele, správci týmů
@@ -176,7 +176,7 @@ Odstranění skupiny | Správce skupin | Správce uživatelů
 
 ## <a name="identity-protection"></a>Identity Protection
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Konfigurace oznámení výstrah| Správce zabezpečení | 
 Konfigurace a povolení nebo zakázání zásad vícefaktorového ověřování| Správce zabezpečení | 
@@ -191,7 +191,7 @@ Načíst veškerou konfiguraci | Čtenář zabezpečení |
 
 ## <a name="licenses"></a>Licenses
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Přiřadit licenci | Správce licencí | Správce uživatelů
 Načíst veškerou konfiguraci | Čtečky adresářů | Výchozí role uživatele ([Viz dokumentace](../fundamentals/users-default-permissions.md))
@@ -201,19 +201,19 @@ Vyzkoušet nebo koupit předplatné | Správce fakturace |
 
 ## <a name="monitoring---audit-logs"></a>Monitorování – protokoly auditu
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Čtení protokolů auditu | Čtečka sestav | Čtenář zabezpečení, správce zabezpečení
 
 ## <a name="monitoring---sign-ins"></a>Monitorování – přihlášení
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Čtení protokolů přihlášení | Čtečka sestav | Čtenář zabezpečení, správce zabezpečení
 
-## <a name="multi-factor-authentication"></a>Vícefaktorové ověřování
+## <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Odstranit všechna existující hesla aplikací vytvořená vybranými uživateli | Globální správce | 
 Zakázat MFA | Globální správce | 
@@ -224,7 +224,7 @@ Obnovení Multi-Factor Authentication na všech zapamatovaných zařízeních  
 
 ## <a name="mfa-server"></a>Server MFA
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Blokovat/odblokovat uživatele | Globální správce | 
 Konfigurace uzamčení účtu | Globální správce | 
@@ -241,7 +241,7 @@ Načíst veškerou konfiguraci | Globální čtenář |
 
 ## <a name="organizational-relationships"></a>Organizační vztahy
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Správa zprostředkovatelů identity | Správce externích zprostředkovatelů identity | 
 Správa nastavení | Globální správce | 
@@ -250,19 +250,19 @@ Načíst veškerou konfiguraci | Globální čtenář |
 
 ## <a name="password-reset"></a>Resetování hesla
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Konfigurace metod ověřování | Globální správce |
 Konfigurace přizpůsobení | Globální správce |
 Konfigurovat oznámení | Globální správce |
 Konfigurace místní integrace | Globální správce |
-Konfigurovat vlastnosti resetování hesla | Správce uživatele | Globální správce
+Konfigurovat vlastnosti resetování hesla | Správce uživatelů | Globální správce
 Konfigurace registrace | Globální správce |
-Načíst veškerou konfiguraci | Správce zabezpečení | Správce uživatele |
+Načíst veškerou konfiguraci | Správce zabezpečení | Správce uživatelů |
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Přiřazení uživatelů k rolím | Správce privilegovaných rolí | 
 Konfigurace nastavení role | Správce privilegovaných rolí | 
@@ -271,7 +271,7 @@ Zobrazit členství v rolích | Čtenář zabezpečení |
 
 ## <a name="roles-and-administrators"></a>Role a správci
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Správa přiřazení rolí | Správce privilegovaných rolí | 
 Kontrola přístupu pro čtení role Azure AD  | Čtenář zabezpečení | Správce zabezpečení, správce privilegovaných rolí
@@ -279,7 +279,7 @@ Načíst veškerou konfiguraci | Výchozí role uživatele ([Viz dokumentace](..
 
 ## <a name="security---authentication-methods"></a>Zabezpečení – metody ověřování
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Konfigurace metod ověřování | Globální správce | 
 Konfigurace ochrany heslem | Správce zabezpečení
@@ -288,7 +288,7 @@ Načíst veškerou konfiguraci | Globální čtenář |
 
 ## <a name="security---conditional-access"></a>Zabezpečení – podmíněný přístup
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Konfigurace důvěryhodných IP adres MFA | Správce podmíněného přístupu | 
 Vytváření vlastních ovládacích prvků | Správce podmíněného přístupu | Správce zabezpečení
@@ -308,7 +308,7 @@ Načíst veškerou konfiguraci | Čtenář zabezpečení | Správce zabezpečen�
 
 ## <a name="security---identity-security-score"></a>Security – skóre zabezpečení identity
 
-Úkol | Nejnižší privilegovaná role | Další role | 
+Úloha | Nejnižší privilegovaná role | Další role | 
 ---- | --------------------- | ----------------
 Načíst veškerou konfiguraci | Čtenář zabezpečení | Správce zabezpečení
 Přečíst skóre zabezpečení | Čtenář zabezpečení | Správce zabezpečení
@@ -316,14 +316,14 @@ Aktualizovat stav události | Správce zabezpečení |
 
 ## <a name="security---risky-sign-ins"></a>Zabezpečení – rizikové přihlašovací Doplňky
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Načíst veškerou konfiguraci | Čtenář zabezpečení | 
 Čtení rizikových přihlášení | Čtenář zabezpečení | 
 
 ## <a name="security---users-flagged-for-risk"></a>Zabezpečení – Uživatelé označení příznakem rizika
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Zavřít všechny události | Správce zabezpečení | 
 Načíst veškerou konfiguraci | Čtenář zabezpečení | 
@@ -331,7 +331,7 @@ Načíst veškerou konfiguraci | Čtenář zabezpečení |
 
 ## <a name="users"></a>Uživatelé
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Přidat uživatele do role adresáře | Správce privilegovaných rolí | 
 Přidat uživatele do skupiny | Správce uživatelů | 
@@ -355,7 +355,7 @@ Aktualizace uživatelských nastavení | Globální správce |
 
 ## <a name="support"></a>Podpora
 
-Úkol | Nejnižší privilegovaná role | Další role
+Úloha | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Odeslat lístek podpory | Správce služeb | Správce aplikace, Azure Information Protection správce, správce fakturace, správce cloudové aplikace, správce dodržování předpisů, Správce služby Dynamics 365, Správce služby Desktop Analytics, správce serveru Exchange, správce hesel, Správce služby Intune, správce Skypu pro firmy, správce Power BI, správce privilegovaného ověřování, Správce služby SharePoint, správce komunikace s týmem, správce týmů, Správce uživatelů, Správce služby Analytics na pracovišti
 

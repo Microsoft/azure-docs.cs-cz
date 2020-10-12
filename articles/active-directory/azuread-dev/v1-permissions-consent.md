@@ -15,10 +15,10 @@ ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: c600e1fddc0089a508ff0cfebbbb3476f3a90008
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117613"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Oprávnění a souhlas v koncovém bodu Azure Active Directory v 1.0
@@ -98,9 +98,9 @@ Aplikace ve službě Azure AD získávají přístup k potřebným prostředkům
 - Oprávnění `Read` a `ReadWrite` by prostředky měly definovat explicitně a zvlášť.
 - Prostředky by měly všechna oprávnění povolující přístup k datům různých uživatelů označovat jako oprávnění `Admin`.
 - Prostředky by měly dodržovat formát pojmenování `Subject.Permission[.Modifier]`, kde:
-  - `Subject`odpovídá typu dat, která jsou k dispozici.
-  - `Permission`odpovídá akci, kterou uživatel může na těchto datech použít.
-  - `Modifier`se používá volitelně k popisu specializací jiného oprávnění.
+  - `Subject` odpovídá typu dat, která jsou k dispozici.
+  - `Permission` odpovídá akci, kterou uživatel může na těchto datech použít.
+  - `Modifier` se používá volitelně k popisu specializací jiného oprávnění.
     
     Například:
   - Mail.Read – Umožňuje uživatelům číst poštu.
