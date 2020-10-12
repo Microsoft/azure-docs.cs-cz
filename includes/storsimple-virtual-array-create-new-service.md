@@ -9,15 +9,15 @@ ms.date: 09/15/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: b7bdeeedaac65f67a3224e824c19e8cad794682b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87507230"
 ---
 #### <a name="to-create-a-new-service"></a>Vytvoření nové služby
 
-1.  Pomocí přihlašovacích údajů pro účet Microsoft se přihlaste k Azure Portal na této adrese URL: <https://portal.azure.com/> . Pokud se zařízení nasazuje na portál pro státní správu, přihlaste se:<https://portal.azure.us/>
+1.  Pomocí přihlašovacích údajů pro účet Microsoft se přihlaste k Azure Portal na této adrese URL: <https://portal.azure.com/> . Pokud se zařízení nasazuje na portál pro státní správu, přihlaste se: <https://portal.azure.us/>
 
 2.  V Azure Portal klikněte na **+ vytvořit prostředek** &gt; **úložiště** &gt; **StorSimple virtuální řady**.
 

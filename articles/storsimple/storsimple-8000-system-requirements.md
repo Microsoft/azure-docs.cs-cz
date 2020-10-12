@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80297708"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 series software, vysoká dostupnost a síťové požadavky
@@ -41,7 +41,7 @@ Následující požadavky na software jsou pro klienty úložiště, kteří př
 
 | Podporované operační systémy | Vyžaduje se verze | Další požadavky/poznámky |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple svazky iSCSI se podporují jenom na následujících typech disků Windows:<ul><li>Jednoduchý svazek na základním disku</li><li>Jednoduchý a zrcadlený svazek na dynamickém disku</li></ul>Podporují se jenom ty iniciátory iSCSI softwaru, které jsou v operačním systému nativně přítomné. Nejsou podporovány hardwarové iniciátory iSCSI.<br></br>Pokud používáte svazek iSCSI StorSimple, podporují se dynamické zřizování a funkce ODX pro Windows Server 2012 a 2016.<br><br>StorSimple může vytvářet dynamicky zřízené a plně zřízené svazky. Nemůže vytvořit částečně zřízené svazky.<br><br>Přeformátování dynamicky zajištěného svazku může trvat dlouhou dobu. Doporučujeme odstranit svazek a pak vytvořit nové místo přeformátování. Pokud však stále chcete přeformátovat svazek:<ul><li>Než budete přeformátovat, spusťte následující příkaz, aby nedocházelo ke zpožděním při zpětnému získávání místa: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Až se formátování dokončí, pomocí následujícího příkazu znovu povolte opětovné získávání místa:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Použijte Windows Server 2012 hotfix, jak je popsáno v [článku KB 2878635](https://support.microsoft.com/kb/2870270) pro počítač se systémem Windows Server.</li></ul></li></ul></ul> Pokud konfigurujete StorSimple Snapshot Manager nebo adaptér StorSimple pro službu SharePoint, pokračujte na [požadavky na software u volitelných součástí](#software-requirements-for-optional-components). |
+| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple svazky iSCSI se podporují jenom na následujících typech disků Windows:<ul><li>Jednoduchý svazek na základním disku</li><li>Jednoduchý a zrcadlený svazek na dynamickém disku</li></ul>Podporují se jenom ty iniciátory iSCSI softwaru, které jsou v operačním systému nativně přítomné. Nejsou podporovány hardwarové iniciátory iSCSI.<br></br>Pokud používáte svazek iSCSI StorSimple, podporují se dynamické zřizování a funkce ODX pro Windows Server 2012 a 2016.<br><br>StorSimple může vytvářet dynamicky zřízené a plně zřízené svazky. Nemůže vytvořit částečně zřízené svazky.<br><br>Přeformátování dynamicky zřízeného svazku může trvat dlouhou dobu. Místo přeformátování proto doporučujeme odstranit tento svazek a potom vytvořit nový. Pokud ale přesto chcete svazek přeformátovat:<ul><li>Před vlastním přeformátováním spusťte následující příkaz, abyste se vyhnuli prodlevám souvisejícím s recyklací místa: . <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Jakmile formátování skončí, použijte následující příkaz, který recyklaci místa znovu povolí: .<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Použijte Windows Server 2012 hotfix, jak je popsáno v [článku KB 2878635](https://support.microsoft.com/kb/2870270) pro počítač se systémem Windows Server.</li></ul></li></ul></ul> Pokud konfigurujete StorSimple Snapshot Manager nebo adaptér StorSimple pro službu SharePoint, pokračujte na [požadavky na software u volitelných součástí](#software-requirements-for-optional-components). |
 | VMware ESX |5,5 a 6,0 |Podporováno u VMware vSphere jako klienta iSCSI. Funkce VAAI-Block je podporovaná u VMware vSphere na zařízeních StorSimple. |
 | Linux RHEL/CentOS |5, 6 a 7 |Podpora klientů iSCSI pro Linux s verzemi verze 5, 6 a 7 pro Linux. |
 | Linux |SUSE Linux 11 | |
@@ -63,16 +63,16 @@ Následující požadavky na software jsou pro volitelné součásti StorSimple 
 
 Zařízení StorSimple je uzamčené. Porty ale musí být v bráně firewall otevřené, aby bylo možné provozovat přenosy z iSCSI, cloudu a správy. Následující tabulka uvádí porty, které je třeba otevřít v bráně firewall. V této tabulce se *v* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. *Výstupní* nebo *odchozí* odkazuje na směr, ve kterém vaše zařízení StorSimple odesílá data externě, mimo nasazení: například odchozí na Internet.
 
-| Číslo portu.<sup>1, 2</sup> | V nebo ven | Rozsah portů | Vyžadováno | Poznámky |
+| Číslo portu.<sup>1, 2</sup> | V nebo ven | Rozsah portů | Požaduje se | Poznámky |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |Out |Síť WAN |Ne |<ul><li>Odchozí port se používá pro přístup k Internetu k načtení aktualizací.</li><li>Odchozí webový proxy server je uživatelsky konfigurovatelné.</li><li>Aby se mohly aktualizovat systémové aktualizace, musí být tento port taky otevřený pro pevné IP adresy řadiče.</li></ul> |
+| TCP 80 (HTTP)<sup>3</sup> |Out |Síť WAN |No |<ul><li>Odchozí port se používá pro přístup k Internetu k načtení aktualizací.</li><li>Odchozí webový proxy server je uživatelsky konfigurovatelné.</li><li>Aby se mohly aktualizovat systémové aktualizace, musí být tento port taky otevřený pro pevné IP adresy řadiče.</li></ul> |
 | TCP 443 (HTTPS)<sup>3</sup> |Out |Síť WAN |Ano |<ul><li>Odchozí port se používá pro přístup k datům v cloudu.</li><li>Odchozí webový proxy server je uživatelsky konfigurovatelné.</li><li>Aby se mohly aktualizovat systémové aktualizace, musí být tento port taky otevřený pro pevné IP adresy řadiče.</li><li>Tento port se používá také na obou řadičích pro uvolňování paměti.</li></ul> |
 | UDP 53 (DNS) |Out |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server DNS. |
 | UDP 123 (NTP) |Out |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server NTP. |
 | TCP 9354 |Out |Síť WAN |Ano |Odchozí port používá zařízení StorSimple ke komunikaci se službou StorSimple Device Manager. |
-| 3260 (iSCSI) |V |LAN |Ne |Tento port se používá pro přístup k datům přes iSCSI. |
-| 5985 |V |LAN |Ne |Port pro příchozí spojení StorSimple Snapshot Manager slouží ke komunikaci se zařízením StorSimple.<br>Tento port se používá také při vzdáleném připojení k Windows PowerShell pro StorSimple přes protokol HTTP. |
-| 5986 |V |LAN |Ne |Tento port se používá, když se vzdáleně připojujete k Windows PowerShell pro StorSimple přes protokol HTTPS. |
+| 3260 (iSCSI) |V |Síť LAN |No |Tento port se používá pro přístup k datům přes iSCSI. |
+| 5985 |V |Síť LAN |No |Port pro příchozí spojení StorSimple Snapshot Manager slouží ke komunikaci se zařízením StorSimple.<br>Tento port se používá také při vzdáleném připojení k Windows PowerShell pro StorSimple přes protokol HTTP. |
+| 5986 |V |Síť LAN |No |Tento port se používá, když se vzdáleně připojujete k Windows PowerShell pro StorSimple přes protokol HTTPS. |
 
 <sup>1</sup> na veřejném Internetu není třeba otevřít žádné příchozí porty.
 
@@ -122,7 +122,7 @@ Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy n
 
 Metrika směrování je přidružená k rozhraním a bráně, která směruje data do zadaných sítí. Metriky směrování používá směrovací protokol k výpočtu nejlepší cesty k danému cíli, pokud se zjistí, že existuje více cest ke stejnému cíli. Čím nižší je metrika směrování, tím vyšší je priorita.
 
-Pokud je v kontextu StorSimple více síťových rozhraní a bran pro přenos provozu, budou metriky směrování odesílány do hry, aby určily relativní pořadí, ve kterém se rozhraní budou používat. Metriky směrování nemůže změnit uživatel. `Get-HcsRoutingTable`K vytištění směrovací tabulky (a metrik) na zařízení StorSimple ale můžete použít rutinu. Další informace o rutině Get-HcsRoutingTable najdete v [řešení potíží s nasazením StorSimple](storsimple-troubleshoot-deployment.md).
+Pokud je v kontextu StorSimple více síťových rozhraní a bran pro přenos provozu, budou metriky směrování odesílány do hry, aby určily relativní pořadí, ve kterém se rozhraní budou používat. Metriky směrování nemůže změnit uživatel. `Get-HcsRoutingTable`K vytištění směrovací tabulky (a metrik) na zařízení StorSimple ale můžete použít rutinu. Další informace o rutině Get-HcsRoutingTable při [řešení potíží s nasazením StorSimple](storsimple-troubleshoot-deployment.md)
 
 Algoritmus metriky směrování použitý pro aktualizaci 2 a novější verze se dá vysvětlit následujícím způsobem.
 
@@ -203,7 +203,7 @@ Zařízení StorSimple obsahují nadbytečné a horké moduly odkládacího zař
 
 #### <a name="network-interfaces"></a>Síťová rozhraní
 
-Moduly řadiče zařízení StorSimple mají čtyři 1 gigabitová síťová rozhraní ethernetová a 2 10 gigabitová.
+StorSimple moduly řadiče zařízení mají 4 1 Gigabit a 2 10 síťových rozhraní Gigabit Ethernet.
 
 * Ujistěte se, že síťová připojení k oběma modulům kontroleru jsou shodná a že síťová rozhraní, ke kterým jsou připojena rozhraní modulů řadiče, mají stejnou konfiguraci sítě.
 * Pokud je to možné, nasaďte síťová připojení mezi různými přepínači, aby se zajistila dostupnost služby v případě selhání síťového zařízení.

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
 ms.openlocfilehash: 6bbc38d79f51ba4ffcc3795718d276a7e9c0bf03
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91440782"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Získání viditelnosti pro Azure Security Center v úrovni tenanta
@@ -39,7 +39,7 @@ Podrobný přehled skupin pro správu najdete v článku [uspořádání prostř
 Předplatná můžete uspořádat do skupin pro správu a použít zásady správného řízení pro skupiny pro správu. Všechna předplatná v rámci skupiny pro správu automaticky dědí zásady, které se vztahují na skupinu pro správu. I když skupiny pro správu nejsou vyžadovány k připojení Security Center, důrazně doporučujeme vytvořit alespoň jednu skupinu pro správu, aby bylo možné vytvořit kořenovou skupinu pro správu. Po vytvoření skupiny se na ni budou propojit všechna předplatná v rámci vašeho tenanta Azure AD. Pokyny pro PowerShell a další informace najdete v tématu [Vytvoření skupin pro správu pro správu prostředků a organizací](../azure-resource-manager/management-groups-create.md).
 
  
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny**  >  **skupiny pro správu**služeb.
 3. Na hlavní stránce vyberte **Nová skupina pro správu.** 
 
@@ -52,7 +52,7 @@ Předplatná můžete uspořádat do skupin pro správu a použít zásady sprá
 5.  Vyberte **Uložit**.
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>Zobrazení skupin pro správu v Azure Portal
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Pokud chcete zobrazit skupiny pro správu, vyberte **všechny služby** v hlavní nabídce Azure.
 3. V části **Obecné**vyberte **skupiny pro správu**.
 
@@ -93,7 +93,7 @@ Aby mohli správci klientů získat přehled o všech předplatných, musí při
 
 #### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>Přiřaďte role Azure uživatelům prostřednictvím Azure Portal: 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 1. Pokud chcete zobrazit skupiny pro správu, vyberte v hlavní nabídce Azure možnost **všechny služby** a pak vyberte **skupiny pro správu**.
 1.  Vyberte skupinu pro správu a klikněte na **Podrobnosti**.
 
@@ -140,7 +140,7 @@ Aby mohli správci klientů získat přehled o všech předplatných, musí při
 ### <a name="open-or-refresh-security-center"></a>Otevřít nebo aktualizovat Security Center
 Jakmile budete mít zvýšený přístup, otevřete nebo aktualizujte Azure Security Center a ověřte si, že máte přehled o všech předplatných v rámci vašeho tenanta Azure AD. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. Ujistěte se, že jste vybrali všechna předplatná v selektoru předplatného, které chcete zobrazit v Security Center.
 
     ![Snímek obrazovky selektor odběrů](./media/security-center-management-groups/subscription-selector.png)

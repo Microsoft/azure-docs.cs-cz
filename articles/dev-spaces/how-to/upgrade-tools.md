@@ -7,10 +7,10 @@ ms.custom: devx-track-azurecli
 description: Informace o upgradu Azure Dev Spaces nástrojů příkazového řádku, Visual Studio Code rozšíření a rozšíření sady Visual Studio
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
 ms.openlocfilehash: aebe81d58a1bcd44f5766d368dbafa53c81ed2b8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87504326"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Postup upgradu Azure Dev Spacesch nástrojů

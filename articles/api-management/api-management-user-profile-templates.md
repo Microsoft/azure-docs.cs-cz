@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1aef238ec0b947dda1417b567b343ae9d92754d9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86249508"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Šablony profilů uživatelů v Azure API Management
@@ -40,7 +40,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="profile"></a><a name="Profile"></a>Profilu  
+##  <a name="profile"></a><a name="Profile"></a> Profilu  
  Šablona **profilu** vám umožní přizpůsobit část profil uživatele stránky profilu uživatele na portálu pro vývojáře.  
   
  ![Stránka profilu uživatele](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "Stránka profilu uživatele APIM")  
@@ -116,8 +116,8 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 |`applications`|Kolekce entit [aplikace](api-management-template-data-model-reference.md#Application)|Aplikace aktuálního uživatele.|  
 |`changePasswordUrl`|řetězec|Relativní adresa URL pro změnu hesla aktuálního uživatele.|  
 |`changeNameOrEmailUrl`|řetězec|Relativní adresa URL pro změnu jména a e-mailu pro aktuálního uživatele.|  
-|`canChangePassword`|Boolean|Určuje, zda může aktuální uživatel změnit heslo.|  
-|`isSystemUser`|Boolean|Určuje, zda je aktuální uživatel členem jedné z předdefinovaných [skupin](api-management-key-concepts.md#groups).|  
+|`canChangePassword`|boolean|Určuje, zda může aktuální uživatel změnit heslo.|  
+|`isSystemUser`|boolean|Určuje, zda je aktuální uživatel členem jedné z předdefinovaných [skupin](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -185,7 +185,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 }  
 ```  
   
-##  <a name="subscriptions"></a><a name="Subscriptions"></a>Odběru  
+##  <a name="subscriptions"></a><a name="Subscriptions"></a> Odběru  
  Šablona **předplatných** vám umožňuje přizpůsobit část předplatná stránky profilu uživatele na portálu pro vývojáře.  
   
  ![Stránka předplatného uživatele](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "Stránka předplatného uživatele APIM")  
@@ -337,8 +337,8 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 |`applications`|Kolekce entit [aplikace](api-management-template-data-model-reference.md#Application)|Aplikace aktuálního uživatele.|  
 |`changePasswordUrl`|řetězec|Relativní adresa URL pro změnu hesla aktuálního uživatele.|  
 |`changeNameOrEmailUrl`|řetězec|Relativní adresa URL pro změnu jména a e-mailu pro aktuálního uživatele.|  
-|`canChangePassword`|Boolean|Určuje, zda může aktuální uživatel změnit heslo.|  
-|`isSystemUser`|Boolean|Určuje, zda je aktuální uživatel členem jedné z předdefinovaných [skupin](api-management-key-concepts.md#groups).|  
+|`canChangePassword`|boolean|Určuje, zda může aktuální uživatel změnit heslo.|  
+|`isSystemUser`|boolean|Určuje, zda je aktuální uživatel členem jedné z předdefinovaných [skupin](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -406,7 +406,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 }  
 ```  
   
-##  <a name="applications"></a><a name="Applications"></a>Vyrovnání  
+##  <a name="applications"></a><a name="Applications"></a> Vyrovnání  
  Šablona **aplikace** vám umožní přizpůsobit část předplatná stránky profilu uživatele na portálu pro vývojáře.  
   
  ![Stránka aplikace uživatelského účtu](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "Stránka aplikace uživatelských účtů APIM")  
@@ -500,8 +500,8 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 |`applications`|Kolekce entit [aplikace](api-management-template-data-model-reference.md#Application)|Aplikace aktuálního uživatele.|  
 |`changePasswordUrl`|řetězec|Relativní adresa URL pro změnu hesla aktuálního uživatele.|  
 |`changeNameOrEmailUrl`|řetězec|Relativní adresa URL pro změnu jména a e-mailu pro aktuálního uživatele.|  
-|`canChangePassword`|Boolean|Určuje, zda může aktuální uživatel změnit heslo.|  
-|`isSystemUser`|Boolean|Určuje, zda je aktuální uživatel členem jedné z předdefinovaných [skupin](api-management-key-concepts.md#groups).|  
+|`canChangePassword`|boolean|Určuje, zda může aktuální uživatel změnit heslo.|  
+|`isSystemUser`|boolean|Určuje, zda je aktuální uživatel členem jedné z předdefinovaných [skupin](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -569,7 +569,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 }  
 ```  
   
-##  <a name="update-account-info"></a><a name="UpdateAccountInfo"></a>Aktualizovat informace o účtu  
+##  <a name="update-account-info"></a><a name="UpdateAccountInfo"></a> Aktualizovat informace o účtu  
  Šablona **informace o účtu aktualizace** umožňuje přizpůsobení stránky **aktualizovat informace o účtu** na portálu pro vývojáře.  
   
  ![Stránka informace o uživatelském účtu – šablony portálu pro vývojáře](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "Stránka informace o uživatelském účtu APIM – šablony portálu pro vývojáře")  

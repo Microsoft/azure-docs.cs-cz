@@ -5,10 +5,10 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
 ms.openlocfilehash: dce340db90c1528c46c1be0bc172751a04feaf31
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294071"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytváření a Správa pravidel výstrah v Log Analytics s využitím REST API 
@@ -136,7 +136,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 ### <a name="alert-actions"></a>Akce výstrah
 Plán by měl mít jednu a jenom jednu akci výstrahy.  Akce výstrahy mají jednu nebo více částí v následující tabulce.  Každá je podrobněji popsána níže.
 
-| Sekce | Popis | Využití |
+| Sekce | Description | Využití |
 |:--- |:--- |:--- |
 | Prahová hodnota |Kritéria pro spuštění akce.| Vyžaduje se pro každé upozornění, před nebo po rozšíření na Azure. |
 | Závažnost |Popisek, který se používá k klasifikaci výstrahy, když se aktivuje| Vyžaduje se pro každé upozornění, před nebo po rozšíření na Azure. |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: c053a7830e02eb7c460bd030ca3c6a10c00ea78a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323633"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Pochopení aplikace a nasazení v Azure jaře cloudu
@@ -29,7 +29,7 @@ Standardní úroveň cloudu Azure umožňuje, aby jedna aplikace měla jedno vý
 ## <a name="app"></a>Aplikace
 Na úrovni aplikace jsou definované následující funkce nebo vlastnosti.
 
-| Funkce | Popis |
+| Funkce | Description |
 |:--|:----------------|
 | Public</br>Koncový bod | Adresa URL pro přístup k aplikaci |
 | Vlastní</br>Doména | Záznam CNAME, který zabezpečuje vlastní doménu |
@@ -44,7 +44,7 @@ Následující funkce nebo vlastnosti jsou definovány na úrovni nasazení a bu
 | Funkce | Popis |
 |:--|:----------------|
 | Procesor | Počet virtuální jádra na instanci aplikace |
-| Memory (Paměť) | GB paměti na instanci aplikace|
+| Paměť | GB paměti na instanci aplikace|
 | Instance</br>Počet | Počet instancí aplikace, nastavit ručně nebo automaticky |
 | Automatické škálování | Automatické škálování počtu instancí na základě předdefinovaných pravidel a plánů |
 | JVM</br>Možnosti | Nastavení možností JVM  |
@@ -55,7 +55,7 @@ Následující funkce nebo vlastnosti jsou definovány na úrovni nasazení a bu
 
 * **Aplikace musí mít jedno nasazení v produkčním**prostředí: odstranění produkčního nasazení je BLOKOVÁNo rozhraním API. Měl by být před odstraněním záměna na fázování.
 * **Aplikace může mít maximálně dvě nasazení**: vytvoření více než dvou nasazení je BLOKOVÁNo rozhraním API. Nasaďte nový binární soubor do stávajícího produkčního nebo pracovního nasazení.
-* **Správa nasazení není na úrovni Basic k dispozici**: pro možnost nasazení Blue-zelená použijte úroveň Standard.
+* **Správa nasazení není na úrovni Basic k dispozici**: pro Blue-Green možnosti nasazení použijte úroveň Standard.
 
 ## <a name="see-also"></a>Viz také
 * [Nastavení přípravného prostředí v Azure jaře cloudu](spring-cloud-howto-staging-environment.md)

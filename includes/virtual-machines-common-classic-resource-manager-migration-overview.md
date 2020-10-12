@@ -9,10 +9,10 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
 ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87507291"
 ---
 Tento článek popisuje, jak migrovat prostředky infrastruktury jako služby (IaaS) z modelu nasazení Classic na Správce prostředků a podrobně popisuje, jak připojit prostředky ze dvou modelů nasazení, které ve vašem předplatném existují, pomocí bran sítě Site-to-site. Další informace o [funkcích Azure Resource Manager a výhodách](../articles/azure-resource-manager/management/overview.md)najdete v článku. 
@@ -81,7 +81,7 @@ Pokud váš účet úložiště nemá žádné přidružené disky nebo Virtual 
 > Model nasazení Správce prostředků nemá koncept klasických imagí a disků. Když se účet úložiště migruje, klasické image a disky se v Správce prostředkůovém zásobníku nezobrazí, ale záložní virtuální pevné disky zůstanou v účtu úložiště.
 
 Následující snímky obrazovky ukazují, jak upgradovat klasický účet úložiště na účet služby Azure Resource Manager Storage pomocí Azure Portal:
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Přejděte na svůj účet úložiště.
 3. V části **Nastavení** klikněte na možnost **migrovat do ARM**.
 4. Kliknutím na **ověřit** určete proveditelnost migrace.
@@ -120,7 +120,7 @@ Následující konfigurace se aktuálně nepodporují.
 
 | Služba | Konfigurace | Doporučení |
 | --- | --- | --- |
-| Resource Manager |Access Control na základě rolí (RBAC) pro klasické prostředky |Vzhledem k tomu, že identifikátor URI prostředků se po migraci upraví, doporučujeme, abyste naplánovali aktualizace zásad RBAC, které se musí provést po migraci. |
+| Resource Manager |Role-Based Access Control (RBAC) pro klasické prostředky |Vzhledem k tomu, že identifikátor URI prostředků se po migraci upraví, doporučujeme, abyste naplánovali aktualizace zásad RBAC, které se musí provést po migraci. |
 | Compute |Několik podsítí přidružených k virtuálnímu počítači |Aktualizujte konfiguraci podsítě tak, aby odkazovala pouze na jednu podsíť. To může vyžadovat odebrání sekundárního síťového adaptéru (který odkazuje na jinou podsíť) z virtuálního počítače a znovu ho připojit po dokončení migrace. |
 | Compute |Virtuální počítače, které patří do virtuální sítě, ale nemají přiřazenou explicitní podsíť |Volitelně můžete virtuální počítač odstranit. |
 | Compute |Virtuální počítače, které mají výstrahy, zásady automatického škálování |Migrace prochází a tato nastavení se zahozena. Důrazně doporučujeme, abyste před provedením migrace vyhodnotili své prostředí. Případně můžete nastavení výstrahy po dokončení migrace znovu nakonfigurovat. |

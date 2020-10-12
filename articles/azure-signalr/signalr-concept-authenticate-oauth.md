@@ -8,10 +8,10 @@ ms.date: 11/13/2019
 ms.author: zhshang
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: d7b94da2f922e7dba8c165dcf9d1e906855f6dfb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294236"
 ---
 # <a name="azure-signalr-service-authentication"></a>Ověřování pomocí služby Azure SignalR
@@ -59,7 +59,7 @@ Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 3. Pro tuto novou aplikaci OAuth použijte následující nastavení a potom klikněte na **Zaregistrovat aplikaci**:
 
-    | Název nastavení | Navrhovaná hodnota | Popis |
+    | Název nastavení | Navrhovaná hodnota | Description |
     | ------------ | --------------- | ----------- |
     | Název aplikace | *Azure SignalR Chat* | Uživatel GitHubu by měl být schopný rozpoznat a důvěřovat aplikaci, se kterou ověřuje.   |
     | Adresa URL domovské stránky | `http://localhost:5000/home` | |

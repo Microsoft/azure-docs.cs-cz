@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
 ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83196543"
 ---
 # <a name="network-requirements"></a>Požadavky sítě
@@ -21,11 +21,11 @@ Stabilní a nízká latence síťového připojení k datovému centru Azure je 
 Přesné požadavky sítě závisí na konkrétním případu použití, například na počtu a četnosti úprav v grafu vzdálené scény a na složitosti zobrazeného zobrazení, ale existuje několik pokynů, jak zajistit, aby vaše prostředí bylo co nejužitečnější:
 
 * Připojení k Internetu musí podporovat aspoň **40 MB/s** a **5 MB/s** pro jednu relaci uživatele vzdáleného vykreslování Azure za předpokladu, že v síti nedochází k žádnému konkurenčnímu provozu. Pro lepší prostředí doporučujeme vyšší sazby. U více uživatelů ve stejné síti se tyto požadavky budou škálovat odpovídajícím způsobem.
-* Použití **pásma Wi-Fi v 5 GHz** obvykle vytvoří lepší výsledky než pásmo Wi-Fi 2,4 GHz, ale obě by měly fungovat.
-* Pokud jsou poblíž jiné sítě Wi-Fi, vyhněte se použití kanálů Wi-Fi používaných v těchto dalších sítích. Pomocí skenovacích nástrojů sítě, jako je [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) , můžete ověřit, zda kanály, které vaše síť Wi-Fi používá, jsou z konkurenčního provozu zdarma.
-* **Používejte výhradně opakované předávání Wi-Fi** ani přesměrování sítě LAN přes elektrickou síť.
-* **Vyhněte se nekonkurenčnímu přenosu šířky pásma** , jako je video nebo audiovizuální streamování – ve stejné síti Wi-Fi.
-* Je nezbytná **správná síla signálu Wi-Fi** . Pokud je to možné, zůstaňte blízko přístupového bodu Wi-Fi a vyhnete se překážkám mezi klientským zařízením a přístupovými body.
+* Použití **Wi-Fiového pásma 5 GHz** obvykle vytvoří lepší výsledky než Wi-Fi pásmo 2,4 GHz, ale obě by měly fungovat.
+* Pokud jsou v blízkosti jiné Wi-Fi sítě, vyhněte se použití Wi-Fi kanálů používaných v těchto dalších sítích. Pomocí skenovacích nástrojů sítě, jako je [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) , můžete ověřit, jestli kanály, které vaše Wi-Fi síť používá, nejsou konkurenčním provozem.
+* Používejte naprostou **nepoužívejte předávací Wi-Fi** nebo přesměrování LAN přes elektrickou síť.
+* **Vyhněte se nekonkurenčnímu přenosu šířky pásma** , jako je video nebo audiovizuální streamování – ve stejné Wi-Fi síti.
+* Je nutné mít **dobrý Wi-Fi sílu signálu** . Pokud je to možné, zůstaňte blízko Wi-Fi přístupového bodu a vyhnete se překážkám mezi klientským zařízením a přístupovými body.
 * Ujistěte se, že se vždy připojíte k **nejbližšímu datovému centru Azure** pro vaši [oblast](regions.md). Čím blíže datové centrum, tím nižší latence sítě, což má velký vliv na stabilitu hologramů.
 
 > [!NOTE]
@@ -33,7 +33,7 @@ Přesné požadavky sítě závisí na konkrétním případu použití, napří
 
 ## <a name="network-performance-tests"></a>Testy výkonu sítě
 
-Pokud chcete získat počáteční informace o tom, jestli je kvalita připojení k síti dostatečná pro spuštění vzdáleného vykreslování Azure, existují existující online nástroje, které můžete použít. Důrazně doporučujeme spouštět tyto online nástroje z dostatečně výkonného přenosného počítače připojeného ke stejné síti Wi-Fi jako zařízení, na kterém plánujete spustit klientskou aplikaci vzdáleného vykreslování Azure. Výsledky získané z spuštění testů na mobilním telefonu nebo v HoloLens2 jsou obvykle méně užitečné, protože byly prověřeny tak, aby na zařízeních s nízkým koncovým bodem ukázaly významnou variaci. Umístění přenosného počítače by mělo být zhruba na stejném místě, ve kterém očekáváte použít zařízení, ve kterém je spuštěná klientská aplikace pro vzdálené vykreslování Azure.
+Pokud chcete získat počáteční informace o tom, jestli je kvalita připojení k síti dostatečná pro spuštění vzdáleného vykreslování Azure, existují existující online nástroje, které můžete použít. Důrazně doporučujeme spouštět tyto online nástroje z dostatečně výkonného přenosného počítače připojeného ke stejnému Wi-Fi jako zařízení, na kterém plánujete spustit klientskou aplikaci vzdáleného vykreslování Azure. Výsledky získané z spuštění testů na mobilním telefonu nebo v HoloLens2 jsou obvykle méně užitečné, protože byly prověřeny tak, aby na zařízeních s nízkým koncovým bodem ukázaly významnou variaci. Umístění přenosného počítače by mělo být zhruba na stejném místě, ve kterém očekáváte použít zařízení, ve kterém je spuštěná klientská aplikace pro vzdálené vykreslování Azure.
 
 Tady je několik jednoduchých kroků pro rychlé testování připojení k síti:
 

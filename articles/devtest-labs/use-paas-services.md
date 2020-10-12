@@ -4,10 +4,10 @@ description: Naučte se používat služby platformy jako služby (pass) v Azure
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85478735"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Používejte služby PaaS (Platform as a Service) v Azure DevTest Labs
@@ -44,7 +44,7 @@ K dispozici jsou některé vlastní informace o testovacím prostředí, které 
 Článek [připojení prostředí k virtuální síti testovacího prostředí](connect-environment-lab-virtual-network.md) popisuje, jak upravit šablonu správce prostředků pro použití `$(LabSubnetId)` tokenu. Po vytvoření prostředí se `$(LabSubnetId)` token nahradí první značkou podsítě, kde možnost **použít v možnosti vytvoření virtuálního počítače** je nastavená na **hodnotu true**. Umožňuje našemu prostředí používat dříve vytvořené sítě. Pokud chcete použít stejné šablony Správce prostředků v prostředích v testu jako pracovní a produkční, použijte `$(LabSubnetId)` jako výchozí hodnotu v parametru správce prostředků šablony. 
 
 #### <a name="environment-storage-account"></a>Účet úložiště prostředí
-DevTest Labs podporuje použití [vnořených správce prostředků šablon](../azure-resource-manager/templates/linked-templates.md). Článek [[nasazení vnořených Azure Resource Manager šablon pro testovací prostředí](deploy-nested-template-environments.md) vysvětluje, jak používat `_artifactsLocation` `_artifactsLocationSasToken` TOKENy k vytvoření identifikátoru URI pro šablonu správce prostředků ve stejné složce jako nebo ve vnořené složce hlavní šablony. Další informace o těchto dvou tokenech najdete v části **artefakty nasazení** v tématu [Azure Resource Manager – Průvodce osvědčenými postupy](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md).
+DevTest Labs podporuje použití [vnořených správce prostředků šablon](../azure-resource-manager/templates/linked-templates.md). Článek [[nasazení vnořených Azure Resource Manager šablon pro testovací prostředí](deploy-nested-template-environments.md) vysvětluje, jak používat  `_artifactsLocation` `_artifactsLocationSasToken` TOKENy k vytvoření identifikátoru URI pro šablonu správce prostředků ve stejné složce jako nebo ve vnořené složce hlavní šablony. Další informace o těchto dvou tokenech najdete v části **artefakty nasazení** v tématu [Azure Resource Manager – Průvodce osvědčenými postupy](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md).
 
 ## <a name="user-experience"></a>Zkušenosti uživatele
 

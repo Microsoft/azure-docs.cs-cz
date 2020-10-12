@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 219e2b77a0f6f30307c43f006fcdd3828d3c8fbf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87021371"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Nasazení a správa řešení StorSimple Cloud Appliance v Azure (s aktualizací Update 3 a novější)
@@ -66,7 +66,7 @@ V následující tabulce je uvedeno několik klíčových rozdílů mezi řešen
 | --- | --- | --- |
 | **Umístění** |Nachází se v datovém centru. |Běží v Azure. |
 | **Síťová rozhraní** |Má šest síťových rozhraní: DATA 0 až DATA 5. |Má pouze jedno síťové rozhraní: DATA 0. |
-| **Registrace** |Registruje se v rámci kroku počáteční konfigurace. |Registrace je samostatná úloha. |
+| **Evidenc** |Registruje se v rámci kroku počáteční konfigurace. |Registrace je samostatná úloha. |
 | **Šifrovací klíč dat služby** |Znovu se vygeneruje na fyzickém zařízení a cloudové zařízení se pak aktualizuje s použitím nového klíče. |Nelze znovu vygenerovat z cloudového zařízení. |
 | **Podporované typy svazků** |Podporuje místně připnuté a vrstvené svazky. |Podporuje pouze vrstvené svazky. |
 

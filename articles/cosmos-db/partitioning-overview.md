@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: aa7d67cd6bd1bd422bd257b75ac5bde3bd534d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85481829"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Dělení ve službě Azure Cosmos DB
@@ -48,7 +48,7 @@ Výběr klíče oddílu je jednoduchá, ale důležitá volba návrhu v Azure Co
 Pro **všechny** kontejnery by měl klíč oddílu:
 
 * Vlastnost, která má hodnotu, která se nemění. Pokud je vlastnost klíčem oddílu, nemůžete tuto hodnotu vlastnosti aktualizovat.
-* Máte vysokou mohutnost. Jinými slovy, vlastnost by měla mít široké spektrum možných hodnot.
+* Má vysokou kardinalitu. Jinými slovy, vlastnost by měla mít široké spektrum možných hodnot.
 * Využití jednotky (RU) požadavků na rozprostření (RU) a úložiště dat rovnoměrně napříč všemi logickými oddíly. Tím se zajistí i využití a distribuce úložiště mezi fyzickými oddíly.
 
 Pokud budete potřebovat [transakce s kyselými položkami](database-transactions-optimistic-concurrency.md#multi-item-transactions) v Azure Cosmos DB, bude nutné použít [uložené procedury nebo triggery](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures). Všechny uložené procedury a triggery založené na JavaScriptu jsou vymezeny na jeden logický oddíl.

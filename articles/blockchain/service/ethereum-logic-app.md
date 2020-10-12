@@ -5,17 +5,17 @@ ms.date: 08/31/2020
 ms.topic: how-to
 ms.reviewer: caleteet
 ms.openlocfilehash: 4364d2f616c8eaadedf12baf4bf77810eec69fdb
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230530"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Použití konektoru Ethereem blockchain s Azure Logic Apps
 
 Pomocí [konektoru Ethereem blockchain](/connectors/blockchainethereum/) s [Azure Logic Apps](../../logic-apps/index.yml) provádět akce inteligentních kontraktů a reagovat na události inteligentních kontraktů. Tento článek vysvětluje, jak můžete pomocí konektoru Ethereem blockchain odeslat informace blockchain do jiné služby nebo zavolat funkci blockchain. Řekněme například, že chcete vytvořit mikroslužbu založenou na REST, která vrací informace z hlavní knihy blockchain. Pomocí aplikace logiky můžete přijmout požadavky HTTP, které dotazují na informace uložené v blockchain knize.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Dokončete volitelný rychlý úvodní požadavek [: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Rychlý Start vás provede instalací [sady Azure blockchain Development Kit pro ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) a nastavením vašeho vývojového prostředí blockchain.
 - Pokud s Azure Logic Apps začínáte, zvažte, jak si projít Microsoft Learn moduly [Úvod do Azure Logic Apps](/learn/modules/intro-to-logic-apps/) a [zavolejte rozhraní API z pracovního postupu Logic Apps pomocí vlastního konektoru](/learn/modules/logic-apps-and-custom-connectors/).
@@ -177,7 +177,7 @@ Adresa koncového bodu RPC služby Azure blockchain se vyžaduje pro připojení
 
 **Použití Azure Portal:**
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejít na člena služby Azure blockchain. Vyberte **uzly transakce** a výchozí odkaz na uzel transakce.
 
     ![Stránka uzly transakce s výběrem (výchozí uzel)](./media/ethereum-logic-app/transaction-nodes.png)

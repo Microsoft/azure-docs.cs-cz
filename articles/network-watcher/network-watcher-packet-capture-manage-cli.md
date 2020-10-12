@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: d72a981749af87e1b73625bdce2e0fd2d24fff0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84724913"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Správa zachytávání paketů pomocí Azure Network Watcher pomocí Azure CLI
@@ -29,7 +29,7 @@ ms.locfileid: "84724913"
 
 Network Watcher Capture paketů umožňuje vytvářet relace zachycení pro sledování provozu do a z virtuálního počítače. K dispozici jsou filtry pro relaci zachycení, aby bylo možné zachytit pouze požadovaný provoz. Zachytávání paketů pomáhá diagnostikovat anomálie sítě interaktivně a aktivně. Mezi další použití patří shromažďování statistik sítě a získání informací o neoprávněných vniknutích k síti, k ladění komunikace mezi klientem a serverem a mnohem více. Díky tomu, že je možné vzdáleně aktivovat zachycení paketů, tato schopnost usnadňuje zátěžové zachycení paketů ručně a na požadovaném počítači, který šetří cenný čas.
 
-K provedení kroků v tomto článku potřebujete [nainstalovat rozhraní příkazového řádku Azure pro Mac, Linux a Windows (Azure CLI)](/cli/azure/install-azure-cli).
+K provedení kroků v tomto článku je potřeba [nainstalovat rozhraní azure Command-Line pro Mac, Linux a Windows (Azure CLI)](/cli/azure/install-azure-cli).
 
 Tento článek vás provede různými úlohami správy, které jsou aktuálně k dispozici pro zachytávání paketů.
 
@@ -50,7 +50,7 @@ V tomto článku se předpokládá, že máte následující zdroje:
 
 ## <a name="install-vm-extension"></a>Instalace rozšíření virtuálních počítačů
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 Spuštěním `az vm extension set` příkazu nainstalujte agenta zachytávání paketů do hostovaného virtuálního počítače.
 
@@ -82,7 +82,7 @@ Pro virtuální počítače se systémem Linux:
 az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name AzureNetworkWatcherExtension
 ```
 
-Následující ukázka je příkladem reakce na spuštění`az vm extension show`
+Následující ukázka je příkladem reakce na spuštění `az vm extension show`
 
 ```json
 {
@@ -108,7 +108,7 @@ Následující ukázka je příkladem reakce na spuštění`az vm extension show
 
 Po dokončení předchozích kroků se na virtuálním počítači nainstaluje agent zachytávání paketů.
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 Načtěte účet úložiště. Tento účet úložiště se používá k uložení souboru zachycení paketů.
 
@@ -224,7 +224,7 @@ az network watcher packet-capture delete --name packetCaptureName --location wes
 
 ## <a name="download-a-packet-capture"></a>Stažení zachytávání paketů
 
-Po dokončení relace zachycení paketů se zachytávací soubor dá nahrát do úložiště objektů BLOB nebo do místního souboru na VIRTUÁLNÍm počítači. Umístění úložiště zachycení paketu je definováno při vytváření relace. Pohodlný nástroj pro přístup k těmto sběrným souborům uloženým do účtu úložiště je Průzkumník služby Microsoft Azure Storage, který se dá stáhnout tady:https://storageexplorer.com/
+Po dokončení relace zachycení paketů se zachytávací soubor dá nahrát do úložiště objektů BLOB nebo do místního souboru na VIRTUÁLNÍm počítači. Umístění úložiště zachycení paketu je definováno při vytváření relace. Pohodlný nástroj pro přístup k těmto sběrným souborům uloženým do účtu úložiště je Průzkumník služby Microsoft Azure Storage, který se dá stáhnout tady:  https://storageexplorer.com/
 
 Pokud je zadaný účet úložiště, soubory zachytávání paketů se uloží do účtu úložiště v následujícím umístění:
 

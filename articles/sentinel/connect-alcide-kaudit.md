@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
 ms.openlocfilehash: cf8da1d88529a823ff4399fb955c8a5e0abbd20e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87038235"
 ---
 # <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>Připojení Alcide kAudit k Azure Sentinel
@@ -32,7 +32,7 @@ ms.locfileid: "87038235"
 > [!NOTE]
 > Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - V pracovním prostoru Azure Sentinel musíte mít oprávnění ke čtení a zápisu.
 

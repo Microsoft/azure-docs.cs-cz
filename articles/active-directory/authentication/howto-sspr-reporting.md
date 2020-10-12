@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9118a99f285dedfe0b76e890db001627e4f85969
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657136"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti vytváření sestav správy hesel v Azure AD
@@ -72,7 +72,7 @@ Následující tabulka popisuje různé hodnoty, které můžete nastavit pro ka
 | --- | --- |
 | Zaregistrovaná data |**Alternativní e-mail**: uživatel použil k ověření alternativní e-mail nebo ověřovací e-mail.<p><p>**Telefon do kanceláře**: uživatel pro ověření použil telefon do kanceláře.<p>**Mobilní telefon**: uživatel používal mobilní telefon nebo telefon pro ověření k ověření.<p>**Bezpečnostní otázky**: uživatel použil bezpečnostní otázky k ověření.<p>**Libovolná kombinace předchozích metod, například alternativní e-mailová + mobilní telefon**: nastane, když je zadána zásada dvou bran, a ukazuje, které dvě metody uživatel použil k ověřování své žádosti o resetování hesla. |
 
-## <a name="self-service-password-management-activity-types"></a>Typy aktivit samoobslužné správy hesel
+## <a name="self-service-password-management-activity-types"></a>Self-Service typy aktivit správy hesel
 
 V kategorii událostí auditu **Samoobslužná správa hesel** se zobrazí následující typy aktivit:
 

@@ -7,10 +7,10 @@ ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
 ms.openlocfilehash: e940f0cf0d1547b317cd9e7bd15ac5486d5e70b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86248403"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
@@ -51,11 +51,11 @@ Prostředí sítě zpřístupňuje několik metrik, které označují, jak vaše
 | AllocatedMemory | Paměť přidělená jako šablona pro Azure Resource Manager | MB |
 | ActualCpu | Využití procesoru | Millicores |
 | ActualMemory | Využití paměti | MB |
-| ContainerStatus | 0 – neplatné: stav kontejneru je neznámý. <br> 1 – čeká se na spuštění kontejneru. <br> 2 – spouštění: kontejner se právě spouští. <br> 3-zahájeno: kontejner byl úspěšně spuštěn. <br> 4 – zastavování: Probíhá zastavení kontejneru. <br> 5 – zastaveno: kontejner se úspěšně zastavil. | Nelze použít |
-| ApplicationStatus | 0 – neznámý: stav nelze načíst. <br> 1 – připraveno: aplikace je úspěšně spuštěná. <br> 2. upgrade: probíhá upgrade. <br> 3 – vytváření: aplikace se vytváří. <br> 4 – odstraňování: aplikace se odstraňuje. <br> 5 – neúspěch: aplikaci se nepovedlo nasadit. | Nelze použít |
-| ServiceStatus | 0 – neplatné: služba aktuálně nemá stav <br> 1 – OK: služba je v pořádku.  <br> 2 – Upozornění: může se jednat o něco špatného, vyžadovat šetření <br> 3 – Chyba: došlo k nějakému problému, který vyžaduje šetření. <br> 4 – neznámé: stav nelze načíst. | Nelze použít |
-| ServiceReplicaStatus | 0 – neplatné: replika aktuálně nemá stav <br> 1 – OK: služba je v pořádku.  <br> 2 – Upozornění: může se jednat o něco špatného, vyžadovat šetření <br> 3 – Chyba: došlo k nějakému problému, který vyžaduje šetření. <br> 4 – neznámé: stav nelze načíst. | Nelze použít | 
-| RestartCount | Počet restartování kontejneru | Nelze použít |
+| ContainerStatus | 0 – neplatné: stav kontejneru je neznámý. <br> 1 – čeká se na spuštění kontejneru. <br> 2 – spouštění: kontejner se právě spouští. <br> 3-zahájeno: kontejner byl úspěšně spuštěn. <br> 4 – zastavování: Probíhá zastavení kontejneru. <br> 5 – zastaveno: kontejner se úspěšně zastavil. | Není k dispozici |
+| ApplicationStatus | 0 – neznámý: stav nelze načíst. <br> 1 – připraveno: aplikace je úspěšně spuštěná. <br> 2. upgrade: probíhá upgrade. <br> 3 – vytváření: aplikace se vytváří. <br> 4 – odstraňování: aplikace se odstraňuje. <br> 5 – neúspěch: aplikaci se nepovedlo nasadit. | Není k dispozici |
+| ServiceStatus | 0 – neplatné: služba aktuálně nemá stav <br> 1 – OK: služba je v pořádku.  <br> 2 – Upozornění: může se jednat o něco špatného, vyžadovat šetření <br> 3 – Chyba: došlo k nějakému problému, který vyžaduje šetření. <br> 4 – neznámé: stav nelze načíst. | Není k dispozici |
+| ServiceReplicaStatus | 0 – neplatné: replika aktuálně nemá stav <br> 1 – OK: služba je v pořádku.  <br> 2 – Upozornění: může se jednat o něco špatného, vyžadovat šetření <br> 3 – Chyba: došlo k nějakému problému, který vyžaduje šetření. <br> 4 – neznámé: stav nelze načíst. | Není k dispozici | 
+| RestartCount | Počet restartování kontejneru | Není k dispozici |
 
 > [!NOTE]
 > Hodnoty ServiceStatus a ServiceReplicaStatus jsou stejné jako hodnota [elementu](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) ve Service Fabric. 

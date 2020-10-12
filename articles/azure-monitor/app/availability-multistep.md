@@ -4,10 +4,10 @@ description: Nastavení webových testů s více kroky pro monitorování webov�
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87024769"
 ---
 # <a name="multi-step-web-tests"></a>Vícekrokové webové testy
@@ -106,7 +106,7 @@ Ve všech případech musíte v aplikaci vytvořit účet jenom pro účely test
 
 **Ověřování SAML**
 
-|Název vlastnosti| Popis|
+|Název vlastnosti| Description|
 |----|-----|
 | Identifikátor URI cílové skupiny | Identifikátor URI cílové skupiny pro token SAML.  Toto je identifikátor URI pro Access Control Service (ACS) – včetně oboru názvů služby ACS a názvu hostitele. |
 | Heslo certifikátu | Heslo pro klientský certifikát, kterým bude udělen přístup k vloženému privátnímu klíči. |
@@ -139,7 +139,7 @@ Porovnáním různých relací identifikujte token předaný zpět z webu ověř
 Uložte webový test pomocí sady Visual Studio.
 Parametrizujte tokeny, nastavte parametr při vrácení tokenu z ověřovatele a použijte ho v dotazu na web. (Sada Visual Studio se pokusí o parametrizaci testu, ale nebude tokeny parametrizovat správně.)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Vyhrazený [článek týkající se řešení potíží](troubleshoot-availability.md).
 

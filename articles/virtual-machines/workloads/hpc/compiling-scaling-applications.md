@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: 72178b61d7033167ed48a8ddbb661daad6081df7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87020104"
 ---
 # <a name="scaling-hpc-applications"></a>Škálování aplikací HPC
@@ -33,7 +33,7 @@ Systém pro kompilátor C/C++ s podporou technologie AMD (AOCC) nabízí vysokou
 
 ### <a name="clang"></a>Clang
 
-Clang je kompilátor jazyka C, C++ a objektiv-C, který zpracovává předzpracování, analýzu, optimalizaci, generování kódu, sestavení a propojení. Clang podporuje `-march=znver1` příznak pro zajištění nejlepšího generování kódu a optimalizaci pro architekturu x86 založenou na platformě AMD Zen.
+Clang je kompilátor jazyka C, C++ a objektiv-C, který zpracovává předzpracování, analýzu, optimalizaci, generování kódu, sestavení a propojení. Clang podporuje  `-march=znver1` příznak pro zajištění nejlepšího generování kódu a optimalizaci pro architekturu x86 založenou na platformě AMD Zen.
 
 ### <a name="flang"></a>FLANG
 

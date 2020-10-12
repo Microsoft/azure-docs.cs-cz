@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8690b1a4b8527a397fcf4c04892e167b5332358d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87035396"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>Přizpůsobení uživatelského prostředí pro Azure Active Directory Samoobslužné resetování hesla
@@ -67,8 +67,8 @@ Obrázek, který zvolíte, se zobrazí v následujících situacích:
 
 * Poté, co uživatel zadá své uživatelské jméno
 * Pokud uživatel přistupuje k přizpůsobené adrese URL:
-   * Předáním `whr` parametru na stránku pro resetování hesla, například`https://login.microsoftonline.com/?whr=contoso.com`
-   * Předáním `username` parametru na stránku pro resetování hesla, například`https://login.microsoftonline.com/?username=admin@contoso.com`
+   * Předáním `whr` parametru na stránku pro resetování hesla, například `https://login.microsoftonline.com/?whr=contoso.com`
+   * Předáním `username` parametru na stránku pro resetování hesla, například `https://login.microsoftonline.com/?username=admin@contoso.com`
 
 ### <a name="directory-name"></a>Název adresáře
 

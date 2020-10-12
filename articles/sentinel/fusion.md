@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
 ms.openlocfilehash: ba872f221f3bde29f0bb48b04dc2259d3ab4938a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906272"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Rozšířená detekce útoků s více fázemi v Azure Sentinel
@@ -40,7 +40,7 @@ Tato detekce je ve výchozím nastavení povolená v Azure Sentinel. Pokud chcet
 
 1. Vyberte **aktivní pravidla**a potom pomocí filtrování seznamu pro typ pravidla **fúze** Najděte ve sloupci **název** **pokročilou detekci útoku s více fázemi** . Zkontrolujte sloupec **stav** a potvrďte, jestli je toto zjišťování povolené nebo zakázané.
 
-    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{ALT-text}":::
+    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{alt-text}":::
 
 1. Chcete-li změnit stav, vyberte tuto položku a v okně **Pokročilé zjišťování útoků s více fázemi** vyberte možnost **Upravit**.
 
@@ -422,7 +422,7 @@ Tento scénář je aktuálně ve **verzi Public Preview**.
 
 **Mitre ATT&CK taktiku:** Počáteční přístup, provádění, příčný pohyb, eskalace oprávnění
 
-**Mitre technologie ATT&CK:** Zneužití veřejné aplikace (T1190), zneužití pro spouštění klientů (T1203), využívání vzdálených služeb (T1210), využití pro eskalaci oprávnění (T1068)
+**Mitre technologie ATT&CK:** Zneužití aplikace Public-Facing (T1190), zneužití pro spuštění klientů (T1203), využívání vzdálených služeb (T1210), využití pro eskalaci oprávnění (T1068)
 
 **Zdroje datových konektorů:** Microsoft Defender pro koncové body (dříve MDATP), Palo Alto Networks 
 

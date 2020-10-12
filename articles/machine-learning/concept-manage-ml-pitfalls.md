@@ -11,10 +11,10 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
 ms.openlocfilehash: 77b5b52153c552008406b4b85083bcba5542cebe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87012718"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Ochrana před přeložením a nevyváženými daty pomocí automatizovaného strojového učení
@@ -27,7 +27,7 @@ K naplnění ve strojovém učení dochází, když model přesně odpovídá š
 
 Vezměte v úvahu následující vyškolené modely a jejich odpovídající přesností a testování.
 
-| Modelování | Přesnost vlaku | Přesnost testu |
+| Model | Přesnost vlaku | Přesnost testu |
 |-------|----------------|---------------|
 | A | 99,9 % | 95 % |
 | B | 87% | 87% |
@@ -81,7 +81,7 @@ Nevyvážená data se běžně nacházejí v datech pro scénáře klasifikace M
 
 Automatizované spuštění ML navíc generuje následující grafy automaticky, což vám pomůže pochopit správnost klasifikací modelu a identifikovat modely, které mohou ovlivnit data, která jsou potenciálně ovlivněná nevyváženými daty.
 
-Graf| Popis
+Graf| Description
 ---|---
 [Nejasná matice](how-to-understand-automated-ml.md#confusion-matrix)| Vyhodnotí správně klasifikované popisky proti skutečným popiskům dat. 
 [Přesnost – odvolání](how-to-understand-automated-ml.md#precision-recall-chart)| Vyhodnotí poměr správných popisků oproti poměru nalezených instancí popisků dat. 

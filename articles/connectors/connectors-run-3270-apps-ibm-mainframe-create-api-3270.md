@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
 ms.openlocfilehash: 41e3f1ff430293ebc7b3828a0fd7090923fc209c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281476"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrace aplikací ovládaných přes obrazovku emulátoru 3270 na sálových počítačích IBM s Azure s využitím Azure Logic Apps a konektoru IBM 3270
@@ -182,7 +182,7 @@ V tomto režimu definujete tok nebo kroky pro navigaci na obrazovkách vaší ap
 
 1. V části **zvolit název nového plánu**zadejte název vašeho plánu. V seznamu **typ** vyberte typ plánu:
 
-   | Typ plánu | Popis |
+   | Typ plánu | Description |
    |-----------|-------------|
    | **Proces** | Pro samostatné nebo kombinované plány |
    | **Připojit** | Pro plány připojení |
@@ -290,7 +290,7 @@ V tomto režimu definujete metodu, která je přidružena k vašemu navigačním
 
    | Název vlastnosti | Možné hodnoty | 
    |---------------|-----------------|
-   | **Typ dat** | Byte, datum a čas, desetinné číslo, int, Long, Short, řetězec |
+   | **Datový typ** | Byte, datum a čas, desetinné číslo, int, Long, Short, řetězec |
    | **Technika vyplňování polí** | Parametry podporují tyto typy výplně a v případě potřeby plní prázdné hodnoty: <p><p>- **Typ**: do pole zadejte znaky postupně. <p>- **Fill (vyplnit**): Nahraďte obsah pole znaky, pokud je to nutné, v případě potřeby vyplňte prázdné. <p>- **EraseEofType**: Vymažte pole a potom do pole zadejte postupně znaky. |
    | **Řetězec formátu** | Některé typy dat parametrů používají formátovací řetězec, který informuje konektor 3270, jak převést text z obrazovky na datový typ .NET: <p><p>- **DateTime**: řetězec formátu data a času následuje za [řetězci vlastního formátu data a času rozhraní .NET](/dotnet/standard/base-types/custom-date-and-time-format-strings). Datum například `06/30/2019` používá řetězec formátu `MM/dd/yyyy` . <p>- **Decimal**: řetězec formátu Decimal používá [klauzuli obrázku COBOL](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Číslo například `100.35` používá řetězec formátu `999V99` . |
    |||
@@ -360,16 +360,16 @@ Po dokončení všech těchto kroků můžete použít akci, kterou vytvoříte 
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název připojení** | Ano | <*název připojení*> | Název připojení |
-   | **ID účtu pro integraci** | Ano | <*Integration-Account-Name*> | Název vašeho účtu pro integraci |
-   | **Adresa URL SAS účtu pro integraci** | Ano | <*Integration-Account-SAS-URL*> | Adresa URL sdíleného přístupového podpisu (SAS) vašeho účtu pro integraci, kterou můžete vygenerovat z nastavení účtu integrace v Azure Portal. <p>1. v nabídce účet pro integraci vyberte v části **Nastavení**možnost **Adresa URL zpětného volání**. <br>2. v pravém podokně Zkopírujte hodnotu **vygenerované adresy URL zpětného volání** . |
-   | **Server** | Ano | <*TN3270 – název serveru*> | Název serveru pro vaši službu TN3270 |
-   | **Port** | Ne | <*TN3270-Server – Port*> | Port používaný serverem TN3270 Pokud necháte pole prázdné, použije konektor `23` jako výchozí hodnotu. |
-   | **Typ zařízení** | Ne | <*IBM-Terminal-model*> | Název nebo číslo modelu terminálu IBM pro emulaci. Pokud necháte pole prázdné, použije konektor výchozí hodnoty. |
-   | **Code Page** | Ne | <*číslo stránky kódu*> | Číslo kódové stránky pro hostitele Pokud necháte pole prázdné, použije konektor `37` jako výchozí hodnotu. |
-   | **Název logické jednotky** | Ne | <*logická jednotka – název*> | Název konkrétní logické jednotky, která se má požadovat od hostitele |
-   | **Povolit SSL?** | Ne | Zapnuto nebo vypnuto | Zapněte nebo vypněte šifrování TLS. |
-   | **Ověřit certifikát SSL hostitele?** | Ne | Zapnuto nebo vypnuto | Zapněte nebo vypněte ověřování pro certifikát serveru. |
+   | **Název připojení** | Yes | <*název připojení*> | Název připojení |
+   | **ID účtu pro integraci** | Yes | <*Integration-Account-Name*> | Název vašeho účtu pro integraci |
+   | **Adresa URL SAS účtu pro integraci** | Yes | <*Integration-Account-SAS-URL*> | Adresa URL sdíleného přístupového podpisu (SAS) vašeho účtu pro integraci, kterou můžete vygenerovat z nastavení účtu integrace v Azure Portal. <p>1. v nabídce účet pro integraci vyberte v části **Nastavení**možnost **Adresa URL zpětného volání**. <br>2. v pravém podokně Zkopírujte hodnotu **vygenerované adresy URL zpětného volání** . |
+   | **Server** | Yes | <*TN3270 – název serveru*> | Název serveru pro vaši službu TN3270 |
+   | **Port** | No | <*TN3270-Server – Port*> | Port používaný serverem TN3270 Pokud necháte pole prázdné, použije konektor `23` jako výchozí hodnotu. |
+   | **Typ zařízení** | No | <*IBM-Terminal-model*> | Název nebo číslo modelu terminálu IBM pro emulaci. Pokud necháte pole prázdné, použije konektor výchozí hodnoty. |
+   | **Code Page** | No | <*číslo stránky kódu*> | Číslo kódové stránky pro hostitele Pokud necháte pole prázdné, použije konektor `37` jako výchozí hodnotu. |
+   | **Název logické jednotky** | No | <*logická jednotka – název*> | Název konkrétní logické jednotky, která se má požadovat od hostitele |
+   | **Povolit SSL?** | No | Zapnuto nebo vypnuto | Zapněte nebo vypněte šifrování TLS. |
+   | **Ověřit certifikát SSL hostitele?** | No | Zapnuto nebo vypnuto | Zapněte nebo vypněte ověřování pro certifikát serveru. |
    ||||
 
    Například:
@@ -380,8 +380,8 @@ Po dokončení všech těchto kroků můžete použít akci, kterou vytvoříte 
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název HIDX** | Ano | <*HIDX-název souboru*> | Vyberte soubor HIDX 3270, který chcete použít. |
-   | **Název metody** | Ano | <*název metody*> | Vyberte metodu v souboru HIDX, který chcete použít. Po výběru metody se zobrazí seznam **Přidat nový parametr** , takže můžete vybrat parametry pro použití s touto metodou. |
+   | **Název HIDX** | Yes | <*HIDX-název souboru*> | Vyberte soubor HIDX 3270, který chcete použít. |
+   | **Název metody** | Yes | <*název metody*> | Vyberte metodu v souboru HIDX, který chcete použít. Po výběru metody se zobrazí seznam **Přidat nový parametr** , takže můžete vybrat parametry pro použití s touto metodou. |
    ||||
 
    Například:

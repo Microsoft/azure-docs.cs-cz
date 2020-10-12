@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abec780deb7834e67618c74e556a1bc20154b0b4
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658536"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Určení strategie přijetí hybridního životního cyklu identit
@@ -60,7 +60,7 @@ Jiné společnosti mohou najít nepraktické pro obchodní důvody, aby bylo mo�
 ## <a name="license-management"></a>Správa licencí
 Správa licencí na základě skupin ve službě Azure AD umožňuje správcům přiřazovat uživatele do skupiny zabezpečení a služba Azure AD automaticky přiřazuje licence všem členům skupiny. Pokud je uživatel následně přidán do skupiny nebo je z něj odebrán, licence bude podle potřeby automaticky přiřazena nebo odebrána.
 
-Můžete použít skupiny, které synchronizujete z místní služby AD nebo spravovat ve službě Azure AD. Párování této služby se samoobslužnou správou skupin Azure AD Premium umožňuje snadno delegovat přiřazení licencí na příslušné tvůrce rozhodnutí. Můžete si být jisti, že problémy, jako jsou konflikty licencí a chybějící data umístění, se automaticky odřadí.
+Můžete použít skupiny, které synchronizujete z místní služby AD nebo spravovat ve službě Azure AD. Párování této služby se službou Azure AD Premium Self-Service Správa skupin vám umožní snadno delegovat přiřazení licencí na příslušné tvůrce rozhodnutí. Můžete si být jisti, že problémy, jako jsou konflikty licencí a chybějící data umístění, se automaticky odřadí.
 
 ## <a name="self-regulating-user-administration"></a>Správa uživatelů na základě vlastních regulačních prostředí
 Když vaše organizace začne zřizovat prostředky ve všech vnitřních organizacích, implementujete možnost správy uživatelů samy na sebe. Můžete využít výhod a výhod zřizování uživatelů napříč hranicemi organizace. V tomto prostředí se změna stavu uživatele automaticky odráží v přístupových právech napříč hranicemi organizace a geografickými oblastmi. Můžete snížit náklady na zřizování a zjednodušit procesy přístupu a schvalování. Implementace si uvědomuje plný potenciál implementace řízení přístupu na základě rolí pro komplexní správu přístupu ve vaší organizaci. Pomocí automatizovaných postupů pro řízení zřizování uživatelů můžete snížit náklady na správu. Zabezpečení můžete zlepšit automatizací vynucování zásad zabezpečení a zjednodušením a centralizacim správy životního cyklu uživatelů a zřizováním prostředků pro velké uživatelské populace.

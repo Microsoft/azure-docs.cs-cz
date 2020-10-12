@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657119"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Další kroky a Správa Azure AD Connect
@@ -72,7 +72,7 @@ Následující tabulka poskytuje souhrn těchto úkolů a stručný popis jednot
 
 ![Seznam dalších úloh](./media/how-to-connect-post-installation/addtasks2.png)
 
-| Další úloha | Popis |
+| Další úloha | Description |
 | --- | --- |
 |**Nastavení ochrany osobních údajů**|Podívejte se, jaká data telemetrie se s Microsoftem sdílí.|
 |**Zobrazit aktuální konfiguraci**|Podívejte se na vaše aktuální řešení Azure AD Connect.  To zahrnuje obecná nastavení, synchronizované adresáře a nastavení synchronizace. |
@@ -82,7 +82,7 @@ Následující tabulka poskytuje souhrn těchto úkolů a stručný popis jednot
 |**Konfigurovat pracovní režim** |Informace o fázi, která není hned synchronizována a není exportována do služby Azure AD ani do místní služby Active Directory.  Pomocí této funkce můžete zobrazit náhled synchronizací dřív, než k nim dojde. |
 |**Změna přihlášení uživatele**|Změna metody ověřování, kterou uživatelé používají k přihlášení|
 |**Správa federace**|Správa infrastruktury AD FS, obnovení certifikátů a přidání serverů AD FS|
-|**Odstraňování potíží**|Pomoc s řešením problémů s Azure AD Connect|
+|**Řešení potíží**|Pomoc s řešením problémů s Azure AD Connect|
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [integraci místních identit s Azure Active Directory](whatis-hybrid-identity.md).

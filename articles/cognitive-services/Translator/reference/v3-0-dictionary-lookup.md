@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: b2d111f22b8ef36b20b93b65ff1ea6f7b52ea8f7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83584735"
 ---
 # <a name="translator-30-dictionary-lookup"></a>Překladatel 3,0: vyhledávání slovníku
@@ -33,16 +33,16 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 Parametry žádosti předané řetězci dotazu jsou:
 
-| Parametr dotazu  | Popis |
+| Parametr dotazu  | Description |
 | ------ | ----------- |
-| verze-api <img width=200/>   | **Povinný parametr**.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být`3.0` |
+| verze-api <img width=200/>   | **Povinný parametr**.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0` |
 | Výsledkem | **Povinný parametr**.<br/>Určuje jazyk vstupního textu. Zdrojový jazyk musí být jeden z [podporovaných jazyků](./v3-0-languages.md) zahrnutých v `dictionary` oboru. |
 | na   | **Povinný parametr**.<br/>Určuje jazyk výstupního textu. Cílový jazyk musí být jeden z [podporovaných jazyků](v3-0-languages.md) zahrnutých v `dictionary` oboru. |
 
 
 Hlavičky požadavku zahrnují:
 
-| Hlavičky  | Popis |
+| Hlavičky  | Description |
 | ------ | ----------- |
 | Ověřovací hlavičky (y) <img width=200/>  | **Požadovaná hlavička žádosti**<br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>. |
 | Typ obsahu | **Požadovaná hlavička žádosti**<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json` . |
@@ -80,7 +80,7 @@ Platí následující omezení:
 
     * `posTag`: Řetězec, který je přidružen k tomuto termínu se značkou, která je součástí mluveného slova.
 
-        | Název značky | Popis  |
+        | Název značky | Description  |
         |----------|--------------|
         | ROKU      | Přídavná jména   |
         | ZÁLOH      | Příslovné      |

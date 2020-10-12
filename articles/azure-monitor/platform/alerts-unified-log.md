@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
 ms.openlocfilehash: 8081c60833c3c02d55ae66ca695ba106dba01450
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294134"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokolování výstrah v Azure Monitor
@@ -102,7 +102,7 @@ U pracovních prostorů a Application Insights se říká na **základě** **mě
 
 ### <a name="aggregation-type"></a>Typ agregace
 
-Výpočet, který je proveden na více záznamech pro agregaci na jednu číselnou hodnotu. Příklad:
+Výpočet, který je proveden na více záznamech pro agregaci na jednu číselnou hodnotu. Například:
 - **Count** vrátí počet záznamů v dotazu.
 - Funkce **Average** Vrátí průměrnou hodnotu definování [**členitosti**](#aggregation-granularity) sloupce měr.
 

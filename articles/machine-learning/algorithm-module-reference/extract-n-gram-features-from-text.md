@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
 ms.openlocfilehash: c21c63bdb64f7c15c049bfe4039ef47cea689922
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907975"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>Extrahovat N-gram funkcí z odkazu na modul textu
@@ -125,7 +125,7 @@ Slovník obsahuje slovník n-gramů s termínem četnosti, která se generují j
 + **DF**: skóre četnosti pro n-gram v původní corpus.
 + **IDF**: inverzní četnosti dokumentů pro n-gram v původní Corpus
 
-Tuto datovou sadu můžete ručně aktualizovat, ale můžete uvést chyby. Příklad:
+Tuto datovou sadu můžete ručně aktualizovat, ale můžete uvést chyby. Například:
 
 * Pokud modul nalezne v vstupním slovníku duplicitní řádky se stejným klíčem, vyvolá se chyba. Ujistěte se, že žádné dva řádky ve slovníku nemají stejné slovo.
 * Vstupní schéma datových sad slovníku se musí přesně shodovat, včetně názvů sloupců a typů sloupců. 

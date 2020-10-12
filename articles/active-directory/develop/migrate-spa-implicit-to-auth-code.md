@@ -13,10 +13,10 @@ ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev
 ms.openlocfilehash: b7316756aab7875dce50a3783cb95ca42676b970
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87027083"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Migrace jednostránkové aplikace v JavaScriptu z implicitního udělení na tok kódu ověřování
@@ -48,11 +48,11 @@ Pro registrace aplikací, které jsou aktuálně nakonfigurované pomocí identi
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Informační zpráva k implicitnímu toku na dlaždici webové aplikace v Azure Portal":::
 1. Vyberte *jenom* ty identifikátory URI přesměrování, jejichž aplikace budou používat MSAL.js 2. x, a pak vyberte **Konfigurovat**.
 
-    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="V podokně hesla vyberte podokno identifikátor URI přesměrování v Azure Portal":::
+    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Informační zpráva k implicitnímu toku na dlaždici webové aplikace v Azure Portal":::
 
 Tyto identifikátory URI pro přesměrování by se teď měly zobrazit na dlaždici aplikační platforma s **jednou stránkou** , která ukazuje, že pro tyto identifikátory URI je povolená podpora CORS s tokem autorizačního kódu a PKCE.
 
-:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Dlaždice jednostránkové aplikace v registraci aplikace v Azure Portal":::
+:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Informační zpráva k implicitnímu toku na dlaždici webové aplikace v Azure Portal":::
 
 Místo aktualizace identifikátorů URI přesměrování v existující registraci můžete také [vytvořit novou registraci aplikace](scenario-spa-app-registration.md) .
 

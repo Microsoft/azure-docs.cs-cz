@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88056512"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
@@ -121,7 +121,7 @@ V úrovni kompatibility 1,1 jsou představeny tyto hlavní změny:
 
 ### <a name="service-bus-xml-format"></a>Service Bus formát XML
 
-**úroveň 1,0:** Azure Stream Analytics použila DataContractSerializer, takže obsah zprávy obsahuje značky XML. Příklad:
+**úroveň 1,0:** Azure Stream Analytics použila DataContractSerializer, takže obsah zprávy obsahuje značky XML. Například:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 

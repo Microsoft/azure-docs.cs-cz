@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
 ms.openlocfilehash: f87c3665f558b3185e95b0ad0aa18a883439a221
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006513"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurace odchozího síťového provozu pro clustery Azure HDInsight pomocí brány firewall
@@ -69,13 +69,13 @@ Vytvořte kolekci pravidel aplikace, která umožňuje clusteru odesílat a při
 
     **Oddíl značek plně kvalifikovaného názvu domény**
 
-    | Název | Zdrojová adresa | FQDN – značka | Poznámky |
+    | Name | Zdrojová adresa | FQDN – značka | Poznámky |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate a HDInsight | Vyžadováno pro služby HDI Services |
 
     **Oddíl cílové plně kvalifikované názvy domén**
 
-    | Název | Zdrojové adresy | Protokol: port | Cílové plně kvalifikované názvy domén | Poznámky |
+    | Name | Zdrojové adresy | Protokol: port | Cílové plně kvalifikované názvy domén | Poznámky |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https: 443 | login.windows.net | Povoluje aktivitu přihlášení systému Windows. |
     | Rule_3 | * | https: 443 | login.microsoftonline.com | Povoluje aktivitu přihlášení systému Windows. |
@@ -103,16 +103,16 @@ Vytvořte Síťová pravidla pro správnou konfiguraci clusteru HDInsight.
 
     **Část IP adresy**
 
-    | Název | Protokol | Zdrojové adresy | Cílové adresy | Cílové porty | Poznámky |
+    | Name | Protokol | Zdrojové adresy | Cílové adresy | Cílové porty | Poznámky |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Časová služba |
-    | Rule_2 | Libovolný | * | DC_IP_Address_1 DC_IP_Address_2 | * | Pokud používáte Balíček zabezpečení podniku (ESP), pak v části IP adresy přidejte síťové pravidlo, které umožňuje komunikaci s clustery AAD-DS pro ESP. IP adresy řadičů domény najdete v části AAD-DS na portálu. |
+    | Rule_2 | Všechny | * | DC_IP_Address_1 DC_IP_Address_2 | * | Pokud používáte Balíček zabezpečení podniku (ESP), pak v části IP adresy přidejte síťové pravidlo, které umožňuje komunikaci s clustery AAD-DS pro ESP. IP adresy řadičů domény najdete v části AAD-DS na portálu. |
     | Rule_3 | TCP | * | IP adresa vašeho účtu Data Lake Storage | * | Pokud používáte Azure Data Lake Storage, můžete v části IP adresy přidat síťové pravidlo, které řeší problém s SNI s ADLS Gen1 a Gen2. Tato možnost bude směrovat provoz do brány firewall. To může mít za následek vyšší náklady na načtení velkých objemů dat, ale přenos bude protokolován a auditován v protokolech brány firewall. Určete IP adresu účtu Data Lake Storage. Můžete použít příkaz prostředí PowerShell, například `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` k překladu plně kvalifikovaného názvu domény na IP adresu.|
     | Rule_4 | TCP | * | * | 12000 | Volitelné Pokud používáte Log Analytics, vytvořte v části IP adresy síťové pravidlo, které umožní komunikaci s pracovním prostorem Log Analytics. |
 
     **Oddíl Service Tags**
 
-    | Název | Protokol | Zdrojové adresy | Značky služeb | Cílové porty | Poznámky |
+    | Name | Protokol | Zdrojové adresy | Značky služeb | Cílové porty | Poznámky |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | Nakonfigurujte pravidlo sítě v části značky služby pro SQL, které vám umožní protokolovat a auditovat provoz SQL. Pokud jste nenakonfigurovali koncové body služby pro SQL Server v podsíti HDInsight, která bude bránu firewall obejít. |
     | Rule_8 | TCP | * | Azure Monitor | * | volitelné Toto pravidlo by mělo přidat zákazníci, kteří chtějí používat funkci automatického škálování. |

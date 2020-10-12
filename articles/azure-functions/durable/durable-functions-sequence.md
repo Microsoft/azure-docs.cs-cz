@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/29/2019
 ms.author: azfuncdf
 ms.openlocfilehash: b117fca23b26919f3c404dd32ba64c0c89d66ae7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87033560"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Řetězení funkcí v ukázce sekvence Durable Functions-Hello
@@ -78,7 +78,7 @@ Aktivity používají `ActivityTrigger` atribut. Použijte `IDurableActivityCont
 
 Implementace `E1_SayHello` je poměrně operace formátování řetězce s jednoduchým řetězcem.
 
-Namísto vazby k objektu `IDurableActivityContext` lze vytvořit vazbu přímo na typ, který je předán funkci Activity. Příklad:
+Namísto vazby k objektu `IDurableActivityContext` lze vytvořit vazbu přímo na typ, který je předán funkci Activity. Například:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs?range=34-38)]
 

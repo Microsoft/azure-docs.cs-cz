@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: bezproblémové jednotné přihlašování | Microsoft Docs'
-description: Toto téma popisuje Azure Active Directory (Azure AD) bezproblémové jednotné přihlašování a to, jak vám umožňuje poskytovat skutečné jednotné přihlašování pro uživatele firemních stolních počítačů v podnikové síti.
+title: 'Azure AD Connect: bezproblémové jednoduché Sign-On | Microsoft Docs'
+description: Toto téma popisuje Azure Active Directory (Azure AD) bezproblémové jednoduché Sign-On a to, jak vám umožňuje poskytovat skutečné jednotné přihlašování pro uživatele firemních stolních počítačů v podnikové síti.
 services: active-directory
 keywords: Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658353"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
+# <a name="azure-active-directory-seamless-single-sign-on"></a>Bezproblémové jednotné přihlašování s Azure Active Directory
 
 ## <a name="what-is-azure-active-directory-seamless-single-sign-on"></a>Co je Azure Active Directory bezproblémové jednotné přihlašování?
 
@@ -33,7 +33,7 @@ Bezproblémové jednotné přihlašování Azure Active Directory (bezproblémov
 
 Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchronizací hodnot hash hesel](how-to-connect-password-hash-synchronization.md) , nebo [pomocí předávacích ověřovacích metod ověřování](how-to-connect-pta.md) . Bezproblémové jednotné přihlašování se _nevztahuje_ na Active Directory Federation Services (AD FS) (ADFS).
 
-![Bezproblémové jednotné přihlašování](./media/how-to-connect-sso/sso1.png)
+![Bezproblémové jednoduché Sign-On](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
 >Bezproblémové jednotné přihlašování vyžaduje, aby zařízení uživatele bylo jenom **připojené k doméně** , ale nepoužívá se pro zařízení připojená k [Azure AD](../devices/concept-azure-ad-join.md) nebo pro zařízení [připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) . Jednotné přihlašování k Azure AD, připojené k hybridní službě Azure AD a zařízení registrovaná službou Azure AD funguje na základě [primárního obnovovacího tokenu](../devices/concept-primary-refresh-token.md).
@@ -63,11 +63,11 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ano\*|Yes|Yes|Ano\*\*\*|–
-|Windows 8.1|Ano\*|–|Yes|Ano\*\*\*|–
-|Windows 8|Ano\*|–|Yes|Ano\*\*\*|–
-|Windows 7|Ano\*|–|Yes|Ano\*\*\*|–
-|Windows Server 2012 R2 nebo novější|Ano\*\*|–|Yes|Ano\*\*\*|–
+|Windows 10|Ano\*|Yes|Yes|Ano\*\*\*|Není k dispozici
+|Windows 8.1|Yes\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
+|Windows 8|Yes\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
+|Windows 7|Ano\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
+|Windows Server 2012 R2 nebo novější|Ano\*\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
 |Mac OS X|N/A|N/A|Ano\*\*\*|Ano\*\*\*|Ano\*\*\*
 
 

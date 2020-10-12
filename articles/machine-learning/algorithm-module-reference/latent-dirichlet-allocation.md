@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
 ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907857"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Modul přidělování latentních Dirichletův
@@ -184,23 +184,23 @@ Po vypočítání indexů je míra podobnosti na základě vzdálenosti porovná
 |Název|Typ|Rozsah|Volitelné|Výchozí|Description|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
 |Cílový sloupec (y)|Výběr sloupce||Vyžadováno|StringFeature|Název nebo index cílového sloupce.|  
-|Počet témat pro model|Celé číslo|[1; 1000]|Vyžadováno|5|Namodelujte distribuci dokumentu na N témata.|  
-|N-gramů|Celé číslo|[1; 10]|Vyžadováno|2|Pořadí N-gramů generovaných během hashace.|  
+|Počet témat pro model|Integer|[1; 1000]|Vyžadováno|5|Namodelujte distribuci dokumentu na N témata.|  
+|N-gramů|Integer|[1; 10]|Vyžadováno|2|Pořadí N-gramů generovaných během hashace.|  
 |Normalizovat|Logická hodnota|True nebo false|Vyžadováno|true|Normalizuje výstup na pravděpodobnost.  Transformovaná datová sada bude P (téma&#124;dokumentu) a matice tématu funkce bude P (Word&#124;téma).|  
 |Zobrazit všechny možnosti|Logická hodnota|True nebo false|Vyžadováno|Nepravda|Uvede další parametry, které jsou specifické pro scikit – Přečtěte si online LDA.|  
 |Ró – parametr|Float|[0.00001; 1.0]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0,01|Předchozí distribuce slova tématu|  
 |Parametr alfa|Float|[0.00001; 1.0]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0,01|Předchozí distribuce dokumentu|  
-|Odhadovaný počet dokumentů|Celé číslo|[1; int. MaxValue|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|1000|Odhadovaný počet dokumentů Odpovídá `total_samples` parametru.|  
-|Velikost dávky|Celé číslo|[1; 1024]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|32|Velikost dávky|  
-|Počáteční hodnota iterace použitá v plánu aktualizace studijních kurzů|Celé číslo|[0; int. MaxValue|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0|Počáteční hodnota, která downweights kurzů pro počáteční iterace. Odpovídá `learning_offset` parametru.|  
+|Odhadovaný počet dokumentů|Integer|[1; int. MaxValue|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|1000|Odhadovaný počet dokumentů Odpovídá `total_samples` parametru.|  
+|Velikost dávky|Integer|[1; 1024]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|32|Velikost dávky|  
+|Počáteční hodnota iterace použitá v plánu aktualizace studijních kurzů|Integer|[0; int. MaxValue|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0|Počáteční hodnota, která downweights kurzů pro počáteční iterace. Odpovídá `learning_offset` parametru.|  
 |Zapnutí pro iteraci během aktualizací|Float|[0,0; 1,0]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0,5|Napájení použité pro počet iterací za účelem řízení míry učení. Odpovídá `learning_decay` parametru. |  
-|Počet iterací cvičení|Celé číslo|[1; 1024]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|25|Počet iterací cvičení.|  
+|Počet iterací cvičení|Integer|[1; 1024]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|25|Počet iterací cvičení.|  
 |Sestavit slovník pro ngrams|Logická hodnota|True nebo false|Platí v případě *, že není zaškrtnuté* políčko **Zobrazit všechny možnosti** .|Ano|Vytvoří slovník ngrams před výpočetním LDA. Užitečné pro kontrolu a výklad modelu.|  
-|Maximální velikost ngram slovníku|Celé číslo|[1; int. MaxValue|Platí v případě, že je **hodnota** **ngrams slovníku pro možnost Build** .|20000|Maximální velikost ngrams slovníku Pokud počet tokenů ve vstupu překračuje tuto velikost, může dojít k kolizí.|  
-|Počet bitů, které se mají použít pro funkci hashování funkcí|Celé číslo|[1; 31]|Platí v případě, že *není zaškrtnuté* políčko **Zobrazit všechny možnosti** a **slovník sestavení ngrams** je **false** .|12|Počet bitů, které se mají použít pro funkci hashování funkcí| 
+|Maximální velikost ngram slovníku|Integer|[1; int. MaxValue|Platí v případě, že je **hodnota** **ngrams slovníku pro možnost Build** .|20000|Maximální velikost ngrams slovníku Pokud počet tokenů ve vstupu překračuje tuto velikost, může dojít k kolizí.|  
+|Počet bitů, které se mají použít pro funkci hashování funkcí|Integer|[1; 31]|Platí v případě, že *není zaškrtnuté* políčko **Zobrazit všechny možnosti** a **slovník sestavení ngrams** je **false** .|12|Počet bitů, které se mají použít pro funkci hashování funkcí| 
 |Sestavit slovník ngrams před LDA|Logická hodnota|True nebo false|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|Ano|Vytvoří slovník ngrams před LDA. Užitečné pro kontrolu a výklad modelu.|  
-|Maximální počet ngrams ve slovníku|Celé číslo|[1; int. MaxValue|Platí v případě, že je zaškrtnuté políčko **Zobrazit všechny možnosti** a možnost **sestavit slovník ngrams** je **true** .|20000|Maximální velikost slovníku Pokud počet tokenů ve vstupu překračuje tuto velikost, může dojít k kolizí.|  
-|Počet bitů hash|Celé číslo|[1; 31]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** a možnost **sestavit slovník ngrams** je **false** .|12|Počet bitů, které se mají použít při vytváření hodnot hash funkcí|   
+|Maximální počet ngrams ve slovníku|Integer|[1; int. MaxValue|Platí v případě, že je zaškrtnuté políčko **Zobrazit všechny možnosti** a možnost **sestavit slovník ngrams** je **true** .|20000|Maximální velikost slovníku Pokud počet tokenů ve vstupu překračuje tuto velikost, může dojít k kolizí.|  
+|Počet bitů hash|Integer|[1; 31]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** a možnost **sestavit slovník ngrams** je **false** .|12|Počet bitů, které se mají použít při vytváření hodnot hash funkcí|   
 
 
 ## <a name="next-steps"></a>Další kroky

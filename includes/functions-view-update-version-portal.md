@@ -9,10 +9,10 @@ ms.date: 11/26/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: aa9a715fdafc143a116458691965087b016dec1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83343350"
 ---
 Pomocí následujícího postupu můžete zobrazit a aktualizovat verzi modulu runtime, kterou aktuálně používá aplikace Function App.
@@ -27,4 +27,4 @@ Pomocí následujícího postupu můžete zobrazit a aktualizovat verzi modulu r
 
 1. Když změníte verzi modulu runtime, vraťte se na kartu **Přehled** a kliknutím na tlačítko **restartovat** restartujte aplikaci.  Aplikace Function App se restartuje v modulu runtime verze 1. x a při vytváření funkcí se používají šablony verze 1. x.
 
-    :::image type="content" source="./media/functions-view-update-version-portal/functions-restart-function-app.png" alt-text="Restartujte aplikaci Function App." border="true":::
+    :::image type="content" source="./media/functions-view-update-version-portal/functions-restart-function-app.png" alt-text="Zobrazit verzi modulu runtime." border="true":::

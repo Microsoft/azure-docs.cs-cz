@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
 ms.openlocfilehash: 78ff8adcc2b50f89daa37112b14d219233559dab
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075566"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Monitorování výkonu clusteru v Azure HDInsight
@@ -27,7 +27,7 @@ Clustery Hadoop můžou poskytovat optimální výkon, když je zatížení clus
 
 Pokud se chcete podívat na nejvyšší úroveň uzlů clusteru a jejich načítání, přihlaste se k [webovému uživatelskému rozhraní Ambari](hdinsight-hadoop-manage-ambari.md)a pak vyberte kartu **hostitelé** . Vaši hostitelé jsou uvedeni podle jejich plně kvalifikovaného názvu domény. Stav provozu každého hostitele se zobrazuje pomocí barevného indikátoru stavu:
 
-| Barva | Description |
+| Color | Description |
 | --- | --- |
 | Červený | Nejméně jedna hlavní součást v hostiteli je mimo provoz. Když najedete myší, zobrazí se popis, který obsahuje seznam ovlivněných součástí. |
 | Oranžový | Nejméně jedna sekundární součást v hostiteli je mimo provoz. Když najedete myší, zobrazí se popis, který obsahuje seznam ovlivněných součástí. |
@@ -84,7 +84,7 @@ Pokud je úložiště záložního clusteru Azure Data Lake Storage (ADLS), je p
 
 ## <a name="troubleshoot-sluggish-node-performance"></a>Řešení potíží s výkonem uzlu pomalá
 
-V některých případech může Sluggishness vycházet z důvodu nedostatku místa na disku v clusteru. Prozkoumejte pomocí těchto kroků:
+V některých případech může ke zpomalení dojít kvůli nedostatku místa na disku v clusteru. Prozkoumejte pomocí těchto kroků:
 
 1. Pomocí [příkazu SSH](./hdinsight-hadoop-linux-use-ssh-unix.md) se připojte ke každému uzlu.
 
@@ -97,7 +97,7 @@ V některých případech může Sluggishness vycházet z důvodu nedostatku mí
 
 1. Zkontrolujte výstup a zkontrolujte přítomnost velkých souborů ve `mnt` složce nebo v jiných složkách. Obvykle složky a `usercache` `appcache` (mnt/Resource/Hadoop/nitě/Local/usercache/podregistr/APPCACHE/) obsahují velké soubory.
 
-1. Pokud jsou velké soubory, je možné, že aktuální úloha způsobuje nárůst souboru nebo neúspěšná předchozí úloha mohla přispět k tomuto problému. Chcete-li zjistit, zda je toto chování způsobeno aktuální úlohou, spusťte následující příkaz:
+1. Pokud jsou velké soubory, je možné, že aktuální úloha způsobuje nárůst souboru nebo neúspěšná předchozí úloha mohla přispět k tomuto problému. Pokud chcete zjistit, jestli toto chování způsobuje aktuální úloha, spusťte následující příkaz: .
 
     ```bash
     sudo du -h --max-depth=1 /mnt/resource/hadoop/yarn/local/usercache/hive/appcache/
@@ -109,7 +109,7 @@ V některých případech může Sluggishness vycházet z důvodu nedostatku mí
     yarn application -kill -applicationId <application_id>
     ```
 
-    Nahraďte `application_id` ID aplikace. Pokud neuvedete žádné konkrétní úlohy, pokračujte na další krok.
+    Nahraďte `application_id` ID aplikace. Pokud se neoznačí žádné konkrétní úlohy, přejděte k následujícímu kroku.
 
 1. Po dokončení příkazu, nebo pokud nejsou zadány žádné konkrétní úlohy, odstraňte velké soubory, které jste identifikovali, spuštěním příkazu, který se podobá následujícímu:
 

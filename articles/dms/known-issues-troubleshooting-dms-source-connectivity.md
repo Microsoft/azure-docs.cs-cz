@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 2db941edef93b1e836e82753a6d6016adb977e65
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322593"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>Řešení chyb DMS při připojování ke zdrojovým databázím
@@ -58,7 +58,7 @@ Potenciální problémy spojené s připojením ke zdrojové databázi AWS VP Po
 | Chyba         | Příčina a podrobnosti odstraňování potíží |
 | ------------- | ------------- |
 | **Chyba [101]**[08001] – připojení selhalo. Vypršel časový limit pro chybu [08001]. | K této chybě dojde, když se ovladač Postgres nemůže připojit ke zdrojovému serveru. Chcete-li vyřešit tento problém, přečtěte si dokumenty k řešení problémů, které jsou uvedeny v poznámce pod touto tabulkou, a akci opakujte. |
-| **Chyba: parametr wal_level má hodnotu {Value}. Pokud chcete povolení replikace, změňte prosím tuto hodnotu na logická.** | K této chybě dochází, pokud parametr wal_level má nesprávnou hodnotu. Chcete-li tento problém vyřešit, změňte skupinu RDS. logical_replication ve skupině parametr na 1 a pak instanci restartujte. Další informace najdete v tématu [požadavky na migraci do Azure PostgreSQL pomocí DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#prerequisites) nebo [POSTGRESQL na Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html). |
+| **Chyba: parametr wal_level má hodnotu {Value}. Pokud chcete povolení replikace, změňte prosím tuto hodnotu na logická.** | K této chybě dochází, pokud parametr wal_level má nesprávnou hodnotu. Chcete-li tento problém vyřešit, změňte rds.logical_replication ve skupině parametrů na 1 a pak instanci restartujte. Další informace najdete v tématu [požadavky na migraci do Azure PostgreSQL pomocí DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#prerequisites) nebo [POSTGRESQL na Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html). |
 
 > [!NOTE]
 > Další informace o řešení potíží souvisejících s připojením ke zdrojové databázi AWS VP PostgreSQL najdete v následujících zdrojích informací:

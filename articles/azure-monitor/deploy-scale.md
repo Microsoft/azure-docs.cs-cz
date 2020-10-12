@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: a69a58da85cf1ee03046626bb076c5cd44196279
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4ec7cd2b0f573a9a74f82546da2367edcf721539
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828706"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91441451"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Nasazení Azure Monitor ve velkém měřítku pomocí Azure Policy
 I když jsou některé funkce Azure Monitor nakonfigurované jednou nebo omezeným počtem časů, musí se pro každý prostředek, který chcete monitorovat, opakovat jiné. Tento článek popisuje metody použití Azure Policy k implementaci Azure Monitor škálování, aby se zajistilo, že monitorování je konzistentně a správně nakonfigurované pro všechny prostředky Azure.
@@ -41,7 +41,7 @@ Pokud chcete zobrazit integrované definice zásad související s monitorován�
 2. Vyberte **definice**.
 3. Pro **typ**vyberte možnost *předdefinované* a pro **kategorii**vyberte možnost *monitorování*.
 
-  ![Předdefinované definice zásad](media/deploy-scale/builtin-policies.png)
+  ![Snímek obrazovky se stránkou Azure Policy definice v Azure Portal zobrazující seznam definic zásad pro kategorii monitorování a integrovaný typ.](media/deploy-scale/builtin-policies.png)
 
 
 ## <a name="diagnostic-settings"></a>Nastavení diagnostiky
@@ -54,7 +54,7 @@ K dispozici jsou dvě předdefinované definice zásad pro každý typ prostřed
 
 Například následující obrázek znázorňuje integrované definice zásad nastavení diagnostiky pro Data Lake Analytics.
 
-  ![Předdefinované definice zásad](media/deploy-scale/builtin-diagnostic-settings.png)
+  ![Částečný snímek obrazovky ze stránky definice Azure Policy, kde se zobrazí dvě předdefinované definice zásad nastavení diagnostiky pro Data Lake Analytics.](media/deploy-scale/builtin-diagnostic-settings.png)
 
 ### <a name="custom-policy-definitions"></a>Definice vlastních zásad
 U typů prostředků, které nemají vestavěnou zásadu, je nutné vytvořit vlastní definici zásad. To můžete provést ručně v Azure Portal zkopírováním existující předdefinované zásady a úpravou pro svůj typ prostředku. To je efektivnější, i když vytvoříte zásadu programově pomocí skriptu v Galerie prostředí PowerShell.
@@ -109,7 +109,7 @@ Podrobnosti o vytvoření iniciativy najdete v tématu [Vytvoření a přiřazen
 ### <a name="assignment"></a>Přiřazení 
 Přiřaďte iniciativu ke skupině pro správu Azure, k předplatnému nebo ke skupině prostředků v závislosti na rozsahu vašich prostředků, které chcete monitorovat. [Skupina pro správu](../governance/management-groups/overview.md) je zvláště užitečná pro zásady oboru, zejména pokud má vaše organizace víc předplatných.
 
-![Přiřazení iniciativy](media/deploy-scale/initiative-assignment.png)
+![Snímek obrazovky s nastavením pro kartu základy v nastavení diagnostiky v části přiřazení iniciativy pro Log Analytics pracovní prostor v Azure Portal.](media/deploy-scale/initiative-assignment.png)
 
 Pomocí parametrů iniciativy můžete pro všechny definice zásad v iniciativě určit pracovní prostor nebo jiné podrobnosti. 
 
@@ -146,7 +146,7 @@ Podrobnosti o tomto procesu najdete v tématu [povolení Azure monitor pro virtu
 ### <a name="virtual-machine-scale-sets"></a>Škálovací sady virtuálních počítačů
 Pokud chcete použít Azure Policy k povolení monitorování pro virtuální počítače, přiAzure Monitor řaďte iniciativu služby **Virtual Machine Scale Sets** do skupiny pro správu Azure, předplatného nebo skupiny prostředků v závislosti na rozsahu vašich prostředků, které se mají monitorovat. [Skupina pro správu](../governance/management-groups/overview.md) je zvláště užitečná pro zásady oboru, zejména pokud má vaše organizace víc předplatných.
 
-![Přiřazení iniciativy](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
+![Snímek stránky přiřadit iniciativu v Azure Portal. Definice iniciativy je nastavená tak, aby umožňovala Azure Monitor pro Virtual Machine Scale Sets.](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
 Vyberte pracovní prostor, do kterého se budou data odesílat. Tento pracovní prostor musí mít nainstalované řešení *VMInsights* , jak je popsáno v tématu []() .
 

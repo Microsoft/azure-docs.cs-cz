@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: fe70c42387e9dedea8943b5dcce04a1f9ded5190
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87033277"
 ---
 # <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft. Storage. StorageAccountSelector – element uživatelského rozhraní
@@ -64,7 +64,7 @@ Ovládací prvek umožňuje uživateli vytvořit nový účet úložiště nebo 
 
 - Je-li tento parametr zadán, `defaultValue.name` je automaticky ověřen pro jedinečnost. Pokud název účtu úložiště není jedinečný, musí uživatel zadat jiný název nebo zvolit existující účet úložiště.
 - Výchozí hodnota pro `defaultValue.type` je **Premium_LRS**.
-- Libovolný typ, který není zadán v `constraints.allowedTypes` , je skrytý a je zobrazen libovolný typ, který není zadán v `constraints.excludedTypes` . `constraints.allowedTypes`a `constraints.excludedTypes` jsou zároveň volitelné, ale nelze je použít současně.
+- Libovolný typ, který není zadán v `constraints.allowedTypes` , je skrytý a je zobrazen libovolný typ, který není zadán v `constraints.excludedTypes` . `constraints.allowedTypes` a `constraints.excludedTypes` jsou zároveň volitelné, ale nelze je použít současně.
 - Pokud `options.hideExisting` má **hodnotu true**, uživatel nemůže zvolit existující účet úložiště. Výchozí hodnota je **false** (nepravda).
 
 ## <a name="next-steps"></a>Další kroky

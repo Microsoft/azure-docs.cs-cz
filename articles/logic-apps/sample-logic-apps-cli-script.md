@@ -8,10 +8,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 07/30/2020
 ms.openlocfilehash: ceb4a3356ef78d2129f76bd11f555a9ca5206d51
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87505832"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Ukázkový skript Azure CLI – vytvoření aplikace logiky
@@ -25,7 +25,7 @@ Tento skript vytvoří ukázkovou aplikaci logiky prostřednictvím [rozšířen
 
 * Účet Azure s aktivním předplatným. Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) nainstalované na místním počítači.
-* V počítači je nainstalovaná [Logic Apps rozšíření Azure CLI](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) . Chcete-li nainstalovat toto rozšíření, použijte tento příkaz:`az extension add --name logic`
+* V počítači je nainstalovaná [Logic Apps rozšíření Azure CLI](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) . Chcete-li nainstalovat toto rozšíření, použijte tento příkaz: `az extension add --name logic`
 * [Definice pracovního postupu](quickstart-logic-apps-azure-cli.md#workflow-definition) pro aplikaci logiky Tento soubor JSON musí splňovat [schéma jazyka definice pracovního postupu](logic-apps-workflow-definition-language.md).
 * Připojení rozhraní API k e-mailovému účtu prostřednictvím podporovaného [konektoru Logic Apps](../connectors/apis-list.md) ve stejné skupině prostředků jako vaše aplikace logiky. V tomto příkladu se používá konektor [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md) , ale můžete použít i jiné konektory, jako je [Outlook.com](../connectors/connectors-create-api-outlook.md).
 
