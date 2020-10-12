@@ -9,10 +9,10 @@ ms.date: 09/03/2020
 ms.author: ceespino
 ms.reviewer: daperlov
 ms.openlocfilehash: 9f23155df6d9e63448b35974c331bf78c3e5f90c
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426214"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Řešení potíží s Azure Data Factorym UX
@@ -119,5 +119,5 @@ Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 * [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
 * [Stack Overflow fórum pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)
-* [Videa k Azure](https://azure.microsoft.com/resources/videos/index/)
+* [Videa Azure](https://azure.microsoft.com/resources/videos/index/)
 * [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)

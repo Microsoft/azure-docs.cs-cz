@@ -15,10 +15,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 4252528020dde731dd7bf14ae8f7a03467ba953a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91298572"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Přesunutí virtuálního počítače s SQL Server do jiné oblasti v rámci Azure pomocí Azure Site Recovery
@@ -73,7 +73,7 @@ Připravte zdrojový virtuální počítač SQL Server i cílovou oblast pro př
 
 Následující kroky ukazují, jak použít Azure Site Recovery ke kopírování dat do cílové oblasti. Vytvořte Trezor Recovery Services v jiné oblasti, než je zdrojová oblast. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 1. V levém horním rohu navigačního podokna vyberte **vytvořit prostředek** . 
 1. Vyberte **& nástroje pro správu** a pak vyberte **Backup and Site Recovery**. 
 1. Na kartě **základy** v části **Project Details (podrobnosti projektu**) vytvořte novou skupinu prostředků v cílové oblasti nebo vyberte existující skupinu prostředků v cílové oblasti. 

@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: 52508a6820ce0cbbbe3a0341a99894f8b92b1645
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87831222"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Vysvětlení běžných chybových zpráv při správě virtuálních počítačů v Azure
@@ -79,7 +79,7 @@ V této části jsou uvedené běžné chybové zprávy, se kterými se můžete
 |  DiskBlobAlreadyInUseByAnotherDisk  |  Objekt BLOB {0} je již používán jiným diskem, který patří do virtuálního počítače {1} . Můžete kontrolovat metadata objektu BLOB pro informace o odkazech na disk.  |
 |  DiskBlobNotFound  |  Nepodařilo se najít objekt BLOB VHD s identifikátorem URI {0} pro disk {1} .  |
 |  DiskBlobNotFound  |  Nepovedlo se najít objekt BLOB VHD s identifikátorem URI {0} .  |
-|  DiskEncryptionKeySecretMissingTags  |  {0}tajný kód neobsahuje {1} značky. Aktualizujte prosím tajnou verzi, přidejte požadované značky a zkuste to znovu.  |
+|  DiskEncryptionKeySecretMissingTags  |  {0} tajný kód neobsahuje {1} značky. Aktualizujte prosím tajnou verzi, přidejte požadované značky a zkuste to znovu.  |
 |  DiskEncryptionKeySecretUnwrapFailed  |  Nepovedlo se rozbalení tajné {0} hodnoty pomocí klíče {1} .  |
 |  DiskImageNotReady  |  Bitová kopie disku {0} je ve {1} stavu. Zkuste to prosím znovu, až bude obrázek připravený.  |
 |  DiskPreparationError  |  Při přípravě disků virtuálního počítače došlo k jedné nebo více chybám. Podrobnosti najdete v tématu zobrazení instance disku.  |
@@ -91,7 +91,7 @@ V této části jsou uvedené běžné chybové zprávy, se kterými se můžete
 |  IncorrectImageBlobType  |  Objekty blob disku můžou být jenom typu objekt blob stránky. Objekt BLOB {0} pro disk {1} je typu objekt blob bloku.  |
 |  IncorrectImageBlobType  |  Objekty blob disku můžou být jenom typu objekt blob stránky. Objekt BLOB {0} je typu {1} .  |
 |  InternalOperationError  |  Nepovedlo se přeložit účet úložiště {0} . Ujistěte se prosím, že se vytvořila prostřednictvím poskytovatele prostředků úložiště ve stejném umístění jako výpočetní prostředek.  |
-|  InternalOperationError  |  {0}úkoly, které hledají cíl, se nezdařily.  |
+|  InternalOperationError  |  {0} úkoly, které hledají cíl, se nezdařily.  |
 |  InternalOperationError  |  Při ověřování profilu sítě virtuálního počítače došlo k chybě {0} .  |
 |  InvalidAccountType  |  AccountType {0} je neplatný.  |
 |  InvalidParameter  |  Hodnota parametru {0} je neplatná.  |
@@ -110,7 +110,7 @@ V této části jsou uvedené běžné chybové zprávy, se kterými se můžete
 |  InvalidParameter  |  Zadaný počet domén selhání {0} musí klesnout do rozsahu {1} {2} .  |
 |  InvalidParameter  |  Typ licence {0} je neplatný. Platné typy licencí jsou: Windows_Client nebo Windows_Server, rozlišuje velká a malá písmena.  |
 |  InvalidParameter  |  Název hostitele Linux nesmí být delší než {0} znaků nebo obsahovat následující znaky: {1} .  |
-|  InvalidParameter  |  Cílová cesta pro veřejné klíče SSH je aktuálně omezená na výchozí hodnotu {0} z důvodu známého problému v agentu zřizování Linux.  |
+|  InvalidParameter  |  Cílová cesta pro veřejné klíče SSH je aktuálně omezená na výchozí hodnotu {0}  z důvodu známého problému v agentu zřizování Linux.  |
 |  InvalidParameter  |  Disk na logické jednotce (LUN) {0} již existuje.  |
 |  InvalidParameter  |  Odběr {0} žádosti se musí shodovat s předplatným {1} obsaženým v ID spravovaného disku.  |
 |  InvalidParameter  |  Vlastní data v OSProfile musí být v kódování Base64 a maximální délka {0} znaků.  |
@@ -171,13 +171,13 @@ V této části jsou uvedené běžné chybové zprávy, se kterými se můžete
 |  OperationNotAllowed  |  Nepovedlo se změnit velikost virtuálního počítače, protože požadovaná velikost není {0} v clusteru, kde je aktuálně přidělená Skupina dostupnosti, dostupná. Dostupné velikosti jsou: {1} . Další informace o strategii změny velikosti virtuálních počítačů najdete na adrese https://aka.ms/azure-resizevm .  |
 |  OperationNotAllowed  |  Nepovedlo se změnit velikost virtuálního počítače, protože požadovaná velikost není {0} dostupná v clusteru, ve kterém je virtuální počítač aktuálně přidělený. Pokud chcete změnit velikost virtuálního počítače, abyste {1} ho nastali, zrušte jeho přidělení (Jedná se o operaci zastavení v Azure Portal) a zkuste operaci změny velikosti zopakovat. Další informace o strategii změny velikosti virtuálních počítačů najdete na adrese https://aka.ms/azure-resizevm .  |
 |  OSProvisioningClientError  |  Zřizování operačního systému pro virtuální počítač se nepovedlo {0} , protože hostovaný operační systém se v tuto chvíli zřizuje.  |
-|  OSProvisioningClientError  |  Zřizování operačního systému pro virtuální počítač {0} se nepovedlo. Podrobnosti o chybě: {1} Ujistěte se, že je bitová kopie správně připravená (zobecněná). <ul><li>Pokyny pro Windows:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  Nepovedlo se vygenerovat klíč hostitele SSH. Podrobnosti o chybě: {0} . Chcete-li vyřešit tento problém, ověřte, zda je nainstalován agent pro Linux. <ul><li>Pokyny najdete v těchto pokynech:https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
+|  OSProvisioningClientError  |  Zřizování operačního systému pro virtuální počítač {0} se nepovedlo. Podrobnosti o chybě: {1} Ujistěte se, že je bitová kopie správně připravená (zobecněná). <ul><li>Pokyny pro Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
+|  OSProvisioningClientError  |  Nepovedlo se vygenerovat klíč hostitele SSH. Podrobnosti o chybě: {0} . Chcete-li vyřešit tento problém, ověřte, zda je nainstalován agent pro Linux. <ul><li>Pokyny najdete v těchto pokynech: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
 |  OSProvisioningClientError  |  Uživatelské jméno zadané pro virtuální počítač je pro tuto distribuci systému Linux neplatné. Podrobnosti o chybě: {0} .  |
 |  OSProvisioningInternalError  |  Zřizování operačního systému se pro virtuální počítač nepovedlo {0} kvůli vnitřní chybě.  |
 |  OSProvisioningTimedOut  |  Zřizování operačního systému pro virtuální počítač se {0} nedokončilo ve vymezeném čase. Virtuální počítač se přesto může úspěšně dokončit. Zkontrolujte prosím stav zřizování později.  |
 |  OSProvisioningTimedOut  |  Zřizování operačního systému pro virtuální počítač se {0} nedokončilo ve vymezeném čase. Virtuální počítač se přesto může úspěšně dokončit. Zkontrolujte prosím stav zřizování později. Také se ujistěte, že je bitová kopie správně připravená (zobecněná).   <ul><li>Pokyny pro [Windows]( ../windows/upload-generalized-managed.md).</li><li> Pokyny pro [Linux](../linux/capture-image.md)</li></ul>  |
-|  OSProvisioningTimedOut  |  Zřizování operačního systému pro virtuální počítač se {0} nedokončilo ve vymezeném čase. Agent hosta virtuálního počítače se ale zjistil jako spuštěný. To naznačuje, že hostovaný operační systém nebyl správně připravený pro použití jako image virtuálního počítače (s CreateOption = FromImage). Tento problém vyřešíte tak, že virtuální pevný disk použijete s CreateOption = připojit nebo ho Připravte správně, aby bylo možné ho použít jako obrázek:   <ul><li>Pokyny pro Windows:https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Pokyny pro Linux:https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  Zřizování operačního systému pro virtuální počítač se {0} nedokončilo ve vymezeném čase. Agent hosta virtuálního počítače se ale zjistil jako spuštěný. To naznačuje, že hostovaný operační systém nebyl správně připravený pro použití jako image virtuálního počítače (s CreateOption = FromImage). Tento problém vyřešíte tak, že virtuální pevný disk použijete s CreateOption = připojit nebo ho Připravte správně, aby bylo možné ho použít jako obrázek:   <ul><li>Pokyny pro Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Pokyny pro Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  Požadovaná velikost virtuálního počítače není aktuálně k dispozici ve vybraném umístění.  |
 |  ResourceUpdateBlockedOnPlatformUpdate  |  Prostředek nejde v tuto chvíli aktualizovat z důvodu probíhající aktualizace platformy. Zkuste to později.  |
 |  StorageAccountLimitation  |  Účet úložiště nepodporuje {0} objekty blob stránky, které jsou potřeba k vytváření disků.  |

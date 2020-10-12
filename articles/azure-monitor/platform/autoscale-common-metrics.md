@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
 ms.openlocfilehash: e1a77fc1b40faca0a339c5e1aaceb71dec8de8bd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327034"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor automatické škálování běžných metrik
@@ -52,10 +52,10 @@ Můžete vytvořit výstrahu pro následující metriky:
 | \Processor(_Total)\% Processor Time |Procento |
 | \Processor (_Total) \% privilegovaný čas |Procento |
 | Čas uživatele \Processor (_Total) \% |Procento |
-| \Processor – informace o frekvenci \Processor (_Total) |Count |
-| \System\Processes |Count |
-| \Process (_Total) \Thread počet |Count |
-| \Process (_Total) \Handle počet |Count |
+| \Processor – informace o frekvenci \Processor (_Total) |Počet |
+| \System\Processes |Počet |
+| \Process (_Total) \Thread počet |Počet |
+| \Process (_Total) \Handle počet |Počet |
 | \Memory \% potvrzené používané bajty |Procento |
 | \Memory\Available Bytes |Bajty |
 | \Memory\Committed bajty |Bajty |
@@ -71,11 +71,11 @@ Můžete vytvořit výstrahu pro následující metriky:
 | \PhysicalDisk (_Total) \ bajty/s |BytesPerSecond |
 | \PhysicalDisk (_Total) \ přečtené bajty/s |BytesPerSecond |
 | \PhysicalDisk (_Total) \ zapsané bajty/s |BytesPerSecond |
-| \PhysicalDisk (_Total) \ prům délka fronty disku |Count |
-| \PhysicalDisk (_Total) \ prům délka fronty čtení disku |Count |
-| \PhysicalDisk (_Total) \ prům délka fronty zápisu na disk |Count |
+| \PhysicalDisk (_Total) \ prům délka fronty disku |Počet |
+| \PhysicalDisk (_Total) \ prům délka fronty čtení disku |Počet |
+| \PhysicalDisk (_Total) \ prům délka fronty zápisu na disk |Počet |
 | \ Logický disk (_Total) \% volného místa |Procento |
-| \ Logický disk (_Total) \ volné megabajtů |Count |
+| \ Logický disk (_Total) \ volné megabajtů |Počet |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Virtuální počítače s metrikami hostovaného operačního systému Linux
 Když vytvoříte virtuální počítač v Azure, diagnostika je ve výchozím nastavení povolená pomocí diagnostického rozšíření.
@@ -119,15 +119,15 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageReadTime |Sekundy |
 | \PhysicalDisk\AverageWriteTime |Sekundy |
 | \PhysicalDisk\AverageTransferTime |Sekundy |
-| \PhysicalDisk\AverageDiskQueueLength |Count |
+| \PhysicalDisk\AverageDiskQueueLength |Počet |
 | \NetworkInterface\BytesTransmitted |Bajty |
 | \NetworkInterface\BytesReceived |Bajty |
-| \NetworkInterface\PacketsTransmitted |Count |
-| \NetworkInterface\PacketsReceived |Count |
+| \NetworkInterface\PacketsTransmitted |Počet |
+| \NetworkInterface\PacketsReceived |Počet |
 | \NetworkInterface\BytesTotal |Bajty |
-| \NetworkInterface\TotalRxErrors |Count |
-| \NetworkInterface\TotalTxErrors |Count |
-| \NetworkInterface\TotalCollisions |Count |
+| \NetworkInterface\TotalRxErrors |Počet |
+| \NetworkInterface\TotalTxErrors |Počet |
+| \NetworkInterface\TotalCollisions |Počet |
 
 ## <a name="commonly-used-app-service-server-farm-metrics"></a>Běžně používaná metrika App Service (serverová farma)
 Automatické škálování můžete provádět i na základě běžných metrik webového serveru, jako je délka fronty http. Jeho název metriky je **HttpQueueLength**.  V následující části jsou uvedeny dostupné metriky serverové farmy (App Service).
@@ -145,8 +145,8 @@ Pomocí těchto metrik můžete výstrahy zapnout nebo škálovat.
 | --- | --- |
 | CpuPercentage |Procento |
 | MemoryPercentage |Procento |
-| DiskQueueLength |Count |
-| HttpQueueLength |Count |
+| DiskQueueLength |Počet |
+| HttpQueueLength |Počet |
 | BytesReceived |Bajty |
 | BytesSent |Bajty |
 

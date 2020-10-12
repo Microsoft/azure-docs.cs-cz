@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
 ms.openlocfilehash: 78b9d3f30ebc8f74433f04c4474121682c4a3f36
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542015"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Přírůstkové načtení dat z Azure SQL Database do Azure Blob Storage pomocí informací o sledování změn pomocí Azure Portal
@@ -69,7 +69,7 @@ V tomto kurzu vytvoříte dva kanály, které provádějí následující dvě o
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Azure SQL Database**. Tuto databázi použijete jako **zdrojové** úložiště dat. Pokud nemáte databázi v Azure SQL Database, přečtěte si článek [Vytvoření databáze v článku Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření.
 * **Účet Azure Storage**. Úložiště objektů blob použijete jako úložiště dat **jímky**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) , kde najdete kroky, jak ho vytvořit. Vytvořte kontejner s názvem **adftutorial**. 
 
@@ -306,7 +306,7 @@ V tomto kroku vytvoříte kanál s aktivitou kopírování, která zkopíruje v�
     ![Snímek obrazovky ukazuje datovou továrnu s tlačítkem publikovat vše s názvem.](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
 8. Počkejte, dokud se nezobrazí zpráva **Publikování proběhlo úspěšně**.
 
-    ![Publikování proběhlo úspěšně](./media/tutorial-incremental-copy-change-tracking-feature-portal/publishing-succeeded.png)
+    ![Úspěšné publikování](./media/tutorial-incremental-copy-change-tracking-feature-portal/publishing-succeeded.png)
 9. Oznámení můžete zobrazit také kliknutím na tlačítko **Zobrazit oznámení** na levé straně. Pokud chcete okno oznámení zavřít, klikněte na **X**.
 
     ![Zobrazit oznámení](./media/tutorial-incremental-copy-change-tracking-feature-portal/show-notifications.png)

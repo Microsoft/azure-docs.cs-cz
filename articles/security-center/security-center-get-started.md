@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b583e3d86ba193a92080f2da9cc0b16d07c5a993
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 46bb3b1e450312a2c02fec3f98e2b3d7381b53d2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91447163"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946011"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>Rychlý Start: nastavení Azure Security Center
 
@@ -27,13 +27,13 @@ Azure Security Center zajišťuje jednotnou správu zabezpečení a ochranu pře
 
 V tomto článku provedete upgrade na Azure Defender za účelem zvýšení zabezpečení a nainstalujete na vaše počítače agenta Log Analytics, abyste mohli monitorovat ohrožení zabezpečení a hrozby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 Pokud chcete povolit Azure Defender v rámci předplatného, musíte mít přiřazenou roli Vlastník předplatného, přispěvatele předplatného nebo správce zabezpečení.
 
 
-## <a name="open-security-center-for-the-first-time"></a>První otevření Security Center
+## <a name="enable-security-center-on-your-azure-subscription"></a>Povolení Security Center v předplatném Azure
 
 1. Přihlaste se k webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 
@@ -54,6 +54,8 @@ Během několika minut od prvního spuštění služby Security Center se může
 
 Abyste mohli plně využít výhod Security Center, musíte provést následující postup, abyste mohli Azure Defender povolit a nainstalovat agenta Log Analytics.
 
+> [!TIP]
+> Pokud chcete povolit Security Center u všech předplatných v rámci skupiny pro správu, přečtěte si téma [povolení Security Center ve více předplatných Azure](onboard-management-group.md).
 
 ## <a name="enable-azure-defender"></a>Povolit Azure Defender
 

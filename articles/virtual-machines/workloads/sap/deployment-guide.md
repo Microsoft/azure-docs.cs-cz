@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
 ms.openlocfilehash: 4494af89ac35a391f7dc6097b14d135a911d99dd
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91359609"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
@@ -506,7 +506,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
    * **Uživatelské jméno** a **heslo správce**: uživatelské jméno a heslo.
      Vytvoří se nový uživatel, který se přihlásí k virtuálnímu počítači.
    * **Nová nebo existující podsíť**: Určuje, jestli se vytvoří nová virtuální síť a podsíť, nebo se použije existující podsíť. Pokud už máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: &lt; ID předplatného/subscriptions/>/ResourceGroups/název &lt; skupiny prostředků>/Providers/Microsoft.Network/virtualnetworks/název &lt; virtuální sítě>/subnets/ &lt; název podsítě>
+   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: &lt; ID předplatného/subscriptions/>/resourceGroups/název &lt; skupiny prostředků>/Providers/Microsoft.Network/virtualNetworks/název &lt; virtuální sítě>/subnets/ &lt; název podsítě>
 
 1. Podmínky **a ujednání**:  
     Přečtěte si právní podmínky a přijměte je.
@@ -646,7 +646,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
 
      Vytvoří se nový uživatel, který se přihlásí k virtuálnímu počítači.
    * **Nová nebo existující podsíť**: Určuje, jestli se vytvoří nová virtuální síť a podsíť, nebo se použije existující podsíť. Pokud už máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: &lt; ID předplatného/subscriptions/>/ResourceGroups/název &lt; skupiny prostředků>/Providers/Microsoft.Network/virtualnetworks/název &lt; virtuální sítě>/subnets/ &lt; název podsítě>
+   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: &lt; ID předplatného/subscriptions/>/resourceGroups/název &lt; skupiny prostředků>/Providers/Microsoft.Network/virtualNetworks/název &lt; virtuální sítě>/subnets/ &lt; název podsítě>
 
 1. Podmínky **a ujednání**:  
     Přečtěte si právní podmínky a přijměte je.
@@ -734,7 +734,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
    * **Identifikátor URI VHD disku s operačním systémem** (jenom šablona nespravovaného disku): identifikátor URI privátního disku s operačním systémem, například https://\ &lt; účet \>. blob.Core.Windows.NET/VHDs/OSDisk.VHD.
    * **ID spravovaného disku disku s operačním systémem** (jenom šablona spravovaného disku): ID disku operačního systému spravovaného disku,/Subscriptions/92d102f7-81a5-4DF7-9877-54987ba97dd9/resourceGroups/Group/Providers/Microsoft.COMPUTE/disks/Win
    * **Nová nebo existující podsíť**: Určuje, jestli se vytvoří nová virtuální síť a podsíť, nebo se použije existující podsíť. Pokud už máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: &lt; ID předplatného/subscriptions/>/ResourceGroups/název &lt; skupiny prostředků>/Providers/Microsoft.Network/virtualnetworks/název &lt; virtuální sítě>/subnets/ &lt; název podsítě>
+   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: &lt; ID předplatného/subscriptions/>/resourceGroups/název &lt; skupiny prostředků>/Providers/Microsoft.Network/virtualNetworks/název &lt; virtuální sítě>/subnets/ &lt; název podsítě>
 
 1. Podmínky **a ujednání**:  
     Přečtěte si právní podmínky a přijměte je.
@@ -946,7 +946,7 @@ Postup instalace rozšíření Azure pro SAP pomocí prostředí PowerShell:
 Po zadání dat účtu nasadí skript požadovaná rozšíření a povolí požadované funkce. Může to trvat několik minut.
 Další informace o `Set-AzVMAEMExtension` naleznete v tématu [set-AzVMAEMExtension][msdn-set-Azvmaemextension].
 
-![Úspěšné spuštění rutiny Azure specifické pro SAP – AzVMAEMExtension][deployment-guide-figure-900]
+![Úspěšné spuštění rutiny Azure specifické pro SAP Set-AzVMAEMExtension][deployment-guide-figure-900]
 
 `Set-AzVMAEMExtension`Konfigurace provádí všechny kroky pro konfiguraci shromažďování dat hostitele pro SAP.
 
@@ -1057,7 +1057,7 @@ Nové rozšíření VM pro SAP používá pro přístup k datům monitorování 
    az login
    ```
 
-1. Postupujte podle kroků v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí Azure CLI][qs-configure-cli-windows-vm] a povolte pro virtuální počítač spravovanou identitu přiřazenou systémem. Spravované identity přiřazené uživatelem nejsou podporovány rozšířením virtuálního počítače pro SAP. Můžete ale povolit i identitu přiřazenou systémem i uživatele.
+1. Postupujte podle kroků v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí Azure CLI][qs-configure-cli-windows-vm] a povolte System-Assigned spravované identitě pro virtuální počítač. Rozšíření virtuálních počítačů pro SAP nepodporuje User-Assigned spravované identity. Můžete ale povolit i identitu přiřazenou systémem i uživatele.
 
    Příklad:
    ```azurecli
@@ -1370,11 +1370,11 @@ Složka \\ var \\ lib waagent neobsahuje podadresář \\ \\ pro rozšíření Az
 
 Rozšíření není nainstalované. Určete, zda se jedná o problém s proxy serverem (jak je popsáno výše). Možná budete muset restartovat počítač nebo znovu spustit `Set-AzVMAEMExtension` konfigurační skript.
 
-##### <a name="the-execution-of-set-azvmaemextension-and-test-azvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Spuštění Set-AzVMAEMExtension a test-AzVMAEMExtension zobrazit varovné zprávy s oznámením, že standardní Managed Disks nejsou podporovány.
+##### <a name="the-execution-of-set-azvmaemextension-and-test-azvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Spuštění Set-AzVMAEMExtension a Test-AzVMAEMExtension zobrazit varovné zprávy s oznámením, že standardní Managed Disks nejsou podporovány.
 
 ###### <a name="issue"></a>Problém
 
-Při spouštění set-AzVMAEMExtension nebo AzVMAEMExtension zpráv, jako jsou tyto zprávy, se zobrazí následující:
+Při spouštění Set-AzVMAEMExtension nebo Test-AzVMAEMExtension se zobrazí následující zprávy:
 
 <pre><code>
 WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
@@ -1495,7 +1495,7 @@ Postupujte podle kroků v části [Konfigurace rozšíření Azure pro SAP][depl
 
 Pokud chyby nezmizí, obraťte se na [podporu][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kontaktujte podporu
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kontaktování podpory
 
 Neočekávaná chyba nebo neexistuje žádné známé řešení. Shromážděte soubor AzureEnhancedMonitoring_service. log umístěný ve složce C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) nebo/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) a požádejte o další pomoc podporu SAP.
 

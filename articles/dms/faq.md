@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: ad49db3eb61b77805b0c7a3e1e9583fb22bd4373
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8f570c2cd5f3939bab0df0c4fefe1becc3c81da
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291966"
+ms.locfileid: "91893437"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Nejčastější dotazy týkající se použití Azure Database Migration Service
 
@@ -59,7 +59,7 @@ K zajištění plynulého chodu Azure Database Migration Service při prováděn
 Mezi všechny podporované scénáře migrace Azure Database Migration Service společné předpoklady, které zahrnují nutnost:
 
 * Vytvořte Microsoft Azure Virtual Network pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který umožňuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-* Zajistěte, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala následující komunikační porty 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+* Zajistěte, aby pravidla skupiny zabezpečení sítě virtuálních sítí neblokovala následující komunikační porty 443, 53, 5671-5672, 9350-9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 * Pokud používáte zařízení brány firewall před zdrojovými databázemi, budete možná muset přidat pravidla firewallu, která Azure Database Migration Service umožní přístup ke zdrojovým databázím pro migraci.
 
 Seznam všech požadavků požadovaných k konkurenci konkrétních scénářů migrace pomocí Azure Database Migration Service najdete v souvisejících kurzech v [dokumentaci](https://docs.microsoft.com/azure/dms/dms-overview) k Azure Database Migration Service na docs.Microsoft.com.

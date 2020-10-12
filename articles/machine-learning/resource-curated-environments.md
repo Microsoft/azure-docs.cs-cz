@@ -1,5 +1,5 @@
 ---
-title: Poduspořádaná prostředí
+title: Kurátorovaná prostředí
 titleSuffix: Azure Machine Learning
 description: Kolekce podmnožinových prostředí dostupných v Azure Machine Learning
 services: machine-learning
@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: reference
 ms.date: 09/03/2020
 ms.openlocfilehash: 4ae96976f81aab9a0949594551c82d3a3fec4f0a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662087"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning v nich uspořádaná prostředí
@@ -262,7 +262,7 @@ V tomto článku jsou uvedena seznamovaná prostředí v Azure Machine Learning 
 * jupyterlab
 * lz4
 * mpi4py
-* poznámkového bloku
+* poznámkový blok
 * pyarrow
 
 ## <a name="azureml-dask-gpu"></a>AzureML-dAsK – GPU
@@ -290,7 +290,7 @@ V tomto článku jsou uvedena seznamovaná prostředí v Azure Machine Learning 
 * jupyterlab
 * lz4
 * mpi4py
-* poznámkového bloku
+* poznámkový blok
 * pyarrow
 
 ## <a name="azureml-hyperdrive-forecastdnn"></a>AzureML-Hyperdrive-ForecastDNN
@@ -311,7 +311,7 @@ V tomto článku jsou uvedena seznamovaná prostředí v Azure Machine Learning 
 * azureml-train-automl-runtime
 * AzureML-contrib-automl-DNN-prognózování
 
-## <a name="azureml-minimal"></a>AzureML-minimální
+## <a name="azureml-minimal"></a>AzureML-Minimal
 
 **Kanály balíčků:**
 
@@ -937,7 +937,7 @@ V tomto článku jsou uvedena seznamovaná prostředí v Azure Machine Learning 
 * tensorflow – GPU
 * horovod
 
-## <a name="azureml-tutorial"></a>AzureML – kurz
+## <a name="azureml-tutorial"></a>AzureML-Tutorial
 
 **Kanály balíčků:**
 

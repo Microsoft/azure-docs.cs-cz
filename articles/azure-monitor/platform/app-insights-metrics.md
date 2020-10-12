@@ -8,10 +8,10 @@ ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
 ms.openlocfilehash: 9ea98df4b6cd8572412e7082b451feac3736919c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327068"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights metriky založené na protokolu
@@ -79,7 +79,7 @@ Metrika *testů dostupnosti* odráží počet webových testů, které jsou spou
 
 |Jednotka měření|Podporované agregace|Podporované dimenze|
 |---|---|---|---|---|---|
-|Count|Count|Umístění pro spuštění, název testu, výsledek testu|
+|Počet|Počet|Umístění pro spuštění, název testu, výsledek testu|
 
 ```Kusto
 availabilityResults
@@ -184,7 +184,7 @@ Tato metrika odráží počet vyvolaných výjimek z kódu aplikace spuštěnéh
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
-|Count|Count|Žádné|Verze založená na protokolu používá agregaci **Sum** .|
+|Počet|Počet|Žádné|Verze založená na protokolu používá agregaci **Sum** .|
 
 ```Kusto
 exceptions
@@ -199,7 +199,7 @@ Počet neúspěšných volání závislostí
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
-|Count|Count|Žádné|Verze založená na protokolu používá agregaci **Sum** .|
+|Počet|Počet|Žádné|Verze založená na protokolu používá agregaci **Sum** .|
 
 ```Kusto
 dependencies
@@ -214,7 +214,7 @@ Pokaždé, když zaznamenáte výjimku pro Application Insights, dojde k volán�
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
-|Count|Count|Název cloudové role, instance cloudové role, typ zařízení|Verze založená na protokolu používá agregaci **Sum** .|
+|Počet|Počet|Název cloudové role, instance cloudové role, typ zařízení|Verze založená na protokolu používá agregaci **Sum** .|
 
 ```Kusto
 exceptions
@@ -224,11 +224,11 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>Neúspěšné žádosti (požadavky/neúspěšné)
 
-Počet sledovaných požadavků serveru, které byly označeny jako *neúspěšné*. Ve výchozím nastavení sada Application Insights SDK automaticky označí každou žádost serveru, která vrátila kód odpovědi HTTP 5xx nebo 4xx jako neúspěšný požadavek. Tuto logiku můžete přizpůsobit úpravou vlastnosti *úspěch* položky telemetrie žádosti ve [vlastním inicializátoru telemetrie](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
+Počet sledovaných požadavků serveru, které byly označeny jako *neúspěšné*. Ve výchozím nastavení sada Application Insights SDK automaticky označí každou žádost serveru, která vrátila kód odpovědi HTTP 5xx nebo 4xx jako neúspěšný požadavek. Tuto logiku můžete přizpůsobit úpravou vlastnosti  *úspěch* položky telemetrie žádosti ve [vlastním inicializátoru telemetrie](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
-|Count|Count|Instance cloudové role, název cloudové role, skutečný nebo syntetický provoz, požadavky na výkon, kód odpovědi|Verze založená na protokolu používá agregaci **Sum** .|
+|Počet|Počet|Instance cloudové role, název cloudové role, skutečný nebo syntetický provoz, požadavky na výkon, kód odpovědi|Verze založená na protokolu používá agregaci **Sum** .|
 
 ```Kusto
 requests
@@ -243,7 +243,7 @@ Tato metrika znázorňuje počet výjimek serveru.
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|Poznámky|
 |---|---|---|---|
-|Count|Count|Název cloudové role, instance cloudové role|Verze založená na protokolu používá agregaci **Sum** .|
+|Počet|Počet|Název cloudové role, instance cloudové role|Verze založená na protokolu používá agregaci **Sum** .|
 
 ```Kusto
 exceptions
@@ -361,7 +361,7 @@ Spotřeba procesoru u *všech* procesů spuštěných v instanci monitorovaného
 |Procento|Average, min, Max|Instance cloudové role
 
 >[!NOTE]
-> Pro aplikace hostované v Azure App Services není dostupná časová metrika procesoru. Pomocí metriky [procesoru procesu](#process-cpu-performancecountersprocesscpupercentage) můžete sledovat využití procesoru webových aplikací hostovaných ve službě App Services.
+> Pro aplikace hostované v Azure App Services není dostupná časová metrika procesoru. Pomocí metriky  [procesoru procesu](#process-cpu-performancecountersprocesscpupercentage) můžete sledovat využití procesoru webových aplikací hostovaných ve službě App Services.
 
 ```Kusto
 performanceCounters

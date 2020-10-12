@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
 ms.openlocfilehash: d32c4da4604307bca406f7f5d5e5a94b69efe7ac
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541811"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Přírůstkové načtení dat z více tabulek v SQL Server do Azure SQL Database pomocí prostředí PowerShell
@@ -67,7 +67,7 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **SQL Server**. V tomto kurzu použijete databázi SQL Server jako zdrojové úložiště dat. 
 * **Azure SQL Database**. Jako úložiště dat jímky použijete databázi v Azure SQL Database. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze v tématu Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření. 
@@ -812,7 +812,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
 
 ## <a name="monitor-the-pipeline"></a>Monitorování kanálu
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Vyberte **Všechny služby**, spusťte hledání pomocí klíčového slova *Datové továrny* a vyberte **Datové továrny**. 
 

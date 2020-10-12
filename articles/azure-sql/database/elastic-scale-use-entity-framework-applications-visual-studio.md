@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
 ms.openlocfilehash: 8eafd99f07c64c20565a954216341f3dea9541b0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442656"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Elastic Database klientské knihovny s Entity Framework
@@ -271,7 +271,7 @@ Jedna z nich mohla použít verzi konstruktoru zděděnou ze základní třídy.
 Přístup popsaný v tomto dokumentu má několik omezení:
 
 * Aplikace EF, které používají **LocalDB** , musí nejdřív před použitím klientské knihovny pro elastickou databázi migrovat do běžné databáze SQL Server. Škálování aplikací prostřednictvím horizontálního dělení s elastickým škálováním s **LocalDB**není možné. Všimněte si, že vývoj může stále používat **LocalDB**.
-* Změny v aplikaci, které zahrnují změny schématu databáze, musí projít migracemi EF na všech horizontálních oddílů. Vzorový kód tohoto dokumentu neukazuje, jak to provést. Zvažte použití parametru Update-Database s parametrem ConnectionString k iterování všech horizontálních oddílů; nebo extrahujte skript T-SQL pro nevyřízenou migraci pomocí příkazu Update-Database s možností-Script a použijte skript T-SQL pro horizontálních oddílů.  
+* Změny v aplikaci, které zahrnují změny schématu databáze, musí projít migracemi EF na všech horizontálních oddílů. Vzorový kód tohoto dokumentu neukazuje, jak to provést. Zvažte použití Update-Database s parametrem ConnectionString k iterování všech horizontálních oddílů; nebo extrahujte skript T-SQL pro nevyřízenou migraci pomocí Update-Database s možností-Script a použijte skript T-SQL pro vaši horizontálních oddílů.  
 * S ohledem na požadavek se předpokládá, že veškeré jeho zpracování databáze je obsaženo v rámci jednoho horizontálních oddílů, jak je identifikované pomocí klíče horizontálního dělení, který poskytuje požadavek. Tento předpoklad však vždy nedrží hodnotu true. Například, pokud není možné vytvořit horizontálního dělení klíč k dispozici. Pro tuto adresu Klientská knihovna poskytuje třídu **MultiShardQuery** , která implementuje abstrakci připojení pro dotazování přes několik horizontálních oddílů. Naučíte se používat **MultiShardQuery** v kombinaci s EF je nad rámec tohoto dokumentu.
 
 ## <a name="conclusion"></a>Závěr

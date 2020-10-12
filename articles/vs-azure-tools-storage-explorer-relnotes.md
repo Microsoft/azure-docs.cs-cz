@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87828774"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Průzkumníka služby Microsoft Azure Storage
@@ -168,7 +168,7 @@ Pokud si chcete stáhnout předchozí verze Průzkumník služby Storage, může
   * Automaticky aktualizovat #1526
   * Povolit AzCopy
   * AzCopy (SAS): Pokud existují další nastavení, která byste chtěli přidat, [otevřete prosím problém na GitHubu](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=) s popisem nastavení, které chcete zobrazit.
-* Průzkumník služby Storage teď podporuje Managed Disks. Další možnosti:
+* Průzkumník služby Storage teď podporuje Managed Disks. Můžete:
   * Nahrání místního virtuálního pevného disku na nový disk
   * Stažení disku
   * Kopírování a vkládání disků napříč skupinami prostředků a oblastmi
@@ -242,7 +242,7 @@ Nahrávání, stahování a kopírování disků v různých oblastech využív�
     * Doba trvání SAS AzCopy
 
     Pokud jsou k dispozici další nastavení, která byste chtěli přidat, [otevřete prosím problém na GitHubu s popisem nastavení, které chcete zobrazit](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=).
-* Průzkumník služby Storage teď podporuje Managed Disks. Další možnosti:
+* Průzkumník služby Storage teď podporuje Managed Disks. Můžete:
     * Nahrání místního virtuálního pevného disku na nový disk
     * Stažení disku
     * Kopírování a vkládání disků napříč skupinami prostředků a oblastmi
@@ -810,7 +810,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
    * Přizpůsobte zobrazovaný název prostředku, který chcete připojit. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Připojte se k několika místním emulátorům pomocí různých portů. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Přidejte připojené prostředky k rychlému přístupu. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Další možnosti:
+* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Můžete:
    * Zásadu obnovitelného odstranění můžete nakonfigurovat kliknutím pravým tlačítkem myši na uzel kontejnery objektů BLOB pro váš účet úložiště.
    * V editoru objektů BLOB vyberte aktivní a odstraněné objekty BLOB a v rozevíracím seznamu vedle navigačního panelu zobrazte měkké odstraněné objekty blob.
    * Obnovit obnovitelné odstraněné objekty blob.
@@ -866,7 +866,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
    * Přizpůsobte zobrazovaný název prostředku, který chcete připojit. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Připojte se k několika místním emulátorům pomocí různých portů. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Přidejte připojené prostředky k rychlému přístupu. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Další možnosti:
+* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Můžete:
    * Zásadu obnovitelného odstranění můžete nakonfigurovat kliknutím pravým tlačítkem myši na uzel kontejnery objektů BLOB pro váš účet úložiště.
    * V editoru objektů BLOB vyberte aktivní a odstraněné objekty BLOB a v rozevíracím seznamu vedle navigačního panelu zobrazte měkké odstraněné objekty blob.
    * Obnovit obnovitelné odstraněné objekty blob.
@@ -921,7 +921,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
    * Přizpůsobte zobrazovaný název prostředku, který chcete připojit. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Připojte se k několika místním emulátorům pomocí různých portů. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Přidejte připojené prostředky k rychlému přístupu. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Další možnosti:
+* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Můžete:
    * Zásadu obnovitelného odstranění můžete nakonfigurovat kliknutím pravým tlačítkem myši na uzel kontejnery objektů BLOB pro váš účet úložiště.
    * V editoru objektů BLOB vyberte aktivní a odstraněné objekty BLOB a v rozevíracím seznamu vedle navigačního panelu zobrazte měkké odstraněné objekty blob.
    * Obnovit obnovitelné odstraněné objekty blob.
@@ -981,7 +981,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
    * Přizpůsobte zobrazovaný název prostředku, který chcete připojit. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Připojte se k několika místním emulátorům pomocí různých portů. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Přidejte připojené prostředky k rychlému přístupu. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Další možnosti:
+* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Můžete:
    * Zásadu obnovitelného odstranění můžete nakonfigurovat kliknutím pravým tlačítkem myši na uzel kontejnery objektů BLOB pro váš účet úložiště.
    * V editoru objektů BLOB vyberte aktivní a odstraněné objekty BLOB a v rozevíracím seznamu vedle navigačního panelu zobrazte měkké odstraněné objekty blob.
    * Obnovit obnovitelné odstraněné objekty blob.
@@ -1031,7 +1031,7 @@ Nakonec bude podpora pro použití AzCopy se sdílenými složkami přizvána v 
 ### <a name="new"></a>Nová
 * Přístup k kontejnerům $web používaných statickými weby se teď podporuje. Díky tomu můžete snadno nahrávat a spravovat soubory a složky používané vaším webem. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
 * Změnila se uspořádání panelu aplikace v macOS. Změny zahrnují nabídku soubor, několik klávesových zkratek a několik nových příkazů v nabídce aplikace. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
-* Koncový bod autority pro přihlášení ke službě Azure US státní správu byl změněn nahttps://login.microsoftonline.us/
+* Koncový bod autority pro přihlášení ke službě Azure US státní správu byl změněn na https://login.microsoftonline.us/
 * Usnadnění: když je čtečka obrazovky aktivní, navigace pomocí klávesnice teď funguje s tabulkami použitými pro zobrazení položek na pravé straně. Pomocí kláves se šipkami můžete procházet řádky a sloupce, zadat pro vyvolání výchozích akcí, klávesu kontextové nabídky pro otevření kontextové nabídky pro položku a přesunutím nebo ovládáním pro výběr. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
 
 ### <a name="fixes"></a>Opravy

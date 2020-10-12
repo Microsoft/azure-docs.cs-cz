@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: a47f720344a16d0f77559d6aabfb2b0245e62976
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426329"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Migrace z Orchestratoru na Azure Automation (beta verze)
@@ -73,7 +73,7 @@ ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <s
 * Modul – seznam modulů integrace, které obsahují aktivity v sadách Runbook, oddělený čárkami.
 * OutputFolder – cesta ke složce pro vytvoření převedených grafických runbooků.
 
-Následující příklad příkazu převede Runbooky v souboru exportu s názvem **MyRunbooks. ois_export**.  Tyto Runbooky používají integrační balíčky služby Active Directory a Data Protection Manager.
+Následující příklad příkazu převede Runbooky v exportním souboru s názvem **MyRunbooks.ois_export**.  Tyto Runbooky používají integrační balíčky služby Active Directory a Data Protection Manager.
 
 ```powershell
 ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"

@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f6f87ed4ba74c3f7750e56d4bb8473cf4b1a4341
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 72b85388bf80a6ed2b9617b606940c243c5711f1
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575380"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945528"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>Kurz: připojení aplikace IoT technologie Plug and Play více komponent zařízení se systémem Windows k IoT Hub (C#)
 
@@ -33,7 +33,7 @@ Pro dokončení tohoto kurzu ve Windows nainstalujte do svého místního prost�
 
 Pokud jste dokončili [rychlý Start: Připojte ukázkovou aplikaci IoT technologie Plug and Play zařízení běžící v systému Windows k IoT Hub (C#)](quickstart-connect-device-csharp.md), již jste naklonoval úložiště.
 
-Naklonujte ukázky ze sady Microsoft Azure IoT SDK pro úložiště GitHub .NET. Otevřete příkazový řádek ve složce podle vašeho výběru. Spuštěním následujícího příkazu naklonujte [Microsoft Azure ukázky IoT pro](https://github.com/Azure-Samples/azure-iot-samples-csharp) úložiště GitHubu .NET:
+Naklonujte ukázky ze vzorků Azure IoT pro úložiště GitHub v jazyce C#. Otevřete příkazový řádek ve složce podle vašeho výběru. Spuštěním následujícího příkazu naklonujte [Microsoft Azure ukázky IoT pro](https://github.com/Azure-Samples/azure-iot-samples-csharp) úložiště GitHubu .NET:
 
 ```cmd
 git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
@@ -47,7 +47,7 @@ V tomto rychlém startu použijete vzorový herní zařízení, které je napsan
 
 1. V aplikaci Visual Studio přejděte do **projektu > vlastnosti TemperatureController > ladit**. Pak do projektu přidejte následující proměnné prostředí:
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |

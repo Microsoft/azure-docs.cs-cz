@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Technical Support'
 ms.openlocfilehash: 4a13d1ff030a63d3ccf33297f215909f5920e16a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327680"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Datové proudy zařízení IoT Hub (Preview)
@@ -172,7 +172,7 @@ Tady jsou ukázky ozvěny:
 
 * [Služba a program služby C#](quickstart-device-streams-echo-csharp.md)
 
-* [Program službyNode.js](quickstart-device-streams-echo-nodejs.md)
+* [ Program službyNode.js](quickstart-device-streams-echo-nodejs.md)
 
 * [Program zařízení v jazyce C](quickstart-device-streams-echo-c.md)
 
@@ -208,7 +208,7 @@ Použijte odkazy níže, kde najdete pokyny ke spuštění místních proxy prog
 
 * [Služba a program služby C#](quickstart-device-streams-proxy-csharp.md)
 
-* [Program službyNode.js](quickstart-device-streams-proxy-nodejs.md)
+* [ Program službyNode.js](quickstart-device-streams-proxy-nodejs.md)
 
 * [Program zařízení v jazyce C](quickstart-device-streams-proxy-c.md)
 

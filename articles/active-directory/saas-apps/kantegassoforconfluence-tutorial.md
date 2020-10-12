@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: bef0b2d0387b82140e9874f837d9464408d78090
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05fd1fc23afc72174f5454c805dd59a6eb2e9714
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546960"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945977"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>Kurz: Azure Active Directory Integration s Kantega SSO pro Confluence
 
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Kantega SSO pro přihlašovací údaje domény Confluence a adresy URL jednotného přihlašování](common/idp-intiated.png)
+    ![Snímek obrazovky s oddílem konfigurace "základní S a M L" s vybranými poli "identifikátor" a "Reply U R L", který je označený a tlačítko Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -134,47 +134,47 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 1. Najeďte myší na ozubeného kola a klikněte na **Doplňky**.
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon1.png)
+    ![Snímek obrazovky, na kterém se zobrazuje ikona nabídky "ozubeného kola" a volba "doplňky".](./media/kantegassoforconfluence-tutorial/addon1.png)
 
 1. Na kartě **tržiště ATLASSIAN** klikněte na **najít nové doplňky**.
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon.png)
+    ![Snímek obrazovky, který zobrazuje kartu "ATTLASSIAN MARKETPLACE" s vybranými možnostmi najít nové doplňky.](./media/kantegassoforconfluence-tutorial/addon.png)
 
 1. Vyhledejte **KANTEGA SSO pro CONFLUENCE SAML Kerberos** a klikněte na **instalovat** tlačítko pro instalaci nového modulu plug-in SAML.
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon2.png)
+    ![Snímek obrazovky se stránkou "najít nové doplňky" s "Kantega S S O" pro Confluence S A M L Kerberos "ve vyhledávacím poli a vybraném tlačítku pro instalaci.](./media/kantegassoforconfluence-tutorial/addon2.png)
 
 1. Spustí se instalace modulu plug-in.
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon3.png)
+    ![Snímek obrazovky znázorňující obrazovku "instalace modulu plug-in".](./media/kantegassoforconfluence-tutorial/addon3.png)
 
 1. Po dokončení instalace. Klikněte na **Zavřít**.
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon33.png)
+    ![Snímek obrazovky, na kterém se zobrazuje obrazovka "nainstalováno a připraveno k instalaci", která má vybranou akci zavřít](./media/kantegassoforconfluence-tutorial/addon33.png)
 
 1. Klikněte na **Manage** (Spravovat).
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon34.png)
+    ![Snímek obrazovky, který zobrazuje Kantega jednotné přihlašování s protokolem Kerberos a S A M L s vybraným tlačítkem spravovat.](./media/kantegassoforconfluence-tutorial/addon34.png)
 
 1. Kliknutím na **Konfigurovat** Nakonfigurujte nový modul plug-in.
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon35.png)
+    ![Snímek obrazovky se stránkou Kantega jednotného přihlašování pomocí protokolu Kerberos a S A M L s vybraným tlačítkem konfigurovat.](./media/kantegassoforconfluence-tutorial/addon35.png)
 
 1. Tento nový modul plug-in je taky možné najít na kartě **uživatelé & zabezpečení** .
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon36.png)
+    ![Snímek obrazovky, který zobrazuje kartu "uživatelé & zabezpečení" s vybranou akcí "jednotné přihlašování" Kantega.](./media/kantegassoforconfluence-tutorial/addon36.png)
 
 1. V části **SAML** . V rozevíracím seznamu **Přidat poskytovatele identity** vyberte **Azure Active Directory (Azure AD)** .
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon4.png)
+    ![Snímek obrazovky, který zobrazuje část S A M L s vybranou možnost Přidat zprostředkovatele identity a Azure Active Directory (Azure AD).](./media/kantegassoforconfluence-tutorial/addon4.png)
 
 1. Vyberte úroveň předplatného jako **základní**.
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon5.png)
+    ![Snímek obrazovky zobrazující stránku "Příprava služby Azure AD" s vybraným "základní".](./media/kantegassoforconfluence-tutorial/addon5.png)
 
 1. V části **Vlastnosti aplikace** proveďte následující kroky:
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon6.png)
+    ![Snímek obrazovky, který zobrazuje část "vlastnosti aplikace" s polem App I D U R L a zvýrazněným tlačítkem pro kopírování a vybraným tlačítkem Další.](./media/kantegassoforconfluence-tutorial/addon6.png)
 
     a. Zkopírujte hodnotu **identifikátoru URI ID aplikace** a použijte ji jako **identifikátor, adresu URL odpovědi a adresu URL Sign-On** v části **základní konfigurace SAML** v Azure Portal.
 
@@ -182,7 +182,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 1. V části **import metadat** proveďte následující kroky: 
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon7.png)
+    ![Snímek obrazovky s vybraným oddílem "import metadat" se souborem metadat v mém počítači](./media/kantegassoforconfluence-tutorial/addon7.png)
 
     a. Vyberte **soubor metadat na mém počítači**a nahrajte soubor metadat, který jste stáhli z Azure Portal.
 
@@ -190,7 +190,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 1. V části **název a umístění jednotného přihlašování** proveďte následující kroky:
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon8.png)
+    ![Snímek obrazovky, který zobrazuje "název a S S S/S" umístění "se zvýrazněným názvem poskytovatele identity" a tlačítkem "Další".](./media/kantegassoforconfluence-tutorial/addon8.png)
 
     a. Do textového pole **název zprostředkovatele** identity přidejte jméno poskytovatele identity (např. Azure AD).
 
@@ -198,11 +198,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 1. Ověřte podpisový certifikát a klikněte na tlačítko **Další**.
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon9.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "ověření podpisu" s vybraným tlačítkem "Další".](./media/kantegassoforconfluence-tutorial/addon9.png)
 
 1. V části **uživatelské účty Confluence** proveďte následující kroky:
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon10.png)
+    ![Snímek obrazovky s oddílem uživatelské účty Confluence s možností vytvořit uživatele v interním adresáři Confluence, pokud je potřeba a tlačítko Další](./media/kantegassoforconfluence-tutorial/addon10.png)
 
     a. **V případě potřeby vyberte možnost vytvořit uživatele v interním adresáři Confluence** a zadejte vhodný název skupiny pro uživatele (může to být víc. skupin oddělených čárkami).
 
@@ -210,11 +210,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 1. Klikněte na **Finish** (Dokončit).
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon11.png)
+    ![Snímek obrazovky se stránkou souhrnu s vybraným tlačítkem Dokončit](./media/kantegassoforconfluence-tutorial/addon11.png)
 
 1. V části **známé domény pro Azure AD** proveďte následující kroky: 
 
-    ![Konfigurace jednoho Sign-On](./media/kantegassoforconfluence-tutorial/addon12.png)
+    ![Snímek obrazovky zobrazující stránku známé domény pro Azure AD se zvýrazněným textovým polem známé domény a vybraným tlačítkem Uložit.](./media/kantegassoforconfluence-tutorial/addon12.png)
 
     a. Na levém panelu stránky vyberte **známé domény** .
 
@@ -283,7 +283,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Confluence, musí se zřídit 
 
 1. Najeďte myší na ozubeného kola a klikněte na **Správa uživatelů**.
 
-    ![Přidat zaměstnance](./media/kantegassoforconfluence-tutorial/user1.png)
+    ![Snímek obrazovky zobrazující ikonu "ozubeného kola" a "Správa uživatelů".](./media/kantegassoforconfluence-tutorial/user1.png)
 
 1. V části Uživatelé klikněte na kartu **Přidat uživatele** . Na stránce **Přidat uživatelský** dialog proveďte následující kroky:
 

@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 75aac74ae5ccf5b52234f1b554dc2a5edefcf32d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91260406"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použití serveru historie rozšířených Apache Spark k ladění a diagnostice Apache Spark aplikací
@@ -124,9 +124,9 @@ Pokud chcete úlohu přehrát, vyberte **přehrávání**. Kdykoli můžete zast
 |-|-|
 |Green|Úspěch: úloha se úspěšně dokončila.|
 |Oranžový|Opakování: instance úloh, které selhaly, ale neovlivňují konečný výsledek úlohy. Tyto úlohy měly duplicitní nebo opakované instance, které mohou být později úspěšné.|
-|Blue|Spuštěno: úloha je spuštěná.|
+|Modrý|Spuštěno: úloha je spuštěná.|
 |White|Čekání nebo přeskočení: úloha čeká na spuštění, nebo se fáze přeskočila.|
-|Red|Nezdařilo se: úloha se nezdařila.|
+|Červený|Nezdařilo se: úloha se nezdařila.|
 
 Následující obrázek ukazuje zelenou, oranžovou a modrou stavovou barvu.
 
@@ -157,7 +157,7 @@ Když najedete myší na uzel grafu, zobrazí se popis tlačítka, když dojde k
 
 Na kartě graf úlohy mají fáze popis a zobrazí se malá ikona, pokud má úlohy, které splňují následující podmínky:
 
-|Stav|Popis|
+|Stav|Description|
 |-|-|
 |Zkosit data|velikost přečtených dat > Průměrná velikost čtení dat všech úkolů v této fázi * 2 a velikost pro čtení dat > 10 MB|
 |Časové zkosení|čas spuštění > Průměrná doba provádění všech úkolů v této fázi * 2 a doba spuštění > 2 minuty|

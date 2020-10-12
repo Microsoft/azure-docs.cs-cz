@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: b0bff0c6b3ef7934188b548bd06c35d83b323fde
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91359592"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Postup při kódování assetu pomocí Media Encoder Standard
@@ -47,7 +47,7 @@ Doporučujeme, abyste zdrojové soubory vždycky zakódujíi do sady MP4 s adapt
 
 Pokud je váš výstupní prostředek zašifrovaný z úložiště, musíte nakonfigurovat zásady doručení assetu. Další informace najdete v tématu [Konfigurace zásad doručení assetu](media-services-rest-configure-asset-delivery-policy.md).
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
 
@@ -101,7 +101,7 @@ Následující příklad ukazuje, jak nastavit atribut majetku:
 { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}`
 ```
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 * Vlastnosti TaskBody – musí použít literál XML pro definování počtu vstupních nebo výstupních prostředků, které úkol používá. Článek o úloze obsahuje definici schématu XML pro XML.
 * V definici TaskBody – je nutné, aby každá vnitřní hodnota pro `<inputAsset>` a `<outputAsset>` byla nastavena jako JobInputAsset (hodnota) nebo JobOutputAsset (hodnota).
 * Úloha může mít více výstupních prostředků. Jeden JobOutputAsset (x) lze použít pouze jednou jako výstup úkolu v úloze.
@@ -154,7 +154,7 @@ x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 }
 ```
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 Povolení Řetězení úloh:
 
 * Úloha musí obsahovat alespoň dvě úlohy.

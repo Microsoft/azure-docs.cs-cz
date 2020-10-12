@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
 ms.openlocfilehash: 699434e89872b9525ea99883bc4fcbc86757ab8e
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619844"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>Otočení ochrany transparentní šifrování dat (TDE)
@@ -33,7 +33,7 @@ Tato příručka popisuje dvě možnosti, jak na serveru otočit ochranu TDE.
 > [!IMPORTANT]
 > Po přecházení neodstraňujte předchozí verze klíče. Když se převezmou klíče, některá data se zašifrují s předchozími klíči, jako je třeba starší zálohy databáze.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - V tomto průvodci se předpokládá, že už používáte klíč z Azure Key Vault jako ochranu TDE pro Azure SQL Database nebo Azure synapse Analytics. Viz [transparentní šifrování dat s podporou BYOK](transparent-data-encryption-byok-overview.md).
 - Musíte mít nainstalovanou a spuštěnou Azure PowerShell.

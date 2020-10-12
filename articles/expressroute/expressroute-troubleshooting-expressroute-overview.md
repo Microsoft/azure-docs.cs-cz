@@ -9,10 +9,10 @@ ms.date: 10/31/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 5689bf60144cf3d66335eb4d77a96d29d8cdcc96
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401737"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Ověření možností připojení ExpressRoute
@@ -36,24 +36,24 @@ Tento článek vám pomůže ověřit ExpressRoute konektivitu a řešit potíž
 
 ## <a name="overview"></a>Přehled
 Následující diagram znázorňuje logické připojení sítě zákazníka k síti Microsoftu pomocí ExpressRoute.
-[![1]][1]
+[![první]][1]
 
 V předchozím diagramu čísla označují klíčové síťové body. Na tyto síťové body se v tomto článku odkazuje v době podle jejich přidruženého čísla. V závislosti na modelu připojení ExpressRoute – ve společném umístění v cloudu Exchange, připojení k síti Ethernet typu Point-to-Point nebo Any-to-Any (IPVPN) – síťové body 3 a 4 můžou být přepínače (zařízení vrstvy 2) nebo směrovače (zařízení vrstvy 3). V modelu přímého připojení neexistují žádné síťové body 3 a 4; místo toho se službu zápis certifikátů (2) přímo připojí k směrovači msee prostřednictvím tmavého vlákna. Klíčové body sítě jsou znázorněny takto:
 
 1.  Výpočetní zařízení zákazníka (například server nebo počítač)
 2.  Zápis certifikátů: hraniční směrovače zákazníka 
-3.  PEs (s přístupem CE): hraniční směrovače poskytovatele/přepínače, které jsou na hraničních směrovačích zákazníka. Označuje se jako PE-zápis certifikátů v tomto dokumentu.
-4.  PEs (MSEE s přístupem): hraniční směrovače a přepínače poskytovatele, které jsou na směrovači msee. V tomto dokumentu se říká směrovači msee PE.
+3.  PEs (s přístupem CE): hraniční směrovače poskytovatele/přepínače, které jsou na hraničních směrovačích zákazníka. V tomto dokumentu se říká PE-CEs.
+4.  PEs (MSEE s přístupem): hraniční směrovače a přepínače poskytovatele, které jsou na směrovači msee. V tomto dokumentu se říká PE-MSEEs.
 5.  Směrovači msee: směrovače ExpressRoute Microsoft Enterprise Edge (MSEE)
 6.  Brána Virtual Network (VNet)
 7.  Výpočetní zařízení ve virtuální síti Azure
 
 Pokud se používá společné umístění cloudového systému Exchange, sítě Ethernet Point-to-Point nebo přímé připojení, vystavování partnerského vztahu protokolu BGP (2) pomocí směrovači msee (5). 
 
-Pokud se používá model připojení any-to-Any (IPVPN), PE-směrovači msee (4) vytvoří partnerský vztah protokolu BGP s směrovači msee (5). PE – směrovači msee šíří trasy obdržené od Microsoftu zpátky k síti zákazníka prostřednictvím sítě poskytovatele služeb IPVPN.
+Pokud se používá model připojení any-to-Any (IPVPN), PE-MSEEs (4) vytvořit partnerský vztah protokolu BGP s směrovači msee (5). PE-MSEEs rozšířit trasy obdržené od Microsoftu zpátky k síti zákazníka prostřednictvím sítě poskytovatele služeb IPVPN.
 
 > [!NOTE]
->Pro zajištění vysoké dostupnosti společnost Microsoft vytvoří plně redundantní paralelní připojení mezi páry směrovači msee (5) a PE-směrovači msee (4). Mezi zákaznickou sítí a párm zápisů na straně typu PE se taky doporučuje plně redundantní cesta k paralelní síti. Další informace o vysoké dostupnosti najdete v článku [navrhování pro zajištění vysoké dostupnosti pomocí ExpressRoute][HA] .
+>Pro zajištění vysoké dostupnosti společnost Microsoft vytvoří plně redundantní paralelní připojení mezi směrovači msee (5) a PE-MSEEs (4) páry. Mezi zákaznickou sítí a PE-CEs dvojici se taky doporučuje plně redundantní cesta k paralelní síti. Další informace o vysoké dostupnosti najdete v článku [navrhování pro zajištění vysoké dostupnosti pomocí ExpressRoute][HA] .
 >
 >
 
@@ -319,7 +319,7 @@ StatusCode: 400
 ## <a name="next-steps"></a>Další kroky
 Další informace nebo nápovědu najdete na následujících odkazech:
 
-- [Podpora společnosti Microsoft][Support]
+- [podpora Microsoftu][Support]
 - [Vytvoření a úprava okruhu ExpressRoute][CreateCircuit]
 - [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering]
 

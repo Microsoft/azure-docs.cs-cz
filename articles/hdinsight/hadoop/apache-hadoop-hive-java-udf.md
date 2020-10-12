@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 11/20/2019
 ms.openlocfilehash: 15a86fd191eefc5882150fb276228d18efd6ff5d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323787"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Použití Java UDF s Apache Hive v HDInsight
@@ -273,4 +273,4 @@ $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
 
 Další způsoby práce s podregistrem najdete v tématu [použití Apache Hive se službou HDInsight](hdinsight-use-hive.md).
 
-Další informace o uživatelsky definovaných funkcích pro podregistr najdete v části [operátory Apache Hive a uživatelsky definované funkce](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) na wikiwebu webwiki na adrese Apache.org.
+Další informace o funkcích User-Defined podregistru najdete v části [operátory Apache Hive a User-Defined funkce](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) na wikiwebu na wikiwebu na adrese Apache.org.

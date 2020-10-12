@@ -7,10 +7,10 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
 ms.openlocfilehash: b681e3fa4963a8fe899ccbad8dbf1bbdfbe452ce
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326898"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Řešení pro monitorování kontejnerů v Azure Monitor
@@ -45,7 +45,7 @@ Než začnete, Projděte si následující podrobnosti, abyste ověřili splněn
 
 Následující tabulka popisuje podporu pro orchestraci a monitorování operačního systému pro inventář kontejnerů, výkon a protokoly s Azure Monitor.   
 
-|Orchestrace Docker | ACS | Linux | Windows | Kontejner<br>inventář | Image<br>inventář | Uzel<br>inventář | Kontejner<br>Výkon | Kontejner<br>Událost | Událost<br>Protokol | Kontejner<br>Protokol |
+|Orchestrace Docker | ACS | Linux | Windows | Kontejner<br>inventář | Image<br>inventář | Node<br>inventář | Kontejner<br>Výkon | Kontejner<br>Událost | Událost<br>Protokol | Kontejner<br>Protokol |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -360,7 +360,7 @@ Můžete si vybrat, že chcete vytvořit omsagent DaemonSets s tajnými kódy ne
         KEY:    88 bytes
         ```
 
-    5. Vytvoření omsagent procesu démon-nastaveného spuštěním```sudo kubectl create -f omsagent-ds-secrets.yaml```
+    5. Vytvoření omsagent procesu démon-nastaveného spuštěním ```sudo kubectl create -f omsagent-ds-secrets.yaml```
 
 2. Ověřte, že je spuštěný DaemonSet agenta Log Analytics, podobně jako v následujícím příkladu:
 
@@ -404,7 +404,7 @@ V případě sady Windows Kubernetes použijte skript k vygenerování souboru t
         ```
         #> sudo bash ./secret-gen.sh
         ```
-    3. Vytvoření omsagent procesu démon-nastaveného spuštěním```kubectl create -f omsagentsecret.yaml```
+    3. Vytvoření omsagent procesu démon-nastaveného spuštěním ```kubectl create -f omsagentsecret.yaml```
     4. Chcete-li ověřit, spusťte následující příkaz:
 
         ```
@@ -431,7 +431,7 @@ V případě sady Windows Kubernetes použijte skript k vygenerování souboru t
         KEY:    88 bytes
         ```
 
-    5. Vytvoření omsagent procesu démon-nastaveného spuštěním```kubectl create -f ws-omsagent-de-secrets.yaml```
+    5. Vytvoření omsagent procesu démon-nastaveného spuštěním ```kubectl create -f ws-omsagent-de-secrets.yaml```
 
 2. Ověřte, že je spuštěný DaemonSet agenta Log Analytics, podobně jako v následujícím příkladu:
 
@@ -447,7 +447,7 @@ V případě sady Windows Kubernetes použijte skript k vygenerování souboru t
 
 Pokud chcete použít Helm k nasazení agenta Log Analytics v prostředí Kubernetes pro Linux, proveďte následující kroky.
 
-1. Vytvoření omsagent procesu démon-nastaveného spuštěním```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
+1. Vytvoření omsagent procesu démon-nastaveného spuštěním ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
 2. Výsledky budou vypadat podobně jako v následujícím příkladu:
 
     ```
@@ -535,7 +535,7 @@ Následující typy agentů shromažďují data každé tři minuty.
 
 V následující tabulce jsou uvedeny příklady záznamů shromážděných řešením monitorování kontejnerů a typy dat, které se zobrazí ve výsledcích prohledávání protokolu.
 
-| Datový typ | Datový typ v hledání v protokolu | Fields (Pole) |
+| Datový typ | Datový typ v hledání v protokolu | Pole |
 | --- | --- | --- |
 | Výkon pro hostitele a kontejnery | `Perf` | Počítač, ObjectName, CounterName &#40;% času procesoru, čtení z disku MB, zápisy na disk MB, využití paměti MB, počet přijatých bajtů sítě, počet bajtů pro odesílání, využití procesoru sec, síť&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem |
 | Inventář kontejneru | `ContainerInventory` | TimeGenerated, počítač, název kontejneru, ContainerHostname, image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
@@ -602,7 +602,7 @@ Log Analytics označí kontejner jako **neúspěšný** , pokud byl ukončen s n
    ![neúspěšné kontejnery](./media/containers/containers-state-failed-select.png)  
 1. Spusťte dotaz a potom rozbalte čáru ve výsledcích, abyste zobrazili ID obrázku.  
    ![neúspěšné kontejnery](./media/containers/containers-state-failed.png)  
-1. V dotazu protokolu zadejte následující text. `ContainerImageInventory | where ImageID == <ImageID>`Chcete-li zobrazit podrobnosti o imagi, jako je například velikost obrázku a počet zastavených a neúspěšných imagí.  
+1. V dotazu protokolu zadejte následující text. `ContainerImageInventory | where ImageID == <ImageID>` Chcete-li zobrazit podrobnosti o imagi, jako je například velikost obrázku a počet zastavených a neúspěšných imagí.  
    ![neúspěšné kontejnery](./media/containers/containers-failed04.png)
 
 ## <a name="query-logs-for-container-data"></a>Dotazy na data kontejneru v protokolech
@@ -620,7 +620,7 @@ Při odstraňování potíží s konkrétní chybou vám může pomáhat zjistit
 
 ### <a name="to-query-logs-for-container-data"></a>Dotazování protokolů na data kontejneru
 
-* Vyberte bitovou kopii, která se nedávno nezdařila, a vyhledejte v ní protokoly chyb. Začněte hledáním názvu kontejneru, na kterém je spuštěná tato image, pomocí hledání **ContainerInventory** . Vyhledejte například`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
+* Vyberte bitovou kopii, která se nedávno nezdařila, a vyhledejte v ní protokoly chyb. Začněte hledáním názvu kontejneru, na kterém je spuštěná tato image, pomocí hledání **ContainerInventory** . Vyhledejte například `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
     ![Hledat kontejnery Ubuntu](./media/containers/search-ubuntu.png)
 
   Rozbalením libovolného řádku ve výsledcích zobrazíte podrobnosti o daném kontejneru.

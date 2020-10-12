@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/07/2020
 ms.author: memildin
 ms.openlocfilehash: 276368eaf54ea87dddd2b292b07084e09d97d5ec
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91850398"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Doporučení zabezpečení – referenční příručka
@@ -194,7 +194,7 @@ Vaše zabezpečené skóre vychází z počtu Security Center doporučení, kter
 |**Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.**|Odeberte externí účty s oprávněním k zápisu z předplatného, aby nedocházelo k nemonitorovanému přístupu.<br>(Související zásady: externí účty s oprávněním k zápisu by se měly z vašeho předplatného odebrat.)|Vysoká|N|Předplatné|
 |**Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.**|Povolte Multi-Factor Authentication (MFA) pro všechny účty předplatného s oprávněním vlastníka, aby nedošlo k porušení účtů nebo prostředků.<br>(Související zásady: vícefaktorové ověřování by mělo být povolené u účtů s oprávněním vlastníka v předplatném.)|Vysoká|N|Předplatné|
 |**Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.**|Povolte Multi-Factor Authentication (MFA) pro všechny účty předplatného s oprávněním ke čtení, aby nedošlo k porušení účtů nebo prostředků.<br>(Související zásady: vícefaktorové ověřování by mělo být povolené u účtů s oprávněním ke čtení v předplatném.)|Vysoká|N|Předplatné|
-|**Pro účty s oprávněním k zápisu do vašeho předplatného by se měla povolit vícefaktorové ověřování.**|Povolte Multi-Factor Authentication (MFA) pro všechny účty předplatného s oprávněním k zápisu, aby nedošlo k porušení účtů nebo prostředků.<br>(Související zásady: vícefaktorové ověřování by mělo být povolené u účtů s oprávněním k zápisu v předplatném.)|Vysoká|N|Předplatné|
+|**Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA**|Povolte Multi-Factor Authentication (MFA) pro všechny účty předplatného s oprávněním k zápisu, aby nedošlo k porušení účtů nebo prostředků.<br>(Související zásady: vícefaktorové ověřování by mělo být povolené u účtů s oprávněním k zápisu v předplatném.)|Vysoká|N|Předplatné|
 |**K ochraně předplatných namísto certifikátů pro správu by se měly použít instanční objekty.**|Certifikáty pro správu umožňují všem, kteří se s nimi ověřují, spravovat odběry, ke kterým jsou přidružené. Pro bezpečnější správu předplatných se doporučuje použití instančních objektů s Správce prostředků omezit poloměr vysokého poloměru v případě ohrožení bezpečnosti certifikátu. Také automatizuje správu prostředků.|Střední|No|Předplatné|
 |**K vašemu předplatnému by měl být přiřazený víc než jeden vlastník.**|Chcete-li mít přístup správce k redundanci, určete více než jednoho vlastníka předplatného.<br>(Související zásady: k vašemu předplatnému by měl být přiřazený víc než jeden vlastník.)|Vysoká|N|Předplatné|
 ||||||

@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
 ms.openlocfilehash: ed1c5b749b778ef8334ea3b31ef17d3bf106484f
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87835540"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Vytvoření a Správa virtuálního počítače s Windows s více síťovými kartami
 K virtuálním počítačům v Azure můžou být připojené několik síťových adaptérů (nic). Běžným scénářem je použití různých podsítí pro front-endové a back-endové připojení. K virtuálnímu počítači můžete přidružit více síťových adaptérů k několika podsítím, ale tyto podsítě se musí nacházet ve stejné virtuální síti (vNet). Tento článek podrobně popisuje, jak vytvořit virtuální počítač s připojenými více síťovými rozhraními. Naučíte se také, jak přidat nebo odebrat síťové karty z existujícího virtuálního počítače. Různé [velikosti virtuálních počítačů](../sizes.md) podporují proměnlivý počet síťových adaptérů, proto si odpovídajícím způsobem nasaďte velikost svého virtuálního počítače.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů jsou *myResourceGroup*, *myVnet*a *myVM*.
 

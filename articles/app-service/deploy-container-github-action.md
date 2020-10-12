@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: dc8b5e75b4feed886f843e7a516cc18429afec11
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 3a5e319115c124551c05f2ac5aa393ba19596d0d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728484"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893352"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Nasazení vlastního kontejneru pro App Service pomocí akcí GitHubu
 
@@ -22,13 +22,13 @@ Pracovní postup je definovaný souborem YAML (. yml) v `/.github/workflows/` ce
 
 Pro pracovní postup kontejneru Azure App Service má soubor tři části:
 
-|Sekce  |Úkoly  |
+|Sekce  |Úlohy  |
 |---------|---------|
 |**Authentication** | 1. načtěte instanční objekt nebo publikační profil. <br /> 2. Vytvořte tajný klíč GitHubu. |
 |**Sestavení** | 1. Vytvořte prostředí. <br /> 2. Sestavte image kontejneru. |
 |**Nasazení** | 1. Nasaďte image kontejneru. |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  
@@ -84,7 +84,7 @@ V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení
 
 Vložte obsah výstupu JSON jako hodnotu tajné proměnné. Zadejte tajný kód jako název `AZURE_CREDENTIALS` .
 
-Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Příklad:
+Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
 
 ```yaml
 - uses: azure/login@v1
@@ -100,7 +100,7 @@ V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení
 
 Pokud chcete použít [přihlašovací údaje na úrovni aplikace](#generate-deployment-credentials), vložte obsah staženého souboru publikačního profilu do pole hodnota tajného klíče. Pojmenujte tajný klíč `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-Když nakonfigurujete pracovní postup GitHubu, použijte `AZURE_WEBAPP_PUBLISH_PROFILE` v akci nasazení webové aplikace Azure. Příklad:
+Když nakonfigurujete pracovní postup GitHubu, použijte `AZURE_WEBAPP_PUBLISH_PROFILE` v akci nasazení webové aplikace Azure. Například:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -114,7 +114,7 @@ V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení
 
 Pokud chcete použít [přihlašovací údaje na úrovni uživatele](#generate-deployment-credentials), vložte celý výstup JSON z příkazu Azure CLI do pole hodnota tajného klíče. Zadejte tajný kód jako název `AZURE_CREDENTIALS` .
 
-Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Příklad:
+Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
 
 ```yaml
 - uses: azure/login@v1
@@ -137,10 +137,6 @@ Definování tajných kódů pro použití s akcí přihlášení k Docker
 ## <a name="build-the-container-image"></a>Sestavení image kontejneru
 
 Následující příklad ukazuje část pracovního postupu, která vytváří Node.JS image Docker. K přihlášení do soukromého registru kontejneru použijte [přihlašovací jméno Docker](https://github.com/azure/docker-login) . V tomto příkladu se používá Azure Container Registry, ale stejná akce funguje i pro jiné Registry. 
-
-# <a name="publish-profile"></a>[Publikovat profil](#tab/publish-profile)
-
-Tento příklad ukazuje, jak vytvořit bitovou kopii Node.JS Docker s použitím profilu publikování pro ověřování.
 
 
 ```yaml
@@ -191,41 +187,6 @@ jobs:
         docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
         docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
-# <a name="service-principal"></a>[Instanční objekt](#tab/service-principal)
-
-Tento příklad ukazuje, jak vytvořit bitovou kopii Node.JS Docker s použitím instančního objektu pro ověřování. 
-
-```yaml
-on: [push]
-
-name: Linux_Container_Node_Workflow
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    # checkout the repo
-    - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}   
-    - uses: azure/docker-login@v1
-      with:
-        login-server: mycontainer.azurecr.io
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_PASSWORD }}  
-    - run: |
-        docker build . -t mycontainer.azurecr.io/myapp:${{ github.sha }}
-        docker push mycontainer.azurecr.io/myapp:${{ github.sha }}      
-    - name: Azure logout
-      run: |
-        az logout
-```
-
----
 
 ## <a name="deploy-to-an-app-service-container"></a>Nasazení do kontejneru App Service
 
@@ -237,7 +198,7 @@ K nasazení image do vlastního kontejneru v App Service použijte `azure/webapp
 | **publikování – profil** | Volitelné Publikování obsahu souboru profilu pomocí Nasazení webu tajných klíčů |
 | **fotografií** | Plně kvalifikované názvy imagí kontejneru. Například ' myregistry.azurecr.io/nginx:latest ' nebo ' Python: 3.7.2-Alpine/'. Pro scénář s více kontejnery lze zadat více názvů imagí kontejneru (oddělené více řádky). |
 | **název slotu** | Volitelné Zadejte jinou existující patici, než je produkční slot. |
-| **konfigurační soubor** | Volitelné Cesta k souboru Docker – skládání |
+| **konfigurační soubor** | Volitelné Cesta k souboru Docker-Compose |
 
 # <a name="publish-profile"></a>[Publikovat profil](#tab/publish-profile)
 

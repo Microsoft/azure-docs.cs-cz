@@ -16,10 +16,10 @@ ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 31f690277675650323763a7bc6872ad736f5776c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87837002"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Použití monitorování a diagnostiky pomocí virtuálních počítačů s Windows a Azure Resource Manager šablon
@@ -62,7 +62,7 @@ U jednoduchého virtuálního počítače založeného na Správce prostředků 
 ]
 ```
 
-Další běžnou konvencí je přidání konfigurace rozšíření v uzlu kořenových prostředků šablony, a nikoli jejím definováním v uzlu prostředky virtuálního počítače. S tímto přístupem musíte explicitně zadat hierarchický vztah mezi příponou a virtuálním počítačem s hodnotami *název* a *typ* . Příklad: 
+Další běžnou konvencí je přidání konfigurace rozšíření v uzlu kořenových prostředků šablony, a nikoli jejím definováním v uzlu prostředky virtuálního počítače. S tímto přístupem musíte explicitně zadat hierarchický vztah mezi příponou a virtuálním počítačem s hodnotami *název* a *typ* . Například: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
@@ -168,7 +168,7 @@ Příklad: *WADMetricsPT1HP10DV2S20151108* obsahuje data metrik agregovaná za h
 Každá tabulka WADMetrics obsahuje následující sloupce:
 
 * **PartitionKey**: klíč oddílu je vytvořen na základě hodnoty *ResourceID* k jedinečné identifikaci prostředku virtuálního počítače. Příklad: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
-* **RowKey**: následuje formát `<Descending time tick>:<Performance Counter Name>` . Výpočet vzestupného časového intervalu je maximální časový interval v čase začátku agregačního období. Pokud například začíná ukázková Perioda 10. listopadu-2015 a 00:00Hrs UTC, pak výpočet by byl: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)` . V čítači výkonu dostupné bajty paměti bude klíč řádku vypadat takto:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **RowKey**: následuje formát `<Descending time tick>:<Performance Counter Name>` . Výpočet vzestupného časového intervalu je maximální časový interval v čase začátku agregačního období. Pokud například začíná ukázková Perioda 10. listopadu-2015 a 00:00Hrs UTC, pak výpočet by byl: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)` . V čítači výkonu dostupné bajty paměti bude klíč řádku vypadat takto: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
 * **CounterName**: je název čítače výkonu. To odpovídá *counterSpecifier* definovanému v konfiguraci XML.
 * **Maximum**: maximální hodnota čítače výkonu v rámci agregačního období.
 * **Minimum**: minimální hodnota čítače výkonu v rámci agregačního období.

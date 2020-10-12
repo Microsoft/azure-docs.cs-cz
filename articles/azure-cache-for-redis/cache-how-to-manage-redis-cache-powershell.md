@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: 327505dfbaf5f6f35b065f4f3941053c5114aa33
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019211"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Správa mezipaměti Azure pro Redis s využitím Azure PowerShell
@@ -28,7 +28,7 @@ V tomto tématu se dozvíte, jak provádět běžné úlohy, jako je vytvářen�
 
 Další informace o modelu nasazení Classic najdete v tématu [Azure Resource Manager vs. Classic Deployment: Principy modelů nasazení a stavu vašich prostředků](../azure-resource-manager/management/deployment-models.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud jste již nainstalovali Azure PowerShell, je nutné, abyste měli Azure PowerShell verze 1.0.0 nebo novější. Verzi Azure PowerShell, kterou jste nainstalovali s tímto příkazem, můžete zjistit na příkazovém řádku Azure PowerShell.
 
 ```azurepowershell
@@ -59,7 +59,7 @@ Předtím, než budete moci použít prostředí Windows PowerShell s Azure Reso
 
 * Prostředí Windows PowerShell verze 3,0 nebo 4,0. Pokud chcete najít verzi Windows PowerShellu, zadejte: `$PSVersionTable` a ověřte hodnotu `PSVersion` 3,0 nebo 4,0. Informace o instalaci kompatibilní verze najdete v tématu [Windows Management Framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595).
 
-Podrobnou nápovědu k jakékoli rutině, kterou vidíte v tomto kurzu, získáte pomocí rutiny Get-Help.
+Pokud chcete získat podrobnou nápovědu k jakékoli rutině, kterou vidíte v tomto kurzu, použijte rutinu Get-Help.
 
 ```azurepowershell
     Get-Help <cmdlet-name> -Detailed
@@ -141,14 +141,14 @@ Následující tabulka obsahuje vlastnosti a popisy běžně používaných para
 
 | Parametr | Popis | Výchozí |
 | --- | --- | --- |
-| Název |Název mezipaměti | |
+| Name |Název mezipaměti | |
 | Umístění |Umístění mezipaměti | |
 | ResourceGroupName |Název skupiny prostředků, ve které se má mezipaměť vytvořit | |
 | Velikost |Velikost mezipaměti. Platné hodnoty jsou: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1 GB, 2,5 GB, 6 GB, 13GB, 26GB, 53GB. |PAMĚT |
 | ShardCount |Počet horizontálních oddílů, které se mají vytvořit při vytváření mezipaměti Premium s povoleným clusteringem Platné hodnoty jsou: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. | |
 | SKU |Určuje SKLADOVOU položku mezipaměti. Platné hodnoty jsou: Basic, Standard, Premium. |Standard |
 | RedisConfiguration |Určuje nastavení konfigurace Redis. Podrobnosti o jednotlivých nastaveních najdete v následujících tabulkách [vlastností RedisConfiguration](#redisconfiguration-properties) . | |
-| EnableNonSslPort |Určuje, jestli je povolený port bez SSL. |Ne |
+| EnableNonSslPort |Určuje, jestli je povolený port bez SSL. |Nepravda |
 | MaxMemoryPolicy |Tento parametr je zastaralý – místo toho použijte RedisConfiguration. | |
 | StaticIP |Při hostování mezipaměti ve virtuální síti určuje jedinečná IP adresa v podsíti pro mezipaměť. Pokud tato možnost není k dispozici, je pro vás z podsítě zvolena jedna. | |
 | Podsíť |Při hostování mezipaměti ve virtuální síti Určuje název podsítě, do které se má mezipaměť nasadit. | |

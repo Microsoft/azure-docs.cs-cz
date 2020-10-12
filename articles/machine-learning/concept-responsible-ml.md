@@ -10,10 +10,10 @@ ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
 ms.openlocfilehash: 689b90fc1f45faad72640f47e5eebe936d2dc8b7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87829386"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>Co je zodpovědný strojové učení? (Preview)
@@ -94,7 +94,7 @@ Některé informace o modelu, které byste mohli chtít dokumentovat jako souč�
 
 V následující ukázce se dozvíte, jak použít sadu SDK Azure Machine Learning k implementaci [datových listů pro modely](https://github.com/microsoft/MLOps/blob/master/pytorch_with_datasheet/model_with_datasheet.ipynb).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - Další informace o osvědčených postupech najdete v [příslušné sadě nástrojů pro inovace](https://docs.microsoft.com/azure/architecture/guide/responsible-innovation/) .
 - Přečtěte si další informace o pokynech pro dokumentaci k systému Machine Learning [o ml](https://www.partnershiponai.org/about-ml/) .

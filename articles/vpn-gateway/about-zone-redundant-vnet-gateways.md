@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: 2030469262baf406635fd170af384e154fec6ae6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401108"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Informace o branách redundantní virtuální sítě v zóně Zóny dostupnosti Azure
@@ -63,7 +63,7 @@ Když vytvoříte veřejnou IP adresu pomocí **standardní** SKU veřejné IP a
 
 Když vytvoříte veřejnou IP adresu pomocí **základní** veřejné IP adresy (SKU), brána se nasadí jako místní brána a nebude mít do brány vestavěnou redundanci zón.
 
-## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a><a name="faq"></a>Časté otázky
 
 ### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Co se změní při nasazení těchto nových SKU?
 

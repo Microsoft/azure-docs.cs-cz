@@ -10,10 +10,10 @@ author: dphansen
 ms.author: davidph
 ms.date: 07/14/2020
 ms.openlocfilehash: 5a1e0b12179070dc11e838004c4b27cf04b5396b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91298901"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Nasazení a vytvoření předpovědi pomocí modelu ONNX

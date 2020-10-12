@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: ddfca965ea32ca726df39f894ba45f9580225d9d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542457"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Vnímání znalostí rozpoznávání entit
@@ -35,7 +35,7 @@ Maximální velikost záznamu musí být 50 000 znaků měřených podle [`Strin
 
 V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 
-| Název parametru     | Popis |
+| Název parametru     | Description |
 |--------------------|-------------|
 | `categories`    | Pole kategorií, které mají být extrahovány.  Možné typy kategorií: `"Person"` , `"Location"` , `"Organization"` , `"Quantity"` , `"Datetime"` , `"URL"` , `"Email"` . Pokud není zadána žádná kategorie, jsou vráceny všechny typy.|
 | `defaultLanguageCode` |    Kód jazyka vstupního textu Podporují se tyto jazyky: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans` . Ne všechny kategorie entit jsou podporovány pro všechny jazyky; Viz poznámka níže.|
@@ -45,7 +45,7 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu      | Popis                   |
+| Název vstupu      | Description                   |
 |---------------|-------------------------------|
 | `languageCode`    | Nepovinný parametr. Výchozí je `"en"`.  |
 | `text`          | Text, který se má analyzovat          |
@@ -55,7 +55,7 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 > [!NOTE]
 > Ne všechny kategorie entit jsou podporovány pro všechny jazyky. `"Person"` `"Location"` `"Organization"` Typy kategorií entit, a jsou podporovány pro úplný seznam jazyků uvedených výše. Jenom _de_, _EN_, _ES_, _fr_a _zh-Hans_ podporují extrakci `"Quantity"` typů, `"Datetime"` , `"URL"` a `"Email"` . Další informace najdete v tématu [Podpora jazyků a oblastí pro rozhraní API pro analýzu textu](../cognitive-services/text-analytics/language-support.md).  
 
-| Název výstupu      | Popis                   |
+| Název výstupu      | Description                   |
 |---------------|-------------------------------|
 | `persons`       | Pole řetězců, kde každý řetězec představuje jméno osoby. |
 | `locations`  | Pole řetězců, kde každý řetězec představuje umístění. |

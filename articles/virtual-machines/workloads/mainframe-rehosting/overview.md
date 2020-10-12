@@ -11,10 +11,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: d754f27a1510d9db0837eabb96b3a7cf75f76fc1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87835523"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Opětovné hostování sálového počítače na virtuálních počítačích Azure
@@ -33,7 +33,7 @@ Některé úlohy z sálových počítačů je možné migrovat do Azure s relati
 
 ## <a name="mainframe-migration"></a>Migrace mainframů
 
-Znovu hostovat, znovu sestavit, nahradit nebo vyřadit? IaaS nebo PaaS? Pro určení správné strategie migrace pro vaši sálovou aplikaci si Projděte příručku [migrace sálového počítače](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview) v cetrum architektury Azure.
+Znovu hostovat, znovu sestavit, nahradit nebo vyřadit? IaaS nebo PaaS? Pro určení správné strategie migrace pro vaši sálovou aplikaci si Projděte příručku [migrace sálového počítače](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)  v cetrum architektury Azure.
 
 ## <a name="micro-focus-rehosting-platform"></a>Platforma pro opětovné hostování platformy Micro
 
@@ -72,7 +72,7 @@ Prostředí IBM DB2 pureScale poskytuje databázový cluster pro Azure. Není to
 
 Informace o tom, jak začít, najdete v článku [IBM DB2 pureScale v Azure](../../linux/ibm-db2-purescale-azure.md).
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Když migrujete sálové úlohy do infrastruktury Azure jako služby (IaaS), můžete si vybrat z několika typů škálovatelných výpočetních prostředků na vyžádání, včetně virtuálních počítačů Azure. Azure nabízí řadu virtuálních počítačů se systémy [Linux](../../linux/overview.md) a [Windows](../../windows/overview.md) .
 

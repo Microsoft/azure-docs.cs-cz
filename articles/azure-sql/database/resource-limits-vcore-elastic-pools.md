@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 07/21/2020
 ms.openlocfilehash: 8ffa2a92dd33d16bf047035fb98a79a53b5f2246
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620167"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu vCore
@@ -46,7 +46,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|1|2|3|4|5|6|
 |Paměť (GB)|7|14|21|28|35|42|
 |Maximální počet databáze na fond <sup>1</sup>|100|200|500|500|500|500|
-|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
+|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|512|756|1536|1536|1536|2 048|
 |Maximální velikost protokolu|154|227|461|461|461|614|
@@ -78,7 +78,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|7|8|9|10|16|24|
 |Paměť (GB)|49|56|63|70|112|159,5|
 |Maximální počet databáze na fond <sup>1</sup>|500|500|500|500|500|500|
-|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
+|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|2 048|2 048|2 048|2 048|3584|4 096|
 |Maximální velikost protokolu (GB)|614|614|614|614|1075|1229|
@@ -112,7 +112,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|2|4|6|8|10|12|14|
 |Paměť (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Maximální počet databáze na fond <sup>1</sup>|100|200|500|500|500|500|500|
-|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
+|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|512|756|1536|1536|1536|2 048|2 048|
 |Maximální velikost protokolu (GB)|154|227|461|461|461|614|614|
@@ -144,7 +144,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|16|18|20|24|32|40|80|
 |Paměť (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Maximální počet databáze na fond <sup>1</sup>|500|500|500|500|500|500|500|
-|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
+|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|2 048|3072|3072|3072|4 096|4 096|4 096|
 |Maximální velikost protokolu (GB)|614|922|922|922|1229|1229|1229|
@@ -178,7 +178,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|8|10|12|14|16|
 |Paměť (GB)|15,1|18,9|22,7|26,5|30,2|
 |Maximální počet databáze na fond <sup>1</sup>|500|500|500|500|500|
-|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|
+|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|1536|
 |Maximální velikost protokolu (GB)|336|336|336|336|512|
@@ -211,7 +211,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|18|20|24|32|36|72|
 |Paměť (GB)|34,0|37,8|45,4|60,5|68,0|136,0|
 |Maximální počet databáze na fond <sup>1</sup>|500|500|500|500|500|
-|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
+|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|1536|1536|1536|3072|3072|4 096|
 |Maximální velikost protokolu (GB)|512|512|512|1024|1024|1024|
@@ -248,7 +248,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|2|3|4|5|6|
 |Paměť (GB)|14|21|28|35|42|
 |Maximální počet databáze na fond <sup>1</sup>|50|100|100|100|100|
-|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|
+|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|
 |Úložiště OLTP v paměti (GB)|2|3|4|5|6|
 |Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|1024|
@@ -262,8 +262,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
 |Počet replik|4|4|4|4|4|
-|Více AZ|Ano|Ano|Ano|Ano|Ano|
-|Škálování čtení|Ano|Ano|Ano|Ano|Ano|
+|Více AZ|Yes|Yes|Yes|Yes|Yes|
+|Škálování čtení|Yes|Yes|Yes|Yes|Yes|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 <sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
@@ -294,8 +294,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
 |Počet replik|4|4|4|4|4|4|
-|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
-|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|
+|Více AZ|Yes|Yes|Yes|Yes|Yes|Yes|
+|Škálování čtení|Yes|Yes|Yes|Yes|Yes|Yes|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 <sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
@@ -314,7 +314,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|4|6|8|10|12|14|
 |Paměť (GB)|20,8|31,1|41,5|51,9|62,3|72,7|
 |Maximální počet databáze na fond <sup>1</sup>|50|100|100|100|100|100|
-|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
+|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|
 |Úložiště OLTP v paměti (GB)|3,14|4,71|6,28|8,65|11,02|13,39|
 |Maximální velikost dat (GB)|1024|1536|1536|1536|3072|3072|
 |Maximální velikost protokolu (GB)|307|307|461|461|922|922|
@@ -328,8 +328,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
 |Počet replik|4|4|4|4|4|4|
-|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
-|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|
+|Více AZ|Yes|Yes|Yes|Yes|Yes|Yes|
+|Škálování čtení|Yes|Yes|Yes|Yes|Yes|Yes|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 <sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
@@ -346,7 +346,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|16|18|20|24|32|40|80|
 |Paměť (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Maximální počet databáze na fond <sup>1</sup>|100|100|100|100|100|100|100|
-|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
+|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Úložiště OLTP v paměti (GB)|15.77|18,14|20,51|25,25|37,94|52,23|131,68|
 |Maximální velikost dat (GB)|3072|3072|3072|4 096|4 096|4 096|4 096|
 |Maximální velikost protokolu (GB)|922|922|922|1229|1229|1229|1229|
@@ -360,8 +360,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 20, 24, 32, 40|0, 0,25, 0,5, 1... 20, 24, 32, 40, 80|
 |Počet replik|4|4|4|4|4|4|4|
-|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
+|Více AZ|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Škálování čtení|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 <sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
@@ -380,7 +380,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|8|10|12|14|16|18|
 |Paměť (GB)|235,4|294,3|353,2|412,0|470,9|529,7|
 |Maximální počet databáze na fond <sup>1</sup>|100|100|100|100|100|100|
-|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
+|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|
 |Úložiště OLTP v paměti (GB)|64|80|96|112|128|150|
 |Maximální velikost dat (GB)|512|640|768|896|1024|1152|
 |Maximální velikost protokolu (GB)|171|213|256|299|341|384|
@@ -394,8 +394,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných relací|30000|30000|30000|30000|30000|30000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0-8|0-10|0-12|0-14|0-16|0-18|
 |Počet replik|4|4|4|4|4|4|
-|Více AZ|Ne|Ne|Ne|Ne|Ne|Ne|
-|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|
+|Více AZ|No|No|No|No|No|No|
+|Škálování čtení|Yes|Yes|Yes|Yes|Yes|Yes|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 <sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
@@ -416,7 +416,7 @@ Pokud jsou všechny virtuální jádra elastického fondu zaneprázdněné, pak 
 |Virtuální jádra|20|24|32|64|128|
 |Paměť (GB)|588,6|706,3|941,8|1883,5|3767,0|
 |Maximální počet databáze na fond <sup>1</sup>|100|100|100|100|100|100|
-|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|
+|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|
 |Úložiště OLTP v paměti (GB)|172|216|304|704|1768|
 |Maximální velikost dat (GB)|1280|1536|2 048|4 096|4 096|
 |Maximální velikost protokolu (GB)|427|512|683|1024|1024|
@@ -429,8 +429,8 @@ Pokud jsou všechny virtuální jádra elastického fondu zaneprázdněné, pak 
 |Maximální počet souběžných přihlášení na fond (požadavky) <sup>3</sup>|2 000|2 400|3 200|6 400|12 800|
 |Maximální počet souběžných relací|30000|30000|30000|30000|30000|
 |Počet replik|4|4|4|4|4|
-|Více AZ|Ne|Ne|Ne|Ne|Ne|
-|Škálování čtení|Ano|Ano|Ano|Ano|Ano|
+|Více AZ|No|No|No|No|No|
+|Škálování čtení|Yes|Yes|Yes|Yes|Yes|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 <sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 18814d23c634dc58148c26b67c2f669e22a136ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b84cbe57c40b12ae01952963b324b8bcfdcfd2e
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554290"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945477"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nuclino"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Nuclino
 
@@ -155,15 +155,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. Klikněte na **ikonu**.
 
-    ![Konfigurace Nuclino](./media/nuclino-tutorial/configure1.png)
+    ![Snímek obrazovky s ikonou "nabídka" vybranou vedle možnosti "Azure A D S S S O".](./media/nuclino-tutorial/configure1.png)
 
 5. Klikněte na **jednotné přihlašování Azure AD** a v rozevíracím seznamu vyberte **Nastavení týmu** .
 
-    ![Konfigurace Nuclino](./media/nuclino-tutorial/configure2.png)
+    ![Snímek obrazovky, který zobrazuje rozevírací seznam Azure A D S S s vybranými možnostmi "Nastavení týmu".](./media/nuclino-tutorial/configure2.png)
 
 6. V levém navigačním podokně vyberte **ověřování** .
 
-    ![Konfigurace Nuclino](./media/nuclino-tutorial/configure3.png)
+    ![Snímek obrazovky s vybraným ověřováním](./media/nuclino-tutorial/configure3.png)
 
 7. V části **ověřování** proveďte následující kroky:
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
 ms.openlocfilehash: c290904c9f4bc7dba70dad9351dc45b676e0c236
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88893686"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Použití zásad Azure Firewall k definování hierarchie pravidel
@@ -48,7 +48,7 @@ Vytvořte zásady pro každý tým aplikace:
 - Zásada brány firewall databáze. Zásady brány firewall databáze dědí základní zásady brány firewall.
 - Zásady brány firewall pro vývoj. Zásady pro technický firewall také dědí základní zásady brány firewall.
 
-:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Hierarchie zásad" border="false":::
+:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Týmy a požadavky" border="false":::
 
 ### <a name="create-custom-roles-to-access-the-rule-collection-groups"></a>Vytvoření vlastních rolí pro přístup ke skupinám kolekcí pravidel 
 
@@ -128,15 +128,15 @@ Váš soubor JSON by měl vypadat podobně jako v následujícím příkladu:
 
 ### <a name="list-custom-roles"></a>Výpis vlastních rolí
 
-Pokud chcete zobrazit seznam všech vlastních rolí, můžete použít příkaz Get-AzRoleDefinition:
+Chcete-li zobrazit seznam všech vlastních rolí, můžete použít příkaz Get-AzRoleDefinition:
 
    `Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom`
 
 Můžete také zobrazit vlastní role v Azure Portal. Přejděte do svého předplatného, vyberte **řízení přístupu (IAM)**, **role**.
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="SalesAppPolicy":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="Týmy a požadavky":::
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="Oprávnění ke čtení SalesAppPolicy":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="Týmy a požadavky":::
 
 Další informace najdete v tématu [kurz: Vytvoření vlastní role Azure pomocí Azure PowerShell](../role-based-access-control/tutorial-custom-role-powershell.md).
 

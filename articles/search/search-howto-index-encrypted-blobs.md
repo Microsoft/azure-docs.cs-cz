@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: 3330b4d5df366a5e886157e875f40d7e370c7442
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91543035"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Indexování šifrovaných objektů BLOB pomocí indexerů objektů BLOB a dovednosti v Azure Kognitivní hledání
@@ -31,7 +31,7 @@ Tato příručka používá post a rozhraní API REST pro vyhledávání k prov�
 
 Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto příkladu se předpokládá, že jste už soubory nahráli do Azure Blob Storage a jste je zašifroval v procesu. Pokud potřebujete pomáhat s tím, jak se nahrávají a zašifrují vaše soubory, přečtěte si [Tento kurz](../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md) .
 

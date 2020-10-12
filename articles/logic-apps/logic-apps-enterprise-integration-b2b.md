@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
 ms.openlocfilehash: afae49cf6ee44b138a55f58f415fc761308b7894
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542372"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Příjem a potvrzení zpráv B2B AS2 pomocí Azure Logic Apps a Enterprise Integration Pack
@@ -21,7 +21,7 @@ Když máte účet pro integraci, který definuje obchodní partnery a smlouvy, 
 
 Tento článek ukazuje, jak vytvořit aplikaci logiky, která přijímá požadavek HTTP pomocí triggeru žádosti, dekóduje obsah zprávy pomocí akcí AS2 a X12 a potom vrátí odpověď pomocí akce Response.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

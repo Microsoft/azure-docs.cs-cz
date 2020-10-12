@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 6e90e9c2ebbc6ba05e5778f618a5c3de02adf3ac
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542355"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>Jak vytvářet a spravovat repliky pro čtení v Azure Database for MariaDB pomocí prostředí PowerShell
@@ -22,7 +22,7 @@ V tomto článku se naučíte vytvářet a spravovat repliky pro čtení ve slu�
 
 Pomocí PowerShellu můžete vytvářet a spravovat repliky pro čtení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto průvodce budete potřebovat:
 
@@ -54,10 +54,10 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzMariaDbServerReplica`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které se vytvoří server repliky.  |
-| Název | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
+| Name | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
 
 Pokud chcete vytvořit repliku čtení ve více oblastech, použijte parametr **Location (umístění** ). V následujícím příkladu se vytvoří replika v oblasti **západní USA** .
 
@@ -83,7 +83,7 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMariaDReplica`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
 | ServerName | mydemoserver | Název nebo ID zdrojového serveru. |

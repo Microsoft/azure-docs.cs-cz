@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování S
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: 41511abaa071bd0f64ee699c52486b71ec036a68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5126159f2f9e5761b5f6a073972935101bc03210
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87926446"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946344"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Matice podpory pro zálohování SQL Server ve virtuálních počítačích Azure
 
@@ -22,7 +22,7 @@ Pomocí Azure Backup můžete zálohovat databáze SQL Server ve virtuálních p
 **Podporovaná nasazení** | Virtuální počítače Azure Marketplace a virtuální počítače mimo Marketplace (SQL Server ručně nainstalované) jsou podporované.
 **Podporované oblasti** | Austrálie – jihovýchod (pomocného mechanismu), východní Austrálie (AE), Austrálie – střed (AC), Austrálie – střed 2 (AC) <br> Brazílie – jih (BRS)<br> Kanada – střed (CNC), Kanada – východ (CE)<br> Jižní Východní Asie (moře), Východní Asie (EA) <br> Východní USA (EUS), Východní USA 2 (EUS2), Středozápadní USA (WCUS), Západní USA (WUS); Západní USA 2 (WUS 2) Střed USA – sever (NCUS) Střed USA (kapacitní jednotky) Střed USA – jih (SCUS) <br> Indie – střed (INC), Indie – jih (in), Indie – západ <br> Japonsko – východ (JPE), Japonsko – západ (JPW) <br> Korea – střed (KRC), Korea – jih (KRS) <br> Severní Evropa (NE), Západní Evropa <br> Velká Británie – jih (UKS), Velká Británie – západ (UKW) <br> US Gov – Arizona, US Gov – Virginie, US Gov – Texas, US DoD – střed US DoD – východ <br> Německo – sever Německo – středozápad <br> Švýcarsko – sever Švýcarsko – západ <br> Francie – střed <br> Čína – východ Čína – východ 2 Čína – sever Čína – sever 2
 **Podporované operační systémy** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> Linux není aktuálně podporován.
-**Podporované verze SQL Server** | SQL Server 2019 SQL Server 2017 na [stránce prohledat životní cyklus produktu](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 a SPS, jak je podrobně popsán na [stránce hledání životního cyklu produktu](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, web, Developer, Express.
+**Podporované verze SQL Server** | SQL Server 2019 SQL Server 2017 na [stránce prohledat životní cyklus produktu](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 a SPS, jak je podrobně popsán na [stránce hledání životního cyklu produktu](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, web, Developer, Express.<br><br>Verze Express Local DB se nepodporují.
 **Podporované verze rozhraní .NET** | Na virtuálním počítači je nainstalovaný .NET Framework 4.5.2 nebo novější.
 
 ## <a name="feature-considerations-and-limitations"></a>Hlediska a omezení funkcí
