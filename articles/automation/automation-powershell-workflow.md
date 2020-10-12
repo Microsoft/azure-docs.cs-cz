@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185992"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>Informace o pracovním postupu PowerShellu pro Azure Automation
@@ -76,7 +76,7 @@ $Service = Get-Service -Name MyService
 $Service.Stop()
 ```
 
-Pokud se pokusíte tento postup spustit v pracovním postupu, zobrazí se chybová zpráva.`Method invocation is not supported in a Windows PowerShell Workflow.`
+Pokud se pokusíte tento postup spustit v pracovním postupu, zobrazí se chybová zpráva. `Method invocation is not supported in a Windows PowerShell Workflow.`
 
 Jednou z možností je zabalit tyto dva řádky kódu do [InlineScript](#use-inlinescript) bloku. V tomto případě `Service` představuje objekt služby v rámci bloku.
 
@@ -261,7 +261,7 @@ Workflow Copy-Files
 }
 ```
 
-Vzhledem k tomu, že přihlašovací údaje uživatelského jména nejsou po volání aktivity [pozastavit-Workflow](/powershell/module/psworkflow/about/about_suspend-workflow) nebo po posledním kontrolním bodu zachovány, je třeba nastavit přihlašovací údaje na hodnotu null a pak je znovu načíst z úložiště Asset po `Suspend-Workflow` volání nebo zadání kontrolního bodu.  V opačném případě se může zobrazit následující chybová zpráva:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+Vzhledem k tomu, že přihlašovací údaje uživatelského jména nejsou po volání aktivity [pozastavit-Workflow](/powershell/module/psworkflow/about/about_suspend-workflow) nebo po posledním kontrolním bodu zachovány, je třeba nastavit přihlašovací údaje na hodnotu null a pak je znovu načíst z úložiště Asset po `Suspend-Workflow` volání nebo zadání kontrolního bodu.  V opačném případě se může zobrazit následující chybová zpráva: `The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 Následující stejný kód ukazuje, jak tuto situaci zpracovat ve vašich sadách Runbook pracovního postupu PowerShellu.
 

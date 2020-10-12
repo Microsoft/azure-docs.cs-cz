@@ -4,10 +4,10 @@ description: Tento článek poskytuje pokyny ke konfiguraci a nasazení živé a
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87071930"
 ---
 # <a name="production-readiness-and-best-practices"></a>Připravenost na produkční prostředí a osvědčené postupy
@@ -152,7 +152,7 @@ Virtuální počítač se systémem Linux, který používáte jako hraniční z
 1. `sudo apt-get autoremove1`
 
     Možnost automaticky odebrat odstraní balíčky, které byly automaticky nainstalovány, protože je vyžaduje jiný balíček, ale s odebranými balíčky již není potřeba.
-1. `sudo docker image ls`– Poskytuje seznam imagí Docker na hraničním systému
+1. `sudo docker image ls` – Poskytuje seznam imagí Docker na hraničním systému
 1. `sudo docker system prune `
 
     Docker využívá konzervativní přístup k vymazání nepoužívaných objektů (často označovaného jako "uvolňování paměti"), jako jsou obrázky, kontejnery, svazky a sítě: tyto objekty se většinou neodstraňují, pokud k tomu nechcete explicitně požádat Docker. Může to způsobit, že Docker použije dodatečné místo na disku. Pro každý typ objektu nabízí Docker příkaz k vyřazení. Kromě toho můžete použít vyřazení Docker System k vyčištění více typů objektů najednou. Další informace najdete v tématu [vyřazení nepoužívaných objektů Docker](https://docs.docker.com/config/pruning/).

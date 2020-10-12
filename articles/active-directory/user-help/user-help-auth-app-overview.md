@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
 ms.openlocfilehash: 7f4c09a32794e13b0e0041ee916401b714d8509e
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055227"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Co je aplikace Microsoft Authenticator?
@@ -37,7 +37,7 @@ Aplikaci Microsoft Authenticator můžete použít několika způsoby, mezi kter
 
 ## <a name="terminology"></a>Terminologie
 
-| Období|Popis|
+| Období|Description|
 | ----|-----------|
 | Dvojúrovňové ověřování | Proces ověření, který vyžaduje, abyste konkrétně použili jenom dvě části ověřovacích informací, jako je heslo a PIN kód. Aplikace Microsoft Authenticator podporuje standardní dvojúrovňové ověřování a přihlašování se všemi hesly. |
 | Multi-Factor Authentication (MFA) | Každé dvojúrovňové ověřování je Multi-Factor Authentication a vyžaduje, abyste v závislosti na požadavcích vaší organizace používali *aspoň* dvě části ověřovacích informací. |
@@ -71,7 +71,7 @@ V závislosti na typu účtu může vaše organizace rozhodnout, že je nutné p
 
 ## <a name="in-this-section"></a>V této části
 
-| Článek | Popis |
+| Článek | Description |
 | ------ | ------------ |
 | [Stažení a instalace aplikace](user-help-auth-app-download-install.md) | Popisuje, kde a jak získat a nainstalovat aplikaci Microsoft Authenticator pro zařízení s Androidem a iOS. |
 | [Přidat pracovní nebo školní účty](user-help-auth-app-add-work-school-account.md) | V této části najdete popis postupu přidání různých pracovních nebo školních a osobních účtů do aplikace Microsoft Authenticator. |

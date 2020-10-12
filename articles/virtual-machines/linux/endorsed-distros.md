@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/02/2020
 ms.author: guybo
 ms.openlocfilehash: f945c58b256c2a024a62b15a1bca1841483e1849
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91279429"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Schválené distribuce Linux v Azure
@@ -50,14 +50,14 @@ Azure vyžaduje, aby vydavatelé distribucí v systému Linux pravidelně aktual
 
 ## <a name="azure-tuned-kernels"></a>Jádra Azure – vyladěné jádro
 
-Azure úzce spolupracuje s různými schválenými distribucí pro Linux k optimalizaci imagí, které publikovali do Azure Marketplace. Jedním z aspektů této spolupráce je vývoj "vyladěných" jader pro Linux, které jsou optimalizované pro platformu Azure a dodávané jako plně podporované součásti distribuce systému Linux. Jádro optimalizované pro Azure zahrnují nové funkce a vylepšení výkonu a rychlejší (obvykle čtvrtletní) tempo ve srovnání s výchozími nebo obecnými jádry, které jsou dostupné z distribuce.
+Azure úzce spolupracuje s různými schválenými distribucí pro Linux k optimalizaci imagí, které publikovali do Azure Marketplace. Jedním z aspektů této spolupráce je vývoj "vyladěných" jader pro Linux, které jsou optimalizované pro platformu Azure a dodávané jako plně podporované součásti distribuce systému Linux. Azure-Tuned jádra zahrnují nové funkce a vylepšení výkonu a rychlejší (obvykle čtvrtletní) tempo ve srovnání s výchozími nebo obecnými jádry, které jsou dostupné z distribuce.
 
-Ve většině případů zjistíte, že tyto jádra jsou předem nainstalované na výchozích imagí v Azure Marketplace tak, aby zákazníci ihned získali výhody těchto optimalizovaných jader. Další informace o těchto jádrech vyladěných pro Azure najdete na následujících odkazech:
+Ve většině případů zjistíte, že tyto jádra jsou předem nainstalované na výchozích imagí v Azure Marketplace tak, aby zákazníci ihned získali výhody těchto optimalizovaných jader. Další informace o těchto Azure-Tuned jádra najdete v následujících odkazech:
 
-- [CentOS vyladěné v Azure – dostupné přes CentOS Virtualization SIG](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+- [CentOS Azure-Tuned jádro – dostupné přes CentOS Virtualization SIG](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
 - [Debian Cloud kernel – k dispozici s imagemi Debian 10 a Debian 9 v Azure](https://wiki.debian.org/Cloud/MicrosoftAzure)
-- [Jádro Azure s vyladěným SLES](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
-- [Jádro Azure s vyladěným Ubuntu](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+- [Jádro Azure-Tuned SLES](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+- [Jádro Azure-Tuned Ubuntu](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
 
 ## <a name="partners"></a>Partneři
 

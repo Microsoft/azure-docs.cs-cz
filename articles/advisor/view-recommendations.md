@@ -4,10 +4,10 @@ description: Zobrazení a filtrování Azure Advisor doporučení pro snížení
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 43bdaba7d774bba8857a6eb3ef296d7ab8e1c264
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986860"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>Podívejte se na Azure Advisor doporučení, která vás zajímají.
@@ -47,7 +47,7 @@ Azure Advisor umožňuje zrušit nebo odložit doporučení na jednom prostředk
 1. Vyberte doporučení ze seznamu doporučení.
 1. Pro doporučení, které chcete odložit nebo zavřít, vyberte posunout nebo zavřít.
 
-     :::image type="content" source="./media/view-recommendations/postpone-dismiss.png" alt-text="Snímek obrazovky okna použít Managed Disks, který zobrazuje akce vybrat sloupec a odložit a zavřít pro jedno doporučení.":::
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss.png" alt-text="Snímek obrazovky Azure Advisor znázorňující možnosti filtrování":::
 
 ### <a name="postpone-or-dismiss-a-multiple-recommendations-in-the-azure-portal"></a>Odložit nebo zavřít více doporučení v Azure Portal
 
@@ -57,7 +57,7 @@ Azure Advisor umožňuje zrušit nebo odložit doporučení na jednom prostředk
 1. Zaškrtněte políčko vlevo od řádku pro všechny prostředky, které chcete odložit, nebo toto doporučení zavřete.
 1. V levém horním rohu tabulky vyberte **Posunout** nebo **Zavřít** .
 
-     :::image type="content" source="./media/view-recommendations/postpone-dismiss-multiple.png" alt-text="Snímek obrazovky okna použít Managed Disks znázorňující akce vybrat sloupec a odložit a zavřít v levém horním rohu zvýrazněné tabulky":::
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss-multiple.png" alt-text="Snímek obrazovky Azure Advisor znázorňující možnosti filtrování":::
 
 > [!NOTE]
 > K zavření nebo odložení doporučení potřebujete oprávnění Přispěvatel nebo Owner. Přečtěte si další informace o oprávněních v Azure Advisor.
@@ -73,7 +73,7 @@ Můžete aktivovat doporučení, které bylo odloženo nebo zavřeno. Tuto akci 
 
 1. Změňte filtr na panelu přehled na **odloženo**. Poradce pak zobrazí odložená nebo odložených doporučení.
 
-    :::image type="content" source="./media/view-recommendations/activate-postponed.png" alt-text="Snímek obrazovky okna Azure Advisor znázorňující vybrané odložení rozevírací nabídky":::
+    :::image type="content" source="./media/view-recommendations/activate-postponed.png" alt-text="Snímek obrazovky Azure Advisor znázorňující možnosti filtrování":::
 
 1. Vyberte kategorii pro zobrazení **odložených** a **chybějících** doporučení.
 
@@ -81,7 +81,7 @@ Můžete aktivovat doporučení, které bylo odloženo nebo zavřeno. Tuto akci 
 
 1. Na konci řádku klikněte na **aktivovat** . Po kliknutí se doporučení pro daný prostředek aktivuje a pak se z této tabulky odebere. Doporučení se teď zobrazuje na **aktivní** kartě.
  
-     :::image type="content" source="./media/view-recommendations/activate-postponed-2.png" alt-text="Snímek obrazovky okna Povolit obnovitelné odstranění zobrazující odloženou & kartu s zvýrazněnou akcí aktivovat":::
+     :::image type="content" source="./media/view-recommendations/activate-postponed-2.png" alt-text="Snímek obrazovky Azure Advisor znázorňující možnosti filtrování":::
 
 ## <a name="next-steps"></a>Další kroky
 

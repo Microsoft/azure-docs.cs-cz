@@ -14,10 +14,10 @@ ms.date: 06/25/2020
 ms.author: kumud
 ms.reviewer: anavin
 ms.openlocfilehash: 88e576231e0231a105cd9ec303f63307b5eaff89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87051627"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí – různé modely nasazení a odběry
@@ -72,7 +72,7 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
     - **Umístění**: *východní USA*
 
 14. Do pole **Hledat prostředky** v horní části portálu zadejte *myVnetB*. Po zobrazení ve výsledcích hledání klikněte na **myVnetB** . Zobrazí se okno pro virtuální síť **myVnetB** .
-15. V zobrazeném okně **myVnetB** klikněte na **vlastnosti** ze svislého seznamu možností na levé straně okna. Zkopírujte **ID prostředku**, které se používá v pozdějším kroku. ID prostředku je podobné jako v následujícím příkladu:`/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`
+15. V zobrazeném okně **myVnetB** klikněte na **vlastnosti** ze svislého seznamu možností na levé straně okna. Zkopírujte **ID prostředku**, které se používá v pozdějším kroku. ID prostředku je podobné jako v následujícím příkladu: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`
 16. Proveďte kroky 5-9 pro myVnetB, a to zadáním **Usera** v kroku 8.
 17. Odhlaste se z portálu jako UserB a přihlaste se jako UserA.
 18. Do pole **Hledat prostředky** v horní části portálu zadejte *myVnetA*. Po zobrazení ve výsledcích hledání klikněte na **myVnetA** . Zobrazí se okno pro virtuální síť **myVnet** .
@@ -272,7 +272,7 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
 ## <a name="delete-resources"></a><a name="delete"></a>Odstranění prostředků
 Po dokončení tohoto kurzu možná budete chtít odstranit prostředky, které jste v tomto kurzu vytvořili, takže se vám neúčtují poplatky za využití. Odstraněním skupiny prostředků se odstraní také všechny prostředky, které jsou ve skupině prostředků.
 
-### <a name="azure-portal"></a><a name="delete-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a><a name="delete-portal"></a>Azure Portal
 
 1. Do vyhledávacího pole portálu zadejte **myResourceGroupA**. Ve výsledcích hledání klikněte na **myResourceGroupA**.
 2. V okně **myResourceGroupA** klikněte na ikonu **Odstranit** .

@@ -13,10 +13,10 @@ ms.author: mathoma
 ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
 ms.openlocfilehash: df10e2b674a8e97766ee96a802e614e2bd797b7b
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617736"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL do skupiny převzetí služeb při selhání
@@ -1097,7 +1097,7 @@ Vyčistěte prostředky tak, že nejprve odstraníte spravované instance, potom
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Skupinu prostředků budete muset odebrat dvakrát. Při prvním odebrání skupiny prostředků se spravované instance a virtuální clustery odstraní, ale chybová zpráva se pak nezdaří `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'` . Spusťte příkaz Remove-AzResourceGroup a podruhé odstraňte všechny zbývající prostředky i skupinu prostředků.
+Skupinu prostředků budete muset odebrat dvakrát. Při prvním odebrání skupiny prostředků se spravované instance a virtuální clustery odstraní, ale chybová zpráva se pak nezdaří `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'` . Pokud chcete odebrat všechny zbývající prostředky i skupinu prostředků, spusťte příkaz Remove-AzResourceGroup a podruhé.
 
 ```powershell-interactive
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName

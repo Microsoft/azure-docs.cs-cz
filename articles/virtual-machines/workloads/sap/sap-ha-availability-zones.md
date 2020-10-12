@@ -17,10 +17,10 @@ ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653592"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfigurace úloh SAP s využitím služby Zóny dostupnosti Azure
@@ -114,7 +114,7 @@ Pro tuto konfiguraci platí následující požadavky:
   - Pro Windows se jedná o Clusterové řešení, které používá s DataKeeper, jak je popsáno v [clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru v Azure](./sap-high-availability-guide-wsfc-shared-disk.md).
   - Pro SUSE Linux se jedná o sdílenou složku NFS, která je popsána jako popsaná ve [vysoké dostupnosti pro systém souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md).
     
-    V současné době se řešení, které používá Microsoft Souborový server se škálováním na více systémů, popsané v části [Příprava infrastruktury Azure pro SAP s vysokou dostupností pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instance SAP ASCS/SCS](./sap-high-availability-infrastructure-wsfc-file-share.md), nepodporuje napříč zónami.
+    V současné době se řešení, které používá Microsoft Scale-Out souborový server, popsané v části [Příprava infrastruktury Azure pro SAP high availability pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instance SAP ASCS/SCS](./sap-high-availability-infrastructure-wsfc-file-share.md), nepodporuje napříč zónami.
 - Třetí zóna se používá k hostování zařízení SBD pro případ, že vytvoříte [cluster SUSE Linux Pacemaker](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) nebo další instance aplikace.
 - Aby byla zajištěna konzistence za běhu pro kritické obchodní procesy, můžete se pokusit směrovat určité úlohy služby Batch a uživatele do instancí aplikace, které jsou v zóně s aktivní instancí DBMS, pomocí skupin systému SAP Batch, skupin přihlášení SAP nebo skupin RFC. V případě převzetí služeb při selhání však budete muset tyto skupiny ručně přesunout na instance spuštěné na virtuálních počítačích, které jsou v zóně s aktivním virtuálním počítačem databáze.  
 - V každé z zón můžete chtít nasadit instance nespících dialogových oken. Je tak umožněn okamžitý návrat k dřívější kapacitě prostředků, pokud je zóna, kterou používá část instancí vaší aplikace, mimo provoz.
@@ -142,7 +142,7 @@ Pro tuto konfiguraci platí následující požadavky:
     - Pro Windows se jedná o Clusterové řešení, které používá s DataKeeper, jak je popsáno v [clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru v Azure](./sap-high-availability-guide-wsfc-shared-disk.md).
     - Pro SUSE Linux se jedná o sdílenou složku NFS, která je popsána jako popsaná ve [vysoké dostupnosti pro systém souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md).
     
-  V současné době se řešení, které používá Microsoft Souborový server se škálováním na více systémů, popsané v části [Příprava infrastruktury Azure pro SAP s vysokou dostupností pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instance SAP ASCS/SCS](./sap-high-availability-infrastructure-wsfc-file-share.md), nepodporuje napříč zónami.
+  V současné době se řešení, které používá Microsoft Scale-Out souborový server, popsané v části [Příprava infrastruktury Azure pro SAP high availability pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instance SAP ASCS/SCS](./sap-high-availability-infrastructure-wsfc-file-share.md), nepodporuje napříč zónami.
 - Třetí zóna se používá k hostování zařízení SBD pro případ, že vytvoříte [cluster SUSE Linux Pacemaker](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) nebo další instance aplikace.
 - Měli byste nasadit neaktivní virtuální počítače v pasivní zóně (ze zobrazení bod DBMS), abyste mohli v případě selhání zóny spustit prostředky aplikace.
     - [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) aktuálně nedokáže replikovat aktivní virtuální počítače na neaktivní virtuální počítače mezi zónami. 
@@ -172,7 +172,7 @@ Pro tuto konfiguraci platí následující požadavky:
     - Pro Windows se jedná o Clusterové řešení, které používá s DataKeeper, jak je popsáno v [clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru v Azure](./sap-high-availability-guide-wsfc-shared-disk.md).
     - Pro SUSE Linux se jedná o sdílenou složku NFS, která je popsána jako popsaná ve [vysoké dostupnosti pro systém souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md).
 
-  V současné době se řešení, které používá Microsoft Souborový server se škálováním na více systémů, popsané v části [Příprava infrastruktury Azure pro SAP s vysokou dostupností pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instance SAP ASCS/SCS](./sap-high-availability-infrastructure-wsfc-file-share.md), nepodporuje napříč zónami.
+  V současné době se řešení, které používá Microsoft Scale-Out souborový server, popsané v části [Příprava infrastruktury Azure pro SAP high availability pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instance SAP ASCS/SCS](./sap-high-availability-infrastructure-wsfc-file-share.md), nepodporuje napříč zónami.
 - Třetí zóna se používá k hostování zařízení SBD pro případ, že vytvoříte [cluster SUSE Linux Pacemaker](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) nebo další instance aplikace.
 
 

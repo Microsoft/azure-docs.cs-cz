@@ -4,10 +4,10 @@ description: Tento článek poskytuje doporučené konfigurace Apache Kafka pro 
 ms.topic: reference
 ms.date: 07/20/2020
 ms.openlocfilehash: f9a03d1d3433461a575b32cd69893408a8b0ef97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096644"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>Doporučené konfigurace pro klienty Apache Kafka
@@ -60,8 +60,8 @@ Vlastnost | Doporučené hodnoty | Povolený rozsah | Poznámky
 Vlastnost | Doporučené hodnoty | Povolený rozsah | Poznámky
 ---|---:|-----:|---
 `retries` | > 0 | | Výchozí hodnota je 2. Tuto hodnotu Doporučujeme zachovat. 
-`request.timeout.ms` | 30000... 60000 | > 20000| EH interně nastaví jako výchozí minimální hodnotu 20 000 ms.  `librdkafka`Výchozí hodnota je 5000, což může být problematické. *I když jsou požadavky s nižšími hodnotami časového limitu přijaty, chování klienta není zaručeno.*
-`partitioner` | `consistent_random` | Viz dokumentace k librdkafka | `consistent_random`je výchozí a nejlepší.  Prázdné a null klíče jsou ve většině případů zpracovávány v ideálním případě.
+`request.timeout.ms` | 30000... 60000 | > 20000| EH interně nastaví jako výchozí minimální hodnotu 20 000 ms.  `librdkafka` Výchozí hodnota je 5000, což může být problematické. *I když jsou požadavky s nižšími hodnotami časového limitu přijaty, chování klienta není zaručeno.*
+`partitioner` | `consistent_random` | Viz dokumentace k librdkafka | `consistent_random` je výchozí a nejlepší.  Prázdné a null klíče jsou ve většině případů zpracovávány v ideálním případě.
 `enable.idempotence` | false (nepravda) | | Idempotence se v tuto chvíli nepodporuje.
 `compression.codec` | `none` || Komprese aktuálně není podporována.
 

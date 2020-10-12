@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 82114164d70eae71678e70ff2bdb7ea44a54d4cd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076300"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Řízení zabezpečení: protokolování a sledování
@@ -34,7 +34,7 @@ Microsoft udržuje časové zdroje pro prostředky Azure, ale máte možnost spr
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 2,2 | 6,5, 6,6 | Customer (Zákazník) |
+| 2,2 | 6,5, 6,6 | Zákazník |
 
 Ingestování protokolů prostřednictvím Azure Monitor k agregaci dat zabezpečení generovaných zařízeními koncového bodu, síťovými prostředky a dalšími systémy zabezpečení. V rámci Azure Monitor Používejte pracovní prostory Log Analytics k dotazování a provádění analýz a používejte účty Azure Storage pro dlouhodobé nebo archivní úložiště.
 
@@ -52,7 +52,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 2.3 | 6,2, 6,3 | Customer (Zákazník) |
+| 2.3 | 6,2, 6,3 | Zákazník |
 
 Povolte nastavení diagnostiky prostředků Azure pro přístup k protokolům auditu, zabezpečení a diagnostickým protokolům. Protokoly aktivit, které jsou automaticky k dispozici, zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky.
 
@@ -64,7 +64,7 @@ Povolte nastavení diagnostiky prostředků Azure pro přístup k protokolům au
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 2,4 | 6,2, 6,3 | Customer (Zákazník) |
+| 2,4 | 6,2, 6,3 | Zákazník |
 
 Pokud je výpočetní prostředek vlastněn společností Microsoft, zodpovídá za jeho monitorování společnost Microsoft. Pokud je výpočetní prostředek vlastněn vaší organizací, máte zodpovědnost za jeho monitorování. Pomocí Azure Security Center můžete monitorovat operační systém. Data shromažďovaná Security Center z operačního systému zahrnují typ a verzi operačního systému, operační systém (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel. Agent Log Analytics také shromažďuje soubory s výpisem stavu systému.
 
@@ -76,7 +76,7 @@ Pokud je výpočetní prostředek vlastněn společností Microsoft, zodpovídá
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 2.5 | 6.4 | Customer (Zákazník) |
+| 2,5 | 6.4 | Zákazník |
 
 V rámci Azure Monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
@@ -88,7 +88,7 @@ V rámci Azure Monitor nastavte dobu uchování pracovního prostoru Log Analyti
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 2,6 | 6.7 | Customer (Zákazník) |
+| 2,6 | 6.7 | Zákazník |
 
 Analyzujte a monitorujte protokoly pro neobvyklé chování a pravidelně kontrolujte výsledky. Pomocí Log Analytics pracovního prostoru Azure Monitor můžete prohlížet protokoly a provádět dotazy na data protokolu.
 
@@ -104,7 +104,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo jiného d
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 2.7 | 6.8 | Customer (Zákazník) |
+| 2.7 | 6.8 | Zákazník |
 
 Pro monitorování a upozorňování na aktivitu neobvyklé nalezené v protokolech zabezpečení a událostech použijte Azure Security Center s Log Analytics pracovním prostorem.
 
@@ -120,7 +120,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 2,8 | 8.6 | Customer (Zákazník) |
+| 2,8 | 8.6 | Zákazník |
 
 Povolte shromažďování antimalwarových událostí pro Azure Virtual Machines a Cloud Services.
 
@@ -134,7 +134,7 @@ Povolte shromažďování antimalwarových událostí pro Azure Virtual Machines
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 2.9 | 8.7 | Customer (Zákazník) |
+| 2.9 | 8.7 | Zákazník |
 
 Implementujte řešení od jiného výrobce z Azure Marketplace pro řešení protokolování DNS podle potřeby vaší organizace.  
 
@@ -142,7 +142,7 @@ Implementujte řešení od jiného výrobce z Azure Marketplace pro řešení pr
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 2.10 | 8.8 | Customer (Zákazník) |
+| 2.10 | 8.8 | Zákazník |
 
 Pomocí Microsoft Monitoring Agent na všech podporovaných virtuálních počítačích Azure s Windows Zaprotokolujte událost vytvoření procesu a pole CommandLine.   U podporovaných virtuálních počítačů se systémem Azure Linux můžete ručně nakonfigurovat protokolování konzoly na bázi jednotlivých uzlů a pomocí protokolu syslog ukládat data.  K prohlížení protokolů a provádění dotazů na protokolovaných datech z virtuálních počítačů Azure taky použijte pracovní prostor Azure Monitor Log Analytics. 
 

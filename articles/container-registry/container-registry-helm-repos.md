@@ -4,10 +4,10 @@ description: Naučte se ukládat Helm grafy pro aplikace Kubernetes pomocí úlo
 ms.topic: article
 ms.date: 06/12/2020
 ms.openlocfilehash: 69b16f35589586787e1c31a0e9755b9030af755d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537863"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Vložení a vyžádání Helm grafů do služby Azure Container Registry
@@ -33,7 +33,7 @@ Helm 3 by se měly použít k hostování Helm grafů v Azure Container Registry
 > [!NOTE]
 > Od Helm 3 se nepoužívají příkazy [AZ ACR Helm][az-acr-helm] pro použití s klientem Helm 2. Seznamte se s [plánem produktu](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga). Pokud jste již dříve nasadili grafy Helm 2, přečtěte si téma [migrace Helm v2 na V3](https://helm.sh/docs/topics/v2_v3_migration/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro scénář v tomto článku jsou potřeba tyto prostředky:
 
@@ -171,7 +171,7 @@ Výstup se podobá tomuto:
 }
 ```
 
-Spuštěním příkazu [AZ ACR úložiště show-Manifests][az-acr-repository-show-manifests] zobrazíte podrobnosti o grafu, který je uložený v úložišti. Příklad:
+Spuštěním příkazu [AZ ACR úložiště show-Manifests][az-acr-repository-show-manifests] zobrazíte podrobnosti o grafu, který je uložený v úložišti. Například:
 
 ```azurecli
 az acr repository show-manifests \
@@ -239,7 +239,7 @@ version: 0.1.0
 
 ## <a name="install-helm-chart"></a>Nainstalovat graf Helm
 
-Spusťte `helm install` pro instalaci grafu Helm, který jste si vyžádali do místní mezipaměti a exportovali. Zadejte název verze, například *myhelmtest*, nebo předejte `--generate-name` parametr. Příklad:
+Spusťte `helm install` pro instalaci grafu Helm, který jste si vyžádali do místní mezipaměti a exportovali. Zadejte název verze, například *myhelmtest*, nebo předejte `--generate-name` parametr. Například:
 
 ```console
 helm install myhelmtest ./hello-world

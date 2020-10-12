@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
 ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236569"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
@@ -42,7 +42,7 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 |**Azure SQL Database**|Azure SQL Database *samostatná databáze*| Pokud není výslovně uvedeno jinak, název produktu Azure SQL Database zahrnuje jak izolované databáze, tak databáze nasazené do elastického fondu. |
 |**Azure SQL Database**|Azure SQL Database *elastický fond*| Pokud není výslovně uvedeno jinak, název produktu Azure SQL Database zahrnuje jak izolované databáze, tak databáze nasazené do elastického fondu.  |
 |**Azure SQL Database** |Azure SQL Database | I když termín zůstává stejný, vztahuje se nyní jenom na nasazení s izolovanými databázemi a elastickými fondy a nezahrnuje spravovanou instanci. |
-| **Azure SQL**| – | To se týká řady SQL Serverch produktů databázového stroje, které jsou k dispozici v Azure: Azure SQL Database, Azure SQL Managed instance a SQL Server na virtuálních počítačích Azure. | 
+| **Azure SQL**| Není k dispozici | To se týká řady SQL Serverch produktů databázového stroje, které jsou k dispozici v Azure: Azure SQL Database, Azure SQL Managed instance a SQL Server na virtuálních počítačích Azure. | 
 
 ## <a name="features-in-public-preview"></a>Funkce ve verzi Public Preview
 

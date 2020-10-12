@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0b5e1db2c86f6118c3cd333974c9cfd64f747128
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908652"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Přidat Facebook jako zprostředkovatele identity pro externí identity
@@ -92,7 +92,7 @@ Můžete odstranit nastavení federace pro Facebook. Pokud to uděláte, všichn
 
 ### <a name="to-delete-facebook-federation-by-using-powershell"></a>Odstranění federace Facebooku pomocí prostředí PowerShell: 
 1. Nainstalujte nejnovější verzi Azure AD PowerShellu pro modul Graph ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)).
-2. Spusťte `Connect-AzureAD`.  
+2. Spusťte příkaz `Connect-AzureAD`.  
 4. V příkazovém řádku pro přihlášení se přihlaste pomocí účtu spravovaného globálního správce.  
 5. Zadejte následující příkaz:
 

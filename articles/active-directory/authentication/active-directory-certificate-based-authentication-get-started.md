@@ -13,10 +13,10 @@ ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87051342"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Začínáme s ověřováním pomocí certifikátů v Azure Active Directory
@@ -184,7 +184,7 @@ Následující kroky popisují proces aktualizace a devalidace autorizačního t
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
 ```
 
-Datum, které nastavíte, musí být v budoucnosti. Pokud datum není v budoucnu, vlastnost **StsRefreshTokensValidFrom** není nastavena. Pokud je datum v budoucnosti, **StsRefreshTokensValidFrom** je nastaveno na aktuální čas (nikoli datum uvedené v příkazu set-MsolUser).
+Datum, které nastavíte, musí být v budoucnosti. Pokud datum není v budoucnu, vlastnost **StsRefreshTokensValidFrom** není nastavena. Pokud je datum v budoucnosti, **StsRefreshTokensValidFrom** je nastaveno na aktuální čas (nikoli datum uvedené Set-MsolUser příkazu).
 
 ## <a name="step-4-test-your-configuration"></a>Krok 4: otestování konfigurace
 

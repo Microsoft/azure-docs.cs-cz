@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: b9b72e8340722f8ddc97b3769ce22e607974a508
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297395"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Připojení k Media Services V3 API – .NET
@@ -48,7 +48,7 @@ Ukázková aplikace v tomto tématu cílí na cíle `netcoreapp2.0` . Kód použ
 1. V aplikaci Visual Studio vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce NuGet**.
 2. V okně **konzoly Správce balíčků** `Install-Package` přidejte následující balíčky NuGet pomocí příkazu. Například, `Install-Package Microsoft.Azure.Management.Media`.
 
-|Balíček|Popis|
+|Balíček|Description|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Abyste měli jistotu, že používáte nejnovější balíček Azure Media Services, zkontrolujte [Microsoft. Azure. Management. Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
 |`Microsoft.Rest.ClientRuntime.Azure.Authentication`|Knihovna ověřování ADAL pro sadu Azure SDK pro NET|

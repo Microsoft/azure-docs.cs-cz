@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87090208"
 ---
 # <a name="collaborative-coding-with-git"></a>Kódování založené na spolupráci s využitím Gitu
@@ -49,7 +49,7 @@ git checkout <working branch name>
 
 Po přepnutí do pracovní větve můžete začít vyvíjet artefakty kódu nebo dokumentace a dokončit tak pracovní položku. Přepínání se spouští `git checkout master` zpátky do `master` větve.
 
-Je dobrým zvykem vytvořit větev Git pro každou pracovní položku uživatelského scénáře. Pak můžete pro každou pracovní položku úkolu vytvořit větev na základě větve uživatelského scénáře. Uspořádejte větve v hierarchii, které odpovídají vztahu uživatelský scénář – úkol, pokud máte více lidí pracujících v různých uživatelských scénářích pro stejný projekt nebo v různých úlohách pro stejný uživatelský scénář. Můžete minimalizovat konflikty tím, že každý člen týmu pracuje na jiné větvi nebo v jiném kódu nebo jiné artefakty při sdílení větve. 
+Je dobrým zvykem vytvořit větev Git pro každou pracovní položku uživatelského scénáře. Pak můžete pro každou pracovní položku úkolu vytvořit větev na základě větve uživatelského scénáře. Uspořádejte větve v hierarchii, které odpovídají relaci uživatele Story-Task, když máte více lidí pracujících v různých uživatelských scénářích pro stejný projekt nebo v různých úlohách pro stejný uživatelský scénář. Můžete minimalizovat konflikty tím, že každý člen týmu pracuje na jiné větvi nebo v jiném kódu nebo jiné artefakty při sdílení větve. 
 
 Následující diagram znázorňuje doporučenou strategii větvení pro TDSP. Možná nebudete potřebovat tolik větví, jak je znázorněno zde, zejména v případě, že na projektu pracuje pouze jedna nebo dvě osoby, nebo pouze jedna osoba pracuje na všech úkolech uživatelského scénáře. Ale oddělení vývojové větve od primární větve je vždycky dobrým zvykem a může přispět k tomu, aby se větev vydaných verzí přerušila vývojovým aktivitami. Úplný popis modelu větve Git najdete v [úspěšném modelu větvení Git](https://nvie.com/posts/a-successful-git-branching-model/).
 
@@ -72,7 +72,7 @@ git push origin script
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## <a name="create-a-pull-request"></a><a name='CreateapullrequestonVSTS-3'></a>Vytvoření žádosti o přijetí změn
+## <a name="create-a-pull-request"></a><a name='CreateapullrequestonVSTS-3'></a>Vytvoření žádosti o získání dat
 
 Po jednom nebo několika potvrzeních a nabízených oznámeních, až budete připraveni k sloučení aktuální pracovní větve do své základní větve, můžete vytvořit a odeslat *žádost o* přijetí změn v Azure Repos. 
 

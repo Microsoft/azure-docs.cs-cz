@@ -7,10 +7,10 @@ ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86129929"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolení replikace do Azure pro virtuální počítače VMware
@@ -73,16 +73,16 @@ Pokud chcete povolit replikaci, postupujte následovně:
 
    Vyberte **Konfigurovat pro vybrané počítače** a použijte nastavení sítě na všechny virtuální počítače, které jste vybrali pro ochranu. Pokud chcete vybrat síť Azure na virtuální počítač, vyberte **Konfigurovat později** . Pokud nemáte síť, musíte ji vytvořit. Pokud chcete vytvořit síť pomocí Azure Resource Manager, vyberte **vytvořit novou**. Vyberte podsíť, pokud je k dispozici, a pak vyberte **OK**.
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="Povolit cílové okno replikace":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="Povolit okno zdroje replikace":::
 
 1. Pro **virtuální počítače**  >  **vyberte virtuální**počítače a vyberte všechny virtuální počítače, které chcete replikovat. Můžete vybrat jenom virtuální počítače, pro které je možné povolit replikaci. Pak vyberte **OK**. Pokud nemůžete zobrazit nebo vybrat žádný konkrétní virtuální počítač, přečtěte si téma [zdrojový počítač není uveden v Azure Portal](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication) k vyřešení problému.
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="Povolit okno Vybrat virtuální počítače pro replikaci":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="Povolit okno zdroje replikace":::
 
 1. V části **vlastnosti**  >  **Konfigurace vlastností**vyberte účet, který procesový Server používá k automatické instalaci služby Site Recovery mobility na virtuálním počítači. Také vyberte typ cílového spravovaného disku, který se má použít pro replikaci na základě vzorů četnosti změn dat.
 1. Ve výchozím nastavení se replikují všechny disky zdrojového virtuálního počítače. Pokud chcete vyloučit disky z replikace, zrušte zaškrtnutí políčka **Zahrnout** pro všechny disky, které nechcete replikovat. Pak vyberte **OK**. Později můžete nastavit další vlastnosti. [Přečtěte si další informace](vmware-azure-exclude-disk.md) o vyloučení disků.
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="Povolit okno pro konfiguraci replikace – vlastnosti":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="Povolit okno zdroje replikace":::
 
 1. V **nastavení replikace**  >  **nakonfigurujte nastavení replikace**a ověřte, jestli je vybraná správná zásada replikace. Nastavení zásad replikace můžete upravit nastavením zásady **Settings**  >  **replikace**nastavení  >  _název_  >  **Upravit nastavení**. Změny použité u zásad platí taky pro replikaci a nové virtuální počítače.
 1. Pokud chcete shromáždit virtuální počítače do replikační skupiny, povolte **konzistenci pro víc virtuálních počítačů**. Zadejte název skupiny a pak vyberte **OK**.
@@ -91,7 +91,7 @@ Pokud chcete povolit replikaci, postupujte následovně:
    > - Virtuální počítače v replikační skupině se replikují společně a mají při převzetí služeb při selhání sdílené body obnovení konzistentní s havárií a konzistentní vzhledem k aplikacím.
    > - Shromážděte virtuální počítače a fyzické servery tak, aby zrcadlí vaše úlohy. Povolení konzistence s více virtuálními počítači může mít vliv na výkon úloh. To udělejte jenom v případě, že virtuální počítače používají stejnou úlohu a potřebujete konzistenci.
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="Povolit okno replikace":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="Povolit okno zdroje replikace":::
 
 1. Vyberte **Povolit replikaci**. Průběh úlohy **Povolení ochrany** můžete sledovat v části **Nastavení**  >  **úlohy**  >  **Site Recovery úlohy**. Po spuštění úlohy **Dokončit ochranu** je virtuální počítač připravený na převzetí služeb při selhání.
 
@@ -103,7 +103,7 @@ Pak ověřte vlastnosti zdrojového virtuálního počítače. Pamatujte, že n�
 1. V části **vlastnosti**můžete zobrazit informace o replikaci a převzetí služeb při selhání pro virtuální počítač.
 1. V **výpočetních a síťových**  >  **výpočetních vlastnostech**můžete změnit více vlastností virtuálního počítače.
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="Okno Vlastnosti výpočtů a sítě":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="Povolit okno zdroje replikace":::
 
    - **Název virtuálního počítače Azure**: v případě potřeby upravte název tak, aby splňoval požadavky Azure.
    - **Velikost cílového virtuálního počítače nebo typ virtuálního**počítače: výchozí velikost virtuálního počítače se volí na základě parametrů, které zahrnují počet disků, počet síťových adaptérů, počet jader procesoru, paměť a dostupné velikosti rolí virtuálních počítačů v cílové oblasti Azure. Azure Site Recovery vybírá první dostupnou velikost virtuálního počítače, která splňuje všechna kritéria. V závislosti na vašich potřebách můžete kdykoli vybrat jinou velikost virtuálního počítače před převzetím služeb při selhání. Velikost disku virtuálního počítače je taky založená na velikosti zdrojového disku a dá se změnit jenom po převzetí služeb při selhání. Přečtěte si další informace o velikostech disků a frekvenci IOPS při [škálovatelnosti a cílech výkonu pro disky virtuálních počítačů ve Windows](../virtual-machines/windows/disk-scalability-targets.md).

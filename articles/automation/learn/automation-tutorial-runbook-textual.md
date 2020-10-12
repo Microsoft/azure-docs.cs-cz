@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.openlocfilehash: 613ce41820dc5f388af441836bdb4a93e43e5d07
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987633"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>Kurz: vytvoření Runbooku pracovního postupu PowerShellu
@@ -113,13 +113,13 @@ Sada Runbook, kterou jste vytvořili, je stále v režimu konceptu. Abyste ho mo
 
 7. Jakmile se stav Runbooku zobrazí dokončeno, klikněte na **výstup**. Otevře se stránka výstup, kde můžete zobrazit vaši `Hello World` zprávu.
 
-   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png" alt-text="Snímek obrazovky s zvýrazněným tlačítkem výstup na panelu úloh sady Runbook":::
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png" alt-text="Snímek obrazovky s podoknem úloh sady Runbook zobrazující zvýrazněný oddíl souhrnu úlohy":::
 
 8. Zavřete výstupní stránku.
 
 9. Klikněte na **Všechny protokoly** a otevřete podokno Datové proudy, které patří k úloze runbooku. Měla by se zobrazit jenom `Hello World` ve výstupním datovém proudu. Všimněte si, že podokno streamy může zobrazit další datové proudy pro úlohu Runbooku, jako jsou například podrobné a chybové streamy, pokud je do nich zapisuje sada Runbook.
 
-   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png" alt-text="Snímek obrazovky s panelem úloh sady Runbook zobrazující zvýrazněné tlačítko všechny protokoly":::
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png" alt-text="Snímek obrazovky s podoknem úloh sady Runbook zobrazující zvýrazněný oddíl souhrnu úlohy":::
 
 10. Zavřete podokno streamy a podokno úloh a vraťte se na stránku MyFirstRunbook.
 
@@ -136,7 +136,7 @@ Runbook jste otestovali a publikovali, ale zatím nedělá nic užitečného. Ch
 >[!NOTE]
 >Pro PowerShellové Runbooky `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro `Connect-AzAccount` . Tyto rutiny můžete použít nebo můžete [své moduly](../automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation.
 
-1. Přejděte na stránku MyFirstRunbook-workflow a otevřete textový Editor kliknutím na **Upravit**.
+1. Přejděte na stránku MyFirstRunbook-Workflow a otevřete textový Editor kliknutím na **Upravit**.
 
 2. Odstraňte `Write-Output` řádek.
 

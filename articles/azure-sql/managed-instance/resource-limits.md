@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
 ms.openlocfilehash: 71392b652f305f085e8eddbfe75e0585a756bc4a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618110"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Přehled omezení prostředků spravované instance Azure SQL
@@ -36,7 +36,7 @@ SQL Managed instance má charakteristiky a omezení prostředků, které závis�
 | **Hardware** | Procesory Intel® E5-2673 V3 (Haswell) 2,4 GHz, připojené SSD vCore = 1 PP (fyzický jádro) | Intel® E5-2673 v4 (Broadwell) 2,3 GHz, Intel® SP-8160 (Skylake) a Intel® 8272CL (Cascade Lake) 2,5 GHz, rychlá NVMe SSD, vCore = 1 LP (Hyper-thread) |
 | **Počet virtuálních jader** | 8, 16, 24 virtuální jádra | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
 | **Maximální velikost paměti (poměr paměti/jádra)** | 7 GB na vCore<br/>Přidejte další virtuální jádra, abyste získali více paměti. | 5,1 GB na vCore<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
-| **Maximální paměť OLTP v paměti** | Limit instance: 1 – 1,5 GB na vCore| Limit instance: 0,8 – 1,65 GB na vCore |
+| **Maximální In-Memory paměť OLTP** | Limit instance: 1 – 1,5 GB na vCore| Limit instance: 0,8 – 1,65 GB na vCore |
 | **Maximální rezervované úložiště instancí** |  Pro obecné účely: 8 TB<br/>Pro důležité obchodní informace: 1 TB | Pro obecné účely: 8 TB<br/> V závislosti na počtu jader Pro důležité obchodní informace 1 TB, 2 TB nebo 4 TB. |
 
 > [!IMPORTANT]
@@ -90,7 +90,7 @@ Služba SQL Managed instance má dvě úrovně služeb: [pro obecné účely](..
 Několik dalších důležitých informací: 
 
 - **Aktuálně dostupná velikost úložiště instance** je rozdíl mezi rezervovanou velikostí instance a využitým prostorem úložiště.
-- Velikost dat a souborů protokolu v uživatelských i systémových databázích jsou zahrnuté do velikosti úložiště instance, která je porovnávána s limitem maximální velikosti úložiště. Pomocí zobrazení [Sys. master_files](/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql) systému určete celkové využité místo podle databází. Protokoly chyb nejsou trvale uložené a nejsou zahrnuté do velikosti. Zálohy nejsou zahrnuté do velikosti úložiště.
+- Velikost dat a souborů protokolu v uživatelských i systémových databázích jsou zahrnuté do velikosti úložiště instance, která je porovnávána s limitem maximální velikosti úložiště. Pomocí zobrazení [Sys.master_files](/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql) systému můžete určit celkové využité místo databáze. Protokoly chyb nejsou trvale uložené a nejsou zahrnuté do velikosti. Zálohy nejsou zahrnuté do velikosti úložiště.
 - Propustnost a IOPS ve vrstvě Pro obecné účely závisí také na [velikosti souboru](#file-io-characteristics-in-general-purpose-tier) , která není výslovně omezená pomocí spravované instance SQL.
   Další čitelnou repliku můžete vytvořit v jiné oblasti Azure pomocí [skupin s automatickým převzetím služeb při selhání](../database/auto-failover-group-configure.md) .
 - Maximální instance IOPS závisí na rozložení souborů a distribuci úlohy. Pokud například vytváříte soubory o velikosti 7 až 1 TB s maximálním počtem 5K IOPS, každý a 7 malých souborů (menší než 128 GB) s 500 IOPS za sekundu, můžete získat 38500 IOPS na instanci (7x5000 + 7x500), pokud vaše úloha může použít všechny soubory. Všimněte si, že některé IOPS se také používají pro automatické zálohování.

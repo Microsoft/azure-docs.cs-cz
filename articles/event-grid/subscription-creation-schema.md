@@ -4,10 +4,10 @@ description: Tento článek popisuje vlastnosti pro přihlášení k odběru ud�
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: 21016627e545cc4935b4ac213df675e894c12d95
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119068"
 ---
 # <a name="event-grid-subscription-schema"></a>Schéma předplatného Event Grid
@@ -30,8 +30,8 @@ Název odběru události musí mít délku 3-64 znaků a může obsahovat jenom 
 
 | Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
-| destination | odkazy objektů | Objekt, který definuje koncový bod. |
-| filtrování | odkazy objektů | Volitelné pole pro filtrování typů událostí. |
+| destination | object | Objekt, který definuje koncový bod. |
+| filter | object | Volitelné pole pro filtrování typů událostí. |
 
 ### <a name="destination-object"></a>cílový objekt
 
@@ -44,7 +44,7 @@ Název odběru události musí mít délku 3-64 znaků a může obsahovat jenom 
 
 | Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
-| includedEventTypes | pole | Odpovídá, pokud typ události ve zprávě události přesně odpovídá jednomu z těchto názvů typu události. Vyvolá chybu, pokud název události neodpovídá registrovaným názvům typů události pro daný zdroj události. Výchozí hodnota odpovídá všem typům událostí. |
+| includedEventTypes | array | Odpovídá, pokud typ události ve zprávě události přesně odpovídá jednomu z těchto názvů typu události. Vyvolá chybu, pokud název události neodpovídá registrovaným názvům typů události pro daný zdroj události. Výchozí hodnota odpovídá všem typům událostí. |
 | subjectBeginsWith | řetězec | Filtr se shodou předpony do pole předmětu ve zprávě události. Výchozí nebo prázdný řetězec odpovídá všem. | 
 | subjectEndsWith | řetězec | Filtr shody přípon k poli předmětu ve zprávě události. Výchozí nebo prázdný řetězec odpovídá všem. |
 | isSubjectCaseSensitive | řetězec | Ovládá porovnávání s rozlišováním velkých a malých písmen pro filtry. |

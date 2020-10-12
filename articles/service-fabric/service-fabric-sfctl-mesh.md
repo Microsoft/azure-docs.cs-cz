@@ -6,17 +6,17 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 4682eee93b5ff9f01e65611e8d5e0920930776a5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257240"
 ---
 # <a name="sfctl-mesh"></a>sfctl mesh
 Umožňuje odstraňovat a spravovat aplikace Service Fabric sítě.
 
 ## <a name="subgroups"></a>Podskupiny
-|Podskupina|Popis|
+|Podskupina|Description|
 | --- | --- |
 | [aplikace](service-fabric-sfctl-mesh-app.md) | Získejte a odstraňte prostředky aplikace. |
 | [Code-Package-log](service-fabric-sfctl-mesh-code-package-log.md) | Načte protokoly pro kontejner zadaného balíčku kódu pro danou repliku služby. |

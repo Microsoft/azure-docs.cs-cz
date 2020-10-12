@@ -14,10 +14,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 9a8cff3685cdaad011332adf58dc76f74976cd44
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89300183"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtrování, řazení a stránkování Media Services entit
@@ -26,12 +26,12 @@ ms.locfileid: "89300183"
 
 Toto téma popisuje možnosti dotazů OData a Podpora stránkování, která je dostupná při výpisu Azure Media Servicesch entit v3.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 * Vlastnosti entit, které jsou typu, `Datetime` jsou vždy ve formátu UTC.
 * Prázdný znak v řetězci dotazu by měl být zakódovaný pomocí adresy URL před odesláním žádosti.
 
-## <a name="comparison-operators"></a>Operátory porovnání
+## <a name="comparison-operators"></a>Relační operátory
 
 K porovnání pole s konstantní hodnotou můžete použít následující operátory:
 
@@ -47,7 +47,7 @@ Operátory rozsahu:
 - `ge`: Otestujte, zda je pole *větší než nebo rovno* konstantní hodnotě.
 - `le`: Otestujte, zda je pole *menší nebo rovno* konstantní hodnotě.
 
-## <a name="filter"></a>Filtr
+## <a name="filter"></a>Filtrování
 
 Použijte `$filter` k poskytnutí parametru filtru OData, abyste našli jenom objekty, které vás zajímají.
 
@@ -66,7 +66,7 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ## <a name="order-by"></a>Řadit podle
 
-Použijte `$orderby` k řazení vrácených objektů zadaným parametrem. Příklad:  
+Použijte `$orderby` k řazení vrácených objektů zadaným parametrem. Například:  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
@@ -158,7 +158,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 Následující tabulka ukazuje, jak můžete použít možnosti filtrování a řazení u různých entit:
 
-|Název entity|Název vlastnosti|Filtr|Objednání|
+|Název entity|Název vlastnosti|Filtrování|Objednání|
 |---|---|---|---|
 |[Aktiva](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` a `desc`|
 ||Properties. alternateId |`eq`||

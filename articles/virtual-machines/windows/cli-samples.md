@@ -9,17 +9,17 @@ ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 6c4b707a3cebc1bcdad7c9e14a96d82a8dda2371
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89318790"
 ---
 # <a name="azure-cli-samples-for-windows-virtual-machines"></a>Ukázky Azure CLI pro virtuální počítače s Windows
 
 Následující tabulka obsahuje odkazy na skripty bash vytvořené pomocí rozhraní příkazového řádku Azure CLI, které nasazují virtuální počítače s Windows.
 
-| Skript | Popis |
+| Skript | Description |
 |---|---|
 |**Vytvoření virtuálních počítačů**||
 | [Vytvoření virtuálního počítače](./../scripts/virtual-machines-windows-cli-sample-create-vm-quick-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | Vytvoří virtuální počítač s Windows s minimální konfigurací. |

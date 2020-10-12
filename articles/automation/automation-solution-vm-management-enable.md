@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: dde2c3e4cf496bb15ca91c72d9a41936af7051c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83743762"
 ---
 # <a name="enable-startstop-vms-during-off-hours"></a>Povolení funkce Enable Start/Stop VMs during off-hours
@@ -82,7 +82,7 @@ Po kliknutí na **OK**se ověřují možnosti konfigurace a vytvoří se účet 
   
 4. Pomocí pole **plán** vyberte plán správy virtuálních počítačů pomocí této funkce. Vyberte počáteční datum a čas pro váš plán a vytvořte tak opakovaný denní plán, který začíná ve zvoleném čase. Výběr jiné oblasti není k dispozici. Pokud chcete nakonfigurovat plán na konkrétní časové pásmo po konfiguraci funkce, přečtěte si téma [Změna plánů spouštění a vypínání](automation-solution-vm-management-config.md#modify-the-startup-and-shutdown-schedules).
 
-5. Pokud chcete dostávat e-mailová oznámení ze [skupiny akcí](../azure-monitor/platform/action-groups.md), přijměte výchozí hodnotu **Ano** v poli **e-mailových oznámení** a zadejte platnou e-mailovou adresu. Pokud vyberete možnost **ne** , ale později se rozhodnete, že chcete dostávat e-mailová oznámení, můžete aktualizovat skupinu akcí vytvořenou pomocí platných e-mailových adres oddělených čárkami. 
+5. Pokud chcete dostávat e-mailová oznámení ze [skupiny akcí](../azure-monitor/platform/action-groups.md), přijměte výchozí hodnotu **Ano** v poli  **e-mailových oznámení** a zadejte platnou e-mailovou adresu. Pokud vyberete možnost **ne** , ale později se rozhodnete, že chcete dostávat e-mailová oznámení, můžete aktualizovat skupinu akcí vytvořenou pomocí platných e-mailových adres oddělených čárkami. 
 
 6. Povolit následující pravidla upozornění:
 

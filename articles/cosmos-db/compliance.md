@@ -8,10 +8,10 @@ ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 32266695770f627f7044bce92e4505f45776fd28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83747360"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Dodržování předpisů ve službě Azure Cosmos DB 
@@ -28,7 +28,7 @@ Azure Cosmos DB je k dispozici ve všech oblastech Azure. Společnost Microsoft 
 
 * **Azure Government pro Ministerstvo obrany (DOD)** je k dispozici ve dvou oblastech v USA do ministerstva obrany USA.
 
-Pro pomoc zákazníkům, kteří splnili své vlastní povinnosti dodržování předpisů napříč regulovanými průmyslovými odvětvími a trhy po celém světě, Azure udržuje největší portfolio dodržování předpisů v oboru, a to z hlediska míry (celkový počet nabídek) a hloubky (počet služeb orientovaných na zákazníky v oboru posouzení).  Nabídky dodržování předpisů Azure se seskupují do čtyř segmentů – platí globálně, pro státní správu USA, konkrétní obor a oblast nebo konkrétní zemi nebo oblast.  Nabídky dodržování předpisů jsou založené na různých typech zárukou, včetně formálních certifikace, atestů, ověření, autorizací a hodnocení vytvořených nezávislými společnostmi pro audit třetích stran, jakož i smluvními změnami, vlastními posouzeními a zákaznickými dokumenty vytvořenými Microsoftem.
+Pro pomoc zákazníkům, kteří splnili své vlastní povinnosti dodržování předpisů napříč regulovanými průmyslovými odvětvími a trhy po celém světě, Azure udržuje největší portfolio dodržování předpisů v oboru, a to z hlediska míry (celkový počet nabídek) a hloubky (počet služeb orientovaných na zákazníky v oboru posouzení).  Nabídky pro dodržování předpisů Azure jsou seskupené do čtyř segmentů – globální, pro US Government, pro konkrétní obor a pro konkrétní oblast nebo zemi/oblast.  Nabídky pro dodržování předpisů jsou založené na různých typech záruk, mezi které patří formální certifikace, osvědčení, ověření, autorizace a hodnocení od nezávislých externích auditorských společností, a také na změnách smluv, vlastních hodnoceních a dokumentech s pokyny pro zákazníky od Microsoftu.
 
 ## <a name="azure-cosmos-db-certifications"></a>Azure Cosmos DB certifikace  
 

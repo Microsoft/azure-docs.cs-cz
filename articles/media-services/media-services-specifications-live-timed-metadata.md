@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
 ms.openlocfilehash: f826ee9ef3c9fff0b721a9c79d3c12e0adbd5f7f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336390"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalizace při živém streamování vyprší metadata 
@@ -42,7 +42,7 @@ Tato specifikace popisuje několik režimů, které jsou podporovány Media Serv
 
 ## <a name="11-terms-used"></a>Použité výrazy 1,1
 
-| Období                | Definice                                                                                                                                                                                                                                    |
+| Označení                | Definice                                                                                                                                                                                                                                    |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Přerušení reklamy            | Místo nebo bod v čase, kdy je možné naplánovat doručení jedné nebo více reklam. stejné jako možnosti k dispozici a umístění.                                                                                                                     |
 | Služba pro rozhodování AD | externí služba, která určuje, které AD a doby trvání budou zobrazeny uživateli. Služby jsou obvykle poskytovány partnerem a nejsou v oboru pro tento dokument.                                                                    |
@@ -57,7 +57,7 @@ Tato specifikace popisuje několik režimů, které jsou podporovány Media Serv
 | PŘERUŠENÍ                | Dynamické adaptivní streamování přes HTTP                                                                                                                                                                                                          |
 | Dokonalejší              | Protokol Smooth Streaming                                                                                                                                                                                                                     |
 | MPEG2 – TS            | Proudy přenosu MPEG 2                                                                                                                                                                                                                      |
-| RTMP                | Protokol multimédií v reálném čase                                                                                                                                                                                                                 |
+| RTMP                | Real-Time multimediální protokol                                                                                                                                                                                                                 |
 | uimsbf              | Celé číslo bez znaménka, nejvýznamnější bit jako první.                                                                                                                                                                                                 |
 
 ---
@@ -84,10 +84,10 @@ Následující dokumenty obsahují pravidla, která prostřednictvím odkazu v t
 | [MS-SSTR-ingestování]  | [Azure Media Services fragmentované specifikace ingestování MP4 v reálném čase](./media-services-fmp4-live-ingest-overview.md)                                                      |
 | [RFC8216]         | Í. Pantos, Ed.; W. květen. HTTP Live Streaming. Srpen 2017. Informativní. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
 | [RFC4648]         | Kódování dat Base16, Base32 a base64 – [https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
-| RTMP            | ["Protokol zasílání zpráv v reálném čase od společnosti Adobe", od 21. prosince 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
+| RTMP            | ["Protokol zasílání zpráv Real-Time od společnosti Adobe", od 21. prosince 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
 | [SCTE-35-2019]    | SCTE 35:2019 – zpráva cueing pro vložení digitálního programu pro kabel https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf                                                                       |
-| [SCTE-214-1]      | SCTE 214-1 2016 – POMLČKa MPEG pro kabelové služby založené na protokolu IP část 1: omezení a rozšíření pro MPD                                                                                                                 |
-| [SCTE-214-3]      | SCTE 214-3 2015 MPEG POMLČKa pro kabelové služby založené na protokolu IP část 3: POMLČKa/FF – profil                                                                                                                                  |
+| [SCTE-214-1]      | SCTE 214-1 2016 – POMLČKa MPEG pro IP-Based kabelové služby – část 1: omezení a rozšíření MPD                                                                                                                 |
+| [SCTE-214-3]      | SCTE 214-3 2015 MPEG POMLČKa pro IP-Based kabelové služby část 3: POMLČKa/FF – profil                                                                                                                                  |
 | [SCTE-224]        | SCTE 224 2018r1 – rozhraní pro plánování událostí a oznamování                                                                                                                                                  |
 | [SCTE-250]        | Rozhraní API pro správu událostí a signálů (ESAM)                                                                                                                                                                      |
 
@@ -208,7 +208,7 @@ Schéma pro datovou část XML EventStream [MPEG-SPOJOVNÍK] je definováno jako
 ```
 
 ### <a name="built-in-supported-scheme-id-uris"></a>Předdefinované identifikátory URI IDENTIFIKÁTORů podporovaných schémat
-| Identifikátor URI ID schématu                 | Popis                                                                                                                                                                                                                                          |
+| Identifikátor URI ID schématu                 | Description                                                                                                                                                                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | https: \/ /aomedia.org/EMSG/ID3 | Popisuje, jak lze metadata [ID3v2] přenést jako časované metadata v rámci fragmentované MP4 kompatibilního s CMAF [MPEGCMAF]. Další informace najdete v tématu [časované metadata ve formátu Common Media Application Format (CMAF)](https://github.com/AOMediaCodec/id3-emsg) . |
 
@@ -295,7 +295,7 @@ Typ zprávy "onCuePoint" je definován v [Adobe-Flash-AS] a má následující s
 
 | Vlastnost   | Popis                                                                                                                                                                                                                     |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| jméno       | Název by měl být "**scte35**" prostřednictvím elementu Live.                                                                                                                                                                              |
+| name       | Název by měl být "**scte35**" prostřednictvím elementu Live.                                                                                                                                                                              |
 | time       | Čas v sekundách, kdy během časové osy došlo k startovacímu bodu v souboru videa                                                                                                                                           |
 | typ       | Typ startovacího bodu by měl být nastaven na "**Event**".                                                                                                                                                                             |
 | parameters | Asociativní pole řetězců dvojice název/hodnota obsahující informace ze zprávy SCTE-35, včetně ID a doby trvání. Tyto hodnoty jsou analyzovány Azure Media Services a zahrnuty do tagu dekorace manifestu. |
@@ -1053,7 +1053,7 @@ Element EventStream má následující atributy:
 | **Název atributu** | **Typ**                | **Požadovanou?** | **Popis**                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------ | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | scheme_id_uri      | řetězec                  | Vyžadováno      | Určuje schéma zprávy. Schéma je nastaveno na hodnotu atributu schématu v poli manifest živého serveru. Hodnota **by měla** být název URN nebo adresa URL identifikující schéma zprávy; Podporovaná výstupní schemeId by měla být "urn: scte: scte35:2014: XML + bin" na [SCTE-214-1] SEK 6.7.4 (MPD), protože služba v tuto chvíli podporuje pouze "XML + bin" pro zkrácení v MPD. |
-| hodnota              | řetězec                  | Volitelné      | Další řetězcovou hodnotu, kterou vlastníci schématu používají k přizpůsobení sémantiky zprávy. Aby bylo možné odlišit více datových proudů událostí se stejným schématem, **musí** být hodnota nastavena na název datového proudu událostí (stopovat pro [MS-SSTR-ingesta] nebo AMF název zprávy pro [RTMP] ingestovat).                                                                         |
+| value              | řetězec                  | Volitelné      | Další řetězcovou hodnotu, kterou vlastníci schématu používají k přizpůsobení sémantiky zprávy. Aby bylo možné odlišit více datových proudů událostí se stejným schématem, **musí** být hodnota nastavena na název datového proudu událostí (stopovat pro [MS-SSTR-ingesta] nebo AMF název zprávy pro [RTMP] ingestovat).                                                                         |
 | Timescale          | 32 – bitová unsigned integer | Vyžadováno      | Časová osa v taktech za sekundu.                                                                                                                                                                                                                                                                                                                                                     |
 
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86540379"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Nainstalovat Modul runtime služby Azure Functions Preview 2
@@ -25,7 +25,7 @@ Chcete-li nainstalovat Modul runtime služby Azure Functions verze Preview 2, po
 1. Dokončete konfiguraci Modul runtime služby Azure Functions verze Preview 2.
 1. Vytvoření první funkce v Modul runtime služby Azure Functions Preview
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než nainstalujete Modul runtime služby Azure Functions Preview, musíte mít k dispozici následující prostředky:
 
@@ -87,7 +87,7 @@ Chcete-li dokončit instalaci Modul runtime služby Azure Functions, je nutné d
 
     ![Služba IIS pro Modul runtime služby Azure Functions Preview][11]
 
-1. Klikněte na kartu **služby** .  Tato karta zobrazuje stav služeb v nástroji pro konfiguraci Modul runtime služby Azure Functions.  Pokud po počáteční konfiguraci neběží **Aktivační služba hostitele Azure Functions** , klikněte na **Spustit službu**.
+1. Klikněte na kartu **služby** .  Tato karta zobrazuje stav služeb v nástroji pro konfiguraci Modul runtime služby Azure Functions.  Pokud po počáteční konfiguraci neběží  **Aktivační služba hostitele Azure Functions** , klikněte na **Spustit službu**.
 
     ![Dokončení konfigurace Modul runtime služby Azure Functions Preview][12]
 

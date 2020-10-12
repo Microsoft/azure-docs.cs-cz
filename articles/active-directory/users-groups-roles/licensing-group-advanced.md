@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c7cc4065297c35164f1e37b187c6280b3d3546ee
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91538836"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory
@@ -132,7 +132,7 @@ Ke kontrole, jestli mají uživatelé přiřazenou licenci přímo nebo zděděn
 
 2. `Get-MsolAccountSku` dá se použít ke zjištění všech zřízených licencí produktu v organizaci Azure AD.
 
-   ![Snímek obrazovky s rutinou Get-MsolAccountSku Zjistěte](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
+   ![Snímek obrazovky rutiny Get-Msolaccountsku](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
 3. Použijte hodnotu *AccountSkuId* pro licenci, kterou vás zajímá s [tímto skriptem PowerShellu](licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group). Tím se vytvoří seznam uživatelů, kteří mají tuto licenci, a informace o tom, jak je licence přiřazena.
 
@@ -163,7 +163,7 @@ Tady je příklad poslední změny licence skupiny s podrobnostmi:
 
 Když se ve skupině změní licence, služba Azure AD začne používat změny pro všechny uživatele.
 
-1. Pokud chcete zjistit, kdy se skupiny začali zpracovávat, nastavte filtr **aktivity** tak, aby *se na uživatele spouštěla licence založená na skupinách*. Všimněte si, že objekt actor pro operaci je *Microsoft Azure AD licencování na základě skupin* – systémový účet, který se používá k provádění všech změn skupinových licencí.
+1. Pokud chcete zjistit, kdy se skupiny začali zpracovávat, nastavte filtr **aktivity** tak, aby *se na uživatele spouštěla licence založená na skupinách*. Všimněte si, že objekt actor pro operaci je *Microsoft Azure AD Group-Based licencování* – systémový účet, který se používá k provádění všech změn všech skupinových licencí.
    >[!TIP]
    > Kliknutím na položku v seznamu zobrazíte pole *upravené vlastnosti* – zobrazí se změny licencí, které byly vyzvednuty ke zpracování. To je užitečné, pokud jste provedli více změn ve skupině a nejste si jisti, která z nich byla zpracována.
 
@@ -179,7 +179,7 @@ Když se ve skupině změní licence, služba Azure AD začne používat změny 
    > ```
 
 3. Pokud chcete zobrazit úplný protokol pro zpracování skupiny, včetně všech změn uživatelů, nastavte následující filtry:
-   - **Iniciované uživatelem (actor)**: "Microsoft Azure AD licencování na základě skupin"
+   - **Zahájil (actor)**: "Microsoft Azure AD Group-Based licencování"
    - **Rozsah kalendářních dat** (volitelné): vlastní rozsah, pro který znáte konkrétní skupinu spuštěnou a dokončenou se zpracováním
 
 Tento ukázkový výstup ukazuje začátek zpracování, všechny výsledné změny uživatelů a dokončení zpracování.

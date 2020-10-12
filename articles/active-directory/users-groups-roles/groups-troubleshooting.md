@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8730ac8aa6a6056db67613f2ac8decf11740c467
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84727683"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Řešení potíží se skupinami a řešení problémů
@@ -76,5 +76,5 @@ Následující články poskytují další informace o službě Azure Active Dir
 
 * [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](../fundamentals/active-directory-manage-groups.md)
 * [Správa aplikací ve službě Azure Active Directory](../manage-apps/what-is-application-management.md)
-* [Představení služby Azure Active Directory](../fundamentals/active-directory-whatis.md)
+* [Co je Azure Active Directory?](../fundamentals/active-directory-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c706de8a7638c16f3778d0d5295069c13b79d98
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387264"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Jednotné přihlašování SAML pro místní aplikace s proxy aplikací
@@ -72,7 +72,7 @@ Před poskytnutím jednotného přihlašování pro místní aplikace je potřeb
 
 1. Když je aplikace v Azure Portal stále otevřená, vyberte **jednotné přihlašování**. 
 
-2. Na stránce **nastavit jednotné přihlašování pomocí SAML** otevřete záhlaví **základní konfigurace SAML** a vyberte jeho ikonu pro **Úpravy** (tužka). Ujistěte se, že **externí adresa URL** , kterou jste nakonfigurovali v proxy aplikaci, se naplní v polích **identifikátor**, **Adresa URL odpovědi**a **Adresa URL pro odhlášení** . Tyto adresy URL jsou vyžadovány pro správné fungování proxy aplikací. 
+2. Na stránce **nastavit jeden Sign-On se** stránkou SAML přejdete do **základního záhlaví konfigurace SAML** a vyberete jeho ikonu pro **Úpravy** (tužka). Ujistěte se, že **externí adresa URL** , kterou jste nakonfigurovali v proxy aplikaci, se naplní v polích **identifikátor**, **Adresa URL odpovědi**a **Adresa URL pro odhlášení** . Tyto adresy URL jsou vyžadovány pro správné fungování proxy aplikací. 
 
 3. Upravte **adresu URL odpovědi** nakonfigurovanou dříve, aby byla doména dostupná na internetu prostřednictvím proxy aplikací. Pokud je například vaše **externí adresa URL** `https://contosotravel-f128.msappproxy.net` a původní **Adresa URL odpovědi** , bude `https://contosotravel.com/acs` nutné aktualizovat původní **adresu URL odpovědi** na `https://contosotravel-f128.msappproxy.net/acs` .
 

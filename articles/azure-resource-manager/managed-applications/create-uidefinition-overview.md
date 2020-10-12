@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89319559"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Soubor createUiDefinition.json pro prostředí pro vytváření spravovaných aplikací Azure
@@ -129,7 +129,7 @@ Pro `location` Zadejte vlastnosti ovládacího prvku umístění, který chcete 
 
 **Základní** krok je prvním krokem vygenerovaným při analýze souboru Azure Portal. Ve výchozím nastavení umožňuje krok základy uživatelům zvolit předplatné, skupinu prostředků a umístění pro nasazení.
 
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Základy – výchozí":::
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Průvodce kartami":::
 
 V této části můžete přidat další prvky. Pokud je to možné, přidejte prvky, které dotazují parametry pro nasazení na úrovni, jako je název clusteru nebo přihlašovací údaje správce.
 
@@ -195,7 +195,7 @@ Chcete-li filtrovat dostupná umístění pouze do těch umístění, která pod
           ...
 ```  
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
 CreateUiDefinition poskytuje [funkce](create-uidefinition-functions.md) pro práci s vstupy a výstupy prvků a funkcemi, jako jsou podmíněné. Tyto funkce jsou podobné v syntaxi a funkcích pro Azure Resource Manager funkcí šablon.
 

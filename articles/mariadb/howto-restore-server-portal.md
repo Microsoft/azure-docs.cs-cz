@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: 6d050a8bd351617a6ab567243c5b1ef8d9f93ded
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86115906"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Postup zálohování a obnovení serveru v Azure Database for MariaDB pomocí Azure Portal
@@ -89,7 +89,7 @@ Pokud jste server nakonfigurovali pro geograficky redundantní zálohy, můžete
 
 3. Jako **zdroj dat**vyberte **Backup** . Tato akce načte rozevírací seznam, který obsahuje seznam serverů s povolenými geografickými redundantními zálohami.
    
-   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Vyberte zdroj dat.":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Přejděte na Azure Database for MariaDB.":::
     
    > [!NOTE]
    > Při prvním vytvoření serveru nemusí být pro geografickou obnovu k dispozici okamžitě. Naplnění potřebných metadat může trvat několik hodin.
@@ -97,21 +97,21 @@ Pokud jste server nakonfigurovali pro geograficky redundantní zálohy, můžete
 
 4. Vyberte rozevírací seznam **zálohování** .
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Vyberte rozevírací seznam zálohování.":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Přejděte na Azure Database for MariaDB.":::
 
 5. Vyberte zdrojový server, ze kterého chcete obnovit.
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Vyberte zálohování.":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Přejděte na Azure Database for MariaDB.":::
 
 6. Na serveru se nastaví výchozí hodnoty pro počet **virtuální jádra**, **Doba uchování záloh**, **možnost redundance zálohy**, **verze modulu**a **přihlašovací údaje správce**. Vyberte **Pokračovat**. 
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Pokračujte v zálohování.":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Přejděte na Azure Database for MariaDB.":::
 
 7. Vyplňte zbytek formuláře vlastními preferencemi. Můžete vybrat libovolné **umístění**.
 
     Po výběru umístění můžete vybrat **Konfigurovat Server** a aktualizovat **výpočetní generaci** (Pokud je dostupné v oblasti, kterou jste zvolili), počet **virtuální jádra**, **dobu uchování zálohy**a **možnost redundance zálohy**. Změna **cenové úrovně** (Basic, pro obecné účely nebo paměťově optimalizovaná) nebo velikosti **úložiště** během obnovení není podporovaná.
 
-   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Vyplnit formulář"::: 
+   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Přejděte na Azure Database for MariaDB."::: 
 
 8. Vyberte možnost **zkontrolovat + vytvořit** a zkontrolujte výběr. 
 
