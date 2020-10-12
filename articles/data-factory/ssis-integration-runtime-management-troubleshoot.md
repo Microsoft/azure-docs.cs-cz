@@ -12,10 +12,10 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
 ms.openlocfilehash: b2c1d08656ce9ef6b76e34a943f133859b78345a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86172022"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Řešení potíží se správou SSIS Integration Runtime v Azure Data Factory
@@ -78,7 +78,7 @@ V případě jiných problémů zkontrolujte chybovou zprávu o výjimce SQL a o
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-Tento druh chybové zprávy vypadá takto: "neplatný název objektu" Catalog. catalog_properties. V této situaci už buď máte databázi s názvem SSISDB, ale ta se nevytvořila v SSIS IR, nebo se databáze nachází v neplatném stavu, který způsobuje chyby při posledním zřizování SSIS IR. Existující databázi můžete odstranit s názvem SSISDB nebo můžete nakonfigurovat novou SQL Database nebo spravovanou instanci SQL pro prostředí IR.
+Tento druh chybové zprávy vypadá takto: "neplatný název objektu catalog.catalog_properties." V této situaci už buď máte databázi s názvem SSISDB, ale ta se nevytvořila v SSIS IR, nebo se databáze nachází v neplatném stavu, který způsobuje chyby při posledním zřizování SSIS IR. Existující databázi můžete odstranit s názvem SSISDB nebo můžete nakonfigurovat novou SQL Database nebo spravovanou instanci SQL pro prostředí IR.
 
 ## <a name="custom-setup-issues"></a>Problémy s vlastním nastavením
 
@@ -192,4 +192,4 @@ Azure-SSIS IR se pravidelně aktualizuje v pravidelných intervalech. Během upg
 
 ### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
 
-Pokud chcete použít vlastní statické veřejné IP adresy, je třeba poskytnout dvě veřejné IP adresy. Jedna z nich se použije k okamžitému vytvoření uzlů IR a druhá se použije při upgradu IR. K této chybě může dojít, pokud není během upgradu možné použít jinou veřejnou IP adresu. Možné příčiny najdete v [InvalidPublicIPSpecified](#InvalidPublicIPSpecified) .
+Pokud chcete použít vlastní statické veřejné IP adresy, je třeba poskytnout dvě veřejné IP adresy. Jedna z nich se použije k okamžitému vytvoření uzlů IR a druhá se použije při upgradu IR. K této chybě může dojít, pokud není během upgradu možné použít jinou veřejnou IP adresu. Možné příčiny najdete v  [InvalidPublicIPSpecified](#InvalidPublicIPSpecified) .

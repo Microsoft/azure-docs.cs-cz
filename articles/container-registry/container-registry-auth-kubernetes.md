@@ -7,10 +7,10 @@ ms.author: karolz
 ms.reviewer: danlep
 ms.date: 05/28/2020
 ms.openlocfilehash: fbf5dfd68b823b600b11cad3643e5d4004b85ff5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84309811"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Vyžádání imagí z Azure Container Registry do clusteru Kubernetes
@@ -47,7 +47,7 @@ kubectl create secret docker-registry <secret-name> \
 ```
 kde:
 
-| Hodnota | Description |
+| Hodnota | Popis |
 | :--- | :--- |
 | `secret-name` | Název tajného klíče pro čtení z image, například *ACR-Secret* |
 | `namespace` | Kubernetes obor názvů pro vložení tajného kódu do <br/> Nutné pouze v případě, že chcete tajný klíč umístit v jiném oboru názvů, než je výchozí obor názvů |
@@ -57,7 +57,7 @@ kde:
 
 ## <a name="use-the-image-pull-secret"></a>Použít tajný klíč pro vyžádání image
 
-Po vytvoření bitové kopie pro vyžádání obsahu image můžete použít k vytváření Kubernetesch lusků a nasazení. Zadejte název tajného kódu do části `imagePullSecrets` v souboru nasazení. Příklad:
+Po vytvoření bitové kopie pro vyžádání obsahu image můžete použít k vytváření Kubernetesch lusků a nasazení. Zadejte název tajného kódu do části `imagePullSecrets` v souboru nasazení. Například:
 
 ```yaml
 apiVersion: v1
@@ -74,7 +74,7 @@ spec:
     - name: acr-secret
 ```
 
-V předchozím příkladu `my-awesome-app:v1` je název obrázku, který se má načíst ze služby Azure Container Registry, a `acr-secret` je název tajného kódu pro vyžádání, který jste vytvořili pro přístup k registru. Když nasadíte pod, Kubernetes automaticky načte image z registru, pokud ještě není v clusteru.
+V předchozím příkladu `my-awesome-app:v1` je název obrázku, který se má načíst ze služby Azure Container Registry, a  `acr-secret` je název tajného kódu pro vyžádání, který jste vytvořili pro přístup k registru. Když nasadíte pod, Kubernetes automaticky načte image z registru, pokud ještě není v clusteru.
 
 
 ## <a name="next-steps"></a>Další kroky

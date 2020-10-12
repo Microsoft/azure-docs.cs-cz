@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3610fa5ea442e5ccb15255d8a1ddcee211871aeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84463939"
 ---
 # <a name="how-to-investigate-risk"></a>Postup: Šetření rizik
@@ -38,7 +38,7 @@ Výběr jednotlivých položek rozbalí okno podrobností pod detekci. Zobrazen�
 
 ![Ukázková sestava Identity Protection ukazující rizikové přihlašovací údaje a podrobnosti](./media/howto-identity-protection-investigate-risk/identity-protection-risky-sign-ins-report.png)
 
-## <a name="risky-users"></a>Rizikové uživatele
+## <a name="risky-users"></a>Rizikoví uživatelé
 
 Pomocí informací uvedených v sestavě rizikové uživatele můžou správci najít:
 

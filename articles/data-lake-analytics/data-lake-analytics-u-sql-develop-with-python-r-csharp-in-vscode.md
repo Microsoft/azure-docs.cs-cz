@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: devx-track-python
 ms.openlocfilehash: 673c8db0b7c6d3d8658d2d3b6cfd7e00f3d7d986
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87876202"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Vývoj U-SQL pomocí Pythonu, R a C# pro Azure Data Lake Analytics v Visual Studio Code
@@ -124,7 +124,7 @@ Zaregistrujte sestavení rozšíření Python a R pro váš účet ADL.
 5. Klikněte pravým tlačítkem na soubor **USQL** , můžete kliknout na **kompilovat skript** nebo **Odeslat úlohu** do spuštěné úlohy.
 
 ## <a name="develop-c-file"></a>Vývoj souboru C#
-Soubor kódu na pozadí je soubor C# přidružený k jednomu skriptu U-SQL. V souboru kódu na pozadí můžete definovat skript vyhrazený pro UDO, UDA, UDT a UDF. UDO, UDA, UDT a UDF lze použít přímo ve skriptu bez registrace sestavení jako první. Soubor kódu na pozadí se umístí do stejné složky jako partnerský soubor skriptu U-SQL. Pokud má skript název xxx. usql, kód na pozadí se jmenuje jako xxx.usql.cs. Pokud soubor kódu na pozadí odstraníte ručně, funkce kódu na pozadí je zakázána pro svůj přidružený skript U-SQL. Další informace o psaní kódu zákazníka pro skript U-SQL najdete v tématu [zápis a použití vlastního kódu v u-SQL: uživatelsky definované funkce]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
+Soubor kódu na pozadí je soubor C# přidružený k jednomu skriptu U-SQL. V souboru kódu na pozadí můžete definovat skript vyhrazený pro UDO, UDA, UDT a UDF. UDO, UDA, UDT a UDF lze použít přímo ve skriptu bez registrace sestavení jako první. Soubor kódu na pozadí se umístí do stejné složky jako partnerský soubor skriptu U-SQL. Pokud má skript název xxx. usql, kód na pozadí se jmenuje jako xxx.usql.cs. Pokud soubor kódu na pozadí odstraníte ručně, funkce kódu na pozadí je zakázána pro svůj přidružený skript U-SQL. Další informace o psaní kódu zákazníka pro skript U-SQL najdete v tématu [zápis a použití vlastního kódu v u-SQL: User-Defined Functions]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
 
 1. Klikněte na **nový soubor** v pracovním prostoru.
 2. Napište svůj kód do souboru U-SQL. Následuje ukázka kódu.

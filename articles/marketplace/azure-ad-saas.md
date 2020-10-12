@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.openlocfilehash: 5a09105dac89f3dc241140f16f3d4be72cc97493
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89483622"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Nabídky Azure AD a SaaS s podporou transakcí na komerčním webu Marketplace
@@ -45,13 +45,13 @@ Následující části obsahují podrobné informace o požadavcích na jednotli
 
 Na tomto obrázku je znázorněno čtyři kroky procesu pro správu nákupu.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="Znázorňuje čtyři kroky procesu pro správu nákupu.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="Znázorňuje postupy správy nákupu, správy předplatného a volitelného procesu správy uživatelů.":::
 
 Tato tabulka poskytuje podrobnosti o krocích procesu správy nákupu.
 
 | Krok procesu | Akce vydavatele | Doporučené nebo vyžadované pro vydavatele |
 | ------------ | ------------- | ------------- |
-| 1. nákupčí se přihlásí k komerčnímu tržišti pomocí své identity ID Azure a vybere SaaS nabídku. | Není vyžadována žádná akce vydavatele. | Není |
+| 1. nákupčí se přihlásí k komerčnímu tržišti pomocí své identity ID Azure a vybere SaaS nabídku. | Není vyžadována žádná akce vydavatele. | Nelze použít |
 | 2. po zakoupení kupující vybere **konfigurovat účet** v Azure Marketplace nebo **nakonfigurovat nyní** v AppSource, který nasměruje kupující na úvodní stránku vydavatele pro tuto nabídku. Kupující musí být schopný se přihlašovat k aplikaci SaaS vydavatele pomocí jednotného přihlašování služby Azure AD a musí vyžadovat jenom minimální souhlas, který nevyžaduje schválení správcem Azure AD. | Navrhněte [cílovou stránku](azure-ad-transactable-saas-landing-page.md) nabídky tak, aby získala uživatele s identitou Azure AD nebo účet Microsoft (MSA), a usnadňuje jakékoli další zřizování nebo nastavení, které je potřeba. | Vyžadováno |
 | 3. Vydavatel požaduje informace o nákupu z rozhraní API pro plnění SaaS. | Pomocí [přístupového tokenu](./partner-center-portal/pc-saas-registration.md) generovaného z ID aplikace cílové stránky [zavolejte koncový bod](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) , který načte konkrétní informace o nákupu. | Vyžadováno |
 | 4. prostřednictvím služby Azure AD a rozhraní Microsoft Graph API shromažďuje Vydavatel údaje o společnosti a uživatelích požadovaných ke zřízení kupujícího v aplikaci SaaS vydavatele.  | Rozložíte uživatelský token Azure AD tak, aby našli jméno a e-mail, nebo [volejte rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) a pomocí delegovaných oprávnění [načetli informace](https://docs.microsoft.com/graph/api/user-get) o přihlášeném uživateli. | Vyžadováno |
@@ -61,7 +61,7 @@ Tato tabulka poskytuje podrobnosti o krocích procesu správy nákupu.
 
 Tento obrázek znázorňuje dva kroky procesu pro správu předplatného.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="Popisuje dva kroky procesu pro správu předplatného.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="Znázorňuje postupy správy nákupu, správy předplatného a volitelného procesu správy uživatelů.":::
 
 Tato tabulka obsahuje podrobné informace o krocích procesu správy předplatného.
 
@@ -75,13 +75,13 @@ Tato tabulka obsahuje podrobné informace o krocích procesu správy předplatn�
 
 Na tomto obrázku jsou tři kroky procesu správy uživatelů.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="Popisuje tři volitelné kroky procesu pro správu uživatelů.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="Znázorňuje postupy správy nákupu, správy předplatného a volitelného procesu správy uživatelů.":::
 
 Kroky procesu 7 až 9 jsou volitelné kroky procesu správy uživatelů. Poskytují další výhody pro vydavatele, kteří podporují jednotné přihlašování Azure AD. Tato tabulka obsahuje podrobné informace o krocích procesu správy uživatelů.
 
 | Krok procesu | Akce vydavatele | Doporučené nebo vyžadované pro vydavatele |
 | ------------ | ------------- | ------------- |
-| 7. správci Azure AD na společnosti kupujícího můžou volitelně spravovat přístup pro uživatele a skupiny přes Azure AD. | Žádná akce vydavatele není nutná, pokud je služba Azure AD SSO nastavena pro uživatele (krok 9). | Není |
+| 7. správci Azure AD na společnosti kupujícího můžou volitelně spravovat přístup pro uživatele a skupiny přes Azure AD. | Žádná akce vydavatele není nutná, pokud je služba Azure AD SSO nastavena pro uživatele (krok 9). | Nelze použít |
 | 8. služba zřizování Azure AD komunikuje se změnami mezi Azure AD a aplikací SaaS vydavatele. | [Implementujte koncový bod SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) pro příjem aktualizací ze služby Azure AD při přidávání a odebírání uživatelů. | Doporučeno |
 | 9. Jakmile je aplikace oprávněná a zřízená, uživatelé z společnosti kupujícího můžou použít jednotné přihlašování Azure AD k přihlášení k aplikaci SaaS vydavatele. | [Pomocí služby Azure AD SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) můžete uživatelům povolit, aby se jednou přihlásili pomocí jednoho účtu do aplikace SaaS vydavatele. | Doporučeno |
 ||||

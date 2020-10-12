@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 418be35cb7996acaa7f11f37627d065451c9c7c6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055210"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Omezení oprávnění k přístupu hosta (Preview) v Azure Active Directory
@@ -119,7 +119,7 @@ GuestUserRoleId                                   : 10dae51f-b6af-4016-8d66-8c2a
 PermissionGrantPolicyIdsAssignedToDefaultUserRole : {user-default-legacy}
 ````
 
-### <a name="set-command-set-azureadmsauthorizationpolicy"></a>Set – příkaz: set-AzureADMSAuthorizationPolicy
+### <a name="set-command-set-azureadmsauthorizationpolicy"></a>Set – příkaz: Set-AzureADMSAuthorizationPolicy
 
 Příklad:
 
@@ -156,10 +156,10 @@ Otázka | Odpověď
 -------- | ------
 Kde se tato oprávnění vztahují? | Tato oprávnění na úrovni adresáře se vynutila napříč službami a portály Azure AD, včetně Microsoft Graph, PowerShell v2, Azure Portal a portálu moje aplikace. Ovlivněné jsou taky Microsoft 365 služby, které využívají Microsoft 365 skupiny pro scénáře spolupráce, konkrétně Outlook, Microsoft teams a SharePoint.
 Na které části portálu moje aplikace bude tato funkce mít vliv? | Tato nová oprávnění budou respektovat funkce skupin na portálu moje aplikace. To zahrnuje všechny cesty pro zobrazení seznamu skupin a členství ve skupinách v mých aplikacích. V dostupnosti dlaždice skupiny nebyly provedeny žádné změny. Existující nastavení skupiny na portálu pro správu Azure pořád řídí dostupnost dlaždic skupiny.
-Potlačí tato oprávnění nastavení hostů pro SharePoint nebo Microsoft Teams? | No. Tato stávající nastavení stále ovládají prostředí a přístup k nim v těchto aplikacích. Pokud se například zobrazí problémy na SharePointu, zkontrolujte nastavení externího sdílení.
+Potlačí tato oprávnění nastavení hostů pro SharePoint nebo Microsoft Teams? | Ne. Tato stávající nastavení stále ovládají prostředí a přístup k nim v těchto aplikacích. Pokud se například zobrazí problémy na SharePointu, zkontrolujte nastavení externího sdílení.
 Jaké jsou známé problémy s kompatibilitou v Planneru a Yammeru? | <li>S oprávněním nastaveným na omezeno budou hosté přihlášení do aplikace plánovače nebo přístup k plánovači v Microsoft Teams mít přístup k jejich plánům ani úlohám.<li>S oprávněním nastaveným na hodnotu "omezeno" budou hosté přihlášení do Yammeru moci opustit skupinu.
 Budou se moje stávající oprávnění hostů v mém tenantovi měnit? | V aktuálním nastavení se neudělaly žádné změny. Udržujeme zpětnou kompatibilitu s vaším stávajícím nastavením. Rozhodnete, že chcete provést změny.
-Budou tato oprávnění nastavena ve výchozím nastavení? | No. Existující výchozí oprávnění zůstanou beze změny. Volitelně můžete nastavit oprávnění pro více omezující podmínky.
+Budou tato oprávnění nastavena ve výchozím nastavení? | Ne. Existující výchozí oprávnění zůstanou beze změny. Volitelně můžete nastavit oprávnění pro více omezující podmínky.
 Existují pro tuto funkci nějaké licenční požadavky? | Ne, s touto funkcí neexistují žádné nové licenční požadavky.
 
 ## <a name="next-steps"></a>Další kroky

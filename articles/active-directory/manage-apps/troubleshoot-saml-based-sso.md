@@ -11,10 +11,10 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.openlocfilehash: 7f7f999c145903be5db3b20ab60bd0f5a18778ea
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89463513"
 ---
 # <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Řešení jednotného přihlašování založeného na SAML v Azure Active Directory
@@ -46,14 +46,14 @@ Chcete-li zjistit, jaké jsou vzory předem nakonfigurované pro aplikaci:
     * Pokud není tento vzor podporován, zobrazí se při pokusu o zadání hodnoty do textového pole červený vykřičník. Pokud najedete myší na červený vykřičník, uvidíte podporované vzory.
     * V tomto kurzu pro aplikaci můžete získat také informace o podporovaných vzorcích. V části **Konfigurace jednotného přihlašování Azure AD** . Pro konfiguraci hodnot v části **doména a adresy URL** použijte krok.
 
-Pokud se hodnoty neshodují se vzorci předem konfigurovanými v Azure AD. Další možnosti:
+Pokud se hodnoty neshodují se vzorci předem konfigurovanými v Azure AD. Můžete:
 -   Spolupracovat s dodavatelem aplikace a získat hodnoty, které odpovídají vzoru předkonfigurovanému ve službě Azure AD
 -   Nebo můžete kontaktovat tým Azure AD na adrese <aadapprequest@microsoft.com> nebo v tomto kurzu zanechat komentář, který požádá o aktualizaci podporovaných vzorů pro aplikaci.
 
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Kde mám nastavit formát EntityID (uživatelský identifikátor)
 Nebudete moct vybrat formát EntityID (uživatelský identifikátor), který Azure AD pošle do aplikace v reakci po ověření uživatele.
 
-Azure AD vyberte formát pro atribut NameID (identifikátor uživatele) na základě vybrané hodnoty nebo formátu, který požaduje aplikace v AuthRequest SAML. Další informace najdete v článku [protokol SAML jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) v části NameIDPolicy,
+Azure AD vyberte formát pro atribut NameID (identifikátor uživatele) na základě vybrané hodnoty nebo formátu, který požaduje aplikace v AuthRequest SAML. Další informace najdete v článku [jediný Sign-On protokol SAML](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) v části NameIDPolicy,
 
 ## <a name="cant-find-the-azure-ad-metadata-to-complete-the-configuration-with-the-application"></a>Nejde najít metadata Azure AD, aby se mohla dokončit konfigurace aplikace.
 Pokud chcete stáhnout metadata aplikace nebo certifikát z Azure AD, postupujte takto:

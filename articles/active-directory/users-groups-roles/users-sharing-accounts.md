@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 019327436eaf2186e23068a5b0a1ac4b21b9fbe7
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055159"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Sdílení účtů s Azure AD
@@ -69,7 +69,7 @@ Funkce Azure AD, které umožňují sdílení účtů, zahrnují:
 Pokud chcete ke sdílení účtu použít Azure AD, musíte:
 
 * Přidání [Galerie](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) aplikačních aplikací nebo [vlastní aplikace](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)
-* Konfigurace aplikace pro jednotné přihlašování k heslům (SSO)
+* Konfigurace aplikace pro jednotné Sign-On hesla (SSO)
 * Použijte [přiřazení na základě skupin](groups-saasapps.md) a vyberte možnost zadání sdíleného přihlašovacího údaje.
 
 Sdílený účet můžete také lépe zabezpečit pomocí Multi-Factor Authentication (MFA) (Další informace o [zabezpečení aplikací pomocí služby Azure AD](../authentication/concept-mfa-howitworks.md)) a můžete delegovat schopnost spravovat, kdo má k aplikaci přístup pomocí [samoobslužné správy skupin Azure AD](groups-self-service-management.md) .

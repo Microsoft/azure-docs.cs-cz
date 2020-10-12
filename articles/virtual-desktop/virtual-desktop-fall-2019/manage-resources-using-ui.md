@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 09e0b3bbac0bdc1d268aa7f24741aeb12a7d366d
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462577"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Nasazení nástroje pro správu virtuálních ploch Windows (Classic) pomocí šablony Azure Resource Manager
@@ -48,7 +48,7 @@ Než začnete, ujistěte se, že serverové a klientské aplikace mají souhlas,
 
 Pomocí těchto pokynů nasaďte šablonu Azure Resource Management:
 
-1. Přejít na [stránku GitHub Azure RDS-Templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
+1. Přejít na [stránku Azure na webu GitHub RDS-Templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
 2. Nasaďte šablonu do Azure.
     - Pokud nasazujete v podnikovém předplatném, přejděte dolů a vyberte **nasadit do Azure**.
     - Pokud nasazujete v rámci předplatného poskytovatele Cloud Solution Provider, při nasazení do Azure postupujte podle těchto pokynů:

@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dd0b63e08f44167b89b6e2d491722f3708b4036
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055431"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>Kontrola přístupu k rolím Azure AD v Privileged Identity Management
@@ -33,7 +33,7 @@ Pokud jste správce privilegovaných rolí nebo globální správce, kteří maj
 
 Pokud nemáte službu Privileged Identity Management připnuté na řídicí panel v Azure Portal, postupujte podle těchto kroků a začněte.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. V pravém horním rohu Azure Portal vyberte své uživatelské jméno a vyberte organizaci Azure AD, na které budete pracovat.
 3. Vyberte **Všechny služby** a pomocí textového pole Filtr najděte **Azure AD Privileged Identity Management**.
 4. Zaškrtněte **Připnout na řídicí panel** a potom klikněte na **Vytvořit**. Aplikace Privileged Identity Management se otevře.

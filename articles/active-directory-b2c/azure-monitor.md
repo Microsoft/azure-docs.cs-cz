@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
 ms.openlocfilehash: 3106e5a640ed66828558078e6986979ad7195450
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85386211"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitorování Azure AD B2C s využitím Azure Monitor
@@ -193,7 +193,7 @@ Parameters              :
 
 Až šablonu nasadíte, může trvat několik minut, než se projekce prostředků dokončí. Než budete moct přejít k další části a vybrat předplatné, možná budete muset několik minut počkat (obvykle ne víc než pět).
 
-## <a name="select-your-subscription"></a>Výběr předplatného
+## <a name="select-your-subscription"></a>Vyberte své předplatné.
 
 Po nasazení šablony a dokončení projekce prostředku počkejte několik minut, přiřaďte své předplatné ke svému Azure AD B2C adresáři pomocí následujících kroků.
 
@@ -213,7 +213,7 @@ Nastavení diagnostiky definují, kam se mají odesílat protokoly a metriky pro
 
 - [Účet úložiště Azure](../azure-monitor/platform/resource-logs-collect-storage.md)
 - Řešení pro [centra událostí](../azure-monitor/platform/resource-logs-stream-event-hubs.md) .
-- [Pracovní prostor služby Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md)
+- [Pracovní prostor Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md)
 
 Pokud jste to ještě neudělali, vytvořte ve skupině prostředků, kterou jste zadali v [šabloně Azure Resource Manager](#create-an-azure-resource-manager-template), instanci vybraného cílového typu.
 
@@ -234,7 +234,7 @@ Postup konfigurace nastavení monitorování pro Azure AD B2C protokoly aktivit:
 1. Dejte nastavení název, pokud ho ještě nikdo nemá.
 1. Zaškrtněte políčko pro všechny cílové umístění pro odeslání protokolů. Vyberte **Konfigurovat** a určete jejich nastavení, jak je popsáno v následující tabulce.
 
-    | Nastavení | Description |
+    | Nastavení | Popis |
     |:---|:---|
     | Archivovat v účtu úložiště | Název účtu úložiště |
     | Streamovat do centra událostí | Obor názvů, ve kterém se vytvoří centrum událostí (Pokud se jedná o vaše první přihlášení ke streamování protokolů) nebo streamování do služby (Pokud už existují prostředky streamující do tohoto oboru názvů do kategorie log).

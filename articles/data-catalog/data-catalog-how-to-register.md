@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: b8c6c6e33577fe3d49d8f0c7a94a941827f5cf68
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523430"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Registrace zdrojů dat v Azure Data Catalog
@@ -74,7 +74,7 @@ Registrace zdroje dat umožňuje zjistitelnost v Data Catalog při použití met
 
 Když se znovu zaregistrujete už registrovaný zdroj dat, provede se sloučení operace Upsert: stávající objekty se aktualizují a vytvoří se nové objekty. Všechna metadata, která poskytuje uživatelé prostřednictvím portálu Data Catalog, jsou zachována.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Vzhledem k tomu, že kopíruje strukturální a popisné metadata ze zdroje dat do služby katalogu, registruje zdroj dat v Data Catalog usnadňuje zjišťování a pochopení dat. Po zaregistrování zdroje dat ho můžete opatřit poznámkami, spravovat a zjišťovat pomocí portálu Data Catalog.
 
 ## <a name="next-steps"></a>Další kroky

@@ -9,10 +9,10 @@ ms.date: 06/29/2020
 ms.author: magoedte
 ms.custom: include file
 ms.openlocfilehash: aa7b997fe112be5d974d0e82597e786fa219e1f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85570134"
 ---
 #### <a name="process-automation"></a>Automatizace procesů
@@ -26,7 +26,7 @@ ms.locfileid: "85570134"
 | Maximální počet modulů, které se dají importovat každých 30 sekund na účet Automation |5 ||
 | Maximální velikost modulu |100 MB ||
 | Doba běhu úlohy, úroveň Free |500 minut na předplatné za kalendářní měsíc ||
-| Maximální povolené množství místa na disku na izolovaný prostor<sup>1</sup> |1 GB |Platí jenom pro sandboxy Azure.|
+| Maximální povolené množství místa na disku na izolovaný prostor<sup>1</sup> |1 GB |Platí jenom pro sandboxy Azure.|
 | Maximální velikost paměti přidělené izolovanému prostoru<sup>1</sup> |400 MB |Platí jenom pro sandboxy Azure.|
 | Maximální povolený počet síťových soketů na izolovaný prostor<sup>1</sup> |1 000 |Platí jenom pro sandboxy Azure.|
 | Maximální povolený běh na Runbook<sup>1</sup> |3 hodiny |Platí jenom pro sandboxy Azure.|

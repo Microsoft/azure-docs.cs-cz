@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
 ms.openlocfilehash: 004bd973651d5903db4254a8883be2c8a83d9b38
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84310576"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Podpora jazyků a oblastí pro rozhraní API pro vlastní vyhledávání Bingu
@@ -32,21 +32,21 @@ Můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Zadáte-li zemi n
 |Země|Kód|
 |-------|----|
 |Argentina|AR|
-|Australia|AU|
+|Austrálie|AU|
 |Rakousko|AT|
 |Belgie|BE|
 |Brazílie|BR|
-|Canada|CA|
+|Kanada|CA|
 |Chile|CL|
 |Dánsko|DK|
 |Finsko|FI|
 |Francie|FR|
 |Německo|DE|
 |Hongkong – zvláštní administrativní oblast|HK|
-|India|IN|
+|Indie|IN|
 |Indonésie|ID|
 |Itálie|IT|
-|Japan|JP|
+|Japonsko|JP|
 |Jižní Korea|KR|
 |Malajsie|MY|
 |Mexiko|MX|
@@ -66,7 +66,7 @@ Můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Zadáte-li zemi n
 |Tchaj-wan|TW|
 |Turecko|TR|
 |Spojené království|GB|
-|Česká republika|USA|
+|USA|USA|
 
 
 ## <a name="markets"></a>Trhy
@@ -74,23 +74,23 @@ Můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Zadáte-li zemi n
 |Země|Jazyk|Kód trhu|
 |-------|--------|-----------|
 |Argentina|Španělština|ES-AR|
-|Australia|Angličtina|EN-AU|
+|Austrálie|Angličtina|EN-AU|
 |Rakousko|Němčina|de-AT|
 |Belgie|Nizozemština|NL|
 |Belgie|Francouzština|fr – bude|
 |Brazílie|Portugalština|pt-BR|
-|Canada|Angličtina|en-CA|
-|Canada|Francouzština|fr – CA|
+|Kanada|Angličtina|en-CA|
+|Kanada|Francouzština|fr – CA|
 |Chile|Španělština|ES-CL|
 |Dánsko|Dánština|da-DK|
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
 |Hongkong – zvláštní administrativní oblast|Tradiční čínština|zh – HK|
-|India|Angličtina|en-IN|
+|Indie|Angličtina|en-IN|
 |Indonésie|Angličtina|EN-ID|
 |Itálie|Italština|it-IT|
-|Japan|Japonština|ja-JP|
+|Japonsko|Japonština|ja-JP|
 |Jižní Korea|Korejština|ko-KR|
 |Malajsie|Angličtina|EN – MY|
 |Mexiko|Španělština|ES – MX|
@@ -111,5 +111,5 @@ Můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Zadáte-li zemi n
 |Tchaj-wan|Tradiční čínština|zh-TW|
 |Turecko|Turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
-|Česká republika|Angličtina|cs-CZ|
-|Česká republika|Španělština|ES – US|
+|USA|Angličtina|cs-CZ|
+|USA|Španělština|ES – US|

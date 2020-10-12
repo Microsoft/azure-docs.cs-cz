@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: 2961ffb21a1f34ca677e0aede5170689f4e38dca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84267973"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Průvodce Azure AI pro prediktivní správu řešení
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Prediktivní Údržba (**PDM**) je oblíbená aplikace prediktivní analýzy, která může pomáhat podnikům v několika odvětvích dosahovat vysokého využití prostředků a úspory za provozní náklady. Tato příručka spojuje obchodní a analytické pokyny a osvědčené postupy pro úspěšné vývoj a nasazování řešení PdM s využitím technologie [platformy Microsoft Azure AI](https://azure.microsoft.com/overview/ai-platform) .
 
@@ -43,7 +43,7 @@ Obsah BDM neočekává, že čtenář bude mít žádné předchozí znalosti pr
 
 Firmy vyžadují pro provozování svých návratnosti velkých investic důležité zařízení, která mají provozní efektivitu a využití. Tyto prostředky by mohly být v rozsahu od leteckých motorů, turbínů, výtahů nebo průmyslových chladicích přístrojů – tyto náklady se vybírají až do každodenních zařízení, jako jsou kopírky, kavárny nebo vodní chladič.
 - Ve výchozím nastavení většina firem spoléhá na _opravnou údržbu_, kde se součásti nahrazují jako a při selhání. Opravná údržba zajišťuje, že se části zcela používají (takže neodstraňuje životní cyklus součástí), ale náklady na obchod za výpadky, práci a neplánované požadavky na údržbu (mimo špičky nebo nepohodlné umístění).
-- Na další úrovni podniky postupuje při _preventivní údržbě_, kde určují vhodný životnost pro součást a udržují nebo nahrazují před selháním. Preventivní údržba zabraňuje neplánovaným a závažným chybám. Ale vysoké náklady na plánované výpadky, využití komponenty během své užitečné životnosti, a stále ještě zůstává práce.
+- Na další úrovni podniky postupuje při  _preventivní údržbě_, kde určují vhodný životnost pro součást a udržují nebo nahrazují před selháním. Preventivní údržba zabraňuje neplánovaným a závažným chybám. Ale vysoké náklady na plánované výpadky, využití komponenty během své užitečné životnosti, a stále ještě zůstává práce.
 - Cílem _prediktivní údržby_ je optimalizovat rovnováhu mezi opravnou a preventivní údržbou tím, že _v čase_ zapnete náhradní součásti. Tento přístup nahrazuje tyto součásti pouze v případě, že se blíží selhání. Díky rozšíření životností komponent (v porovnání s preventivní údržbou) a omezením neplánovaných nákladů na údržbu a práce (v rámci opravné údržby) můžou podniky získat úspory nákladů a konkurenční výhody.
 
 ## <a name="business-problems-in-pdm"></a>Obchodní problémy v PdM
@@ -114,7 +114,7 @@ V této části najdete obecné pokyny k principům pro datové vědy a praxi pr
 
 ### <a name="relevant-data"></a>Relevantní data
 
-Nejprve musí být data _relevantní pro daný problém_. Vezměte v úvahu případ použití _při selhání kolečka_ popsané výše – školicí data by měla obsahovat funkce týkající se operací kolečka. Pokud by byl problém předpovídat selhání _trakčního systému_, musí školicí data zahrnovat všechny různé komponenty trakčního systému. První případ cílí na konkrétní komponentu, zatímco druhý případ cílí na selhání většího subsystému. Obecně doporučujeme, abyste navrhli systémy předpovědi pro konkrétní součásti, a ne větší subsystémy, protože ta by měla větší rozptýlená data. Odborník na doménu (viz [opravňující problémy pro prediktivní údržbu](#qualifying-problems-for-predictive-maintenance)) by měl pomáhat při výběru nejdůležitějších podmnožin dat pro analýzu. Relevantní zdroje dat jsou podrobněji popsány v článku [Příprava dat pro prediktivní údržbu](#data-preparation-for-predictive-maintenance).
+Nejprve musí být data _relevantní pro daný problém_. Vezměte v úvahu případ použití _při selhání kolečka_ popsané výše – školicí data by měla obsahovat funkce týkající se operací kolečka. Pokud by byl problém předpovídat selhání  _trakčního systému_, musí školicí data zahrnovat všechny různé komponenty trakčního systému. První případ cílí na konkrétní komponentu, zatímco druhý případ cílí na selhání většího subsystému. Obecně doporučujeme, abyste navrhli systémy předpovědi pro konkrétní součásti, a ne větší subsystémy, protože ta by měla větší rozptýlená data. Odborník na doménu (viz [opravňující problémy pro prediktivní údržbu](#qualifying-problems-for-predictive-maintenance)) by měl pomáhat při výběru nejdůležitějších podmnožin dat pro analýzu. Relevantní zdroje dat jsou podrobněji popsány v článku [Příprava dat pro prediktivní údržbu](#data-preparation-for-predictive-maintenance).
 
 ### <a name="sufficient-data"></a>Dostatečná data
 Mezi časté otázky týkající se dat v historii selhání patří dvě otázky: (1) "kolik událostí selhání je potřeba k vytvoření výukového modelu?" (2) "kolik záznamů je považováno za" dostačující "? Neexistují žádné definitivní odpovědi, ale pouze pravidla pro palec. Pro (1), větší počet událostí selhání, lepší model. Pro (2) a přesný počet událostí selhání závisí na datech a kontextu problému, který je vyřešen. Ale na překlopení dojde při selhání počítače příliš často, ale společnost ho nahradí, čímž se sníží instance selhání. Tady je důležité pokyny od odborníka na doménu. Existují však metody, které je možné vypořádat s problémem _vzácných událostí_. Jsou popsány v oddílu [zpracování nevyvážených dat](#handling-imbalanced-data).
@@ -188,7 +188,7 @@ Mezi další kroky předzpracování dat patří _zpracování chybějících ho
 
 U výše uvedených předzpracovaných zdrojů dat je finální transformace před technikou, která se připojí k výše uvedeným tabulkám na základě identifikátoru assetu a časového razítka. Výsledná tabulka by měla mít hodnoty null ve sloupci selhání, pokud je počítač v normálním provozu. Tyto hodnoty null mohou být přizpůsobeny indikátorem pro normální operaci. Pomocí tohoto sloupce selhání můžete vytvořit _popisky pro prediktivní model_. Další informace najdete v části [techniky modelování pro prediktivní údržbu](#modeling-techniques-for-predictive-maintenance).
 
-## <a name="feature-engineering"></a>Návrh funkcí
+## <a name="feature-engineering"></a>Příprava atributů
 Technologie funkcí je prvním krokem před modelováním dat. Její role v rámci vědeckého zpracování dat [je popsána zde](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/create-features). _Funkce_ je prediktivní atribut pro model – například teplota, tlak, vibrace a tak dále. Pro PdM zahrnuje inženýr funkcí abstrakci stavu počítače nad historickými daty shromážděnými během určité doby trvání. V takovém smyslu se liší od jeho partnerských uzlů, jako je vzdálené monitorování, detekce anomálií a detekce selhání. 
 
 ### <a name="time-windows"></a>Časová okna
@@ -257,7 +257,7 @@ Tato část popisuje hlavní techniky modelování pro problémy PdM a jejich ko
 > by měla být určena při konzultacích s odborníkem na doménu.
 
 ### <a name="binary-classification"></a>Binární klasifikace
-Binární klasifikace se používá k _předpovědi pravděpodobnosti, že se část zařízení v budoucím časovém období, které_ se označuje jako _budoucí období horizontu X_, nezdařila. X se určuje podle obchodního problému a dat při konzultacích s odborníkem na doménu. Můžete například:
+Binární klasifikace se používá k _předpovědi pravděpodobnosti, že se část zařízení v budoucím časovém období, které_ se označuje jako _budoucí období horizontu X_, nezdařila. X se určuje podle obchodního problému a dat při konzultacích s odborníkem na doménu. Příklady:
 - _Minimální doba realizace_ nutná k nahrazení komponent, nasazení prostředků údržby, provedení údržby, aby se předešlo problému, který se může v daném období vyskytovat.
 - _minimální počet událostí_ , ke kterým může dojít, než dojde k problému.
 
@@ -362,7 +362,7 @@ Mnohé PdM problémy čelí takovým nevyváženým datovým sadám, kde jedna t
 
 Díky nerovnováhě tříd v datech je výkon většiny standardních výukových algoritmů ohrožen, protože se zaměřuje na minimalizaci celkové míry chyb. Pro datovou sadu s 99% negativním a 1% pozitivním příkladem může být model zobrazený tak, aby měl 99% přesnost označením všech instancí jako negativní. Model ale nebude zařadit všechny pozitivní příklady; Takže i když je jeho přesnost vysoká, algoritmus není vhodný. V důsledku toho se konvenční hodnocení metrik, jako je _Celková přesnost u chybových přenosů_ , nedostatečné pro získání nevyváženého učení. Při vystavení s nevyváženými datovými sadami se pro vyhodnocení modelu používají jiné metriky:
 - Přesnost
-- Úplnost
+- Recall
 - Skóre F1
 - Náklady upravené na ROC (provozní charakteristiky přijímače)
 
@@ -426,7 +426,7 @@ Poslední část tohoto průvodce poskytuje seznam šablon řešení PdM, kurzů
 | # | Nadpis | Popis |
 |--:|:------|-------------|
 | 2 | [Šablona řešení prediktivní údržby Azure](https://github.com/Azure/AI-PredictiveMaintenance) | Open Source šablona řešení, která předvádí modelování Azure ML a kompletní infrastrukturu Azure s podporou scénářů prediktivní údržby v kontextu vzdáleného monitorování IoT. |
-| 3 | [Hloubkové učení pro prediktivní údržbu](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Poznámkový blok Azure s ukázkovým řešením použití LSTM (dlouhodobě krátkodobé paměti) (třída opakujících se sítí neuronové) pro prediktivní údržbu s [blogovým příspěvkem k této ukázce](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
+| 3 | [Hloubkové učení pro prediktivní údržbu](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Poznámkový blok Azure s ukázkovým řešením použití LSTM (Long Short-Term paměti) (třída opakujících se sítí neuronové) pro prediktivní údržbu s [blogovým příspěvkem k této ukázce](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Prediktivní údržba Azure pro Aerospace](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Jedna z prvních šablon řešení PdM založená na Azure ML v 1.0 pro údržbu letadel. Tato příručka pochází z tohoto projektu. |
 | 5 | [Sada nástrojů Azure AI pro IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | AI v IoT Edge pomocí TensorFlow; sada Toolkit balí modely hloubkového učení v kontejnerech Docker kompatibilních s Azure IoT Edge a zpřístupňuje tyto modely jako rozhraní REST API.
 | 6 | [Prediktivní údržba Azure IoT](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite počítače – předkonfigurované řešení. PdM šablona pro údržbu letadla pomocí IoT Suite. [Jiný dokument](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) a [návod](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) vztahující se ke stejnému projektu. |

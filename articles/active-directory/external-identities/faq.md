@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 158caf3a6c4cc0efc2f89e18d065a0112b481ee9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274040"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Nejčastější dotazy k Azure Active Directory spolupráci B2B
@@ -30,7 +30,7 @@ Tyto nejčastější dotazy týkající se spolupráce B2B (Business-to-Business
 Samozřejmě. Další informace najdete v našem [blogovém příspěvku o této funkci](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Další informace o tom, jak přizpůsobit přihlašovací stránku vaší organizace, najdete v tématu [Přidání firemního brandingu pro přihlášení a přístup ke stránkám na panelu](../fundamentals/customize-branding.md).
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>Můžou uživatelé spolupráce B2B přistupovat k SharePointu Online a OneDrivu?
-Ano. Možnost hledání stávajících uživatelů typu Host v SharePointu Online pomocí výběru osob je ale ve výchozím nastavení **vypnutá** . Pokud chcete zapnout možnost hledání stávajících uživatelů typu Host, nastavte **ShowPeoplePickerSuggestionsForGuestUsers** na **zapnuto**. Toto nastavení můžete zapnout buď na úrovni tenanta, nebo na úrovni kolekce webů. Toto nastavení můžete změnit pomocí rutin set-SPOTenant a set-SPOSite. Pomocí těchto rutin můžou členové vyhledat všechny existující uživatele typu Host v adresáři. Změny v oboru tenanta neovlivňují online weby SharePointu, které již byly zřízeny.
+Ano. Možnost hledání stávajících uživatelů typu Host v SharePointu Online pomocí výběru osob je ale ve výchozím nastavení **vypnutá** . Pokud chcete zapnout možnost hledání stávajících uživatelů typu Host, nastavte **ShowPeoplePickerSuggestionsForGuestUsers** na **zapnuto**. Toto nastavení můžete zapnout buď na úrovni tenanta, nebo na úrovni kolekce webů. Toto nastavení můžete změnit pomocí rutin Set-SPOTenant a Set-SPOSite. Pomocí těchto rutin můžou členové vyhledat všechny existující uživatele typu Host v adresáři. Změny v oboru tenanta neovlivňují online weby SharePointu, které již byly zřízeny.
 
 ### <a name="is-the-csv-upload-feature-still-supported"></a>Je funkce nahrávání CSV pořád podporovaná?
 Ano. Další informace o použití funkce nahrání souboru. CSV najdete v [této ukázce PowerShellu](code-samples.md).
@@ -118,7 +118,7 @@ Pokud má partner tenanta Azure AD federovaného do místní ověřovací infras
 Odstraňujeme rozdíly mezi spoluprací B2B a B2C (Business-to-Consumer), z nichž jsou identity podporované. Použitá identita není dobrým důvodem pro výběr mezi použitím B2B nebo pomocí B2C. Informace o volbě možnosti spolupráce najdete v tématu [porovnání spolupráce B2B a B2C v Azure Active Directory](compare-with-b2c.md).
 
 ### <a name="can-an-azure-ad-b2c-local-account-be-invited-to-an-azure-ad-tenant-for-b2b-collaboration"></a>Může se místní účet Azure AD B2C pozvat do tenanta Azure AD pro spolupráci B2B?
-No. Místní účet Azure AD B2C lze použít pouze pro přihlášení k tenantovi Azure AD B2C. Účet se nedá použít k přihlášení do tenanta Azure AD. Pozvání Azure AD B2C místního účtu do tenanta Azure AD pro spolupráci B2B není podporované.
+Ne. Místní účet Azure AD B2C lze použít pouze pro přihlášení k tenantovi Azure AD B2C. Účet se nedá použít k přihlášení do tenanta Azure AD. Pozvání Azure AD B2C místního účtu do tenanta Azure AD pro spolupráci B2B není podporované.
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Jaké aplikace a služby podporují uživatele typu Host Azure B2B?
 Všechny aplikace integrované s Azure AD můžou podporovat uživatele typu Host Azure B2B, ale musí používat koncový bod nastavený jako tenant k ověřování uživatelů typu Host. Je také možné, že budete muset [přizpůsobit deklarace identity](claims-mapping.md) v tokenu SAML, který je vydaný, když se uživatel typu Host ověří do aplikace. 

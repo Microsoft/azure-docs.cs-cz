@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 05/20/2020
 ms.author: curtand
 ms.openlocfilehash: 795c68fc063d98bdee6ccf59dba6ee718dc92d03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84323021"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>Microsoft Authenticator pro Android ve veřejném cloudu v Číně
@@ -44,18 +44,18 @@ Pokud uživatel dřív spravoval, aby v aplikaci nastavil přihlášení k telef
 
 ## <a name="multi-factor-authentication-workaround"></a>Alternativní řešení Multi-Factor Authentication
 
-Místo používání nabízených oznámení pro službu Multi-Factor Authentication můžou uživatelé [nastavit svou ověřovací aplikaci tak, aby na svém zařízení přijímala ověřovací kódy](multi-factor-authentication-setup-auth-app.md#set-up-the-microsoft-authenticator-app-to-use-verification-codes) , které můžou použít pro MFA k ověření jejich identity. Tyto ověřovací kódy jsou platné po dobu 30 sekund a jejich použití vyžaduje, aby si správci povolili, aby mohli provádět ověřování pomocí ověřovacích kódů s jednorázovým heslem (TOTP).
+Místo používání nabízených oznámení pro službu Multi-Factor Authentication můžou uživatelé [nastavit svou ověřovací aplikaci tak, aby na svém zařízení přijímala ověřovací kódy](multi-factor-authentication-setup-auth-app.md#set-up-the-microsoft-authenticator-app-to-use-verification-codes) , které můžou použít pro MFA k ověření jejich identity. Tyto ověřovací kódy jsou platné po dobu 30 sekund a jejich použití musí správci povolit, aby mohli provádět ověřování pomocí ověřovacích kódů One-Time (Time-to-based Password).
 
 ## <a name="availability"></a>Dostupnost
 
 Microsoft Authenticator funkce | Dostupnost v Číně
 ------------------------------- | ---------------------
-Registrace MFA pomocí nabízených oznámení | Ne
-Již existující účet MFA ověřování identity pomocí nabízených oznámení | Ne
-Již existující účet MFA, který provádí ruční kontrolu oznámení | Ano
-Registrace MFA/ověřování pouze pomocí ověřovacích kódů TOTP/ověřování | Ano
-Registrace přihlášení k telefonu | Ne
-Existující přihlášení k telefonu pomocí nabízených oznámení | Ne
+Registrace MFA pomocí nabízených oznámení | No
+Již existující účet MFA ověřování identity pomocí nabízených oznámení | No
+Již existující účet MFA, který provádí ruční kontrolu oznámení | Yes
+Registrace MFA/ověřování pouze pomocí ověřovacích kódů TOTP/ověřování | Yes
+Registrace přihlášení k telefonu | No
+Existující přihlášení k telefonu pomocí nabízených oznámení | No
 Stávající ověřování přihlášení k telefonu pomocí ruční kontroly žádostí o ověření | Ano
 
 ## <a name="next-steps"></a>Další kroky

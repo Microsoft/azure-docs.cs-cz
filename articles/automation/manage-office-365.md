@@ -5,23 +5,23 @@ services: automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: 91f5ac0c3adabf9880078d7a4d3703e2757cb97f
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185309"
 ---
 # <a name="manage-office-365-services"></a>Správa služeb Office 365
 
 Pro správu předplatných služeb Office 365 můžete použít Azure Automation pro produkty, jako je Microsoft Word a Microsoft Outlook. Interakce s Office 365 jsou povolené službou [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md). Projděte si téma [použití Azure AD v Azure Automation k ověření v Azure](automation-use-azure-ad.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke správě předplatných služeb Office 365 v Azure Automation potřebujete následující:
 
 * Předplatné Azure. Viz [Průvodce rozhodnutím předplatného](/azure/cloud-adoption-framework/decision-guides/subscriptions/).
 * Automatizační objekt v Azure, který bude uchovávat přihlašovací údaje uživatelského účtu a runbooky. Další informace najdete v [úvodu k Azure Automation](./automation-intro.md).
-* Služba Azure AD. Projděte si téma [použití Azure AD v Azure Automation k ověření v Azure](automation-use-azure-ad.md).
+* Azure AD . Projděte si téma [použití Azure AD v Azure Automation k ověření v Azure](automation-use-azure-ad.md).
 * Tenant Office 365 s účtem. Viz [Nastavení tenanta Office 365](/sharepoint/dev/spfx/set-up-your-developer-tenant).
 
 ## <a name="install-the-msonline-and-msonlineext-modules"></a>Instalace modulů MSOnline a MSOnlineExt
@@ -101,7 +101,7 @@ Můžete použít svůj skript v sadě Azure Automation Runbook. Pro účely toh
 3. Vyberte novou sadu Runbook a klikněte na **Upravit**.
 4. Zkopírujte skript a vložte ho do textového editoru pro sadu Runbook.
 5. Vyberte **assety**, potom rozbalte **přihlašovací údaje** a ověřte, jestli je zde přihlašovací údaje pro Office 365.
-6. Klikněte na **Save** (Uložit).
+6. Klikněte na **Uložit**.
 7. Vyberte **podokno test**a potom kliknutím na **Spustit** zahajte testování Runbooku. Viz [Správa runbooků v Azure Automation](./manage-runbooks.md).
 8. Po dokončení testování ukončete z podokna test.
 

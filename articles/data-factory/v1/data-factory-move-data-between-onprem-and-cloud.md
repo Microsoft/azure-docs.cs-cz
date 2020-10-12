@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195982"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Přesun dat mezi místními zdroji a cloudem pomocí Správa dat brány
@@ -96,7 +96,7 @@ V tomto kroku použijete Azure Portal k vytvoření instance Azure Data Factory 
    > [!NOTE]
    > Použijte Internet Explorer nebo webový prohlížeč kompatibilní s Microsoft ClickOnce.
    >
-   > Pokud používáte Chrome, přejděte na [internetový obchod Chrome](https://chrome.google.com/webstore/), dejte hledat klíčové slovo ClickOnce, vyberte některé z rozšíření ClickOnce a nainstalujte je.
+   > Pokud používáte Chrome, klikněte na [Web Store pro Chrome](https://chrome.google.com/webstore/), vyhledejte klíčové slovo ClickOnce, vyberte jedno z rozšíření ClickOnce a nainstalujte je.
    >
    > To samé udělejte pro Firefox (instalovat doplněk). Klikněte na tlačítko **otevřít nabídku** na panelu nástrojů (**tři horizontální čáry** v pravém horním rohu), klikněte na **Doplňky**, vyhledejte klíčové slovo ClickOnce, vyberte jedno z rozšíření ClickOnce a nainstalujte je.    
    >
@@ -371,7 +371,7 @@ V tomto kroku vytvoříte **kanál** s jednou **aktivitou kopírování** , kter
 3. Kliknutím na **nasadit** na panelu příkazů nasaďte datovou sadu (tabulka je obdélníková datová sada). Ověřte, že se kanál zobrazuje ve stromovém zobrazení pod uzlem **kanály** .  
 4. Nyní kliknutím na **X** dvakrát zavřete stránku a vrátíte se na stránku **Data Factory** pro **ADFTutorialOnPremDF**.
 
-**Gratulujeme!** Úspěšně jste vytvořili objekt pro vytváření dat Azure, propojené služby, datové sady a kanál a naplánovali jste kanál.
+**Blahopřejeme!** Úspěšně jste vytvořili objekt pro vytváření dat Azure, propojené služby, datové sady a kanál a naplánovali jste kanál.
 
 #### <a name="view-the-data-factory-in-a-diagram-view"></a>Zobrazit objektu pro vytváření dat v zobrazení diagramu
 1. V **Azure Portal**klikněte na dlaždici **diagram** na domovské stránce pro **ADFTutorialOnPremDF** Data Factory. :

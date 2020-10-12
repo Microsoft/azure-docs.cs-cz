@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/02/2019
 ms.author: alkohli
 ms.openlocfilehash: c071d372ba90d29806fd8a44909e2c803a8d3fa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84339276"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>Správa zařízení Azure Data Box Gateway přes Windows PowerShell
@@ -23,13 +23,13 @@ Tento článek se zaměřuje na úlohy, které provedete pomocí prostředí Pow
 
 Tento článek obsahuje následující postupy:
 
-- Připojení k rozhraní PowerShell
+- Připojte se k rozhraní PowerShellu.
 - Vytvoření balíčku pro podporu
 - Nahrání certifikátu
 - Spuštění v prostředí bez DHCP
 - Zobrazit informace o zařízení
 
-## <a name="connect-to-the-powershell-interface"></a>Připojení k rozhraní PowerShell
+## <a name="connect-to-the-powershell-interface"></a>Připojte se k rozhraní PowerShellu.
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
 
