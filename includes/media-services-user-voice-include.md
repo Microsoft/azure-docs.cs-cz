@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 5c7686d8501baf17a63a5317f0d136adb6ac7812
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "69014697"
 ---
 Pomocí fóra [User Voice](https://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) můžete poskytnout zpětnou vazbu a zaslat návrhy pro zlepšení služeb Azure Media Services. Můžete také přejít přímo na jednu z následujících kategorií:

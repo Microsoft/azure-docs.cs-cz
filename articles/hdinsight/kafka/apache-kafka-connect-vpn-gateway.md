@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-python
 ms.date: 03/04/2020
 ms.openlocfilehash: ca5bff7f8a14efc0916210296048e3731aec5a59
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87873462"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k Apache Kafka ve službě HDInsight přes virtuální síť Azure
@@ -58,7 +58,7 @@ HDInsight neumožňuje přímé připojení k Kafka přes veřejný Internet. M�
 
 Další informace o používání služby HDInsight ve virtuální síti najdete v tématu [plánování virtuální sítě pro clustery Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md).
 
-## <a name="connect-to-apache-kafka-from-an-on-premises-network"></a><a id="on-premises"></a>Připojení k Apache Kafka z místní sítě
+## <a name="connect-to-apache-kafka-from-an-on-premises-network"></a><a id="on-premises"></a> Připojení k Apache Kafka z místní sítě
 
 Pokud chcete vytvořit cluster Kafka, který komunikuje s vaší místní sítí, postupujte podle kroků v části [připojení HDInsight k místní síťovému](./../connect-on-premises-network.md) dokumentu.
 
@@ -74,7 +74,7 @@ Tyto kroky vytvoří následující konfiguraci:
 
 Pokud chcete ověřit, jestli se klient Kafka může připojit ke clusteru z místního prostředí, použijte postup uvedený v části [příklad klienta Pythonu](#python-client) .
 
-## <a name="connect-to-apache-kafka-with-a-vpn-client"></a><a id="vpnclient"></a>Připojení k Apache Kafka pomocí klienta VPN
+## <a name="connect-to-apache-kafka-with-a-vpn-client"></a><a id="vpnclient"></a> Připojení k Apache Kafka pomocí klienta VPN
 
 Pomocí kroků v této části vytvoříte následující konfiguraci:
 
@@ -290,7 +290,7 @@ Ve výchozím nastavení funkce Apache Zookeeper vrátí název domény pro zpro
 
 Pokud se chcete připojit k bráně VPN, použijte část __připojit k Azure__ v dokumentu [Konfigurace připojení typu Point-to-site](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) .
 
-## <a name="example-python-client"></a><a id="python-client"></a>Příklad: klient Pythonu
+## <a name="example-python-client"></a><a id="python-client"></a> Příklad: klient Pythonu
 
 Pokud chcete ověřit připojení k Kafka, pomocí následujícího postupu vytvořte a spusťte producenta Pythonu a příjemce:
 

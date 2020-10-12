@@ -16,10 +16,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 56a7b91327e84ca36e6ec6e4b15f594dbc61830e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274295"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server nasazení Azure Virtual Machines DBMS pro SAP NetWeaver
@@ -404,7 +404,7 @@ Máte několik možností, jak provést ruční zálohování pomocí:
 
 1. Provádění konvenčních záloh SQL Server na přímo připojených discích Azure. Tato metoda má výhodu, že máte k dispozici rychlé zálohování pro systém obnovení a sestavování nových systémů jako kopií stávajících systémů SAP.
 2.  SQL Server 2012 CU4 a novější může zálohovat databáze na adresu URL služby Azure Storage.
-3.  Zálohy snímků souborů pro databázové soubory v Azure Blob Storage. Tato metoda funguje jenom v případě, že vaše SQL Server data a soubory protokolu jsou umístěné v úložišti objektů BLOB v Azure.
+3.  File-Snapshot zálohy pro soubory databáze v Azure Blob Storage. Tato metoda funguje jenom v případě, že vaše SQL Server data a soubory protokolu jsou umístěné v úložišti objektů BLOB v Azure.
 
 První metoda je dobře známá a používá se v mnoha případech i v místním světě. Ale ponechá vám úlohu pro řešení delšího umístění zálohy. Vzhledem k tomu, že nechcete uchovávat zálohy na 30 nebo více dní v místně připojené Azure Storage, je nutné buď použít služby Azure Backup nebo jiný nástroj pro zálohování a obnovení třetí strany, který zahrnuje správu přístupu a uchovávání informací pro vaše zálohy. Nebo můžete vytvořit rozsáhlý souborový server v Azure pomocí prostorů úložiště Windows.
 
@@ -464,7 +464,7 @@ Latin1-General, binary code point comparison sort for Unicode Data, SQL Server S
 
 Pokud je výsledek jiný, ukončete nasazení SAP a zjistěte, proč příkaz setup nefungoval podle očekávání. Nasazení aplikací SAP NetWeaver do instance SQL Server s jinou znakovou stránkou SQL Server, než je uvedená výše, **není** podporováno.
 
-## <a name="sql-server-high-availability-for-sap-in-azure"></a>SQL Server vysoké dostupnosti pro SAP v Azure
+## <a name="sql-server-high-availability-for-sap-in-azure"></a>SQL Server High-Availability pro SAP v Azure
 Pomocí SQL Server v nasazeních Azure IaaS pro SAP máte několik různých možností, jak přidat k nasazení vrstvy DBMS vysoce dostupné. Jak už bylo popsáno v tématu [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) , poskytuje Azure pro jeden virtuální počítač různou SLA a dvojici virtuálních počítačů nasazených v sadě dostupnosti Azure. Předpokladem je, že budete mít k dispozici aktuální smlouvu SLA pro nasazení v produkčním prostředí, která vyžadují nasazení v Azure Availability Sets. V takovém případě musíte nasadit minimálně dva virtuální počítače v takové skupině dostupnosti. V jednom virtuálním počítači se spustí instance Active SQL Server. Druhý virtuální počítač spustí pasivní instanci.
 
 ### <a name="sql-server-clustering-using-windows-scale-out-file-server-or-azure-shared-disk"></a>SQL Server clusteringu pomocí souborového serveru se škálováním na více systémů nebo sdíleného disku Azure
@@ -484,7 +484,7 @@ Funkce přenosu protokolu SQL Server se v Azure použila k dosažení vysoké do
 ### <a name="database-mirroring"></a>Zrcadlení databáze
 Zrcadlení databáze podle podpor SAP (viz SAP Note [965908]) spoléhá na definování partnerského serveru pro převzetí služeb při selhání v připojovacím řetězci SAP. U různých případů předpokládáme, že tyto dva virtuální počítače jsou ve stejné doméně a že SQL Server kontext uživatele jsou spuštěné v rámci uživatele domény a mají dostatečná oprávnění pro tyto dvě instance SQL Server. Proto se nastavení zrcadlení databáze v Azure neliší mezi typickou konfigurací místního nastavení nebo konfigurace.
 
-Od nasazení jenom pro Cloud je nejjednodušší způsob, jak mít v Azure další nastavení domény, aby tyto virtuální počítače s DBMS (a ideálním vyhrazeným virtuálním počítačům SAP) v jedné doméně.
+Od nasazení Cloud-Only nejjednodušší způsob, jak mít v Azure další nastavení domény, aby tyto virtuální počítače s DBMS (a ideálním vyhrazeným virtuálním počítačům SAP) byly v jedné doméně.
 
 Pokud není doména možná, může použít taky certifikáty pro koncové body zrcadlení databáze, jak je popsáno zde: <https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
 

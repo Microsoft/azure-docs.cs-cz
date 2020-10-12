@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 1f25aadf716b7768b6122a4fb165466aef7f8a16
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053388"
 ---
 # <a name="drawing-package-requirements"></a>Požadavky balíčku pro kreslení
@@ -188,7 +188,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### `directoryInfo`
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Vyžadováno | Description |
 |-----------|------|----------|-------------|
 | `name`      | řetězec | true   |  Název budovy |
 | `streetAddress`|    řetězec |    false (nepravda)    | Adresa sestavení. |
@@ -209,10 +209,10 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `buildingLevels`Objekt obsahuje pole s JSON úrovněmi budov.
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Vyžadováno | Description |
 |-----------|------|----------|-------------|
 |`levelName`    |řetězec    |true |    Název popisné úrovně Například: Floor 1, předsálí, Blue parkování nebo Basement.|
-|`ordinal` | celé číslo |    true | Určuje svislé pořadí úrovní. Každé zařízení musí mít úroveň s pořadovým číslem 0. |
+|`ordinal` | integer |    true | Určuje svislé pořadí úrovní. Každé zařízení musí mít úroveň s pořadovým číslem 0. |
 |`heightAboveFacilityAnchor` | numerické | false (nepravda) |    Výška úrovně nad kotvou měřičů |
 | `verticalExtent` | numerické | false (nepravda) | Výška podlahy na strop (tloušťka) úrovně v metrech. |
 |`filename` |    řetězec |    true |    Cesta systému souborů výkresu CAD pro úroveň budovy Musí být relativní ke kořeni souboru ZIP stavebního souboru. |
@@ -241,7 +241,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `unitProperties`Objekt obsahuje pole s vlastnostmi jednotky ve formátu JSON.
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Vyžadováno | Description |
 |-----------|------|----------|-------------|
 |`unitName`    |řetězec    |true    |Název jednotky, která se má přidružit k tomuto `unitProperty` záznamu. Tento záznam je platný pouze v případě, že `unitName` se v vrstvách nachází shodný popisek `unitLabel` . |
 |`categoryName`|    řetězec|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |

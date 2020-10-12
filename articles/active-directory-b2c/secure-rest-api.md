@@ -12,10 +12,10 @@ ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 206768604c6d08a32c0caaf9b53a1417cfa1344b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385327"
 ---
 # <a name="secure-your-restful-services"></a>Zabezpečení služeb RESTful 
@@ -55,7 +55,7 @@ Pokud chcete nakonfigurovat REST API technický profil s ověřováním HTTP Bas
 1. V případě **použití klíče**vyberte **šifrování**.
 1. Vyberte **Vytvořit**.
 1. Znovu vyberte **klíče zásad** .
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 1. V případě **možností**vyberte možnost **ručně**.
 1. Jako **název**zadejte **RestApiPassword**.
     *B2C_1A_* předpony je možné přidat automaticky.

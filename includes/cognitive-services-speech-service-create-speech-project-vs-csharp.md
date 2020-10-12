@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/30/2019
 ms.author: wolfma
 ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71327060"
 ---
 Chcete-li vytvořit projekt sady Visual Studio pro vývoj pro systém Windows, je nutné vytvořit projekt, nastavit aplikaci Visual Studio pro vývoj desktopových aplikací .NET, nainstalovat sadu Speech SDK a vybrat cílovou architekturu.
@@ -25,7 +25,7 @@ Pokud chcete začít, vytvořte projekt v sadě Visual Studio a ujistěte se, ž
 
 1. V okně **Konfigurovat nový projekt** zadejte *HelloWorld* do pole **název projektu**, zvolte nebo vytvořte cestu k adresáři v **umístění**a pak vyberte **vytvořit**.
 
-1. V řádku nabídek sady Visual Studio vyberte **nástroje** > **získat nástroje a funkce**, které se otevře instalační program pro Visual Studio a zobrazí se dialogové okno **změny** .
+1. V řádku nabídek sady Visual Studio vyberte **nástroje**  >  **získat nástroje a funkce**, které se otevře instalační program pro Visual Studio a zobrazí se dialogové okno **změny** .
 
 1. Ověřte, zda je k dispozici úloha **vývoj desktopových** aplikací pro .NET. Pokud se úloha nenainstalovala, zaškrtněte políčko vedle ní a pak výběrem **změnit** spusťte instalaci. Stažení a instalace může trvat několik minut.
 
@@ -61,7 +61,7 @@ Dalším krokem je instalace [balíčku NuGet sady Speech SDK](https://aka.ms/cs
 
 Chcete-li nyní sestavit a spustit konzolovou aplikaci, vytvořte konfiguraci platformy, která odpovídá architektuře vašeho počítače.
 
-1. V řádku nabídek vyberte **sestavení** > **Configuration Manager**. Zobrazí se dialogové okno **Configuration Manager** .
+1. V řádku nabídek vyberte **sestavení**  >  **Configuration Manager**. Zobrazí se dialogové okno **Configuration Manager** .
 
    ![Configuration Manager – dialogové okno](../articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
 

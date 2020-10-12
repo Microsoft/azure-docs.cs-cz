@@ -8,10 +8,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
 ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86147299"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Možnosti úložiště a přesunu dat pro vykreslování assetů a výstupních souborů
@@ -134,4 +134,4 @@ Další informace o možnostech úložiště najdete v podrobné dokumentaci:
 
 * [Úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md)
 * [Blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)
-* [Azure Files](../storage/files/storage-files-introduction.md)
+* [Soubory Azure](../storage/files/storage-files-introduction.md)

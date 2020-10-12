@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 7c2cbaaf4866edc20f9745abe6759861db7834c3
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291326"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>Správa účtů Azure Media Services V3
@@ -31,7 +31,7 @@ Pokud potřebujete přesunout Media Services účet k novému předplatnému, mu
 > [!NOTE]
 > Media Services V3 podporuje model víceklientské architektury.
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 * Před migrací na jiné předplatné vytvořte zálohy všech dat ve vašem účtu.
 * Musíte zastavit všechny koncové body streamování a prostředky živého streamování. Uživatelé nebudou mít přístup k vašemu obsahu po dobu trvání přesunutí skupiny prostředků. 
@@ -39,7 +39,7 @@ Pokud potřebujete přesunout Media Services účet k novému předplatnému, mu
 > [!IMPORTANT]
 > Nespouštějte koncový bod streamování, dokud se přesun úspěšně nedokončí.
 
-### <a name="troubleshoot"></a>Odstraňování potíží 
+### <a name="troubleshoot"></a>Řešení potíží 
 
 Pokud se účet Media Services nebo přidružený Azure Storage účet stane "Odpojeno" po přesunutí skupiny prostředků, zkuste klíče účtu úložiště otočit. Pokud se při střídání klíčů účtu úložiště nevyřeší stav "Odpojeno" účtu Media Services, založte novou žádost o podporu z nabídky podpora a řešení potíží v účtu Media Services.  
 

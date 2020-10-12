@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s HSR škálováním na více instancí Pacemaker s SLES na virtuálních počítačích Azure | SAP HANA Microsoft Docs
+title: Řešení potíží s SLES HSR-Pacemaker na více instancí s na virtuálních počítačích Azure | SAP HANA Microsoft Docs
 description: Průvodce pro kontrolu a odstraňování problémů komplexního SAP HANA konfigurace s vysokou dostupností škálované na základě SAP HANA systémové replikace (HSR) a Pacemaker v SLES 12 SP3 běžící na virtuálních počítačích Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: 5c3a24bc9d754a15a0b372667fbcd689365a9aec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088304"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Ověření a řešení potíží SAP HANA nastavení vysoké dostupnosti škálování na SLES 12 SP3 
@@ -40,7 +40,7 @@ Tento článek vám pomůže s kontrolou konfigurace clusteru Pacemaker pro SAP 
 
 ## <a name="important-notes"></a>Důležité poznámky
 
-Všechny testy pro SAP HANA škálování v kombinaci s SAP HANA systémové replikace a Pacemaker byly provedeny pouze SAP HANA 2,0. Verze operačního systému byla SUSE Linux Enterprise Server 12 SP3 pro aplikace SAP. K nastavení clusteru Pacemaker se použil poslední balíček ot./min. SAPHanaSR z SUSE.
+Všechny testy pro SAP HANA škálování v kombinaci s SAP HANA systémové replikace a Pacemaker byly provedeny pouze SAP HANA 2,0. Verze operačního systému byla SUSE Linux Enterprise Server 12 SP3 pro aplikace SAP. K nastavení clusteru Pacemaker se použil poslední balíček ot./min. SAPHanaSR-ScaleOut z SUSE.
 SUSE publikoval [podrobný popis tohoto nastavení optimalizovaného pro výkon][sles-hana-scale-out-ha-paper].
 
 U typů virtuálních počítačů, které jsou podporované pro SAP HANA škálování na více instancí, se podívejte na [SAP HANA certifikovaný adresář IaaS][sap-hana-iaas-list].

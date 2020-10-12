@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 2a322de383194f131395629d33456d7561397eb9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310981"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Vyhledat umístění pomocí služby Azure Maps Search Services
@@ -95,7 +95,7 @@ V tomto příkladu použijeme přibližné hledání k prohledání celého svě
 
 4. Výchozím chováním je hledání celého světa, který může vracet zbytečné výsledky. V dalším kroku vyhledáme jenom Pizza USA. Přidejte `countrySet` klíč do oddílu **param** a nastavte jeho hodnotu na `US` . Nastavením `countrySet` klíče se `US` naváže výsledky k USA.
 
-    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Hledání pizza v USA":::
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Hledat adresu":::
 
     Výsledky jsou nyní ohraničeny kódem země a dotaz vrátí Pizza restaurací ve USA.
 
@@ -143,13 +143,13 @@ V tomto příkladu provedeme zpětné vyhledávání pomocí několika voliteln�
     | returnRoadUse | true | Vrátí na adrese cesty pro použití. Všechny možné typy provozu najdete v tématu [typy cest pro použití](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters).|
     | returnMatchType | true| Vrátí typ shody. Všechny možné hodnoty najdete v tématu s [výsledky hledání zpětné adresy](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult) .
 
-   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Hledání se obrátí.":::
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Hledat adresu":::
 
 5. Klikněte na **Odeslat**a zkontrolujte text odpovědi.
 
 6. V dalším kroku přidáme `entityType` klíč a nastavíme jeho hodnotu na `Municipality` . `entityType`Klíč přepíše `returnMatchType` klíč v předchozím kroku. Bude také nutné odebrat `returnSpeedLimit` a, `returnRoadUse` protože požadujeme informace o úřadu.  Všechny možné typy entit naleznete v tématu [typy entit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#entitytype).
 
-    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Hledání zpětného entityType.":::
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Hledat adresu":::
 
 7. Klikněte na **Odeslat**. Porovnejte výsledky s výsledky vrácenými v kroku 5.  Vzhledem k tomu, že požadovaný typ entity je nyní `municipality` , odpověď neobsahuje informace o ulici. Vrácené `geometryId` hodnoty lze také použít k vyžádání mnohoúhelníku hranice prostřednictvím Azure Maps získat [rozhraní API pro mnohoúhelník vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon).
 
@@ -168,7 +168,7 @@ V tomto příkladu vyhledáme meziulici na základě souřadnic adresy.
    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
-    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Hledat mezi ulici":::
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Hledat adresu":::
   
 3. Klikněte na **Odeslat**a zkontrolujte text odpovědi. Všimněte si, že odpověď obsahuje `crossStreet` hodnotu `Occidental Avenue South` .
 

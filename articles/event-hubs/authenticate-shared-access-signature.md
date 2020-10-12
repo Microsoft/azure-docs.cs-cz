@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: f0cdf37963e40d871ad1079e9ccd5d0eb61fa2c0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91270096"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Ověřování přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů (SAS)
@@ -183,7 +183,7 @@ Každému klientovi Event Hubs je přiřazen jedinečný token, který se nahraj
 
 Všechny tokeny jsou přiřazeny k klíčům SAS. Všechny tokeny jsou obvykle podepsány stejným klíčem. Klienti si nevědí, že se jedná o klíč, který brání klientům ze zpracovatelských tokenů. Klienti pracují se stejnými tokeny, dokud nevyprší jejich platnost.
 
-Pokud chcete například definovat autorizační pravidla s rozsahem, aby se odesílaly a publikují jenom Event Hubs, musíte definovat autorizační pravidlo pro odeslání. To se dá udělat na úrovni oboru názvů nebo podrobnější rozsah konkrétní entity (instance centra událostí nebo téma). Je volán klient nebo aplikace s tímto detailním přístupem, Event Hubs Vydavatel. Postup je následující:
+Pokud chcete například definovat autorizační pravidla s rozsahem, aby se odesílaly a publikují jenom Event Hubs, musíte definovat autorizační pravidlo pro odeslání. To se dá udělat na úrovni oboru názvů nebo podrobnější rozsah konkrétní entity (instance centra událostí nebo téma). Je volán klient nebo aplikace s tímto detailním přístupem, Event Hubs Vydavatel. To můžete provést pomocí těchto kroků:
 
 1. Vytvořte klíč SAS na entitě, kterou chcete publikovat, a přiřaďte obor pro **odeslání** . Další informace najdete v tématu [zásady autorizace sdíleného přístupu](authorize-access-shared-access-signature.md#shared-access-authorization-policies).
 2. Vygenerujte token SAS s časem vypršení platnosti konkrétního vydavatele pomocí klíče vygenerovaného v Krok 1.

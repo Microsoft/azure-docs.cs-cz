@@ -6,10 +6,10 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81261070"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Výstrahy metrik s dynamickými prahovými hodnotami v Azure Monitor
@@ -61,7 +61,7 @@ Můžete zvolit výstrahu, která se má aktivovat, na jednu z následujících 
 
 ## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Co znamená rozšířené nastavení v případě dynamických prahových hodnot?
 
-**Neúspěšné tečky** – dynamické prahové hodnoty také umožňují nakonfigurovat "počet porušení pro aktivaci výstrahy", minimální počet odchylek vyžadovaných v určitém časovém období pro systém k vyvolání výstrahy (výchozí časový interval je čtyři odchylky za 20 minut). Uživatel může nakonfigurovat neúspěšné intervaly a zvolit, na co se má upozornit, změnou období selhání a časového okna. Tato možnost omezuje hluk výstrah vygenerovaný přechodnými špičkami. Příklad:
+**Neúspěšné tečky** – dynamické prahové hodnoty také umožňují nakonfigurovat "počet porušení pro aktivaci výstrahy", minimální počet odchylek vyžadovaných v určitém časovém období pro systém k vyvolání výstrahy (výchozí časový interval je čtyři odchylky za 20 minut). Uživatel může nakonfigurovat neúspěšné intervaly a zvolit, na co se má upozornit, změnou období selhání a časového okna. Tato možnost omezuje hluk výstrah vygenerovaný přechodnými špičkami. Například:
 
 Chcete-li aktivovat upozornění, když je problém v průběhu 20 minut v intervalu po dobu 4 po sobě jdoucích časů v daném období seskupení 5 minut, použijte následující nastavení:
 
@@ -127,7 +127,7 @@ Následující položky jsou osvědčené postupy pro konfiguraci výstrah na n�
 
 8. V grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat.
 
-9. Klikněte na **Done** (Hotovo).
+9. Klikněte na **Hotovo**.
 
 10. Vyplňte **Podrobnosti výstrahy** , jako **je název pravidla výstrahy**, **Popis**a **závažnost**.
 
@@ -162,7 +162,7 @@ Následující položky jsou osvědčené postupy pro konfiguraci výstrah na n�
 
 8. V grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat.
 
-9. Klikněte na **Done** (Hotovo).
+9. Klikněte na **Hotovo**.
 
 10. Vyplňte **Podrobnosti výstrahy** , jako **je název pravidla výstrahy**, **Popis**a **závažnost**.
 

@@ -8,17 +8,17 @@ ms.date: 12/02/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 6f41adbb726313ef095084d079dc7852736e0c06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74870526"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>Systémové funkce (Azure Cosmos DB)
 
  Cosmos DB poskytuje mnoho vestavěných funkcí SQL. Kategorie integrovaných funkcí jsou uvedené níže.  
   
-|Skupina funkcí|Description|Operace|  
+|Skupina funkcí|Popis|Operace|  
 |--------------|-----------------|-----------------| 
 |[Funkce pro práci s poli](sql-query-array-functions.md)|Funkce pole provádí operaci u vstupní hodnoty pole a vrací číselnou, logickou nebo hodnotu pole. | [ARRAY_CONCAT](sql-query-array-concat.md), [ARRAY_CONTAINS](sql-query-array-contains.md), [ARRAY_LENGTH](sql-query-array-length.md) [ARRAY_SLICE](sql-query-array-slice.md) |
 |[Funkce pro datum a čas](sql-query-date-time-functions.md)|Funkce data a času vám umožní získat aktuální datum a čas UTC ve dvou formách. číselné časové razítko, jehož hodnota je epocha systému UNIX v milisekundách nebo jako řetězec, který odpovídá formátu ISO 8601. | [GetCurrentDateTime](sql-query-getcurrentdatetime.md), [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md) |
@@ -37,7 +37,7 @@ Hlavním rozdílem mezi funkcemi Cosmos DB a ANSI funkcí SQL je, že funkce Cos
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)
 - [Funkce pro práci s poli](sql-query-array-functions.md)
 - [Funkce data a času](sql-query-date-time-functions.md)
 - [Matematické funkce](sql-query-mathematical-functions.md)

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/19/2020
 ms.author: tisande
 ms.openlocfilehash: 355f73d46215aa9e05f4ea6d91bb173c77509b63
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91270846"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>Práce s formátem JSON ve službě Azure Cosmos DB

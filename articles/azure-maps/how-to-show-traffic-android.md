@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272952"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Zobrazit data o přenosech na mapě pomocí Azure Maps Android SDK
@@ -53,11 +53,11 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 Pomocí následujícího fragmentu kódu nastavte data toku provozu. Podobně jako u kódu v předchozí části předáte vrácenou hodnotu `flow` metody metodě `setTraffic` . Existují čtyři hodnoty, které lze předat do `flow` , přičemž každá hodnota by mohla triggerem `flow` vracet příslušnou hodnotu. Návratová hodnota `flow` se pak předává jako argument do `setTraffic` . Tyto čtyři hodnoty najdete v následující tabulce:
 
-|Hodnota toku | Popis|
+|Hodnota toku | Description|
 | :-- | :-- |
 | TrafficFlow. NONE | Nezobrazuje data o přenosech na mapě. |
 | TrafficFlow. relativní | Zobrazuje přenosová data, která se vztahují k rychlosti volného toku provozu. |
-| TrafficFlow. RELATIVE_DELAY | Zobrazí oblasti, které jsou pomalejší než průměrná očekávaná prodleva. |
+| TrafficFlow.RELATIVE_DELAY | Zobrazí oblasti, které jsou pomalejší než průměrná očekávaná prodleva. |
 | TrafficFlow. absolutní | Zobrazuje absolutní rychlost všech vozidel na cestách. |
 
 ```java

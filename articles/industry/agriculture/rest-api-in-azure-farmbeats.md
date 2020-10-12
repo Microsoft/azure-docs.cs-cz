@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
 ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86536568"
 ---
 # <a name="azure-farmbeats-apis"></a>Rozhraní API Azure FarmBeats
@@ -29,7 +29,7 @@ Rozhraní API FarmBeats obsahují technickou dokumentaci k Swagger. Informace o 
 
 V následující tabulce najdete souhrn všech objektů a prostředků v FarmBeats DataHub:
 
-| Objekty a prostředky | Popis
+| Objekty a prostředky | Description
 --- | ---|
 Sdílených | Farma odpovídá fyzickému umístění zájmu v rámci systému FarmBeats. Každá farma má název farmy a jedinečné ID farmy. |
 Zařízení  | Zařízení odpovídá fyzickému zařízení, které je ve farmě přítomné. Každé zařízení má jedinečné ID zařízení. Zařízení je obvykle zřízené pro farmu s ID farmy.
@@ -68,10 +68,10 @@ headers = {"Authorization": "Bearer " + **access_token**}
 Tady jsou nejběžnější hlavičky požadavků, které je potřeba zadat při volání rozhraní API do Azure FarmBeats DataHub.
 
 
-**Hlavička** | **Popis a příklad**
+**Hlaviček** | **Popis a příklad**
 --- | ---
 Typ obsahu  | Formát požadavku (Content-Type: Application/ <format> ). Pro rozhraní API Azure FarmBeats DataHub je formát JSON. Content-Type: Application/JSON
-Autorizace  | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosný <přístup-token>
+Autorizace  | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosič <Access-Token>
 Přijmout | Formát odpovědi. Pro rozhraní API Azure FarmBeats DataHub je formát JSON. Přijmout: Application/JSON
 
 ### <a name="api-requests"></a>Požadavky rozhraní API
@@ -107,7 +107,7 @@ Například při dotazování na seznam zařízení (získat hovor v/Device) lze
 
 Rozhraní API služby Azure FarmBeats DataHub vrací standardní chyby protokolu HTTP. Nejběžnější kódy chyb jsou následující:
 
- |Kód chyby             | Popis |
+ |Kód chyby             | Description |
  |---                    | --- |
  |200                    | Success |
  |201                    | Vytvoření (post) úspěšné |

@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: fc5803f96c30ea1df362676aa8c4104bb0b69db3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934867"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Relační operátory OData v Azure kognitivní hledání- `eq` , `ne` ,,, `gt` `lt` `ge` a `le`
@@ -49,7 +49,7 @@ Operátory rozsahu v kombinaci s [logickými operátory](search-query-odata-logi
 
 ## <a name="syntax"></a>Syntax
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku výrazu OData, který používá operátory porovnání.
+Následující EBNF ([rozšířený Backus-Naur formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku výrazu OData, který používá operátory porovnání.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -81,13 +81,13 @@ Datové typy na obou stranách relačního operátoru musí být kompatibilní. 
 | --- | --- | --- |
 | `Edm.Double` | `Edm.Double` | Pro porovnání se vztahují [zvláštní pravidla pro `NaN` ](#special-case-nan) |
 | `Edm.Double` | `Edm.Int64` | Konstanta je převedena na `Edm.Double` , což vede ke ztrátě přesnosti pro hodnoty velké velikosti. |
-| `Edm.Double` | `Edm.Int32` | Není k dispozici |
+| `Edm.Double` | `Edm.Int32` | neuvedeno |
 | `Edm.Int64` | `Edm.Double` | Porovnání s `NaN` , `-INF` , nebo `INF` nejsou povolena. |
-| `Edm.Int64` | `Edm.Int64` | Není k dispozici |
+| `Edm.Int64` | `Edm.Int64` | neuvedeno |
 | `Edm.Int64` | `Edm.Int32` | Konstanta je převedena na `Edm.Int64` Před porovnáním |
 | `Edm.Int32` | `Edm.Double` | Porovnání s `NaN` , `-INF` , nebo `INF` nejsou povolena. |
-| `Edm.Int32` | `Edm.Int64` | Není k dispozici |
-| `Edm.Int32` | `Edm.Int32` | Není k dispozici |
+| `Edm.Int32` | `Edm.Int64` | neuvedeno |
+| `Edm.Int32` | `Edm.Int32` | neuvedeno |
 
 Pro porovnávání, které nejsou povoleny, jako je například porovnání pole typu `Edm.Int64` do `NaN` , REST API Azure kognitivní hledání vrátí chybu HTTP 400: Bad Request.
 

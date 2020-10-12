@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273037"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Vytvoření kontroleru dat ARC Azure
@@ -33,7 +33,7 @@ V současné době podporuje seznam Kubernetes služeb a distribucí následují
 - OpenShift Container Platform (OCP)
 - AWS Elastic Kubernetes Service (EKS)
 - Modul GKE (Google Cloud Kubernetes Engine)
-- Open Source, Kubernetes obvykle nasazený pomocí kubeadm
+- Open source upstreamové prostředí Kubernetes obvykle nasazené s využitím nástroje kubeadm
 
 > [!IMPORTANT]
 > * Minimální podporovaná verze Kubernetes je v 1.14.

@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.subservice: alerts
 ms.openlocfilehash: 9fbad920bdfa26419e4b865db5d4e53dad97acce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86539444"
 ---
 # <a name="manage-alerts-from-system-center-operations-manager-zabbix-and-nagios-in-azure-monitor"></a>Správa upozornění z nástrojů System Center Operations Manager, Zabbix a Nagios ve službě Azure Monitor
 
 Nyní můžete zobrazit výstrahy z Nagios, Zabbix a System Center Operations Manager v [Azure monitor](https://aka.ms/azure-alerts-overview). Tyto výstrahy přicházejí z integrace se servery Nagios/Zabbix nebo System Center Operations Manager do Log Analytics. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Všechny záznamy v úložišti Log Analytics s typem výstrahy se naimportují do Azure Monitor, takže musíte provést konfiguraci, která je potřeba ke shromáždění těchto záznamů.
 1. U upozornění **Nagios** a **Zabbix** [nakonfigurujte tyto servery](../learn/quick-collect-linux-computer.md) tak, aby [odesílaly výstrahy](./data-sources-custom-logs.md?toc=/azure/azure-monitor/toc.json) Log Analytics.
 1. Pro výstrahy **System Center Operations Manager** [Připojte skupinu pro správu Operations Manager k vašemu pracovnímu prostoru Log Analytics](./om-agents.md). V následujícím seznamu nasaďte řešení [Alert Management](./alert-management-solution.md) z webu Azure Solutions Marketplace. Po dokončení se všechny výstrahy vytvořené v System Center Operations Manager importují do Log Analytics.

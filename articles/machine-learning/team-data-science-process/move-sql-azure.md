@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1f1120c78ef2a634c079705c85170d9742eabd1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87087420"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Přesun dat do služby SQL Database pro Azure Machine Learning
@@ -31,7 +31,7 @@ Následující tabulka shrnuje možnosti přesunutí dat do Azure SQL Database.
 | <b>Plochý soubor (ve formátu CSV nebo TSV)</b> |[Hromadné vložení dotazu SQL](#bulk-insert-sql-query) |
 | <b>Místní SQL Server</b> |1.[Export do plochého souboru](#export-flat-file)<br> 2. [Průvodce migrací SQL Database](#insert-tables-bcp)<br> 3. [zálohování a obnovení databáze](#db-migration)<br> 4. [Azure Data Factory](#adf) |
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Předpoklady
+## <a name="prerequisites"></a><a name="prereqs"></a>Požadavky
 Tady popsané postupy vyžadují:
 
 * **Předplatné Azure** Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
@@ -43,13 +43,13 @@ Tady popsané postupy vyžadují:
 
 Můžete buď upravit popsané postupy na sadu vlastních dat, nebo postupovat podle pokynů popsaných v datové sadě taxislužby NYC. Pokud chcete nahrát datovou sadu taxislužby NYC do databáze SQL Server, postupujte podle pokynů uvedených v [hromadném importu dat do SQL Server databáze](sql-walkthrough.md#dbload).
 
-## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a>Přesun dat ze zdroje plochého souboru do Azure SQL Database
+## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a> Přesun dat ze zdroje plochého souboru do Azure SQL Database
 Data v plochých souborech (ve formátu CSV nebo ve formátu TSV) se dají přesunout do Azure SQL Database pomocí hromadného vložení dotazu SQL.
 
-### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a>Hromadné vložení dotazu SQL
+### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a> Hromadné vložení dotazu SQL
 Postup použití příkazu hromadného vkládání SQL se podobá Postup přesunutí dat z plochého zdroje souborů na SQL Server na virtuálním počítači Azure. Podrobnosti najdete v tématu [hromadné vložení dotazu SQL](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
-## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a>Přesun dat z SQL Server do Azure SQL Database
+## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a> Přesun dat z SQL Server do Azure SQL Database
 Pokud jsou zdrojová data uložená v SQL Server, existují různé možnosti, jak data přesouvat do Azure SQL Database:
 
 1. [Exportovat do plochého souboru](#export-flat-file)

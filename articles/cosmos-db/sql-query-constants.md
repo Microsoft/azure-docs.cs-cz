@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74873416"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB konstanty dotazů SQL  
@@ -26,10 +26,10 @@ ms.locfileid: "74873416"
 |**Logická hodnota**|Hodnoty: **false**, **true**.|  
 |**Číselná**|Číslo s plovoucí desetinnou čárkou a dvojitou přesností, Standard IEEE 754.|  
 |**Řetězec**|Sekvence nula nebo více znaků Unicode. Řetězce musí být uzavřeny v jednoduchých nebo dvojitých uvozovkách.|  
-|**Pole**|Sekvence nula nebo více prvků. Každý prvek může být hodnota jakéhokoli skalárního datového typu, s výjimkou **nedefinovaného**.|  
+|**Skupin**|Sekvence nula nebo více prvků. Každý prvek může být hodnota jakéhokoli skalárního datového typu, s výjimkou **nedefinovaného**.|  
 |**Předmětů**|Neuspořádaná sada nula nebo více párů název/hodnota. Název je řetězec Unicode, hodnota může být jakýkoli skalární datový typ, s výjimkou **nedefinovaného**.|  
   
-## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
+## <a name="syntax"></a><a name="bk_syntax"></a>Syntaxe
   
 ```sql  
 <constant> ::=  
@@ -59,7 +59,7 @@ ms.locfileid: "74873416"
   
 ```  
   
-##  <a name="arguments"></a><a name="bk_arguments"></a>Náhodné
+##  <a name="arguments"></a><a name="bk_arguments"></a> Náhodné
   
 * `<undefined_constant>; Undefined`  
   

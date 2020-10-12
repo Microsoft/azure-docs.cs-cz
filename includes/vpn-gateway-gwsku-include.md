@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74085229"
 ---
 Při vytváření brány virtuální sítě musíte určit SKU brány, které chcete použít. Vyberte jednotku SKU, která splňuje vaše požadavky na základě typů úloh, propustnosti, funkcí a SLA. Skladové jednotky brány virtuální sítě v Zóny dostupnosti Azure najdete v tématu [skladové položky brány zóny dostupnosti Azure](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md).
@@ -31,7 +31,7 @@ Při vytváření brány virtuální sítě musíte určit SKU brány, které ch
 
 Nové skladové položky brány VPN zefektivňují sady funkcí nabízené na branách:
 
-| **SKU**| **Funkce**|
+| **Skladová jednotka (SKU)**| **Funkce**|
 | ---    | ---         |
 |**Základní** (* *)   | **Síť VPN založená na směrování**: 10 tunelů pro S2S/připojení; žádné ověřování RADIUS pro P2S; žádná IKEv2 pro P2S<br>**Síť VPN založená na zásadách**: (IKEv1): 1 tunelové připojení S2S/připojení; žádné P2S|
 | **Všechny skladové položky Generation1 a Generation2 s výjimkou úrovně Basic** | **Síť VPN založená na směrování**: až 30 tunelů (*), P2S, BGP, aktivní-aktivní, vlastní zásady IPSec/IKE, koexistence EXPRESSROUTE/VPN |
@@ -41,7 +41,7 @@ Nové skladové položky brány VPN zefektivňují sady funkcí nabízené na br
 
 ( \* \* ) Základní SKU se považuje za starší SKU. Základní skladová položka má určitá omezení funkcí. Nemůžete změnit velikost brány, která používá základní SKU na jednu z nových SKU brány, musíte místo toho přejít na novou SKU, která zahrnuje odstranění a opětovné vytvoření brány VPN.
 
-###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>SKU brány – provozní a vývojové a testovací úlohy
+###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>SKU brány – produkční a Dev-Test úlohy
 
 Vzhledem k rozdílům ve SLA a sadách funkcí doporučujeme pro produkci vs. vývoj a testování následující SKU:
 

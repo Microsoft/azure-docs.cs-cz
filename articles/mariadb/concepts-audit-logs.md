@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/24/2020
 ms.openlocfilehash: 7c9d59eee1e1ce69394301023b108952eaf46790
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85362420"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Protokoly auditu v Azure Database for MariaDB
@@ -31,9 +31,9 @@ Mezi další parametry, které můžete upravit, patří:
 - `audit_log_exclude_users`: MariaDB uživatelům, kteří mají být vyloučení z protokolování. Umožňuje maximálně čtyři uživatele. Maximální délka parametru je 256 znaků.
 
 > [!Note]
-> `audit_log_include_users`má vyšší prioritu `audit_log_exclude_users` . Například pokud `audit_log_include_users`  =  `demouser` a `audit_log_exclude_users`  =  `demouser` , bude uživatel zahrnut v protokolech auditu, protože `audit_log_include_users` má vyšší prioritu.
+> `audit_log_include_users` má vyšší prioritu `audit_log_exclude_users` . Například pokud `audit_log_include_users`  =  `demouser` a `audit_log_exclude_users`  =  `demouser` , bude uživatel zahrnut v protokolech auditu, protože `audit_log_include_users` má vyšší prioritu.
 
-| **Událost** | **Popis** |
+| **Událostí** | **Popis** |
 |---|---|
 | `CONNECTION` | – Iniciování připojení (úspěšné nebo neúspěšné) <br> – Opakované ověření uživatele s jiným uživatelem nebo heslem během relace <br> – Ukončení připojení |
 | `DML_SELECT`| VYBRAT dotazy |
@@ -59,10 +59,10 @@ V následujících částech najdete popis toho, co má výstup MariaDB protokol
 | `TenantId` | ID tenanta |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Časové razítko, kdy se protokol zaznamenal v UTC |
-| `Type` | Typ protokolu Stál`AzureDiagnostics` |
+| `Type` | Typ protokolu Stál `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID předplatného, ke kterému server patří |
 | `ResourceGroup` | Název skupiny prostředků, do které server patří |
-| `ResourceProvider` | Název poskytovatele prostředků Stál`MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | Název poskytovatele prostředků Stál `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identifikátor URI prostředku |
 | `Resource` | Název serveru |
@@ -89,10 +89,10 @@ Níže uvedené schéma se vztahuje na obecné, DML_SELECT, DML_NONSELECT, DML, 
 | `TenantId` | ID tenanta |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | Časové razítko, kdy se protokol zaznamenal v UTC |
-| `Type` | Typ protokolu Stál`AzureDiagnostics` |
+| `Type` | Typ protokolu Stál `AzureDiagnostics` |
 | `SubscriptionId` | Identifikátor GUID předplatného, ke kterému server patří |
 | `ResourceGroup` | Název skupiny prostředků, do které server patří |
-| `ResourceProvider` | Název poskytovatele prostředků Stál`MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | Název poskytovatele prostředků Stál `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identifikátor URI prostředku |
 | `Resource` | Název serveru |
@@ -102,7 +102,7 @@ Níže uvedené schéma se vztahuje na obecné, DML_SELECT, DML_NONSELECT, DML, 
 | `event_class_s` | `general_log` |
 | `event_subclass_s` | `LOG`, `ERROR`, `RESULT` |
 | `event_time` | Počet sekund zahájení dotazu v časovém razítku systému UNIX |
-| `error_code_d` | Kód chyby, pokud se dotaz nezdařil. `0`Nejedná se o žádnou chybu |
+| `error_code_d` | Kód chyby, pokud se dotaz nezdařil. `0` Nejedná se o žádnou chybu |
 | `thread_id_d` | ID vlákna, které provedlo dotaz |
 | `host_s` | Funkce Blank |
 | `ip_s` | IP adresa klienta připojujícího se k MariaDB |

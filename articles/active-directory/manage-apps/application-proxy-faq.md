@@ -12,10 +12,10 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88589159"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
@@ -141,7 +141,7 @@ Ne, tento scénář se nepodporuje, protože proxy aplikace ukončí provoz TLS.
 
 Informace najdete [v tématu publikování vzdálené plochy pomocí Azure proxy aplikací služby AD](application-proxy-integrate-with-remote-desktop-services.md).
 
-### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>Můžu ve scénáři publikování Brána vzdálené plochy použít omezené delegování pomocí protokolu Kerberos (integrované ověřování Windows s jednotným přihlašováním)?
+### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>Můžu ve scénáři publikování Brána vzdálené plochy použít ověřování pomocí protokolu Kerberos omezeného delegování (Single Sign-On-Windows Integrated Authentication)?
 
 Ne, tento scénář se nepodporuje.  
 

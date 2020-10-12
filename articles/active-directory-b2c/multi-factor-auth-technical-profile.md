@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 71040f831ed7a64f2bc7be7f3a75218976fc2559
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385939"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování technického profilu Azure MFA ve službě Azure AD B2C vlastní zásady
@@ -32,7 +32,7 @@ Tento technický profil:
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protokol
 
 Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `Proprietary` . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C:
 
@@ -59,8 +59,8 @@ Element **InputClaims** obsahuje seznam deklarací pro odeslání do Azure MFA. 
 
 | ClaimReferenceId | Povinné | Popis |
 | --------- | -------- | ----------- |
-| userPrincipalName (Hlavní název uživatele) | Yes | Identifikátor uživatele, který vlastní telefonní číslo. |
-| phoneNumber | Yes | Telefonní číslo, do kterého se má poslat SMS kód |
+| userPrincipalName (Hlavní název uživatele) | Ano | Identifikátor uživatele, který vlastní telefonní číslo. |
+| phoneNumber | Ano | Telefonní číslo, do kterého se má poslat SMS kód |
 | Společnosti | No |Název společnosti v serveru SMS. Pokud není zadaný, použije se název vaší aplikace. |
 | locale | No | Národní prostředí serveru SMS. Pokud není zadaný, použije se národní prostředí prohlížeče uživatele. |
 
@@ -76,7 +76,7 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Operace | Yes | Musí být **OneWaySMS**.  |
+| Operace | Ano | Musí být **OneWaySMS**.  |
 
 #### <a name="ui-elements"></a>Prvky uživatelského rozhraní
 
@@ -121,8 +121,8 @@ Element **InputClaims** obsahuje seznam deklarací pro odeslání do Azure MFA. 
 
 | ClaimReferenceId | Povinné | Popis |
 | --------- | -------- | ----------- | ----------- |
-| phoneNumber| Yes | Stejné telefonní číslo jako dříve použité k odeslání kódu. Používá se také k vyhledání relace ověřování pro telefon. |
-| verificationCode  | Yes | Ověřovací kód poskytnutý uživatelem, který se má ověřit |
+| phoneNumber| Ano | Stejné telefonní číslo jako dříve použité k odeslání kódu. Používá se také k vyhledání relace ověřování pro telefon. |
+| verificationCode  | Ano | Ověřovací kód poskytnutý uživatelem, který se má ověřit |
 
 Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací identity nebo k vygenerování nových před voláním služby Azure MFA.
 
@@ -136,7 +136,7 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Operace | Yes | Je nutné **ověřit** |
+| Operace | Ano | Je nutné **ověřit** |
 
 #### <a name="ui-elements"></a>Prvky uživatelského rozhraní
 

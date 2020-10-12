@@ -10,10 +10,10 @@ ms.author: ericrad
 ms.reviwer: mimckitt
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 41e8f6f3e3562654edcc4ba347abe57e300af511
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89074221"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events pro virtuální počítače s Windows
@@ -49,7 +49,7 @@ Scheduled Events poskytuje události v následujících případech použití:
 
   Metadata Service zpřístupňuje informace o spuštěných virtuálních počítačích pomocí koncového bodu REST, který je přístupný z virtuálního počítače. Tyto informace jsou k dispozici prostřednictvím nonroutable IP adresy, aby se nezobrazovaly mimo virtuální počítač.
 
-### <a name="scope"></a>Obor
+### <a name="scope"></a>Rozsah
 Naplánované události jsou doručovány do:
 
 - Samostatné Virtual Machines.
@@ -137,7 +137,7 @@ V případě naplánovaných událostí obsahuje odpověď pole událostí.
 | Zdroje a prostředky| Seznam prostředků, které tato událost ovlivňuje V seznamu je zaručeno, že bude obsahovat počítače z jedné [aktualizační domény](manage-availability.md), ale nemusí obsahovat všechny počítače v ud. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Stav této události <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánována na spuštění po uplynutí doby zadané ve `NotBefore` Vlastnosti.<li>`Started`: Tato událost je spuštěná.</ul> `Completed`Není k dispozici žádný nebo podobný stav. Událost již není vrácena po dokončení události.
 | NotBefore| Čas, po kterém může být tato událost spuštěna. <br><br> Příklad: <br><ul><li> Pondělí 19. září 2016 18:29:47 GMT  |
-| Popis | Popis této události <br><br> Příklad: <br><ul><li> Hostitelský server prochází údržbou. |
+| Description | Popis této události <br><br> Příklad: <br><ul><li> Hostitelský server prochází údržbou. |
 | EventSource | Iniciátor události. <br><br> Příklad: <br><ul><li> `Platform`: Tato událost je iniciována platformou. <li>`User`: Tato událost je iniciována uživatelem. |
 
 ### <a name="event-scheduling"></a>Plánování událostí

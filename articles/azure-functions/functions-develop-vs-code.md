@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
 ms.openlocfilehash: 610c80dc5552eae4f2ad8442fa11b85f2eab35eb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88206751"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Vývoj Azure Functions pomocí Visual Studio Code
@@ -39,7 +39,7 @@ Tento článek poskytuje podrobné informace o tom, jak používat rozšíření
 > [!IMPORTANT]
 > Nekombinujte vývoj místních vývojových a portálů pro jednu aplikaci Function App. Při publikování z místního projektu do aplikace Function App proces nasazení přepíše všechny funkce, které jste vytvořili na portálu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než nainstalujete a spustíte rozšíření [Azure Functions rozšíření][Azure Functions pro Visual Studio Code], musíte splnit tyto požadavky:
 
@@ -93,7 +93,7 @@ Rozšíření Functions umožňuje vytvořit projekt Function App spolu s první
 
 V závislosti na jazyku jsou tyto další soubory vytvořeny:
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[R\#](#tab/csharp)
 
 * [HttpExample.cs soubor knihovny tříd](functions-dotnet-class-library.md#functions-class-library-project) , který implementuje funkci.
 
@@ -125,7 +125,7 @@ V tomto okamžiku můžete přidat vstupní a výstupní vazby do funkce [úprav
 
 S výjimkou triggerů HTTP a Timer jsou vazby implementovány v balíčcích rozšíření. Je nutné nainstalovat balíčky rozšíření pro aktivační události a vazby, které je potřebují. Proces pro instalaci rozšíření vazby závisí na jazyku vašeho projektu.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[R\#](#tab/csharp)
 
 Spuštěním příkazu [dotnet Add Package](/dotnet/core/tools/dotnet-add-package) v okně terminálu nainstalujete balíčky rozšíření, které v projektu potřebujete. Následující příkaz nainstaluje rozšíření Azure Storage, které implementuje vazby pro úložiště objektů blob, front a tabulek.
 
@@ -145,7 +145,7 @@ Novou funkci můžete přidat do existujícího projektu pomocí jedné z předd
 
 Výsledky této akce závisí na jazyku vašeho projektu:
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[R\#](#tab/csharp)
 
 Do projektu se přidá nový soubor knihovny tříd C# (. cs).
 
@@ -161,7 +161,7 @@ Funkci můžete rozšířit přidáním vstupních a výstupních vazeb. Proces 
 
 Následující příklady se připojují k frontě úložiště s názvem `outqueue` , kde je připojovací řetězec pro účet úložiště nastavený v `MyStorageConnection` nastavení aplikace v local.settings.jszapnuto.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[R\#](#tab/csharp)
 
 Aktualizujte metodu funkce tak, aby do definice metody přidal následující parametr `Run` :
 
@@ -410,7 +410,7 @@ Po dokončení tohoto postupu budou volání do základních základních nástr
 
 Rozšíření Azure Functions poskytuje užitečné grafické rozhraní v oblasti pro interakci s aplikacemi Function App v Azure. Stejné funkce jsou také k dispozici jako příkazy v paletě příkazů (F1). K dispozici jsou tyto příkazy Azure Functions:
 
-|Azure Functions – příkaz  | Popis  |
+|Azure Functions – příkaz  | Description  |
 |---------|---------|
 |**Přidat nová nastavení**  |  Vytvoří nové nastavení aplikace v Azure. Další informace najdete v tématu [publikování nastavení aplikace](#publish-application-settings). Může být také nutné [Stáhnout toto nastavení do místního nastavení](#download-settings-from-azure). |
 | **Konfigurovat zdroj nasazení** | Připojí aplikaci funkcí v Azure k místnímu úložišti Git. Další informace najdete v tématu [průběžné nasazování pro Azure Functions](functions-continuous-deployment.md). |

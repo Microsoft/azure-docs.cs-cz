@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
 ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135403"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Nastavení zotavení po havárii pro vícevrstvou aplikaci SharePoint pro zotavení po havárii pomocí Azure Site Recovery
 
-Tento článek podrobně popisuje, jak chránit aplikaci SharePoint pomocí [Azure Site Recovery](site-recovery-overview.md).
+Tento článek podrobně popisuje, jak chránit aplikaci SharePoint pomocí  [Azure Site Recovery](site-recovery-overview.md).
 
 
 ## <a name="overview"></a>Přehled
@@ -62,10 +62,10 @@ Site Recovery je nezávislá aplikace a měl by fungovat s libovolnou verzí Sha
 
 **Scénář** | **Do sekundární lokality** | **Do Azure**
 --- | --- | ---
-**Technologie Hyper-V** | Ano | Ano
-**Hostiteli** | Ano | Ano
-**Fyzický server** | Ano | Ano
-**Azure** | NA | Yes
+**Hyper-V** | Yes | Yes
+**VMware** | Yes | Yes
+**Fyzický server** | Yes | Yes
+**Azure** | Není k dispozici | Ano
 
 
 ### <a name="things-to-keep-in-mind"></a>Co je potřeba mít na paměti
@@ -170,7 +170,7 @@ Nejčastěji používané Azure Site Recovery skripty můžete nasadit do svého
 
     * Tato metoda předpokládá, že je na webu DR k dispozici záloha databáze pro hledání.
     * Vzhledem k tomu, že ostatní databáze aplikace Search Service nejsou replikovány, je nutné je znovu vytvořit. Provedete to tak, že přejdete do centrální správy a odstraníte aplikaci Search Service. Na všech serverech, které jsou hostiteli indexu hledání, odstraňte soubory indexů.
-    * Opětovné vytvoření aplikace Search Service a tím znovu vytvoří databáze. Doporučuje se mít připravený skript, který znovu vytvoří tuto aplikaci služby, protože není možné provádět všechny akce prostřednictvím grafického uživatelského rozhraní. Například nastavení umístění jednotky indexu a konfigurace topologie hledání je možné pouze pomocí rutin PowerShellu pro SharePoint. Použijte rutinu Windows PowerShellu Restore-SPEnterpriseSearchServiceApplication a zadejte databázi pro správu s dodaným protokolem a replikovaným hledáním Search_Service__DB. Tato rutina poskytuje konfiguraci hledání, schéma, spravované vlastnosti, pravidla a zdroje a vytvoří výchozí sadu dalších součástí.
+    * Opětovné vytvoření aplikace Search Service a tím znovu vytvoří databáze. Doporučuje se mít připravený skript, který znovu vytvoří tuto aplikaci služby, protože není možné provádět všechny akce prostřednictvím grafického uživatelského rozhraní. Například nastavení umístění jednotky indexu a konfigurace topologie hledání je možné pouze pomocí rutin PowerShellu pro SharePoint. Použijte rutinu prostředí Windows PowerShell Restore-SPEnterpriseSearchServiceApplication a zadejte databázi pro správu s protokolem a replikovaným hledáním Search_Service__DB. Tato rutina poskytuje konfiguraci hledání, schéma, spravované vlastnosti, pravidla a zdroje a vytvoří výchozí sadu dalších součástí.
     * Po opětovném vytvoření aplikace Search Service musíte spustit úplné procházení pro každý zdroj obsahu, aby se Search Service obnovil. Ztratíte některé informace o analýze z místní farmy, například doporučení pro hledání.
 
 7. Po dokončení všech kroků uložíte plán obnovení a konečný plán obnovení bude vypadat nějak takto.

@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak můžete nakonfigurovat agenta Azure M
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: f5a9b364bc3e51307bd44d8338485f482bda6e1e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90971354"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Konfigurace získávání metrik Prometheus pomocí služby Azure Monitor pro kontejnery
@@ -36,7 +36,7 @@ Aktivní likvidace metrik z Prometheus se provádí z jednoho ze dvou perspektiv
 * Adresa URL pro clustery v rámci clusteru a zjišťování cílů z uvedených koncových bodů služby. Například služby k8s Services, jako jsou Kube-DNS a Kube – metriky a pod, jsou specifické pro aplikaci. Metriky shromážděné v tomto kontextu budou definovány v části ConfigMap *[Prometheus data_collection_settings. cluster]*.
 * Adresa URL v rámci uzlu-HTTP a zjišťují se cíle z uvedených koncových bodů služby. Metriky shromážděné v tomto kontextu budou definovány v části ConfigMap *[Prometheus_data_collection_settings. Node]*.
 
-| Koncový bod | Obor | Příklad |
+| Koncový bod | Rozsah | Příklad |
 |----------|-------|---------|
 | Pod – Poznámka | Napříč clustery | anotac <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000"` <br>`prometheus.io/scheme: "http"` |
 | Služba Kubernetes | Napříč clustery | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
@@ -44,7 +44,7 @@ Aktivní likvidace metrik z Prometheus se provádí z jednoho ze dvou perspektiv
 
 Pokud je zadána adresa URL, Azure Monitor pro kontejnery vyřadí pouze koncový bod. Při zadání služby Kubernetes se název služby vyřeší se serverem DNS clusteru, aby získal IP adresu, a pak se vyhodnocená služba vyřadí.
 
-|Obor | Klíč | Datový typ | Hodnota | Popis |
+|Rozsah | Klíč | Datový typ | Hodnota | Popis |
 |------|-----|-----------|-------|-------------|
 | Napříč clustery | | | | Zadejte jednu z následujících tří metod pro vyřazení koncových bodů pro metriky. |
 | | `urls` | Řetězec | Pole oddělené čárkami | Koncový bod HTTP (buď zadaná IP adresa, nebo platná cesta URL) Například: `urls=[$NODE_IP/metrics]`. ($NODE _IP je konkrétní Azure Monitor pro parametr Containers a dá se použít místo IP adresy uzlu. Musí být všechna velká.) |

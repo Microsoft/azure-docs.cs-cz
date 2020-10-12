@@ -1,7 +1,7 @@
 ---
 title: Streamování obsahu pomocí integrace CDN
 titleSuffix: Azure Media Services
-description: Přečtěte si informace o streamování obsahu s integrací CDN a také předběžnému navýšení a navýšení programu CDN-Assist.
+description: Přečtěte si o obsahu streamování s integrací CDN a také předběžném načítání a Origin-Assist CDN-předběžného načtení.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: e1ea0a43783fb7abdc17655e3a3431d125d426f8
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291275"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Streamování obsahu pomocí integrace CDN
@@ -32,7 +32,7 @@ Oblíbený obsah bude obsluhován přímo z mezipaměti CDN, pokud je fragment v
 Také je potřeba vzít v úvahu, jak funguje adaptivní streamování. Jednotlivé fragmenty videa jsou uloženy v mezipaměti jako vlastní entita. Představte si například, že při prvním spuštění konkrétního videa se bude sledovat. Pokud se v prohlížeči přeskočí, jak sledovat jenom pár sekund, stačí jenom fragmenty videa spojené s tím, co osoba sledovala v mezipaměti v síti CDN. Díky adaptivnímu streamování obvykle máte 5 až 7 různých přenosů videa. Pokud jedna osoba sleduje jednu přenosovou rychlost a jiná osoba sleduje jinou přenosovou rychlost, pak se všechny ukládají do mezipaměti samostatně v síti CDN. I když dva lidé sledují stejnou přenosovou rychlost, mohly by být streamování přes různé protokoly. Každý protokol (HLS, MPEG-POMLČKa, Smooth Streaming) se ukládá do mezipaměti samostatně. Takže všechny přenosové rychlosti a protokoly se ukládají do mezipaměti odděleně a všechny požadované fragmenty videa se ukládají do mezipaměti.
 
 S výjimkou testovacího prostředí doporučujeme povolit CDN pro koncové body streamování Standard a Premium. Každý typ koncového bodu streamování má jiný podporovaný limit propustnosti.
-Je obtížné provést přesný výpočet pro maximální počet souběžných streamů podporovaných koncovým bodem streamování, protože jsou k dispozici různé faktory, které je potřeba vzít v úvahu. Zde jsou některé z nich:
+Je obtížné provést přesný výpočet pro maximální počet souběžných streamů podporovaných koncovým bodem streamování, protože jsou k dispozici různé faktory, které je potřeba vzít v úvahu. Tady jsou některé z nich:
 
 - Maximální počet přenosů používaných pro streamování
 - Chování přehrávače před uložením do vyrovnávací paměti a přepínáním. Hráči se snaží rozložit segmenty od počátku a použít rychlost zatížení k výpočtu přepínání s adaptivní přenosovou rychlostí. Pokud koncový bod streamování získá blízko sytosti, může se doba odezvy lišit a hráči začnou přepínat na nižší kvalitu. Při snižování zátěže u přehrávačů koncových bodů streamování můžete škálovat zpátky na vyšší kvalitu a vytvořit tak nechtěné přepínání triggerů.
@@ -40,7 +40,7 @@ Celkově je bezpečné odhadnout maximální počet souběžných streamů tím,
 
 Toto téma popisuje povolení [integrace CDN](#enable-azure-cdn-integration). Vysvětluje také předběžné načítání (aktivní ukládání do mezipaměti) a koncept od počátku do služby [CDN-Assist](#origin-assist-cdn-prefetch) .
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 - [Koncový bod streamování](streaming-endpoint-concept.md) `hostname` a adresa URL streamování zůstávají stejné, bez ohledu na to, jestli povolíte CDN.
 - Pokud potřebujete mít možnost testovat obsah s CDN nebo bez něj, vytvořte další koncový bod streamování, který není CDN povolený.
@@ -67,7 +67,7 @@ Azure Media Services integrace s Azure CDN je implementovaná na **Azure CDN z V
 
 Můžete určit, jestli se změna DNS provedla u koncového bodu streamování (provoz se směruje na Azure CDN) pomocí <https://www.digwebinterface.com> . Pokud se ve výsledcích zobrazí azureedge.net názvy domén, provoz se teď nasměruje na CDN.
 
-## <a name="origin-assist-cdn-prefetch"></a>Počátek – pomoc CDN – předběžné načtení
+## <a name="origin-assist-cdn-prefetch"></a>Origin-Assist CDN-Prefetch
 
 Mezipaměť CDN je reaktivní proces. Pokud CDN může předpovědět, co bude požadovat další objekt, CDN může proaktivně požádat o další objekt a uložit ho do mezipaměti. V tomto procesu můžete dosáhnout přístupů do mezipaměti pro všechny (nebo většinu) objektů, což zvyšuje výkon.
 
@@ -125,11 +125,11 @@ Pokud se chcete podívat na část výměny hlaviček v akci, můžete vyzkouše
 
     Ne, CDN – předběžné načtení se provádí až po žádosti nebo odpovědi iniciované klientem. CDN – předběžné načtení není nikdy aktivované předplatným, aby se zabránilo cyklu předběžného načtení.
 
-* Je funkce vynechání od počátku k pro CDN? Jak je možné ji zapnout nebo vypnout?
+* Je funkce Origin-Assist CDN-Prefetch vždycky zapnutá? Jak je možné ji zapnout nebo vypnout?
 
     Tato funkce je ve výchozím nastavení vypnutá. Zákazníci je musí zapnout přes rozhraní Akamai API.
 
-* V případě živého streamování, co by se stalo s počátkem-Assist, pokud další segment nebo fragment ještě není k dispozici?
+* V případě živého streamování, co se stane s Origin-Assist, pokud další segment nebo fragment ještě není k dispozici?
 
     V takovém případě Media Services původ neposkytne `CDN-Origin-Assist-Prefetch-Path` hlavičku ani CDN – předběžné načtení nebude provedeno.
 
@@ -155,7 +155,7 @@ Pokud se chcete podívat na část výměny hlaviček v akci, můžete vyzkouše
 
 * Funguje tato funkce s obsahem UHD/HEVC?
 
-    Yes.
+    Ano.
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 
