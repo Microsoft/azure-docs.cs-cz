@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005901"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Chyba zastavení Windows – stav nedostatku paměti
@@ -143,7 +143,7 @@ Před provedením jakýchkoli kroků byste měli vytvořit kopii složky **\Wind
    1. Přejděte na **HKEY_LOCAL_MACHINE >> BROKENSYSTEM >> vybrat**.
    1. V seznamu klíčů si všimněte hodnoty dat Current. Například pokud je tato hodnota **1** nebo **0x00000001 (1)**, sada ovládacích prvků bude CONTROLSET001.
 1. Ověřte umístění, kde je nakonfigurováno vytváření stránkovacího souboru.
-   1. V HKEY_LOCAL_MACHINE \BROKENSYSTEM rozbalte adresář, který odpovídá číslu ControlSet, které jste identifikovali v kroku 4, jako je například **CONTROLSET001**.
+   1. V HKEY_LOCAL_MACHINE\BROKENSYSTEM rozbalte adresář, který odpovídá ControlSet číslu, které jste zjistili v kroku 4, jako je například **CONTROLSET001**.
    1. Přejděte k **ovládacímu prvku >> správce relací >> správu paměti** a poznamenejte si umístění klíče **ExistingPageFiles** .
    1. Tento klíč by měl být ve výchozím umístění Azure na dočasné jednotce. Pokud tam není a je v nějakém virtuálním pevném disku, jako je například jednotka datového disku nebo jednotka operačního systému, bude nutné ji odstranit.
    1. Přejděte do tohoto umístění v Průzkumníkovi souborů a pak odstraňte soubor **pagefile.sys** .

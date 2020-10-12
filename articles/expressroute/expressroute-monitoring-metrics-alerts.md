@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: duau
 ms.openlocfilehash: 6f502b8ad8ac268cc937150f4effdf9edf8eef15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252625"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorování, metriky a výstrahy služby ExpressRoute
@@ -42,8 +42,8 @@ Po výběru metriky se použije výchozí agregace. Volitelně můžete použít
 |GlobalReachBitsOutPerSecond|Provoz|<ui><li>Skey okruhu s partnerským vztahem (klíč služby)</ui></li>|Global Reach|
 |AdminState|Fyzické připojení|Odkaz|ExpressRoute Direct|
 |LineProtocol|Fyzické připojení|Odkaz|ExpressRoute Direct|
-|RxLightLevel|Fyzické připojení|<ui><li>Odkaz</ui></li><ui><li>Pásu</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Fyzické připojení|<ui><li>Odkaz</ui></li><ui><li>Pásu</ui></li>|ExpressRoute Direct|
+|RxLightLevel|Fyzické připojení|<ui><li>Propojit</ui></li><ui><li>Pásu</ui></li>|ExpressRoute Direct|
+|TxLightLevel|Fyzické připojení|<ui><li>Propojit</ui></li><ui><li>Pásu</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >Použití *GlobalGlobalReachBitsInPerSecond* a *GlobalGlobalReachBitsOutPerSecond* se zobrazí jenom v případě, že se naváže aspoň jedno připojení Global REACH.
 >
@@ -60,19 +60,19 @@ Metriky můžete zobrazit ve všech partnerských vztazích na daném okruhu Exp
 
 V bitech za sekundu si můžete zobrazit metriky pro privátní, veřejné a partnerské vztahy Microsoftu.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg" alt-text="metriky na partnerský vztah":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg" alt-text="metriky okruhu":::
 
 ### <a name="bgp-availability---split-by-peer"></a>Dostupnost protokolu BGP – rozdělit podle partnerského vztahu  
 
 Můžete si prohlédnout dostupnost protokolu BGP v reálném čase napříč partnerskými vztahy a partnery (primárními a sekundárními ExpressRoute směrovači). Tento řídicí panel zobrazuje primární relaci protokolu BGP pro privátní partnerské vztahy a druhou relaci protokolu BGP pro privátní partnerský vztah. 
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg" alt-text="Dostupnost protokolu BGP na partnerský uzel":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg" alt-text="metriky okruhu":::
 
 ### <a name="arp-availability---split-by-peering"></a>Dostupnost protokolu ARP – rozdělení podle partnerského vztahu  
 
 Můžete si prohlédnout dostupnost [protokolu ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) v reálném čase napříč partnerskými vztahy a partnery (primárními a sekundárními ExpressRoute směrovači). Tento řídicí panel zobrazuje relaci protokolu ARP privátního partnerského vztahu v obou partnerských uzlech, ale dokončí pro partnerský vztah Microsoftu napříč partnerskými vztahy. Výchozí agregace (průměr) byla využívána v obou partnerských uzlech.  
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg" alt-text="Dostupnost protokolu ARP na partnerský uzel":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg" alt-text="metriky okruhu":::
 
 ## <a name="expressroute-direct-metrics"></a>ExpressRoute přímé metriky
 
@@ -80,37 +80,37 @@ Můžete si prohlédnout dostupnost [protokolu ARP](https://docs.microsoft.com/a
 
 Můžete zobrazit stav správce pro každý odkaz dvojice portů ExpressRoute Direct.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg" alt-text="Stav Správce ER Direct":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg" alt-text="metriky okruhu":::
 
 ### <a name="bits-in-per-second---split-by-link"></a>Bity za sekundu – rozdělit podle propojení
 
 V obou propojeních dvojice portů ExpressRoute můžete zobrazit bity za sekundu.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg" alt-text="Přímých bitů ER za sekundu":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg" alt-text="metriky okruhu":::
 
 ### <a name="bits-out-per-second---split-by-link"></a>Bity za sekundu – rozdělit podle propojení
 
 Můžete také zobrazit bity za sekundu v obou odkazech dvojice portů ExpressRoute Direct.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg" alt-text="ER – přímé bity za sekundu":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg" alt-text="metriky okruhu":::
 
 ### <a name="line-protocol---split-by-link"></a>Protokol řádku – rozdělit podle odkazu
 
 Protokol linky můžete zobrazit přes každý odkaz dvojice portů ExpressRoute Direct.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg" alt-text="Přímý spojnicový protokol ER":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg" alt-text="metriky okruhu":::
 
 ### <a name="rx-light-level---split-by-link"></a>Úroveň Light pro příjem – rozdělení podle propojení
 
 Můžete zobrazit úroveň indikátoru příjmu (úroveň světla, kterou port pro přímý přenos ExpressRoute **přijímá**) pro každý port. V pořádku jsou úrovně nízké úrovně příjmu obvykle v rozsahu od-10 do 0 dBm.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg" alt-text="Úroveň nízké linky pro příjem na ER":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg" alt-text="metriky okruhu":::
 
 ### <a name="tx-light-level---split-by-link"></a>Úroveň Light tx – rozdělení podle propojení
 
 Úroveň síla pro odesílání můžete zobrazit (úroveň světla, kterou port ExpressRoute Direct **odesílá) pro**každý port. Slabá úroveň nesprávného zpomalení v pořádku spadá do rozsahu od-10 do 0 dBm
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg" alt-text="Světlá úroveň TX přímého řádku ER":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg" alt-text="metriky okruhu":::
 
 ## <a name="expressroute-virtual-network-gateway-metrics"></a>ExpressRoute Virtual Network metriky brány
 
@@ -118,42 +118,42 @@ Můžete zobrazit úroveň indikátoru příjmu (úroveň světla, kterou port p
 
 Můžete zobrazit využití CPU instancí brány.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/cpu-split.jpg" alt-text="Rozdělení procesoru":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/cpu-split.jpg" alt-text="metriky okruhu":::
 
 ### <a name="packets-per-second---split-by-instance"></a>Počet paketů za sekundu – rozdělení podle instance
 
 Můžete zobrazit pakety za sekundu, které procházejí bránou.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/pps-split.jpg" alt-text="Počet paketů za sekundu – rozdělení":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/pps-split.jpg" alt-text="metriky okruhu":::
 
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>Připojení brány ExpressRoute v bitech za sekundu
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erconnections.jpg" alt-text="připojení brány":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erconnections.jpg" alt-text="metriky okruhu":::
 
 ## <a name="alerts-for-expressroute-gateway-connections"></a>Výstrahy pro připojení brány ExpressRoute
 
 1. Chcete-li nakonfigurovat výstrahy, přejděte na **Azure monitor**a pak vyberte **výstrahy**.
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg" alt-text="výstrahy":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg" alt-text="metriky okruhu":::
 2. Klikněte na **+ vybrat cíl** a vyberte prostředek připojení brány ExpressRoute.
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg" alt-text="cílové":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg" alt-text="metriky okruhu":::
 3. Zadejte podrobnosti výstrahy.
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg" alt-text="Skupina akcí":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg" alt-text="metriky okruhu":::
 4. Definujte a přidejte skupinu akcí.
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/actiongroup.png" alt-text="Přidat skupinu akcí":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/actiongroup.png" alt-text="metriky okruhu":::
 
 ## <a name="alerts-based-on-each-peering"></a>Výstrahy na základě jednotlivých partnerských vztahů
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/basedpeering.jpg" alt-text="Každý partnerský vztah":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/basedpeering.jpg" alt-text="metriky okruhu":::
 
 ## <a name="configure-alerts-for-activity-logs-on-circuits"></a>Konfigurace výstrah pro protokoly aktivit na okruhech
 
 V části **kritéria výstrahy**můžete pro typ signálu vybrat **protokol aktivity** a vybrat signál.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg" alt-text="protokoly aktivit":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg" alt-text="metriky okruhu":::
 
 ## <a name="additional-metrics-in-log-analytics"></a>Další metriky v Log Analytics
 

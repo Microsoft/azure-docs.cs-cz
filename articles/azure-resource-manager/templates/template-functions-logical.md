@@ -4,19 +4,19 @@ description: Popisuje funkce, které lze použít v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677385"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Logické funkce pro šablony ARM
 
 Správce prostředků poskytuje několik funkcí pro porovnávání šablon Azure Resource Manager (ARM).
 
-* [a](#and)
+* [and](#and)
 * [bool](#bool)
-* [Přestože](#if)
+* [if](#if)
 * [mění](#not)
 * [nebo](#or)
 
@@ -30,9 +30,9 @@ Kontroluje, zda jsou všechny hodnoty parametrů pravdivé.
 
 | Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |Boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Yes |Boolean |Druhá hodnota, která ověří, zda je hodnota true. |
-| Další argumenty |No |Boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
+| arg1 |Yes |boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Yes |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |No |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -66,11 +66,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| andExampleOutput | Logická hodnota | False |
-| orExampleOutput | Logická hodnota | True |
-| notExampleOutput | Logická hodnota | False |
+| andExampleOutput | Logická hodnota | Nepravda |
+| orExampleOutput | Logická hodnota | Ano |
+| notExampleOutput | Logická hodnota | Nepravda |
 
 ## <a name="bool"></a>bool
 
@@ -119,12 +119,12 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| trueString | Logická hodnota | True |
-| falseString | Logická hodnota | False |
-| trueInt | Logická hodnota | True |
-| falseInt | Logická hodnota | False |
+| trueString | Logická hodnota | Ano |
+| falseString | Logická hodnota | Nepravda |
+| trueInt | Logická hodnota | Ano |
+| falseInt | Logická hodnota | Nepravda |
 
 ## <a name="if"></a>if
 
@@ -136,7 +136,7 @@ Vrátí hodnotu na základě toho, zda je podmínka pravdivá, nebo false.
 
 | Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| pomocné |Yes |Boolean |Hodnota, která ověří, zda je true nebo false. |
+| pomocné |Yes |boolean |Hodnota, která ověří, zda je true nebo false. |
 | trueValue |Yes | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka pravdivá. |
 | falseValue |Yes | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka nepravdivá |
 
@@ -177,7 +177,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | yesOutput | Řetězec | ano |
 | Výstup | Řetězec | ne |
@@ -241,7 +241,7 @@ Převede logickou hodnotu na její opačnou hodnotu.
 
 | Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |Boolean |Hodnota, kterou chcete převést. |
+| arg1 |Yes |boolean |Hodnota, kterou chcete převést. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -275,11 +275,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| andExampleOutput | Logická hodnota | False |
-| orExampleOutput | Logická hodnota | True |
-| notExampleOutput | Logická hodnota | False |
+| andExampleOutput | Logická hodnota | Nepravda |
+| orExampleOutput | Logická hodnota | Ano |
+| notExampleOutput | Logická hodnota | Nepravda |
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) používá znaménko **Not** a [Equals](template-functions-comparison.md#equals).
 
@@ -300,9 +300,9 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| checkNotEquals | Logická hodnota | True |
+| checkNotEquals | Logická hodnota | Ano |
 
 ## <a name="or"></a>nebo
 
@@ -314,9 +314,9 @@ Kontroluje, zda je hodnota parametru pravdivá.
 
 | Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |Boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Yes |Boolean |Druhá hodnota, která ověří, zda je hodnota true. |
-| Další argumenty |No |Boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
+| arg1 |Yes |boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Yes |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |No |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -350,11 +350,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| andExampleOutput | Logická hodnota | False |
-| orExampleOutput | Logická hodnota | True |
-| notExampleOutput | Logická hodnota | False |
+| andExampleOutput | Logická hodnota | Nepravda |
+| orExampleOutput | Logická hodnota | Ano |
+| notExampleOutput | Logická hodnota | Nepravda |
 
 ## <a name="next-steps"></a>Další kroky
 

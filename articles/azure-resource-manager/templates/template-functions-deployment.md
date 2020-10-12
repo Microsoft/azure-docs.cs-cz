@@ -4,10 +4,10 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677810"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Funkce nasazení pro šablony ARM
@@ -15,7 +15,7 @@ ms.locfileid: "84677810"
 Správce prostředků poskytuje následující funkce pro získání hodnot vztahujících se k aktuálnímu nasazení šablony Azure Resource Manager (ARM):
 
 * [prostředí](#deployment)
-* [hlediska](#environment)
+* [environment (prostředí)](#environment)
 * [ukazatelů](#parameters)
 * [proměnné](#variables)
 
@@ -351,7 +351,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | stringOutput | Řetězec | možnost 1 |
 | intOutput | Int | 1 |
@@ -371,7 +371,7 @@ Vrátí hodnotu proměnné. Zadaný název proměnné musí být definován v od
 
 | Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| variableName |Yes |Řetězec |Název proměnné, která se má vrátit. |
+| variableName |Ano |Řetězec |Název proměnné, která se má vrátit. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -443,7 +443,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | exampleOutput1 | Řetězec | MojePromenna |
 | exampleOutput2 | Pole | [1, 2, 3, 4] |

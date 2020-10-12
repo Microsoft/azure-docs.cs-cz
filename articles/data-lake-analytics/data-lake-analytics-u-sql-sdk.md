@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
 ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132411"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Spuštění a testování U-SQL s Azure Data Lake U-SQL SDK
@@ -35,7 +35,7 @@ Data Lake SDK U-SQL vyžaduje následující závislosti:
 
     ![Data Lake Tools for Visual Studio Local-run Windows 10 SDK](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-  - Nainstalovat [Data Lake nástroje pro Visual Studio](https://aka.ms/adltoolsvs). Předbalený Visual C++ a soubory Windows SDK můžete najít na adrese`C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.`
+  - Nainstalovat [Data Lake nástroje pro Visual Studio](https://aka.ms/adltoolsvs). Předbalený Visual C++ a soubory Windows SDK můžete najít na adrese `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.`
 
     V tomto případě místní kompilátor U-SQL nemůže závislosti automaticky najít. Je nutné zadat cestu k CppSDK. Soubory můžete buď zkopírovat do jiného umístění, nebo je použít tak, jak jsou.
 
@@ -141,7 +141,7 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 
 Níže jsou uvedené nepovinné argumenty pro **běh**:
 
-|Argument|Výchozí hodnota|Popis|
+|Argument|Výchozí hodnota|Description|
 |--------|-------------|-----------|
 |– CodeBehind|Nepravda|Skript obsahuje kód. cs za|
 |-CppSDK| |Adresář CppSDK|
@@ -154,7 +154,7 @@ Níže jsou uvedené nepovinné argumenty pro **běh**:
 |– Verbose|Nepravda|Zobrazit podrobné výstupy z modulu runtime|
 |-WorkDir|Aktuální adresář|Adresář pro použití a výstupy kompilátoru|
 |-RunScopeCEP|0|Režim ScopeCEP, který se má použít|
-|-ScopeCEPTempPath|názvem|Dočasná cesta, která se má použít pro streamovaná data|
+|-ScopeCEPTempPath|temp|Dočasná cesta, která se má použít pro streamovaná data|
 |-OptFlags| |Čárkami oddělený seznam příznaků Optimalizátoru|
 
 Tady je příklad:
@@ -173,7 +173,7 @@ LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 
 Následující jsou nepovinné argumenty pro **kompilaci**:
 
-|Argument|Popis|
+|Argument|Description|
 |--------|-----------|
 | -CodeBehind [výchozí hodnota false]|Skript obsahuje kód. cs za|
 | -CppSDK [výchozí hodnota]|Adresář CppSDK|
@@ -218,7 +218,7 @@ LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_argument
 
 Níže jsou uvedené volitelné argumenty pro **provedení**:
 
-|Argument|Výchozí hodnota|Popis|
+|Argument|Výchozí hodnota|Description|
 |--------|-------------|-----------|
 |– Dataroot | '' |Kořen dat pro provedení metadat. Nastaví se jako výchozí proměnná prostředí **LOCALRUN_DATAROOT** .|
 |– Zpráva | '' |Vypíše zprávy v konzole nástroje do souboru.|
@@ -331,13 +331,13 @@ LocalRunHelper.exe poskytuje rozhraní pro programování pro místní kompilaci
 
 Public LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 
-|Parametr|Typ|Popis|
+|Parametr|Typ|Description|
 |---------|----|-----------|
 |messageOutput|System. IO. TextWriter|pro výstupní zprávy nastavte na hodnotu null, aby se použila konzola.|
 
 ### <a name="properties"></a>Vlastnosti
 
-|Vlastnost|Typ|Popis|
+|Vlastnost|Typ|Description|
 |--------|----|-----------|
 |AlgebraPath|řetězec|Cesta k souboru algebraický (soubor algebraický je jedním z výsledků kompilace)|
 |CodeBehindReferences|řetězec|Pokud má skript další kód na pozadí, zadejte cesty oddělené znakem '; '|

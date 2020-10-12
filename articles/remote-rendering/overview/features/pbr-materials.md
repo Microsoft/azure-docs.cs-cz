@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89613663"
 ---
 # <a name="pbr-materials"></a>Materiály PBR
@@ -76,7 +76,7 @@ Základní nápad, který je fyzicky založený na *vykreslování, je*použití
 
 ## <a name="technical-details"></a>Technické podrobnosti
 
-Vzdálené vykreslování Azure používá Torrance mikroomezující BRDF s GGX NDF, Schlick Fresnelova poklesu a GGX Smith koreluje výrazem viditelnosti s výrazem Lambert difúze. Tento model je v současnosti ve standardním odvětví. Podrobnější informace najdete v tomto článku: [vykreslování fyzicky na bázi – Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
+Vzdálené vykreslování Azure používá Cook-Torrance mikroaspektů BRDF s GGX NDF, Schlick Fresnelova poklesu a GGX Smith koreluje výraz viditelnosti s výrazem Lambert difúze. Tento model je v současnosti ve standardním odvětví. Podrobnější informace najdete v tomto článku: [vykreslování fyzicky na bázi – Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
 
  Alternativou k modelu *hrubých kovů* , který se používá při vzdáleném vykreslování Azure, je model *zrcadlové Glossiness* PBR. Tento model může představovat širší škálu materiálů. Je ale dražší a obvykle nefunguje dobře pro případy v reálném čase.
 Není vždy možné převést z *odlesk-Glossiness* na *kov –* protože existují páry hodnot *(difúze, odlesky)* , které se nedají převést na *(BaseColor, metaling)*. Převod v druhém směru je jednodušší a přesnější, protože všechny páry *(BaseColor, kov)* odpovídají dobře definovaným dvojicím *(difúzi, odleskům)* .

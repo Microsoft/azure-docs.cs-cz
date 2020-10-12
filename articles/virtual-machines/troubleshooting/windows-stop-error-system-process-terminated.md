@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
 ms.openlocfilehash: b07033f96402edc24edd51de57661603e57472bc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91344821"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Chyba stop systému Windows – proces stavu systému 0xC000021A byl ukončen.
@@ -37,7 +37,7 @@ Při použití [diagnostiky spouštění](https://docs.microsoft.com/azure/virtu
 
 Chyba 0xC000021A znamená **STATUS_SYSTEM_PROCESS_TERMINATED**.
 
-K této chybě dochází v případě, že se nepovede o nepostradatelný proces, jako je například WinLogon (winlogon.exe) nebo subsystém run-time (csrss.exe) klientského serveru. Jakmile jádro zjistí, že se některá z těchto služeb zastavila, vyvolá chybu **STOP 0xC000021A** . Tato chyba může mít několik příčin, včetně:
+K této chybě dochází, pokud se nepovede, když se nejedná o kritický proces, jako je například WinLogon (winlogon.exe) nebo podsystém klientského serveru Run-Time (csrss.exe). Jakmile jádro zjistí, že se některá z těchto služeb zastavila, vyvolá chybu **STOP 0xC000021A** . Tato chyba může mít několik příčin, včetně:
 
 - Byly nainstalovány neshodné systémové soubory.
 - Instalace aktualizace Service Pack nebo aktualizace KB se nezdařila.

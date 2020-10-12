@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 02f5c570b7400266ac648eaa257fb76d26819a40
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89003180"
 ---
 # <a name="coarse-relocalization"></a>Přibližná relokalizace
@@ -123,9 +123,9 @@ V dalším kroku se budete muset rozhodnout, jaké senzory chcete použít pro h
 
 |                 | Nedvířka | Otevřené |
 |-----------------|---------|----------|
-| **GPS**         | Vypnuto | Zapnout |
+| **GPS**         | Vypnout | Zapnout |
 | **WiFi**        | Zapnout | Zapnuto (volitelné) |
-| **Majáky v/v** | Zapnuto (volitelné s upozorněními, viz níže) | Vypnuto |
+| **Majáky v/v** | Zapnuto (volitelné s upozorněními, viz níže) | Vypnout |
 
 ### <a name="enabling-gps"></a>Povolení GPS
 
@@ -659,7 +659,7 @@ Následující tabulka shrnuje data senzorů shromážděná na jednotlivých po
 
 |                 | HoloLens | Android | iOS |
 |-----------------|----------|---------|-----|
-| **GPS**         | – | Podporováno prostřednictvím rozhraní [LocationManager][3] API (GPS i síť) | Podporováno prostřednictvím rozhraní [CLLocationManager][4] API |
+| **GPS**         | Není k dispozici | Podporováno prostřednictvím rozhraní [LocationManager][3] API (GPS i síť) | Podporováno prostřednictvím rozhraní [CLLocationManager][4] API |
 | **WiFi**        | Podporuje se rychlostí přibližně jedné kontroly každé 3 sekundy. | Podporuje se. Počínaje rozhraním API Level 28 jsou kontroly Wi-Fi omezené na 4 volání každé 2 minuty. Z Androidu 10 se omezování dá zakázat v nabídce nastavení pro vývojáře. Další informace najdete v [dokumentaci k Androidu][5]. | Není k dispozici žádné veřejné rozhraní API |
 | **Majáky v/v** | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] |
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
 ms.openlocfilehash: d283c2b2cdbbeb3ef4bc4e25f4288dfd95158552
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89003367"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>Instalace agenta Log Analytics do počítačů se systémem Windows
@@ -41,7 +41,7 @@ Agent Windows bude začínat výhradně pomocí podepisování SHA-2 na 17. srpn
 3. Aktualizujte na nejnovější verzi agenta Windows (verze 10.20.18029).
 4. Doporučuje se nakonfigurovat agenta tak, aby [používal protokol TLS 1,2](agent-windows.md#configure-agent-to-use-tls-12). 
 
-## <a name="network-requirements"></a>Síťové požadavky
+## <a name="network-requirements"></a>Požadavky sítě
 Požadavky na síť pro agenta pro Windows najdete v tématu [přehled log Analyticsho agenta](log-analytics-agent.md#network-requirements) .
 
 
@@ -49,7 +49,7 @@ Požadavky na síť pro agenta pro Windows najdete v tématu [přehled log Analy
 ## <a name="configure-agent-to-use-tls-12"></a>Nakonfigurovat agenta na používání protokolu TLS 1,2
 Protokol [TLS 1,2](/windows-server/security/tls/tls-registry-settings#tls-12) zajišťuje zabezpečení dat při přenosu pro komunikaci mezi agentem Windows a službou Log Analytics. Pokud instalujete v [operačním systému bez TLS 1,2 ve výchozím nastavení povolený](data-security.md#sending-data-securely-using-tls-12), nakonfigurujte TLS 1,2 pomocí následujících kroků.
 
-1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE \system\currentcontrolset\control\securityproviders\schannel\protocols**
+1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. Vytvoření podklíče v části **protokoly** pro TLS 1,2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1,2**
 3. Vytvořte podklíč **klienta** pod podklíčem protokolu TLS 1,2 verze, který jste vytvořili dříve. Například **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Client**.
 4. V části **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ klient**vytvořte následující hodnoty DWORD:
@@ -59,9 +59,9 @@ Protokol [TLS 1,2](/windows-server/security/tls/tls-registry-settings#tls-12) za
 
 Nakonfigurujte .NET Framework 4,6 nebo novější, aby podporovaly zabezpečenou kryptografii, protože ve výchozím nastavení je zakázaná. [Silná kryptografie](/dotnet/framework/network-programming/tls#schusestrongcrypto) používá bezpečnější síťové protokoly jako TLS 1,2 a blokuje protokoly, které nejsou zabezpečené. 
 
-1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE \software\microsoft \\ . NETFramework\v4.0.30319**.  
+1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\ . NETFramework\v4.0.30319**.  
 2. V tomto podklíči vytvořte hodnotu DWORD **do schusestrongcrypto** s hodnotou **1**.  
-3. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE \software\wow6432node\microsoft \\ . NETFramework\v4.0.30319**.  
+3. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\ . NETFramework\v4.0.30319**.  
 4. V tomto podklíči vytvořte hodnotu DWORD **do schusestrongcrypto** s hodnotou **1**. 
 5. Restartujte systém, aby se nastavení projevilo. 
 
@@ -202,7 +202,7 @@ Ve výsledcích hledání byste měli vidět záznamy prezenčního signálu pro
 
 Data z agenta Log Analytics se ukládají do mezipaměti v místním počítači v adresáři *C:\Program Files\Microsoft monitoring Agent\Agent\Health Service State* předtím, než se pošle do Azure monitor. Agent se pokusí o nahrání každých 20 sekund. Pokud selže, bude počkat exponenciálně rostoucí dobu, než bude úspěšná. Počká 30 sekund před druhým pokusem, 60 sekund před uplynutím následujících 120 sekund, a tak dále, a to až do maximálního počtu 8,5 hodin mezi opakovanými pokusy, dokud se znovu úspěšně nepřipojí. Tato čekací doba je mírně náhodná, aby se všechny agenti při pokusu o připojení současně nepokoušeli. Při dosažení maximální vyrovnávací paměti jsou nejstarší data zahozena.
 
-Výchozí velikost mezipaměti je 50 MB, ale je možné ji nakonfigurovat mezi minimálně 5 MB a maximálně 1,5 GB. Ukládá se do klíče registru *HKEY_LOCAL_MACHINE maximum mezipaměti \System\currentcontrolset\services\healthservice\parameters\persistence cache*. Hodnota představuje počet stránek s 8 KB na stránku.
+Výchozí velikost mezipaměti je 50 MB, ale je možné ji nakonfigurovat mezi minimálně 5 MB a maximálně 1,5 GB. Je uložený v klíči registru *HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Persistence Cache Maximum*. Hodnota představuje počet stránek s 8 KB na stránku.
 
 
 ## <a name="next-steps"></a>Další kroky

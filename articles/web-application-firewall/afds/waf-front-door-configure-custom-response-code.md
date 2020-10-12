@@ -9,10 +9,10 @@ ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: a995460793686d8293d77965e74e2cbf916925a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005595"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Konfigurace vlastní odpovědi pro Firewall webových aplikací Azure (WAF)
@@ -27,7 +27,7 @@ V části nastavení zásad můžete na portálu WAF nakonfigurovat vlastní kó
 
 Ve výše uvedeném příkladu jsme kód odpovědi zavedli jako 403 a nakonfigurovali krátký symbol "kontaktujte nás", jak je znázorněno na následujícím obrázku:
 
-:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="Příklad vlastní odpovědi":::
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="Nastavení zásad WAF":::
 
 {{Azure-ref}} vloží do těla odpovědi jedinečný referenční řetězec. Hodnota odpovídá poli TrackingReference v `FrontdoorAccessLog` `FrontdoorWebApplicationFirewallLog` protokolech a.
 

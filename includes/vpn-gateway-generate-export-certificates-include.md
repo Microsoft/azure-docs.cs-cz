@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e85dc8c079205484db9b7b7c43a0086f69feb3be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80059938"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>Vytvoření kořenového certifikátu podepsaného svým držitelem
@@ -36,7 +36,7 @@ Každý klientský počítač, který se připojuje k virtuální síti pomocí 
 
 Následující kroky vás provedou vytvořením klientského certifikátu z kořenového certifikátu podepsaného svým držitelem. Můžete vygenerovat více klientských certifikátů ze stejného kořenového certifikátu. Když vygenerujete klientské certifikáty pomocí následujících kroků, klientský certifikát se automaticky nainstaluje na počítač, který jste použili k vygenerování certifikátu. Pokud chcete nainstalovat klientský certifikát do jiného klientského počítače, můžete certifikát exportovat.
 
-V příkladech se pomocí rutiny New-SelfSignedCertificate vygenerují klientský certifikát, jehož platnost vyprší po dobu jednoho roku. Další informace o parametrech, jako je například nastavení jiné hodnoty vypršení platnosti pro klientský certifikát, naleznete v části [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+V příkladech se pomocí rutiny New-SelfSignedCertificate vygeneruje klientský certifikát, jehož platnost vyprší v jednom roce. Další informace o parametrech, jako je například nastavení jiné hodnoty vypršení platnosti pro klientský certifikát, naleznete v části [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
 ### <a name="example-1---powershell-console-session-still-open"></a>Příklad 1 – relace konzoly PowerShellu je pořád otevřená
 

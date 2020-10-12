@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 69d6b8abc99863f29f82abcb44e18b426c5a456c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85959139"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Nastavení společné identity na Data Science Virtual Machine
@@ -55,7 +55,7 @@ Azure služba AD DS usnadňuje správu identit tím, že poskytuje plně spravov
     
    1. Vygenerované heslo bezpečně distribuujte novému uživateli, aby se mohli přihlásit.
 
-1. Vytvořte instanci služby Azure služba AD DS. Postupujte podle pokynů v části [povolení Azure Active Directory Domain Services pomocí Azure Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) (oddíl vytvořit instanci a nakonfigurovat základní nastavení). Je důležité aktualizovat stávající hesla uživatelů ve službě Active Directory tak, aby se heslo ve službě Azure služba AD DS synchronizoval. Je také důležité přidat DNS do Azure služba AD DS, jak je popsáno v části "vyplnění polí v okně základy Azure Portal k vytvoření instance služby Azure služba AD DS v této části.
+1. Vytvořte instanci služby Azure služba AD DS. Postupujte podle pokynů v části  [povolení Azure Active Directory Domain Services pomocí Azure Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) (oddíl vytvořit instanci a nakonfigurovat základní nastavení). Je důležité aktualizovat stávající hesla uživatelů ve službě Active Directory tak, aby se heslo ve službě Azure služba AD DS synchronizoval. Je také důležité přidat DNS do Azure služba AD DS, jak je popsáno v části "vyplnění polí v okně základy Azure Portal k vytvoření instance služby Azure služba AD DS v této části.
 
 1. Vytvořte samostatnou podsíť DSVM ve virtuální síti vytvořené v části Vytvoření a konfigurace virtuální sítě v předchozím kroku.
 1. V podsíti DSVM vytvořte jednu nebo víc instancí DSVM.

@@ -11,10 +11,10 @@ ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
 ms.openlocfilehash: f98cfcd49806061a969a9227f9ade05f70ce79ff
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85982306"
 ---
 # <a name="azure-sql-database-and-managed-instance-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Import nebo export databáze služby Import/export pro Azure SQL Database a spravovanou instanci trvá dlouhou dobu.
@@ -42,7 +42,7 @@ Pokud jsou vaše databáze exportovány pouze pro obnovení před náhodným ods
 
 * [Exportujte soubor BacPac pomocí nástroje SQLPackage](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-sqlpackage-utility).
 * [Exportujte soubor BacPac pomocí SQL Server Management Studio (SSMS)](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-sql-server-management-studio-ssms).
-* Spusťte import nebo export BACPAC přímo v kódu pomocí rozhraní API pro Microsoft SQL Server Data-Tier Application Framework (DacFx). Další informace najdete v těchto tématech:
+* Spusťte import nebo export BACPAC přímo ve vašem kódu pomocí rozhraní API Data-Tier aplikační architektury (DacFx) Microsoft SQL Server. Další informace najdete v těchto tématech:
   * [Export aplikace na datové vrstvě](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
   * [Obor názvů Microsoft. SqlServer. DAC](https://docs.microsoft.com/dotnet/api/microsoft.sqlserver.dac)
   * [Stáhnout DACFx](https://www.microsoft.com/download/details.aspx?id=55713)

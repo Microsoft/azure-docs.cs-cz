@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90524993"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Příprava zdrojového počítače na nabízenou instalaci agenta mobility
@@ -24,7 +24,7 @@ Na každém počítači s Windows, který chcete chránit, udělejte toto:
 1. Ujistěte se, že mezi počítačem a procesovým serverem existuje síťové připojení. Pokud jste nenastavili samostatný procesový Server, pak ve výchozím nastavení běží na konfiguračním serveru.
 1. Vytvořte účet, pomocí kterého bude procesový server moct přistupovat k počítači. Účet by měl mít práva správce, a to buď místní, nebo doména. Tento účet používejte pouze pro nabízenou instalaci a pro aktualizace agenta.
 2. Pokud nepoužíváte doménový účet, zakažte na místním počítači vzdálené řízení přístupu uživatele následujícím způsobem:
-    - V části HKEY_LOCAL_MACHINE klíč registru \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System přidejte novou hodnotu DWORD: **LocalAccountTokenFilterPolicy**. Nastavte hodnotu na **1**.
+    - V části HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System klíč registru přidejte novou hodnotu DWORD: **LocalAccountTokenFilterPolicy**. Nastavte hodnotu na **1**.
     -  Pokud to chcete provést na příkazovém řádku, spusťte následující příkaz:
     
        ```

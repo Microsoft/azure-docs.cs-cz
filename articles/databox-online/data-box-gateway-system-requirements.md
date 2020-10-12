@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82562436"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway požadavky na systém
@@ -29,10 +29,10 @@ Požadavky na systém pro virtuální zařízení Data Box Gateway zahrnují:
 
 Základní hostitelský systém pro Data Box Gateway je schopný vyhradit následující prostředky pro zřízení virtuálního zařízení:
 
-| Specifikace                                          | Popis              |
+| Specifikace                                          | Description              |
 |---------------------------------------------------------|--------------------------|
 | Virtuální procesory (jádra)   | Minimálně 4 |
-| Memory (Paměť)  | Minimálně 8 GB|
+| Paměť  | Minimálně 8 GB|
 | Dostupnost|Jeden uzel|
 | Disky| Disk operačního systému: 250 GB <br> Datový disk: minimálně 2 TB, dynamicky zřizovaný, musí být zálohován pomocí disků SSD|
 | Síťová rozhraní|1 nebo více rozhraní virtuální sítě|
@@ -48,10 +48,10 @@ Základní hostitelský systém pro Data Box Gateway je schopný vyhradit násle
 
 ## <a name="supported-virtualization-platforms-for-device"></a>Podporované virtualizační platformy pro zařízení
 
-| **Operační systém/platforma**  |**Zachovávaných**   |**Poznámky**  |
+| **Operační systém/platforma**  |**Versions** (Verze)   |**Poznámky**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016 <br> 2019 |         |
-|VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |Nástroje VMware nejsou podporovány.         |
+|VMware ESXi     | 6,0 <br> 6.5 <br> 6.7       |Nástroje VMware nejsou podporovány.         |
 
 
 ## <a name="supported-storage-accounts"></a>Podporované účty úložiště

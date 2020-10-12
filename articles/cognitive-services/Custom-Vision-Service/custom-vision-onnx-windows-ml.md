@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: pafarley
 ms.openlocfilehash: d6bcb5485833fbfaa3eb72191ee54b1ee69bab04
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82594291"
 ---
 # <a name="use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Použití modelu ONNX z Custom Vision s Windows ML (Preview)
@@ -53,8 +53,8 @@ Pokud chcete použít vlastní model klasifikátoru obrázků, postupujte takto:
 1. Otevřete stažený soubor *. zip* a extrahujte z něj soubor *model. Onnx* . Tento soubor obsahuje model třídění.
 1. V Průzkumník řešení v aplikaci Visual Studio klikněte pravým tlačítkem myši na složku **assets** a vyberte možnost __Přidat existující položku__. Vyberte soubor ONNX.
 1. V Průzkumník řešení klikněte pravým tlačítkem na soubor ONNX a vyberte **vlastnosti**. Změňte následující vlastnosti souboru:
-   * __Obsah akce sestavení__ -> __Content__
-   * __Kopírovat do výstupního adresáře__ -> ,__Pokud je novější__
+   * __Akce sestavení__  ->  __Obsah__
+   * __Kopírovat do výstupního adresáře__  ->  __Kopírovat, pokud je novější__
 1. Pak otevřete _MainPage.XAML.cs_ a změňte hodnotu `_ourOnnxFileName` na název vašeho souboru ONNX.
 1. Použijte `F5` k sestavení a spuštění projektu.
 1. Klikněte na tlačítko a vyberte obrázek k vyhodnocení.

@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 41f570f93e95e9801b08c06cacc0423b1bf3b8e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252779"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity podregistru v Azure Data Factory 
@@ -74,7 +74,7 @@ Aktivita podregistru HDInsight v Data Factoryovém [kanálu](data-factory-create
 ## <a name="syntax-details"></a>Podrobnosti syntaxe
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| jméno |Název aktivity |Yes |
+| name |Název aktivity |Yes |
 | Popis |Text popisující, k čemu se aktivita používá |No |
 | typ |HDinsightHive |Yes |
 | vztahují |Vstupy spotřebované aktivitou podregistru |No |

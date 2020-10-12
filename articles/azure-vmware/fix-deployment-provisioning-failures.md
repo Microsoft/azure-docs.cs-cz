@@ -4,10 +4,10 @@ description: Jak získat potřebné informace z privátního cloudu řešení Az
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: 63d5440a9e2b15463e465e1d32762889508feca1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88752233"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Získat pomoc s nasazením řešení Azure VMware nebo chybami zřizování
@@ -37,7 +37,7 @@ Pokud dojde k selhání v fázích před ověřením, před nasazením privátn�
 
 Podrobnosti o jakýchkoli chybách můžou být užitečné také při řešení vašeho problému. Na předchozí obrazovce vyberte **kliknutím sem** zobrazíte podrobnosti (zvýrazněno) a zobrazí se souhrn chyb, jak je znázorněno na následujícím snímku obrazovky.
  
- :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="Souhrn chyb":::
+ :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="Nasazení privátního cloudu s ID korelace se nezdařilo.":::
 
 Znovu tento souhrn zkopírujte a uložte, abyste ho zahrnuli do SR.
  
@@ -45,15 +45,15 @@ Znovu tento souhrn zkopírujte a uložte, abyste ho zahrnuli do SR.
 
 Minulá nasazení, včetně chyb, můžete načíst tak, že vyhledáte přidaný protokol aktivit nasazení, a to výběrem ikony oznámení.
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Otevřete oznámení.":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Nasazení privátního cloudu s ID korelace se nezdařilo.":::
 
 V části oznámení vyberte **Další události v protokolu aktivit**.
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Odkaz: další události v protokolu aktivit.":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Nasazení privátního cloudu s ID korelace se nezdařilo.":::
 
 Pak vyhledejte název prostředku nebo jiné jedinečné informace, které jste použili při vytváření prostředku, a vyhledejte neúspěšné nasazení a ID korelace. Následující příklad ukazuje výsledky hledání v prostředku privátního cloudu (pc03).
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Najděte minulá nasazení řešení Azure VMware, která selhala.":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Nasazení privátního cloudu s ID korelace se nezdařilo.":::
  
 Když vyberete název operace neúspěšného nasazení, otevře se okno s podrobnostmi. Vyberte kartu JSON a vyhledejte ID korelace. Zkopírujte a zahrňte do SR. 
  
@@ -63,7 +63,7 @@ Možná už máte privátní cloud a dojde k selhání při pokusu o horizontál
 
 Při prohlížení privátního cloudu na portálu vyberte možnost **připojení > ExpressRoute** a ZKOPÍRUJTE **ExpressRoute ID** do schránky.
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Zkopírujte ID ExpressRoute do schránky."::: 
+:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Nasazení privátního cloudu s ID korelace se nezdařilo."::: 
  
 Vložte ID ExpressRoute do příslušného pole v nové žádosti o podporu. Další informace najdete v následující části [Vytvoření žádosti o podporu](#create-your-support-request).
  
@@ -78,7 +78,7 @@ Tady jsou další doprovodné materiály, které jsou specifické pro vytvářen
 
 1. Vyberte ikonu **pomoci** a potom **+ Nová žádost o podporu**.
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Shromážděte ID ExpressRoute pro vaše rozhraní SR.":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Nasazení privátního cloudu s ID korelace se nezdařilo.":::
 
 2. Vyplňte všechna povinná pole a na kartě **základy** :
 

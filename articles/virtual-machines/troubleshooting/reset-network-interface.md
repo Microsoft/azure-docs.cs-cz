@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: 6c4e507df0f112934979d4e59778b667743cf623
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005952"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Jak resetovat síťové rozhraní pro virtuální počítač Azure s Windows 
@@ -32,7 +32,7 @@ Tento článek popisuje, jak resetovat síťové rozhraní pro virtuální poč�
 
 ### <a name="for-vms-deployed-in-resource-group-model"></a>Pro virtuální počítače nasazené v modelu skupiny prostředků
 
-1.  Přejděte na [Azure Portal](https://ms.portal.azure.com).
+1.  Přejděte na web [Azure Portal](https://ms.portal.azure.com).
 2.  Vyberte ovlivněný virtuální počítač.
 3.  Vyberte **sítě** a pak vyberte síťové rozhraní virtuálního počítače.
 
@@ -40,7 +40,7 @@ Tento článek popisuje, jak resetovat síťové rozhraní pro virtuální poč�
     
 4.  Vyberte **Konfigurace protokolu IP**.
 5.  Vyberte IP adresu. 
-6.  Pokud **přiřazení privátních IP adres** není **statické**, změňte ho na **static**.
+6.  Pokud **přiřazení privátních IP adres**  není  **statické**, změňte ho na **static**.
 7.  Změňte **IP adresu** na jinou IP adresu, která je k dispozici v podsíti.
 8. Virtuální počítač se restartuje a Inicializuje novou síťovou kartu pro systém.
 9.  Zkuste k počítači protokol RDP. Pokud chcete, můžete privátní IP adresu v případě úspěchu změnit zpátky na původní. V opačném případě ji můžete zachovat. 
@@ -78,11 +78,11 @@ K resetování síťového rozhraní použijte tento postup:
 
 #### <a name="use-azure-portal"></a>Použití webu Azure Portal
 
-1.  Přejděte na [Azure Portal]( https://ms.portal.azure.com).
+1.  Přejděte na web [Azure Portal]( https://ms.portal.azure.com).
 2.  Vyberte **Virtual Machines (Classic)**.
 3.  Vyberte ovlivněný virtuální počítač.
 4.  Vyberte **IP adresy**.
-5.  Pokud **přiřazení privátních IP adres** není **statické**, změňte ho na **static**.
+5.  Pokud **přiřazení privátních IP adres**  není  **statické**, změňte ho na **static**.
 6.  Změňte **IP adresu** na jinou IP adresu, která je k dispozici v podsíti.
 7.  Vyberte **Uložit**.
 8.  Virtuální počítač se restartuje a Inicializuje novou síťovou kartu pro systém.

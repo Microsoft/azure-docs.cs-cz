@@ -8,10 +8,10 @@ ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: 0e11f345bfed287be3170df38a909ed24149b754
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010255"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro ověřování a autorizaci ve službě Azure Kubernetes (AKS)
@@ -39,7 +39,7 @@ Clustery s integrovanými službami Azure AD v AKS vám umožní vytvořit *role
 
 1. Vývojář se ověřuje pomocí Azure AD.
 1. Koncový bod pro vystavení tokenu Azure AD vydá přístupový token.
-1. Vývojář provede akci, která používá token Azure AD, například`kubectl create pod`
+1. Vývojář provede akci, která používá token Azure AD, například `kubectl create pod`
 1. Kubernetes ověří token pomocí Azure Active Directory a načte členství ve skupině vývojářů.
 1. Použije se Kubernetes řízení přístupu na základě role (RBAC) a zásady clusteru.
 1. Žádost vývojáře je úspěšná nebo není založená na předchozím ověření členství ve skupině Azure AD a Kubernetes RBAC a zásady.

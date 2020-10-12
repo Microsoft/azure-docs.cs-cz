@@ -4,10 +4,10 @@ description: Seznamte se s principy identit a přístupu k řešení Azure VMwar
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88750588"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Koncepty identity řešení Azure VMware
@@ -24,7 +24,7 @@ V následující tabulce jsou uvedena oprávnění CloudAdmin a CloudGlobalAdmin
 
 |  Sada oprávnění           | CloudAdmin | CloudGlobalAdmin | Komentář |
 | :---                     |    :---:   |       :---:      |   :--:  |
-|  Upozornění                  | CloudAdmin uživatel má všechna alarmová oprávnění pro alarmy ve službě COMPUTE-objektu ResourcePool a virtuálních počítačích.     |          --        |  -- |
+|  Upozornění                  | CloudAdmin uživatel má všechna alarmy oprávnění k alarmům v Compute-ResourcePool a virtuálních počítačích.     |          --        |  -- |
 |  Automatické nasazení             |  --  |        --        |  Microsoft provádí správu hostitelů.  |
 |  Certifikáty            |  --  |        --       |  Microsoft provádí správu certifikátů.  |
 |  Knihovna obsahu         | Uživatel CloudAdmin má oprávnění k vytváření a používání souborů v knihovně obsahu.    |         Povoleno s jednotným přihlašováním.         |  Společnost Microsoft bude distribuovat soubory do knihovny obsahu do hostitelů ESXi.  |

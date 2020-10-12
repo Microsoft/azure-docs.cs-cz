@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: ad92862c78260e7385168faf794c013e85f66b82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85445725"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-manually"></a>Povolit vnořenou virtualizaci na virtuálním počítači šablony v Azure Lab Services ručně
@@ -39,7 +39,7 @@ Následující postup popisuje akce, které jsou potřebné k povolení technolo
 12. Na stránce **výchozí úložiště** přijměte výchozí hodnoty a klikněte na **Další**.
 13. Na stránce **Potvrdit vybrané možnosti instalace** vyberte v **případě potřeby cílový server automaticky restartovat**.
 14. Když se zobrazí automaticky otevírané okno **Průvodce přidáním rolí a funkcí** , klikněte na **Ano**.
-15. Klikněte na **nainstalovat**.
+15. Klikněte na **Install** (Nainstalovat).
 16. Počkejte na stránku **průběh instalace** , která indikuje, že role Hyper-V je dokončená.  Počítač se v průběhu instalace může restartovat.
 17. Klikněte na **Zavřít**.
 
@@ -75,7 +75,7 @@ Všechny vytvořené virtuální počítače klienta Hyper-V vyžadují IP adres
 7. Na stránce **vzdálený přístup** klikněte na **Další**.
 8. Na stránce **služby rolí** vyberte **Směrování**.
 9. Zobrazí se automaticky otevírané okno **Průvodce přidáním rolí a funkcí** .  Vyberte možnost **Zahrnout nástroje pro správu (Pokud je k dispozici)**.  Klikněte na **Přidat funkce**.
-10. Klikněte na **Další**.
+10. Klikněte na **Next** (Další).
 11. Na stránce **Web Server Role (IIS)** klikněte na **Další**.
 12. Na stránce **Vybrat služby rolí** klikněte na **Další**.
 13. Na stránce **Potvrdit vybrané možnosti instalace** klikněte na **Nainstalovat**.
@@ -101,12 +101,12 @@ Teď, když jsou nainstalované všechny potřebné role, je čas vytvořit sí�
 2. Na levé navigační stránce vyberte místní server.
 3. Vyberte **Akce**  ->  **Konfigurace a povolit směrování a vzdálený přístup**.
 4. Když se zobrazí **Průvodce instalací serveru Směrování a vzdálený přístup** , klikněte na **Další**.
-5. Na stránce **Konfigurace** vyberte konfigurace **překladu adres (NAT)** .  Klikněte na **Další**.
+5. Na stránce **Konfigurace** vyberte konfigurace **překladu adres (NAT)** .  Klikněte na **Next** (Další).
 
     >[!WARNING]
     >Nevybírejte možnost přístup k virtuální privátní síti (VPN) a překlad adres (NAT).
 
-6. Na stránce **Internet Connection NAT** klikněte na síť Ethernet.  Nevybírejte připojení vEthernet (LabServicesSwitch), které jsme vytvořili ve Správci technologie Hyper-V. Klikněte na **Další**.
+6. Na stránce **Internet Connection NAT** klikněte na síť Ethernet.  Nevybírejte připojení vEthernet (LabServicesSwitch), které jsme vytvořili ve Správci technologie Hyper-V. Klikněte na **Next** (Další).
 7. Na poslední stránce průvodce klikněte na **Dokončit** .
 8. Po zobrazení dialogového okna **Spustit službu** klikněte na **Spustit službu**.
 9. Počkejte na spuštění služby.
@@ -135,7 +135,7 @@ Následující kroky jsou pokyny k přidání oboru DHCP.  V tomto článku je n
 2. V nástroji **DHCP** rozbalte uzel pro aktuální server a vyberte **IPv4**.
 3. V nabídce Akce klikněte na možnost **Nový obor...**
 4. Po zobrazení **Průvodce vytvořením oboru** klikněte na **úvodní** stránce na tlačítko **Další** .
-5. Na stránce **název oboru** zadejte "LabServicesDhcpScope" nebo něco jiného, co je pro jméno zapamatovatelné.  Klikněte na **Další**.
+5. Na stránce **název oboru** zadejte "LabServicesDhcpScope" nebo něco jiného, co je pro jméno zapamatovatelné.  Klikněte na **Next** (Další).
 6. Na stránce **Rozsah IP adres** zadejte následující hodnoty.
 
     - 192.168.0.100 pro počáteční IP adresu
@@ -143,15 +143,15 @@ Následující kroky jsou pokyny k přidání oboru DHCP.  V tomto článku je n
     - 24 pro délku
     - 255.255.255.0 pro masku podsítě
 
-7. Klikněte na **Další**.
+7. Klikněte na **Next** (Další).
 8. Na stránce **Přidat vyloučení a zpoždění** klikněte na **Další**.
 9. Na stránce **trvání zapůjčení** klikněte na **Další**.
-10. Na stránce **Konfigurovat možnosti DHCP** vyberte možnost **Ano, chci nyní tyto možnosti nakonfigurovat**. Klikněte na **Další**.
+10. Na stránce **Konfigurovat možnosti DHCP** vyberte možnost **Ano, chci nyní tyto možnosti nakonfigurovat**. Klikněte na **Next** (Další).
 11. Ve **směrovači (výchozí brána)**
-12. Přidejte 192.168.0.1, pokud ještě neproběhla. Klikněte na **Další**.
-13. Na stránce **název domény a servery DNS** přidejte 168.63.129.16 jako IP adresu serveru DNS, pokud jste to ještě neudělali.  168.63.129.16 je IP adresa pro statický server DNS Azure. Klikněte na **Další**.
+12. Přidejte 192.168.0.1, pokud ještě neproběhla. Klikněte na **Next** (Další).
+13. Na stránce **název domény a servery DNS** přidejte 168.63.129.16 jako IP adresu serveru DNS, pokud jste to ještě neudělali.  168.63.129.16 je IP adresa pro statický server DNS Azure. Klikněte na **Next** (Další).
 14. Na stránce **servery WINS** klikněte na **Další**.
-15. Na stránce **aktivovat obor** vyberte **Ano, chci teď tento rozsah aktivovat**.  Klikněte na **Další**.
+15. Na stránce **aktivovat obor** vyberte **Ano, chci teď tento rozsah aktivovat**.  Klikněte na **Next** (Další).
 16. Na stránce **dokončení průvodce** vytvořením oboru klikněte na tlačítko **Dokončit**.
 
 ## <a name="conclusion"></a>Závěr

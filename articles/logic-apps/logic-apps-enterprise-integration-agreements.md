@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82612329"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Vytvoření a správa smluv obchodních partnerů v Azure Logic Apps
@@ -59,12 +59,12 @@ V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole z
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název** | Ano | <*smlouva – název*> | Název vaší smlouvy |
-   | **Typ smlouvy** | Ano | **AS2**, **X12**nebo **EDIFACT** | Typ protokolu pro vaši smlouvu. Při vytváření souboru smlouvy musí obsah v tomto souboru odpovídat typu smlouvy. | |  
-   | **Partner hostitele** | Ano | <*Host-partner – název*> | Partner hostitele představuje organizaci, která určuje smlouvu. |
-   | **Hostitelská identita** | Ano | <*Host-partner – identifikátor*> | Identifikátor hostitelského partnera |
-   | **Partner hosta** | Ano | <*Host – partner – název*> | Partner hosta představuje organizaci, která provádí podnikání s hostitelským partnerem. |
-   | **Identita hosta** | Ano | <*Host – partner – identifikátor*> | Identifikátor hostovaného partnera |
+   | **Název** | Yes | <*smlouva – název*> | Název vaší smlouvy |
+   | **Typ smlouvy** | Yes | **AS2**, **X12**nebo **EDIFACT** | Typ protokolu pro vaši smlouvu. Při vytváření souboru smlouvy musí obsah v tomto souboru odpovídat typu smlouvy. | |  
+   | **Partner hostitele** | Yes | <*Host-partner – název*> | Partner hostitele představuje organizaci, která určuje smlouvu. |
+   | **Hostitelská identita** | Yes | <*Host-partner – identifikátor*> | Identifikátor hostitelského partnera |
+   | **Partner hosta** | Yes | <*Host – partner – název*> | Partner hosta představuje organizaci, která provádí podnikání s hostitelským partnerem. |
+   | **Identita hosta** | Yes | <*Host – partner – identifikátor*> | Identifikátor hostovaného partnera |
    | **Nastavení příjmu** | Různé | Různé | Tyto vlastnosti určují, jak hostující partner obdrží všechny příchozí zprávy od hostovaného partnera v rámci smlouvy. Další informace najdete v příslušném typu smlouvy: <p>- [Nastavení zprávy AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Nastavení zprávy EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [Nastavení zprávy X12](logic-apps-enterprise-integration-x12.md) |
    | **Nastavení odesílání** | Různé | Různé | Tyto vlastnosti určují, jak hostující partner odesílá všechny odchozí zprávy partnerovi hosta v rámci smlouvy. Další informace najdete v příslušném typu smlouvy: <p>- [Nastavení zprávy AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Nastavení zprávy EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [Nastavení zprávy X12](logic-apps-enterprise-integration-x12.md) |
    |||||

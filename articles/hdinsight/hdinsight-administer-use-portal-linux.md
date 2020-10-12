@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82598494"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal
@@ -25,17 +25,17 @@ Pomocí [Azure Portal](https://portal.azure.com)můžete spravovat clustery [Apa
 
 Existující cluster Apache Hadoop v HDInsight.  Další informace najdete v tématu [Vytvoření clusterů se systémem Linux v HDInsight pomocí Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="getting-started"></a>Začínáme
+## <a name="getting-started"></a>začínáme
 
 Přihlaste se k webu [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="list-and-show-clusters"></a><a name="showClusters"></a>Výpis a zobrazení clusterů
+## <a name="list-and-show-clusters"></a><a name="showClusters"></a> Výpis a zobrazení clusterů
 
 Na stránce **clustery HDInsight** se zobrazí seznam stávajících clusterů.  Z portálu:
 1. V nabídce vlevo vyberte **všechny služby** .
 2. V části **Analýza**vyberte **clustery HDInsight** .
 
-## <a name="cluster-home-page"></a><a name="homePage"></a>Domovská stránka clusteru
+## <a name="cluster-home-page"></a><a name="homePage"></a> Domovská stránka clusteru
 
 Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showClusters) .  Tím otevřete zobrazení **přehledu** , které bude vypadat podobně jako na následujícím obrázku:
 
@@ -61,7 +61,7 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
     |Značky|Umožňuje nastavit páry klíč/hodnota pro definování vlastní taxonomie vašich cloudových služeb. Můžete například vytvořit klíč s názvem **Project**a potom použít společnou hodnotu pro všechny služby přidružené ke konkrétnímu projektu.|
     |Diagnostikovat a řešit problémy|Zobrazit informace o řešení potíží.|
     |Rychlé zprovoznění|Zobrazuje informace, které vám pomůžou začít používat HDInsight.|
-    |nástroje|Informace o nápovědě k nástrojům souvisejícím s HDInsight|
+    |Nástroje|Informace o nápovědě k nástrojům souvisejícím s HDInsight|
 
   - **Nabídka Nastavení**  
 
@@ -96,7 +96,7 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
     |Stav prostředků|Podívejte se na téma [Přehled Azure Resource Health](../service-health/resource-health-overview.md).|
     |Nová žádost o podporu|Umožňuje vytvořit lístek podpory s podporou Microsoftu.|
 
-## <a name="cluster-properties"></a><a name="properties"></a>Vlastnosti clusteru
+## <a name="cluster-properties"></a><a name="properties"></a> Vlastnosti clusteru
 
 Na [domovské stránce clusteru](#homePage)v části **Nastavení** vyberte **vlastnosti**.
 
@@ -266,7 +266,7 @@ Dlaždice **Velikost clusteru** z [domovské stránky clusteru](#homePage) zobra
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se seznámili se základními funkcemi pro správu. Další informace najdete v následujících článcích:
+V tomto článku jste se seznámili se základními funkcemi pro správu. Další informace najdete v těchto článcích:
 
 - [Správa HDInsight pomocí Azure PowerShell](hdinsight-administer-use-powershell.md)
 - [Správa HDInsight pomocí rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md)

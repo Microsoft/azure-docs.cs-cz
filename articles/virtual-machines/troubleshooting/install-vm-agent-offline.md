@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/06/2020
 ms.author: genli
 ms.openlocfilehash: 456aa225fa8eed47ca794c54e61b77a30c93fa9a
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85983215"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Instalace agenta virtuálního počítače Azure v offline režimu 
@@ -62,10 +62,10 @@ Pomocí následujících kroků nainstalujete agenta virtuálního počítače d
     1. Přejmenování složky \windowsazure na \windowsazure.old.
 
     2. Exportujte následující Registry:
-        - HKEY_LOCAL_MACHINE \BROKENSYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE \BROKENSYSTEM\ControlSet001\Services\RdAgent
+        - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
+        - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\RdAgent
 
-8.  Použijte existující soubory na virtuálním počítači poradce při potížích jako úložiště pro instalaci agenta virtuálního počítače. Proveďte následující kroky:
+8.  Použijte existující soubory na virtuálním počítači poradce při potížích jako úložiště pro instalaci agenta virtuálního počítače. Dokončete následující kroky:
 
     1. Z virtuálního počítače Poradce při potížích exportujte následující podklíče ve formátu registru (. reg): 
         - HKEY_LOCAL_MACHINE \SYSTEM\ControlSet001\Services\WindowsAzureGuestAgent

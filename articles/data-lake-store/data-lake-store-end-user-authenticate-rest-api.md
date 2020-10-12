@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 84e85e6e817972b8ec0bee0e8b441b3585d2d9dd
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85984847"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Ověřování koncových uživatelů s Azure Data Lake Storage Gen1 pomocí REST API
@@ -18,7 +18,7 @@ ms.locfileid: "85984847"
 > * [Pomocí Javy](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [Pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [Pomocí Pythonu](data-lake-store-end-user-authenticate-python.md)
-> * [Pomocí rozhraní REST API](data-lake-store-end-user-authenticate-rest-api.md)
+> * [Použití REST API](data-lake-store-end-user-authenticate-rest-api.md)
 > 
 >  
 
@@ -37,14 +37,14 @@ Ověřování koncových uživatelů je doporučený postup, pokud chcete, aby s
 
 Výsledkem přihlášení koncového uživatele je, že aplikace má přístup k přístupovému tokenu a obnovovacímu tokenu. Přístupový token se připojí ke všem žádostem provedeným na Data Lake Storage Gen1 nebo Data Lake Analytics a ve výchozím nastavení platí pro jednu hodinu. Aktualizační token se dá použít k získání nového přístupového tokenu a ve výchozím nastavení je platný až pro dva týdny, pokud se pravidelně používá. Pro přihlášení koncového uživatele můžete použít dva různé přístupy.
 
-V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace se provádějí v kontextu uživatele. Proveďte následující kroky:
+V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace se provádějí v kontextu uživatele. Proveďte tyto kroky:
 
 1. Prostřednictvím aplikace přesměrujte uživatele na tuto adresu URL:
 
     `https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>`
 
    > [!NOTE]
-   > \<REDIRECT-URI>musí být kódovány pro použití v adrese URL. Takže pro https://localhost , použití `https%3A%2F%2Flocalhost` )
+   > \<REDIRECT-URI> musí být kódovány pro použití v adrese URL. Takže pro https://localhost , použití `https%3A%2F%2Flocalhost` )
 
     Pro účely tohoto kurzu můžete ve výše zobrazené adrese URL nahradit zástupné hodnoty a vložit ji do adresního řádku webového prohlížeče. Budete přesměrováni na ověření pomocí přihlášení Azure. Po úspěšném přihlášení se zobrazí v adresním řádku prohlížeče odpověď. Odpověď bude mít tento formát:
 

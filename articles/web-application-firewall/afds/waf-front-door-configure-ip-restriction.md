@@ -8,29 +8,29 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
 ms.openlocfilehash: f41dc688996b2431060a3cde209ca1ed4a21fe8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005612"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Konfigurace pravidla omezení IP adres pomocí brány firewall webových aplikací pro přední dveře Azure
 
 V tomto článku se dozvíte, jak nakonfigurovat pravidla omezení IP adres v bráně firewall webových aplikací (WAF) pro přední dveře Azure pomocí Azure Portal, Azure CLI, Azure PowerShell nebo šablony Azure Resource Manager.
 
-Pravidlo řízení přístupu na základě IP adresy je vlastní pravidlo WAF, které umožňuje řídit přístup k vašim webovým aplikacím. To se dělá zadáním seznamu IP adres nebo rozsahů IP adres ve formátu CIDR (Classless Inter-Domain Routing).
+Pravidlo řízení přístupu na základě IP adresy je vlastní pravidlo WAF, které umožňuje řídit přístup k vašim webovým aplikacím. To se dělá zadáním seznamu IP adres nebo rozsahů IP adres ve formátu směrování v netříděných Inter-Domain (CIDR).
 
 Ve výchozím nastavení je webová aplikace přístupná z Internetu. Chcete-li omezit přístup k klientům ze seznamu známých IP adres nebo rozsahů IP adres, můžete vytvořit pravidlo pro porovnání IP, které obsahuje seznam IP adres jako odpovídající hodnoty a operátor nastaví hodnotu "NOT" (negace je true) a akce, která má být **zablokovaná**. Po použití pravidla omezení IP adresy budou žádosti, které pocházejí z adres mimo tento seznam povolených, přijmout odpověď 403 Forbidden.
 
 ## <a name="configure-a-waf-policy-with-the-azure-portal"></a>Konfigurace zásady WAF pomocí Azure Portal
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveří Azure [: vytvoření předních dveří pro globální webovou aplikaci s vysokou dostupností](../../frontdoor/quickstart-create-front-door.md).
 
 ### <a name="create-a-waf-policy"></a>Vytvoření zásady WAF
 
-1. V Azure Portal vyberte **vytvořit prostředek**, do vyhledávacího pole zadejte **Firewall webových aplikací** a pak vyberte **Firewall webových aplikací (WAF)**.
+1. V Azure Portal vyberte **vytvořit prostředek**, do vyhledávacího pole zadejte  **Firewall webových aplikací** a pak vyberte **Firewall webových aplikací (WAF)**.
 2. Vyberte **Vytvořit**.
 3. Na stránce **vytvořit zásadu WAF** pomocí následujících hodnot dokončete kartu **základy** :
    
@@ -76,14 +76,14 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
 1. Po dokončení nasazení zásad WAF vyhledejte název hostitele front-endu s front-endy.
 2. Měla by se zobrazit vaše zpráva o vlastním blokování.
 
-   :::image type="content" source="../media/waf-front-door-configure-ip-restriction/waf-rule-test.png" alt-text="Test pravidla WAF":::
+   :::image type="content" source="../media/waf-front-door-configure-ip-restriction/waf-rule-test.png" alt-text="Vlastní pravidlo":::
 
    > [!NOTE]
    > Privátní IP adresa se úmyslně použila ve vlastním pravidle, aby se zajistilo, že se pravidlo aktivuje. Ve vlastním nasazení vytvořte pravidla *Povolení* a *odmítnutí* pomocí IP adres pro konkrétní situaci.
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>Konfigurace zásady WAF pomocí Azure CLI
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Než začnete konfigurovat zásady omezení IP adres, nastavte prostředí rozhraní příkazového řádku a vytvořte profil front-dveří Azure.
 
 #### <a name="set-up-the-azure-cli-environment"></a>Nastavení prostředí Azure CLI
@@ -162,7 +162,7 @@ V tomto příkladu se zásada WAF aplikuje na **FrontendEndpoints [0]**. Zásady
 
 ## <a name="configure-a-waf-policy-with-azure-powershell"></a>Konfigurace zásady WAF pomocí Azure PowerShell
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Než začnete konfigurovat zásady omezení IP adres, nastavte prostředí PowerShell a vytvořte profil front-dveří Azure.
 
 #### <a name="set-up-your-powershell-environment"></a>Nastavení prostředí PowerShell

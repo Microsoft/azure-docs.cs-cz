@@ -15,10 +15,10 @@ ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 510991c1afba9a5ffbfd77e855ee25d8b641bdd0
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226977"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Použití Azure Monitorch sešitů pro sestavy Azure Active Directory
@@ -54,7 +54,7 @@ Tento článek:
  
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat monitorované sešity, potřebujete:
 
@@ -81,7 +81,7 @@ Musíte být v jedné z následujících rolí a mít [přístup k podkladovým 
 
 Přístup k sešitům:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Přejděte na **Azure Active Directory**  >  **monitorování**  >  **sešitů**. 
 
@@ -107,7 +107,7 @@ Jednotlivé trendy můžete filtrovat podle následujících kategorií:
 
 - Časové rozmezí
 
-- Aplikace
+- Apps
 
 - Uživatelé
 
@@ -141,7 +141,7 @@ Jednotlivé trendy můžete filtrovat podle následujících kategorií:
 
 - Časové rozmezí
 
-- Aplikace
+- Apps
 
 - Uživatelé
 
@@ -165,7 +165,7 @@ Tento sešit zobrazuje trendy pro zakázané přihlášení. Jednotlivé trendy 
 
 - Časové rozmezí
 
-- Aplikace
+- Apps
 
 - Uživatelé
 
@@ -186,7 +186,7 @@ Sešity obsahují dotazy protokolu přihlášení, které mohou správcům IT po
 ### <a name="instructions"></a>Pokyny 
 Pokud chcete získat přístup k sešitu pro přehledy podmíněného přístupu, vyberte v části Podmíněný přístup sešit s **informacemi o podmíněném** přístupu. V tomto sešitu se zobrazuje očekávaný dopad na jednotlivé zásady podmíněného přístupu ve vašem tenantovi. V rozevíracím seznamu vyberte jednu nebo více zásad podmíněného přístupu a zužte rozsah sešitu použitím následujících filtrů: 
 
-- **Časové rozmezí**
+- **Časový rozsah**
 
 - **Uživatel**
 
@@ -231,14 +231,14 @@ Tento sešit obsahuje následující zakázané trendy přihlašování:
 
 - Vyžadovat prohlášení o zásadách ochrany osobních údajů
 
-- Další
+- Jiné
 
 
 Jednotlivé trendy můžete filtrovat podle následujících kategorií:
 
 - Časové rozmezí
 
-- Aplikace
+- Apps
 
 - Uživatelé
 
@@ -278,7 +278,7 @@ Jednotlivé trendy můžete filtrovat podle následujících kategorií:
 
 - Časové rozmezí
 
-- Aplikace
+- Apps
 
 - Uživatelé
 
