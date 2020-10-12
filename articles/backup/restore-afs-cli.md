@@ -4,10 +4,10 @@ description: Naučte se používat Azure CLI k obnovení zálohovaných sdílen�
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: be744fdb79f442eaf0ef632952d9c0b9e709d908
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325007"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Obnovení sdílených složek Azure pomocí Azure CLI
@@ -31,7 +31,7 @@ Pokud chcete rozhraní příkazového řádku nainstalovat a používat místně
 
 V tomto článku se předpokládá, že už máte sdílenou složku Azure, která je zálohovaná pomocí Azure Backup. Pokud ho nemáte, přečtěte si téma [Zálohování sdílených složek Azure pomocí rozhraní](backup-afs-cli.md) příkazového řádku pro konfiguraci zálohování sdílené složky. V tomto článku použijete následující prostředky:
 
-| Sdílená složka  | Účet úložiště | Region | Podrobnosti                                                      |
+| Sdílená složka  | Účet úložiště | Oblast | Podrobnosti                                                      |
 | ----------- | --------------- | ------ | ------------------------------------------------------------ |
 | *azurefiles*  | *afsaccount*      | EastUS | Původní zdroj zálohovaný pomocí Azure Backup                 |
 | *azurefiles1* | *afaccount1*      | EastUS | Cílový zdroj, který se používá pro obnovení do alternativního umístění |

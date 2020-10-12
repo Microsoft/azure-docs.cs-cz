@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.openlocfilehash: 3caccd6766226ce68b371856b081b052c1033f71
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542185"
 ---
 # <a name="pattern-syntax"></a>Syntaxe vzoru
@@ -23,7 +23,7 @@ Entity v vzorcích jsou obklopené složenými závorkami `{}` . Vzory mohou zah
 
 Syntaxe vzoru podporuje následující syntaxi:
 
-|Funkce|Syntaxe|Úroveň vnoření|Příklad|
+|Funkce|Syntax|Úroveň vnoření|Příklad|
 |--|--|--|--|
 |entita| {} – složené závorky|2|Kde je tvar {entity-Name}?|
 |optional|[] – hranaté závorky<BR><BR>Existuje limit 3 pro vnořování úrovní jakékoli kombinace Optional and Grouping. |2|Otazník je nepovinný [?].|
@@ -57,8 +57,8 @@ Kombinace **seskupení** s **volitelnou** syntaxí má limit 3 úrovní vnořen�
 
 |Povoleno|Příklad|
 |--|--|
-|Ano|([(Test1 &#x7c; test2)] &#x7c; test3)|
-|Ne|([([test1] &#x7c; test2)] &#x7c; test3)|
+|Yes|([(Test1 &#x7c; test2)] &#x7c; test3)|
+|No|([([test1] &#x7c; test2)] &#x7c; test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Omezení vnořování pro skupiny s syntaxí or-Lo
 
@@ -66,8 +66,8 @@ Kombinace **seskupení** se syntaxí **or-Lo** má omezení 2 svislé pruhy.
 
 |Povoleno|Příklad|
 |--|--|
-|Ano|(Test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
-|Ne|(Test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
+|Yes|(Test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
+|No|(Test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxe pro přidání entity do šablony vzoru
 Chcete-li přidat entitu do šablony vzoru, uzavřete název entity do složených závorek, například `Who does {Employee} manage?` .
@@ -116,7 +116,7 @@ V následujícím projevy jsou subjekt a **osoba** správně extrahovány **a ne
 |Promluva|Entita|Opravit extrakci|
 |--|--|:--:|
 |e-mail o psy z Chrisho|Předmět = psi<br>person = Novák|✔|
-|e-mail o člověku z La Mancha|Předmět = muž<br>person = La Mancha|X|
+|e-mail o člověku z La Mancha|Předmět = muž<br>person = La Mancha|×|
 
 V předchozí tabulce by měl předmět obsahovat `the man from La Mancha` (název knihy), ale vzhledem k tomu, že předmět obsahuje volitelné slovo `from` , název je nesprávně předpovězený.
 

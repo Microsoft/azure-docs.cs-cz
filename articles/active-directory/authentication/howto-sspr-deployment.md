@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b9a8f572189afaa726f7e01f5e0bbb73340face8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657213"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Plánování nasazení samoobslužného resetování hesla Azure Active Directory
@@ -56,7 +56,7 @@ Klíčové výhody povolování SSPR jsou:
 
 * **Robustní auditování a sledování využití**. Organizace může zajistit, aby obchodní systémy zůstaly zabezpečené, zatímco její uživatelé resetují svoje vlastní hesla. Robustní protokoly auditu obsahují informace o každém kroku procesu resetování hesla. Tyto protokoly jsou k dispozici z rozhraní API a umožňují uživateli importovat data do SIEM (incidentu zabezpečení) podle vlastního výběru.
 
-### <a name="licensing"></a>Licencování
+### <a name="licensing"></a>Licensing
 
 Azure Active Directory je licence vázaná na každého uživatele, což znamená, že každý uživatel vyžaduje odpovídající licenci pro funkce, které používají. Pro SSPR doporučujeme licencování na základě skupin. 
 
@@ -83,10 +83,10 @@ Další informace o cenách najdete v tématu [Azure Active Directory ceny](http
 | Online kurzy|[Správa identit v Microsoft Azure Active Directory](https://www.pluralsight.com/courses/microsoft-azure-active-directory-managing-identities) Využijte SSPR a poskytněte uživatelům moderní a chráněné prostředí. Viz téma "[správa Azure Active Directory uživatelů a skupin](https://app.pluralsight.com/library/courses/microsoft-azure-active-directory-managing-identities/table-of-contents)". |
 |Placené kurzy Pluralsight |[Problémy se správou identit a přístupu](https://www.pluralsight.com/courses/identity-access-management-issues) Seznamte se s informacemi o IAM a zabezpečení, které jsou ve vaší organizaci důležité. Viz zejména modul "jiné metody ověřování".|
 | |[Začínáme se sadou Microsoft Enterprise Mobility Suite](https://www.pluralsight.com/courses/microsoft-enterprise-mobility-suite-getting-started) Seznamte se s osvědčenými postupy pro rozšíření místních prostředků do cloudu způsobem, který umožňuje ověřování, autorizaci, šifrování a zabezpečené mobilní prostředí. Viz zejména "modul konfigurace pokročilých funkcí Microsoft Azure Active Directory Premium.
-|Výukové kurzy |[Dokončení zavedení pilotního resetování hesla samoobslužné služby Azure AD](./tutorial-enable-sspr.md) |
+|Kurzy |[Dokončení zavedení pilotního resetování hesla samoobslužné služby Azure AD](./tutorial-enable-sspr.md) |
 | |[Povolení zpětného zápisu hesla](./tutorial-enable-sspr-writeback.md) |
 | |[Resetování hesla Azure AD z přihlašovací obrazovky pro Windows 10](./howto-sspr-windows.md) |
-| Nejčastější dotazy|[Nejčastější dotazy ke správě hesel](./active-directory-passwords-faq.md) |
+| Časté otázky|[Nejčastější dotazy ke správě hesel](./active-directory-passwords-faq.md) |
 
 
 ### <a name="solution-architecture"></a>Architektura řešení
@@ -254,7 +254,7 @@ I když SSPR obvykle nevytváří problémy s uživatelem, je důležité připr
 
 Pokud chcete, aby váš tým podpory byl úspěšný, můžete vytvořit Nejčastější dotazy na základě dotazů, které obdržíte od uživatelů. Tady je pár příkladů:
 
-| Scénáře| Popis |
+| Scénáře| Description |
 | - | - |
 | Uživatel nemá k dispozici žádné registrované metody ověřování.| Uživatel se pokusí resetovat heslo, ale nemá žádnou z metod ověřování, které jsou k dispozici (například: opustil svůj mobilní telefon na domácím a nemůže získat přístup k e-mailu). |
 | Uživatel nepřijímá text nebo volá na svém Office nebo na mobilním telefonu.| Uživatel se snaží ověřit svoji identitu prostřednictvím textu nebo volání, ale nepřijímá text nebo volání. |
@@ -323,7 +323,7 @@ Protokoly auditu pro registraci a resetování hesla jsou k dispozici po dobu 30
 
 [Využití a přehledy](./howto-authentication-methods-usage-insights.md) umožňují pochopit, jak metody ověřování pro funkce, jako je Azure MFA a SSPR, fungují ve vaší organizaci. Tato funkce vytváření sestav poskytuje vaší organizaci prostředky pro pochopení, jaké metody se registrují a jak je používat.
 
-### <a name="troubleshoot"></a>Odstraňování potíží
+### <a name="troubleshoot"></a>Řešení potíží
 
 * Přečtěte si téma [řešení potíží samoobslužného resetování hesla](./active-directory-passwords-troubleshoot.md) . 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: bezproblémové jednotné přihlašování – Nejčastější dotazy | Microsoft Docs'
+title: 'Azure AD Connect: bezproblémové jednoduché dotazy Sign-On-Nejčastější dotazy | Microsoft Docs'
 description: Odpovědi na nejčastější dotazy týkající se Azure Active Directory bezproblémové jednotné přihlašování.
 services: active-directory
 keywords: Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d72b70248e317d1caee4527be38fe304cfe7f16
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658335"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: nejčastější dotazy
 
-V tomto článku se řeší často kladené otázky týkající se Azure Active Directory bezproblémového jednotného přihlašování (bezproblémové jednotné přihlašování). Pokračujte v kontrole nového obsahu.
+V tomto článku se řeší často kladené otázky týkající se Azure Active Directory bezproblémového jednoho Sign-On (bezproblémové jednotné přihlašování). Pokračujte v kontrole nového obsahu.
 
 **Otázka: Jaké metody přihlašování fungují bez problémů jednotného přihlašování**
 
@@ -62,7 +62,7 @@ Pokud chcete, aby se v rámci tichého přihlašování používaly jiné aplika
 
 **Otázka: provádí bezproblémovou podporu jednotného přihlašování `Alternate ID` jako uživatelské jméno místo `userPrincipalName` ?**
 
-Yes. Bezproblémové jednotné přihlašování podporuje `Alternate ID` jako uživatelské jméno, pokud je nakonfigurované v Azure AD Connect, jak je znázorněno [zde](how-to-connect-install-custom.md). Ne všechny Microsoft 365 aplikace podporují `Alternate ID` . Informace o příkazu support najdete v dokumentaci konkrétní aplikace.
+Ano. Bezproblémové jednotné přihlašování podporuje `Alternate ID` jako uživatelské jméno, pokud je nakonfigurované v Azure AD Connect, jak je znázorněno [zde](how-to-connect-install-custom.md). Ne všechny Microsoft 365 aplikace podporují `Alternate ID` . Informace o příkazu support najdete v dokumentaci konkrétní aplikace.
 
 **Otázka: Jaký je rozdíl mezi prostředím jednotného přihlašování, které poskytuje [Azure AD JOIN](../devices/overview.md) a bezproblémové jednotné přihlašování?**
 

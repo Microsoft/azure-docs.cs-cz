@@ -4,10 +4,10 @@ description: Pomocí Azure Backup můžete odesílat data mimo síť pomocí slu
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88890089"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>Pracovní postup offline zálohování pro DPM a Azure Backup Server (předchozí verze)
@@ -48,7 +48,7 @@ Offline zálohování je podporované pro všechny modely nasazení Azure Backup
 >[!NOTE]
 >Předplatné Azure CSP se nepodporuje pro použití s offline osazením pro DPM 2019 RTM a staršími verzemi a MABS V3 RTM a staršími verzemi. Online zálohování prostřednictvím sítě se pořád podporuje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než spustíte pracovní postup offline zálohování, ujistěte se, že jsou splněné následující předpoklady:
 
@@ -58,8 +58,8 @@ Než spustíte pracovní postup offline zálohování, ujistěte se, že jsou sp
 
     | Oblast cloudu svrchovan | Odkaz na soubor nastavení publikování v Azure |
     | --- | --- |
-    | USA | [Odkaz](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
-    | Čína | [Odkaz](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | USA | [Propojit](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | Čína | [Propojit](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
 * V předplatném, ze kterého jste stáhli soubor nastavení publikování, byl vytvořen účet služby Azure Storage s modelem nasazení Správce prostředků. V účtu úložiště vytvořte nový kontejner objektů blob, který se použije jako cíl.
 
@@ -99,7 +99,7 @@ Než spustíte pracovní postup offline zálohování, ujistěte se, že jsou sp
 
 Pomocí těchto kroků ručně Nahrajte certifikát offline zálohování do dříve vytvořené Azure Active Directory aplikace určené pro offline zálohování.
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 1. Přejít na **Azure Active Directory**  >  **Registrace aplikací**.
 1. Na kartě **vlastněné aplikace** vyhledejte aplikaci ve formátu zobrazovaného názvu `AzureOfflineBackup _<Azure User Id` .
 
@@ -115,7 +115,7 @@ Pomocí těchto kroků ručně Nahrajte certifikát offline zálohování do dř
     ![Odeslání certifikátu](./media/offline-backup-dpm-mabs-previous-versions/upload-certificate.png)
 
 1. Na serveru otevřete registr zadáním příkazu **Regedit** v okně Spustit.
-1. Do položky registru otevřete *počítač \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider*.
+1. Přejít na položku registru *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider*.
 1. Klikněte pravým tlačítkem na **CloudBackupProvider**a přidejte novou řetězcovou hodnotu s názvem `AzureADAppCertThumbprint_<Azure User Id>` .
 
     >[!NOTE]

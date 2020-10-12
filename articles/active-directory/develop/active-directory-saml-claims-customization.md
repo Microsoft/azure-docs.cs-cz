@@ -14,10 +14,10 @@ ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89421454"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
@@ -54,7 +54,7 @@ Pokud požadavek SAML neobsahuje element pro NameIDPolicy, bude platforma Micros
 
 V rozevíracím seznamu **zvolit formát identifikátoru názvu** můžete vybrat jednu z následujících možností.
 
-| Formát NameID | Popis |
+| Formát NameID | Description |
 |---------------|-------------|
 | **Výchozí** | Platforma Microsoft Identity Platform bude používat výchozí formát zdroje. |
 | **Trvalý** | Platforma Microsoft Identity Platform bude používat jako formát NameID jako trvalá. |
@@ -62,7 +62,7 @@ V rozevíracím seznamu **zvolit formát identifikátoru názvu** můžete vybra
 | **Unspecified** | Platforma Microsoft Identity bude používat nespecifikovanou jako formát NameID. |
 | **Kvalifikovaný název domény systému Windows** | Platforma Microsoft Identity Platform bude používat WindowsDomainQualifiedName jako formát NameID. |
 
-Dočasná NameID je také podporována, ale v rozevíracím seznamu není k dispozici a nelze ji nakonfigurovat na straně Azure. Další informace o atributu NameIDPolicy najdete v tématu [protokol SAML jednotného přihlašování](single-sign-on-saml-protocol.md).
+Dočasná NameID je také podporována, ale v rozevíracím seznamu není k dispozici a nelze ji nakonfigurovat na straně Azure. Další informace o atributu NameIDPolicy naleznete v tématu [Single Sign-On Protocol SAML](single-sign-on-saml-protocol.md).
 
 ### <a name="attributes"></a>Atributy
 
@@ -98,7 +98,7 @@ Všem deklaracím, které definujete v Azure AD, můžete také přiřadit jakou
 
 Můžete také použít funkce transformace deklarací identity.
 
-| Funkce | Popis |
+| Funkce | Description |
 |----------|-------------|
 | **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com ). |
 | **Join ()** | Připojí k atributu ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například joe_smith@contoso.com jako hodnotu identifikátoru uživatele vyberete e-mail () a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com . |
@@ -125,7 +125,7 @@ Chcete-li použít transformaci na atribut uživatele:
 
 K transformaci deklarací lze použít následující funkce.
 
-| Funkce | Popis |
+| Funkce | Description |
 |----------|-------------|
 | **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com ). |
 | **Join ()** | Vytvoří novou hodnotu spojením dvou atributů. Volitelně můžete použít oddělovač mezi dvěma atributy. Pro transformaci deklarace NameID je spojení omezené na ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například joe_smith@contoso.com jako hodnotu identifikátoru uživatele vyberete e-mail () a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com . |

@@ -12,10 +12,10 @@ ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 8f2e41779e72d565e24b67fd8b18afd87a112e62
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542087"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Partneři pro správu dat ve službě Azure synapse Analytics
@@ -23,7 +23,7 @@ ms.locfileid: "91542087"
 Tento článek popisuje partnerské společnosti Microsoftu s nástroji pro správu dat a řešeními podporujícími Azure synapse.
 
 ## <a name="data-management-partners"></a>Partneři pro správu dat
-| Partner | Popis | Odkaz na web/produkt |
+| Partner | Description | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
 | ![Aginity](./media/sql-data-warehouse-partner-data-management/aginity-logo.png) |**Aginity**<br>Aginity je nástroj pro vývoj analýz, který přináší celou sílu synapse platformy Microsoftu v rukou analytiků a inženýrů. Bohatá a intuitivní prostředí SQL pro vývoj umožňuje členům týmu připojit se k více než desítkovým špičkovým analytickým platformám, ingestovat data v nejrůznějších formátech a rychle sestavovat složitý výpočet, který poskytuje výsledky do Business Intelligence a Machine Learning případy použití. Celá aplikace je postavená kolem centrálního katalogu, který umožňuje spolupráci napříč týmem analýzy a sofistikované možnosti správy a jemně odstupňované zabezpečení, které Breeze zásad správného řízení. |[Stránka produktu](https://www.aginity.com/databases/microsoft/)<br> |
 | ![Alation](./media/sql-data-warehouse-partner-data-management/alation-logo.png) |**Alation**<br>Alation Data Catalog výrazně zlepšuje produktivitu, zvyšuje přesnost a zaznamená si, že pro analytiky zaznamená rozhodování na základě dat. Alation Data Catalog umožňuje všem uživatelům ve vaší organizaci vyhledávat, rozumět a řídit data. |[Stránka produktu](https://www.alation.com/product/data-catalog/)<br> |

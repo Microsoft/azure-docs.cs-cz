@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 7db9ac0eb624c2732295639d65e0311fcf459f71
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934930"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Koncepty vysoké dostupnosti v Azure Database for PostgreSQL – flexibilní Server
@@ -18,7 +18,7 @@ ms.locfileid: "90934930"
 > [!IMPORTANT]
 > Azure Database for PostgreSQL – flexibilní Server je ve verzi Preview.
 
-Azure Database for PostgreSQL – flexibilní Server nabízí konfiguraci vysoké dostupnosti s funkcí automatického převzetí služeb při selhání s využitím nasazení **zóny redundantního** serveru. Když je nasazená v zóně redundantní konfigurace, flexibilní server automaticky zřídí a spravuje pohotovostní repliku v jiné zóně dostupnosti. Pomocí replikace PostgreSQL streaming se data replikují do záložního serveru repliky v **synchronním** režimu. 
+Azure Database for PostgreSQL – flexibilní Server nabízí konfiguraci vysoké dostupnosti s funkcí automatického převzetí služeb při selhání s využitím nasazení **zóny redundantního** serveru. Flexibilní server nasazený v zónově redundantní konfiguraci automaticky zřídí a spravuje pohotovostní repliku v jiné zóně dostupnosti. Pomocí replikace PostgreSQL streaming se data replikují do záložního serveru repliky v **synchronním** režimu. 
 
 Redundantní konfigurace zóny umožňuje automatické možnosti převzetí služeb při selhání s nulovou ztrátou dat během plánovaných událostí, jako je například operace výpočetního rozsahu iniciované uživatelem, a také během neplánovaných událostí, jako jsou základní hardwarové a softwarové chyby, selhání sítě a selhání zóny dostupnosti. 
 
@@ -26,7 +26,7 @@ Redundantní konfigurace zóny umožňuje automatické možnosti převzetí slu�
 
 ## <a name="zone-redundant-high-availability-architecture"></a>Architektura redundantního vysoké dostupnosti zóny
 
-Můžete zvolit oblast a zónu dostupnosti pro nasazení primárního databázového serveru. Pohotovostní server repliky se zřídí v jiné zóně dostupnosti se stejnou konfigurací, jakou má primární server, včetně výpočetní úrovně, výpočetní velikosti, velikosti úložiště a konfigurace sítě. Protokoly transakcí jsou replikovány do pohotovostní repliky pomocí replikace PostgreSQL streaming v synchronním režimu. Automatické zálohování probíhá pravidelně z primárního databázového serveru, zatímco protokoly transakcí jsou nepřetržitě archivovány do úložiště záloh v pohotovostní replice. 
+Můžete si zvolit oblast a zónu dostupnosti pro nasazení primárního databázového serveru. Pohotovostní server repliky se zřídí v jiné zóně dostupnosti se stejnou konfigurací jako primární server, včetně úrovně a velikosti výpočetních prostředků, velikosti úložiště a konfigurace sítě. Protokoly transakcí jsou replikovány do pohotovostní repliky pomocí replikace PostgreSQL streaming v synchronním režimu. Automatické zálohování probíhá pravidelně z primárního databázového serveru, zatímco protokoly transakcí jsou nepřetržitě archivovány do úložiště záloh v pohotovostní replice. 
 
 Stav konfigurace vysoké dostupnosti se nepřetržitě monitoruje a oznamuje na portálu. Níže jsou uvedeny stavy redundantního vysoké dostupnosti zóny:
 
@@ -43,7 +43,7 @@ Stav konfigurace vysoké dostupnosti se nepřetržitě monitoruje a oznamuje na 
 
 Klientské aplikace PostgreSQL jsou připojené k primárnímu serveru pomocí názvu DATABÁZOVÉho serveru. Čtení z aplikace se obsluhují přímo z primárního serveru, zatímco potvrzení a zápis se potvrdí do aplikace až po zachování dat na primárním serveru i v pohotovostní replice. Vzhledem k tomuto dodatečnému požadavku na zpáteční cestách můžou aplikace očekávat zvýšenou latenci pro zápisy a potvrzení. Stav vysoké dostupnosti můžete monitorovat na portálu.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="redundantní vysoká dostupnost zóny – stálý stav"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="redundantní vysoká dostupnost zóny"::: 
 
 1. Klienti se připojují k flexibilnímu serveru a provádějí operace zápisu.
 2. Změny se replikují do pohotovostní lokality.
@@ -64,7 +64,7 @@ Pro jiné operace iniciované uživatelem, jako je například škálování na 
 
 Neplánované výpadky zahrnují chyby softwaru nebo selhání součástí infrastruktury, které mají vliv na dostupnost databáze. V případě, že systém monitorování detekuje nedostupnost serveru, je replikace do pohotovostní repliky závažná a aktivuje se pohotovostní replika jako primární databázový server. Klienti se mohou znovu připojit k databázovému serveru pomocí stejného připojovacího řetězce a obnovit jejich operace. Očekává se, že celková doba převzetí služeb při selhání bude trvat 60 – 120s. V závislosti na aktivitě v primárním databázovém serveru v době převzetí služeb při selhání, jako jsou například velké transakce a doba obnovení, může převzetí služeb při selhání trvat déle.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="redundantní vysoce dostupná zóna – převzetí služeb při selhání"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="redundantní vysoká dostupnost zóny"::: 
 
 1. Primární databázový server je mimo provoz a klienti ztratí připojení k databázi. 
 2. Pohotovostní server je aktivovaný tak, aby se stal novým primárním serverem. Klient se připojí k novému primárnímu serveru pomocí stejného připojovacího řetězce. Klientská aplikace ve stejné zóně jako primární databázový server snižuje latenci a zvyšuje výkon.
@@ -111,7 +111,7 @@ Flexibilní servery, které mají nakonfigurovanou vysokou dostupnost, replikuj�
 
 -   Konfigurace úkolů správy iniciované zákazníky nemůže být naplánována během spravovaného časového období údržby.
 
--   Plánované události, jako je například škálování COMPUTE a škálování úložiště, se nastavují v pohotovostním režimu a pak na primárním serveru. Služba není převzata při selhání. 
+-   K plánovaným událostem, jako jsou škálování výpočetních prostředků nebo škálování úložiště, dochází nejprve na pohotovostním serveru a pak na primárním serveru. Nedojde k převzetí služeb při selhání služby. 
 
 ## <a name="next-steps"></a>Další kroky
 

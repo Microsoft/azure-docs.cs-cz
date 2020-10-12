@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: aahi
 ms.openlocfilehash: 09ea16f07973757b169f21c7c3f909a24651daa4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936727"
 ---
 # <a name="how-to-build-a-metrics-graph-to-analyze-related-metrics"></a>Postupy: sestavení grafu metrik pro analýzu souvisejících metrik
@@ -35,7 +35,7 @@ Dále potřebujete přidat další uzel a zadat relaci ke stávajícím uzlům. 
 
 Klikněte na **Přidat relaci**a budete moct vybrat jinou metriku a mezi těmito dvěma uzly zadat typ vztahu. Můžete použít také konkrétní filtry dimenzí. 
 
-:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Přidání uzlu a vztahu":::
+:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Vybrat metriku":::
 
 Po zopakování výše uvedených kroků budete mít graf metrik popisující vztahy mezi všemi souvisejícími metrikami.
 **Pomocný parametr pro barvy uzlů**
@@ -50,7 +50,7 @@ Když je graf metriky sestavený, kdykoli je u metrik v grafu zjištěna anomál
 
 Klikněte na incident v grafu a posuňte se dolů k **analýze mezi metrikami**pod diagnostické informace.
 
-:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Zobrazit související metriky a anomálie":::
+:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Vybrat metriku":::
 
 ## <a name="next-steps"></a>Další kroky
 

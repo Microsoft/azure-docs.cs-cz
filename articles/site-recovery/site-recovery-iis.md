@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083765"
 ---
-# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Nastavení zotavení po havárii pro webovou aplikaci založenou na službě IIS
+# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Nastavení zotavení po havárii pro vícevrstvou webovou aplikaci založenou na službě IIS
 
 Aplikační software je provozní produktivita v organizaci. Různé webové aplikace mohou v organizaci sloužit k různým účelům. Některé aplikace, jako například aplikace používané pro zpracování mezd, finanční aplikace a weby s přístupem zákazníka, můžou být pro organizaci zásadní. Aby nedošlo ke ztrátě produktivity, je důležité, aby tato aplikace byla neustále v provozu. Důležitější je, že tyto aplikace jsou stále k dispozici, což může zabránit poškození značky nebo image organizace.
 
@@ -26,7 +26,7 @@ Dobré řešení pro zotavení po havárii podporuje plány obnovení modelován
 
 Tento článek popisuje, jak chránit webovou aplikaci, která je založená na Internetová informační služba (IIS) pomocí [Azure Site Recovery](site-recovery-overview.md). Tento článek se zabývá osvědčenými postupy pro replikaci webové aplikace založené na službě IIS do Azure, jak provést postup zotavení po havárii a jak převzít služby při selhání z aplikace do Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že víte, jak provádět následující úlohy:
 
@@ -60,10 +60,10 @@ V příkladech v tomto článku používáme virtuální počítače VMware se s
 
 Scénář | Do sekundární lokality | Do Azure
 --- | --- | ---
-Hyper-V | Ano | Ano
-VMware | Ano | Ano
+Hyper-V | Yes | Yes
+VMware | Yes | Yes
 Fyzický server | No | Yes
-Azure|Není k dispozici|Yes
+Azure|Není k dispozici|Ano
 
 ## <a name="replicate-virtual-machines"></a>Replikace virtuálních počítačů
 
