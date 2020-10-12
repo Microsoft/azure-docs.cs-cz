@@ -15,10 +15,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6a7dcb1d24f3c1ff848e3393687b04d79d28058
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054700"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Převzetí nespravovaného adresáře v roli správce v Azure Active Directory
@@ -140,7 +140,7 @@ rutiny | Využití
    ```powershell
    Get-MsolDomain
    ```
-3. Spuštěním rutiny Get-MsolDomainVerificationDns vytvořte výzvu:
+3. Spusťte rutinu Get-MsolDomainVerificationDns pro vytvoření výzvy:
    ```powershell
    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
    ```
@@ -154,7 +154,7 @@ rutiny | Využití
    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
 5. Ve svém veřejném oboru názvů DNS vytvořte záznam TXT DNS, který obsahuje hodnotu, kterou jste zkopírovali v předchozím kroku. Název tohoto záznamu je název nadřazené domény, takže pokud vytvoříte tento záznam o prostředku pomocí role DNS z Windows serveru, ponechte název záznamu prázdný a vložte hodnotu do textového pole.
-6. Spusťte rutinu Confirm-MsolDomain k ověření výzvy:
+6. Spusťte rutinu Confirm-MsolDomain pro ověření výzvy:
   
    ```powershell
    Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
 ms.openlocfilehash: 225252f2cd47c36de2c7eed4ed1e5dae3ebd81b2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87078757"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Upgradovat interní Load Balancer Azure – vyžaduje se odchozí připojení
@@ -42,7 +42,7 @@ K dispozici je skript Azure PowerShell, který provede následující akce:
 
 ## <a name="download-the-script"></a>Stáhnout skript
 
-Stáhněte si skript migrace z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureLBUpgrade/2.0).
+Stáhněte si skript migrace z  [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureLBUpgrade/2.0).
 ## <a name="use-the-script"></a>Použití skriptu
 
 V závislosti na nastaveních a preferencích místního prostředí PowerShellu jsou k dispozici dvě možnosti:
@@ -52,7 +52,7 @@ V závislosti na nastaveních a preferencích místního prostředí PowerShellu
 
 Pokud chcete zjistit, jestli máte nainstalované moduly Azure AZ, spusťte `Get-InstalledModule -Name az` . Pokud nevidíte žádné nainstalované moduly AZ, můžete použít `Install-Script` metodu.
 
-### <a name="install-using-the-install-script-method"></a>Instalace pomocí metody install-Script
+### <a name="install-using-the-install-script-method"></a>Instalace pomocí metody Install-Script
 
 Pokud chcete použít tuto možnost, musíte mít v počítači nainstalované moduly AZ pro Azure. Pokud jsou nainstalovány, následující příkaz zobrazí chybu. Můžete buď odinstalovat moduly AZ pro Azure, nebo použít jinou možnost ke stažení skriptu ručně a jeho spuštění.
   
@@ -124,7 +124,7 @@ Pokud byste chtěli upustit od připojení k virtuálním počítačům z Intern
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Existují nějaká omezení Azure PowerShell skriptu pro migraci konfigurace z V1 na v2?
 
-Yes. Podívejte se na [Upozornění a omezení](#caveatslimitations).
+Ano. Podívejte se na [Upozornění a omezení](#caveatslimitations).
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Přepíná Azure PowerShell skript také přenos z mé základní Load Balancer na nově vytvořenou Standard Load Balancer?
 

@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak odeslat událost do vlastního tématu
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 197d8eb1963300bc6576e664c7c3fd470cf70bb2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86108239"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Příspěvek do vlastního tématu pro Azure Event Grid
@@ -98,9 +98,9 @@ Po odeslání do koncového bodu tématu obdržíte odpověď. Odpověď je stan
 
 |Výsledek  |Odpověď  |
 |---------|---------|
-|Úspěch  | 200 OK  |
-|Data události mají nesprávný formát. | 400 Chybný požadavek |
-|Neplatný přístupový klíč | 401 Neautorizováno |
+|Success  | 200 OK  |
+|Data události mají nesprávný formát. | 400 – Chybný požadavek |
+|Neplatný přístupový klíč | 401 – Neautorizováno |
 |Nesprávný koncový bod | 404 Nenalezeno |
 |Pole nebo událost překračuje omezení velikosti. | datová část 413 je moc velká. |
 

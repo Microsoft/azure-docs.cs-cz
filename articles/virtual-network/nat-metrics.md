@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
 ms.openlocfilehash: e3c47a60a6cda074eba7b5c3292577c29f50c2ab
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87424047"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Metriky služby Azure Virtual Network NAT
@@ -38,11 +38,11 @@ Prostředky brány NAT poskytují v Azure Monitor následující multidimenzion�
 
 | Metrika | Popis | Doporučená agregace | Dimenze |
 |---|---|---|---|
-| Bajty | Příchozí a odchozí bajty zpracované | Sčítání | Směr (v; Out), protokol (6 TCP; 17 UDP) |
-| Rámců | Příchozí a odchozí pakety zpracované | Sčítání | Směr (v; Out), protokol (6 TCP; 17 UDP) |
-| Vyřazené pakety | Pakety vyřazené bránou NAT | Sčítání | / |
-| Počet připojení SNAT | Přechody stavu za interval | Sčítání | Stav připojení, protokol (6 TCP; 17 UDP) |
-| Celkový počet připojení SNAT | Aktuální aktivní připojení SNAT (počet používaných portů: ~ SNAT) | Sčítání | Protokol (6 TCP; 17 UDP) |
+| Bajty | Příchozí a odchozí bajty zpracované | Sum | Směr (v; Out), protokol (6 TCP; 17 UDP) |
+| Rámců | Příchozí a odchozí pakety zpracované | Sum | Směr (v; Out), protokol (6 TCP; 17 UDP) |
+| Vyřazené pakety | Pakety vyřazené bránou NAT | Sum | / |
+| Počet připojení SNAT | Přechody stavu za interval | Sum | Stav připojení, protokol (6 TCP; 17 UDP) |
+| Celkový počet připojení SNAT | Aktuální aktivní připojení SNAT (počet používaných portů: ~ SNAT) | Sum | Protokol (6 TCP; 17 UDP) |
 
 
 ## <a name="alerts"></a>Výstrahy

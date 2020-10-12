@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89146619"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Plánování nasazení Azure Active Directory moje aplikace
@@ -72,7 +72,7 @@ Před zahájením tohoto projektu dokončete následující předpoklady:
 
 Následující tabulka popisuje klíčové případy použití pro nasazení moje aplikace:
 
-| Oblast| Popis |
+| Oblast| Description |
 | - | - |
 | Access| Portál moje aplikace je přístupný z firemních i osobních zařízení v podnikové síti. |
 |Access | Portál moje aplikace je přístupný z firemních zařízení mimo podnikovou síť. |
@@ -97,7 +97,7 @@ Funkce mých aplikací se dá povolit postupně. Doporučujeme následující po
 1. Moje aplikace
    * Spouštěč aplikace
    * Samoobslužná správa aplikací
-   * Integrace Microsoft 365
+   * Integrace Microsoftu 365
 
 1. Samoobslužné zjišťování aplikací
    * Samoobslužné resetování hesla
@@ -122,11 +122,11 @@ Následující tabulka uvádí několik důležitých konfigurací aplikace a ob
 | Určení pilotních skupin| Identifikujte skupinu zabezpečení Azure AD, která se má použít, a ujistěte se, že všichni pilotní členové jsou součástí skupiny. |
 | Určete skupinu nebo skupiny, které mají být povoleny v produkčním prostředí.| Identifikujte skupiny zabezpečení Azure AD nebo skupiny služby Active Directory synchronizované se službou Azure AD, které se mají použít. Zajistěte, aby všichni pilotní členové byli součástí skupiny. |
 | Umožňuje uživatelům používat jednotné přihlašování pro určité typy aplikací.| Federované jednotné přihlašování, OAuth, heslo jednotného přihlašování, App proxy |
-| Povolení uživatelům používat Samoobslužné resetování hesla | Ano |
-| Dovolit uživatelům používat Multi-Factor Authentication| Ano |
+| Povolení uživatelům používat Samoobslužné resetování hesla | Yes |
+| Dovolit uživatelům používat Multi-Factor Authentication| Yes |
 | Umožňuje uživatelům používat samoobslužnou správu skupin pro určité typy skupin.| Skupiny zabezpečení, Microsoft 365 skupiny |
-| Umožňuje uživatelům používat samoobslužnou správu aplikací.| Ano |
-| Umožňuje uživatelům používat kontroly přístupu.| Ano |
+| Umožňuje uživatelům používat samoobslužnou správu aplikací.| Yes |
+| Umožňuje uživatelům používat kontroly přístupu.| Yes |
 
 ### <a name="plan-consent-strategy"></a>Strategie souhlasu s plánem
 
@@ -172,7 +172,7 @@ Další informace o tom, jak nasadit a nakonfigurovat aplikace SaaS, najdete v [
 
 Když se uživatelé přihlásí k aplikacím jednotného přihlašování na základě hesla, musí nainstalovat a použít rozšíření pro zabezpečené přihlašování k aplikacím. Toto rozšíření spustí skript, který přenáší heslo do formuláře pro přihlášení k aplikaci. Uživatelům se zobrazí výzva k instalaci rozšíření při prvním spuštění aplikace jednotného přihlašování založeného na heslech. Další informace o rozšíření najdete v této dokumentaci o [instalaci rozšíření prohlížeče moje aplikace](access-panel-extension-problem-installing.md).
 
-Pokud potřebujete integrovat aplikace jednotného přihlašování založené na heslech, měli byste definovat mechanismus nasazení rozšíření ve velkém měřítku s [podporovanými prohlížeči](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Vaše možnosti jsou:
+Pokud potřebujete integrovat aplikace jednotného přihlašování založené na heslech, měli byste definovat mechanismus nasazení rozšíření ve velkém měřítku s [podporovanými prohlížeči](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Mezi možnosti patří:
 
 * [Zásady skupiny pro Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 * [Configuration Manager pro Internet Explorer](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)

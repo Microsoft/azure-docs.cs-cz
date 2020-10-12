@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: afac8273b5729bcf5470be471145214426dc7dab
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055295"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Konfigurace aplikace PHP pro Azure App Service
@@ -203,7 +203,7 @@ fi
 Pokud nasadíte aplikaci s použitím balíčků Git nebo zip se zapnutou možností automatizace sestavení, App Service sestavování kroků automatizace pomocí následujícího postupu:
 
 1. Spusťte vlastní skript, pokud je určen `PRE_BUILD_SCRIPT_PATH` .
-1. Spusťte `php composer.phar install`.
+1. Spusťte příkaz `php composer.phar install`.
 1. Spusťte vlastní skript, pokud je určen `POST_BUILD_SCRIPT_PATH` .
 
 `PRE_BUILD_COMMAND` a `POST_BUILD_COMMAND` jsou proměnné prostředí, které jsou ve výchozím nastavení prázdné. Chcete-li spustit příkazy před sestavením, definujte `PRE_BUILD_COMMAND` . Chcete-li spustit příkazy po sestavení, definujte `POST_BUILD_COMMAND` .
@@ -231,7 +231,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>Přístup k proměnným prostředí
 
-V App Service můžete [nastavit nastavení aplikace](configure-common.md#configure-app-settings) mimo kód vaší aplikace. Pak k nim můžete přistupovat pomocí standardního vzoru [getenv ()](https://secure.php.net/manual/function.getenv.php) . Chcete-li například získat přístup k nastavení aplikace s názvem `DB_HOST` , použijte následující kód:
+V App Service můžete [nastavit nastavení aplikace](configure-common.md#configure-app-settings) mimo kód vaší aplikace. Pak k nim můžete přistupovat pomocí standardního vzoru [getenv ()](https://secure.php.net/manual/function.getenv.php) . Například pro přístup k aplikačnímu nastavení s názvem `DB_HOST` použijete následující kód:
 
 ```php
 getenv("DB_HOST")
@@ -489,7 +489,7 @@ Pokud se funkční aplikace v PHP chová odlišně v App Service nebo obsahuje c
 ::: zone pivot="platform-linux"
 
 > [!div class="nextstepaction"]
-> [Nejčastější dotazy k App Service Linux](faq-app-service-linux.md)
+> [Nejčastější dotazy k App Service v Linuxu](faq-app-service-linux.md)
 
 ::: zone-end
 

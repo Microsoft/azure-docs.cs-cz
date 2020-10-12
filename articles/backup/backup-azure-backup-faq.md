@@ -4,10 +4,10 @@ description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure 
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.openlocfilehash: 26d833dfea214c5f29b77c2ac34a5f8863c7fbc0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986426"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Nejčastější dotazy
@@ -43,7 +43,7 @@ Ano. Informace o přesunu trezoru služby Recovery Services najdete v tomto [čl
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>Dají se zálohovaná data přesunout do jiného trezoru?
 
-No. Zálohovaná data uložená v trezoru se nedají přesunout do jiného trezoru.
+Ne. Zálohovaná data uložená v trezoru se nedají přesunout do jiného trezoru.
 
 ### <a name="can-i-change-the-storage-redundancy-setting-after-a-backup"></a>Můžu po zálohování změnit nastavení redundance úložiště?
 
@@ -139,7 +139,7 @@ Ne, Azure Backup nepodporuje odstraňování nebo mazání jednotlivých polože
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>Když zruším úlohu zálohování poté, co už se spustila, dojde k odstranění přenášených dat?
 
-No. Všechna data přenášená do trezoru před zrušením úlohy zálohování zůstanou v trezoru.
+Ne. Všechna data přenášená do trezoru před zrušením úlohy zálohování zůstanou v trezoru.
 
 - Azure Backup používá mechanismus kontrolních bodů k příležitostnému přidávání kontrolních bodů do zálohovaných dat během zálohování.
 - Díky kontrolním bodům v zálohovaných datech je možné při dalším procesu zálohování ověřit integritu souborů.
@@ -159,13 +159,13 @@ Ano, zásady můžete přizpůsobovat. Můžete například nakonfigurovat poža
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>Dají se pro plánování zálohování a zásady uchovávání používat jiné časy?
 
-No. Zásady uchovávání informací lze aplikovat pouze na body záloh. Tento obrázek například ukazuje zásady uchovávání informací pro zálohy vytvořené ve 12:00 a 18:00.
+Ne. Zásady uchovávání informací lze aplikovat pouze na body záloh. Tento obrázek například ukazuje zásady uchovávání informací pro zálohy vytvořené ve 12:00 a 18:00.
 
 ![Plánování zálohování a uchovávání](./media/backup-azure-backup-faq/Schedule.png)
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point"></a>Pokud se záloha uchovává po dlouhou dobu, trvá pak obnovení staršího datového bodu déle?
 
-No. Obnovení nejstaršího i nejnovějšího bodu trvá stejně dlouho. Každý bod obnovení se chová jako úplný bod.
+Ne. Obnovení nejstaršího i nejnovějšího bodu trvá stejně dlouho. Každý bod obnovení se chová jako úplný bod.
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>Jestliže se každý bod obnovení chová jako úplný bod, ovlivní to celkové fakturovatelné úložiště zálohování?
 
@@ -188,7 +188,7 @@ Neexistuje žádné omezení počtu obnov z Azure Backup.
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>Platí se za výchozí přenos z Azure při obnovování dat?
 
-No. Obnovení je zdarma a výchozí přenos se vám neúčtuje.
+Ne. Obnovení je zdarma a výchozí přenos se vám neúčtuje.
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>Co se stane, když změním zásady zálohování?
 

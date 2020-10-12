@@ -7,15 +7,15 @@ ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002399"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontejnery profilů FSLogix a soubory Azure
 
-Služba Virtual Desktop systému Windows doporučuje kontejnery profilů FSLogix jako řešení uživatelského profilu. Řešení FSLogix je určené k přesouvání profilů ve vzdálených výpočetních prostředích, jako je Windows Virtual Desktop. Kompletní profily uživatelů ukládá do jednotlivých kontejnerů. Při přihlášení se tento kontejner dynamicky připojí k výpočetnímu prostředí pomocí nativně podporovaného virtuálního pevného disku (VHD) a virtuálního pevného disku Hyper-V (VHDX). Profil uživatele je hned dostupný a zobrazí se v systému přesně jako nativní profil uživatele. Tento článek popisuje, jak se ve virtuálním počítači s Windows používají kontejnery profilu FSLogix se soubory Azure.
+Služba Virtual Desktop systému Windows doporučuje kontejnery profilů FSLogix jako řešení uživatelského profilu. Řešení FSLogix je určené k přesouvání profilů ve vzdálených výpočetních prostředích, jako je Windows Virtual Desktop. Kompletní profily uživatelů ukládá do jednotlivých kontejnerů. Při přihlášení se tento kontejner dynamicky připojí k výpočetnímu prostředí pomocí nativně podporovaného virtuálního pevného disku (VHD) a virtuálního pevného disku Hyper-V (VHDX). Profil uživatele je hned k dispozici a objeví se v systému úplně stejně jako nativní profil uživatele. Tento článek popisuje, jak se ve virtuálním počítači s Windows používají kontejnery profilu FSLogix se soubory Azure.
 
 >[!NOTE]
 >Pokud hledáte srovnávací materiál o různých možnostech úložiště kontejneru FSLogix v Azure, přečtěte si téma [Možnosti úložiště pro kontejnery profilů FSLogix](store-fslogix-profile.md).
@@ -47,11 +47,11 @@ V následující tabulce jsou uvedeny výhody a omezení pro předchozí technol
 
 | Technologie | Moderní nastavení | Nastavení Win32 | Nastavení operačního systému | Uživatelská data | Podporováno na SKU serveru | Back-endové úložiště v Azure | Back-endové úložiště v místním prostředí | Podpora verzí | Další čas přihlášení |Poznámky|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Disky uživatelských profilů (UPD)** | Ano | Ano | Ano | Ano | Ano | Ne | Ano | Win 7 + | Ano | |
-| **Cestovní profil uživatele (RUP), režim údržby** | Ne | Ano | Ano | Ano | Ano| Ne | Ano | Win 7 + | Ne | |
-| **Enterprise State Roaming (ESR)** | Ano | Ne | Ano | Ne | Zobrazit poznámky | Ano | Ne | Win 10 | Ne | Funkce na SKU serveru, ale žádné podpůrné uživatelské rozhraní |
-| **Virtualizace uživatelského prostředí (UE-V)** | Ano | Ano | Ano | Ne | Ano | Ne | Ano | Win 7 + | Ne |  |
-| **Cloudové soubory OneDrive** | Ne | Ne | Ne | Ano | Zobrazit poznámky | Zobrazit poznámky  | Zobrazit poznámky | Win 10 RS3 | Ne | Není testováno na SKU serveru. Back-endové úložiště v Azure závisí na synchronizaci klienta. Back-endové úložiště on-Prem potřebuje synchronizačního klienta. |
+| **Disky uživatelských profilů (UPD)** | Yes | Yes | Yes | Yes | Yes | No | Yes | Win 7 + | Yes | |
+| **Cestovní profil uživatele (RUP), režim údržby** | No | Yes | Yes | Yes | Yes| No | Yes | Win 7 + | No | |
+| **Enterprise State Roaming (ESR)** | Yes | No | Yes | No | Zobrazit poznámky | Yes | No | Win 10 | No | Funkce na SKU serveru, ale žádné podpůrné uživatelské rozhraní |
+| **Virtualizace uživatelského prostředí (UE-V)** | Yes | Yes | Yes | No | Yes | No | Yes | Win 7 + | No |  |
+| **Cloudové soubory OneDrive** | No | No | No | Yes | Zobrazit poznámky | Zobrazit poznámky  | Zobrazit poznámky | Win 10 RS3 | No | Není testováno na SKU serveru. Back-endové úložiště v Azure závisí na synchronizaci klienta. Back-endové úložiště on-Prem potřebuje synchronizačního klienta. |
 
 #### <a name="performance"></a>Výkon
 

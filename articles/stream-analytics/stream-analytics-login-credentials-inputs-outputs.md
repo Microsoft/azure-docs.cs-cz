@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 3154447e4df64b9b335beae99cfd208d1a21efc4
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86044409"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Otočit přihlašovací údaje pro vstupy a výstupy Stream Analytics úlohy
@@ -47,7 +47,7 @@ V této části Vás provedeme procesem opětovného generování přihlašovac�
 7. Test připojení se automaticky spustí při uložení změn, ujistěte se, že úspěšně proběhl.    
 8. Přejděte ke [spuštění úlohy z části čas posledního zastavení](#start-your-job-from-the-last-stopped-time) .
 
-### <a name="sql-database"></a>Databáze SQL
+### <a name="sql-database"></a>SQL Database
 
 Abyste mohli aktualizovat přihlašovací údaje stávajícího uživatele, musíte se připojit k SQL Database. Přihlašovací údaje můžete aktualizovat pomocí Azure Portal nebo nástroje na straně klienta, jako je například SQL Server Management Studio. Tato část demonstruje proces aktualizace přihlašovacích údajů pomocí Azure Portal.
 

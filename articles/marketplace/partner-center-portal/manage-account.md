@@ -8,10 +8,10 @@ author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
 ms.openlocfilehash: a2d2c4d29a6af073e3e4e6a74c257cb864b8a78c
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400685"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Správa účtu komerčního tržiště v partnerském centru
@@ -113,7 +113,7 @@ Jakmile nastavíte stav blokování výběr na **zapnuto**, budou všechny výb�
 
 ### <a name="devices"></a>Zařízení
 
-Nastavení správy zařízení se vztahuje pouze na publikování UWP. [Přečtěte si další informace](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info).
+Nastavení správy zařízení se vztahuje pouze na publikování UWP. [Další informace](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info).
 
 ### <a name="tracking-guids"></a>Identifikátory GUID sledování
 
@@ -265,7 +265,7 @@ Pokud chcete partnerskému centru udělit přístup k novému účtu aplikace sl
 
 1. Na stránce **Uživatelé** (v části **Nastavení účtu**) vyberte **Přidat aplikace Azure AD**.
 2. Na další stránce vyberte **Nová aplikace Azure AD**.
-3. Zadejte **adresu URL odpovědi** pro novou aplikaci Azure AD. Toto je adresa URL, kde se uživatelé můžou přihlásit a používat vaši aplikaci Azure AD (někdy taky označovanou jako adresa URL aplikace nebo adresa URL pro přihlášení). **Adresa URL odpovědi** nemůže být delší než 256 znaků a musí být v rámci vašeho adresáře jedinečná.
+3. Zadejte **adresu URL odpovědi** pro novou aplikaci Azure AD. Toto je adresa URL, kde se uživatelé můžou přihlásit a používat vaši aplikaci Azure AD (někdy taky označovanou jako adresa URL aplikace nebo adresa Sign-On URL). **Adresa URL odpovědi** nemůže být delší než 256 znaků a musí být v rámci vašeho adresáře jedinečná.
 4. Zadejte **identifikátor URI ID aplikace** pro novou aplikaci Azure AD. Toto je logický identifikátor aplikace Azure AD, který se zobrazí při odeslání žádosti o jednotné přihlašování do Azure AD. **Identifikátor URI ID aplikace** musí být pro každou aplikaci Azure AD ve vašem adresáři jedinečný. Toto ID nemůže být delší než 256 znaků. Další informace o identifikátoru URI ID aplikace najdete v tématu [integrování aplikací pomocí Azure Active Directory](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts)).
 5. V části **role** určete role nebo přizpůsobená oprávnění pro aplikaci Azure AD.
 6. Vyberte **Uložit**.

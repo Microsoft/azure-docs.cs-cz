@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 09/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: 314012467da532002529a3f561b192876602b46e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335428"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
@@ -164,7 +164,7 @@ Další informace o aktualizacích sad Management Pack najdete v tématu [připo
 
 Následující tabulka popisuje připojené zdroje, které Update Management podporuje:
 
-| Připojený zdroj | Podporováno | Popis |
+| Připojený zdroj | Podporováno | Description |
 | --- | --- | --- |
 | Agenti systému Windows |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a potom spustí instalaci požadovaných aktualizací. |
 | Agenti systému Linux |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů Linux a potom spustí instalaci požadovaných aktualizací v podporovaných distribucích. |
@@ -213,7 +213,7 @@ Následující tabulka definuje klasifikace, které Update Management podporuje 
 |Balíčky funkcí     | Nové funkce produktu distribuované mimo vydání produktu.        |
 |Aktualizace Service Pack     | Kumulativní sada oprav hotfix, které se aplikují na aplikaci.        |
 |Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
-|nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
+|Nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
 |Aktualizace     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
 
 Následující tabulka definuje podporované klasifikace aktualizací pro Linux.

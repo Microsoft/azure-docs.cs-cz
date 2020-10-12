@@ -16,10 +16,10 @@ ms.date: 09/14/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ee28addd5f6ac0faaf03d29d712c4e750ed6e293
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89177478"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Přiřazení spravované identity k prostředku pomocí Azure Portal
@@ -28,7 +28,7 @@ ms.locfileid: "89177478"
 
 Po nakonfigurování prostředku Azure pomocí spravované identity můžete spravované identitě udělit přístup k jinému prostředku, stejně jako jakýkoli objekt zabezpečení. V tomto článku se dozvíte, jak udělit přístup ke spravovaným identitám virtuálního počítače Azure nebo ke službě Azure Storage ve službě Virtual Machine Scale pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.

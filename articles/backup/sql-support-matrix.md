@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
 ms.openlocfilehash: 41511abaa071bd0f64ee699c52486b71ec036a68
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87926446"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Matice podpory pro zálohování SQL Server ve virtuálních počítačích Azure
@@ -65,7 +65,7 @@ V závislosti na předvolbách zálohování a typech zálohování (úplné/roz
 Do bloku | Primární
 Diferenciál | Primární
 Protokol |  Primární
-Pouze kopírování je úplné |  Primární
+Copy-Only úplné |  Primární
 
 #### <a name="backup-preference-secondary-only"></a>Předvolby zálohování: jenom sekundární
 
@@ -74,7 +74,7 @@ Pouze kopírování je úplné |  Primární
 Do bloku | Primární
 Diferenciál | Primární
 Protokol |  Sekundární
-Pouze kopírování je úplné |  Sekundární
+Copy-Only úplné |  Sekundární
 
 #### <a name="backup-preference-secondary"></a>Předvolby zálohování: sekundární
 
@@ -83,7 +83,7 @@ Pouze kopírování je úplné |  Sekundární
 Do bloku | Primární
 Diferenciál | Primární
 Protokol |  Sekundární
-Pouze kopírování je úplné |  Sekundární
+Copy-Only úplné |  Sekundární
 
 #### <a name="no-backup-preference"></a>Žádná předvolba zálohování
 
@@ -92,7 +92,7 @@ Pouze kopírování je úplné |  Sekundární
 Do bloku | Primární
 Diferenciál | Primární
 Protokol |  Sekundární
-Pouze kopírování je úplné |  Sekundární
+Copy-Only úplné |  Sekundární
 
 ## <a name="next-steps"></a>Další kroky
 

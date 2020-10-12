@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: lahugh
 ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335598"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Přístup k prostředkům Kubernetes z Azure Portal (Preview)
@@ -48,19 +48,19 @@ V tomto příkladu použijeme náš vzorový cluster AKS k nasazení hlasovací 
 
 Po přidání souboru YAML zobrazí prohlížeč prostředků obě služby Kubernetes, které byly vytvořeny: interní služba (Azure-hlasování) a externí službu (Azure-hlasování-přední) pro přístup k aplikaci hlasování Azure. Externí služba obsahuje propojenou externí IP adresu, abyste ji mohli snadno zobrazit v prohlížeči.
 
-:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Informace o hlasovacích aplikacích Azure zobrazené v Azure Portal." lightbox="media/kubernetes-portal/portal-services.png":::
+:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Kubernetes pod informace zobrazené v Azure Portal." lightbox="media/kubernetes-portal/portal-services.png":::
 
 ### <a name="monitor-deployment-insights"></a>Monitorovat přehledy nasazení
 
 AKS clustery s podporou [Azure monitor pro kontejnery][enable-monitor] můžou rychle zobrazit přehledy o nasazení. V zobrazení prostředků Kubernetes můžou uživatelé zobrazit stav živého provozu jednotlivých nasazení, včetně využití CPU a paměti, a také přejít na Azure monitor, kde najdete podrobnější informace. Tady je příklad přehledů nasazení z ukázkového clusteru AKS:
 
-:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="V Azure Portal se zobrazují přehledy nasazení." lightbox="media/kubernetes-portal/deployment-insights.png":::
+:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Kubernetes pod informace zobrazené v Azure Portal." lightbox="media/kubernetes-portal/deployment-insights.png":::
 
 ## <a name="edit-yaml"></a>Upravit YAML
 
 Zobrazení prostředků Kubernetes zahrnuje také Editor YAML. Integrovaný editor YAML znamená, že můžete aktualizovat nebo vytvářet služby a nasazení z portálu a okamžitě použít změny.
 
-:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Editor YAML pro službu Kubernetes zobrazenou v Azure Portal.":::
+:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Kubernetes pod informace zobrazené v Azure Portal.":::
 
 Po úpravě YAML se změny aplikují tak, že vyberete **zkontrolovat + Uložit**, potvrďte změny a pak znovu uložíte.
 
@@ -82,7 +82,7 @@ Chcete-li získat přístup k prostředkům Kubernetes, musíte mít přístup k
 
 Pro existující clustery možná budete muset povolit zobrazení prostředků Kubernetes. Pokud chcete povolit zobrazení prostředků, postupujte podle výzev na portálu pro váš cluster.
 
-:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure Portalovou zprávu pro povolení zobrazení prostředků Kubernetes." lightbox="media/kubernetes-portal/enable-resource-view.png":::
+:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Kubernetes pod informace zobrazené v Azure Portal." lightbox="media/kubernetes-portal/enable-resource-view.png":::
 
 > [!TIP]
 > Funkci AKS pro [**rozsahy IP adres autorizovaných serverem API**](api-server-authorized-ip-ranges.md) lze přidat k omezení přístupu serveru rozhraní API pouze k veřejnému koncovému bodu brány firewall. Další možností pro tyto clustery je aktualizace `--api-server-authorized-ip-ranges` , aby zahrnovaly přístup k místnímu klientskému počítači nebo rozsahu IP adres (ze kterého se právě prohlíží portál). K povolení tohoto přístupu potřebujete veřejnou IPv4 adresu tohoto počítače. Tuto adresu můžete najít pomocí příkazu níže nebo v internetovém prohlížeči pomocí hledání "Co je moje IP adresa".

@@ -9,10 +9,10 @@ description: Naučte se používat Azure Dev Spaces a služby Azure Kubernetes k
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 4e47d4b05dedb981d55c527f76ae1c3a120f23d0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86232419"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Provozní kontinuita a zotavení po havárii v Azure Dev Spaces

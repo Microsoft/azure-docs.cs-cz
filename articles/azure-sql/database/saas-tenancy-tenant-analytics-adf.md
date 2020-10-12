@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 1e395e4e73f6c140d81189f1abbccca8c064f757
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91616648"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Prozkoumejte SaaS Analytics pomocí Azure SQL Database, Azure synapse Analytics, Data Factory a Power BI
@@ -214,7 +214,7 @@ Pomocí následujících kroků se připojte k Power BI a importujte zobrazení,
 
 6. V podokně **navigátor** v části analytická databáze vyberte tabulky schématu hvězdiček: **fact_Tickets**, **dim_Events**, **dim_Venues**, **dim_Customers** a **dim_Dates**. Pak vyberte **načíst**.
 
-Blahopřejeme! Data byla úspěšně načtena do Power BI. Teď Prozkoumejte zajímavé vizualizace, abyste získali přehled o vašich klientech. Podívejme se, jak Analytics může poskytnout některá doporučení řízená daty do obchodního týmu Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
+Gratulujeme! Data byla úspěšně načtena do Power BI. Teď Prozkoumejte zajímavé vizualizace, abyste získali přehled o vašich klientech. Podívejme se, jak Analytics může poskytnout některá doporučení řízená daty do obchodního týmu Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
 
 Začněte analýzou dat o prodeji lístků, abyste viděli variaci využití v rámci míst. Vyberte možnosti zobrazené v Power BI k vykreslení pruhového grafu celkového počtu lístků prodávaných každým jejich konáním. (Kvůli náhodné variaci generátoru lístků se vaše výsledky můžou lišit.)
 
@@ -272,8 +272,8 @@ V tomto kurzu jste se naučili:
 > - Dotazování analytického datového skladu.
 > - Pomocí Power BI pro vizualizaci dat zvýrazněte trendy v datech tenanta a udělejte doporučení na vylepšení.
 
-Blahopřejeme!
+Gratulujeme!
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - Další [kurzy, které se vytvářejí na aplikaci Wingtip SaaS](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

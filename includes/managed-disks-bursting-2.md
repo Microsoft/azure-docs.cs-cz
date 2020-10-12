@@ -9,15 +9,15 @@ ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
 ms.openlocfilehash: cc0dd5e76227c0814659b74afc2ac46c8ca4de73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87102555"
 ---
-## <a name="common-scenarios"></a>Obvyklé scénáře
+## <a name="common-scenarios"></a>Typické scénáře
 Při navýšení zátěže můžou významně těžit z následujících scénářů:
-- **Zlepšení časů spuštění** – s využitím shlukování se vaše instance spustí výrazně rychleji. Například výchozí disk s operačním systémem pro virtuální počítače s podporou Premium je disk P4, což je zřízený výkon až 120 vstupně-výstupních operací a 25 MB/s. V případě shlukování může P4 přejít až na 3500 IOPS a 170 MB/s, což umožňuje čas spuštění zrychlit 6X.
+- **Zlepšení časů spuštění**  – s využitím shlukování se vaše instance spustí výrazně rychleji. Například výchozí disk s operačním systémem pro virtuální počítače s podporou Premium je disk P4, což je zřízený výkon až 120 vstupně-výstupních operací a 25 MB/s. V případě shlukování může P4 přejít až na 3500 IOPS a 170 MB/s, což umožňuje čas spuštění zrychlit 6X.
 - **Zpracování úloh služby Batch** – některé úlohy aplikace jsou cyklické v podstatě a vyžadují pro většinu času základní výkon a vyžadují pro krátkou dobu vyšší výkon. Příkladem je účetní program, který zpracovává transakce denně, které vyžadují malé množství provozu na disku. Pak na konci měsíce slučuje sestavy, které potřebují mnohem větší objem provozu na disku.
 - **Připravenost na špičky provozu** – webové servery a jejich aplikace mohou kdykoli docházet k nárůstu provozu. Pokud je váš webový server zálohovaný virtuálními počítači nebo disky pomocí shlukování, servery jsou lépe vybavené pro zpracování špičky provozu. 
 

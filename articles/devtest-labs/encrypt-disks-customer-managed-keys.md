@@ -4,10 +4,10 @@ description: Naučte se šifrovat disky operačního systému (OS) pomocí klí�
 ms.topic: article
 ms.date: 09/01/2020
 ms.openlocfilehash: 257894c6318c9ca083c72daf3c888f7d509ae683
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89489808"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Šifrování disků operačního systému (OS) pomocí klíčů spravovaných zákazníkem v Azure DevTest Labs
@@ -39,14 +39,14 @@ V následující části se dozvíte, jak může vlastník testovacího prostře
     1. Na stránce **sada šifrování disku** vyberte v nabídce vlevo možnost **řízení přístupu (IAM)** . 
     1. Na panelu nástrojů vyberte **+ Přidat** a vyberte **Přidat přiřazení role**.  
 
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/add-role-management-menu.png" alt-text="Přidat správu rolí – nabídka":::
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/add-role-management-menu.png" alt-text="Spravované klíče":::
     1. Na stránce **Přidat přiřazení role** vyberte roli **Čtenář** nebo roli, která umožňuje další přístup. 
     1. Zadejte název testovacího prostředí, pro který se použije sada pro šifrování disků, a v rozevíracím seznamu vyberte název testovacího prostředí (identitu přiřazenou systémem pro testovací prostředí). 
     
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/select-lab.png" alt-text="Vyberte systémově spravovanou identitu testovacího prostředí.":::        
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/select-lab.png" alt-text="Spravované klíče":::        
     1. Na panelu nástrojů vyberte **Uložit**. 
 
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Uložit přiřazení role":::
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Spravované klíče":::
 3. Přidejte **identitu přiřazenou systémem** testovacího prostředí do role **Přispěvatel virtuálních počítačů** pomocí stránky řízení přístupu **předplatného**  ->  **(IAM)** . Postup se podobá těm, které jsou v předchozích krocích. 
 
     
@@ -54,7 +54,7 @@ V následující části se dozvíte, jak může vlastník testovacího prostře
     1. Vyberte **Řízení přístupu (IAM)** . 
     1. Na panelu nástrojů vyberte **+ Přidat** a vyberte **Přidat přiřazení role**. 
     
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/subscription-access-control-page.png" alt-text="Předplatné – stránka pro řízení přístupu > (IAM)":::
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/subscription-access-control-page.png" alt-text="Spravované klíče":::
     1. Na stránce **Přidat přiřazení role** vyberte u této role možnost **Přispěvatel virtuálního počítače** .
     1. Zadejte název testovacího prostředí a v rozevíracím seznamu vyberte **název testovacího prostředí** (identita přiřazený systémem pro testovací prostředí). 
     1. Na panelu nástrojů vyberte **Uložit**. 
@@ -64,12 +64,12 @@ V následující části se dozvíte, jak může vlastník testovacího prostře
 1. Na domovské stránce testovacího prostředí v Azure Portal v nabídce vlevo vyberte **Konfigurace a zásady** . 
 1. Na stránce **Konfigurace a zásady** vyberte v části **šifrování** možnost **disky (Preview)** . Ve výchozím nastavení je **typ šifrování** nastavený na místní **šifrování pomocí klíče spravovaného platformou**.
 
-    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disks-page.png" alt-text="Karta disky stránky konfigurace a zásady":::
+    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disks-page.png" alt-text="Spravované klíče":::
 1. V části **typ šifrování**vyberte v rozevíracím seznamu možnost místní **šifrování pomocí spravovaného klíče zákazníka** . 
 1. V části **nastavení šifrování disku**vyberte sadu šifrování disku, kterou jste vytvořili dříve. Je to stejná sada pro šifrování disků, ke které má přístup k systémové identitě přiřazena systémová identita testovacího prostředí.
 1. Na panelu nástrojů vyberte **Uložit**. 
 
-    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disk-encryption-set.png" alt-text="Povolení šifrování pomocí klíče spravovaného zákazníkem":::
+    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disk-encryption-set.png" alt-text="Spravované klíče":::
 1. V okně se zprávou s následujícím textem: *Toto nastavení se použije u nově vytvořených počítačů v testovacím prostředí. Starý disk s operačním systémem zůstane zašifrovaný se starou sadou Disk Encryption*, vyberte **OK**. 
 
     Po nakonfigurování se disky s operačním systémem testovacího prostředí zašifrují pomocí klíče spravovaného zákazníkem, který je k dispozici pomocí sady šifrování disku. 
@@ -79,15 +79,15 @@ V následující části se dozvíte, jak může vlastník testovacího prostře
 1. Přejít na virtuální počítač testovacího prostředí vytvořený po povolení šifrování disku pomocí spravovaného klíče zákazníka v testovacím prostředí.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/enabled-encryption-vm.png" alt-text="Virtuální počítač s povoleným šifrováním disku":::
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/enabled-encryption-vm.png" alt-text="Spravované klíče":::
 1. Klikněte na skupinu prostředků virtuálního počítače a pak klikněte na disk s operačním systémem.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/vm-resource-group.png" alt-text="Skupina prostředků virtuálního počítače":::
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/vm-resource-group.png" alt-text="Spravované klíče":::
 1. V části šifrování a ověřit, jestli je šifrování nastavené na spravovaný klíč zákazníka se sadou pro šifrování disku, kterou jste vybrali.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/validate-encryption.png" alt-text="Ověřit šifrování":::
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/validate-encryption.png" alt-text="Spravované klíče":::
   
 ## <a name="next-steps"></a>Další kroky
 

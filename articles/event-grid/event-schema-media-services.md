@@ -4,10 +4,10 @@ description: Popisuje vlastnosti, které jsou k dispozici pro Media Services ud�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: c1c5953cae7364131eefcec97d3375404c85e963
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105927"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Azure Media Services jako zdroj Event Grid
@@ -22,7 +22,7 @@ Pro všechny události se můžete zaregistrovat přihlášením k odběru udál
 
 ### <a name="monitoring-job-state-changes"></a>Monitorování změn stavu úlohy
 
-| Typ události | Description |
+| Typ události | Popis |
 | ---------- | ----------- |
 | Microsoft. Media. JobStateChange| Získá událost pro všechny změny stavu úlohy. |
 | Microsoft. Media. JobScheduled| Při přechodu úlohy do plánovaného stavu získat událost. |
@@ -42,7 +42,7 @@ Každá **úloha** bude na vyšší úrovni než **JobOutput**, takže se událo
 
 Chybové zprávy v nástroji vypočítávají `JobFinished` `JobCanceled` `JobError` agregované výsledky pro každý výstup úlohy – až budou všechny dokončeny. Vzhledem k tomu, že se události výstupu úlohy aktivují při dokončení každé úlohy. Například pokud máte výstup kódování následovaný výstupem video Analytics, získáte dvě události, které se aktivují jako události výstupu úlohy před tím, než se konečná událost JobFinished aktivuje s agregovanými daty.
 
-| Typ události | Description |
+| Typ události | Popis |
 | ---------- | ----------- |
 | Microsoft. Media. JobOutputStateChange| Získá událost pro všechny změny stavu výstupu úlohy. |
 | Microsoft. Media. JobOutputScheduled| Získá událost, když se výstupy úlohy do plánovaného stavu. |
@@ -56,7 +56,7 @@ Podívejte se na [Příklady schématu](#event-schema-examples) , které násled
 
 ### <a name="monitoring-job-output-progress"></a>Průběh monitorování výstupu úlohy
 
-| Typ události | Description |
+| Typ události | Popis |
 | ---------- | ----------- |
 | Microsoft. Media. JobOutputProgress| Tato událost odráží průběh zpracování úlohy, od 0 do 100%. Služba se pokusí odeslat událost, pokud došlo k 5% nebo většímu nárůstu hodnoty průběhu nebo je více než 30 sekund od poslední události (prezenční signál). Hodnota průběh není zaručena spuštění na 0% nebo pro dosažení 100%, ani v průběhu času není zaručeno zvýšení konstantní frekvence. Tato událost by se neměla používat k určení, zda bylo zpracování dokončeno – místo toho byste měli použít události změny stavu.|
 
@@ -70,7 +70,7 @@ Media Services také emituje typy **živých** událostí popsané níže. Exist
 
 Události na úrovni proudu se vyvolávají na datový proud nebo připojení. Každá událost má `StreamId` parametr, který identifikuje připojení nebo datový proud. Každý datový proud nebo připojení má jednu nebo více skladeb různých typů. Například jedno připojení z kodéru může mít jednu zvukovou stopu a čtyři videozáznamy. Typy událostí streamu jsou:
 
-| Typ události | Description |
+| Typ události | Popis |
 | ---------- | ----------- |
 | Microsoft. Media. LiveEventConnectionRejected | Pokus o připojení kodéru byl odmítnut. |
 | Microsoft. Media. LiveEventEncoderConnected | Kodér vytvoří připojení s živou událostí. |
@@ -87,7 +87,7 @@ Události na úrovni sledování jsou vyvolány na základě stopy.
 
 Typy událostí na úrovni sledování:
 
-| Typ události | Description |
+| Typ události | Popis |
 | ---------- | ----------- |
 | Microsoft. Media. LiveEventIncomingDataChunkDropped | Media Server vynechá datový blok dat, protože je moc pozdě nebo má překrývající se časové razítko (časové razítko nového bloku dat je menší než koncový čas předchozího bloku dat). |
 | Microsoft. Media. LiveEventIncomingStreamReceived | Media Server obdrží první datový blok pro každou stopu v datovém proudu nebo připojení. |
@@ -434,7 +434,7 @@ Datový objekt má následující vlastnosti:
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy |
-| rychlostí | celé číslo | Přenosová rychlost stopy |
+| rychlostí | integer | Přenosová rychlost stopy |
 | časové razítko | řetězec | Časové razítko přehozených bloků dat |
 | měřítk | řetězec | Časová osa časového razítka. |
 | resultCode | řetězec | Důvod přetažení datového bloku **FragmentDrop_OverlapTimestamp** nebo **FragmentDrop_NonIncreasingTimestamp**. |
@@ -474,7 +474,7 @@ Datový objekt má následující vlastnosti:
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy (poskytnutý kodérem nebo v případě RTMP vygeneruje Server ve formátu *TrackType_Bitrate* ). |
-| rychlostí | celé číslo | Přenosová rychlost stopy |
+| rychlostí | integer | Přenosová rychlost stopy |
 | ingestUrl | řetězec | Adresa URL příjmu poskytovaná živou událostí |
 | encoderIp | řetězec  | IP adresa kodéru. |
 | encoderPort | řetězec | Port kodéru, ze kterého přichází tento datový proud. |
@@ -591,13 +591,13 @@ Datový objekt má následující vlastnosti:
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy (poskytnutý kodérem nebo v případě RTMP vygeneruje Server ve formátu *TrackType_Bitrate* ). |
-| rychlostí | celé číslo | Přenosová rychlost stopy |
-| incomingBitrate | celé číslo | Vypočtená přenosová rychlost založená na datových blocích přicházejících z kodéru. |
+| rychlostí | integer | Přenosová rychlost stopy |
+| incomingBitrate | integer | Vypočtená přenosová rychlost založená na datových blocích přicházejících z kodéru. |
 | lastTimestamp | řetězec | Poslední přijaté časové razítko pro stopu za posledních 20 sekund. |
 | měřítk | řetězec | Časové měřítko, ve kterém jsou vyjádřena časová razítka. |
-| overlapCount | celé číslo | Počet bloků dat má překrývající se časová razítka za posledních 20 sekund. |
-| discontinuityCount | celé číslo | Počet nekontinuity zjištěných za posledních 20 sekund. |
-| nonIncreasingCount | celé číslo | Počet datových bloků s časovými razítky v minulosti byl přijat za posledních 20 sekund. |
+| overlapCount | integer | Počet bloků dat má překrývající se časová razítka za posledních 20 sekund. |
+| discontinuityCount | integer | Počet nekontinuity zjištěných za posledních 20 sekund. |
+| nonIncreasingCount | integer | Počet datových bloků s časovými razítky v minulosti byl přijat za posledních 20 sekund. |
 | unexpectedBitrate | bool | Pokud se očekává a Skutečná přenosová rychlost se v posledních 20 sekundách liší od více než povoleného limitu. Je true pouze v případě, že incomingBitrate >= 2 * přenosová rychlost nebo incomingBitrate <= přenosová rychlost/2 nebo IncomingBitrate = 0. |
 | state | řetězec | Stav živé události. |
 | v pořádku | bool | Uvádí, zda je příjem dat v pořádku v závislosti na počtu a příznacích. V pořádku má hodnotu true, pokud overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false. |
@@ -635,7 +635,7 @@ Datový objekt má následující vlastnosti:
 | -------- | ---- | ----------- |
 | trackType | řetězec | Typ stopy (zvuk/video) |
 | stop | řetězec | Název stopy (poskytnutý kodérem nebo v případě RTMP vygeneruje Server ve formátu *TrackType_Bitrate* ). |
-| rychlostí | celé číslo | Přenosová rychlost stopy |
+| rychlostí | integer | Přenosová rychlost stopy |
 | previousTimestamp | řetězec | Časové razítko předchozího fragmentu |
 | newTimestamp | řetězec | Časové razítko aktuálního fragmentu |
 | discontinuityGap | řetězec | Mezera mezi více než dvěma časovými razítky. |
@@ -649,10 +649,10 @@ Událost má následující data nejvyšší úrovně:
 | -------- | ---- | ----------- |
 | téma | řetězec | Téma EventGrid Tato vlastnost má ID prostředku pro účet Media Services. |
 | závislosti | řetězec | Cesta prostředku pro kanál Media Services pod účtem Media Services Zřetězením tématu a předmětu získáte ID prostředku pro úlohu. |
-| Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. Například "Microsoft. Media. JobStateChange". |
+| eventType | řetězec | Jeden z registrovaných typů události pro tento zdroj události. Například "Microsoft. Media. JobStateChange". |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
-| data | odkazy objektů | Media Services data události. |
+| data | object | Media Services data události. |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 

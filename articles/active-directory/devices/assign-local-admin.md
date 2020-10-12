@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87419814"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD
@@ -98,9 +98,9 @@ Od verze **Windows 10 1709** můžete tuto úlohu provést z **Nastavení-> úč
 Kromě toho můžete přidat uživatele také pomocí příkazového řádku:
 
 - Pokud jsou vaši uživatelé klienta synchronizováni z místní služby Active Directory, použijte `net localgroup administrators /add "Contoso\username"` .
-- Pokud jsou vaši uživatelé tenanta vytvořeni ve službě Azure AD, použijte`net localgroup administrators /add "AzureAD\UserUpn"`
+- Pokud jsou vaši uživatelé tenanta vytvořeni ve službě Azure AD, použijte `net localgroup administrators /add "AzureAD\UserUpn"`
 
-## <a name="considerations"></a>Požadavky 
+## <a name="considerations"></a>Důležité informace 
 
 Nelze přiřadit skupiny k roli Správce zařízení, pouze jednotliví uživatelé jsou povoleni.
 

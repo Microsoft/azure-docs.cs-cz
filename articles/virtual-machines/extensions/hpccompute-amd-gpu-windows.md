@@ -12,19 +12,19 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
 ms.openlocfilehash: bc7bfecbcb387fa0da0809a9a2287b243e861c49
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87010865"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>Rozšíření ovladače AMD GPU pro Windows
 
-Tento článek poskytuje přehled rozšíření virtuálního počítače pro nasazení ovladačů AMD GPU na virtuálních počítačích s Windows [NVv4-Series](../nvv4-series.md) . Když instalujete ovladače AMD pomocí tohoto rozšíření, přijímáte a souhlasíte s podmínkami [licenční smlouvy s koncovým uživatelem společnosti AMD](https://amd.com/radeonsoftwarems). Během procesu instalace může být virtuální počítač restartován, aby bylo možné dokončit instalaci ovladače.
+Tento článek poskytuje přehled rozšíření virtuálního počítače pro nasazení ovladačů AMD GPU na virtuálních počítačích s Windows [NVv4-Series](../nvv4-series.md) . Když instalujete ovladače AMD pomocí tohoto rozšíření, přijímáte a souhlasíte s podmínkami [licenční smlouvy End-User pro AMD](https://amd.com/radeonsoftwarems). Během procesu instalace může být virtuální počítač restartován, aby bylo možné dokončit instalaci ovladače.
 
 Pokyny k ruční instalaci ovladačů a aktuálně podporované verze jsou k dispozici [zde](../windows/n-series-amd-driver-setup.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -67,12 +67,12 @@ Následující JSON zobrazuje schéma pro rozšíření.
 
 ### <a name="properties"></a>Vlastnosti
 
-| Název | Hodnota/příklad | Typ dat |
+| Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft. HpcCompute | řetězec |
 | typ | AmdGpuDriverWindows | řetězec |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 1,0 | int |
 
 
 ## <a name="deployment"></a>Nasazení
@@ -135,7 +135,7 @@ az vm extension set `
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstranit potíže
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell a Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz.
 

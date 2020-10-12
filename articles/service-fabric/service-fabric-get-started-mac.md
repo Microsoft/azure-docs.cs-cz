@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/17/2017
 ms.custom: devx-track-js
 ms.openlocfilehash: 0d5a31f22fb0472882e3854488fbd1c3249879d7
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91539856"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Nastavení vývojového prostředí v Mac OS X
@@ -21,7 +21,7 @@ ms.locfileid: "91539856"
 
 Pomocí Mac OS X můžete sestavit aplikace Azure Service Fabric, které poběží na clusterech s Linuxem. Tento dokument popisuje nastavení počítače Mac pro vývoj.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Azure Service Fabric nefunguje v Mac OS X nativně. Pro spuštění místního clusteru Service Fabric se poskytuje předkonfigurovaná image kontejneru Dockeru. Než začnete, budete potřebovat:
 
 * Minimálně 4 GB RAM
@@ -193,7 +193,7 @@ Pokud chcete začít [vytvářet aplikace Service Fabric v jazyce C#](service-fa
 
 Azure Service Fabric poskytuje modul plug-in pro Eclipse Neon (nebo novější) pro Java IDE. Tento modul plug-in zjednodušuje proces vytváření, sestavování a nasazování služeb Java. Pokud chcete nainstalovat nebo aktualizovat modul plug-in Service Fabric pro Eclipse na nejnovější verzi, postupujte podle [těchto kroků](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse). Ostatní kroky v [dokumentaci Service Fabric pro Eclipse](service-fabric-get-started-eclipse.md) lze také použít: sestavit aplikaci, přidat službu do aplikace, odinstalovat aplikaci a podobně.
 
-Posledním krokem je vytvoření instance kontejneru s cestu, která je sdílená s hostitelem. Modul plug-in vyžaduje tento typ vytváření instancí, aby pracoval s kontejnerem Dockeru na vašem počítači Mac. Příklad:
+Posledním krokem je vytvoření instance kontejneru s cestu, která je sdílená s hostitelem. Modul plug-in vyžaduje tento typ vytváření instancí, aby pracoval s kontejnerem Dockeru na vašem počítači Mac. Například:
 
 ```bash
 docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest

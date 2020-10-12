@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
 ms.openlocfilehash: 72a877ab8cfda126016376017c0a7eb42b1186d6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86108904"
 ---
 Pokud chcete spustit kontejner, nejdřív Najděte jeho ID Image:
@@ -29,7 +29,7 @@ Spusťte následující `docker run` příkaz. Nahraďte níže uvedené zástup
 | **{API_KEY}** | Klíč pro prostředek Analýza textu. Můžete ji najít na stránce **klíč a koncový bod** prostředku na Azure Portal. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
 | **{ENDPOINT_URI}** | Koncový bod pro přístup k rozhraní API pro analýzu textu. Můžete ji najít na stránce **klíč a koncový bod** prostředku na Azure Portal. | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 | **{IMAGE_ID}** | ID image pro váš kontejner. | `1.1.011300001-amd64-preview` |
-| **{INPUT_DIR}** | Vstupní adresář pro kontejner. | Systému`C:\healthcareMount` <br> Linux/MacOS:`/home/username/input` |
+| **{INPUT_DIR}** | Vstupní adresář pro kontejner. | Systému `C:\healthcareMount` <br> Linux/MacOS: `/home/username/input` |
 
 ```bash
 docker run --rm -it -p 5000:5000 --cpus 6 --memory 12g \

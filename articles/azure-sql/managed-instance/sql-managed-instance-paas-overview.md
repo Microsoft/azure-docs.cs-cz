@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
 ms.openlocfilehash: c98e377ec216bea6c1d4a96b15b3741aa52672e0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618126"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Co je spravovaná instance Azure SQL?
@@ -56,15 +56,15 @@ Klíčové funkce spravované instance SQL jsou uvedené v následující tabulc
 |Funkce | Popis|
 |---|---|
 | Verze SQL Server/Build | Databázový stroj SQL Server (nejnovější stabilní) |
-| Spravované automatizované zálohy | Ano |
-| Integrovaná instance a monitorování databáze a metriky | Ano |
-| Automatické opravy softwaru | Ano |
-| Nejnovější funkce databázového stroje | Ano |
+| Spravované automatizované zálohy | Yes |
+| Integrovaná instance a monitorování databáze a metriky | Yes |
+| Automatické opravy softwaru | Yes |
+| Nejnovější funkce databázového stroje | Yes |
 | Počet datových souborů (řádků) na databázi | Několik |
 | Počet souborů protokolu (protokol) na databázi | 1 |
-| Nasazení VNet-Azure Resource Manager | Ano |
-| Model nasazení sítě VNet – klasický | Ne |
-| Podpora portálu | Ano|
+| Nasazení VNet-Azure Resource Manager | Yes |
+| Model nasazení sítě VNet – klasický | No |
+| Podpora portálu | Yes|
 | Integrovaná integrační služba (SSIS) | No-SSIS je součástí [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Integrovaná služba Analysis Service (SSAS) | No-SSAS je samostatný [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Integrovaná služba vytváření sestav (SSRS) | Nepoužívejte místo toho [Power BI stránkované sestavy](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) nebo Hostujte službu SSRS na virtuálním počítači Azure. I když spravovaná instance SQL nemůže službu SSRS spustit jako službu, může hostovat [databáze katalogu SSRS](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) pro server sestav nainstalovaný na virtuálním počítači Azure pomocí SQL Server ověřování. |
@@ -217,7 +217,7 @@ Některé klíčové rozdíly:
 - K dispozici jsou pouze automatizované zálohy a obnovení k bodu v čase. Zákazníci můžou zahájit `copy-only` zálohování, které nekoliduje s automatickým řetězcem zálohování.
 - Zadání úplných fyzických cest není podporováno, takže všechny odpovídající scénáře musí být podporovány jinak: příkaz Restore DB nepodporuje operaci MOVE. možnost CREATE DB neumožňuje použití fyzických cest, BULK INSERT pracuje pouze s objekty blob Azure atd.
 - Spravovaná instance SQL podporuje [ověřování Azure AD](../database/authentication-aad-overview.md) jako cloudovou alternativu k ověřování Windows.
-- Spravovaná instance SQL automaticky spravuje skupiny souborů XTP a soubory pro databáze, které obsahují objekty OLTP v paměti.
+- Spravovaná instance SQL automaticky spravuje skupiny souborů XTP a soubory pro databáze obsahující In-Memory objekty OLTP.
 - Spravovaná instance SQL podporuje služba SSIS (SQL Server Integration Services) (SSIS) a může hostovat katalog SSIS (SSISDB), který ukládá balíčky SSIS, ale spouští se na spravovaném Azure-SSIS Integration Runtime (IR) v Azure Data Factory. Viz téma [Create Azure-SSIS IR in Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Pokud chcete porovnat funkce SSIS, přečtěte si téma [porovnání SQL Database s SQL Managed instance](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).
 
 ### <a name="administration-features"></a>Funkce pro správu

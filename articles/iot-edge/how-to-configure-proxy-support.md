@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - contperfq1
 ms.openlocfilehash: e6c85ba79c21c9a8120feebc02477506eb93d2e5
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500364"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurace zařízení IoT Edge tak, aby komunikovalo přes proxy server
@@ -73,19 +73,19 @@ Pokud instalujete modul runtime IoT Edge na zařízení s Windows, budete muset 
 
 Následující kroky ukazují příklad instalace Windows pomocí `-proxy` argumentu:
 
-1. Příkaz Invoke-WebRequest potřebuje pro přístup ke skriptu instalačního programu informace o proxy serveru. Pak příkaz Deploy-IoTEdge potřebuje pro stažení instalačních souborů informace o proxy serveru.
+1. Příkaz Invoke-WebRequest potřebuje pro přístup ke skriptu instalačního programu informace o proxy serveru. Příkaz Deploy-IoTEdge pak potřebuje informace o proxy serveru ke stažení instalačních souborů.
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -proxy <proxy URL>
    ```
 
-2. Příkaz Initialize-IoTEdge není potřeba projít proxy server, takže druhý krok vyžaduje jenom informace o proxy serveru pro Invoke-WebRequest.
+2. Příkaz Initialize-IoTEdge nepotřebuje projít proxy server, takže druhý krok vyžaduje jenom informace o proxy serveru pro Invoke-WebRequest.
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
    ```
 
-Máte-li složitá pověření pro proxy server, která nelze zahrnout do adresy URL, použijte `-ProxyCredential` parametr v rámci `-InvokeWebRequestParameters` . Třeba
+Máte-li složitá pověření pro proxy server, která nelze zahrnout do adresy URL, použijte `-ProxyCredential` parametr v rámci `-InvokeWebRequestParameters` . Příklad:
 
 ```powershell
 $proxyCredential = (Get-Credential).GetNetworkCredential()

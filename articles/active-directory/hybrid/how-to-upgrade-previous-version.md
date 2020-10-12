@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b78d3cab17b0cc4085c824cf35d4c6037f0e2af5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319856"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi
@@ -131,7 +131,7 @@ Mohou nastat situace, kdy nechcete, aby tato přepsání byla provedena ihned po
 5. Chcete-li pokračovat v plánovači, spusťte následující rutinu: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
    >[!IMPORTANT]
-   > Nezapomeňte provést požadované kroky synchronizace při nejbližším pohodlí. Synchronization Service Manager pomocí rutiny Set-ADSyncSchedulerConnectorOverride můžete ručně provést tyto kroky a přidat přepsání zpět.
+   > Nezapomeňte provést požadované kroky synchronizace při nejbližším pohodlí. Tyto kroky můžete buď ručně spustit pomocí Synchronization Service Manager, nebo je pomocí rutiny Set-ADSyncSchedulerConnectorOverride přidat zpátky.
 
 Chcete-li přidat přepsání pro úplné import i úplnou synchronizaci s libovolným konektorem, spusťte následující rutinu:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 

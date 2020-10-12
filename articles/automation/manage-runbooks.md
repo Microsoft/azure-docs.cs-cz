@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: 023864e23c0cd23df0de603e76acac651bd2458e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987588"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Správa runbooků v Azure Automation
@@ -301,7 +301,7 @@ Seznam úloh můžete filtrovat výběrem možnosti **filtrovat úlohy**. Vyfilt
 
 Případně můžete zobrazit souhrn podrobností úlohy pro konkrétní Runbook tak, že na stránce sady Runbook v účtu Automation vyberete tuto sadu Runbook a pak vyberete **úlohy**. Tato akce zobrazí stránku úlohy. Odtud můžete kliknutím na záznam úlohy zobrazit jeho podrobnosti a výstup.
 
-:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Snímek stránky úlohy se zvýrazněným tlačítkem chyby":::
+:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Snímek obrazovky stránky úlohy":::
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>Načtení stavů úloh pomocí PowerShellu
 

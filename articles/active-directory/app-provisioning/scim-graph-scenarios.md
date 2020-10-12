@@ -12,17 +12,17 @@ ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
 ms.openlocfilehash: b69e2c9b12b2db34f3eb70e54d2c6aede6b54784
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235498"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Použití SCIM a Microsoft Graph společně ke zřízení uživatelů a rozšíření vaší aplikace s potřebnými daty
 
 **Cílová skupina:** Tento článek je zaměřený na vývojáře, kteří sestavují aplikace, které se mají integrovat s Azure Active Directory (Azure AD). Pokud chcete používat aplikace, které už jsou integrované s Azure AD, jako je například Lupa, ServiceNow a DropBox, můžete tento článek přeskočit a přečíst si [kurzy](../saas-apps/tutorial-list.md) specifické pro aplikaci nebo zkontrolovat, [Jak služba zřizování funguje](./how-provisioning-works.md).
 
-**Obvyklé scénáře**
+**Typické scénáře**
 
 Azure AD poskytuje od služby Box službu pro zřizování a rozšiřitelnou platformu pro vytváření aplikací na. Rozhodovací strom popisuje, jak má vývojář použít [SCIM](https://aka.ms/scimoverview) a [Microsoft Graph](/graph/overview) k automatizaci zřizování. 
 

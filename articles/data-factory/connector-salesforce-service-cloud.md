@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/13/2020
 ms.openlocfilehash: d83dcc5c86f2dfed5f588738e7799dd708333da1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076785"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Kopírování dat z a do cloudu služby Salesforce pomocí Azure Data Factory
@@ -39,7 +39,7 @@ Konkrétně tento cloudový konektor služby Salesforce podporuje:
 
 Konektor Salesforce je postaven nad rozhraním API REST nebo Bulk pro Salesforce. Ve výchozím nastavení konektor používá [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) ke kopírování dat z Salesforce a používá [V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) ke kopírování dat do Salesforce. Můžete také explicitně nastavit verzi rozhraní API použitou pro čtení a zápis dat prostřednictvím [ `apiVersion` vlastnosti](#linked-service-properties) v propojené službě.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V Salesforce musí být povolené oprávnění API. Další informace najdete v tématu [Povolení přístupu k rozhraní API v Salesforce pomocí sady oprávnění](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/) .
 
@@ -151,7 +151,7 @@ Pokud chcete kopírovat data z a do cloudu služby Salesforce, podporují se tyt
 
 ![Název rozhraní API pro připojení Salesforce Data Factory](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -194,7 +194,7 @@ Pokud chcete kopírovat data z cloudu služby Salesforce, v části **zdroj** ak
 
 ![Data Factory seznam názvů rozhraní API pro připojení Salesforce](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -238,7 +238,7 @@ Pokud chcete kopírovat data do cloudu služby Salesforce, v části **jímka** 
 | writeBatchSize | Počet řádků dat zapsaných do cloudu služby Salesforce v každé dávce. | Ne (výchozí hodnota je 5 000) |
 | ignoreNullValues | Určuje, zda se během operace zápisu mají ignorovat hodnoty NULL ze vstupních dat.<br/>Povolené hodnoty jsou **true** a **false**.<br>- **True**: když provedete operaci Upsert nebo Update, ponechte data v cílovém objektu beze změny. Při operaci INSERT vložte definovanou výchozí hodnotu.<br/>- **False**: při operaci Upsert nebo Update aktualizujte data v cílovém objektu na hodnotu null. Při operaci vložení vložte hodnotu NULL. | Ne (výchozí hodnota je false) |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -289,8 +289,8 @@ Při kopírování dat z cloudu služby Salesforce můžete použít buď dotaz 
 
 | Syntax | SOQL režim | Režim SQL |
 |:--- |:--- |:--- |
-| Výběr sloupce | Je nutné vytvořit výčet polí, která mají být kopírována v dotazu, např.`SELECT field1, filed2 FROM objectname` | `SELECT *`je podporováno kromě výběru sloupce. |
-| Uvozovky | Názvy archivovaných objektů nebo objektů nemohou být v uvozovkách. | Názvy polí a objektů mohou být v uvozovkách, např.`SELECT "id" FROM "Account"` |
+| Výběr sloupce | Je nutné vytvořit výčet polí, která mají být kopírována v dotazu, např. `SELECT field1, filed2 FROM objectname` | `SELECT *` je podporováno kromě výběru sloupce. |
+| Uvozovky | Názvy archivovaných objektů nebo objektů nemohou být v uvozovkách. | Názvy polí a objektů mohou být v uvozovkách, např. `SELECT "id" FROM "Account"` |
 | Formát data a času |  [Tady](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) najdete podrobnosti a ukázky v další části. | [Tady](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) najdete podrobnosti a ukázky v další části. |
 | Logické hodnoty | Reprezentované jako `False` a `True` , např. `SELECT … WHERE IsDeleted=True` | Reprezentované jako 0 nebo 1, např `SELECT … WHERE IsDeleted=1` . |
 | Přejmenování sloupce | Nepodporováno | Podporováno, např.: `SELECT a AS b FROM …` . |
@@ -298,10 +298,10 @@ Při kopírování dat z cloudu služby Salesforce můžete použít buď dotaz 
 
 ### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>Načtení dat pomocí klauzule WHERE ve sloupci DateTime
 
-Když zadáte SOQL nebo SQL dotaz, věnujte pozornost rozdílům ve formátu data a času. Příklad:
+Když zadáte SOQL nebo SQL dotaz, věnujte pozornost rozdílům ve formátu data a času. Například:
 
-* **Ukázka SOQL**:`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
-* **Ukázka SQL**:`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
+* **Ukázka SOQL**: `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
+* **Ukázka SQL**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
 ### <a name="error-of-malformed_query-truncated"></a>Chyba MALFORMED_QUERY: zkrácení
 
@@ -315,15 +315,15 @@ Při kopírování dat z cloudu služby Salesforce se z cloudových datových ty
 |:--- |:--- |
 | Automatické číslo |Řetězec |
 | Zaškrtávací políčko |Logická hodnota |
-| Měna |Desetinné číslo |
+| Měna |Decimal |
 | Datum |DateTime |
 | Datum/Čas |DateTime |
 | E-mail |Řetězec |
 | ID |Řetězec |
 | Relace vyhledávání |Řetězec |
 | Vícenásobný výběr rozevíracího seznamu |Řetězec |
-| Číslo |Desetinné číslo |
-| Procento |Desetinné číslo |
+| Číslo |Decimal |
+| Procento |Decimal |
 | Rozložení |Řetězec |
 | Picklist |Řetězec |
 | Text |Řetězec |
@@ -331,7 +331,7 @@ Při kopírování dat z cloudu služby Salesforce se z cloudových datových ty
 | Oblast textu (Long) |Řetězec |
 | Textová oblast (bohatá) |Řetězec |
 | Text (zašifrovaný) |Řetězec |
-| Adresa URL |Řetězec |
+| URL |Řetězec |
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 

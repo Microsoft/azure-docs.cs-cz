@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.openlocfilehash: 1a32e485dfc9cd465f6dd6d50abdb166737dc3aa
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387978"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>Zařízení: Roobo Smart audio dev Kit
@@ -69,7 +69,7 @@ Další informace o vývoji najdete v [příručce pro vývoj Roobo](http://dwn.
 
 ## <a name="audio"></a>Zvuk
 
-Roobo poskytuje nástroj, který zachycuje všechny zvuky do paměti Flash. Může pomoct při odstraňování problémů se zvukem. K dispozici je verze nástroje pro každou konfiguraci sady Development Kit. Na [webu Roobo](http://ddk.roobo.com/)vyberte své zařízení a potom v dolní části stránky vyberte odkaz **nástroje Roobo** .
+Roobo poskytuje nástroj, který zachycuje všechny zvuky do paměti Flash. Může pomoct při odstraňování problémů se zvukem. K dispozici je verze nástroje pro každou konfiguraci sady Development Kit. Na  [webu Roobo](http://ddk.roobo.com/)vyberte své zařízení a potom v dolní části stránky vyberte odkaz **nástroje Roobo** .
 
 ## <a name="next-steps"></a>Další kroky
 
