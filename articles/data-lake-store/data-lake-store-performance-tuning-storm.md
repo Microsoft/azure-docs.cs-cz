@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 71207509f20c80cf85311cba7b647aaca0a49e42
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192803"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro zaplavení v HDInsight a Azure Data Lake Storage Gen1
@@ -89,7 +89,7 @@ V případě topologií náročných na vstupně-výstupní operace je vhodné, 
 
 V systému se Spout nachází v řazené kolekci členů, dokud není explicitně potvrzeno šroubem. Pokud je v rámci pole řazená kolekce členů, ale ještě nebyla potvrzena, Spout nemusí být trvale Data Lake Storage Gen1 back-endu. Po potvrzení řazené kolekce členů může Spout zaručit trvalost a pak může odstranit zdrojová data z jakéhokoli zdroje, ze kterého čte.  
 
-Pro nejlepší výkon na Data Lake Storage Gen1 mít vyrovnávací paměť šroubů 4 MB dat řazené kolekce členů. Pak zapište do Data Lake Storage Gen1 back-endu jako jeden zápis o velikosti 4 MB. Po úspěšném zapsání dat do úložiště (voláním hflush ()) může šroub potvrdit data zpět do Spout. To je to, co tady je uvedený příklad. Je také přijatelné, aby obsahoval větší počet řazených kolekcí členů před provedením volání hflush () a potvrzenými řazenými kolekcemi členů. To ale zvyšuje počet řazených kolekcí členů v letu, že Spout potřebuje držet, a zvyšuje tak množství paměti vyžadované na JVM.
+Pro nejlepší výkon na Data Lake Storage Gen1 mít vyrovnávací paměť šroubů 4 MB dat řazené kolekce členů. Pak zapište do Data Lake Storage Gen1 back-endu jako zápis 1 4 MB. Po úspěšném zapsání dat do úložiště (voláním hflush ()) může šroub potvrdit data zpět do Spout. To je to, co tady je uvedený příklad. Je také přijatelné, aby obsahoval větší počet řazených kolekcí členů před provedením volání hflush () a potvrzenými řazenými kolekcemi členů. To ale zvyšuje počet řazených kolekcí členů v letu, že Spout potřebuje držet, a zvyšuje tak množství paměti vyžadované na JVM.
 
 > [!NOTE]
 > Aplikace mohou mít požadavek na potvrzení řazených kolekcí členů častěji (u velikostí dat menších než 4 MB) pro jiné účely bez výkonu. To však může ovlivnit propustnost vstupně-výstupních operací do back-endu úložiště. Pečlivě navážíte tyto kompromisy proti vstupně-výstupnímu výkonu šroubů.
@@ -98,7 +98,7 @@ Pokud příchozí míra řazených kolekcí členů není vysoká, takže vyrovn
 * Snížení počtu šroubů, aby bylo možné vyplnit méně vyrovnávacích pamětí.
 * Se zásadami založenými na čase nebo na základě počtu, kde se hflush () aktivuje při každém vyprázdnění x nebo každých y milisekund, a řazené kolekce členů se potvrzují zpátky.
 
-Propustnost v tomto případě je nižší, ale s pomalou mírou událostí, maximální propustnost není největším cílem. Tato omezení pomáhají snížit celkovou dobu, kterou bude trvat, než se řazená kolekce členů dotéká do obchodu. Tato situace může nastat, pokud chcete, aby kanál v reálném čase byl i s nízkou rychlostí událostí. Všimněte si také, že pokud je vaše příchozí míra řazené kolekce členů nízká, měli byste upravit parametr Topology. Message. timeout_secs, aby řazené kolekce členů nevypršel časový limit při získávání nebo zpracování vyrovnávací paměti.
+Propustnost v tomto případě je nižší, ale s pomalou mírou událostí, maximální propustnost není největším cílem. Tato omezení pomáhají snížit celkovou dobu, kterou bude trvat, než se řazená kolekce členů dotéká do obchodu. Tato situace může nastat, pokud chcete, aby kanál v reálném čase byl i s nízkou rychlostí událostí. Všimněte si také, že pokud je vaše příchozí míra řazené kolekce členů nízká, měli byste upravit parametr topology.message.timeout_secs, aby nedošlo k vypršení časového limitu řazených kolekcí členů do vyrovnávací paměti nebo zpracování.
 
 ## <a name="monitor-your-topology-in-storm"></a>Monitorování topologie v prostředí s více podsady  
 I když je vaše topologie spuštěná, můžete ji monitorovat v uživatelském rozhraní. Tady jsou hlavní parametry, které se mají najít:

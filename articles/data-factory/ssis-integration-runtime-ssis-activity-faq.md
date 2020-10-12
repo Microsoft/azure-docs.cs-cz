@@ -12,10 +12,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
 ms.openlocfilehash: 9b331ccee183ec101cf3449f12b4f656a1325819
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84118102"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Řešení potíží se spuštěním balíčku v prostředí SSIS Integration runtime
@@ -76,8 +76,8 @@ Tato chyba znamená, že se místní disk používá v uzlu SSIS Integration run
     * Pokud používáte soubor Azure:
       * Cesta k souboru by měla začínat na \\ \\ \<storage account name\> . File.Core.Windows.NET\\\<file share path\>
       * Doména by měla být "Azure".
-      * Uživatelské jméno by mělo být\<storage account name\>
-      * Heslo by mělo být\<storage access key\>
+      * Uživatelské jméno by mělo být \<storage account name\>
+      * Heslo by mělo být \<storage access key\>
     * Pokud používáte místní soubor, zkontrolujte prosím, jestli je virtuální síť, přihlašovací údaje pro přístup k balíčku a oprávnění správně nakonfigurované, aby váš prostředí Azure-SSIS Integration runtime mělo přístup k místní sdílené složce.
 
 ### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Chybová zpráva: "název souboru"... zadaný v připojení není platný.
@@ -136,36 +136,36 @@ Jednou z možných příčin je, že protokol TLS (Transport Layer Security) nen
 
 ### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>Chybová zpráva: "žádost o pracovní úlohu s identifikátorem GUID operace... selhání z důvodu chyby: odeslání pracovní operace se nezdařilo. chybová zpráva: Microsoft. SqlServer. IntegrationServices. AisAgentCore. AisAgentException: Nepodařilo se načíst data proxy. "
 
-Ujistěte se, že váš modul runtime Azure-SSIS Integration runtime je nakonfigurovaný pomocí prostředí Integration runtime v místním prostředí. Další podrobnosti najdete v části [Configure IR Autohost as a proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md).
+Ujistěte se, že je prostředí Azure-SSIS Integration runtime nakonfigurované s modulem runtime integrace Self-Hosted. Další podrobnosti najdete v části [konfigurace Self-Hosted IR jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md).
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2010-errormessage-the-self-hosted-integration-runtime--is-offline"></a>Chybová zpráva: stav pracovní úlohy: nezdařilo se. Chyba přípravného úkolu: ErrorCode: 2010, ErrorMessage: Integration Runtime v místním prostředí... je offline
 
-Ujistěte se, že je nainstalovaný a spuštěný místní prostředí Integration runtime. Další podrobnosti najdete v článku [Vytvoření a konfigurace prostředí Integration runtime](create-self-hosted-integration-runtime.md) v místním prostředí.
+Ujistěte se, že je nainstalovaný a spuštěný modul runtime integrace Self-Hosted. Další podrobnosti najdete v článku [Vytvoření a konfigurace prostředí Integration runtime](create-self-hosted-integration-runtime.md) v místním prostředí.
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>Chybová zpráva: Chyba přípravného úkolu: ErrorCode: 2906, ErrorMessage: provedení balíčku se nezdařilo., výstup: {"OperationErrorMessages": "Chyba: požadovaný poskytovatel OLE DB... není zaregistrováno. Pokud není nainstalován ovladač 64, spusťte balíček v režimu 32... "
 
-Zajistěte, aby odpovídající zprostředkovatel používaný konektory OLE DB ve vašem balíčku byl správně nainstalovaný na počítači s integrací prostředí Integration runtime. Další podrobnosti najdete v části [Konfigurace prostředí IR pro místní hostování jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) .
+Zajistěte, aby odpovídající zprostředkovatel používaný konektory OLE DB ve vašem balíčku byl správně nainstalovaný v počítači Self-Hosted Integration runtime. Další podrobnosti najdete v části [konfigurace Self-Hosted IR jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) .
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Chybová zpráva: Chyba pracovní úlohy: ErrorCode: 2906, ErrorMessage: provedení balíčku se nezdařilo., výstup: {"OperationErrorMessages": "Error: System. IO. FileLoadException: nelze načíst soubor nebo sestavení" Microsoft. WindowsAzure. Storage, verze =..., Culture = neutral, PublicKeyToken = 31bf3856ad364e35 "nebo jedna z jeho závislostí. Nalezená definice manifestu sestavení neodpovídá odkazu na sestavení. ' ..."
 
-Jednou z možných příčin je, že váš místní prostředí Integration runtime není správně nainstalováno nebo upgradováno. Navrhněte stažení a opětovnou instalaci nejnovějšího prostředí Integration runtime v místním prostředí. Další podrobnosti najdete v článku [Vytvoření a konfigurace prostředí Integration runtime](create-self-hosted-integration-runtime.md#installation-best-practices) v místním prostředí.
+Jednou z možných příčin je, že váš Self-Hosted Integration runtime není správně nainstalovaný nebo upgradovaný. Navrhněte stažení a opětovnou instalaci nejnovějšího prostředí Integration runtime v místním prostředí. Další podrobnosti najdete v článku [Vytvoření a konfigurace prostředí Integration runtime](create-self-hosted-integration-runtime.md#installation-best-practices) v místním prostředí.
 
 ### <a name="error-message-a-connection-is-required-when-requesting-metadata-if-you-are-working-offline-uncheck-work-offline-on-the-ssis-menu-to-enable-the-connection"></a>Chybová zpráva: při vyžádání metadat se vyžaduje připojení. Pokud pracujete offline, zrušte v nabídce SSIS možnost pracovat offline, aby se povolilo připojení.
 
 * Potenciální příčina a doporučená akce:
-  * Pokud se zobrazí také varovná zpráva "komponenta nepodporuje použití Správce připojení s hodnotou ConnectByProxy Value true" v protokolu spuštění to znamená, že se správce připojení používá u komponenty, která ještě není podporována "ConnectByProxy". Podporované součásti najdete v části [Konfigurace prostředí IR pro místní hostování jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy) .
+  * Pokud se zobrazí také varovná zpráva "komponenta nepodporuje použití Správce připojení s hodnotou ConnectByProxy Value true" v protokolu spuštění to znamená, že se správce připojení používá u komponenty, která ještě není podporována "ConnectByProxy". Podporované součásti najdete v části [konfigurace Self-Hosted IR jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy) .
   * Protokol spuštění najdete v [sestavě SSMS](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) nebo ve složce protokolu, kterou jste zadali v aktivitě spuštění balíčku SSIS.
   * Virtuální síť se dá také použít pro přístup k místním datům jako alternativu. Další podrobnosti najdete v článku [připojení prostředí Azure-SSIS Integration runtime k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md) .
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Chybová zpráva: stav pracovní úlohy: nezdařilo se. Chyba přípravné úlohy: ErrorCode: 2906, ErrorMessage: provedení balíčku se nezdařilo., výstup: {"OperationErrorMessages": "SSIS prováděcího modulu vykonavatele:-1. \ n"; "LogLocation": "... \\ SSISTelemetry \\ ExecutionLog \\ ... "," effectiveIntegrationRuntime ":"... "," executionDuration ":...," durationInQueue ": {" integrationRuntimeQueue ":...}}"
 
-Ujistěte se, že je modul runtime Visual C++ nainstalovaný v místním prostředí Integration runtime Machine. Další podrobnosti najdete v části [Konfigurace prostředí IR pro místní hostování jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) .
+Ujistěte se, že je v počítači Self-Hosted Integration Runtime nainstalován modul runtime Visual C++. Další podrobnosti najdete v části [konfigurace Self-Hosted IR jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) .
 
 ### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>Neočekávaně se spouští více spuštění balíčku.
 
 * Potenciální příčina a doporučená akce:
   * Aktivita uložená procedura ADF nebo aktivita vyhledávání slouží ke spuštění SSIS balíčku. Příkaz t-SQL může způsobit přechodný problém a aktivovat opětovné spuštění, které by způsobilo více spuštění balíčku.
-  * Místo toho použijte aktivitu ExecuteSSISPackage, která zajistí, že spuštění balíčku nebude znovu spuštěno, pokud uživatel nenastaví počet opakování v aktivitě. Podrobnosti najdete na adrese.[https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
+  * Místo toho použijte aktivitu ExecuteSSISPackage, která zajistí, že spuštění balíčku nebude znovu spuštěno, pokud uživatel nenastaví počet opakování v aktivitě. Podrobnosti najdete na adrese. [https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
   * Upřesněte svůj příkaz t-SQL, aby se mohl znovu spustit, a to tak, že zkontroluje, jestli už se spustilo spuštění.
 
 ### <a name="package-execution-takes-too-long"></a>Provádění balíčku trvá moc dlouho.

@@ -9,10 +9,10 @@ ms.date: 03/03/2020
 ms.author: barbkess
 ms.custom: references_regions
 ms.openlocfilehash: b720d9dd824018d885ccc9860ee9fd8a90a46051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84194319"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Provozní kontinuita a zotavení po havárii (BCDR): Spárované oblasti Azure
@@ -47,12 +47,12 @@ Ne. Zákazníci můžou využívat služby Azure k navržení odolné služby, a
 
 ## <a name="azure-regional-pairs"></a>Regionální páry Azure
 
-| Geography | Místní párování A | Oblastní dvojice B  |
+| Geografie | Místní párování A | Oblastní dvojice B  |
 |:--- |:--- |:--- |
-| Asie a Tichomoří |Východní Asie (Hongkong) | Jihovýchodní Asie (Singapur) |
+| Asia-Pacific |Východní Asie (Hongkong) | Jihovýchodní Asie (Singapur) |
 | Austrálie |Austrálie – východ |Austrálie – jihovýchod |
 | Austrálie |Austrálie – střed |Austrálie – střed 2 |
-| Brazílie |Brazílie – jih |USA – středojih |
+| Brazílie |Brazil South |Středojižní USA |
 | Kanada |Střední Kanada |Kanada – východ |
 | Čína |Čína – sever |Čína – východ|
 | Čína |Čína – sever 2 |Čína – východ 2|
@@ -60,13 +60,13 @@ Ne. Zákazníci můžou využívat služby Azure k navržení odolné služby, a
 | Francie |Francie – střed|Francie – jih|
 | Německo |Německo – střed |Německo – severovýchod |
 | Indie |Indie – střed |Indie – jih |
-| Indie |Indie – západ |Indie – jih |
+| Indie |Západní Indie |Indie – jih |
 | Japonsko |Japonsko – východ |Japonsko – západ |
 | Jižní Korea |Jižní Korea – střed |Jižní Korea – jih |
-| Severní Amerika |USA – východ |USA – západ |
-| Severní Amerika |USA – východ 2 |USA – střed |
-| Severní Amerika |USA – středosever |USA – středojih |
-| Severní Amerika |USA – západ 2 |USA – středozápad |
+| Severní Amerika |East US |USA – západ |
+| Severní Amerika |USA – východ 2 |Střední USA |
+| Severní Amerika |USA – středosever |Středojižní USA |
+| Severní Amerika |Západní USA 2 |USA – středozápad |
 | Norsko | Norsko – východ | Norsko – západ |
 | Jižní Afrika | Jižní Afrika – sever |Jižní Afrika – západ |
 | Švýcarsko | Švýcarsko – sever |Švýcarsko – západ |
@@ -104,7 +104,7 @@ Jak je uvedeno na obrázku 2.
 
 5. **Fyzickou izolaci** – Pokud je to možné, Azure upřednostňuje oddělení mezi datacentry v rámci geografické dvojice aspoň 300 km, i když to není praktické nebo možné ve všech zeměpisných oblastech. Oddělení fyzického datacentra omezuje pravděpodobnost přirozených havárií, neodpočinku, výpadků napájení nebo fyzických výpadků sítě, které omezují obě oblasti najednou. K izolaci se vztahují omezení v rámci geografického umístění (zeměpisná velikost, dostupnost infrastruktury v síti, nařízení atd.).  
 
-6. **Replikace poskytovaná platformou** – některé služby, jako je geograficky redundantní úložiště, poskytují automatickou replikaci do spárované oblasti.
+6. **Replikace poskytovaná platformou** – některé služby, jako je například úložiště Geo-Redundant, poskytují automatickou replikaci do spárované oblasti.
 
 7. **Pořadí obnovení oblasti** – v případě rozsáhlých výpadků je obnovení jedné oblasti z každého páru prioritní. U aplikací, které jsou nasazené ve spárovaných oblastech, je tak zaručeno, že mají k dispozici prioritně obnovenou oblast. Pokud je aplikace nasazená v oblastech, které nejsou spárované, obnovení může být zpožděné – v nejhorším případě můžou zvolené oblasti obnovit poslední dvě.
 

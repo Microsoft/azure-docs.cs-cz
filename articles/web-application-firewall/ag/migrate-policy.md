@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
 ms.openlocfilehash: eccd6b33353e071a66225279f1f1c150d4bdaafc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86143847"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Migrace zásad firewallu webových aplikací pomocí Azure PowerShell
@@ -27,7 +27,7 @@ Skript migrace spustíte pomocí následujících kroků:
 1. Otevřete následující okno Cloud shellu nebo ho otevřete v rámci portálu.
 2. Zkopírujte skript do okna Cloud Shell a spusťte ho.
 3. Skript požádá o ID předplatného, název skupiny prostředků, název Application Gateway, ke kterému je přidružená konfigurace WAF, a název nové zásady WAF, které se mají vytvořit. Po zadání těchto vstupů se skript spustí a vytvoří vaše nové zásady WAF.
-4. Přidružte nové zásady WAF k aplikační bráně. Na portálu klikněte na zásady WAF a vyberte kartu **přidružené služby Application Gateway** . Vyberte **přidružit Application Gateway** a pak vyberte Application Gateway k přidružení zásady WAF k.
+4. Přidružte nové zásady WAF k aplikační bráně. Na portálu klikněte na zásady WAF a vyberte kartu **přidružená aplikační brány** . Vyberte **přidružit Application Gateway** a pak vyberte Application Gateway, ke kterému chcete zásadu WAF přidružit.
 
 > [!NOTE]
 > Pokud existují následující podmínky, skript nedokončil migraci:

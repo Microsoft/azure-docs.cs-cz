@@ -9,15 +9,15 @@ ms.date: 03/04/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c3c9dbca6a76bf0b10a83087fc31d9fa41c6bd03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78331231"
 ---
 1. V nabídce [Azure Portal](https://portal.azure.com) vyberte **vytvořit prostředek**. 
 
-   ![Vytvoření prostředku v Azure Portal](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
+   ![Vytvoření prostředku na portálu Azure Portal](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
 2. Do pole **Hledat na Marketplace** zadejte ' Virtual Network Gateway '. Vyhledejte **bránu virtuální sítě** ve vyhledávání a vyberte ji. Na stránce **Brána virtuální sítě** vyberte **vytvořit**. Tím otevřete stránku **Vytvořit bránu virtuální sítě**.
 3. Na kartě **základy** vyplňte hodnoty pro vaši bránu virtuální sítě.
 
@@ -30,7 +30,7 @@ ms.locfileid: "78331231"
    - **Předplatné**: vyberte předplatné, které chcete použít, z rozevíracího seznamu.
    - **Skupina prostředků**: Toto nastavení se vyplní při výběru virtuální sítě na této stránce.
 
-   **Podrobnosti instance**
+   **Podrobnosti o instancích**
 
    - **Název**: Zadejte pro bránu název. Pojmenování brány není stejné jako pojmenování podsítě brány. Jedná se o název objektu brány, který vytváříte.
    - **Oblast**: Vyberte oblast, ve které chcete tento prostředek vytvořit. Oblast brány musí být stejná jako tato virtuální síť.

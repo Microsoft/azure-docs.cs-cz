@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: cavoeg
 ms.openlocfilehash: cdb73670996341e9219230bb277e087009266f32
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846016"
 ---
 # <a name="azure-active-directory-identity-configuration-for-azure-api-for-fhir"></a>Azure Active Directory konfigurace identity pro Azure API pro FHIR
@@ -97,10 +97,10 @@ Při použití serveru FHIR můžete použít `v1.0` `v2.0` koncovou položku ne
 
 V dokumentaci k Azure AD jsou relevantní tyto části:
 
-* `v1.0`Služba
+* `v1.0` Služba
     * [Tok autorizačního kódu](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code).
     * [Tok přihlašovacích údajů klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow).
-* `v2.0`Služba
+* `v2.0` Služba
     * [Tok autorizačního kódu](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow).
     * [Tok přihlašovacích údajů klienta](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow).
 

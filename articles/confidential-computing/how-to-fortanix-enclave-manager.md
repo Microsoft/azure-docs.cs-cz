@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
 ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462424"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Postupy: spuštění aplikace pomocí Fortanix enklávy Manageru 
@@ -28,7 +28,7 @@ Fortanix je dodavatel softwaru od jiného výrobce s produkty a službami postav
 
 
 
-V tomto kurzu se dozvíte, jak převést Image aplikace na tajnou bitovou kopii chráněnou na výpočetní výkon. Toto prostředí používá [Fortanix](https://www.fortanix.com/) software, který využívá virtuální počítače s podporou Intel SGX DCsv2-Series od společnosti Azure. Toto řešení orchestruje kritické zásady zabezpečení, jako je ověřování identity a řízení přístupu k datům.
+V tomto kurzu se dozvíte, jak převést Image aplikace na tajnou bitovou kopii chráněnou na výpočetní výkon. Toto prostředí používá [Fortanix](https://www.fortanix.com/) software, který využívá Azure DCsv2-Series virtuálních počítačů s podporou Intel SGX. Toto řešení orchestruje kritické zásady zabezpečení, jako je ověřování identity a řízení přístupu k datům.
 
  Pro podporu specifickou pro Fortanix se připojte k [komunitě pracovní rezervy Fortanix](https://fortanix.com/community/) a použijte #enclavemanager kanálu.
 
@@ -117,10 +117,10 @@ Když se vytvoří agent uzlu Fortanix, nasadí se virtuální počítač, síť
      ![Hledat na Marketplace](media/how-to-fortanix-enclave-manager/search-fortanix-marketplace.png)
 1. Vyberte **získat hned**, v případě potřeby vyplňte svoje informace a vyberte **pokračovat**. Budete přesměrováni na Azure Portal. 
 1. Vyberte **vytvořit** a zadejte stránku nasazení agenta Fortanix důvěrného výpočetního uzlu.
-1. Na této stránce budete zadávat informace pro nasazení virtuálního počítače. Konkrétně tento virtuální počítač je virtuální počítač s podporou Intel SGX (DCsv2-Series) z Azure s nainstalovaným softwarem agenta Fortanix. Agent uzlu umožní, aby se převedená image bezpečně spouštěla na uzlech Intel SGX v Azure.  Vyberte **předplatné** a **skupinu prostředků** , do kterých chcete nasadit virtuální počítač a přidružené prostředky. 
+1. Na této stránce budete zadávat informace pro nasazení virtuálního počítače. Konkrétně tento virtuální počítač je DCsv2-Series virtuální počítač s podporou Intel SGX z Azure s nainstalovaným softwarem agenta Fortanix Node. Agent uzlu umožní, aby se převedená image bezpečně spouštěla na uzlech Intel SGX v Azure.  Vyberte **předplatné** a **skupinu prostředků** , do kterých chcete nasadit virtuální počítač a přidružené prostředky. 
  
     > [!NOTE]
-    > Existují omezení při nasazování virtuálních počítačů řady DCsv2-Series v Azure. Možná budete muset požádat o kvótu pro další jádra. Další informace najdete v tématu věnovaném [důvěrným výpočetním řešením na virtuálních počítačích Azure](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) . 
+    > Při nasazování DCsv2-Series virtuálních počítačů v Azure jsou k dispozici nějaká omezení. Možná budete muset požádat o kvótu pro další jádra. Další informace najdete v tématu věnovaném [důvěrným výpočetním řešením na virtuálních počítačích Azure](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) . 
 
 1. Vyberte dostupnou oblast.
 1. Do pole **název uzlu** zadejte název vašeho virtuálního počítače. 

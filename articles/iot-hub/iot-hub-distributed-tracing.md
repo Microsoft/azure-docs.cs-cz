@@ -14,10 +14,10 @@ ms.custom:
 - fasttrack-edit
 - iot
 ms.openlocfilehash: 3e3dd49c622c1a35571fdb53af470789dc9a26bb
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462032"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv ze zařízení do cloudu Azure IoT pomocí distribuované trasování (Preview)
@@ -169,7 +169,7 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
     cmake --build . --target iothub_ll_telemetry_sample --config Debug
     ```
 
-1. Aplikaci spusťte. Zařízení odešle telemetrii podporující distribuované trasování.
+1. Spusťte aplikaci. Zařízení odešle telemetrii podporující distribuované trasování.
 
     ```cmd
     Debug/iothub_ll_telemetry_sample.exe

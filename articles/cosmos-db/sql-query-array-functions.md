@@ -8,17 +8,17 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 2a4033088a9152363a91c368109136062cace4ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85563498"
 ---
 # <a name="array-functions-azure-cosmos-db"></a>Funkce pole (Azure Cosmos DB)
 
 Funkce pole umožňují provádět operace s poli v Azure Cosmos DB.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
 Následující skalární funkce provádějí operaci na vstupní hodnotě pole a vracejí číselnou, logickou nebo hodnotu pole:
 
@@ -34,6 +34,6 @@ Následující skalární funkce provádějí operaci na vstupní hodnotě pole 
 ## <a name="next-steps"></a>Další kroky
 
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)
 - [Uživatelsky definované funkce](sql-query-udfs.md)
 - [Agregace](sql-query-aggregates.md)

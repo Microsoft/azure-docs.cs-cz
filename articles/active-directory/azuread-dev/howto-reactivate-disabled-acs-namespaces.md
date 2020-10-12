@@ -14,10 +14,10 @@ ms.reviewer: jlu
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7bb572e9e22519491290e54417f5ca350d6c0b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383713"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Postupy: opětovná aktivace zakázaných oborů názvů Access Control Service
@@ -99,7 +99,7 @@ Další rozšíření již nebudou automaticky schválena. Pokud k migraci potř
     | **Služba** | `All services` |
     | **Prostředek** | `General question/Resource not available` |
     | **Typ problému** | `ACS to SAS Migration` |
-    | **Subjekt** | Popište problém. |
+    | **Předmět** | Popište problém. |
 
    ![Ukazuje příklad nové žádosti o technickou podporu.](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
 

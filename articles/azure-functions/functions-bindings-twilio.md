@@ -7,10 +7,10 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, H1Hack27Feb2017
 ms.openlocfilehash: 9a3ffeb4ff58cc4af2309268f1a95cd9d354de8b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88206632"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Twilio vazba pro Azure Functions
@@ -327,15 +327,15 @@ Umístěte anotaci [TwilioSmsOutput](/java/api/com.microsoft.azure.functions.ann
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `TwilioSms` atribut.
 
-| V1 function.jsu vlastnosti | V2 function.jsvlastnost | Vlastnost atributu |Popis|
+| V1 function.jsu vlastnosti | V2 function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|---------|----------------------|
 |**textový**|**textový**| musí být nastaven na hodnotu `twilioSms` .|
 |**směr**|**směr**| musí být nastaven na hodnotu `out` .|
 |**Jméno**|**Jméno**| Název proměnné použitý v kódu funkce pro textovou zprávu SMS Twilio. |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| Tato hodnota musí být nastavená na název nastavení aplikace, které obsahuje váš účet Twilio SID ( `TwilioAccountSid` ). Pokud není nastavená, výchozí název nastavení aplikace je "AzureWebJobsTwilioAccountSid". |
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| Tato hodnota musí být nastavená na název nastavení aplikace, které obsahuje váš ověřovací token Twilio ( `TwilioAccountAuthToken` ). Pokud není nastavená, výchozí název nastavení aplikace je "AzureWebJobsTwilioAuthToken". |
-|**na**| Není k dispozici – zadejte v kódu | **Schopn**| Tato hodnota je nastavená na telefonní číslo, na které se pošle text SMS.|
-|**Výsledkem**|**Výsledkem** | **Výsledkem**| Tato hodnota je nastavená na telefonní číslo, ze kterého se posílá text SMS.|
+|**schopn**| Není k dispozici – zadejte v kódu | **Záměr**| Tato hodnota je nastavená na telefonní číslo, na které se pošle text SMS.|
+|**Výsledkem**|**Výsledkem** | **Z**| Tato hodnota je nastavená na telefonní číslo, ze kterého se posílá text SMS.|
 |**těles**|**těles** | **Text**| Tato hodnota se dá použít k zakódování textové zprávy SMS, pokud ji nemusíte dynamicky nastavovat v kódu pro vaši funkci. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

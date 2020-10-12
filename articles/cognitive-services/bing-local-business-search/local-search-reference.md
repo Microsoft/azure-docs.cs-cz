@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: d5de1cc606f97655427c0c86aea0c5c722e1bab8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84171459"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Referenční informace o rozhraní API pro vyhledávání místních obchodních v7 Bingu
@@ -50,7 +50,7 @@ Tento požadavek musí používat protokol HTTPS.
 ## <a name="headers"></a>Hlavičky  
 Následují hlavičky, které může obsahovat požadavek a odpověď.  
   
-|Záhlaví|Popis|  
+|Záhlaví|Description|  
 |------------|-----------------|  
 |Přijmout|Nepovinná hlavička požadavku.<br /><br /> Výchozí typ média je Application/JSON. Chcete-li určit, že odpověď používá [JSON-ld](https://json-ld.org/), nastavte hlavičku Accept na Application/ld + JSON.|  
 |<a name="acceptlanguage"></a>Accept-Language|Nepovinná hlavička požadavku.<br /><br /> Čárkami oddělený seznam jazyků pro řetězce uživatelského rozhraní. Seznam je v sestupném pořadí podle priority. Další informace včetně očekávaného formátu najdete v [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Tato hlavička a parametr dotazu [setLang](#setlang) se vzájemně vylučují &mdash; nezadávejte obojí.<br /><br /> Pokud tuto hlavičku nastavíte, musíte zadat také parametr dotazu cc. K určení trhu, pro který se mají vracet výsledky, Bing použije první podporovaný jazyk, který najde v seznamu, a zkombinuje ho s hodnotou parametru `cc`. Pokud seznam jazyků podporovaný jazyk neobsahuje, Bing najde nejbližší jazyk a trh, který požadavek podporuje, nebo pro výsledky použije agregovaný nebo výchozí trh. Pokud chcete zjistit, který trh Bing použil, podívejte se do hlavičky BingAPIs-Market.<br /><br /> Tuto hlavičku a parametr dotazu `cc` použijte jenom v případě, že zadáte více jazyků. Jinak použijte parametry dotazu [mkt](#mkt) a [setLang](#setlang).<br /><br /> Řetězec uživatelského rozhraní je řetězec, který se používá jako popisek v uživatelském rozhraní. V objektech odpovědí JSON je několik řetězců uživatelského rozhraní. Zadaný jazyk použijí všechny odkazy na vlastnosti Bing.com v objektech odpovědi.|  
@@ -75,7 +75,7 @@ Požadavek může obsahovat následující parametry dotazu. Požadované parame
 |----------|-----------|----------|--------------|
 |<a name="count"></a>výpočtu|Počet výsledků, které se mají vrátit, počínaje indexem určeného `offset` parametrem.|Řetězec|No|   
 |<a name="localCategories"></a>localCategories|Seznam možností definujících hledání podle obchodních kategorií.  Zobrazit [Hledání kategorií místních obchodů](local-categories.md)|Řetězec|No|  
-|<a name="mkt"></a>mkt|Trh, odkud pochází výsledky. <br /><br />Seznam možných hodnot trhu najdete v tématu kódy trhů.<br /><br /> **Poznámka:** Rozhraní API pro místní vyhledávání v současnosti podporuje jenom trh a jazyk EN-US.<br /><br />|Řetězec|Ano|
+|<a name="mkt"></a>mkt|Trh, odkud pochází výsledky. <br /><br />Seznam možných hodnot trhu najdete v tématu kódy trhů.<br /><br /> **Poznámka:** Rozhraní API pro místní vyhledávání v současnosti podporuje jenom trh a jazyk EN-US.<br /><br />|Řetězec|Yes|
 |<a name="offset"></a>polohy|Index pro zahájení výsledků zadaných `count` parametrem.|Integer|No|  
 |<a name="query"></a>č|Hledaný termín uživatele.|Řetězec|No|  
 |<a name="responseformat"></a>responseFormat|Typ média, který se má použít pro odpověď Níže jsou uvedené možné hodnoty nerozlišující malá a velká písmena.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Výchozí hodnota je JSON. Informace o objektech JSON, které odpověď obsahuje, naleznete v tématu [objekty Response](#response-objects).<br /><br />  Pokud zadáte JsonLd, tělo odpovědi zahrnuje objekty JSON-LD, které obsahují výsledky hledání. Informace o formátu JSON-LD najdete v tématu [JSON-ld](https://json-ld.org/).|Řetězec|No|  
@@ -87,15 +87,15 @@ Požadavek může obsahovat následující parametry dotazu. Požadované parame
 Níže jsou uvedené objekty odpovědi JSON, které může odpověď zahrnovat. Pokud je požadavek úspěšný, objekt nejvyšší úrovně v odpovědi je objekt [SearchResponse](#searchresponse) . Pokud se požadavek nezdařil, objekt nejvyšší úrovně je objekt [ErrorResponse](#errorresponse) .
 
 
-|Objekt|Popis|  
+|Objekt|Description|  
 |------------|-----------------|  
-|[Místo](#place)|Definuje informace o místních firmách, jako je restaurace nebo Hotel.|  
+|[Místa](#place)|Definuje informace o místních firmách, jako je restaurace nebo Hotel.|  
 
   
 ### <a name="error"></a>Chyba  
 Definuje chybu, ke které došlo.  
   
-|Prvek|Popis|Typ|  
+|Element|Popis|Typ|  
 |-------------|-----------------|----------|  
 |<a name="error-code"></a>znakovou|Kód chyby, který identifikuje kategorii chyby. Seznam možných kódů naleznete v tématu [kódy chyb](#error-codes).|Řetězec|  
 |<a name="error-message"></a>Zpráva|Popis chyby.|Řetězec|  
@@ -136,7 +136,7 @@ Definuje součásti hypertextového odkazu.
 
 
   
-### <a name="organization"></a>Má organizace  
+### <a name="organization"></a>Organizace  
 Definuje vydavatele.  
   
 Všimněte si, že Vydavatel může poskytnout svůj název nebo web nebo obojí.  
@@ -165,7 +165,7 @@ Definuje informace o místních firmách, jako je restaurace nebo Hotel.
 ### <a name="querycontext"></a>QueryContext  
 Definuje kontext dotazu, který Bing použil pro požadavek.  
   
-|Prvek|Popis|Typ|  
+|Element|Popis|Typ|  
 |-------------|-----------------|----------|  
 |adultIntent|Logická hodnota, která označuje, zda má zadaný dotaz záměr k dospělému. Hodnota je **true** , pokud má dotaz záměr k dospělému; v opačném případě **false**.|Logická hodnota|  
 |alterationOverrideQuery|Řetězec dotazu, který se má použít k vynucení použití původního řetězce v Bingu. Například pokud je řetězec dotazu *Saling downwind*, řetězec přepisu řetězce dotazu bude *+ Saling downwind*. Nezapomeňte zakódovat řetězec dotazu, který má za následek *% 2Bsaling + downwind*.<br /><br /> Toto pole je zahrnuto pouze v případě, že původní řetězec dotazu obsahuje pravopisnou chybu.|Řetězec|  
@@ -194,7 +194,7 @@ Definuje položku výsledku hledání, která se má zobrazit.
 |resultIndex|Index položky vycházející z nuly v odpovědi, která se má zobrazit Pokud tato položka neobsahuje toto pole, zobrazí všechny položky v odpovědi. Můžete například zobrazit všechny články v odpovědi na zprávy.|Integer|
 |answerType|Odpověď obsahující položku, která se má zobrazit Například zprávy.<br /><br />Pomocí typu vyhledejte odpověď v objektu SearchResponse. Typ je název pole SearchResponse.<br /><br /> Typ odpovědi však použijte pouze v případě, že tento objekt obsahuje pole hodnota. v opačném případě tuto chybu ignorujte.|Řetězec|
 |textualIndex|Index odpovědi v textualAnswers, který se má zobrazit| Celé číslo bez znaménka|
-|hodnota|ID, které identifikuje odpověď pro zobrazení nebo položku odpovědi, která se má zobrazit Pokud ID identifikuje odpověď, zobrazí všechny položky odpovědi.|Identifikovatelné údaje|
+|value|ID, které identifikuje odpověď pro zobrazení nebo položku odpovědi, která se má zobrazit Pokud ID identifikuje odpověď, zobrazí všechny položky odpovědi.|Identifikovatelné údaje|
 
 ### <a name="rankingresponse"></a>RankingResponse  
 Definuje, kde má být obsah stránky výsledků hledání umístěn a v jakém pořadí.  
@@ -221,7 +221,7 @@ Všimněte si, že pokud by služba způsobila útok DoS (Denial of Service), po
 
 Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.  
   
-|Stavový kód|Popis|  
+|Stavový kód|Description|  
 |-----------------|-----------------|  
 |200|Úspěch.|  
 |400|Jeden z parametrů dotazu chybí nebo je neplatný.|  
@@ -261,7 +261,7 @@ Pokud se požadavek nepovede, odpověď obsahuje objekt [ErrorResponse](#errorre
 
 Níže jsou možné kódy chyb a hodnoty kódu dílčí chyby.
 
-|Kód|Podřízeného kódu|Popis
+|Kód|Podřízeného kódu|Description
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Stavový kód HTTP je 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokované|Bing vrátí InvalidRequest, pokud jakákoli část požadavku není platná. Například povinný parametr chybí nebo hodnota parametru není platná.<br/><br/>Pokud se jedná o chybu ParameterMissing nebo ParameterInvalidValue, kód stavu HTTP je 400.<br/><br/>Pokud místo protokolu HTTPS použijete protokol HTTP, Bing vrátí HttpNotAllowed a kód stavu HTTP je 410.

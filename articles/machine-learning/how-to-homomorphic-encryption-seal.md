@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: b241220168a5cd81ce23be729944df387e87e567
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844538"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>Nasazení šifrované webové služby Inferencing (Preview)
@@ -60,7 +60,7 @@ V poznámkovém bloku Jupyter
     > [!NOTE]
     > `encrypted-inference`Balíček je momentálně ve verzi Preview.
 
-    [`encrypted-inference`](https://pypi.org/project/encrypted-inference)je knihovna, která obsahuje vazby pro šifrované Inferencing založené na [Microsoft Seal](https://github.com/Microsoft/SEAL).
+    [`encrypted-inference`](https://pypi.org/project/encrypted-inference) je knihovna, která obsahuje vazby pro šifrované Inferencing založené na [Microsoft Seal](https://github.com/Microsoft/SEAL).
 
     ```python
     !pip install encrypted-inference==0.9

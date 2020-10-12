@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86133699"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Nastavení zotavení po havárii pro nasazení aplikace NetWeaver SAP ve více vrstvách
@@ -141,7 +141,7 @@ Nejčastěji používané Site Recovery skripty můžete nasadit do svého účt
 [![Nasazení do Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. Přidejte skript před akcemi do skupiny 1, který převezme služby při selhání skupinou dostupnosti SQL Server. Použijte skript ASR-SQL-FailoverAG, který je publikovaný ve vzorových skriptech. Postupujte podle pokynů ve skriptu a patřičně proveďte požadované změny ve skriptu.
-1. Přidejte skript po akci, který připojí nástroj pro vyrovnávání zatížení do virtuálních počítačů s podporou převzetí služeb při selhání webové vrstvy (skupina 1). Použijte skript ASR-AddSingleLoadBalancer, který je publikovaný ve vzorových skriptech. Postupujte podle pokynů ve skriptu a podle potřeby proveďte požadované změny ve skriptu.
+1. Přidejte skript po akci, který připojí nástroj pro vyrovnávání zatížení do virtuálních počítačů s podporou převzetí služeb při selhání webové vrstvy (skupina 1). Použijte skript ASR-AddSingleLoadBalancer publikovaný ve vzorových skriptech. Postupujte podle pokynů ve skriptu a podle potřeby proveďte požadované změny ve skriptu.
 
 ![Plán obnovení SAP](./media/site-recovery-sap/sap_recovery_plan.png)
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: guybo
 ms.openlocfilehash: 80272896bd314a1f5f05094afa83568e077ab480
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87368196"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Příprava virtuálního pevného disku Debian pro Azure
@@ -24,7 +24,7 @@ V této části se předpokládá, že jste už nainstalovali operační systém
 * Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent Azure Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor. Další informace najdete v následujících krocích.
 * Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v [poznámkách k instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes).
 
-## <a name="use-azure-manage-to-create-debian-vhds"></a>Použití Azure-Manage k vytváření virtuálních pevných disků Debian
+## <a name="use-azure-manage-to-create-debian-vhds"></a>Vytvoření VHD Debian pomocí Azure-Manage
 K dispozici jsou nástroje pro generování Debian VHD pro Azure, například skripty [Azure-Manage](https://github.com/credativ/azure-manage) z [credativ](https://www.credativ.com/). Toto je doporučený přístup a vytvoření obrázku od začátku. Pokud třeba chcete vytvořit virtuální pevný disk Debian 8, spusťte následující příkazy ke stažení `azure-manage` nástroje (a závislostí) a spusťte tento `azure_build_image` skript:
 
 ```console

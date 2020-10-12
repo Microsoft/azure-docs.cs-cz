@@ -4,10 +4,10 @@ description: Zpráva k vydání verze Azure Event Grid v IoT Edge
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: a7582750f5230f02c784b14f50dfc6efa7af8698
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171410"
 ---
 # <a name="release-notes-azure-event-grid-on-iot-edge"></a>Poznámky k verzi: Azure Event Grid v IoT Edge
@@ -28,7 +28,7 @@ Počáteční verze Azure Event Grid v IoT Edge Zahrnuté funkce:
 * Trvalý stav pro metadata
 * Integrace modulu BLOB Storage
 
-Značky`1.0.0-preview1`
+Značky `1.0.0-preview1`
 
 ## <a name="100-preview2"></a>1.0.0 – preview2
 
@@ -42,4 +42,4 @@ Verze Preview 2 Azure Event Grid IoT Edge přidána:
 * Publikování pro Service Bus témata jako cíl
 * Publikovat do front úložiště jako cíl
 
-Značky: `1.0.0-preview2` , `1.0` ,`latest`
+Značky: `1.0.0-preview2` , `1.0` , `latest`

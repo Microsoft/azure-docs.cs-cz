@@ -12,10 +12,10 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d95b45b9be0893282a532bae9ec0278c3a141686
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385922"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Správa Azure AD B2C s využitím Microsoft Graph
@@ -80,7 +80,7 @@ Pokud vaše aplikace nebo skript potřebuje odstranit uživatele nebo aktualizov
 1. Vyberte roli **správce uživatele** .
 1. Vyberte **Přidat přiřazení**.
 1. Do textového pole pro **Výběr** zadejte název aplikace, kterou jste zaregistrovali dříve, například *managementapp1*. Vyberte aplikaci, která se zobrazí ve výsledcích hledání.
-1. Vyberte možnost **Přidat**. Aby bylo možné plně šířit oprávnění, může trvat několik minut.
+1. Vyberte **Přidat**. Aby bylo možné plně šířit oprávnění, může trvat několik minut.
 
 ## <a name="next-steps"></a>Další kroky
 Teď, když jste zaregistrovali aplikaci pro správu a udělili jí požadovaná oprávnění, můžou vaše aplikace a služby (například Azure Pipelines) používat své přihlašovací údaje a oprávnění k interakci s rozhraním Microsoft Graph API. 
