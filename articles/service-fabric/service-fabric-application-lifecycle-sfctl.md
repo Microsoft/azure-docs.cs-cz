@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
 ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711030"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Správa aplikace Service Fabric Azure pomocí Azure Service Fabric CLI (sfctl)
@@ -73,7 +73,7 @@ Chcete-li odstranit balíček aplikace z úložiště imagí, použijte následu
 sfctl store delete --content-path app_package_dir
 ```
 
-`content-path`musí se jednat o název adresáře, který jste nahráli při vytváření aplikace.
+`content-path` musí se jednat o název adresáře, který jste nahráli při vytváření aplikace.
 
 ### <a name="create-an-application-from-an-application-type"></a>Vytvoření aplikace z typu aplikace
 
@@ -83,7 +83,7 @@ Po zřízení aplikace použijte následující příkaz k pojmenování a vytvo
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
-`app-name`je název, který chcete použít pro instanci aplikace. Můžete získat další parametry z dříve zřízeného manifestu aplikace.
+`app-name` je název, který chcete použít pro instanci aplikace. Můžete získat další parametry z dříve zřízeného manifestu aplikace.
 
 Název aplikace musí začínat předponou `fabric:/` .
 

@@ -4,10 +4,10 @@ description: Tento článek obsahuje koncepční informace o diagnostických pro
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: c8f6734d9d43887d0eb0bb90bb08f727732feac3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86116739"
 ---
 #  <a name="diagnostic-logs-for-azure-event-grid-topicsdomains"></a>Diagnostické protokoly pro Azure Event Grid témata/domény
@@ -16,9 +16,9 @@ Nastavení diagnostiky umožňuje Event Grid uživatelům zachytit a zobrazit pr
 
 ## <a name="schema-for-publishdelivery-failure-logs"></a>Schéma pro protokoly selhání publikování a doručení
 
-| Název vlastnosti | Datový typ | Description |
+| Název vlastnosti | Datový typ | Popis |
 | ------------- | --------- | ----------- | 
-| Čas | DateTime | Čas, kdy byla položka protokolu vygenerována <p>**Příklad hodnoty:** 01-29-2020 09:52:02.700</p> |
+| Čas | DateTime | Čas, kdy byla položka protokolu vygenerována <p>**Příklad hodnoty:**  01-29-2020 09:52:02.700</p> |
 | EventSubscriptionName | Řetězec | Název odběru události <p>**Ukázková hodnota:** "EVENTSUB1"</p> <p>Tato vlastnost existuje pouze pro protokoly selhání doručení.</p>  |
 | Kategorie | Řetězec | Název kategorie protokolu <p>**Příklady hodnot:** "DeliveryFailures" nebo "PublishFailures" | 
 | OperationName | Řetězec | Název operace provedené při výskytu chyby.<p>**Příklady hodnot:** "Doručení" pro chyby doručení. |

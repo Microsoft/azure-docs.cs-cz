@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 05/25/2020
 ms.openlocfilehash: fc1532fab23ec520722ea71d814496e786b91651
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617910"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Časová pásma ve spravované instanci Azure SQL
@@ -34,7 +34,7 @@ Sada podporovaných časových pásem je děděna ze základního operačního s
 
 [Zásady letního času a časového pásma pro letní](https://aka.ms/time) čas garantuje historickou přesnost od 2010 do výše.
 
-Seznam s názvy podporovaných časových pásem je zveřejněn prostřednictvím zobrazení [Sys. time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) System.
+Seznam s názvy podporovaných časových pásem je zveřejněn prostřednictvím zobrazení systému [Sys.time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) .
 
 ## <a name="set-a-time-zone"></a>Nastavení časového pásma
 
@@ -144,7 +144,7 @@ Použití stejného časového pásma v rámci primární a sekundární instanc
 | Saint-Pierre (běžný čas) | (UTC-03:00) Saint-Pierre a Miquelon |
 | Bahia ((běžný čas) | (UTC-03:00) Salvador |
 | UTC-02 | (UTC-02:00) Koordinovaný univerzální čas-02 |
-| Střední Atlantik (běžný čas) | (UTC-02:00) Střední Atlantik – starý |
+| Mid-Atlantic běžný čas) | (UTC-02:00) Mid-Atlantic – staré |
 | Azory (běžný čas) | (UTC-01:00) Azory |
 | Cabo Verde (běžný čas) | (UTC-01:00) Cabo Verde. |
 | UTC | Koordinovaný univerzální čas (UTC) |
@@ -199,7 +199,7 @@ Použití stejného časového pásma v rámci primární a sekundární instanc
 | Omsk (běžný čas) | (UTC + 06:00) Omsk |
 | Myanmar (běžný čas) | (UTC + 06:30) Yangon (Rangún) |
 | JIHOVÝCHODNÍ Asie (běžný čas) | (UTC + 07:00) Bangkok, Hanoj, Jakarta |
-| Altajský (běžný čas) | (UTC + 07:00) Barnaul, Gorno-Altajsk |
+| Altajský (běžný čas) | (UTC + 07:00) Barnaul, Gorno-Altaysk |
 | W. Mongolsko (běžný čas) | (UTC + 07:00) Chovd |
 | Severní Asie (běžný čas) | (UTC + 07:00) Krasnojarsk |
 | N. Střední Asie (běžný čas) | (UTC + 07:00) Novosibirsk |
@@ -230,20 +230,20 @@ Použití stejného časového pásma v rámci primární a sekundární instanc
 | Norfolk (běžný čas) | (UTC + 11:00) Ostrov Norfolk |
 | Sachalin (běžný čas) | (UTC + 11:00) Sachalin |
 | Střední Tichomoří (běžný čas) | (UTC + 11:00) Šalamounovy ostrovy, Nová Kaledonie |
-| Rusko – časové pásmo 11 | (UTC + 12:00) Anadyr, Petropavlovsk-Kamčatskij |
+| Rusko – časové pásmo 11 | (UTC + 12:00) Anadyr, Petropavlovsk-Kamchatsky |
 | Nový Zéland (běžný čas) | (UTC + 12:00) Auckland, Wellington |
 | UTC + 12 | (UTC + 12:00) Koordinovaný světový čas + 12 |
 | Fidži (běžný čas) | (UTC + 12:00) Fidži |
-| Kamčatka (běžný čas) | (UTC + 12:00) Petropavlovsk-Kamčatskij – starý |
+| Kamčatka (běžný čas) | (UTC + 12:00) Petropavlovsk-Kamchatsky – staré |
 | Chathamovy ostrovy (běžný čas) | (UTC + 12:45) Chathamovy ostrovy |
 | UTC + 13 | (UTC + 13:00) Koordinovaný světový čas + 13 |
 | Tonga (běžný čas) | (UTC + 13:00) Nuku ' Alofa |
 | Samoa (běžný čas) | (UTC + 13:00) Samoa |
 | Ostrovy line (běžný čas) | (UTC + 14:00) Kiritimati ostrov |
 
-## <a name="see-also"></a>Viz také: 
+## <a name="see-also"></a>Viz také 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [CURRENT_TIMEZONE_ID (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-id-transact-sql)
 - [V ČASOVÉm PÁSMu (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
-- [sys. time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)
+- [sys.time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)

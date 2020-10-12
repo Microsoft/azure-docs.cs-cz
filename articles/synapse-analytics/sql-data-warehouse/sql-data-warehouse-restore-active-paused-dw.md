@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: dead71d08b5a7a16871816580107c8aed8a0a77c
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405101"
 ---
 # <a name="restore-an-existing-sql-pool"></a>Obnovit existující fond SQL
@@ -91,13 +91,13 @@ $RestoredDatabase.status
 
 ## <a name="restore-an-existing-sql-pool-through-the-azure-portal"></a>Obnovte stávající fond SQL prostřednictvím Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Přejděte do fondu SQL, ze kterého chcete obnovit.
 3. V horní části okna Přehled vyberte **obnovit**.
 
     ![ Obnovení – přehled](./media/sql-data-warehouse-restore-active-paused-dw/restoring-01.png)
 
-4. Vyberte buď **body automatického obnovení** nebo **body obnovení definované uživatelem**. Pokud fond SQL neobsahuje žádné body automatického obnovení, počkejte několik hodin nebo před obnovením vytvořte uživatelem definovaný bod obnovení. V případě uživatelem definovaných bodů obnovení vyberte existující nebo vytvořte novou. V případě **serveru**můžete vybrat server v jiné skupině prostředků a oblasti nebo vytvořit nový. Po zadání všech parametrů klikněte na **zkontrolovat + obnovit**.
+4. Vyberte buď **body automatického obnovení** nebo **body obnovení definované uživatelem**. Pokud fond SQL neobsahuje žádné body automatického obnovení, počkejte několik hodin nebo před obnovením vytvořte uživatelem definovaný bod obnovení. U User-Defined bodů obnovení vyberte existující nebo vytvořte novou. V případě **serveru**můžete vybrat server v jiné skupině prostředků a oblasti nebo vytvořit nový. Po zadání všech parametrů klikněte na **zkontrolovat + obnovit**.
 
     ![Automatické body obnovení](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 

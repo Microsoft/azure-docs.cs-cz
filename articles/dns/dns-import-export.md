@@ -9,10 +9,10 @@ ms.date: 7/30/2020
 ms.author: rohink
 ms.topic: how-to
 ms.openlocfilehash: 8f17d7f32d774cac283ec335c372e8f68d50931f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87424218"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Import a export souboru zóny DNS pomocí Azure CLI
@@ -69,9 +69,9 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
 
 Hodnoty:
 
-* `<resource group>`je název skupiny prostředků pro zónu v Azure DNS.
-* `<zone name>`je název zóny.
-* `<zone file name>`je cesta nebo název souboru zóny, který se má importovat.
+* `<resource group>` je název skupiny prostředků pro zónu v Azure DNS.
+* `<zone name>` je název zóny.
+* `<zone file name>` je cesta nebo název souboru zóny, který se má importovat.
 
 Pokud ve skupině prostředků neexistuje zóna s tímto názvem, vytvoří se pro vás. Pokud již zóna existuje, importované sady záznamů budou sloučeny s existujícími sadami záznamů. 
 
@@ -163,9 +163,9 @@ az network dns zone export -g <resource group> -n <zone name> -f <zone file name
 
 Hodnoty:
 
-* `<resource group>`je název skupiny prostředků pro zónu v Azure DNS.
-* `<zone name>`je název zóny.
-* `<zone file name>`je cesta nebo název souboru zóny, který má být exportován.
+* `<resource group>` je název skupiny prostředků pro zónu v Azure DNS.
+* `<zone name>` je název zóny.
+* `<zone file name>` je cesta nebo název souboru zóny, který má být exportován.
 
 Stejně jako u importu zóny se nejprve musíte přihlásit, zvolit předplatné a nakonfigurovat rozhraní příkazového řádku Azure CLI tak, aby používalo režim Správce prostředků.
 

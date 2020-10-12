@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
 ms.openlocfilehash: 59e064dc2b9d33bda966eb50544c8383b0394dd3
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566598"
 ---
 # <a name="translator-30-translate"></a>Překladatel 3,0: překlad
@@ -37,7 +37,7 @@ Parametry žádosti předané řetězci dotazu jsou:
 
 <table width="100%">
   <th width="20%">Parametr dotazu</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>verze-api</td>
     <td><em>Povinný parametr</em>.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být <code>3.0</code> .</td>
@@ -52,7 +52,7 @@ Parametry žádosti předané řetězci dotazu jsou:
 
 <table width="100%">
   <th width="20%">Parametr dotazu</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>Výsledkem</td>
     <td><em>Volitelný parametr</em>.<br/>Určuje jazyk vstupního textu. Najděte jazyky, ze kterých jsou k dispozici pro překlad, vyhledáním <a href="./v3-0-languages.md">podporovaných jazyků</a> pomocí <code>translation</code> oboru. Pokud <code>from</code> parametr není zadán, použije se pro určení zdrojového jazyka automatické zjišování jazyka. <br/><br/><code>from</code>Při použití funkce <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamického slovníku</a> musíte použít parametr, nikoli funkci autodetection.</td>
@@ -104,7 +104,7 @@ Hlavičky požadavku zahrnují:
 
 <table width="100%">
   <th width="20%">Hlavičky</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>Ověřovací hlavičky (y)</td>
     <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
@@ -182,7 +182,7 @@ Příklad odpovědí JSON je uveden v části [Příklady](#examples) .
 
 <table width="100%">
   <th width="20%">Hlavičky</th>
-  <th>Popis</th>
+  <th>Description</th>
     <tr>
     <td>X-RequestId</td>
     <td>Hodnota, kterou služba vygenerovala k identifikaci požadavku. Používá se pro účely řešení potíží.</td>
@@ -199,7 +199,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
 
 <table width="100%">
   <th width="20%">Stavový kód</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>Úspěch.</td>

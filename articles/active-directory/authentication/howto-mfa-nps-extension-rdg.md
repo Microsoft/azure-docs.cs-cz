@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a75b6be3796a21e3f765ad69eee0578d5f2e9d0
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717842"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace infrastruktury Brána vzdálené plochy pomocí rozšíření serveru NPS (Network Policy Server) a Azure AD
@@ -51,15 +51,15 @@ Brána VP je možné nakonfigurovat tak, aby používala centrální úložišt�
 
 Když je rozšíření serveru NPS pro Azure integrované s NPS a Brána vzdálené plochy, je postup úspěšného ověřování následující:
 
-1. Server Brána vzdálené plochy obdrží požadavek na ověření od uživatele vzdálené plochy pro připojení k prostředku, jako je například relace vzdálené plochy. V případě klienta RADIUS Brána vzdálené plochy Server převede požadavek na zprávu s požadavkem na přístup k protokolu RADIUS a pošle zprávu na server RADIUS (NPS), na kterém je rozšíření NPS nainstalované.
+1. Server Brána vzdálené plochy obdrží požadavek na ověření od uživatele vzdálené plochy pro připojení k prostředku, jako je například relace vzdálené plochy. V případě klienta RADIUS Brána vzdálené plochy Server převede požadavek na zprávu Access-Request protokolu RADIUS a pošle zprávu na server RADIUS (NPS), na kterém je rozšíření NPS nainstalované.
 1. Kombinace uživatelského jména a hesla se ověřuje ve službě Active Directory a uživatel je ověřený.
 1. Pokud jsou splněné všechny podmínky uvedené v žádosti o připojení serveru NPS a zásady sítě (například omezení času nebo členství ve skupinách), rozšíření serveru NPS vyvolá požadavek na sekundární ověřování pomocí Azure MFA.
 1. Azure MFA komunikuje s Azure AD, načítá podrobnosti o uživateli a provádí sekundární ověřování pomocí podporovaných metod.
 1. Po úspěšném ověření MFA Azure MFA sdělí výsledek rozšíření serveru NPS.
-1. Server NPS, ve kterém je rozšíření nainstalované, pošle na Brána vzdálené plochy Server zprávu o přístupu přes protokol RADIUS pro zásady CAP k vzdálené ploše.
+1. Server NPS, ve kterém je rozšíření nainstalované, pošle na Brána vzdálené plochy Server zprávu RADIUS Access-Accept pro zásady CAP k vzdálené ploše.
 1. Uživateli je udělen přístup k požadovanému síťovému prostředku prostřednictvím Brána VP.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tato část podrobně popisuje požadavky nezbytné před integrací Azure MFA s Brána vzdálené plochy. Než začnete, musíte mít splněné následující požadavky.  
 

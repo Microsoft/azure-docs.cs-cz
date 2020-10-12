@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 6039eeed2e1bcb348920be986e72089164c614ae
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89392646"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurace zásad IPsec/IKE pro připojení S2S VPN nebo připojení typu VNet-to-VNet
@@ -83,7 +83,7 @@ Následující tabulka uvádí podporované kryptografické algoritmy a síly kl
 > 3. V tabulce výše:
 >    * IKEv2 odpovídá hlavnímu režimu nebo fázi 1.
 >    * Protokol IPsec odpovídá rychlému režimu nebo fázi 2.
->    * Skupina DH určuje skupinu Diffie-Hellmen použitou v hlavním režimu nebo fázi 1.
+>    * Skupina DH určuje Diffie-Hellmen skupinu použitou v hlavním režimu nebo ve fázi 1.
 >    * Skupina PFS zadala skupinu Diffie-Hellmen použitou v rychlém režimu nebo ve fázi 2.
 > 4. V branách Azure VPN Gateway je doba života přidružení zabezpečení protokolu IKEv2 v hlavním režimu pevně nastavena na 28 800 sekund.
 > 5. Nastavení "UsePolicyBasedTrafficSelectors" na $True v připojení nakonfiguruje bránu Azure VPN Gateway, aby se připojovala k místní bráně firewall sítě VPN na základě zásad. Pokud povolíte PolicyBasedTrafficSelectors, musíte zajistit, aby vaše zařízení VPN odpovídalo selektorům přenosu, které jsou definované se všemi kombinacemi předpon vaší místní sítě (místní síťová brána), a to místo any-to-Any. Například pokud jsou předpony vaší místní sítě 10.1.0.0/16 a 10.2.0.0/16 a předpony vaší virtuální sítě jsou 192.168.0.0/16 a 172.16.0.0/16, je potřeba zadat následující selektory provozu:
@@ -94,7 +94,7 @@ Následující tabulka uvádí podporované kryptografické algoritmy a síly kl
 
 Další informace o selektorech provozu na základě zásad najdete v tématu [připojení několika místních zařízení VPN založených na zásadách](vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
-V následující tabulce jsou uvedeny odpovídající skupiny Diffie-Hellman podporované vlastními zásadami:
+Následující tabulka obsahuje seznam odpovídajících skupin Diffie-Hellman podporovaných vlastními zásadami:
 
 | **Skupina Diffie-Hellman**  | **DHGroup**              | **PFSGroup** | **Délka klíče** |
 | --- | --- | --- | --- |

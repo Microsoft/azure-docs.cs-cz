@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/12/2019
 ms.openlocfilehash: 4926e18aa6b00fe36608843ea5253903ace774e2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90089104"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Prostředí Simple Logs v Azure Monitor (Preview)
@@ -20,7 +20,7 @@ Azure Monitor poskytuje [bohatou zkušenost](get-started-portal.md) pro vytvář
 > Jednoduché protokoly jsou nyní implementovány jako test pouze pro Cosmos DB a trezory klíčů. Sdílejte prosím své zkušenosti s Microsoftem prostřednictvím [uživatelského hlasu](https://feedback.azure.com/forums/913690-azure-monitor) , abychom zjistili, jestli tuto funkci rozbalíme a uvolníte.
 
 
-## <a name="scope"></a>Obor
+## <a name="scope"></a>Rozsah
 Rozhraní Simple log načítá data z tabulky *AzureDiagnostics*, *AzureMetrics*a *AzureActivity* pro vybraný prostředek. 
 
 ## <a name="using-simple-logs"></a>Používání jednoduchých protokolů

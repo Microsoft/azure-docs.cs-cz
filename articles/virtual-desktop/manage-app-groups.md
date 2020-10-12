@@ -7,10 +7,10 @@ ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: beac9f64b12a07d2fc900099ee1f107e4981f17e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320213"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Kurz: Správa skupin aplikací pomocí Azure Portal
@@ -30,7 +30,7 @@ V tomto kurzu získáte informace o těchto tématech:
 
 Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Portal nebo PowerShellu, můžete přidat skupiny aplikací z Azure Portal pomocí následujícího postupu:
 
-1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1.  Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
    
     >[!NOTE]
     > Pokud se přihlašujete k portálu US Gov, použijte [https://portal.azure.us/](https://portal.azure.us/) místo toho.

@@ -4,10 +4,10 @@ description: Monitorujte aplikaci s využitím Azure Application Insights a inte
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.openlocfilehash: 1ed304e903bb50591e61e294b6701f8268f9d8e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081623"
 ---
 # <a name="application-security-detection-pack-preview"></a>Sada rozpoznávání zabezpečení aplikace (Preview)

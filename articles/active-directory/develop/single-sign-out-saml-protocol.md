@@ -1,6 +1,6 @@
 ---
 title: Protokol SAML pro jednotné odhlašování v Azure
-description: Tento článek popisuje protokol SAML jednotného odhlašování v Azure Active Directory
+description: Tento článek popisuje jeden Sign-Out protokol SAML v Azure Active Directory
 services: active-directory
 author: kenwith
 manager: CelesteDG
@@ -13,13 +13,13 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88118259"
 ---
-# <a name="single-sign-out-saml-protocol"></a>Protokol SAML pro jednotné odhlašování
+# <a name="single-sign-out-saml-protocol"></a>Jeden Sign-Out protokol SAML
 
 Azure Active Directory (Azure AD) podporuje profil jednotného přihlašování webového prohlížeče SAML 2,0. Aby jednotné přihlašování fungovalo správně, musí se **LogoutURL** pro aplikaci během registrace aplikace explicitně zaregistrovat ve službě Azure AD. Azure AD používá LogoutURL k přesměrování uživatelů poté, co se odhlásí.
 
@@ -40,9 +40,9 @@ Cloudová služba pošle `LogoutRequest` zprávu službě Azure AD, která indik
 ### <a name="logoutrequest"></a>LogoutRequest
 `LogoutRequest`Element odeslaný do Azure AD vyžaduje následující atributy:
 
-* `ID`– Identifikuje žádost o odhlášení. Hodnota `ID` by neměla začínat číslicí. Typický postup je připojit **ID** k řetězcové REprezentaci identifikátoru GUID.
-* `Version`-Nastavte hodnotu tohoto prvku na **2,0**. Tato hodnota se vyžaduje.
-* `IssueInstant`– Jedná se o `DateTime` řetězec s hodnotou souřadnic Universal Time (UTC) a [formátu Round-Trip ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings). Azure AD očekává hodnotu tohoto typu, ale neuplatní ji.
+* `ID` – Identifikuje žádost o odhlášení. Hodnota `ID` by neměla začínat číslicí. Typický postup je připojit **ID** k řetězcové REprezentaci identifikátoru GUID.
+* `Version` -Nastavte hodnotu tohoto prvku na **2,0**. Tato hodnota se vyžaduje.
+* `IssueInstant` – Jedná se o `DateTime` řetězec s hodnotou souřadnic Universal Time (UTC) a [formátu Round-Trip ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings). Azure AD očekává hodnotu tohoto typu, ale neuplatní ji.
 
 ### <a name="issuer"></a>Vystavitel
 `Issuer`Element v elementu `LogoutRequest` musí přesně odpovídat jednomu z **ServicePrincipalNames** v cloudové službě v Azure AD. Obvykle je tento parametr nastavený na **identifikátor URI ID aplikace** , který je zadaný při registraci aplikace.

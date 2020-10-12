@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů s řešeními VMware Azure pomoc
 description: Nakonfigurujte prostředí řešení Azure VMware pro zálohování virtuálních počítačů pomocí Azure Backup Server.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: a62bccb729cfa6aec89a3ce6de7283f5d9412428
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b8b5236a8da165efbb8e479e25b58872c4a735ee
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579902"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893012"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů s řešeními VMware Azure pomocí Azure Backup Server
 
@@ -105,36 +105,6 @@ VMware 6,7 a vyšší má TLS povolený jako komunikační protokol.
 
 1. Klikněte pravým tlačítkem na protokol TLS. Soubor REG a výběrem možnosti **Sloučit** nebo **otevřít** přidejte nastavení do registru.
 
-## <a name="add-the-provisioning-ip-address"></a>Přidat IP adresu zřizování 
-
-V průběhu verze Preview řešení Azure VMware nevyřešilo hostitele ESX z virtuálního počítače nasazeného ve virtuální síti. Je nutné provést další kroky, chcete-li přidat položku hostitelského souboru do virtuálního počítače s Azure Backup Server.
-
-### <a name="identify-the-ip-address-for-esxi-hosts"></a>Identifikace IP adresy pro hostitele ESXi
-
-1. Otevřete prohlížeč a přihlaste se k adresám URL vCenter. 
-
-   > [!TIP]
-   > Adresy URL můžete najít v [části připojení k místnímu vCenter vašeho privátního cloudu](tutorial-access-private-cloud.md#connect-to-the-local-vcenter-of-your-private-cloud).
-
-1. V klientovi vSphere vyberte cluster, pro který chcete povolit zálohování.
-
-   :::image type="content" source="media/azure-vmware-solution-backup/vsphere-client-select-host.png" alt-text="Webový klient vSphere":::
-
-1. Vyberte **Konfigurovat**  >  **síťové**  >  **adaptéry VMKernel**. V seznamu zařízení Identifikujte síťový adaptér, který má povolenou roli **zřizování** . Poznamenejte si **IP adresu** a název hostitele ESXi.
-
-   :::image type="content" source="media/azure-vmware-solution-backup/vmkernel-adapters-provisioning-enabled.png" alt-text="Webový klient vSphere":::
-
-1. Opakujte předchozí krok pro každého hostitele ESXi v rámci každého clusteru, pro který plánujete povolit zálohování.
-
-### <a name="update-the-host-file-on-azure-backup-server"></a>Aktualizujte soubor hostitele na Azure Backup Server
-
-1. Otevřete Poznámkový blok jako správce.
-
-1. Vyberte **soubor**  >  **otevřít**a vyhledejte c:\Windows\System32\Drivers\etc\hosts..
-
-1. Přidejte položku pro každého hostitele ESXi společně s IP adresou, kterou jste identifikovali v předchozí části.
-
-1. Uložte změny a zavřete Poznámkový blok.
 
 ## <a name="add-the-account-on-azure-backup-server"></a>Přidat účet na Azure Backup Server
 
