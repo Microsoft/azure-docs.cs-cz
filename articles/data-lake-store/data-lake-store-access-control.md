@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88190155"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu ve službě Azure Data Lake Storage Gen1
@@ -222,8 +222,8 @@ Umask pro Azure Data Lake Storage Gen1 je konstantní hodnota nastavená na 007.
 
 | komponenta umask     | Číselný tvar | Krátký tvar | Význam |
 |---------------------|--------------|------------|---------|
-| umask. owning_user   |    0         |   `---`      | Pro vlastnícího uživatele zkopírujte výchozí seznam řízení přístupu nadřazeného objektu do seznamu ACL podřízeného objektu. | 
-| umask. owning_group  |    0         |   `---`      | Pro vlastnící skupinu zkopírujte výchozí seznam řízení přístupu nadřazeného objektu do seznamu ACL podřízeného objektu. | 
+| umask.owning_user   |    0         |   `---`      | Pro vlastnícího uživatele zkopírujte výchozí seznam řízení přístupu nadřazeného objektu do seznamu ACL podřízeného objektu. | 
+| umask.owning_group  |    0         |   `---`      | Pro vlastnící skupinu zkopírujte výchozí seznam řízení přístupu nadřazeného objektu do seznamu ACL podřízeného objektu. | 
 | umask. other         |    7         |   `RWX`      | Pro jiné odeberte všechna oprávnění pro přístupový seznam ACL podřízeného objektu. |
 
 Hodnota umask používaná Azure Data Lake Storage Gen1 efektivně znamená, že hodnota pro jinou se nikdy nepřenáší ve výchozím nastavení u nových podřízených objektů – bez ohledu na to, co výchozí seznam ACL označuje. 

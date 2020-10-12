@@ -7,10 +7,10 @@ ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77152988"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení Gitu pro Azure App Service
@@ -152,7 +152,7 @@ Když použijete Git k publikování App Service aplikace v Azure, může se zob
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|Nezadali jste větev během `git push` nebo jste nenastavili `push.default` hodnotu v `.gitconfig` .|Spusťte `git push` znovu a určete hlavní větev: `git push azure master` .|
 |`src refspec [branchname] does not match any.`|Pokusili jste se odeslat do jiné jiné než hlavní větve na vzdáleném Azure.|Spusťte `git push` znovu a určete hlavní větev: `git push azure master` .|
 |`RPC failed; result=22, HTTP code = 5xx.`|K této chybě může dojít, pokud se pokusíte odeslat velké úložiště Git přes HTTPS.|Změňte konfiguraci Gitu na místním počítači, aby byla `postBuffer` větší. Například: `git config --global http.postBuffer 524288000`.|
-|`Error - Changes committed to remote repository but your web app not updated.`|Nasadili jste aplikaci Node.js s _package.jsv_ souboru, který určuje další požadované moduly.|`npm ERR!`Před touto chybou zkontrolujte chybové zprávy pro další kontext chyby. Níže jsou uvedené známé příčiny této chyby a odpovídající `npm ERR!` zprávy:<br /><br />**Nesprávně vytvořený package.jsv souboru**:`npm ERR! Couldn't read dependencies.`<br /><br />**Nativní modul nemá pro Windows binární distribuci**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />nebo <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
+|`Error - Changes committed to remote repository but your web app not updated.`|Nasadili jste aplikaci Node.js s _package.jsv_ souboru, který určuje další požadované moduly.|`npm ERR!`Před touto chybou zkontrolujte chybové zprávy pro další kontext chyby. Níže jsou uvedené známé příčiny této chyby a odpovídající `npm ERR!` zprávy:<br /><br />**Nesprávně vytvořený package.jsv souboru**: `npm ERR! Couldn't read dependencies.`<br /><br />**Nativní modul nemá pro Windows binární distribuci**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />– nebo – <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>Další zdroje
 

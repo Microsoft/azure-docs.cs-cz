@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57325363909664bb527c2e2101505641858c4285
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706264"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy ohledně služby Azure Multi-Factor Authentication
@@ -182,7 +182,7 @@ Doručování zpráv SMS není zaručeno, protože existují neovladatelné fakt
 
 Aplikace zabezpečení třetích stran můžou také blokovat textovou zprávu s ověřovacím kódem nebo telefonní hovor. Pokud používáte aplikaci zabezpečení třetí strany, zkuste zakázat ochranu a pak požádejte o odeslání dalšího ověřovacího kódu MFA.
 
-Pokud mají vaši uživatelé často problémy s spolehlivým příjmem textových zpráv, řekněte jim, aby místo toho používali Microsoft Authenticator aplikace nebo telefonní hovor. Microsoft Authenticator může dostávat oznámení přes mobilní připojení i připojení Wi-Fi. Kromě toho může mobilní aplikace generovat ověřovací kódy i v případě, že zařízení nemá žádný signál. Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) a [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6).
+Pokud mají vaši uživatelé často problémy s spolehlivým příjmem textových zpráv, řekněte jim, aby místo toho používali Microsoft Authenticator aplikace nebo telefonní hovor. Microsoft Authenticator může dostávat oznámení přes mobilní připojení i Wi-Fi. Kromě toho může mobilní aplikace generovat ověřovací kódy i v případě, že zařízení nemá žádný signál. Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) a [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6).
 
 ### <a name="can-i-change-the-amount-of-time-my-users-have-to-enter-the-verification-code-from-a-text-message-before-the-system-times-out"></a>Můžu změnit dobu, po kterou musí uživatelé zadat ověřovací kód z textové zprávy, než vyprší časový limit pro systém?
 
@@ -234,7 +234,7 @@ Existuje několik důvodů, proč se uživatelům zobrazí výzva k registraci i
 - Organizace vytvořila a povolila zásady registrace MFA, které se pro uživatele nastavily.
 - Uživatel, který byl dříve zaregistrován pro MFA, ale zvolil metodu ověřování, kterou správce od zakázání zakázal. Uživatel musí proto znovu projít registrací MFA a vybrat novou výchozí metodu ověřování.
 
-## <a name="errors"></a>Chyby
+## <a name="errors"></a>chyby
 
 * [Co by uživatelé měli dělat, pokud se při použití oznámení mobilní aplikace zobrazí chybová zpráva "žádost o ověření není pro aktivovaný účet"?](#what-should-users-do-if-they-see-an-authentication-request-is-not-for-an-activated-account-error-message-when-using-mobile-app-notifications)
 * [Co by uživatelé měli dělat, pokud se při přihlašování k aplikaci bez prohlížeče uvidí chybová zpráva 0x800434D4L?](#what-should-users-do-if-they-see-a-0x800434d4l-error-message-when-signing-in-to-a-non-browser-application)

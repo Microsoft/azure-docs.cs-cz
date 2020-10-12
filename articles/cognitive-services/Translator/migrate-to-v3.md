@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523974"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Migrace překladatelů v2 na V3
@@ -30,7 +30,7 @@ Konec tohoto dokumentu obsahuje užitečné odkazy, které vám pomůžou získa
 
 ## <a name="summary-of-features"></a>Souhrn funkcí
 
-* Pro všechny cenové úrovně v Azure Portal se nepoužijí žádné trasování V3 No-in. Tato funkce znamená, že Microsoft nebude ukládat žádný text odeslaný do rozhraní V3 API.
+* Pro všechny cenové úrovně v Azure Portal se nepoužívá žádná No-Tracea na úrovni v3. Tato funkce znamená, že Microsoft nebude ukládat žádný text odeslaný do rozhraní V3 API.
 * JSON – XML je nahrazeno kódem JSON. Všechna data odesílaná do služby a přijatá ze služby jsou ve formátu JSON.
 * Několik cílových jazyků v jednom požadavku – metoda překladu přijímá více jazyků "do" pro překlad v jednom požadavku. Například jediná žádost může být "z" angličtiny a "do" němčiny, španělštiny a japonštiny nebo jakékoli jiné skupiny jazyků.
 * Dvojjazyčný slovník – do rozhraní API se přidala metoda dvojjazyčného slovníku. Tato metoda zahrnuje ' Lookup ' a ' examples '.
@@ -118,8 +118,8 @@ Neuronové překladu s rozhraním textového API V3 nepodporuje použití standa
 
 | Verze | Koncový bod | Dodržování předpisů pro procesory GDPR | Použít centrum překladatelů | Použít vlastní překladatele (Preview) |
 | :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
-|Překladatel verze 2|    api.microsofttranslator.com|    No    |Ano    |No|
-|Překladatel verze 3|    api.cognitive.microsofttranslator.com|    Ano|    No|    Ano|
+|Překladatel verze 2|    api.microsofttranslator.com|    No    |Yes    |No|
+|Překladatel verze 3|    api.cognitive.microsofttranslator.com|    Yes|    No|    Yes|
 
 **Překladatel verze 3**
 * Je všeobecně dostupná a plně podporovaná.
@@ -141,7 +141,7 @@ Pokud používáte koncový bod api.cognitive.microsofttranslator.com, použív�
 
 * [Zásady ochrany osobních údajů společnosti Microsoft](https://privacy.microsoft.com/privacystatement)
 * [Microsoft Azure právní informace](https://azure.microsoft.com/support/legal)
-* [Online služby – požadavky](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [Podmínky pro služby online](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>Další kroky
 

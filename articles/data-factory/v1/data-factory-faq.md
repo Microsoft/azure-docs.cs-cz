@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: a019b86adf3dfe950b7d93f50c834d004a2aebf9
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462339"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – často kladené otázky
@@ -25,7 +25,7 @@ ms.locfileid: "89462339"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Obecné otázky
-### <a name="what-is-azure-data-factory"></a>Co je Azure Data Factory?
+### <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory?
 Data Factory je cloudová služba pro integraci dat, která **automatizuje přesun a transformaci dat**. Stejně jako továrna, která používá zařízení k převzetí surovin a jejich transformaci na dokončené produkty, Data Factory orchestruje existující služby, které shromažďují nezpracovaná data a transformují je na informace připravené k použití.
 
 Data Factory umožňuje vytvářet pracovní postupy řízené daty k přesouvání dat mezi místními i cloudovým úložištěm dat a také zpracovávat a transformovat data pomocí výpočetních služeb, jako je Azure HDInsight a Azure Data Lake Analytics. Po vytvoření kanálu, který provede akci, kterou potřebujete, můžete naplánovat jeho pravidelné spuštění (každou hodinu, každý den, každý týden atd.).   
@@ -56,10 +56,10 @@ Pomocí jednoho z následujících nástrojů nebo sad SDK můžete vytvářet a
 * **Šablona Azure Resource Manager** Viz [kurz: sestavení prvního objektu pro vytváření dat Azure pomocí Azure Resource Manager](data-factory-build-your-first-pipeline-using-arm.md) detailů šablony FO.
 
 ### <a name="can-i-rename-a-data-factory"></a>Můžu přejmenovat datovou továrnu?
-No. Podobně jako u jiných prostředků Azure nejde změnit název objektu pro vytváření dat Azure.
+Ne. Podobně jako u jiných prostředků Azure nejde změnit název objektu pro vytváření dat Azure.
 
 ### <a name="can-i-move-a-data-factory-from-one-azure-subscription-to-another"></a>Můžu datovou továrnu přesunout z jednoho předplatného Azure do jiného?
-Yes. V okně Data Factory použijte tlačítko **přesunout** , jak je znázorněno na následujícím diagramu:
+Ano. V okně Data Factory použijte tlačítko **přesunout** , jak je znázorněno na následujícím diagramu:
 
 ![Přesunout objekt pro vytváření dat](media/data-factory-faq/move-data-factory.png)
 

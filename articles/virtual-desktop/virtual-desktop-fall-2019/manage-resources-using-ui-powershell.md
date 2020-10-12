@@ -8,10 +8,10 @@ ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: lizross
 ms.openlocfilehash: d7219751d584eb458cded9f4e30cccb1439dfa1b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89069013"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>Nasazení nástroje pro správu virtuálních ploch Windows (Classic) pomocí PowerShellu
@@ -60,7 +60,7 @@ Začněte tím, že se přihlásíte k modulům AZ a Azure AD PowerShell. Tady j
     Connect-AzureAD
     ```
 
-4. Potom přejděte do složky, kam jste uložili dva skripty PowerShellu z úložiště GitHub šablon RDS.
+4. Potom přejděte do složky, kam jste uložili dva skripty PowerShellu z RDS-Templates úložiště GitHub.
 
 Nechejte okno prostředí PowerShell, které jste použili k přihlášení, a spusťte další rutiny prostředí PowerShell, které se přihlásí.
 

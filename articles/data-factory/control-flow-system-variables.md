@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.openlocfilehash: 2690ded0ac45719cb1082c85ab535c91ad491172
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417959"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Systémové proměnné podporované nástrojem Azure Data Factory
@@ -34,7 +34,7 @@ Na tyto systémové proměnné se dá odkazovat kdekoli v kódu JSON kanálu.
 | @pipeline(). TriggerType | Typ triggeru, který vyvolal kanál (ruční, Scheduler) |
 | @pipeline(). TriggerId| ID triggeru, který vyvolá kanál |
 | @pipeline(). TriggerName| Název triggeru, který vyvolá kanál. |
-| @pipeline(). TriggerTime| Čas, kdy Trigger vyvolal kanál. Doba triggeru je skutečný čas aktivace, nikoli naplánovaný čas. Například `13:20:08.0149599Z` se vrátí místo`13:20:00.00Z` |
+| @pipeline(). TriggerTime| Čas, kdy Trigger vyvolal kanál. Doba triggeru je skutečný čas aktivace, nikoli naplánovaný čas. Například `13:20:08.0149599Z` se vrátí místo `13:20:00.00Z` |
 
 ## <a name="schedule-trigger-scope"></a>Rozsah triggeru plánu
 V případě, že je Trigger typu "ScheduleTrigger", mohou být tyto systémové proměnné odkazovány kdekoli v triggeru JSON.

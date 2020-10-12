@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: 3ea9d7baf427e70df349c926a0b6b8b72ba82293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416853"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Kopírování dat z Oracle Eloqua pomocí Azure Data Factory (Preview)
@@ -47,15 +47,15 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu Oracle Eloqua jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **Eloqua** . | Ano |
 | endpoint | Koncový bod serveru Eloqua Eloqua podporuje více datových center, k určení koncového bodu, přihlášení k https://login.eloqua.com přihlašovacím údajům a následnému zkopírování **základní adresy URL** z přesměrované adresy URL se vzorem `xxx.xxx.eloqua.com` . | Ano |
-| uživatelské jméno | Název a uživatelské jméno účtu Eloqua ve formě: `SiteName\Username` například `Eloqua\Alice` .  | Ano |
+| username | Název a uživatelské jméno účtu Eloqua ve formě: `SiteName\Username` například `Eloqua\Alice` .  | Ano |
 | heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
+| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | No |
+| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
 
 **Příklad:**
 
@@ -82,7 +82,7 @@ Pro propojenou službu Oracle Eloqua jsou podporovány následující vlastnosti
 
 Chcete-li kopírovat data z Oracle Eloqua, nastavte vlastnost Type datové sady na **EloquaObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **EloquaObject** . | Ano |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
@@ -112,7 +112,7 @@ Chcete-li kopírovat data z Oracle Eloqua, nastavte vlastnost Type datové sady 
 
 Pokud chcete kopírovat data z Oracle Eloqua, nastavte typ zdroje v aktivitě kopírování na **EloquaSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **EloquaSource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Accounts"`. | Ne (Pokud je zadáno "tableName" v datové sadě |

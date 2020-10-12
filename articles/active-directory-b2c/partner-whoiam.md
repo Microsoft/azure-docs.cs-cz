@@ -12,10 +12,10 @@ ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 718ccbaa57ffe9f4ebaf4e8df448b602ba8cc3fa
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89293145"
 ---
 # <a name="tutorial-for-configuring-whoiam-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci WhoIAM s využitím Azure Active Directory B2C
@@ -50,7 +50,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Diagram architektury Azure AD B2C integrace s WhoIAM](media/partner-whoiam/whoiam-architecture-diagram.png)
 
-|Krok | Popis |
+|Krok | Description |
 |:-----| :-----------|
 | 1. | Uživatel dorazí na stránku a spustí žádost o registraci nebo přihlášení do aplikace, která jako poskytovatele identity používá Azure AD B2C.
 | 2. | V rámci ověřování si uživatel vyžádá buď, aby ověřil vlastnictví e-mailu nebo telefonu, nebo použil svůj hlas jako faktor biometrického ověřování.  

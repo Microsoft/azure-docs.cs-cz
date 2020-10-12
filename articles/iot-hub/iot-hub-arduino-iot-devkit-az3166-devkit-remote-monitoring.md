@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
 ms.openlocfilehash: d75e7e7b4870f46c978fd70039441c8851844082
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337955"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Připojení MXChip IoT DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte, jak spustit ukázkovou aplikaci v DevKit a poslat da
 
 Dokončete [průvodce Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) :
 
-* Připojení DevKit k Wi-Fi
+* Připojte DevKit k Wi-Fi
 * Příprava vývojového prostředí
 
 Musíte mít aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat přes jednu z těchto dvou metod:

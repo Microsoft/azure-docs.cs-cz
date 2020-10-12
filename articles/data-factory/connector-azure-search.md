@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
 ms.openlocfilehash: dfa1ad318ccc9e891b646ec050f6a0776e108206
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81418231"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Kopírování dat do indexu služby Azure Kognitivní hledání pomocí Azure Data Factory
@@ -42,12 +42,12 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu Azure Kognitivní hledání se podporují tyto vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **AzureSearch** . | Ano |
 | url | Adresa URL služby vyhledávání | Ano |
 | key | Klíč správce pro vyhledávací službu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud je úložiště dat umístěné v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud je úložiště dat umístěné v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 > [!IMPORTANT]
 > Když kopírujete data z cloudového úložiště dat do indexu vyhledávání, v propojené službě Azure Kognitivní hledání musíte odkazovat Azure Integration Runtime s explicitní oblastí v connactVia. Nastavte oblast jako tu, kde se nachází vaše vyhledávací služba. Další informace o [Azure Integration runtime](concepts-integration-runtime.md#azure-integration-runtime).
@@ -80,7 +80,7 @@ Pro propojenou službu Azure Kognitivní hledání se podporují tyto vlastnosti
 
 Pokud chcete kopírovat data do Azure Kognitivní hledání, podporují se tyto vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **AzureSearchIndex** . | Ano |
 | indexName | Název indexu hledání Data Factory nevytváří index. Index musí existovat v Azure Kognitivní hledání. | Ano |
@@ -112,11 +112,11 @@ Pokud chcete kopírovat data do Azure Kognitivní hledání, podporují se tyto 
 
 Pokud chcete kopírovat data do Azure Kognitivní hledání, nastavte typ zdroje v aktivitě kopírování na **AzureSearchIndexSink**. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AzureSearchIndexSink** . | Ano |
-| writeBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. Podívejte se na [vlastnost WriteBehavior](#writebehavior-property).<br/><br/>Povolené hodnoty jsou: **Merge** (výchozí) a **nahrání**. | Ne |
-| writeBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, nahraje data do indexu vyhledávání. Podrobnosti najdete ve [vlastnosti WriteBatchSize](#writebatchsize-property) .<br/><br/>Povolené hodnoty jsou: celé číslo 1 až 1 000; Výchozí hodnota je 1000. | Ne |
+| writeBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. Podívejte se na [vlastnost WriteBehavior](#writebehavior-property).<br/><br/>Povolené hodnoty jsou: **Merge** (výchozí) a **nahrání**. | No |
+| writeBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, nahraje data do indexu vyhledávání. Podrobnosti najdete ve [vlastnosti WriteBatchSize](#writebatchsize-property) .<br/><br/>Povolené hodnoty jsou: celé číslo 1 až 1 000; Výchozí hodnota je 1000. | No |
 
 ### <a name="writebehavior-property"></a>Vlastnost WriteBehavior
 
@@ -171,12 +171,12 @@ Následující tabulka určuje, jestli je datový typ Azure Kognitivní hledán�
 
 | Datový typ Azure Kognitivní hledání | Podporováno v jímky Azure Kognitivní hledání |
 | ---------------------- | ------------------------------ |
-| Řetězec | Ano |
-| Int32 | Ano |
-| Int64 | Ano |
-| Double | Ano |
-| Logická hodnota | Ano |
-| DataTimeOffset | Ano |
+| Řetězec | Y |
+| Int32 | Y |
+| Int64 | Y |
+| dvojité | Y |
+| Logická hodnota | Y |
+| DataTimeOffset | Y |
 | Pole řetězců | N |
 | GeographyPoint | N |
 

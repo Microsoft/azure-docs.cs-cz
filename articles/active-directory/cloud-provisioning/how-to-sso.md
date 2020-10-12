@@ -12,13 +12,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca9afda3303d828bdbb162a9e18ac817b7f8091e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85360652"
 ---
-# <a name="using-single-sign-on-with-cloud-provisioning"></a>Použití jednotného přihlašování při zřizování cloudu
+# <a name="using-single-sign-on-with-cloud-provisioning"></a>Použití jednoho Sign-On s zřizováním cloudu
 Následující dokument popisuje, jak používat jednotné přihlašování s zřizováním cloudu.
 
 [!INCLUDE [active-directory-cloud-provisioning-sso.md](../../../includes/active-directory-cloud-provisioning-sso.md)]

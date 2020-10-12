@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
 ms.openlocfilehash: 95d892bf7a0c0e395289d4a5535cd9b6b789b055
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88565923"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Ověřování přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps
@@ -358,7 +358,7 @@ Tyto kroky ukazují, jak používat spravovanou identitu s triggerem nebo akcí 
 
    Například Trigger nebo akce HTTP může používat identitu přiřazenou systémem, kterou jste povolili pro vaši aplikaci logiky. V obecném případě Trigger HTTP nebo akce tyto vlastnosti používá k určení prostředku nebo entity, ke které chcete získat přístup:
 
-   | Vlastnost | Povinné | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
    | **Metoda** | Yes | Metoda HTTP, kterou používá operace, kterou chcete spustit |
    | **Identifikátor URI** | Yes | Adresa URL koncového bodu pro přístup k cílovému prostředku Azure nebo entitě. Syntaxe identifikátoru URI obvykle zahrnuje [ID prostředku](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) pro prostředek nebo službu Azure. |
@@ -374,7 +374,7 @@ Tyto kroky ukazují, jak používat spravovanou identitu s triggerem nebo akcí 
 
    Pokud chcete spustit [operaci objektu BLOB snímku](/rest/api/storageservices/snapshot-blob), akce http určuje tyto vlastnosti:
 
-   | Vlastnost | Požaduje se | Příklad hodnoty | Popis |
+   | Vlastnost | Požaduje se | Příklad hodnoty | Description |
    |----------|----------|---------------|-------------|
    | **Metoda** | Yes | `PUT`| Metoda HTTP, kterou používá operace objektu BLOB snímku |
    | **Identifikátor URI** | Yes | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | ID prostředku pro soubor Azure Blob Storage v globálním (veřejném) prostředí Azure, které používá tuto syntaxi |

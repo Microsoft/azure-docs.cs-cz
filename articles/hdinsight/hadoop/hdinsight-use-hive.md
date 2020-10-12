@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: 37fdf863d29015bba7015fcff1ae49a34aebd785
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462271"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL ve službě Azure HDInsight?
@@ -23,7 +23,7 @@ Podregistr umožňuje strukturování struktury na základě nestrukturovaných 
 
 HDInsight nabízí několik typů clusterů, které jsou vyladěné pro konkrétní úlohy. Následující typy clusterů se nejčastěji používají pro dotazy na podregistry:
 
-|Typ clusteru |Popis|
+|Typ clusteru |Description|
 |---|---|
 |Interaktivní dotaz|Cluster Hadoop, který poskytuje funkci [LLAP (nízká latence Analytical Processing)](https://cwiki.apache.org/confluence/display/Hive/LLAP) pro zlepšení dob odezvy pro interaktivní dotazy. Další informace najdete v dokumentu [Začínáme s interaktivním dotazem v HDInsight](../interactive-query/apache-interactive-query-get-started.md) .|
 |Hadoop|Cluster Hadoop, který je vyladěn pro úlohy dávkového zpracování. Další informace najdete v dokumentu [Začínáme s Apache Hadoop v HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) .|

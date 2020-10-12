@@ -8,10 +8,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
 ms.openlocfilehash: 85c4807d5bf71078e3cfb26bbc27e9eecc10c041
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90029457"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Monitorování virtuálních počítačů Azure pomocí Azure Monitor
@@ -148,7 +148,7 @@ Metriky pro virtuální počítače můžete analyzovat otevřením **metrik** z
 
 Virtuální počítače používají tři obory názvů pro metriky:
 
-| Obor názvů | Popis | Požadavek |
+| Obor názvů | Description | Požadavek |
 |:---|:---|:---|
 | Hostitel virtuálního počítače | Metriky hostitele se automaticky shromáždily pro všechny virtuální počítače Azure. Podrobný seznam metrik v [Microsoft. COMPUTE/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines). | Shromažďováno automaticky bez nutnosti konfigurace. |
 | Host (klasický) | Omezená sada údajů o výkonu hostovaného operačního systému a aplikace. K dispozici v Průzkumníkovi metrik, ale ne jiné funkce Azure Monitor, jako jsou například výstrahy metriky.  | Bylo nainstalováno [diagnostické rozšíření](../platform/diagnostics-extension-overview.md) . Data se čtou z Azure Storage.  |

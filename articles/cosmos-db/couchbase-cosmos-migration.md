@@ -8,10 +8,10 @@ ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
 ms.openlocfilehash: b0c9ef99e4cbb0683273d613d3a85e7f6455a40d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87366717"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrace z CouchBase do Azure Cosmos DB SQL API
@@ -25,7 +25,7 @@ Níže jsou uvedené klíčové funkce, které v Azure Cosmos DB ve srovnání s
 |   Couchbase     |   Azure Cosmos DB   |
 | ---------------|-------------------|
 |Server Couchbase| Účet       |
-|Blocích           | Databáze      |
+|Blocích           | databáze      |
 |Blocích           | Kontejner/kolekce |
 |Dokument JSON    | Položka/dokument |
 
@@ -187,7 +187,7 @@ Dotazy N1QL slouží jako způsob, jak definovat dotazy v Couchbase.
 
 |Dotaz N1QL | Dotaz na Azure CosmosDB|
 |-------------------|-------------------|
-|Vyberte META ( `TravelDocument` ). ID jako ID, `TravelDocument` . * z `TravelDocument` Where `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" a Country = ' Indie ' a jakékoli m v vízech splňuje požadavky m. Type = = ' Multi-Entry ' a m. Country v [' Indie ', Bhútán '] ORDER by ` Validity` limit 25 offset 0   | Vyberte c. ID, c z c JOINa m v c. Country = ' Indie ', kde c. _type = "com. xx. xx. xx. xxx. xxx. xxxx" a c. Country = ' Indie ' a m. Type = ' Multi-Entry ' a m. Country IN (' Indie ', ' Bhútán ') ORDER BY c |
+|Vyberte META ( `TravelDocument` ). ID jako ID, `TravelDocument` . * z `TravelDocument` Where `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" a Country = ' Indie ' a jakékoli m v vízech splňuje požadavky m. Type = = ' Multi-Entry ' a m. Country v [' Indie ', Bhútán '] ORDER by ` Validity` limit 25 offset 0   | Vyberte c. ID, c z c JOINa m v c. Country = ' Indie ', kde c._type = "com. xx. xx. xx. xxx. xxx. xxxx" a c. Country = ' Indie ' a m. Type = ' Multi-Entry ' a m. Country IN (' Indie ', ' Bhútán ') ORDER BY c. |
 
 Ve svých dotazech N1QL si můžete všimnout následujících změn:
 
@@ -311,7 +311,7 @@ Toto je jednoduchý typ úlohy, ve které můžete vyhledávat místo dotazů. P
 
 1. Zvažte možnost "/ID" jako primární klíč, což zajistí, že můžete provádět operace vyhledávání přímo v konkrétním oddílu. Vytvořte kolekci a jako klíč oddílu zadejte "/ID".
 
-1. Úplné vypínání indexu. Vzhledem k tomu, že budete provádět operace vyhledávání, neexistuje žádný bod pro zaznamenání zátěže. Pokud chcete indexování vypnout, přihlaste se Azure Portal, přejít Azure Cosmos DB účet. Otevřete **Průzkumník dat**vyberte svou **databázi** a **kontejner**. Otevřete kartu **nastavení & škálování** a vyberte **zásadu indexování**. V současné době indexování zásad vypadá takto:
+1. Úplné vypínání indexu. Vzhledem k tomu, že budete provádět operace vyhledávání, neexistuje žádný bod pro zaznamenání zátěže. Pokud chcete indexování vypnout, přihlaste se Azure Portal, přejít Azure Cosmos DB účet. Otevřete **Průzkumník dat**vyberte svou **databázi** a **kontejner**. Otevřete kartu **nastavení & škálování** a vyberte  **zásadu indexování**. V současné době indexování zásad vypadá takto:
     
    ```json
    {

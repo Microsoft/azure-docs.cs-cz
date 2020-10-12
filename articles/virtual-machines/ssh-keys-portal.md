@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.author: cynthn
 ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88929430"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>Generování a ukládání klíčů SSH v Azure Portal
@@ -48,7 +48,7 @@ Podrobnější informace o vytváření a používání klíčů SSH s virtuáln
 
 1. Zobrazí se automaticky otevírané okno, vyberte **Stáhnout privátní klíč a vytvořit prostředek**. Tím se stáhne klíč SSH jako soubor. pem.
 
-   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Stažení privátního klíče jako souboru. pem":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Vytvořte novou skupinu prostředků a vygenerujte pár klíčů SSH.":::
 
 1. Po stažení souboru. pem můžete ho chtít přesunout někam do počítače, kde se snadno odkazuje na klienta SSH.
 
@@ -74,7 +74,7 @@ Můžete také nahrát veřejný klíč SSH pro uložení v Azure. Informace o t
 
 1. Na stránce **klíč SSH** vyberte **vytvořit**.
 
-   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Nahrajte veřejný klíč SSH, který se uloží v Azure.":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Vytvořte novou skupinu prostředků a vygenerujte pár klíčů SSH.":::
 
 1. V **skupiny prostředků** vyberte **vytvořit novou** a vytvořte novou skupinu prostředků pro uložení klíčů. Zadejte název vaší skupiny prostředků a vyberte **OK**.
 
@@ -98,7 +98,7 @@ Klíče SSH vytvořené na portálu se ukládají jako prostředky, takže můž
 1. V okně Filtry vyberte **typ**, zrušte výběr možnosti **Vybrat vše** , čímž seznam vymažete.
 1. Do filtru zadejte **SSH** a vyberte **klíč SSH**.
 
-   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Snímek obrazovky s postupem, jak filtrovat seznam, aby se zobrazily všechny klíče SSH.":::
+   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="Vytvořte novou skupinu prostředků a vygenerujte pár klíčů SSH.":::
 
 ## <a name="get-the-public-key"></a>Získat veřejný klíč
 

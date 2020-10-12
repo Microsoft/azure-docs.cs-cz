@@ -9,10 +9,10 @@ ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 661cfd5bb410a714bc42e0cd9676ac2ec08f8a45
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708693"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Řešení potíží s sdílenými složkami Azure NFS
@@ -90,7 +90,7 @@ Následující diagram znázorňuje připojení pomocí veřejných koncových b
     - Partnerský vztah virtuální sítě s virtuálními sítěmi hostovanými v privátním koncovém bodu uděluje přístup ke sdílení systému souborů NFS klientům v partnerských virtuálních sítích.
     - Soukromé koncové body lze použít s ExpressRoutemi sítěmi VPN typu Point-to-site a Site-to-site.
 
-:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="Diagram připojení privátního koncového bodu" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
+:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="Diagram připojení k veřejnému koncovému bodu" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
 
 ### <a name="cause-2-secure-transfer-required-is-enabled"></a>Příčina 2: je povolený požadovaný zabezpečený přenos.
 
@@ -100,7 +100,7 @@ Pro sdílené složky systému souborů NFS ještě není podporováno dvojité 
 
 V okně Konfigurace účtu úložiště zakažte zabezpečený přenos vyžadovaný.
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Snímek obrazovky s oknem konfigurace účtu úložiště, je nutné zakázat zabezpečený přenos.":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Diagram připojení k veřejnému koncovému bodu":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>Příčina 3: systém souborů NFS – společný balíček není nainstalovaný
 Před spuštěním příkazu Mount nainstalujte balíček spuštěním příkazu specifického pro distribuce níže.

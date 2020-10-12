@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: d236b9f8800b644a0aa51597d01df1c1442475ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416779"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Kopírování dat z Phoenixu pomocí Azure Data Factory 
@@ -48,21 +48,21 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu Phoenix jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **Phoenix** . | Ano |
-| host | IP adresa nebo název hostitele serveru v Phoenixu. (tj. 192.168.222.160)  | Ano |
-| port | Port TCP, který server Phoenix používá k naslouchání klientským připojením. Výchozí hodnota je 8765. Pokud se připojíte k Azure HDInsights, zadejte port jako 443. | Ne |
-| httpPath | Částečná adresa URL odpovídající serveru v Phoenixu. (to znamená/Gateway/Sandbox/Phoenix/Version). Určete `/hbasephoenix0` , jestli se má používat cluster HDInsights.  | Ne |
+| Hostitel | IP adresa nebo název hostitele serveru v Phoenixu. (tj. 192.168.222.160)  | Ano |
+| port | Port TCP, který server Phoenix používá k naslouchání klientským připojením. Výchozí hodnota je 8765. Pokud se připojíte k Azure HDInsights, zadejte port jako 443. | No |
+| httpPath | Částečná adresa URL odpovídající serveru v Phoenixu. (to znamená/Gateway/Sandbox/Phoenix/Version). Určete `/hbasephoenix0` , jestli se má používat cluster HDInsights.  | No |
 | authenticationType | Ověřovací mechanismus, který se používá pro připojení k serveru Phoenix. <br/>Povolené hodnoty jsou: **Anonymous**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
-| uživatelské jméno | Uživatelské jméno použité pro připojení k serveru Phoenix.  | Ne |
-| heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je False.  | Ne |
-| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority pro ověření serveru při připojení přes protokol TLS. Tuto vlastnost lze nastavit pouze při použití protokolu TLS v místním prostředí IR. Výchozí hodnota je soubor cacerts. pem nainstalovaný s IR.  | Ne |
-| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Výchozí hodnota je False.  | Ne |
-| allowHostNameCNMismatch | Určuje, jestli se má při připojování přes protokol TLS vyžadovat, aby název certifikátu TLS/SSL vydaný certifikační autoritou odpovídal názvu hostitele serveru. Výchozí hodnota je False.  | Ne |
-| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | Ne |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| username | Uživatelské jméno použité pro připojení k serveru Phoenix.  | No |
+| heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
+| enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je False.  | No |
+| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority pro ověření serveru při připojení přes protokol TLS. Tuto vlastnost lze nastavit pouze při použití protokolu TLS v místním prostředí IR. Výchozí hodnota je soubor cacerts. pem nainstalovaný s IR.  | No |
+| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Výchozí hodnota je False.  | No |
+| allowHostNameCNMismatch | Určuje, jestli se má při připojování přes protokol TLS vyžadovat, aby název certifikátu TLS/SSL vydaný certifikační autoritou odpovídal názvu hostitele serveru. Výchozí hodnota je False.  | No |
+| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | No |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 >[!NOTE]
 >Pokud váš cluster nepodporuje rychlou relaci, např. HDInsight, explicitně přidejte index uzlu na konci nastavení cesty http, třeba zadejte `/hbasephoenix0` místo `/hbasephoenix` .
@@ -95,11 +95,11 @@ Pro propojenou službu Phoenix jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z Phoenix, nastavte vlastnost Type datové sady na **PhoenixObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **PhoenixObject** . | Ano |
-| XSD | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
-| tabulka | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
+| schema | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
+| stolu | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. `schema` `table` Pro nové zatížení použijte a. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -127,7 +127,7 @@ Chcete-li kopírovat data z Phoenix, nastavte vlastnost Type datové sady na **P
 
 Pokud chcete kopírovat data z Phoenix, nastavte typ zdroje v aktivitě kopírování na **PhoenixSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **PhoenixSource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |

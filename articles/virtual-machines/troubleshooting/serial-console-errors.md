@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: cad12a55332a6c7898f9709776c58d7dba8dd81a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86526431"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Běžné chyby v konzole sériového prostředí Azure
@@ -34,7 +34,7 @@ Chyba                             |   Omezení rizik
 Při přístupu k účtu úložiště diagnostiky spouštění virtuálního počítače se zjistila odpověď "zakázaná". | Ujistěte se, že diagnostika spouštění nemá bránu firewall účtu. Aby mohla konzola sériového rozhraní fungovat, je potřeba účet úložiště s přístupem k diagnostice spouštění. Sériová konzola podle návrhu nemůžou pracovat s povolenými branami firewall účtu úložiště v účtu úložiště diagnostiky spouštění.
 Nemáte potřebná oprávnění k použití tohoto virtuálního počítače se sériovou konzolou. Ujistěte se, že máte alespoň oprávnění role Přispěvatel virtuálních počítačů.| Přístup ke konzole sériového portu vyžaduje, abyste měli na svém VIRTUÁLNÍm počítači nebo v sadě škálování virtuálního počítače přístup na úrovni přispěvatele nebo novější. Další informace najdete na stránce s [přehledem](serial-console-overview.md).
 Účet úložiště, který se používá pro diagnostiku spouštění na tomto virtuálním počítači, se nepovedlo najít. Ověřte, jestli je pro tento virtuální počítač povolená Diagnostika spouštění, jestli se tento účet úložiště neodstranil a máte k tomuto účtu úložiště přístup. | Dvakrát ověřte, že jste neodstranili účet úložiště diagnostiky spouštění pro váš virtuální počítač nebo sadu škálování virtuálního počítače.
-V připojení k virtuálnímu počítači v sériové konzole došlo k chybě: Chybný požadavek (400) | K tomu může dojít v případě, že identifikátor URI diagnostiky spouštění není správný. Například "http://" bylo použito místo "https://". Identifikátor URI diagnostiky spouštění lze opravit pomocí tohoto příkazu:`az vm boot-diagnostics enable --name vmName --resource-group rgName --storage https://<storageAccountUri>.blob.core.windows.net/`
+V připojení k virtuálnímu počítači v sériové konzole došlo k chybě: Chybný požadavek (400) | K tomu může dojít v případě, že identifikátor URI diagnostiky spouštění není správný. Například "http://" bylo použito místo "https://". Identifikátor URI diagnostiky spouštění lze opravit pomocí tohoto příkazu: `az vm boot-diagnostics enable --name vmName --resource-group rgName --storage https://<storageAccountUri>.blob.core.windows.net/`
 Nemáte požadovaná oprávnění k zápisu do účtu úložiště diagnostiky spouštění tohoto virtuálního počítače. Ujistěte se prosím, že máte aspoň oprávnění přispěvatele virtuálních počítačů. | Přístup Sériová konzola vyžaduje přístup na úrovni přispěvatele v účtu úložiště diagnostiky spouštění. Další informace najdete na stránce s [přehledem](serial-console-overview.md).
 Nepovedlo se určit skupinu prostředků pro účet úložiště diagnostiky spouštění * &lt; STORAGEACCOUNTNAME &gt; *. Ověřte, jestli je pro tento virtuální počítač povolená Diagnostika spouštění a máte přístup k tomuto účtu úložiště. | Přístup Sériová konzola vyžaduje přístup na úrovni přispěvatele v účtu úložiště diagnostiky spouštění. Další informace najdete na stránce s [přehledem](serial-console-overview.md).
 Zřizování pro tento virtuální počítač ještě nebylo úspěšné. Ujistěte se prosím, že je virtuální počítač plně nasazený, a zkuste připojení ke sériové konzole znovu. | Virtuální počítač nebo sada škálování virtuálního počítače se pořád můžou zřídit. Chvíli počkejte a pak to zkuste znovu.

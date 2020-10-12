@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: 21eba653bcd853db9550d0d3781aacd281884605
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88588071"
 ---
 # <a name="import-or-export-configuration-data"></a>Import nebo export konfiguračních dat
@@ -44,7 +44,7 @@ Importujte data buď pomocí [Azure Portal](https://portal.azure.com) , nebo pom
 
     ![Import souboru byl dokončen.](./media/import-file-complete.png)
 
-## <a name="export-data"></a>Export dat
+## <a name="export-data"></a>Exportovat data
 
 Export vypíše konfigurační data uložená v konfiguraci aplikace do jiného cílového umístění. Použijte funkci exportu, například k uložení dat v úložišti konfigurace aplikace do souboru, který je vložený s vaším kódem aplikace během nasazení.
 

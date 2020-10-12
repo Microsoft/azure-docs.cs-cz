@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86524739"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Použití Azure Mapsho vykreslování – Vizualizér chyb
 
 Vizualizér chyb při vykreslování je samostatná webová aplikace, která zobrazuje [Upozornění a chyby balíčku pro vykreslování](drawing-conversion-error-codes.md) během procesu převodu. Webová aplikace Vizualizér chyb se skládá ze statické stránky, kterou můžete použít bez připojení k Internetu.  K opravě chyb a upozornění podle [požadavků balíčku pro vykreslování](drawing-requirements.md)můžete použít Vizualizér chyb. [Rozhraní API pro převod Azure Maps](https://docs.microsoft.com/rest/api/maps/conversion) vrátí odpověď s odkazem na Vizualizér chyb pouze v případě, že je zjištěna chyba.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předtím, než si můžete stáhnout Vizualizér chyba vykreslování, budete potřebovat:
 
@@ -82,11 +82,11 @@ Po spuštění nástroje pro Vizualizér chyb při vykreslování se zobrazí st
 
 _ConversionWarningsAndErrors.jsv_ souboru byl umístěn v kořenovém adresáři staženého adresáře. Pokud chcete načíst _ConversionWarningsAndErrors.js_ , můžete buď pře& táhnout soubor do pole, nebo kliknout na pole, najít soubor v dialogovém okně Průzkumníka souborů a pak tento soubor nahrát.
 
-:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Kreslení aplikace Vizualizér chyb – přetáhnutím a přetažením načtěte data":::
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Vykreslování aplikace Vizualizér chyb – Úvodní stránka":::
 
 Po načtení _ConversionWarningsAndErrors.js_ souboru se zobrazí seznam chyb a upozornění balíčku pro kreslení. Jednotlivé chyby nebo upozornění jsou určeny vrstvou, úrovní a podrobnou zprávou. Chcete-li zobrazit podrobné informace o chybě nebo upozornění, klikněte na odkaz **Podrobnosti** . Nerušivý oddíl se pak zobrazí pod seznamem. Nyní můžete přejít k jednotlivým chybám a získat další informace o tom, jak chybu vyřešit.
 
-:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Vykreslování aplikace Vizualizér chyb – chyby a upozornění":::
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Vykreslování aplikace Vizualizér chyb – Úvodní stránka":::
 
 ## <a name="next-steps"></a>Další kroky
 

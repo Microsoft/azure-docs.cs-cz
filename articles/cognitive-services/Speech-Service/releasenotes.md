@@ -12,10 +12,10 @@ ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
 ms.openlocfilehash: 94947499452c7f1b8515fee56996b13120232f34
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462373"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
@@ -57,7 +57,7 @@ ms.locfileid: "89462373"
     | `fr-CA` | Sylvie |
     | `fr-FR` | Denise |
     | `ja-JP` | Nanami |
-    | `ko-KR` | Sun – Hi |
+    | `ko-KR` | Sun-Hi |
 
 ### <a name="bug-fixes"></a>Opravy chyb
 
@@ -293,7 +293,7 @@ Buďte v pořádku!
  - DialogServiceConnector nyní podporuje volitelné parametr "robot ID" v BotFrameworkConfig. Tento parametr umožňuje použití několika přímých roboty řeči s jedním prostředkem řeči Azure. Bez zadaného parametru se použije výchozí robot (tak, jak je určený na stránce Konfigurace kanálu pro přímé čáry).
  - DialogServiceConnector má teď vlastnost SpeechActivityTemplate. Obsah tohoto řetězce JSON bude použit přímým převodem na řádku k předběžnému naplnění široké škály podporovaných polí ve všech činnostech, které se dodávají k přímému line Speech bot, včetně aktivit automaticky generovaných v reakci na události, jako je rozpoznávání řeči.
  - TTS nyní používá pro ověřování klíč předplatného, což snižuje latenci prvního výsledku Shrnutí po vytvoření syntetizátoru.
- - Aktualizované modely rozpoznávání řeči pro 19 národních prostředí pro průměrné snížení četnosti chyb slov 18,6% (ES-ES, ES-MX, fr-CA, fr-FR, IT-IT, ja-JP, ko-KR, pt-BR, zh-CN, zh-HK, NB-NO, Fi-FL, ru-RU, pl-PL, CA-ES, zh-TW, th-TH, pt-PT, tr-TR). Nové modely přináší významná vylepšení napříč více doménami včetně diktování, přepisu a scénářů indexování videa.
+ - Aktualizované modely rozpoznávání řeči pro 19 národních prostředí pro průměrné snížení četnosti chyb slov 18,6% (ES-ES, ES-MX, fr-CA, fr-FR, IT-IT, ja-JP, ko-KR, pt-BR, zh-CN, zh-HK, NB-NO, Fi-FL, ru-RU, pl-PL, CA-ES, zh-TW, th-TH, pt-PT, tr-TR). Nové modely přináší významná vylepšení napříč více doménami včetně diktování, Call-Center přepisu a scénářů indexování videa.
 
 **Opravy chyb**
 

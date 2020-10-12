@@ -7,10 +7,10 @@ ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852391"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Vysvětlení možností migrace s novějšími výstrahami
@@ -171,16 +171,16 @@ Pro Application Insights se používají ekvivalentní metriky, jak je znázorn�
 | clientPerformance. receiveRequest. Value | browserTimings/receiveDuration| Vynásobit původní prahovou hodnotu hodnotou 1000 jako jednotky pro klasickou metriku v sekundách a pro nové jsou v milisekundách.  |
 | clientPerformance. sendRequest. Value | browserTimings/sendDuration| Vynásobit původní prahovou hodnotu hodnotou 1000 jako jednotky pro klasickou metriku v sekundách a pro nové jsou v milisekundách.  |
 | clientPerformance. Total. Value | browserTimings/totalDuration| Vynásobit původní prahovou hodnotu hodnotou 1000 jako jednotky pro klasickou metriku v sekundách a pro nové jsou v milisekundách.  |
-| performanceCounter. available_bytes. Value | Čítače výkonu/memoryAvailableBytes|   |
-| performanceCounter. io_data_bytes_per_sec. Value | Čítače výkonu/processIOBytesPerSecond|   |
-| performanceCounter. number_of_exceps_thrown_per_sec. Value | Čítače výkonu/exceptionsPerSecond|   |
-| performanceCounter. percentage_processor_time_normalized. Value | Čítače výkonu/processCpuPercentage|   |
-| performanceCounter. percentage_processor_time. Value | Čítače výkonu/processCpuPercentage| Prahová hodnota bude muset být vhodně upravena, protože původní metrika byla napříč všemi jádry a nová metrika je normalizována na jednu jádro. Nástroj pro migraci nemění prahové hodnoty.  |
-| performanceCounter. percentage_processor_total. Value | Čítače výkonu/processorCpuPercentage|   |
-| performanceCounter. process_private_bytes. Value | Čítače výkonu/processPrivateBytes|   |
-| performanceCounter. request_execution_time. Value | Čítače výkonu/requestExecutionTime|   |
-| performanceCounter. requests_in_application_queue. Value | Čítače výkonu/requestsInQueue|   |
-| performanceCounter. requests_per_sec. Value | Čítače výkonu/requestsPerSecond|   |
+| performanceCounter.available_bytes. Value | Čítače výkonu/memoryAvailableBytes|   |
+| performanceCounter.io_data_bytes_per_sec. Value | Čítače výkonu/processIOBytesPerSecond|   |
+| performanceCounter.number_of_exceps_thrown_per_sec. Value | Čítače výkonu/exceptionsPerSecond|   |
+| performanceCounter.percentage_processor_time_normalized. Value | Čítače výkonu/processCpuPercentage|   |
+| performanceCounter.percentage_processor_time. Value | Čítače výkonu/processCpuPercentage| Prahová hodnota bude muset být vhodně upravena, protože původní metrika byla napříč všemi jádry a nová metrika je normalizována na jednu jádro. Nástroj pro migraci nemění prahové hodnoty.  |
+| performanceCounter.percentage_processor_total. Value | Čítače výkonu/processorCpuPercentage|   |
+| performanceCounter.process_private_bytes. Value | Čítače výkonu/processPrivateBytes|   |
+| performanceCounter.request_execution_time. Value | Čítače výkonu/requestExecutionTime|   |
+| performanceCounter.requests_in_application_queue. Value | Čítače výkonu/requestsInQueue|   |
+| performanceCounter.requests_per_sec. Value | Čítače výkonu/requestsPerSecond|   |
 | Request. Duration | žádosti/doba trvání| Vynásobit původní prahovou hodnotu hodnotou 1000 jako jednotky pro klasickou metriku v sekundách a pro nové jsou v milisekundách.  |
 | Request. Rate | žádosti/rychlost|   |
 | requestFailed. Count | požadavky/selhání| Použijte `aggregationType` ' count ' místo ' Sum '.   |

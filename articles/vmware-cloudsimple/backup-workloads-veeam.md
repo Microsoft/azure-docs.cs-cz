@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86525037"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Zálohování virtuálních počítačů s úlohami v privátním cloudu CloudSimple pomocí Veeam B&R
@@ -54,7 +54,7 @@ Pro prostředí, která mají k zálohování méně než 30 TB, CloudSimple dop
 
 * Veeam Backup Server a proxy server nainstalovaná na stejném virtuálním počítači v privátním cloudu.
 * Primární úložiště záloh založené na systému Linux v Azure nakonfigurované jako cíl pro úlohy zálohování.
-* `azcopy`používá se ke kopírování dat z primárního úložiště záloh do kontejneru objektů BLOB v Azure, který se replikuje do jiné oblasti.
+* `azcopy` používá se ke kopírování dat z primárního úložiště záloh do kontejneru objektů BLOB v Azure, který se replikuje do jiné oblasti.
 
 ![Základní scénáře nasazení](media/veeam-basicdeployment.png)
 
@@ -65,7 +65,7 @@ Pro prostředí, která mají víc než 30 TB pro zálohování, CloudSimple dop
 * Jednu proxy server na uzel v clusteru síti vSAN, jak to doporučila Veeam.
 * Primární úložiště záloh založené na Windows v privátním cloudu pro ukládání dat do mezipaměti pro rychlé obnovení.
 * Záložní úložiště pro Linux v Azure jako cíl pro úlohy zálohování s delší dobou trvání. Toto úložiště by mělo být nakonfigurované jako úložiště zálohování se škálováním na více instancí.
-* `azcopy`používá se ke kopírování dat z primárního úložiště záloh do kontejneru objektů BLOB v Azure, který se replikuje do jiné oblasti.
+* `azcopy` používá se ke kopírování dat z primárního úložiště záloh do kontejneru objektů BLOB v Azure, který se replikuje do jiné oblasti.
 
 ![Základní scénáře nasazení](media/veeam-advanceddeployment.png)
 
@@ -136,7 +136,7 @@ Vytvořte pravidla brány firewall mezi podsítí pro správu a sítí zálohov�
 
 V následující tabulce je uveden seznam portů.
 
-| Ikona | Popis | Ikona | Popis |
+| Ikona | Description | Ikona | Description |
 | ------------ | ------------- | ------------ | ------------- |
 | Záložní server  | vCenter  | PROTOKOL HTTPS/TCP  | 443 |
 | Záložní server <br> *Vyžaduje se pro nasazení součástí Veeam Backup & pro replikaci.* | Záložní proxy server  | TCP/UDP  | 135, 137 až 139 a 445 |

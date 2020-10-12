@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
 ms.openlocfilehash: 48009246dd491ca3f4080cf85036c66605a73272
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706997"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-creative-cloud"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Adobe Creative Cloud
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte, jak integrovat Adobe Creative Cloud s Azure Active D
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 

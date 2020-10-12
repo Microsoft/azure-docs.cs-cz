@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 43006456142728287ddf4adba1fbb9b45f5ccc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85211965"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>Správa a monitorování důležitosti úloh v Azure synapse Analytics
@@ -24,7 +24,7 @@ Správa a monitorování synapse důležitosti na úrovni požadavků SQL ve slu
 
 ## <a name="monitor-importance"></a>Důležitost monitorování
 
-Sledujte důležitost pomocí sloupce nový důležitost v zobrazení dynamické správy [Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+Sledujte důležitost pomocí sloupce nový důležitost v zobrazení dynamické správy [Sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 Níže uvedený dotaz monitorování ukazuje dobu odeslání a čas spuštění dotazů. Přečtěte si čas odeslání a čas zahájení spolu s důležitostí, abyste viděli, jak důležitost ovlivnila plánování.
 
 ```sql
@@ -39,7 +39,7 @@ Pokud chcete zobrazit další informace o plánování dotazů, použijte zobraz
 
 ## <a name="manage-importance-with-catalog-views"></a>Správa důležitosti pomocí zobrazení katalogu
 
-Zobrazení katalogu sys. workload_management_workload_classifiers obsahuje informace o klasifikátorech. Chcete-li vyloučit systémem definované klasifikátory, které jsou mapovány na třídy prostředků, spusťte následující kód:
+Zobrazení katalogu sys.workload_management_workload_classifiers obsahuje informace o klasifikátorech. Chcete-li vyloučit systémem definované klasifikátory, které jsou mapovány na třídy prostředků, spusťte následující kód:
 
 ```sql
 SELECT *
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-Zobrazení katalogu [Sys. workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)obsahuje informace o parametrech použitých při vytváření klasifikátoru.  Níže uvedený dotaz ukazuje, že v ```membername``` parametru pro hodnoty s ExecutiveReports byl vytvořen ExecReportsClassifier:
+Zobrazení katalogu [Sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)obsahuje informace o parametrech použitých při vytváření klasifikátoru.  Níže uvedený dotaz ukazuje, že v ```membername``` parametru pro hodnoty s ExecutiveReports byl vytvořen ExecReportsClassifier:
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value
