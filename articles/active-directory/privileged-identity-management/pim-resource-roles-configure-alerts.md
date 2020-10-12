@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0bfca096eb49ee9f1807935de1dac49151cc8ac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84743758"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>Konfigurace výstrah zabezpečení pro role prostředků Azure v Privileged Identity Management
@@ -28,7 +28,7 @@ Privileged Identity Management (PIM) generuje výstrahy v případě podezřelé
 
 ![Prostředky Azure – výstrahy výpisu stránky výstrah, úroveň rizika a počet](media/pim-resource-roles-configure-alerts/rbac-alerts-page.png)
 
-## <a name="review-alerts"></a>Zkontrolovat výstrahy
+## <a name="review-alerts"></a>Procházení výstrah
 
 Vyberte výstrahu, chcete-li zobrazit sestavu se seznamem uživatelů nebo rolí, které výstrahu aktivovaly, spolu s pokyny k nápravě.
 
@@ -36,13 +36,13 @@ Vyberte výstrahu, chcete-li zobrazit sestavu se seznamem uživatelů nebo rolí
 
 ## <a name="alerts"></a>Výstrahy
 
-| Výstrahy | Severity | Trigger | Doporučení |
+| Výstrahy | Závažnost | Trigger | Doporučení |
 | --- | --- | --- | --- |
 | **K prostředku je přiřazeno příliš mnoho vlastníků.** |Střední |Role vlastníka má příliš mnoho uživatelů. |Zkontrolujte uživatele v seznamu a znovu je přiřaďte k méně privilegovaným rolím. |
 | **K prostředku je přiřazeno příliš mnoho trvalých vlastníků.** |Střední |K roli je trvale přiřazeno příliš mnoho uživatelů. |Zkontrolujte uživatele v seznamu a znovu je přiřaďte, aby vyžadovaly aktivaci pro použití role. |
 | **Duplicitní role se vytvořila.** |Střední |Více rolí má stejné kritérium. |Použijte pouze jednu z těchto rolí. |
 
-### <a name="severity"></a>Severity
+### <a name="severity"></a>Závažnost
 
 - **Vysoká**: vyžaduje okamžitou akci kvůli porušení zásad. 
 - **Střední**: nevyžaduje okamžitou akci, ale signalizuje potenciální porušení zásad.

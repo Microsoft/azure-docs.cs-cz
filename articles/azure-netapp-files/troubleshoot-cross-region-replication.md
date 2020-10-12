@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: 3aaa5d2bc6fdbda0d1db212539c719aa65cae61b
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708765"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>Řešení potíží s replikací mezi oblastmi
@@ -68,7 +68,7 @@ Tento článek popisuje chybové zprávy a řešení, které vám můžou pomoct
 
 * [Replikace mezi oblastmi](cross-region-replication-introduction.md)
 * [Požadavky a předpoklady pro použití replikace mezi oblastmi](cross-region-replication-requirements-considerations.md)
-* [Vytvoření partnerského vztahu replikace](cross-region-replication-create-peering.md)
+* [Vytvoření peeringu replikace](cross-region-replication-create-peering.md)
 * [Zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md)
 * [Správa zotavení po havárii](cross-region-replication-manage-disaster-recovery.md)
 * [Řešení potíží s replikací mezi oblastmi](troubleshoot-cross-region-replication.md)

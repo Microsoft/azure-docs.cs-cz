@@ -11,17 +11,17 @@ ms.author: keli19
 ms.date: 09/09/2020
 ms.custom: designer
 ms.openlocfilehash: 15393a0e618c14fbaff46a51a300284d8afb4b77
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90889740"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Příklady kanálů & datových sad pro návrháře Azure Machine Learning
 
 Pomocí vestavěných příkladů v Návrháři Azure Machine Learning můžete rychle začít vytvářet vlastní kanály strojového učení. [Úložiště GitHub](https://github.com/Azure/MachineLearningDesigner) návrháře Azure Machine Learning obsahuje podrobnou dokumentaci, která vám pomůže pochopit některé běžné scénáře strojového učení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree) .
 * Pracovní prostor Azure Machine Learning 
@@ -65,7 +65,7 @@ Tady je postup použití ukázkového návrháře:
 
 Prozkoumejte tyto integrované regresní ukázky.
 
-| Ukázkový název | Description | 
+| Ukázkový název | Popis | 
 | --- | --- |
 | [Regrese – předpověď ceny automobilu (základní)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Předpovědět ceny aut pomocí lineární regrese. |
 | [Regrese – předpověď ceny automobilu (rozšířené)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Předpovědět ceny aut pomocí rozhodovací doménové struktury a dalších zesílených rozhodovacích stromů. Porovnejte modely a Najděte nejlepší algoritmus.
@@ -74,7 +74,7 @@ Prozkoumejte tyto integrované regresní ukázky.
 
 Prozkoumejte tyto integrované ukázky klasifikace. Další informace o ukázkách se dozvíte bez odkazů na dokumentaci, a to tak, že otevřete ukázky a místo toho zobrazíte komentáře modulu.
 
-| Ukázkový název | Description | 
+| Ukázkový název | Popis | 
 | --- | --- |
 | [Binární klasifikace s výběrem funkcí – předpověď příjmů](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | Předpovídání výnosů jako vysoké nebo nízké, pomocí rozstředního rozhodovacího stromu se dvěma třídami K výběru funkcí použijte korelaci Pearsonova.
 | [Binární klasifikace s vlastním skriptem Pythonu – předpověď úvěrového rizika](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Klasifikujte úvěrové aplikace jako vysoké nebo nízké riziko. K vážení dat použijte modul spouštění skriptu Pythonu.
@@ -86,7 +86,7 @@ Prozkoumejte tyto integrované ukázky klasifikace. Další informace o ukázká
 
 Prozkoumejte tyto integrované ukázky počítačové vize. Další informace o ukázkách se dozvíte bez odkazů na dokumentaci, a to tak, že otevřete ukázky a místo toho zobrazíte komentáře modulu.
 
-| Ukázkový název | Description | 
+| Ukázkový název | Popis | 
 | --- | --- |
 | Špičkové doporučení na hloubku & – předpověď hodnocení restaurace | Sestavte modul doporučených pro restaurace z možností restaurace/uživatel a hodnocení.|
 
@@ -94,7 +94,7 @@ Prozkoumejte tyto integrované ukázky počítačové vize. Další informace o 
 
 Prozkoumejte tyto integrované příklady doporučených kroků. Další informace o ukázkách se dozvíte bez odkazů na dokumentaci, a to tak, že otevřete ukázky a místo toho zobrazíte komentáře modulu.
 
-| Ukázkový název | Description | 
+| Ukázkový název | Popis | 
 | --- | --- |
 | Klasifikace obrázků pomocí DenseNet | Použijte moduly počítačového vidění k sestavení modelu klasifikace imagí založeného na PyTorch DenseNet.| 
 
@@ -102,7 +102,7 @@ Prozkoumejte tyto integrované příklady doporučených kroků. Další informa
 
 Přečtěte si další informace o ukázkách, které předvádějí nástroje a funkce machine learningu. Další informace o ukázkách se dozvíte bez odkazů na dokumentaci, a to tak, že otevřete ukázky a místo toho zobrazíte komentáře modulu.
 
-| Ukázkový název | Description | 
+| Ukázkový název | Popis | 
 | --- | --- |
 | Binární klasifikace pomocí pro dostupné modelu – předpověď příjmů za dospělé | Pro dostupné je systém strojového učení, který nabízí hranici strojového učení s technikami, jako je online, hashing, allreduce, snižování, learning2search, aktivní a interaktivní učení. Tento příklad ukazuje, jak použít model pro dostupné k sestavení binárního klasifikačního modelu. 
 | [Použití vlastního skriptu R – předpověď zpoždění letů](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) | Pomocí vlastního skriptu jazyka R můžete předpovědět, jestli se plánovaný osobní let bude zpozdit o více než 15 minut.
@@ -124,11 +124,11 @@ Ukázkové datové sady jsou k dispozici v kategorii ukázky **datových sad** -
 |Sdílené změny v CRM|Štítky z konference KDD ([orange_small_train_churn. labels](http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels)2009) – výzva pro předpověď vztahů se zákazníky.|
 |Sdílená datová sada CRM | Tato data pocházejí z konference KDDu pro předpověď vztahů se zákazníky 2009 ([orange_small_train.data.zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip)). <br/>Datová sada obsahuje zákazníky 50 tis z francouzské telekomunikační společnosti oranžová. Každý zákazník má 230 funkcí Anonyme, 190 z nich je numerická a 40 jsou kategorií. Funkce jsou velmi zhuštěné. |
 |Sdílení popisků pro CRM|Popisky z konference KDD ([orange_large_train_upselling. labels](http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels) – výzva k vy2009ce vztahu zákazníka|
-|Data o zpoždění letů|Data o výkonu pro osobní čas, která jsou přijímána z kolekce TranStatsch dat ministerstva dopravy USA ([včas).](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)<br/>Datová sada se zabývá časovým obdobím od dubna do října 2013. Před nahráním do návrháře byla datová sada zpracována takto: <br/>– Datová sada byla vyfiltrovaná tak, aby se kryla jenom 70 nejvytíženější letiště v kontinentální části USA. <br/>– Zrušené lety byly označeny za zpožděné o více než 15 minut. <br/>– Odstraněné lety byly odfiltrovány. <br/>-Byly vybrány následující sloupce: Year, month, DayofMonth, DayOfWeek, Carrier, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay, ArrDel15, Canceled.|
+|Data o zpoždění letů|Data o výkonu pro osobní čas, která jsou přijímána z kolekce TranStatsch dat ministerstva dopravy USA ([včas).](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)<br/>Datová sada se zabývá časovým obdobím April-October 2013. Před nahráním do návrháře byla datová sada zpracována takto: <br/>– Datová sada byla vyfiltrovaná tak, aby se kryla jenom 70 nejvytíženější letiště v kontinentální části USA. <br/>– Zrušené lety byly označeny za zpožděné o více než 15 minut. <br/>– Odstraněné lety byly odfiltrovány. <br/>-Byly vybrány následující sloupce: Year, month, DayofMonth, DayOfWeek, Carrier, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay, ArrDel15, Canceled.|
 |Datová sada UCI pro německé kreditní karty|Datová sada Statlog (německá kreditní karta) ([Statlog + němčina + Credit + data](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data))) s použitím souboru německého. data.<br/>Datová sada klasifikuje osoby, které jsou popsány sadou atributů, jako nízké nebo vysoké úvěrové riziko. Každý příklad představuje osobu. K dispozici jsou 20 funkcí, číselné i kategorií a binární označení (hodnota úvěrového rizika). Položky vysokého kreditu mají štítek = 2, nízké položky úvěrového rizika mají označení = 1. Náklady na chybnou klasifikaci příkladu s nízkým rizikem, který je vysoký, je 1, zatímco náklady na netřídění s vysokým rizikovým příkladem jsou 5.|
 |Názvy filmů IMDB|Datová sada obsahuje informace o videích, které byly ohodnoceny na Twitteru tweety: IMDB ID filmu, název filmu, Žánr a produkční rok. V datové sadě jsou 17K filmy. Datová sada byla představena v dokumentu "S". Dooms, T. de Pessemier a L. Martens. MovieTweetings: datová sada hodnocení filmu shromážděná z Twitteru. Dílna v Crowdsourcingový a lidské výpočtu pro doporučované systémy, CrowdRec na RecSys 2013. "|
 |Hodnocení filmů|Datová sada je rozšířená verze datové sady ve formátu videa. Tato datová sada má 170K hodnocení filmů, která se extrahují z dobře strukturovaných tweety na Twitteru. Každá instance představuje prostupnost a je řazená kolekce členů: ID uživatele, ID videa IMDB, hodnocení, časové razítko, počet oblíbených položek pro tento seznam a počet předaných prostředků. Datová sada byla zpřístupněna prostřednictvím. říkáme, S. Dooms, B. loni a D. Tikk pro doporučované systémy Challenge 2014.|
-|Datová sada počasí|Hodinově založené počasí z NOAA ([sloučená data z 201304 do 201310](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)).<br/>Údaje o počasí se týkají pozorování z povětrnostních stanic na letišti, které pokrývají dobu od dubna do října 2013. Před nahráním do návrháře byla datová sada zpracována takto:    <br/> – ID stanice počasí byly namapovány na odpovídající ID letišť.    <br/> – Počasí, které nejsou přidružené k letiště 70 nejvytíženější, se odfiltrují.    <br/> – Sloupec data byl rozdělen na sloupce samostatného roku, měsíce a dne.    <br/> -Byly vybrány následující sloupce: AirportID, rok, měsíc, den, čas, časové pásmo, SkyCondition, Visibility, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter,,|
+|Datová sada počasí|Hodinově založené počasí z NOAA ([sloučená data z 201304 do 201310](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)).<br/>Údaje o počasí se týkají pozorování z povětrnostních stanic na letišti, které pokrývají časové období April-October 2013. Před nahráním do návrháře byla datová sada zpracována takto:    <br/> – ID stanice počasí byly namapovány na odpovídající ID letišť.    <br/> – Počasí, které nejsou přidružené k letiště 70 nejvytíženější, se odfiltrují.    <br/> – Sloupec data byl rozdělen na sloupce samostatného roku, měsíce a dne.    <br/> -Byly vybrány následující sloupce: AirportID, rok, měsíc, den, čas, časové pásmo, SkyCondition, Visibility, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter,,|
 |Wikipedii sada dat SP 500|Data jsou odvozena z Wikipedii ( https://www.wikipedia.org/) na základě článků z každé z&společnosti P 500, uložená jako data XML).    <br/>Před nahráním do návrháře byla datová sada zpracována takto:    <br/> – Extrakce textového obsahu pro každou konkrétní firmu    <br/> -Odebrat formátování wiki    <br/> -Odebrání jiných než alfanumerických znaků    <br/> -Převést veškerý text na malá písmena    <br/> – Přidaly se známé kategorie společnosti.    <br/>Upozorňujeme, že některé společnosti nemohly najít článek, takže počet záznamů je menší než 500.|
 
 

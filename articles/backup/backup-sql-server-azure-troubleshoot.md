@@ -4,10 +4,10 @@ description: Informace o řešení potíží při zálohování SQL Server datab
 ms.topic: troubleshooting
 ms.date: 06/18/2019
 ms.openlocfilehash: f215b848bedae333979f0fed8eb7f216fb6e25f4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332776"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
@@ -130,7 +130,7 @@ V některých případech se může stát, že při operacích zálohování a o
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Záloha protokolů použitá k obnovení obsahuje hromadně protokolované změny. Nedá se použít k zastavení v libovolném bodě v čase podle pokynů SQL. | Když je databáze v režimu hromadného obnovení, data mezi hromadně protokolovanými transakcemi a další transakce protokolu se nedají obnovit. | Vyberte jiný bod v čase pro obnovení. [Přečtěte si další informace](/sql/relational-databases/backup-restore/recovery-models-sql-server).
+| Záloha protokolů použitá k obnovení obsahuje hromadně protokolované změny. Nedá se použít k zastavení v libovolném bodě v čase podle pokynů SQL. | Když je databáze v režimu hromadného obnovení, data mezi hromadně protokolovanými transakcemi a další transakce protokolu se nedají obnovit. | Vyberte jiný bod v čase pro obnovení. [Další informace](/sql/relational-databases/backup-restore/recovery-models-sql-server).
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f02ec2220827fbec8c981ab3a1859d633675a6f4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313259"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Kurz: integrace jedné doménové struktury služby AD pomocí předávacího ověřování (PTA)
@@ -24,7 +24,7 @@ ms.locfileid: "91313259"
 
 Následující kurz vás provede vytvořením hybridního prostředí identity pomocí předávacího ověřování.  Toto prostředí se pak dá použít k testování nebo pro získání více znalostí, jak hybridní identita funguje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Počítač s nainstalovanou [technologií Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) .  Tento postup je navržený na počítači s [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) nebo [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) .
 - [Předplatné Azure](https://azure.microsoft.com/free)

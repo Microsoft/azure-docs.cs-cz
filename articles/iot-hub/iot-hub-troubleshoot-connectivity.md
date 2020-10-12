@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Technical Support'
 ms.openlocfilehash: b22573fc98d4647c2b05763d9b67c37f6f023f98
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322716"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Monitorování, diagnostika a řešení potíží odpojení pomocí Azure IoT Hub
@@ -32,7 +32,7 @@ Pomocí Azure Monitor můžete získat výstrahy a zapsat protokoly, když se za
 
 Pokud chcete protokolovat události a chyby připojení zařízení, zapněte diagnostiku pro IoT Hub. Tyto protokoly doporučujeme co nejdříve zapnout, protože pokud nejsou povolené diagnostické protokoly a dojde k odpojení zařízení, nebudete mít k dispozici žádné informace k řešení problému se službou.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Přejděte do služby IoT Hub.
 
@@ -52,7 +52,7 @@ Další informace najdete v tématu [monitorování stavu Azure IoT Hub a rychl�
 
 Pokud chcete dostávat upozornění, když se zařízení odpojí, nakonfigurujte upozornění na metrikě **připojená zařízení (Preview)** .
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Přejděte do služby IoT Hub.
 
@@ -74,7 +74,7 @@ Chcete-li detekovat odpojení *podle zařízení* , například pokud potřebuje
 
 Když zapnete diagnostické protokoly a výstrahy pro připojená zařízení, zobrazí se upozornění, když dojde k chybám. Tato část popisuje, jak vyhledat běžné problémy, když obdržíte výstrahu. Následující postup předpokládá, že jste nastavili protokoly Azure Monitor pro diagnostické protokoly.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Přejděte do služby IoT Hub.
 

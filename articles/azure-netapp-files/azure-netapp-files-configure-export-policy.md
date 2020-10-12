@@ -9,10 +9,10 @@ ms.workload: storage
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.openlocfilehash: 4a20a223932f82c80ad5831ef3a02bad803e26e6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533192"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Konfigurace zásad exportu pro svazek NFS
@@ -21,7 +21,7 @@ Můžete nakonfigurovat zásady exportu pro řízení přístupu ke svazku Azure
 
 Můžete vytvořit až pět pravidel zásad pro export.
 
-## <a name="steps"></a>Kroky 
+## <a name="steps"></a>Postup 
 
 1.  Na stránce svazky vyberte svazek, pro který chcete nakonfigurovat zásadu exportu, a klikněte na **Exportovat zásadu**. 
 

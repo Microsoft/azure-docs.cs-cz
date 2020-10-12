@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 171aaeb624bfedb9aa7408a736c11faca316b392
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322631"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>Protokoly ApplicationInsightsLoggerProvider pro .NET Core ILogger
@@ -210,7 +210,7 @@ Můžete pořád používat starého poskytovatele. (Bude odebráno pouze v hlav
 - Předchozí poskytovatel nemá podporu pro [rozsahy protokolů](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-scopes). V novém zprostředkovateli jsou vlastnosti z oboru automaticky přidány do shromážděné telemetrie jako vlastní vlastnosti.
 - Protokoly se teď můžou v kanálu spuštění aplikace zachytit mnohem dřív. Protokoly z **programu** a **spouštěcí** třídy se teď dají zachytit.
 - U nového poskytovatele se filtrování provádí na úrovni architektury samotného. Protokoly můžete filtrovat do poskytovatele Application Insights stejným způsobem jako u jiných poskytovatelů, včetně integrovaných zprostředkovatelů, jako je konzola, ladění a tak dále. Můžete také použít stejné filtry na více zprostředkovatelů.
-- V ASP.NET Core (2,0 a novější) doporučujeme, abyste [poskytovatele protokolování povolili](https://github.com/aspnet/Announcements/issues/255) pomocí metod rozšíření v ILoggingBuilder v samotné **program.cs** .
+- V ASP.NET Core (2,0 a novější) doporučujeme, abyste  [poskytovatele protokolování povolili](https://github.com/aspnet/Announcements/issues/255) pomocí metod rozšíření v ILoggingBuilder v samotné **program.cs** .
 
 > [!Note]
 > Nový poskytovatel je k dispozici pro aplikace, které cílí na NETSTANDARD 2.0 nebo novější. Od [Microsoft. ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verze 2.14.0 a vyšší jsou k dispozici také nové poskytovatele pro aplikace cílené .NET Framework NET461 nebo novější. Pokud vaše aplikace cílí na starší verze .NET Core, jako je například .NET Core 1,1, nebo pokud cílí na .NET Framework menší než NET46, pokračujte v používání starého poskytovatele.
@@ -378,7 +378,7 @@ Duplikace může nastat, pokud máte starší (nyní zastaralou) verzi Applicati
  }
 ```
 
-Pokud při ladění ze sady Visual Studio dojde k dvojímu protokolování, nastavte `EnableDebugLogger` na *hodnotu false* v kódu, který umožňuje Application Insights, následovně. Tato duplicita a oprava je relevantní pouze při ladění aplikace.
+Pokud při ladění ze sady Visual Studio dojde k dvojímu protokolování, nastavte `EnableDebugLogger` na  *hodnotu false* v kódu, který umožňuje Application Insights, následovně. Tato duplicita a oprava je relevantní pouze při ladění aplikace.
 
 ```csharp
  public void ConfigureServices(IServiceCollection services)
@@ -444,7 +444,7 @@ public class MyController : ApiController
 
 ApplicationInsightsLoggerProvider zachycuje protokoly ILogger a z nich vytvoří TraceTelemetry. Pokud je objekt výjimky předán metodě **log ()** v ILogger, vytvoří se *ExceptionTelemetry* namísto TraceTelemetry. Tyto položky telemetrie se dají najít na stejných místech jako jakékoli jiné TraceTelemetry nebo ExceptionTelemetry pro Application Insights, včetně portálu, analýzy nebo místního ladicího programu sady Visual Studio.
 
-Pokud chcete vždy odeslat TraceTelemetry, použijte tento fragment kódu:```builder.AddApplicationInsights((opt) => opt.TrackExceptionsAsExceptionTelemetry = false);```
+Pokud chcete vždy odeslat TraceTelemetry, použijte tento fragment kódu: ```builder.AddApplicationInsights((opt) => opt.TrackExceptionsAsExceptionTelemetry = false);```
 
 ### <a name="i-dont-have-the-sdk-installed-and-i-use-the-azure-web-apps-extension-to-enable-application-insights-for-my-aspnet-core-applications-how-do-i-use-the-new-provider"></a>Nemám nainstalovanou sadu SDK a k povolení Application Insights pro moje ASP.NET Core aplikace používám rozšíření Azure Web Apps. Návody použít nového poskytovatele? 
 

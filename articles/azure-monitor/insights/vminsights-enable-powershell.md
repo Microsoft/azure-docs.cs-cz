@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: a2cdcab08bba76cb385666956b7663324f32c669
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87824575"
 ---
 # <a name="enable-azure-monitor-for-vms-using-powershell"></a>Povolení Azure Monitor pro virtuální počítače pomocí prostředí PowerShell
@@ -19,7 +19,7 @@ Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače n
 - Virtuální počítač Azure
 - Sada škálování virtuálních počítačů Azure
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](vminsights-configure-workspace.md).
 - V části [podporované operační systémy](vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 

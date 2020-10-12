@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/7/2020
 ms.openlocfilehash: 183ece0d82431a8a961902d75d2fc24b013bc97b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86252262"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Informace o kontinuitě podnikových aplikací v Azure Database for MariaDB
@@ -23,7 +23,7 @@ Azure Database for MariaDB poskytuje funkce pro provozní kontinuitu, které zah
 
 Následující tabulka porovnává ERT a RPO pro dostupné funkce:
 
-| **Funkce** | **Basic** | **Pro obecné účely** | **Optimalizované pro paměť** |
+| **Funkce** | **Basic** | **Obecné použití** | **Optimalizované pro paměť** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Obnovení k určitému bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování |
 | Geografické obnovení ze geograficky replikovaných záloh | Nepodporováno | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |

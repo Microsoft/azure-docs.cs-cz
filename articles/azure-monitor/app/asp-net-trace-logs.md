@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
 ms.openlocfilehash: ab3b12bf0401c4060823c6ed1d20dd6385cc397f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973836"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování .NET/.NET Core a Python v Application Insights
@@ -136,7 +136,7 @@ Pro každý zdroj můžete nastavit následující parametry:
 ## <a name="use-the-trace-api-directly"></a>Přímé použití rozhraní API trasování
 Rozhraní API pro trasování Application Insights můžete volat přímo. Toto rozhraní API používají adaptéry protokolování.
 
-Příklad:
+Například:
 
 ```csharp
 var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
@@ -145,7 +145,7 @@ telemetry.TrackTrace("Slow response - database01");
 
 Výhodou TrackTrace je, že do zprávy můžete ukládat poměrně dlouhá data. Můžete například zakódovat data POST.
 
-Do zprávy můžete také přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Příklad:
+Do zprávy můžete také přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Například:
 
   ```csharp
   var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: 183273e6f93bbfda8ed4e5fe913192994a0b6ce2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87833381"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA Azure Backup na úrovni souborů
@@ -43,7 +43,7 @@ Jedna z nich by mohla umístit vyhrazené virtuální pevné disky pro SAP HANA 
 
 ## <a name="azure-blobxfer-utility-details"></a>Podrobnosti o nástroji Azure blobxfer
 
-K ukládání adresářů a souborů v Azure Storage může jeden použít CLI nebo PowerShell nebo vyvíjet nástroj pomocí jedné ze [sad SDK Azure](https://azure.microsoft.com/downloads/). Pro kopírování dat do služby Azure Storage je k dispozici také nástroj AzCopy připravený k použití. (viz [přenos dat pomocí nástroje příkazového řádku AzCopy](../../../storage/common/storage-use-azcopy-v10.md)).
+K ukládání adresářů a souborů v Azure Storage může jeden použít CLI nebo PowerShell nebo vyvíjet nástroj pomocí jedné ze [sad SDK Azure](https://azure.microsoft.com/downloads/). Pro kopírování dat do služby Azure Storage je k dispozici také nástroj AzCopy připravený k použití. (Další informace najdete v tématu [přenos dat pomocí nástroje AzCopy Command-Line](../../../storage/common/storage-use-azcopy-v10.md)).
 
 Proto se blobxfer použil k kopírování souborů zálohy SAP HANA. Je to open source, který používá mnoho zákazníků v produkčních prostředích a je dostupný na [GitHubu](https://github.com/Azure/blobxfer). Tento nástroj umožňuje jedné kopírování dat přímo do úložiště objektů blob Azure nebo sdílené složky Azure. Nabízí také řadu užitečných funkcí, jako je MD5 hash nebo automatické paralelismuy při kopírování adresáře s více soubory.
 

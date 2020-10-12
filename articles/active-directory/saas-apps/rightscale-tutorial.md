@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 75c0542764e94ae57379fa225b4e064a58da3af1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553362"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Kurz: Azure Active Directory integrace s RightScale
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí RightScale, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování RightScale](#configure-rightscale-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování RightScale](#configure-rightscale-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření RightScale Test User](#create-rightscale-test-user)** – pro Britta Simon v RightScale, který je propojený s reprezentací uživatele Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí RightSca
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -107,7 +107,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí RightSca
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://login.rightscale.com/`
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -121,38 +121,38 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí RightSca
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-rightscale-single-sign-on"></a>Konfigurace jednotného přihlašování RightScale
+### <a name="configure-rightscale-single-sign-on"></a>Nakonfigurovat RightScale jednu Sign-On
 
 1. Pokud chcete pro vaši aplikaci nakonfigurovat jednotné přihlašování, musíte se přihlásit ke klientovi RightScale jako správce.
 
 2. V nabídce v horní části klikněte na kartu **Nastavení** a vyberte **jednotné přihlašování**.
 
-    ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_001.png)
+    ![Konfigurace jednoho Sign-On](./media/rightscale-tutorial/tutorial_rightscale_001.png)
 
 3. Kliknutím na tlačítko **Nový** přidejte **poskytovatele identity SAML**.
 
-    ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_002.png)
+    ![Konfigurace jednoho Sign-On](./media/rightscale-tutorial/tutorial_rightscale_002.png)
 
 4. Do textového pole **Zobrazovaný název**zadejte název vaší společnosti.
 
-    ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_003.png)
+    ![Konfigurace jednoho Sign-On](./media/rightscale-tutorial/tutorial_rightscale_003.png)
 
 5. Vyberte možnost **povolení jednotného přihlašování iniciované RightScale pomocí nápovědy pro zjišťování** a zadáním **názvu domény** do následujícího textového pole.
 
-    ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_004.png)
+    ![Konfigurace jednoho Sign-On](./media/rightscale-tutorial/tutorial_rightscale_004.png)
 
 6. Vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal do **koncového bodu SAML SSO** v RightScale.
 
-    ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_006.png)
+    ![Konfigurace jednoho Sign-On](./media/rightscale-tutorial/tutorial_rightscale_006.png)
 
 7. Vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal do **EntityId SAML** v RightScale.
 
-    ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_008.png)
+    ![Konfigurace jednoho Sign-On](./media/rightscale-tutorial/tutorial_rightscale_008.png)
 
 8. Kliknutím na tlačítko **prohlížeč** Nahrajte certifikát, který jste stáhli z Azure Portal.
 
 
-    ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_009.png)
+    ![Konfigurace jednoho Sign-On](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
 9. Klikněte na **Uložit**.
 
@@ -179,7 +179,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -187,7 +187,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **RightScale**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **RightScale**.
 

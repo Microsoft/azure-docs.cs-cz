@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88115029"
 ---
 # <a name="whats-new-for-authentication"></a>Co je nového pro ověřování?
@@ -69,7 +69,7 @@ Uživatelé s heslem delšími než 256 znaků, které se přihlásí přímo do
 
 Chyba v protokolech přihlášení bude AADSTS 50052: InvalidPasswordExceedsMaxLength
 
-Zpráva`The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
+Zpráva `The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
 
 Nápravy
 
@@ -127,7 +127,7 @@ Pokud chcete tento problém vyřešit, použijte prostředí pro vyjádření so
 
 #### <a name="example-request"></a>Příklad požadavku
 
-`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`V tomto příkladu je tenant prostředků (autorita) contoso.com, aplikace prostředků je klientská aplikace pro jednoho tenanta, která je volána `gateway.contoso.com/api` pro tenanta contoso, a klientská aplikace je `14c88eee-b3e2-4bb0-9233-f5e3053b3a28` .  Pokud má klientská aplikace v rámci služby Contoso.com instanční objekt, může tento požadavek pokračovat.  Pokud ale ne, požadavek se nezdaří s chybou uvedenou výše.
+`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...` V tomto příkladu je tenant prostředků (autorita) contoso.com, aplikace prostředků je klientská aplikace pro jednoho tenanta, která je volána `gateway.contoso.com/api` pro tenanta contoso, a klientská aplikace je `14c88eee-b3e2-4bb0-9233-f5e3053b3a28` .  Pokud má klientská aplikace v rámci služby Contoso.com instanční objekt, může tento požadavek pokračovat.  Pokud ale ne, požadavek se nezdaří s chybou uvedenou výše.
 
 Pokud se ale jednalo o aplikaci pro více tenantů, bude mít žádost i nadále bez ohledu na klientskou aplikaci, která má instanční objekt v rámci služby Contoso.com.
 

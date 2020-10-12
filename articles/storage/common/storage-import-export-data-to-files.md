@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: a88cf9981d4f3a69a503c9caa56be1b5f35029f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105179"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Import dat do služby Soubory Azure pomocí služby Azure Import/Export
@@ -50,7 +50,7 @@ K přípravě jednotek proveďte následující kroky.
 2. Na každé jednotce vytvořte jeden svazek NTFS. Přiřaďte ke svazku písmeno jednotky. Nepoužívejte mountpoints.
 3. Upravte soubor *dataset.csv* v kořenové složce, ve které se nástroj nachází. V závislosti na tom, jestli chcete importovat soubor nebo složku nebo obojí, přidejte do souboru *dataset.csv* položky podobné následujícím příkladům.  
 
-   - **Import souboru**: v následujícím příkladu se data ke zkopírování nacházejí v jednotce F:. Soubor *MyFile1.txt* je zkopírován do kořenového adresáře *MyAzureFileshare1*. Pokud *MyAzureFileshare1* neexistuje, vytvoří se v účtu Azure Storage. Struktura složek je zachována.
+   - **Import souboru**: v následujícím příkladu se data ke zkopírování nacházejí v jednotce F:. Soubor *MyFile1.txt*  je zkopírován do kořenového adresáře *MyAzureFileshare1*. Pokud *MyAzureFileshare1* neexistuje, vytvoří se v účtu Azure Storage. Struktura složek je zachována.
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
@@ -145,7 +145,7 @@ Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 
 4. V **informace o expedici zpět**:
 
-    - V rozevíracím seznamu vyberte přepravce. Pokud chcete použít operátor jiného než FedEx/DHL, vyberte z rozevíracího seznamu existující možnost. Kontaktujte Azure Data Box provozní tým `adbops@microsoft.com` s informacemi, které se týkají přepravce, kterého plánujete použít.
+    - V rozevíracím seznamu vyberte přepravce. Pokud chcete použít operátor jiného než FedEx/DHL, vyberte z rozevíracího seznamu existující možnost. Kontaktujte Azure Data Box provozní tým `adbops@microsoft.com`  s informacemi, které se týkají přepravce, kterého plánujete použít.
     - Zadejte platné číslo účtu dopravce, který jste vytvořili pomocí tohoto dopravce. Společnost Microsoft používá tento účet k dodávání jednotek zpátky po dokončení úlohy importu.
     - Zadejte celé a platné kontaktní jméno, telefonní číslo, e-mail, ulici, město, PSČ, kraj a zemi/oblast.
 

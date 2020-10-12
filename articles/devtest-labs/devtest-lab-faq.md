@@ -4,10 +4,10 @@ description: Tento článek obsahuje odpovědi na některé nejčastější dota
 ms.topic: article
 ms.date: 07/17/2020
 ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289366"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
@@ -29,7 +29,7 @@ V současnosti pracujeme na migraci stávajících příspěvků na blogu (s vý
 Pomocí naší služby Twitter vám budeme účtovat aktualizace výpadků, a to od teď až dál. Sledujte nás na Twitteru a získejte nejnovější aktualizace pro výpadky a známé chyby.
 
 ### <a name="twitter"></a>Twitter
-Váš popisovač Twitteru:[@azlabservices](https://twitter.com/azlabservices)
+Váš popisovač Twitteru: [@azlabservices](https://twitter.com/azlabservices)
 
 ## <a name="general"></a>Obecné
 ### <a name="what-if-my-question-isnt-answered-here"></a>Co když tady není odpověď na moji otázku?
@@ -68,7 +68,7 @@ DevTest Labs je bezplatná služba. Vytváření Labs a konfigurace zásad, šab
 ## <a name="security"></a>Zabezpečení
 
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Jaké jsou různé úrovně zabezpečení v DevTest Labs?
-Přístup k zabezpečení je určený Access Control na základě rolí (RBAC). Pokud se chcete dozvědět, jak Access funguje, pomůže se naučit rozdíly mezi oprávněními, rolí a oborem definovaným pomocí RBAC.
+Přístup k zabezpečení je určený pomocí Role-Based Access Control (RBAC). Pokud se chcete dozvědět, jak Access funguje, pomůže se naučit rozdíly mezi oprávněními, rolí a oborem definovaným pomocí RBAC.
 
 - **Oprávnění**: oprávnění je definovaný přístup k určité akci. Oprávnění může být například přístup pro čtení ke všem virtuálním počítačům.
 - **Role**: role je sada oprávnění, která se dají seskupit a přiřadit k uživateli. Například uživatel s rolí vlastníka předplatného má přístup ke všem prostředkům v rámci předplatného.
@@ -200,7 +200,7 @@ Zkopírování stávajících virtuálních počítačů do DevTest Labs:
 Ano, k virtuálním počítačům můžete připojit několik disků.
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>Jsou pro DevTest Labs podporované image Gen 2?
-Yes. Služba DevTest Labs podporuje [Image Gen 2](../virtual-machines/windows/generation-2.md). Pokud jsou však pro Image k dispozici obě verze 1. generace a 2. DevTest Labs při vytváření virtuálního počítače zobrazuje pouze verzi 1. generace. Obrázek se zobrazí, pokud je k dispozici pouze obecná verze 2. 
+Ano. Služba DevTest Labs podporuje [Image Gen 2](../virtual-machines/windows/generation-2.md). Pokud jsou však pro Image k dispozici obě verze 1. generace a 2. DevTest Labs při vytváření virtuálního počítače zobrazuje pouze verzi 1. generace. Obrázek se zobrazí, pokud je k dispozici pouze obecná verze 2. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Pokud chci pro svoje testování použít bitovou kopii operačního systému Windows, musím si koupit předplatné MSDN?
 Pokud chcete pro vývoj nebo testování v Azure použít image operačního systému Windows Client (Windows 7 nebo novější), proveďte jeden z následujících kroků:
@@ -277,7 +277,7 @@ K automatickému nahrávání souborů VHD pro vytváření vlastních imagí m�
 
 Pokud chcete najít cílový účet úložiště, který je přidružený k vašemu testovacímu prostředí:
 
-1.  Přihlaste se na [Azure Portal](https://portal.azure.com).
+1.  Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2.  V nabídce vlevo vyberte **skupiny prostředků**.
 3.  Vyhledejte a vyberte skupinu prostředků, která je přidružená k vašemu testovacímu prostředí.
 4.  V části **Přehled**vyberte jeden z účtů úložiště.
@@ -357,7 +357,7 @@ Při použití sdílených veřejných IP adres sdílí virtuální počítače 
 
 ### <a name="how-do-i-ensure-that-development-and-test-virtual-machines-are-unable-to-reach-the-public-internet-are-there-any-recommended-patterns-to-set-up-network-configuration"></a>Návody zajistěte, aby vývojové a testovací virtuální počítače nedokázaly získat přístup k veřejnému Internetu? Existují nějaké Doporučené vzory pro nastavení konfigurace sítě?
 
-Yes. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
+Ano. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
 
 - **Příchozí provoz** – Pokud virtuální počítač nemá veřejnou IP adresu, nepůjde k němu získat Internet. Běžným přístupem je zajistit, že jsou nastavené zásady na úrovni předplatného, takže žádný uživatel nemůže vytvořit veřejnou IP adresu.
 - **Odchozí provoz** – Pokud chcete zabránit tomu, aby virtuální počítače přistupovaly k veřejnému Internetu a vynutily provoz přes podnikovou bránu firewall, můžete směrovat provoz místně přes Express Route nebo VPN pomocí vynuceného směrování.

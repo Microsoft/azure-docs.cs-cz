@@ -13,10 +13,10 @@ ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 785b42ab963c3784e63cd00eb0baa62b20952a8a
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441081"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Průvodce laděním a výkonem aktivity kopírování
@@ -208,8 +208,8 @@ Nakonfigurujte nastavení **enableStaging** v aktivitě kopírování a určete,
 | Vlastnost | Popis | Výchozí hodnota | Vyžadováno |
 | --- | --- | --- | --- |
 | **enableStaging** |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |Nepravda |No |
-| **linkedServiceName** |Zadejte název propojené služby [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , která odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem se nedá použít k načtení dat do služby Azure synapse Analytics prostřednictvím základu. Můžete ho použít ve všech ostatních scénářích. |– |Ano, pokud je **enableStaging** nastavené na true |
-| **dílčí** |Zadejte cestu k úložišti objektů blob, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner pro ukládání dočasných dat. <br/><br/> Zadejte cestu pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem, nebo pokud chcete, aby byla dočasná data v určitém umístění. |– |No |
+| **linkedServiceName** |Zadejte název propojené služby [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , která odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem se nedá použít k načtení dat do služby Azure synapse Analytics prostřednictvím základu. Můžete ho použít ve všech ostatních scénářích. |Není k dispozici |Ano, pokud je **enableStaging** nastavené na true |
+| **dílčí** |Zadejte cestu k úložišti objektů blob, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner pro ukládání dočasných dat. <br/><br/> Zadejte cestu pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem, nebo pokud chcete, aby byla dočasná data v určitém umístění. |Není k dispozici |No |
 | **Hodnotou EnableCompression** |Určuje, zda mají být data před zkopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |Nepravda |No |
 
 Tady je ukázková definice aktivity kopírování s vlastnostmi popsanými v předchozí tabulce:
@@ -413,7 +413,7 @@ V takovém případě může komprese dat bzip2 zpomalit celý kanál. Přepnut�
 
 ![Scénář 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
-## <a name="reference"></a>Reference
+## <a name="reference"></a>Odkaz
 Tady jsou odkazy na sledování výkonu a ladění pro některá z podporovaných úložišť dat:
 
 * Azure Blob Storage: [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../../storage/blobs/scalability-targets.md) a [Kontrolní seznam výkonu a škálovatelnosti pro úložiště objektů BLOB](../../storage/blobs/storage-performance-checklist.md).

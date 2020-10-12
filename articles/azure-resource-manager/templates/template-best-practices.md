@@ -4,10 +4,10 @@ description: Popisuje doporučené přístupy k vytváření Azure Resource Mana
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87809251"
 ---
 # <a name="arm-template-best-practices"></a>Osvědčené postupy pro šablonu ARM
@@ -44,7 +44,7 @@ Informace v této části mohou být užitečné při práci s [parametry](templ
 
 * Pro názvy parametrů použijte ve stylu CamelCase Case.
 
-* Použijte parametry pro nastavení, která se liší v závislosti na prostředí, jako je SKU, velikost nebo kapacita.
+* Parametry můžete použít pro nastavení, která se liší podle prostředí, například podle skladové položky, velikosti nebo kapacity.
 
 * Použijte parametry pro názvy prostředků, které chcete zadat pro snadnější identifikaci.
 
@@ -170,7 +170,7 @@ Při rozhodování, jaké [závislosti](define-resource-dependency.md) se mají 
 
 * Pokud je možné určit hodnotu před nasazením, zkuste prostředek nasadit bez závislosti. Pokud například hodnota konfigurace potřebuje název jiného prostředku, možná nebudete potřebovat závislost. Tyto pokyny nefungují vždycky, protože některé prostředky ověřují existenci druhého prostředku. Pokud se zobrazí chyba, přidejte závislost.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 Následující informace můžou být užitečné při práci s [prostředky](template-syntax.md#resources):
 

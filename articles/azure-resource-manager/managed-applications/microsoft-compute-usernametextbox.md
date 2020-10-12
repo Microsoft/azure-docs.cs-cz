@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 82478f322e1df22bde50769b90f0424140920e9a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87063570"
 ---
 # <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft. Compute. UserNameTextBox – element uživatelského rozhraní
@@ -48,9 +48,9 @@ Ovládací prvek textové pole s integrovaným ověřováním pro uživatelská 
 ## <a name="remarks"></a>Poznámky
 
 - Pokud `constraints.required` je vlastnost nastavena na **hodnotu true**, musí mít textové pole hodnotu k úspěšnému ověření. Výchozí hodnota je **true (pravda**).
-- `osPlatform`musí být zadáno a může být buď **Windows** , nebo **Linux**.
-- `constraints.regex`je vzor regulárního výrazu jazyka JavaScript. Je-li tento parametr zadán, musí být hodnota textového pole shodná se vzorem, aby bylo možné úspěšně ověřit. Výchozí hodnota je **null**.
-- `constraints.validationMessage`je řetězec, který se zobrazí, pokud hodnota textového pole nefunguje při ověřování určeného parametrem `constraints.regex` . Není-li parametr zadán, jsou použity vestavěné zprávy ověřování v textovém poli. Výchozí hodnota je **null**.
+- `osPlatform` musí být zadáno a může být buď **Windows** , nebo **Linux**.
+- `constraints.regex` je vzor regulárního výrazu jazyka JavaScript. Je-li tento parametr zadán, musí být hodnota textového pole shodná se vzorem, aby bylo možné úspěšně ověřit. Výchozí hodnota je **null**.
+- `constraints.validationMessage` je řetězec, který se zobrazí, pokud hodnota textového pole nefunguje při ověřování určeného parametrem `constraints.regex` . Není-li parametr zadán, jsou použity vestavěné zprávy ověřování v textovém poli. Výchozí hodnota je **null**.
 - Tento prvek obsahuje integrované ověřování, které je založeno na hodnotě zadané pro `osPlatform` . Integrované ověřování lze použít společně s vlastním regulárním výrazem. Pokud `constraints.regex` je zadaná hodnota, pak se aktivují jak předdefinované, tak i vlastní ověřování.
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/02/2019
 ms.openlocfilehash: 9792641da4b3aebad047179e2c02dad757027801
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045259"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Scénáře použití geografického a geoprostorového agregace pomocí Azure Stream Analytics
@@ -70,7 +70,7 @@ Zařízení "C" se nachází uvnitř sestavování ID 2, které není povoleno p
 
 ### <a name="site-with-multiple-allowed-devices"></a>Lokalita s několika povolenými zařízeními
 
-Pokud lokalita umožňuje více zařízení, můžete definovat pole ID zařízení `AllowedDeviceID` a uživatelsky definovanou funkci lze v `WHERE` klauzuli použít k ověření, zda ID zařízení datového proudu odpovídá jakémukoli ID zařízení v tomto seznamu. Další informace najdete v kurzu [JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) pro cloudové úlohy a v kurzu pro [C# UDF](stream-analytics-edge-csharp-udf.md) pro úlohy Edge.
+Pokud lokalita povoluje více zařízení, může být definováno pole ID zařízení `AllowedDeviceID` a v klauzuli User-Defined lze použít funkci `WHERE` k ověření, zda ID zařízení datového proudu odpovídá jakémukoli ID zařízení v tomto seznamu. Další informace najdete v kurzu [JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) pro cloudové úlohy a v kurzu pro [C# UDF](stream-analytics-edge-csharp-udf.md) pro úlohy Edge.
 
 ## <a name="geospatial-aggregation"></a>Geoprostorové agregace
 

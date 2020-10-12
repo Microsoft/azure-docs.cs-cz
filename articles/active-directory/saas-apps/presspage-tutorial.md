@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 714d194a8ee6cc55ee09475b482ab80674d59ec4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553593"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-presspage"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s PressPage
@@ -105,7 +105,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

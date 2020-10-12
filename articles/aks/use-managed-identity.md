@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
 ms.openlocfilehash: 836a5a003268a98dd8e63eed9bfdba741abcf4ed
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397041"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Použití spravovaných identit ve službě Azure Kubernetes
@@ -50,7 +50,7 @@ AKS používá několik spravovaných identit pro předdefinované služby a dop
 | Doplněk | HTTPApplicationRouting | Spravuje požadované síťové prostředky. | Role čtenáře pro skupinu prostředků uzlu, roli přispěvatele pro zónu DNS | No
 | Doplněk | Aplikační brána příchozího přenosu dat | Spravuje požadované síťové prostředky.| Role přispěvatele pro skupinu prostředků uzlu | No
 | Doplněk | omsagent | Slouží k posílání AKS metrik pro Azure Monitor | Role vydavatele metrik monitorování | No
-| Doplněk | Virtuální uzel (ACIConnector) | Spravuje požadované síťové prostředky pro Azure Container Instances (ACI). | Role přispěvatele pro skupinu prostředků uzlu | No
+| Doplněk | Virtual-Node (ACIConnector) | Spravuje požadované síťové prostředky pro Azure Container Instances (ACI). | Role přispěvatele pro skupinu prostředků uzlu | No
 | Projekt OSS | AAD-pod-identity | Umožňuje aplikacím zabezpečeně přistupovat k prostředkům cloudu pomocí Azure Active Directory (AAD). | Není k dispozici | Kroky pro udělení oprávnění v https://github.com/Azure/aad-pod-identity#role-assignment .
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Vytvoření clusteru AKS se spravovanými identitami

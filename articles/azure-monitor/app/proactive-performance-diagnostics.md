@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321305"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní zjišťování – anomálie výkonu
@@ -57,7 +57,7 @@ Oznámení inteligentní detekce jsou ve výchozím nastavení povolená a odes�
 
 U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Application Insights prostředku omezí na jeden e-mail za den. E-mail se pošle jenom v případě, že se v daném dni našel aspoň jeden nový problém. Žádná zpráva se neopakuje. 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 * *Proto si zaměstnanci Microsoftu prohledají moje údaje?*
   * Ne. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](./data-retention-privacy.md).

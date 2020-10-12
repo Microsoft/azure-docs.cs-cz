@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 978f8ff5e57a5a9a1df10152713c8c42901b3b6f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88545856"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler jednoho pro Automatické zřizování uživatelů
@@ -80,19 +80,19 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Pou
 
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Zscaler jednu v Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte možnost **podnikové aplikace**  >  **všechny aplikace**  >  **Zscaler jednu**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte možnost **podnikové aplikace**  >  **všechny aplikace**  >  **Zscaler jednu**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Zscaler jednu**.
 
     ![Zscaler jeden odkaz v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
     ![Zscaler jedno zřizování](./media/zscaler-one-provisioning-tutorial/provisioning-tab.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
     ![Zscaler jeden režim zřizování](./media/zscaler-one-provisioning-tutorial/provisioning-credentials.png)
 
@@ -106,7 +106,7 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Pou
 
     ![Zscaler jednu konfiguraci SAML](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
 
-    b. Pokud chcete získat nastavení v **základní adrese URL** a **nosném tokenu**, vyberte **Povolit zřizování na základě SCIM** . Pak nastavení uložte. Zkopírujte nastavení **základní adresy URL** do **adresy url tenanta** v Azure Portal. Zkopírujte nastavení **tokenu nosiče** do **tajného tokenu** v Azure Portal.
+    b. Pokud chcete získat nastavení v **základní adrese URL** a **nosném tokenu**, vyberte **Povolit SCIM-Based zřizování** . Pak nastavení uložte. Zkopírujte nastavení **základní adresy URL** do **adresy url tenanta** v Azure Portal. Zkopírujte nastavení **tokenu nosiče** do **tajného tokenu** v Azure Portal.
 
 7. Po vyplnění polí zobrazených v kroku 5 vyberte **Test připojení** , abyste se ujistili, že se služba Azure AD může připojit k Zscaler. Pokud se připojení nepovede, ujistěte se, že má Zscaler jeden účet oprávnění správce, a zkuste to znovu.
 
@@ -161,7 +161,7 @@ Informace o tom, jak číst protokoly zřizování služby Azure AD, najdete v t
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../active-directory-saas-provisioning-reporting.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../active-directory-saas-provisioning-reporting.md).
 
 <!--Image references-->
 [1]: ./media/zscaler-one-provisioning-tutorial/tutorial-general-01.png

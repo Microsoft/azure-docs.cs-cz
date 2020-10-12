@@ -8,10 +8,10 @@ ms.date: 06/19/2020
 ms.author: keferna
 author: keferna
 ms.openlocfilehash: 92fd4d629585ed465e2891be2dce1c1bdc8c88e6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287941"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager testovacích jednotek
@@ -70,7 +70,7 @@ Pro parametry můžete použít libovolný platný název; testovací jednotka r
 
 ### <a name="accepted-parameter-metadata-types"></a>Přijaté typy metadat parametrů
 
-| Typ metadat   | Typ parametru  | Popis     | Ukázková hodnota    |
+| Typ metadat   | Typ parametru  | Description     | Ukázková hodnota    |
 |---|---|---|---|
 | **identifikátor**     | řetězec          | Základní identifikátor URI balíčku pro nasazení| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
 | **jmen**    | řetězec          | Nové náhodné uživatelské jméno.| admin68876      |
@@ -122,7 +122,7 @@ Test Drive Inicializuje tento parametr pomocí nového náhodného uživatelské
 }
 ```
 
-Ukázková hodnota:`admin68876`
+Ukázková hodnota: `admin68876`
 
 Pro vaše řešení můžete použít buď náhodná, nebo trvalá uživatelská jména.
 
@@ -144,7 +144,7 @@ Test Drive Inicializuje tento parametr pomocí nového náhodného hesla:
 }
 ```
 
-Ukázková hodnota:`Lp!ACS^2kh`
+Ukázková hodnota:  `Lp!ACS^2kh`
 
 Pro vaše řešení můžete použít náhodná nebo trvalá hesla.
 
@@ -166,7 +166,7 @@ Test Drive Inicializuje tento parametr s jedinečným identifikátorem GUID, kte
 }
 ```
 
-Ukázková hodnota:`b8c8693e-5673-449c-badd-257a405a6dee`
+Ukázková hodnota: `b8c8693e-5673-449c-badd-257a405a6dee`
 
 Tento parametr můžete použít k jednoznačné identifikaci relace testovacích jednotek, pokud je to nezbytné.
 
@@ -266,7 +266,7 @@ Příklad:
 
 ### <a name="subscription-limits"></a>Omezení předplatného
 
-Nezapomeňte na omezení předplatného a služeb. Pokud například chcete nasadit až deset virtuálních počítačů se 4 jádry, je potřeba zajistit, aby předplatné, které používáte pro vaše testovací prostředí, bylo možné používat 40 jader. Další informace o omezeních předplatného a služeb Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md). Když lze současně provést více testovacích jednotek, ověřte, že vaše předplatné může zpracovávat počet jader vynásobený celkovým počtem souběžných testovacích jednotek, které lze provést.
+Nezapomeňte na omezení předplatného a služeb. Pokud například chcete nasadit až 10 4 virtuálních počítačů, musíte zajistit, aby předplatné, které používáte pro vaše testovací prostředí, umožňovalo používat 40 jader. Další informace o omezeních předplatného a služeb Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md). Když lze současně provést více testovacích jednotek, ověřte, že vaše předplatné může zpracovávat počet jader vynásobený celkovým počtem souběžných testovacích jednotek, které lze provést.
 
 ### <a name="what-to-upload"></a>Co nahrát
 

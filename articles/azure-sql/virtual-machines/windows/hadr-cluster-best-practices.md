@@ -13,13 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: e98bfbf58c179fe9df0d99e0522e5747d220ae52
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317017"
 ---
-# <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Osvědčené postupy konfigurace clusteru (SQL Server na virtuálních počítačích Azure)
+# <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Osvědčené postupy pro konfiguraci clusteru (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Cluster se používá pro vysokou dostupnost a zotavení po havárii (HADR) s SQL Server v Azure Virtual Machines (VM). 

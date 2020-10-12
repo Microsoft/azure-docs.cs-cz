@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 876a96f579bff8d30e454e927054a951734f44ba
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441095"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
@@ -98,7 +98,7 @@ V následující tabulce jsme poskytovali jak velikost oboru názvů, tak i pře
 |---------|---------|---------|---------|
 | 3        | 1.4     | 2        | 8 (počáteční synchronizace)/2 (Typická četnost změn)      |
 | 5        | 2.3     | 2        | 16 (počáteční synchronizace)/4 (Typická četnost změn)    |
-| 10       | 4,7     | 4        | 32 (počáteční synchronizace)/8 (Typická četnost změn)   |
+| 10       | 4.7     | 4        | 32 (počáteční synchronizace)/8 (Typická četnost změn)   |
 | 30       | 14,0    | 8        | 48 (počáteční synchronizace)/16 (Typická četnost změn)   |
 | 50       | 23,3    | 16       | 64 (počáteční synchronizace)/32 (Typická četnost změn)  |
 | 100 *     | 46,6    | 32       | 128 (počáteční synchronizace)/32 (Typická četnost změn)  |

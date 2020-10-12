@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
 ms.openlocfilehash: 018bf7ac9c24669df798e9ba05c667dcb72d94a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321832"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooky pro výstrahy protokolu aktivit Azure
@@ -262,14 +262,14 @@ Podrobnosti o konkrétním schématu pro výstrahy protokolu aktivit oznámení 
 | conditionType |Vždy "Event" |
 | name |Název pravidla výstrahy. |
 | id |ID prostředku výstrahy |
-| description |Popis výstrahy nastavený při vytvoření výstrahy |
+| Popis |Popis výstrahy nastavený při vytvoření výstrahy |
 | subscriptionId |ID předplatného Azure. |
 | časové razítko |Čas, kdy byla událost vygenerována službou Azure, která zpracovala požadavek. |
 | resourceId |ID prostředku ovlivněného prostředku |
 | resourceGroupName |Název skupiny prostředků pro ovlivněný prostředek. |
 | properties |Sada `<Key, Value>` párů (to znamená `Dictionary<String, String>` ), která obsahuje podrobnosti o události. |
 | event |Prvek, který obsahuje metadata o události. |
-| autorizace |Vlastnosti události Access Control na základě rolí. Tyto vlastnosti obvykle zahrnují akci, roli a obor. |
+| autorizace |Vlastnosti Role-Based Access Control události. Tyto vlastnosti obvykle zahrnují akci, roli a obor. |
 | category |Kategorie události Mezi podporované hodnoty patří administrativní, výstraha, zabezpečení, ServiceHealth a doporučení. |
 | volající |E-mailová adresa uživatele, který provedl operaci, deklaraci hlavního názvu uživatele (UPN) nebo deklaraci identity SPN na základě dostupnosti. Pro určitá systémová volání může mít hodnotu null. |
 | correlationId |Obvykle identifikátor GUID ve formátu řetězce. Události s ID korelace patří stejné větší akci a obvykle sdílejí ID korelace. |

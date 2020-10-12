@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/26/2020
 ms.openlocfilehash: 2c6495454e5ba2449d4b3c74a096681f74610813
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84699358"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Správa clusterů Azure HDInsight pomocí rozhraní příkazového řádku Azure
@@ -21,11 +21,11 @@ ms.locfileid: "84699358"
 
 Naučte se používat [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) ke správě clusterů Azure HDInsight. Rozhraní příkazového řádku Azure (CLI) je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Rozhraní příkazového řádku Azure Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) pro kroky.
+* Azure CLI Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) pro kroky.
 
 * Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -90,7 +90,7 @@ az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --w
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se naučili, jak provádět různé úlohy správy clusteru HDInsight. Další informace najdete v následujících článcích:
+V tomto článku jste se naučili, jak provádět různé úlohy správy clusteru HDInsight. Další informace najdete v těchto článcích:
 
 * [Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal](hdinsight-administer-use-portal-linux.md)
 * [Správa HDInsight pomocí Azure PowerShell](hdinsight-administer-use-powershell.md)

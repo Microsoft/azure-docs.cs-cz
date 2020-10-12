@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
 ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87290993"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvoření, změna nebo odstranění směrovací tabulky
@@ -190,7 +190,7 @@ Existuje omezení, kolik tras na směrovací tabulce může vytvořit pro každ�
 
 1. Zadejte jedinečný **název trasy** trasy v tabulce směrování.
 
-1. Zadejte **předponu adresy**v notaci směrování mezi doménami bez tříd (CIDR), do kterého chcete směrovat provoz. Předpona nemůže být duplikována ve více než jedné trase v tabulce směrování, i když předpona může být v jiné předponě. Pokud jste například v jedné trase definovali *10.0.0.0/16* jako předponu, můžete i nadále definovat jinou trasu s předponou adresy *10.0.0.0/22* . Azure vybere trasu pro provoz na základě nejdelší shody předpony. Další informace najdete v tématu [jak Azure vybírá trasu](virtual-networks-udr-overview.md#how-azure-selects-a-route).
+1. Zadejte **předponu adresy**v zápisu CIDR (Classless Inter-Domain Routing), do které chcete směrovat provoz. Předpona nemůže být duplikována ve více než jedné trase v tabulce směrování, i když předpona může být v jiné předponě. Pokud jste například v jedné trase definovali *10.0.0.0/16* jako předponu, můžete i nadále definovat jinou trasu s předponou adresy *10.0.0.0/22* . Azure vybere trasu pro provoz na základě nejdelší shody předpony. Další informace najdete v tématu [jak Azure vybírá trasu](virtual-networks-udr-overview.md#how-azure-selects-a-route).
 
 1. Vyberte **typ dalšího segmentu směrování**. Další informace o typech dalších segmentů směrování najdete v tématu [směrování provozu virtuální sítě](virtual-networks-udr-overview.md).
 
@@ -333,7 +333,7 @@ Po krátkém čekání vám Azure ukáže typ dalšího segmentu směrování a 
 
 Aby bylo možné provádět úlohy s směrovacími tabulkami a trasami, musí být váš účet přiřazen k [roli Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k příslušným akcím uvedeným v následující tabulce:
 
-| Akce                                                          |   Název                                                  |
+| Akce                                                          |   Name                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft. Network/routeTables/Read                              |   Čtení směrovací tabulky                                    |
 | Microsoft. Network/routeTables/Write                             |   Vytvoří nebo aktualizuje směrovací tabulku.                        |

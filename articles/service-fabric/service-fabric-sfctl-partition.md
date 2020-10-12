@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fff569c586548d84ed55018764363ad7f05e526d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257083"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
@@ -45,9 +45,9 @@ Spustí volání rozhraní API OnDataLossAsync oddílu.  Toto rozhraní API bude
 > [!NOTE]   
 > Po zavolání tohoto rozhraní API ho nejde vrátit zpět. Volání CancelOperation zastaví provádění a vyčistí stav interního systému. Nebude data obnovovat, pokud příkaz pokračoval dostatečně daleko, aby způsobil ztrátu dat. Zavolejte rozhraní API GetDataLossProgress se stejným OperationId a vraťte informace o operaci spuštěnou s tímto rozhraním API.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --data-ztráta-Mode [povinné] | Tento výčet je předán rozhraní StartDataLoss API, které určuje, jaký typ ztráty dat má způsobit podnět. |
 | --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
@@ -57,7 +57,7 @@ Spustí volání rozhraní API OnDataLossAsync oddílu.  Toto rozhraní API bude
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -70,9 +70,9 @@ Získá průběh operace ztráty dat oddílu zahájeného pomocí rozhraní Star
 
 Získá průběh operace ztráty dat zahájené s StartDataLoss pomocí OperationId.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
 | --Partition-ID [povinné] | Identita oddílu |
@@ -81,7 +81,7 @@ Získá průběh operace ztráty dat zahájené s StartDataLoss pomocí Operatio
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -94,9 +94,9 @@ Získá stav zadaného oddílu Service Fabric.
 
 Pomocí EventsHealthStateFilter můžete filtrovat kolekci událostí stavu hlášených ve službě na základě stavu. Pomocí ReplicasHealthStateFilter můžete filtrovat kolekci objektů ReplicaHealthState v oddílu. Pokud zadáte oddíl, který v Health Store neexistuje, vrátí tato žádost chybu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Partition-ID [povinné] | Identita oddílu |
 | --Events – stav – filtr | Umožňuje filtrovat kolekci objektů HealthEvent vrácených na základě stavu. Možné hodnoty pro tento parametr zahrnují celočíselnou hodnotu jednoho z následujících stavů. Vrátí se pouze události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaného stavu. Pokud tento parametr nezadáte, vrátí se všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnota by mohla být kombinací těchto hodnot získána pomocí bitového operátoru OR. Pokud je například zadaná hodnota 6, budou vráceny všechny události s hodnotou ' OK (2) a upozornění (4).  <br> -Výchozí-výchozí hodnota. Odpovídá jakémukoli elementu. Hodnota je nula.  <br> -None-Filter, který neodpovídá žádné hodnotě elementu. Používá se k tomu, aby se v dané kolekci stavů nevracely žádné výsledky. Hodnota je 1.  <br> -OK – filtr, který odpovídá zadanému vstupu s hodnotou podstavu OK. Hodnota je 2.  <br> -Warning-Filter, který odpovídá vstupu s upozorněním na podstavovou hodnotu. Hodnota je 4.  <br> – Filtr chyb, který odpovídá zadanému vstupu s chybou hodnoty elementu stav Hodnota je 8.  <br> -All – filtr, který odpovídá zadanému vstupu s jakoukoli hodnotou elementu. Hodnota je 65535. |
@@ -106,7 +106,7 @@ Pomocí EventsHealthStateFilter můžete filtrovat kolekci událostí stavu hlá
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -119,16 +119,16 @@ Získá informace o oddílu Service Fabric.
 
 Načte informace o zadaném oddílu. Odpověď zahrnuje ID oddílu, informace o schématu dělení a klíče podporované oddílem, stavem, stavem a dalšími podrobnostmi o oddílu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Partition-ID [povinné] | Identita oddílu |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -141,9 +141,9 @@ Načte seznam oddílů Service Fabric služby.
 
 Odpověď zahrnuje ID oddílu, informace o schématu dělení a klíče podporované oddílem, stavem, stavem a dalšími podrobnostmi o oddílu.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Service-ID [povinné] | Identita služby. Toto ID je obvykle úplný název služby bez \: schématu identifikátoru URI prostředků infrastruktury. Počínaje verzí 6,0 jsou hierarchické názvy odděleny \~ znakem "". Pokud je například název služby "Fabric \: /MyApp/app1/svc1", identita služby by byla "MyApp \~ app1 \~ svc1" ve verzi 6.0 + a "MyApp/app1/svc1" v předchozích verzích. |
 | --pokračování-token | Parametr tokenu pokračování slouží k získání další sady výsledků. Token pokračování s neprázdnou hodnotou je zahrnut v odpovědi rozhraní API v případě, že se výsledky ze systému nevejdou do jediné odpovědi. Když se tato hodnota předává do dalšího volání rozhraní API, vrátí rozhraní API další sadu výsledků. Pokud nejsou k dispozici žádné další výsledky, token pokračování neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódovaná v adrese URL. |
@@ -151,7 +151,7 @@ Odpověď zahrnuje ID oddílu, informace o schématu dělení a klíče podporov
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -164,16 +164,16 @@ Získá informace o načtení zadaného oddílu Service Fabric.
 
 Vrátí informace o zatížení zadaného oddílu. Odpověď obsahuje seznam sestav načtení pro Service Fabric oddíl. Každá sestava obsahuje název a hodnotu metriky zatížení a poslední nahlášený čas ve standardu UTC.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Partition-ID [povinné] | Identita oddílu |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -186,16 +186,16 @@ Obnoví aktuální zatížení oddílu Service Fabric.
 
 Obnoví aktuální zatížení Service Fabricho oddílu na výchozí zatížení služby.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Partition-ID [povinné] | Identita oddílu |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -208,9 +208,9 @@ Vystaví ztrátu kvora pro daný oddíl stavové služby.
 
 Toto rozhraní API je užitečné pro situaci s dočasnou ztrátou kvora ve vaší službě. Zavolejte rozhraní API GetQuorumLossProgress se stejným OperationId a vraťte informace o operaci spuštěnou s tímto rozhraním API. Tato možnost se dá volat jenom u stavových trvale trvalých služeb (HasPersistedState = = true).  Nepoužívejte toto rozhraní API pro bezstavové služby nebo stavové služby pouze v paměti.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
 | --Partition-ID [povinné] | Identita oddílu |
@@ -221,7 +221,7 @@ Toto rozhraní API je užitečné pro situaci s dočasnou ztrátou kvora ve vaš
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -234,9 +234,9 @@ Získá průběh operace ztráty kvora u oddílu zahájeného pomocí rozhraní 
 
 Načte průběh operace ztráty kvora zahájené s StartQuorumLoss pomocí poskytnutého OperationId.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
 | --Partition-ID [povinné] | Identita oddílu |
@@ -245,7 +245,7 @@ Načte průběh operace ztráty kvora zahájené s StartQuorumLoss pomocí posky
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -258,16 +258,16 @@ Určuje Cluster Service Fabric, který by se měl pokusit obnovit konkrétní od
 
 Tato operace by měla být provedena pouze v případě, že je známo, že nelze obnovit repliky, které jsou mimo provoz. Nesprávné použití tohoto rozhraní API může způsobit ztrátu dat.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Partition-ID [povinné] | Identita oddílu |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -280,15 +280,15 @@ Určuje Cluster Service Fabric, který by se měl pokusit obnovit jakékoli slu�
 
 Tato operace by měla být provedena pouze v případě, že je známo, že nelze obnovit repliky, které jsou mimo provoz. Nesprávné použití tohoto rozhraní API může způsobit ztrátu dat.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -301,9 +301,9 @@ Odešle zprávu o stavu Service Fabric oddíl.
 
 Hlásí stav zadaného oddílu Service Fabric. Sestava musí obsahovat informace o zdroji sestavy stavu a vlastnosti, na které je hlášena. Sestava se odešle do oddílu Service Fabric brány, který se přepošle na Health Store. Tuto sestavu může přijmout brána, ale Health Store po dodatečném ověření odmítnuta. Health Store například může zprávu odmítat z důvodu neplatného parametru, jako je například zastaralé pořadové číslo. Chcete-li zjistit, zda byla sestava použita v Health Store, zkontrolujte, zda se sestava zobrazí v části události.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Health-vlastnost [required] | Vlastnost informací o stavu. <br><br> Entita může mít sestavy o stavu pro různé vlastnosti. Vlastnost je řetězec, nikoli pevný výčet, který umožňuje, aby se v zpravodaji mohla pružně roztřídit stav stavu, který aktivuje sestavu. Například zpravodaj s SourceId "LocalWatchdog" může monitorovat stav dostupného disku v uzlu, takže může ohlásit vlastnost "AvailableDisk" v tomto uzlu. Stejné zpravodajky můžou monitorovat připojení uzlu, takže může nahlásit vlastnost "připojení" na stejném uzlu. V Health Store jsou tyto sestavy zpracovány jako samostatné události stavu pro zadaný uzel. Společně s ID zdroje (SourceId) vlastnost jednoznačně identifikuje informace o stavu. |
 | --Health-State [povinné] | Možné hodnoty zahrnují \: "Invalid", "OK", "Warning", "Error", "unknown". |
@@ -318,7 +318,7 @@ Hlásí stav zadaného oddílu Service Fabric. Sestava musí obsahovat informace
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -331,9 +331,9 @@ Toto rozhraní API bude restartovat některé nebo všechny repliky nebo instanc
 
 Toto rozhraní API je užitečné při testování převzetí služeb při selhání. Pokud se používá k cílení na bezstavový oddíl služby, režim restartpartitionmode musí být AllReplicasOrInstances. K získání pokroku volejte rozhraní API GetPartitionRestartProgress pomocí stejného OperationId.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
 | --Partition-ID [povinné] | Identita oddílu |
@@ -343,7 +343,7 @@ Toto rozhraní API je užitečné při testování převzetí služeb při selh�
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -356,9 +356,9 @@ Získá průběh operace PartitionRestart spuštěné pomocí StartPartitionRest
 
 Získá průběh PartitionRestart Začínáme s StartPartitionRestart pomocí poskytnutého OperationId.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --operace-ID [povinné] | Identifikátor GUID, který identifikuje volání tohoto rozhraní API.  Toto se předává do odpovídajícího rozhraní API getprogress. |
 | --Partition-ID [povinné] | Identita oddílu |
@@ -367,7 +367,7 @@ Získá průběh PartitionRestart Začínáme s StartPartitionRestart pomocí po
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -380,16 +380,16 @@ Získá název služby Service Fabric pro oddíl.
 
 Získá název služby pro zadaný oddíl. Pokud ID oddílu v clusteru neexistuje, vrátí se chyba 404.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Partition-ID [povinné] | Identita oddílu |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

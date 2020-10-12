@@ -9,10 +9,10 @@ ms.author: mlearned
 description: Nasazení Azure IoT Edgech úloh
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
 ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86103972"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Nasazení Azure IoT Edgech úloh (Preview)
@@ -49,7 +49,7 @@ K `az` `connectedk8s` připojení clusteru Kubernetes ke službě Azure ARC pou�
 
 ## <a name="create-a-configuration-for-iot-edge"></a>Vytvořit konfiguraci pro IoT Edge
 
-Příklad úložiště:https://github.com/veyalla/edgearc
+Příklad úložiště: https://github.com/veyalla/edgearc
 
 Toto úložiště ukazuje na graf IoT Edge Helm a odkazuje na tajný kód vytvořený v části požadavky.
 

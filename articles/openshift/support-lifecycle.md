@@ -7,13 +7,13 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.openlocfilehash: c066931cece60d14767b86254020ea5ba4bad1be
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88854501"
 ---
-# <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Životní cyklus podpory pro Azure Red Hat OpenShift 4
+# <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Podpora životního cyklu pro Azure Red Hat OpenShift 4
 
 Red Hat uvolňuje drobné verze Red Hat OpenShift Container Platform (OCP) zhruba každé tři měsíce. Tyto verze obsahují nové funkce a vylepšení. Verze oprav jsou častěji časté (obvykle týdně) a jsou určeny pouze pro kritické opravy chyb v rámci dílčí verze. Tyto verze oprav můžou zahrnovat opravy chyb zabezpečení nebo hlavní chyby.
 
@@ -108,7 +108,7 @@ Další informace najdete v následující příručce k [historii verzí v minu
 
 **Co se stane, když uživatel upgraduje cluster OpenShift s menší verzí, která není podporovaná?**
 
-Pokud používáte verzi N-2 nebo starší, znamená to, že jste mimo podporu, a zobrazí se výzva k upgradu. Po úspěšném dokončení upgradu z verze N-2 na N-1 se vrátíte do našich zásad podpory. Příklad:
+Pokud používáte verzi N-2 nebo starší, znamená to, že jste mimo podporu, a zobrazí se výzva k upgradu. Po úspěšném dokončení upgradu z verze N-2 na N-1 se vrátíte do našich zásad podpory. Například:
 * Pokud je nejstarší podporovaná verze Azure Red Hat OpenShift 4.4 4.4. z a jste na 4.3. z nebo starší, nejste mimo podporu.
 * Po úspěšném dokončení upgradu z 4.3. z na 4.4. z nebo vyšší se vrátíte do našich zásad podpory.
 

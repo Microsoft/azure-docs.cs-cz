@@ -4,10 +4,10 @@ description: Připojte se jako typ tématu Azure Event Grid partner. Seznamte se
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87826785"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Připojení jako Azure Event Grid partner
@@ -59,7 +59,7 @@ Témata o partnerovi umožňují publikovat události pro Azure Event Grid pro v
 Následující model prostředků je pro témata partnerů.
 
 ### <a name="partner-registrations"></a>Registrace partnerů
-* Partner`partnerRegistrations`
+* Partner `partnerRegistrations`
 * Používá: partneři
 * Popis: zachycuje globální metadata partnera software jako služby (SaaS) (například název, zobrazovaný název, popis, identifikátor URI nastavení).
     
@@ -75,13 +75,13 @@ Následující model prostředků je pro témata partnerů.
 * Rozsah: žije v předplatném partnera.
 
 ### <a name="event-channel"></a>Kanál událostí
-* Partner`partnerNamespaces/eventChannels`
+* Partner `partnerNamespaces/eventChannels`
 * Používá: partneři
 * Popis: tunely událostí jsou zrcadlem k tématu partnera zákazníka. Vytvořením tunelového propojení událostí a zadáním předplatného Azure a skupiny prostředků v metadatech můžete signalizovat, Event Grid vytvořit partnerské téma pro zákazníka. Event Grid vydá volání ARM k vytvoření odpovídajícího partnerTopic v předplatném zákazníka. Téma partnerského serveru je vytvořeno ve stavu čeká na vyřízení. Mezi jednotlivými tunely a partnerem události existuje propojení 1:1.
 * Rozsah: žije v předplatném partnera.
 
 ### <a name="partner-topics"></a>Témata pro partnery
-* Partner`partnerTopics`
+* Partner `partnerTopics`
 * Používá: zákazníci
 * Popis: témata partnerů jsou podobná vlastním tématům a tématům systému v Event Grid. Každé téma partnera je přidruženo ke konkrétnímu zdroji (například `Contoso:myaccount` ) a určitému typu tématu partnera (například contoso). Zákazníci vytvářejí odběry událostí v tématu partnera, aby mohli směrovat události do různých obslužných rutin událostí.
 
@@ -89,9 +89,9 @@ Následující model prostředků je pro témata partnerů.
 * Rozsah: žije v předplatném zákazníka.
 
 ### <a name="partner-topic-types"></a>Typy partnerských témat
-* Partner`partnerTopicTypes`
+* Partner `partnerTopicTypes`
 * Používá: zákazníci
-* Popis: typy partnerských témat jsou typy prostředků v rámci tenanta, které zákazníkům umožňují zjistit seznam schválených typů partnerských témat. Adresa URL vypadá takto.https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
+* Popis: typy partnerských témat jsou typy prostředků v rámci tenanta, které zákazníkům umožňují zjistit seznam schválených typů partnerských témat. Adresa URL vypadá takto. https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
 * Rozsah: globální
 
 ## <a name="publish-events-to-event-grid"></a>Publikovat události pro Event Grid
@@ -105,7 +105,7 @@ Publikujte události do Azure Event Grid pomocí schématu CloudEvents 1,0. Even
 1.  Služba publikování provede příspěvek HTTP na `https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
 1.  V žádosti zahrňte hodnotu hlavičky s názvem AEG-SAS-Key obsahující klíč pro ověření. Tento klíč se zřídí během vytváření oboru názvů partnera. Platná hodnota hlavičky je například AEG-SAS-Key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg = =.
 1.  Nastavte hlavičku Content-Type na "Application/cloudevents-Batch + JSON; charset = UTF-8a.
-1.  Proveďte příspěvek HTTP na adresu URL pro publikování s dávkou událostí, které odpovídají dané oblasti. Příklad:
+1.  Proveďte příspěvek HTTP na adresu URL pro publikování s dávkou událostí, které odpovídají dané oblasti. Například:
 
 ``` json
 [
@@ -150,7 +150,7 @@ Po odeslání do koncového bodu partnerNamespace obdržíte odpověď. Odpově�
 | Nesprávný koncový bod                 | 404 Nenalezeno         |
 | Pole nebo událost překračuje omezení velikosti. | datová část 413 je moc velká. |
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [Šablona ARM](/azure/templates/microsoft.eventgrid/allversions)

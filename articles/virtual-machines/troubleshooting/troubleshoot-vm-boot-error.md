@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
 ms.openlocfilehash: 5a2fd7fcfdae8559bfb39bffff7c73c7082a86aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543278"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Spuštění virtuálního počítače se systémem Linux pro grub záchranu
@@ -45,7 +45,7 @@ Postupujte podle následujících kroků pro zmírnění rizika v závislosti na
 
     1. Ujistěte se `/etc/default/grub` , že existuje a má správné nebo požadované nastavení. Pokud nevíte, které výchozí nastavení máte, můžete se podívat na funkční virtuální počítač.
 
-    2. Potom spuštěním následujícího příkazu znovu vygenerujte svou konfiguraci:`grub2-mkconfig -o /boot/grub2/grub.cfg`
+    2. Potom spuštěním následujícího příkazu znovu vygenerujte svou konfiguraci: `grub2-mkconfig -o /boot/grub2/grub.cfg`
 
    * Pokud je chybějící soubor `/boot/grub/menu.lst` , tato chyba je určena pro starší verze operačního systému (**RHEL 6. x**, **CentOS 6. x** a **Ubuntu 14,04**), takže se příkazy mohou lišit. Abyste měli jistotu, že jsou k dispozici správné příkazy, budete muset spustit starý server a otestovat test.
 

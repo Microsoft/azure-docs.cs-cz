@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 description: Naučte se řešit problémy a řešit běžné problémy při povolování a používání Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
 ms.openlocfilehash: d697a11f3087c31a49d9b88e99b18bab686a2b59
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981064"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Řešení potíží s Azure Dev Spaces
@@ -50,13 +50,13 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>Řadič se nepodařilo vytvořit kvůli délce názvu kontroleru.
 
-Název kontroleru Azure Dev Spaces nemůže být delší než 31 znaků. Pokud je název řadiče v clusteru AKS nebo vytvoření kontroleru delší než 31 znaků, dojde k chybě. Příklad:
+Název kontroleru Azure Dev Spaces nemůže být delší než 31 znaků. Pokud je název řadiče v clusteru AKS nebo vytvoření kontroleru delší než 31 znaků, dojde k chybě. Například:
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-Chcete-li tento problém vyřešit, vytvořte kontrolér s alternativním názvem. Příklad:
+Chcete-li tento problém vyřešit, vytvořte kontrolér s alternativním názvem. Například:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
@@ -160,7 +160,7 @@ Předpokládejme například, že použijete příkaz Helm ke spuštění celé 
 
 Azure Dev Spaces lze nakonfigurovat tak, aby odkazovaly na konkrétní _souboru Dockerfile_ v projektu. Pokud se zobrazí Azure Dev Spaces nepoužívá _souboru Dockerfile_ , kterou očekáváte k sestavování kontejnerů, možná budete muset explicitně sdělit Azure dev Spaces které souboru Dockerfile se mají použít. 
 
-Chcete-li tento problém vyřešit, otevřete soubor _azds. yaml_ , který Azure dev Spaces vygeneroval v projektu. *Konfigurace aktualizací: vývoj: sestavení: souboru Dockerfile* odkazuje na souboru Dockerfile, který chcete použít. Příklad:
+Chcete-li tento problém vyřešit, otevřete soubor _azds. yaml_ , který Azure dev Spaces vygeneroval v projektu. *Konfigurace aktualizací: vývoj: sestavení: souboru Dockerfile* odkazuje na souboru Dockerfile, který chcete použít. Například:
 
 ```yaml
 ...
@@ -207,7 +207,7 @@ install:
 
 Tato chyba se může zobrazit, když se kód služby nepovede spustit. Příčinou je často v uživatelském kódu. Pokud chcete získat další diagnostické informace, při spouštění služby povolte podrobnější protokolování.
 
-Z příkazového řádku, použijte `--verbose` k povolení podrobnějšího protokolování. Výstupní formát můžete zadat také pomocí `--output` . Příklad:
+Z příkazového řádku, použijte `--verbose` k povolení podrobnějšího protokolování. Výstupní formát můžete zadat také pomocí `--output` . Například:
 
 ```cmd
 azds up --verbose --output json
@@ -318,7 +318,7 @@ Chcete-li zobrazit podrobnosti o spravované identitě, spusťte následující 
 az aks show -g <resourcegroup> -n <cluster> -o json --query "{clientId: identityProfile.kubeletidentity.clientId, resourceId: identityProfile.kubeletidentity.resourceId}"
 ```
 
-Výše uvedený příkaz vypíše *ClientID* a *ResourceID* pro spravovanou identitu. Příklad:
+Výše uvedený příkaz vypíše *ClientID* a *ResourceID* pro spravovanou identitu. Například:
 
 ```json
 {
@@ -359,7 +359,7 @@ kubectl apply -f clusteridentity.yaml
 kubectl apply -f clusteridentitybinding.yaml
 ```
 
-Až nasadíte objekty *AzureIdentity* a *AzureIdentityBinding* , budou mít všechny úlohy s jmenovkou *aadpodidbinding: My-Label-Value* přístup ke spravované identitě clusteru. Přidejte tento popisek a znovu nasaďte všechny úlohy spuštěné v jakémkoli vývojovém prostoru. Příklad:
+Až nasadíte objekty *AzureIdentity* a *AzureIdentityBinding* , budou mít všechny úlohy s jmenovkou *aadpodidbinding: My-Label-Value* přístup ke spravované identitě clusteru. Přidejte tento popisek a znovu nasaďte všechny úlohy spuštěné v jakémkoli vývojovém prostoru. Například:
 
 ```yaml
 apiVersion: apps/v1
@@ -422,9 +422,9 @@ Chcete-li tento problém vyřešit, zavřete a znovu otevřete Visual Studio Cod
 
 ### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Chyba "vnitřní kukátko se nezdařilo: Sledujte ENOSPC" při připojování ladění k aplikaci Node.js
 
-K této chybě dojde, když uzel, na kterém je spuštěný, s aplikací Node.js, ke které se pokoušíte připojit pomocí ladicího programu, překročil hodnotu *FS. inotify. max_user_watches* . V některých případech [může být výchozí hodnota *FS. inotify. max_user_watches* příliš malá, aby bylo možné manipulovat s připojením ladicího programu přímo k poli pod](https://github.com/Azure/AKS/issues/772).
+K této chybě dochází, pokud uzel, na kterém je spuštěný, s aplikací Node.js, ke které se pokoušíte připojit pomocí ladicího programu, překročil hodnotu *FS.inotify.max_user_watches* . V některých případech [může být výchozí hodnota *FS.inotify.max_user_watches* příliš malá, aby bylo možné zpracovat připojení ladicího programu přímo k poli pod](https://github.com/Azure/AKS/issues/772).
 
-Dočasným řešením tohoto problému je zvýšit hodnotu *FS. inotify. max_user_watches* v každém uzlu v clusteru a restartovat tento uzel, aby se změny projevily.
+Dočasným řešením pro tento problém je zvýšit hodnotu *FS.inotify.max_user_watches* v každém uzlu v clusteru a restartovat tento uzel, aby se změny projevily.
 
 ## <a name="other-common-issues"></a>Další běžné problémy
 
@@ -443,7 +443,7 @@ Pokud chcete tento problém vyřešit:
 
 ### <a name="authorization-error-microsoftdevspacesregisteraction"></a>Chyba autorizace "Microsoft. DevSpaces/Register/Action"
 
-Ke správě Azure Dev Spaces potřebujete ve svém předplatném Azure přístup *vlastníka* nebo *přispěvatele* . Pokud se pokoušíte spravovat vývojové prostory a nemáte oprávnění *vlastníka* nebo *přispěvatele* k přidruženému předplatnému Azure, může se zobrazit chyba autorizace. Příklad:
+Ke správě Azure Dev Spaces potřebujete ve svém předplatném Azure přístup *vlastníka* nebo *přispěvatele* . Pokud se pokoušíte spravovat vývojové prostory a nemáte oprávnění *vlastníka* nebo *přispěvatele* k přidruženému předplatnému Azure, může se zobrazit chyba autorizace. Například:
 
 ```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.

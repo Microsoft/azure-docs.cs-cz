@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: alkohli
 ms.openlocfilehash: 745d0df07b6d0d01acf0d564df8c242e16f3f56d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90890983"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Vytváření vlastních imagí virtuálních počítačů pro zařízení Azure Stack Edge pro
@@ -71,7 +71,7 @@ Chcete-li vytvořit bitovou kopii virtuálního počítače se systémem Linux, 
 
 Pomocí tohoto virtuálního pevného disku teď vytvoříte a nasadíte virtuální počítač na zařízení Azure Stack Edge pro. Vlastní image pro Linux můžete vytvořit pomocí následujících dvou Azure Marketplace imagí:
 
-|Název položky  |Popis  |Publisher  |
+|Název položky  |Description  |Publisher  |
 |---------|---------|---------|
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Ubuntu Server je nejoblíbenější Linux pro cloudová prostředí na světě.|Canonical|
 |[Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |Debian GNU/Linux je jednou z nejoblíbenějších distribucí systému Linux.     |credativ|

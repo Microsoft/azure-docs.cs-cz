@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7b586edd7adce8bcea61419005a3ce8cfc814fb3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86254931"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí Azure Active Directory B2C ve službě Azure API Management
@@ -64,7 +64,7 @@ Azure Active Directory B2C je cloudové řešení pro správu identit pro webov�
 
     ![Deklarace identity aplikace](./media/api-management-howto-aad-b2c/api-management-application-claims.png)
 
-1. Klikněte na tlačítko **vytvořit** . Když je aplikace vytvořená, zobrazí se v okně **aplikace** . Kliknutím na název aplikace zobrazíte její podrobnosti.
+1. Klikněte na tlačítko **Vytvořit**. Když je aplikace vytvořená, zobrazí se v okně **aplikace** . Kliknutím na název aplikace zobrazíte její podrobnosti.
 
    ![Registrace nové aplikace 4][api-management-howto-aad-b2c-app-created]
 

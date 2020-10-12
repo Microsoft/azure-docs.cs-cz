@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/04/2020
 ms.openlocfilehash: f3ae081c8657a3ee6a27b0f9208c3eb4e4e745cc
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87759729"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Vytváření vlastních zobrazení pomocí návrháře zobrazení v Azure Monitor
@@ -34,7 +34,7 @@ Zobrazení se zobrazí na stránce **přehled** Azure Monitor v Azure Portal. Tu
 
 Zobrazení, která vytvoříte pomocí návrháře zobrazení, obsahují prvky, které jsou popsány v následující tabulce:
 
-| Část | Popis |
+| Část | Description |
 |:--- |:--- |
 | Dlaždice | Se zobrazí na stránce s **přehledem** Azure monitor. Každá dlaždice zobrazuje vizuální souhrn vlastního zobrazení, které představuje. Každý typ dlaždice poskytuje jinou vizualizaci záznamů. Výběrem dlaždice zobrazíte vlastní zobrazení. |
 | Vlastní zobrazení | Zobrazí se při výběru dlaždice. Každé zobrazení obsahuje jednu nebo více částí vizualizace. |
@@ -103,7 +103,7 @@ Možnosti pro práci se zobrazeními v režimu úprav jsou popsány v následuj�
 | Zrušit      | Zahodí vaše změny a zavře zobrazení. |
 | Odstranit zobrazení | Odstraní zobrazení. |
 | Export      | Exportuje zobrazení do [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) , kterou můžete importovat do jiného pracovního prostoru. Název souboru je název zobrazení a má příponu *omsview* . |
-| Import      | Importuje soubor *omsview* , který jste exportovali z jiného pracovního prostoru. Tato akce přepíše konfiguraci stávajícího zobrazení. |
+| Importovat      | Importuje soubor *omsview* , který jste exportovali z jiného pracovního prostoru. Tato akce přepíše konfiguraci stávajícího zobrazení. |
 | Klonování       | Vytvoří nové zobrazení a otevře ho v Návrháři zobrazení. Název nového zobrazení je stejný jako původní název, ale s připojeným *kopírováním* . |
 
 ## <a name="next-steps"></a>Další kroky

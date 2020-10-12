@@ -14,17 +14,17 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 095bc5594cf9b6eaf0df7929ea83c25a401793e2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86252109"
 ---
 # <a name="authentication-vs-authorization"></a>Ověřování vs – autorizace
 
 Tento článek definuje ověřování a autorizaci a stručně popisuje, jak můžete pomocí platformy Microsoft Identity ověřovat a autorizovat uživatele ve webových aplikacích, webových rozhraních API nebo aplikacích, které volají chráněná webová rozhraní API. Pokud se vám zobrazí termín, který neznáte, vyzkoušejte si náš [Glosář](developer-glossary.md) nebo naše [videa Microsoftu pro identitu platforem](identity-videos.md) , která se týkají základních konceptů.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 **Ověřování** je proces prokazující, na koho jste se rozhodli. V angličtině se pro ověřování někdy používá zkrácené slovo AuthN. Platforma Microsoft Identity Platform implementuje protokol [OpenID Connect](https://openid.net/connect/) pro zpracování ověřování.
 
@@ -55,5 +55,5 @@ Další témata týkající se ověřování a základů autorizace:
 * V tématu [Flow pro přihlášení k aplikaci](app-sign-in-flow.md) se dozvíte o procesu přihlašování webových, desktopových a mobilních aplikací na platformě Microsoft identity.
 
 * Další informace o protokolech, které Microsoft Identity Platform implementuje, najdete v tématu [protokoly OAuth 2,0 a OpenID Connect na platformě Microsoft Identity Platform](active-directory-v2-protocols.md).
-* Další informace o tom, jak platforma Microsoft identity podporuje jednotné přihlašování, najdete v tématu [protokol SAML jednotného přihlašování](single-sign-on-saml-protocol.md) .
+* Další informace o tom, jak platforma Microsoft identity podporuje jednotné přihlašování, najdete v tématu [Single Sign-On protokol SAML](single-sign-on-saml-protocol.md) .
 * Další informace o různých způsobech, jak můžete v aplikaci implementovat jednotné přihlašování, najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md) .

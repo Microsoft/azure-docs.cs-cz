@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: jeedes
 ms.openlocfilehash: 780421d93916c7da7897dfa15d09dc895cf56280
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552658"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Jamf pro
@@ -71,8 +71,8 @@ V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD
 V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Jamf pro** najděte část **Správa** a vyberte **jednotné přihlašování**.
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu pera pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **vybrat jednu Sign-On metodu** vyberte **SAML**.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte ikonu pera pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravte základní konfigurační stránku SAML.](common/edit-urls.png)
 
@@ -87,7 +87,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Aktuální hodnotu identifikátoru získáte z oddílu **jednotného přihlašování** na portálu Jamf pro, který je vysvětlen dále v tomto kurzu. Z hodnoty identifikátoru můžete extrahovat skutečnou hodnotu subdomény a použít ji jako přihlašovací adresu URL a adresu URL odpovědi. Můžete se také podívat na vzorce zobrazené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** otevřete část **podpisový certifikát SAML** , vyberte tlačítko **Kopírovat** a zkopírujte **adresu URL federačních metadat aplikace**a uložte ji do svého počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML otevřete část **podpisový certifikát SAML** , vyberte tlačítko **Kopírovat** a zkopírujte **adresu URL federačních metadat aplikace**a pak ji uložte do svého počítače.
 
     ![Odkaz na stažení podpisového certifikátu SAML](common/copy-metadataurl.png)
 
@@ -139,15 +139,15 @@ V této části udělíte B. Simon přístup k Jamf pro.
 
 5. Vyberte **jednotné přihlašování**.
 
-    ![Vyberte jednotné přihlašování v Jamf pro.](./media/jamfprosamlconnector-tutorial/configure2.png)
+    ![Vyberte jeden Sign-On v Jamf pro.](./media/jamfprosamlconnector-tutorial/configure2.png)
 
 6. Na stránce **jednotného přihlašování** proveďte následující kroky.
 
-    ![Stránka jednotného přihlašování v Jamf pro](./media/jamfprosamlconnector-tutorial/configure3.png)
+    ![Jedna stránka Sign-On v Jamf pro](./media/jamfprosamlconnector-tutorial/configure3.png)
 
     a. Vyberte **Upravit**.
 
-    b. Zaškrtněte políčko **Povolit ověřování pomocí jednotného přihlašování** .
+    b. Zaškrtněte políčko **Povolit ověřování jednou Sign-On** .
 
   c. V rozevírací nabídce **zprostředkovatele identity** vyberte **Azure** jako možnost.
 
@@ -162,7 +162,7 @@ V této části udělíte B. Simon přístup k Jamf pro.
 
 7. Na stejné stránce se posuňte dolů k oddílu **mapování uživatelů** . Pak proveďte následující kroky.
 
-    ![Oddíl mapování uživatelů na stránce jednotného přihlašování v Jamf pro.](./media/jamfprosamlconnector-tutorial/tutorial-jamfprosamlconnector-single.png)
+    ![Oddíl mapování uživatelů pro jednu Sign-On stránku v Jamf pro.](./media/jamfprosamlconnector-tutorial/tutorial-jamfprosamlconnector-single.png)
 
     a. Vyberte možnost **NameId** pro **mapování uživatelů zprostředkovatele identity**. Ve výchozím nastavení je tato možnost nastavená na **NameId**, ale můžete definovat vlastní atribut.
 
@@ -170,7 +170,7 @@ V této části udělíte B. Simon přístup k Jamf pro.
 
     c. Vložte hodnotu `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` do pole **název atributu skupiny zprostředkovatel identity** .
 
-    d. Na stejné stránce přejděte dolů k části **zabezpečení** a vyberte možnost **dovolit uživatelům obejít ověřování pomocí jednotného přihlašování**. Výsledkem je, že uživatelé nebudou přesměrováni na přihlašovací stránku zprostředkovatele identity pro ověřování a místo toho se můžou přihlašovat k Jamf pro. Když se uživatel pokusí k Jamf pro získat přístup prostřednictvím poskytovatele identity, dojde k ověření a autorizaci IdPho jednotného přihlašování.
+    d. Na stejné stránce přejděte dolů k části **zabezpečení** a vyberte možnost **dovolit uživatelům obejít ověřování pomocí jediného Sign-On**. Výsledkem je, že uživatelé nebudou přesměrováni na přihlašovací stránku zprostředkovatele identity pro ověřování a místo toho se můžou přihlašovat k Jamf pro. Když se uživatel pokusí k Jamf pro získat přístup prostřednictvím poskytovatele identity, dojde k ověření a autorizaci IdPho jednotného přihlašování.
 
     e. Vyberte **Uložit**.
 

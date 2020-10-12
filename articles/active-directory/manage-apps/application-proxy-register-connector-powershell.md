@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5fc1b84e624828d7feb64bd53e8fe8ffff2a7ff
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88054830"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Vytvoření skriptu bezobslužné instalace pro konektor Azure Proxy aplikací služby AD
@@ -45,7 +45,7 @@ Existují dva kroky pro bezobslužnou instalaci. Nejdřív nainstalujte konektor
 K instalaci konektoru bez jeho registrace použijte následující postup:
 
 1. Otevřete příkazový řádek.
-2. Spusťte následující příkaz, ve kterém parametr/q znamená tichou instalaci. Tichá instalace vás nevyzve, abyste přijali Licenční smlouvu s koncovým uživatelem.
+2. Spusťte následující příkaz, ve kterém parametr/q znamená tichou instalaci. Po tiché instalaci se zobrazí výzva, abyste přijali Licenční smlouvu End-User.
 
    ```
    AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q

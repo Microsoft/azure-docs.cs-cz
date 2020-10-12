@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 5b72694f93ed5b712a0f684887df5b69a7b35c72
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441676"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Omezení paměti a souběžnosti pro Azure synapse Analytics
@@ -60,7 +60,7 @@ V rámci zavedení [skupin úloh](sql-data-warehouse-workload-isolation.md)už k
 |DW100c|4|25%|
 |DW200c|8|12,5%|
 |DW300c|12|8 %|
-|DW400c|16|6,25%|
+|DW400c|16|6,25 %|
 |DW500c.|20|5 %|
 |DW1000c|32|3 %|
 |DW1500c|32|3 %|

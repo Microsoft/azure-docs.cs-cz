@@ -17,15 +17,15 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ab3b340654fd6d824edef0a33d1ea363a913654
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764583"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Vysoká dostupnost a vyrovnávání zatížení konektorů a aplikací proxy aplikací
 
-Tento článek vysvětluje, jak funguje distribuce provozu s vaším nasazením proxy aplikací. Budeme projednávat:
+Tento článek vysvětluje, jak funguje distribuce provozu s vaším nasazením proxy aplikací. Probereme tato témata:
 
 - Způsob distribuce provozu mezi uživateli a konektory spolu s tipy pro optimalizaci výkonu konektoru
 

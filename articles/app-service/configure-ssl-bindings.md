@@ -7,10 +7,10 @@ ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: f7301809b3befc41110a32062d6e478c412fa56e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981120"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service
@@ -133,7 +133,7 @@ V levém navigačním panelu na stránce aplikace vyberte **Nastavení SSL**. Pa
 
 ![Vynucení protokolu HTTPS](./media/configure-ssl-bindings/enforce-https.png)
 
-Po dokončení operace přejděte na jakoukoli adresu URL HTTP odkazující na vaši aplikaci. Příklad:
+Po dokončení operace přejděte na jakoukoli adresu URL HTTP odkazující na vaši aplikaci. Například:
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`

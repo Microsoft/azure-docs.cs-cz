@@ -5,15 +5,15 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e76287c4524831a84a22fb23ddf8a5fdee8bc12b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87827278"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
-Jako správce můžete považovat za nutné uzamknout určité předplatné, skupinu prostředků nebo prostředek, abyste ostatním uživatelům v organizaci zabránili v nechtěném odstranění nebo úpravě důležitých prostředků. Zámek můžete nastavit na úroveň **CanNotDelete** nebo **ReadOnly**. Na portálu se zámky nazývají **Delete** a **jen pro čtení** .
+Jako správce můžete potřebovat uzamknout předplatné, skupinu prostředků nebo prostředek, abyste ostatním uživatelům v organizaci zabránili v náhodném odstranění nebo úpravě důležitých prostředků. Zámek můžete nastavit na úroveň **CanNotDelete** nebo **ReadOnly**. Na portálu se zámky nazývají **Delete** a **jen pro čtení** .
 
 * **CanNotDelete** znamená, že autorizovaní uživatelé můžou pořád číst a upravovat prostředek, ale nemůžou prostředek odstranit.
 * **ReadOnly** znamená, že autorizovaní uživatelé můžou číst prostředek, ale nemůžou prostředek odstranit ani aktualizovat. Použití tohoto zámku je podobné jako omezení všech autorizovaných uživatelů na oprávnění udělené rolí **Čtenář** .
@@ -76,13 +76,13 @@ Při použití šablony Správce prostředků k nasazení zámku použijte v zá
 
 Při použití zámku na **prostředek**použijte následující formáty:
 
-* název`{resourceName}/Microsoft.Authorization/{lockName}`
-* textový`{resourceProviderNamespace}/{resourceType}/providers/locks`
+* název `{resourceName}/Microsoft.Authorization/{lockName}`
+* textový `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
 Při použití zámku u **skupiny prostředků** nebo **předplatného**použijte následující formáty:
 
-* název`{lockName}`
-* textový`Microsoft.Authorization/locks`
+* název `{lockName}`
+* textový `Microsoft.Authorization/locks`
 
 Následující příklad ukazuje šablonu, která vytvoří plán služby App Service, web a na webu zámek. Typ prostředku zámku je typ prostředku, který se má uzamknout a **/providers/Locks**. Název zámku se vytvoří zřetězením názvu prostředku s **/Microsoft.Authorization/** a názvem zámku.
 

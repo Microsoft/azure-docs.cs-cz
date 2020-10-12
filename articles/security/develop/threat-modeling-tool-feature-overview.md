@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 65a88f309602462e77336181316c0d5bf19a8a1e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90980674"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Přehled funkcí Threat Modeling Tool
@@ -192,7 +192,7 @@ Jak je vidět na předchozím obrázku, můžete změnit informace vygenerované
 
 ![Vlastnosti hrozby](./media/threat-modeling-tool-feature-overview/threatproperties.png)
 
-## <a name="reports"></a>sestavy
+## <a name="reports"></a>Sestavy
 
 Až dokončíte měnící se priority a aktualizujete stav každé vygenerované hrozby, můžete soubor uložit nebo vytisknout sestavu. Přejít na **sestavu**  >  **vytvořit úplnou sestavu**. Pojmenujte sestavu a měli byste vidět něco podobného jako na následujícím obrázku:
 
