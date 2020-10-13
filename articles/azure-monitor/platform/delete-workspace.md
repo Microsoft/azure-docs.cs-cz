@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
 ms.openlocfilehash: 292e446d5b713a43f77ee5e579d7e6dd5905ff69
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448522"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru Azure Log Analytics
@@ -45,7 +45,7 @@ Pracovní prostor můžete odstranit pomocí [PowerShellu](/powershell/module/az
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor a pak v horní části prostředního podokna klikněte na **Odstranit**  .
 4. Zobrazí se stránka s potvrzením, která zobrazuje příjem dat do pracovního prostoru za minulý týden. Zadejte název pracovního prostoru, který chcete potvrdit, a pak klikněte na **Odstranit**.
@@ -78,11 +78,11 @@ Během období obnovitelného odstranění si můžete pracovní prostor obnovit
 - ID předplatného
 - Název skupiny prostředků
 - Název pracovního prostoru
-- Region (Oblast)
+- Oblast
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**. Zobrazí se seznam pracovních prostorů, které máte ve vybraném oboru.
 3. Kliknutím na tlačítko **obnovit** v levém horním rohu otevřete stránku s pracovními prostory ve stavu obnovitelného odstranění, který je možné obnovit.
 
@@ -104,7 +104,7 @@ Pracovní prostor a všechna jeho data se po operaci obnovení vrátí zpět. Ř
 > [!NOTE]
 > * Po opětovném vytvoření pracovního prostoru během období obnovitelného odstranění se zobrazí informace o tom, že tento název pracovního prostoru se už používá. 
  
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 K odstranění pracovního prostoru musíte mít aspoň *Log Analytics oprávnění přispěvatele* .
 

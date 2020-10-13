@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 61c21aed76cfaac5621b234b32c90877ef6faa9f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89319538"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966317"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Zavedení a vytváření imagí pro Linux v Azure
 
@@ -46,7 +46,7 @@ Azure nabízí dva hlavní typy obrázků, generalizované a specializované. V�
 
 ### <a name="generalized-images"></a>Generalizované obrázky
 
-Zobecněná Image je image, která vyžaduje, aby se instalace dokončila při prvním spuštění. Při prvním spuštění například nastavíte název hostitele, správce a další konfigurace specifické pro virtuální počítače. To je užitečné, pokud chcete, aby se obrázek opakovaně používal několikrát a když chcete při vytváření předat parametry. Pokud zobecněná bitová kopie obsahuje agenta Azure, agent zpracuje parametry a signál vrátí zpět na platformu, kterou dokončila počáteční konfigurace. Tento proces se nazývá [zřizování](https://docs.microsoft.com/azure/virtual-machines/linux/provisioning). 
+Zobecněná Image je image, která vyžaduje, aby se instalace dokončila při prvním spuštění. Při prvním spuštění například nastavíte název hostitele, správce a další konfigurace specifické pro virtuální počítače. To je užitečné, pokud chcete, aby se obrázek opakovaně používal několikrát a když chcete při vytváření předat parametry. Pokud zobecněná bitová kopie obsahuje agenta Azure, agent zpracuje parametry a signál vrátí zpět na platformu, kterou dokončila počáteční konfigurace. Tento proces se nazývá [zřizování](./provisioning.md). 
 
 Zřizování vyžaduje, aby byl v imagi zahrnutý zřizovací modul. Existují dva zřídí:
 - [Agent Azure Linux](../extensions/agent-linux.md)
@@ -94,7 +94,7 @@ Na nejvyšší úrovni vytvoříte SIG a skládá se z těchto:
 
 ## <a name="hyper-v-generation"></a>Generace technologie Hyper-V
 
-Azure podporuje technologie Hyper-V Generation 1 (Gen1) a generaci 2 (Gen2), Gen2 je nejnovější generace a nabízí další funkce oproti Gen1. Například: zvýšená paměť, rozšíření Intel software Guard (Intel SGX) a virtualizovaná trvalá paměť (vPMEM). Virtuální počítače generace 2 s místním prostředím obsahují některé funkce, které ještě nejsou v Azure podporované. Další informace najdete v části funkce a možnosti. Další informace najdete v tomto [článku](../windows/generation-2.md). Vytvářejte image Gen2, pokud požadujete další funkce.
+Azure podporuje technologie Hyper-V Generation 1 (Gen1) a generaci 2 (Gen2), Gen2 je nejnovější generace a nabízí další funkce oproti Gen1. Například: zvýšená paměť, rozšíření Intel software Guard (Intel SGX) a virtualizovaná trvalá paměť (vPMEM). Virtuální počítače generace 2 s místním prostředím obsahují některé funkce, které ještě nejsou v Azure podporované. Další informace najdete v části funkce a možnosti. Další informace najdete v tomto [článku](../generation-2.md). Vytvářejte image Gen2, pokud požadujete další funkce.
 
 Pokud stále potřebujete vytvořit vlastní image, ujistěte se, že splňuje požadavky na [Image](./create-upload-generic.md)a nahrává do Azure. Požadavky na distribuci specifické pro distribuci:
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3e3dce20f447b47ad78deea617b513c50f552733
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 24229c331d0c7c4b2327e8e609e9d75b6654868f
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893624"
+ms.locfileid: "91931971"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
@@ -47,14 +47,14 @@ WHERE ...
 
 ### <a name="count-items"></a>Počet položek
 
-Počet vláken v sadě výsledků můžete spočítat pomocí `Select COUNT` klauzule:
+Počet položek v sadě výsledků můžete spočítat pomocí `Select COUNT` klauzule:
 
 ```sql
 SELECT COUNT() 
 FROM DIGITALTWINS
 ``` 
 
-Přidejte `WHERE` klauzuli pro zjištění počtu vláken, která splňují určitá kritéria. Tady je několik příkladů, jak počítat s použitým filtrem na základě typu dvojitě známého modelu (Další informace najdete v tématu [*dotaz podle modelu*](#query-by-model) níže):
+Přidejte `WHERE` klauzuli pro zjištění počtu položek, které splňují určitá kritéria. Tady je několik příkladů, jak počítat s použitým filtrem na základě typu dvojitě známého modelu (Další informace najdete v tématu [*dotaz podle modelu*](#query-by-model) níže):
 
 ```sql
 SELECT COUNT() 
@@ -68,7 +68,7 @@ WHERE IS_OF_MODEL('dtmi:sample:Room;1') AND c.Capacity > 20
 `COUNT`Spolu s klauzulí můžete také použít `JOIN` . Tady je dotaz, který počítá všechny žárovky obsažené v světelných panelech místností 1 a 2:
 
 ```sql
-SELECT COUNT(LightBulb)  
+SELECT COUNT()  
 FROM DIGITALTWINS Room  
 JOIN LightPanel RELATED Room.contains  
 JOIN LightBulb RELATED LightPanel.contains  

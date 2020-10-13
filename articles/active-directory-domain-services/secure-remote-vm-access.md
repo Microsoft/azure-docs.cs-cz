@@ -2,20 +2,20 @@
 title: Zabezpečený vzdálený přístup k virtuálnímu počítači v Azure AD Domain Services | Microsoft Docs
 description: Naučte se zabezpečit vzdálený přístup k virtuálním počítačům pomocí serveru NPS (Network Policy Server) a služby Azure Multi-Factor Authentication s nasazením vzdálené plochy ve Azure Active Directory Domain Services spravované doméně.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 462e0ff8ef8baadf40ba81ed2ae137d8904fbf7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 2964ca74a05ccbc61646f8a289fc950b46cdad47
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88722513"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967779"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Zabezpečený vzdálený přístup k virtuálním počítačům v Azure Active Directory Domain Services
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak nakonfigurovat službu Vzdálená plocha v Azu
 
 ![Služba Vzdálená plocha (RDS) – přehled](./media/enable-network-policy-server/remote-desktop-services-overview.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete tyto prostředky:
 

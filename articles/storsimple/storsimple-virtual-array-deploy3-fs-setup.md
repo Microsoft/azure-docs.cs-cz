@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05447db97311fb78707079528e0570b3fd42df59
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006292"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977574"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Nasazení virtuálního pole StorSimple – nastavení jako souborového serveru prostřednictvím Azure Portal
 ![Diagram znázorňující kroky potřebné k nasazení virtuálního pole První část třetího kroku je označená jako Souborová Server a zvýrazní se.](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -118,7 +118,7 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte virtuáln
     ![Snímek obrazovky se stránkou všechny prostředky v Azure Portal. Služba Device Manager je zvýrazněna.](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
 13. V seznamu filtrovaný vyberte službu StorSimple Device Manager a potom přejděte na **> Správa zařízení**. V okně **zařízení** ověřte, že se zařízení úspěšně připojilo ke službě a má stav **připraveno k nastavení**.
     
-    ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
+    ![Nasazení](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
 
 ## <a name="step-2-configure-the-device-as-file-server"></a>Krok 2: konfigurace zařízení jako souborového serveru
 Provedením následujících kroků v [Azure Portal](https://portal.azure.com/) dokončete požadované nastavení zařízení.
@@ -129,7 +129,7 @@ Provedením následujících kroků v [Azure Portal](https://portal.azure.com/) 
    ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
 2. Klikněte na zařízení a zobrazí se informační zpráva oznamující, že zařízení je připravené k instalaci.
    
-    ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
+    ![Konfigurace souborového serveru 2](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
 3. Na panelu příkazů klikněte na **Konfigurovat** . Otevře se okno **Konfigurace** . V okně **Konfigurace** postupujte takto:
    
    1. Název souborového serveru se vyplní automaticky.
@@ -140,7 +140,7 @@ Provedením následujících kroků v [Azure Portal](https://portal.azure.com/) 
     
    4. Klikněte na **Konfigurovat požadované nastavení** a zadejte přihlašovací údaje účtu úložiště, které se mají používat s vaším zařízením. Pokud nejsou nakonfigurované žádné přihlašovací údaje účtu úložiště, klikněte na **Přidat nový** . **Ujistěte se, že používaný účet úložiště podporuje objekty blob bloku. Objekty blob stránky nejsou podporovány.** Další informace o objektech [BLOB bloků a objektech blob stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
    
-      ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
+      ![Konfigurace souborového serveru 3](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. V okně **Přidat přihlašovací údaje účtu úložiště** udělejte toto: 
 
     1. Pokud je účet úložiště ve stejném předplatném jako služba, vyberte aktuální předplatné. Zadejte jiný účet úložiště je mimo předplatné služby. 
@@ -153,19 +153,19 @@ Provedením následujících kroků v [Azure Portal](https://portal.azure.com/) 
     
     5. Kliknutím na **Přidat** přidejte tyto přihlašovací údaje k účtu úložiště. 
    
-        ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
+        ![Konfigurace souborového serveru 4](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
 5. Po úspěšném vytvoření přihlašovacích údajů účtu úložiště se aktualizuje okno **Konfigurace** , aby se zobrazily zadané přihlašovací údaje účtu úložiště. Klikněte na **Konfigurovat**.
    
-   ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
+   ![Konfigurace souborového serveru 5](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    
    Zobrazí se soubor, který se vytváří na souborovém serveru. Po úspěšném vytvoření souborového serveru se zobrazí oznámení.
    
-   ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
+   ![Konfigurace souborového serveru 5b](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs13m.png)
    
    Stav zařízení se změní také na **online**.
    
-   ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
+   ![Konfigurace souborového serveru 5C](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs14m.png)
    
    Můžete pokračovat a přidat sdílenou složku.
 
@@ -189,15 +189,15 @@ Provedením následujících kroků na webu [Azure Portal](https://portal.azure.
    
    5. Kliknutím na **Přidat** vytvořte sdílenou složku. 
     
-       ![Přidání sdílené složky](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
+       ![Přidat sdílenou složku 1](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
    
        Zobrazí se oznámení o probíhajícím vytváření sdílené složky.
    
-       ![Přidání sdílené složky](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
+       ![Přidat sdílenou složku 2](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
    
       Po vytvoření sdílené složky se zadaným nastavením se okno **sdílené položky** aktualizuje a projeví se nová sdílená složka. Ve výchozím nastavení jsou pro sdílenou složku povolené monitorování a zálohování.
    
-      ![Přidání sdílené složky](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
+      ![Přidat sdílenou složku 3](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
 ## <a name="step-4-connect-to-the-share"></a>Krok 4: připojení ke sdílené složce
 Nyní se budete muset připojit k jedné nebo více sdíleným složkám, které jste vytvořili v předchozím kroku. Proveďte tyto kroky na hostiteli Windows serveru připojeném k vašemu virtuálnímu poli StorSimple.

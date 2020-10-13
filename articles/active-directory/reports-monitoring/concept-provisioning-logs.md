@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812552"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
@@ -39,7 +39,7 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 Toto téma vám poskytne přehled o zřizovacích sestavách.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 * Vlastníci aplikace
@@ -61,7 +61,7 @@ Protokoly zřizování poskytují odpovědi na následující otázky:
 
 Přístup k protokolům zřizování můžete získat tak, že v části **monitorování** v okně **Azure Active Directory** v [Azure Portal](https://portal.azure.com)vyberete **protokoly zřizování** . Může trvat až dvě hodiny, než se některé záznamy zřizování zobrazí na portálu.
 
-![Protokoly zřizování](./media/concept-provisioning-logs/access-provisioning-logs.png "Protokoly zřizování")
+![Zřizování protokolů](./media/concept-provisioning-logs/access-provisioning-logs.png "Protokoly zřizování")
 
 
 Protokol zřizování má výchozí zobrazení seznamu, které obsahuje:
@@ -86,7 +86,7 @@ To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazen
 
 Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
-![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtr")
+![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtrování")
 
 
 ## <a name="filter-provisioning-activities"></a>Filtrovat aktivity zřizování
@@ -100,7 +100,7 @@ Ve výchozím zobrazení můžete vybrat následující filtry:
 - Akce
 
 
-![Přidání filtrů](./media/concept-provisioning-logs/default-filter.png "Filtr")
+![Přidání filtrů](./media/concept-provisioning-logs/default-filter.png "Filtrování")
 
 Filtr **identit** umožňuje zadat název nebo identitu, o které se zajímáte. Tato identita by mohla být uživatel, skupina, role nebo jiný objekt. Můžete hledat podle názvu nebo ID objektu. ID se liší podle scénáře. Například při zřizování objektu ze služby Azure AD do SalesForce je ID zdroje ID objektu uživatele ve službě Azure AD, zatímco TargetID je ID uživatele v Salesforce. Při zřizování z Workday do služby Active Directory je zdrojem ID ID zaměstnance pracovního procesu Workday. Všimněte si, že jméno uživatele nemusí být vždy k dispozici ve sloupci identita. Vždy bude existovat jedno ID. 
 
@@ -132,7 +132,7 @@ Filtr **akcí** umožňuje filtrovat:
 - Aktualizace
 - Odstranit
 - Zakázat
-- Ostatní
+- Jiné
 
 Kromě toho můžete také nastavit následující filtry pro filtry výchozího zobrazení:
 
@@ -191,7 +191,7 @@ Karta **kroky** popisuje kroky podniknuté při zřizování objektu. Zřizován
 
 
 
-![Snímek obrazovky se zobrazí na kartě kroky, na které se zobrazují kroky zřizování.](./media/concept-provisioning-logs/steps.png "Filtr")
+![Snímek obrazovky se zobrazí na kartě kroky, na které se zobrazují kroky zřizování.](./media/concept-provisioning-logs/steps.png "Filtrování")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Řešení potíží a doporučení
@@ -225,7 +225,7 @@ Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro ob
 
 Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, které můžete najít v protokolech zřizování. U všech chybových kódů, které chybí, poskytněte zpětnou vazbu pomocí odkazu v dolní části této stránky. 
 
-|Kód chyby|Popis|
+|Kód chyby|Description|
 |---|---|
 |Konflikt, EntryConflict|Opravte konfliktní hodnoty atributů buď v rámci služby Azure AD, nebo v aplikaci, nebo zkontrolujte shodnou konfiguraci atributu, pokud by byl konfliktní uživatelský účet shodný a převzatý z něj. Další informace o konfiguraci atributů odpovídajícího atributu najdete v následující [dokumentaci](../app-provisioning/customize-application-attributes.md) .|
 |TooManyRequests|Cílová aplikace odmítla tento pokus o aktualizaci uživatele, protože je přetížena a přijímá příliš mnoho požadavků. Žádná akce není k dispozici. Tento pokus bude automaticky vyřazen. Společnost Microsoft si také oznámila tento problém.|

@@ -2,20 +2,20 @@
 title: Povolení služby Azure DS Domain Services pomocí šablony | Microsoft Docs
 description: Informace o tom, jak nakonfigurovat a povolit Azure Active Directory Domain Services pomocí šablony Azure Resource Manager
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: 316f77b2447bd75b03a05c4e6466d153bf51201d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: f257a186f05dc94923d1d39829b5ed68b518f20c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88722632"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967626"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Vytvoření spravované domény Azure Active Directory Domain Services pomocí šablony Azure Resource Manager
 
@@ -23,7 +23,7 @@ Azure Active Directory Domain Services (Azure služba AD DS) poskytuje spravovan
 
 V tomto článku se dozvíte, jak vytvořit spravovanou doménu pomocí šablony Azure Resource Manager. Podpůrné prostředky se vytvářejí pomocí Azure PowerShell.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete tyto prostředky:
 

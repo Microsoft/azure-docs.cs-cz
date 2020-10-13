@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: d5db91a8864d6090466b40197187c9386e053d12
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eebb0a8dc23a6a442a170dcc6e19495f96ce2921
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325534"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930589"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Připojování nebo odpojování svazku pro virtuální počítače s Windows nebo Linuxem 
 
@@ -60,6 +60,6 @@ V případě potřeby můžete připojit nebo odpojit svazek pro virtuální po�
 ## <a name="next-steps"></a>Další kroky
 
 * [Konfigurace výchozí domény NFSv4.1 pro Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
-* [Nejčastější dotazy k systému souborů NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
-* [Přehled systému souborů sítě](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)
+* [Nejčastější dotazy k systému souborů NFS](./azure-netapp-files-faqs.md#nfs-faqs)
+* [Přehled systému souborů sítě](/windows-server/storage/nfs/nfs-overview)
 * [Připojení svazku protokolu Kerberos systému souborů NFS](configure-kerberos-encryption.md#kerberos_mount)

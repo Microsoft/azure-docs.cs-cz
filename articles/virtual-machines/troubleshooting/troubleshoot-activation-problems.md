@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 3179324dd71ebf3bb44cb68f0fd84486bb88e2ce
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 987d4c7188c2bdc2ba6264805e33b79e7d2851d6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441044"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966283"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Řešení potíží s aktivací virtuálního počítače Azure s Windows
 
@@ -54,14 +54,14 @@ K problémům s aktivací virtuálního počítače Azure obecně dochází v p�
 
 Pro virtuální počítač vytvořený z vlastní image musíte nakonfigurovat příslušný instalační klíč klienta služby správy klíčů pro virtuální počítač.
 
-1. Spusťte příkaz **slmgr. vbs/dlv** na příkazovém řádku se zvýšenými oprávněními. Zkontrolujte hodnotu Popis ve výstupu a pak určete, jestli se vytvořila z maloobchodního média (MALOOBCHODNÍho kanálu) nebo z multilicenčního programu (VOLUME_KMSCLIENT).
+1. Spusťte **slmgr.vbs/DLV** na příkazovém řádku se zvýšenými oprávněními. Zkontrolujte hodnotu Popis ve výstupu a pak určete, jestli se vytvořila z maloobchodního média (MALOOBCHODNÍho kanálu) nebo z multilicenčního programu (VOLUME_KMSCLIENT).
   
 
     ```
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. Pokud se ve výstupu příkazu **slmgr.vbs /dlv** zobrazí kanál RETAIL, spuštěním následujících příkazů nastavte [instalační klíč klienta KMS](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys) pro používanou verzi Windows Serveru a vynuťte opakování aktivace: 
+2. Pokud se ve výstupu příkazu **slmgr.vbs /dlv** zobrazí kanál RETAIL, spuštěním následujících příkazů nastavte [instalační klíč klienta KMS](/windows-server/get-started/kmsclientkeys) pro používanou verzi Windows Serveru a vynuťte opakování aktivace: 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>
@@ -119,12 +119,12 @@ Pro virtuální počítač vytvořený z vlastní image musíte nakonfigurovat p
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>Vytvořil (a) jsem Windows Server 2016 z Azure Marketplace. Potřebuji nakonfigurovat klíč služby správy klíčů pro aktivaci Windows serveru 2016? 
 
  
-No. Bitová kopie ve Azure Marketplace má již nakonfigurovaný příslušný instalační klíč klienta služby správy klíčů. 
+Ne. Bitová kopie ve Azure Marketplace má již nakonfigurovaný příslušný instalační klíč klienta služby správy klíčů. 
 
 ### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>Funguje aktivace Windows stejným způsobem bez ohledu na to, jestli virtuální počítač používá zvýhodněné hybridní využití Azure (centrum), nebo ne? 
 
  
-Ano. 
+Yes. 
  
 
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Co se stane, když vyprší doba aktivace Windows? 

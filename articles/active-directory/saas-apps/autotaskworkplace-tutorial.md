@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/20/2019
 ms.author: jeedes
 ms.openlocfilehash: d75f18d0d3ea1b093639cabe22567fb6e664bcc5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713841"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>Kurz: Integrace Azure Active Directory s autopracovním pracovištěm
@@ -77,7 +77,7 @@ Aby bylo jednotné přihlašování fungovat, je třeba vytvořit odkaz na propo
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí automatického pracovního pracoviště, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurovat jednotné přihlašování pro samoobslužnou pracovní plochu](#configure-autotask-workplace-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Nakonfigurovat jednotné přihlašování pro samoobslužnou práci s úlohami](#configure-autotask-workplace-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte si uživatele s Autopracovní pracovištěm pro testování](#create-autotask-workplace-test-user)** , abyste měli protějšek Britta Simon v rámci automatického úkolu, který je propojený s reprezentací uživatele v Azure AD.
@@ -97,7 +97,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí automati
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -118,7 +118,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí automati
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro pracovní plochu AutoTask](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -132,7 +132,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí automati
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-autotask-workplace-single-sign-on"></a>Konfigurace jednotného přihlašování pro pracovní plochu automatického úkolu
+### <a name="configure-autotask-workplace-single-sign-on"></a>Konfigurace Sign-On na pracovišti pro práci s úlohami
 
 1. V jiném okně webového prohlížeče se přihlaste k pracovní ploše online pomocí přihlašovacích údajů správce.
 
@@ -179,7 +179,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Create** (Vytvořit).
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

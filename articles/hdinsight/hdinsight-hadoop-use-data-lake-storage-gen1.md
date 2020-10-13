@@ -12,7 +12,7 @@ ms.openlocfilehash: 7e05e89cae8688162c6ac6ded5ad56c85394dc8c
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858754"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Použití Data Lake Storage Gen1 s clustery Azure HDInsight
@@ -43,11 +43,11 @@ V současné době pouze některé typy a verze clusteru HDInsight podporují ja
 | Typ clusteru HDInsight | Data Lake Storage Gen1 jako výchozí úložiště | Data Lake Storage Gen1 jako další úložiště| Poznámky |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight verze 4,0 | No | No |ADLS Gen1 není v HDInsight 4,0 podporovaná. |
-| HDInsight verze 3.6 | Ano | Ano | S výjimkou HBA|
-| HDInsight verze 3.5 | Ano | Ano | S výjimkou HBA|
-| HDInsight verze 3.4 | No | Ano | |
+| HDInsight verze 3.6 | Yes | Yes | S výjimkou HBA|
+| HDInsight verze 3.5 | Yes | Yes | S výjimkou HBA|
+| HDInsight verze 3.4 | No | Yes | |
 | HDInsight verze 3.3 | No | No | |
-| HDInsight verze 3.2 | No | Ano | |
+| HDInsight verze 3.2 | No | Yes | |
 | Bouře | | |Pomocí Data Lake Storage Gen1 můžete zapisovat data z topologie s více podmnožinami. Data Lake Storage Gen1 můžete použít také pro referenční data, která lze následně číst pomocí topologie zaplavení.|
 
 > [!WARNING]  
@@ -108,13 +108,13 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-data-lake-storage-gen1-as-additional-storage"></a>Použití Data Lake Storage Gen1 jako dalšího úložiště
 
-Data Lake Storage Gen1 můžete použít také jako další úložiště pro cluster. V takových případech může být výchozí úložiště clusteru Azure Blob Storage nebo účet Azure Data Lake Storage Gen1. Pokud spouštíte úlohy HDInsight s daty uloženými v Azure Data Lake Storage Gen1 jako další úložiště, použijte plně kvalifikovanou cestu. Příklad:
+Data Lake Storage Gen1 můžete použít také jako další úložiště pro cluster. V takových případech může být výchozí úložiště clusteru Azure Blob Storage nebo účet Azure Data Lake Storage Gen1. Pokud spouštíte úlohy HDInsight s daty uloženými v Azure Data Lake Storage Gen1 jako další úložiště, použijte plně kvalifikovanou cestu. Například:
 
 `adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
 V adrese URL teď není **cluster_root_path** . To je proto, že v tomto případě Data Lake Storage není výchozí úložiště. Stačí pouze zadat cestu k souborům.
 
-Pokud chcete použít Data Lake Storage Gen1 jako další úložiště, udělte instančnímu objektu přístup k cestám, kde jsou vaše soubory uložené.  Příklad:
+Pokud chcete použít Data Lake Storage Gen1 jako další úložiště, udělte instančnímu objektu přístup k cestám, kde jsou vaše soubory uložené.  Například:
 
 `adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 

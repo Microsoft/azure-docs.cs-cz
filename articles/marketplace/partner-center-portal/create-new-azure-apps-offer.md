@@ -8,10 +8,10 @@ author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
 ms.openlocfilehash: fb3a3ab5339186d8fa4e347d9d13e66940457f8a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710715"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
@@ -72,7 +72,7 @@ Vyberte jedno z následujících skriptovacích prostředí, které vám pomůž
 
 Do vývojového prostředí doporučujeme přidat následující nástroje:
 
-* [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Průzkumník služby Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Visual Studio Code](https://code.visualstudio.com/) s následujícími příponami:
     * Rozšíření: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * Přípona: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -187,7 +187,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 4. Podmínky použití
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Název nabídky
-7. Souhrn
+7. Shrnutí
 8. Description
 9. Snímky obrazovky a videa
 

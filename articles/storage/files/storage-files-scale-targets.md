@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fd04e92804a1d37afd8ee2cefb159c1e686748d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d04fff069e7cd7d766125bc7364cf4648911ad
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86496175"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948343"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Škálovatelnost a cíle výkonnosti služby Azure Files
 
@@ -87,10 +87,17 @@ Abychom vám pomohli naplánovat nasazení pro každou fázi, níže jsou výsle
 | Počet objektů | objekty 25 000 000 |
 | Velikost datové sady| ~ 4,7 TiB |
 | Průměrná velikost souboru | ~ 200 KiB (největší soubor: 100 GiB) |
+| Počáteční výčet změn v cloudu | 7 objektů za sekundu  |
 | Propustnost nahrávání | 20 objektů za sekundu na skupinu synchronizace |
-| Propustnost stahování oboru názvů * | 400 objektů za sekundu |
+| Propustnost stahování oboru názvů | 400 objektů za sekundu |
 
-* Při vytvoření nového koncového bodu serveru nestáhne agent Azure File Sync žádný obsah souboru. Nejprve synchronizuje celý obor názvů a potom aktivuje odvolání na pozadí pro stažení souborů, a to buď v celém rozsahu, nebo v případě, že je povolená vrstva cloudu, do zásady clouding nastavené na koncovém bodu serveru.
+### <a name="initial-one-time-provisioning"></a>Prvotní zřízení v jednom čase
+
+**Počáteční výčet změn v cloudu**: když se vytvoří nová skupina synchronizace, bude první krok, který se spustí, počáteční výčet změn v cloudu. V tomto procesu bude systém vypsat všechny položky ve sdílené složce Azure. Během tohoto procesu nebude žádná aktivita synchronizace, tj. žádné položky nebudou staženy z koncového bodu cloudu do koncového bodu serveru a žádné položky nebudou odeslány z koncového bodu serveru do koncového bodu cloudu. Po dokončení počátečního výčtu změn v cloudu bude aktivita synchronizace pokračovat.
+Rychlost výkonu je 7 objektů za sekundu. Zákazníci si můžou odhadnout čas, který bude trvat, aby dokončili počáteční výčet změn v cloudu tím, že určí počet položek ve sdílené složce cloudu a pomocí následujících vzorců Získá čas ve dnech. Čas (ve dnech) počátečního výčtu cloudu = (počet objektů v koncovém bodu cloudu)/(7*60*60 × 24)
+
+**Propustnost stahování oboru názvů** Při přidání nového koncového bodu serveru do existující skupiny synchronizace agent Azure File Sync nestáhne žádný obsah souboru z koncového bodu cloudu. Nejprve synchronizuje celý obor názvů a potom aktivuje odvolání na pozadí pro stažení souborů, a to buď v celém rozsahu, nebo v případě, že je povolená vrstva cloudu, do zásady clouding nastavené na koncovém bodu serveru.
+
 
 | Průběžná synchronizace  | Podrobnosti  |
 |-|--|

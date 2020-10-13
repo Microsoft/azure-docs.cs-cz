@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 845a32c2feda5a5a3b8d44d237c62db94cae1779
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91848717"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Použití Azure Batch šablon CLI a přenosu souborů
@@ -139,7 +139,7 @@ Pokud se soubor šablony jmenoval _pool-ffmpeg.jsv_, vyvolejte šablonu následu
 az batch pool create --template pool-ffmpeg.json
 ```
 
-Rozhraní příkazového řádku vás vyzve k zadání hodnot `poolId` `nodeCount` parametrů a. Parametry můžete také dodat v souboru JSON. Příklad:
+Rozhraní příkazového řádku vás vyzve k zadání hodnot `poolId` `nodeCount` parametrů a. Parametry můžete také dodat v souboru JSON. Například:
 
 ```json
 {
@@ -280,7 +280,7 @@ az batch file download --file-group ffmpeg-output --local-path
 
 Šablony fondů a úloh umožňují zadání souborů uložených ve skupinách souborů pro kopírování uzlů fondu nebo mimo uzly fondu zpět do skupiny souborů. Například v šabloně úlohy, která byla zadána dříve, je pro objekt pro vytváření úloh zadána skupina souborů *ffmpeg-Input* jako umístění zdrojových videosouborů, které byly zkopírovány do uzlu pro překódování. Skupina souborů *ffmpeg-Output* je umístění, kde jsou zkopírovány výstupní soubory z uzlu, na kterém každý úkol spouští.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Podpora pro přenos šablon a souborů se v tuto chvíli přidala jenom do Azure CLI. Cílem je rozšířit cílovou skupinu, která může používat dávku uživatelům, kteří nepotřebují vyvíjet kód pomocí rozhraní API pro Batch, jako jsou například výzkumníki a uživatelé IT. Bez psaní kódu můžou uživatelé s poznatky o Azure, službě Batch a aplikacích, které mají spustit pomocí služby Batch, vytvořit šablony pro vytvoření fondu a úloh. S parametry šablony můžou uživatelé bez podrobných znalostí o službě Batch a aplikace používat šablony.
 

@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 75344204e03920c96d0868ad584b8701813fabf0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569524"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Základní hodnoty zabezpečení Azure pro Cosmos DB
@@ -334,7 +334,7 @@ Postup při programovém přístupu ke klíčům pomocí Azure Active Directory:
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: použijte jednotné přihlašování (SSO) s Azure Active Directory
 
-**Doprovodné**materiály: Azure Cosmos DB používá dva typy klíčů k autorizaci uživatelů a nepodporuje jednotné přihlašování (SSO) na úrovni datové roviny. Přístup k rovině ovládacího prvku pro Cosmos DB je k dispozici prostřednictvím REST API a podporuje jednotné přihlašování. Pro ověření nastavte hlavičku autorizace pro vaše požadavky na JSON Web Token, které získáte z Azure Active Directory.
+**Doprovodné**materiály: Azure Cosmos DB používá dva typy klíčů k autorizaci uživatelů a nepodporuje jednotné Sign-On (SSO) na úrovni datové roviny. Přístup k rovině ovládacího prvku pro Cosmos DB je k dispozici prostřednictvím REST API a podporuje jednotné přihlašování. Pro ověření nastavte hlavičku autorizace pro vaše požadavky na JSON Web Token, které získáte z Azure Active Directory.
 
 Principy služby Azure Database for Cosmos DB REST API: https://docs.microsoft.com/rest/api/cosmos-db/
 
@@ -991,7 +991,7 @@ Postup zálohování klíčů Key Vault: https://docs.microsoft.com/powershell/m
 
 **Doprovodné**materiály: Pokud se databáze nebo kontejner odstraní, můžete vytvořit lístek podpory nebo zavolat podporu Azure, která obnoví data z automatických online zálohování. Podpora Azure je dostupná jenom pro vybrané plány, jako je standard, vývojář a plány vyšší než. Aby bylo možné obnovit konkrétní snímek zálohy, Azure Cosmos DB vyžaduje, aby data byla k dispozici po dobu trvání cyklu zálohování pro daný snímek.
 
-Testovací obnovení tajných kódů uložených v Azure Key Vault pomocí prostředí PowerShell. Rutina Restore-AzureKeyVaultKey vytvoří v zadaném trezoru klíčů klíč. Tento klíč je replikou záložního klíče ve vstupním souboru a má stejný název jako původní klíč.
+Testovací obnovení tajných kódů uložených v Azure Key Vault pomocí prostředí PowerShell. Rutina Restore-AzureKeyVaultKey vytvoří klíč v zadaném trezoru klíčů. Tento klíč je replikou záložního klíče ve vstupním souboru a má stejný název jako původní klíč.
 
 Vysvětlení Azure Cosmos DB automatizovaného zálohování:
 
@@ -1013,11 +1013,11 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 **Doprovodné**materiály: vzhledem k tomu, že všechna uživatelská data uložená v Cosmos DB jsou šifrována v klidovém stavu a v přenosu, není nutné provádět žádnou akci. Dalším způsobem, jak to dát, je toto šifrování v klidovém stavu "zapnuto". Neexistují žádné ovládací prvky, které by bylo možné vypnout nebo zapnout. Azure Cosmos DB používá šifrování AES-256 ve všech oblastech, kde je účet spuštěný.
 
-Povolit obnovitelné odstranění v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
+Povolí Soft-Delete v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
 Pochopení šifrování dat v Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
 
-Jak povolit obnovitelné odstranění v Key Vault: https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+Postup povolení Soft-Delete v Key Vault: https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
 **Monitorování Azure Security Center**: Ano
 

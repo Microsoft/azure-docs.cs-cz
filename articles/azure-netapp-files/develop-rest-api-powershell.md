@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 90e88020f735f34d308935f1233fb91c0eddfe32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72c574779d63a3629ea3c99529686b7d3247fe25
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "85961060"
+ms.locfileid: "91931202"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api-using-powershell"></a>Vývoj pro Azure NetApp Files s využitím REST API pomocí PowerShellu
 
@@ -34,9 +34,9 @@ Specifikace REST API pro Azure NetApp Files je publikovaná prostřednictvím [G
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>Přístup k Azure NetApp Files REST API  
 
-1. Pokud jste to ještě neudělali, [nainstalujte rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
+1. Pokud jste to ještě neudělali, [nainstalujte rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) .
 2. Vytvoření instančního objektu v Azure Active Directory (Azure AD):
-   1. Ověřte, zda máte [dostatečná oprávnění](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+   1. Ověřte, zda máte [dostatečná oprávnění](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
    2. V Azure CLI zadejte následující příkaz:  
 
@@ -437,4 +437,4 @@ V této části se dozvíte o ukázkových skriptech pro PowerShell.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Podívejte se na odkaz Azure NetApp Files REST API](https://docs.microsoft.com/rest/api/netapp/)
+[Podívejte se na odkaz Azure NetApp Files REST API](/rest/api/netapp/)

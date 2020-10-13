@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 713b1698bff703507f46e1a8f76c6be385f41ec5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f7b45e88eeb1e391ec86fa230a87e9f5194cd60
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282456"
+ms.locfileid: "91893794"
 ---
-# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server-or-hyperscale-citus-online-using-dms-via-the-azure-portal"></a>Kurz: migrace Azure DB pro PostgreSQL – jeden server do Azure DB pro PostgreSQL-Single server nebo škálovatelné (Citus) online pomocí DMS přes Azure Portal
+# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Kurz: migrace Azure DB pro PostgreSQL – jeden server do Azure DB pro PostgreSQL-Single server online pomocí DMS přes Azure Portal
 
-Pomocí Azure Database Migration Service můžete migrovat databáze z instance [Azure Database for PostgreSQL s jedním serverem](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) do [Citus () v instanci Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) s minimálními výpadky. V tomto kurzu migrujete ukázkovou databázi pro **pronájem DVD** z Azure Database for PostgreSQL v10 za účelem do Citus () v Azure Database for PostgreSQL pomocí online aktivity migrace v Azure Database Migration Service.
+Pomocí Azure Database Migration Service můžete migrovat databáze z instance [Azure Database for PostgreSQL s jedním serverem](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) do jiné instance [serveru Azure Database for PostgreSQL-Single](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) s minimálními výpadky. V tomto kurzu migrujete ukázkovou databázi **pronájmu DVD** z Azure Database for PostgreSQL v10 za účelem na Azure Database for PostgreSQL jeden server pomocí online aktivity migrace v Azure Database Migration Service.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -57,9 +57,10 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 * Zajistěte, aby pravidla skupiny zabezpečení sítě (NSG) pro vaši virtuální síť neblokovala následující příchozí komunikační porty Azure Database Migration Service: 443, 53, 9354, 445, 12000. Další podrobnosti o filtrování provozu NSG virtuální sítě najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 * Vytvořte [pravidlo brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) na úrovni serveru pro zdroj Azure Database for PostgreSQL, aby Azure Database Migration Service mohl získat přístup ke zdrojovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.
 * Vytvořte [pravidlo brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) na úrovni serveru pro Azure Database for PostgreSQL cíl a umožněte Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.
+* [Povolte logickou replikaci](https://docs.microsoft.com/azure/postgresql/concepts-logical) ve zdroji Azure DB pro PostgreSQL. 
 * Nastavte následující parametry serveru v instanci Azure Database for PostgreSQL používané jako zdroj:
 
-  * max_replication_slots = [počet slotů], doporučuje se nastavit na **pět slotů**
+  * max_replication_slots = [počet slotů], doporučuje se nastavit na **deset slotů**
   * max_wal_senders = [počet souběžných úloh] - parametr max_wal_senders nastaví počet souběžných úloh, které můžete spustit, doporučujeme nastavení na **10 úloh**
 
 > [!NOTE]
@@ -284,7 +285,7 @@ Po dokončení počátečního úplného načtení se databáze označí jako **
 
     ![Dokončit obrazovku přímou migraci](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
-3. Jakmile se zobrazí stav migrace databáze **dokončeno**, připojte aplikace k nové cílové instanci Azure Database for PostgreSQL.
+3. Jakmile se zobrazí stav migrace databáze **dokončeno**, [znovu vytvořte sekvence](https://wiki.postgresql.org/wiki/Fixing_Sequences) (Pokud je k dispozici) a připojte své aplikace k nové cílové instanci Azure Database for PostgreSQL.
 
 ## <a name="next-steps"></a>Další kroky
 

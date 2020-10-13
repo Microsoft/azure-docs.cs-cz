@@ -6,16 +6,16 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 1c2df017a9af47bfa330c8e0fa7561bf5b2d5bae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ffb13912780edcf3d92093e672d1dae983e50a8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514695"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977404"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>Monitorování zařízení StorSimple pomocí služby StorSimple Device Manager
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 Službu StorSimple Device Manager můžete použít k monitorování konkrétních zařízení v rámci řešení StorSimple. Můžete vytvářet vlastní grafy založené na výkonu vstupu a výstupu, využití kapacity, propustnost sítě a metriky výkonu zařízení a připnout je na řídicí panel. Další informace najdete na webu [přizpůsobení řídicího panelu portálu](../azure-portal/azure-portal-dashboards.md).
 
 Chcete-li zobrazit informace o monitorování určitého zařízení, vyberte v Azure Portal službu Device Manager StorSimple. V seznamu zařízení vyberte zařízení a pak přejít na **monitor**. Pak můžete zobrazit diagramy **kapacity**, **využití**a **výkonu** pro vybrané zařízení.
@@ -77,7 +77,7 @@ Pokud používáte aktualizaci 3 nebo vyšší, můžete snížit využití kapa
 
 Můžete dále kliknout na jednotlivé svazky v seznamu a zobrazit odpovídající použití.
 
-![Využití primární kapacity pro všechny místně připojené svazky](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
+![Využití primární kapacity na všech místně připojených svazcích 2](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
 
 ### <a name="cloud-storage-usage"></a>Využití cloudového úložiště
 V těchto grafech se zobrazuje velikost využitého cloudového úložiště. Tato data jsou Odstraněná a komprimovaná. Tato velikost zahrnuje cloudové snímky, které by mohly obsahovat data, která se neprojevují v žádném primárním svazku a jsou zachovaná pro starší verze nebo pro požadované účely uchování. Můžete porovnat údaje o využití primárního a cloudového úložiště, abyste získali představu o míře omezení dat, i když číslo nebude přesné.

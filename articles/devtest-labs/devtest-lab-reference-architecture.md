@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: e0791fb6c4de3da8108ffbd296c681f993c6b6cb
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91367746"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Referenční architektura Azure DevTest Labs pro podniky
@@ -59,7 +59,7 @@ DevTest Labs má skvělé administrativní uživatelské rozhraní pro práci s 
 
 Je důležité si uvědomit, že DevTest Labs používá základní prostředky Azure, které jsou spravované stejným způsobem: sítě, disky, výpočetní prostředky a tak dále. Například Azure Policy platí pro virtuální počítače, které jsou vytvořeny v testovacím prostředí. Azure Security Center může hlásit dodržování předpisů virtuálních počítačů. A služba Azure Backup může poskytovat pravidelné zálohování pro virtuální počítače v testovacím prostředí.
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
 Azure DevTest Labs používá existující prostředky v Azure (výpočty, sítě a tak dále). Proto automaticky přináší výhody funkcí zabezpečení, které jsou součástí platformy. Pokud třeba chcete, aby příchozí připojení ke vzdálené ploše vycházela jenom z podnikové sítě, stačí přidat skupinu zabezpečení sítě do virtuální sítě v bráně Vzdálená plocha. Jediným dalším aspektem zabezpečení je úroveň oprávnění, která udělujete členům týmu, kteří používají cvičení na každodenní bázi. Nejběžnějšími oprávněními jsou [ *vlastník* a *uživatel*](devtest-lab-add-devtest-user.md). Další informace o těchto rolích najdete [v tématu Přidání vlastníků a uživatelů v Azure DevTest Labs](devtest-lab-add-devtest-user.md).
 
 ## <a name="next-steps"></a>Další kroky

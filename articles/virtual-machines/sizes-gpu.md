@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 87314e38225d6e08f81ce6c3855f70a13db9c6bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb534ae4a59c9a5c87a7eb7ab268a40b9771fdb2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653175"
+ms.locfileid: "91876222"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro grafické procesory
 
 Velikosti virtuálních počítačů optimalizované pro GPU jsou specializované virtuální počítače, které jsou k dispozici s jedním, více nebo zlomkem GPU. Tyto velikosti jsou navržené pro úlohy náročné na výpočetní výkon, náročné na grafiku a vizualizaci. Tento článek poskytuje informace o počtu a typu GPU, vCPU, datových disků a síťových karet. Propustnost úložiště a šířka pásma sítě jsou také zahrnuty pro každou velikost v tomto seskupení.
 
-- Velikosti [NC-Series](nc-series.md), [NCv2-](ncv2-series.md)Series, [NCv3-](ncv3-series.md) Series a [NCT4_v3-](nct4-v3-series.md) Series jsou optimalizované pro aplikace a algoritmy náročné na výpočetní výkon a na síť. Mezi příklady patří aplikace a simulace založené na CUDA a OpenCL, AI a obsáhlý Learning. NCT4v3-Series se zaměřuje na odvozené úlohy, které využívají GPU GPU Tesla T4 a procesor AMD EPYC2 Řím. NCv3-Series se zaměřuje na vysoce výkonné výpočetní úlohy s grafickým procesorem NVIDIA Tesla V100. Řada NC-Series používá procesor Intel Xeon E5-2690 V3 V3 (Haswell) a virtuální počítače řady NCv2-Series a NCv3-Series používají procesor Intel Xeon E5-2690 v4 (Broadwell).
+- Velikosti řady [NCv3-Series](ncv3-series.md) a [NC T4_v3-Series](nct4-v3-series.md) jsou optimalizované pro aplikace náročné na výpočetní výkon GPU. Mezi příklady patří aplikace a simulace založené na CUDA a OpenCL, AI a obsáhlý Learning. Řada NC V3 V3-Series se zaměřuje na odvozené úlohy, které využívají GPU GPU Tesla T4 a procesor AMD EPYC2 Řím. NCv3-Series se zaměřuje na vysoce výkonné výpočetní úlohy a úlohy AI s grafickým procesorem Tesla V100u NVIDIA.
 
-- Velikosti řady [ND-Series](nd-series.md)a [NDv2-Series](ndv2-series.md) se zaměřují na scénáře školení a odvozování pro hloubkové učení. Řada ND-Series používá GPU NVIDIA Tesla P40 a procesor Intel Xeon E5-2690 v4 (Broadwell). NDv2-Series používá NVIDIA Volta V100 a procesor Intel Xeon Platinum 8168 (Skylake).
+- Velikost [řady NDv2-Series](ndv2-series.md) se zaměřuje na škálovatelné a škálovatelné aplikace pro výuku s hloubkovým učením. NDv2-Series používá NVIDIA Volta V100 a procesor Intel Xeon Platinum 8168 (Skylake).
 
 - Velikosti [NV-Series](nv-series.md) a [NVv3-Series](nvv3-series.md) jsou optimalizované a navržené pro vzdálené vizualizace, streamování, hry, kódování a VDI, a to pomocí platforem, jako je OpenGL a DirectX. Tyto virtuální počítače jsou řízené grafickým procesorem NVIDIA Tesla M60.
 
@@ -31,7 +31,7 @@ Velikosti virtuálních počítačů optimalizované pro GPU jsou specializovan�
 
 Aby bylo možné využívat možnosti GPU pro virtuální počítače řady Azure N-Series, je nutné nainstalovat ovladače NVIDIA nebo AMD GPU.
 
-- Pro virtuální počítače, které jsou zajištěné grafickými procesory NVIDIA, nainstaluje [rozšíření ovladače NVIDIA GPU](./extensions/hpccompute-gpu-windows.md) příslušné ovladače NVIDIA CUDA nebo Grid. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako jsou šablony Azure PowerShell nebo Azure Resource Manager. Podporované operační systémy a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](./extensions/hpccompute-gpu-windows.md) . Obecné informace o rozšířeních virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](./extensions/overview.md).
+- Pro virtuální počítače, které jsou zajištěné grafickými procesory NVIDIA, nainstaluje [rozšíření ovladače NVIDIA GPU](./extensions/hpccompute-gpu-windows.md) příslušné ovladače NVIDIA CUDA nebo Grid. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako jsou šablony Azure PowerShell nebo Azure Resource Manager. Podporované operační systémy a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](./extensions/hpccompute-gpu-windows.md) . Obecné informace o rozšířeních virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](./extensions/overview.md).   
 
    Alternativně můžete ovladače NVIDIA GPU nainstalovat ručně. Další informace najdete v tématu [instalace ovladačů NVIDIA GPU pro virtuální počítače řady n-Series s Windows](./windows/n-series-driver-setup.md) nebo [instalace ovladačů NVIDIA GPU pro virtuální počítače řady n-Series s operačním systémem Linux](./linux/n-series-driver-setup.md) pro podporované operační systémy, ovladače, instalace a postupy ověření.
 

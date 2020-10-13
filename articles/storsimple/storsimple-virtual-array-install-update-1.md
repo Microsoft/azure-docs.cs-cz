@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 5bb6b61bb7d9392984bf5c308ce7ee039234461e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bcd0f6d4d1ac505598c839f89850f9b55a9c36a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295562"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977489"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>Instalace aktualizace 1,0 ve virtuálním poli StorSimple
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 
 Tento článek popisuje kroky potřebné k instalaci aktualizace 1,0 ve virtuálním poli StorSimple prostřednictvím místního webového uživatelského rozhraní a prostřednictvím Azure Portal.
 
@@ -102,26 +102,26 @@ Dokončení této procedury trvá přibližně 4 minuty. Provedením následují
 
 1. V místním webovém uživatelském rozhraní přejdete na **Údržba**  >  **aktualizace softwaru**. Poznamenejte si verzi softwaru, kterou používáte. **Pokračujte v této aktualizaci pouze v případě, že používáte aktualizaci 0,6 (10.0.10293.0). Pokud používáte starší verzi, nainstalujte nejdřív na zařízení [aktualizaci 0,6](storsimple-virtual-array-install-update-06.md) a pak použijte Update 1.**
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-1/update1m.png)
+    ![aktualizace zařízení 1](./media/storsimple-virtual-array-install-update-1/update1m.png)
 
 2. Do pole **cesta k souboru aktualizace**zadejte název souboru aktualizace nebo opravy hotfix. Můžete také přejít k instalačnímu souboru aktualizace nebo opravy hotfix, pokud je umístěn ve sdílené síťové složce. Klikněte na **Použít**.
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-1/update2m.png)
+    ![aktualizace zařízení 2](./media/storsimple-virtual-array-install-update-1/update2m.png)
 
 3. Zobrazí se upozornění. Vzhledem k tom, že virtuální pole je zařízení s jedním uzlem, po použití aktualizace se zařízení restartuje a dojde k výpadku. Klikněte na ikonu zaškrtněte.
    
-   ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-1/update3m.png)
+   ![aktualizace zařízení 3](./media/storsimple-virtual-array-install-update-1/update3m.png)
 
 4. Spustí se aktualizace. Po úspěšné aktualizaci zařízení se restartuje. Místní uživatelské rozhraní není v tuto dobu k dispozici.
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-1/update5m.png)
+    ![aktualizace zařízení 4](./media/storsimple-virtual-array-install-update-1/update5m.png)
 
 5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance**navštivte web  >  **aktualizace softwaru**údržba. Zobrazená verze softwaru by měla být **10.0.0.0.0.10296** pro aktualizaci 1,0.
    
    > [!NOTE]
    > Verze softwaru oznamujeme trochu jiným způsobem v místním webovém uživatelském rozhraní a Azure Portal. Například místní webové uživatelské rozhraní hlásí **10.0.0.0.0.10296** a sestavy Azure Portal **10.0.10296.0** pro stejnou verzi.
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-1/update6m.png)
+    ![aktualizace zařízení 5](./media/storsimple-virtual-array-install-update-1/update6m.png)
 
 6. Opakujte kroky 2-4 pro instalaci opravy zabezpečení systému Windows pomocí souboru `windows8.1-kb4012213-x64` . Virtuální pole se po instalaci restartuje a musíte se přihlásit k místnímu webovému uživatelskému rozhraní.
 

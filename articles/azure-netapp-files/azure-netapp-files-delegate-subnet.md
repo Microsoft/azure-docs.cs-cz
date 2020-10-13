@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: bed1375631c017d23ed53b6102c424533237099e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb3d1fd49c2623ff6dcbe8a19ae8c8ca3b46425a
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447566"
+ms.locfileid: "91930624"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Delegování podsítě do Azure NetApp Files 
 
@@ -33,7 +33,7 @@ Je nutné delegovat podsíť na Azure NetApp Files.   Při vytváření svazku j
    Ve virtuální síti může být jenom jedna delegovaná podsíť. Účet NetApp může nasazovat svazky do více virtuální sítě, z nichž každá má vlastní delegovanou podsíť.  
 * V delegované podsíti nelze určit skupinu zabezpečení sítě ani koncový bod služby. Tím dojde k selhání delegování podsítě.
 * Přístup k svazku z globálně partnerské virtuální sítě se momentálně nepodporuje.
-* [Trasy definované uživatelem](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) (udr) a skupiny zabezpečení sítě (skupin zabezpečení sítě) nejsou podporovány v delegovaných podsítích pro Azure NetApp Files. Udr a skupin zabezpečení sítě ale můžete použít i v jiných podsítích, a to i v rámci stejné virtuální sítě jako podsíť delegované pro Azure NetApp Files.  
+* [Trasy definované uživatelem](../virtual-network/virtual-networks-udr-overview.md#custom-routes) (udr) a skupiny zabezpečení sítě (skupin zabezpečení sítě) nejsou podporovány v delegovaných podsítích pro Azure NetApp Files. Udr a skupin zabezpečení sítě ale můžete použít i v jiných podsítích, a to i v rámci stejné virtuální sítě jako podsíť delegované pro Azure NetApp Files.  
    Azure NetApp Files vytvoří systémovou trasu k delegované podsíti. Trasa se zobrazí v **efektivních trasách** v tabulce směrování, pokud ji potřebujete k řešení potíží.
 
 ## <a name="steps"></a>Postup
@@ -54,6 +54,4 @@ Můžete také vytvořit a delegovat podsíť při [vytváření svazku pro Azur
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření svazku pro Azure NetApp Files](azure-netapp-files-create-volumes.md)
-* [Informace o integraci virtuální sítě pro služby Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
-
-
+* [Informace o integraci virtuální sítě pro služby Azure](../virtual-network/virtual-network-for-azure-services.md)

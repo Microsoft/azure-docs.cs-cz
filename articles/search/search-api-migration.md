@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 0f1050bf58e0cd8d9a601d60a4c5dc22a5420483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: d7734fde529c24e8113ea3b019d343b7223f0122
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88949027"
+ms.locfileid: "91929638"
 ---
 # <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Upgrade na nejnovější REST API v Azure Kognitivní hledání
 
@@ -40,13 +40,19 @@ Pokud se vám některé z těchto situací vztahují, budete možná muset změn
 
 ## <a name="upgrade-to-2020-06-30"></a>Upgradovat na 2020-06-30
 
-Verze 2020-06-30 je nová všeobecně dostupná verze REST API. Neexistují žádné zásadní změny, ale existuje několik rozdílů v chování. 
+Verze 2020-06-30 je nová všeobecně dostupná verze REST API. Existuje jedna zásadní změna a několik rozdílů v chování. 
 
 Funkce jsou teď obecně dostupné v této verzi rozhraní API:
 
 * [Znalostní báze](knowledge-store-concept-intro.md), trvalé úložiště obohaceného obsahu vytvořeného prostřednictvím dovednosti vytvořené pro analýzu a zpracování dat prostřednictvím jiných aplikací. Díky této funkci může kanál rozšíření AI řízený indexerem naplnit úložiště znalostí kromě indexu vyhledávání. Pokud jste použili verzi Preview této funkce, je ekvivalentem všeobecně dostupné verze. Jediná požadovaná změna kódu mění verzi rozhraní API.
 
-Změny chování zahrnují následující:
+### <a name="breaking-change"></a>Zásadní změna
+
+Stávající kód napsaný pro předchozí verze rozhraní API se přeruší u rozhraní API-Version = 2020-06-30 a novější, pokud kód obsahuje následující funkce:
+
+* Všechny literály EDM. Date (datum tvořený rokem v měsíci, například `2020-12-12` ) ve výrazech filtru musí splňovat formát EDM. DateTimeOffset: `2020-12-12T00:00:00Z` . Tato změna byla nutná ke zpracování chybných nebo neočekávaných výsledků dotazu z důvodu rozdílů v časovém pásmu.
+
+### <a name="behavior-changes"></a>Změny chování
 
 * [Algoritmus řazení BM25](index-ranking-similarity.md) nahrazuje algoritmus předchozí klasifikace novější technologií. Nové služby budou tento algoritmus používat automaticky. Pro existující služby musíte nastavit parametry pro použití nového algoritmu.
 

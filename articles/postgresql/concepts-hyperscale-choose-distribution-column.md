@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: f3c86f4b194e6d3935434b35cae958dfcf772986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 129eff8c954c0c5469d3607e6ae16ce3202630ed
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314908"
+ms.locfileid: "91929332"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Výběr distribučních sloupců v Azure Database for PostgreSQL – Citus (škálování)
 
@@ -71,8 +71,6 @@ Nejběžnější Chyba při modelování informací o datové řadě v Citus () 
 
 -   **Nevybírejte jako distribuční sloupec časové razítko.** Vyberte jiný distribuční sloupec. V aplikaci s více klienty použijte ID tenanta nebo v aplikaci v reálném čase použijte ID entity.
 -   **Místo toho použijte dělení tabulky PostgreSQL.** Pomocí dělení tabulky můžete rozdělit velkou tabulku časově uspořádaných dat do několika zděděných tabulek s každou tabulkou, která obsahuje různé časové rozsahy. Distribuce tabulky Postgres-partition v Citus () vytvoří horizontálních oddílů pro zděděné tabulky.
-
-Příklad vytvoření tohoto typu aplikace najdete v [kurzu pro časovou řadu](https://aka.ms/hyperscale-tutorial-timeseries) .
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si, jak společné [umístění](concepts-hyperscale-colocation.md) mezi distribuovanými daty pomáhá rychle spustit dotazy.

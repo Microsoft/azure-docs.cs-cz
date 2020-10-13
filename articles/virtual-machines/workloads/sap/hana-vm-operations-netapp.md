@@ -16,13 +16,13 @@ ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d0df2199a2afdbea1ee1c6c543df324e9fe3cc3e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450705"
 ---
-# <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>Svazky NFS v 4.1 Azure NetApp Files pro SAP HANA
+# <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>Svazky NFS v4.1 ve službě Azure NetApp Files pro SAP HANA
 
 Azure NetApp Files poskytuje nativní sdílené složky systému souborů NFS, které se dají použít pro svazky **/Hana/Shared**, **/Hana/data**a **/Hana/log** . Použití sdílených složek systému souborů NFS založených na ANF pro svazky **/Hana/data** a **/Hana/log** vyžaduje použití protokolu NFS v 4.1. Protokol NFS verze 3 není podporován pro použití **/Hana/data** a **/Hana/log** svazků při založení sdílených složek na ANF. 
 
@@ -95,7 +95,7 @@ Aby splňovala požadavky na minimální propustnost SAP pro data a protokol a p
 
 | Svazek | Velikost<br /> Premium Storage úroveň | Velikost<br /> Úroveň úložiště Ultra Storage | Podporovaný protokol NFS |
 | --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TB | v 4.1 |
+| /hana/log/ | 4 TiB | 2 TiB | v 4.1 |
 | /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
 | /Hana/Shared škálování | Min (1 TB, 1 x RAM)  | Min (1 TB, 1 x RAM) | V3 nebo v 4.1 |
 | škálování na více instancí/Hana/Shared | 1 x RAM pracovního uzlu<br /> za 4 uzly pracovního procesu  | 1 x RAM pracovního uzlu<br /> za 4 uzly pracovního procesu  | V3 nebo v 4.1 |

@@ -3,15 +3,15 @@ title: Rozbalení stávajícího fondu hostitelů s novými hostiteli relací �
 description: Postup rozšíření stávajícího fondu hostitelů s novými hostiteli relací na virtuálním počítači s Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 339fe25a5a75ca8bc5cc0af7c4d96651e90c7eb6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b65560a3b10d04887040c4da1e137912810b3095
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002437"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929587"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Rozšíření existujícího fondu hostitelů s novými hostiteli relací
 
@@ -39,7 +39,7 @@ Při prvním vytvoření fondu hostitelů a hostitele relací budete také potř
 
 Rozšíření fondu hostitelů přidáním virtuálních počítačů:
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 
 2. Vyhledejte a vyberte **virtuální počítač s Windows**.
 
@@ -56,7 +56,7 @@ Rozšíření fondu hostitelů přidáním virtuálních počítačů:
 8. Zadejte počet hostitelů relací, které chcete přidat do fondu hostitelů, do **počtu virtuálních počítačů**. Pokud například rozšíříte fond hostitelů o pět hostitelů, zadejte **5**.
 
     >[!NOTE]
-    >Velikost ani bitovou kopii virtuálních počítačů nemůžete upravit, protože je důležité zajistit, aby všechny virtuální počítače ve fondu hostitelů měly stejnou velikost.
+    >I když je možné upravit image a prefix virtuálních počítačů, nedoporučujeme je upravovat, pokud máte virtuální počítače s různými imagemi ve stejném fondu hostitelů. Upravte image a předponu jenom v případě, že plánujete odebrání virtuálních počítačů se staršími imagí z ovlivněného fondu hostitelů.
 
 9. Pro **informace o virtuální síti**vyberte virtuální síť a podsíť, ke kterým chcete virtuální počítače připojit. Můžete vybrat stejnou virtuální síť, kterou existující počítače používají, nebo vybrat jiný, který je vhodnější pro oblast vybranou v kroku 7.
 

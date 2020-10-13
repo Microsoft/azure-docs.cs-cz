@@ -1,20 +1,20 @@
 ---
-title: Migrace webové aplikace z Google Maps | Mapy Microsoft Azure
-description: Migrace webové aplikace z mapy Google na Microsoft Azure Maps
+title: Kurz – migrace webové aplikace z webu Google Maps | Mapy Microsoft Azure
+description: Kurz migrace webové aplikace z webu Google Maps na mapy Microsoft Azure
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/18/2020
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 3414f50d6d0fc4983b7a05226a2f768e7ead81dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d7e6c5229fa6f8204ba363d9868ffa80d78ccba
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319669"
+ms.locfileid: "91876494"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Migrace webové aplikace z Map Google
 
@@ -1011,7 +1011,7 @@ Přidejte a spravujte data ve zdroji dat. Připojte zdroje dat a vrstvy a potom 
 
 Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskupené datové body do vrstev pro vykreslování. Zdroj dat je schopný clusterovat stovky tisíc datových bodů. Datový bod v clusteru má následující vlastnosti:
 
-| Název vlastnosti             | Typ    | Popis   |
+| Název vlastnosti             | Typ    | Description   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Indikuje, že funkce představuje cluster. |
 | `cluster_id`              | řetězec  | Jedinečné ID clusteru, které lze použít s `getClusterExpansionZoom` `getClusterChildren` metodami DataSource, a `getClusterLeaves` . |
@@ -1020,7 +1020,7 @@ Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskup
 
 `DataSource`Třída má následující pomocnou funkci pro přístup k dalším informacím o clusteru pomocí `cluster_id` .
 
-| Metoda | Návratový typ | Popis |
+| Metoda | Návratový typ | Description |
 |--------|-------------|-------------|
 | `getClusterChildren(clusterId: number)` | &lt;Geometrie funkce pole promise &lt; &lt; , libovolný &gt; \| tvar&gt;&gt; | Načte podřízené objekty daného clusteru na další úrovni přiblížení. Tyto podřízené položky mohou být kombinací tvarů a podclusterů. Podclustery budou funkcemi s vlastnostmi, které odpovídají ClusteredProperties. |
 | `getClusterExpansionZoom(clusterId: number)` | Číslo promise &lt;&gt; | Vypočítá úroveň přiblížení, při které se cluster začne zvětšovat nebo rozdělovat. |
