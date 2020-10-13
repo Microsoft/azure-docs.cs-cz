@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ca0bfcb0c90142924285215c427a7071297be730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f808cff5bddf6566276df2f707232bde1ecca8a
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553905"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995081"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Kurz: Azure Active Directory integrace s daty Periscope
 
@@ -123,7 +123,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Periscop
 
 2. Otevřete nabídku ozubeného kolečka v levém dolním rohu **Billing**a otevřete  >  nabídku**zabezpečení** fakturace a proveďte následující kroky. K těmto nastavením mají přístup jenom správci.
 
-    ![Informace o konfiguraci Periscope dat](./media/periscope-data-tutorial/configure01.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno zabezpečení s vybraným nastavením.](./media/periscope-data-tutorial/configure01.png)
 
     a. Zkopírujte **adresu URL federačních metadat aplikace** z kroku #5 **podpisový certifikát SAML** a otevřete ho v prohlížeči. Tím se otevře dokument XML.
 
@@ -143,7 +143,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Periscop
 
     i. Nakonec klikněte na **Uložit** a **potvrďte** změnu nastavení jednotného přihlašování, a to zadáním **odhlášení**.
 
-    ![Informace o konfiguraci Periscope dat](./media/periscope-data-tutorial/configure02.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno aktualizace s S konfigurací, se kterým se v textovém poli zadal typ odhlášení a vybrané tlačítko Potvrdit](./media/periscope-data-tutorial/configure02.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -206,7 +206,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Periscope datům, musí se zř
 
 2. Klikněte na ikonu **Nastavení** v levém dolním rohu nabídky a přejděte na **oprávnění**.
 
-    ![Informace o konfiguraci Periscope dat](./media/periscope-data-tutorial/configure03.png)
+    ![Snímek obrazovky zobrazující, že je v nabídce nastavení vybraná možnost oprávnění](./media/periscope-data-tutorial/configure03.png)
 
 3. Klikněte na **Přidat uživatele** a proveďte následující kroky:
 

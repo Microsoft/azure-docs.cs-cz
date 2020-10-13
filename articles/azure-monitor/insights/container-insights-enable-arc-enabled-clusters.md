@@ -3,12 +3,12 @@ title: Nakonfigurujte cluster Kubernetes s povoleným ARC Azure pomocí Azure Mo
 description: Tento článek popisuje, jak nakonfigurovat monitorování pomocí Azure Monitor pro kontejnery v clusterech s podporou Kubernetes ARC Azure.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 79a534e4f37fb0154115e43402f031752a603ccb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77b536141f0e7c6094964011719a0e536e8d33f1
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620286"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994457"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Povolit monitorování clusteru Kubernetes s povoleným ARC Azure
 
@@ -36,7 +36,7 @@ Než začnete, ujistěte se, že máte následující:
 
 - Pracovní prostor služby Log Analytics.
 
-    Azure Monitor for Containers podporuje pracovní prostor Log Analytics v oblastech uvedených v [produktech Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Pokud chcete vytvořit vlastní pracovní prostor, můžete ho vytvořit prostřednictvím [Azure Resource Manager](../platform/template-workspace-configuration.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../learn/quick-create-workspace.md).
+    Azure Monitor for Containers podporuje pracovní prostor Log Analytics v oblastech uvedených v [produktech Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Pokud chcete vytvořit vlastní pracovní prostor, můžete ho vytvořit prostřednictvím [Azure Resource Manager](../samples/resource-manager-workspace.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../learn/quick-create-workspace.md).
 
 - Pokud chcete povolit a přistupovat k funkcím v Azure Monitor pro kontejnery, minimálně musíte být členem role *přispěvatele* Azure v předplatném Azure a členem role [*přispěvatele Log Analytics*](../platform/manage-access.md#manage-access-using-azure-permissions) v pracovním prostoru Log Analytics s nakonfigurovaným Azure monitor for Containers.
 
@@ -154,7 +154,7 @@ $servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $service
 $tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
 ```
 
-Například:
+Příklad:
 
 ```powershell
 .\enable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId -kubeContext $kubeContext -workspaceResourceId $logAnalyticsWorkspaceResourceId -proxyEndpoint $proxyEndpoint
@@ -239,7 +239,7 @@ servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
 tenantId=$(echo $servicePrincipal | jq -r '.tenant')
 ```
 
-Například:
+Příklad:
 
 ```bash
 bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId --kube-context $kubeContext  --workspace-id $logAnalyticsWorkspaceResourceId --proxy $proxyEndpoint
@@ -268,7 +268,7 @@ Pokud zadáte protokol jako **http**, požadavky HTTP se vytvoří pomocí zabez
 
 ### <a name="configure-using-powershell"></a>Konfigurace prostřednictvím prostředí PowerShell
 
-Zadejte uživatelské jméno a heslo, IP adresu nebo plně kvalifikovaný název domény a číslo portu pro proxy server. Například:
+Zadejte uživatelské jméno a heslo, IP adresu nebo plně kvalifikovaný název domény a číslo portu pro proxy server. Příklad:
 
 ```powershell
 $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
@@ -276,7 +276,7 @@ $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
 
 ### <a name="configure-using-bash"></a>Konfigurace pomocí bash
 
-Zadejte uživatelské jméno a heslo, IP adresu nebo plně kvalifikovaný název domény a číslo portu pro proxy server. Například:
+Zadejte uživatelské jméno a heslo, IP adresu nebo plně kvalifikovaný název domény a číslo portu pro proxy server. Příklad:
 
 ```bash
 export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>

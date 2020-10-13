@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
-ms.date: 09/04/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 95b41723d3cb398caad3a0cf388b7810deda78dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00b689e4546d1f639f76ccbdf45348c43a678066
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935724"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996272"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>Použití studia k nasazení modelů vyškolených v Návrháři
 
@@ -26,6 +26,7 @@ Nasazení v nástroji Studio se skládá z následujících kroků:
 
 1. Zaregistrujte vyškolený model.
 1. Stáhněte si vstupní skript a soubor závislostí conda pro model.
+1. Volitelné Nakonfigurujte vstupní skript.
 1. Nasaďte model do cílového výpočetního prostředí.
 
 Modely můžete nasadit přímo v návrháři, aby bylo možné přeskočit registraci modelu a postup stahování souborů. To může být užitečné pro rychlé nasazení. Další informace najdete v tématu [nasazení modelu pomocí návrháře](tutorial-designer-automobile-price-deploy.md).
@@ -36,7 +37,14 @@ Modely, které jsou vyškolené v návrháři, se dají nasadit taky prostředni
 
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
 
-* Dokončený školicí kanál obsahující [modul vlakového modelu](./algorithm-module-reference/train-model.md)
+* Dokončený školicí kanál obsahující jeden z následujících modulů:
+    - [Modul vlakového modelu](./algorithm-module-reference/train-model.md)
+    - [Modul detekce anomálií pro vlaky](./algorithm-module-reference/train-anomaly-detection-model.md)
+    - [Modul výukového modelu clusteringu](./algorithm-module-reference/train-clustering-model.md)
+    - [Modul výukového modelu Pytorch](./algorithm-module-reference/train-pytorch-model.md)
+    - [Modul doporučeného školení pro SVD](./algorithm-module-reference/train-svd-recommender.md)
+    - [Modul pro dostupné modelu výuky](./algorithm-module-reference/train-vowpal-wabbit-model.md)
+    - [Modul pro rozsáhlou škálu & pro vlak](./algorithm-module-reference/train-wide-and-deep-recommender.md)
 
 ## <a name="register-the-model"></a>Registrace modelu
 
@@ -136,9 +144,67 @@ score_result = service.run(json.dumps(sample_data))
 print(f'Inference result = {score_result}')
 ```
 
+### <a name="consume-computer-vision-related-real-time-endpoints"></a>Využívání koncových bodů souvisejících s počítačem v reálném čase
+
+Při využívání koncových bodů v reálném čase, je nutné převést obrázky na bajty, protože webová služba přijímá jako vstup pouze řetězec. Následuje ukázkový kód:
+
+```python
+import base64
+import json
+from copy import deepcopy
+from pathlib import Path
+from azureml.studio.core.io.image_directory import (IMG_EXTS, image_from_file, image_to_bytes)
+from azureml.studio.core.io.transformation_directory import ImageTransformationDirectory
+
+# image path
+image_path = Path('YOUR_IMAGE_FILE_PATH')
+
+# provide the same parameter setting as in the training pipeline. Just an example here.
+image_transform = [
+    # format: (op, args). {} means using default parameter values of torchvision.transforms.
+    # See https://pytorch.org/docs/stable/torchvision/transforms.html
+    ('Resize', 256),
+    ('CenterCrop', 224),
+    # ('Pad', 0),
+    # ('ColorJitter', {}),
+    # ('Grayscale', {}),
+    # ('RandomResizedCrop', 256),
+    # ('RandomCrop', 224),
+    # ('RandomHorizontalFlip', {}),
+    # ('RandomVerticalFlip', {}),
+    # ('RandomRotation', 0),
+    # ('RandomAffine', 0),
+    # ('RandomGrayscale', {}),
+    # ('RandomPerspective', {}),
+]
+transform = ImageTransformationDirectory.create(transforms=image_transform).torch_transform
+
+# download _samples.json file under Outputs+logs tab in the right pane of Train Pytorch Model module
+sample_file_path = '_samples.json'
+with open(sample_file_path, 'r') as f:
+    sample_data = json.load(f)
+
+# use first sample item as the default value
+default_data = sample_data[0]
+data_list = []
+for p in image_path.iterdir():
+    if p.suffix.lower() in IMG_EXTS:
+        data = deepcopy(default_data)
+        # convert image to bytes
+        data['image'] = base64.b64encode(image_to_bytes(transform(image_from_file(p)))).decode()
+        data_list.append(data)
+
+# use data.json as input of consuming the endpoint
+data_file_path = 'data.json'
+with open(data_file_path, 'w') as f:
+    json.dump(data_list, f)
+```
+
 ## <a name="configure-the-entry-script"></a>Konfigurace vstupního skriptu
 
-Některé moduly v návrháři, jako je skóre SVD, jako je například [doporučení doporučeného](./algorithm-module-reference/score-svd-recommender.md) [a hloubkového hodnocení](./algorithm-module-reference/score-wide-and-deep-recommender.md)na vysokém rozsahu a doporučený [model pro dostupné](./algorithm-module-reference/score-vowpal-wabbit-model.md) , mají parametry pro různé režimy bodování. V této části se dozvíte, jak tyto parametry aktualizovat také v souboru s vstupním skriptem.
+Některé moduly v návrháři, jako je skóre SVD, jako je například [doporučení doporučeného](./algorithm-module-reference/score-svd-recommender.md) [a hloubkového hodnocení](./algorithm-module-reference/score-wide-and-deep-recommender.md)na vysokém rozsahu a doporučený [model pro dostupné](./algorithm-module-reference/score-vowpal-wabbit-model.md) , mají parametry pro různé režimy bodování. 
+
+V této části se dozvíte, jak tyto parametry aktualizovat také v souboru s vstupním skriptem.
 
 Následující příklad aktualizuje výchozí chování pro vyškolený model **doporučený & hluboko** . Ve výchozím nastavení `score.py` soubor oznamuje webové službě předpověď hodnocení mezi uživateli a položkami. 
 

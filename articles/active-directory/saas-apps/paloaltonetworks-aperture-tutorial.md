@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: d7f0ca619c990d2a42c31df82ee9f90bd7ea230b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f2603ce055d18e1ad7e202e0c662e042a1d1d48
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801830"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>Kurz: Azure Active Directory integrace s Palo Alto Networks – clona
 
@@ -77,7 +77,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Palo Alto Networks – informace o jednotném přihlašování v doméně a adrese URL IDP](common/idp-intiated.png)
+    ![Snímek obrazovky zobrazující konfiguraci "základní S A M L" se zvýrazněnými textovými poli "identifikátor" a "Reply U R L" a vybranou akci Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata`
 

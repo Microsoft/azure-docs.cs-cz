@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: deb64aa0c344e818b5fd85ca1a161293fd35d6f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be9f2163813d1dc52a593c110fa4cef9b561614e
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553976"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995414"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Kurz: Azure Active Directory integrace s percolate
 
@@ -103,7 +103,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí percolat
 
 5. Chcete-li nakonfigurovat aplikaci v režimu iniciované SP, vyberte možnost **nastavit další adresy URL** a v poli **Adresa URL pro přihlášení** zadejte **https://percolate.com/app/login** :
 
-   ![Informace o jednotném přihlašování v doméně percolate a adresách URL](common/metadata-upload-additional-signon.png)
+   ![Snímek obrazovky se zvýrazněnou možností nastavit další U R LS pomocí zvýrazněného textového pole "přihlašovat U R L".](common/metadata-upload-additional-signon.png)
 6. Na stránce **nastavit jednu Sign-On s SAML** v části **podpisový certifikát SAML** vyberte ikonu **kopírování** a zkopírujte **adresu URL federačních metadat aplikace**. Uložte tuto adresu URL.
 
     ![Kopírovat adresu URL federačních metadat aplikace](common/copy-metadataurl.png)
@@ -184,7 +184,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 3. V levém podokně vyberte **Uživatelé a skupiny**:
 
-    ![Vyberte Uživatelé a skupiny.](common/users-groups-blade.png)
+    ![Snímek obrazovky se zvolenými možnostmi uživatelé a skupiny v levém podokně.](common/users-groups-blade.png)
 
 4. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -224,7 +224,7 @@ Teď je potřeba otestovat konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici percolate, měli byste se automaticky přihlásit k instanci percolate, pro kterou jste nastavili jednotné přihlašování. Další informace najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Kurzy integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: f36c80b9d08f2fde07483c1dde3afe99ec9f92d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce4cccba678a934780dc987f1441ea658a70f8eb
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705618"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996624"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurace aplikace OpenID/OAuth z Galerie aplikací Azure AD
 
@@ -99,19 +99,19 @@ Následující kroky ukazují, jak funguje souhlas pro vývojáře aplikací a u
 
     a. Na levé straně nabídky klikněte na **Registrace aplikací** a otevřete aplikaci zadáním názvu aplikace do vyhledávacího pole.
 
-    ![Graph API](./media/openidoauth-tutorial/application.png)
+    ![Snímek obrazovky, který zobrazuje vybranou položku Registrace aplikací v nabídce vlevo a zvýrazněné pole pro hledání "aplikace I D".](./media/openidoauth-tutorial/application.png)
 
     b. Klikněte na **Zobrazit oprávnění rozhraní API**.
 
-    ![Graph API](./media/openidoauth-tutorial/api-permission.png)
+    ![Snímek obrazovky se stránkou "zavolat na P I" s vybraným tlačítkem zobrazit oprávnění P I](./media/openidoauth-tutorial/api-permission.png)
 
     c. Klikněte na **Přidat oprávnění**.
 
-    ![Graph API](./media/openidoauth-tutorial/add-permission.png)
+    ![Snímek obrazovky, který zobrazuje oddíl A P I oprávnění s vybraným tlačítkem Přidat oprávnění](./media/openidoauth-tutorial/add-permission.png)
 
     d. Klikněte na **Microsoft Graph**.
 
-    ![Graph API](./media/openidoauth-tutorial/microsoft-graph.png)
+    ![Snímek obrazovky se stránkou "žádost o oprávnění", která obsahuje kartu Microsoft a P i a "Microsoft Graph".](./media/openidoauth-tutorial/microsoft-graph.png)
 
     e. Vyberte požadované možnosti z **delegovaných oprávnění** a **oprávnění aplikace**.
 

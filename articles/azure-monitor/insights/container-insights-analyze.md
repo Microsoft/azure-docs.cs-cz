@@ -3,12 +3,12 @@ title: Kubernetes monitorování pomocí Azure Monitor pro kontejnery | Microsof
 description: Tento článek popisuje, jak můžete zobrazit a analyzovat výkon clusteru Kubernetes s Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 888853f0e9e7634cafa5e480752371c501376158
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d267715ed9748c69c33bbd7bc5af0db7b118502
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988138"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994771"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Monitorování výkonu clusteru Kubernetes s využitím Azure Monitor pro kontejnery
 
@@ -93,7 +93,7 @@ Přístup k Azure monitor pro kontejnery je k dispozici přímo z clusteru AKS v
 - Cluster
 - Uzly
 - Kontrolery
-- Kontejnery
+- Containers
 
 >[!NOTE]
 >Prostředí popsané ve zbývající části tohoto článku platí i pro zobrazení výkonu a stavu clusterů Kubernetes hostovaných v Azure Stack nebo jiném prostředí, když je vybraný ze zobrazení více clusterů.
@@ -195,7 +195,7 @@ Informace, které se zobrazí po zobrazení karty **uzly** , jsou popsány v ná
 | Status | Kubernetes zobrazení stavu uzlu. |
 | Minimální &nbsp; %, prům .% &nbsp; , 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, max.&nbsp;%  | Průměrné procento uzlů na základě percentilu během vybrané doby trvání. |
 | Min, AVG, 50, 90, 95., Max | Průměrná hodnota uzlů na základě hodnoty percentilu v době zvolené doby trvání. Průměrná hodnota se měří od nastaveného limitu CPU/paměti pro uzel. V případě lusků a kontejnerů je to průměrná hodnota uvedená v hostiteli. |
-| Kontejnery | Počet kontejnerů. |
+| Containers | Počet kontejnerů. |
 | Doba provozu | Představuje čas, kdy byl uzel spuštěn nebo byl restartován. |
 | Kontrolér | Pouze pro kontejnery a lusky. Zobrazuje, ve kterém řadiči se nachází. Ne všechny lusky jsou v kontroleru, takže se může zobrazit **N/a**. |
 | Trend min &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;% | Trend pruhového grafu představuje procento metriky průměrného percentilu řadiče. |
@@ -238,7 +238,7 @@ Informace, které se zobrazí při zobrazení řadičů, jsou popsány v násled
 | Status | Stav souhrnu kontejnerů po dokončení jeho spuštění se stavem, jako je například *OK*, *ukončeno*, *Chyba*, *Zastaveno*nebo *pozastaveno*. Pokud je kontejner spuštěný, ale stav buď nebyl správně zobrazen nebo nebyl vyzvednut agentem a nereagoval na více než 30 minut, je stav *Neznámý*. Další podrobnosti o ikoně stavu jsou uvedeny v následující tabulce.|
 | Minimální &nbsp; %, prům .% &nbsp; , 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, max.&nbsp;%| Souhrnný průměr průměrného procenta každé entity pro vybranou metriku a percentil |
 | Min, AVG, 50, 90, 95., Max  | Souhrn průměrného výkonu procesoru v millicore nebo paměti v kontejneru pro vybraný percentil. Průměrná hodnota se měří od limitu CPU nebo paměti nastaveného pro objekt pod. |
-| Kontejnery | Celkový počet kontejnerů pro řadič nebo pod. |
+| Containers | Celkový počet kontejnerů pro řadič nebo pod. |
 | Opětovné | Souhrn počtu restartování z kontejnerů. |
 | Doba provozu | Představuje čas od spuštění kontejneru. |
 | Node | Pouze pro kontejnery a lusky. Zobrazuje, ve kterém řadiči se nachází. |
@@ -293,7 +293,7 @@ Ikony v poli Stav označují stav online lusků, jak je popsáno v následujíc�
 
 ## <a name="workbooks"></a>Workbooks
 
-Sešity kombinují text, [dotazy protokolů](../log-query/query-language.md), [metriky](../platform/data-platform-metrics.md)a parametry do propracovaných interaktivních sestav. Sešity mohou upravovat všichni ostatní členové týmu, kteří mají přístup ke stejným prostředkům Azure.
+Sešity kombinují text, [dotazy protokolů](/azure/data-explorer/kusto/query/), [metriky](../platform/data-platform-metrics.md)a parametry do propracovaných interaktivních sestav. Sešity mohou upravovat všichni ostatní členové týmu, kteří mají přístup ke stejným prostředkům Azure.
 
 Azure Monitor pro kontejnery obsahují čtyři sešity, které vám pomohou začít:
 
@@ -321,8 +321,8 @@ Přístup k těmto sešitům získáte tak, že v rozevíracím seznamu **Zobraz
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si téma [vytvoření výstrah výkonu pomocí Azure monitor pro kontejnery](container-insights-alerts.md) , kde se dozvíte, jak vytvořit výstrahy s vysokým využitím procesoru a paměti, aby podporovaly vaše DevOps nebo provozní procesy a postupy.
+- Přečtěte si téma [vytvoření výstrah výkonu pomocí Azure monitor pro kontejnery](./container-insights-log-alerts.md) , kde se dozvíte, jak vytvořit výstrahy s vysokým využitím procesoru a paměti, aby podporovaly vaše DevOps nebo provozní procesy a postupy.
 
 - V [příkladech dotazů protokolu](container-insights-log-search.md#search-logs-to-analyze-data) si můžete prohlédnout předdefinované dotazy a příklady pro vyhodnocení nebo přizpůsobení výstrah, vizualizaci nebo analýze clusterů.
 
-- Seznamte se s [monitorováním stavu clusteru](container-insights-health.md) , abyste se seznámili se zobrazením stavu clusteru Kubernetes.
+- Seznamte se s [monitorováním stavu clusteru](./container-insights-overview.md) , abyste se seznámili se zobrazením stavu clusteru Kubernetes.

@@ -5,14 +5,14 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0e02f0bf1bb9646a644a40279a8bae930de34c0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b36f4e292eb4bcae424d463f76e8a69eefd2968
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567991"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995524"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Co je Azure synapse Link pro Azure Cosmos DB (Preview)?
 
@@ -104,7 +104,7 @@ Další informace o podpoře Azure synapse Analytics runtime pro Azure Cosmos DB
 
 Odkaz na synapse se doporučuje v následujících případech:
 
-* Pokud jste zákazníkem Azure Cosmos DB a chcete provozovat analýzy, BI a strojové učení přes vaše provozní data. V takových případech odkaz synapse poskytuje pokročilejší analytické prostředí, aniž by to ovlivnilo zřízenou propustnost transakčního úložiště. Například:
+* Pokud jste zákazníkem Azure Cosmos DB a chcete provozovat analýzy, BI a strojové učení přes vaše provozní data. V takových případech odkaz synapse poskytuje pokročilejší analytické prostředí, aniž by to ovlivnilo zřízenou propustnost transakčního úložiště. Příklad:
 
   * Pokud používáte analýzy nebo BI na vašich Azure Cosmos DB provozních datech přímo pomocí samostatných konektorů ještě dnes, nebo
 
@@ -116,7 +116,7 @@ Odkaz synapse se nedoporučuje, pokud hledáte tradiční požadavky na datový 
 
 ## <a name="limitations"></a>Omezení
 
-* Odkaz na Azure synapse se podporuje pro rozhraní API Azure Cosmos DB SQL (Core) a rozhraní Azure Cosmos DB API pro MongoDB.
+* Pro rozhraní SQL API a rozhraní Azure Cosmos DB API pro MongoDB se podporuje dnes Azure synapse Link pro Azure Cosmos DB. Rozhraní API pro Gremlin a rozhraní API pro tabulky se nepodporuje. Podpora rozhraní API Cassandra je v privátní verzi Preview. Další informace získáte od týmu odkazů Azure synapse na adrese cosmosdbsynapselink@microsoft.com .  
 
 * V současné době se analytické úložiště dá povolit jenom pro nové kontejnery. Pokud chcete použít analytické úložiště pro existující kontejnery, migrujte data z existujících kontejnerů do nových kontejnerů pomocí [nástrojů pro migraci Azure Cosmos DB](cosmosdb-migrationchoices.md). Můžete povolit synapse odkaz na nové a existující účty Azure Cosmos DB.
 

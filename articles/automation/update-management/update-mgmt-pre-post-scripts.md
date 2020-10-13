@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 32a8214a5bd6844c9177c7af159a453bc3673efc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed3a8909bc0d5ac135023b55178cec606344353b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87450162"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996763"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Správa předzálohovacích a pozálohovacích skriptů
 
@@ -137,7 +137,7 @@ foreach($summary in $finalStatus)
 
 ## <a name="interact-with-machines"></a>Interakce s počítači
 
-Předzálohovací a následné úkoly spouštěné jako Runbooky v účtu Automation a ne přímo na počítačích ve vašem nasazení. Předběžné úkoly a následné úkoly se také spouštějí v kontextu Azure a nemají přístup k počítačům mimo Azure. V následujících částech se dozvíte, jak můžete s počítači pracovat přímo, ať už jde o virtuální počítače Azure nebo počítače mimo Azure.
+Předzálohovací a pozálohovací skripty běží jako Runbooky v účtu Automation a ne přímo na počítačích ve vašem nasazení. Předběžné úkoly a následné úkoly se také spouštějí v kontextu Azure a nemají přístup k počítačům mimo Azure. V následujících částech se dozvíte, jak můžete s počítači pracovat přímo, ať už jde o virtuální počítače Azure nebo počítače mimo Azure.
 
 ### <a name="interact-with-azure-machines"></a>Interakce s počítači s Azure
 

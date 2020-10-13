@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0fe7e0d43050120daa017669a96e90f96b873530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39f2f592601f60f060cce8ded2b5303dc6b10e8a
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543784"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995823"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>Kurz: Azure Active Directory integrace s origami
 
@@ -126,11 +126,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí origami,
 
 2. V nabídce v horní části klikněte na **správce**.
    
-    ![Konfigurace jednoho Sign-On](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Snímek obrazovky zobrazující domovskou stránku origami s vybraným "admin".](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. Na stránce nastavení jednotného přihlašování proveďte následující kroky:
    
-    ![Konfigurace jednoho Sign-On](./media/origami-tutorial/tutorial_origami_531.png)
+    ![Snímek obrazovky zobrazující stránku pro nastavení jednotného přihlašování s vybraným možností povolit jednotné přihlašování a zvýrazněná textová pole.](./media/origami-tutorial/tutorial_origami_531.png)
 
     a. Vyberte **Povolit jednotné přihlašování**.
 
@@ -201,19 +201,19 @@ V této části vytvoříte uživatele s názvem Britta Simon v origami.
 
 2. V nabídce v horní části klikněte na **správce**.
    
-    ![Konfigurace jednoho Sign-On](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Snímek obrazovky zobrazující domovskou stránku účtu origami se zaškrtnutým "správcem".](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. V dialogovém okně **Uživatelé a zabezpečení** klikněte na **Uživatelé**.
    
-    ![Konfigurace jednoho Sign-On](./media/origami-tutorial/tutorial_origami_54.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno Uživatelé a zabezpečení s vybranými možnostmi uživatelé](./media/origami-tutorial/tutorial_origami_54.png)
 
 4. Klikněte na tlačítko **Přidat nového uživatele**.
    
-    ![Konfigurace jednoho Sign-On](./media/origami-tutorial/tutorial_origami_55.png)
+    ![Snímek obrazovky, který zobrazuje vybrané tlačítko Přidat nového uživatele.](./media/origami-tutorial/tutorial_origami_55.png)
 
 5. V dialogovém okně Přidat nového uživatele proveďte následující kroky:
    
-    ![Konfigurace jednoho Sign-On](./media/origami-tutorial/tutorial_origami_56.png)
+    ![Snímek obrazovky zobrazující dialog Přidat nového uživatele se zvýrazněnými textovými poli "uživatelské jméno", "křestní jméno" a "příjmení".](./media/origami-tutorial/tutorial_origami_56.png)
 
     a. Do textového pole **uživatelské jméno** zadejte e-mail uživatele, jako je **brittasimon \@ contoso.com**.
 
@@ -227,7 +227,7 @@ V této části vytvoříte uživatele s názvem Britta Simon v origami.
 
     f. Klikněte na **Uložit**.
    
-    ![Konfigurace jednoho Sign-On](./media/origami-tutorial/tutorial_origami_57.png)
+    ![Snímek obrazovky, který zobrazuje vybrané tlačítko Uložit.](./media/origami-tutorial/tutorial_origami_57.png)
 
 6. Přiřaďte uživateli uživatelské **role** a **přístup klienta** . 
    

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: d4a478c402346e33a4f27ff2a363de75285b435b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a0da85aeba1a9736884a6b8b345efd3f0a8544c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543835"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996557"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Kurz: Integrujte konzolu cloudové infrastruktury Oracle pomocí Azure Active Directory
 
@@ -101,7 +101,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Aplikace konzoly cloudové infrastruktury Oracle očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
-   ![image](common/edit-attribute.png)
+   ![Snímek obrazovky, který zobrazuje dialogové okno atributy uživatele se ikonou "Upravit" v pravém horním rohu.](common/edit-attribute.png)
 
 1. Kromě toho očekává aplikace konzoly cloudové infrastruktury Oracle u odpovědi SAML několik atributů, které se mají vrátit zpátky. V dialogovém okně deklarace identity v části **atributy uživatele & deklarace** v dialogu **deklarace skupiny (Preview)** proveďte následující kroky:
 
@@ -111,9 +111,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
  
    1. Klikněte na **Uložit**.
 
-      ![image](./media/oracle-cloud-tutorial/config07.png)
+      ![Snímek obrazovky, který zobrazuje oddíl "atributy uživatele & deklaracemi" s ikonami "Upravit" pro "hodnotu identifikátoru názvu" a "skupiny vrácené v deklaraci".](./media/oracle-cloud-tutorial/config07.png)
     
-      ![image](./media/oracle-cloud-tutorial/config11.png)
+      ![Snímek obrazovky s dialogovým oknem spravovat deklarace identity uživatele s možností trvalého zobrazení a vybraným tlačítkem Uložit.](./media/oracle-cloud-tutorial/config11.png)
 
    1. Klikněte na **pero** vedle **skupin vrácených v deklaraci identity**.
 
@@ -173,15 +173,15 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Klikněte na levou stranu nabídky, klikněte na **Identita** a pak přejděte na **federace**.
 
-   ![Konfigurace](./media/oracle-cloud-tutorial/config01.png)
+   ![Snímek obrazovky, na které se v nabídce v levém horním rohu zobrazuje "Konzola cloudové infrastruktury Oracle s identitou a" federace ".](./media/oracle-cloud-tutorial/config01.png)
 
 1. Uložte **soubor metadat poskytovatele služby** kliknutím na odkaz **stáhnout tento dokument** a nahrajte ho do části **základní konfigurace SAML** v Azure Portal a pak klikněte na **Přidat zprostředkovatele identity**.
 
-   ![Konfigurace](./media/oracle-cloud-tutorial/config02.png)
+   ![Snímek obrazovky, který zobrazuje hodnotu "federace" vybranou z nabídky vlevo a tlačítko Přidat zprostředkovatele identity a stáhnout tento dokument.](./media/oracle-cloud-tutorial/config02.png)
 
 1. V místní nabídce **Přidat zprostředkovatele identity** proveďte následující kroky:
 
-   ![Konfigurace](./media/oracle-cloud-tutorial/config03.png)
+   ![Snímek obrazovky, na kterém se zobrazuje automaticky otevírané okno Přidat zprostředkovatele identity](./media/oracle-cloud-tutorial/config03.png)
 
    1. Do textového pole **název** zadejte své jméno.
 
@@ -193,7 +193,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
    1. Klikněte na **pokračovat** a v části **Upravit zprostředkovatele identity** proveďte následující kroky:
 
-      ![Konfigurace](./media/oracle-cloud-tutorial/config09.png)
+      ![Snímek obrazovky, který zobrazuje oddíl "Upravit zprostředkovatele identity" se skupinou zprostředkovatele identity "," O C I "," Přidat mapování "a zvýrazněným tlačítkem Odeslat.](./media/oracle-cloud-tutorial/config09.png)
 
    1. **Skupina zprostředkovatelů identity** by měla být vybraná jako vlastní skupina. ID skupiny by mělo být identifikátor GUID skupiny z Azure Active Directory. Skupina musí být namapována s odpovídající skupinou v poli **skupiny rozhraní OCI** .
 
@@ -211,7 +211,7 @@ Když vyberete dlaždici konzoly cloudové infrastruktury Oracle na přístupov�
 
 ![Konfigurace](./media/oracle-cloud-tutorial/config10.png)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

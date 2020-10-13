@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: ed023f17e19c6a018f55cb95df6447c6e5474ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fda40e58231b849f1e63f53f7bb268375ffe7fec
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314874"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996452"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL – škálovatelné (Citus)
 
@@ -41,6 +41,7 @@ V následujících tabulkách jsou uvedeny standardní rozšíření PostgreSQL,
 > | [Lo](https://www.postgresql.org/docs/current/lo.html) | Údržba Large Object. |
 > | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | Poskytuje datový typ pro hierarchické struktury podobné stromu. |
 > | [SEG –](https://www.postgresql.org/docs/current/seg.html) | Datový typ reprezentující segmenty čar nebo intervaly s plovoucí desetinnou čárkou. |
+> | [tdigest](https://github.com/tvondra/tdigest) | Datový typ pro akumulaci statistik na základě rozsahu, jako jsou quantiles a oříznutí. |
 > | [Nejlepší](https://github.com/citusdata/postgresql-topn/) | Zadejte pro JSONB Top-n. |
 
 ### <a name="full-text-search-extensions"></a>Rozšíření fulltextového vyhledávání

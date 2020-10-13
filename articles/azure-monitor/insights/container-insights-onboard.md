@@ -3,12 +3,12 @@ title: Povolit Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak povolit a nakonfigurovat Azure Monitor pro kontejnery, abyste porozuměli tomu, jak váš kontejner vykonává a jaké byly zjištěny problémy související s výkonem.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1cb393faded714593ce635669f585d5979ee69b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69022643e3346444eee95f4487eeed292c4ef139
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320302"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994068"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Povolit Azure Monitor pro kontejnery
 
@@ -43,7 +43,7 @@ Než začnete, ujistěte se, že jste splnili následující požadavky:
    Pracovní prostor můžete vytvořit, když povolíte monitorování pro nový cluster AKS, nebo můžete nechat prostředí pro připojování vytvořit výchozí pracovní prostor ve výchozí skupině prostředků v rámci předplatného clusteru AKS. 
    
    Pokud se rozhodnete vytvořit pracovní prostor sami, můžete ho vytvořit pomocí: 
-   - [Azure Resource Manager](../platform/template-workspace-configuration.md)
+   - [Azure Resource Manager](../samples/resource-manager-workspace.md)
    - [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
    - [Azure Portal](../learn/quick-create-workspace.md) 
    
@@ -131,4 +131,3 @@ Pokud chcete povolit Azure Monitor pro kontejnery, použijte jednu z metod, kter
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste povolili monitorování, můžete začít s analýzou výkonu clusterů Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS), Azure Stack nebo jiném prostředí. Informace o tom, jak používat Azure Monitor pro kontejnery, najdete v tématu [zobrazení výkonu clusteru Kubernetes](container-insights-analyze.md).
-

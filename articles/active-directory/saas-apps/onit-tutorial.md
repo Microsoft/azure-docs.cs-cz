@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 0a04b893af41f15d0757b781716909535f43239e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8caf136c43f40458634316da4b4002386f1419da
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544005"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91997035"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onit"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Onit
 
@@ -132,7 +132,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. V nabídce v horní části klikněte na **Správa**.
    
-    ![Správa](./media/onit-tutorial/IC791174.png "Správa")
+    ![Snímek obrazovky, který zobrazuje nabídku v horní části stránky test M s S, která má vybranou akci Správa](./media/onit-tutorial/IC791174.png "Správa")
 
 3. Klikněte na **Upravit společnost**.
    
@@ -183,7 +183,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Onit, měli byste se automaticky přihlásit k Onit, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

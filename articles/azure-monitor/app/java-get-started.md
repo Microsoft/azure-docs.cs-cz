@@ -6,18 +6,18 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: f0583af05ae7d8e365b50610bfb812ac7764f223
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12497d3ac86888ed861e8d5f655f45c8cbe4b6e3
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602461"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996158"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rychlý Start: Začínáme s Application Insights ve webovém projektu Java
 
 
 > [!IMPORTANT]
-> Doporučený postup pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Postupujte prosím podle pokynů pro [Application Insights agenta Java 3,0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
+> Doporučený postup pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Postupujte prosím podle pokynů pro [Application Insights agenta Java 3,0](./java-in-process-agent.md).
 
 V tomto rychlém startu použijete Application Insights SDK k instrumentování požadavků, sledování závislostí a shromažďování čítačů výkonu, diagnostikování problémů s výkonem a výjimek a psaní kódu ke sledování toho, co uživatelé s vaší aplikací dělají.
 
@@ -199,7 +199,7 @@ Teď publikujte aplikaci na server, dovolte osobám ji používat a sledujte tel
 
 ## <a name="azure-app-service-aks-vms-config"></a>Azure App Service, AKS, konfigurace virtuálních počítačů
 
-Nejlepším a nejjednodušším přístupem k monitorování aplikací, které běží na jakémkoli poskytovateli prostředků Azure, je použití Application Insights automatické instrumentace přes [agenta Java 3,0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
+Nejlepším a nejjednodušším přístupem k monitorování aplikací, které běží na jakémkoli poskytovateli prostředků Azure, je použití Application Insights automatické instrumentace přes [agenta Java 3,0](./java-in-process-agent.md).
 
 
 ## <a name="exceptions-and-request-failures"></a>Výjimky a chyby požadavků
@@ -313,4 +313,3 @@ Application Insights může otestovat váš web v pravidelných intervalech a zk
 [javalogs]: java-trace-logs.md
 [metrics]: ../platform/metrics-charts.md
 [usage]: javascript.md
-

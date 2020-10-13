@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/30/2020
 ms.author: allensu
-ms.openlocfilehash: 6b9f454c75a10644e86931dc86ebd9514e5431d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fcd0315afcbf38af2b8175deda748522cb335ec
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649792"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996860"
 ---
 # <a name="outbound-connections"></a>Odchozí připojení
 
@@ -136,7 +136,7 @@ Odchozí pravidla umožňují řídit:
 - Které virtuální počítače by se měly přeložit na které veřejné IP adresy.
 - Jak by měly být zadány Odchozí porty [SNAT](#snat) .
 - Které protokoly pro zajištění odchozího překladu pro.
-- Jaká doba se má použít pro časový limit nečinnosti odchozího připojení (4-120 minut).
+- Jaká doba se má použít pro časový limit nečinnosti odchozího připojení (4-100 minut).
 - Určuje, zda má být odesláno resetování protokolu TCP při nečinnosti.
 - Přenosové protokoly TCP i UDP s jedním pravidlem
 
