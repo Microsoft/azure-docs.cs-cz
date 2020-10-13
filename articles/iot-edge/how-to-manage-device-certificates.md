@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 9e3925d2c14d51785ed4fe00a508ea353490e1cd
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89669034"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Správa certifikátů na zařízení IoT Edge
 
-Všechna IoT Edge zařízení používají certifikáty k vytváření zabezpečených připojení mezi modulem runtime a všemi moduly běžícími na zařízení. IoT Edge zařízení fungující jako brány používají stejné certifikáty pro připojení k jejich navazujícím zařízením.
+Všechna zařízení IoT Edge k vytváření zabezpečených připojení mezi modulem runtime a všemi moduly spuštěnými na zařízení využívají certifikáty. IoT Edge zařízení fungující jako brány používají stejné certifikáty pro připojení k jejich navazujícím zařízením.
 
 ## <a name="install-production-certificates"></a>Instalace produkčních certifikátů
 

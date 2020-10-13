@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: db10f53033e305aa2306bce230e7880140f35189
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578274"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace Azure AD Connect
@@ -41,7 +41,7 @@ Při instalaci služeb synchronizace můžete nechat volitelnou konfiguraci neza
 
 ![Požadované součásti](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
-| Volitelná konfigurace | Popis |
+| Volitelná konfigurace | Description |
 | --- | --- |
 |Zadat vlastní umístění instalace| Umožňuje změnit výchozí instalační cestu pro Azure AD Connect.|
 | Použít existující server SQL Server |Umožňuje zadat název serveru SQL Server a název instance. Tuto možnost zvolte, pokud už máte databázový server, který chcete použít. Pokud SQL Server nemá povoleno procházení, zadejte do položky **Název instance** požadovaný název instance, za nímž následuje čárka a číslo portu.  Pak zadejte název databáze Azure AD Connect.  Vaše oprávnění SQL určují, jestli se vytvoří nová databáze nebo že správce SQL musí databázi vytvořit předem.  Pokud máte oprávnění SA SQL, podívejte [se, jak nainstalovat pomocí existující databáze](how-to-connect-install-existing-database.md).  Pokud máte delegovaná oprávnění (DBO), přečtěte si téma [instalace Azure AD Connect s oprávněními delegovaného správce SQL](how-to-connect-install-sql-delegation.md). |
@@ -54,7 +54,7 @@ Po instalaci požadovaných součástí budete vyzváni, abyste vybrali metodu j
 
 ![Snímek obrazovky zobrazující stránku přihlášení uživatele s vybranou hodnotou "synchronizace hodnoty hash hesla".](./media/how-to-connect-install-custom/usersignin4.png)
 
-| Možnost jednotného přihlašování | Popis |
+| Možnost jednotného přihlašování | Description |
 | --- | --- |
 | Synchronizace hodnoty hash hesel |Uživatelé se mohou přihlásit ke cloudovým službám Microsoftu, jako je například Microsoft 365, pomocí stejného hesla, které používají ve své místní síti. Hesla uživatelů se synchronizují do Azure AD, protože ověření a hash hesla probíhá v cloudu. Další informace najdete v tématu [Synchronizace hodnoty hash hesel](how-to-connect-password-hash-synchronization.md). |
 |Předávací ověřování|Uživatelé se mohou přihlásit ke cloudovým službám Microsoftu, jako je například Microsoft 365, pomocí stejného hesla, které používají ve své místní síti.  Heslo uživatele se předává k ověření do místního kontroleru domény Active Directory.
@@ -180,7 +180,7 @@ Na této obrazovce můžete vybrat volitelné funkce pro konkrétní scénáře.
 
 
 
-| Volitelné funkce | Popis |
+| Volitelné funkce | Description |
 | --- | --- |
 | Hybridní nasazení systému Exchange |Funkce hybridního nasazení serveru Exchange umožňuje souběžnou existenci poštovních schránek Exchange místních i v Microsoft 365. Azure AD Connect synchronizuje konkrétní sadu [atributů](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) z Azure AD zpátky do místního adresáře. |
 | Veřejné složky e-mailu Exchange | Funke veřejné složky e-mailu Exchange umožňuje synchronizaci pro e-mail povolených objektů veřejných složek z místní služby Active Directory do Azure AD. |
@@ -394,7 +394,7 @@ Pokud chcete ověřit, že je kompletní ověřování úspěšné, měli byste 
 * Ověřte, že se můžete přihlásit ze zařízení z extranetu. Na domácím počítači nebo na mobilním zařízení se připojte k https://myapps.microsoft.com a zadejte přihlašovací údaje.
 * Ověřte přihlášení plně funkčního klienta. Připojte se k https://testconnectivity.microsoft.com, vyberte kartu **Office 365** a vyberte možnost **Test jednotného přihlašování Office 365**.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 Následující část popisuje řešení potíží a obsahuje informace, které můžete využít, pokud narazíte na problém s instalací Azure AD Connect.
 
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>„Databáze ADSync již obsahuje data a není možné ji přepsat.“

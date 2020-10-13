@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: b-juche
 ms.openlocfilehash: 9266a5efb7156367dfa0d6036f5876337098c143
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743926"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
@@ -33,7 +33,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 * Podsíť musí být delegovaná na Azure NetApp Files.  
     Viz [delegování podsítě na Azure NetApp Files](azure-netapp-files-delegate-subnet.md).
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 * Ujistěte se, že splňujete [požadavky pro připojení ke službě Active Directory](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
 * Na serveru DNS vytvořte zónu zpětného vyhledávání a přidejte do této zóny zpětného vyhledávání záznam ukazatele (PTR) hostitelského počítače služby AD. V opačném případě se vytvoření svazku se dvěma protokoly nezdaří.

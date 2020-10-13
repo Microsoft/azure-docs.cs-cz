@@ -4,10 +4,10 @@ description: Naučte se zobrazovat, udržovat, aktualizovat a odstraňovat hiera
 ms.date: 08/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: 82eeb2520815ddac69d27ddccd58c842c3e33deb
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531016"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa prostředků pomocí skupin pro správu
@@ -127,7 +127,7 @@ Můžete zobrazit jakoukoli skupinu pro správu, ke které máte přímo nebo zd
 
 ### <a name="view-in-powershell"></a>Zobrazit v PowerShellu
 
-K načtení všech skupin použijte příkaz Get-AzManagementGroup. Úplný seznam skupin pro správu získat příkazy prostředí PowerShell najdete v tématu [AZ. Resources](/powershell/module/az.resources/Get-AzManagementGroup) – moduly.  
+K načtení všech skupin se používá příkaz Get-AzManagementGroup. Úplný seznam skupin pro správu získat příkazy prostředí PowerShell najdete v tématu [AZ. Resources](/powershell/module/az.resources/Get-AzManagementGroup) – moduly.  
 
 ```azurepowershell-interactive
 Get-AzManagementGroup
@@ -255,7 +255,7 @@ Chcete-li zjistit, jaká oprávnění máte v Azure Portal, vyberte skupinu pro 
 
 ### <a name="move-subscriptions-in-powershell"></a>Přesunout předplatná v PowerShellu
 
-Pokud chcete přesunout předplatné v PowerShellu, použijte příkaz New-AzManagementGroupSubscription.  
+Chcete-li přesunout odběr v prostředí PowerShell, použijte příkaz New-AzManagementGroupSubscription.  
 
 ```azurepowershell-interactive
 New-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'

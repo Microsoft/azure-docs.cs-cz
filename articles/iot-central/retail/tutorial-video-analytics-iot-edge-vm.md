@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 0b39ec9c8cb70adac1474b2647ac1c9591b9d5cd
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: db3d4bb7f4b32c07e75487764acc5e7ba7d05915
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526387"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873274"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Kurz: vytvoření instance IoT Edge pro video Analytics (virtuální počítač se systémem Linux)
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, měli byste v kurzu služby [Azure IoT Central vytvořit předchozí aplikaci video Analytics](./tutorial-video-analytics-create-app.md) .
+Než začnete, měli byste dokončit předchozí [Vytvoření aplikace video Analytics v azure IoT Central](./tutorial-video-analytics-create-app-yolo-v3.md) nebo [Vytvoření analýzy videí v Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md) .
 
 Budete také potřebovat předplatné Azure. Pokud předplatné Azure nemáte, můžete si ho na [stránce pro registraci k Azure](https://aka.ms/createazuresubscription)vytvořit zdarma.
 
@@ -50,7 +50,7 @@ K dokončení formuláře **vlastního nasazení** použijte informace v násled
 | ----- | ----- |
 | Předplatné | Vyberte své předplatné Azure. |
 | Skupina prostředků | *lva-RG* – skupina prostředků, kterou jste vytvořili v předchozím kurzu. |
-| Region (Oblast)       | *East US* |
+| Oblast       | *East US* |
 | Předpona popisku DNS | Vyberte jedinečnou předponu DNS pro virtuální počítač. |
 | Uživatelské jméno správce | *AzureUser* |
 | Heslo správce | Zadejte heslo. Poznamenejte si heslo v souboru *scratchpad.txt* , budete ho používat později. |

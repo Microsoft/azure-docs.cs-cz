@@ -7,20 +7,20 @@ ms.date: 10/02/2017
 ms.author: sumukhs
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cda0a9f988afae58a60bff051885a5eec8afe434
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021965"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurovat stavové služby Reliable Services
 Pro spolehlivé služby jsou k dispozici dvě sady nastavení konfigurace. Jedna sada je globální pro všechny spolehlivé služby v clusteru, zatímco druhá sada je specifická pro konkrétní spolehlivé služby.
 
 ## <a name="global-configuration"></a>Globální konfigurace
-Globální konfigurace spolehlivé služby je určena v manifestu clusteru pro cluster v části KtlLogger. Umožňuje konfiguraci umístění a velikosti sdíleného protokolu a také omezení globální paměti používané protokolovacím nástrojem. Manifest clusteru je jeden soubor XML, který obsahuje nastavení a konfigurace, které platí pro všechny uzly a služby v clusteru. Tento soubor se obvykle označuje jako ClusterManifest.xml. Manifest clusteru pro cluster můžete zobrazit pomocí příkazu Get-ServiceFabricClusterManifest prostředí PowerShell.
+Globální konfigurace spolehlivé služby je určena v manifestu clusteru pro cluster v části KtlLogger. Umožňuje konfiguraci umístění a velikosti sdíleného protokolu a také omezení globální paměti používané protokolovacím nástrojem. Manifest clusteru je jeden soubor XML, který obsahuje nastavení a konfigurace, které platí pro všechny uzly a služby v clusteru. Tento soubor se obvykle označuje jako ClusterManifest.xml. Manifest clusteru pro cluster můžete zobrazit pomocí příkazu Get-ServiceFabricClusterManifest PowerShellu.
 
 ### <a name="configuration-names"></a>Názvy konfigurací
-| Název | Jednotka | Výchozí hodnota | Poznámky |
+| Name | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |Kilobajtů |8388608 |Minimální počet KB pro přidělení v režimu jádra pro fond paměti vyrovnávací paměti zápisu pro protokolovací nástroj. Tento fond paměti se používá k ukládání informací o stavu do mezipaměti před zápisem na disk. |
 | WriteBufferMemoryPoolMaximumInKB |Kilobajtů |Bez omezení |Maximální velikost, do které může růst fondu paměti zápisu pro zápis protokolovacího nástroje. |
@@ -103,10 +103,10 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>Názvy konfigurací
-| Název | Jednotka | Výchozí hodnota | Poznámky |
+| Name | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekundy |0,015 |Časové období, po které se Replikátor v sekundárním čekání po přijetí operace před odesláním zpět na primární. Jakékoli další potvrzení, která se mají odeslat pro operace zpracovávané v tomto intervalu, se odešlou jako jedna odpověď. |
-| ReplicatorEndpoint |– |Žádný výchozí – parametr není povinný. |IP adresa a port, které bude primární a sekundární Replikátor používat ke komunikaci s ostatními replikačními replikami v sadě replik. To by mělo odkazovat na koncový bod prostředku TCP v manifestu služby. Další informace o definování prostředků koncového bodu v manifestu služby najdete v článku [prostředky manifestu služby](service-fabric-service-manifest-resources.md) . |
+| ReplicatorEndpoint |Není k dispozici |Žádný výchozí – parametr není povinný. |IP adresa a port, které bude primární a sekundární Replikátor používat ke komunikaci s ostatními replikačními replikami v sadě replik. To by mělo odkazovat na koncový bod prostředku TCP v manifestu služby. Další informace o definování prostředků koncového bodu v manifestu služby najdete v článku [prostředky manifestu služby](service-fabric-service-manifest-resources.md) . |
 | MaxPrimaryReplicationQueueSize |Počet operací |8192 |Maximální počet operací v primární frontě. Když primární Replikátor dostane potvrzení ze všech sekundárních replikátorů, operace se uvolní. Tato hodnota musí být větší než 64 a mocnina 2. |
 | MaxSecondaryReplicationQueueSize |Počet operací |16384 |Maximální počet operací v sekundární frontě. Po zajištění vysoké dostupnosti stavu prostřednictvím trvalosti se operace uvolní. Tato hodnota musí být větší než 64 a mocnina 2. |
 | CheckpointThresholdInMB |MB |50 |Velikost místa pro soubor protokolu, po kterém je stav nastaven na kontrolní bod. |
@@ -119,7 +119,7 @@ ReplicatorConfig
 | SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu, kam se vytvoří sdílený soubor protokolu pro tuto repliku. Služby by obvykle neměly používat toto nastavení. Pokud je však zadán parametr SharedLogPath, musí být také zadán parametr SharedLogId. |
 | SlowApiMonitoringDuration |Sekundy |300 |Nastaví interval monitorování pro spravovaná volání rozhraní API. Příklad: uživatelem poskytnutá funkce zpětného volání zálohy. Po uplynutí intervalu se do Správce stavu pošle zpráva o stavu upozornění. |
 | LogTruncationIntervalSeconds |Sekundy |0 |Konfigurovatelný interval, při kterém se bude na každé replice inicializovat zkracování protokolu. Slouží k tomu, aby bylo zajištěno, že protokol je také zkrácen na základě času namísto pouze velikosti protokolu. Toto nastavení také vynutí vyprázdnění odstraněných položek ve spolehlivém slovníku. Proto se dá použít k zajištění včasného mazání odstraněných položek. |
-| EnableStableReads |Logická hodnota |Ne |Povolení stabilních čtení omezuje sekundární repliky, aby vracely hodnoty, které byly kvorum-potvrzeno. |
+| EnableStableReads |Logická hodnota |Nepravda |Povolení stabilních čtení omezuje sekundární repliky, aby vracely hodnoty, které byly kvorum-potvrzeno. |
 
 ### <a name="sample-configuration-via-code"></a>Ukázková konfigurace prostřednictvím kódu
 ```csharp

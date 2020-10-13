@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/12/2020
 ms.openlocfilehash: eb62cf099d7ccc133a207a843a8be3debf5c5454
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308414"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Použití Apache Sparku ke čtení a zápisu dat Apache HBase
@@ -94,7 +94,7 @@ __Poznámka__: než budete pokračovat, ujistěte se, že jste přidali účet �
     |Vlastnost | Hodnota |
     |---|---|
     |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-hbase.sh`|
-    |Typ (typy) uzlů|Region|
+    |Typ (typy) uzlů|Oblast|
     |Parametry|`-s SECONDARYS_STORAGE_URL`|
     |Trvalé|ano|
 

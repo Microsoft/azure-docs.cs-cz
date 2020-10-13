@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: c7f811991cdc325a3901a696216af21883f02fdb
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91596238"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Přidání zdroje událostí centra událostí do prostředí Azure Time Series Insights
@@ -25,7 +25,7 @@ Tento článek popisuje, jak pomocí Azure Portal přidat zdroj událostí, kter
 > [!NOTE]
 > Postup, který je popsaný v tomto článku, platí jak pro prostředí Azure Time Series Insights Gen 1 a Azure Time Series Insights Gen 2.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Vytvořte Azure Time Series Insights prostředí, jak je popsáno v tématu [vytvoření Azure Time Series Insights prostředí](./time-series-insights-update-create-environment.md).
 - Vytvořte centrum událostí. Přečtěte si téma [Vytvoření oboru názvů Event Hubs a centra událostí pomocí Azure Portal](../event-hubs/event-hubs-create.md).
@@ -54,7 +54,7 @@ Přidání nové skupiny příjemců do centra událostí:
 
 ## <a name="add-a-new-event-source"></a>Přidat nový zdroj události
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte existující Azure Time Series Insights prostředí. V nabídce vlevo vyberte **všechny prostředky**a pak vyberte prostředí Azure Time Series Insights.
 

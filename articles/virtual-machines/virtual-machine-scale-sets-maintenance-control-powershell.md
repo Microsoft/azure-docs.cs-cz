@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
 ms.openlocfilehash: 62b2fd0554c218b733501805779745049d3b8c92
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532607"
 ---
 # <a name="preview-maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-powershell"></a>Verze Preview: řízení údržby pro upgrady imagí operačního systému na Azure Virtual Machine Scale Sets pomocí PowerShellu
@@ -56,7 +56,7 @@ $location="eastus2"
 $vmss="myMaintenanceVMSS"
 ```
 
-## <a name="create-a-maintenance-configuration"></a>Vytvořit konfiguraci údržby
+## <a name="create-a-maintenance-configuration"></a>Vytvoření konfigurace údržby
 
 Vytvořte skupinu prostředků jako kontejner pro vaši konfiguraci. V tomto příkladu se vytvoří skupina prostředků s názvem *myMaintenanceRG* v *eastus2*. Pokud již máte skupinu prostředků, kterou chcete použít, můžete tuto část přeskočit. Stačí nahradit název skupiny prostředků vlastními ve zbývajících příkladech.
 

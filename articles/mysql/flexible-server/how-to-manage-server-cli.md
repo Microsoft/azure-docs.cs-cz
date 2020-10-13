@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 7701fe91d0e3f78f9596687bf945ba4b11c2d199
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331688"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-the-azure-cli"></a>Správa Azure Database for MySQLho flexibilního serveru (ve verzi Preview) pomocí Azure CLI
@@ -50,7 +50,7 @@ Zde jsou uvedeny podrobnosti o argumentech výše:
 
 **Nastavení** | **Ukázková hodnota** | **Popis**
 ---|---|---
-jméno | mydemoserver | Zadejte jedinečný název serveru Azure Database for MySQL. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat ze 3 až 63 znaků.
+name | mydemoserver | Zadejte jedinečný název serveru Azure Database for MySQL. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat ze 3 až 63 znaků.
 resource-group | myresourcegroup | Zadejte název skupiny prostředků Azure.
 sku-name|Standard_D4ds_v4|Zadejte název výpočetní úrovně a velikosti. Postupuje podle konvence Standard_ {VM Size} ve zkráceném formátu. Další informace najdete v [cenové úrovni](../concepts-pricing-tiers.md) .
 velikost úložiště | 6144 | Kapacita úložiště serveru (jednotkou jsou megabajty). Minimální 5120 a zvyšuje se v 1024 přírůstcích.
@@ -62,7 +62,7 @@ velikost úložiště | 6144 | Kapacita úložiště serveru (jednotkou jsou meg
 ## <a name="manage-mysql-databases-on-a-server"></a>Spravujte databáze MySQL na serveru.
 Pomocí kteréhokoli z těchto příkazů můžete vytvořit, odstranit, vypsat a zobrazit vlastnosti databáze na serveru aplikace.
 
-| Rutina | Využití| Popis |
+| Rutina | Využití| Description |
 | --- | ---| --- |
 |[AZ MySQL Flexible-Server DB Create](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_create)|```az mysql flexible-server db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |Vytvoří databázi.|
 |[AZ MySQL Flexible-Server DB DELETE](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_delete)|```az mysql flexible-server db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|Odstraňte databázi ze serveru. Tento příkaz neodstraní váš server. |

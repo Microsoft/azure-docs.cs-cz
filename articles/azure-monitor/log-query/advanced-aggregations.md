@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: dba058dce09e958a2ae769d927a5569fb3e42113
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324552"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Pokročilé agregace v Azure Monitorch dotazech protokolu
@@ -38,7 +38,7 @@ Event
 | počítač2 | [326 105 302 301 300 102] |
 | ... | ... |
 
-`makelist`vygeneruje seznam v pořadí, do kterého byla data předána. Chcete-li události seřadit od nejstarších k nejnovějším, použijte `asc` příkaz v příkazu Order místo `desc` . 
+`makelist` vygeneruje seznam v pořadí, do kterého byla data předána. Chcete-li události seřadit od nejstarších k nejnovějším, použijte `asc` příkaz v příkazu Order místo `desc` . 
 
 Je také užitečné vytvořit seznam jenom různých hodnot. Tato metoda se nazývá _sada_ a je možné ji vygenerovat `makeset` :
 
@@ -163,7 +163,7 @@ Heartbeat
 
 
 
-## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Zúžení výsledků do sady elementů: `let` , `makeset` , `toscalar` ,`in`
+## <a name="narrowing-results-to-a-set-of-elements-let-makeset-toscalar-in"></a>Zúžení výsledků do sady elementů: `let` , `makeset` , `toscalar` , `in`
 Běžným scénářem je výběr názvů některých konkrétních entit na základě sady kritérií a následného filtrování různých datových sad na tuto sadu entit. Můžete například najít počítače, u kterých se ví, že mají chybějící aktualizace, a identifikovat IP adresy, na které tyto počítače zavolaly:
 
 

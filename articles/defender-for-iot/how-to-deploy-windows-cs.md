@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 04b33c7e63efbd6ffabf978708e1b8ed81f1fc42
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936463"
 ---
 # <a name="deploy-an-defender-for-iot-c-based-security-agent-for-windows"></a>Nasazení programu Defender pro agenta zabezpečení na bázi IoT C# pro Windows
@@ -62,7 +62,7 @@ Chcete-li nainstalovat agenta zabezpečení, použijte následující pracovní 
     .\InstallSecurityAgent.ps1 -Install -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -cl <certificate location kind>
     ```
 
-    Příklad:
+    Například:
 
     ```
     .\InstallSecurityAgent.ps1 -Install -aui Device -aum SymmetricKey -f c:\Temp\Key.txt -hn MyIotHub.azure-devices.net -di Mydevice1 -cl store
@@ -79,7 +79,7 @@ Tento skript provede následující akce:
 
 Další nápovědu získáte pomocí příkazu Get-Help v prostředí PowerShell.
 
-Příklad Get-Help:    ```Get-Help .\InstallSecurityAgent.ps1```
+Get-Help příklad:    ```Get-Help .\InstallSecurityAgent.ps1```
 
 ### <a name="verify-deployment-status"></a>Ověřit stav nasazení
 

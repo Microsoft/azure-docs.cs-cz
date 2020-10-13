@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89009296"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Nasazení a odebrání aplikací pomocí FabricClient
@@ -91,7 +91,7 @@ Pokud už instanci aplikace nepotřebujete, můžete ji trvale odebrat pomocí r
 Pokud již určitou verzi typu aplikace nepotřebujete, měli byste zrušit registraci konkrétní verze typu aplikace pomocí rozhraní API pro [zrušení registrace](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) . Rušení registrace nepoužívaných verzí typů aplikací uvolní prostor úložiště používaný úložištěm imagí. U verze typu aplikace se může zrušit registrace, pokud se nevytváří instance žádné aplikace proti této verzi typu aplikace. Také typ aplikace nemůže mít žádné probíhající upgrady aplikace, na které se odkazuje na verzi typu aplikace.
 
 ## <a name="troubleshooting"></a>Řešení potíží
-### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage žádá o ImageStoreConnectionString
+### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage požádá o ImageStoreConnectionString
 Prostředí Service Fabric SDK by již mělo mít nastavené správné výchozí hodnoty. V případě potřeby by ale ImageStoreConnectionString pro všechny příkazy měly odpovídat hodnotě, kterou používá Cluster Service Fabric. ImageStoreConnectionString můžete najít v manifestu clusteru, který jste získali pomocí příkazů [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) a Get-ImageStoreConnectionStringFromClusterManifest:
 
 ```powershell

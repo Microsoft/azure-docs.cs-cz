@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0d3074d58560df5cb5bd6bdc2c0437a4be828918
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86499388"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilace produkčních aplikací v Azure pomocí Application Insights
@@ -91,7 +91,7 @@ Metody jako **SqlCommand.Exeroztomilá** označují, že kód čeká na dokonče
 
 ### <a name="unmanaged-async"></a>Nespravované asynchronní
 
-Rozhraní .NET Framework generuje události ETW a předá ID aktivity mezi vlákny, aby bylo možné sledovat asynchronní volání napříč vlákny. Nespravovaný kód (nativní kód) a některé starší styly asynchronního kódu neobsahují tyto události a ID aktivit, takže profiler nemůže sdělit, které vlákno a jaké funkce jsou ve vlákně spuštěné. Toto je označeno jako nespravované asynchronní v zásobníku volání. Pokud stáhnete soubor trasování událostí pro Windows, možná budete moct pomocí [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) získat další přehled o tom, co se děje.
+Rozhraní .NET Framework generuje události ETW a předá ID aktivity mezi vlákny, aby bylo možné sledovat asynchronní volání napříč vlákny. Nespravovaný kód (nativní kód) a některé starší styly asynchronního kódu neobsahují tyto události a ID aktivit, takže profiler nemůže sdělit, které vlákno a jaké funkce jsou ve vlákně spuštěné. Toto je označeno jako nespravované asynchronní v zásobníku volání. Pokud stáhnete soubor trasování událostí pro Windows, možná budete moct pomocí [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md)  získat další přehled o tom, co se děje.
 
 ### <a name="cpu-time"></a><a id="cpu"></a>Čas procesoru
 

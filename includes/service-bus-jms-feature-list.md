@@ -9,10 +9,10 @@ ms.date: 6/9/2020
 ms.author: aschhab
 ms.custom: include file
 ms.openlocfilehash: 9030080d0b8c8e032cb2992a62275efcdb04aabc
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87798133"
 ---
 V následující tabulce jsou uvedené funkce JMS (Java Message Service), které Azure Service Bus aktuálně podporuje. Zobrazuje také funkce, které nejsou podporovány.

@@ -11,10 +11,10 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: devx-track-csharp, aaddev, vs-azure
 ms.openlocfilehash: a070bee7a9fa836eeac7c739cf2757295533ad7f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165358"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Co se stalo s mým projektem WebAPI (připojená služba sady Visual Studio Azure Active Directory)
@@ -23,7 +23,7 @@ ms.locfileid: "88165358"
 > - [Začínáme](vs-active-directory-webapi-getting-started.md)
 > - [Co se přihodilo](vs-active-directory-webapi-what-happened.md)
 
-Tento článek popisuje přesné změny provedené v projektech ASP.NET WebAPI, ASP.NET jednostránkové aplikace a ASP.NET API Azure při přidávání [Azure Active Directory připojené služby pomocí sady Visual Studio](vs-active-directory-add-connected-service.md). Platí také pro projekty ASP.NET Azure Mobile Service v aplikaci Visual Studio 2015.
+Tento článek popisuje přesné změny provedené v projektech ASP.NET WebAPI, ASP.NET Single-Page Application a ASP.NET Azure API při přidávání [Azure Active Directory připojené služby pomocí sady Visual Studio](vs-active-directory-add-connected-service.md). Platí také pro projekty ASP.NET Azure Mobile Service v aplikaci Visual Studio 2015.
 
 Informace o práci s připojenou službou najdete v tématu [Začínáme](vs-active-directory-webapi-getting-started.md).
 
@@ -31,7 +31,7 @@ Informace o práci s připojenou službou najdete v tématu [Začínáme](vs-act
 
 Má vliv na soubor projektu *. NET References) a `packages.config` (odkazy na NuGet).
 
-| Typ | Referenční informace |
+| Typ | Odkaz |
 | --- | --- |
 | Pohyby NuGet | Microsoft. Owin |
 | Pohyby NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -44,7 +44,7 @@ Má vliv na soubor projektu *. NET References) a `packages.config` (odkazy na Nu
 
 Další odkazy, pokud jste vybrali možnost **data pro čtení adresáře** :
 
-| Typ | Referenční informace |
+| Typ | Odkaz |
 | --- | --- |
 | Pohyby NuGet | EntityFramework |
 | .NET        | EntityFramework. SqlServer (pouze Visual Studio 2015) |
@@ -58,7 +58,7 @@ Další odkazy, pokud jste vybrali možnost **data pro čtení adresáře** :
 
 Následující odkazy jsou odebrány (pouze projekty ASP.NET 4, jako v aplikaci Visual Studio 2015):
 
-| Typ | Referenční informace |
+| Typ | Odkaz |
 | --- | --- |
 | Pohyby NuGet | Microsoft. AspNet. identity. Core |
 | Pohyby NuGet | Microsoft. AspNet. identity. EntityFramework |

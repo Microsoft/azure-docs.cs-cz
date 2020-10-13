@@ -4,10 +4,10 @@ description: Naučte se vytvářet a konfigurovat sítě potřebné k nasazení 
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.openlocfilehash: 6aff39284f3ea786080055552ac001ac5dd7b394
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578342"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Kurz: konfigurace sítě pro privátní cloud VMware v Azure
@@ -27,7 +27,7 @@ Virtuální síť, kterou jste vytvořili [privátní cloud řešení Azure VMwa
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Přejděte do skupiny prostředků, kterou jste vytvořili v [kurzu Vytvoření privátního cloudu](tutorial-create-private-cloud.md) , a vyberte **+ Přidat** k definování nového prostředku. 
 

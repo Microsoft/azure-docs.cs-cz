@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.openlocfilehash: 67cb8d6bf6dd61fb5ba7aec70a79078cbe2b8b13
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597843"
 ---
 # <a name="understand-linked-sign-on"></a>Principy propojených přihlášení

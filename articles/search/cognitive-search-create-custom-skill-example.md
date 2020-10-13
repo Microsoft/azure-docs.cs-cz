@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5755e14e53d359fd8b322939bf1325d21536d593
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89020180"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Příklad: Vytvoření vlastní dovednosti pomocí rozhraní API Bingu pro vyhledávání entit
 
 V tomto příkladu se dozvíte, jak vytvořit vlastní dovednost webového rozhraní API. Tato dovednost bude přijímat umístění, veřejné údaje a organizace a vrátí popisy pro ně. Tento příklad používá [funkci Azure](https://azure.microsoft.com/services/functions/) k zabalení [rozhraní API Bingu pro vyhledávání entit](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) tak, aby implementovala vlastní rozhraní dovedností.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Přečtěte si o vlastním článku o [dovednostech rozhraní](cognitive-search-custom-skill-interface.md) , pokud neznáte vstupní/výstupní rozhraní, které by měla vlastní dovednost implementovat.
 
@@ -477,7 +477,7 @@ Tady se počítáme s předdefinovanými [dovednostmi pro rozpoznávání entit]
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Blahopřejeme! Vytvořili jste svou první vlastní dovednost. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. Další informace získáte kliknutím na následující odkazy.
+Gratulujeme! Vytvořili jste svou první vlastní dovednost. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. Další informace získáte kliknutím na následující odkazy.
 
 + [Dovednosti v Power: úložiště vlastních dovedností](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)

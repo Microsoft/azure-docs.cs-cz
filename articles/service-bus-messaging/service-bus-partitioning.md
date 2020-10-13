@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 11cc76b0dd0125c7b54438d3f991069b7c44db59
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89007957"
 ---
 # <a name="partitioned-queues-and-topics"></a>Dělené fronty a témata
@@ -44,7 +44,7 @@ V oboru názvů úrovně Premium se nepodporují dělení entit. Stále ale mů�
 
 ### <a name="create-a-partitioned-entity"></a>Vytvoření rozdělené entity
 
-Existuje několik způsobů, jak vytvořit dělenou frontu nebo téma. Když vytvoříte frontu nebo téma z aplikace, můžete povolit dělení na oddíly pro frontu nebo téma nastavením vlastnosti [QueueDescription. EnablePartitioning][QueueDescription.EnablePartitioning] nebo [TopicDescription. EnablePartitioning][TopicDescription.EnablePartitioning] na **hodnotu true**. Tyto vlastnosti musí být nastaveny v okamžiku vytvoření fronty nebo tématu a jsou k dispozici pouze ve starší knihovně [windowsazure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) . Jak bylo uvedeno dříve, není možné tyto vlastnosti změnit ve stávající frontě nebo tématu. Příklad:
+Existuje několik způsobů, jak vytvořit dělenou frontu nebo téma. Když vytvoříte frontu nebo téma z aplikace, můžete povolit dělení na oddíly pro frontu nebo téma nastavením vlastnosti [QueueDescription. EnablePartitioning][QueueDescription.EnablePartitioning] nebo [TopicDescription. EnablePartitioning][TopicDescription.EnablePartitioning] na **hodnotu true**. Tyto vlastnosti musí být nastaveny v okamžiku vytvoření fronty nebo tématu a jsou k dispozici pouze ve starší knihovně [windowsazure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) . Jak bylo uvedeno dříve, není možné tyto vlastnosti změnit ve stávající frontě nebo tématu. Například:
 
 ```csharp
 // Create partitioned topic
@@ -84,7 +84,7 @@ Klíč oddílu "PIN" zprávy do konkrétního oddílu. Pokud úložiště pro za
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>Pokročilá témata: použití transakcí s rozdělenými entitami
 
-Zprávy odeslané v rámci transakce musí určovat klíč oddílu. Klíč může být jedna z následujících vlastností: [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)nebo [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid). Všechny zprávy, které jsou odeslány jako součást stejné transakce, musí určovat stejný klíč oddílu. Pokud se pokusíte odeslat zprávu bez klíče oddílu v rámci transakce, Service Bus vrátí neplatnou výjimku operace. Pokud se pokusíte odeslat více zpráv v rámci stejné transakce, které mají různé klíče oddílu, Service Bus vrátí výjimku neplatné operace. Příklad:
+Zprávy odeslané v rámci transakce musí určovat klíč oddílu. Klíč může být jedna z následujících vlastností: [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)nebo [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid). Všechny zprávy, které jsou odeslány jako součást stejné transakce, musí určovat stejný klíč oddílu. Pokud se pokusíte odeslat zprávu bez klíče oddílu v rámci transakce, Service Bus vrátí neplatnou výjimku operace. Pokud se pokusíte odeslat více zpráv v rámci stejné transakce, které mají různé klíče oddílu, Service Bus vrátí výjimku neplatné operace. Například:
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -104,7 +104,7 @@ Pokud je nastavená kterákoli z vlastností, která slouží jako klíč oddíl
 
 Chcete-li odeslat transakční zprávu do tématu nebo fronty využívající relaci, musí mít zpráva nastavenu vlastnost [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) . Pokud je zadána vlastnost [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) , musí být stejná jako vlastnost [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) . Pokud se liší, Service Bus vrátí výjimku neplatné operace.
 
-Na rozdíl od běžných (nerozdělených) front nebo témat není možné použít jedinou transakci k posílání více zpráv do různých relací. Při pokusu Service Bus vrací výjimku neplatné operace. Příklad:
+Na rozdíl od běžných (nerozdělených) front nebo témat není možné použít jedinou transakci k posílání více zpráv do různých relací. Při pokusu Service Bus vrací výjimku neplatné operace. Například:
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();

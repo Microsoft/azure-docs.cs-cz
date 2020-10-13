@@ -8,10 +8,10 @@ ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: a0f5a921ad9eba82f27b3a8945643737b6d76030
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89614068"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Připojení aplikací Azure Functions pro zpracování dat
@@ -38,15 +38,15 @@ V aplikaci Visual Studio 2019 vyberte _soubor > nový > projekt_ a vyhledejte š
 
 Zadejte název aplikace Function App a vyberte _vytvořit_.
 
-:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: konfigurace nového projektu":::
+:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 Vyberte typ *triggeru* function App Event Grid a vyberte _vytvořit_.
 
-:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: dialogové okno triggeru projektu Azure Functions":::
+:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 Po vytvoření aplikace Function App bude mít Visual Studio automaticky vyplněný vzorek kódu v souboru **Function.cs** ve složce projektu. Tato krátká funkce Azure slouží k protokolování událostí.
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: okno projektu s ukázkovým kódem":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 ## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>Zápis funkce Azure pomocí triggeru Event Grid
 
@@ -160,19 +160,19 @@ Pokud chcete publikovat aplikaci Function App do Azure, klikněte pravým tlač�
 > [!IMPORTANT] 
 > Publikování funkce Azure Functions bude mít za následek další poplatky na vaše předplatné, nezávisle na digitálních událostech Azure.
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: publikování funkce Azure Functions ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 Jako cíl publikování vyberte **Azure** a pak vyberte **Další**.
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: dialogové okno publikování funkce Azure, výběr Azure ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio: dialogové okno publikování funkce vyberte Azure Function App (Windows) nebo (Linux) na základě vašeho počítače.":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio: dialogové okno publikování funkce, vytvoření nové funkce Azure Functions":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio: dialogové okno Publikovat funkci, vyplňte pole a vyberte vytvořit.":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio: dialogové okno publikování funkce, výběr aplikace Function App ze seznamu a dokončení":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 Na následující stránce zadejte požadovaný název nové aplikace Function App, skupiny prostředků a dalších podrobností.
 Aby vaše aplikace Functions mohla přistupovat k digitálním funkcím Azure, musí mít identitu spravovanou systémem a mít oprávnění pro přístup k instanci digitálních vláken Azure.
@@ -214,27 +214,27 @@ Spravovaná identita přiřazená systémem umožňuje prostředkům Azure ově�
 
 V [Azure Portal](https://portal.azure.com/)vyhledejte _aplikaci Function App_ na panelu hledání s názvem aplikace Function App, kterou jste vytvořili dříve. V seznamu vyberte *Function App* . 
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Azure Portal: hledání aplikace Function App":::
+:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 V okně Function App vyberte v navigačním panelu vlevo možnost _Identita_ a povolte spravovanou identitu.
 V části _přiřazená systémová_ karta přepněte _stav_ na zapnuto a _uložte_ ho. Zobrazí se automaticky otevírané okno, ve kterém se _povolí spravovaná identita přiřazená systémem_.
 Vyberte tlačítko _Ano_ . 
 
-:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Azure Portal: povolení identity spravované systémem":::
+:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 Můžete ověřit v oznámeních, že se funkce úspěšně zaregistrovala v Azure Active Directory.
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Azure Portal: oznámení":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 Všimněte si také **ID objektu** zobrazené na stránce _identity_ , jak bude použito v další části.
 
-:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Zkopírujte ID objektu, který chcete použít v budoucnu.":::
+:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 ### <a name="assign-access-roles-using-azure-portal"></a>Přiřazení rolí přístupu pomocí Azure Portal
 
 Vyberte tlačítko _přiřazení rolí Azure_ , které se otevře na stránce přiřazení rolí Azure. Pak vyberte _+ Přidat přiřazení role (Preview)_.
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure Portal: přidání přiřazení role":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 V okně _Přidat přiřazení role (Preview)_ , které se otevře, vyberte
 
@@ -245,7 +245,7 @@ V okně _Přidat přiřazení role (Preview)_ , které se otevře, vyberte
 
 Kliknutím na tlačítko _Uložit_ uložte podrobnosti.
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Azure Portal: přidání přiřazení role (Preview) ":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 ### <a name="configure-application-settings-using-azure-portal"></a>Konfigurace nastavení aplikace pomocí Azure Portal
 
@@ -255,7 +255,7 @@ Budete potřebovat ADT_INSTANCE_URL k vytvoření nastavení aplikace.
 
 Můžete získat ADT_INSTANCE_URL připojením **_https://_** k názvu hostitele instance. V Azure Portal můžete najít název hostitele instance digitálního vlákna, a to tak, že na panelu hledání vyhledáte svou instanci. Pak na levém navigačním panelu vyberte _Přehled_ a zobrazte _název hostitele_. Zkopírujte tuto hodnotu pro vytvoření nastavení aplikace.
 
-:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure Portal: Přehled – > kopírování názvu hostitele, který se má použít v poli _Value_.":::
+:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 Nyní můžete vytvořit nastavení aplikace podle následujících kroků:
 
@@ -263,9 +263,9 @@ Nyní můžete vytvořit nastavení aplikace podle následujících kroků:
 * Vyberte _konfiguraci_ na navigačním panelu vlevo a vytvořte nové nastavení aplikace.
 * Na kartě _nastavení aplikace_ vyberte _+ Nastavení nové aplikace_ .
 
-:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure Portal: hledání existující funkce Azure Functions":::
+:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure Portal: Konfigurace nastavení aplikace":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 V okně, které se otevře, použijte hodnotu zkopírovanou z výše k vytvoření nastavení aplikace. \
 _Název_  : ADT_SERVICE_URL \
@@ -273,19 +273,19 @@ _Hodnota_ : https://{your-Azure-Digital-zdvojené-hostname}
 
 Vyberte _OK_ a vytvořte nastavení aplikace.
 
-:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Azure Portal: přidejte nastavení aplikace.":::
+:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 Nastavení aplikace můžete zobrazit pomocí názvu aplikace v poli _název_ . Pak nastavení aplikace uložte výběrem tlačítka _Uložit_ .
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure Portal: zobrazení vytvořené aplikace a restartování aplikace":::
+:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 Všechny změny nastavení aplikace vyžadují restart aplikace. Vyberte _pokračovat_ a restartujte aplikaci.
 
-:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure Portal: uložení nastavení aplikace":::
+:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 Kliknutím na ikonu _oznámení_ můžete zobrazit tato nastavení aplikace. Pokud není nastavení aplikace vytvořeno, můžete znovu přidat nastavení aplikace podle výše uvedeného postupu.
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Azure Portal: oznámení pro aktualizaci nastavení aplikace":::
+:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2ce0325f7aebac92eb1e7deadd6f6875b75b3755
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89008807"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Připojení k zabezpečenému clusteru
@@ -31,7 +31,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 Pokud Váš soubor. pfx není chráněný heslem, použijte parametr-Passin Pass: pro poslední parametr.
 
-Pokud chcete zadat klientský certifikát jako soubor PEM, zadejte cestu k souboru v `--pem` argumentu. Příklad:
+Pokud chcete zadat klientský certifikát jako soubor PEM, zadejte cestu k souboru v `--pem` argumentu. Například:
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -45,7 +45,7 @@ Chcete-li zadat certifikát, dvojici klíčů `--cert` použijte `--key` argumen
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Někdy certifikáty, které se používají k zabezpečení testovacích nebo vývojových clusterů, selžou při ověřování certifikátů. Pokud chcete obejít ověření certifikátu, zadejte `--no-verify` možnost. Příklad:
+Někdy certifikáty, které se používají k zabezpečení testovacích nebo vývojových clusterů, selžou při ověřování certifikátů. Pokud chcete obejít ověření certifikátu, zadejte `--no-verify` možnost. Například:
 
 > [!WARNING]
 > Nepoužívejte `no-verify` možnost při připojování k produkčním Service Fabric clusterům.
@@ -54,7 +54,7 @@ Někdy certifikáty, které se používají k zabezpečení testovacích nebo v�
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Kromě toho můžete zadat cesty k adresářům důvěryhodných certifikátů CA nebo jednotlivých certifikátů. K určení těchto cest použijte `--ca` argument. Příklad:
+Kromě toho můžete zadat cesty k adresářům důvěryhodných certifikátů CA nebo jednotlivých certifikátů. K určení těchto cest použijte `--ca` argument. Například:
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca

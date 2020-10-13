@@ -7,13 +7,13 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/13/2019
-ms.openlocfilehash: 65b6b1f783dbabc9ad2e1a4bf79008240d1b2726
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/08/2020
+ms.openlocfilehash: 4715d7173dd959d12350229e457717c908a83756
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659913"
+ms.locfileid: "91873230"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Připojení k místním systémům souborů pomocí Azure Logic Apps
 
@@ -22,6 +22,9 @@ Pomocí Azure Logic Apps a konektoru systému souborů můžete vytvářet autom
 - Vytváření, získávání, přidávání, aktualizace a odstraňování souborů.
 - Vypíše soubory ve složkách nebo kořenových složkách.
 - Získá obsah souboru a metadata.
+
+  > [!IMPORTANT]
+  > Konektor systému souborů v současné době podporuje v operačních systémech Windows pouze systémy souborů systému Windows.  
 
 V tomto článku se dozvíte, jak se připojit k místnímu systému souborů, jak je popsáno v tomto ukázkovém scénáři: zkopírování souboru nahraného do Dropboxu do sdílené složky a odeslání e-mailu. K bezpečnému připojení k místním systémům využívají Logic Apps místní [bránu dat](../logic-apps/logic-apps-gateway-connection.md). Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Technické informace specifické pro konektor najdete v referenčních informacích o [konektoru systému souborů](/connectors/filesystem/).
 

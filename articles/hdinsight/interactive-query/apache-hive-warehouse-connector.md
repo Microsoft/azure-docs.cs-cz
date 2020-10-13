@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.openlocfilehash: 24968511d038b2cea41a59187c0a361684c6720e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511887"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Integrace Apache Spark a Apache Hive pomocí konektoru skladu s podregistru v Azure HDInsight
@@ -78,7 +78,7 @@ Konektor Warehouse pro podregistr potřebuje samostatné clustery pro úlohy Spa
     |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. <br> Nastavte vhodný přípravný adresář kompatibilní s HDFS. Pokud máte dva různé clustery, pracovní adresář by měl být složka v pracovním adresáři účtu úložiště LLAP clusteru, aby k němu měl přístup HiveServer2.  Nahraďte `STORAGE_ACCOUNT_NAME` názvem účtu úložiště použitým clusterem a `STORAGE_CONTAINER_NAME` názvem kontejneru úložiště. |
     |`spark.sql.hive.hiveserver2.jdbc.url`| Hodnota, kterou jste získali dříve z **HiveServer2 Interactive JDBC URL** |
     |`spark.datasource.hive.warehouse.metastoreUri`| Hodnota, kterou jste získali dříve z **podregistru. metastore. URI**. |
-    |`spark.security.credentials.hiveserver2.enabled`|`true`pro režim clusteru PŘÍZe a `false` pro režim přízového klienta. |
+    |`spark.security.credentials.hiveserver2.enabled`|`true` pro režim clusteru PŘÍZe a `false` pro režim přízového klienta. |
     |`spark.hadoop.hive.zookeeper.quorum`| Hodnota, kterou jste získali dříve z **podregistru. Zookeeper. kvora**. |
     |`spark.hadoop.hive.llap.daemon.service.hosts`| Hodnota, kterou jste získali dříve z **podregistru. llap. démon. Service. Hosts**. |
 

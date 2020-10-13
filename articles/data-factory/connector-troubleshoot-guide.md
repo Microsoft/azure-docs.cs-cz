@@ -10,10 +10,10 @@ ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
 ms.openlocfilehash: 62a5f3b18d4b8329c4a15086bc23d09805b786ab
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89668888"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Řešení potíží s konektory služby Azure Data Factory
@@ -693,7 +693,7 @@ Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 
 *  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
-*  [Videa k Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Videa Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Stack Overflow fórum pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)

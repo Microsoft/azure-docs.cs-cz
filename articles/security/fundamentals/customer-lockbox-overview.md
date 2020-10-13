@@ -9,10 +9,10 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 09/15/2020
 ms.openlocfilehash: 52cb5ac5423aac0599ba2827667ee670dde286a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331654"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Customer Lockbox pro Microsoft Azure
@@ -20,15 +20,15 @@ ms.locfileid: "91331654"
 > [!NOTE]
 > Aby mohla vaše organizace používat tuto funkci, musí mít [plán podpory Azure](https://azure.microsoft.com/support/plans/) s minimální úrovní **vývojářů**.
 
-Customer Lockbox for Microsoft Azure poskytuje rozhraní pro zákazníky, kteří budou kontrolovat a schvalovat nebo odmítat žádosti o přístup k datům zákazníků. Používá se v případech, kdy pracovník Microsoftu potřebuje mít přístup k zákaznickým datům během žádosti o podporu.
+Customer Lockbox pro Microsoft Azure poskytuje rozhraní pro zákazníky, ve kterém můžou kontrolovat a schvalovat nebo zamítat žádosti zákazníků o přístup k datům. Používá se v případech, kdy technici Microsoftu potřebují získat přístup k datům zákazníků během zpracování žádostí o podporu.
 
 Tento článek popisuje, jak se iniciují a ukládají požadavky na Customer Lockbox pro pozdější revize a audity.
 
-Customer Lockbox je teď všeobecně dostupná a aktuálně je povolená pro přístup ke vzdálené ploše virtuálních počítačů.
+Customer Lockbox je teď obecně dostupný a v současné době podporuje přístup ke vzdálené ploše virtuálních počítačů.
 
 ## <a name="supported-services-and-scenarios-in-preview"></a>Podporované služby a scénáře ve verzi Preview
 
-Následující služby jsou teď teď ve verzi Preview pro Customer Lockbox:
+Následující služby pro Customer Lockbox jsou v současné době ve verzi Preview:
 
 - API Management
 - Azure App Service
@@ -46,9 +46,9 @@ Následující služby jsou teď teď ve verzi Preview pro Customer Lockbox:
 - Azure Monitor
 - Azure Storage
 - Azure SQL DB
-- Přenosy předplatného Azure
+- Přenosy předplatných Azure
 - Azure Synapse Analytics
-- Virtuální počítače (teď také zahrnují přístup k výpisům paměti a spravovaným diskům)
+- Virtuální počítače (nově popisuje také přístup k výpisům paměti a spravovaným diskům)
 
 Pokud chcete povolit Customer Lockbox pro tyto nabídky verze Preview pro vaši organizaci, zaregistrujte se do [Customer Lockbox pro Azure Public Preview](https://aka.ms/customerlockbox/insiderprogram).
 
@@ -56,19 +56,19 @@ Pokud chcete povolit Customer Lockbox pro tyto nabídky verze Preview pro vaši 
 
 Následující služby a scénáře jsou aktuálně všeobecně dostupné pro Customer Lockbox.
 
-### <a name="remote-desktop-access-to-virtual-machines"></a>Přístup ke vzdálené ploše pro virtuální počítače
+### <a name="remote-desktop-access-to-virtual-machines"></a>Přístup ke vzdálené ploše virtuálních počítačů
 
-Customer Lockbox je aktuálně povolený pro žádosti o přístup ke vzdálené ploše na virtuální počítače. Podporují se tyto úlohy:
+Customer Lockbox v současné době podporuje žádosti o přístup ke vzdálené ploše virtuálních počítačů. Podporují se následující úlohy:
 - Platforma jako služba (PaaS) – Azure Cloud Services (webová role a role pracovního procesu)
-- Infrastruktura jako služba (IaaS) – Windows a Linux (jenom Azure Resource Manager)
-- Sada škálování virtuálního počítače – Windows a Linux
+- Infrastruktura jako služba (IaaS) – Windows a Linux (pouze Azure Resource Manager)
+- Škálovací sada virtuálních počítačů – Windows a Linux
 
 > [!NOTE]
-> IaaS klasické instance nejsou podporovány Customer Lockbox. Pokud máte úlohy spuštěné v IaaS klasických instancích, doporučujeme, abyste je migrovali z modelu nasazení Classic do Správce prostředků. Pokyny najdete v tématu [migrace prostředků IaaS podporovaných platformou z klasický na Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+> IaaS klasické instance nejsou podporovány Customer Lockbox. Pokud máte úlohy spuštěné v IaaS klasických instancích, doporučujeme, abyste je migrovali z modelu nasazení Classic do Správce prostředků. Pokyny najdete v tématu [Platformou podporovaná migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
 #### <a name="detailed-audit-logs"></a>Podrobné protokoly auditu
 
-V případě scénářů, které zahrnují přístup ke vzdálené ploše, můžete pomocí protokolů událostí systému Windows zkontrolovat akce prováděné nástrojem Microsoft inženýr. Zvažte použití Azure Security Center ke shromáždění protokolů událostí a zkopírování dat do pracovního prostoru pro účely analýzy. Další informace najdete v tématu [shromažďování dat v Azure Security Center](../../security-center/security-center-enable-data-collection.md).
+V případě scénářů, které zahrnují přístup ke vzdálené ploše, můžete s využitím protokolů událostí Windows zkontrolovat akce provedené technikem podpory. Zvažte použití služby Azure Security Center ke shromáždění protokolů událostí a zkopírování dat do vašeho pracovního prostoru pro účely analýzy. Další informace najdete v tématu [Shromažďování dat ve službě Azure Security Center](../../security-center/security-center-enable-data-collection.md).
 
 ## <a name="workflow"></a>Pracovní postup
 
@@ -109,7 +109,7 @@ Následující kroky popisují typický pracovní postup pro Customer Lockbox po
 
     ![Azure Customer Lockbox – zobrazení žádosti, která čeká na vyřízení](./media/customer-lockbox-overview/customer-lockbox-pending-requests.png)
 
-10. Určený schvalovatel taky může vybrat **ID žádosti o službu** a zobrazit žádost o lístek podpory, kterou vytvořil původní uživatel. Tyto informace poskytují kontext pro důvody, proč se zabývají podpora Microsoftu, a historii nahlášeného problému. Příklad:
+10. Určený schvalovatel taky může vybrat **ID žádosti o službu** a zobrazit žádost o lístek podpory, kterou vytvořil původní uživatel. Tyto informace poskytují kontext pro důvody, proč se zabývají podpora Microsoftu, a historii nahlášeného problému. Například:
 
     ![Azure Customer Lockbox – zobrazení žádosti o lístek podpory](./media/customer-lockbox-overview/customer-lockbox-support-ticket.png)
 
@@ -125,27 +125,27 @@ Pro účely auditování jsou akce prováděné v tomto pracovním postupu přih
 
 ## <a name="auditing-logs"></a>Protokoly auditování
 
-Protokoly Customer Lockbox jsou uloženy v protokolech aktivit. V Azure Portal vyberte **protokoly aktivit** a zobrazte informace o auditování týkající se Customer Lockbox požadavků. Můžete filtrovat konkrétní akce, jako například:
-- **Odepřít žádost o bezpečnostní modul**
-- **Vytvořit žádost o bezpečnostní modul**
-- **Schválit žádost o bezpečnostní modul**
+Protokoly Customer Lockboxu se ukládají v protokolech aktivit. V Azure Portal vyberte **protokoly aktivit** a zobrazte informace o auditování týkající se Customer Lockbox požadavků. Můžete vyfiltrovat konkrétní akce, jako například:
+- **Zamítnutí požadavku Lockboxu**
+- **Vytvoření požadavku Lockboxu**
+- **Schválení požadavku Lockboxu**
 - **Vypršení platnosti žádosti bezpečnostního modulu**
 
 Příklad:
 
 ![Azure Customer Lockbox – protokoly aktivit](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>Integrace Customer Lockbox se srovnávacími testy zabezpečení Azure
+## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>Integrace Customer Lockboxu se srovnávacím testem zabezpečení Azure
 
 Představili jsme nový základní ovládací prvek ([3,13](../benchmarks/security-control-identity-access-control.md#313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios)) v rámci srovnávacího testu zabezpečení Azure, který pokrývá Customer Lockbox použitelnost. Zákazníci teď můžou využít srovnávací testy ke kontrole Customer Lockbox použitelnosti služby.
 
 ## <a name="exclusions"></a>Vyloučení
 
-Customer Lockbox žádosti nejsou aktivované v následujících scénářích technické podpory:
+Požadavky Customer Lockboxu se neaktivují v následujících scénářích technické podpory:
 
-- Pracovník společnosti Microsoft potřebuje aktivitu, která spadá mimo standardní pracovní postupy. Například pro obnovení nebo obnovení služeb v neočekávaných nebo nepředvídatelných scénářích.
+- Technik Microsoftu potřebuje provést aktivitu, která nepatří mezi standardní provozní postupy. Příkladem je obnovení nebo zotavení služeb v neočekávaných nebo nepředvídatelných scénářích.
 
-- Microsoft inženýr přistupuje k platformě Azure jako součást řešení potíží a neúmyslně má přístup k zákaznickým datům. Například tým Azure Network provádí řešení potíží, které vede k zachytávání paketů na síťovém zařízení. Pokud však zákazník zašifroval data během přenosu, nemůže inženýr data přečíst.
+- Technik Microsoftu přistupuje k platformě Azure v rámci řešení potíží a neúmyslně získá přístup k datům zákazníků. Například v důsledku řešení potíží síťovým týmem Azure může dojít k zachytávání paketů na síťovém zařízení. Pokud však zákazník přenášená data zašifroval, technik je nebude moct přečíst.
 
 ## <a name="next-steps"></a>Další kroky
 

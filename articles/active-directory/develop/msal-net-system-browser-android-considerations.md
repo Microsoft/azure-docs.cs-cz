@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 8f755b42249a88a2d37117003d561f79aea6b170
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165987"
 ---
 #  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>Předpoklady pro prohlížeč systému Xamarin Android pro použití MSAL.NET
@@ -60,7 +60,7 @@ V následující tabulce jsou uvedena zařízení a prohlížeče, které byly t
 | Jedna + | Prohlížeč CM | Uživatel zrušil ověřování.|
 | Huawei/jeden + | Žádné nainstalované | Výjimka AndroidActivityNotFound|
 
-\*Podporuje vlastní karty
+\* Podporuje vlastní karty
 
 ## <a name="known-issues"></a>Známé problémy
 

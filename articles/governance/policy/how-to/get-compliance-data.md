@@ -4,10 +4,10 @@ description: Azure Policy hodnocení a účinky určují dodržování předpis�
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 2b4db7daf75f153cadb03e5dd028084e311bb874
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91596033"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
@@ -164,9 +164,9 @@ V přiřazení není prostředek **nekompatibilní** , pokud nedodržuje pravidl
 | Stav prostředku | Účinek | Vyhodnocení zásad | Stav dodržování předpisů |
 | --- | --- | --- | --- |
 | Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Ano | Neodpovídající |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Ne | Odpovídající |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Nepravda | Odpovídající |
 | Nová | Audit, AuditIfNotExist\* | Ano | Neodpovídající |
-| Nová | Audit, AuditIfNotExist\* | Ne | Odpovídající |
+| Nová | Audit, AuditIfNotExist\* | Nepravda | Odpovídající |
 
 \* Efekty upravit, připojit, DeployIfNotExist a AuditIfNotExist vyžadují, aby příkaz IF byl pravdivý. Tyto účinky také vyžadují, aby existovala podmínka, která musí nabývat hodnoty FALSE, aby byla zásada vyhodnocena jako Nevyhovující předpisům. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
 

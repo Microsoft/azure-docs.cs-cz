@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 ms.openlocfilehash: 941953c75c516a9eceff526a0ced0ec0910f1f1e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327697"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu
@@ -53,7 +53,7 @@ Pokud používáte Event Hubs sady SDK nebo integrace produktů, které nevědí
 
 V portálu obsahuje pole koncový bod kompatibilní s centrem událostí úplný Event Hubs připojovací řetězec, který vypadá nějak takto: **koncový bod = Sb://abcd1234namespace.ServiceBus.Windows.NET/; SharedAccessKeyName = iothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = iothub-ehub-abcd-1234-123456**. Pokud sada SDK, kterou používáte, vyžaduje jiné hodnoty, pak by byla:
 
-| Název | Hodnota |
+| Name | Hodnota |
 | ---- | ----- |
 | Koncový bod | sb://abcd1234namespace.servicebus.windows.net/ |
 | Název hostitele | abcd1234namespace.servicebus.windows.net |

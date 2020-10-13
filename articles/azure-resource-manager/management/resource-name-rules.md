@@ -4,10 +4,10 @@ description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.openlocfilehash: ff92eff9351e944f8baa11cf981e8511ad8e4ae1
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653362"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
@@ -543,7 +543,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | Řešení | pracovní prostor | – | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
+> | Řešení | pracovní prostor | Není k dispozici | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 

@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: b6a3e67ffd909262da2f890874f049dfac59a4ce
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90562005"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
@@ -184,10 +184,10 @@ Zásady ovlivňují chování aktivity za běhu a nabízejí možnosti konfigura
 
 Název JSON | Description | Povolené hodnoty | Vyžadováno
 --------- | ----------- | -------------- | --------
-timeout | Určuje časový limit pro spuštění aktivity. | Časový interval | No. Výchozí hodnota časového limitu je 7 dní.
-retry | Maximální počet opakovaných pokusů. | Integer | No. Výchozí hodnota je 0.
-retryIntervalInSeconds | Prodleva mezi pokusy o opakování v sekundách. | Integer | No. Výchozí hodnota je 30 sekund.
-secureOutput | Při nastavení na hodnotu true se výstup z aktivity považuje za zabezpečený a neprotokoluje se k monitorování. | Logická hodnota | No. Výchozí hodnota je false.
+timeout | Určuje časový limit pro spuštění aktivity. | Časový interval | Ne. Výchozí hodnota časového limitu je 7 dní.
+retry | Maximální počet opakovaných pokusů. | Integer | Ne. Výchozí hodnota je 0.
+retryIntervalInSeconds | Prodleva mezi pokusy o opakování v sekundách. | Integer | Ne. Výchozí hodnota je 30 sekund.
+secureOutput | Při nastavení na hodnotu true se výstup z aktivity považuje za zabezpečený a neprotokoluje se k monitorování. | Logická hodnota | Ne. Výchozí hodnota je false.
 
 ### <a name="control-activity"></a>Aktivita řízení
 Aktivity řízení mají následující strukturu nejvyšší úrovně:

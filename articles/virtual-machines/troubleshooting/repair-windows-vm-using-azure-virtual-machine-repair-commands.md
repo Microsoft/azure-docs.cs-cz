@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
 ms.openlocfilehash: 82bebcbda3110d51ae72df1fb4b18fedaa6c2f4e
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597697"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Oprava virtuálního počítače s Windows pomocí příkazů pro opravu virtuálních počítačů Azure
@@ -74,13 +74,13 @@ Další dokumentaci a pokyny najdete v tématu [AZ VM Repair](/cli/azure/ext/vm-
    az extension update -n vm-repair
    ```
 
-3. Spusťte `az vm repair create`. Tento příkaz vytvoří kopii disku s operačním systémem pro virtuální počítač bez funkčního fungování, vytvoří opravný virtuální počítač v nové skupině prostředků a připojí kopii disku s operačním systémem.  Opravný virtuální počítač bude mít stejnou velikost a oblast jako zadaný virtuální počítač, který není funkční. Skupina prostředků a název virtuálního počítače použité ve všech krocích budou pro virtuální počítač bez funkčního fungování. Pokud váš virtuální počítač používá Azure Disk Encryption příkaz se pokusí odemknout zašifrovaný disk, aby byl přístupný při připojení k opravnému virtuálnímu počítači.
+3. Spusťte příkaz `az vm repair create`. Tento příkaz vytvoří kopii disku s operačním systémem pro virtuální počítač bez funkčního fungování, vytvoří opravný virtuální počítač v nové skupině prostředků a připojí kopii disku s operačním systémem.  Opravný virtuální počítač bude mít stejnou velikost a oblast jako zadaný virtuální počítač, který není funkční. Skupina prostředků a název virtuálního počítače použité ve všech krocích budou pro virtuální počítač bez funkčního fungování. Pokud váš virtuální počítač používá Azure Disk Encryption příkaz se pokusí odemknout zašifrovaný disk, aby byl přístupný při připojení k opravnému virtuálnímu počítači.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password 'password!234' --verbose
    ```
 
-4. Spusťte `az vm repair run`. Tento příkaz spustí na připojeném disku určený skript opravy pomocí opravného virtuálního počítače. Pokud vám průvodce pro odstraňování potíží, který používáte, zadal identifikátor Run-ID, použijte ho tady. v opačném případě můžete použít `az vm repair list-scripts` k zobrazení dostupných skriptů oprav. Zde použitá skupina prostředků a název virtuálního počítače jsou pro virtuální počítač, který není v kroku 3 použit. Další informace o skriptech opravy najdete v [knihovně opravit skript](https://github.com/Azure/repair-script-library).
+4. Spusťte příkaz `az vm repair run`. Tento příkaz spustí na připojeném disku určený skript opravy pomocí opravného virtuálního počítače. Pokud vám průvodce pro odstraňování potíží, který používáte, zadal identifikátor Run-ID, použijte ho tady. v opačném případě můžete použít `az vm repair list-scripts` k zobrazení dostupných skriptů oprav. Zde použitá skupina prostředků a název virtuálního počítače jsou pro virtuální počítač, který není v kroku 3 použit. Další informace o skriptech opravy najdete v [knihovně opravit skript](https://github.com/Azure/repair-script-library).
 
    ```azurecli-interactive
    az vm repair run -g MyResourceGroup -n MyVM --run-on-repair --run-id win-hello-world --verbose
@@ -88,7 +88,7 @@ Další dokumentaci a pokyny najdete v tématu [AZ VM Repair](/cli/azure/ext/vm-
    
    Volitelně můžete provést potřebné ruční kroky pro zmírnění rizik pomocí opravy virtuálního počítače a pak pokračovat krokem 5.
 
-5. Spusťte `az vm repair restore`. Tento příkaz zahodí opravený disk s operačním systémem s původním diskem s operačním systémem virtuálního počítače. Zde použitá skupina prostředků a název virtuálního počítače jsou pro virtuální počítač, který není v kroku 3 použit.
+5. Spusťte příkaz `az vm repair restore`. Tento příkaz zahodí opravený disk s operačním systémem s původním diskem s operačním systémem virtuálního počítače. Zde použitá skupina prostředků a název virtuálního počítače jsou pro virtuální počítač, který není v kroku 3 použit.
 
    ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose

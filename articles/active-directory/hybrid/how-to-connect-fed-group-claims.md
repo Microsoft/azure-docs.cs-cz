@@ -13,10 +13,10 @@ ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
 ms.openlocfilehash: ce438ad0725aff677f897a635a0cd32d92bbbdbe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265465"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Konfigurace deklarací identity skupin pro aplikace s Azure Active Directory
@@ -147,7 +147,7 @@ Platné hodnoty jsou:
 | **"DirectoryRole** | Pokud je uživateli přiřazené role adresáře, vygenerují se jako deklarace identity WIDS (deklarace identity skupin nebude vygenerována). |
 | **"Aplikační aplikace** | Vygeneruje pouze skupiny, které jsou explicitně přiřazeny k aplikaci a uživatel je členem |
 
-   Příklad:
+   Například:
 
    ```json
    "groupMembershipClaims": "SecurityGroup"
