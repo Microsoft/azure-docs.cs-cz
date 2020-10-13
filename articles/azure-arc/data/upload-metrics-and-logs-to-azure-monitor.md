@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: d508e2e24ac35171d87cdba9cb79981dfb8764e3
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91757465"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Nahrajte data o využití, metriky a protokoly do Azure Monitor
@@ -23,7 +23,7 @@ Pravidelně můžete exportovat informace o využití pro účely fakturace, mon
 > [!NOTE] 
 Během období Preview se neúčtují žádné náklady na používání datových služeb s podporou ARC Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat rozhraní příkazového řádku Azure CLI (AZ) a rozhraní Azure Data CLI (azdata).  [Nainstalovat nástroje](./install-client-tools.md).
 

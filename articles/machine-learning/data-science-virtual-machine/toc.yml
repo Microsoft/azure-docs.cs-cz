@@ -56,6 +56,8 @@
           href: dsvm-common-identity.md
         - name: Přihlašovací údaje pro zabezpečený přístup k prostředkům
           href: dsvm-secure-access-keys.md
+    - name: Upgrade prostředí Data Science Virtual Machine na Ubuntu 18.04
+      href: ubuntu-upgrade.md
 - name: Zdroje a prostředky
   items:
     - name: Stránka s dotazy na Microsoft Q&A

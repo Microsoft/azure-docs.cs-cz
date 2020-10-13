@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 2a931b1a3c3f88af1abec4fd1810aae09c849c48
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936834"
 ---
 # <a name="create-an-azure-sql-managed-instance-on-azure-arc"></a>Vytvoření spravované instance Azure SQL v Arc Azure
@@ -62,7 +62,7 @@ azdata arc sql mi create -n sqldemo --storage-class-data managed-premium --stora
 >
 >  Při zadání přidělení paměti a přidělení vCore použijte tento vzorec k zajištění úspěšného vytvoření – pro každé 1 vCore potřebujete alespoň 4 GB paměti RAM dostupné na uzlu Kubernetes, kde se spustí spravovaná instance SQL pod.
 >
->  Při vytváření instance SQL nepoužívá velká písmena v názvu při zřizování v Azure
+>  Pokud instanci SQL zřizujete v Azure, při jejím vytváření v jejím názvu nepoužívejte velká písmena.
 >
 >  Výpis dostupných tříd úložiště ve spuštění clusteru Kubernetes `kubectl get storageclass` 
 

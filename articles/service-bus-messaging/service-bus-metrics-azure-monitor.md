@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak pomocí Azure Monitor monitorovat S
 ms.topic: article
 ms.date: 09/30/2020
 ms.openlocfilehash: 169edb651a59302d0ea1245fd48787404dd3e555
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598131"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metriky v Azure Monitor
@@ -54,7 +54,7 @@ Všechny hodnoty metrik jsou odesílány do Azure Monitor každou minutu. Časov
 
 Spočítá počet požadavků na data a operace správy.
 
-| Název metriky | Popis |
+| Název metriky | Description |
 | ------------------- | ----------------- |
 | Příchozí žádosti| Počet požadavků provedených ve službě Service Bus v zadaném období. <br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
 |Úspěšné požadavky|Počet úspěšných požadavků provedených ve službě Service Bus v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
@@ -72,7 +72,7 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 
 ## <a name="message-metrics"></a>Metriky zpráv
 
-| Název metriky | Popis |
+| Název metriky | Description |
 | ------------------- | ----------------- |
 |Příchozí zprávy|Počet událostí nebo zpráv odeslaných do Service Bus v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
 |Odchozí zprávy|Počet událostí nebo zpráv přijatých z Service Bus v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
@@ -91,7 +91,7 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 
 ## <a name="connection-metrics"></a>Metriky připojení
 
-| Název metriky | Popis |
+| Název metriky | Description |
 | ------------------- | ----------------- |
 |Aktivní připojení|Počet aktivních připojení v oboru názvů i pro entitu v oboru názvů. Hodnota této metriky je hodnota k určitému bodu v čase. Připojení, která jsou aktivní ihned po tomto okamžiku, se neprojeví v metrikě.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
 |Otevřená připojení |Počet otevřených připojení.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
@@ -106,7 +106,7 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 > 
 > Další metrikou, kterou můžete monitorovat: **omezené požadavky**. Nemělo by se jednat o problém, dokud obor názvů zůstane v rámci omezení paměti, procesoru a zprostředkovaných připojení. Další informace najdete v tématu [omezování v Azure Service Bus úrovně Premium](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier) .
 
-| Název metriky | Popis |
+| Název metriky | Description |
 | ------------------- | ----------------- |
 |Využití CPU na obor názvů|Procento využití procesoru oboru názvů.<br/><br/> Jednotka: procenta <br/> Typ agregace: maximum <br/> Dimenze: název entity|
 |Využití velikosti paměti na obor názvů|Procento využití paměti oboru názvů.<br/><br/> Jednotka: procenta <br/> Typ agregace: maximum <br/> Dimenze: název entity|
@@ -115,7 +115,7 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 
 Azure Service Bus podporuje následující dimenze pro metriky v Azure Monitor. Přidávání dimenzí do metrik je volitelné. Pokud dimenze nepřidáte, jsou metriky zadány na úrovni oboru názvů. 
 
-|Název dimenze|Popis|
+|Název dimenze|Description|
 | ------------------- | ----------------- |
 |Název entity| Service Bus podporuje entity zasílání zpráv pod oborem názvů.|
 
@@ -151,7 +151,7 @@ Azure Service Bus podporuje následující dimenze pro metriky v Azure Monitor. 
 1. Na stránce **vytvořit pravidlo** rozbalte položku **definovat skupinu akcí**, vyberte možnost **Nová skupina akcí**a na **stránce Přidat skupinu akcí**proveďte následující akce. 
     1. Zadejte název skupiny akcí.
     2. Zadejte krátký název skupiny akcí. 
-    3. Vyberte předplatné. 
+    3. Vyberte své předplatné. 
     4. Vyberte skupinu prostředků. 
     5. Pro tento návod zadejte pro **název akce** **Odeslat e-mail** .
     6. Pro **typ akce**vyberte **e-mail/SMS/nabízený/hlas** . 

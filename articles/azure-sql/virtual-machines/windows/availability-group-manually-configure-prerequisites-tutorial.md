@@ -15,10 +15,10 @@ ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 278e5feb327c1376b7644050f414f680334d5c50
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263228"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Předpoklady pro vytváření skupin dostupnosti Always On u SQL Server v Azure Virtual Machines
@@ -44,7 +44,7 @@ Potřebujete mít účet Azure. Můžete si [otevřít bezplatný účet Azure](
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Tuto možnost vyberte **+** , pokud chcete vytvořit nový objekt na portálu.
 
    ![Nový objekt](./media/availability-group-manually-configure-prerequisites-tutorial-/01-portalplus.png)
@@ -232,7 +232,7 @@ V následujících krocích nakonfigurujte počítač **AD-Primary-DC** jako řa
     ![Dialogové okno Přidat role](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
 
 7. Vyberte **Další** , dokud se nedostanete do části **potvrzení** . V **případě potřeby zaškrtněte políčko automaticky restartovat cílový server** .
-8. Vyberte **Install** (Nainstalovat).
+8. Vyberte **Nainstalovat**.
 9. Po dokončení instalace funkcí se vraťte na řídicí panel **Správce serveru** .
 10. V levém podokně vyberte možnost Nová **Služba AD DS** .
 11. Na žlutém výstražném panelu vyberte odkaz **Další** .
@@ -248,7 +248,7 @@ V následujících krocích nakonfigurujte počítač **AD-Primary-DC** jako řa
     | **Možnosti řadiče domény** |**DSRM Password** = contoso! 0000<br/>**Potvrzení hesla** = contoso! 0000 |
 
 14. Kliknutím na tlačítko **Další** přejdete na ostatní stránky v průvodci. Na stránce **Kontrola předpokladů** ověřte, že se zobrazí následující zpráva: **všechny kontroly požadovaných součástí byly úspěšně úspěšné**. Můžete si prohlédnout jakékoli použitelné varovné zprávy, ale je možné pokračovat v instalaci.
-15. Vyberte **Install** (Nainstalovat). Virtuální počítač **AD-Primary-DC** se automaticky restartuje.
+15. Vyberte **Nainstalovat**. Virtuální počítač **AD-Primary-DC** se automaticky restartuje.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Poznamenejte si IP adresu primárního řadiče domény.
 
@@ -397,7 +397,7 @@ Dále vytvořte tři virtuální počítače – dva SQL Server virtuální poč
 | **Základy** konfigurace virtuálních počítačů |**Název** = cluster – FSW<br/>**Uživatelské jméno** = DomainAdmin<br/>**Password** = contoso! 0000<br/>**Předplatné** = vaše předplatné<br/>**Skupina prostředků** = SQL-ha-RG<br/>**Location** = umístění Azure |**Název** = SQLServer-0<br/>**Uživatelské jméno** = DomainAdmin<br/>**Password** = contoso! 0000<br/>**Předplatné** = vaše předplatné<br/>**Skupina prostředků** = SQL-ha-RG<br/>**Location** = umístění Azure |**Název** = SQLServer-1<br/>**Uživatelské jméno** = DomainAdmin<br/>**Password** = contoso! 0000<br/>**Předplatné** = vaše předplatné<br/>**Skupina prostředků** = SQL-ha-RG<br/>**Location** = umístění Azure |
 | **Velikost** konfigurace virtuálního počítače |**Velikost** = DS1 \_ v2 (1 VCPU, 3,5 GB) |**Size** = DS2 \_ v2 (2 VCPU, 7 GB)</br>Velikost musí podporovat úložiště SSD (podpora disků úrovně Premium. )) |**Size** = DS2 \_ v2 (2 VCPU, 7 GB) |
 | **Nastavení** konfigurace virtuálního počítače |**Storage**: použijte spravované disky.<br/>**Virtuální síť** = autoHAVNET<br/>**Podsíť** = sqlsubnet (10.1.1.0/24)<br/>**Veřejná IP adresa** se automaticky vygenerovala.<br/>**Skupina zabezpečení sítě** = žádné<br/>**Monitorování diagnostiky** = povoleno<br/>**Účet úložiště diagnostiky** = použít automaticky generovaný účet úložiště<br/>**Skupina dostupnosti** = sqlAvailabilitySet<br/> |**Storage**: použijte spravované disky.<br/>**Virtuální síť** = autoHAVNET<br/>**Podsíť** = sqlsubnet (10.1.1.0/24)<br/>**Veřejná IP adresa** se automaticky vygenerovala.<br/>**Skupina zabezpečení sítě** = žádné<br/>**Monitorování diagnostiky** = povoleno<br/>**Účet úložiště diagnostiky** = použít automaticky generovaný účet úložiště<br/>**Skupina dostupnosti** = sqlAvailabilitySet<br/> |**Storage**: použijte spravované disky.<br/>**Virtuální síť** = autoHAVNET<br/>**Podsíť** = sqlsubnet (10.1.1.0/24)<br/>**Veřejná IP adresa** se automaticky vygenerovala.<br/>**Skupina zabezpečení sítě** = žádné<br/>**Monitorování diagnostiky** = povoleno<br/>**Účet úložiště diagnostiky** = použít automaticky generovaný účet úložiště<br/>**Skupina dostupnosti** = sqlAvailabilitySet<br/> |
-| **Nastavení SQL Server** konfigurace virtuálního počítače |- |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |
+| **Nastavení SQL Server** konfigurace virtuálního počítače |Nelze použít |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |**Připojení SQL** = privátní (v rámci Virtual Network)<br/>**Port** = 1433<br/>**Ověřování SQL** = zakázat<br/>**Konfigurace úložiště** = obecné<br/>**Automatizované opravy** = neděle v 2:00<br/>**Automatizované zálohování** = zakázáno</br>**Azure Key Vault Integration** = disabled |
 
 <br/>
 

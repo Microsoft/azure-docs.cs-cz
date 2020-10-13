@@ -8,10 +8,10 @@ ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: 1bb18cc43ef306a208500ff49ec41dbfb74b788e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323464"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Ladění aplikací pomocí Azure Application Insights v aplikaci Visual Studio
@@ -21,7 +21,7 @@ Pokud jste webovou aplikaci v ASP.NET vytvořili pomocí sady Visual Studio 2017
 
 Pokud chcete monitorovat aplikaci za provozu v produkčním prostředí, telemetrii Application Insights normálně zobrazíte na webu [Azure Portal](https://portal.azure.com), kde můžete nastavit upozornění a použít výkonné monitorovací nástroje. Pro účely ladění ale můžete vyhledávat a analyzovat telemetrii také v sadě Visual Studio. Můžete použít Visual Studio k analýze telemetrie jak z produkčního webu, tak z ladění, které běží na vašem vývojovém počítači. V druhém případě můžete spuštěné ladění analyzovat, i když jste ještě nenakonfigurovali sadu SDK k odesílání telemetrie na web Azure Portal. 
 
-## <a name="debug-your-project"></a><a name="run"></a>Ladění projektu
+## <a name="debug-your-project"></a><a name="run"></a> Ladění projektu
 Spusťte webovou aplikaci v režimu místního ladění pomocí klávesy F5. Otevřete různé stránky k vygenerování nějaké telemetrie.
 
 V aplikaci Visual Studio se zobrazí počet událostí, které byly zaprotokolovány modulem Application Insights ve vašem projektu.

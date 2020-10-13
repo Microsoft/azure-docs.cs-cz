@@ -1,22 +1,22 @@
 ---
-title: Migrace aplikace pro Android | Mapy Microsoft Azure
-description: Postup migrace aplikace pro Android z Google Maps na mapy Microsoft Azure
+title: Kurz – migrace aplikace pro Android | Mapy Microsoft Azure
+description: Kurz migrace aplikace pro Android z Google Maps na mapy Microsoft Azure
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/19/2020
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 96f68bdf58d9cc98815e4ae76ae01da87c38dc88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b493b78971b7e802d82e8f61203abdaaca527016
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319635"
+ms.locfileid: "91873859"
 ---
-# <a name="migrate-an-android-app-from-google-maps"></a>Migrace aplikace pro Android z Google Maps
+# <a name="tutorial---migrate-an-android-app-from-google-maps"></a>Kurz – migrace aplikace pro Android z Google Maps
 
 Android SDK Azure Maps má rozhraní API, které je podobné webové sadě SDK. Pokud jste se seznámili s jednou z těchto sad SDK, platí mnoho ze stejných konceptů, osvědčených postupů a architektur.
 

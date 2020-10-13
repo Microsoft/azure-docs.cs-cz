@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308108"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Konceptuální porozumění certifikátům CA X. 509 v oboru IoT
@@ -69,9 +69,9 @@ Zakoupení certifikátu certifikační autority má výhodu, že by měla dobře
 
 Pokud chcete koupit certifikát CA X. 509, společnost-X zvolí poskytovatele kořenových certifikátů. Hledání v Internetu fráze "Kořenová certifikační autorita" poskytne dobrá zájem. Kořenová certifikační autorita povede společnost-X o tom, jak vytvořit pár veřejného a privátního klíče a jak vygenerovat žádost o podepsání certifikátu pro své služby. CSR je formální proces, který se používá pro certifikát od certifikační autority. Výsledek tohoto nákupu je certifikát, který se použije jako certifikát autority. Vzhledem k všudypřítomnosti výrazněí certifikátů X. 509 je pravděpodobně certifikát správně formátován na standard RFC 5280 specifikace IETF.
 
-### <a name="creating-a-self-signed-x509-ca-certificate"></a>Vytvoření certifikátu CA X. 509 podepsaného svým držitelem
+### <a name="creating-a-self-signed-x509-ca-certificate"></a>Vytvoření certifikátu certifikační autority Self-Signed X. 509
 
-Proces vytvoření certifikátu certifikační autority X. 509 podepsaný svým držitelem se podobá nákupu s výjimkou, že se týká registrace třetí strany, jako je například kořenová certifikační autorita. V našem příkladu společnost-X podepíše svůj certifikát autority namísto kořenové certifikační autority. Společnost – X může zvolit tuto možnost testování, dokud nebudou připravené k nákupu certifikátu autority. Společnost-X může také v produkčním prostředí používat certifikát CA X. 509 podepsaný svým držitelem, pokud inteligentní-X-widget není určený k připojení k žádným službám třetích stran mimo IoT Hub.
+Proces vytvoření Self-Signed certifikátu certifikační autority X. 509 se podobá nákupu s výjimkou, že se týká registrace třetí strany, jako je například kořenová certifikační autorita. V našem příkladu společnost-X podepíše svůj certifikát autority namísto kořenové certifikační autority. Společnost – X může zvolit tuto možnost testování, dokud nebudou připravené k nákupu certifikátu autority. Společnost-X může také v produkčním prostředí používat certifikát CA X. 509 podepsaný svým držitelem, pokud inteligentní-X-widget není určený k připojení k žádným službám třetích stran mimo IoT Hub.
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>Zaregistrujte certifikát X. 509, aby bylo možné IoT Hub
 

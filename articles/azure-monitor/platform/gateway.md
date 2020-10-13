@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87305206"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor
@@ -114,7 +114,7 @@ Pokud chcete bránu Log Analytics z Azure Portal získat, postupujte takto:
  
    ![Snímek obrazovky s postupem, jak stáhnout bránu Log Analytics](./media/gateway/download-gateway.png)
 
-– nebo – 
+nebo 
 
 1. V okně pracovního prostoru v části **Nastavení**vyberte **Upřesnit nastavení**.
 1. Přejít na **připojené zdroje**  >  **Windows servery** a vyberte **Stáhnout Log Analytics bránu**.
@@ -306,7 +306,7 @@ Informace o adrese URL pro jednotlivé oblasti najdete v části [Konfigurace s�
 Pokud je počítač zaregistrován jako Hybrid Runbook Worker automaticky, například pokud je řešení Update Management povoleno pro jeden nebo více virtuálních počítačů, postupujte podle následujících kroků:
 
 1. Přidejte adresy URL běhových dat úlohy do seznamu povolených hostitelů v bráně Log Analytics. Příklad: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
-1. Restartujte službu Log Analytics brány pomocí následující rutiny PowerShellu:`Restart-Service OMSGatewayService`
+1. Restartujte službu Log Analytics brány pomocí následující rutiny PowerShellu: `Restart-Service OMSGatewayService`
 
 Pokud je počítač připojený k Azure Automation pomocí rutiny registrace Hybrid Runbook Worker, postupujte podle těchto kroků:
 
@@ -321,8 +321,8 @@ Pomocí rutin můžete dokončit úlohy aktualizace nastavení konfigurace Log A
 
 1. Nainstalujte bránu Log Analytics (Microsoft Instalační služba systému Windows).
 1. Otevřete okno konzoly PowerShellu.
-1. Importujte modul zadáním tohoto příkazu:`Import-Module OMSGateway`
-1. Pokud v předchozím kroku nedošlo k žádné chybě, modul byl úspěšně importován a lze použít rutiny. Napište`Get-Module OMSGateway`
+1. Importujte modul zadáním tohoto příkazu: `Import-Module OMSGateway`
+1. Pokud v předchozím kroku nedošlo k žádné chybě, modul byl úspěšně importován a lze použít rutiny. Zadejte `Get-Module OMSGateway`.
 1. Po provedení změn pomocí rutin restartujte službu brány OMS.
 
 Chyba v kroku 3 znamená, že modul nebyl naimportován. K této chybě může dojít, když PowerShell nemůže najít modul. Modul najdete v instalační cestě brány OMS: *C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*.
@@ -332,7 +332,7 @@ Chyba v kroku 3 znamená, že modul nebyl naimportován. K této chybě může d
 | `Get-OMSGatewayConfig` |Klíč |Získá konfiguraci služby. |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |Klíč (povinné) <br> Hodnota |Změní konfiguraci služby. |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |Získá adresu proxy předávacího (nadřazeného) serveru. |`Get-OMSGatewayRelayProxy` |  
-| `Set-OMSGatewayRelayProxy` |Adresa<br> Uživatelské jméno<br> Heslo (zabezpečený řetězec) |Nastaví adresu (a přihlašovací údaje) proxy předávacího (nadřazeného) serveru. |1. Nastavte proxy server přenosu a přihlašovací údaje:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. Nastavte přenosového proxy serveru, který nepotřebuje ověřování:`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. Vymažte nastavení předávacího proxy serveru:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
+| `Set-OMSGatewayRelayProxy` |Adresa<br> Uživatelské jméno<br> Heslo (zabezpečený řetězec) |Nastaví adresu (a přihlašovací údaje) proxy předávacího (nadřazeného) serveru. |1. Nastavte proxy server přenosu a přihlašovací údaje:<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. Nastavte přenosového proxy serveru, který nepotřebuje ověřování: `Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. Vymažte nastavení předávacího proxy serveru:<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
 | `Get-OMSGatewayAllowedHost` | |Získá aktuálně povoleného hostitele (jenom místně konfigurovaný povolený hostitel, ale nestahují automaticky povolené hostitele). |`Get-OMSGatewayAllowedHost` | 
 | `Add-OMSGatewayAllowedHost` |Hostitel (povinné) |Přidá hostitele do seznamu povolených. |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
 | `Remove-OMSGatewayAllowedHost` |Hostitel (povinné) |Odebere hostitele ze seznamu povolených. |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  

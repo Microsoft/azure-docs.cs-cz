@@ -7,17 +7,17 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 4f5328bbe21bb5f4a7947d5a495f4a0c8759c8da
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87315633"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilování aplikací v reálném čase Azure App Service s využitím Application Insights
 
 Profiler můžete spustit v ASP.NET a aplikacích ASP.NET Core, které běží na Azure App Service pomocí úrovně Basic nebo vyšší. Povolení profileru v systému Linux je aktuálně možné pouze prostřednictvím [této metody](profiler-aspnetcore-linux.md).
 
-## <a name="enable-profiler-for-your-app"></a><a id="installation"></a>Povolení profileru pro vaši aplikaci
+## <a name="enable-profiler-for-your-app"></a><a id="installation"></a> Povolení profileru pro vaši aplikaci
 Pokud chcete povolit profiler pro aplikaci, postupujte podle následujících pokynů. Pokud používáte jiný typ služby Azure, najdete tady pokyny k povolení profileru na jiných podporovaných platformách:
 * [Cloudové služby](./profiler-cloudservice.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Service Fabric aplikací](./profiler-servicefabric.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
@@ -50,7 +50,7 @@ Tady jsou nastavení potřebná k povolení profileru:
 |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
 
-Tyto hodnoty můžete nastavit pomocí [šablon Azure Resource Manager](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](/powershell/module/az.websites/set-azwebapp)a [Azure CLI](/cli/azure/webapp/config/appsettings?view=azure-cli-latest).
+Tyto hodnoty můžete nastavit pomocí [šablon Azure Resource Manager](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](/powershell/module/az.websites/set-azwebapp)a  [Azure CLI](/cli/azure/webapp/config/appsettings?view=azure-cli-latest).
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>Ruční povolení profileru pro ostatní cloudy
 

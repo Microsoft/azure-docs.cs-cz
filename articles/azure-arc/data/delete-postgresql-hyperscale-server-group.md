@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: dcabe4b1520c66b8d5bfa398dc1248972587cd32
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936805"
 ---
 # <a name="delete-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Odstranění skupiny serverů s povoleným PostgreSQLým rozšířením Azure ARC
@@ -49,7 +49,7 @@ azdata arc postgres server delete -n postgres01
 
 ## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>Uvolnit deklarace identity trvalého svazku Kubernetes (PVC)
 
-Odstraněním skupiny serverů se neodstraní přidružené [virtuální okruhy](https://kubernetes.io/docs/concepts/storage/persistent-volumes/). Toto chování je úmyslné. Záměrem je pomáhat uživateli získat přístup k souborům databáze v případě, že odstranění instance bylo nechtěné. Odstraňování trvalých virtuálních okruhů není povinné. Doporučuje se to ale. Pokud tyto virtuální okruhy neuvolníte, budete nakonec mít chyby, protože cluster Kubernetes bude považovat za nedostatek místa na disku. Pokud chcete znovu získat trvalé virtuální okruhy, proveďte následující kroky:
+Odstraněním skupiny serverů se neodstraní přidružené [virtuální okruhy](https://kubernetes.io/docs/concepts/storage/persistent-volumes/). Toto chování je úmyslné. Záměrem je pomoct uživateli získat přístup k souborům databáze v případě, že odstranění instance bylo nechtěné. Odstraňování deklarací identity trvalých svazků není povinné. Doporučuje se to ale. Pokud tyto deklarace identity trvalých svazků nezískáte zpět, bude nakonec nejspíš docházet k chybám, protože si cluster Kubernetes bude myslet, že mu dochází místo na disku. Pokud chcete získat zpět deklarace identity trvalých svazků, proveďte následující kroky:
 
 ### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1. vypíšete okruhy PVC pro skupinu serverů, kterou jste odstranili.
 Pokud chcete zobrazit seznam virtuálních okruhů, spusťte tento příkaz:
@@ -57,7 +57,7 @@ Pokud chcete zobrazit seznam virtuálních okruhů, spusťte tento příkaz:
 kubectl get pvc [-n <namespace name>]
 ```
 
-Vrátí seznam PVSs, zejména okruh PVC pro skupinu serverů, kterou jste odstranili. Příklad:
+Vrátí seznam PVSs, zejména okruh PVC pro skupinu serverů, kterou jste odstranili. Například:
 ```console
 kubectl get pvc
 NAME                STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
@@ -79,7 +79,7 @@ Obecný formát tohoto příkazu je:
 kubectl delete pvc <name of pvc>  [-n <namespace name>]
 ```
 
-Příklad:
+Například:
 ```console
 kubectl delete pvc data-postgres01-0
 kubectl delete pvc data-postgres01-1 
@@ -91,7 +91,7 @@ kubectl delete pvc logs-postgres01-2
 kubectl delete pvc logs-postgres01-3
 ```
 
-Každý z těchto příkazů kubectl ověří úspěšné odstranění trvalého virtuálního okruhu. Příklad:
+Každý z těchto příkazů kubectl ověří úspěšné odstranění trvalého virtuálního okruhu. Například:
 ```console
 persistentvolumeclaim "data-postgres01-0" deleted
 ```

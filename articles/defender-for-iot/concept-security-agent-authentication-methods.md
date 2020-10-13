@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 896baa70fb6e18165a025459a063e33d705261ba
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936267"
 ---
 # <a name="security-agent-authentication-methods"></a>Metody ověřování agenta zabezpečení
@@ -48,7 +48,7 @@ Informace o tom, jak nakonfigurovat, najdete v tématu [parametry instalace agen
 ## <a name="authentication-methods-known-limitations"></a>Známá omezení metod ověřování
 
 - Režim ověřování **SecurityModule** podporuje pouze ověřování symetrického klíče.
-- Režim ověřování **zařízení** nepodporuje certifikát podepsaný certifikační autoritou.
+- CA-Signed certifikát není podporován režimem ověřování **zařízení** .
 
 ## <a name="security-agent-installation-parameters"></a>Parametry instalace agenta zabezpečení
 

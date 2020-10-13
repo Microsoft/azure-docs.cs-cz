@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/09/2020
 ms.openlocfilehash: ad0ff98174a81518fe26063f9ccc6acbbddbf8d6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442376"
 ---
 # <a name="archived-release-notes"></a>Archivované poznámky k verzi
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky pro Open Source Apache Hadoop a Apache Spark analýzy v Azure.
 
@@ -751,7 +751,7 @@ Tato verze poskytuje kromě následujících oprav také podregistr 1.2.1 a 2.1.
 
 -   [*Podregistr-18189*](https://issues.apache.org/jira/browse/HIVE-18189): dotaz na podregistr vrací nesprávné výsledky při nastavení podregistru. GroupBy. OrderBy. Position. alias na hodnotu true.
 
--   [*Podregistr-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vektory: zmenšení skupiny podle MERGEPARTIAL s duplicitními sloupci je přerušeno.
+-   [*Podregistr-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vector: Reduce-Side Group by MERGEPARTIAL s duplicitními sloupci je přerušený.
 
 -   [*Podregistr-18293*](https://issues.apache.org/jira/browse/HIVE-18293): podregistr se nedaří komprimovat tabulky obsažené ve složce, která není vlastněna identitou, která používá HiveMetaStore.
 
@@ -859,7 +859,7 @@ Tato verze poskytuje kromě následujících oprav také podregistr 1.2.1 a 2.1.
 
 -   [*Podregistr-18189*](https://issues.apache.org/jira/browse/HIVE-18189): pozice ORDER by nefunguje, když je CBO zakázaný.
 
--   [*Podregistr-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vektory: zmenšení skupiny podle MERGEPARTIAL s duplicitními sloupci je přerušeno.
+-   [*Podregistr-18258*](https://issues.apache.org/jira/browse/HIVE-18258): vector: Reduce-Side Group by MERGEPARTIAL s duplicitními sloupci je přerušený.
 
 -   [*Podregistr-18269*](https://issues.apache.org/jira/browse/HIVE-18269): LLAP: rychlá LLAP v/v s pomalým zpracováním kanálu může vést k OOM.
 
@@ -981,7 +981,7 @@ V HDP-2.3. x a 2.4. x místo odeslání konkrétní verze nástroje Mahout pro A
 
 Bod revize zvolený pro Mahout v HDP 2.3. x a 2.4. x je od větve "Mahout-0.10. x" ze sítě Apache Mahout, od 19. prosince 2014, revize 0f037cb03e77c096 v GitHubu.
 
-V HDP-2.5. x a 2.6. x jsme odebrali knihovnu "gethttpclient" z Mahout, protože ji zobrazujeme jako zastaralou knihovnu s možnými problémy se zabezpečením a upgradovali jste klienta Hadoop-Client v Mahout na verzi 2.7.3, stejnou verzi, kterou používá HDP-2,5. Výsledek:
+V HDP-2.5. x a 2.6. x jsme odebrali knihovnu "gethttpclient" z Mahout, protože ji zobrazujeme jako zastaralou knihovnu s možnými problémy zabezpečení a upgradujete Hadoop-Client v Mahout na verzi 2.7.3, stejnou verzi, kterou používá HDP-2,5. Výsledek:
 
 -   Dříve zkompilované Mahout úlohy bude nutné znovu zkompilovat v prostředí HDP-2,5 nebo 2,6.
 
@@ -1139,7 +1139,7 @@ Tato verze poskytuje Spark 2.3.0 a následující opravy Apache:
 
 -   [Spark-23598](https://issues.apache.org/jira/browse/SPARK-23598): zpřístupněte metody v BufferedRowIterator veřejné, aby nedošlo k chybě modulu runtime pro velký dotaz.
 
--   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): přidejte generátor UUID z pseudo-náhodných čísel.
+-   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): přidejte generátor UUID z Pseudo-Random čísel.
 
 -   [Spark-23599](https://issues.apache.org/jira/browse/SPARK-23599): použijte RandomUUIDGenerator ve výrazu UUID.
 
@@ -1221,7 +1221,7 @@ Tato verze poskytuje Spark 2.3.0 a následující opravy Apache:
 
 Tato verze poskytuje Sqoop 1.4.6 bez dalších oprav Apache.
 
-#### <a name="storm"></a>Storm
+#### <a name="storm"></a>Bouře
 
 Tato verze poskytuje Zaplavu 1.1.1 a následující opravy Apache:
 
@@ -1358,7 +1358,7 @@ Opravené problémy představují vybrané problémy, které byly dříve protok
 | CHYBA-92957              | [PODREGISTR-11266](https://issues.apache.org/jira/browse/HIVE-11266)                                                                                                                                                                                                                 | počet ( \* ) špatný výsledek založený na statistikách tabulky pro externí tabulky                                                   |
 | CHYBA-93097              | [RANGER-1944](https://issues.apache.org/jira/browse/RANGER-1944)                                                                                                                                                                                                               | Filtr akcí pro audit správce nepracuje.                                                                           |
 | CHYBA-93335              | [PODREGISTR-12315](https://issues.apache.org/jira/browse/HIVE-12315)                                                                                                                                                                                                                 | zkrácené rozstupné depozice \_ \_ . q má špatný problém s výsledkem pro dvojitý výpočet.                                      |
-| CHYBA-93415              | [Podregistr-18258](https://issues.apache.org/jira/browse/HIVE-18258), [podregistr-18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vektorizace: rozčlenění skupin na více stranách podle MERGEPARTIAL s duplicitními sloupci                                      |
+| CHYBA-93415              | [Podregistr-18258](https://issues.apache.org/jira/browse/HIVE-18258), [podregistr-18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vector: Reduce-Side GROUP BY MERGEPARTIAL s duplicitními sloupci je přerušená.                                      |
 | CHYBA-93939              | [ATLAS – 2294](https://issues.apache.org/jira/browse/ATLAS-2294)                                                                                                                                                                                                                 | Při vytváření typu se přidaly navíc parametr Description.                                                               |
 | CHYBA-94007              | [Phoenix-1751](https://issues.apache.org/jira/browse/PHOENIX-1751), [Phoenix-3112](https://issues.apache.org/jira/browse/PHOENIX-3112)                                                                                                                                         | Dotazy v Phoenixu vrací hodnoty null z důvodu částečných řádků HBA                                                          |
 | CHYBA-94266              | [PODREGISTR-12505](https://issues.apache.org/jira/browse/HIVE-12505)                                                                                                                                                                                                                 | Vložením přepisu do stejné zašifrované zóny se tiše nepovede odebrat některé existující soubory.                                   |
@@ -1751,7 +1751,7 @@ Opravené problémy představují vybrané problémy, které byly dříve protok
 |**Kafka 1,0**|**NENÍ K DISPOZICI**|**Změny popsané v poznámkách k verzi Apache Spark** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Podregistr/Ranger** | |Další zásady podregistru Ranger vyžadované pro přepsání INSERT |**Scénář:** Další zásady podregistru Ranger vyžadované pro **přepsání INSERT**<br /><br />**Předchozí chování:** Do podregistru **vložte** dotazy, které jsou obvykle úspěšné.<br /><br />**Nové chování:** Po upgradu na HDP-2.6. x dojde k neočekávanému selhání **vložení** podregistru do registru s chybou:<br /><br />Chyba při kompilování příkazu: SELHALo: HiveAccessControlException oprávnění odepřeno: uživatel pnovak nemá oprávnění k zápisu na/TMP/ \* (State = 42000, Code = 40 000).<br /><br />Od HDP-2.6.0 vyžaduje zásada pro **vložení přepisu** Ranger zásadu, která povoluje operace zápisu, a to i v případě, že má uživatel oprávnění k zápisu udělené prostřednictvím zásad HDFS.<br /><br />**Alternativní řešení/Očekávaná akce zákazníka:**<br /><br />1. v úložišti podregistru vytvořte novou zásadu.<br />2. v rozevíracím seznamu, kde vidíte databázi, vyberte možnost URI.<br />3. Aktualizujte cestu (příklad:/tmp/*)<br />4. přidejte uživatele a skupinu a uložte je.<br />5. znovu spusťte dotaz pro vložení.|
 |**HDFS**|**NENÍ K DISPOZICI** |HDFS by měl podporovat více identifikátorů URI služby správy klíčů. |**Předchozí chování:** pro konfiguraci cesty poskytovatele služby správy klíčů se použila vlastnost DFS. Encryption. Key. Provider. URI.<br /><br />**Nové chování:** DFS. Encryption. Key. Provider. URI je teď zastaralé místo pro konfiguraci cesty poskytovatele služby správy klíčů (Hadoop. Security. Key. Provider. Path).|
-|**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Možnost zakázání plánovače |**Ovlivněná součást:** Zeppelin – Server<br /><br />**Předchozí chování:** V předchozích verzích Zeppelin existovala možnost pro zákaz plánovače.<br /><br />**Nové chování:** Ve výchozím nastavení se uživatelům nezobrazí Plánovač, protože je ve výchozím nastavení zakázaný.<br /><br />**Alternativní řešení/Očekávaná akce zákazníka:** Pokud chcete povolit Plánovač, budete muset přidat azeppelin. Poznámkový. cron. Enable s hodnotou true v části Custom Zeppelin web v nastavení Zeppelin z Ambari.|
+|**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Možnost zakázání plánovače |**Ovlivněná součást:** Zeppelin-Server<br /><br />**Předchozí chování:** V předchozích verzích Zeppelin existovala možnost pro zákaz plánovače.<br /><br />**Nové chování:** Ve výchozím nastavení se uživatelům nezobrazí Plánovač, protože je ve výchozím nastavení zakázaný.<br /><br />**Alternativní řešení/Očekávaná akce zákazníka:** Pokud chcete povolit Plánovač, budete muset přidat azeppelin. Poznámkový. cron. Enable s hodnotou true v části Custom Zeppelin web v nastavení Zeppelin z Ambari.|
 
 ### <a name="known-issues"></a>Známé problémy
 

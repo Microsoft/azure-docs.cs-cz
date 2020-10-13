@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/30/2020
 ms.author: radeltch
 ms.openlocfilehash: 2184a6e67b17f9fcaefc0a8e556ba81e839a2399
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598068"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux
@@ -70,12 +70,12 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
 * [Nasazení Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide]
 * [Replikace SAP HANA systému v clusteru Pacemaker](https://access.redhat.com/articles/3004101)
 * Obecná dokumentace k RHEL
-  * [Přehled doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Správa doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Referenční informace k doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Přehled Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Správa Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Referenční informace o Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
 * Dokumentace k RHEL specifické pro Azure:
   * [Zásady podpory pro RHEL clustery s vysokou dostupností – Microsoft Azure Virtual Machines jako členové clusteru](https://access.redhat.com/articles/3131341)
-  * [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) cluster s vysokou dostupností v Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) High-Availability clusteru v Microsoft Azure](https://access.redhat.com/articles/3252491)
   * [Instalace SAP HANA na Red Hat Enterprise Linux pro použití v Microsoft Azure](https://access.redhat.com/solutions/3193782)
 
 ## <a name="overview"></a>Přehled
@@ -222,7 +222,7 @@ K nasazení šablony použijte následující postup:
 Další informace o požadovaných portech pro SAP HANA naleznete v kapitole [připojení k databázím tenantů](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) v průvodci [SAP HANA databáze klienta](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) nebo v tématu [SAP Note 2388694][2388694].
 
 > [!IMPORTANT]
-> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](../../../load-balancer/load-balancer-custom-probe-overview.md).
+> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net.IPv4.tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](../../../load-balancer/load-balancer-custom-probe-overview.md).
 > Viz také SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
 ## <a name="install-sap-hana"></a>Instalace SAP HANA

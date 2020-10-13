@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: bce702873fc4e66f283a9785bb408bbfa7fda83c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3df7d3d01dcd5e5b097eba53ef0dae29e86fd0a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87266890"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973253"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Vytvoření virtuálního počítače s Windows ze specializovaného disku pomocí PowerShellu
 
@@ -27,7 +27,7 @@ Máte několik možností:
 
 Pomocí Azure Portal můžete také [vytvořit nový virtuální počítač ze specializovaného virtuálního pevného disku](create-vm-specialized-portal.md).
 
-V tomto článku se dozvíte, jak používat spravované disky. Pokud máte starší verzi nasazení, která vyžaduje použití účtu úložiště, přečtěte si téma [Vytvoření virtuálního počítače ze specializovaného virtuálního pevného disku v účtu úložiště](sa-create-vm-specialized.md).
+V tomto článku se dozvíte, jak používat spravované disky. Pokud máte starší verzi nasazení, která vyžaduje použití účtu úložiště, přečtěte si téma [Vytvoření virtuálního počítače ze specializovaného virtuálního pevného disku v účtu úložiště](/previous-versions/azure/virtual-machines/windows/sa-create-vm-specialized).
 
 Doporučujeme omezit počet souběžných nasazení na 20 virtuálních počítačů z jednoho virtuálního pevného disku nebo snímku. 
 

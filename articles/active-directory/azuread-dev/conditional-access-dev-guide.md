@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
 ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116291"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Pokyny pro vývojáře funkce podmíněného přístupu Azure Active Directory
@@ -153,9 +153,9 @@ V tomto scénáři Vás provedeme v případě, že máme jednostránkovou aplik
 
 V ADAL.js existuje několik funkcí, které získají tokeny: `login()` , `acquireToken(...)` , a `acquireTokenPopup(…)` `acquireTokenRedirect(…)` .
 
-* `login()`Získá token ID prostřednictvím interaktivní žádosti o přihlášení, ale nezíská přístupové tokeny žádné služby (včetně webového rozhraní API pro podmíněný přístup).
-* `acquireToken(…)`dá se pak použít k tichému získání přístupového tokenu, což znamená, že v žádném případě nezobrazuje uživatelské rozhraní.
-* `acquireTokenPopup(…)`a `acquireTokenRedirect(…)` jsou použity k interaktivnímu vyžádání tokenu pro prostředek, což znamená, že vždy zobrazují uživatelské rozhraní pro přihlašování.
+* `login()` Získá token ID prostřednictvím interaktivní žádosti o přihlášení, ale nezíská přístupové tokeny žádné služby (včetně webového rozhraní API pro podmíněný přístup).
+* `acquireToken(…)` dá se pak použít k tichému získání přístupového tokenu, což znamená, že v žádném případě nezobrazuje uživatelské rozhraní.
+* `acquireTokenPopup(…)` a `acquireTokenRedirect(…)` jsou použity k interaktivnímu vyžádání tokenu pro prostředek, což znamená, že vždy zobrazují uživatelské rozhraní pro přihlašování.
 
 Když aplikace potřebuje přístupový token pro volání webového rozhraní API, pokusí se `acquireToken(…)` . Pokud vypršela platnost relace tokenu nebo je potřeba splnit zásady podmíněného přístupu, funkce *acquireToken* se nezdařila a aplikace používá `acquireTokenPopup()` nebo `acquireTokenRedirect()` .
 

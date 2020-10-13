@@ -10,10 +10,10 @@ ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 432386809596fb2ef040a05d1fe0d12294a1abef
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91534518"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Kurz: konfigurace zařízení připojených k řešení monitorování
@@ -30,7 +30,7 @@ V tomto kurzu jste:
 > * Změna konfigurace zařízení
 > * Uspořádání zařízení
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 

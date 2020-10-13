@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 095fd0b534c0dffaf80d2464fb9734f295335b84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317174"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Shromažďovat data z rozšíření diagnostiky Azure do protokolů Azure Monitor
@@ -24,13 +24,13 @@ Rozšíření diagnostiky Azure ukládá data do účtu Azure Storage. Protokoly
 
 | Typ protokolu | Typ prostředku | Umístění |
 | --- | --- | --- |
-| Protokoly IIS |Virtuální počítače <br> Webové role <br> Role pracovního procesu |WAD – IIS – soubory protokolu (Blob Storage) |
-| Syslog |Virtuální počítače |LinuxsyslogVer2v0 (Table Storage) |
+| Protokoly IIS |Virtual Machines <br> Webové role <br> Role pracovního procesu |WAD – IIS – soubory protokolu (Blob Storage) |
+| Syslog |Virtual Machines |LinuxsyslogVer2v0 (Table Storage) |
 | Service Fabric provozní události |Uzly Service Fabric |WADServiceFabricSystemEventTable |
 | Service Fabric spolehlivých událostí objektu actor |Uzly Service Fabric |WADServiceFabricReliableActorEventTable |
 | Service Fabric spolehlivých událostí služby |Uzly Service Fabric |WADServiceFabricReliableServiceEventTable |
-| Protokoly událostí systému Windows |Uzly Service Fabric <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADWindowsEventLogsTable (Table Storage) |
-| Protokoly ETW systému Windows |Uzly Service Fabric <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADETWEventTable (Table Storage) |
+| Protokoly událostí systému Windows |Uzly Service Fabric <br> Virtual Machines <br> Webové role <br> Role pracovního procesu |WADWindowsEventLogsTable (Table Storage) |
+| Protokoly ETW systému Windows |Uzly Service Fabric <br> Virtual Machines <br> Webové role <br> Role pracovního procesu |WADETWEventTable (Table Storage) |
 
 ## <a name="data-types-not-supported"></a>Datové typy nejsou podporovány.
 
@@ -47,7 +47,7 @@ Pomocí následujícího postupu můžete povolit shromažďování diagnostick�
 
 1. V Azure Portal přejdete do **Log Analytics pracovních prostorů** a vyberete svůj pracovní prostor.
 1. V nabídce v části **zdroje dat pracovního prostoru** klikněte na **protokoly účtů úložiště** .
-2. Klikněte na tlačítko **Přidat**.
+2. Klikněte na tlačítko  **Přidat**.
 3. Vyberte **účet úložiště** , který obsahuje data, která se mají shromažďovat.
 4. Vyberte **datový typ** , který chcete shromáždit.
 5. Hodnota pro zdroj se vyplní automaticky na základě datového typu.

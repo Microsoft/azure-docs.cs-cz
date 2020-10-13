@@ -3,20 +3,29 @@ title: Funkce Azure Functions jako obslužná rutina události pro Azure Event G
 description: Popisuje, jak můžete používat Azure Functions jako obslužné rutiny událostí pro Event Grid události.
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: db06962c020eb954bf0c595e5a4019b1df774898
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: cd500eed180096388eede96f768f08b896ca6456
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629684"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873723"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Funkce Azure Functions jako obslužná rutina události pro Event Grid události
 
 Obslužná rutina události je místo, kam se událost posílá. Obslužná rutina provede akci zpracování události. Několik služeb Azure se automaticky nakonfiguruje tak, aby zpracovával události a **Azure Functions** je jednou z nich. 
 
-Pokud chcete reagovat na události z Event Grid, použijte **Azure Functions** v architektuře bez serveru. Při použití funkce Azure jako obslužné rutiny použijte Trigger Event Grid namísto obecného triggeru HTTP. Event Grid automaticky ověří aktivační události Event Grid. S obecnými aktivačními událostmi HTTP musíte implementovat [odpověď ověření](webhook-event-delivery.md) sami.
 
-Další informace najdete v tématu [Event Grid trigger Azure Functions](../azure-functions/functions-bindings-event-grid.md) pro přehled použití triggeru Event Grid ve funkcích Functions.
+Pokud chcete používat funkci Azure jako obslužnou rutinu pro události, postupujte podle jednoho z těchto přístupů: 
+
+-   Použijte [aktivační událost Event Grid](../azure-functions/functions-bindings-event-grid-trigger.md).  Jako **Typ koncového bodu**zadejte **funkci Azure** . Pak zadejte aplikaci funkce Azure a funkci, která bude zpracovávat události. 
+-   Použijte [Trigger http](../azure-functions/functions-bindings-http-webhook.md).  Jako **Typ koncového bodu**zadejte **Webhook** . Pak zadejte adresu URL funkce Azure, která bude zpracovávat události. 
+
+Doporučujeme použít první přístup (Event Grid Trigger), protože má následující výhody oproti druhému přístupu:
+-   Event Grid automaticky ověří aktivační události Event Grid. S obecnými aktivačními událostmi HTTP musíte implementovat [odpověď ověření](webhook-event-delivery.md) sami.
+-   Event Grid automaticky upraví rychlost doručení událostí do funkce aktivované událostí Event Grid na základě pozorované míry, při které funkce může zpracovávat události. Tato funkce se shoduje s tím, že se chyby doručení, které vyplývají z neschopnosti funkce zpracovávat události, neschopnost zpracování událostí, protože počet zpracovaných událostí funkce se může v průběhu času měnit. Pro zvýšení efektivity při vysoké propustnosti povolte dávkování pro odběr událostí. Další informace najdete v tématu [Povolení dávkového](#enable-batching)zpracování.
+
+    > [!NOTE]
+    > V současné době nemůžete použít Trigger Event Grid pro aplikaci Azure Functions, když se událost doručí ve schématu **CloudEvents** . Místo toho použijte Trigger HTTP.
 
 ## <a name="tutorials"></a>Kurzy
 

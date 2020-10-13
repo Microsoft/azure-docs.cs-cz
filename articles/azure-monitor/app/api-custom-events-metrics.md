@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: e9f175e2585a5254922c9e859cf5ece2afbbc3e3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91264129"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API služby Application Insights pro vlastní události a metriky
@@ -437,7 +437,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Většina důležitých informací o zásobníku se už extrahuje do samostatných proměnných, ale pokud chcete získat další informace, můžete si ji stáhnout ze své `details` struktury. Vzhledem k tomu, že je tato struktura dynamická, je vhodné přetypovat výsledek na očekávaný typ. Příklad:
+Většina důležitých informací o zásobníku se už extrahuje do samostatných proměnných, ale pokud chcete získat další informace, můžete si ji stáhnout ze své `details` struktury. Vzhledem k tomu, že je tato struktura dynamická, je vhodné přetypovat výsledek na očekávaný typ. Například:
 
 ```kusto
 exceptions
@@ -500,7 +500,7 @@ Můžete hledat obsah zprávy, ale (na rozdíl od hodnot vlastností) nemůžete
 Omezení velikosti `message` je mnohem vyšší než omezení vlastností.
 Výhodou TrackTrace je, že do zprávy můžete ukládat poměrně dlouhá data. Můžete například zakódovat data POST.  
 
-Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Příklad:
+Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Například:
 
 *C#*
 
@@ -932,7 +932,7 @@ Můžete napsat kód pro zpracování telemetrie před jejich odesláním ze sad
 
 [Vzorkování](./api-filtering-sampling.md) je zabalené řešení, které snižuje objem dat odesílaných z vaší aplikace na portál. V takovém případě nemá vliv na zobrazené metriky. A to i bez ovlivnění vaší schopnosti diagnostikovat problémy pomocí navigace mezi souvisejícími položkami, jako jsou výjimky, požadavky a zobrazení stránek.
 
-[Přečtěte si další informace](./api-filtering-sampling.md).
+[Další informace](./api-filtering-sampling.md).
 
 ## <a name="disabling-telemetry"></a>Zakázání telemetrie
 
@@ -1063,7 +1063,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient má kontextovou vlastnost, která obsahuje hodnoty, které jsou odesílány společně se všemi daty telemetrie. Obvykle jsou nastavené standardními moduly telemetrie, ale můžete je také nastavit sami. Příklad:
+TelemetryClient má kontextovou vlastnost, která obsahuje hodnoty, které jsou odesílány společně se všemi daty telemetrie. Obvykle jsou nastavené standardními moduly telemetrie, ale můžete je také nastavit sami. Například:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";

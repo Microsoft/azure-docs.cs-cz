@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: 0ed237debc2395ed307658b2d57a541574f9478a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284145"
 ---
 # <a name="add-parameters-to-commands"></a>Přidání parametrů do příkazů
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak přidat parametry do vlastních příkazů. Pa
    1. Vyberte **Přejmenovat**. V oknech **příkazu přejmenovat** změňte **název** na **TurnOnOff**.
 
 1. V dalším kroku přidáte do tohoto příkazu nový parametr, který představuje, jestli chce uživatel zařízení zapnout nebo vypnout.
-   1. Vyberte **Přidat** k dispozici v horní části prostředního podokna. V rozevíracím seznamu vyberte možnost **parametr**.
+   1. Vyberte  **Přidat** k dispozici v horní části prostředního podokna. V rozevíracím seznamu vyberte možnost **parametr**.
    1. V pravém podokně v části **parametry** přidejte do pole **název** hodnotu **(OnOff)**.
    1. Vyberte možnost **požadováno**. V okně **Přidat odpověď pro požadovaný parametr** vyberte **jednoduchý editor**. V **první variaci**přidejte
         ```
@@ -54,14 +54,14 @@ V tomto článku se dozvíte, jak přidat parametry do vlastních příkazů. Pa
        | ------------------ | ----------------| ---------------------------------------------------------------------|
        | Název               | `OnOff`           | Popisný název pro parametr                                                                           |
        | Je globální          | unchecked       | Zaškrtávací políčko označující, zda je hodnota pro tento parametr globálně použita pro všechny příkazy v aplikaci|
-       | Povinné           | checked         | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr |
-       | Odpověď na povinný parametr      |Jednoduchý editor >`On or Off?`      | Výzva k zadání hodnoty tohoto parametru, pokud není známa |
+       | Vyžadováno           | checked         | Zaškrtávací políčko, které určuje, zda je před dokončením příkazu nutné zadat hodnotu pro tento parametr |
+       | Odpověď na povinný parametr      |Jednoduchý editor > `On or Off?`      | Výzva k zadání hodnoty tohoto parametru, pokud není známa |
        | Typ               | Řetězec          | Typ parametru, jako je číslo, řetězec, datum a čas nebo zeměpis   |
        | Konfigurace      | Přijměte předdefinované vstupní hodnoty z interního katalogu. | V případě řetězců to omezuje vstupy na sadu možných hodnot. |
        | Předdefinované vstupní hodnoty     | `on`, `off`           | Sada možných hodnot a jejich aliasů         |
        
         
-   1. Pokud chcete přidat předdefinované vstupní hodnoty, vyberte **přidat předdefinované zadání** a v okně **Nová položka** zadejte **název** , jak je uvedeno v tabulce výše. V tomto případě nepoužíváme aliasy, takže je můžete nechat prázdné.
+   1. Pokud chcete přidat předdefinované vstupní hodnoty, vyberte **přidat předdefinované zadání** a v okně **Nová položka**  zadejte **název** , jak je uvedeno v tabulce výše. V tomto případě nepoužíváme aliasy, takže je můžete nechat prázdné.
    
       > [!div class="mx-imgBorder"]
       > ![Vytvořit parametr](media/custom-commands/create-on-off-parameter.png)
@@ -75,10 +75,10 @@ V tomto článku se dozvíte, jak přidat parametry do vlastních příkazů. Pa
 
        | Nastavení            | Navrhovaná hodnota       |
        | ------------------ | --------------------- |
-       | Název               | `SubjectDevice`         |
+       | Name               | `SubjectDevice`         |
        | Je globální          | unchecked             |
-       | Povinné           | checked               |
-       | Odpověď na povinný parametr     | Jednoduchý editor >`Which device do you want to control?`    | 
+       | Vyžadováno           | checked               |
+       | Odpověď na povinný parametr     | Jednoduchý editor > `Which device do you want to control?`    | 
        | Typ               | Řetězec                |          |
        | Konfigurace      | Přijměte předdefinované vstupní hodnoty z interního katalogu. | 
        | Předdefinované vstupní hodnoty | `tv`, `fan`               |
@@ -90,9 +90,9 @@ V tomto článku se dozvíte, jak přidat parametry do vlastních příkazů. Pa
 
 Pro příkazy s parametry je užitečné přidat ukázkové věty, které pokrývají všechny možné kombinace. Například:
 
-* Úplné informace o parametrech –`turn {OnOff} the {SubjectDevice}`
-* Informace o částečném parametru –`turn it {OnOff}`
-* Žádné informace o parametru –`turn something`
+* Úplné informace o parametrech – `turn {OnOff} the {SubjectDevice}`
+* Informace o částečném parametru – `turn it {OnOff}`
+* Žádné informace o parametru – `turn something`
 
 Příklady vět s různými stupni informací umožňují, aby aplikace Custom Commands vyřešila řešení jednoho snímku a řešení vícenásobného zapínání s částečnými informacemi.
 
@@ -109,7 +109,7 @@ turn something
 Vyberte **Uložit**.
 
 > [!TIP]
-> V editoru vzorových vět použijte složené závorky, které odkazují na vaše parametry. - `turn {OnOff} the {SubjectDevice}`Použijte kartu pro automatické dokončování s dříve vytvořenými parametry.
+> V editoru vzorových vět použijte složené závorky, které odkazují na vaše parametry. - `turn {OnOff} the {SubjectDevice}` Použijte kartu pro automatické dokončování s dříve vytvořenými parametry.
 
 ### <a name="modify-completion-rules-to-include-parameters"></a>Upravit pravidla dokončení pro zahrnutí parametrů
 
@@ -149,9 +149,9 @@ Přidat novou **teplotu** parametrů s následující konfigurací
 
 | Konfigurace      | Navrhovaná hodnota     |
 | ------------------ | ----------------|
-| Název               | `Temperature`           |
-| Povinné           | checked         |
-| Odpověď na povinný parametr      | Jednoduchý editor >`What temperature would you like?`
+| Name               | `Temperature`           |
+| Vyžadováno           | checked         |
+| Odpověď na povinný parametr      | Jednoduchý editor > `What temperature would you like?`
 | Typ               | Číslo          |
 
 
@@ -169,7 +169,7 @@ Upravte existující pravidla dokončení podle následujících konfigurací.
 | Konfigurace      | Navrhovaná hodnota     |
 | ------------------ | ----------------|
 | Podmínky         | Požadovaný parametr > teplotu           |
-| Akce           | Odeslat > odpovědi na řeč`Ok, setting temperature to {Temperature} degrees` |
+| Akce           | Odeslat > odpovědi na řeč `Ok, setting temperature to {Temperature} degrees` |
 
 ### <a name="try-it-out"></a>Vyzkoušet
 
@@ -186,9 +186,9 @@ Přidejte parametr s názvem **DateTime** s následující konfigurací.
 
    | Nastavení                           | Navrhovaná hodnota                     | 
    | --------------------------------- | ----------------------------------------|
-   | Název                              | `DateTime`                               |
-   | Povinné                          | checked                                 |
-   | Odpověď na povinný parametr   | Jednoduchý editor >`For what time?`            | 
+   | Name                              | `DateTime`                               |
+   | Vyžadováno                          | checked                                 |
+   | Odpověď na povinný parametr   | Jednoduchý editor > `For what time?`            | 
    | Typ                              | DateTime                                |
    | Výchozí hodnoty data                     | Pokud datum chybí, použijte dnešní den.            |
    | Výchozí hodnoty času                     | V případě chybějícího času použít začátek dne     |
@@ -210,7 +210,7 @@ Upravte existující pravidla dokončení podle následujících konfigurací.
 
    | Nastavení    | Navrhovaná hodnota                               |
    | ---------- | ------------------------------------------------------- |
-   | Akce    | Poslat odezvu na řeč –`Ok, alarm set for {DateTime}`  |
+   | Akce    | Poslat odezvu na řeč – `Ok, alarm set for {DateTime}`  |
 
 
 ### <a name="try-it-out"></a>Vyzkoušet

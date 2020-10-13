@@ -1,18 +1,18 @@
 ---
 title: Vyhodnotit dopad nové definice Azure Policy
 description: Pochopení procesu, který se má provést při zavedení nové definice zásady do prostředí Azure
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 243f04cc20e1fb7167306b925a0e494b34cf1267
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d73d703c38dce1335a471bfad9171d8b30a83c5
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544698"
+ms.locfileid: "91873863"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Vyhodnotit dopad nové definice Azure Policy
 
-Azure Policy je výkonný nástroj pro správu prostředků Azure do obchodních standardů a splnění požadavků na dodržování předpisů. Když lidé, procesy nebo kanály vytvoří nebo aktualizují prostředky, Azure Policy zkontroluje požadavek. Když je efekt definice zásad přidaný nebo [DeployIfNotExists](./effects.md#deployifnotexists), zásady změní [požadavek nebo přidá](./effects.md#deny) do něj. Když je efekt definice zásad [audit](./effects.md#audit) nebo [AuditIfNotExists](./effects.md#auditifnotexists), zásada způsobí vytvoření položky protokolu aktivit. A když je vliv definice zásad [odepřený](./effects.md#deny), zásada zastaví vytváření nebo změnu žádosti.
+Azure Policy je výkonný nástroj pro správu prostředků Azure do obchodních standardů a splnění požadavků na dodržování předpisů. Když lidé, procesy nebo kanály vytvoří nebo aktualizují prostředky, Azure Policy zkontroluje požadavek. Když je efekt definice zásad [upravený](./effects.md#modify), [Append](./effects.md#deny) nebo [DeployIfNotExists](./effects.md#deployifnotexists), zásady změní požadavek nebo přidá do něj. Když je efekt definice zásad [audit](./effects.md#audit) nebo [AuditIfNotExists](./effects.md#auditifnotexists), zásada způsobí vytvoření položky protokolu aktivit pro nové a aktualizované prostředky. A když je vliv definice zásad [odepřený](./effects.md#deny), zásada zastaví vytváření nebo změnu žádosti.
 
 Tyto výsledky jsou přesně tak, jak je potřeba, když víte, že je zásada správně definovaná. Je ale důležité ověřit, že nové zásady fungují tak, jak jsou zamýšlené, než je povolíte pro změnu nebo blokování práce. Ověření musí zajistit, aby byly pouze zamýšlené prostředky považovány za nevyhovující a že ve výsledcích nejsou nesprávně zahrnuté žádné odpovídající prostředky (označované jako _falešně pozitivní_).
 

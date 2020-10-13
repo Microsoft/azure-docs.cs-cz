@@ -10,18 +10,18 @@ ms.date: 09/21/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df0bc6a07444070a0f14e632e81ad0bb787569c8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a0ce2c17586e5437047ff27cb67577b0480a83af
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714755"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939337"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Získání tokenu z Azure AD pro autorizaci žádostí z klientské aplikace
 
 Klíčovou výhodou použití Azure Active Directory (Azure AD) se službou Azure Blob Storage nebo Queue Storage je, že vaše přihlašovací údaje už nemusíte ukládat do kódu. Místo toho můžete požádat o přístupový token OAuth 2,0 z platformy Microsoft Identity Platform. Azure AD ověřuje objekt zabezpečení (uživatel, skupina nebo instanční objekt), který spouští aplikaci. Pokud je ověření úspěšné, služba Azure AD vrátí přístupový token do aplikace a aplikace pak pomocí přístupového tokenu autorizuje žádosti do úložiště objektů BLOB v Azure nebo do úložiště fronty.
 
-Tento článek ukazuje, jak nakonfigurovat nativní aplikaci nebo webovou aplikaci pro ověřování pomocí Microsoft Identity Platform 2,0 s použitím ukázkové aplikace, která je k dispozici ke stažení. Ukázková funkce aplikace .NET, ale jiné jazyky používají podobný přístup. Další informace o Microsoft Identity Platform 2,0 najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](../../active-directory/develop/v2-overview.md).
+Tento článek ukazuje, jak nakonfigurovat nativní aplikaci nebo webovou aplikaci pro ověřování pomocí platformy Microsoft identity pomocí ukázkové aplikace, která je k dispozici ke stažení. Ukázková funkce aplikace .NET, ale jiné jazyky používají podobný přístup. Další informace o platformě Microsoft identity najdete v tématu [Přehled platformy Microsoft Identity](../../active-directory/develop/v2-overview.md).
 
 Přehled toku udělení kódu OAuth 2,0 najdete v tématu [autorizace přístupu k Azure Active Directory webových aplikací pomocí toku udělení kódu oauth 2,0](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
@@ -247,7 +247,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-Souhlas je proces uživatele, který uděluje oprávnění k přístupu k chráněným prostředkům jménem uživatele. Microsoft Identity Platform 2,0 podporuje přírůstkový souhlas, což znamená, že instanční objekt může nejdřív požádat o minimální sadu oprávnění a přidat oprávnění v průběhu času podle potřeby. Když kód požádá o přístupový token, určete rozsah oprávnění, která vaše aplikace potřebuje. Další informace o přírůstkovém souhlasu najdete v tématu [přírůstkové a dynamické vyjádření souhlasu](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
+Souhlas je proces uživatele, který uděluje oprávnění k přístupu k chráněným prostředkům jménem uživatele. Platforma Microsoft Identity Platform podporuje přírůstkový souhlas, což znamená, že instanční objekt může nejdřív vyžádat minimální sadu oprávnění a v průběhu času přidat oprávnění podle potřeby. Když kód požádá o přístupový token, určete rozsah oprávnění, která vaše aplikace potřebuje. Další informace o přírůstkovém souhlasu najdete v tématu [přírůstkové a dynamické vyjádření souhlasu](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
 
 ## <a name="view-and-run-the-completed-sample"></a>Zobrazení a spuštění dokončené ukázky
 

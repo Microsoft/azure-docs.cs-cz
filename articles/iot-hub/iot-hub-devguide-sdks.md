@@ -13,10 +13,10 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 ms.openlocfilehash: 1933a53b6e69a6179faaa0bd6b86619478159b3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322920"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Principy a použití sad SDK služby Azure IoT Hub.

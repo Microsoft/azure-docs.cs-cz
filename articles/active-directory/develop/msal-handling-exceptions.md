@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 60c61ff4753413d2241820400dcbc899e925eecc
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120945"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>Zpracování výjimek a chyb MSAL
@@ -36,7 +36,7 @@ Další informace o zpracování chyb pro vaši aplikaci najdete v následujíc�
 
 ## <a name="net"></a>[.NET](#tab/dotnet)
 
-Při zpracování výjimek rozhraní .NET můžete použít samotný typ výjimky a `ErrorCode` člen k rozlišení mezi výjimkami. `ErrorCode`hodnoty jsou konstanty typu [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet).
+Při zpracování výjimek rozhraní .NET můžete použít samotný typ výjimky a `ErrorCode` člen k rozlišení mezi výjimkami. `ErrorCode` hodnoty jsou konstanty typu [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet).
 
 Můžete se také podívat na pole [MsalClientException](/dotnet/api/microsoft.identity.client.msalexception?view=azure-dotnet), [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet)a [MsalUIRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet).
 
@@ -48,7 +48,7 @@ Zde jsou uvedeny běžné výjimky, které mohou být vyvolány, a některé mo�
 
 | Výjimka | Kód chyby | Omezení rizik|
 | --- | --- | --- |
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: uživatel nebo správce nesouhlasí s používáním aplikace s ID {appId} s názvem {appName}. Odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek.| Nejdřív musíte získat souhlas s uživatelem. Pokud nepoužíváte .NET Core (který nemá žádné webové uživatelské rozhraní), zavolejte (pouze jednou) `AcquireTokeninteractive` . Pokud používáte .NET Core nebo ho nechcete provést `AcquireTokenInteractive` , uživatel může přejít na adresu URL, aby mohl udělit souhlas: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read` . pro volání `AcquireTokenInteractive` :`app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: uživatel nebo správce nesouhlasí s používáním aplikace s ID {appId} s názvem {appName}. Odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek.| Nejdřív musíte získat souhlas s uživatelem. Pokud nepoužíváte .NET Core (který nemá žádné webové uživatelské rozhraní), zavolejte (pouze jednou) `AcquireTokeninteractive` . Pokud používáte .NET Core nebo ho nechcete provést `AcquireTokenInteractive` , uživatel může přejít na adresu URL, aby mohl udělit souhlas: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read` . pro volání `AcquireTokenInteractive` : `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: uživatel musí používat službu [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md).| Nedochází k žádnému zmírnění. Pokud je pro vašeho tenanta nakonfigurované MFA a Azure Active Directory (AAD) se rozhodne ho vyhovět, budete se muset vrátit k interaktivnímu toku, například `AcquireTokenInteractive` nebo `AcquireTokenByDeviceCode` .|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: typ grantu se nepodporuje přes koncové body */běžné* nebo */consumers* . Použijte */Organizations* nebo koncový bod pro konkrétního tenanta. Použili jste */běžné*.| Jak je vysvětleno ve zprávě z Azure AD, autorita musí mít tenanta nebo jinak */Organizations*.|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: tělo žádosti musí obsahovat následující parametr: `client_secret or client_assertion` .| Tato výjimka může být vyvolána, pokud vaše aplikace nebyla registrována jako veřejná klientská aplikace v Azure AD. V Azure Portal upravte manifest aplikace a nastavte `allowPublicClient` na `true` . |
@@ -63,7 +63,7 @@ Většinou v době, kdy se chyba `AcquireTokenSilent` nezdařila, je důvodem to
 
 Interakce se zaměřuje na to, že uživatel provede akci. Některé z těchto podmínek můžou uživatelé snadno vyřešit (například přijmout podmínky použití jediným kliknutím) a některé se nedají vyřešit pomocí aktuální konfigurace (třeba aby se počítač mohl připojit ke konkrétní podnikové síti). Některé vám pomůžou s nastavením vícefaktorového ověřování pro uživatele nebo na zařízení nainstalovat Microsoft Authenticator.
 
-### <a name="msaluirequiredexception-classification-enumeration"></a>`MsalUiRequiredException`výčet klasifikace
+### <a name="msaluirequiredexception-classification-enumeration"></a>`MsalUiRequiredException` výčet klasifikace
 
 MSAL zpřístupňuje `Classification` pole, které si můžete přečíst a zajistit tak lepší činnost koncového uživatele, třeba sdělit uživateli, že jeho heslo vypršelo nebo že budou muset vyjádřit souhlas s používáním některých prostředků. Podporované hodnoty jsou součástí `UiRequiredExceptionClassification` výčtu:
 
@@ -244,13 +244,13 @@ V MSAL pro Python jsou výjimky zřídka, protože většina chyb je zpracována
 
 V MSAL pro jazyk Java existují tři typy výjimek: `MsalClientException` , `MsalServiceException` , a `MsalInteractionRequiredException` ; všechny, které dědí z `MsalException` .
 
-- `MsalClientException`je vyvolána, když dojde k chybě, která je místní pro knihovnu nebo zařízení.
-- `MsalServiceException`je vyvolána, když služba tokenů zabezpečení (STS) vrátí chybovou odpověď nebo dojde k jiné chybě sítě.
-- `MsalInteractionRequiredException`je vyvolána, pokud je k úspěšnému ověření nutná interakce uživatelského rozhraní.
+- `MsalClientException` je vyvolána, když dojde k chybě, která je místní pro knihovnu nebo zařízení.
+- `MsalServiceException` je vyvolána, když služba tokenů zabezpečení (STS) vrátí chybovou odpověď nebo dojde k jiné chybě sítě.
+- `MsalInteractionRequiredException` je vyvolána, pokud je k úspěšnému ověření nutná interakce uživatelského rozhraní.
 
 ### <a name="msalserviceexception"></a>MsalServiceException
 
-`MsalServiceException`zveřejňuje hlavičky HTTP vrácené v požadavcích na službu STS. Přístup k nim přes`MsalServiceException.headers()`
+`MsalServiceException` zveřejňuje hlavičky HTTP vrácené v požadavcích na službu STS. Přístup k nim přes `MsalServiceException.headers()`
 
 ### <a name="msalinteractionrequiredexception"></a>MsalInteractionRequiredException
 
@@ -260,13 +260,13 @@ Většinou v době, kdy se chyba `AcquireTokenSilently` nezdařila, je to proto,
 
 Některé podmínky, jejichž výsledkem je tato chyba, jsou pro uživatele snadno vyřešené. Například může být nutné přijmout podmínky použití. Nebo možná nelze požadavek splnit aktuální konfigurací, protože počítač musí být připojen ke konkrétní podnikové síti.
 
-MSAL zpřístupňuje `reason` pole, které můžete použít k zajištění lepšího uživatelského prostředí. `reason`Pole může například vést k tomu, abyste uživateli oznámili, že platnost hesla vypršela nebo že budou muset vyjádřit souhlas s používáním některých prostředků. Podporované hodnoty jsou součástí `InteractionRequiredExceptionReason` výčtu:
+MSAL zpřístupňuje `reason` pole, které můžete použít k zajištění lepšího uživatelského prostředí. `reason`Pole může například vést k tomu, abyste uživateli oznámili, že platnost hesla vypršela nebo že budou muset vyjádřit souhlas s používáním některých prostředků. Podporované hodnoty jsou součástí  `InteractionRequiredExceptionReason` výčtu:
 
 | Důvod | Význam | Doporučené zpracování |
 |---------|-----------|-----------------------------|
 | `BasicAction` | Podmínku lze vyřešit interakcí uživatele během interaktivního toku ověřování. | Volání `acquireToken` pomocí interaktivních parametrů |
 | `AdditionalAction` | Podmínku lze vyřešit pomocí další nápravné interakce se systémem mimo tok interaktivního ověřování. | Voláním `acquireToken` interaktivních parametrů zobrazíte zprávu s vysvětlením nápravné akce, která má být provedena. Volající aplikace se může rozhodnout skrýt toky, které vyžadují další akci, pokud uživatel pravděpodobně nedokončí akci nápravy. |
-| `MessageOnly` | V tuto chvíli nelze vyřešit podmínku. Spustit tok interaktivního ověřování, který zobrazí zprávu s vysvětlením podmínky. | Voláním `acquireToken` interaktivních parametrů zobrazíte zprávu, která vysvětluje podmínku. `acquireToken`Vrátí `UserCanceled` chybu poté, co uživatel přečte zprávu a zavře okno. Aplikace může zvolit, že se mají skrýt toky, které mají za následek zprávu, pokud se uživateli pravděpodobně nebudete moci vytěžit ze zprávy. |
+| `MessageOnly` | V tuto chvíli nelze vyřešit podmínku. Spustit tok interaktivního ověřování, který zobrazí zprávu s vysvětlením podmínky. | Voláním `acquireToken` interaktivních parametrů zobrazíte zprávu, která vysvětluje podmínku. `acquireToken` Vrátí `UserCanceled` chybu poté, co uživatel přečte zprávu a zavře okno. Aplikace může zvolit, že se mají skrýt toky, které mají za následek zprávu, pokud se uživateli pravděpodobně nebudete moci vytěžit ze zprávy. |
 | `ConsentRequired`| Chybí souhlas uživatele nebo byl odvolán. |Zavolejte `acquireToken` pomocí interaktivních parametrů, aby uživatel mohl udělit souhlas. |
 | `UserPasswordExpired` | Vypršela platnost hesla uživatele. | Volání `acquireToken` s interaktivním parametrem, aby uživatel mohl resetovat svoje heslo |
 | `None` |  Další podrobnosti jsou k dispozici. Tuto podmínku může vyřešit interakce uživatele během toku interaktivního ověřování. | Volání `acquireToken` pomocí interaktivních parametrů |

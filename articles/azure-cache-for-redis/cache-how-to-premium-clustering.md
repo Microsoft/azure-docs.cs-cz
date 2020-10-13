@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
 ms.openlocfilehash: d37aa275a07586738bf7416cee6611bdc8284df3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004777"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Postup konfigurace clusteringu Redis pro mezipaměť Azure úrovně Premium pro Redis
@@ -62,7 +62,7 @@ Pokud chcete změnit velikost clusteru běžící mezipaměti Premium s povolen�
 
 Chcete-li změnit velikost clusteru, použijte posuvník nebo zadejte číslo v rozmezí 1 až 10 v textovém poli **horizontálních oddílů Count** a kliknutím na tlačítko **OK** uložte.
 
-Zvýšení velikosti clusteru zvyšuje maximální propustnost a velikost mezipaměti. Zvýšení velikosti clusteru nezvyšuje maximální počet. připojení dostupná pro klienty.
+Zvýšení velikosti clusteru zvyšuje maximální propustnost a velikost mezipaměti. Zvýšení velikosti clusteru nezvyšuje maximální počet připojení, která jsou k dispozici pro klienty.
 
 > [!NOTE]
 > Při škálování clusteru se spustí příkaz [migrace](https://redis.io/commands/migrate) , což je nákladný příkaz, takže pro minimální dopad zvažte spuštění této operace v době mimo špičku. Během procesu migrace se zobrazí špička zatížení serveru. Škálování clusteru je dlouhotrvající proces a doba trvání závisí na počtu klíčů a velikosti hodnot přidružených k těmto klíčům.

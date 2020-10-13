@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082830"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Přesun dat z PostgreSQL pomocí Azure Data Factory
@@ -32,7 +32,7 @@ Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Fact
 
 Data z místního úložiště dat PostgreSQL můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako jímky aktivitou kopírování najdete v části [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory v současné době podporuje přesun dat z databáze PostgreSQL do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do databáze PostgreSQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Služba Data Factory podporuje připojení k místním zdrojům PostgreSQL pomocí brány Správa dat. Další informace o Správa dat bráně a podrobné pokyny k nastavení brány najdete v tématu [přesun dat mezi místními umístěními a v cloudovém](data-factory-move-data-between-onprem-and-cloud.md) článku.
 
@@ -104,7 +104,7 @@ Pokud je zdroj typu **RelationalSource** (který zahrnuje PostgreSQL), jsou v č
 > [!NOTE]
 > V názvech schémat a tabulek se rozlišují velká a malá písmena. Uzavřete je do `""` dotazu (dvojité uvozovky).
 
-**Případě**
+**Příklad:**
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
@@ -324,22 +324,22 @@ Při přesunu dat na PostgreSQL se z typu PostgreSQL na typ .NET použijí násl
 | intarry | |Řetězec |
 | int4range | |Řetězec |
 | int8range | |Řetězec |
-| celé číslo |int, int4 |Int32 |
+| integer |int, int4 |Int32 |
 | interval [pole] [(p)] | |Časový interval |
 | json | |Řetězec |
 | jsonb | |Byte [] |
 | line | |Byte [], řetězec |
 | lseg | |Byte [], řetězec |
 | macaddr | |Byte [], řetězec |
-| papír | |Desetinné číslo |
-| číslice [(p, s)] |Decimal [(p, s)] |Desetinné číslo |
+| papír | |Decimal |
+| číslice [(p, s)] |Decimal [(p, s)] |Decimal |
 | numrange | |Řetězec |
 | identifikátor | |Int32 |
 | program | |Byte [], řetězec |
 | pg_lsn | |Int64 |
 | Vyberte | |Byte [], řetězec |
 | postupně | |Byte [], řetězec |
-| real |float4 |Jeden |
+| real |float4 |Jednoduché |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | sér |serial4 |Int32 |

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 672918280a988771431dccc81f042226addf029d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265931"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relací ověřování pomocí podmíněného přístupu
@@ -80,8 +80,8 @@ Příklad 2:
 
 Trvalá relace prohlížeče umožňuje uživatelům zůstat přihlášeni po zavření a opětovném otevření okna prohlížeče.
 
-Výchozí nastavení Azure AD pro trvalost relace prohlížeče umožňuje uživatelům na osobních zařízeních vybrat, jestli se má relace zachovat, a to tak, že zobrazí "zůstat přihlášeni?". Po úspěšném ověření se zobrazí výzva. Pokud je trvalost prohlížeče nakonfigurované v AD FS pomocí pokynů v článku [AD FS nastavení jednotného přihlašování](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
-), budeme tyto zásady dodržovat a zároveň trvale zachová relaci Azure AD. Můžete také nakonfigurovat, jestli uživatelé ve vašem tenantovi uvidí "zůstat přihlášeni?" pomocí pokynů v článku [přizpůsobení přihlašovací stránky služby Azure AD](../fundamentals/customize-branding.md)se zobrazí výzva, že změníte příslušné nastavení v podokně Branding společnosti v Azure Portal.
+Výchozí nastavení Azure AD pro trvalost relace prohlížeče umožňuje uživatelům na osobních zařízeních vybrat, jestli se má relace zachovat, a to tak, že zobrazí "zůstat přihlášeni?". Po úspěšném ověření se zobrazí výzva. Pokud je trvalost prohlížečů nakonfigurované v AD FS používáním pokynů v článku [AD FS nastavení jediného Sign-On](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+), budeme tyto zásady dodržovat a také zachovat relaci Azure AD. Můžete také nakonfigurovat, jestli uživatelé ve vašem tenantovi uvidí "zůstat přihlášeni?" pomocí pokynů v článku [přizpůsobení přihlašovací stránky služby Azure AD](../fundamentals/customize-branding.md)se zobrazí výzva, že změníte příslušné nastavení v podokně Branding společnosti v Azure Portal.
 
 ## <a name="configuring-authentication-session-controls"></a>Konfigurace ovládacích prvků relace ověřování
 
@@ -128,7 +128,7 @@ V zaregistrovaných zařízeních s Windows Azure AD se k zařízení přihlás�
 
 ## <a name="validation"></a>Ověřování
 
-Pomocí nástroje citlivosti pro simulaci přihlášení uživatele k cílové aplikaci a dalším podmínkám na základě toho, jak jste nakonfigurovali zásady. Ve výsledku nástroje se zobrazí ovládací prvky správy relace ověřování.
+Pomocí nástroje What-If Simulujte přihlášení uživatele k cílové aplikaci a dalším podmínkám na základě toho, jak jste zásady nakonfigurovali. Ve výsledku nástroje se zobrazí ovládací prvky správy relace ověřování.
 
 ![Výsledky nástroje What If podmíněného přístupu](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
 
