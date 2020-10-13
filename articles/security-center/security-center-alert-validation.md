@@ -1,6 +1,6 @@
 ---
-title: Ověření výstrahy (soubor testu EICAR) v Azure Security Center | Microsoft Docs
-description: Tento dokument vám pomůže s ověřováním výstrah zabezpečení ve službě Azure Security Center.
+title: Ověřování výstrah v Azure Security Center | Microsoft Docs
+description: Naučte se, jak ověřit, jestli jsou výstrahy zabezpečení správně nakonfigurované v Azure Security Center
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0c777c2461047f21e8fb413faec6d5f1140fc75f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 764a2263587a477eb506edec1e0f661d0ca7ae31
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91438799"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971604"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Ověřování výstrah v Azure Security Center
 Pomocí tohoto dokumentu se naučíte ověřovat, jestli je váš systém správně nakonfigurovaný pro výstrahy služby Azure Security Center.
@@ -26,12 +26,6 @@ Pomocí tohoto dokumentu se naučíte ověřovat, jestli je váš systém správ
 ## <a name="what-are-security-alerts"></a>Co jsou výstrahy zabezpečení?
 Výstrahy jsou oznámení, která Security Center generuje, když zjistí ohrožení vašich prostředků. Tato nastavení upřednostní a vypíše výstrahy spolu s informacemi potřebnými k rychlému prozkoumání problému. Security Center také poskytuje doporučení pro nápravu útoku.
 Další informace najdete v tématech [výstrahy zabezpečení v Security Center](security-center-alerts-overview.md) a [Správa a reakce na výstrahy zabezpečení](security-center-managing-and-responding-alerts.md) .
-
-## <a name="alert-validation"></a>Ověřování výstrah
-
-* [Windows](#validate-windows)
-* [Linux](#validate-linux)
-* [Kubernetes](#validate-kubernetes)
 
 ## <a name="validate-alerts-on-windows-vms"></a>Ověřit výstrahy na virtuálních počítačích s Windows <a name="validate-windows"></a>
 

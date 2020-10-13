@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8884711bbb32054ca1d8e4d9f9e7dee753f0c629
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63378369b9924f01c5d0217746a8a2c330c88631
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361921"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970601"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
 
@@ -486,18 +486,18 @@ V případě cenového modelu máte několik různých cenových možností, jak
 Ceny každé z různých nabídek s různými nabídkami služeb v rámci operačních systémů a různých oblastí jsou k dispozici na webu [Linux Virtual Machines ceny](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows Virtual Machines ceny](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Podrobnosti a flexibilitu za jeden rok a tři roky rezervované instance najdete v těchto článcích:
 
 - [Co jsou rezervace Azure?](../../../cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../../windows/reserved-vm-instance-size-flexibility.md)
+- [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../../reserved-vm-instance-size-flexibility.md)
 - [Jak se na virtuální počítače uplatňuje sleva za rezervaci Azure](../../../cost-management-billing/manage/understand-vm-reservation-charges.md)
 
 Další informace o cenách na místě najdete v článku [Virtual Machines na místě Azure](https://azure.microsoft.com/pricing/spot/). Ceny stejného typu virtuálního počítače se taky můžou lišit mezi různými oblastmi Azure. Pro některé zákazníky je vhodné provést nasazení do levnější oblasti Azure.
 
-Azure navíc nabízí koncepty vyhrazeného hostitele. Koncept vyhrazeného hostitele nabízí větší kontrolu nad cykly oprav, které provádí Azure. Můžete si čas opravit podle vašich vlastních plánů. Tato nabídka je konkrétně zaměřená na zákazníky s úlohou, která nemusí následovat po běžném cyklu úlohy. Pokud si chcete přečíst koncepty nabídek vyhrazených hostitelů Azure, přečtěte si článek [vyhrazený hostitel Azure](../../windows/dedicated-hosts.md). Použití této nabídky je podporováno pro úlohy SAP a používá se několika zákazníky SAP, kteří chtějí mít větší kontrolu nad opravou infrastruktury a s případnými plány údržby společnosti Microsoft. Další informace o tom, jak Microsoft udržuje a opraví infrastrukturu Azure, která je hostitelem virtuálních počítačů, najdete [v článku údržba virtuálních počítačů v Azure](../../maintenance-and-updates.md).
+Azure navíc nabízí koncepty vyhrazeného hostitele. Koncept vyhrazeného hostitele nabízí větší kontrolu nad cykly oprav, které provádí Azure. Můžete si čas opravit podle vašich vlastních plánů. Tato nabídka je konkrétně zaměřená na zákazníky s úlohou, která nemusí následovat po běžném cyklu úlohy. Pokud si chcete přečíst koncepty nabídek vyhrazených hostitelů Azure, přečtěte si článek [vyhrazený hostitel Azure](../../dedicated-hosts.md). Použití této nabídky je podporováno pro úlohy SAP a používá se několika zákazníky SAP, kteří chtějí mít větší kontrolu nad opravou infrastruktury a s případnými plány údržby společnosti Microsoft. Další informace o tom, jak Microsoft udržuje a opraví infrastrukturu Azure, která je hostitelem virtuálních počítačů, najdete [v článku údržba virtuálních počítačů v Azure](../../maintenance-and-updates.md).
 
 #### <a name="generation-1-and-generation-2-virtual-machines"></a>Generace 1 a generace 2 – virtuální počítače
-Hypervisor Microsoftu dokáže zvládnout dvě různé generace virtuálních počítačů. Tyto formáty se nazývají **generace 1** a **generace 2**. **Generace 2** byla představena v roce 2012 s hypervisorem systému Windows Server 2012. Azure se spustil s použitím virtuálních počítačů 1. generace. Při nasazení virtuálních počítačů Azure stále používá výchozí formát 1. generace. Mezitím můžete nasadit i formáty virtuálních počítačů 2. generace. [Podpora virtuálních počítačů 2. generace v Azure](../../windows/generation-2.md) obsahuje seznam rodin virtuálních počítačů Azure, které se dají nasadit jako virtuální počítač 2. generace. Tento článek obsahuje taky důležité funkční rozdíly virtuálních počítačů generace 2, které můžou běžet na privátním cloudu Hyper-V a v Azure. Důležitější Tento článek také obsahuje seznam funkčních rozdílů mezi virtuálními počítači 1. generace a virtuálními počítači 2. generace, které jsou spuštěny v Azure.
+Hypervisor Microsoftu dokáže zvládnout dvě různé generace virtuálních počítačů. Tyto formáty se nazývají **generace 1** a **generace 2**. **Generace 2** byla představena v roce 2012 s hypervisorem systému Windows Server 2012. Azure se spustil s použitím virtuálních počítačů 1. generace. Při nasazení virtuálních počítačů Azure stále používá výchozí formát 1. generace. Mezitím můžete nasadit i formáty virtuálních počítačů 2. generace. [Podpora virtuálních počítačů 2. generace v Azure](../../generation-2.md) obsahuje seznam rodin virtuálních počítačů Azure, které se dají nasadit jako virtuální počítač 2. generace. Tento článek obsahuje taky důležité funkční rozdíly virtuálních počítačů generace 2, které můžou běžet na privátním cloudu Hyper-V a v Azure. Důležitější Tento článek také obsahuje seznam funkčních rozdílů mezi virtuálními počítači 1. generace a virtuálními počítači 2. generace, které jsou spuštěny v Azure.
 
 > [!NOTE]
-> Existují funkční rozdíly virtuálních počítačů generace 1 a generace 2 spuštěných v Azure. Přečtěte si článek  [Podpora virtuálních počítačů 2. generace v Azure, kde](../../windows/generation-2.md) najdete seznam těchto rozdílů.
+> Existují funkční rozdíly virtuálních počítačů generace 1 a generace 2 spuštěných v Azure. Přečtěte si článek  [Podpora virtuálních počítačů 2. generace v Azure, kde](../../generation-2.md) najdete seznam těchto rozdílů.
 
 Přesunutí stávajícího virtuálního počítače z jedné generace do druhé generace není možné. Pokud chcete změnit generaci virtuálního počítače, musíte nasadit nový virtuální počítač pro generaci, který si přejete, a znovu nainstalovat software, který používáte ve virtuálním počítači generace. Tato změna má vliv jenom na základní image virtuálního pevného disku virtuálního počítače a nemá žádný vliv na datové disky nebo připojené sdílené složky systému souborů NFS ani SMB. Datové disky, NFS nebo sdílené složky SMB, které byly původně přiřazeny, například na virtuálním počítači generace 1.
 
@@ -767,7 +767,7 @@ Microsoft Azure nabízí několik způsobů, jak nasadit virtuální počítače
 
 Plánujete přesunout konkrétní systém SAP z místního prostředí do Azure. To se dá udělat tak, že nahrajete VHD, který obsahuje operační systém, binární soubory SAP a DBMS binárních souborů a také virtuální pevné disky s daty a soubory protokolů systému DBMS do Azure. Na rozdíl od [#2 níže][planning-guide-5.1.2]je na virtuálním počítači Azure, který jste nakonfigurovali v místním prostředí, zachovány uživatelské účty název hostitele, SAP SID a SAP. Proto není potřeba zobecnit image. Další informace najdete v kapitolách [Příprava pro přesun virtuálního počítače z místního prostředí do Azure pomocí nezobecněného disku][planning-guide-5.2.1] tohoto dokumentu pro místní přípravné kroky a nahrání nezobecněných virtuálních počítačů nebo virtuálních pevných disků do Azure. Přečtěte si článek [scénář 3: přesun virtuálního počítače z místního prostředí pomocí nezobecněného virtuálního pevného disku Azure s SAP][deployment-guide-3.4] v [Průvodci nasazením][deployment-guide] , kde najdete podrobný postup nasazení takové image v Azure.
 
-Další možností, které v této příručce nebudeme podrobně pojednávat, je použití Azure Site Recovery k replikaci aplikačních serverů SAP NetWeaver a služeb SAP NetWeaver Central do Azure. Pro databázovou vrstvu nedoporučujeme používat Azure Site Recovery a místo toho používat mechanismy replikace specifické pro databázi, jako je například replikace systému HANA. Další informace najdete v tématu věnovaném [ochraně SAP](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload#protect-sap) [pro zotavení po havárii pro místní aplikace](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload) .
+Další možností, které v této příručce nebudeme podrobně pojednávat, je použití Azure Site Recovery k replikaci aplikačních serverů SAP NetWeaver a služeb SAP NetWeaver Central do Azure. Pro databázovou vrstvu nedoporučujeme používat Azure Site Recovery a místo toho používat mechanismy replikace specifické pro databázi, jako je například replikace systému HANA. Další informace najdete v tématu věnovaném [ochraně SAP](../../../site-recovery/site-recovery-workload.md#protect-sap) [pro zotavení po havárii pro místní aplikace](../../../site-recovery/site-recovery-workload.md) .
 
 #### <a name="deploying-a-vm-with-a-customer-specific-image"></a><a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>Nasazení virtuálního počítače s obrázkem specifickým pro zákazníka
 
@@ -1805,7 +1805,7 @@ Existují dva typy událostí platformy Azure, které mohou ovlivnit dostupnost 
 * Plánované události údržby jsou pravidelné aktualizace od Microsoftu k základní platformě Azure za účelem zlepšení celkové spolehlivosti, výkonu a zabezpečení infrastruktury platformy, na které běží vaše virtuální počítače.
 * Neplánované události údržby nastávají v případě, že dojde k nějakému selhání hardwaru nebo základní fyzické infrastruktury, na které stojí virtuální počítač. To může zahrnovat selhání místní sítě, selhání místního disku nebo další selhání na úrovni racku. Když se takové selhání detekuje, platforma Azure automaticky migruje virtuální počítač z nesprávného fyzického serveru, který hostuje váš virtuální počítač, na dobrý fyzický server. Takové události se vyskytují jen vzácně, ale také můžou způsobit restartování vašeho virtuálního počítače.
 
-Další podrobnosti najdete v tématu [dostupnost virtuálních počítačů s Windows v Azure](../../windows/manage-availability.md) a [dostupnosti virtuálních počítačů se systémem Linux v Azure](../../linux/manage-availability.md).
+Další podrobnosti najdete v tématu [dostupnost virtuálních počítačů s Windows v Azure](../../manage-availability.md) a [dostupnosti virtuálních počítačů se systémem Linux v Azure](../../manage-availability.md).
 
 #### <a name="azure-storage-redundancy"></a>Azure Storage redundance
 

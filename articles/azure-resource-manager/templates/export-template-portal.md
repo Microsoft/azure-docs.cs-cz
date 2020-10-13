@@ -3,12 +3,12 @@ title: Exportovat šablonu v Azure Portal
 description: Pomocí Azure Portal můžete exportovat šablonu Azure Resource Manager z prostředků v rámci vašeho předplatného.
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d0c9adb121372047336d2753df047f54f1e0fa2
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87423231"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951753"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Export jednoho a více prostředků do šablony v Azure Portal
 
@@ -49,11 +49,13 @@ Exportujte šablonu před nasazením nebo z historie, pokud:
 
 Při exportu ze skupiny prostředků nebo prostředku se vyexportovaná šablona vygeneruje z [publikovaných schémat](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas) pro každý typ prostředku. V některých případech nemá schéma nejnovější verzi pro typ prostředku. Zkontrolujte exportovanou šablonu a ujistěte se, že obsahuje vlastnosti, které potřebujete. V případě potřeby upravte exportovanou šablonu tak, aby používala verzi rozhraní API, kterou potřebujete.
 
-Funkce Exportovat šablonu nepodporuje export Azure Data Factorych prostředků. Další informace o tom, jak můžete exportovat Data Factory prostředky, najdete [v tématu kopírování nebo klonování datové továrny v Azure Data Factory](https://aka.ms/exportTemplateViaAdf).
+Funkce Exportovat šablonu nepodporuje export Azure Data Factorych prostředků. Další informace o tom, jak můžete exportovat Data Factory prostředky, najdete [v tématu kopírování nebo klonování datové továrny v Azure Data Factory](../../data-factory/copy-clone-data-factory.md).
 
-Chcete-li exportovat prostředky vytvořené prostřednictvím modelu nasazení Classic, je nutné [je migrovat do modelu nasazení Správce prostředků](https://aka.ms/migrateclassicresourcetoarm).
+Chcete-li exportovat prostředky vytvořené prostřednictvím modelu nasazení Classic, je nutné [je migrovat do modelu nasazení Správce prostředků](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
 Pokud se zobrazí upozornění při exportu šablony, která indikuje, že se typ prostředku neexportoval, můžete stále zjistit vlastnosti daného prostředku. Další informace o různých možnostech zobrazení vlastností prostředků najdete v tématu věnovaném [zjištění vlastností prostředku](view-resources.md). Můžete se také podívat na [REST API Azure](/rest/api/azure/) pro daný typ prostředku.
+
+Ve skupině prostředků je limit 200 prostředků, pro který vytvoříte exportovanou šablonu. Pokud se pokusíte exportovat skupinu prostředků, která má více než 200 prostředků, zobrazí se chybová zpráva `Export template is not supported for resource groups more than 200 resources` .
 
 ## <a name="export-template-from-a-resource-group"></a>Export šablony ze skupiny prostředků
 

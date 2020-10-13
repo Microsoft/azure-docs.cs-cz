@@ -1,14 +1,14 @@
 ---
 title: Zobrazení a správa poskytovatelů služeb
 description: Zákazníci mohou pomocí stránky poskytovatelé služeb v Azure Portal zobrazit informace o poskytovatelích služeb, nabídkách poskytovatele služeb a delegovaných prostředcích.
-ms.date: 08/12/2020
+ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: c22408a52d973a244d67528a73d4eaa487f166ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecbeb7f5b6fccb7b66043cf57aa5f48674c6fe8b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167160"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974392"
 ---
 # <a name="view-and-manage-service-providers"></a>Zobrazení a správa poskytovatelů služeb
 
@@ -76,7 +76,9 @@ Filtry v horní části stránky umožňují řadit a seskupovat informace o del
 
 Zákazníci mohou chtít získat přehled o předplatných nebo skupinách prostředků, které byly delegovány na Azure Lighthouse. To je užitečné hlavně pro zákazníky, kteří mají velký počet předplatných nebo kteří mají mnoho uživatelů, kteří provádějí úlohy správy.
 
-Poskytujeme [Azure Policy vestavěnou definici zásad](../../governance/policy/samples/built-in-policies.md#lighthouse) pro auditování delegování oborů do spravovaného tenanta. Tuto zásadu můžete přiřadit ke skupině pro správu, která zahrnuje všechna předplatná, která chcete auditovat. Když zkontrolujete dodržování předpisů pomocí této zásady, budou se všechny delegované předplatné nebo skupiny prostředků (ve skupině pro správu, ke které je zásada přiřazená) zobrazovat v nekompatibilním stavu. Potom můžete zkontrolovat výsledky a ověřit, že neexistují žádná neočekávaná delegování.
+Poskytujeme [Azure Policy vestavěnou definici zásad](../../governance/policy/samples/built-in-policies.md#lighthouse) pro [auditování delegování oborů do spravovaného tenanta](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). Tuto zásadu můžete přiřadit ke skupině pro správu, která zahrnuje všechna předplatná, která chcete auditovat. Když zkontrolujete dodržování předpisů pomocí této zásady, budou se všechny delegované předplatné nebo skupiny prostředků (ve skupině pro správu, ke které je zásada přiřazená) zobrazovat v nekompatibilním stavu. Potom můžete zkontrolovat výsledky a ověřit, že neexistují žádná neočekávaná delegování.
+
+Další [definice předdefinované zásady](../../governance/policy/samples/built-in-policies.md#lighthouse) umožňuje [omezit delegování na konkrétní správu klientů](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json). Tyto zásady se můžou použít obdobně pro skupinu pro správu, která obsahuje všechna předplatná, pro která chcete delegování omezit. Po nasazení zásady budou všechny pokusy o delegování předplatného na klienta mimo ty, které zadáte, zamítnuté.
 
 Další informace o tom, jak přiřadit zásadu a zobrazit výsledky stavu dodržování předpisů, najdete v tématu [rychlý Start: vytvoření přiřazení zásady](../../governance/policy/assign-policy-portal.md).
 

@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2db91bd1968f816eb2a9320ee81019aeec5d2449
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: bb5eb3de1723ab75b2585c2fe62c395231455f37
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873995"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949373"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -77,7 +77,7 @@ K identifikaci definice zásad a zadání kontextu, kdy se má použít, můžet
 > [!NOTE]
 > Během vytváření nebo aktualizace definice zásady, **ID**, **typu**a **název** jsou definovány vlastnostmi, které jsou externí pro JSON a nejsou nezbytné v souboru JSON. Načtení definice zásady prostřednictvím sady SDK vrátí vlastnosti **ID**, **typu**a **názvu** jako součást formátu JSON, ale každá z nich je informace jen pro čtení, které se týkají definice zásady.
 
-## <a name="type"></a>Typ
+## <a name="type"></a>Type
 
 I když nelze nastavit vlastnost **typu** , existují tři hodnoty, které jsou vráceny sadou SDK a viditelné na portálu:
 
@@ -114,7 +114,7 @@ V současné době jsou podporovány následující režimy poskytovatele prost�
 - `Microsoft.KeyVault.Data` pro správu trezorů a certifikátů v [Azure Key Vault](../../../key-vault/general/overview.md).
 
 > [!NOTE]
-> Režimy poskytovatele prostředků podporují pouze předdefinované definice zásad.
+> Režimy poskytovatele prostředků podporují jenom integrované definice zásad a nepodporují [výjimky](./exemption-structure.md).
 
 ## <a name="metadata"></a>Metadata
 

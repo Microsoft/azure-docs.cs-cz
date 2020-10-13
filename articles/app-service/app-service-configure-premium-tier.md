@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: 0030a9340d874d94b9876e23f372e97655c145da
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91742649"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>Konfigurace PremiumV3 úrovně pro Azure App Service
 
 Nová cenová úroveň **PremiumV3** poskytuje rychlejší procesory, SSD úložiště a čtyřnásobné poměry paměti k jádrům pro stávající cenové úrovně (dvě úrovně **PremiumV2** ). Díky výhodám výkonu můžete ušetřit peníze tím, že své aplikace spustíte na méně instancí. V tomto článku se dozvíte, jak vytvořit aplikaci ve vrstvě **PremiumV3** nebo jak škálovat aplikaci na **PremiumV3** vrstvu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli škálovat aplikaci na **PremiumV3**, musíte mít Azure App Service aplikaci, která běží v cenové úrovni nižší než **PremiumV3**, a aplikace musí běžet v nasazení App Service, které podporuje PremiumV3.
 

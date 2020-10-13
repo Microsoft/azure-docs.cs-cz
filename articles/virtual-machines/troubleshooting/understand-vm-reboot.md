@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 08fb794839adf9e8a986f53da00b4855e5535af5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4694b6ac829c42f20c6783810c248ee18d220433
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86508861"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965756"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Principy restartování systému pro virtuální počítač Azure
 
@@ -30,7 +30,7 @@ Nejlepším způsobem, jak chránit aplikaci běžící v Azure proti restartov�
 
 Pro zajištění této úrovně redundance vaší aplikace doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Tato konfigurace zajišťuje, že během plánované nebo neplánované události údržby je k dispozici alespoň jeden virtuální počítač, který splňuje 99,95% [smlouvu SLA pro Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/).
 
-Další informace o skupinách dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů](../windows/manage-availability.md) .
+Další informace o skupinách dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů](../manage-availability.md) .
 
 ## <a name="resource-health-information"></a>Resource Health informace
 
@@ -72,7 +72,7 @@ Další scénáře, které obvykle způsobí, že se virtuální počítač rest
 
 ### <a name="azure-security-center-and-windows-update"></a>Azure Security Center a web Windows Update
 
-Azure Security Center monitoruje každodenní virtuální počítače se systémem Windows a Linux pro chybějící aktualizace operačního systému. Security Center načte seznam dostupných aktualizací zabezpečení a kritické aktualizace od web Windows Update nebo Windows Server Update Services (WSUS) podle toho, která služba je nakonfigurovaná na virtuálním počítači s Windows. Security Center také kontroluje nejnovější aktualizace pro systémy Linux. Pokud ve vašem VIRTUÁLNÍm počítači chybí aktualizace systému, Security Center doporučuje, abyste použili aktualizace systému. Použití těchto aktualizací systému se řídí Security Center v Azure Portal. Po použití některých aktualizací se může vyžadovat restartování virtuálního počítače. Další informace najdete v tématu věnovaném [použití aktualizací systému v Azure Security Center](../../security-center/security-center-virtual-machine-protection.md).
+Azure Security Center monitoruje každodenní virtuální počítače se systémem Windows a Linux pro chybějící aktualizace operačního systému. Security Center načte seznam dostupných aktualizací zabezpečení a kritické aktualizace od web Windows Update nebo Windows Server Update Services (WSUS) podle toho, která služba je nakonfigurovaná na virtuálním počítači s Windows. Security Center také kontroluje nejnovější aktualizace pro systémy Linux. Pokud ve vašem VIRTUÁLNÍm počítači chybí aktualizace systému, Security Center doporučuje, abyste použili aktualizace systému. Použití těchto aktualizací systému se řídí Security Center v Azure Portal. Po použití některých aktualizací se může vyžadovat restartování virtuálního počítače. Další informace najdete v tématu věnovaném [použití aktualizací systému v Azure Security Center](../../security-center/asset-inventory.md).
 
 Podobně jako na místních serverech nenabízí Azure aktualizace z web Windows Update na virtuální počítače s Windows, protože tyto počítače mají být spravované svými uživateli. Ale doporučujeme ponechat nastavení automatického web Windows Update povolené. Automatická instalace aktualizací z web Windows Update může také způsobit restartování po použití aktualizací. Další informace najdete v tématu [web Windows Update nejčastější dotazy](https://support.microsoft.com/help/12373/windows-update-faq).
 

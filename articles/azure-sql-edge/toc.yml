@@ -142,3 +142,9 @@
   items:
     - name: Reference k jazyku Transact-SQL (T-SQL)
       href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
+- name: Zdroje a prostředky
+  items:
+    - name: Partneři
+      items:
+        - name: Zabezpečení
+          href: resources-partners-security.md

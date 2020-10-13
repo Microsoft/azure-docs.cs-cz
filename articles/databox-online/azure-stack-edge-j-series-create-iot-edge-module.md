@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 628dec7f1ba44d81243aeff2657e2311119c566a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b29f6b400ba7b500e215caec4a2115a12b369fe
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891192"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952195"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>Vývoj modulu C# IoT Edge pro přesun souborů v Azure Stack Edge pro
 
@@ -42,7 +42,7 @@ Vaše zařízení Azure Stack Edge pro může nasazovat a spouštět IoT Edge mo
 
 Jakmile se soubor nachází ve sdílené složce cloudu, automaticky se nahraje na váš Azure Storage účet.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -259,7 +259,7 @@ V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do
  
 3. Po zadání přihlašovacích údajů můžete do služby Azure Container Registry odeslat image modulu. V Průzkumníku VS Code klikněte pravým tlačítkem na **module.jsna** soubor a vyberte **sestavení a nabízené IoT Edge řešení**.
 
-    ![Sestavování a nabízených IoT Edge řešení](./media/azure-stack-edge-j-series-create-iot-edge-module/build-iot-edge-solution-2.png)
+    ![Sestavení a nabízená IoT Edge řešení 2](./media/azure-stack-edge-j-series-create-iot-edge-module/build-iot-edge-solution-2.png)
  
     Když Visual Studio Code poznáte, že se má vaše řešení sestavit, spustí se dva příkazy v integrovaném terminálu: sestavení Docker a Docker push. Tyto dva příkazy sestaví kód, provedou kontejnerizaci vaší knihovny CSharpModule.dll a odešlou ji do registru kontejneru, který jste zadali při inicializaci řešení.
 

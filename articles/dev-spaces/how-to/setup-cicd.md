@@ -8,14 +8,16 @@ ms.topic: conceptual
 manager: gwallace
 description: Přečtěte si, jak nastavit průběžnou integraci a průběžné nasazování pomocí Azure DevOps s využitím Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de409aa060034c9ba0faaaa56ce21f904b02cdac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080262"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960384"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Použití CI/CD s Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Tento článek vás provede nastavením služby průběžná integrace/průběžné nasazování (CI/CD) do Azure Kubernetes Service (AKS) s povolenými vývojovým prostorem. CI/CD do AKS umožňuje automaticky nasadit aktualizace aplikací při vložení potvrzeného kódu do zdrojového úložiště. Použití CI/CD ve spojení s clusterem s podporou vývojových prostorů je užitečné, protože může uchovávat základní hodnoty aplikace v aktuálním stavu, se kterými tým pracuje.
 
@@ -23,7 +25,7 @@ Tento článek vás provede nastavením služby průběžná integrace/průběž
 
 I když vás tento článek provede s Azure DevOps, stejné koncepty by se měly vztahovat na systémy CI/CD, jako je Jenkinse, TeamCity atd.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Cluster služby Azure Kubernetes (AKS) s povoleným Azure Dev Spaces
 * [Nainstalované rozhraní příkazového řádku Azure Dev Spaces](upgrade-tools.md)
 * [Organizace Azure DevOps s projektem](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)

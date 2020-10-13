@@ -6,16 +6,16 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8fcadb8bdd4862dd95625228e3c190e5fe19a9a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86204459"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961676"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Použití služby StorSimple Device Manager ke správě svazků (Update 3 nebo novější)
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 
 V tomto kurzu se dozvíte, jak pomocí služby StorSimple Device Manager vytvářet a spravovat svazky na zařízeních řady StorSimple 8000 s aktualizací Update 3 nebo novější.
 
@@ -51,7 +51,7 @@ Pokud používáte vrstvený svazek pro Archivovaná data, zaškrtněte políčk
 
 V následující tabulce najdete maximální zřízenou kapacitu pro každé zařízení a typ svazku. (Upozorňujeme, že místně připojené svazky nejsou k dispozici na virtuálním zařízení.)
 
-| Typ | Maximální velikost vrstveného svazku | Maximální velikost místně připnutého svazku |
+| Type | Maximální velikost vrstveného svazku | Maximální velikost místně připnutého svazku |
 | --- | --- | --- |
 | **Fyzická zařízení** | | |
 | 8100 |64 TB |8 TB |
@@ -155,11 +155,11 @@ Upravte svazek, pokud ho potřebujete rozšířit, nebo změňte hostitele, kte�
    3. Zvyšte **zřízenou kapacitu**. **Zřízenou kapacitu** je možné zvýšit. Po vytvoření se svazek nedá zmenšit.
    4. V části **připojení hostitelé**můžete upravit ACR. Pokud chcete upravit ACR, musí být svazek offline.
 
-       ![Kontrola dopadu převedení svazku do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+       ![Kontrola dopadu na přepnutí svazku do režimu offline 2](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
 5. Kliknutím na **Uložit** uložte změny. Po zobrazení výzvy k potvrzení klikněte na **Ano**. V Azure Portal se zobrazí zpráva o aktualizaci svazku. Po úspěšné aktualizaci svazku se zobrazí zpráva o úspěchu.
 
-    ![Kontrola dopadu převedení svazku do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Kontrola vlivu na přepnutí svazku do režimu offline 3](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
 7. Pokud rozbalíte svazek, proveďte následující kroky na hostitelském počítači s Windows:
    
@@ -215,7 +215,7 @@ Pokud potřebujete další místo pro zřízení dalších svazků, můžete cht
 
 1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V tabulkovém výpisu zařízení vyberte zařízení, které má svazek, který chcete upravit. Klikněte na **nastavení > svazky**.
 
-    ![Okno přejít do svazků](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Přejít na svazky okno 2](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
 3. V tabulkovém výpisu svazků vyberte svazek a kliknutím pravým tlačítkem vyvolání místní nabídky. Vyberte **Upravit**.
 
@@ -249,7 +249,7 @@ Pokud plánujete upravit nebo odstranit svazek, možná budete muset svazek pře
    
     1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V tabulkovém výpisu zařízení vyberte zařízení, které má svazek, který chcete upravit. Klikněte na **nastavení > svazky**.
 
-        ![Okno přejít do svazků](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+        ![Přejít na svazky okno 3](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
     2. V tabulkovém výpisu svazků vyberte svazek a kliknutím pravým tlačítkem vyvolání místní nabídky. Vyberte možnost **převést do režimu offline** , pokud chcete změnit svazek, který budete upravovat offline.
 
@@ -257,7 +257,7 @@ Pokud plánujete upravit nebo odstranit svazek, možná budete muset svazek pře
 
 3. V okně **převést do režimu offline** zkontrolujte dopad přepnutí svazku do režimu offline a zaškrtněte příslušné políčko. Klikněte na **převést do režimu offline**. 
 
-    ![Kontrola dopadu převedení svazku do režimu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Kontrola dopadu na přepnutí svazku do režimu offline 4](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
       
       Když je svazek offline, zobrazí se vám oznámení. Stav svazku se taky aktualizuje na offline.
       
@@ -277,7 +277,7 @@ Provedením následujících kroků odstraňte svazek.
 
 1. Přejděte do služby Správce zařízení StorSimple a klikněte na **Zařízení**. V tabulkovém výpisu zařízení vyberte zařízení, které má svazek, který chcete upravit. Klikněte na **nastavení > svazky**.
 
-    ![Okno přejít do svazků](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Přejít na svazky okno 4](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
 3. Ověřte stav svazku, který chcete odstranit. Pokud se svazek, který chcete odstranit, nenachází v režimu offline, nejprve ho převeďte do režimu offline. Postupujte podle kroků v části [převedení svazku do režimu offline](#take-a-volume-offline).
 4. Po převedení svazku na offline vyberte svazek, klikněte pravým tlačítkem na vyvolání kontextové nabídky a pak vyberte **Odstranit**.

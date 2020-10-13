@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 3f7b45e88eeb1e391ec86fa230a87e9f5194cd60
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: ef840abdfdb51e2472615ffabf0b49545b6fef3f
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893794"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938419"
 ---
 # <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Kurz: migrace Azure DB pro PostgreSQL – jeden server do Azure DB pro PostgreSQL-Single server online pomocí DMS přes Azure Portal
 
-Pomocí Azure Database Migration Service můžete migrovat databáze z instance [Azure Database for PostgreSQL s jedním serverem](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) do jiné instance [serveru Azure Database for PostgreSQL-Single](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) s minimálními výpadky. V tomto kurzu migrujete ukázkovou databázi **pronájmu DVD** z Azure Database for PostgreSQL v10 za účelem na Azure Database for PostgreSQL jeden server pomocí online aktivity migrace v Azure Database Migration Service.
+Pomocí Azure Database Migration Service můžete migrovat databáze z instance [serveru Azure Database for PostgreSQL na jeden server](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) do stejné nebo jiné verze Azure Database for PostgreSQL – jedné instance serveru nebo Azure Database for PostgreSQL flexibilního serveru s minimálními výpadky. V tomto kurzu migrujete ukázkovou databázi **pronájmu DVD** z Azure Database for PostgreSQL v10 za účelem na Azure Database for PostgreSQL jeden server pomocí online aktivity migrace v Azure Database Migration Service.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -100,7 +100,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    Například:
+    Příklad:
 
     ```
     psql -h mypgserver-source.postgres.database.azure.com  -U pguser@mypgserver-source -d dvdrental citus < dvdrentalSchema.sql
@@ -286,6 +286,9 @@ Po dokončení počátečního úplného načtení se databáze označí jako **
     ![Dokončit obrazovku přímou migraci](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
 3. Jakmile se zobrazí stav migrace databáze **dokončeno**, [znovu vytvořte sekvence](https://wiki.postgresql.org/wiki/Fixing_Sequences) (Pokud je k dispozici) a připojte své aplikace k nové cílové instanci Azure Database for PostgreSQL.
+ 
+> [!NOTE]
+> Azure Database Migration Service lze použít k provádění inovací hlavní verze s menším výpadkem v Azure Database for PostgreSQL jednom serveru. Nejprve nakonfigurujete cílovou databázi s požadovanou vyšší verzí PostgreSQL, nastavením sítě a parametry. Potom můžete zahájit migraci na cílové databáze pomocí postupu popsaného výše. Po přímou migraci k cílovému databázovému serveru můžete aktualizovat připojovací řetězec aplikace tak, aby odkazoval na cílový databázový server. 
 
 ## <a name="next-steps"></a>Další kroky
 

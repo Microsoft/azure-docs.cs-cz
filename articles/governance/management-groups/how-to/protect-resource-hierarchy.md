@@ -3,12 +3,12 @@ title: Jak chránit hierarchii prostředků – zásady správného řízení Az
 description: Naučte se chránit svoji hierarchii prostředků pomocí nastavení hierarchie, která zahrnují nastavení výchozí skupiny pro správu.
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8630562786da922a36baa3bec4863acbb21b197d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfaf7a732b3233536006009613cecd5aa1649dee
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533975"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951889"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Jak chránit hierarchii prostředků
 
@@ -115,5 +115,5 @@ Chcete-li nastavení vrátit zpět, použijte stejný koncový bod a nastavte **
 
 Další informace o řešeních pro správu najdete v následujících tématech:
 
-- [Vytváření skupin pro správu pro organizaci prostředků Azure](../create.md)
+- [Vytváření skupin pro správu pro organizaci prostředků Azure](../create-management-group-portal.md)
 - [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](../manage.md)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 10/12/2020
 ms.author: aahi
-ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11b75bcadc6292c17ef7e1e0f482d0c53bd9f8f5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324463"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971944"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Přidání datových kanálů z různých zdrojů dat do Poradce pro metriky
 
@@ -23,7 +23,7 @@ V tomto článku najdete nastavení a požadavky pro propojení různých typů 
 
 ## <a name="supported-authentication-types"></a>Podporované typy ověřování
 
-| Typy ověřování | Description |
+| Typy ověřování | Popis |
 | ---------------------|-------------|
 |**Basic** | Budete muset být schopni zadat základní parametry pro přístup ke zdrojům dat. Například připojovací řetězec nebo klíč. Správci datového kanálu můžou tyto přihlašovací údaje zobrazit. |
 | **AzureManagedIdentity** | [Spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) prostředků Azure je funkce Azure Active Directory. Poskytuje služby Azure s automaticky spravovanou identitou ve službě Azure AD. Identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD.|
@@ -133,7 +133,7 @@ Pro každý soubor JSON je povoleno pouze jedno časové razítko.
 
 ## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure Data Explorer (Kusto)</span>
 
-* **Připojovací řetězec**: informace o tom, jak načíst připojovací řetězec z Azure Průzkumník dat (Kusto), najdete v tématu [zobrazení a zkopírování připojovacího řetězce](https://docs.microsoft.com/azure/data-explorer/kusto/api/connection-strings/kusto) .
+* **Připojovací řetězec**: Poradce metrik podporuje přístup k Azure Průzkumník dat (Kusto) pomocí ověřování aplikací Azure AD. Budete muset vytvořit a zaregistrovat aplikaci Azure AD a potom ji autorizovat pro přístup k databázi Azure Průzkumník dat. Postup získání připojovacího řetězce najdete v dokumentaci k [Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/provision-azure-ad-app) .
 
 * **Dotaz**: informace o tom, jak získat a formulovat data do multidimenzionálních dat časových řad, najdete v tématu [dotazovací jazyk Kusto](https://docs.microsoft.com/azure/data-explorer/kusto/query) . V dotazu můžete použít `@StartTime` `@EndTime` proměnné a. Měly by být naformátované: `yyyy-MM-dd HH:mm:ss` .
 

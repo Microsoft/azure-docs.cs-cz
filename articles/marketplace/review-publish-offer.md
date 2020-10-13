@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 08/12/2020
-ms.openlocfilehash: eff1db3aca2cab77d18698634b84e8e1b1c99f7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47d82982bbb7546b53dd4754c49bd22fe958d5ef
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89375872"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976431"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Kontrola a publikování nabídky na komerčním webu Marketplace
 
@@ -170,6 +170,84 @@ Teď, když jste se rozhodli začít pracovat s vaší nabídkou, která ji zpř
     Zajistíme, že vaše nabídka bude veřejně dostupná na webu Marketplace.
 
 Po dokončení těchto kontrol budou vaše nabídka na webu Marketplace živá.
+
+## <a name="publishing-history"></a>Historie publikování
+
+Stránka **Historie** v partnerském centru zobrazuje události publikování pro vaše nabídky komerčních tržišť. U každé události na stránce se zobrazí uživatel, který inicioval akci, typ události a datum a čas události. [Kroky ověřování a publikování](#validation-and-publishing-steps) jsou uvedené s datem a časem dokončení.
+
+Zobrazení historie vaší nabídky:
+
+1.    Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
+2.    V navigační nabídce na levé straně vyberte **obchodní Marketplace**  >  **Přehled**.
+3.    Vyberte svoji nabídku.
+4.    V navigační nabídce vlevo vyberte kartu **Historie** . Stránka poskytuje podrobné informace o následujících událostech, které se vztahují na vaši nabídku:
+
+|Událost    |Popis    |
+|---------|---------------|
+|Nabídka vytvořena    |Nabídka se vytvořila v partnerském centru. Uživatel vybral v přehledu **komerčního tržiště**typ nabídky, ID nabídky a alias nabídky  >  **Overview**.    |
+|Vytvořený plán: *název plánu*    |Uživatel vytvořil nový plán zadáním ID plánu a názvu plánu na kartě **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány*.    |
+|Plán se odstranil    |Uživatel odstranil pracovní plán, který nebyl publikován, výběrem možnosti **Odstranit koncept** ze stránky **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány*.    |
+|Vyvolaný plán zastavil prodej: *název plánu*    |Uživatel zahájil plán, který se zastavil – prodej výběrem možnosti **ukončit prodej** na stránce **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány*.    |
+|Zrušit prodej – plán zastavit: *název plánu*    |Uživatel zrušil plán – prodej výběrem možnosti **zpět ukončit prodej** na stránce **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány*.    |
+|Odeslaná nabídka do verze Preview    |Uživatel odeslal nabídku do náhledu výběrem možnosti **publikovat** na stránce **Kontrola a publikování** .    |
+|Zrušení vyvolaného odeslání do verze Preview    |Uživatel požádal o zrušení publikace nabídky do verze Preview výběrem možnosti **Zrušit publikování** na stránce **přehledu nabídky** po odeslání do náhledu.</br>*Tato událost se zobrazí při zpracování žádosti o zrušení*.    |
+|Zrušené odeslání do verze Preview    |Uživatel zrušil publikaci nabídky do verze Preview výběrem možnosti **Zrušit publikování** na stránce **Přehled nabídky** po odeslání do náhledu.</br>*Tato událost se zobrazí po úspěšném zpracování žádosti o zrušení*.    |
+|Odhlásit se a přejít na Live    |Uživatel publikoval nabídku na komerční tržišti výběrem možnosti **Přejít živě** na stránce **Přehled nabídky** .    |
+|Zrušení zahájení publikování na webu Marketplace    |Uživatel požádal o zrušení publikace nabídky kliknutím na **tlačítko Zrušit publikování** na stránce **Přehled nabídky** po přihlášení k webu.</br>*Tato událost se zobrazí při zpracování žádosti o zrušení*.    |
+|Zrušené publikování na komerčním webu Marketplace    |Uživatel zrušil publikaci nabídky kliknutím na **tlačítko Zrušit publikování** na stránce s **přehledem nabídky** po přihlášení k webu.</br>*Tato událost se zobrazí po úspěšném zpracování žádosti o zrušení*.    |
+|Synchronizovat soukromou cílovou skupinu    |Uživatel aktualizoval a synchronizoval soukromou cílovou skupinu tak, že vybere možnost **synchronizovat soukromou cílovou skupinu** na stránce **Přehled plánu** nebo na stránce s **cenami plánu & dostupnosti** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují soukromé plány*.    |
+|Zastavit prodej nabídky    |Uživatel zastavil prodej nabídky výběrem možnosti **ukončit prodej** na stránce **Přehled nabídky** .    |
+
+> [!NOTE]
+> Stránka historie neříká, že se uložil koncept nabídky.
+
+### <a name="filter-options"></a>Možnosti filtru
+
+Pomocí filtrů můžete zúžit celou historii nabídky na konkrétní události publikování:
+
+1.    V pravém horním rohu stránky vyberte tlačítko filtr.
+2.    Zvolte Filtr a pak vyberte **použít** a podívejte se, které události historie odpovídají vybraným kritériím.
+3.    Vyberte možnost **Vymazat filtry** a vraťte se k úplné historii vaší nabídky.
+
+Existují čtyři filtry:
+* Události
+* Uživatelé
+* Datum
+* Stránky
+
+Když vyberete filtr **stránky** , můžete vybrat libovolné stránky partnerského centra, které se vztahují k vašemu typu nabídky. Když se použije, filtr **stránky** zobrazí všechny **odeslané nabídky pro náhled událostí ve verzi Preview** se změnami vybrané stránky.
+
+* Pro všechny nabídky je stránka pro **nastavení nabídky** ve výchozím nastavení součástí každé události odeslání.
+* U nabídek, které podporují plány, je pro každou událost odeslání zahrnutá Stránka s **přehledem plánu** .
+* Pro nabídky, které podporují testovací verzi, je pro každou událost odeslání zahrnutá stránka **testovacího disku** .
+
+### <a name="users"></a>Uživatelé
+
+Pokud uživatel inicioval událost, stránka Historie zobrazí uživatele podle následujících scénářů:
+
+#### <a name="the-event-was-initiated-by-the-publisher"></a>Vydavatel zahájil událost.
+
+Uživatelům s oprávněním pro publikování v nabídce bude zobrazen jejich název pro události publikování, které iniciují.
+
+[![Stránka historie zobrazuje jména uživatelů s oprávněními k publikování.](./media/review-publish-offer/event-initiated-by-publisher.png)](./media/review-publish-offer/event-initiated-by-publisher.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-microsoft"></a>Událost byla iniciována společností Microsoft.
+
+Správcům Microsoftu můžete udělit oprávnění zahájit akce vaším jménem nebo provést nápravné akce po neočekávané systémové chybě. Název a logo společnosti Microsoft se zobrazí pro publikování událostí inicializovaných společností Microsoft jménem svého účtu.
+
+[![Příklad, jak stránka Historie zobrazuje události iniciované Microsoftem](./media/review-publish-offer/event-initiated-by-microsoft.png)](./media/review-publish-offer/event-initiated-by-microsoft.png#lightbox)
+
+#### <a name="the-event-was-initiated-by-an-unidentified-user"></a>Událost byla iniciována neidentifikovaným uživatelem.
+
+Uživatelé, kteří už nejsou k účtu přidružení, budou mít po stažení oprávnění k publikování z něj odebráni jejich jméno ze sloupce **iniciované** .
+
+[![Příklad, jak stránka Historie zobrazuje události iniciované neidentifikovanými uživateli](./media/review-publish-offer/event-initiated-by-unidentified-user.png)](./media/review-publish-offer/event-initiated-by-unidentified-user.png#lightbox)
+
+#### <a name="validation-and-publishing-steps"></a>Postup ověření a publikování
+
+Pro systémové procesy, které odpovídají [postupům ověření a publikování](#validation-and-publishing-steps), se nezobrazuje žádný uživatel. Tyto události jsou barevně kódované podle stavu dokončení události.
+
+[![Příklad, jak stránka Historie zobrazuje kroky ověření a publikování.](./media/review-publish-offer/validation-and-publishing-event.png)](./media/review-publish-offer/validation-and-publishing-event.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 

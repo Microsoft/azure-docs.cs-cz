@@ -3,12 +3,12 @@ title: Propojte své ID partnera, aby bylo možné u delegovaných prostředků 
 description: Přečtěte si, jak přidružit ID partnera pro příjem kreditu (PEC) pro zákaznické prostředky, které spravujete prostřednictvím Azure Lighthouse.
 ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 5caa205ce74152c7ec047952f66c1bf9188ddf02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9d80a94e52f6f6a8aef5f5284659750084b0b5e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776166"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974443"
 ---
 # <a name="link-your-partner-id-to-enable-partner-earned-credit-on-delegated-resources"></a>Propojte své ID partnera, aby bylo možné u delegovaných prostředků povolit kredit získaný pro partnery.
 
@@ -22,17 +22,17 @@ Pokud připojíte [zákazníky pomocí šablon správy prostředků Azure](onboa
 
 Při připojování zákazníků prostřednictvím šablon Azure Resource Manager (šablony ARM) použijte následující postup, který propojí ID partnera a povolí získaný kredit pro partnery. K provedení těchto kroků budete muset znát [ID partnera MPN](/partner-center/partner-center-account-setup#locate-your-mpn-id) . Nezapomeňte použít **přidružené ID MPN**, které je uvedené ve vašem partnerském profilu.
 
-Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního objektu, propojit ho s **přidruženým ID MPN**a pak mu udělit přístup ke každému zákazníkovi, který zařadíte pomocí [předdefinované role Azure, která má nárok na pec](https://docs.microsoft.com/partner-center/azure-roles-perms-pec).
+Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního objektu, propojit ho s **přidruženým ID MPN**a pak mu udělit přístup ke každému zákazníkovi, který zařadíte pomocí [předdefinované role Azure, která má nárok na pec](/partner-center/azure-roles-perms-pec).
 
 1. Ve vašem tenantovi pro správu [Vytvořte hlavní účet služby](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) . V tomto příkladu pojmenujte tento účet služby PEC automatizace pro instanční službu.
 1. Pomocí tohoto účtu instančního objektu se v tenantovi [pro správu připojte k přidruženému ID MPN](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id) . Stačí to udělat jenom jednou.
-1. Při [připojování zákazníka pomocí šablon ARM](onboard-customer.md)nezapomeňte zahrnout autorizaci, která zahrnuje účet služby pec pro Azure jako uživatel s [integrovanou rolí Azure, která má nárok na řadič PEC](https://docs.microsoft.com/partner-center/azure-roles-perms-pec).
+1. Při [připojování zákazníka pomocí šablon ARM](onboard-customer.md)nezapomeňte zahrnout autorizaci, která zahrnuje účet služby pec pro Azure jako uživatel s [integrovanou rolí Azure, která má nárok na řadič PEC](/partner-center/azure-roles-perms-pec).
 
 Pomocí těchto kroků se každý tenant zákazníka bude přidružit k vašemu ID partnera, což vám umožní přijímat pro tyto zákazníky řadiče PEC. Účet služby PEC pro řadič PEC nemusí ověřovat ani provádět žádné akce v tenantovi zákazníka.
 
 ## <a name="add-your-partner-id-to-previously-onboarded-customers"></a>Přidat ID partnera k dříve připojeným zákazníkům
 
-Pokud jste již provedli připojení k zákazníkovi, nebudete pravděpodobně chtít provést jiné nasazení, abyste přidali instanční objekt pro účet služby PEC Automation. Místo toho můžete propojit **přidružené ID MPN** s uživatelským účtem, který už má přístup k práci v tenantovi daného zákazníka. Ujistěte se, že má účet přiřazenou [předdefinovanou roli Azure, která má nárok na pec](https://docs.microsoft.com/partner-center/azure-roles-perms-pec).
+Pokud jste již provedli připojení k zákazníkovi, nebudete pravděpodobně chtít provést jiné nasazení, abyste přidali instanční objekt pro účet služby PEC Automation. Místo toho můžete propojit **přidružené ID MPN** s uživatelským účtem, který už má přístup k práci v tenantovi daného zákazníka. Ujistěte se, že má účet přiřazenou [předdefinovanou roli Azure, která má nárok na pec](/partner-center/azure-roles-perms-pec).
 
 Jakmile je účet [propojený s vaším přidruženým ID MPN](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id) ve vašem tenantovi pro správu, budete moct pro tohoto zákazníka získat pec.
 

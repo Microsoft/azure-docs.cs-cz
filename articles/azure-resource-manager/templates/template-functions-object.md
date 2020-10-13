@@ -2,23 +2,25 @@
 title: Funkce šablon – objekty
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager pro práci s objekty.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: fede4d6c71e45b119e500d4c9c6f91765d052036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 632e92bb798a5e8469079ef4693b7f321617f88c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84676790"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977880"
 ---
 # <a name="object-functions-for-arm-templates"></a>Funkce objektů pro šablony ARM
 
 Správce prostředků poskytuje několik funkcí pro práci s objekty v šabloně Azure Resource Manager (ARM).
 
 * [zobrazí](#contains)
+* [Metody](#createobject)
 * [empty](#empty)
 * [průnik](#intersection)
 * [JSON](#json)
 * [length](#length)
+* [null](#null)
 * [sjednocovací](#union)
 
 ## <a name="contains"></a>obsahuje
@@ -29,10 +31,10 @@ Kontroluje, zda pole obsahuje hodnotu, objekt obsahuje klíč, nebo řetězec ob
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| kontejner |Yes |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu, která se má najít. |
-| itemToFind |Yes |řetězec nebo int |Hodnota, která se má najít |
+| kontejner |Ano |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu, která se má najít. |
+| itemToFind |Ano |řetězec nebo int |Hodnota, která se má najít |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -102,6 +104,58 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | arrayTrue | Logická hodnota | Ano |
 | arrayFalse | Logická hodnota | Nepravda |
 
+## <a name="createobject"></a>Metody
+
+`createObject(key1, value1, key2, value2, ...)`
+
+Vytvoří objekt z klíčů a hodnot.
+
+### <a name="parameters"></a>Parametry
+
+| Parametr | Povinné | Typ | Popis |
+|:--- |:--- |:--- |:--- |
+| key1 |No |řetězec |Název klíče |
+| Hodnota1 |No |int, Boolean, String, Object nebo Array |Hodnota klíče |
+| Další klíče |No |řetězec |Další názvy klíčů |
+| Další hodnoty |No |int, Boolean, String, Object nebo Array |Další hodnoty klíčů |
+
+Funkce přijímá pouze sudý počet parametrů. Každý klíč musí mít stejnou hodnotu.
+
+### <a name="return-value"></a>Vrácená hodnota
+
+Objekt s každou dvojicí klíč-hodnota.
+
+### <a name="example"></a>Příklad
+
+Následující příklad vytvoří objekt z různých typů hodnot.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+    ],
+    "outputs": {
+        "newObject": {
+            "type": "object",
+            "value": "[createObject('intProp', 1, 'stringProp', 'abc', 'boolProp', true(), 'arrayProp', createArray('a', 'b', 'c'), 'objectProp', createObject('key1', 'value1'))]"
+        }
+    }
+}
+```
+
+Výstup z předchozího příkladu s výchozími hodnotami je objekt s názvem `newObject` s následující hodnotou:
+
+```json
+{
+  "intProp": 1,
+  "stringProp": "abc",
+  "boolProp": true,
+  "arrayProp": ["a", "b", "c"],
+  "objectProp": {"key1": "value1"}
+}
+```
+
 ## <a name="empty"></a>empty
 
 `empty(itemToTest)`
@@ -110,9 +164,9 @@ Určuje, zda je pole, objekt nebo řetězec prázdný.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Yes |pole, objekt nebo řetězec |Hodnota, která zkontroluje, jestli je prázdná |
+| itemToTest |Ano |pole, objekt nebo řetězec |Hodnota, která zkontroluje, jestli je prázdná |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -175,10 +229,10 @@ Vrátí jedno pole nebo objekt se společnými prvky z parametrů.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |pole nebo objekt |První hodnota, která má být použita pro hledání běžných prvků. |
-| arg2 |Yes |pole nebo objekt |Druhá hodnota, která má být použita pro vyhledání běžných prvků. |
+| arg1 |Ano |pole nebo objekt |První hodnota, která má být použita pro hledání běžných prvků. |
+| arg2 |Ano |pole nebo objekt |Druhá hodnota, která má být použita pro vyhledání běžných prvků. |
 | Další argumenty |No |pole nebo objekt |Další hodnoty, které se mají použít pro hledání běžných prvků. |
 
 ### <a name="return-value"></a>Vrácená hodnota
@@ -237,40 +291,58 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 `json(arg1)`
 
-Vrátí objekt JSON.
+Převede platný řetězec JSON na datový typ JSON.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |řetězec |Hodnota, která má být převedena do formátu JSON. |
+| arg1 |Ano |řetězec |Hodnota, která má být převedena do formátu JSON. Řetězec musí být správně formátovaný řetězec JSON. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Objekt JSON ze zadaného řetězce nebo prázdný objekt, je-li zadána **hodnota null** .
+Datový typ JSON ze zadaného řetězce nebo prázdná hodnota, pokud je zadána hodnota **null** .
 
 ### <a name="remarks"></a>Poznámky
 
 Pokud potřebujete do objektu JSON zahrnout hodnotu parametru nebo proměnnou, použijte funkci [Concat](template-functions-string.md#concat) k vytvoření řetězce, který předáte do funkce.
 
+K získání hodnoty null můžete použít také [hodnotu null ()](#null) .
+
 ### <a name="example"></a>Příklad
 
-Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) ukazuje, jak používat funkci JSON. Všimněte si, že můžete buď předat řetězec, který představuje objekt, nebo použít **null** , pokud není potřeba žádná hodnota.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) ukazuje, jak používat funkci JSON. Všimněte si, že pro prázdný objekt můžete předat **hodnotu null** .
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "jsonObject1": {
+        "jsonEmptyObject": {
             "type": "string",
             "defaultValue": "null"
         },
-        "jsonObject2": {
+        "jsonObject": {
             "type": "string",
             "defaultValue": "{\"a\": \"b\"}"
         },
-        "testValue": {
+        "jsonString": {
+            "type": "string",
+            "defaultValue": "\"test\""
+        },
+        "jsonBoolean": {
+            "type": "string",
+            "defaultValue": "true"
+        },
+        "jsonInt": {
+            "type": "string",
+            "defaultValue": "3"
+        },
+        "jsonArray": {
+            "type": "string",
+            "defaultValue": "[[1,2,3 ]"
+        },
+        "concatValue": {
             "type": "string",
             "defaultValue": "demo value"
         }
@@ -278,17 +350,33 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
     "resources": [
     ],
     "outputs": {
-        "jsonOutput1": {
+        "emptyObjectOutput": {
             "type": "bool",
-            "value": "[empty(json(parameters('jsonObject1')))]"
+            "value": "[empty(json(parameters('jsonEmptyObject')))]"
         },
-        "jsonOutput2": {
+        "objectOutput": {
             "type": "object",
-            "value": "[json(parameters('jsonObject2'))]"
+            "value": "[json(parameters('jsonObject'))]"
         },
-        "paramOutput": {
+        "stringOutput": {
+            "type": "string",
+            "value": "[json(parameters('jsonString'))]"
+        },
+        "booleanOutput": {
+            "type": "bool",
+            "value": "[json(parameters('jsonBoolean'))]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[json(parameters('jsonInt'))]"
+        },
+        "arrayOutput": {
+            "type": "array",
+            "value": "[json(parameters('jsonArray'))]"
+        },
+        "concatObjectOutput": {
             "type": "object",
-            "value": "[json(concat('{\"a\": \"', parameters('testValue'), '\"}'))]"
+            "value": "[json(concat('{\"a\": \"', parameters('concatValue'), '\"}'))]"
         }
     }
 }
@@ -298,9 +386,13 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| jsonOutput1 | Logická hodnota | Ano |
-| jsonOutput2 | Objekt | {"a": "b"} |
-| paramOutput | Objekt | {"a": "demo hodnota"}
+| emptyObjectOutput | Logická hodnota | Ano |
+| objectOutput | Objekt | {"a": "b"} |
+| stringOutput | Řetězec | test |
+| booleanOutput | Logická hodnota | Ano |
+| intOutput | Integer | 3 |
+| arrayOutput | Pole | [ 1, 2, 3 ] |
+| concatObjectOutput | Objekt | {"a": "demo hodnota"} |
 
 ## <a name="length"></a>length
 
@@ -310,9 +402,9 @@ Vrátí počet prvků v poli, znaky v řetězci nebo vlastnosti na kořenové ú
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |pole, řetězec nebo objekt |Pole, které se má použít pro získání počtu prvků, řetězec, který se má použít pro získání počtu znaků, nebo objekt, který se má použít pro získání počtu vlastností na úrovni root. |
+| arg1 |Ano |pole, řetězec nebo objekt |Pole, které se má použít pro získání počtu prvků, řetězec, který se má použít pro získání počtu znaků, nebo objekt, který se má použít pro získání počtu vlastností na úrovni root. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -378,6 +470,44 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | stringLength | Int | 13 |
 | objectLength | Int | 4 |
 
+## <a name="null"></a>null
+
+`null()`
+
+Vrací hodnotu null.
+
+### <a name="parameters"></a>Parametry
+
+Funkce null nepřijímá žádné parametry.
+
+### <a name="return-value"></a>Vrácená hodnota
+
+Hodnota, která má vždycky hodnotu null.
+
+### <a name="example"></a>Příklad
+
+V následujícím příkladu je použita funkce null.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "emptyOutput": {
+            "type": "bool",
+            "value": "[empty(null())]"
+        },
+    }
+}
+```
+
+Výstup z předchozího příkladu:
+
+| Název | Typ | Hodnota |
+| ---- | ---- | ----- |
+| emptyOutput | Logická hodnota | Ano |
+
 ## <a name="union"></a>sjednocení
 
 `union(arg1, arg2, arg3, ...)`
@@ -386,10 +516,10 @@ Vrátí jedno pole nebo objekt se všemi prvky z parametrů. Duplicitní hodnoty
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |pole nebo objekt |První hodnota, která se má použít pro spojování prvků. |
-| arg2 |Yes |pole nebo objekt |Druhá hodnota, která se má použít pro spojování prvků. |
+| arg1 |Ano |pole nebo objekt |První hodnota, která se má použít pro spojování prvků. |
+| arg2 |Ano |pole nebo objekt |Druhá hodnota, která se má použít pro spojování prvků. |
 | Další argumenty |No |pole nebo objekt |Další hodnoty, které se mají použít pro spojování prvků. |
 
 ### <a name="return-value"></a>Vrácená hodnota

@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: ac915aa3baba910895e10d21148b899347e8ae4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 884a9e82dacb2a0dfc6763809a2ccfd2b886df1a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370483"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974171"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure PowerShell
 
-Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
+Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](../dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
 
 Ujistěte se, že máte nainstalovanou Azure PowerShell verze 2.8.0 nebo novější a jste přihlášení k účtu Azure v rámci `Connect-AzAccount` . 
 
@@ -278,4 +278,4 @@ Remove-AzResourceGroup -Name $rgName
 
 - [Zde](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)najdete ukázkovou šablonu, která pro maximální odolnost v oblasti používá zóny i domény selhání.
 
-- Můžete také nasadit vyhrazené hostitele pomocí [Azure Portal](dedicated-hosts-portal.md).
+- Můžete také nasadit vyhrazené hostitele pomocí [Azure Portal](../dedicated-hosts-portal.md).

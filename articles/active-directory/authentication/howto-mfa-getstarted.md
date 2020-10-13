@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da9a0fe30721a2f55db2c4771f54716868f9972f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2cbb9876d9e28b2cab8efb9ccdb2aa543fcc4b4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89055069"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964464"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Plánování nasazení služby Azure Multi-Factor Authentication
 
@@ -31,7 +31,7 @@ Chcete-li rychle zobrazit Multi-Factor Authentication Azure v akci a pak se vrá
 > [!div class="nextstepaction"]
 > [Povolení služby Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s nasazením Azure Multi-Factor Authentication, jsou k dispozici nezbytné položky, které byste měli vzít v úvahu.
 
@@ -357,7 +357,7 @@ Sestavy pro Azure MFA
 
 Azure Multi-Factor Authentication poskytuje sestavy prostřednictvím Azure Portal:
 
-| Sestava | Umístění | Description |
+| Sestava | Umístění | Popis |
 | --- | --- | --- |
 | Používání a výstrahy týkající se podvodů | Přihlášení > Azure AD | Poskytuje informace o celkovém využití, souhrnu uživatelů a podrobnostech uživatelů. a také historii výstrah podvodů odeslaných během zadaného rozsahu dat. |
 

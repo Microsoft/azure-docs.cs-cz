@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0dfcf74ef07ff2bde7921860c6e13a59b0ccf023
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5fa5ae54c7aea520a2346cba8feca294585b0d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962532"
+ms.locfileid: "91875729"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité aspekty sítí pro službu App Service Environment #
 
@@ -161,7 +161,7 @@ Požadované položky v NSG, aby mohl funkce pomocného mechanismu provozu fungo
 * UDP na všechny IP adresy na portu 53
 * UDP na všechny IP adresy na portu 123
 * TCP na všechny IP adresy na portech 80, 443
-* TCP ke značce služby IP AzureSQL na portech 1433
+* Na portech 1433 se TCP pro značku služby IP `Sql`
 * TCP na všechny IP adresy na portu 12000
 * do podsítě pomocného mechanismu pro všechny porty
 

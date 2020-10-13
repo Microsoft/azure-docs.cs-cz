@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 7/27/2020
+ms.date: 10/2/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e5fe8e751077bc04850879d27827c197767a81c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89a4c62044e3be849650de703d2daa9ca3e2a975
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87759066"
+ms.locfileid: "91932579"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform a tok přihlašovacích údajů klienta OAuth 2,0
 
@@ -52,8 +52,11 @@ Běžným případem použití je použití seznamu ACL ke spuštění testů pr
 
 Tento typ autorizace je společný pro démony a účty služeb, které potřebují přístup k datům vlastněných uživateli, kteří mají osobní účty Microsoft. Pro data vlastněná organizacemi doporučujeme, abyste získali potřebnou autorizaci prostřednictvím oprávnění aplikace.
 
-> [!NOTE]
-> Aby bylo možné povolit tento autorizační vzor založený na seznamu ACL, Azure AD nevyžaduje, aby aplikace byly autorizované k získání tokenů pro jinou aplikaci, takže tokeny jenom pro aplikace se dají vydávat bez `roles` deklarace identity. Aplikace, které zveřejňují rozhraní API, musí implementovat kontroly oprávnění, aby mohli přijímat tokeny.
+#### <a name="controlling-tokens-without-the-roles-claim"></a>Řízení tokenů bez `roles` deklarace identity
+
+Aby bylo možné povolit tento autorizační vzor založený na seznamu ACL, služba Azure AD nevyžaduje, aby aplikace měly oprávnění získat tokeny pro jinou aplikaci. Tokeny jenom pro aplikace se proto dají vydávat bez `roles` deklarace identity. Aplikace, které zveřejňují rozhraní API, musí implementovat kontroly oprávnění, aby mohli přijímat tokeny.
+
+Pokud byste chtěli zabránit aplikacím v získání přístupových tokenů bez rolí pro aplikaci, [Ujistěte se, že jsou pro vaši aplikaci povolené požadavky na přiřazení uživatelů](../manage-apps/assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment). Tím se zablokuje uživatelům a aplikacím bez přiřazených rolí, aby mohli získat token pro tuto aplikaci. 
 
 ### <a name="application-permissions"></a>Oprávnění aplikace
 

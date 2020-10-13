@@ -9,12 +9,12 @@ ms.date: 06/22/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ee00425da89391e5228f2d48b49ca85426066f1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e16e7fa5ecc2fb947f9f82c1cdd27af6758d6bda
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85299003"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971745"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace modulu runtime a procesu démon zabezpečení IoT Edge
 
@@ -117,7 +117,7 @@ Pokud chcete aktualizovat na konkrétní verzi démona zabezpečení, vyhledejte
 >[!NOTE]
 >`-OfflineInstallationPath`Parametr vyhledá soubor s názvem **Microsoft-Azure-IoTEdge.cab** v zadaném adresáři. Počínaje IoT Edge verzí 1.0.9-RC4 jsou k dispozici dva soubory. cab, jeden pro zařízení AMD64 a jeden pro ARM32. Stáhněte si správný soubor pro vaše zařízení a pak přejmenujte soubor, abyste odebrali příponu architektury.
 
-Další informace o možnostech aktualizace získáte pomocí příkazu, `Get-Help Update-IoTEdge -full` nebo se podívejte na [všechny parametry instalace](how-to-install-iot-edge-windows.md#all-installation-parameters).
+Další informace o možnostech aktualizace získáte pomocí příkazu, `Get-Help Update-IoTEdge -full` nebo se podívejte na [skript PowerShellu pro IoT Edge ve Windows](reference-windows-scripts.md).
 
 ## <a name="update-the-runtime-containers"></a>Aktualizace kontejnerů modulu runtime
 
@@ -160,7 +160,7 @@ Použijete-li v nasazení konkrétní značky (například mcr.microsoft.com/azu
 
    ![Konfigurace nastavení modulu runtime](./media/how-to-update-iot-edge/configure-runtime.png)
 
-1. V **nastavení modulu runtime**aktualizujte hodnotu **Image** pro **centrum Edge** s požadovanou verzí. Nevybírejte možnost **Uložit** pouze zatím.
+1. V **nastavení modulu runtime**aktualizujte hodnotu **Image** pro **centrum Edge** s požadovanou verzí. Ještě nevybírejte možnost **Uložit** .
 
    ![Aktualizovat verzi obrázku centra hran](./media/how-to-update-iot-edge/runtime-settings-edgehub.png)
 
@@ -213,10 +213,7 @@ Ve verzi Preview jsou Release Candidate verze nezahrnuté jako nejnovější ver
 
 V částech v tomto článku se dozvíte, jak aktualizovat zařízení IoT Edge na určitou verzi modulů pro démona zabezpečení nebo modul runtime.
 
-Pokud instalujete IoT Edge do nového počítače, pomocí následujících odkazů se dozvíte, jak nainstalovat konkrétní verzi v závislosti na operačním systému zařízení:
-
-* [Linux](how-to-install-iot-edge-linux.md#install-runtime-using-release-assets)
-* [Windows](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)
+Pokud instalujete IoT Edge, nemusíte upgradovat existující instalaci, použijte postup v části [instalace offline nebo konkrétní verze](how-to-install-iot-edge.md#offline-or-specific-version-installation).
 
 ## <a name="next-steps"></a>Další kroky
 

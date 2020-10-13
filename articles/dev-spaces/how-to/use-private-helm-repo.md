@@ -8,14 +8,16 @@ ms.topic: conceptual
 description: Využijte soukromé úložiště Helm v prostoru pro vývoj v Azure.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery, Helm
 manager: gwallace
-ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5f28595df2e552fd48033b44e4e1f0ea4ec306
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80240473"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960333"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Použití privátního úložiště Helm v Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 [Helm][helm] je správce balíčků pro Kubernetes. Helm používá k zabalení závislosti formát [grafu][helm-chart] . Grafy Helm se ukládají v úložišti, které může být veřejné nebo soukromé. Azure Dev Spaces načte grafy Helm z veřejných úložišť při spuštění aplikace. V případech, kdy je úložiště Helm soukromé nebo Azure Dev Spaces k němu nemá přístup, můžete přidat graf z tohoto úložiště přímo do aplikace. Přidáním grafu můžete přímo Azure Dev Spaces spustit aplikaci, aniž byste museli přistupovat k privátnímu úložišti Helm.
 

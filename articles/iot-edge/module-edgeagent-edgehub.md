@@ -4,16 +4,16 @@ description: Zkontrolujte konkrétní vlastnosti a jejich hodnoty pro vlákna mo
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/17/2019
+ms.date: 08/31/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa7a56bcad067176d8f9805b418cca45ad144579
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80546195"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978692"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Vlastnosti IoT Edge agenta a modulu IoT Edge centra pro vlákna
 
@@ -33,7 +33,7 @@ Pro agenta IoT Edge je volána `$edgeAgent` nefunkční modul a koordinuje komun
 
 | Vlastnost | Popis | Povinné |
 | -------- | ----------- | -------- |
-| schemaVersion | Musí být "1,0" | Ano |
+| schemaVersion | Buď "1,0" nebo "1,1". Verze 1,1 byla představena s IoT Edge verzí 1.0.10 a doporučuje se. | Ano |
 | Runtime. Type | Musí být "Docker" | Ano |
 | Runtime. Settings. minDockerVersion | Nastavte na minimální verzi Docker, kterou vyžaduje tento manifest nasazení. | Ano |
 | Runtime. Settings. loggingOptions | Dokument JSON obsahující možnosti protokolování pro kontejner agenta IoT Edge. [Možnosti protokolování Docker](https://docs.docker.com/engine/admin/logging/overview/) | No |
@@ -47,6 +47,7 @@ Pro agenta IoT Edge je volána `$edgeAgent` nefunkční modul a koordinuje komun
 | systemModules. edgeHub. Type | Musí být "Docker" | Ano |
 | systemModules. edgeHub. status | Musí být spuštěno. | Ano |
 | systemModules.edgeHub.restartPolicy | Musí být vždycky | Ano |
+| systemModules.edgeHub.startupOrder | Celočíselná hodnota, pro kterou má být modul v pořadí spouštění. 0 je první a maximální celé číslo (4294967295) je poslední. Pokud hodnota není zadaná, výchozí hodnota je maximální celé číslo.  | No |
 | systemModules. edgeHub. Settings. Image | Identifikátor URI obrázku IoT Edgeového centra | Ano |
 | systemModules. edgeHub. Settings<br>.createOptions | Dokument JSON obsahující možnosti pro vytvoření kontejneru centra IoT Edge. [Možnosti vytvoření Docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | No |
 | systemModules.edgeHub.configuration.id | ID nasazení, které tento modul nasadilo. | IoT Hub tuto vlastnost nastavuje při použití manifestu pomocí nasazení. Není součástí manifestu nasazení. |
@@ -54,6 +55,7 @@ Pro agenta IoT Edge je volána `$edgeAgent` nefunkční modul a koordinuje komun
 | Aktualizuj. {moduleId}. Type | Musí být "Docker" | Ano |
 | Aktualizuj. {moduleId}. status | {"Running" \| "zastaveno"} | Ano |
 | Aktualizuj. {moduleId}. restartPolicy | {"nikdy" \| "Chyba" při \| nesprávném stavu "" \| Always "} | Ano |
+| Aktualizuj. {moduleId}. startupOrder | Celočíselná hodnota, pro kterou má být modul v pořadí spouštění. 0 je první a maximální celé číslo (4294967295) je poslední. Pokud hodnota není zadaná, výchozí hodnota je maximální celé číslo.  | No |
 | Aktualizuj. {moduleId}. imagePullPolicy | {"on-Create" \| "nikdy"} | No |
 | Aktualizuj. {moduleId}. env | Seznam proměnných prostředí, které se mají předat modulu. Má formát `"<name>": {"value": "<value>"}` | No |
 | Aktualizuj. {moduleId}. Settings. Image | Identifikátor URI k imagi modulu | Ano |
@@ -107,7 +109,7 @@ Pro IoT Edge se volá modul, který se zavolá, `$edgeHub` a koordinuje komunika
 
 | Vlastnost | Popis | Vyžadováno v manifestu nasazení |
 | -------- | ----------- | -------- |
-| schemaVersion | Musí být "1,0" | Ano |
+| schemaVersion | Buď "1,0" nebo "1,1". Verze 1,1 byla představena s IoT Edge verzí 1.0.10 a doporučuje se. | Ano |
 | tras. RouteName | Řetězec představující trasu centra IoT Edge. Další informace naleznete v tématu [Declare Routes](module-composition.md#declare-routes). | `routes`Element může být přítomen, ale prázdný. |
 | storeAndForwardConfiguration.timeToLiveSecs | Čas v sekundách, po který IoT Edge hub udržuje zprávy, pokud je odpojený od koncových bodů směrování, ať už IoT Hub nebo místní modul. Hodnota může být libovolné kladné celé číslo. | Ano |
 

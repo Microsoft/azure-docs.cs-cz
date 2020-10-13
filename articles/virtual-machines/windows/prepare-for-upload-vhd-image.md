@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 3274e45738c079c89560f546fe58163f695e12df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 390cda604b71404735b7c14382d30067e154ef70
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851097"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976178"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava disku VHD nebo VHDX s Windows pro nahrání do Azure
 
 Než nahrajete virtuální počítač s Windows z místního počítače do Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje virtuální počítače generace 1 i generace 2, které jsou ve formátu souboru VHD a mají disk s pevnou velikostí. Maximální velikost povolená pro virtuální pevný disk operačního systému na virtuálním počítači generace 1 je 2 TB.
 
-Soubor VHDX můžete převést na VHD, převést dynamicky se zvětšující disk na disk s pevnou velikostí, ale nemůžete změnit generaci virtuálního počítače. Další informace najdete v tématu [Vytvoření virtuálního počítače generace 1 nebo 2 v Hyper-V?](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) a [Podpora virtuálních počítačů 2. generace v Azure](generation-2.md).
+Soubor VHDX můžete převést na VHD, převést dynamicky se zvětšující disk na disk s pevnou velikostí, ale nemůžete změnit generaci virtuálního počítače. Další informace najdete v tématu [Vytvoření virtuálního počítače generace 1 nebo 2 v Hyper-V?](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) a [Podpora virtuálních počítačů 2. generace v Azure](../generation-2.md).
 
 Informace o zásadách podpory pro virtuální počítače Azure najdete v tématu [podpora serverového softwaru společnosti Microsoft pro virtuální počítače Azure](https://support.microsoft.com/help/2721672/).
 
@@ -71,7 +71,7 @@ Po dokončení kontroly SFC nainstalujte aktualizace Windows a restartujte poč�
    netsh.exe winhttp reset proxy
    ```
 
-    Pokud virtuální počítač potřebuje pracovat s konkrétním proxy serverem, přidejte výjimku proxy serveru pro IP adresu Azure ([168.63.129.16](/azure/virtual-network/what-is-ip-address-168-63-129-16)), aby se virtuální počítač mohl připojit k Azure:
+    Pokud virtuální počítač potřebuje pracovat s konkrétním proxy serverem, přidejte výjimku proxy serveru pro IP adresu Azure ([168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)), aby se virtuální počítač mohl připojit k Azure:
 
     ```
     $proxyAddress='<your proxy server>'
@@ -356,7 +356,7 @@ V ideálním případě byste měli udržovat počítač aktualizovaný na *úro
 
 |        Součást        |     Binární     | Windows 7 SP1, Windows Server 2008 R2 SP1 |       Windows 8, Windows Server 2012        | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 |      Windows 10 v1703      | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 | ----------------------- | -------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- | ------------------------------------------- | -------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Storage                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061          | -                                           | -                          | -                                           | -                                           |
+| Úložiště                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061          | -                                           | -                          | -                                           | -                                           |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.332             | -                                           | -                                           |
 |                         | ntfs.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.447             | -                                           | -                                           |
 |                         | Iologmsg.dll   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                   | -                                           | -                          | -                                           | -                                           |
@@ -405,7 +405,7 @@ Obvykle se spouštíte, `sysprep.exe` abyste vytvořili šablonu, ze které mů�
 Pokud chcete vytvořit jenom jeden virtuální počítač z jednoho disku, nemusíte používat nástroj Sysprep. Místo toho můžete vytvořit virtuální počítač z *specializované image*. Informace o tom, jak vytvořit virtuální počítač z specializovaného disku, najdete v těchto tématech:
 
 - [Vytvoření virtuálního počítače ze specializovaného disku](create-vm-specialized.md)
-- [Vytvoření virtuálního počítače ze specializovaného disku VHD](/azure/virtual-machines/windows/create-vm-specialized-portal)
+- [Vytvoření virtuálního počítače ze specializovaného disku VHD](./create-vm-specialized-portal.md)
 
 Chcete-li vytvořit zobecněnou bitovou kopii, je nutné spustit nástroj Sysprep. Další informace najdete v tématu [použití nástroje Sysprep: Úvod](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10)).
 
@@ -430,7 +430,7 @@ Nástroj Sysprep vyžaduje, aby před provedením plně dešifroval jednotky. Po
 1. Vyberte **OK**.
 1. Po dokončení programu Sysprep vypněte virtuální počítač. Nepoužívejte **restart** pro vypnutí virtuálního počítače.
 
-Virtuální pevný disk je teď připravený k nahrání. Další informace o tom, jak vytvořit virtuální počítač z zobecněného disku, najdete v tématu [nahrání zobecněného virtuálního pevného disku a jeho použití k vytvoření nového virtuálního počítače v Azure](sa-upload-generalized.md).
+Virtuální pevný disk je teď připravený k nahrání. Další informace o tom, jak vytvořit virtuální počítač z zobecněného disku, najdete v tématu [nahrání zobecněného virtuálního pevného disku a jeho použití k vytvoření nového virtuálního počítače v Azure](/previous-versions/azure/virtual-machines/windows/sa-upload-generalized).
 
 >[!NOTE]
 > Vlastní soubor *unattend.xml* není podporován. I když podporujeme vlastnost **additionalUnattendContent** , která poskytuje jenom omezené podpory pro přidání možností [Microsoft-Windows-Shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) do souboru *unattend.xml* , který používá agent zřizování Azure. Můžete použít například [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) k přidání FirstLogonCommands a LogonCommands. Další informace najdete v tématu [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
@@ -468,7 +468,7 @@ Pomocí jedné z metod v této části můžete převést virtuální disk a zm�
 
 ### <a name="use-powershell-to-convert-the-disk"></a>Použití PowerShellu k převedení disku
 
-Virtuální disk můžete převést pomocí rutiny [Convert-VHD](/powershell/module/hyper-v/convert-vhd) v prostředí PowerShell. Pokud potřebujete informace o instalaci této rutiny, přečtěte si téma [instalace role Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+Virtuální disk můžete převést pomocí rutiny [Convert-VHD](/powershell/module/hyper-v/convert-vhd) v prostředí PowerShell. Pokud potřebujete informace o instalaci této rutiny, přečtěte si téma [instalace role Hyper-V](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 
 Následující příklad převede disk z VHDX na VHD. Také převede disk z dynamicky se zvětšující disk na disk s pevnou velikostí.
 
@@ -488,7 +488,7 @@ V tomto příkladu nahraďte hodnotu pro **cestu** cestou k virtuálnímu pevné
 
 ### <a name="use-powershell-to-resize-the-disk"></a>Použití PowerShellu ke změně velikosti disku
 
-Velikost virtuálního disku můžete změnit pomocí rutiny [změnit velikost-VHD](/powershell/module/hyper-v/resize-vhd) v prostředí PowerShell. Pokud potřebujete informace o instalaci této rutiny, přečtěte si téma [instalace role Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+Velikost virtuálního disku můžete změnit pomocí rutiny [změnit velikost-VHD](/powershell/module/hyper-v/resize-vhd) v prostředí PowerShell. Pokud potřebujete informace o instalaci této rutiny, přečtěte si téma [instalace role Hyper-V](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 
 Následující příklad změní velikost disku z 100,5 MiB na 101 MiB, aby splňoval požadavek na zarovnání Azure.
 
@@ -500,7 +500,7 @@ V tomto příkladu nahraďte hodnotu pro **cestu** cestou k virtuálnímu pevné
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>Převést z formátu disku VMDK VMware
 
-Pokud máte image virtuálního počítače s Windows ve [formátu souboru VMDK](https://en.wikipedia.org/wiki/VMDK), můžete k převedení VMDK a jeho nahrání do Azure použít [Azure Migrate](https://docs.microsoft.com/azure/migrate/server-migrate-overview) .
+Pokud máte image virtuálního počítače s Windows ve [formátu souboru VMDK](https://en.wikipedia.org/wiki/VMDK), můžete k převedení VMDK a jeho nahrání do Azure použít [Azure Migrate](../../migrate/server-migrate-overview.md) .
 
 ## <a name="complete-the-recommended-configurations"></a>Dokončete Doporučené konfigurace.
 
@@ -520,4 +520,4 @@ Následující nastavení neovlivní nahrávání VHD. Důrazně ale doporučuje
 ## <a name="next-steps"></a>Další kroky
 
 - [Nahrání image virtuálního počítače s Windows do Azure pro nasazení Správce prostředků](upload-generalized-managed.md)
-- [Řešení potíží s aktivací virtuálních počítačů Azure s Windows](troubleshoot-activation-problems.md)
+- [Řešení potíží s aktivací virtuálních počítačů Azure s Windows](../troubleshooting/troubleshoot-activation-problems.md)

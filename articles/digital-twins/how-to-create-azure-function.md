@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a0f5a921ad9eba82f27b3a8945643737b6d76030
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf2894cc30873e3cbf7f379e22078dbb863ac179
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89614068"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970431"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Připojení aplikací Azure Functions pro zpracování dat
 
@@ -232,18 +232,18 @@ Všimněte si také **ID objektu** zobrazené na stránce _identity_ , jak bude 
 
 ### <a name="assign-access-roles-using-azure-portal"></a>Přiřazení rolí přístupu pomocí Azure Portal
 
-Vyberte tlačítko _přiřazení rolí Azure_ , které se otevře na stránce přiřazení rolí Azure. Pak vyberte _+ Přidat přiřazení role (Preview)_.
+Vyberte tlačítko _přiřazení rolí Azure_ , ve kterém se otevře stránka *přiřazení rolí Azure* . Pak vyberte _+ Přidat přiřazení role (Preview)_.
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
-V okně _Přidat přiřazení role (Preview)_ , které se otevře, vyberte
+Na stránce _Přidat přiřazení role (Preview)_ , která se otevře, vyberte:
 
 * _Obor:_ Skupina prostředků
 * _Předplatné_: vyberte předplatné Azure.
 * _Skupina prostředků_: z rozevíracího seznamu vyberte svoji skupinu prostředků.
 * _Role_: v rozevíracím seznamu vyberte _vlastníka digitálních vláken Azure (Preview)_ .
 
-Kliknutím na tlačítko _Uložit_ uložte podrobnosti.
+Pak podrobnosti uložte kliknutím na tlačítko _Uložit_ .
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 

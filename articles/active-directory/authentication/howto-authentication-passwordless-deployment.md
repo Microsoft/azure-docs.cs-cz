@@ -7,16 +7,16 @@ ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: baselden
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f0c19e33ab6f91e69f9c7dbc5bc29fef1fd53bb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526999"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964872"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Plánování nasazení ověřování s neplatnými hesly v Azure Active Directory
 
@@ -61,7 +61,7 @@ Metody ověřování s neheslem od Microsoftu umožňují různé scénáře. Po
 
 Informace o tom, jak vybrat nejlepší metodu pro vaši organizaci, najdete v tématu věnovaném [postupu bez hesla](./concept-authentication-passwordless.md#choose-a-passwordless-method).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Organizace musí před zahájením nasazení s neplatným heslem splňovat následující požadavky:
 
@@ -93,7 +93,7 @@ Vezměte v úvahu své obchodní potřeby a případy použití pro jednotlivé 
 
 Následující tabulka popisuje případy použití, které mají být implementovány během tohoto projektu.
 
-| Oblast | Description |
+| Plošný | Popis |
 | --- | --- |
 | **Přístup** | Přihlášení bez hesla je k dispozici v podnikovém nebo osobním zařízení v rámci podnikové sítě nebo mimo ni. |
 | **Auditování** | Data o využití jsou k dispozici správcům k zaznamenávání téměř v reálném čase. <br> Data o využití se stáhnou do podnikových systémů aspoň každých 29 dní nebo se použije nástroj SIEM Tool. |
@@ -292,7 +292,7 @@ Postupujte podle kroků zarovnaných k vybrané metodě níže.
 
 ### <a name="required-administrative-roles"></a>Požadované role pro správu
 
-| Role Azure AD | Description |
+| Role Azure AD | Popis |
 | --- | --- |
 | Globální správce|Nejnižší privilegovaná role schopna implementovat kombinované prostředí registrace. |
 | Správce ověřování | Nejnižší privilegovaná role schopná implementovat a spravovat metody ověřování. |

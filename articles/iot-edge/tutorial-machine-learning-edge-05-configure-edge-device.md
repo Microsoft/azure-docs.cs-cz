@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: 1e92da6f99ccb32580d7f0286b5bcbf77d694262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2245bd970e93595358e95465bcc815ddaf2ef821
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855646"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974545"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Kurz: konfigurace zařízení IoT Edge
 
@@ -96,7 +96,7 @@ K bezpečnému uložení certifikátů a jejich zpřístupnění z více zaříz
 
 Pokud chcete zařízení Azure IoT Edge připojit ke službě IoT Hub, nejdřív v centru vytvoříme identitu pro zařízení. Připojovací řetězec přijímáme z identity zařízení v cloudu a používá ho ke konfiguraci modulu runtime na našem IoT Edgem zařízení. Jakmile se nakonfigurované zařízení připojí k centru, můžeme nasadit moduly a poslat zprávy. Konfiguraci fyzického IoT Edge zařízení můžeme také změnit změnou odpovídající identity zařízení ve službě IoT Hub.
 
-V tomto kurzu vytvoříme novou identitu zařízení pomocí Visual Studio Code. Tyto kroky můžete provést také pomocí [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)nebo rozhraní příkazového [řádku Azure CLI](how-to-register-device.md#register-with-the-azure-cli).
+V tomto kurzu vytvoříme novou identitu zařízení pomocí Visual Studio Code. Tento postup můžete provést také pomocí Azure Portal nebo rozhraní příkazového řádku Azure CLI.
 
 1. Na svém vývojovém počítači otevřete Visual Studio Code.
 

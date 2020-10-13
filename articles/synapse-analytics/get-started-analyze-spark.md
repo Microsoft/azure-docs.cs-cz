@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: ebcec3907e40a8ba58aab841cd788c58ec7a94fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f03f98a1a1f36900d65e132a3420ac037214aaff
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90017910"
+ms.locfileid: "91893536"
 ---
 # <a name="analyze-with-apache-spark"></a>Analýza pomocí Apache Spark
 
@@ -22,7 +22,7 @@ ms.locfileid: "90017910"
 
 V tomto kurzu se seznámíte se základními kroky pro načtení a analýzu dat pomocí Apache Spark pro Azure synapse.
 
-1. V **datovém** centru pod **odkazem**klikněte pravým tlačítkem na **Azure Blob Storage > ukázkové datové sady > nyc_tlc_yellow** a vyberte **vybrat Nový Poznámkový blok** .
+1. V **datovém** centru klikněte na **Přidat nový prostředek (další**tlačítko plus **propojený**)  >> **Procházet ukázky**. Vyhledejte **NYC taxislužby & Limousine provize – žluté taxislužby** a klikněte na ni. V dolní části stránky stiskněte **pokračovat** a potom **přidejte datovou sadu**. Nyní v **datovém** centru pod **propojeným** výběrem klikněte pravým tlačítkem myši na **Azure Blob Storage >> ukázkové datové sady >> nyc_tlc_yellow** a vyberte **Nový Poznámkový blok** .
 1. Tím se vytvoří nový Poznámkový blok s následujícím kódem:
     ```
     from azureml.opendatasets import NycTlcYellow
@@ -119,6 +119,6 @@ df.write.sqlanalytics("SQLDB1.dbo.PassengerCountStats", Constants.INTERNAL )
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Analýza dat v úložišti](get-started-analyze-storage.md)
+> [Analýza dat pomocí SQL na vyžádání](get-started-analyze-sql-on-demand.md)
 
 

@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/24/2020
+ms.date: 10/12/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 784a0acf139aa05179fd92afb4eab299c2669590
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 806505e5ac9c9b3dcf53624a1151961b0db45ef9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630844"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972505"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Zabezpečení prostředí Azure Machine Learning Inferencing s virtuálními sítěmi
 
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak zabezpečit následující Inferencing prostř
 > - Azure Container Instances (ACI)
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Přečtěte si článek [Přehled zabezpečení sítě](how-to-network-security-overview.md) , který vám pomůže pochopit běžné scénáře virtuální sítě a celkovou architekturu virtuální sítě.
 
@@ -81,11 +81,17 @@ Pokud chcete do svého pracovního prostoru přidat AKS ve virtuální síti, po
 
    ![Azure Machine Learning: Výpočetní prostředky služby Machine Learning nastavení virtuální sítě](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
-1. Ujistěte se, že skupina NSG, která řídí virtuální síť, má pro koncový bod bodování povolené příchozí pravidlo zabezpečení, aby se mohlo volat mimo virtuální síť.
+1. Při nasazení modelu jako webové služby do AKS se vytvoří hodnoticí koncový bod pro zpracování požadavků Inferencing. Ujistěte se, že skupina NSG, která řídí virtuální síť, má aktivní příchozí pravidlo zabezpečení pro IP adresu koncového bodu bodování, pokud ho chcete volat mimo virtuální síť.
+
+    Pokud chcete najít IP adresu koncového bodu bodování, podívejte se na identifikátor URI pro vyhodnocování nasazené služby. Informace o zobrazení identifikátoru URI pro vyhodnocování najdete v tématu [Spotřeba modelu nasazeného jako webové služby](how-to-consume-web-service.md#connection-information).
+
    > [!IMPORTANT]
    > Ponechte výchozí odchozí pravidla pro NSG. Další informace najdete v tématu výchozí pravidla zabezpečení ve [skupinách zabezpečení](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules).
 
    [![Příchozí pravidlo zabezpečení](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
+
+    > [!IMPORTANT]
+    > IP adresa zobrazená na obrázku pro vyhodnocování koncového bodu se pro vaše nasazení liší. I když je stejná IP adresa sdílená všemi nasazeními do jednoho clusteru AKS, bude mít každý cluster AKS jinou IP adresu.
 
 Pomocí sady Azure Machine Learning SDK můžete také přidat službu Azure Kubernetes ve virtuální síti. Pokud už máte cluster AKS ve virtuální síti, připojte ho k pracovnímu prostoru, jak je popsáno v tématu [Jak nasadit do AKS](how-to-deploy-and-where.md). Následující kód vytvoří novou instanci AKS v `default` podsíti virtuální sítě s názvem `mynetwork` :
 

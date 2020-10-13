@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 842513536bf4dbfc0a3e3bd82905b397da9fa6c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbf436f501ef2d21dcd3394e61a40d354376efb9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439071"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979083"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrace virtuálních počítačů Hyper-V do Azure 
 
@@ -25,13 +25,13 @@ Tento kurz je třetí v řadě, který ukazuje, jak vyhodnocovat a migrovat poč
  V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Přidejte nástroj migrace do Azure: Server pro migraci.
+> * Přidejte nástroj Azure Migrate: Server pro migraci.
 > * Vyhledejte virtuální počítače, které chcete migrovat.
 > * Zahajte replikaci virtuálních počítačů.
 > * Spusťte test migrace a ujistěte se, že vše funguje podle očekávání.
 > * Spusťte úplnou migraci virtuálního počítače.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete.
 
 
 ## <a name="prerequisites"></a>Předpoklady

@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/12/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ca190ae9e5679ce7622f89b39507d69d87f5b88
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84985471"
+ms.locfileid: "91875537"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurace připojení typu VNet-to-VNet (Classic)
 
@@ -80,16 +80,7 @@ Následující tabulka ukazuje příklad definování virtuální sítě. Rozsah
 
 ## <a name="step-2---create-the-virtual-networks"></a><a name="vnetvalues"></a>Krok 2 – Vytvoření virtuálních sítí
 
-Vytvořte v [Azure Portal](https://portal.azure.com)dvě virtuální sítě. Postup vytvoření klasických virtuálních sítí najdete v tématu [Vytvoření klasické virtuální sítě](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). 
-
-Při použití portálu k vytvoření klasické virtuální sítě musíte přejít na stránku virtuální síť pomocí následujících kroků, jinak se nezobrazí možnost vytvořit klasický virtuální síť:
-
-1. Kliknutím na ' + ' otevřete stránku ' nový '.
-2. Do pole Hledat na Marketplace zadejte ' Virtual Network '. Pokud místo toho vyberte síť – > Virtual Network, nebudete mít možnost vytvořit klasickou virtuální síť.
-3. Vyhledejte ' Virtual Network ' ze seznamu vrácených a kliknutím na něj otevřete stránku Virtual Network. 
-4. Na stránce virtuální síť vyberte Classic a vytvořte klasickou virtuální síť. 
-
-Pokud používáte tento článek jako cvičení, můžete použít následující příklady hodnot:
+V tomto kroku vytvoříte dvě klasické virtuální sítě. Pokud používáte tento článek jako cvičení, můžete použít následující příklady hodnot:
 
 **Hodnoty pro virtuální sítě testvnet1**
 
@@ -125,7 +116,11 @@ GatewaySubnet: 10.41.1.0/27
 
 * **DNS servery** – zadejte název a IP adresu serveru DNS. Toto nastavení neslouží k vytvoření serveru DNS. Umožňuje určit server DNS, který chcete použít pro překlad názvů pro tuto virtuální síť.
 
-V této části nakonfigurujete typ připojení, místní lokalitu a vytvoříte bránu.
+### <a name="to-create-a-classic-virtual-network"></a>Vytvoření klasické virtuální sítě
+
+[!INCLUDE [basic classic vnet](../../includes/vpn-gateway-vnet-classic.md)]
+
+[!INCLUDE [basic classic DNS](../../includes/vpn-gateway-dns-classic.md)]
 
 ## <a name="step-3---configure-the-local-site"></a><a name="localsite"></a>Krok 3 – Konfigurace místní lokality
 
@@ -205,38 +200,7 @@ Až budou brány virtuální sítě vytvořené pro obě virtuální sítě, mus
 
 ## <a name="step-7---retrieve-values-from-the-network-configuration-file"></a><a name="getvalues"></a>Krok 7 – načtení hodnot z konfiguračního souboru sítě
 
-Když v Azure Portal vytvoříte klasický virtuální sítě, název, který si zobrazíte, není úplný název, který používáte pro PowerShell. Například virtuální síť, která se na portálu zdá být pojmenovaná **virtuální sítě testvnet1** , může mít v konfiguračním souboru sítě mnohem delší název. Název může vypadat nějak takto: **Group ClassicRG virtuální sítě testvnet1**. Při vytváření připojení je důležité použít hodnoty, které vidíte v souboru konfigurace sítě.
-
-V následujících krocích se připojíte ke svému účtu Azure a stáhnete a zobrazíte soubor konfigurace sítě, abyste získali hodnoty požadované pro vaše připojení.
-
-1. Stáhněte a nainstalujte si nejnovější verzi rutin PowerShellu pro správu služeb Azure (SM). Další informace najdete v tématu [práce s Azure PowerShell](#powershell).
-
-2. Otevřete konzolu PowerShellu se zvýšenými právy. Použijte následující příklady, které vám pomůžou se připojit. Tyto příkazy musíte spustit místně pomocí modulu pro správu služby PowerShell. Chcete-li přepnout na správu služeb, použijte tento příkaz:
-
-   ```powershell
-   azure config mode asm
-   ```
-3. Připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
-
-   ```powershell
-   Add-AzureAccount
-   ```
-4. Zkontrolujte předplatná pro příslušný účet.
-
-   ```powershell
-   Get-AzureSubscription
-   ```
-5. Máte-li více předplatných, vyberte předplatné, které chcete použít.
-
-   ```powershell
-   Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
-   ```
-6. Exportujte a zobrazte konfigurační soubor sítě. Vytvořte ve svém počítači adresář a potom do něj exportujte soubor konfigurace sítě. V tomto příkladu je konfigurační soubor sítě exportován do **C:\AzureNet**.
-
-   ```powershell
-   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
-   ```
-7. Otevřete soubor pomocí textového editoru a zobrazte názvy pro virtuální sítě a weby. Tyto názvy budou názvy, které použijete při vytváření připojení.<br>Názvy virtuální sítě jsou uvedené jako **VirtualNetworkSite název =**<br>Názvy webů jsou uvedené jako **LocalNetworkSiteRef název =**
+[!INCLUDE [retrieve values](../../includes/vpn-gateway-values-classic.md)]
 
 ## <a name="step-8---create-the-vpn-gateway-connections"></a><a name="createconnections"></a>Krok 8 – vytvoření připojení brány VPN Gateway
 

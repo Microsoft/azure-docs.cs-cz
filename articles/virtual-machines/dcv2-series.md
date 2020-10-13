@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: fccdaaab121f315f1cb98b2b6ee3bffcb9ac2b3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1809194ce551fc828389cc31f5c7d6f28a2cddd6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653005"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972369"
 ---
 # <a name="dcsv2-series"></a>DCsv2-Series
 
@@ -36,7 +36,7 @@ Příklady případů použití: důvěrné sdílení dat s více částmi, odha
 | Standard_DC4s_v2 | 4    | 16          | 200                    | 4              | 8000/64                                                                                               | 2  | 112                                          |
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128                                                                                         | 2   | 168                                         |
 
-- Virtuální počítače řady DCsv2-Series jsou [virtuální počítače generace 2](./linux/generation-2.md#creating-a-generation-2-vm) a podporují jenom `Gen2` image.
+- Virtuální počítače řady DCsv2-Series jsou [virtuální počítače generace 2](./generation-2.md#creating-a-generation-2-vm) a podporují jenom `Gen2` image.
 - Aktuálně k dispozici v oblastech, které jsou [zde](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)uvedeny.
 - Předchozí generace důvěrných výpočetních virtuálních počítačů: [DC Series](sizes-previous-gen.md#preview-dc-series)
 - Vytvoření virtuálních počítačů s DCsv2 pomocí [Azure Portal](./linux/quick-create-portal.md) nebo [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview)

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4afc5e554e72fc2ab78173368930b2e5317bce7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71900bc3741c25299402e31057ea2237cd0a4637
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88718913"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965144"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Souhrnné informace o registraci informací o zabezpečení pro Azure Active Directory
 
@@ -53,16 +53,16 @@ Kombinovaná registrace podporuje následující metody ověřování a akce:
 
 | Metoda | Registrovat | Změnit | Odstranit |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Ano (maximálně 5) | No | Yes |
-| Jiná ověřovací aplikace | Ano (maximálně 5) | No | Yes |
-| Hardwarový token | No | No | Yes |
-| Rozložení | Yes | Yes | Yes |
-| Alternativní telefon | Yes | Yes | Yes |
+| Microsoft Authenticator | Ano (maximálně 5) | No | Ano |
+| Jiná ověřovací aplikace | Ano (maximálně 5) | No | Ano |
+| Hardwarový token | No | No | Ano |
+| Rozložení | Ano | Ano | Ano |
+| Alternativní telefon | Ano | Ano | Ano |
 | Telefon do kanceláře | No | No | No |
-| E-mail | Yes | Yes | Yes |
-| Bezpečnostní otázky | Yes | No | Yes |
-| Hesla aplikací | Yes | No | Yes |
-| FIDO2 klíče zabezpečení<br />*Spravovaný režim pouze ze stránky [bezpečnostní údaje](https://mysignins.microsoft.com/security-info)*| Yes | Yes | Yes |
+| E-mail | Ano | Ano | Ano |
+| Bezpečnostní otázky | Ano | No | Ano |
+| Hesla aplikací | Ano | No | Ano |
+| FIDO2 klíče zabezpečení<br />*Spravovaný režim pouze ze stránky [bezpečnostní údaje](https://mysignins.microsoft.com/security-info)*| Ano | Ano | Ano |
 
 > [!NOTE]
 > Hesla aplikací jsou k dispozici pouze pro uživatele, kteří byli vynutili Multi-Factor Authentication. Hesla aplikací nejsou k dispozici uživatelům, kteří jsou povoleni pro Multi-Factor Authentication prostřednictvím zásad podmíněného přístupu.

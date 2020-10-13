@@ -1,20 +1,20 @@
 ---
 title: Kurz – vytvoření přizpůsobené Azure Active Directory Domain Services spravované domény | Microsoft Docs
 description: V tomto kurzu se naučíte, jak vytvořit a nakonfigurovat vlastní Azure Active Directory Domain Services spravovanou doménu a zadat pokročilé možnosti konfigurace pomocí Azure Portal.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 8b48cfa29555cf0ca15428758208df27a52a84f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 23c15bca8c3385a8e115cd0a85d2e5b4f1553007
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87491133"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967338"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>Kurz: vytvoření a konfigurace spravované domény Azure Active Directory Domain Services s pokročilými možnostmi konfigurace
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 245818b60647539c7fff7c45dcecdc6840153fb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 536fcab8cdfea4846cc1122fa56c939f525388f4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549037"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938470"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s NetDocuments
 
@@ -136,7 +136,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 3. Vyberte **Security Center**.
    
-    ![Úložiště](./media/netdocuments-tutorial/security-center.png "Security Center")
+    ![Snímek obrazovky zobrazuje Security Center vybrané z právních dokumentů.](./media/netdocuments-tutorial/security-center.png "Security Center")
 
 4. Vyberte **Rozšířené ověřování**.
     
@@ -166,7 +166,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k NetDocuments, musí se zřídi
 
 3. Vyberte **Uživatelé a skupiny**.
    
-    ![Úložiště](./media/netdocuments-tutorial/users-groups.png "Repository")
+    ![Snímek obrazovky ukazuje uživatele & skupiny vybrané z právních dokumentů.](./media/netdocuments-tutorial/users-groups.png "Repository")
 
 4. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu platného Azure Active Directory účtu, který chcete zřídit, a pak klikněte na **Přidat uživatele**.
    

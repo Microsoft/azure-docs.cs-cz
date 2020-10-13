@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: aae05c89cd56ffa16994cb5696054457f1d32bc3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 7680c7ad4b2c5c8b8c1c13fb2344575659eda140
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876137"
+ms.locfileid: "91892817"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Vytvoření připojení typu Site-to-Site pomocí webu Azure Portal (Classic)
 
@@ -109,11 +109,11 @@ Připojení Site-to-Site k místní síti vyžadují zařízení VPN. V tomto kr
 
 ## <a name="create-the-connection"></a><a name="CreateConnection"></a>Vytvoření připojení
 
-V tomto kroku nastavíte sdílený klíč a vytvoříte připojení pomocí hodnot z předchozích kroků. Klíč, který nastavíte, musí být stejný jako klíč, který jste použili v konfiguraci zařízení VPN.
-
 > [!NOTE]
 > Pro model nasazení Classic není tento krok k dispozici v Azure Portal nebo prostřednictvím Azure Cloud Shell. Je nutné použít verzi rutin Azure PowerShell Service Management (SM) místně z plochy.
 >
+
+V tomto kroku nastavíte sdílený klíč a vytvoříte připojení pomocí hodnot z předchozích kroků. Klíč, který nastavíte, musí být stejný jako klíč, který jste použili v konfiguraci zařízení VPN.
 
 1. Nastavte sdílený klíč a vytvořte připojení.
 
