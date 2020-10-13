@@ -9,10 +9,10 @@ ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
 ms.openlocfilehash: bea4a5d92309710645dd63e611cd0a5e3b742c34
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91604247"
 ---
 # <a name="azure-key-vault-recovery-overview"></a>Přehled obnovení Azure Key Vault
@@ -65,7 +65,7 @@ Funkce **Vyčištění ochrany** je navržená tak, aby zabránila odstranění 
 1. V části Nedávné služby klikněte na Key Vault. Neklepejte na jeden Trezor klíčů.
 1. V horní části obrazovky klikněte na možnost Správa odstraněných trezorů.
 1. Na pravé straně obrazovky se otevře podokno kontextu.
-1. Vyberte předplatné.
+1. Vyberte své předplatné.
 1. Pokud jste Trezor klíčů odstranili jako měkký, zobrazí se v podokně kontext na pravé straně.
 1. Pokud existuje příliš mnoho trezorů, můžete v dolní části podokna kontextu kliknout na načíst více nebo získat výsledky pomocí CLI nebo PowerShellu.
 1. Jakmile najdete trezor, který chcete obnovit nebo vymazat, zaškrtněte políčko vedle něj.

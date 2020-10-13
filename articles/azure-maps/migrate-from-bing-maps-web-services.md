@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Migrace webových služeb z map Bingu | Mapy Microsoft Azure'
-description: Jak migrovat webové služby z map Bing na Microsoft Azure Maps
+description: Kurz, jak migrovat webové služby z map Bingu na Microsoft Azure Maps
 author: rbrundritt
 ms.author: richbrun
 ms.date: 9/10/2020
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 14e0998b75e0e5bd3ae996f5f5010ecc50180f14
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 462befd505333902bd4560f8f1dafeecceffd27f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741665"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873774"
 ---
-# <a name="migrate-web-service-from-bing-maps"></a>Migrace webové služby z map Bing
+# <a name="tutorial---migrate-web-service-from-bing-maps"></a>Kurz – migrace webové služby z map Bing
 
 Azure i mapy Bing poskytují přístup k prostorovým rozhraním API prostřednictvím webových služeb REST. Rozhraní API pro tyto platformy provádějí podobné funkce, ale používají různé konvence pojmenování a objekty odpovědí.
 
@@ -150,7 +150,7 @@ Rozhraní API pro invertování Azure Maps obsahuje některé další funkce, kt
 
 Následující tabulka odkazuje na hodnoty typu entity mapy Bing na ekvivalentní názvy vlastností v Azure Maps.
 
-| Typ entity mapy Bing | Srovnatelný Azure Maps typ entity               | Popis                                |
+| Typ entity mapy Bing | Srovnatelný Azure Maps typ entity               | Description                                |
 |-----------------------|-------------------------------------------------|--------------------------------------------|
 | `Address`             |                                                 | *Adresa*                                  |
 | `Neighborhood`        | `Neighbourhood`                                 | *Včetně*                             |
@@ -194,7 +194,7 @@ Následující tabulka odkazuje na parametry rozhraní API služby Bing Maps pom
 |------------------------------------------------------------|---------------------------------------------------|
 | `avoid`                                                    | `avoid`                                           |
 | `dateTime` (`dt`)                                          | `departAt` nebo `arriveAt`                          |
-| `distanceBeforeFirstTurn` (`dbft`)                         | –                                               |
+| `distanceBeforeFirstTurn` (`dbft`)                         | Není k dispozici                                               |
 | `distanceUnit` (`du`)                                      | Není k dispozici – Azure Maps používá pouze systém metrik.     |
 | `heading` (`hd`)                                           | `vehicleHeading`                                  |
 | `maxSolutions` (`maxSolns`)                                | `maxAlternatives`, `alternativeType` , `minDeviationDistance` a `minDeviationTime`  |
@@ -203,7 +203,7 @@ Následující tabulka odkazuje na parametry rozhraní API služby Bing Maps pom
 | `routeAttributes` (`ra`)                                   | `instructionsType`                                |
 | `routePathOutput` (`rpo`)                                  | `routeRepresentation`                             |
 | `timeType` (`tt`)                                          | `departAt` nebo `arriveAt`                          |
-| `tolerances` (`tl`)                                        | –                                               |
+| `tolerances` (`tl`)                                        | Není k dispozici                                               |
 | `travelMode`                                               | `travelMode`                                      |
 | `waypoint.n` ( `wp.n` ) nebo `viaWaypoint.n` (`vwp.n`)         | `query` – souřadnice ve formátu `lat0,lon0:lat1,lon1….`   |
 | `key`                                                      | `subscription-key` – Viz také [ověřování pomocí Azure Maps](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication) dokumentaci. |
@@ -221,12 +221,12 @@ Rozhraní API pro směrování Azure Maps podporuje také směrování nákladn�
 | `vehicleLength` (`vl`)                   | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)               | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                 | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                 | **–**                                    |
+| `vehicleTrailers` (`vt`)                 | **NENÍ K DISPOZICI**                                    |
 | `vehicleSemi` (`semi`)                   | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)             | **–**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)          | **–**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)         | **–**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)     | **–**                                    |
+| `vehicleMaxGradient` (`vmg`)             | **NENÍ K DISPOZICI**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)          | **NENÍ K DISPOZICI**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)         | **NENÍ K DISPOZICI**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)     | **NENÍ K DISPOZICI**                                    |
 | `vehicleHazardousMaterials` (`vhm`)      | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)        | `vehicleLoadType`                          |
 
@@ -287,12 +287,12 @@ Rozhraní API směrování Azure Maps také podporuje parametr směrování nák
 | `vehicleLength` (`vl`)                  | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)              | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                | **–**                                    |
+| `vehicleTrailers` (`vt`)                | **NENÍ K DISPOZICI**                                    |
 | `vehicleSemi` (`semi`)                  | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)            | **–**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)         | **–**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)        | **–**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)    | **–**                                    |
+| `vehicleMaxGradient` (`vmg`)            | **NENÍ K DISPOZICI**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)         | **NENÍ K DISPOZICI**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)        | **NENÍ K DISPOZICI**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)    | **NENÍ K DISPOZICI**                                    |
 | `vehicleHazardousMaterials` (`vhm`)     | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)       | `vehicleLoadType`                          |
 
@@ -327,7 +327,7 @@ Následující tabulka odkazuje na parametry rozhraní API služby Bing Maps pom
 | `heading`                | Není k dispozici – Streetside se nepodporuje.                |
 | `imagerySet`             | `layer` a `style` – Viz dokumentace k [podporovaným stylům mapy](https://docs.microsoft.com/azure/azure-maps/supported-map-styles) .   |
 | `mapArea` (`ma`)         | `bbox`                                         |
-| `mapLayer` (`ml`)        | –                                            |
+| `mapLayer` (`ml`)        | Není k dispozici                                            |
 | `mapSize` (`ms`)         | `width` a `height` – může mít velikost až 8192x8192. |
 | `declutterPins` (`dcl`)  | N/A                                            |
 | `dpi`                    | N/A                                            |
@@ -339,7 +339,7 @@ Následující tabulka odkazuje na parametry rozhraní API služby Bing Maps pom
 | `query`                  | Je třeba použít na střed nebo ohraničovací rámeček.     |
 | `highlightEntity` (`he`) | N/A                                            |
 | `style`                  | N/A                                            |
-| parametry směrování         | –                                            |
+| parametry směrování         | Není k dispozici                                            |
 | `key`                    | `subscription-key` – Viz také [ověřování pomocí Azure Maps](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication) dokumentaci. |
 | `culture` (`c`)          | `language` – Viz dokumentace k [podporovaným jazykům](https://docs.microsoft.com/azure/azure-maps/supported-languages) .   |
 | `userRegion` (`ur`)      | `view` – Viz dokumentace k [podporovaným zobrazením](https://aka.ms/AzureMapsLocalizationViews) . |
@@ -484,7 +484,7 @@ Následující tabulka odkazuje na parametry rozhraní API služby Bing Maps pom
 | `endTime`               | `arriveAt`                                                  |
 | `startTime`             | `departAt`                                                  |
 | `travelMode`            | `travelMode`                                                |
-| `resolution`            | –                                                         |
+| `resolution`            | Není k dispozici                                                         |
 | `distanceUnit`          | Není k dispozici – všechny vzdálenosti v metrech.                              |
 | `timeUnit`              | Není k dispozici – všechny časy v sekundách.                                 |
 | `key`                   | `subscription-key` – Viz také [ověřování pomocí Azure Maps](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication) dokumentaci. |
@@ -565,7 +565,7 @@ Následující tabulka odkazuje na parametry rozhraní API služby mapy Bing s p
 | Parametr rozhraní API pro mapy Bing  | Srovnatelný parametr Azure Maps rozhraní API   |
 |--------------------------|---------------------------------------|
 | `mapArea`                | `boundingBox` a `boundingZoom`      |
-| `includeLocationCodes`   | –                                   |
+| `includeLocationCodes`   | Není k dispozici                                   |
 | `severity` (`s`)         | Není k dispozici – všechna vrácená data               |
 | `type` (`t`)             | Není k dispozici – všechna vrácená data               |
 | `key`                    | `subscription-key` – Viz také [ověřování pomocí Azure Maps](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication) dokumentaci. |

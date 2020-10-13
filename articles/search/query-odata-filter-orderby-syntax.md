@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88923394"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Přehled jazyka OData pro `$filter` , `$orderby` a `$select` v Azure kognitivní hledání
@@ -46,7 +46,7 @@ Výrazy OData jsou od jednoduchých až vysoce složité, ale všechny sdílejí
 
 ## <a name="field-paths"></a>Cesty k poli
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku cest polí.
+Následující EBNF ([rozšířený Backus-Naur formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku cest polí.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -70,7 +70,7 @@ Identifikátor může odkazovat buď na název pole, nebo na **proměnnou rozsah
 
 Příklady cest polí jsou uvedené v následující tabulce:
 
-| Cesta k poli | Popis |
+| Cesta k poli | Description |
 | --- | --- |
 | `HotelName` | Odkazuje na pole nejvyšší úrovně indexu. |
 | `Address/City` | Odkazuje na `City` dílčí pole komplexního pole v indexu; `Address` je typu `Edm.ComplexType` v tomto příkladu. |
@@ -93,7 +93,7 @@ V tomto příkladu se proměnná rozsahu `room` zobrazuje v cestě k `room/Type`
 
 Cesty polí se používají v mnoha parametrech [rozhraní REST API služby Azure kognitivní hledání](/rest/api/searchservice/). V následující tabulce jsou uvedena všechna místa, kde je lze použít, a veškerá omezení jejich používání:
 
-| rozhraní API | Název parametru | Omezení |
+| Rozhraní API | Název parametru | Omezení |
 | --- | --- | --- |
 | [Vytvořit](/rest/api/searchservice/create-index) nebo [aktualizovat](/rest/api/searchservice/update-index) index | `suggesters/sourceFields` | Žádné |
 | [Vytvořit](/rest/api/searchservice/create-index) nebo [aktualizovat](/rest/api/searchservice/update-index) index | `scoringProfiles/text/weights` | Lze odkazovat pouze na pole s **možností prohledávání** . |
@@ -135,7 +135,7 @@ Například fráze s neformátovaným apostrofem, jako je Alice auto, by byla vy
 
 ### <a name="constants-syntax"></a>Syntaxe konstant
 
-Následující EBNF ([Rozšířený Backus – formulář Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku pro většinu konstant zobrazených ve výše uvedené tabulce. Gramatika pro geografické typy se dá najít v [geograficky funkčních funkcích OData v Azure kognitivní hledání](search-query-odata-geo-spatial-functions.md).
+Následující EBNF ([rozšířený Backus-Naur formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku pro většinu konstant zobrazených ve výše uvedené tabulce. Gramatika pro geografické typy se dá najít v [geograficky funkčních funkcích OData v Azure kognitivní hledání](search-query-odata-geo-spatial-functions.md).
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -211,7 +211,7 @@ Cesty polí a konstanty jsou nejzákladnější částí výrazu OData, ale jsou
 
 Ve většině případů ale budete potřebovat složitější výrazy, které odkazují na více než jedno pole a konstantu. Tyto výrazy jsou sestaveny různými způsoby v závislosti na parametru.
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku pro parametry **$Filter**, **$OrderBy**a **$Select** . Ty jsou sestavené z jednodušších výrazů, které odkazují na cesty polí a konstanty:
+Následující EBNF ([rozšířený Backus-Naur formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku pro parametry **$Filter**, **$OrderBy**a **$Select** . Ty jsou sestavené z jednodušších výrazů, které odkazují na cesty polí a konstanty:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

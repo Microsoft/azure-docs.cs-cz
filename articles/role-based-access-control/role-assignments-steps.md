@@ -10,13 +10,13 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.openlocfilehash: badf10da8af0ed3829deb2498b51b5d5c8ce6a93
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91604319"
 ---
-# <a name="steps-to-add-a-role-assignment"></a>Postup přidání přiřazení role
+# <a name="steps-to-add-a-role-assignment"></a>Kroky pro přidání přiřazení role
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Tento článek popisuje kroky vysoké úrovně k přidání přiřazení role pomocí [Azure Portal](role-assignments-portal.md), [Azure PowerShell](role-assignments-powershell.md), rozhraní příkazového [řádku Azure](role-assignments-cli.md)nebo [REST API](role-assignments-rest.md).
 
@@ -86,9 +86,9 @@ Jakmile budete znát objekt zabezpečení, roli a rozsah, můžete roli přiřad
 Podrobné pokyny, jak přidat přiřazení rolí, najdete v následujících článcích.
 
 - [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](role-assignments-portal.md)
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell](role-assignments-powershell.md)
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](role-assignments-cli.md)
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí REST API](role-assignments-rest.md)
+- [Přidání nebo odebrání přiřazení rolí v Azure pomocí Azure PowerShellu](role-assignments-powershell.md)
+- [Přidání nebo odebrání přiřazení rolí v Azure pomocí Azure CLI](role-assignments-cli.md)
+- [Přidání nebo odebrání přiřazení rolí v Azure pomocí REST API](role-assignments-rest.md)
 
 ## <a name="next-steps"></a>Další kroky
 

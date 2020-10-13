@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5c072298bf5cce4e22fe50d2474c7abe6b915f74
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919501"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Konfigurace serveru Azure Multi-Factor Authentication pro webové aplikace IIS
@@ -40,7 +40,7 @@ Pro zabezpečení webové aplikace služby IIS, která používá ověřování 
 1. V Azure Multi-Factor Authentication Serveru klikněte na ikonu Ověřování IIS v levé nabídce.
 2. Klikněte na kartu **Založené na formulářích**.
 3. Klikněte na **Přidat**.
-4. Pokud chcete automaticky detekovat uživatelské jméno, heslo a proměnné domény, zadejte adresu URL pro přihlášení (například `https://localhost/contoso/auth/login.aspx` ) v dialogovém okně Automatická konfigurace webu založeného na formuláři a klikněte na **OK**.
+4. Pokud chcete automaticky detekovat uživatelské jméno, heslo a proměnné domény, zadejte adresu URL pro přihlášení (například `https://localhost/contoso/auth/login.aspx` ) v dialogovém okně Automatická konfigurace Form-Based webu a klikněte na **OK**.
 5. Zaškrtněte políčko **Vyžadovat porovnání uživatele u služby Multi-Factor Authentication**, pokud se všichni uživatelé importovali nebo budou importovat na server a budou podléhat vícefaktorovému ověřování. Pokud se ještě neimportoval velký počet uživatelů do Serveru a/nebo se vyloučí z vícefaktorového ověřování, nechte pole nezaškrtnuté.
 6. Pokud proměnné stránky nejde rozpoznat automaticky, v dialogovém okně Automatická konfigurace webové stránky s formuláři klikněte na **Zadat ručně**.
 7. V dialogovém okně Přidat web na základě formuláře zadejte adresu URL do přihlašovací stránky v poli Adresa URL pro odeslání a zadejte název aplikace (volitelný). Název aplikace se zobrazí v sestavách Azure Multi-Factor Authentication a může se zobrazit v rámci SMS zpráv nebo mobilních aplikací ověřování.
@@ -74,7 +74,7 @@ Pro zabezpečení webové aplikace služby IIS, která používá integrované H
 
 Po konfiguraci nastavení a adres URL založených na formulářích nebo adres URL ověřování HTTP musíte vybrat umístění, kde by se měly moduly plug-in Azure Multi-Factor Authentication IIS nahrát a povolit ve službě IIS. Použijte následující postup:
 
-1. Pokud používáte službu IIS 6, klikněte na kartu **ISAPI** . Vyberte web, pod kterým běží webová aplikace (např. výchozí web), abyste povolili modul plug-in filtru ISAPI Azure Multi-Factor Authentication pro tuto lokalitu.
+1. Pokud používáte službu IIS 6, klikněte na kartu **ISAPI** . Vyberte web, na kterém běží webová aplikace (např. výchozí web), abyste povolili modul plug-in filtru ISAPI Azure Multi-Factor Authentication pro tuto lokalitu.
 2. Pokud používáte službu IIS 7 nebo vyšší, klikněte na kartu **nativní modul** . Vyberte server, weby nebo aplikace a povolte tak modul plug-in IIS na požadované úrovni.
 3. Zaškrtněte políčko **Povolit ověřování IIS** v horní části obrazovky. Azure Multi-Factor Authentication nyní zabezpečuje vybrané aplikace služby IIS. Ověřte, zda byli uživatelé naimportováni do serveru.
 

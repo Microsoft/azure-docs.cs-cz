@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/30/2020
 ms.author: radeltch
 ms.openlocfilehash: 3a5238ec9e9bc30da330be206eb559acc3c2ec07
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598082"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA škálování s využitím Azure NetApp Files na Red Hat Enterprise Linux
@@ -80,13 +80,13 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
 - [Nasazení Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide]
 - [Replikace SAP HANA systému v clusteru Pacemaker.](https://access.redhat.com/articles/3004101)
 - Obecná dokumentace k RHEL
-    - [Přehled doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-    - [Správa doplňku vysoké dostupnosti.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-    - [Odkaz na doplněk vysoké dostupnosti.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-    - [Konfigurace replikace systému SAP HANA v rámci škálování v clusteru Pacemaker v případě, že jsou systémy souborů HANA ve sdílených složkách NFS](https://access.redhat.com/solutions/5156571)
+    - [Přehled Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+    - [Správa Add-On vysoké dostupnosti.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+    - [Referenční informace Add-On vysoké dostupnosti.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+    - [Konfigurace replikace systému SAP HANA v Scale-Up v clusteru Pacemaker v případě, že jsou systémy souborů HANA ve sdílených složkách NFS](https://access.redhat.com/solutions/5156571)
 - Dokumentace k RHEL specifické pro Azure:
     - [Zásady podpory pro RHEL clustery s vysokou dostupností – Microsoft Azure Virtual Machines jako členové clusteru.](https://access.redhat.com/articles/3131341)
-    - [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) cluster s vysokou dostupností v Microsoft Azure.](https://access.redhat.com/articles/3252491)
+    - [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) High-Availability clusteru v Microsoft Azure.](https://access.redhat.com/articles/3252491)
     - [Nainstalujte SAP HANA na Red Hat Enterprise Linux pro použití v Microsoft Azure.](https://access.redhat.com/solutions/3193782)
     - [Konfigurace SAP HANA Pacemaker replikace systému do clusteru s možností horizontálního navýšení kapacity, když jsou systémy souborů HANA ve sdílených složkách NFS](https://access.redhat.com/solutions/5156571)
 - [NetApp aplikace SAP na Microsoft Azure pomocí Azure NetApp Files](https://www.netapp.com/us/media/tr-4746.pdf)
@@ -308,7 +308,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Pak proveďte následují
 Další informace o požadovaných portech pro SAP HANA naleznete v kapitole [připojení k databázím tenantů](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) v průvodci [SAP HANA databáze klienta](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) nebo v tématu SAP Note [2388694](https://launchpad.support.sap.com/#/notes/2388694).
 
 > [!IMPORTANT]
-> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview). Viz také SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
+> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net.IPv4.tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview). Viz také SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
 
 ## <a name="mount-the-azure-netapp-files-volume"></a>Připojit Azure NetApp Files svazek
 
@@ -536,7 +536,7 @@ V tomto příkladu mají každý uzel clusteru vlastní systémy souborů NFS sy
     ```
 
    > [!TIP]
-   > Pokud vaše konfigurace obsahuje souborové systémy, mimo skupinu `hanadb1_nfs` nebo `hanadb2_nfs` , pak zahrňte `sequential=false` možnost, takže mezi systémy souborů neexistují žádné závislosti v seřazení. Všechny systémy souborů musí být spuštěny před `hana_nfs1_active` , ale nemusejí být spouštěny v libovolném pořadí, které je vzájemně relativní. Další podrobnosti najdete v tématu [návody konfigurace replikace SAP HANA systému v rámci škálování v clusteru Pacemaker v případě, že jsou systémy souborů Hana ve sdílených složkách NFS](https://access.redhat.com/solutions/5156571) .
+   > Pokud vaše konfigurace obsahuje souborové systémy, mimo skupinu `hanadb1_nfs` nebo `hanadb2_nfs` , pak zahrňte `sequential=false` možnost, takže mezi systémy souborů neexistují žádné závislosti v seřazení. Všechny systémy souborů musí být spuštěny před `hana_nfs1_active` , ale nemusejí být spouštěny v libovolném pořadí, které je vzájemně relativní. Další podrobnosti najdete v tématu [návody konfigurace replikace SAP HANA systému v Scale-Up v clusteru Pacemaker v případě, že jsou systémy souborů Hana ve sdílených složkách NFS](https://access.redhat.com/solutions/5156571) .
 
 ### <a name="configure-sap-hana-cluster-resources"></a>Konfigurace prostředků clusteru SAP HANA
 

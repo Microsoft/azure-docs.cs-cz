@@ -17,10 +17,10 @@ ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 721389b557fde41b1461654b03299601e2384108
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361326"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdílené složky v Azure
@@ -133,7 +133,7 @@ Chcete-li použít sdílenou složku se škálováním na více systémů, musí
 * Doporučujeme formátovat svazky pomocí odolného systému souborů (ReFS).
     * Další informace najdete v tématu [SAP Note 1869038 – podpora SAP pro systém souborů ReFs][1869038] a [Výběr části systém souborů][planning-volumes-s2d-choosing-filesystem] v článku plánování svazků v prostory úložiště s přímým přístupem.
     * Ujistěte se, že jste nainstalovali [kumulativní aktualizaci Microsoft KB4025334][kb4025334].
-* Můžete použít velikosti virtuálních počítačů Azure řady DS-Series nebo DSv2-Series.
+* Můžete použít DS-Series nebo DSv2-Series velikosti virtuálních počítačů Azure.
 * Pro dobrý výkon sítě mezi virtuálními počítači, který je potřeba pro Prostory úložiště s přímým přístupem synchronizaci disku, použijte typ virtuálního počítače, který má alespoň vysokou šířku pásma sítě.
     Další informace najdete v tématu Specifikace [DSv2-Series][dv2-series] a [DS-Series][ds-series] .
 * Doporučujeme, abyste si vyhradi nějakou nepřidělenou kapacitu ve fondu úložiště. Když ponecháte nějakou nepřidělenou kapacitu ve fondu úložiště, zajistíte místo na disku možnost opravit, pokud dojde k chybě jednotky. Tím se zlepší zabezpečení a výkon dat.  Další informace najdete v tématu [Volba velikosti svazku][choosing-the-size-of-volumes-s2d].

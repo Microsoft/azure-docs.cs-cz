@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: 1afa5df20c9bcbf63f8ad9f527e54f622eba3d19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90893794"
 ---
 # <a name="filter-based-feature-selection"></a>Výběr funkcí na základě filtrů
@@ -36,7 +36,7 @@ Obvykle používáte pouze sloupce s nejlepším skóre k sestavení prediktivn�
 
 ## <a name="how-to-choose-a-feature-selection-metric"></a>Volba metriky výběru funkcí
 
-Modul výběru funkcí založený na filtrech poskytuje celou řadu metrik pro vyhodnocení hodnoty informací v jednotlivých sloupcích. V této části najdete obecný popis jednotlivých metrik a jejich použití. Další požadavky na používání každé metriky najdete v [technických poznámkách](#technical-notes) a v [pokynech](#how-to-configure-filter-based-feature-selection) ke konfiguraci jednotlivých modulů.
+Modul výběru funkcí Filter-Based poskytuje celou řadu metrik pro vyhodnocení hodnoty informací v jednotlivých sloupcích. V této části najdete obecný popis jednotlivých metrik a jejich použití. Další požadavky na používání každé metriky najdete v [technických poznámkách](#technical-notes) a v [pokynech](#how-to-configure-filter-based-feature-selection) ke konfiguraci jednotlivých modulů.
 
 -   **Korelace Pearsonova**  
 
@@ -52,11 +52,11 @@ Modul výběru funkcí založený na filtrech poskytuje celou řadu metrik pro v
 > [!TIP]
 > Pokud pro metodu výběru vlastní funkce potřebujete jinou možnost, použijte modul [spuštění skriptu jazyka R](execute-r-script.md) . 
 
-## <a name="how-to-configure-filter-based-feature-selection"></a>Postup konfigurace výběru funkcí založených na filtrech
+## <a name="how-to-configure-filter-based-feature-selection"></a>Jak nakonfigurovat výběr funkcí Filter-Based
 
 Zvolíte standardní statistickou metriku. Modul vypočítá korelaci mezi dvojicí sloupců: sloupec popisku a sloupec funkce.
 
-1.  Přidejte do svého kanálu modul výběru funkcí založený na filtrech. Můžete ji najít v kategorii **výběru funkcí** v návrháři.
+1.  Přidejte modul výběru funkcí Filter-Based k vašemu kanálu. Můžete ji najít v kategorii **výběru funkcí** v návrháři.
 
 2. Připojte vstupní datovou sadu, která obsahuje alespoň dva sloupce, které jsou potenciálními funkcemi.  
 

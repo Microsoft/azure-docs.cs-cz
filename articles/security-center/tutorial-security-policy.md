@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894572"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
@@ -86,7 +86,7 @@ Zobrazení zásad zabezpečení ve službě Security Center:
 
 Zásady zabezpečení můžete upravovat prostřednictvím Azure Policyového portálu prostřednictvím REST API nebo pomocí Windows PowerShellu.
 
-Security Center používá Access Control na základě rolí (RBAC), která poskytuje předdefinované role, které můžete přiřadit uživatelům, skupinám a službám Azure. Když uživatelé otevřou Security Center, uvidí jenom informace související s prostředky, ke kterým mají přístup. To znamená, že uživatelé mají přiřazenou roli *vlastník*, *Přispěvatel*nebo *Čtenář* k předplatnému prostředku. K dispozici jsou také dvě konkrétní role Security Center:
+Security Center používá Role-Based Access Control (RBAC), která poskytuje předdefinované role, které můžete přiřadit uživatelům, skupinám a službám Azure. Když uživatelé otevřou Security Center, uvidí jenom informace související s prostředky, ke kterým mají přístup. To znamená, že uživatelé mají přiřazenou roli *vlastník*, *Přispěvatel*nebo *Čtenář* k předplatnému prostředku. K dispozici jsou také dvě konkrétní role Security Center:
 
 - **Čtecí modul zabezpečení**: má práva k zobrazení Security Centerch položek, jako jsou doporučení, výstrahy, zásady a stav. Nelze provést změny.
 - **Správce zabezpečení**: má stejná oprávnění k zobrazení jako *čtecí modul zabezpečení*. Může také aktualizovat zásady zabezpečení a zrušit výstrahy.

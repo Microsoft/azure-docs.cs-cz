@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
 ms.openlocfilehash: 9d183f2da7b916b1547fa1f81aa877b1b5488b41
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308431"
 ---
 # <a name="azure-private-dns-faq"></a>Nejčastější dotazy k Azure Private DNS
@@ -30,7 +30,7 @@ Ano. Privátní zóny se podporují pro překlad DNS mezi virtuálními sítěmi
 
 ## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>Je připojení k Internetu z virtuálních sítí nezbytných pro privátní zóny?
 
-No. Soukromé zóny fungují společně s virtuálními sítěmi. Můžete je použít ke správě domén pro virtuální počítače nebo jiné prostředky v rámci virtuálních sítí a mezi nimi. Pro překlad IP adres není nutné připojení k Internetu.
+Ne. Soukromé zóny fungují společně s virtuálními sítěmi. Můžete je použít ke správě domén pro virtuální počítače nebo jiné prostředky v rámci virtuálních sítí a mezi nimi. Pro překlad IP adres není nutné připojení k Internetu.
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>Může být stejná privátní zóna použita pro více virtuálních sítí pro řešení?
 
@@ -66,7 +66,7 @@ Ano. Pokud chcete odpojit propojenou virtuální síť od privátní zóny, aktu
 
 ## <a name="what-happens-when-we-delete-a-linked-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-linked-virtual-network-from-the-zone"></a>Co se stane, když odstraníme propojenou virtuální síť, která je propojená s privátní zónou? Musíme privátní zónu ručně aktualizovat, aby se virtuální síť odpojí jako propojená virtuální síť z zóny?
 
-No. Když odstraníte propojenou virtuální síť bez předchozího odpojení od privátní zóny, operace odstranění proběhne úspěšně a odkazy na zónu DNS se automaticky vymažou.
+Ne. Když odstraníte propojenou virtuální síť bez předchozího odpojení od privátní zóny, operace odstranění proběhne úspěšně a odkazy na zónu DNS se automaticky vymažou.
 
 ## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>Bude překlad DNS pomocí výchozího plně kvalifikovaného názvu domény (internal.cloudapp.net) stále fungovat i v případě, že privátní zóna (například private.contoso.com) je propojena s virtuální sítí?
 
@@ -74,7 +74,7 @@ Ano. Soukromé zóny nenahrazují výchozí zónu internal.cloudapp.net poskytov
 
 ## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>Bude přípona DNS na virtuálních počítačích v propojené virtuální síti změněna na síť privátní zóny?
 
-No. Přípona DNS na virtuálních počítačích v propojené virtuální síti zůstane jako výchozí přípona poskytnutá pro Azure (*. internal.cloudapp.net). Tuto příponu DNS můžete na virtuálních počítačích ručně změnit na adresu privátní zóny.
+Ne. Přípona DNS na virtuálních počítačích v propojené virtuální síti zůstane jako výchozí přípona poskytnutá pro Azure (*. internal.cloudapp.net). Tuto příponu DNS můžete na virtuálních počítačích ručně změnit na adresu privátní zóny.
 Pokyny ke změně této přípony najdete [v tématu Použití dynamického DNS k registraci názvů hostitelů ve vlastním serveru DNS](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients) .
 
 ## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Jaká jsou omezení využití Azure DNS privátních zón?
