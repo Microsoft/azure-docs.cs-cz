@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 9f948fcc8ad36f8bef8b1ab6a1b74131faea9bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88bbd83d7ac5b834255c9b4d46d7cef4394f15d3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88068162"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968663"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Úloha DevOps služby Azure image Builder
 
@@ -26,13 +26,13 @@ Existují dva úlohy DevOps pro sestavovatele bitových kopií virtuálních po�
 
 * [Nestabilní úloha AIB](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary), která nám umožní umístit do nejnovějších aktualizací a funkcí a umožnit zákazníkům jejich otestování, než ji povýšíme na "stabilní" úlohu. Pokud neexistují žádné nahlášené problémy a naše telemetrie nezobrazuje žádné problémy, přibližně 1 týden později, budeme povýšit kód úlohy na stabilní. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte [stabilní úlohu DevOps z Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder).
 * Musíte mít účet VSTS DevOps a vytvořený kanál sestavení.
 * Zaregistrujte a povolte požadavky funkcí Tvůrce imagí v předplatném, které používají kanály:
-    * [AZ PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell#register-features)
-    * [AZ CLI](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder#register-the-features)
+    * [AZ PowerShell](../windows/image-builder-powershell.md#register-features)
+    * [AZ CLI](../windows/image-builder.md#register-the-features)
     
 * Vytvořte ve skupině prostředků zdrojové image standard Azure Storage účet, můžete použít jiné skupiny prostředků nebo účty úložiště. Účet úložiště se používá k přenosu artefaktů sestavení z úlohy DevOps do bitové kopie.
 
@@ -71,14 +71,14 @@ Použijte skupinu prostředků, do které se uloží artefakt šablony dočasné
  
 ### <a name="location"></a>Umístění
 
-Umístění je oblast, kde se spustí Tvůrce imagí. Podporován je pouze nastavený počet [oblastí](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) . V tomto umístění se musí nacházet zdrojové image. Pokud například používáte sdílenou galerii imagí, musí replika existovat v této oblasti.
+Umístění je oblast, kde se spustí Tvůrce imagí. Podporován je pouze nastavený počet [oblastí](../windows/image-builder-overview.md#regions) . V tomto umístění se musí nacházet zdrojové image. Pokud například používáte sdílenou galerii imagí, musí replika existovat v této oblasti.
 
 ### <a name="managed-identity-required"></a>Spravovaná identita (povinné)
-Image Builder vyžaduje spravovanou identitu, kterou používá ke čtení zdrojových vlastních imagí, připojení k Azure Storage a vytváření vlastních imagí. Další podrobnosti najdete [tady](https://aka.ms/azvmimagebuilder#permissions).
+Image Builder vyžaduje spravovanou identitu, kterou používá ke čtení zdrojových vlastních imagí, připojení k Azure Storage a vytváření vlastních imagí. Další podrobnosti najdete [tady](./image-builder-overview.md#permissions).
 
 ### <a name="vnet-support"></a>Podpora virtuální sítě
 
-V současné době úloha DevOps nepodporuje zadání existující podsítě, ale pokud chcete využít existující virtuální síť, můžete použít šablonu ARM s vnořenou šablonou tvůrce imagí. Podívejte se na příklady šablon imagí Windows Image Builder, jak to dosáhnete, nebo můžete použít [AZ AIB PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell).
+V současné době úloha DevOps nepodporuje zadání existující podsítě, ale pokud chcete využít existující virtuální síť, můžete použít šablonu ARM s vnořenou šablonou tvůrce imagí. Podívejte se na příklady šablon imagí Windows Image Builder, jak to dosáhnete, nebo můžete použít [AZ AIB PowerShell](../windows/image-builder-powershell.md).
 
 ### <a name="source"></a>Zdroj
 
@@ -194,7 +194,7 @@ Následující příklad vysvětluje, jak to funguje:
     
 #### <a name="total-length-of-image-build"></a>Celková délka sestavení obrázku
 
-V úloze kanálu DevOps se zatím nedají změnit celkovou délku. Používá výchozí hodnotu 240 minut. Pokud chcete zvýšit [buildTimeoutInMinutes](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#properties-buildtimeoutinminutes), můžete použít úlohu AZ CLI v kanálu vydání. Nakonfigurujte úkol pro zkopírování šablony a odeslání. Příklad najdete v tomto [řešení](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder), nebo použijte AZ PowerShell.
+V úloze kanálu DevOps se zatím nedají změnit celkovou délku. Používá výchozí hodnotu 240 minut. Pokud chcete zvýšit [buildTimeoutInMinutes](./image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#properties-buildtimeoutinminutes), můžete použít úlohu AZ CLI v kanálu vydání. Nakonfigurujte úkol pro zkopírování šablony a odeslání. Příklad najdete v tomto [řešení](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder), nebo použijte AZ PowerShell.
 
 
 #### <a name="storage-account"></a>Účet úložiště
@@ -298,7 +298,7 @@ Publikování/nabídka/SKU/verze zdrojové image Marketplace:
 Identifikátor URI image – ResourceID distribuované Image:
 * $ (imageUri)
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 ### <a name="can-i-use-an-existing-image-template-i-have-already-created-outside-of-devops"></a>Můžu použít existující šablonu obrázku, kterou už jste vytvořili, mimo DevOps?
 

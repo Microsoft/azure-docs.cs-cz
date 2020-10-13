@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 6c877690cf27edd73f1d828b8a1dda6f4f34e780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 878e2c233f2171c3c9a6fbd2a8d629d3f3987c3a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77918168"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976721"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Nejde se vzdáleně připojit k virtuálnímu počítači, protože port RDP není v NSG povolený.
 
@@ -48,7 +48,7 @@ Pokud chcete povolit port RDP v NSG, postupujte takto:
 
 Pokud zadáte zdrojovou IP adresu, toto nastavení povoluje provoz jenom z konkrétní IP adresy nebo rozsahu IP adres pro připojení k virtuálnímu počítači. Ujistěte se, že počítač, který používáte ke spuštění relace RDP, je v rozsahu.
 
-Další informace o skupin zabezpečení sítě najdete v tématu [Skupina zabezpečení sítě](../../virtual-network/security-overview.md).
+Další informace o skupin zabezpečení sítě najdete v tématu [Skupina zabezpečení sítě](../../virtual-network/network-security-groups-overview.md).
 
 > [!NOTE]
 > Port RDP 3389 je přístupný z Internetu. Proto doporučujeme použít tento port pouze pro doporučené testování. Pro produkční prostředí doporučujeme použít síť VPN nebo privátní připojení.
@@ -56,6 +56,3 @@ Další informace o skupin zabezpečení sítě najdete v tématu [Skupina zabez
 ## <a name="next-steps"></a>Další kroky
 
 Pokud je port RDP už v NSG povolený, podívejte se na téma [řešení potíží s obecnou chybou protokolu RDP na virtuálním počítači Azure](./troubleshoot-rdp-general-error.md).
-
-
-

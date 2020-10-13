@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 4a814d575e0879daec64ebfdabc1539219bea250
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc756994cf0f6e12af1c1ad5a6c8db304b4253e3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91368936"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968779"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Zastavení a spuštění clusteru Azure Kubernetes Service (AKS) (Preview)
 
@@ -30,6 +30,7 @@ Při použití funkce Spustit/zastavit pro cluster platí následující omezen�
 - Tato funkce je podporována pouze pro Virtual Machine Scale Sets zálohovaných clusterů.
 - Ve verzi Preview není tato funkce pro privátní clustery podporovaná.
 - Stav clusteru zastaveného clusteru AKS se uchová po dobu až 12 měsíců. Pokud je váš cluster zastavený déle než 12 měsíců, nelze obnovit stav clusteru. Další informace najdete v tématu [zásady podpory AKS](support-policies.md).
+- Během období Preview je před pokusem o zastavení clusteru nutné zastavit automatické škálování clusteru (CA).
 - Můžete spustit nebo odstranit zastavený cluster AKS. Chcete-li provést jakoukoli operaci, jako je například škálování nebo upgrade, spusťte nejprve svůj cluster.
 
 ### <a name="install-the-aks-preview-azure-cli"></a>Instalace rozhraní příkazového `aks-preview` řádku Azure 

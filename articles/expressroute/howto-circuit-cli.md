@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eebb2693d3bc0f65059c6c3c377f1afb7ae7eccd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1d50c3f8f94fbfd7dbcb9b25e051b7f2951c518
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757567"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969054"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-cli"></a>Rychlý Start: vytvoření a úprava okruhu ExpressRoute pomocí Azure CLI
 
 V tomto rychlém startu se dozvíte, jak vytvořit okruh Azure ExpressRoute pomocí rozhraní příkazového řádku (CLI). Tento článek také ukazuje, jak kontrolovat stav, aktualizovat nebo odstranit a zrušit zřízení okruhu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Než začnete s konfigurací, Projděte si [požadavky](expressroute-prerequisites.md) a [pracovní postupy](expressroute-workflows.md) .
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -112,7 +112,7 @@ Odpověď bude podobná jako v následujícím příkladu:
 
 Pokud chcete zjistit, jestli je váš poskytovatel připojení uvedený, zkontrolujte odpověď. Poznamenejte si následující informace, které budete potřebovat při vytváření okruhu:
 
-* Name
+* Název
 * PeeringLocations
 * BandwidthsOffered
 
@@ -347,7 +347,7 @@ Pokud chcete zrušit zřízení a odstranit okruh ExpressRoute, ujistěte se, ž
 * Pokud je stav zřizování poskytovatele služby okruhu ExpressRoute **zřizování** nebo **zřízené** , musíte s vaším poskytovatelem služeb spolupracovat a zrušit zřízení okruhu na jejich straně. I nadále vyhradíme prostředky a účtujeme vám, dokud poskytovatel služeb nedokončí zrušení zřízení okruhu a pošle nám upozornění.
 * Pokud poskytovatel služby zrušil zřízení okruhu, což znamená, že stav zřizování poskytovatele služeb se nastaví na **není zřízené**, můžete okruh odstranit. Faktura za okruh se pak zastaví.
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>Vyčištění prostředků
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Okruh ExpressRoute můžete odstranit spuštěním následujícího příkazu:
 

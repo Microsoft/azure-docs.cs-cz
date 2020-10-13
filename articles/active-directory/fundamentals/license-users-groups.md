@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c69f2ce964d9171197771d783358dcef2ca60726
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 7473da6289d4b871ae77f18fab4c00cebcb55d98
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319521"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977010"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Přiřazení nebo odebrání licencí na portálu Azure Active Directory
 
@@ -102,11 +102,11 @@ Ujistěte se, že kdokoli, kdo potřebuje použít licencovanou službu Azure AD
 
 1. Na stránce **přiřadit** vyberte **Uživatelé a skupiny**a pak vyhledejte a vyberte skupinu, které přiřazujete licenci.
 
-    ![Stránka přiřadit licenci se zvýrazněným hledáním a vybrat možnosti](media/license-users-groups/assign-group-license-blade-with-highlight.png)
+    ![Stránka přiřadit licenci se zvýrazněným hledáním a vyberte možnosti 2](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
 1. Vyberte **možnosti přiřazení**, ujistěte se, že máte zapnuté správné možnosti licence, a pak vyberte **OK**.
 
-    ![Stránka možností licence se všemi možnostmi dostupnými v plánu licencí](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![Stránka možností licence se všemi možnostmi dostupnými v rámci licenčního plánu 2](media/license-users-groups/license-option-blade-group-assignments.png)
 
     Stránka **přiřadit licenci** se aktualizuje a zobrazí se informace o tom, že je uživatel vybraný a že jsou nakonfigurované přiřazení.
 
@@ -135,7 +135,7 @@ Licenci můžete odebrat na stránce uživatele Azure AD, ze stránky přehled s
 
 1. Vyberte **odebrat licenci**.
 
-    ![Stránka licencovaných skupin s zvýrazněnou možností odebrat licenci](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+    ![Stránka licencovaných skupin s zvýrazněnou možností odebrat licenci 2](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     
     > [!NOTE]
     > Pokud se místní uživatelský účet synchronizovaný do služby Azure AD nedostává do rozsahu pro synchronizaci nebo když se synchronizace odebere, uživatel se v Azure AD vymaže. V takovém případě budou licence přiřazené uživateli přímo nebo prostřednictvím licencování na základě skupin označeny jako **pozastavené** , nikoli jako **odstraněné**.

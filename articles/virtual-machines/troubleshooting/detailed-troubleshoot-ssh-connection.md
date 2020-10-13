@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 0b4890181721d08b741d327adb74bd097be5c9f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c117f9697299b94a54d9184093e65c56822b8bd2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87069167"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975667"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Podrobný postup řešení potíží s SSH při připojování k virtuálnímu počítači s Linuxem v Azure
 Je možné, že klient SSH nebude moci kontaktovat službu SSH na virtuálním počítači. Pokud jste provedli obecnější [kroky při řešení potíží](troubleshoot-ssh-connection.md)se službou SSH, budete muset vyřešit potíže s připojením. Tento článek vás provede podrobnými kroky pro řešení potíží, které určují, kde se připojení SSH nedaří a jak ho vyřešit.
@@ -39,7 +39,7 @@ Následující kroky vám pomůžou izolovat zdroj selhání a zjistit řešení
 
 2. Vyberte **Nastavení** pro prošetření koncových bodů, IP adres, skupin zabezpečení sítě a dalších nastavení.
 
-   Virtuální počítač by měl mít definovaný koncový bod pro provoz SSH, který můžete zobrazit v **koncových bodech** nebo **[skupině zabezpečení sítě](../../virtual-network/security-overview.md)**. Koncové body virtuálních počítačů, které byly vytvořeny pomocí Správce prostředků, jsou uloženy ve skupině zabezpečení sítě. Ověřte, zda byla pravidla použita pro skupinu zabezpečení sítě a zda jsou odkazována v podsíti.
+   Virtuální počítač by měl mít definovaný koncový bod pro provoz SSH, který můžete zobrazit v **koncových bodech** nebo **[skupině zabezpečení sítě](../../virtual-network/network-security-groups-overview.md)**. Koncové body virtuálních počítačů, které byly vytvořeny pomocí Správce prostředků, jsou uloženy ve skupině zabezpečení sítě. Ověřte, zda byla pravidla použita pro skupinu zabezpečení sítě a zda jsou odkazována v podsíti.
 
 Pokud chcete ověřit připojení k síti, zkontrolujte nakonfigurované koncové body a podívejte se, jestli se k virtuálnímu počítači můžete připojit prostřednictvím jiného protokolu, například HTTP nebo jiné služby.
 
@@ -114,7 +114,7 @@ Chcete-li odstranit koncový bod jako zdroj problému, odeberte aktuální konco
 
 ## <a name="source-4-network-security-groups"></a>Zdroj 4: skupiny zabezpečení sítě
 Skupiny zabezpečení sítě umožňují podrobnější kontrolu nad povoleným příchozím a odchozím provozem. Můžete vytvořit pravidla, která budou zahrnovat podsítě a cloudové služby ve službě Azure Virtual Network. Zkontrolujte pravidla skupiny zabezpečení sítě, abyste měli jistotu, že je povolený provoz SSH do a z Internetu.
-Další informace najdete v tématu [informace o skupinách zabezpečení sítě](../../virtual-network/security-overview.md).
+Další informace najdete v tématu [informace o skupinách zabezpečení sítě](../../virtual-network/network-security-groups-overview.md).
 
 K ověření konfigurace NSG můžete také použít ověřování pomocí protokolu IP. Další informace najdete v tématu [Přehled monitorování sítě Azure](../../network-watcher/network-watcher-monitoring-overview.md). 
 
@@ -132,5 +132,5 @@ Zkuste z počítače znovu připojit. Pokud se to pořád nepovede, jsou zde ně
 * Místní brána firewall na cílovém virtuálním počítači obsahuje pravidla, která zabraňují příchozímu nebo odchozímu provozu SSH.
 * Zjišťování neoprávněných vniknutí nebo software pro monitorování sítě, který běží na virtuálním počítači Azure, brání připojení SSH.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 Další informace o řešení potíží s přístupem k aplikacím najdete v tématu [řešení potíží s přístupem k aplikaci spuštěné na virtuálním počítači Azure](./troubleshoot-app-connection.md) .

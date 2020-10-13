@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4387bf8067b399165b32ab1cdbb9e6ce55ab5f59
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 95c4464d1ab8416f609f75f2b59fb85a578ef5b7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816337"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979049"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Použití Azure Portal k omezení přístupu pro import/export u spravovaných disků s privátními odkazy
 
@@ -95,4 +95,4 @@ Právě jste dokončili konfiguraci privátních odkazů, které můžete použ�
 ## <a name="next-steps"></a>Další kroky
 
 - [Nejčastější dotazy týkající se privátních odkazů](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
-- [Export/kopírování spravovaných snímků jako VHD do účtu úložiště v jiné oblasti pomocí PowerShellu](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)
+- [Export/kopírování spravovaných snímků jako VHD do účtu úložiště v jiné oblasti pomocí PowerShellu](./scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md)

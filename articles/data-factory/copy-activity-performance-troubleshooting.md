@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: d464124c6841cb2e3186d521b93d7ae08f94c9e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: b21f7ba81a74482da6fc4a59948bf16036e5d337
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440520"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951082"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Řešení potíží s výkonem aktivity kopírování
 
@@ -40,7 +40,7 @@ V současnosti obsahují tipy pro ladění výkonu návrhy pro následující p�
 | Specifické úložiště dat   | Načítají se data do **Azure Synpase Analytics (dřív SQL DW)**: Pokud se nepoužívá, navrhněte použití příkazu Base nebo Copy. |
 | &nbsp;                | Kopírování dat z/do **Azure SQL Database**: Pokud je v oblasti vysokého využití DTU, navrhněte upgrade na vyšší úroveň. |
 | &nbsp;                | Kopírování dat z/do **Azure Cosmos DB**: Pokud je vysoká úroveň vysokého využití, navrhněte upgrade na větší ru. |
-|                       | Kopírování dat z **tabulky SAP**: při kopírování velkých objemů dat doporučujeme, abyste pomocí možnosti oddílu SAP Connectoru povolili paralelní načítání a zvýšili maximální počet oddílů. |
+|                       | Kopírování dat z **tabulky SAP**: při kopírování velkých objemů dat můžete využít možnost využívejte oddíl KONEKTORu SAP a povolit paralelní načítání a zvýšit maximální počet oddílů. |
 | &nbsp;                | Ingestování dat z **Amazon RedShift**: Navrhněte použití uvolnění, pokud se nepoužívá. |
 | Omezování úložiště dat | Pokud úložiště dat během kopírování omezuje počet operací čtení a zápisu, navrhněte kontrolu a zvyšte povolenou míru požadavků pro úložiště dat nebo snižte souběžnou úlohu. |
 | Prostředí Integration runtime  | Pokud používáte Integration Runtime v místním prostředí **(IR)** a aktivita kopírování čeká ve frontě dlouho, dokud procesor IR neuvolní dostupný prostředek, navrhněte možnost horizontálního navýšení kapacity a ŠKÁLOVÁNÍ na dálku. |
@@ -53,7 +53,7 @@ V současnosti obsahují tipy pro ladění výkonu návrhy pro následující p�
 
 Podrobnosti o spuštění a doby trvání v dolní části zobrazení monitorování aktivity kopírování popisují hlavní fáze, přes které aktivita kopírování prochází (viz příklad na začátku tohoto článku), což je zvláště užitečné pro řešení potíží s výkonem kopírování. Kritické místo pro váš běh kopírování je ten, který má nejdelší dobu trvání. Podívejte se na následující tabulku v definici každé fáze a Naučte se [řešit problémy s kopírováním na Azure IR](#troubleshoot-copy-activity-on-azure-ir) a [řešit potíže s aktivitami kopírování v místním prostředí IR](#troubleshoot-copy-activity-on-self-hosted-ir) s těmito informacemi.
 
-| Fáze           | Description                                                  |
+| Fáze           | Popis                                                  |
 | --------------- | ------------------------------------------------------------ |
 | Fronta           | Uplynulý čas do chvíle, kdy se aktivita kopírování ve skutečnosti spustí v prostředí Integration runtime. |
 | Skript před kopírováním | Uplynulý čas mezi aktivitou kopírování začínající v rámci aktivity IR a kopírování dokončuje provádění skriptu před kopírováním v úložišti dat jímky. Použijte, když nakonfigurujete skript před kopírováním pro jímky databáze, například při zápisu dat do Azure SQL Database proveďte vyčištění před kopírováním nových dat. |
@@ -74,7 +74,7 @@ Pokud výkon aktivity kopírování nevyhovuje vaší očekávání, při řeše
 
     - Ověřte, zda můžete [Kopírovat soubory založené na cestě k oddílu DateTime a názvu souboru](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md). Takovým způsobem nepřinese zatížení při výpisu zdrojové strany.
 
-    - Ověřte, jestli můžete místo toho použít nativní filtr úložiště dat, konkrétně "**prefix**" pro službu Amazon S3 a Azure Blob. Filtr předpon je filtr na straně serveru úložiště dat, který by měl mnohem lepší výkon.
+    - Ověřte, jestli můžete místo toho použít nativní filtr úložiště dat, konkrétně "**prefix**" pro službu Amazon S3/Azure blob/Azure File Storage a "**listAfter/listBefore**" pro adls Gen1. Tyto filtry jsou filtrem na straně serveru úložiště dat a mají mnohem lepší výkon.
 
     - Zvažte, jak rozdělit jednu velkou datovou sadu do několika menších datových sad a nechat tyto úlohy kopírování běžet souběžně, přičemž každý z nich vybere část dat. Můžete to provést pomocí Lookup/GetMetadata + ForEach + Copy. Přečtěte si téma [kopírování souborů z více kontejnerů](solution-template-copy-files-multiple-containers.md) nebo [migrace dat ze služby Amazon S3 do](solution-template-migration-s3-azure.md) šablon řešení adls Gen2 jako obecné příklad.
 
@@ -128,7 +128,7 @@ Pokud výkon kopírování nevyhovuje vaší očekávání, při odstraňování
 
     - Ověřte, zda můžete [Kopírovat soubory založené na cestě k oddílu DateTime a názvu souboru](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md). Takovým způsobem nepřinese zatížení při výpisu zdrojové strany.
 
-    - Ověřte, jestli můžete místo toho použít nativní filtr úložiště dat, konkrétně "**prefix**" pro službu Amazon S3 a Azure Blob. Filtr předpon je filtr na straně serveru úložiště dat, který by měl mnohem lepší výkon.
+    - Ověřte, jestli můžete místo toho použít nativní filtr úložiště dat, konkrétně "**prefix**" pro službu Amazon S3/Azure blob/Azure File Storage a "**listAfter/listBefore**" pro adls Gen1. Tyto filtry jsou filtrem na straně serveru úložiště dat a mají mnohem lepší výkon.
 
     - Zvažte, jak rozdělit jednu velkou datovou sadu do několika menších datových sad a nechat tyto úlohy kopírování běžet souběžně, přičemž každý z nich vybere část dat. Můžete to provést pomocí Lookup/GetMetadata + ForEach + Copy. Přečtěte si téma [kopírování souborů z více kontejnerů](solution-template-copy-files-multiple-containers.md) nebo [migrace dat ze služby Amazon S3 do](solution-template-migration-s3-azure.md) šablon řešení adls Gen2 jako obecné příklad.
 

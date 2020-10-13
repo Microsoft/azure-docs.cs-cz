@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 07/27/2020
+ms.date: 10/07/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 5d9c3c8e795b6651595a17d540aafa849ce81471
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c24a50926fe028dcbf42d3642ae3ec5c9ae84f5b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91401040"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977794"
 ---
 <a name="HOLTop"></a>
 
@@ -147,11 +147,12 @@ Objekt Response je seznam obsahující informace o analýze pro každý dokument
 
 * [Ověřování klienta](#client-authentication)
 * [Analýza mínění](#sentiment-analysis) 
-* [Rozpoznávání jazyka](#language-detection)
+* [Dolování názoru](#opinion-mining)
+* [rozpoznávání jazyka,](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner)
 * [Propojení entit](#entity-linking)
 * Identifikovatelné osobní údaje
-* [Extrakce klíčových frází](#key-phrase-extraction)
+* [extrakce klíčových frází,](#key-phrase-extraction)
 
 ## <a name="client-authentication"></a>Ověření klienta
 
@@ -369,7 +370,7 @@ Spusťte kód `node index.js` v okně konzoly.
 
 ---
 
-## <a name="language-detection"></a>Rozpoznávání jazyka
+## <a name="language-detection"></a>rozpoznávání jazyka,
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
@@ -739,7 +740,7 @@ Document ID: 2
 
 ---
 
-## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
+## <a name="key-phrase-extraction"></a>extrakce klíčových frází,
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 

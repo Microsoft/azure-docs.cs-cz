@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/05/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b773fb887d3663a2af2e340912e378c7fccaba4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f3aee10c0682feeea7c74133f908452d1c5595f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003537"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968595"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Plánování a nasazení místní Azure Active Directory ochrany heslem
 

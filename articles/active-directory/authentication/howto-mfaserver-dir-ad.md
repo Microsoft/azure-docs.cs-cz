@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 866fa7333565a1875984aa5640d2028b6e399df1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9d8970387982e293d3c8495079e7529fac2ccaa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88949537"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966929"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Integrace adresáře mezi Azure MFA Serverem a službou Active Directory
 
@@ -92,7 +92,7 @@ Atributy můžete zadat ručně a nemusí se shodovat s atributem v seznamu atri
 | Příjmení |Zadejte název atributu, který v záznamu uživatele obsahuje příjmení.  Výchozí hodnota je sn. |
 | E-mailová adresa |Zadejte název atributu, který v záznamu uživatele obsahuje e-mailovou adresu.  Na e-mailovou adresu se uživateli pošle uvítací e-mail a budou se posílat e-maily s aktualitami.  Výchozí hodnota je mail. |
 | Skupina uživatelů |Zadejte název atributu, který v záznamu uživatele obsahuje uživatelskou skupinu.  Uživatelská skupina se může použít pro filtrování uživatelů v agentovi a v sestavách v Portálu pro správu Multi-Factor Auth Serveru. |
-| Description |Zadejte název atributu, který v záznamu uživatele obsahuje popis.  Popis se používá jen pro vyhledávání.  Výchozí hodnota je description. |
+| Popis |Zadejte název atributu, který v záznamu uživatele obsahuje popis.  Popis se používá jen pro vyhledávání.  Výchozí hodnota je description. |
 | Jazyk telefonního hovoru |Zadejte název atributu, který obsahuje krátký název jazyka pro hlasové hovory s uživatelem. |
 | Jazyk textové zprávy |Zadejte název atributu, který obsahuje krátký název jazyka pro SMS zprávy posílané uživateli. |
 | Jazyk mobilní aplikace |Zadejte název atributu, který obsahuje krátký název jazyka pro textové zprávy v mobilní aplikaci uživatele. |

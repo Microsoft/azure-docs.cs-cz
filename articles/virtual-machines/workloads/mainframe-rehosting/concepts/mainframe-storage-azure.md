@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a3a7cad8399146834eed0282e0655a551bc083a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88652844"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977268"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Přesunout sálové úložiště do Azure
 
@@ -51,13 +51,13 @@ Služba Azure Storage je dostupná jako [disky Azure](../../../managed-disks-ove
 
 <table>
 <thead>
-    <tr><th>Typ</th><th>Description</th><th>Použijte v případě, že chcete:</th></tr>
+    <tr><th>Type</th><th>Popis</th><th>Použijte v případě, že chcete:</th></tr>
 </thead>
 <tbody>
 <tr><td>Soubory Azure
 </td>
 <td>
-Poskytuje rozhraní protokolu SMB, klientské knihovny a rozhraní <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST</a> , které umožňuje přístup odkudkoli do uložených souborů.
+Poskytuje rozhraní protokolu SMB, klientské knihovny a rozhraní <a href="/rest/api/storageservices/file-service-rest-api">REST</a> , které umožňuje přístup odkudkoli do uložených souborů.
 </td>
 <td><ul>
 <li>Nazvednutí a posunutí aplikace do cloudu, když aplikace používá nativní rozhraní API systému souborů ke sdílení dat mezi IT a dalšími aplikacemi běžícími v Azure.</li>
@@ -67,7 +67,7 @@ Poskytuje rozhraní protokolu SMB, klientské knihovny a rozhraní <a href="http
 </tr>
 <tr><td>Objekty blob Azure
 </td>
-<td>Poskytuje klientské knihovny a rozhraní <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">REST</a> , které umožňuje ukládání nestrukturovaných dat a jejich použití v obrovských škálováních objektů blob bloku. Také podporuje <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> pro řešení pro analýzy velkých objemů dat v podniku.
+<td>Poskytuje klientské knihovny a rozhraní <a href="/rest/api/storageservices/blob-service-rest-api">REST</a> , které umožňuje ukládání nestrukturovaných dat a jejich použití v obrovských škálováních objektů blob bloku. Také podporuje <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> pro řešení pro analýzy velkých objemů dat v podniku.
 </td>
 <td><ul>
 <li>Podpora streamování a scénářů s náhodným přístupem v aplikaci.</li>
@@ -77,7 +77,7 @@ Poskytuje rozhraní protokolu SMB, klientské knihovny a rozhraní <a href="http
 </tr>
 <tr><td>Disky Azure
 </td>
-<td>Poskytuje klientské knihovny a rozhraní <a href="https://docs.microsoft.com/rest/api/compute/disks">REST</a> , které umožňuje trvalé uložení dat a získání jejich pøístupu z připojeného virtuálního pevného disku.
+<td>Poskytuje klientské knihovny a rozhraní <a href="/rest/api/compute/disks">REST</a> , které umožňuje trvalé uložení dat a získání jejich pøístupu z připojeného virtuálního pevného disku.
 </td>
 <td><ul>
 <li>Aplikace přenesené a posunutí, které používají rozhraní API nativního systému souborů ke čtení a zápisu dat na trvalé disky.</li>
@@ -94,7 +94,7 @@ Typ úložiště pro daný systém závisí na požadavcích systému, včetně 
 
 SSD poskytují nejvyšší výkon úložiště v Azure. K dispozici jsou následující možnosti (od zápisu tohoto dokumentu):
 
-| Typ         | Velikost           | IOPS                  |
+| Type         | Velikost           | IOPS                  |
 |--------------|----------------|-----------------------|
 | SSD úrovně Ultra    | 4 GB až 64 TB  | 1 200 až 160 000 IOPS |
 | SSD úrovně Premium  | 32 GB až 32 TB | 12 až 15 000 IOPS     |

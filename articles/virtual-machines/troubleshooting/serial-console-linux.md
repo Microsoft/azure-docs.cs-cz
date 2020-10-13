@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 9a31a22a5b037162198f594d9bcf35c91a0a4654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25e3a9cb363ae4e64b953aeb7a6da4e2e66c9fc7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306867"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977095"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure Serial Console for Linux
 
@@ -33,7 +33,7 @@ Dokumentaci k sériové konzole pro Windows najdete v tématu [sériová Konzola
 > [!NOTE]
 > Sériová konzola je aktuálně nekompatibilní se spravovaným účtem úložiště diagnostiky spouštění. Pokud chcete použít sériovou konzolu, ujistěte se, že používáte vlastní účet úložiště.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí používat model nasazení správy prostředků. Klasická nasazení nejsou podporovaná.
 
@@ -73,7 +73,7 @@ Oracle Linux        | Ve výchozím nastavení je povolený přístup Sériová 
 ### <a name="custom-linux-images"></a>Vlastní image Linuxu
 Pokud chcete pro vlastní image virtuálního počítače se systémem Linux povolit konzolu sériového prostředí, povolte přístup k konzole v souboru */etc/inittab* pro spuštění terminálu `ttyS0` . Například: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. V ttyS0 možná budete muset vytvořit také Getty. To lze provést pomocí `systemctl start serial-getty@ttyS0.service` .
 
-Budete také chtít přidat ttyS0 jako cíl pro sériový výstup. Další informace o konfiguraci vlastní image pro práci s konzolou sériového rozhraní najdete v tématu Obecné požadavky na systém při [vytváření a nahrání virtuálního pevného disku pro Linux v Azure](https://aka.ms/createuploadvhd#general-linux-system-requirements).
+Budete také chtít přidat ttyS0 jako cíl pro sériový výstup. Další informace o konfiguraci vlastní image pro práci s konzolou sériového rozhraní najdete v tématu Obecné požadavky na systém při [vytváření a nahrání virtuálního pevného disku pro Linux v Azure](../linux/create-upload-generic.md#general-linux-system-requirements).
 
 Pokud vytváříte vlastní jádro, zvažte povolení těchto příznaků jádra: `CONFIG_SERIAL_8250=y` a `CONFIG_MAGIC_SYSRQ_SERIAL=y` . Konfigurační soubor se obvykle nachází v cestě */boot/* .
 
@@ -128,7 +128,7 @@ Problém                           |   Omezení rizik
 Stisknutí klávesy **ENTER** po nápisu připojení nezpůsobí zobrazení výzvy k přihlášení. | GRUB možná není správně nakonfigurovaný. Spusťte následující příkazy: `grub2-mkconfig -o /etc/grub2-efi.cfg` a/nebo `grub2-mkconfig -o /etc/grub2.cfg` . Další informace najdete v tématu o tom, že [ENTER nedělá nic](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). K tomuto problému může dojít, pokud máte spuštěný vlastní virtuální počítač, zesílené zařízení nebo GRUB config, které způsobí, že se Linux nepřipojí k sériovému portu.
 Text Sériová konzola zabírá pouze část velikosti obrazovky (často po použití textového editoru). | Sériové konzoly nepodporují vyjednávání o velikosti okna ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)), což znamená, že nebude k dispozici žádný signál SIGWINCH k aktualizaci velikosti obrazovky a virtuální počítač nebude mít žádné znalosti o velikosti terminálu. Nainstalujte xterm nebo podobný nástroj, který vám poskytne `resize` příkaz, a pak spusťte `resize` .
 Vložení dlouhých řetězců nefunguje. | Konzola sériového portu omezuje délku řetězců vložených do terminálu na 2048 znaků, aby se zabránilo přetížení šířky pásma sériového portu.
-Nestabilní vstup klávesnice v obrázcích SLES BYOS. Vstup z klávesnice je jenom zřídka rozpoznaný. | Jedná se o problém s balíčkem Plymouth. Plymouth by se nemělo spouštět v Azure, protože nepotřebujete úvodní obrazovku a Plymouth brání možnosti platformy používat sériovou konzolu. Odeberte Plymouth pomocí `sudo zypper remove plymouth` a pak restartujte počítač. Případně můžete upravit řádek jádra vaší konfigurace GRUB připojením `plymouth.enable=0` ke konci řádku. To můžete provést [úpravou spouštěcí položky při spuštění](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)nebo úpravou GRUB_CMDLINE_LINUXho řádku v `/etc/default/grub` , opětovným sestavením grub `grub2-mkconfig -o /boot/grub2/grub.cfg` a následným restartováním.
+Nestabilní vstup klávesnice v obrázcích SLES BYOS. Vstup z klávesnice je jenom zřídka rozpoznaný. | Jedná se o problém s balíčkem Plymouth. Plymouth by se nemělo spouštět v Azure, protože nepotřebujete úvodní obrazovku a Plymouth brání možnosti platformy používat sériovou konzolu. Odeberte Plymouth pomocí `sudo zypper remove plymouth` a pak restartujte počítač. Případně můžete upravit řádek jádra vaší konfigurace GRUB připojením `plymouth.enable=0` ke konci řádku. To můžete provést [úpravou spouštěcí položky při spuštění](./serial-console-grub-single-user-mode.md#single-user-mode-in-suse-sles)nebo úpravou GRUB_CMDLINE_LINUXho řádku v `/etc/default/grub` , opětovným sestavením grub `grub2-mkconfig -o /boot/grub2/grub.cfg` a následným restartováním.
 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
@@ -139,7 +139,7 @@ A. Poskytněte zpětnou vazbu vytvořením problému GitHubu na adrese  https://
 
 **Č. Podporuje sériová konzola kopírování/vkládání?**
 
-A. Ano. Pomocí **kombinace kláves CTRL** + **+ SHIFT**+ Shift + + **C** **Ctrl** + **Shift** + **V** zkopírujte a vložte do terminálu.
+A. Yes. Pomocí **kombinace kláves CTRL** + **+ SHIFT**+ Shift + + **C** **Ctrl** + **Shift** + **V** zkopírujte a vložte do terminálu.
 
 **Č. Můžu místo připojení SSH použít sériovou konzolu?**
 
@@ -166,7 +166,7 @@ A. Ano, je! Další informace najdete v tématu [sériová Konzola pro Virtual M
 
 **Č. Když nastavil (a) jsem virtuální počítač nebo sadu škálování virtuálního počítače jenom pomocí ověřování pomocí klíče SSH, můžu stále používat sériovou konzolu pro připojení k virtuálnímu počítači nebo instanci sady škálování virtuálního počítače?**
 
-A. Ano. Vzhledem k tomu, že konzola sériového portu nevyžaduje klíče SSH, stačí nastavit kombinaci uživatelského jména a hesla. Můžete to udělat tak, že v Azure Portal vyberete **resetovat heslo** a pomocí těchto přihlašovacích údajů se přihlásíte ke konzole sériového portu.
+A. Yes. Vzhledem k tomu, že konzola sériového portu nevyžaduje klíče SSH, stačí nastavit kombinaci uživatelského jména a hesla. Můžete to udělat tak, že v Azure Portal vyberete **resetovat heslo** a pomocí těchto přihlašovacích údajů se přihlásíte ke konzole sériového portu.
 
 ## <a name="next-steps"></a>Další kroky
 * Použijte konzolu sériového [přístupu pro přístup k grub a jednomu uživatelskému režimu](serial-console-grub-single-user-mode.md).

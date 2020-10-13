@@ -1,20 +1,20 @@
 ---
 title: Kurz – konfigurace virtuální sítě pro Azure AD Domain Services | Microsoft Docs
 description: V tomto kurzu se naučíte, jak vytvořit a nakonfigurovat podsíť virtuální sítě Azure nebo partnerský vztah sítě pro Azure Active Directory Domain Services spravovanou doménu pomocí Azure Portal.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: e0d2b235f671ca9b30bf61aef254cb850b25373e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 33beb0767ef1f21d4fb3d08c9072d7c8479d2cb1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86024770"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967405"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace virtuální sítě pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 

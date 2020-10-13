@@ -10,12 +10,12 @@ ms.author: dobett
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 73eb0b3164a386bb270e42ceba56d5dc7045af1c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ecc79eb52acbe393ac2777a0ec388e538a7f8fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81729003"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978896"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Co je Azure Internet věcí (IoT)?
 
@@ -23,7 +23,7 @@ Internet věcí (IoT) Azure je kolekce cloudových služeb spravovaných Microso
 
 ## <a name="iot-devices"></a>Zařízení IoT
 
-Zařízení IoT obvykle tvoří desku okruhu s připojenými senzory, které používají Wi-Fi pro připojení k Internetu. Příklad:
+Zařízení IoT obvykle tvoří desku okruhu s připojenými senzory, které používají Wi-Fi pro připojení k Internetu. Například:
 
 * Tlakový senzor na vzdáleném olejovém pumpě.
 * Senzory teploty a vlhkosti v klimatizační jednotce.
@@ -74,6 +74,8 @@ Například v řešení vzdáleného monitorování pro čerpací stanice v clou
 
 Příklady použití Azure IoT v reálném čase najdete v tématu [technické studie Microsoftu pro IoT](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured). 
 
+Podrobné informace o architektuře IoT najdete v článku [Referenční architektura IoT v Microsoft Azure](https://aka.ms/iotrefarchitecture).
+
 ## <a name="next-steps"></a>Další kroky
 
 V případě některých skutečných obchodních případů a používané architektury si přečtěte [Microsoft Azure technické případové studie IoT](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured).
@@ -81,5 +83,3 @@ V případě některých skutečných obchodních případů a používané arch
 U některých ukázkových projektů, které si můžete vyzkoušet s IoT DevKit, přečtěte si [katalog projektu IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/). 
 
 Komplexnější vysvětlení různých služeb a způsobu jejich použití najdete v tématu [služby a technologie Azure IoT](iot-services-and-technologies.md).
-
-Podrobné informace o architektuře IoT najdete v článku [Referenční architektura IoT v Microsoft Azure](https://aka.ms/iotrefarchitecture).

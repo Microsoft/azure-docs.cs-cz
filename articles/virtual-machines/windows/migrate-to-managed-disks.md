@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 05/30/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d64ebb053ef01e375edd52ad0bf2c1f424f1b837
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b7490723d3930a151abf1d3f72bb957e02e5988
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84660834"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975497"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Migrace virtuálních počítačů Azure do Managed Disks v Azure
 
 Azure Managed Disks zjednodušuje správu úložiště tím, že odstraňuje nutnost samostatné správy účtů úložiště.  Můžete také migrovat stávající virtuální počítače Azure na Managed Disks, abyste mohli využívat lepší spolehlivost virtuálních počítačů ve skupině dostupnosti. Zajišťuje, aby byly disky různých virtuálních počítačů ve skupině dostupnosti dostatečně izolované od sebe navzájem, aby nedocházelo k jednomu bodu selhání. Automaticky umístí disky různých virtuálních počítačů do skupiny dostupnosti v různých jednotkách škálování úložiště (razítka), které omezují dopad selhání jedné jednotky úložiště kvůli selháním hardwaru a softwaru.
-Podle svých potřeb můžete vybírat ze čtyř typů úložišť. Další informace o dostupných typech disků najdete v našem článku [Výběr typu disku](disks-types.md) .
+Podle svých potřeb můžete vybírat ze čtyř typů úložišť. Další informace o dostupných typech disků najdete v našem článku [Výběr typu disku](../disks-types.md) .
 
 ## <a name="migration-scenarios"></a>Scénáře migrace
 
@@ -34,5 +34,5 @@ Migraci na Managed Disks můžete provést v následujících scénářích:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [Managed disks](managed-disks-overview.md)
+- Další informace o [Managed disks](../managed-disks-overview.md)
 - Projděte si [ceny Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).

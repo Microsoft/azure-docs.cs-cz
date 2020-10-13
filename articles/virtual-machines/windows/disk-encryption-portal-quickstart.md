@@ -7,22 +7,22 @@ ms.service: virtual-machines-windows
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 7857a037d8e48c8c6ae8d44cf77c863bec91d9d3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 69d34b6c50d5a4be728453a34c1c092c63c7b6be
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88510614"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977319"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>Rychlý Start: vytvoření a šifrování virtuálního počítače s Windows pomocí Azure Portal
 
 Virtuální počítače Azure je možné vytvářet na webu Azure Portal. Azure Portal je uživatelské rozhraní v prohlížeči, pomocí kterého můžete vytvářet virtuální počítače a související prostředky. V tomto rychlém startu použijete Azure Portal k nasazení virtuálního počítače s Windows, vytvoříte Trezor klíčů pro ukládání šifrovacích klíčů a zašifrujete virtuální počítač.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
@@ -39,7 +39,7 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com).
     :::image type="content" source="../media/disk-encryption/portal-quickstart-windows-vm-creation.png" alt-text="Obrazovka pro vytvoření virtuálního počítače s Windows&quot;:::
 
     > [!WARNING]
-    > Karta &quot;disky&quot; obsahuje pole &quot;typ šifrování" v části **Možnosti disku**. Toto pole slouží k zadání možností šifrování pro [Managed disks](managed-disks-overview.md) + CMK, ne pro Azure Disk Encryption.
+    > Karta &quot;disky&quot; obsahuje pole &quot;typ šifrování" v části **Možnosti disku**. Toto pole slouží k zadání možností šifrování pro [Managed disks](../managed-disks-overview.md) + CMK, ne pro Azure Disk Encryption.
     >
     > Aby nedocházelo k nejasnostem, doporučujeme při dokončení tohoto kurzu úplně přeskočit kartu *disky* .
 

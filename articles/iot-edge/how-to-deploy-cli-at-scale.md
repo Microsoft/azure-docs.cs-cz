@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 8b9c8107c102409b717da0a277b7cdd360e9c8ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ad4e72f8992c8798ce17faec6c47b753c10cfc4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439665"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978828"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Nasazení a sledování IoT Edgech modulů ve velkém měřítku pomocí rozhraní příkazového řádku Azure
 
@@ -25,11 +25,14 @@ Další informace najdete v tématu [vysvětlení IoT Edge automatického nasaze
 
 V tomto článku nastavíte rozhraní příkazového řádku Azure a rozšíření IoT. Pak se dozvíte, jak nasadit moduly do sady IoT Edge zařízení a jak sledovat průběh pomocí dostupných příkazů rozhraní příkazového řádku.
 
-## <a name="cli-prerequisites"></a>Předpoklady rozhraní příkazového řádku
+## <a name="prerequisites"></a>Předpoklady
 
 * [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) ve vašem předplatném Azure.
-* [IoT Edge zařízení](how-to-register-device.md#prerequisites-for-the-azure-cli) s nainstalovaným modulem runtime IoT Edge.
-* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) ve vašem prostředí. Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az --version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack.
+* Nejméně jedno IoT Edge zařízení.
+
+  Pokud nemáte nastavené zařízení IoT Edge, můžete ho vytvořit na virtuálním počítači Azure. Použijte postup v jednom z článků rychlý Start k [Vytvoření virtuálního zařízení](quickstart-linux.md) se systémem Linux nebo [Vytvoření virtuálního zařízení s Windows](quickstart.md).
+
+* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az --version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack.
 * [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension)
 
 ## <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení

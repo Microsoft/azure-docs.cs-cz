@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 07/27/2020
+ms.date: 10/07/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 7e074bf898667bb0019d4147ec9abaea2c674d74
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b5249850a572090a32b0d3515cbeaec9bfb112ae
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91401054"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977791"
 ---
 <a name="HOLTop"></a>
 
@@ -175,11 +175,11 @@ Pokud používáte verzi `3.x` služby, můžete použít volitelnou `TextAnalyt
 ## <a name="code-examples"></a>Příklady kódu
 
 * [Analýza mínění](#sentiment-analysis)
-* [Rozpoznávání jazyka](#language-detection)
+* [Dolování názoru](#opinion-mining)
+* [rozpoznávání jazyka,](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner)
 * [Propojení entit](#entity-linking)
-* [Extrakce klíčových frází](#key-phrase-extraction)
-
+* [extrakce klíčových frází,](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -473,7 +473,7 @@ Sentiment Score: 0.87
 
 ---
 
-## <a name="language-detection"></a>Rozpoznávání jazyka
+## <a name="language-detection"></a>rozpoznávání jazyka,
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
@@ -813,7 +813,7 @@ Vytvořte novou funkci s názvem `RecognizeEntitiesExample()` , která převezme
 --- 
 
 
-### <a name="key-phrase-extraction"></a>Extrakce klíčových frází
+### <a name="key-phrase-extraction"></a>extrakce klíčových frází,
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 

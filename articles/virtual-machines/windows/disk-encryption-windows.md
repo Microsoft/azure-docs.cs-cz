@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 951c1fd89f9e943b72c32492ff40dae3bd07bb61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf7e596c8ed057a3244ed2b12de59d02c4ba2cae
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88794492"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977931"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows
 
@@ -262,7 +262,7 @@ Azure Disk Encryption nefunguje v následujících scénářích, funkcích a te
 - Šifrování sdílených/distribuovaných systémů souborů (ale ne omezené na) DFS, GFS, DRDB a CephFS.
 - Přesunutí šifrovaných virtuálních počítačů do jiného předplatného nebo oblasti.
 - Vytvoření bitové kopie nebo snímku šifrovaného virtuálního počítače a jeho použití k nasazení dalších virtuálních počítačů.
-- Virtuální počítače s Gen2 (viz: [Podpora pro virtuální počítače 2. generace v Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
+- Virtuální počítače s Gen2 (viz: [Podpora pro virtuální počítače 2. generace v Azure](../generation-2.md#generation-1-vs-generation-2-capabilities))
 - Virtuální počítače řady M-Series s Akcelerátor zápisu disky.
 - Použití ADE na virtuální počítač, který obsahuje disky šifrované pomocí [šifrování na straně serveru s klíči spravovanými zákazníkem](disk-encryption.md) (SSE + CMK). Použití SSE + CMK na datový disk na virtuálním počítači zašifrovaném pomocí ADE je také nepodporovaný scénář.
 - Migrace virtuálního počítače, který je zašifrovaný pomocí ADE nebo který byl **někdy** ZAŠIFROVANÝ pomocí ADE, na [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md).

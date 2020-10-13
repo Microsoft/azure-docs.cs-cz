@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
-ms.openlocfilehash: b07033f96402edc24edd51de57661603e57472bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b13b61aff819271ed1722572f251f9a6d14b17ab
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344821"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976993"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Chyba stop systému Windows – proces stavu systému 0xC000021A byl ukončen.
 
@@ -27,7 +27,7 @@ Tento článek popisuje kroky pro řešení problémů, při kterých operační
 
 ## <a name="symptom"></a>Příznak
 
-Při použití [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) k zobrazení snímku obrazovky virtuálního počítače zobrazí snímek obrazovky zprávu, že operační systém při spuštění narazil na chybu, a to s následující zprávou:
+Při použití [diagnostiky spouštění](./boot-diagnostics.md) k zobrazení snímku obrazovky virtuálního počítače zobrazí snímek obrazovky zprávu, že operační systém při spuštění narazil na chybu, a to s následující zprávou:
 
 **Váš počítač narazil na problém a je potřeba ho restartovat. Jenom shromažďujeme nějaké informace o chybách a pak se můžete restartovat. (# #% dokončeno) Pokud se chcete dozvědět víc, můžete pro tuto chybu vyhledat online později: 0xC000021a**.
 
@@ -52,17 +52,17 @@ Chcete-li tento problém vyřešit, bude nutné analyzovat výpis stavu systému
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>Připojit disk s operačním systémem k nové opravě virtuálního počítače
 
-1.  Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
+1.  Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) Připravte opravný virtuální počítač.
 2.  Pomocí **připojení ke vzdálené ploše**se připojte k OPRAVNému virtuálnímu počítači.
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Vyhledejte soubor s výpisem paměti a odešlete lístek podpory.
 
 1.  V části opravit virtuální počítač otevřete složku Windows na připojeném disku s operačním systémem. Pokud je písmeno přiřazené k připojenému disku s operačním systémem F, přejít na F:\Windows.
 2.  Vyhledejte soubor Memory. dmp a pak [odešlete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se souborem s výpisem paměti.
-3.  Pokud se vám nedaří najít soubor Memory. dmp, možná budete chtít místo toho použít [volání NMI (nemaskovaná přerušení) v sériové konzole](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) . Můžete postupovat podle tohoto průvodce [vygenerováním souboru s výpisem stavu systému pomocí volání NMI](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump).
+3.  Pokud se vám nedaří najít soubor Memory. dmp, možná budete chtít místo toho použít [volání NMI (nemaskovaná přerušení) v sériové konzole](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) . Můžete postupovat podle tohoto průvodce [vygenerováním souboru s výpisem stavu systému pomocí volání NMI](/windows/client-management/generate-kernel-or-complete-crash-dump).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o řešení potíží najdete v tématu [řešení běžných chyb při spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-error-troubleshoot) nebo řešení [potíží s virtuálním počítačem s Windows připojením disku s operačním systémem k virtuálnímu počítači pro obnovení](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-windows). Měli byste se také seznámit s postupem [použití diagnostiky spouštění k řešení potíží s virtuálním počítačem](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics).
-- Další informace o použití Správce prostředků naleznete v tématu [Azure Resource Manager Overview](https://docs.microsoft.com/azure/azure-resource-manager/management/overview).
-- Pokud se k VIRTUÁLNÍmu počítači nemůžete připojit, přečtěte si téma [řešení potíží s připojením RDP k virtuálnímu počítači Azure](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)
+- Další informace o řešení potíží najdete v tématu [řešení běžných chyb při spouštění](./boot-error-troubleshoot.md) nebo řešení [potíží s virtuálním počítačem s Windows připojením disku s operačním systémem k virtuálnímu počítači pro obnovení](./troubleshoot-recovery-disks-windows.md). Měli byste se také seznámit s postupem [použití diagnostiky spouštění k řešení potíží s virtuálním počítačem](./boot-diagnostics.md).
+- Další informace o použití Správce prostředků naleznete v tématu [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md).
+- Pokud se k VIRTUÁLNÍmu počítači nemůžete připojit, přečtěte si téma [řešení potíží s připojením RDP k virtuálnímu počítači Azure](./troubleshoot-rdp-connection.md)

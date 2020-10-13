@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: ab94af9ec172a3e88d523024c1e00d3a0d944798
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: a9259e287c75a3a39ad1d4e701638f38b4512ee0
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873077"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966402"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru služby Azure Machine Learning
 
@@ -66,6 +66,22 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning operace
 
 Azure Machine Learning integrovaných akcí pro mnoho operací a úloh. Úplný seznam najdete v tématu [operace poskytovatele prostředků Azure](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
+
+## <a name="mlflow-operations-in-azure-machine-learning"></a>Operace MLflow ve službě Azure Machine Learning
+
+Tyto tabulky popisují rozsah oprávnění, který se má přidat k akcím ve vlastní roli vytvořené k provádění operací MLflow.
+
+| Operace MLflow | Rozsah |
+| --- | --- |
+| Vypíše všechny experimenty v úložišti sledování pracovních prostorů, získá experiment podle ID, získá experiment podle názvu. | Microsoft. MachineLearningServices/pracovní prostory/experimenty/číst |
+| Vytvoření experimentu s názvem, nastavení značky na experimentu, obnovení experimentu označeného k odstranění| Microsoft. MachineLearningServices/pracovní prostory/experimenty/Write | 
+| Odstranění experimentu | Microsoft. MachineLearningServices/pracovní prostory/experimenty/odstranit |
+| Získat data a metadata o spuštění a související data a získat seznam všech hodnot pro zadanou metriku pro daný běh, zobrazit artefakty pro spuštění | Microsoft. MachineLearningServices/pracovní prostory/experimenty/běhy/čtení |
+| Vytvoření nového spuštění v rámci experimentu, odstranění spuštění, obnovení odstraněných spuštění, metriky protokolu pod aktuálním spuštěním, nastavení značek při spuštění, odstranění značek při spuštění, parametrů protokolu (dvojice klíč-hodnota) použité pro spuštění, zaznamenání dávky metrik, paraí a značek pro spuštění, stav spuštění aktualizace | Microsoft. MachineLearningServices/pracovní prostory/experimenty/běhy/Write |
+| Získat registrovaný model podle názvu, načíst seznam všech registrovaných modelů v registru, vyhledat registrované modely, nejnovější modely verzí pro jednotlivé fáze požadavků, získat verzi registrovaného modelu, vyhledat verze modelu, získat identifikátor URI, kde jsou uložené artefakty verze modelu, vyhledejte běhy pomocí ID experimentu. | Microsoft. MachineLearningServices/pracovní prostory/modely/číst |
+| Vytvoří nový registrovaný model, aktualizuje název/popis registrovaného modelu, přejmenuje existující registrovaný model, vytvoří novou verzi modelu, aktualizuje Popis verze modelu a převede registrovaný model na jednu z fází. | Microsoft. MachineLearningServices/pracovní prostory/modely/zápis |
+| Odstraňte registrovaný model společně se všemi jeho verzemi, odstraňte konkrétní verze registrovaného modelu. | Microsoft. MachineLearningServices/pracovní prostory/modely/odstranit |
+
 
 ## <a name="create-custom-role"></a>Vytvoření vlastní role
 
@@ -253,6 +269,46 @@ Tady je několik běžných scénářů s vlastními navrhovanými definicemi ro
         ]
     }
     ```
+     
+* __MLflow data vědecký vědecký pracovník__: umožňuje, aby datový vědecký pracovník provedl všechny operace s podporou MLflow AzureML **s výjimkou**:
+
+   * Vytváření výpočetních prostředků
+   * Nasazení modelů do provozního clusteru AKS
+   * Nasazení koncového bodu kanálu v produkčním prostředí
+
+   `mlflow_data_scientist_custom_role.json` :
+   ```json
+   {
+        "Name": "MLFlow Data Scientist Custom",
+        "IsCustom": true,
+        "Description": "Can perform azureml mlflow integrated functionalities that includes mlflow tracking, projects, model registry",
+        "Actions": [
+            "Microsoft.MachineLearningServices/workspaces/experiments/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/write",
+            "Microsoft.MachineLearningServices/workspaces/experiments/delete",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/read",
+            "Microsoft.MachineLearningServices/workspaces/experiments/runs/write",
+            "Microsoft.MachineLearningServices/workspaces/models/read",
+            "Microsoft.MachineLearningServices/workspaces/models/write",
+            "Microsoft.MachineLearningServices/workspaces/models/delete"
+        ],
+        "NotActions": [
+            "Microsoft.MachineLearningServices/workspaces/delete",
+            "Microsoft.MachineLearningServices/workspaces/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/write",
+            "Microsoft.MachineLearningServices/workspaces/computes/*/delete", 
+            "Microsoft.Authorization/*",
+            "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/listKeys/action",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/write",
+            "Microsoft.MachineLearningServices/workspaces/services/aks/delete",
+            "Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write"
+        ],
+     "AssignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ]
+    }
+    ```   
 
 * __MLOps vlastní__: slouží k přiřazení role k instančnímu objektu a k automatizaci kanálů MLOps. Například pro odeslání spuštění proti již publikovanému kanálu:
 

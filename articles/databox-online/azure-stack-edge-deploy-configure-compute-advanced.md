@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: f62eec29aebdcc98569134e0c3b75457467bc014
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcad165f5d0ba2cf652cff35091e05b4414193c8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903696"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951787"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>Kurz: transformace dat pomocí Azure Stack Edge pro pro pokročilý tok nasazení
 
@@ -25,7 +25,7 @@ Výpočetní prostředí je možné nakonfigurovat pro jednoduchý nebo pokroči
 | Kritéria | Jednoduché nasazení                                | Pokročilé nasazení                   |
 |------------------|--------------------------------------------------|---------------------------------------|
 | Určeno pro     | Správci IT                                | Vývojáři                            |
-| Typ             | Použití služby Azure Stack Edge k nasazení modulů      | Použití služby IoT Hub k nasazení modulů |
+| Type             | Použití služby Azure Stack Edge k nasazení modulů      | Použití služby IoT Hub k nasazení modulů |
 | Nasazené moduly | Jednoduché                                           | Zřetězené nebo vícenásobné moduly           |
 
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 > * Ověření transformace dat a jejich přenos
 
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před nastavením výpočetní role na zařízení Azure Stack Edge pro se ujistěte, že:
 
@@ -58,7 +58,7 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack Edge pro, vytvoř
 
 2. Na dlaždici **Konfigurace hraničních výpočtů** vyberte **Konfigurovat výpočetní**prostředky.
 
-    ![Začínáme se službou COMPUTE](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
+    ![Začínáme s výpočetním využitím 2](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
 
 3. V okně **Konfigurace hraničních výpočtů** zadejte následující:
 
@@ -66,13 +66,13 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack Edge pro, vytvoř
     |Pole  |Hodnota  |
     |---------|---------|
     |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
-    |Name     |Zadejte název prostředku IoT Hub.         |
+    |Název     |Zadejte název prostředku IoT Hub.         |
 
-    ![Začínáme se službou COMPUTE](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
+    ![Začínáme s výpočetním prostředím 3](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
 4. Vyberte **Vytvořit**. Vytvoření prostředku IoT Hub trvá několik minut. Po vytvoření prostředku IoT Hub se aktualizují dlaždice **konfigurace hraničního** navýšení, aby se zobrazila konfigurace výpočtů. Pokud chcete ověřit, jestli je role hraničního výpočtu nakonfigurovaná, vyberte **Zobrazit** na dlaždici **Konfigurovat výpočty** .
     
-    ![Začínáme se službou COMPUTE](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
+    ![Začínáme se službou COMPUTE 4](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
 
     Když se na hraničním zařízení nastaví role hraničního zpracování, vytvoří se dvě zařízení: zařízení IoT a zařízení IoT Edge. Obě zařízení je možné zobrazit v prostředku IoT Hub. V tomto zařízení IoT Edge je spuštěn také modul runtime IoT Edge.
 
@@ -136,17 +136,17 @@ V rámci pokročilého nasazení v tomto kurzu budete potřebovat dvě sdílené
     |Typ aktivační události     | Vyberte Trigger **souboru** . Triggery souborů se aktivují vždy, když dojde k události souboru, jako je zápis souboru do vstupní sdílené složky. Naplánovaná aktivační událost je na druhé straně aktivovaná na základě vámi definovaného plánu. V tomto příkladu potřebujeme Trigger souboru.    |
     |Vstupní sdílená složka     | Vyberte vstupní sdílenou složku. V tomto případě je v tomto případě vstupní sdílená složka Edge v místním prostředí. Pomocí tohoto modulu se přesunuly soubory z místní sdílené složky Edge do hraniční sdílené složky, kam se nahrají do cloudu.        |
 
-    ![Přidání triggeru](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-2.png)
+    ![Přidat aktivační událost 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-2.png)
 
 3. Po vytvoření triggeru se zobrazí oznámení. Seznam aktivačních událostí se aktualizuje tak, aby zobrazoval nově vytvořenou aktivační událost. Vyberte aktivační událost, kterou jste právě vytvořili.
 
-    ![Přidání triggeru](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-3.png)
+    ![Přidat aktivační událost 3](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-3.png)
 
 4. Zkopírujte a uložte ukázkovou trasu. Tuto ukázkovou trasu upravíte a použijete ji později v IoT Hub.
 
     `"sampleroute": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/modulename/inputs/input1\")"`
 
-    ![Přidání triggeru](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-4.png)
+    ![Přidat aktivační událost 4](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-4.png)
 
 ## <a name="add-a-module"></a>Přidat modul
 
@@ -213,7 +213,7 @@ V této části přidáte vlastní modul do zařízení IoT Edge, které jste vy
  
     4. V případě potřeby nakonfigurujte nastavení pokročilého prostředí Edge a pak klikněte na **Další**.
 
-        ![Přidání vlastního modulu](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
+        ![Přidat vlastní modul 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
  
 5. V části **zadat trasy**nastavte trasy mezi moduly.  
    
@@ -229,11 +229,11 @@ V této části přidáte vlastní modul do zařízení IoT Edge, které jste vy
 
 6. V části **zkontrolovat nasazení**Zkontrolujte všechna nastavení a pak vyberte **Odeslat** a odešlete modul pro nasazení.
 
-   ![Stránka set modules](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
+   ![Stránka set modules 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
  
     Tato akce spustí nasazení modulu. Po dokončení nasazení se **běhový stav** modulu **spouští**.
 
-    ![Přidání vlastního modulu](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-10.png)
+    ![Přidat vlastní modul 3](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-10.png)
 
 ## <a name="verify-data-transform-transfer"></a>Ověřit transformaci dat, přenos
 
@@ -247,15 +247,15 @@ Provedením následujících kroků ověříte transformaci dat a přenos do Azu
  
 1. Přidejte data do místní sdílené složky.
 
-   ![Ověření transformace dat](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
+   ![Ověřit transformaci dat 2](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
  
     Data se přesunou do cloudové sdílené složky.
 
-    ![Ověření transformace dat](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-4.png)  
+    ![Ověřit transformaci dat 3](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-4.png)  
 
     Data se pak odešlou ze sdílené složky cloudu do účtu úložiště. Pokud si chcete data zobrazit, klikněte na svůj účet úložiště a vyberte **Průzkumník služby Storage**. Nahraná data můžete zobrazit ve svém účtu úložiště.
 
-    ![Ověření transformace dat](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-5.png)
+    ![Ověřit transformaci dat 4](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-5.png)
  
 Dokončili jste proces ověření.
 

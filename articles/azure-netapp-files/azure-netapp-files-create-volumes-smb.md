@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: e2c487b62813bc4480786daa08666fe6471bd18d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d0a16dc639fb3206b480c1091a66686955cbb11d
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325704"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932341"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -62,9 +62,9 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
     Adresní prostor pro virtuální síť, ve které je nasazený Azure NetApp Files, musí být přidán do nové nebo existující lokality služby Active Directory (kde řadič domény dosažitelný pomocí Azure NetApp Files je). 
 
-* Zadané servery DNS musí být dosažitelné z [delegované podsítě](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) Azure NetApp Files.  
+* Zadané servery DNS musí být dosažitelné z [delegované podsítě](./azure-netapp-files-delegate-subnet.md) Azure NetApp Files.  
 
-    V tématu [pokyny pro Azure NetApp Files plánování sítě](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) pro podporované topologie sítě.
+    V tématu [pokyny pro Azure NetApp Files plánování sítě](./azure-netapp-files-network-topologies.md) pro podporované topologie sítě.
 
     Skupiny zabezpečení sítě (skupin zabezpečení sítě) a brány firewall musí mít vhodně nakonfigurovaná pravidla umožňující požadavky na provoz služby Active Directory a DNS. 
 
@@ -72,7 +72,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
     Pokud máte řadiče domény, které jsou Azure NetApp Files delegovanou podsítí nedosažitelné, můžete během vytváření připojení Active Directory určit lokalitu služby Active Directory.  Azure NetApp Files musí komunikovat pouze s řadiči domény v lokalitě, kde je Azure NetApp Files delegovaný adresní prostor podsítě.
 
-    Viz [návrh topologie lokality](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) o lokalitách a službách Active Directory. 
+    Viz [návrh topologie lokality](/windows-server/identity/ad-ds/plan/designing-the-site-topology) o lokalitách a službách Active Directory. 
     
 * Šifrování AES pro svazek SMB můžete povolit zaškrtnutím políčka **šifrování AES** v okně [připojit se ke službě Active Directory](#create-an-active-directory-connection) . Azure NetApp Files podporuje typy šifrování DES, Kerberos AES 128 a Kerberos AES 256 (z nejméně zabezpečeného na nejbezpečnější). Pokud povolíte šifrování AES, musí mít přihlašovací údaje uživatele použité pro připojení ke službě Active Directory nejvyšší odpovídající možnost účtu, která bude odpovídat funkcím povoleným pro vaši službu Active Directory.    
 
@@ -82,21 +82,21 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
     ![Modul snap-in Uživatelé a počítače služby Active Directory](../media/azure-netapp-files/ad-users-computers-mmc.png)
 
-* Azure NetApp Files podporuje [podepisování LDAP](https://docs.microsoft.com/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server), které umožňuje zabezpečený přenos dat protokolu LDAP mezi službou Azure NetApp Files a cílovými [řadiči domény služby Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview). Pokud budete postupovat podle pokynů v poradenské službě Microsoft Advisor [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) pro podepisování LDAP, měli byste povolit funkci podepisování ldap v Azure NetApp Files kontrolou pole **podepisování LDAP** v okně [připojit se ke službě Active Directory](#create-an-active-directory-connection) . 
+* Azure NetApp Files podporuje [podepisování LDAP](/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server), které umožňuje zabezpečený přenos dat protokolu LDAP mezi službou Azure NetApp Files a cílovými [řadiči domény služby Active Directory](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview). Pokud budete postupovat podle pokynů v poradenské službě Microsoft Advisor [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) pro podepisování LDAP, měli byste povolit funkci podepisování ldap v Azure NetApp Files kontrolou pole **podepisování LDAP** v okně [připojit se ke službě Active Directory](#create-an-active-directory-connection) . 
 
     Konfigurace [vazby kanálu LDAP](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) nemá žádný vliv na službu Azure NetApp Files. 
 
-Další informace o službě AD najdete v tématu Azure NetApp Files [nejčastějších dotazů k protokolu SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) . 
+Další informace o službě AD najdete v tématu Azure NetApp Files [nejčastějších dotazů k protokolu SMB](./azure-netapp-files-faqs.md#smb-faqs) . 
 
 ## <a name="decide-which-domain-services-to-use"></a>Rozhodněte, které doménové služby se mají použít. 
 
-Azure NetApp Files pro připojení AD podporuje [Active Directory Domain Services](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (přidávání) i Azure Active Directory Domain Services (AADDS).  Před vytvořením připojení AD se musíte rozhodnout, jestli chcete použít příkaz Přidat nebo AADDS.  
+Azure NetApp Files pro připojení AD podporuje [Active Directory Domain Services](/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (přidávání) i Azure Active Directory Domain Services (AADDS).  Před vytvořením připojení AD se musíte rozhodnout, jestli chcete použít příkaz Přidat nebo AADDS.  
 
-Další informace najdete v tématu [porovnání samoobslužně spravovaných Active Directory Domain Services, Azure Active Directory a spravovaných Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/compare-identity-solutions). 
+Další informace najdete v tématu [porovnání samoobslužně spravovaných Active Directory Domain Services, Azure Active Directory a spravovaných Azure Active Directory Domain Services](../active-directory-domain-services/compare-identity-solutions.md). 
 
 ### <a name="active-directory-domain-services"></a>Active Directory Domain Services
 
-Pro Azure NetApp Files můžete použít preferované obory [lokality a služby Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) . Tato možnost umožňuje čtení a zápisy do Active Directory Domain Services (přidá) řadiče domény, které jsou [přístupné Azure NetApp Files](azure-netapp-files-network-topologies.md). Zabrání taky službě v komunikaci s řadiči domény, které nejsou ve specifikovaných lokalitách a lokalitách služby Active Directory. 
+Pro Azure NetApp Files můžete použít preferované obory [lokality a služby Active Directory](/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) . Tato možnost umožňuje čtení a zápisy do Active Directory Domain Services (přidá) řadiče domény, které jsou [přístupné Azure NetApp Files](azure-netapp-files-network-topologies.md). Zabrání taky službě v komunikaci s řadiči domény, které nejsou ve specifikovaných lokalitách a lokalitách služby Active Directory. 
 
 Pokud chcete najít název vaší lokality, když použijete příkaz Přidat, můžete kontaktovat skupinu pro správu ve vaší organizaci, která je zodpovědná za Active Directory Domain Services. Následující příklad ukazuje modul plug-in lokality a služby Active Directory, kde se zobrazuje název lokality: 
 
@@ -106,7 +106,7 @@ Když nakonfigurujete připojení AD pro Azure NetApp Files, zadáte název loka
 
 ### <a name="azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 
 
-Informace o konfiguraci a pokyny pro Azure Active Directory Domain Services (AADDS) najdete v [dokumentaci k Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/).
+Informace o konfiguraci a pokyny pro Azure Active Directory Domain Services (AADDS) najdete v [dokumentaci k Azure AD Domain Services](../active-directory-domain-services/index.yml).
 
 Pro Azure NetApp Files se vztahují další požadavky na AADDS: 
 
@@ -184,10 +184,10 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
         ```
         
-        Můžete také použít [příkazy rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
+        Můžete také použít [příkazy rozhraní příkazového řádku Azure](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
 
     * **Podepisování LDAP**   
-        Zaškrtnutím tohoto políčka povolíte podepisování LDAP. Tato funkce umožňuje zabezpečené vyhledávání LDAP mezi službou Azure NetApp Files a uživatelem zadanými [Active Directory Domain Services řadiči domény](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). Další informace najdete v tématu [ADV190023 | Návod Microsoftu pro povolení vazby kanálu LDAP a podepisování LDAP](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).  
+        Zaškrtnutím tohoto políčka povolíte podepisování LDAP. Tato funkce umožňuje zabezpečené vyhledávání LDAP mezi službou Azure NetApp Files a uživatelem zadanými [Active Directory Domain Services řadiči domény](/windows/win32/ad/active-directory-domain-services). Další informace najdete v tématu [ADV190023 | Návod Microsoftu pro povolení vazby kanálu LDAP a podepisování LDAP](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).  
 
         ![Podepisování LDAP služby Active Directory](../media/azure-netapp-files/active-directory-ldap-signing.png) 
 
@@ -206,7 +206,7 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
         ```
         
-        Můžete také použít [příkazy rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
+        Můžete také použít [příkazy rozhraní příkazového řádku Azure](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
 
      * **Uživatelé zásad zálohování**  
         Můžete zahrnout další účty, které vyžadují zvýšená oprávnění k účtu počítače vytvořenému pro použití s Azure NetApp Files. U zadaných účtů bude povoleno změnit oprávnění systému souborů NTFS na úrovni souboru nebo složky. Můžete například zadat účet neprivilegované služby, který se používá k migraci dat do sdílené složky SMB v Azure NetApp Files.  
@@ -228,7 +228,7 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        Můžete také použít [příkazy rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
+        Můžete také použít [příkazy rozhraní příkazového řádku Azure](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
 
     * Přihlašovací údaje, včetně **uživatelského jména** a **hesla**
 
@@ -325,6 +325,6 @@ Oprávnění pro soubor nebo složku můžete nastavit pomocí karty **zabezpeč
 
 * [Připojení nebo odpojení svazku pro virtuální počítače s Windows nebo Linuxem](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)
-* [Nejčastější dotazy k protokolu SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
-* [Informace o integraci virtuální sítě pro služby Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
-* [Instalace nové doménové struktury služby Active Directory pomocí Azure CLI](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)
+* [Nejčastější dotazy k protokolu SMB](./azure-netapp-files-faqs.md#smb-faqs)
+* [Informace o integraci virtuální sítě pro služby Azure](../virtual-network/virtual-network-for-azure-services.md)
+* [Instalace nové doménové struktury služby Active Directory pomocí Azure CLI](/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

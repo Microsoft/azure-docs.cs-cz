@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a39871fd6e2aef2e5120030d17192bb32ba2613b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2f24eb64a5418a9963fd58611314ccbc6b72ec4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003469"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968459"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Nejčastější dotazy k ochraně hesel Azure AD
 
@@ -66,7 +66,7 @@ Služba Active Directory podporuje možnost testování hesla, aby bylo možné 
 
 **Otázka: je podporována instalace ochrany heslem služby Azure AD vedle jiných produktů založených na filtrech hesel?**
 
-Ano. Podpora více registrovaných knihoven DLL filtru hesel je základní funkcí Windows, která není specifická pro ochranu heslem Azure AD. Před přijetím hesla musí všechny knihovny DLL registrovaných filtrů hesel souhlasit.
+Yes. Podpora více registrovaných knihoven DLL filtru hesel je základní funkcí Windows, která není specifická pro ochranu heslem Azure AD. Před přijetím hesla musí všechny knihovny DLL registrovaných filtrů hesel souhlasit.
 
 **Otázka: Jak můžu nasadit a nakonfigurovat ochranu hesel Azure AD v prostředí služby Active Directory bez použití Azure?**
 
@@ -107,7 +107,7 @@ Ne. Vzhledem k tomu, že proxy server je Bezstavová, není důležité použít
 
 **Otázka: je v pořádku nasazovat službu proxy ochrany heslem Azure AD vedle jiných služeb, jako je například Azure AD Connect?**
 
-Ano. Služba proxy ochrany heslem Azure AD a Azure AD Connect by nikdy neměly kolidovat přímo.
+Yes. Služba proxy ochrany heslem Azure AD a Azure AD Connect by nikdy neměly kolidovat přímo.
 
 Nastala nekompatibilita mezi verzí služby Microsoft Azure AD Connect agent, která je nainstalovaná softwarem proxy ochrany heslem Azure AD, a verzí služby, kterou instaluje software [proxy aplikací služby Azure Active Directory](../manage-apps/application-proxy.md) . Výsledkem této nekompatibility může být, že služba aktualizace agenta nemůže kontaktovat Azure kvůli aktualizacím softwaru. Nedoporučujeme instalovat proxy ochranu heslem Azure AD a Proxy aplikací služby Azure Active Directory ve stejném počítači.
 

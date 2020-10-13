@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9194b461cdceab889e1dfd20e3e70f3f69cb4369
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449383"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978250"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -229,7 +229,7 @@ Ultra disk poskytuje možnost definovat jeden disk, který splňuje vaši veliko
 Dalšími výhodami extrémně disku může být lepší latence čtení v porovnání s Premium Storage. Rychlejší latence čtení může mít výhody, když chcete snížit dobu spuštění HANA a následné načtení dat do paměti. Pokud HANA zapisuje úložných bodů, můžou se taky vycházet z výhod úložiště Ultra disk. 
 
 > [!NOTE]
-> Ultra disk ještě není ve všech oblastech Azure a ještě nepodporují všechny typy virtuálních počítačů uvedené níže. Podrobné informace o dostupnosti Ultra disk a o podporovaných rodinách virtuálních počítačů najdete v článku o [tom, jaké typy disků jsou dostupné v Azure?](../../windows/disks-types.md#ultra-disk).
+> Ultra disk ještě není ve všech oblastech Azure a ještě nepodporují všechny typy virtuálních počítačů uvedené níže. Podrobné informace o dostupnosti Ultra disk a o podporovaných rodinách virtuálních počítačů najdete v článku o [tom, jaké typy disků jsou dostupné v Azure?](../../disks-types.md#ultra-disk).
 
 ### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>Provozní řešení doporučené pro produkční úložiště s čistou konfigurací disků Ultra
 V této konfiguraci se svazky **/Hana/data** a **/Hana/log** udržují samostatně. Navrhované hodnoty jsou odvozeny mimo klíčové ukazatele výkonu, které SAP musí certifikovat typy virtuálních počítačů pro SAP HANA a konfigurace úložiště podle doporučení v dokumentu [White paper k úložišti SAP TDI](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html).
@@ -272,7 +272,7 @@ Podrobné informace o ANF pro HANA najdete v dokumentu o [svazcích systému sou
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Řešení na vědomí nákladů pomocí služby Azure Premium Storage
-Zatím řešení Azure Premium Storage popsané v tomto dokumentu najdete v části [řešení s využitím služby Premium Storage a azure akcelerátor zápisu pro virtuální počítače řady Azure M-Series](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) , která se týkají SAP HANA produkčních scénářů. Jedna z vlastností produkčních konfigurací, které podporují, je oddělení svazků pro SAP HANAá data a znovu se přihlaste do dvou různých svazků. Důvodem takového oddělení je to, že charakteristiky zatížení na svazcích se liší. A že u navrhovaných produkčních konfigurací může být potřeba jiný typ ukládání do mezipaměti nebo dokonce jiné typy úložiště bloků Azure. Produkční podporované konfigurace pomocí Azure blokového úložiště musí být v souladu s smlouvou [SLA s jedním virtuálním počítačem pro Azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/) také.  V případě neprodukčních scénářů se některé z doporučení pro produkční systémy nemusí vztahovat na více systémů, které nejsou v produkčním prostředí. V důsledku toho může být Kombinovaný objem dat HANA a protokolu. I když s některými culprits, jako je například, že nesplňuje určitou propustnost nebo klíčové ukazatele výkonu, které jsou požadovány pro produkční systémy. Dalším aspektem snížení nákladů v takových prostředích může být využití [úložiště Azure SSD úrovně Standard](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#azure-standard-ssd-storage). I když volba neověřuje [smlouvu SLA pro jeden virtuální počítač pro Azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/). 
+Zatím řešení Azure Premium Storage popsané v tomto dokumentu najdete v části [řešení s využitím služby Premium Storage a azure akcelerátor zápisu pro virtuální počítače řady Azure M-Series](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) , která se týkají SAP HANA produkčních scénářů. Jedna z vlastností produkčních konfigurací, které podporují, je oddělení svazků pro SAP HANAá data a znovu se přihlaste do dvou různých svazků. Důvodem takového oddělení je to, že charakteristiky zatížení na svazcích se liší. A že u navrhovaných produkčních konfigurací může být potřeba jiný typ ukládání do mezipaměti nebo dokonce jiné typy úložiště bloků Azure. Produkční podporované konfigurace pomocí Azure blokového úložiště musí být v souladu s smlouvou [SLA s jedním virtuálním počítačem pro Azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/) také.  V případě neprodukčních scénářů se některé z doporučení pro produkční systémy nemusí vztahovat na více systémů, které nejsou v produkčním prostředí. V důsledku toho může být Kombinovaný objem dat HANA a protokolu. I když s některými culprits, jako je například, že nesplňuje určitou propustnost nebo klíčové ukazatele výkonu, které jsou požadovány pro produkční systémy. Dalším aspektem snížení nákladů v takových prostředích může být využití [úložiště Azure SSD úrovně Standard](./planning-guide-storage.md#azure-standard-ssd-storage). I když volba neověřuje [smlouvu SLA pro jeden virtuální počítač pro Azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/). 
 
 Méně nákladná alternativa takových konfigurací by mohla vypadat takto:
 

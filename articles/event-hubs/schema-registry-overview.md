@@ -4,12 +4,12 @@ description: Tento článek poskytuje přehled podpory registru schématu pomoc�
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 1da59d7757a7f78235ab3ef7ab18ca78e419b761
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 30ef2f102a4b8d9f9908ba915f179889710bafd0
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812416"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938793"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Registr schémat Azure v Event Hubs (Preview)
 V mnoha scénářích pro streamování událostí a zasílání zpráv obsahuje datová část události nebo zprávy strukturovaná data, která jsou buď serializovaná, nebo deserializovaná pomocí formátu založeného na schématu, jako je Apache Avro. Odesílatelé i přijímače můžou chtít ověřit integritu dat pomocí schématu dokumentu jako ve schématu JSON. V případě formátů založených na schématu je k dispozici pro příjemce zprávy je předpokladem, že příjemce může data deserializovat. 
@@ -70,4 +70,4 @@ Pokyny k vytvoření registrace aplikace pomocí Azure Portal najdete v tématu 
     - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/src/samples)
     - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro/samples )
     - [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer/samples )
-    - [Kafka Avro Integration pro Azure Schema Registry](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/avro/samples)
+    - [Kafka Avro Integration pro Azure Schema Registry](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/csharp/avro/samples)

@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 203176c4c7ffed95cb4f1616f29f3953fcc0afc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58d4459e1869a9d1f7ccb8234c0356ac486a950c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320094"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975548"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrace na Premium Storage pomocí Azure Site Recovery
 
-[Azure Premium SSD](disks-types.md) zajišťuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, na kterých běží úlohy náročné na vstupně-výstupní operace. Tato příručka vám pomůže migrovat disky virtuálních počítačů z účtu úložiště úrovně Standard na účet Premium Storage pomocí [Azure Site Recovery](../../site-recovery/site-recovery-overview.md).
+[Azure Premium SSD](../disks-types.md) zajišťuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, na kterých běží úlohy náročné na vstupně-výstupní operace. Tato příručka vám pomůže migrovat disky virtuálních počítačů z účtu úložiště úrovně Standard na účet Premium Storage pomocí [Azure Site Recovery](../../site-recovery/site-recovery-overview.md).
 
 Site Recovery je služba Azure, která přispívá k strategii pro provozní kontinuitu a zotavení po havárii tím, že orchestruje replikaci místních fyzických serverů a virtuálních počítačů do cloudu (Azure) nebo do sekundárního datacentra. Pokud dojde k výpadkům v primárním umístění, převezmete služby při selhání do sekundárního umístění, aby aplikace a úlohy zůstaly dostupné. Vrátíte se zpátky do svého primárního umístění, až se vrátí k normální operaci. 
 
@@ -62,7 +62,7 @@ Toto jsou požadavky Azure pro tento scénář migrace:
 * Virtuální síť Azure, ke které se virtuální počítače připojí při jejich vytvoření při převzetí služeb při selhání. Virtuální síť Azure musí být ve stejné oblasti jako ta, ve které Site Recovery běží.
 * Účet úložiště Azure standard pro ukládání protokolů replikace. Může to být stejný účet úložiště pro disky virtuálních počítačů, které se migrují.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pochopení relevantních součástí scénáře migrace v předchozí části.
 * Naplánujte prostoje o [převzetí služeb při selhání v Site Recovery](../../site-recovery/site-recovery-failover.md).
@@ -167,7 +167,7 @@ Pokud chcete ověřit, jestli je konfigurační server úspěšně přidružený
 
    ![Povolit podokno replikace se zvoleným zdrojem][13]
 
-Při návrhu Azure Storageho prostředí doporučujeme pro každý virtuální počítač ve skupině dostupnosti použít samostatné účty úložiště. Doporučujeme, abyste podle osvědčeného postupu ve vrstvě úložiště [používali pro každou skupinu dostupnosti více účtů úložiště](../linux/manage-availability.md). Distribuce disků virtuálních počítačů do několika účtů úložiště pomáhá zlepšit dostupnost úložiště a distribuuje vstupně-výstupní operace v infrastruktuře úložiště Azure.
+Při návrhu Azure Storageho prostředí doporučujeme pro každý virtuální počítač ve skupině dostupnosti použít samostatné účty úložiště. Doporučujeme, abyste podle osvědčeného postupu ve vrstvě úložiště [používali pro každou skupinu dostupnosti více účtů úložiště](../manage-availability.md). Distribuce disků virtuálních počítačů do několika účtů úložiště pomáhá zlepšit dostupnost úložiště a distribuuje vstupně-výstupní operace v infrastruktuře úložiště Azure.
 
 Pokud jsou vaše virtuální počítače ve skupině dostupnosti, místo replikace disků všech virtuálních počítačů do jednoho účtu úložiště důrazně doporučujeme migrovat několik virtuálních počítačů vícekrát. Virtuální počítače ve stejné skupině dostupnosti tak nebudou sdílet jeden účet úložiště. Pomocí podokna **Povolit replikaci** můžete nastavit cílový účet úložiště pro každý virtuální počítač v jednom okamžiku.
  

@@ -2,13 +2,13 @@
 title: Funkce šablon – logická
 description: Popisuje funkce, které lze použít v šabloně Azure Resource Manager k určení logických hodnot.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: ede41bd6c03eb7a01ae63526810d0310f31e4014
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677385"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978505"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Logické funkce pro šablony ARM
 
@@ -16,9 +16,11 @@ Správce prostředků poskytuje několik funkcí pro porovnávání šablon Azur
 
 * [and](#and)
 * [bool](#bool)
+* [chybné](#false)
 * [if](#if)
 * [mění](#not)
-* [nebo](#or)
+* [ani](#or)
+* [podmínka](#true)
 
 ## <a name="and"></a>a
 
@@ -28,10 +30,10 @@ Kontroluje, zda jsou všechny hodnoty parametrů pravdivé.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Yes |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| arg1 |Ano |boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Ano |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
 | Další argumenty |No |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Vrácená hodnota
@@ -80,12 +82,17 @@ Převede parametr na logickou hodnotu.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |řetězec nebo int |Hodnota, která má být převedena na logickou hodnotu. |
+| arg1 |Ano |řetězec nebo int |Hodnota, která má být převedena na logickou hodnotu. |
 
 ### <a name="return-value"></a>Vrácená hodnota
+
 Logická hodnota převedené hodnoty.
+
+### <a name="remarks"></a>Poznámky
+
+K získání logických hodnot můžete použít také hodnoty [true ()](#true) a [false ()](#false) .
 
 ### <a name="examples"></a>Příklady
 
@@ -126,6 +133,44 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | trueInt | Logická hodnota | Ano |
 | falseInt | Logická hodnota | Nepravda |
 
+## <a name="false"></a>false (nepravda)
+
+`false()`
+
+Vrátí hodnotu false.
+
+### <a name="parameters"></a>Parametry
+
+Funkce false nepřijímá žádné parametry.
+
+### <a name="return-value"></a>Vrácená hodnota
+
+Logická hodnota, která je vždy false.
+
+### <a name="example"></a>Příklad
+
+Následující příklad vrátí falešnou výstupní hodnotu.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "falseOutput": {
+            "value": "[false()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+Výstup z předchozího příkladu:
+
+| Název | Typ | Hodnota |
+| ---- | ---- | ----- |
+| falseOutput | Logická hodnota | Nepravda |
+
 ## <a name="if"></a>if
 
 `if(condition, trueValue, falseValue)`
@@ -134,11 +179,11 @@ Vrátí hodnotu na základě toho, zda je podmínka pravdivá, nebo false.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| pomocné |Yes |boolean |Hodnota, která ověří, zda je true nebo false. |
-| trueValue |Yes | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka pravdivá. |
-| falseValue |Yes | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka nepravdivá |
+| pomocné |Ano |boolean |Hodnota, která ověří, zda je true nebo false. |
+| trueValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka pravdivá. |
+| falseValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka nepravdivá |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -239,9 +284,9 @@ Převede logickou hodnotu na její opačnou hodnotu.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |Hodnota, kterou chcete převést. |
+| arg1 |Ano |boolean |Hodnota, kterou chcete převést. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -312,10 +357,10 @@ Kontroluje, zda je hodnota parametru pravdivá.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Yes |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| arg1 |Ano |boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Ano |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
 | Další argumenty |No |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Vrácená hodnota
@@ -355,6 +400,44 @@ Výstup z předchozího příkladu:
 | andExampleOutput | Logická hodnota | Nepravda |
 | orExampleOutput | Logická hodnota | Ano |
 | notExampleOutput | Logická hodnota | Nepravda |
+
+## <a name="true"></a>true
+
+`true()`
+
+Vrátí hodnotu true.
+
+### <a name="parameters"></a>Parametry
+
+Funkce true nepřijímá žádné parametry.
+
+### <a name="return-value"></a>Vrácená hodnota
+
+Logická hodnota, která je vždycky true.
+
+### <a name="example"></a>Příklad
+
+Následující příklad vrátí hodnotu true Output.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "trueOutput": {
+            "value": "[true()]",
+            "type" : "bool"
+        }
+    }
+}
+```
+
+Výstup z předchozího příkladu:
+
+| Název | Typ | Hodnota |
+| ---- | ---- | ----- |
+| trueOutput | Logická hodnota | Ano |
 
 ## <a name="next-steps"></a>Další kroky
 

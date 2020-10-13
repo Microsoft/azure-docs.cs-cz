@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: e6c85ba79c21c9a8120feebc02477506eb93d2e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d5e5e6cc77c7fe1d32f0834831ef1b930ee834d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500364"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966164"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurace zařízení IoT Edge tak, aby komunikovalo přes proxy server
 
@@ -25,7 +25,7 @@ Tento článek vás provede následujícími čtyřmi kroky ke konfiguraci a spr
 
 1. [**Instalace modulu runtime IoT Edge na zařízení**](#install-the-runtime-through-a-proxy)
 
-   Instalační skripty pro IoT Edge najdou balíčky a soubory z Internetu, takže vaše zařízení musí komunikovat přes proxy server, aby tyto požadavky učinily. Instalační skript pro zařízení s Windows také nabízí možnost [offline instalace](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation) .
+   Instalační skripty pro IoT Edge najdou balíčky a soubory z Internetu, takže vaše zařízení musí komunikovat přes proxy server, aby tyto požadavky učinily. Instalační skript pro zařízení s Windows také nabízí možnost offline instalace.
 
    Tento krok je jednorázový proces konfigurace zařízení IoT Edge při jeho prvním nastavení. Při aktualizaci modulu runtime IoT Edge se vyžadují také stejná připojení.
 
@@ -65,7 +65,7 @@ Bez ohledu na to, jestli je zařízení IoT Edge spuštěné v systému Windows 
 
 ### <a name="linux-devices"></a>Zařízení se systémem Linux
 
-Pokud instalujete modul runtime IoT Edge na zařízení se systémem Linux, nakonfigurujte Správce balíčků tak, aby procházel proxy server pro přístup k instalačnímu balíčku. [Nastavte například apt-get pro použití HTTP-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Po nakonfigurování správce balíčků postupujte podle pokynů v části [Instalace modulu runtime Azure IoT Edge v systému Linux](how-to-install-iot-edge-linux.md) obvyklým způsobem.
+Pokud instalujete modul runtime IoT Edge na zařízení se systémem Linux, nakonfigurujte Správce balíčků tak, aby procházel proxy server pro přístup k instalačnímu balíčku. [Nastavte například apt-get pro použití HTTP-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Po nakonfigurování správce balíčků postupujte podle pokynů v části [Instalace modulu runtime Azure IoT Edge](how-to-install-iot-edge.md) jako obvykle.
 
 ### <a name="windows-devices"></a>Zařízení s Windows
 
@@ -93,7 +93,7 @@ $proxyCredential = (Get-Credential).GetNetworkCredential()
 Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-Další informace o parametrech proxy najdete v tématu [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest). Další informace o možnostech instalace systému Windows, včetně offline instalace, najdete v tématu [Install Azure IoT Edge runtime v systému Windows](how-to-install-iot-edge-windows.md).
+Další informace o parametrech proxy najdete v tématu [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest). Další informace o parametrech instalace systému Windows najdete v tématu [skripty PowerShellu pro IoT Edge ve Windows](reference-windows-scripts.md).
 
 ## <a name="configure-the-daemons"></a>Konfigurace démonů
 

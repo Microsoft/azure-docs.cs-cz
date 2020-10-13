@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 66eafb818b09d6d1cde6c1f3e2dbcdaf55352248
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9092e9564fadb07311b151948656bc6cd007323
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87002977"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951719"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Pokrytí Azure CDN podle linky Metro 
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ V tomto článku jsou uvedené aktuální METROS, které obsahují umístění v
 | Oblast | Partnerský vztah Microsoftu | Verizon | Akamai |
 | --- | --- | --- | --- |
 | Severní Amerika | Toronto, Kanada<br />Vancouver, Kanada<br />Montreal, Kanada<br />Querétaro, Mexiko<br />San Juan, Portoriko<br />Ashburn, VA, USA<br />Brno, GA, USA<br />Raleigh, NC, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, IL, USA<br /> Praha, TX, USA<br />Denver, CO, USA<br />Honolulu, dobrý den, USA<br />Houstonu, TX, USA<br />Las Vegas, NV, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Newyorském, NEWARKU, USA<br />Phoenix, AZ, USA<br />Portland nebo USA<br />San Antonio, TX, USA<br />San Jose, CA, USA<br />Praha, WA, USA | Guadalajara, Mexiko<br />Mexico City, Mexiko<br />Puebla, Mexiko<br />Querétaro, Mexiko<br />Brno, GA, USA<br />Boston, MA, USA<br />Chicago, IL, USA<br />Praha, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Praha, WA, USA<br />Washington, DC, USA <br /> Ashburn, VA, USA <br /> Phoenix, AZ, USA | Kanada<br />Mexiko<br />USA |
-| Jižní Amerika | Campinas, Brazílie<br />Rio de Janeiro, Brazílie<br />Svatý Paulo, Brazílie<br />Santiago de Chile, Chile<br />Bogotá, Kolumbie<br />Buenos Aires, Argentina | Buenos Aires, Argentina<br />Rio de Janeiro, Brazílie<br />Svatý Paulo, Brazílie<br />Valparaíso, Chile<br />Bogotá, Kolumbie<br />Barranquilla, Kolumbie<br />Medellin, Kolumbie<br />Quito, Ekvádor<br />Lima, Peru | Argentina<br />Brazílie<br />Chile<br />Columbia<br />Ekvádor<br />Peru<br />Uruguay |
+| Jižní Amerika | Campinas, Brazílie<br />Rio de Janeiro, Brazílie<br />Svatý Paulo, Brazílie<br />Santiago de Chile, Chile<br />Bogotá, Kolumbie<br />Buenos Aires, Argentina | Buenos Aires, Argentina<br />Rio de Janeiro, Brazílie<br />Svatý Paulo, Brazílie<br />Valparaíso, Chile<br />Bogotá, Kolumbie<br />Barranquilla, Kolumbie<br />Medellin, Kolumbie<br />Quito, Ekvádor<br />Lima, Peru | Argentina<br />Brazílie<br />Chile<br />Kolumbie<br />Ekvádor<br />Peru<br />Uruguay |
 | Evropa | Vídeň, Rakousko<br />Brusel, Belgie<br />Sofie, Bulharsko<br />Záhřeb, Chorvatsko<br />Praha, Česká republika<br />Kodaň, Dánsko<br /> Helsinky, Finsko<br /> Oslo, Norsko<br />Marseille, Francie<br />Paříž, Francie<br />Berlín, Německo<br />Frankfurt, Německo<br />Atény, Řecko<br />Budapešť, Maďarsko<br />Dublin, Irsko<br />Milán, Itálie<br />Řím, Itálie<br />Amsterdam, Nizozemsko<br />Varšava, Polsko<br />Lisabon, Portugalsko<br />Bukurešť, Rumunsko<br />Barceloně, Španělsko<br />Madrid, Španělsko<br />Stockholm, Švédsko<br />Curych, Švýcarsko<br />Ženeva, Švýcarsko<br />Londýn, Velká Británie<br />Manchester, Velká Británie | Vídeň, Rakousko<br />Kodaň, Dánsko<br />Helsinky, Finsko<br />Marseille, Francie<br />Paříž, Francie<br />Frankfurt, Německo<br />Milán, Itálie<br />Riga, Lotyšsko<br />Amsterdam, Nizozemsko<br />Varšava, Polsko<br />Madrid, Španělsko<br />Stockholm, Švédsko<br />Londýn, Velká Británie <br /> Manchester, Velká Británie| Rakousko<br />Bulharsko<br />Dánsko<br />Finsko<br />Francie<br />Německo<br />Řecko<br />Irsko<br />Itálie<br />Nizozemsko<br />Polsko<br />Rusko<br />Španělsko<br />Švédsko<br />Švýcarsko<br />Spojené království |
 | Afrika | Kapverdské Afrika, Jihoafrická Korea<br />Johannesburg, Jihoafrická Afrika<br />Lagos, Nigérie<br />Nairobi, Keňa | Johannesburg, Jihoafrická Afrika <br/> Nairobi, Keňa | Jižní Afrika |
 | Střední východ | Dubaj, Spojené arabské emiráty<br />Tel. Aviv, Izrael<br />Istanbul, Turecko | Muskat, Omán<br />Fujirah, Spojené arabské emiráty | Katar<br />Spojené arabské emiráty |

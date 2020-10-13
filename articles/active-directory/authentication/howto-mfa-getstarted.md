@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da9a0fe30721a2f55db2c4771f54716868f9972f
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: f2cbb9876d9e28b2cab8efb9ccdb2aa543fcc4b4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055069"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964464"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Plánování nasazení služby Azure Multi-Factor Authentication
 
@@ -250,7 +250,7 @@ Je důležité, abyste zabránili neúmyslnému uzamčení vašeho tenanta Azure
     * Klikněte na **Vybrat**.
 1. Přeskočit část **relace** .
 1. Nastavte přepínač **Povolit zásady** na **zapnuto**.
-1. Klikněte na možnost **Vytvořit**.
+1. Klikněte na **Vytvořit**.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Plánování integrace s místními systémy
 

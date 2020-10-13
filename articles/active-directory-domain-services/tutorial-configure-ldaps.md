@@ -1,20 +1,20 @@
 ---
 title: Kurz – konfigurace LDAPs pro Azure Active Directory Domain Services | Microsoft Docs
 description: V tomto kurzu se naučíte nakonfigurovat zabezpečený protokol LDAPs (Lightweight Directory Access Protocol) pro Azure Active Directory Domain Services spravovanou doménu.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 1164d838a45496a075d356995a60beb967cdfcca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: f5ebe594f1f50c7b7490e5ead8cb3fe7636f0ce7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88054336"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967473"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace zabezpečeného protokolu LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 

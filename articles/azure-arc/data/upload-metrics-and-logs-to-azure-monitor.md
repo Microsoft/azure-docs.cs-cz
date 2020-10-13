@@ -9,21 +9,21 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d508e2e24ac35171d87cdba9cb79981dfb8764e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69a2bc002b2ccccba90bde5b6c92d162b6e78815
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757465"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952246"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Nahrajte data o využití, metriky a protokoly do Azure Monitor
 
 Pravidelně můžete exportovat informace o využití pro účely fakturace, monitorovat metriky a protokoly a pak je nahrát do Azure.  Export a nahrávání kteréhokoli z těchto tří typů dat taky vytvoří a aktualizuje řadič dat, spravovanou instanci SQL a PostgreSQL prostředky skupiny serverů v Azure.
 
 > [!NOTE] 
-Během období Preview se neúčtují žádné náklady na používání datových služeb s podporou ARC Azure.
+> Během období Preview se neúčtují žádné náklady na používání datových služeb s podporou ARC Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat rozhraní příkazového řádku Azure CLI (AZ) a rozhraní Azure Data CLI (azdata).  [Nainstalovat nástroje](./install-client-tools.md).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: b61bbacf889df23455266fb81124e14ef44388d2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 283eb9b9cbdc03813cf7c765c9ef3be5965919eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336118"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978335"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozšíření a funkce virtuálních počítačů pro Linux
 
@@ -37,7 +37,7 @@ K dispozici je několik různých rozšíření virtuálních počítačů Azure
 
 Kromě rozšíření specifických pro procesy je k dispozici rozšíření vlastních skriptů pro virtuální počítače s Windows i Linux. Rozšíření vlastních skriptů pro Linux umožňuje spustit libovolný skript bash na virtuálním počítači. Vlastní skripty jsou užitečné pro navrhování nasazení Azure, která vyžadují konfiguraci, a to nad rámec toho, co můžou využít nativní nástroje Azure. Další informace najdete v tématu [rozšíření vlastních skriptů pro virtuální počítače Linux](custom-script-linux.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro zpracování rozšíření na virtuálním počítači potřebujete nainstalovaného agenta Azure Linux. Některá jednotlivá rozšíření mají požadavky, jako je například přístup k prostředkům nebo závislostem.
 
@@ -65,7 +65,7 @@ Balíčky rozšíření se stáhnou z úložiště rozšíření Azure Storage a
 > [!IMPORTANT]
 > Pokud jste zablokovali přístup k *168.63.129.16* pomocí brány firewall hostů, rozšíření selžou bez ohledu na výše uvedené.
 
-Agenty lze použít pouze ke stažení balíčků rozšíření a stavu hlášení. Pokud třeba instalace rozšíření potřebuje stáhnout skript z GitHubu (vlastní skript) nebo potřebuje přístup k Azure Storage (Azure Backup), musí se otevřít další porty skupiny zabezpečení brány firewall/sítě. Různá rozšíření mají různé požadavky, protože se jedná o aplikace v pravém. U rozšíření, která vyžadují přístup k Azure Storage můžete přístup pomocí značek služeb Azure NSG pro [úložiště](../../virtual-network/security-overview.md#service-tags)zpřístupnit.
+Agenty lze použít pouze ke stažení balíčků rozšíření a stavu hlášení. Pokud třeba instalace rozšíření potřebuje stáhnout skript z GitHubu (vlastní skript) nebo potřebuje přístup k Azure Storage (Azure Backup), musí se otevřít další porty skupiny zabezpečení brány firewall/sítě. Různá rozšíření mají různé požadavky, protože se jedná o aplikace v pravém. U rozšíření, která vyžadují přístup k Azure Storage můžete přístup pomocí značek služeb Azure NSG pro [úložiště](../../virtual-network/network-security-groups-overview.md#service-tags)zpřístupnit.
 
 Pro přesměrování požadavků na přenos agenta má agent pro Linux proxy server podporu. Tato proxy server podpora však nepoužívá rozšíření. Je nutné nakonfigurovat každé individuální rozšíření tak, aby fungovalo s proxy serverem.
 

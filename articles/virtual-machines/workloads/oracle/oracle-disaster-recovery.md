@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 5a162c0683a953399b48aaf627bbff5bc674e9dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96bb0892b1bc35d1eef34cffc798cf33c837acdc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274557"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976636"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Zotavení po havárii pro databázi Oracle Database 12c v prostředí Azure
 
@@ -100,7 +100,7 @@ Toto je souhrn nastavení Azure:
 - [Návrh a implementace databáze Oracle v Azure](oracle-design.md)
 - [Konfigurace Oracle Data Guardu](configure-oracle-dataguard.md)
 - [Konfigurace Oracle Zlaté brány](configure-oracle-golden-gate.md)
-- [Zálohování a obnovení Oracle](oracle-backup-recovery.md)
+- [Zálohování a obnovení Oracle](./oracle-overview.md)
 
 
 ## <a name="next-steps"></a>Další kroky

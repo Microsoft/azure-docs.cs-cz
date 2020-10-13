@@ -2,14 +2,14 @@
 title: Přenosy artefaktů
 description: Přenos kolekcí imagí nebo jiných artefaktů z jednoho registru kontejneru do jiného registru vytvořením kanálu přenosu pomocí účtů úložiště Azure
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: ed848380457862fee506bf5111789e5d44545bdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd2cee972ef173853572b871bc80b92b28c505cd
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253407"
+ms.locfileid: "91932596"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Přenos artefaktů do jiného registru
 
@@ -21,7 +21,7 @@ Chcete-li přenést artefakty, vytvořte *kanál přenosu* , který replikuje ar
 * Objekt BLOB se zkopíruje ze zdrojového účtu úložiště do cílového účtu úložiště.
 * Objekt BLOB v cílovém účtu úložiště se naimportuje jako artefakty do cílového registru. Kanál importu můžete nastavit tak, aby se aktivoval při každé aktualizaci objektu BLOB artefaktu v cílovém úložišti.
 
-Přenos je ideální pro kopírování obsahu mezi dvěma Registry kontejneru Azure v fyzicky odpojených cloudech, které jsou vynásobené účty úložiště v každém cloudu. Pro kopírování imagí z registrů kontejnerů v připojených cloudech, včetně Docker Hub a dalších dodavatelů cloudu, se místo toho doporučuje [Import obrázku](container-registry-import-images.md) .
+Přenos je ideální pro kopírování obsahu mezi dvěma Registry kontejneru Azure v fyzicky odpojených cloudech, které jsou vynásobené účty úložiště v každém cloudu. Pokud místo toho chcete kopírovat image z registrů kontejnerů v připojených cloudech, včetně Docker Hub a dalších dodavatelů cloudu, doporučuje se [Import obrázků](container-registry-import-images.md) .
 
 V tomto článku použijete Azure Resource Manager nasazení šablon k vytvoření a spuštění kanálu přenosu. Azure CLI se používá ke zřízení přidružených prostředků, například tajných klíčů úložiště. Doporučuje se Azure CLI verze 2.2.0 nebo novější. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku (CLI), přečtěte si téma [Instalace Azure CLI][azure-cli].
 
@@ -32,11 +32,18 @@ Tato funkce je k dispozici na úrovni služby Registry kontejneru **Premium** . 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Registry kontejnerů** – potřebujete existující zdrojový registr s artefakty pro přenos a cílový registr. Přenos ACR je určený pro pohyb mezi fyzicky odpojenými cloudy. Pro účely testování můžou být zdrojové a cílové Registry ve stejném nebo jiném předplatném Azure, tenantovi služby Active Directory nebo cloudu. Pokud potřebujete vytvořit registr, přečtěte si téma [rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md). 
-* **Účty úložiště** – vytvoření zdrojového a cílového účtu úložiště v předplatném a umístění dle vašeho výběru. Pro účely testování můžete použít stejné předplatné nebo odběry jako zdrojové a cílové Registry. V případě scénářů mezi cloudy obvykle vytvoříte samostatný účet úložiště v každém cloudu. V případě potřeby vytvořte účty úložiště pomocí rozhraní příkazového [řádku Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) nebo jiných nástrojů. 
+* **Registry kontejnerů** – potřebujete existující zdrojový registr s artefakty pro přenos a cílový registr. Přenos ACR je určený pro pohyb mezi fyzicky odpojenými cloudy. Pro účely testování můžou být zdrojové a cílové Registry ve stejném nebo jiném předplatném Azure, tenantovi služby Active Directory nebo cloudu. 
+
+   Pokud potřebujete vytvořit registr, přečtěte si téma [rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md). 
+* **Účty úložiště** – vytvoření zdrojového a cílového účtu úložiště v předplatném a umístění dle vašeho výběru. Pro účely testování můžete použít stejné předplatné nebo odběry jako zdrojové a cílové Registry. V případě scénářů mezi cloudy obvykle vytvoříte samostatný účet úložiště v každém cloudu. 
+
+  V případě potřeby vytvořte účty úložiště pomocí rozhraní příkazového [řádku Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) nebo jiných nástrojů. 
 
   Vytvořte kontejner objektů BLOB pro přenos artefaktů do každého účtu. Vytvořte například kontejner s názvem *Transfer*. Dva nebo více kanálů přenosu může sdílet stejný účet úložiště, ale měl by používat jiné obory kontejneru úložiště.
-* **Trezory klíčů** – trezory klíčů jsou potřeba k ukládání tajných klíčů tokenů SAS používaných pro přístup ke zdrojovému a cílovému účtu úložiště. Vytvořte zdrojové a cílové trezory klíčů ve stejném předplatném Azure nebo předplatném jako zdrojové a cílové Registry. V případě potřeby vytvořte trezory klíčů pomocí rozhraní příkazového [řádku Azure CLI](../key-vault/secrets/quick-create-cli.md) nebo jiných nástrojů.
+* **Trezory klíčů** – trezory klíčů jsou potřeba k ukládání tajných klíčů tokenů SAS používaných pro přístup ke zdrojovému a cílovému účtu úložiště. Vytvořte zdrojové a cílové trezory klíčů ve stejném předplatném Azure nebo předplatném jako zdrojové a cílové Registry. V případě demonstračních účelů šablony a příkazy používané v tomto článku předpokládají, že se zdrojové a cílové trezory klíčů nacházejí ve stejné skupině prostředků jako zdrojové a cílové Registry v uvedeném pořadí. Použití běžných skupin prostředků se nevyžaduje, ale zjednodušuje šablony a příkazy používané v tomto článku.
+
+   V případě potřeby vytvořte trezory klíčů pomocí rozhraní příkazového [řádku Azure CLI](../key-vault/secrets/quick-create-cli.md) nebo jiných nástrojů.
+
 * **Proměnné prostředí** – například příkazy v tomto článku, nastavte následující proměnné prostředí pro zdrojové a cílové prostředí. Všechny příklady jsou formátovány pro prostředí bash shell.
   ```console
   SOURCE_RG="<source-resource-group>"
@@ -62,7 +69,7 @@ Ověřování úložiště používá tokeny SAS spravované jako tajné klíče
 
 ### <a name="things-to-know"></a>Co je potřeba vědět
 * ExportPipeline a ImportPipeline se obvykle nacházejí v různých klientech služby Active Directory přidružených ke zdrojovému a cílovému cloudu. Tento scénář vyžaduje samostatné spravované identity a trezory klíčů pro prostředky exportu a importu. Pro účely testování je možné tyto prostředky umístit do stejného cloudu a sdílet identity.
-* Příklady kanálů pro přístup k tajným klíčům k trezoru klíčů vytvářejí spravované identity přiřazené systémem. ExportPipelines a ImportPipelines také podporují identity přiřazené uživateli. V takovém případě musíte nakonfigurovat trezory klíčů pomocí zásad přístupu pro tyto identity. 
+* Ve výchozím nastavení jednotlivé šablony ExportPipeline a ImportPipeline umožňují spravované identitě přiřazené systémem přístup k tajným klíčům klíčů trezoru. Šablony ExportPipeline a ImportPipeline také podporují identitu přiřazenou uživatelem, kterou zadáte. 
 
 ## <a name="create-and-store-sas-keys"></a>Vytvoření a uložení klíčů SAS
 
@@ -152,7 +159,13 @@ Do souboru zadejte následující hodnoty parametrů `azuredeploy.parameters.jso
 
 ### <a name="create-the-resource"></a>Vytvoření prostředku
 
-Spusťte příkaz [AZ Deployment Group Create][az-deployment-group-create] a vytvořte prostředek. Následující příklad pojmenuje *exportPipeline*nasazení.
+Spuštěním [AZ Deployment Group Create][az-deployment-group-create] vytvořte prostředek s názvem *exportPipeline* , jak je znázorněno v následujících příkladech. Ve výchozím nastavení, s první možností, šablona příkladu povoluje identitu přiřazenou systémem v prostředku ExportPipeline. 
+
+Po druhé možnosti můžete prostředek poskytnout identitě přiřazené uživatelem. (Vytvoření identity přiřazené uživatelem se nezobrazují.)
+
+Pomocí obou možností šablona nakonfiguruje identitu pro přístup k tokenu SAS v trezoru klíčů export. 
+
+#### <a name="option-1-create-resource-and-enable-system-assigned-identity"></a>Možnost 1: vytvoření prostředku a povolení identity přiřazené systémem
 
 ```azurecli
 az deployment group create \
@@ -162,10 +175,23 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
+#### <a name="option-2-create-resource-and-provide-user-assigned-identity"></a>Možnost 2: vytvoření prostředku a poskytnutí identity přiřazené uživateli
+
+V tomto příkazu zadejte ID prostředku uživatelsky přiřazené identity jako další parametr.
+
+```azurecli
+az deployment group create \
+  --resource-group $SOURCE_RG \
+  --template-file azuredeploy.json \
+  --name exportPipeline \
+  --parameters azuredeploy.parameters.json \
+  --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
+```
+
 Ve výstupu příkazu si poznamenejte ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Například:
 
 ```azurecli
-EXPORT_RES_ID=$(az group deployment show \
+EXPORT_RES_ID=$(az deployment group show \
   --resource-group $SOURCE_RG \
   --name exportPipeline \
   --query 'properties.outputResources[1].id' \
@@ -198,20 +224,39 @@ Parametr  |Hodnota  |
 
 ### <a name="create-the-resource"></a>Vytvoření prostředku
 
-Spusťte příkaz [AZ Deployment Group Create][az-deployment-group-create] a vytvořte prostředek.
+Spuštěním [AZ Deployment Group Create][az-deployment-group-create] vytvořte prostředek s názvem *importPipeline* , jak je znázorněno v následujících příkladech. Ve výchozím nastavení, s první možností, šablona příkladu povoluje identitu přiřazenou systémem v prostředku ImportPipeline. 
+
+Po druhé možnosti můžete prostředek poskytnout identitě přiřazené uživatelem. (Vytvoření identity přiřazené uživatelem se nezobrazují.)
+
+Pomocí obou možností šablona nakonfiguruje identitu pro přístup k tokenu SAS v trezoru klíčů import. 
+
+#### <a name="option-1-create-resource-and-enable-system-assigned-identity"></a>Možnost 1: vytvoření prostředku a povolení identity přiřazené systémem
 
 ```azurecli
 az deployment group create \
   --resource-group $TARGET_RG \
   --template-file azuredeploy.json \
-  --parameters azuredeploy.parameters.json \
-  --name importPipeline
+  --name importPipeline \
+  --parameters azuredeploy.parameters.json 
 ```
 
-Pokud máte v úmyslu spustit import ručně, poznamenejte si ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Například:
+#### <a name="option-2-create-resource-and-provide-user-assigned-identity"></a>Možnost 2: vytvoření prostředku a poskytnutí identity přiřazené uživateli
+
+V tomto příkazu zadejte ID prostředku uživatelsky přiřazené identity jako další parametr.
 
 ```azurecli
-IMPORT_RES_ID=$(az group deployment show \
+az deployment group create \
+  --resource-group $TARGET_RG \
+  --template-file azuredeploy.json \
+  --name importPipeline \
+  --parameters azuredeploy.parameters.json \
+  --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
+```
+
+Pokud máte v úmyslu spustit import ručně, poznamenejte si ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním příkazu [AZ Deployment Group show][az-deployment-group-show] . Například:
+
+```azurecli
+IMPORT_RES_ID=$(az deployment group show \
   --resource-group $TARGET_RG \
   --name importPipeline \
   --query 'properties.outputResources[1].id' \
@@ -246,12 +291,22 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
+Pro pozdější použití uložte ID prostředku spuštění kanálu do proměnné prostředí:
+
+```azurecli
+EXPORT_RUN_RES_ID=$(az deployment group show \
+  --resource-group $SOURCE_RG \
+  --name exportPipelineRun \
+  --query 'properties.outputResources[0].id' \
+  --output tsv)
+```
+
 Export artefaktů může trvat několik minut. Po úspěšném dokončení nasazení ověřte export artefaktem uvedením exportovaného objektu BLOB v kontejneru *přenosu* zdrojového účtu úložiště. Spusťte například příkaz [AZ Storage BLOB list][az-storage-blob-list] :
 
 ```azurecli
 az storage blob list \
-  --account-name $SOURCE_SA
-  --container transfer
+  --account-name $SOURCE_SA \
+  --container transfer \
   --output table
 ```
 
@@ -300,11 +355,21 @@ Spusťte příkaz [AZ Deployment Group Create][az-deployment-group-create] a spu
 ```azurecli
 az deployment group create \
   --resource-group $TARGET_RG \
+  --name importPipelineRun \
   --template-file azuredeploy.json \
   --parameters azuredeploy.parameters.json
 ```
 
-Po úspěšném dokončení nasazení ověřte import artefaktů, a to tak, že v registru cílového kontejneru vydáte seznam úložišť. Například spusťte příkaz [AZ ACR úložištì list][az-acr-repository-list]:
+Pro pozdější použití uložte ID prostředku spuštění kanálu do proměnné prostředí:
+
+```azurecli
+IMPORT_RUN_RES_ID=$(az deployment group show \
+  --resource-group $TARGET_RG \
+  --name importPipelineRun \
+  --query 'properties.outputResources[0].id' \
+  --output tsv)
+
+When deployment completes successfully, verify artifact import by listing the repositories in the target container registry. For example, run [az acr repository list][az-acr-repository-list]:
 
 ```azurecli
 az acr repository list --name <target-registry-name>
@@ -329,20 +394,20 @@ az deployment group create \
 
 ## <a name="delete-pipeline-resources"></a>Odstranění prostředků kanálu
 
-K odstranění prostředku kanálu odstraňte jeho nasazení Správce prostředků pomocí příkazu [AZ Deployment Group Delete][az-deployment-group-delete] . Následující příklady odstraňují prostředky kanálu vytvořené v tomto článku:
+Následující příklady příkazů pomocí příkazu [AZ Resource Delete][az-resource-delete] odstraní prostředky kanálu vytvořené v tomto článku. ID prostředků byly dřív uloženy v proměnných prostředí.
 
-```azurecli
-az deployment group delete \
-  --resource-group $SOURCE_RG \
-  --name exportPipeline
+```
+# Delete export resources
+az resource delete \
+--resource-group $SOURCE_RG \
+--ids $EXPORT_RES_ID $EXPORT_RUN_RES_ID \
+--api-version 2019-12-01-preview
 
-az deployment group delete \
-  --resource-group $SOURCE_RG \
-  --name exportPipelineRun
-
-az deployment group delete \
-  --resource-group $TARGET_RG \
-  --name importPipeline  
+# Delete import resources
+az resource delete \
+--resource-group $TARGET_RG \
+--ids $IMPORT_RES_ID $IMPORT_RUN_RES_ID \
+--api-version 2019-12-01-preview
 ```
 
 ## <a name="troubleshooting"></a>Řešení potíží
@@ -374,8 +439,6 @@ Informace o importování jediné image kontejneru do služby Azure Container Re
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-identity-create]: /cli/azure/identity#az-identity-create
-[az-identity-show]: /cli/azure/identity#az-identity-show
 [az-login]: /cli/azure/reference-index#az-login
 [az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set
 [az-keyvault-secret-show]: /cli/azure/keyvault/secret#az-keyvault-secret-show
@@ -387,3 +450,4 @@ Informace o importování jediné image kontejneru do služby Azure Container Re
 [az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
 [az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
 [az-acr-import]: /cli/azure/acr#az-acr-import
+[az-resource-delete]: /cli/azure/resource#az-resource-delete

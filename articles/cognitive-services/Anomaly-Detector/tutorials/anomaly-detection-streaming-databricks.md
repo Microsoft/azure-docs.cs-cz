@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 95ab400d645a2a2761e39c191cdb85e49e1c7a27
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 642012a638100a3ad1cb8d9334f5af01adb6ad7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245600"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979168"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Kurz: detekce anomálií pro streamovaná data pomocí Azure Databricks
 
@@ -45,7 +45,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud nemáte [předplatné Azure](https://azure.microsoft.com/free/cognitive-services) , vytvořte ho.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Obor názvů a centrum událostí pro [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) .
 
@@ -63,7 +63,7 @@ V této části vytvoříte Azure Databricks pracovní prostor pomocí [Azure Po
 
 1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků**  >  **Analytics**  >  **Azure Databricks**.
 
-    ![Datacihly na Azure Portal](../media/tutorials/azure-databricks-on-portal.png "Datacihly na Azure Portal")
+    ![Azure Databricks na portálu](../media/tutorials/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
 3. V části **Azure Databricks služba**zadejte následující hodnoty pro vytvoření pracovního prostoru datacihly:
 
@@ -115,7 +115,7 @@ Pro příjem streamovaných tweetů je potřeba vytvořit aplikaci na Twitteru. 
 
 3. Na stránce aplikace vyberte kartu **Keys and Access Tokens** (Klíče a přístupové tokeny) a zkopírujte hodnoty **Consumer Key** (Uživatelský klíč) a **Consumer Secret** (Uživatelský tajný klíč). Kromě toho vyberte **Create my access token** (Vytvořit přístupový token) a vygenerujte přístupové tokeny. Zkopírujte hodnoty **Access Token** (Přístupový token) a **Access Token Secret** (Tajný klíč přístupového tokenu).
 
-    ![Podrobnosti o aplikaci Twitter](../media/tutorials/twitter-app-key-secret.png "Podrobnosti o aplikaci Twitter")
+    ![Podrobnosti o aplikaci Twitter 2](../media/tutorials/twitter-app-key-secret.png "Podrobnosti o aplikaci Twitter")
 
 Uložte hodnoty, které jste načetli pro aplikaci Twitter. Tyto hodnoty budete potřebovat v pozdější části kurzu.
 
@@ -151,7 +151,7 @@ Na stránce Knihovna vyberte cluster, ve kterém chcete použít knihovnu, a pak
 
 V tomto kurzu použijete rozhraní API pro detekci [anomálií v Azure Cognitive Services](../overview.md) ke spouštění detekce anomálií na streamu tweety téměř v reálném čase. Než použijete rozhraní API, musíte v Azure vytvořit prostředek detektoru anomálií a načíst přístupový klíč pro použití rozhraní API detektoru anomálií.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **+ Vytvořit prostředek**.
 
@@ -193,7 +193,7 @@ V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bl
 
 2. V dialogovém okně **vytvořit Poznámkový blok** zadejte **SendTweetsToEventHub** jako název, jako jazyk vyberte **Scala** a vyberte cluster Spark, který jste vytvořili dříve.
 
-    ![Vytvoření poznámkového bloku v datacihlech](../media/tutorials/databricks-notebook-details.png "Vytvoření poznámkového bloku v datacihlech")
+    ![Podrobnosti poznámkového bloku](../media/tutorials/databricks-notebook-details.png "Vytvoření poznámkového bloku v datacihlech")
 
     Vyberte **Vytvořit**.
 
@@ -679,7 +679,7 @@ Výsledek následujícím způsobem:
 +--------------------+-------+
 ```
 
-A to je vše! Pomocí Azure Databricks jste úspěšně streamovaná data do Azure Event Hubs, využili jste data datového proudu pomocí konektoru Event Hubs a pak spustíte detekci anomálií pro streamovaná data prakticky v reálném čase.
+A je to! Pomocí Azure Databricks jste úspěšně streamovaná data do Azure Event Hubs, využili jste data datového proudu pomocí konektoru Event Hubs a pak spustíte detekci anomálií pro streamovaná data prakticky v reálném čase.
 I když je v tomto kurzu členitost na hodinu, můžete změnit členitost tak, aby odpovídala vašim potřebám.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

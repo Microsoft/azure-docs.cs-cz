@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78ea26adb8299cc13d4677c66a0e06cba901d9dc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829080"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977370"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření a funkce virtuálních počítačů pro Windows
 
@@ -42,7 +42,7 @@ K dispozici je několik různých rozšíření virtuálních počítačů Azure
 
 Kromě rozšíření specifických pro procesy je k dispozici rozšíření vlastních skriptů pro virtuální počítače s Windows i Linux. Rozšíření vlastních skriptů pro Windows umožňuje spuštění libovolného skriptu PowerShellu na virtuálním počítači. Vlastní skripty jsou užitečné pro navrhování nasazení Azure, která vyžadují konfiguraci, a to nad rámec toho, co můžou využít nativní nástroje Azure. Další informace najdete v tématu [rozšíření vlastních skriptů pro virtuální počítače s Windows](custom-script-windows.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro zpracování rozšíření na virtuálním počítači potřebujete nainstalovaného agenta Azure Windows. Některá jednotlivá rozšíření mají požadavky, jako je například přístup k prostředkům nebo závislostem.
 
@@ -70,7 +70,7 @@ Balíčky rozšíření se stáhnou z úložiště rozšíření Azure Storage a
 > [!IMPORTANT]
 > Pokud jste zablokovali přístup k *168.63.129.16* pomocí brány firewall hosta nebo proxy serveru, rozšíření selžou bez ohledu na výše uvedené. Vyžadují se porty 80, 443 a 32526.
 
-Agenty lze použít pouze ke stažení balíčků rozšíření a stavu hlášení. Pokud třeba instalace rozšíření potřebuje stáhnout skript z GitHubu (vlastní skript) nebo potřebuje přístup k Azure Storage (Azure Backup), musí se otevřít další porty skupiny zabezpečení brány firewall/sítě. Různá rozšíření mají různé požadavky, protože se jedná o aplikace v pravém. Pro rozšíření, která vyžadují přístup k Azure Storage nebo Azure Active Directory, můžete přístup pomocí [značek služby Azure NSG](../../virtual-network/security-overview.md#service-tags) zpřístupnit pro úložiště nebo azureactivedirectory selhala.
+Agenty lze použít pouze ke stažení balíčků rozšíření a stavu hlášení. Pokud třeba instalace rozšíření potřebuje stáhnout skript z GitHubu (vlastní skript) nebo potřebuje přístup k Azure Storage (Azure Backup), musí se otevřít další porty skupiny zabezpečení brány firewall/sítě. Různá rozšíření mají různé požadavky, protože se jedná o aplikace v pravém. Pro rozšíření, která vyžadují přístup k Azure Storage nebo Azure Active Directory, můžete přístup pomocí [značek služby Azure NSG](../../virtual-network/network-security-groups-overview.md#service-tags) zpřístupnit pro úložiště nebo azureactivedirectory selhala.
 
 Agent hosta systému Windows nemá proxy server podporu pro přesměrování požadavků na přenos agenta prostřednictvím, což znamená, že Agent hosta systému Windows bude spoléhat na váš vlastní proxy server (Pokud máte jeden) k přístupu k prostředkům na internetu nebo na hostiteli prostřednictvím protokolu IP 168.63.129.16.
 
@@ -421,7 +421,7 @@ Můžete také odebrat rozšíření v Azure Portal následujícím způsobem:
 4. Vyberte možnost **odinstalovat**.
 
 ## <a name="common-vm-extensions-reference"></a>Referenční informace o běžných rozšířeních virtuálních počítačů
-| Název rozšíření | Description | Další informace |
+| Název rozšíření | Popis | Další informace |
 | --- | --- | --- |
 | Rozšíření vlastních skriptů pro virtuální počítače |Spouštění skriptů na virtuálním počítači Azure |[Rozšíření vlastních skriptů pro virtuální počítače](custom-script-windows.md) |
 | Rozšíření DSC pro Windows |Rozšíření PowerShell DSC (Konfigurace požadovaného stavu) |[Rozšíření DSC pro Windows](dsc-overview.md) |

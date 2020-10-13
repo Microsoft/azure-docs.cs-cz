@@ -3,12 +3,12 @@ title: Kurz – nasazení clusteru vSphere v Azure
 description: Naučte se nasadit cluster vSphere v Azure pomocí řešení Azure VMWare.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 3fab49640364ef1b2e68953d366b20f77556b486
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b673a67fac734c9cb63e96b6a0c3dc9182f4b994
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578308"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952280"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Kurz: nasazení privátního cloudu řešení Azure VMware v Azure
 
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření privátního cloudu řešení Azure VMware
 > * Ověření nasazení privátního cloudu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Odpovídající práva správce a oprávnění k vytvoření privátního cloudu.
@@ -43,7 +43,7 @@ Privátní cloud řešení Azure VMware můžete vytvořit pomocí [Azure Portal
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Místo Azure Portal vytvoření privátního cloudu řešení Azure VMware můžete použít rozhraní příkazového řádku Azure pomocí Azure Cloud Shell.  Seznam příkazů, které můžete použít s řešením Azure VMware, najdete v tématu [příkazy Azure VMware](https://docs.microsoft.com/cli/azure/ext/vmware/vmware).
+Místo Azure Portal vytvoření privátního cloudu řešení Azure VMware můžete použít rozhraní příkazového řádku Azure pomocí Azure Cloud Shell.  Seznam příkazů, které můžete použít s řešením Azure VMware, najdete v tématu [příkazy Azure VMware](/cli/azure/ext/vmware/vmware).
 
 #### <a name="open-azure-cloud-shell"></a>Otevření služby Azure Cloud Shell
 
@@ -82,7 +82,7 @@ Pokud máte privátní cloud řešení Azure VMware, který už nepotřebujete, 
 > [!CAUTION]
 > Odstranění privátního cloudu je nevratná operace. Po odstranění privátního cloudu se data nedají obnovit, protože ukončí všechny spuštěné úlohy a komponenty a zničí všechna data privátního cloudu a nastavení konfigurace, včetně veřejných IP adres.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Po odstranění privátního cloudu neexistuje žádný způsob, jak obnovit virtuální počítače a jejich data. Pokud budete později potřebovat data virtuálního počítače, správce musí před odstraněním privátního cloudu nejprve zálohovat všechna data.
 
@@ -96,7 +96,7 @@ Po odstranění privátního cloudu neexistuje žádný způsob, jak obnovit vir
 
 ## <a name="azure-vmware-commands"></a>Příkazy Azure VMware
 
-Seznam příkazů, které můžete použít s řešením Azure VMware, najdete v tématu [příkazy Azure VMware](https://docs.microsoft.com/cli/azure/ext/vmware/vmware).
+Seznam příkazů, které můžete použít s řešením Azure VMware, najdete v tématu [příkazy Azure VMware](/cli/azure/ext/vmware/vmware).
 
 ## <a name="next-steps"></a>Další kroky
 

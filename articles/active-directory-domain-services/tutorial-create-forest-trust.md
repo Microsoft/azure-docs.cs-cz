@@ -2,20 +2,20 @@
 title: Kurz – vytvoření vztahu důvěryhodnosti doménové struktury v Azure AD Domain Services | Microsoft Docs
 description: Naučte se vytvořit jednosměrnou odchozí doménovou strukturu do místní služba AD DS domény v Azure Portal pro Azure AD Domain Services
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 24928ec4117b321cfec7177fdad40f2a3ab7a1f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: cbdcd170e6c6fb768172acfe3eb3c907714cd560
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88722717"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967252"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Kurz: Vytvoření vztahu důvěryhodnosti odchozí doménové struktury do místní domény v Azure Active Directory Domain Services
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 

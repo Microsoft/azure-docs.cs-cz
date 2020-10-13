@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: f6e38585e86dd962bc5f94a7c2a8a67c55f2a8fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4bd6371cb0264830ed84a8e80c373c1963cd798
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595906"
+ms.locfileid: "91932477"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury řešení s využitím Azure NetApp Files
 Tento článek poskytuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití Azure NetApp Files.  
@@ -36,7 +36,7 @@ V této části najdete odkazy na řešení pro aplikace a databáze se systéme
 
 * [Výkon databází Oracle na jednoduchých svazcích Azure NetApp Files](performance-oracle-single-volumes.md)
 * [Průvodce nasazením Oracle v Azure v praxi pomocí Azure NetApp Files](https://www.netapp.com/us/media/tr-4780.pdf)
-* [Image virtuálních počítačů Oracle a jejich nasazení na Microsoft Azure: možnosti konfigurace sdíleného úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
+* [Image virtuálních počítačů Oracle a jejich nasazení na Microsoft Azure: možnosti konfigurace sdíleného úložiště](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
 * [Výhody použití Azure NetApp Files s Oracle Database](solutions-benefits-azure-netapp-files-oracle-database.md)
 
 ## <a name="windows-apps-and-sql-server-solutions"></a>Aplikace pro Windows a SQL Server řešení
@@ -61,17 +61,17 @@ Tato část poskytuje odkazy na řešení SAP v Azure.
 ### <a name="generic-sap-and-sap-netweaver"></a>Obecné SAP a SAP NetWeaver 
 
 * [Aplikace SAP na Microsoft Azure s využitím Azure NetApp Files](https://www.netapp.com/us/media/tr-4746.pdf)
-* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure ve Windows pomocí protokolu SMB (Azure NetApp Files) pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
-* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v Red Hat Enterprise Linux pro Průvodce pro aplikace SAP s více SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](../virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files.md)
+* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](../virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files.md)
+* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure ve Windows pomocí protokolu SMB (Azure NetApp Files) pro aplikace SAP](../virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb.md)
+* [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v Red Hat Enterprise Linux pro Průvodce pro aplikace SAP s více SID](../virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid.md)
 
 ### <a name="sap-hana"></a>SAP HANA 
 
-* [Konfigurace úložiště virtuálních počítačů Azure SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
-* [Vysoká dostupnost SAP HANA škálování s využitím Azure NetApp Files na Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat)
-* [SAP HANA horizontálního navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-* [SAP HANA horizontálního navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+* [Konfigurace úložiště virtuálních počítačů Azure SAP HANA](../virtual-machines/workloads/sap/hana-vm-operations-storage.md)
+* [Vysoká dostupnost SAP HANA škálování s využitím Azure NetApp Files na Red Hat Enterprise Linux](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
+* [SAP HANA horizontálního navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na SUSE Linux Enterprise Server](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
+* [SAP HANA horizontálního navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na Red Hat Enterprise Linux](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
 
 ### <a name="sap-tech-community-and-blog-posts"></a>Technická komunita SAP a příspěvky na blogu 
 
@@ -88,9 +88,9 @@ V této části najdete odkazy na řešení infrastruktury virtuálních klients
 ### <a name="windows-virtual-desktop"></a>Windows Virtual Desktop
 
 * [Výhody použití Azure NetApp Files s Windows Virtual Desktopem](solutions-windows-virtual-desktop.md)
-* [Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
-* [Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
-* [Windows Virtual Desktop v podnikovém měřítku](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
+* [Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows](../virtual-desktop/store-fslogix-profile.md#azure-platform-details)
+* [Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files](../virtual-desktop/create-fslogix-profile-container.md)
+* [Windows Virtual Desktop v podnikovém měřítku](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
 
 ## <a name="hpc-solutions"></a>Řešení HPC
 
@@ -100,12 +100,12 @@ V této části najdete referenční informace pro řešení s vysokým výkonem
 
 * [Azure NetApp Files: využití cloudového úložiště na maximum](https://cloud.netapp.com/hubfs/Resources/ANF%20PERFORMANCE%20TESTING%20IN%20TEMPLATE.pdf)
 * [Spouštění úloh MPI s využitím Azure Batch a Azure NetApp Files](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)
-* [Azure Cycle Cloud: CycleCloud prostředí HPC na Azure NetApp Files](https://docs.microsoft.com/azure/cyclecloud/overview)
+* [Azure Cycle Cloud: CycleCloud prostředí HPC na Azure NetApp Files](/azure/cyclecloud/overview)
 
 ### <a name="oil-and-gas"></a>Ropný a plynový
 
 * [Výpočty s vysokým výkonem (HPC): ropný a plynový plyn v Azure](https://techcommunity.microsoft.com/t5/azure-global/high-performance-computing-hpc-oil-and-gas-in-azure/ba-p/824926)
-* [Spuštění simulace softwarového zásobníku v Azure](https://docs.microsoft.com/azure/architecture/example-scenario/infrastructure/reservoir-simulation)
+* [Spuštění simulace softwarového zásobníku v Azure](/azure/architecture/example-scenario/infrastructure/reservoir-simulation)
 
 ### <a name="electronic-design-automation-eda"></a>Automatizace elektronického návrhu (EDA)
 
@@ -123,11 +123,10 @@ Tato část poskytuje řešení pro služby platformy Azure.
 
 ### <a name="azure-kubernetes-services-and-kubernetes"></a>Služby Azure Kubernetes a Kubernetes
 
-* [Integrace Azure NetApp Files se službou Azure Kubernetes](https://docs.microsoft.com/azure/aks/azure-netapp-files)
+* [Integrace Azure NetApp Files se službou Azure Kubernetes](../aks/azure-netapp-files.md)
 * [Špičkový výkon Kubernetes v Azure s využitím Azure NetApp Files](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift)
 * [Trident – úložiště Orchestrator pro kontejnery](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
 
 ### <a name="azure-batch"></a>Azure Batch
 
 * [Spouštění úloh MPI s využitím Azure Batch a Azure NetApp Files](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)
- 

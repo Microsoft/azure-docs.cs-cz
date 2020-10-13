@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f389581d8fbeb912507b303c46109dd08fcab8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2653742b788ab24fc295ebc156090d1db5f85268
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871512"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978488"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Příprava infrastruktury Azure pro SAP HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro SAP ASCS/SCS
 
@@ -165,16 +165,16 @@ ms.locfileid: "88871512"
 Tento článek popisuje kroky, které můžete provést při přípravě infrastruktury Azure pro instalaci a konfiguraci instance SAP ASCS/SCS s vysokou dostupností v clusteru Windows s podporou převzetí služeb při selhání pomocí *sdíleného disku clusteru* jako možnosti CLUSTERINGU instance SAP ASCS.
 V dokumentaci se zobrazí dvě alternativy pro *sdílený disk clusteru* :
 
-- [Sdílené disky Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- [Sdílené disky Azure](../../windows/disks-shared.md)
 - Vytvoření zrcadleného úložiště s využitím s využitím s využitím s [DataKeeper Edition](https://us.sios.com/products/datakeeper-cluster/) pro simulaci sdíleného disku v clusteru 
 
-Uvedená konfigurace se spoléhá na [skupiny umístění v blízkosti Azure (PPG)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) , aby dosáhly optimální latence sítě pro úlohy SAP. Dokumentace nepokrývá databázovou vrstvu.  
+Uvedená konfigurace se spoléhá na [skupiny umístění v blízkosti Azure (PPG)](./sap-proximity-placement-scenarios.md) , aby dosáhly optimální latence sítě pro úlohy SAP. Dokumentace nepokrývá databázovou vrstvu.  
 
 > [!NOTE]
 > Skupiny umístění v blízkosti Azure jsou předpokladem pro použití sdíleného disku Azure.
  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s instalací, přečtěte si tento článek:
 
@@ -199,7 +199,7 @@ Názvy hostitelů a IP adresy pro uvedený scénář jsou:
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Vytvoření interního nástroje pro vyrovnávání zatížení Azure
 
-SAP ASCS, SAP SCS a nový ERS2 SAP použijte virtuální název hostitele a virtuální IP adresy. V Azure musí [Nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) používat virtuální IP adresu. Důrazně doporučujeme použít službu [Load Balancer úrovně Standard](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal). 
+SAP ASCS, SAP SCS a nový ERS2 SAP použijte virtuální název hostitele a virtuální IP adresy. V Azure musí [Nástroj pro vyrovnávání zatížení](../../../load-balancer/load-balancer-overview.md) používat virtuální IP adresu. Důrazně doporučujeme použít službu [Load Balancer úrovně Standard](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md). 
 
 
 Následující seznam uvádí konfiguraci nástroje pro vyrovnávání zatížení (A) SCS/OLAJÍCÍCH. Konfigurace pro SAP ASCS i ERS2 se provádí ve stejném nástroji pro vyrovnávání zatížení Azure.  
@@ -261,10 +261,10 @@ Na obou uzlech clusteru musí být změněny následující položky registru:
 - KeepAliveTime
 - KeepAliveInterval
 
-| Cesta| Název proměnné | Typ proměnné  | Hodnota | Dokumentace |
+| Cesta| Název proměnné | Typ proměnné  | Hodnota | Documentation |
 | --- | --- | --- |---| ---|
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD (desetinné číslo) |120000 |[KeepAliveTime](https://technet.microsoft.com/library/cc957549.aspx) |
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD (desetinné číslo) |120000 |[KeepAliveInterval](https://technet.microsoft.com/library/cc957548.aspx) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD (desetinné číslo) |120000 |[KeepAliveTime](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD (desetinné číslo) |120000 |[KeepAliveInterval](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 
 Chcete-li změny použít, restartujte oba uzly clusteru.
@@ -325,7 +325,7 @@ Další informace najdete v tématu [Clustering s podporou převzetí služeb p�
    ```
 
 ### <a name="configure-cluster-cloud-quorum"></a>Konfigurovat kvorum cloudu clusteru
-Když používáte Windows Server 2016 nebo 2019, doporučujeme nakonfigurovat [Azure Cloud určující](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)jako kvorum clusteru.
+Když používáte Windows Server 2016 nebo 2019, doporučujeme nakonfigurovat [Azure Cloud určující](/windows-server/failover-clustering/deploy-cloud-witness)jako kvorum clusteru.
 
 Spusťte tento příkaz na jednom z uzlů clusteru:
 

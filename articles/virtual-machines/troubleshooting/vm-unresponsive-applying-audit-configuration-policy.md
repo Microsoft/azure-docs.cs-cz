@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: bc41783bf977806b5f9bba5b953f1f581ad07f18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff21975c34c28d7476635467e0c1abb8e6575e35
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299520"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977948"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>Při použití zásad konfigurace zásad auditu nereaguje virtuální počítač.
 
@@ -27,7 +27,7 @@ Tento článek popisuje kroky pro řešení problémů, které virtuální poč�
 
 ## <a name="symptom"></a>Příznak
 
-Při použití [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) k zobrazení snímku obrazovky virtuálního počítače se zobrazí obrazovka s oznámením, že operační systém (OS) přestal při spuštění reagovat pomocí zprávy s **použitím zásad konfigurace zásad auditu**.
+Při použití [diagnostiky spouštění](./boot-diagnostics.md) k zobrazení snímku obrazovky virtuálního počítače se zobrazí obrazovka s oznámením, že operační systém (OS) přestal při spuštění reagovat pomocí zprávy s **použitím zásad konfigurace zásad auditu**.
 
   ![Spouštění operačního systému pomocí této zprávy: "použití zásad konfigurace zásad auditu"](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 
@@ -54,7 +54,7 @@ Tady je problematické zásady: *počítač \ šablony \ systémové/Uživatel P
 
 ### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k opravnému virtuálnímu počítači
 
-1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
+1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) Připravte opravný virtuální počítač.
 1. Pomocí Připojení ke vzdálené ploše se připojte k opravnému virtuálnímu počítači.
 
 ### <a name="disable-the-policy"></a>Zakázat zásadu
@@ -153,7 +153,7 @@ Tady je problematické zásady: *počítač \ šablony \ systémové/Uživatel P
    
 ### <a name="rebuild-the-virtual-machine"></a>Znovu sestavit virtuální počítač
 
-1. K opětovnému sestavení virtuálního počítače použijte [Krok 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+1. K opětovnému sestavení virtuálního počítače použijte [Krok 5 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .
 
 1. Otestujte, jestli se virtuální počítač spouští normálně, a zjistěte, jestli problém vyřešil problém.
 
@@ -175,11 +175,11 @@ Chcete-li tento problém vyřešit, je třeba nejprve shromáždit soubor výpis
 
 #### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>Připojit disk s operačním systémem k nové opravě virtuálního počítače
 
-1. K přípravě nového opravného virtuálního počítače použijte kroky 1-3 [příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) .
+1. K přípravě nového opravného virtuálního počítače použijte kroky 1-3 [příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) .
 1. Pomocí Připojení ke vzdálené ploše připojit k opravnému virtuálnímu počítači.
 
 #### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Vyhledejte soubor s výpisem paměti a odešlete lístek podpory.
 
 1. V části opravit virtuální počítač otevřete složku Windows na připojeném disku s operačním systémem. Pokud je písmeno přiřazené k připojenému disku s operačním systémem označeno jako *F*, pak musíte přejít na `F:\Windows` .
 1. Vyhledejte `memory.dmp` soubor a pak [odešlete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se souborem výpisu paměti.
-1. Pokud se vám nedaří najít `memory.dmp` soubor, použijte místo toho [volání NMI (nemaskovaná přerušení) v sériové konzole](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) . Postupujte podle pokynů průvodce a [vygenerujte soubor s výpisem stavu systému pomocí volání NMI](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump).
+1. Pokud se vám nedaří najít `memory.dmp` soubor, použijte místo toho [volání NMI (nemaskovaná přerušení) v sériové konzole](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) . Postupujte podle pokynů průvodce a [vygenerujte soubor s výpisem stavu systému pomocí volání NMI](/windows/client-management/generate-kernel-or-complete-crash-dump).

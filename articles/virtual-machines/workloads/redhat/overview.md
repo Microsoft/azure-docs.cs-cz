@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 7394cb50010bddddf8f8eff4b4f04eaf4d3231b6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b08a7d6ab271c266ba850d72d5a8b23a06dc5a3f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87052112"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977659"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Úlohy Red Hat v Azure
 
@@ -41,11 +41,11 @@ Azure nabízí také Red Hat Gold images ( `rhel-byos` ). Tyto obrázky můžou 
 * Přečtěte si [, jak najít obrázky Red Hat Gold v rutinách Azure Portal, Azure CLI nebo PowerShellu](./byos.md).
 
 > [!NOTE]
-> Pokud uživatel zaplatí dvakrát pro předplatná RHEL, účtuje se dvojitá fakturace. K tomuto scénáři obvykle dochází v případě, že zákazník používá k připojení nároku na RHEL virtuální počítač s průběžnými platbami na základě Red Hat. Například zákazník, který používá předplatné-Manager k připojení nároku na balíčky SAP na RHEL s průběžnými platbami, se nepřímo zdvojnásobí, protože platíte dvakrát za RHEL. Platíte jednou přes poplatek za průběžné platby za vás a jednou prostřednictvím předplatného SAP. Tento scénář se nestane BYOSým uživatelům obrazu.
+> Pokud uživatel zaplatí dvakrát pro předplatná RHEL, účtuje se dvojitá fakturace. K tomuto scénáři obvykle dochází, když zákazník používá Subscription-Manager Red Hat k připojení nároku na RHEL virtuální počítač s průběžnými platbami. Například zákazník, který používá Subscription-Manager k připojení oprávnění k balíčkům SAP na RHEL s průběžnými platbami, se nepřímo zdvojnásobí, protože platí dvakrát pro RHEL. Platíte jednou přes poplatek za průběžné platby za vás a jednou prostřednictvím předplatného SAP. Tento scénář se nestane BYOSým uživatelům obrazu.
 
 ### <a name="generation-2-images"></a>Image 2. generace
 
-Virtuální počítače generace 2 poskytují několik novějších funkcí v porovnání s virtuálními počítači 1. generace. Další informace najdete v dokumentaci k [generaci 2](../../linux/generation-2.md). Klíčovým rozdílem z hlediska image RHEL je, že virtuální počítače 2. generace používají rozhraní UEFI místo rozhraní firmware systému BIOS. Místo hlavního spouštěcího záznamu (MBR) v době spuštění používají také tabulku oddílů GUID (GPT). Použití GPT umožňuje mimo jiné velikost disků s operačním systémem větší než 2 TB. [Virtuální počítače řady Mv2](../../mv2-series.md) se navíc spouštějí jenom na imagí generace 2.
+Virtuální počítače generace 2 poskytují několik novějších funkcí v porovnání s virtuálními počítači 1. generace. Další informace najdete v dokumentaci k [generaci 2](../../generation-2.md). Klíčovým rozdílem z hlediska image RHEL je, že virtuální počítače 2. generace používají rozhraní UEFI místo rozhraní firmware systému BIOS. Místo hlavního spouštěcího záznamu (MBR) v době spuštění používají také tabulku oddílů GUID (GPT). Použití GPT umožňuje mimo jiné velikost disků s operačním systémem větší než 2 TB. [Virtuální počítače řady Mv2](../../mv2-series.md) se navíc spouštějí jenom na imagí generace 2.
 
 RHEL generace 2 jsou k dispozici v Azure Marketplace. V části SKU image vyhledejte "Gen2" v seznamu všech imagí, které se zobrazí při použití rozhraní příkazového řádku Azure CLI. Pokud chcete nasadit virtuální počítač 2. generace, v procesu nasazení virtuálního počítače přejít na kartu **Upřesnit** .
 

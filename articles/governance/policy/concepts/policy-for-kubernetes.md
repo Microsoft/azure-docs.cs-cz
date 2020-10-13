@@ -3,12 +3,12 @@ title: Další informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí.
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 67c6af4842ea1f404468497930b08c36ecd1abb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3478a98ef98001ee8a2e3bb502bf289ed52285e7
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540247"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951532"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Principy Azure Policy pro clustery Kubernetes
 
@@ -27,7 +27,7 @@ Azure Policy pro Kubernetes podporuje následující Clusterová prostředí:
 > [!IMPORTANT]
 > Doplňky pro modul AKS a Kubernetes s podporou ARC jsou ve **verzi Preview**. Azure Policy pro Kubernetes podporují jenom fondy uzlů Linux a předdefinované definice zásad. Předdefinované definice zásad jsou v kategorii **Kubernetes** . Definice zásad omezené verze Preview s efektem **EnforceOPAConstraint** a **EnforceRegoPolicy** a související kategorií **služby Kubernetes** jsou _zastaralé_. Místo toho použijte _audit_ efektů a _Odepřít_ v režimu poskytovatele prostředků `Microsoft.Kubernetes.Data` .
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 
 Pokud chcete povolit a používat Azure Policy s clusterem Kubernetes, proveďte následující akce:
 
@@ -57,6 +57,7 @@ Na Azure Policy doplňku pro clustery Kubernetes se vztahují následující obe
 - Instalace serveru gatekeeper mimo Azure Policy doplňky se nepodporují. Než povolíte doplněk Azure Policy, odinstalujte všechny součásti nainstalované předchozí instalací serveru gatekeeper.
 - [Důvody nedodržení předpisů](../how-to/determine-non-compliance.md#compliance-reasons) nejsou k dispozici pro `Microsoft.Kubernetes.Data` 
    [režim poskytovatele prostředků](./definition-structure.md#resource-provider-modes). Použijte [Podrobnosti součásti](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes).
+- Pro [režimy poskytovatele prostředků](./definition-structure.md#resource-provider-modes)se [výjimky](./exemption-structure.md) nepodporují.
 
 Následující omezení platí pouze pro Azure Policy doplněk pro AKS:
 

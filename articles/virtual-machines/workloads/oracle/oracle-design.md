@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 70de7363634cee2790a40ecf056134cf002c762d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c84d97a86dd1dc912964b78d488c460faa744dd2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274703"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977336"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementace databáze Oracle v Azure
 
@@ -49,7 +49,7 @@ V následující tabulce jsou uvedeny některé rozdíly mezi místními impleme
 | **Sítě** |LAN/WAN  |SDN (softwarově definované sítě)|
 | **Skupina zabezpečení** |Nástroje pro omezení IP adres nebo portů |[Skupina zabezpečení sítě (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 | **Odolnost** |MTBF (střední doba mezi selháními) |MTTR (Průměrná doba obnovení)|
-| **Plánovaná údržba** |Opravy a upgrady|[Skupiny dostupnosti](../../windows/infrastructure-example.md) (opravy a upgrady spravované přes Azure) |
+| **Plánovaná údržba** |Opravy a upgrady|[Skupiny dostupnosti](/previous-versions/azure/virtual-machines/windows/infrastructure-example) (opravy a upgrady spravované přes Azure) |
 | **Prostředek** |Vyhrazená  |Sdíleno s ostatními klienty|
 | **Oblasti** |Datová centra |[Párování oblastí](../../regions.md#region-pairs)|
 | **Storage** |SÍŤ SAN/fyzické disky |[Úložiště spravované v Azure](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
@@ -230,7 +230,7 @@ Po nastavení a konfiguraci prostředí Azure je dalším krokem zabezpečení v
 - [Konfigurace Oracle ASM](configure-oracle-asm.md)
 - [Konfigurace Oracle Data Guardu](configure-oracle-dataguard.md)
 - [Konfigurace Oracle Zlaté brány](configure-oracle-golden-gate.md)
-- [Zálohování a obnovení Oracle](oracle-backup-recovery.md)
+- [Zálohování a obnovení Oracle](./oracle-overview.md)
 
 ## <a name="next-steps"></a>Další kroky
 

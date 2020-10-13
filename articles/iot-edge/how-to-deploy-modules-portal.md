@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 754c106db42f3f0695ad023e736993bee82e9757
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67c7c71e1f1f3eb9e76aa4938cb4a0a15ca405c8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82133924"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978794"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Nasazení Azure IoT Edgech modulů z Azure Portal
 
@@ -22,10 +22,12 @@ Jakmile vytvoříte IoT Edge moduly s obchodní logikou, chcete je nasadit do sv
 
 Tento článek ukazuje, jak Azure Portal vás provede vytvořením manifestu nasazení a vložením nasazení do IoT Edgeho zařízení. Informace o vytvoření nasazení, které cílí na více zařízení na základě jejich sdílených značek, najdete v tématu věnovaném [nasazení a sledování IoT Edgech modulů ve velkém měřítku](how-to-deploy-at-scale.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure.
-* [IoT Edge zařízení](how-to-register-device.md#register-in-the-azure-portal) s nainstalovaným modulem runtime IoT Edge.
+* Zařízení IoT Edge.
+
+  Pokud nemáte nastavené zařízení IoT Edge, můžete ho vytvořit na virtuálním počítači Azure. Použijte postup v jednom z článků rychlý Start k [Vytvoření virtuálního zařízení](quickstart-linux.md) se systémem Linux nebo [Vytvoření virtuálního zařízení s Windows](quickstart.md).
 
 ## <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
 
