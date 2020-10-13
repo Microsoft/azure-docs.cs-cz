@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: bd1ab5110313380c90e71ed161935c7274a845b7
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91839244"
 ---
 # <a name="continuous-deployment-with-azure-devops"></a>Průběžné nasazování s využitím Azure DevOps
@@ -110,7 +110,7 @@ Skripty se hostují v [Cognitive Services hlasového asistenta – vlastní př�
     ```BASH
     bash/export.sh -r <region> -s <subscriptionkey> -c en-us -a <appid> -f apps/myapp.json
     ```
-    | Argumenty | Popis |
+    | Argumenty | Description |
     | ------- | --------------- | ----------- |
     | oblast | oblast aplikace, například westus2. |
     | subscriptionkey | klíč předplatného prostředku řeči |

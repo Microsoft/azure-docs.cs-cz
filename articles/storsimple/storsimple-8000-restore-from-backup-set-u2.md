@@ -10,16 +10,16 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9033caf903967432b713afa00a509bd2d966d8b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527825"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972012"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Obnovení svazku StorSimple ze zálohovacího skladu
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 
 V tomto kurzu se popisuje operace obnovení prováděná na zařízení řady StorSimple 8000 pomocí existujícího zálohovacího skladu. K obnovení svazku z místního nebo cloudového zálohování použijte okno **katalog záloh** . V okně **katalog záloh** se zobrazí všechny zálohovací sklady, které jsou vytvořeny při ručním nebo automatizovaném zálohování. Operace obnovení ze zálohovacího skladu přinese svazek do online režimu okamžitě při stahování dat na pozadí.
 
@@ -115,7 +115,7 @@ K obnovení svazku StorSimple z konkrétní zálohy můžete použít okno **kat
    
 4. Přejděte zpět na kartu **katalog záloh** a vyberte zálohovací sklad. Klikněte pravým tlačítkem a potom v místní nabídce vyberte **obnovit**.
 
-    ![Seznam zálohovacích skladů](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
+    ![Seznam zálohovacích skladů 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
 5. Zobrazí se výzva k potvrzení. Zkontrolujte informace o obnovení a pak zaškrtněte políčko potvrzení.
    
@@ -123,7 +123,7 @@ K obnovení svazku StorSimple z konkrétní zálohy můžete použít okno **kat
 
 7. Klikněte na **obnovit**. Tím se spustí úloha obnovení, kterou můžete zobrazit pomocí přístupu na stránku **úlohy** .
 
-   ![Stránka potvrzení](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![Stránka s potvrzením 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. Po dokončení obnovení ověřte, že obsah svazků je nahrazen svazky ze zálohy.
 

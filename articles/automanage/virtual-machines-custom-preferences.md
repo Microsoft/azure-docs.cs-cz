@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
 ms.openlocfilehash: 377677c9e5e81487059241db68baff639a3de033
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715032"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>Vytvoření vlastní preference v Azure automanage pro virtuální počítače
@@ -26,7 +26,7 @@ V současné době podporujeme přizpůsobení [Azure Backup](..\backup\backup-a
 > V případě, že je povolená možnost automanage, nemůžete změnit konfigurační profil nebo Předvolby na VIRTUÁLNÍm počítači. Pro tento virtuální počítač budete muset zakázat možnost automatického spravování a pak znovu povolit automanage s požadovaným konfiguračním profilem a preferencemi.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) před tím, než začnete.
 
@@ -39,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 
 ## <a name="enable-automanage-for-vms-on-an-existing-vm"></a>Povolení automanage pro virtuální počítače na existujícím virtuálním počítači

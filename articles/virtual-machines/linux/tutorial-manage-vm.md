@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 601e51c7a587cd55e9b0b235bbdfb2e559be09e2
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: aeb44a52dc7a83321752bb00e09270fe7bfd0bbe
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263091"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972182"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Kurz: Vytváření a správa virtuálních počítačů s Linuxem pomocí Azure CLI
 
@@ -153,7 +153,7 @@ Velikost virtuálního počítače určuje množství výpočetních prostředk�
 
 V následující tabulce jsou velikosti rozdělené podle způsobů použití.  
 
-| Typ                     | Běžné velikosti           |    Popis       |
+| Type                     | Běžné velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Obecné účely](../sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Vyvážený poměr procesorů k paměti. Ideální pro vývoj nebo testování a pro malé až střední řešení aplikací a dat.  |
 | [Optimalizované pro výpočty](../sizes-compute.md)   | Fsv2          | Vysoký poměr procesorů k paměti. Vhodné pro aplikace se středním provozem, síťová zařízení a dávkové procesy.        |
@@ -280,7 +280,7 @@ ode                DisplayStatus    Level
 PowerState/running  VM running       Info
 ```
 
-Pokud chcete načíst stav napájení všech virtuálních počítačů ve vašem předplatném, použijte [Virtual Machines – Vypíše všechna rozhraní API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) s parametrem **statusOnly** nastavenou na *hodnotu true*.
+Pokud chcete načíst stav napájení všech virtuálních počítačů ve vašem předplatném, použijte [Virtual Machines – Vypíše všechna rozhraní API](/rest/api/compute/virtualmachines/listall) s parametrem **statusOnly** nastavenou na *hodnotu true*.
 
 ## <a name="management-tasks"></a>Úlohy správy
 

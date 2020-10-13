@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: 37859a8571355dcd61175d7b1b4d9888e058bf3a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e8f60a3f39e770c1b09668a6d76e025b07ebbd6d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91612893"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893505"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
 
@@ -25,7 +25,7 @@ V tomto rychlém startu se používá ukázka kódu, která předvádí, jak se 
 
 Aplikace musí být reprezentovány objektem aplikace v Azure Active Directory tak, aby platforma identity Microsoftu mohla poskytovat tokeny vaší aplikaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Android Studio
@@ -111,7 +111,7 @@ Nyní se podrobněji podíváme na tyto soubory a v každém z nich budete volat
 MSAL ([com. Microsoft. identity. Client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) je knihovna používaná k přihlašování uživatelů a žádosti o tokeny používané pro přístup k rozhraní API chráněnému platformou Microsoft identity. Gradle 3.0 + nainstaluje knihovnu, když přidáte následující do **skriptu Gradle**  >  **Build. Gradle (Module: App)** v části **závislosti**:
 
 ```gradle
-implementation 'com.microsoft.identity.client:msal:1.+'
+implementation 'com.microsoft.identity.client:msal:2.+'
 ```
 
 Můžete to vidět v ukázkovém projektu v sestavení. Gradle (modul: aplikace):
@@ -119,7 +119,7 @@ Můžete to vidět v ukázkovém projektu v sestavení. Gradle (modul: aplikace)
 ```java
 dependencies {
     ...
-    implementation 'com.microsoft.identity.client:msal:1.+'
+    implementation 'com.microsoft.identity.client:msal:2.+'
     ...
 }
 ```

@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: bb1abb5b94653893e131c09af6de1625b0bc7998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c56adc852b504d3a0663a9607b3472cb3348e7a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87554800"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972352"
 ---
 # <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Možnosti zálohování a obnovení pro virtuální počítače se systémem Linux v Azure
 
@@ -32,7 +32,7 @@ Azure Site Recovery chrání vaše virtuální počítače před velkým přípa
 
 Můžete spouštět postupy zotavení po havárii s využitím testovacích převzetí služeb při selhání na vyžádání, aniž by to ovlivnilo vaše produkční úlohy nebo průběžnou replikaci. Vytvořte plány obnovení pro orchestraci převzetí služeb při selhání a navrácení služeb po obnovení celé aplikace spuštěné na více virtuálních počítačích. Funkce plánu obnovení je integrovaná s Runbooky Azure Automation.
 
-Můžete začít [replikací virtuálních počítačů](https://aka.ms/a2a-getting-started). 
+Můžete začít [replikací virtuálních počítačů](../site-recovery/azure-to-azure-quickstart.md). 
 
 ## <a name="managed-snapshots"></a>Spravované snímky 
 

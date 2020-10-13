@@ -8,12 +8,12 @@ ms.date: 10/08/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-python
-ms.openlocfilehash: 11c31b9ce3c5a8d8fba18d8e7c46ac38b0559aec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bef69037fad8bf8ee9537e90f26ca967560b9d2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856309"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876093"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Vývoj pro Soubory Azure pomocí Pythonu
 
@@ -95,7 +95,7 @@ from azure.storage.file import FileService
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-`FileService`Objekt umožňuje pracovat se sdílenými složkami, adresáři a soubory. Následující kód vytvoří `FileService` objekt pomocí názvu účtu úložiště a klíče účtu. Nahraďte `<myaccount>` a `<mykey>` názvem a klíčem vašeho účtu.
+Objekt [Služba](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true) souborů umožňuje pracovat se sdílenými složkami, adresáři a soubory. Následující kód vytvoří `FileService` objekt pomocí názvu účtu úložiště a klíče účtu. Nahraďte `<myaccount>` a `<mykey>` názvem a klíčem vašeho účtu.
 
 ```python
 file_service = FileService(account_name='myaccount', account_key='mykey')
@@ -113,7 +113,7 @@ Následující příklad kódu používá objekt [ShareClient](/azure/developer/
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Následující příklad kódu používá `FileService` objekt pro vytvoření sdílené složky, pokud neexistuje.
+Následující příklad kódu používá objekt [Služba](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true) souborů k vytvoření sdílené složky, pokud neexistuje.
 
 ```python
 file_service.create_share('myshare')
@@ -153,7 +153,7 @@ Následující metoda nahraje obsah zadaného souboru do zadaného adresáře v 
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Sdílená složka Azure obsahuje alespoň kořenový adresář, kde se můžou umístit soubory. Chcete-li vytvořit soubor a odeslat data, použijte `create_file_from_path` metody,, `create_file_from_stream` `create_file_from_bytes` nebo `create_file_from_text` . Jsou to metody vysoké úrovně, které provádějí nezbytné datové bloky, když velikost dat překročí 64 MB.
+Sdílená složka Azure obsahuje alespoň kořenový adresář, kde se můžou umístit soubory. Chcete-li vytvořit soubor a odeslat data, použijte metody [create_file_from_path](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-path-share-name--directory-name--file-name--local-file-path--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object---timeout-none-), [create_file_from_stream](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-stream-share-name--directory-name--file-name--stream--count--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--), [create_file_from_bytes](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-bytes-share-name--directory-name--file-name--file--index-0--count-none--content-settings-none--metadata-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--)nebo [create_file_from_text](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#create-file-from-text-share-name--directory-name--file-name--text--encoding--utf-8---content-settings-none--metadata-none--validate-content-false--timeout-none--file-permission-none--smb-properties--azure-storage-file-models-smbproperties-object--) . Jsou to metody vysoké úrovně, které provádějí nezbytné datové bloky, když velikost dat překročí 64 MB.
 
 `create_file_from_path` nahraje obsah souboru ze zadané cesty a `create_file_from_stream` nahraje obsah z již otevřeného souboru nebo datového proudu. `create_file_from_bytes` nahraje pole bajtů a `create_file_from_text` nahraje zadanou textovou hodnotu pomocí zadaného kódování (standardně UTF-8).
 
@@ -181,7 +181,7 @@ Chcete-li zobrazit seznam souborů a adresářů v podadresáři, použijte meto
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Chcete-li zobrazit seznam souborů a adresářů ve sdílené složce, použijte metodu **Výpis \_ adresářů \_ a \_ souborů** . Tato metoda vrací generátor. Následující kód vypíše **název** každého souboru a adresáře ve sdílené složce do konzoly.
+Chcete-li zobrazit seznam souborů a adresářů ve sdílené složce, použijte metodu [list_directories_and_files](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#list-directories-and-files-share-name--directory-name-none--num-results-none--marker-none--timeout-none--prefix-none--snapshot-none-) . Tato metoda vrací generátor. Následující kód vypíše **název** každého souboru a adresáře ve sdílené složce do konzoly.
 
 ```python
 generator = file_service.list_directories_and_files('myshare')
@@ -203,7 +203,7 @@ Následující příklad ukazuje použití nástroje `download_file` k získán�
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Chcete-li stáhnout data ze souboru, použijte `get_file_to_path` ,, `get_file_to_stream` `get_file_to_bytes` nebo `get_file_to_text` . Jsou to metody vysoké úrovně, které provádějí nezbytné datové bloky, když velikost dat překročí 64 MB.
+Chcete-li stáhnout data ze souboru, použijte [get_file_to_path](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-path-share-name--directory-name--file-name--file-path--open-mode--wb---start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-), [get_file_to_stream](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-stream-share-name--directory-name--file-name--stream--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-), [get_file_to_bytes](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-bytes-share-name--directory-name--file-name--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-)nebo [get_file_to_text](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#get-file-to-text-share-name--directory-name--file-name--encoding--utf-8---start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--timeout-none--snapshot-none-). Jsou to metody vysoké úrovně, které provádějí nezbytné datové bloky, když velikost dat překročí 64 MB.
 
 Následující příklad ukazuje použití `get_file_to_path` ke stažení obsahu souboru **MyFile** a jeho uložení do souboru *out-sunset.png* .
 
@@ -313,7 +313,7 @@ Chcete-li odstranit soubor, zavolejte [delete_file](/azure/developer/python/sdk/
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Chcete-li odstranit soubor, zavolejte `delete_file` .
+Chcete-li odstranit soubor, zavolejte [delete_file](/python/api/azure-storage-file/azure.storage.file.fileservice.fileservice?view=azure-python-previous&preserve-view=true#delete-file-share-name--directory-name--file-name--timeout-none-).
 
 ```python
 file_service.delete_file('myshare', None, 'myfile')

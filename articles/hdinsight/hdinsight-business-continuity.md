@@ -8,12 +8,12 @@ keywords: vysoká dostupnost Hadoop
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 49f1f475ba4169ea6943dec161577a15e76657f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beb3c54a0ab7f6f063232a1ad49744d99746c589
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857771"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893641"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Provozní kontinuita Azure HDInsight
 
@@ -84,7 +84,7 @@ Nebere vždy závažnou událost pro dopad na obchodní funkce. Incidenty služe
 
 ### <a name="hdinsight-metastore"></a>Metastore HDInsight
 
-HDInsight používá [Azure SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) jako metastore, což poskytuje SLA 99,99%. Tři repliky dat v datovém centru s asynchronní replikací jsou trvalé. Pokud dojde ke ztrátě repliky, bude se bezproblémově obsluhovat alternativní replika. [Aktivní geografická replikace](../azure-sql/database/active-geo-replication-overview.md) je podporovaná mimo pole s maximálně čtyřmi datovými centry. Pokud dojde k převzetí služeb při selhání, ruční nebo datové centrum, první replika v hierarchii se automaticky změní na možnost podporuje čtení i zápis. Další informace najdete v tématu [Azure SQL Database provozní kontinuita](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md).
+HDInsight používá [Azure SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/) jako metastore, což poskytuje SLA 99,99%. Tři repliky dat v datovém centru s synchronní replikací jsou trvalé. Pokud dojde ke ztrátě repliky, bude se bezproblémově obsluhovat alternativní replika. [Aktivní geografická replikace](../azure-sql/database/active-geo-replication-overview.md) je podporovaná mimo pole s maximálně čtyřmi datovými centry. Pokud dojde k převzetí služeb při selhání, ruční nebo datové centrum, první replika v hierarchii se automaticky změní na možnost podporuje čtení i zápis. Další informace najdete v tématu [Azure SQL Database provozní kontinuita](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md).
 
 ### <a name="hdinsight-storage"></a>HDInsight Storage
 
@@ -112,7 +112,7 @@ Zlepšení kontinuity podnikových aplikací pomocí vysoce dostupného zotaven�
 |----|------------------------|-----------------------|
 |Úložiště dat|Duplikace primárních dat nebo tabulek v sekundární oblasti|Replikovat jenom dodaná data|
 |Výstup dat|Přenosy dat odchozích dat mezi oblastmi přicházejí za cenu. Kontrola pokynů pro ceny šířky pásma|Replikovat jenom ta dodaná data, aby se snížila nároky na výstup oblasti|
-|Výpočetní cluster|Další clustery HDInsight/s v sekundární oblasti|Pomocí automatizovaných skriptů nasaďte sekundární výpočetní výkon po primárním selhání. < \br>< \br>k zajištění minimální velikosti sekundárního clusteru < \br>< \br>použít levnější SKU virtuálních počítačů. < \br>< \br> vytvořit sekundární v oblastech, kde se můžou SKU virtuálních počítačů vyvažovat za zlevněné.|
+|Výpočetní cluster|Další clustery HDInsight/s v sekundární oblasti|Pomocí automatizovaných skriptů nasaďte sekundární výpočetní prostředky po primárním selhání. Pomocí automatického škálování můžete zachovat minimální velikost sekundárního clusteru. Používejte levnější SKU virtuálních počítačů. Můžete vytvářet sekundární počítače v oblastech, kde je možné zlevněné jednotky virtuálních počítačů.|
 |Authentication |Ve scénářích s více uživateli v sekundární oblasti se účtují další nastavení služby Azure služba AD DS.|Vyhněte se nastavením více uživatelů v sekundární oblasti.|
 
 ### <a name="complexity-optimizations"></a>Optimalizace složitosti

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
 ms.openlocfilehash: 6e60403344a0341b4aee74a001287c09ba67e114
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448903"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Postup migrace databáze SQLite na Azure SQL Database bez serveru
@@ -53,7 +53,7 @@ Až budete postupovat podle následujících kroků, vaše databáze se migruje 
     - Spouští se ADF (vytváření a monitorování ze služby v Azure Portal).
     - Klikněte na kartu Autor (modrá tužka) vlevo.
     - Klikněte na připojení (vlevo dole) a potom na modul runtime integrace.
-    - Přidejte nové Integration Runtime v místním prostředí, zadejte název, vyberte *možnost 2*.
+    - Přidejte novou Self-Hosted Integration Runtime, zadejte název, vyberte *možnost 2*.
 
 5. Vytvořte novou propojenou službu pro zdrojovou databázi SQLite ve vašem Data Factory.
 

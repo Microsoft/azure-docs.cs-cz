@@ -3,12 +3,12 @@ title: Jak vytvořit definice zásad konfigurace hostů z Zásady skupinyho smě
 description: Přečtěte si, jak převést Zásady skupiny ze směrného plánu zabezpečení Windows serveru 2019 do definice zásady.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dce22885981ab01fe37fac8588899d12a5afb87d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547764"
+ms.locfileid: "91893369"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Jak vytvořit definice zásad konfigurace hostů z Zásady skupinyho směrného plánu pro Windows
 
@@ -87,7 +87,7 @@ V dalším kroku převede stažený směrný plán serveru 2019 na konfiguračn�
 
 ## <a name="create-azure-policy-guest-configuration"></a>Vytvořit Azure Policy konfiguraci hosta
 
-Dalším krokem je publikování souboru do úložiště objektů BLOB. 
+Dalším krokem je publikování souboru do Azure Blob Storage. 
 
 1. Následující skript obsahuje funkci, kterou můžete použít k automatizaci této úlohy. Všimněte si, že příkazy používané ve `publish` funkci vyžadují `Az.Storage` modul.
 
@@ -145,7 +145,7 @@ Dalším krokem je publikování souboru do úložiště objektů BLOB.
     $blob = 'Server2019Baseline.zip' 
     ```
 
-1. K publikování konfiguračního balíčku hosta ve veřejném úložišti objektů BLOB použijte funkci publikovat s přiřazenými parametry.
+1. K publikování konfiguračního balíčku hosta na veřejné Blob Storage použijte funkci publikovat s přiřazenými parametry.
 
 
    ```azurepowershell-interactive

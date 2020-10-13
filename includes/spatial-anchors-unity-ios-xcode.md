@@ -4,40 +4,42 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 08/14/2020
 ms.author: rgarcia
-ms.openlocfilehash: b93243a537fafce6d865ec207b12dc2654cafd20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c20726ce412e651aba0fdd202031d342350c922
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89536246"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971377"
 ---
-Vyberte **sestavení**. V dialogovém okně, které se otevře, vyberte složku, do které chcete exportovat projekt Xcode.
+Vyberte **sestavení**. V podokně, které se otevře, vyberte složku, do které se má projekt Xcode exportovat.
 
-Po dokončení exportu se zobrazí složka obsahující exportovaný projekt Xcode.
+   Po dokončení exportu se zobrazí složka, která obsahuje exportovaný projekt Xcode.
 
-> [!NOTE]
-> Pokud se zobrazí okno s dotazem, jestli chcete nahradit nebo připojit, doporučujeme vybrat **připojit** , protože je rychlejší. Pokud měníte prostředky ve scéně, je nutné vybrat možnost **nahradit** . (Například pokud přidáváte, odebíráte nebo měníte vztahy nadřazený-podřízený nebo pokud přidáváte, odebíráte nebo měníte vlastnosti.) Pokud provádíte pouze změny zdrojového kódu, musí být příkaz **Append** dostatečně k dispozici.
+   > [!NOTE]
+   > Pokud se zobrazí okno se zprávou s dotazem, zda chcete nahradit nebo připojit, doporučujeme vybrat možnost **připojit**, protože je rychlejší. Možnost **nahradit** můžete vybrat jenom v případě, že měníte prostředky ve scéně. Můžete například přidat, odebrat nebo změnit vztahy nadřazenosti/podřízenosti nebo přidat, odebrat nebo změnit vlastnosti. Pokud provádíte pouze změny zdrojového kódu, musí být příkaz **Append** dostatečně k dispozici.
 
 ## <a name="open-the-xcode-project"></a>Otevřete projekt Xcode
 
-Nyní můžete otevřít `Unity-iPhone.xcodeproj` v Xcode. Můžete buď spustit Xcode a otevřít exportovaný projekt, `Unity-iPhone.xcodeproj` nebo spustit projekt v Xcode spuštěním následujícího příkazu z umístění, do kterého jste projekt exportovali:
+Nyní můžete `Unity-iPhone.xcodeproj` projekt otevřít v Xcode. 
 
-```bash
+Můžete buď spustit Xcode a otevřít exportovaný projekt, `Unity-iPhone.xcodeproj` nebo spustit projekt v Xcode spuštěním následujícího příkazu z umístění, kam jste projekt exportovali:
+
+ ```bash
 open ./Unity-iPhone.xcodeproj
 ```
 
 Vyberte uzel root **Unity-iPhone** pro zobrazení nastavení projektu a pak vyberte kartu **Obecné** .
 
-V části **podepisování**se ujistěte, že je povoleno **Automatické řízení podepisování** . Pokud není, povolte ji a potom v dialogovém okně, které se zobrazí, vyberte **Povolit automatické** obnovení nastavení sestavení.
+V části **podepisování**se ujistěte, že je povoleno **Automatické řízení podepisování** . Pokud není, povolte ji a pak resetujte nastavení sestavení výběrem možnosti **Povolit automaticky** v zobrazeném podokně.
 
-V části **informace o nasazení**zajistěte, aby byl **cíl nasazení** nastaven na hodnotu `11.0` .
+V části **informace o nasazení**ověřte, že je **cíl nasazení** nastavený na **11,0**.
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>Nasazení aplikace do zařízení s iOS
 
 Připojte zařízení s iOS k počítači Mac a nastavte **aktivní schéma** na zařízení s iOS.
 
-![Vyberte zařízení](./media/spatial-anchors-unity/select-device.png)
+   ![Snímek obrazovky s tlačítkem mého iPhonu pro výběr zařízení](./media/spatial-anchors-unity/select-device.png)
 
 Vyberte **Sestavit a potom spusťte aktuální schéma**.
 
-![Nasazení a spuštění](./media/spatial-anchors-unity/deploy-run.png)
+   ![Snímek obrazovky s tlačítkem "nasadit a spustit" tlačítko se šipkou](./media/spatial-anchors-unity/deploy-run.png)

@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 3826019a19aa744cb03737ed7f0c985f8063a1aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4009f3c132c76f6632d6bb706649befa746001f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815602"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972522"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Možnosti dostupnosti pro virtuální počítače v Azure
 
@@ -51,7 +51,7 @@ Azure Virtual Machine Scale Sets vám umožní vytvořit a spravovat skupinu vir
 
 **Domény selhání a aktualizační domény**
 
-Služba Virtual Machine Scale Sets zjednodušuje návrh vysoké dostupnosti tím, že zarovnává domény selhání a aktualizační domény. Pro sadu škálování budete muset definovat jenom počet domén selhání. Počet domén selhání dostupných pro sadu škálování se může v jednotlivých oblastech lišit. Viz [Správa dostupnosti virtuálních počítačů v Azure](./windows/manage-availability.md).
+Služba Virtual Machine Scale Sets zjednodušuje návrh vysoké dostupnosti tím, že zarovnává domény selhání a aktualizační domény. Pro sadu škálování budete muset definovat jenom počet domén selhání. Počet domén selhání dostupných pro sadu škálování se může v jednotlivých oblastech lišit. Viz [Správa dostupnosti virtuálních počítačů v Azure](./manage-availability.md).
 
 
 ## <a name="availability-sets"></a>Skupiny dostupnosti
@@ -61,7 +61,7 @@ Ve skupině dostupnosti jsou virtuální počítače automaticky distribuované 
 
 Virtuální počítače, které používají [Azure Managed Disks](./faq-for-disks.md), odpovídají doménám selhání spravovaných disků (pokud se použije spravovaná skupina dostupnosti). Toto uspořádání zajišťuje, aby všechny spravované disky připojené k virtuálnímu počítači byly umístěné ve stejné doméně selhání spravovaných disků. 
 
-Ve spravované skupině dostupnosti je možné vytvořit jenom virtuální počítače se spravovanými disky. Počet domén selhání spravovaných disků se liší podle oblasti – buď dvě, nebo tři domény selhání na oblast. Další informace o těchto doménách selhání spravovaného disku pro [virtuální](./linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) počítače se [systémem Linux nebo virtuální počítače s Windows](./windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set)najdete v článku.
+Ve spravované skupině dostupnosti je možné vytvořit jenom virtuální počítače se spravovanými disky. Počet domén selhání spravovaných disků se liší podle oblasti – buď dvě, nebo tři domény selhání na oblast. Další informace o těchto doménách selhání spravovaného disku pro [virtuální](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) počítače se [systémem Linux nebo virtuální počítače s Windows](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)najdete v článku.
 
 ![Spravovaná Skupina dostupnosti](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 

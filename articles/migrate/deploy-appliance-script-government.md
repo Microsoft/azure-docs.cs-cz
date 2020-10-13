@@ -4,10 +4,10 @@ description: Přečtěte si, jak nastavit zařízení Azure Migrate v Azure Gove
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: 1060bda13cc593980850bc6563555cf5dd4b7fd9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450018"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Nastavení zařízení v Azure Government 
@@ -60,7 +60,7 @@ Tento skript:
 
 - Nainstaluje agenty a webovou aplikaci.
 - Nainstaluje role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhne a nainstaluje modul IIS s možností zápisu. [Přečtěte si další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhne a nainstaluje modul IIS s možností zápisu. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
 - Aktualizuje klíč registru (HKLM) s trvalým nastavením pro Azure Migrate.
 - Vytvoří protokol a konfigurační soubory následujícím způsobem:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config
@@ -115,7 +115,7 @@ Tento skript:
 
 - Nainstaluje agenty a webovou aplikaci.
 - Nainstaluje role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhne a nainstaluje modul IIS s možností zápisu. [Přečtěte si další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhne a nainstaluje modul IIS s možností zápisu. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
 - Aktualizuje klíč registru (HKLM) s trvalým nastavením pro Azure Migrate.
 - Vytvoří protokol a konfigurační soubory následujícím způsobem:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config
@@ -169,7 +169,7 @@ Tento skript:
 
 - Nainstaluje agenty a webovou aplikaci.
 - Nainstaluje role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhne a nainstaluje modul IIS s možností zápisu. [Přečtěte si další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhne a nainstaluje modul IIS s možností zápisu. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
 - Aktualizuje klíč registru (HKLM) s trvalým nastavením pro Azure Migrate.
 - Vytvoří protokol a konfigurační soubory následujícím způsobem:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config

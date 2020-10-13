@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 98210f26072504c129ba32f765cf6bab74fef604
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570721"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Správa účtu služby Azure Cosmos DB
@@ -31,7 +31,7 @@ Přečtěte si prosím téma [Vytvoření účtu Azure Cosmos DB pomocí Azure C
 
 Další informace najdete v tématu [Vytvoření účtu Azure Cosmos DB pomocí PowerShellu](manage-with-powershell.md#create-account) .
 
-### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Šablona Azure Resource Manager
+### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Šablona Azure Resource Manageru
 
 Další informace najdete v tématu [Vytvoření účtu Azure Cosmos DB s využitím šablon Azure Resource Manager](manage-sql-with-resource-manager.md)
 

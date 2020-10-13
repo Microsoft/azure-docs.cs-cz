@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
 ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91370874"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
@@ -173,7 +173,7 @@ Zatímco datové toky podporují různé typy souborů, Azure Data Factory dopor
 
 Pokud používáte stejný tok dat v sadě souborů, doporučujeme číst ze složky, pomocí zástupných cest nebo číst ze seznamu souborů. Spuštění jedné aktivity toku dat může zpracovat všechny vaše soubory ve službě Batch. Další informace o tom, jak tato nastavení nastavit, najdete v dokumentaci konektoru, jako je například [Azure Blob Storage](connector-azure-blob-storage.md#source-transformation).
 
-Pokud je to možné, vyhněte se použití aktivity for-each ke spouštění datových toků v sadě souborů. Tím dojde k tomu, že každá iterace pro každý z nich provede vlastní cluster Spark, který není často nutný a může být nákladný. 
+Pokud je to možné, vyhněte se použití aktivity For-Each ke spouštění toků dat v sadě souborů. Tím dojde k tomu, že každá iterace pro každý z nich provede vlastní cluster Spark, který není často nutný a může být nákladný. 
 
 ## <a name="optimizing-sinks"></a>Optimalizace jímky
 

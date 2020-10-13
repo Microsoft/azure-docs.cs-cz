@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
 ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714446"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumníkem služby Azure Storage
@@ -100,7 +100,7 @@ Pokud si nejste jistí, odkud certifikát pochází, postupujte podle těchto kr
 2. Spusťte OpenSSL.
     * Windows: otevřete instalační adresář, vyberte **/bin/** a potom poklikejte na **openssl.exe**.
     * Mac a Linux: Spusťte `openssl` z terminálu.
-3. Spusťte `s_client -showcerts -connect microsoft.com:443`.
+3. Spusťte příkaz `s_client -showcerts -connect microsoft.com:443`.
 4. Vyhledejte certifikáty podepsané svým držitelem. Pokud si nejste jistí, které certifikáty jsou podepsané svým držitelem, poznamenejte si, jestli je předmět `("s:")` a vydavatel `("i:")` stejné.
 5. Když najdete certifikáty podepsané svým držitelem, můžete pro každý z nich zkopírovat a vložit všechno z (a včetně `-----BEGIN CERTIFICATE-----` ) `-----END CERTIFICATE-----` do nového souboru. cer.
 6. Otevřete Průzkumník služby Storage a pokračujte v **úpravách**  >  **certifikátů SSL**  >  **Import certifikátů**. Pak pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubory. CER, které jste vytvořili.
@@ -111,7 +111,7 @@ Pokud nemůžete najít žádné certifikáty podepsané svým držitelem pomoc�
 
 ### <a name="blank-sign-in-dialog-box"></a>Dialogové okno prázdné přihlášení
 
-Prázdné přihlašovací dialogová okna se nejčastěji vyskytují, když Active Directory Federation Services (AD FS) (AD FS) vyzývá Průzkumník služby Storage k provedení přesměrování, které nepodporuje elektronicky. Pokud chcete tento problém obejít, můžete zkusit použít tok kódu zařízení pro přihlášení. Postup je následující:
+Prázdné přihlašovací dialogová okna se nejčastěji vyskytují, když Active Directory Federation Services (AD FS) (AD FS) vyzývá Průzkumník služby Storage k provedení přesměrování, které nepodporuje elektronicky. Pokud chcete tento problém obejít, můžete zkusit použít tok kódu zařízení pro přihlášení. To můžete provést pomocí těchto kroků:
 
 1. Na levém svislém panelu nástrojů otevřete **Nastavení**. Na panelu nastavení přejdete na přihlášení **aplikace**  >  **Sign in**. Povolit **používání přihlášení k toku kódu zařízení**
 2. Otevřete dialogové okno **připojit** (buď prostřednictvím ikony plug-in na levé straně, nebo vyberte **Přidat účet** na panelu účet).

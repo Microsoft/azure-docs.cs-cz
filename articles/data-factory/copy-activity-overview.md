@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 3a1e5ed7d9ca14c03483cb6afe6b6318c6a90764
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e1a08af1be3d9b5cfb011516d00a8c0548994bf
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440588"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946161"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování v Azure Data Factory
 
@@ -183,7 +183,7 @@ Informace o tom, jak aktivita kopírování mapuje vaše zdrojová data do jímk
 
 ## <a name="add-additional-columns-during-copy"></a>Přidat další sloupce během kopírování
 
-Kromě kopírování dat ze zdrojového úložiště dat do jímky můžete také nakonfigurovat a přidat další datové sloupce pro kopírování do jímky. Například:
+Kromě kopírování dat ze zdrojového úložiště dat do jímky můžete také nakonfigurovat a přidat další datové sloupce pro kopírování do jímky. Příklad:
 
 - Při kopírování ze zdroje založeného na souborech uložte relativní cestu k souboru jako další sloupec, ze kterého se data pocházejí.
 - Přidejte sloupec s výrazem ADF pro připojení systémových proměnných ADF, jako je název kanálu nebo ID kanálu, nebo uložte jinou dynamickou hodnotu z výstupu nadřazeného aktivity.

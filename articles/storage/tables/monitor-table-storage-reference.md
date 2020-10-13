@@ -10,10 +10,10 @@ ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
 ms.openlocfilehash: e86be87faf6bb0c58674a15882e52dcef43fe42e
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91711320"
 ---
 # <a name="azure-table-storage-monitoring-data-reference"></a>Referenční informace k datům monitorování úložiště tabulek v Azure
@@ -34,7 +34,7 @@ Azure Storage poskytuje v Azure Monitor následující metriky kapacity.
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
 
-#### <a name="table-storage"></a>Úložiště Table
+#### <a name="table-storage"></a>Table Storage
 
 Tato tabulka zobrazuje [metriky úložiště tabulek](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountstableservices).
 

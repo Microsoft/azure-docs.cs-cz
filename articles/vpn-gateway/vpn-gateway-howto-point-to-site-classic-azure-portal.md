@@ -1,18 +1,18 @@
 ---
-title: 'Připojení počítače k virtuální síti typu Point-to-Site s použitím ověření certifikátu: Portál Azure Classic | Dokumentace Microsoftu'
+title: 'Připojení počítače k virtuální síti s použitím ověřování typu Point-to-site a certifikátu: Azure Portal Classic | Microsoft Docs'
 description: Vytvoříte připojení classic k bráně VPN typu Point-to-Site pomocí portálu Azure Portal.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/09/2020
+ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf0618c120a7fe572aa55b423d36dce3ef5656da
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84984789"
+ms.locfileid: "91876188"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurace připojení typu Point-to-site pomocí ověřování certifikátů (Classic)
 
@@ -79,31 +79,11 @@ Než začnete, ověřte, že máte předplatné Azure. Pokud ještě nemáte př
 
 ### <a name="part-1-create-a-virtual-network"></a>Část 1: Vytvoření virtuální sítě
 
-Pokud ještě nemáte virtuální síť (VNet), vytvořte ji. Snímky obrazovek slouží jen jako příklady. Hodnoty na obrázcích nahraďte vlastními hodnotami. Pokud chcete vytvořit virtuální síť přes Azure Portal, použijte následující postup:
+Pokud již máte virtuální síť vytvořenou, ověřte, zda jsou nastavení kompatibilní s vaším návrhem brány VPN. Věnujte zvláštní pozornost všem podsítím, které by se mohly překrývat s jinými sítěmi.
 
-1. V nabídce webu [Azure Portal](https://portal.azure.com) nebo na **domovské stránce** vyberte **Vytvořit prostředek**. Otevře se **Nová** stránka.
+[!INCLUDE [basic classic vnet](../../includes/vpn-gateway-vnet-classic.md)]
 
-2. Do pole **Hledat na Marketplace** zadejte *Virtual Network* a ze vráceného seznamu vyberte **virtuální síť** . Otevře se stránka **virtuální síť** .
-
-3. V seznamu **Vybrat model nasazení** vyberte **Classic**a pak vyberte **vytvořit**. Otevře se stránka **vytvořit virtuální síť** .
-
-4. Na stránce **Vytvořit virtuální síť** nakonfigurujte nastavení virtuální sítě. Na této stránce přidáte první adresní prostor a jeden rozsah adres podsítě. Po dokončení vytváření sítě VNet můžete přejít zpět a přidat další podsítě a adresní prostory.
-
-   ![Stránka pro vytvoření virtuální sítě](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/vnet125.png)
-
-5. V rozevíracím seznamu vyberte **předplatné** , které chcete použít.
-
-6. Vyberte existující **skupinu prostředků**. Případně vytvořte novou skupinu prostředků tak, že vyberete **vytvořit novou** a zadáte název. Pokud vytváříte novou skupinu prostředků, pojmenujte skupinu prostředků podle svých plánovaných hodnot konfigurace. Další informace o skupinách prostředků najdete v tématu [Přehled Azure Resource Manageru](../azure-resource-manager/management/overview.md#resource-groups).
-
-7. Vyberte **umístění** pro virtuální síť. Toto nastavení určuje zeměpisné umístění prostředků, které nasadíte do této virtuální sítě.
-
-8. Vyberte **vytvořit** a vytvořte virtuální síť. Na stránce **oznámení** se zobrazí zpráva o **nasazení** probíhá.
-
-8. Po vytvoření virtuální sítě se zpráva na stránce **oznámení** změní na **nasazení se zdařila**. Pokud chcete svou virtuální síť snadno najít na řídicím panelu, vyberte možnost **Připnout na řídicí panel** . 
-
-10. Přidejte server DNS (volitelné). Po vytvoření virtuální sítě můžete přidat IP adresu serveru DNS pro překlad IP adres. Zadaná IP adresa serveru DNS by měla být adresa serveru DNS, který dokáže přeložit názvy pro prostředky ve vaší virtuální síti.
-
-    Pokud chcete přidat server DNS, vyberte **servery DNS** ze stránky virtuální síť. Pak zadejte IP adresu serveru DNS, který chcete použít, a vyberte **Uložit**.
+[!INCLUDE [basic classic DNS](../../includes/vpn-gateway-dns-classic.md)]
 
 ### <a name="part-2-create-a-gateway-subnet-and-a-dynamic-routing-gateway"></a>Část 2: Vytvoření podsítě brány a brány dynamického směrování
 

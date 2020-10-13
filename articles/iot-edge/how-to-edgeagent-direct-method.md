@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42c79526288fb7e05959ac60cddc6f468656ffd4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80240350"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972539"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Komunikace s edgeAgent pomocí integrovaných přímých metod
 
@@ -69,13 +69,14 @@ V Azure Portal volejte metodu s názvem metody `RestartModule` a následující 
 
 ![Vyvolat přímo metodu RestartModule v Azure Portal](./media/how-to-edgeagent-direct-method/restartmodule-direct-method.png)
 
-## <a name="experimental-methods"></a>Experimentální metody
+## <a name="diagnostic-direct-methods"></a>Diagnostické metody Direct
 
-Nové možnosti přímé metody jsou k dispozici jako experimentální funkce k testování, včetně:
+* [GetModuleLogs](how-to-retrieve-iot-edge-logs.md#retrieve-module-logs): načte protokoly modulů vložené do odpovědi přímé metody.
+* [UploadModuleLogs](how-to-retrieve-iot-edge-logs.md#upload-module-logs): načtěte protokoly modulu a nahrajte je do Azure Blob Storage.
+* [UploadSupportBundle](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics): načtěte protokoly modulů pomocí sady prostředků podpory a nahrajte soubor zip do Azure Blob Storage.
+* [GetTaskStatus](how-to-retrieve-iot-edge-logs.md#get-upload-request-status): Projděte si stav protokolů odeslání nebo podpory sady prostředků.
 
-* [UploadLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md): načtěte protokoly modulu a nahrajte je do Azure Blob Storage.
-* [GetTaskStatus](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#gettaskstatus): Projděte si stav žádosti o nahrání protokolů.
-* [Getlogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#getlogs): načte protokoly modulů vložené do odpovědi přímé metody.
+Tyto diagnostické přímé metody jsou k dispozici ve verzi 1.0.10.
 
 ## <a name="next-steps"></a>Další kroky
 

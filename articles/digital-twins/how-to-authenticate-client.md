@@ -4,26 +4,23 @@ titleSuffix: Azure Digital Twins
 description: Viz jak psát ověřovací kód v klientské aplikaci.
 author: baanders
 ms.author: baanders
-ms.date: 4/22/2020
+ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: devx-track-js
-ms.openlocfilehash: 0438632a36fe14d35210cb5acb8d3a50d0f038b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2cef34413f46608e8bc35a009a29212af5ddf20
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767820"
+ms.locfileid: "91893590"
 ---
 # <a name="write-client-app-authentication-code"></a>Zápis ověřovacího kódu klientské aplikace
 
-Po [Nastavení instance a ověřování digitálních vláken Azure](how-to-set-up-instance-portal.md)můžete vytvořit klientskou aplikaci, kterou použijete k interakci s instancí. Po nastavení projektu počátečního klienta v tomto článku se dozvíte, **jak v této klientské aplikaci psát kód pro ověření v** instanci digitálních vláken Azure.
+Po [Nastavení instance a ověřování digitálních vláken Azure](how-to-set-up-instance-portal.md)můžete vytvořit klientskou aplikaci, kterou použijete k interakci s instancí. Jakmile nastavíte projekt počátečního klienta, budete muset **v této klientské aplikaci napsat kód pro ověření** pomocí instance digitálního vlákna Azure.
 
-Existují dva přístupy k ukázkovému kódu v tomto článku. Můžete použít tu, která je pro vás nejvhodnější, v závislosti na zvoleném jazyce:
-* První část ukázkového kódu používá sadu SDK Azure Digital .NET (C#). Sada SDK je součástí sady Azure SDK pro .NET a je umístěná v tomto umístění: [*Klientská knihovna Azure IoT s Nevlákenou pro .NET*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). K dispozici jsou také podporované sady SDK pro [jazyky Java](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar ) a [JavaScript](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1), které lze použít podobným způsobem.
-* Druhá část ukázkového kódu je určena pro uživatele, kteří nepoužívají poskytnutou sadu SDK, a místo toho používá sady SDK generované pomocí automatického REST v jiných jazycích. Další informace o této strategii najdete v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure pomocí automatického REST*](how-to-create-custom-sdks.md).
+Digitální vlákna Azure provádí ověřování pomocí [tokenů zabezpečení Azure AD na základě OAUTH 2,0](../active-directory/develop/security-tokens.md#json-web-tokens-jwts-and-claims). K ověření vaší sady SDK budete muset získat nosný token se správnými oprávněními pro digitální vlákna Azure a předat ho spolu s vaším voláním rozhraní API. 
 
-Další informace o rozhraních API a sadách SDK pro digitální vlákna Azure najdete v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md).
+Tento článek popisuje, jak získat pověření pomocí `Azure.Identity` klientské knihovny. Tento článek ukazuje příklady kódu v jazyce C#, například to, co byste napsali pro [.NET (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core), můžete použít verzi bez ohledu na to, `Azure.Identity` jakou sadu SDK používáte (Další informace o sadách SDK dostupných pro digitální vlákna Azure najdete v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md)).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,31 +28,89 @@ Nejdřív dokončete kroky nastavení v tématu [*Postupy: nastavení instance a
 
 Chcete-li pokračovat, budete potřebovat projekt klientské aplikace, ve kterém budete psát kód. Pokud ještě nemáte nastavený projekt klientské aplikace, vytvořte si základní projekt v jazyce zvoleném pro použití v tomto kurzu.
 
-## <a name="authentication-and-client-creation-net-c-sdk"></a>Ověřování a vytváření klientů: sada SDK .NET (C#)
+## <a name="common-authentication-methods-with-azureidentity"></a>Běžné metody ověřování s Azure. identity
 
-Tato část ukazuje příklad v jazyce C# pro používání sady .NET SDK.
+`Azure.Identity` je Klientská knihovna, která poskytuje několik metod získání přihlašovacích údajů, které můžete použít k získání nosného tokenu a k ověření pomocí sady SDK. I když tento článek obsahuje příklady v jazyce C#, můžete si ho prohlédnout v `Azure.Identity` několika jazycích, včetně...
+* [.NET (C#)](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)
+* [Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable&preserve-view=true)
+* [JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme?view=azure-node-latest&preserve-view=true)
+* [Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python&preserve-view=true)
 
-Nejprve zahrňte do projektu následující balíčky, aby bylo možné použít sadu .NET SDK a nástroje ověřování pro tento postup:
-* `Azure.DigitalTwins.Core`
-* `Azure.Identity`
+Tři běžné metody získávání přihlašovacích údajů v nástroji `Azure.Identity` :
+* [DefaultAzureCredential](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) poskytuje výchozí `TokenCredential` tok ověřování pro aplikace, které se nasazují do Azure, a je **doporučená volba pro místní vývoj**. Dá se taky povolit, aby se vyzkoušely další dvě metody doporučené v tomto článku. zalomí `ManagedIdentityCredential` a má přístup k `InteractiveBrowserCredential` konfigurační proměnné.
+* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) funguje skvěle v případech, kdy potřebujete [spravované identity (MSI)](../active-directory/managed-identities-azure-resources/overview.md), a je vhodným kandidátem na práci s Azure functions a nasazením do služeb Azure.
+* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) je určený pro interaktivní aplikace a dá se použít k vytvoření ověřeného klienta SDK.
 
-V závislosti na zvolených nástrojích můžete balíčky zahrnout pomocí Správce balíčků sady Visual Studio nebo `dotnet` nástroje příkazového řádku. 
+Následující příklad ukazuje, jak použít každou z nich v sadě .NET (C#) SDK.
 
-Budete také potřebovat následující příkazy using:
+## <a name="authentication-examples-net-c-sdk"></a>Příklady ověřování: .NET (C#) SDK
+
+Tato část ukazuje příklad v jazyce C# pro použití poskytnuté sady .NET SDK pro zápis ověřovacího kódu.
+
+Nejprve zahrňte balíček sady SDK `Azure.DigitalTwins.Core` a `Azure.Identity` balíček do projektu. V závislosti na zvolených nástrojích můžete balíčky zahrnout pomocí Správce balíčků sady Visual Studio nebo `dotnet` nástroje příkazového řádku. 
+
+Také budete muset do kódu projektu přidat následující příkazy using:
 
 ```csharp
 using Azure.Identity;
 using Azure.DigitalTwins.Core;
 ```
-K ověření pomocí sady .NET SDK použijte jednu z metod získání přihlašovacích údajů, které jsou definovány v knihovně [Azure. identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) . Tady jsou dvě běžně používané (dokonce společně ve stejné aplikaci):
 
-* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) je určený pro interaktivní aplikace a dá se použít k vytvoření ověřeného klienta SDK.
-* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) funguje skvěle v případech, kdy potřebujete spravované identity (MSI), a je vhodným kandidátem na práci s Azure Functions
+Pak přidejte kód pro získání přihlašovacích údajů pomocí jedné z metod v `Azure.Identity` .
+
+### <a name="defaultazurecredential-method"></a>Metoda DefaultAzureCredential
+
+[DefaultAzureCredential](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) poskytuje výchozí `TokenCredential` tok ověřování pro aplikace, které se nasazují do Azure, a je **doporučená volba pro místní vývoj**.
+
+Pokud chcete použít výchozí přihlašovací údaje Azure, budete potřebovat adresu URL instance digitálního vlákna Azure ([pokyny, které se mají najít](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
+
+Zde je ukázka kódu pro přidání do `DefaultAzureCredential` projektu:
+
+```csharp
+// The URL of your instance, starting with the protocol (https://)
+private static string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-URL>";
+
+//...
+
+DigitalTwinsClient client;
+try
+{
+    var credential = new DefaultAzureCredential();
+    client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
+} catch(Exception e)
+{
+    Console.WriteLine($"Authentication or client creation error: {e.Message}");
+    Environment.Exit(0);
+}
+```
+
+### <a name="managedidentitycredential-method"></a>Metoda ManagedIdentityCredential
+
+Metoda [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) funguje skvěle v případech, kdy potřebujete [spravované identity (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)– například při práci s Azure Functions.
+
+To znamená, že můžete použít `ManagedIdentityCredential` ve stejném projektu jako `DefaultAzureCredential` nebo `InteractiveBrowserCredential` , chcete-li ověřit jinou součást projektu.
+
+Pokud chcete použít výchozí přihlašovací údaje Azure, budete potřebovat adresu URL instance digitálního vlákna Azure ([pokyny, které se mají najít](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
+
+Ve funkci Azure můžete použít přihlašovací údaje spravované identity podobně jako toto:
+
+```csharp
+ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
+DigitalTwinsClientOptions opts = 
+    new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
+client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
+```
 
 ### <a name="interactivebrowsercredential-method"></a>Metoda InteractiveBrowserCredential
-Metoda [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) je určena pro interaktivní aplikace a otevře webový prohlížeč pro ověřování.
 
-Chcete-li použít přihlašovací údaje interaktivního prohlížeče k vytvoření ověřeného klienta sady SDK, přidejte tento kód:
+Metoda [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) je určena pro interaktivní aplikace a otevře webový prohlížeč pro ověřování. Místo toho můžete použít `DefaultAzureCredential` interaktivní ověřování v případech.
+
+Pokud chcete použít přihlašovací údaje interaktivního prohlížeče, budete potřebovat **registraci aplikace** , která má oprávnění k rozhraním API pro digitální vlákna Azure. Postup nastavení registrace této aplikace naleznete v části [*Nastavení oprávnění přístupu pro klientské aplikace*](how-to-set-up-instance-portal.md#set-up-access-permissions-for-client-applications) v tématu *Postupy: nastavení instance a ověřování*. Po nastavení registrace aplikace budete potřebovat...
+* *ID aplikace (klienta)* registrace aplikace
+* *ID adresáře (tenanta)* registrace aplikace
+* Adresa URL instance digitálního vlákna Azure ([pokyny k vyhledání](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
+
+Zde je příklad kódu pro vytvoření ověřeného klienta sady SDK pomocí nástroje `InteractiveBrowserCredential` .
 
 ```csharp
 // Your client / app registration ID
@@ -63,7 +118,7 @@ private static string clientId = "<your-client-ID>";
 // Your tenant / directory ID
 private static string tenantId = "<your-tenant-ID>";
 // The URL of your instance, starting with the protocol (https://)
-private static string adtInstanceUrl = "<your-Azure-Digital-Twins-instance-URL>";
+private static string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-URL>";
 
 //...
 
@@ -82,16 +137,7 @@ try
 >[!NOTE]
 > I když můžete umístit ID klienta, ID tenanta a adresu URL instance přímo do kódu, jak je znázorněno výše, je vhodné, aby kód získal tyto hodnoty z konfiguračního souboru nebo proměnné prostředí.
 
-### <a name="managedidentitycredential-method"></a>Metoda ManagedIdentityCredential
- Metoda [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) funguje skvěle v případech, kdy potřebujete [spravované identity (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)– například při práci s Azure Functions.
-Ve funkci Azure můžete použít přihlašovací údaje spravované identity podobně jako toto:
-
-```csharp
-ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-DigitalTwinsClientOptions opts = 
-    new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
-```
+#### <a name="other-notes-about-authenticating-azure-functions"></a>Další poznámky týkající se ověřování Azure Functions
 
 Projděte si téma [*How to: Set the Azure Function for Data Processing*](how-to-create-azure-function.md) pro ucelený příklad, který vysvětluje některé důležité možnosti konfigurace v kontextu funkcí.
 
@@ -100,104 +146,9 @@ Chcete-li použít ověřování ve funkci, nezapomeňte na:
 * Použijte [proměnné prostředí](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables?tabs=csharp) podle potřeby.
 * Přiřaďte oprávnění k aplikaci Functions, která mu umožní přístup k rozhraním API digitálních vláken. Další informace o procesech Azure Functions najdete v tématu [*Postup: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md).
 
-## <a name="authentication-with-an-autorest-generated-sdk"></a>Ověřování pomocí sady SDK generované AutoRest
+## <a name="other-credential-methods"></a>Další metody přihlašovacích údajů
 
-Pokud nepoužíváte některou ze zadaných sad SDK (.NET, Java, JavaScript), můžete se rozhodnout vytvořit knihovnu SDK v jazyce podle vašeho výběru, jak je popsáno v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure pomocí automatického REST*](how-to-create-custom-sdks.md).
-
-V této části se dozvíte, jak ověřit v takovém případě.
-
-### <a name="prerequisites"></a>Požadavky
-
-Nejdřív byste měli provést kroky pro vytvoření vlastní sady SDK s AutoRest pomocí kroků v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure*](how-to-create-custom-sdks.md)pomocí automatického REST.
-
-V tomto příkladu se používá sada TypeScript SDK generovaná s AutoRest. V důsledku toho také vyžaduje:
-* [msal-js](https://github.com/AzureAD/microsoft-authentication-library-for-js)
-* [MS-REST-js](https://github.com/Azure/ms-rest-js)
-
-### <a name="minimal-authentication-code-sample"></a>Ukázka minimálního ověřovacího kódu
-
-K ověření aplikace se službami Azure můžete v klientské aplikaci použít následující minimální kód.
-
-Budete potřebovat ID *aplikace (klienta)* a *ID adresáře (tenant)* z dřívější verze a také adresu URL instance digitálního vlákna Azure.
-
-> [!TIP]
-> Adresa URL instance digitálních vláken Azure se provede přidáním *https://* na začátek *názvu hostitele*instance digitálního vlákna Azure. Chcete-li zobrazit *název hostitele*spolu se všemi vlastnostmi vaší instance, můžete spustit `az dt show --dt-name <your-Azure-Digital-Twins-instance>` . Pomocí `az account show --query tenantId` příkazu můžete zobrazit své *ID adresáře (tenant)*. 
-
-```javascript
-import * as Msal from "msal";
-import { TokenCredentials } from "@azure/ms-rest-js";
-// Autorest-generated SDK
-import { AzureDigitalTwinsAPI } from './azureDigitalTwinsAPI';
-
-// Client / app registration ID
-var ClientId = "<your-client-ID>";
-// Azure tenant / directory ID
-var TenantId = "<your-tenant-ID>";
-// URL of the Azure Digital Twins instance
-var AdtInstanceUrl = "<your-instance-URL>"; 
-
-var AdtAppId = "https://digitaltwins.azure.net";
-
-let client = null;
-
-export async function login() {
-
-    const msalConfig = {
-        auth: {
-            clientId: ClientId,
-            redirectUri: "http://localhost:3000",
-            authority: "https://login.microsoftonline.com/"+TenantId
-        }
-    };
-
-    const msalInstance = new Msal.UserAgentApplication(msalConfig);
-
-    msalInstance.handleRedirectCallback((error, response) => {
-        // handle redirect response or error
-    });
-
-    var loginRequest = {
-        scopes: [AdtAppId + "/.default"] 
-    };
-
-    try {
-        await msalInstance.loginPopup(loginRequest)
-        var accessToken;
-        // if the user is already logged in you can acquire a token
-        if (msalInstance.getAccount()) {
-            var tokenRequest = {
-                scopes: [AdtAppId + "/.default"]
-            };
-            try {
-                const response = await msalInstance.acquireTokenSilent(tokenRequest);
-                accessToken = response.accessToken;
-            } catch (err) {
-                if (err.name === "InteractionRequiredAuthError") {
-                    const response = await msalInstance.acquireTokenPopup(tokenRequest)
-                    accessToken = response.accessToken;
-                }
-            }
-        }
-        if (accessToken!=null)
-        {
-            var tokenCredentials = new TokenCredentials(accessToken);
-                
-            // Add token and server URL to service instance
-            const clientConfig = {
-                baseUri: AdtInstanceUrl
-            };
-            client = new AzureDigitalTwinsAPI(tokenCredentials, clientConfig);
-            appDataStore.client = client;
-        }
-    } catch (err) {
-        ...
-    }
-}
-```
-
-Všimněte si, že pokud kód výše umístí ID klienta, ID tenanta a adresu URL instance přímo do kódu pro jednoduchost, je vhodné, aby kód získal tyto hodnoty z konfiguračního souboru nebo proměnné prostředí.
-
-MSAL má mnoho dalších možností, které můžete použít k implementaci takových akcí jako ukládání do mezipaměti a dalších toků ověřování. Další informace najdete v tématu [*Přehled knihovny Microsoft Authentication Library (MSAL)*](../active-directory/develop/msal-overview.md).
+Pokud zvýrazněné scénáře ověření výše nezahrnují potřeby vaší aplikace, můžete prozkoumat jiné typy ověřování, které jsou nabízeny na [**platformě Microsoft Identity**](../active-directory/develop/v2-overview.md#getting-started). Dokumentace pro tuto platformu se zabývá dalšími scénáři ověřování uspořádanými podle typu aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: victorh
 ms.openlocfilehash: d838fe1d1015e1913c8aa28a122b06d108fb4676
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91446640"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Vytvoření aplikační brány s interním přesměrování pomocí Azure PowerShell
@@ -27,7 +27,7 @@ V tomto článku získáte informace o těchto tématech:
 * Vytvoření sady škálování virtuálních počítačů s back-end fondem
 * Vytvoření záznamu CNAME v doméně
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

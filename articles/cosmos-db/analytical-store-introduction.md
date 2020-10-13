@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
 ms.openlocfilehash: d27eb4dc6c4e4bd8f0a744ad925d91aee0faa8d0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567141"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Co je Azure Cosmos DB analytické úložiště (Preview)?
@@ -155,7 +155,7 @@ Tady je mapa všech datových typů vlastností a jejich reprezentace přípon v
 |Null   | ". null"   | null|
 |Řetězec|    řetězec ". String" | "ABC"|
 |Timestamp |    ". timestamp" |  Časové razítko (0, 0)|
-|Datum a čas   |". Date"    | ISODate ("2020-08-21T07:43:07.375 Z")|
+|DateTime   |". Date"    | ISODate ("2020-08-21T07:43:07.375 Z")|
 |ObjectId   |". objectId"    | ObjectId ("5f3f7b59330ec25c132623a2")|
 |Dokument   |". Object" |    {"a": "a"}|
 

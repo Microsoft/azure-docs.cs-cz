@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 09/22/2020
 author: jluk
 ms.openlocfilehash: fd4f79e0cae5028e4bbaa8a4f5115d5a767dcf54
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91368851"
 ---
-# <a name="secure-pods-with-azure-policy"></a>Zabezpečení lusků pomocí Azure Policy
+# <a name="secure-pods-with-azure-policy"></a>Zabezpečené pody s využitím Azure Policy
 
 Pokud chcete zlepšit zabezpečení clusteru AKS, můžete určit, jaké funkce se mají přidělovat, a pokud cokoli běží na zásadách společnosti. Tento přístup je definovaný prostřednictvím předdefinovaných zásad, které poskytuje [doplněk Azure Policy pro AKS][kubernetes-policy-reference]. Díky lepší kontrole nad aspekty zabezpečení specifikace vašeho zařízení, jako jsou například oprávnění ke kořenu, umožňuje přísnější dodržování zabezpečení a přehled o tom, co je ve vašem clusteru nasazené. Pokud parametr pod nesplňuje podmínky zadané v zásadě, Azure Policy může zakázat ovládacímu poli pod, aby mohl spustit nebo označit porušení. V tomto článku se dozvíte, jak pomocí Azure Policy omezit nasazení lusků v AKS.
 

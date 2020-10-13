@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ca4be9387754c84dc256dd72b131bd5b76b458
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056223"
+ms.locfileid: "91876460"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Kurz: vývoj IoT Edgech modulů pro zařízení se systémem Linux
 
@@ -177,19 +177,19 @@ V současné době Visual Studio Code může vyvíjet moduly C# pro zařízení 
 
 Každý modul může mít v kódu deklarovaných víc *vstupních* a *výstupních* front. Rozbočovač IoT Edge běžící na zařízení směruje zprávy z výstupu jednoho modulu do vstupu jednoho nebo více modulů. Konkrétní kód pro deklarování vstupů a výstupů se liší mezi jazyky, ale koncept je stejný ve všech modulech. Další informace o směrování mezi moduly naleznete v tématu [Declare Routes](module-composition.md#declare-routes).
 
-Vzorový kód jazyka C#, který je součástí šablony projektu, používá [třídu ModuleClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet) ze sady SDK IoT Hub pro .NET.
+Vzorový kód jazyka C#, který je součástí šablony projektu, používá [třídu ModuleClient](/dotnet/api/microsoft.azure.devices.client.moduleclient) ze sady SDK IoT Hub pro .NET.
 
 1. Otevřete soubor **program.cs** , který se nachází uvnitř **modulů/SampleModule/** složka.
 
 2. V program.cs Najděte metodu **SetInputMessageHandlerAsync** .
 
-3. Metoda [SetInputMessageHandlerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync?view=azure-dotnet) nastaví vstupní frontu pro příjem příchozích zpráv. Projděte si tuto metodu a podívejte se, jak inicializuje vstupní frontu s názvem **input1**.
+3. Metoda [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) nastaví vstupní frontu pro příjem příchozích zpráv. Projděte si tuto metodu a podívejte se, jak inicializuje vstupní frontu s názvem **input1**.
 
    ![Najít název vstupu v konstruktoru SetInputMessageCallback](./media/tutorial-develop-for-linux/declare-input-queue.png)
 
 4. Dále vyhledejte metodu **SendEventAsync** .
 
-5. Metoda [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync?view=azure-dotnet) zpracovává přijaté zprávy a nastavuje výstupní frontu, která je předávat společně. Projděte si tuto metodu a podívejte se, že Inicializuje výstupní frontu s názvem **output1**.
+5. Metoda [SendEventAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync) zpracovává přijaté zprávy a nastavuje výstupní frontu, která je předávat společně. Projděte si tuto metodu a podívejte se, že Inicializuje výstupní frontu s názvem **output1**.
 
    ![Najít název výstupu v SendEventToOutputAsync](./media/tutorial-develop-for-linux/declare-output-queue.png)
 
