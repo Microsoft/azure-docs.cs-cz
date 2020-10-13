@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 8d5f9b360e1d81bae62e34a8e20d61636e1d22ea
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: baf3d02e1c0ecf51ddea043ee560d5054f09d057
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91859186"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91936091"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Omezení sítě – Azure Resource Manager
 Následující omezení platí pouze pro síťové prostředky spravované prostřednictvím **Azure Resource Manager** v jednotlivých oblastech na jedno předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
@@ -75,6 +75,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Back-endové prostředky na Load Balancer <sup> 1<sup> | 150                   |
 | Porty s vysokou dostupností                 | 1 za interní front-end       |
 | Odchozí pravidla na Load Balancer        | 600                           |
+| Nástroje pro vyrovnávání zatížení na virtuální počítač                   | 2 (1 veřejná a 1 interní)   |
 
 <sup>1</sup> Limit je až 150 prostředků, v libovolné kombinaci prostředků samostatného virtuálního počítače, prostředků sady dostupnosti a skupin umístění virtuálních počítačů.
 
@@ -88,6 +89,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Konfigurace IP adresy front-endu              | 200                          |
 | Velikost fondu back-endu                       | 300 konfigurace IP adres, jedna skupina dostupnosti |
 | Skupiny dostupnosti na Load Balancer     | 1                            |
+| Nástroje pro vyrovnávání zatížení na virtuální počítač                   | 2 (1 veřejná a 1 interní)  |
 
 <a name="virtual-networking-limits-classic"></a>Následující omezení platí jenom pro síťové prostředky spravované přes model nasazení **Classic** na předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
 

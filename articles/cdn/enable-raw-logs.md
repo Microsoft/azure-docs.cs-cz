@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: allensu
 ms.openlocfilehash: c41bf8bc6e5aa3749786bc1189343dfdebdc1508
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321136"
 ---
 # <a name="monitoring-metrics-and-raw-logs-for-azure-cdn-from-microsoft"></a>Monitorování metrik a nezpracovaných protokolů pro Azure CDN od Microsoftu
@@ -28,7 +28,7 @@ Pomocí Azure CDN od Microsoftu můžete sledovat prostředky následujícími z
 > [!IMPORTANT]
 > Pro Azure CDN od Microsoftu je k dispozici funkce HTTP holých protokolů.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -61,7 +61,7 @@ Konfigurace nezpracovaných protokolů pro Azure CDN z profilu Microsoftu:
     * **Streamování do centra událostí**
         * Vyberte **předplatné**, **obor názvů centra událostí**, **název centra událostí (nepovinné)** a **název zásady centra událostí**.
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Nakonfigurujte cíl pro nastavení protokolu." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::
 
 7. Vyberte **Uložit**.
 
@@ -215,7 +215,7 @@ Další informace najdete v tématu [Azure monitor metriky](https://docs.microso
 
 **Metriky podporované Azure CDN od Microsoftu**
 
-| Metriky         | Popis                                                                                                      | Rozměr                                                                                   |
+| Metriky         | Description                                                                                                      | Rozměr                                                                                   |
 |-----------------|------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
 | Poměr přístupů do bajtů * | Procento výstupu z mezipaměti CDN vypočítané na celkový výstup.                                      | Koncový bod                                                                                    |
 | RequestCount    | Počet požadavků klientů poskytovaných službou CDN.                                                                     | Koncový bod </br> Země klienta. </br> Oblast klienta. </br> Stav HTTP. </br> Stavová skupina HTTP. |
@@ -235,31 +235,31 @@ Počet vyloučených scénářů v bajtech poměru přístupů:
 
 2. V části **monitorování**vyberte **metriky**:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="Metriky pro profil CDN" border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::
 
 3. Vyberte **Přidat metriku**a vyberte metriku, kterou chcete přidat:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="Přidejte a vyberte metriku pro profil CDN." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::
 
 4. Vyberte **Přidat filtr** a přidejte filtr:
     
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="Použijte filtr na metriku." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::
 
 5. Pokud chcete zobrazit trend podle různých dimenzí, vyberte **použít** rozdělení:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="Použijte rozdělení na metriku." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::
 
 6. Vyberte **Nový graf** a přidejte nový graf:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="Přidejte nový graf do zobrazení metriky." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 
 Můžete nastavit výstrahy pro Microsoft CDN výběrem **Monitoring**  >>  **výstrahy**monitorování.
 
 Vyberte **nové pravidlo výstrahy** pro metriky uvedené v části metriky:
 
-:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="Nakonfigurujte výstrahy pro koncový bod CDN." border="true":::
+:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::
 
 Výstraha se bude účtovat na základě Azure Monitor. Další informace o výstrahách naleznete v tématu [Azure monitor Alerts](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 
@@ -270,21 +270,21 @@ Další metriky můžete povolit pomocí Azure Log Analytics a nezpracovaných p
 
 2. Vyberte pracovní prostor Log Analytics, který jste vytvořili:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="Vyberte pracovní prostor Log Analytics." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::   
 
 3. V pracovním prostoru Log Analytics vyberte **protokoly** **obecně** .  Pak vyberte **Začínáme**:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Pracovní prostor prostředků Log Analytics." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::   
  
 4. Vyberte **profily CDN**.  Vyberte ukázkový dotaz, který se má spustit, nebo zavřete ukázkovou obrazovku a zadejte vlastní dotaz:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="Příklad obrazovky s dotazem." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::   
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="Provádění dotazu." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true":::   
 
 4. Pokud chcete zobrazit data podle grafu, vyberte **graf**.  Vyberte **Připnout na řídicí panel** , abyste mohli graf připnout na řídicí panel Azure:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="Připnout graf na řídicí panel" border="true"::: 
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="Přidejte nastavení diagnostiky pro profil CDN." border="true"::: 
 
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste povolili protokoly HTTP Raw pro službu Microsoft CDN.

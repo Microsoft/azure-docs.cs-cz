@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: 81a65c088fd83ce179f67edd1ecdb96149dd1614
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91840247"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
@@ -258,13 +258,13 @@ Okno **geografické replikace** poskytuje mechanismus pro propojení dvě mezipa
 >
 >
 
-### <a name="firewall"></a>Firewall
+### <a name="firewall"></a>Brána firewall
 
 Konfigurace pravidel brány firewall je dostupná pro všechny úrovně Redis v mezipaměti Azure.
 
 Kliknutím na **firewall** zobrazíte a nakonfigurujete pravidla brány firewall pro mezipaměť.
 
-![Firewall](./media/cache-configure/redis-firewall-rules.png)
+![Brána firewall](./media/cache-configure/redis-firewall-rules.png)
 
 Můžete zadat pravidla brány firewall s rozsahem počátečních a koncových IP adres. Když jsou pravidla brány firewall nakonfigurovaná, můžou se k ní připojit jenom připojení klientů ze zadaných rozsahů IP adres. Po uložení pravidla brány firewall dojde k krátké prodlevě, než bude pravidlo platné. Toto zpoždění je obvykle méně než jedna minuta.
 
@@ -386,7 +386,7 @@ Nová mezipaměť Azure pro instance Redis je nakonfigurovaná s následujícím
 >
 >
 
-| Nastavení | Výchozí hodnota | Popis |
+| Nastavení | Výchozí hodnota | Description |
 | --- | --- | --- |
 | `databases` |16 |Výchozí počet databází je 16, ale můžete na základě cenové úrovně nakonfigurovat jiné číslo. <sup>1</sup> výchozí databáze je DB 0. pro jednotlivá připojení můžete vybrat jiný, `connection.GetDatabase(dbid)` a to pomocí, kde `dbid` je číslo mezi `0` a `databases - 1` . |
 | `maxclients` |Závisí na cenové úrovni<sup>2</sup> . |Tato hodnota je maximální povolený počet připojených klientů ve stejnou dobu. Po dosažení limitu Redis ukončí všechna nová připojení a vrátí chybu maximální počet klientů, které se dosáhly. |

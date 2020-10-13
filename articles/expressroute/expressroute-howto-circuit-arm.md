@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
 ms.openlocfilehash: b5ac53c44429e23e2d22a934a9dc71bd485ec4cd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761902"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-powershell"></a>Rychlý Start: vytvoření a úprava okruhu ExpressRoute pomocí Azure PowerShell
 
 V tomto rychlém startu se dozvíte, jak vytvořit okruh ExpressRoute pomocí rutin prostředí PowerShell a modelu nasazení Azure Resource Manager. Můžete také kontrolovat stav, aktualizovat, odstranit nebo zrušit zřízení okruhu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Než začnete s konfigurací, Projděte si [požadavky](expressroute-prerequisites.md) a [pracovní postupy](expressroute-workflows.md) .
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -42,7 +42,7 @@ Get-AzExpressRouteServiceProvider
 
 Zkontrolujte, jestli je v seznamu uveden poskytovatel připojení. Poznamenejte si následující informace, které později budete potřebovat při vytváření okruhu:
 
-* Název
+* Name
 * PeeringLocations
 * BandwidthsOffered
 

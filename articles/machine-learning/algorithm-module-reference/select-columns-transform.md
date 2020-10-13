@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: b3a0b904d65e6597c058ccf05ec837696e9ca20e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/10/2020
+ms.openlocfilehash: 14f08502f35afdc8a9a2cdc741b539b5f9cca712
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893624"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945583"
 ---
 # <a name="select-columns-transform"></a>Transformace pro výběr sloupců
 
@@ -46,8 +46,14 @@ V tomto scénáři se předpokládá, že chcete pomocí výběru funkcí vygene
 
    *Nepřipojujte vstupní datovou sadu.* Místo toho přidejte modul [použít transformaci](apply-transformation.md) a připojte výstup transformace výběru funkce.
 
+   Struktura kanálu by měla vypadat nějak takto:
+
+   > [!div class="mx-imgBorder"]
+   > ![Vzorový kanál](media/module/filter-based-feature-selection-score.png)
+
    > [!IMPORTANT]
    > Pro datovou sadu bodování nelze očekávat použití [výběru funkcí založených na filtrech](filter-based-feature-selection.md) a získat stejné výsledky. Vzhledem k tomu, že výběr funkcí je založený na hodnotách, může zvolit jinou sadu sloupců, což by způsobilo selhání operace bodování.
+    
 7. Odešlete kanál.
 
 Tento proces ukládání a následného výběru sloupce zajišťuje, aby bylo pro účely školení a bodování dostupné stejné schéma dat.

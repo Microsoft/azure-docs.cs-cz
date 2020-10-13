@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
 ms.openlocfilehash: b22bf4ee3ff830a80ee97851f08173257697c50d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826485"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Evernote
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Evernote s Azure Active Directory (Azu
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -114,7 +114,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Create** (Vytvořit).
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -148,15 +148,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. Přejít do **konzoly pro správu**
 
-    ![Správce – konzola](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
+    ![Admin-Console](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
 5. Z **konzoly pro správu**, přejít na **zabezpečení** a vybrat **jednotné přihlašování**
 
-    ![Jednotné přihlašování – nastavení](./media/evernote-tutorial/tutorial_evernote_sso.png)
+    ![SSO-Setting](./media/evernote-tutorial/tutorial_evernote_sso.png)
 
 6. Nakonfigurujte následující hodnoty:
 
-    ![Nastavení certifikátu](./media/evernote-tutorial/tutorial_evernote_certx.png)
+    ![Certificate-Setting](./media/evernote-tutorial/tutorial_evernote_certx.png)
     
     a.  **Povolit jednotné přihlašování:** Jednotné přihlašování je ve výchozím nastavení povolené (pro odebrání požadavku SSO klikněte na **Zakázat jednotné přihlašování** ).
 
@@ -177,7 +177,7 @@ V případě Evernote je zřizování ručním úkolem.
 
 2. Klikněte na **konzolu správce**.
 
-    ![Správce – konzola](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
+    ![Admin-Console](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
 3. Z **konzoly pro správu**, přejít na **Přidat uživatele**.
 
@@ -195,7 +195,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Evernote, měli byste se automaticky přihlásit k Evernote, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

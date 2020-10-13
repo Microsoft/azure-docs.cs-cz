@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 08/29/2019
 ms.openlocfilehash: 7a7373f5fcd36298d2feeff6a2a5b67c9e10e40b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321590"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Úspora nákladů pro prostředky s rezervovanou kapacitou – Azure SQL Database & spravované instance SQL
@@ -53,11 +53,11 @@ Velikost rezervace by měla být založená na celkovém množství výpočetní
     | Pole      | Popis|
     |------------|--------------|
     |Předplatné|Předplatné použité pro platbu za rezervaci kapacity. Platební metodou předplatného se účtují náklady na front-end pro rezervaci. Typ předplatného musí být smlouva Enterprise (číslo nabídky: Number-AZR-0017P nebo MS-AZR-0148P) nebo samostatná smlouva s cenami s průběžnými platbami (číslo nabídky MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. U jednotlivých předplatných s průběžnými platbami se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.|
-    |Obor       |Obor rezervace vCore může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete možnost <br/><br/>**Shared**, u databáze nebo spravované instance spuštěné v rámci vašeho fakturačního kontextu se použije sleva na Vcore rezervaci. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.<br/><br/>U **jednoho předplatného**se pro databáze nebo spravované instance v tomto předplatném použije sleva na Vcore rezervaci. <br/><br/>**Jedna skupina prostředků**– sleva rezervace se aplikuje na instance databází nebo spravovaných instancí ve vybraném předplatném a v rámci daného předplatného.|
-    |Region      |Oblast Azure, která je pokrytá rezervací kapacity.|
+    |Rozsah       |Obor rezervace vCore může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete možnost <br/><br/>**Shared**, u databáze nebo spravované instance spuštěné v rámci vašeho fakturačního kontextu se použije sleva na Vcore rezervaci. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.<br/><br/>U **jednoho předplatného**se pro databáze nebo spravované instance v tomto předplatném použije sleva na Vcore rezervaci. <br/><br/>**Jedna skupina prostředků**– sleva rezervace se aplikuje na instance databází nebo spravovaných instancí ve vybraném předplatném a v rámci daného předplatného.|
+    |Oblast      |Oblast Azure, která je pokrytá rezervací kapacity.|
     |Typ nasazení|Typ prostředku SQL, pro který chcete zakoupit rezervaci.|
     |Úroveň výkonu|Vrstva služby pro databáze nebo spravované instance. |
-    |Období        |Jeden rok nebo tři roky.|
+    |Označení        |Jeden rok nebo tři roky.|
     |Množství    |Množství výpočetních prostředků, které se zakoupí v rámci rezervace kapacity Množství je počet virtuální jádra ve vybrané oblasti Azure a úroveň výkonu, které jsou rezervované, a obdrží fakturační slevu. Pokud například spustíte nebo naplánujete spuštění více databází s celkovou výpočetní kapacitou Gen5 16 virtuální jádra v oblasti Východní USA, pak byste měli určit množství jako 16, aby se pro všechny databáze maximalizovala výhoda. |
 
 1. Projděte si náklady na rezervaci kapacity v části **náklady** .

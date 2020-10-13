@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22885d9d29bfbfc008b668889f7813ece1df8918
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894572"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945736"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -46,7 +46,7 @@ Zobrazení zásad zabezpečení ve službě Security Center:
 
 1. Na řídicím panelu **Security Center** vyberte **zásady zabezpečení**.
 
-    ![Okno Správa zásad](./media/security-center-policies/security-center-policy-mgt.png)
+    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="Stránka správy zásad&quot;:::
 
    Na obrazovce **Správa zásad** můžete zobrazit počet skupin pro správu, odběry a pracovní prostory i strukturu skupiny pro správu.
 
@@ -57,7 +57,7 @@ Zobrazení zásad zabezpečení ve službě Security Center:
    ![Stránka zásad](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
-    > Pokud je popisek "g Zděděný" společně s výchozí zásadou, znamená to, že zásada byla přiřazena skupině pro správu a zděděna předplatným, které si prohlížíte.
+    > Pokud je popisek &quot;g Zděděný" společně s výchozí zásadou, znamená to, že zásada byla přiřazena skupině pro správu a zděděna předplatným, které si prohlížíte.
 
 
 1. Vyberte si z dostupných možností na této stránce:
@@ -68,8 +68,19 @@ Zobrazení zásad zabezpečení ve službě Security Center:
 
     1. Pokud chcete zobrazit a upravit výchozí zásady, vyberte **Zobrazit efektivní zásady** a pokračujte podle popisu níže. 
 
-       ![obrazovka zásady](./media/security-center-policies/policy-screen.png)
-       
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="Stránka správy zásad&quot;:::
+
+   Na obrazovce **Správa zásad** můžete zobrazit počet skupin pro správu, odběry a pracovní prostory i strukturu skupiny pro správu.
+
+1. Vyberte předplatné nebo skupinu pro správu, jejichž zásady chcete zobrazit.
+
+1. Zobrazí se stránka zásady zabezpečení pro toto předplatné nebo skupinu pro správu. Zobrazuje dostupné a přiřazené zásady.
+
+   ![Stránka zásad](./media/tutorial-security-policy/security-policy-page.png)
+
+    > [!NOTE]
+    > Pokud je popisek &quot;g Zděděný":::
+
        Tato obrazovka **zásad zabezpečení** odráží akci provedenou zásadami přiřazenými k předplatnému nebo skupině pro správu, kterou jste vybrali.
        
        * Pomocí odkazů v horní části otevřete **přiřazení** zásady, které platí pro předplatné nebo skupinu pro správu. Tyto odkazy vám umožní přístup k přiřazení a úpravám nebo zakázání zásad. Pokud se například zobrazí, že konkrétní přiřazení zásad efektivně odmítá službu Endpoint Protection, použijte odkaz pro úpravu nebo zakázání zásad.
@@ -131,8 +142,7 @@ Další informace o doporučeních najdete v tématu [Správa doporučení zabez
 ## <a name="next-steps"></a>Další kroky
 Tento článek vysvětluje zásady zabezpečení. Související informace najdete v následujících článcích:
 
-* Pokyny k nastavení zásad pomocí prostředí PowerShell najdete v tématu [rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí modulu Azure PowerShell](../governance/policy/assign-policy-powershell.md)
-
-* Pokyny k úpravám zásad zabezpečení v Azure Policy najdete v tématu [Vytvoření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md).
-
-* Pokyny, jak nastavit zásadu napříč předplatnými nebo ve skupinách pro správu pomocí Azure Policy, najdete v tématu [co je Azure Policy?](../governance/policy/overview.md)
+- [Naučte se nastavovat zásady pomocí PowerShellu.](../governance/policy/assign-policy-powershell.md) - 
+- [Naučte se, jak upravit zásady zabezpečení v Azure Policy](../governance/policy/tutorials/create-and-manage.md) - 
+- [Naučte se, jak nastavit zásadu napříč předplatnými nebo skupinami pro správu pomocí Azure Policy](../governance/policy/overview.md).
+- [Naučte se, jak povolit Security Center u všech předplatných ve skupině pro správu.](onboard-management-group.md)

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
 ms.openlocfilehash: e15aab3ebfe82fa97f5716769b5ff9675b4b3dc4
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91637272"
 ---
 # <a name="azure-load-balancer-floating-ip-configuration"></a>Azure Load Balancer konfigurace plovoucí IP adresy
@@ -34,7 +34,7 @@ Některé scénáře aplikací dávají přednost nebo vyžadují, aby se stejn�
 Na úrovni platformy Azure Load Balancer vždy pracuje s topologií toku DSR bez ohledu na to, zda je povolena plovoucí IP adresa. To znamená, že výstupní část toku je vždy správně přepsána do toku přímo zpět k původnímu zdroji.
 Bez plovoucí IP adresy poskytuje Azure tradiční schéma mapování IP adres pro vyrovnávání zatížení, které umožňuje snadné použití (IP instance virtuálních počítačů). Povolením plovoucí IP adresy změní mapování IP adres na front-end IP adresu nástroje pro vyrovnávání zatížení, aby byla umožněna další flexibilita. Další informace najdete [tady](load-balancer-multivip-overview.md).
 
-## <a name="limitations"></a><a name = "limitations"></a>Určitá
+## <a name="limitations"></a><a name = "limitations"></a>Omezení
 
 - Plovoucí IP adresa se v současné době nepodporuje u sekundárních konfigurací IP pro scénáře vyrovnávání zatížení.
 

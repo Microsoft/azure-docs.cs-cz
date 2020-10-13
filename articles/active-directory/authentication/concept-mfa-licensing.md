@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 829a82cb94e5c2a7e7cbc9190047c368299612cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb0f46595be0aae68c9bcf15bcd4f087e8faaeba
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052745"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965212"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Funkce a licence pro Azure Multi-Factor Authentication
 
@@ -41,7 +41,7 @@ V závislosti na potřebách vaší organizace se dá Azure Multi-Factor Authent
 
 Následující tabulka obsahuje seznam funkcí, které jsou k dispozici v různých verzích Azure Multi-Factor Authentication. Naplánujte si potřeby pro zabezpečení ověřování uživatelů a pak určete, který přístup splňuje tyto požadavky. Přestože Azure AD Free například poskytuje výchozí nastavení zabezpečení, které poskytuje Azure Multi-Factor Authentication, lze pro výzvu k ověření použít pouze aplikaci Mobile Authenticator, nikoli telefonní hovor nebo SMS. Tento přístup může být omezením, pokud nemůžete zajistit, aby byla aplikace pro mobilní ověřování nainstalovaná na osobním zařízení uživatele.
 
-| Příznak | Azure AD Free – výchozí hodnoty zabezpečení | Azure AD Free – globální Správci služby Azure AD | Aplikace Microsoft 365 | Azure AD Premium P1 nebo P2 |
+| Funkce | Azure AD Free – výchozí hodnoty zabezpečení | Azure AD Free – globální Správci služby Azure AD | Aplikace Microsoft 365 | Azure AD Premium P1 nebo P2 |
 | --- |:---:|:---:|:---:|:---:|
 | Ochrana účtů správců tenantů Azure AD pomocí MFA | ● | ● (Jenom účty*globálního správce Azure AD* ) | ● | ● |
 | Mobilní aplikace jako druhý faktor | ● | ● | ● | ● |

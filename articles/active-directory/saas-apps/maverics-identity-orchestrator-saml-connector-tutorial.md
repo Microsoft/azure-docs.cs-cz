@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
 ms.openlocfilehash: fbab2bbaa47090ff4bd7fb99495912bd1f645b61
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91758134"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Kurz: Integrace jednotného přihlašování Azure AD s Maverics identity Orchestrator konektorem SAML
@@ -38,7 +38,7 @@ V tomto kurzu se dozvíte, jak migrovat místní webovou aplikaci, která je akt
 
 Další pokyny k instalaci a konfiguraci najdete na [webu vrstvy](https://www.strata.io).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 - Předplatné Maverics identity Orchestrator s povoleným SSO konektorem SAML. Pokud chcete získat Maverics software, kontaktujte [oddělení prodej](mailto:sales@strata.io).
@@ -157,7 +157,7 @@ secrets:
 Trezor klíčů Azure můžete nastavit buď pomocí Azure Portal, nebo pomocí Azure CLI.
 
 **Použití webu Azure Portal**
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. [Vytvořte nový trezor klíčů](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault).
 1. [Přidejte tajné klíče do trezoru klíčů](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault).
 1. [Registrace aplikace ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)

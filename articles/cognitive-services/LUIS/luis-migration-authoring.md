@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/13/2020
 ms.openlocfilehash: 926b79e672c14249ec7c2b053dba7eb3a31443a7
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536035"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrace na klíč pro vytváření prostředků Azure
@@ -77,7 +77,7 @@ Migraci je potřeba provést z portálu LUIS. Pokud vytvoříte vytváření kl�
    > [!div class="mx-imgBorder"]
    > ![První automaticky otevírané okno v procesu migrace, kde vyberete migrovat hned](./media/migrate-authoring-key/prompt-when-migrating-2.png)
 
-3. Pokud má kterákoli z vašich aplikací spolupracovníky, budete vyzváni k odeslání e-mailu, který jim umožní znát migraci. Toto je volitelný krok.
+3. Pokud má kterákoli z vašich aplikací spolupracovníky, budete vyzváni k odeslání e-mailu, který jim umožní znát migraci. Tento krok je volitelný.
 
    U každého spolupracovníka a aplikace se výchozí e-mailová aplikace otevře s lehce formátovaným e-mailem. E-mail můžete před odesláním upravit. Šablona e-mailu obsahuje přesné ID aplikace a název aplikace.
 
@@ -95,7 +95,7 @@ Migraci je potřeba provést z portálu LUIS. Pokud vytvoříte vytváření kl�
    > [!Note]
    > Po dokončení migrace účtu do Azure už nebudou vaše aplikace k dispozici pro spolupracovníky.
 
-4. Pokud jste spolupracujete na libovolné aplikaci, budete vyzváni k exportu kopie aplikací výběrem této možnosti během procesu migrace. Toto je volitelný krok.
+4. Pokud jste spolupracujete na libovolné aplikaci, budete vyzváni k exportu kopie aplikací výběrem této možnosti během procesu migrace. Tento krok je volitelný.
 
    Pokud vyberete možnost, zobrazí se následující stránka. Vyberte tlačítka pro stažení vlevo a exportujte aplikace, které chcete. Tyto aplikace můžete po migraci importovat zpátky, protože se s vámi nemigrují automaticky.
 

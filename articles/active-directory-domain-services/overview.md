@@ -2,21 +2,21 @@
 title: Přehled Azure Active Directory Domain Services | Microsoft Docs
 description: V tomto přehledu se dozvíte, co Azure Active Directory Domain Services poskytuje a jak ho ve vaší organizaci používat k poskytování služeb identit aplikacím a službám v cloudu.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
 ms.date: 08/14/2020
-ms.author: iainfou
+ms.author: joflore
 ms.custom: contperfq1
-ms.openlocfilehash: 2255f2193378d0cc3611680c6aa5f8e0837e99aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 988119c34ab0a8ef0e20ec86a7552fb7b4643cd1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88245173"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967983"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Co je služba Azure Active Directory Domain Services?
 

@@ -15,10 +15,10 @@ ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
 ms.openlocfilehash: a57a432a5f0f8e5a6bd802ec08b18350da3a77b3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293369"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Místní změna verze SQL Serveru na virtuálním počítači Azure
@@ -31,7 +31,7 @@ Tento článek popisuje, jak změnit verzi Microsoft SQL Server na virtuálním 
 
 K provedení místního upgradu SQL Server platí následující podmínky:
 
-- Je třeba zadat instalační médium požadované verze SQL Server. Zákazníci, kteří mají [program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) , mohou získat instalační média z [centra](https://www.microsoft.com/Licensing/servicecenter/default.aspx)multilicenčního programu. Zákazníci, kteří nemají Software Assurance, mohou použít instalační médium z Azure Marketplace SQL Server image virtuálního počítače, která má novější verzi SQL Server (obvykle se nachází v C:\SQLServerFull).
+- Je třeba zadat instalační médium požadované verze SQL Server. Zákazníci, kteří mají [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default), můžou instalační médium získat z centra [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Zákazníci, kteří nemají Software Assurance, mohou použít instalační médium z Azure Marketplace SQL Server image virtuálního počítače, která má novější verzi SQL Server (obvykle se nachází v C:\SQLServerFull).
 - Upgrady edice by se měly řídit pomocí [cest upgradu podpory](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15).
 
 ## <a name="planning-for-version-change"></a>Plánování změny verze
@@ -69,11 +69,11 @@ Pokud chcete upgradovat verzi SQL Server, Získejte pro pozdější verzi instal
 1. Na stránce **kód Product Key** vyberte možnost, která určuje, jestli upgradujete na bezplatnou edici SQL Server nebo že máte k dispozici klíč PID pro produkční verzi produktu. Další informace najdete v tématu [edice a podporované funkce SQL Server 2019 (15. x)](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) a [podporované verze a upgrady edice (SQL Server 2016)](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15).
 1. Vyberte **Další** , dokud se nedostanete do stránky **připraveno k upgradu** , a pak vyberte **upgradovat**. Až se změna projeví, může okno nastavení přestat reagovat na několik minut. **Kompletní** stránka potvrdí, že se upgrade dokončil. Podrobný postup pro upgrade najdete v tématu [úplný postup](https://docs.microsoft.com/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure).
 
-   :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="Stránka dokončení":::
+   :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="Výběr pro upgrade verze SQL Server":::
 
 Pokud jste kromě změny verze změnili edici SQL Server, aktualizujte také edici, a pokud chcete změnit instanci virtuálního počítače SQL, přečtěte si část **ověření verze a edice v portálu** .
 
-   :::image type="content" source="./media/change-sql-server-version/change-portal.png" alt-text="Změnit metadata verze":::
+   :::image type="content" source="./media/change-sql-server-version/change-portal.png" alt-text="Výběr pro upgrade verze SQL Server":::
 
 ## <a name="downgrade-the-version-of-sql-server"></a>Downgrade verze SQL Server
 
@@ -91,7 +91,7 @@ Verzi SQL Server můžete downgradovat pomocí následujících kroků:
 
    Ujistěte se, že jste vybrali správné možnosti při skriptování takových položek jako cílové verze, závislých objektů a pokročilých možností.
 
-   :::image type="content" source="./media/change-sql-server-version/scripting-options.png" alt-text="Možnosti skriptování":::
+   :::image type="content" source="./media/change-sql-server-version/scripting-options.png" alt-text="Výběr pro upgrade verze SQL Server":::
 
 1. Kompletně odinstalujte SQL Server a všechny přidružené služby.
 1. Restartujte virtuální počítač.
@@ -104,7 +104,7 @@ Verzi SQL Server můžete downgradovat pomocí následujících kroků:
 
 Po změně verze SQL Server Zaregistrujte SQL Server virtuálního počítače pomocí [poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md) , abyste mohli použít Azure Portal k zobrazení verze SQL Server. Uvedené číslo verze by nyní mělo odrážet nově upgradovanou verzi a edici instalace SQL Server.
 
-:::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="Ověřit verzi":::
+:::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="Výběr pro upgrade verze SQL Server":::
 
 > [!NOTE]
 > Pokud jste už zaregistrovali u poskytovatele prostředků virtuálního počítače SQL, zrušte [registraci z RP](sql-vm-resource-provider-register.md#unregister-from-rp) a pak znovu [Zaregistrujte prostředek SQL VM](sql-vm-resource-provider-register.md#register-with-rp) , aby zjistil správnou verzi a edici SQL Server, která je na virtuálním počítači nainstalovaná. Tím se aktualizují metadata a fakturační informace, které jsou přidruženy k tomuto virtuálnímu počítači.

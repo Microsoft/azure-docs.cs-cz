@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 8/13/2020
 ms.openlocfilehash: 9868403f69f3dc0b56aae06be1afda2134472805
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631031"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorování v Azure Database for MariaDB
@@ -25,7 +25,7 @@ Podrobné pokyny najdete v tématu [jak nastavit výstrahy](howto-alert-metric.m
 ### <a name="list-of-metrics"></a>Seznam metrik
 Tyto metriky jsou k dispozici pro Azure Database for MariaDB:
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Popis|
+|Metrika|Zobrazovaný název metriky|Jednotka|Description|
 |---|---|---|---|
 |cpu_percent|Procento využití procesoru|Procento|Procento využití procesoru.|
 |memory_percent|Procentuální hodnota paměti|Procento|Procentuální podíl používané paměti.|

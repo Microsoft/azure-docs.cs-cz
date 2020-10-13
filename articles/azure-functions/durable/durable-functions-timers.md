@@ -4,12 +4,12 @@ description: Přečtěte si, jak implementovat trvalé časovače v rozšířen�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 0226e5141b100aa3fcf89dd1a5cade8f3cd6cf1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb91f205a9b83b0b4b410644ef6c0fcbbf60876a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87056234"
+ms.locfileid: "91876443"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Časovače v Durable Functions (Azure Functions)
 
@@ -22,7 +22,7 @@ Můžete vytvořit trvalý časovač voláním `CreateTimer` metody (.NET) nebo 
 Když vytvoříte časovač, jehož platnost vyprší v 4:30. odp., zařadí základní prostředí odolného úlohy do fronty zprávu, která se bude zobrazovat pouze na 4:30 ODP. Při spuštění v plánu Azure Functions spotřeby se nově zobrazená zpráva časovače ujistí, že se aplikace Function App aktivuje na příslušném virtuálním počítači.
 
 > [!NOTE]
-> * Trvalé časovače jsou momentálně omezeny na 7 dní. Pokud budete potřebovat delší prodlevy, je možné je simulovat pomocí rozhraní API časovače ve `while` smyčce.
+> * Od [verze 2.3.0](https://github.com/Azure/azure-functions-durable-extension/releases/tag/v2.3.0) trvalého rozšíření jsou odolné časovače neomezené. V dřívějších verzích rozšíření jsou odolné časovače omezené na sedm dní. Pokud používáte starší verzi a potřebujete zpoždění delší než 7 dnů, použijte `while` k simulaci této prodlevy rozhraní API časovače ve smyčce.
 > * Vždy používejte `CurrentUtcDateTime` místo `DateTime.UtcNow` v rozhraní .NET nebo `currentUtcDateTime` místo `Date.now` nebo `Date.UTC` v JavaScriptu při výpočtu doby požáru pro trvalé časovače. Další informace naleznete v článku o [omezeních kódu funkce nástroje Orchestrator](durable-functions-code-constraints.md) .
 
 ## <a name="usage-for-delay"></a>Využití pro zpoždění

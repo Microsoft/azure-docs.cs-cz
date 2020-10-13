@@ -3,12 +3,12 @@ title: Kurz – kontrolní seznam pro plánování sítě
 description: Seznamte se s požadavky na požadavky na síť a podrobnostmi o připojení k síti a síťových portech pro řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 5538f9c5d6543ca312835f4ef6437e413dea231b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ee70b8a297e1b8418049ff229b3c1869819145b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576673"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948200"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Kontrolní seznam pro plánování sítě pro řešení Azure VMware 
 
@@ -37,6 +37,9 @@ Privátní cloud služby AVS je připojený k vaší službě Azure Virtual Netw
 
 Privátní cloudy služby AVS vyžadují minimálně `/22` blok síťových adres CIDR pro podsítě, které jsou uvedené níže. Tato síť doplňuje vaše místní sítě. Blok adres by se neměl překrývat s bloky adres používanými v jiných virtuálních sítích v rámci vašeho předplatného a místních sítí. V rámci tohoto bloku adres se automaticky zřídí Správa, zřizování a vMotion sítě.
 
+>[!NOTE]
+>Povolené rozsahy pro váš blok adres jsou privátní adresní prostory RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16), s výjimkou 172.17.0.0/16.
+
 Příklad `/22` bloku síťových adres CIDR:  `10.10.0.0/22`
 
 Podsítě:
@@ -51,7 +54,7 @@ Podsítě:
 
 ## <a name="required-network-ports"></a>Požadované síťové porty
 
-| Zdroj | Cíl | Protokol | Port | Description  | 
+| Zdroj | Cíl | Protokol | Port | Popis  | 
 | ------ | ----------- | :------: | :---:| ------------ | 
 | Server DNS privátního cloudu | Místní server DNS | UDP | 53 | Klient DNS – požadavky na přeposílání z PC vCenter pro všechny místní dotazy DNS (podívejte se na část DNS níže) |  
 | Místní server DNS   | Server DNS privátního cloudu | UDP | 53 | Klient DNS – požadavky na přeposílání z místních služeb na servery DNS privátního cloudu (podívejte se na část DNS níže) |  

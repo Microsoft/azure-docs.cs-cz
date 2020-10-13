@@ -10,15 +10,15 @@ ms.custom: include file
 ms.topic: include
 ms.date: 06/25/2020
 ms.openlocfilehash: 944b96e7726f2b2becd5960a17a89c00d00c878a
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91841938"
 ---
 Cílový výpočetní výkon, který používáte k hostování vašeho modelu, bude mít vliv na náklady a dostupnost nasazeného koncového bodu. Pomocí této tabulky můžete zvolit vhodný cíl služby Compute.
 
-| Cílový výpočetní objekt | Použití | Podpora GPU | Podpora FPGA | Popis |
+| Cílový výpočetní objekt | Použití | Podpora GPU | Podpora FPGA | Description |
 | ----- | ----- | ----- | ----- | ----- |
 | [Místní &nbsp; Webová &nbsp; Služba](../articles/machine-learning/how-to-deploy-local-container-notebook-vm.md) | Testování a ladění | &nbsp; | &nbsp; | Používá se pro omezené testování a řešení potíží. Hardwarová akcelerace závisí na použití knihoven v místním systému.
 | [&nbsp;Webová služba Azure Machine Learning COMPUTE instance &nbsp;](../articles/machine-learning/how-to-deploy-local-container-notebook-vm.md) | Testování a ladění | &nbsp; | &nbsp; | Používá se pro omezené testování a řešení potíží.
@@ -27,7 +27,7 @@ Cílový výpočetní výkon, který používáte k hostování vašeho modelu, 
 | [Výpočetní clustery Azure Machine Learning](../articles/machine-learning/how-to-use-parallel-run-step.md) | &nbsp;Odvození dávky | [Ano](../articles/machine-learning/how-to-use-parallel-run-step.md) (kanál strojového učení) | &nbsp;  | Spusťte dávkové vyhodnocování pro výpočetní prostředky bez serveru. Podporuje virtuální počítače s normálním a nízkou prioritou. |
 | [Azure Functions](../articles/machine-learning/how-to-deploy-functions.md) | Tisk Odvození v reálném čase | &nbsp; | &nbsp; | &nbsp; |
 | [Azure IoT Edge](../articles/machine-learning/how-to-deploy-and-where.md#iotedge) | Tisk &nbsp;Modul IoT |  &nbsp; | &nbsp; | Nasaďte a zajišťovat modely strojového učení na zařízeních IoT. |
-| [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | Přes IoT Edge |  &nbsp; | Ano | Nasaďte a zajišťovat modely strojového učení na zařízeních IoT. |
+| [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | Přes IoT Edge |  &nbsp; | Yes | Nasaďte a zajišťovat modely strojového učení na zařízeních IoT. |
 
 > [!NOTE]
 > I když výpočetní prostředky, jako jsou místní, Azure Machine Learning výpočetní prostředí a Azure Machine Learning výpočetní clustery, podporují GPU pro školení a experimentování, při použití GPU pro odvození _při nasazení jako webové služby_ se podporuje jenom AKS.

@@ -8,10 +8,10 @@ ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
 ms.openlocfilehash: 9a9cdef27276aa589a4aadd853185b0e3fb4be61
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91773735"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Oblasti a zóny dostupnosti v Azure
@@ -22,7 +22,7 @@ Služby Microsoft Azure Services jsou k dispozici globálně, aby bylo možné p
 
 Pro lepší pochopení oblastí a Zóny dostupnosti v Azure vám pomůže pochopit klíčové pojmy nebo koncepty.
 
-| Termín nebo koncept | Popis |
+| Termín nebo koncept | Description |
 | --- | --- |
 | oblast | Sada Datacenter nasazených v hraničním prostředí určeném pro latenci a připojená přes vyhrazenou síť s nízkou latencí. |
 | geografické | Oblast světa, která obsahuje alespoň jednu oblast Azure. Geografické oblasti definují diskrétní trh, který zachovává rozsahy dat a hranice dodržování předpisů. Zeměpisné oblasti umožňují zákazníkům se specifickými požadavky na rezidenci dat a dodržování předpisů, aby měli svoje data a aplikace blízko. Geografické oblasti jsou odolné proti chybám, které vydržely selhání celé oblasti prostřednictvím připojení k naší vyhrazené síťové infrastruktuře s vysokou kapacitou. |
@@ -79,7 +79,7 @@ Pokud nabídka služeb není v konkrétní oblasti dostupná, můžete svůj zá
 | Typ oblasti | Bez regionu | Základní | Hlavní fáze | Specializovaná | Zóny dostupnosti | Rezidence dat |
 | --- | --- | --- | --- | --- | --- | --- |
 | Doporučeno | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Řízený na základě poptávky | :heavy_check_mark: | :heavy_check_mark: |
-| Střídat | :heavy_check_mark: | :heavy_check_mark: | Řízený na základě poptávky | Řízený na základě poptávky | – | :heavy_check_mark: |
+| Střídat | :heavy_check_mark: | :heavy_check_mark: | Řízený na základě poptávky | Řízený na základě poptávky | Není k dispozici | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>Služby podle kategorie
 
@@ -107,14 +107,14 @@ Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: zák
 > | Cloud Services: Vyhrazená IP adresa | Azure Databricks | Azure VMware Solution by CloudSimple |
 > | Disk Storage | Azure DDoS Protection | Cloud Services: Řada G |
 > | Event Hubs | Azure DevTest Labs | Cloud Services: řada H-Series |
-> | Key Vault | Azure Firewall | Cognitive Services: Custom Vision |
+> | Key Vault | Brána Azure Firewall | Cognitive Services: Custom Vision |
 > | Nástroj pro vyrovnávání zatížení | Azure Firewall Manager | Cognitive Services: rozpoznávání mluvčího |
 > | Service Bus | Azure Functions | Data Box Heavy |
 > | Service Fabric | Azure HPC Cache | Data Catalog |
 > | Virtual Machine Scale Sets | Azure IoT Hub | Data Factory: Data Factory v1 |
 > | Virtual Machines | Azure Kubernetes Service (AKS) | Data Lake Analytics |
 > | Virtual Machines: Av2-Series | Azure Machine Learning | Azure Machine Learning Studio (klasický)|
-> | Virtual Machines: BS-Series | Azure Private Link | Microsoft Genomics |
+> | Virtual Machines: Bs-Series | Azure Private Link | Microsoft Genomics |
 > | Virtual Machines: DSv2-Series | Azure Red Hat OpenShift | Remote Rendering |
 > | Virtual Machines: DSv3-Series | Služba Azure SignalR | Spatial Anchors |
 > | Virtual Machines: Dv2-Series | Azure Site Recovery | StorSimple |
@@ -122,21 +122,21 @@ Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: zák
 > | Virtual Machines: ESv3-Series | Azure Stream Analytics | Virtual Machines: DASv4-Series |
 > | Virtual Machines: Ev3-Series | Azure Synapse Analytics | Virtual Machines: DAv4-Series |
 > | Virtual Machines: řada F-Series | Batch | Virtual Machines: DCsv2-Series |
-> | Virtual Machines: řada FS | Cloud Services: řada M-Series | Virtual Machines: EASv4-Series |
+> | Virtual Machines: FS-Series | Cloud Services: řada M-Series | Virtual Machines: EASv4-Series |
 > | Virtual Machines: IP adresy na úrovni instance | Cognitive Services | Virtual Machines: EAv4-Series |
 > | Virtual Machines: Vyhrazená IP adresa | Cognitive Services: Počítačové zpracování obrazu | Virtual Machines: Řada G |
-> | Virtual Network | Cognitive Services: Content Moderator | Virtual Machines: řady GS-Series |
+> | Virtual Network | Cognitive Services: Content Moderator | Virtual Machines: GS-Series |
 > | VPN Gateway | Cognitive Services: Face | Virtual Machines: HBv1-Series |
 > |  | Cognitive Services: Nástroj pro rozpoznávání formulářů | Virtual Machines: HBv2-Series |
 > |  | Cognitive Services: Language Understanding | Virtual Machines: HCv1-Series |
 > |  | Cognitive Services: QnA Maker | Virtual Machines: řada H-Series |
-> |  | Cognitive Services: hlasové služby | Virtual Machines: řada LS-Series |
+> |  | Cognitive Services: hlasové služby | Virtual Machines: LS-Series |
 > |  | Container Instances | Virtual Machines: LSv2-Series |
 > |  | Container Registry | Virtual Machines: Mv2-Series |
 > |  | Data Factory | Virtual Machines: NC-Series |
 > |  | Event Grid | Virtual Machines: NCv2-Series |
 > |  | HDInsight | Virtual Machines: NCv3-Series |
-> |  | Logic Apps | Virtual Machines: řada NDs |
+> |  | Logic Apps | Virtual Machines: NDs-Series |
 > |  | Media Services | Virtual Machines: NDv2-Series |
 > |  | Network Watcher | Virtual Machines: NV-Series |
 > |  | Notification Hubs | Virtual Machines: NVv3-Series |
@@ -148,7 +148,7 @@ Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: zák
 > |  | Virtual Machines: Ddsv4-Series |  |
 > |  | Virtual Machines: Ddv4-Series |  |
 > |  | Virtual Machines: Dsv4-Series |  |
-> |  | Virtual Machines: dv4-Series |  |
+> |  | Virtual Machines: Dv4-Series |  |
 > |  | Virtual Machines: Edsv4-Series |  |
 > |  | Virtual Machines: Edv4-Series |  |
 > |  | Virtual Machines: Esv4-Series |  |

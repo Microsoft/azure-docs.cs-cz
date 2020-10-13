@@ -1,14 +1,14 @@
 ---
 title: 'Kurz: Vytvoření vlastní definice zásady'
 description: V tomto kurzu vytvoříte vlastní definici zásad pro Azure Policy, která vynutila vlastní obchodní pravidla pro vaše prostředky Azure.
-ms.date: 06/16/2020
+ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24058a2c8428d306c5e53a73393b0d98785831cf
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89649827"
+ms.locfileid: "91876290"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Kurz: Vytvoření vlastní definice zásady
 
@@ -66,12 +66,15 @@ Existuje mnoho způsobů, jak určit vlastnosti prostředku Azure. Podíváme se
 
 ### <a name="arm-templates"></a>Šablony ARM
 
-Existuje několik způsobů, jak se podívat na [šablonu správce prostředků](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) , která obsahuje vlastnost, kterou chcete spravovat.
+Existuje několik způsobů, jak se podívat na [ARM](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) , který obsahuje vlastnost, kterou chcete spravovat.
 
 #### <a name="existing-resource-in-the-portal"></a>Existující prostředek na portálu
 
 Nejjednodušší způsob, jak najít vlastnosti, je podívat se na existující prostředek stejného typu. Prostředky, které jsou už nakonfigurované s nastavením, které chcete vyhodnotit, taky poskytují hodnotu pro porovnání.
 Podívejte se na stránku **Exportovat šablonu** (v části **nastavení**) v Azure Portal pro tento konkrétní prostředek.
+
+> [!WARNING]
+> Šablona ARM exportovaná pomocí Azure Portal nemůže být přímo připojena do `deployment` vlastnosti pro šablonu ARM v definici zásady [deployIfNotExists](../concepts/effects.md#deployifnotexists) .
 
 :::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Snímek stránky pro export šablony na existujícím prostředku v Azure Portal." border="false":::
 

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 09/07/2020
+ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: fa71cd502f730844e4f4398d41d06ada56fc2413
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d71181c5f45ab63febae7288f07189dc52ea12fd
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602281"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945909"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Podpora pro přesun virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -155,7 +155,7 @@ Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |20 M
 NIC | Podporováno | Zadejte existující prostředek v cílové oblasti nebo vytvořte nový prostředek během procesu přípravy. 
 Interní nástroj pro vyrovnávání zatížení | Podporováno | Zadejte existující prostředek v cílové oblasti nebo vytvořte nový prostředek během procesu přípravy.  
 Veřejný nástroj pro vyrovnávání zatížení | Aktuálně se nepodporuje. | Zadejte existující prostředek v cílové oblasti nebo vytvořte nový prostředek během procesu přípravy.  
-Veřejná IP adresa | Podporováno | Zadejte existující prostředek v cílové oblasti nebo vytvořte nový prostředek během procesu přípravy.  
+Veřejná IP adresa | Podporováno | Zadejte existující prostředek v cílové oblasti nebo vytvořte nový prostředek během procesu přípravy.<br/><br/> Veřejná IP adresa je specifická pro oblast a v cílové oblasti se po přesunutí nezachová. Pamatujte na to, když upravíte nastavení sítě (včetně pravidel vyrovnávání zatížení) v cílovém umístění.
 Skupina zabezpečení sítě | Podporováno | Zadejte existující prostředek v cílové oblasti nebo vytvořte nový prostředek během procesu přípravy.  
 Rezervovaná (statická) IP adresa | Podporováno | Tuto konfiguraci teď nejde nakonfigurovat. Výchozí hodnota je zdrojová hodnota. <br/><br/> Pokud má síťová karta ve zdrojovém virtuálním počítači statickou IP adresu a v cílové podsíti je k dispozici stejná IP adresa, je přiřazena k cílovému virtuálnímu počítači.<br/><br/> Pokud cílová podsíť nemá k dispozici stejnou IP adresu, iniciace virtuálního počítače se nezdaří.
 Dynamická IP adresa | Podporováno | Tuto konfiguraci teď nejde nakonfigurovat. Výchozí hodnota je zdrojová hodnota.<br/><br/> Pokud má síťová karta ve zdroji dynamické přidělování IP adres, síťová karta cílového virtuálního počítače je ve výchozím nastavení také dynamická.
@@ -172,7 +172,7 @@ Virtuální počítače Azure, které chcete přesunout, vyžadují odchozí př
 
 **Název** | **Veřejný cloud Azure** | **Podrobnosti** 
 --- | --- | --- 
-Storage | `*.blob.core.windows.net`  | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. 
+Úložiště | `*.blob.core.windows.net`  | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. 
 Azure Active Directory | `login.microsoftonline.com`  | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. 
 Replikace | `*.hypervrecoverymanager.windowsazure.com` | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. 
 Service Bus | `*.servicebus.windows.net` | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. 

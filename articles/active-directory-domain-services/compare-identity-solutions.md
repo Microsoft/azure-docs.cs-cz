@@ -2,20 +2,20 @@
 title: Porovnání služeb založených na službě Active Directory v Azure | Microsoft Docs
 description: V tomto přehledu porovnáte různé nabídky identit pro Active Directory Domain Services, Azure Active Directory a Azure Active Directory Domain Services.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
-ms.author: iainfou
-ms.openlocfilehash: af4ebcac38d4714b8a133087fe328b4d2f6c4872
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: joflore
+ms.openlocfilehash: 0576fdaa9bdcc90636c3cd2bc90ba2818f1e69e7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91396361"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962662"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Porovnání samoobslužně spravovaných Active Directory Domain Services, Azure Active Directory a spravovaných Azure Active Directory Domain Services
 
@@ -99,8 +99,8 @@ Zařízení je možné připojit k Azure AD s hybridním nasazením nebo bez ně
 | **Typ zařízení**                                        | **Platformy zařízení**             | **Mechanismus**          |
 |:----------------------------------------------------------| -------------------------------- | ---------------------- |
 | Osobní zařízení                                          | Windows 10, iOS, Android, macOS | Registrováno v Azure AD    |
-| Zařízení vlastněné organizací není připojené k místnímu služba AD DS | Windows 10                       | Připojené k Azure AD        |
-| Zařízení patřící organizaci připojené k místnímu služba AD DS  | Windows 10                       | k hybridní službě Azure AD. |
+| Zařízení vlastněné organizací není připojené k místnímu služba AD DS | Windows 10                       | Připojené k Azure AD        |
+| Zařízení patřící organizaci připojené k místnímu služba AD DS  | Windows 10                       | k hybridní službě Azure AD. |
 
 V případě zařízení připojeného k Azure AD se k ověřování uživatelů používá moderní protokoly založené na protokolu OAuth/OpenID Connect. Tyto protokoly jsou navržené tak, aby fungovaly přes Internet, takže jsou skvělé pro mobilní scénáře, kdy uživatelé přistupují k podnikovým prostředkům odkudkoli.
 
@@ -110,7 +110,7 @@ U zařízení připojených k Azure služba AD DS můžou aplikace používat pr
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | Zařízení, které ovládá            | Azure AD                                            | Spravovaná doména Azure služba AD DS                                                |
 | Reprezentace v adresáři | Objekty zařízení v adresáři služby Azure AD            | Objekty počítače ve spravované doméně Azure služba AD DS                        |
-| Authentication                  | Protokoly založené na protokolu OAuth/OpenID Connect              | Protokoly Kerberos a NTLM                                               |
+| Ověřování                  | Protokoly založené na protokolu OAuth/OpenID Connect              | Protokoly Kerberos a NTLM                                               |
 | Správa                      | Software pro správu mobilních zařízení (MDM), jako je Intune | Zásady skupiny                                                              |
 | Sítě                      | Funguje přes Internet                             | Musí být připojen k virtuální síti, ve které je nasazena spravovaná doména, nebo s partnerským vztahem. |
 | Skvělé pro...                    | Mobilní zařízení koncových uživatelů nebo stolních počítačů                  | Serverové virtuální počítače nasazené v Azure                                              |

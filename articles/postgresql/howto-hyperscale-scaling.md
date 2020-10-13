@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/18/2020
 ms.openlocfilehash: dd59d0b09a28febfc0afe35d9f008ba0e0ee19ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295710"
 ---
 # <a name="server-group-size"></a>Velikost skupiny serverů
@@ -22,13 +22,13 @@ Možnost nasazení Citus () používá spolupracující databázové servery k p
 
 Velikost skupiny serverů, s ohledem na počet uzlů a jejich hardwarovou kapacitu, se snadno mění ([viz níže](#scale-a-hyperscale-citus-server-group)). Pořád ale musíte zvolit počáteční velikost pro novou skupinu serverů. Zde jsou některé tipy pro rozumnou volbu.
 
-### <a name="multi-tenant-saas-use-case"></a>Multi-tenant SaaS – případ použití
+### <a name="multi-tenant-saas-use-case"></a>SaaS Use-Case pro více tenantů
 
 Pro ty, které se migrují na Citus (a) z existující instance databáze PostgreSQL s jedním uzlem, doporučujeme vybrat cluster, ve kterém je celkový počet pracovních virtuální jádraů a paměti RAM v celkovém rozsahu stejný jako původní instance. V takových scénářích jsme viděli 3x vylepšení výkonu, protože horizontálního dělení vylepšuje využití prostředků a povoluje menší indexy atd.
 
 Počet virtuální jádra vyžadovaných pro uzel koordinátora závisí na stávajícím zatížení (propustnost zápisu/čtení). Uzel koordinátora nevyžaduje jako pracovní uzly tolik paměti RAM, ale přidělování paměti RAM se určuje na základě počtu vCore (jak je popsáno v [možnostech konfigurace Citus)](concepts-hyperscale-configuration-options.md), takže počet Vcore je v podstatě skutečným rozhodnutím.
 
-### <a name="real-time-analytics-use-case"></a>Případ použití analýzy v reálném čase
+### <a name="real-time-analytics-use-case"></a>Real-Time Analytics Use-Case
 
 Total virtuální jádra: při práci s daty v paměti RAM můžete očekávat lineární vylepšení výkonu na úrovni Citus (s poměrem k počtu jader pracovních procesů). Pro určení správného počtu virtuální jádra pro vaše potřeby zvažte aktuální latenci pro dotazy v databázi s jedním uzlem a požadovanou latenci v rámci škálování (Citus). Aktuální latenci vydělte požadovanou latencí a výsledek zaokrouhlete.
 

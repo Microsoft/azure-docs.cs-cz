@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/09/2020
 ms.author: b-juche
-ms.openlocfilehash: e4bd6371cb0264830ed84a8e80c373c1963cd798
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 0818d113b5475e847c009f979345e103d6e089bb
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932477"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938861"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury řešení s využitím Azure NetApp Files
 Tento článek poskytuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití Azure NetApp Files.  
@@ -73,6 +73,9 @@ Tato část poskytuje odkazy na řešení SAP v Azure.
 * [SAP HANA horizontálního navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na SUSE Linux Enterprise Server](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
 * [SAP HANA horizontálního navýšení kapacity s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na Red Hat Enterprise Linux](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
 
+### <a name="sap-iq-nls"></a>SAP SWEETIQ – NLS
+*   [Nasazení řešení SAP SWEETIQ-NLS HA pomocí Azure NetApp Files v SUSE Linux Enterprise Server](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-iq-nls-ha-solution-using-azure-netapp-files-on-suse/ba-p/1651172#.X2tDfpNzBh4.linkedin)
+
 ### <a name="sap-tech-community-and-blog-posts"></a>Technická komunita SAP a příspěvky na blogu 
 
 * [Azure NetApp Files – zálohování SAP HANA během několika sekund](https://blog.netapp.com/azure-netapp-files-sap-hana-backup-in-seconds/)
@@ -91,6 +94,7 @@ V této části najdete odkazy na řešení infrastruktury virtuálních klients
 * [Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows](../virtual-desktop/store-fslogix-profile.md#azure-platform-details)
 * [Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files](../virtual-desktop/create-fslogix-profile-container.md)
 * [Windows Virtual Desktop v podnikovém měřítku](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
+* [Microsoft FSLogix pro doporučené postupy pro podnikové Azure NetApp Files](/azure/architecture/example-scenario/wvd/windows-virtual-desktop-fslogix#azure-netapp-files-best-practices)
 
 ## <a name="hpc-solutions"></a>Řešení HPC
 
@@ -111,6 +115,7 @@ V této části najdete referenční informace pro řešení s vysokým výkonem
 
 * [Výhody použití Azure NetApp Files pro automatizaci elektronických návrhů](solutions-benefits-azure-netapp-files-electronic-design-automation.md)
 * [Azure CycleCloud: EDA HPC Lab s Azure NetApp Files](https://github.com/Azure/cyclecloud-hands-on-labs/blob/master/EDA/README.md)
+* [Azure pro Industry Semiconductor](https://azurecomcdn.azureedge.net/cvt-f40f39cd9de2d875ab0c198a8d7b186350cf0bca161e80d7896941389685d012/mediahandler/files/resourcefiles/azure-for-the-semiconductor-industry/Azure_for_the_Semiconductor_Industry.pdf)
 
 ### <a name="analytics"></a>Analýzy
 

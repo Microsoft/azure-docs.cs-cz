@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a2fe1b8bdc80a5265add22bd3602050034471fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dec5aeaac6f39a106899094e674864d3bd10dc02
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87036433"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966334"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Řešení potíží s připojením aplikace na virtuálních počítačích v Azure
 
@@ -122,7 +122,7 @@ Pokud nemůžete získat přístup k aplikaci, ověřte následující nastaven�
   
   * Ověřte, jestli Konfigurace příchozího pravidla NAT pro virtuální počítač povoluje příchozí přenosy, zejména protokol (TCP nebo UDP), a čísla veřejných a privátních portů.
   * Ověřte, že skupiny zabezpečení sítě povolují příchozí požadavek a provoz odchozích odpovědí.
-  * Další informace najdete v tématu [co je skupina zabezpečení sítě](../../virtual-network/security-overview.md) .
+  * Další informace najdete v tématu [co je skupina zabezpečení sítě](../../virtual-network/network-security-groups-overview.md) .
 
 Pokud je virtuální počítač nebo koncový bod členem sady s vyrovnáváním zatížení:
 
@@ -140,7 +140,7 @@ Pokud máte přístup k aplikaci, ujistěte se, že vaše zařízení Internet E
 
 Další informace najdete v tématu [Přehled monitorování sítě Azure](../../network-watcher/network-watcher-monitoring-overview.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 [Řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure se systémem Windows](troubleshoot-rdp-connection.md)
 
 [Řešení potíží s připojením Secure Shell (SSH) k virtuálnímu počítači Azure se systémem Linux](troubleshoot-ssh-connection.md)

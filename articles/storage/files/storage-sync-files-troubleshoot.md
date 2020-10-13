@@ -8,10 +8,10 @@ ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: a93c127d0b04667b0f28949f4b384f22769bace4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90018590"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
@@ -195,7 +195,7 @@ Na serveru, na kterém se zobrazuje stav "je v režimu offline" na portálu, se 
 - Pokud byl **dokončen GetNextJob se stavem:-2134347756** , server nebude schopen komunikovat se službou Azure File Sync z důvodu brány firewall nebo proxy serveru. 
     - Pokud je server za bránou firewall, ověřte, že je povolený odchozí port 443. Pokud brána firewall omezuje provoz do konkrétních domén, zkontrolujte, že jsou dostupné domény uvedené v [dokumentaci](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) k bráně firewall.
     - Pokud je server za proxy, nakonfigurujte nastavení proxy serveru na úrovni počítače nebo aplikace podle kroků v [dokumentaci k](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)proxy serveru.
-    - Pomocí rutiny Test-StorageSyncNetworkConnectivity Zkontrolujte síťové připojení k koncovým bodům služby. Další informace najdete v tématu [Test připojení k síti koncových bodů služby](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints).
+    - Pomocí rutiny Test-StorageSyncNetworkConnectivity ověřte síťové připojení k koncovým bodům služby. Další informace najdete v tématu [Test připojení k síti koncových bodů služby](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints).
 
 - Pokud byl **dokončen GetNextJob se stavem:-2134347764** , server nebude schopen komunikovat se službou Azure File Sync z důvodu vypršení platnosti nebo odstranění certifikátu.  
     - Spusťte na serveru následující příkaz PowerShellu pro resetování certifikátu použitého pro ověřování:
@@ -1027,7 +1027,7 @@ Nejprve vytvořte skupinu souborů správce prostředků souborového serveru po
 New-FsrmFileGroup -Name "Unsupported characters" -IncludePattern @(("*"+[char]0x00000090+"*"),("*"+[char]0x0000008F+"*"))
 ```
 
-Po definování skupiny souborů správce prostředků souborového serveru můžete pomocí rutiny New-FsrmFileScreen vytvořit obrazovku souboru Správce prostředků souborového serveru.
+Po definování skupiny souborů správce prostředků souborového serveru můžete pomocí rutiny New-FsrmFileScreen vytvořit obrazovku souboru prostředků souborového serveru.
 
 ```powershell
 New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported characters" -IncludeGroup "Unsupported characters"
@@ -1146,7 +1146,7 @@ Pokud se soubory nepodaří odvolat:
 | 0x80c86030 | -2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | Soubor se nepovedlo navrátit, protože sdílená složka Azure není dostupná. | Ověřte, že sdílená složka existuje a je přístupná. Pokud se sdílená složka odstranila a znovu vytvořila, proveďte kroky popsané v tématu [synchronizace se nezdařila, protože byla odstraněna a znovu vytvořená sdílená složka Azure](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134375810) , která odstraní a znovu vytvoří skupinu synchronizace. |
 | 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Soubor se nepovedlo navrátit kvůli nedostatečným systémovým prostředkům. | Pokud s tím budou dál problémy, prozkoumejte, kterou aplikaci nebo ovladač režimu jádra vyčerpá systémové prostředky. |
 | 0x8007000e | -2147024882 | ERROR_OUTOFMEMORY | Soubor se nepovedlo navrátit z důvodu nedostatku paměti. | Pokud s tím budou dál problémy, prozkoumejte, která aplikace nebo ovladač režimu jádra způsobují nedostatek paměti. |
-| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Stažení souboru z důvodu nedostatku místa na disku se nezdařilo. | Chcete-li tento problém vyřešit, uvolněte místo na svazku přesunutím souborů na jiný svazek, zvyšte velikost svazku nebo vynuťte soubory na vrstvu pomocí rutiny Invoke-StorageSyncCloudTiering. |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Stažení souboru z důvodu nedostatku místa na disku se nezdařilo. | Chcete-li tento problém vyřešit, uvolněte místo na svazku přesunutím souborů na jiný svazek, zvětšete velikost svazku nebo vynuťte vynutit používání souborů pomocí rutiny Invoke-StorageSyncCloudTiering. |
 
 ### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>Po odstranění koncového bodu serveru jsou vrstvené soubory na serveru nedostupné
 Vrstvené soubory na serveru budou nepřístupné, pokud se soubory před odstraněním koncového bodu serveru nevrátí.

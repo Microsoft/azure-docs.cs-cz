@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/10/2019
 ms.openlocfilehash: c0e35b94b4322d9273e5793c85792eb2bbd34d05
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536065"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Vytvoření a konfigurace clusterů Balíček zabezpečení podniku ve službě Azure HDInsight
@@ -159,7 +159,7 @@ Vytvořte správce tenanta služby Active Directory.
     |Vlastnost |Popis |
     |---|---|
     |Uživatelské jméno|`fabrikamazureadmin`Do textového pole zadejte. V rozevíracím seznamu název domény vyberte `hdifabrikam.com`|
-    |Název| Zadejte `fabrikamazureadmin`.|
+    |Name| Zadejte `fabrikamazureadmin`.|
 
     **Heslo**
     1. Vyberte možnost **Chci vytvořit heslo**.
@@ -186,7 +186,7 @@ Vytvořte správce tenanta služby Active Directory.
 
 1. Z řadiče domény stáhněte [Microsoft Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594).
 
-1. Otevřete spustitelný soubor, který jste stáhli, a vyjádřete souhlas s licenčními podmínkami. Vyberte **pokračovat**.
+1. Otevřete spustitelný soubor, který jste stáhli, a vyjádřete souhlas s licenčními podmínkami. Vyberte **Pokračovat**.
 
 1. Vyberte **Použít expresní nastavení**.
 
@@ -218,7 +218,7 @@ Vytvořte spravovanou identitu přiřazenou uživatelem, kterou můžete použí
 1. Přihlaste se k portálu Azure.
 1. Vyberte **vytvořit prostředek** a typ `managed identity` . Vyberte možnost vytvořit **spravovanou identitu přiřazenou uživatelem**  >  **Create**.
 1. Jako **název prostředku**zadejte `HDIFabrikamManagedIdentity` .
-1. Vyberte předplatné.
+1. Vyberte své předplatné.
 1. V části **Skupina prostředků**vyberte **vytvořit nové** a zadejte `HDIFabrikam-CentralUS` .
 1. V části **umístění**vyberte **střed USA**.
 1. Vyberte **Vytvořit**.
@@ -252,7 +252,7 @@ Pomocí následujícího postupu povolíte Azure služba AD DS. Další informac
 1. Na stránce **základy** :
     1. V části **název adresáře**vyberte adresář služby Azure AD, který jste vytvořili: **HDIFabrikam**.
     1. Jako **název domény DNS**zadejte *HDIFabrikam.com*.
-    1. Vyberte předplatné.
+    1. Vyberte své předplatné.
     1. Zadejte skupinu prostředků **HDIFabrikam-CentralUS**. V **oblasti umístění**vyberte **střed USA**.
 
         ![Podrobnosti o Azure služba AD DS základní](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0084.png)
@@ -358,7 +358,7 @@ Ověřte, zda je certifikát nainstalován v **osobním** úložišti počítač
         | Protokol | Libovolný |
         | Akce | Povolit |
         | Priorita | \<Desired number> |
-        | Název | Port_LDAP_636 |
+        | Name | Port_LDAP_636 |
 
     ![Dialogové okno Přidat příchozí pravidlo zabezpečení](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 

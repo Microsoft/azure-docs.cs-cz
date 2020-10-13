@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: d44866e2d04ab1bab5d2eca01374350a7d73a0ea
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577335"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play"></a>Glosář termínů pro IoT technologie Plug and Play
@@ -81,7 +81,7 @@ Nástroj pro sestavovatele zařízení používá model a [rozhraní](#interface
 
 Digitální vlákna je model [zařízení IoT technologie Plug and Play](#iot-plug-and-play-device). Digitální vlákna je modelováno pomocí [jazyka definice digitálních vláken](#digital-twins-definition-language). Sady [SDK pro zařízení Azure IoT](#azure-iot-device-sdk) můžete použít k interakci s digitálními interakcemi v době běhu. Například můžete nastavit hodnotu vlastnosti v poli digitálního vlákna na zařízení a sada SDK oznámí tuto změnu řešení IoT v cloudu.
 
-## <a name="digital-twin-change-events"></a>Události změny digitálního vlákna
+## <a name="digital-twin-change-events"></a>Události změn digitálního dvojčete
 
 Když je [zařízení iot technologie Plug and Play](#iot-plug-and-play-device) připojené ke službě [IoT Hub](#azure-iot-hub), může centrum využít schopnost směrování k posílání oznámení o digitálních prostředcích, které se mění. Například pokaždé, když se v zařízení změní hodnota [vlastnosti](#properties) , IoT Hub může odeslat oznámení na koncový bod, jako je například centrum událostí.
 
@@ -101,7 +101,7 @@ Rozhraní popisuje související možnosti, které jsou implementovány [zaříz
 
 Dotazovací jazyk IoT Hub slouží k více účelům. Jazyk můžete například použít k vyhledání zařízení zaregistrovaných ve službě IoT Hub nebo k upřesnění chování [digitálního zdvojeného směrování](#digital-twin-route) .
 
-## <a name="iot-plug-and-play-bridge"></a>Most IoT technologie Plug and Play
+## <a name="iot-plug-and-play-bridge"></a>Přemostění IoT Plug and Play
 
 IoT technologie Plug and Play most je open-source aplikace, která umožňuje stávající senzory a periferní zařízení připojená k bránám systému Windows nebo Linux připojit se jako [zařízení technologie Plug and Play IoT](#iot-plug-and-play-device).
 

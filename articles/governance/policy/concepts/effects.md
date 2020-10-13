@@ -1,14 +1,14 @@
 ---
 title: Vysvětlení fungování efektů
 description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
-ms.date: 09/15/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: b6622796ab0554f692a3b64e0b41d60f49c561b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19811eca33be7dff4d9bee5b8bd89dd38f185a57
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252000"
+ms.locfileid: "91873944"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -98,7 +98,7 @@ Audit se používá k vytvoření události upozornění v protokolu aktivit př
 
 ### <a name="audit-evaluation"></a>Vyhodnocení auditu
 
-Audit je poslední efekt, který při vytváření nebo aktualizaci prostředku kontrolovala Azure Policy. V režimu Správce prostředků Azure Policy pak odešle prostředek poskytovateli prostředků. Audit funguje stejně jako požadavek prostředku a cyklus vyhodnocení. Azure Policy přidá `Microsoft.Authorization/policies/audit/action` operaci do protokolu aktivit a označí prostředek jako nevyhovující.
+Audit je poslední efekt, který při vytváření nebo aktualizaci prostředku kontrolovala Azure Policy. V režimu Správce prostředků Azure Policy pak odešle prostředek poskytovateli prostředků. Audit funguje stejně jako požadavek prostředku a cyklus vyhodnocení. U nových a aktualizovaných prostředků Azure Policy přidá `Microsoft.Authorization/policies/audit/action` operaci do protokolu aktivit a označí prostředek jako nevyhovující.
 
 ### <a name="audit-properties"></a>Vlastnosti auditu
 
@@ -145,7 +145,7 @@ AuditIfNotExists umožňuje auditování prostředků _souvisejících_ s prost�
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists vyhodnocování
 
-AuditIfNotExists se spustí poté, co poskytovatel prostředků zpracuje požadavek na vytvoření nebo aktualizaci prostředku a vrátil kód stavu úspěch. K auditu dojde, pokud neexistují žádné související prostředky nebo pokud se prostředky definované pomocí **ExistenceCondition** nevyhodnotí jako true. Azure Policy `Microsoft.Authorization/policies/audit/action` do protokolu aktivit přidá operaci stejným způsobem jako v důsledku auditu. Když se aktivuje, prostředek, který splnil podmínku **if** , je prostředek, který je označený jako nevyhovující.
+AuditIfNotExists se spustí poté, co poskytovatel prostředků zpracuje požadavek na vytvoření nebo aktualizaci prostředku a vrátil kód stavu úspěch. K auditu dojde, pokud neexistují žádné související prostředky nebo pokud se prostředky definované pomocí **ExistenceCondition** nevyhodnotí jako true. U nových a aktualizovaných prostředků Azure Policy přidá `Microsoft.Authorization/policies/audit/action` operaci do protokolu aktivit a označí prostředek jako nevyhovující. Když se aktivuje, prostředek, který splnil podmínku **if** , je prostředek, který je označený jako nevyhovující.
 
 ### <a name="auditifnotexists-properties"></a>Vlastnosti AuditIfNotExists
 

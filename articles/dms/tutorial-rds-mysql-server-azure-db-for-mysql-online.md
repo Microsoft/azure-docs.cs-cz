@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 06/09/2020
-ms.openlocfilehash: 916d5ee49838c1e8564b24432b9d5876ed619ab5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8948bdeb2f8b82fbabacdbbb73c7b43741c75df
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291397"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938436"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Kurz: Online migrace MySQL do služby Azure Database for MySQL přes Vzdálenou plochu pomocí DMS
 
@@ -72,6 +72,10 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     * binlog_checksum = žádné
 3. Uložte novou skupinu parametrů.
 4. Přidružte novou skupinu parametrů k instanci služby RDS MySQL. Může být nutné restartovat počítač.
+5. Jakmile je skupina parametrů zavedena, připojte se k instanci MySQL a [nastavte uchování binlog](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/mysql_rds_set_configuration.html#mysql_rds_set_configuration-usage-notes.binlog-retention-hours) aspoň na 5 dní.
+```
+call mysql.rds_set_configuration('binlog retention hours', 120);
+```
 
 ## <a name="migrate-the-schema"></a>Migrace schématu
 
