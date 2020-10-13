@@ -5,18 +5,18 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f45e8435ea26e575398801471904b5038a518a44
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78250181"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948829"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Otestování rozhraní portálu pro Azure Managed Applications
 
 Po [vytvoření createUiDefinition.jspro soubor](create-uidefinition-overview.md) pro spravovanou aplikaci je nutné otestovat činnost koncového uživatele. Pro zjednodušení testování použijte prostředí izolovaného prostoru (sandbox), které načte váš soubor na portálu. Nemusíte ve skutečnosti nasazovat spravovanou aplikaci. Sandbox prezentuje vaše uživatelské rozhraní v aktuálním, samoobslužném portálu pro celou obrazovku. Nebo můžete použít skript pro otestování rozhraní. Oba přístupy jsou uvedené v tomto článku. Izolovaný prostor (sandbox) je doporučený způsob, jak zobrazit náhled rozhraní.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **createUiDefinition.jsv** souboru. Pokud tento soubor nemáte, zkopírujte [ukázkový soubor](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json).
 
@@ -36,7 +36,7 @@ Po [vytvoření createUiDefinition.jspro soubor](create-uidefinition-overview.md
 
    ![Zobrazit formulář](./media/test-createuidefinition/show-ui-form.png)
 
-### <a name="troubleshooting"></a>Poradce při potížích
+### <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se formulář po výběru **náhledu**nezobrazí, může dojít k chybě syntaxe. Vyhledejte červený indikátor na pravém posuvníku a přejděte k němu.
 
@@ -104,4 +104,4 @@ Teď, když jste ověřili, že rozhraní vašeho portálu pracuje podle očeká
 
 ## <a name="next-steps"></a>Další kroky
 
-Po ověření rozhraní portálu se dozvíte, jak [v Marketplace zpřístupnit spravovanou aplikaci Azure](publish-marketplace-app.md).
+Po ověření rozhraní portálu se dozvíte, jak [v Marketplace zpřístupnit spravovanou aplikaci Azure](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).

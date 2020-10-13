@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57d66c844b7e73f1e3326d628f854a9811ca96fd
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91802697"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Přesunutí ověřování aplikace z Active Directory Federation Services (AD FS) na Azure Active Directory
@@ -94,7 +94,7 @@ Aktualizujte konfiguraci své produkční aplikace tak, aby odkazovala na produk
 
 Obchodní aplikace jsou vyvíjené interně ve vaší organizaci nebo dostupné jako standardní zabalený produkt, který je nainstalovaný v datovém centru. Mezi příklady patří aplikace založené na Windows Identity Foundation a aplikacích SharePoint (ne SharePoint Online).
 
-Obchodní aplikace, které používají OAuth 2,0, OpenID Connect nebo WS-Federation, je možné integrovat se službou Azure AD jako [Registrace aplikací](../develop/quickstart-register-app.md). Integrujte vlastní aplikace, které používají SAML 2,0 nebo WS-Federation, jako [aplikace mimo galerii](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app) na stránce podnikové aplikace v [Azure Portal](https://portal.azure.com/).
+Obchodní aplikace, které používají OAuth 2,0, OpenID Connect nebo WS-Federation, se dají integrovat s Azure AD jako [Registrace aplikací](../develop/quickstart-register-app.md). Integrujte vlastní aplikace, které používají SAML 2,0 nebo WS-Federation jako [aplikace mimo galerii](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app) na stránce podnikové aplikace v [Azure Portal](https://portal.azure.com/).
 
 ## <a name="saml-based-single-sign-on"></a>Jednotné přihlašování založené na SAML
 
@@ -171,7 +171,7 @@ Aplikace, které vyžadují následující možnosti, se nedají migrovat ješt�
 
 **Možnosti protokolu**
 
-* Podpora pro vzor ActAs WS-Trust
+* Podpora pro model WS-Trust ActAs
 
 * Překlad artefaktů SAML
 
@@ -198,13 +198,13 @@ Následující tabulka popisuje některé nejběžnější mapování nastavení
 
 | Nastavení konfigurace| AD FS| Jak konfigurovat v Azure AD| Token SAML |
 | - | - | - | - |
-| **Přihlašovací adresa URL aplikace** <p>Adresa URL pro uživatele, který se má přihlašovat k aplikaci v toku SAML iniciované poskytovatelem služeb (SP).| –| Otevře základní konfiguraci SAML z přihlašování založené na SAML.| – |
+| **Přihlašovací adresa URL aplikace** <p>Adresa URL pro uživatele, který se má přihlašovat k aplikaci v toku SAML iniciované poskytovatelem služeb (SP).| Není k dispozici| Otevře základní konfiguraci SAML z přihlašování založené na SAML.| Není k dispozici |
 | **Adresa URL odpovědi aplikace** <p>Adresa URL aplikace z perspektivy poskytovatele identity (IdP). IdP odesílá uživatele a token, když se uživatel přihlásí k IdP.  Toto je také známé jako **koncový bod příjemce kontrolního výrazu SAML**.| Vyberte kartu **koncové body** .| Otevře základní konfiguraci SAML z přihlašování založené na SAML.| Cílový element v tokenu SAML. Příklad hodnoty: `https://contoso.my.salesforce.com` |
-| **Adresa URL pro odhlášení z aplikace** <p>Toto je adresa URL, na kterou se odesílají žádosti o vyčištění odhlášení, když se uživatel z aplikace odhlásí. IdP odešle požadavek na odhlášení uživatele ze všech ostatních aplikací.| Vyberte kartu **koncové body** .| Otevře základní konfiguraci SAML z přihlašování založené na SAML.| – |
+| **Adresa URL pro odhlášení z aplikace** <p>Toto je adresa URL, na kterou se odesílají žádosti o vyčištění odhlášení, když se uživatel z aplikace odhlásí. IdP odešle požadavek na odhlášení uživatele ze všech ostatních aplikací.| Vyberte kartu **koncové body** .| Otevře základní konfiguraci SAML z přihlašování založené na SAML.| Není k dispozici |
 | **Identifikátor aplikace** <p>Toto je identifikátor aplikace z perspektivy IdP. Hodnota adresy URL pro přihlášení se často používá pro identifikátor (ale ne vždycky).  Někdy aplikace volá toto ID entity.| Vyberte kartu **identifikátory** .|Otevře základní konfiguraci SAML z přihlašování založené na SAML.| Provede mapování na element **cílové skupiny** v tokenu SAML. |
-| **Federační metadata aplikace** <p>Toto je umístění federačních metadat aplikace. Zprostředkovatel identity je používá k automatické aktualizaci konkrétních nastavení konfigurace, jako jsou koncové body nebo šifrovací certifikáty.| Vyberte kartu **monitorování** .| Není k dispozici. Azure AD nepodporuje přímé využívání federačních metadat aplikace. Federační metadata můžete ručně importovat.| – |
+| **Federační metadata aplikace** <p>Toto je umístění federačních metadat aplikace. Zprostředkovatel identity je používá k automatické aktualizaci konkrétních nastavení konfigurace, jako jsou koncové body nebo šifrovací certifikáty.| Vyberte kartu **monitorování** .| Není k dispozici. Azure AD nepodporuje přímé využívání federačních metadat aplikace. Federační metadata můžete ručně importovat.| Není k dispozici |
 | **Identifikátor uživatele/ID názvu** <p>Atribut sloužící k jedinečné identifikaci identity uživatele ze služby Azure AD nebo AD FS ve vaší aplikaci.  Tento atribut je obvykle buď hlavní název uživatele, nebo e-mailová adresa uživatele.| Pravidla deklarací identity. Ve většině případů pravidlo deklarace identity vydá deklaraci identity s typem, který končí na NameIdentifier.| Identifikátor najdete pod nadpisem **atributy uživatele a deklarace identity**. Ve výchozím nastavení se používá hlavní název uživatele (UPN).| Provede mapování na element **NameId** v tokenu SAML. |
-| **Další deklarace identity** <p>Příklady dalších informací o deklaraci identity, které se obvykle odesílají z IdP do aplikace, zahrnují křestní jméno, příjmení, e-mailovou adresu a členství ve skupinách.| Ve službě AD FS se nachází v podobě dalších pravidel deklarace identity na přijímající straně.| Identifikátor můžete najít pod nadpisy **atributy uživatele & deklarace identity**. Vyberte **Zobrazit** a upravte všechny ostatní atributy uživatele.| – |
+| **Další deklarace identity** <p>Příklady dalších informací o deklaraci identity, které se obvykle odesílají z IdP do aplikace, zahrnují křestní jméno, příjmení, e-mailovou adresu a členství ve skupinách.| Ve službě AD FS se nachází v podobě dalších pravidel deklarace identity na přijímající straně.| Identifikátor můžete najít pod nadpisy **atributy uživatele & deklarace identity**. Vyberte **Zobrazit** a upravte všechny ostatní atributy uživatele.| Není k dispozici |
 
 
 ### <a name="map-identity-provider-idp-settings"></a>Nastavení IdP (map identity Provider)
@@ -458,7 +458,7 @@ V závislosti na konfiguraci aplikace ověřte, že jednotné přihlašování f
 ‎ |
 | Jednotné přihlašování založené na SAML| Použijte tlačítko [Test nastavení SAML](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) , které se nachází v části **jednotné přihlašování**.
 ‎ |
-| Jednotné přihlašování založené na heslech| Stáhněte a nainstalujte si rozšíření pro [zabezpečené přihlašování](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [aplikace](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)MyApp. Toto rozšíření vám pomůže začít používat cloudové aplikace vaší organizace, které vyžadují použití procesu jednotného přihlašování.
+| Password-Based JEDNOTNÉHO PŘIHLAŠOVÁNÍ| Stáhněte a nainstalujte si rozšíření pro [zabezpečené přihlašování](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [aplikace](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)MyApp. Toto rozšíření vám pomůže začít používat cloudové aplikace vaší organizace, které vyžadují použití procesu jednotného přihlašování.
 ‎ |
 | Proxy aplikací| Ujistěte se, že váš konektor je spuštěný a přiřazený k vaší aplikaci. Další pomoc najdete v [Průvodci odstraňováním potíží s proxy aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) .
 ‎ |
@@ -484,7 +484,7 @@ Po dokončení nasazení můžete odeslat komunikaci s uživateli úspěšného 
 
 * Připomenout uživatelům, kteří můžou potřebovat aktualizovat nastavení MFA.
 
-* Pokud je nasazené Samoobslužné resetování hesla, uživatelé budou muset aktualizovat nebo ověřit své metody ověřování. [Seznamte se s](https://aka.ms/mfatemplates) [SSPRmi](https://aka.ms/ssprtemplates) komunikačními šablonami pro koncové uživatele.
+* Pokud se nasadí Self-Service resetování hesla, uživatelé budou muset aktualizovat nebo ověřit své metody ověřování. [Seznamte se s](https://aka.ms/mfatemplates) [SSPRmi](https://aka.ms/ssprtemplates) komunikačními šablonami pro koncové uživatele.
 
 Komunikace s externími uživateli: Tato skupina uživatelů je většinou v případě problémů postižena. To platí hlavně v případě, že váš stav zabezpečení nadiktují pro externí partnery jinou sadu pravidel podmíněného přístupu nebo profilů rizik. Zajistěte, aby si externí partneři dozvěděli o plánu migrace do cloudu a měli časový rámec, během kterého se jim doporučuje účastnit pilotního nasazení, které testuje všechny toky jedinečné pro externí spolupráci. Nakonec se ujistěte, že mají způsob, jak získat přístup k helpdesku v případě narušení problému.
 

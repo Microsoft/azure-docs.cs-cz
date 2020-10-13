@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
 ms.openlocfilehash: 3274e45738c079c89560f546fe58163f695e12df
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91851097"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava disku VHD nebo VHDX s Windows pro nahrání do Azure
@@ -197,7 +197,7 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
 
 1. Pokud je virtuální počítač součástí domény, zkontrolujte následující zásady, abyste se ujistili, že předchozí nastavení se nevrátí.
 
-    |                 Cíl                  |                                                                            Zásada                                                                            |                           Hodnota                            |
+    |                 Cíl                  |                                                                            Zásady                                                                            |                           Hodnota                            |
     | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
     | Protokol RDP je povolený.                        | Computer cestě konfigurace Settings\Administrative Templates\Components\Remote Desktop – pracovní relace, Host\Connections         | Umožňuje uživatelům vzdálené připojení pomocí vzdálené plochy.    |
     | NLA – zásady skupiny                      | Settings\Administrative Templates\Components\Remote Desktop – relace pro pracovní plochu – Host\Security                                                    | Vyžadovat ověření uživatele pro vzdálený přístup pomocí NLA |
@@ -241,7 +241,7 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
 
 1. Pokud je virtuální počítač součástí domény, zkontrolujte následující zásady služby Azure AD a ujistěte se, že předchozí nastavení nejsou obnovena.
 
-    |                 Cíl                 |                                                                         Zásada                                                                          |                  Hodnota                  |
+    |                 Cíl                 |                                                                         Zásady                                                                          |                  Hodnota                  |
     | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
     | Povolit profily brány Windows Firewall | Computer cestě konfigurace Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Chránit všechna síťová připojení         |
     | Povolit protokol RDP                           | Computer cestě konfigurace Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Povolit příchozí výjimky vzdálené plochy |

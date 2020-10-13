@@ -8,10 +8,10 @@ ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
 ms.openlocfilehash: 33355251a06ba076be3677b84e383793f9f25193
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570375"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)
@@ -779,7 +779,7 @@ V tomto článku jste zjistili, jaké porty a adresy se mají povolit, pokud chc
 
 V případě potřeby můžete generalizovat výše uvedené kroky a přesměrovat provoz do preferovaného řešení pro odchozí přenosy, a to podle [ `userDefinedRoute` dokumentace typu odchozí](egress-outboundtype.md).
 
-Pokud chcete omezit, jak lusky komunikují mezi sebou a omezeními provozu na východním východě v rámci clusteru, podívejte [se na téma zabezpečení provozu mezi lusky pomocí zásad sítě v AKS][network-policy].
+Pokud chcete omezit, jak lusky komunikují mezi sebou a East-Westm omezením provozu v rámci clusteru, podívejte [se na téma zabezpečení provozu mezi lusky pomocí zásad sítě v AKS][network-policy].
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

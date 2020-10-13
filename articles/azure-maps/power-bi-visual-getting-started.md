@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: aecda5ed9b87ba2345a52923a574919d6a08594f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362667"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Začínáme s Azure Maps Power BI vizuál
@@ -92,7 +92,7 @@ Pro načtení Azure Maps vizuálu proveďte následující kroky:
 
 V podokně **pole** Azure Mapsového vizuálu jsou k dispozici následující datové bloky.
 
-| Pole     | Popis  |
+| Pole     | Description  |
 |-----------|--------------|
 | Zeměpisná šířka  | Pole, které slouží k zadání hodnoty zeměpisné šířky datových bodů. Hodnoty zeměpisné šířky by měly být v rozmezí od-90 do 90 ve formátu desetinného stupně.  |
 | Zeměpisná délka | Pole, které slouží k zadání zeměpisné hodnoty datových bodů. Hodnoty Zeměpisná délka by měly být v rozmezí od-180 do 180 ve formátu desetinného stupně.  |

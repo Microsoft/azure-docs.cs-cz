@@ -8,10 +8,10 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
 ms.openlocfilehash: 69bee753c2134b6eebe9c5df0a554c965208ad7c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91366224"
 ---
 # <a name="tutorial-connect-to-a-storage-account-using-an-azure-private-endpoint"></a>Kurz: připojení k účtu úložiště pomocí privátního koncového bodu Azure
@@ -26,11 +26,11 @@ V tomto kurzu se naučíte:
 > * Vytvořte účet úložiště s privátním koncovým bodem.
 > * Otestujte připojení k privátnímu koncovému bodu účtu úložiště.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network-and-bastion-host"></a>Vytvoření virtuální sítě a hostitele bastionu
 
@@ -46,10 +46,10 @@ Hostitel bastionu se bude používat k zabezpečenému připojení k virtuální
     |------------------|-----------------------------------------------------------------|
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Vyberte své předplatné Azure.                                  |
-    | Skupina prostředků   | Vybrat **myResourceGroup** |
+    | Resource Group   | Vybrat **myResourceGroup** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Region           | Vyberte **východní USA** |
+    | Oblast           | Vyberte **východní USA** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -98,10 +98,10 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
     |-----------------------|----------------------------------|
     | **Podrobnosti o projektu** |  |
     | Předplatné | Vyberte své předplatné Azure. |
-    | Skupina prostředků | Vybrat **myResourceGroup** |
+    | Resource Group | Vybrat **myResourceGroup** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM** |
-    | Region | Vyberte **východní USA** |
+    | Oblast | Vyberte **východní USA** |
     | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury** . |
     | Image | Vyberte **Windows Server 2019 Datacenter – Gen1** |
     | Instance Azure Spot | Vybrat **ne** |
@@ -140,7 +140,7 @@ V této části vytvoříte účet úložiště a nakonfigurujete privátní kon
     |-----------------------|----------------------------------|
     | **Podrobnosti o projektu** |  |
     | Předplatné | Vyberte své předplatné Azure. |
-    | Skupina prostředků | Vybrat **myResourceGroup** |
+    | Resource Group | Vybrat **myResourceGroup** |
     | **Podrobnosti o instancích** |  |
     | Název účtu úložiště | Zadejte **mystorageaccount**. Pokud není název k dispozici, zadejte jedinečný název. |
     | Umístění | Vyberte **východní USA** |
@@ -159,7 +159,7 @@ V této části vytvoříte účet úložiště a nakonfigurujete privátní kon
     | Nastavení | Hodnota                                          |
     |-----------------------|----------------------------------|
     | Předplatné | Vyberte své předplatné Azure. |
-    | Skupina prostředků | Vybrat **myResourceGroup** |
+    | Resource Group | Vybrat **myResourceGroup** |
     | Umístění | Vyberte **východní USA** |
     | Name | Zadejte **myPrivateEndpoint** |
     | Prostředek úložiště | Ponechte výchozí **objekt BLOB** . |

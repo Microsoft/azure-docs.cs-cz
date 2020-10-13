@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: alkohli
 ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91839941"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>Technické specifikace a dodržování předpisů pro Azure Stack Edge pro pomocí GPU 
@@ -47,14 +47,14 @@ Zařízení Azure Stack Edge pro má dvě 100-240 V jednotkách napájení (PSUs
 | Maximální výstupní výkon    | 750 W                     |
 | Frequency               | 50/60 Hz                   |
 | Výběr rozsahu napětí | Automatické rozsahy: 100-240 V AC |
-| Horká, připojitelná           | Ano                        |
+| Horká, připojitelná           | Yes                        |
 
 
 ## <a name="network-interface-specifications"></a>Specifikace síťového rozhraní
 
 Vaše zařízení Azure Stack Edge pro má šest síťových rozhraní PORT1-PORT6.
 
-| Specifikace           | Popis                 |
+| Specifikace           | Description                 |
 |-------------------------|----------------------------|
 |  Síťová rozhraní    | **rozhraní 2 X 1 GbE** – 1 rozhraní pro správu se používá pro počáteční instalaci a ve výchozím nastavení je statický. Po dokončení počáteční instalace můžete použít rozhraní pro data s libovolnou IP adresou. Při resetování se ale rozhraní vrátí zpět na statickou IP adresu. <br>Druhý port rozhraní 2 je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP. <br>**4 X 25 rozhraní rozhraní** – tato datová rozhraní, port 3 až port 6, můžou být nakonfigurovaná uživatelem jako DHCP (výchozí) nebo static. Můžou také fungovat jako rozhraní s 10 GbE.  | 
 

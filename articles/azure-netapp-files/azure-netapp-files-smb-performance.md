@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 6a7bf07359344e26280021a6a55eecc5b96b7a86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a07c6ae48cdca68a95db7770d90076eb8f10f95
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653685"
+ms.locfileid: "91929452"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Nejčastější dotazy týkající se výkonu protokolu SMB pro Azure NetApp Files
 
@@ -39,7 +39,7 @@ V případě, že je povolená funkce SMB vícekanálový, naváže klient SMB3 
 
 ## <a name="which-windows-versions-support-smb-multichannel"></a>Které verze systému Windows podporují vícekanálový protokol SMB?
 
-Windows podporuje vícekanálový protokol SMB, protože systém Windows 2012 pro zajištění nejlepšího výkonu.  Podrobnosti najdete v tématu [nasazení vícekanálového protokolu SMB](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11)) a [základní informace o službě SMB vícekanálový](https://blogs.technet.microsoft.com/josebda/2012/06/28/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0/) . 
+Windows podporuje vícekanálový protokol SMB, protože systém Windows 2012 pro zajištění nejlepšího výkonu.  Podrobnosti najdete v tématu [nasazení vícekanálového protokolu SMB](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11)) a [základní informace o službě SMB vícekanálový](/archive/blogs/josebda/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0) . 
 
 
 ## <a name="does-my-azure-virtual-machine-support-rss"></a>Podporuje můj virtuální počítač Azure technologii RSS?
@@ -132,7 +132,7 @@ Po spuštění datového provozu na svazcích můžete monitorovat adaptéry v n
 
 ## <a name="is-accelerated-networking-recommended"></a>Doporučuje se akcelerované síťové služby?
 
-Pro maximální výkon se doporučuje nakonfigurovat [urychlené síťové služby](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) tam, kde je to možné. Mějte na paměti následující skutečnosti:  
+Pro maximální výkon se doporučuje nakonfigurovat [urychlené síťové služby](../virtual-network/create-vm-accelerated-networking-powershell.md) tam, kde je to možné. Mějte na paměti následující skutečnosti:  
 
 * Azure Portal ve výchozím nastavení povoluje akcelerované síťové služby pro virtuální počítače, které tuto funkci podporují.  Jiné metody nasazení, jako například Ansible a podobné konfigurační nástroje, ale nemusí.  Nepovedlo se povolit akcelerované síťové služby, může Hobble výkon počítače.  
 * Pokud není v síťovém rozhraní virtuálního počítače povolená možnost akcelerované sítě kvůli nedostatku podpory pro typ nebo velikost instance, zůstane zakázaná s většími typy instancí. V těchto případech budete potřebovat ruční zásah.

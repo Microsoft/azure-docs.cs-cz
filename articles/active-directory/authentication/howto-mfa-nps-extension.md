@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: f7214668fc63ec8bb2e0c23d264c1aa01c9148ba
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91368346"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace stávající infrastruktury serveru NPS (Network Policy Server) s Azure Multi-Factor Authentication
@@ -70,7 +70,7 @@ Servery VPN směrují žádosti o ověření, takže potřebují vědět o nový
 
 Rozšíření serveru NPS je určeno pro práci s vaší stávající infrastrukturou. Než začnete, ujistěte se, že máte následující předpoklady.
 
-### <a name="licenses"></a>Licence
+### <a name="licenses"></a>Licenses
 
 Rozšíření serveru NPS pro Azure Multi-Factor Authentication je k dispozici pro zákazníky s [licencemi na azure Multi-Factor Authentication](multi-factor-authentication.md). Licence založené na spotřebě pro Azure Multi-Factor Authentication, jako jsou licence vázané na uživatele nebo na ověřování, nejsou kompatibilní s rozšířením NPS.
 

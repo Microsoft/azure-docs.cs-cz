@@ -8,16 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: c9277f510e71e4d6ecb6595aa2d67d16c2ac5695
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 730a29ff579ce6a1970ceafad5891611b52c059d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326024"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972284"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migrace prostředků IaaS do Azure Resource Manager do 1. března 2023 
 
-V 2014 jsme na [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)spustili infrastrukturu jako službu (IaaS). Od verze jsme vylepšili možnosti. Vzhledem k tomu, že Azure Resource Manager nyní má úplné možnosti IaaS a další zálohy, jsme za 28. února 2020 zakázali správu virtuálních počítačů s IaaS prostřednictvím [Azure Service Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#what-is-azure-service-manager-and-what-does-it-mean-by-classic) (ASM). Tato funkce bude plně vyřazena 1. března 2023. 
+V 2014 jsme na [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)spustili infrastrukturu jako službu (IaaS). Od verze jsme vylepšili možnosti. Vzhledem k tomu, že Azure Resource Manager nyní má úplné možnosti IaaS a další zálohy, jsme za 28. února 2020 zakázali správu virtuálních počítačů s IaaS prostřednictvím [Azure Service Manager](./migration-classic-resource-manager-faq.md#what-is-azure-service-manager-and-what-does-it-mean-by-classic) (ASM). Tato funkce bude plně vyřazena 1. března 2023. 
 
 V dnešní době se přibližně 90% virtuálních počítačů s IaaS používá Azure Resource Manager. Pokud používáte prostředky IaaS prostřednictvím ASM, začněte plánovat migraci hned teď. Dokončete ji od 1. března 2023, abyste mohli využít výhod [Azure Resource Manager](../azure-resource-manager/management/index.yml).
 
@@ -42,18 +42,18 @@ Začněte plánovat migraci na Azure Resource Manager dnes.
 1. Vytvořit seznam všech ovlivněných virtuálních počítačů: 
 
    - Virtuální počítače typu **virtuální počítače (Classic)** v [podokně virtuální počítač Azure Portal](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines) jsou všechny ovlivněné virtuální počítače v rámci předplatného. 
-   - [K zobrazení](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) seznamu všech virtuálních počítačů označených příznakem (Classic) a souvisejících informací pro vybraná předplatná se můžete dotazovat také pomocí [portálu](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22) Azure Resource Graph. 
+   - [K zobrazení](../governance/resource-graph/concepts/work-with-data.md) seznamu všech virtuálních počítačů označených příznakem (Classic) a souvisejících informací pro vybraná předplatná se můžete dotazovat také pomocí [portálu](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22) Azure Resource Graph. 
    - Od 8. února 2020 jsme odeslali e-maily vlastníkům předplatného seznam všech předplatných, která obsahují tyto virtuální počítače (Classic). Použijte je prosím k sestavení tohoto seznamu. 
 
 1. [Přečtěte si další informace](./windows/migration-classic-resource-manager-overview.md) o migraci virtuálních počítačů se systémem [Linux](./linux/migration-classic-resource-manager-plan.md) a [Windows](./windows/migration-classic-resource-manager-plan.md) (Classic) na Azure Resource Manager. Další informace najdete v tématu [Nejčastější dotazy k migraci z modelu Classic na Azure Resource Manager](./migration-classic-resource-manager-faq.md).
 
-1. Pro migraci stávajících virtuálních počítačů se třemi jednoduchými kroky doporučujeme spustit plánování pomocí [Nástroje pro migraci podpory platformy](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview) : Ověřte, připravte a potvrďte. Tento nástroj je navržený tak, aby se virtuální počítače migrovali do minimálního výpadku. 
+1. Pro migraci stávajících virtuálních počítačů se třemi jednoduchými kroky doporučujeme spustit plánování pomocí [Nástroje pro migraci podpory platformy](./windows/migration-classic-resource-manager-overview.md) : Ověřte, připravte a potvrďte. Tento nástroj je navržený tak, aby se virtuální počítače migrovali do minimálního výpadku. 
 
    1. První krok, ověřit, nemá žádný vliv na stávající nasazení a obsahuje seznam všech nepodporovaných scénářů migrace. 
-   1. Projděte si [seznam alternativních řešení](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview#unsupported-features-and-configurations) a opravte nasazení a připravte ho na migraci. 
+   1. Projděte si [seznam alternativních řešení](./windows/migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) a opravte nasazení a připravte ho na migraci. 
    1. V ideálním případě, když jsou všechny chyby ověřování opraveny, neměli byste během postupu přípravy a potvrzení narazit na žádné problémy. Po úspěšném potvrzení se nasazení migruje za provozu do Azure Resource Manager a pak se dá spravovat prostřednictvím nových rozhraní API vystavených Azure Resource Manager. 
 
-   Pokud nástroj pro migraci není vhodný pro migraci, můžete prozkoumat [jiné výpočetní nabídky](https://docs.microsoft.com/azure/architecture/guide/technology-choices/compute-decision-tree) pro migraci. Vzhledem k tomu, že existuje spousta nabídek Azure COMPUTE a liší se od sebe, nemůžeme jim poskytnout cestu k migraci podporovanou platformou.  
+   Pokud nástroj pro migraci není vhodný pro migraci, můžete prozkoumat [jiné výpočetní nabídky](/azure/architecture/guide/technology-choices/compute-decision-tree) pro migraci. Vzhledem k tomu, že existuje spousta nabídek Azure COMPUTE a liší se od sebe, nemůžeme jim poskytnout cestu k migraci podporovanou platformou.  
 
 1. V případě technických otázek, problémů a pomoci s přidáním předplatných do seznamu povolených [služeb se obraťte na podporu](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"}).
 
@@ -61,11 +61,10 @@ Začněte plánovat migraci na Azure Resource Manager dnes.
 
 ## <a name="what-resources-are-available-for-this-migration"></a>Jaké prostředky jsou k dispozici pro tuto migraci?
 
-- [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-virtual-machines-migration.html): Podpora Microsoftu a komunity pro migraci.
+- [Microsoft Q&A](/answers/topics/azure-virtual-machines-migration.html): Podpora Microsoftu a komunity pro migraci.
 
 - [Podpora migrace do Azure](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}): tým vyhrazené podpory pro technickou pomoc při migraci.
 
 - [Rychlé sledování společnosti Microsoft](https://www.microsoft.com/fasttrack): rychlá stopa může pomáhat oprávněným zákazníkům s plánováním & provádění této migrace. [Jmenujeme sami sebe](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0).  
 
-- Pokud vaše společnost nebo organizace spolupracuje se společností Microsoft nebo spolupracuje s zástupci Microsoftu (jako jsou architekti cloudových řešení (CSAs) nebo správci technického účtu (TAMs)), pracujte s nimi pro další prostředky pro migraci. 
-
+- Pokud vaše společnost nebo organizace spolupracuje se společností Microsoft nebo spolupracuje s zástupci Microsoftu (jako jsou architekti cloudových řešení (CSAs) nebo správci technického účtu (TAMs)), pracujte s nimi pro další prostředky pro migraci.

@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.openlocfilehash: ed0f486afe466d31388fa99b4ce5f5754210533f
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91571382"
 ---
 # <a name="set-redis-version-for-azure-cache-for-redis-preview"></a>Nastavte verzi Redis pro Azure cache pro Redis (Preview).
 V tomto článku se dozvíte, jak nakonfigurovat verzi Redis softwaru, která se má použít s instancí mezipaměti. Azure cache for Redis nabízí nejnovější hlavní verzi Redis a alespoň jednu předchozí verzi. Tyto verze se pravidelně aktualizují, protože se uvolní novější software Redis. Můžete si vybrat mezi dvěma dostupnými verzemi. Mějte na paměti, že mezipaměť bude upgradována na další verzi automaticky v případě, že verze, kterou aktuálně používá, již není podporována.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
 > [!NOTE]
@@ -36,7 +36,7 @@ Mezipaměť vytvoříte pomocí následujících kroků:
    
     | Nastavení      | Navrhovaná hodnota  | Popis |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Předplatné** | Vyberte předplatné. | Předplatné, ve kterém se má vytvořit Tato nová mezipaměť Azure pro instanci Redis | 
+    | **Předplatné** | Vyberte své předplatné. | Předplatné, ve kterém se má vytvořit Tato nová mezipaměť Azure pro instanci Redis | 
     | **Skupina prostředků** | Vyberte skupinu prostředků nebo vyberte **vytvořit novou** a zadejte nový název skupiny prostředků. | Název skupiny prostředků, ve které se má vytvořit mezipaměť a další prostředky Po uložení všech prostředků vaší aplikace do jedné skupiny prostředků je můžete snadno spravovat nebo odstraňovat společně. | 
     | **Název DNS** | Zadejte globálně jedinečný název. | Název mezipaměti musí být řetězec v rozmezí 1 až 63 znaků, který obsahuje jenom čísla, písmena nebo spojovníky. Název musí začínat a končit číslicí nebo písmenem a nesmí obsahovat po sobě jdoucí spojovníky. *Název hostitele* vaší instance mezipaměti bude * \<DNS name> . Redis.cache.Windows.NET*. | 
     | **Umístění** | Vyberte umístění. | Vyberte [oblast](https://azure.microsoft.com/regions/) poblíž jiných služeb, které budou používat vaši mezipaměť. |

@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: b6984bfdf7ec078d02999bccf77f3592cfbcab27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e11e08d861538ddf395f522495798546e04ca7c
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75649985"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948948"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>Nastavení Azure Functions pro vlastní zprostředkovatele Azure
 
@@ -51,7 +51,7 @@ Pokud chcete nastavit funkci Azure, aby zahrnovala metody žádosti RESTful vlas
 > [!NOTE]
 > Pokud soubor projektu C# chybí v adresáři projektu, můžete ho přidat ručně. Případně se zobrazí po instalaci rozšíření Microsoft. Azure. WebJobs. Extensions. Storage do aplikace Function App.
 
-Dále aktualizujte soubor projektu C# tak, aby zahrnoval užitečné knihovny NuGet. Tyto knihovny usnadňují analýzu příchozích požadavků od vlastních poskytovatelů. Použijte postup [Přidání rozšíření z portálu](../../azure-functions/install-update-binding-extensions-manual.md) a aktualizujte soubor projektu C# tak, aby zahrnoval následující odkazy na balíčky:
+Dále aktualizujte soubor projektu C# tak, aby zahrnoval užitečné knihovny NuGet. Tyto knihovny usnadňují analýzu příchozích požadavků od vlastních poskytovatelů. Použijte postup [Přidání rozšíření z portálu](../../azure-functions/functions-bindings-register.md) a aktualizujte soubor projektu C# tak, aby zahrnoval následující odkazy na balíčky:
 
 ```xml
 <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.4" />
@@ -80,4 +80,3 @@ Následující element XML je příkladem souboru projektu jazyka C#:
 V tomto kurzu nastavíte aplikaci funkcí Azure, která bude fungovat jako koncový bod vlastního zprostředkovatele Azure.
 
 Další informace o tom, jak vytvořit RESTful koncový bod vlastního zprostředkovatele, najdete v tématu [kurz: vytváření koncového bodu vlastního zprostředkovatele RESTful](./tutorial-custom-providers-function-authoring.md).
-

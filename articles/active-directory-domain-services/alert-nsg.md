@@ -2,7 +2,7 @@
 title: Vyřešit výstrahy skupiny zabezpečení sítě v Azure služba AD DS | Microsoft Docs
 description: Přečtěte si, jak řešit a řešit výstrahy konfigurace skupiny zabezpečení sítě pro Azure Active Directory Domain Services
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 584c03dc798bc21ddd5538e58d0f9047c55c5372
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: f8917d7bd8fc1a4091607b9a405cfefbb51bc188
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86040448"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962781"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: výstrahy konfigurace sítě v Azure Active Directory Domain Services
 
@@ -38,7 +38,7 @@ Pro skupinu zabezpečení sítě pro spravovanou doménu se aplikují následuj�
 
 ### <a name="inbound-security-rules"></a>Příchozí pravidla zabezpečení
 
-| Priorita | Name | Port | Protokol | Zdroj | Cíl | Akce |
+| Priorita | Název | Port | Protokol | Zdroj | Cíl | Akce |
 |----------|------|------|----------|--------|-------------|--------|
 | 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Všechny | Povolit |
 | 201      | AllowRD | 3389 | TCP | CorpNetSaw | Všechny | Povolit |
@@ -52,7 +52,7 @@ Pro skupinu zabezpečení sítě pro spravovanou doménu se aplikují následuj�
 
 ### <a name="outbound-security-rules"></a>Odchozí pravidla zabezpečení
 
-| Priorita | Name | Port | Protokol | Zdroj | Cíl | Akce |
+| Priorita | Název | Port | Protokol | Zdroj | Cíl | Akce |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Všechny | Všechny | VirtualNetwork | VirtualNetwork | Povolit |
 | 65001    | AllowAzureLoadBalancerOutBound | Všechny | Všechny |  Všechny | Internet | Povolit |

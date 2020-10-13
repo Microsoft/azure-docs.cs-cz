@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: f9134b57d8a3e76417283e5d863724651b4f6a6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2fc174147b99b7b952c6d10084cfc969dacf5a6
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87921159"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949135"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Kurz: kopírování dat do Azure Data Box BLOB Storage přes rozhraní REST API  
 
@@ -122,11 +122,11 @@ Pomocí následujícího postupu naimportujte `.cer` soubor do kořenového úlo
 
 3.  Vyberte možnost **umístit všechny certifikáty do následujícího úložiště**a pak klikněte na tlačítko **Procházet**. Přejděte do kořenového úložiště vzdáleného hostitele a klikněte na **Další**.
 
-    ![Import certifikátu pomocí PowerShellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![Import certifikátu pomocí PowerShellu 2](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
 4.  Klikněte na **Finish** (Dokončit). Zobrazí se zpráva oznamující, že import proběhl úspěšně.
 
-    ![Import certifikátu pomocí PowerShellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![Import certifikátu pomocí PowerShellu 3](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>Použití systému Linux
 
@@ -249,7 +249,7 @@ Dalším krokem je příprava zařízení k odeslání.
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 
 > [!div class="checklist"]
-> * Požadavky
+> * Předpoklady
 > * Připojení k Data Box BLOB Storage přes *http* nebo *https*
 > * Kopírování dat do Data Boxu Heavy
 
