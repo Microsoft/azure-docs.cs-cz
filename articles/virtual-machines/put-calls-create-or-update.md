@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.date: 08/4/2020
 ms.custom: avverma
-ms.openlocfilehash: c57025346a9f623e3fe5536b36820ea62f355cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6ee4179dce905d637e933743ade7452a2484077
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344638"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978556"
 ---
 # <a name="put-calls-for-creation-or-updates-on-compute-resources"></a>VLOŽENÍ volání pro vytváření nebo aktualizace výpočetních prostředků
 
@@ -66,5 +66,4 @@ To je důležité při posílání operací aktualizace prostředku s úmyslem o
 `
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o tom, jak vytvořit nebo aktualizovat volání pro [Virtual Machines](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) a [Virtual Machine Scale Sets](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)
-
+Další informace o tom, jak vytvořit nebo aktualizovat volání pro [Virtual Machines](/rest/api/compute/virtualmachines/createorupdate) a [Virtual Machine Scale Sets](/rest/api/compute/virtualmachinescalesets/createorupdate)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.author: v-miegge
-ms.openlocfilehash: 9c170607d6300c4921285e85ac78db5a8a18ad9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bde091b4a4559c3574ee122d74574d1f9477f3fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90078802"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977044"
 ---
 # <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>Řešení potíží s tím, že Windows nemůže dokončit konfiguraci systému
 
@@ -28,7 +28,7 @@ Tento článek popisuje kroky k vyřešení problémů, které proces Sysprep zn
 
 ## <a name="symptom"></a>Příznak
 
-Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje chybu instalace systému Windows, když instalační program systému Windows spouští služby. Tato chyba zobrazí zprávu:
+Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje chybu instalace systému Windows, když instalační program systému Windows spouští služby. Tato chyba zobrazí zprávu:
 
 `Windows could not finish configuring the system. To attempt to resume configuration, restart the computer. Setup is starting services`
 
@@ -36,8 +36,8 @@ Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtua
 
 ## <a name="cause"></a>Příčina
 
-Tato chyba je způsobena tím, že operační systém (OS) nemůže dokončit [proces Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-process-overview). K této chybě dojde, když se pokusíte o počáteční spuštění zobecněného virtuálního počítače. Pokud k tomuto problému dojde, znovu vytvořte zobecněnou bitovou kopii, protože bitová kopie je ve stavu undeployed a nelze ji obnovit.
+Tato chyba je způsobena tím, že operační systém (OS) nemůže dokončit [proces Sysprep](/windows-hardware/manufacture/desktop/sysprep-process-overview). K této chybě dojde, když se pokusíte o počáteční spuštění zobecněného virtuálního počítače. Pokud k tomuto problému dojde, znovu vytvořte zobecněnou bitovou kopii, protože bitová kopie je ve stavu undeployed a nelze ji obnovit.
 
 ## <a name="solution"></a>Řešení
 
-Pokud chcete tento problém vyřešit, postupujte podle pokynů [pro Azure na stránce Příprava/zachycení image](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed) a Příprava nové generalizované image.
+Pokud chcete tento problém vyřešit, postupujte podle pokynů [pro Azure na stránce Příprava/zachycení image](../windows/upload-generalized-managed.md) a Příprava nové generalizované image.

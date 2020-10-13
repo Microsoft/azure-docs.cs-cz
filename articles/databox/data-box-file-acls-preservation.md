@@ -6,18 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 74b8bfcd8cfedaa7c5e24b6c29d9229a4db5828a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8df77356b6b5b1b40e2abd772e13c2e811413ae
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450701"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950308"
 ---
 # <a name="preserving-file-acls-attributes-and-timestamps-with-azure-data-box"></a>Zachování seznamů ACL souborů, atributů a časových razítek pomocí Azure Data Box
 
-Azure Data Box umožňuje zachovat seznamy řízení přístupu (ACL), časová razítka a atributy souborů při odesílání dat do Azure. Tento článek popisuje metadata, která můžete přenést při kopírování dat do Data Box prostřednictvím protokolu SMB (Server Message Block) k nahrání do souborů Azure. K dispozici jsou konkrétní kroky pro kopírování metadat pomocí nástrojů pro kopírování dat v systému Windows a Linux.
+Azure Data Box umožňuje zachovat seznamy řízení přístupu (ACL), časová razítka a atributy souborů při odesílání dat do Azure. Tento článek popisuje metadata, která můžete přenést při kopírování dat do Data Box prostřednictvím protokolu SMB (Server Message Block) k nahrání do souborů Azure. 
+
+K dispozici jsou konkrétní kroky pro kopírování metadat pomocí nástrojů pro kopírování dat v systému Windows a Linux. Při přenosu dat do úložiště objektů BLOB se metadata nezachovají.
 
 V tomto článku se seznamy ACL, časová razítka a atributy souborů, které se přenesou, označují souhrnně jako *metadata*.
 

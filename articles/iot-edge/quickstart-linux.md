@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3540add3020c45e5664f96f5c47dec10a551ed4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee267bda44cde77cf5d3434cd75eecaf34bd5264
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91857023"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978845"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rychlý Start: nasazení prvního modulu IoT Edge do virtuálního zařízení se systémem Linux
 
@@ -45,7 +45,7 @@ Přidejte rozšíření Azure IoT do instance Cloud Shell.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Cloudové prostředky:
 
@@ -109,7 +109,7 @@ Během konfigurace modulu runtime zadáte připojovací řetězec zařízení. T
 
 ### <a name="deploy-the-iot-edge-device"></a>Nasazení zařízení IoT Edge
 
-Tato část používá šablonu Azure Resource Manager k vytvoření nového virtuálního počítače a instalaci IoT Edge modulu runtime. Pokud místo toho chcete použít vlastní zařízení se systémem Linux, můžete postupovat podle pokynů k instalaci v části [Instalace modulu runtime Azure IoT Edge v systému Linux](how-to-install-iot-edge-linux.md)a pak se vrátit k tomuto rychlému startu.
+Tato část používá šablonu Azure Resource Manager k vytvoření nového virtuálního počítače a instalaci IoT Edge modulu runtime. Pokud místo toho chcete použít vlastní zařízení se systémem Linux, můžete postupovat podle pokynů k instalaci [Azure IoT Edge modul runtime](how-to-install-iot-edge.md)a pak se vrátit k tomuto rychlému startu.
 
 Pomocí následujícího příkazu rozhraní příkazového řádku vytvořte zařízení IoT Edge na základě předem sestavené šablony [iotedge-VM-Deploy](https://github.com/Azure/iotedge-vm-deploy) .
 

@@ -10,10 +10,10 @@ ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
 ms.openlocfilehash: ba903793844e44b26931a70183860c983adaf18a
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743399"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Kurz: instalace Azure Stack Edge pro s grafickým procesorem
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Stojan připojit zařízení
 > * Zapojení kabeláže zařízení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Požadavky pro instalaci fyzického zařízení jsou následující:
 
@@ -86,7 +86,7 @@ Zařízení musí být nainstalované na standardním racku na 19 palců. Pomoc�
 > Zařízení Azure Stack Edge pro musí být připojená do racku pro správnou operaci.
 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Než začnete, přečtěte si pokyny pro bezpečnost v brožuře o zabezpečení, ochraně životního prostředí a regulativní informace. Tato brožura byla dodávána se zařízením.
 - Zahajte instalaci kolejnic do vyhrazeného místa, které je nejblíže k dolnímu okraji skříňky racku.

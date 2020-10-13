@@ -12,12 +12,12 @@ ms.date: 09/24/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4566e3d40a67a9cd9d61f78884df11536c0809bc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259539"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949288"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
@@ -178,7 +178,6 @@ Při konfiguraci brandingu společnosti v Azure AD B2C mějte na paměti tyto v�
 
 * Branding společnosti v Azure AD B2C je aktuálně omezen na **obrázek na pozadí**, **logo banneru**a přizpůsobení **barvy pozadí** . Ostatní vlastnosti v podokně Branding společnosti, například v části **Rozšířená nastavení**, nejsou *podporovány*.
 * Na stránkách toku uživatele se zobrazuje barva pozadí před načtením obrázku na pozadí. Doporučujeme, abyste si zvolili barvu pozadí, která se přesně shoduje s barvami v obrázku na pozadí pro účely hladkého načítání.
-* Logo banner se zobrazí v ověřovacích e-mailech odesílaných uživatelům při zahájení uživatelského toku registrace.
 
 ### <a name="enable-branding-in-user-flow-pages"></a>Povolit brandingování na stránkách toku uživatele
 

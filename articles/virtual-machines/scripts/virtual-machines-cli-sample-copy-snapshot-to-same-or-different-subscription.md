@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: ce2eaac6189e3b9c0550948eddfddd018deac90b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52efdb91328b5d9349eb3724c4a146348e4a975a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89052249"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978573"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>Kopírování snímku spravovaného disku do stejného nebo jiného předplatného pomocí rozhraní příkazového řádku
 
@@ -25,6 +25,9 @@ Tento skript zkopíruje snímek spravovaného disku do stejného nebo jiného p�
 1. Migrujte snímek ve službě Premium Storage (Premium_LRS) do úložiště úrovně Standard (Standard_LRS nebo Standard_ZRS), abyste snížili náklady.
 1. Migrujte snímek z místně redundantního úložiště (Premium_LRS, Standard_LRS) do zóny redundantního úložiště (Standard_ZRS), abyste využili vyšší spolehlivosti úložiště ZRS.
 1. Přesunutí snímku do jiného předplatného ve stejné oblasti pro delší dobu uchování.
+
+> [!NOTE]
+> Oba odběry se musí nacházet ve stejném tenantovi.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 

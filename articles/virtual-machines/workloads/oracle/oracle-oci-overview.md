@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: kegorman
 ms.custom: ''
-ms.openlocfilehash: a73d327ad2a251b5043da7e58c14e5f6f311e334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9d8838747c4f7ff195a5451a3c68f5cf891c91f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274499"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978454"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Řešení aplikací Oracle integrující Microsoft Azure a Oracle cloudovou infrastrukturu
 
@@ -68,7 +68,7 @@ Pomocí ExpressRoute a FastConnect můžou zákazníci vytvořit partnerský vzt
 
 Zabezpečení sítě je zásadní součástí libovolné podnikové aplikace a je centrální k tomuto řešení pro více cloudů. Veškerý provoz procházející ExpressRoute a FastConnect se předává přes soukromou síť. Tato konfigurace umožňuje zabezpečenou komunikaci mezi virtuální sítí Azure a virtuální cloudovou sítí Oracle. Nemusíte zadávat veřejnou IP adresu pro žádné virtuální počítače v Azure. Obdobně nepotřebujete internetovou bránu v rozhraní OCI. Veškerá komunikace probíhá prostřednictvím privátní IP adresy počítačů.
 
-Kromě toho můžete nastavit [seznamy zabezpečení](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) ve vaší virtuální cloudové síti OCI a pravidla zabezpečení (připojené ke [skupinám zabezpečení sítě](../../../virtual-network/security-overview.md)Azure). Pomocí těchto pravidel můžete řídit tok provozu mezi počítači ve virtuálních sítích. Pravidla zabezpečení sítě je možné přidat na úrovni počítače, na úrovni podsítě a také na úrovni virtuální sítě.
+Kromě toho můžete nastavit [seznamy zabezpečení](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) ve vaší virtuální cloudové síti OCI a pravidla zabezpečení (připojené ke [skupinám zabezpečení sítě](../../../virtual-network/network-security-groups-overview.md)Azure). Pomocí těchto pravidel můžete řídit tok provozu mezi počítači ve virtuálních sítích. Pravidla zabezpečení sítě je možné přidat na úrovni počítače, na úrovni podsítě a také na úrovni virtuální sítě.
 
 [Aplikace WebLogic Server Azure](oracle-weblogic.md) každý vytvoří skupinu zabezpečení sítě, která je předem nakonfigurovaná tak, aby fungovala s konfiguracemi portů serveru WebLogic Server.
  

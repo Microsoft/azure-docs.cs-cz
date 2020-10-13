@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: 7ddbb48f3598780988feb25a11729a5086d31fde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a87c2b571027e0304909e69b252c9e080c4da9c1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869265"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978624"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora Cloud-init pro virtuální počítače v Azure
 V tomto článku se dozvíte, jak podpora pro [Cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat virtuální počítač (VM) nebo službu Virtual Machine Scale Sets v době zřizování v Azure. Tyto konfigurace Cloud-init se po prvním spuštění spustí, jakmile se prostředky zřídí v Azure.  
@@ -152,7 +152,7 @@ az vm create \
 
 Po vytvoření virtuálního počítače se v Azure CLI zobrazí informace, které jsou specifické pro vaše nasazení. Poznamenejte si `publicIpAddress`. Tato adresa se používá pro přístup k virtuálnímu počítači.  Vytvoření virtuálního počítače bude chvíli trvat, balíčky, které se mají nainstalovat, a aplikaci, která se má spustit. Když vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. K virtuálnímu počítači se můžete přihlásit přes SSH a pomocí kroků popsaných v části řešení potíží zobrazit protokoly Cloud-init. 
 
-Virtuální počítač s povolenou inicializací cloudu můžete nasadit taky tak, že [v ŠABLONĚ ARM](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli#inline-parameters)předáte parametry.
+Virtuální počítač s povolenou inicializací cloudu můžete nasadit taky tak, že [v ŠABLONĚ ARM](../../azure-resource-manager/templates/deploy-cli.md#inline-parameters)předáte parametry.
 
 ## <a name="troubleshooting-cloud-init"></a>Řešení potíží s cloudem a inicializací
 Po zřízení virtuálního počítače se Cloud-init spustí prostřednictvím všech modulů a skriptu definovaných v nástroji, aby `--custom-data` bylo možné virtuální počítač nakonfigurovat.  Pokud potřebujete odstranit případné chyby nebo opomenutí z konfigurace, je třeba vyhledat název modulu ( `disk_setup` `runcmd` například) v protokolu Cloud-init, který se nachází v **/var/log/Cloud-init.log**.
@@ -173,4 +173,3 @@ Příklady změn konfigurace Cloud-init najdete v následujících dokumentech:
 - [Spusťte Správce balíčků, aby při prvním spuštění aktualizoval existující balíčky.](cloudinit-update-vm.md)
 - [Změnit místní název hostitele virtuálního počítače](cloudinit-update-vm-hostname.md) 
 - [Instalace balíčku aplikace, aktualizace konfiguračních souborů a vkládání klíčů](tutorial-automate-vm-deployment.md)
- 

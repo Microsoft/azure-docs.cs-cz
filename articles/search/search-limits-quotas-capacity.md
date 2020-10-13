@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 7e3a5fcdcead402d59e680fcba270e80b4eda8bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c422b9a70f679279d1310444aafb1f9131ff944
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843426"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949846"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Limity služby ve službě Azure Cognitive Search
 
@@ -104,12 +104,12 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 ### <a name="shared-private-link-resource-limits"></a>Omezení sdíleného prostředku privátního propojení
 
 > [!NOTE]
-> Indexery mají zabezpečený přístup k prostředkům přes soukromé koncové body spravované prostřednictvím [rozhraní API sdíleného privátního propojení](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) , jak je popsáno v [tomto průvodci](search-indexer-howto-access-private.md) .
+> Indexery mají zabezpečený přístup k prostředkům přes soukromé koncové body spravované prostřednictvím [rozhraní API sdíleného privátního propojení](/rest/api/searchmanagement/sharedprivatelinkresources) , jak je popsáno v [tomto průvodci](search-indexer-howto-access-private.md) .
 
 | Prostředek | Free | Základní | S1 | S2 | S3 | S3 HD | L1 | Paměť
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Podpora indexeru privátního koncového bodu | No | Yes | Yes | Yes | Yes | No | Yes | Yes |
-| Podpora privátního koncového bodu pro indexery s dovednosti<sup>1</sup> | No | No | No | Yes | Yes | No | Yes | Yes |
+| Podpora indexeru privátního koncového bodu | No | Ano | Ano | Ano | Ano | No | Ano | Ano |
+| Podpora privátního koncového bodu pro indexery s dovednosti<sup>1</sup> | No | No | No | Ano | Ano | No | Ano | Ano |
 | Maximální počet privátních koncových bodů | Není k dispozici | 10 nebo 30 | 100 | 400 | 400 | Není k dispozici | 20 | 20 |
 | Maximální počet různých typů prostředků<sup>2</sup> | Není k dispozici | 4 | 7 | 15 | 15 | Není k dispozici | 4 | 4 |
 

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: a6ad1c068a41b4b865c148ebb7cdb509821609d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ef4a4f422bb787b3ead33ed1047d26d5e3c9c1f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823423"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978067"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
 
 HDInsight obsahuje dvě vestavěné Instalace Pythonu v clusteru Spark, Anaconda Python 2,7 a Python 3,5. Zákazníci možná budou muset přizpůsobit prostředí Pythonu, jako je instalace externích balíčků Pythonu. Tady uvádíme osvědčený postup pro bezpečnou správu prostředí Pythonu pro Apache Spark clustery v HDInsight.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md). Pokud ještě nemáte cluster Spark ve službě HDInsight, můžete spustit akce skriptu během vytváření clusteru. Podívejte se na dokumentaci, [Jak používat akce vlastního skriptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -81,7 +81,7 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
 
     - Nebo použijte úložiště PyPi, změňte `seaborn` a `py35new` odpovídající:
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install seaborn
         ```
 
     Použijte níže uvedený příkaz, pokud chcete nainstalovat knihovnu s konkrétní verzí:
@@ -98,7 +98,7 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
     - Nebo použijte úložiště PyPi, změňte `numpy==1.16.1` a `py35new` odpovídající:
 
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install numpy==1.16.1
         ```
 
     Pokud neznáte název virtuálního prostředí, můžete SSH pro hlavní uzel clusteru a spustit `/usr/bin/anaconda/bin/conda info -e` pro zobrazení všech virtuálních prostředí.

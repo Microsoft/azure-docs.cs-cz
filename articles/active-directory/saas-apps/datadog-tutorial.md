@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: jeedes
-ms.openlocfilehash: d3bb0ad5305ccba412a403352405711be8f183a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75f2574a656f659dfed12b59d52c9f147527c65d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555924"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949974"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s služby Datadog
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat služby Datadog s Azure Active Directo
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -142,7 +142,23 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici služby Datadog, měli byste se automaticky přihlásit k služby Datadog, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+### <a name="enable-all-users-from-your-tenant-to-authenticate-with-the-app"></a>Povolit všem uživatelům z vašeho tenanta ověřování pomocí aplikace
+
+V této části povolíte všem uživatelům ve vašem tenantovi přístup k služby Datadog, pokud má jeden uživatel účet na straně služby Datadog.
+
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **služby Datadog**.
+1. Na stránce Přehled aplikace v části **Spravovat**vyberte **vlastnosti**.
+
+    ![Odkaz vlastnosti](common/properties.png)
+
+1. **Požaduje se přiřazení uživatele?** vyberte **ne**.
+
+    ![Přiřazení uživatele není vyžadováno.](common/user-assignment-not-required.png)
+
+1. Vyberte **Uložit**.
+
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

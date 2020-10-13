@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7d19d782e9cb29cfc917293f084b78830db89bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aba28e867f5fdb7bfaa917547f60565c39e382dd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797611"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977761"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux
 
@@ -408,7 +408,7 @@ Azure Disk Encryption nefunguje pro následující scénáře, funkce a technolo
 - Vytvoření bitové kopie nebo snímku šifrovaného virtuálního počítače a jeho použití k nasazení dalších virtuálních počítačů.
 - Výpis stavu systému jádra (kdump).
 - Oracle ACFS (systém souborů clusteru ASM).
-- Virtuální počítače s Gen2 (viz: [Podpora pro virtuální počítače 2. generace v Azure](generation-2.md#generation-1-vs-generation-2-capabilities)).
+- Virtuální počítače s Gen2 (viz: [Podpora pro virtuální počítače 2. generace v Azure](../generation-2.md#generation-1-vs-generation-2-capabilities)).
 - Disky NVMe virtuálních počítačů Lsv2 Series (viz: [Lsv2-Series](../lsv2-series.md)).
 - Virtuální počítač s "vnořenými přípojnými body"; To znamená, že několik přípojných bodů v jedné cestě (například "/1stmountpoint/data/2stmountpoint").
 - Virtuální počítač s datovou jednotkou připojenou nad složku operačního systému.

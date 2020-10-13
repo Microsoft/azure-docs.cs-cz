@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: radeltch
-ms.openlocfilehash: edca4b44bd9e7aa9f100db3cea0bc69880a4c533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 658470a3c19f8484ac56f6a1d88d23c3d7b4147e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744785"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978101"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA systému škálování na více systémů na Red Hat Enterprise Linux 
 
@@ -92,7 +92,7 @@ Než začnete, přečtěte si následující poznámky a dokumenty SAP:
 * [Dokumentace k Azure NetApp Files][anf-azure-doc] 
 
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 
 Jedna z metod, jak dosáhnout vysoké dostupnosti pro Hana s vysokou dostupností pro instalace na více instancí HANA, je konfigurace replikace systému HANA a ochrana řešení pomocí clusteru Pacemaker, aby bylo možné automatické převzetí služeb při selhání. Když dojde k selhání aktivního uzlu, cluster převezme prostředky HANA do druhé lokality.  
 Uvedená konfigurace zobrazuje tři uzly HANA na každé lokalitě, a to i majoritní uzel maker, aby se zabránilo scénáři děleného mozku. Pokyny mohou být upraveny tak, aby zahrnovaly více virtuálních počítačů jako uzly databáze HANA.  
@@ -100,7 +100,7 @@ Uvedená konfigurace zobrazuje tři uzly HANA na každé lokalitě, a to i major
 Sdílený systém souborů HANA `/hana/shared` v prezentované architektuře poskytuje [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md). Je připojen přes NFSv 4.1 na každém uzlu HANA ve stejné lokalitě replikace systému HANA. Souborové systémy `/hana/data` a `/hana/log` jsou místní souborové systémy a mezi uzly databáze Hana se nesdílí. SAP HANA bude nainstalován v nesdíleném režimu. 
 
 > [!TIP]
-> Doporučené konfigurace úložiště SAP HANA najdete v tématu [SAP HANA konfigurace úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage).   
+> Doporučené konfigurace úložiště SAP HANA najdete v tématu [SAP HANA konfigurace úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md).   
 
 [![SAP HANA horizontálního navýšení kapacity pomocí clusteru HSR a Pacemaker](./media/sap-hana-high-availability-rhel/sap-hana-high-availability-scale-out-hsr-rhel.png)](./media/sap-hana-high-availability-rhel/sap-hana-high-availability-scale-out-hsr-rhel-detail.png#lightbox)
 
@@ -128,7 +128,7 @@ Pro konfiguraci prezentovanou v tomto dokumentu nasaďte sedm virtuálních poč
   
    V uzlu většina Maker můžete nasadit malý virtuální počítač, protože tento virtuální počítač neběží na žádném z SAP HANAch prostředků. V konfiguraci clusteru se používá virtuální počítač pro většinu maker k dosažení lichého počtu uzlů clusteru ve scénáři děleného mozku. V tomto příkladu potřebuje virtuální počítač pro většinu maker jenom jedno rozhraní v `client` podsíti.        
 
-   Nasaďte místní spravované disky pro `/hana/data` a `/hana/log` . Minimální doporučená konfigurace úložiště pro `/hana/data` a `/hana/log` je popsána v tématu [SAP HANA konfigurace úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage).
+   Nasaďte místní spravované disky pro `/hana/data` a `/hana/log` . Minimální doporučená konfigurace úložiště pro `/hana/data` a `/hana/log` je popsána v tématu [SAP HANA konfigurace úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md).
 
    Nasaďte primární síťové rozhraní pro každý virtuální počítač v `client` podsíti virtuální sítě.  
    Když se virtuální počítač nasadí prostřednictvím Azure Portal, automaticky se vygeneruje název síťového rozhraní. V těchto pokynech pro zjednodušení budeme odkazovat na automaticky generovaná primární síťová rozhraní, která jsou připojená k `client` podsíti virtuální sítě Azure jako **Hana-S1-DB1-Client**, **Hana-S1-DB2-Client**, **Hana-S1-DB3-** Client a tak dále.  
@@ -229,7 +229,7 @@ Pro konfiguraci prezentovanou v tomto dokumentu nasaďte sedm virtuálních poč
 
 ### <a name="deploy-the-azure-netapp-files-infrastructure"></a>Nasazení infrastruktury Azure NetApp Files 
 
-Nasaďte svazky ANF pro `/hana/shared` systém souborů. `/hana/shared`Pro každou lokalitu replikace systému Hana budete potřebovat samostatný svazek. Další informace najdete v tématu [Nastavení infrastruktury Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel#set-up-the-azure-netapp-files-infrastructure).
+Nasaďte svazky ANF pro `/hana/shared` systém souborů. `/hana/shared`Pro každou lokalitu replikace systému Hana budete potřebovat samostatný svazek. Další informace najdete v tématu [Nastavení infrastruktury Azure NetApp Files](./sap-hana-scale-out-standby-netapp-files-rhel.md#set-up-the-azure-netapp-files-infrastructure).
 
 V tomto příkladu byly použity následující svazky Azure NetApp Files: 
 
@@ -1160,7 +1160,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
       ```
 
 
-Doporučujeme důkladně otestovat SAP HANA konfiguraci clusteru, a to tím, že provádíte testy popsané v části [ha pro SAP HANA na virtuálních počítačích Azure na RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#test-the-cluster-setup).
+Doporučujeme důkladně otestovat SAP HANA konfiguraci clusteru, a to tím, že provádíte testy popsané v části [ha pro SAP HANA na virtuálních počítačích Azure na RHEL](./sap-hana-high-availability-rhel.md#test-the-cluster-setup).
 
 
 ## <a name="next-steps"></a>Další kroky

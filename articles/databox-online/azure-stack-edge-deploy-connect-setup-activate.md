@@ -10,10 +10,10 @@ ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: 8a143dadffb3f89ef67dc20a2038bb3c9bf5a0e4
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743331"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro"></a>Kurz: připojení, nastavení a aktivace Azure Stack Edge pro 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Připojení k fyzickému zařízení
 > * Nastavení a aktivace fyzického zařízení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před konfigurací a nastavením zařízení Azure Stack Edge pro se ujistěte, že:
 
@@ -134,7 +134,7 @@ Nyní jste na řídicím panelu zařízení.
 6. V levém podokně vyberte **Nastavení cloudu**a potom v Azure Portal aktivujte zařízení pomocí služby Azure Stack Edge.
     
     1. Do pole **aktivační klíč** zadejte aktivační klíč, který jste získali v [části získání aktivačního klíče](azure-stack-edge-deploy-prep.md#get-the-activation-key) pro Azure Stack Edge pro.
-    2. Vyberte **Apply** (Použít).
+    2. Vyberte **Použít**.
        
         ![Stránka nastavení cloudu místního webového uživatelského rozhraní](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-6.png)
 

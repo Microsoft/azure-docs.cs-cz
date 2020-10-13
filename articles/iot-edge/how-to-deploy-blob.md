@@ -7,21 +7,24 @@ ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: da163e902d06bd98ac47a24256cb809cb222173b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b5b7b45cc52d900e5ecde59e6a5ae203533286b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80804618"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978862"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Nasazení modulu IoT Edge pro službu Azure Blob Storage na zařízení
 
 Existuje několik způsobů, jak nasadit moduly do zařízení IoT Edge a všechny je fungují pro Azure Blob Storage v IoT Edgech modulech. Tyto dvě nejjednodušší metody slouží k použití šablon Azure Portal nebo Visual Studio Code.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure.
-- [IoT Edge zařízení](how-to-register-device.md) s nainstalovaným modulem runtime IoT Edge.
+- Zařízení IoT Edge.
+
+  Pokud nemáte nastavené zařízení IoT Edge, můžete ho vytvořit na virtuálním počítači Azure. Použijte postup v jednom z článků rychlý Start k [Vytvoření virtuálního zařízení](quickstart-linux.md) se systémem Linux nebo [Vytvoření virtuálního zařízení s Windows](quickstart.md).
+
 - [Visual Studio Code](https://code.visualstudio.com/) a [nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) , pokud nasazujete z Visual Studio Code.
 
 ## <a name="deploy-from-the-azure-portal"></a>Nasazení z Azure Portal
@@ -203,10 +206,10 @@ Azure IoT Edge poskytuje šablony v Visual Studio Code, které vám pomůžou vy
      - U kontejnerů pro Linux je formát ** \<your storage path or volume> :/blobroot**. Například:
          - použít [připojení svazku](https://docs.docker.com/storage/volumes/): `my-volume:/blobroot`
          - použít [připojení BIND](https://docs.docker.com/storage/bind-mounts/): `/srv/containerdata:/blobroot` . Nezapomeňte postupovat podle pokynů pro [udělení přístupu k adresáři uživateli kontejneru](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux) .
-     - V případě kontejnerů Windows je ve formátu ** \<your storage path or volume> : C:/BlobRoot**. Například
-         - použít [připojení svazku](https://docs.docker.com/storage/volumes/): `my-volume:C:/BlobRoot` .
-         - použít [připojení BIND](https://docs.docker.com/storage/bind-mounts/): `C:/ContainerData:C:/BlobRoot` .
-         - Místo používání místní jednotky můžete namapovat umístění sítě protokolu SMB, kde najdete další informace v tématu [použití sdílené složky SMB jako místního úložiště](how-to-store-data-blob.md#using-smb-share-as-your-local-storage) .
+     - V případě kontejnerů Windows je ve formátu ** \<your storage path or volume> : C:/BlobRoot**. Například:
+         - Použít [připojení svazku](https://docs.docker.com/storage/volumes/): `my-volume:C:/BlobRoot` .
+         - Použít [připojení BIND](https://docs.docker.com/storage/bind-mounts/): `C:/ContainerData:C:/BlobRoot` .
+         - Místo použití místního disku můžete mapovat síťové umístění protokolu SMB. Další informace najdete v tématu [použití sdílené složky SMB jako místního úložiště](how-to-store-data-blob.md#using-smb-share-as-your-local-storage).
 
      > [!IMPORTANT]
      > Neměňte druhou polovinu hodnoty připojení úložiště, která odkazuje na konkrétní umístění v Blob Storage v modulu IoT Edge. Připojení úložiště musí vždy končit **:/blobroot** for Linux Containers a **: C:/blobroot** for Windows Containers.

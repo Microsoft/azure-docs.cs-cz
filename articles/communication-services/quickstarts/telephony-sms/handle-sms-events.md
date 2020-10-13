@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 072e885ec1c618229141dea477cd598d8db34ce7
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e66d5c4dd4fc1c6c641da975b0ac2254f459642a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756740"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976925"
 ---
 # <a name="quickstart-handle-sms-events"></a>Rychlý Start: zpracování událostí serveru SMS
 
@@ -86,19 +86,19 @@ Pak vyberte **potvrdit výběr**.
 Chcete-li zobrazit triggery událostí, je nutné generovat události na prvním místě.
 
 - `SMS Received` události jsou generovány, když telefonní číslo komunikační služby obdrží textovou zprávu. Pokud chcete aktivovat událost, stačí poslat zprávu z telefonu na telefonní číslo připojené k vašemu prostředku komunikační služby.
-- `SMS Delivery Report Received` události jsou generovány při odeslání serveru SMS uživateli pomocí telefonního čísla komunikační služby. Pro aktivaci a událost je nutné povolit `Delivery Report` v možnostech [ODESÍLANÉHO serveru SMS](../telephony-sms/send.md). Zkuste poslat zprávu na telefon s `Delivery Report` . Po dokončení této akce dojde v účtu Azure k malým nákladům na několik centů nebo méně.
+- `SMS Delivery Report Received` události jsou generovány při odeslání serveru SMS uživateli pomocí telefonního čísla komunikační služby. Chcete-li aktivovat událost, je nutné povolit možnost `Delivery Report` v možnostech [odeslaného serveru SMS](../telephony-sms/send.md). Zkuste poslat zprávu na telefon s `Delivery Report` . Po dokončení této akce dojde v účtu Azure k malým nákladům na několik centů nebo méně.
 
 Podívejte se na úplný seznam událostí, které [podporuje komunikační služby Azure](../../concepts/event-handling.md).
 
 ### <a name="receiving-sms-events"></a>Příjem událostí serveru SMS
 
-Jakmile dokončíte jednu akci výše, všimnete si, že  `SMS Received` se `SMS Delivery Report Received` do vašeho koncového bodu odesílají události a. Tyto události se zobrazí v [ukázce Azure Event Grid Vieweru](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) , kterou jsme nastavili na začátku. Můžete stisknout ikonu oka vedle události a zobrazit celou datovou část. Události budou vypadat takto:
+Jakmile dokončíte jednu akci výše, všimnete si, že `SMS Received` se `SMS Delivery Report Received` do vašeho koncového bodu odesílají události a. Tyto události se zobrazí v [ukázce Azure Event Grid Vieweru](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) , kterou jsme nastavili na začátku. Můžete stisknout ikonu oka vedle události a zobrazit celou datovou část. Události budou vypadat takto:
 
 :::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Snímek obrazovky s výběrem tlačítka pro odběr události v rámci stránky události prostředku":::
 
 :::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Snímek obrazovky s výběrem tlačítka pro odběr události v rámci stránky události prostředku":::
 
-Další informace o [schématech událostí a dalších konceptech událostí](../../concepts/event-handling.md)
+Přečtěte si další informace o [schématech událostí a dalších konceptech událostí](../../concepts/event-handling.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

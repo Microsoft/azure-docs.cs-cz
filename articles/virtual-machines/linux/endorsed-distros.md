@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: guybo
-ms.openlocfilehash: 1417635c0e510badd191e99786f49dfb509c8206
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 0236644930af699180cf26b4baee7bb591d8bbaa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893403"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978930"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Schválené distribuce Linux v Azure
 
@@ -39,7 +39,7 @@ Agent Azure Linux je již předinstalovaný na Azure Marketplace imagí a je obv
 | Debian podle credativ |8.x, 9.x |V jádru |Balíček: v úložišti v části "waagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 |Flatcar Container Linux od Kinvolk| Pro, stabilní, beta verze| V jádru | WA-Linux-agent je už nainstalovaný v/usr/share/OEM/bin/waagent |
 | Oracle Linux Oracle |6.x, 7.x, 8.x |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| [Red Hat Enterprise Linux se Red Hat](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x, 7.x, 8.x |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| [Red Hat Enterprise Linux se Red Hat](../workloads/redhat/overview.md) |6.x, 7.x, 8.x |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise podle SUSE |SLES/SLES pro SAP 11. x, 12. x, 15. x <br/> [Životní cyklus SUSE veřejné cloudové image](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |V jádru |Balíček<p> 11 v [cloudu: úložiště nástrojů](https://build.opensuse.org/project/show/Cloud:Tools)<br>pro 12 zahrnuté v modulu "veřejný cloud" v části "Python-Azure-Agent"<br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE podle SUSE |openSUSE Leap 15.x |V jádru |Balíček: v [cloudu: úložiště nástrojů](https://build.opensuse.org/project/show/Cloud:Tools) v části Python – Azure-Agent <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu podle kanonického |Server Ubuntu a verze pro. 16. x, 18. x, 20. x<p>Informace o rozšířené podpoře pro Ubuntu 12,04 a 14,04 najdete tady: [Ubuntu rozšířená údržba zabezpečení](https://www.ubuntu.com/esm). |V jádru |Balíček: v úložišti v části "walinuxagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |

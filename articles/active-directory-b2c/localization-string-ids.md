@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 07/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 611d676f5f588ff32f981692456160e269642a43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1b3e12bcf744ad0d762f686a908a01239fc4323
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87428125"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949237"
 ---
 # <a name="localization-string-ids"></a>ID řetězců lokalizací
 
@@ -25,7 +25,7 @@ Element **Localization** umožňuje v zásadách pro cesty uživatelů podporova
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>Prvky přihlašovacích nebo přihlašovacích stránek
 
-Následující identifikátory se používají pro definici obsahu s ID `api.signuporsignin` .
+Následující identifikátory se používají pro definici obsahu s ID `api.signuporsignin` a [technickým profilem s vlastním uplatněním](self-asserted-technical-profile.md).
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
@@ -93,7 +93,7 @@ V následujícím příkladu je lokalizován poskytovatel identity Facebooku do 
 
 ## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>Prvky uživatelského rozhraní pro registraci a samoobslužné vyhodnocení stránek
 
-Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo libovolnou definicí obsahu, která začíná `api.selfasserted` , například `api.selfasserted.profileupdate` a `api.localaccountpasswordreset` .
+Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo libovolnou definicí obsahu, která začíná `api.selfasserted` , například `api.selfasserted.profileupdate` a a `api.localaccountpasswordreset` [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md).
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
@@ -102,13 +102,13 @@ Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo l
 | **cancel_message** | Uživatel zrušil zadávání informací o vlastním vyhodnocení. |
 | **preloader_alt** | Počkejte prosím |
 | **ver_but_send** | Odeslat ověřovací kód |
-| **alert_yes** | Yes |
+| **alert_yes** | Ano |
 | **error_fieldIncorrect** | Některá pole jsou vyplněna nesprávně. Zkontrolujte prosím své položky a zkuste to znovu. |
-| **jednolet** | Year |
+| **jednolet** | Year (Rok) |
 | **verifying_blurb** | Počkejte prosím, než zpracujeme vaše informace. |
 | **button_cancel** | Zrušit |
 | **ver_fail_no_retry** | Provedli jste příliš mnoho nesprávných pokusů. Zkuste to později. |
-| **měsíčně** | Month |
+| **měsíčně** | Month (Měsíc) |
 | **ver_success_msg** | E-mailová adresa byla ověřena. Nyní můžete pokračovat. |
 | **months** | Leden, únor, březen, duben, květen, červen, červenec, srpen, září, říjen, listopad, prosinec |
 | **ver_fail_server** | Při ověřování vaší e-mailové adresy máme problémy. Zadejte prosím platnou e-mailovou adresu a zkuste to znovu. |
@@ -155,7 +155,7 @@ Následující příklad ukazuje použití některých prvků uživatelského ro
 
 ## <a name="phone-factor-authentication-page-user-interface-elements"></a>Prvky uživatelského rozhraní stránky pro ověřování na telefonním faktoru
 
-Níže jsou uvedené identifikátory pro definici obsahu s ID `api.phonefactor` .
+Níže jsou uvedené identifikátory definice obsahu s ID `api.phonefactor` a [technickým profilem pro telefonní faktor](phone-factor-technical-profile.md).
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
@@ -197,11 +197,11 @@ Níže jsou uvedené identifikátory pro definici obsahu s ID `api.phonefactor` 
 
 Následující příklad ukazuje použití některých prvků uživatelského rozhraní na stránce pro zápis MFA:
 
-![Prvky uživatelského prostředí ověřování e-mailů pro registraci stránky](./media/localization-string-ids/localization-mfa1.png)
+![Prvky uživatelského prostředí pro zápis ověřování pro telefonní faktor](./media/localization-string-ids/localization-mfa1.png)
 
 Následující příklad ukazuje použití některých prvků uživatelského rozhraní na stránce ověřování MFA:
 
-![Prvky uživatelského prostředí ověřování e-mailů pro registraci stránky](./media/localization-string-ids/localization-mfa2.png)
+![Prvky uživatelského prostředí ověřování pro telefonní faktor](./media/localization-string-ids/localization-mfa2.png)
 
 ## <a name="verification-display-control-user-interface-elements"></a>Ovládací prvky uživatelského rozhraní pro zobrazení ověření
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 6cc4fdb82e98c30ca33eec58675f2175dfcc2607
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f77cc85bd62deb2cb2cb74c42cf245a409904b3a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89612780"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978301"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Kurz – konfigurace strategie kumulativního nasazení pro virtuální počítače Azure Linux
 
@@ -29,7 +29,7 @@ Azure DevOps je integrovaná služba Azure, která automatizuje každou část p
 
 Azure Pipelines poskytuje plnohodnotnou sadu nástrojů pro automatizaci CI/CD pro nasazení do virtuálních počítačů. Kanál nepřetržitého doručování pro virtuální počítač Azure můžete nakonfigurovat z Azure Portal.
 
-Tento článek popisuje, jak nastavit kanál CI/CD pro zavedení nasazení na více počítačů z Azure Portal. Azure Portal také podporuje jiné strategie, jako je například [Kanárské](https://aka.ms/AA7jdrz) and [Blue-zelená](https://aka.ms/AA83fwu).
+Tento článek popisuje, jak nastavit kanál CI/CD pro zavedení nasazení na více počítačů z Azure Portal. Azure Portal také podporuje jiné strategie, jako je například [Kanárské](./tutorial-azure-devops-canary-strategy.md) and [Blue-zelená](./tutorial-azure-devops-blue-green-strategy.md).
 
 ### <a name="configure-cicd-on-virtual-machines"></a>Konfigurace CI/CD na virtuálních počítačích
 
@@ -78,8 +78,8 @@ Pomocí možnosti průběžné doručování můžete ve Azure Portal nakonfigur
 
 ## <a name="other-deployment-strategies"></a>Další strategie nasazení
 
-- [Konfigurovat strategii pro Kanárské nasazení](https://aka.ms/AA7jdrz)
-- [Konfigurace strategie nasazení Blue-zelená](https://aka.ms/AA83fwu)
+- [Konfigurovat strategii pro Kanárské nasazení](./tutorial-azure-devops-canary-strategy.md)
+- [Konfigurace strategie nasazení Blue-zelená](./tutorial-azure-devops-blue-green-strategy.md)
 
 ## <a name="azure-devops-projects"></a>Azure DevOps Projects
 
@@ -91,7 +91,7 @@ Můžete snadno začít pracovat s Azure. Pomocí Azure DevOps Projects spusťte
  
 [Další informace](https://azure.microsoft.com/features/devops-projects/).
  
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Nasazení na virtuální počítače Azure pomocí Azure DevOps Projects](../../devops-project/azure-devops-project-vms.md)
 - [Implementace průběžného nasazování vaší aplikace do sady škálování virtuálních počítačů Azure](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

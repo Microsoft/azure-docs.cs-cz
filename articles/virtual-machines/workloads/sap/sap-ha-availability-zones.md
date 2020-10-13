@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9fc34a85f8a858adea2161e1734ead589180ea4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653592"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978233"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfigurace úloh SAP s využitím služby Zóny dostupnosti Azure
 [Zóny dostupnosti Azure](../../../availability-zones/az-overview.md) je jednou z funkcí s vysokou dostupností, které poskytuje Azure. Použití Zóny dostupnosti zlepšuje celkovou dostupnost úloh SAP v Azure. Tato funkce je už v některých [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/)dostupná. V budoucnu bude k dispozici ve více oblastech.
@@ -30,7 +30,7 @@ Tento obrázek znázorňuje základní architekturu vysoké dostupnosti SAP:
 
 ![Standardní konfigurace vysoké dostupnosti](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-Aplikační vrstva SAP je nasazená v rámci jedné [skupiny dostupnosti](../../windows/manage-availability.md)Azure. Pro zajištění vysoké dostupnosti centrálních služeb SAP můžete nasadit dva virtuální počítače v samostatné skupině dostupnosti. Používejte Clustering s podporou převzetí služeb při selhání Windows serveru nebo Pacemaker (Linux) jako architekturu s vysokou dostupností s automatickým převzetím služeb při selhání v případě infrastruktury nebo softwaru. Další informace o těchto nasazeních najdete v těchto tématech:
+Aplikační vrstva SAP je nasazená v rámci jedné [skupiny dostupnosti](../../manage-availability.md)Azure. Pro zajištění vysoké dostupnosti centrálních služeb SAP můžete nasadit dva virtuální počítače v samostatné skupině dostupnosti. Používejte Clustering s podporou převzetí služeb při selhání Windows serveru nebo Pacemaker (Linux) jako architekturu s vysokou dostupností s automatickým převzetím služeb při selhání v případě infrastruktury nebo softwaru. Další informace o těchto nasazeních najdete v těchto tématech:
 
 - [Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdíleného disku clusteru](./sap-high-availability-guide-wsfc-shared-disk.md)
 - [Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdílené složky](./sap-high-availability-guide-wsfc-file-share.md)

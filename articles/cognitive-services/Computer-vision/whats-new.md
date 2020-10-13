@@ -10,16 +10,22 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: f007ddf2625bf9e8b9d4365902ac1511ea95fa81
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e4c56700e75eb5bc7e5e7faec073fe7157e5df88
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90904089"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976364"
 ---
 # <a name="whats-new-in-computer-vision"></a>Co je nového v Počítačové zpracování obrazu
 
 Zjistěte, co je nového ve službě. Tyto položky můžou být poznámky k verzi, videa, příspěvky na blogu a další typy informací. Tuto stránku můžete označit tak, aby byla stále aktuální se službou.
+
+## <a name="october-2020"></a>Říjen 2020
+
+### <a name="computer-vision-api-v31-ga"></a>Rozhraní API pro počítačové zpracování obrazu v 3.1 GA
+
+Rozhraní API pro počítačové zpracování obrazu při obecné dostupnosti byl upgradován na verzi v 3.1.
 
 ## <a name="september-2020"></a>Září 2020
 

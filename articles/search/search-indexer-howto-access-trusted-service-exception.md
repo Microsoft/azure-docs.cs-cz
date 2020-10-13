@@ -8,16 +8,16 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 30fc71e6f59766a759cdb8e4e503123623f48bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fbffaa7bc68bb32bd07b657f4b769e5af4302bf
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320468"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950020"
 ---
 # <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>Zabezpečený přístup k datům v účtech úložiště pomocí výjimky důvěryhodné služby
 
-Indexery, které přistupují k datům v účtech úložiště, můžou využít funkci [výjimky důvěryhodné služby](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) k zabezpečení přístupu k datům. Tento mechanismus nabízí zákazníkům, kteří nemůžou udělit [přístup k indexeru prostřednictvím pravidel brány firewall protokolu IP](search-indexer-howto-access-ip-restricted.md) , jednoduchou, zabezpečenou a bezplatnou alternativou pro přístup k datům v účtech úložiště.
+Indexery, které přistupují k datům v účtech úložiště, můžou využít funkci [výjimky důvěryhodné služby](../storage/common/storage-network-security.md#exceptions) k zabezpečení přístupu k datům. Tento mechanismus nabízí zákazníkům, kteří nemůžou udělit [přístup k indexeru prostřednictvím pravidel brány firewall protokolu IP](search-indexer-howto-access-ip-restricted.md) , jednoduchou, zabezpečenou a bezplatnou alternativou pro přístup k datům v účtech úložiště.
 
 > [!NOTE]
 > Podpora přístupu k datům v účtech úložiště přes důvěryhodnou výjimku je omezená na úložiště objektů BLOB v Azure a Azure Data Lake Gen2 úložiště. Služba Azure Table Storage není podporována.

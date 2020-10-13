@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 63bc3caf97e1325c365171ba3f8e6353885d9b68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30e76ec3085922ec2a1d4693681eb97c9052c026
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322547"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978726"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Vytváření zobecněných imagí bez zřizovacího agenta
 
@@ -199,7 +199,7 @@ WantedBy=multi-user.target
 Tato služba systému poskytuje tři věci pro základní zřizování:
 
 1. Sestavy připravené k Azure (k indikaci úspěšného úspěšného dokončení)
-1. Přejmenuje virtuální počítač na základě názvu virtuálního počítače zadaného uživatelem načtením těchto dat z [Azure instance metadata Service (IMDS)](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service). **Poznámka:** IMDS také poskytuje další [metadata instance](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service#accessing-azure-instance-metadata-service), jako jsou například veřejné klíče SSH, takže můžete nastavit více než název hostitele.
+1. Přejmenuje virtuální počítač na základě názvu virtuálního počítače zadaného uživatelem načtením těchto dat z [Azure instance metadata Service (IMDS)](./instance-metadata-service.md). **Poznámka:** IMDS také poskytuje další [metadata instance](./instance-metadata-service.md#accessing-azure-instance-metadata-service), jako jsou například veřejné klíče SSH, takže můžete nastavit více než název hostitele.
 1. Zakáže sám sebe, aby se spouštěla jenom při prvním spuštění, a ne při následném restartování.
 
 S jednotkou v systému souborů spusťte následující příkaz pro povolení:
