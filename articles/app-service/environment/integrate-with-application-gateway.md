@@ -8,10 +8,10 @@ ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 3b73d528802a8aa33c6122eaf5edfa9d046b6753
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962073"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrace služby App Service Environment s interním nástrojem pro vyrovnávání zatížení se službou Azure Application Gateway #
@@ -33,7 +33,7 @@ Tento návod vám ukáže, jak:
 * Nakonfigurujte svou aplikaci tak, aby dodržovala vlastní název domény.
 * Upravte název veřejného hostitele DNS, který odkazuje na vaši Aplikační bránu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K integraci svého Application Gateway s App Service Environment interního nástroje potřebujete:
 

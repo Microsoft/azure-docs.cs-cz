@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
 ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90602665"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparentní šifrování dat Azure SQL s využitím klíče spravovaného zákazníkem
@@ -187,11 +187,11 @@ Další aspekty pro soubory protokolu: zálohované soubory protokolu zůstávaj
 
 I v případě, že není k dispozici žádná nakonfigurovaná geografická redundance pro server, důrazně doporučujeme nakonfigurovat server tak, aby používal dvě různé trezory klíčů ve dvou různých oblastech se stejným materiálem klíče. Dá se dosáhnout vytvořením ochrany TDE pomocí primárního trezoru klíčů umístěného ve stejné oblasti jako server a klonování klíče do trezoru klíčů v jiné oblasti Azure, aby měl server přístup k druhému trezoru klíčů, aby při práci s databází probíhal výpadek primárního trezoru klíčů.
 
-Pomocí rutiny Backup-AzKeyVaultKey načtěte klíč v šifrovaném formátu z primárního trezoru klíčů a potom pomocí rutiny Restore-AzKeyVaultKey zadejte do druhé oblasti Trezor klíčů pro klonování klíče. Případně můžete k zálohování a obnovení klíče použít Azure Portal. Klíč v trezoru sekundárního klíče v jiné oblasti by neměl být označený jako TDE Protector a není ani povolený.
+Pomocí rutiny Backup-AzKeyVaultKey načtěte klíč v šifrovaném formátu z primárního trezoru klíčů a potom pomocí rutiny Restore-AzKeyVaultKey zadejte do druhé oblasti Trezor klíčů, ve kterém se klíč naklonuje. Případně můžete k zálohování a obnovení klíče použít Azure Portal. Klíč v trezoru sekundárního klíče v jiné oblasti by neměl být označený jako TDE Protector a není ani povolený.
 
 Pokud dojde k výpadku, který má vliv na primární Trezor klíčů, systém se automaticky přepne na druhý propojený klíč se stejným kryptografickým otiskem v sekundárním trezoru klíčů, pokud existuje. Poznámka: Tento přepínač se nestane, pokud je ochrana TDE nepřístupná z důvodu odvolaných přístupových práv, nebo protože se odstranil klíč nebo Trezor klíčů, protože by mohl zákazník záměrně chtít, aby k tomuto klíči omezil přístup serveru.
 
-![HA s jedním serverem](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
+![Single-Server HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 
 ## <a name="geo-dr-and-customer-managed-tde"></a>Geografická DR a TDE spravovaná zákazníky
 

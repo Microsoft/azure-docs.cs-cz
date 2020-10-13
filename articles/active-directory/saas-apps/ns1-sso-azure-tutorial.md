@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2020
 ms.author: jeedes
 ms.openlocfilehash: d0fee044506a9a19e09478ef8d70b3719ecc167a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554252"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ns1-sso-for-azure"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s NS1 SSO pro Azure
@@ -94,7 +94,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Hodnota adresy URL odpovědi není skutečná. Aktualizujte hodnotu adresy URL odpovědi skutečnou adresou URL odpovědi. Pokud chcete získat hodnotu, obraťte se na [tým podpory ns1 SSO pro Azure Client support](mailto:techops@nsone.net) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. NS1 SSO pro aplikace Azure očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele & deklarací** na stránce integrace aplikací. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu tužky a otevřete dialogové okno **atributy uživatele** .
+1. NS1 SSO pro aplikace Azure očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele & deklarací** na stránce integrace aplikací. Na stránce **nastavit jeden Sign-On s SAML** vyberte ikonu tužky a otevřete dialogové okno **atributy uživatele** .
 
     ![Snímek obrazovky s atributy uživatele & deklarací v části s ikonou tužky zvýrazněné](./media/ns1-sso-for-azure-tutorial/attribute-edit-option.png)
 

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: e7b24dd9cdbd11b56545f85ac233665f8fa4adfe
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574275"
 ---
-# <a name="iot-plug-and-play-components-in-models"></a>Komponenty IoT technologie Plug and Play v modelech
+# <a name="iot-plug-and-play-components-in-models"></a>Komponenty technologie IoT Plug and Play v modelech
 
-V konvencích technologie Plug and Play IoT je zařízení technologie Plug and Play IoT, pokud při připojení ke službě IoT Hub prezentuje své ID modelu DTDL (Digital-in Definition Language).
+V konvencích technologie IoT Plug and Play je zařízení zařízením IoT Plug and Play, pokud při připojení k centru IoT Hub reprezentuje své ID modelu jazyka DTDL (Digital Twin Definition Language).
 
-Následující fragment kódu ukazuje několik ukázkových ID modelů:
+Následující fragment kódu ukazuje několik příkladů ID modelu:
 
 ```json
  "@id": "dtmi:com:example:TemperatureController;1"

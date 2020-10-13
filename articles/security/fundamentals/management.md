@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
 ms.openlocfilehash: 73d82efed438d447c7af3bfc54d5c3fc22cdd819
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87921924"
 ---
 # <a name="security-management-in-azure"></a>Správa zabezpečení v Azure
@@ -106,7 +106,7 @@ Přístup k správě služeb infrastruktury a platformy Azure můžete omezit po
 ### <a name="management-gateway"></a>Brána pro správu
 Pokud chcete centralizovat veškerý přístup pro správu a zjednodušit sledování a protokolování, můžete nasadit vyhrazený server [brány vzdálené plochy](https://technet.microsoft.com/library/dd560672) (brána VP) v místní síti, který je připojený k prostředí Azure.
 
-Brána vzdálené plochy je proxy služba protokolu RDP založená na zásadách, která vynucuje požadavky na zabezpečení. Zavedení brány VP spolu s architekturou NAP (Network Access Protection) pro Windows Server pomáhá zajistit, že se připojí pouze klienti, kteří splňují konkrétní bezpečnostní kritéria stanovená objekty zásad skupiny (GPO) ve službě Active Directory Domain Services (AD DS). Další vylepšení:
+Brána vzdálené plochy je proxy služba protokolu RDP založená na zásadách, která vynucuje požadavky na zabezpečení. Zavedení brány VP spolu s architekturou NAP (Network Access Protection) pro Windows Server pomáhá zajistit, že se připojí pouze klienti, kteří splňují konkrétní bezpečnostní kritéria stanovená objekty zásad skupiny (GPO) ve službě Active Directory Domain Services (AD DS). Dále musí být splněny všechny tyto podmínky:
 
 * Na bráně VP zřiďte [certifikát pro správu Azure](https://msdn.microsoft.com/library/azure/gg551722.aspx), aby byla jediným hostitelem s povoleným přístupem k webu Azure Portal.
 * Připojte bránu VP ke stejné [doméně pro správu](https://technet.microsoft.com/library/bb727085.aspx) jako pracovní stanice správce. Je to nezbytné, když používáte VPN typu site-to-site s protokolem IPsec nebo ExpressRoute v rámci domény, která má jednosměrný vztah důvěryhodnosti k Azure AD, nebo pokud federujete přihlašovací údaje mezi místní instancí AD DS a Azure AD.
@@ -118,7 +118,7 @@ Brána vzdálené plochy je proxy služba protokolu RDP založená na zásadách
 ## <a name="security-guidelines"></a>Pokyny pro zabezpečení
 Obecně platí, že zabezpečení pracovních stanic správce používaných s cloudem je podobné postupům používaným pro všechny místní pracovní stanice – například minimalizovaná oprávnění k sestavení a omezující oprávnění. Některé jedinečné aspekty správy cloudu se více podobají vzdálené nebo podnikové správě mimo IP síť. Patří sem používání a auditování přihlašovacích údajů, vzdálený přístup s rozšířeným zabezpečením a detekce a reakce na ohrožení.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 K omezení zdrojových IP adres pro přístup k nástrojům pro správu a požadavkům na audit přístupu můžete použít přihlašovací omezení Azure. Aby bylo možné Azure identifikovat klienty pro správu (pracovní stanice nebo aplikace), můžete nakonfigurovat rozhraní SMAPI (prostřednictvím zákaznických nástrojů, jako jsou rutiny prostředí Windows PowerShell) a Azure Portal, aby vyžadovaly instalaci certifikátů pro správu na straně klienta, kromě certifikátů TLS/SSL. V případě přístupu pro správce doporučujeme vyžadovat vícefaktorové ověřování.
 
 Některé aplikace nebo služby, které nasadíte do Azure, můžou mít vlastní mechanismy ověřování pro přístup koncových uživatelů i správce, zatímco ostatní plně využívají výhody Azure AD. V závislosti na tom, jestli federujete přihlašovací údaje prostřednictvím služby Active Directory Federation Services (AD FS), vám synchronizace adresářů nebo správa uživatelských účtů výhradně v cloudu a pomocí [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (část Azure AD Premium) pomůže se správou životních cyklů identit mezi prostředky.
@@ -206,7 +206,7 @@ Minimalizace počtu úloh, které můžou správci provádět na posílené prac
 * Šifrování Zajistěte, aby pracovní stanice pro správu byly vybaveny čipy TPM pro bezpečnější povolování [systému souborů EFS](https://technet.microsoft.com/library/cc700811.aspx) (Encrypting File System) a BitLockeru.
 * Řízení. K řízení všech rozhraní Windows pro správce, například sdílení souborů, používejte GPO v AD DS. Zahrňte pracovní stanice pro správu do procesů auditování, sledování a protokolování. Sledujte všechny přístupy a chování správců a vývojářů.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Používání konfigurace posílené pracovní stanice ke správě cloudových služeb Azure, služby Virtual Machines a aplikací vám může pomoct s omezením řady rizik a hrozeb, které vyplývají ze vzdálené správy kritické infrastruktury IT. Azure i Windows poskytují mechanismy, které můžete použít k ochraně a řízení komunikace, ověřování a chování klienta.
 
 ## <a name="next-steps"></a>Další kroky

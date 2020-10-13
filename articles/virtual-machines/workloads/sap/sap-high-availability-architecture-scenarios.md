@@ -17,10 +17,10 @@ ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c837a4020ab1aaad1798d6b19e72e09edafea1f5
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360348"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektura a scénáře s vysokou dostupností pro SAP NetWeaver
@@ -249,7 +249,7 @@ Vysoká dostupnost SAP v Azure může být rozdělená na tři typy:
 
 * **Vysoká dostupnost aplikace SAP**: 
 
-    Pro zajištění vysoké dostupnosti systému SAP je nutné chránit všechny důležité součásti systému SAP. Příklad:
+    Pro zajištění vysoké dostupnosti systému SAP je nutné chránit všechny důležité součásti systému SAP. Například:
     * Redundantní aplikační servery SAP.
     * Jedinečné součásti. Příkladem může být komponenta s jedním bodem selhání (SPOF), jako je například instance SAP ASCS/SCS nebo systém správy databáze (DBMS).
 
@@ -267,7 +267,7 @@ Základem pro výpočet je 30 dní za měsíc nebo 43 200 minut. Například vý
 
 (Služba dostupnosti #1/100) * (služba dostupnosti #2/100) * (služba dostupnosti #3/100) \* ...
 
-Příklad:
+Například:
 
 (99,95/100) * (99,9/100) * (99,9/100) = 0,9975 nebo Celková dostupnost 99,75%.
 
@@ -334,7 +334,7 @@ Další informace o tomto přístupu najdete v tématu [využití restartování
 
 ## <a name="high-availability-of-sap-applications-on-azure-iaas"></a><a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> Vysoká dostupnost aplikací SAP v Azure IaaS
 
-Pro zajištění vysoké dostupnosti systému SAP je nutné chránit všechny důležité součásti systému SAP. Příklad:
+Pro zajištění vysoké dostupnosti systému SAP je nutné chránit všechny důležité součásti systému SAP. Například:
   * Redundantní aplikační servery SAP.
   * Jedinečné součásti. Příkladem může být komponenta s jedním bodem selhání (SPOF), jako je například instance SAP ASCS/SCS nebo systém správy databáze (DBMS).
 

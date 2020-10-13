@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
 ms.openlocfilehash: 8eb8be3307cf5e1df987f636be5c01cecaf4ae45
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631439"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer SKU
@@ -46,7 +46,7 @@ Samostatné virtuální počítače, skupiny dostupnosti a škálovací sady vir
 | **Resetování protokolu TCP při nečinnosti** | [K dispozici u libovolného pravidla](./load-balancer-tcp-reset.md) | Není k dispozici |
 | **[Více front-endy](./load-balancer-multivip-overview.md)** | Příchozí a [odchozí](./load-balancer-outbound-connections.md) | Pouze příchozí |
 | **Operace správy** | Většina operací < 30 sekund | typických 60 až 90 sekund |
-| **SLA** | [99,99 %](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Není k dispozici | 
+| **SLA** | [99,99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Není k dispozici | 
 
 Další informace najdete v tématu [omezení nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). Podrobnosti o Load Balanceru úrovně Standard najdete v [přehledu](load-balancer-standard-overview.md), na stránce s [cenami](https://aka.ms/lbpricing) a ve [smlouvě SLA](https://aka.ms/lbsla).
 

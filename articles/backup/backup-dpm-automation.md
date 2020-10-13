@@ -4,10 +4,10 @@ description: Naučte se nasazovat a spravovat Azure Backup pro Data Protection M
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.openlocfilehash: 176cbffe5152462055c4ffdb2367cf9c0ab97c1f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90968303"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery DPM (Data Protection Manager) pomocí PowerShellu
@@ -340,7 +340,7 @@ Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>Změna velikosti repliky aplikace DPM & svazku bodu obnovení
 
-Velikost svazku repliky DPM a svazku stínové kopie můžete také změnit pomocí rutiny [set-DPMDatasourceDiskAllocation](/powershell/module/dataprotectionmanager/set-dpmdatasourcediskallocation) , jako v následujícím příkladu: Get-DatasourceDiskAllocation-DataSource $DS set-DatasourceDiskAllocation-DataSource $DS-Protection $MPG-Manual-ReplicaArea (2 GB)-ShadowCopyArea (2 GB)
+Velikost svazku repliky DPM a svazku stínové kopie můžete také změnit pomocí rutiny [set-DPMDatasourceDiskAllocation](/powershell/module/dataprotectionmanager/set-dpmdatasourcediskallocation) , jako v následujícím příkladu: Get-DatasourceDiskAllocation-Datasource $DS Set-DatasourceDiskAllocation-DataSource $DS-Protection $MPG-Manual-ReplicaArea (2 GB)-ShadowCopyArea (2 GB)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>Změny se potvrdily do skupiny ochrany.
 

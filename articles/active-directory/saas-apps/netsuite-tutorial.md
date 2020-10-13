@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.openlocfilehash: c5be6ef39a3e980852aa3373dbc54da63aa3983e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554511"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Kurz: Integrace jednotného přihlašování (SSO) Azure AD pomocí NetSuite
@@ -79,7 +79,7 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **NetSuite** vyhledejte část **Správa** a pak vyberte **jednotné přihlašování**.
 1. V podokně **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. V podokně **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu **Upravit** (tužka) vedle **základní konfigurace SAML**.
+1. V podokně **nastavit jednu Sign-On s** podoknem SAML vyberte ikonu **Upravit** (tužka) vedle **základní konfigurace SAML**.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -107,7 +107,7 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
 1. Kromě toho očekává aplikace NetSuite několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut |
+    | Název | Zdrojový atribut |
     | ---------------| --------------- |
     | account  | `account id` |
 

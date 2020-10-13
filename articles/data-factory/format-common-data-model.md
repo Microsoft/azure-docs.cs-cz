@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: daperlov
 ms.openlocfilehash: 483e26cf4044b909c8d7923cfd74bd6fcf871e2a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87905269"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Formát modelu Common data model v Azure Data Factory
@@ -37,12 +37,12 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem CDM. Tyto
 
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Formát | Formát musí být`cdm` | ano | `cdm` | formát |
-| Formát metadat | Kde se nachází odkaz na entitu na data. Pokud používáte CDM verze 1,0, vyberte manifest. Pokud používáte verzi CDM před 1,0, vyberte model.jszapnuto. | Ano | `'manifest'` nebo `'model'` | manifestType |
+| Formát | Formát musí být `cdm` | ano | `cdm` | formát |
+| Formát metadat | Kde se nachází odkaz na entitu na data. Pokud používáte CDM verze 1,0, vyberte manifest. Pokud používáte verzi CDM před 1,0, vyberte model.jszapnuto. | Yes | `'manifest'` nebo `'model'` | manifestType |
 | Kořen umístění: kontejner | Název kontejneru složky CDM | ano | Řetězec | Systému souborů |
 | Kořenové umístění: cesta ke složce | Umístění kořenové složky složky CDM | ano | Řetězec | folderPath |
 | Soubor manifestu: cesta k entitě | Cesta ke složce entity v kořenové složce | ne | Řetězec | entityPath |
-| Soubor manifestu: název manifestu | Název souboru manifestu Výchozí hodnota je Default.  | Ne | Řetězec | manifest |
+| Soubor manifestu: název manifestu | Název souboru manifestu Výchozí hodnota je Default.  | No | Řetězec | manifest |
 | Filtrovat podle poslední změny | Zvolit filtrování souborů podle toho, kdy se naposledy změnily | ne | Timestamp | modifiedAfter <br> modifiedBefore | 
 | Propojená služba schématu | Propojená služba, ve které se nachází Corpus | Ano, pokud používáte manifest | `'adlsgen2'` nebo `'github'` | corpusStore | 
 | Kontejner odkazů na entity | Corpus kontejneru je v | Ano, pokud používáte manifest a corpus v ADLS Gen2 | Řetězec | adlsgen2_fileSystem |
@@ -114,11 +114,11 @@ V níže uvedené tabulce jsou uvedeny vlastnosti, které CDM jímka podporuje. 
 
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Formát | Formát musí být`cdm` | ano | `cdm` | formát |
+| Formát | Formát musí být `cdm` | ano | `cdm` | formát |
 | Kořen umístění: kontejner | Název kontejneru složky CDM | ano | Řetězec | Systému souborů |
 | Kořenové umístění: cesta ke složce | Umístění kořenové složky složky CDM | ano | Řetězec | folderPath |
 | Soubor manifestu: cesta k entitě | Cesta ke složce entity v kořenové složce | ne | Řetězec | entityPath |
-| Soubor manifestu: název manifestu | Název souboru manifestu Výchozí hodnota je Default. | Ne | Řetězec | manifest |
+| Soubor manifestu: název manifestu | Název souboru manifestu Výchozí hodnota je Default. | No | Řetězec | manifest |
 | Propojená služba schématu | Propojená služba, ve které se nachází Corpus | ano | `'adlsgen2'` nebo `'github'` | corpusStore | 
 | Kontejner odkazů na entity | Corpus kontejneru je v | Ano, pokud se corpus v ADLS Gen2 | Řetězec | adlsgen2_fileSystem |
 | Úložiště referencí k entitám | GitHub repository name | Ano, pokud je corpus v GitHubu | Řetězec | github_repository |
@@ -127,7 +127,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti, které CDM jímka podporuje. 
 | Corpus – entita | Cesta k odkazu na entitu | ano | Řetězec | entita |
 | Cesta oddílu | Umístění, kam se bude zapisovat oddíl | ne | Řetězec | partitionPath |
 | Vymazat složku | Pokud před zápisem není cílová složka smazána | ne | `true` nebo `false` | zkrátit |
-| Typ formátu | Zvolte, pokud chcete zadat formát Parquet. | ne | `parquet`je-li zadáno | podformát |
+| Typ formátu | Zvolte, pokud chcete zadat formát Parquet. | ne | `parquet` je-li zadáno | podformát |
 | Oddělovač sloupců | Postup při zápisu do DelimitedText, jak vymezují sloupce | Ano, pokud se zapisuje do DelimitedText | Řetězec | columnDelimiter |
 | První řádek jako záhlaví | Pokud používáte DelimitedText, určuje, jestli se názvy sloupců přidávají jako záhlaví. | ne | `true` nebo `false` | columnNamesAsHeader |
 

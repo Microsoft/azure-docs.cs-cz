@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85504299"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Přenos dat malých datových sad s malou až střední šířkou pásma sítě
@@ -49,14 +49,14 @@ V tomto scénáři jsou doporučené tyto možnosti:
 
 Následující tabulka shrnuje rozdíly v klíčových funkcích.
 
-| Funkce | Azure Storage Explorer | portál Azure | AzCopy<br>Azure PowerShell<br>Azure CLI | Rozhraní REST API nebo sady SDK pro Azure Storage |
+| Příznak | Azure Storage Explorer | portál Azure | AzCopy<br>Azure PowerShell<br>Azure CLI | Rozhraní REST API nebo sady SDK pro Azure Storage |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Dostupnost | Stažení a instalace <br>Samostatný nástroj | Webové nástroje pro průzkum v Azure Portal | Nástroj příkazového řádku |Programovatelné rozhraní v jazycích .NET, Java, Python, JavaScript, C++, přejít, Ruby a PHP |
-| Grafické rozhraní | Ano | Ano | No | No |
+| Grafické rozhraní | Yes | Yes | No | No |
 | Podporované platformy | Windows, Mac, Linux | Založené na webu |Windows, Mac, Linux |Všechny platformy |
-| Povolené operace úložiště objektů BLOB<br>pro objekty BLOB a složky | Odeslat<br>Stáhnout<br>Spravovat | Odeslat<br>Stáhnout<br>Spravovat |Odeslat<br>Stáhnout<br>Spravovat | Ano, přizpůsobit |
-| Povolené Data Lake Gen1 úložiště<br>operace se soubory a složkami | Odeslat<br>Stáhnout<br>Spravovat | No |Odeslat<br>Stáhnout<br>Spravovat                   | No |
-| Povolené operace úložiště souborů<br>pro soubory a adresáře | Odeslat<br>Stáhnout<br>Spravovat | Odeslat<br>Stáhnout<br>Spravovat   |Odeslat<br>Stáhnout<br>Spravovat | Ano, přizpůsobit |
+| Povolené operace úložiště objektů BLOB<br>pro objekty BLOB a složky | Nahrávání<br>Stáhnout<br>Spravovat | Nahrávání<br>Stáhnout<br>Spravovat |Nahrávání<br>Stáhnout<br>Spravovat | Ano, přizpůsobit |
+| Povolené Data Lake Gen1 úložiště<br>operace se soubory a složkami | Nahrávání<br>Stáhnout<br>Spravovat | No |Nahrávání<br>Stáhnout<br>Spravovat                   | No |
+| Povolené operace úložiště souborů<br>pro soubory a adresáře | Nahrávání<br>Stáhnout<br>Spravovat | Nahrávání<br>Stáhnout<br>Spravovat   |Nahrávání<br>Stáhnout<br>Spravovat | Ano, přizpůsobit |
 | Povolené operace úložiště tabulek<br>pro tabulky |Spravovat | No |Podpora tabulek v AzCopy v7 |Ano, přizpůsobit|
 | Povolené úložiště fronty | Spravovat | No  |No | Ano, je přizpůsobitelný|
 

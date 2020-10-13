@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
 ms.openlocfilehash: 881f955014032d18fec447784a879fbf4f0e24fa
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91571375"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>Připojení virtuální sítě mezi klienty k virtuálnímu centru WAN
@@ -30,7 +30,7 @@ Postup pro tuto konfiguraci se provádí pomocí kombinace Azure Portal a PowerS
 
 ## <a name="before-you-begin"></a>Než začnete
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít kroky v tomto článku, musíte mít ve svém prostředí již nastavenou následující konfiguraci:
 

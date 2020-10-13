@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 87d455a77096a2ae9339c578f3405c629d79fa76
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90603335"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Plánování nasazení jednotného přihlašování
@@ -32,7 +32,7 @@ Mnoho organizací spoléhá na aplikace typu software jako služba (SaaS), jako 
 
 Azure Marketplace má více než 3000 aplikací s předem integrovanými připojeními SSO, což usnadňuje jejich integraci ve vašem tenantovi.
 
-## <a name="licensing"></a>Licencování
+## <a name="licensing"></a>Licensing
 
 - **Licencování Azure AD** – jednotné přihlašování pro předem integrované aplikace SaaS je zdarma. Nicméně počet objektů ve vašem adresáři a funkce, které chcete nasadit, můžou vyžadovat další licence. Úplný seznam licenčních požadavků najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 - **Licencování aplikací** – k uspokojení vašich obchodních potřeb budete potřebovat příslušné licence pro aplikace SaaS. Spolupracujte s vlastníkem aplikace a zjistěte, jestli uživatelé přiřazení k aplikaci mají příslušné licence pro své role v rámci aplikace. Pokud Azure AD spravuje Automatické zřizování na základě rolí, role přiřazené v Azure AD musí odpovídat počtu licencí vlastněných v rámci aplikace. Nesprávný počet licencí vlastněných v aplikaci může vést k chybám během zřizování nebo aktualizace uživatele.
@@ -60,7 +60,7 @@ Existují dva základní způsoby, kterými můžete uživatelům umožnit jedno
 
 ### <a name="considerations-for-password-based-sso"></a>Pokyny pro jednotné přihlašování založené na heslech
 
-Použití Azure AD pro jednotné přihlašování pomocí hesla vyžaduje nasazení rozšíření prohlížeče, které bude bezpečně získávat přihlašovací údaje a vyplní přihlašovací formuláře. Definujte mechanismus nasazení rozšíření ve velkém měřítku s využitím [podporovaných prohlížečů](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Vaše možnosti jsou:
+Použití Azure AD pro jednotné přihlašování pomocí hesla vyžaduje nasazení rozšíření prohlížeče, které bude bezpečně získávat přihlašovací údaje a vyplní přihlašovací formuláře. Definujte mechanismus nasazení rozšíření ve velkém měřítku s využitím [podporovaných prohlížečů](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Mezi možnosti patří:
 
 - [Zásady skupiny pro Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 - [Configuration Manager pro Internet Explorer](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
@@ -158,8 +158,8 @@ V následující části najdete podrobnosti o požadavcích na konfiguraci konk
 Pro všechny předem integrované aplikace SaaS poskytuje Microsoft kurz a nebudete tyto informace potřebovat. Pokud aplikace není v tržišti nebo galerii aplikací, možná budete potřebovat shromáždit následující datové části:
 
 - **Aktuální zprostředkovatel identity, který aplikace v případě potřeby používá pro jednotné přihlašování** – například: AD FS, PingFederate, okta
-- **Protokoly podporované cílovou aplikací** – například SAML 2,0, OpenID Connect, OAuth, ověřování založené na FORMULÁŘÍCH, WS-dodáváné, WS-Trust
-- **Protokol konfigurovaný pomocí Azure AD** – například SAML 2,0 nebo 1,1, OpenID Connect, OAuth, založené na FORMULÁŘÍCH, WS-dodává
+- **Protokoly podporované cílovou aplikací** – například SAML 2,0, OpenID Connect, OAuth, Forms-Based auth, WS-dokrmen WS-Trust
+- **Protokol konfigurovaný pomocí Azure AD** – například SAML 2,0 nebo 1,1, OpenID Connect, OAuth, založené na formulářích, WS-Fed
 
 ### <a name="attribute-requirements"></a>Požadavky na atributy
 
@@ -313,7 +313,7 @@ Následující odkazy představují scénáře řešení potíží. Možná bude
 
 [Protokol SAML jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
 
-[Protokol SAML pro jednotné odhlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
+[Jeden Sign-Out protokol SAML](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
 
 [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) (pro externí uživatele, jako jsou partneři a dodavatelé)
 

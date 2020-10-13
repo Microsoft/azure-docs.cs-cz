@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: 9742f97832c1fc931a1679132e262f92c9f11225
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037180"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
@@ -32,7 +32,7 @@ Chcete-li nakonfigurovat nastavení proxy serveru pro AzCopy, nastavte `https_pr
 
 | Operační systém | Příkaz  |
 |--------|-----------|
-| **Windows** | V příkazovém řádku použijte:`set https_proxy=<proxy IP>:<proxy port>`<br> V prostředí PowerShell použijte:`$env:https_proxy="<proxy IP>:<proxy port>"`|
+| **Windows** | V příkazovém řádku použijte: `set https_proxy=<proxy IP>:<proxy port>`<br> V prostředí PowerShell použijte: `$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **macOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
@@ -191,7 +191,7 @@ Použijte některý z těchto příkazů.
 
 | Operační systém | Příkaz  |
 |--------|-----------|
-| **Windows** | Prostředí`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> V příkazovém řádku použijte::`set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Windows** | Prostředí`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> V příkazovém řádku použijte:: `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **macOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
@@ -203,7 +203,7 @@ Použijte některý z těchto příkazů.
 
 | Operační systém | Příkaz  |
 |--------|-----------|
-| **Windows** | Prostředí`$env:AZCOPY_LOG_LOCATION="<value>"` <br> V příkazovém řádku použijte::`set AZCOPY_LOG_LOCATION=<value>`|
+| **Windows** | Prostředí`$env:AZCOPY_LOG_LOCATION="<value>"` <br> V příkazovém řádku použijte:: `set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
 | **macOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 

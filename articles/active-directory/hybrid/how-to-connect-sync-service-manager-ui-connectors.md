@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319873"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Používání konektorů s Azure AD Connect synchronizace Service Manager
@@ -67,7 +67,7 @@ Akce místa konektoru hledání je užitečná pro hledání objektů a řešen�
 
 Začněte výběrem **oboru**. Můžete vyhledávat na základě dat (RDN, DN, kotvy, podstromy) nebo stavu objektu (všechny ostatní možnosti).  
 ![Snímek obrazovky, který zobrazuje rozevírací nabídku "obor".](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
-Pokud například provedete dílčí stromové hledání, získáte všechny objekty v jedné organizační jednotce.  
+Pokud například Sub-Tree hledání, získáte všechny objekty v jedné organizační jednotce.  
 ![Snímek obrazovky, který zobrazuje příklad hledání "sub-Tree".](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
 Z této mřížky můžete vybrat objekt, vybrat **vlastnosti**a [sledovat ho](tshoot-connect-object-not-syncing.md) z prostoru zdrojového konektoru, do úložiště metaverse a do cílového prostoru konektoru.
 

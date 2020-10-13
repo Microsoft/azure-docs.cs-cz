@@ -15,10 +15,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 3d4e45d1bf53bab4d1f9c45367f9d051f1668e2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76308949"
 ---
 ### <a name="authenticationresult-properties-in-msalnet"></a>Vlastnosti AuthenticationResult v MSAL.NET
@@ -27,10 +27,10 @@ Metody získání tokenů pro vrácení `AuthenticationResult` . Pro asynchronn�
 
 V MSAL.NET `AuthenticationResult` zpřístupňuje:
 
-- `AccessToken`pro webové rozhraní API získáte přístup k prostředkům. Tento parametr je řetězec, obvykle token JWT s kódováním Base-64. Klient by nikdy neměl Hledat v přístupovém tokenu. Formát není zaručený, aby zůstal stabilní a mohl by být zašifrovaný pro daný prostředek. Psaní kódu, který závisí na obsahu přístupového tokenu na klientovi, je jedním z největších zdrojů chyb a konců klientských logik. Další informace najdete v tématu [přístupové tokeny](../articles/active-directory/develop/access-tokens.md).
-- `IdToken`pro uživatele. Tento parametr je kódovaným tokenem JWT. Další informace najdete v tématu [tokeny ID](../articles/active-directory/develop/id-tokens.md).
-- `ExpiresOn`Určuje datum a čas, kdy vyprší platnost tokenu.
-- `TenantId`obsahuje tenanta, ve kterém se uživatel našel. Pro uživatele typu Host ve scénářích Azure Active Directory (Azure AD) B2B se ID tenanta hostuje jako tenant, nikoli jedinečný tenant.
+- `AccessToken` pro webové rozhraní API získáte přístup k prostředkům. Tento parametr je řetězec, obvykle token JWT s kódováním Base-64. Klient by nikdy neměl Hledat v přístupovém tokenu. Formát není zaručený, aby zůstal stabilní a mohl by být zašifrovaný pro daný prostředek. Psaní kódu, který závisí na obsahu přístupového tokenu na klientovi, je jedním z největších zdrojů chyb a konců klientských logik. Další informace najdete v tématu [přístupové tokeny](../articles/active-directory/develop/access-tokens.md).
+- `IdToken` pro uživatele. Tento parametr je kódovaným tokenem JWT. Další informace najdete v tématu [tokeny ID](../articles/active-directory/develop/id-tokens.md).
+- `ExpiresOn` Určuje datum a čas, kdy vyprší platnost tokenu.
+- `TenantId` obsahuje tenanta, ve kterém se uživatel našel. Pro uživatele typu Host ve scénářích Azure Active Directory (Azure AD) B2B se ID tenanta hostuje jako tenant, nikoli jedinečný tenant.
 Když se token doručí uživateli, `AuthenticationResult` obsahuje taky informace o tomto uživateli. U důvěrných toků klienta, kde jsou požadovány tokeny bez uživatele pro aplikaci, jsou informace o uživateli null.
 - `Scopes`Pro který byl token vydán.
 - Jedinečné ID uživatele
@@ -48,7 +48,7 @@ Následující diagram znázorňuje strukturu `IAccount` rozhraní.
 |----------|-------------|
 | `TenantId` | Řetězcová reprezentace pro identifikátor GUID, což je ID tenanta, ve kterém se účet nachází. |
 | `ObjectId` | Řetězcová reprezentace pro identifikátor GUID, což je ID uživatele, který je vlastníkem účtu v tenantovi. |
-| `Identifier` | Jedinečný identifikátor účtu `Identifier`je zřetězení `ObjectId` a `TenantId` oddělené čárkou. Nejsou zakódované v kódování Base 64. |
+| `Identifier` | Jedinečný identifikátor účtu `Identifier` je zřetězení `ObjectId` a `TenantId` oddělené čárkou. Nejsou zakódované v kódování Base 64. |
 
 `IAccount`Rozhraní představuje informace o jednom účtu. Stejný uživatel může být přítomen v různých klientech, což znamená, že uživatel může mít více účtů. Její členové jsou uvedeni v následující tabulce.
 

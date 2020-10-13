@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0583852f0be590eb1c6a4b53047f94b3ea0fbaa4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95dc5b70174cd738104260aac2e175c0657d9c90
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447807"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966198"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Vytvoření a zřízení zařízení IoT Edge s čipem TPM v systému Linux
 
@@ -31,7 +31,7 @@ Tento článek ukazuje, jak otestovat Automatické zřizování na zařízení s
 >
 > Pokud používáte fyzické zařízení, můžete přeskočit k [informacím o načtení zřizování z fyzického zařízení](#retrieve-provisioning-information-from-a-physical-device) v tomto článku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vývojový počítač s Windows, který má [povolenou technologii Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v). Tento článek používá Windows 10, na kterém běží virtuální počítač s Ubuntu serverem.
 * Aktivní IoT Hub.
@@ -178,11 +178,36 @@ Teď, když pro toto zařízení existuje registrace, IoT Edge modul runtime mů
 
 Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho komponenty se spouštějí v kontejnerech a umožňují na zařízení nasadit další kontejnery, abyste mohli spustit kód na hraničních zařízeních. Na virtuální počítač nainstalujte modul runtime IoT Edge.
 
-Před zahájením článku, který odpovídá vašemu typu zařízení, si poznáte **Rozsah ID** DPS a **registraci** zařízení. Pokud jste nainstalovali vzorový Server Ubuntu, postupujte podle pokynů pro **platformu x64** . Nezapomeňte nakonfigurovat IoT Edge runtime pro automatické, ne ruční zřizování.
+Postupujte podle kroků v části [Instalace modulu runtime Azure IoT Edge](how-to-install-iot-edge.md)a pak se vraťte k tomuto článku a zřiďte zařízení.
 
-Až se dostanete do kroku konfigurace démona zabezpečení, nezapomeňte a vyberte [možnost 2 Automatické zřizování](how-to-install-iot-edge-linux.md#option-2-automatic-provisioning) a konfigurace pro ověření identity čipem TPM.
+## <a name="configure-the-device-with-provisioning-information"></a>Konfigurace zařízení pomocí informací o zřizování
 
-[Instalace modulu runtime Azure IoT Edge v systému Linux](how-to-install-iot-edge-linux.md)
+Po nainstalování modulu runtime do zařízení nakonfigurujte zařízení s informacemi, které používá pro připojení ke službě Device Provisioning a IoT Hub.
+
+1. Zjistěte svůj **Rozsah ID** DPS a **ID registrace** zařízení, které byly shromážděny v předchozích částech.
+
+1. Otevřete konfigurační soubor na zařízení IoT Edge.
+
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
+
+1. V souboru vyhledejte část konfigurace zřizování. Odkomentujte řádky pro zřizování čipu TPM a zajistěte, aby byly všechny další řádky pro zřizování zakomentovány.
+
+   `provisioning:`Řádek by neměl mít žádné předchozí prázdné znaky a vnořené položky by měly být odsazeny dvěma mezerami.
+
+   ```yml
+   # DPS TPM provisioning configuration
+   provisioning:
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "<SCOPE_ID>"
+     attestation:
+       method: "tpm"
+       registration_id: "<REGISTRATION_ID>"
+   ```
+
+1. Aktualizujte hodnoty `scope_id` a `registration_id` pomocí informací DPS a Device.
 
 ## <a name="give-iot-edge-access-to-the-tpm"></a>Udělení IoT Edge k čipu TPM
 

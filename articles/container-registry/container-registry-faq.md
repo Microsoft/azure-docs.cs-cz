@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
 ms.openlocfilehash: 499ef509fc9f8d9365d8db3f7058d12352db9bb2
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91570512"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
@@ -508,10 +508,10 @@ V tuto chvíli nepodporujeme GitLab pro aktivační události zdroje.
 
 | Služba Git | Zdrojový kontext | Ruční sestavení | Automatické sestavení prostřednictvím aktivační události potvrzení |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ano |
-| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Ano | Ano |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ne |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ano | Ne |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Yes |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Yes | Yes |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | No |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Yes | No |
 
 ## <a name="run-error-message-troubleshooting"></a>Řešení potíží s chybovou zprávou
 

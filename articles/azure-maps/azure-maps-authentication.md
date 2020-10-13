@@ -11,10 +11,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 4a923fd34391137f2064cb338ea180ae3782f5e2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88036840"
 ---
 # <a name="authentication-with-azure-maps"></a>Ověřování s využitím Azure Maps
@@ -65,7 +65,7 @@ Poté, co aplikace získá přístupový token, sada SDK nebo aplikace pošle po
 | Autorizace  | Nosič eyJ0e... HNIVN |
 
 > [!NOTE]
-> `x-ms-client-id`je identifikátor GUID založený na účtu Azure Maps, který se zobrazí na stránce ověřování Azure Maps.
+> `x-ms-client-id` je identifikátor GUID založený na účtu Azure Maps, který se zobrazí na stránce ověřování Azure Maps.
 
 Tady je příklad žádosti o Azure Maps trase, která používá token nosiče Azure AD OAuth:
 
@@ -90,7 +90,7 @@ Při konfiguraci služby Azure RBAC zvolíte objekt zabezpečení a použijete h
 
 Následující typy definic rolí existují k podpoře scénářů aplikací.
 
-| Definice role Azure       | Popis                                                                                              |
+| Definice role Azure       | Description                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Čtečka dat Azure Maps      | Poskytuje přístup k neměnným Azure Maps rozhraní REST API.                                                       |
 | Přispěvatel dat Azure Maps | Poskytuje přístup k proměnlivým rozhraním REST API Azure Maps. Proměnlivost je definována akcemi: Write a DELETE. |

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
 ms.openlocfilehash: a4ac56a4d588071f599f62e6de94d9ec7367a1ae
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87924749"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Správa Data Box Disku pomocí webu Azure Portal
@@ -119,7 +119,7 @@ Pokud chcete upravit podrobnosti o oznámení, proveďte následující kroky.
 
 ## <a name="view-order-status"></a>Zobrazení stavu objednávky
 
-|Stav objednávky |Popis |
+|Stav objednávky |Description |
 |---------|---------|
 |Objednáno     | Došlo k úspěšnému zadání objednávky. <br> Pokud disky nejsou k dispozici, obdržíte oznámení. <br>Pokud jsou disky dostupné, Microsoft určí disky k odeslání a připraví balíček s disky.        |
 |Zpracováno     | Proběhlo zpracování objednávky. <br> Během zpracování objednávky dochází k těmto akcím:<li>Disky se zašifrují pomocí šifrování AES-128 nástrojem BitLocker. </li> <li>Data Box Disk se uzamkne, aby se zabránilo neoprávněnému přístupu.</li><li>Během tohoto procesu se vygeneruje klíč k odemknutí disků.</li>        |

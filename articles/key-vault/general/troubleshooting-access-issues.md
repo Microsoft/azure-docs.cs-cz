@@ -8,10 +8,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89595984"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Řešení potíží se zásadami přístupu ke službě Azure Key trezor
@@ -45,7 +45,7 @@ Pokud vytváříte aplikaci Prem, provedete místní vývoj nebo jinak nemůžet
 
 ### <a name="how-can-i-give-the-ad-group-access-to-the-key-vault"></a>Jak dá skupině AD přístup k trezoru klíčů?
 
-Udělte skupině AD oprávnění k vašemu trezoru klíčů pomocí příkazu Azure CLI `az keyvault set-policy` nebo rutiny Azure PowerShell set-AzKeyVaultAccessPolicy. Viz [přiřazení zásad přístupu – rozhraní příkazového řádku](assign-access-policy-cli.md) a [přiřazení zásad přístupu – PowerShell](assign-access-policy-powershell.md).
+Udělte skupině AD oprávnění k vašemu trezoru klíčů pomocí příkazu Azure CLI `az keyvault set-policy` nebo rutiny Azure PowerShell Set-AzKeyVaultAccessPolicy. Viz [přiřazení zásad přístupu – rozhraní příkazového řádku](assign-access-policy-cli.md) a [přiřazení zásad přístupu – PowerShell](assign-access-policy-powershell.md).
 
 Aplikace taky potřebuje alespoň jednu roli správy identit a přístupu (IAM) přiřazenou k trezoru klíčů. V opačném případě se nebude moci přihlásit a nezdaří se jim nedostatečná oprávnění pro přístup k předplatnému. U skupin Azure AD se spravovanými identitami může trvat až osm hodin, než se aktualizují tokeny a začnou platit.
 

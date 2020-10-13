@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: 9ed6244d8f5ecf18e89994c0c62af16290fb68c5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120571"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
@@ -158,7 +158,7 @@ Azure nabízí několik způsobů použití kontejnerů ve vašich aplikacích.
   >
   > **Začínáme**: [použijte vlastní image docker pro App Service v systému Linux](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Ověřování uživatelů
+### <a name="authentication"></a>Authentication
 
 Je velmi důležité nejen zjistit, kdo používá vaše aplikace, ale také k tomu, aby se zabránilo neoprávněnému přístupu k prostředkům. Azure nabízí několik způsobů, jak ověřit klienty aplikace.
 
@@ -193,7 +193,7 @@ Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat p
 Bez ohledu na to, jestli je zřizování virtuálních počítačů nebo publikování vašich webových aplikací pomocí průběžné integrace, se Azure integruje s většinou oblíbených DevOps nástrojů. Můžete pracovat s nástroji, které už máte, a maximalizovat stávající prostředí s podporou nástrojů jako:
 
 * Jenkins
-* GitHub
+* GitHubu
 * Puppet
 * Chef
 * TeamCity
@@ -229,7 +229,7 @@ Azure poskytuje bohatou sadu funkcí pro vytváření a správu prostředků, ap
 
 Azure poskytuje dva způsoby, jak spravovat aplikace a služby z příkazového řádku. Můžete použít nástroje, jako je bash, terminál, příkazový řádek nebo vámi zvolený nástroj příkazového řádku. Obvykle můžete provádět stejné úlohy z příkazového řádku jako v Azure Portal, jako je například vytváření a konfigurace virtuálních počítačů, virtuálních sítí, webových aplikací a dalších služeb.
 
--   [Rozhraní příkazového řádku Azure (CLI)](../../xplat-cli-install.md): umožňuje připojit se k předplatnému Azure a programovat různé úlohy s prostředky Azure z příkazového řádku.
+-   Rozhraní příkazového řádku [(CLI) pro azure Command-Line](../../xplat-cli-install.md): umožňuje připojit se k předplatnému Azure a programovat různé úlohy s prostředky Azure z příkazového řádku.
 
 -   [Azure PowerShell](../../powershell-install-configure.md): poskytuje sadu modulů s rutinami, které vám umožní spravovat prostředky Azure pomocí Windows PowerShellu.
 

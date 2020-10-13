@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 98514bad6a04e0c3058faf3133fc44333039ce53
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361462"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Řešení potíží s virtuálním počítačem Linux, když není k dispozici přístup ke konzole sériového rozhraní Azure a rozložení disku používá LVM (Správce logických svazků)
@@ -198,11 +198,11 @@ Teď znovu přihlaste k prostředí **chroot** spuštěním
 
 Všechny LVs musí být viditelné jako připojené oddíly.
 
-![Upřesnit](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![Pokročilý](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
 Dotaz na nainstalované **jádro**
 
-![Upřesnit](./media/chroot-logical-volume-manager/rpm-kernel.png)
+![Pokročilý](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
 V případě potřeby odebrat nebo upgradovat **kernel** 
  ![ Pokročilé jádro](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)

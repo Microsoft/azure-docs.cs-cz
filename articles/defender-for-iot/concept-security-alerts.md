@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/08/2020
 ms.author: v-ekrieg
 ms.openlocfilehash: c4c92bfa25d9c43d3c654fbd1f23e242effc7577
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91851199"
 ---
 # <a name="defender-for-iot-security-alerts"></a>Defender pro výstrahy zabezpečení IoT
@@ -32,7 +32,7 @@ Další informace najdete v tématu [přizpůsobitelná upozornění](concept-cu
 
 ## <a name="built-in-alerts-for-iot-devices"></a>Integrované výstrahy pro zařízení IoT
 
-| Název | Závažnost | Zdroj dat | Popis | Navrhované kroky k nápravě|
+| Name | Závažnost | Zdroj dat | Description | Navrhované kroky k nápravě|
 |----------|---------------|-------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |**Vysoká** závažnost|  |  |  |
 |   Binární příkazový řádek   | Vysoké | Agent | Byl zjištěn binární soubor LA Linux, který byl spuštěn z příkazového řádku. Tento proces může být legitimní aktivity nebo indikace, že dojde k ohrožení zabezpečení vašeho zařízení.|   Projděte si příkaz s uživatelem, který ho spustil, a zkontrolujte, jestli se jedná o něco oprávněného spuštění na zařízení. Pokud ne, požádejte o upozornění svůj tým zabezpečení informací. |

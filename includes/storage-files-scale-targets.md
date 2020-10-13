@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.openlocfilehash: 3d4cc17570057f5f37cf38685847afbe38ea6831
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90606513"
 ---
 | Prostředek | Standardní sdílené složky | Soubory ke sdílení souborů úrovně Premium |
@@ -26,6 +26,6 @@ ms.locfileid: "90606513"
 | Maximální počet snímků sdílené složky | 200 snímky sdílené složky | 200 snímky sdílené složky |
 | Maximální délka názvu objektu (adresářů a souborů) | 2 048 znaků | 2 048 znaků |
 | Maximální součást cesty (v cestě \A\B\C\D je každé písmeno součásti) | 255 znaků | 255 znaků |
-| Limit pevných odkazů (jenom NFS) | – | 178 |
+| Limit pevných odkazů (jenom NFS) | Není k dispozici | 178 |
 
 \* Výchozí nastavení pro standardní sdílené složky je 5 TiB. podrobné informace o tom, jak zvýšit úroveň standardních 100 sdílených složek, najdete v tématu [povolení a vytváření velkých sdílených složek](../articles/storage/files/storage-files-how-to-create-large-file-share.md) .

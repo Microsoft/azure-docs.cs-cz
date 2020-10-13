@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: 3578562839069eb4b9c99b16d938efe48821fcec
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91631303"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postup: Přihlášení libovolného uživatele služby Azure Active Directory pomocí vzoru aplikace s více tenanty
@@ -190,7 +190,7 @@ Víceklientské aplikace mohou také získat přístupové tokeny pro volání r
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak vytvořit aplikaci, která se může přihlásit uživatele z libovolného tenanta Azure AD. Po povolení jednotného přihlašování (SSO) mezi vaší aplikací a službou Azure AD můžete také aktualizovat aplikaci pro přístup k rozhraním API vystaveným prostředky Microsoftu, jako je Microsoft 365. To vám umožní nabízet v aplikaci přizpůsobené prostředí, například zobrazení kontextových informací uživatelům, jako je například profilový obrázek nebo jejich další schůzka v kalendáři. Další informace o tom, jak volat rozhraní API pro Azure AD a Microsoft 365 služby, jako jsou Exchange, SharePoint, OneDrive, OneNote a další, najdete v [Microsoft Graph API][MSFT-Graph-overview].
+V tomto článku jste zjistili, jak vytvořit aplikaci, která se může přihlásit uživatele z libovolného tenanta Azure AD. Po povolení jednotného Sign-On (SSO) mezi vaší aplikací a službou Azure AD můžete také aktualizovat aplikaci pro přístup k rozhraním API vystaveným prostředky Microsoftu, jako je Microsoft 365. To vám umožní nabízet v aplikaci přizpůsobené prostředí, například zobrazení kontextových informací uživatelům, jako je například profilový obrázek nebo jejich další schůzka v kalendáři. Další informace o tom, jak volat rozhraní API pro Azure AD a Microsoft 365 služby, jako jsou Exchange, SharePoint, OneDrive, OneNote a další, najdete v [Microsoft Graph API][MSFT-Graph-overview].
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com
