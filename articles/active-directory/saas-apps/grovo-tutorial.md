@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c43a50dbbd2276573a80b866ee673e4391d9736b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a503f93895d0e1377f8037818b68ea42178363c2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551400"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944933"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grovo"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Grovo
 
@@ -137,11 +137,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Přejít na **integrace správců**  >  **Integrations**.
  
-    ![Konfigurace Grovo](./media/grovo-tutorial/tutorial_grovo_admin.png) 
+    ![Snímek obrazovky, který zobrazuje nabídku správce s vybranými možnostmi integrace](./media/grovo-tutorial/tutorial_grovo_admin.png) 
 
 3. Klikněte na tlačítko **nastavit** v části **SP iniciovala SAML 2,0** .
 
-    ![Konfigurace Grovo](./media/grovo-tutorial/tutorial_grovo_setup.png)
+    ![Snímek obrazovky, který zobrazuje oddíl S/P inicializovaný s A M L 2,0 s vybraným tlačítkem nastavit.](./media/grovo-tutorial/tutorial_grovo_setup.png)
 
 4. V části **SP iniciované** automaticky OTEVÍRANÉ okno SAML 2,0 proveďte následující kroky:
 

@@ -12,10 +12,10 @@ ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5910c40729d07d5a759b2e5cc7b7a4272524c150
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91253849"
 ---
 # <a name="upgrade-from-read-v2x-to-read-v3x"></a>Upgradujte ze přečtené verze v2. x, abyste si přečetli v3. x
@@ -47,7 +47,7 @@ K dispozici je nový volitelný parametr _jazyka_ . Pokud neznáte jazyk dokumen
 
 |Číst 2. x |Přečíst 3. x  |
 |----------|-----------|
-|https://{Endpoint}/Vision/**v 2.0/čtení/Operations**/{operationId}     |https://{Endpoint}/<**řetězec verze**>/Read/analyzeresults/{operationId}|
+|https://{Endpoint}/Vision/**v 2.0/čtení/Operations**/{operationId}     |https://{Endpoint}/<**řetězec verze**>/Read/analyzeResults/{operationId}|
 
 ### <a name="get-read-operation-result-status-flag"></a>`Get Read Operation Result` příznak stavu
 
@@ -187,7 +187,7 @@ Nový volitelný parametr _jazyka_ je k dispozici v v 3.0. Pokud neznáte jazyk 
 
 |Rozpoznávání textu 2. x |Přečíst 3. x  |
 |----------|-----------|
-|https://{Endpoint}/Vision/**v 2.0/textOperations/**{operationId}|https://{Endpoint}/<**řetězec verze**>/Read/analyzeresults/{operationId}|
+|https://{Endpoint}/Vision/**v 2.0/textOperations/**{operationId}|https://{Endpoint}/<**řetězec verze**>/Read/analyzeResults/{operationId}|
 
 ### <a name="get-recognize-text-operation-result-status-flags"></a>`Get Recognize Text Operation Result` příznaky stavu
 Pokud `Get Recognize Text Operation Result` je volání úspěšné, vrátí pole stavového řetězce v těle JSON. 
@@ -311,4 +311,4 @@ V v3. x byl upraven:
 
 |Přečíst 2,0 |Přečíst 3. x  |
 |----------|-----------|
-|https://{Endpoint}/Vision/**v 2.0/čtení/jádro/analyzovat**     |https://{Endpoint}/Vision/<**řetězec verze**>/Read/syncanalyze [? Language]|
+|https://{Endpoint}/Vision/**v 2.0/čtení/jádro/analyzovat**     |https://{Endpoint}/Vision/<**řetězec verze**>/Read/syncAnalyze [? Language]|

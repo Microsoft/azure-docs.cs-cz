@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e04f6120f7d9a5646a3b30553b5083c5259acae2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b3817bd33c72ce6d1c3426aa8379101c84f5bc5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499632"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961506"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Kurz: Vytvoření a nasazení vysoce dostupných virtuálních počítačů pomocí Azure CLI
 
@@ -37,7 +37,7 @@ V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](../../cloud-shell/o
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 
 Skupina dostupnosti je funkce logického seskupení, pomocí které můžete v Azure zajistit, že prostředky virtuálních počítačů, které do ní umístíte, jsou při nasazení v datacentru Azure od sebe navzájem izolované. Azure zajišťuje, že virtuální počítače, které umístíte do skupiny dostupnosti, se budou spouštět napříč několika fyzickými servery, výpočetními racky, jednotkami úložiště a síťovými přepínači. Pokud dojde k selhání hardwaru nebo softwaru Azure, ovlivní to pouze dílčí část vašich virtuálních počítačů a váš výpočetní systém zůstane v provozu a bude pro zákazníky dál dostupný. Skupiny dostupnosti představují základní schopnost při sestavování spolehlivých cloudových řešení.
 
@@ -116,5 +116,5 @@ Přejděte k dalšímu kurzu, kde se seznámíte se škálovacími sadami virtu�
 > [Vytvoření škálovací sady virtuálních počítačů](tutorial-create-vmss.md)
 
 * Další informace o zónách dostupnosti najdete v dokumentaci k  [zóny dostupnosti](../../availability-zones/az-overview.md).
-* Další dokumentace k dispozici pro obě skupiny dostupnosti i zóny dostupnosti jsou k dispozici také [zde](./manage-availability.md).
+* Další dokumentace k dispozici pro obě skupiny dostupnosti i zóny dostupnosti jsou k dispozici také [zde](../manage-availability.md).
 * Pokud si chcete vyzkoušet zóny dostupnosti, přejděte na téma [Vytvoření virtuálního počítače se systémem Linux v zóně dostupnosti pomocí Azure CLI](./create-cli-availability-zone.md) .

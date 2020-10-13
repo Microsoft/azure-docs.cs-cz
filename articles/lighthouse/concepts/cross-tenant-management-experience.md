@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 09/30/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60eab197e38c7b6ef3b7f2d9442a0b7583f66d09
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 7b2476d58cdfe057a94c52b40af7694abc7b263f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739727"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970635"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -35,10 +35,12 @@ Azure Lighthouse umožňuje větší flexibilitu při správě prostředků pro 
 
 [Rutina Azure PowerShell Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) zobrazuje `HomeTenantId` atributy a `ManagedByTenantIds` pro každé předplatné, což vám umožní určit, jestli vracený odběr patří do spravovaného tenanta nebo do vašeho tenanta pro správu.
 
-Podobně příkazy rozhraní příkazového řádku Azure, jako je například [AZ Account list](/cli/azure/account#az-account-list) , zobrazí `homeTenantId` `managedByTenants` atributy a.
+Podobně příkazy rozhraní příkazového řádku Azure, jako je například [AZ Account list](/cli/azure/account#az-account-list) , zobrazí `homeTenantId` `managedByTenants` atributy a. Pokud nevidíte tyto hodnoty při použití rozhraní příkazového řádku Azure, zkuste vyprázdnit mezipaměť spuštěním příkazu `az account clear` a `az login --identity` .
 
-> [!TIP]
-> Pokud nevidíte tyto hodnoty při použití rozhraní příkazového řádku Azure, zkuste vyprázdnit mezipaměť spuštěním příkazu `az account clear` a `az login --identity` .
+V Azure REST API jsou k dis příkazy [Subscriptions-Get](/rest/api/resources/subscriptions/get) a [Subscriptions-list](/rest/api/resources/subscriptions/list) `ManagedByTenant` .
+
+> [!NOTE]
+> Kromě informací o klientech týkajících se Azure Lighthouse můžou klienti, kteří jsou uvedeni v těchto rozhraních API, také odrážet partnerské klienty pro Azure Databricks nebo spravované aplikace Azure.
 
 Poskytujeme také rozhraní API, která jsou specifická pro provádění úloh Azure Lighthouse. Další informace najdete v části **reference** .
 

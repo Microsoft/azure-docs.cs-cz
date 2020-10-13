@@ -1,19 +1,20 @@
 ---
-title: Optimalizujte náklady na úložiště objektů BLOB s využitím rezervované kapacity – Azure Storage
+title: Optimalizace nákladů na službu Blob Storage s využitím rezervované kapacity
+titleSuffix: Azure Storage
 description: Přečtěte si o nákupu Azure Storage rezervované kapacity za účelem úspory nákladů na objekty blob bloku a prostředky Azure Data Lake Storage Gen2.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 10/08/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c06bbc412a51fc919b862aeb3f62ec58feec89cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf96906b0dab9a94febe83468f813c7cae0675b0
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84259197"
+ms.locfileid: "91874811"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optimalizace nákladů na službu Blob Storage s využitím rezervované kapacity
 
@@ -29,7 +30,7 @@ V následujících částech jsou popsány požadavky Azure Storage rezervace.
 
 ### <a name="reservation-capacity"></a>Kapacita rezervace
 
-Můžete zakoupit Azure Storage rezervovanou kapacitu v jednotkách od 100 TB do 1 PB za měsíc po dobu jednoho roku nebo tří let.
+Můžete zakoupit Azure Storage rezervovanou kapacitu v jednotkách 100 TiB a 1 PiB za měsíc po dobu jednoho roku nebo tří let.
 
 ### <a name="reservation-scope"></a>Rozsah rezervace
 
@@ -62,7 +63,7 @@ Zakoupení rezervované kapacity:
 
 Když si koupíte Azure Storage rezervaci, musíte pro rezervaci zvolit oblast, úroveň přístupu a možnost redundance. Vaše rezervace je platná jenom pro data uložená v této oblasti, úrovni přístupu a na úrovni redundance. Předpokládejme například, že zakoupíte rezervaci pro data v USA – západ pro horkou úroveň pomocí zóny redundantního úložiště (ZRS). Nemůžete použít stejnou rezervaci pro data v USA – východ, data v archivní úrovni nebo data v geograficky redundantním úložišti (GRS). Můžete si ale koupit další rezervaci za vaše další potřeby.  
 
-Rezervace jsou dnes k dispozici pro 100 TB nebo 1 PB bloků s vyššími slevami pro 1 PB bloků. Když si zakoupíte rezervaci v Azure Portal, Microsoft vám může poskytnout doporučení na základě vašeho předchozího použití, které vám pomůže určit, kterou rezervaci byste měli koupit.
+K dispozici jsou rezervace v současnosti pro 100 TiB nebo 1 PiB bloky s vyššími slevami pro 1 PiB bloky. Když si zakoupíte rezervaci v Azure Portal, Microsoft vám může poskytnout doporučení na základě vašeho předchozího použití, které vám pomůže určit, kterou rezervaci byste měli koupit.
 
 ## <a name="purchase-azure-storage-reserved-capacity"></a>Koupit Azure Storage rezervovanou kapacitu
 
@@ -86,7 +87,7 @@ K zakoupení rezervované kapacity použijte následující postup:
    | **Úroveň přístupu** | Úroveň přístupu, kde má být rezervace platná. Mezi možnosti patří *horká*, *studená*nebo *archivní*. Další informace o úrovních přístupu najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](storage-blob-storage-tiers.md). |
    | **Redundance** | Možnost redundance pro rezervaci. Mezi možnosti patří *LRS*, *ZRS*, *GRS*, *GZRS*, *RA-GRS*a *RA-GZRS*. Další informace o možnostech redundance najdete v tématu [Azure Storage redundance](../common/storage-redundancy.md). |
    | **Četnost fakturace** | Určuje, jak často se účtuje účet pro rezervaci. Mezi možnosti patří *měsíční* nebo *předem*. |
-   | **Velikost** | Oblast, ve které je rezervace platná. |
+   | **Velikost** | Množství kapacity, která se má vyhradit. |
    |**Označení**  | Jeden rok nebo tři roky.   |
 
 1. Po výběru parametrů pro rezervaci Azure Portal zobrazí náklady. Na portálu se také zobrazuje procento slevy při fakturaci s průběžnými platbami.

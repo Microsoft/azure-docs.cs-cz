@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
 ms.openlocfilehash: c448d7e5a5e0bea29063930bed3a59a0461b8cf5
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91767625"
 ---
 <!--for build: for each metric, if you understand what it is, it's ok. otw add more info.  -->
@@ -44,7 +44,7 @@ Metriky jsou ve výchozím nastavení povolené. IoT Hub metriky můžete zobraz
 
 IoT Hub poskytuje několik metrik, které vám poskytnou přehled o stavu vašeho centra a celkový počet připojených zařízení. Můžete zkombinovat informace z několika metrik a vykreslit větší přehled o stavu služby IoT Hub. Následující tabulka popisuje metriky jednotlivých sledování IoT Hub a informace o tom, jak se každá metrika vztahuje k celkovému stavu centra IoT.
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |RoutingDeliveries | Směrování pokusů o doručení (Preview) | Počet | Celkem |Toto je metrika doručení směrování. Použijte dimenze k identifikaci stavu doručení pro konkrétní koncový bod nebo pro konkrétní zdroj směrování.| Prostředku<br>Výsledek<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>Koncový bod<br>*Další podrobnosti o dimenzích [**najdete tady**](#dimensions)*. |
 |RoutingDeliveryLatency| Latence směrování (Preview) | Milisekund | Průměr |Toto je metrika latence doručení směrování. Použijte dimenze k identifikaci latence pro konkrétní koncový bod nebo pro konkrétní zdroj směrování.| Prostředku<br>RoutingSource,<br>EndpointType,<br>Koncový bod<br>*Další podrobnosti o dimenzích [**najdete tady**](#dimensions)*.|
@@ -108,11 +108,11 @@ IoT Hub poskytuje několik metrik, které vám poskytnou přehled o stavu vašeh
 |dokončené úlohy|Dokončené úlohy|Počet|Celkem|Počet všech dokončených úloh.|Žádné|
 |úlohy. nezdařilo se|Neúspěšné úlohy|Počet|Celkem|Počet všech neúspěšných úloh.|Žádné|
 |D2C. telemetrie. příchozí přenos dat<br>sendThrottle|Počet chyb omezování|Počet|Celkem|Počet chyb omezení z důvodu omezení propustnosti zařízení|Žádné|
-|dailyMessageQuotaUsed|Celkový počet použitých zpráv|Count|Průměr|Počet všech aktuálně využívaných zpráv Jedná se o kumulativní hodnotu, která se každý den resetuje na nulu v 00:00 UTC.|Žádné|
+|dailyMessageQuotaUsed|Celkový počet použitých zpráv|Počet|Průměr|Počet všech aktuálně využívaných zpráv Jedná se o kumulativní hodnotu, která se každý den resetuje na nulu v 00:00 UTC.|Žádné|
 |deviceDataUsage|Celkové využití dat zařízení|Bajty|Celkem|Bajtů přenesených do a ze všech zařízení připojených k IotHub|Žádné|
 |deviceDataUsageV2|Celkové využití dat zařízení (Preview)|Bajty|Celkem|Bajtů přenesených do a ze všech zařízení připojených k IotHub|Žádné|
-|totalDeviceCount|Celkem zařízení (Preview)|Count|Průměr|Počet zařízení zaregistrovaných ve službě IoT Hub|Žádné|
-|connectedDeviceCount|Připojená zařízení (Preview)|Count|Průměr|Počet zařízení připojených ke službě IoT Hub|Žádné|
+|totalDeviceCount|Celkem zařízení (Preview)|Počet|Průměr|Počet zařízení zaregistrovaných ve službě IoT Hub|Žádné|
+|connectedDeviceCount|Připojená zařízení (Preview)|Počet|Průměr|Počet zařízení připojených ke službě IoT Hub|Žádné|
 |konfiguračních|Metriky konfigurace|Počet|Celkem|Počet celkových operací CRUD provedených pro konfiguraci zařízení a nasazení IoT Edge v sadě cílových zařízení. To zahrnuje také počet operací, které mění v důsledku těchto konfigurací práci v zařízení, která je typu vlákna nebo je v něm.|Žádné|
 
 ### <a name="dimensions"></a>Dimenze

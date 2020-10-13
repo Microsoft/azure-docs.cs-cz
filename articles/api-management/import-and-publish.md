@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 9ff64f57e61002101b4e2c560bdcd91863cc461e
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91626943"
 ---
 # <a name="tutorial-import-and-publish-your-first-api"></a>Kurz: Import a publikování vašeho prvního rozhraní API
@@ -30,7 +30,7 @@ Po importu můžete rozhraní API spravovat v Azure Portal.
 
 :::image type="content" source="media/import-and-publish/created-api.png" alt-text="Nové rozhraní API v API Management":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Vysvětlení [terminologie Azure API Management](api-management-terminology.md).
 - [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).

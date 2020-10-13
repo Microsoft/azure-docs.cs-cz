@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9e67f24cf670024432f64487df20b9fca515c006
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 2df2cf2a9d0a89f72078cd0da36272781e89e338
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91740373"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961319"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -270,7 +270,7 @@ Vaše vlastní zásady a Azure AD B2C tenant jsou teď připravené. V dalším 
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 zaregistrovat aplikaci v Azure AD B2C
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
@@ -437,6 +437,24 @@ Následující scénáře předávající strany SAML (RP) jsou podporovány pro
 
 V současné době nejsou podporovány následující scénáře předávající strany SAML (RP):
 * Zprostředkovatel identity inicioval přihlášení, kde poskytovatel identity je externí zprostředkovatel identity, například ADFS.
+
+## <a name="saml-token"></a>Token SAML
+
+Token SAML je token zabezpečení, který je vydaný Azure AD B2C po úspěšném přihlášení. Obsahuje informace o uživateli, poskytovateli služeb, pro který je token určen, signatura a doba platnosti. Následující tabulka obsahuje seznam deklarací a vlastností, které můžete očekávat v tokenu SAML vydaném Azure AD B2C.
+
+|Prvek  |Vlastnost  |Poznámky  |
+|---------|---------|---------|
+|`<Response>`| `ID` | Automaticky generovaný jedinečný identifikátor odpovědi. | 
+|`<Response>`| `InResponseTo` | ID požadavku SAML, na který je tato zpráva odezva. | 
+|`<Response>` | `IssueInstant` | Doba, po kterou se má odpověď vydávat. Hodnota Time je kódována v UTC.Pokud chcete změnit nastavení pro životnost tokenu, nastavte `TokenNotBeforeSkewInSeconds` [metadata](saml-issuer-technical-profile.md#metadata) technického profilu vystavitele tokenu SAML. | 
+|`<Response>` | `Destination`| Odkaz na identifikátor URI označující adresu, na kterou byla tato odpověď odeslána. Hodnota je shodná s požadavkem SAML `AssertionConsumerServiceURL` . | 
+|`<Response>` `<Issuer>` | |Identifikuje vystavitele tokenu. Toto je libovolný identifikátor URI definovaný `IssuerUri` [metadaty](saml-issuer-technical-profile.md#metadata) problému tokenu SAML.     |
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |Objekt zabezpečení, o kterém token vyhodnotí informace, například ID objektu uživatele. Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Dá se použít k bezpečnému provádění kontrol autorizace, například když se token používá pro přístup k prostředku. Ve výchozím nastavení se deklarace identity subjektu naplní s ID objektu uživatele v adresáři.|
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | Odkaz na identifikátor URI představující klasifikaci informací o identifikátoru založeném na řetězci. Ve výchozím nastavení je tato vlastnost vynechána. Nastavením [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) předávající strany můžete určit `NameID` formát, například `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` . |
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |Čas, kdy bude token platný. Hodnota Time je kódována v UTC. Vaše aplikace by měla tuto deklaraci identity použít k ověření platnosti životnosti tokenu. Pokud chcete změnit nastavení pro životnosti tokenů, nastavte `TokenNotBeforeSkewInSeconds` [metadata](saml-issuer-technical-profile.md#metadata) technického profilu problému s tokenem SAML. |
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Čas, kdy se token stal neplatným Vaše aplikace by měla tuto deklaraci identity použít k ověření platnosti životnosti tokenu. Hodnota je 15 minut po `NotBefore` a nelze ji změnit.|
+|`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |Odkaz na identifikátor URI, který identifikuje zamýšlenou cílovou skupinu. Identifikuje zamýšleného příjemce tokenu. Hodnota je shodná s požadavkem SAML `AssertionConsumerServiceURL` .|
+|`<Response>``<Assertion>` `<saml:AttributeStatement>` kolekce`<Attribute>` | | Kolekce kontrolních výrazů (deklarace identity), jak je nakonfigurováno ve výstupních deklaracích [technického profilu předávající strany](relyingparty.md#technicalprofile) . Můžete nakonfigurovat název kontrolního výrazu nastavením `PartnerClaimType` výstupní deklarace identity. |
 
 ## <a name="next-steps"></a>Další kroky
 

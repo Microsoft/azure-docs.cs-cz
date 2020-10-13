@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
 ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90891372"
 ---
 # <a name="certificate-requirements"></a>Požadavky na certifikáty
@@ -70,7 +70,7 @@ Certifikáty PFX nainstalované na zařízení Azure Stack Edge pro by měly spl
 
 * Pokud exportujete certifikát PFX, ujistěte se, že jste vybrali možnost **Zahrnout všechny certifikáty do řetězce, pokud je to možné** .
 
-* Použijte certifikát PFX pro koncový bod, místní uživatelské rozhraní, uzel, síť VPN a Wi-Fi, aby se Azure Stack Edge pro používaly veřejné i privátní klíče. Privátní klíč musí mít nastaven atribut klíč místního počítače.
+* Použijte certifikát PFX pro koncový bod, místní uživatelské rozhraní, uzel, síť VPN a Wi-Fi jako veřejné i privátní klíče jsou vyžadovány pro Azure Stack Edge pro. Privátní klíč musí mít nastaven atribut klíč místního počítače.
 
 * Šifrování PFX certifikátu by mělo být 3DES. Toto je výchozí šifrování používané při exportu z úložiště certifikátů klienta Windows 10 nebo Windows serveru 2016. Další informace týkající se 3DES najdete v části [Triple DES](https://en.wikipedia.org/wiki/Triple_DES).
 

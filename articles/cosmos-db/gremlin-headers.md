@@ -8,10 +8,10 @@ ms.date: 09/03/2019
 author: jasonwhowell
 ms.author: jasonh
 ms.openlocfilehash: f39b93058f3f96d37683ec1f3ae3de0f8c1cb786
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409523"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Hlavičky odpovědi serveru Azure Cosmos DB Gremlin
@@ -52,7 +52,7 @@ Níže jsou uvedené nejběžnější stavové kódy vrácené serverem.
 | **1007** | Obvykle je tento stavový kód vrácen chybovou zprávou `"Could not process request. Underlying connection has been closed."` . K této situaci může dojít, když se ovladač klienta pokusí použít připojení, které je serverem zavřeno. Aplikace by měla opakovat procházení na jiném připojení.
 | **1008** | Cosmos DB Gremlin Server může ukončit připojení k rebilanci provozu v clusteru. Ovladače klienta by měly tuto situaci zpracovat a použít pouze živá připojení k odesílání požadavků na server. V některých případech nemusí klientské ovladače zjistit, zda bylo připojení ukončeno. Když dojde k chybě aplikace, `"Connection is too busy. Please retry after sometime or open more connections."` měla by se opakovat procházení na jiném připojení.
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>ukázky
 
 Ukázková klientská aplikace založená na Gremlin.Net, která čte jeden atribut stavu:
 

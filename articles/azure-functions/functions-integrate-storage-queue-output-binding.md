@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 9c635b01bcd04bd03191fca2590b0189bad0f544
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90982011"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Přidání zpráv do fronty Azure Storage pomocí funkcí
@@ -38,7 +38,7 @@ V této části použijete uživatelské rozhraní portálu pro přidání výst
 
 1. Vyberte typ vazby **Azure Queue Storage** a přidejte nastavení, jak je uvedeno v tabulce, která následuje po tomto snímku obrazovky: 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="Přidejte výstupní vazbu Queue Storage do funkce na webu Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="Vytvořte pro svou funkci výstupní vazbu." border="true":::
     
     | Nastavení      |  Navrhovaná hodnota   | Popis                              |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -94,7 +94,7 @@ V této části přidáte kód, který zapíše zprávu do výstupní fronty. Zp
 1. Po uložení změn kódu vyberte **test**.
 1. Potvrďte, že test odpovídá imagi níže, a pak vyberte **Spustit**. 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="Otestujte vazbu úložiště fronty v Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="Vytvořte pro svou funkci výstupní vazbu." border="true":::
 
     Všimněte si, že **text žádosti** jako `name` obsahuje hodnotu *Azure*. Tato hodnota se zobrazí ve zprávě fronty, která se vytvoří při vyvolání této funkce.
     
@@ -111,11 +111,11 @@ Při prvním použití výstupní vazby vytvoří modul runtime Functions v úč
 
 1. V části **nastavení aplikace**vyberte **AzureWebJobsStorage**.
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Snímek obrazovky zobrazující stránku konfigurace s AzureWebJobsStorage vybranými." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Vytvořte pro svou funkci výstupní vazbu." border="true":::
 
 1. Vyhledejte a poznamenejte si název účtu.
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="Vyhledejte účet úložiště připojený k AzureWebJobsStorage." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="Vytvořte pro svou funkci výstupní vazbu." border="true":::
 
 ### <a name="examine-the-output-queue"></a>Prozkoumání výstupní fronty
 

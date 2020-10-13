@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: c8f73c0789cd0211deeb66af5c7300a81d7b1be0
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619810"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Rozšířené události v Azure SQL Database 
@@ -73,40 +73,40 @@ Související témata poskytují dva ukázky kódu:
 
 Funkce Rozšířené události je podporována v několika [zobrazeních katalogu](https://msdn.microsoft.com/library/ms174365.aspx). Zobrazení katalogu informují o *metadatech a definicích* relací událostí vytvořených uživatelem v aktuální databázi. Zobrazení nevrací informace o instancích aktivních relací událostí.
 
-| Název<br/>zobrazení katalogu | Popis |
+| Název<br/>zobrazení katalogu | Description |
 |:--- |:--- |
-| **sys. database_event_session_actions** |Vrátí řádek pro každou akci každé události relace události. |
-| **sys. database_event_session_events** |Vrátí řádek pro každou událost v relaci události. |
-| **sys. database_event_session_fields** |Vrátí řádek pro každý sloupec s vlastním nastavením, který byl explicitně nastaven pro události a cíle. |
-| **sys. database_event_session_targets** |Vrátí řádek pro každý cíl události pro relaci události. |
-| **sys. database_event_sessions** |Vrátí řádek pro každou relaci události v databázi. |
+| **sys.database_event_session_actions** |Vrátí řádek pro každou akci každé události relace události. |
+| **sys.database_event_session_events** |Vrátí řádek pro každou událost v relaci události. |
+| **sys.database_event_session_fields** |Vrátí řádek pro každý sloupec s vlastním nastavením, který byl explicitně nastaven pro události a cíle. |
+| **sys.database_event_session_targets** |Vrátí řádek pro každý cíl události pro relaci události. |
+| **sys.database_event_sessions** |Vrátí řádek pro každou relaci události v databázi. |
 
-V Microsoft SQL Server podobné pohledy v katalogu mají názvy, které obsahují *. \_ Server* místo *. Database \_ *. Vzor názvu je jako **Sys. server_event_%**.
+V Microsoft SQL Server podobné pohledy v katalogu mají názvy, které obsahují *. \_ Server* místo *. Database \_ *. Vzor názvu je jako **Sys.server_event_%**.
 
 ## <a name="new-dynamic-management-views-dmvs"></a>Nová zobrazení dynamické správy [(zobrazení dynamické správy)](https://msdn.microsoft.com/library/ms188754.aspx)
 
 Azure SQL Database má [zobrazení dynamické správy (zobrazení dynamické správy)](https://msdn.microsoft.com/library/bb677293.aspx) , které podporují rozšířené události. Zobrazení dynamické správy vás informuje o *aktivních* relacích událostí.
 
-| Název DMV | Popis |
+| Název DMV | Description |
 |:--- |:--- |
-| **sys. dm_xe_database_session_event_actions** |Vrátí informace o akcích relace události. |
-| **sys. dm_xe_database_session_events** |Vrátí informace o událostech relace. |
-| **sys. dm_xe_database_session_object_columns** |Zobrazuje konfigurační hodnoty pro objekty, které jsou vázány na relaci. |
-| **sys. dm_xe_database_session_targets** |Vrátí informace o cílech relace. |
-| **sys. dm_xe_database_sessions** |Vrátí řádek pro každou relaci události, která je vymezena na aktuální databázi. |
+| **sys.dm_xe_database_session_event_actions** |Vrátí informace o akcích relace události. |
+| **sys.dm_xe_database_session_events** |Vrátí informace o událostech relace. |
+| **sys.dm_xe_database_session_object_columns** |Zobrazuje konfigurační hodnoty pro objekty, které jsou vázány na relaci. |
+| **sys.dm_xe_database_session_targets** |Vrátí informace o cílech relace. |
+| **sys.dm_xe_database_sessions** |Vrátí řádek pro každou relaci události, která je vymezena na aktuální databázi. |
 
 V Microsoft SQL Server jsou podobná zobrazení katalogu pojmenována bez * \_ databázové* části názvu, například:
 
-- **Sys. dm_xe_sessions**místo názvu<br/>**Sys. dm_xe_database_sessions**.
+- místo názvu **Sys.dm_xe_sessions**.<br/>**Sys.dm_xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>Zobrazení dynamické správy společné pro obojí
 
 Pro rozšířené události jsou k dispozici další zobrazení dynamické správy, které jsou společné pro Azure SQL Database, Azure SQL Managed instance a Microsoft SQL Server:
 
-- **sys. dm_xe_map_values**
-- **sys. dm_xe_object_columns**
-- **sys. dm_xe_objects**
-- **sys. dm_xe_packages**
+- **sys.dm_xe_map_values**
+- **sys.dm_xe_object_columns**
+- **sys.dm_xe_objects**
+- **sys.dm_xe_packages**
 
 <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 

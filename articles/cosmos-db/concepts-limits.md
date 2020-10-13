@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.openlocfilehash: e67346eb1a0fccc7a788e8698df734536e1e395b
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708947"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
@@ -230,7 +230,7 @@ V následující tabulce jsou uvedeny limity pro [testovací Azure Cosmos DB pro
 | Maximální počet kontejnerů na předplatné (rozhraní API MongoDB) | 3 |
 | Maximální propustnost na kontejner | 5000 |
 | Maximální propustnost na sdílenou databázi propustnosti | 20000 |
-| Maximální celková velikost úložiště na účet | 10 GB |
+| Maximální celková velikost úložiště na účet | 10 GB |
 
 Zkuste Cosmos DB podporuje globální distribuci jenom v oblastech Střed USA, Severní Evropa a jihovýchodní Asie. Lístky podpory Azure nelze vytvořit pro účty try Azure Cosmos DB. Nicméně podpora je poskytována pro předplatitele se stávajícími plány podpory.
 

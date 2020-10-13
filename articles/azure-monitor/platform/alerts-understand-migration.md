@@ -6,12 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6509425f11b09a2fa5229f9dd68a508241391925
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852391"
+ms.locfileid: "91875916"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Vysvětlení možností migrace s novějšími výstrahami
 
@@ -254,10 +254,12 @@ V rámci migrace se vytvoří nové výstrahy metriky a nové skupiny akcí a pa
 
 ### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>Zásady s efektem odepření nám brání v migraci vašich pravidel.
 
-V rámci migrace se vytvoří nové výstrahy metriky a nové skupiny akcí a pak se odstraní klasická pravidla výstrah. Zásady ale můžou zabránit v vytváření prostředků. V závislosti na zásadách se některá nebo všechna pravidla nedala migrovat. Zásady blokující proces jsou uvedeny v [nástroji pro migraci](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel). Vyřešte tento problém jedním z těchto problémů:
+V rámci migrace se vytvoří nové výstrahy metriky a nové skupiny akcí a pak se odstraní klasická pravidla výstrah. Přiřazení [Azure Policy](../../governance/policy/index.yml) ale může zabránit v vytváření prostředků. V závislosti na přiřazení zásady se některá nebo všechna pravidla nedala migrovat. Přiřazení zásad blokující proces jsou uvedena v [nástroji pro migraci](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel). Vyřešte tento problém jedním z těchto problémů:
 
-- Vyloučení předplatných nebo skupin prostředků po dobu trvání procesu migrace z přiřazení zásad. [Přečtěte si další informace o správě rozsahu vyloučení zásad](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion).
-- Odebrání nebo změna efektu na audit nebo připojení (což může například vyřešit problémy týkající se chybějících značek). [Přečtěte si další informace o správě účinku zásad](../../governance/policy/concepts/definition-structure.md#policy-rule).
+- Vyloučením předplatných, skupin prostředků nebo jednotlivých prostředků po dobu trvání procesu migrace z přiřazení zásad. [Přečtěte si další informace o správě oborů vyloučení zásad](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion).
+- Nastavte režim vynucení na **zakázáno** u přiřazení zásady. [Přečtěte si další informace o vlastnosti enforcementMode přiřazení zásad](../../governance/policy/concepts/assignment-structure.md#enforcement-mode).
+- Nastavte výjimku Azure Policy (Preview) na předplatná, skupiny prostředků nebo jednotlivé prostředky k přiřazení zásady. [Přečtěte si další informace o Azure Policy struktuře výjimek](../../governance/policy/concepts/exemption-structure.md).
+- Odebrání nebo změna efektu na disabled, audit, Append nebo Modify (což může například řešit problémy týkající se chybějících značek). [Přečtěte si další informace o správě efektů zásad](../../governance/policy/concepts/definition-structure.md#policy-rule).
 
 ## <a name="next-steps"></a>Další kroky
 

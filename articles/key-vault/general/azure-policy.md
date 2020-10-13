@@ -7,12 +7,12 @@ ms.date: 01/28/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 62ea64f6f0ccf3a9f4ceabc64a97e1e5570b92b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ef41516d516ce6498fc8c502a229084acdebfa1
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88586062"
+ms.locfileid: "91875512"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Integrace služby Azure Key Vault se službou Azure Policy
 
@@ -148,7 +148,10 @@ Můžete spravovat Trezor klíčů používaný více týmy, které obsahují ce
 Přiřazení zásady s účinkem "Odepřít" může trvat až 30 minut (průměrnou velikost) a 1 hodinu (nejhorší případ), aby bylo možné začít odmítat vytváření prostředků, které nedodržují předpisy. Vyhodnocení zásad pro existující součásti v trezoru může trvat až 1 hodinu (průměrnou velikost) a 2 hodiny (nejhorší případ), než se výsledky dodržování předpisů zobrazí v uživatelském rozhraní portálu. Pokud se výsledky dodržování předpisů zobrazují jako Nezahájeno, může to být způsobeno následujícími důvody:
 - Hodnocení zásad ještě není dokončené. Počáteční latence hodnocení může v nejhorším scénáři trvat až 2 hodiny. 
 - V oboru přiřazení zásady neexistují žádné trezory klíčů.
-- V rámci přiřazování zásad neexistují žádné trezory klíčů s certifikáty. 
+- V rámci přiřazování zásad neexistují žádné trezory klíčů s certifikáty.
+
+> [!NOTE]
+> Azure Policy [režimy poskytovatele](../../governance/policy/concepts/definition-structure.md#resource-provider-modes)prostředků, jako jsou například pro Azure Key Vault, poskytují informace o dodržování předpisů na stránce [dodržování předpisů komponent](../../governance/policy/how-to/get-compliance-data.md#component-compliance) .
 
 ## <a name="next-steps"></a>Další kroky
 

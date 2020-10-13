@@ -8,10 +8,10 @@ ms.date: 04/29/2020
 ms.custom: devx-track-csharp, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: abda26e359becb137d4c0c9f2965ebfbb5ee047c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90982897"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Kurz: Komplexní ověřování a autorizace uživatelů v Azure App Service
@@ -225,7 +225,7 @@ Přejděte na adresu `http://<front-end-app-name>.azurewebsites.net` a přidejte
 
 Přejděte na adresu `http://<back-end-app-name>.azurewebsites.net`, kde se zobrazí položky přidané z front-endové aplikace. Přidejte také několik položek, například `from back end 1` a `from back end 2` a pak aktualizujte front-endovou aplikaci, abyste zjistili, jestli se změny projeví.
 
-:::image type="content" source="./media/tutorial-auth-aad/remote-api-call-run.png" alt-text="Snímek obrazovky s ukázkami rozhraní REST API Azure App Service v okně prohlížeče, ve kterém se zobrazuje aplikace seznam úkolů s položkami přidanými z aplikace front-end.":::
+:::image type="content" source="./media/tutorial-auth-aad/remote-api-call-run.png" alt-text="Snímek obrazovky s ukázkami rozhraní REST API Azure App Service v okně prohlížeče, ve kterém se zobrazuje aplikace seznam úkolů":::
 
 ## <a name="configure-auth"></a>Konfigurace ověřování
 
@@ -239,7 +239,7 @@ V nabídce [Azure Portal](https://portal.azure.com) vyberte **skupiny prostředk
 
 V **skupiny prostředků**vyhledejte a vyberte skupinu prostředků. V **přehledu**vyberte stránku správy vaší back-endové aplikace.
 
-:::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="Snímek obrazovky okna skupiny prostředků zobrazující přehled ukázkové skupiny prostředků a vybrané stránky pro správu back-endové aplikace.":::
+:::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="Snímek obrazovky s ukázkami rozhraní REST API Azure App Service v okně prohlížeče, ve kterém se zobrazuje aplikace seznam úkolů":::
 
 V nabídce vlevo back-end aplikace vyberte **ověřování/autorizace**a pak povolte App Service ověřování výběrem **zapnuto**.
 
@@ -247,7 +247,7 @@ V části **Akce, která se má provést, když požadavek nebude ověřený** v
 
 V části **Zprostředkovatelé ověřování**vyberte **Azure Active Directory**.
 
-:::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="Snímek obrazovky levé nabídky aplikace, která zobrazuje vybrané ověřování a autorizaci a nastavení vybrané v pravé nabídce":::
+:::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="Snímek obrazovky s ukázkami rozhraní REST API Azure App Service v okně prohlížeče, ve kterém se zobrazuje aplikace seznam úkolů":::
 
 Vyberte **Express**, přijměte výchozí nastavení a vytvořte novou aplikaci AD a vyberte **OK**.
 
@@ -259,9 +259,7 @@ Znovu vyberte **Azure Active Directory** a pak vyberte **aplikace Azure AD**.
 
 Zkopírujte **ID klienta** aplikace Azure AD do poznámkového bloku. Tuto hodnotu budete potřebovat později.
 
-:::image type="content" source="./media/tutorial-auth-aad/get-application-id-back-end.png" alt-text="Snímek obrazovky okna nastavení Azure Active Directory zobrazující Aplikace Azure AD a okno aplikace služby Azure AD zobrazující ID klienta, které se má zkopírovat":::
-
-Pokud zde zastavíte, máte samostatnou aplikaci, která je už zabezpečená App Service ověřováním a autorizací. V dalších částech se dozvíte, jak zabezpečit řešení Multi-App pomocí "toku" ověřeného uživatele z front-endu do back-endu. 
+:::image type="content" source="./media/tutorial-auth-aad/get-application-id-back-end.png" alt-text="Snímek obrazovky s ukázkami rozhraní REST API Azure App Service v okně prohlížeče, ve kterém se zobrazuje aplikace seznam úkolů" ověřeného uživatele z front-endu do back-endu. 
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>Povolení ověřování a autorizace pro front-endovou aplikaci
 
@@ -284,13 +282,13 @@ V nabídce [Azure Portal](https://portal.azure.com) vyberte **Azure Active Direc
 
 Vyberte **Registrace aplikací**  >  **vlastněné aplikace**  >  **Zobrazit všechny aplikace v tomto adresáři**. Vyberte název front-end aplikace a pak vyberte **oprávnění API**.
 
-:::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="Snímek obrazovky okna Microsoft-Registrace aplikací se vlastními aplikacemi, názvem aplikace front-end a vybranými oprávněními rozhraní API.":::
+:::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="Snímek obrazovky s ukázkami rozhraní REST API Azure App Service v okně prohlížeče, ve kterém se zobrazuje aplikace seznam úkolů":::
 
 Vyberte **Přidat oprávnění**a pak vyberte **rozhraní API moje organizace používá**  >  **\<back-end-app-name>** .
 
 Na stránce **požádat o oprávnění API** pro back-endové aplikace vyberte **delegovaná oprávnění** a **user_impersonation**a pak vyberte **Přidat oprávnění**.
 
-:::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="Snímek obrazovky se stránkou oprávnění API žádosti, která zobrazuje delegovaná oprávnění, user_impersonation a vybrané tlačítko Přidat oprávnění.":::
+:::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="Snímek obrazovky s ukázkami rozhraní REST API Azure App Service v okně prohlížeče, ve kterém se zobrazuje aplikace seznam úkolů":::
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>Konfigurace služby App Service tak, aby vracela použitelný přístupový token
 
@@ -300,7 +298,7 @@ Přejděte na [Azure Resource Explorer](https://resources.azure.com) a pomocí s
 
 [Azure Resource Explorer](https://resources.azure.com) se teď otevře s vaší front-end aplikací vybranou ve stromu prostředků. V horní části stránky klikněte na **Čtení / zápis** a povolte úpravy vašich prostředků Azure.
 
-:::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="Snímek obrazovky s tlačítky pro čtení a čtení a zápis v horní části stránky Azure Resource Explorer s vybraným tlačítkem pro čtení/zápis.":::
+:::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="Snímek obrazovky s ukázkami rozhraní REST API Azure App Service v okně prohlížeče, ve kterém se zobrazuje aplikace seznam úkolů":::
 
 V levém prohlížeči přejděte k části **Konfigurace**  >  **authsettings**.
 
@@ -310,7 +308,7 @@ V zobrazení **authsettings** (nastavení ověřování) klikněte na **Edit** (
 "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
 ```
 
-:::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="Snímek obrazovky příkladu kódu v zobrazení authsettings zobrazující řetězec additionalLoginParams s příkladem ID klienta.":::
+:::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="Snímek obrazovky s ukázkami rozhraní REST API Azure App Service v okně prohlížeče, ve kterém se zobrazuje aplikace seznam úkolů":::
 
 Uložte nastavení kliknutím na **PUT**.
 
@@ -354,7 +352,7 @@ Znovu se přihlaste k `https://<front-end-app-name>.azurewebsites.net`. Na strá
 
 Teď byste měli být schopni vytvářet, číst, aktualizovat a odstraňovat data z back-endové aplikace stejně jako dříve. Jediným rozdílem je, že obě aplikace jsou teď zabezpečené ověřováním a autorizací pomocí služby App Service, a to včetně volání mezi službami.
 
-Gratulujeme! Váš kód serveru teď přistupuje k back-endovým datům jménem ověřeného uživatele.
+Blahopřejeme! Váš kód serveru teď přistupuje k back-endovým datům jménem ověřeného uživatele.
 
 ## <a name="call-api-securely-from-browser-code"></a>Zabezpečené volání rozhraní API z kódu v prohlížeči
 
@@ -436,7 +434,7 @@ git push frontend master
 
 Znovu přejděte na adresu `https://<front-end-app-name>.azurewebsites.net`. Teď byste měli být schopni vytvářet, číst, aktualizovat a odstraňovat data z back-endové aplikace přímo v aplikaci Angular.js.
 
-Gratulujeme! Váš klientský kód teď přistupuje k back-endovým datům jménem ověřeného uživatele.
+Blahopřejeme! Váš klientský kód teď přistupuje k back-endovým datům jménem ověřeného uživatele.
 
 ## <a name="when-access-tokens-expire"></a>Vypršení platnosti přístupových tokenů
 

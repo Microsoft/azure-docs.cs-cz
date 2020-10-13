@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: b402dab4c6e94a7634e11f0330b5379315e43abf
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91762455"
 ---
 # <a name="call-logic-apps-from-power-automate-and-power-apps"></a>Volání aplikací logiky z Power Automate a Power Apps
@@ -26,7 +26,7 @@ Pokud chcete migrovat tok z Power Automate nebo Power Logic Apps, přečtěte si
 >
 > * Pokud chcete zjistit, které Logic Apps konektory nemají ekvivalenty vypnutí napájení, přečtěte si téma [Logic Apps konektory](/connectors/connector-reference/connector-reference-powerautomate-connectors).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -40,7 +40,7 @@ Pokud chcete migrovat tok z Power Automate nebo Power Logic Apps, přečtěte si
 
 Než budete moct aplikaci logiky volat z Power Automata nebo Power Apps, musíte nejdřív exportovat aplikaci logiky jako vlastní konektor.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Do vyhledávacího pole Azure Portal zadejte `Logic Apps` . Ve výsledcích vyberte v části **služby**možnost **Logic Apps**.
 
@@ -88,7 +88,7 @@ Pokud se chcete připojit k aplikaci logiky, kterou jste exportovali s vaším t
 
 1. Pokud chcete změny uložit, vyberte v nabídce editor automatizace napájení možnost **Uložit**.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Ve službě Logic Apps Najděte aplikaci logiky, kterou jste exportovali.
 
@@ -130,7 +130,7 @@ Pokud se chcete připojit k aplikaci logiky, kterou jste exportovali s vaším t
 
 1. V nabídce editor Power Apps vyberte **Uložit** a uložte provedené změny. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Ve službě Logic Apps Najděte aplikaci logiky, kterou jste exportovali.
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 0d001144f1a2703db118261e5cae5417b1d8c17a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f349ff62fe211f0610341864a4c7528ee6bfe9c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080127"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961523"
 ---
 # <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Kurz – konfigurace strategie nasazení Blue-zelená pro virtuální počítače Azure Linux
 
@@ -25,7 +25,7 @@ ms.locfileid: "87080127"
 
 Azure Pipelines poskytuje plnohodnotnou sadu nástrojů pro automatizaci CI/CD pro nasazení do virtuálních počítačů. Kanál nepřetržitého doručování pro virtuální počítač Azure můžete nakonfigurovat z Azure Portal.
 
-V tomto článku se dozvíte, jak nastavit kanál CI/CD, který používá strategii Blue-zelená pro nasazení ve více počítačích. Azure Portal také podporuje jiné strategie, jako je například [válcování](https://aka.ms/AA7jlh8) a [kanárskéie](https://aka.ms/AA7jdrz).
+V tomto článku se dozvíte, jak nastavit kanál CI/CD, který používá strategii Blue-zelená pro nasazení ve více počítačích. Azure Portal také podporuje jiné strategie, jako je například [válcování](./tutorial-devops-azure-pipelines-classic.md) a [kanárskéie](./tutorial-azure-devops-canary-strategy.md).
 
 ### <a name="configure-cicd-on-virtual-machines"></a>Konfigurace CI/CD na virtuálních počítačích
 
@@ -73,8 +73,8 @@ Pomocí možnosti průběžné doručování můžete na své virtuální počí
 
 ## <a name="other-deployment-strategies"></a>Další strategie nasazení
 
-- [Konfigurace strategie postupné implementace](https://aka.ms/AA7jlh8)
-- [Konfigurovat strategii pro Kanárské nasazení](https://aka.ms/AA7jdrz)
+- [Konfigurace strategie postupné implementace](./tutorial-devops-azure-pipelines-classic.md)
+- [Konfigurovat strategii pro Kanárské nasazení](./tutorial-azure-devops-canary-strategy.md)
 
 ## <a name="azure-devops-projects"></a>Azure DevOps Projects
 
@@ -86,7 +86,7 @@ Můžete snadno začít pracovat s Azure. Pomocí Azure DevOps Projects spusťte
 
 [Další informace](https://azure.microsoft.com/features/devops-projects/).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Nasazení na virtuální počítače Azure pomocí Azure DevOps Projects](../../devops-project/azure-devops-project-vms.md)
 - [Implementace průběžného nasazování vaší aplikace do sady škálování virtuálních počítačů Azure](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

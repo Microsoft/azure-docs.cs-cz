@@ -4,12 +4,12 @@ description: Monitorujte ASP.NET Core webové aplikace pro účely dostupnosti, 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: cb192aa44e9e2ab8578881494852ddd41ae9094d
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 825cd451120f06597922c142dfc6bf8c10f5c700
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91839006"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875117"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro ASP.NET Core aplikace
 
@@ -106,7 +106,7 @@ Pro Visual Studio pro Mac použít [Ruční pokyny](#enable-application-insights
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Příklad:
+    Například:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -134,7 +134,7 @@ Spusťte aplikaci a proveďte na ni požadavky. Telemetrii by teď měla přesm�
 
 ### <a name="ilogger-logs"></a>Protokoly ILogger
 
-Protokoly emitované pomocí `ILogger` závažnosti `Warning` a výše jsou automaticky zachyceny. Dodržujte [ILogger docs](ilogger.md#control-logging-level) k přizpůsobení, které úrovně protokolu jsou zachyceny Application Insights.
+Výchozí konfigurace shromažďuje `ILogger` protokoly závažnost `Warning` a vyšší. Tato konfigurace se dá [přizpůsobit](#how-do-i-customize-ilogger-logs-collection).
 
 ### <a name="dependencies"></a>Závislosti
 

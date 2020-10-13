@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.openlocfilehash: 9ba5f1d3d240867a8f6da52b9666c500c5b6446e
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777370"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrace znalostní báze pomocí exportu a importu
@@ -22,7 +22,7 @@ Migrace je proces vytvoření nové znalostní báze z existující znalostní b
 
 Migrace znalostní báze vyžaduje export z existující znalostní báze a následně import do jiného.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/) .
 * Nastavení nové [služby QnA maker](../How-To/set-up-qnamaker-service-azure.md)
@@ -58,7 +58,7 @@ Proces migrace je programově dostupný pomocí následujících rozhraní REST 
 
 * [Stáhnout rozhraní API znalostní báze Knowledge Base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)
 
-**Import**
+**Importovat**
 
 * [Nahradit rozhraní API (znovu načíst se stejným ID znalostní báze)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)
 * [Vytvořit rozhraní API (načíst s novým ID znalostní báze)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)

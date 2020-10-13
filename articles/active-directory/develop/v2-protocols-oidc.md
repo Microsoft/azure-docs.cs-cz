@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 71e930898f1f86622357f9e02da69be7bf2f8088
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91256581"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform a OpenID Connect Protocol
@@ -101,7 +101,7 @@ Pokud vaše webová aplikace potřebuje ověřit uživatele, může uživatele n
 > [!IMPORTANT]
 > Aby bylo možné úspěšně požádat o token ID z koncového bodu/Authorization, musí mít registrace aplikace na [portálu pro registraci](https://portal.azure.com) implicitní udělení id_tokens povoleny na kartě ověřování (která nastaví `oauth2AllowIdTokenImplicitFlow` příznak v [manifestu aplikace](reference-app-manifest.md) na `true` ). Pokud není povoleno, `unsupported_response` bude vrácena chyba: "Zadaná hodnota pro vstupní parametr ' response_type ' není pro tohoto klienta povolena. Očekávaná hodnota je Code (kód).
 
-Příklad:
+Například:
 
 ```HTTP
 // Line breaks are for legibility only.
@@ -172,7 +172,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 V následující tabulce jsou popsány chybové kódy, které lze vrátit v `error` parametru chybové odpovědi:
 
-| Kód chyby | Popis | Akce klienta |
+| Kód chyby | Description | Akce klienta |
 | --- | --- | --- |
 | `invalid_request` | Chyba protokolu, například chybějící, povinný parametr. |Opravte a odešlete požadavek znovu. Jedná se o chybu vývoje, která se obvykle zachycuje při počátečním testování. |
 | `unauthorized_client` | Klientská aplikace nemůže požádat o autorizační kód. |K tomu obvykle dochází, když klientská aplikace není registrovaná v Azure AD nebo není přidaná do tenanta Azure AD uživatele. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD. |
@@ -292,7 +292,7 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| Parametr | Stav | Popis |
+| Parametr | Stav | Description |
 | ----------------------- | ------------------------------- | ------------ |
 | `post_logout_redirect_uri` | Doporučeno | Adresa URL, na kterou je uživatel přesměrován po úspěšném odhlášení. Pokud parametr není zahrnutý, zobrazí se uživateli obecná zpráva generovaná koncovým bodem Microsoft Identity Platform. Tato adresa URL se musí shodovat s jedním z identifikátorů URI přesměrování registrovaných pro vaši aplikaci na portálu pro registraci aplikací. |
 

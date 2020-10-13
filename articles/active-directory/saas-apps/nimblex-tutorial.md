@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 595977635937ec5dcf4a45a1d57524c1d3f41a6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3be17c672eb918c715602c7576c7d682badd925
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554370"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940998"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>Kurz: Azure Active Directory integrace s NimbleX
 
@@ -132,19 +132,19 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí NimbleX,
 
 2. V pravém horním rohu stránky klikněte na **Nastavení** logo.
 
-    ![Nastavení NimbleX](./media/nimblex-tutorial/tutorial_nimblex_settings.png)
+    ![Snímek obrazovky se zobrazí ikona nastavení.](./media/nimblex-tutorial/tutorial_nimblex_settings.png)
 
 3. Na stránce **Ovládací panely** v části **zabezpečení** klikněte na **jednotné přihlašování**.
 
-    ![Nastavení NimbleX](./media/nimblex-tutorial/tutorial_nimblex_single.png)
+    ![Snímek obrazovky s vybraným jednotným přihlašováním v nabídce zabezpečení](./media/nimblex-tutorial/tutorial_nimblex_single.png)
 
 4. Na stránce **Spravovat jednotné přihlašování** vyberte název instance a klikněte na **Upravit**.
 
-    ![NimbleX SAML](./media/nimblex-tutorial/tutorial_nimblex_saml.png)
+    ![Snímek obrazovky ukazuje spravovat jednu Sign-On, kde můžete vybrat upravit.](./media/nimblex-tutorial/tutorial_nimblex_saml.png)
 
 5. Na stránce **Upravit poskytovatele jednotného přihlašování** proveďte následující kroky:
 
-    ![NimbleX SAML](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
+    ![Snímek obrazovky se zobrazí jako poskytovatel úprav s příponou O, kde můžete zadat hodnoty, které jsou popsány.](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
 
     a. Do textového pole **Popis** zadejte název instance.
 

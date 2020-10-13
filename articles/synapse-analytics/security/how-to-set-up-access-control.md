@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91260151"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview)
@@ -36,7 +36,7 @@ Pokud chcete zabezpečit pracovní prostor synapse (Preview), postupujte podle v
 
 Tento dokument používá ke zjednodušení pokynů standardní názvy. Nahraďte je libovolnými názvy.
 
-|Nastavení | Příklad hodnoty | Popis |
+|Nastavení | Příklad hodnoty | Description |
 | :------ | :-------------- | :---------- |
 | **Pracovní prostor synapse** | WS1 |  Název, který bude mít pracovní prostor synapse. |
 | **Účet ADLSGEN2** | STG1 | Účet ADLS, který se má používat s vaším pracovním prostorem. |

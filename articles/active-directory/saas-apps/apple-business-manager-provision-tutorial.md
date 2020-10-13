@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5cfd355941a7fae211f3abb9b5dd31e86ba1d14b
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ff017671496816f0142bd3b71c3df1a3769b274b
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757482"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941088"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>Kurz: Konfigurace programu Apple Business Manager pro Automatické zřizování uživatelů
 
@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v Apple Business Manageru i
 > * Odebrat uživatele v Apple Business Manageru, když už nevyžadují přístup
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a Apple Business Managerem
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -147,7 +147,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user).
 3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
@@ -160,7 +160,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 * [Správa stávajícího tokenu SCIM a připojení v Apple Business Manageru](https://support.apple.com/guide/apple-business-manager/apdc9a823611)
 * [Odpojení připojení SCIM v Apple Business Manageru](https://support.apple.com/guide/apple-business-manager/apd609be3a61)
 * [Správa stávajícího tokenu SCIM a připojení v Apple Business Manageru](https://support.apple.com/guide/apple-business-manager/apdc9a8236e9)
-* [Řešení potíží s připojením SCIM v Apple Business Manageru](URL=https://support.apple.com/guide/apple-business-manager/apd403a0f3bd)
+* [Řešení potíží s připojením SCIM v Apple Business Manageru](https://support.apple.com/guide/apple-business-manager/apd403a0f3bd/web)
 
 ## <a name="next-steps"></a>Další kroky
 

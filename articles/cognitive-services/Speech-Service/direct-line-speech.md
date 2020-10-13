@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
 ms.openlocfilehash: 2b0bb997ecea55d25748152bab7bb6963d67657f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357637"
 ---
 # <a name="what-is-direct-line-speech"></a>Co je Direct Line Speech?
@@ -35,7 +35,7 @@ Podrobný průvodce vytvořením jednoduchého hlasového pomocníka pomocí fun
 
 Nabízíme také rychlé starty, které jsou navržené tak, aby vám poskytovaly kód a rychle přeučení rozhraní API. Tato tabulka obsahuje seznam rychlých startů hlasového asistenta uspořádaných podle jazyka a platformy.
 
-| Rychlé zprovoznění | Platforma | API – referenční informace |
+| Rychlé zprovoznění | Platforma | referenční dokumentace k rozhraní API |
 |------------|----------|---------------|
 | C#, UWP | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
 | Java | Windows, macOS, Linux | [Procházet](https://aka.ms/csspeech/javaref) |

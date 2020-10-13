@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.openlocfilehash: 7b6c8faafac34ada664ddfadebf8d71a16c73fa7
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710528"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorování výkonu pomocí úložiště dotazů
@@ -88,7 +88,7 @@ Když je povoleno úložiště dotazů, ukládá data v oknech agregace 15 minut
 
 Pro konfiguraci parametrů úložiště dotazů jsou k dispozici následující možnosti.
 
-| **Parametr** | **Popis** | **Výchozí** | **Oblasti**|
+| **Parametr** | **Popis** | **Výchozí** | **Rozsah**|
 |---|---|---|---|
 | pg_qs pg_qs.query_capture_mode | Nastaví, které příkazy jsou sledovány. | žádné | žádné, nahoře, vše |
 | pg_qs pg_qs.max_query_text_length | Nastaví maximální délku dotazu, kterou lze uložit. Delší dotazy budou zkráceny. | 6000 | 100 – 10 000 |
@@ -97,7 +97,7 @@ Pro konfiguraci parametrů úložiště dotazů jsou k dispozici následující 
 
 Následující možnosti platí konkrétně pro čekání na statistiku.
 
-| **Parametr** | **Popis** | **Výchozí** | **Oblasti**|
+| **Parametr** | **Popis** | **Výchozí** | **Rozsah**|
 |---|---|---|---|
 | pgms_wait_sampling pgms_wait_sampling.query_capture_mode | Nastaví, které příkazy jsou sledovány pro statistiku čekání. | žádné | žádné, vše|
 | Pgms_wait_sampling Pgms_wait_sampling.history_period | Nastavte četnost vzorkování událostí čekání v milisekundách. | 100 | 1-600000 |
@@ -116,7 +116,7 @@ Dotazy jsou normalizovány tím, že si po odebrání literálů a konstant vyhl
 ### <a name="query_storeqs_view"></a>query_store query_store.qs_view
 Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele a ID dotazu je k dispozici jeden řádek. 
 
-|**Název**   |**Typ** | **Odkazy**  | **Popis**|
+|**Název**   |**Typ** | **Reference**  | **Popis**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | ID z runtime_stats_entries tabulky|
 |user_id    |identifikátor    |pg_authid. OID  |Identifikátor OID uživatele, který příkaz provedl|
@@ -157,7 +157,7 @@ Toto zobrazení vrátí textová data dotazu v úložišti dotazů. Pro každý 
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store query_store.pgms_wait_sampling_view
 Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele, ID dotazu a událost je jeden řádek.
 
-|**Název**|  **Typ**|   **Odkazy**| **Popis**|
+|**Název**|  **Typ**|   **Reference**| **Popis**|
 |---|---|---|---|
 |user_id    |identifikátor    |pg_authid. OID  |Identifikátor OID uživatele, který příkaz provedl|
 |db_id  |identifikátor    |pg_database. OID    |Identifikátor objektu databáze, ve kterém byl příkaz proveden|

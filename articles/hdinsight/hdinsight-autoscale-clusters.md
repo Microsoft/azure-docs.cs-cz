@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 09/14/2020
 ms.openlocfilehash: 385e910befb79daafa532fa816b96d50a46b7d8c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91620082"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
@@ -72,12 +72,12 @@ Pro horizontální navýšení kapacity vydává automatické škálování pož
 
 Následující tabulka popisuje typy clusterů a verze, které jsou kompatibilní s funkcí automatického škálování.
 
-| Verze | Spark | Hive | Interaktivní dotaz | HBase | Kafka | Storm | ML |
+| Verze | Spark | Hive | Interaktivní dotaz | HBase | Kafka | Bouře | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
-| HDInsight 4,0 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
-| HDInsight 3,6 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
-| HDInsight 4,0 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 3,6 bez protokolu ESP | Yes | Yes | Yes | Ano* | No | No | No |
+| HDInsight 4,0 bez protokolu ESP | Yes | Yes | Yes | Ano* | No | No | No |
+| HDInsight 3,6 s ESP | Yes | Yes | Yes | Ano* | No | No | No |
+| HDInsight 4,0 s ESP | Yes | Yes | Yes | Ano* | No | No | No |
 
 \* Clustery clusterů se dají konfigurovat jenom pro škálování na základě plánu, nikoli na základě zatížení.
 
@@ -225,7 +225,7 @@ Stav clusteru uvedený v Azure Portal vám může pomáhat monitorovat aktivity 
 
 Všechny stavové zprávy clusteru, které se mohou zobrazit, jsou vysvětleny v následujícím seznamu.
 
-| Stav clusteru | Popis |
+| Stav clusteru | Description |
 |---|---|
 | Spuštěno | Cluster pracuje normálně. Všechny předchozí aktivity automatického škálování se úspěšně dokončily. |
 | Doplnění  | Aktualizuje se konfigurace automatického škálování clusteru.  |

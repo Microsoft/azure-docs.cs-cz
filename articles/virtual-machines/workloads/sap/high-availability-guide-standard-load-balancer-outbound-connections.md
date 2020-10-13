@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d3ecae17ae14effe48f5a7a0ee3f73d3054a220
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836118"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961472"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích SAP pro vysokou dostupnost
 
@@ -29,7 +29,7 @@ Oborem tohoto článku je popis konfigurací, které umožní odchozí připojen
 Pokud používáte Pacemaker s agentem Azure plot v řešení vysoké dostupnosti, musí mít virtuální počítače odchozí připojení k rozhraní API pro správu Azure.  
 Článek obsahuje několik možností, které vám umožní vybrat možnost, která je pro váš scénář nejvhodnější.  
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 
 Při implementaci vysoké dostupnosti pro řešení SAP prostřednictvím clusteringu se [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md)jedna z nezbytných součástí. Azure nabízí dvě SKU nástroje pro vyrovnávání zatížení: Standard a Basic.
 
@@ -67,12 +67,12 @@ Nejprve si přečtěte následující dokumenty:
   * [Přehled Azure firewall](../../../firewall/overview.md)– přehled Azure firewall
   * [Kurz: nasazení a konfigurace Azure firewall](../../../firewall/tutorial-firewall-deploy-portal.md) – pokyny ke konfiguraci Azure Firewall prostřednictvím Azure Portal
 * [Virtuální sítě – uživatelsky definovaná pravidla](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) – koncepce a pravidla směrování Azure  
-* [Značky služby skupin zabezpečení](../../../virtual-network/security-overview.md#service-tags) – jak zjednodušit skupiny zabezpečení sítě a konfiguraci brány firewall pomocí značek služeb
+* [Značky služby skupin zabezpečení](../../../virtual-network/network-security-groups-overview.md#service-tags) – jak zjednodušit skupiny zabezpečení sítě a konfiguraci brány firewall pomocí značek služeb
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>Další externí Standard Load Balancer Azure pro odchozí připojení k Internetu
 
 Jedna z možností pro dosažení odchozího připojení k veřejným koncovým bodům, aniž by bylo možné povolit příchozí připojení k virtuálnímu počítači z veřejného koncového bodu, je vytvořit druhý nástroj pro vyrovnávání zatížení s veřejnou IP adresou, přidat virtuální počítače do back-endu pro druhý nástroj pro vyrovnávání zatížení a definovat pouze [odchozí pravidla](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules).  
-Pomocí [skupin zabezpečení sítě](../../../virtual-network/security-overview.md) můžete řídit veřejné koncové body, které jsou přístupné pro odchozí volání z virtuálního počítače.  
+Pomocí [skupin zabezpečení sítě](../../../virtual-network/network-security-groups-overview.md) můžete řídit veřejné koncové body, které jsou přístupné pro odchozí volání z virtuálního počítače.  
 Další informace najdete v tématu Scénář 2 v dokumentu [odchozí připojení](../../../load-balancer/load-balancer-outbound-connections.md#scenarios).  
 Konfigurace by vypadala takto:  
 
@@ -81,11 +81,11 @@ Konfigurace by vypadala takto:
 ### <a name="important-considerations"></a>Důležité informace
 
 - K zajištění odchozího připojení k veřejnému koncovému bodu a optimalizaci nákladů můžete použít jeden další veřejný Load Balancer pro více virtuálních počítačů ve stejné podsíti.  
-- Pomocí [skupin zabezpečení sítě](../../../virtual-network/security-overview.md) můžete řídit, které veřejné koncové body jsou z virtuálních počítačů dostupné. Skupinu zabezpečení sítě můžete přiřadit buď k podsíti, nebo ke každému virtuálnímu počítači. Pokud je to možné, používejte [značky služby](../../../virtual-network/security-overview.md#service-tags) ke snížení složitosti pravidel zabezpečení.  
+- Pomocí [skupin zabezpečení sítě](../../../virtual-network/network-security-groups-overview.md) můžete řídit, které veřejné koncové body jsou z virtuálních počítačů dostupné. Skupinu zabezpečení sítě můžete přiřadit buď k podsíti, nebo ke každému virtuálnímu počítači. Pokud je to možné, používejte [značky služby](../../../virtual-network/network-security-groups-overview.md#service-tags) ke snížení složitosti pravidel zabezpečení.  
 - Azure Load Balancer úrovně Standard s veřejnou IP adresou a odchozími pravidly umožňuje přímý přístup k veřejnému koncovému bodu. Pokud máte podnikové požadavky na zabezpečení, aby všechny odchozí přenosy procházely prostřednictvím centralizovaného podnikového řešení pro auditování a protokolování, možná nebudete moci splnit požadavek v tomto scénáři.  
 
 >[!TIP]
->Pokud je to možné, použijte [značky služby](../../../virtual-network/security-overview.md#service-tags) ke snížení složitosti skupiny zabezpečení sítě. 
+>Pokud je to možné, použijte [značky služby](../../../virtual-network/network-security-groups-overview.md#service-tags) ke snížení složitosti skupiny zabezpečení sítě. 
 
 ### <a name="deployment-steps"></a>Kroky nasazení
 
@@ -117,7 +117,7 @@ Konfigurace by vypadala takto:
 
    ![Odchozí připojení s druhým Load Balancer s veřejnou IP adresou](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
 
-   Další informace o skupinách zabezpečení sítě Azure najdete v tématu [skupiny zabezpečení ](../../../virtual-network/security-overview.md). 
+   Další informace o skupinách zabezpečení sítě Azure najdete v tématu [skupiny zabezpečení ](../../../virtual-network/network-security-groups-overview.md). 
 
 ## <a name="azure-firewall-for-outbound-connections-to-internet"></a>Azure Firewall pro odchozí připojení k Internetu
 
@@ -137,7 +137,7 @@ Architektura by vypadala takto:
 - Pokud řešení brány firewall pro podnikové sítě není Azure Firewall a máte požadavky na zabezpečení, které budou mít všechny odchozí přenosy přes centralizované podnikové řešení, toto řešení nemusí být praktické.  
 
 >[!TIP]
->Pokud je to možné, použijte [značky služby](../../../virtual-network/security-overview.md#service-tags) ke snížení složitosti Azure firewall pravidel.  
+>Pokud je to možné, použijte [značky služby](../../../virtual-network/network-security-groups-overview.md#service-tags) ke snížení složitosti Azure firewall pravidel.  
 
 ### <a name="deployment-steps"></a>Kroky nasazení
 
