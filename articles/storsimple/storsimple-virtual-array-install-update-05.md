@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: fa5524525aa76279cdcceaf0f5fd2a74753786ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a992e432a6111b5da02187bcf6592587c4d31bf
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300595"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977506"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>Instalace aktualizace 0,5 ve virtuálním poli StorSimple
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 
 Tento článek popisuje kroky potřebné k instalaci aktualizace 0,5 ve virtuálním poli StorSimple prostřednictvím místního webového uživatelského rozhraní a prostřednictvím Azure Portal. Chcete-li, aby vaše virtuální pole StorSimple bylo aktuální, je třeba použít aktualizace softwaru nebo opravy hotfix.
 
@@ -92,26 +92,26 @@ Tuto metodu použijte, chcete-li nainstalovat aktualizace na zařízení s verz�
 
 1. V místním webovém uživatelském rozhraní přejdete na **Údržba**  >  **aktualizace softwaru**.
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update1m.png)
+    ![aktualizace zařízení 1](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
 2. Do pole **cesta k souboru aktualizace**zadejte název souboru aktualizace nebo opravy hotfix. Můžete také přejít k instalačnímu souboru aktualizace nebo opravy hotfix, pokud je umístěn ve sdílené síťové složce. Klikněte na **Použít**.
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update2m.png)
+    ![aktualizace zařízení 2](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
 3. Zobrazí se upozornění. Vzhledem k tomu, že se jedná o zařízení s jedním uzlem, po použití aktualizace se zařízení restartuje a dojde k výpadku. Klikněte na ikonu zaškrtněte.
    
-   ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update3m.png)
+   ![aktualizace zařízení 3](./media/storsimple-virtual-array-install-update-05/update3m.png)
 
 4. Spustí se aktualizace. Po úspěšné aktualizaci zařízení se restartuje. Místní uživatelské rozhraní není v tuto dobu k dispozici.
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update5m.png)
+    ![aktualizace zařízení 4](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
 5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance**navštivte web  >  **aktualizace softwaru**údržba. Zobrazená verze softwaru by měla být **10.0.0.0.0.10290.0** pro aktualizaci 0,5.
    
    > [!NOTE]
    > Verze softwaru oznamujeme trochu jiným způsobem v místním webovém uživatelském rozhraní a Azure Portal. Například místní webové uživatelské rozhraní hlásí **10.0.0.0.0.10290** a sestavy Azure Portal **10.0.10290.0** pro stejnou verzi.
    
-    ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-05/update6m.png)
+    ![aktualizace zařízení 5](./media/storsimple-virtual-array-install-update-05/update6m.png)
 
 6. Dalším krokem je aktualizace agenta služby MDS. Na stránce **aktualizace softwaru** přejděte na **cestu k souboru aktualizace** a přejděte k `GenevaMonitoringAgentPackageInstaller.msi` souboru. Opakujte kroky 2-4. Po restartování virtuálního pole se přihlaste k místnímu webovému uživatelskému rozhraní.
 

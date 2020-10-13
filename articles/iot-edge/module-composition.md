@@ -4,16 +4,16 @@ description: Přečtěte si, jak manifest nasazení deklaruje, které moduly se 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/26/2020
+ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7a9f4f165f457dfb902a4c0ecce3f4a9b13e2ec8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f6c12b892e01aafd5beecdff14751481cf7fc96
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611533"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963393"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Nasazování modulů a vytváření tras ve službě IoT Edge
 
@@ -46,32 +46,31 @@ Manifesty nasazení se řídí touto strukturou:
 
 ```json
 {
-    "modulesContent": {
-        "$edgeAgent": { // required
-            "properties.desired": {
-                // desired properties of the Edge agent
-                // includes the image URIs of all modules
-                // includes container registry credentials
-            }
-        },
-        "$edgeHub": { //required
-            "properties.desired": {
-                // desired properties of the Edge hub
-                // includes the routing information between modules, and to IoT Hub
-            }
-        },
-        "module1": {  // optional
-            "properties.desired": {
-                // desired properties of module1
-            }
-        },
-        "module2": {  // optional
-            "properties.desired": {
-                // desired properties of module2
-            }
-        },
-        ...
+  "modulesContent": {
+    "$edgeAgent": { // required
+      "properties.desired": {
+        // desired properties of the IoT Edge agent
+        // includes the image URIs of all deployed modules
+        // includes container registry credentials
+      }
+    },
+    "$edgeHub": { //required
+      "properties.desired": {
+        // desired properties of the IoT Edge hub
+        // includes the routing information between modules, and to IoT Hub
+      }
+    },
+    "module1": {  // optional
+      "properties.desired": {
+        // desired properties of module1
+      }
+    },
+    "module2": {  // optional
+      "properties.desired": {
+        // desired properties of module2
+      }
     }
+  }
 }
 ```
 
@@ -79,40 +78,101 @@ Manifesty nasazení se řídí touto strukturou:
 
 Definujte způsob, jakým modul runtime IoT Edge nainstaluje moduly do nasazení. Agent IoT Edge je komponenta modulu runtime, která spravuje instalaci, aktualizace a vytváření sestav o stavu pro IoT Edge zařízení. Proto modul $edgeAgent s dvojitou příponou obsahuje informace o konfiguraci a správě všech modulů. Tyto informace zahrnují parametry konfigurace pro agenta IoT Edge.
 
-Úplný seznam vlastností, které mohou nebo musí být zahrnuté, najdete v tématu [vlastnosti IoT Edge agenta a centra IoT Edge](module-edgeagent-edgehub.md).
-
 Vlastnosti $edgeAgent se řídí touto strukturou:
 
 ```json
-"$edgeAgent": {
-    "properties.desired": {
-        "schemaVersion": "1.0",
+{
+  "modulesContent": {
+    "$edgeAgent": {
+      "properties.desired": {
+        "schemaVersion": "1.1",
         "runtime": {
-            "settings":{
-                "registryCredentials":{ // give the edge agent access to container images that aren't public
-                    }
-                }
+          "settings":{
+            "registryCredentials":{
+              // give the IoT Edge agent access to container images that aren't public
             }
+          }
         },
         "systemModules": {
-            "edgeAgent": {
-                // configuration and management details
-            },
-            "edgeHub": {
-                // configuration and management details
-            }
+          "edgeAgent": {
+            // configuration and management details
+          },
+          "edgeHub": {
+            // configuration and management details
+          }
         },
         "modules": {
-            "module1": { // optional
-                // configuration and management details
-            },
-            "module2": { // optional
-                // configuration and management details
-            }
+          "module1": {
+            // configuration and management details
+          },
+          "module2": {
+            // configuration and management details
+          }
         }
-    }
-},
+      }
+    },
+    "$edgeHub": { ... },
+    "module1": { ... },
+    "module2": { ... }
+  }
+}
 ```
+
+Schéma agenta IoT Edge verze 1,1 bylo vydáno společně s IoT Edge verze 1.0.10 a umožňuje pořadí spouštění modulů. Pro jakékoli nasazení IoT Edge s verzí 1.0.10 nebo novější se doporučuje schéma verze 1,1.
+
+### <a name="module-configuration-and-management"></a>Konfigurace a Správa modulů
+
+Seznam požadované vlastnosti agenta IoT Edge je tam, kde definujete, které moduly se nasazují do IoT Edge zařízení a jak se mají nakonfigurovat a spravovat.
+
+Úplný seznam požadovaných vlastností, které mohou nebo musí být zahrnuty, najdete v tématu [vlastnosti IoT Edgeho agenta a centra IoT Edge](module-edgeagent-edgehub.md).
+
+Například:
+
+```json
+{
+  "modulesContent": {
+    "$edgeAgent": {
+      "properties.desired": {
+        "schemaVersion": "1.1",
+        "runtime": { ... },
+        "systemModules": {
+          "edgeAgent": { ... },
+          "edgeHub": { ... }
+        },
+        "modules": {
+          "module1": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "startupOrder": 2,
+            "settings": {
+              "image": "myacr.azurecr.io/module1:latest",
+              "createOptions": "{}"
+            }
+          },
+          "module2": { ... }
+        }
+      }
+    },
+    "$edgeHub": { ... },
+    "module1": { ... },
+    "module2": { ... }
+  }
+}
+```
+
+Každý modul má vlastnost **Nastavení** , která obsahuje **Image**modulu, adresu pro Image kontejneru v registru kontejnerů a všechny **createOptions** pro konfiguraci image při spuštění. Další informace najdete v tématu [jak nakonfigurovat možnosti vytváření kontejnerů pro IoT Edge moduly](how-to-use-create-options.md).
+
+Modul edgeHub a vlastní moduly mají také tři vlastnosti, které sděluje agentovi IoT Edge, jak je spravovat:
+
+* **Stav**: Určuje, zda má být modul spuštěn nebo zastaven při prvním nasazení. Povinná hodnota.
+* **RestartPolicy**: Pokud a pokud má agent IoT Edge restartovat modul, pokud se zastaví. Povinná hodnota.
+* **StartupOrder**: *zavedeno v IoT Edge verze 1.0.10.* Pořadí, ve kterém by měl agent IoT Edge spustit moduly při prvním nasazení. Pořadí je deklarováno s celými čísly, kde je nejprve spuštěn modul s hodnotou po spuštění 0 a následuje vyšší počet čísel. Modul edgeAgent nemá spouštěcí hodnotu, protože se vždy spustí jako první. Nepovinný parametr.
+
+  Agent IoT Edge inicializuje moduly v pořadí počáteční hodnoty, ale nečeká na dokončení každého modulu, než začne pokračovat na další.
+
+  Pořadí spouštění je užitečné v případě, že některé moduly závisí na dalších. Například můžete chtít, aby se modul edgeHub spouštěl jako první, aby bylo možné směrovat zprávy, když se spustí ostatní moduly. Nebo můžete chtít spustit modul úložiště před moduly, které do něj odesílají data. Měli byste však vždy navrhovat moduly pro zpracování selhání jiných modulů. Je to povaha kontejnerů, které mohou kdykoli zastavit a restartovat, a to v libovolném počtu.
 
 ## <a name="declare-routes"></a>Deklarovat trasy
 
@@ -121,17 +181,36 @@ Centrum IoT Edge spravuje komunikaci mezi moduly, IoT Hub a všemi koncovými za
 Trasy jsou deklarovány v **$edgeHub** požadovaných vlastností s následující syntaxí:
 
 ```json
-"$edgeHub": {
-    "properties.desired": {
+{
+  "modulesContent": {
+    "$edgeAgent": { ... },
+    "$edgeHub": {
+      "properties.desired": {
+        "schemaVersion": "1.1",
         "routes": {
-            "route1": "FROM <source> WHERE <condition> INTO <sink>",
-            "route2": "FROM <source> WHERE <condition> INTO <sink>"
+          "route1": "FROM <source> WHERE <condition> INTO <sink>",
+          "route2": {
+            "route": "FROM <source> WHERE <condition> INTO <sink>",
+            "priority": 0,
+            "timeToLiveSecs": 86400
+          }
         },
-    }
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 10
+        }
+      }
+    },
+    "module1": { ... },
+    "module2": { ... }
+  }
 }
 ```
 
-Každá trasa potřebuje zdroj a jímku, ale podmínka je volitelným kamenem, který můžete použít k filtrování zpráv.
+Schéma centra IoT Edge verze 1,1 byla vydaná společně s IoT Edge verze 1.0.10 a umožňuje stanovení priorit směrování a TTL (Time to Live). Pro jakékoli nasazení IoT Edge s verzí 1.0.10 nebo novější se doporučuje schéma verze 1,1.
+
+Každá trasa potřebuje *zdroj* , ze kterého zprávy pocházejí, a *jímka* , na kterou zprávy směřují. *Podmínka* je volitelným kamenem, který můžete použít k filtrování zpráv.
+
+Pro trasy, u kterých chcete zajistit, aby byly nejprve zpracovány zprávy, můžete přiřadit *prioritu* . Tato funkce je užitečná ve scénářích, kdy je nadřazené připojení slabé nebo omezené a že máte kritická data, která by se měla upřednostnit v rámci standardních zpráv telemetrie.
 
 ### <a name="source"></a>Zdroj
 
@@ -177,7 +256,7 @@ Jímka definuje, kam se zprávy odesílají. Zprávy mohou přijímat pouze modu
 
 Vlastnost jímky může být libovolná z následujících hodnot:
 
-| Jímka | Description |
+| Jímka | Popis |
 | ---- | ----------- |
 | `$upstream` | Odeslat zprávu do IoT Hub |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | Odeslání zprávy do konkrétního vstupu konkrétního modulu |
@@ -185,6 +264,32 @@ Vlastnost jímky může být libovolná z následujících hodnot:
 IoT Edge poskytuje záruky alespoň jednou. Centrum IoT Edge ukládá místní zprávy pro případ, že trasa nemůže zprávu doručit do jímky. Pokud se například Centrum IoT Edge nemůže připojit k IoT Hub nebo cílový modul není připojen.
 
 Centrum IoT Edge ukládá zprávy až do doby zadané ve `storeAndForwardConfiguration.timeToLiveSecs` vlastnosti [IoT Edge centra požadované vlastnosti](module-edgeagent-edgehub.md).
+
+### <a name="priority-and-time-to-live"></a>Priorita a doba do provozu
+
+Trasy lze deklarovat buď pouhým řetězcem, který definuje trasu, nebo jako objekt, který přijímá řetězec směrování, celé číslo priority a celé číslo typu TTL (Time to Live).
+
+Možnost 1:
+
+   ```json
+   "route1": "FROM <source> WHERE <condition> INTO <sink>",
+   ```
+
+Možnost 2, představená v IoT Edge verze 1.0.10 se schématem IoT Edge centra verze 1,1:
+
+   ```json
+   "route2": {
+     "route": "FROM <source> WHERE <condition> INTO <sink>",
+     "priority": 0,
+     "timeToLiveSecs": 86400
+   }
+   ```
+
+Hodnoty **priority** můžou být 0-9, včetně, kde 0 je nejvyšší priorita. Zprávy jsou zařazeny do fronty na základě jejich koncových bodů. Všechny zprávy s prioritou 0, které cílí na konkrétní koncový bod, se zpracují předtím, než se zpracují všechny zprávy s prioritou 1, které cílí na stejný koncový bod, a až na řádek. Pokud má několik tras pro stejný koncový bod stejnou prioritu, jejich zprávy se zpracují při prvním přihlášení. Pokud není zadána žádná priorita, bude trasa přiřazena nejnižší priorita.
+
+Vlastnost **timeToLiveSecs** dědí její hodnotu z **storeAndForwardConfiguration** centra IoT Edge, pokud není explicitně nastaveno. Hodnota může být libovolné kladné celé číslo.
+
+Podrobné informace o tom, jak se spravují fronty priorit, najdete na referenční stránce [Priorita trasy a doba do provozu](https://github.com/Azure/iotedge/blob/master/doc/Route_priority_and_TTL.md).
 
 ## <a name="define-or-update-desired-properties"></a>Definovat nebo aktualizovat požadované vlastnosti
 
@@ -203,7 +308,7 @@ Následující příklad ukazuje, jak může vypadat platný dokument manifestu 
   "modulesContent": {
     "$edgeAgent": {
       "properties.desired": {
-        "schemaVersion": "1.0",
+        "schemaVersion": "1.1",
         "runtime": {
           "type": "docker",
           "settings": {
@@ -230,6 +335,7 @@ Následující příklad ukazuje, jak může vypadat platný dokument manifestu 
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "startupOrder": 0,
             "settings": {
               "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
@@ -242,6 +348,7 @@ Následující příklad ukazuje, jak může vypadat platný dokument manifestu 
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "startupOrder": 2,
             "settings": {
               "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
               "createOptions": "{}"
@@ -252,6 +359,7 @@ Následující příklad ukazuje, jak může vypadat platný dokument manifestu 
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "startupOrder": 1,
             "env": {
               "tempLimit": {"value": "100"}
             },
@@ -265,13 +373,21 @@ Následující příklad ukazuje, jak může vypadat platný dokument manifestu 
     },
     "$edgeHub": {
       "properties.desired": {
-        "schemaVersion": "1.0",
+        "schemaVersion": "1.1",
         "routes": {
-          "sensorToFilter": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
-          "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
+          "sensorToFilter": {
+            "route": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+            "priority": 0,
+            "timeToLiveSecs": 1800
+          },
+          "filterToIoTHub": {
+            "route": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream",
+            "priority": 1,
+            "timeToLiveSecs": 1800
+          }
         },
         "storeAndForwardConfiguration": {
-          "timeToLiveSecs": 10
+          "timeToLiveSecs": 100
         }
       }
     }

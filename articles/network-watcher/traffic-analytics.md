@@ -12,12 +12,13 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: c0d0e1c5f096a45c08265927a288b4ff56876d94
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967493"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951549"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -58,64 +59,108 @@ Analýza provozu prověřuje protokoly nezpracovaných toků NSG Flow a zachycuj
 ## <a name="supported-regions-nsg"></a>Podporované oblasti: NSG 
 
 Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli z následujících podporovaných oblastí:
-
-* Střední Kanada
-* USA – středozápad
-* East US
-* USA – východ 2
-* USA – středosever
-* Středojižní USA
-* Střední USA
-* USA – západ
-* Západní USA 2
-* Francie – střed
-* West Europe
-* Severní Evropa
-* Brazil South
-* Spojené království – západ
-* Spojené království – jih
-* Austrálie – východ
-* Austrálie – jihovýchod
-* Východní Asie
-* Southeast Asia
-* Jižní Korea – střed
-* Indie – střed
-* Indie – jih
-* Japonsko – východ 
-* Japonsko – západ
-* USA (Gov) – Virginia
-* Čína – východ 2
+:::row:::
+   :::column span="":::
+      Austrálie – střed  
+      Austrálie – východ  
+      Austrálie – jihovýchod  
+      Brazil South  
+      Střední Kanada  
+      Kanada – východ  
+      Indie – střed  
+      Střední USA  
+      Čína – východ 2  
+      Čína – sever 2  
+   :::column-end:::
+   :::column span="":::
+      Východní Asie  
+      East US  
+      USA – východ 2  
+      Východní USA 2 EUAP  
+      Francie – střed  
+      Japonsko – východ  
+      Japonsko – západ  
+      Jižní Korea – střed  
+      Jižní Korea – jih  
+      USA – středosever  
+   :::column-end:::
+   :::column span="":::
+      Severní Evropa  
+      Jižní Afrika – sever  
+      Středojižní USA  
+      Indie – jih  
+      Southeast Asia  
+      Švýcarsko – sever  
+      Švýcarsko – západ  
+      Spojené království – jih  
+      Spojené království – západ  
+      USGov Arizona  
+   :::column-end:::
+   :::column span="":::
+      USGov Texas  
+      USGov Virginie  
+      USNat východ  
+      USNat – západ  
+      USSec východ  
+      USSec – západ  
+      USA – středozápad  
+      West Europe  
+      USA – západ  
+      Západní USA 2  
+   :::column-end:::
+:::row-end:::
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Podporované oblasti: Log Analytics pracovní prostory
 
 Pracovní prostor Log Analytics musí existovat v následujících oblastech:
-* Střední Kanada
-* USA – středozápad
-* East US
-* USA – východ 2
-* USA – středosever
-* Středojižní USA
-* Střední USA
-* USA – západ
-* Západní USA 2
-* Střední USA
-* Francie – střed
-* West Europe
-* Severní Evropa
-* Brazil South
-* Spojené království – západ
-* Spojené království – jih
-* Austrálie – východ
-* Austrálie – jihovýchod
-* Východní Asie
-* Southeast Asia
-* Jižní Korea – střed
-* Indie – střed
-* Japan East
-* USA (Gov) – Virginia
-* Čína – východ 2
+:::row:::
+   :::column span="":::
+      Austrálie – střed  
+      Austrálie – východ  
+      Austrálie – jihovýchod  
+      Brazil South  
+      Střední Kanada  
+      Indie – střed  
+      Střední USA  
+      Čína – východ 2  
+      Východní Asie  
+      East US  
+   :::column-end:::
+   :::column span="":::
+      USA – východ 2  
+      Východní USA 2 EUAP  
+      Francie – střed  
+      Německo – středozápad  
+      Japan East  
+      Jižní Korea – střed  
+      USA – středosever  
+      Severní Evropa  
+      Jižní Afrika – sever  
+      Středojižní USA  
+   :::column-end:::
+   :::column span="":::
+      Southeast Asia  
+      Švýcarsko – sever  
+      Švýcarsko – západ  
+      Spojené arabské emiráty – střed  
+      Spojené království – jih  
+      Spojené království – západ  
+      USGov Arizona  
+      USGov Virginie  
+      USNat východ  
+      USNat – západ  
+   :::column-end:::
+   :::column span="":::
+      USSec východ  
+      USSec – západ  
+      USA – středozápad  
+      West Europe  
+      USA – západ  
+      Západní USA 2  
+   :::column-end:::
+:::row-end:::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="user-access-requirements"></a>Požadavky na přístup uživatelů
 

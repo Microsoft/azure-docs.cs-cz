@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.custom: ''
-ms.openlocfilehash: 2bbc78f9a5569c8446743980cdea153883c19d4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e13add778ae372ea90361c094238668752fe2af
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274431"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977693"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenční architektury pro Oracle Database Enterprise Edition v Azure
 
@@ -33,7 +33,7 @@ Pokud vás zajímá více o maximalizaci výkonu vaší databáze Oracle, přeč
 
 ## <a name="high-availability-for-oracle-databases"></a>Vysoká dostupnost pro databáze Oracle
 
-Dosažení vysoké dostupnosti v cloudu je důležitou součástí plánování a návrhu každé organizace. Microsoft Azure nabízí [zóny dostupnosti](../../../availability-zones/az-overview.md) a skupiny dostupnosti (budou použity v oblastech, kde jsou zóny dostupnosti k dispozici). Přečtěte si další informace o [správě dostupnosti virtuálních počítačů](../../../virtual-machines/linux/manage-availability.md) pro návrh pro Cloud.
+Dosažení vysoké dostupnosti v cloudu je důležitou součástí plánování a návrhu každé organizace. Microsoft Azure nabízí [zóny dostupnosti](../../../availability-zones/az-overview.md) a skupiny dostupnosti (budou použity v oblastech, kde jsou zóny dostupnosti k dispozici). Přečtěte si další informace o [správě dostupnosti virtuálních počítačů](../../manage-availability.md) pro návrh pro Cloud.
 
 Kromě nativních nástrojů a nabídek cloudu poskytuje Oracle řešení pro vysokou dostupnost, jako je [Oracle data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7), [Ochrana dat s FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html), [horizontálního dělení](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)a [GoldenGate](https://www.oracle.com/middleware/technologies/goldengate.html) , která se dají nastavit v Azure. Tento průvodce popisuje referenční architektury pro každé z těchto řešení.
 
@@ -43,7 +43,7 @@ Nakonec při migraci nebo vytváření aplikací pro Cloud je důležité upravi
 
 Oracle Real Application cluster (RAC) je řešení od Oracle, které zákazníkům umožňuje dosáhnout vysoké propustnosti tím, že má mnoho instancí přístup k jednomu úložišti databáze (Shared-All Pattern). I když se dá Oracle RAC použít i pro místní vysokou dostupnost, nedá se samotný Oracle RAC použít k zajištění vysoké dostupnosti v cloudu, protože chrání jenom proti selháním na úrovni instance a ne proti selháním na úrovni skříně nebo datového centra. Z tohoto důvodu Oracle doporučuje použít pro vysokou dostupnost databáze Oracle data Guard (bez ohledu na to, jestli jde o jedinou instanci nebo certifikát RAC). Zákazníci obecně vyžadují vysokou smlouvu SLA pro provozování důležitých aplikací. Oracle RAC není v současné době v Azure certifikovaný ani podporovaný. Azure ale nabízí funkce, jako je Azure, nabízí Zóny dostupnosti a plánovaná časová období údržby, která chrání před selháním na úrovni instance. Kromě toho můžou zákazníci využívat technologie, jako je Oracle data Guard, Oracle GoldenGate a Oracle horizontálního dělení pro zajištění vysokého výkonu a odolnosti díky ochraně jejich databází před rackem a i geograficky neznámým selháním.
 
-Při spouštění databází Oracle v různých [zónách dostupnosti](../../../availability-zones/az-overview.md) ve spojení s Oracle data Guard nebo GoldenGate můžou zákazníci získat smlouvu SLA o provozu 99,99%. V oblastech Azure, kde se ještě nevyskytují zóny dostupnosti, můžou zákazníci používat [skupiny dostupnosti](../../linux/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) a získat smlouvu SLA pro dobu provozu 99,95%.
+Při spouštění databází Oracle v různých [zónách dostupnosti](../../../availability-zones/az-overview.md) ve spojení s Oracle data Guard nebo GoldenGate můžou zákazníci získat smlouvu SLA o provozu 99,99%. V oblastech Azure, kde se ještě nevyskytují zóny dostupnosti, můžou zákazníci používat [skupiny dostupnosti](../../manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) a získat smlouvu SLA pro dobu provozu 99,95%.
 
 >Poznámka: je možné, že máte cíl provozu, který je mnohem vyšší než smlouva SLA pro dobu provozu poskytovanou společností Microsoft.
 
@@ -209,7 +209,7 @@ Během počátečního požadavku se aplikační server připojí k horizontáln
 
 ## <a name="patching-and-maintenance"></a>Opravy a údržba
 
-Při nasazování úloh Oracle do Azure se společnost Microsoft postará o všechny opravy na úrovni operačního systému hostitele. Veškerá plánovaná údržba na úrovni operačního systému je zákazníkům předem sdělena, aby umožnila této plánované údržbě zákazníkům. Dva servery ze dvou různých Zóny dostupnosti se nikdy neopravují současně. Další informace o údržbě virtuálních počítačů a opravách najdete v tématu [Správa dostupnosti virtuálních počítačů](../../../virtual-machines/linux/manage-availability.md) . 
+Při nasazování úloh Oracle do Azure se společnost Microsoft postará o všechny opravy na úrovni operačního systému hostitele. Veškerá plánovaná údržba na úrovni operačního systému je zákazníkům předem sdělena, aby umožnila této plánované údržbě zákazníkům. Dva servery ze dvou různých Zóny dostupnosti se nikdy neopravují současně. Další informace o údržbě virtuálních počítačů a opravách najdete v tématu [Správa dostupnosti virtuálních počítačů](../../manage-availability.md) . 
 
 Opravy operačního systému virtuálního počítače můžete automatizovat pomocí [Azure Automation Update Management](../../../automation/update-management/update-mgmt-overview.md). Oprava a údržba databáze Oracle může být automatizovaná a naplánovaná pomocí [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) nebo [Azure Automation Update Management](../../../automation/update-management/update-mgmt-overview.md) k minimalizaci prostojů. Podívejte se na [průběžné doručování a modré/zelené nasazení](/azure/devops/learn/what-is-continuous-delivery) , které vám pomůžou pochopit, jak se dá používat v kontextu databází Oracle.
 

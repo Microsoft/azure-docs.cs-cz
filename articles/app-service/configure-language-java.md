@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0b6d4ebd199e1db9e5b325df5ea08eaede8e581b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 736d80c4bcfe31a499b84bb24c1c377e69e84218
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311882"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976007"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurace aplikace Java pro Azure App Service
 
@@ -29,8 +29,6 @@ K nasazení souborů. War nebo. jar můžete použít [modul plug-in webové apl
 
 V opačném případě vaše metoda nasazení bude záviset na typu archivu:
 
-::: zone pivot="platform-windows"  
-
 ### <a name="java-se"></a>Java SE
 
 Pokud chcete nasadit soubory. jar do Java SE, použijte `/api/zipdeploy/` koncový bod webu Kudu. Další informace o tomto rozhraní API najdete v [této dokumentaci](./deploy-zip.md#rest).
@@ -39,7 +37,6 @@ Pokud chcete nasadit soubory. jar do Java SE, použijte `/api/zipdeploy/` koncov
 
 K nasazení souborů. War do Tomcat použijte `/api/wardeploy/` koncový bod k odeslání souboru archivu. Další informace o tomto rozhraní API najdete v [této dokumentaci](./deploy-zip.md#deploy-war-file).
 
-::: zone-end
 ::: zone pivot="platform-linux"
 
 ### <a name="jboss-eap"></a>JBoss EAP

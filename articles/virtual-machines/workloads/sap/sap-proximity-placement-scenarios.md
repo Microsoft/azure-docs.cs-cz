@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b6e15ef1b9bf488ac18e41dc09eb71e6ea3da39
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 7b48e4223e4e5fc5100de250d85441fcb96d50a3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569805"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977234"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Skupiny umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP
 Aplikace SAP založené na architektuře SAP NetWeaver nebo SAP S/4HANA jsou citlivé na latenci sítě mezi aplikační vrstvou SAP a databázovou vrstvou SAP. Tato citlivost je výsledkem většiny obchodních logiky spuštěných v aplikační vrstvě. Vzhledem k tomu, že aplikační vrstva SAP spouští obchodní logiku, vydává dotazy do databázové vrstvy s vysokou frekvencí v poměru tisíc nebo desítky tisíců za sekundu. Ve většině případů je povaha těchto dotazů jednoduchá. Je často možné je spouštět na úrovni databáze za 500 mikrosekund nebo méně.
@@ -33,7 +33,7 @@ Pokud chcete mít možnost optimalizovat latenci sítě, Azure nabízí [skupiny
 
 - Nemůžete předpokládat, že všechny typy virtuálních počítačů Azure jsou dostupné v každé a všech datových centrech Azure. V důsledku toho je možné omezit kombinaci různých typů virtuálních počítačů v jedné skupině umístění blízkosti. Tato omezení se projeví proto, že hostitelský hardware potřebný ke spuštění určitého typu virtuálního počítače nemusí být v datovém centru, na které byla nasazena skupina umístění.
 - Když změníte velikost částí virtuálních počítačů, které jsou v jedné skupině umístění Proximity, nemůžete automaticky předpokládat, že ve všech případech je nový typ virtuálního počítače dostupný ve stejném datovém centru jako ostatní virtuální počítače, které jsou součástí skupiny umístění blízkosti.
-- Když Azure vyřadí hardware z provozu, může vynutit určité virtuální počítače skupiny umístění blízkosti do jiného datacentra Azure. Podrobnosti, které se týkají tohoto případu, najdete v dokumentu [společné umístění prostředků pro lepší latenci](https://docs.microsoft.com/azure/virtual-machines/linux/co-location#planned-maintenance-and-proximity-placement-groups) .  
+- Když Azure vyřadí hardware z provozu, může vynutit určité virtuální počítače skupiny umístění blízkosti do jiného datacentra Azure. Podrobnosti, které se týkají tohoto případu, najdete v dokumentu [společné umístění prostředků pro lepší latenci](../../linux/co-location.md#planned-maintenance-and-proximity-placement-groups) .  
 
 > [!IMPORTANT]
 > V důsledku potenciálních omezení by se měly používat skupiny umístění blízkosti:

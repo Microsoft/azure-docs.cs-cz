@@ -12,7 +12,7 @@ ms.openlocfilehash: 4d9a5900990ea41788ced5f25690619fbde68d33
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91854983"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Spravované identity ve službě Azure HDInsight
@@ -57,7 +57,7 @@ Pokud jste už vytvořili dlouhotrvající cluster s více různými spravovaný
  * Šifrovací klíče nelze ve scénáři CMK otáčet.
 pak byste měli přiřadit požadované role a oprávnění pro výše uvedené scénáře všem spravovaným identitám používaným v clusteru. Pokud jste třeba pro clustery ADLS Gen2 a ESP používali různé spravované identity, musí mít obě tyto identity přiřazené role vlastník dat objektů BLOB úložiště a přispěvatele HDInsight Domain Services, aby se v těchto problémech nepoužívaly.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>Co se stane, když po vytvoření clusteru odstraním spravovanou identitu?
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce13c3bce7cdeb0f3e6dcf1f731be22d93a65587
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e90c78e8e7cb474756c1a5ea03fd90c33e14300
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654595"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963580"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP
 
@@ -71,7 +71,7 @@ SAP pomocného mechanismu zapisuje data postupně do zařízení diskového úlo
 Doporučuje se nakonfigurovat automatické rozšíření databáze, jak je popsáno v článku [Konfigurace automatického rozšíření prostoru v databázi v SAP adaptivního serveru Enterprise a v](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/) [poznámkách k podpoře SAP #1815695](https://launchpad.support.sap.com/#/notes/1815695). 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Ukázkový pomocného mechanismu pro SAP na virtuálním počítači Azure, konfiguraci disků a systémů souborů 
-Níže uvedené šablony znázorňují ukázkové konfigurace pro Linux i Windows. Před potvrzením konfigurace virtuálního počítače a disku zajistěte, aby byly kvóty šířky pásma sítě a úložiště pro jednotlivé virtuální počítače dostačující pro splnění podnikového požadavku. Pamatujte také, že různé typy virtuálních počítačů Azure mají různý maximální počet disků, které se dají připojit k virtuálnímu počítači. Například virtuální počítač E4s_v3 má omezení propustnosti vstupně-výstupních operací úložiště 48 MB/s. Pokud propustnost úložiště vyžadovaná aktivitou zálohování databáze vyžaduje více než 48 MB/s, větší typ virtuálního počítače s větší propustností šířky pásma úložiště je nenevyhnutelný. Při konfiguraci služby Azure Storage je také nutné mít na paměti, že se v [Azure Premium Storage](../../windows/premium-storage-performance.md) mění propustnost a IOPS za GB kapacity. Další informace najdete v tomto tématu v článku [Jaké typy disků jsou k dispozici v Azure?](../../disks-types.md). Kvóty pro konkrétní typy virtuálních počítačů Azure jsou popsány v článku [paměťově optimalizované velikosti virtuálních počítačů](../../sizes-memory.md) a články s nimi propojené. 
+Níže uvedené šablony znázorňují ukázkové konfigurace pro Linux i Windows. Před potvrzením konfigurace virtuálního počítače a disku zajistěte, aby byly kvóty šířky pásma sítě a úložiště pro jednotlivé virtuální počítače dostačující pro splnění podnikového požadavku. Pamatujte také, že různé typy virtuálních počítačů Azure mají různý maximální počet disků, které se dají připojit k virtuálnímu počítači. Například virtuální počítač E4s_v3 má omezení propustnosti vstupně-výstupních operací úložiště 48 MB/s. Pokud propustnost úložiště vyžadovaná aktivitou zálohování databáze vyžaduje více než 48 MB/s, větší typ virtuálního počítače s větší propustností šířky pásma úložiště je nenevyhnutelný. Při konfiguraci služby Azure Storage je také nutné mít na paměti, že se v [Azure Premium Storage](../../premium-storage-performance.md) mění propustnost a IOPS za GB kapacity. Další informace najdete v tomto tématu v článku [Jaké typy disků jsou k dispozici v Azure?](../../disks-types.md). Kvóty pro konkrétní typy virtuálních počítačů Azure jsou popsány v článku [paměťově optimalizované velikosti virtuálních počítačů](../../sizes-memory.md) a články s nimi propojené. 
 
 > [!NOTE]
 >  Pokud se systém DBMS přesouvá z místního prostředí do Azure, doporučuje se provést monitorování virtuálního počítače a vyhodnotit procesor, paměť, IOPS a propustnost úložiště. Porovnejte hodnoty ve špičce zjištěné s omezeními kvóty virtuálních počítačů popsanými v článcích uvedených výše.

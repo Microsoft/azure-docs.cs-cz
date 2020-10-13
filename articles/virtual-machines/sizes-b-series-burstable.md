@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 43e19df24de2f2c4e8e5334010ee788129cee68b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 506336ad80c1f30b937bc71724ca39cee24bb2fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666632"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968918"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady B-Series
 
@@ -21,7 +21,7 @@ Virtuální počítače řady B-Series jsou ideální pro úlohy, které nepotř
 
 Řada B-obsahuje následující velikosti virtuálních počítačů:
 
-[Výpočetní jednotka Azure (ACU)](https://docs.microsoft.com/azure/virtual-machines/acu?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json): liší se *<br>
+[Výpočetní jednotka Azure (ACU)](./acu.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json): liší se *<br>
 [Premium Storage](premium-storage-performance.md): podporováno<br>
 [Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): nepodporováno<br>
 [Migrace za provozu](maintenance-and-updates.md): podporováno<br>

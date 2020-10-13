@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
-ms.openlocfilehash: 53e1daca47a2917a19cbc30db5348e4fcc06b325
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f181a6dee7ed182150bd0cad2b51690b6c77d7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90039077"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963121"
 ---
 # <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>Virtuální počítač nereaguje při použití výchozích zásad řadičů domén
 
@@ -28,7 +28,7 @@ Tento článek popisuje kroky pro řešení problémů, při kterých výchozí 
 
 ## <a name="symptom"></a>Příznak
 
-Když použijete [diagnostiku spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) k zobrazení snímku obrazovky virtuálního počítače, uvidíte, že snímek obrazovky při spuštění s **výchozí zásadou řadičů domény**zobrazuje operační systém přestane reagovat.
+Když použijete [diagnostiku spouštění](./boot-diagnostics.md) k zobrazení snímku obrazovky virtuálního počítače, uvidíte, že snímek obrazovky při spuštění s **výchozí zásadou řadičů domény**zobrazuje operační systém přestane reagovat.
 
   ![Obrázek 1 zobrazuje zablokování operačního systému pomocí výchozí zásady řadičů domény.](./media/vm-unresponsive-domain-controllers-policy/1-default-domain-controllers-policy.png)
 
@@ -46,7 +46,7 @@ Chcete-li tento problém vyřešit, je třeba nejprve shromáždit soubor výpis
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>Připojit disk s operačním systémem k nové opravě virtuálního počítače
 
-1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
+1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) Připravte opravný virtuální počítač.
 
 1. Pomocí Připojení ke vzdálené ploše připojit k opravnému virtuálnímu počítači.
 
@@ -56,4 +56,4 @@ Chcete-li tento problém vyřešit, je třeba nejprve shromáždit soubor výpis
 
 1. Vyhledejte soubor Memory. dmp a pak [odešlete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se souborem s výpisem paměti.
 
-1. Pokud se vám nedaří najít soubor Memory. dmp, možná budete chtít místo toho použít [volání NMI (nemaskovaná přerušení) v sériové konzole](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) . Postupujte podle pokynů průvodce a [vygenerujte soubor se stavem systému pomocí volání NMI](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump).
+1. Pokud se vám nedaří najít soubor Memory. dmp, možná budete chtít místo toho použít [volání NMI (nemaskovaná přerušení) v sériové konzole](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) . Postupujte podle pokynů průvodce a [vygenerujte soubor se stavem systému pomocí volání NMI](/windows/client-management/generate-kernel-or-complete-crash-dump).

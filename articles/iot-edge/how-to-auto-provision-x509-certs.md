@@ -9,12 +9,12 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13c15eeb98b13d0fe9a5b7797ec942209d403cc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 761b031916dd9ead71f5be6a6887208a1f200f58
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447740"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966130"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Vytvoření a zřízení zařízení IoT Edge pomocí certifikátů X. 509
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak vytvořit registraci služby Device Provisioni
 
 Používání certifikátů X. 509 jako mechanismu ověřování je skvělým způsobem, jak škálovat produkční prostředí a zjednodušit zřizování zařízení. Obvykle jsou certifikáty X. 509 uspořádány v řetězu certifikátů důvěryhodnosti. Počínaje certifikátem podepsaným svým držitelem nebo důvěryhodným kořenovým certifikátem podepisuje každý certifikát v řetězu další nižší certifikát. Tento model vytvoří delegovaný řetěz vztahu důvěryhodnosti od kořenového certifikátu až po každý zprostředkující certifikát s konečným certifikátem "list" nainstalovaným na zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Aktivní IoT Hub.
 * Fyzické nebo virtuální zařízení, které se má IoT Edge zařízení.
@@ -209,73 +209,76 @@ Teď, když pro toto zařízení existuje registrace, IoT Edge modul runtime mů
 
 Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho komponenty se spouštějí v kontejnerech a umožňují na zařízení nasadit další kontejnery, abyste mohli spustit kód na hraničních zařízeních.
 
+Postupujte podle kroků v části [Instalace modulu runtime Azure IoT Edge](how-to-install-iot-edge.md)a pak se vraťte k tomuto článku a zřiďte zařízení.
+
 Zřizování X. 509 s DPS se podporuje jenom v IoT Edge verze 1.0.9 nebo novější.
 
-Při zřizování zařízení budete potřebovat následující informace:
+## <a name="configure-the-device-with-provisioning-information"></a>Konfigurace zařízení pomocí informací o zřizování
+
+Po nainstalování modulu runtime do zařízení nakonfigurujte zařízení s informacemi, které používá pro připojení ke službě Device Provisioning a IoT Hub.
+
+Připravte si následující informace:
 
 * Hodnota **rozsahu ID** DPS. Tuto hodnotu můžete načíst ze stránky přehled vaší instance DPS v Azure Portal.
 * Soubor řetězu certifikátů identity zařízení v zařízení.
 * Soubor klíče identity zařízení na zařízení.
-* Nepovinná registrační ID (načtené z obecného názvu v certifikátu identity zařízení, pokud není zadaný)
+* Volitelné ID registrace. Pokud není zadaný, ID se načte ze společného názvu v certifikátu identity zařízení.
 
 ### <a name="linux-device"></a>Zařízení se systémem Linux
 
-Pomocí následujícího odkazu nainstalujete Azure IoT Edge runtime na zařízení pomocí příkazů vhodných pro architekturu vašeho zařízení. Až se dostanete k části týkající se konfigurace démona zabezpečení, nakonfigurujte modul runtime IoT Edge pro X. 509 Automatic, ne ručně, zřizování. Po dokončení předchozích částí tohoto článku byste měli mít všechny informace a soubory certifikátů, které potřebujete.
+1. Otevřete konfigurační soubor na zařízení IoT Edge.
 
-[Instalace modulu runtime Azure IoT Edge v systému Linux](how-to-install-iot-edge-linux.md)
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
 
-Když přidáte certifikát X. 509 a informace o klíči do souboru config. yaml, cesty by se měly zadat jako identifikátory URI souborů. Například:
+1. V souboru vyhledejte část konfigurace zřizování. Odkomentujte řádky pro zřizování symetrického klíče DPS a zajistěte, aby byly všechny další řádky pro zřizování zakomentovány.
 
-* `file:///<path>/identity_certificate_chain.pem`
-* `file:///<path>/identity_key.pem`
+   `provisioning:`Řádek by neměl mít žádné předchozí prázdné znaky a vnořené položky by měly být odsazeny dvěma mezerami.
 
-Oddíl konfiguračního souboru pro X. 509 Automatické zřizování vypadá takto:
+   ```yml
+   # DPS TPM provisioning configuration
+   provisioning:
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "<SCOPE_ID>"
+     attestation:
+       method: "x509"
+   #   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+       identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+       identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   ```
 
-```yaml
-# DPS X.509 provisioning configuration
-provisioning:
-  source: "dps"
-  global_endpoint: "https://global.azure-devices-provisioning.net"
-  scope_id: "<SCOPE_ID>"
-  attestation:
-    method: "x509"
-#   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
-    identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
-    identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
-```
+1. Aktualizujte hodnoty `scope_id` , `identity_cert` a `identity_pk` pomocí informací DPS a Device.
 
-Nahraďte zástupné hodnoty pro `scope_id` , `identity_cert` `identity_pk` s ID oboru z vaší instance DPS a identifikátory URI pro řetěz certifikátů a umístění souborů klíčů na vašem zařízení. `registration_id`Pokud chcete zařízení zaregistrovat, zadejte ho pro zařízení, nebo ponechte tento řádek Zakomentovat a zaregistrujte zařízení s názvem CN certifikátu identity.
+   Když přidáte certifikát X. 509 a informace o klíči do souboru config. yaml, cesty by se měly zadat jako identifikátory URI souborů. Například:
 
-Po aktualizaci souboru config. yaml vždy restartujte proces zabezpečení.
+   `file:///<path>/identity_certificate_chain.pem`
+   `file:///<path>/identity_key.pem`
 
-```bash
-sudo systemctl restart iotedge
-```
+1. `registration_id`Pokud chcete zařízení zaregistrovat, zadejte ho pro zařízení, nebo ponechte tento řádek Zakomentovat a zaregistrujte zařízení s názvem CN certifikátu identity.
+
+1. Restartujte modul runtime IoT Edge, aby provedl všechny změny konfigurace, které jste v zařízení provedli.
+
+   ```bash
+   sudo systemctl restart iotedge
+   ```
 
 ### <a name="windows-device"></a>Zařízení s Windows
 
-Nainstalujte modul runtime IoT Edge na zařízení, pro které jste vygenerovali řetěz certifikátů identit a klíč identity. Nastavíte modul runtime IoT Edge pro automatické, ne ruční zřizování.
-
-Podrobnější informace o instalaci IoT Edge ve Windows, včetně požadavků a pokynů pro úlohy, jako je Správa kontejnerů a aktualizace IoT Edge, najdete v tématu [Instalace modulu runtime Azure IoT Edge ve Windows](how-to-install-iot-edge-windows.md).
-
 1. Otevřete okno PowerShellu v režimu správce. Při instalaci IoT Edge, ne pomocí PowerShellu (x86) nezapomeňte použít relaci AMD64 prostředí PowerShell.
 
-1. Příkaz **Deploy-IoTEdge** zkontroluje, jestli má počítač s Windows podporovanou verzi, zapne funkci Containers a pak stáhne modul runtime Moby a modul runtime IoT Edge. Příkaz ve výchozím nastavení používá kontejnery Windows.
+1. Příkaz **Initialize-IoTEdge** nakonfiguruje IoT Edge modul runtime na vašem počítači. Příkaz se standardně zastavuje ručním zřizováním kontejnerů Windows, takže použijte `-DpsX509` příznak pro Automatické zřizování s ověřováním pomocí certifikátu X. 509.
+
+   Nahraďte zástupné hodnoty pro `{scope_id}` , `{identity cert chain path}` a `{identity key path}` odpovídajícími hodnotami z instance DPS a cesty k souborům na vašem zařízení.
+
+   `-RegistrationId {registration_id}`Pokud chcete ID zařízení nastavit jako jinou hodnotu než název cn certifikátu identity, přidejte ho.
+
+   Pokud používáte `-ContainerOs Linux` kontejnery Linux ve Windows, přidejte parametr.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Deploy-IoTEdge
-   ```
-
-1. V tuto chvíli se zařízení IoT Core můžou restartovat automaticky. Jiná zařízení s Windows 10 nebo Windows Server vás můžou vyzvat k restartování. Pokud ano, restartujte zařízení nyní. Až bude zařízení připravené, spusťte PowerShell jako správce znovu.
-
-1. Příkaz **Initialize-IoTEdge** nakonfiguruje IoT Edge modul runtime na vašem počítači. Příkaz je standardně nastaven na ruční zřizování, pokud nepoužijete `-Dps` příznak pro Automatické zřizování.
-
-   Nahraďte zástupné hodnoty pro `{scope_id}` , `{identity cert chain path}` a `{identity key path}` odpovídajícími hodnotami z instance DPS a cesty k souborům na vašem zařízení. Chcete-li zadat ID registrace, zahrňte `-RegistrationId {registration_id}` také zástupný text nahraďte podle potřeby.
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
+   Initialize-IoTEdge -DpsX509 -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
    ```
 
    >[!TIP]

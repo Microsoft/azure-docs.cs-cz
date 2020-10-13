@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: d2c1103ab58379781aa13bd9e90e01c474c3b6e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4636bacafd9f643a62657196746cef0d6006f6d1
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279752"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952059"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Šifrování na straně serveru Azure Disk Storage
 
@@ -76,7 +76,7 @@ Zákazníci s vysokým zabezpečením, kteří se týkají rizik spojených s ja
 
 ### <a name="supported-regions"></a>Podporované oblasti
 
-[!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
+Dvojité šifrování je k dispozici ve všech oblastech, které jsou k dispozici na spravovaných discích.
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Šifrování na straně serveru oproti službě Azure Disk Encryption
 

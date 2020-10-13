@@ -10,18 +10,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 0b032f48e18651af7f360471cc2834a5c45acc56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0297c8674cc47a1d5f59fef196a60175244eaae2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87831409"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978318"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale v Azure
 
 Prostředí IBM DB2 pureScale poskytuje databázový cluster pro Azure s vysokou dostupností a škálovatelností operačních systémů Linux. Tento článek ukazuje architekturu pro spouštění DB2 pureScale v Azure.
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 
 Podniky se dlouho používaly tradiční platformy RDBMS (relační databáze pro správu relačních databází) do služby stravování až po jejich potřeby pro online zpracování transakcí (OLTP). Tyto dny, mnoho z nich migruje svá Sálová databázová prostředí do Azure jako způsob, jak rozšířit kapacitu, snížit náklady a udržovat konstantní provozní nákladovou strukturu. Migrace je často prvním krokem v modernizaci starší verze platformy. 
 
@@ -86,7 +86,7 @@ Tato architektura spouští aplikaci, úložiště a datovou vrstvu na virtuáln
 
 ### <a name="storage-considerations"></a>Aspekty úložišť
 
-Podobně jako Oracle RAC je DB2 pureScale a vysoce výkonná databáze s horizontálním škálováním I/O. Doporučujeme použít největší možnost [Azure Premium SSD](disks-types.md) , která vyhovuje vašim potřebám. Menší možnosti úložiště můžou být vhodné pro vývojová a testovací prostředí, zatímco produkční prostředí často potřebují větší kapacitu úložiště. Ukázková architektura používá [P30](https://azure.microsoft.com/pricing/details/managed-disks/) kvůli jejich poměru IOPS k velikosti a ceně. Bez ohledu na velikost použijte Premium Storage pro nejlepší výkon.
+Podobně jako Oracle RAC je DB2 pureScale a vysoce výkonná databáze s horizontálním škálováním I/O. Doporučujeme použít největší možnost [Azure Premium SSD](../disks-types.md) , která vyhovuje vašim potřebám. Menší možnosti úložiště můžou být vhodné pro vývojová a testovací prostředí, zatímco produkční prostředí často potřebují větší kapacitu úložiště. Ukázková architektura používá [P30](https://azure.microsoft.com/pricing/details/managed-disks/) kvůli jejich poměru IOPS k velikosti a ceně. Bez ohledu na velikost použijte Premium Storage pro nejlepší výkon.
 
 DB2 pureScale využívá architekturu Shared-All, kde jsou všechna data dostupná ze všech uzlů clusteru. Služba Premium Storage musí být sdílená mezi několika instancemi, ať už na vyžádání, nebo na vyhrazených instancích.
 

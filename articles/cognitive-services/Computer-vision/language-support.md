@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 844ef8c09f10e1df888ef4990db22be8705d5c01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5c263506db68ea62b0d65b7b866cfab33a36236
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530195"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976874"
 ---
 # <a name="language-support-for-computer-vision"></a>Jazyková podpora pro Počítačové zpracování obrazu
 
@@ -25,7 +25,7 @@ Některé funkce Počítačové zpracování obrazu podporují více jazyků. v�
 
 Rozhraní API pro optické Počítačové zpracování obrazu podporují několik jazyků. Nevyžadují, abyste zadali kód jazyka. Další informace naleznete v tématu [optické rozpoznávání znaků (OCR)](concept-recognizing-text.md) .
 
-|Jazyk| Kód jazyka | ROZHRANÍ API PRO OPTICKÉ ROZPOZNÁVÁNÍ ZNAKŮ | Číst v 3.0 | Verze Public Preview pro čtení v 3.1 |
+|Language| Kód jazyka | ROZHRANÍ API PRO OPTICKÉ ROZPOZNÁVÁNÍ ZNAKŮ | Čtení v 3.1 | Přečteno v 3.1 – Preview. 2 |
 |:-----|:----:|:-----:|:---:|:---:|
 |Arabština | `ar`|✔ | | |
 |Čínština (zjednodušená) | `zh-Hans`|✔ | |✔ |
@@ -58,7 +58,7 @@ Rozhraní API pro optické Počítačové zpracování obrazu podporují několi
 
 Některé akce rozhraní API [analyzovat-image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) mohou vracet výsledky v jiných jazycích, které jsou zadány pomocí `language` parametru dotazu. Jiné akce vrátí výsledky v angličtině bez ohledu na to, jaký jazyk je zadán, a jiné vyvolají výjimku pro nepodporované jazyky. Akce jsou zadány s `visualFeatures` `details` parametry dotazu a. Další informace najdete v [přehledu](overview.md) o všech akcích, které můžete provádět s analýzou obrázků.
 
-|Jazyk | Kód jazyka | Kategorie | Značky | Description | Pro dospělé | Značky | Color | Tváře | ImageType | Objekty | Celebrity | Orientační body tváře |
+|Language | Kód jazyka | Kategorie | Značky | Popis | Pro dospělé | Značky | Color | Tváře | ImageType | Objekty | Celebrity | Orientační body tváře |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Čínština | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Angličtina | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

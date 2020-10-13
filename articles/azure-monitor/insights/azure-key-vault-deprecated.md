@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: f6d8929c8fd59836ff297f226851890892c10acc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71eb49c84b8ab92c9ba2ad8e05e8d74054bd4ee7
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445134"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938827"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Řešení Azure Key Vault Analytics v Azure Monitor
 
@@ -75,7 +75,7 @@ V následující tabulce jsou uvedeny metody shromažďování dat a další pod
 | Azure |  |  |&#8226; |  |  | při doručení |
 
 ## <a name="use-azure-key-vault"></a>Použití Azure Key Vault
-Po [instalaci řešení](https://azuremarketplace.microsoft.com/en-usrketplace/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)zobrazte data Key Vault kliknutím na dlaždici **Key Vault Analytics** na stránce **Přehled** Azure monitor. Tuto stránku otevřete z nabídky **Azure monitor** kliknutím na **Další** v části **přehledy** . 
+Po [instalaci řešení](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?source=intercept.nl&tab=Overview)zobrazte data Key Vault kliknutím na dlaždici **Key Vault Analytics** na stránce **Přehled** Azure monitor. Tuto stránku otevřete z nabídky **Azure monitor** kliknutím na **Další** v části **přehledy** . 
 
 ![Snímek obrazovky Key Vault Analytics dlaždice na stránce Přehled Azure Monitor znázorňující graf objemu operací trezoru klíčů v průběhu času.](media/azure-key-vault/log-analytics-keyvault-tile.png)
 

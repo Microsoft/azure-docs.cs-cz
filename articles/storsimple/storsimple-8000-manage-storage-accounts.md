@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 306d3a14d759ac73e78626a4c2ec6abc69d3df85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a0ea8a2f07ef596cd80e9165eedb2b98dab0bfa
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515029"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978709"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Použijte službu StorSimple Device Manager ke správě přihlašovacích údajů účtu úložiště.
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 
 **Konfigurační** oddíl v okně StorSimple Device Manager Service obsahuje všechny parametry globálních služeb, které se dají vytvořit ve službě StorSimple Device Manager. Tyto parametry se dají použít pro všechna zařízení připojená ke službě a zahrnují:
 
@@ -33,7 +33,7 @@ ms.locfileid: "85515029"
 
 V tomto kurzu se dozvíte, jak přidat, upravit nebo odstranit přihlašovací údaje k účtu úložiště nebo jak vystřídat klíče zabezpečení pro účet úložiště.
 
- ![Seznam přihlašovacích údajů účtu úložiště](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
+ ![Seznam přihlašovacích údajů účtu úložiště 1](./media/storsimple-8000-manage-storage-accounts/createnewstorageacct6.png)  
 
 Účty úložiště obsahují přihlašovací údaje, které zařízení StorSimple používá pro přístup k vašemu účtu úložiště ve vašem poskytovateli cloudové služby. U Microsoft Azure účtů úložiště se jedná o přihlašovací údaje, jako je název účtu a primární přístupový klíč. 
 
@@ -102,7 +102,7 @@ Můžete upravit účet úložiště, který je používán kontejnerem svazků.
 
 1. Přejděte do služby Správce zařízení StorSimple. V části **Konfigurace** klikněte na **Přihlašovací údaje účtu úložiště**.
 
-    ![Přihlašovací údaje účtu úložiště](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
+    ![Přihlašovací údaje účtu úložiště 2](./media/storsimple-8000-manage-storage-accounts/editstorageacct1.png)
 
 2. V okně **přihlašovací údaje účtu úložiště** vyberte v seznamu přihlašovací údaje účtu úložiště možnost a klikněte na tu, kterou chcete upravit. 
 
@@ -159,11 +159,11 @@ Abyste informovali službu StorSimple Device Manager o změně, budete potřebov
 
 3. Klikněte na **... A pak** vyberte možnost **synchronizovat přístupový klíč k otočení**.   
 
-    ![synchronizovat klíče](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
+    ![synchronizovat klíče 2](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
 4. Ve službě StorSimple Device Manager musíte aktualizovat klíč, který se dříve změnil ve službě Microsoft Azure Storage. Pokud se primární přístupový klíč změnil (znovu vygeneroval), vyberte **primární** klíč. Pokud se sekundární klíč změnil, vyberte **sekundární** klíč. Klikněte na **synchronizovat klíč**.
       
-      ![synchronizovat klíče](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
+      ![synchronizace klíčů 3](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
 Po úspěšné synchronizaci klíče budete upozorněni.
 

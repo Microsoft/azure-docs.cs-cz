@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/26/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5045c81f280d9d7687a466aed2e918d21eec697
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ad91c916a6134f2507e74df6e87478421a00f43
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266383"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977421"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Vytvoření, vypsání, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem pomocí Azure Portal
 
@@ -28,7 +28,7 @@ Spravované identity pro prostředky Azure poskytují služby Azure se spravovan
 
 V tomto článku se naučíte, jak pomocí Azure Portal vytvořit, vypsat, odstranit nebo přiřadit roli k spravované identitě přiřazené uživateli.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
@@ -45,7 +45,7 @@ K vytvoření spravované identity přiřazené uživatelem potřebuje váš ú�
     - **Oblast**: Vyberte oblast pro nasazení spravované identity přiřazené uživatelem, například **západní USA**.
     - **Název**: Jedná se o název vaší uživatelsky přiřazené spravované identity, například UAI1.
     ![Vytvoření spravované identity přiřazené uživatelem](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
-4. Chcete-li zkontrolovat změny, klikněte na tlačítko **Revize + bedna** .
+4. Změny Projděte kliknutím na tlačítko **zkontrolovat + vytvořit** .
 5. Klikněte na **Vytvořit**.
 
 ## <a name="list-user-assigned-managed-identities"></a>Výpis spravovaných identit přiřazených uživatelem

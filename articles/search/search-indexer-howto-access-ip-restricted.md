@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: c80462707d3dccbb8fccff244017053c25ad46e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f485569caef285601d1dce7acd116f13675da83a
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463584"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950189"
 ---
 # <a name="setting-up-ip-firewall-rules-to-enable-indexer-access"></a>Nastavení pravidel brány firewall protokolu IP pro povolení přístupu indexeru
 
@@ -89,6 +89,6 @@ Pravidla brány firewall zabírají 5-10 minut, aby se aktualizovaly po tom, kdy
 
 Když teď víte, jak získat dvě sady IP adres pro povolení přístupu k indexům, použijte následující odkazy, které aktualizují pravidla brány firewall protokolu IP pro některé běžné zdroje dat.
 
-- [Konfigurace Azure Storage bran firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security)
-- [Konfigurace brány firewall protokolu IP pro CosmosDB](https://docs.microsoft.com/azure/cosmos-db/firewall-support)
-- [Konfigurace brány firewall protokolu IP pro Azure SQL Server](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)
+- [Konfigurace Azure Storage bran firewall](../storage/common/storage-network-security.md)
+- [Konfigurace brány firewall protokolu IP pro CosmosDB](../cosmos-db/firewall-support.md)
+- [Konfigurace brány firewall protokolu IP pro Azure SQL Server](../azure-sql/database/firewall-configure.md)

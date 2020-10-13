@@ -4,10 +4,10 @@ description: Odkaz na událost vytvoření fondu Batch, která je generována po
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: dea0e04fa506274e645ba7a578039a0d6f021043
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91850944"
 ---
 # <a name="pool-create-event"></a>Událost vytvoření fondu

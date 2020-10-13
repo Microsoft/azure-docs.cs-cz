@@ -11,7 +11,7 @@ ms.openlocfilehash: 17d887f0834733fdc833bbbad66c957b057a588a
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91857805"
 ---
 # <a name="cognitive-services-docs-whats-new-for-september-1-2020---september-30-2020"></a>Cognitive Services Docs: co je nového ve 1. září 2020. září 2020
@@ -27,7 +27,7 @@ Vítá vás, co je nového v Cognitive Services docs od 1. září 2020 do 31. z
 - [Rychlý Start: vytvoření prostředku Cognitive Services pomocí Azure Portal](cognitive-services-apis-create-account.md)
 - [Rychlý Start: vytvoření prostředku Cognitive Services pomocí šablony ARM](create-account-resource-manager-template.md)
 
-## <a name="computer-vision"></a>Computer Vision
+## <a name="computer-vision"></a>Počítačové zpracování obrazu
 
 ### <a name="new-articles"></a>Nové články
 
@@ -38,7 +38,7 @@ Vítá vás, co je nového v Cognitive Services docs od 1. září 2020 do 31. z
 - [Dodržování předpisů, ochrana osobních údajů a zabezpečení Počítačové zpracování obrazu prostorové analýzy](https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/Computer-vision/context/context)
 - [Charakteristiky a omezení pro Počítačové zpracování obrazu prostorová analýza](https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/Computer-vision/context/context)
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Kontejnery
 
 ### <a name="new-articles"></a>Nové články
 

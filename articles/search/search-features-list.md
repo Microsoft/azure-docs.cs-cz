@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 21f5a9f58acbaf3d0444d7da10ad489ade99cd76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 286d826f61a6c99396ef04af0a0855567bc4d1e4
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604185"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951379"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Funkce Azure Kognitivní hledání
 
@@ -64,11 +64,11 @@ Azure Kognitivní hledání poskytuje fulltextový vyhledávací modul, trvalé 
 
 | Kategorií&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funkce |
 |-------------------|----------|
-| REST | [**REST API služby**](https://docs.microsoft.com/rest/api/searchservice/) je pro operace roviny dat, včetně všech operací souvisejících s indexováním, dotazy a obohacením AI. Pomocí této klientské knihovny můžete také načíst systémové informace a statistiky. <br/><br/>[**REST API správy**](https://docs.microsoft.com/rest/api/searchmanagement/) je pro vytvoření služby a vyčištění prostřednictvím Azure Resource Manager. Toto rozhraní API můžete použít také ke správě klíčů a zřízení služby.|
-| Sada Azure SDK pro .NET | [**Azure.Search.Documents**](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme) slouží k operacím roviny dat, včetně všech operací souvisejících s indexováním, dotazy a rozšířením AI. Pomocí této klientské knihovny můžete také načíst systémové informace a statistiky. <br/><br/>[**Microsoft. Azure. Management. Search**](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search) je pro vytvoření služby a vyčištění prostřednictvím Azure Resource Manager. Toto rozhraní API můžete použít také ke správě klíčů a zřízení služby.|
-| Azure SDK pro Javu | [**com.azure.search.documents**](https://docs.microsoft.com/java/api/com.azure.search.documents) slouží k operacím roviny dat, včetně všech operací souvisejících s indexováním, dotazy a rozšířením AI. Pomocí této klientské knihovny můžete také načíst systémové informace a statistiky. <br/><br/>[**com. Microsoft. Azure. Management. Search**](https://docs.microsoft.com/java/api/overview/azure/search/management) je pro vytvoření služby a vyčištění prostřednictvím Azure Resource Manager. Toto rozhraní API můžete použít také ke správě klíčů a zřízení služby.|
-| Azure SDK pro Python | [**Azure-Search-Documents**](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme) je pro operace roviny dat, včetně všech operací souvisejících s indexováním, dotazy a obohacením AI. Pomocí této klientské knihovny můžete také načíst systémové informace a statistiky. <br/><br/>[**Azure-správa-Search**](https://docs.microsoft.com/python/api/overview/azure/search/management) je pro vytvoření služby a vyčištění prostřednictvím Azure Resource Manager. Toto rozhraní API můžete použít také ke správě klíčů a zřízení služby. |
-| Sada Azure SDK pro JavaScript a TypeScript | [**Azure/Search – dokumenty**](https://docs.microsoft.com/javascript/api/@azure/search-documents/) jsou pro operace roviny dat, včetně všech operací souvisejících s indexováním, dotazy a rozšířením AI. Pomocí této klientské knihovny můžete také načíst systémové informace a statistiky. <br/><br/>[**Azure/ARM – vyhledávání**](https://docs.microsoft.com/javascript/api/@azure/arm-search/) je pro vytvoření služby a vyčištění prostřednictvím Azure Resource Manager. Toto rozhraní API můžete použít také ke správě klíčů a zřízení služby. |
+| REST | [**REST API služby**](/rest/api/searchservice/) je pro operace roviny dat, včetně všech operací souvisejících s indexováním, dotazy a obohacením AI. Pomocí této klientské knihovny můžete také načíst systémové informace a statistiky. <br/><br/>[**REST API správy**](/rest/api/searchmanagement/) je pro vytvoření služby a vyčištění prostřednictvím Azure Resource Manager. Toto rozhraní API můžete použít také ke správě klíčů a zřízení služby.|
+| Sada Azure SDK pro .NET | [**Azure.Search.Documents**](/dotnet/api/overview/azure/search.documents-readme) slouží k operacím roviny dat, včetně všech operací souvisejících s indexováním, dotazy a rozšířením AI. Pomocí této klientské knihovny můžete také načíst systémové informace a statistiky. <br/><br/>[**Microsoft. Azure. Management. Search**](/dotnet/api/microsoft.azure.management.search) je pro vytvoření služby a vyčištění prostřednictvím Azure Resource Manager. Toto rozhraní API můžete použít také ke správě klíčů a zřízení služby.|
+| Azure SDK pro Javu | [**com.azure.search.documents**](/java/api/com.azure.search.documents) slouží k operacím roviny dat, včetně všech operací souvisejících s indexováním, dotazy a rozšířením AI. Pomocí této klientské knihovny můžete také načíst systémové informace a statistiky. <br/><br/>[**com. Microsoft. Azure. Management. Search**](/java/api/overview/azure/search/management) je pro vytvoření služby a vyčištění prostřednictvím Azure Resource Manager. Toto rozhraní API můžete použít také ke správě klíčů a zřízení služby.|
+| Azure SDK pro Python | [**Azure-Search-Documents**](/python/api/overview/azure/search-documents-readme) je pro operace roviny dat, včetně všech operací souvisejících s indexováním, dotazy a obohacením AI. Pomocí této klientské knihovny můžete také načíst systémové informace a statistiky. <br/><br/>[**Azure-správa-Search**](/python/api/overview/azure/search/management) je pro vytvoření služby a vyčištění prostřednictvím Azure Resource Manager. Toto rozhraní API můžete použít také ke správě klíčů a zřízení služby. |
+| Sada Azure SDK pro JavaScript a TypeScript | [**Azure/Search – dokumenty**](/javascript/api/@azure/search-documents/) jsou pro operace roviny dat, včetně všech operací souvisejících s indexováním, dotazy a rozšířením AI. Pomocí této klientské knihovny můžete také načíst systémové informace a statistiky. <br/><br/>[**Azure/ARM – vyhledávání**](/javascript/api/@azure/arm-search/) je pro vytvoření služby a vyčištění prostřednictvím Azure Resource Manager. Toto rozhraní API můžete použít také ke správě klíčů a zřízení služby. |
 
 ## <a name="see-also"></a>Viz také
 

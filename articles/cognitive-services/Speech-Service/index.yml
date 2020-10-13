@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 2d1d1057d522d082b3a5a3c757d1fe988bc24ba1
-  ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+  ms.openlocfilehash: 2d00466672318ef05218fce392797df215b6bb5f
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/02/2020
-  ms.locfileid: "91667448"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91856989"
 highlightedContent:
   items:
   - title: Co je služba Speech?
@@ -88,34 +88,6 @@ conceptualContent:
     footerLink:
       text: Víc
       url: index-intent-recognition.yml
-  - title: Scénáře konverzace
-    links:
-    - itemType: overview
-      text: Informace o přepisu konverzace (schůzky)
-      url: conversation-transcription.md
-    - itemType: overview
-      text: Informace o konverzacích více zařízení (schůzky)
-      url: multi-device-conversation.md
-    - itemType: how-to-guide
-      text: Přepis nahrávek z call centra
-      url: call-center-transcription.md
-    footerLink:
-      text: Víc
-      url: index-conversation-scenarios.yml
-  - title: Hlasoví asistenti
-    links:
-    - itemType: overview
-      text: Informace o hlasových asistentech
-      url: voice-assistants.md
-    - itemType: quickstart
-      text: Vytvoření hlasového asistenta pomocí vlastních příkazů
-      url: custom-commands.md
-    - itemType: get-started
-      text: Vytvoření hlasového asistenta pomocí služby Bot Framework
-      url: direct-line-speech.md
-    footerLink:
-      text: Víc
-      url: index-voice-assistants.yml
   - title: Rozpoznávání mluvčího
     links:
     - itemType: overview
@@ -135,6 +107,26 @@ conceptualContent:
     - itemType: quickstart
       text: Začínáme se službou Vlastní klíčové slovo
       url: custom-keyword-basics.md
+  - title: Scénář do hloubky
+    links:
+    - itemType: overview
+      text: Informace o přepisu konverzace (schůzky)
+      url: conversation-transcription.md
+    - itemType: overview
+      text: Informace o konverzacích více zařízení (schůzky)
+      url: multi-device-conversation.md
+    - itemType: overview
+      text: Informace o hlasových asistentech
+      url: voice-assistants.md
+    - itemType: quickstart
+      text: Vytvoření hlasového asistenta pomocí vlastních příkazů
+      url: custom-commands.md
+    - itemType: quickstart
+      text: Vytvoření hlasového asistenta pomocí služby Bot Framework
+      url: direct-line-speech.md
+    - itemType: how-to-guide
+      text: Povolení přepisu nahrávek z call centra
+      url: call-center-transcription.md
   - title: nástroje
     links:
     - itemType: overview

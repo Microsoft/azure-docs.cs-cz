@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2a72e22b600f7dd7737a877e2fdf5d34c4dd4b4c
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: ac7fc5af21f11699331d41a074e88ae757170664
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876086"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975990"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-azure-cli"></a>Kurz: konfigurace filtrů tras pro partnerský vztah Microsoftu: Azure CLI
 
@@ -27,7 +27,7 @@ Filtry tras představují způsob, jak spotřebovat dílčí sadu podporovaných
 
 Služby Microsoft 365 Services, jako je Exchange Online, SharePoint Online a Skype pro firmy, jsou přístupné prostřednictvím partnerského vztahu Microsoftu. Když se partnerský vztah Microsoftu nakonfiguruje v okruhu ExpressRoute, budou se všechny předpony související s těmito službami inzerovat prostřednictvím vytvořených relací protokolu BGP. Ke každé předponě je připojená hodnota komunity protokolu BGP, která identifikuje službu nabízenou prostřednictvím dané předpony. Seznam hodnot komunity protokolu BGP a služeb, na které se mapují, najdete v tématu [komunity protokolu BGP](expressroute-routing.md#bgp).
 
-Připojení ke všem službám Azure a Microsoft 365 způsobí, že se prostřednictvím protokolu BGP inzeruje velký počet předpon. Velký počet předpon významně zvyšuje velikost směrovacích tabulek udržovaných směrovači v rámci vaší sítě. Pokud máte v úmyslu využívat jenom podmnožinu služeb nabízených partnerským vztahem Microsoftu, můžete zmenšit velikost směrovacích tabulek dvěma způsoby. Můžete:
+Připojení ke všem službám Azure a Microsoft 365 způsobí, že se prostřednictvím protokolu BGP inzeruje velký počet předpon. Velký počet předpon významně zvyšuje velikost směrovacích tabulek udržovaných směrovači v rámci vaší sítě. Pokud máte v úmyslu využívat jenom podmnožinu služeb nabízených partnerským vztahem Microsoftu, můžete zmenšit velikost směrovacích tabulek dvěma způsoby. Další možnosti:
 
 * Odfiltrujte nechtěné předpony pomocí filtrů směrování v komunitách protokolu BGP. Filtrování tras je standardní postup sítě a často se používá v rámci mnoha sítí.
 
@@ -51,7 +51,7 @@ Chcete-li připojit filtry směrování s Microsoft 365 službami, je nutné mí
 > Partnerské vztahy Microsoftu okruhů ExpressRoute, které byly nakonfigurované před 1. srpna 2017, budou mít všechny předpony služby inzerované prostřednictvím partnerského vztahu Microsoftu, a to i v případě, že nejsou definované filtry směrování. Partnerský vztah Microsoftu pro okruhy ExpressRoute, které jsou nakonfigurované na nebo od 1. srpna 2017, nebudou mít inzerované předpony, dokud není k okruhu připojen filtr tras.
 > 
 
-## <a name="prerequisites"></a><a name="workflow"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li se úspěšně připojit ke službám prostřednictvím partnerského vztahu Microsoftu, je nutné provést následující kroky konfigurace:
 
@@ -143,7 +143,7 @@ Jakmile se filtr tras odpojí od okruhu ExpressRoute, žádné předpony se Nein
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroupName --name MicrosoftPeering --remove routeFilter
 ```
 
-## <a name="clean-up-resources"></a><a name="delete"></a>Vyčištění prostředků
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Filtr tras můžete odstranit pouze v případě, že není připojen k žádnému okruhu. Před pokusem o odstranění filtru směrování se ujistěte, že není připojen k žádnému okruhu. Filtr tras můžete odstranit pomocí následujícího příkazu:
 

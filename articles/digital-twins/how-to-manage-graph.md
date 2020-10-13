@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ad0111f9be8c0b981093618be7296d0ec7f90e30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a0ab8f8ff3f2134c205338dfe8e6f2e887a5a053
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326537"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949611"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Správa grafu digitálních vláken pomocí vztahů
 
@@ -74,7 +74,7 @@ V případě potřeby můžete dokonce vytvořit několik instancí stejného ty
 
 ## <a name="list-relationships"></a>Výpis relací
 
-Chcete-li získat přístup k seznamu vztahů pro danou dvojitou hodnotu v grafu, můžete použít:
+Chcete-li získat přístup k seznamu **odchozích** relací přicházejících z daného vlákna v grafu, můžete použít:
 
 ```csharp
 await client.GetRelationshipsAsync(id);
@@ -110,11 +110,11 @@ public async Task<List<BasicRelationship>> FindOutgoingRelationshipsAsync(string
 
 Načtené relace můžete použít k přechodu na další vlákna v grafu. Provedete to tak, že si přečtete `target` pole z vráceného vztahu a použijete ho jako ID pro vaše další volání `GetDigitalTwin` . 
 
-### <a name="find-relationships-to-a-digital-twin"></a>Vyhledání vztahů k digitálnímu vlákna
+### <a name="find-incoming-relationships-to-a-digital-twin"></a>Najít příchozí relace k digitálnímu vlákna
 
-Digitální vlákna Azure také obsahuje rozhraní API pro vyhledání všech příchozích vztahů k danému vlákna. To je často užitečné pro zpětnou navigaci nebo při odstraňování vlákna.
+Digitální vlákna Azure také obsahuje rozhraní API pro vyhledání všech **příchozích** vztahů k danému vlákna. To je často užitečné pro zpětnou navigaci nebo při odstraňování vlákna.
 
-Předchozí ukázka kódu se zaměřuje na hledání odchozích vztahů. Následující příklad je podobný, ale místo toho najde příchozí relace. Po nalezení je také odstraní.
+Předchozí ukázka kódu se zaměřuje na hledání odchozích relací z vlákna. Následující příklad je strukturován podobně, ale místo toho najde *příchozí* relace na vlákna.
 
 Všimněte si, že `IncomingRelationship` volání nevrátí úplný text vztahu.
 
@@ -237,7 +237,7 @@ V praktických případech použití budou zdvojené hierarchie často vytvořen
 
 Vezměte v úvahu následující tabulku dat s popisem sady digitálních vláken a relací, které se mají vytvořit.
 
-| Modelování    | ID | Nadřazený | Název vztahu | Další data |
+| Model    | ID | Nadřazený | Název vztahu | Další data |
 | --- | --- | --- | --- | --- |
 | řízení    | Floor01 | | | … |
 | konverzační    | Room10 | Floor01 | obsahuje | … |

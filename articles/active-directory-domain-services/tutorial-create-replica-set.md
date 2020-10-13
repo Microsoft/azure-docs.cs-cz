@@ -2,20 +2,20 @@
 title: Kurz – vytvoření sady replik v Azure AD Domain Services | Microsoft Docs
 description: Naučte se vytvářet a používat sady replik v Azure Portal pro odolnost služby s Azure AD Domain Services
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.author: iainfou
-ms.openlocfilehash: 6f166cdcb5f3764d7b264fdb4ebc082ece4c798b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 8cd78a98e47468f103459fd7aa40b145d53db4fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88245090"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967031"
 ---
 # <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>Kurz: vytvoření a použití sad replik pro zajištění odolnosti nebo geografického umístění v Azure Active Directory Domain Services (Preview)
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 

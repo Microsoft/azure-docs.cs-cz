@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c38b0b1d3a2e71502ac86bf46771ecfb637ba15d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903187"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952212"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Povolení Azure ARC v clusteru Kubernetes na zařízení GPU Azure Stack Edge pro
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak povolit Azure ARC v existujícím clusteru Kub
 Tento postup je určený pro uživatele, kteří si zkontrolovali [úlohy Kubernetes na zařízení Azure Stack Edge pro](azure-stack-edge-gpu-kubernetes-workload-management.md) a jsou obeznámeni s koncepty, [co je Azure ARC Enabled Kubernetes (Preview)?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct povolit Azure ARC v clusteru Kubernetes, ujistěte se, že jste na svém zařízení Azure Stack Edge pro a klientovi, kterého budete používat pro přístup k zařízení, dokončili následující požadavky:
 
@@ -68,11 +68,11 @@ Než povolíte Azure ARC v clusteru Kubernetes, budete muset povolit a zaregistr
 
 1. Vyberte poskytovatele prostředků a v horní části panelu příkazů vyberte **Registrovat**. Registrace trvá několik minut. 
 
-    ![Registrovat poskytovatele prostředků Kubernetes](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
+    ![Registrovat poskytovatele prostředků Kubernetes 2](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
 
 1. Aktualizujte uživatelské rozhraní, dokud neuvidíte, že poskytovatel prostředků je registrovaný. Opakujte tento postup pro oba poskytovatele prostředků.
     
-    ![Registrovat poskytovatele prostředků Kubernetes](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
+    ![Registrace poskytovatelů prostředků Kubernetes 3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
 Poskytovatele prostředků můžete registrovat také prostřednictvím `az cli` . Další informace najdete v tématu [registrace dvou poskytovatelů pro Kubernetes s povoleným ARC Azure](../azure-arc/kubernetes/connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes) .
 
@@ -92,7 +92,7 @@ Poskytovatele prostředků můžete registrovat také prostřednictvím `az cli`
 
     Informace o tom, jak se přihlásit ke službě `az cli` , můžete [Spustit Cloud Shell v Azure Portal](../cloud-shell/quickstart-powershell.md?view=azure-cli-latest#start-cloud-shell)
 
-    Tady je příklad. 
+    Zde je příklad. 
     
     ```azurecli
     PS /home/user> az ad sp create-for-rbac --skip-assignment --name "https://azure-arc-for-ase-k8s"
@@ -112,7 +112,7 @@ Poskytovatele prostředků můžete registrovat také prostřednictvím `az cli`
 
     `az role assignment create --role 34e09817-6cbe-4d01-b1a2-e0eac5743d41 --assignee <appId-from-service-principal> --scope /subscriptions/<SubscriptionID>/resourceGroups/<Resource-group-name>`
 
-    Tady je příklad.
+    Zde je příklad.
     
     ```azurecli
     PS /home/user> az role assignment create --role 34e09817-6cbe-4d01-b1a2-e0eac5743d41 --assignee aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b --scope /subscriptions/062c67a6-019b-40af-a775-c4dc1abe56ed/resourceGroups/myaserg1

@@ -3,12 +3,12 @@ title: Kurz – partnerské místní prostředí do privátního cloudu
 description: Naučte se, jak vytvořit partnerský vztah ExpressRoute Global Reach k privátnímu cloudu v řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 07b7e1c2636f3754eda56af574586a1027403d3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9de6cbe177ac8d2ca4957e80c7ca1072a0d7985e
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576723"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948302"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Kurz: partnerských místních prostředí do privátního cloudu
 
@@ -83,7 +83,7 @@ Teď, když jste vytvořili autorizační klíč pro okruh privátního cloudu E
 Vylepšili jsme příkazy rozhraní [příkazového řádku](../expressroute/expressroute-howto-set-global-reach-cli.md) s konkrétními podrobnostmi a příklady, které vám pomůžou nakonfigurovat Global REACH partnerský vztah mezi místními prostředími do privátního cloudu řešení Azure VMware.  
 
 > [!TIP]  
-> V případě zkrácení ve výstupu příkazu Azure CLI můžou tyto pokyny použít [ `–query` argument ke spuštění dotazu JMESPath, aby se zobrazily jenom požadované výsledky](https://docs.microsoft.com/cli/azure/query-azure-cli).
+> V případě zkrácení ve výstupu příkazu Azure CLI můžou tyto pokyny použít [ `–query` argument ke spuštění dotazu JMESPath, aby se zobrazily jenom požadované výsledky](/cli/azure/query-azure-cli).
 
 
 1. Přihlaste se k Azure Portal pomocí stejného předplatného jako místní okruh ExpressRoute a otevřete Cloud Shell. Nechejte prostředí v bash.

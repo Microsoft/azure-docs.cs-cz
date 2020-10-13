@@ -10,13 +10,13 @@ ms.topic: reference
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 05/25/2020
-ms.openlocfilehash: fc1532fab23ec520722ea71d814496e786b91651
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 7b95ddfdb75dd5e5951a9c95442798692582fe6a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617910"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978352"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Časová pásma ve spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -95,7 +95,7 @@ Použití stejného časového pásma v rámci primární a sekundární instanc
 
 ## <a name="limitations"></a>Omezení
 
-- Časové pásmo existující spravované instance nelze změnit.
+- Časové pásmo existující spravované instance nelze změnit. Jako alternativní řešení vytvořte novou spravovanou instanci se správným časovým pásmem a pak buď proveďte ruční zálohování a obnovení, nebo co doporučujeme, proveďte obnovení k určitému [bodu v čase v době mezi instancemi](https://docs.microsoft.com/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal#restore-an-existing-database).
 - Externí procesy spouštěné z úloh agenta SQL Server nezohledňují časové pásmo instance.
 
 ## <a name="list-of-supported-time-zones"></a>Seznam podporovaných časových pásem

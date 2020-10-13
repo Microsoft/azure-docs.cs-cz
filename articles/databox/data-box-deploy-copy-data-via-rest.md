@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
 ms.openlocfilehash: 17fa361fa4cef194d910d08d4a0afe075b119109
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91742515"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Kurz: použití rozhraní REST API ke kopírování dat do Azure Data Boxho úložiště objektů BLOB  
@@ -133,7 +133,7 @@ Několik, například Ubuntu a Debian, použijte `update-ca-certificates` přík
 Poslední verze RHEL, Fedora a CentOS používají `update-ca-trust` příkaz.
 
 * Zkopírujte soubor certifikátu do `/etc/pki/ca-trust/source/anchors` adresáře.
-* Spusťte `update-ca-trust`.
+* Spusťte příkaz `update-ca-trust`.
 
 Podrobnosti najdete v dokumentaci specifické pro vaši distribuci.
 

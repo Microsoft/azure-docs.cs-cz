@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: dc23a0a68471b82c990d5d8a3086e2e71e88d0c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc630021cbf93074119d4feedcb3a09fae1453e3
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513919"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949424"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>Použití služby StorSimple Device Manager k zobrazení a správě úloh (aktualizace 3 a novější)
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 Okno **úlohy** nabízí jeden centrální portál pro zobrazení a správu úloh, které byly spuštěny na zařízeních připojených ke službě StorSimple Device Manager. Můžete zobrazit naplánované, spuštěné, dokončené, zrušené a neúspěšné úlohy pro více zařízení. Výsledky jsou uvedeny v tabulkovém formátu.
 
 ![Okno úlohy](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
@@ -59,11 +59,11 @@ Chcete-li zobrazit podrobnosti o jakékoli úloze, proveďte následující krok
 
 2. V okně **úlohy** Zobrazte úlohy, které vás zajímají, spuštěním dotazu s příslušnými filtry. Můžete hledat dokončené, spuštěné nebo zrušené úlohy.
 
-    ![Okno úlohy](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
+    ![Okno úlohy 2](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
 2. Vyberte úlohu a klikněte na ni.
 
-    ![Okno úlohy](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
+    ![Okno úlohy 3](./media/storsimple-8000-manage-jobs-u2/jobs3.png)
 
 3. V okně podrobností úlohy můžete zobrazit informace o stavu, podrobnostech, časové statistice a statistice dat.
    
@@ -81,7 +81,7 @@ Provedením následujících kroků zrušíte spuštěnou úlohu.
 
 2. Kliknutím pravým tlačítkem myši na vybranou úlohu vyvolejte kontextovou nabídku a klikněte na tlačítko **Storno**.
 
-    ![Podrobnosti o úloze](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
+    ![Podrobnosti úlohy 2](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
 3. Po zobrazení výzvy k potvrzení klikněte na **Ano**. Tato úloha je teď zrušená.
 

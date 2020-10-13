@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: da4f9fd9fd4305029f42dbe63326c8782d22d907
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baeeeae54829fad7378df597965eec5ba2039d20
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825442"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972811"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Připojení datového disku k virtuálnímu počítači s Windows pomocí PowerShellu
 
@@ -117,4 +117,4 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="next-steps"></a>Další kroky
 
-Spravované disky můžete nasadit také pomocí šablon. Další informace najdete v tématu [použití Managed disks v šablonách Azure Resource Manager](using-managed-disks-template-deployments.md) nebo v [šabloně pro rychlé](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk) zprovoznění pro nasazení více datových disků.
+Spravované disky můžete nasadit také pomocí šablon. Další informace najdete v tématu [použití Managed disks v šablonách Azure Resource Manager](../using-managed-disks-template-deployments.md) nebo v [šabloně pro rychlé](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk) zprovoznění pro nasazení více datových disků.

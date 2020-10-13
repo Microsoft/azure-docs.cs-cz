@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
-ms.openlocfilehash: 3bd19f301b1afd7dd1c35f03f6f6131a26b00708
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffac5ac4d1a8143590e1d72aaafc8a02d6ab04ca
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596837"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977251"
 ---
 # <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Řešení potíží s vysokým využitím procesoru pro virtuální počítače Azure s Windows
 
@@ -90,11 +90,11 @@ PerfInsights je doporučeným nástrojem z podpory Azure při potížích s výk
 
 #### <a name="run-perfinsights"></a>Spustit PerfInsights
 
-PerfInsights je k dispozici pro operační [systém Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) i [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) . V případě systému Windows jsou zde možnosti.
+PerfInsights je k dispozici pro operační [systém Windows](./how-to-use-perfinsights.md) i [Linux](./how-to-use-perfinsights-linux.md) . V případě systému Windows jsou zde možnosti.
 
 #### <a name="run-and-analyze-reports-through-azure-portal"></a>Spouštění a analýza sestav pomocí Azure Portal
 
-Při [instalaci prostřednictvím Azure Portal](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics)ve skutečnosti nainstaluje na virtuální počítač rozšíření. Uživatelé můžou nainstalovat PerfInsights jako rozšíření tak, že se předají přímo do [rozšíření v okně virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics-vm-extension)a pak zvolí možnost Diagnostika výkonu.
+Při [instalaci prostřednictvím Azure Portal](./performance-diagnostics.md)ve skutečnosti nainstaluje na virtuální počítač rozšíření. Uživatelé můžou nainstalovat PerfInsights jako rozšíření tak, že se předají přímo do [rozšíření v okně virtuálního počítače](./performance-diagnostics-vm-extension.md)a pak zvolí možnost Diagnostika výkonu.
 
 #### <a name="azure-portal-option-1"></a>Azure Portal možnost 1
 
@@ -132,7 +132,7 @@ Sestava je uložena na jednom z účtů úložiště v rámci vašeho předplatn
 
 #### <a name="run-perfinsights-from-within-the-vm"></a>Spuštění PerfInsights z virtuálního počítače
 
-Tato metoda se dá použít, pokud máte v úmyslu spouštět PerfInsights po delší dobu. [Článek PerfInsights](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights#how-do-i-run-perfinsights) poskytuje podrobný návod k různým příkazům a příznakům, které jsou nutné ke spuštění PerfInsights jako spustitelného souboru. Pro účely vysokého využití procesoru budete potřebovat jeden z následujících režimů:
+Tato metoda se dá použít, pokud máte v úmyslu spouštět PerfInsights po delší dobu. [Článek PerfInsights](./how-to-use-perfinsights.md#how-do-i-run-perfinsights) poskytuje podrobný návod k různým příkazům a příznakům, které jsou nutné ke spuštění PerfInsights jako spustitelného souboru. Pro účely vysokého využití procesoru budete potřebovat jeden z následujících režimů:
 
 - Rozšířený scénář
 
@@ -289,7 +289,7 @@ Až budou nastavení povolená, můžete tyto čítače **hosta** zobrazit v č�
 
   ![Obor názvů metrik](./media/troubleshoot-high-cpu-issues-azure-windows-vm/19-metrics-namespace.png)
 
-Další informace o tom, jak používat Azure monitor ke správě virtuálních počítačů Azure, najdete v tématu [monitorování virtuálních počítačů Azure pomocí Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-vm-azure).
+Další informace o tom, jak používat Azure monitor ke správě virtuálních počítačů Azure, najdete v tématu [monitorování virtuálních počítačů Azure pomocí Azure monitor](../../azure-monitor/insights/monitor-vm-azure.md).
 
 ### <a name="reactive-troubleshooting"></a>Reaktivní odstraňování potíží
 
@@ -311,7 +311,7 @@ Příkaz **logman create Counter** se používá ke spuštění kolekce Perfmon 
 
 Logman.exe taky můžete spustit z partnerského počítače Azure, který je ve stejné virtuální síti.
 
-Další informace o těchto parametrech najdete v tématu [logman create Counter](https://docs.microsoft.com/windows-server/administration/windows-commands/logman-create-counter).
+Další informace o těchto parametrech najdete v tématu [logman create Counter](/windows-server/administration/windows-commands/logman-create-counter).
 
 Po shromáždění dat Perfmon během nastalování tohoto problému jsou zbývající kroky pro analýzu dat stejné, jak je popsáno výše.
 

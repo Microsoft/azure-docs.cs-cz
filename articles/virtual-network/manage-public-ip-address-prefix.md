@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
 ms.openlocfilehash: 90fc35249daea51a08cb83143c6be024e78964a7
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804006"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Vytvoření, změna nebo odstranění předpony veřejné IP adresy
@@ -48,11 +48,11 @@ Předpony veřejných IP adres mají poplatek. Podrobnosti najdete v tématu [ce
 
    |Nastavení|Povinné?|Podrobnosti|
    |---|---|---|
-   |Předplatné|Ano|Musí existovat ve stejném [předplatném](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) jako prostředek, ke kterému chcete přidružit veřejnou IP adresu.|
-   |Skupina prostředků|Ano|Může existovat ve stejné nebo jiné [skupině prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) jako prostředek, ke kterému chcete přidružit veřejnou IP adresu.|
-   |Název|Ano|Název musí být jedinečný v rámci vybrané skupiny prostředků.|
-   |Oblast|Ano|Musí existovat ve stejné [oblasti](https://azure.microsoft.com/regions)jako veřejné IP adresy, které přiřadíte adresám z rozsahu.|
-   |Velikost předpony|Ano| Velikost potřebné předpony. Výchozí hodnota je/28 nebo 16 IP adres.
+   |Předplatné|Yes|Musí existovat ve stejném [předplatném](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) jako prostředek, ke kterému chcete přidružit veřejnou IP adresu.|
+   |Skupina prostředků|Yes|Může existovat ve stejné nebo jiné [skupině prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) jako prostředek, ke kterému chcete přidružit veřejnou IP adresu.|
+   |Name|Yes|Název musí být jedinečný v rámci vybrané skupiny prostředků.|
+   |Oblast|Yes|Musí existovat ve stejné [oblasti](https://azure.microsoft.com/regions)jako veřejné IP adresy, které přiřadíte adresám z rozsahu.|
+   |Velikost předpony|Yes| Velikost potřebné předpony. Výchozí hodnota je/28 nebo 16 IP adres.
 
 **Příkazy**
 
@@ -71,7 +71,7 @@ Po vytvoření předpony musíte z předpony vytvořit statické IP adresy. Chce
 
    |Nastavení|Povinné?|Podrobnosti|
    |---|---|---|
-   |Název|Ano|Název veřejné IP adresy musí být v rámci vybrané skupiny prostředků jedinečný.|
+   |Name|Yes|Název veřejné IP adresy musí být v rámci vybrané skupiny prostředků jedinečný.|
    |Časový limit nečinnosti (minuty)|No|Kolik minut má být otevřené připojení TCP nebo HTTP, aniž by se museli spoléhat na to, že klienti odesílají zprávy Keep-Alive. |
    |Popisek názvu DNS|No|Musí být jedinečný v rámci oblasti Azure, ve které jste vytvořili název (mezi všemi předplatnými a všemi zákazníky). Azure automaticky registruje název a IP adresu ve svém DNS, abyste se mohli připojit k prostředku s názvem. Azure připojí k názvu, který zadáte, výchozí podsíť, jako je například *Location.cloudapp.Azure.com* (umístění, kde je vybrané umístění), a vytvoří plně kvalifikovaný název DNS. Další informace najdete v tématu [použití Azure DNS s veřejnou IP adresou Azure](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
 
@@ -101,7 +101,7 @@ Alternativně můžete použít příkazy CLI a PS níže s parametry--Public-IP
 
 Aby bylo možné provádět úlohy s předponami veřejných IP adres, musí být váš účet přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, která je přiřazena k příslušným akcím uvedeným v následující tabulce:
 
-| Akce                                                            | Název                                                           |
+| Akce                                                            | Name                                                           |
 | ---------                                                         | -------------                                                  |
 | Microsoft. Network/publicIPPrefixes/Read                           | Přečíst předponu veřejné IP adresy                                |
 | Microsoft. Network/publicIPPrefixes/Write                          | Vytvoří nebo aktualizuje předponu veřejné IP adresy.                    |

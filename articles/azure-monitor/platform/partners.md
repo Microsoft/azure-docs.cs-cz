@@ -5,10 +5,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460083"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
@@ -82,7 +82,7 @@ CloudMonix nabízí služby pro monitorování, automatizaci a samočinné oprav
 
 Azure umožňuje zákazníkům migrovat a modernizovat své aplikace tak, aby běžely v cloudu, a to v koordinaci s mnoha partnerskými řešeními. Jedním z těchto partnerů je služby Datadog, který poskytuje možnosti pro pozorování a zabezpečení pro uživatele, aby pochopili stav a výkon svých aplikací napříč hybridními a víceúčelovými prostředími.  Ale konfigurace potřebných integrací často vyžaduje navigaci mezi Azure Portal a služby Datadog.  Tento proces zvyšuje složitost, trvá čas a je obtížně řešit potíže, pokud nefungují věci.  Aby se snížilo zatížení na více portálech, společnost Microsoft pracovala s služby Datadog, aby vytvořila integrované řešení služby Datadog na cloudové platformě Azure.  Toto řešení je dostupné prostřednictvím Azure Marketplace, nabízí bezproblémové prostředí pro použití řešení monitorování cloudu služby Datadog v Azure.  
 
-Díky nové integraci Azure-služby Datadog můžou organizace plně namapovat starší a cloudové systémy, sledovat data v reálném čase během každé fáze přechodu do cloudu a zajistit, aby migrované aplikace splňovaly cíle výkonu. Tato integrace kombinuje globální přítomnost, flexibilitu, zabezpečení a dodržování předpisů pomocí funkcí protokolování a monitorování služby Datadog a umožňuje tak vytvářet nejlepší prostředí pro podniky. Prostřednictvím tohoto sjednoceného prostředí budete moci: 
+S novou integrací Azure-Datadog můžou organizace plně namapovat starší a cloudové systémy, sledovat data v reálném čase během každé fáze přechodu do cloudu a zajistit, aby migrované aplikace splňovaly cíle výkonu. Tato integrace kombinuje globální přítomnost, flexibilitu, zabezpečení a dodržování předpisů pomocí funkcí protokolování a monitorování služby Datadog a umožňuje tak vytvářet nejlepší prostředí pro podniky. Prostřednictvím tohoto sjednoceného prostředí budete moci: 
 
 - Zřídit novou organizaci služby Datadog a nakonfigurovat jejich prostředky Azure tak, aby odesílaly protokoly a metriky do služby Datadog – plně spravované nastavení bez infrastruktury pro zákazníky, kteří si můžou nastavit a provozovat.  
 - Bezproblémově odesílají protokoly a metriky do služby Datadog. Proces předávání protokolů byl zcela automatizovaný; místo vytvoření kanálu pro předávání protokolů s nastavením diagnostiky, Event Hubs a funkcemi můžete nakonfigurovat vše pomocí několika kliknutí.

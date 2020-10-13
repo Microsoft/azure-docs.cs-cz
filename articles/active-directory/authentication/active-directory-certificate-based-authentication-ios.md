@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 04/17/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 584fb5c370fa0be629d057eb94dc4c2a8b9edc15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fa6c28eaa75485e0b45bb4404e685b6ee223b46
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88716431"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965586"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Azure Active Directory ověřování pomocí certifikátů v iOS
 
@@ -30,7 +30,7 @@ Tento článek podrobně popisuje požadavky a podporované scénáře konfigura
 
 ## <a name="microsoft-mobile-applications-support"></a>Podpora mobilních aplikací Microsoftu
 
-| Apps | Podpora |
+| Aplikace | Podpora |
 | --- | --- |
 | Aplikace Azure Information Protection |![Zaškrtněte, Pokud označíte podporu pro tuto aplikaci.][1] |
 | Intune Portál společnosti |![Zaškrtněte, Pokud označíte podporu pro tuto aplikaci.][1] |

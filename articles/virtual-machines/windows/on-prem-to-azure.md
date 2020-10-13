@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f363b8fc2fec659ee1b101c13d1ba6ac629f29d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32cbfbcc8feeff66101ab5e2c95f476a4a4215e9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835475"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973899"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrace z Amazon Web Services (AWS) a dalších platforem na Managed Disks v Azure
 
@@ -31,7 +31,7 @@ Můžete nahrát generalizované a specializované virtuální pevné disky.
 >
 
 
-| Scénář                                                                                                                         | Dokumentace                                                                                                                       |
+| Scénář                                                                                                                         | Documentation                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | Máte existující instance EC2 AWS, které byste chtěli migrovat na virtuální počítače Azure pomocí spravovaných disků.                              | [Přesunutí virtuálního počítače z Amazon Web Services (AWS) do Azure](aws-to-azure.md)                           |
 | Máte virtuální počítač z jiné virtualizační platformy, kterou byste chtěli použít jako image k vytvoření několika virtuálních počítačů Azure. | [Nahrajte zobecněný virtuální pevný disk a použijte ho k vytvoření nového virtuálního počítače v Azure.](upload-generalized-managed.md) |
@@ -41,7 +41,7 @@ Můžete nahrát generalizované a specializované virtuální pevné disky.
 ## <a name="overview-of-managed-disks"></a>Přehled Managed Disks
 
 Azure Managed Disks zjednodušuje správu virtuálních počítačů tím, že odstraňuje nutnost spravovat účty úložiště. Managed Disks taky využívat lepší spolehlivost virtuálních počítačů ve skupině dostupnosti. Zajišťuje, aby byly disky různých virtuálních počítačů ve skupině dostupnosti dostatečně izolované, aby nedocházelo k jednomu bodu selhání. Automaticky umístí disky různých virtuálních počítačů do skupiny dostupnosti v různých jednotkách škálování úložiště (razítka), které omezují dopad selhání jedné jednotky úložiště kvůli selháním hardwaru a softwaru.
-Podle svých potřeb můžete vybírat ze čtyř typů úložišť. Další informace o dostupných typech disků najdete v našem článku [Výběr typu disku](disks-types.md).
+Podle svých potřeb můžete vybírat ze čtyř typů úložišť. Další informace o dostupných typech disků najdete v našem článku [Výběr typu disku](../disks-types.md).
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Plánování migrace na Managed Disks
 
