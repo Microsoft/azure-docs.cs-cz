@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 46f0a0e86c5db612f440bcf631329d2800251dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83fa16265106e1033cb77ab4175b606714ec66d7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397793"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996843"
 ---
 # <a name="expressroute-encryption"></a>Šifrování ExpressRoute
  
@@ -25,7 +25,7 @@ Ne. MACsec šifruje veškerý provoz na fyzickém propojení s klíčem, který 
 ### <a name="can-i-encrypt-some-of-the-expressroute-circuits-on-my-expressroute-direct-ports-and-leave-other-circuits-on-the-same-ports-unencrypted"></a>Je možné zašifrovat některé okruhy ExpressRoute na mých portech ExpressRoute Direct a ponechat jiné okruhy na stejných portech bez šifrování? 
 Ne. Jakmile je MACsec povolený veškerý provoz řízení sítě, například přenos dat protokolu BGP a přenosy dat zákazníků, se zašifrují. 
 ### <a name="when-i-enabledisable-macsec-or-update-macsec-key-will-my-on-premises-network-lose-connectivity-to-microsoft-over-expressroute"></a>Když povolíte nebo zakážete MACsec nebo aktualizujete MACsec klíč, ztratí se v místní síti připojení k Microsoftu přes ExpressRoute?
-Ano. V případě konfigurace MACsec podporujeme jenom režim Pre-Shared Key. Znamená to, že potřebujete aktualizovat klíč jak na svých zařízeních, tak na Microsoftu (přes naše rozhraní API). Tato změna není atomická, takže ztratíte připojení, když dojde k neshodě klíče mezi dvěma stranami. Důrazně doporučujeme, abyste naplánovali časové období údržby pro změnu konfigurace. Abychom minimalizovali prostoje, doporučujeme, abyste po přepnutí síťového provozu na jiný odkaz aktualizovali konfiguraci na jednom odkazu ExpressRoute Direct v čase.  
+Yes. V případě konfigurace MACsec podporujeme jenom režim Pre-Shared Key. Znamená to, že potřebujete aktualizovat klíč jak na svých zařízeních, tak na Microsoftu (přes naše rozhraní API). Tato změna není atomická, takže ztratíte připojení, když dojde k neshodě klíče mezi dvěma stranami. Důrazně doporučujeme, abyste naplánovali časové období údržby pro změnu konfigurace. Abychom minimalizovali prostoje, doporučujeme, abyste po přepnutí síťového provozu na jiný odkaz aktualizovali konfiguraci na jednom odkazu ExpressRoute Direct v čase.  
 ### <a name="will-traffic-continue-to-flow-if-theres-a-mismatch-in-macsec-key-between-my-devices-and-microsofts"></a>Bude provoz pokračovat v toku, pokud dojde k neshodě klíče MACsec mezi zařízeními a společností Microsoft?
 Ne. Pokud je MACsec nakonfigurovaný a dojde k neshodě klíčů, ztratíte připojení k Microsoftu. Jinými slovy nebudeme vracet k nezašifrovanému připojení, které zveřejňuje vaše data. 
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>Povolí MACsec na ExpressRoute přímé snížení výkonu sítě?
@@ -36,11 +36,9 @@ Podporuje se jenom verze AES128 a AES256 pro [číslování rozšířených pake
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>Komplexní šifrování pomocí protokolu IPsec – Nejčastější dotazy
 IPsec je [Standard IETF](https://tools.ietf.org/html/rfc6071). Šifruje data na úrovni Internet Protocol (IP) nebo síťové vrstvy 3. Protokol IPsec můžete použít k šifrování komplexního připojení mezi vaší místní sítí a virtuální sítí (VNET) v Azure. Další informace najdete v dalších nejčastějších dotazech.
 ### <a name="can-i-enable-ipsec-in-addition-to-macsec-on-my-expressroute-direct-ports"></a>Je možné povolit protokol IPsec kromě MACsec na ExpressRoute přímých portech?
-Ano. MACsec zabezpečuje fyzické připojení mezi vámi a společností Microsoft. IPsec zabezpečuje komplexní připojení mezi vámi a vašimi virtuálními sítěmi v Azure. Můžete je povolit nezávisle. 
-### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-between-my-on-premises-network-and-my-azure-virtual-network"></a>Můžu použít Azure VPN Gateway k nastavení tunelu IPsec mezi místní sítí a virtuální sítí Azure?
-Ano. Tento tunel IPsec můžete nastavit přes partnerské vztahy Microsoftu vašeho okruhu ExpressRoute. Postupujte podle našeho [Průvodce konfigurací](site-to-site-vpn-over-microsoft-peering.md).
+Yes. MACsec zabezpečuje fyzické připojení mezi vámi a společností Microsoft. IPsec zabezpečuje komplexní připojení mezi vámi a vašimi virtuálními sítěmi v Azure. Můžete je povolit nezávisle. 
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-over-azure-private-peering"></a>Můžu použít Azure VPN Gateway k nastavení tunelu IPsec přes privátní partnerský vztah Azure?
-Pokud přijmete Azure Virtual WAN, můžete postupovat podle [těchto kroků](../virtual-wan/vpn-over-expressroute.md) k zašifrování kompletního připojení. Pokud máte běžnou virtuální síť Azure, můžete do své virtuální sítě nasadit bránu VPN třetí strany a vytvořit tunelovou propojení IPsec mezi IT a místní bránou VPN.
+Yes. Pokud přijmete Azure Virtual WAN, můžete postupovat podle [těchto kroků](../virtual-wan/vpn-over-expressroute.md) k zašifrování kompletního připojení. Pokud máte běžnou virtuální síť Azure, můžete postupovat podle [těchto kroků](../vpn-gateway/site-to-site-vpn-private-peering.md) a vytvořit tunel IPSec mezi službou Azure VPN Gateway a místní bránou VPN.
 ### <a name="what-is-the-throughput-i-will-get-after-enabling-ipsec-on-my-expressroute-connection"></a>Jaká je propustnost, po povolení protokolu IPsec na ExpressRoute připojení?
 Pokud se používá Azure VPN Gateway, podívejte se na toto [číslo výkonu](../vpn-gateway/vpn-gateway-about-vpngateways.md). Pokud se používá brána sítě VPN jiného výrobce, obraťte se na dodavatele s číslem výkonu.
 

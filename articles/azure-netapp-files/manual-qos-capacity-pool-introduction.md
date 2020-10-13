@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 14b905c69f0dab933159b414028db3e985d314a3
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 239b985bf45942afbff8ca49d7e15ead24456304
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91935762"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993977"
 ---
-# <a name="manual-qos-capacity-pool"></a>Ruční fond kapacit technologie QoS
+# <a name="manual-qos-capacity-pool"></a>Fond ručně zřizované kapacity QoS
 
 Tento článek poskytuje Úvod do funkce fondu kapacity technologie QoS (Quality of Service).
 
@@ -34,6 +34,10 @@ V *manuálním* fondu kapacity QoS můžete přiřadit kapacitu a propustnost pr
 Ve fondu kapacity *auto* QoS se propustnost automaticky přiřazuje svazkům ve fondu, a to úměrně k kvótě velikosti přiřazené ke svazkům.  
 
 Informace o typech QoS najdete v tématu [hierarchie úložiště Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md) a [důležitých informací o výkonu pro Azure NetApp Files](azure-netapp-files-performance-considerations.md) .
+
+## <a name="example-of-using-manual-qos"></a>Příklad použití ruční technologie QoS
+
+Pokud používáte ruční fond kapacit QoS s, například SAP HANAm systémem, databází Oracle nebo jinými úlohami, které vyžadují více svazků, lze fond kapacit použít k vytvoření těchto svazků aplikace.  Každý svazek může poskytovat individuální velikost a propustnost pro splnění požadavků aplikace.  Podrobnosti o výhodách najdete v tématu [Příklady propustnosti svazků v ručním fondu kapacity QoS](azure-netapp-files-service-levels.md#throughput-limit-examples-of-volumes-in-a-manual-qos-capacity-pool) .  
 
 ## <a name="how-to-specify-the-manual-qos-type"></a>Jak zadat ruční typ QoS
 

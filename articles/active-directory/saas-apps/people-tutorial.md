@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 93b418a2bc4e1b03370b1bb86bd7da95255db0b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb8374802e7ec2596dc5f65a2acaf739b12dc164
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552386"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995974"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-people"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s lidmi
 
@@ -142,11 +142,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
    
 4. V nabídce na levé straně klikněte na **Nastavení**.
 
-    ![Konfigurace jednoho Sign-On](./media/people-tutorial/tutorial_people_001.png)
+    ![Snímek obrazovky, který zobrazuje levou stranu nabídky s vybranou možnosti "nastavení".](./media/people-tutorial/tutorial_people_001.png)
 
 5. Klikněte na **Společnost**.
 
-    ![Konfigurace jednoho Sign-On](./media/people-tutorial/tutorial_people_002.png)
+    ![Snímek obrazovky, který zobrazuje "společnost" vybraný v nabídce nastavení.](./media/people-tutorial/tutorial_people_002.png)
 
 6. V **souboru METADAT SAML pro nahrání jednotného přihlašování**klikněte na **Procházet** a nahrajte stažený soubor metadat.
 

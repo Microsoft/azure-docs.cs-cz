@@ -6,19 +6,19 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: e6d464b415c956a0a8486f7c0d41c6e6a32b7c03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16f4cfd70cf4dbeaeb1376368787b3fa0e4b9a52
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761596"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994031"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Použití mikroměřiče s Azure Application Insights Java SDK
 
 > [!NOTE]
 > Sada SDK Application Insights Java nepodporuje jarní webtokem. 
 >
-> V [Application Insights agenta Java 3,0](https://docs.microsoft.com/azure/azure-monitor/app/java-on-premises) , který nevyžaduje instrumentaci, se podporuje webtokem i mikroměřiče. 
+> V [Application Insights agenta Java 3,0](./java-on-premises.md) , který nevyžaduje instrumentaci, se podporuje webtokem i mikroměřiče. 
 
 Měření míry monitorování aplikací pro mikroměřiče pro kód aplikace založené na JVM a umožňuje exportovat data do oblíbených monitorovacích systémů. V tomto článku se dozvíte, jak používat mikroměřiče s Application Insights pro aplikace pro spouštění pružinového spouštění i pro aplikace bez pružiny.
 
@@ -279,4 +279,3 @@ Do konfiguračního souboru přidejte následující kód vazby:
 
 * Další informace o mikroměřiči najdete v oficiální [dokumentaci k mikroměřiči](https://micrometer.io/docs).
 * Další informace o jaře v Azure najdete v [dokumentaci k oficiální jaře na platformě Azure](/java/azure/spring-framework/?view=azure-java-stable).
-

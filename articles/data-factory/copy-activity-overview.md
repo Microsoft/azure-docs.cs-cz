@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 5eade0ad48dcdd1f0c18ef6e65e498a7b9c79c15
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 8a84c9979bdfac1165d44d03572567ab1ea7ab1f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951672"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995347"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování v Azure Data Factory
 
@@ -129,12 +129,12 @@ Následující šablona aktivity kopírování obsahuje úplný seznam podporova
 
 | Vlastnost | Popis | Povinné? |
 |:--- |:--- |:--- |
-| typ | U aktivity kopírování nastavte na `Copy` | Ano |
-| vztahují | Určete datovou sadu, kterou jste vytvořili, která odkazuje na zdrojová data. Aktivita kopírování podporuje pouze jeden vstup. | Ano |
-| činnosti | Určete datovou sadu, kterou jste vytvořili, která odkazuje na data jímky. Aktivita kopírování podporuje pouze jeden výstup. | Ano |
-| typeProperties | Zadejte vlastnosti pro konfiguraci aktivity kopírování. | Ano |
-| source | Zadejte typ zdroje kopie a odpovídající vlastnosti pro načtení dat.<br/>Další informace najdete v části "vlastnosti aktivity kopírování" v článku konektoru, který je uvedený v části [podporovaná úložiště a formáty dat](#supported-data-stores-and-formats). | Ano |
-| jímkou | Zadejte typ jímky kopírování a odpovídající vlastnosti pro zápis dat.<br/>Další informace najdete v části "vlastnosti aktivity kopírování" v článku konektoru, který je uvedený v části [podporovaná úložiště a formáty dat](#supported-data-stores-and-formats). | Ano |
+| typ | U aktivity kopírování nastavte na `Copy` | Yes |
+| vztahují | Určete datovou sadu, kterou jste vytvořili, která odkazuje na zdrojová data. Aktivita kopírování podporuje pouze jeden vstup. | Yes |
+| činnosti | Určete datovou sadu, kterou jste vytvořili, která odkazuje na data jímky. Aktivita kopírování podporuje pouze jeden výstup. | Yes |
+| typeProperties | Zadejte vlastnosti pro konfiguraci aktivity kopírování. | Yes |
+| source | Zadejte typ zdroje kopie a odpovídající vlastnosti pro načtení dat.<br/>Další informace najdete v části "vlastnosti aktivity kopírování" v článku konektoru, který je uvedený v části [podporovaná úložiště a formáty dat](#supported-data-stores-and-formats). | Yes |
+| jímkou | Zadejte typ jímky kopírování a odpovídající vlastnosti pro zápis dat.<br/>Další informace najdete v části "vlastnosti aktivity kopírování" v článku konektoru, který je uvedený v části [podporovaná úložiště a formáty dat](#supported-data-stores-and-formats). | Yes |
 | Překladač | Zadejte explicitní mapování sloupců ze zdroje do jímky. Tato vlastnost se používá v případě, že výchozí chování kopírování nevyhovuje vašim potřebám.<br/>Další informace najdete v tématu [mapování schématu v aktivitě kopírování](copy-activity-schema-and-type-mapping.md). | No |
 | dataIntegrationUnits | Zadejte míru, která představuje množství energie, kterou [prostředí Azure Integration runtime](concepts-integration-runtime.md) používá pro kopírování dat. Tyto jednotky se dřív jmenovaly jako jednotky pro pohyb dat v cloudu (DMU). <br/>Další informace najdete v tématu [jednotky pro integraci dat](copy-activity-performance-features.md#data-integration-units). | No |
 | parallelCopies | Zadejte paralelismus, které má aktivita kopírování použít při čtení dat ze zdroje a zápisu dat do jímky.<br/>Další informace najdete v tématu [paralelní kopírování](copy-activity-performance-features.md#parallel-copy). | No |
@@ -183,7 +183,7 @@ Informace o tom, jak aktivita kopírování mapuje vaše zdrojová data do jímk
 
 ## <a name="add-additional-columns-during-copy"></a>Přidat další sloupce během kopírování
 
-Kromě kopírování dat ze zdrojového úložiště dat do jímky můžete také nakonfigurovat a přidat další datové sloupce pro kopírování do jímky. Například:
+Kromě kopírování dat ze zdrojového úložiště dat do jímky můžete také nakonfigurovat a přidat další datové sloupce pro kopírování do jímky. Příklad:
 
 - Při kopírování ze zdroje založeného na souborech uložte relativní cestu k souboru jako další sloupec, ze kterého se data pocházejí.
 - Duplikuje zadaný zdrojový sloupec jako jiný sloupec. 
@@ -201,7 +201,7 @@ Pokud ho chcete nakonfigurovat programově, přidejte `additionalColumns` do zdr
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| additionalColumns | Přidejte další datové sloupce ke zkopírování do jímky.<br><br>Každý objekt v poli `additionalColumns` představuje sloupec navíc. `name`Definuje název sloupce a `value` Určuje hodnotu dat daného sloupce.<br><br>Povolené hodnoty dat jsou:<br>- **`$$FILEPATH`** – Rezervovaná proměnná Určuje relativní cestu zdrojových souborů k cestě ke složce zadané v datové sadě. Platí pro zdroj založený na souborech.<br>- **$ $Column: <source_column_name>** – vzorec rezervované proměnné označuje, že se zadaný zdrojový sloupec duplikuje do zadaného zdrojového sloupce jako jiný sloupec.<br>- **Vyjádření**<br>- **Statická hodnota** | No |
+| additionalColumns | Přidejte další datové sloupce ke zkopírování do jímky.<br><br>Každý objekt v poli `additionalColumns` představuje sloupec navíc. `name`Definuje název sloupce a `value` Určuje hodnotu dat daného sloupce.<br><br>Povolené hodnoty dat jsou:<br>- **`$$FILEPATH`** – Rezervovaná proměnná Určuje relativní cestu zdrojových souborů k cestě ke složce zadané v datové sadě. Platí pro zdroj založený na souborech.<br>- **`$$COLUMN:<source_column_name>`** – vyhrazený vzorec proměnné určuje duplikování zadaného zdrojového sloupce jako jiného sloupce.<br>- **Vyjádření**<br>- **Statická hodnota** | No |
 
 **Příklad:**
 

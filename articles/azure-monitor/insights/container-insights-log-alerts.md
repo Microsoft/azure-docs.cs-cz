@@ -3,12 +3,12 @@ title: Protokolování výstrah z Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak vytvořit vlastní výstrahy protokolu pro paměť a využití procesoru z Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 8c02442fef9b174075065e7852b7a25233899c48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddf898978bdaf51cb81a95c3209855c51212280f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294542"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995262"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Jak vytvořit výstrahy protokolu z Azure Monitor pro kontejnery
 
@@ -307,4 +307,4 @@ Tato část vás provede vytvořením pravidla výstrahy měření metriky pomoc
 
 - Podívejte se na [příklady dotazů protokolu](container-insights-log-search.md#search-logs-to-analyze-data) , kde najdete předdefinované dotazy a příklady pro vyhodnocení nebo přizpůsobení výstrah, vizualizace a analýzy clusterů.
 
-- Další informace o Azure Monitor a o tom, jak monitorovat další aspekty clusteru Kubernetes, najdete v tématu [zobrazení výkonu clusterů Kubernetes](container-insights-analyze.md) a [zobrazení stavu clusteru Kubernetes](container-insights-health.md).
+- Další informace o Azure Monitor a o tom, jak monitorovat další aspekty clusteru Kubernetes, najdete v tématu [zobrazení výkonu clusterů Kubernetes](container-insights-analyze.md) a [zobrazení stavu clusteru Kubernetes](./container-insights-overview.md).

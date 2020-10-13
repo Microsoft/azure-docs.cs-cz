@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 0173d324da4f6cf2a24b825fe44fc07b7fe50b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e41fa9f9918f4f17bd89e80610ae608e83eb3402
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318126"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996393"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování pomocí Azure Monitor
 
@@ -43,7 +43,7 @@ Aplikace jsou stejně spolehlivé jako základní infrastruktura. Monitorování
 
 [Infrastruktura jako kód](/azure/devops/learn/what-is-infrastructure-as-code) je správa infrastruktury v popisném modelu s využitím stejné správy verzí, jakou DevOps týmy používají ke zdrojovému kódu. Zvyšuje spolehlivost a škálovatelnost vašeho prostředí a umožňuje využívat podobné procesy, které se používají ke správě vašich aplikací.
 
--  Pomocí [Správce prostředků šablon](platform/template-workspace-configuration.md) můžete povolit monitorování a konfiguraci výstrah přes velkou sadu prostředků.
+-  Pomocí [Správce prostředků šablon](./samples/resource-manager-workspace.md) můžete povolit monitorování a konfiguraci výstrah přes velkou sadu prostředků.
 - Pomocí [Azure Policy](../governance/policy/overview.md) vynutili různá pravidla pro vaše prostředky. Tím se zajistí, že tyto prostředky budou vyhovovat vašim firemním standardům a smlouvám o úrovni služeb. 
 
 
@@ -87,4 +87,3 @@ Zajistěte, aby měl váš vývoj a operace přístup ke stejné telemetrie a n�
 
 - Přečtěte si o rozdílných součástech [Azure monitor](overview.md).
 - [Přidejte nepřetržité monitorování](./app/continuous-monitoring.md) do vašeho kanálu pro vydávání verzí.
-

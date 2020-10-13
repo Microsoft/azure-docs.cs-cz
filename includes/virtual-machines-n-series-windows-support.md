@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 00661043d1ec9769adbf4119a2c9c1925dcd29fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfb7d1d52549d7fda9547b65a259fe2ce73f8839
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88186321"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91997878"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Podporované operační systémy a ovladače
 
@@ -39,9 +39,9 @@ Ovladače mřížky znovu distribuované pomocí Azure nefungují na virtuální
 Počítejte s tím, že rozšíření NVIDIA bude vždycky instalovat nejnovější ovladač. Odkazy na předchozí verzi poskytujeme pro zákazníky, kteří mají závislost na starší verzi.
 
 Pro Windows Server 2019, Windows Server 2016 a Windows 10 (až do buildu 2004):
-- [Mřížka 11 (451,48)](https://go.microsoft.com/fwlink/?linkid=874181) (. exe)
-- [Mřížka 10,1 (442,06)](https://download.microsoft.com/download/b/8/f/b8f5ecec-b8f9-47de-b007-ac40adc88dc8/442.06_grid_win10_64bit_international_whql.exe) (. exe) 
+- [Mřížka 11 (452,39)](https://go.microsoft.com/fwlink/?linkid=874181) (. exe)
+- [Mřížka 11,0 (451,48)](https://download.microsoft.com/download/C/1/4/c147a482-1364-4d12-b9e3-0beda0f00a13/451.48_grid_win10_server2016_server2019_64bit_international.exe) (. exe) 
 
 Pro Windows Server 2012 R2: 
-- [Mřížka 11 (451,48)](https://go.microsoft.com/fwlink/?linkid=874184) (. exe)
+- [Mřížka 11,0 (451,48)](https://download.microsoft.com/download/C/1/4/c147a482-1364-4d12-b9e3-0beda0f00a13/451.48_grid_win10_server2016_server2019_64bit_international.exe) (. exe) 
 - [Mřížka 10,1 (442,66)](https://download.microsoft.com/download/4/3/3/4330fd5c-c685-4ca1-abca-3b2fb3c11d2e/442.06_grid_win8_win7_64bit_international_whql.exe) (. exe)  

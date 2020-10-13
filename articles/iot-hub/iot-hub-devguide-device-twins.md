@@ -1,22 +1,22 @@
 ---
 title: Vysvětlení nevláken zařízení v Azure IoT Hub | Microsoft Docs
 description: Příručka pro vývojáře – pomocí vláken zařízení můžete synchronizovat stav a konfigurační data mezi IoT Hub a vašimi zařízeními.
-author: ash2017
+author: nehsin
 manager: philmea
-ms.author: asrastog
+ms.author: nehsin
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/01/2020
+ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: 4887315ddef3f15ee3f6ef5ad80cf8df8b1dcd34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef1d6787ab3d4083ee6418694d1965ea0f90f730
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327765"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996126"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Pochopení a používání vláken zařízení v IoT Hub
 
@@ -122,7 +122,7 @@ V předchozím příkladu obsahuje vlákna zařízení `batteryLevel` vlastnost,
 
 ### <a name="desired-property-example"></a>Požadovaný příklad vlastnosti
 
-V předchozím příkladu se v rámci `telemetryConfig` back-endu řešení a aplikace pro zařízení používá k synchronizaci konfigurace telemetrie pro toto zařízení, aby bylo požadované a hlášené vlastnosti zařízení. Například:
+V předchozím příkladu se v rámci `telemetryConfig` back-endu řešení a aplikace pro zařízení používá k synchronizaci konfigurace telemetrie pro toto zařízení, aby bylo požadované a hlášené vlastnosti zařízení. Příklad:
 
 1. Back-end řešení nastaví požadovanou vlastnost s požadovanou konfigurační hodnotou. Tady je část dokumentu s požadovanou sadou vlastností:
 
@@ -250,7 +250,7 @@ Značky, požadované vlastnosti a hlášené vlastnosti jsou objekty JSON s ná
 
 * **Keys**: všechny klíče v objektech JSON jsou v kódování UTF-8, Velká a malá písmena a dlouhé až 1 KB. Povolené znaky vyloučí řídicí znaky UNICODE (segmenty C0 a C1), a `.` , a `$` SP.
 
-* **Hodnoty**: všechny hodnoty v objektech JSON můžou být z následujících typů JSON: Boolean, Number, String, Object. Pole nejsou povolena.
+* **Hodnoty**: všechny hodnoty v objektech JSON můžou být z následujících typů JSON: Boolean, Number, String, Object. Pole jsou také podporována.
 
     * Celá čísla můžou mít minimální hodnotu-4503599627370496 a maximální hodnotu 4503599627370495.
 
@@ -310,7 +310,7 @@ IoT Hub se odmítne s chybou všech operací, které by zvýšily velikost `tags
 
 IoT Hub udržuje časové razítko poslední aktualizace pro každý objekt JSON v požadovaném a hlášeném vlastnosti zařízení. Časová razítka jsou v UTC a kódovaná ve [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) formátu ISO8601 `YYYY-MM-DDTHH:MM:SS.mmmZ` .
 
-Například:
+Příklad:
 
 ```json
 {

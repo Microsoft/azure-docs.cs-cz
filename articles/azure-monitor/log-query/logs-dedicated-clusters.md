@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 845336385fe7490d4c62df41af873c237ae34871
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575516"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996330"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor protokolovat vyhrazené clustery
 
@@ -49,7 +49,7 @@ Existují dva režimy fakturace pro použití v clusteru. Tyto parametry mohou b
 
 1. **Cluster**: v tomto případě (což je výchozí nastavení) se fakturace pro ingestovaná data provádí na úrovni clusteru. Množství zpracovaných dat z každého pracovního prostoru přidruženého ke clusteru se agreguje za účelem výpočtu denního vyúčtování clusteru. 
 
-2. **Pracovní prostory**: náklady na rezervaci kapacity pro váš cluster se úměrně připočítají k pracovním prostorům v clusteru (po zaúčtování pro přidělení podle uzlu z [Azure Security Center](https://docs.microsoft.com/azure/security-center/) pro každý pracovní prostor.)
+2. **Pracovní prostory**: náklady na rezervaci kapacity pro váš cluster se úměrně připočítají k pracovním prostorům v clusteru (po zaúčtování pro přidělení podle uzlu z [Azure Security Center](../../security-center/index.yml) pro každý pracovní prostor.)
 
 Pamatujte na to, že pokud váš pracovní prostor používá starší verzi na cenové úrovni uzlů, bude při propojení s clusterem účtován na základě dat přijatých v rámci rezervace kapacity clusteru a již na jeden uzel. Pro přidělení dat jednotlivých uzlů z Azure Security Center bude nadále použito.
 
@@ -182,7 +182,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -Cl
 > [!NOTE]
 > Pomocí opravy můžete aktualizovat *SKU*prostředků *clusteru* , *keyVaultProperties* nebo *billingType* .
 
-Například: 
+Příklad: 
 
 *Call*
 
@@ -321,7 +321,7 @@ Stav přidružení pracovního prostoru můžete zjistit dvěma způsoby:
 
 - Zkopírujte hodnotu URL Azure-AsyncOperation z odpovědi a postupujte podle kontroly stavu asynchronních operací.
 
-- Odeslání [pracovních prostorů – Získejte](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) požadavek a sledujte odpověď. V přidruženém pracovním prostoru je clusterResourceId v části funkce.
+- Odeslání [pracovních prostorů – Získejte](/rest/api/loganalytics/workspaces/get) požadavek a sledujte odpověď. V přidruženém pracovním prostoru je clusterResourceId v části funkce.
 
 Požadavek Send vypadá následovně:
 

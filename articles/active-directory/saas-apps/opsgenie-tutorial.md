@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 0ebcb746e10ae910c695e52fb053fc5d0b316e70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8958e16ef4b1b7033fa0757e2a70eb053896b143
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543903"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996575"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opsgenie"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s OpsGenie
 
@@ -133,15 +133,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 3. Pokud chcete povolit jednotné přihlašování, vyberte **povoleno**.
    
-    ![Nastavení OpsGenie](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
+    ![Snímek obrazovky s vybraným zaškrtnutým políčkem "povoleno".](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
 
 4. V části **poskytovatel** klikněte na kartu **Azure Active Directory** .
    
-    ![Nastavení OpsGenie](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
+    ![Snímek obrazovky, který zobrazuje oddíl "Provider" s vybranou kartou "Azure Active Directory".](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
 
 5. Na stránce Azure Active Directory dialogovém okně proveďte následující kroky:
    
-    ![Nastavení OpsGenie](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
+    ![Snímek obrazovky s oddílem jednotného přihlašování s přepínačem "Povolit jednotné přihlašování", "S A M L 2,0 koncový bod" a "metadata U R L".](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
     
     a. Zkopírujte hodnotu **identifikátoru URI ID aplikace** a vložte ji do textového pole **identifikátor (ID entity)** v části **základní konfigurace SAML** v Azure Portal.
 
@@ -169,7 +169,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v OpsGenie.
 
 4. V dialogovém okně **Přidat uživatele** proveďte následující kroky:
    
-    ![Nastavení OpsGenie](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno Přidat uživatele s zvýrazněnými textovými poli E-mail a celé jméno a vybraným tlačítkem Uložit.](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
    
     a. Do textového pole **e-mail** zadejte e-mailovou adresu B. Simon adresovanou v Azure Active Directory.
    
@@ -186,7 +186,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici OpsGenie, měli byste se automaticky přihlásit k OpsGenie, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

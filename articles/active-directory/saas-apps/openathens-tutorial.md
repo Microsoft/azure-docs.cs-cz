@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: fc60552fadf10dde88c0e6d8c6f46bd25c68cf2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da8ae35ce85ca9ffb031511e81270afd8529681d
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543937"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994180"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s OpenAthens
 
@@ -134,15 +134,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V seznamu vyberte **připojení** na kartě **Správa** .
 
-    ![Konfigurace jednotného přihlašování](./media/openathens-tutorial/tutorial_openathens_application1.png)
+    ![Snímek obrazovky zobrazující stránku webu společnosti "OpenAthens" se zvolenými možnostmi "připojení" na kartě Správa.](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
 1. Vyberte **SAML 1.1/2.0**a pak klikněte na tlačítko **Konfigurovat** .
 
-    ![Konfigurace jednotného přihlašování](./media/openathens-tutorial/tutorial_openathens_application2.png)
+    ![Snímek obrazovky zobrazující typ místního ověřování systému dialog s "S A M L 1.1/2.0" a vybraným tlačítkem "konfigurovat".](./media/openathens-tutorial/tutorial_openathens_application2.png)
 
 1. Chcete-li přidat konfiguraci, vyberte tlačítko **Procházet** a odešlete soubor metadata. XML, který jste stáhli z Azure Portal, a pak vyberte **Přidat**.
 
-    ![Konfigurace jednotného přihlašování](./media/openathens-tutorial/tutorial_openathens_application3.png)
+    ![Snímek obrazovky zobrazující "Přidání S A M L Authentication System" Dialogové okno s vybranou akcí Procházet a tlačítkem Přidat.](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
 1. Na kartě **Podrobnosti** proveďte následující kroky.
 
@@ -164,7 +164,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     h. Na kartě **</> předávající strana** zkopírujte **adresu URL metadat** a otevřete ji v prohlížeči a Stáhněte si soubor **XML s metadaty SP** . Nahrajte tento soubor metadat SP v části **základní konfigurační oddíl SAML** ve službě Azure AD.
 
-    ![Konfigurace jednotného přihlašování](./media/openathens-tutorial/tutorial_openathens_application5.png)
+    ![Snímek obrazovky, který zobrazuje vybranou kartu předávající strana a zvýrazní se metadata U R L.](./media/openathens-tutorial/tutorial_openathens_application5.png)
 
 ### <a name="create-openathens-test-user"></a>Vytvořit testovacího uživatele OpenAthens
 
@@ -176,7 +176,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici OpenAthens, měli byste se automaticky přihlásit k OpenAthens, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

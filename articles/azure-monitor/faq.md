@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 06b92d982b42d97849994b4a21696b72461efe1f
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 4b7f596d2184d25229cc1a8e496d0d78eaaabdb6
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893760"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994675"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
-Toto je seznam nejčastějších dotazů k Azure Monitor. Pokud máte nějaké další dotazy, navštivte [diskuzní fórum](https://docs.microsoft.com/answers/questions/topics/single/24223.html) a Vystavte své dotazy. V případě častého dotazu přidáme Tento článek do tohoto článku, aby ho bylo možné rychle a snadno najít.
+Toto je seznam nejčastějších dotazů k Azure Monitor. Pokud máte nějaké další dotazy, navštivte [diskuzní fórum](/answers/questions/topics/single/24223.html) a Vystavte své dotazy. V případě častého dotazu přidáme Tento článek do tohoto článku, aby ho bylo možné rychle a snadno najít.
 
 
 ## <a name="general"></a>Obecné

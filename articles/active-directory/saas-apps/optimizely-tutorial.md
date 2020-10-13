@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 4564019f540d0dd08c8e0b2827b4a6b7df9c2cf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b963e0b4797af8269b87f704edca231f000c9372
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543971"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996679"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Kurz: integrace s Azure Active Directory s optimalizací
 
@@ -110,17 +110,17 @@ Pokud chcete jednotné přihlašování Azure AD nakonfigurovat s optimalizací,
 
 5. Vaše optimalizovaná aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno **atributy uživatele** .
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno atributy uživatele se ikonou "Upravit" v pravém horním rohu.](common/edit-attribute.png)
 
 6. Kromě toho aplikace optimalizované pro optimalizaci očekává, že se v odpovědi SAML zpátky vrátí několik atributů. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     | ---------------| --------------- |
     | e-mail | uživatel. pošta |
     
     a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    ![image](common/new-save-attribute.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno deklarace identity uživatele se zvýrazněnými akcemi přidat nové deklarace identity a uložit](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -164,7 +164,7 @@ Pokud chcete jednotné přihlašování Azure AD nakonfigurovat s optimalizací,
 
 4. Klikněte na název účtu v pravém horním rohu a pak na **Nastavení účtu**.
 
-    ![Služba Azure AD Single Sign-On](./media/optimizely-tutorial/tutorial_optimizely_09.png)
+    ![Snímek obrazovky, který zobrazuje název účtu vybraný v pravém horním rohu s názvem "nastavení účtu" vybraným v nabídce](./media/optimizely-tutorial/tutorial_optimizely_09.png)
 
 5. Na kartě účet zaškrtněte políčko **Povolit jednotné přihlašování** v části jednotné přihlašování v části **Přehled** .
   
@@ -231,7 +231,7 @@ V této části vytvoříte v optimalizuje uživatele s názvem Britta Simon.
 
 2. Chcete-li do projektu přidat nového spolupracovníka, klikněte na tlačítko **Nový spolupracovníka**.
    
-    ![Vytvoření testovacího uživatele Azure AD](./media/optimizely-tutorial/create_aaduser_10.png)
+    ![Snímek obrazovky znázorňující domovskou stránku s optimalizovaným spolupracovníky a vybraným tlačítkem nový spolupracovníka.](./media/optimizely-tutorial/create_aaduser_10.png)
 
 3. Zadejte e-mailovou adresu a přiřaďte jim roli. Klikněte na **pozvat**.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d0a19a95a0a0d2353070068b2113e11efe471ccc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c7fb3841958ac80431f7cb3d97ddb01bd3661a7
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553947"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995233"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>Kurz: Azure Active Directory integrace s PerformanceCentre
 
@@ -128,19 +128,19 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Performa
 
 2. Na kartě na levé straně klikněte na **Konfigurovat**.
    
-    ![Služba Azure AD Single Sign-On][10]
+    ![Snímek obrazovky, který zobrazuje nabídku "PerformanceCenter" s vybraným "konfigurovat".][10]
 
 3. Na kartě na levé straně klikněte na **různé**a pak klikněte na **jednotné přihlašování**.
    
-    ![Služba Azure AD Single Sign-On][11]
+    ![Snímek obrazovky, který zobrazuje kartu konfigurace s vybraným možnostmi jednotné přihlašování z nabídky různé.][11]
 
 4. Jako **protokol**vyberte **SAML**.
    
-    ![Služba Azure AD Single Sign-On][12]
+    ![Snímek obrazovky, který zobrazuje oddíl konfigurace s jednou Sign-On s vybraným S A M L v nabídce protokol.][12]
 
 5. Otevřete stažený soubor metadat v programu Poznámkový blok, zkopírujte jeho obsah, vložte ho do textového pole **metadata poskytovatele identity** a pak klikněte na **Uložit**.
    
-    ![Služba Azure AD Single Sign-On][13]
+    ![Snímek obrazovky, který zobrazuje textové pole metadata poskytovatele identity][13]
 
 6. Ověřte, zda jsou hodnoty pro **základní adresu URL entity** a **ID entity** správné.
     
@@ -207,7 +207,7 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v Performanc
 
 2. V nabídce na levé straně klikněte na odkaz **propojit**a pak klikněte na **vytvořit účastníka**.
    
-    ![Vytvořit uživatele][400]
+    ![Snímek obrazovky, na které se zobrazuje stránka "PerformanceCenter" (Web "prosouvisejí se členy") s vybraným tlačítkem pro vytvoření účastníka.][400]
 
 3. V dialogovém okně **vzájemná vazba – vytvořit účastníka** proveďte následující kroky:
    

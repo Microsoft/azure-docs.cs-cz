@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 10/12/2020
 tags: connectors
-ms.openlocfilehash: 2993fc718462d1ac2a9cfd02be5642fb21f86702
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5834a1927fda71faa924e14265fb7f82034887de
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526523"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996338"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Výměna zpráv v cloudu pomocí Azure Logic Apps a Azure Service Bus
 
@@ -79,7 +79,7 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
    Některé triggery, například **když přijde jedna nebo více zpráv do aktivační události Queue (AutoComplete)** , můžou vracet jednu nebo více zpráv. Když se tyto triggery aktivují, vrátí se mezi sebou a počtem zpráv, které jsou zadané ve vlastnosti **maximální počet zpráv** triggeru.
 
     > [!NOTE]
-    > Trigger automatického dokončování automaticky dokončí zprávu, ale dokončování proběhne pouze při dalším spuštění triggeru. Toto chování může ovlivnit návrh aplikace logiky. Neměňte například souběžnost na automatickém dokončení triggeru, protože tato změna může mít za následek duplicitní zprávy, pokud vaše aplikace logiky vstoupí do omezeného stavu. Změna řízení souběžnosti vytváří tyto podmínky: omezené triggery jsou přeskočeny `WorkflowRunInProgress` kódem, operace dokončení nebude provedena a další spuštění triggeru nastane po intervalu dotazování. Je nutné nastavit dobu trvání zámku služby Service Bus na hodnotu, která je delší než interval cyklického dotazování. Bez ohledu na toto nastavení ale nemusí být zpráva dokončena, pokud vaše aplikace logiky zůstane v dalším intervalu dotazování v omezeném stavu.
+    > Trigger automatického dokončování automaticky dokončí zprávu, ale dokončování probíhá pouze při dalším volání Service Bus. Toto chování může ovlivnit návrh aplikace logiky. Neměňte například souběžnost na automatickém dokončení triggeru, protože tato změna může mít za následek duplicitní zprávy, pokud vaše aplikace logiky vstoupí do omezeného stavu. Změna řízení souběžnosti vytváří tyto podmínky: omezené triggery jsou přeskočeny `WorkflowRunInProgress` kódem, operace dokončení nebude provedena a další spuštění triggeru nastane po intervalu dotazování. Je nutné nastavit dobu trvání zámku služby Service Bus na hodnotu, která je delší než interval cyklického dotazování. Bez ohledu na toto nastavení ale nemusí být zpráva dokončena, pokud vaše aplikace logiky zůstane v dalším intervalu dotazování v omezeném stavu.
 
 1. Pokud se Trigger připojuje k vašemu Service Bus oboru názvů poprvé, postupujte podle těchto kroků, když vás návrhář aplikace logiky vyzve k zadání informací o připojení.
 
@@ -162,6 +162,10 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
 Pokud potřebujete odesílat související zprávy v určitém pořadí, můžete použít [ *sekvenční vzor convoy* ](/azure/architecture/patterns/sequential-convoy) pomocí [konektoru Azure Service Bus](../connectors/connectors-create-api-servicebus.md). Korelační zprávy mají vlastnost, která definuje vztah mezi těmito zprávami, jako je ID [relace](../service-bus-messaging/message-sessions.md) v Service Bus.
 
 Když vytvoříte aplikaci logiky, můžete vybrat **korelujované doručení v pořadí pomocí šablony relace služby Service Bus** , která implementuje sekvenční vzor convoy. Další informace najdete v tématu [odeslání souvisejících zpráv v daném pořadí](../logic-apps/send-related-messages-sequential-convoy.md).
+
+## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>Prodlevy v aktualizacích, které se projeví v aplikaci logiky
+
+Pokud je interval dotazování triggeru Service Bus malý, například 10 sekund, aktualizace vaší aplikace logiky se nemusí projevit až po dobu 10 minut. Pokud chcete tento problém obejít, můžete před aktualizací aplikace logiky dočasně zvýšit interval dotazování na větší hodnotu, jako je například 30 sekund nebo 1 minuta. Po provedení aktualizace můžete interval dotazování obnovit na původní hodnotu. 
 
 <a name="connector-reference"></a>
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: e542480db4ed82cf84c6ce04c62e2a07b6193f4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d835507a17417f8b500c0fc13d0a662e606a37ff
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320723"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996415"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Požadavky na systém pro Azure Stack Edge pro s grafickým procesorem 
 
@@ -32,21 +32,29 @@ Mezi požadavky na systém Azure Stack Edge pro:
 
 [!INCLUDE [Supported protocols for clients accessing device](../../includes/azure-stack-edge-gateway-supported-client-protocols.md)]
 
-## <a name="supported-storage-accounts"></a>Podporované účty úložiště
+## <a name="supported-azure-storage-accounts"></a>Podporované účty Azure Storage
 
 [!INCLUDE [Supported storage accounts](../../includes/azure-stack-edge-gateway-supported-storage-accounts.md)]
 
-## <a name="supported-tiered-storage-accounts"></a>Podporované účty vrstveného úložiště
+## <a name="supported-edge-storage-accounts"></a>Podporované hraniční účty úložiště
 
-Při správě z Azure Stack jsou následující vrstvené účty úložiště podporovány pomocí rozhraní SMB/NFS/REST.
+Rozhraní REST podporuje následující účty úložiště Edge. Na zařízení se vytvoří hraniční účty úložiště. Další informace najdete v tématu [účty úložiště Edge](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts).
 
 |Typ  |Účet úložiště  |Komentáře  |
 |---------|---------|---------|
 |Standard     |GPv1: objekt blob bloku         |         |
-|    |  BLOB Storage: objekt blob bloku       | Podporováno pouze pro NAS     |
 
-* Objekty blob stránky a soubory Azure se v Azure Stack v tuto chvíli nepodporují.
-* * Horká a studená vrstva neexistuje v Azure Stack. Po nahrání dat můžete data přesunout do archivní úrovně pomocí Azure PowerShell. Podrobné pokyny najdete v tématu [použití Azure PowerShell k nastavení úrovně objektu BLOB]() .
+* Objekty blob stránky a soubory Azure se v tuto chvíli nepodporují.
+
+## <a name="supported-local-azure-resource-manager-storage-accounts"></a>Podporované místní účty úložiště Azure Resource Manager
+
+Tyto účty úložiště se vytvářejí prostřednictvím místních rozhraní API zařízení, když se připojujete k místnímu Azure Resource Manager. Podporují se tyto účty úložiště:
+
+|Typ  |Účet úložiště  |Komentáře  |
+|---------|---------|---------|
+|Standard     |GPv1: objekt blob bloku, objekt blob stránky        | Typ SKU je Standard_LRS       |
+|Premium     |GPv1: objekt blob bloku, objekt blob stránky        | Typ SKU je Premium_LRS        |
+
 
 ## <a name="supported-storage-types"></a>Podporované typy úložiště
 

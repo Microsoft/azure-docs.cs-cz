@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 7bf3afef81c70355326ed9341f2dd8a39d542b54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e2cb00f4b8228b3587930fc5b237d308c532c8c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554099"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996068"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Kurz: Azure Active Directory integrace s Panorama9
 
@@ -210,7 +210,7 @@ V případě Panorama9 je zřizování ručním úkolem.
 
 2. V nabídce v horní části klikněte na **Spravovat**a potom klikněte na **Uživatelé**.
    
-    ![Uživatelé](./media/panorama9-tutorial/ic790027.png "Uživatelé")
+    ![Snímek obrazovky znázorňující vybrané karty spravovat a uživatelé](./media/panorama9-tutorial/ic790027.png "Uživatelé")
 
 3. V části Uživatelé klikněte na **+** Přidat nového uživatele.
 
