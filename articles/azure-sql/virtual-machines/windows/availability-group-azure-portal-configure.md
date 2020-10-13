@@ -14,10 +14,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89482793"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>Konfigurace skupiny dostupnosti pro SQL Server na virtuálním počítači Azure (Azure Portal-Preview)
@@ -58,7 +58,7 @@ Pokud už cluster máte, přeskočte tuto část a přejděte na místo toho, ab
 
 Pokud ještě nemáte existující cluster, vytvořte ho pomocí Azure Portal s těmito kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 1. Přejděte ke zdroji [virtuálních počítačů SQL](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . 
 1. V části **Nastavení**vyberte **Vysoká dostupnost** . 
 1. Vyberte **+ nový cluster s podporou převzetí služeb při selhání ve Windows serveru** a otevřete stránku **konfigurovat cluster Windows s podporou převzetí**  
@@ -67,18 +67,11 @@ Pokud ještě nemáte existující cluster, vytvořte ho pomocí Azure Portal s 
 
 1. Pojmenujte svůj cluster a poskytněte účtu úložiště, který se má použít jako disk s kopií cloudu. Použijte existující účet úložiště, nebo vyberte **vytvořit novou** a vytvořte nový účet úložiště. Název účtu úložiště musí být dlouhý 3 až 24 znaků a obsahovat jenom číslice a malá písmena.
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="Zadejte název, účet úložiště a přihlašovací údaje clusteru.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="Vytvořte nový cluster tak, že na portálu vyberete + nový cluster.":::
 
 1. Rozbalte možnost **přihlašovací údaje clusteru s podporou převzetí služeb při selhání systému Windows Server** a poskytněte [přihlašovací údaje](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) pro účet služby SQL Server a také operátor clusteru a počáteční účty, pokud se liší od účtu používaného pro službu SQL Server. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="Zadejte přihlašovací údaje pro účet služby SQL, účet operátora clusteru a účet Bootstrap clusteru.":::
-
-1. Vyberte SQL Server virtuálních počítačů, které chcete přidat do clusteru. Všimněte si, zda je vyžadováno restartování, a postupujte opatrně. Budou viditelné jenom virtuální počítače, které jsou zaregistrované u poskytovatele prostředků virtuálních počítačů SQL VM v režimu úplné správy a jsou ve stejném umístění, doméně a ve stejné virtuální síti jako primární virtuální počítač SQL Server. 
-1. Vyberte **použít** a vytvořte cluster. Stav nasazení můžete zjistit v **protokolu aktivit** , který je přístupný z ikony zvonku v horním navigačním panelu. 
-1. Aby byl cluster s podporou převzetí služeb při selhání podporovaný společností Microsoft, musí projít ověřením clusteru. Připojte se k virtuálnímu počítači pomocí upřednostňované metody (například protokol RDP (Remote Desktop Protocol) (RDP)) a před dalším pokračováním ověřte, že cluster projde ověřením. Pokud to neuděláte, zastavte cluster v nepodporovaném stavu. Cluster můžete ověřit pomocí Správce clusteru s podporou převzetí služeb při selhání (FCM) nebo následujícího příkazu PowerShellu:
-
-    ```powershell
-    Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="Vytvořte nový cluster tak, že na portálu vyberete + nový cluster."
     ```
     
 
@@ -87,14 +80,14 @@ Pokud ještě nemáte existující cluster, vytvořte ho pomocí Azure Portal s 
 
 Pokud už máte ve svém prostředí SQL Server VM nakonfigurovaný cluster, můžete ho připojit od Azure Portal.
 
-Postup je následující:
+To můžete provést pomocí těchto kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 1. Přejděte ke zdroji [virtuálních počítačů SQL](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . 
 1. V části **Nastavení**vyberte **Vysoká dostupnost** . 
 1. Vyberte připojit **existující cluster s podporou převzetí služeb při selhání se systémem Windows Server** a otevřete stránku **clusteru se systémem Windows Server failover cluster** . 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="Připojit existující cluster na stránce s vysokou dostupností na prostředku virtuálních počítačů SQL":::
+   :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="Vytvořte nový cluster tak, že na portálu vyberete + nový cluster.":::
 
 1. Zkontrolujte nastavení clusteru. 
 1. Pokud chcete pokračovat, vyberte **použít** pro připojení clusteru a pak na výzvu vyberte **Ano** .
@@ -104,28 +97,28 @@ Postup je následující:
 
 ## <a name="create-availability-group"></a>Vytvořit skupinu dostupnosti
 
-Po vytvoření nebo zprovoznění clusteru vytvořte skupinu dostupnosti pomocí Azure Portal. Postup je následující:
+Po vytvoření nebo zprovoznění clusteru vytvořte skupinu dostupnosti pomocí Azure Portal. To můžete provést pomocí těchto kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 1. Přejděte ke zdroji [virtuálních počítačů SQL](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . 
 1. V části **Nastavení**vyberte **Vysoká dostupnost** . 
 1. Vyberte **+ Nová skupina dostupnosti Always On** a otevřete stránku **vytvořit skupinu dostupnosti** .
 
-   :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="Vyberte Nová skupina dostupnosti Always On a otevřete stránku vytvořit skupinu dostupnosti.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="Vytvořte nový cluster tak, že na portálu vyberete + nový cluster.":::
 
 1. Zadejte název skupiny dostupnosti. 
 1. Výběrem **Konfigurovat naslouchací proces** otevřete stránku **Konfigurace naslouchacího procesu skupiny dostupnosti** . 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/create-availability-group.png" alt-text="Zadejte název skupiny dostupnosti a nakonfigurujte naslouchací proces.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/create-availability-group.png" alt-text="Vytvořte nový cluster tak, že na portálu vyberete + nový cluster.":::
 
 1. Vyplňte hodnoty a buď použijte existující Nástroj pro vyrovnávání zatížení, nebo vyberte **vytvořit novou** a vytvořte nový nástroj pro vyrovnávání zatížení.  Pokud chcete uložit nastavení a vytvořit naslouchací proces a nástroj pro vyrovnávání zatížení, vyberte **použít** . 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-listener.png" alt-text="Vyplňte hodnoty ve formuláři pro vytvoření nového naslouchacího procesu a nástroje pro vyrovnávání zatížení.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-listener.png" alt-text="Vytvořte nový cluster tak, že na portálu vyberete + nový cluster.":::
 
 1. Kliknutím na **+ Vybrat repliku** otevřete stránku **Konfigurovat repliky skupiny dostupnosti** .
 1. Vyberte virtuální počítače, které chcete přidat do skupiny dostupnosti, a zvolte nastavení skupiny dostupnosti, která nejlépe vyhovuje vašim obchodním potřebám. Vyberte **použít** a uložte nastavení. 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/add-replicas.png" alt-text="Vyberte virtuální počítače, které chcete přidat do skupiny dostupnosti, a nakonfigurujte nastavení vhodná pro vaši firmu.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/add-replicas.png" alt-text="Vytvořte nový cluster tak, že na portálu vyberete + nový cluster.":::
 
 1. Ověřte nastavení skupiny dostupnosti a pak výběrem možnosti **použít** vytvořte skupinu dostupnosti. 
 
@@ -147,7 +140,7 @@ K přidání databází do skupiny dostupnosti pomocí SQL Server Management Stu
 1. V **Průzkumník objektů**rozbalte možnost **vždy na vysokou dostupnost** .
 1. Rozbalte **skupiny dostupnosti**, klikněte pravým tlačítkem na vaši skupinu dostupnosti a vyberte **Přidat databázi...**.
 
-   :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="V Průzkumníku objektů klikněte pravým tlačítkem na skupinu dostupnosti a vyberte Přidat databázi.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="Vytvořte nový cluster tak, že na portálu vyberete + nový cluster.":::
 
 1. Podle pokynů vyberte databáze, které chcete přidat do skupiny dostupnosti. 
 1. Výběrem **OK** uložte nastavení a přidejte svoji databázi do skupiny dostupnosti. 
@@ -155,18 +148,18 @@ K přidání databází do skupiny dostupnosti pomocí SQL Server Management Stu
 
 Po přidání databáze můžete zjistit stav skupiny dostupnosti v Azure Portal: 
 
-:::image type="content" source="media/availability-group-az-portal-configure/healthy-availability-group.png" alt-text="Ověřte stav skupiny dostupnosti ze stránky s vysokou dostupností z Azure Portal po synchronizaci databází.":::
+:::image type="content" source="media/availability-group-az-portal-configure/healthy-availability-group.png" alt-text="Vytvořte nový cluster tak, že na portálu vyberete + nový cluster.":::
 
 ## <a name="add-more-vms"></a>Přidat další virtuální počítače
 
 Pokud chcete do clusteru přidat další SQL Server virtuálních počítačů, postupujte takto: 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 1. Přejděte ke zdroji [virtuálních počítačů SQL](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . 
 1. V části **Nastavení**vyberte **Vysoká dostupnost** . 
 1. Vyberte **konfigurovat cluster s podporou převzetí služeb při selhání Windows serveru** a otevřete stránku **konfigurovat cluster Windows Server failover cluster** . 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="Vyberte konfigurovat cluster s podporou převzetí služeb při selhání Windows serveru pro přidání virtuálních počítačů do clusteru.":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="Vytvořte nový cluster tak, že na portálu vyberete + nový cluster.":::
 
 1. Rozbalte možnost **přihlašovací údaje clusteru s podporou převzetí služeb při selhání systému Windows Server** a zadejte účty používané pro službu SQL Server, operátora clusteru a spouštěcí účty clusteru. 
 1. Vyberte SQL Server virtuálních počítačů, které chcete přidat do clusteru. 
@@ -180,7 +173,7 @@ Stav nasazení můžete zjistit v **protokolu aktivit** , který je přístupný
 
 Můžete **Přidat další repliky** do skupiny dostupnosti, **nakonfigurovat naslouchací proces**nebo **Odstranit naslouchací proces** ze stránky s **vysokou dostupností** v Azure Portal tak, že vyberete tři tečky (...) vedle vaší skupiny dostupnosti: 
 
-:::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="Vyberte tři tečky vedle skupiny dostupnosti a pak výběrem Přidat repliku přidejte do skupiny dostupnosti další repliky.":::
+:::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="Vytvořte nový cluster tak, že na portálu vyberete + nový cluster.":::
 
 ## <a name="remove-cluster"></a>Odebrat cluster
 
@@ -249,13 +242,13 @@ Změny clusteru a skupiny dostupnosti prostřednictvím portálu se provádějí
 
 Chcete-li zobrazit protokoly pro nasazení a vyhledat historii nasazení, postupujte podle následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte do skupiny prostředků.
 1. V části **Nastavení**vyberte **nasazení** .
 1. Pokud chcete získat další informace o nasazení, vyberte nasazení, které vás zajímá. 
 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/failed-deployment.png" alt-text="Vyberte nasazení, které vás zajímá." :::
+   :::image type="content" source="media/availability-group-az-portal-configure/failed-deployment.png" alt-text="Vytvořte nový cluster tak, že na portálu vyberete + nový cluster." :::
 
 ### <a name="common-errors"></a>Běžné chyby
 

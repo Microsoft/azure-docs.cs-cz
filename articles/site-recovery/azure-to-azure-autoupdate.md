@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: sideeksh
 ms.openlocfilehash: 53c5dc4920b6c50ee3c900db9626f4d283f7b846
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426414"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatické aktualizace služby mobility v Azure do Azure – replikace
@@ -63,7 +63,7 @@ Pokud povolíte replikaci pro virtuální počítač buď [od zobrazení virtuá
 
 1. Vyberte **Uložit**.
 
-:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="Nastavení aktualizace rozšíření":::
+:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="Nastavení rozšíření":::
 
 > [!IMPORTANT]
 > Když vyberete možnost **povoluje Site Recovery správě**, nastavení se použije na všechny virtuální počítače v trezoru.
@@ -460,12 +460,12 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 1. Pokud jsou na virtuálních počítačích nainstalované nové aktualizace služby mobility, zobrazí se následující oznámení: **k dispozici je nová aktualizace agenta replikace Site Recovery. Kliknutím nainstalujete.**
 
-   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="Okno replikované položky":::
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="Nastavení rozšíření":::
 
 1. Vyberte oznámení a otevřete stránku výběr virtuálního počítače.
 1. Vyberte virtuální počítače, které chcete upgradovat, a pak vyberte **OK**. Služba mobility Update Service se spustí pro každý vybraný virtuální počítač.
 
-   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="Seznam virtuálních počítačů replikovaných položek":::
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="Nastavení rozšíření":::
 
 ## <a name="common-issues-and-troubleshooting"></a>Běžné problémy a řešení potíží
 
@@ -479,7 +479,7 @@ Pokud nemůžete povolit automatické aktualizace, přečtěte si následující
 
   Chcete-li opravit většinu problémů po povolení automatických aktualizací, vyberte možnost **opravit**. Pokud není tlačítko opravit k dispozici, přečtěte si chybovou zprávu zobrazenou v podokně nastavení aktualizace rozšíření.
 
-  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="Tlačítko pro opravu služby Site Recovery v nastavení aktualizace rozšíření":::
+  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="Nastavení rozšíření":::
 
 - **Chyba**: účet Spustit jako nemá oprávnění pro přístup k prostředku služby Recovery Services.
 
@@ -495,7 +495,7 @@ Pokud nemůžete povolit automatické aktualizace, přečtěte si následující
 
   **Doporučená akce**: Chcete-li tento problém vyřešit, vyberte možnost **opravit** a pak **Obnovte certifikát**.
 
-  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="obnovit – certifikát":::
+  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="Nastavení rozšíření":::
 
   > [!NOTE]
   > Po obnovení certifikátu aktualizujte stránku, aby se zobrazil aktuální stav.

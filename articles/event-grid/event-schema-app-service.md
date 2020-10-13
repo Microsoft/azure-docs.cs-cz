@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: jafreebe
 ms.openlocfilehash: 2465b2f260ed6c174b762fcf64a71100a148254d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86106707"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>Azure App Service jako zdroj Event Grid
@@ -48,11 +48,11 @@ V této části najdete příklad toho, jak by tato data vypadala jako u každé
 |     Vlastnost          |     Typ     |     Description                                                                                                                                |
 |-----------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 |    téma              |    řetězec    |    Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid.                                      |
-|    závislosti            |    řetězec    |    Cesta definovaná vydavatelem k předmětu události                                                                                              |
-|    Typ          |    řetězec    |    Jeden z registrovaných typů událostí pro tento zdroj události.                                                                                  |
+|    subject            |    řetězec    |    Cesta definovaná vydavatelem k předmětu události                                                                                              |
+|    eventType          |    řetězec    |    Jeden z registrovaných typů událostí pro tento zdroj události.                                                                                  |
 |    eventTime          |    řetězec    |    Čas, kdy se událost generuje na základě času UTC poskytovatele.                                                                         |
 |    id                 |    řetězec    |    Jedinečný identifikátor události                                                                                                            |
-|    data               |    odkazy objektů    |    Data události služby Blob Storage.                                                                                                                    |
+|    data               |    object    |    Data události služby Blob Storage.                                                                                                                    |
 |    dataVersion        |    řetězec    |    Verze schématu datového objektu. Verzi schématu definuje vydavatel.                                                          |
 |    metadataVersion    |    řetězec    |    Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid.    |
 
@@ -83,8 +83,8 @@ Datový objekt obsahuje následující vlastnosti:
 
 |    Vlastnost                |    Typ      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appEventTypeDetail      |    odkazy objektů    |    Podrobnosti o akci u aplikace                                                                                       |
-|    action                  |    řetězec    |    Typ akce operace                                                                                   |
+|    appEventTypeDetail      |    object    |    Podrobnosti o akci u aplikace                                                                                       |
+|    akce                  |    řetězec    |    Typ akce operace                                                                                   |
 |    name                    |    řetězec    |    název webu, který měl tuto událost                                                                          |
 |    ID žádosti klienta         |    řetězec    |    ID žádosti klienta vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost         |
 |    correlationRequestId    |    řetězec    |    ID žádosti o korelaci vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost    |
@@ -121,8 +121,8 @@ Datový objekt obsahuje následující vlastnosti:
 
 |    Vlastnost                |    Typ      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appEventTypeDetail      |    odkazy objektů    |    Podrobnosti o akci u aplikace                                                                                       |
-|    action                  |    řetězec    |    Typ akce operace                                                                                   |
+|    appEventTypeDetail      |    object    |    Podrobnosti o akci u aplikace                                                                                       |
+|    akce                  |    řetězec    |    Typ akce operace                                                                                   |
 |    name                    |    řetězec    |    název webu, který měl tuto událost                                                                          |
 |    ID žádosti klienta         |    řetězec    |    ID žádosti klienta vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost         |
 |    correlationRequestId    |    řetězec    |    ID žádosti o korelaci vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost    |
@@ -159,8 +159,8 @@ Datový objekt obsahuje následující vlastnosti:
 
 |    Vlastnost                |    Typ      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appEventTypeDetail      |    odkazy objektů    |    Podrobnosti o akci u aplikace                                                                                       |
-|    action                  |    řetězec    |    Typ akce operace                                                                                   |
+|    appEventTypeDetail      |    object    |    Podrobnosti o akci u aplikace                                                                                       |
+|    akce                  |    řetězec    |    Typ akce operace                                                                                   |
 |    name                    |    řetězec    |    název webu, který měl tuto událost                                                                          |
 |    ID žádosti klienta         |    řetězec    |    ID žádosti klienta vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost         |
 |    correlationRequestId    |    řetězec    |    ID žádosti o korelaci vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost    |
@@ -198,8 +198,8 @@ Datový objekt obsahuje následující vlastnosti:
 
 |    Vlastnost                |    Typ      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appEventTypeDetail      |    odkazy objektů    |    Podrobnosti o akci u aplikace                                                                                       |
-|    action                  |    řetězec    |    Typ akce operace                                                                                   |
+|    appEventTypeDetail      |    object    |    Podrobnosti o akci u aplikace                                                                                       |
+|    akce                  |    řetězec    |    Typ akce operace                                                                                   |
 |    name                    |    řetězec    |    název webu, který měl tuto událost                                                                          |
 |    ID žádosti klienta         |    řetězec    |    ID žádosti klienta vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost         |
 |    correlationRequestId    |    řetězec    |    ID žádosti o korelaci vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost    |
@@ -236,8 +236,8 @@ Datový objekt má následující vlastnosti:
 
 |    Vlastnost                |    Typ      |    Description                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appEventTypeDetail      |    odkazy objektů    |    Podrobnosti o akci u aplikace                                                                                       |
-|    action                  |    řetězec    |    Typ akce operace                                                                                   |
+|    appEventTypeDetail      |    object    |    Podrobnosti o akci u aplikace                                                                                       |
+|    akce                  |    řetězec    |    Typ akce operace                                                                                   |
 |    name                    |    řetězec    |    název webu, který měl tuto událost                                                                          |
 |    ID žádosti klienta         |    řetězec    |    ID žádosti klienta vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost         |
 |    correlationRequestId    |    řetězec    |    ID žádosti o korelaci vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost    |
@@ -283,17 +283,17 @@ Datový objekt má následující vlastnosti:
 
 |    Vlastnost                         |    Typ      |    Description                                                                                                       |
 |-------------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    appServicePlanEventTypeDetail    |    odkazy objektů    |    Podrobnosti o akci v plánu služby App Service                                                                          |
+|    appServicePlanEventTypeDetail    |    object    |    Podrobnosti o akci v plánu služby App Service                                                                          |
 |    stampKind                        |    řetězec    |    Druh prostředí, ve kterém je plán služby App Service                                                                     |
-|    action                           |    řetězec    |    Typ akce v plánu služby App Service                                                                            |
+|    akce                           |    řetězec    |    Typ akce v plánu služby App Service                                                                            |
 |    status                           |    řetězec    |    Stav operace v plánu služby App Service                                                                   |
-|    skladové                              |    odkazy objektů    |    SKU plánu služby App Service                                                                                       |
+|    skladové                              |    object    |    SKU plánu služby App Service                                                                                       |
 |    name                             |    řetězec    |    název plánu služby App Service                                                                                      |
 |    Úroveň                             |    řetězec    |    úroveň plánu služby App Service                                                                                      |
 |    Velikost                             |    řetězec    |    velikost plánu služby App Service                                                                                      |
 |    Rodina                           |    řetězec    |    řada plánu služby App Service                                                                                        |
 |    Kapacita                         |    řetězec    |    kapacita plánu služby App Service                                                                                      |
-|    action                           |    řetězec    |    Typ akce operace                                                                                   |
+|    akce                           |    řetězec    |    Typ akce operace                                                                                   |
 |    name                             |    řetězec    |    název webu, který měl tuto událost                                                                          |
 |    ID žádosti klienta                  |    řetězec    |    ID žádosti klienta vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost         |
 |    correlationRequestId             |    řetězec    |    ID žádosti o korelaci vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost    |

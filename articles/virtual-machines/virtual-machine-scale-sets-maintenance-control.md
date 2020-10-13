@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
 ms.openlocfilehash: 55cbc5db534dd1b05f91a24e0104b1f2dc110547
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532604"
 ---
 # <a name="preview-maintenance-control-for-azure-virtual-machine-scale-sets"></a>Preview: řízení údržby pro Azure Virtual Machine Scale Sets 
@@ -22,7 +22,7 @@ Spravujte [automatické upgrady bitových kopií operačního systému](../virtu
 
 Konfigurace údržby pracují v rámci předplatných a skupin prostředků.
 
-Celý pracovní postup se přesune do těchto kroků: 
+Celý pracovní postup se skládá z těchto kroků: 
 - Vytvořte konfiguraci údržby.
 - Přidružte sadu škálování virtuálního počítače ke konfiguraci údržby.
 - Povolte automatické upgrady operačního systému.

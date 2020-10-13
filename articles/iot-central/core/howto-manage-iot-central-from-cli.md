@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: philmea
 ms.openlocfilehash: bd87f15ff63edf1da447faf986cad2f9591610dd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87502962"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Správa IoT Central z Azure CLI
@@ -43,7 +43,7 @@ az extension add --name azure-iot
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
-Pomocí příkazu [AZ IoT Central App Create](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-create) vytvořte aplikaci IoT Central ve vašem předplatném Azure. Příklad:
+Pomocí příkazu [AZ IoT Central App Create](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-create) vytvořte aplikaci IoT Central ve vašem předplatném Azure. Například:
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -90,7 +90,7 @@ az iot central app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>Odebrání aplikace
 
-Pomocí příkazu [AZ IoT Central App Delete](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-delete) odstraňte aplikaci IoT Central. Příklad:
+Pomocí příkazu [AZ IoT Central App Delete](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-delete) odstraňte aplikaci IoT Central. Například:
 
 ```azurecli-interactive
 az iot central app delete --name myiotcentralapp \

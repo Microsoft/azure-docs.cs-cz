@@ -4,10 +4,10 @@ description: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89398318"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
@@ -799,7 +799,7 @@ Pokud používáte Azure Disk Encryption, můžete virtuální počítač Azure 
 **Zodpovědnost:** Zákazníka
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a klíčů spravovaných zákazníkem
-**Doprovodné materiály:** Když zálohujete spravované disky pomocí Azure Backup, virtuální počítače se zašifrují v klidovém stavu pomocí Šifrování služby Storage (SSE). Azure Backup taky můžou zálohovat virtuální počítače Azure, které jsou zašifrované pomocí Azure Disk Encryption. Azure Disk Encryption se integruje s šifrovacími klíči BitLockeru (BEKs), které jsou v trezoru klíčů zabezpečené jako tajné klíče. Azure Disk Encryption se taky integruje s klíči šifrovacího klíče Azure Key Vault (KEK). Povolit obnovitelné odstranění v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
+**Doprovodné materiály:** Když zálohujete spravované disky pomocí Azure Backup, virtuální počítače se zašifrují v klidovém stavu pomocí Šifrování služby Storage (SSE). Azure Backup taky můžou zálohovat virtuální počítače Azure, které jsou zašifrované pomocí Azure Disk Encryption. Azure Disk Encryption se integruje s šifrovacími klíči BitLockeru (BEKs), které jsou v trezoru klíčů zabezpečené jako tajné klíče. Azure Disk Encryption se taky integruje s klíči šifrovacího klíče Azure Key Vault (KEK). Povolí Soft-Delete v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
 - [Obnovitelné odstranění pro virtuální počítače](../backup/soft-delete-virtual-machines.md)
 - [Přehled Azure Key Vault-Soft-odstranění](../key-vault/general/soft-delete-overview.md)

@@ -8,13 +8,13 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.openlocfilehash: c8d2304017a8fccd83c9c64559b8c5edf48481b7
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91604332"
 ---
-# <a name="key-vault-authentication-fundamentals"></a>Key Vault základy ověřování
+# <a name="key-vault-authentication-fundamentals"></a>Základy ověřování služby Key Vault
 
 Azure Key Vault umožňuje bezpečně ukládat a spravovat přihlašovací údaje aplikací, jako jsou tajné klíče, klíče a certifikáty, v centrálním a zabezpečeném cloudovém úložišti. Key Vault eliminují nutnost ukládat přihlašovací údaje v aplikacích. Vaše aplikace se můžou ověřit, aby se v době spuštění načetly přihlašovací údaje, aby se Key Vault.
 

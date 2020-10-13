@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653209"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postupy: plánování implementace služby Azure AD JOIN
@@ -24,7 +24,7 @@ Služba Azure AD JOIN umožňuje připojit zařízení přímo k Azure AD bez nu
 
 Tento článek poskytuje informace, které potřebujete k plánování vaší implementace služby Azure AD JOIN.
  
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že jste obeznámeni se [správou zařízení v Azure Active Directory](./overview.md).
 
@@ -64,12 +64,12 @@ Tyto scénáře nevyžadují konfiguraci federačního serveru pro ověřování
 
 ### <a name="federated-environment"></a>Federované prostředí
 
-Federované prostředí by mělo mít poskytovatele identity, který podporuje protokoly WS-Trust i WS-dodávání:
+Federované prostředí by mělo mít zprostředkovatele identity, který podporuje protokoly WS-Trust i WS-Fed:
 
 - **WS-nakrmený:** Tento protokol je nutný k připojení zařízení k Azure AD.
 - **WS-Trust:** Tento protokol se vyžaduje pro přihlášení k zařízení připojenému k Azure AD.
 
-Pokud používáte AD FS, je nutné povolit následující koncové body WS-Trust: `/adfs/services/trust/2005/usernamemixed`
+Pokud používáte AD FS, je nutné povolit následující WS-Trust koncové body: `/adfs/services/trust/2005/usernamemixed`
  `/adfs/services/trust/13/usernamemixed`
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`

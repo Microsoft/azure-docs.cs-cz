@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 3323f73c137905fbe677c68d3830d7f609fa0172
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85611573"
 ---
 # <a name="deploy-a-security-partner-provider"></a>Nasazení poskytovatele partnera pro zabezpečení
@@ -39,10 +39,10 @@ Tuto část můžete přeskočit, pokud nasazujete poskytovatele třetí strany 
    > Poskytovatelé zabezpečení se připojují k vašemu rozbočovači pomocí VPN Gateway tunely. Pokud VPN Gateway odstraníte, ztratí se připojení k vašim poskytovatelům vašeho partnera zabezpečení.
 9. Pokud chcete nasadit Azure Firewall pro filtrování privátních přenosů spolu s poskytovatelem služeb třetích stran pro filtrování internetového provozu, vyberte zásadu pro Azure Firewall. Podívejte se na [podporované scénáře](trusted-security-partners.md#key-scenarios).
 10. Pokud chcete nasadit pouze poskytovatele zabezpečení třetí strany v centru, vyberte **Azure firewall: povoleno/zakázáno** a nastavte jej na **zakázáno**. 
-11. Vyberte **Další: poskytovatel zabezpečení partnera**.
+11. Vyberte  **Další: poskytovatel zabezpečení partnera**.
 12. Nastavte **poskytovatele partnera zabezpečení** na **povoleno**. 
 13. Vyberte partnera. 
-14. Vyberte **Další: zkontrolovat + vytvořit**. 
+14. Vyberte **Další: Zkontrolovat a vytvořit**. 
 15. Zkontrolujte obsah a pak vyberte **vytvořit**.
 
 Nasazení brány VPN může trvat déle než 30 minut.
@@ -101,7 +101,7 @@ Pokud chcete nastavit tunely na VPN Gateway svého virtuálního rozbočovače, 
 5. Musíte vybrat **zabezpečená připojení** a vybrat připojení, na kterých mají být tyto trasy nastaveny. Označuje, které virtuální sítě/větve můžou zahájit odesílání internetového provozu poskytovateli třetí strany.
 6. V **nastavení směrování**vyberte **zabezpečená připojení** v části internetový provoz a pak vyberte virtuální síť nebo větve (*lokality* ve virtuální síti WAN), které chcete zabezpečit. Vyberte **zabezpečený internetový provoz**.
    ![Zabezpečení internetového provozu](media/deploy-trusted-security-partner/secure-internet-traffic.png)
-7. Přejděte zpět na stránku centra. Stav **poskytovatele partnera zabezpečení** centra by měl být teď **zabezpečený**.
+7. Přejděte zpět na stránku centra. Stav **poskytovatele partnera zabezpečení** centra by měl být teď  **zabezpečený**.
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>Síťový provoz ve větvi nebo virtuální síti prostřednictvím služby třetí strany
 

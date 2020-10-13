@@ -4,10 +4,10 @@ description: Vytvářejte zálohy virtuálních počítačů s konzistentním vz
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: 22053004026a2dd8976027359f11d50a5663b334
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88999236"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Zálohování virtuálních počítačů Azure s Linuxem konzistentní vzhledem k aplikacím
@@ -78,8 +78,8 @@ Nezapomeňte přidat vhodné protokolování při psaní předzálohovacího skr
 | Po ScriptNotFound |Pozálohovací skript se nenašel v umístění, které je zadané v **VMSnapshotScriptPluginConfig.js** konfiguračního souboru. |Ujistěte se, že se pozálohovací skript nachází na cestě zadané v konfiguračním souboru, aby se zajistila záloha konzistentní vzhledem k aplikacím.|
 | IncorrectPluginhostFile |Soubor **Pluginhost** , který se dodává s rozšířením VmSnapshotLinux, je poškozený, takže předzálohovací a pozálohovací skript nejde spustit a záloha nebude konzistentní vzhledem k aplikacím.| Odinstalujte rozšíření **VmSnapshotLinux** a automaticky se znovu nainstaluje s další zálohou, aby se problém vyřešil. |
 | IncorrectJSONConfigFile | **VMSnapshotScriptPluginConfig.jsv** souboru je nesprávný, takže nejde spustit předzálohovací a pozálohovací skript a záloha nebude konzistentní vzhledem k aplikacím. | Stáhněte si kopii z [GitHubu](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) a znovu ji nakonfigurujte. |
-| InsufficientPermissionforPre – skript | Pro spouštění skriptů by měl být uživatel "root" vlastníkem souboru a soubor by měl mít oprávnění "700" (to znamená, že musí mít oprávnění číst, zapisovat a spustit). | Ujistěte se, že uživatel root je vlastníkem souboru skriptu a že má oprávnění číst, zapisovat a spustit pouze "vlastník". |
-| InsufficientPermissionforPost – skript | Pro spouštění skriptů by měl být kořenový uživatel vlastníkem souboru a tento soubor by měl mít oprávnění "700" (to znamená, že musí mít oprávnění číst, zapisovat a spustit). | Ujistěte se, že uživatel root je vlastníkem souboru skriptu a že má oprávnění číst, zapisovat a spustit pouze "vlastník". |
+| InsufficientPermissionforPre-Script | Pro spouštění skriptů by měl být uživatel "root" vlastníkem souboru a soubor by měl mít oprávnění "700" (to znamená, že musí mít oprávnění číst, zapisovat a spustit). | Ujistěte se, že uživatel root je vlastníkem souboru skriptu a že má oprávnění číst, zapisovat a spustit pouze "vlastník". |
+| InsufficientPermissionforPost-Script | Pro spouštění skriptů by měl být kořenový uživatel vlastníkem souboru a tento soubor by měl mít oprávnění "700" (to znamená, že musí mít oprávnění číst, zapisovat a spustit). | Ujistěte se, že uživatel root je vlastníkem souboru skriptu a že má oprávnění číst, zapisovat a spustit pouze "vlastník". |
 | Pre-ScriptTimeout | Vypršel časový limit pro spuštění předzálohovacího skriptu zálohování konzistentního vzhledem k aplikacím. | Podívejte se na skript a zvyšte časový limit v **VMSnapshotScriptPluginConfig.js** souboru, který se nachází na adrese **složce/etc/Azure**. |
 | Po-ScriptTimeout | Vypršel časový limit pro spuštění pozálohovacího skriptu zálohování konzistentního vzhledem k aplikacím. | Podívejte se na skript a zvyšte časový limit v **VMSnapshotScriptPluginConfig.js** souboru, který se nachází na adrese **složce/etc/Azure**. |
 

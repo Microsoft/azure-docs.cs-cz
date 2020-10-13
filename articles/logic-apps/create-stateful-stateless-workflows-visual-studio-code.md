@@ -7,10 +7,10 @@ ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
 ms.date: 09/26/2020
 ms.openlocfilehash: cc52358af203bafc87c5f9ac3ae1f237c0c7ae6c
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597791"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Vytváření stavových a bezstavových pracovních postupů v Visual Studio Code s rozšířením Azure Logic Apps (Preview)
@@ -112,7 +112,7 @@ Pro tuto veřejnou verzi Preview nejsou tyto možnosti k dispozici nebo nejsou p
 
 * V Azure Portal nemůžete vytvářet nové aplikace logiky s novým typem prostředku **Aplikace logiky (Preview)** . Tyto aplikace logiky můžete vytvořit pouze v Visual Studio Code. Po nasazení Logic Apps s tímto typem prostředku z Visual Studio Code do Azure ale můžete [do těchto aplikací logiky přidávat nové pracovní postupy](#add-workflows).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="access-and-connectivity"></a>Přístup a připojení
 
@@ -445,9 +445,9 @@ Pracovní postup aplikace logiky v tomto příkladu používá tuto aktivační 
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Záměr** | Ano | <*vaše e-mailová adresa*> | Příjemce e-mailu, který může být vaše e-mailová adresa pro testovací účely. V tomto příkladu se používá fiktivní e-mail, `sophiaowen@fabrikam.com` . |
-   | **Předmět** | Ano | `An email from your example workflow` | Předmět e-mailu |
-   | **Text** | Ano | `Hello from your example workflow!` | Obsah těla e-mailu |
+   | **Záměr** | Yes | <*vaše e-mailová adresa*> | Příjemce e-mailu, který může být vaše e-mailová adresa pro testovací účely. V tomto příkladu se používá fiktivní e-mail, `sophiaowen@fabrikam.com` . |
+   | **Předmět** | Yes | `An email from your example workflow` | Předmět e-mailu |
+   | **Text** | Yes | `Hello from your example workflow!` | Obsah těla e-mailu |
    ||||
 
    > [!NOTE]

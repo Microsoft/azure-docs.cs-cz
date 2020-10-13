@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440503"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy ke službě Azure Data Factory
@@ -22,7 +22,7 @@ ms.locfileid: "89440503"
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Data Factory.  
 
-## <a name="what-is-azure-data-factory"></a>Co je Azure Data Factory? 
+## <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory? 
 Data Factory je plně spravovaná cloudová služba ETL Integration data, která automatizuje přesun a transformaci dat. Podobně jako továrna, která spouští vybavení pro transformaci surovin na dokončené zboží, Azure Data Factory orchestruje existující služby, které shromažďují nezpracované údaje a transformují je na informace připravené k použití. 
 
 Pomocí Azure Data Factory můžete vytvářet pracovní postupy řízené daty k přesouvání dat mezi místními a cloudovým úložištěm dat. A můžete zpracovávat a transformovat data pomocí toků dat. ADF také podporuje externí výpočetní moduly pro ručně kódované transformace pomocí výpočetních služeb, jako je Azure HDInsight, Azure Databricks a prostředí Integration runtime služba SSIS (SQL Server Integration Services) (SSIS). 
@@ -109,7 +109,7 @@ Neexistuje žádné pevné omezení počtu instancí prostředí Integration run
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Jaké jsou koncepty Azure Data Factory na nejvyšší úrovni?
 Předplatné Azure může obsahovat jednu nebo více instancí služby Azure Data Factory (neboli datových továren). Azure Data Factory obsahuje čtyři klíčové komponenty, které společně fungují jako platforma, na které můžete vytvářet pracovní postupy řízené daty s kroky pro přesun a transformaci dat.
 
-### <a name="pipelines"></a>Pipelines
+### <a name="pipelines"></a>Kanály
 Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které provádí pracovní jednotku. Aktivity v kanálu společně provádějí úlohu. Kanál může například obsahovat skupinu aktivit, které ingestují data z objektu blob Azure a pak spustí dotaz na podregistr v clusteru HDInsight, aby data mohla rozdělit. Výhodou je, že pomocí kanálu můžete spravovat aktivity jako sadu, aniž byste museli spravovat jednotlivé aktivity jednotlivě. Můžete zřetězit aktivity v kanálu, abyste je mohli postupně provozovat, nebo je můžete provozovat samostatně, paralelně.
 
 ### <a name="data-flows"></a>Toky dat
@@ -171,13 +171,13 @@ K naplánování kanálu můžete použít aktivační událost plánovače nebo
 Ano, parametry jsou první třídou, koncept nejvyšší úrovně v Data Factory. Můžete definovat parametry na úrovni kanálu a předat argumenty při spuštění kanálu na vyžádání nebo pomocí triggeru.  
 
 ### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>Můžu definovat výchozí hodnoty pro parametry kanálu? 
-Yes. Můžete definovat výchozí hodnoty pro parametry v kanálech. 
+Ano. Můžete definovat výchozí hodnoty pro parametry v kanálech. 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>Může aktivita v kanálu spotřebovat argumenty, které se předávají do spuštění kanálu? 
-Yes. Každá aktivita v kanálu může spotřebovat hodnotu parametru, která je předána kanálu a spouštěna s `@parameter` konstrukcí. 
+Ano. Každá aktivita v kanálu může spotřebovat hodnotu parametru, která je předána kanálu a spouštěna s `@parameter` konstrukcí. 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Je možné vlastnost výstup aktivity spotřebovat v jiné aktivitě? 
-Yes. Výstup aktivity lze spotřebovat v následné aktivitě s `@activity` konstrukcí.
+Ano. Výstup aktivity lze spotřebovat v následné aktivitě s `@activity` konstrukcí.
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Návody řádně zpracovat hodnoty null ve výstupu aktivity? 
 `@coalesce`Konstrukce ve výrazech slouží k řádnému zpracování hodnot null. 
@@ -257,7 +257,7 @@ Tok dat tahání podporuje v SQL následující datové typy. Při použití dat
 * nchar
 * varchar
 * nvarchar
-* celé číslo
+* integer
 * int
 * bit
 * boolean

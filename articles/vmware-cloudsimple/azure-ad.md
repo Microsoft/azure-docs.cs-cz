@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 93922986dfe0b2b4e8ba0923931df601cc12428b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532524"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Použití Azure AD jako zprostředkovatele identity pro vCenter v privátním cloudu CloudSimple
@@ -98,7 +98,7 @@ Volitelně můžete nakonfigurovat další funkce služby Azure AD.  Nevyžaduj�
 
 3. Po eskalaci oprávnění se přihlaste k privátnímu cloudu vCenter.
 4. Podle pokynů v části [Přidání zdroje identity na vCenter](set-vcenter-identity.md#add-an-identity-source-on-vcenter) použijte hodnoty z předchozího kroku a nastavte Azure Active Directory jako zdroj identity.
-5. Přidat uživatele/skupiny z Azure AD do skupin vCenter, jak je popsáno v tématu, [Přidání členů do skupiny s jednotným přihlašováním vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
+5. Přidat uživatele/skupiny z Azure AD do skupin vCenter, jak je popsáno v tématu o VMware [Přidání členů do skupiny vCenter Single Sign-On](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
 > [!CAUTION]
 > Noví uživatelé musí být přidáni pouze *ke skupině*Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Do skupiny *Administrators* musí být přidáni pouze účty služeb.

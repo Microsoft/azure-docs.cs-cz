@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662495"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect synchronizace: přípony adresářů
@@ -87,7 +87,7 @@ Jedním z užitečnějších scénářů je použití těchto atributů v dynami
 
    ![Snímek obrazovky s novými atributy zobrazenými v uživatelském rozhraní](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup3.png)
 
-   Dokončete výraz tak, aby vyhovoval vašim požadavkům. V našem příkladu je pravidlo nastavené na **(User. extension_9d98ed114c4840d298fad781915f27e4_division-EQ "Sales and marketing")**.
+   Dokončete výraz tak, aby vyhovoval vašim požadavkům. V našem příkladu je pravidlo nastavené na **(User.extension_9d98ed114c4840d298fad781915f27e4_division-EQ "prodej a marketing")**.
 
 4. Po vytvoření skupiny poskytněte službě Azure AD nějakou dobu k naplnění členů a pak zkontrolujte členy.
 

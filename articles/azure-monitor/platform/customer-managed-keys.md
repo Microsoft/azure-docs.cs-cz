@@ -1,16 +1,16 @@
 ---
 title: Klíč spravovaný zákazníkem v Azure Monitoru
-description: Informace a kroky konfigurace klíče spravovaného zákazníkem (CMK) k šifrování dat ve vašich Log Analyticsch pracovních prostorech pomocí Azure Key Vaultho klíče.
+description: Informace a kroky pro konfiguraci Customer-Managed Key (CMK) k šifrování dat ve vašich Log Analytics pracovních prostorech pomocí Azure Key Vaultho klíče.
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 09/09/2020
 ms.openlocfilehash: 5d44758ebf94c7487935ef47a17ad810dc5cf9f8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657298"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
@@ -240,7 +240,7 @@ Identita je přiřazena ke zdroji *clusteru* v okamžiku vytvoření.
 
 I když trvá zřízení Log Analytics clusteru a i když se dokončí, můžete stav zřizování ověřit dvěma způsoby:
 
-1. Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+1. Zkopírujte hodnotu URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
 2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na hodnotu *provisioningState* . Je *ProvisioningAccount* při zřizování a *úspěšném* dokončení.
 
 ```rst
@@ -337,7 +337,7 @@ Content-type: application/json
 
 200 OK a záhlaví.
 Dokončením tohoto identifikátoru klíče bude dokončeno několik minut. Stav aktualizace můžete zjistit dvěma způsoby:
-1. Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+1. Zkopírujte hodnotu URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
 2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na vlastnosti *KeyVaultProperties* . Nedávno aktualizované podrobnosti identifikátoru klíče by se měly vrátit v odpovědi.
 
 Odpověď na požadavek GET prostředku *clusteru* by měla vypadat jako při dokončení aktualizace identifikátoru klíče:
@@ -406,7 +406,7 @@ Content-type: application/json
 
 Ingestovaná data se po operaci přidružení zašifrují pomocí spravovaného klíče, což může trvat až 90 minut. Stav přidružení pracovního prostoru můžete zjistit dvěma způsoby:
 
-1. Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+1. Zkopírujte hodnotu URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
 2. Odeslání [pracovních prostorů – Získejte](/rest/api/loganalytics/workspaces/get) požadavek a sledujte odpověď. přidružený pracovní prostor bude mít clusterResourceId v části funkce.
 
 ```rest
@@ -664,7 +664,7 @@ Další informace o [Customer Lockbox pro Microsoft Azure](https://docs.microsof
 
   Ingestovaná data po uložení operace zrušení přidružení do Log Analyticsho úložiště může trvat 90 minut. Stav zrušení přidružení pracovního prostoru můžete zjistit dvěma způsoby:
 
-  1. Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+  1. Zkopírujte hodnotu URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
   2. Odeslání [pracovních prostorů – Získejte](/rest/api/loganalytics/workspaces/get) požadavek a sledujte odpověď. nepřidružený pracovní prostor nebude mít *clusterResourceId* v části *funkce*.
 
 - **Zkontroluje stav přidružení pracovního prostoru.**
@@ -744,7 +744,7 @@ Další informace o [Customer Lockbox pro Microsoft Azure](https://docs.microsof
 - Pokud aktualizujete verzi klíče v Key Vault a neaktualizujete nové podrobnosti identifikátoru klíče v prostředku *clusteru* , cluster Log Analytics bude dál používat předchozí klíč a vaše data nebudou dostupná. Aktualizujte nové podrobnosti identifikátoru klíče v prostředku *clusteru* , aby se obnovil příjem dat a možnost dotazování na data.
 
 - Některé operace jsou dlouhé a jejich dokončení může chvíli trvat – jedná se o vytvoření *clusteru* , aktualizaci klíčů *clusteru* a odstranění *clusteru* . Stav operace můžete zjistit dvěma způsoby:
-  1. Při použití REST zkopírujte z odpovědi hodnotu adresy URL Azure-AsyncOperation a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+  1. Pokud používáte REST, zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
   2. Odešlete požadavek GET do *clusteru* nebo pracovního prostoru a sledujte odpověď. Například nepřidružený pracovní prostor nebude mít *clusterResourceId* v části *funkce*.
 
 - Pro podporu a nápovědu týkající se spravovaného klíče zákazníka použijte své kontakty do Microsoftu.

@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/13/2020
 ms.openlocfilehash: 83522de9c00056a3808b002b3103f45c72553399
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91534178"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 předem vytvořenou entitu pro aplikaci LUIS
@@ -146,7 +146,7 @@ Každý prvek `values` pole může obsahovat následující pole:
 |Timex|čas, datum nebo rozsah dat vyjádřený ve formátu TIMEX, který následuje po [standardu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , a TIMEX3 atributů pro anotaci pomocí jazyka TimeML.|
 |střední|termín používaný k popisu způsobu použití hodnoty, jako například `before` , `after` .|
 |typ|Podtyp, což může být jedna z následujících položek: `datetime` , `date` , `time` , `daterange` , `timerange` , `datetimerange` , `duration` , `set` .|
-|hodnota|**Volitelné.** Objekt DateTime ve formátu RRRR-MM-DD (datum), HH: mm: SS (Time) RRRR-MM-DD HH: mm: SS (DateTime). Pokud `type` je `duration` , hodnota je počet sekund (trvání). <br/> Používá se pouze `type` v případě, že je `datetime` nebo `date` , `time` nebo ' Duration.|
+|value|**Volitelné.** Objekt DateTime ve formátu RRRR-MM-DD (datum), HH: mm: SS (Time) RRRR-MM-DD HH: mm: SS (DateTime). Pokud `type` je `duration` , hodnota je počet sekund (trvání). <br/> Používá se pouze `type` v případě, že je `datetime` nebo `date` , `time` nebo ' Duration.|
 
 ## <a name="valid-date-values"></a>Platné hodnoty data
 

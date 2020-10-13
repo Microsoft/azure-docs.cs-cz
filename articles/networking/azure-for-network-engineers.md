@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
 ms.openlocfilehash: 4f513da4e7883cd273098039c9c4a4645d849f0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85516187"
 ---
 # <a name="azure-for-network-engineers"></a>Azure pro odborníky na sítě
@@ -35,7 +35,7 @@ Když přiřadíte IP adresu hostiteli, ve skutečnosti přiřadíte IP adresu s
 - Veřejné IP adresy – slouží ke komunikaci příchozího a odchozího (bez překladu adres (NAT)) s internetem a dalšími prostředky Azure, které nejsou připojené k virtuální síti. Přiřazení veřejné IP adresy síťovému rozhraní je volitelné. Veřejné IP adresy patří do adresního prostoru IP adres Microsoftu.
 - Privátní IP adresy – slouží ke komunikaci v rámci virtuální sítě, místní sítě a Internetu (s překladem adres (NAT)). Adresní prostor IP adres, který definujete ve virtuální síti, se považuje za soukromý, i když nakonfigurujete adresní prostor veřejných IP adres. Společnost Microsoft tento prostor neinzeruje k Internetu. Virtuálnímu počítači je nutné přiřadit alespoň jeden privátní IP adresu.
 
-Stejně jako u fyzických hostitelů nebo zařízení existují dva způsoby, jak přidělit IP adresy prostředku – dynamické nebo statické. V Azure je výchozí metoda přidělení dynamická, kde se IP adresa přidělí při vytváření virtuálního počítače nebo spuštění zastaveného virtuálního počítače. Když tento virtuální počítač zastavíte nebo odstraníte, IP adresa se uvolní. Pokud chcete zajistit, aby IP adresa virtuálního počítače zůstala stejná, můžete explicitně nastavit statickou metodu přidělování. V tomto případě se IP adresa přiřadí okamžitě. Uvolní se, jenom když virtuální počítač odstraníte nebo změníte jeho metodu přidělování na dynamickou. 
+Stejně jako u fyzických hostitelů nebo zařízení existují dva způsoby, jak přidělit IP adresy prostředku – dynamické nebo statické. V Azure je výchozí metoda přidělení dynamická, kde se IP adresa přidělí při vytváření virtuálního počítače nebo spuštění zastaveného virtuálního počítače. Když tento virtuální počítač zastavíte nebo odstraníte, IP adresa se uvolní. Pokud chcete zajistit, aby IP adresa virtuálního počítače zůstala stejná, můžete explicitně nastavit statickou metodu přidělování. V takovém případě se IP adresa přiřadí okamžitě. Uvolní se, jenom když virtuální počítač odstraníte nebo změníte jeho metodu přidělování na dynamickou. 
 
 Privátní IP adresy se přiřazují z podsítí, které jste definovali v rámci virtuální sítě. Pro virtuální počítač vyberte podsíť pro přidělování IP adres. Pokud virtuální počítač obsahuje více síťových adaptérů, můžete pro každou síťovou kartu vybrat jinou podsíť.
 

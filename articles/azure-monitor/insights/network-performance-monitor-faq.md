@@ -7,10 +7,10 @@ author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
 ms.openlocfilehash: 45a10ddce165626bfbadb0ba0b3d68b81709c3bb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326133"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Nejčastější dotazy k řešení Network Performance Monitor
@@ -129,7 +129,7 @@ NetworkMonitoring
  | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
 ```
 
-Partnerský vztah s Microsoftem
+Partnerský vztah Microsoftu
 
 ```kusto
 NetworkMonitoring
@@ -149,7 +149,7 @@ NetworkMonitoring
 NPM identifikuje jenom IP adresu a název hostitele pro základní síťové směrování (přepínače, směrovače, servery atd.) mezi zdrojovou a cílovou IP adresou. Také identifikuje latenci mezi těmito identifikovanými segmenty směrování. Nemonitoruje jednotlivě tyto segmenty směrování.
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>Dá se NPM použít k monitorování připojení k síti mezi Azure a AWS?
-Yes. Podrobnosti najdete v článku [monitorování Azure, AWS a místních sítí pomocí npm](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor) .
+Ano. Podrobnosti najdete v článku [monitorování Azure, AWS a místních sítí pomocí npm](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor) .
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>Je využití šířky pásma ExpressRoute příchozí nebo odchozí?
 Využití šířky pásma je celkovým počtem příchozích a odchozích šířek pásma. Je vyjádřena v bitech/s.
@@ -238,7 +238,7 @@ K tomu může dojít, pokud hostitelská brána firewall nebo zprostředkující
 * Nyní spusťte příkaz z cílového uzlu na IP adresu zdrojového uzlu.
 
 
-### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>Dojde ke ztrátě z uzlu A na B, ale ne z uzlu B na. Proč?
+### <a name="there-is-loss-from-node-a-to-b-but-not-from-node-b-to-a-why"></a>Dojde ke ztrátě z uzlu A na B, ale nikoli z uzlu B do A. Proč?
 Jelikož síťové cesty mezi A a B můžou být odlišné od síťových cest mezi B a a, může být zjištěna jiná hodnota pro ztrátu a latenci.
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Proč se všechny moje okruhy ExpressRoute a připojení partnerských vztahů neobjevují?

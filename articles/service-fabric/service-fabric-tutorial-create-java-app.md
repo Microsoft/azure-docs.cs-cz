@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/01/2018
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, devx-track-js
 ms.openlocfilehash: d1f66177b1939d612a5ee80c99109c397b56cb37
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532189"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Kurz: Vytvoření aplikace s front-end službou Java API a stavovou back-end službou v Azure Service Fabric
@@ -34,7 +34,7 @@ V první části tohoto kurzu se naučíte:
 > * Použití vzdálené komunikace služby ke komunikaci se stavovou službou
 > * Nasazení aplikace do místního clusteru Service Fabric
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 

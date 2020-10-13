@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 584c03dc798bc21ddd5538e58d0f9047c55c5372
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86040448"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: výstrahy konfigurace sítě v Azure Active Directory Domain Services
@@ -38,7 +38,7 @@ Pro skupinu zabezpečení sítě pro spravovanou doménu se aplikují následuj�
 
 ### <a name="inbound-security-rules"></a>Příchozí pravidla zabezpečení
 
-| Priorita | Name | Port | Protocol (Protokol) | Zdroj | Cíl | Akce |
+| Priorita | Name | Port | Protokol | Zdroj | Cíl | Akce |
 |----------|------|------|----------|--------|-------------|--------|
 | 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Všechny | Povolit |
 | 201      | AllowRD | 3389 | TCP | CorpNetSaw | Všechny | Povolit |
@@ -52,7 +52,7 @@ Pro skupinu zabezpečení sítě pro spravovanou doménu se aplikují následuj�
 
 ### <a name="outbound-security-rules"></a>Odchozí pravidla zabezpečení
 
-| Priorita | Name | Port | Protocol (Protokol) | Zdroj | Cíl | Akce |
+| Priorita | Name | Port | Protokol | Zdroj | Cíl | Akce |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Všechny | Všechny | VirtualNetwork | VirtualNetwork | Povolit |
 | 65001    | AllowAzureLoadBalancerOutBound | Všechny | Všechny |  Všechny | Internet | Povolit |

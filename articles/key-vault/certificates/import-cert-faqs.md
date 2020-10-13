@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
 ms.openlocfilehash: 3b87d68fb9b5fa5f5f8dec43c39ea8b7dbf08b93
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651852"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Nejčastější dotazy k importu Azure Key Vault certifikátů
@@ -75,7 +75,7 @@ Můžete požádat, aby certifikační autorita poskytovala certifikát v požad
 Ano, můžete importovat certifikáty z libovolné certifikační autority, ale Trezor klíčů nebude možné obnovit automaticky. Můžete nastavit připomenutí, která budou upozorňovány na vypršení platnosti certifikátu.
 
 ### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-autorenewal-feature-still-work"></a>Pokud naimportujem certifikát z partnerské CA, bude funkce autorenew pořád fungovat?
-Yes. Po nahrání certifikátu Nezapomeňte zadat automatické otočení v zásadách vystavování certifikátu. Vaše nastavení zůstane v platnosti, dokud nebude uvolněn další cyklus nebo verze certifikátu.
+Ano. Po nahrání certifikátu Nezapomeňte zadat automatické otočení v zásadách vystavování certifikátu. Vaše nastavení zůstane v platnosti, dokud nebude uvolněn další cyklus nebo verze certifikátu.
 
 ### <a name="why-cant-i-see-the-app-service-certificate-that-i-imported-to-key-vault"></a>Proč se mi nezobrazuje App Service certifikát, který jste importovali do Key Vault? 
 Pokud jste certifikát importovali úspěšně, měli byste ho potvrdit tak, že v podokně **tajných klíčů** kliknete na.

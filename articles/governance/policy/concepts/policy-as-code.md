@@ -4,10 +4,10 @@ description: Naučte se navrhovat pracovní postupy pro nasazení Azure Policy d
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7fa8eb36283821527e16c1d97e326aa9dcde9dba
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91598218"
 ---
 # <a name="design-policy-as-code-workflows"></a>Návrh pracovních postupů pro zásady jako kód

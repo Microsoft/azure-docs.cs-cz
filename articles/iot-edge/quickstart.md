@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7e9ce523efd12ce372d7bfef6c653e95f6689415
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eae7a44d77d63641ba9ad062c504aaf624582668
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856955"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969207"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rychlý Start: nasazení prvního IoT Edge modulu do virtuálního zařízení s Windows
 
@@ -45,7 +45,7 @@ Přidejte rozšíření Azure IoT do instance Cloud Shell.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Cloudové prostředky:
 
@@ -78,7 +78,7 @@ Zařízení IoT Edge:
 >
 > V tomto rychlém startu se k jednoduchosti používá virtuální počítač s Windows Desktop. Informace o tom, které operační systémy Windows jsou všeobecně dostupné pro produkční scénáře, najdete v tématu [Azure IoT Edge podporovaných systémech](support.md).
 >
-> Pokud jste připraveni ke konfiguraci vlastního zařízení s Windows pro IoT Edge, včetně zařízení se systémem IoT Core, postupujte podle kroků v části [Instalace modulu runtime Azure IoT Edge v systému Windows](how-to-install-iot-edge-windows.md).
+> Pokud chcete pro IoT Edge nakonfigurovat vlastní zařízení s Windows, postupujte podle kroků v části [Instalace modulu runtime Azure IoT Edge](how-to-install-iot-edge.md).
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
@@ -142,9 +142,7 @@ Kroky v této části se doplní na vaše zařízení IoT Edge, takže se k tomu
 
 Pomocí PowerShellu stáhněte a nainstalujte modul runtime IoT Edge. Ke konfiguraci svého zařízení použijte připojovací řetězec zařízení, který jste získali ze služby IoT Hub.
 
-1. Pokud jste to ještě neudělali, postupujte podle kroků v části [Registrace nového zařízení Azure IoT Edge](how-to-register-device.md) pro registraci zařízení a načtení připojovacího řetězce zařízení.
-
-2. Na virtuálním počítači spusťte PowerShell jako správce.
+1. Na virtuálním počítači spusťte PowerShell jako správce.
 
    >[!NOTE]
    >K instalaci IoT Edge, nikoli PowerShell (x86) použijte relaci AMD64 prostředí PowerShell. Pokud si nejste jistí, který typ relace používáte, spusťte následující příkaz:
@@ -153,25 +151,25 @@ Pomocí PowerShellu stáhněte a nainstalujte modul runtime IoT Edge. Ke konfigu
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. Příkaz **Deploy-IoTEdge** zkontroluje, jestli má počítač s Windows podporovanou verzi, zapne funkci Containers, stáhne modul runtime Moby a pak stáhne modul runtime IoT Edge.
+2. Příkaz **Deploy-IoTEdge** zkontroluje, jestli má počítač s Windows podporovanou verzi, zapne funkci Containers, stáhne modul runtime Moby a pak stáhne modul runtime IoT Edge.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge -ContainerOs Windows
    ```
 
-4. Počítač se může automaticky restartovat. Pokud se zobrazí výzva Deploy-IoTEdgem příkazem k restartování, udělejte to teď.
+3. Počítač se může automaticky restartovat. Pokud se zobrazí výzva Deploy-IoTEdgem příkazem k restartování, udělejte to teď.
 
-5. Spusťte PowerShell jako správce znovu.
+4. Spusťte PowerShell jako správce znovu.
 
-6. Příkaz **Initialize-IoTEdge** nakonfiguruje IoT Edge modul runtime na vašem počítači. Příkaz je standardně nastaven na ruční zřizování pomocí kontejnerů Windows.
+5. Příkaz **Initialize-IoTEdge** nakonfiguruje IoT Edge modul runtime na vašem počítači. Příkaz je standardně nastaven na ruční zřizování pomocí kontejnerů Windows.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -ContainerOs Windows
    ```
 
-7. Po zobrazení výzvy k zadání **připojovacího řetězce** zadejte řetězec, který jste si zkopírovali v předchozí části. Připojovací řetězec zadejte bez uvozovek.
+6. Po zobrazení výzvy k zadání **připojovacího řetězce** zadejte řetězec, který jste si zkopírovali v předchozí části. Připojovací řetězec zadejte bez uvozovek.
 
 ### <a name="view-the-iot-edge-runtime-status"></a>Zobrazení stavu modulu runtime IoT Edge
 

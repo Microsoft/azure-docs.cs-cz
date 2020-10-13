@@ -12,10 +12,10 @@ ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.openlocfilehash: 28bf7e631c8693434d686022891bb2e45152f0ce
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597906"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>Pochopení jednotného přihlašování založeného na SAML
@@ -44,11 +44,11 @@ Měli byste získat hodnoty od dodavatele aplikace. Můžete ručně zadat hodno
 > [!TIP]
 > Mnohé aplikace už jsou předem nakonfigurované pro práci s Azure AD. Tyto aplikace jsou uvedené v galerii aplikací, které můžete procházet při přidávání aplikace do tenanta Azure AD. [Série rychlý Start](add-application-portal-setup-sso.md) vás provede procesem. Pro aplikace v galerii najdete podrobné pokyny, podrobné pokyny. Pro přístup k jednotlivým krokům můžete kliknout na odkaz na stránce konfigurace SAML pro aplikaci, jak je popsáno v části rychlý Start, nebo můžete procházet seznam všech kurzů pro konfiguraci aplikací v tématu [kurzy konfigurace aplikací SaaS](../saas-apps/tutorial-list.md).
 
-| Základní nastavení konfigurace SAML | Iniciováno zprostředkovatelem přihlašování | Iniciováno pomocí IdP | Popis |
+| Základní nastavení konfigurace SAML | Iniciováno zprostředkovatelem přihlašování | Iniciováno pomocí IdP | Description |
 |:--|:--|:--|:--|
 | **Identifikátor (ID entity)** | Vyžaduje se pro některé aplikace | Vyžaduje se pro některé aplikace | Aplikace jednoznačně identifikuje. Azure AD odešle identifikátor do aplikace jako parametr cílové skupiny tokenu SAML. Očekává se, že aplikace ověří tuto aplikaci. Tato hodnota se také zobrazuje jako ID entity ve všech metadatech SAML poskytovaných aplikací. Zadejte adresu URL, která používá následující vzor: ' https:// <subdomain> . contoso.com ' *tuto hodnotu můžete najít jako element **vystavitele** v **AuthnRequest** (žádost SAML) odeslanou aplikací.* |
-| **Adresa URL odpovědi** | Povinné | Povinné | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). Pomocí polí další adresa URL odpovědi můžete zadat několik adres URL odpovědi. Můžete například potřebovat další adresy URL pro odpovědi pro více subdomén. Nebo pro účely testování můžete najednou zadat několik adres URL odpovědí (místní hostitel a veřejné adresy URL). |
-| **Přihlašovací adresa URL** | Povinné | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace z Microsoft 365 nebo Azure AD moje aplikace. Pokud je prázdné, Azure AD provede IdP přihlášení iniciované, když uživatel spustí aplikaci z Microsoft 365, služby Azure AD moje aplikace nebo adresy URL jednotného přihlašování Azure AD.|
+| **Adresa URL odpovědi** | Vyžadováno | Vyžadováno | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). Pomocí polí další adresa URL odpovědi můžete zadat několik adres URL odpovědi. Můžete například potřebovat další adresy URL pro odpovědi pro více subdomén. Nebo pro účely testování můžete najednou zadat několik adres URL odpovědí (místní hostitel a veřejné adresy URL). |
+| **Přihlašovací adresa URL** | Vyžadováno | Nezadávejte | Když uživatel otevře tuto adresu URL, poskytovatel služeb ho přesměruje do Azure AD, kde se uživatel ověří a přihlásí. Azure AD používá adresu URL ke spuštění aplikace z Microsoft 365 nebo Azure AD moje aplikace. Pokud je prázdné, Azure AD provede IdP přihlášení iniciované, když uživatel spustí aplikaci z Microsoft 365, služby Azure AD moje aplikace nebo adresy URL jednotného přihlašování Azure AD.|
 | **Stav přenosu** | Volitelné | Volitelné | Určuje pro aplikaci, kam má přesměrovat uživatele po dokončení ověřování. Obvykle je hodnota platnou adresou URL pro aplikaci. Některé aplikace ale používají toto pole odlišně. Další informace vám sdělí dodavatel aplikace.
 | **Odhlašovací adresa URL** | Volitelné | Volitelné | Slouží k odeslání odpovědí na odhlášení SAML zpět do aplikace.
 
@@ -81,7 +81,7 @@ Azure AD pomocí certifikátu podepisuje tokeny SAML, které posílá do aplikac
 > [!IMPORTANT]
 > Mnoho aplikací je už předem nakonfigurovaných a v galerii aplikací a nemusíte podrobně do certifikátů. [Série rychlý Start](add-application-portal.md) vás provede přidáním a konfigurací aplikací.
 
-Z Azure AD si můžete stáhnout aktivní certifikát ve formátu Base64 nebo RAW přímo z hlavního **nastavení jednotné přihlašování se** stránkou SAML. Aktivní certifikát můžete také získat stažením souboru XML s metadaty aplikace nebo pomocí adresy URL federačních metadat aplikace. Pokud chcete zobrazit, vytvořit nebo stáhnout svoje certifikáty (aktivní nebo neaktivní), postupujte podle těchto kroků.
+Z Azure AD si můžete stáhnout aktivní certifikát ve formátu Base64 nebo RAW přímo z hlavního **nastavení jedna Sign-On se** stránkou SAML. Aktivní certifikát můžete také získat stažením souboru XML s metadaty aplikace nebo pomocí adresy URL federačních metadat aplikace. Pokud chcete zobrazit, vytvořit nebo stáhnout svoje certifikáty (aktivní nebo neaktivní), postupujte podle těchto kroků.
 
 Mezi běžné věci ověření certifikátu patří: 
    - *Správné datum vypršení platnosti.* V budoucnu můžete nakonfigurovat datum vypršení platnosti až na tři roky.
@@ -111,7 +111,7 @@ Jakmile nakonfigurujete aplikaci tak, aby používala Azure AD jako zprostředko
 
 Vyberte **test** a pak zvolte možnost testovat s aktuálně přihlášeným uživatelem nebo jako někdo jiný. 
 
-Pokud je přihlášení úspěšné, budete připraveni přiřadit uživatele a skupiny do aplikace SAML. Blahopřejeme vám.
+Pokud je přihlášení úspěšné, budete připraveni přiřadit uživatele a skupiny do aplikace SAML. Gratulujeme!
 
 Pokud se zobrazí chybová zpráva, proveďte následující kroky:
 
@@ -133,4 +133,4 @@ Další informace najdete v tématu [ladění jednotného přihlašování zalo�
 - [Série rychlý Start při správě aplikací](view-applications-portal.md)
 - [Přiřazení uživatelů nebo skupin k aplikaci](methods-for-assigning-users-and-groups.md)
 - [Konfigurace automatického zřizování uživatelských účtů](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-- [Protokol SAML jednotného přihlašování](../develop/single-sign-on-saml-protocol.md)
+- [Jeden Sign-On protokol SAML](../develop/single-sign-on-saml-protocol.md)

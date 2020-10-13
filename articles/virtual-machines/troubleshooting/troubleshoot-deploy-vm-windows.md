@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 8ed567ee20835cfe076c9b06234f2cba23f3a8bd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86509116"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Řešení potíží s nasazením virtuálního počítače s Windows v Azure
@@ -125,7 +125,7 @@ Vyberte velikost podporovanou v clusteru skupiny dostupnosti. Doporučuje se př
 
 ## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Můžu přidat existující klasický virtuální počítač do skupiny dostupnosti?
 
-Yes. Existující klasický virtuální počítač můžete přidat do nové nebo existující skupiny dostupnosti. Další informace najdete v tématu [Přidání existujícího virtuálního počítače do skupiny dostupnosti](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
+Ano. Existující klasický virtuální počítač můžete přidat do nové nebo existující skupiny dostupnosti. Další informace najdete v tématu [Přidání existujícího virtuálního počítače do skupiny dostupnosti](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 
 ## <a name="next-steps"></a>Další kroky

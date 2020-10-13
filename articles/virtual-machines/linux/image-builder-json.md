@@ -9,10 +9,10 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: cynthn
 ms.openlocfilehash: 43f33093010aa6a70d02c58e9faa34f7f0e2dfee
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91307275"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
@@ -120,7 +120,7 @@ Další informace najdete v tématu [Definování závislostí prostředků](../
 
 ## <a name="identity"></a>Identita
 
-Požadováno – Pokud má Tvůrce imagí oprávnění ke čtení a zápisu obrázků, přečtěte si téma z Azure Storage musíte vytvořit uživatelem přiřazenou identitu Azure, která má oprávnění k jednotlivým prostředkům. Podrobnosti o tom, jak nástroj image Builder funguje, a relevantní postup najdete v [dokumentaci](image-builder-user-assigned-identity.md).
+Požadováno – Pokud má Tvůrce imagí oprávnění ke čtení a zápisu obrázků, přečtěte si téma z Azure Storage musíte vytvořit identitu Azure User-Assigned, která má oprávnění k jednotlivým prostředkům. Podrobnosti o tom, jak nástroj image Builder funguje, a relevantní postup najdete v [dokumentaci](image-builder-user-assigned-identity.md).
 
 
 ```json
@@ -133,7 +133,7 @@ Požadováno – Pokud má Tvůrce imagí oprávnění ke čtení a zápisu obr�
 ```
 
 
-Podpora tvůrce imagí pro uživatelem přiřazenou identitu:
+Podpora tvůrce imagí pro User-Assignedou identitu:
 * Podporuje jenom jedinou identitu.
 * Nepodporuje vlastní názvy domén.
 

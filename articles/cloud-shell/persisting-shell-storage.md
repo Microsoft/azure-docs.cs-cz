@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
 ms.openlocfilehash: 16345ae479be70ffb1eaae95196a43ec99ca1586
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89470132"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Zachovat soubory v Azure Cloud Shell
@@ -66,7 +66,7 @@ Pokud chcete zjistit aktuální oblast, kterou můžete spustit `env` v bash, na
 
 Cloud Shell počítače existují v následujících oblastech:
 
-|Oblast|Region (Oblast)|
+|Oblast|Oblast|
 |---|---|
 |Amerika|Východní USA, Střed USA – jih Západní USA|
 |Evropa|Severní Evropa, Západní Evropa|
@@ -142,7 +142,7 @@ Pokud chcete zobrazit další podrobnosti, spusťte `clouddrive mount -h` , jak 
 ### <a name="unmount-clouddrive"></a>Odpojit clouddrive
 Sdílenou složku, která je připojená k Cloud Shell, můžete kdykoli odpojit. Vzhledem k tomu, že Cloud Shell vyžaduje, aby se použila připojená sdílená složka, budete při další relaci vyzváni k vytvoření a připojení další sdílené složky.
 
-1. Spusťte `clouddrive unmount`.
+1. Spusťte příkaz `clouddrive unmount`.
 2. Potvrďte a potvrďte výzvy.
 
 Sdílená složka bude i nadále existovat, dokud ji neodstraníte ručně. Cloud Shell už po dalších relacích tuto sdílenou složku nebude hledat. Pokud chcete zobrazit další podrobnosti, spusťte `clouddrive unmount -h` , jak je znázorněno zde:
@@ -165,7 +165,7 @@ Sdílenou složku Azure, která je připojená k Cloud Shell, můžete kdykoli o
 
 [!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
-Poznámka: Pokud potřebujete definovat funkci v souboru a zavolat ji z rutin PowerShellu, musí být zahrnut operátor tečka. Například:. .\MyFunctions.ps1
+Poznámka: Pokud potřebujete definovat funkci v souboru a zavolat ji z rutin PowerShellu, musí být zahrnut operátor tečka. Například: . .\MyFunctions.ps1
 
 ## <a name="next-steps"></a>Další kroky
 [Rychlý Start Cloud Shell](quickstart.md) <br>
