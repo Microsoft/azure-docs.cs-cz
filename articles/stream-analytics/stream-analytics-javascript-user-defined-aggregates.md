@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/28/2017
 ms.custom: devx-track-js
 ms.openlocfilehash: 6e43a43d929d256bc2a12b6b243d9620c5bd1aba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317697"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics uživatelsky definovaných agregací jazyka JavaScript
@@ -174,7 +174,7 @@ Teď vytvoříme UDA JavaScriptu v existující úloze ASA pomocí následujíc�
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>Volání JavaScriptu UDA v dotazu ASA
 
-V Azure Portal a otevřete svoji úlohu, upravte dotaz a zavolejte funkci TWA () s předponou mandátu "Uda". Příklad:
+V Azure Portal a otevřete svoji úlohu, upravte dotaz a zavolejte funkci TWA () s předponou mandátu "Uda". Například:
 
 ```SQL
 WITH value AS
@@ -224,7 +224,7 @@ Vytvořte místní soubor JSON s níže uvedeným obsahem, nahrajte soubor do St
 ]
 ```
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 
 Pokud chcete získat další nápovědu, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

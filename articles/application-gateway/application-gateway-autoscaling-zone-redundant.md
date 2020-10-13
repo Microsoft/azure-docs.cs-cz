@@ -9,10 +9,10 @@ ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
 ms.openlocfilehash: 8c989e426faa77025a84515fe0a19424cb6bfa89
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826630"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatické škálování a zónově redundantní služby Application Gateway v2 
@@ -68,7 +68,7 @@ Vytvoření nové instance může ale nějakou dobu trvat (přibližně po šest
 
 Následující tabulka porovnává funkce, které jsou k dispozici u jednotlivých SKU.
 
-| Funkce                                           | SKU v1   | V2 SKU   |
+| Příznak                                           | SKU v1   | V2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | Automatické škálování                                       |          | &#x2713; |
 | Zónová redundance                                   |          | &#x2713; |
@@ -100,7 +100,7 @@ Tato část popisuje funkce a omezení skladové položky v2, která se liší o
 |--|--|
 |Ověřovací certifikát|Nepodporováno<br>Další informace najdete v tématu [Přehled koncového protokolu TLS s Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku).|
 |Kombinování Standard_v2 a standardních Application Gateway ve stejné podsíti|Nepodporováno|
-|Trasa definovaná uživatelem (UDR) na Application Gateway podsíti|Podporované (konkrétní scénáře) Ve verzi Preview.<br> Další informace o podporovaných scénářích najdete v tématu [Přehled konfigurace Application Gateway](configuration-infrastructure.md#supported-user-defined-routes).|
+|User-Defined trasa (UDR) v Application Gateway podsíti|Podporované (konkrétní scénáře) Ve verzi Preview.<br> Další informace o podporovaných scénářích najdete v tématu [Přehled konfigurace Application Gateway](configuration-infrastructure.md#supported-user-defined-routes).|
 |NSG pro rozsah portů pro příchozí spojení| -65200 až 65535 pro Standard_v2 SKU<br>-65503 až 65534 pro SKU Standard.<br>Další informace najdete v [nejčastějších dotazech](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Protokoly výkonu v diagnostice Azure|Nepodporováno<br>Měly by se používat metriky Azure.|
 |Fakturace|Fakturace naplánovala zahájení od 1. července 2019.|

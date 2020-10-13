@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 0f9a8a1c4631fc667d0dd31ae62f7d57aefccc90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccbf7e8aaab5463abf8fa9e129ba9f0ea8599c4e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855842"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969836"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Nejčastější dotazy ohledně migrace z modelu Classic na Azure Resource Manager
 
@@ -26,7 +26,7 @@ Slovo "Classic" na virtuálním počítači s IaaS (Classic) odkazuje na virtuá
 
 ## <a name="what-is-azure-resource-manager"></a>Co je Azure Resource Manager?
 
-[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) je nejnovější Řídicí rovina Azure zodpovědná za vytváření, správu a odstraňování virtuálních počítačů a provádění jiných operací roviny řízení. 
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) je nejnovější Řídicí rovina Azure zodpovědná za vytváření, správu a odstraňování virtuálních počítačů a provádění jiných operací roviny řízení. 
 
 ## <a name="what-is-the-time-required-for-migration"></a>Jaký je čas potřebný k migraci?
 
@@ -42,7 +42,7 @@ Zákazník, který ve svém předplatném v měsíci února 2020 aktivní nebo z
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Proč se mi zobrazuje chyba s oznámením "NewClassicVMCreationNotAllowedForSubscription"?
 
-V rámci procesu vyřazení již nejsou virtuální počítače IaaS (Classic) k dispozici pro nové zákazníky. Identifikovali jsme vás jako noví zákazníci, takže vaše operace nebyla autorizována. Důrazně doporučujeme používat službu [Azure Virtual Machines s využitím ARM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell). Pokud nemůžete použít virtuální počítače Azure pomocí ARM, obraťte se prosím na podporu a přidejte své předplatné do seznamu povolených.
+V rámci procesu vyřazení již nejsou virtuální počítače IaaS (Classic) k dispozici pro nové zákazníky. Identifikovali jsme vás jako noví zákazníci, takže vaše operace nebyla autorizována. Důrazně doporučujeme používat službu [Azure Virtual Machines s využitím ARM](./windows/quick-create-powershell.md). Pokud nemůžete použít virtuální počítače Azure pomocí ARM, obraťte se prosím na podporu a přidejte své předplatné do seznamu povolených.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Má tento plán migrace vliv na některé stávající služby nebo aplikace spuštěné na virtuálních počítačích Azure? 
 
@@ -97,7 +97,7 @@ Pokud navíc chcete zálohovat migrovaný virtuální počítač, v okně Správ
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>Je možné ověřit, jestli jsou prostředky nebo předplatné schopné migrace? 
 
-Ano. U možnosti migrace s podporou platformy je prvním krokem přípravy na migraci ověření, že jsou prostředky schopné migrace. V případě selhání operace ověření se zobrazí zprávy se všemi důvody, proč migraci není možné dokončit.
+Yes. U možnosti migrace s podporou platformy je prvním krokem přípravy na migraci ověření, že jsou prostředky schopné migrace. V případě selhání operace ověření se zobrazí zprávy se všemi důvody, proč migraci není možné dokončit.
 
 ## <a name="what-happens-if-i-run-into-a-quota-error-while-preparing-the-iaas-resources-for-migration"></a>Co se stane, pokud při přípravě prostředků IaaS na migraci dojde k chybě kvóty? 
 
@@ -105,7 +105,7 @@ Doporučujeme migraci přerušit a pak odeslat žádost o navýšení kvót v ob
 
 ## <a name="how-do-i-report-an-issue"></a>Jak se dá nahlásit problém? 
 
-Vystavte své problémy a dotazy týkající se migrace na [stránku s otázkou pro virtuální počítač&Microsoft Q](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)a klíčovým slovem ClassicIaaSMigration. Doporučujeme, abyste všechny vaše dotazy zveřejnili na tomto fóru. Pokud máte smlouvu o podpoře, můžete také odeslat lístek podpory.
+Vystavte své problémy a dotazy týkající se migrace na [stránku s otázkou pro virtuální počítač&Microsoft Q](/answers/topics/azure-virtual-machines.html)a klíčovým slovem ClassicIaaSMigration. Doporučujeme, abyste všechny vaše dotazy zveřejnili na tomto fóru. Pokud máte smlouvu o podpoře, můžete také odeslat lístek podpory.
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>Co když se mi nelíbí názvy prostředků, které platforma zvolila během migrace? 
 

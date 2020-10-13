@@ -4,12 +4,12 @@ description: Přečtěte si o šifrování v klidovém prostředí služby Azure
 ms.topic: article
 ms.date: 09/30/2020
 ms.custom: ''
-ms.openlocfilehash: 7b4b3fd21421ba1e371bd27d8224c1f2aa34b7be
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 6eaae5266277a6a65c7cecaa761b75e3a41ebe87
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620337"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940663"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Šifrování registru pomocí klíče spravovaného zákazníkem
 
@@ -114,7 +114,7 @@ az keyvault set-policy \
   --key-permissions get unwrapKey wrapKey
 ```
 
-Případně můžete použít [Azure RBAC pro Key Vault](../key-vault/general/rbac-guide.md) (Preview) k přiřazení oprávnění identitě pro přístup k trezoru klíčů. Například přiřazení role šifrování Key Vault šifrovací služby k identitě přiřaďte pomocí příkazu [AZ role Assignment Create](/cli/azure/az/role/assigment#az-role-assignment-create) :
+Případně můžete použít [Azure RBAC pro Key Vault](../key-vault/general/rbac-guide.md) (Preview) k přiřazení oprávnění identitě pro přístup k trezoru klíčů. Například přiřazení role šifrování Key Vault šifrovací služby k identitě přiřaďte pomocí příkazu [AZ role Assignment Create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) :
 
 ```azurecli 
 az role assignment create --assignee $identityPrincipalID \
@@ -525,7 +525,7 @@ Pokud se pokusíte odebrat uživatelem přiřazenou identitu z registru, který 
 Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry' does not have access to identity 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' Try forcibly adding the identity to the registry <registry name>. For more information on bring your own key, please visit 'https://aka.ms/acr/cmk'.
 ```
  
-Nebudete také moci změnit (otočit) šifrovací klíč. Pokud k tomuto problému dojde, napřed znovu přiřaďte identitu pomocí identifikátoru GUID zobrazeného v chybové zprávě. Například:
+Nebudete také moci změnit (otočit) šifrovací klíč. Pokud k tomuto problému dojde, napřed znovu přiřaďte identitu pomocí identifikátoru GUID zobrazeného v chybové zprávě. Příklad:
 
 ```azurecli
 az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx

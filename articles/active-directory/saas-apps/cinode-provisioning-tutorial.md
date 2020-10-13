@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2020
 ms.author: Zhchia
-ms.openlocfilehash: dd052bf7a95cbadf2a107f7e49915a9899b084ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce4b93bc8f44e7bec490466fc42be829f942ae07
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614083"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940918"
 ---
 # <a name="tutorial-configure-cinode-for-automatic-user-provisioning"></a>Kurz: Konfigurace Cinode pro Automatické zřizování uživatelů
 
@@ -55,7 +55,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 3. Přejděte na **tokeny** a vytvořte nový token.
 
-4. Zadejte jedinečný název, vyberte https://api.cinode.app/scim/v2 cílovou skupinu a odpovídajícím způsobem nastavte datum vypršení platnosti.
+4. Zadejte jedinečný název **, vyberte jako cílovou https://api.cinode.app/scim/v2 ** skupinu a odpovídajícím způsobem nastavte datum vypršení platnosti.
 
 5. Klikněte na **vytvořit token**.
 

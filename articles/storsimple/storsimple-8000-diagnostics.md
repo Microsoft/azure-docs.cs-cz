@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: ca674f38b5c327123bc1d13dd284f84f614881b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91300441"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Řešení potíží se zařízeními 8000 series pomocí nástroje Diagnostika StorSimple
@@ -414,11 +414,11 @@ Controller0>
 
 Tady je Tabulka popisující, k jakým různým parametrům prostředí Windows PowerShell v mapě systémových informací. 
 
-| Parametr PowerShellu    | Popis  |
+| Parametr PowerShellu    | Description  |
 |-------------------------|------------------|
 | Instance ID             | Každý kontroler má jedinečný identifikátor nebo identifikátor GUID, který je k němu přidružený.|
 | Name                    | Popisný název zařízení nakonfigurovaného prostřednictvím Azure Portal během nasazování zařízení. Výchozím popisným názvem je sériové číslo zařízení. |
-| Modelování                   | Model zařízení řady StorSimple 8000. Model může být 8100 nebo 8600.|
+| Model                   | Model zařízení řady StorSimple 8000. Model může být 8100 nebo 8600.|
 | SerialNumber            | Sériové číslo zařízení je přiřazeno k továrně a je 15 znaků dlouhé. Například 8600-SHX0991003G44HT označuje:<br> 8600 – je model zařízení.<br>SHX – je výrobní pracoviště.<br> 0991003 – je konkrétní produkt. <br> G44HT – při posledních 5 číslicích se zvýší a vytvoří se jedinečná sériová čísla. Nemusí se jednat o sekvenční sadu.|
 | TimeZone                | Časové pásmo zařízení nakonfigurované v Azure Portal během nasazování zařízení.|
 | CurrentController       | Kontroler, ke kterému jste připojeni přes rozhraní Windows PowerShell zařízení StorSimple.|

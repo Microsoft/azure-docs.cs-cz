@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: ae3090689f9999c9ea6aa65447dadbdd7b0b2026
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2aa30f86b32005b9c85664b5bb2d0772a6e5f443
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91000948"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940765"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Důvěrné výpočetní uzly ve službě Azure Kubernetes (Public Preview)
 
@@ -40,7 +40,7 @@ Služba Azure Kubernetes Service (AKS) podporuje přidávání [DCsv2 důvěrný
 
 #### <a name="sgx-device-plugin"></a>Modul plug-in zařízení SGX <a id="sgx-plugin"></a>
 
-Modul plug-in zařízení SGX implementuje rozhraní modulu plug-in zařízení Kubernetes pro paměť EPC. Tento modul plug-in zajišťuje v Kubernetes paměť EPC další typ prostředku. Uživatelé můžou u tohoto prostředku zadat omezení stejně jako na jiné prostředky. Kromě funkce plánování pomáhá modul plug-in zařízení přiřazovat SGX k důvěrným kontejnerům úloh oprávnění ovladačů zařízení. Ukázková implementace ukázky nasazení na bázi paměti EPC `kubernetes.azure.com/sgx_epc_mem_in_MiB` je [tady](https://github.com/azure-samples/confidential-computing/blob/main/containersamples/helloworld/helloworld.yaml) .
+Modul plug-in zařízení SGX implementuje rozhraní modulu plug-in zařízení Kubernetes pro paměť EPC. Tento modul plug-in zajišťuje v Kubernetes paměť EPC další typ prostředku. Uživatelé můžou u tohoto prostředku zadat omezení stejně jako na jiné prostředky. Kromě funkce plánování pomáhá modul plug-in zařízení přiřazovat SGX k důvěrným kontejnerům úloh oprávnění ovladačů zařízení. Ukázková implementace ukázky nasazení na bázi paměti EPC `kubernetes.azure.com/sgx_epc_mem_in_MiB` je [tady](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml) .
 
 #### <a name="sgx-quote-helper-service"></a>Pomocná služba SGX Quota <a id="sgx-quote"></a>
 
