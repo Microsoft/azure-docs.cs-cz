@@ -4,10 +4,10 @@ description: Tento článek shrnuje Azure Backup podporu při použití Microsof
 ms.date: 02/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332691"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Matice podpory pro zálohování pomocí serveru Microsoft Azure Backup nebo aplikace System Center DPM
@@ -50,7 +50,7 @@ Další informace najdete tady:
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-**Scénář** | **Agent** | **Umístění**
+**Scénář** | **Agenta** | **Umístění**
 --- | --- | ---
 **Zálohování místních počítačů a úloh** | DPM/MABS Protection Agent běží na počítačích, které chcete zálohovat.<br/><br/> Agent MARS na serveru DPM nebo MABS.<br/> Minimální verze agenta Microsoft Azure Recovery Services nebo agenta Azure Backup, který je vyžadován pro povolení této funkce, je 2.0.8719.0.  | DPM/MABS musí běžet místně.
 
@@ -80,12 +80,12 @@ Azure Backup můžou zálohovat instance DPM/MABS, na kterých běží některý
 
 ## <a name="management-support"></a>Podpora správy
 
-**Problém** | **Podrobnosti**
+**Chybu** | **Podrobnosti**
 --- | ---
 **Instalace** | Nainstalujte DPM/MABS na jeden z účelových počítačů.<br/><br/> Neinstalujte DPM/MABS na řadiči domény na počítači s instalací role aplikačního serveru na počítači, na kterém běží Microsoft Exchange Server nebo System Center Operations Manager, nebo na uzlu clusteru.<br/><br/> [Zkontrolujte všechny požadavky na systém aplikace DPM](/system-center/dpm/prepare-environment-for-dpm#dpm-server).
 **Doména** | DPM/MABS by měl být připojený k doméně. Nejdřív nainstalujte a pak připojte DPM/MABS k doméně. Přesunutí DPM/MABS do nové domény po nasazení se nepodporuje.
 **Storage** | Moderní úložiště záloh (MBS) se podporuje v DPM 2016/MABS v2 a novějších verzích. Není k dispozici pro MABS v1.
-**Upgrade MABS** | Můžete přímo nainstalovat MABS V3 nebo upgradovat na MABS V3 z MABS v2. [Přečtěte si další informace](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
+**Upgrade MABS** | Můžete přímo nainstalovat MABS V3 nebo upgradovat na MABS V3 z MABS v2. [Další informace](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **Přesunutí MABS** | Přesun MABS na nový server a zachování úložiště je podporované, pokud používáte MBS.<br/><br/> Server musí mít stejný název jako původní. Název nemůžete změnit, pokud chcete zachovat stejný fond úložiště a použít stejnou databázi MABS k ukládání bodů obnovení dat.<br/><br/> Budete potřebovat zálohu databáze MABS, protože ji budete muset obnovit.
 
 ## <a name="mabs-support-on-azure-stack"></a>Podpora MABS na Azure Stack
@@ -102,7 +102,7 @@ MABS můžete nasadit na virtuálním počítači Azure Stack, abyste mohli spra
 **.NET Framework na MABS** | Virtuální počítač MABS musí mít nainstalovanou .NET Framework 3,3 SP1 nebo novější.
 **Doména MABS** | Virtuální počítač MABS musí být připojený k doméně. Uživatel domény s oprávněními správce musí na virtuálním počítači nainstalovat MABS.
 **Zálohování dat Azure Stack VM** | Můžete zálohovat soubory, složky a aplikace.
-**Podporovaná záloha** | Tyto operační systémy jsou podporované pro virtuální počítače, které chcete zálohovat:<br/><br/> Půlroční kanál Windows serveru (Datacenter, Enterprise, Standard)<br/><br/> Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
+**Podporovaná záloha** | Tyto operační systémy jsou podporované pro virtuální počítače, které chcete zálohovat:<br/><br/> Windows Server Semi-Annual Channel (Datacenter, Enterprise, Standard)<br/><br/> Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 **Podpora SQL Server pro virtuální počítače s Azure Stack** | Zálohujte SQL Server 2016 SQL Server 2014 SQL Server 2012 SP1.<br/><br/> Zálohování a obnovení databáze.
 **Podpora služby SharePoint pro virtuální počítače s Azure Stack** | SharePoint 2016, SharePoint 2013, SharePoint 2010.<br/><br/> Zálohujte a obnovte farmu, databázi, front-end a webový server.
 **Požadavky na síť pro zálohované virtuální počítače** | Všechny virtuální počítače v rámci úlohy Azure Stack musí patřit do stejné virtuální sítě a patřit do stejného předplatného.

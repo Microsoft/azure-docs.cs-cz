@@ -4,10 +4,10 @@ description: Popisuje vlastnosti, které jsou k dispozici pro události předpla
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: 72b1a73bf418b417cd29f88063781e7b45979998
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105893"
 ---
 # <a name="azure-subscription-as-an-event-grid-source"></a>Předplatné Azure jako zdroj Event Grid
@@ -22,7 +22,7 @@ Když se přihlásíte k odběru událostí pro předplatné Azure, koncový bod
 
 Chcete-li události programově zpracovávat, můžete události řadit podle `operationName` hodnoty. Například váš koncový bod události může zpracovávat pouze události pro operace, které jsou rovny `Microsoft.Compute/virtualMachines/write` nebo `Microsoft.Storage/storageAccounts/write` .
 
-Předmět události je ID prostředku prostředku, který je cílem operace. Chcete-li filtrovat události pro určitý prostředek, zadejte toto ID prostředku při vytváření odběru události. Chcete-li filtrovat podle typu prostředku, použijte hodnotu v následujícím formátu:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+Předmět události je ID prostředku prostředku, který je cílem operace. Chcete-li filtrovat události pro určitý prostředek, zadejte toto ID prostředku při vytváření odběru události. Chcete-li filtrovat podle typu prostředku, použijte hodnotu v následujícím formátu: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
 
 ## <a name="event-grid-event-schema"></a>Schéma událostí služby Event Grid
@@ -31,7 +31,7 @@ Předmět události je ID prostředku prostředku, který je cílem operace. Chc
 
 Předplatné Azure generuje události správy z Azure Resource Manager, například když se vytvoří virtuální počítač nebo se odstraní účet úložiště.
 
-| Typ události | Description |
+| Typ události | Popis |
 | ---------- | ----------- |
 | Microsoft. Resources. ResourceActionCancel | Je aktivována při zrušení akce u prostředku. |
 | Microsoft. Resources. ResourceActionFailure | Vyvolá se v případě, že akce u prostředku není úspěšná. |
@@ -234,11 +234,11 @@ Událost má následující data nejvyšší úrovně:
 | Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
-| Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| subject | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| eventType | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
-| data | odkazy objektů | Data události odběru |
+| data | object | Data události odběru |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
@@ -246,10 +246,10 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
-| autorizace | odkazy objektů | Požadovaná autorizace pro operaci. |
-| podpory | odkazy objektů | Vlastnosti deklarací identity. Další informace najdete v tématu [specifikace JWT](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| autorizace | object | Požadovaná autorizace pro operaci. |
+| podpory | object | Vlastnosti deklarací identity. Další informace najdete v tématu [specifikace JWT](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | řetězec | ID operace pro řešení potíží. |
-| httpRequest | odkazy objektů | Podrobnosti operace Tento objekt je zahrnutý pouze při aktualizaci stávajícího prostředku nebo při odstraňování prostředku. |
+| httpRequest | object | Podrobnosti operace Tento objekt je zahrnutý pouze při aktualizaci stávajícího prostředku nebo při odstraňování prostředku. |
 | resourceProvider | řetězec | Poskytovatel prostředků pro operaci. |
 | resourceUri | řetězec | Identifikátor URI prostředku v operaci. |
 | operationName | řetězec | Operace, kterou jste provedli. |

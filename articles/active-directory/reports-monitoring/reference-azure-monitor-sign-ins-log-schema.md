@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a881dee50195fe4995c77d793b4f4b75091d20b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231108"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretujte schéma přihlašovacích protokolů služby Azure AD v Azure Monitor
@@ -143,7 +143,7 @@ Tento článek popisuje schéma protokolu přihlašování Azure Active Director
 
 ## <a name="field-descriptions"></a>Popisy polí
 
-| Název pole | Popis |
+| Název pole | Description |
 |------------|-------------|
 | Čas | Datum a čas ve standardu UTC. |
 | ResourceId | Tato hodnota není mapována a můžete toto pole bezpečně ignorovat.  |

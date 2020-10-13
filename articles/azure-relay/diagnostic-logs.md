@@ -4,10 +4,10 @@ description: Tento článek poskytuje přehled všech protokolů aktivit a diagn
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 980f2f7a737d3f2460c17a84c472cbf56f5eb90f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87532998"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Povolit protokoly diagnostiky pro Azure Relay Hybrid Connections
@@ -30,7 +30,7 @@ Pokud chcete zobrazit protokoly aktivit pro obor názvů Azure Relay, přepněte
 
 Chcete-li povolit diagnostické protokoly, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com)přejdete do oboru názvů Azure Relay a v části **monitorování**vyberte **nastavení diagnostiky**.
+1. V [Azure Portal](https://portal.azure.com)přejdete do oboru názvů Azure Relay a v části **monitorování**vyberte  **nastavení diagnostiky**.
 1. Na stránce **nastavení diagnostiky** vyberte **Přidat nastavení diagnostiky**.  
 
    ![Odkaz Přidat nastavení diagnostiky](./media/diagnostic-logs/add-diagnostic-setting.png)

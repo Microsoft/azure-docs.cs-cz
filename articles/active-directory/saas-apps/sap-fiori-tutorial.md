@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 4d2f6766fa32beb9cebaa8f77c04f6865e15e14d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543389"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí SAP Fiori
@@ -158,7 +158,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > 
     > Můžete nastavit `ServicePrincipal` ID objektu sami před spuštěním skriptu, nebo ho můžete předat sem.
 
-1. Aplikace SAP Fiori očekává, že kontrolní výrazy SAML budou v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Chcete-li spravovat tyto hodnoty atributů, vyberte v podokně **nastavit jednotné přihlašování pomocí SAML** možnost **Upravit**.
+1. Aplikace SAP Fiori očekává, že kontrolní výrazy SAML budou v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Chcete-li tyto hodnoty atributu spravovat, vyberte v podokně **nastavit jednu Sign-On s** podoknem SAML možnost **Upravit**.
 
     ![Podokno atributů uživatele](common/edit-attribute.png)
 
@@ -194,7 +194,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -238,9 +238,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Ověření hodnoty algoritmu Digest v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-identityprovider.png)
 
-1. V části **koncové body jednotného přihlašování**vyberte **http post**a pak vyberte **Další**.
+1. V části **koncové body s jedním Sign-On**vyberte **http post**a pak vyberte **Další**.
 
-    ![Možnosti pro koncové body jednotného přihlašování v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect.png)
+    ![Možnosti jednotlivých koncových bodů Sign-On v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect.png)
 
 1. V části **koncové body odhlašovacího**bodu vyberte **přesměrování HTTP**a pak vyberte **Další**.
 

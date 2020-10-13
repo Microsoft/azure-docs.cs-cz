@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: punagpal
 ms.openlocfilehash: 43b7bcba97617d6931fd5c191e62e833a25bf89d
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513365"
 ---
-# <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Datový tok Azure IoT Connector pro FHIR (Preview)
+# <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Tok dat konektoru Azure IoT pro FHIR (Preview)
 
 Tento článek poskytuje přehled toku dat ve službě Azure IoT Connector pro FHIR *. V rámci služby Azure IoT Connector se dozvíte víc o různých fázích zpracování dat pro FHIR, které transformují data zařízení do [pozorovacích](https://www.hl7.org/fhir/observation.html) prostředků založených na FHIR.
 
@@ -36,7 +36,7 @@ Normalizace je další fáze, kdy se data zařízení načítají z výše uvede
 
 Proces normalizace nejen zjednodušuje zpracování dat v pozdějších fázích, ale také nabízí možnost projektu jedné vstupní zprávy do více normalizovaných zpráv. Zařízení může například odeslat několik důležitých příznaků pro teplotu textu, pulsní kmitočet, krevní tlak a respiration sazbu v jedné zprávě. Tato vstupní zpráva by vytvořila čtyři samostatné prostředky FHIR. Každý prostředek by představoval jiný nepodstatný podpis a vstupní zpráva se prokládá se čtyřmi různými normalizovanými zprávami.
 
-## <a name="group"></a>Skupina
+## <a name="group"></a>Group (Skupina)
 Skupina je další fáze, kde se normalizované zprávy dostupné z předchozí fáze seskupují pomocí tří různých parametrů: identita zařízení, typ měření a časové období.
 
 Seskupení typů identit a měření zařízení povoluje použití typu měření [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) . Tento typ poskytuje stručný způsob reprezentace časových řad měření ze zařízení v FHIR. A časové období řídí latenci, při které se prostředky sledování vygenerované službou Azure IoT Connector pro FHIR zapisují do Azure API pro FHIR.

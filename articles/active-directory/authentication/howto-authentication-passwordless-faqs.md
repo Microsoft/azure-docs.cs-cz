@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16e232cedb13dc246bf7a568adfad401c1fe3eb8
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236618"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Nejčastější dotazy k nasazení (FAQ) pro klíče zabezpečení Hybrid FIDO2 ve službě Azure AD (Preview)
@@ -69,7 +69,7 @@ Další informace o registraci a používání klíčů zabezpečení FIDO2 najd
 
 Ne, v tuto chvíli ne.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Funguje tato funkce, pokud není k dispozici připojení k Internetu?](#does-this-feature-work-if-theres-no-internet-connectivity)
 * [Jaké jsou konkrétní koncové body, které je potřeba otevřít ve službě Azure AD?](#what-are-the-specific-end-points-that-are-required-to-be-open-to-azure-ad)
@@ -185,7 +185,7 @@ Server Kerberos služby Azure AD je reprezentován v místním prostředí služ
 
 * *CN = AzureADKerberos, OU = řadiče domény,\<domain-DN>*
     
-    Objekt *počítače* , který představuje řadič domény jen pro čtení (RODC) v služba AD DS. K tomuto objektu není přidružen žádný počítač. Místo toho se jedná o logickou reprezentaci řadiče domény.
+    Objekt *počítače* , který představuje řadič domény Read-Only (RODC) v služba AD DS. K tomuto objektu není přidružen žádný počítač. Místo toho se jedná o logickou reprezentaci řadiče domény.
 
 * *CN = krbtgt_AzureAD, CN = uživatelé,\<domain-DN>*
 
@@ -234,7 +234,7 @@ Požadavek HTTP je standardní žádost o primární obnovovací token (PRT). Ta
 
 Azure AD kombinuje zašifrovaný klíč klienta a vyrovnávací paměť zpráv do odpovědi PRT jako další vlastnosti. Datová část je šifrovaná pomocí klíče relace zařízení Azure AD.
 
-| Pole              | Typ   | Popis  |
+| Pole              | Typ   | Description  |
 |--------------------|--------|--------------|
 | tgt_client_key     | řetězec | Klíč klienta kódovaný v kódování Base64 (tajný kód). Tento klíč je tajný kód klienta, který se používá k ochraně lístku TGT. V tomto scénáři bez hesla je tajný klíč klienta vygenerovaný serverem v rámci každé žádosti TGT a pak se vrátí klientovi v odpovědi. |
 | tgt_key_type       | int    | Typ místního služba AD DS klíče použitý pro klíč klienta i klíč relace protokolu Kerberos obsažený v KERB_MESSAGE_BUFFER. |

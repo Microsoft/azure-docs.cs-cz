@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 02ce6b00b6555f849d162b9f3b381c0ab358d712
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79532837"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Přehled vývoje aplikací pro Azure Database for MySQL 
@@ -22,7 +22,7 @@ Tento článek popisuje faktory návrhu, které by měl vývojář postupovat p�
 ## <a name="language-and-platform"></a>Jazyk a platforma
 K dispozici jsou ukázky kódu pro různé programovací jazyky a platformy. Odkazy na ukázky kódu najdete v tématech [knihovny připojení používané pro připojení k Azure Database for MySQL](concepts-connection-libraries.md)
 
-## <a name="tools"></a>nástroje
+## <a name="tools"></a>Nástroje
 Azure Database for MySQL používá komunitu MySQL kompatibilní se společnými nástroji pro správu MySQL, jako jsou například aplikace Workbench nebo MySQL, jako jsou například nástroje Workbench nebo MySQL, například mysql.exe, [phpMyAdmin](https://www.phpmyadmin.net/), [Navicat](https://www.navicat.com/products/navicat-for-mysql)a další. K interakci s databázovou službou můžete použít taky Azure Portal, rozhraní příkazového řádku Azure a rozhraní REST API.
 
 ## <a name="resource-limitations"></a>Omezení prostředků
@@ -33,7 +33,7 @@ Azure Database for MySQL spravuje prostředky, které jsou k dispozici na server
 ## <a name="security"></a>Zabezpečení
 Azure Database for MySQL poskytuje prostředky pro omezení přístupu, ochranu dat, konfiguraci uživatelů a rolí a monitorování aktivit v databázi MySQL.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 Azure Database for MySQL podporuje ověřování uživatelů a přihlašovacích údajů serveru.
 
 ## <a name="resiliency"></a>Odolnost

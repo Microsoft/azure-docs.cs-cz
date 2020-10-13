@@ -12,10 +12,10 @@ ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: ee18916a59bb081d65494f46e7aba7c29c7177cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71718518"
 ---
 # <a name="detect-adult-content"></a>Zjistit obsah pro dospělé
@@ -35,7 +35,7 @@ V rámci klasifikace "dospělý" je několik různých kategorií:
 
 ## <a name="use-the-api"></a>Použití rozhraní API
 
-Obsah pro dospělé můžete detekovat pomocí rozhraní API pro [analýzu imagí](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Když přidáte hodnotu `Adult` do parametru dotazu **visualFeatures** , vrátí rozhraní API tři logické vlastnosti&mdash;`isAdultContent` `isRacyContent`, a `isGoryContent` &mdash;v jeho odpovědi JSON. Metoda také vrátí odpovídající vlastnosti&mdash;`adultScore`, `racyScore`a `goreScore` &mdash;, které reprezentují výsledky spolehlivosti mezi nulou a jednou pro každou příslušnou kategorii.
+Obsah pro dospělé můžete detekovat pomocí rozhraní API pro [analýzu imagí](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Když přidáte hodnotu `Adult` do parametru dotazu **visualFeatures** , vrátí rozhraní API tři logické vlastnosti &mdash; `isAdultContent` , `isRacyContent` a `isGoryContent` &mdash; v jeho odpovědi JSON. Metoda také vrátí odpovídající vlastnosti &mdash; `adultScore` , `racyScore` a, `goreScore` &mdash; které reprezentují výsledky spolehlivosti mezi nulou a jednou pro každou příslušnou kategorii.
 
 - [Rychlý Start: analýza obrázku (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 - [Rychlý Start: analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)

@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73034542"
 ---
 Při navrhování systému je důležité pochopit potenciální hrozby pro daný systém a odpovídajícím způsobem přidat patřičnou ochranu, protože systém je navržený a navržený. Je důležité navrhnout produkt od začátku s ohledem na zabezpečení, protože porozumět tomu, jak útočník může ohrozit zabezpečení systému, pomáhá zajistit, aby byla na začátku vhodná omezení.
@@ -216,7 +216,7 @@ Tady jsou některé příklady hrozeb v této kategorii:
 
 **Falšování/zneužití/odmítnutí**: není-li zabezpečeno (což se u spotřebitele používá jenom zřídka), může útočník manipulovat se stavem zařízení anonymně. Dobrá ilustrace je vzdálené ovládací prvky, které umožňují změnit libovolné televizní pořady a oblíbené nástroje Prankster.
 
-#### <a name="communication"></a>Communication
+#### <a name="communication"></a>Komunikace
 
 Hrozby kolem komunikačních cest mezi zařízeními, zařízeními a branami polí a zařízeními a cloudovou bránou. Následující tabulka obsahuje pokyny k otevřeným soketům na zařízení/síti VPN:
 

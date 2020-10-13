@@ -13,17 +13,17 @@ ms.author: aiwang
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 47902b29da1dfe20fb54d633a0559e6a337fd771
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89183585"
 ---
 # <a name="migrate-android-applications-that-use-a-broker-from-adalnet-to-msalnet"></a>Migrace aplikací pro Android, které používají zprostředkovatele z ADAL.NET na MSAL.NET
 
 Pokud máte aplikaci pro Xamarin Android, která aktuálně používá knihovnu Azure Active Directory Authentication Library pro .NET (ADAL.NET) a [zprostředkovatele ověřování](brokered-auth.md), je čas migrovat do [knihovny Microsoft Authentication Library pro .NET ](msal-overview.md) (MSAL.NET).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Aplikace Xamarin Android je už integrovaná s zprostředkovatelem ([Microsoft Authenticator](https://play.google.com/store/apps/details?id=com.azure.authenticator) nebo [Portál společnosti Intune](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)) a ADAL.NET, které potřebujete migrovat na MSAL.NET.
 
@@ -113,7 +113,7 @@ V MSAL.NET proveďte dvě věci pro nastavení aktivity pro Android:
 
 1. Na volání AcquireTokenInteractive použijte `.WithParentActivityOrWindow(App.RootViewController)` a předejte odkaz na aktivitu, kterou budete používat. Tento příklad použije MainActivity.
 
-**Příklad:**
+**Například:**
 
 V *App.cs*:
 
