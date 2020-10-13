@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
 ms.openlocfilehash: 0bf4750d5db5961ff8c572c3aa52cc06faf697c1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83590532"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Podpora a možnosti zpětné vazby pro Azure Cognitive Services
@@ -47,9 +47,9 @@ Pro rychlejší výsledky proveďte hledání relevantních webů, jako jsou nap
 
 Kde `{search keywords}` je kontext hledání. Zvažte vhodné použití těchto vymezených hledání:
 
- - Stack Overflow:`site:stackoverflow.com`
- - Microsoft Docs:`site:docs.microsoft.com`
- - Ukázky GitHubu:`site:github.com/azure-samples`
+ - Stack Overflow: `site:stackoverflow.com`
+ - Microsoft Docs: `site:docs.microsoft.com`
+ - Ukázky GitHubu: `site:github.com/azure-samples`
 
 ### <a name="post-a-question-on-stack-overflow"></a>Odeslat dotaz na Stack Overflow
 
@@ -70,7 +70,7 @@ Pokud nemůžete najít odpověď na váš problém pomocí vyhledávacího pole
 
 Zaznamenání informací o funkcích v nové verzi nebo novinkách na blogu Azure vám může pomáhat najít rozdíl mezi chybou programování, chybou služby nebo funkcí, která ještě není k dispozici v Cognitive Services.
 
-### <a name="release-notes"></a>Zpráva k vydání verze
+### <a name="release-notes"></a>Poznámky k verzi
 
 <div class='icon is-large'>
     <img alt='Release notes' src='https://docs.microsoft.com/media/common/i_learn-about.svg'>
@@ -129,10 +129,10 @@ Pokud chcete požádat o nové funkce, publikujte je na UserVoice. Sdílejte sv�
 | Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizace                  | https://cognitive.uservoice.com/forums/921562-personalizer |
 | QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
-| Služby Speech               | https://cognitive.uservoice.com/forums/912208-speech-service |
+| Hlasové služby               | https://cognitive.uservoice.com/forums/912208-speech-service |
 | Custom Speech                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
 | Analýza textu                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Translator               | https://cognitive.uservoice.com/forums/558796-translator |
+| Překladač               | https://cognitive.uservoice.com/forums/558796-translator |
 | Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="report-bugs"></a>Hlášení chyb
@@ -156,7 +156,7 @@ Tady je seznam Cognitive Services rychlý Start a ukázkový kód:
 * [Cognitive Services: dotnet](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 * [Cognitive Services: Přejít](https://github.com/Azure-Samples/azure-sdk-for-go-samples)
 * [Cognitive Services: Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
-* [Cognitive Services: Node. js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+* [Cognitive Services: Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 * [Cognitive Services: Python](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
 #### <a name="cognitive-services-sdk-source-code"></a>Zdrojový kód sady Cognitive Services SDK

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90562515"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Nasazení řešení internetového vyrovnávání zatížení s protokolem IPv6 pomocí šablony
@@ -103,7 +103,7 @@ Po úspěšném nasazení šablony můžete ověřit připojení provedením ná
 4. Z každého virtuálního počítače Iniciujte odchozí připojení k internetovému zařízení připojenému k síti IPv6 nebo IPv4. V obou případech je zdrojová adresa IP, kterou cílové zařízení uvidí, veřejnou adresou protokolu IPv4 nebo IPv6 nástroje pro vyrovnávání zatížení.
 
 > [!NOTE]
-> Protokol ICMP pro IPv4 i IPv6 je v síti Azure blokovaný. V důsledku toho nástroje protokolu ICMP, jako je třeba příkaz test, vždy selžou. K otestování připojení použijte alternativu protokolu TCP, jako je TCPing nebo rutina PowerShell test-NetConnection. Všimněte si, že IP adresy zobrazené v diagramu představují příklady hodnot, které mohou být zobrazeny. Vzhledem k tomu, že se adresy IPv6 přiřazují dynamicky, adresy, které obdržíte, se budou lišit a můžou se lišit podle oblasti. Také je běžné, že veřejná IPv6 adresa v nástroji pro vyrovnávání zatížení začíná jinou předponou než privátní IPv6 adresy ve fondu back-end.
+> Protokol ICMP pro IPv4 i IPv6 je v síti Azure blokovaný. V důsledku toho nástroje protokolu ICMP, jako je třeba příkaz test, vždy selžou. K otestování připojení použijte alternativu protokolu TCP, jako je TCPing nebo rutina PowerShellu Test-NetConnection. Všimněte si, že IP adresy zobrazené v diagramu představují příklady hodnot, které mohou být zobrazeny. Vzhledem k tomu, že se adresy IPv6 přiřazují dynamicky, adresy, které obdržíte, se budou lišit a můžou se lišit podle oblasti. Také je běžné, že veřejná IPv6 adresa v nástroji pro vyrovnávání zatížení začíná jinou předponou než privátní IPv6 adresy ve fondu back-end.
 
 ## <a name="template-parameters-and-variables"></a>Parametry šablony a proměnné
 

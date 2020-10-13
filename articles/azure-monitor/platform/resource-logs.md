@@ -8,10 +8,10 @@ ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87800496"
 ---
 # <a name="azure-resource-logs"></a>Protokoly prostředků Azure
@@ -54,7 +54,7 @@ Tabulka AzureDiagnostics bude vypadat takto:
 | ... |
 
 ### <a name="resource-specific"></a>Specifické pro prostředky
-V tomto režimu se pro každou kategorii vybranou v nastavení diagnostiky vytvoří jednotlivé tabulky ve vybraném pracovním prostoru. Tato metoda se doporučuje, protože je mnohem jednodušší pracovat s daty v protokolových dotazech, poskytuje lepší zjistitelnost schémat a jejich struktury, zlepšuje výkon v rámci latence příjmu a doby dotazování a možnost udělovat práva RBAC pro konkrétní tabulku. Všechny služby Azure nakonec budou migrovány do režimu specifického pro prostředky. 
+V tomto režimu se pro každou kategorii vybranou v nastavení diagnostiky vytvoří jednotlivé tabulky ve vybraném pracovním prostoru. Tato metoda se doporučuje, protože je mnohem jednodušší pracovat s daty v protokolových dotazech, poskytuje lepší zjistitelnost schémat a jejich struktury, zlepšuje výkon v rámci latence příjmu a doby dotazování a možnost udělovat práva RBAC pro konkrétní tabulku. Všechny služby Azure nakonec budou migrovány do režimu Resource-Specific. 
 
 V předchozím příkladu by se vytvořily tři tabulky:
  
@@ -85,7 +85,7 @@ V předchozím příkladu by se vytvořily tři tabulky:
 
 
 ### <a name="select-the-collection-mode"></a>Výběr režimu kolekce
-Většina prostředků Azure zapíše data do pracovního prostoru v režimu **diagnostiky Azure** nebo **specifického prostředku** , a to bez toho, abyste si zvolili. Podrobnosti o tom, který režim používá, najdete v [dokumentaci ke každé službě](./resource-logs-schema.md) . Všechny služby Azure nakonec budou používat režim specifický pro prostředky. V rámci tohoto přechodu vám některé prostředky umožní vybrat režim v nastavení diagnostiky. Pro všechna nová nastavení diagnostiky zadejte režim specifický pro určitý prostředek, protože to usnadňuje správu dat a může vám pomohou se vyhnout složitým migracím později.
+Většina prostředků Azure zapíše data do pracovního prostoru v režimu **diagnostiky Azure** nebo **specifického prostředku** , a to bez toho, abyste si zvolili. Podrobnosti o tom, který režim používá, najdete v [dokumentaci ke každé službě](./resource-logs-schema.md) . Všechny služby Azure budou nakonec používat režim Resource-Specific. V rámci tohoto přechodu vám některé prostředky umožní vybrat režim v nastavení diagnostiky. Pro všechna nová nastavení diagnostiky zadejte režim specifický pro určitý prostředek, protože to usnadňuje správu dat a může vám pomohou se vyhnout složitým migracím později.
   
    ![Selektor režimu nastavení diagnostiky](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
 
@@ -95,7 +95,7 @@ Většina prostředků Azure zapíše data do pracovního prostoru v režimu **d
 
 Existující nastavení diagnostiky můžete upravit do režimu specifického pro prostředky. V tomto případě zůstanou shromážděná data v tabulce _AzureDiagnostics_ , dokud je neodeberete podle nastavení uchování pro daný pracovní prostor. Ve vyhrazené tabulce budou shromažďována nová data. Použijte operátor [Union](/azure/kusto/query/unionoperator) k dotazování dat napříč oběma tabulkami.
 
-Dál Sledujte Blog o [aktualizacích Azure](https://azure.microsoft.com/updates/) , kde najdete oznámení o službách Azure, které podporují režim specifický pro prostředky.
+Dál Sledujte Blog o [aktualizacích Azure](https://azure.microsoft.com/updates/) , kde najdete oznámení o službách Azure, které podporují režim Resource-Specific.
 
 ### <a name="column-limit-in-azurediagnostics"></a>Omezení počtu sloupců v AzureDiagnostics
 Pro všechny tabulky v Azure Monitorch protokolech je omezení vlastností 500. Po dosažení tohoto limitu budou všechny řádky obsahující data s jakoukoli vlastností mimo první 500 vyhozeny při zpracování času přijímání. Tabulka *AzureDiagnostics* je zvláště náchylná k tomuto limitu, protože obsahuje vlastnosti pro všechny služby Azure, které do ní zapisují.

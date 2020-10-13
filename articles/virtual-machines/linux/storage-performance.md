@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
 ms.openlocfilehash: 650164556223a73a722bc91ecb31491ee98cb8a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91307097"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Optimalizace výkonu na virtuálních počítačích s Lsv2-Series Linux
@@ -97,7 +97,7 @@ Další informace o možnostech zálohování dat v místním úložišti najdet
    Nastavení rq_affinity je menší úprava při použití absolutních maximálních vstupně-výstupních operací za sekundu (IOPS). Jakmile všechno ostatní funguje dobře, zkuste nastavit rq_affinity na 0, abyste viděli, jestli se jedná o rozdíl.
 
 * **Potřebuji změnit nastavení blk_mq?**  
-   RHEL/CentOS 7. x automaticky používá BLK-MQ pro zařízení NVMe. Nejsou nutné žádné změny konfigurace ani nastavení. Nastavení scsi_mod. use_blk_mq je jenom pro SCSI a používá se během Lsv2 Preview, protože zařízení NVMe se na virtuálních počítačích hosta zobrazila jako zařízení SCSI. V současné době se zařízení NVMe zobrazují jako zařízení NVMe, takže nastavení SCSI BLK-MQ není důležité.
+   RHEL/CentOS 7. x automaticky používá BLK-MQ pro zařízení NVMe. Nejsou nutné žádné změny konfigurace ani nastavení. Nastavení scsi_mod. use _blk_mq je pouze pro SCSI a bylo použito během Lsv2 Preview, protože zařízení NVMe byla na virtuálních počítačích hosta zobrazena jako zařízení SCSI. V současné době se zařízení NVMe zobrazují jako zařízení NVMe, takže nastavení SCSI BLK-MQ není důležité.
 
 * **Potřebuji změnit "Fio"?**  
    Pokud chcete získat maximální IOPS s nástrojem pro měření výkonu, jako je FIO ve velikosti virtuálního počítače L64v2 a L80v2, nastavte u každého zařízení NVMe hodnotu rq_affinity na 0.  Tento příkazový řádek například nastaví "rq_affinity" na nulu pro všechna 10 zařízení NVMe ve virtuálním počítači s L80v2:

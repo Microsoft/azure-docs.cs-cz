@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.openlocfilehash: 4ea2f88b02738645af3f8fc32d5fdb99168a1122
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82997378"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Začínáme se hlasovými asistenty ve Windows
@@ -25,8 +25,8 @@ Tento průvodce vás provede jednotlivými kroky pro zahájení vývoje hlasové
 
 Pokud chcete začít vyvíjet hlasového asistenta pro Windows, budete se muset ujistit, že máte správné vývojové prostředí.
 
-- **Visual Studio:** budete muset nainstalovat [Microsoft Visual Studio 2017](https://visualstudio.microsoft.com/), Community Edition nebo novější.
-- **Verze Windows**: počítač s rychlým sestavením Windows Insider Fast Ring pro Windows a verzí Windows SDK Windows Insider.Tento vzorový kód se ověří při práci na Windows Insider verze Build 19025. vb_release_analog .191112-1600 pomocí Windows SDK 19018.Jakékoli sestavení nebo sada SDK nad zadanými verzemi by měly být kompatibilní.
+- **Visual Studio:**   Budete muset nainstalovat [Microsoft Visual Studio 2017](https://visualstudio.microsoft.com/), Community Edition nebo novější.
+- **Verze Windows**: počítač s rychlým sestavením Windows Insider Fast Ring pro Windows a verzí Windows SDK Windows Insider.Tento vzorový kód se ověří při práci na buildu Windows Insider release build 19025.vb_release_analog .191112-1600 pomocí Windows SDK 19018.Jakékoli sestavení nebo sada SDK nad zadanými verzemi by měly být kompatibilní.
 - **Vývojové nástroje pro UWP**: Univerzální platforma Windows vývojové úlohy v aplikaci Visual Studio.Pokud chcete připravit počítač pro vývoj aplikací UWP, podívejte se na stránku s [nastavením](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) pro UWP.
 - **Pracovní mikrofon a zvukový výstup**
 
@@ -34,7 +34,7 @@ Pokud chcete začít vyvíjet hlasového asistenta pro Windows, budete se muset 
 
 Některé prostředky nezbytné pro kompletně přizpůsobeného hlasového agenta ve Windows budou vyžadovat prostředky od Microsoftu. [Ukázka hlasového asistenta UWP](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample) poskytuje ukázkové verze těchto prostředků pro počáteční vývoj a testování, takže tento oddíl není potřebný pro počáteční vývoj.
 
-- **Model klíčových slov:** aktivace hlasu vyžaduje, aby byl v podobě souboru bin model klíčových slov od Microsoftu. Soubor. bin uvedený v ukázce hlasového asistenta UWP je vyškolený pro klíčové slovo contoso.
+- **Model klíčového slova:**   Aktivace hlasu vyžaduje, aby od Microsoftu byl model klíčových slov ve formě souboru. bin. Soubor. bin uvedený v ukázce hlasového asistenta UWP je vyškolený pro klíčové slovo contoso.
 - **Token funkce omezeného přístupu:** Vzhledem k tomu, že rozhraní API ConversationalAgent poskytují přístup ke zvukovým mikrofonům, jsou chráněna omezeními funkcí omezeného přístupu.Pokud chcete použít funkci omezeného přístupu, budete muset získat token funkcí s omezeným přístupem, který je připojený k identitě balíčku vaší aplikace od Microsoftu.
 
 ## <a name="establish-a-dialog-service"></a>Vytvoření služby dialogu

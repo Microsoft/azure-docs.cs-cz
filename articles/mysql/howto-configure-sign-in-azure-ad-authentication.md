@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.openlocfilehash: 0418785fe558503b716ff1e798446fb64db998b1
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87799834"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Použití Azure Active Directory k ověřování pomocí MySQL
@@ -57,7 +57,7 @@ Také jsme otestovali nejběžnější ovladače aplikací, na konci této strá
 
 Jedná se o kroky, které bude uživatel nebo aplikace potřebovat k ověření pomocí služby Azure AD popsané níže:
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Můžete postupovat podle pokynů v částech Azure Cloud Shell, virtuální počítač Azure nebo na místním počítači. Ujistěte se, že máte nainstalované rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 
@@ -126,7 +126,7 @@ mysql -h mydb.mysql.database.azure.com \
 
 Důležité informace při připojování:
 
-* `user@tenant.onmicrosoft.com`je název uživatele nebo skupiny Azure AD, se kterou se snažíte připojit.
+* `user@tenant.onmicrosoft.com` je název uživatele nebo skupiny Azure AD, se kterou se snažíte připojit.
 * Po názvu uživatele nebo skupiny Azure AD vždy připojovat název serveru (např. `@mydb` )
 * Nezapomeňte použít přesný způsob, jakým je zadán název uživatele nebo skupiny Azure AD.
 * V názvech uživatelů a skupin Azure AD se rozlišují velká a malá písmena.
@@ -145,7 +145,7 @@ Pokud chcete do databáze Azure Database for MySQL přidat uživatele Azure AD, 
 2. Přihlaste se ke své instanci Azure Database for MySQL jako uživatel s oprávněními správce Azure AD.
 3. Vytvoří uživatele `<user>@yourtenant.onmicrosoft.com` v Azure Database for MySQL.
 
-**Případě**
+**Příklad:**
 
 ```sql
 CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
@@ -166,7 +166,7 @@ CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShor
 
 Pokud chcete skupině Azure AD povolit přístup k vaší databázi, použijte stejný mechanismus jako u uživatelů, ale místo toho zadejte název skupiny:
 
-**Případě**
+**Příklad:**
 
 ```sql
 CREATE AADUSER 'Prod_DB_Readonly';
@@ -205,7 +205,7 @@ Většina ovladačů je podporovaná, ale nezapomeňte použít nastavení pro o
 * Perl
   * DBD:: MySQL: podporováno
   * NET:: MySQL: nepodporováno
-* Přejít
+* Go
   * ovladač-SQL-Driver: podporováno, přidat `?tls=true&allowCleartextPasswords=true` do připojovacího řetězce
 
 ## <a name="next-steps"></a>Další kroky

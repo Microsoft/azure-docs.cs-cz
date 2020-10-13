@@ -8,10 +8,10 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328629"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Nastavení instance a ověřování Azure pro digitální vlákna (skriptované)
@@ -53,7 +53,7 @@ Tady je postup, jak spustit skript nasazení v Cloud Shell.
 
 1. Vyberte ikonu Odeslat/stáhnout soubory a zvolte nahrát.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Okno Cloud Shell znázorňující výběr ikony nahrávání":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Okno Cloud Shell znázorňující výběr verze prostředí PowerShell":::
 
     Přejděte na soubor _**deploy.ps1**_ na vašem počítači (v _Azure_Digital_Twins_samples > skripty > **deploy.ps1** _) a stiskněte otevřít. Tím se soubor nahraje do Cloud Shell, abyste ho mohli spustit v okně Cloud Shell.
 
@@ -82,7 +82,7 @@ Skript vytvoří instanci digitálních vláken Azure, přiřadí uživatele Azu
 
 Tady je ukázka výstupního protokolu ze skriptu:
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Okno Cloud Shell zobrazující protokol vstupů a výstupů prostřednictvím spuštění skriptu nasazení" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Okno Cloud Shell znázorňující výběr verze prostředí PowerShell" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 Pokud se skript úspěšně dokončí, vysloví se konečný výtisk `Deployment completed successfully` . Jinak vyřešte chybovou zprávu a znovu spusťte skript. Přeskočí kroky, které jste už dokončili, a začněte znovu požádat o vstup v místě, kde jste skončili.
 
@@ -103,7 +103,7 @@ V [Azure Portal](https://portal.azure.com)Najděte instanci digitálních vláke
 
 Výběrem této možnosti se otevře stránka *Přehled* instance. Poznamenejte si jeho *název*, *skupinu prostředků*a *název hostitele*. Později je budete možná potřebovat k identifikaci a připojení k instanci.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Zvýrazňování důležitých hodnot na stránce přehledu instance":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Okno Cloud Shell znázorňující výběr verze prostředí PowerShell":::
 
 ### <a name="collect-app-registration-values"></a>Shromažďovat hodnoty registrace aplikace 
 
@@ -113,7 +113,7 @@ Pokud je chcete najít, přejděte pomocí [tohoto odkazu](https://portal.azure.
 
 Měla by se zobrazit registrace aplikace, kterou jste právě vytvořili v tomto seznamu. Vyberte ho a otevřete jeho podrobnosti:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Zobrazení důležitých hodnot pro registraci aplikace na portálu":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Okno Cloud Shell znázorňující výběr verze prostředí PowerShell":::
 
 Poznamenejte si *ID aplikace (klienta)* a *ID adresáře (tenanta)* **zobrazené na stránce** . Pokud nejste osoba, která bude psát kód pro klientské aplikace, budete muset tyto hodnoty sdílet s osobou, která bude.
 

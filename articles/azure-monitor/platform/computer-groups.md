@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: 217be627f81406f671118d5290cd5f67f52c01d2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86112108"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Skupiny počítačů v Azure Monitor dotazy protokolu
@@ -21,7 +21,7 @@ Skupiny počítačů v Azure Monitor umožňují oborovat [dotazy protokolu](../
 ## <a name="creating-a-computer-group"></a>Vytvoření skupiny počítačů
 Skupinu počítačů můžete v Azure Monitor vytvořit pomocí kterékoli z metod v následující tabulce.  Podrobnosti o jednotlivých metodách jsou k dispozici v následujících částech. 
 
-| Metoda | Description |
+| Metoda | Popis |
 |:--- |:--- |
 | Dotaz protokolu |Vytvořte dotaz protokolu, který vrátí seznam počítačů. |
 | Rozhraní API pro prohledávání protokolů |Pomocí rozhraní API pro prohledání protokolu můžete programově vytvořit skupinu počítačů na základě výsledků dotazu protokolu. |
@@ -50,7 +50,7 @@ Následující tabulka popisuje vlastnosti, které definují skupinu počítač�
 
 | Vlastnost | Popis |
 |:---|:---|
-| Name   | Název dotazu, který se má zobrazit na portálu |
+| Název   | Název dotazu, který se má zobrazit na portálu |
 | Alias funkce | Jedinečný alias, který slouží k identifikaci skupiny počítačů v dotazu. |
 | Kategorie       | Kategorie pro uspořádání dotazů na portálu |
 

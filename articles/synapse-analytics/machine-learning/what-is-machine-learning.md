@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: b72c20cd67aa4792b5e2a2f96dc39e78301c9219
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5e422b5292f77150e2755cb5963e2cd95d148654
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91543460"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939099"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics-workspaces-preview"></a>Funkce Machine Learning ve službě Azure synapse Analytics (verze Preview pro pracovní prostory)
 
@@ -66,7 +66,7 @@ Kromě MLlib lze také použít k vývoji modelů oblíbené knihovny, jako je n
 
 #### <a name="train-models-with-azure-machine-learning-automl"></a>Výuka modelů pomocí Azure Machine Learning AutoML
 
-Dalším způsobem, jak naučit modely strojového učení, které nevyžadují v strojovém učení mnoho předchozích znalostí, je použití AutoML. [AutoML](/azure/machine-learning/concept-automated-mls) je funkce, která automaticky přikládá sadu modelů strojového učení a umožňuje uživateli vybrat nejlepší model na základě konkrétních metrik. Díky bezproblémové integraci s Azure Machine Learning z notebooků Azure synapse můžou uživatelé snadno využít AutoML v synapse s ověřováním průchozích Azure Active Directory.  To znamená, že musíte odkazovat na pracovní prostor Azure Machine Learning a nemusíte zadávat žádné přihlašovací údaje. Tady je [kurz AutoML](../spark/apache-spark-azure-machine-learning-tutorial.md) , který popisuje, jak naučit modely pomocí Azure Machine Learning AutoML ve fondech synapse Spark.
+Dalším způsobem, jak naučit modely strojového učení, které nevyžadují v strojovém učení mnoho předchozích znalostí, je použití AutoML. [AutoML](/azure/machine-learning/concept-automated-ml) je funkce, která automaticky přikládá sadu modelů strojového učení a umožňuje uživateli vybrat nejlepší model na základě konkrétních metrik. Díky bezproblémové integraci s Azure Machine Learning z notebooků Azure synapse můžou uživatelé snadno využít AutoML v synapse s ověřováním průchozích Azure Active Directory.  To znamená, že musíte odkazovat na pracovní prostor Azure Machine Learning a nemusíte zadávat žádné přihlašovací údaje. Tady je [kurz AutoML](../spark/apache-spark-azure-machine-learning-tutorial.md) , který popisuje, jak naučit modely pomocí Azure Machine Learning AutoML ve fondech synapse Spark.
 
 ### <a name="model-deployment-and-scoring"></a>Nasazení a bodování modelu
 

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
 ms.openlocfilehash: bf1664a35562b888f9dd7aacd3b1112058bed664
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797696"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Jekyll ve službě Azure static Web Apps Preview
@@ -96,7 +96,7 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 1. Klikněte na možnost **statické Web Apps (Preview)**.
 
-1. Klikněte na možnost **Vytvořit**.
+1. Klikněte na **Vytvořit**.
 
 1. U **předplatného**přijměte uvedené předplatné nebo v rozevíracím seznamu vyberte nový.
 
@@ -118,7 +118,7 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 1. Pro _větev_ vyberte **hlavní**uzel.
 
-    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Informace o dokončeném GitHubu":::
+    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Podrobnosti vyplněné":::
 
 ### <a name="build"></a>Sestavení
 
@@ -174,7 +174,7 @@ Dále přidáte nastavení konfigurace, které proces sestavení používá k se
 
 1. V okně _přehled_ Azure Portal kliknutím na odkaz _URL_ otevřete nasazenou aplikaci.
 
-   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Nasazená aplikace":::
+   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Podrobnosti vyplněné":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

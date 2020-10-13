@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 37e09612491d41887c5945920488569d3620bf0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85052024"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Skupiny pravidel a pravidla pro počítačový rezervační Firewall webových aplikací
@@ -99,7 +99,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 
 # <a name="owasp-31"></a>[OWASP 3,1](#tab/owasp31)
 
-## <a name="rule-sets"></a><a name="owasp31"></a>Sady pravidel
+## <a name="rule-sets"></a><a name="owasp31"></a> Sady pravidel
 
 ### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-31"></a> <p x-ms-format-detection="none">Obecné</p>
 
@@ -118,9 +118,9 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 
 |RuleId|Description|
 |---|---|
-|913100|Našel se uživatelský agent přidružený ke skeneru zabezpečení.|
-|913101|Našel se uživatelský agent přidružený ke skriptování nebo obecnému klientovi HTTP.|
-|913102|Našel se uživatelský agent přidružený k webovému nástroji nebo bot.|
+|913100|Nalezené User-Agent přidružené ke skeneru zabezpečení|
+|913101|Nalezené User-Agent přidružené ke skriptování nebo obecnému klientovi HTTP|
+|913102|Nalezené User-Agent přidružené k webovému crawleru/bot|
 |913110|Našla se Hlavička požadavku přidružená ke skeneru zabezpečení.|
 |913120|Našel se název souboru/argument pro požadavek přidružený ke skeneru zabezpečení.|
 
@@ -207,7 +207,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |931100|Možný útok RFI (Remote File začlenění) = parametr URL s použitím IP adresy|
 |931110|Možný útok na vzdálený soubor k zahrnutí (RFI) = běžný název parametru s chybou RFI, který používal datovou část adresy URL|
 |931120|Možný útok na vzdálené zahrnutí souborů (RFI) = datová část adresy URL použité pro znak otazníku (?)|
-|931130|Možný útok na vzdálené zahrnutí souborů (RFI) = odkaz mimo doménu/odkaz|
+|931130|Možný útok na RFI (Remote File zařazování) = odkaz na Off-Domain/odkaz|
 
 ### <a name="p-x-ms-format-detectionnonerequest-932-application-attack-rcep"></a><a name="crs932-31"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
@@ -239,10 +239,10 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |933130|Útok injektáže PHP = nalezené proměnné|
 |933131|Útok injektáže PHP: nalezené proměnné|
 |933140|Útok injektáže PHP: našel se vstupně-výstupní Stream.|
-|933150|Útok na injektáže PHP = nalezen název funkce PHP s vysokým rizikem|
-|933151|Útok injektáže PHP: byl nalezen střední-rizikový název funkce PHP.|
-|933160|Útok na injektáže PHP = Nalezeno volání funkce PHP s vysokým rizikem|
-|933161|Útok injektáže PHP: bylo nalezeno volání funkce PHP s nízkou hodnotou.|
+|933150|Útok injektáže PHP = High-Risk nalezen název funkce PHP|
+|933151|Útok injektáže PHP: našel se Medium-Risk název funkce PHP.|
+|933160|Útok injektáže PHP = High-Risk nalezené volání funkce PHP|
+|933161|Útok injektáže PHP: našla se Low-Value volání funkce PHP.|
 |933170|Útok injektáže PHP: vkládání serializovaných objektů|
 |933180|Útok injektáže PHP = Nalezeno volání proměnné funkce|
 |933190|Útok injektáže PHP: našla se koncová značka PHP.|
@@ -259,7 +259,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |941150|Filtr XSS – kategorie 5 = nepovolené atributy HTML|
 |941160|NoScript XSS InjectionChecker: vkládání HTML|
 |941170|NoScript XSS InjectionChecker: injektáže atributu|
-|941180|Klíčová slova zakázaného validátoru uzlů|
+|941180|Node-Validator zakázaná klíčová slova|
 |941190|XSS pomocí šablon stylů|
 |941200|XSS pomocí snímků VML|
 |941210|XSS pomocí nepoužívaného JavaScriptu|
@@ -324,7 +324,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |942432|Omezené zjištění anomálií znaků SQL (args): počet speciálních znaků byl překročen (2).|
 |942440|Zjistila se sekvence komentářů SQL.|
 |942450|Identifikované kódování šestnáctkového formátu SQL|
-|942460|Výstraha detekce anomálií meta znaku – opakující se znaky jiné než Word|
+|942460|Výstraha detekce anomálií Meta-Character – opakované znaky, které nejsou v textu|
 |942470|Útok injektáže SQL|
 |942480|Útok injektáže SQL|
 |942490|Detekuje bingy pro vkládání v klasických rozhraních SQL 3/3|
@@ -334,7 +334,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |RuleId|Description|
 |---|---|
 |943100|Možný útok z relace = nastavení hodnot souboru cookie ve formátu HTML|
-|943110|Možný útok v relaci = název parametru SessionID s názvem odkazující mimo doménu|
+|943110|Možný útok v relaci = název parametru SessionID s Off-Domain odkazujícím|
 |943120|Možný útok s možností záznamu relace = název parametru SessionID bez odkazujícího serveru|
 
 ### <a name="p-x-ms-format-detectionnonerequest-944-application-attack-session-javap"></a><a name="crs944-31"></a> <p x-ms-format-detection="none">POŽADAVEK – 944 – APLIKAČNÍ – ÚTOK – SESSION-JAVA</p>
@@ -347,7 +347,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 
 # <a name="owasp-30"></a>[OWASP 3,0](#tab/owasp30)
 
-## <a name="rule-sets"></a><a name="owasp30"></a>Sady pravidel
+## <a name="rule-sets"></a><a name="owasp30"></a> Sady pravidel
 
 ### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-30"></a> <p x-ms-format-detection="none">Obecné</p>
 
@@ -366,11 +366,11 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 
 |RuleId|Description|
 |---|---|
-|913100|Našel se uživatelský agent přidružený ke skeneru zabezpečení.|
+|913100|Nalezené User-Agent přidružené ke skeneru zabezpečení|
 |913110|Našla se Hlavička požadavku přidružená ke skeneru zabezpečení.|
 |913120|Našel se název souboru/argument pro požadavek přidružený ke skeneru zabezpečení.|
-|913101|Našel se uživatelský agent přidružený ke skriptování nebo obecnému klientovi HTTP.|
-|913102|Našel se uživatelský agent přidružený k webovému nástroji nebo bot.|
+|913101|Nalezené User-Agent přidružené ke skriptování nebo obecnému klientovi HTTP|
+|913102|Nalezené User-Agent přidružené k webovému crawleru/bot|
 
 ### <a name="p-x-ms-format-detectionnonerequest-920-protocol-enforcementp"></a><a name="crs920-30"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
@@ -449,7 +449,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |931100|Možný útok RFI (Remote File začlenění) = parametr URL s použitím IP adresy|
 |931110|Možný útok na vzdálený soubor k zahrnutí (RFI) = běžný název parametru s chybou RFI, který používal datovou část adresy URL|
 |931120|Možný útok na vzdálené zahrnutí souborů (RFI) = datová část adresy URL použité pro znak otazníku (?)|
-|931130|Možný útok na vzdálené zahrnutí souborů (RFI) = odkaz mimo doménu/odkaz|
+|931130|Možný útok na RFI (Remote File zařazování) = odkaz na Off-Domain/odkaz|
 
 ### <a name="p-x-ms-format-detectionnonerequest-932-application-attack-rcep"></a><a name="crs932-30"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
@@ -470,12 +470,12 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |933110|Útok injektáže PHP = nahrání souboru skriptu PHP se našlo.|
 |933120|Útok injektáže PHP = nalezená direktiva konfigurace|
 |933130|Útok injektáže PHP = nalezené proměnné|
-|933150|Útok na injektáže PHP = nalezen název funkce PHP s vysokým rizikem|
-|933160|Útok na injektáže PHP = Nalezeno volání funkce PHP s vysokým rizikem|
+|933150|Útok injektáže PHP = High-Risk nalezen název funkce PHP|
+|933160|Útok injektáže PHP = High-Risk nalezené volání funkce PHP|
 |933180|Útok injektáže PHP = Nalezeno volání proměnné funkce|
-|933151|Útok injektáže PHP = střední-rizikové název funkce PHP|
+|933151|Útok injektáže PHP = Medium-Risk nalezen název funkce PHP|
 |933131|Útok injektáže PHP = nalezené proměnné|
-|933161|Útok injektáže PHP = nalezené volání funkce PHP s nízkou hodnotou|
+|933161|Útok injektáže PHP = Low-Value nalezené volání funkce PHP|
 |933111|Útok injektáže PHP = nahrání souboru skriptu PHP se našlo.|
 
 ### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-30"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
@@ -487,7 +487,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |941130|Filtr XSS – kategorie 3 = vektor atributu|
 |941140|Filtr XSS – kategorie 4 = vektor URI JavaScriptu|
 |941150|Filtr XSS – kategorie 5 = nepovolené atributy HTML|
-|941180|Klíčová slova zakázaného validátoru uzlů|
+|941180|Node-Validator zakázaná klíčová slova|
 |941190|XSS pomocí šablon stylů|
 |941200|XSS pomocí snímků VML|
 |941210|XSS pomocí nepoužívaného JavaScriptu|
@@ -535,21 +535,21 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |942440|Zjistila se sekvence komentářů SQL.|
 |942450|Identifikované kódování šestnáctkového formátu SQL|
 |942251|Detekuje, že se mají injektáže|
-|942460|Výstraha detekce anomálií meta znaku – opakující se znaky jiné než Word|
+|942460|Výstraha detekce anomálií Meta-Character – opakované znaky, které nejsou v textu|
 
 ### <a name="p-x-ms-format-detectionnonerequest-943-application-attack-session-fixationp"></a><a name="crs943-30"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
 |RuleId|Description|
 |---|---|
 |943100|Možný útok z relace = nastavení hodnot souboru cookie ve formátu HTML|
-|943110|Možný útok v relaci = název parametru SessionID s názvem odkazující mimo doménu|
+|943110|Možný útok v relaci = název parametru SessionID s Off-Domain odkazujícím|
 |943120|Možný útok s možností záznamu relace = název parametru SessionID bez odkazujícího serveru|
 
 # <a name="owasp-229"></a>[OWASP 2.2.9](#tab/owasp2)
 
-## <a name="rule-sets"></a><a name="owasp229"></a>Sady pravidel
+## <a name="rule-sets"></a><a name="owasp229"></a> Sady pravidel
 
-### <a name="crs_20_protocol_violations"></a><a name="crs20"></a>crs_20_protocol_violations
+### <a name="crs_20_protocol_violations"></a><a name="crs20"></a> crs_20_protocol_violations
 
 |RuleId|Description|
 |---|---|
@@ -563,7 +563,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |960012|V požadavku POST chybí hlavička Content-Length.|
 |960902|Neplatné použití kódování identity|
 |960022|Očekává se, že hlavička není povolená pro HTTP 1,0.|
-|960020|Hlavička pragma vyžaduje hlavičku Cache-Control pro požadavky HTTP/1.1.|
+|960020|Hlavička pragma vyžaduje Cache-Control záhlaví pro požadavky HTTP/1.1.|
 |958291|Rozsah = pole existuje a začíná na 0.|
 |958230|Range = neplatná hodnota posledního bajtu|
 |958295|Bylo nalezeno více nebo konfliktních dat záhlaví připojení.|
@@ -575,7 +575,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |960901|Neplatný znak v žádosti|
 |960018|Neplatný znak v žádosti|
 
-### <a name="crs_21_protocol_anomalies"></a><a name="crs21"></a>crs_21_protocol_anomalies
+### <a name="crs_21_protocol_anomalies"></a><a name="crs21"></a> crs_21_protocol_anomalies
 
 |RuleId|Description|
 |---|---|
@@ -588,7 +588,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |960904|Požadavek obsahující obsah, ale chybějící záhlaví Content-Type|
 |960017|Hlavička hostitele je numerická IP adresa.|
 
-### <a name="crs_23_request_limits"></a><a name="crs23"></a>crs_23_request_limits
+### <a name="crs_23_request_limits"></a><a name="crs23"></a> crs_23_request_limits
 
 |RuleId|Description|
 |---|---|
@@ -599,7 +599,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |960342|Velikost nahraného souboru je moc velká.|
 |960343|Celkový počet nahraných souborů je moc velký.|
 
-### <a name="crs_30_http_policy"></a><a name="crs30"></a>crs_30_http_policy
+### <a name="crs_30_http_policy"></a><a name="crs30"></a> crs_30_http_policy
 
 |RuleId|Description|
 |---|---|
@@ -609,7 +609,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |960035|Přípona souboru adresy URL je omezená zásadami.|
 |960038|Hlavička protokolu HTTP je omezená zásadami.|
 
-### <a name="crs_35_bad_robots"></a><a name="crs35"></a>crs_35_bad_robots
+### <a name="crs_35_bad_robots"></a><a name="crs35"></a> crs_35_bad_robots
 
 |RuleId|Description|
 |---|---|
@@ -618,11 +618,11 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |990902|Požadavek indikuje, že skener zabezpečení prohledal Web|
 |990012|Prohledávací nástroj neautorizovaných webů|
 
-### <a name="crs_40_generic_attacks"></a><a name="crs40"></a>crs_40_generic_attacks
+### <a name="crs_40_generic_attacks"></a><a name="crs40"></a> crs_40_generic_attacks
 
 |RuleId|Description|
 |---|---|
-|960024|Výstraha detekce anomálií meta znaku – opakující se znaky jiné než Word|
+|960024|Výstraha detekce anomálií Meta-Character – opakované znaky, které nejsou v textu|
 |950008|Vkládání nedokumentovaných značek ColdFusion|
 |950010|Útok injektáže LDAP|
 |950011|Útok injektáže SSI|
@@ -634,7 +634,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |950117|Útok na vzdálené zahrnutí souborů|
 |950118|Útok na vzdálené zahrnutí souborů|
 |950119|Útok na vzdálené zahrnutí souborů|
-|950120|Možný útok na vzdálené zahrnutí souborů (RFI) = odkaz mimo doménu/odkaz|
+|950120|Možný útok na RFI (Remote File zařazování) = odkaz na Off-Domain/odkaz|
 |981133|Pravidlo 981133|
 |981134|Pravidlo 981134|
 |950009|Útok na záznam relace|
@@ -647,7 +647,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |958976|Útok injektáže PHP|
 |958977|Útok injektáže PHP|
 
-### <a name="crs_41_sql_injection_attacks"></a><a name="crs41sql"></a>crs_41_sql_injection_attacks
+### <a name="crs_41_sql_injection_attacks"></a><a name="crs41sql"></a> crs_41_sql_injection_attacks
 
 |RuleId|Description|
 |---|---|
@@ -684,7 +684,7 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |981253|Detekuje injektáže uložených procedur/funkcí MySQL a PostgreSQL.|
 |981251|Detekuje injektáže systému MySQL UDF a další pokusy o manipulaci s daty/strukturou.|
 
-### <a name="crs_41_xss_attacks"></a><a name="crs41xss"></a>crs_41_xss_attacks
+### <a name="crs_41_xss_attacks"></a><a name="crs41xss"></a> crs_41_xss_attacks
 
 |RuleId|Description|
 |---|---|
@@ -789,13 +789,13 @@ Následující skupiny pravidel a pravidla jsou k dispozici při použití firew
 |973329|Filtry v IE XSS – byl zjištěn útok.|
 |973328|Filtry v IE XSS – byl zjištěn útok.|
 
-### <a name="crs_42_tight_security"></a><a name="crs42"></a>crs_42_tight_security
+### <a name="crs_42_tight_security"></a><a name="crs42"></a> crs_42_tight_security
 
 |RuleId|Description|
 |---|---|
 |950103|Útok procházením cest|
 
-### <a name="crs_45_trojans"></a><a name="crs45"></a>crs_45_trojans
+### <a name="crs_45_trojans"></a><a name="crs45"></a> crs_45_trojans
 
 |RuleId|Description|
 |---|---|

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 9a41c5912ec285094c1f47540caf3744ddd4d469
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88958322"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Řešení chyb HTTP z "502 špatné brány" a "503 Služba není dostupná" v Azure App Service
@@ -57,7 +57,7 @@ Některé metriky, které můžete chtít monitorovat pro vaši aplikaci, jsou
 
 ![monitorování aplikace pro řešení chyb HTTP 502 chybných bran a 503 Služba není k dispozici](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Monitorování aplikací v Azure App Service](web-sites-monitor.md)
 * [Zobrazování oznámení o výstrahách](../azure-monitor/platform/alerts-overview.md)

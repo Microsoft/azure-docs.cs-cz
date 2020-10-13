@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8d86728eefc46c74b49ac610e2207ce5e7ae6a9d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289345"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Řízení Azure DevTest Labs infrastruktury – migrace a integrace aplikací
@@ -65,7 +65,7 @@ Použití DevTest Labs k vytvoření vlastního kanálu obrázků v Azure Pipeli
 Návody zajistěte, aby vývojové a testovací virtuální počítače nedokázaly získat přístup k veřejnému Internetu? Existují nějaké Doporučené vzory pro nastavení konfigurace sítě?
 
 ### <a name="answer"></a>Odpověď
-Yes. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
+Ano. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
 
 **Příchozí provoz** – Pokud virtuální počítač nemá veřejnou IP adresu, nemusíte ho kontaktovat internetem. Běžným přístupem je zajistit, že jsou nastavené zásady na úrovni předplatného, takže žádný uživatel nemůže vytvořit veřejnou IP adresu.
 

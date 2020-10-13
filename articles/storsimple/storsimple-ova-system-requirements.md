@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 020208a8b67d248c02fc659d4dc48fa22d333839
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80298809"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Požadavky systému virtuálních polí StorSimple
@@ -91,13 +91,13 @@ Následující tabulka uvádí porty, které je třeba v bráně firewall otevř
 
 | **Číslo portu.<sup>1</sup>** | **V nebo ven** | **Rozsah portů** | **Požadováno** | **Poznámky** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Out |Síť WAN |Ne |Odchozí port se používá pro přístup k Internetu k načtení aktualizací. <br></br>Odchozí webový proxy server je uživatelsky konfigurovatelné. |
+| TCP 80 (HTTP) |Out |Síť WAN |No |Odchozí port se používá pro přístup k Internetu k načtení aktualizací. <br></br>Odchozí webový proxy server je uživatelsky konfigurovatelné. |
 | TCP 443 (HTTPS) |Out |Síť WAN |Ano |Odchozí port se používá pro přístup k datům v cloudu. <br></br>Odchozí webový proxy server je uživatelsky konfigurovatelné. |
 | UDP 53 (DNS) |Out |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server DNS. <br></br> Upozorňujeme, že pokud nasazujete souborový server, doporučujeme použít místní server DNS. |
 | UDP 123 (NTP) |Out |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server NTP.<br></br> Počítejte s tím, že pokud nasazujete souborový server, doporučujeme synchronizovat čas s řadiči domény služby Active Directory. |
-| TCP 80 (HTTP) |V |LAN |Ano |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. <br></br> Všimněte si, že přístup k místnímu uživatelskému rozhraní přes HTTP se automaticky přesměruje na HTTPS. |
-| TCP 443 (HTTPS) |V |LAN |Ano |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. |
-| TCP 3260 (iSCSI) |V |LAN |Ne |Tento port se používá pro přístup k datům přes iSCSI. |
+| TCP 80 (HTTP) |V |Síť LAN |Ano |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. <br></br> Všimněte si, že přístup k místnímu uživatelskému rozhraní přes HTTP se automaticky přesměruje na HTTPS. |
+| TCP 443 (HTTPS) |V |Síť LAN |Ano |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. |
+| TCP 3260 (iSCSI) |V |Síť LAN |No |Tento port se používá pro přístup k datům přes iSCSI. |
 
 <sup>1</sup> na veřejném Internetu není třeba otevřít žádné příchozí porty.
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
 ms.openlocfilehash: da5eb43f8bc2fc8b4ac213f6ff90464de5995a47
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87553643"
 ---
-# <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Šablony mapování Azure IoT Connector pro FHIR (Preview)
+# <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Šablony mapování konektoru Azure IoT pro FHIR (Preview)
 Tento článek podrobně popisuje, jak nakonfigurovat Azure IoT Connector pro FHIR * pomocí mapovacích šablon.
 
 Konektor Azure IoT pro FHIR vyžaduje dva typy šablon mapování založených na JSON. Prvním typem je **mapování zařízení**, které zodpovídá za mapování datových částí zařízení odeslaných do `devicedata` koncového bodu centra událostí Azure. Extrahuje typy, identifikátory zařízení, datum a čas měření a hodnoty měření. Druhý typ, **mapování FHIR**, řídí mapování pro prostředek FHIR. Umožňuje konfiguraci délky období pozorování, datového typu FHIR, který slouží k ukládání hodnot, a kódů terminologie. 
@@ -39,7 +39,7 @@ Níže je uveden koncepční příklad toho, co se děje během normalizace.
 
 ![Příklad normalizace](media/concepts-iot-mapping-templates/normalization-example.png)
 
-Samotná datová část obsahu je zpráva centra událostí Azure, která se skládá ze tří částí: body, vlastnosti a SystemProperties. `Body`Je pole bajtů reprezentující řetězec kódovaný v kódování UTF-8. Při vyhodnocování šablony je pole bajtů automaticky převedeno na hodnotu řetězce. `Properties`je kolekce hodnot klíče pro použití tvůrcem zprávy. `SystemProperties`je také kolekce hodnot klíče vyhrazená architekturou centra událostí Azure s položkami, které automaticky naplní.
+Samotná datová část obsahu je zpráva centra událostí Azure, která se skládá ze tří částí: body, vlastnosti a SystemProperties. `Body`Je pole bajtů reprezentující řetězec kódovaný v kódování UTF-8. Při vyhodnocování šablony je pole bajtů automaticky převedeno na hodnotu řetězce. `Properties` je kolekce hodnot klíče pro použití tvůrcem zprávy. `SystemProperties` je také kolekce hodnot klíče vyhrazená architekturou centra událostí Azure s položkami, které automaticky naplní.
 
 ```json
 {
@@ -352,7 +352,7 @@ CodeValueFhirTemplate je v současné době jedinou šablonou podporovanou v map
 |**Součásti []. Kódování**|Jeden nebo více [kódů](http://hl7.org/fhir/datatypes-definitions.html#coding) , které mají být použity pro komponentu.
 |**Součásti []. Osa**|Hodnota, která má být extrahována a reprezentována v komponentě. Další informace naleznete v tématu [šablony typů hodnot](#valuetypes).
 
-### <a name="value-type-templates"></a>Šablony typů hodnot<a name="valuetypes"></a>
+### <a name="value-type-templates"></a>Šablony typů hodnot <a name="valuetypes"></a>
 Níže jsou uvedeny aktuálně podporované šablony typů hodnot. V budoucnu mohou být přidány další šablony.
 #### <a name="sampleddata"></a>SampledData
 Představuje datový typ [SampledData](http://hl7.org/fhir/datatypes.html#SampledData) FHIR. Měření měření se zapisují do datového proudu, který začíná v určitém časovém okamžiku, a zvyšuje se vpřed pomocí definovaného období. Pokud není k dispozici žádná hodnota, `E` zapíše se do datového proudu. Pokud je toto období takové, že dvě další hodnoty zaujímají stejnou pozici v datovém proudu, použije se nejnovější hodnota. Stejná logika se použije, když se aktualizuje sledování pomocí SampledData.

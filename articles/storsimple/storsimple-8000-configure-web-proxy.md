@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 62c052f2293c670b43f1c77363c8bbbcc03d0de2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514287"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Konfigurace webového proxy serveru pro zařízení StorSimple
@@ -143,7 +143,7 @@ Pokud je nastavení webového proxy serveru nesprávně nakonfigurované, zobraz
 |:--- |:--- |:--- |:--- |
 | 1. |0x80070001 |Příkaz se spouští z pasivního kontroleru a není schopen komunikovat s aktivním řadičem. |Spusťte příkaz na aktivním řadiči. Chcete-li spustit příkaz z pasivního kontroleru, je nutné opravit připojení z pasivního řadiče na aktivní. Pokud je toto připojení přerušeno, je třeba zahájit podpora Microsoftu. |
 | 2. |0x800710dd – identifikátor operace není platný. |Nastavení proxy serveru není na StorSimple Cloud Appliance podporováno. |Nastavení proxy serveru není na StorSimple Cloud Appliance podporováno. Tato nastavení se dají nakonfigurovat jenom na fyzickém zařízení StorSimple. |
-| 3. |0x80070057 – neplatný parametr |Jeden z parametrů poskytnutých pro nastavení proxy serveru není platný. |Identifikátor URI není uveden ve správném formátu. Použijte následující formát:`http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
+| 3. |0x80070057 – neplatný parametr |Jeden z parametrů poskytnutých pro nastavení proxy serveru není platný. |Identifikátor URI není uveden ve správném formátu. Použijte následující formát: `http://<IP address or FQDN of the web proxy server>:<TCP port number>` |
 | 4. |0x800706ba – Server RPC není k dispozici. |Hlavní příčinou je jedna z následujících:</br></br>Cluster není zapnutý. </br></br>Služba DataPath není spuštěna.</br></br>Příkaz se spouští z pasivního kontroleru a nemůže komunikovat s aktivním řadičem. |Zapojte se podpora Microsoftu a ujistěte se, že je cluster zapnutý a že je spuštěná služba DataPath.</br></br>Spusťte příkaz z aktivního řadiče. Pokud chcete spustit příkaz z pasivního kontroleru, je nutné zajistit, aby pasivní kontrolér mohl komunikovat s aktivním řadičem. Pokud je toto připojení přerušeno, je třeba zahájit podpora Microsoftu. |
 | 5. |0X800706be – volání RPC selhalo. |Cluster je mimo provoz. |Zapojte se podpora Microsoftu a zajistěte, aby byl cluster zapnutý. |
 | 6. |0x8007138f – prostředek clusteru se nenašel. |Prostředek clusteru služby platformy se nenašel. K tomu může dojít v případě, že instalace nebyla správná. |Možná budete muset na svém zařízení provést obnovení továrního nastavení. Možná budete muset vytvořit prostředek platformy. O dalších krocích se poraďte s podporou Microsoftu. |

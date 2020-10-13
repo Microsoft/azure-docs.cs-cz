@@ -4,10 +4,10 @@ description: Tento článek ukazuje, jak filtrovat události (podle typu událos
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 99fb00f99a055033ccfcd99e32a52d423878fb44
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105553"
 ---
 # <a name="filter-events-for-event-grid"></a>Filtrovat události pro Event Grid

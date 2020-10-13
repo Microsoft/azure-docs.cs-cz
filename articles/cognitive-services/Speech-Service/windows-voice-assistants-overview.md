@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.openlocfilehash: fbcb262fee6a2cc62bfe64e8a8589c92b4fe2b17
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82997444"
 ---
 # <a name="voice-assistants-on-windows"></a>Hlasové asistenti ve Windows
@@ -47,7 +47,7 @@ Při přijetí požadavku z AAR služba na pozadí spustí aplikaci. Aplikace ob
 
 Pokud aplikace úspěšně ověří klíčové slovo, může vytvořit žádost, která se zobrazí v popředí. Po úspěšném dokončení tohoto požadavku aplikace zobrazí uživatelské rozhraní a pokračuje v interakci s uživatelem.
 
-AAR stále signalizuje aktivní aplikace, když je jejich klíčové slovo mluvené. Místo signalizace metodou životního cyklu v `App.xaml.cs`, ale signalizuje prostřednictvím události v rozhraních ConversationalAgent API.
+AAR stále signalizuje aktivní aplikace, když je jejich klíčové slovo mluvené. Místo signalizace metodou životního cyklu v `App.xaml.cs` , ale signalizuje prostřednictvím události v rozhraních ConversationalAgent API.
 
 ### <a name="keyword-verification"></a>Ověření klíčového slova
 

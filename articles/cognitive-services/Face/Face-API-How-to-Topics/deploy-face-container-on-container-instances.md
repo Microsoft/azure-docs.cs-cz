@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
 ms.openlocfilehash: 5fbe316580cfa2ca280a2587536df037146e8d02
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86538118"
 ---
 # <a name="deploy-the-face-container-to-azure-container-instances"></a>Nasazení kontejneru obličeje do Azure Container Instances
 
 > [!IMPORTANT]
-> Bylo dosaženo limitu pro uživatele kontejneru obličeje. V současné době nepřijímáme nové aplikace pro kontejner obličeje.
+> Došlo k dosažení limitu počtu uživatelů kontejnerů Rozpoznávání tváře. V současné době nepřijímáme nové přihlášky ke kontejnerům Rozpoznávání tváře.
 
 Přečtěte si, jak nasadit kontejner Cognitive Services [obličeje](../face-how-to-install-containers.md) do Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/). Tento postup ukazuje vytvoření prostředku Azure Face. Pak se podíváme na navýšení přidružené image kontejneru. Nakonec zvýrazníme možnost cvičení těchto dvou z prohlížeče. Pomocí kontejnerů můžete před správou infrastruktury místo toho, aby se zaměřily na vývoj aplikací, posunout pozornost vývojářů.
 

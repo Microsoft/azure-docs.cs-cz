@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5ca65a428af02eaf5ae6ac461006c720da4461bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5aafaa02f503582bd0050f8a6389d78b52eaa76
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538176"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939149"
 ---
 # <a name="cloud-tiering-overview"></a>Přehled vrstvení cloudu
 Vrstvení cloudu je volitelná funkce Azure File Sync, ve které jsou často používané soubory ukládány do mezipaměti místně na serveru, zatímco všechny ostatní soubory jsou vrstveny do souborů Azure na základě nastavení zásad. Když je soubor vrstvený, Azure File Sync filtr systému souborů (StorageSync.sys) nahradí soubor místně s ukazatelem nebo bodem rozboru. Bod rozboru představuje adresu URL souboru ve službě soubory Azure. Vrstvený soubor má atribut offline i atribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastavený v systému souborů NTFS, aby aplikace třetích stran mohli bezpečně identifikovat vrstvené soubory.
@@ -48,9 +48,9 @@ U agentů verze 9 a novějších je minimální velikost souboru na vrstvu zalo�
 |8 KB (8192)                 | 16 kB   |
 |16 KB (16384)               | 32 KB   |
 |32 KB (32768)               | 64 kB   |
-|64 KB (65536) a větší    | 128 kB  |
+|64 KB (65536)    | 128 kB  |
 
-S Windows serverem 2019 a agentem Azure File Sync verze 12 (budoucí verze agenta) se podporuje i velikost clusteru až do velikosti 2 MB a vrstvení na tyto větší velikosti clusterů funguje stejným způsobem. Starší verze operačních systémů nebo agentů podporují velikosti clusterů až do 64 KB, ale i přes tuto úroveň nefungují.
+Velikosti clusterů až do 64 KB se v současné době podporují, ale u větších velikostí nefunguje vrstva cloudu.
 
 Všechny systémy souborů používané systémem Windows organizují pevný disk na základě velikosti clusteru (označované také jako velikost alokační jednotky). Velikost clusteru představuje nejmenší množství místa na disku, které lze použít k uložení souboru. Když velikosti souborů nejdou na sudý násobek velikosti clusteru, je potřeba použít další místo pro uložení souboru do další násobky velikosti clusteru.
 

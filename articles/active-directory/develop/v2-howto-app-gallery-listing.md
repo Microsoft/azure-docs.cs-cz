@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.openlocfilehash: dc271fa768bee66107e66a1b8d4f16c1188ce418
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439740"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Publikování aplikace v galerii aplikací Azure AD
@@ -72,15 +72,15 @@ Pokud chcete zobrazit seznam aplikací v galerii aplikací Azure AD, musíte imp
 
 V následující tabulce jsou porovnávány hlavní standardy: Otevřete ověřování 2,0 (OAuth 2,0) s OpenID Connect (OIDC), Security Assertion Markup Language (SAML) a specifikace Web Services Federation (WS-dodávání).
 
-| Schopnost| OAuth/OIDC| SAML/WS – podáváno |
+| Schopnost| OAuth/OIDC| SAML/WS-Fed |
 | - |-|-|
 | Webové jednotné přihlašování| √| √ |
 | Jednotné odhlašování na základě webu| √| √ |
 | Jednotné přihlašování prostřednictvím mobilního telefonu| √| √* |
 | Jednotné odhlašování pomocí mobilních zařízení| √| √* |
-| Zásady podmíněného přístupu pro mobilní aplikace| √| X |
-| Bezproblémové možnosti vícefaktorového ověřování pro mobilní aplikace| √| X |
-| Přístup Microsoft Graph| √| X |
+| Zásady podmíněného přístupu pro mobilní aplikace| √| × |
+| Bezproblémové možnosti vícefaktorového ověřování pro mobilní aplikace| √| × |
+| Přístup Microsoft Graph| √| × |
 
 *, Ale Microsoft neposkytuje ukázky ani doprovodné materiály.
 
@@ -96,7 +96,7 @@ OAuth 2,0 je [standardní](https://oauth.net/2/) protokol pro autorizaci. OpenID
 **Některé věci, které je potřeba zvážit**
 - Pokud jste už u své aplikace implementovali jednotné přihlašování založené na SAML, možná nebudete chtít implementovat nový standard, abyste mohli aplikaci v galerii získat.
 
-### <a name="saml-20-or-ws-fed"></a>SAML 2,0 nebo WS-dodávání
+### <a name="saml-20-or-ws-fed"></a>SAML 2,0 nebo WS-Fed
 
 SAML je vyspělý a široce přijatý [Standard jednotného přihlašování](https://www.oasis-open.org/standards#samlv2.0) pro webové aplikace. Další informace o tom, jak Azure používá SAML, najdete v tématu [jak Azure používá protokol SAML](active-directory-saml-protocol-reference.md). 
 
@@ -143,8 +143,8 @@ Pokud vaše aplikace podporuje SAML 2,0, můžete ji integrovat přímo s klient
 
 Microsoft neposkytuje ani nedoporučuje knihovny pro implementace SAML. K dispozici je celá řada Open Source knihoven.
 
-### <a name="implement-ws-fed"></a>Implementace WS-krmen
-Další informace o WS-dodávání v ASP.NET Core najdete v tématu [ověřování uživatelů pomocí WS-Federation v ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation).
+### <a name="implement-ws-fed"></a>Implementovat WS-Fed
+Další informace o WS-Fed v ASP.NET Core najdete v tématu [ověřování uživatelů pomocí WS-Federation v ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation).
 
 ### <a name="implement-password-vaulting"></a>Implementace trezoru hesel
 
@@ -238,7 +238,7 @@ Pokud chcete přidat aplikaci do seznamu v galerii pomocí OpenID Connect, vyber
 
 Pokud chcete přidat aplikaci do seznamu v galerii pomocí **SAML 2,0** nebo **WS-** dodávání, vyberte **SAML 2.0/WS-** dodaný, jak je znázorněno na obrázku.
 
-![Výpis aplikace SAML 2,0 nebo WS-v galerii](./media/howto-app-gallery-listing/saml.png)
+![Výpis aplikace SAML 2,0 nebo WS-Fed v galerii](./media/howto-app-gallery-listing/saml.png)
 
 Pokud chcete přidat aplikaci do seznamu v galerii pomocí jednotného přihlašování k heslům, vyberte **heslo SSO** , jak je znázorněno na obrázku.
 
@@ -260,7 +260,7 @@ Existující aplikaci Galerie můžete aktualizovat nebo odebrat na [portálu Mi
 
 ### <a name="timelines"></a>Časové osy
 
-Časová osa pro proces výpisu aplikace SAML 2,0 nebo WS-nakrmená v galerii je 7 až 10 pracovních dnů.
+Časová osa pro proces výpisu aplikace SAML 2,0 nebo WS-Fed v galerii je 7 až 10 pracovních dnů.
 
 ![Časová osa pro výpis aplikace SAML v galerii](./media/howto-app-gallery-listing/timeline.png)
 

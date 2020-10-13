@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962549"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Použití interního Load Balancer s App Service Environment
@@ -46,7 +46,7 @@ K dispozici jsou některé věci, které nemůžete použít při použití inte
 Vytvoření pomocného mechanismu pro interního nástroje se neliší od normálního vytváření pomocného mechanismu. Podrobnější diskuzi o vytváření pomocného mechanismu řízení najdete v tématu [jak vytvořit App Service Environment][HowtoCreateASE]. Proces vytvoření interního nástroje pomocného mechanismu je stejný mezi vytvořením virtuální sítě během vytváření pomocného procesu nebo výběrem již existující virtuální sítě. Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatížení postupujte takto: 
 
 1. V Azure Portal vyberte **vytvořit prostředek-> web a mobilní zařízení-> App Service Environment**.
-2. Vyberte předplatné.
+2. Vyberte své předplatné.
 3. Vyberte nebo vytvořte skupinu prostředků.
 4. Vyberte nebo vytvořte virtuální síť.
 5. Pokud vybíráte virtuální síť, vytvořte podsíť.
@@ -65,7 +65,7 @@ Vytvoření aplikace v pomocném okně interního nástroje je stejné jako vytv
 
 1. V Azure Portal vyberte **vytvořit prostředek-> web a mobilní zařízení-> web** nebo **mobilní** **aplikace nebo aplikaci API**.
 2. Zadejte název aplikace.
-3. Vyberte předplatné.
+3. Vyberte své předplatné.
 4. Vyberte nebo vytvořte skupinu prostředků.
 5. Vyberte nebo vytvořte plán App Service (ASP). Pokud vytváříte nové prostředí ASP, jako umístění vyberte svůj pomocným mechanismem a vyberte fond pracovních procesů, ve kterém chcete vytvořit ASP. Při vytváření ASP vyberete jako umístění a fond pracovních procesů správce přidaných objektů. Když zadáte název aplikace, uvidíte, že subdoména v názvu vaší aplikace je nahrazena subdoménou pro váš přístup k pomocnému programu. 
 6. Vyberte **Vytvořit**. Nezapomeňte zaškrtnout políčko **Připnout na řídicí panel** , pokud chcete, aby se aplikace zobrazovala na řídicím panelu. 

@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: 4650df71acb088fafc1280d31d9abfb398e06741
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284485"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption pro virtuální počítače s Windows 
@@ -86,7 +86,7 @@ Následující tabulka popisuje některé běžné výrazy používané v dokume
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Rychlý Start – vytvoření a šifrování virtuálního počítače s Windows pomocí Azure CLI](disk-encryption-cli-quickstart.md)
+- [Rychlý Start – vytvoření a šifrování virtuálního počítače s Windows pomocí Azure CLI ](disk-encryption-cli-quickstart.md)
 - [Rychlý Start – vytvoření a šifrování virtuálního počítače s Windows pomocí Azure PowerShellu](disk-encryption-powershell-quickstart.md)
 - [Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows](disk-encryption-windows.md)
 - [Skript CLI pro Azure Disk Encryption předpoklady](https://github.com/ejarvi/ade-cli-getting-started)

@@ -13,10 +13,10 @@ ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
 ms.openlocfilehash: 2d596b6d0e291d197146bf5e00827d82b74c125c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89434533"
 ---
 # <a name="single-page-application-app-registration"></a>Jednostránkové aplikace: registrace aplikace
@@ -29,7 +29,7 @@ K registraci jednostránkové aplikace (SPA) na platformě Microsoft Identity pr
 
 U aplikací založených na MSAL.js 1,0 a 2,0 začněte provedením následujících kroků a vytvořte prvotní registraci aplikace.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud má váš účet přístup k více klientům, v horní nabídce vyberte filtr **adresář + předplatné** a pak vyberte tenanta, který by měl obsahovat registraci aplikace, kterou chcete vytvořit.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Pokud má váš účet přístup k více klientům, v horní nabídce vyberte filtr **adresář + předplatné** a pak vyberte tenanta, který by měl obsahovat registraci aplikace, kterou chcete vytvořit.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**, zadejte **název** aplikace a zvolte **podporované typy účtů** pro aplikaci. Nezadávejte **identifikátor URI přesměrování**. **NOT** Popis různých typů účtů najdete v tématu [Registrace nové aplikace pomocí Azure Portal](quickstart-register-app.md).

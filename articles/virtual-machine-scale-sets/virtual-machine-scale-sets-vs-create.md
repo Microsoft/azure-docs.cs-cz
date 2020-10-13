@@ -10,10 +10,10 @@ ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 2db281f1b3278e37deca8486971a7f7a83f85ccf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86503077"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Jak vytvořit sadu škálování virtuálního počítače pomocí sady Visual Studio
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak nasadit sadu škálování virtuálních poč�
 
 Nasazení skupiny prostředků Azure je způsob, jak seskupit a publikovat sadu souvisejících prostředků Azure v rámci jediné operace nasazení. Další informace najdete v tématu [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít nasazovat Virtual Machine Scale Sets v aplikaci Visual Studio, potřebujete následující požadavky:
 
@@ -34,7 +34,7 @@ Chcete-li začít nasazovat Virtual Machine Scale Sets v aplikaci Visual Studio,
 >[!NOTE]
 >Tento článek používá sadu Visual Studio 2019 se sadou [Azure SDK 2,8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/).
 
-## <a name="create-a-project"></a>Vytvořit projekt<a name="creating-a-project"></a> 
+## <a name="create-a-project"></a>Vytvořit projekt <a name="creating-a-project"></a> 
 
 1. Otevřete Visual Studio a vyberte **vytvořit nový projekt**.
 
@@ -82,7 +82,7 @@ Nasazením šablony Azure Resource Manager vytvořte prostředek sady škálová
 
    ![Výstup zobrazuje výsledky](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
 
-## <a name="explore-your-virtual-machine-scale-set"></a>Prozkoumejte sadu škálování virtuálního počítače<a name="exploring-your-virtual-machine-scale-set"></a>
+## <a name="explore-your-virtual-machine-scale-set"></a>Prozkoumejte sadu škálování virtuálního počítače <a name="exploring-your-virtual-machine-scale-set"></a>
 
 Vyberte **Zobrazit**  >  **Průzkumníka cloudu** a zobrazte novou sadu škálování virtuálního počítače. V případě potřeby použijte **Aktualizovat vše**.
 

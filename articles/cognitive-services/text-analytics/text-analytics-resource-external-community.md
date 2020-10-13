@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
 ms.openlocfilehash: 79bbdd109d005b7c6de293aebf50433fb7ea1d91
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87291643"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Obsah komunitního externího & pro službu pro rozpoznávání Analýza textu
@@ -51,7 +51,7 @@ ms.locfileid: "87291643"
 
 Hledáte informace o funkci nebo případu použití, které nepokrýváme? V [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics)si můžete vyžádat nebo hlasovat. 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
  [StackOverflow: Azure rozhraní API pro analýzu textu](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow: Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc
 ms.openlocfilehash: 46d3ad6afb1761ca9503676ad2176482b7e4530e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260751"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných potíží se službou Azure Container Instances
@@ -45,7 +45,7 @@ Pokud zadáte obrázek, který Azure Container Instances nepodporuje, `OsVersion
 }
 ```
 
-K této chybě nejčastěji dochází při nasazování bitových kopií Windows, které jsou založené na pololetním kanálu verze 1709 nebo 1803, což není podporováno. Podporované image Windows v Azure Container Instances najdete v tématu [Nejčastější dotazy](container-instances-faq.md#what-windows-base-os-images-are-supported).
+K této chybě nejčastěji dochází při nasazování bitových kopií systému Windows, které jsou založené na Semi-Annualovém kanálu verze 1709 nebo 1803, což není podporováno. Podporované image Windows v Azure Container Instances najdete v tématu [Nejčastější dotazy](container-instances-faq.md#what-windows-base-os-images-are-supported).
 
 ### <a name="unable-to-pull-image"></a>Nelze načíst obrázek.
 
@@ -204,7 +204,7 @@ Azure Container Instances nevystavuje přímý přístup k podkladové infrastru
 
 Azure Container Instances ještě nepodporuje mapování portů jako s normální konfigurací Docker. Pokud zjistíte, že IP adresa skupiny kontejnerů není dostupná, pokud se domníváte, že by měla být, ujistěte se, že jste nakonfigurovali image kontejneru, aby naslouchala stejným portům, které zveřejníte ve skupině kontejnerů s `ports` vlastností.
 
-Pokud chcete potvrdit, že Azure Container Instances může naslouchat na portu, který jste nakonfigurovali v imagi kontejneru, otestujte nasazení `aci-helloworld` image, která port zveřejňuje. Aplikaci také spusťte `aci-helloworld` , aby naslouchala na portu. `aci-helloworld`přijme volitelnou proměnnou prostředí `PORT` pro přepsání výchozího portu 80, na kterém naslouchá. Například pro otestování portu 9000 nastavte [proměnnou prostředí](container-instances-environment-variables.md) při vytváření skupiny kontejnerů:
+Pokud chcete potvrdit, že Azure Container Instances může naslouchat na portu, který jste nakonfigurovali v imagi kontejneru, otestujte nasazení `aci-helloworld` image, která port zveřejňuje. Aplikaci také spusťte `aci-helloworld` , aby naslouchala na portu. `aci-helloworld` přijme volitelnou proměnnou prostředí `PORT` pro přepsání výchozího portu 80, na kterém naslouchá. Například pro otestování portu 9000 nastavte [proměnnou prostředí](container-instances-environment-variables.md) při vytváření skupiny kontejnerů:
 
 1. Nastavte skupinu kontejnerů k vystavení portu 9000 a předejte číslo portu jako hodnotu proměnné prostředí. Příklad je naformátován pro prostředí bash shell. Pokud dáváte přednost jinému prostředí, například PowerShellu nebo příkazovému řádku, budete muset odpovídajícím způsobem upravit přiřazení proměnné.
     ```azurecli

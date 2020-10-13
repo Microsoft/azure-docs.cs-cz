@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2020
 ms.author: alsin
 ms.openlocfilehash: 54d703b8a493610174f00844cd0736f65f3ee541
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87052169"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux ve službě Azure na základě vlastních předplatných zlatých imagí
@@ -34,7 +34,7 @@ V Azure jsou k dispozici image Red Hat Enterprise Linux (RHEL) prostřednictvím
 - Image se řídí aktuálními zásadami popsanými v [Red Hat Enterprise Linux imagí v Azure](./redhat-images.md).
 - Standardní zásady podpory se vztahují na virtuální počítače vytvořené z těchto imagí.
 - Virtuální počítače zřízené z imagí Red Hat Gold nenesou RHEL poplatky spojené s imagemi RHEL s průběžnými platbami.
-- Obrázky jsou neoprávněné. K registraci a přihlášení k odběru virtuálních počítačů za účelem přímého získání aktualizací ze Red Hat je nutné použít Správce předplatného Red Hat.
+- Obrázky jsou neoprávněné. K registraci a přihlášení k odběru virtuálních počítačů za účelem přímého získání aktualizací ze Red Hat je nutné použít Red Hat Subscription-Manager.
 - V současné době není možné dynamicky přepínat mezi BYOS a modelem fakturace s průběžnými platbami pro Image Linux. Chcete-li přepnout model fakturace, je nutné znovu nasadit virtuální počítač z příslušné bitové kopie.
 
 >[!NOTE]
@@ -120,7 +120,7 @@ Následující pokyny vás provedou procesem prvotního nasazení pro virtuáln�
     az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest
     ```
 
-1. Připojte se k VIRTUÁLNÍmu počítači přes SSH a ověřte, jestli máte neoprávněnou image. Chcete-li provést tento krok, spusťte příkaz `sudo yum repolist` . Pro RHEL 8 použijte `sudo dnf repolist` . Výstup vás vyzve k použití Správce předplatného k registraci virtuálního počítače pomocí Red Hat.
+1. Připojte se k VIRTUÁLNÍmu počítači přes SSH a ověřte, jestli máte neoprávněnou image. Chcete-li provést tento krok, spusťte příkaz `sudo yum repolist` . Pro RHEL 8 použijte `sudo dnf repolist` . Výstup vás vyzve k použití Subscription-Manager k registraci virtuálního počítače pomocí Red Hat.
 
 >[!NOTE]
 >V RHEL 8 `dnf` a `yum` jsou zaměnitelné. Další informace najdete v příručce pro [správce RHEL 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index).

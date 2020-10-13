@@ -12,10 +12,10 @@ ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
 ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88691458"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: prediktivní údržba s Cognitive Services pro velké objemy dat
@@ -28,7 +28,7 @@ Hypotetickým scénářem je napájecí závod, ve kterém zařízení IoT monit
 
 V datech v náhodných frekvencích by se mohlo jednat o odlehlé hodnoty. V těchto situacích budou hodnoty ot./min. až do vypínání a pro ochranu okruhu až MW. Nápadem je zobrazit data ve stejnou dobu, ale s různými signály.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Pracovní prostor Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) nakonfigurovaný s [fondem Spark](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)
@@ -100,9 +100,9 @@ Tato buňka by měla vracet výsledek, který vypadá takto:
 
 | časové razítko           |   value | deviceId   | Anomálie   |
 |:--------------------|--------:|:-----------|:------------|
-| 2020-05-01 18:33:51 |    3174 | vývoj – 7      | Ne       |
-| 2020-05-01 18:33:52 |    2976 | vývoj – 7      | Ne       |
-| 2020-05-01 18:33:53 |    2714 | vývoj – 7      | Ne       |
+| 2020-05-01 18:33:51 |    3174 | vývoj – 7      | Nepravda       |
+| 2020-05-01 18:33:52 |    2976 | vývoj – 7      | Nepravda       |
+| 2020-05-01 18:33:53 |    2714 | vývoj – 7      | Nepravda       |
 
 
  ## <a name="visualize-anomalies-for-one-of-the-devices"></a>Vizualizace anomálií pro jedno ze zařízení

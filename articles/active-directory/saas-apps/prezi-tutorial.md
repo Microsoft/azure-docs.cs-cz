@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 2f3e540174643f20c87396b8568f6e5b0a1ab16d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658941"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí Prezi
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Prezi s Azure Active Directory (Azure 
 
 Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -76,7 +76,7 @@ Postup při povolení jednotného přihlašování služby Azure AD v Azure Port
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Prezi** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu **Upravit** a upravte nastavení **základní konfigurace SAML**.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte ikonu **Upravit** a upravte nastavení **základní konfigurace SAML**.
 
    ![Upravit základní nastavení konfigurace SAML](common/edit-urls.png)
 
@@ -99,7 +99,7 @@ Postup při povolení jednotného přihlašování služby Azure AD v Azure Port
     | given_name | User. křestní jméno |
     | family_name | User. příjmení |
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **certifikát (Base64)**. Vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)**. Vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -145,9 +145,9 @@ V této části povolíte B. Simon používat jednotné přihlašování Azure t
 
     ![Karta nastavení](./media/prezi-tutorial/settings-image.png)
 
-1. V části **jednotné přihlašování (SSO)** vyberte přepínač a povolte jednotné přihlašování.
+1. Pokud chcete povolit jednotné přihlašování, přepněte do části **Single Sign-On (SSO)** a zapněte přepínač.
     
-    ![Přepínač jednotného přihlašování (SSO)](./media/prezi-tutorial/single-signon.png)
+    ![Přepínač jednotného Sign-On (SSO)](./media/prezi-tutorial/single-signon.png)
 
 1. V části **jednotné přihlašování (SSO)** použijte následující postup:
 
@@ -171,7 +171,7 @@ V této části otestujete konfiguraci služby Azure AD SSO pomocí přístupov�
 
 Když na přístupovém panelu vyberete dlaždici Prezi, měli byste se automaticky přihlásit k účtu Prezi, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)

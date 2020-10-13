@@ -4,13 +4,13 @@ description: V tomto článku se dozvíte, jak nasadit aplikaci Service Fabric s
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: 79d8654733b580be96d59e78f31105077929ac78
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260077"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Nasazení aplikace Service Fabric s uživatelem přiřazenou spravovanou identitou
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Nasazení aplikace Service Fabric se spravovanou identitou User-Assigned
 
 Chcete-li nasadit aplikaci Service Fabric se spravovanou identitou, musí být aplikace nasazena prostřednictvím Azure Resource Manager, obvykle se šablonou Azure Resource Manager. Další informace o tom, jak nasadit aplikaci Service Fabric prostřednictvím Azure Resource Manager, najdete v tématu [Správa aplikací a služeb jako Azure Resource Manager prostředků](service-fabric-application-arm-resource.md).
 
@@ -21,9 +21,9 @@ Chcete-li nasadit aplikaci Service Fabric se spravovanou identitou, musí být a
 > Nasazení aplikace Service Fabric se spravovanou identitou podporuje verze rozhraní API `"2019-06-01-preview"` . Můžete použít také stejnou verzi rozhraní API pro typ aplikace, verzi typu aplikace a prostředky služby.
 >
 
-## <a name="user-assigned-identity"></a>Identita přiřazená uživatelem
+## <a name="user-assigned-identity"></a>User-Assigned identity
 
-Chcete-li povolit aplikaci s uživatelem přiřazenou identitou, přidejte do prostředku aplikace vlastnost **identity** s typem **userAssigned** a odkazovanými identitami přiřazenými uživatelem. Pak přidejte část **managedIdentities** do oddílu **Properties (vlastnosti** ) prostředku **aplikace** , který obsahuje seznam popisného názvu pro principalId mapování pro každou identitu přiřazenou uživateli. Další informace o identitách přiřazených uživateli najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+Chcete-li povolit aplikaci s identitou User-Assigned, přidejte nejprve do prostředku aplikace vlastnost **identity** typu **userAssigned** a odkazované uživatelem přiřazené identity. Pak přidejte část **managedIdentities** do oddílu **Properties (vlastnosti** ) prostředku **aplikace** , který obsahuje seznam popisného názvu pro principalId mapování pro každou identitu přiřazenou uživateli. Další informace o identitách přiřazených uživateli najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
 ### <a name="application-template"></a>Šablona aplikace
 
