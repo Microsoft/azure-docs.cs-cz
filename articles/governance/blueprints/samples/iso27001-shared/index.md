@@ -3,12 +3,12 @@ title: 'Ukázka podrobného plánu ISO 27001: Sdílené služby – přehled'
 description: 'Přehled a architektura ukázky podrobného plánu ISO 27001: Sdílené služby Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly ISO 27001.'
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 4df5e35154a6cd762dd653d9004eb635f0feb021
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e02f34c424e3f68e67f2d0dc2f4541c57ce3882f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930811"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950546"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Přehled ukázky podrobného plánu ISO 27001: Sdílené služby
 
@@ -27,7 +27,7 @@ Toto prostředí je tvořené několika službami Azure, které se využívají 
 
 - [Role Azure](../../../../role-based-access-control/overview.md) využívané k oddělení povinností od roviny kontrol Před nasazením libovolné infrastruktury jsou definované tři role:
   - Role NetOps má oprávnění spravovat síťové prostředí, včetně nastavení brány firewall, nastavení NSG, směrování a dalších síťových funkcí
-  - Role SecOps má nezbytná oprávnění k nasazení a správě služby [Azure Security Center](../../../../security-center/security-center-intro.md), definování definic [Azure Policy](../../../policy/overview.md) a další oprávnění související se zabezpečením
+  - Role SecOps má nezbytná oprávnění k nasazení a správě služby [Azure Security Center](../../../../security-center/security-center-introduction.md), definování definic [Azure Policy](../../../policy/overview.md) a další oprávnění související se zabezpečením
   - Role SysOps má nezbytná oprávnění k definování definic [Azure Policy](../../../policy/overview.md) v rámci předplatného, správě služby [Log Analytics](../../../../azure-monitor/overview.md) pro celé prostředí a další provozní práva
 - Jako první služba Azure se nasadí [Log Analytics](../../../../azure-monitor/overview.md), aby se zajistilo, že se všechny akce a služby připojují k centrálnímu umístění, a to od okamžiku, kdy vaše zabezpečené nasazení spustíte.
 - Virtuální síť podporující podsítě pro možnosti připojení zpátky k místnímu datovému centru, zásobník příchozího a odchozího přenosu dat pro internetové připojení a podsíť sdílených služeb využívající skupiny zabezpečení sítě a skupiny zabezpečení aplikace pro kompletní mikrosegmentaci obsahující:

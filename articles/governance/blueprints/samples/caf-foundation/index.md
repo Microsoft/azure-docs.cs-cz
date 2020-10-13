@@ -3,12 +3,12 @@ title: Ukázka podrobného plánu Základy CAF – přehled
 description: Přehled a architektura přechodu na cloud pro Azure (CAF) pro ukázkový podrobný plán Základy CAF.
 ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: a3e2a5bcbb68ef0b51cf02ebb7a7e34913e2a1e6
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 77e8b79ec7cf217161099808cee4364e31c6d6dd
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929604"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950274"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Přehled architektury přechodu na cloud pro Azure od Microsoftu pro ukázkový podrobný plán Základy
 
@@ -26,7 +26,7 @@ Tato implementace je tvořená několika službami Azure, které se využívají
 
 - Instance služby [Azure Key Vault](../../../../key-vault/general/overview.md), která slouží k hostování tajných kódů používaných pro virtuální počítače nasazené v prostředí sdílených služeb
 - Nasazení služby [Log Analytics](../../../../azure-monitor/overview.md), aby se zajistilo, že se všechny akce a služby připojují k centrálnímu umístění, a to od okamžiku, kdy vaše zabezpečené nasazení spustíte v [účtech úložiště](../../../../storage/common/storage-introduction.md) pro protokolování diagnostiky
-- Nasazení služby [Azure Security Center](../../../../security-center/security-center-intro.md) (standardní verze) zajišťující ochranu před hrozbami pro vaše migrované úlohy
+- Nasazení služby [Azure Security Center](../../../../security-center/security-center-introduction.md) (standardní verze) zajišťující ochranu před hrozbami pro vaše migrované úlohy
 - Podrobný plán také definuje a nasazuje definice [Azure Policy](../../../policy/overview.md):
   - Definice zásad:
     - Pro označování (CostCenter) použité pro skupiny prostředků
