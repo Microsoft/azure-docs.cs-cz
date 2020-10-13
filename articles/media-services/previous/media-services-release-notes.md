@@ -15,10 +15,10 @@ ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4d335affa5a06bdb8e5c733c871654cf58947581
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91652954"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
@@ -307,7 +307,7 @@ Byly oznámeny následující nové funkce:
 ## <a name="april-2015-release"></a><a id="april_changes_15"></a>Verze z dubna 2015
 ### <a name="general-media-services-updates"></a>Obecné aktualizace Media Services
 * [Media Playera](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/) byla oznámena.
-* Od Media Services REST 2,10 jsou kanály, které jsou nakonfigurované k ingestování protokolu pro zasílání zpráv v reálném čase (RTMP), vytvořené pomocí primárních a sekundárních adres URL pro ingestování. Další informace najdete v tématu [konfigurace kanálů](media-services-live-streaming-with-onprem-encoders.md#channel_input)pro ingestování.
+* Od Media Services REST 2,10 jsou kanály, které jsou nakonfigurované tak, aby ingestování protokolu Real-Time Messaging Protocol (RTMP) vytvořené pomocí primárních a sekundárních adres URL pro ingestování. Další informace najdete v tématu [konfigurace kanálů](media-services-live-streaming-with-onprem-encoders.md#channel_input)pro ingestování.
 * Azure Media Indexer byla aktualizována.
 * Byla přidána podpora španělského jazyka.
 * Byla přidána nová konfigurace pro formát XML.

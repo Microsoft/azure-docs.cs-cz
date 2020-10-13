@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 37df1a052a58271c239b8b3bcaa4808ab7c355f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85204344"
 ---
 # <a name="json-claims-transformations"></a>Transformace deklarací JSON
@@ -59,7 +59,7 @@ Následující transformace deklarací identity vypíše deklaraci identity řet
 
 - Vstupní deklarace identity:
   - **e-mail**a přizpůsobení typu deklarace transformace **. 0. na. 0. e-mail**: someone@example.com
-  - **jednorázové heslo**a přizpůsobení typu deklarace transformace **. 0. dynamic_template_data. jednorázové heslo** "346349"
+  - **jednorázové heslo**, typ deklarace transformace **personalizations.0.dynamic_template_data. jednorázové heslo** "346349"
 - Vstupní parametr:
   - **template_id**: "d-4c56ffb40fa648b1aa6822283df94f60"
   - **z. e-mail**: " service@contoso.com "
@@ -100,7 +100,7 @@ Získá zadaný element z dat JSON.
 | InputParameter | claimToExtract | řetězec | název elementu JSON, který se má extrahovat. |
 | OutputClaim | extractedClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací, hodnota prvku zadaná ve vstupním parametru _claimToExtract_ . |
 
-V následujícím příkladu transformace deklarací extrakci `emailAddress` prvek z dat JSON:`{"emailAddress": "someone@example.com", "displayName": "Someone"}`
+V následujícím příkladu transformace deklarací extrakci `emailAddress` prvek z dat JSON: `{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
 ```xml
 <ClaimsTransformation Id="GetEmailClaimFromJson" TransformationMethod="GetClaimFromJson">
@@ -123,7 +123,7 @@ V následujícím příkladu transformace deklarací extrakci `emailAddress` prv
 - Vstupní parametr:
     - **claimToExtract**: EmailAddress
 - Deklarace výstupů:
-  - **extractedClaim**:someone@example.com
+  - **extractedClaim**: someone@example.com
 
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
@@ -133,11 +133,11 @@ Získá seznam zadaných elementů z dat JSON.
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | jsonSourceClaim | řetězec | ClaimTypes, které jsou používány transformací deklarací k získání deklarací identity. |
-| InputParameter | errorOnMissingClaims | Boolean | Určuje, zda má být vyvolána chyba, pokud chybí jedna z deklarací. |
+| InputParameter | errorOnMissingClaims | boolean | Určuje, zda má být vyvolána chyba, pokud chybí jedna z deklarací. |
 | InputParameter | includeEmptyClaims | řetězec | Určete, jestli se mají zahrnout prázdné deklarace identity. |
 | InputParameter | jsonSourceKeyName | řetězec | Název klíče elementu |
 | InputParameter | jsonSourceValueName | řetězec | Název hodnoty prvku |
-| OutputClaim | Kolekce | String, int, Boolean a DateTime |Seznam deklarací, které se mají extrahovat Název deklarace identity by měl být roven hodnotě zadané ve vstupní deklaraci _jsonSourceClaim_ . |
+| OutputClaim | Collection (Kolekce) | String, int, Boolean a DateTime |Seznam deklarací, které se mají extrahovat Název deklarace identity by měl být roven hodnotě zadané ve vstupní deklaraci _jsonSourceClaim_ . |
 
 V následujícím příkladu transformace deklarací extrahuje následující deklarace: e-mail (String), DisplayName (String), membershipNum (int), Active (Boolean) a DatumNarození (DateTime) z dat JSON.
 
@@ -231,7 +231,7 @@ Získá první prvek z dat JSON.
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | řetězec | ClaimTypes, který se používá při transformaci deklarací k získání položky z dat JSON. |
 | OutputClaim | key | řetězec | První klíč elementu ve formátu JSON. |
-| OutputClaim | hodnota | řetězec | Hodnota prvního prvku ve formátu JSON. |
+| OutputClaim | value | řetězec | Hodnota prvního prvku ve formátu JSON. |
 
 V následujícím příkladu transformace deklarací extrahuje první prvek (daný název) z dat JSON.
 
@@ -265,7 +265,7 @@ Získá první prvek z datového pole JSON.
 | InputClaim | inputJsonClaim | řetězec | ClaimTypes, který se používá při transformaci deklarací k získání položky z pole JSON. |
 | OutputClaim | extractedClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation, první prvek v poli JSON. |
 
-V následujícím příkladu transformace deklarací extrahuje první prvek (e-mailová adresa) z pole JSON `["someone@example.com", "Someone", 6353399]` .
+V následujícím příkladu transformace deklarací extrahuje první prvek (e-mailová adresa) z pole JSON  `["someone@example.com", "Someone", 6353399]` .
 
 ```xml
 <ClaimsTransformation Id="GetEmailFromJson" TransformationMethod="GetSingleValueFromJsonArray">
@@ -283,7 +283,7 @@ V následujícím příkladu transformace deklarací extrahuje první prvek (e-m
 - Vstupní deklarace identity:
   - **inputJsonClaim**: [" someone@example.com ", "někoho", 6353399]
 - Deklarace výstupů:
-  - **extractedClaim**:someone@example.com
+  - **extractedClaim**: someone@example.com
 
 ## <a name="xmlstringtojsonstring"></a>XmlStringToJsonString
 

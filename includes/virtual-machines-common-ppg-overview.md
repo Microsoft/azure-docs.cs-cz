@@ -9,10 +9,10 @@ ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
 ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91376375"
 ---
 Umístění virtuálních počítačů v jedné oblasti omezuje fyzickou vzdálenost mezi instancemi. Jejich umístění v rámci jedné zóny dostupnosti se také fyzicky přiblíží dohromady. Pokud se ale nároky na Azure rozroste, může jedna zóna dostupnosti zahrnovat několik fyzických datových center, což může způsobit, že vaše aplikace bude mít vliv na latenci sítě. 
@@ -58,7 +58,7 @@ Chcete-li zjistit stav zarovnání skupin umístění blízkosti, můžete prov�
 
 - Stav blízkosti skupiny umístění blízkosti lze zobrazit pomocí portálu, rozhraní příkazového řádku a prostředí PowerShell.
 
-    -   Při použití PowerShellu se stav souběžného umístění dá získat pomocí rutiny Get-AzProximityPlacementGroup včetně volitelného parametru-ColocationStatus.
+    -   Při použití PowerShellu se stav souběžného umístění dá získat pomocí rutiny Get-AzProximityPlacementGroup zahrnutím volitelného parametru-ColocationStatus.
 
     -   Při použití rozhraní příkazového řádku je možné získat stav `az ppg show` souběžného umístění pomocí zahrnutí volitelného parametru--Include-Location-status.
 

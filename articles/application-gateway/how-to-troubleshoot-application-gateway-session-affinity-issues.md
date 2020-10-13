@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
 ms.openlocfilehash: 02d1d78dae4f02ac53d535f6c404b15f8d98f008
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563739"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Řešení potíží s spřažením relací Azure Application Gateway
@@ -83,7 +83,7 @@ Chcete-li tento problém identifikovat, postupujte podle pokynů:
     **Tip** Pokud si nejste jisti, jak používat Fiddler, podívejte se na možnost "**Chci shromažďovat síťový provoz a analyzovat ho pomocí webového ladicího programu**" v dolní části.
 
 2. Zkontrolujte a analyzujte protokoly relací, abyste zjistili, jestli soubory cookie poskytované klientem mají ARRAffinity podrobnosti. Pokud v sadě souborů cookie nenajdete ARRAffinity podrobnosti, jako je například "**ARRAffinity =** *ARRAffinityValue*", znamená to, že klient neodpoví pomocí souboru cookie Arra, který je k dispozici Application Gateway.
-    Příklad:
+    Například:
 
     ![Snímek obrazovky zobrazuje protokol relace s zvýrazněnou jedinou položkou.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
@@ -195,7 +195,7 @@ Použijte webový ladicí program podle vašeho výběru. V této ukázce použi
    > [!NOTE]
    > Tato hodnota ARRAffinity je ID souboru cookie, které Application Gateway sada pro klienta k odeslání na konkrétní back-end Server.
 
-   ![Snímek obrazovky ukazuje příklad podrobností položky protokolu se zvýrazněnou hodnotou Set-cookie.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
+   ![Snímek obrazovky ukazuje příklad podrobností položky protokolu s zvýrazněnou hodnotou Set-Cookie.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
 
 - **Příklad B:** Další protokol relace následovaný předchozí příponou klienta odpoví zpět na Application Gateway, která nastavila ARRAAFFINITY. Pokud se shoduje s ID souboru cookie ARRAffinity, paket by měl být odeslán na stejný back-end Server, který byl použit dříve. Pokud chcete zjistit, jestli se mění soubor cookie klienta ARRAffinity, podívejte se na několik dalších řádků komunikace http.
 

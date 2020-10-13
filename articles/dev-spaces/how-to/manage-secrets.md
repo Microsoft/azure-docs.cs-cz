@@ -7,10 +7,10 @@ description: Naučte se používat tajné klíče Kubernetes při vývoji aplika
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
 ms.custom: devx-track-js
 ms.openlocfilehash: b9a9ef2592e7b2aa3630f19e2bc1a47b2b9ef0f8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308720"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Správa tajných kódů při práci s vývojovým prostorem Azure
@@ -26,7 +26,7 @@ Azure Dev Spaces poskytuje dvě Doporučené, zjednodušené možnosti pro uklá
 
 ### <a name="using-valuesdevyaml"></a>Použití hodnot. dev. yaml
 
-V projektu, který už je připravený pomocí Azure Dev Spaces vytvořte `values.dev.yaml` soubor ve stejné složce jako `azds.yaml` k definování tajných klíčů a hodnot. Příklad:
+V projektu, který už je připravený pomocí Azure Dev Spaces vytvořte `values.dev.yaml` soubor ve stejné složce jako `azds.yaml` k definování tajných klíčů a hodnot. Například:
 
 ```yaml
 secrets:
@@ -36,7 +36,7 @@ secrets:
     key: "secretkeyhere"
 ```
 
-Ověřte `azds.yaml` odkazy na soubory `values.dev.yaml` jako volitelné pomocí `?` . Příklad:
+Ověřte `azds.yaml` odkazy na soubory `values.dev.yaml` jako volitelné pomocí `?` . Například:
 
 ```yaml
 install:
@@ -47,7 +47,7 @@ install:
 
 Pokud máte další tajné soubory, můžete je také přidat.
 
-Aktualizujte nebo ověřte, že vaše služba odkazuje na vaše tajné klíče jako proměnné prostředí. Příklad:
+Aktualizujte nebo ověřte, že vaše služba odkazuje na vaše tajné klíče jako proměnné prostředí. Například:
 
 ```javascript
 var redisPort = process.env.REDIS_PORT
@@ -72,7 +72,7 @@ kubectl get secret --namespace default -o yaml
 
 ### <a name="using-azdsyaml"></a>Použití azds. yaml
 
-V projektu, který už je připravený pomocí Azure Dev Spaces, přidejte tajné klíče a hodnoty pomocí syntaxe *$PlaceHolder* v části *konfigurace. vývoj. Install. set* v `azds.yaml` . Příklad:
+V projektu, který už je připravený pomocí Azure Dev Spaces, přidejte tajné klíče a hodnoty pomocí syntaxe *$PlaceHolder* v části *konfigurace. vývoj. Install. set* v `azds.yaml` . Například:
 
 ```yaml
 configurations:
@@ -90,7 +90,7 @@ configurations:
 > [!NOTE]
 > Hodnoty tajného kódu můžete zadat přímo bez použití syntaxe *$PlaceHolder* v `azds.yaml` . Tento přístup se ale nedoporučuje, protože `azds.yaml` je uložený ve správě zdrojového kódu.
      
-Vytvořte `.env` soubor ve stejné složce jako `azds.yaml` k definování *$PlaceHolder* hodnot. Příklad:
+Vytvořte `.env` soubor ve stejné složce jako `azds.yaml` k definování *$PlaceHolder* hodnot. Například:
 
 ```
 REDIS_PORT=3333
@@ -101,7 +101,7 @@ REDIS_KEY=myrediskey
 > [!IMPORTANT]
 > Nedoporučujeme ukládat tajné klíče ve správě zdrojového kódu. Pokud používáte Git, přidejte `.env` do `.gitignore` souboru, abyste se vyhnuli potvrzení tajných kódů ve správě zdrojového kódu.
 
-Aktualizujte nebo ověřte, že vaše služba odkazuje na vaše tajné klíče jako proměnné prostředí. Příklad:
+Aktualizujte nebo ověřte, že vaše služba odkazuje na vaše tajné klíče jako proměnné prostředí. Například:
 
 ```javascript
 var redisPort = process.env.REDIS_PORT
@@ -125,7 +125,7 @@ kubectl get secret --namespace default -o yaml
 
 Předchozí část ukázala, jak ukládat a používat tajné klíče pro použití v době běhu kontejneru. Můžete také použít jakýkoliv tajný klíč v době sestavení kontejneru, jako je například heslo pro privátní NuGet, pomocí `azds.yaml` .
 
-V `azds.yaml` systému nastavte tajné klíče pro čas sestavení v části *konfigurace. vývoj. Build. args* pomocí `<variable name>: ${secret.<secret name>.<secret key>}` syntaxe. Příklad:
+V `azds.yaml` systému nastavte tajné klíče pro čas sestavení v části *konfigurace. vývoj. Build. args* pomocí `<variable name>: ${secret.<secret name>.<secret key>}` syntaxe. Například:
 
 ```yaml
 configurations:
@@ -143,7 +143,7 @@ Ve výše uvedeném příkladu je *mynugetsecret* stávající tajný klíč a *
 >[!NOTE]
 > V názvech a klíčích tajných kódů může být `.` znak. `\` `.` Při předávání tajných kódů jako argumentů sestavení použijte k úniku. Například pro předání tajného kódu s názvem *foo. bar* pomocí klíče *tokenu*: `MYTOKEN: ${secret.foo\.bar.token}` . Kromě toho je možné tajné klíče vyhodnotit pomocí předpony a textu přípony. Například, `MYURL: eus-${secret.foo\.bar.token}-version1`. Tajné kódy, které jsou k dispozici v nadřazených a prarodičích, můžou být také předány jako argumenty sestavení.
 
-Ve vašem souboru Dockerfile Použijte direktivu *arg* pro použití tajného klíče a pak použijte stejnou proměnnou později v souboru Dockerfile. Příklad:
+Ve vašem souboru Dockerfile Použijte direktivu *arg* pro použití tajného klíče a pak použijte stejnou proměnnou později v souboru Dockerfile. Například:
 
 ```dockerfile
 ...

@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
 ms.openlocfilehash: 3bd19f301b1afd7dd1c35f03f6f6131a26b00708
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91596837"
 ---
 # <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Řešení potíží s vysokým využitím procesoru pro virtuální počítače Azure s Windows
@@ -35,7 +35,7 @@ Kromě potíží s latencí v/v a v síti vyžadují řešení potíží s CPU a
 
 Většina vašich stávajících nástrojů pro řešení potíží s výkonem, jako je Perfmon nebo procmon, které se používají pro místní servery, budou fungovat na virtuálních počítačích Azure s Windows. PerfInsights je ale výslovně navržený pro virtuální počítače Azure, aby poskytovaly další přehledy, včetně osvědčených postupů Azure, osvědčených postupů SQL, grafů s vysokým rozlišením, PROCESORů a paměťových karet a tak dále.
 
-Bez ohledu na to, jestli běží jako uživatelský režim nebo režim jádra, vyžaduje každé vlákno aktivního procesu cykly procesoru ke spuštění kódu, ze kterého je sestavený. Mnohé problémy přímo souvisejí s úlohou. Druh zatížení, které existuje na serverovém disku spotřeba prostředků, včetně CPU.
+Bez ohledu na to, jestli běží jako User-Mode nebo v režimu jádra, musí mít každé vlákno aktivního procesu cykly procesoru ke spuštění kódu, ze kterého je sestavený. Mnohé problémy přímo souvisejí s úlohou. Druh zatížení, které existuje na serverovém disku spotřeba prostředků, včetně CPU.
 
 #### <a name="common-factors"></a>Běžné faktory
 
@@ -184,7 +184,7 @@ Pokud rozbalíte **nálezovou** událost, zobrazí se několik klíčových podr
 
 V rámci **procesoru** je vyhrazená subtab, která se dá použít pro podrobnou analýzu vzorů, na jádro nebo pro proces.
 
-Karta **spotřebitelé na nejvyšší úrovni** má dva oddělené oddíly, a tady můžete zobrazit statistiky pro jednotlivé procesory. Návrh aplikace je často tvořen jedním vláknem nebo samotným základem pro jeden procesor. V tomto scénáři se jeden nebo několik jader spouští na 100 procent, zatímco ostatní jádra běží na očekávaných úrovních. Tyto scénáře jsou složitější, protože průměrný procesor na serveru se zdá běžet podle očekávání, ale procesy, které jsou připnuté na jádra s vysokým využitím, budou pomalejší, než se očekávalo.
+Karta **spotřebitelé na nejvyšší úrovni** má dva oddělené oddíly, a tady můžete zobrazit statistiky pro jednotlivé procesory. Návrh aplikace je často Single-Threaded nebo se přijedná k jednomu procesoru. V tomto scénáři se jeden nebo několik jader spouští na 100 procent, zatímco ostatní jádra běží na očekávaných úrovních. Tyto scénáře jsou složitější, protože průměrný procesor na serveru se zdá běžet podle očekávání, ale procesy, které jsou připnuté na jádra s vysokým využitím, budou pomalejší, než se očekávalo.
 
   ![vysoké využití procesoru](./media/troubleshoot-high-cpu-issues-azure-windows-vm/9-high-cpu-usage.png)
 

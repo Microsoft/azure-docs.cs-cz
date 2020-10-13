@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 5aa563e55c64893d57522dd1154a64c7e90a1690
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397432"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Kurz: odesílání e-mailů a vyvolání dalších obchodních procesů z App Service
@@ -153,7 +153,7 @@ Příklad zobrazíte kliknutím na kartu preferovaný jazyk/rozhraní.
 
 ### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-V ASP.NET můžete odeslat příspěvek HTTP pomocí třídy [System .NET. http. HttpClient](/dotnet/api/system.net.http.httpclient) . Příklad:
+V ASP.NET můžete odeslat příspěvek HTTP pomocí třídy [System .NET. http. HttpClient](/dotnet/api/system.net.http.httpclient) . Například:
 
 ```csharp
 // requires using System.Net.Http;
@@ -178,7 +178,7 @@ Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření aplikace
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-V ASP.NET Core můžete odeslat příspěvek HTTP pomocí třídy [System .NET. http. HttpClient](/dotnet/api/system.net.http.httpclient) . Příklad:
+V ASP.NET Core můžete odeslat příspěvek HTTP pomocí třídy [System .NET. http. HttpClient](/dotnet/api/system.net.http.httpclient) . Například:
 
 ```csharp
 // requires using System.Net.Http;
@@ -206,7 +206,7 @@ Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření aplikace
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
-V Node.js můžete odeslat příspěvek HTTP snadno pomocí balíčku NPM, jako je [axios](https://www.npmjs.com/package/axios). Příklad:
+V Node.js můžete odeslat příspěvek HTTP snadno pomocí balíčku NPM, jako je [axios](https://www.npmjs.com/package/axios). Například:
 
 ```javascript
 // Requires npm install --save axios
@@ -233,7 +233,7 @@ Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření aplikace
 
 ### <a name="php"></a>[PHP](#tab/php)
 
-V PHP můžete snadno odeslat příspěvek HTTP pomocí [Guzzle](http://docs.guzzlephp.org/en/stable/index.html). Příklad:
+V PHP můžete snadno odeslat příspěvek HTTP pomocí [Guzzle](http://docs.guzzlephp.org/en/stable/index.html). Například:
 
 ```php
 // Requires composer require guzzlehttp/guzzle:~6.0
@@ -265,7 +265,7 @@ Pokud tento kód testujete v ukázkové aplikaci pro [kurz: sestavte aplikaci PH
 
 ### <a name="python"></a>[Python](#tab/python)
 
-V Pythonu můžete pomocí [požadavků](https://pypi.org/project/requests/)snadno odeslat příspěvek http. Příklad:
+V Pythonu můžete pomocí [požadavků](https://pypi.org/project/requests/)snadno odeslat příspěvek http. Například:
 
 ```python
 # Requires pip install requests && pip freeze > requirements.txt
@@ -296,7 +296,7 @@ Pokud testujete tento kód v ukázkové aplikaci pro [kurz: spuštění webové 
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-V Ruby můžete odeslat příspěvek HTTP snadno pomocí [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient). Příklad:
+V Ruby můžete odeslat příspěvek HTTP snadno pomocí [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient). Například:
 
 ```ruby
 clnt = JSONClient.new

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
 ms.openlocfilehash: 3dd209d90947ebef7eb7b074992a55305005e7bb
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399529"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
@@ -150,7 +150,7 @@ Azure AD Privileged Identity Management vám umožní:
 
 ![Zabezpečený přístup k prostředkům v Azure](./media/technical-capabilities/azure-security-technical-capabilities-fig3.png)
 
-Předplatná také mají přidružení s adresářem. Adresář definuje skupinu uživatelů. Můžou to být uživatelé z pracovní nebo školní služby, která adresář vytvořila, nebo můžou být externími uživateli (tj. účty Microsoft). K předplatným jsou přístupná podmnožina těch uživatelů adresáře, kteří byli přiřazeni jako správce služeb nebo spolusprávce (CA). Jedinou výjimkou je to, že účty Microsoft (dříve Windows Live ID) se dají přiřadit jako SA nebo CA, aniž by se musely v adresáři vyskytovat.
+Předplatná také mají přidružení s adresářem. Adresář definuje skupinu uživatelů. Můžou to být uživatelé z pracovní nebo školní služby, která adresář vytvořila, nebo můžou být externími uživateli (tj. účty Microsoft). K předplatným jsou přístupná podmnožina těch uživatelů adresáře, kteří byli přiřazeni jako správce služeb (SA) nebo Co-Administrator (CA); Jedinou výjimkou je to, že účty Microsoft (dříve Windows Live ID) se dají přiřadit jako SA nebo CA, aniž by se musely v adresáři vyskytovat.
 
 Společnosti zaměřené na zabezpečení by se měly soustředit na to, aby zaměstnanci měli přesně potřebná oprávnění. Příliš mnoho oprávnění může zpřístupnit účet pro útočníky. Příliš málo oprávnění znamená, že zaměstnanci nemůžou svou práci efektivně dělat. [Řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md) pomáhá řešit tento problém tím, že nabízí vysoce odstupňovanou správu přístupu pro Azure.
 

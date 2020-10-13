@@ -13,10 +13,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: references_regions
 ms.openlocfilehash: 9c54482dc188141c4fc697bd43628b81e0ddc29f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597121"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Cloudy a oblasti, ve kterých existuje Azure Media Services V3
@@ -44,7 +44,7 @@ Azure Media Services V3 je k dispozici prostřednictvím Azure Resource Manager 
 - West Europe
 - Severní Evropa
 - East US
-- USA – střed
+- Střední USA
 - Středojižní USA
 - Západní USA 2
 - Brazil South
@@ -85,7 +85,7 @@ Následující koncové body jsou důležité pro informace o připojení k Medi
 | Služba | Koncový bod |
 | ------- | -------- |
 | Azure Resource Manager |  `https://management.azure.com/` |
-| Ověřování | `https://login.microsoftonline.com/` |
+| Authentication | `https://login.microsoftonline.com/` |
 | Cílová skupina tokenů | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
@@ -93,7 +93,7 @@ Následující koncové body jsou důležité pro informace o připojení k Medi
 | Služba | Koncový bod |
 | ------- | -------- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| Ověřování | `https://login.microsoftonline.us/` |
+| Authentication | `https://login.microsoftonline.us/` |
 | Cílová skupina tokenů | `https://management.core.usgovcloudapi.net/` |
 
 [!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
@@ -103,7 +103,7 @@ Následující koncové body jsou důležité pro informace o připojení k Medi
 | Služba | Koncový bod |
 | ------- | -------- |
 | Azure Resource Manager | `https://management.cloudapi.de/` |
-| Ověřování | `https://login.microsoftonline.de/` |
+| Authentication | `https://login.microsoftonline.de/` |
 | Cílová skupina tokenů | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure (Čína) 21Vianet
@@ -111,7 +111,7 @@ Následující koncové body jsou důležité pro informace o připojení k Medi
 | Služba | Koncový bod |
 | ------- | -------- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
-| Ověřování | `https://login.chinacloudapi.cn/` |
+| Authentication | `https://login.chinacloudapi.cn/` |
 | Cílová skupina tokenů |  `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="see-also"></a>Viz také

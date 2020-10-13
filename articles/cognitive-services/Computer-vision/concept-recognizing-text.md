@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: cbcfddcd02a3998b3b35b01d386816735c59ae7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32759ed59e280980abdced46c29390e00ee7229c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526404"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973270"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optické rozpoznávání znaků (OCR)
 
@@ -24,7 +24,7 @@ Azure rozhraní API pro počítačové zpracování obrazu zahrnuje funkce optic
 
 ## <a name="read-api"></a>Rozhraní API pro čtení 
 
-[Rozhraní API pro počítačové zpracování obrazu Ready](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) je nejnovější technologie OCR Azure ([naučíme se, co je nového](./whats-new.md)), která extrahuje vytištěný text (v několika jazycích), psaný text (jenom v angličtině), číslice a symboly měny z obrázků a vícestránkové dokumenty PDF. Je optimalizovaná pro extrakci textu z textu s velkým obrázkem a vícestránkové dokumenty PDF se smíšenými jazyky. Podporuje detekci tiskového i rukopisného textu ve stejném obrázku nebo dokumentu.
+[Rozhraní API pro počítačové zpracování obrazu Ready](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) je nejnovější technologie OCR Azure ([naučíme se, co je nového](./whats-new.md)), která extrahuje vytištěný text (v několika jazycích), psaný text (jenom v angličtině), číslice a symboly měny z obrázků a vícestránkové dokumenty PDF. Je optimalizovaná pro extrakci textu z textu s velkým obrázkem a vícestránkové dokumenty PDF se smíšenými jazyky. Podporuje detekci tiskového i rukopisného textu ve stejném obrázku nebo dokumentu.
 
 ![Jak optické rozpoznávání znaků převede obrázky a dokumenty na strukturovaný výstup s extrahovaným textem](./Images/how-ocr-works.svg)
 
@@ -36,21 +36,21 @@ Volání **pro čtení** bere jako vstup obrázky a dokumenty. Mají následují
 * Velikost souboru musí být menší než 50 MB (4 MB pro úroveň Free) a rozměry aspoň 50 x 50 pixelů a maximálně 10000 x 10000 pixelů. 
 * Rozměry PDF musí být maximálně 17 × 17 palců, které odpovídají právním nebo a3 velikosti papíru a menšímu.
 
-### <a name="read-31-preview-allows-selecting-pages"></a>Čtení 3,1 Preview umožňuje vybrat stránky.
-S [rozhraním API Read 3,1 Preview](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)pro velké vícestránkové dokumenty můžete zadat konkrétní čísla stránek nebo rozsahy stránek jako vstupní parametr pro extrakci textu pouze z těchto stránek. Toto je nový vstupní parametr kromě volitelného parametru jazyka.
+### <a name="read-32-preview-allows-selecting-pages"></a>Čtení 3,2 Preview umožňuje vybrat stránky.
+S [rozhraním API Read 3,2 Preview](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)pro velké vícestránkové dokumenty můžete zadat konkrétní čísla stránek nebo rozsahy stránek jako vstupní parametr pro extrakci textu pouze z těchto stránek. Toto je nový vstupní parametr kromě volitelného parametru jazyka.
 
 > [!NOTE]
 > **Vstup jazyka** 
 >
-> [Volání metody Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) má volitelný parametr žádosti pro jazyk. Toto je kód jazyka BCP-47 textu v dokumentu. Čtení podporuje automatické identifikaci jazyka a vícejazyčné dokumenty, takže zadejte jenom kód jazyka, pokud chcete vynutit zpracování dokumentu jako u tohoto konkrétního jazyka.
+> [Volání metody Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) má volitelný parametr žádosti pro jazyk. Toto je kód jazyka BCP-47 textu v dokumentu. Čtení podporuje automatické identifikaci jazyka a vícejazyčné dokumenty, takže zadejte jenom kód jazyka, pokud chcete vynutit zpracování dokumentu jako u tohoto konkrétního jazyka.
 
 ## <a name="the-read-call"></a>Volání metody Read
 
-[Volání](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) ČTECÍHO rozhraní API pro čtení přebírá obrázek nebo dokument PDF jako vstup a extrahuje text asynchronně. Volání se vrátí s polem hlavičky odpovědi s názvem `Operation-Location` . `Operation-Location`Hodnota je adresa URL, která obsahuje ID operace, která se má použít v dalším kroku.
+[Volání](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) ČTECÍHO rozhraní API pro čtení přebírá obrázek nebo dokument PDF jako vstup a extrahuje text asynchronně. Volání se vrátí s polem hlavičky odpovědi s názvem `Operation-Location` . `Operation-Location`Hodnota je adresa URL, která obsahuje ID operace, která se má použít v dalším kroku.
 
 |Hlavička odpovědi| Adresa URL výsledku |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/vision/v3.0/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/vision/v3.2/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 > [!NOTE]
 > **Fakturace** 
@@ -59,7 +59,7 @@ S [rozhraním API Read 3,1 Preview](https://westus2.dev.cognitive.microsoft.com/
 
 ## <a name="the-get-read-results-call"></a>Volání Get výsledky čtení
 
-Druhým krokem je volání operace [získat výsledky čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) . Tato operace přijímá jako vstup ID operace, kterou vytvořila operace čtení. Vrátí odpověď JSON, která obsahuje pole **stav** s následujícími možnými hodnotami. Tuto operaci zavoláte iterativní, dokud se nevrátí s hodnotou **úspěch** . Pokud nechcete, aby se překročila sazba požadavků za sekundu (RPS), použijte interval 1 až 2 sekund.
+Druhým krokem je volání operace [získat výsledky čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750) . Tato operace přijímá jako vstup ID operace, kterou vytvořila operace čtení. Vrátí odpověď JSON, která obsahuje pole **stav** s následujícími možnými hodnotami. Tuto operaci zavoláte iterativní, dokud se nevrátí s hodnotou **úspěch** . Pokud nechcete, aby se překročila sazba požadavků za sekundu (RPS), použijte interval 1 až 2 sekund.
 
 |Pole| Typ | Možné hodnoty |
 |:-----|:----:|:----|
@@ -83,7 +83,7 @@ Podívejte se na následující příklad úspěšné odpovědi JSON:
   "createdDateTime": "2020-05-28T05:13:21Z",
   "lastUpdatedDateTime": "2020-05-28T05:13:22Z",
   "analyzeResult": {
-    "version": "3.0.0",
+    "version": "3.1.0",
     "readResults": [
       {
         "page": 1,
@@ -128,8 +128,8 @@ Podívejte se na následující příklad úspěšné odpovědi JSON:
   }
 }
 ```
-### <a name="read-31-preview-adds-text-line-style-latin-languages-only"></a>Čtení 3,1 Preview přidá styl čáry textu (jenom jazyky latinky).
-[Rozhraní API pro čtení 3,1 Preview](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) vypisuje objekt **vzhledu** , který klasifikuje, jestli je každý textový řádek ve stylu tisk nebo psaní rukou, a také hodnocení spolehlivosti. Tato funkce je podporovaná jenom pro jazyky v latince.
+### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>Čtení 3,2 Preview přidá styl čáry textu (jenom jazyky latinky).
+[Rozhraní API pro čtení 3,2 Preview](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) vypisuje objekt **vzhledu** , který klasifikuje, jestli je každý textový řádek ve stylu tisk nebo psaní rukou, a také hodnocení spolehlivosti. Tato funkce je podporovaná jenom pro jazyky v latince.
 
 ```json
   "appearance": {
@@ -140,12 +140,12 @@ Podívejte se na následující příklad úspěšné odpovědi JSON:
 Začněte s [počítačové zpracování obrazu rychlým startem pro rozpoznávání OCR](./quickstarts-sdk/client-library.md) a [rychlým startem pro čtení REST API](./QuickStarts/CSharp-hand-text.md) začněte integraci možností optického rozpoznávání OCR do vašich aplikací.
 
 ## <a name="supported-languages-for-print-text"></a>Podporované jazyky pro tisk textu
-[Rozhraní API pro čtení 3,0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) podporuje extrakci vytištěného textu v angličtině, španělštině, němčině, francouzštině, italštině, portugalštině a nizozemských jazycích.
+[Rozhraní API pro čtení 3,2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) podporuje extrakci vytištěného textu v angličtině, španělštině, němčině, francouzštině, italštině, portugalštině a nizozemských jazycích.
 
 Úplný seznam jazyků podporovaných OCR najdete v [podporovaných jazycích](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) .
 
-### <a name="read-31-preview-adds-simplified-chinese-and-japanese"></a>Čtení 3,1 Preview přidává zjednodušenou čínštinu a japonštinu
-[Verze Public Preview pro čtení 3,1 API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) přidává podporu pro zjednodušenou čínštinu a japonštinu. Pokud váš scénář vyžaduje podporu více jazyků, přečtěte si část [rozhraní API pro optické rozpoznávání znaků](#ocr-api) . 
+### <a name="read-32-preview-adds-simplified-chinese-and-japanese"></a>Čtení 3,2 Preview přidává zjednodušenou čínštinu a japonštinu
+[Verze Public Preview pro čtení 3,2 API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) přidává podporu pro zjednodušenou čínštinu a japonštinu. Pokud váš scénář vyžaduje podporu více jazyků, přečtěte si část [rozhraní API pro optické rozpoznávání znaků](#ocr-api) . 
 
 ## <a name="supported-languages-for-handwritten-text"></a>Podporované jazyky pro rukopisný text
 Operace čtení aktuálně podporuje extrakci rukopisného textu výhradně v angličtině.
@@ -202,6 +202,6 @@ Stejně jako u všech služeb rozpoznávání by mohli vývojáři, kteří pou�
 ## <a name="next-steps"></a>Další kroky
 
 - Začínáme s nástrojem [počítačové zpracování obrazu čtení 3,0 SDK pro rychlé](./quickstarts-sdk/client-library.md) zprovoznění v jazycích C#, Java, JavaScript nebo Python.
-- K získání informací o tom, jak používat rozhraní REST API, použijte příručku [pro rychlý Start pro čtení 3,0 REST API](./QuickStarts/CSharp-hand-text.md) v jazycích C#, Java, JavaScript nebo Python.
-- Přečtěte si o [REST API pro čtení 3,0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005).
-- Přečtěte si o [REST API verze Public Preview pro čtení 3,1](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) s přidanou podporou pro zjednodušenou čínštinu a japonštinu.
+- K získání informací o tom, jak používat rozhraní REST API, použijte příručku [pro rychlý Start pro čtení 3,1 REST API](./QuickStarts/CSharp-hand-text.md) v jazycích C#, Java, JavaScript nebo Python.
+- Přečtěte si o [REST API pro čtení 3,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005).
+- Přečtěte si o [REST API verze Public Preview pro čtení 3,2](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) s přidanou podporou pro zjednodušenou čínštinu a japonštinu.

@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87489511"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Konfigurace itsme OpenID Connect (OIDC) pomocí Azure Active Directory B2C
@@ -40,7 +40,7 @@ Abyste mohli začít, budete potřebovat:
 Please clarify step 1 in the description below - we don't have steps in this tutorial for "adapting in the Azure AD B2C Custom Policy- User Journeys" - should this be added somewhere?
 -->
 
-| Krok | Popis |
+| Krok | Description |
 |------|------|
 |1     | Na svém webu nebo v aplikaci zahrňte **Přihlaste se pomocí tlačítka itsme** , a to tak, že se Přizpůsobte v toku Azure AD B2C uživatele. Tok interakce se spustí, když uživatel klikne na toto tlačítko.  |
 |2     | Azure AD B2C spustí tok OpenID Connect odesláním žádosti o autorizaci do rozhraní API tajného kódu klienta itsme. K dispozici je také koncový bod známého/OpenID-Configuration obsahující informace o koncových bodech.  |

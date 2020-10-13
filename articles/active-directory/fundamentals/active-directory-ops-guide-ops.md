@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601299"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Přehled Azure Active Directory obecné provozní příručky
@@ -156,7 +156,7 @@ Informace o typu odesílaných oznámení a jejich kontrole najdete v následuj�
 
 Organizace, které konfigurují aplikace pro ověřování přímo ve zvýhodnění Azure AD z [inteligentního uzamčení Azure AD](../authentication/concept-sspr-howitworks.md). Pokud používáte AD FS ve Windows Serveru 2012 R2, implementujte AD FS [extranetovou ochranu](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection). Pokud používáte AD FS na Windows serveru 2016 nebo novějším, implementujte [extranetové inteligentní uzamčení](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Doporučujeme povolit uzamčení extranetu, aby obsahovalo riziko útoků hrubou silou na místní službu Active Directory. Pokud ale máte AD FS ve Windows 2016 nebo novějším, měli byste taky povolit extranetové inteligentní uzamčení, které vám pomůže zmírnit útoky proti [rozstřiku hesla](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) .
 
-Pokud se AD FS používá jenom pro federaci Azure AD, existuje několik koncových bodů, které je možné vypnout pro minimalizaci oblasti útoku. Pokud se například AD FS používá jenom pro Azure AD, měli byste zakázat koncové body WS-Trust jiné než koncové body, které jsou povolené pro **usernamemixed** a **windowstransport**.
+Pokud se AD FS používá jenom pro federaci Azure AD, existuje několik koncových bodů, které je možné vypnout pro minimalizaci oblasti útoku. Pokud se například AD FS používá jenom pro Azure AD, měli byste zakázat WS-Trust koncových bodů kromě koncových bodů povolených pro **usernamemixed** a **windowstransport**.
 
 ### <a name="access-to-machines-with-on-premises-identity-components"></a>Přístup k počítačům s místními komponentami identity
 

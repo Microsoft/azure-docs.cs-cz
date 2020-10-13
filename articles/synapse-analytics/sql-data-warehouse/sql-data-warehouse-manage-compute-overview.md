@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 90815d52e6884efe6cff9a7860c093b4b5c1bc94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85204537"
 ---
 # <a name="manage-compute-in-azure-synapse-analytics-data-warehouse"></a>Správa výpočetních prostředků ve službě Azure synapse Analytics Data Warehouse
@@ -36,7 +36,7 @@ Aby bylo možné provést operaci škálování, fond SQL nejprve ukončuje vše
 
 Následující tabulka ukazuje, jak se mění počet distribucí na výpočetní uzel při změně jednotek datového skladu.  DW30000c poskytuje 60 výpočetních uzlů a dosahuje mnohem vyššího výkonu dotazů než DW100c.
 
-| Jednotky datového skladu  | \#výpočetních uzlů | \#distribucí na uzel |
+| Jednotky datového skladu  | \# výpočetních uzlů | \# distribucí na uzel |
 | -------- | ---------------- | -------------------------- |
 | DW100c   | 1                | 60                         |
 | DW200c   | 1                | 60                         |

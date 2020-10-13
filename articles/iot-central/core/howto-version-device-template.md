@@ -10,10 +10,10 @@ services: iot-central
 manager: peterpr
 ms.custom: device-developer
 ms.openlocfilehash: 2025b127a428afa478cfe839c7619df2d7d688d3
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90015955"
 ---
 # <a name="create-a-new-device-template-version"></a>Vytvořit novou verzi šablony zařízení
