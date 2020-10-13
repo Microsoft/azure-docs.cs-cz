@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87072034"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services fragmentované specifikace ingestování MP4 v reálném čase 
@@ -75,7 +75,7 @@ Zde jsou uvedené podrobné požadavky:
 ## <a name="6-definition-of-stream"></a>6. definice "Stream"
 Stream je základní Jednotková operace v reálném ingestování pro vytváření živých prezentací, zpracování převzetí služeb při selhání streamování a scénářů redundance. Stream je definovaný jako jeden jedinečný, fragmentovaný Bitstream MP4, který může obsahovat jednu stopu nebo několik stop. Celá živá prezentace může obsahovat jeden nebo více datových proudů v závislosti na konfiguraci živých kodérů. Následující příklady ilustrují různé možnosti použití datových proudů k vytvoření úplné živé prezentace.
 
-**Případě** 
+**Příklad:** 
 
 Zákazník chce vytvořit prezentaci živého streamování, která obsahuje následující zvukové a video přenosové rychlosti:
 

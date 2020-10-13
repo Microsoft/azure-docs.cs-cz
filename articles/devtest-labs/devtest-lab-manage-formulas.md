@@ -4,10 +4,10 @@ description: Tento článek ukazuje, jak vytvořit vzorec buď ze základní (vl
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: f012a8c59a8e938334c3e1abc4c7b3ccd0e48d3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308890"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Správa vzorců Azure DevTest Labs
@@ -27,7 +27,7 @@ Další informace o přidání uživatelů a oprávnění najdete v tématu [Př
 ### <a name="create-a-formula-from-a-base"></a>Vytvoření vzorce ze základu
 Následující kroky vás provedou procesem vytvoření vzorce z vlastní image, obrázku na webu Marketplace nebo jiného vzorce.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 
@@ -76,7 +76,7 @@ Následující kroky vás provedou procesem vytvoření vzorce založeného na s
 > 
 > 
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte požadované testovací prostředí.  
 4. Na stránce **Přehled** testovacího prostředí vyberte virtuální počítač, ze kterého chcete vzorec vytvořit.
@@ -93,7 +93,7 @@ Následující kroky vás provedou procesem vytvoření vzorce založeného na s
 ## <a name="modify-a-formula"></a>Úprava vzorce
 Chcete-li upravit vzorec, postupujte podle následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte požadované testovací prostředí.  
 4. Na stránce testovacího prostředí vyberte **vzorce (opakovaně použitelné báze)**.
@@ -105,7 +105,7 @@ Chcete-li upravit vzorec, postupujte podle následujících kroků:
 ## <a name="delete-a-formula"></a>Odstranění vzorce
 Vzorec odstraníte pomocí následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte požadované testovací prostředí.  
 4. Na stránce **Nastavení** testovacího prostředí vyberte **vzorce**.

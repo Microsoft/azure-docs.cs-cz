@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 5af7645db662a238099e013f84b0dc0fee2af62c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91355852"
 ---
 # <a name="secure-a-daemon-application"></a>Zabezpečení aplikace démona
@@ -124,7 +124,7 @@ V případě, že nejsou k dispozici spravované identity prostředí mimo Azure
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s vybraným doplňkem zobrazí změny přiřazení.](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. Vyberte předdefinované definice role Azure Maps, například **Azure Maps data Reader** nebo **Přispěvatel dat Azure Maps**. V části **přiřadit přístup k**vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD** s přiřazenou **User assigned managed identity**  /  **spravovanou identitou**přiřazenou uživatelem spravované identity. Vyberte objekt zabezpečení. Potom vyberte **Uložit**.
+3. Vyberte předdefinované definice role Azure Maps, například **Azure Maps data Reader** nebo **Přispěvatel dat Azure Maps**. V části **přiřadit přístup k**vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD** s přiřazenou **User assigned managed identity**  /  **spravovanou identitou**přiřazenou uživatelem spravované identity. Vyberte objekt zabezpečení. Pak vyberte **Uložit**.
 
     > [!div class="mx-imgBorder"]
     > ![Postup přidání přiřazení role](./media/how-to-manage-authentication/how-to-add-role-assignment.png)

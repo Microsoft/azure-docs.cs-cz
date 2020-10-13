@@ -16,10 +16,10 @@ ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 357eb0a60e6246996de9ab75337ecc213d845ae7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273326"
 ---
 # <a name="fortigate-deployment-guide"></a>Průvodce nasazením FortiGate
@@ -175,7 +175,7 @@ Následující části vás seznámí s postupem nastavení virtuálního počí
 
     ![Snímek obrazovky se správou firmwaru.](backup-configure-upgrade.png)
 
-7. Vyberte **pokračovat**.
+7. Vyberte **Pokračovat**.
 8. Až budete vyzváni k uložení konfigurace FortiGate (jako soubor. conf), vyberte **Uložit**.
 9. Počkejte, než se firmware nahraje a použije. Počkejte, až se virtuální počítač FortiGate restartuje.
 10. Po restartování virtuálního počítače FortiGate se znovu přihlaste s přihlašovacími údaji správce.

@@ -11,10 +11,10 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.openlocfilehash: e794e277f6731c7b6e57a4710eea437f65be0340
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87336340"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>Rozdíly v ověřování podle podporovaných typů účtů (signInAudience)
@@ -43,7 +43,7 @@ V následující tabulce jsou uvedeny rozdíly v ověřování různých vlastno
 | Obory definované tímto rozhraním API ( `oauth2Permissions` ) | Maximální délka názvu rozsahu 120 znaků <br><br> Bez omezení * počtu definovaných oborů | Maximální délka názvu rozsahu 120 znaků <br><br> Bez omezení * počtu definovaných oborů |  Maximální délka názvu rozsahu 40 znaků <br><br> Je definovaných maximálně 100 oborů. | 
 | Autorizované klientské aplikace ( `preAuthorizedApplications` ) | Bez omezení * | Bez omezení * | Celkem maximum 500 <br><br> Je definovaných maximálně 100 klientských aplikací. <br><br> Maximálně 30 oborů definovaných na klienta | 
 | appRoles | Podporováno <br> Bez omezení * | Podporováno <br> Bez omezení * | Nepodporováno | 
-| Odhlašovací adresa URL | http://localhostje povoleno <br><br> Maximální délka 255 znaků | http://localhostje povoleno <br><br> Maximální délka 255 znaků | <br><br> https://localhostje povoleno, http://localhost pro MSA se nezdařila <br><br> Maximální délka 255 znaků <br><br> Schéma HTTP není povolené. <br><br> Zástupné znaky se nepodporují. | 
+| Odhlašovací adresa URL | http://localhost je povoleno <br><br> Maximální délka 255 znaků | http://localhost je povoleno <br><br> Maximální délka 255 znaků | <br><br> https://localhost je povoleno, http://localhost pro MSA se nezdařila <br><br> Maximální délka 255 znaků <br><br> Schéma HTTP není povolené. <br><br> Zástupné znaky se nepodporují. | 
 
 * V rámci všech vlastností kolekce objektu aplikace je globální limit o 1000 položek.
 

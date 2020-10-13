@@ -3,12 +3,12 @@ title: Onboarding zákazníků do služby Azure Lighthouse
 description: Naučte se, jak začlenit zákazníka do Azure Lighthouse, který umožňuje získat a spravovat jejich prostředky prostřednictvím vlastního tenanta pomocí delegované správy prostředků Azure.
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 2e404c471990575460ccda3a26e7cdcb3ec1cf1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6902fb787b14c4443e28852b9aaf2533da9b49d3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396667"
+ms.locfileid: "91873209"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding zákazníků do služby Azure Lighthouse
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak jako poskytovatel služeb můžete zákazníka
 
 Postup připojování můžete opakovat pro více zákazníků. Když se uživatel s příslušnými oprávněními přihlásí k vašemu spravovanému tenantovi, může být tento uživatel autorizovaný pro jednotlivé obory tenantů pro zákazníky, aby mohl provádět operace správy, aniž by se musel přihlašovat ke každému klientovi v rámci zákazníka.
 
-Pokud chcete sledovat svůj dopad napříč zapojením zákazníků a získávat rozpoznávání, přidružte své ID Microsoft Partner Network (MPN) k alespoň jednomu uživatelskému účtu, který má přístup ke každému z vašich integrovaných předplatných. Toto přidružení bude nutné provést v tenantovi poskytovatele služeb. Ve vašem tenantovi doporučujeme vytvořit instanční účet služby, který je přidružený k vašemu ID MPN, a pak tento instanční objekt, který bude pokaždé, když se připojíte k zákazníkovi. Další informace najdete v tématu [Propojte své ID partnera, aby bylo možné na delegovaných materiálech povolit kredit získaný pro partnery.
+Pokud chcete sledovat svůj dopad napříč zapojením zákazníků a získávat rozpoznávání, přidružte své ID Microsoft Partner Network (MPN) k alespoň jednomu uživatelskému účtu, který má přístup ke každému z vašich integrovaných předplatných. Toto přidružení bude nutné provést v tenantovi poskytovatele služeb. Ve vašem tenantovi doporučujeme vytvořit instanční účet služby, který je přidružený k vašemu ID MPN, a pak tento instanční objekt, který bude pokaždé, když se připojíte k zákazníkovi. Další informace najdete v tématu [propojení ID partnera, aby bylo možné na delegovaných zdrojích povolit kredit získaný pro partnery](partner-earned-credit.md).
 
 > [!NOTE]
 > Zákazníci se také mohou připojit k Azure Lighthouse při nákupu nabídky spravované služby (veřejné nebo soukromé), kterou [publikujete do Azure Marketplace](publish-managed-services-offers.md). Můžete také použít proces zprovoznění, který je zde popsán spolu s nabídkami publikovanými do Azure Marketplace.

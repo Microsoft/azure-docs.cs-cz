@@ -8,10 +8,10 @@ ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: be61a6e75c4aa9b5714ffbf3b4f19656b347c493
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653243"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migrace StorSimple 8100 a 8600 do Azure File Sync
@@ -427,7 +427,7 @@ Informace o tom, jestli byly soubory ponechány, naleznete v souborech protokolu
 
 Je pravděpodobně potřeba vytvořit sdílené složky SMB na Windows serveru, které jste měli k StorSimple datům. Tento krok můžete provést ještě před tím, než se sem zařadí čas, ale je potřeba zajistit, aby před tímto bodem nedocházelo k žádným změnám souborů v systému Windows Server.
 
-Pokud máte nasazení DFS-N, můžete ho nasměrovat na umístění DFN-Namespaces na nové serverové složky. Pokud nemáte nasazení DFS-N a vaše zařízení 8100 8600 jste nastavili místně s Windows serverem, můžete tento server převzít z domény a připojit se k novému serveru Windows Server s nástrojem AFS k doméně, dát mu stejný název serveru jako starý server a stejné názvy sdílených složek, takže rozmístění na nový server zůstane pro vaše uživatele transparentní. , zásady skupiny nebo skripty.
+Pokud máte nasazení DFS-N, můžete DFN-Namespaces nasměrovat na nová umístění složky na serveru. Pokud nemáte nasazení DFS-N a vaše zařízení 8100 8600 jste nastavili místně s Windows serverem, můžete tento server převzít z domény a připojit se k novému serveru Windows Server s nástrojem AFS k doméně, dát mu stejný název serveru jako starý server a stejné názvy sdílených složek, takže rozmístění na nový server zůstane pro vaše uživatele transparentní. , zásady skupiny nebo skripty.
 
 ## <a name="phase-7-deprovision"></a>Fáze 7: zrušení zřízení
 

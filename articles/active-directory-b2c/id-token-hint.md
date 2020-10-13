@@ -12,10 +12,10 @@ ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eca75ac4fefcf7164c247c4da4b58ccf7c03334c
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564808"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definice technického profilu pomocného tokenu ID v Azure Active Directory B2C vlastní zásady
@@ -127,7 +127,7 @@ Tento kód vytvoří tajný řetězec jako `VK62QTn0m1hMcn0DQ3RPYDAr6yIiSvYgdRwj
 
 Stejný klíč, který používá Vydavatel tokenů, musí být vytvořený v klíčích zásad Azure AD B2C.  
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled v části **zásady**vyberte **Architektura prostředí identity**.
@@ -249,7 +249,7 @@ V případě symetrických i asymetrických přístupů `id_token_hint` je techn
     ```xml
     <OrchestrationStep Order="1" Type="GetClaims" CpimIssuerTechnicalProfileReferenceId="IdTokenHint_ExtractClaims" />
     ``` 
-1. V zásadách předávající strany opakujte stejné vstupní deklarace identity, které jste nakonfigurovali v IdTokenHint_ExtractClaims Technical Profile. Příklad:
+1. V zásadách předávající strany opakujte stejné vstupní deklarace identity, které jste nakonfigurovali v IdTokenHint_ExtractClaims Technical Profile. Například:
     ```xml
    <RelyingParty>
      <DefaultUserJourney ReferenceId="SignUp" />

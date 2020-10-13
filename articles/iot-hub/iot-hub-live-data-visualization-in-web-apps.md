@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 ms.openlocfilehash: 6a8f39ae5d73bade2c86a7e15efe75956c2aed24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327561"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Vizualizace dat snímačů v reálném čase z Azure IoT Hub ve webové aplikaci
@@ -254,7 +254,7 @@ Pokud v této ukázce provedete všechny problémy, zkuste postup v následujíc
 
 * V Azure Portal přejdete do vaší webové aplikace. V části **monitorování** v levém podokně vyberte **protokoly App Service**. Zapněte **protokolování aplikace (systém souborů)** na zapnuto, nastavte **úroveň** na hodnotu chyba a pak vyberte **Uložit**. Pak otevřete **datový proud protokolu** (pod položkou **monitorování**).
 
-* Z vaší webové aplikace v Azure Portal v části **vývojové nástroje** vyberte **konzolu** a ověřte verze node a npm pomocí `node -v` a `npm -v` .
+* Z vaší webové aplikace v Azure Portal v části **vývojové nástroje**  vyberte  **konzolu** a ověřte verze node a npm pomocí `node -v` a `npm -v` .
 
 * Pokud se zobrazí chyba týkající se nenalezení balíčku, možná jste spustili kroky mimo pořadí. Při nasazení lokality (s) je `git push` spuštěna služba App Service `npm install` , která běží na základě aktuální verze uzlu, který je nakonfigurován. Pokud se později v konfiguraci změní, budete muset provést nesmyslnou změnu kódu a znovu ho vložit.
 

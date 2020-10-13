@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a8324b82a05d7e78772e0b0b6de3a9bfaa183411
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265387"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Instalace nástroje Azure AD Connect s využitím existující databáze ADSync
@@ -67,7 +67,7 @@ Důležité poznámky, které byste si poznamenali, než budete pokračovat:
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 1. Zobrazí se obrazovka Vítá vás Azure AD Connect. Jakmile odsouhlasíte licenční podmínky a oznámení o ochraně osobních údajů, klikněte na **Pokračovat**.
    ![Snímek obrazovky zobrazující stránku Vítá vás Azure A D Connect](./media/how-to-connect-install-existing-database/db3.png)
-1. Na obrazovce **Instalace požadovaných komponent** je povolená možnost **Použít existující SQL Server**. Zadejte název SQL Serveru, který je hostitelem databáze ADSync. Pokud instance stroje SQL použitá k hostování databáze ADSync není na SQL Serveru výchozí instancí, musíte zadat název instance stroje SQL. Dále, pokud není povolené procházení SQL, musíte zadat také číslo portu instance stroje SQL. Příklad:         
+1. Na obrazovce **Instalace požadovaných komponent** je povolená možnost **Použít existující SQL Server**. Zadejte název SQL Serveru, který je hostitelem databáze ADSync. Pokud instance stroje SQL použitá k hostování databáze ADSync není na SQL Serveru výchozí instancí, musíte zadat název instance stroje SQL. Dále, pokud není povolené procházení SQL, musíte zadat také číslo portu instance stroje SQL. Například:         
    ![Snímek obrazovky zobrazující stránku nainstalovat požadované součásti](./media/how-to-connect-install-existing-database/db4.png)           
 
 1. Na obrazovce **Připojení ke službě Azure AD** musíte zadat přihlašovací údaje globálního správce vašeho adresáře služby Azure AD. Je vhodné použít účet ve výchozí doméně onmicrosoft.com. Tento účet slouží jenom k vytvoření účtu služby v Azure AD, a po dokončení průvodce se už nepoužívá.
@@ -96,7 +96,7 @@ Následující tabulku použijte k ověření dalších potřebných kroků.
 |-----|-----|
 |Synchronizace hodnot hash hesel| nastavení synchronizace hodnoty hash hesla a zpětného zápisu hesla jsou plně obnovena pro verze Azure AD Connect počínaje verzí 1.2.65.0.  Při obnovení pomocí starší verze Azure AD Connect zkontrolujte nastavení možností synchronizace pro tyto funkce, abyste se ujistili, že odpovídají aktivnímu synchronizačnímu serveru.  Není nutné provádět žádné další kroky konfigurace.|
 |Federace se službou AD FS|Ověřování Azure budou dál používat zásady AD FS nakonfigurované pro aktivní synchronizační Server.  Pokud ke správě farmy AD FS používáte Azure AD Connect, můžete volitelně změnit metodu přihlašování na AD FS federaci při přípravě na pohotovostní server, který se stane aktivní instancí synchronizace.   Pokud jsou na aktivním synchronizačním serveru povolené možnosti zařízení, nakonfigurujte tyto možnosti na tomto serveru tak, že spustíte úlohu konfigurace možností zařízení.|
-|Předávací ověřování a jednotné přihlašování pro stolní počítače|Aktualizujte metodu přihlašování tak, aby odpovídala konfiguraci aktivního synchronizačního serveru.  Pokud se to nedoporučuje před zvýšením úrovně serveru na primární, předávající ověřování společně s bezproblémovém jednotným přihlašováním se zakáže a váš tenant může být uzamčený, pokud nemáte synchronizaci hodnot hash hesel jako záložní možnost přihlášení. Všimněte si také, že pokud povolíte předávací ověřování v pracovním režimu, bude nainstalován nový agent ověřování, který bude zaregistrován a spuštěn jako agent s vysokou dostupností, který bude přijímat žádosti o přihlášení.|
+|Předávací ověřování a samostatná desktopová Sign-On|Aktualizujte metodu přihlašování tak, aby odpovídala konfiguraci aktivního synchronizačního serveru.  Pokud se to nedoporučuje před zvýšením úrovně serveru na primární, předávající ověřování společně s bezproblémovém jednotným přihlašováním se zakáže a váš tenant může být uzamčený, pokud nemáte synchronizaci hodnot hash hesel jako záložní možnost přihlášení. Všimněte si také, že pokud povolíte předávací ověřování v pracovním režimu, bude nainstalován nový agent ověřování, který bude zaregistrován a spuštěn jako agent s vysokou dostupností, který bude přijímat žádosti o přihlášení.|
 |Federace s PingFederate|Ověřování Azure bude i nadále používat zásady PingFederate nakonfigurované pro aktivní synchronizační Server.  Volitelně můžete změnit způsob přihlašování, aby se PingFederate při přípravě na pohotovostní server, který se stane aktivní instancí synchronizace.  Tento krok může být odložený, dokud nebudete muset federovat další domény pomocí PingFederate.|
 
 ## <a name="next-steps"></a>Další kroky

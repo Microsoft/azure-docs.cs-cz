@@ -12,10 +12,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
 ms.openlocfilehash: bdab4f33852be6bfc2621e2cbecff76778567b1a
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89484727"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity SQL Server uložených procedur v Azure Data Factory
@@ -34,7 +34,7 @@ Aktivitu uložené procedury můžete použít k vyvolání uložené procedury 
 
 - Azure SQL Database
 - Azure Synapse Analytics (dříve SQL Data Warehouse)
-- SQL Server databázi.  Pokud používáte SQL Server, nainstalujte modul runtime integrace v místním prostředí do stejného počítače, který je hostitelem databáze, nebo na samostatném počítači, který má přístup k databázi. Místní prostředí Integration runtime je komponenta, která propojuje zdroje dat místně nebo na virtuálním počítači Azure s Cloud Services zabezpečeným a spravovaným způsobem. Podrobnosti najdete v článku věnovaném místnímu [prostředí Integration runtime](create-self-hosted-integration-runtime.md) .
+- SQL Server databázi.  Pokud používáte SQL Server, nainstalujte modul runtime integrace v místním prostředí do stejného počítače, který je hostitelem databáze, nebo na samostatném počítači, který má přístup k databázi. Self-Hosted Integration runtime je komponenta, která připojuje zdroje dat místně nebo na virtuálním počítači Azure s Cloud Services zabezpečeným a spravovaným způsobem. Podrobnosti najdete v článku věnovaném místnímu [prostředí Integration runtime](create-self-hosted-integration-runtime.md) .
 
 > [!IMPORTANT]
 > Při kopírování dat do Azure SQL Database nebo SQL Server můžete nakonfigurovat **SqlSink** v aktivitě kopírování a vyvolat uloženou proceduru pomocí vlastnosti **sqlWriterStoredProcedureName** . Podrobnosti o této vlastnosti naleznete v následujících článcích konektoru: [Azure SQL Database](connector-azure-sql-database.md), [SQL Server](connector-sql-server.md). Volání uložené procedury při kopírování dat do služby Azure synapse Analytics pomocí aktivity kopírování se nepodporuje. Můžete ale použít aktivitu uložená procedura k vyvolání uložené procedury ve službě Azure synapse Analytics. 

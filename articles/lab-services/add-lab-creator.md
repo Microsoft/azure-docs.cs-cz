@@ -4,10 +4,10 @@ description: Tento článek ukazuje, jak přidat uživatele do role testovacího
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 5fdeb33dab60a2fb9f1680295c355e2c7c0e775a
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399478"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Přidání tvůrců testovacího prostředí do účtu testovacího prostředí v Azure Lab Services

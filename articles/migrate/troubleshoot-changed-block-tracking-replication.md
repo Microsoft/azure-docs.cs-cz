@@ -7,10 +7,10 @@ ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
 ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88871172"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Řešení potíží s replikací v migraci virtuálních počítačů VMware bez agenta
@@ -58,7 +58,7 @@ Když portál vytvoří Trezor klíčů, přidá taky zásadu přístupu uživat
 
 $userPrincipalId = $ (Get-AzureRmADUser-UserPrincipalName "user2_email_address"). Účet
 
-Set-AzureRmKeyVaultAccessPolicy-trezor "" trezoru klíčů "-ObjectId $userPrincipalId-PermissionsToStorage Get, list, DELETE, set, Update, RegenerateKey, getsas, listsas, deletesas, setsas, Recovery, Backup, Restore, vyprázdnit
+Set-AzureRmKeyVaultAccessPolicy-trezor "RegenerateKey"-ObjectId "-ObjectId $userPrincipalId-PermissionsToStorage Get, list, DELETE, set, Update,, getsas, listsas, deletesas, setsas, obnovení, zálohování, obnovení, vyprázdnění
 
 
 ## <a name="disposeartefactstimedout"></a>DisposeArtefactsTimedOut
