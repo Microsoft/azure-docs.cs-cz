@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 9a8ae9be983ecb0e6b50ef889525ae33726c2d97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 673480d1b5171e03b701cd2102c7a640aae58ad0
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330328"
+ms.locfileid: "91893743"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Problémy online migrace & omezení pro Azure DB for MySQL s Azure Database Migration Service
 
@@ -82,12 +82,12 @@ Sloupce Large Object (LOB) jsou sloupce, které mohou dosáhnout větší veliko
 
     **Alternativní řešení**: Nahraďte primární klíč jinými typy nebo sloupci, které nejsou typu LOB.
 
-- **Omezení**: Pokud je délka sloupce large object (LOB) větší než 32 KB, data můžou být v cíli zkrácená. Můžete kontrolovat délku sloupce LOB pomocí tohoto dotazu:
+- **Omezení**: Pokud je sloupec délka large object (LOB) větší než parametr omezení velikosti LOB (by neměl být větší než 64 KB), může dojít ke zkrácení dat v cíli. Můžete kontrolovat délku sloupce LOB pomocí tohoto dotazu:
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **Alternativní řešení**: Pokud máte objekt LOB, který je větší než 32 KB, kontaktujte technický tým na [vyžádání migrace databáze Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
+    **Alternativní řešení**: Pokud máte objekt LOB, který je větší než 64 KB, použijte parametr "Allow neomezenou velikost LOB". Počítejte s tím, že migrace pomocí parametru "povolí neomezenou velikost LOB" bude pomalejší než migrace pomocí parametru "omezení velikosti LOB".
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>Omezení při migraci online z AWS VP MySQL
 

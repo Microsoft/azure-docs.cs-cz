@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
 ms.openlocfilehash: 2f115313b17ed159973d2545b947e2ff031508eb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362329"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Přeučení a nasazení modelu strojového učení
@@ -150,7 +150,7 @@ Dále získejte objekt definice webové služby voláním rutiny [Get-AzMlWebSer
 $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 ```
 
-Pokud chcete zjistit název skupiny prostředků existující webové služby, spusťte rutinu Get-AzMlWebService bez jakýchkoli parametrů, ve které se budou zobrazovat webové služby v předplatném. Vyhledejte webovou službu a podívejte se na její ID webové služby. Název skupiny prostředků je čtvrtý prvek v ID, a to hned za elementem *resourceGroups* . V následujícím příkladu je název skupiny prostředků default-MachineLearning-SouthCentralUS.
+Pokud chcete zjistit název skupiny prostředků existující webové služby, spusťte rutinu Get-AzMlWebService bez parametrů, abyste zobrazili webové služby v předplatném. Vyhledejte webovou službu a podívejte se na její ID webové služby. Název skupiny prostředků je čtvrtý prvek v ID, a to hned za elementem *resourceGroups* . V následujícím příkladu je název skupiny prostředků default-MachineLearning-SouthCentralUS.
 
 ```azurepowershell
 Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph

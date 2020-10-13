@@ -8,10 +8,10 @@ ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: f4687add8fdd55c8084a7180a6e0a3bffd9751b1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715158"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Základní hodnoty zabezpečení Azure pro Azure Storage
@@ -316,7 +316,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 **Zodpovědnost**: zákazník
 
-### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: použijte Azure Active Directory jednotné přihlašování (SSO).
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: použijte Azure Active Directory Single Sign-On (SSO).
 
 **Pokyny**: kdykoli je to možné, použijte Azure Active Directory jednotného přihlašování (SSO) místo konfigurace jednotlivých samostatných přihlašovacích údajů pro každou službu. Použijte Azure Security Center doporučení pro správu identit a přístupu. 
 
@@ -960,7 +960,7 @@ Před odesláním do nevýpočetních prostředků Azure, jako jsou App Service,
 
 Můžete také povolit službě Azure Automation provádět běžné snímky objektů BLOB.
 
-- [Principy Azure Storage a smlouvy o úrovni služeb](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [Porozumění Azure Storage redundanci a Service-Level smluv](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 - [Vytvoření snímku objektu BLOB](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)
 

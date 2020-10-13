@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: devx-track-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
 ms.openlocfilehash: 5c728b219168f61f7f791b7db280a701ff216985
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362380"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Spouštění skriptů strojového učení v jazyce Python v Azure Machine Learning Studio (Classic)
@@ -149,7 +149,7 @@ Je možné vrátit více hodnot tak, že je uložíte do různých imagí. Studi
 
 Prostředí Anaconda nainstalované v studiu (Classic) obsahuje běžné balíčky, jako je NumPy, SciPy a Scikits – informace. Tyto balíčky je možné efektivně využít ke zpracování dat v kanálu strojového učení.
 
-Například následující experimenty a skripty ilustrují použití Scikitsch doplňků v – informace o hodnocení důležitosti funkcí pro datovou sadu. Skóre lze použít k provedení výběru funkcí pod dohledem před jejich odesláním do jiného modelu.
+Například následující experiment a skript ilustrují použití učících v Scikits-Learn k výpočtu skóre důležitosti funkcí pro datovou sadu. Skóre lze použít k provedení výběru funkcí pod dohledem před jejich odesláním do jiného modelu.
 
 Tady je funkce Pythonu, která slouží k výpočtu skóre důležitosti a objednání funkcí na základě skóre:
 

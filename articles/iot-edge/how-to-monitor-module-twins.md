@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1bf2e3f07d9e5576f62ef9badd9c8a46ac92fad0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1a11d3a9a972188af4cf8f054349da98d69691a3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450158"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876154"
 ---
 # <a name="monitor-module-twins"></a>Monitorování dvojčat modulu
 
@@ -168,15 +168,15 @@ Pokud máte problémy se zařízeními pro příjem dat, doporučujeme, abyste s
 
 Informace o připojení vašich vlastních modulů jsou zachovány v modulu IoT Edgeho agenta s dvojitou platností. Modul, který je pro váš vlastní modul, se využije hlavně k údržbě dat pro vaše řešení. Požadované vlastnosti, které jste definovali v deployment.jssouboru, se projeví v modulu s dvojitou platností a váš modul může podle potřeby aktualizovat hlášené hodnoty vlastností.
 
-Pomocí sady [SDK pro zařízení Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks) můžete použít preferovaný programovací jazyk k aktualizaci hlášených hodnot vlastností v modulu, a to na základě kódu aplikace vašeho modulu. Následující postup používá k tomu sadu Azure SDK pro .NET, která používá kód z modulu [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) :
+Pomocí sady [SDK pro zařízení Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) můžete použít preferovaný programovací jazyk k aktualizaci hlášených hodnot vlastností v modulu, a to na základě kódu aplikace vašeho modulu. Následující postup používá k tomu sadu Azure SDK pro .NET, která používá kód z modulu [SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) :
 
-1. Vytvořte instanci třídy [ModuleClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient) pomocí metody [CreateFromEnvironmentAysnc](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync) .
+1. Vytvořte instanci třídy [ModuleClient](/dotnet/api/microsoft.azure.devices.client.moduleclient) pomocí metody [CreateFromEnvironmentAysnc](/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync) .
 
-1. Získejte kolekci vlastností vlákna modulu s metodou [GetTwinAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync?view=azure-dotnet) .
+1. Získejte kolekci vlastností vlákna modulu s metodou [GetTwinAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync) .
 
-1. Vytvoření naslouchacího procesu (předání zpětného volání) pro zachycení změn požadovaných vlastností pomocí metody [SetDesiredPropertyUpdateCallbackAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync?view=azure-dotnet)
+1. Vytvoření naslouchacího procesu (předání zpětného volání) pro zachycení změn požadovaných vlastností pomocí metody [SetDesiredPropertyUpdateCallbackAsync](/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync)
 
-1. V metodě zpětného volání aktualizujte hlášené vlastnosti v modulu s dvojitou metodou [UpdateReportedPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient) a předejte do [ní objekt s hodnotou vlastnosti](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.shared.twincollection) , kterou chcete nastavit.
+1. V metodě zpětného volání aktualizujte hlášené vlastnosti v modulu s dvojitou metodou [UpdateReportedPropertiesAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient) a předejte do [ní objekt s hodnotou vlastnosti](/dotnet/api/microsoft.azure.devices.shared.twincollection) , kterou chcete nastavit.
 
 ## <a name="access-the-module-twins"></a>Přístup k nevlákenám modulu
 

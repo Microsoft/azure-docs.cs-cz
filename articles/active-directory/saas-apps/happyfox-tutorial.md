@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 6282e159a537eb3b9bf5d9a44c7498f3f1db0019
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 032f35fcf5ff661f5a0bfb59be191ffae93272a0
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88550700"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944441"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>Kurz: Azure Active Directory integrace s HappyFox
 
@@ -132,19 +132,19 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí HappyFox
 
 2. Přejděte na **Správa**, klikněte na kartu **integrace** .
 
-    ![Konfigurace jednoho Sign-On](./media/happyfox-tutorial/header.png) 
+    ![Snímek obrazovky zobrazující stránku pro správu se zvolenou kartou Integration](./media/happyfox-tutorial/header.png) 
 
 3. Na kartě integrace klikněte na **Konfigurovat** v části **integrace SAML** a otevřete nastavení jednotného přihlašování.
 
-    ![Konfigurace jednoho Sign-On](./media/happyfox-tutorial/configure.png)
+    ![Snímek obrazovky, který zobrazuje nastavení "S A M L Integration" s vybranou akcí "konfigurovat".](./media/happyfox-tutorial/configure.png)
 
 4. V části Konfigurace SAML vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal do textového pole **Adresa URL cíle jednotného přihlašování** .
 
-    ![Konfigurace jednoho Sign-On](./media/happyfox-tutorial/targeturl.png)
+    ![Snímek obrazovky, který zobrazuje oddíl S A M L konfigurací s zvýrazněným textovým popiskem s S cíli U R L.](./media/happyfox-tutorial/targeturl.png)
 
 5. Otevřete certifikát stažený z Azure Portal v poznámkovém bloku a vložte jeho obsah do části **Signature IDP** .
 
-    ![Konfigurace jednoho Sign-On](./media/happyfox-tutorial/cert.png)
+    ![Snímek obrazovky zobrazující, že se zvýrazní oddíl I d P signatura](./media/happyfox-tutorial/cert.png)
 
 6. Klikněte na tlačítko **Uložit nastavení** .
 

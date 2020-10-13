@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
 ms.openlocfilehash: addccf337f82b1695c76ae975c4a33f44ba50f8a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448144"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání Key Vault do webové aplikace pomocí připojených služeb sady Visual Studio
@@ -125,7 +125,7 @@ Konfiguraci můžete nastavit tak, aby soubor web.config měl v prvku zástupnou
    ```
 1. Spusťte aplikaci místně v rámci ladicího programu, přepněte na kartu **o** a ověřte, zda se zobrazí hodnota z Key Vault.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud vaše Key Vault běží na jiném účet Microsoft než na tom, co jste přihlásili k aplikaci Visual Studio (například Key Vault je spuštěná v pracovním účtu, ale Visual Studio používá váš privátní účet), zobrazí se v souboru Program.cs chyba, že Visual Studio nemůže získat přístup k Key Vault. Pokud chcete tento problém vyřešit:
 

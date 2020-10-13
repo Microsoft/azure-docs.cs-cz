@@ -1,20 +1,20 @@
 ---
-title: Vytvoření okruhu ExpressRoute pomocí šablony Azure Resource Manager (šablona ARM)
-description: Naučte se vytvořit okruh ExpressRoute pomocí šablony Azure Resource Manager (šablona ARM).
+title: 'Rychlý Start: vytvoření okruhu ExpressRoute pomocí šablony Azure Resource Manager (šablona ARM)'
+description: V tomto rychlém startu se dozvíte, jak vytvořit okruh ExpressRoute pomocí šablony Azure Resource Manager (šablona ARM).
 services: expressroute
 author: duongau
 mnager: kumud
 ms.service: expressroute
 ms.topic: quickstart
 ms.custom: subject-armsq
-ms.date: 08/31/2020
+ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: f45fc32e99fff7403c40048b8c7ad117b0395cc9
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 540d9d5f7ef3815743909a399076c55018f0df40
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759233"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961847"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Rychlý Start: vytvoření okruhu ExpressRoute s privátním partnerským vztahem pomocí šablony ARM
 
@@ -84,7 +84,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **skupiny prostředků** .
 

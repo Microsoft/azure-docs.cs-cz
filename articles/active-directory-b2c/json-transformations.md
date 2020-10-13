@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37df1a052a58271c239b8b3bcaa4808ab7c355f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 676b6abb28abf58287bfc9036ca907ae6a1ee192
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85204344"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961285"
 ---
 # <a name="json-claims-transformations"></a>Transformace deklarací JSON
 
@@ -33,6 +33,8 @@ K vygenerování řetězce JSON použijte buď hodnoty deklarace identity, nebo 
 | InputClaim | Libovolný řetězec za tečkami | řetězec | JsonPath kódu JSON, do kterého bude vložena hodnota deklarace. |
 | InputParameter | Libovolný řetězec za tečkami | řetězec | JsonPath kódu JSON, do kterého bude vložena hodnota konstanty řetězce. |
 | OutputClaim | outputClaim | řetězec | Generovaný řetězec JSON. |
+
+### <a name="example-1"></a>Příklad 1
 
 Následující příklad generuje řetězec JSON na základě hodnoty deklarace "e-mail" a "jednorázové heslo" a také konstantních řetězců.
 
@@ -52,8 +54,6 @@ Následující příklad generuje řetězec JSON na základě hodnoty deklarace 
   </OutputClaims>
 </ClaimsTransformation>
 ```
-
-### <a name="example"></a>Příklad
 
 Následující transformace deklarací identity vypíše deklaraci identity řetězce JSON, která bude textem žádosti odeslanou SendGrid (poskytovatel e-mailu třetí strany). Struktura objektu JSON je definována ID v desítkovém zápisu vstupními parametry a TransformationClaimTypesem InputClaims. Čísla v zápisu teček implikují pole. Hodnoty pocházejí z hodnot InputClaims a vstupní hodnoty vlastností value.
 
@@ -87,6 +87,56 @@ Následující transformace deklarací identity vypíše deklaraci identity řet
   "from": {
     "email": "service@contoso.com"
   }
+}
+```
+
+### <a name="example-2"></a>Příklad 2
+
+Následující příklad generuje řetězec JSON na základě hodnot deklarace identity a také konstantních řetězců.
+
+```xml
+<ClaimsTransformation Id="GenerateRequestBody" TransformationMethod="GenerateJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="customerEntity.email" />
+    <InputClaim ClaimTypeReferenceId="objectId" TransformationClaimType="customerEntity.userObjectId" />
+    <InputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="customerEntity.firstName" />
+    <InputClaim ClaimTypeReferenceId="surname" TransformationClaimType="customerEntity.lastName" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="customerEntity.role.name" DataType="string" Value="Administrator"/>
+    <InputParameter Id="customerEntity.role.id" DataType="long" Value="1"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="requestBody" TransformationClaimType="outputClaim"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+Následující transformace deklarací identity vypíše deklaraci identity řetězce JSON, která bude textem žádosti odeslanou REST API. Struktura objektu JSON je definována ID v desítkovém zápisu vstupními parametry a TransformationClaimTypesem InputClaims. Čísla v zápisu teček implikují pole. Hodnoty pocházejí z hodnot InputClaims a vstupní hodnoty vlastností value.
+
+- Vstupní deklarace identity:
+  - **e-mail**, typ deklarace transformace  **customerEntity. email**: " john.s@contoso.com "
+  - **objectID**, transformovat typ deklarace identity **customerEntity. userObjectId** "01234567-89AB-CDEF-0123-456789ABCDEF"
+  - **objectID**, transformovat typ deklarace identity **customerEntity. FirstName** "Jan"
+  - **objectID**, transformovat typ deklarace identity **customerEntity. LastName** "Smith"
+- Vstupní parametr:
+  - **customerEntity.role.Name**: "správce"
+  - **customerEntity.role.ID** 1
+- Výstupní deklarace identity:
+  - **částmi**: hodnota JSON
+
+```json
+{
+   "customerEntity":{
+      "email":"john.s@contoso.com",
+      "userObjectId":"01234567-89ab-cdef-0123-456789abcdef",
+      "firstName":"John",
+      "lastName":"Smith",
+      "role":{
+         "name":"Administrator",
+         "id": 1
+      }
+   }
 }
 ```
 
@@ -137,7 +187,7 @@ Získá seznam zadaných elementů z dat JSON.
 | InputParameter | includeEmptyClaims | řetězec | Určete, jestli se mají zahrnout prázdné deklarace identity. |
 | InputParameter | jsonSourceKeyName | řetězec | Název klíče elementu |
 | InputParameter | jsonSourceValueName | řetězec | Název hodnoty prvku |
-| OutputClaim | Collection (Kolekce) | String, int, Boolean a DateTime |Seznam deklarací, které se mají extrahovat Název deklarace identity by měl být roven hodnotě zadané ve vstupní deklaraci _jsonSourceClaim_ . |
+| OutputClaim | Shromažďování | String, int, Boolean a DateTime |Seznam deklarací, které se mají extrahovat Název deklarace identity by měl být roven hodnotě zadané ve vstupní deklaraci _jsonSourceClaim_ . |
 
 V následujícím příkladu transformace deklarací extrahuje následující deklarace: e-mail (String), DisplayName (String), membershipNum (int), Active (Boolean) a DatumNarození (DateTime) z dat JSON.
 
@@ -231,7 +281,7 @@ Získá první prvek z dat JSON.
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | řetězec | ClaimTypes, který se používá při transformaci deklarací k získání položky z dat JSON. |
 | OutputClaim | key | řetězec | První klíč elementu ve formátu JSON. |
-| OutputClaim | value | řetězec | Hodnota prvního prvku ve formátu JSON. |
+| OutputClaim | hodnota | řetězec | Hodnota prvního prvku ve formátu JSON. |
 
 V následujícím příkladu transformace deklarací extrahuje první prvek (daný název) z dat JSON.
 

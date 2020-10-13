@@ -10,12 +10,12 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 6a63df282cadf86668e69d2422a6c791e86010b6
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: eb698cf3c4cf2bdc47e3df57c65847f499d8760c
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767123"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893658"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>Plánování telefonie a řešení pro SMS
 
@@ -48,7 +48,7 @@ Následující tabulka shrnuje tyto typy telefonních čísel:
 | Typ telefonního čísla | Příklad                              | Dostupnost země    | Možnost telefonního čísla |Běžný případ použití                                                                                                     |
 | ----------------- | ------------------------------------ | ----------------------- | ------------------------|------------------------------------------------------------------------------------------------------------------- |
 | Místní (geografické)        | + 1 (místní směrové číslo) XXX XX XX  | USA                      | Volání (odchozí) | Přiřazení telefonních čísel uživatelům ve vašich aplikacích  |
-| Bezplatná linka         | + 1 ( *kód*oblasti bez poplatků) XXX xx xx | USA                      | Volání (odchozí), SMS (příchozí/odchozí)| Přiřazení telefonních čísel k systémům IRV (Interactive Voice Response)/roboty, aplikacím SMS                                        |
+| Toll-Free         | + 1 ( *kód*oblasti bez poplatků) XXX xx xx | USA                      | Volání (odchozí), SMS (příchozí/odchozí)| Přiřazení telefonních čísel k systémům IRV (Interactive Voice Response)/roboty, aplikacím SMS                                        |
 
 
 ## <a name="phone-number-plans-in-azure-communication-services"></a>Plány telefonního čísla v komunikačních službách Azure 
@@ -68,13 +68,15 @@ Následující tabulka uvádí, kde můžete získat různé typy telefonních �
 |Typ čísla| Získat čísla v | Volat na                                        | Přijmout volání z                                    |Odeslat zprávy do       | Přijímat zprávy z |
 |-----------| ------------------ | ---------------------------------------------------  |-------------------------------------------------------|-----------------------|--------|
 | Místní (geografické)  | USA                 | USA, Kanada, Spojené království, Německo, Francie,. + Další *| USA, Kanada, Spojené království, Německo, Francie,. + Další * |Není k dispozici| Není k dispozici |
-| Bezplatná linka | USA                 | USA                                                   | USA                                                    |USA                | USA |
+| Toll-Free | USA                 | USA                                                   | USA                                                    |USA                | USA |
 
 * Další podrobnosti o cílech volání a cenách najdete na [stránce s cenami](../pricing.md).
 
 ## <a name="azure-subscriptions-eligibility"></a>Způsobilost k předplatným Azure
 
 Pokud chcete získat telefonní číslo, musíte se přihlásit k placenému předplatnému Azure. Na zkušebních účtech nejde získat telefonní čísla. 
+
+V současné době je dostupnost telefonního čísla omezená na předplatná Azure, která mají fakturační adresu v USA.
 
 ## <a name="next-steps"></a>Další kroky
 

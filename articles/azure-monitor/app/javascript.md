@@ -4,12 +4,12 @@ description: Získejte zobrazení stránky a počty relací, data webového klie
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5a90f0b4223d69ccb6c4def871eb9d5bf5fbc2e8
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: b109aaea1ae5e751f40b55a3c703f0739661e10d
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91841437"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876205"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -104,7 +104,7 @@ Každá možnost konfigurace je uvedená výše na novém řádku, pokud nechcet
 
 Dostupné možnosti konfigurace jsou 
 
-| Název | Typ | Popis
+| Název | Typ | Description
 |------|------|----------------
 | src | řetězec **[povinné]** | Úplná adresa URL, ze které se má načíst sada SDK Tato hodnota se používá pro atribut src dynamicky přidávaného &lt; skriptu nebo &gt; značky. Můžete použít veřejné umístění CDN nebo vlastní soukromý hostovaný.
 | name | řetězec *[nepovinné]* | Globální název inicializované sady SDK, výchozí hodnota `appInsights` . Proto ```window.appInsights``` bude odkaz na inicializovaná instanci. Poznámka: Pokud zadáte hodnotu názvu nebo předchozí instanci, která má být přiřazena (prostřednictvím globálního názvu appInsightsSDK), bude tato hodnota názvu také definována v globálním oboru názvů jako ```window.appInsightsSDK=<name value>``` , to je vyžadováno inicializačním kódem sady SDK, aby bylo zajištěno, že se inicializuje a aktualizuje správné kostry fragmentů a metod proxy.
@@ -153,7 +153,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfigurace
 Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s výjimkou `instrumentationKey` .
 
-| Název | Výchozí | Popis |
+| Name | Výchozí | Description |
 |------|---------|-------------|
 | instrumentationKey | null | **Požadováno**<br>Klíč instrumentace, který jste získali z Azure Portal. |
 | accountId | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
@@ -200,6 +200,41 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 | ajaxPerfLookupDelay | 25 | Výchozí hodnota je 25 ms. Doba, po kterou se má počkat, než se znovu pokusí najít Windows. časování výkonu pro `ajax` požadavek, čas je v milisekundách a předává se přímo do setTimeout ().
 | enableUnhandledPromiseRejectionTracking | false (nepravda) | V případě hodnoty true budou se Neošetřená zamítnutí slíbit shromažďovat a nahlásí se jako chyba JavaScriptu. Pokud má disableExceptionTracking hodnotu true (nesleduje výjimky), konfigurační hodnota se bude ignorovat a Neošetřená zamítnutí se nebudou hlásit.
 
+## <a name="enable-time-on-page-tracking"></a>Povolit sledování času na stránce
+
+Nastavením se `autoTrackPageVisitTime: true` sleduje čas strávený uživateli na každé stránce. V každém novém PageView je doba, kterou uživatel strávil na *Předchozí* stránce, odeslána jako [vlastní metrika](../platform/metrics-custom-overview.md) s názvem `PageVisitTime` . Tato vlastní metrika je zobrazitelná v [Průzkumník metrik](../platform/metrics-getting-started.md) jako metrika založená na protokolu.
+
+## <a name="enable-correlation"></a>Povolit korelaci
+
+Korelace generuje a odesílá data, která umožňují distribuované trasování a nanáší [mapu aplikace](../app/app-map.md), [zobrazení na konci transakce](../app/app-map.md#go-to-details)a další diagnostické nástroje.
+
+Následující příklad zobrazuje všechny možné konfigurace potřebné k povolení korelace s poznámkami pro konkrétní scénář níže:
+
+```javascript
+// excerpt of the config section of the JavaScript SDK snippet with correlation
+// between client-side AJAX and server requests enabled.
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    disableFetchTracking: false,
+    enableCorsCorrelation: true,
+    enableRequestHeaderTracking: true,
+    enableResponseHeaderTracking: true,
+    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
+    /* ...Other Configuration Options... */
+}});
+</script>
+
+``` 
+
+Pokud některý ze serverů jiných výrobců, které klient komunikuje, nemůže přijmout `Request-Id` hlavičky a a `Request-Context` nemůžete aktualizovat jejich konfiguraci, pak je budete muset vložit do seznamu vyloučení prostřednictvím `correlationHeaderExcludeDomains` Vlastnosti konfigurace. Tato vlastnost podporuje zástupné znaky.
+
+Na straně serveru musí být možné přijmout připojení k těmto hlavičkám. V závislosti na `Access-Control-Allow-Headers` konfiguraci na straně serveru je často potřeba rozšíření seznamu na straně serveru tím, že ručně přidáte `Request-Id` a `Request-Context` .
+
+Access-Control-Allow-Headers: `Request-Id` , `Request-Context` , `<your header>`
+
+> [!NOTE]
+> Pokud používáte OpenTelemtry nebo Application Insights sady SDK vydané v 2020 nebo novějších verzích, doporučujeme použít [WC3 TraceContext](https://www.w3.org/TR/trace-context/). [Tady](../app/correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)najdete pokyny k konfiguraci.
+
 ## <a name="single-page-applications"></a>Jednostránkové aplikace
 
 Ve výchozím nastavení tato sada SDK **nezpracovává změny** směrování na základě stavu, ke kterým dochází v aplikacích s jednou stránkou. Pokud chcete povolit automatické sledování změn směrování pro jednu stránkovou aplikaci, můžete přidat `enableAutoRouteTracking: true` do konfigurace instalace.
@@ -208,10 +243,6 @@ V současné době nabízíme samostatný [modul plug-in pro reakce](javascript-
 > [!NOTE]
 > Použijte `enableAutoRouteTracking: true` pouze v případě, **not** že nepoužíváte modul plug-in reakce. Obě jsou schopné posílat nové PageViews při změně trasy. Pokud jsou obě povolené, může se odeslat duplicitní PageViews.
 
-## <a name="configuration-autotrackpagevisittime"></a>Konfigurace: autoTrackPageVisitTime
-
-Nastavením se `autoTrackPageVisitTime: true` sleduje čas strávený uživateli na každé stránce. V každém novém PageView je doba, kterou uživatel strávil na *Předchozí* stránce, odeslána jako [vlastní metrika](../platform/metrics-custom-overview.md) s názvem `PageVisitTime` . Tato vlastní metrika je zobrazitelná v [Průzkumník metrik](../platform/metrics-getting-started.md) jako metrika založená na protokolu.
-
 ## <a name="extensions"></a>Rozšíření
 
 | Rozšíření |
@@ -219,38 +250,6 @@ Nastavením se `autoTrackPageVisitTime: true` sleduje čas strávený uživateli
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
 | [Angular](javascript-angular-plugin.md) |
-
-## <a name="correlation"></a>Korelace
-
-Korelace klienta na straně serveru je podporovaná pro:
-
-- XHR/AJAX – požadavky 
-- Načíst požadavky 
-
-Korelace klienta na straně serveru není pro žádosti a **podporovaná** `GET` `POST` .
-
-### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>Povolení korelace mezi komponentami mezi klientským AJAX a požadavky serveru
-
-Aby bylo možné povolit `CORS` korelaci, musí klient odeslat dvě další hlavičky žádosti `Request-Id` a `Request-Context` a na straně serveru musí být schopni přijmout připojení k těmto hlavičkám. Odesílání těchto hlaviček je povoleno nastavením `enableCorsCorrelation: true` v rámci konfigurace sady JavaScript SDK. 
-
-V závislosti na `Access-Control-Allow-Headers` konfiguraci na straně serveru je často potřeba rozšíření seznamu na straně serveru tím, že ručně přidáte `Request-Id` a `Request-Context` .
-
-Access-Control-Allow-Headers: `Request-Id` , `Request-Context` , `<your header>`
-
-Pokud některý ze serverů jiných výrobců, které klient komunikuje, nemůže přijmout `Request-Id` hlavičky a a `Request-Context` nemůžete aktualizovat jejich konfiguraci, pak je budete muset vložit do seznamu vyloučení prostřednictvím `correlationHeaderExcludeDomains` Vlastnosti konfigurace. Tato vlastnost podporuje zástupné znaky.
-
-```javascript
-// excerpt of the config section of the JavaScript SDK snippet with correlation
-// between client-side AJAX and server requests enabled.
-cfg: { // Application Insights Configuration
-    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
-    enableCorsCorrelation: true,
-    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
-    /* ...Other Configuration Options... */
-}});
-</script>
-
-``` 
 
 ## <a name="explore-browserclient-side-data"></a>Prozkoumat data v prohlížeči nebo na straně klienta
 

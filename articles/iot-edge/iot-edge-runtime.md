@@ -4,17 +4,17 @@ description: Přečtěte si, jak IoT Edge runtime spravuje moduly, zabezpečení
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2019
+ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 25493312854bbd495dce01f8f107b3e3320cb92c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cbfc374a5964983c43594fef5d97986e51c0d83
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016950"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971689"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Pochopení Azure IoT Edge runtime a jeho architektury
 
@@ -71,7 +71,7 @@ Chcete-li získat zprávu, zaregistrujte zpětné volání, které zpracovává 
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
    ```
 
-Další informace o třídě ModuleClient a jejích metodách komunikace najdete v referenčních informacích k rozhraní API pro preferovaný jazyk sady SDK: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)nebo [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
+Další informace o třídě ModuleClient a jejích metodách komunikace najdete v referenčních informacích k rozhraní API pro preferovaný jazyk sady SDK: [C#](/dotnet/api/microsoft.azure.devices.client.moduleclient), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient), [Java](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)nebo [Node.js](/javascript/api/azure-iot-device/moduleclient).
 
 Vývojář řešení zodpovídá za zadání pravidel, která určují, jak IoT Edge hub předává zprávy mezi moduly. Pravidla směrování jsou definovaná v cloudu a jsou vložená dolů do IoT Edgeho centra v jeho modulu. Stejná syntaxe pro IoT Hub trasy se používá k definování tras mezi moduly v Azure IoT Edge. Další informace najdete v tématu [Naučte se nasazovat moduly a navázat trasy v IoT Edge](module-composition.md).
 
@@ -124,6 +124,22 @@ Agent IoT Edge hraje důležitou roli v zabezpečení zařízení IoT Edge. Nap�
 
 Další informace o rozhraní Azure IoT Edge Security Framework najdete v článku o [IoT Edge Security Manager](iot-edge-security-manager.md).
 
+## <a name="runtime-quality-telemetry"></a>Běhová telemetrie kvality
+
+IoT Edge shromažďuje z modulu runtime hostitele a systémových modulů anonymní telemetrii, aby se zlepšila kvalita produktu. Tyto informace se nazývají běhová telemetrie kvality (RQT). RQT se pravidelně posílá jako zprávy ze zařízení do cloudu, aby je IoT Hub od agenta IoT Edge. Zprávy RQT se nezobrazují v běžné telemetrie zákazníka a nevyužívají žádnou kvótu zpráv.
+
+Úplný seznam metrik shromažďovaných nástrojem edgeAgent a edgeHub je k dispozici v [části dostupné metriky v článku věnovaném metrikám přístupu IoT Edge runtime](how-to-access-built-in-metrics.md#available-metrics). Podmnožina těchto metrik je shromažďována agentem IoT Edge jako součást RQT. Metriky shromážděné jako součást RQT obsahují značku `ms_telemetry` .
+
+V rámci anonymity se před odesláním odeberou jakékoli osobní nebo organizační informace, jako jsou názvy zařízení a modulů.
+
+Výchozí četnost RQT je jedna zpráva odeslaná do IoT Hub každých 24 hodin a místní kolekce podle edgeAgent každou hodinu.
+
+Pokud se chcete odhlásit z RQT, existují dva způsoby, jak to provést:
+
+* Nastavte `SendRuntimeQualityTelemetry` proměnnou prostředí na `false` pro **edgeAgent**nebo
+* Zrušte volbu v Azure Portal během nasazování.
+
 ## <a name="next-steps"></a>Další kroky
 
-[Vysvětlení modulů Azure IoT Edge](iot-edge-modules.md)
+* [Vysvětlení modulů Azure IoT Edge](iot-edge-modules.md)
+* [Další informace o IoT Edge metriky modulu runtime](how-to-access-built-in-metrics.md)

@@ -16,10 +16,10 @@ ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449383"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
@@ -75,7 +75,7 @@ Linux má několik různých režimů plánování vstupu a výstupu. Běžnými
 Azure Akcelerátor zápisu je funkce, která je k dispozici pro virtuální počítače Azure M-Series výhradně. Jako název uvádíme účel funkce k vylepšení latence v/v zápisu do služby Azure Premium Storage. V případě SAP HANA se má Akcelerátor zápisu použít jenom pro svazek **/Hana/log** . Proto jsou **/Hana/data** a **/Hana/log** samostatné svazky s Azure akcelerátor zápisu podporují pouze svazek **/Hana/log** . 
 
 > [!IMPORTANT]
-> Při použití služby Azure Premium Storage je použití Azure [akcelerátor zápisu](../../how-to-enable-write-accelerator.md) pro svazek **/Hana/log** povinné. Akcelerátor zápisu je k dispozici pouze pro virtuální počítače s podporou Premium Storage a řady M-Series a Mv2-Series. Akcelerátor zápisu nepracuje v kombinaci s jinými rodinami virtuálních počítačů Azure, jako je Esv3 nebo Edsv4.
+> Při použití služby Azure Premium Storage je použití Azure [akcelerátor zápisu](../../how-to-enable-write-accelerator.md) pro svazek **/Hana/log** povinné. Akcelerátor zápisu je k dispozici pro služby Premium Storage a řady M-Series a Mv2-Series jenom pro virtuální počítače. Akcelerátor zápisu nepracuje v kombinaci s jinými rodinami virtuálních počítačů Azure, jako je Esv3 nebo Edsv4.
 
 Doporučení pro ukládání do mezipaměti pro disky Azure Premium níže jsou popsány v parametrech v/v pro SAP HANA, jako je:
 
@@ -88,7 +88,7 @@ Doporučení pro ukládání do mezipaměti pro disky Azure Premium níže jsou 
 **Doporučení: Výsledkem těchto pozorovaných vstupně-výstupních vzorů SAP HANA je ukládání do mezipaměti pro různé svazky pomocí služby Azure Premium Storage, jako třeba:**
 
 - **/Hana/data** – žádné ukládání do mezipaměti nebo čtení do mezipaměti
-- **/Hana/log** – žádné ukládání do mezipaměti – výjimka pro virtuální počítače řady M a Mv2, kde by mělo být povoleno Azure akcelerátor zápisu 
+- **/Hana/log** – žádné ukládání do mezipaměti – výjimka pro virtuální počítače M a Mv2-Series, kde by mělo být povoleno Azure akcelerátor zápisu 
 - mezipaměť pro čtení **/Hana/Shared**
 - **Disk s operačním systémem** – neměňte výchozí ukládání do mezipaměti, které se nastavuje v Azure v době vytváření virtuálního počítače.
 

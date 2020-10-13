@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
 ms.openlocfilehash: ff61af192471bcfc9bdb9f1ce3970d5c22f39579
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569780"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Akce stroje pravidel služby Azure Front Door
@@ -59,7 +59,7 @@ Tuto akci použijte k přesměrování klientů na novou adresu URL.
 
 #### <a name="required-fields"></a>Povinná pole
 
-Pole | Popis 
+Pole | Description 
 ------|------------
 Typ přesměrování | Vyberte typ odpovědi, který se má vrátit žadateli: Nalezeno (302), přesunuto (301), dočasné přesměrování (307) a trvalé přesměrování (308).
 Protokol přesměrování | Požadavek shody, HTTP, HTTPS.
@@ -73,7 +73,7 @@ Fragment cíle | Definujte fragment, který se použije v přesměrování. Pone
 
 Tuto akci použijte pro přeposílání klientů na novou adresu URL. Tato akce také obsahuje dílčí akce pro přepsání adresy URL a ukládání do mezipaměti. 
 
-Pole | Popis 
+Pole | Description 
 ------|------------
 Back-endový fond | Vyberte back-end fond pro přepsání a obsluhu požadavků. zobrazí se také všechny předem nakonfigurované back-end fondy, které jsou aktuálně v profilu front-endu. 
 Protokol předávání | Požadavek shody, HTTP, HTTPS.
@@ -84,7 +84,7 @@ Ukládání do mezipaměti | Povoleno, zakázáno. Pokud je povoleno, podívejte
 
 Pomocí tohoto nastavení můžete nakonfigurovat volitelnou **vlastní cestu přesměrování** , která se má použít při vytváření žádosti pro předání do back-endu.
 
-Pole | Popis 
+Pole | Description 
 ------|------------
 Vlastní cesta přesměrování | Zadejte cestu, na kterou mají být požadavky předány. 
 
@@ -92,14 +92,14 @@ Vlastní cesta přesměrování | Zadejte cestu, na kterou mají být požadavky
 
 Pomocí těchto nastavení můžete řídit, jak se soubory ukládají do mezipaměti pro požadavky obsahující řetězce dotazů. Zda se má obsah ukládat do mezipaměti na základě všech parametrů nebo vybraných parametrů. Pomocí dalších nastavení můžete přepsat hodnotu TTL (Time to Live) a určit tak, jak dlouho zůstane obsah v mezipaměti. Pokud chcete vynutit ukládání do mezipaměti jako akci, nastavte pole ukládání do mezipaměti na povoleno. Když vynutíte ukládání do mezipaměti, zobrazí se následující možnosti: 
 
-Chování mezipaměti |  Popis              
+Chování mezipaměti |  Description              
 ---------------|----------------
 Ignorovat řetězce dotazů | Po uložení prostředku do mezipaměti všechny požadavky v žádosti ignorují řetězce dotazu, dokud nevyprší platnost prostředku uloženého v mezipaměti.
 Ukládat do mezipaměti každou jedinečnou adresu URL | Každý požadavek s jedinečnou adresou URL, včetně řetězce dotazu, je považován za jedinečný prostředek s vlastní mezipamětí.
 Ignorovat zadané řetězce dotazu | Řetězce dotazů adresy URL dotazu uvedené v nastavení "parametry dotazu" jsou pro ukládání do mezipaměti ignorovány.
 Zahrnout zadané řetězce dotazu | Pro ukládání do mezipaměti se používají řetězce dotazů adresy URL uvedené v nastavení "parametry dotazu".
 
-Další pole |  Popis 
+Další pole |  Description 
 ------------------|---------------
 Dynamická komprese | Přední dvířka můžou dynamicky Komprimovat obsah na hranici, což vede k menší a rychlejší reakci.
 Parametry dotazů | Seznam povolených (nebo nepovolených) parametrů oddělených čárkami, který se má použít jako základ pro ukládání do mezipaměti.

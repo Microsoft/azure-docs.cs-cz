@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8b4e9aa73a959bcaac18df38f975331ecbf6b034
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121319"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876001"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Použití IDENTITY k vytváření náhradních klíčů v synapse fondu SQL
 
@@ -26,7 +26,8 @@ V tomto článku najdete doporučení a příklady použití vlastnosti IDENTITY
 
 Náhradní klíč v tabulce je sloupec s jedinečným identifikátorem pro každý řádek. Klíč se negeneruje z dat tabulky. Datové modely, jako je vytváření náhradních klíčů ve svých tabulkách při návrhu modelů datového skladu. Vlastnost IDENTITY můžete použít k dosažení tohoto cíle jednoduše a efektivně, aniž by to ovlivnilo výkon zatížení.
 > [!NOTE]
-> Hodnota IDENTITY v synapse SQL není zaručená jako jedinečná, pokud uživatel explicitně vloží duplicitní hodnotu s hodnotou "SET IDENTITY_INSERT ON" nebo se resadí identita. Podrobnosti naleznete v tématu [Create Table (Transact-SQL) identity (vlastnost)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). 
+> Ve službě Azure synapse Analytics se hodnota IDENTITY v každé distribuci zvyšuje a v ostatních distribucích se nepřekrývá s hodnotami IDENTITY.  Hodnota IDENTITY v synapse není zaručená jako jedinečná, pokud uživatel explicitně vloží duplicitní hodnotu s hodnotou "SET IDENTITY_INSERT ON" nebo se resadí identita. Podrobnosti naleznete v tématu [Create Table (Transact-SQL) identity (vlastnost)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). 
+
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Vytvoření tabulky se sloupcem IDENTITY
 
@@ -125,7 +126,7 @@ FROM    dbo.T1
 ;
 ```
 
-## <a name="loading-data"></a>Načítání dat
+## <a name="loading-data"></a>Načítají se data
 
 Přítomnost vlastnosti IDENTITY má nějaký vliv na váš kód pro načítání dat. Tato část popisuje několik základních vzorů pro načítání dat do tabulek pomocí IDENTITY.
 
@@ -163,13 +164,13 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > V tuto chvíli není možné použít `CREATE TABLE AS SELECT` při načítání dat do tabulky se sloupcem identity.
 >
 
-Další informace o načítání dat najdete v tématu [Návrh extrakce, načítání a transformace (ELT) pro Synapseový fond SQL](design-elt-data-loading.md) a [načítání osvědčených postupů](guidance-for-loading-data.md).
+Další informace o načítání dat najdete v tématu [Návrh extrakce, načítání a transformace (ELT) pro Synapseový fond SQL](design-elt-data-loading.md) a  [načítání osvědčených postupů](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Systémová zobrazení
 
-K identifikaci sloupce, který má vlastnost IDENTITY, můžete použít zobrazení katalogu [Sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+K identifikaci sloupce, který má vlastnost IDENTITY, můžete použít zobrazení katalogu [Sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 
-V tomto příkladu, který vám pomůže lépe pochopit schéma databáze, tento příklad ukazuje, jak integrovat sys. identity_column s dalšími zobrazeními systémového katalogu:
+V tomto příkladu, který vám pomůže lépe pochopit schéma databáze, tento příklad ukazuje, jak integrovat sys.identity_column s dalšími zobrazeními systémového katalogu:
 
 ```sql
 SELECT  sm.name

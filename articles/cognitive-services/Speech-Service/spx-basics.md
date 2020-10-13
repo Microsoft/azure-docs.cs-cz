@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: e859ac13c72ed07d3f57da6e61fd6d9f827f0fca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bceffe5c53b9cbc863fd9c923ffa4718ebd50436
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88854902"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893811"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Seznamte se se základy rozpoznávání řeči v rozhraní příkazového řádku
 
@@ -69,6 +69,51 @@ V tomto příkazu zadáte jak zdroj (jazyk pro překlad) **, tak i**cíl (jazyk 
 
 > [!NOTE]
 > Seznam všech podporovaných jazyků a jejich odpovídajících kódů národního prostředí najdete v článku věnovaném [jazykům a národním prostředím](language-support.md) .
+
+### <a name="configuration-files-in-the-datastore"></a>Konfigurační soubory v úložišti dat
+
+Rozhraní příkazového řádku pro rozpoznávání řeči umí číst a zapisovat více nastavení v konfiguračních souborech, které jsou uložené v místním úložišti rozpoznávání řeči CLI, a jsou pojmenovány v rámci volání funkce Speech CLI pomocí symbolu @. Funkce Speech CLI se pokusí uložit nové nastavení v novém `./spx/data` podadresáři, který vytvoří v aktuálním pracovním adresáři.
+Při hledání hodnoty konfigurace vyhledává funkce rozpoznávání řeči v aktuálním pracovním adresáři, a to v `./spx/data` cestě.
+Dřív jste používali úložiště dat `@key` a uložili `@region` hodnoty a, takže jste je nemuseli zadávat při každém volání příkazového řádku.
+Můžete také použít konfigurační soubory k uložení vlastních nastavení konfigurace nebo je dokonce použít k předávání adres URL nebo jiného dynamického obsahu vygenerovaného za běhu.
+
+V této části se dozvíte, jak pomocí konfiguračního souboru v místním úložišti dat ukládat a načítat nastavení příkazů pomocí `spx config` a jak uložit výstup z rozhraní příkazového řádku pro rozpoznávání řeči pomocí `--output` Možnosti.
+
+Následující příklad vymaže `@my.defaults` konfigurační soubor, přidá páry klíč-hodnota pro **klíč** a **oblast** v souboru a použije konfiguraci při volání `spx recognize` .
+
+```shell
+spx config @my.defaults --clear
+spx config @my.defaults --add key 000072626F6E20697320636F6F6C0000
+spx config @my.defaults --add region westus
+
+spx config @my.defaults
+
+spx recognize --nodefaults @my.defaults --file hello.wav
+```
+
+Můžete také zapisovat dynamický obsah do konfiguračního souboru. Například následující příkaz vytvoří vlastní model řeči a uloží adresu URL nového modelu do konfiguračního souboru. Následující příkaz počká, dokud model na této adrese URL není připravený k použití, než se vrátí.
+
+```shell
+spx csr model create --name "Example 4" --datasets @my.datasets.txt --output url @my.model.txt
+spx csr model status --model @my.model.txt --wait
+```
+
+Následující příklad zapíše dvě adresy URL do `@my.datasets.txt` konfiguračního souboru.
+V tomto scénáři `--output` může zahrnovat volitelné klíčové slovo **Add** pro vytvoření konfiguračního souboru nebo připojení k existujícímu.
+
+
+```shell
+spx csr dataset create --name "LM" --kind Language --content https://crbn.us/data.txt --output url @my.datasets.txt
+spx csr dataset create --name "AM" --kind Acoustic --content https://crbn.us/audio.zip --output add url @my.datasets.txt
+
+spx config @my.datasets.txt
+```
+
+Další podrobnosti o souborech úložiště dat, včetně použití výchozích konfiguračních souborů ( `@spx.default` , `@default.config` a `@*.default.config` pro výchozí nastavení příkazu), získáte, když zadáte tento příkaz:
+
+```shell
+spx help advanced setup
+```
 
 ## <a name="batch-operations"></a>Dávkové operace
 

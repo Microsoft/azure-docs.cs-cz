@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: migrace webové aplikace z map Bingu | Mapy Microsoft Azure'
-description: Postup migrace webové aplikace z map Bingu na Microsoft Azure Maps
+description: Kurz týkající se migrace webové aplikace z map Bing na Microsoft Azure Maps
 author: rbrundritt
 ms.author: richbrun
 ms.date: 9/10/2020
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 469565385ce4b3ee4b1589f105216213d584c8c9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 42ba92a0134ae1e8da91bbe7513668fa24c4718f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319729"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876511"
 ---
-# <a name="migrate-a-web-app-from-bing-maps"></a>Migrace webové aplikace z map Bing
+# <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Kurz – migrace webové aplikace z map Bing
 
 Webové aplikace, které používají mapy Bing, často používají sadu SDK služby Bing Maps V8 JavaScript. Azure Maps Web SDK je vhodná sada SDK založená na Azure, na kterou se má migrovat. Sada Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy s vlastním obsahem a pomocí obrázků pro zobrazení ve vašich webových nebo mobilních aplikacích. Tento ovládací prvek využívá WebGL a umožňuje vykreslovat rozsáhlé datové sady s vysokým výkonem. Pomocí JavaScriptu nebo TypeScript se budete vyvíjet pomocí této sady SDK.
 
@@ -46,8 +46,8 @@ V následující tabulce jsou uvedeny klíčové funkce API ve službě Bing Map
 | Heat mapy                | ✓                                                                                      |
 | Vrstvy dlaždic              | ✓                                                                                      |
 | KML vrstva                | ✓                                                                                      |
-| Vrstva obrysu            | [Ukázky](https://azuremapscodesamples.azurewebsites.net/?search=contour)              |
-| Vrstva binningu dat       | [Ukázky](https://azuremapscodesamples.azurewebsites.net/?search=data%20binning)       |
+| Vrstva obrysu            | [ukázky](https://azuremapscodesamples.azurewebsites.net/?search=contour)              |
+| Vrstva binningu dat       | [ukázky](https://azuremapscodesamples.azurewebsites.net/?search=data%20binning)       |
 | Animovaná vrstva dlaždice      | Zahrnutý v modulu Open Source Azure Maps [Animation](https://github.com/Azure-Samples/azure-maps-animations) |
 | Nástroje pro kreslení            | ✓                                                                                      |
 | Služba pro INCODE         | ✓                                                                                      |
@@ -59,7 +59,7 @@ V následující tabulce jsou uvedeny klíčové funkce API ve službě Bing Map
 | Streetsideí snímků       | Plánováno                                                                                |
 | Podpora pro injson          | ✓                                                                                      |
 | Podpora GeoXML           | ✓                                                                                      |
-| Dobře známá podpora textu  | ✓                                                                                      |
+| Podpora textu Well-Known  | ✓                                                                                      |
 | Vlastní styly mapy        | Částečné                                                                                |
 
 Azure Maps také obsahuje mnoho dalších [Open Source modulů pro webovou sadu SDK](open-source-projects.md#open-web-sdk-modules) , které rozšiřuje své možnosti.
@@ -932,7 +932,7 @@ V Azure Maps se data přidávají a spravují zdrojem dat. Vrstvy se připojují
 
 Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskupené datové body do vrstev pro vykreslování. Zdroj dat je schopný clusterovat stovky tisíc datových bodů. Clusterovaný datový bod má následující vlastnosti:
 
-| Název vlastnosti               | Typ    | Popis                                    |
+| Název vlastnosti               | Typ    | Description                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Indikuje, že funkce představuje cluster.     |
 | `cluster_id`                | řetězec  | Jedinečné ID clusteru, které lze použít se `DataSource` třídami `getClusterExpansionZoom` , `getClusterChildren` a `getClusterLeaves` . |
@@ -941,7 +941,7 @@ Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskup
 
 `DataSource`Třída má následující pomocnou funkci pro přístup k dalším informacím o clusteru pomocí `cluster_id` .
 
-| Funkce       | Návratový typ        | Popis     |
+| Funkce       | Návratový typ        | Description     |
 |----------------|--------------------|-----------------|
 | `getClusterChildren(clusterId: number)`                              | `Promise<Feature<Geometry, any> | Shape>` | Načte podřízené objekty daného clusteru na další úrovni přiblížení. Tyto podřízené objekty můžou být kombinací tvarů a podclusterů. Dílčí clustery budou funkcemi s vlastnostmi, které odpovídají vlastnostem clusteru. |
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Vypočítá úroveň přiblížení, kterou cluster začne rozšiřovat nebo se může rozdělovat.    |
@@ -1409,7 +1409,7 @@ V Azure Maps mohou být neodkazované obrázky překryty pomocí `atlas.layer.Im
 
 ### <a name="add-kml-data-to-the-map"></a>Přidání dat KML do mapy
 
-Azure i mapy Bing můžou na mapě importovat a vykreslovat data KML, KMZ, GeoRSS, geografického formátu a známého textu (Well). Azure Maps podporuje také GPX, GML, prostorové soubory CSV, služby webového a mapovacích služeb (WMS), služby dlaždicového mapování webu (WMTS) a webové funkce služby (WFS).
+Azure i mapy Bing můžou na mapě importovat a vykreslovat data KML, KMZ, GeoRSS, injson a Well-Known text (Well). Azure Maps podporuje také GPX, GML, prostorové soubory CSV, služby Web-Mapping Services (WMS), Web-Mapping (WMTS) a služby webových funkcí (WFS).
 
 **Před: mapy Bing**
 

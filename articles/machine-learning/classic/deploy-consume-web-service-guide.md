@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
 ms.openlocfilehash: 52404aa1514dc3189305117181408e25e233fce8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362397"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Webové služby Azure Machine Learning Studio (Classic): nasazení a spotřeba
@@ -89,7 +89,7 @@ Další podrobnosti najdete v následujících článcích a vzorovém kódu:
 
 ### <a name="from-the-azure-machine-learning-web-services-ui-testing"></a>Z uživatelského rozhraní Azure Machine Learning webové služby (testování)
 
-Webovou službu můžete testovat na portálu Azure Machine Learning Web Services. To zahrnuje testování rozhraní Request-response Service (RR) a služby Batch Execution Service (BES).
+Webovou službu můžete testovat na portálu Azure Machine Learning Web Services. To zahrnuje testování rozhraní služby Request-Response (RR) a služby Batch Execution Service (BES).
 
 * [Nasazení nové webové služby](deploy-a-machine-learning-web-service.md)
 * [Nasazení webové služby Azure Machine Learning](deploy-a-machine-learning-web-service.md)

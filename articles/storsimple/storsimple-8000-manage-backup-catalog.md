@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 549c14e0506613aca91ee4666026348d74afedbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ab4694159c6269f2f72d3d591147d43aef34a0a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514764"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961591"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>Správa katalogu záloh pomocí služby StorSimple Device Manager
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 V okně StorSimple Device Manager Service **Backup Catalog** se zobrazí všechny zálohovací sklady, které se vytvoří při ručním nebo plánovaném zálohování. Pomocí této stránky můžete zobrazit seznam všech záloh pro zásady zálohování nebo svazek, vybrat nebo odstranit zálohy nebo použít zálohu k obnovení nebo klonování svazku.
 
 Tento kurz vysvětluje, jak vytvořit seznam, vybrat a odstranit zálohovací sklad. Informace o tom, jak obnovit zařízení ze zálohy, najdete [v tématu Obnovení zařízení ze zálohovacího skladu](storsimple-8000-restore-from-backup-set-u2.md). Informace o tom, jak klonovat svazek, najdete v tématu [klonování svazku StorSimple](storsimple-8000-clone-volume-u2.md).
@@ -75,11 +75,11 @@ Provedením následujících kroků vyberte zálohovací sklad pro svazek nebo z
       
       Zálohy přidružené k vybranému svazku nebo zásadám zálohování by se měly zobrazit v seznamu zálohovacích skladů.
 
-      ![Přejít na katalog záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Přejít na katalog záloh 2](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 3. Vyberte a rozbalte zálohovací sklad. Teď vidíte zálohovací sklady, které jsou rozdělené podle svazků, které obsahuje. Možnosti **obnovení** a **odstranění** jsou k dispozici prostřednictvím místní nabídky (klikněte pravým tlačítkem myši) pro zálohovací sklad. Můžete provést jednu z těchto akcí pro zálohovací sklad, který jste vybrali.
 
-    ![Přejít na katalog záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
+    ![Přejít na katalog záloh 3](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
 
 ## <a name="delete-a-backup-set"></a>Odstraní zálohovací sklad.
 Pokud už nechcete uchovávat data, která jsou k němu přidružená, odstraňte zálohu. Chcete-li odstranit zálohovací sklad, proveďte následující kroky.
@@ -95,19 +95,19 @@ Pokud už nechcete uchovávat data, která jsou k němu přidružená, odstraňt
       
       Zálohy přidružené k vybranému svazku nebo zásadám zálohování by se měly zobrazit v seznamu zálohovacích skladů.
 
-      ![Přejít na katalog záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Přejít na katalog záloh 4](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 1. Vyberte a rozbalte zálohovací sklad. Teď vidíte zálohovací sklady, které jsou rozdělené podle svazků, které obsahuje. Možnosti **obnovení** a **odstranění** jsou k dispozici prostřednictvím místní nabídky (klikněte pravým tlačítkem myši) pro zálohovací sklad. Klikněte pravým tlačítkem na vybraný zálohovací sklad a v místní nabídce vyberte **Odstranit**.
 
-    ![Přejít na katalog záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
+    ![Přejít na katalog záloh 5](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
 
 1. Po zobrazení výzvy k potvrzení Zkontrolujte zobrazené informace a klikněte na **Odstranit**. Vybraná záloha se trvale odstraní.
 
-    ![Přejít na katalog záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
+    ![Přejít na katalog záloh 6](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
 
 1. Když Probíhá odstraňování a když se úspěšně dokončí, zobrazí se oznámení. Po dokončení odstranění aktualizujte dotaz na této stránce. Odstraněný zálohovací sklad se už nebude zobrazovat v seznamu zálohovacích skladů.
 
-    ![Přejít na katalog záloh](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
+    ![Přejít na katalog záloh 7](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
 
 ## <a name="next-steps"></a>Další kroky
 * Naučte se [používat katalog záloh k obnovení zařízení ze zálohovacího skladu](storsimple-8000-restore-from-backup-set-u2.md).
