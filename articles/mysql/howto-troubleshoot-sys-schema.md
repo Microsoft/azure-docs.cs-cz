@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
 ms.openlocfilehash: 62a34a2dba459c6f65729cd5c6804378ee7f8b52
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90902771"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Použití sys_schema k vyladění výkonu a údržbě databáze v Azure Database for MySQL
@@ -33,50 +33,50 @@ Teď se podíváme na některé běžné způsoby použití sys_schema. Aby bylo
 
 ## <a name="performance-tuning"></a>Ladění výkonu
 
-### <a name="sysuser_summary_by_file_io"></a>*sys. user_summary_by_file_io*
+### <a name="sysuser_summary_by_file_io"></a>*sys.user_summary_by_file_io*
 
-V/v databáze je nejdražší operace v databázi. Průměrná latence v/v se dá zjistit dotazem na zobrazení *Sys. user_summary_by_file_io* . S výchozí 125 GB zřízeného úložiště je moje latence v/v asi 15 sekund.
+V/v databáze je nejdražší operace v databázi. Průměrná latence v/v se dá zjistit dotazem na zobrazení *Sys.user_summary_by_file_io* . S výchozí 125 GB zřízeného úložiště je moje latence v/v asi 15 sekund.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-125GB.png" alt-text="vstupně-výstupní latence: 125 GB":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-125GB.png" alt-text="zobrazení sys_schema":::
 
 Vzhledem k tomu, že Azure Database for MySQL škáluje vstupně-výstupní operace s ohledem na úložiště, po zvýšení zřízeného úložiště na 1 TB se latence v/v snižuje na 571 MS.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-1TB.png" alt-text="vstupně-výstupní latence: 1 TB":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/io-latency-1TB.png" alt-text="zobrazení sys_schema":::
 
-### <a name="sysschema_tables_with_full_table_scans"></a>*sys. schema_tables_with_full_table_scans*
+### <a name="sysschema_tables_with_full_table_scans"></a>*sys.schema_tables_with_full_table_scans*
 
-Bez ohledu na pečlivé plánování může mnoho dotazů pořád vést k kompletním kontrolám tabulky. Další informace o typech indexů a o tom, jak je optimalizovat, najdete v tomto článku: [jak řešit potíže s výkonem dotazů](./howto-troubleshoot-query-performance.md). Úplné prohledávání tabulek je náročné na prostředky a snižuje výkon databáze. Nejrychlejší způsob, jak najít tabulky pomocí úplného prohledávání tabulky, je dotazování zobrazení *Sys. schema_tables_with_full_table_scans* .
+Bez ohledu na pečlivé plánování může mnoho dotazů pořád vést k kompletním kontrolám tabulky. Další informace o typech indexů a o tom, jak je optimalizovat, najdete v tomto článku: [jak řešit potíže s výkonem dotazů](./howto-troubleshoot-query-performance.md). Úplné prohledávání tabulek je náročné na prostředky a snižuje výkon databáze. Nejrychlejší způsob, jak najít tabulky pomocí úplného prohledávání tabulky, je dotazování zobrazení *Sys.schema_tables_with_full_table_scans* .
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/full-table-scans.png" alt-text="úplné prohledávání tabulek":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/full-table-scans.png" alt-text="zobrazení sys_schema":::
 
-### <a name="sysuser_summary_by_statement_type"></a>*sys. user_summary_by_statement_type*
+### <a name="sysuser_summary_by_statement_type"></a>*sys.user_summary_by_statement_type*
 
-Aby bylo možné řešit problémy s výkonem databáze, může být užitečné identifikovat události, které se provedou v rámci vaší databáze, a pomocí zobrazení *Sys. user_summary_by_statement_type* může jednoduše dělat štych.
+Aby bylo možné řešit problémy s výkonem databáze, může být užitečné identifikovat události, které se provedou v rámci vaší databáze, a použít zobrazení *Sys.user_summary_by_statement_type* může jednoduše dělat štych.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/summary-by-statement.png" alt-text="Summary podle – příkaz":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/summary-by-statement.png" alt-text="zobrazení sys_schema":::
 
 V tomto příkladu Azure Database for MySQL strávila 53 minut vyprázdnit protokol dotazu slog 44579 krát. To je dlouhou dobu a mnoho IOs. Tuto aktivitu můžete zkrátit tím, že zakážete protokol pomalých dotazů nebo snížíte frekvenci pomalých přihlašovacích Azure Portal dotazů.
 
 ## <a name="database-maintenance"></a>Údržba databáze
 
-### <a name="sysinnodb_buffer_stats_by_table"></a>*sys. innodb_buffer_stats_by_table*
+### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
 
 [!IMPORTANT]
 > Dotaz na toto zobrazení může mít vliv na výkon. Tento problém se doporučuje provést v době mimo špičku v pracovní době.
 
-Fond vyrovnávacích pamětí InnoDB se nachází v paměti a jedná se o mechanismus hlavní mezipaměti mezi systémy DBMS a úložištěm. Velikost fondu vyrovnávací paměti InnoDB je svázána s úrovní výkonu a nelze jej změnit, pokud není zvolena jiná SKU produktu. Stejně jako u paměti v operačním systému jsou staré stránky zaměněny, aby uvolnily místo pro data z čerstvého počítače. Pokud chcete zjistit, které tabulky využívají většinu paměti fondu InnoDB vyrovnávací paměti, můžete zadat dotaz na zobrazení *Sys. innodb_buffer_stats_by_table* .
+Fond vyrovnávacích pamětí InnoDB se nachází v paměti a jedná se o mechanismus hlavní mezipaměti mezi systémy DBMS a úložištěm. Velikost fondu vyrovnávací paměti InnoDB je svázána s úrovní výkonu a nelze jej změnit, pokud není zvolena jiná SKU produktu. Stejně jako u paměti v operačním systému jsou staré stránky zaměněny, aby uvolnily místo pro data z čerstvého počítače. Pokud chcete zjistit, které tabulky využívají většinu paměti fondu vyrovnávací paměti InnoDB, můžete zadat dotaz na zobrazení *Sys.innodb_buffer_stats_by_table* .
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png" alt-text="Stav vyrovnávací paměti InnoDB":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png" alt-text="zobrazení sys_schema":::
 
 Na obrázku výše je zřejmé, že kromě systémových tabulek a zobrazení je každá tabulka v databázi mysqldatabase033, která hostuje jeden z mých webů WordPress, zabírá 16 KB nebo 1 stránku dat v paměti.
 
-### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*Sys. schema_unused_indexes* & *Sys. schema_redundant_indexes*
+### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*Sys.schema_unused_indexes* & *Sys.schema_redundant_indexes*
 
-Indexy jsou skvělé nástroje pro zlepšení výkonu čtení, ale u vkládání a ukládání se účtují další poplatky. *Sys. schema_unused_indexes* a *Sys. schema_redundant_indexes* poskytují přehled o nepoužívaných nebo duplicitních indexech.
+Indexy jsou skvělé nástroje pro zlepšení výkonu čtení, ale u vkládání a ukládání se účtují další poplatky. *Sys.schema_unused_indexes* a *Sys.schema_redundant_indexes* poskytují přehled o nevyužitých nebo duplicitních indexech.
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/unused-indexes.png" alt-text="nepoužívané indexy":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/unused-indexes.png" alt-text="zobrazení sys_schema":::
 
-:::image type="content" source="./media/howto-troubleshoot-sys-schema/redundant-indexes.png" alt-text="nadbytečné indexy":::
+:::image type="content" source="./media/howto-troubleshoot-sys-schema/redundant-indexes.png" alt-text="zobrazení sys_schema":::
 
 ## <a name="conclusion"></a>Závěr
 

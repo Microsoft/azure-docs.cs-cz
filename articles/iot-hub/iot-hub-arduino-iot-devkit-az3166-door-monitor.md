@@ -9,10 +9,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: d4f77cec793e13ff943c173d88948eb5b5de0957
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356243"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Monitorování dvířek – používání Azure Functions a SendGrid, odesílání e-mailů, když se otevřou dvířka           
@@ -34,7 +34,7 @@ V tomto projektu se naučíte:
 
 Dokončete [průvodce Začínáme](iot-hub-arduino-iot-devkit-az3166-get-started.md) :
 
-* Připojení DevKit k Wi-Fi
+* Připojte DevKit k Wi-Fi
 * Příprava vývojového prostředí
 
 Musíte mít aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat pomocí jedné z těchto metod:

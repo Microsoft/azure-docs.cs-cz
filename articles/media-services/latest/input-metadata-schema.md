@@ -14,10 +14,10 @@ ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9ddfe3ea0d26a9032922423e7f2c2a2b6c3e411a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89295542"
 ---
 # <a name="input-metadata"></a>Vstupní metadata
@@ -47,7 +47,7 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 | --- | --- | 
 | **VideoTracks**|Každý soubor fyzického majetku může obsahovat nula nebo více videí, které se pronechají v příslušném formátu kontejneru. Další informace najdete v tématu [VideoTracks](#videotracks). |
 | **AudioTracks**|Každý fyzický soubor prostředků může obsahovat nula nebo více zvukových stop, které se pronechají v příslušném formátu kontejneru. Další informace najdete v tématu [AudioTracks](#audiotracks) . |
-| **Metadata**  |Metadata souboru prostředků reprezentovaná jako key\value řetězce. <br />Příklad: `<Metadata key="language" value="eng" />` |
+| **Mezipaměť**  |Metadata souboru prostředků reprezentovaná jako key\value řetězce. <br />Příklad: `<Metadata key="language" value="eng" />` |
 
 ### <a name="other-child-elements"></a>Ostatní podřízené elementy
 
@@ -80,7 +80,7 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 | **Snímků**<br />Vyžadováno |Měřená snímková frekvence videa ve formátu. 3F. <br /><br />Příklad: `"FrameRate": 29.970`|
 | **Rychlostí** |Průměrná přenosová rychlost videa v bitech za sekundu, jak je vypočítána ze souboru assetu. Počítá se pouze část základního datového proudu a režijní náklady na balení nejsou zahrnuty. <br /><br />Příklad: `"Bitrate": 8421583`|
 | **HasBFrames** |Video sleduje počet snímků B. <br /><br />Příklad: `"HasBFrames": 2`|
-| **Metadata** |Obecné řetězce klíč/hodnota, které lze použít k uložení nejrůznějších informací. <br />Viz kompletní příklad na konci článku. |
+| **Mezipaměť** |Obecné řetězce klíč/hodnota, které lze použít k uložení nejrůznějších informací. <br />Viz kompletní příklad na konci článku. |
 | **Účet**<br />Vyžadováno |Index s nulovým základem tohoto zvukového zvuku nebo stopy videa<br /><br /> Toto **ID** nemusí nutně být TrackID, jak se používá v souboru MP4. <br /><br />Příklad: `"Id": 2`|
 | **Kodek** |Řetězec kodeku pro sledování videa <br /><br />Příklad: `"Codec": "h264"`|
 | **CodecLongName** |Dlouhý název kodeku zvuk nebo video stop <br /><br />Příklad: `"CodecLongName": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"`|
@@ -99,7 +99,7 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 | **Kanály**<br />Vyžadováno |Číslo (0 nebo více) zvukových kanálů. <br /><br />Příklad: `"Channels": 2`|
 | **SamplingRate**<br />Vyžadováno |Vzorkovací frekvence zvuku v ukázkách/s nebo Hz. <br /><br />Příklad: `"SamplingRate": 48000`|
 | **Rychlostí** |Průměrná rychlost zvukového bitu v bitech za sekundu, jak je vypočítána ze souboru assetu. Počítá se pouze část základního datového proudu a režie balení není v tomto počtu zahrnutá. <br /><br />Příklad: `"Bitrate": 192080`|
-| **Metadata** |Obecné řetězce klíč/hodnota, které lze použít k uložení nejrůznějších informací.  <br />Viz kompletní příklad na konci článku. |
+| **Mezipaměť** |Obecné řetězce klíč/hodnota, které lze použít k uložení nejrůznějších informací.  <br />Viz kompletní příklad na konci článku. |
 | **Účet**<br />Vyžadováno |Index s nulovým základem tohoto zvukového zvuku nebo stopy videa<br /><br /> To neznamená, že TrackID, jak se používá v souboru MP4. <br /><br />Příklad: `"Id": 1`|
 | **Kodek** |Řetězec kodeku pro sledování videa <br /><br />Příklad: `"Codec": "aac"`|
 | **CodecLongName** |Dlouhý název kodeku zvuk nebo video stop <br /><br />Příklad: `"CodecLongName": "AAC (Advanced Audio Coding)"`|
@@ -113,7 +113,7 @@ Obsahuje kolekci elementů AssetFile pro úlohu kódování.
 | Název | Popis |
 | --- | --- |
 | **zkrat**<br />Vyžadováno |Klíč v páru klíč/hodnota. |
-| **osa**<br /> Vyžadováno |Hodnota v páru klíč/hodnota. |
+| **value**<br /> Vyžadováno |Hodnota v páru klíč/hodnota. |
 
 ## <a name="schema-example"></a>Příklad schématu
 

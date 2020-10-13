@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
 ms.openlocfilehash: cbaca0b9d608d7703beec559e5434f52308629ab
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91709100"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Vytvoření nabídky kontejnerů Azure na Azure Marketplace
@@ -361,7 +361,7 @@ Na kartě **Podrobnosti o úložišti imagí** zadejte následující informace.
 
 **Název Azure Container Registry** – zadejte název [Azure Container Registry](../../container-registry/container-registry-intro.md) s vaší imagí kontejneru. Registr kontejneru musí být ve skupině prostředků Azure, kterou jste zadali dříve. Zahrňte pouze název registru, nikoli úplný název přihlašovacího serveru. Nezapomeňte vynechat **azurecr.IO** z názvu. Název registru najdete na [stránce Registry kontejneru](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) v Azure Portal.
 
-**Uživatelské jméno správce pro Azure Container Registry** – zadejte [uživatelské jméno správce](../../container-registry/container-registry-authentication.md#admin-account)) propojené s Azure Container Registry, které má vaši image kontejneru. Aby vaše společnost měla přístup k registru, je nutné zadat uživatelské jméno a heslo. Pokud chcete získat uživatelské jméno a heslo správce, nastavte vlastnost s **povoleným správcem** na **hodnotu true** pomocí rozhraní příkazového řádku (CLI) Azure. Volitelně můžete nastavit **uživatele správce** tak, aby **povoloval** v Azure Portal.
+**Uživatelské jméno správce pro Azure Container Registry** – zadejte [uživatelské jméno správce](../../container-registry/container-registry-authentication.md#admin-account)) propojené s Azure Container Registry, které má vaši image kontejneru. Aby vaše společnost měla přístup k registru, je nutné zadat uživatelské jméno a heslo. Pokud chcete získat uživatelské jméno a heslo správce, nastavte vlastnost s **povoleným správcem** na **hodnotu true** pomocí rozhraní příkazového řádku (CLI) pro Azure Command-Line. Volitelně můžete nastavit **uživatele správce** tak, aby **povoloval** v Azure Portal.
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Znázorňuje použití zaškrtávacího políčka standardní smlouva pro komerčního tržiště Microsoftu.":::
 

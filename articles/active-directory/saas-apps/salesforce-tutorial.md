@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
 ms.openlocfilehash: 6d653594cce20439a6e1214f104d875ec76bf1a9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979861"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Kurz: Azure Active Directory integraci jednotného přihlašování se službou Salesforce
@@ -140,7 +140,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
 
-1. Po přidání rozšíření do prohlížeče klikněte na **nastavit Salesforce** . budete přesměrováni na aplikaci jednotného přihlašování Salesforce. Odtud zadejte přihlašovací údaje správce pro přihlášení do jednotného přihlašování Salesforce. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-13.
+1. Po přidání rozšíření do prohlížeče klikněte na **nastavit Salesforce** . budete přesměrováni na aplikaci salesforce Single Sign-On. Odtud zadejte přihlašovací údaje správce pro přihlášení do jednotného přihlašování Salesforce. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-13.
 
     ![Konfigurace instalace](common/setup-sso.png)
 
@@ -148,46 +148,46 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **ikonu nastavení** **v pravém** horním rohu stránky.
 
-    ![Ikona konfigurace nastavení jednotného přihlašování](./media/salesforce-tutorial/configure1.png)
+    ![Ikona konfigurace nastavení jedné Sign-On](./media/salesforce-tutorial/configure1.png)
 
-1. Posuňte se dolů k **Nastavení** v navigačním podokně a kliknutím na **Identita** rozbalte související část. Pak klikněte na **nastavení jednotného přihlašování**.
+1. Posuňte se dolů k **Nastavení** v navigačním podokně a kliknutím na **Identita** rozbalte související část. Pak klikněte na **Nastavení jednoho Sign-On**.
 
-    ![Konfigurace nastavení jednotného přihlašování](./media/salesforce-tutorial/sf-admin-sso.png)
+    ![Konfigurovat nastavení jednoho Sign-On](./media/salesforce-tutorial/sf-admin-sso.png)
 
-1. Na stránce **nastavení jednotného přihlašování** klikněte na tlačítko **Upravit** .
+1. Na stránce **nastavení s jedním Sign-On** klikněte na tlačítko **Upravit** .
 
-    ![Konfigurace jednotného přihlašování pro úpravy](./media/salesforce-tutorial/sf-admin-sso-edit.png)
+    ![Konfigurovat jednu Sign-On úpravu](./media/salesforce-tutorial/sf-admin-sso-edit.png)
 
     > [!NOTE]
-    > Pokud pro svůj účet Salesforce nemůžete povolit nastavení jednotného přihlašování, možná budete muset kontaktovat [tým podpory klienta Salesforce](https://help.salesforce.com/support).
+    > Pokud pro svůj účet Salesforce nemůžete povolit nastavení jednoho Sign-On, možná budete muset kontaktovat [tým podpory klienta Salesforce](https://help.salesforce.com/support).
 
 1. Vyberte možnost **SAML povolena**a pak klikněte na tlačítko **Uložit**.
 
-    ![Konfigurace jednotného přihlašování s povoleným protokolem SAML](./media/salesforce-tutorial/sf-enable-saml.png)
+    ![Konfigurace jediné Sign-On s povoleným protokolem SAML](./media/salesforce-tutorial/sf-enable-saml.png)
 
 1. Pokud chcete nakonfigurovat nastavení jednotného přihlašování SAML, klikněte na **Nový ze souboru metadat**.
 
-    ![Konfigurace jednotného přihlašování ze souboru metadat](./media/salesforce-tutorial/sf-admin-sso-new.png)
+    ![Konfigurovat jednu Sign-On novou ze souboru metadat](./media/salesforce-tutorial/sf-admin-sso-new.png)
 
 1. Kliknutím na **zvolit soubor** odešlete soubor XML s metadaty, který jste stáhli z Azure Portal, a kliknete na **vytvořit**.
 
-    ![Nakonfigurovat jednotné přihlašování zvolit soubor](./media/salesforce-tutorial/xmlchoose.png)
+    ![Konfigurovat jednu Sign-On zvolit soubor](./media/salesforce-tutorial/xmlchoose.png)
 
-1. Na stránce **nastavení jednotného přihlašování SAML** se automaticky naplní pole, vyberte **povolené zřizování uživatelů** a pak klikněte na **Uložit**.
+1. Na stránce **Nastavení jednoduchého Sign-On SAML** se automaticky naplní pole, vyberte **povolené zřizování uživatelů** a pak klikněte na **Uložit**.
 
-    ![Konfigurace povolení jednotného přihlašování při zřizování uživatelů](./media/salesforce-tutorial/salesforcexml.png)
+    ![Konfigurace povolení jednoho Sign-Onho zřizování uživatelů](./media/salesforce-tutorial/salesforcexml.png)
 
 1. V levém navigačním podokně v Salesforce klikněte na **nastavení společnosti** a rozbalte související část a potom klikněte na **moje doména**.
 
-    ![Konfigurace jednotného přihlašování v doméně](./media/salesforce-tutorial/sf-my-domain.png)
+    ![Konfigurace jedné Sign-On moje doména](./media/salesforce-tutorial/sf-my-domain.png)
 
 1. Přejděte dolů k části **Konfigurace ověřování** a klikněte na tlačítko **Upravit** .
 
-    ![Konfigurace ověřování s jednotným přihlašováním](./media/salesforce-tutorial/sf-edit-auth-config.png)
+    ![Konfigurace konfigurace jednotného ověřování Sign-On](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
 1. V části **Konfigurace ověřování** Zkontrolujte službu **AzureSSO** as **Authentication služby** konfigurace jednotného přihlašování SAML a pak klikněte na **Uložit**.
 
-    ![Konfigurace ověřovací služby jednotného přihlašování](./media/salesforce-tutorial/sf-auth-config.png)
+    ![Konfigurovat službu Single Sign-On Authentication Service](./media/salesforce-tutorial/sf-auth-config.png)
 
     > [!NOTE]
     > Pokud je vybraná víc než jedna ověřovací služba, zobrazí se uživatelům výzva k výběru ověřovací služby, se kterou se chtějí přihlásit, a současně se zahájí jednotné přihlašování k vašemu prostředí Salesforce. Pokud nechcete, aby k tomu docházelo, měli byste **všechny ostatní ověřovací služby nechat nezaškrtnuté**.

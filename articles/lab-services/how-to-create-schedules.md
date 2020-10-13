@@ -4,10 +4,10 @@ description: Naučte se vytvářet plány pro učebn Labs v Azure Lab Services t
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326435"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Vytváření a Správa plánů pro učebn Labs v Azure Lab Services 
@@ -38,7 +38,7 @@ Vytvořte naplánovanou událost pro testovací prostředí, aby se virtuální 
     4. Zadejte **čas spuštění** , ve kterém chcete virtuální počítače spustit.
     5. Zadejte **čas ukončení** , ve kterém mají být virtuální počítače vypnuté. 
     6. Zadejte **časové pásmo** pro dobu zahájení a ukončení, kterou jste zadali. 
-    2. Vyberte dny, ve kterých se má plán projevit. V následujícím příkladu je vybrána možnost pondělí-čtvrtek. 
+    2. Vyberte dny, ve kterých se má plán projevit. V následujícím příkladu je vybrána možnost Monday-Thursday. 
     8. Vyberte **Uložit**. 
 
         ![Nastavit plán opakování](./media/how-to-create-schedules/set-repeat-schedule.png)

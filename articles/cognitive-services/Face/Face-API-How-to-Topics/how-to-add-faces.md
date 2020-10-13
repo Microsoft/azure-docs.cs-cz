@@ -12,10 +12,10 @@ ms.date: 04/10/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3643fad1c9e821a78df6d78edeede2341ec79ea8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91303757"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Přidání obličeje k osobě
@@ -61,7 +61,7 @@ static async Task WaitCallLimitPerSecondAsync()
 
 ## <a name="step-2-authorize-the-api-call"></a>Krok 2: Autorizace volání rozhraní API
 
-Při použití klientské knihovny musíte předat klíč předplatného konstruktoru třídy **FaceClient** . Příklad:
+Při použití klientské knihovny musíte předat klíč předplatného konstruktoru třídy **FaceClient** . Například:
 
 ```csharp
 private readonly IFaceClient faceClient = new FaceClient(
@@ -121,7 +121,7 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V této příručce jste se dozvěděli o procesu vytvoření osoby typu osoba s obrovským počtem osob a ploch. Několik připomenutí:
 

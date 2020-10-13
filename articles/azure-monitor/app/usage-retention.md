@@ -7,10 +7,10 @@ ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
 ms.openlocfilehash: f7f6155d3230d234e1163ee12cd7685817331b93
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323532"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analýza uchovávání informací uživatelů pro webové aplikace pomocí Application Insights
@@ -62,7 +62,7 @@ Nebo v kódu serveru ASP.NET:
 - Pokud jste už odeslali vlastní události nebo zobrazení stránky, prozkoumejte nástroje využití a zjistěte, jak uživatelé používají vaši službu.
     - [Uživatelé, relace, události](usage-segmentation.md)
     - [Trychtýře](usage-funnels.md)
-    - [Toky uživatele](usage-flows.md)
+    - [Toky uživatelů](usage-flows.md)
     - [Workbooks](../platform/workbooks-overview.md)
     - [Přidat kontext uživatele](usage-send-user-context.md)
 

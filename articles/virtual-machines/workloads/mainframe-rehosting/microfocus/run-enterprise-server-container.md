@@ -13,10 +13,10 @@ tags: ''
 keywords: ''
 ms.service: multiple
 ms.openlocfilehash: bfd40d39907c4e69ded0fa257305d346ca261836
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319992"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Provozování Micro Enterprise serveru 5,0 v kontejneru Docker v Azure
@@ -137,7 +137,7 @@ V tomto okamžiku je virtuální počítač spuštěný a připojený přes RDP.
     docker inspect \<containerID\> --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
     ```
 
-    Příklad:
+    Například:
 
     ```
     docker inspect 22a0fe3159d0 --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
@@ -167,7 +167,7 @@ V tomto okamžiku je virtuální počítač spuštěný a připojený přes RDP.
 
     ![Konzola pro správu podnikového serveru](media/run-image-9.png)
 
-A to je vše! Teď spouštíte a spravujete aplikaci CICS v kontejneru Docker.
+A je to! Teď spouštíte a spravujete aplikaci CICS v kontejneru Docker.
 
 ## <a name="next-steps"></a>Další kroky
 

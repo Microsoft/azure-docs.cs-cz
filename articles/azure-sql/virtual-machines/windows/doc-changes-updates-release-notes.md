@@ -12,10 +12,10 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/21/2020
 ms.openlocfilehash: 6e2665a413b3d43f7e1b294ebfc390c57d995f29
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91758638"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Změny v dokumentaci pro SQL Server v Azure Virtual Machines
@@ -104,7 +104,7 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 |**Přepnutí modelu licencování** | Pomocí Azure CLI nebo PowerShellu se teď můžete přepínat mezi modely s platbami za využití a vlastní licence pro váš SQL Server virtuální počítač. Další informace najdete v tématu [Změna licenčního modelu pro SQL Server virtuální počítač v Azure](licensing-model-azure-hybrid-benefit-ahb-change.md). | 
 | &nbsp; | &nbsp; |
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 **Virtuální počítače s Windows**:
 

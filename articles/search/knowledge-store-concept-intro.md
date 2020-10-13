@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 3ec556c6198a00f217568f6591bd4b43c7fc743e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88924295"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Znalostní báze ve službě Azure Kognitivní hledání
@@ -134,7 +134,7 @@ Jakmile rozšíření existují v úložišti, můžete použít jakýkoli nást
 
 <a name="kstore-rest-api"></a>
 
-## <a name="api-reference"></a>API – referenční informace
+## <a name="api-reference"></a>referenční dokumentace k rozhraní API
 
 REST API verze `2020-06-30` poskytuje znalostní bázi s dalšími definicemi na dovednosti. Kromě odkazu najdete informace o tom, jak volat rozhraní API, v tématu  [Vytvoření úložiště znalostí pomocí služby post](knowledge-store-create-rest.md) .
 

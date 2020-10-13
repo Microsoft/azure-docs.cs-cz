@@ -12,10 +12,10 @@ ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3b0c85f2c9ba04ac999911e534b906c634d457b8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360952"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: hlas – povolení robota pomocí sady Speech SDK
@@ -109,7 +109,7 @@ V tomto okamžiku ověřte, že skupina prostředků (**SpeechEchoBotTutorial-re
 
 | Název | Typ  | Umístění |
 |------|-------|----------|
-| SpeechEchoBotTutorial – řeč | Cognitive Services | USA – západ |
+| SpeechEchoBotTutorial-Speech | Cognitive Services | USA – západ |
 
 ### <a name="create-an-azure-app-service-plan"></a>Vytvoření plánu služby Azure App Service
 
@@ -131,7 +131,7 @@ V tomto okamžiku ověřte, že vaše skupina prostředků (**SpeechEchoBotTutor
 | Název | Typ  | Umístění |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
-| SpeechEchoBotTutorial – řeč | Cognitive Services | USA – západ |
+| SpeechEchoBotTutorial-Speech | Cognitive Services | USA – západ |
 
 ## <a name="build-an-echo-bot"></a>Sestavení robota s odezvou
 
@@ -167,7 +167,7 @@ Teď, když jste vytvořili nějaké prostředky, pojďme vytvořit robota. Bude
 1. Nainstalujte [emulátor systému bot Framework](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) verze 4.3.0 nebo novější.
 2. Spusťte emulátor rozhraní bot Framework a otevřete robota:
    * **Soubor**  ->  **Otevřete robot**.
-3. Zadejte adresu URL pro robota. Příklad:
+3. Zadejte adresu URL pro robota. Například:
 
    ```
    http://localhost:3978/api/messages
@@ -217,7 +217,7 @@ Dalším krokem je nasazení nástroje echo bot do Azure. Existuje několik způ
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA – západ |
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
-| SpeechEchoBotTutorial – řeč | Cognitive Services | USA – západ |
+| SpeechEchoBotTutorial-Speech | Cognitive Services | USA – západ |
 
 ## <a name="enable-web-sockets"></a>Povolit webové sokety
 
@@ -255,7 +255,7 @@ V tomto okamžiku ověřte skupinu prostředků **SpeechEchoBotTutorial-Resource
 | EchoBot20190805125647 | App Service | USA – západ |
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
 | SpeechEchoBotTutorial-BotRegistration-8726 | Registrace kanálů robota | Globální |
-| SpeechEchoBotTutorial – řeč | Cognitive Services | USA – západ |
+| SpeechEchoBotTutorial-Speech | Cognitive Services | USA – západ |
 
 > [!IMPORTANT]
 > Prostředek registrace kanálů robota zobrazí globální oblast, i když jste vybrali Západní USA. To se očekává.
@@ -478,7 +478,7 @@ Pokud nebudete nadále používat službu echo-bot nasazenou v tomto kurzu, mů�
 * Nasazení do [oblasti Azure, která podporuje hlasy vysoké kvality neuronové TTS](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)
 * Ceny spojené s kanálem Direct line Speech:
   * [Ceny služby bot Service](https://azure.microsoft.com/pricing/details/bot-service/)
-  * [Služba řeči](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
+  * [Služba Speech](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * Sestavování a nasazování vlastního robota s povoleným hlasem:
   * Sestavte [robota bot Framework](https://dev.botframework.com/). Zaregistrujte si ho pomocí [kanálu Direct line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) a [Přizpůsobte si robota pro hlas](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0) .
   * Prozkoumejte stávající [řešení pro robotická rozhraní](https://microsoft.github.io/botframework-solutions/index): vytvoření [virtuálního asistenta](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) a [jeho rozšiřování na přímé čáry – řeč](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

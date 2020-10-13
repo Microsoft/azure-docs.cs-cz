@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/28/2020
 ms.openlocfilehash: 4ff1a793b3e8c4fe642aa304f1aa59bd8edefb8c
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405615"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Kopírování dat z Azure Databricks rozdílových Lake pomocí Azure Data Factory
@@ -37,7 +37,7 @@ Obecně platí, že Azure Data Factory podporuje rozdílové Lake s následujíc
 - [Mapování toku dat](concepts-data-flow-overview.md) podporuje [Formát obecného rozdílu](format-delta.md) v Azure Storage jako zdroj a jímka pro čtení a zápis rozdílových souborů pro ETL bez kódu a spouštění na spravovaných Azure Integration runtime.
 - [Aktivity datacihlů](transform-data-databricks-notebook.md) podporují orchestraci prostředí ETL zaměřeného na kód nebo úlohy strojového učení v rámci rozdílových Lake.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete použít tento Azure Databricks rozdílového konektoru Lake, musíte nastavit cluster v Azure Databricks.
 
@@ -83,7 +83,7 @@ Pro propojenou službu Azure Databricks Delta Lake jsou podporovány následují
 | :---------- | :----------------------------------------------------------- | :------- |
 | typ        | Vlastnost Type musí být nastavená na **AzureDatabricksDeltaLake**. | Yes      |
 | doména      | Zadejte adresu URL Azure Databricks pracovního prostoru, třeba `https://adb-xxxxxxxxx.xx.azuredatabricks.net` . |          |
-| clusterId   | Zadejte ID clusteru existujícího clusteru. Měl by to být již vytvořený interaktivní cluster. <br>ID clusteru interaktivního clusteru můžete najít v pracovním prostoru datacihly – > clustery – > interaktivní název clusteru – > značky konfigurace >. [Přečtěte si další informace](https://docs.microsoft.com/azure/databricks/clusters/configure#cluster-tags). |          |
+| clusterId   | Zadejte ID clusteru existujícího clusteru. Měl by to být již vytvořený interaktivní cluster. <br>ID clusteru interaktivního clusteru můžete najít v pracovním prostoru datacihly – > clustery – > interaktivní název clusteru – > značky konfigurace >. [Další informace](https://docs.microsoft.com/azure/databricks/clusters/configure#cluster-tags). |          |
 | accessToken | Pro Data Factory ověřování pro Azure Databricks je vyžadován přístupový token. Přístupový token se musí vygenerovat z pracovního prostoru datacihly. Podrobnější kroky pro vyhledání přístupového tokenu najdete [tady](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/authentication#generate-token). |          |
 | connectVia  | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se používá pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí prostředí Azure Integration runtime. | No       |
 

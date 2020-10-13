@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 70ab4a151fe73b59663fd8fa16170b2e507c2511
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258055"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>Pokyny pro používání Xamarin iOS s MSAL.NET
@@ -151,7 +151,7 @@ Pokud máte dotazy nebo chcete ohlásit problém, který jste našli v MSAL.NET,
 
 Informace o vlastnostech pro Xamarin iOS najdete v článku věnovaném [důležitým](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/master/1-Basic#ios-specific-considerations) údajům pro iOS v následujícím ukázkovém souboru Readme.MD:
 
-Ukázka | Platforma | Popis
+Ukázka | Platforma | Description
 ------ | -------- | -----------
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, Univerzální platforma Windows (UWP) | Jednoduchá aplikace Xamarin Forms, která ukazuje, jak používat MSAL k ověřování osobních účtů Microsoft a Azure AD prostřednictvím koncového bodu Azure AD 2,0. Aplikace také ukazuje, jak použít výsledný token pro přístup k Microsoft Graph.
 

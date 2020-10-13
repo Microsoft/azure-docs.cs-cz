@@ -12,10 +12,10 @@ ms.date: 08/27/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 4f6b09061a4aa98824e176af55efcedfab3df48c
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89051902"
 ---
 # <a name="tutorial-for-configuring-hypr-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci HYPR s využitím Azure Active Directory B2C
@@ -50,7 +50,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Snímek obrazovky pro hypr – architektura – diagram](media/partner-hypr/hypr-architecture-diagram.png)
 
-|Krok | Popis |
+|Krok | Description |
 |:-----| :-----------|
 | 1. | Uživatel dorazí na přihlašovací stránku. Uživatelé vyberou přihlášení a zaregistrují se na stránku a zadají uživatelské jméno.
 | 2. | Aplikace pošle atributy uživatele Azure AD B2C k identifikaci ověřování.

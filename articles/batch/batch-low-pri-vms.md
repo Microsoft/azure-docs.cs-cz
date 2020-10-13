@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: seodec18
 ms.openlocfilehash: bd5b73cf55110985a2e7eecbc161c77ca6d645cb
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568451"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Použití virtuálních počítačů s nízkou prioritou se službou Batch
@@ -168,8 +168,8 @@ V případě fondů konfigurace virtuálních počítačů Batch provede také n
 
 Nové metriky jsou k dispozici v [Azure Portal](https://portal.azure.com) pro uzly s nízkou prioritou. Tyto metriky jsou:
 
-- Počet uzlů s nízkou prioritou
-- Počet jader s nízkou prioritou
+- Počet uzlů Low-Priority
+- Počet Low-Prioritych jader
 - Počet zrušených uzlů
 
 Chcete-li zobrazit metriky v Azure Portal:

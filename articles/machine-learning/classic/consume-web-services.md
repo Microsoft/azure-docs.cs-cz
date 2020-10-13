@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
 ms.openlocfilehash: 66c9368d06960790c6dc960d2d95bd82be1a6e39
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342208"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>Jak využívat webovou službu Machine Learning Studio (Classic)
@@ -36,7 +36,7 @@ U Azure Machine Learning webové služby komunikuje externí aplikace s modelem 
 
 Azure Machine Learning Studio (Classic) má dva typy služeb:
 
-* Služba Request-response (RR) – nízká latence, vysoce škálovatelná služba, která poskytuje rozhraní pro bezstavové modely vytvořené a nasazené z Machine Learning Studio (Classic).
+* Služba Request-Response (RR) – nízká latence, vysoce škálovatelná služba, která poskytuje rozhraní pro bezstavové modely vytvořené a nasazené z Machine Learning Studio (Classic).
 * Služba batch execution (BES) – asynchronní služba, která vyrovnává dávku datových záznamů.
 
 Další informace o Machine Learning webových služeb najdete v tématu [nasazení webové služby Machine Learning](deploy-a-machine-learning-web-service.md).
@@ -78,7 +78,7 @@ Nápovědu k rozhraní Machine Learning API obsahuje podrobnosti o předpovědi 
 1. Klikněte na webovou službu, se kterou pracujete.
 2. Klikněte na koncový bod, pro který chcete zobrazit stránku s nápovědu k rozhraní API.
 3. V horní nabídce klikněte na možnost **spotřebovat**.
-4. Klikněte na **stránku s nápovědě k rozhraní API** pod koncovými body pro požadavek a odpověď na zpracování dávky.
+4. Klikněte na **stránku s nápovědě k rozhraní API** pod koncovými body spuštění Request-Response nebo dávky.
 
 **Zobrazení Machine Learning nápovědu k rozhraní API pro novou webovou službu**
 
@@ -87,7 +87,7 @@ Na [portálu Azure Machine Learning Web Services](https://services.azureml.net/)
 1. V horní nabídce klikněte na **webové služby** .
 2. Klikněte na webovou službu, pro kterou chcete klíč načíst.
 
-Kliknutím na **použít webovou službu** získáte identifikátory URI pro služby Request-response a batch pro spouštění a ukázkový kód v jazycích C#, R a Python.
+Kliknutím na možnost **použít webovou službu** získáte identifikátory uri pro Request-Response a dávkové spouštění služby a ukázkový kód v jazycích C#, R a Python.
 
 Kliknutím na **rozhraní Swagger API** získáte dokumentaci na bázi Swagger pro rozhraní API volaná ze zadaných identifikátorů URI.
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
 ms.openlocfilehash: 7b6fa2395e81089e8b4523929a4a7a583b0788a2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360765"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu REST pomocí Azure Data Factory
@@ -310,7 +310,7 @@ Tento obecný konektor REST podporuje následující vzory stránkování:
 
 **Podporované klíče** v pravidlech stránkování:
 
-| Klíč | Popis |
+| Klíč | Description |
 |:--- |:--- |
 | AbsoluteUrl | Označuje adresu URL pro vydání dalšího požadavku. Může to být **buď absolutní adresa URL, nebo relativní adresa URL**. |
 | QueryParameters. *request_query_parameter* NEBO QueryParameters [' request_query_parameter '] | "request_query_parameter" je definováno uživatelem, který odkazuje na jeden název parametru dotazu v další adrese URL požadavku HTTP. |

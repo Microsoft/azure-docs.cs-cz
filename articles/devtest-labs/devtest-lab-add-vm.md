@@ -4,10 +4,10 @@ description: Naučte se, jak pomocí Azure Portal přidat virtuální počítač
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 07efcf93b963009494021b90e6c730c4615301ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297619"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Přidání virtuálního počítače do testovacího prostředí v Azure DevTest Labs
@@ -16,7 +16,7 @@ Pokud jste už [svůj první virtuální počítač vytvořili](tutorial-create-
 Tento článek také ukazuje, jak spravovat artefakty pro virtuální počítač v testovacím prostředí.
 
 ## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Postup přidání virtuálního počítače do testovacího prostředí v Azure DevTest Labs
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Vyberte **všechny služby**a potom v části **DEVOPS** vyberte **DevTest Labs** . Pokud vyberete * (hvězdička) vedle **DevTest Labs** v části **DEVOPS** . Tato akce přidá **DevTest Labs** do levé navigační nabídky, abyste k ní mohli snadno získat přístup později. Pak můžete v levé navigační nabídce vybrat **DevTest Labs** .
 
     ![Všechny služby – výběr DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)
@@ -59,7 +59,7 @@ Při vytváření virtuálního počítače můžete přidat existující artefa
 
 Chcete-li zjistit, jak vytvořit artefakty, přečtěte si článek, [jak vytvářet vlastní artefakty pro použití s DevTest Labs](devtest-lab-artifact-author.md).
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 1. V seznamu cvičení vyberte testovací prostředí obsahující virtuální počítač, se kterým chcete pracovat.
 1. Vyberte **moje virtuální počítače**.

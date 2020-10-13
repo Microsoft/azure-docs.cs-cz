@@ -16,10 +16,10 @@ ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
 ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335999"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Postup rozšíření jednotky operačního systému virtuálního počítače
@@ -45,11 +45,11 @@ Při vytváření nového virtuálního počítače ve skupině prostředků nas
  
 3. V části **název disku**vyberte disk, u kterého chcete změnit velikost.
 
-    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Snímek obrazovky, který zobrazuje podokno disky s vybraným názvem disku":::
+    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Snímek obrazovky, který zobrazuje možnost disky vybrané v části nastavení v nabídce":::
 
 4. V nabídce vlevo v části **Nastavení**vyberte **Konfigurace**.
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Snímek obrazovky, který zobrazuje možnost konfigurace zvolená v části nastavení v nabídce":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Snímek obrazovky, který zobrazuje možnost disky vybrané v části nastavení v nabídce":::
 
 5. V části **Velikost (GIB)** vyberte požadovanou velikost disku.
    
@@ -57,11 +57,11 @@ Při vytváření nového virtuálního počítače ve skupině prostředků nas
    > Nová velikost musí být větší než stávající velikost disku. Maximální povolená hodnota je 2 048 GB pro disky s operačním systémem. (Objekt BLOB VHD můžete rozšířit i po této velikosti, ale operační systém funguje jenom s prvním 2 048 GB místa.)
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Snímek obrazovky, který zobrazuje podokno konfigurace se zvolenou velikostí disku.":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Snímek obrazovky, který zobrazuje možnost disky vybrané v části nastavení v nabídce":::
 
 6. Vyberte **Uložit**.
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Snímek obrazovky, který zobrazuje podokno konfigurace s vybraným tlačítkem Uložit.":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Snímek obrazovky, který zobrazuje možnost disky vybrané v části nastavení v nabídce":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>Změna velikosti spravovaného disku pomocí prostředí PowerShell

@@ -1,5 +1,5 @@
 ---
-title: Porovnat službu Active Directory s Azure Active Directory
+title: Porovnání Active Directory s Azure Active Directory
 description: Tento dokument porovnává Active Directory Domain Services (přidá) do Azure Active Directory (AD). Popisuje klíčové koncepty v řešeních identit a vysvětluje, jak se liší nebo které je podobné.
 services: active-directory
 author: martincoetzer
@@ -12,13 +12,13 @@ ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
 ms.openlocfilehash: e71ed9655c7b195fea8a2eeeaa76d8a28717637f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89318552"
 ---
-# <a name="compare-active-directory-to-azure-active-directory"></a>Porovnat službu Active Directory s Azure Active Directory
+# <a name="compare-active-directory-to-azure-active-directory"></a>Porovnání Active Directory s Azure Active Directory
 
 Azure Active Directory je další vývoj řešení pro správu identit a přístupů pro Cloud. Společnost Microsoft představila Active Directory Domain Services ve Windows 2000, aby organizacím umožnila spravovat více místních komponent a systémů infrastruktury s použitím jediné identity na uživatele.
 
@@ -36,7 +36,7 @@ Většina správců IT je obeznámená s Active Directory Domain Services koncep
 | Správa přihlašovacích údajů| Přihlašovací údaje ve službě Active Directory jsou založené na heslech, ověřování certifikátů a ověřování pomocí čipové karty. Hesla se spravují pomocí zásad hesel, které jsou založené na délce hesla, vypršení platnosti a složitosti.|Azure AD používá inteligentní [ochranu heslem](../authentication/concept-password-ban-bad.md) pro Cloud a místní prostředí. Ochrana zahrnuje chytré zamykání a blokuje společná a vlastní hesla a náhrady. </br>Azure AD významně zvyšuje zabezpečení [prostřednictvím služby Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md) a technologií bez [hesla](../authentication/concept-authentication-passwordless.md) , jako je FIDO2. </br>Služba Azure AD snižuje náklady na podporu tím, že poskytuje uživatelům [Samoobslužný systém pro resetování hesla](../authentication/concept-sspr-howitworks.md) . |
 | **Aplikace**|||
 | Aplikace infrastruktury|Služba Active Directory je základem pro mnoho místních komponent infrastruktury, například DNS, DHCP, IPSec, Wi-Fi, NPS a VPN Access.|V novém cloudovém světě je Azure AD novou rovinou ovládacích prvků pro přístup k aplikacím, které se spoléhají na řízení sítě. Když se uživatelé ověřují[, podmíněný přístup (CA)](../conditional-access/overview.md)bude řídit, kteří uživatelé budou mít přístup k aplikacím, které jsou v požadovaných podmínkách.|
-| Tradiční a starší aplikace| Většina místních aplikací používá protokol LDAP, integrované ověřování systému Windows (NTLM a Kerberos) nebo ověřování na základě hlaviček k řízení přístupu uživatelům.| Azure AD může poskytovat přístup k těmto typům místních aplikací pomocí agentů [proxy aplikací služby Azure AD](../manage-apps/application-proxy.md) místně běžících v místním prostředí. Pomocí této metody může Azure AD ověřovat uživatele Active Directory místně pomocí protokolu Kerberos při migraci nebo nutnosti koexistovat se staršími aplikacemi. |
+| Tradiční a starší aplikace| Většina místních aplikací používá protokol LDAP, Windows-Integrated ověřování (NTLM a Kerberos) nebo ověřování na základě hlaviček k řízení přístupu uživatelům.| Azure AD může poskytovat přístup k těmto typům místních aplikací pomocí agentů [proxy aplikací služby Azure AD](../manage-apps/application-proxy.md) místně běžících v místním prostředí. Pomocí této metody může Azure AD ověřovat uživatele Active Directory místně pomocí protokolu Kerberos při migraci nebo nutnosti koexistovat se staršími aplikacemi. |
 | Aplikace SaaS|Služba Active Directory nepodporuje aplikace SaaS nativně a vyžaduje federační systém, například AD FS.|Aplikace SaaS podporující OAuth2, SAML a WS- \* Authentication lze integrovat pro ověřování pomocí služby Azure AD. |
 | Obchodní aplikace (LOB) s moderním ověřováním|Organizace můžou použít AD FS se službou Active Directory k podpoře obchodních aplikací vyžadujících moderní ověřování.| Obchodní aplikace vyžadující moderní ověřování se dají nakonfigurovat tak, aby pro ověřování používaly službu Azure AD. |
 | Služby střední vrstvy/démona|Služby běžící v místních prostředích obvykle používají účty služby AD nebo skupinové účty spravované služby (gMSA) ke spuštění. Tyto aplikace pak zdědí oprávnění k účtu služby.| Azure AD poskytuje [spravované identity](../managed-identities-azure-resources/index.yml) pro spouštění dalších úloh v cloudu. Životní cyklus těchto identit spravuje Azure AD a je vázaný na poskytovatele prostředků se nedá použít k získání přístupu zadní vrátka k jiným účelům.|

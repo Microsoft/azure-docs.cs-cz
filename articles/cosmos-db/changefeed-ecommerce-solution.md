@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
 ms.openlocfilehash: b1de0fa2e6601e4350b52caea32f8bc379909f85
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356362"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Použití Azure Cosmos DB změnového kanálu k vizualizaci analýzy dat v reálném čase
@@ -170,7 +170,7 @@ Chcete-li zjistit, jak kanál změny zpracovává nové akce na webu elektronick
 
 3. Přidejte do názvů **kolekcí** a **databází** . (Tyto názvy by měly být **changefeedlabcollection** a **changefeedlabdatabase** , pokud se nerozhodnete pro pojmenování jiným způsobem.)
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="Aktualizace připojovacích řetězců":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="Vizuál projektu":::
  
 4. Uložte změny ve všech upravovaných souborech.  
 
@@ -180,7 +180,7 @@ Chcete-li zjistit, jak kanál změny zpracovává nové akce na webu elektronick
 
 7. Pokud přejdete na [Azure Portal](https://portal.azure.com/) , pak na účet Cosmos DB v rámci skupiny prostředků a potom na **Průzkumník dat**, zobrazí se náhodovaná data importovaná v **changefeedlabcollection** .
  
-   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Data generovaná na portálu":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Vizuál projektu":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>Nastavení úlohy Stream Analytics
 
@@ -190,7 +190,7 @@ Azure Stream Analytics je plně spravovaná cloudová služba pro zpracování d
 
 2. Vyberte **vstupy** , jak je znázorněno níže.  
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Vytvořit vstup":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Vizuál projektu":::
 
 3. Vyberte **+ Přidat vstup streamu**. Pak z rozevírací nabídky vyberte **centrum událostí** .  
 
@@ -222,20 +222,7 @@ Azure Stream Analytics je plně spravovaná cloudová služba pro zpracování d
 
 8. Pak se vraťte na **streamjob1** a vyberte **Upravit dotaz**.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Upravit dotaz":::
- 
-9. Vložte následující dotaz do okna dotazu. Dotaz na **průměrnou cenu** vypočítá průměrnou cenu všech položek zobrazených uživateli, průměrnou cenu všech položek přidaných do košíků uživatelů a průměrnou cenu všech položek, které uživatelé zakoupili. Tato metrika může pomáhat firmám elektronického obchodování rozhodnout, jaké ceny prodávat zboží a kde se má v inventáři investovat. Například pokud Průměrná cena zobrazených položek je mnohem vyšší než průměrná cena zakoupených položek, pak může společnost zvolit, že se má do inventáře přidat levnější položky.
-
-   ```sql
-   /*AVERAGE PRICE*/      
-   SELECT System.TimeStamp AS Time, Action, AVG(Price)  
-    INTO averagePriceOutput  
-    FROM input  
-    GROUP BY Action, TumblingWindow(second,5) 
-   ```
-10. Pak v levém horním rohu vyberte **Save (Uložit** ).  
-
-11. Nyní se vraťte na **streamjob1** a v horní části stránky vyberte tlačítko **Start** . Spuštění Azure Stream Analytics může trvat několik minut, ale nakonec se změní z "spouštění" na "spuštěno".
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Vizuál projektu" na "spuštěno".
 
 ## <a name="connect-to-power-bi"></a>Připojení k Power BI
 
@@ -315,7 +302,7 @@ Power BI je sada nástrojů pro obchodní analýzu, která umožňuje analyzovat
 
    Tímto způsobem vypadá vzorový řídicí panel s těmito grafy:
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="Snímek obrazovky ukazuje vzorový řídicí panel s grafy s názvem Průměrná cena položek podle akcí, jedinečných návštěvníků, výnosů a hlavních 5 položek koupených.":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="Vizuál projektu":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Volitelné: vizualizace pomocí webu elektronického obchodování
 
@@ -329,13 +316,13 @@ Teď budete sledovat, jak můžete použít nový nástroj pro analýzu dat pro 
 
 2. Vyberte kolekci **topItems** a v části **škálování a nastavení** nastavte **čas na živé** na **30 sekund** , aby se aktualizace topItems každých 30 sekund.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Hodnota TTL (Time to Live)":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Vizuál projektu":::
 
 3. Pro naplnění kolekce **topItems** s nejčastěji zakoupenými položkami přejděte zpět na **streamjob1** a přidejte nový **výstup**. Vyberte **Cosmos DB**.
 
 4. Vyplňte požadovaná pole na obrázku níže.
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Výstup Cosmos":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Vizuál projektu":::
  
 5. Pokud jste přidali volitelný dotaz TOP 5 v předchozí části testovacího prostředí, přejděte k části 5a. V takovém případě pokračujte na část 5b.
 

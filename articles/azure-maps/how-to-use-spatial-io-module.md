@@ -10,17 +10,17 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 61ea102d0e020f7890da1ae86cdfbb5c3db8f51b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335292"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Jak používat modul Azure Maps prostorového vstupu/výstupu
 
 Sada Azure Maps Web SDK poskytuje **modul pro prostorové vstupně-výstupní operace**, který integruje prostorová data do Azure Maps Web SDK pomocí JavaScriptu nebo TypeScript. Robustní funkce v tomto modulu umožňují vývojářům:
 
-- [Čtení a zápis běžných souborů prostorových dat](spatial-io-read-write-spatial-data.md). Mezi podporované formáty souborů patří: KML, KMZ, GPX, GeoRSS, GML, soubory. JSON a CSV, které obsahují sloupce s prostorovými informacemi. Také podporuje dobře známý text (Well).
+- [Čtení a zápis běžných souborů prostorových dat](spatial-io-read-write-spatial-data.md). Mezi podporované formáty souborů patří: KML, KMZ, GPX, GeoRSS, GML, soubory. JSON a CSV, které obsahují sloupce s prostorovými informacemi. Podporuje také Well-Known text (Well).
 - [Připojte se ke službám Open Geospatial Consortium (OGC) a integrujte je se sadou Azure Maps Web SDK. Překrývá služby webového mapování (WMS) a WMTS (Web Map) jako vrstvy na mapě](spatial-io-add-ogc-map-layer.md).
 - [Dotazování dat ve službě webové funkce (WFS)](spatial-io-connect-wfs-service.md).
 - [Překrytí složitých datových sad, které obsahují informace o stylu a jejich automatické vykreslování pomocí minimálního kódu](spatial-io-add-simple-data-layer.md).

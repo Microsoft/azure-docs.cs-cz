@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a04435b1e2feb537231bb80d2777b9ea2599c241
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6564804b7003b5e1c166868dae1bfaac7bd28fa5
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812399"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940460"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -52,17 +52,27 @@ Další informace o Key Vault rovině správy najdete v tématu [Key Vault rovin
 Key Vault používá ověřování Azure AD, které pro udělení přístupu vyžaduje objekt zabezpečení služby Azure AD. Objekt zabezpečení služby Azure AD může být uživatel, instanční objekt aplikace, [spravovaná identita pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md)nebo skupina libovolného typu objektů zabezpečení.
 
 ### <a name="authentication-best-practices"></a>Osvědčené postupy ověřování
+
 Pro aplikace nasazené do Azure se doporučuje používat spravovanou identitu. Pokud používáte služby Azure, které nepodporují spravovanou identitu, nebo pokud jsou aplikace nasazené místně, [instanční objekt s certifikátem](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) je možné alternativou. V takovém případě by certifikát měl být uložený v Key Vault a často otočený. Instanční objekt s tajným klíčem se dá použít pro vývojová a testovací prostředí a lokálně nebo v Cloud Shell se doporučuje použít objekt zabezpečení uživatele.
 
-Scénáře ověřování jsou podporované klientskou knihovnou identity Azure a jsou integrované s Key Vault SDK. Knihovna identit Azure se dá používat v různých prostředích a platformách beze změny kódu. Identita Azure taky automaticky načte ověřovací token z přihlášeného k uživateli Azure pomocí Azure CLI, sady Visual Studio, Visual Studio Code a dalších. 
+Doporučené objekty zabezpečení na prostředí:
+- **Provozní prostředí**:
+  - Spravovaná identita nebo instanční objekt s certifikátem
+- **Testovací a vývojové prostředí**:
+  - Spravovaná identita, instanční objekt s certifikátem nebo instančním objektem s tajným klíčem
+- **Místní vývoj**:
+  - Uživatel nebo instanční objekt s tajným klíčem
 
-Další informace naleznete v tématech: 
+Scénáře ověřování jsou podporované **klientskou knihovnou identity Azure** a jsou integrované s Key Vault SDK. Knihovna identit Azure se dá používat v různých prostředích a platformách beze změny kódu. Identita Azure taky automaticky načte ověřovací token z přihlášeného k uživateli Azure pomocí Azure CLI, sady Visual Studio, Visual Studio Code a dalších. 
 
+Další informace o službě Azure identity Client libarary najdete v těchto tématech:
+
+### <a name="azure-identity-client-libraries"></a>Klientské knihovny identit Azure
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
 |[Sada Azure identity SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure identity SDK Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Sada Azure identity SDK Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[JavaScript sady Azure identity SDK](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
 
-Ověřování pro Key Vault v aplikacích:
+Výukové programy, jak ověřit Key Vault v aplikacích, najdete v tématech:
 - [Ověřování pro Key Vault v aplikaci hostované na virtuálním počítači v .NET](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
 - [Ověřování pro Key Vault v aplikaci hostované na virtuálním počítači v Pythonu](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
 - [Ověřování pro Key Vault s App Service](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)

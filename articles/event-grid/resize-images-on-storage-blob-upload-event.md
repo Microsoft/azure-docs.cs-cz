@@ -4,10 +4,10 @@ description: 'Kurz: Azure Event Grid se můžou aktivovat při nahrávání obje
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.openlocfilehash: 47ac8cad6d7c2ead8d25aa3525aafdab735f9e71
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326554"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: automatizace změny velikosti nahraných imagí pomocí Event Grid
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > * Nasadit kód bez serveru pomocí služby Azure Functions
 > * Vytvořit odběr události služby Blob Storage ve službě Event Grid
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -263,7 +263,7 @@ Odběr událostí udává, které události vygenerované zprostředkovatelem ch
 
 1.  Vyberte vybrat **integraci** a pak zvolte **aktivační událost Event Grid** a vyberte **vytvořit Event Grid předplatné**.
 
-    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Přejděte k části Přidání předplatného Event Grid v Azure Portal" :::
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Volba funkce miniatury na portálu" :::
 
 1. Použijte nastavení odběru událostí uvedená v tabulce.
     

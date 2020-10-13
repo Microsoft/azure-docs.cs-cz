@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d8ec8eec28d66cf93608393ddca45f78460d831
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279767"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: Reference k funkcím
@@ -114,7 +114,7 @@ Funkce s typy **mvbin**, **mvstr**a **mvref** mohou pracovat pouze s více hodno
   * [RandomNum](#randomnum)
 * **Vícenásobný * oceněný**
   * [Zobrazí](#contains)
-  * [Výpočtu](#count)
+  * [Počet](#count)
   * [Položka](#item)
   * [ItemOrNull](#itemornull)
   * [Join](#join) (Spojení)

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: extrakce textu pomocí Počítačové zpracování obrazu 3,0 REST API operace čtení a C #'
+title: 'Rychlý Start: extrakce textu pomocí Počítačové zpracování obrazu 3,1 REST API operace čtení a C #'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijte OCR na obrázek pomocí Počítačové zpracování obrazu 3,0 REST API operace čtení a C#.
+description: V tomto rychlém startu použijte OCR na obrázek pomocí Počítačové zpracování obrazu 3,1 REST API operace čtení a C#.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 2f7678e2dd9f04f7aa930271c69c2d4ccf1e692b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 603a002b4d9088295f7050afc47e643290818e0b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88928237"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969479"
 ---
-# <a name="quickstart-extract-text-using-the-computer-vision-30-rest-api-read-operation-and-c"></a>Rychlý Start: extrakce textu pomocí Počítačové zpracování obrazu 3,0 REST API operace čtení a C #
+# <a name="quickstart-extract-text-using-the-computer-vision-31-rest-api-read-operation-and-c"></a>Rychlý Start: extrakce textu pomocí Počítačové zpracování obrazu 3,1 REST API operace čtení a C #
 
-V tomto rychlém startu budete z obrázku extrahováni vytištěné a ručně psaný text pomocí nové technologie OCR dostupné jako součást REST API Počítačové zpracování obrazu 3,0. Pomocí nových metod [čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) a [získání výsledků čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) můžete detekovat text v obrázku a extrahovat rozpoznané znaky do datového proudu znaků, který je strojově čitelný. 
+V tomto rychlém startu budete z obrázku extrahováni vytištěné a ručně psaný text pomocí nové technologie OCR dostupné jako součást REST API Počítačové zpracování obrazu 3,1. Pomocí nových metod [čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) a [získání výsledků čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750) můžete detekovat text v obrázku a extrahovat rozpoznané znaky do datového proudu znaků, který je strojově čitelný. 
 
 > [!IMPORTANT]
-> Metoda [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) se spouští asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho metoda čtení dávky vrátí identifikátor URI v hodnotě `Operation-Location` pole hlavičky odpovědi. Pak můžete zavolat tento identifikátor URI, který představuje rozhraní [Get Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API, aby kontroloval stav a vrátil výsledky volání metody Read.
+> Metoda [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) se spouští asynchronně. Tato metoda nevrací žádné informace v textu úspěšné odpovědi. Místo toho metoda čtení dávky vrátí identifikátor URI v hodnotě `Operation-Location` pole hlavičky odpovědi. Pak můžete zavolat tento identifikátor URI, který představuje rozhraní [Get Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750) API, aby kontroloval stav a vrátil výsledky volání metody Read.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -68,7 +68,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
 
         // the Batch Read method endpoint
-        static string uriBase = endpoint + "/vision/v3.0/read/analyze";
+        static string uriBase = endpoint + "/vision/v3.1/read/analyze";
 
         // Add a local image with text here (png or jpg is OK)
         static string imageFilePath = @"my-image.png";
@@ -213,7 +213,7 @@ namespace CSHttpClientSample
   "createdDateTime": "2020-05-28T05:13:21Z",
   "lastUpdatedDateTime": "2020-05-28T05:13:22Z",
   "analyzeResult": {
-    "version": "3.0.0",
+    "version": "3.1.0",
     "readResults": [
       {
         "page": 1,

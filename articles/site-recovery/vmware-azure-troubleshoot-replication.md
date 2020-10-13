@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
 ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336201"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení potíží s replikací fyzických serverů a virtuálních počítačů VMware
@@ -146,7 +146,7 @@ Níže jsou uvedené některé z nejběžnějších problémů.
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Příčina 3: známý problém v SQL Server 2016 a 2017
 **Jak opravit** : Přečtěte si [článek](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) znalostní báze
 
-#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>Příčina 4: konzistence aplikací není na serverech se systémem Linux povolena
+#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>Příčina 4: App-Consistency nepovoluje na serverech se systémem Linux
 **Oprava** : Azure Site Recovery pro operační systém Linux podporuje vlastní skripty aplikace pro konzistenci aplikací. Vlastní skript s možnostmi před a po odeslání bude použit agentem Azure Site Recovery mobility pro konzistenci aplikací. [Tady](./site-recovery-faq.md#replication) je postup, jak ho povolit.
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>Další příčiny v důsledku potíží souvisejících se službou VSS:

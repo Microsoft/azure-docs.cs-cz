@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: f37b453a294a0d0a7b9a99bfebe8f3eff09e8956
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291190"
 ---
 # <a name="azure-storage-accounts"></a>Účty úložiště Azure
@@ -47,7 +47,7 @@ V Media Services V3 se k nahrávání souborů do assetů používají rozhraní
 
 Aby bylo možné chránit vaše prostředky v klidovém stavu, prostředky by měly být šifrovány šifrováním na straně úložiště. Následující tabulka ukazuje, jak funguje šifrování na straně úložiště v Media Services V3:
 
-|Možnost šifrování|Popis|Media Services v3|
+|Možnost šifrování|Description|Media Services v3|
 |---|---|---|
 |Media Services šifrování úložiště| Šifrování AES-256, klíč spravovaný pomocí Media Services. |Nepodporováno. <sup>(1)</sup>|
 |[Šifrování služby Storage pro neaktivní neaktivní data](../../storage/common/storage-service-encryption.md)|Šifrování na straně serveru, které nabízí Azure Storage, klíč spravuje Azure nebo zákazník.|Podporuje se.|

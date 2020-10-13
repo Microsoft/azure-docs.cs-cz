@@ -12,10 +12,10 @@ ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: e847f62c2ae3d1d68c39685a38b67e1d0ada8c2f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91251010"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Export nebo odstranění dat pracovního prostoru služby Machine Learning
@@ -50,7 +50,7 @@ Tyto prostředky je možné odstranit tak, že je vyberete ze seznamu a zvolíte
 
 Dokumenty historie spuštění, které mohou obsahovat osobní informace o uživateli, jsou uloženy v účtu úložiště v úložišti objektů BLOB v podsložkách `/azureml` . Data můžete stáhnout a odstranit z portálu.
 
-:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="Snímek obrazovky adresáře AzureML v účtu úložiště v rámci portálu":::
+:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="Snímek obrazovky portálu se zvýrazněnou ikonou odstranit":::
 
 ## <a name="export-and-delete-machine-learning-resources-using-azure-machine-learning-studio"></a>Export a odstranění prostředků strojového učení pomocí Azure Machine Learning studia
 
@@ -62,7 +62,7 @@ Datové sady je možné odregistrovat a experimenty lze archivovat, ale tyto ope
 
 Registrovaný model si můžete stáhnout tak, že přejdete na požadovaný **model** a zvolíte **Stáhnout**. 
 
-:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="Snímek stránky modelu studia se zvýrazněnou možností stažení":::
+:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="Snímek obrazovky portálu se zvýrazněnou ikonou odstranit":::
 
 ## <a name="export-and-delete-resources-using-the-python-sdk"></a>Export a odstranění prostředků pomocí sady Python SDK
 

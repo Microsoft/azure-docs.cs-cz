@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 137a077ac73b5dd5ca9c68c6be2b30beb8e92ce0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826234"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Kurz: Azure Active Directory integrace s hostovaným grafitem
@@ -30,7 +30,7 @@ Integrace hostovaného grafitu se službou Azure AD poskytuje následující vý
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD pomocí hostovaného grafitu potřebujete následující položky:
 
@@ -74,7 +74,7 @@ Aby se jednotné přihlašování fungovalo, je potřeba zřídit vztah odkazu m
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí hostovaného grafitu, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Konfigurace hostovaného jednotného přihlašování](#configure-hosted-graphite-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Konfigurace hostovaného jednotného přihlašování](#configure-hosted-graphite-single-sign-on)** – pro konfiguraci nastavení jediného Sign-On na straně aplikace
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření hostovaného programu pro testování pomocí nástroje grafitového uživatele](#create-hosted-graphite-test-user)** – Pokud chcete mít protějšek Britta Simon v hostovaném grafitu, který je propojený s reprezentací uživatele v Azure AD.
@@ -94,7 +94,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí hostovan
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -115,7 +115,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí hostovan
     > [!NOTE]
     > Počítejte s tím, že se nejedná o reálné hodnoty. Tyto hodnoty musíte aktualizovat skutečným identifikátorem, adresou URL odpovědi a adresou URL pro přihlášení. Chcete-li získat tyto hodnoty, můžete přejít na na straně aplikace >instalaci SAML nebo se obraťte na [hostovaného týmu podpory pro grafit](mailto:help@hostedgraphite.com).
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -129,7 +129,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí hostovan
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-hosted-graphite-single-sign-on"></a>Konfigurace hostovaného jednotného přihlašování pro grafit
+### <a name="configure-hosted-graphite-single-sign-on"></a>Konfigurovat hostovaný grafit Single Sign-On
 
 1. Přihlaste se k hostovanému klientovi grafitu jako správce.
 
@@ -178,7 +178,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Create** (Vytvořit).
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

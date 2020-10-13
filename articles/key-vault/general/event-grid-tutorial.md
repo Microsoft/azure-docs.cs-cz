@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d7bb697879f40b45c886cd90bbb1e34906d35f66
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530501"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>Příjem a reakce na oznámení o trezoru klíčů pomocí Azure Event Grid
@@ -179,7 +179,7 @@ Ověřte, že je vaše předplatné Event Grid správně nakonfigurované. Tento
 
 1. Vyberte poslední úlohu a podívejte se na požadavek POST, který byl odeslán z Event Grid Webhooku. Zkontrolujte kód JSON a ujistěte se, že parametry trezoru klíčů a typu události jsou správné. Pokud parametr "event type" v objektu JSON odpovídá události, ke které došlo v trezoru klíčů (v tomto příkladu je to Microsoft. klíčů trezor. SecretNearExpiry), test byl úspěšný.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="you-cant-create-an-event-subscription"></a>Nemůžete vytvořit odběr událostí.
 
@@ -187,7 +187,7 @@ Znovu zaregistrujte Event Grid a poskytovatele trezoru klíčů ve svých poskyt
 
 ## <a name="next-steps"></a>Další kroky
 
-Gratulujeme! Pokud jste správně postupovali podle všech těchto kroků, jste teď připraveni programově reagovat na změny stavu tajných kódů uložených ve vašem trezoru klíčů.
+Blahopřejeme! Pokud jste správně postupovali podle všech těchto kroků, jste teď připraveni programově reagovat na změny stavu tajných kódů uložených ve vašem trezoru klíčů.
 
 Pokud jste k hledání změn stavu tajných kódů v trezorech klíčů používali systém založený na cyklické dotazování, můžete nyní začít používat tuto funkci oznámení. Můžete také nahradit testovací skript v Runbooku kódem pro programové obnovení tajných kódů, když brzy vyprší platnost.
 

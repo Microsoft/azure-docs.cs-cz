@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: 4ecce689e287673a3b08f8f90f87c28e021106d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d05ab19ff7fee43d91a9620f96699d73bc38a1a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88038325"
+ms.locfileid: "91873298"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Kurz: vytvoření instance IoT Edge pro video Analytics (Intel NUC)
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Než začnete, měli byste [v kurzu Azure IoT Central vytvořit předchozí aplikaci Live video Analytics](./tutorial-video-analytics-create-app.md) .
+* Než začnete, měli byste provést předchozí [aplikaci Live video Analytics v azure IoT Central (Yolo V3)](./tutorial-video-analytics-create-app-yolo-v3.md) nebo [vytvořit video Analytics v kurzu Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md).
 * Zařízení, jako je Intel NUC, na kterém běží Linux, který může spouštět kontejnery Docker a má dostatečné výpočetní výkon pro spuštění analýzy videí.
 * V zařízení je nainstalovaný a spuštěný [modul runtime IoT Edge](../../iot-edge/how-to-install-iot-edge-linux.md) .
 * Je možné se připojit k zařízení IoT Edge z počítače s Windows, budete potřebovat [klienta ssh](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) pro výstup nebo ekvivalentní nástroj.

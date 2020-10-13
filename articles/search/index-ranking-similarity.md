@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.openlocfilehash: 651e0635f0b556cd47adfccdbac59ef587570128
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535725"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Algoritmus hodnocení v Azure Kognitivní hledání
@@ -105,7 +105,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 ## <a name="see-also"></a>Viz také  
 
-+ [Odkaz na REST API](/rest/api/searchservice/)
++ [Reference k rozhraní REST API](/rest/api/searchservice/)
 + [Přidání profilů vyhodnocování do indexu](index-add-scoring-profiles.md)
 + [Vytvoření rozhraní API pro index](/rest/api/searchservice/create-index)
 + [Sada Azure Kognitivní hledání .NET SDK](/dotnet/api/overview/azure/search)

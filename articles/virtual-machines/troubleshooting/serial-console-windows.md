@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c5c139cb94358d70d1f23b68f2a369adb953da08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cf3f9a1cd933526c5e376d232fa5acbc97fad47
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325976"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969717"
 ---
 # <a name="azure-serial-console-for-windows"></a>Sériová konzola Azure pro Windows
 
@@ -34,7 +34,7 @@ Dokumentaci k sériové konzole pro Linux najdete v tématu věnovaném [sériov
 > Sériová konzola je aktuálně nekompatibilní se spravovaným účtem úložiště diagnostiky spouštění. Pokud chcete použít sériovou konzolu, ujistěte se, že používáte vlastní účet úložiště.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí používat model nasazení správy prostředků. Klasická nasazení nejsou podporovaná.
 
@@ -189,7 +189,7 @@ Při připojování k virtuálnímu počítači s Windows se zobrazí jenom info
 Konzola SAC nebere v prohlížeči celou oblast sériová konzola. | Jedná se o známý problém s Windows a emulátorem terminálu. Tento problém sledujeme u obou týmů, ale v současné době nedochází ke zmírnění rizik.
 Pokud je povoleno ladění jádra, nelze v konzole SAC zadat dotaz. | RDP na virtuální počítač a spuštění `bcdedit /debug {current} off` z příkazového řádku se zvýšenými oprávněními. Pokud nemůžete používat protokol RDP, můžete místo toho připojit disk s operačním systémem k jinému virtuálnímu počítači Azure a při spuštění ho upravit, a to tak, že ho znovu připojíte `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` .
 Vložení do PowerShellu v konzole SAC má za následek třetí znak, pokud původní obsah obsahuje opakující se znak. | V případě alternativního řešení spusťte příkaz `Remove-Module PSReadLine` k uvolnění modulu PSReadLine z aktuální relace. Tato akce neprovede odstranění ani odinstalaci modulu.
-Některé vstupy klávesnice vytvoří neobvyklý výstup konzoly SAC (například **[A**, **[3 ~**). | Řídicí sekvence [VT100](https://aka.ms/vtsequences) se v příkazovém řádku konzoly SAC nepodporují.
+Některé vstupy klávesnice vytvoří neobvyklý výstup konzoly SAC (například **[A**, **[3 ~**). | Řídicí sekvence [VT100](/windows/console/console-virtual-terminal-sequences) se v příkazovém řádku konzoly SAC nepodporují.
 Vložení dlouhých řetězců nefunguje. | Konzola sériového portu omezuje délku řetězců vložených do terminálu na 2048 znaků, aby se zabránilo přetížení šířky pásma sériového portu.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
@@ -200,7 +200,7 @@ A. Poskytněte zpětnou vazbu vytvořením problému GitHubu na adrese https://a
 
 **Č. Podporuje sériová konzola kopírování/vkládání?**
 
-A. Ano. Pomocí **kombinace kláves CTRL** + **+ SHIFT**+ Shift + + **C** **Ctrl** + **Shift** + **V** zkopírujte a vložte do terminálu.
+A. Yes. Pomocí **kombinace kláves CTRL** + **+ SHIFT**+ Shift + + **C** **Ctrl** + **Shift** + **V** zkopírujte a vložte do terminálu.
 
 **Č. Kdo může povolit nebo zakázat sériovou konzolu pro moje předplatné?**
 
