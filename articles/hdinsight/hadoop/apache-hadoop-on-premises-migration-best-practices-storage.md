@@ -12,7 +12,7 @@ ms.openlocfilehash: cd27babee4b78d22bbd49ab53c1ed2fe5a54a0da
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856683"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight
@@ -33,7 +33,7 @@ Azure Storage lze geograficky replikovat. I když geografická replikace zajiš�
 
 Pro přístup k datům, která jsou uložená v Azure Storage, se dá použít jeden z následujících formátů:
 
-|Formát přístupu k datům |Popis |
+|Formát přístupu k datům |Description |
 |---|---|
 |`wasb:///`|Přístup k výchozímu úložišti pomocí nešifrované komunikace|
 |`wasbs:///`|Přístup k výchozímu úložišti pomocí šifrované komunikace.|
@@ -155,7 +155,7 @@ Ve výchozím nastavení má služba HDInsight úplný přístup k datům v úč
 
 1. Otevřete soubor  [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) a změňte následující hodnoty:
 
-    |Vlastnost token|Popis|
+    |Vlastnost token|Description|
     |---|---|
     |policy_name|Název, který se má použít pro vytvoření uložené zásady.|
     |storage_account_name|Název vašeho účtu úložiště.|

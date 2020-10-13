@@ -11,18 +11,22 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33842707f04e55b311aeeabe2f1bbc83204ec0c9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 126df6e7f4d227c20c2173a1e2d4c0d7361b043f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83652274"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962441"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webu Azure Portal
 
 Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných kódů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Trezory klíčů Azure můžete vytvářet a spravovat přes web Azure Portal. V tomto rychlém startu vytvoříte trezor klíčů, do kterého uložíte tajný kód. Další informace o službě Key Vault najdete v tématu [Přehled](../general/overview.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Další informace o tajných klíčích najdete v tématu (about-secrets.md).
+
+## <a name="prerequisites"></a>Předpoklady
+
+- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -47,6 +51,9 @@ Poznamenejte si hodnoty dvou vlastností uvedených níže:
 * **Název trezoru:** V tomto příkladu je to **Contoso-Vault2**. Tento název budete používat pro další kroky.
 * **Identifikátor URI trezoru:** V tomto příkladu je to https://contoso-vault2.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
+Můžete také vytvořit Key Vault pomocí Azure CLI a PowerShellu: [Vytvoření Key Vault pomocí prostředí PowerShell](../general/quick-create-powershell.md) 
+ [Vytvoření Key Vault pomocí Azure CLI](../general/quick-create-cli.md) .
+
 V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět operace s tímto novým trezorem.
 
 ![Výstup po dokončení vytváření služby Key Vault](../media/quick-create-portal/vault-properties.png)
@@ -61,7 +68,7 @@ Pokud chcete do trezoru přidat tajný klíč, stačí provést několik další
     - **Možnosti nahrání:** Ruční
     - **Název:** ExamplePassword
     - **Hodnota**: hVFkk965BuUv
-    - U ostatních hodnot ponechte jejich výchozí nastavení. Klikněte na **Create** (Vytvořit).
+    - U ostatních hodnot ponechte jejich výchozí nastavení. Klikněte na **Vytvořit**.
 
 Jakmile se zobrazí zpráva o úspěšném vytvoření tajného kódu, můžete na něj kliknout v seznamu. 
 
@@ -90,5 +97,8 @@ Až nebudete prostředky potřebovat, odstraňte jejich skupinu. Tím odstranít
 V tomto rychlém startu jste vytvořili Key Vault a uložili do něj tajný klíč. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
+- Číst [zabezpečený přístup k Key Vault](../general/secure-your-key-vault.md)
+- Viz [použití Key Vault s webovou aplikací App Service](../general/tutorial-net-create-vault-azure-web-app.md)
+- Viz [použití Key Vault s aplikací nasazenou do virtuálního počítače](../general/tutorial-net-virtual-machine.md) .
 - Další informace najdete v [příručce pro vývojáře Azure Key Vault](../general/developers-guide.md) .
 - Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)

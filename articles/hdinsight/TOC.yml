@@ -64,8 +64,14 @@
           href: ./hdinsight-capacity-planning.md
         - name: Osvědčené postupy správy clusterů
           href: ./cluster-management-best-practices.md
-        - name: Dostupnost a spolehlivost
-          href: ./hdinsight-high-availability-linux.md
+        - name: Kontinuita podnikových procesů
+          items:
+            - name: Přehled provozní kontinuity
+              href: hdinsight-business-continuity.md
+            - name: Architektura provozní kontinuity
+              href: ./hdinsight-business-continuity-architecture.md
+            - name: Případová studie vysoké dostupnosti
+              href: ./hdinsight-high-availability-case-study.md
         - name: Principy spravovaných identit
           href: ./hdinsight-managed-identities.md
         - name: Porovnání možností úložiště
@@ -100,12 +106,16 @@
               iconUrl: null
         - name: Použití úložiště clusteru
           items:
-            - name: S využitím Azure Storage
+            - name: Použití služby Azure Storage
               href: hdinsight-hadoop-use-blob-storage.md
-            - name: S využitím služby Azure Data Lake Storage Gen2
+            - name: Použití služby Azure Data Lake Storage Gen2
               href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: S využitím služby Azure Data Lake Storage Gen1
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: Použití služby Data Lake Storage Gen2 na portálu
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-portal.md
+            - name: Použití služby Data Lake Storage Gen2 s využitím Azure CLI
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-azure-cli.md
+            - name: Použití služby Azure Data Lake Storage Gen1
+              href: hdinsight-hadoop-use-data-lake-storage-gen1.md
         - name: Rozšíření clusterů
           items:
             - name: Instalace aplikací HDInsight
@@ -757,6 +767,8 @@
           href: ./interactive-query/gateway-best-practices.md
         - name: Pokyny pro změnu velikosti
           href: ./interactive-query/sizing-guidelines.md
+        - name: Replikace podregistru
+          href: ./interactive-query/apache-hive-replication.md
     - name: Návody
       items:
         - name: Vývoj

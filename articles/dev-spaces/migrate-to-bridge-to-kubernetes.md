@@ -1,18 +1,25 @@
 ---
 title: Migrace na Bridge to Kubernetes
 services: azure-dev-spaces
-ms.date: 09/21/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 description: Popisuje procesy, které Azure Dev Spaces napájení
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, most na Kubernetes
-ms.openlocfilehash: b585ee20efb7b377a041152996ef41d8c59c539e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7f4f095a0306beffc0e224d7e813f7f02455da
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995519"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962849"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrace na Bridge to Kubernetes
+
+> [!IMPORTANT]
+> Azure Dev Spaces bude vyřazen 31. října 2023. Vývojáři by se měli přesunout na použití mostu na Kubernetes, nástroje pro vývojáře klienta.
+>
+> Účelem Azure Dev Spaces bylo o usnadnění vývoje na Kubernetes vývojářům. Významnými kompromisy při přístupu k Azure Dev Spaces byla větší režie vývojářů, aby lépe pochopila konfigurace Docker a Kubernetes a koncepty nasazení Kubernetes. V průběhu času se také stala jasné, že přístup Azure Dev Spaces neefektivně nesnížil rychlost vývoje vnitřních smyček na Kubernetes. Most na Kubernetes účinně snižuje rychlost vývoje vnitřních smyček a brání vývojářům v nepotřebném zatížení.
+>
+> Základní mise zůstává beze změny: Sestavte si nejlepší vývojářské prostředí pro vývoj, testování a ladění kódu mikroslužeb v kontextu větší aplikace.
 
 Most na Kubernetes poskytuje světlejší důležitou alternativu k mnoha vývojářským scénářům, které pracují s Azure Dev Spaces. Most na Kubernetes je prostředí jenom na straně klienta využívající rozšíření v [aplikaci Visual Studio][vs]   a [Visual Studio Code][vsc].  
 
@@ -41,24 +48,24 @@ Azure Dev Spaces a most pro Kubernetes mají podobné funkce, liší se i v něk
 | V clusteru je vyžadován přístup k zabezpečení.  | Přispěvatel clusteru AKS  | Kubernetes RBAC – aktualizace nasazení   |
 | Na vašem vývojovém počítači je vyžadován přístup zabezpečení.  | Není k dispozici  | Místní správce/sudo   |
 | **Použitelnost** |
-| Nezávisle na artefaktech Kubernetes a Docker  | No  | Yes   |
-| Automatické vrácení změn provedených po ladění  | No  | Yes   |
+| Nezávisle na artefaktech Kubernetes a Docker  | No  | Ano   |
+| Automatické vrácení změn provedených po ladění  | No  | Ano   |
 | **Prostředí** |
-| Spolupracuje se sadou Visual Studio 2019  | Yes  | Yes   |
-| Funguje s Visual Studio Code  | Yes  | Yes   |
-| Funguje s rozhraním příkazového řádku  | Yes  | No   |
+| Spolupracuje se sadou Visual Studio 2019  | Ano  | Ano   |
+| Funguje s Visual Studio Code  | Ano  | Ano   |
+| Funguje s rozhraním příkazového řádku  | Ano  | No   |
 | **Kompatibilita s operačním systémem** |
-| Funguje ve Windows 10  | Yes  | Yes  |
-| Funguje na Linux  | Yes  | Yes  |
-| Funguje na macOS  | Yes  | Yes  |
+| Funguje ve Windows 10  | Ano  | Ano  |
+| Funguje na Linux  | Ano  | Ano  |
+| Funguje na macOS  | Ano  | Ano  |
 | **Možnosti** |
-| Izolace vývojářů nebo vývoj pro týmovou spolupráci  | Yes  | Yes  |
-| Selektivní přepsání proměnných prostředí  | No  | Yes  |
-| Vytvoření grafu souboru Dockerfile a Helm  | Yes  | No  |
-| Trvalé nasazení kódu do Kubernetes  | Yes  | No  |
-| Vzdálené ladění v Kubernetes pod  | Yes  | No  |
-| Místní ladění, připojené k Kubernetes  | No  | Yes  |
-| Ladění více služeb současně na stejné pracovní stanici  | Yes  | Yes  |
+| Izolace vývojářů nebo vývoj pro týmovou spolupráci  | Ano  | Ano  |
+| Selektivní přepsání proměnných prostředí  | No  | Ano  |
+| Vytvoření grafu souboru Dockerfile a Helm  | Ano  | No  |
+| Trvalé nasazení kódu do Kubernetes  | Ano  | No  |
+| Vzdálené ladění v Kubernetes pod  | Ano  | No  |
+| Místní ladění, připojené k Kubernetes  | No  | Ano  |
+| Ladění více služeb současně na stejné pracovní stanici  | Ano  | Ano  |
 
 ## <a name="kubernetes-inner-loop-development"></a>Vývoj vnitřních smyček Kubernetes
 
