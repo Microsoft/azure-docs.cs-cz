@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: dac1a09b7984cdc8deca22ced1e8018a761979e2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531611"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Přidání automatického dokončování a návrhů do klientských aplikací
@@ -67,7 +67,7 @@ Odpovědi jsou ve tvaru podle parametrů v žádosti. Pro automatické dokončov
 
 V případě návrhů byste měli dál vylepšit odpověď, aby nedocházelo k duplicitám nebo co se jeví jako nesouvisející výsledky. Pro řízení výsledků přidejte do žádosti více parametrů. Následující parametry se vztahují na automatické dokončování i návrhy, ale mohou být vhodnější pro návrhy, zejména v případě, že modul pro návrh obsahuje více polí.
 
-| parametr | Využití |
+| Parametr | Využití |
 |-----------|-------|
 | **$select** | Máte-li v nástroji pro návrh více **sourceFields** , pomocí **$Select** vyberte, které pole přispívá k hodnotám ( `$select=GameTitle` ). |
 | **searchFields** | Omezí dotaz na konkrétní pole. |

@@ -12,10 +12,10 @@ ms.date: 06/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 413cfe4f3aed446ad26a210b4faa452c4f624685
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88640850"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Řešení potíží s Proxy aplikací a souvisejícími chybovými zprávami
@@ -47,7 +47,7 @@ Po nalezení chyby konektoru z protokolu událostí použijte tuto tabulku běž
 | Chyba | Doporučené kroky |
 | ----- | ----------------- |
 | Nepovedlo se zaregistrovat konektor: Ujistěte se, že jste povolili proxy aplikace v Azure Portál pro správu a jestli jste zadali správné uživatelské jméno a heslo ke službě Active Directory. Chyba: došlo k jedné nebo více chybám. | Pokud jste okno registrace zavřeli bez přihlášení ke službě Azure AD, spusťte znovu Průvodce konektorem a zaregistrujte konektor. <br><br> Pokud se otevře okno registrace a okamžitě se zavře, aniž byste se museli přihlašovat, pravděpodobně se zobrazí tato chyba. K této chybě dojde, pokud je v systému chyba sítě. Ujistěte se, že je možné se připojit z prohlížeče k veřejnému webu a že porty jsou otevřené, jak je uvedeno v části [požadavky proxy aplikací](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment). |
-| V okně registrace se zobrazí chyba vymazat. Nelze pokračovat | Pokud se zobrazí tato chyba a pak se okno zavře, zadali jste nesprávné uživatelské jméno nebo heslo. Zkuste to znovu. |
+| V okně registrace se zobrazí chyba vymazat. Nelze pokračovat | Pokud se zobrazí tato chyba a pak se okno zavře, zadali jste nesprávné uživatelské jméno nebo heslo. Zkuste to ještě jednou. |
 | Nepovedlo se zaregistrovat konektor: Ujistěte se, že jste povolili proxy aplikace v Azure Portál pro správu a jestli jste zadali správné uživatelské jméno a heslo ke službě Active Directory. Chyba: ' AADSTS50059: nebyly nalezeny žádné informace identifikující tenanta ani žádné z uvedených přihlašovacích údajů a hledání podle identifikátoru URI instančního objektu. | Snažíte se přihlásit pomocí účtu Microsoft, nikoli domény, která je součástí ID organizace adresáře, ke kterému se pokoušíte získat přístup. Ujistěte se, že je správce součástí stejného názvu domény jako doména klienta, například pokud je doména Azure AD contoso.com, správce by měl být admin@contoso.com . |
 | Nepovedlo se načíst aktuální zásady spouštění pro spouštění skriptů PowerShellu. | Pokud se instalace konektoru nezdařila, zkontrolujte, zda nejsou zakázány zásady spouštění prostředí PowerShell. <br><br>1. Otevřete Editor Zásady skupiny.<br>2. přejděte na **Konfigurace počítače**  >  **šablony pro správu**  >  **součásti systému**Windows  >  **PowerShell** a dvakrát klikněte na **zapnout spuštění skriptu**.<br>3. zásady spouštění lze nastavit na hodnotu **Nenakonfigurováno** nebo **povoleno**. Pokud je nastaveno na **povoleno**, ujistěte se, že je v části Možnosti zásada spouštění nastavena možnost **Povolit místní skripty a vzdálené podepsané skripty** nebo **Povolit všechny skripty**. |
 | Konektoru se nepodařilo stáhnout konfiguraci. | Certifikát klienta konektoru, který se používá k ověření, vypršel. Tato situace může nastat i v případě, že máte nainstalovaný konektor za proxy serverem. V takovém případě konektor nemá přístup k Internetu a nebude schopen poskytovat aplikace vzdáleným uživatelům. Obnovte důvěryhodnost ručně pomocí `Register-AppProxyConnector` rutiny ve Windows PowerShellu. Pokud je váš konektor za proxy, je nutné udělit přístup k Internetu účtům konektoru "Network Services" a "Local System". To lze provést tak, že jim udělíte přístup k proxy serveru nebo nastavením pro obejít proxy server. |

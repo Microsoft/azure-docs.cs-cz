@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 24f8a60c5b955096f1661877416936b747a16979
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306391"
 ---
 # <a name="risky-ip-report-public-preview"></a>Sestava rizikových IP adres (Public Preview)
@@ -41,7 +41,7 @@ Kromě toho je možné, aby se jedna IP adresa pokoušela o přihlášení za n�
 ## <a name="what-is-in-the-report"></a>Co je v sestavě?
 IP adresy klienta neúspěšného přihlášení jsou agregovány prostřednictvím proxy serverů webových aplikací. Každá položka v sestavě rizikových IP adres ukazuje agregované informace o neúspěšných aktivitách přihlášení ke službě AD FS, které překročí určenou prahovou hodnotu. Obsahuje následující informace: ![ snímek obrazovky, který zobrazuje rizikové zprávy IP se zvýrazněnými záhlavími sloupců.](./media/how-to-connect-health-adfs/report4a.png)
 
-| Položky sestavy | Popis |
+| Položky sestavy | Description |
 | ------- | ----------- |
 | Časové razítko | Ukazuje časové razítko na základě místního času webu Azure Portal při zahájení časového intervalu zjišťování.<br /> Všechny denní události se generují o půlnoci UTC. <br />Hodinové události mají hodnotu časového razítka zaokrouhlenou na celou hodinu. Čas spuštění první aktivity můžete vyhledat v položce firstAuditTimestamp v exportovaném souboru. |
 | Typ triggeru | Ukazuje typ časového intervalu zjišťování. Typ triggeru agregace určuje, jestli se aktivuje každou hodinu nebo každý den. To je užitečně k rozpoznání útoku hrubou silou s vysokou frekvencí od pomalého útoku, při kterém se počet pokusů distribuuje během celého dne. |
@@ -68,7 +68,7 @@ Nástroj pro vyrovnávání zatížení agreguje aktivity přihlášení, které
 ## <a name="download-risky-ip-report"></a>Stáhnout sestavu rizikových IP adres 
 Pomocí funkce **Stáhnout** můžete z portálu služby Connect Health exportovat celý seznam rizikových IP adres za posledních 30 dnů. Výsledek exportu bude obsahovat všechny neúspěšné aktivity přihlášení ke službě AD FS v jednotlivých časových intervalech zjišťování, abyste si po exportu mohli upravit filtrování. Kromě zvýrazněných agregací na portálu bude výsledek exportu obsahovat také další podrobnosti o neúspěšných aktivitách přihlášení podle IP adresy:
 
-|  Položky sestavy  |  Popis  | 
+|  Položky sestavy  |  Description  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | Ukazuje časové razítko prvního výskytu neúspěšných aktivit během časového intervalu zjišťování.  | 
 | lastAuditTimestamp | Ukazuje časové razítko posledního výskytu neúspěšných aktivit během časového intervalu zjišťování.  | 
@@ -83,7 +83,7 @@ Prahovou hodnotu pro upozornění můžete upravit prostřednictvím nastavení 
 
 ![Portál služby Azure AD Connect Health](./media/how-to-connect-health-adfs/report4d.png)
 
-| Položka prahové hodnoty | Popis |
+| Položka prahové hodnoty | Description |
 | --- | --- |
 | (Chybné U/P + uzamčení extranetu) / den  | Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když součet počtu chybných zadání hesla a uzamčení extranetu za **den** překročí tuto prahovou hodnotu. |
 | (Chybné U/P + uzamčení extranetu) / hodina | Nastavení prahové hodnoty pro ohlášení aktivity a aktivaci oznámení o upozornění, když součet počtu chybných zadání hesla a uzamčení extranetu za **hodinu** překročí tuto prahovou hodnotu. |

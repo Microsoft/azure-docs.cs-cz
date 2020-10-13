@@ -7,17 +7,17 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: 197decbb263391a32b8bf01cdbb6c2f34b750111
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88003557"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Seznamte se s odpověďmi na běžné otázky, vzory a osvědčené postupy pro službu Azure cache pro Redis.
 
 * [Nejčastější dotazy k plánování](cache-planning-faq.md)
-* [Nejčastější dotazy týkající se vývoje](cache-development-faq.md)
+* [Nejčastější dotazy k vývoji](cache-development-faq.md)
 * [Nejčastější dotazy ke správě](cache-management-faq.md)
 * [Nejčastější dotazy týkající se monitorování a odstraňování potíží](cache-monitor-troubleshoot-faq.md)
 
@@ -28,10 +28,10 @@ Seznamte se s odpověďmi na běžné otázky, vzory a osvědčené postupy pro 
 
 Chcete-li zobrazit archivovanou dokumentaci, přečtěte si téma [Archivovaná dokumentace Managed Cache Service](/previous-versions/azure/azure-services/dn386094(v=azure.100)).
 
-### <a name="in-role-cache"></a>Mezipaměť hostovaná v instanci role
+### <a name="in-role-cache"></a>Mezipaměť In-Role
 [Mezipaměť hostovaná v instanci role bylo vyřazení 30. listopadu 2016.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-Chcete-li zobrazit archivovanou dokumentaci, přečtěte si téma [Archivovaná dokumentace mezipaměť hostovaná v instanci role](/previous-versions/azure/azure-services/dn386103(v=azure.100)).
+Pokud chcete zobrazit archivovanou dokumentaci, přečtěte si část [Archivovaná dokumentace ke službě In-Role cache](/previous-versions/azure/azure-services/dn386103(v=azure.100)).
 
 ["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 

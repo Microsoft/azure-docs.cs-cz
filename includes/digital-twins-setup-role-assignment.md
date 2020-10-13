@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
 ms.openlocfilehash: 6f43a55b3a409a84e3baf99dae24af7616ea4385
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87408299"
 ---
 Funkce digitálních vláken Azure používá [Azure Active Directory (Azure AD)](../articles/active-directory/fundamentals/active-directory-whatis.md) pro řízení přístupu na základě role (RBAC). To znamená, že před tím, než může uživatel provést volání datové roviny do vaší instance digitálního vlákna Azure, musí být tomuto uživateli přiřazena role s příslušnými oprávněními.

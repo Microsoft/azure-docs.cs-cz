@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
 ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235804"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
@@ -64,7 +64,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 
 2. Vyberte aplikaci, pro kterou jste nakonfigurovali Automatické zřizování: například "ServiceNow".
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
 4. V části **mapování** vyberte mapování, pro které chcete nakonfigurovat filtr oboru: například "synchronizovat Azure Active Directory uživatelů do ServiceNow".
 

@@ -14,10 +14,10 @@ ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: b8935b9f2c3c598aee7c5d0eb37f21d8114dac42
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88997451"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory verze 1
@@ -43,7 +43,7 @@ Následující návod poskytuje podrobné pokyny k vytvoření vlastní aktivity
 > - Pro přístup k místním zdrojům dat není možné použít bránu Správa dat z vlastní aktivity. V současné době [Správa dat brána](data-factory-data-management-gateway.md) podporuje pouze aktivitu kopírovat aktivitu a uloženou proceduru v Data Factory.
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Návod: Vytvoření vlastní aktivity
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 * Visual Studio 2012/2013/2015/2017
 * Stažení a instalace [sady Azure .NET SDK](https://azure.microsoft.com/downloads/)
 

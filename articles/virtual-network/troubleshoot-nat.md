@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: d75f13f6a0621158bdb9a2f1682d0c85eaacb59d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836101"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Řešení potíží s připojením služby Azure Virtual Network NAT
@@ -43,7 +43,7 @@ Jeden [prostředek brány NAT](nat-gateway-resource.md) podporuje 64 000 až 1 0
 
 Hlavní příčinou vyčerpání SNAT je i anti-vzor pro způsob, jakým se u odchozího připojení naváže, spravuje nebo konfigurovatelné časovače, které se mění z výchozích hodnot.  Pečlivě si prostudujte tuto část.
 
-#### <a name="steps"></a>Kroky
+#### <a name="steps"></a>Postup
 
 1. Ověřte, zda jste změnili výchozí časový limit nečinnosti na hodnotu vyšší než 4 minuty.
 2. Prozkoumejte, jak vaše aplikace vytváří odchozí připojení (například revize kódu nebo zachycení paketů). 
@@ -51,7 +51,7 @@ Hlavní příčinou vyčerpání SNAT je i anti-vzor pro způsob, jakým se u od
 4. Vyhodnotí, zda jsou následovány příslušné vzory.
 5. Vyhodnoťte, jestli se má vyčerpání portů SNAT zmírnit pomocí dalších IP adres přiřazených k prostředku brány NAT.
 
-#### <a name="design-patterns"></a>Vzory návrhu
+#### <a name="design-patterns"></a>Způsoby návrhu
 
 Kdykoli je to možné, využijte výhod opětovného použití připojení a sdružování připojení.  Tyto vzory se vyhne problémům s vyčerpáním prostředků a mají za následek předvídatelné chování. Primitivní prvky pro tyto vzory se dají najít v řadě vývojových knihoven a architektur.
 
@@ -195,14 +195,6 @@ _**Řešení**_
 Pro prostředek brány NAT není nutné restartovat virtuální počítač s konfigurací podsítě.  Pokud je však virtuální počítač restartován, bude stav připojení vyprázdněn.  Po vyprázdnění stavu připojení budou všechna připojení začínat použitím IP adres prostředku brány NAT.  Jedná se ale o vedlejší účinek restartování virtuálního počítače, který není indikátorem, který vyžaduje restart.
 
 Pokud pořád máte potíže, otevřete případ podpory pro další řešení potíží.
-
-### <a name="connection-setup-time"></a>Čas nastavení připojení
-
-Vzhledem k tomu, že Load Balancer odchozí pravidla staticky přiřazují Fondy portů SNAT konkrétním virtuálním počítačům, vytváření nových odchozích toků je rychlejší než použití Virtual Network překladu adres (NAT). Proto když přepnete z Load Balancer odchozích pravidel, může se při vytváření nového odchozího připojení zobrazit zvýšené latence. Jak bylo vysvětleno dříve, aby se maximalizoval výkon aplikace, měli byste použít dlouhodobé toky (například znovu používané připojení TCP).
-
-_**Řešení**_
-
-Pokud se primárně zajímá latence nastavení minimálního připojení, použijte Load Balancer odchozí pravidla.
 
 ## <a name="next-steps"></a>Další kroky
 

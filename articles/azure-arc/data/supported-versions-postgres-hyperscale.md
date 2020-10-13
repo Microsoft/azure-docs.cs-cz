@@ -10,13 +10,13 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 0f3f9e7f4566800bdea6871cae1c5bafb3b37b95
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936087"
 ---
-# <a name="supported-versions-of-postgres-with-azure-arc-enabled-postgresql-hyperscale"></a>Podporované verze Postgres s povoleným PostgreSQLm škálováním Azure ARC
+# <a name="supported-versions-of-postgres-with-azure-arc-enabled-postgresql-hyperscale"></a>Podporované verze Postgres s PostgreSQL Hyperscale s podporou služby Azure Arc
 
 V tomto článku se dozvíte, jaké verze Postgres jsou k dispozici u PostgreSQL s povoleným rozšířením Azure ARC.
 Seznam podporovaných verzí se vyvíjí v průběhu času. V současné době jsou podporované hlavní verze:

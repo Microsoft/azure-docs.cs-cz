@@ -11,10 +11,10 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.openlocfilehash: 01a22aa5d2ec7ed54be62f0975b0fefbafd84cd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85211557"
 ---
 # <a name="monitor-workload---azure-portal"></a>Monitorování úloh – Azure Portal
@@ -26,7 +26,7 @@ Tento článek popisuje, jak pomocí Azure Portal monitorovat vaše úlohy. Zahr
 - Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Fond SQL: bude shromažďovat protokoly pro fond SQL. Pokud nemáte zřízen Fond SQL, přečtěte si pokyny v tématu [Vytvoření fondu SQL](load-data-from-azure-blob-storage-using-polybase.md).
 
-## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
+## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru Log Analytics
 
 Přejděte do okna procházení pro Log Analytics pracovní prostory a vytvořte pracovní prostor.
 

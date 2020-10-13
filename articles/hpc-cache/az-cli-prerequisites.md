@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
 ms.openlocfilehash: 7d0844e699c012d987c23a75e2b0874005cf535a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87097386"
 ---
-# <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Nastavení rozhraní příkazového řádku Azure CLI pro Azure HPC cache
+# <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Nastavení rozhraní příkazového řádku Azure pro Azure HPC Cache
 
 Pomocí těchto kroků Připravte prostředí před použitím Azure CLI k vytvoření nebo správě mezipaměti HPC Azure.
 
@@ -21,7 +21,7 @@ Pomocí těchto kroků Připravte prostředí před použitím Azure CLI k vytvo
 
 ## <a name="install-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
 
-Mezipaměť prostředí Azure HPC vyžaduje verzi 2,7 nebo novější rozhraní příkazového řádku Azure CLI. Spusťte `az --version` pro vyhledání verze a závislých knihoven, které jsou nainstalovány. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+Mezipaměť prostředí Azure HPC vyžaduje verzi 2,7 nebo novější rozhraní příkazového řádku Azure CLI. Spusťte `az --version` a zjistěte verzi a závislé knihovny, které jsou nainstalované. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ```azurecli-interactive
 az --version
@@ -31,7 +31,7 @@ az --version
 
 Funkce mezipaměti HPC Azure nejsou součástí hlavního základu kódu, takže musíte také nainstalovat odkaz na rozšíření. Postupujte podle následujících pokynů.
 
-1. Přihlášení
+1. Přihlásit se
 
    Přihlaste se pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) , pokud používáte místně nainstalovanou verzi rozhraní příkazového řádku.
 
@@ -39,7 +39,7 @@ Funkce mezipaměti HPC Azure nejsou součástí hlavního základu kódu, takže
     az login
     ```
 
-    Proces ověřování dokončíte podle kroků zobrazených v terminálu.
+    Dokončete proces ověřování podle kroků zobrazených v terminálu.
 
    > [!TIP]
    > Pokud máte více předplatných, musíte si vybrat jednu z nich. Vyberte ho při spuštění Cloud Shell relace na webu Azure Portal, nebo postupujte podle pokynů v tématu [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in) a nastavte své předplatné z příkazového řádku.

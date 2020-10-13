@@ -16,10 +16,10 @@ ms.date: 06/11/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b93f45b05e6d7773afc2f750fd1a9a034c01ca1e
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89178667"
 ---
 # <a name="how-managed-identities-for-azure-resources-work-with-azure-virtual-machines"></a>Jak spravované identity prostředků Azure fungují s virtuálními počítači Azure
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak spravované identity fungují s virtuálními 
 ## <a name="how-it-works"></a>Jak to funguje
 
 Spravované identity jsou interně instančními objekty speciálního typu, které se dají používat jenom s prostředky Azure. Po odstranění spravované identity se odpovídající objekt služby automaticky odebere.
-I když je vytvořena uživatelem přiřazená identita nebo identita přiřazená systémem, poskytovatel spravovaných prostředků identity (MSRP) vystaví certifikát pro danou identitu interně. 
+Při vytvoření User-Assigned nebo System-Assigned identity poskytovatel prostředků spravované identity (MSRP) k této identitě vydává certifikát interně. 
 
 Váš kód může spravovanou identitu použít k vyžádání přístupových tokenů pro služby, které podporují ověřování Azure AD. Azure zajistí vracení přístupových údajů, které instance služby používá. 
 

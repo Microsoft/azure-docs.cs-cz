@@ -14,10 +14,10 @@ ms.reviewer: maghan
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 45aa444393ed81bc320a770203ca114c35e16107
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195903"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Poradce při potížích se službou Data Factory
@@ -30,7 +30,7 @@ Tento článek popisuje tipy k odstraňování potíží při použití Azure Da
 
 ## <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 ### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Chyba: Pro předplatné není zaregistrované používání oboru názvů Microsoft.DataFactory.
-Pokud se zobrazí tato chyba, poskytovatel prostředků Azure Data Factory není na vašem počítači zaregistrovaný. Udělejte toto:
+Pokud se zobrazí tato chyba, poskytovatel prostředků Azure Data Factory není na vašem počítači zaregistrovaný. Postupujte následovně:
 
 1. Spusťte Azure PowerShell.
 2. Přihlaste se k účtu Azure pomocí následujícího příkazu.
@@ -47,8 +47,8 @@ Pokud se zobrazí tato chyba, poskytovatel prostředků Azure Data Factory není
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Problém: neoprávněná Chyba při spuštění rutiny Data Factory
 Pravděpodobně pro Azure PowerShell nepoužíváte správné předplatné nebo účet Azure. Pomocí následujících rutin vyberte správné předplatné a účet Azure pro použití s Azure PowerShellem.
 
-1. Connect-AzAccount – použijte správné ID a heslo uživatele.
-2. Get-AzSubscription – zobrazí všechna předplatná pro tento účet.
+1. Connect-AzAccount – použijte správné ID uživatele a heslo.
+2. Get-AzSubscription-Zobrazit všechna předplatná pro tento účet.
 3. &lt;Název předplatného Select-AzSubscription &gt; – Vyberte správné předplatné. Použijte stejný ten, který použijete k vytvoření datové továrny na Azure Portal.
 
 ### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Problém: Nepodařilo se spustit Správa dat instalaci brány Express z Azure Portal
@@ -56,7 +56,7 @@ Expresní instalace pro Bránu pro správu dat vyžaduje Internet Explorer nebo 
 
 * Použijte Internet Explorer nebo webový prohlížeč kompatibilní s Microsoft ClickOnce.
 
-    Pokud používáte Chrome, přejděte na [internetový obchod Chrome](https://chrome.google.com/webstore/), dejte hledat klíčové slovo ClickOnce, vyberte některé z rozšíření ClickOnce a nainstalujte je.
+    Pokud používáte Chrome, klikněte na [Web Store pro Chrome](https://chrome.google.com/webstore/), vyhledejte klíčové slovo ClickOnce, vyberte jedno z rozšíření ClickOnce a nainstalujte je.
 
     To samé udělejte pro Firefox (instalovat doplněk). Na panelu nástrojů klikněte na tlačítko Otevřít nabídku (tři vodorovné čáry v pravém horním rohu), klikněte na Doplňky, dejte hledat klíčové slovo ClickOnce, vyberte některé z rozšíření ClickOnce a nainstalujte je.
 * Použijte odkaz na **ruční instalaci** , který je zobrazený ve stejném okně na portálu. Tento přístup slouží ke stažení instalačního souboru a jeho spuštění ručně. Po úspěšném dokončení instalace se zobrazí dialogové okno Správa dat konfigurace brány. Zkopírujte **klíč** z okna portálu a použijte ho ve správci konfigurace k ruční registraci brány v příslušné službě.  

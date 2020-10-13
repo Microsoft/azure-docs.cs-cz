@@ -13,10 +13,10 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195966"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Přesun dat pomocí aktivity kopírování
@@ -94,30 +94,30 @@ Pokud jsou zdrojová i jímka úložiště dat v cloudu, Data Factory používá
 
 | Zeměpis cílových úložišť dat | Oblast cílového úložiště dat | Oblast, která se používá k přesunu dat |
 |:--- |:--- |:--- |
-| USA | USA – východ | USA – východ |
+| USA | East US | East US |
 | &nbsp; | USA – východ 2 | USA – východ 2 |
-| &nbsp; | USA – střed | USA – střed |
+| &nbsp; | Střední USA | Střední USA |
 | &nbsp; | USA – středosever | USA – středosever |
-| &nbsp; | USA – středojih | USA – středojih |
+| &nbsp; | Středojižní USA | Středojižní USA |
 | &nbsp; | USA – středozápad | USA – středozápad |
 | &nbsp; | USA – západ | USA – západ |
-| &nbsp; | USA – západ 2 | USA – západ 2 |
+| &nbsp; | Západní USA 2 | Západní USA 2 |
 | Kanada | Kanada – východ | Střední Kanada |
 | &nbsp; | Střední Kanada | Střední Kanada |
-| Brazílie | Brazílie – jih | Brazílie – jih |
+| Brazílie | Brazil South | Brazil South |
 | Evropa | Severní Evropa | Severní Evropa |
-| &nbsp; | Západní Evropa | Západní Evropa |
+| &nbsp; | West Europe | West Europe |
 | Spojené království | Spojené království – západ | Spojené království – jih |
 | &nbsp; | Spojené království – jih | Spojené království – jih |
-| Asie a Tichomoří | Jihovýchodní Asie | Jihovýchodní Asie |
-| &nbsp; | Východní Asie | Jihovýchodní Asie |
+| Asie a Tichomoří | Southeast Asia | Southeast Asia |
+| &nbsp; | Východní Asie | Southeast Asia |
 | Austrálie | Austrálie – východ | Austrálie – východ |
-| &nbsp; | Austrálie – jihovýchod | Austrálie – jihovýchod |
+| &nbsp; | Austrálie – jihovýchod | Australia Southeast |
 | Indie | Indie – střed | Indie – střed |
-| &nbsp; | Indie – západ | Indie – střed |
+| &nbsp; | Západní Indie | Indie – střed |
 | &nbsp; | Indie – jih | Indie – střed |
-| Japonsko | Japonsko – východ | Japonsko – východ |
-| &nbsp; | Japonsko – západ | Japonsko – východ |
+| Japonsko | Japan East | Japonsko – východ |
+| &nbsp; | Japonsko – západ | Japan East |
 | Jižní Korea | Jižní Korea – střed | Jižní Korea – střed |
 | &nbsp; | Jižní Korea – jih | Jižní Korea – střed |
 
@@ -196,7 +196,7 @@ Podívejte se na téma [Průvodce výkonem a optimalizací aktivity kopírován�
 ## <a name="fault-tolerance"></a>Odolnost proti chybám
 Ve výchozím nastavení zastaví aktivita kopírovat kopírování dat a vrátí chybu, když dojde k nekompatibilním datům mezi zdrojem a jímkou. i když se dá explicitně nakonfigurovat tak, aby přeskočil a zaprotokoloval nekompatibilní řádky a kopíruje se jenom taková kompatibilní data, aby kopírování bylo úspěšné. Další podrobnosti najdete v podrobnostech o odolnosti [proti chybám aktivity kopírování](data-factory-copy-activity-fault-tolerance.md) .
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
 Projděte si téma [požadavky na zabezpečení](data-factory-data-movement-security-considerations.md), které popisuje infrastrukturu zabezpečení, kterou služby pro přesun dat v Azure Data Factory používají k zabezpečení vašich dat.
 
 ## <a name="scheduling-and-sequential-copy"></a>Plánování a sekvenční kopírování

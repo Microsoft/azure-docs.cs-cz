@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: e71e56b9da06bfd8f3be24481efd619b788a8839
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91822273"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Použití poskytovatele prostředků Azure Storage k přístupu k prostředkům správy
@@ -44,11 +44,11 @@ Azure poskytuje předdefinované role, které udělují oprávnění k volání 
 
 Předdefinované role, které udělují oprávnění k volání operací správy úložiště, zahrnují role popsané v následující tabulce:
 
-|    Role Azure    |    Popis    |    Zahrnuje přístup k klíčům účtu?    |
+|    Role Azure    |    Description    |    Zahrnuje přístup k klíčům účtu?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **Vlastník** | Může spravovat všechny prostředky úložiště a přistupovat k prostředkům.  | Ano, poskytuje oprávnění k zobrazení a obnovení klíčů účtu úložiště. |
 | **Přispěvatel**  | Může spravovat všechny prostředky úložiště, ale nemůže spravovat přístup k prostředkům. | Ano, poskytuje oprávnění k zobrazení a obnovení klíčů účtu úložiště. |
-| **Čtenář** | Může zobrazit informace o účtu úložiště, ale nemůže zobrazit klíče účtu. | No. |
+| **Čtenář** | Může zobrazit informace o účtu úložiště, ale nemůže zobrazit klíče účtu. | Ne. |
 | **Přispěvatel účtů úložiště** | Může spravovat účet úložiště, získávat informace o skupinách prostředků a prostředcích předplatného a vytvářet a spravovat nasazení skupin prostředků předplatného. | Ano, poskytuje oprávnění k zobrazení a obnovení klíčů účtu úložiště. |
 | **Správce uživatelského přístupu** | Může spravovat přístup k účtu úložiště.   | Ano, umožňuje objektu zabezpečení přiřazovat jakákoli oprávnění sami a ostatním. |
 | **Přispěvatel virtuálních počítačů** | Může spravovat virtuální počítače, ale ne účet úložiště, ke kterému jsou připojené.   | Ano, poskytuje oprávnění k zobrazení a obnovení klíčů účtu úložiště. |

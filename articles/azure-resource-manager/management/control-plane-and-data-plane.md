@@ -4,10 +4,10 @@ description: Popisuje rozdíl mezi operacemi řídicí roviny a roviny dat. Oper
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.openlocfilehash: f478037c3e83c1d28cc900d64512a41619628dd7
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371265"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Rovina ovládacího prvku Azure a rovina dat
@@ -16,7 +16,7 @@ Operace Azure je možné rozdělit do dvou kategorií – rovina ovládacího pr
 
 K správě prostředků ve vašem předplatném používáte rovinu ovládacího prvku. Rovina dat slouží k používání schopností vystavených vaší instancí typu prostředku.
 
-Příklad:
+Například:
 
 * Virtuální počítač vytvoříte přes řídicí plochu. Po vytvoření virtuálního počítače s ním budete pracovat prostřednictvím operací roviny dat, jako je například protokol RDP (Remote Desktop Protocol) (RDP).
 
@@ -41,7 +41,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Azure Resource Manager zpracovává všechny požadavky na řídicí rovinu. Automaticky použije funkce Azure, které jste implementovali pro správu prostředků, například:
 
-* [Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md)
+* [Řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md)
 * [Azure Policy](../../governance/policy/overview.md)
 * [Zámky pro správu](lock-resources.md)
 * [Protokoly aktivit](view-activity-logs.md)

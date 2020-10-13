@@ -4,10 +4,10 @@ description: Tento článek uvádí seznam kódů chyb, chybové zprávy, popisy
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: ab52cea6ab43763cf2d9dc2b57b7f369072a399e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119034"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Řešení chyb Azure Event Grid
@@ -16,8 +16,8 @@ Tato příručka pro řešení potíží poskytuje seznam chybových kódů Azur
 ## <a name="error-code-400"></a>Kód chyby: 400
 | Kód chyby | Chybová zpráva | Description | Doporučení |
 | ---------- | ------------- | ----------- | -------------- | 
-| HttpStatusCode. důvodu chybného požadavku<br/>400 | Název tématu musí mít délku 3 až 50 znaků. | Název vlastního tématu by měl mít délku 3 až 50 znaků. V názvu tématu jsou povoleny pouze alfanumerické písmena, číslice a znak-. Název by měl také začínat následujícími rezervovanými slovy: <ul><li>Microsoft</li><li>EventGrid</li><li>Systém</li></ul> | Vyberte jiný název tématu, které dodržuje požadavky na název tématu. |
-| HttpStatusCode. důvodu chybného požadavku<br/>400 | Název domény musí mít délku 3 až 50 znaků. | Délka názvu domény by měla být 3 až 50 znaků. V názvu tématu jsou povoleny pouze alfanumerické písmena, číslice a znak-. Název by měl také začínat následujícími rezervovanými slovy:<ul><li>Microsoft</li><li>EventGrid</li><li>Systém</li> | Vyberte jiný název domény, který splňuje požadavky na název domény. |
+| HttpStatusCode. důvodu chybného požadavku<br/>400 | Název tématu musí mít délku 3 až 50 znaků. | Název vlastního tématu by měl mít délku 3 až 50 znaků. V názvu tématu jsou povoleny pouze alfanumerické písmena, číslice a znak-. Název by měl také začínat následujícími rezervovanými slovy: <ul><li>Partnerský vztah Microsoftu</li><li>EventGrid</li><li>Systém</li></ul> | Vyberte jiný název tématu, které dodržuje požadavky na název tématu. |
+| HttpStatusCode. důvodu chybného požadavku<br/>400 | Název domény musí mít délku 3 až 50 znaků. | Délka názvu domény by měla být 3 až 50 znaků. V názvu tématu jsou povoleny pouze alfanumerické písmena, číslice a znak-. Název by měl také začínat následujícími rezervovanými slovy:<ul><li>Partnerský vztah Microsoftu</li><li>EventGrid</li><li>Systém</li> | Vyberte jiný název domény, který splňuje požadavky na název domény. |
 | HttpStatusCode. důvodu chybného požadavku<br/>400 | Neplatný čas vypršení platnosti. | Čas vypršení platnosti odběru události Určuje, kdy bude odběr události vyřazení. Tato hodnota by měla být v budoucnu platná hodnota DateTime.| Ujistěte se, že doba vypršení platnosti předplatného události v platném formátu data a času je nastavená na budoucnost. |
 
 ## <a name="error-code-409"></a>Kód chyby: 409
@@ -51,7 +51,7 @@ Pokud se při vytváření odběru událostí zobrazuje chybová zpráva, např�
 
   942130 (útok injektáže SQL: byl zjištěn SQL Tautology.)
 
-  931130 (možný útok na vzdálené zahrnutí souborů (RFI) = odkaz mimo doménu/odkaz)
+  931130 (možný útok vzdáleného začlenění souborů (RFI) = odkaz na Off-Domain/odkaz)
 
 
 ## <a name="next-steps"></a>Další kroky

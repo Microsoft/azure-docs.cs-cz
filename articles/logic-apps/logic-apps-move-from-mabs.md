@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87837376"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Migrace aplikací a řešení z BizTalk Services na Azure Logic Apps
@@ -59,7 +59,7 @@ Ve výchozím nastavení má každý most koncový bod HTTP, který je nakonfigu
 
 ## <a name="xml-processing-and-bridges"></a>Zpracování a mosty XML
 
-V BizTalk Services je most analogicky podobný kanálu zpracování. Most může přijímat data přijatá z konektoru, dělat práci s daty a odesílat výsledky do jiného systému. Logic Apps stejně podporuje stejné vzory interakce založené na kanálech jako BizTalk Services a také poskytuje další způsoby integrace. [Most požadavků a odpovědí XML](/previous-versions/azure/hh689781(v=azure.100)) v BizTalk Services se označuje jako kanál VETER, který se skládá z fází, které provádějí tyto úlohy:
+V BizTalk Services je most analogicky podobný kanálu zpracování. Most může přijímat data přijatá z konektoru, dělat práci s daty a odesílat výsledky do jiného systému. Logic Apps stejně podporuje stejné vzory interakce založené na kanálech jako BizTalk Services a také poskytuje další způsoby integrace. [Request-Replyový most](/previous-versions/azure/hh689781(v=azure.100)) v BizTalk Services je známý jako kanál VETER, který se skládá z fází, které provádějí tyto úlohy:
 
 * (V) ověřit
 * (E) obohacení
@@ -71,7 +71,7 @@ Tento obrázek ukazuje, jak je rozděleno mezi požadavky a odpověďmi, což za
 
 ![Snímek obrazovky, který ukazuje, jak je zpracování rozděleno mezi požadavky a odpověď.](media/logic-apps-move-from-mabs/xml-request-reply.png)
 
-Také jednosměrné most XML přidává na začátku a na konci zpracování fáze dekódování a kódování. Předávací most obsahuje jednu fázi obohacení.
+Také One-Wayový most XML přidá fáze dekódování a kódování na začátku a na konci zpracování. Most Pass-Through obsahuje jednu fázi obohacení.
 
 ### <a name="message-processing-decoding-and-encoding"></a>Zpracování, dekódování a kódování zpráv
 
@@ -79,7 +79,7 @@ V BizTalk Services můžete přijímat různé typy zpráv XML a určit, jaké s
 
 Logic Apps poskytuje podobné možnosti. Pomocí různých triggerů konektoru (systém souborů, FTP, HTTP atd.) obdržíte plochý soubor přes různé protokoly a pomocí akce [plochý dekódovat soubory](../logic-apps/logic-apps-enterprise-integration-flatfile.md) převeďte data do XML. Stávající schémata plochých souborů můžete přesunout přímo do Logic Apps bez jakýchkoli změn a pak do svého účtu pro integraci nahrát schémata.
 
-### <a name="validation"></a>Ověřování vstupů (validace)
+### <a name="validation"></a>Ověřování
 
 Poté, co jsou příchozí data převedena do formátu XML (nebo pokud byl XML přijat formátu zprávy), spustí ověřování a určí, zda zpráva dodržuje vaše schéma XSD. K provedení této úlohy v Logic Apps použijte akci [ověření XML](../logic-apps/logic-apps-enterprise-integration-xml-validation.md) . Můžete použít stejná schémata z BizTalk Services bez jakýchkoli změn.
 

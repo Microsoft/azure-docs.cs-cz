@@ -8,10 +8,10 @@ ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: 0b2741a3d2b013ba7bd97038eb4ba4512f36af11
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261824"
 ---
 # <a name="datetimeadd-azure-cosmos-db"></a>DateTimeAdd (Azure Cosmos DB)
@@ -31,12 +31,12 @@ DateTimeAdd (<DateTimePart> , <numeric_expr> ,<DateTime>)
 
 | DateTimePart | zkratky        |
 | ------------ | -------------------- |
-| Year (Rok)         | "Year", "rrrr", "RR" |
-| Month (Měsíc)        | "Month", "mm", "m"   |
+| Year         | "Year", "rrrr", "RR" |
+| Month        | "Month", "mm", "m"   |
 | Den          | "Day", "dd", "d"     |
 | Hodina         | "hour", "HH"         |
 | Minuta       | "Minute", "mi", "n"  |
-| Druhý       | "Second", "SS", "s"  |
+| Second       | "Second", "SS", "s"  |
 | Komponentu  | "milisekund", "MS"  |
 | Úrovni mikrosekund  | "mikrosekunda", "MCS" |
 | Nanosekund   | "nanosekund", "NS"   |
@@ -47,7 +47,7 @@ DateTimeAdd (<DateTimePart> , <numeric_expr> ,<DateTime>)
 *Datum a čas*  
    Hodnota řetězce data a času STANDARDu ISO 8601 ve formátu, `YYYY-MM-DDThh:mm:ss.fffffffZ` kde:
   
-  |Formát|Popis|
+  |Formát|Description|
   |-|-|
   |RRRR|rok se čtyřmi číslicemi|
   |MM|dvoumístný měsíc (01 = leden atd.)|
@@ -65,7 +65,7 @@ DateTimeAdd (<DateTimePart> , <numeric_expr> ,<DateTime>)
 
 Vrátí hodnotu řetězce data a času STANDARDu ISO 8601 ve formátu, `YYYY-MM-DDThh:mm:ss.fffffffZ` kde:
   
-  |Formát|Popis|
+  |Formát|Description|
   |-|-|
   |RRRR|rok se čtyřmi číslicemi|
   |MM|dvoumístný měsíc (01 = leden atd.)|
@@ -87,7 +87,7 @@ DateTimeAdd se vrátí `undefined` z následujících důvodů:
 
 ## <a name="examples"></a>Příklady
   
-Následující příklad přidá 1 měsíc k hodnotě DateTime:`2020-07-09T23:20:13.4575530Z`
+Následující příklad přidá 1 měsíc k hodnotě DateTime: `2020-07-09T23:20:13.4575530Z`
 
 ```sql
 SELECT DateTimeAdd("mm", 1, "2020-07-09T23:20:13.4575530Z") AS OneMonthLater
@@ -101,7 +101,7 @@ SELECT DateTimeAdd("mm", 1, "2020-07-09T23:20:13.4575530Z") AS OneMonthLater
 ]
 ```  
 
-Následující příklad odečte 2 hodiny od data a času:`2020-07-09T23:20:13.4575530Z`
+Následující příklad odečte 2 hodiny od data a času: `2020-07-09T23:20:13.4575530Z`
 
 ```sql
 SELECT DateTimeAdd("hh", -2, "2020-07-09T23:20:13.4575530Z") AS TwoHoursEarlier
@@ -119,4 +119,4 @@ SELECT DateTimeAdd("hh", -2, "2020-07-09T23:20:13.4575530Z") AS TwoHoursEarlier
 
 - [Azure Cosmos DB funkce data a času](sql-query-date-time-functions.md)
 - [Systémové funkce Azure Cosmos DB](sql-query-system-functions.md)
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)

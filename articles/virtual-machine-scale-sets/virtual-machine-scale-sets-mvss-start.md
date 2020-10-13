@@ -10,10 +10,10 @@ ms.date: 04/26/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 55c826b4baf38732684aaa0465aeaab6a45564db
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87831494"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Seznamte se se šablonami sady škálování virtuálních počítačů
@@ -165,7 +165,7 @@ V následujícím fragmentu kódu použijte parametry z části před a nastavte
 ### <a name="specify-vm-network-configuration"></a>Zadat konfiguraci sítě virtuálních počítačů
 Nakonec zadejte konfiguraci sítě pro virtuální počítače v sadě škálování. V takovém případě stačí zadat jenom ID podsítě, kterou jste vytvořili dříve. Tato operace oznamuje, že sada škálování nastavuje síťová rozhraní v této podsíti.
 
-ID virtuální sítě obsahující podsíť můžete získat pomocí `resourceId` funkce šablony. Tato funkce přebírá typ a název prostředku a vrací plně kvalifikovaný identifikátor tohoto prostředku. Toto ID má podobu:`/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
+ID virtuální sítě obsahující podsíť můžete získat pomocí `resourceId` funkce šablony. Tato funkce přebírá typ a název prostředku a vrací plně kvalifikovaný identifikátor tohoto prostředku. Toto ID má podobu: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
 
 Identifikátor virtuální sítě ale není dostatečný. Zadejte konkrétní podsíť, ve které by se měly virtuální počítače sady škálování nacházet. Provedete to zřetězením `/subnets/mySubnet` s identifikátorem virtuální sítě. Výsledkem je plně kvalifikované ID podsítě. Udělejte to zřetězení `concat` funkcí, která přebírá v řadě řetězců a vrací jejich zřetězení.
 

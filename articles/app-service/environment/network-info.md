@@ -8,10 +8,10 @@ ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 0dfcf74ef07ff2bde7921860c6e13a59b0ccf023
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962532"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité aspekty sítí pro službu App Service Environment #
@@ -109,7 +109,7 @@ Pokud změníte nastavení DNS virtuální sítě, ve které je váš přihláš
 Kromě funkčních závislostí pomocného mechanismu je několik dalších položek, které se týkají prostředí portálu. Některé funkce v Azure Portal závisí na přímém přístupu k _webu SCM_. Pro každou aplikaci v Azure App Service jsou k dispozici dvě adresy URL. První adresa URL má přístup k vaší aplikaci. Druhá adresa URL má přístup k webu SCM, který se také nazývá _Konzola Kudu_. K funkcím, které používají web SCM, patří:
 
 -   Web Jobs
--   Functions
+-   Funkce
 -   Streamování protokolů
 -   Kudu
 -   Rozšíření
@@ -122,7 +122,7 @@ Pokud je vaším pomocným mechanismem interního nástroje název domény *cont
 
 ## <a name="ase-ip-addresses"></a>IP adresy pomocného mechanismu ##
 
-Pomocného programu má na paměti několik IP adres. Jedná se o tyto peeringy:
+Pomocného programu má na paměti několik IP adres. Jsou to tyto:
 
 - **Veřejná příchozí IP adresa**: používá se pro přenosy aplikací v externím pomocném mechanismu řízení a přenos pro správu v externím pomocném mechanismu práv i v interního nástroje.
 - **Odchozí veřejná IP adresa**: používá se jako IP adresa "od" pro odchozí připojení z pomocného mechanismu, která opouští virtuální síť, která není směrována do sítě VPN.

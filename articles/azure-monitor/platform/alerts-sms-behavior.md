@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
 ms.openlocfilehash: ff3d055840d69623234a799c62b1d8a6efd96ec5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327085"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>Chování výstrah SMS ve skupinách akcí
@@ -30,10 +30,10 @@ Přijímač SMS nakonfigurovaný jako součást skupiny akcí obdrží zprávu S
 * Krátký název skupiny akcí, na kterou se tato výstraha odeslala
 * Název výstrahy
 
-| REPLY | Popis |
+| REPLY | Description |
 | ----- | ----------- |
-| DEZAKTIVOVAT`<Action Group Short name>` | Zakáže další zprávu SMS ze skupiny akcí. |
-| ABY`<Action Group Short name>` | Opětovné povolení serveru SMS ze skupiny akcí |
+| DEZAKTIVOVAT `<Action Group Short name>` | Zakáže další zprávu SMS ze skupiny akcí. |
+| ABY `<Action Group Short name>` | Opětovné povolení serveru SMS ze skupiny akcí |
 | Stop | Zakáže další SMS ze všech skupin akcí. |
 | Čína | Opětovné povolení služby SMS ze všech skupin akcí |
 | HELP | Uživateli se pošle odpověď s odkazem na tento článek. |

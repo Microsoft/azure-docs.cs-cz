@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a32874cebcd8335967eaf8a07a56346e8ad6460
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213621"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Nastavení samoobslužné správy skupin v Azure Active Directory 
@@ -66,5 +66,5 @@ Následující články poskytují další informace o službě Azure Active Dir
 * [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](../fundamentals/active-directory-manage-groups.md)
 * [Rutiny Azure Active Directory pro konfiguraci nastavení skupiny](groups-settings-cmdlets.md)
 * [Správa aplikací ve službě Azure Active Directory](../manage-apps/what-is-application-management.md)
-* [Představení služby Azure Active Directory](../fundamentals/active-directory-whatis.md)
+* [Co je Azure Active Directory?](../fundamentals/active-directory-whatis.md)
 * [Integrace místních identit do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

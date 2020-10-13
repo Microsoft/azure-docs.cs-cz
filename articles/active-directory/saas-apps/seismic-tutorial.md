@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: c42180990f81e179a8fa8cdfe9e5d762323213b0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89661052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>Kurz: Azure Active Directory integrace s seismických procesů
@@ -30,7 +30,7 @@ Integrace seismických procesů s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s seismických procesů potřebujete následující položky:
 
@@ -68,7 +68,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
     * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-2. **[Nakonfigurujte SEISMICKÝCH procesů SSO](#configure-seismic-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte SEISMICKÝCH procesů SSO](#configure-seismic-sso)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace.
     * **[Vytvoření seismických procesů Test User](#create-seismic-test-user)** – pro Britta Simon v seismických procesů, který je propojený s reprezentací uživatele Azure AD.
 3. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
@@ -93,9 +93,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.seismic.com/SSO/<ROUTEURL>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte hodnotu skutečnou přihlašovací adresou URL, identifikátorem a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta seismických procesů](mailto:support@seismic.com) . Můžete také nahrát **metadata poskytovatele služeb** a automaticky vyplnit hodnotu identifikátoru. Další informace o **metadatech poskytovatele služeb**získáte od [seismických procesů týmu podpory klientů](mailto:support@seismic.com).
+    > Tyto hodnoty nejsou reálné. Aktualizujte hodnotu skutečným Sign-On adresou URL, identifikátoru a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta seismických procesů](mailto:support@seismic.com) . Můžete také nahrát **metadata poskytovatele služeb** a automaticky vyplnit hodnotu identifikátoru. Další informace o **metadatech poskytovatele služeb**získáte od [seismických procesů týmu podpory klientů](mailto:support@seismic.com).
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 

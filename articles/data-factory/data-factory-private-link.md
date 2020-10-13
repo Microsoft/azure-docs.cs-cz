@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
 ms.openlocfilehash: 2cd9f01404a4e33303356dd3f452cd7dbc47a747
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328560"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Privátní odkaz Azure pro Azure Data Factory
@@ -37,7 +37,7 @@ Místní prostředí Integration runtime můžete také nainstalovat do místní
 
 Mezi Azure Data Factory a zákaznickou virtuální sítí se vyžaduje několik komunikačních kanálů, jak je znázorněno v následující tabulce:
 
-| Doména | Port | Popis |
+| Doména | Port | Description |
 | ---------- | -------- | --------------- |
 | `adf.azure.com` | 443 | Rovina ovládacího prvku, kterou vyžaduje Data Factory vytváření a monitorování. |
 | `*.{region}.datafactory.azure.net` | 443 | Požadováno místním prostředím Integration runtime pro připojení ke službě Data Factory. |

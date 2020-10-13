@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87439467"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Přehled Red Hat Enterprise Linuxch imagí
@@ -150,7 +150,7 @@ Podverze |Příklad obrázku EUS              |Stav EUS                         
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Obrázky publikované v dubnu 2019 a novějších jsou ve výchozím nastavení EUS.|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | Obrázky publikované od června 2019 a novějších jsou EUS ve výchozím nastavení. |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | Publikované obrázky mohou být 2019 a novější EUS ve výchozím nastavení. |
-RHEL 8,0      |–                            | V Red Hat není k dispozici žádný EUS.                               |
+RHEL 8,0      |Není k dispozici                            | V Red Hat není k dispozici žádný EUS.                               |
 
 ### <a name="update-services-for-sap"></a>Aktualizace služeb pro SAP
 

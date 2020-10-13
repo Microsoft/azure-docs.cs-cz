@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: 0598f21cddbaeef6b3cd10cd77250eeae8bd34bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808714"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Přesunout externí nástroj pro vyrovnávání zatížení do jiné oblasti pomocí Azure Portal
@@ -182,7 +182,7 @@ Následující postupy ukazují, jak připravit externí nástroj pro vyrovnáv�
 
     1. Na jiné kartě nebo okně prohlížeče se přihlaste k [Azure Portal](https://portal.azure.com) a vyberte **skupiny prostředků**.
     2. Vyhledejte cílovou skupinu prostředků, která obsahuje veřejnou IP adresu, kterou jste přesunuli v předchozích krocích. Vyberte ji.
-    3. Vyberte **Nastavení**  >  **vlastnosti**.
+    3. Vyberte **Nastavení** > **Vlastnosti**.
     4. V okně vpravo zvýrazněte **ID prostředku** a zkopírujte ho do schránky. Alternativně můžete vybrat možnost **Kopírovat do schránky** napravo od cesty k **ID prostředku** .
     5. Vložte ID prostředku do vlastnosti **hodnota** v editoru **úprav parametrů** , který je otevřený v jiném okně prohlížeče nebo na kartě:
 
@@ -414,5 +414,5 @@ Pokud chcete potvrdit změny a dokončit přesun veřejné IP adresy a externíh
 V tomto kurzu jste přesunuli externí nástroj pro vyrovnávání zatížení Azure z jedné oblasti na jiný a vyčistili zdrojové prostředky. Další informace o přesouvání prostředků mezi oblastmi a zotavení po havárii v Azure najdete tady:
 
 
-- [Přesun prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
+- [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
 - [Přesun virtuálních počítačů Azure do jiné oblasti](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)

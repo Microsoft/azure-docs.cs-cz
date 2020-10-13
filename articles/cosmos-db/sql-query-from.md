@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
 ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83005858"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Klauzule FROM v Azure Cosmos DB
@@ -55,11 +55,11 @@ FROM <from_specification>
   
 -  Pokud je výraz `<container_expression>` , pak property_name a property_name bude použit jako alias. Pokud je výraz container_name, container_name bude použit jako alias.  
   
-- FORMÁTU`input_alias`  
+- FORMÁTU `input_alias`  
   
   Určuje, že `input_alias` je sada hodnot vrácená podkladovým výrazem kontejneru.  
  
-- `input_alias`PRO  
+- `input_alias` PRO  
   
   Určuje, že `input_alias` má představovat sadu hodnot, které byly získány pomocí iterace u všech prvků pole každého pole vráceného podkladovým výrazem kontejneru. Jakákoli hodnota vrácená podkladovým výrazem kontejneru, který není polem Array, je ignorována.  
   

@@ -14,17 +14,17 @@ ms.custom:
 - mqtt
 - devx-track-js
 ms.openlocfilehash: 101bd9ce351ea830688fc18affdf21ce527ba43a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261426"
 ---
 # <a name="create-an-advanced-device-model"></a>Vytvoření pokročilého modelu zařízení
 
 Tato příručka popisuje soubory JSON a JavaScript, které definují vlastní model zařízení. Článek obsahuje několik ukázkových definičních souborů modelů zařízení a ukazuje, jak je nahrát do instance simulace zařízení. Můžete vytvářet pokročilé modely zařízení a simulovat tak realističtější chování zařízení pro vaše testování.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -167,13 +167,13 @@ Pole uvedená ve schématu mohou mít následující typy:
 * Binární – serializovaný pomocí Base64
 * Text
 * Logická hodnota
-* Celé číslo
+* Integer
 * dvojité
 * DateTime
 
 ### <a name="supported-methods"></a>Podporované metody
 
-Simulovaná zařízení mohou také reagovat na volání metody. v takovém případě spouštějí určitou logiku a poskytnou určitou odpověď. Podobně jako simulace je logika metody uložena v souboru JavaScriptu a může komunikovat se stavem zařízení. Příklad:
+Simulovaná zařízení mohou také reagovat na volání metody. v takovém případě spouštějí určitou logiku a poskytnou určitou odpověď. Podobně jako simulace je logika metody uložena v souboru JavaScriptu a může komunikovat se stavem zařízení. Například:
 
 ```json
 "CloudToDeviceMethods": {
@@ -263,7 +263,7 @@ Soubory JavaScriptu musí mít funkci **Main** , která přijímá dva parametry
     * **deviceModel**. Například **výtah**.
 * Objekt **stavu** , který je hodnotou vrácenou funkcí v předchozím volání. Tento stav zařízení je udržován službou simulace a používá se ke generování zpráv telemetrie.
 
-Funkce **Main** vrátí nový stav zařízení. Příklad:
+Funkce **Main** vrátí nový stav zařízení. Například:
 
 ```JavaScript
 function main(context, state) {

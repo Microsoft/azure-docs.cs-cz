@@ -4,10 +4,10 @@ description: Popisuje vlastnosti, které jsou k dispozici pro Service Bus událo
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 81293321b3a8fb989023a231c905996b4059bd81
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86121130"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>Azure Service Bus jako zdroj Event Grid
@@ -20,7 +20,7 @@ Tento článek poskytuje vlastnosti a schéma pro události Service Bus.Úvod do
 
 Service Bus emituje následující typy událostí:
 
-| Typ události | Description |
+| Typ události | Popis |
 | ---------- | ----------- |
 | Microsoft. ServiceBus. ActiveMessagesAvailableWithNoListeners | Je aktivována, když ve frontě nebo předplatném jsou aktivní zprávy a neposlouchá žádný přijímač. |
 | Microsoft. ServiceBus. DeadletterMessagesAvailableWithNoListener | Je aktivována, když jsou aktivní zprávy ve frontě nedoručených zpráv a žádné aktivní naslouchací procesy. |
@@ -78,11 +78,11 @@ Událost má následující data nejvyšší úrovně:
 | Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
-| Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| subject | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| eventType | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
-| data | odkazy objektů | Data události služby Blob Storage. |
+| data | object | Data události služby Blob Storage. |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 

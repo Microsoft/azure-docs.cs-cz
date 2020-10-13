@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 8a0d930d1c0fd30c48d97b0d1d4b94548077fbca
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261755"
 ---
 # <a name="add-a-tile-layer"></a>Přidání vrstvy dlaždic
@@ -35,7 +35,7 @@ Ohraničovací rámeček a rozsah přiblížení, kde je k dispozici služba dla
 | Jih – hranice    | Jižní Zeměpisná šířka ohraničovacího rámečku, kde jsou k dispozici dlaždice. |
 | Vazba na východ     | Východní Zeměpisná délka ohraničovacího rámečku, kde jsou k dispozici dlaždice.  |
 | Vázané na západ     | Západní Zeměpisná délka ohraničovacího rámečku, kde jsou k dispozici dlaždice   |
-| Průhlednost   | Průhlednost vrstvy dlaždice   |
+| Transparentnost   | Průhlednost vrstvy dlaždice   |
 | Je organizace TMS         | Dlaždice mapové služby – specifikace, která vrátí osu souřadnic Y vrstvy dlaždice. |
 | Minimální přiblížení       | Minimální dlaždice úrovně přiblížení jsou k dispozici. |
 | Maximální přiblížení       | K dispozici jsou tyto dlaždice s maximální úrovní přiblížení.  |
@@ -51,11 +51,11 @@ Existují tři různé zásady vytváření názvů dlaždic, které podporuje A
 
 Adresa URL dlaždice obsahuje adresu URL HTTPS pro šablonu adresy URL dlaždice, která používá následující parametry:
 
--   `{x}`-X pozice dlaždice. Také potřebuje `{y}` a `{z}` .
--   `{y}`-Y pozice dlaždice. Také potřebuje `{x}` a `{z}` .
--   `{z}`– Úroveň přiblížení dlaždice Také potřebuje `{x}` a `{y}` .
--   `{quadkey}`– `quadkey` Identifikátor dlaždice založený na konvenci pojmenování systému dlaždice mapy Bing
--   `{bbox-epsg-3857}`– Řetězec ohraničujícího pole ve formátu `{west},{south},{east},{north}` v prostorovém referenčním systému EPSG 3857.
+-   `{x}` -X pozice dlaždice. Také potřebuje `{y}` a `{z}` .
+-   `{y}` -Y pozice dlaždice. Také potřebuje `{x}` a `{z}` .
+-   `{z}` – Úroveň přiblížení dlaždice Také potřebuje `{x}` a `{y}` .
+-   `{quadkey}` – `quadkey` Identifikátor dlaždice založený na konvenci pojmenování systému dlaždice mapy Bing
+-   `{bbox-epsg-3857}` – Řetězec ohraničujícího pole ve formátu `{west},{south},{east},{north}` v prostorovém referenčním systému EPSG 3857.
 
 Následuje příklad, ve kterém je naformátovaná adresa URL dlaždice pro [službu počasí paprsků](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) v Azure Maps. Všimněte si, že `[subscription-key]` je zástupný symbol pro váš Azure Maps klíč předplatného.
 
@@ -68,4 +68,4 @@ Další informace o Azure Maps systému skládání naleznete v tématu [úrovn
 Přidat k mapě další kontext:
 
 > [!div class="nextstepaction"]
-> [Zobrazit provoz v reálném čase](power-bi-visual-show-real-time-traffic.md)
+> [Zobrazení provozu v reálném čase](power-bi-visual-show-real-time-traffic.md)

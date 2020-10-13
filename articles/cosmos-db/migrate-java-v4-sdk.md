@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 24e9087a175385f8e5c347a1d2df3b2785868506
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87327850"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Migrace aplikace na používání sady Azure Cosmos DB Java SDK v4
@@ -36,7 +36,7 @@ V následující tabulce jsou uvedeny různé Azure Cosmos DB Java SDK, název b
 | Async 2. x. x  | Červen 2018    | Asynchronní (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [Rozhraní API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Zpráva k vydání verze](sql-api-sdk-async-java.md) |
 | Synchronizace 2. x. x     | Září 2018    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [Rozhraní API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Zpráva k vydání verze](sql-api-sdk-java.md)  |
 | 3. x. x    | Červenec 2019    | Async (Reactor) –/Sync  | `com.microsoft.azure::azure-cosmos`  | `com.azure.data.cosmos` | [Rozhraní API](https://azure.github.io/azure-cosmosdb-java/3.0.0/) | - |
-| 4.0   | Červen 2020   | Async (Reactor) –/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | -  | [Rozhraní API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1/index.html)  |
+| 4,0   | Červen 2020   | Async (Reactor) –/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | -  | [Rozhraní API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1/index.html)  |
 
 ## <a name="sdk-level-implementation-changes"></a>Změny implementace na úrovni sady SDK
 
@@ -87,8 +87,8 @@ V sadě Azure Cosmos DB Java SDK 3. x. x `CosmosItemProperties` je objekt zpří
 
 ### <a name="imports"></a>Objem
 
-* Balíčky Azure Cosmos DB Java SDK 4,0 začínají na`com.azure.cosmos`
-  * Azure Cosmos DB balíčky Java SDK 3. x. x začínají na`com.azure.data.cosmos`
+* Balíčky Azure Cosmos DB Java SDK 4,0 začínají na `com.azure.cosmos`
+  * Azure Cosmos DB balíčky Java SDK 3. x. x začínají na `com.azure.data.cosmos`
 
 * Azure Cosmos DB Java SDK 4,0 umístí do vnořeného balíčku několik tříd `com.azure.cosmos.models` . Mezi tyto balíčky patří:
 
@@ -100,7 +100,7 @@ V sadě Azure Cosmos DB Java SDK 3. x. x `CosmosItemProperties` je objekt zpří
   * `FeedOptions`
   * `PartitionKey`
   * `IndexingPolicy`
-  * `IndexingMode`... atd.
+  * `IndexingMode` ... atd.
 
 ### <a name="accessors"></a>Přístupové objekty
 
