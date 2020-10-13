@@ -3,12 +3,12 @@ title: Odstraňování běžných chyb
 description: Naučte se řešit problémy s vytvářením definic zásad, různých SDK a doplňku pro Kubernetes.
 ms.date: 10/05/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 6026dc75187c8a70203a2484380eed70d519599d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98b5f1658a7d3fc7c4a7db7145b92bb6065befc5
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743433"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999897"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Řešení chyb pomocí Azure Policy
 
@@ -68,7 +68,7 @@ Pomocí těchto kroků můžete vyřešit potíže s definicí zásad:
 
 1. Nejdřív počkejte odpovídající dobu, než se vyhodnocení dokončí, a výsledky dodržování předpisů budou k dispozici v Azure Portal nebo SDK. Chcete-li zahájit novou zkušební kontrolu pomocí Azure PowerShell nebo REST API, přečtěte si téma [Kontrola vyhodnocení na vyžádání](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
 1. Ověřte, zda jsou parametry přiřazení a rozsah přiřazení nastaveny správně.
-1. Podívejte se na [režim definice zásad](../concepts/definition-structure.md#mode):
+1. Zkontrolujte [režim definice zásad](../concepts/definition-structure.md#mode):
    - Režim All pro všechny typy prostředků.
    - Režim "indexovaný", pokud definice zásad kontroluje značky nebo umístění.
 1. Ověřte, že obor prostředku není [vyloučený](../concepts/assignment-structure.md#excluded-scopes) nebo má [výjimku](../concepts/exemption-structure.md).
@@ -96,11 +96,11 @@ Pomocí těchto kroků můžete vyřešit vynucení přiřazení zásad:
 
 1. Nejdřív počkejte odpovídající dobu, než se vyhodnocení dokončí, a výsledky dodržování předpisů budou k dispozici v Azure Portal nebo SDK. Chcete-li zahájit novou zkušební kontrolu pomocí Azure PowerShell nebo REST API, přečtěte si téma [Kontrola vyhodnocení na vyžádání](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
 1. Ověřte, zda jsou parametry přiřazení a rozsah přiřazení správně nastaveny a zda je _povolená_možnost **enforcementMode** . 
-1. Podívejte se na [režim definice zásad](../concepts/definition-structure.md#mode):
+1. Zkontrolujte [režim definice zásad](../concepts/definition-structure.md#mode):
    - Režim All pro všechny typy prostředků.
    - Režim "indexovaný", pokud definice zásad kontroluje značky nebo umístění.
 1. Ověřte, že obor prostředku není [vyloučený](../concepts/assignment-structure.md#excluded-scopes) nebo má [výjimku](../concepts/exemption-structure.md).
-1. Ověřte, zda datová část prostředku odpovídá logice zásad. To se dá udělat [zachycením trasování Har](../../../azure-portal/capture-browser-trace.md) nebo kontrolou vlastností šablony ARM.
+1. Ověřte, že datová část prostředku odpovídá logice zásad. To se dá udělat [zachycením trasování Har](../../../azure-portal/capture-browser-trace.md) nebo kontrolou vlastností šablony ARM.
 1. Podívejte [se na řešení potíží: dodržování předpisů](#scenario-compliance-not-as-expected) pro další běžné problémy a řešení podle očekávání.
 
 Pokud stále máte problém s vámi vytvořenou duplicitou a přizpůsobenou definicí předdefinované zásady nebo vlastní definice, vytvořte lístek podpory v části **vytváření zásad** pro správné směrování problému.
@@ -169,6 +169,24 @@ Graf Helm s názvem `azure-policy-addon` již byl nainstalován nebo částečn�
 #### <a name="resolution"></a>Řešení
 
 Postupujte podle pokynů k [odebrání Azure Policy pro doplněk Kubernetes](../concepts/policy-for-kubernetes.md#remove-the-add-on)a pak znovu spusťte `helm install azure-policy-addon` příkaz.
+
+### <a name="scenario-azure-virtual-machine-user-assigned-identities-are-replaced-by-system-assigned-managed-identities"></a>Scénář: uživatelsky přiřazené identity virtuálních počítačů Azure se nahrazují spravovanými identitami přiřazenými systémem.
+
+#### <a name="issue"></a>Problém
+
+Po přiřazení iniciativ zásad konfigurace hosta k auditování nastavení v počítačích se už nepřiřazují uživatelsky spravované identity přiřazené k počítači. Přiřadí se jenom spravovaná identita přiřazená systémem.
+
+#### <a name="cause"></a>Příčina
+
+Definice zásad, které se dřív používaly v definicích konfigurace hosta DeployIfNotExists, zajistí, že se počítači přiřadí identita přiřazená systémem, ale také odebrala přiřazení identit přiřazená uživatelem.
+
+#### <a name="resolution"></a>Řešení
+
+Definice, které tento problém dříve způsobily, se jeví jako \[ zastaralé \] a nahrazují definicemi zásad, které spravují požadavky bez nutnosti odebrání spravované identity přiřazené uživatelem. Je vyžadován ruční krok. Odstraňte všechna existující přiřazení zásad, která jsou označena jako \[ zastaralá, \] a nahraďte je aktualizovanými iniciativami zásad požadovaných součástí a definicemi zásad, které mají stejný název jako původní.
+
+Podrobný popis najdete v tomto blogovém příspěvku:
+
+[Důležitá změna vydaná pro zásady auditu konfigurace hosta](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
 ## <a name="next-steps"></a>Další kroky
 

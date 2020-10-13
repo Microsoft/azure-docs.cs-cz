@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: bf1664a35562b888f9dd7aacd3b1112058bed664
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3bad12362358620d0f2dc105bb2820dfb691d00
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797696"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000213"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Jekyll ve službě Azure static Web Apps Preview
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Nainstalovat [Jekyll](https://jekyllrb.com/docs/installation/)
   - V případě potřeby můžete použít podsystém Windows pro Linux a postupovat podle pokynů Ubuntu.
@@ -146,12 +146,9 @@ Dále přidáte nastavení konfigurace, které proces sestavení používá k se
 
 1. Otevřete aplikaci Jekyll v textovém editoru a otevřete soubor _. GitHub/Workflows/Azure-Pages-<WORKFLOW_NAME>. yml_ .
 
-1. Přidejte řádky za blok `- uses: actions/checkout@v2` do následujícího konfiguračního bloku.
+1. Po řádku `- uses: actions/checkout@v2` přidejte následující konfigurační blok.
 
     ```yml
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
     - name: Set up Ruby
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:

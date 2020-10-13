@@ -10,13 +10,13 @@ author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 09/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a9b8a2c2454c135c72d39a587e84220e8916e54b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, devx-track-python, deploy
+ms.openlocfilehash: 40d8d4596e7d93b589e44f2dde2d1cb453566d71
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315422"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999238"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazování modelů pomocí služby Azure Machine Learning
 

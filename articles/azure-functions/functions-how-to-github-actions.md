@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 48482658fdabc3e826b6855c500829a16c166749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f35a8130c834112961f4542883704c2b8dbd08f
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851114"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999250"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
@@ -32,6 +32,18 @@ V případě pracovního postupu Azure Functions má soubor tři části:
 > [!NOTE]
 > Pokud se rozhodnete použít profil publikování pro ověřování, nemusíte vytvářet instanční objekt.
 
+## <a name="downloading-and-using-a-publish-profile-as-deployment-credential-recommended"></a>Stažení a použití profilu publikování jako přihlašovacích údajů nasazení (doporučeno)
+
+Chcete-li stáhnout profil publikování aplikace Function App:
+
+1. Vyberte stránku **Přehled** aplikace Function App a pak vyberte **získat profil publikování**.
+
+   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Stáhnout profil publikování":::
+
+1. Uložte a zkopírujte obsah souboru nastavení publikování.
+
+## <a name="create-a-service-principal-deprecated"></a>Vytvoření instančního objektu (zastaralé)
+=======
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
@@ -44,7 +56,8 @@ V případě pracovního postupu Azure Functions má soubor tři části:
 
 Doporučený způsob ověřování pomocí Azure Functions pro akce GitHubu je profil publikování. Můžete se také ověřit pomocí instančního objektu, ale proces vyžaduje více kroků. 
 
-Uložte přihlašovací údaje k publikačnímu profilu nebo instančnímu objektu jako [tajný kód GitHubu](https://docs.github.com/en/actions/reference/encrypted-secrets) pro ověření v Azure. V rámci pracovního postupu budete mít přístup ke tajnému kódu. 
+## <a name="configure-the-github-secret"></a>Konfigurace tajného kódu GitHubu
+= = = = = = = Při ověřování pomocí Azure uložte přihlašovací údaje k publikačnímu profilu nebo instanční objekt jako [tajný kód GitHubu](https://docs.github.com/en/actions/reference/encrypted-secrets) . V rámci pracovního postupu budete mít přístup ke tajnému kódu. 
 
 # <a name="publish-profile"></a>[Publikovat profil](#tab/publish-profile)
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/15/2020
+ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 296f396f3c2aacdfe32ea2ee800190d0a91d353f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fda57ae152efbb04a793c6acf63465fe8d406a1a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602162"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998651"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -64,7 +64,7 @@ Element **OrchestrationStep** obsahuje následující atributy:
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | `Order` | Ano | Pořadí kroků orchestrace. |
-| `Type` | Yes | Typ kroku orchestrace Možné hodnoty: <ul><li>**Claimsproviderselection.** – určuje, že krok orchestrace prezentuje různým zprostředkovatelům deklarací identity uživateli možnost výběru jednoho.</li><li>**CombinedSignInAndSignUp** – určuje, že krok orchestrace prezentuje kombinované přihlášení ke zprostředkovateli sociálních sítí a přihlašovací stránku místního účtu.</li><li>**ClaimsExchange** – určuje, že krok orchestrace vyměňuje deklarace identity se zprostředkovatelem deklarací identity.</li><li>**Getclaims** – určuje, že krok orchestrace by měl zpracovat data deklarace identity odesílaná do Azure AD B2C od předávající strany prostřednictvím její `InputClaims` konfigurace.</li><li>**InvokeSubJourney** – určuje, že krok orchestrace vyměňuje deklarace identity s podřízenou cestou (ve verzi Public Preview).</li><li>**SendClaims** – určuje, že krok orchestrace odesílá deklarace identity předávající straně s tokenem vystaveným vystavitelem deklarací identity.</li></ul> |
+| `Type` | Yes | Typ kroku orchestrace Možné hodnoty: <ul><li>**Claimsproviderselection.** – určuje, že krok orchestrace prezentuje různým zprostředkovatelům deklarací identity uživateli možnost výběru jednoho.</li><li>**CombinedSignInAndSignUp** – určuje, že krok orchestrace prezentuje kombinované přihlášení ke zprostředkovateli sociálních sítí a přihlašovací stránku místního účtu.</li><li>**ClaimsExchange** – určuje, že krok orchestrace vyměňuje deklarace identity se zprostředkovatelem deklarací identity.</li><li>**Getclaims** – určuje, že krok orchestrace by měl zpracovat data deklarace identity odesílaná do Azure AD B2C od předávající strany prostřednictvím její `InputClaims` konfigurace.</li><li>**InvokeSubJourney** – určuje, že krok orchestrace vyměňuje deklarace identity s [podřízenou cestou](subjourneys.md) (ve verzi Public Preview).</li><li>**SendClaims** – určuje, že krok orchestrace odesílá deklarace identity předávající straně s tokenem vystaveným vystavitelem deklarací identity.</li></ul> |
 | ContentDefinitionReferenceId | No | Identifikátor [definice obsahu](contentdefinitions.md) přidruženého k tomuto kroku orchestrace. Identifikátor odkazu definice obsahu je obvykle definován v technickém profilu s vlastním uplatněním. Existují však případy, kdy Azure AD B2C musí zobrazit něco bez technického profilu. Existují dva příklady – Pokud je typ kroku orchestrace jedna z následujících: `ClaimsProviderSelection` nebo  `CombinedSignInAndSignUp` Azure AD B2C nutné zobrazit výběr poskytovatele identity bez technického profilu. |
 | CpimIssuerTechnicalProfileReferenceId | No | Typ kroku orchestrace je `SendClaims` . Tato vlastnost definuje identifikátor technického profilu zprostředkovatele deklarací, který vydává token pro předávající stranu.  Pokud chybí, není vytvořen token předávající strany. |
 
@@ -247,4 +247,4 @@ Element **JourneyList** obsahuje následující element:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| SubJourneyReferenceId | Yes | Identifikátor dílčí cesty, která má být provedena. |
+| SubJourneyReferenceId | Yes | Identifikátor [dílčí cesty](subjourneys.md) , která má být provedena. |

@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 3f74c593cd44470efd231578fddcf53715a3979a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 984977d7cef1a923bf7f17de0c503bddeeebcd82
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91575091"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998383"
 ---
 # <a name="what-is-iot-plug-and-play"></a>Co je IoT Plug and Play?
 
@@ -67,10 +67,6 @@ Jako tvůrce zařízení můžete vyvíjet hardwarový produkt IoT, který podpo
 ## <a name="device-certification"></a>Certifikace zařízení
 
 [Program pro certifikaci zařízení iot technologie Plug and Play](howto-certify-device.md) ověří, jestli zařízení splňuje požadavky na certifikaci technologie Plug and Play IoT. Certifikované zařízení můžete přidat do seznamu veřejně [certifikovaných pro katalog zařízení Azure IoT](https://aka.ms/devicecatalog).
-
-## <a name="regional-availability"></a>Regionální dostupnost
-
-Tato aktualizace IoT technologie Plug and Play je dostupná na rozbočovačích IoT vytvořených v oblastech Střed USA, Severní Evropa a Východní Japonsko.
 
 ## <a name="next-steps"></a>Další kroky
 

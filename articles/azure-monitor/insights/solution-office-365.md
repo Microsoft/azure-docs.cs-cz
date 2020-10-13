@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498793"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999746"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -104,12 +104,12 @@ ms.locfileid: "86498793"
 > 
 > ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>Otázka: co se stane 31. října Musím odpojení předem?
 > 
-> - Nebudete moct přijímat data z řešení **Office 365** . Řešení už nebude dostupné na webu Marketplace.
+> - Nebudete moct přijímat data z řešení **Office 365** . Řešení se odebere z vašeho pracovního prostoru a na webu Marketplace už nebude dostupné.
 > - Pro zákazníky s Sentinelem v Azure se v řešení **Office 365** pro **SecurityInsights** pro Azure sentinel bude zahrnout řešení Log Analytics pracovního prostoru.
-> - Pokud vaše řešení neodpojení ručně, vaše data se automaticky odpojí od 31. října.
+> - Pokud vaše řešení neodpojení ručně do 31. října, vaše data se odpojí automaticky a tabulka **OfficeActivity** se odebere. I tak budete moct tabulku obnovit, když povolíte konektor Office 365 ve službě Azure Sentinel, jak je vysvětleno níže.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>Otázka: budou moje data přenesena do nového řešení?
-> Ano. Když odeberete řešení **Office 365** z pracovního prostoru, jeho data budou dočasně nedostupná, protože schéma se odebere. Pokud povolíte nový konektor **sady Office 365** v nástroji Sentinel, obnoví se schéma do pracovního prostoru a veškerá shromážděná data budou k dispozici. 
+> Yes. Když odeberete řešení **Office 365** z pracovního prostoru, jeho data budou dočasně nedostupná, protože schéma se odebere. Pokud povolíte nový konektor **sady Office 365** v nástroji Sentinel, obnoví se schéma do pracovního prostoru a veškerá shromážděná data budou k dispozici. 
  
 
 Řešení pro správu sady Office 365 umožňuje monitorovat prostředí sady Office 365 v Azure Monitor.

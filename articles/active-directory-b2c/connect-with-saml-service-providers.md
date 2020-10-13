@@ -12,12 +12,12 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2df2cf2a9d0a89f72078cd0da36272781e89e338
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 18afa6b2e974c605b18d4e38b82061234619e9ff
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961319"
+ms.locfileid: "91998103"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -41,7 +41,7 @@ Shrnutí dvou scénářů, které nejsou exkluzivní, pomocí SAML:
 | Moje aplikace očekává pro dokončení ověřování kontrolní výraz SAML. | **Azure AD B2C funguje jako zprostředkovatel identity (IdP).**<br />Azure AD B2C funguje jako IdP SAML pro aplikace. | Tento článek. |
 | Moji uživatelé potřebují jednotné přihlašování pomocí zprostředkovatele identity kompatibilního s SAML, jako je ADFS, Salesforce nebo Shibboleth.  | **Azure AD B2C funguje jako poskytovatel služeb (SP).**<br />Azure AD B2C slouží jako poskytovatel služeb při připojování k poskytovateli identity SAML. Jedná se o federační proxy mezi vaší aplikací a poskytovatelem identity SAML.  | <ul><li>[Nastavení přihlášení pomocí služby ADFS jako IdP SAML pomocí vlastních zásad](identity-provider-adfs2016-custom.md)</li><li>[Nastavení přihlašování pomocí poskytovatele služby Salesforce SAML pomocí vlastních zásad](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Proveďte kroky v části Začínáme [s vlastními zásadami v Azure AD B2C](custom-policy-get-started.md). Vlastní zásady *SocialAndLocalAccounts* potřebujete od úvodní sady Custom Policy Pack popsané v článku.
 * Základní porozumění protokolu Security Assertion Markup Language (SAML).
@@ -270,7 +270,7 @@ Vaše vlastní zásady a Azure AD B2C tenant jsou teď připravené. V dalším 
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 zaregistrovat aplikaci v Azure AD B2C
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
@@ -454,7 +454,7 @@ Token SAML je token zabezpečení, který je vydaný Azure AD B2C po úspěšné
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |Čas, kdy bude token platný. Hodnota Time je kódována v UTC. Vaše aplikace by měla tuto deklaraci identity použít k ověření platnosti životnosti tokenu. Pokud chcete změnit nastavení pro životnosti tokenů, nastavte `TokenNotBeforeSkewInSeconds` [metadata](saml-issuer-technical-profile.md#metadata) technického profilu problému s tokenem SAML. |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Čas, kdy se token stal neplatným Vaše aplikace by měla tuto deklaraci identity použít k ověření platnosti životnosti tokenu. Hodnota je 15 minut po `NotBefore` a nelze ji změnit.|
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |Odkaz na identifikátor URI, který identifikuje zamýšlenou cílovou skupinu. Identifikuje zamýšleného příjemce tokenu. Hodnota je shodná s požadavkem SAML `AssertionConsumerServiceURL` .|
-|`<Response>``<Assertion>` `<saml:AttributeStatement>` kolekce`<Attribute>` | | Kolekce kontrolních výrazů (deklarace identity), jak je nakonfigurováno ve výstupních deklaracích [technického profilu předávající strany](relyingparty.md#technicalprofile) . Můžete nakonfigurovat název kontrolního výrazu nastavením `PartnerClaimType` výstupní deklarace identity. |
+|`<Response>``<Assertion>` `<AttributeStatement>` kolekce`<Attribute>` | | Kolekce kontrolních výrazů (deklarace identity), jak je nakonfigurováno ve výstupních deklaracích [technického profilu předávající strany](relyingparty.md#technicalprofile) . Můžete nakonfigurovat název kontrolního výrazu nastavením `PartnerClaimType` výstupní deklarace identity. |
 
 ## <a name="next-steps"></a>Další kroky
 

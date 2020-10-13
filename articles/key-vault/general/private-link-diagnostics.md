@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 52ac5b89a0c7173b9b2585f84b5f34361b4b136c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 156edbeda225b5457d6f5e7d29482e393b510736
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744215"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998407"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Diagnostika problémů s konfigurací privátních propojení na Azure Key Vault
 
@@ -34,7 +34,7 @@ Pokud s touto funkcí začínáte, přečtěte si téma [integrace Key Vault s p
 ### <a name="problems-not-covered-by-this-article"></a>Problémy, na které se nevztahuje tento článek
 
 - Dochází k přerušovanému problému s připojením. V daném klientovi vidíte, že některé žádosti fungují a některé nefungují. *Občasné problémy většinou nejsou způsobené problémem v konfiguraci privátních odkazů. Jedná se o znaménko přetížení sítě nebo klienta.*
-- Používáte produkt Azure, který podporuje BYOK (Bring Your Own Key) nebo CMK (klíče spravované zákazníkem) a tento produkt nemá přístup k vašemu trezoru klíčů. *Podívejte se na dokumentaci k produktu. Ujistěte se, že explicitně nastavují podporu pro trezory klíčů s povolenou bránou firewall. V případě potřeby kontaktujte produktovou podporu pro daný produkt.*
+- Používáte produkt Azure, který podporuje BYOK (Bring Your Own Key), CMK (klíče spravované zákazníky) nebo přístup k tajným klíčům uloženým v trezoru klíčů. Když bránu firewall povolíte v nastavení trezoru klíčů, nemůže tento produkt získat přístup k trezoru klíčů. *Podívejte se na dokumentaci konkrétního produktu. Ujistěte se, že explicitně nastavují podporu pro trezory klíčů s povolenou bránou firewall. V případě potřeby se obraťte na podporu tohoto konkrétního produktu.*
 
 ### <a name="how-to-read-this-article"></a>Postup čtení tohoto článku
 
@@ -46,9 +46,11 @@ Pusťme se do toho.
 
 ### <a name="confirm-that-your-client-runs-at-the-virtual-network"></a>Potvrďte, že váš klient běží ve virtuální síti.
 
-Tato příručka je určená k tomu, aby vám pomohla při určování připojení k trezoru klíčů, který pochází z kódu aplikace. Příklady jsou aplikace a skripty spouštěné v Azure Virtual Machines, clusterech Azure Service Fabric, Azure App Service, služba Azure Kubernetes (AKS) a podobné jiné.
+Tato příručka je určená k tomu, aby vám pomohla při určování připojení k trezoru klíčů, který pochází z kódu aplikace. Příklady jsou aplikace a skripty spouštěné v Azure Virtual Machines, clusterech Azure Service Fabric, Azure App Service, služba Azure Kubernetes (AKS) a podobné jiné. Tato příručka je také k dispozici pro přístup na základě uživatelského rozhraní Azure Portal webu, kde prohlížeč přistupuje k trezoru klíčů přímo.
 
-V rámci definice privátních odkazů musí být aplikace nebo skript spuštěné v počítači, clusteru nebo prostředí připojeném k Virtual Network, kde byl nasazen [prostředek privátního koncového bodu](../../private-link/private-endpoint-overview.md) . Pokud je aplikace spuštěná v libovolné síti připojené k Internetu, tato příručka se nedá použít a pravděpodobně se nedají použít privátní odkazy.
+V rámci definice privátních odkazů musí být aplikace, skript nebo portál spuštěné v počítači, clusteru nebo prostředí připojeném k Virtual Network, kde byl nasazen [prostředek privátního koncového bodu](../../private-link/private-endpoint-overview.md) .
+
+Pokud je aplikace, skript nebo portál spuštěná v libovolné síti připojené k Internetu, není tato příručka k dispozici a pravděpodobně nemůžete použít privátní odkazy. Toto omezení platí také pro příkazy spouštěné v Azure Cloud Shell, protože se spouští ve vzdáleném počítači Azure, který je k dispozici na vyžádání místo v prohlížeči uživatele.
 
 ### <a name="if-you-use-a-managed-solution-refer-to-specific-documentation"></a>Pokud používáte spravované řešení, přečtěte si konkrétní dokumentaci.
 
@@ -74,7 +76,7 @@ Je vhodné odstranit neúčinná připojení, aby se zajistilo, že bude něco v
 >[!IMPORTANT]
 > Změna nastavení brány firewall může odebrat přístup z legitimních klientů, kteří stále nepoužívají privátní odkazy. Ujistěte se, že jste si vědomi dopadů každé změny v konfiguraci brány firewall.
 
-Důležitým pojmem je, že soukromé odkazy *poskytují* přístup pouze k vašemu trezoru klíčů. Neodebere žádný *remove* existující přístup. Aby bylo možné efektivně blokovat přístup z veřejného Internetu, je nutné povolit bránu firewall trezoru klíčů explicitně:
+Důležitým pojmem je, že funkce privátních odkazů *poskytuje* přístup k trezoru klíčů pouze v Virtual Network, který je uzavřený, aby nedocházelo k exfiltraceí dat. Neodebere žádný *remove* existující přístup. Aby bylo možné efektivně blokovat přístup z veřejného Internetu, je nutné povolit bránu firewall trezoru klíčů explicitně:
 
 1. Otevřete Azure Portal a otevřete prostředek trezoru klíčů.
 2. V nabídce vlevo vyberte **síť**.
@@ -229,11 +231,11 @@ Vaše předplatné Azure musí mít prostředek [zóny privátní DNS](../../dns
 
 Přítomnost tohoto prostředku můžete zjistit tak, že na portálu kliknete na stránku předplatné a v nabídce vlevo vyberete "prostředky". Název prostředku musí být `privatelink.vaultcore.azure.net` a typ prostředku musí být **privátní DNS zóna**.
 
-Obvykle se tento prostředek vytvoří automaticky při vytvoření privátního koncového bodu pomocí typické metody. Existují však případy, kdy tento prostředek není vytvořen automaticky a je třeba jej provést ručně. Tento prostředek se mohl také omylem odstranit.
+Obvykle se tento prostředek vytvoří automaticky při vytvoření privátního koncového bodu pomocí běžné procedury. Existují však případy, kdy tento prostředek není vytvořen automaticky a je třeba jej provést ručně. Tento prostředek se mohl také omylem odstranit.
 
 Pokud tento prostředek nemáte, vytvořte nový prostředek zóny Privátní DNS v rámci svého předplatného. Pamatujte, že název musí být přesně `privatelink.vaultcore.azure.net` , bez mezer nebo dalších teček. Pokud zadáte nesprávný název, řešení překladu názvů popsané v tomto článku nebude fungovat. Další informace o tom, jak vytvořit tento prostředek, najdete v tématu [Vytvoření privátní zóny DNS Azure pomocí Azure Portal](../../dns/private-dns-getstarted-portal.md). Pokud budete postupovat podle této stránky, můžete přeskočit vytváření Virtual Network, protože v tomto okamžiku byste už měli mít nějaký. Můžete také přeskočit ověřovací procedury pomocí Virtual Machines.
 
-### <a name="confirm-that-the-private-dns-zone-must-be-linked-to-the-virtual-network"></a>Potvrďte, že zóna Privátní DNS musí být propojená s Virtual Network
+### <a name="confirm-that-the-private-dns-zone-is-linked-to-the-virtual-network"></a>Potvrďte, že je zóna Privátní DNS propojená s Virtual Network
 
 Nestačí, abyste měli zónu Privátní DNS. Musí být také propojena s Virtual Network, která obsahuje soukromý koncový bod. Pokud zóna Privátní DNS není propojená se správným Virtual Network, veškeré rozlišení DNS z tohoto Virtual Network bude Privátní DNS zónu ignorovat.
 
@@ -250,7 +252,7 @@ Pomocí portálu otevřete zónu Privátní DNS s názvem `privatelink.vaultcore
 
 Aby překlad názvů trezoru klíčů fungoval, musí existovat `A` záznam s jednoduchým názvem trezoru bez přípony nebo teček. Například pokud je název hostitele `fabrikam.vault.azure.net` , musí existovat `A` záznam s názvem `fabrikam` bez přípony nebo teček.
 
-Také hodnota `A` záznamu (IP adresa) musí být [privátní IP adresa trezoru klíčů](#find-the-key-vault-private-ip-address-in-the-virtual-network). Pokud `A` záznam najdete, ale obsahuje je na nesprávnou IP adresu, je nutné odebrat chybnou IP adresu a přidat novou. Doporučuje se odebrat celý `A` záznam a přidat nový.
+Také hodnota `A` záznamu (IP adresa) musí být [privátní IP adresa trezoru klíčů](#find-the-key-vault-private-ip-address-in-the-virtual-network). Pokud `A` záznam najdete, ale obsahuje špatnou IP adresu, je nutné odebrat chybnou IP adresu a přidat novou. Doporučuje se odebrat celý `A` záznam a přidat nový.
 
 >[!NOTE]
 > Pokaždé, když odeberete nebo upravíte `A` záznam, může se počítač stále překládat na starou IP adresu, protože hodnota TTL (Time to Live) ještě nemusí být vypršet. Doporučuje se vždycky zadat hodnotu TTL, která není menší než 60 sekund (jedna minuta) a nesmí přesáhnout 600 sekund (10 minut). Pokud zadáte příliš velkou hodnotu, vaše obnovení z výpadků může trvat příliš dlouho.
@@ -259,9 +261,9 @@ Také hodnota `A` záznamu (IP adresa) musí být [privátní IP adresa trezoru 
 
 Pokud existuje více virtuálních sítí a každá z nich má svůj vlastní prostředek privátního koncového bodu odkazující na stejný Trezor klíčů, musí název hostitele trezoru klíčů překládat na jinou privátní IP adresu v závislosti na síti. To znamená, že je potřeba také více Privátní DNS zón, z nichž každá je propojena s jinou Virtual Network a používá jinou IP adresu v `A` záznamu.
 
-V pokročilejších scénářích je více virtuálních sítí s povoleným partnerským vztahem. V takovém případě bude potřebovat pouze jeden Virtual Network prostředek privátního koncového bodu, i když oba mohou být propojeny s prostředkem zóny Privátní DNS. Tento scénář není přímo pokryt tímto dokumentem.
+V pokročilejších scénářích můžou mít virtuální sítě povolený partnerský vztah. V takovém případě bude potřebovat pouze jeden Virtual Network prostředek privátního koncového bodu, i když oba mohou být propojeny s prostředkem zóny Privátní DNS. Tento scénář není přímo pokryt tímto dokumentem.
 
-### <a name="fact-you-have-control-over-dns-resolution"></a>Fakt: máte kontrolu nad překladem názvů DNS.
+### <a name="understand-that-you-have-control-over-dns-resolution"></a>Pochopení, že máte kontrolu nad překladem názvů DNS
 
 Jak je vysvětleno v [předchozí části](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine), Trezor klíčů s privátními odkazy má alias `{vaultname}.privatelink.vaultcore.azure.net` ve své *veřejné* registraci. Server DNS používaný Virtual Network používá veřejnou registraci, ale kontroluje všechny aliasy pro *soukromou* registraci, a pokud je nalezen, zastaví se následující aliasy definované při veřejné registraci.
 
@@ -324,9 +326,9 @@ V `addr` poli v `x-ms-keyvault-network-info` hlavičce se zobrazuje IP adresa p�
 ### <a name="query-the-key-vault-ip-address-directly"></a>Dotazování na IP adresu trezoru klíčů přímo
 
 >[!IMPORTANT]
-> Přístup k trezoru klíčů bez ověření certifikátu HTTPS je nebezpečný a dá se použít jenom pro účely učení. Kód v produkčním prostředí nesmí nikdy přistupovat k trezoru klíčů bez tohoto ověření na straně klienta. I když se jenom diagnostikují problémy, může vás podléhat průběžnému pokusu o manipulaci, který se nezobrazí, pokud v žádostech na Trezor klíčů vždycky zakážete ověřování certifikátů pomocí protokolu HTTPS.
+> Přístup k trezoru klíčů bez ověření certifikátu HTTPS je nebezpečný a dá se použít jenom pro účely učení. Kód v produkčním prostředí nesmí nikdy přistupovat k trezoru klíčů bez tohoto ověření na straně klienta. I v případě, že se jenom diagnostikují problémy, můžete se setkat s pokusy o manipulaci, které se nezobrazí, pokud v žádostech na Trezor klíčů často zakážete ověřování certifikátů pomocí protokolu HTTPS.
 
-Pokud jste nainstalovali nejnovější verze prostředí PowerShell, můžete použít `-SkipCertificateCheck` k přeskočení kontrol certifikátů protokolu HTTPS a pak můžete přímo cílit na [IP adresu trezoru klíčů](#find-the-key-vault-private-ip-address-in-the-virtual-network) :
+Pokud jste nainstalovali nejnovější verzi prostředí PowerShell, můžete použít `-SkipCertificateCheck` k přeskočení kontrol certifikátů protokolu HTTPS a pak můžete přímo cílit na [IP adresu trezoru klíčů](#find-the-key-vault-private-ip-address-in-the-virtual-network) :
 
     PS C:\> $(Invoke-WebRequest -SkipCertificateCheck -Uri https://10.1.2.3/healthstatus).Headers
 
@@ -334,7 +336,7 @@ Pokud používáte `curl` , můžete to samé provést s `-k` argumentem:
 
     joe@MyUbuntu:~$ curl -i -k https://10.1.2.3/healthstatus
 
-Odpovědi by měly být stejné jako v předchozím oddílu, což znamená, že musí obsahovat `x-ms-keyvault-network-info` hlavičku se stejnou hodnotou. `/healthstatus`Pokud používáte název hostitele trezoru klíčů nebo IP adresu, koncový bod nezáleží.
+Odpovědi musí být stejné jako v předchozím oddílu, což znamená, že musí obsahovat `x-ms-keyvault-network-info` hlavičku se stejnou hodnotou. `/healthstatus`Pokud používáte název hostitele trezoru klíčů nebo IP adresu, koncový bod nezáleží.
 
 Pokud se zobrazí `x-ms-keyvault-network-info` vrácení jedné hodnoty pro požadavek pomocí názvu hostitele trezoru klíčů a další hodnota pro požadavek s použitím IP adresy, pak každý požadavek cílí na jiný koncový bod. Chcete-li se `addr` `x-ms-keyvault-network-info` rozhodnout, které případy jsou chybné a je nutné je opravit, přečtěte si vysvětlení pole z předchozí části.
 
@@ -354,7 +356,7 @@ Pokud používáte výchozí servery DNS poskytované Azure, je možné použít
 
 ### <a name="promiscuous-proxies-fiddler-etc"></a>Promiskuitní proxy (Fiddler atd.)
 
-S výjimkou výslovně uvedených možností diagnostiky v tomto článku fungují pouze v případě, že v prostředí není k dispozici žádný smíšený proxy server. I když jsou tyto proxy servery často nainstalovány výhradně v počítači, který je diagnostikován (Fiddler je nejběžnější příklad), mohou pokročilí správci přepsat kořenové certifikační autority (CAs) a nainstalovat promiskuitní proxy server v zařízeních brány, které obsluhují více počítačů v síti. Tyto proxy servery můžou významně ovlivnit zabezpečení i spolehlivost. Společnost Microsoft nepodporuje konfigurace, které tyto produkty používají.
+S výjimkou případů, kdy je výslovně uvedeno, možnosti diagnostiky v tomto článku fungují pouze v případě, že v prostředí není k dispozici žádný smíšený proxy server. I když jsou tyto proxy servery často nainstalovány výhradně v počítači, který je diagnostikován (Fiddler je nejběžnější příklad), mohou pokročilí správci přepsat kořenové certifikační autority (CAs) a nainstalovat promiskuitní proxy server v zařízeních brány, které obsluhují více počítačů v síti. Tyto proxy servery můžou významně ovlivnit zabezpečení i spolehlivost. Společnost Microsoft nepodporuje konfigurace, které tyto produkty používají.
 
 ### <a name="other-things-that-may-affect-connectivity"></a>Další věci, které mohou mít vliv na připojení
 

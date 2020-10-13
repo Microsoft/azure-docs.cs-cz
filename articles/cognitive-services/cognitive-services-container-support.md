@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: místní, Docker, kontejner, Kubernetes
-ms.openlocfilehash: ed61760312ad8bada0241b0338c36ab3557e2caa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf0ea6339de1ba6aca93a1a71990515d296f2e3a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665408"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999699"
 ---
 # <a name="azure-cognitive-services-containers"></a>Kontejnery Azure Cognitive Services
 
@@ -72,7 +72,7 @@ Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů D
 | [Analýza textu][ta-containers-language] | F0, S | **Rozpoznávání jazyka** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Pro až 120 jazyků rozpozná, který jazyk je vstupní text napsán, a nahlaste jeden kód jazyka pro každý dokument odeslaný na žádost. Kód jazyka spárovaný se skóre označuje sílu skóre. |
 | [Analýza textu][ta-containers-sentiment] | F0, S | **Analýza mínění V3** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analyzuje nezpracovaný text pro potvrzení o kladné nebo záporné mínění. Tato verze analýzy mínění vrací popisky mínění (například *kladné* nebo *záporné*) pro každý dokument a větu v něm. |
 | [Analýza textu][ta-containers-health] | F0, S | **Analýza textu pro stav** | Extrakce a označení lékařských informací z nestrukturovaného klinického textu. |
-| [Prostorová analýza][spa-containers] | S0 | **Prostorová analýza** | Extrakce a označení lékařských informací z nestrukturovaného klinického textu. |
+| [Prostorová analýza][spa-containers] | S0 | **Prostorová analýza** | Analyzuje video streamování v reálném čase, které vám pomůže pochopit prostorové vztahy mezi lidmi, jejich pohybem a interakcemi s objekty ve fyzických prostředích. |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|

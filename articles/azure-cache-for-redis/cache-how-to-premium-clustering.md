@@ -5,13 +5,13 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 06/13/2018
-ms.openlocfilehash: d37aa275a07586738bf7416cee6611bdc8284df3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: 9545dd1480b9d16285d936787cf37fc087e882e1
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88004777"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000049"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Postup konfigurace clusteringu Redis pro mezipaměť Azure úrovně Premium pro Redis
 Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Tento článek popisuje, jak nakonfigurovat clustering v mezipaměti Azure Premium pro instanci Redis.
@@ -31,19 +31,51 @@ V Azure se cluster Redis nabízí jako model primární/repliky, kde každý hor
 ## <a name="clustering"></a>Clustering
 Clustering je povolený v **nové službě Azure cache pro Redis** během vytváření mezipaměti. 
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
+1. Pokud chcete vytvořit mezipaměť úrovně Premium, přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **vytvořit prostředek**. Mezipaměti můžete vytvářet na portálu Azure Portal, ale také pomocí šablon Resource Manageru, PowerShellu nebo rozhraní příkazového řádku Azure. Další informace o vytvoření mezipaměti Azure pro Redis najdete v tématu [vytvoření mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
-Clustering se konfiguruje v okně **clusteru Redis** .
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Vytvořit prostředek.":::
+   
+2. Na stránce **Nový** vyberte **databáze** a pak vyberte **Azure cache pro Redis**.
 
-![Clustering][redis-cache-clustering]
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Vytvořit prostředek.":::
 
-V clusteru můžete mít až 10 horizontálních oddílů. Klikněte na **povoleno** a posunutí posuvníku nebo zadejte číslo od 1 do 10 pro **horizontálních oddílů Count** a klikněte na **OK**.
+3. Na stránce **nový Redis Cache** nakonfigurujte nastavení pro novou mezipaměť Premium.
+   
+   | Nastavení      | Navrhovaná hodnota  | Popis |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Název DNS** | Zadejte globálně jedinečný název. | Název mezipaměti musí být řetězec v rozmezí 1 až 63 znaků, který obsahuje jenom čísla, písmena nebo spojovníky. Název musí začínat a končit číslicí nebo písmenem a nesmí obsahovat po sobě jdoucí spojovníky. *Název hostitele* vaší instance mezipaměti bude * \<DNS name> . Redis.cache.Windows.NET*. | 
+   | **Předplatné** | Rozevírací seznam a vyberte své předplatné. | Předplatné, ve kterém se má vytvořit Tato nová mezipaměť Azure pro instanci Redis | 
+   | **Skupina prostředků** | Rozevírací seznam a vyberte skupinu prostředků nebo vyberte **vytvořit novou** a zadejte nový název skupiny prostředků. | Název skupiny prostředků, ve které se má vytvořit mezipaměť a další prostředky Po uložení všech prostředků vaší aplikace do jedné skupiny prostředků je můžete snadno spravovat nebo odstraňovat společně. | 
+   | **Umístění** | Rozevírací seznam a vyberte umístění. | Vyberte [oblast](https://azure.microsoft.com/regions/) poblíž jiných služeb, které budou používat vaši mezipaměť. |
+   | **Typ mezipaměti** | Rozevírací seznam a vyberte mezipaměť Premium pro konfiguraci prémiových funkcí. Podrobnosti najdete v tématu [ceny služby Azure cache pro Redis](https://azure.microsoft.com/pricing/details/cache/). |  Cenová úroveň určuje velikost, výkon a funkce, které jsou k dispozici pro danou mezipaměť. Další informace najdete v tématu [Přehled služby Azure cache pro Redis](cache-overview.md). |
 
-Každý horizontálních oddílů je pár mezipaměti primárního/repliky, který spravuje Azure, a celková velikost mezipaměti se počítá vynásobením počtu horizontálních oddílů velikostí mezipaměti vybranou v cenové úrovni. 
+4. Vyberte kartu **síť** nebo klikněte na tlačítko **sítě** v dolní části stránky.
 
-![Clustering][redis-cache-clustering-selected]
+5. Na kartě **sítě** vyberte metodu připojení. U instancí služby Premium cache se můžete připojit veřejně, prostřednictvím veřejných IP adres nebo koncových bodů služby nebo soukromě pomocí privátního koncového bodu.
 
-Po vytvoření mezipaměti se k ní připojíte a použijete ji stejně jako mezipaměť bez clusterů a Redis distribuuje data v celé mezipaměti horizontálních oddílů. Pokud je [povolená](cache-how-to-monitor.md#enable-cache-diagnostics)diagnostika, jsou metriky zachyceny samostatně pro každý horizontálních oddílů a lze je [Zobrazit](cache-how-to-monitor.md) v okně Azure cache pro Redis. 
+6. Vyberte kartu **Další: Upřesnit** nebo klikněte na tlačítko **Další: Upřesnit** v dolní části stránky.
+
+7. Na kartě **Upřesnit** u instance mezipaměti úrovně Premium nakonfigurujte nastavení pro port bez TLS, clusteringu a trvalost dat. Pokud chcete povolit clusteringu, klikněte na **Povolit**.
+
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering.png" alt-text="Vytvořit prostředek.":::
+
+    V clusteru můžete mít až 10 horizontálních oddílů. Po kliknutí na **Povolit**posuňte posuvník nebo zadejte číslo od 1 do 10 pro **horizontálních oddílů Count** a klikněte na **OK**.
+
+    Každý horizontálních oddílů je pár mezipaměti primárního/repliky, který spravuje Azure, a celková velikost mezipaměti se počítá vynásobením počtu horizontálních oddílů velikostí mezipaměti vybranou v cenové úrovni.
+
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png" alt-text="Vytvořit prostředek.":::
+
+    Po vytvoření mezipaměti se k ní připojíte a použijete ji stejně jako mezipaměť bez clusterů a Redis distribuuje data v celé mezipaměti horizontálních oddílů. Pokud je [povolená](cache-how-to-monitor.md#enable-cache-diagnostics)diagnostika, jsou metriky zachyceny samostatně pro každý horizontálních oddílů a lze je [Zobrazit](cache-how-to-monitor.md) v okně Azure cache pro Redis. 
+
+8. Vyberte kartu **Další: značky** nebo klikněte na tlačítko **Další: značky** v dolní části stránky.
+
+9. Volitelně můžete na kartě **značky** zadat název a hodnotu, pokud chcete prostředek zařadit do kategorií. 
+
+10. Vyberte **zkontrolovat + vytvořit**. Přejdete na kartu Revize + vytvořit, kde Azure ověřuje vaši konfiguraci.
+
+11. Po zobrazení zprávy se zobrazeným zeleným ověřením vyberte **vytvořit**.
+
+Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled**služby Azure cache pro Redis   . Pokud se **stav**   zobrazuje jako **spuštěno**, mezipaměť je připravena k použití. 
 
 > [!NOTE]
 > 
@@ -136,7 +168,7 @@ Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 V případě protokolu TLS Nahraďte parametr `1300N` `1500N` .
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Můžu nakonfigurovat clustering pro dříve vytvořenou mezipaměť?
-Ano. Nejdřív zajistěte, aby byla vaše mezipaměť Premium, a to tak, že pokud není, proveďte škálování. Dále byste měli být schopni zobrazit možnosti konfigurace clusteru, včetně možnosti Povolit cluster. Velikost clusteru můžete změnit po vytvoření mezipaměti, nebo po prvním povolení clusteringu.
+Yes. Nejdřív zajistěte, aby byla vaše mezipaměť Premium, a to tak, že pokud není, proveďte škálování. Dále byste měli být schopni zobrazit možnosti konfigurace clusteru, včetně možnosti Povolit cluster. Velikost clusteru můžete změnit po vytvoření mezipaměti, nebo po prvním povolení clusteringu.
 
    >[!IMPORTANT]
    >Nemůžete zrušit povolování clusteringu. A povolená mezipaměť s podporou clusteringu a jenom jedna horizontálních oddílů se chová *jinak* než mezipaměť stejné velikosti *bez* clusteringu.

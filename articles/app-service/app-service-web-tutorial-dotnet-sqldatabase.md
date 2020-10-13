@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 90becfb79973ba45851b0e30384b0f05a7b887e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a427fbc6fad1566ae10e11b61de981aded32e64a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962243"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000335"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Kurz: nasazení aplikace v ASP.NET do Azure pomocí Azure SQL Database
 
@@ -65,20 +65,18 @@ V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt **DotNetA
 
 ![Publikování z Průzkumníka řešení](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-Zkontrolujte, že je vybraná možnost **Microsoft Azure App Service** a klikněte na **Publikovat**.
+Jako cíl vyberte **Azure** , klikněte na další a ujistěte se, že je vybraná možnost **Azure App Service (Windows)** , a klikněte znovu na další.
 
 ![Publikování ze stránky přehledu projektu](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-to-app-service.png)
 
-Publikování otevře dialog **vytvořit App Service** , který vám pomůže vytvořit všechny prostředky Azure potřebné ke spuštění vaší aplikace ASP.NET v Azure.
-
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-V dialogovém okně **Vytvoření služby App Service** klikněte na **Přidat účet** a přihlaste se ke svému předplatnému Azure. Pokud jste již přihlášení k účtu Microsoft, ujistěte se, že odpovídá vašemu předplatnému Azure. Pokud jste přihlášeni k účtu Microsoft, který nemá přiřazené předplatné Azure, kliknutím na něj přidejte správný účet.
+V dialogovém okně **publikovat** klikněte v rozevíracím seznamu Správce účtů na **Přidat účet** a potom se přihlaste ke svému předplatnému Azure. Pokud jste již přihlášení k účtu Microsoft, ujistěte se, že odpovídá vašemu předplatnému Azure. Pokud jste přihlášeni k účtu Microsoft, který nemá přiřazené předplatné Azure, kliknutím na něj přidejte správný účet.
+
+![Přihlášení k Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 > [!NOTE]
 > Pokud už jste přihlášení, nevybírejte zatím možnost **Vytvořit**.
-
-![Přihlášení k Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 ### <a name="configure-the-web-app-name"></a>Konfigurace názvu webové aplikace
 
@@ -112,15 +110,20 @@ Můžete ponechat vygenerovaný název webové aplikace nebo ho můžete změnit
    |**Umístění**| Západní Evropa | [Oblasti Azure](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
    |**Velikost**| Free | [Cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
+3. Dialog **publikovat** zobrazuje prostředky, které jste nakonfigurovali. Klikněte na **Finish** (Dokončit).
+
+   ![prostředky, které jste vytvořili](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
+
+
 ### <a name="create-a-server"></a>Vytvoření serveru
 
 Před vytvořením databáze budete potřebovat [logický SQL Server](../azure-sql/database/logical-servers.md). Logický SQL Server je logická konstrukce, která obsahuje skupinu databází spravovaných jako skupina.
 
-1. Klikněte na **Vytvořit službu SQL Database**.
+1. V části **připojené služby**klikněte na **Konfigurovat** další SQL Server databázi.
 
    ![Vytvoření databáze SQL](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
-2. V dialogovém okně **Konfigurace služby SQL Database** klikněte na **Nový** vedle **SQL Server**.
+2. V dialogovém okně **Azure SQL Database** klikněte na **Nový** vedle **databázového serveru**.
 
    Vygeneruje se jedinečný název serveru. Tento název se používá jako součást výchozí adresy URL pro váš server `<server_name>.database.windows.net` . Musí být jedinečný napříč všemi servery v Azure SQL. Název serveru můžete změnit, ale pro účely tohoto kurzu ponechte vygenerovanou hodnotu.
 
@@ -128,34 +131,37 @@ Před vytvořením databáze budete potřebovat [logický SQL Server](../azure-s
 
    Toto uživatelské jméno a heslo si zapamatujte. Později je budete potřebovat ke správě serveru.
 
+   ![Vytvoření serveru](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
+
    > [!IMPORTANT]
    > Přestože je vaše heslo v připojovacích řetězcích maskované (v sadě Visual Studio i ve službě App Service), skutečnost, že se někde uchovává, rozšiřuje prostor pro útok na vaši aplikace. App Service může toto riziko odstranit pomocí [identit spravovaných služeb](overview-managed-identity.md), které úplně odstraňují potřebu uchovávat tajné klíče v kódu nebo konfiguraci aplikace. Další informace najdete v části [Další kroky](#next-steps).
-
-   ![Vytvoření serveru](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
 4. Klikněte na **OK**. Dialogové okno **Konfigurace služby SQL Database** ještě nezavírejte.
 
 ### <a name="create-a-database-in-azure-sql-database"></a>Vytvoření databáze v Azure SQL Database
 
-1. V dialogovém okně **Konfigurace služby SQL Database**:
+1. V dialogovém okně **Azure SQL Database** :
 
    * Ponechte výchozí vygenerovaný **Název databáze**.
-   * Do pole **Název připojovacího řetězce** zadejte *MyDbConnection*. Tento název se musí shodovat s připojovacím řetězcem, na který se odkazuje v souboru *Models/MyDatabaseContext.cs*.
-   * Vyberte **OK**.
+   * Vyberte **Vytvořit**.
 
     ![Konfigurace databáze](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-2. V dialogovém okně **Vytvoření služby App Service** se zobrazí prostředky, které jste nakonfigurovali. Klikněte na **Vytvořit**.
+2. Do pole **název připojovacího řetězce databáze**zadejte _MyDbConnection_. Tento název se musí shodovat s připojovacím řetězcem, na který se odkazuje v souboru _Models/MyDatabaseContext.cs_.
 
-   ![prostředky, které jste vytvořili](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
+3. Zadejte uživatelské jméno a heslo správce, které jste použili v části [vytvoření serveru](#create-a-server) kroku 3, do uživatelského jména a hesla databáze.
 
-Jakmile průvodce dokončí vytváření prostředků Azure, publikuje vaši aplikaci ASP.NET do Azure. Spustí se váš výchozí prohlížeč na adrese URL nasazené aplikace.
+    ![Konfigurovat připojovací řetězec databáze](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-connection.png)
+
+4. Vyberte **Dokončit**.
+
+Až průvodce dokončí vytváření prostředků Azure, klikněte na **publikovat** a nasaďte aplikaci ASP.NET do Azure. Spustí se váš výchozí prohlížeč na adrese URL nasazené aplikace.
 
 Přidejte několik položek úkolů.
 
 ![Publikovaná aplikace ASP.NET v Azure App](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
-Blahopřejeme! Vaše aplikace ASP.NET řízená daty je spuštěná ve službě Azure App Service.
+Gratulujeme! Vaše aplikace ASP.NET řízená daty je spuštěná ve službě Azure App Service.
 
 ## <a name="access-the-database-locally"></a>Místní přístup k databázi
 

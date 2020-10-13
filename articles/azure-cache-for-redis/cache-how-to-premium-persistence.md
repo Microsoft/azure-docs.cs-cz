@@ -5,16 +5,16 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 08/24/2017
-ms.openlocfilehash: aaee1c07f0fc8d5b0bba03550986291aea814fcb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: fbfd384787d35317a4e45c4f91cf8a3ad4ba5a61
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88004795"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000010"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat Trvalost dat pro mezipaměť Azure Premium pro Redis
-Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu pro výběr velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Tento článek popisuje, jak nakonfigurovat trvalost v mezipaměti Azure úrovně Premium pro instanci Redis.
+V tomto článku se dozvíte, jak nakonfigurovat trvalost v mezipaměti Azure Premium pro instanci Redis prostřednictvím Azure Portal. Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. 
 
 ## <a name="what-is-data-persistence"></a>Co je trvalost dat?
 [Redis Persistence](https://redis.io/topics/persistence) umožňuje zachovat data uložená v Redis. Můžete také pořizovat snímky a zálohovat data, která můžete načíst v případě selhání hardwaru. Jedná se o obrovský přínos oproti úrovni Basic nebo Standard, kde jsou všechna data uložená v paměti a může dojít ke ztrátě dat v případě selhání, kde jsou uzly mezipaměti mimo provoz. 
@@ -32,54 +32,62 @@ Trvalost zapisuje Redis data do účtu Azure Storage, který vlastníte a spravu
 > 
 > 
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
+1. Pokud chcete vytvořit mezipaměť úrovně Premium, přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **vytvořit prostředek**. Mezipaměti můžete vytvářet na portálu Azure Portal, ale také pomocí šablon Resource Manageru, PowerShellu nebo rozhraní příkazového řádku Azure. Další informace o vytvoření mezipaměti Azure pro Redis najdete v tématu [vytvoření mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
-Po výběru cenové úrovně Premium klikněte na **Redis Persistence**.
+    :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Vytvořit prostředek.":::
+   
+2. Na stránce **Nový** vyberte **databáze** a pak vyberte **Azure cache pro Redis**.
 
-![Redis Persistence][redis-cache-persistence]
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Vytvořit prostředek.":::
 
-Kroky v další části popisují, jak nakonfigurovat trvalost Redis pro novou mezipaměť Premium. Po nakonfigurování trvalosti Redis klikněte na **vytvořit** a vytvořte novou mezipaměť Premium s Redis persistencí.
+3. Na stránce **nový Redis Cache** nakonfigurujte nastavení pro novou mezipaměť Premium.
+   
+   | Nastavení      | Navrhovaná hodnota  | Popis |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Název DNS** | Zadejte globálně jedinečný název. | Název mezipaměti musí být řetězec v rozmezí 1 až 63 znaků, který obsahuje jenom čísla, písmena nebo spojovníky. Název musí začínat a končit číslicí nebo písmenem a nesmí obsahovat po sobě jdoucí spojovníky. *Název hostitele* vaší instance mezipaměti bude * \<DNS name> . Redis.cache.Windows.NET*. | 
+   | **Předplatné** | Rozevírací seznam a vyberte své předplatné. | Předplatné, ve kterém se má vytvořit Tato nová mezipaměť Azure pro instanci Redis | 
+   | **Skupina prostředků** | Rozevírací seznam a vyberte skupinu prostředků nebo vyberte **vytvořit novou** a zadejte nový název skupiny prostředků. | Název skupiny prostředků, ve které se má vytvořit mezipaměť a další prostředky Po uložení všech prostředků vaší aplikace do jedné skupiny prostředků je můžete snadno spravovat nebo odstraňovat společně. | 
+   | **Umístění** | Rozevírací seznam a vyberte umístění. | Vyberte [oblast](https://azure.microsoft.com/regions/) poblíž jiných služeb, které budou používat vaši mezipaměť. |
+   | **Typ mezipaměti** | Rozevírací seznam a vyberte mezipaměť Premium pro konfiguraci prémiových funkcí. Podrobnosti najdete v tématu [ceny služby Azure cache pro Redis](https://azure.microsoft.com/pricing/details/cache/). |  Cenová úroveň určuje velikost, výkon a funkce, které jsou k dispozici pro danou mezipaměť. Další informace najdete v tématu [Přehled služby Azure cache pro Redis](cache-overview.md). |
 
-## <a name="enable-redis-persistence"></a>Povolit trvalost Redis
+4. Vyberte kartu **síť** nebo klikněte na tlačítko **sítě** v dolní části stránky.
 
-Redis Persistence je povolená v okně **Trvalost dat** , a to tak, že vyberete buď **RDB** , nebo **AOF** Persistence. Pro nové mezipaměti je toto okno k dispozici během procesu vytváření mezipaměti, jak je popsáno v předchozí části. V případě existujících mezipamětí se k oknu **trvalá data** dostanete z **nabídky prostředků** pro vaši mezipaměť.
+5. Na kartě **sítě** vyberte metodu připojení. U instancí služby Premium cache se můžete připojit veřejně, prostřednictvím veřejných IP adres nebo koncových bodů služby nebo soukromě pomocí privátního koncového bodu.
 
-![Nastavení Redis][redis-cache-settings]
+6. Vyberte kartu **Další: Upřesnit** nebo klikněte na tlačítko **Další: Upřesnit** v dolní části stránky.
 
+7. Na kartě **Upřesnit** u instance mezipaměti úrovně Premium nakonfigurujte nastavení pro port bez TLS, clusteringu a trvalost dat. Pro trvalost dat můžete zvolit buď možnost **RDB** , nebo **AOF** Persistence. 
 
-## <a name="configure-rdb-persistence"></a>Konfigurace trvalosti RDB
+8. Chcete-li povolit trvalost RDB, klikněte na **RDB** a nakonfigurujte nastavení. 
+   
+   | Nastavení      | Navrhovaná hodnota  | Popis |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **Četnost zálohování** | Rozevírací seznam a výběr intervalu zálohování, volby zahrnují **15 minut**, **30 minut**, **60 minut**, **6 hodin**, **12 hodin**a **24 hodin**. | Tento interval začíná počítat po úspěšném dokončení předchozí operace zálohování a při každém zahájení zálohování. | 
+   | **Účet úložiště** | Rozevírací seznam a vyberte svůj účet úložiště. | Musíte zvolit účet úložiště ve stejné oblasti, ve které je mezipaměť, a doporučuje se účet **Premium Storage** , protože Premium Storage má vyšší propustnost.  | 
+   | **Klíč úložiště** | Rozevírací seznam a vyberte buď **primární klíč** , nebo **sekundární klíč** , který chcete použít. | Pokud se znovu vygeneruje klíč úložiště pro váš účet trvalosti, musíte znovu nakonfigurovat požadovaný klíč z rozevíracího seznamu **klíč úložiště** . | 
 
-Chcete-li povolit trvalost RDB, klikněte na položku **RDB**. Pokud chcete zakázat trvalost RDB u dříve povolené mezipaměti Premium, klikněte na **disabled (zakázáno**).
+    První zálohování se iniciuje po uplynutí intervalu četnosti zálohování.
 
-![Trvalost Redis RDB][redis-cache-rdb-persistence]
+9. Chcete-li povolit AOF Persistence, klikněte na **AOF** a nakonfigurujte nastavení. 
+   
+   | Nastavení      | Navrhovaná hodnota  | Popis |
+   | ------------ |  ------- | -------------------------------------------------- |
+   | **První účet úložiště** | Rozevírací seznam a vyberte svůj účet úložiště. | Tento účet úložiště musí být ve stejné oblasti jako mezipaměť a doporučuje se účet **Premium Storage** , protože Premium Storage má vyšší propustnost. | 
+   | **Klíč prvního úložiště** | Rozevírací seznam a vyberte buď **primární klíč** , nebo **sekundární klíč** , který chcete použít. | Pokud se znovu vygeneruje klíč úložiště pro váš účet trvalosti, musíte znovu nakonfigurovat požadovaný klíč z rozevíracího seznamu **klíč úložiště** . | 
+   | **Druhý účet úložiště** | Volitelné Rozevírací seznam a vyberte buď **primární klíč** , nebo **sekundární klíč** , který chcete použít. | Volitelně můžete nakonfigurovat další účet úložiště. Pokud je nakonfigurovaný druhý účet úložiště, zapisují se zápisy do mezipaměti repliky do tohoto druhého účtu úložiště. | 
+   | **Druhý klíč úložiště** | Volitelné Rozevírací seznam a vyberte buď **primární klíč** , nebo **sekundární klíč** , který chcete použít. | Pokud se znovu vygeneruje klíč úložiště pro váš účet trvalosti, musíte znovu nakonfigurovat požadovaný klíč z rozevíracího seznamu **klíč úložiště** . | 
 
-Pokud chcete interval zálohování nakonfigurovat, vyberte v rozevíracím seznamu **četnost zálohování** . Volby zahrnují **15 minut**, **30 minut**, **60 minut**, **6 hodin**, **12 hodin**a **24 hodin**. Tento interval začíná počítat po úspěšném dokončení předchozí operace zálohování a při každém zahájení zálohování.
+    Když je povolená trvalost AOF, operace zápisu do mezipaměti se uloží do určeného účtu úložiště (nebo účtů, pokud jste nakonfigurovali druhý účet úložiště). V případě závažného selhání, které vychází z primární i mezipaměti repliky, se k opětovnému sestavení mezipaměti použije uložený protokol AOF.
 
-Klikněte na **účet úložiště** a vyberte účet úložiště, který se má použít, a vyberte **primární klíč** nebo **sekundární klíč** , který se použije v rozevíracím seznamu **klíč úložiště** . Musíte zvolit účet úložiště ve stejné oblasti, ve které je mezipaměť, a doporučuje se účet **Premium Storage** , protože Premium Storage má vyšší propustnost. 
+10. Vyberte kartu **Další: značky** nebo klikněte na tlačítko **Další: značky** v dolní části stránky.
 
-> [!IMPORTANT]
-> Pokud se znovu vygeneruje klíč úložiště pro váš účet trvalosti, musíte znovu nakonfigurovat požadovaný klíč z rozevíracího seznamu **klíč úložiště** .
-> 
-> 
+11. Volitelně můžete na kartě **značky** zadat název a hodnotu, pokud chcete prostředek zařadit do kategorií. 
 
-Kliknutím na tlačítko **OK** uložte konfiguraci trvalosti.
+12. Vyberte **zkontrolovat + vytvořit**. Přejdete na kartu Revize + vytvořit, kde Azure ověřuje vaši konfiguraci.
 
-Další zálohování (nebo první zálohování pro nové mezipaměti) se iniciuje po uplynutí intervalu četnosti zálohování.
+13. Po zobrazení zprávy se zobrazeným zeleným ověřením vyberte **vytvořit**.
 
-## <a name="configure-aof-persistence"></a>Konfigurace trvalosti AOF
-
-Pokud chcete povolit trvalost AOF, klikněte na **AOF**. Pokud chcete zakázat AOF Persistence u dříve povolené mezipaměti Premium, klikněte na **disabled (zakázáno**).
-
-![Redis AOF Persistence][redis-cache-aof-persistence]
-
-Pokud chcete nakonfigurovat trvalost AOF, zadejte **první účet úložiště**. Tento účet úložiště musí být ve stejné oblasti jako mezipaměť a doporučuje se účet **Premium Storage** , protože Premium Storage má vyšší propustnost. Volitelně můžete nakonfigurovat další účet úložiště s názvem **druhý účet úložiště**. Pokud je nakonfigurovaný druhý účet úložiště, zapisují se zápisy do mezipaměti repliky do tohoto druhého účtu úložiště. U každého nakonfigurovaného účtu úložiště vyberte **primární klíč** nebo **sekundární klíč** , který se použije v rozevíracím seznamu **klíč úložiště** . 
-
-> [!IMPORTANT]
-> Pokud se znovu vygeneruje klíč úložiště pro váš účet trvalosti, musíte znovu nakonfigurovat požadovaný klíč z rozevíracího seznamu **klíč úložiště** .
-> 
-> 
-
-Když je povolená trvalost AOF, operace zápisu do mezipaměti se uloží do určeného účtu úložiště (nebo účtů, pokud jste nakonfigurovali druhý účet úložiště). V případě závažného selhání, které vychází z primární i mezipaměti repliky, se k opětovnému sestavení mezipaměti použije uložený protokol AOF.
+Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled**služby Azure cache pro Redis   . Pokud se **stav**   zobrazuje jako **spuštěno**, mezipaměť je připravena k použití. 
 
 ## <a name="persistence-faq"></a>Nejčastější dotazy týkající se trvalosti
 Následující seznam obsahuje odpovědi na nejčastější dotazy týkající se trvalosti Azure cache pro Redis.
@@ -148,7 +156,7 @@ AOF Persistence má vliv na propustnost přibližně o 15% – 20%, pokud je mez
 
 ### <a name="how-can-i-remove-the-second-storage-account"></a>Jak můžu odebrat druhý účet úložiště?
 
-Sekundární účet úložiště AOF Persistence můžete odebrat tak, že nastavíte druhý účet úložiště tak, aby byl stejný jako první účet úložiště. Pokyny najdete v tématu [Konfigurace Persistence AOF](#configure-aof-persistence).
+Sekundární účet úložiště AOF Persistence můžete odebrat tak, že nastavíte druhý účet úložiště tak, aby byl stejný jako první účet úložiště. V případě existujících mezipamětí se k oknu **trvalá data** dostanete z **nabídky prostředků** pro vaši mezipaměť. Pokud chcete zakázat AOF Persistence, klikněte na **disabled (zakázáno**).
 
 ### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>Co je přepsání a jak má vliv na moji mezipaměť?
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/12/2020
+ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 676b6abb28abf58287bfc9036ca907ae6a1ee192
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 20480a252d7aedfd48a59bc05166f645e02e37e9
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961285"
+ms.locfileid: "91998429"
 ---
 # <a name="json-claims-transformations"></a>Transformace deklarací JSON
 
@@ -112,7 +112,7 @@ Následující příklad generuje řetězec JSON na základě hodnot deklarace i
 </ClaimsTransformation>
 ```
 
-Následující transformace deklarací identity vypíše deklaraci identity řetězce JSON, která bude textem žádosti odeslanou REST API. Struktura objektu JSON je definována ID v desítkovém zápisu vstupními parametry a TransformationClaimTypesem InputClaims. Čísla v zápisu teček implikují pole. Hodnoty pocházejí z hodnot InputClaims a vstupní hodnoty vlastností value.
+Následující transformace deklarací identity vypíše deklaraci identity řetězce JSON, která bude textem žádosti odeslanou REST API. Struktura objektu JSON je definována ID v desítkovém zápisu vstupními parametry a TransformationClaimTypesem InputClaims. Hodnoty pocházejí z hodnot InputClaims a vstupní hodnoty vlastností value.
 
 - Vstupní deklarace identity:
   - **e-mail**, typ deklarace transformace  **customerEntity. email**: " john.s@contoso.com "
@@ -187,7 +187,7 @@ Získá seznam zadaných elementů z dat JSON.
 | InputParameter | includeEmptyClaims | řetězec | Určete, jestli se mají zahrnout prázdné deklarace identity. |
 | InputParameter | jsonSourceKeyName | řetězec | Název klíče elementu |
 | InputParameter | jsonSourceValueName | řetězec | Název hodnoty prvku |
-| OutputClaim | Shromažďování | String, int, Boolean a DateTime |Seznam deklarací, které se mají extrahovat Název deklarace identity by měl být roven hodnotě zadané ve vstupní deklaraci _jsonSourceClaim_ . |
+| OutputClaim | Kolekce | String, int, Boolean a DateTime |Seznam deklarací, které se mají extrahovat Název deklarace identity by měl být roven hodnotě zadané ve vstupní deklaraci _jsonSourceClaim_ . |
 
 V následujícím příkladu transformace deklarací extrahuje následující deklarace: e-mail (String), DisplayName (String), membershipNum (int), Active (Boolean) a DatumNarození (DateTime) z dat JSON.
 

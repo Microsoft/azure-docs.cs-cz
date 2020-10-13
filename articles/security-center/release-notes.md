@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: c8143a6c6a9b0b562e346b9e1a3b418ebef9efc1
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: eb5e5cc97b13d8eb8e671501e9b16479ba59642a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949883"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999294"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -387,7 +387,7 @@ Při nasazení řešení posouzení ohrožení zabezpečení Security Center př
 
 Z této aktualizace jste odebrali kontrolu a teď můžete nasadit nástroje pro posouzení ohrožení zabezpečení do vlastních počítačů se systémem Windows a Linux. Vlastní image jsou ty, které jste změnili ve výchozím nastavení webu Marketplace.
 
-I když teď můžete nasadit integrované rozšíření posouzení ohrožení zabezpečení (s technologií Qualys) na mnoho dalších počítačů, podpora je dostupná jenom v případě, že používáte operační systém, který je uvedený v [části nasazení integrovaného skeneru zabezpečení na virtuální počítače úrovně Standard](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-vulnerability-scanner-to-your-vms) .
+I když teď můžete nasadit integrované rozšíření posouzení ohrožení zabezpečení (s technologií Qualys) na mnoho dalších počítačů, podpora je dostupná jenom v případě, že používáte operační systém, který je uvedený v [části nasazení integrovaného skeneru zabezpečení na virtuální počítače úrovně Standard](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines) .
 
 Přečtěte si další informace o [integrovaném skeneru ohrožení zabezpečení pro virtuální počítače (vyžaduje Azure Defender)](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner).
 

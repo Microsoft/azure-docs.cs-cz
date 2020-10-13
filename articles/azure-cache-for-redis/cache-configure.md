@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 81a65c088fd83ce179f67edd1ecdb96149dd1614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed371cf230df3070ce1a545895831ae56d320d99
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840247"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000186"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
 Toto téma popisuje konfigurace dostupné pro instance Redis v mezipaměti Azure. Toto téma také popisuje výchozí konfiguraci serveru Redis pro Azure cache pro instance Redis.
@@ -214,7 +214,7 @@ Chcete-li změnit velikost clusteru, použijte posuvník nebo zadejte číslo v 
 
 
 ### <a name="redis-data-persistence"></a>Trvalost dat Redis
-Kliknutím na **Trvalost dat** povolíte, zakážete nebo nakonfigurujete Trvalost dat pro mezipaměť Premium. Azure cache for Redis nabízí trvalost Redisy buď v případě [trvalého uložení RDB](cache-how-to-premium-persistence.md#configure-rdb-persistence) , nebo [AOF](cache-how-to-premium-persistence.md#configure-aof-persistence).
+Kliknutím na **Trvalost dat** povolíte, zakážete nebo nakonfigurujete Trvalost dat pro mezipaměť Premium. Azure cache for Redis nabízí trvalost Redisy buď v případě trvalého uložení RDB, nebo AOF.
 
 Další informace najdete v tématu [Konfigurace trvalosti pro službu Azure cache Premium pro Redis](cache-how-to-premium-persistence.md).
 

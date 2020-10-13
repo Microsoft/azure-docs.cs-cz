@@ -5,15 +5,17 @@ description: Naučte se aktualizovat webovou službu, která je už nasazená v 
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
+ms.reviewer: larryfr
 ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
-ms.openlocfilehash: 5f2def8d41252b2267f2de736dc93825ac767540
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: deploy
+ms.openlocfilehash: 3d468048030cad009171622bed175531834b947d
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328322"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998791"
 ---
 # <a name="update-a-deployed-web-service"></a>Aktualizace nasazené webové služby
 

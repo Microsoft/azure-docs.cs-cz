@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 8f0a40e30cc58a01a66ba808076fe1d42c31c326
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 17c9797935612c8697d30455e28cc91321b84772
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978879"
+ms.locfileid: "91999674"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
@@ -23,7 +23,7 @@ Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku n
 
 ## <a name="october-2020"></a>Říjen 2020
 
-* Podpora hindské Analýza mínění, počínaje verzí modelu `2020-04-01` . 
+* Podpora Hindština pro Analýza mínění v3. x počínaje verzí modelu `2020-04-01` . 
 
 ## <a name="september-2020"></a>Září 2020
 
@@ -222,6 +222,6 @@ Podporuje angličtinu ( `en` ), japonštinu () `ja` , zjednodušenou čínštinu
 * [Co je rozhraní API pro analýzu textu?](overview.md)  
 * [Ukázkové uživatelské scénáře](text-analytics-user-scenarios.md)
 * [Analýza mínění](how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [rozpoznávání jazyka,](how-tos/text-analytics-how-to-language-detection.md)
+* [Rozpoznávání jazyka](how-tos/text-analytics-how-to-language-detection.md)
 * [rozpoznávání entit,](how-tos/text-analytics-how-to-entity-linking.md)
-* [extrakce klíčových frází,](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md)
