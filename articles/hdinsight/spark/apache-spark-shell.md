@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/10/2020
 ms.openlocfilehash: 84298c9073f00f0388a9bcb7405369d7c60bcce1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081175"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Spuštění Apache Spark z prostředí Spark
@@ -107,7 +107,7 @@ Pokud chcete získat přístup k instanci SparkSession, zadejte `spark` . Pokud 
 
 Příkaz Spark Shell ( `spark-shell` , nebo `pyspark` ) podporuje mnoho parametrů příkazového řádku. Pokud chcete zobrazit úplný seznam parametrů, spusťte prostředí Spark s přepínačem `--help` . Některé z těchto parametrů se můžou vztahovat jenom na `spark-submit` , které prostředí Spark zalomí.
 
-| switch | description | příklad |
+| switch | Popis | příklad |
 | --- | --- | --- |
 | --hlavní MASTER_URL | Určuje hlavní adresu URL. Ve službě HDInsight je tato hodnota vždy `yarn` . | `--master yarn`|
 | --JAR JAR_LIST | Seznam místních jar oddělený čárkami, který se má zahrnout do ovladačů a prováděcích tříd V HDInsight se tento seznam skládá z cest k výchozímu systému souborů ve Azure Storage nebo Data Lake Storage. | `--jars /path/to/examples.jar` |

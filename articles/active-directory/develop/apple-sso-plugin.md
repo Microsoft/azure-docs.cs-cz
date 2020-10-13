@@ -14,10 +14,10 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530693"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO – modul plug-in pro zařízení Apple (Preview)
@@ -35,7 +35,7 @@ V této Public Preview vydané verzi je modul plug-in jednotného přihlašován
 
 Modul plug-in Microsoft Enterprise SSO pro zařízení Apple nabízí tyto výhody:
 
-- Poskytuje jednotné přihlašování pro účty Azure AD napříč všemi aplikacemi, které podporují funkci podnikového jednotného přihlašování od společnosti Apple.
+- Poskytuje jednotné přihlašování pro účty Azure AD napříč všemi aplikacemi, které podporují funkci podnikového jednoho Sign-On společnosti Apple.
 - Služba se automaticky doručí do Microsoft Authenticator a může ji povolit jakékoli řešení pro správu mobilních zařízení (MDM).
 
 ## <a name="requirements"></a>Požadavky
@@ -125,7 +125,7 @@ Pokud vytváříte aplikaci pro pracovní postupy prvotní, přečtěte si téma
 
 ## <a name="how-the-sso-plug-in-works"></a>Jak funguje modul plug-in jednotného přihlašování
 
-Modul plug-in Microsoft Enterprise SSO závisí na [architektuře podnikového jednotného přihlašování společnosti Apple](https://developer.apple.com/documentation/authenticationservices/asauthorizationsinglesignonprovider?language=objc). Zprostředkovatelé identity, kteří docházejí do architektury, můžou zachytit síťový provoz pro své domény a rozšířit nebo změnit způsob zpracování těchto požadavků. Například modul plug-in jednotného přihlašování může zobrazit další uživatelské rozhraní pro bezpečné shromažďování přihlašovacích údajů pro koncové uživatele, vyžadovat MFA nebo tiše poskytnout aplikacím tokeny.
+Modul plug-in Microsoft Enterprise SSO se spoléhá na [platformu Apple Enterprise Single Sign-On](https://developer.apple.com/documentation/authenticationservices/asauthorizationsinglesignonprovider?language=objc). Zprostředkovatelé identity, kteří docházejí do architektury, můžou zachytit síťový provoz pro své domény a rozšířit nebo změnit způsob zpracování těchto požadavků. Například modul plug-in jednotného přihlašování může zobrazit další uživatelské rozhraní pro bezpečné shromažďování přihlašovacích údajů pro koncové uživatele, vyžadovat MFA nebo tiše poskytnout aplikacím tokeny.
 
 Nativní aplikace můžou také implementovat vlastní operace a komunikovat přímo s modulem plug-in jednotného přihlašování.
 V tomto [videu s 2019 WWDC](https://developer.apple.com/videos/play/tech-talks/301/) se můžete dozvědět víc o architektuře jednotného přihlašování od společnosti Apple.

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
 ms.openlocfilehash: f3ec284de3d43e75bd0832b1d98bb9d319a7ca0e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87925307"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled služby Azure Operational Security
@@ -68,7 +68,7 @@ Azure AD zahrnuje také plnou sadu [funkcí pro správu identit](/azure/security
 - [Samoobslužná správa hesel](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [Samoobslužná správa skupin](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [Správa privilegovaných účtů](/azure/active-directory/active-directory-privileged-identity-management-configure)
-- [Řízení přístupu na základě role v Azure (Azure RBAC)](/azure/role-based-access-control/overview)
+- [Řízení přístupu na základě role Azure (Azure RBAC)](/azure/role-based-access-control/overview)
 - [Monitorování využití aplikací](/azure/active-directory/connect-health/active-directory-aadconnect-health)
 - [Rozšířené auditování](/azure/active-directory/active-directory-reporting-activity-audit-logs)
 - [Monitorování a upozorňování zabezpečení](/azure/operations-management-suite/oms-security-responding-alerts)

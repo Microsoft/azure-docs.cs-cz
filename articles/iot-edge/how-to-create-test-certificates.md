@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84430664"
 ---
-# <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Vytvoření ukázkových certifikátů pro otestování IoT Edgech funkcí zařízení
+# <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Vytváření ukázkových certifikátů pro účely testování funkcí zařízení IoT Edge
 
 IoT Edge zařízení vyžadují certifikáty pro zabezpečenou komunikaci mezi modulem runtime, moduly a všemi podřízenými zařízeními.
 Pokud nemáte certifikační autoritu k vytvoření požadovaných certifikátů, můžete použít ukázkové certifikáty k vyzkoušení IoT Edge funkcí v testovacím prostředí.
@@ -293,7 +293,7 @@ Vaše zařízení IoT taky potřebuje kopii svých certifikátů zařízení, ab
 
 1. Přejděte do pracovního adresáře, který obsahuje skripty generování certifikátů a certifikát kořenové certifikační autority.
 
-2. Pro zařízení pro příjem dat vytvořte dva certifikáty (primární a sekundární). Jednoduchá konvence pojmenování, která se má použít, je vytvoření certifikátů s názvem zařízení IoT a pak primárního nebo sekundárního popisku. Příklad:
+2. Pro zařízení pro příjem dat vytvořte dva certifikáty (primární a sekundární). Jednoduchá konvence pojmenování, která se má použít, je vytvoření certifikátů s názvem zařízení IoT a pak primárního nebo sekundárního popisku. Například:
 
    ```PowerShell
    New-CACertsDevice "<device name>-primary"
@@ -323,7 +323,7 @@ Vaše zařízení IoT taky potřebuje kopii svých certifikátů zařízení, ab
 
 1. Přejděte do pracovního adresáře, který obsahuje skripty generování certifikátů a certifikát kořenové certifikační autority.
 
-2. Pro zařízení pro příjem dat vytvořte dva certifikáty (primární a sekundární). Jednoduchá konvence pojmenování, která se má použít, je vytvoření certifikátů s názvem zařízení IoT a pak primárního nebo sekundárního popisku. Příklad:
+2. Pro zařízení pro příjem dat vytvořte dva certifikáty (primární a sekundární). Jednoduchá konvence pojmenování, která se má použít, je vytvoření certifikátů s názvem zařízení IoT a pak primárního nebo sekundárního popisku. Například:
 
    ```bash
    ./certGen.sh create_device_certificate "<device name>-primary"

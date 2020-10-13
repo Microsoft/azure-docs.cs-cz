@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 61a91ca8a51886c28beee77853d1ae67911e00e7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081232"
 ---
 # <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Postup přidání poznámek ke zdrojům dat v Azure Data Catalog
@@ -37,11 +37,11 @@ Data Catalog podporuje následující typy poznámek:
 | Poznámka | Poznámky |
 | --- | --- |
 | Popisný název |Popisné názvy lze zadat na úrovni datového assetu, aby bylo možné snadněji pochopit datové prostředky. Popisné názvy jsou nejužitečnější, pokud je název podkladového objektu nešifrovaný, zkrácený nebo jinak nesmysluplný pro uživatele. |
-| Popis |Popisy lze zadat na úrovni assetů dat a atributů nebo sloupců. Popisy jsou krátké textové poznámky s volným tvarem, které popisují perspektivu uživatele na datovém assetu nebo jeho použití. |
+| Description |Popisy lze zadat na úrovni assetů dat a atributů nebo sloupců. Popisy jsou krátké textové poznámky s volným tvarem, které popisují perspektivu uživatele na datovém assetu nebo jeho použití. |
 | Značky (uživatelské značky) |Značky lze zadat na úrovni assetů dat a atributů nebo sloupců. Uživatelské značky jsou uživatelsky definované popisky, které lze použít k kategorizaci datových prostředků nebo atributů. |
 | Značky (Glosář glosáře) |Značky lze zadat na úrovni assetů dat a atributů nebo sloupců. Značky glosáře jsou centrálně definované výrazy glosáře, které lze použít ke kategorizaci datových assetů nebo atributů pomocí běžné obchodní taxonomie. Další informace naleznete v článku [Jak nastavit obchodní glosář řízeným přidáváním značek](data-catalog-how-to-business-glossary.md) |
 | Odborníky |Odborníky mohou být dodány na úrovni datového assetu. Odborníci identifikují uživatele nebo skupiny pomocí odborných perspektiv na data a můžou sloužit jako kontaktní body pro uživatele, kteří zjišťují registrované zdroje dat a mají otázky, na které neodpoví stávající poznámky. |
-| Vyžádání přístupu |Žádosti o přístup k informacím lze zadat na úrovni datového assetu. Tyto informace jsou pro uživatele, kteří zjišťují zdroj dat, ke kterému ještě nemají oprávnění k přístupu. Uživatelé mohou zadat e-mailovou adresu uživatele nebo skupiny, kteří udělí přístup, adresu URL procesu nebo nástroje, které uživatelé potřebují k získání přístupu, nebo mohou zadat samotný proces jako text. |
+| Vyžádání přístup |Žádosti o přístup k informacím lze zadat na úrovni datového assetu. Tyto informace jsou pro uživatele, kteří zjišťují zdroj dat, ke kterému ještě nemají oprávnění k přístupu. Uživatelé mohou zadat e-mailovou adresu uživatele nebo skupiny, kteří udělí přístup, adresu URL procesu nebo nástroje, které uživatelé potřebují k získání přístupu, nebo mohou zadat samotný proces jako text. |
 | Dokumentace |Dokumentaci lze dodávat na úrovni datového assetu. Dokumentace k assetům je bohatá textová informace, která může obsahovat odkazy a obrázky, které mohou poskytnout jakékoli informace, které nejsou předány popisy a značkami. |
 
 ## <a name="annotating-multiple-assets"></a>Přidávání poznámek k několika prostředkům

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
 ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326048"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizace prostředí s využitím řešení System Center Operations Manager Health Check (Preview)
@@ -268,7 +268,7 @@ Pokud máte doporučení, která chcete ignorovat, můžete vytvořit textový s
 - [Konfigurace pravidla System Center Operations Manager Health Check](#configure-the-health-check-rule)
 
 
-*Existuje způsob, jak nakonfigurovat četnost spouštění kontroly?* Yes. Viz [Konfigurace frekvence spouštění](#configure-the-run-frequency).
+*Existuje způsob, jak nakonfigurovat četnost spouštění kontroly?* Ano. Viz [Konfigurace frekvence spouštění](#configure-the-run-frequency).
 
 *Pokud je po přidání System Center Operations Manager Health Check řešení zjištěn jiný server, bude zkontrolován?* Ano, po zjištění, že je zjišťování zaškrtnuto, je ve výchozím nastavení každých 7 dní.
 

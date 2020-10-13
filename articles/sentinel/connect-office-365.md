@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
 ms.openlocfilehash: d6b59de048cdf00d352c4f488ecb51bfdf83640f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89178922"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Připojení protokolů Office 365 ke službě Azure Sentinel
@@ -29,7 +29,7 @@ Konektor protokolu [Office 365](https://docs.microsoft.com/office/) přináší 
 > Protokoly konektoru protokolu Office 365 **pro Microsoft Teams** Connector jsou momentálně ve verzi Public Preview.
 > Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít oprávnění ke čtení a zápisu v pracovním prostoru Sentinel Azure.
 

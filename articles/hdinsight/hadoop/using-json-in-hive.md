@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 31fc6fe02559c356f072761c024308f158ae4d9c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085442"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Zpracování a analýza dokumentů JSON pomocí Apache Hive ve službě Azure HDInsight
@@ -152,7 +152,7 @@ Výstup tohoto skriptu v konzole podregistru:
 
 SerDe je nejlepší volbou pro analýzu vnořených dokumentů JSON. Umožňuje definovat schéma JSON a pak můžete použít schéma k analýze dokumentů. Pokyny najdete v tématu [Jak používat vlastní SERDE JSON s Microsoft Azure HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Typ operátoru JSON v podregistru, který zvolíte, závisí na vašem scénáři. Pomocí jednoduchého dokumentu JSON a jednoho pole, které se má vyhledat, vyberte **Get_json_object**podregistr UDF. Pokud máte více než jeden klíč k vyhledání, můžete použít **json_tuple**. U vnořených dokumentů použijte **SerDe JSON**.
 

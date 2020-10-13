@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
 ms.openlocfilehash: b5d016574fd85047ec349820a747b47d0582958b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87116796"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace v Azure Container Registry
@@ -55,8 +55,8 @@ Mezi obvyklé výzvy k více registrům patří:
 
 Pomocí funkce geografické replikace Azure Container Registry jsou tyto výhody realizované:
 
-* Správa jednoho registru ve všech oblastech:`contoso.azurecr.io`
-* Spravujte jednu konfiguraci nasazení imagí, protože všechny oblasti používají stejnou adresu URL obrázku:`contoso.azurecr.io/public/products/web:1.2`
+* Správa jednoho registru ve všech oblastech: `contoso.azurecr.io`
+* Spravujte jednu konfiguraci nasazení imagí, protože všechny oblasti používají stejnou adresu URL obrázku: `contoso.azurecr.io/public/products/web:1.2`
 * Doručovat do jednoho registru, zatímco ACR spravuje geografickou replikaci. Místní [Webhooky](container-registry-webhook.md) můžete nakonfigurovat tak, aby vás upozornily na události v určitých replikách.
 
 ## <a name="configure-geo-replication"></a>Konfigurace geografické replikace

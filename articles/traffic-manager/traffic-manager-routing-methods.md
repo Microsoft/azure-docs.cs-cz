@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: duau
 ms.openlocfilehash: 3cf493beab6dfe1767ae35ea36732dc364e29736
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401652"
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody směrování Traffic Manageru
@@ -103,7 +103,7 @@ Pokud je pro geografické směrování nakonfigurovaný profil, musí mít každ
 - World – Libovolná oblast
 - Regionální seskupení – například Afrika, Střední východ, Austrálie/Tichomoří atd. 
 - Země/oblast – například Irsko, Peru, Hongkong – zvláštní správní oblast atd. 
-- Okres – například USA – Kalifornie, Austrálie – Queenslandu, Kanada – Alberta atd. (Poznámka: Tato úroveň členitosti je podporována pouze pro stavy/provincie v Austrálii, Kanadě a USA).
+- Okres – například USA – Kalifornie, Austrálie – Queenslandu Canada-Alberta atd. (Poznámka: Tato úroveň členitosti je podporována pouze pro stavy/provincie v Austrálii, Kanadě a USA).
 
 Když je oblast nebo sada oblastí přiřazena ke koncovému bodu, všechny požadavky z těchto oblastí budou směrovány pouze do tohoto koncového bodu. Traffic Manager pomocí zdrojové IP adresy dotazu DNS určí oblast, ze které se uživatel dotazuje – obvykle se jedná o IP adresu místního překladače DNS, který provádí dotaz jménem uživatele.  
 

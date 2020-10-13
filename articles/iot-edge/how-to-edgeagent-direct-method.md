@@ -10,10 +10,10 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80240350"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Komunikace s edgeAgent pomocí integrovaných přímých metod
@@ -28,7 +28,7 @@ Názvy těchto přímých metod zpracovávají nerozlišování velkých a malý
 
 Metoda nástroje **příkazového testu** je užitečná pro kontrolu, zda je na zařízení spuštěný IoT Edge nebo zda má zařízení otevřené připojení k IoT Hub. Pomocí této přímé metody otestujete agenta IoT Edge a získejte jeho stav. Úspěšný test příkazu pro ověřování vrátí prázdnou datovou část a **"stav": 200**.
 
-Příklad:
+Například:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'ping' -n <hub name> -d <device name> -m '$edgeAgent'
@@ -46,7 +46,7 @@ Metoda RestartModule je k dispozici v IoT Edge verze 1.0.9 a novější.
 
 Metodu RestartModule Direct můžete použít v jakémkoli modulu běžícím na zařízení IoT Edge, včetně samotného modulu edgeAgent. Pokud však použijete tuto přímou metodu pro vypnutí edgeAgent, nepřijdete o úspěch, protože během restartování modulu dojde k přerušení připojení.
 
-Příklad:
+Například:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'RestartModule' -n <hub name> -d <device name> -m '$edgeAgent' --method-payload \

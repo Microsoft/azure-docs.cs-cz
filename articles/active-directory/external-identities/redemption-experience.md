@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6bf5d40262c5991504d3dc62490fb50f6a20592
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908536"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory uplatnění pozvánky B2B pro spolupráci
@@ -42,9 +42,9 @@ Jako alternativu k e-mailu s pozvánkou můžete hostům poskytnout přímý odk
 
 > [!IMPORTANT]
 > Přímý odkaz musí být specifický pro tenanta. Jinými slovy, musí obsahovat ID tenanta nebo ověřenou doménu, aby bylo možné hosta ověřit ve vašem tenantovi, kde se nachází sdílená aplikace. Společná adresa URL, jako https://myapps.microsoft.com by se u hosta nefunguje, protože se přesměruje na svého domovského tenanta pro ověřování. Tady je několik příkladů přímých odkazů s kontextem tenanta:
- > - Přístupový panel aplikací:`https://myapps.microsoft.com/?tenantid=<tenant id>`
- > - Přístupový panel aplikací pro ověřenou doménu:`https://myapps.microsoft.com/<;verified domain>`
- > - Azure Portal:`https://portal.azure.com/<tenant id>`
+ > - Přístupový panel aplikací: `https://myapps.microsoft.com/?tenantid=<tenant id>`
+ > - Přístupový panel aplikací pro ověřenou doménu: `https://myapps.microsoft.com/<;verified domain>`
+ > - Azure Portal: `https://portal.azure.com/<tenant id>`
  > - Individuální aplikace: viz jak použít [přímý odkaz na přihlášení](../manage-apps/end-user-experiences.md#direct-sign-on-links) .
 
 V některých případech se doporučuje e-mailem pozvánky používat přímý odkaz. Pokud jsou tyto zvláštní případy pro vaši organizaci důležité, doporučujeme, abyste uživatele pozvali pomocí metod, které pořád odesílají e-mail s pozvánkami:
@@ -113,4 +113,4 @@ Ve vašem adresáři se u **pozvánky hosta přijala** hodnota **Ano**. Pokud by
 - [Přidat uživatele Azure Active Directory spolupráce B2B do Azure Portal](add-users-administrator.md)
 - [Jak pracovníci s informacemi přidávají uživatelům spolupráci B2B k Azure Active Directory?](add-users-information-worker.md)
 - [Přidání uživatelů spolupráce v B2B Azure Active Directory pomocí PowerShellu](customize-invitation-api.md#powershell)
-- [Opuštění organizace jako uživatel typu Host](leave-the-organization.md)
+- [Opuštění organizace jako uživatel typu host](leave-the-organization.md)

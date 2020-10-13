@@ -9,10 +9,10 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b941084c8a196081c2443364ed3fb52868386670
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84464971"
 ---
 Přejděte do účtu úložiště, pro který chcete vytvořit privátní koncový bod. V obsahu pro účet úložiště vyberte **připojení privátního koncového bodu**a potom **+ privátní koncový bod** pro vytvoření nového privátního koncového bodu. 

@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83771736"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Volání webového rozhraní API z mobilní aplikace
@@ -29,17 +29,17 @@ V tomto článku se nejprve podíváme na výsledek MSAL. Pak se podíváme na p
 ## <a name="msal-result"></a>Výsledek MSAL
 MSAL poskytuje následující hodnoty: 
 
-- `AccessToken`volá chráněná webová rozhraní API v žádosti nosiče HTTP.
-- `IdToken`obsahuje užitečné informace o přihlášeném uživateli. Tyto informace zahrnují jméno uživatele, domácího tenanta a jedinečný identifikátor úložiště.
-- `ExpiresOn`je čas vypršení platnosti tokenu. MSAL zpracovává automatickou aktualizaci aplikace.
-- `TenantId`je identifikátor tenanta, ke kterému se uživatel přihlásil. Pro uživatele typu Host ve službě Azure Active Directory (Azure AD) B2B tato hodnota identifikuje tenanta, ke kterému se uživatel přihlásil. Hodnota neidentifikuje svého domovského tenanta uživatele.  
-- `Scopes`označuje rozsahy, které byly uděleny s tokenem. Udělené obory můžou být podmnožinou požadovaných oborů.
+- `AccessToken` volá chráněná webová rozhraní API v žádosti nosiče HTTP.
+- `IdToken` obsahuje užitečné informace o přihlášeném uživateli. Tyto informace zahrnují jméno uživatele, domácího tenanta a jedinečný identifikátor úložiště.
+- `ExpiresOn` je čas vypršení platnosti tokenu. MSAL zpracovává automatickou aktualizaci aplikace.
+- `TenantId` je identifikátor tenanta, ke kterému se uživatel přihlásil. Pro uživatele typu Host ve službě Azure Active Directory (Azure AD) B2B tato hodnota identifikuje tenanta, ke kterému se uživatel přihlásil. Hodnota neidentifikuje svého domovského tenanta uživatele.  
+- `Scopes` označuje rozsahy, které byly uděleny s tokenem. Udělené obory můžou být podmnožinou požadovaných oborů.
 
 MSAL také poskytuje abstrakci pro `Account` hodnotu. `Account`Hodnota představuje účet přihlášeného aktuálního uživatele:
 
-- `HomeAccountIdentifier`Identifikuje svého domovského tenanta uživatele.
-- `UserName`je preferované uživatelské jméno uživatele. Tato hodnota může být pro Azure AD B2C uživatele prázdná.
-- `AccountIdentifier`identifikuje přihlášeného uživatele. Ve většině případů je tato hodnota stejná jako `HomeAccountIdentifier` hodnota, pokud se uživatel nejedná o hosta v jiném tenantovi.
+- `HomeAccountIdentifier` Identifikuje svého domovského tenanta uživatele.
+- `UserName` je preferované uživatelské jméno uživatele. Tato hodnota může být pro Azure AD B2C uživatele prázdná.
+- `AccountIdentifier` identifikuje přihlášeného uživatele. Ve většině případů je tato hodnota stejná jako `HomeAccountIdentifier` hodnota, pokud se uživatel nejedná o hosta v jiném tenantovi.
 
 ## <a name="call-an-api"></a>Volání rozhraní API
 
@@ -87,7 +87,7 @@ Po získání přístupového tokenu můžete zavolat webové rozhraní API. Va�
 
 ### <a name="msal-for-ios-and-macos"></a>MSAL pro iOS a MacOS
 
-Metody získání tokenů vrací `MSALResult` objekt. `MSALResult`zpřístupňuje `accessToken` vlastnost. Můžete použít `accessToken` k volání webového rozhraní API. Před voláním k chráněnému webovému rozhraní API přidejte tuto vlastnost do hlavičky Authorization protokolu HTTP.
+Metody získání tokenů vrací `MSALResult` objekt. `MSALResult` zpřístupňuje `accessToken` vlastnost. Můžete použít `accessToken` k volání webového rozhraní API. Před voláním k chráněnému webovému rozhraní API přidejte tuto vlastnost do hlavičky Authorization protokolu HTTP.
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -160,4 +160,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přesunout do produkčního prostředí](scenario-mobile-production.md)
+> [Přechod k produkčnímu prostředí](scenario-mobile-production.md)

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
 ms.openlocfilehash: c5505b9437a4bd8dced6a090817b17d5e29374f2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327934"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Kurz: vytvoření zásady WAF na Azure CDN pomocí Azure Portal
@@ -54,7 +54,7 @@ Nejdřív vytvořte základní zásadu WAF se spravovanými výchozí sadou prav
     
     > [!NOTE]
     > Pokud je koncový bod přidružen k zásadě WAF, zobrazí se šedě. Nejprve je nutné odebrat koncový bod z přidružených zásad a pak znovu přidružit koncový bod k nové zásadě WAF.
-1. Vyberte **zkontrolovat + vytvořit**a pak vyberte **vytvořit**.
+1. Vyberte **Zkontrolovat a vytvořit** a pak **Vytvořit**.
 
 ## <a name="configure-web-application-firewall-policy-optional"></a>Konfigurace zásad firewallu webových aplikací (volitelné)
 

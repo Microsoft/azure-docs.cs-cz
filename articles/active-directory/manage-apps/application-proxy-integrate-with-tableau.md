@@ -14,10 +14,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6df0a0bf21f4be824738d86ac6bdb3c75c9c3564
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764498"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Proxy aplikací služby Azure Active Directory a Tableau 
@@ -42,7 +42,7 @@ Proxy aplikací podporuje tok udělení OAuth 2,0, který je nutný ke správné
 
 K publikování Tableau je potřeba publikovat aplikaci na webu Azure Portal.
 
-For
+Pro:
 
 - Podrobné pokyny k krokům 1-8 najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](application-proxy-add-on-premises-application.md). 
 - Informace o tom, jak najít hodnoty Tableau pro pole proxy aplikací, najdete v dokumentaci k Tableau.  

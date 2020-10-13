@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397300"
 ---
 # <a name="live-event-types-comparison"></a>Porovnání typů živých událostí
@@ -42,7 +42,7 @@ Následující tabulka porovnává funkce typů živých událostí. Typy jsou n
 | Maximální rozlišení videa pro kanál příspěvků |4K (4096x2160 v 60 snímcích za sekundu) |1080p (1920x1088 v 30 snímcích/s)|
 | Doporučené maximum vrstev v kanálu příspěvků|Až 12|Jeden zvuk|
 | Maximální počet vrstev ve výstupu| Stejné jako vstup|Až 6 (viz Předvolby systému níže)|
-| Maximální agregovaná šířka pásma kanálu příspěvků|60 MB/s|–|
+| Maximální agregovaná šířka pásma kanálu příspěvků|60 MB/s|Není k dispozici|
 | Maximální přenosová rychlost pro jednu vrstvu v příspěvku |20 MB/s|20 MB/s|
 | Podpora pro zvukové stopy ve více jazycích|Yes|No|
 | Podporované vstupní kodeky videa |H. 264/AVC a H. 265/HEVC|H. 264/AVC|

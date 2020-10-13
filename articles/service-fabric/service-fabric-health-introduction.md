@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258848"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Úvod do monitorování stavu Service Fabric
@@ -187,7 +187,7 @@ Aby bylo možné odesílat údaje o stavu Health Store, musí zpravodaj identifi
 * **SourceId**. Řetězec, který jednoznačně identifikuje zpravodaj události stavu.
 * **Identifikátor entity** Určuje entitu, ve které se sestava aplikuje. Liší se v závislosti na [typu entity](service-fabric-health-introduction.md#health-entities-and-hierarchy):
   
-  * Služby. Žádné.
+  * Služby. Žádné
   * Uzlu. Název uzlu (řetězec).
   * Použití. Název aplikace (URI). Představuje název instance aplikace nasazené v clusteru.
   * Službám. Název služby (URI). Představuje název instance služby nasazené v clusteru.

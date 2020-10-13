@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 0c6fc36be101679cea3a770f311005f63c3f0d66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737372"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Vytvoření privátního koncového bodu pomocí Azure PowerShell
@@ -189,7 +189,7 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="access-sql-database-privately-from-the-vm"></a>Přístup k SQL Database soukromě z virtuálního počítače
 
-1. Ve vzdálené ploše myVM otevřete PowerShell.
+1. Na vzdálené ploše virtuálního počítače myVM otevřete PowerShell.
 2. Zadejte `nslookup myserver.database.windows.net`. Nezapomeňte nahradit `myserver` názvem SQL serveru.
 
     Zobrazí se zpráva podobná této:

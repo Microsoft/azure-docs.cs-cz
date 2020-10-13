@@ -7,10 +7,10 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 95ea8b61b01b17512d99d0316073835326e6d7bd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87927160"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Správa přístupu Site Recovery pomocí řízení přístupu na základě role (RBAC)
@@ -43,7 +43,7 @@ K dokončení replikace nového virtuálního počítače potřebuje uživatel n
 
 | **Typ prostředku** | **Model nasazení** | **Oprávnění** |
 | --- | --- | --- |
-| Výpočetní prostředky | Resource Manager | Microsoft. COMPUTE/availabilitySets/Read |
+| Compute | Resource Manager | Microsoft. COMPUTE/availabilitySets/Read |
 |  |  | Microsoft. COMPUTE/virtualMachines/Read |
 |  |  | Microsoft. COMPUTE/virtualMachines/Write |
 |  |  | Microsoft. COMPUTE/virtualMachines/DELETE |
@@ -66,7 +66,7 @@ K dokončení replikace nového virtuálního počítače potřebuje uživatel n
 |  |  | Microsoft. Storage/storageAccounts/klíče listkey/Action |
 |  | Klasický | Microsoft. ClassicStorage/storageAccounts/Read |
 |  |  | Microsoft. ClassicStorage/storageAccounts/klíče listkey/Action |
-| Skupina prostředků | Resource Manager | Microsoft. Resources/nasazení/* |
+| Resource Group | Resource Manager | Microsoft. Resources/nasazení/* |
 |  |  | Microsoft. Resources/Subscriptions/resourceGroups/Read |
 
 Zvažte použití [předdefinovaných rolí](../role-based-access-control/built-in-roles.md) Přispěvatel virtuálních počítačů a klasického přispěvatele virtuálních počítačů pro modely nasazení Správce prostředků a Classic.

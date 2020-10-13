@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
 ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082762"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Řešení potíží s cílovým úložištěm a konfigurací serveru NFS
@@ -96,7 +96,7 @@ Aby nedošlo k této možné kolizi souborů v několika exportech, mezipaměť 
 
 Pokud se do mezipaměti HPC Azure dotazuje, musí si seznam exportovat.
 
-Ve většině systémů úložišť NFS můžete tento test otestovat odesláním následujícího dotazu z klienta pro Linux:``showmount -e <storage IP address>``
+Ve většině systémů úložišť NFS můžete tento test otestovat odesláním následujícího dotazu z klienta pro Linux: ``showmount -e <storage IP address>``
 
 Pokud je to možné, použijte klienta pro Linux ze stejné virtuální sítě jako mezipaměť.
 
@@ -120,9 +120,9 @@ Neexistuje jednoduchý způsob, jak zjistit, jestli má váš systém tento prob
 
   Jedná se o možnosti v příkazu:
 
-  * ``-M do``– Nefragmentovat
-  * ``-c 1``– Odeslat jenom jeden paket
-  * ``-s 1472``– Nastavte velikost datové části na 1472 bajtů. Toto je maximální velikost datové části pro 1500 bajt po zúčtování pro režii sítě Ethernet.
+  * ``-M do`` – Nefragmentovat
+  * ``-c 1`` – Odeslat jenom jeden paket
+  * ``-s 1472`` – Nastavte velikost datové části na 1472 bajtů. Toto je maximální velikost datové části pro 1500 bajt po zúčtování pro režii sítě Ethernet.
 
   Úspěšná odpověď vypadá takto:
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
 ms.openlocfilehash: e3dc7ce36e773b5a615b1abf4f50406fcb07826b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84744302"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Připojení k sadě škálování virtuálního počítače pomocí Azure bastionu
@@ -24,7 +24,7 @@ Ujistěte se, že jste pro virtuální síť nastavili hostitele Azure bastionu,
 
 ## <a name="connect-using-rdp"></a><a name="rdp"></a>Připojit pomocí protokolu RDP
 
-1. Otevřete [Azure Portal](https://portal.azure.com). Přejděte do sady škálování virtuálních počítačů, ke které se chcete připojit.
+1. Otevřete web [Azure Portal](https://portal.azure.com). Přejděte do sady škálování virtuálních počítačů, ke které se chcete připojit.
 
    ![navigate](./media/bastion-connect-vm-scale-set/1.png)
 2. Přejděte do instance sady škálování virtuálních počítačů, ke které se chcete připojit, a pak vyberte **připojit**. Při použití připojení RDP by měla být sada škálování virtuálního počítače nastavená na sadu škálování virtuálních počítačů s Windows.

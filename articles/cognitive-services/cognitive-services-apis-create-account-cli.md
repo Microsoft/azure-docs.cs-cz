@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 41dc99c206fb66aa87ccca6e40d6e9488f801a22
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91262429"
 ---
-# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Rychlý Start: vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure (CLI)
+# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Rychlý Start: vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure Command-Line (CLI)
 
 V tomto rychlém startu můžete začít s Azure Cognitive Services pomocí [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -88,7 +88,7 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 > [!NOTE]
 > Mnohé z Cognitive Services níže mají bezplatnou úroveň, kterou můžete použít k vyzkoušení služby. Pokud chcete používat úroveň Free, použijte `F0` jako SKU pro váš prostředek.
 
-### <a name="vision"></a>Vision
+### <a name="vision"></a>Obraz
 
 | Služba                    | Druh                      |
 |----------------------------|---------------------------|
@@ -106,7 +106,7 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 | Automatické návrhy Bingu   | `Bing.Autosuggest.v7` |
 | Vlastní vyhledávání Bingu | `Bing.CustomSearch`   |
 | Vyhledávání entit Bingu | `Bing.EntitySearch`   |
-| Vyhledávání pomocí služby Bing        | `Bing.Search.v7`      |
+| Vyhledávání Bingu        | `Bing.Search.v7`      |
 | Kontrola pravopisu Bingu   | `Bing.SpellCheck.v7`  |
 
 ### <a name="speech"></a>Řeč
@@ -160,7 +160,7 @@ az cognitiveservices account create \
 
 ## <a name="get-the-keys-for-your-resource"></a>Získat klíče pro svůj prostředek
 
-Pokud se chcete přihlásit k místní instalaci rozhraní příkazového řádku (CLI), použijte příkaz [AZ Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) .
+Pokud se chcete přihlásit k místní instalaci rozhraní příkazového řádku (CLI) Command-Line, použijte příkaz [AZ Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) .
 
 ```azurecli-interactive
 az login

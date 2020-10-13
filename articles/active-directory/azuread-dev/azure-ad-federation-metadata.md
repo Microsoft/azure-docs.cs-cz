@@ -14,10 +14,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80154895"
 ---
 # <a name="federation-metadata"></a>Metadata federování
@@ -91,7 +91,7 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 
 `KeyDescriptor`Prvek se zobrazí na dvou místech dokumentu federačních metadat; v části WS-Federation-Specific a v části specifické pro SAML. Certifikáty publikované v obou částech budou stejné.
 
-V části specifické pro WS-Federation by čtečka metadat WS-Federation načetla certifikáty z `RoleDescriptor` prvku s `SecurityTokenServiceType` typem.
+V části specifické pro WS-Federation by WS-Federation čtecí modul metadat načetl certifikáty z `RoleDescriptor` prvku s `SecurityTokenServiceType` typem.
 
 Následující metadata ukazují vzorový `RoleDescriptor` prvek.
 
@@ -99,7 +99,7 @@ Následující metadata ukazují vzorový `RoleDescriptor` prvek.
 <RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
-V části specifické pro SAML by čtecí modul pro čtení metadat WS-Federation načetl certifikáty z `IDPSSODescriptor` elementu.
+V části specifické pro SAML by WS-Federation čtecí modul metadat přečetl certifikáty z `IDPSSODescriptor` elementu.
 
 Následující metadata ukazují vzorový `IDPSSODescriptor` prvek.
 
@@ -109,7 +109,7 @@ Následující metadata ukazují vzorový `IDPSSODescriptor` prvek.
 Ve formátu certifikátů specifických pro tenanta a klientů nezávisle na klientovi nejsou žádné rozdíly.
 
 ### <a name="ws-federation-endpoint-url"></a>Adresa URL koncového bodu WS-Federation
-Federační metadata obsahují adresu URL, která je službou Azure AD používána pro jednotné přihlašování a jednotné přihlašování v protokolu WS-Federation. Tento koncový bod se zobrazí v `PassiveRequestorEndpoint` elementu.
+Federační metadata obsahují adresu URL, která je službou Azure AD používána pro jednotné přihlašování a jednotné přihlašování v WS-Federationm protokolu. Tento koncový bod se zobrazí v `PassiveRequestorEndpoint` elementu.
 
 Následující metadata ukazují vzorový `PassiveRequestorEndpoint` prvek pro koncový bod pro konkrétního klienta.
 
@@ -122,7 +122,7 @@ https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db45/wsfed
 </EndpointReference>
 </fed:PassiveRequestorEndpoint>
 ```
-V případě koncového bodu nezávislého na klientovi se adresa URL WS-Federation zobrazuje v koncovém bodu WS-Federation, jak je znázorněno v následující ukázce.
+V případě koncového bodu nezávislého na klientovi se adresa URL WS-Federation zobrazí v koncovém bodu WS-Federation, jak je znázorněno v následující ukázce.
 
 ```
 <fed:PassiveRequestorEndpoint>

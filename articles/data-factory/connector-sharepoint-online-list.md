@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
 ms.openlocfilehash: f560a01c4ec00649157a9c43aedf0ed6cfc2e050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83871913"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Kopírování dat ze seznamu SharePointu Online pomocí Azure Data Factory
@@ -55,8 +55,8 @@ Konektor online seznamu SharePointu používá pro připojení k SharePointu ov�
     1. Otevřete odkaz na web SharePointu Online `https://[your_site_url]/_layouts/15/appinv.aspx` , např. (nahraďte adresu URL webu).
     2. Vyhledejte ID aplikace, které jste zaregistrovali, vyplňte prázdná pole a klikněte na vytvořit.
 
-        - Doména aplikace:`localhost.com`
-        - Adresa URL pro přesměrování:`https://www.localhost.com`
+        - Doména aplikace: `localhost.com`
+        - Adresa URL pro přesměrování: `https://www.localhost.com`
         - XML žádosti o oprávnění:
 
         ```xml
@@ -112,7 +112,7 @@ Pro propojenou službu seznamu SharePointu Online jsou podporovány následujíc
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, najdete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). V následující části najdete seznam vlastností podporovaných datovou sadou tabulky SAP.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** datové sady musí být nastavená na **SharePointOnlineLResource**. | Yes |
 | listName | Název seznamu SharePointu Online | Yes |
@@ -145,7 +145,7 @@ Pro propojenou službu seznamu SharePointu Online jsou podporovány následujíc
 
 Pro kopírování dat ze seznamu SharePointu Online jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SharePointOnlineListSource**. | Yes |
 | query | Vlastní možnosti dotazů OData pro filtrování dat Příklad: `"$top=10&$select=Title,Number"`. | No |
@@ -192,18 +192,18 @@ Při kopírování dat ze seznamu SharePointu Online se používají následují
 | Jeden řádek textu                             | Edm.String                                           | Řetězec                                   |
 | Více řádků textu                          | Edm.String                                           | Řetězec                                   |
 | Volba (nabídka pro výběr)                    | Edm.String                                           | Řetězec                                   |
-| Číslo (1, 1,0, 100)                            | Edm.Double                                           | Double                                   |
-| Měna ($, y, €)                              | Edm.Double                                           | Double                                   |
+| Číslo (1, 1,0, 100)                            | Edm.Double                                           | dvojité                                   |
+| Měna ($, y, €)                              | Edm.Double                                           | dvojité                                   |
 | Datum a čas                                   | EDM. DateTime                                         | DateTime                                 |
 | Vyhledávání (informace již na tomto webu)       | Edm.Int32                                            | Int32                                    |
 | Ano/ne (zaškrtávací políčko)                              | Edm.Boolean                                          | Logická hodnota                                  |
 | Osoba nebo Skupina                                 | Edm.Int32                                            | Int32                                    |
 | Hypertextový odkaz nebo obrázek                            | Edm.String                                           | Řetězec                                   |
 | Počítané (výpočet na základě jiných sloupců) | EDM. String/EDM. Double/EDM. DateTime/EDM. Boolean | String, Double/DateTime/Boolean     |
-| Příloha                                      | Nepodporuje se                                        |                                          |
-| Výsledek úkolu                                    | Nepodporuje se                                        |                                          |
-| Externí data                                   | Nepodporuje se                                        |                                          |
-| Spravovaná metadata                                | Nepodporuje se                                        |                                          |
+| Příloha                                      | Nepodporováno                                        |                                          |
+| Výsledek úkolu                                    | Nepodporováno                                        |                                          |
+| Externí data                                   | Nepodporováno                                        |                                          |
+| Spravovaná metadata                                | Nepodporováno                                        |                                          |
 
 ## <a name="copy-file-from-sharepoint-online"></a>Kopírovat soubor ze SharePointu Online
 
@@ -219,7 +219,7 @@ Můžete zkopírovat soubor ze SharePointu Online pomocí **aktivity webu** pro 
     - **Metoda**: post
     - **Hlavičky**:
         - Content-Type: application/x-www-form-urlencoded
-    - **Tělo**: `grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]` . Nahraďte ID klienta, tajný klíč klienta, ID tenanta a název tenanta.
+    - **Tělo**:  `grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]` . Nahraďte ID klienta, tajný klíč klienta, ID tenanta a název tenanta.
 
     > [!CAUTION]
     > Nastavte možnost zabezpečený výstup na hodnotu true v aktivitě webu, aby se zabránilo přihlášení hodnoty tokenu do prostého textu. Všechny další aktivity, které tuto hodnotu využívají, by měly mít možnost zabezpečeného vstupu nastavenou na hodnotu true.

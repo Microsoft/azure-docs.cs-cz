@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88053622"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Mapování vlastní domény na koncový bod Azure Blob Storage
@@ -113,9 +113,9 @@ Vytvořte záznam CNAME, který bude odkazovat na název hostitele. Záznam CNAM
 
 #### <a name="step-4-test-your-custom-domain"></a>Krok 4: Testování vlastní domény
 
-Pokud chcete potvrdit, že je vaše vlastní doména namapovaná na koncový bod služby BLOB Service, vytvořte v rámci svého účtu úložiště objekt BLOB ve veřejném kontejneru. Pak ve webovém prohlížeči přejděte k objektu BLOB pomocí identifikátoru URI v následujícím formátu:`http://<subdomain.customdomain>/<mycontainer>/<myblob>`
+Pokud chcete potvrdit, že je vaše vlastní doména namapovaná na koncový bod služby BLOB Service, vytvořte v rámci svého účtu úložiště objekt BLOB ve veřejném kontejneru. Pak ve webovém prohlížeči přejděte k objektu BLOB pomocí identifikátoru URI v následujícím formátu: `http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-Pokud například chcete získat přístup k webovému formuláři v kontejneru *myforms* ve vlastní subdoméně *photos.contoso.com* , můžete použít následující identifikátor URI:`http://photos.contoso.com/myforms/applicationform.htm`
+Pokud například chcete získat přístup k webovému formuláři v kontejneru *myforms* ve vlastní subdoméně *photos.contoso.com* , můžete použít následující identifikátor URI: `http://photos.contoso.com/myforms/applicationform.htm`
 
 <a id="zero-down-time"></a>
 
@@ -225,9 +225,9 @@ Vytvořte dočasný záznam CNAME, který bude odkazovat na název hostitele.
 
 #### <a name="step-5-test-your-custom-domain"></a>Krok 5: Testování vlastní domény
 
-Pokud chcete potvrdit, že je vaše vlastní doména namapovaná na koncový bod služby BLOB Service, vytvořte v rámci svého účtu úložiště objekt BLOB ve veřejném kontejneru. Pak ve webovém prohlížeči přejděte k objektu BLOB pomocí identifikátoru URI v následujícím formátu:`http://<subdomain.customdomain>/<mycontainer>/<myblob>`
+Pokud chcete potvrdit, že je vaše vlastní doména namapovaná na koncový bod služby BLOB Service, vytvořte v rámci svého účtu úložiště objekt BLOB ve veřejném kontejneru. Pak ve webovém prohlížeči přejděte k objektu BLOB pomocí identifikátoru URI v následujícím formátu: `http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-Pokud například chcete získat přístup k webovému formuláři v kontejneru *myforms* ve vlastní subdoméně *photos.contoso.com* , můžete použít následující identifikátor URI:`http://photos.contoso.com/myforms/applicationform.htm`
+Pokud například chcete získat přístup k webovému formuláři v kontejneru *myforms* ve vlastní subdoméně *photos.contoso.com* , můžete použít následující identifikátor URI: `http://photos.contoso.com/myforms/applicationform.htm`
 
 ### <a name="remove-a-custom-domain-mapping"></a>Odebrání vlastního mapování domény
 

@@ -1,7 +1,7 @@
 ---
 title: Protokol SAML pro jednotné přihlašování Azure
 titleSuffix: Microsoft identity platform
-description: Tento článek popisuje protokol SAML jednotného přihlašování (SSO) v Azure Active Directory
+description: Tento článek popisuje protokol SAML jednotného Sign-On (SSO) v Azure Active Directory
 services: active-directory
 documentationcenter: .net
 author: kenwith
@@ -15,19 +15,19 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88118446"
 ---
-# <a name="single-sign-on-saml-protocol"></a>Protokol SAML jednotného přihlašování
+# <a name="single-sign-on-saml-protocol"></a>Jeden Sign-On protokol SAML
 
-Tento článek popisuje žádosti a odpovědi na ověření SAML 2,0, které Azure Active Directory (Azure AD) podporuje pro jednotné přihlašování (SSO).
+Tento článek popisuje žádosti o ověření SAML 2,0 a odpovědi, které Azure Active Directory (Azure AD) podporuje pro jednotné Sign-On (SSO).
 
 Následující diagram protokolu popisuje posloupnost jednotného přihlašování. Cloudová služba (poskytovatel služeb) používá vazbu přesměrování HTTP k předání `AuthnRequest` elementu (žádosti o ověření) do služby Azure AD (zprostředkovatele identity). Azure AD potom používá vazbu HTTP POST k odeslání `Response` elementu do cloudové služby.
 
-![Pracovní postup jednotného přihlašování (SSO)](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
+![Pracovní postup jednotného Sign-On (SSO)](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
 
 > [!NOTE]
 > Tento článek popisuje použití SAML pro jednotné přihlašování. Další informace o dalších způsobech zpracování jednotného přihlašování (například pomocí OpenID Connect nebo integrovaného ověřování systému Windows) najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
@@ -46,7 +46,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| Parametr | Typ | Popis |
+| Parametr | Typ | Description |
 | --- | --- | --- |
 | ID | Vyžadováno | Azure AD používá tento atribut k naplnění `InResponseTo` atributu vrácené odpovědi. ID nesmí začínat číslicí, takže běžnou strategií je předřadit řetězec jako "ID" do řetězcové reprezentace identifikátoru GUID. Například `id6c1c178c166d486687be4aaf5e482730` je platný identifikátor. |
 | Verze | Vyžadováno | Tento parametr by měl být nastaven na **2,0**. |
@@ -273,7 +273,7 @@ Obsahuje deklarace identity týkající se předmětu nebo uživatele. Následuj
 ```        
 
 * **Deklarace identity Name** – hodnota `Name` atributu ( `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ) je hlavní název uživatele ověřeného uživatele, například `testuser@managedtenant.com` .
-* **Které ObjectIdentifier deklarace identity** – hodnota `ObjectIdentifier` atributu ( `http://schemas.microsoft.com/identity/claims/objectidentifier` ) je `ObjectId` objekt adresáře, který představuje ověřeného uživatele ve službě Azure AD. `ObjectId`je neměnný, globálně jedinečný a znovu používá bezpečný identifikátor ověřeného uživatele.
+* **Které ObjectIdentifier deklarace identity** – hodnota `ObjectIdentifier` atributu ( `http://schemas.microsoft.com/identity/claims/objectidentifier` ) je `ObjectId` objekt adresáře, který představuje ověřeného uživatele ve službě Azure AD. `ObjectId` je neměnný, globálně jedinečný a znovu používá bezpečný identifikátor ověřeného uživatele.
 
 #### <a name="authnstatement"></a>AuthnStatement
 

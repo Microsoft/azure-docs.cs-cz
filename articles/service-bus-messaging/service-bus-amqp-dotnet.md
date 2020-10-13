@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak použít Azure Service Bus z aplikace 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067099"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Použití Service Bus z rozhraní .NET s AMQP 1,0
@@ -89,7 +89,7 @@ Pro usnadnění interoperability s klienty non-.NET používejte pouze typy .NET
 V porovnání s výchozím protokolem je v chování rozhraní Service Bus .NET API k dispozici několik malých rozdílů:
 
 * Vlastnost [OperationTimeout][OperationTimeout] je ignorována.
-* `MessageReceiver.Receive(TimeSpan.Zero)`je implementován jako `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` .
+* `MessageReceiver.Receive(TimeSpan.Zero)` je implementován jako `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` .
 * Vytváření zpráv pomocí zámků tokenů může být provedeno pouze příjemci zprávy, kteří zprávy původně obdrželi.
 
 ## <a name="control-amqp-protocol-settings"></a>Control – nastavení protokolu AMQP

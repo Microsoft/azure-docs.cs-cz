@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
 ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080707"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Přehled Azure App Service místní mezipaměti
@@ -54,7 +54,7 @@ Místní mezipaměť se konfiguruje pomocí kombinace nastavení rezervovaných 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Konfigurace místní mezipaměti pomocí Azure Portal
 <a name="Configure-Local-Cache-Portal"></a>
 
-Pomocí tohoto nastavení aplikace povolíte místní mezipaměť na základě jednotlivých webových aplikací:`WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
+Pomocí tohoto nastavení aplikace povolíte místní mezipaměť na základě jednotlivých webových aplikací: `WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
 
 ![Nastavení aplikace Azure Portal: místní mezipaměť](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
 

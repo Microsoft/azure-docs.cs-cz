@@ -14,10 +14,10 @@ ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: 66a3ecd82ab61f25c99fd1268d9ce7567b057d66
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86050422"
 ---
 ## <a name="prepare-for-akv-integration"></a>Příprava na integraci integrace
@@ -31,10 +31,10 @@ Následující části popisují tyto požadavky a informace, které potřebujet
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
-### <a name="install-azure-powershell"></a><a id="install"></a>Nainstalovat Azure PowerShell
+### <a name="install-azure-powershell"></a><a id="install"></a> Nainstalovat Azure PowerShell
 Ujistěte se, že jste nainstalovali nejnovější modul Azure PowerShell. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-az-ps).
 
-### <a name="register-an-application-in-your-azure-active-directory"></a><a id="register"></a>Registrace aplikace v Azure Active Directory
+### <a name="register-an-application-in-your-azure-active-directory"></a><a id="register"></a> Registrace aplikace v Azure Active Directory
 
 Nejdřív musíte mít ve svém předplatném [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD). Mezi mnoha výhodami vám to umožňuje udělit pro určité uživatele a aplikace oprávnění k trezoru klíčů.
 
@@ -53,7 +53,7 @@ V dalším kroku zaregistrujete aplikaci pomocí AAD. Tím získáte účet inst
 
 * Chcete-li mít následující přístupová oprávnění, musíte autorizovat toto nové ID aplikace (nebo ID klienta): **Get**, **wrapKey**, **unwrapKey**. To se provádí pomocí rutiny [set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) . Další informace najdete v tématu [přehled Azure Key Vault](../articles/key-vault/key-vault-overview.md).
 
-### <a name="create-a-key-vault"></a><a id="createkeyvault"></a>Vytvoření trezoru klíčů
+### <a name="create-a-key-vault"></a><a id="createkeyvault"></a> Vytvoření trezoru klíčů
 Abyste mohli použít Azure Key Vault k ukládání klíčů, které budete používat k šifrování na svém VIRTUÁLNÍm počítači, budete potřebovat přístup k trezoru klíčů. Pokud jste svůj Trezor klíčů ještě nevytvořili, vytvořte ho podle kroků uvedených v článku [Začínáme s Azure Key Vault](../articles/key-vault/key-vault-overview.md) . Před dokončením tohoto postupu je několik informací, které potřebujete ke shromáždění během této nastavení, později, když povolíte Azure Key Vault integraci na svém VIRTUÁLNÍm počítači s SQL.
 
 ```azurepowershell

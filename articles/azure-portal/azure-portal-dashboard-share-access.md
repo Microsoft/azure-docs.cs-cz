@@ -1,6 +1,6 @@
 ---
-title: Sdílení řídicích panelů Azure Portal pomocí Access Control na základě rolí
-description: Tento článek vysvětluje, jak sdílet řídicí panel v Azure Portal pomocí Access Control na základě rolí.
+title: Sdílení řídicích panelů Azure Portal pomocí Role-Based Access Control
+description: Tento článek vysvětluje, jak sdílet řídicí panel v Azure Portal pomocí Role-Based Access Control.
 services: azure-portal
 documentationcenter: ''
 author: mgblythe
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
 ms.openlocfilehash: b478272ff790121d914a51f8ee4c5cf250134f4d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87923879"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Sdílení řídicích panelů Azure prostřednictvím Řízení přístupu na základě role
@@ -33,7 +33,7 @@ Všechny publikované řídicí panely se implementují jako prostředky Azure. 
 
 ## <a name="understanding-access-control-for-dashboards"></a>Principy řízení přístupu pro řídicí panely
 
-Díky Access Controlům na základě rolí (RBAC) můžete uživatelům přiřadit role na třech různých úrovních rozsahu:
+Pomocí Role-Based Access Control (RBAC) můžete uživatelům přiřadit role na třech různých úrovních rozsahu:
 
 * předplatné
 * skupina prostředků

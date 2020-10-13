@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0e4ec7127df288ec1818df307da1ea9824141309
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87902452"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Řešení potíží s IoT Edgem zařízením
@@ -71,7 +71,7 @@ iotedge support-bundle --since 6h
 
 ## <a name="check-your-iot-edge-version"></a>Ověřit verzi IoT Edge
 
-Pokud používáte starší verzi IoT Edge, může problém vyřešit upgrade. `iotedge check`Nástroj kontroluje, zda je démon zabezpečení IoT Edge nejnovější verze, ale nekontroluje verze IoT Edge centra a agentů. Chcete-li zjistit verzi modulů runtime na vašem zařízení, použijte příkazy `iotedge logs edgeAgent` a `iotedge logs edgeHub` . Číslo verze je deklarováno v protokolech při spuštění modulu.
+Pokud používáte starší verzi IoT Edge, je možné, že se váš problém vyřeší upgradem. `iotedge check`Nástroj kontroluje, zda je démon zabezpečení IoT Edge nejnovější verze, ale nekontroluje verze IoT Edge centra a agentů. Chcete-li zjistit verzi modulů runtime na vašem zařízení, použijte příkazy `iotedge logs edgeAgent` a `iotedge logs edgeHub` . Číslo verze se zobrazí v protokolech po spuštění modulu.
 
 Pokyny k aktualizaci zařízení najdete v tématu [aktualizace démona zabezpečení IoT Edge a modulu runtime](how-to-update-iot-edge.md).
 

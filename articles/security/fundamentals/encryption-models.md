@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 836e01d3cd8fb25dda1616803d8b6f3e9ff4e06f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89645747"
 ---
 # <a name="data-encryption-models"></a>Modely šifrování dat
@@ -27,7 +27,7 @@ Porozumění různým modelům šifrování a jejich specialistům a nevýhodám
 
 Pro šifrování na straně serveru existují tři scénáře:
 
-- Šifrování na straně serveru pomocí klíčů spravovaných službou
+- Šifrování na straně serveru pomocí Service-Managedch klíčů
   - Poskytovatelé prostředků Azure provádějí operace šifrování a dešifrování.
   - Microsoft spravuje klíče
   - Plná funkčnost cloudu
@@ -143,7 +143,7 @@ Pokud se používá šifrování na straně serveru pomocí klíčů spravovaný
 ## <a name="supporting-services"></a>Podpůrné služby
 Služby Azure, které podporují jednotlivé modely šifrování:
 
-| Produkt, funkce nebo služba | Na straně serveru pomocí klíče spravovaného službou   | Na straně serveru pomocí klíče spravovaného zákazníkem | Klientská strana s použitím klíče spravovaného klientem  |
+| Produkt, funkce nebo služba | Server-Side pomocí klíče Service-Managed   | Server-Side pomocí klíče Customer-Managed | Client-Side pomocí klíče Client-Managed  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 | **AI a strojové učení**      |                    |                    |                    |
 | Azure Cognitive Search           | Yes                | Yes                | -                  |
@@ -159,9 +159,9 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Translator Text                  | Yes                | Yes                | -                  |
 | Power BI                         | Yes                | Ano, RSA 4096-bit  | -                  |
 | **Analýzy**                    |                    |                    |                    |
-| Azure Stream Analytics           | Yes                | –\*              | -                  |
+| Azure Stream Analytics           | Yes                | NENÍ K DISPOZICI\*              | -                  |
 | Event Hubs                       | Yes                | Yes                | -                  |
-| Functions                        | Yes                | Yes                | -                  |
+| Funkce                        | Yes                | Yes                | -                  |
 | Azure Analysis Services          | Ano                | -                  | -                  |
 | Azure Data Catalog               | Yes                | -                  | -                  |
 | Azure HDInsight                  | Yes                | Vše                | -                  |
@@ -175,7 +175,7 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Container Instances              | Yes                | Yes                | -                  |
 | Container Registry               | Yes                | Yes                | -                  |
 | **Výpočetní služby**                      |                    |                    |                    |
-| Virtuální počítače                 | Yes                | Yes                | -                  |
+| Virtual Machines                 | Yes                | Yes                | -                  |
 | Sada škálování virtuálních počítačů        | Yes                | Ano                | -                  |
 | SAP HANA                         | Ano                | Yes                | -                  |
 | App Service                      | Yes                | Ano\*\*            | -                  |
@@ -197,7 +197,7 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Table Storage                    | Yes                | Yes                | Yes                |
 | Azure Cosmos DB                  | Ano                | Yes                | -                  |
 | Azure Databricks                 | Yes                | Yes                | -                  |
-| Azure Database Migration Service | Yes                | –\*              | -                  |
+| Azure Database Migration Service | Yes                | NENÍ K DISPOZICI\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | Yes                | -                  | Yes                |
 | Azure Repos                      | Yes                | -                  | Yes                |
@@ -230,7 +230,7 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Synchronizace souborů                        | Yes                | Yes                | -                  |
 | Queue Storage                    | Yes                | Yes                | Yes                |
 | Avere vFXT                       | Yes                | -                  | -                  |
-| Azure Cache for Redis            | Yes                | –\*              | -                  |
+| Azure Cache for Redis            | Yes                | NENÍ K DISPOZICI\*              | -                  |
 | Azure NetApp Files               | Yes                | Yes                | -                  |
 | Archiv služby Storage                  | Yes                | Yes                | -                  |
 | StorSimple                       | Yes                | Yes                | Yes                |
@@ -240,7 +240,7 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 
 \* Tato služba neuchovává data. Přechodné mezipaměti, pokud jsou nějaké, se šifrují pomocí klíče Microsoftu.
 
-\*\* Tato služba podporuje ukládání dat do vlastního Key Vault, účtu úložiště nebo jiné trvalé služby dat, která již podporuje šifrování na straně serveru s klíčem spravovaným zákazníkem.
+\*\* Tato služba podporuje ukládání dat do vlastního Key Vault, účtu úložiště nebo jiné trvalé služby dat, která již podporuje šifrování Server-Side pomocí Customer-Managed Key.
 
 ## <a name="next-steps"></a>Další kroky
 
