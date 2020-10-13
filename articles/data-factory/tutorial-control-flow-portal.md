@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: b1b766e3cb337151c5ca9b35e2040a2a47124151
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568532"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Větvení a řetězení aktivit v Azure Data Factoryovém kanálu pomocí Azure Portal
@@ -293,7 +293,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
     1. Jako hodnotu parametru **sourceBlobContainer** zadejte **adftutorial/adfv2branch/input**.
     2. Jako hodnotu parametru **sinkBlobContainer** zadejte **adftutorial/adfv2branch/output**.
     3. Zadejte **e-mailovou adresu****příjemce**.
-    4. Klikněte na **Dokončit**.
+    4. Klikněte na **Dokončit** .
 
         ![Parametry spuštění kanálu](./media/tutorial-control-flow-portal/pipeline-run-parameters.png)
 

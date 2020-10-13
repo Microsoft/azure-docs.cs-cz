@@ -9,10 +9,10 @@ ms.author: tisande
 ms.reviewer: sngun
 ms.custom: devx-track-js
 ms.openlocfilehash: 1e8e1aa9d8e582644d1d625fc8a97cc0e0c790df
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334391"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Rozhraní API pro dotazování v jazyce JavaScript v Azure Cosmos DB
@@ -59,7 +59,7 @@ Následující tabulka uvádí různé dotazy SQL a odpovídající dotazy JavaS
 |VYBRALI<br>Z dokumentů<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs. ID = "X998_Y998"|__. Filter (Function (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Return doc.id = = = "X998_Y998";<br>});|Dotazy na dokumenty s predikátem: ID = "X998_Y998".|
 |VYBRALI<br>Z dokumentů<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS (dokumentace Značky, 123)|__. Filter (Function (x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Vrátí x. Tags && x. Tags. indexOf (123) >-1;<br>});|Dotazy na dokumenty, které mají vlastnost a značky značek, jsou pole obsahující hodnotu 123.|
 |SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message jako MSG<br>Z dokumentů<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs. ID = "X998_Y998"|__. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Filter (funkce (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return doc.id = = = "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. map (funkce (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vrátit<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Msg: doc. Message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>. Value ();|Dotaz na dokumenty s predikátem, ID = "X998_Y998" a následně projektuje ID a zprávu (aliasy do zprávy).|
-|VYBRAT značku hodnoty<br>Z dokumentů<br>Značka JOIN v docs Značky<br>ORDER BY docs. _ts|__. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Filter (funkce (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vrátit dokument. Značky && Array. IsArray (doc. Značky);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. sortBy (funkce (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vrátit doc. _ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. Pluck ("značky")<br>&nbsp;&nbsp;&nbsp;&nbsp;. plochý ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Value ()|Filtry pro dokumenty, které mají vlastnost pole, značky a seřadí výsledné dokumenty pomocí vlastnosti System _ts timestamp a pak projekty + sloučí pole značek.|
+|VYBRAT značku hodnoty<br>Z dokumentů<br>Značka JOIN v docs Značky<br>Seřadit podle docs._ts|__. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Filter (funkce (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vrátit dokument. Značky && Array. IsArray (doc. Značky);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. sortBy (funkce (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vrátit doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. Pluck ("značky")<br>&nbsp;&nbsp;&nbsp;&nbsp;. plochý ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Value ()|Filtry pro dokumenty, které mají vlastnost pole, značky a seřadí výsledné dokumenty pomocí vlastnosti System _ts timestamp a pak projekty + sloučí pole značek.|
 
 ## <a name="next-steps"></a>Další kroky
 

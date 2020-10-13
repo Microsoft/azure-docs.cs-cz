@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5d07257d1e23ee792aa996e31a2c28c17bc23d34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715070"
 ---
-# <a name="azure-iot-model-repository"></a>Úložiště modelu Azure IoT
+# <a name="azure-iot-model-repository"></a>Úložiště modelů Azure IoT
 
-Úložiště modelu Azure IoT umožňuje tvůrcům zařízení spravovat a sdílet modely zařízení IoT technologie Plug and Play. Modely zařízení jsou definice dokumentů JSON LD, které jsou definované pomocí [DTDL (Digital vlákna Modeling Language)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Modely uložené ve službě úložiště modelů se dají sdílet s vývojáři řešení soukromě prostřednictvím řízení přístupu nebo veřejně, aniž by museli k integraci a vývoji cloudového řešení IoT technologie Plug and Play použít jakékoli ověřování.
+Úložiště modelů Azure IoT umožňuje tvůrcům zařízení spravovat a sdílet modely zařízení IoT Plug and Play. Modely zařízení jsou definice dokumentů JSON LD, které jsou definované pomocí [DTDL (Digital vlákna Modeling Language)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Modely uložené ve službě úložiště modelů se dají sdílet s vývojáři řešení soukromě prostřednictvím řízení přístupu nebo veřejně, aniž by museli k integraci a vývoji cloudového řešení IoT technologie Plug and Play použít jakékoli ověřování.
 
 > [!NOTE]
 > Tvůrci zařízení se můžou rozhodnout implementovat modely IoT technologie Plug and Play zařízení přímo na zařízení, používat moduly nebo v modulu IoT Edge.
@@ -171,9 +171,9 @@ Postup nahrání modelu pomocí rozhraní příkazového řádku najdete v téma
 
 ### <a name="publish-a-model"></a>Publikování modelu
 
-Chcete-li publikovat model, musí být splněny následující požadavky:
+K publikování modelu je třeba splnit následující požadavky:
 
-1. Aby bylo možné publikovat model, musí být vaše organizace členem [Microsoft Partner Network](https://docs.microsoft.com/partner-center/) . Pokud chcete vytvořit účet partnerského centra, přečtěte si téma [Vytvoření účtu partnerského centra](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account). Po schválení účtu můžete publikovat své modely. Další informace najdete v tématu [Nejčastější dotazy k partnerskému centru](https://support.microsoft.com/help/4340639/partner-center-account-faqs).
+1. Aby vaše organizace mohla publikovat model, musí být členem programu [Microsoft Partner Network](https://docs.microsoft.com/partner-center/). Informace o vytvoření účtu v Partnerském centru najdete v tématu [Vytvoření účtu v Partnerském centru](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account). Po schválení vašeho účtu můžete publikovat modely. Další informace najdete v [nejčastějších dotazech k Partnerskému centru](https://support.microsoft.com/help/4340639/partner-center-account-faqs).
 
 2. Uživatel musí být členem role *vydavatele* tenanta úložiště.
 

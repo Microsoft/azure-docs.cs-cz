@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: alexeyo
 ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567158"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kvóty a omezení služeb Speech
@@ -86,7 +86,7 @@ Zvýšení limitu souběžných požadavků nijak neovlivní **přímo vaše** n
 
 Souběžná omezení požadavků pro **základní** a **vlastní** modely je potřeba upravit **samostatně**.
 
-Existující parametr limitu souběžných požadavků není **viditelný prostřednictvím** Azure Portal, nástrojů příkazového řádku nebo požadavků rozhraní API. Pokud chcete ověřit existující hodnotu, vytvořte žádost o podporu Azure.
+Hodnota pro souběžný parametr limitu požadavků **se nezobrazuje prostřednictvím** Azure Portal, Command-Linech nástrojů nebo požadavků rozhraní API. Pokud chcete ověřit existující hodnotu, vytvořte žádost o podporu Azure.
 
 >[!NOTE]
 >[Kontejnery řeči](speech-container-howto.md) nevyžadují zvýšení limitu souběžných požadavků, protože kontejnery jsou omezené jenom procesory hardwaru, na kterých jsou hostované.
@@ -94,9 +94,9 @@ Existující parametr limitu souběžných požadavků není **viditelný prost�
 #### <a name="have-the-required-information-ready"></a>Připravte požadované informace:
 - Pro **základní model**:
   - ID prostředku pro rozpoznávání řeči
-  - Region (Oblast)
+  - Oblast
 - Pro **vlastní model**: 
-  - Region (Oblast)
+  - Oblast
   - ID vlastního koncového bodu
 
 - **Jak získat informace (základní model)**:  
@@ -152,7 +152,7 @@ Ve výchozím nastavení je počet souběžných požadavků pro vlastní hlasov
 
 Zvýšení limitu souběžných požadavků nijak neovlivní **přímo vaše** náklady. Služba Speech Services používá "platíte jenom za to, co používáte". Limit definuje, jak vysoké může být služba škálovatelná, než začne omezovat vaše požadavky.
 
-Existující parametr limitu souběžných požadavků není **viditelný prostřednictvím** Azure Portal, nástrojů příkazového řádku nebo požadavků rozhraní API. Pokud chcete ověřit existující hodnotu, vytvořte žádost o podporu Azure.
+Hodnota pro souběžný parametr limitu požadavků **se nezobrazuje prostřednictvím** Azure Portal, Command-Linech nástrojů nebo požadavků rozhraní API. Pokud chcete ověřit existující hodnotu, vytvořte žádost o podporu Azure.
 
 >[!NOTE]
 >[Kontejnery řeči](speech-container-howto.md) nevyžadují zvýšení limitu souběžných požadavků, protože kontejnery jsou omezené jenom procesory hardwaru, na kterých jsou hostované.

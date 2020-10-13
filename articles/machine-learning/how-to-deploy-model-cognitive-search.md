@@ -11,10 +11,10 @@ author: cjgronlund
 ms.reviewer: larryfr
 ms.date: 06/11/2020
 ms.openlocfilehash: d9d509f23ca62415035bdda5231033a0c2f830ce
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91728722"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>Nasazení modelu pro použití se službou Cognitive Search
@@ -41,7 +41,7 @@ Když nasazujete model pro použití s Azure Kognitivní hledání, nasazení mu
 * Vstupní skript musí také přijmout data JSON jako vstup a generovat jako výstup JSON.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 

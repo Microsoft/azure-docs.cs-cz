@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543448"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Řešení potíží s omezeními & Azure Cloud Shell
@@ -46,7 +46,7 @@ Známá řešení potíží s Azure Cloud Shell zahrnují:
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Dialog úložiště – chyba: 403 RequestDisallowedByPolicy
 
-- **Podrobnosti**: při vytváření účtu úložiště prostřednictvím Cloud Shell neproběhne úspěšně z důvodu přiřazení Azure Policy, které ukládá správce. Chybová zpráva bude zahrnovat:`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **Podrobnosti**: při vytváření účtu úložiště prostřednictvím Cloud Shell neproběhne úspěšně z důvodu přiřazení Azure Policy, které ukládá správce. Chybová zpráva bude zahrnovat: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
 - **Řešení**: obraťte se na správce Azure a odeberte nebo aktualizujte přiřazení Azure Policy, které zakazuje vytváření úložiště.
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>Dialog úložiště – chyba: 400 DisallowedOperation
@@ -80,10 +80,10 @@ Známá řešení potíží s Azure Cloud Shell zahrnují:
 > [!NOTE]
 > Virtuální počítače Azure musí mít veřejnou IP adresu.
 
-- **Podrobnosti**: vzhledem k výchozímu nastavení brány Windows Firewall pro WinRM se uživateli může zobrazit následující chyba:`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
+- **Podrobnosti**: vzhledem k výchozímu nastavení brány Windows Firewall pro WinRM se uživateli může zobrazit následující chyba: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
 - **Řešení**: Spusťte `Enable-AzVMPSRemoting` , chcete-li povolit všechny aspekty vzdálené komunikace prostředí PowerShell v cílovém počítači.
 
-### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir`neaktualizuje výsledek na jednotce Azure.
+### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` neaktualizuje výsledek na jednotce Azure.
 
 - **Podrobnosti**: ve výchozím nastavení se optimalizuje činnost koncového uživatele a výsledky `dir` se ukládají do mezipaměti v jednotce Azure.
 - **Řešení**: po vytvoření, aktualizaci nebo odebrání prostředku Azure spusťte příkaz `dir -force` a aktualizujte výsledky na jednotce Azure.
@@ -196,4 +196,4 @@ PowerShell:
 Azure Cloud Shell v Azure Government jsou přístupné jenom prostřednictvím Azure Portal.
 
 >[!Note]
-> Připojení k cloudům pro RSZ a vysokou nebo státní správu DoD pro Exchange Online není aktuálně podporováno.
+> Připojení k GCC-High nebo cloudu DoD pro Exchange Online není v současné době podporováno.

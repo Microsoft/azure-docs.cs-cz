@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75468626"
 ---
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
 **Propojená služba Azure Storage** umožňuje propojit účet Azure Storage s objektem pro vytváření dat Azure pomocí **klíče účtu**, který poskytuje datovou továrnu s globálním přístupem k Azure Storage. Následující tabulka uvádí popis pro prvky JSON specifické pro Azure Storage propojenou službu.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ |Vlastnost Type musí být nastavená na: **AzureStorage** . |Yes |
 | připojovací řetězec |Zadejte informace potřebné pro připojení k úložišti Azure pro vlastnost connectionString. |Yes |
@@ -42,12 +42,12 @@ Sdílený přístupový podpis (SAS) poskytuje delegovaný přístup k prostřed
 > Azure Data Factory teď podporuje jenom **SAS služby** , ale ne účet SAS. Všimněte si, že adresa URL SAS generable z Azure Portal nebo Průzkumník služby Storage je SAS účtu, který není podporovaný.
 
 > [!TIP]
-> Můžete provést následující příkazy prostředí PowerShell a vygenerovat pro svůj účet úložiště SAS služby (nahradíte držitele místa a udělí potřebné oprávnění):`$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> Můžete provést následující příkazy prostředí PowerShell a vygenerovat pro svůj účet úložiště SAS služby (nahradíte držitele místa a udělí potřebné oprávnění): `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 Propojená služba Azure Storage SAS umožňuje propojit účet Azure Storage s datovou továrnou Azure pomocí sdíleného přístupového podpisu (SAS). Poskytuje datovou továrnu s omezeným/časově vázaným přístupem ke všem/konkrétním prostředkům (objektům blob nebo kontejneru) v úložišti. Následující tabulka uvádí popis pro prvky JSON specifické pro Azure Storage propojenou službu SAS. 
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ |Vlastnost Type musí být nastavená na: **AzureStorageSas** . |Yes |
 | sasUri |Zadejte identifikátor URI sdíleného přístupového podpisu k prostředkům Azure Storage, jako je například objekt blob, kontejner nebo tabulka.  |Yes |

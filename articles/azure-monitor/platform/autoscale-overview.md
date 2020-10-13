@@ -5,10 +5,10 @@ ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: e89cf36e59ab26ec220d1125162a841fc10f0e47
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567260"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Přehled automatického škálování v Microsoft Azure
@@ -98,7 +98,7 @@ Automatické škálování můžete nastavit přes
 | Služba | Schéma & docs |
 | --- | --- |
 | Web Apps |[Škálování Web Apps](autoscale-get-started.md) |
-| Cloudové služby |[Automatické škálování cloudové služby](../../cloud-services/cloud-services-how-to-scale-portal.md) |
+| Cloud Services |[Automatické škálování cloudové služby](../../cloud-services/cloud-services-how-to-scale-portal.md) |
 | Virtual Machines: klasický |[Škálování skupin dostupnosti klasických virtuálních počítačů](/archive/blogs/kaevans/autoscaling-azurevirtual-machines) |
 | Virtual Machines: Windows Scale Sets |[Škálování virtuálních počítačů s měřítkem ve Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Virtual Machines: Linux Scale Sets |[Škálování virtuálních počítačů na úrovni systému Linux](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |

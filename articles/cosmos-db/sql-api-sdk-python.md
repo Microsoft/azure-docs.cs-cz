@@ -10,10 +10,10 @@ ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
 ms.openlocfilehash: 03c8f5acfc10738401f61de099f946c33497d705
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569817"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro SQL API: poznámky k verzi a prostředky
@@ -294,7 +294,7 @@ Verze 4.0.0 B1 je první náhled našeho úsilí o vytvoření uživatelsky př�
 ### <a name="142"></a>1.4.2
 
 * Implementujte Upsert. Přidaly se nové metody UpsertXXX, které podporují funkci Upsert.
-* Implementujte směrování na základě ID. Žádné změny veřejného rozhraní API, všechny změny jsou interní.
+* Implementujte ID-Based směrování. Žádné změny veřejného rozhraní API, všechny změny jsou interní.
 
 ### <a name="130"></a>1.3.0
 
