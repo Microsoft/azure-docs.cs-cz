@@ -10,13 +10,13 @@ ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 20ed84a87486f1095a90e012368b1f56d6426c8e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88205627"
 ---
-# <a name="manage-azure-portal-settings-and-preferences"></a>Správa nastavení a předvoleb Azure Portal
+# <a name="manage-azure-portal-settings-and-preferences"></a>Správa nastavení a předvoleb na webu Azure Portal
 
 Výchozí nastavení Azure Portal můžete změnit tak, aby splňovalo vaše vlastní předvolby. Většina nastavení je k dispozici v nabídce **Nastavení** v záhlaví globální stránky.
 
@@ -33,7 +33,7 @@ Když se přihlašujete k Azure Portal, můžete změnit odběr, který se ve v�
 
 1. Po spuštění portálu vyberte předplatné, které chcete jako Výchozí předplatná. 
 
-    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="Po spuštění portálu vyberte předplatné, které chcete jako Výchozí předplatná."::: 
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="Filtrovat seznam prostředků podle předplatného"::: 
 
 
 ## <a name="choose-your-default-view"></a>Zvolit výchozí zobrazení 

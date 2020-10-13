@@ -13,10 +13,10 @@ ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: ec59c07d66150bf7b184c149a9b1ed9015c17645
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89433649"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Řešení potíží se zařízeními připojenými službou Hybrid Azure Active Directory Join
@@ -233,7 +233,7 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připoj
    - Důvod: HTTP 503 ze serveru DRS.
    - Řešení: Server je momentálně nedostupný. budoucí pokusy o připojení budou po návratu serveru do režimu online nejspíš úspěšné.
 
-###### <a name="other-errors"></a>Další chyby
+###### <a name="other-errors"></a>Jiné chyby
 
 - **E_INVALIDDATA** (0x8007000D/-2147024883)
    - Důvod: odpověď serveru JSON se nedala analyzovat. Důvodem je, že proxy vrací HTTP 200 se stránkou ověřování HTML.
@@ -246,7 +246,7 @@ Platí pouze pro účty federované domény.
 Důvody pro selhání:
 
 - Nepovedlo se získat přístupový token pro prostředek DRS v tichém režimu.
-   - Zařízení s Windows 10 získávají ověřovací token ze služby Federation Service pomocí integrovaného ověřování systému Windows na aktivní koncový bod WS-Trust. Podrobnosti: [Služba FS (Federation Service) konfigurace](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
+   - Zařízení s Windows 10 získávají ověřovací token ze služby Federation Service pomocí integrovaného ověřování systému Windows do aktivního WS-Trustho koncového bodu. Podrobnosti: [Služba FS (Federation Service) konfigurace](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
 
 **Běžné kódy chyb:**
 
@@ -261,7 +261,7 @@ Použijte protokoly Prohlížeč událostí k vyhledání kódu chyby, kódu chy
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057)
    - Důvod: ověřovací protokol není WS-Trust.
-   - Řešení: místní zprostředkovatel identity musí podporovat WS-Trust.
+   - Řešení: místní zprostředkovatel identity musí podporovat WS-Trust
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036)
    - Důvod: místní služba FS (Federation Service) nevrátila odpověď XML.
    - Řešení: Zajistěte, aby koncový bod MEX vrátil platný kód XML. Zajistěte, aby proxy nenarušil a vracel odpovědi, které nejsou ve formátu XML.
@@ -284,7 +284,7 @@ Použijte protokoly Prohlížeč událostí k vyhledání kódu chyby, kódu chy
    - Důvod: pokus o připojení `https://login.microsoftonline.com` se nezdařil.
    - Řešení: Ověřte síťové připojení k `https://login.microsoftonline.com` .
 
-##### <a name="other-errors"></a>Další chyby
+##### <a name="other-errors"></a>Jiné chyby
 
 - **ERROR_ADAL_SERVER_ERROR_INVALID_GRANT** (0xcaa20003/-895352829)
    - Důvod: Služba Azure AD nepřijala token SAML od místního zprostředkovatele identity.

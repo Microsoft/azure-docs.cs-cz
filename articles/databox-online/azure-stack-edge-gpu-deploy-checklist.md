@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: alkohli
 ms.openlocfilehash: 251b15f72c3216ad3ff4b2983c8cbbd2d9ec6579
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618246"
 ---
 # <a name="deployment-checklist-for-your-azure-stack-edge-pro-gpu-device"></a>Kontrolní seznam nasazení pro zařízení GPU Azure Stack Edge pro  
@@ -23,7 +23,7 @@ Pomocí následujícího kontrolního seznamu se ujistěte, že máte tyto infor
 
 ## <a name="deployment-checklist"></a>Kontrolní seznam nasazení 
 
-| Fáze                             | parametr                                                                                                                                                                                                                           | Podrobnosti                                                                                                           |
+| Fáze                             | Parametr                                                                                                                                                                                                                           | Podrobnosti                                                                                                           |
 |-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
 | Správa zařízení               | <li>Předplatné Azure</li><li>Registrovaní poskytovatelé prostředků</li><li>Účet služby Azure Storage</li>|<li>Povoleno pro Azure Stack Edge pro/Data Box Gateway, vlastníka nebo přispěvatele.</li><li>V Azure Portal můžete přejít na **předplatné domů > > poskytovatelé prostředků > předplatného**. Vyhledejte `Microsoft.DataBoxEdge` a zaregistrujte se. Tento postup zopakujte `Microsoft.Devices` , pokud nasazujete úlohy IoT.</li><li>Vyžadovat přístupové přihlašovací údaje</li> |
 | Instalace zařízení               | Napájecí kabely v balíčku. <br>Pro nás je dodán konektor SVE 18/3, který je vyhodnocen pro 125 V a 15 Amps pomocí konektoru NEMA 5-15P to C13 (vstup do výstupu). | Další informace najdete v seznamu [podporovaných napájecích šňůr podle země](azure-stack-edge-technical-specifications-power-cords-regional.md) .  |

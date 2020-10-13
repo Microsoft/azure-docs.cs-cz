@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
 ms.openlocfilehash: 5c5c7a5adae9891f764f714d1700c6024376de02
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88205384"
 ---
 # <a name="azure-cache-for-redis-management-faqs"></a>Nejčastější dotazy ke správě Azure cache pro Redis
 Tento článek obsahuje odpovědi na běžné dotazy týkající se správy mezipaměti Azure pro Redis.
 
-## <a name="common-questions-and-answers"></a>Běžné otázky a odpovědi
+## <a name="common-questions-and-answers"></a>Časté otázky a odpovědi
 Tato část obsahuje následující Nejčastější dotazy:
 
 * [Kdy je vhodné povolit port bez TLS/SSL pro připojení k Redis?](#when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis)

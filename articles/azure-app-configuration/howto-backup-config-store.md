@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
 ms.openlocfilehash: a3c1699dd4b7b828c7dc652f14f431878f785061
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88207133"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Zálohování úložišť konfigurací aplikací automaticky
@@ -37,7 +37,7 @@ Motivace za zálohováním úložišť konfigurací aplikací je použití něko
 
 V tomto kurzu vytvoříte sekundární úložiště v `centralus` oblasti a všech dalších prostředcích v `westus` oblasti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/). 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) s úlohou vývoje Azure.

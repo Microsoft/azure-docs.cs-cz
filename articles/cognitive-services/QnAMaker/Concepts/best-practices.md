@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777016"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Osvědčené postupy QnA Maker znalostní bázi Knowledge Base
@@ -48,7 +48,7 @@ Nejlepší odpovědi jsou jednoduché odpovědi, ale nejsou příliš jednoduch�
 |Vypněte Surface přenosného počítače pomocí tlačítka napájení na klávesnici.|* Kombinace kláves pro režim spánku, vypnutí a restartování.<br>* Jak pevně spustit Surface přenosného počítače<br>* Jak změnit systém BIOS pro Surface přenosného počítače<br>* Rozdíly mezi režimem spánku, vypnutí a restartování|
 |Služba zákazníkům je dostupná přes telefon, Skype a textovou zprávu 24 hodin denně.|* Kontaktní informace pro prodej.<br> * Umístění a hodiny pro Office a úložiště pro navštívené osoby.<br> * Příslušenství pro Surface notebooků.|
 
-## <a name="chit-chat"></a>CHITEST – chat
+## <a name="chit-chat"></a>Chit-Chat
 Přidejte práci CHITEST – chat k robotovi, abyste měli větší konverzaci a poutavější, s nízkou intenzitou. Můžete snadno přidat datové sady funkce CHITEST-chat z předem definovaných osobních údajů při vytváření a kdykoli je kdykoli změnit. Naučte se, jak [Přidat CHITEST – chat ke své znalostní bázi](../How-To/chit-chat-knowledge-base.md).
 
 CHITEST – chat je podporován v [mnoha jazycích](../how-to/chit-chat-knowledge-base.md#language-support).

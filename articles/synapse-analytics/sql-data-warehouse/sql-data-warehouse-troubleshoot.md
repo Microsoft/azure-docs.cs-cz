@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: bce5e14db133ad55a2035c0c8074486ed1b8a6ec
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89460503"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Řešení potíží s synapse SQL ve službě Azure synapse Analytics
@@ -36,7 +36,7 @@ V tomto článku jsou uvedené běžné problémy s odstraňováním problémů 
 
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Průzkumník objektů Visual studia nemá žádné uživatele Azure AD.           | Jedná se o známý problém.  Alternativním řešením je zobrazit uživatele v zobrazení [Sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Další informace o použití Azure Active Directory s fondem SQL synapse najdete v tématu [ověřování do Azure synapse](sql-data-warehouse-authentication.md) . |
+| Průzkumník objektů Visual studia nemá žádné uživatele Azure AD.           | Jde o známý problém.  Alternativním řešením je zobrazit uživatele v [Sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Další informace o použití Azure Active Directory s fondem SQL synapse najdete v tématu [ověřování do Azure synapse](sql-data-warehouse-authentication.md) . |
 | Ruční skriptování, použití Průvodce skriptováním nebo připojení prostřednictvím SSMS je pomalé, nereaguje nebo produkuje chyby. | Zajistěte, aby byl uživatel vytvořen v hlavní databázi. V možnostech skriptování se ujistěte také, že je edice stroje nastavená na Microsoft Azure synapse Analytics Edition a typ modulu je "Microsoft Azure SQL Database". |
 | Generování skriptů v SSMS se nezdařilo                               | Generování skriptu pro synapse fond SQL se nepovede, pokud je možnost "vygenerovat skript pro závislé objekty" nastavená na hodnotu "true". Alternativním řešením je, že uživatelé musí ručně přejít na **nástroje-> možnosti->Průzkumník objektů systému SQL Server – > vygenerovat skript pro závislé možnosti a nastavit na hodnotu NEPRAVDA** . |
 

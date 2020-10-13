@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: 4310bd94edd5ebe14eab40b6d19e2bacbdd1b03c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906217"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure SQL Database výstup z Azure Stream Analytics
@@ -27,7 +27,7 @@ Následující tabulka uvádí seznam názvů vlastností a jejich popis pro vyt
 | Název vlastnosti | Description |
 | --- | --- |
 | Alias pro výstup |Popisný název, který se používá v dotazech k směrování výstupu dotazu do této databáze. |
-| Databáze | Název databáze, do které posíláte výstup. |
+| databáze | Název databáze, do které posíláte výstup. |
 | Název serveru | Název logického serveru SQL nebo název spravované instance. Pro spravovanou instanci SQL je nutné zadat port 3342. Například *sampleserver. Public. Database. Windows. NET, 3342* |
 | Uživatelské jméno | Uživatelské jméno, které má přístup pro zápis do databáze. Stream Analytics podporuje pouze ověřování SQL. |
 | Heslo | Heslo pro připojení k databázi. |

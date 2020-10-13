@@ -11,10 +11,10 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.openlocfilehash: 9e24a652bb4e577ff9b604b6b4f5284883723ee5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906706"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Kurz: vytvoření projektu s popisem pro klasifikaci imagí ve více třídách 
@@ -34,7 +34,7 @@ V tomto kurzu budete používat obrázky koček a psi.  Vzhledem k tomu, že ka�
 > * Označte data.  Tato úloha může být provedena buď vy, nebo vašimi popisky.
 > * Dokončete projekt tak, že zkontrolujete a exportujete data.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
@@ -64,7 +64,7 @@ Dále budete spravovat projekt označování dat v aplikaci Azure Machine Learni
 
 1. Vyplňte formulář s těmito nastaveními:
 
-    Pole|Description 
+    Pole|Popis 
     ---|---
     Název úložiště dat | Poskytněte úložiště dat název.  Zde používáme **labeling_tutorial**.
     Typ úložiště dat | Vyberte typ úložiště.  Tady používáme **Azure Blob Storage**, což je preferované úložiště pro obrázky.
@@ -89,7 +89,7 @@ Teď, když máte přístup k datům, která mají být označená, vytvořte sv
 
 1. Pro formulář **Project Details** použijte následující vstup:
 
-    Pole|Description 
+    Pole|Popis 
     ---|---
     Název projektu | Zadejte název svého projektu.  Tady budeme používat **kurz-kočky-n-psi**.
     Popis typu úlohy | Vyberte možnost **klasifikace imagí s více třídami**.  

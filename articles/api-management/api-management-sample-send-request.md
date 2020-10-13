@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 10beee563e4a93332cd817ee04c1e74bda6e9c51
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88210348"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Použití externích služeb ze služby Azure API Management
@@ -65,7 +65,7 @@ Následující příklad ukazuje, jak odeslat zprávu do chatovací místnosti s
 ### <a name="is-fire-and-forget-good-enough"></a>Je požár a zapomenout dostatečně dobrý?
 Při použití stylu požáru a zapomenutí žádosti se používají určité kompromisy. Pokud z nějakého důvodu požadavek selže, nebude chyba hlášena. V této konkrétní situaci není zaručena složitá náročnost systému generování sestav sekundárního selhání a dodatečné náklady na výkon při čekání na odpověď. V případě scénářů, kde je důležité pro kontrolu odpovědi, je lepší volbou zásada [Odeslat požadavek](./api-management-advanced-policies.md#SendRequest) .
 
-## <a name="send-request"></a>Odeslat požadavek
+## <a name="send-request"></a>Send-Request
 Tato `send-request` zásada umožňuje použití externí služby k provádění složitých funkcí zpracování a vrácení dat do služby API Management, která se dá použít k dalšímu zpracování zásad.
 
 ### <a name="authorizing-reference-tokens"></a>Autorizace tokenů reference
@@ -123,7 +123,7 @@ Pomocí `<choose>` zásad můžete zjistit, jestli je token neplatný, a pokud a
 </choose>
 ```
 
-V závislosti na [specifikaci RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) , která popisuje `bearer` , jak se mají tokeny používat, API Management také vrátí `WWW-Authenticate` hlavičku s odpovědí 401. Ověřování na straně klienta je určeno k tomu, aby bylo klientovi pokyn, jak vytvořit řádně autorizovaný požadavek. Vzhledem k široké škále dostupných přístupů s OAuth2 Framework je obtížné sdělit všechny potřebné informace. Naštěstí je snaha pomáhat klientům, [kteří zjistí, jak správně autorizovat požadavky na server prostředků](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
+V závislosti na [specifikaci RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) , která popisuje `bearer` , jak se mají tokeny používat, API Management také vrátí `WWW-Authenticate` hlavičku s odpovědí 401. WWW-Authenticate má dát klientovi pokyn, jak vytvořit řádně autorizovaný požadavek. Vzhledem k široké škále dostupných přístupů s OAuth2 Framework je obtížné sdělit všechny potřebné informace. Naštěstí je snaha pomáhat klientům, [kteří zjistí, jak správně autorizovat požadavky na server prostředků](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
 
 ### <a name="final-solution"></a>Konečné řešení
 Na konci získáte následující zásady:

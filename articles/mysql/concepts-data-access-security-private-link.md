@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: e49fd0d2b4d8fc801372dbc766c2fdc7beb21b10
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905916"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Privátní odkaz pro Azure Database for MySQL
@@ -72,21 +72,21 @@ Po vytvoření privátního koncového bodu (PE) správcem sítě může správc
 
 * Vyberte jednotlivé řadiče PEC ze seznamu tím, že je vyberete.
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="vyberte privátní koncový bod, který čeká na schválení.":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="vybrat portál privátního koncového bodu":::
 
 * Správce serveru MySQL se může rozhodnout pro schválení nebo zamítnutí serveru PEC a volitelně také přidat krátkou odpověď na text.
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="Vyberte zprávu privátního koncového bodu.":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="vybrat portál privátního koncového bodu":::
 
 * Po schválení nebo odmítnutí bude seznam odpovídat příslušnému stavu spolu s textem odpovědi.
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="Vyberte koncový stav privátního koncového bodu.":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="vybrat portál privátního koncového bodu":::
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-mysql"></a>Případy použití privátního odkazu pro Azure Database for MySQL
 
 Klienti se můžou připojit ke soukromým koncovým bodem ze stejné virtuální sítě, partnerské virtuální sítě ve stejné oblasti nebo prostřednictvím připojení VNet-to-VNet napříč oblastmi. Klienti se navíc mohou připojit z místního prostředí pomocí ExpressRoute, privátního partnerského vztahu nebo tunelového propojení VPN. Níže je zjednodušený diagram znázorňující běžné případy použití.
 
-:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="Výběr privátního koncového bodu – přehled":::
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="vybrat portál privátního koncového bodu":::
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Připojení z virtuálního počítače Azure v partnerském Virtual Network (VNet)
 Nakonfigurujte [partnerský vztah](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell) virtuálních sítí pro navázání připojení k Azure Database for MySQL z virtuálního počítače Azure ve virtuální síti s partnerským vztahem.

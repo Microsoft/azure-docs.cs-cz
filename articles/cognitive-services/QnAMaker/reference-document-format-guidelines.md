@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
 ms.openlocfilehash: d35ea57a68e500deffa99033b83114ec518dd5e3
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776727"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>Pokyny pro formát importovaných dokumentů a adres URL
@@ -54,7 +54,7 @@ Níže je příklad částečně strukturovaného dokumentu bez indexu:
 
 ## <a name="structured-qna-document"></a>Strukturovaný QnA dokument
 
-Formát strukturovaných odpovědí na otázky v souborech DOC má formu střídání otázek a odpovědí na řádek, jednu otázku na řádek následovaný odpovědí na následujícím řádku, jak je znázorněno níže:
+Formát strukturovaných Question-Answers v souborech DOC má formu střídání otázek a odpovědí na řádek, jednu otázku na řádek následovaný odpovědí na následujícím řádku, jak je znázorněno níže:
 
 ```text
 Question1

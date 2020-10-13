@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: memildin
 ms.openlocfilehash: 19e9a33350b6a1a67986dc35a372f737e45ab39a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906384"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>Zabránění neoprávněným konfiguracím s doporučeními pro vymáhání nebo zakazování
@@ -41,18 +41,18 @@ To najdete v horní části stránky s podrobnostmi o prostředcích pro vybran�
     > [!TIP]
     > Chcete-li změnit jedno předplatné, můžete použít tři tečky na konci řádku, nebo pomocí zaškrtávacích políček vybrat více předplatných nebo skupin a pak vybrat možnost **změnit na odepřít**.
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-prevent-resource-creation.png" alt-text="Nastavení oboru pro odepření Azure Policy":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-prevent-resource-creation.png" alt-text="Stránka doporučení s zvýrazněným tlačítkem odepřít":::
 
 
 ## <a name="enforce-a-secure-configuration"></a>Vynutilit zabezpečenou konfiguraci
 
 1. Otevřete doporučení, které nasadíte nasazení šablony pro Pokud nové prostředky nevyhovují, a v horní části stránky vyberte tlačítko **vykonat** .
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="Stránka doporučení s zvýrazněným tlačítkem pro vymáhání":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="Stránka doporučení s zvýrazněným tlačítkem odepřít":::
 
     Otevře se podokno konfigurace se všemi možnostmi konfigurace zásad. 
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-config.png" alt-text="Vynutilit možnosti konfigurace":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-config.png" alt-text="Stránka doporučení s zvýrazněným tlačítkem odepřít":::
 
 1. Nastavte rozsah, název přiřazení a další relevantní možnosti.
 

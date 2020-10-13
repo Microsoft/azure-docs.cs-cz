@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 88255e60593403951db5b984bb9c69b1060a93c2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540570"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Použít Time Series Insights k vizualizaci telemetrie odeslané z akcelerátoru řešení pro simulaci zařízení
 
 Akcelerátor řešení pro simulaci zařízení umožňuje generovat telemetrii z simulovaných zařízení a testovat vaše řešení IoT. V této příručce se dozvíte, jak vizualizovat a analyzovat simulaci telemetrie pomocí Time Series Insightsho prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete postupovat podle kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud chcete postupovat podle kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Postup v tomto průvodci předpokládá, že jste do svého předplatného Azure nasadili akcelerátor řešení pro simulaci zařízení. Pokud jste nenainstalovali akcelerátor řešení, postupujte podle kroků v části [nasazení a spuštění cloudového řešení simulace zařízení](quickstart-device-simulation-deploy.md) .
 
@@ -55,7 +55,7 @@ Následující kroky používají rozhraní příkazového řádku Azure CLI v A
 
 [Azure Time Series Insights](../../articles/time-series-insights/time-series-insights-overview.md) je plně spravovaná služba pro analýzy, ukládání a vizualizace, která slouží ke správě dat časových řad ve službě IoT-Scale v cloudu. Vytvoření nového prostředí Time Series Insights:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **Time Series Insights**:
 

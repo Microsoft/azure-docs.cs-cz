@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
 ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88245848"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Řešení na virtuálních počítačích Azure
@@ -23,9 +23,9 @@ Tento článek obsahuje informace o nasazení virtuálních počítačů Azure s
 
 Důvěrné výpočetní virtuální počítače Azure jsou navržené tak, aby chránily důvěrnost a integritu vašich dat a kódu během zpracování v cloudu. 
 
-[DCsv2-Series](../virtual-machines/dcv2-series.md) Virtuální počítače jsou nejnovější a nejaktuálnější rodina velikosti důvěrného zpracování. Tyto virtuální počítače podporují větší rozsah možností nasazení, mají dvojnásobnou velikost mezipaměti enklávy Page (EPC) a větší výběr velikostí v porovnání s našimi virtuálními počítači DC-Series. Virtuální počítače [DC-Series](../virtual-machines/sizes-previous-gen.md#preview-dc-series) jsou momentálně ve verzi Preview a budou zastaralé a nejsou zahrnuté do všeobecné dostupnosti.
+[DCsv2-Series](../virtual-machines/dcv2-series.md) Virtuální počítače jsou nejnovější a nejaktuálnější rodina velikosti důvěrného zpracování. Tyto virtuální počítače podporují větší rozsah možností nasazení, mají dvojnásobnou velikost mezipaměti enklávy Page (EPC) a větší výběr velikostí v porovnání s našimi DC-Series virtuálními počítači. Virtuální počítače [DC-Series](../virtual-machines/sizes-previous-gen.md#preview-dc-series) jsou momentálně ve verzi Preview a budou zastaralé a nejsou zahrnuté do všeobecné dostupnosti.
 
-Pomocí [kurzu rychlý](quick-create-marketplace.md)Start začněte NASAZOVAT virtuální počítač s DCsv2-Series přes komerční tržiště Microsoftu.
+Začněte s nasazením DCsv2-Series virtuálního počítače přes komerční tržiště Microsoftu pomocí [kurzu rychlý Start](quick-create-marketplace.md).
 
 ### <a name="current-available-sizes-and-regions"></a>Aktuální dostupné velikosti a oblasti
 
@@ -47,16 +47,16 @@ az vm list-skus `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>Požadavky na vyhrazený hostitel
-Nasazení **Standard_DC8_v2** velikosti virtuálního počítače ve skupině virtuálních počítačů řady DCSv2-Series zachová celý hostitel a nebude se sdílet s ostatními klienty nebo předplatnými. Tato rodina SKU virtuálního počítače poskytuje izolaci, kterou možná budete potřebovat, aby splňovala zákonné požadavky na dodržování předpisů a zabezpečení, které jsou obvykle splněné pomocí vyhrazené hostitelské služby. Když zvolíte **Standard_DC8_v2** SKU, fyzický hostitelský server bude přidělovat všechny dostupné hardwarové prostředky, včetně paměti EPC jenom pro virtuální počítač. Upozorňujeme, že tato funkce existuje v rámci návrhu infrastruktury a všechny funkce **Standard_DC8_v2** budou podporované. Toto nasazení není stejné jako služba [vyhrazeného hostitele Azure](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) , kterou poskytují jiné rodiny virtuálních počítačů Azure.
+Nasazení **Standard_DC8_v2** velikosti virtuálního počítače ve skupině virtuálních počítačů DCSv2-Series zachová celého hostitele a nebude se sdílet s ostatními klienty nebo předplatnými. Tato rodina SKU virtuálního počítače poskytuje izolaci, kterou možná budete potřebovat, aby splňovala zákonné požadavky na dodržování předpisů a zabezpečení, které jsou obvykle splněné pomocí vyhrazené hostitelské služby. Když zvolíte **Standard_DC8_v2** SKU, fyzický hostitelský server bude přidělovat všechny dostupné hardwarové prostředky, včetně paměti EPC jenom pro virtuální počítač. Upozorňujeme, že tato funkce existuje v rámci návrhu infrastruktury a všechny funkce **Standard_DC8_v2** budou podporované. Toto nasazení není stejné jako služba [vyhrazeného hostitele Azure](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) , kterou poskytují jiné rodiny virtuálních počítačů Azure.
 
 
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 
-Postupujte podle kurzu rychlý Start a nasaďte virtuální počítač DCsv2-Series za méně než 10 minut. 
+Postupujte podle kurzu rychlý Start a nasaďte DCsv2-Series virtuální počítač za méně než 10 minut. 
 
 - **Předplatné Azure** – Pokud chcete nasadit instanci cloudového počítače s důvěrným výpočetním prostředím, zvažte předplatné s průběžnými platbami nebo jinou možnost nákupu. Pokud používáte [bezplatný účet Azure](https://azure.microsoft.com/free/), nebudete mít kvótu pro příslušné množství výpočetních jader Azure.
 
-- **Ceny a regionální dostupnost** – na [stránce s cenami virtuálních počítačů](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)najdete ceny pro virtuální počítače DCsv2-Series. Podívejte se na [produkty dostupné v oblasti a](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) dostupnost v oblastech Azure.
+- **Ceny a regionální dostupnost** – najdete na stránce s cenami pro DCsv2-Series virtuální počítače na [stránce s cenami virtuálních počítačů](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). Podívejte se na [produkty dostupné v oblasti a](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) dostupnost v oblastech Azure.
 
 
 - **Kvóty jader** – možná bude potřeba zvýšit kvótu jader v předplatném Azure z výchozí hodnoty. Vaše předplatné může také omezit počet jader, které můžete nasadit v určitých rodinách velikostí virtuálních počítačů, včetně řady DCsv2-Series. Chcete-li požádat o zvýšení kvóty, [otevřete online žádost o zákaznickou podporu](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) zdarma. Všimněte si, že výchozí omezení se můžou lišit v závislosti na vaší kategorii předplatného.
@@ -84,7 +84,7 @@ Azure Resource Manager je služba nasazování a správy pro Azure. Poskytuje vr
 
 Další informace o šablonách ARM najdete v tématu [přehled Template Deployment](../azure-resource-manager/templates/overview.md).
 
-Pokud chcete nasadit virtuální počítač DCsv2-Series v šabloně ARM, budete používat [prostředek virtuálního počítače](../virtual-machines/windows/template-description.md). Ujistěte se, že jste zadali správné vlastnosti pro **vmSize** a pro **element imagereference**.
+Pokud chcete nasadit DCsv2-Series virtuální počítač v šabloně ARM, budete používat [prostředek virtuálního počítače](../virtual-machines/windows/template-description.md). Ujistěte se, že jste zadali správné vlastnosti pro **vmSize** a pro **element imagereference**.
 
 ### <a name="vm-size"></a>Velikost virtuálního počítače
 
@@ -132,7 +132,7 @@ V části **vlastnosti**bude také nutné odkazovat na obrázek v rámci **stora
 
 ## <a name="next-steps"></a>Další kroky 
 
-V tomto článku jste se dozvěděli o kvalifikaci a konfiguracích potřebných při vytváření důvěrného výpočetního virtuálního počítače. Nyní můžete Microsoft Azure Marketplace k nasazení virtuálního počítače řady DCsv2-Series.
+V tomto článku jste se dozvěděli o kvalifikaci a konfiguracích potřebných při vytváření důvěrného výpočetního virtuálního počítače. Nyní můžete Microsoft Azure Marketplace k nasazení DCsv2-Series virtuálního počítače.
 
 > [!div class="nextstepaction"]
 > [Nasazení virtuálního počítače s DCsv2-Series v Azure Marketplace](quick-create-marketplace.md)

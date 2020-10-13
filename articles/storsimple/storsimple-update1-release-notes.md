@@ -16,10 +16,10 @@ ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 17e20048c4cb4de2be6fe36be100b472f0b8ee73
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89459959"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>Zpráva k vydání verze 1,2 pro zařízení s StorSimple 8000 series
@@ -64,7 +64,7 @@ Tyto funkce byly nejprve vydány s aktualizací Update 1, která byla k dispozic
 ## <a name="issues-fixed-in-update-12"></a>Problémy opravené v aktualizaci 1,2
 Následující tabulka poskytuje souhrn problémů vyřešených v aktualizacích 1,2, 1,1 a 1.    
 
-| No. | Příznak | Problém | Opraveno v aktualizaci | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
+| Ne. | Příznak | Problém | Opraveno v aktualizaci | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell pro StorSimple |Když se uživatel vzdáleně přistupoval k zařízení StorSimple pomocí Windows PowerShell pro StorSimple a potom spustí Průvodce instalací, došlo k chybě hned po vstupu data 0 IP. Tato chyba je nyní opravena ve verzi Update 1. |Update 1 |Yes |Yes |
 | 2 |Obnovení továrního nastavení |Když jste v některých případech provedli obnovení továrního nastavení, zařízení StorSimple se zablokoval a zobrazila se tato zpráva: **resetování na tovární nastavení probíhá (fáze 8)**. K tomu došlo, pokud jste při běhu rutiny stiskli kombinaci kláves CTRL + C. Tato chyba je nyní opravena. |Update 1 |Yes |No |
@@ -82,7 +82,7 @@ Následující tabulka poskytuje souhrn problémů vyřešených v aktualizacíc
 ## <a name="known-issues-in-update-12"></a>Známé problémy v aktualizaci 1,2
 Následující tabulka poskytuje souhrn známých problémů v této verzi.
 
-| No. | Příznak | Problém | Komentáře a alternativní řešení | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
+| Ne. | Příznak | Problém | Komentáře a alternativní řešení | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Kvorum disku |Ve výjimečných případech dojde k odpojení většiny disků v EBOD skříni zařízení 8600, což způsobí nedostatečné diskové kvorum, ale fond úložiště bude offline. Zůstane v režimu offline i v případě, že jsou disky znovu připojeny. |Budete muset zařízení restartovat. Pokud se problém opakuje, kontaktujte prosím podpora Microsoftu pro další kroky. |Yes |No |
 | 2 |Nesprávné ID kontroleru |Když se provede nahrazení řadiče, může se řadič 0 zobrazit jako kontroler 1. Když se při nahrazení řadiče načte z uzlu rovnocenného uzlu, ID kontroleru se může zpočátku zobrazit jako ID partnerského řadiče. Ve výjimečných případech se toto chování může zobrazit i po restartování systému. |Není vyžadována žádná akce uživatele. Tato situace se vyřeší sám po dokončení nahrazení kontroleru. |Yes |No |
@@ -92,7 +92,7 @@ Následující tabulka poskytuje souhrn známých problémů v této verzi.
 | 6 |Webový proxy server |Pokud vaše konfigurace webového proxy serveru jako zadaného protokolu obsahuje HTTPS, bude ovlivněná komunikace mezi zařízením a zařízení bude offline. Balíčky podpory budou také vygenerovány v procesu a budou spotřebovávat významné prostředky na vašem zařízení. |Ujistěte se, že adresa URL webového proxy serveru má jako zadaný protokol HTTP. Další informace najdete v článku [Konfigurace webového proxy serveru pro zařízení](storsimple-configure-web-proxy.md). |Yes |No |
 | 7 |Webový proxy server |Pokud nakonfigurujete a povolíte webový proxy server na registrovaném zařízení, budete muset na svém zařízení restartovat aktivní kontroler. | |Yes |No |
 | 8 |Vysoká latence v cloudu a vysoká zátěž/výstup |Když zařízení StorSimple zaznamená kombinaci velmi vysoké latence v cloudu (v řádu sekund) a vysoké vstupně-výstupní úlohy, svazky zařízení přejdou do stavu sníženo a vstupně-výstupní operace se nemusí zdařit s chybou zařízení není připraveno. |V takovém případě budete muset ručně restartovat řadiče zařízení nebo provést převzetí služeb při selhání zařízení pro obnovení. |Yes |No |
-| 9 |Azure PowerShell |Když použijete rutinu StorSimple **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object-First 1-počkat** na výběr prvního objektu, abyste mohli vytvořit nový objekt **ke kontejneru svazků** , rutina vrátí všechny objekty. |Zabalte rutinu do závorek následujícím způsobem: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object-First 1-Wait** |Yes |Yes |
+| 9 |Azure PowerShell |Použijete-li rutinu StorSimple **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object-First 1-počkat** na výběr prvního objektu, abyste mohli vytvořit nový objekt **ke kontejneru svazků** , rutina vrátí všechny objekty. |Zabalte rutinu do závorek následujícím způsobem: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object – First 1-Wait** |Yes |Yes |
 | 10 |Migrace |Pokud je pro migraci předána více kontejnerů svazků, je ETA pro nejnovější zálohování přesné pouze pro první kontejner svazků. Kromě toho se spustí paralelní migrace po migraci prvních 4 záloh v prvním kontejneru svazků. |Doporučujeme migrovat jeden kontejner svazků v jednom okamžiku. |Yes |No |
 | 11 |Migrace |Po obnovení nebudou svazky přidány do zásad zálohování nebo do skupiny virtuálních disků. |Tyto svazky budete muset přidat do zásad zálohování, aby bylo možné vytvářet zálohy. |Yes |Yes |
 | 12 |Migrace |Po dokončení migrace nesmí zařízení řady 5000/7000 přistupovat ke migrovaných datovým kontejnerům. |Po dokončení a potvrzení migrace doporučujeme odstranit migrované datové kontejnery. |Yes |No |

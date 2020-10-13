@@ -8,10 +8,10 @@ ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 515cfd5267917f88131571adcb1bea0db274157c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89437934"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Základní hodnoty zabezpečení Azure pro Azure Data Factory
@@ -30,7 +30,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné**materiály: při vytváření Azure-SSIS Integration runtime (IR) máte možnost je připojit k virtuální síti. To umožní Azure Data Factory vytvořit určité síťové prostředky, jako je například skupina zabezpečení sítě (NSG) a nástroj pro vyrovnávání zatížení. Máte také možnost poskytnout vlastní statickou IP adresu nebo ji Azure Data Factory vytvořit. V NSG, který je automaticky vytvořený pomocí Azure Data Factory, je port 3389 ve výchozím nastavení otevřený pro veškerý provoz. Tento zámek zajistěte, aby měli přístup jenom správci.
 
-V místním počítači nebo virtuálním počítači Azure v rámci virtuální sítě se dá nasadit samoobslužné úřad pro místní hostování. Ujistěte se, že nasazení podsítě virtuální sítě má NSG nakonfigurovaný tak, aby povolovalo jenom přístup pro správu. Azure-SSIS IR ve výchozím nastavení v pravidle brány Windows Firewall u každého uzlu IR pro ochranu nepovolil odchozí port 3389. Prostředky nakonfigurované ve virtuální síti můžete zabezpečit přidružením NSG k podsíti a nastavením striktních pravidel.
+Self-Hosted finanční úřad se dá nasadit na místní počítač nebo virtuální počítač Azure ve virtuální síti. Ujistěte se, že nasazení podsítě virtuální sítě má NSG nakonfigurovaný tak, aby povolovalo jenom přístup pro správu. Azure-SSIS IR ve výchozím nastavení v pravidle brány Windows Firewall u každého uzlu IR pro ochranu nepovolil odchozí port 3389. Prostředky nakonfigurované ve virtuální síti můžete zabezpečit přidružením NSG k podsíti a nastavením striktních pravidel.
 
 Pokud je k dispozici privátní odkaz, použijte privátní koncové body k zabezpečení všech prostředků, které jsou propojeny s kanálem Azure Data Factory, jako je například Azure SQL Server. Pomocí privátního propojení se provoz mezi vaší virtuální sítí a službou přechází přes páteřní síť Microsoftu, což eliminuje expozici veřejného Internetu.
 
@@ -1172,7 +1172,7 @@ V případě jakýchkoli úložišť dat najdete pokyny k ověřování záloh v
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a klíčů spravovaných zákazníkem
 
-**Pokyny**: pokud používáte Integration runtime na virtuálním počítači Azure a Vy jste tento virtuální počítač provedete s Azure Backup, je váš virtuální počítač zašifrovaný v klidovém stavu šifrování služby Storage (SSE). Azure Backup taky můžou zálohovat virtuální počítače Azure, které jsou zašifrované pomocí Azure Disk Encryption. Azure Disk Encryption se integruje s šifrovacími klíči BitLockeru (BEKs), které jsou v trezoru klíčů zabezpečené jako tajné klíče. Azure Disk Encryption se taky integruje s klíči šifrovacího klíče Azure Key Vault (KEK). Povolit obnovitelné odstranění v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
+**Pokyny**: pokud používáte Integration runtime na virtuálním počítači Azure a Vy jste tento virtuální počítač provedete s Azure Backup, je váš virtuální počítač zašifrovaný v klidovém stavu šifrování služby Storage (SSE). Azure Backup taky můžou zálohovat virtuální počítače Azure, které jsou zašifrované pomocí Azure Disk Encryption. Azure Disk Encryption se integruje s šifrovacími klíči BitLockeru (BEKs), které jsou v trezoru klíčů zabezpečené jako tajné klíče. Azure Disk Encryption se taky integruje s klíči šifrovacího klíče Azure Key Vault (KEK). Povolí Soft-Delete v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
 * [Obnovitelné odstranění pro virtuální počítače](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete)
 
