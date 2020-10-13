@@ -10,12 +10,12 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b1dc7d7eee263b781d39c4beccf9388efbaa3d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb183b5c8aff018d4dc73819b938b24ad0daa934
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334133"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975786"
 ---
 # <a name="deploy-javascript-app-to-read-data-from-fhir-service"></a>Nasazení aplikace JavaScriptu pro čtení dat ze služby FHIR
 V tomto kurzu nasadíte malou JavaScriptovou aplikaci, která čte data ze služby FHIR. Postup v tomto kurzu:
@@ -36,7 +36,7 @@ Před zahájením této sady kurzů budete potřebovat následující položky:
 ## <a name="deploy-azure-api-for-fhir"></a>Nasazení Azure API for FHIR
 Prvním krokem v tomto kurzu je správně nainstalovat rozhraní Azure API pro FHIR.
 
-1. Nasazení [rozhraní API Azure pro FHIR](fhir-paas-portal-quickstart.md)
+1. Pokud jste to ještě neudělali, nasaďte [rozhraní API Azure pro FHIR](fhir-paas-portal-quickstart.md).
 1. Jakmile budete mít rozhraní Azure API pro FHIR nasazené, nakonfigurujte nastavení [CORS](configure-cross-origin-resource-sharing.md) tak, že na Azure API pro FHIR kliknete a vyberete CORS. 
     1. Nastavit **počátek** na *
     1. Nastavit **záhlaví** na *

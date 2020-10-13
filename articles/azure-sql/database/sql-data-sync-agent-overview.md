@@ -15,7 +15,7 @@ ms.openlocfilehash: e91fd0d94d6f6d87b5e554e27bf9c2a2ba6ccabd
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858468"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>Agent synchronizace dat pro Synchronizace dat SQL

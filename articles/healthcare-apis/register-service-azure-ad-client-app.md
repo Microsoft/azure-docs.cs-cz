@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 19d6b0ebfa2570b04c3a9dda3fe69428aa0eed75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f7bf122b292ca144eac406957f19a13c7ba6662
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629278"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975820"
 ---
 # <a name="register-a-service-client-application-in-azure-active-directory"></a>Registrace klientské aplikace služby v Azure Active Directory
 
@@ -73,7 +73,7 @@ Pro získání tokenu potřebuje klient služby tajný klíč (heslo).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se seznámili s postupem registrace klientské aplikace služby v Azure Active Directory. Dále si můžete přečíst další informace o dalších nastaveních pro Azure API pro FHIR.
+V tomto článku jste se seznámili s postupem registrace klientské aplikace služby v Azure Active Directory. Potom otestujte přístup k serveru FHIR pomocí post.
  
 >[!div class="nextstepaction"]
->[Další nastavení](azure-api-for-fhir-additional-settings.md)
+>[Přístup k rozhraní API Azure pro FHIR s využitím post](access-fhir-postman-tutorial.md)

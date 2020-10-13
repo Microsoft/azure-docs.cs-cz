@@ -14,10 +14,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
 ms.openlocfilehash: a6f1a5b532ba3d8d5ce24d6f9856d86719d35c6f
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91839533"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Kurz: komplexní ochrana obsahu pomocí Azure AD
@@ -173,7 +173,7 @@ Vyberte tenanta Azure AD, který se použije pro ucelenou ukázku. Máte dvě mo
 | Popis souhlasu správce * * | *Obor prostředku back-endu doručování licencí DRM* | Podrobný popis oboru, který se zobrazí, když správci tenanta rozbalí obor na obrazovce pro vyjádření souhlasu. |
 | Zobrazovaný název souhlasu uživatele | *Digitálních. Licence. doručení* | Jaký rozsah bude vyvolán na obrazovce pro vyjádření souhlasu uživatele, pokud uživatel souhlasí s tímto oborem. |
 | Popis souhlasu uživatele | *Obor prostředku back-endu doručování licencí DRM* | Toto je podrobný popis oboru, který se zobrazí, když uživatel rozbalí obor na obrazovce pro vyjádření souhlasu. |
-| Stav | *Povoleno* | Určuje, jestli je tento obor dostupný pro klienty k vyžádání. Nastavte ji na Disabled (zakázáno) pro obory, které nechcete zobrazovat klientům. Odstranit lze pouze zakázané obory a doporučujeme počkat aspoň týden po zakázání rozsahu před jeho odstraněním, aby se zajistilo, že ho žádní klienti stále nepoužívají. |
+| State | *Povoleno* | Určuje, jestli je tento obor dostupný pro klienty k vyžádání. Nastavte ji na Disabled (zakázáno) pro obory, které nechcete zobrazovat klientům. Odstranit lze pouze zakázané obory a doporučujeme počkat aspoň týden po zakázání rozsahu před jeho odstraněním, aby se zajistilo, že ho žádní klienti stále nepoužívají. |
 
 ## <a name="register-the-client-app"></a>Registrace klientské aplikace
 

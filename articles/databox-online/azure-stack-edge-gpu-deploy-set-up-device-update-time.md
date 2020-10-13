@@ -1,5 +1,5 @@
 ---
-title: Kurz pro připojení, konfiguraci, aktivaci Azure Stack Edge pro zařízení s grafickým procesorem v Azure Portal | Microsoft Docs
+title: Kurz, jak se připojit, nakonfigurovat, aktivovat Azure Stack Edge pro zařízení s grafickým procesorem v Azure Portal | Microsoft Docs
 description: Kurz nasazení Azure Stack Edge pro grafický procesor vás provede pokyny k připojení, nastavení a aktivaci fyzického zařízení.
 services: databox
 author: alkohli
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1f86b0fc847ade3153c8eaddb0d82bd968913b46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd4078d414048d858c46f6757daa0a87a698eaab
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899677"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976063"
 ---
-# <a name="tutorial-configure-device-settings-for-azure-stack-edge-pro-with-gpu"></a>Kurz: Konfigurace nastavení zařízení pro Azure Stack Edge pro pomocí GPU
+# <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-pro-with-gpu"></a>Kurz: Konfigurace nastavení zařízení pro Azure Stack Edge pro pomocí GPU
 
 V tomto kurzu se dozvíte, jak nakonfigurovat nastavení týkající se zařízení Azure Stack Edge pro pro zařízení s integrovaným grafickým procesorem. Pomocí místního webového uživatelského rozhraní můžete nastavit název zařízení, server aktualizací a časový server.
 
@@ -67,7 +67,7 @@ Pomocí těchto kroků můžete nakonfigurovat nastavení týkající se zaříz
 
     5. Po použití nastavení vyberte **Další: server aktualizací**.
 
-        ![Stránka místního webového uživatelského rozhraní (zařízení)](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
+        ![Místní webové uživatelské rozhraní "stránka" zařízení 3](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/device-4.png)
 
 ## <a name="configure-update"></a>Konfigurace aktualizace
 
@@ -79,7 +79,7 @@ Pomocí těchto kroků můžete nakonfigurovat nastavení týkající se zaříz
 
         Můžete také zvolit nasazení aktualizací ze **služby Windows Server Update Services** (WSUS). Zadejte cestu k serveru WSUS.
         
-        ![Místní webové uživatelské rozhraní – stránka aktualizace serveru](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
+        ![Místní webové uživatelské rozhraní stránky aktualizace serveru 2](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
 
         > [!NOTE] 
         > Pokud je nakonfigurován samostatný web Windows Update Server a pokud se rozhodnete připojit přes *protokol HTTPS* (namísto *http*), jsou vyžadovány podpisové řetězy, které jsou vyžadovány pro připojení k serveru aktualizací. Informace o tom, jak vytvořit a nahrát certifikáty, najdete v tématu [Správa certifikátů](azure-stack-edge-j-series-manage-certificates.md). 

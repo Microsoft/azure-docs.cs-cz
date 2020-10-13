@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
 ms.openlocfilehash: 291a5850540ea7d7d24a4a544c1eb65183df8ffb
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667737"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Osvědčené postupy pro používání Azure Data Lake Storage Gen1
@@ -27,7 +27,7 @@ V tomto článku se seznámíte s osvědčenými postupy a pokyny pro práci s A
 
 Azure Data Lake Storage Gen1 nabízí řízení přístupu POSIX a podrobné auditování pro uživatele, skupiny a instanční objekty služby Azure Active Directory (Azure AD). Tyto ovládací prvky přístupu můžou být nastavené na existující soubory a složky. Ovládací prvky přístupu lze také použít k vytvoření výchozích hodnot, které lze použít pro nové soubory nebo složky. Pokud jsou oprávnění nastavena na existující složky a podřízené objekty, musí být oprávnění šířena rekurzivně u každého objektu. Pokud existuje velký počet souborů, může rozšíření oprávnění trvat dlouhou dobu. Doba trvání může být v rozsahu od 30-50 objektů zpracovaných za sekundu. Proto Naplánujte strukturu složek a skupiny uživatelů odpovídajícím způsobem. V opačném případě může dojít k neočekávaným zpožděním a problémům při práci s daty.
 
-Předpokládejme, že máte složku s 100 000 podřízenými objekty. Pokud převezmete dolní mez 30 objektů zpracovaných za sekundu, můžete aktualizovat oprávnění pro celou složku, což může trvat hodinu. Další podrobnosti o Data Lake Storage Gen1ech ACL jsou k dispozici v [řízení přístupu v Azure Data Lake Storage Gen1](data-lake-store-access-control.md). Pro zlepšení výkonu při rekurzivním přiřazování seznamů ACL můžete použít nástroj příkazového řádku Azure Data Lake. Nástroj vytvoří více vláken a rekurzivní logiku navigace pro rychlé použití seznamů ACL na miliony souborů. Nástroj je k dispozici pro Linux a Windows a [dokumentaci](https://github.com/Azure/data-lake-adlstool) a [soubory ke stažení](https://aka.ms/adlstool-download) pro tento nástroj najdete na GitHubu. Tato vylepšení výkonu lze povolit pomocí vlastních nástrojů napsaných pomocí sad Data Lake Storage Gen1 [.NET](data-lake-store-data-operations-net-sdk.md) a [Java](data-lake-store-get-started-java-sdk.md) SDK.
+Předpokládejme, že máte složku s 100 000 podřízenými objekty. Pokud převezmete dolní mez 30 objektů zpracovaných za sekundu, můžete aktualizovat oprávnění pro celou složku, což může trvat hodinu. Další podrobnosti o Data Lake Storage Gen1ech ACL jsou k dispozici v [řízení přístupu v Azure Data Lake Storage Gen1](data-lake-store-access-control.md). Pro zlepšení výkonu při rekurzivním přiřazování seznamů ACL můžete použít nástroj Azure Data Lake Command-Line. Nástroj vytvoří více vláken a rekurzivní logiku navigace pro rychlé použití seznamů ACL na miliony souborů. Nástroj je k dispozici pro Linux a Windows a [dokumentaci](https://github.com/Azure/data-lake-adlstool) a [soubory ke stažení](https://aka.ms/adlstool-download) pro tento nástroj najdete na GitHubu. Tato vylepšení výkonu lze povolit pomocí vlastních nástrojů napsaných pomocí sad Data Lake Storage Gen1 [.NET](data-lake-store-data-operations-net-sdk.md) a [Java](data-lake-store-get-started-java-sdk.md) SDK.
 
 ### <a name="use-security-groups-versus-individual-users"></a>Použití skupin zabezpečení oproti jednotlivým uživatelům
 
@@ -104,7 +104,7 @@ Níže jsou uvedené hlavní tři Doporučené možnosti pro orchestraci replika
 |**Podporuje kopírování rozdílových souborů.**     |   Yes      | No         | No         |
 |**Integrovaná orchestrace**     |  Ne (použití Oozieho toku nebo úloh cron)       | Yes        | Ne (použít Azure Automation nebo Windows Plánovač úloh)         |
 |**Podporované systémy souborů**     | ADL, HDFS, WASB, S3, GS, CFS        |Množství, viz [konektory](../data-factory/connector-azure-blob-storage.md).         | ADL na ADL, WASB na ADL (jenom stejná oblast)        |
-|**Podpora operačního systému**     |Libovolný operační systém se systémem Hadoop         | –          | Windows 10         |
+|**Podpora operačního systému**     |Libovolný operační systém se systémem Hadoop         | Není k dispozici          | Windows 10         |
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>Použití Distcp k přesunu dat mezi dvěma místy
 

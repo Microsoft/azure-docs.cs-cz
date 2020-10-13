@@ -4,10 +4,10 @@ description: V tomto článku najdete odpovědi na časté otázky týkající s
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: dc6a12b2098a1fdf33adda92b4347f91ab4e5489
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91828100"
 ---
 # <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>Nejčastější dotazy – Event Hubs pro Apache Kafka 
@@ -15,7 +15,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 ## <a name="does-azure-event-hubs-run-on-apache-kafka"></a>Běží Azure Event Hubs v Apache Kafka?
 
-No. Azure Event Hubs je nativní cloudový zprostředkovatel s podporou různých protokolů vyvinutých a spravovaných Microsoftem a nepoužívá žádný Apache Kafka kód. Jedním z podporovaných protokolů je protokol Kafka RPC pro zákaznická rozhraní API klienta Kafka a výrobce. Event Hubs funguje s řadou vašich stávajících aplikací Kafka. Další informace najdete v tématu [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md). Vzhledem k tomu, že koncepce Apache Kafka a Azure Event Hubs jsou velmi podobné (ale ne totožné), můžeme zákazníkům s existujícím Apache Kafkam investic nabídnout neshodnou spolehlivost Azure Event Hubs. 
+Ne. Azure Event Hubs je nativní cloudový zprostředkovatel s podporou různých protokolů vyvinutých a spravovaných Microsoftem a nepoužívá žádný Apache Kafka kód. Jedním z podporovaných protokolů je protokol Kafka RPC pro zákaznická rozhraní API klienta Kafka a výrobce. Event Hubs funguje s řadou vašich stávajících aplikací Kafka. Další informace najdete v tématu [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md). Vzhledem k tomu, že koncepce Apache Kafka a Azure Event Hubs jsou velmi podobné (ale ne totožné), můžeme zákazníkům s existujícím Apache Kafkam investic nabídnout neshodnou spolehlivost Azure Event Hubs. 
 
 ## <a name="event-hubs-consumer-group-vs-kafka-consumer-group"></a>Skupina příjemců Event Hubs vs. Kafka
 Jaký je rozdíl mezi skupinou uživatelů centra událostí a skupinou uživatelů Kafka na Event Hubs? Skupiny uživatelů Kafka na Event Hubs jsou plně odlišné od standardních Event Hubsch skupin příjemců.

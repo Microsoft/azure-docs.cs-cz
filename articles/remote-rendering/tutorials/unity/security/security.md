@@ -7,10 +7,10 @@ ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91650472"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Kurz: zabezpečení vzdáleného vykreslování a úložiště modelu Azure
@@ -23,7 +23,7 @@ V tomto kurzu se naučíte:
 > * Ověření ve službě Azure AD pro přístup k instanci vzdáleného vykreslování Azure
 > * Použití přihlašovacích údajů Azure pro ověřování vzdáleného vykreslování Azure
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * Tento kurz sestaví [kurz: rafinace materiálů, osvětlení a efektů](..\materials-lighting-effects\materials-lighting-effects.md).
 

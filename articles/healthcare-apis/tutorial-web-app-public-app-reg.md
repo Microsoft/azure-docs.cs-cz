@@ -9,19 +9,20 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: 483ca63abbabaabd3b25446c9267a1b0540f60dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4f6124227f5dd5c7735d300f71d5ae7d0c06b3a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852969"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975769"
 ---
 # <a name="client-application-registration"></a>Registrace klientské aplikace
 V předchozím kurzu jste nasadili a nastavili rozhraní API Azure pro FHIR. Teď, když máte k dispozici rozhraní API Azure pro FHIR, zaregistrujeme veřejnou klientskou aplikaci. Můžete si přečíst kompletní [registraci veřejného klienta aplikace](register-public-azure-ad-client-app.md) průvodce, kde najdete další podrobnosti nebo řešení potíží, ale zjistili jsme hlavní kroky tohoto kurzu.
 
 1. Přejít na Azure Active Directory
 1. Vybrat **registraci aplikace**  -->  **Nová registrace**
-1. Pojmenujte aplikaci a nastavte identifikátor URI přesměrování na https://www.getpostman.com/oauth2/callback
+1. Pojmenování aplikace a se
+1. Vyberte **veřejný klient/nativní (mobilní & Desktop)** a nastavte identifikátor URI přesměrování na https://www.getpostman.com/oauth2/callback .
 
    :::image type="content" source="media/tutorial-web-app/register-public-app.png" alt-text="Snímek obrazovky s podoknem zaregistrovat aplikaci a Příkladem názvu aplikace a adresy URL pro přesměrování.":::
 
