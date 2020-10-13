@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
 ms.openlocfilehash: 7b5881651312e69ed840eb50388d497258ddeb27
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362448"
 ---
 # <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>Definování vlastních modulů R pro Machine Learning Studio (Classic)
@@ -236,7 +236,7 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
 * Hodnota atributu **Name** elementu **Output** nesmí být delší než 64 znaků.
 * Hodnota atributu **Type** elementu **Output** musí být *vizualizace*.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 Do funkce jazyka R lze předat další data prostřednictvím parametrů modulu, které jsou definovány v elementu **arguments** . Tyto parametry se zobrazí v podokně vlastností vpravo v uživatelském rozhraní Machine Learning, když je modul vybrán. Argumenty mohou být libovolné podporované typy nebo můžete podle potřeby vytvořit vlastní výčet. Podobně jako prvky **portů** mohou prvky **argumentů** mít volitelný element **Description** , který určuje text, který se zobrazí, když najedete myší na název parametru.
 Volitelné vlastnosti pro modul, jako je například defaultValue, minValue a maxValue, lze přidat do libovolného argumentu jako atributy prvku **vlastnosti** . Platné vlastnosti pro element **Properties** závisí na typu argumentu a jsou popsány s podporovanými typy argumentů v následující části. Argumenty s vlastností **Option** nastavenou na **hodnotu true** nevyžadují, aby uživatel zadal hodnotu. Není-li argumentem zadána hodnota, pak není argument předán funkci vstupního bodu. Argumenty funkce vstupního bodu, které jsou volitelné, musí být explicitně zpracovány funkcí, například přiřazenou výchozí hodnotu NULL v definici funkce vstupního bodu. Nepovinný argument bude vynutit jenom další omezení argumentů, tj. min nebo Max, pokud je hodnota poskytnutá uživatelem.
 Stejně jako u vstupů a výstupů je velmi důležité, aby k jednotlivým parametrům byly přidruženy jedinečné hodnoty ID. V našem příkladu pro rychlý Start došlo k *záměně*přidruženého ID/parametru.
@@ -306,7 +306,7 @@ Parametr modulu je definován pomocí podřízeného prvku **arg** oddílu **arg
     * Logická hodnota
     * Kategorické
     * Řetězec
-    * Štítek
+    * Popisek
     * Příznak
     * Skóre
     * Vše

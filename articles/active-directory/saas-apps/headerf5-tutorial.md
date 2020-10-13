@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.openlocfilehash: d85e6bbaf85ebb84d3664d90e3d645f61b2cb60a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817370"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Kurz: Konfigurace jednotného přihlašování (SSO) mezi Azure Active Directory a F5
@@ -174,7 +174,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Create** (Vytvořit).
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -245,7 +245,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Snímek obrazovky se zobrazí stránka vlastností fondu.](./media/headerf5-tutorial/configure06.png)
 
-1. Na obrazovce nastavení jednotného přihlašování vyberte **Povolit jednotné přihlašování**. V části vybraný typ jednotného přihlašování vyberte možnost **na základě hlaviček protokolu HTTP**. Nahraďte **Session. SAML. Last. identity** pomocí **Session. SAML. Last. attr. Name. identity** v rámci zdroje uživatelského jména (Tato proměnná se nastaví pomocí mapování deklarací v Azure AD). V části hlavičky jednotného přihlašování.
+1. Na obrazovce nastavení jednoho Sign-On vyberte **Povolit jednotné přihlašování**. V části vybraný typ jednoho Sign-On vyberte možnost **na základě hlaviček protokolu HTTP**. Nahraďte **Session. SAML. Last. identity** pomocí **Session. SAML. Last. attr. Name. identity** v rámci zdroje uživatelského jména (Tato proměnná se nastaví pomocí mapování deklarací v Azure AD). V části hlavičky jednotného přihlašování.
 
     * **Záhlaví: MyAuthorization**
 
@@ -258,7 +258,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
     >[!NOTE]
     >Název účtu je vytvořený účet pro delegování F5 (podívejte se na dokumentaci F5).
 
-    ![Snímek obrazovky se zobrazí stránka nastavení jednotného přihlašování.](./media/headerf5-tutorial/configure07.png) 
+    ![Snímek obrazovky se zobrazí stránka nastavení s jedním Sign-On.](./media/headerf5-tutorial/configure07.png) 
 
 1. Pro účely tohoto návodu provedeme přeskočení kontrol koncových bodů.  Podrobnosti najdete v dokumentaci k F5. Vyberte **uložit & další**.
 
@@ -453,7 +453,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici F5 na přístupovém panelu byste měli být automaticky přihlášeni k F5, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

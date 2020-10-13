@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
 ms.openlocfilehash: 8dfc1eb35572a6b706deb47335357417bd837825
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819932"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Postup plánování nabídky SaaS pro komerční tržiště
@@ -131,7 +131,7 @@ Když [vytvoříte novou nabídku SaaS](create-new-saas-offer.md) v partnerském
 6. Zásady ochrany osobních údajů
 7. Název nabídky
 8. Shrnutí
-9. Popis
+9. Description
 10. Snímky obrazovky a videa
 11. Dokumenty
 
@@ -183,7 +183,7 @@ Abyste mohli snadněji vytvořit nabídku, připravte si některé z těchto pol
   - soubor. png
   - Musí obsahovat titulek
 - **Média – videa** (volitelné): můžete přidat až čtyři videa s následujícími požadavky, které předvádí vaši nabídku:
-  - Název
+  - Name
   - Adresa URL: musí být hostována pouze na YouTube nebo Vimeo.
   - Miniatura: soubor 1280 x 720. png
 

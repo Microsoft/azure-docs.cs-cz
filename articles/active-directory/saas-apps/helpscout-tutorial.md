@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
 ms.openlocfilehash: 1c6faf2bb1811f7b27a49f8029c833499273d8a1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817112"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Kurz: Azure Active Directory integrace s Help Scout
@@ -83,7 +83,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Help Sco
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+1. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -104,7 +104,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Help Sco
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL jako: `https://secure.helpscout.net/members/login/`
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -141,7 +141,7 @@ Cílem této části je vytvořit testovacího uživatele ve Azure Portal s náz
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Create** (Vytvořit).
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -191,7 +191,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Tím přejdete do části nastavení SAML a provedete následující kroky:
 
-    ![Snímek obrazovky se zobrazí karta jednotného přihlašování, kde zadáte zadané informace.](./media/helpscout-tutorial/settings3.png)
+    ![Snímek obrazovky zobrazuje jednu kartu Sign-On, kde zadáte zadané informace.](./media/helpscout-tutorial/settings3.png)
 
     a. Zkopírujte hodnotu **adresy URL pro zpětný příspěvek (URL služby assertion Consumer Service)** a vložte ji do textového pole **Adresa URL odpovědi** v části **základní konfigurace SAML** v Azure Portal.
 
@@ -199,9 +199,9 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Přepněte na **Povolit SAML** v a proveďte následující kroky:
 
-    ![Snímek obrazovky se zobrazí karta jednotného přihlašování, kde můžete povolit SAML a přidat další informace.](./media/helpscout-tutorial/settings4.png)
+    ![Snímek obrazovky ukazuje jednu kartu Sign-On, kde můžete povolit SAML a přidat další informace.](./media/helpscout-tutorial/settings4.png)
 
-    a. Do textového pole **Adresa URL jednotného přihlašování** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
+    a. Do textového pole **URL s jedním Sign-On** vložte hodnotu **přihlašovací adresy URL**, kterou jste zkopírovali z Azure Portal.
 
     b. Kliknutím na **nahrát certifikát** nahrajte **certifikát (Base64)** stažený z Azure Portal.
 

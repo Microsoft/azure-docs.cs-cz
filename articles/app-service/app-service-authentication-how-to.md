@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
 ms.openlocfilehash: 93c697162bfcb51b77c2e6f48b5824b81070bf51
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91816414"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené použití ověřování a autorizace v Azure App Service
@@ -33,7 +33,7 @@ Nejprve na stránce **ověřování/autorizace** v Azure Portal nakonfigurujte k
 
 V **akci, která se má provést, když se žádost neověřuje**, vyberte možnost **povoluje anonymní žádosti (bez akce)**.
 
-Na přihlašovací stránce nebo v navigačním panelu nebo jakémkoli jiném umístění aplikace přidejte odkaz pro přihlášení ke každému poskytovateli, který jste povolili ( `/.auth/login/<provider>` ). Příklad:
+Na přihlašovací stránce nebo v navigačním panelu nebo jakémkoli jiném umístění aplikace přidejte odkaz pro přihlášení ke každému poskytovateli, který jste povolili ( `/.auth/login/<provider>` ). Například:
 
 ```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -55,7 +55,7 @@ Pokud chcete přesměrovat uživatele po přihlášení na vlastní adresu URL, 
 
 V přihlašování klienta se aplikace přihlásí k poskytovateli ručně a poté odešle ověřovací token k App Service k ověření (viz [tok ověřování](overview-authentication-authorization.md#authentication-flow)). Toto ověření sama o sobě neuděluje přístup k požadovaným prostředkům aplikace, ale úspěšné ověření vám poskytne token relace, který můžete použít pro přístup k prostředkům aplikace. 
 
-Pokud chcete ověřit token poskytovatele, App Service aplikace musí být nejdřív nakonfigurované s požadovaným poskytovatelem. Po načtení tokenu ověřování od poskytovatele za běhu vystavte token `/.auth/login/<provider>` pro ověření. Příklad: 
+Pokud chcete ověřit token poskytovatele, App Service aplikace musí být nejdřív nakonfigurované s požadovaným poskytovatelem. Po načtení tokenu ověřování od poskytovatele za běhu vystavte token `/.auth/login/<provider>` pro ověření. Například: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -86,7 +86,7 @@ V případě úspěšného ověření tokenu poskytovatele vrátí rozhraní API
 }
 ```
 
-Po vytvoření tohoto tokenu relace můžete získat přístup k prostředkům chráněných aplikací přidáním `X-ZUMO-AUTH` hlavičky do požadavků HTTP. Příklad: 
+Po vytvoření tohoto tokenu relace můžete získat přístup k prostředkům chráněných aplikací přidáním `X-ZUMO-AUTH` hlavičky do požadavků HTTP. Například: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -107,7 +107,7 @@ Tady je jednoduchý odkaz na odhlášení z webové stránky:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Ve výchozím nastavení se při úspěšném odhlášení přesměruje klient na adresu URL `/.auth/logout/done` . Stránku přesměrování po odhlášení můžete změnit přidáním `post_logout_redirect_uri` parametru dotazu. Příklad:
+Ve výchozím nastavení se při úspěšném odhlášení přesměruje klient na adresu URL `/.auth/logout/done` . Stránku přesměrování po odhlášení můžete změnit přidáním `post_logout_redirect_uri` parametru dotazu. Například:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -269,7 +269,7 @@ V případě jakékoli aplikace pro Windows můžete definovat chování webové
 
 ### <a name="identity-provider-level"></a>Úroveň poskytovatele identity
 
-Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. Příklad:
+Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. Například:
 
 - Pro [Azure App Service](configure-authentication-provider-aad.md)můžete [spravovat přístup na podnikové úrovni](../active-directory/manage-apps/what-is-access-management.md) přímo ve službě Azure AD. Pokyny najdete v tématu [Postup odebrání přístupu uživatele k aplikaci](../active-directory/manage-apps/methods-for-removing-user-access.md).
 - Pro [Google](configure-authentication-provider-google.md)jsou projekty Google API, které patří do [organizace](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) , možné nakonfigurovat tak, aby povolovaly přístup jenom uživatelům ve vaší organizaci (viz [Stránka podpory **OAuth 2,0 s nastavením** Google](https://support.google.com/cloud/answer/6158849?hl=en)).

@@ -16,10 +16,10 @@ ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89278679"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnostika a oprava chyb synchronizace kvůli duplicitním atributům
@@ -68,7 +68,7 @@ Postupujte podle kroků z Azure Portal pro zúžení podrobností o chybách syn
 V Azure Portal proveďte několik kroků k identifikaci konkrétních scénářů fixable:  
 1.  Zkontrolujte sloupec **stav diagnostiky** . Stav ukazuje, zda je možný způsob, jak opravit chybu synchronizace přímo z Azure Active Directory. Jinými slovy, existuje tok řešení potíží, který může zúžit velikost případu a potenciálně ho opravit.
 
-| Stav | Co to znamená? |
+| Status | Co to znamená? |
 | ------------------ | -----------------|
 | Nezahájeno | Tento proces diagnostiky jste nenavštívili. V závislosti na výsledku diagnostiky existuje potenciální způsob, jak opravit chybu synchronizace přímo z portálu. |
 | Vyžadována Ruční oprava | Chyba nevyhovuje kritériím dostupných oprav z portálu. Buď konfliktní typy objektů nejsou uživateli, nebo jste již provedli diagnostické kroky, a z portálu nebylo k dispozici žádné řešení pro opravu. V druhém případě je oprava z místní strany stále jedním z řešení. [Přečtěte si další informace o místních opravách](https://support.microsoft.com/help/2647098). | 
@@ -138,7 +138,7 @@ Uživatel s konfliktním atributem v Azure AD by měl být vyčištěný předt�
 **Aktualizace zdrojového kotvy na cloudový uživatel ve vašem tenantovi není podporovaná.**  
 Cloudový uživatel ve službě Azure AD by neměl mít zdrojové ukotvení. Aktualizace zdrojového kotvy není v tomto případě podporována. V místním prostředí se vyžaduje ruční Oprava. 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 **Č.** Co se stane, když dojde k chybě při **použití opravy** ?  
 **Určitého.** Pokud je spuštění neúspěšné, je možné, že Azure AD Connect spouští chybu exportu. Aktualizujte stránku portálu a zkuste to znovu po další synchronizaci. Výchozí cyklus synchronizace je 30 minut. 
 

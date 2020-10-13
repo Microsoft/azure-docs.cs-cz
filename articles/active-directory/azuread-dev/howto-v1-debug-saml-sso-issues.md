@@ -14,10 +14,10 @@ ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
 ms.openlocfilehash: fcdb0a571a9d6b81e25d061c33d8a3a812da189f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819325"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Ladění jednotného přihlašování k aplikacím v Azure Active Directory založeného na SAML
@@ -77,7 +77,7 @@ Pokud není pro chybu přihlášení k dispozici žádné řešení, doporučuje
 1. Vraťte se do Azure AD a najděte okno **test jednotného přihlašování** .
 1. V textovém poli nahoře **získat pokyny k řešení**vložte chybovou zprávu.
 1. Kliknutím na **získat pokyny k řešení** můžete zobrazit kroky pro řešení tohoto problému. Doprovodné materiály mohou vyžadovat informace od žádosti SAML nebo odpovědi SAML. Pokud nepoužíváte rozšíření pro zabezpečené přihlašování k aplikacím, možná budete potřebovat nástroj, například [Fiddler](https://www.telerik.com/fiddler) , který načte požadavek a odpověď SAML.
-1. Ověřte, že cíl v žádosti SAML odpovídá adrese URL služby jednotného přihlašování SAML získané z Azure AD.
+1. Ověřte, že cíl v žádosti SAML odpovídá adrese URL služby SAML s jednou Sign-On získanou z Azure AD.
 1. Ověřte, že Vystavitel v požadavku SAML je stejný identifikátor, který jste nakonfigurovali pro aplikaci ve službě Azure AD. Azure AD používá vystavitele k vyhledání aplikace ve vašem adresáři.
 1. Ověřte, že AssertionConsumerServiceURL očekává, že aplikace získá token SAML z Azure AD. Tuto hodnotu můžete nakonfigurovat v Azure AD, není to ale povinné, pokud je součástí žádosti SAML.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 7f8bc88cf34c3bbea168bd95d2d03bdc3373ad07
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817036"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Kurz: integrace Freedcamp s Azure Active Directory
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Freedcamp s Azure Active Directory (Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -69,7 +69,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Freedcamp** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -86,7 +86,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Uživatelé můžou zadat i hodnoty URL s ohledem na svou vlastní doménu zákazníka a nemusí být nutně vzor `freedcamp.com` , můžou zadat libovolnou hodnotu specifickou pro doménu zákazníka, která je specifická pro svou instanci aplikace. Také se můžete obrátit na [tým podpory klienta Freedcamp](mailto:devops@freedcamp.com) , kde najdete další informace o vzorech adres URL.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte si certifikát a uložte ho do svého počítače.
 
    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -134,7 +134,7 @@ V této části vytvoříte testovacího uživatele v Azure Portal s názvem Bri
    1. Do pole **Název** zadejte `Britta Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Create** (Vytvořit).
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

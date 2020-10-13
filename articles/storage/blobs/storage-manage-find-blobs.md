@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
 ms.openlocfilehash: db23d3b5c532a1539936b51222345c98679c554c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817539"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>Správa a hledání dat objektů BLOB v Azure pomocí indexu objektů BLOB (Preview)
@@ -300,7 +300,7 @@ Tato část popisuje známé problémy a podmínky v aktuální verzi Public Pre
 - CopyBlob (asynchronní kopírování) z jiného účtu úložiště s použitými značkami v cílovém objektu BLOB v současné době způsobí, že modul indexu objektů BLOB nevrátí objekt BLOB a jeho značky v sadě filtrů. Doporučuje se v provizorním použití CopyBlob z adresy URL (Synchronization Copy).
 - Značky jsou při vytváření snímku trvalé; zvýšení úrovně snímku se ale v tuto chvíli nepodporuje a výsledkem může být prázdná sada značek.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="can-blob-index-help-me-filter-and-query-content-inside-my-blobs"></a>Může vám index objektu BLOB pomáhat při filtrování a dotazování obsahu uvnitř objektů BLOB?
 Ne, značky indexu objektů BLOB vám pomůžou najít objekty blob, které hledáte. Pokud potřebujete hledat v rámci objektů blob, použijte akceleraci dotazů nebo Azure Search.

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2020
 ms.author: duau
 ms.openlocfilehash: 45f9e7a4e508cffd3593cec7bbcea3dd7882a60c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819024"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy pro přední dveře Azure
@@ -251,7 +251,7 @@ Pro úspěšné připojení HTTPS k back-endu, ať už pro sondy stavu nebo pro 
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Můžu použít klienta a vzájemné ověřování s využitím front-dveří Azure?
 
-No. I když přední dvířka Azure podporují protokol TLS 1,2, který zavedl klient a vzájemné ověřování v [RFC 5246](https://tools.ietf.org/html/rfc5246), v současné době se u front-in Azure nepodporuje klient a vzájemné ověřování.
+Ne. I když přední dvířka Azure podporují protokol TLS 1,2, který zavedl klient a vzájemné ověřování v [RFC 5246](https://tools.ietf.org/html/rfc5246), v současné době se u front-in Azure nepodporuje klient a vzájemné ověřování.
 
 ## <a name="diagnostics-and-logging"></a>Diagnostika a protokolování
 

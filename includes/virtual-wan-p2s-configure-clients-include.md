@@ -9,10 +9,10 @@ ms.date: 10/06/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9caf63fc90be7bae0461ddc24c94594a32199765
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812666"
 ---
 #### <a name="microsoft-windows"></a>Microsoft Windows
@@ -20,7 +20,7 @@ ms.locfileid: "91812666"
 ##### <a name="openvpn"></a>OpenVPN
 
 1. Z oficiálního webu si stáhněte klienta OpenVPN a nainstalujte ho.
-1. Stáhněte si profil sítě VPN pro bránu. To se dá udělat na kartě Konfigurace sítě VPN uživatele v Azure Portal nebo New-AzureRmVpnClientConfiguration v PowerShellu.
+1. Stáhněte si profil sítě VPN pro bránu. To se dá udělat na kartě Konfigurace sítě VPN uživatele v Azure Portal nebo v PowerShellu New-AzureRmVpnClientConfiguration.
 1. Rozbalte profil. V Poznámkovém bloku otevřete konfigurační soubor vpnconfig.ovpn ze složky OpenVPN.
 1. V části klientského certifikátu P2S vyplňte veřejný klíč klientského certifikátu P2S v kódování Base-64. Ve formátovaných certifikátech PEM můžete otevřít soubor. cer a zkopírovat ho do klíče Base64 mezi hlavičkami certifikátů. Postup najdete v tématu [Postup exportu certifikátu pro získání kódovaného veřejného klíče.](../articles/virtual-wan/certificates-point-to-site.md)
 1. V části privátního klíče vyplňte privátní klíč klientského certifikátu P2S v kódování Base-64. Postup najdete v tématu [postup extrakce privátního klíče.](../articles/virtual-wan/howto-openvpn-clients.md#windows).

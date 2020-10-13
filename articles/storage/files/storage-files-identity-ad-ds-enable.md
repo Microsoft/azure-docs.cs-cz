@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
 ms.openlocfilehash: b125ae506a9811b8e80a9114e31effc1933c114d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821205"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Část 1: povolení ověřování služba AD DS pro sdílené složky Azure 
@@ -32,7 +32,7 @@ Rutiny v modulu AzFilesHybrid PowerShellu provedou potřebné změny a funkce v�
 - Nainstalujte a spusťte modul v zařízení, které je připojené k místnímu počítači, služba AD DS služba AD DS přihlašovací údaje, které mají oprávnění k vytvoření přihlašovacího účtu služby nebo účtu počítače v cílové službě AD.
 -  Spusťte skript pomocí místního služba AD DS přihlašovacích údajů, které se synchronizují s vaší službou Azure AD. Přihlašovací údaje místního služba AD DS musí mít oprávnění vlastníka účtu úložiště nebo role Azure přispěvatele.
 
-### <a name="run-join-azstorageaccountforauth"></a>Spustit příkaz JOIN – AzStorageAccountForAuth
+### <a name="run-join-azstorageaccountforauth"></a>Spustit Join-AzStorageAccountForAuth
 
 `Join-AzStorageAccountForAuth`Rutina provádí ekvivalent offline připojení k doméně jménem zadaného účtu úložiště. Skript pomocí rutiny vytvoří [účet počítače](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) ve vaší doméně služby Active Directory. Pokud z jakéhokoli důvodu nemůžete použít účet počítače, můžete změnit skript a místo toho vytvořit [přihlašovací účet služby](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) . Pokud se rozhodnete spustit příkaz ručně, měli byste vybrat účet, který nejlépe vyhovuje vašemu prostředí.
 
@@ -132,7 +132,7 @@ Set-AzStorageAccount `
 
 ### <a name="debugging"></a>Ladění
 
-K provedení sady základních kontrol konfigurace služby AD pomocí přihlášeného uživatele služby AD můžete spustit rutinu Debug-AzStorageAccountAuth. Tuto rutinu podporuje AzFilesHybrid verze 0.1.2 nebo novější. Další informace o kontrolách provedených v této rutině najdete v tématu [nelze připojit soubory Azure s přihlašovacími údaji služby AD](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) v Průvodci odstraňováním potíží pro Windows.
+Spuštěním rutiny Debug-AzStorageAccountAuth můžete provést sadu základních kontrol konfigurace služby AD s přihlášeným uživatelem služby AD. Tuto rutinu podporuje AzFilesHybrid verze 0.1.2 nebo novější. Další informace o kontrolách provedených v této rutině najdete v tématu [nelze připojit soubory Azure s přihlašovacími údaji služby AD](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) v Průvodci odstraňováním potíží pro Windows.
 
 ```PowerShell
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose

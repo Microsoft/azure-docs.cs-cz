@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91818343"
 ---
 # <a name="conditional-access-conditions"></a>Podmíněný přístup: podmínky
@@ -132,14 +132,14 @@ V případě podpory pro Chrome ve **Windows 10 Creators Update (verze 1703)** n
 
 Pokud chcete toto rozšíření automaticky nasadit do prohlížečů Chrome, vytvořte následující klíč registru:
 
-- Cesta HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist cesty
 - Název 1
 - Typ REG_SZ (String)
 - Data ppnbnpeolgkicgegkbkbjmhlideopiji; https \: //clients2.Google.com/Service/Update2/CRX
 
 V případě podpory Chrome v **Windows 8.1 a 7**vytvořte následující klíč registru:
 
-- Cesta HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls cesty
 - Název 1
 - Typ REG_SZ (String)
 - Data {"vzor": " https://device.login.microsoftonline.com ", "Filter": {"Issuer": {"CN": "MS-Organization-Access"}}}

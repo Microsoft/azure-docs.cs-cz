@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: d44964b5aed55e2ee70d18e6be5d632b652956e1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90976256"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Scénář: směrování provozu přes síťové virtuální zařízení
@@ -99,7 +99,7 @@ Na **obrázku 2**existují dvě centra. **Hub1** a **hub2**.
 
 **Obrázek 2**
 
-:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Obrázek 2" lightbox="./media/routing-scenarios/nva/nva.png":::
+:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Obrázek 1" lightbox="./media/routing-scenarios/nva/nva.png":::
 
 ## <a name="scenario-workflow"></a><a name="workflow"></a>Pracovní postup scénáře
 
@@ -117,7 +117,7 @@ Virtuální síť WAN nepodporuje scénář, ve kterém se virtuální sítě 5,
 
 2. Přidejte agregovanou položku statické trasy pro virtuální sítě 2, 5, 6 do výchozí směrovací tabulky centra 1.
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Příklad":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Obrázek 1":::
 
 3. Nakonfigurujte statickou trasu pro virtuální sítě 5, 6 ve virtuální síti síťového připojení 2. Informace o nastavení konfigurace směrování pro připojení k virtuální síti najdete v tématu [Směrování virtuálního rozbočovače](how-to-virtual-hub-routing.md#routing-configuration).
 
@@ -129,7 +129,7 @@ Výsledkem bude, že se změní konfigurace směrování, jak je znázorněno na
 
 **Obrázek 3**
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Obrázek 3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Obrázek 1" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
 ## <a name="next-steps"></a>Další kroky
 

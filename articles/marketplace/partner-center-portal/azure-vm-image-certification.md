@@ -8,10 +8,10 @@ author: github-2407
 ms.author: krsh
 ms.date: 08/14/2020
 ms.openlocfilehash: 83fc141a658fb3f5f639d56794c77fe7a3ff28bf
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821320"
 ---
 # <a name="test-a-virtual-machine-image-for-azure-marketplace"></a>Otestování image virtuálního počítače pro Azure Marketplace
@@ -31,7 +31,7 @@ Tato část popisuje, jak nasadit zobecněnou image virtuálního pevného disku
 
 Tato část popisuje, jak vytvořit a nasadit image virtuálního počítače (VM) zadaného uživatelem. To můžete provést tak, že zadáte image virtuálního pevného disku operačního systému a datového disku z virtuálního pevného disku nasazeného v Azure. Tyto kroky nasadí virtuální počítač pomocí zobecněného virtuálního pevného disku.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Nahrajte na účet Azure Storage svůj zobecněný virtuální pevný disk s operačním systémem a virtuální pevné disky s daty.
 3. Na domovské stránce vyberte **vytvořit prostředek**, vyhledejte "nasazení šablony" a vyberte **vytvořit**.
 4. **V editoru vyberte vytvořit vlastní šablonu**.
@@ -1000,7 +1000,7 @@ Nakonec vyberte možnost generovat sestavu pro stažení výsledků testů a sou
 > [!Note]
 > Někteří vydavatelé mají scénáře, kdy je potřeba, aby virtuální počítače byly uzamčené, protože mají na virtuálním počítači nainstalovaný software, jako jsou třeba brány firewall. V takovém případě mohou vydavatelé stáhnout [Nástroj certifikovaný test](https://aka.ms/AzureCertificationTestTool) a poskytnout zprávu na [webu Marketplace podpora vydavatelů](https://aka.ms/marketplacepublishersupport) .
 
-## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>Použití PowerShellu ke využívání rozhraní API pro samočinné testování
+## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>Použití prostředí PowerShell ke využívání rozhraní Self-Test API
 
 ### <a name="on-linux-os"></a>V operačním systému Linux
 
@@ -1735,7 +1735,7 @@ For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
 
 ![Výsledky testů v online prohlížeči JSON.](media/vm/test-results-json-viewer-2.png)
 
-## <a name="how-to-use-curl-to-consume-the-self-test-api-on-linux-os"></a>Použití funkce KUDRLINKOU k využití rozhraní API pro samočinné testování v operačním systému Linux
+## <a name="how-to-use-curl-to-consume-the-self-test-api-on-linux-os"></a>Použití funkce KUDRLINKOU ke využívání rozhraní Self-Test API v operačním systému Linux
 
 Volání rozhraní API v KUDRLINKOU:
 

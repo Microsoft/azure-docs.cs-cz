@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07c1405482f107e370327ffbc049c77f483c29bd
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89662569"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronizace: proveďte změnu ve výchozí konfiguraci.
@@ -181,7 +181,7 @@ Přednastavená pravidla synchronizace začnou mít hodnotu priority 100. Pokud 
 
 Synchronizačnímu modulu, který chcete vložit další pravidla, můžete dát pokyn před přednastavenými pravidly. K získání tohoto chování použijte následující postup:
 
-1. V editoru pravidel synchronizace označte první předem připravené pravidlo synchronizace (**v nástroji ze služby AD-User JOIN**) a vyberte **exportovat**. Zkopírujte hodnotu identifikátoru SR.  
+1. Označte první předem připravené pravidlo synchronizace (**v programu AD-User JOIN**) v editoru pravidel synchronizace a vyberte **exportovat**. Zkopírujte hodnotu identifikátoru SR.  
 ![PowerShell před změnou](./media/how-to-connect-sync-change-the-configuration/powershell1.png)  
 2. Vytvořte nové pravidlo synchronizace. K jeho vytvoření můžete použít Editor pravidel synchronizace. Exportujte pravidlo do skriptu PowerShellu.
 3. Do vlastnosti **PrecedenceBefore**vložte hodnotu identifikátoru z pravidla předdefinovaných polí. Nastavte **prioritu** na **0**. Ujistěte se, že je atribut identifikátoru jedinečný a že nepoužíváte znovu identifikátor GUID z jiného pravidla. Také se ujistěte, že není nastavena vlastnost **ImmutableTag** . Tato vlastnost by měla být nastavena pouze pro pravidlo předdefinovaných polí.
@@ -265,7 +265,7 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
     | Name | *Zadat název* | Například *ve službě AD – uživatelskou usertype* |
-    | Popis | *Zadejte popis.* |  |
+    | Description | *Zadejte popis.* |  |
     | Připojený systém | *Výběr místního konektoru služby AD* |  |
     | Typ připojeného systémového objektu | **Uživatel** |  |
     | Typ objektu úložiště metaverse | **Osoba** |  |
@@ -307,7 +307,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
     | Atribut | Hodnota | Podrobnosti |
     | ----- | ------ | --- |
     | Name | *Zadat název* | Například pro *AAD – uživatel – usertype* |
-    | Popis | *Zadejte popis.* ||
+    | Description | *Zadejte popis.* ||
     | Připojený systém | *Vyberte konektor AAD.* ||
     | Typ připojeného systémového objektu | **Uživatel** ||
     | Typ objektu úložiště metaverse | **Osoba** ||
@@ -319,7 +319,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
     | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
     | sourceObjectType | VÝŠI | Uživatel |
-    | cloudMastered | NOTEQUAL | Pravda |
+    | cloudMastered | NOTEQUAL | Ano |
 
     Filtr oboru určuje, které objekty služby Azure AD toto pravidlo odchozí synchronizace používá. V tomto příkladu použijeme stejný filtr pro vytváření oborů z pravidla *pro synchronizaci od pro AD – aktuální identita uživatele* . Zabraňuje použití synchronizačního pravidla pro uživatelské objekty, které nejsou synchronizované z místní služby Active Directory. Je možné, že budete muset upravit filtr oboru podle nasazení Azure AD Connect.
 

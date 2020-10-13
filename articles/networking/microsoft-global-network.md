@@ -14,10 +14,10 @@ ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
 ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819899"
 ---
 # <a name="microsoft-global-network"></a>Globální síť Microsoftu
@@ -36,7 +36,7 @@ Každý den se zákazníci po celém světě připojí a předají bilióny žá
  
 Bez ohledu na to, jestli se připojení z Londýna do Brna nebo z Washington DC do Los Angeles, vyznačuje výkon sítě a bude ovlivněný takovými akcemi, jako je latence, kolísání, ztráta paketů a propustnost.  V Microsoftu upřednostňujeme a používáme přímé propojení na rozdíl od přenosu, což znamená, že je přenos dat symetrický a pomáhá udržet směrování, partnerské strany a cesty co nejkratší a nejjednodušší. 
 
-Pokud se třeba uživatel v Londýně pokusí získat přístup ke službě v Brně, pak internetové přenosy vstoupí do jedné z našich okrajů v Londýně, přechází přes Microsoft WAN přes Francii, naše cesty k trans-Arábie mezi Evropa a Indie a pak na Japonsko, kde je služba hostovaná. Provoz odezvy je symetrický. V takovém případě se někdy označuje jako [Směrování studených brambor](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) , což znamená, že provoz zůstává v síti od Microsoftu co nejkratší, než jsme ho vypnuli.  
+Pokud se třeba uživatel v Londýně pokusí získat přístup ke službě v Brně, pak internetový provoz vstoupí do jedné z našich okrajů v Londýně, přechází přes Microsoft WAN přes Francii, naše Trans-Arabia cesty mezi Evropa a Indie a pak na Japonsko, kde je služba hostovaná. Provoz odezvy je symetrický. V takovém případě se někdy označuje jako [Směrování studených brambor](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) , což znamená, že provoz zůstává v síti od Microsoftu co nejkratší, než jsme ho vypnuli.  
   
 Znamená to tedy jakýkoliv a veškerý provoz při používání služeb Microsoftu? Ano, jakýkoli provoz mezi datovými centry v rámci Microsoft Azure nebo mezi službami Microsoftu, jako jsou Virtual Machines, Microsoft 365, XBox, SQL databáze, úložiště a virtuální sítě, je směrován v rámci naší globální sítě a nikdy přes veřejný Internet, aby se zajistil optimální výkon a integrita.  
  
