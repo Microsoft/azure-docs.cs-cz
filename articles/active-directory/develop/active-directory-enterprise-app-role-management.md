@@ -13,17 +13,17 @@ ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 8ec87a8d78f73af48b662c5971dfe1803717f88a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91704544"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace
 
 Pomocí Azure Active Directory (Azure AD) můžete přizpůsobit typ deklarace identity role v tokenu odpovědi, který obdržíte po autorizaci aplikace.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure AD s instalačním programem adresáře.
 - Předplatné s povoleným jednotným přihlašováním (SSO). Jednotné přihlašování je nutné nakonfigurovat u vaší aplikace.

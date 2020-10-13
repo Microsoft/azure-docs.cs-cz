@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: c09c5b33f7960ffebfdfc8005537e75a249b8d99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b0ff0abe438b2be3602b10d1c449901ef916901
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89661088"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948081"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Kognitivní hledání
 
@@ -25,7 +25,7 @@ Většina zákazníků začíná na bezplatné úrovni, takže může službu vy
 
 Následující tabulka popisuje omezení funkcí souvisejících s vrstvami.
 
-| Příznak | Omezení |
+| Funkce | Omezení |
 |---------|-------------|
 | [Indexery](search-indexer-overview.md) | Indexery nejsou k dispozici na S3 HD. |
 | [Obohacení AI](search-security-manage-encryption-keys.md) | Běží na bezplatné úrovni, ale nedoporučuje se. |
@@ -130,7 +130,7 @@ Následující návrhy vám pomůžou snížit náklady nebo efektivněji spravo
 
 + Nahorizontální navýšení operací náročných na prostředky, jako je indexování, a následná změna nastavení pro běžné úlohy dotazů. Začněte s minimální konfigurací pro Azure Kognitivní hledání (jeden SU tvořený jedním oddílem a jednou replikou) a pak sledujte aktivitu uživatelů, abyste mohli identifikovat vzorce používání, které by znamenaly nutnost větší kapacity. Pokud existuje předvídatelný vzor, může být možné synchronizovat škálování s aktivitou (pro automatizaci musíte napsat kód).
 
-Kromě toho si projděte téma [fakturace a Správa nákladů](../cost-management-billing/manage/getting-started.md) pro integrované nástroje a funkce týkající se útraty.
+Kromě toho si projděte téma [fakturace a Správa nákladů](../cost-management-billing/cost-management-billing-overview.md) pro integrované nástroje a funkce týkající se útraty.
 
 Vypínání vyhledávací služby na dočasné bázi není možné. Vyhrazené prostředky jsou vždycky v provozu a jsou vyhrazené pro vaše výhradní použití po dobu života vaší služby. Odstranění služby je trvalé a zároveň odstraní přidružená data.
 
