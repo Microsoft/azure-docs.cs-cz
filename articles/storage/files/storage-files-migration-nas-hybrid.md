@@ -8,10 +8,10 @@ ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: fd8e845734169bcd73fa0e087c30c0f2fd6ef4f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85510301"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrace z úložiště připojení k síti (NAS) do hybridního nasazení v cloudu pomocí Azure File Sync
@@ -23,7 +23,7 @@ Tato skutečnost provede migraci vašich souborů a tento článek vás provede 
 
 Cílem je přesunout sdílené složky, které máte na zařízení NAS, na Windows Server. Pak využijte Azure File Sync pro nasazení hybridního cloudu. Tato migrace se musí udělat způsobem, který zaručuje integritu produkčních dat i dostupnost během migrace. Ta ta vyžaduje udržení minimálního výpadku, aby bylo možné se přizpůsobit nebo jen mírně překročit pravidelná časová období údržby.
 
-## <a name="migration-overview"></a>Migrace – přehled
+## <a name="migration-overview"></a>Přehled migrace
 
 Jak je uvedeno v [článku Přehled migrace](storage-files-migration-overview.md)souborů Azure, je důležité použít správný nástroj pro kopírování a přístup. Vaše zařízení NAS zveřejňuje sdílené složky SMB přímo v místní síti. V rámci tohoto scénáře migrace je to nejlepší způsob, jak přesunout soubory z nástroje Robocopy, integrované do Windows serveru.
 
@@ -208,7 +208,7 @@ Dokončili jste migraci sdílené složky nebo skupiny sdílených složek do sp
 Můžete zkusit spustit několik z těchto kopií paralelně. Doporučujeme, abyste v jednom okamžiku zpracovali obor jedné sdílené složky Azure.
 
 > [!WARNING]
-> Po přesunutí všech dat z vašeho serveru NAS do systému Windows Server a dokončení migrace se vraťte do ***všech*** skupin synchronizace v Azure Portal a nastavte procentuální hodnotu volného místa na úrovni cloudu tak, aby lépe vyhovovala využití mezipaměti, řekněme, že 20%. 
+> Po přesunutí všech dat z vašeho serveru NAS do systému Windows Server a dokončení migrace se vraťte do ***všech***  skupin synchronizace v Azure Portal a nastavte procentuální hodnotu volného místa na úrovni cloudu tak, aby lépe vyhovovala využití mezipaměti, řekněme, že 20%. 
 
 Zásada pro volné místo svazku ve vrstvách cloudu funguje na úrovni svazku s potenciálně synchronizovanými koncovými body serveru. Pokud zapomenete upravit volné místo na jednom koncovém bodu serveru, bude synchronizace dál používat nejvíce omezující pravidlo a pokusí se zachovávat 99% volného místa na disku, takže místní mezipaměť nefunguje, protože byste mohli očekávat. Pokud se nejedná o váš cíl jenom pro svazek, který obsahuje jenom zřídka využívaný, archivní data a vy znovu zachováte zbývající část prostoru úložiště pro jiný scénář.
 

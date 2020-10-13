@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 54c85fb778d1794f9aeba2eba5ed459292636e35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61978566eba792a1d5b1db45ea4a9e8d6e84a543
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513617"
+ms.locfileid: "91931032"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Sady Azure NetApp Files SDK a nástroje CLI
 
@@ -44,12 +44,12 @@ V následující tabulce jsou uvedené podporované nástroje CLI a jejich odkaz
 
 |    Nástroj    |    Reference k příkazům    |
 |------------------|--------------------------------------------|
-|    Azure CLI  |    [AZ netappfiles](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)    |
-|    PowerShell   |    [Azure PowerShell pro Azure NetApp Files](https://docs.microsoft.com/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files)    |
+|    Azure CLI  |    [AZ netappfiles](/cli/azure/netappfiles?view=azure-cli-latest)    |
+|    PowerShell   |    [Azure PowerShell pro Azure NetApp Files](/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files)    |
 
 ## <a name="code-samples"></a>Ukázky kódů
 
-Viz [ukázky kódu pro Azure NetApp Files](https://docs.microsoft.com/samples/browse/?filter-products=netapp&products=azure-netapp-files).
+Viz [ukázky kódu pro Azure NetApp Files](/samples/browse/?filter-products=netapp&products=azure-netapp-files).
 
 ## <a name="next-steps"></a>Další kroky   
  [Stáhnout sady Azure SDK](https://azure.microsoft.com/downloads/)

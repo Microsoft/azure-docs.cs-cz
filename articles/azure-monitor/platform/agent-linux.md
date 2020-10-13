@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
 ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294524"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Instalace agenta Log Analytics do počítačů se systémem Linux
@@ -81,7 +81,7 @@ Jiné metody posílení zabezpečení a přizpůsobení nejsou pro agenta OMS po
 
 V následující tabulce jsou vysvětlené balíčky požadované pro [Podporované distribuce Linux](#supported-operating-systems) , na které se agent nainstaluje.
 
-|Požadovaný balíček |Popis |Minimální verze |
+|Požadovaný balíček |Description |Minimální verze |
 |-----------------|------------|----------------|
 |Glibc |    Knihovna GNU C | 2.5-12 
 |Openssl    | Knihovny OpenSSL | 1,0. x nebo 1.1. x |
@@ -184,7 +184,7 @@ Agent Log Analytics pro Linux je k dispozici v balíčku skriptu pro samorozbalo
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
     ```
 
-    Pokud je vyžadováno ověření, je nutné zadat uživatelské jméno a heslo. Příklad: 
+    Pokud je vyžadováno ověření, je nutné zadat uživatelské jméno a heslo. Například: 
     
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>

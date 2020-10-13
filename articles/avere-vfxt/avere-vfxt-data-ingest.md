@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
 ms.openlocfilehash: 76bbe60397ebb01aed5694d933b3067f778a4c21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85505592"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Přesun dat do clusteru vFXT – paralelní data ingestování
@@ -185,7 +185,7 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Přesměrovat tento výsledek do souboru:`find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Přesměrovat tento výsledek do souboru: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
 Pak můžete iterovat v manifestu pomocí příkazů BASH pro počítání souborů a určení velikosti podadresářů:
 
@@ -280,13 +280,13 @@ Tato metoda představuje jednoduchou a časově efektivní metodu pro datové sa
 
 ``msrsync``Nástroj lze také použít k přesunu dat do back-endové základní souborového clusteru avere. Tento nástroj je určený k optimalizaci využití šířky pásma spuštěním několika paralelních ``rsync`` procesů. Je k dispozici z GitHubu na adrese <https://github.com/jbd/msrsync> .
 
-``msrsync``rozdělí zdrojový adresář do samostatných "intervalů" a potom spustí jednotlivé ``rsync`` procesy v jednotlivých intervalech.
+``msrsync`` rozdělí zdrojový adresář do samostatných "intervalů" a potom spustí jednotlivé ``rsync`` procesy v jednotlivých intervalech.
 
 Předběžné testování pomocí virtuálního počítače se čtyřmi jádry ukázalo při použití procesů 64 nejlepší efektivitu. Pomocí ``msrsync`` možnosti ``-p`` nastavte počet procesů na 64.
 
 Můžete také použít ``--inplace`` argument s ``msrsync`` příkazy. Pokud použijete tuto možnost, zvažte spuštění druhého příkazu (stejně jako u [rsync](#use-a-two-phase-rsync-process)popsané výše), aby se zajistila integrita dat.
 
-``msrsync``lze zapisovat pouze do místních svazků a z nich. Zdroj a cíl musí být přístupné jako místní připojení ve virtuální síti clusteru.
+``msrsync`` lze zapisovat pouze do místních svazků a z nich. Zdroj a cíl musí být přístupné jako místní připojení ve virtuální síti clusteru.
 
 Pokud chcete použít ``msrsync`` k naplnění cloudového svazku Azure pomocí clusteru avere, postupujte podle těchto pokynů:
 

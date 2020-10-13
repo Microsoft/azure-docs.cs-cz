@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85846868"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Nastavení tabulek a pravidel brány firewall pro privátní cloudy
@@ -49,7 +49,7 @@ Pravidla brány firewall určují, jak brána firewall zpracovává konkrétní 
     * Při vytváření tabulky brány firewall klikněte na **Přidat pravidlo** .
     * Vyberte konkrétní tabulku brány firewall na stránce **> tabulky brány firewall sítě** a klikněte na **vytvořit nové pravidlo brány firewall**.
 2. Pravidlo nastavte takto:
-    * **Název**. Zadejte název pravidla.
+    * **Název:** Zadejte název pravidla.
     * **Priorita**. Přiřaďte k pravidlu prioritu. Jako první se spustí pravidla s nižšími čísly.
     * **Typ provozu**. Vyberte, jestli je pravidlo pro provoz privátního cloudu, Internetu nebo VPN (bez stavu) nebo pro veřejnou IP adresu (Stavový).
     * **Protokol**. Vyberte protokol, na který se vztahuje pravidlo (TCP, UDP nebo jakýkoli protokol).

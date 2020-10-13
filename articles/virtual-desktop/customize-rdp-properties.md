@@ -3,15 +3,15 @@ title: Přizpůsobení vlastností protokolu RDP pomocí prostředí PowerShell 
 description: Postup přizpůsobení vlastností protokolu RDP pro virtuální počítače s Windows pomocí rutin prostředí PowerShell.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 09/04/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86e3422cbd1cbf92a0d0d218267001c934403753
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462220"
+ms.locfileid: "91930692"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) pro fond hostitelů
 
@@ -28,8 +28,8 @@ Soubory RDP mají ve výchozím nastavení následující vlastnosti:
 
 |Vlastnost RDP|Na ploše|Jako Vzdálená aplikace RemoteApp|
 |---|---|---|
-|Režim více monitorů|Povoleno|Není k dispozici|
-|Přesměrování jednotky povolena|Jednotky, schránka, tiskárny, porty COM, zařízení USB a čipové karty|Jednotky, schránka a tiskárny|
+|Režim více monitorů|Zakázáno|Povoleno|
+|Přesměrování jednotky povolena|Jednotky, schránka, tiskárny, porty COM a čipové karty|Jednotky, schránka a tiskárny|
 |Režim vzdáleného zvuku|Přehrát místně|Přehrát místně|
 
 ## <a name="prerequisites"></a>Požadavky
@@ -45,8 +45,9 @@ Konfigurace vlastností protokolu RDP v Azure Portal:
 3. V části služby vyberte **virtuální klient Windows**.
 4. Na stránce virtuální počítač s Windows vyberte **fondy hostitelů** v nabídce na levé straně obrazovky.
 5. Vyberte **název hostitelského fondu** , který chcete aktualizovat.
-6. V nabídce na levé straně obrazovky vyberte **vlastnosti** .
-7. Na kartě **vlastnosti** otevřete **Nastavení RDP** a začněte upravovat vlastnosti protokolu RDP. Vlastnosti by měly být ve formátu odděleném středníkem, jako jsou příklady PowerShellu.
+6. V nabídce na levé straně obrazovky vyberte **Vlastnosti protokolu RDP** .
+7. Nastavte vlastnost, kterou chcete.
+   - Alternativně můžete otevřít kartu **Upřesnit** a přidat vlastnosti protokolu RDP ve formátu odděleném středníkem, jako jsou příklady PowerShellu v následujících oddílech.
 8. Až budete hotovi, vyberte **Uložit** a uložte provedené změny.
 
 V dalších částech se dozvíte, jak ručně upravit vlastní vlastnosti protokolu RDP v prostředí PowerShell.

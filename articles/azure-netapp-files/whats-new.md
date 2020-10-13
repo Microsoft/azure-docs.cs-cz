@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: beb1cc9957f7b43bc6ad9b9b6ee6c7707eb0c2d6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 56ae3ac1331ed054a1fb808ae06e990b67c06bae
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91571562"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932409"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Co je nového v Azure NetApp Files
 
@@ -31,7 +31,7 @@ Azure NetApp Files se pravidelně aktualizují. Tento článek obsahuje souhrn n
 
   Azure NetApp Files teď podporuje replikaci mezi jednotlivými oblastmi. Díky této nové funkci pro zotavení po havárii můžete své Azure NetApp Files svazky replikovat z jedné oblasti Azure do jiné díky rychlému a nákladově efektivnímu způsobu ochrany vašich dat před nepředvídatelnými místními chybami. Replikace Azure NetApp Files mezi oblastmi využije technologii® NetApp SnapMirror; v komprimovaném, efektivním formátu se přes síť odesílají jenom změněné bloky. Tato proprietární technologie minimalizuje množství dat potřebných k replikaci napříč různými oblastmi, takže šetří náklady na přenos dat. Také zkracuje čas replikace, takže můžete dosáhnout menšího cíle bodu obnovení (RPO).
 
-* [Ruční fond kapacit technologie QoS](manage-manual-qos-capacity-pool.md) (Preview)  
+* [Ruční fond kapacit technologie QoS](manual-qos-capacity-pool-introduction.md) (Preview)  
 
     V manuálním fondu kapacity QoS můžete přiřadit kapacitu a propustnost pro svazek nezávisle. Celková propustnost všech svazků vytvořených pomocí manuálního fondu kapacity QoS je omezená celkovou propustností fondu. Je určena kombinací velikosti fondu a propustnosti na úrovni služby. Alternativně může být [typ QoS](azure-netapp-files-understand-storage-hierarchy.md#qos_types) fondu kapacity automaticky (automaticky), což je výchozí nastavení. Ve fondu kapacity auto QoS se propustnost automaticky přiřazuje svazkům ve fondu, a to úměrně k kvótě velikosti přiřazené ke svazkům.
 

@@ -9,10 +9,10 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: b36641677dbf36402c7f578b9b1887c52f441afd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322474"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Dekódovat zprávy EDIFACT pro Azure Logic Apps s Enterprise Integration Pack
@@ -61,7 +61,7 @@ Tady jsou položky, které potřebujete:
 
     ![vytvořilo se připojení k účtu pro integraci.](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
 
-    Příklad:
+    Například:
 
     ![Pro dekódování vybrat zprávu plochý soubor EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 

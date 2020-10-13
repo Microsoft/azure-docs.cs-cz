@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: dech
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 47ac6b4caf97b264df58732f8d031fc63091171e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019262"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Používejte integrované příkazy a funkce poznámkového bloku v Azure Cosmos DB poznámkových blocích C# (Preview).
@@ -39,7 +39,7 @@ Verze 3 sady [Azure Cosmos DB .NET SDK pro SQL API](https://github.com/Azure/azu
 
 Vytvořte instanci ``CosmosClient`` pro spuštění jakékoli operace sady SDK. 
 
-Příklad:
+Například:
 
 ```csharp
 // Include usings
@@ -96,7 +96,7 @@ var endpoint = Cosmos.Endpoint;
 ## <a name="print-console-output-in-c-code"></a>Výstup tiskové konzoly v kódu jazyka C#
 V kódu jazyka C# můžete použít syntaxi Display. AsMarkdown () s [interpolací řetězce](/dotnet/csharp/language-reference/tokens/interpolated) k tisku výstupu konzoly, která se zobrazí při spuštění buňky. 
 
-Příklad: 
+Například: 
 
 ```csharp
 // Print text in the output
@@ -117,12 +117,12 @@ Například v příkladu *GetingStarted_Csharp. ipynb* můžeme vyfiltrovat prom
 
 :::image type="content" source="media/use-notebook-features-and-commands/csharp-query-cell.png" alt-text="Buňka dotazu CSharp":::
 
-:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="Průzkumník dat nteract":::
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="Buňka dotazu CSharp":::
 
 ## <a name="use-built-in-dictionary-viewer"></a>Použít vestavěný prohlížeč slovníku
 K zobrazení proměnné můžete použít vestavěný prohlížeč slovníku. V buňce vložte proměnnou, kterou chcete vizualizovat, do posledního řádku, který se automaticky zobrazí při spuštění buňky.
 
-:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="Vestavěný prohlížeč slovníku":::
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="Buňka dotazu CSharp":::
 
 ## <a name="upload-json-items-to-a-container"></a>Nahrání položek JSON do kontejneru
 Pomocí ``%%upload`` příkazu Magic můžete nahrávat data ze souboru JSON do zadaného kontejneru Azure Cosmos. Následující příkaz slouží k nahrání položek:
@@ -134,7 +134,7 @@ Pomocí ``%%upload`` příkazu Magic můžete nahrávat data ze souboru JSON do 
 - Nahraďte ``{database_id}`` a ``{container_id}`` názvem databáze a kontejneru v účtu Azure Cosmos. 
 - Nahraďte ``{url_location_of_file}`` umístěním souboru JSON. Tento soubor musí být pole platných objektů JSON a měl by být přístupný prostřednictvím veřejného Internetu.
 
-Příklad:
+Například:
 
 ```csharp
 %%upload --database databaseName --container containerName --url 
@@ -160,7 +160,7 @@ Nahraďte ``{notebookName}`` názvem poznámkového bloku, který chcete spustit
 ## <a name="reset-notebooks-workspace"></a>Resetovat pracovní prostor poznámkových bloků
 Pokud chcete resetovat pracovní prostor poznámkových bloků na výchozí nastavení, na panelu příkazů vyberte **resetovat pracovní prostor** . Tím se odeberou všechny vlastní nainstalované balíčky a restartuje se server Jupyter. Vaše poznámkové bloky, soubory a prostředky Azure Cosmos nebudou ovlivněny.  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Resetovat pracovní prostor poznámkových bloků":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Buňka dotazu CSharp":::
 
 ## <a name="next-steps"></a>Další kroky
 

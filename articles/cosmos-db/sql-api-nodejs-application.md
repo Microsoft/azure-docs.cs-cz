@@ -10,10 +10,10 @@ ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
 ms.openlocfilehash: 005473fa02dda2e5466ffbc5a32499006c41292c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322695"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Kurz: vytvoření Node.js webové aplikace pomocí sady JavaScript SDK pro správu účtu rozhraní SQL API v Azure Cosmos DB 
@@ -38,11 +38,11 @@ Tento kurz se zabývá následujícími úkony:
 > * Připojení aplikace ke službě Azure Cosmos DB
 > * Spuštění a nasazení aplikace v Azure
 
-## <a name="prerequisites"></a><a name="_Toc395783176"></a>Požadavky
+## <a name="prerequisites"></a><a name="_Toc395783176"></a>Předpoklady
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující prostředky:
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+* Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -439,7 +439,7 @@ Teď, když jste sestavili aplikaci, ji můžete spustit místně pomocí násle
 
 1. Pokud chcete aplikaci otestovat na místním počítači, spusťte `npm start` v terminálu, aby se spustila vaše aplikace, a pak aktualizujte `http://localhost:3000` stránku prohlížeče. Stránka by teď měla vypadat jako na následujícím snímku obrazovky:
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Snímek obrazovky aplikace Seznam úkolů v okně prohlížeče":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Výuka Node.js – snímek obrazovky aplikace Hello World v okně prohlížeče":::
 
     > [!TIP]
     > Pokud se zobrazí chyba týkající se odložení v souboru layout. Jade nebo index. Jade, ujistěte se, že první dva řádky v obou souborech jsou zarovnané vlevo, bez mezer. Pokud jsou před prvními dvěma řádky mezery, odstraňte je, uložte oba soubory a pak aktualizujte okno prohlížeče. 
@@ -448,7 +448,7 @@ Teď, když jste sestavili aplikaci, ji můžete spustit místně pomocí násle
 
 3. Stránka by se měla aktualizovat, aby se v seznamu úkolů zobrazila nově vytvořená položka.
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Snímek obrazovky aplikace s novou položkou v seznamu úkolů":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Výuka Node.js – snímek obrazovky aplikace Hello World v okně prohlížeče":::
 
 4. Chcete-li dokončit úkol, zaškrtněte políčko v poli dokončeno a pak vyberte **aktualizovat úkoly**. Vytvořený dokument se aktualizuje a odebere ze zobrazení.
 
