@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
 ms.openlocfilehash: 32273bbb14e6cee73f03bd83b84be77299186370
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936992"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Integrace Azure Active Directory spravovaná v AKS
@@ -35,7 +35,7 @@ Integrace Azure Active Directory spravovaná v AKS je dostupná ve veřejných o
 * pro integraci služby instituce AD spravovanou v AKS se nepodporují clustery s podporou nerbac.
 * Změna tenanta Azure AD přidruženého k integraci Azure AD spravované v AKS se nepodporuje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Azure CLI verze 2.11.0 nebo novější
 * Kubectl s minimální verzí [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) nebo [kubelogin](https://github.com/Azure/kubelogin)

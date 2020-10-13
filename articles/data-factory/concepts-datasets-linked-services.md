@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/24/2020
 ms.openlocfilehash: 747d780b8f679adf66810bdcdf6e9b263e8d241c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88923751"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady v Azure Data Factory
@@ -32,7 +32,7 @@ Tento článek popisuje, jaké jsou datové sady, jak jsou definovány ve formá
 Pokud s Data Factory začínáte, přečtěte si téma [Úvod do Azure Data Factory](introduction.md) pro přehled.
 
 ## <a name="overview"></a>Přehled
-Objekt pro vytváření dat může mít jeden nebo víc kanálů. **Kanál** je logické seskupení **aktivit** , které dohromady provádějí úlohu. Aktivity v kanálu definují akce, které se mají provést s vašimi daty. Nyní je **datovou sadou** pojmenované zobrazení dat, která jednoduše odkazují na data, která chcete ve svých **aktivitách** použít jako vstupy a výstupy. Datové sady identifikují data v rámci různých úložišť dat, jako jsou tabulky, soubory, složky a dokumenty. Datová sada objektu blob Azure například určuje kontejner objektů blob a složku v úložišti objektů blob, ze kterých by měla aktivita číst data.
+Objekt pro vytváření dat může mít jeden nebo víc kanálů. **Kanál** je logické seskupení **aktivit** , které dohromady provádějí úlohu. Aktivity v kanálu definují akce, které se mají provádět s daty. Nyní je **datovou sadou** pojmenované zobrazení dat, která jednoduše odkazují na data, která chcete ve svých **aktivitách** použít jako vstupy a výstupy. Datové sady identifikují data v rámci různých úložišť dat, jako jsou tabulky, soubory, složky a dokumenty. Datová sada objektu blob Azure například určuje kontejner objektů blob a složku v úložišti objektů blob, ze kterých by měla aktivita číst data.
 
 Před vytvořením datové sady je nutné vytvořit [**propojenou službu**](concepts-linked-services.md) , která propojí úložiště dat s datovou továrnou. Propojené služby jsou velmi podobné připojovacím řetězcům, které definují informace o připojení, které služba Data Factory potřebuje pro připojení k externím prostředkům. Zamyslete se nad tímto způsobem; datová sada představuje strukturu dat v propojených úložištích dat a propojená služba definuje připojení ke zdroji dat. Například propojená služba Azure Storage propojuje účet úložiště s datovou továrnou. Datová sada objektů BLOB v Azure představuje kontejner objektů BLOB a složku v rámci tohoto Azure Storage účtu, která obsahuje vstupní objekty blob, které se mají zpracovat.
 
@@ -69,10 +69,10 @@ Následující tabulka obsahuje popis vlastností ve výše uvedeném formátu J
 
 Vlastnost | Popis | Povinné |
 -------- | ----------- | -------- |
-name | Název datové sady Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Ano |
-typ | Typ datové sady Zadejte jeden z typů, které podporuje Data Factory (například: DelimitedText, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typy datových sad](#dataset-type). | Ano |
-schema | Schéma datové sady představuje fyzický datový typ a tvar. | Ne |
-typeProperties | Vlastnosti typu jsou pro každý typ odlišné. Podrobnosti o podporovaných typech a jejich vlastnostech naleznete v tématu [Typ datové sady](#dataset-type). | Ano |
+name | Název datové sady Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Yes |
+typ | Typ datové sady Zadejte jeden z typů, které podporuje Data Factory (například: DelimitedText, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typy datových sad](#dataset-type). | Yes |
+schema | Schéma datové sady představuje fyzický datový typ a tvar. | No |
+typeProperties | Vlastnosti typu jsou pro každý typ odlišné. Podrobnosti o podporovaných typech a jejich vlastnostech naleznete v tématu [Typ datové sady](#dataset-type). | Yes |
 
 Po importu schématu datové sady vyberte tlačítko **importovat schéma** a zvolte Import ze zdroje nebo z místního souboru. Ve většině případů importujete schéma přímo ze zdroje. Pokud již máte místní soubor schématu (soubor Parquet nebo CSV s hlavičkou), můžete Data Factory nasměrovat na základní schéma tohoto souboru.
 

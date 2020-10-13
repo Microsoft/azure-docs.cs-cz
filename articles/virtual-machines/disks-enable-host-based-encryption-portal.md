@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: 4498e78b408f64ab5bc00b9f8730559b90c95d57
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88817483"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Použití Azure Portal k povolení kompletního šifrování pomocí šifrování na hostiteli
@@ -35,7 +35,7 @@ Pokud povolíte šifrování na hostiteli, data uložená na hostiteli virtuáln
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Aby bylo možné používat šifrování na hostiteli pro vaše virtuální počítače nebo služby Virtual Machine Scale Sets, musíte ve svém předplatném mít povolenou funkci. Odešlete email na adresu encryptionAtHost@microsoft. com s ID předplatného, abyste získali funkci povolenou pro vaše předplatná.
 
@@ -63,7 +63,7 @@ Pokud chcete povolit šifrování na hostiteli, musíte nasadit nový virtuáln�
 1. V okně **disky** vyberte **Ano** pro **šifrování na hostiteli**.
 1. Vyberte zbývající výběr.
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="Snímek obrazovky okna s disky pro vytvoření virtuálního počítače, šifrování na hostiteli je zvýrazněné.":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="Snímek obrazovky s oknem základy vytváření virtuálních počítačů, oblast a velikost M jsou zvýrazněné.":::
 
 1. Dokončete proces nasazení virtuálního počítače a proveďte výběry, které odpovídají vašemu prostředí.
 

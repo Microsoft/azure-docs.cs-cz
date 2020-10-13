@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 1cb7753f54e9c1334e35635c227f776041631f1d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88864802"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generování souboru žádosti o podepsání certifikátu
@@ -183,7 +183,7 @@ Na konci těchto kroků byste měli mít následující informace pro pozdějš�
     2. V části **software** vyberte možnost **vývoj pro Apple**. Potom vyberte **Pokračovat**.
     3. Na obrazovce **vytvořit nový certifikát** vyberte **zvolit soubor**.
     4. Přejděte na certifikát **žádosti o podepsání certifikátu** , který jste vytvořili dříve, vyberte ho a pak vyberte **otevřít**.
-    5. Vyberte **pokračovat**.
+    5. Vyberte **Pokračovat**.
     6. Stáhněte si vývojový certifikát a zapamatujte si umístění, do kterého se uložilo.
 
 1. Vraťte se na stránku **certifikáty, identifikátory & profily** , v nabídce vlevo vyberte **profily** a pak vyberte **+** Vytvoření nového profilu. Zobrazí se obrazovka **registrovat nový profil pro zřizování** .

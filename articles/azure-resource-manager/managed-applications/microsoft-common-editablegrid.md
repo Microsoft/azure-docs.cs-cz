@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: tomfitz
 ms.openlocfilehash: 04f86883a75110985d1cbe050fe3fd3e0582986a
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88893712"
 ---
 # <a name="microsoftcommoneditablegrid-ui-element"></a>Microsoft. Common. EditableGrid – element uživatelského rozhraní
@@ -128,7 +128,7 @@ Ovládací prvek pro shromažďování tabulkového vstupu. Všechna pole v mř�
 - Tato `$rowIndex` proměnná je platná pouze ve výrazech obsažených v podřízených objektech sloupců mřížky. Jedná se o celé číslo, které představuje index relativního řádku prvku a počet začíná na jednu a zvýší o jednu. Jak je znázorněno v `"columns":` části schématu, se `$rowIndex` používá k ověření.
 - Pokud se ověření provádí pomocí `$rowIndex` proměnné, je možné získat hodnotu aktuálního řádku kombinováním `last()` `take()` příkazů a.
 
-  Příklad:
+  Například:
 
   `last(take(<reference_to_grid>, $rowIndex))`
 

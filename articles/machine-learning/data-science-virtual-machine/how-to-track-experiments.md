@@ -10,10 +10,10 @@ ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89254761"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Sledovat experimenty a nasazovat modely v Azure Machine Learning
@@ -165,7 +165,7 @@ Pokud chcete nasadit model diabetes, přejděte do nabídky vlevo v [Azure Machi
 
 Potom v podokně Podrobnosti modelu klikněte na tlačítko __nasadit__ :
 
-![Nasazení](./media/how-to-track-experiments/mlflow-experiments-4.png)
+![Nasadit](./media/how-to-track-experiments/mlflow-experiments-4.png)
 
 Tento model nasadíme do clusteru odvození (Azure Kubernetes Service), který jsme vytvořili v kroku 1. Vyplňte níže uvedené podrobnosti zadáním názvu služby a názvu AKS výpočetního clusteru (vytvořeného v kroku 1). Doporučujeme také zvýšit __kapacitu kapacity procesoru__ na 1 (od 0,1) a __rezervu paměti__ na 1 (od 0,5) – Toto zvýšení můžete udělat kliknutím na __Upřesnit__ a vyplněním podrobností. Pak klikněte na __nasadit__.
 

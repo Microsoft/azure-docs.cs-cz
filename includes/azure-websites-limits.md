@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
 ms.openlocfilehash: 557e20dcafabb2db0bc66c9dfda4977aca50de50
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91745522"
 ---
 | Prostředek | Free | Shared | Basic | Standard | Premium (V3) | Isolated </th> |
@@ -30,7 +30,7 @@ ms.locfileid: "91745522"
 | Vlastní domény na aplikaci</a> |0 (pouze subdomény azurewebsites.net)|500 |500 |500 |500 |500 |
 | [Podpora protokolu SSL](../articles/app-service/configure-ssl-certificate.md) vlastní domény |Nepodporováno, \* ve výchozím nastavení je k dispozici certifikát Wildcard pro. azurewebsites.NET|Nepodporováno, \* ve výchozím nastavení je k dispozici certifikát Wildcard pro. azurewebsites.NET|Neomezené SNI SSL připojení |Zahrnuté neomezené SNI SSL a 1 IP SSL připojení |Zahrnuté neomezené SNI SSL a 1 IP SSL připojení | Zahrnuté neomezené SNI SSL a 1 IP SSL připojení|
 | Hybridní připojení | | | 5 podle plánu | 25 na plán | 200 na aplikaci | 200 na aplikaci |
-| [Integrace virtuální sítě](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
+| [Integrace Virtual Network](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
 | Integrovaný nástroj pro vyrovnávání zatížení | |X |X |X |X |X<sup>10</sup> |
 | [Vždy zapnuto](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [Naplánovaná zálohování](../articles/app-service/manage-backup.md) | | | | Naplánované zálohy každé 2 hodiny, maximálně 12 záloh za den (ruční + naplánované) | Naplánované zálohy každou hodinu, maximálně 50 zálohování za den (ruční + plánovaná) | Naplánované zálohy každou hodinu, maximálně 50 zálohování za den (ruční + plánovaná) |

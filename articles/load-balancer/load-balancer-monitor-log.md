@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
 ms.openlocfilehash: 42ec5a661bd7b42ba5de5bfa99b3898291cc60fa
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935598"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Protokoly služby Azure Monitor pro veřejný Load Balancer úrovně Basic
@@ -35,7 +35,7 @@ Pomocí různých typů protokolů v Azure můžete spravovat a řešit základn
 
 Protokolování aktivit je u každého prostředku Správce prostředků povolené automaticky. Povolte protokolování událostí a sondy stavu, abyste mohli začít shromažďovat data dostupná přes tyto protokoly. K povolení protokolování použijte následující postup.
 
-Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte Nástroj pro vyrovnávání zatížení, vytvořte před pokračováním [Nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Pokud ještě nemáte Nástroj pro vyrovnávání zatížení, vytvořte před pokračováním [Nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
 
 1. Na portálu klikněte na **skupiny prostředků**.
 2. Vyberte **\<resource-group-name>** , kde je nástroj pro vyrovnávání zatížení.

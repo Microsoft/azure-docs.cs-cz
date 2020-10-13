@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
 ms.openlocfilehash: 68e5f937b8ad8367abf488598bda311a39d462c6
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90600649"
 ---
 # <a name="common-questions"></a>Časté dotazy
@@ -71,12 +71,12 @@ Ano, jak při přenosu, tak i v klidovém režimu.
 
 ### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>Jaká oprávnění spravovaná identita potřebuje dopravení prostředků?
 
-Spravovaná identita Azure Resource stěhovací potřebuje aspoň tato oprávnění: 
+Spravovaná identita služby Azure Resource Mover musí mít alespoň tato oprávnění: 
 
 - Oprávnění k zápisu a vytváření prostředků v předplatném uživatele, která jsou k dispozici v roli *Přispěvatel* . 
 - Oprávnění k vytváření přiřazení rolí. Obvykle k dispozici s rolemi *vlastník* nebo *Správce přístupu uživatelů* nebo s vlastní rolí, která má přiřazené *přiřazení Microsoft. Authorization/role/oprávnění k zápisu* . Toto oprávnění není nutné, pokud je spravované identitě prostředku sdílení dat již udělen přístup k úložišti dat Azure. 
  
-Když na portálu přidáte prostředky do centra pro řízení zdrojů, budou se oprávnění zpracovávat automaticky, pokud má uživatel oprávnění popsaná výše. Pokud přidáte prostředky pomocí PowerShellu, přiřadíte oprávnění ručně.
+Pokud přidáte prostředky v centru Resource Mover na portálu, oprávnění se zajistí automaticky za předpokladu, že uživatel má výše popsaná oprávnění. Pokud přidáte prostředky pomocí PowerShellu, přiřadíte oprávnění ručně.
 
 > [!IMPORTANT]
 > Důrazně doporučujeme, abyste nezměnili ani neodebrali přiřazení rolí identity. 

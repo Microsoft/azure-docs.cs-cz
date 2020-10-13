@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 4889ecd02be1b8f59c30550b7813ed5e5935f20f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88924690"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Vnímání znalostí překladu textu
@@ -38,7 +38,7 @@ Maximální velikost záznamu musí být 50 000 znaků měřených podle [`Strin
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Vstupy                | Popis |
+| Vstupy                | Description |
 |---------------------|-------------|
 | defaultToLanguageCode | Požadovanou Kód jazyka, ve kterém se mají dokumenty překládat do pro dokumenty, které nespecifikují jazyk pro explicitně. <br/> [Úplný seznam podporovaných jazyků](../cognitive-services/translator/language-support.md)najdete v části. |
 | defaultFromLanguageCode | Volitelné Kód jazyka, ze kterého se mají dokumenty překládat pro dokumenty, které nespecifikují jazyk z jazyka explicitně.  Pokud není zadán parametr defaultFromLanguageCode, použije se k určení jazyka z tohoto Translator Text API automatické zjišování jazyka, které poskytuje. <br/> [Úplný seznam podporovaných jazyků](../cognitive-services/translator/language-support.md)najdete v části. |
@@ -46,7 +46,7 @@ U parametrů se rozlišují malá a velká písmena.
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu     | Popis |
+| Název vstupu     | Description |
 |--------------------|-------------|
 | text | Text, který se má přeložit|
 | toLanguageCode    | Řetězec označující jazyk, na který má být text přeložen. Pokud tento vstup není zadán, použije se k převodu textu defaultToLanguageCode. <br/>Zobrazit [úplný seznam podporovaných jazyků](../cognitive-services/translator/language-support.md)|
@@ -54,7 +54,7 @@ U parametrů se rozlišují malá a velká písmena.
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Název výstupu    | Popis |
+| Název výstupu    | Description |
 |--------------------|-------------|
 | translatedText | Výsledek řetězce převodu textu z translatedFromLanguageCode do translatedToLanguageCode.|
 | translatedToLanguageCode  | Řetězec označující kód jazyka, na který byl text přeložen. Užitečné v případě, že překládáte do více jazyků a chcete mít přehled o tom, jaký text má jazyk.|

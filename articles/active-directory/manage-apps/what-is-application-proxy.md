@@ -12,10 +12,10 @@ ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: dbfe18c84217c741f8dd64481901747d068fcdd3
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604134"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Použití Azure Proxy aplikací služby AD k publikování místních aplikací pro vzdálené uživatele
@@ -97,7 +97,7 @@ Proxy aplikace také podporuje následující protokoly ověřování s integrac
 
 * [**Ověřování na základě hlaviček**](application-proxy-configure-single-sign-on-with-ping-access.md). Tato metoda přihlašování používá ověřovací službu třetí strany nazvanou PingAccess a používá se v případě, že aplikace používá hlavičky pro ověřování. V tomto scénáři se ověřování zpracovává pomocí PingAccess.
 * [**Ověřování pomocí formulářů nebo hesel**](application-proxy-configure-single-sign-on-password-vaulting.md). Pomocí této metody ověřování se uživatelé přihlásí k aplikaci pomocí uživatelského jména a hesla při prvním přístupu k ní. Po prvním přihlášení Azure AD zadá uživatelské jméno a heslo k aplikaci. V tomto scénáři služba Azure AD zpracovává ověřování.
-* [**Ověřování SAML**](application-proxy-configure-single-sign-on-on-premises-apps.md). Jednotné přihlašování založené na SAML je podporované pro aplikace, které používají protokol SAML 2,0 nebo WS-Federation. Pomocí jednotného přihlašování SAML Azure AD ověřuje aplikace pomocí účtu Azure AD uživatele.
+* [**Ověřování SAML**](application-proxy-configure-single-sign-on-on-premises-apps.md). Jednotné přihlašování založené na SAML je podporované pro aplikace, které používají protokol SAML 2,0 nebo WS-Federation protokoly. Pomocí jednotného přihlašování SAML Azure AD ověřuje aplikace pomocí účtu Azure AD uživatele.
 
 Další informace o podporovaných metodách najdete v tématu [Výběr metody jednotného přihlašování](sso-options.md#choosing-a-single-sign-on-method).
 
