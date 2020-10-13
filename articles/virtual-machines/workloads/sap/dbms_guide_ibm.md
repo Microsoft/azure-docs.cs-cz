@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2be5daf5bcad0f5b4530ba7a76986dae4833aa5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e401fb35e6524e8a32cbe09bf5b9c7feafbf5da
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331263"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974732"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP
 
@@ -55,9 +55,9 @@ Informace o podporovaných produktech SAP a typech virtuálních počítačů Az
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny pro konfiguraci IBM Db2 pro Linux, UNIX a Windows pro instalace SAP na virtuálních počítačích Azure
 ### <a name="storage-configuration"></a>Konfigurace úložiště
-Přehled typů úložiště Azure pro úlohy SAP najdete v článku [Azure Storage typy pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) . všechny soubory databáze musí být uložené na připojených discích úložiště bloků Azure (Windows: NFFS, Linux: XFS, EXT4 nebo EXT3). Všechny typy síťových jednotek nebo vzdálených sdílených složek, jako jsou následující služby Azure **, nejsou pro soubory databáze podporované:** 
+Přehled typů úložiště Azure pro úlohy SAP najdete v článku [Azure Storage typy pro úlohy SAP](./planning-guide-storage.md) . všechny soubory databáze musí být uložené na připojených discích úložiště bloků Azure (Windows: NFFS, Linux: XFS, EXT4 nebo EXT3). Všechny typy síťových jednotek nebo vzdálených sdílených složek, jako jsou následující služby Azure **, nejsou pro soubory databáze podporované:** 
 
-* [Microsoft Azure Souborová služba](https://docs.microsoft.com/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+* [Microsoft Azure Souborová služba](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
 * [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
@@ -177,7 +177,7 @@ Pro disky obsahující cesty úložiště Db2 pro adresáře sapdata a saptmp je
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Ostatní
 Všechny ostatní obecné oblasti, jako jsou skupiny dostupnosti Azure nebo monitorování SAP, jsou popsané v dokumentu [týkajícím se nasazení azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) pro nasazení virtuálních počítačů s využitím i databáze IBM.
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598

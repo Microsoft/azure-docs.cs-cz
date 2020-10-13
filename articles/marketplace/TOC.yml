@@ -115,7 +115,7 @@
               href: partner-center-portal/azure-vm-create-offer.md
             - name: Vytvoření technického prostředku virtuálního počítače Azure
               items:
-                - name: Certifikace virtuálních počítačů – problémy a řešení
+                - name: Potíže s certifikací virtuálních počítačů
                   href: partner-center-portal/vm-certification-issues-solutions.md
                 - name: Vytvoření technického prostředku virtuálního počítače Azure
                   href: partner-center-portal/create-azure-vm-technical-asset.md
@@ -324,17 +324,27 @@
       href: marketplace-faq-publisher-guide.md
     - name: Nejčastější dotazy k migraci na portál partnerů cloudu
       href: cloud-partner-portal-migration-faq.md
+    - name: Konzultační hodiny – obchodní příležitosti
+      href: 'https://aka.ms/marketplaceofficehours'
+    - name: Konzultační hodiny – technické záležitosti a publikování
+      href: 'https://aka.ms/marketplacepublishingofficehours'
     - name: Možnosti podpory Partnerského centra
       href: partner-center-portal/support.md
+    - name: Oznámení Partnerského centra
+      href: /partner-center/announcements
+    - name: Komunita partnerů Microsoftu
+      href: 'https://www.microsoftpartnercommunity.com/'
+    - name: Fórum komunity partnerů
+      href: 'https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222'
     - name: Geografická dostupnost a měny
       href: marketplace-geo-availability-currencies.md
+    - name: Vyhledání ID objektu a tenanta
+      href: find-tenant-object-id.md
     - name: Podporované země a oblasti
       href: sell-from-countries.md
-    - name: Podporované značky HTML
-      href: supported-html-tags.md
     - name: Kódy zemí a oblastí pro spoluprodej
       href: partner-center-portal/commercial-marketplace-co-sell-countries.md
     - name: Kódy stavu pro spoluprodej
       href: partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: 'Fóra, blogy a rychlé odkazy'
-      href: marketplace-roadmap.md
+    - name: Podporované značky HTML
+      href: supported-html-tags.md

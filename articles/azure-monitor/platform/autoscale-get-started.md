@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: b8d16b4e112c9aebe86c60dc01d380d591fc7624
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743518"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatické škálování v Azure
@@ -59,7 +59,7 @@ Teď si projdeme jednoduchý podrobný návod k vytvoření vašeho prvního nas
    ![Škálování na základě procesoru][8]
 1. Klikněte na **Uložit**.
 
-Blahopřejeme! Úspěšně jste vytvořili první nastavení škálování pro automatické škálování webové aplikace na základě využití procesoru.
+Gratulujeme! Úspěšně jste vytvořili první nastavení škálování pro automatické škálování webové aplikace na základě využití procesoru.
 
 > [!NOTE]
 > Stejné kroky jsou použitelné pro zahájení práce se sadou škálování virtuálních počítačů nebo s rolí cloudové služby.
@@ -127,7 +127,7 @@ Cesta pro kontrolu stavu by měla kontrolovat kritické součásti aplikace. Nap
 
 #### <a name="security"></a>Zabezpečení 
 
-Vývojové týmy ve velkých podnicích často potřebují splňovat požadavky na zabezpečení pro vystavená rozhraní API. K zabezpečení koncového bodu Healthcheck byste nejdřív měli používat funkce, jako jsou [omezení IP adresy](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules), [klientské certifikáty](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)nebo Virtual Network, které omezují přístup k aplikaci. Koncový bod Healthcheck můžete zabezpečit samotný tím, že vyžadujete, aby `User-Agent` příchozí požadavek odpovídal `ReadyForRequest/1.0` . Uživatelský agent nemůže mít falešnou identifikaci, protože tento požadavek již byl zabezpečen předchozími bezpečnostními funkcemi.
+Vývojové týmy ve velkých podnicích často potřebují splňovat požadavky na zabezpečení pro vystavená rozhraní API. K zabezpečení koncového bodu Healthcheck byste nejdřív měli používat funkce, jako jsou [omezení IP adresy](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules), [klientské certifikáty](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules)nebo Virtual Network, které omezují přístup k aplikaci. Koncový bod Healthcheck můžete zabezpečit samotný tím, že vyžadujete, aby `User-Agent` příchozí požadavek odpovídal `ReadyForRequest/1.0` . User-Agent nemůže být zfalšovaný, protože tato žádost byla již zabezpečená předchozími bezpečnostními funkcemi.
 
 ### <a name="behavior"></a>Chování
 

@@ -12,10 +12,10 @@ author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
 ms.openlocfilehash: bbecfac4bfd3d5ce1510cb671b93df5f4982cbc4
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803853"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Vytvoření a správa úloh Elastic Database pomocí jazyka Transact-SQL (T-SQL) (Preview)
@@ -389,7 +389,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 Následující uložené procedury jsou v [databázi Jobs](job-automation-overview.md#job-database).
 
-|Uložená procedura  |Popis  |
+|Uložená procedura  |Description  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     Přidá novou úlohu.    |
 |[sp_update_job](#sp_update_job)    |      Aktualizuje existující úlohu.   |
@@ -1204,7 +1204,7 @@ GO
 
 V [databázi Jobs](job-automation-overview.md#job-database)jsou k dispozici následující zobrazení.
 
-|Zobrazení  |Popis  |
+|Zobrazit  |Description  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  Zobrazuje historii spuštění úlohy.      |
 |[úlohy](#jobs-view)     |   Zobrazí všechny úlohy.      |

@@ -4,10 +4,10 @@ description: Naučte se řešit problémy s vytvářením definic zásad, různ�
 ms.date: 10/05/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 6026dc75187c8a70203a2484380eed70d519599d
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743433"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Řešení chyb pomocí Azure Policy

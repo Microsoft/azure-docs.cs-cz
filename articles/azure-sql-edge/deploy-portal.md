@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 683a3fc148d3521366beef4427e87200ea81a9f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f90d84b5897175dbda0a24591893c4e41a06822a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445725"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973576"
 ---
 # <a name="deploy-azure-sql-edge"></a>Nasazení Edge Azure SQL 
 
@@ -25,8 +25,7 @@ Azure SQL Edge je relační databázový stroj optimalizovaný pro nasazení IoT
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 * Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 * Vytvořte [IoT Hub Azure](../iot-hub/iot-hub-create-through-portal.md).
-* Zaregistruje [zařízení IoT Edge z Azure Portal](../iot-edge/how-to-register-device-portal.md).
-* Připravte zařízení IoT Edge, aby se [IoT Edge modul nasadil z Azure Portal](../iot-edge/how-to-deploy-modules-portal.md).
+* Vytvořte [zařízení Azure IoT Edge](../iot-edge/how-to-install-iot-edge.md).
 
 > [!NOTE]   
 > Pokud chcete nasadit virtuální počítač Azure Linux jako zařízení IoT Edge, přečtěte si tento [Průvodce rychlým startem](../iot-edge/quickstart-linux.md).

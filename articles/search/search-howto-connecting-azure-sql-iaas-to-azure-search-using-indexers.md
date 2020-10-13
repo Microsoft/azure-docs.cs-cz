@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: ec1e74c6a029ab0f8defc3ae783c9e974f387289
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a13f78b6aa4fc3cb6f6777c76bc762ec565624fc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922969"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951311"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurace připojení ze služby Azure Kognitivní hledání indexer pro SQL Server na virtuálním počítači Azure
 
@@ -63,7 +63,7 @@ Není neobvyklé konfigurovat NSG a odpovídající koncový bod Azure ani sezna
 Odkazy níže poskytují pokyny týkající se konfigurace NSG pro nasazení virtuálních počítačů. Tyto pokyny použijte k řízení přístupu ke koncovému bodu Azure Kognitivní hledání na základě jeho IP adresy.
 
 > [!NOTE]
-> Základní informace najdete v tématu [co je skupina zabezpečení sítě](../virtual-network/security-overview.md) .
+> Základní informace najdete v tématu [co je skupina zabezpečení sítě](../virtual-network/network-security-groups-overview.md) .
 > 
 > 
 

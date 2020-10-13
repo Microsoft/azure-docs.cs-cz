@@ -3,15 +3,15 @@ title: Správa skupin aplikací pro virtuální desktopový portál Windows – 
 description: Správa skupin aplikací virtuálních počítačů s Windows pomocí Azure Portal.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/04/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: beac9f64b12a07d2fc900099ee1f107e4981f17e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec26f021ffa581b0713973904c97349df83a08ef
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320213"
+ms.locfileid: "91930267"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Kurz: Správa skupin aplikací pomocí Azure Portal
 
@@ -124,7 +124,7 @@ Proces nasazení provede následující akce:
 - Vytvořte odkaz na šablonu Azure Resource Manager na základě konfigurace, kterou si můžete stáhnout a uložit pro pozdější verzi.
 
 >[!IMPORTANT]
->Pro každého tenanta Azure Active Directory lze vytvořit pouze 50 skupin aplikací. Tento limit jsme přidali kvůli omezením služby pro načítání informačních kanálů pro naše uživatele. Toto omezení se nevztahuje na skupiny aplikací vytvořené ve virtuální ploše Windows (Classic).
+>Pro každého tenanta Azure Active Directory lze vytvořit pouze 200 skupin aplikací. Tento limit jsme přidali kvůli omezením služby pro načítání informačních kanálů pro naše uživatele. Toto omezení se nevztahuje na skupiny aplikací vytvořené ve virtuální ploše Windows (Classic).
 
 ## <a name="next-steps"></a>Další kroky
 

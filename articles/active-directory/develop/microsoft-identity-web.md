@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4d915cee962546e355ee9d53c683581730bbbf36
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 77cb3b0c13a6bfe41c6f7a1a5a0f9d7278aea1db
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91778848"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930148"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity web Authentication Library
 
@@ -44,6 +44,7 @@ Web Microsoft Identity web je k dispozici na NuGet jako sada balíčků, které 
 - [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) – hlavní balíček. Vyžadováno všemi aplikacemi, které používají web Microsoft Identity Web.
 - [Microsoft. identity. Web. UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) – volitelné. Přidá uživatelské rozhraní pro přihlášení a odhlášení uživatele a přidružený kontroler pro webové aplikace.
 - [Microsoft. identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) – volitelné. Poskytuje zjednodušenou interakci s rozhraním Microsoft Graph API.
+- [Microsoft. identity. Web. MicrosoftGraphBeta](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraphBeta) – volitelné. Poskytuje zjednodušenou interakci s [koncovým bodem](/graph/api/overview?view=graph-rest-beta&preserve-view=true)Microsoft Graph API beta.
 
 #### <a name="project-templates"></a>Šablony projektů
 
@@ -69,7 +70,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id &quot;000000
 
 #### <a name="github"></a>GitHubu
 
-Microsoft Identity web je open source projekt hostovaný na GitHubu: [AzureAD/Microsoft-Identity-web](https://github.com/AzureAD/microsoft-identity-web?azure-portal=true)
+Microsoft Identity web je open source projekt hostovaný na GitHubu: <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/Microsoft-Identity-web <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
 
 [Wikiweb úložiště](https://github.com/AzureAD/microsoft-identity-web/wiki) obsahuje další dokumentaci a pokud potřebujete pomáhat nebo objevovat chybu, můžete založit [problém](https://github.com/AzureAD/microsoft-identity-web/issues).
 
@@ -77,17 +78,17 @@ Microsoft Identity web je open source projekt hostovaný na GitHubu: [AzureAD/Mi
 
 Microsoft Identity web obsahuje několik funkcí, které nejsou k dispozici, pokud použijete výchozí šablony projektu ASP.NET 3,1.
 
-| Funkce                                                                                  | ASP.NET Core 3,1                                                     | Microsoft Identity Web                                                                                  |
+| Příznak                                                                                  | ASP.NET Core 3,1                                                     | Microsoft Identity Web                                                                                  |
 |------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | [Přihlášení uživatelů](scenario-web-app-sign-user-app-configuration.md) ve službě Web Apps             | <li>Pracovní nebo školní účty<li>Sociální identity (s Azure AD B2C) | <li>Pracovní nebo školní účty<li>Osobní účty Microsoft<li>Sociální identity (s Azure AD B2C)     |
 | [Ochrana webových rozhraní API](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) | <li>Pracovní nebo školní účty<li>Sociální identity (s Azure AD B2C) | <li>Pracovní nebo školní účty<li>Osobní účty Microsoft<li>Sociální identity (s Azure AD B2C)     |
 | Ověření vystavitele ve více tenantů aplikacích                                                   | No                                                                   | Ano, pro [všechny cloudy](authentication-national-cloud.md) a [Azure AD B2C](/azure/active-directory-b2c) |
-| Webová aplikace/rozhraní API [volání Microsoft Graph] [scénář-API-Call-Graph]                             | No                                                                   | Ano                                                                                                     |
-| Webová aplikace/rozhraní API [volání webového rozhraní API] [scénář-API-Call-API]                                       | No                                                                   | Ano                                                                                                     |
+| Webová aplikace/rozhraní API [volání Microsoft Graph] [scénář-API-Call-Graph]                             | No                                                                   | Yes                                                                                                     |
+| Webová aplikace/rozhraní API [volání webového rozhraní API] [scénář-API-Call-API]                                       | No                                                                   | Yes                                                                                                     |
 | Podporuje přihlašovací údaje certifikátu                                                         | No                                                                   | Ano, včetně Azure Key Vault                                                                          |
 | Přírůstkové vyjádření souhlasu a podpora podmíněného přístupu ve webových aplikacích                           | No                                                                   | Ano, na stránkách MVC, Razor a Blazor                                                                    |
-| Certifikáty pro šifrování tokenů ve webových rozhraních API                                                | No                                                                   | Ano                                                                                                     |
-| [Obory/ověřování role aplikace] [scénář – ověřování rozhraní API] ve webových rozhraních API                        | No                                                                   | Ano                                                                                                     |
+| Certifikáty pro šifrování tokenů ve webových rozhraních API                                                | No                                                                   | Yes                                                                                                     |
+| [Obory/ověřování role aplikace] [scénář – ověřování rozhraní API] ve webových rozhraních API                        | No                                                                   | Yes                                                                                                     |
 | `WWW-Authenticate` generování hlaviček ve webových rozhraních API                                         | No                                                                   | Ano                                                                                                     |
 
 ## <a name="next-steps"></a>Další kroky
@@ -98,8 +99,8 @@ Pokud se chcete podívat na web Microsoft identity v akci, vyzkoušejte náš ku
 
 Web wiki webu Microsoft identity na GitHubu obsahuje rozsáhlou referenční dokumentaci pro různé aspekty knihovny. Například použití certifikátu, přírůstkový souhlas a odkaz na podmíněný přístup najdete tady:
 
-- [Používání certifikátů s Microsoft. identity. Web](https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates?azure-portal=true) (GitHub)
-- [Přírůstkový souhlas a podmíněný přístup](https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access?azure-portal=true) (GitHub)
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">Používání certifikátů s Microsoft. identity. Web <span class="docon docon-navigate-external x-hidden-focus"></span> </a> GitHubu
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">Přírůstkový souhlas a podmíněný <span class="docon docon-navigate-external x-hidden-focus"></span> přístup</a> GitHubu
 
 <!-- LINKS -->
 <!--  [miw-certs]: microsoft-identity-web-certificates.md  -->

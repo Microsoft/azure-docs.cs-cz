@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 78743c5f045f2544cafe88414ed996d08bacd2a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 231ce9d946a2fb6650f25d90aaa423d1c95fb106
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631084"
+ms.locfileid: "91930709"
 ---
 # <a name="tutorial-mock-api-responses"></a>Kurz: napodobení odpovědí rozhraní API
 
@@ -82,7 +82,7 @@ Rozhraní API zpřístupňuje jednu nebo více operací. V této části přidej
 I když se v tomto příkladu nevyžaduje, další nastavení pro operaci rozhraní API můžete nakonfigurovat na dalších kartách, včetně těchto:
 
 
-|Karta      |Popis  |
+|Karta      |Description  |
 |---------|---------|
 |**Dotaz**     |  Přidejte parametry dotazu. Kromě zadání názvu a popisu můžete zadat hodnoty, které jsou přiřazeny parametru dotazu. Jedna z hodnot může být označená jako výchozí (volitelné).        |
 |**Žádost**     |  Definujte typy obsahu, příklady a schémata požadavku.       |
@@ -107,7 +107,7 @@ I když se v tomto příkladu nevyžaduje, další nastavení pro operaci rozhra
 1. Vyberte **Uložit**.
 
     > [!TIP]
-    > Žlutý pruh s **napodobou textu je povolený** pro vaše rozhraní API označuje, že odpovědi vrácené z API Management odesílají napodobné zásady a nikoli skutečnou odpověď back-endu.
+    > Žlutý pruh s **napsaným textem je** pro vaše rozhraní API k dispozici, což znamená, že odpovědi vrácené z API Management jsou vytvářené pomocí [zásad](api-management-advanced-policies.md#mock-response) pro napodobování a nejsou vytvářeny back-end.
 
 ## <a name="test-the-mocked-api"></a>Test imitace rozhraní API
 

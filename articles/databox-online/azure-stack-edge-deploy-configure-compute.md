@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: b19bac439035da85d542d62f33e813822edc38d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2961bbf65fe1cf3ddf59c648f506cee85e248a5
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904591"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951617"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Kurz: transformace dat pomocí Azure Stack Edge pro
+# <a name="tutorial-transform-the-data-with-azure-stack-edge-pro"></a>Kurz: transformace dat pomocí Azure Stack Edge pro
 
 V tomto kurzu se dozvíte, jak nakonfigurovat výpočetní roli na zařízení Azure Stack Edge pro. Po nakonfigurování výpočetní role může Azure Stack Edge pro transformovat data před jejich odesláním do Azure.
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Ověření transformace dat a jejich přenos
 
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před nastavením výpočetní role na zařízení Azure Stack Edge pro se ujistěte, že:
 
@@ -55,11 +55,11 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack Edge pro, vytvoř
     |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
     |Název     |Zadejte název prostředku IoT Hub.         |
 
-    ![Začínáme se službou COMPUTE](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
+    ![Začínáme s výpočetním využitím 2](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
 
 4. Vyberte **Vytvořit**. Vytvoření prostředku IoT Hub trvá několik minut. Po vytvoření prostředku IoT Hub se aktualizuje a zobrazí **se konfigurace výpočtů na dlaždici** . Pokud chcete ověřit, jestli je role hraničního výpočtu nakonfigurovaná, vyberte na dlaždici **Konfigurovat výpočty** možnost **Zobrazit výpočetní** prostředky.
     
-    ![Začínáme se službou COMPUTE](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
+    ![Začínáme s výpočetním prostředím 3](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
 
     > [!NOTE]
     > Pokud je dialogové okno **Konfigurovat výpočetní** prostředí zavřené dřív, než se IoT Hub přidruží k zařízení Azure Stack Edge pro, vytvoří se IoT Hub, ale v konfiguraci výpočtů se nezobrazuje. 
@@ -138,19 +138,19 @@ Pokud chcete ověřit, že je modul spuštěný, udělejte toto:
  
 1. V Průzkumníku souborů se připojte ke sdíleným složkám Edge i k okrajům, které jste vytvořili dříve.
 
-    ![Ověření transformace dat](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
+    ![Ověřit transformaci dat 2](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
  
 1. Přidejte data do místní sdílené složky.
 
-    ![Ověření transformace dat](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
+    ![Ověřit transformaci dat 3](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
  
     Data se přesunou do cloudové sdílené složky.
 
-    ![Ověření transformace dat](./media/azure-stack-edge-deploy-configure-compute/verify-data-4.png)  
+    ![Ověřit transformaci dat 4](./media/azure-stack-edge-deploy-configure-compute/verify-data-4.png)  
 
     Data se pak odešlou ze sdílené složky cloudu do účtu úložiště. Data zobrazíte tak, že přejdete na Průzkumník služby Storage.
 
-    ![Ověření transformace dat](./media/azure-stack-edge-deploy-configure-compute/verify-data-5.png) 
+    ![Ověřit transformaci dat 5](./media/azure-stack-edge-deploy-configure-compute/verify-data-5.png) 
  
 Dokončili jste proces ověření.
 

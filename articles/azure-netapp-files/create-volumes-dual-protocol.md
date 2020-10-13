@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/12/2020
 ms.author: b-juche
-ms.openlocfilehash: 9266a5efb7156367dfa0d6036f5876337098c143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54be34b2151aa88705559ac2913db4f528ea4492
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743926"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963512"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
 
@@ -28,7 +28,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 
 ## <a name="before-you-begin"></a>Než začnete 
 
-* Musíte mít už nastavený fond kapacity.  
+* Je potřeba, abyste už vytvořili fond kapacit.  
     Viz [nastavení fondu kapacit](azure-netapp-files-set-up-capacity-pool.md).   
 * Podsíť musí být delegovaná na Azure NetApp Files.  
     Viz [delegování podsítě na Azure NetApp Files](azure-netapp-files-delegate-subnet.md).
@@ -38,9 +38,19 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 * Ujistěte se, že splňujete [požadavky pro připojení ke službě Active Directory](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
 * Na serveru DNS vytvořte zónu zpětného vyhledávání a přidejte do této zóny zpětného vyhledávání záznam ukazatele (PTR) hostitelského počítače služby AD. V opačném případě se vytvoření svazku se dvěma protokoly nezdaří.
 * Zajistěte, aby byl klient systému souborů NFS aktuální a běžel nejnovější aktualizace operačního systému.
-* Ujistěte se, že je server služby Active Directory (AD) LDAP v provozu a funguje ve službě AD. To se provádí instalací a konfigurací role [Služba AD LDS (Active Directory Lightweight Directory Services) (AD LDS)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) na počítači AD.
-* Ujistěte se, že certifikační autorita (CA) je ve službě AD vytvořená pomocí role [služby AD CS (Active Directory Certificate Services)](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) , která generuje a exportuje certifikát kořenové certifikační autority podepsané svým držitelem.   
+* Ujistěte se, že je server služby Active Directory (AD) LDAP v provozu a funguje ve službě AD. Můžete to udělat tak, že nainstalujete a nakonfigurujete roli [Služba AD LDS (Active Directory Lightweight Directory Services) (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) na počítači AD.
+* Ujistěte se, že certifikační autorita (CA) je ve službě AD vytvořená pomocí role [služby AD CS (Active Directory Certificate Services)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) , která generuje a exportuje certifikát kořenové certifikační autority podepsané svým držitelem.   
 * Svazky s duálním protokolem momentálně nepodporují Azure Active Directory Domain Services (AADDS).  
+* Verze systému souborů NFS používaná svazkem s duálním protokolem je NFSv3. V takovém případě platí následující požadavky:
+    * Duální protokol nepodporuje rozšířené atributy seznamů ACL systému Windows `set/get` z klientů systému souborů NFS.
+    * Klienti NFS nemohou měnit oprávnění pro styl zabezpečení systému souborů NTFS a klienti systému Windows nemohou měnit oprávnění pro svazky s duálním protokolem ve stylu UNIX.   
+
+    Následující tabulka popisuje styly zabezpečení a jejich účinky:  
+    
+    | Styl zabezpečení    | Klienti, kteří mohou měnit oprávnění   | Oprávnění, která mohou klienti používat  | Výsledný efektivní styl zabezpečení    | Klienti, kteří mají přístup k souborům     |
+    |-  |-  |-  |-  |-  |
+    | UNIX  | NFS   | Bity režimu NFSv3   | UNIX  | Systém souborů NFS a Windows   |
+    | NTFS  | Windows   | Seznamy řízení přístupu NTFS     | NTFS  |Systém souborů NFS a Windows|
 
 ## <a name="create-a-dual-protocol-volume"></a>Vytvoření svazku se dvěma protokoly
 
@@ -113,9 +123,9 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 
 ## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>Odeslat veřejný kořenový certifikát certifikační autority služby Active Directory  
 
-1.  Postupujte podle pokynů k instalaci a konfiguraci [certifikační](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) autority a přidat certifikační autoritu. 
+1.  Postupujte podle pokynů k instalaci a konfiguraci [certifikační](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) autority a přidat certifikační autoritu. 
 
-2.  Podle pokynů v [části zobrazení certifikátů pomocí modulu snap-](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) in MMC použijte modul snap-in konzoly MMC a nástroj Správce certifikátů.  
+2.  Podle pokynů v [části zobrazení certifikátů pomocí modulu snap-](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) in MMC použijte modul snap-in konzoly MMC a nástroj Správce certifikátů.  
     Pomocí modulu snap-in Správce certifikátů vyhledejte kořenový nebo vydávající certifikát pro místní zařízení. V jednom z následujících nastavení byste měli spustit příkazy modulu snap-in Správa certifikátů:  
     * Klient se systémem Windows, který se připojil k doméně a má nainstalovaný kořenový certifikát 
     * Další počítač v doméně obsahující kořenový certifikát  
@@ -152,4 +162,4 @@ Postupujte podle pokynů v části [Konfigurace klienta NFS pro Azure NetApp Fil
 ## <a name="next-steps"></a>Další kroky  
 
 * [Nejčastější dotazy týkající se duálního protokolu](azure-netapp-files-faqs.md#dual-protocol-faqs)
-* [Konfigurace klienta NFS pro Azure NetApp Files](configure-nfs-clients.md) 
+* [Konfigurace klienta NFS pro Azure NetApp Files](configure-nfs-clients.md)

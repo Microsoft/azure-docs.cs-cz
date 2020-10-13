@@ -1,0 +1,95 @@
+---
+title: Připojení skupiny pro správu k Azure Security Center
+description: Naučte se používat dodanou definici Azure Policy k povolení Azure Security Center pro všechna předplatná ve skupině pro správu.
+services: security-center
+documentationcenter: na
+author: memildin
+manager: rkarlin
+ms.service: security-center
+ms.devlang: na
+ms.topic: overview
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 10/10/2020
+ms.author: memildin
+ms.openlocfilehash: ce0858f61ca1fe3b81c3d0c8a3c97954827def80
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950614"
+---
+# <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Povolit Security Center u všech předplatných ve skupině pro správu
+
+Pomocí Azure Policy můžete povolit Azure Security Center na všech předplatných Azure v rámci stejné skupiny pro správu (MG). To je pohodlnější než přístup k nim jednotlivě z portálu a funguje i v případě, že odběry patří různým vlastníkům. 
+
+Připojení skupiny pro správu a všech jejích předplatných:
+
+1. Jako uživatel s oprávněním **Správce zabezpečení** otevřete Azure Policy a vyhledejte definici **Enable Azure Security Center v rámci vašeho předplatného**.
+
+    :::image type="content" source="./media/security-center-get-started/enable-security-center-policy.png" alt-text="Definice Azure Policy povolit Azure Security Center ve vašem předplatném":::
+
+1. Vyberte **přiřadit** a ujistěte se, že jste rozsah nastavili na úroveň mg.
+
+    :::image type="content" source="./media/security-center-get-started/assign-policy.png" alt-text="Definice Azure Policy povolit Azure Security Center ve vašem předplatném":::
+
+    > [!TIP]
+    > Kromě oboru nejsou vyžadovány žádné parametry.
+
+1. Vyberte **vytvořit úlohu nápravy** , abyste zajistili, že všechna existující předplatná, která nemají Security Center povolená, budou připojená.
+
+    :::image type="content" source="./media/security-center-get-started/remediation-task.png" alt-text="Definice Azure Policy povolit Azure Security Center ve vašem předplatném" všem registrovaným předplatným (bez ohledu na to, jestli mají v Azure Defender zapnutý nebo vypnutý).
+
+    Úloha nápravy pak umožní Security Center zdarma, a to v nevyhovujících předplatných.
+
+> [!IMPORTANT]
+> Definice zásady umožní povolit Security Center jenom u **stávajících** předplatných. Pokud chcete zaregistrovat nově vytvořená předplatná, otevřete kartu dodržování předpisů, vyberte příslušné nekompatibilní odběry a vytvořte úlohu nápravy. Tento krok opakujte, pokud máte jedno nebo více nových předplatných, která chcete monitorovat pomocí Security Center.
+
+## <a name="optional-modifications"></a>Volitelné změny
+
+Existují různé způsoby, jak upravit definici Azure Policy: 
+
+- **Definovat dodržování předpisů jinak** – Zadaná zásada klasifikuje všechna předplatná v mg, které ještě nejsou zaregistrované v Security Center jako "nekompatibilní". Můžete ho nastavit na všechna předplatná bez Azure Defenderu.
+
+    Poskytnutá definice definuje *jedno* z následujících nastavení ceny jako vyhovující. To znamená, že předplatné nastavené na úroveň Standard nebo Free je kompatibilní.
+
+    > [!TIP]
+    > Když je plán Azure Defenderu povolený, je popsaný jako v nastavení standardní. Když je zakázaný, je to zadarmo. [Přečtěte si další informace o plánech Azure Defenderu](security-center-pricing.md).
+
+    ```
+    "existenceCondition": {
+        "anyof": [
+            {
+                "field": "microsoft.security/pricings/pricingTier",
+                "equals": "standard"
+            },
+            {
+                "field": "microsoft.security/pricings/pricingTier",
+                "equals": "free"
+            }
+        ]
+    },
+    ```
+
+    Pokud ho změníte na následující, budou klasifikovány jenom předplatná nastavená na standard, jako dodržující předpisy:
+
+    ```
+    "existenceCondition": {
+          {
+            "field": "microsoft.security/pricings/pricingTier",
+            "equals": "standard"
+          },
+    },
+    ```
+
+- **Definování některých plánů Azure Defenderu, které se použijí při povolování Security Center** – Zadaná zásada umožňuje Security Center bez jakéhokoli volitelného plánu Azure Defenderu. Můžete se rozhodnout povolit jednu nebo více z nich.
+
+    Oddíl zadané definice `deployment` obsahuje parametr `pricingTier` . Ve výchozím nastavení je tato možnost nastavena na hodnotu `free` , ale lze ji změnit. 
+
+
+## <a name="next-steps"></a>Další kroky:
+
+Teď, když jste připojili celou skupinu pro správu, můžete povolit rozšířenou ochranu Azure Defenderu. 
+
+> [!div class="nextstepaction"]
+> [Povolit Azure Defender](security-center-pricing.md)

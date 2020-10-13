@@ -3,12 +3,12 @@ title: Správa životního cyklu virtuálních počítačů řešení Azure VMwa
 description: Naučte se spravovat všechny aspekty životního cyklu virtuálních počítačů řešení Azure VMware pomocí Microsoft Azurech nativních nástrojů.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 10e721996b2e3186417a702d2d7473b36b11237f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 452fa6bf4610c9d0dcb46587242e8d6df9cebd0d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575468"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950359"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Správa životního cyklu virtuálních počítačů řešení Azure VMware
 
@@ -58,7 +58,7 @@ Virtuální počítače řešení Azure VMware je možné monitorovat prostředn
 
 **Azure Security Center** poskytuje rozšířenou ochranu před hrozbami napříč vašimi hybridními úlohami v cloudu i místně. Vyhodnotí ohrožení zabezpečení virtuálních počítačů řešení Azure VMware a v případě potřeby vyvolává výstrahy. Tyto výstrahy zabezpečení je možné přeslat do Azure Monitor pro řešení.
 - Azure Security Center nevyžaduje nasazení. Další informace najdete v seznamu [podporovaných funkcí pro virtuální počítače](../security-center/security-center-services.md).
-- Pokud chcete přidat virtuální počítače řešení VMware Azure a virtuální počítače mimo Azure do Azure Security Center, přečtěte si téma připojení [počítačů s Windows k Azure Security Center](../security-center/quick-onboard-windows-computer.md) a [zprovoznění počítačů se systémem Linux do Azure Security Center](../security-center/quick-onboard-linux-computer.md).
+- Pokud chcete přidat virtuální počítače řešení VMware Azure a virtuální počítače mimo Azure do Azure Security Center, přečtěte si téma připojení [počítačů s Windows k Azure Security Center](../security-center/quickstart-onboard-machines.md) a [zprovoznění počítačů se systémem Linux do Azure Security Center](../security-center/quickstart-onboard-machines.md).
 - Po přidání virtuálních počítačů Azure Security Center analyzuje stav zabezpečení prostředků, aby identifikoval potenciální ohrožení zabezpečení. Nabízí také doporučení na kartě Přehled. Další informace najdete v tématu [doporučení zabezpečení v Azure Security Center](../security-center/security-center-recommendations.md).
 - V Azure Security Center můžete definovat zásady zabezpečení. Informace o konfiguraci zásad zabezpečení najdete v tématu [práce se zásadami zabezpečení](../security-center/tutorial-security-policy.md).
 

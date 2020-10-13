@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
+ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperfq1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 8697676abe5af77c8c7795ae4e2ec6480cb99e91
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 1410af4d3c1fb9974818e5c4ebc469eee03a314c
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819437"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948619"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform (Preview)
 
@@ -89,9 +89,9 @@ Zásada životního cyklu tokenu je typ objektu zásad, který obsahuje pravidla
 | --- | --- | --- | --- | --- | --- |
 | Doba života přístupového tokenu |AccessTokenLifetime<sup>2</sup> |Přístupové tokeny, tokeny ID, tokeny typu Saml2 |1 hodina |10 minut |1 den |
 | Maximální neaktivní čas obnovovacího tokenu |MaxInactiveTime |Aktualizovat tokeny |90 dnů |10 minut |90 dnů |
-| Maximální stáří tokenu obnovení jednoho faktoru |MaxAgeSingleFactor |Aktualizovat tokeny (pro všechny uživatele) |Do-neodvolán |10 minut |Do-odvolání<sup>1</sup> |
+| Maximální stáří tokenu Single-Factor aktualizace |MaxAgeSingleFactor |Aktualizovat tokeny (pro všechny uživatele) |Do-neodvolán |10 minut |Do-odvolání<sup>1</sup> |
 | Maximální stáří tokenu pro Multi-Factor Refresh |MaxAgeMultiFactor |Aktualizovat tokeny (pro všechny uživatele) | 180 dnů |10 minut |180 dnů<sup>1</sup> |
-| Maximální stáří tokenu relace s jedním faktorem |MaxAgeSessionSingleFactor |Tokeny relace (trvalé a netrvalé) |Do-neodvolán |10 minut |Do-odvolání<sup>1</sup> |
+| Maximální stáří tokenu relace Single-Factor |MaxAgeSessionSingleFactor |Tokeny relace (trvalé a netrvalé) |Do-neodvolán |10 minut |Do-odvolání<sup>1</sup> |
 | Maximální stáří tokenu relace Multi-Factor |MaxAgeSessionMultiFactor |Tokeny relace (trvalé a netrvalé) | 180 dnů |10 minut | 180 dnů<sup>1</sup> |
 
 * <sup>1</sup>365 dní je maximální explicitní délka, kterou lze pro tyto atributy nastavit.
@@ -160,11 +160,11 @@ Příklad najdete v tématu [Vytvoření zásady pro web signing-in](configure-t
 
 Tato zásada vynutí, aby uživatelé, kteří nebyli aktivní na svém klientovi, mohli znovu ověřit a načíst nový obnovovací token.
 
-Vlastnost maximálního neaktivního času obnovovacího tokenu musí být nastavená na nižší hodnotu, než je maximální stáří tokenu s jedním koeficientem a maximální stáří tokenu pro aktualizaci vícefaktorového obnovení.
+Vlastnost maximálního neaktivního času obnovovacího tokenu musí být nastavená na nižší hodnotu než maximální stáří tokenu Single-Factor a maximální stáří tokenu pro službu Multi-Factor Refresh.
 
 Příklad najdete v tématu [Vytvoření zásady pro nativní aplikaci, která volá webové rozhraní API](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
-### <a name="single-factor-refresh-token-max-age"></a>Maximální stáří tokenu obnovení jednoho faktoru
+### <a name="single-factor-refresh-token-max-age"></a>Maximální stáří tokenu Single-Factor aktualizace
 **Řetězec:** MaxAgeSingleFactor
 
 **Má vliv na:** Aktualizovat tokeny
@@ -182,11 +182,11 @@ Příklad najdete v tématu [Vytvoření zásady pro nativní aplikaci, která v
 
 **Shrnutí:** Tato zásada určuje, jak dlouho může uživatel pomocí obnovovacího tokenu získat nový pár přístupů nebo obnovovacího tokenu po úspěšném ověření pomocí několika faktorů. Po ověření a přijetí nového obnovovacího tokenu může uživatel použít tok obnovovacího tokenu po určenou dobu. (To platí, pokud aktuální obnovovací token není odvolán a nepoužívá se déle než při neaktivním čase.) V tomto okamžiku je vynuceno opětovné ověření uživatelů, aby bylo možné získat nový obnovovací token.
 
-Snížení maximálního stáří nutí uživatele ověřovat častěji. Vzhledem k tomu, že vícefaktorové ověřování je považováno za méně bezpečné než ověřování Multi-Factor Authentication, doporučujeme nastavit tuto vlastnost na hodnotu, která je větší nebo rovna hodnotě vlastnosti maximální stáří tokenu aktualizace Single-Factor.
+Snížení maximálního stáří nutí uživatele ověřovat častěji. Vzhledem k tomu, že vícefaktorové ověřování je považováno za méně bezpečné než ověřování Multi-Factor Authentication, doporučujeme tuto vlastnost nastavit na hodnotu, která je větší nebo rovna hodnotě vlastnosti maximální stáří tokenu Single-Factor aktualizace.
 
 Příklad najdete v tématu [Vytvoření zásady pro nativní aplikaci, která volá webové rozhraní API](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
-### <a name="single-factor-session-token-max-age"></a>Maximální stáří tokenu relace s jedním faktorem
+### <a name="single-factor-session-token-max-age"></a>Maximální stáří tokenu relace Single-Factor
 **Řetězec:** MaxAgeSessionSingleFactor
 
 **Má vliv na:** Tokeny relace (trvalé a netrvalé)
@@ -204,7 +204,7 @@ Příklad najdete v tématu [Vytvoření zásady pro web signing-in](configure-t
 
 **Shrnutí:** Tato zásada určuje, jak dlouho může uživatel použít token relace k získání nového ID a tokenu relace po jeho posledním ověření pomocí více faktorů. Po ověření a přijetí nového tokenu relace může uživatel použít tok tokenu relace v zadaném časovém období. (Tato hodnota je true, pokud aktuální token relace není odvolán a nevypršela jeho platnost.) Po uplynutí zadaného časového období se uživatel nuceně znovu ověří a získá nový token relace.
 
-Snížení maximálního stáří nutí uživatele ověřovat častěji. Vzhledem k tomu, že vícefaktorové ověřování je považováno za méně bezpečné než ověřování Multi-Factor Authentication, doporučujeme tuto vlastnost nastavit na hodnotu, která je větší nebo rovna hodnotě vlastnosti maximální stáří tokenu relace s jedním faktorem.
+Snížení maximálního stáří nutí uživatele ověřovat častěji. Vzhledem k tomu, že vícefaktorové ověřování je považováno za méně bezpečné než ověřování Multi-Factor Authentication, doporučujeme tuto vlastnost nastavit na hodnotu, která je větší nebo rovna hodnotě vlastnosti Single-Factor maximální stáří tokenu relace.
 
 ## <a name="cmdlet-reference"></a>Reference k rutinám
 

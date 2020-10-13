@@ -13,21 +13,21 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c570c43560ad865b8bcc5161cbd0c6731ea4a237
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16af8b8c1258ef7945e88a7af42e86a7bba2003b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090648"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963257"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozšíření virtuálních počítačů pro Windows pro diagnostiku výkonu Azure
 
-Rozšíření virtuálních počítačů Azure Performance Diagnostics pomáhá shromažďovat diagnostická data o výkonu z virtuálních počítačů s Windows. Rozšíření provádí analýzu a poskytuje zprávu o zjištěních a doporučeních pro identifikaci a řešení problémů s výkonem na virtuálním počítači. Toto rozšíření nainstaluje nástroj pro řešení potíží s názvem [PerfInsights](https://aka.ms/perfinsights).
+Rozšíření virtuálních počítačů Azure Performance Diagnostics pomáhá shromažďovat diagnostická data o výkonu z virtuálních počítačů s Windows. Rozšíření provádí analýzu a poskytuje zprávu o zjištěních a doporučeních pro identifikaci a řešení problémů s výkonem na virtuálním počítači. Toto rozšíření nainstaluje nástroj pro řešení potíží s názvem [PerfInsights](./how-to-use-perfinsights.md).
 
 > [!NOTE]
 > Pokud chcete na svém VIRTUÁLNÍm počítači spustit diagnostiku z Azure Portal pro jiné než klasické virtuální počítače, doporučujeme použít nové prostředí. Další informace najdete v tématu [Diagnostika výkonu pro virtuální počítače Azure](performance-diagnostics.md) . 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Toto rozšíření se dá nainstalovat na
 * Windows Server 2019
@@ -35,7 +35,7 @@ Toto rozšíření se dá nainstalovat na
 * Windows Server 2012 R2
 * Windows Server 2012
 * Windows Server 2008 R2
-* Windows 10
+* Windows 10
 * Windows 8.1
 * Windows 8
 
@@ -237,7 +237,7 @@ Set-AzVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
 ```
 
 ## <a name="information-on-the-data-captured"></a>Informace o zachycených datech
-Nástroj PerfInsights shromažďuje různé protokoly, konfiguraci a diagnostická data v závislosti na vybraném scénáři. Další informace najdete v [dokumentaci k PerfInsights](https://aka.ms/perfinsights).
+Nástroj PerfInsights shromažďuje různé protokoly, konfiguraci a diagnostická data v závislosti na vybraném scénáři. Další informace najdete v [dokumentaci k PerfInsights](./how-to-use-perfinsights.md).
 
 ## <a name="view-and-share-the-results"></a>Zobrazení a sdílení výsledků
 

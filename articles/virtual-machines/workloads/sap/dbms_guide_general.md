@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ac3a43776ee71716e618d7a1698aa1915d3d1b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c0158e4bdaff5400404b290e27837bfb3b95419
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331348"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974817"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -273,7 +273,7 @@ Existují další metody redundance. Další informace najdete v tématu [replik
 
 
 ## <a name="vm-node-resiliency"></a>Odolnost uzlu virtuálního počítače
-Azure nabízí několik různých SLA pro virtuální počítače. Další informace najdete v nejnovější verzi [smlouvy SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). Vzhledem k tomu, že je vrstva DBMS důležitá k dostupnosti v systému SAP, potřebujete pochopit skupiny dostupnosti, Zóny dostupnosti a události údržby. Další informace o těchto konceptech najdete v tématu [Správa dostupnosti virtuálních počítačů s Windows v Azure](../../windows/manage-availability.md) a [Správa dostupnosti virtuálních počítačů se systémem Linux v Azure](../../linux/manage-availability.md).
+Azure nabízí několik různých SLA pro virtuální počítače. Další informace najdete v nejnovější verzi [smlouvy SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). Vzhledem k tomu, že je vrstva DBMS důležitá k dostupnosti v systému SAP, potřebujete pochopit skupiny dostupnosti, Zóny dostupnosti a události údržby. Další informace o těchto konceptech najdete v tématu [Správa dostupnosti virtuálních počítačů s Windows v Azure](../../manage-availability.md) a [Správa dostupnosti virtuálních počítačů se systémem Linux v Azure](../../manage-availability.md).
 
 Minimální doporučení pro provoz DBMS scénářů s úlohou SAP:
 
@@ -295,7 +295,7 @@ Tyto osvědčené postupy jsou výsledkem stovek nasazení zákazníků:
 - Virtuální sítě, ke kterým je aplikace SAP nasazená, nemají přístup k Internetu.
 - Virtuální počítače databáze běží ve stejné virtuální síti jako aplikační vrstva, oddělené v jiné podsíti z aplikační vrstvy SAP.
 - Virtuální počítače v rámci virtuální sítě mají statické přidělení privátní IP adresy. Další informace najdete v tématu [typy IP adres a metody přidělování v Azure](../../../virtual-network/public-ip-addresses.md).
-- Omezení směrování do a z virtuálních počítačů s DBMS *nejsou nastavená* pomocí bran firewall nainstalovaných na místních virtuálních počítačích DBMS. Místo toho je směrování provozu definované se [skupinami zabezpečení sítě (skupin zabezpečení sítě)](../../../virtual-network/security-overview.md).
+- Omezení směrování do a z virtuálních počítačů s DBMS *nejsou nastavená* pomocí bran firewall nainstalovaných na místních virtuálních počítačích DBMS. Místo toho je směrování provozu definované se [skupinami zabezpečení sítě (skupin zabezpečení sítě)](../../../virtual-network/network-security-groups-overview.md).
 - Pokud chcete provoz oddělit a izolovat k virtuálnímu počítači DBMS, přiřaďte k virtuálnímu počítači různé síťové adaptéry. Každé síťové rozhraní získá jinou IP adresu a každá síťová karta je přiřazena k jiné podsíti virtuální sítě. Každá podsíť má odlišná pravidla NSG. Izolaci nebo oddělení síťových přenosů je míra pro směrování. Nepoužívá se k nastavení kvót pro propustnost sítě.
 
 > [!NOTE]
@@ -304,7 +304,7 @@ Tyto osvědčené postupy jsou výsledkem stovek nasazení zákazníků:
 
 
 > [!WARNING]
-> Konfigurace [síťových virtuálních zařízení](https://azure.microsoft.com/solutions/network-appliances/) v komunikační cestě mezi aplikací SAP a vrstvou DBMS systému SAP NetWeaver-, Hybris-nebo S/4HANA se nepodporuje. Toto omezení je z hlediska funkčnosti a výkonu. Komunikační cesta mezi aplikační vrstvou SAP a vrstvou DBMS musí být přímá. Omezení nezahrnuje [skupinu zabezpečení aplikací (ASG) a pravidla NSG](../../../virtual-network/security-overview.md) , pokud pravidla ASG a NSG povolují cestu přímé komunikace. 
+> Konfigurace [síťových virtuálních zařízení](https://azure.microsoft.com/solutions/network-appliances/) v komunikační cestě mezi aplikací SAP a vrstvou DBMS systému SAP NetWeaver-, Hybris-nebo S/4HANA se nepodporuje. Toto omezení je z hlediska funkčnosti a výkonu. Komunikační cesta mezi aplikační vrstvou SAP a vrstvou DBMS musí být přímá. Omezení nezahrnuje [skupinu zabezpečení aplikací (ASG) a pravidla NSG](../../../virtual-network/network-security-groups-overview.md) , pokud pravidla ASG a NSG povolují cestu přímé komunikace. 
 >
 > Další scénáře, ve kterých nejsou síťová virtuální zařízení podporovaná, jsou v:
 >
@@ -333,7 +333,7 @@ Pokud dojde k převzetí služeb při selhání uzlu databáze, není nutné zno
 
 Azure nabízí dvě různé [SKU nástroje pro vyrovnávání zatížení](../../../load-balancer/load-balancer-overview.md): základní SKU a standardní SKU. Na základě výhod v nastavení a funkčnosti byste měli použít standardní SKU nástroje pro vyrovnávání zatížení Azure. Jednou z velkých výhod standardní verze nástroje pro vyrovnávání zatížení je, že přenos dat není směrován prostřednictvím samotného nástroje pro vyrovnávání zatížení.
 
-Příklad, jak můžete nakonfigurovat interní nástroj pro vyrovnávání zatížení, najdete v článku [kurz: Konfigurace skupiny dostupnosti SQL Server v Azure Virtual Machines ručně.](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial#create-an-azure-load-balancer)
+Příklad, jak můžete nakonfigurovat interní nástroj pro vyrovnávání zatížení, najdete v článku [kurz: Konfigurace skupiny dostupnosti SQL Server v Azure Virtual Machines ručně.](../../../azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial.md#create-an-azure-load-balancer)
 
 > [!NOTE]
 > Existují rozdíly v chování základní a standardní SKU, které souvisí s přístupem k veřejným IP adresám. Způsob, jak obejít omezení standardní SKU pro přístup k veřejným IP adresám, je popsán v dokumentu [připojení veřejných koncových bodů pro Virtual Machines s využitím Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md) .

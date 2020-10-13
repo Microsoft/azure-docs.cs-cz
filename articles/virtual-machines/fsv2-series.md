@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
 ms.openlocfilehash: 039045b613e57ee396201ee93c3962c5970cf02b
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651917"
 ---
 # <a name="fsv2-series"></a>Řada Fsv2
 
 Fsv2-Series běží na procesorech Intel® Xeon® Platinum 8272CL (Cascade Lake) a na procesorech Intel® Xeon® Platinum 8168 (Skylake). Nabízí trvalou veškerou rychlost Turbo, 3,4 GHz a maximální frekvenci s jedním jádrem 3,7 GHz. Pokyny pro procesory Intel® AVX-512 jsou novinkou na škálovatelných procesorech Intel. Tyto pokyny poskytují až dvojnásobné zvýšení výkonu pro úlohy vektorového zpracování na operacích s plovoucí desetinnou čárkou a dvojitou přesností. Jinými slovy jsou skutečně rychlé pro všechny výpočetní úlohy.
 
-Virtuální počítače Fsv2-Series jsou součástí technologie Intel® technologie Hyper-Threading.
+Virtuální počítače Fsv2-Series jsou součástí technologie Intel® Hyper-Threading.
 
 [ACU](acu.md): 195-210<br>
 [Premium Storage](premium-storage-performance.md): podporováno<br>

@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b2dea32163fbb2827daed616087c893631429aea
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 0709152631037e7561094082c8ce02b860fd4edc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400841"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951555"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Základní hodnoty zabezpečení Azure pro Azure Kognitivní hledání
 
-Tyto základní hodnoty zabezpečení se týkají pokynů z [Azure Security test 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview) na Azure kognitivní hledání. Srovnávací test zabezpečení Azure poskytuje doporučení, jak můžete zabezpečit cloudová řešení v Azure. Obsah se seskupuje podle **ovládacích prvků zabezpečení** , které definuje srovnávací test zabezpečení Azure, a souvisejících pokynů vztahujících se na Azure kognitivní hledání. **Ovládací prvky** , které se nevztahují k Azure kognitivní hledání, nebo zákazníka jsou vyloučené.
+Tyto základní hodnoty zabezpečení se týkají pokynů z [Azure Security test 1,0](../security/benchmarks/overview.md) na Azure kognitivní hledání. Srovnávací test zabezpečení Azure poskytuje doporučení, jak můžete zabezpečit cloudová řešení v Azure. Obsah se seskupuje podle **ovládacích prvků zabezpečení** , které definuje srovnávací test zabezpečení Azure, a souvisejících pokynů vztahujících se na Azure kognitivní hledání. **Ovládací prvky** , které se nevztahují k Azure kognitivní hledání, nebo zákazníka jsou vyloučené.
 
 Pokud chcete zjistit, jak se Azure Kognitivní hledání zcela mapuje na bezpečnostní srovnávací testy zabezpečení Azure, přečtěte si [kompletní soubor mapování standardních hodnot zabezpečení azure kognitivní hledání](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace najdete v článku [srovnávací testy zabezpečení Azure: zabezpečení sítě](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: zabezpečení sítě](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Ochrana prostředků Azure v rámci virtuálních sítí
 
@@ -30,9 +30,9 @@ Pokud chcete zjistit, jak se Azure Kognitivní hledání zcela mapuje na bezpeč
 
 Kognitivní hledání podporuje taky další funkce zabezpečení sítě pro správu seznamů řízení přístupu k síti. Nakonfigurujte vyhledávací službu tak, aby povolovala komunikaci s důvěryhodnými zdroji tím, že omezuje přístup z konkrétních rozsahů veřejných IP adres pomocí své schopnosti brány firewall.
 
-- [Postup konfigurace privátních koncových bodů pro Azure Kognitivní hledání](https://docs.microsoft.com/azure/search/service-create-private-endpoint)
+- [Postup konfigurace privátních koncových bodů pro Azure Kognitivní hledání](./service-create-private-endpoint.md)
 
-- [Jak nakonfigurovat bránu firewall pro Azure Kognitivní hledání](https://docs.microsoft.com/azure/search/service-configure-firewall)
+- [Jak nakonfigurovat bránu firewall pro Azure Kognitivní hledání](./service-configure-firewall.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -42,11 +42,11 @@ Kognitivní hledání podporuje taky další funkce zabezpečení sítě pro spr
 
 **Pokyny**: kognitivní hledání nelze nasadit přímo do virtuální sítě. Pokud je však vaše klientská aplikace nebo zdroje dat ve virtuální síti, můžete monitorovat a Protokolovat provoz pro tyto součásti v síti, včetně požadavků odesílaných službě vyhledávání v cloudu. Mezi standardní doporučení patří povolení protokolu toku skupin zabezpečení sítě a odesílání protokolů do Azure Storage nebo do pracovního prostoru Log Analytics. Volitelně můžete použít Analýza provozu pro přehledy o vzorech provozu.
 
-- [Jak povolit protokoly toku skupin zabezpečení sítě](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [Jak povolit protokoly toku skupin zabezpečení sítě](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [Postup povolení a použití Analýza provozu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+- [Postup povolení a použití Analýza provozu](../network-watcher/traffic-analytics.md)
 
-- [Pochopení zabezpečení sítě, které poskytuje Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [Pochopení zabezpečení sítě, které poskytuje Azure Security Center](../security-center/security-center-network-recommendations.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -64,7 +64,7 @@ Kognitivní hledání podporuje taky další funkce zabezpečení sítě pro spr
 
 **Pokyny**: kognitivní hledání neposkytuje konkrétní funkci pro boj proti distribuovaným útokům DOS, ale můžete povolit DDoS Protection Standard ve virtuálních sítích přidružených ke službě kognitivní hledání pro obecnou ochranu.
 
-- [Jak nakonfigurovat DDoS Protection](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+- [Jak nakonfigurovat DDoS Protection](../virtual-network/manage-ddos-protection.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -76,9 +76,9 @@ Kognitivní hledání podporuje taky další funkce zabezpečení sítě pro spr
 
 V případě potřeby povolte zachytávání paketů Network Watcher pro zkoumání aktivity neobvyklé.
 
-- [Jak povolit protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [Jak povolit protokoly toku NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [Postup povolení Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+- [Postup povolení Network Watcher](../network-watcher/network-watcher-create.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -88,9 +88,9 @@ V případě potřeby povolte zachytávání paketů Network Watcher pro zkoumá
 
 **Doprovodné**materiály: kognitivní hledání nepodporuje zjišťování neoprávněných vniknutí k síti, ale jako zmírnění vniknutí můžete nakonfigurovat pravidla brány firewall, která určují IP adresy, které přijímá služba kognitivní hledání. Nakonfigurujte privátní koncový bod tak, aby zůstal vyhledáný z veřejného Internetu.
 
-- [Postup konfigurace klíčů spravovaných zákazníkem pro šifrování dat](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
+- [Postup konfigurace klíčů spravovaných zákazníkem pro šifrování dat](./search-security-manage-encryption-keys.md)
 
-- [Jak získat informace o klíčovém kódu spravovaném zákazníkem z indexů a mapování synonym](https://docs.microsoft.com/azure/search/search-security-get-encryption-keys)
+- [Jak získat informace o klíčovém kódu spravovaném zákazníkem z indexů a mapování synonym](./search-security-get-encryption-keys.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -110,7 +110,7 @@ V případě potřeby povolte zachytávání paketů Network Watcher pro zkoumá
 
 Povolte nebo zakažte provoz do prostředků zadáním názvu značky služby (například AzureCognitiveSearch) do příslušného zdrojového nebo cílového pole pravidla. 
 
-- [Značky služby virtuální sítě](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [Značky služby virtuální sítě](../virtual-network/service-tags-overview.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -132,13 +132,13 @@ Použijte některou z předdefinovaných Azure Policy definic souvisejících s 
 
 Pomocí Azure PowerShell nebo Azure CLI můžete vyhledat nebo provádět akce s prostředky na základě jejich značek. 
 
-- [Postup vytvoření privátního koncového bodu pro Kognitivní hledání](https://docs.microsoft.com/azure/search/service-create-private-endpoint)
+- [Postup vytvoření privátního koncového bodu pro Kognitivní hledání](./service-create-private-endpoint.md)
 
-- [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-- [Postup vytvoření Virtual Network Azure](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Postup vytvoření Virtual Network Azure](../virtual-network/quick-create-portal.md)
 
-- [Postup filtrování síťového provozu pomocí pravidel skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Postup filtrování síťového provozu pomocí pravidel skupiny zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -154,7 +154,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledat nebo provádět akce s
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace najdete v článku [srovnávací testy zabezpečení Azure: protokolování a monitorování](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: protokolování a monitorování](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
@@ -171,9 +171,9 @@ Případně můžete tato data povolit a zařadit do Azure Sentinel nebo SIEM t�
 
 - [Jak začít s Azure Monitor a integrací SIEM třetích stran](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
 
-- [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -183,9 +183,9 @@ Případně můžete tato data povolit a zařadit do Azure Sentinel nebo SIEM t�
 
 **Doprovodné**materiály: diagnostické a provozní protokoly poskytují přehled o podrobných operacích kognitivní hledání a jsou užitečné pro sledování služby a pro úlohy, které přistupují ke službě.  Chcete-li zachytit diagnostická data, povolte protokolování zadáním, kde jsou uloženy informace o protokolování.
 
-- [Jak shromažďovat a analyzovat data protokolu pro Azure Kognitivní hledání](https://docs.microsoft.com/azure/search/search-monitor-logs)
+- [Jak shromažďovat a analyzovat data protokolu pro Azure Kognitivní hledání](./search-monitor-logs.md)
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
 
 **Monitorování Azure Security Center**: Ano
 
@@ -205,9 +205,9 @@ Případně můžete tato data povolit a zařadit do Azure Sentinel nebo SIEM t�
 
 V Azure Monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště. 
 
-- [Změnit dobu uchovávání dat v Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -217,15 +217,15 @@ V Azure Monitor nastavte dobu uchování pracovního prostoru Log Analytics podl
 
 **Pokyny**: analýza a sledování protokolů ze služby kognitivní hledání pro chování neobvyklé. Pomocí Log Analytics Azure Monitor můžete prohlížet protokoly a provádět dotazy na data protokolu. Alternativně můžete povolit a začlenit data do Azure Sentinel nebo jiného dodavatele SIEM.
 
-- [Jak shromažďovat a analyzovat data protokolu pro Kognitivní hledání](https://docs.microsoft.com/azure/search/search-monitor-logs)
+- [Jak shromažďovat a analyzovat data protokolu pro Kognitivní hledání](./search-monitor-logs.md)
 
-- [Jak vizualizovat data protokolu hledání v Power BI](https://docs.microsoft.com/azure/search/search-monitor-logs-powerbi)
+- [Jak vizualizovat data protokolu hledání v Power BI](./search-monitor-logs-powerbi.md)
 
-- [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Přečtěte si o službě Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+- [Přečtěte si o službě Log Analytics](../azure-monitor/log-query/get-started-portal.md)
 
-- [Jak provádět vlastní dotazy v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -235,11 +235,11 @@ V Azure Monitor nastavte dobu uchování pracovního prostoru Log Analytics podl
 
 **Doprovodné**materiály: použití Security Center s Log Analytics pracovním prostorem pro monitorování a upozorňování na aktivitu neobvyklé nalezené v protokolech zabezpečení a událostech. Případně můžete povolit a začlenit data do Azure Sentinel.
 
-- [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Správa výstrah v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+- [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Upozornění na data protokolu Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [Upozornění na data protokolu Log Analytics](../azure-monitor/learn/tutorial-response.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -271,7 +271,7 @@ V Azure Monitor nastavte dobu uchování pracovního prostoru Log Analytics podl
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v článku [srovnávací testy zabezpečení Azure: identita a řízení přístupu](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: identita a řízení přístupu](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
@@ -279,12 +279,12 @@ V Azure Monitor nastavte dobu uchování pracovního prostoru Log Analytics podl
 
 Role Kognitivní hledání jsou přidružené k oprávněním, která podporují úlohy správy na úrovni služby.  Tyto role neudělují přístup ke koncovému bodu služby. Přístup k operacím v rámci koncového bodu (například Správa indexů, naplnění indexu a dotazy na data hledání) použijte k ověření žádosti klíče rozhraní API.
 
-- [Nastavení rolí pro přístup pro správu k Azure Kognitivní hledání](https://docs.microsoft.com/azure/search/search-security-rbac)
+- [Nastavení rolí pro přístup pro správu k Azure Kognitivní hledání](./search-security-rbac.md)
 
-- [Vytváření a Správa klíčů rozhraní API pro službu Azure Kognitivní hledání](https://docs.microsoft.com/azure/search/search-security-api-keys)
+- [Vytváření a Správa klíčů rozhraní API pro službu Azure Kognitivní hledání](./search-security-api-keys.md)
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -304,9 +304,9 @@ Role Kognitivní hledání jsou přidružené k oprávněním, která podporují
 
 Použijte předdefinované role Azure AD, které se musí explicitně přiřadit k operacím správy. Vyvolejte modul Azure AD PowerShellu pro provádění dotazů ad-hoc pro zjišťování účtů, které jsou členy skupin pro správu.
 
-- [Použití rolí pro přístup pro správu v Kognitivní hledání](https://docs.microsoft.com/azure/search/search-security-rbac)
+- [Použití rolí pro přístup pro správu v Kognitivní hledání](./search-security-rbac.md)
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole)
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -318,7 +318,7 @@ Použijte předdefinované role Azure AD, které se musí explicitně přiřadit
 
 Navažte proces, který omezí počet identit a přihlašovacích údajů, povolením jednotného přihlašování pro službu s již existujícími identitami vaší organizace.
 
-- [Vysvětlení jednotného přihlašování pomocí Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Vysvětlení jednotného přihlašování pomocí Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -328,9 +328,9 @@ Navažte proces, který omezí počet identit a přihlašovacích údajů, povol
 
 **Doprovodné**materiály: povolte funkci Azure Active Directory (Azure AD) Multi-Factor Authentication (MFA) a sledujte identitu Security Center a doporučení přístupu.
 
-- [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted) 
+- [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md) 
 
-- [Jak monitorovat identitu a přístup v rámci Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access) 
+- [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md) 
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -340,10 +340,10 @@ Navažte proces, který omezí počet identit a přihlašovacích údajů, povol
 
 **Pokyny**: použití pracovní stanice s privilegovaným přístupem (privilegovaným přístupem) s konfigurací Multi-Factor Authentication (MFA) nakonfigurovanou pro přihlášení a přístup k prostředkům Azure.
 
-- [Pochopení zabezpečení pracovních stanic spravovaných Azure](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-managed-workstation)
+- [Pochopení zabezpečení pracovních stanic spravovaných Azure](../active-directory/devices/concept-azure-managed-workstation.md)
  
 
-- [Jak povolit Azure AD MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Jak povolit Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
  
 
 **Monitorování Azure Security Center**: nelze použít
@@ -354,9 +354,9 @@ Navažte proces, který omezí počet identit a přihlašovacích údajů, povol
 
 **Doprovodné**materiály: použití sestav a monitorování zabezpečení služby Azure Active Directory (Azure AD) k detekci, kdy dojde k podezřelé nebo nebezpečné aktivitě v prostředí. Pomocí Security Center můžete monitorovat aktivitu identity a přístupu.
 
-- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Jak monitorovat identitu uživatelů a aktivity přístupu v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Jak monitorovat identitu uživatelů a aktivity přístupu v Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -374,9 +374,9 @@ Navažte proces, který omezí počet identit a přihlašovacích údajů, povol
 
 **Pokyny**: použití Azure Active Directory (Azure AD) jako centrálního ověřování a autorizačního systému pro úlohy správy na úrovni služby v Azure kognitivní hledání. Identity Azure AD neudělují přístup ke koncovému bodu vyhledávací služby.  Prostřednictvím klíčů rozhraní API jsou k dispozici přístup k operacím, jako je například Správa indexů, naplnění indexů a dotazy na data vyhledávání.
 
-- [Jak vytvořit a nakonfigurovat instanci Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [Vytváření a Správa klíčů rozhraní API pro službu Azure Kognitivní hledání](https://docs.microsoft.com/azure/search/search-security-api-keys)
+- [Vytváření a Správa klíčů rozhraní API pro službu Azure Kognitivní hledání](./search-security-api-keys.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -388,11 +388,11 @@ Navažte proces, který omezí počet identit a přihlašovacích údajů, povol
 
 Zkontrolujte protokoly diagnostiky z Kognitivní hledání pro aktivitu v koncovém bodu vyhledávací služby, jako je například Správa indexů, naplnění indexu a dotazy.
 
-- [Pochopení sestav Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
-- [Jak používat kontroly identity a přístupu v Azure AD](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [Jak používat kontroly identity a přístupu v Azure AD](../active-directory/governance/access-reviews-overview.md)
 
-- [Monitorování operací a aktivit Azure Kognitivní hledání](https://docs.microsoft.com/azure/search/search-monitor-usage)
+- [Monitorování operací a aktivit Azure Kognitivní hledání](./search-monitor-usage.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -404,7 +404,7 @@ Zkontrolujte protokoly diagnostiky z Kognitivní hledání pro aktivitu v koncov
 
 Zjednodušte tento proces vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Nakonfigurujte požadované výstrahy v rámci Log Analytics pracovního prostoru.
 
-- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) 
+- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) 
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -414,11 +414,11 @@ Zjednodušte tento proces vytvořením nastavení diagnostiky pro uživatelské 
 
 **Doprovodné**materiály: použití funkcí ochrany identity Azure Active Directory (Azure AD) ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce související s identitami uživatelů. Ingestujte data do Azure Sentinel pro další šetření podle potřeby.
 
-- [Jak zobrazit rizikové přihlašování Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [Jak zobrazit rizikové přihlašování Azure AD](../active-directory/identity-protection/overview-identity-protection.md) 
 
-- [Jak nakonfigurovat a povolit zásady rizik ochrany identity](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies) 
+- [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
-- [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard) 
+- [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -434,7 +434,7 @@ Zjednodušte tento proces vytvořením nastavení diagnostiky pro uživatelské 
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [srovnávací testy zabezpečení Azure: Ochrana dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [srovnávací testy zabezpečení Azure: Ochrana dat](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
@@ -448,11 +448,11 @@ Zjednodušte tento proces vytvořením nastavení diagnostiky pro uživatelské 
 
 **Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Prostředky by měly být oddělené virtuální sítí nebo podsítí, vhodně označené a zabezpečené v rámci skupiny zabezpečení sítě nebo Azure Firewall. Prostředky, které ukládají nebo zpracovávají citlivá data, by měly být izolované. Pomocí privátního odkazu můžete nakonfigurovat privátní koncový bod, který se má Kognitivní hledání.
 
-- [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription) 
+- [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md) 
 
-- [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-- [Postup vytvoření privátního koncového bodu pro Kognitivní hledání](https://docs.microsoft.com/azure/search/service-create-private-endpoint)
+- [Postup vytvoření privátního koncového bodu pro Kognitivní hledání](./service-create-private-endpoint.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -464,7 +464,7 @@ Zjednodušte tento proces vytvořením nastavení diagnostiky pro uživatelské 
 
 Microsoft spravuje základní platformu a považuje veškerý obsah zákazníka za citlivý a chrání před ztrátou a expozicí zákaznických dat. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-- [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data) 
+- [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md) 
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -474,7 +474,7 @@ Microsoft spravuje základní platformu a považuje veškerý obsah zákazníka 
 
 **Pokyny**: kognitivní hledání šifruje data při přenosu pomocí Transport Layer Security 1,2 a pro všechna připojení vynutila šifrování (SSL/TLS). Tím se zajistí, že všechna data budou v rámci přenosu mezi klientem a službou zašifrovaná.
 
-- [Pochopení šifrování při přenosu pomocí Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) 
+- [Pochopení šifrování při přenosu pomocí Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -486,7 +486,7 @@ Microsoft spravuje základní platformu a považuje veškerý obsah zákazníka 
 
 Microsoft spravuje základní platformu a považuje veškerý obsah zákazníka za citlivý a chrání před ztrátou a expozicí zákaznických dat. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-- [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -495,10 +495,10 @@ Microsoft spravuje základní platformu a považuje veškerý obsah zákazníka 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: ke správě přístupu k prostředkům použijte službu Azure RBAC.
 
 **Doprovodné**materiály: pro správu služeb použijte řízení přístupu na základě role Azure (Azure RBAC) ke správě přístupu ke klíčům a konfiguraci. Pro operace s obsahem, jako je indexování a dotazy, Kognitivní hledání používá místo modelu řízení přístupu založeného na identitě klíče. K řízení přístupu k klíčům použijte službu Azure RBAC.
-- [Jak nakonfigurovat RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 
+- [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/role-assignments-portal.md) 
 
  
-- [Použití rolí pro přístup pro správu k Kognitivní hledání](https://docs.microsoft.com/azure/search/search-security-rbac)
+- [Použití rolí pro přístup pro správu k Kognitivní hledání](./search-security-rbac.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -510,7 +510,7 @@ Microsoft spravuje základní platformu a považuje veškerý obsah zákazníka 
 
 Společnost Microsoft spravuje základní infrastrukturu pro Kognitivní hledání a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-- [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -520,9 +520,9 @@ Společnost Microsoft spravuje základní infrastrukturu pro Kognitivní hledán
 
 **Pokyny**: kognitivní hledání automaticky šifruje indexovaný obsah v klidovém tvaru pomocí klíčů spravovaných Microsoftem. Pokud potřebujete další ochranu, můžete výchozí šifrování doplnit druhou vrstvou šifrování pomocí klíčů, které vytvoříte a spravujete v Azure Key Vault.
 
-- [Konfigurace klíčů spravovaných zákazníkem pro šifrování dat v Azure Kognitivní hledání](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
+- [Konfigurace klíčů spravovaných zákazníkem pro šifrování dat v Azure Kognitivní hledání](./search-security-manage-encryption-keys.md)
 
-- [Vysvětlení šifrování v klidovém umístění v Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [Vysvětlení šifrování v klidovém umístění v Azure](../security/fundamentals/encryption-atrest.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -532,9 +532,9 @@ Společnost Microsoft spravuje základní infrastrukturu pro Kognitivní hledán
 
 **Doprovodné**materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny probíhají v produkčních instancích kognitivní hledání a dalších důležitých nebo souvisejících prostředcích.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
 
-- [Postup vytvoření výstrah pro aktivity Kognitivní hledání](https://docs.microsoft.com/azure/search/search-monitor-logs)
+- [Postup vytvoření výstrah pro aktivity Kognitivní hledání](./search-monitor-logs.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -542,7 +542,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Kognitivní hledán
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace najdete v článku [Srovnávací test zabezpečení Azure: Správa ohrožení zabezpečení](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*Další informace najdete v článku [Srovnávací test zabezpečení Azure: Správa ohrožení zabezpečení](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
@@ -586,7 +586,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Kognitivní hledán
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [testování výkonnosti Azure Security: inventář a Správa prostředků](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace najdete v tématu [testování výkonnosti Azure Security: inventář a Správa prostředků](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: použití řešení automatizovaného zjišťování prostředků
 
@@ -594,11 +594,11 @@ Společnost Microsoft spravuje základní infrastrukturu pro Kognitivní hledán
 
 Zajistěte, aby ve vašem tenantovi byla vhodná (číst) oprávnění a aby se v předplatných mohli vytvořit výčet všech předplatných Azure i prostředků.  
 
-- [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal) 
+- [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource graphu](../governance/resource-graph/first-query-portal.md) 
 
-- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0) 
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0) 
 
-- [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -608,7 +608,7 @@ Zajistěte, aby ve vašem tenantovi byla vhodná (číst) oprávnění a aby se 
 
 **Doprovodné**materiály: použití značek pro prostředky Azure s metadaty k logickému uspořádání do taxonomie.
 
-- [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -617,11 +617,11 @@ Zajistěte, aby ve vašem tenantovi byla vhodná (číst) oprávnění a aby se 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: odstranění neautorizovaných prostředků Azure
 
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry tam, kde je to vhodné, k uspořádání a sledování prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
-- [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription) 
+- [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md) 
 
-- [Postup vytvoření Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create) 
+- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md) 
 
-- [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) 
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md) 
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -639,9 +639,9 @@ Zajistěte, aby ve vašem tenantovi byla vhodná (číst) oprávnění a aby se 
 
 **Doprovodné**materiály: Doporučujeme, abyste definovali inventarizaci prostředků Azure, které byly schváleny k využití podle zásad vaší organizace a standardů, a potom monitorovat neschválené prostředky azure pomocí Azure Policy nebo grafu prostředků Azure.
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage) 
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Jak vytvářet dotazy pomocí Azure graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal) 
+- [Jak vytvářet dotazy pomocí Azure graphu](../governance/resource-graph/first-query-portal.md) 
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -682,9 +682,9 @@ Doporučuje se, abyste měli inventarizaci softwarových aplikací, které byly 
 
 Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky v rámci předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage) 
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types) 
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/index.md) 
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -726,7 +726,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace najdete v tématu [Konfigurace zabezpečení Azure Security test: zabezpečení](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace najdete v tématu [Konfigurace zabezpečení Azure Security test: zabezpečení](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
@@ -738,9 +738,9 @@ Azure Resource Manager má možnost Exportovat šablonu do JavaScript Object Not
 
 Můžete také použít doporučení z Azure Security Center jako standardní hodnoty konfigurace pro prostředky Azure. 
 
-- [Azure Policy kontroly dodržování předpisů pro Azure Kognitivní hledání](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [Azure Policy kontroly dodržování předpisů pro Azure Kognitivní hledání](./security-controls-policy.md)
 
-- [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -760,13 +760,13 @@ Můžete také použít doporučení z Azure Security Center jako standardní ho
 
 Šablony Azure Resource Manager lze použít k údržbě konfigurace zabezpečení vašich prostředků Azure, které vaše organizace vyžaduje. 
 
-- [Pochopení Azure Policych efektů](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
 
-- [Azure Policy kontroly dodržování předpisů pro Azure Kognitivní hledání](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [Azure Policy kontroly dodržování předpisů pro Azure Kognitivní hledání](./security-controls-policy.md)
 
-- [Vytváření a Správa zásad pro vymáhání dodržování předpisů](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Vytváření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md)
 
-- [Přehled šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)
+- [Přehled šablon Azure Resource Manager](../azure-resource-manager/templates/overview.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -784,9 +784,9 @@ Můžete také použít doporučení z Azure Security Center jako standardní ho
 
 **Doprovodné**materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow)
 
-- [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/index)
+- [Dokumentace k Azure Repos](/azure/devops/repos/index)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -808,9 +808,9 @@ Pomocí aliasů můžete vytvářet vlastní zásady pro auditování nebo vymá
 
 Kromě toho můžete pomocí Azure Automation nasadit změny konfigurace a spravovat výjimky zásad. 
 
-- [Azure Policy kontroly dodržování předpisů pro Azure Kognitivní hledání](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [Azure Policy kontroly dodržování předpisů pro Azure Kognitivní hledání](./security-controls-policy.md)
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -828,9 +828,9 @@ Kromě toho můžete pomocí Azure Automation nasadit změny konfigurace a sprav
 
 **Doprovodné**materiály: použijte Security Center k provádění kontrol směrného plánu vašich prostředků služby kognitivní hledání.  Kromě toho použijte Azure Policy k upozornění a auditování konfigurace prostředků. 
 
-- [Jak opravit doporučení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+- [Jak opravit doporučení v Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
-- [Azure Policy kontroly dodržování předpisů pro Azure Kognitivní hledání](https://docs.microsoft.com/azure/search/security-controls-policy)
+- [Azure Policy kontroly dodržování předpisů pro Azure Kognitivní hledání](./security-controls-policy.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -847,10 +847,10 @@ Kromě toho můžete pomocí Azure Automation nasadit změny konfigurace a sprav
 ### <a name="711-manage-azure-secrets-securely"></a>7,11: zabezpečená Správa tajných kódů Azure
 
 **Doprovodné**materiály: Používejte spravované identity Azure ve spojení s Azure Key Vault k zjednodušení správy tajných kódů pro vaše cloudové aplikace.
-- [Jak používat spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity) 
-- [Vytvoření Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal) 
+- [Jak používat spravované identity pro prostředky Azure](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md) 
+- [Vytvoření Key Vault](../key-vault/secrets/quick-create-portal.md) 
 
-- [Jak zajistit Key Vault ověřování pomocí spravované identity](https://docs.microsoft.com/azure/key-vault/managed-identity) 
+- [Jak zajistit Key Vault ověřování pomocí spravované identity](../key-vault/general/assign-access-policy-portal.md) 
 
 **Monitorování Azure Security Center**: Ano
 
@@ -860,9 +860,9 @@ Kromě toho můžete pomocí Azure Automation nasadit změny konfigurace a sprav
 
 **Pokyny**: pomocí spravované identity azure udělte kognitivní hledání přístup k jiným službám Azure, jako jsou Key Vault a zdroje dat indexeru, pomocí automaticky spravované Identity v Azure Active Directory (Azure AD). Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Azure Key Vault bez jakýchkoli přihlašovacích údajů v kódu. 
 
-- [Nastavení připojení indexeru ke zdroji dat pomocí spravované identity](https://docs.microsoft.com/azure/search/search-howto-managed-identities-data-sources)
+- [Nastavení připojení indexeru ke zdroji dat pomocí spravované identity](./search-howto-managed-identities-data-sources.md)
 
-- [Konfigurace klíčů spravovaných zákazníkem pro šifrování dat pomocí spravované identity](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#3---create-a-service-identity)
+- [Konfigurace klíčů spravovaných zákazníkem pro šifrování dat pomocí spravované identity](./search-security-manage-encryption-keys.md#3---create-a-service-identity)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -878,7 +878,7 @@ Kromě toho můžete pomocí Azure Automation nasadit změny konfigurace a sprav
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: obrana proti malwaru](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: obrana proti malwaru](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-antimalware-software"></a>8,1: Používejte centrálně spravovaný antimalwarový software
 
@@ -912,7 +912,7 @@ Pro všechny výpočetní prostředky, které vlastní vaše organizace a které
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace najdete v článku [srovnávací testy zabezpečení Azure: obnovení dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: obnovení dat](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
@@ -928,9 +928,9 @@ Pro všechny výpočetní prostředky, které vlastní vaše organizace a které
 
 **Doprovodné**materiály: kognitivní hledání v současné době nepodporuje automatizované zálohování pro data ve vyhledávací službě a je třeba je zálohovat pomocí ručního procesu.  Klíče spravované zákazníkem můžete zálohovat také v Azure Key Vault. 
 
-- [Zálohování a obnovení indexu služby Azure Kognitivní hledání](https://docs.microsoft.com/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
+- [Zálohování a obnovení indexu služby Azure Kognitivní hledání](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [Postup zálohování klíčů Key Vault v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Postup zálohování klíčů Key Vault v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -940,9 +940,9 @@ Pro všechny výpočetní prostředky, které vlastní vaše organizace a které
 
 **Doprovodné**materiály: kognitivní hledání aktuálně nepodporuje automatizované zálohování pro data ve vyhledávací službě a je třeba je zálohovat a obnovovat prostřednictvím ručního procesu.  Pravidelně provádějte obnovování obsahu ručně zálohovaných dat, abyste zajistili ucelenou integritu procesu zálohování.
 
-- [Zálohování a obnovení indexu služby Azure Kognitivní hledání](https://docs.microsoft.com/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
+- [Zálohování a obnovení indexu služby Azure Kognitivní hledání](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [Postup obnovení klíčů Key Vault v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Postup obnovení klíčů Key Vault v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -954,11 +954,11 @@ Pro všechny výpočetní prostředky, které vlastní vaše organizace a které
 
 Povolí v Key Vault ochranu před náhodným odstraněním a vyprázdněním, aby se chránily klíče proti náhodnému nebo škodlivému odstranění. Pokud se Azure Storage používá k ukládání ručních záloh, povolte obnovitelné odstranění a uložte a obnovte data, když se odstraní objekty blob nebo snímky objektů BLOB. 
 
-- [Zálohování a obnovení indexu služby Azure Kognitivní hledání](https://docs.microsoft.com/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
+- [Zálohování a obnovení indexu služby Azure Kognitivní hledání](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [Jak povolit ochranu před odstraněním a vyprázdněním v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Jak povolit ochranu před odstraněním a vyprázdněním v Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Obnovitelné odstranění pro Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Obnovitelné odstranění pro Azure Blob Storage](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -966,7 +966,7 @@ Povolí v Key Vault ochranu před náhodným odstraněním a vyprázdněním, ab
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v odpovědi na [incidenty Azure Security test:](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Další informace najdete v odpovědi na [incidenty Azure Security test:](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
@@ -988,9 +988,9 @@ Povolí v Key Vault ochranu před náhodným odstraněním a vyprázdněním, ab
 
 Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenování k identifikaci a kategorizaci prostředků Azure, zejména těch, které zpracovávají citlivá data. Je vaše zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu.
 
-- [Používání značek k uspořádání prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-resources)
+- [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
 
-- [Výstrahy zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+- [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1010,7 +1010,7 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 **Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
-- [Jak nastavit kontakt zabezpečení Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1020,9 +1020,9 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 **Doprovodné**materiály: vyexportujte výstrahy a doporučení Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo průběžně. Pomocí konektoru Security Center Data můžete streamovat výstrahy do Azure Sentinel.
 
-- [Postup konfigurace průběžného exportu](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [Postup konfigurace průběžného exportu](../security-center/continuous-export.md)
 
-- [Jak streamovat výstrahy do Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [Jak streamovat výstrahy do Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1032,7 +1032,7 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 **Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
 
-- [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1040,7 +1040,7 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace najdete v tématu [testy zabezpečení Azure – testování průniku a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace najdete v tématu [testy zabezpečení Azure – testování průniku a cvičení červeného týmu](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
@@ -1054,5 +1054,5 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](/azure/security/benchmarks/overview)
-- Další informace o [plánech zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
+- Další informace o [plánech zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

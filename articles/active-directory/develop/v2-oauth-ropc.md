@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 39cd25c2c84e92a0b06bc2ee6c6229ecb2d296d5
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812535"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Přihlašovací údaje pro heslo vlastníka prostředku Microsoft Identity Platform a OAuth 2,0
@@ -67,10 +67,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parametr | Stav | Popis |
 | --- | --- | --- |
 | `tenant` | Povinné | Tenant adresáře, do kterého chcete uživatele přihlašovat. Může se jednat o formát GUID nebo popisný název. Tento parametr nemůže být nastaven na hodnotu `common` nebo `consumers` , ale může být nastaven na hodnotu `organizations` . |
-| `client_id` | Požaduje se | ID aplikace (klienta), ke které se stránka [Azure Portal registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřazená vaší aplikaci. |
-| `grant_type` | Požaduje se | Musí být nastaven na hodnotu `password` . |
-| `username` | Požaduje se | E-mailová adresa uživatele. |
-| `password` | Požaduje se | Heslo uživatele. |
+| `client_id` | Vyžadováno | ID aplikace (klienta), ke které se stránka [Azure Portal registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřazená vaší aplikaci. |
+| `grant_type` | Vyžadováno | Musí být nastaven na hodnotu `password` . |
+| `username` | Vyžadováno | E-mailová adresa uživatele. |
+| `password` | Vyžadováno | Heslo uživatele. |
 | `scope` | Doporučeno | Mezerou oddělený seznam [oborů](v2-permissions-and-consent.md)nebo oprávnění, které aplikace vyžaduje. V interaktivním toku musí správce nebo uživatel na tyto obory vyjádřit svůj souhlas předem. |
 | `client_secret`| Někdy vyžadováno | Pokud je vaše aplikace veřejným klientem, nelze ji `client_secret` `client_assertion` zahrnout nebo.  Pokud je aplikace důvěrného klienta, musí být součástí. |
 | `client_assertion` | Někdy vyžadováno | Jiná forma `client_secret` , generovaná pomocí certifikátu.  Další podrobnosti najdete v tématu [přihlašovací údaje k certifikátu](active-directory-certificate-credentials.md) . |
@@ -90,7 +90,7 @@ Následující příklad ukazuje úspěšnou odpověď tokenu:
 }
 ```
 
-| Parametr | Formát | Popis |
+| Parametr | Formát | Description |
 | --------- | ------ | ----------- |
 | `token_type` | Řetězec | Vždy nastavte na `Bearer` . |
 | `scope` | Řetězce oddělené mezerami | Pokud byl vrácen přístupový token, tento parametr vypíše obory, pro které je přístupový token platný. |

@@ -16,10 +16,10 @@ ms.workload: media
 ms.date: 10/01/2020
 ms.author: inhenkel
 ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651748"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services V2 vs. v3
@@ -119,7 +119,7 @@ Aby bylo možné chránit vaše prostředky v klidovém stavu, prostředky by m�
 |---|---|---|---|
 |Media Services šifrování úložiště|Šifrování AES-256, klíč spravovaný pomocí Media Services.|Podporováno<sup>(1)</sup>|Nepodporováno<sup>(2)</sup>|
 |[Šifrování služby Storage pro neaktivní neaktivní data](../../storage/common/storage-service-encryption.md)|Šifrování na straně serveru, které nabízí Azure Storage, klíč spravuje Azure nebo zákazník.|Podporováno|Podporováno|
-|[Šifrování na straně klienta úložiště](../../storage/common/storage-client-side-encryption.md)|Šifrování na straně klienta, které nabízí služba Azure Storage, klíč spravovaný zákazníkem v Key Vault.|Nepodporováno|Nepodporováno|
+|[Šifrování Client-Side úložiště](../../storage/common/storage-client-side-encryption.md)|Šifrování na straně klienta, které nabízí služba Azure Storage, klíč spravovaný zákazníkem v Key Vault.|Nepodporováno|Nepodporováno|
 
 <sup>1</sup> když Media Services podporuje zpracování obsahu v nešifrované/bez jakékoli formy šifrování, nedoporučuje se to.
 

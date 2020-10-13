@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 171fc11c8de9cd53a7abd9602768a117341826ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d676d891683cc11dd8c1999c26464373d17e97be
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306596"
+ms.locfileid: "91932018"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure Virtual Network
 
@@ -255,7 +255,6 @@ Následující prostředky můžou používat základní nástroje pro vyrovnáv
 - Redis Cache 
 - SKU Application Gateway (V1)
 - Service Fabric
-- SQL MI
 - API Management
 - Služba Doména služby Active Directory (přidává)
 - Logic Apps

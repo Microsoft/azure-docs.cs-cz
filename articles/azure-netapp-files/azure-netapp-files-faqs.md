@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 2a64e595f0ea07510f416be56a54a3c74294b95d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa33106f200b2edb3b710c6b0e08208bd4da8ace
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653617"
+ms.locfileid: "91932256"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -31,13 +31,13 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 
 Ne. Cesta k datům NFS nepřekračuje Internet. Azure NetApp Files je nativní služba Azure, která je nasazená do Azure Virtual Network (VNet), kde je služba dostupná. Azure NetApp Files používá delegovanou podsíť a zřizuje síťové rozhraní přímo ve virtuální síti. 
 
-Podrobnosti najdete v tématu [pokyny pro Azure NetApp Files plánování sítě](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) .  
+Podrobnosti najdete v tématu [pokyny pro Azure NetApp Files plánování sítě](./azure-netapp-files-network-topologies.md) .  
 
 ### <a name="can-i-connect-a-vnet-that-i-already-created-to-the-azure-netapp-files-service"></a>Můžu připojit virtuální síť, kterou už jsem vytvořili ve službě Azure NetApp Files?
 
 Ano, virtuální sítě, které jste vytvořili ve službě, můžete propojit. 
 
-Podrobnosti najdete v tématu [pokyny pro Azure NetApp Files plánování sítě](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) .  
+Podrobnosti najdete v tématu [pokyny pro Azure NetApp Files plánování sítě](./azure-netapp-files-network-topologies.md) .  
 
 ### <a name="can-i-mount-an-nfs-volume-of-azure-netapp-files-using-dns-fqdn-name"></a>Je možné připojit ke svazku NFS Azure NetApp Files pomocí názvu FQDN DNS?
 
@@ -146,7 +146,7 @@ Azure NetApp Files podporuje SMB 2,1 a SMB 3,1 (což zahrnuje podporu protokolu 
 
 ### <a name="is-an-active-directory-connection-required-for-smb-access"></a>Vyžaduje se pro přístup přes protokol SMB připojení ke službě Active Directory? 
 
-Ano, před nasazením svazku SMB musíte vytvořit připojení ke službě Active Directory. Zadané řadiče domény musí být přístupné delegované podsíti Azure NetApp Files pro úspěšné připojení.  Podrobnosti najdete v tématu [vytvoření svazku SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb) . 
+Ano, před nasazením svazku SMB musíte vytvořit připojení ke službě Active Directory. Zadané řadiče domény musí být přístupné delegované podsíti Azure NetApp Files pro úspěšné připojení.  Podrobnosti najdete v tématu [vytvoření svazku SMB](./azure-netapp-files-create-volumes-smb.md) . 
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Kolik připojení služby Active Directory je podporováno?
 
@@ -156,7 +156,7 @@ Připojení AD je nakonfigurované na účet NetApp. připojení AD je viditeln�
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Podporuje Azure NetApp Files Azure Active Directory? 
 
-Jsou podporovány jak [služby Azure Active Directory (AD) Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) , tak [Active Directory Domain Services (služba AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) . Pomocí Azure NetApp Files můžete použít existující řadiče domény služby Active Directory. Řadiče domény se můžou nacházet v Azure jako virtuální počítače nebo místně prostřednictvím sítě VPN ExpressRoute nebo S2S. Azure NetApp Files v tuto chvíli nepodporuje službu AD JOIN pro [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) .
+Jsou podporovány jak [služby Azure Active Directory (AD) Domain Services](../active-directory-domain-services/overview.md) , tak [Active Directory Domain Services (služba AD DS)](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) . Pomocí Azure NetApp Files můžete použít existující řadiče domény služby Active Directory. Řadiče domény se můžou nacházet v Azure jako virtuální počítače nebo místně prostřednictvím sítě VPN ExpressRoute nebo S2S. Azure NetApp Files v tuto chvíli nepodporuje službu AD JOIN pro [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) .
 
 Pokud používáte Azure NetApp Files s Azure Active Directory Domain Services, cesta k organizační jednotce je, `OU=AADDC Computers` když pro svůj účet NetApp nakonfigurujete službu Active Directory.
 
@@ -171,7 +171,7 @@ Velikost svazku hlášená klientem SMB je maximální velikost, na kterou můž
 <!--
 ### Does Azure NetApp Files support LDAP signing? 
 
-Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
+Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
 
 ## <a name="dual-protocol-faqs"></a>Nejčastější dotazy týkající se duálního protokolu
@@ -224,7 +224,7 @@ Azure NetApp Files poskytuje svazky NFS a SMB.  K migraci dat do služby můžet
 
 NetApp nabízí řešení pro [cloudové synchronizace NetApp](https://cloud.netapp.com/cloud-sync-service), které je založené na SaaS.  Řešení umožňuje replikovat data systému souborů NFS nebo SMB do Azure NetApp Files soubory NFS exporty nebo sdílené složky SMB. 
 
-K kopírování dat můžete také využít nejrůznější bezplatné nástroje. Pro systém souborů NFS můžete pomocí nástrojů pro úlohy, jako je například [rsync](https://rsync.samba.org/examples.html) , kopírovat a synchronizovat zdrojová data do Azure NetApp Filesho svazku. V případě protokolu SMB můžete použít úlohy nástroje [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) stejným způsobem.  Tyto nástroje můžou taky replikovat oprávnění k souborům nebo složkám. 
+K kopírování dat můžete také využít nejrůznější bezplatné nástroje. Pro systém souborů NFS můžete pomocí nástrojů pro úlohy, jako je například [rsync](https://rsync.samba.org/examples.html) , kopírovat a synchronizovat zdrojová data do Azure NetApp Filesho svazku. V případě protokolu SMB můžete použít úlohy nástroje [Robocopy](/windows-server/administration/windows-commands/robocopy) stejným způsobem.  Tyto nástroje můžou taky replikovat oprávnění k souborům nebo složkám. 
 
 Požadavky na migraci dat z místního prostředí do Azure NetApp Files jsou následující: 
 
@@ -239,7 +239,7 @@ Azure NetApp Files poskytuje svazky NFS a SMB.  K replikaci dat mezi oblastmi Az
 
 NetApp nabízí řešení založené na SaaS a [cloudové synchronizaci NetApp](https://cloud.netapp.com/cloud-sync-service).  Řešení umožňuje replikovat data systému souborů NFS nebo SMB do Azure NetApp Files soubory NFS exporty nebo sdílené složky SMB. 
 
-K kopírování dat můžete také využít nejrůznější bezplatné nástroje. Pro systém souborů NFS můžete pomocí nástrojů pro úlohy, jako je například [rsync](https://rsync.samba.org/examples.html) , kopírovat a synchronizovat zdrojová data do Azure NetApp Filesho svazku. V případě protokolu SMB můžete použít úlohy nástroje [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) stejným způsobem.  Tyto nástroje můžou taky replikovat oprávnění k souborům nebo složkám. 
+K kopírování dat můžete také využít nejrůznější bezplatné nástroje. Pro systém souborů NFS můžete pomocí nástrojů pro úlohy, jako je například [rsync](https://rsync.samba.org/examples.html) , kopírovat a synchronizovat zdrojová data do Azure NetApp Filesho svazku. V případě protokolu SMB můžete použít úlohy nástroje [Robocopy](/windows-server/administration/windows-commands/robocopy) stejným způsobem.  Tyto nástroje můžou taky replikovat oprávnění k souborům nebo složkám. 
 
 Požadavky na replikaci Azure NetApp Filesho svazku do jiné oblasti Azure jsou následující: 
 - Ujistěte se, že je Azure NetApp Files k dispozici v cílové oblasti Azure.
@@ -257,8 +257,8 @@ Ne. Služba Azure import/export nepodporuje Azure NetApp Files aktuálně.
 
 ## <a name="next-steps"></a>Další kroky  
 
-- [Nejčastější dotazy k Microsoft Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
-- [Nejčastější dotazy k Microsoft Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
-- [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
-- [Azure Data Box](https://docs.microsoft.com/azure/databox)
+- [Nejčastější dotazy k Microsoft Azure ExpressRoute](../expressroute/expressroute-faqs.md)
+- [Nejčastější dotazy k Microsoft Azure Virtual Network](../virtual-network/virtual-networks-faq.md)
+- [Jak vytvořit žádost o podporu Azure](../azure-portal/supportability/how-to-create-azure-support-request.md)
+- [Azure Data Box](../databox/index.yml)
 - [Nejčastější dotazy týkající se výkonu protokolu SMB pro Azure NetApp Files](azure-netapp-files-smb-performance.md)

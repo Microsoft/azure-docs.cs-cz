@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812858"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Ochrana dat v Azure Stream Analytics 
@@ -33,7 +33,7 @@ Azure Stream Analytics uchovává následující metadata a data, aby je bylo mo
 
 Další informace o [nabídkách dodržování předpisů Microsoftu](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)vám pomůžou splnit vaše povinnosti dodržování předpisů v jakémkoli regulovaném odvětví nebo prostředí. 
 
-## <a name="in-region-data-residency"></a>Zasídlí dat v oblasti
+## <a name="in-region-data-residency"></a>In-Region zasídlí dat
 Azure Stream Analytics ukládá zákaznická data a další výše popsané metadata. Zákaznická data se ve výchozím nastavení ukládají v rámci Azure Stream Analytics v jedné oblasti, takže tato služba automaticky splňuje požadavky na umístění dat v oblastech, včetně těch, které jsou uvedené v [Centru zabezpečení](https://azuredatacentermap.azurewebsites.net/).
 Kromě toho se můžete rozhodnout pro uložení všech datových assetů (zákaznických dat a dalších metadat) souvisejících s úlohou Stream Analytics v jedné oblasti tak, že je zašifrujete v účtu úložiště podle vašeho výběru.
 
@@ -59,7 +59,7 @@ Další informace o [nabídkách dodržování předpisů Microsoftu](https://ga
 
 Pomocí následujícího postupu můžete nakonfigurovat účet úložiště pro soukromé datové prostředky. Tato konfigurace se provádí z vaší Stream Analytics úlohy, nikoli z vašeho účtu úložiště.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**. 
 

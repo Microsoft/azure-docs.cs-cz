@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 755d0077abcba71d705a14643f5c2b28001bfa13
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77471325"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951430"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Kurz: použití Data Box Heavy k importu dat jako spravovaných disků v Azure
 
@@ -75,11 +75,11 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
     > [!NOTE]
     > Přihlašovací údaje pro všechny sdílené složky pro spravované disky jsou identické.
 
-    ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![Získání přihlašovacích údajů sdílené složky](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
 2. V dialogovém okně sdílená složka pro přístup a kopírovat data zkopírujte **uživatelské jméno** a **heslo** sdílené složky. Klikněte na **OK**.
     
-    ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
+    ![Získání přihlašovacích údajů sdílené složky 2](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
 3. Pro přístup ke sdíleným složkám přidruženým k vašemu prostředku (*mydbmdrg1* v následujícím příkladu) z hostitelského počítače otevřete příkazové okno. Na příkazovém řádku zadejte:
 
@@ -101,7 +101,7 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 
 4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>\<ShareName>`. Kliknutím na **OK** otevřete Průzkumníka souborů.
     
-    ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
+    ![Připojení ke sdílené složce přes Průzkumníka souborů](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     V každé sdílené složce by se teď měly zobrazit následující předem vytvořené složky.
     
@@ -114,7 +114,7 @@ Pokud používáte hostitelský počítač se systémem Linux, proveďte násled
 
 1. Zadejte IP adresy klientů s povoleným přístupem ke sdílené složce. V místním webovém uživatelském rozhraní přejděte na stránku **Připojit a kopírovat**. V části **Nastavení systému souborů NFS** klikněte na **Přístup klientů systému souborů NFS**.
 
-    ![Konfigurace přístupu klientů systému souborů NFS 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
+    ![Konfigurace přístupu klienta NFS](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
 2. Zadejte IP adresu klienta systému souborů NFS a klikněte na **Přidat**. Opakováním tohoto kroku můžete nakonfigurovat přístup pro více klientů systému souborů NFS. Klikněte na **OK**.
 

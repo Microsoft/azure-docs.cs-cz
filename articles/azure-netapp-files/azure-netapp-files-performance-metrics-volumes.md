@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: a254465d9055fcf1cf10a2a1d6eb82b2afc16f0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf25ef59bc1ea5db61dcfb3c76c0d978cb1f95d0
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "82692271"
+ms.locfileid: "91931832"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Doporučení srovnávacích testů výkonnosti pro Azure NetApp Files
 
@@ -24,7 +24,7 @@ Abyste pochopili charakteristiky výkonu Azure NetApp Filesho svazku, můžete p
 
 ### <a name="vm-instance-sizing"></a>Velikost instance virtuálního počítače
 
-Pro dosažení nejlepších výsledků se ujistěte, že používáte instanci virtuálního počítače, která má patřičnou velikost pro provedení testů. V následujících příkladech se používá instance Standard_D32s_v3. Další informace o velikostech instancí virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) pro virtuální počítače s Windows a [velikosti pro virtuální počítače Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) pro virtuální počítače se systémem Linux.
+Pro dosažení nejlepších výsledků se ujistěte, že používáte instanci virtuálního počítače, která má patřičnou velikost pro provedení testů. V následujících příkladech se používá instance Standard_D32s_v3. Další informace o velikostech instancí virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů s Windows v Azure](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-network%252ftoc.json) pro virtuální počítače s Windows a [velikosti pro virtuální počítače Linux v Azure](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) pro virtuální počítače se systémem Linux.
 
 ### <a name="azure-netapp-files-volume-sizing"></a>Velikost Azure NetApp Filesho svazku
 
@@ -113,7 +113,7 @@ Můžete také vytvořit řídicí panel v Azure Monitor pro Azure NetApp Files 
 
 ### <a name="azure-monitor-api-access"></a>Přístup k rozhraní API Azure Monitor
 
-K Azure NetApp Filesm čítačům můžete přistupovat pomocí volání REST API. Další informace najdete v tématu [podporované metriky ve službě Azure monitor: Microsoft. NetApp/netAppAccounts/capacityPools/](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) Volumes pro čítače pro fondy kapacity a svazky.
+K Azure NetApp Filesm čítačům můžete přistupovat pomocí volání REST API. Další informace najdete v tématu [podporované metriky ve službě Azure monitor: Microsoft. NetApp/netAppAccounts/capacityPools/](../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) Volumes pro čítače pro fondy kapacity a svazky.
 
 Následující příklad ukazuje adresu URL GET pro zobrazení velikosti logického svazku:
 

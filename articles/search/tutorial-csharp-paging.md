@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8dfc69bf251a811363426a3aeca7379d18458b47
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: a08756a1e3153aa69bd0e79dc23e88d4bf211e5d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667227"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950682"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Kurz: Přidání stránkování do výsledků hledání pomocí sady .NET SDK
 
@@ -25,7 +25,7 @@ V tomto kurzu získáte informace o těchto tématech:
 > * Rozšiřování aplikace pomocí číslovaného stránkování
 > * Rozšiřování aplikace pomocí nekonečné posouvání
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 
 V tomto kurzu se překrývá stránkovací systém do dříve vytvořeného projektu popsaného v kurzu [Vytvoření prvního vyhledávacího aplikace](tutorial-csharp-create-first-app.md) .
 
@@ -35,7 +35,7 @@ Verze kódu, který budete vyvíjet v tomto kurzu, najdete v následujících pr
 
 * [2b – přidat-nekonečné – Scroll (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2b-add-infinite-scroll)
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 * [1 – Basic-Search – projekt stránky (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page) . Tento projekt může být vlastní verze sestavená z předchozího kurzu nebo kopie z GitHubu.
 
@@ -304,7 +304,7 @@ Otevřete základní řešení pro stránku vyhledávání.
     }
     ```
 
-1. Metoda **RunQueryAsync** , představená v předchozí lekci, potřebuje úpravu k vyřešení chyby syntaxe. Pomocí polí **Skip**, **Size**a **IncludeTotalCount** třídy [**příznacích searchOptions jsou**](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions) si vyžádáme jenom jednu stránku s výsledky, počínaje nastavením **Skip** . Pro naše zobrazení je také potřeba vypočítat stránkovací proměnné. Nahraďte celou metodu následujícím kódem.
+1. Metoda **RunQueryAsync** , představená v předchozí lekci, potřebuje úpravu k vyřešení chyby syntaxe. Pomocí polí **Skip**, **Size**a **IncludeTotalCount** třídy [**příznacích searchOptions jsou**](/dotnet/api/azure.search.documents.searchoptions) si vyžádáme jenom jednu stránku s výsledky, počínaje nastavením **Skip** . Pro naše zobrazení je také potřeba vypočítat stránkovací proměnné. Nahraďte celou metodu následujícím kódem.
 
     ```csharp
     private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage)

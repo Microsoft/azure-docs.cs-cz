@@ -274,181 +274,6 @@
           href: ../luis/luis-language-support.md
         - name: Podpora oblastí
           href: regions.md#intent-recognition
-- name: Scénáře konverzace
-  items:
-    - name: Dokumentace ke scénářům konverzace
-      displayName: 'meeting, meetings, conversation, call center, transcription, multi-device conversation'
-      href: index-conversation-scenarios.yml
-    - name: Přepis konverzace
-      items:
-        - name: Přehled
-          items:
-            - name: Co je přepis konverzace?
-              href: conversation-transcription.md
-        - name: Návody
-          items:
-            - name: Zpracování scénářů pro call centra
-              displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
-              href: call-center-transcription.md
-            - name: Přepis konverzace v reálném čase
-              href: how-to-use-conversation-transcription.md
-            - name: Asynchronní přepis konverzace
-              href: how-to-async-conversation-transcription.md
-        - name: Referenční informace
-          items:
-            - name: Speech SDK
-              items:
-                - name: C++
-                  displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/cppref'
-                - name: C#
-                  displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/csharpref'
-                - name: Java
-                  displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/javaref'
-                - name: JavaScript
-                  displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/javascriptref'
-                - name: Objective-C
-                  displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/objectivecref'
-                - name: Python
-                  displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/pythonref'
-                - name: "Poznámky k\_verzi"
-                  displayName: 'release notes,updates,what''s new,what is new,changes'
-                  href: releasenotes.md
-            - name: Rozhraní REST API
-              items:
-                - name: Rozhraní REST API pro přepis konverzace
-                  href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
-    - name: Konverzace více zařízení
-      items:
-        - name: Přehled
-          items:
-            - name: Co je konverzace více zařízení?
-              href: multi-device-conversation.md
-        - name: Rychlý start
-          items:
-            - name: Zahájení konverzace a připojení ke konverzaci
-              href: quickstarts/multi-device-conversation.md
-        - name: Referenční informace
-          items:
-            - name: Speech SDK
-              items:
-                - name: C++
-                  href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-transcription-namespace'
-                - name: C#
-                  href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription'
-                - name: Java
-                  href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription'
-- name: Hlasoví asistenti
-  items:
-    - name: Dokumentace k hlasovým asistentům
-      href: index-voice-assistants.yml
-    - name: Přehled
-      items:
-        - name: Co je hlasový asistent?
-          href: voice-assistants.md
-        - name: Ukázky hlasového asistenta (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
-    - name: Vlastní příkazy
-      items:
-        - name: Co jsou vlastní příkazy?
-          href: custom-commands.md
-        - name: Rychlé starty
-          items:
-            - name: Vytvoření aplikace vlastních příkazů
-              href: quickstart-custom-commands-application.md
-        - name: Návody
-          items:
-            - name: Vývoj
-              items:
-                - name: Vytvoření aplikace s jednoduchými příkazy
-                  href: how-to-custom-commands-create-application-with-simple-commands.md
-                - name: Přidání parametrů do příkazů
-                  href: how-to-custom-commands-add-parameters-to-commands.md
-                - name: Přidání konfigurací do parametrů příkazů
-                  href: how-to-custom-commands-add-parameter-configuration.md
-                - name: Přidání pravidel interakce
-                  href: how-to-custom-commands-add-interaction-rules.md
-                - name: Přidání šablon generování jazyka pro hlasové odpovědi
-                  href: how-to-custom-commands-add-language-generation-templates.md
-                - name: Použití sady Vlastní hlas
-                  href: how-to-custom-commands-use-custom-voice.md
-            - name: Integrace
-              items:
-                - name: Integrace s klientskou aplikací s využitím sady Speech SDK
-                  href: how-to-custom-commands-setup-speech-sdk.md
-                - name: Odeslání aktivity do klientské aplikace
-                  href: how-to-custom-commands-send-activity-to-client.md
-                - name: Nastavení webových koncových bodů
-                  href: how-to-custom-commands-setup-web-endpoints.md
-            - name: Nasazení
-              items:
-                - name: Průběžné nasazování s využitím Azure DevOps
-                  href: how-to-custom-commands-deploy-cicd.md
-            - name: Test
-              items:
-                - name: Testování aplikace vlastních příkazů
-                  href: how-to-custom-commands-developer-flow-test.md
-            - name: Ladění
-              items:
-                - name: Ladění chyb při vytváření aplikace
-                  href: how-to-custom-commands-debug-build-time.md
-                - name: Ladění chyb při spouštění aplikace
-                  href: how-to-custom-commands-debug-runtime.md
-            - name: Odkazy
-              items:
-                - name: Koncepce vlastních příkazů (Preview)
-                  href: custom-commands-references.md
-        - name: Zdroje a prostředky
-          items:
-            - name: Ukázky vlastních příkazů (GitHub)
-              href: 'https://aka.ms/speech/cc-samples'
-            - name: Ukázky hlasových asistentů (GitHub)
-              href: 'http://aka.ms/speech/va-samples'
-            - name: Nejčastější dotazy k hlasovým asistentům
-              href: faq-voice-assistants.md
-            - name: Speech SDK
-              href: speech-sdk.md
-            - name: Šifrování vlastních příkazů pro neaktivní uložená data
-              href: custom-commands-encryption-of-data-at-rest.md
-    - name: Direct Line Speech
-      items:
-        - name: Co je Direct Line Speech?
-          href: direct-line-speech.md
-        - name: Rychlé starty
-          items:
-            - name: Vytvoření vlastního hlasového asistenta
-              href: quickstarts/voice-assistants.md
-        - name: Kurzy
-          items:
-            - name: Hlasová podpora robota s využitím sady Speech SDK
-              href: tutorial-voice-enable-your-bot-speech-sdk.md
-        - name: Zdroje a prostředky
-          items:
-            - name: Nejčastější dotazy k hlasovým asistentům
-              href: faq-voice-assistants.md
-    - name: Hlasoví asistenti ve Windows
-      items:
-        - name: Přehled hlasových asistentů ve Windows
-          href: windows-voice-assistants-overview.md
-        - name: Návody
-          items:
-            - name: Zahájení vývoje asistenta s využitím Windows
-              href: how-to-windows-voice-assistants-get-started.md
-            - name: Povolení hlasové aktivace
-              href: windows-voice-assistants-implementation-guide.md
-        - name: Zdroje a prostředky
-          items:
-            - name: Požadavky a pokyny pro ochranu osobních údajů
-              href: windows-voice-assistants-automatic-enablement-guidelines.md
-            - name: Osvědčené postupy pro prostředí s asistenty
-              href: windows-voice-assistants-best-practices.md
-            - name: Ukázky a nejčastější dotazy
-              href: windows-voice-assistants-faq.md
 - name: Rozpoznávání mluvčího
   items:
     - name: Přehled rozpoznávání mluvčího
@@ -465,6 +290,183 @@
       href: custom-keyword-overview.md
     - name: Základy vlastních klíčových slov
       href: custom-keyword-basics.md
+- name: Scénář do hloubky
+  items:
+    - name: Scénáře konverzace
+      items:
+        - name: Dokumentace ke scénářům konverzace
+          displayName: 'meeting, meetings, conversation, call center, transcription, multi-device conversation'
+          href: index-conversation-scenarios.yml
+        - name: Přepis konverzace
+          items:
+            - name: Přehled
+              items:
+                - name: Co je přepis konverzace?
+                  href: conversation-transcription.md
+            - name: Návody
+              items:
+                - name: Zpracování scénářů pro call centra
+                  displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
+                  href: call-center-transcription.md
+                - name: Přepis konverzace v reálném čase
+                  href: how-to-use-conversation-transcription.md
+                - name: Asynchronní přepis konverzace
+                  href: how-to-async-conversation-transcription.md
+            - name: Referenční informace
+              items:
+                - name: Speech SDK
+                  items:
+                    - name: C++
+                      displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/cppref'
+                    - name: C#
+                      displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/csharpref'
+                    - name: Java
+                      displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/javaref'
+                    - name: JavaScript
+                      displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/javascriptref'
+                    - name: Objective-C
+                      displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/objectivecref'
+                    - name: Python
+                      displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/pythonref'
+                    - name: "Poznámky k\_verzi"
+                      displayName: 'release notes,updates,what''s new,what is new,changes'
+                      href: releasenotes.md
+                - name: Rozhraní REST API
+                  items:
+                    - name: Rozhraní REST API pro přepis konverzace
+                      href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+        - name: Konverzace více zařízení
+          items:
+            - name: Přehled
+              items:
+                - name: Co je konverzace více zařízení?
+                  href: multi-device-conversation.md
+            - name: Rychlý start
+              items:
+                - name: Zahájení konverzace a připojení ke konverzaci
+                  href: quickstarts/multi-device-conversation.md
+            - name: Referenční informace
+              items:
+                - name: Speech SDK
+                  items:
+                    - name: C++
+                      href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-transcription-namespace'
+                    - name: C#
+                      href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription'
+                    - name: Java
+                      href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription'
+    - name: Hlasoví asistenti
+      items:
+        - name: Dokumentace k hlasovým asistentům
+          href: index-voice-assistants.yml
+        - name: Přehled
+          items:
+            - name: Co je hlasový asistent?
+              href: voice-assistants.md
+            - name: Ukázky hlasového asistenta (GitHub)
+              href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
+        - name: Vlastní příkazy
+          items:
+            - name: Co jsou vlastní příkazy?
+              href: custom-commands.md
+            - name: Rychlé starty
+              items:
+                - name: Vytvoření aplikace vlastních příkazů
+                  href: quickstart-custom-commands-application.md
+            - name: Návody
+              items:
+                - name: Vývoj
+                  items:
+                    - name: Vytvoření aplikace s jednoduchými příkazy
+                      href: how-to-custom-commands-create-application-with-simple-commands.md
+                    - name: Přidání parametrů do příkazů
+                      href: how-to-custom-commands-add-parameters-to-commands.md
+                    - name: Přidání konfigurací do parametrů příkazů
+                      href: how-to-custom-commands-add-parameter-configuration.md
+                    - name: Přidání pravidel interakce
+                      href: how-to-custom-commands-add-interaction-rules.md
+                    - name: Přidání šablon generování jazyka pro hlasové odpovědi
+                      href: how-to-custom-commands-add-language-generation-templates.md
+                    - name: Použití sady Vlastní hlas
+                      href: how-to-custom-commands-use-custom-voice.md
+                - name: Integrace
+                  items:
+                    - name: Integrace s klientskou aplikací s využitím sady Speech SDK
+                      href: how-to-custom-commands-setup-speech-sdk.md
+                    - name: Odeslání aktivity do klientské aplikace
+                      href: how-to-custom-commands-send-activity-to-client.md
+                    - name: Nastavení webových koncových bodů
+                      href: how-to-custom-commands-setup-web-endpoints.md
+                - name: Nasazení
+                  items:
+                    - name: Průběžné nasazování s využitím Azure DevOps
+                      href: how-to-custom-commands-deploy-cicd.md
+                - name: Test
+                  items:
+                    - name: Testování aplikace vlastních příkazů
+                      href: how-to-custom-commands-developer-flow-test.md
+                - name: Ladění
+                  items:
+                    - name: Ladění chyb při vytváření aplikace
+                      href: how-to-custom-commands-debug-build-time.md
+                    - name: Ladění chyb při spouštění aplikace
+                      href: how-to-custom-commands-debug-runtime.md
+                - name: Odkazy
+                  items:
+                    - name: Koncepce vlastních příkazů (Preview)
+                      href: custom-commands-references.md
+            - name: Zdroje a prostředky
+              items:
+                - name: Ukázky vlastních příkazů (GitHub)
+                  href: 'https://aka.ms/speech/cc-samples'
+                - name: Ukázky hlasových asistentů (GitHub)
+                  href: 'http://aka.ms/speech/va-samples'
+                - name: Nejčastější dotazy k hlasovým asistentům
+                  href: faq-voice-assistants.md
+                - name: Speech SDK
+                  href: speech-sdk.md
+                - name: Šifrování vlastních příkazů pro neaktivní uložená data
+                  href: custom-commands-encryption-of-data-at-rest.md
+        - name: Direct Line Speech
+          items:
+            - name: Co je Direct Line Speech?
+              href: direct-line-speech.md
+            - name: Rychlé starty
+              items:
+                - name: Vytvoření vlastního hlasového asistenta
+                  href: quickstarts/voice-assistants.md
+            - name: Kurzy
+              items:
+                - name: Hlasová podpora robota s využitím sady Speech SDK
+                  href: tutorial-voice-enable-your-bot-speech-sdk.md
+            - name: Zdroje a prostředky
+              items:
+                - name: Nejčastější dotazy k hlasovým asistentům
+                  href: faq-voice-assistants.md
+        - name: Hlasoví asistenti ve Windows
+          items:
+            - name: Přehled hlasových asistentů ve Windows
+              href: windows-voice-assistants-overview.md
+            - name: Návody
+              items:
+                - name: Zahájení vývoje asistenta s využitím Windows
+                  href: how-to-windows-voice-assistants-get-started.md
+                - name: Povolení hlasové aktivace
+                  href: windows-voice-assistants-implementation-guide.md
+            - name: Zdroje a prostředky
+              items:
+                - name: Požadavky a pokyny pro ochranu osobních údajů
+                  href: windows-voice-assistants-automatic-enablement-guidelines.md
+                - name: Osvědčené postupy pro prostředí s asistenty
+                  href: windows-voice-assistants-best-practices.md
+                - name: Ukázky a nejčastější dotazy
+                  href: windows-voice-assistants-faq.md
 - name: Nástroje
   items:
     - name: Speech SDK
@@ -489,6 +491,8 @@
               href: 'https://aka.ms/csspeech/objectivecref'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+            - name: Přejít
+              href: 'https://github.com/microsoft/cognitive-services-speech-sdk-go'
     - name: CLI služby Speech
       displayName: SPX
       items:

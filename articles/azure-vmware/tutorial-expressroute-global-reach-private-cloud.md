@@ -4,10 +4,10 @@ description: Naučte se, jak vytvořit partnerský vztah ExpressRoute Global Rea
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.openlocfilehash: 07b7e1c2636f3754eda56af574586a1027403d3e
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576723"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Kurz: partnerských místních prostředí do privátního cloudu
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 Než povolíte připojení mezi dvěma okruhy ExpressRoute pomocí ExpressRoute Global Reach, přečtěte si dokumentaci, jak [Povolit připojení v různých předplatných Azure](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions).  
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Navázalo se připojení k privátnímu cloudu řešení Azure VMware pomocí okruhu ExpressRoute s použitím brány ExpressRoute ve službě Azure Virtual Network (VNet) – což je _okruh 2_ od procedur partnerských vztahů.  
 1. Samostatný fungující okruh ExpressRoute, který slouží k připojení místních prostředí k Azure – což je _okruh 1_ z perspektivy postupy partnerských vztahů.
@@ -109,7 +109,7 @@ V tomto kurzu jste zjistili, jak vytvořit druhý autorizační klíč pro okruh
 Přejděte k dalšímu kurzu, kde se dozvíte, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 
 > [!div class="nextstepaction"]
-> [Nasazení a konfigurace HCX VMware](tutorial-deploy-vmware-hcx.md)
+> [Nasazení a konfigurace VMware HCX](tutorial-deploy-vmware-hcx.md)
 
 
 <!-- LINKS - external-->

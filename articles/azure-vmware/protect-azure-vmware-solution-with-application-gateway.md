@@ -3,12 +3,12 @@ title: Použití Azure Application Gateway k ochraně webových aplikací v ře�
 description: Nakonfigurujte Azure Application Gateway, aby bezpečně vystavil vaše webové aplikace běžící na řešení Azure VMware.
 ms.topic: how-to
 ms.date: 07/31/2020
-ms.openlocfilehash: ad7cd36d77da41d75ea9dcc18a51d0ffc5540d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b63b7348419500504cb45917d741cc17e2b8a622
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579818"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951447"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Použití Azure Application Gateway k ochraně webových aplikací v řešení VMware Azure
 
@@ -30,7 +30,7 @@ Následující diagram znázorňuje scénář testování, který se používá 
 
 Instance Application Gateway je nasazena v centru ve vyhrazené podsíti. Má veřejnou IP adresu Azure; doporučuje se aktivovat Standard DDoS Protection pro virtuální síť. Webový server je hostovaný v rámci privátního cloudu řešení Azure VMware za NSX T0 a T1. Řešení Azure VMware využívá [ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) k umožnění komunikace s rozbočovačem a místními systémy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným.
 - Je nasazený a spuštěný privátní cloud řešení Azure VMware.
@@ -146,4 +146,4 @@ Pomocí Azure Application Gateway můžete nakonfigurovat pravidla směrování 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další příklady konfigurace najdete v [dokumentaci k Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/) .
+Další příklady konfigurace najdete v [dokumentaci k Azure Application Gateway](../application-gateway/index.yml) .

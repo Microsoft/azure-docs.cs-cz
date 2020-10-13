@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: af4c333fb539ad533756c538cb3ecde1d9a91413
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743042"
 ---
 # <a name="app-service-networking-features"></a>Funkce App Service sítě
@@ -36,7 +36,7 @@ Pokud není uvedeno jinak, lze použít všechny funkce společně. Můžete kom
 
 U každého daného případu použití může být problém vyřešit několika způsoby.  Správná funkce, která má být použita, je někdy způsobena důvody mimo samotný případ použití. Následující případy příchozího použití ukazují, jak používat funkce App Service sítě k řešení problémů s řízením provozu, který do vaší aplikace směřuje. 
  
-| Případy příchozího použití | Funkce |
+| Případy příchozího použití | Příznak |
 |---------------------|-------------------|
 | Podpora protokolu SSL založeného na protokolu IP pro vaši aplikaci | Adresa přiřazená aplikaci |
 | Nesdílená a vyhrazená příchozí adresa pro vaši aplikaci | Adresa přiřazená aplikaci |
@@ -49,7 +49,7 @@ U každého daného případu použití může být problém vyřešit několika
 
 Následující případy odchozího použití ukazují, jak používat funkce App Service sítě k řešení požadavků na odchozí přístup k vaší aplikaci. 
 
-| Případy odchozího použití | Funkce |
+| Případy odchozího použití | Příznak |
 |---------------------|-------------------|
 | Přístup k prostředkům v Azure Virtual Network ve stejné oblasti | Integrace virtuální sítě </br> ASE |
 | Přístup k prostředkům v Azure Virtual Network v jiné oblasti | Požadovaná brána Integration VNet </br> Pomocného a virtuálním počítačem |

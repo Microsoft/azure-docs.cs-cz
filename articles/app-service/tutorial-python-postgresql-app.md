@@ -3,7 +3,7 @@ title: 'Kurz: nasazení aplikace Django v Pythonu pomocí Postgres'
 description: Vytvořte webovou aplikaci v Pythonu s databází PostgreSQL a nasaďte ji do Azure. V tomto kurzu se používá Django Framework a aplikace je hostována na Azure App Service v systému Linux.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 10/09/2020
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 023d5e13efc19fdf097ac06d61c3300805d3b28e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfc4341e4b3f0c894f9440b4910c3f8bec7326d1
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842644"
+ms.locfileid: "91929774"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: nasazení webové aplikace v Django s PostgreSQL v Azure App Service
 
@@ -137,7 +137,7 @@ Pak vytvořte databázi Postgres v Azure pomocí [`az postgres up`](/cli/azure/e
 az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
-- Nahraďte *\<postgres-server-name>* názvem, který je jedinečný v rámci všech Azure (koncový bod serveru je `https://<postgres-server-name>.postgres.database.azure.com` ). Dobrým vzorem je použití kombinace názvu vaší společnosti a jiné jedinečné hodnoty.
+- Nahraďte *\<postgres-server-name>* názvem, který je jedinečný v rámci všech Azure (koncový bod serveru se zamění `https://<postgres-server-name>.postgres.database.azure.com` ). Dobrým vzorem je použití kombinace názvu vaší společnosti a jiné jedinečné hodnoty.
 - V případě *\<admin-username>* a *\<admin-password>* Zadejte přihlašovací údaje pro vytvoření uživatele správce pro tento server Postgres.
 - [Cenová úroveň](../postgresql/concepts-pricing-tiers.md) B_Gen5_1 (Basic, Gen5, 1 jádro), která se tady používá, je nejlevnější. V případě produkčních databází vynechejte `--sku-name` místo toho argument pro použití úrovně GP_Gen5_2 (pro obecné účely, Gen 5, 2 jader).
 
@@ -203,29 +203,19 @@ Po úspěšném nasazení příkaz vygeneruje výstup JSON podobný následujíc
 
 S kódem teď nasazeným do App Service je dalším krokem připojení aplikace k databázi Postgres v Azure.
 
-Kód aplikace očekává nalezení informací o databázi v řadě proměnných prostředí. K nastavení proměnných prostředí v App Service vytvoříte nastavení aplikace pomocí příkazu [AZ WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) .
+Kód aplikace očekává nalezení informací o databázi ve čtyřech proměnných prostředí s názvem `DBHOST` , `DBNAME` , `DBUSER` a `DBPASS` . Chcete-li použít nastavení produkčního prostředí, musí také mít `DJANGO_ENV` proměnnou prostředí nastavenou na `production` .
+
+K nastavení proměnných prostředí v App Service vytvořte nastavení aplikace pomocí následujících příkazů [AZ WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) .
 
 ```azurecli
-az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>.postgres.database.azure.com" DBNAME="pollsdb" DBUSER="<username>@<postgres-server-name>" DBPASS="<password>"
+az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
 ```
 
-- Nahraďte *\<postgres-server-name>* názvem, který jste použili dříve v `az postgres up` příkazu.
-- Nahraďte *\<username>* a *\<password>* s přihlašovacími údaji správce, které jste použili v předchozím `az postgres up` příkazu (nebo který `az postgres up` jste vygenerovali). `DBUSER`Argument musí být ve tvaru `<username>@<postgres-server-name>` .
-- Název skupiny prostředků a aplikace se vykreslí z hodnot uložených v mezipaměti v souboru *. Azure/config* .
-- Příkaz vytvoří nastavení s názvem `DJANGO_ENV` , `DBHOST` , `DBNAME` , `DBUSER` a `DBPASS` podle očekávání v kódu aplikace.
-- V kódu Pythonu získáte přístup k těmto nastavením jako k proměnným prostředí s příkazy, jako je `os.environ.get('DJANGO_ENV')` . Další informace najdete v tématu [přístup k proměnným prostředí](configure-language-python.md#access-environment-variables).
+- Nahraďte *\<postgres-server-name>* názvem, který jste použili dříve v `az postgres up` příkazu. Kód v *azuresite/produkční. py* automaticky připojí `.postgres.database.azure.com` k vytvoření úplné adresy URL serveru Postgres.
+- Nahraďte *\<username>* a *\<password>* s přihlašovacími údaji správce, které jste použili v předchozím `az postgres up` příkazu, nebo ty, které jste `az postgres up` pro vás vygenerovali. Kód v *azuresite/produkci. py* automaticky vytvoří celé Postgres uživatelské jméno z `DBUSER` a `DBHOST` .
+- Názvy skupin prostředků a aplikací se vykreslují z hodnot uložených v mezipaměti v souboru *. Azure/config* .
 
-#### <a name="verify-the-dbuser-setting"></a>Ověření nastavení DBUSER
-
-Je důležité, aby toto `DBUSER` nastavení bylo ve formuláři `<username>@<postgres-server-name>` .
-
-Pokud chcete nastavení ověřit, spusťte `az webapp config app settings list` a podívejte se na `DBUSER` hodnotu ve výsledcích:
-
-```azurecli
-az webapp config app settings list
-```
-
-Pokud potřebujete hodnotu opravit, spusťte příkaz `az webapp config appsettings set --settings DBUSER="<username>@<postgres-server-name>"` a nahraďte `<username>@<postgres-server-name>` odpovídajícími názvy.
+V kódu Pythonu získáte přístup k těmto nastavením jako k proměnným prostředí s příkazy, jako je `os.environ.get('DJANGO_ENV')` . Další informace najdete v tématu [přístup k proměnným prostředí](configure-language-python.md#access-environment-variables).
 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -264,8 +254,6 @@ Migrace databáze Django zajišťují, že schéma v PostgreSQL ve službě Azur
     python manage.py createsuperuser
     ```
 
-1. Pokud se zobrazí chyba "uživatelské jméno by mělo být ve <username@hostname> formátu". Při spuštění migrace databáze si přečtěte téma [ověření nastavení DBUSER](#verify-the-dbuser-setting).
-
 1. `createsuperuser`Příkaz vás vyzve k zadání přihlašovacích údajů pro uživatele. Pro účely tohoto kurzu použijte výchozí uživatelské jméno `root` , stiskněte klávesu **ENTER** pro e-mailovou adresu, aby byla ponechána prázdná, a zadejte `Pollsdb1` heslo.
 
 1. Pokud se zobrazí chyba, že je databáze uzamčena, ujistěte se, že jste spustili `az webapp settings` příkaz v předchozí části. Bez těchto nastavení nemůže příkaz migrace komunikovat s databází, což by způsobilo chybu.
@@ -276,9 +264,7 @@ Migrace databáze Django zajišťují, že schéma v PostgreSQL ve službě Azur
 
 1. V prohlížeči otevřete adresu URL `http://<app-name>.azurewebsites.net` . Aplikace by měla zobrazovat zprávu "nejsou k dispozici žádná hlasování", protože v databázi zatím nejsou žádná konkrétní hlasování.
 
-    Pokud se zobrazí zpráva "Chyba aplikace", pravděpodobně jste nevytvořili požadovaná nastavení v předchozím kroku, [nakonfigurujte proměnné prostředí pro připojení databáze](#configure-environment-variables-to-connect-the-database). Spusťte příkaz `az webapp config appsettings list` a ověřte nastavení. V [diagnostických protokolech](#stream-diagnostic-logs) můžete také vyhledat konkrétní chyby při spuštění aplikace. Pokud jste například nevytvořili nastavení, zobrazí se v protokolech Chyba `KeyError: 'DBNAME'` .
-
-    Pokud se zobrazí chyba "bylo zadáno neplatné uživatelské jméno. Zkontrolujte prosím uživatelské jméno a zkuste připojení znovu. Uživatelské jméno by mělo být ve <username@hostname> formátu. ", přečtěte si téma [ověření nastavení DBUSER](#verify-the-dbuser-setting).
+    Pokud se zobrazí zpráva Chyba aplikace, je možné, že jste v předchozím kroku buď nevytvořili požadovaná nastavení, [nakonfigurujete proměnné prostředí pro připojení k databázi](#configure-environment-variables-to-connect-the-database)nebo pokud tato hodnota obsahuje chyby. Spusťte příkaz `az webapp config appsettings list` a ověřte nastavení. V [diagnostických protokolech](#stream-diagnostic-logs) můžete také vyhledat konkrétní chyby při spuštění aplikace. Pokud jste například nevytvořili nastavení, zobrazí se v protokolech Chyba `KeyError: 'DBNAME'` .
 
     Po aktualizaci nastavení za účelem opravy jakýchkoli chyb dejte aplikaci minutu na restartování a pak aktualizujte prohlížeč.
 
@@ -468,7 +454,7 @@ Ve výchozím nastavení na portálu se zobrazí stránka **Přehled** vaší ap
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete aplikaci zachovat nebo pokračovat v dalším kurzu, přeskočte dopředu k [dalším krokům](#next-steps). Jinak, abyste se vyhnuli průběžným poplatkům, můžete odstranit skupinu prostředků vytvořenou pro tento kurz:
+Pokud chcete aplikaci zachovat nebo pokračovat v dalších kurzech, přeskočte dopředu k [dalším krokům](#next-steps). Jinak, abyste se vyhnuli průběžným poplatkům, můžete odstranit skupinu prostředků vytvořenou pro tento kurz:
 
 ```azurecli
 az group delete --no-wait

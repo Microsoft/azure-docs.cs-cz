@@ -12,13 +12,13 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: fee727e16909355fe614b875ff61d4d38f7a98ce
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804331"
 ---
-# <a name="manage-app-consent-policies"></a>Správa zásad pro vyjádření souhlasu s aplikacemi
+# <a name="manage-app-consent-policies"></a>Správa zásad souhlasu pro aplikace
 
 Pomocí Azure AD PowerShellu můžete zobrazovat a spravovat zásady pro vyjádření souhlasu s aplikacemi.
 
@@ -132,7 +132,7 @@ Po vytvoření zásady pro vyjádření souhlasu s aplikací můžete této zás
 
 Následující tabulka uvádí seznam podporovaných podmínek pro zásady pro vyjádření souhlasu s aplikacemi.
 
-| Stav | Popis|
+| Stav | Description|
 |:---------------|:----------|
 | PermissionClassification | [Klasifikace oprávnění](configure-permission-classifications.md) pro udělená oprávnění nebo "vše", aby odpovídala libovolné klasifikaci oprávnění (včetně oprávnění, která nejsou klasifikována). Výchozí hodnota je All (vše). |
 | PermissionType | Typ oprávnění uděleného oprávnění Pro delegovaná oprávnění použijte "Application" pro oprávnění aplikací (např. role aplikace) nebo delegovaný. <br><br>**Poznámka**: hodnota "delegatedUserConsentable" označuje delegovaná oprávnění, která nenakonfiguroval Vydavatel rozhraní API, aby vyžadovala souhlas správce. Tato hodnota se dá použít v předdefinovaných zásadách udělení oprávnění, ale nedá se použít v zásadách udělení vlastních oprávnění. Povinná hodnota. |
