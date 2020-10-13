@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049413"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Přehledy podmíněného přístupu a vytváření sestav
@@ -50,7 +50,7 @@ Pokud jste protokoly služby Azure AD neintegroval s protokoly Azure Monitor, bu
 
 Přístup k sešitu Insights a vytváření sestav:  
 
-1. Přihlaste se k webu **Azure Portal**.
+1. Přihlaste se k **portálu Azure Portal**.
 1. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  a přehled**podmíněného přístupu**  >  **a vytváření sestav**.
 
 ### <a name="get-started-select-parameters"></a>Začínáme: Výběr parametrů 
@@ -119,7 +119,7 @@ Konfigurace zásad podmíněného přístupu v režimu pouze pro sestavy:
 
 Aby bylo možné získat přístup k sešitu, potřebujete správná oprávnění služby Azure AD a také Log Analytics oprávnění k pracovnímu prostoru. Pokud chcete otestovat, jestli máte správná oprávnění k pracovnímu prostoru, spusťte ukázkový dotaz Log Analytics:
 
-1. Přihlaste se k webu **Azure Portal**.
+1. Přihlaste se k **portálu Azure Portal**.
 1. Přejděte na **Azure Active Directory**  >  **protokoly**.
 1. `SigninLogs`Do pole dotaz zadejte a vyberte **Spustit**.
 1. Pokud dotaz nevrátí žádné výsledky, váš pracovní prostor možná není správně nakonfigurovaný. 

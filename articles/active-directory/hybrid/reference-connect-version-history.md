@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fccbb84647ae9e47afc7bb36eeca97bb41a0d1d8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604066"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
@@ -140,12 +140,12 @@ Toto sestavení opravy hotfix řeší problém v Build 1.5.20.0, pokud jste nakl
 
 - Byla přidána podpora funkce mS-DS-ConsistencyGuid pro skupinové objekty. To vám umožní přesouvat skupiny mezi doménovými strukturami nebo znovu připojit skupiny ve službě AD do Azure AD, kde se změnil identifikátor objectID skupiny AD, třeba když se server služby AD znovu vytvoří po Calamity. Další informace najdete v tématu [Přesun skupin mezi doménovými strukturami](how-to-connect-migrate-groups.md).
 - Atribut mS-DS-ConsistencyGuid se automaticky nastaví u všech synchronizovaných skupin a k povolení této funkce není nutné provádět žádné akce. 
-- Odebrali Get-ADSyncRunProfile, protože se už nepoužívá. 
+- Get-ADSyncRunProfile odebrat, protože se už nepoužívá. 
 - Změnili jsme upozornění, které se zobrazí při pokusu o použití účtu správce podnikové sítě nebo správce domény pro účet služby služba AD DS Connector k poskytnutí dalšího kontextu. 
-- Přidala se nová rutina pro odebrání objektů z prostoru konektoru. starý nástroj CSDelete.exe odebraný a nahrazuje se novou rutinou Remove-ADSyncCSObject. Rutina Remove-ADSyncCSObject přijímá jako vstup CsObject. Tento objekt lze načíst pomocí rutiny Get-ADSyncCSObject.
+- Přidala se nová rutina pro odebrání objektů z místa konektoru, který je odebraný ze starého CSDelete.exe nástroje, a nahradí se novou rutinou Remove-ADSyncCSObject. Rutina Remove-ADSyncCSObject jako vstup převezme CsObject. Tento objekt lze načíst pomocí rutiny Get-ADSyncCSObject.
 
 >[!NOTE]
->Starý nástroj CSDelete.exe se odebral a nahradil novou rutinou Remove-ADSyncCSObject. 
+>Starý nástroj CSDelete.exe se odebral a nahradil novou rutinou Remove-ADSyncCSObject 
 
 ### <a name="fixed-issues"></a>Opravené problémy
 

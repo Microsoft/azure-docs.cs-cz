@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 8b8114a6abf5579ed0750862d59a5d13178339f6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91276488"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
@@ -102,7 +102,7 @@ V následující tabulce jsou popsány názvy a popisy vlastností, které jsou 
 
 | Vlastnost              | Popis                              | Povinné |
 | :-------------------- | :--------------------------------------- | :------- |
-| jméno                  | Název aktivity v kanálu     | Yes      |
+| name                  | Název aktivity v kanálu     | Yes      |
 | Popis           | Text popisující, co aktivita dělá.  | No       |
 | typ                  | U vlastní aktivity je typ aktivity **vlastní**. | Yes      |
 | linkedServiceName     | Propojená služba s Azure Batch. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .  | Yes      |
@@ -302,7 +302,7 @@ Pokud chcete využívat obsah stdout.txt v rámci navazujících aktivit, může
 
 > [!IMPORTANT]
 > - activity.json, linkedServices.json a datasets.json, se ukládají do složky runtime dávkové úlohy. V tomto příkladu jsou uloženy v cestě activity.json, linkedServices.json a datasets.json `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` . V případě potřeby je potřeba je vyčistit samostatně.
-> - U propojených služeb, které používají Integration Runtime v místním prostředí, jsou citlivé informace, jako jsou klíče nebo hesla, zašifrované pomocí samoobslužného Integration Runtime, aby bylo zajištěno, že přihlašovací údaje zůstanou v prostředí privátní sítě definované zákazníkem. Některá citlivá pole by mohla chybět, když na ni odkazuje vlastní kód aplikace tímto způsobem. V případě potřeby použijte v extendedProperties místo použití odkazu na propojenou službu SecureString.
+> - U propojených služeb, které používají Self-Hosted Integration Runtime, jsou citlivé informace, jako jsou klíče nebo hesla, šifrované Integration Runtime Self-Hosted, aby bylo zajištěno, že přihlašovací údaje zůstanou v prostředí privátní sítě definované zákazníkem. Některá citlivá pole by mohla chybět, když na ni odkazuje vlastní kód aplikace tímto způsobem. V případě potřeby použijte v extendedProperties místo použití odkazu na propojenou službu SecureString.
 
 ## <a name="pass-outputs-to-another-activity"></a>Předání výstupů jiné aktivitě
 
@@ -310,7 +310,7 @@ Můžete odesílat vlastní hodnoty z kódu v rámci vlastní aktivity zpátky d
 
 ## <a name="retrieve-securestring-outputs"></a>Načtení výstupů SecureString
 
-Hodnoty citlivých vlastností určené jako typ *SecureString*, jak je znázorněno v některých příkladech v tomto článku, jsou maskovány na kartě monitorování v uživatelském rozhraní Data Factory.  V samotném spuštění kanálu je však vlastnost *SecureString* serializována jako JSON v `activity.json` souboru jako prostý text. Příklad:
+Hodnoty citlivých vlastností určené jako typ *SecureString*, jak je znázorněno v některých příkladech v tomto článku, jsou maskovány na kartě monitorování v uživatelském rozhraní Data Factory.  V samotném spuštění kanálu je však vlastnost *SecureString* serializována jako JSON v `activity.json` souboru jako prostý text. Například:
 
 ```json
 "extendedProperties": {

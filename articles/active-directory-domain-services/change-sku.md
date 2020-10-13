@@ -2,20 +2,20 @@
 title: Změna SKU pro Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si, jak na úrovni SKU Azure AD Domain Services spravované doméně, pokud se změní vaše obchodní požadavky.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: a9954b0ddd446c4e39d85ab6d3e37402176236d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: c85a3f3262da6002e9604b1506552b9188a64460
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87489635"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962747"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>Změna SKU pro existující Azure Active Directory Domain Services spravovanou doménu
 

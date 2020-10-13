@@ -1,5 +1,5 @@
 ---
-title: Kurz – změna IoT Edgech živých videí pro video Analytics
+title: Kurz – změna Azure IoT Edgech živých videí pro video Analytics
 description: V tomto kurzu se dozvíte, jak upravit a sestavit moduly pro bránu video Analytics, které používá šablona aplikace zjišťování objektů a pohybu pro video Analytics.
 services: iot-central
 ms.service: iot-central
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: d21eb8d8d79ec04f0f7e766b4eeb370811553e64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bbc25f98f494660fc4997af1c3a248172ef08d2
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88038337"
+ms.locfileid: "91873468"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>Kurz: úpravy a sestavení modulů pro bránu pro video Analytics v reálném čase
 
@@ -50,7 +50,7 @@ Otevřete místní složku úložiště *Live-video-Analytics* s vs Code.
 1. Úpravou `LvaEdgeGatewayModule` části modul přidejte název své image a název účtu AMS do `env:amsAccountName:value` .
 1. Upravte `lvaYolov3` část modul a přidejte název své image.
 1. Upravte `lvaEdge` část modul a přidejte název své image.
-1. Další informace o tom, jak dokončit konfiguraci, najdete v tématu [Vytvoření aplikace video Analytics v Azure IoT Central](tutorial-video-analytics-create-app.md) .
+1. Další informace o tom, jak dokončit konfiguraci, najdete v tématu [Vytvoření aplikace video Analytics v Azure IoT Central](tutorial-video-analytics-create-app-yolo-v3.md) .
 
 ## <a name="build-the-code"></a>Sestavení kódu
 

@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 6bcb1ea6c16fd387dfb7f15f909d1908c20a44d7
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 4189aadb6e37fc70bcaeecca2110d6fcc3959dd3
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710902"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939864"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Přehled provozní kontinuity pomocí Azure Database for PostgreSQL-Single server
 
@@ -29,10 +29,9 @@ Následující tabulka porovnává RTO a RPO v typickém scénáři:
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Obnovení k určitému bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování |
 | Geografické obnovení ze geograficky replikovaných záloh | Nepodporováno | RTO – různé <br/>RPO < 1 h | RTO – různé <br/>RPO < 1 h |
-| Čtení replik | RTO – minuty <br/>RPO < 5 min | RTO – minuty <br/>RPO < 5 min| RTO – minuty <br/>RPO < 5 min|
+| Čtení replik | RTO – minuty <br/>RPO < 5 min * | RTO – minuty <br/>RPO < 5 min *| RTO – minuty <br/>RPO < 5 min *|
 
-> [!IMPORTANT]
-> Očekávaný RTO a RPO zde uvedené jsou pouze pro referenční účely. Pro tyto metriky nejsou nabízeny žádné SLA.
+\* CÍL RPO může být v některých případech vyšší v závislosti na různých faktorech, včetně úloh primární databáze a latence mezi oblastmi. 
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Obnovení serveru po chybě uživatele nebo aplikace
 

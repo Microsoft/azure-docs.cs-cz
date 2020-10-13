@@ -12,10 +12,10 @@ ms.date: 09/24/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 6a716aef65cc81c5558a214c1ee5f93180810977
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266679"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Stav zřizování aplikace v karanténě
@@ -49,7 +49,7 @@ Existují tři způsoby, jak ověřit, zda je aplikace v karanténě:
 
 ## <a name="why-is-my-application-in-quarantine"></a>Proč je moje aplikace v karanténě?
 
-|Popis|Doporučená akce|
+|Description|Doporučená akce|
 |---|---|
 |**Problém s dodržováním předpisů SCIM:** Byla vrácena odpověď HTTP/404 nenalezena místo očekávané odpovědi HTTP/200 OK. V tomto případě služba zřizování Azure AD odeslala žádost do cílové aplikace a obdržela neočekávanou odpověď.|Zkontrolujte část přihlašovací údaje správce, abyste viděli, jestli aplikace vyžaduje zadání adresy URL tenanta, a ujistěte se, že je adresa URL správná. Pokud se problém nezobrazuje, obraťte se prosím na vývojáře aplikace, aby se zajistilo, že je jejich služba kompatibilní s SCIM. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Neplatné přihlašovací údaje:** Při pokusu o autorizaci přístupu k cílové aplikaci jsme dostali odpověď z cílové aplikace, která indikuje, že zadané přihlašovací údaje jsou neplatné.|Přejděte do části přihlašovací údaje správce uživatelského rozhraní pro konfiguraci zřizování a znovu udělte přístup s platnými přihlašovacími údaji. Pokud je aplikace v galerii, Projděte si kurz konfigurace aplikace pro všechny další požadované kroky.|

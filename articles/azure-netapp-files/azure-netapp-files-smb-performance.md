@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
 ms.openlocfilehash: 6a7bf07359344e26280021a6a55eecc5b96b7a86
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653685"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Nejčastější dotazy týkající se výkonu protokolu SMB pro Azure NetApp Files
@@ -58,7 +58,7 @@ Vícekanálový funkce protokolu SMB umožňuje klientovi SMB3 vytvořit fond p�
 
 ## <a name="should-i-configure-multiple-nics-on-my-client-for-smb"></a>Mám v mém klientovi nakonfigurovat více síťových adaptérů pro protokol SMB?
 
-No. Klient SMB bude odpovídat počtu síťových adaptérů vráceného serverem SMB.  Každý svazek úložiště je přístupný z jednoho a pouze jednoho koncového bodu úložiště.  To znamená, že pro všechny relace SMB se bude používat jenom jedna síťová karta.  
+Ne. Klient SMB bude odpovídat počtu síťových adaptérů vráceného serverem SMB.  Každý svazek úložiště je přístupný z jednoho a pouze jednoho koncového bodu úložiště.  To znamená, že pro všechny relace SMB se bude používat jenom jedna síťová karta.  
 
 Jak `Get-SmbClientNetworkInterace` ukazuje výstup níže, má virtuální počítač 2 síťová rozhraní--15 a 12.  Jak je znázorněno v následujícím příkazu `Get-SmbMultichannelConnection` , i když jsou k dispozici dva síťové adaptéry podporující kanály RSS, používá se v připojení ke sdílené složce SMB jenom rozhraní 12. rozhraní 15 se nepoužívá.
 

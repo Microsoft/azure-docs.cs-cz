@@ -1,14 +1,14 @@
 ---
 title: Získat data dodržování zásad
 description: Azure Policy hodnocení a účinky určují dodržování předpisů. Přečtěte si, jak získat podrobnosti o dodržování předpisů pro vaše prostředky Azure.
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 2b4db7daf75f153cadb03e5dd028084e311bb874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 186312ae91c3545a7aac1a9c7a108e2197f3fa8a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596033"
+ms.locfileid: "91873621"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -163,12 +163,13 @@ V přiřazení není prostředek **nekompatibilní** , pokud nedodržuje pravidl
 
 | Stav prostředku | Účinek | Vyhodnocení zásad | Stav dodržování předpisů |
 | --- | --- | --- | --- |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Ano | Neodpovídající |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Nepravda | Odpovídající |
-| Nová | Audit, AuditIfNotExist\* | Ano | Neodpovídající |
-| Nová | Audit, AuditIfNotExist\* | Nepravda | Odpovídající |
+| Nové nebo aktualizované | Audit, úprava, AuditIfNotExist | Ano | Nevyhovující předpisům |
+| Nové nebo aktualizované | Audit, úprava, AuditIfNotExist | Nepravda | Odpovídající |
+| Existuje | Deny, audit, připojit, upravit, DeployIfNotExist, AuditIfNotExist | Ano | Nevyhovující předpisům |
+| Existuje | Deny, audit, připojit, upravit, DeployIfNotExist, AuditIfNotExist | Nepravda | Odpovídající |
 
-\* Efekty upravit, připojit, DeployIfNotExist a AuditIfNotExist vyžadují, aby příkaz IF byl pravdivý. Tyto účinky také vyžadují, aby existovala podmínka, která musí nabývat hodnoty FALSE, aby byla zásada vyhodnocena jako Nevyhovující předpisům. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
+> [!NOTE]
+> Účinky DeployIfNotExist a AuditIfNotExist vyžadují, aby příkaz IF byl pravdivý a aby podmínka existence neodpovídala hodnotě FALSE. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
 
 Předpokládejme například, že máte skupinu prostředků – ContsoRG s některými účty úložiště (zvýrazněné červeně), které jsou vystaveny veřejným sítím.
 
@@ -189,7 +190,7 @@ Kromě **kompatibilních** a **nekompatibilních**zásad a prostředků mají č
 - **Nezahájeno**: cyklus vyhodnocení se nespustil pro zásady nebo prostředek.
 - **Neregistrováno**: poskytovatel prostředků Azure Policy nebyl zaregistrován nebo účet přihlášený nemá oprávnění ke čtení dat dodržování předpisů.
 
-Azure Policy používá pole **typ** a **název** v definici k určení, jestli se jedná o shodu prostředku. Pokud se prostředek shoduje, je považován za platný a má stav buď **kompatibilní**, **nekompatibilní**nebo **vyloučený**. Pokud je v definici jediná vlastnost **Type** nebo **Name** , pak jsou vyhodnoceny všechny zahrnuté a nevyňaté prostředky, které jsou považovány za použitelné a jsou vyhodnocovány.
+Azure Policy používá pole **typ**, **název**nebo **druh** v definici k určení, zda se jedná o shodu prostředku. Pokud se prostředek shoduje, je považován za platný a má stav buď **kompatibilní**, **nekompatibilní**nebo **vyloučený**. Pokud je v definici jedinou vlastností **typu**, **název**nebo **druh** , jsou všechny zahrnuté a nevyňaté prostředky považovány za použitelné a vyhodnocují se.
 
 Procento dodržování předpisů je určeno vydělením **kompatibilních** a **osvobozených** prostředků _celkovými prostředky_. _Celkem prostředků_ je definováno jako součet **kompatibilních**a **nekompatibilních, nekompatibilních**a **konfliktních** prostředků. **Exempt** Celková čísla dodržování předpisů jsou součtem různých prostředků, které jsou v souladu s **předpisy** , a jejich **vyloučení** je dělené součtem všech různých prostředků. Na následujícím obrázku je více než 20 různých prostředků, které jsou k dispozici, a pouze jeden z nich **nedodržuje předpisy**.
 Celkové dodržování předpisů prostředků je 95% (19 z 20).
@@ -210,14 +211,14 @@ Vzhledem k tomu, že může být zásada nebo iniciativa přiřazena k různým 
 :::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="Diagram účtů úložiště zveřejněných pro veřejné sítě ve skupině prostředků contoso R G" border="false":::
 
 Seznam prostředků na kartě **Kompatibilita prostředků** zobrazuje stav vyhodnocení existujících prostředků pro aktuální přiřazení. Karta je standardně **nekompatibilní**, lze ji však filtrovat.
-Události (připojit, audit, odepřít, nasadit) aktivované žádostí o vytvoření prostředku se zobrazí na kartě **události** .
+Události (připojit, audit, odepřít, nasadit, upravit) aktivované žádostí o vytvoření prostředku se zobrazí na kartě **události** .
 
 > [!NOTE]
 > Pro zásady stroje AKS je zobrazený prostředek skupina prostředků.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Diagram účtů úložiště zveřejněných pro veřejné sítě ve skupině prostředků contoso R G" border="false":::
 
-V případě prostředků [režimu poskytovatele prostředků](../concepts/definition-structure.md#resource-provider-modes) na kartě **Kompatibilita prostředků** vyberte prostředek, klikněte na něj pravým tlačítkem myši a vyberte **Zobrazit podrobnosti** o dodržování předpisů. otevře se podrobnosti o kompatibilitě komponent. Tato stránka také nabízí karty k zobrazení zásad, které jsou přiřazeny k tomuto prostředku, událostem, událostem komponenty a historii změn.
+<a name="component-compliance"></a> V případě prostředků [režimu poskytovatele prostředků](../concepts/definition-structure.md#resource-provider-modes) na kartě **Kompatibilita prostředků** vyberte prostředek, klikněte na něj pravým tlačítkem myši a vyberte **Zobrazit podrobnosti** o dodržování předpisů. otevře se podrobnosti o kompatibilitě komponent. Tato stránka také nabízí karty k zobrazení zásad, které jsou přiřazeny k tomuto prostředku, událostem, událostem komponenty a historii změn.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Diagram účtů úložiště zveřejněných pro veřejné sítě ve skupině prostředků contoso R G" border="false":::
 

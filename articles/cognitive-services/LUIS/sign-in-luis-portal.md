@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.author: a-sakand
 author: skandil
 ms.openlocfilehash: 22f5ab332c52a3b567b37089def6e4a494a15d29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309468"
 ---
 # <a name="sign-in-to-luis-portal"></a>Přihlášení k portálu LUIS
@@ -36,7 +36,7 @@ Když se poprvé přihlásíte na portál LUIS, určete typ účtu pomocí násl
 
 Účet přidružený k předplatnému Azure vám umožňuje vybrat předplatné a prostředek, který chcete použít.
 
-:::image type="content" source="media/sign-in/resource-selection.png" alt-text="Částečný snímek obrazovky portálu LUIS s rozevíracími seznamy pro výběr prostředku":::
+:::image type="content" source="media/sign-in/resource-selection.png" alt-text="Částečný snímek obrazovky s LUIS navigačním panelem pomocí ikony Azure":::
 
 ## <a name="sign-in-with-account-associated-with-an-azure-subscription"></a>Přihlášení pomocí účtu přidruženého k předplatnému Azure
 
@@ -50,11 +50,11 @@ Když se poprvé přihlásíte na portál LUIS, určete typ účtu pomocí násl
 
     [Přečtěte si další informace o vytváření a počátečních klíčích](luis-how-to-azure-subscription.md#luis-resources). Oba prostředky poskytují 1 000 000 bezplatné transakce vytváření a 1000 bezplatné transakce koncového bodu předpovědi.
 
-    :::image type="content" source="media/sign-in/signup-landing-page.png" alt-text="Částečný snímek obrazovky pro výběr typu Language Understanding prostředek pro vytváření obsahu.":::
+    :::image type="content" source="media/sign-in/signup-landing-page.png" alt-text="Částečný snímek obrazovky s LUIS navigačním panelem pomocí ikony Azure":::
 
 1. Použít existující prostředek pro vytváření obsahu
 
-    :::image type="content" source="media/sign-in/signup-choose-resource.png" alt-text="Zvolit prostředek pro vytváření":::
+    :::image type="content" source="media/sign-in/signup-choose-resource.png" alt-text="Částečný snímek obrazovky s LUIS navigačním panelem pomocí ikony Azure":::
 
     Pokud už máte LUIS vytváření prostředků ve vašem předplatném a přiřadíte ho k účtu LUIS během přihlašování, vyberte možnost **použít existující prostředek pro vytváření obsahu** a zadejte následující informace:
 
@@ -67,7 +67,7 @@ Když se poprvé přihlásíte na portál LUIS, určete typ účtu pomocí násl
 
 1. Vytvořit nový prostředek pro vytváření
 
-    :::image type="content" source="media/sign-in/signup-create-resource.png" alt-text="Vytvořit prostředek pro vytváření":::
+    :::image type="content" source="media/sign-in/signup-create-resource.png" alt-text="Částečný snímek obrazovky s LUIS navigačním panelem pomocí ikony Azure":::
 
     Při **vytváření nového prostředku pro vytváření obsahu**zadejte následující informace:
 
@@ -78,7 +78,7 @@ Když se poprvé přihlásíte na portál LUIS, určete typ účtu pomocí násl
 
 1. Po zvolení cesty může trvat několik sekund, než se zobrazí znaménko "váš účet se úspěšně migrovali". Dokončete výběrem možnosti **pokračovat**.
 
-    :::image type="content" source="media/sign-in/signup-confirm-2.png" alt-text="Potvrdit vytváření prostředku":::
+    :::image type="content" source="media/sign-in/signup-confirm-2.png" alt-text="Částečný snímek obrazovky s LUIS navigačním panelem pomocí ikony Azure":::
 
     > [!Note]
     > Pokud máte předplatné a alespoň jeden prostředek pro vytváření v této oblasti, který je stejný jako ten, který se na portále přihlašujete, můžete se automaticky přihlásit k LUIS migrováním a přidruženým k prostředku, aniž byste museli zvolit cestu, na kterou se chcete dostat.
@@ -90,7 +90,7 @@ Když se poprvé přihlásíte na portál LUIS, určete typ účtu pomocí násl
 
 1. Dokončete výběrem možnosti **pokračovat**. Automaticky se přihlásíte pomocí zkušební verze nebo počátečního klíče. To znamená, že nakonec budete muset [migrovat svůj účet](luis-migration-authoring.md#migration-steps) a propojit své aplikace s prostředky pro vytváření obsahu. Aby se proces migrace mohl absolvovat, musíte se přihlásit k [bezplatné zkušební verzi Azure](https://azure.microsoft.com/free/).
 
-    :::image type="content" source="media/sign-in/signup-no-subscription.png" alt-text="Žádný scénář předplatného":::
+    :::image type="content" source="media/sign-in/signup-no-subscription.png" alt-text="Částečný snímek obrazovky s LUIS navigačním panelem pomocí ikony Azure":::
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

@@ -2,20 +2,20 @@
 title: Připojte virtuální počítač SLE k Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si, jak nakonfigurovat a připojit virtuální počítač s SUSE Linux Enterprise k Azure AD Domain Services spravované doméně.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.author: iainfou
-ms.openlocfilehash: 9f50be95e456802c6ad403acd6a2f539780e53a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 5d89f1a3d6028afb3450e0112a6081c9c706775b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88251164"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962458"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Připojení virtuálního počítače s SUSE Linux Enterprise k Azure Active Directory Domain Services spravované doméně
 
@@ -23,7 +23,7 @@ Pokud chcete umožnit uživatelům přihlašovat se k virtuálním počítačům
 
 V tomto článku se dozvíte, jak připojit virtuální počítač s SUSE Linux Enterprise (SLE) ke spravované doméně.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 

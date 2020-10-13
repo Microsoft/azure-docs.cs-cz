@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: d34b5aaaa12a3d296f92e0d7be34ae76931d8506
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268481"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Media Services V3
@@ -121,7 +121,7 @@ Správným přístupem je použití služby Secure token Service. V závislosti 
 
 Použijte rozhraní API pro Azure Media Services ke konfiguraci poskytování licencí/klíčů a šifrování prostředků (jak je znázorněno v [této ukázce](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)).
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 - [Přehled ochrany obsahu](content-protection-overview.md)
 - [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md)
@@ -191,7 +191,7 @@ V závislosti na návrhu klíče mezipaměti pro Content Delivery Network se mů
 
 #### <a name="is-fps-offline-mode-supported-on-ios-11-in-addition-to-ios-10"></a>Podporuje se kromě iOS 10 offline režim přechodu do režimu FPS v iOS 11?
 
-Yes. Režim offline režimu FPS je podporován pro iOS 10 a iOS 11.
+Ano. Režim offline režimu FPS je podporován pro iOS 10 a iOS 11.
 
 #### <a name="why-cant-i-find-the-document-offline-playback-with-fairplay-streaming-and-http-live-streaming-in-the-fps-server-sdk"></a>Proč v sadě SDK serveru pro FPS nejde najít dokument "offline přehrávání pomocí FairPlay streaming a HTTP Live Streaming"?
 

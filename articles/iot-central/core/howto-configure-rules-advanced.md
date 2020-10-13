@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 037598212773ca75abbdd086fe0577e0660f2218
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91398574"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Použití pracovních postupů k integraci aplikace IoT Central Azure s dalšími Cloud Services
@@ -27,7 +27,7 @@ Konektor Azure IoT Central v3 pro automatické automatizace a Azure Logic Apps u
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Nastavení řešení vyžaduje verzi 3 IoT Central aplikaci. Informace o tom, jak zjistit verzi vaší aplikace, najdete v tématu [o vaší aplikaci](./howto-get-app-info.md). Informace o tom, jak vytvořit aplikaci IoT Central, najdete v tématu [Vytvoření aplikace Azure IoT Central](./quick-deploy-iot-central.md).
 
@@ -66,16 +66,16 @@ Postup přidání konektoru služby **Azure IoT Central V3-Preview** jako akce v
 1. V Power automatu na panelu **Zvolte akci** vyberte **vlastní** kartu.
 1. Vyhledejte *IoT Central* a vyberte konektor **Azure IoT Central V3-Preview** .
 1. V seznamu akcí vyberte akci IoT Central, kterou chcete použít.
-1. V kroku akce dokončete konfiguraci pro akci, kterou jste zvolili. Potom vyberte **Uložit**.
+1. V kroku akce dokončete konfiguraci pro akci, kterou jste zvolili. Pak vyberte **Uložit**.
 
 Postup přidání konektoru služby **Azure IoT Central V3-Preview** jako akce v Azure Logic Apps:
 
 1. V **návrháři Logic Apps**v panelu **Zvolte akci** vyberte **vlastní** kartu.
 1. Vyhledejte *IoT Central*a vyberte konektor **Azure IoT Central V3-Preview** .
 1. V seznamu akcí vyberte akci IoT Central, kterou chcete použít.
-1. V kroku akce dokončete konfiguraci pro akci, kterou jste zvolili. Potom vyberte **Uložit**.
+1. V kroku akce dokončete konfiguraci pro akci, kterou jste zvolili. Pak vyberte **Uložit**.
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Najděte konektor Azure IoT Central v3 a vyberte akci.":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Najděte konektor Azure IoT Central-Preview a vyberte Trigger.":::
 
 ## <a name="list-of-actions"></a>Seznam akcí
 

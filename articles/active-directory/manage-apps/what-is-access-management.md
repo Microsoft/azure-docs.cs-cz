@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
 ms.openlocfilehash: d9dd03ec349daf2312b7d803e16e3c5fb41ecf0c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604100"
 ---
 # <a name="managing-access-to-apps"></a>Správa přístupu k aplikacím
 
-Průběžná správa přístupu, vyhodnocení využití a vytváření sestav se po integraci aplikace do systému identit vaší organizace pořád stane výzvou. V mnoha případech musí správci IT nebo helpdesku vzít v úvahu probíhající aktivní roli při správě přístupu k vašim aplikacím. V některých případech je přiřazení prováděno generálním týmem týmu nebo oddělení IT. Rozhodnutí o přiřazení je často určené k tomu, aby mohl být delegovaný vedoucím podniku pro rozhodování, který vyžaduje jejich schválení předtím, než provede přiřazení.  Jiné organizace investovaly do integrace s existujícím automatizovaným systémem pro správu identit a přístupu, jako je Access Control na základě rolí (RBAC) nebo Access Control na základě atributů (ABAC). Vývoj pro integraci i pravidla je typicky specializovaný a nákladný. Monitorování nebo vytváření sestav z obou přístupů je svou vlastní samostatnou, nákladnou a složitou investici.
+Průběžná správa přístupu, vyhodnocení využití a vytváření sestav se po integraci aplikace do systému identit vaší organizace pořád stane výzvou. V mnoha případech musí správci IT nebo helpdesku vzít v úvahu probíhající aktivní roli při správě přístupu k vašim aplikacím. V některých případech je přiřazení prováděno generálním týmem týmu nebo oddělení IT. Rozhodnutí o přiřazení je často určené k tomu, aby mohl být delegovaný vedoucím podniku pro rozhodování, který vyžaduje jejich schválení předtím, než provede přiřazení.  Jiné organizace investovaly do integrace s existujícím automatizovaným systémem pro správu identit a přístupu, jako je Role-Based Access Control (RBAC) nebo Attribute-Based Access Control (ABAC). Vývoj pro integraci i pravidla je typicky specializovaný a nákladný. Monitorování nebo vytváření sestav z obou přístupů je svou vlastní samostatnou, nákladnou a složitou investici.
 
 ## <a name="how-does-azure-active-directory-help"></a>Jak Azure Active Directory nápovědě?
 

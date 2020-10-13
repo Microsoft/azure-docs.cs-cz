@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89458616"
 ---
 # <a name="azure-encryption-overview"></a>Přehled šifrování v Azure
@@ -179,7 +179,7 @@ Připojení brány VPN typu Site-to-site můžete použít k připojení místn�
 
 Připojení VPN typu Site-to-site k virtuální síti můžete nakonfigurovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 [Vytvoření připojení typu Site-to-site v Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
@@ -197,7 +197,7 @@ Další informace o šifrování dat při přenosu v Data Lake najdete v tématu
 
 Šifrování je bez správné ochrany a správy klíčů vygenerováno zbytečným. Key Vault je řešení, které se doporučuje od Microsoftu pro správu a řízení přístupu k šifrovacím klíčům používaným v cloudových službách. Oprávnění pro přístup k klíčům můžete přiřazovat službám nebo uživatelům prostřednictvím účtů Azure Active Directory.
 
-Key Vault zbavuje organizace nutnost konfigurovat, opravovat a udržovat moduly hardwarového zabezpečení (HSM) a software pro správu klíčů. Při použití Key Vault zachováte řízení. Microsoft nikdy nevidí vaše klíče a aplikace k nim nemají přímý přístup. Můžete také importovat nebo generovat klíče v HSM.
+Díky Key Vaultu organizace nemusí konfigurovat, opravovat a udržovat moduly hardwarového zabezpečení (HSM) a software pro správu klíčů. Při použití Key Vault zachováte řízení. Microsoft nikdy nevidí vaše klíče a aplikace k nim nemají přímý přístup. Můžete také importovat nebo generovat klíče v HSM.
 
 ## <a name="next-steps"></a>Další kroky
 

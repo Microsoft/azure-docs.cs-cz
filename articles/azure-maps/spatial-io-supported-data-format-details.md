@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310165"
 ---
 # <a name="supported-data-format-details"></a>Podrobnosti o podporovaných formátech dat
 
-Tento článek poskytuje konkrétní informace o podpoře čtení a zápisu u všech značek XML a známých typů geometrie textu. Také podrobně popisuje, jak se v modulu pro prostorové vstupně-výstupní operace analyzují oddělená prostorová data.
+Tento článek poskytuje konkrétní informace o podpoře čtení a zápisu pro všechny značky XML a Well-Known typy geometrie textu. Také podrobně popisuje, jak se v modulu pro prostorové vstupně-výstupní operace analyzují oddělená prostorová data.
 
 ## <a name="supported-xml-namespaces"></a>Podporované obory názvů XML
 
@@ -304,7 +304,7 @@ Při psaní;
 - Odkazy na jednotlivé Waypoints se budou rozdělit do jednotlivých.
 - Mnohoúhelníky a další mnohoúhelníky budou zapsány jako stopy. 
   
-## <a name="supported-well-known-text-geometry-types"></a>Podporované typy geometrie známého textu
+## <a name="supported-well-known-text-geometry-types"></a>Podporované typy geometrie textu Well-Known
 
 | Typ geometrie | Čtení | Zápis |
 |--------------|:----:|:-----:|
@@ -343,7 +343,7 @@ Při psaní;
 
 ## <a name="delimited-spatial-data-support"></a>Podpora prostorových dat s oddělovači
 
-Oddělená prostorová data, jako jsou textový soubor s oddělovači (CSV), mají často sloupce, které obsahují prostorová data. Například mohou být sloupce obsahující informace o zeměpisné šířce a délce. Ve známém formátu textu může být sloupec, který obsahuje data prostorové geometrie.
+Oddělená prostorová data, jako jsou textový soubor s oddělovači (CSV), mají často sloupce, které obsahují prostorová data. Například mohou být sloupce obsahující informace o zeměpisné šířce a délce. V Well-Known formátu textu může být sloupec, který obsahuje data prostorové geometrie.
 
 ### <a name="spatial-data-column-detection"></a>Detekce sloupce prostorových dat
 
@@ -383,9 +383,9 @@ Při čtení souboru s oddělovači, který obsahuje prostorová data, se hlavi�
 - `alt`
 - `z`
 
-#### <a name="geography"></a>Geography
+#### <a name="geography"></a>Geografie
 
-První řádek dat bude prohledáván pro řetězce, které jsou ve známém formátu textu. 
+První řádek dat bude prohledáván pro řetězce, které jsou ve formátu Well-Known text. 
 
 ### <a name="delimited-data-column-types"></a>Typy datových sloupců s oddělovači
 
@@ -410,10 +410,10 @@ Při kontrole řádku záhlaví budou všechny informace o typu, které jsou v n
 #### <a name="dates"></a>Kalendářní data
 
 - EDM. DateTime
-- datum
+- date
 - datetime
 
-#### <a name="geography"></a>Geography
+#### <a name="geography"></a>Geografie
 
 - EDM. geografie
 - geografické

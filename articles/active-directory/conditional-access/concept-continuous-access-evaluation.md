@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266055"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
@@ -144,7 +144,7 @@ V případě CAE máme přehledy o pojmenovaných umístěních založených na 
 
 ### <a name="ip-address-configuration"></a>Konfiguraci IP adresy
 
-Poskytovatelé identity a poskytovatelé prostředků můžou zobrazovat různé IP adresy. Tato neshoda může nastat kvůli implementaci síťových proxy serverů ve vaší organizaci nebo nesprávných konfiguracích protokolu IPv4/IPv6 mezi poskytovatelem identity a poskytovatelem prostředků. Příklad:
+Poskytovatelé identity a poskytovatelé prostředků můžou zobrazovat různé IP adresy. Tato neshoda může nastat kvůli implementaci síťových proxy serverů ve vaší organizaci nebo nesprávných konfiguracích protokolu IPv4/IPv6 mezi poskytovatelem identity a poskytovatelem prostředků. Například:
 
 - Poskytovatel identity uvidí jednu IP adresu z klienta.
 - Poskytovatel prostředků uvidí od klienta jinou IP adresu po předání prostřednictvím proxy serveru.
@@ -156,7 +156,7 @@ Pokud tento scénář existuje ve vašem prostředí, aby se předešlo nekoneč
 
 | Kanál aktualizace Office | DisableADALatopWAMOverride | DisableAADWAM |
 | --- | --- | --- |
-| Půlroční podnikový kanál | Pokud je nastavené na povoleno nebo 1, CAE se nepodporuje. | Pokud je nastavené na povoleno nebo 1, CAE se nepodporuje. |
+| Semi-Annual podnikového kanálu | Pokud je nastavené na povoleno nebo 1, CAE se nepodporuje. | Pokud je nastavené na povoleno nebo 1, CAE se nepodporuje. |
 | Aktuální kanál <br> nebo <br> Měsíční podnikový kanál | CAE se podporuje bez ohledu na nastavení. | CAE se podporuje bez ohledu na nastavení. |
 
 Vysvětlení kanálů aktualizace Office najdete v tématu [Přehled kanálů aktualizací pro aplikace Microsoft 365](https://docs.microsoft.com/deployoffice/overview-update-channels). Doporučuje se, aby organizace nezakázal správce webových účtů (WAM).

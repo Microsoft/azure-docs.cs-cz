@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.author: inhenkel
 ms.openlocfilehash: 826fda62f9c5c97d045f6dc31189b26255e72f33
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91532682"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Umožňuje živé streamování pomocí Media Services k vytváření datových proudů s více přenosovými rychlostmi pomocí Azure Portal
@@ -65,7 +65,7 @@ Následující část představuje obecné kroky, které jsou součástí proces
 1. Kdykoli budete chtít zastavit streamování a archivaci události, zastavte událost.
 1. Odstraňte událost (volitelně můžete odstranit i asset).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kurzu potřebujete následující:
 
@@ -196,7 +196,7 @@ Pokud chcete spravovat prostředky, vyberte **Nastavení** a klikněte na **pros
 
 ![Prostředky](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 * V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amshelp@microsoft.com.
 * Zkontrolujte, že koncový bod streamování, ze kterého chcete streamovat obsah, je ve stavu **Spuštěno**.

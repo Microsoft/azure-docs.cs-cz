@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: chuye
 ms.openlocfilehash: d318983cec1365b71d14731395e71528621659d6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89051909"
 ---
 # <a name="azure-storage-explorer-blob-versioning-guide"></a>Průvodce správou verzí objektů BLOB Průzkumník služby Azure Storage
@@ -34,12 +34,12 @@ V této části najdete některé definice, které vám pomůžou pochopit jejic
 
 Průzkumník služby Storage podporuje čtyři různá zobrazení pro zobrazení objektů BLOB.
 
-| Zobrazení | Aktivní objekty blob bez verze | Obnovitelné – odstraněné objekty blob bez verze | Verze objektů BLOB |
+| Zobrazit | Aktivní objekty blob bez verze | Obnovitelné – odstraněné objekty blob bez verze | Verze objektů BLOB |
 | ---- | :----------: | :-----------: | :------------------: |
-| Aktivní objekty blob | Ano | Ne | Pouze aktuální verze |
-| Aktivní objekty BLOB a obnovitelné odstraněné objekty blob | Ano | Ano | Pouze aktuální verze |
-| Aktivní objekty BLOB a objekty blob bez aktuální verze | Ano | Ne | Aktuální verze nebo nejnovější aktivní verze |
-| Všechny objekty BLOB a objekty blob bez aktuální verze | Ano | Ano | Aktuální verze nebo nejnovější verze |
+| Aktivní objekty blob | Yes | No | Pouze aktuální verze |
+| Aktivní objekty BLOB a obnovitelné odstraněné objekty blob | Yes | Yes | Pouze aktuální verze |
+| Aktivní objekty BLOB a objekty blob bez aktuální verze | Yes | No | Aktuální verze nebo nejnovější aktivní verze |
+| Všechny objekty BLOB a objekty blob bez aktuální verze | Yes | Yes | Aktuální verze nebo nejnovější verze |
 
 ### <a name="active-blobs"></a>Aktivní objekty blob
 
