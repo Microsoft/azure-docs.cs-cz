@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
 ms.openlocfilehash: df691f5b9e74432f683e52fbb896dd4d44efe2aa
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91622058"
 ---
 # <a name="media-reserved-units"></a>Rezervované jednotky médií
@@ -41,7 +41,7 @@ Následující tabulka vám pomůže při rozhodování o tom, jak určit různ�
 > [!NOTE]
 > Pokud jste pro svůj účet nezřídili, budou se vaše mediální úlohy zpracovávat s výkonem seznamu S1 a úlohy se budou postupně vyzvednout. Žádná kapacita zpracování není vyhrazená, takže čekací doba mezi dokončením jednoho úkolu a dalším počátkem bude záviset na dostupnosti prostředků v systému.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 * Pro analýzy zvuku a úlohy analýzy videí, které se spouštějí Media Services V3 nebo Video Indexer, se důrazně doporučuje zřídit účet s deseti jednotkami S3. Pokud potřebujete více než 10 S3 MRUs, otevřete lístek podpory pomocí [Azure Portal](https://portal.azure.com/).
 * Pro úlohy kódování, které nemají MRUs, není k dispozici horní mez doby, kterou mohou úlohy ve stavu zařazeny do fronty, a současně bude spuštěna pouze jedna úloha.
@@ -54,6 +54,6 @@ Následující tabulka vám pomůže při rozhodování o tom, jak určit různ�
 [Škálování rezervovaných jednotek médií pomocí](media-reserved-units-cli-how-to.md) rozhraní PŘÍKAZového řádku 
  [Analýza videí](analyze-videos-tutorial-with-api.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Kvóty a omezení](limits-quotas-constraints.md)

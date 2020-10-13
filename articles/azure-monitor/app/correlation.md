@@ -8,10 +8,10 @@ ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 53ce3764d074388213a3a4be08502b09743e28cb
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827622"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
@@ -62,7 +62,7 @@ Application Insights se převádí na [kontext trasování W3C](https://w3c.gith
 - `traceparent`: Provede globálně jedinečné ID operace a jedinečný identifikátor volání.
 - `tracestate`: Přenese kontext trasování specifický pro systém.
 
-Nejnovější verze Application Insights SDK podporuje protokol kontextu trasování, ale může být nutné se k němu přihlásit. (Bude zachována zpětná kompatibilita s předchozím protokolem korelace, který podporuje sada SDK Application Insights.)
+Nejnovější verze sady Application Insights SDK podporuje protokol Trace-Context, ale možná se k ní budete muset přihlásit. (Bude zachována zpětná kompatibilita s předchozím protokolem korelace, který podporuje sada SDK Application Insights.)
 
 [Korelační protokol HTTP, označovaný také jako Request-ID](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md), se už nepoužívá. Tento protokol definuje dvě hlavičky:
 
@@ -84,7 +84,7 @@ Další informace najdete v tématu [Application Insights datovém modelu teleme
 
 ### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>Povolení podpory distribuovaného trasování W3C pro aplikace .NET
 
-Distribuované trasování založené na formátu W3C je ve výchozím nastavení povolené v rámci všech nejnovějších .NET Framework/. NET Core SDK spolu s zpětnou kompatibilitou se starší verzí protokolu požadavků-ID.
+Distribuované trasování založené na formátu W3C je ve výchozím nastavení povolené v všech nejnovějších .NET Framework/. NET Core SDK a v případě zpětné kompatibility se starším protokolem Request-Id.
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Povolit podporu distribuovaného trasování W3C pro aplikace Java
 
@@ -170,7 +170,7 @@ Jako referenci se dá datový model OpenCensus najít [tady](https://github.com/
 
 ### <a name="incoming-request-correlation"></a>Korelace příchozích požadavků
 
-OpenCensus Python koreluje hlavičky W3C Trace-Context z příchozích požadavků do rozsahů, které jsou generovány z požadavků samotných. OpenCensus to provede automaticky s integrací pro tyto oblíbené webové aplikace: baňky, Django a jehlany. Stačí pouze naplnit hlavičky kontextu trasování W3C pomocí [správného formátu](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) a odeslat je do žádosti. Tady je ukázková aplikace, která demonstruje toto:
+OpenCensus Python koreluje hlavičky W3C Trace-Context z příchozích požadavků do rozsahů, které jsou generovány z požadavků samotných. OpenCensus to provede automaticky s integrací pro tyto oblíbené webové aplikace: baňky, Django a jehlany. Stačí, když naplníte hlavičky Trace-Context W3C [správným formátem](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) a odešlete je do žádosti. Tady je ukázková aplikace, která demonstruje toto:
 
 ```python
 from flask import Flask

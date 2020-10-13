@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 48fedf7f3a73ce7fde60a1df80d971a5d7f88dd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73eb6938f4b43c204ab8bc91217e4828454e222d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88540574"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944199"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí Citrix NetScaler (ověřování na základě hlaviček)
 
@@ -392,7 +392,7 @@ Vytvoření vazby zásad přepisování na virtuální server pomocí grafickéh
 
 1. V podokně **virtuální server vyrovnávání zatížení** v části **Upřesnit nastavení**vyberte **zásady**. V seznamu se zobrazí všechny zásady, které jsou nakonfigurované pro vaši instanci NetScaler.
  
-    ![Konfigurace Citrix NetScaler – podokno virtuálního serveru pro vyrovnávání zatížení](./media/header-citrix-netscaler-tutorial/header05.png)
+    ![Snímek obrazovky, který zobrazuje kartu "konfigurace" se zvýrazněnými poli "název", "akce" a "výraz" a vybraným tlačítkem "vytvořit".](./media/header-citrix-netscaler-tutorial/header05.png)
 
     ![Konfigurace Citrix NetScaler – podokno virtuálního serveru pro vyrovnávání zatížení](./media/header-citrix-netscaler-tutorial/header06.png)
 

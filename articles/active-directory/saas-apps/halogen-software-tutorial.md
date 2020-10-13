@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 1743908652a70667a368dced18b2e808ce590a1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 746f60374a4e8f01af119d6e9c604b941e7c4950
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549989"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944231"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-talentspace"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Saba TalentSpace
 
@@ -131,15 +131,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Klikněte na kartu **Možnosti** .
   
-    ![Co je služba Azure AD Connect](./media/halogen-software-tutorial/tutorial-halogen-12.png)
+    ![Snímek obrazovky zobrazující domovskou stránku "Saba TalentSpace" se zvolenou kartou možnosti.](./media/halogen-software-tutorial/tutorial-halogen-12.png)
 
 3. V levém navigačním podokně klikněte na **Konfigurace SAML**.
   
-    ![Co je služba Azure AD Connect](./media/halogen-software-tutorial/tutorial-halogen-13.png)
+    ![Snímek obrazovky, který zobrazuje levé navigační podokno uživatelského rozhraní s vybranou konfigurací S A M L.](./media/halogen-software-tutorial/tutorial-halogen-13.png)
 
 4. Na stránce **Konfigurace SAML** proveďte následující kroky:
 
-    ![Co je služba Azure AD Connect](./media/halogen-software-tutorial/tutorial-halogen-14.png)
+    ![Snímek obrazovky zobrazující stránku konfigurace S M L s zvýrazněnými možnostmi nastavení](./media/halogen-software-tutorial/tutorial-halogen-14.png)
 
     a. Jako **jedinečný identifikátor**vyberte **NameId**.
 
@@ -166,7 +166,7 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v Saba Talen
 
 2. Klikněte na kartu **centrum uživatelů** a pak klikněte na **vytvořit uživatele**.
 
-    ![Co je služba Azure AD Connect](./media/halogen-software-tutorial/tutorial-halogen-300.png)  
+    ![Snímek obrazovky zobrazující, že je vybraná karta "centrum uživatelů" a "vytvořit uživatele".](./media/halogen-software-tutorial/tutorial-halogen-300.png)  
 
 3. Na stránce **Nový uživatel** proveďte následující kroky:
 

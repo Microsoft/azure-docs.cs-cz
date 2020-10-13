@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.openlocfilehash: e1d1ffbf198a4e4c2574f93919ef98e36a90004a
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91566988"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Nejčastější dotazy k SQL Server na virtuálních počítačích Azure
@@ -56,7 +56,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Návody zobecnit SQL Server na virtuálním počítači Azure a použít ho k nasazení nových virtuálních počítačů?**
 
-   Můžete nasadit virtuální počítač s Windows serverem (bez nainstalovaného SQL Server) a pomocí procesu [SQL sysprepu](/sql/database-engine/install-windows/install-sql-server-using-sysprep) zobecnit SQL Server na virtuálním počítači Azure (Windows) s SQL Server instalačním médiem. Zákazníci, kteří mají [program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) , mohou získat instalační média z [centra](https://www.microsoft.com/Licensing/servicecenter/default.aspx)multilicenčního programu. Zákazníci, kteří nemají Software Assurance, mohou použít instalační médium z Azure Marketplace SQL Server image virtuálního počítače, která má požadovanou edici.
+   Můžete nasadit virtuální počítač s Windows serverem (bez nainstalovaného SQL Server) a pomocí procesu [SQL sysprepu](/sql/database-engine/install-windows/install-sql-server-using-sysprep) zobecnit SQL Server na virtuálním počítači Azure (Windows) s SQL Server instalačním médiem. Zákazníci, kteří mají [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3), můžou instalační médium získat z centra [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Zákazníci, kteří nemají Software Assurance, mohou použít instalační médium z Azure Marketplace SQL Server image virtuálního počítače, která má požadovanou edici.
 
    Případně můžete použít jednu z SQL Server imagí z Azure Marketplace k generalizaci SQL Server na virtuálním počítači Azure. Všimněte si, že před vytvořením vlastní image musíte ve zdrojové imagi odstranit následující klíč registru. V takovém případě může dojít k tomu, že SQL Server bloating nastavení spouštěcí složky nebo rozšíření SQL IaaS ve stavu selhání.
 
@@ -72,7 +72,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Je možné nastavit konfigurace, které nejsou v galerii virtuálních počítačů zobrazené (například Windows 2008 R2 + SQL Server 2012)?**
 
-   No. Pro image z Galerie virtuálních počítačů, které zahrnují SQL Server, je nutné vybrat jednu z poskytnutých imagí buď pomocí Azure Portal nebo pomocí [PowerShellu](create-sql-vm-powershell.md). Máte ale možnost nasadit virtuální počítač s Windows a SQL Server k němu nainstalovat sami. Musíte pak [zaregistrovat svůj SQL Server virtuální počítač pomocí poskytovatele prostředků SQL Server](sql-vm-resource-provider-register.md) pro správu SQL Server virtuálního počítače v Azure Portal a využívat funkce, jako je automatické opravy a automatické zálohování. 
+   Ne. Pro image z Galerie virtuálních počítačů, které zahrnují SQL Server, je nutné vybrat jednu z poskytnutých imagí buď pomocí Azure Portal nebo pomocí [PowerShellu](create-sql-vm-powershell.md). Máte ale možnost nasadit virtuální počítač s Windows a SQL Server k němu nainstalovat sami. Musíte pak [zaregistrovat svůj SQL Server virtuální počítač pomocí poskytovatele prostředků SQL Server](sql-vm-resource-provider-register.md) pro správu SQL Server virtuálního počítače v Azure Portal a využívat funkce, jako je automatické opravy a automatické zálohování. 
 
 
 ## <a name="creation"></a>Vytvoření
@@ -85,7 +85,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
    Nejdřív vytvořte virtuální počítač Azure s instancí SQL Server. Pak migrujte své místní databáze do této instance. Informace o strategiích migrace dat najdete v tématu [migrace databáze SQL Server pro SQL Server na virtuálním počítači Azure](migrate-to-vm-from-sql-server.md).
 
-## <a name="licensing"></a>Licencování
+## <a name="licensing"></a>Licensing
 
 1. **Jak můžu na virtuální počítač Azure nainstalovat licencovanou kopii SQL Serveru?**
 
@@ -101,7 +101,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
    
 1. **Je možné přepínat modely licencování na SQL Server nasazeném virtuálním počítači pomocí klasického modelu?**
 
-   No. Změna modelů licencování není na klasickém virtuálním počítači podporována. Virtuální počítač můžete migrovat na model Azure Resource Manager a zaregistrovat u poskytovatele prostředků virtuálního počítače s SQL Serverem. Změny modelu licencování budou na virtuálním počítači k dispozici po dokončení registrace virtuálního počítače u poskytovatele prostředků virtuálního počítače s SQL Serverem.
+   Ne. Změna modelů licencování není na klasickém virtuálním počítači podporována. Virtuální počítač můžete migrovat na model Azure Resource Manager a zaregistrovat u poskytovatele prostředků virtuálního počítače s SQL Serverem. Změny modelu licencování budou na virtuálním počítači k dispozici po dokončení registrace virtuálního počítače u poskytovatele prostředků virtuálního počítače s SQL Serverem.
 
 1. **Můžu pomocí webu Azure Portal spravovat více instancí na jednom virtuálním počítači?**
 
@@ -139,7 +139,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Zaregistrujeme svůj virtuální počítač pomocí nového poskytovatele prostředků SQL Server virtuálních počítačů, který přináší další náklady?**
 
-   No. Poskytovatel prostředků virtuálního počítače s SQL Server jenom umožňuje další možnosti správy pro SQL Server na virtuálním počítači Azure bez dalších poplatků. 
+   Ne. Poskytovatel prostředků virtuálního počítače s SQL Server jenom umožňuje další možnosti správy pro SQL Server na virtuálním počítači Azure bez dalších poplatků. 
 
 1. **Je poskytovatel prostředků SQL Server virtuálních počítačů dostupný pro všechny zákazníky?**
  
@@ -202,7 +202,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Kde získám instalační médium potřebné ke změně edice nebo verze SQL Serveru?**
 
-   Zákazníci, kteří mají [program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) , mohou získat instalační média z [centra](https://www.microsoft.com/Licensing/servicecenter/default.aspx)multilicenčního programu. Zákazníci, kteří nemají Software Assurance, mohou použít instalační médium z Azure Marketplace SQL Server image virtuálního počítače, která má požadovanou edici.
+   Zákazníci, kteří mají [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default), můžou instalační médium získat z centra [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Zákazníci, kteří nemají Software Assurance, mohou použít instalační médium z Azure Marketplace SQL Server image virtuálního počítače, která má požadovanou edici.
    
 1. **Jak se na virtuálním počítači s SQL Serverem instalují aktualizace a aktualizace Service Pack?**
 
@@ -239,7 +239,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
    
     Ano. Místní služba DTC je podporovaná pro SQL Server 2016 SP2 a vyšší. Avšak aplikace musí být testovány při použití skupin dostupnosti Always On, protože transakce probíhající během převzetí služeb při selhání se nezdaří a musí se opakovat. Služba DTC (CLUSTERED DTC) je dostupná od Windows serveru 2019. 
 
-## <a name="resources"></a>Zdroje informací
+## <a name="resources"></a>Zdroje a prostředky
 
 **Virtuální počítače s Windows**:
 

@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
 ms.openlocfilehash: b107b4a54b7d013da160119b16bd646a79cce696
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91626832"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Import aplikace logiky jako rozhraní API
@@ -31,7 +31,7 @@ V tomto článku získáte informace o těchto tématech:
 > -   Testovat rozhraní API na portálu Azure Portal
 > -   Testovat rozhraní API na portálu pro vývojáře
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 -   Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 -   Ujistěte se, že ve vašem předplatném je aplikace logiky, která zveřejňuje koncový bod HTTP. Další informace najdete v [pracovních postupech s koncovými body http](../logic-apps/logic-apps-http-endpoint.md) .

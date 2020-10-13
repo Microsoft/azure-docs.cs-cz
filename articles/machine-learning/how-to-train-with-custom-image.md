@@ -11,10 +11,10 @@ ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 8239d037d6bd68638998cbb36c47c7dac4bce30d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537612"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>Výuka modelu pomocí vlastní image Docker
@@ -25,7 +25,7 @@ Ukázkové skripty v tomto článku se používají ke klasifikaci PET imagí vy
 
 I když Azure Machine Learning poskytuje výchozí základní image Docker, můžete k určení konkrétní základní image použít taky Azure Machine Learning prostředí, jako je například jedna ze sady udržovaných [základních imagí Azure ml](https://github.com/Azure/AzureML-Containers) nebo vlastní [Image](how-to-deploy-custom-docker-image.md#create-a-custom-base-image). Vlastní základní image umožňují pečlivě spravovat závislosti a při provádění školicích úloh udržovat užší kontrolu nad verzemi komponent. 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 Spusťte tento kód v jednom z těchto prostředí:
 * Azure Machine Learning výpočetní instance – nepotřebujete žádné soubory ke stažení nebo instalaci
     * Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.

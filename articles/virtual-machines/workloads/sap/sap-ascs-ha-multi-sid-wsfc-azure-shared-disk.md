@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4856b2578a007f72aeeec64588ac7f9c58158de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8116f3e00d13c0bd1e5f075a7fbe3264f337079
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88860941"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970397"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>Vysoká dostupnost služby SAP ASCS/SCS instance multi-SID s využitím clusteringu s podporou převzetí služeb při selhání Windows serveru a sdíleného disku Azure
 
@@ -34,13 +34,13 @@ Tento článek se zaměřuje na to, jak přejít z jedné instalace ASCS/SCS do 
 
 V současné době můžete pro instanci SAP ASCS/SCS použít disky Azure SSD úrovně Premium jako sdílený disk Azure. Jsou zavedena tato omezení:
 
--  [Azure Ultra disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) se nepodporuje jako sdílený disk Azure pro úlohy SAP. V současné době není možné umístit virtuální počítače Azure pomocí Azure Ultra disk v sadě dostupnosti.
--  [Sdílený disk Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) s SSD úrovně Premium disky se podporuje jenom s virtuálními počítači ve skupině dostupnosti. V nasazení Zóny dostupnosti se nepodporuje. 
--  Hodnota sdíleného disku Azure [maxShares](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable?tabs=azure-cli#disk-sizes) určuje, kolik uzlů clusteru může používat sdílený disk. V případě instance SAP ASCS/SCS nakonfigurujete dva uzly v clusteru s podporou převzetí služeb při selhání systému Windows, takže hodnota vlastnosti `maxShares` musí být nastavena na hodnotu dvě.
--  Všechny virtuální počítače s clustery SAP ASCS/SCS musí být nasazené ve stejné [skupině umístění služby Azure Proximity](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups).   
+-  [Azure Ultra disk](../../disks-types.md#ultra-disk) se nepodporuje jako sdílený disk Azure pro úlohy SAP. V současné době není možné umístit virtuální počítače Azure pomocí Azure Ultra disk v sadě dostupnosti.
+-  [Sdílený disk Azure](../../windows/disks-shared.md) s SSD úrovně Premium disky se podporuje jenom s virtuálními počítači ve skupině dostupnosti. V nasazení Zóny dostupnosti se nepodporuje. 
+-  Hodnota sdíleného disku Azure [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) určuje, kolik uzlů clusteru může používat sdílený disk. V případě instance SAP ASCS/SCS nakonfigurujete dva uzly v clusteru s podporou převzetí služeb při selhání systému Windows, takže hodnota vlastnosti `maxShares` musí být nastavena na hodnotu dvě.
+-  Všechny virtuální počítače s clustery SAP ASCS/SCS musí být nasazené ve stejné [skupině umístění služby Azure Proximity](../../windows/proximity-placement-groups.md).   
    I když můžete nasadit virtuální počítače clusterů Windows ve skupině dostupnosti se sdíleným diskem Azure bez PPG, PPG zajistí uzavření fyzické blízkosti sdílených disků Azure a virtuálních počítačů clusteru, čímž se dosáhne nižší latence mezi virtuálními počítači a vrstvou úložiště.    
 
-Další podrobnosti o omezeních pro sdílený disk Azure najdete v části s [omezeními](https://docs.microsoft.com/azure/virtual-machines/linux/disks-shared#limitations) v dokumentaci ke sdíleným diskům Azure.  
+Další podrobnosti o omezeních pro sdílený disk Azure najdete v části s [omezeními](../../linux/disks-shared.md#limitations) v dokumentaci ke sdíleným diskům Azure.  
 
 > [!IMPORTANT]
 > Při nasazování clusteru SAP ASCS/SCS Windows s podporou převzetí služeb při selhání se sdíleným diskem Azure Pamatujte na to, že nasazení bude pracovat s jedním sdíleným diskem v jednom úložném clusteru. Vaše instance SAP ASCS/SCS bude ovlivněna v případě problémů s clusterem úložiště, kde je nasazen sdílený disk Azure.  
@@ -111,7 +111,7 @@ Kromě **existující instance clusteru** SAP **PR1** ASCS/SCS budeme instalovat
 
 ### <a name="create-azure-internal-load-balancer"></a>Vytvoření interního nástroje pro vyrovnávání zatížení Azure
 
-SAP ASCS, SAP SCS a nový ERS2 SAP použijte virtuální název hostitele a virtuální IP adresy. V Azure musí [Nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) používat virtuální IP adresu. Důrazně doporučujeme použít službu [Load Balancer úrovně Standard](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal). 
+SAP ASCS, SAP SCS a nový ERS2 SAP použijte virtuální název hostitele a virtuální IP adresy. V Azure musí [Nástroj pro vyrovnávání zatížení](../../../load-balancer/load-balancer-overview.md) používat virtuální IP adresu. Důrazně doporučujeme použít službu [Load Balancer úrovně Standard](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md). 
 
 Do existujícího nástroje pro vyrovnávání zatížení budete muset přidat konfiguraci pro druhou instanci SAP SID ASCS/SCS/OLAJÍCÍCH **PR2**. Konfigurace pro první **PR1** SAP SID by měla být již na místě.  
 

@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.openlocfilehash: 464e75e55bc67ce619134be01ba00f2606a271a4
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91709066"
 ---
 # <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultačních služeb
@@ -100,7 +100,7 @@ Tato stránka umožňuje nastavit primární produkt, který vaše konzultační
 
     - Analýzy
     - Modernizace aplikací
-    - Archivovat
+    - Archiv
     - AI a strojové učení
     - Backup
     - Velký objem dat
@@ -140,7 +140,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 3. Oblasti řešení
 4. Obory
 5. Název nabídky
-6. Souhrn
+6. Shrnutí
 7. Description
 8. Snímky obrazovky a videa
 
@@ -155,7 +155,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 3. Produkty
 4. Obory
 5. Název nabídky
-6. Souhrn
+6. Shrnutí
 7. Description
 8. Snímky obrazovky a videa
 9. Dokumenty

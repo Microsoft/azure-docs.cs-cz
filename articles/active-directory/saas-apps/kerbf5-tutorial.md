@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 9db53e36dee318d39d34d26a548d1d32cbbec3b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe0f2b0efa3f089398493cf30012e34097e065ec
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266033"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944272"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s F5
 
@@ -72,15 +72,15 @@ Chcete-li začít, potřebujete následující položky:
 
 2. Na stránce **s asistencí** klikněte v levém horním rohu na možnost **upgradovat konfiguraci s asistencí** .
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure14.png) 
+    ![Snímek obrazovky se stránkou "konfigurace s asistencí", která je vybrána v akci "upgrade s asistencí".](./media/kerbf5-tutorial/configure14.png) 
 
 3. Na zobrazené obrazovce konfigurace příručky pro upgrade vyberte **možnost zvolit soubor** . načte se stažený balíček pro použití a klikněte na tlačítko **nahrát a nainstalovat** .
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure15.png) 
+    ![Snímek obrazovky, na které se zobrazuje automaticky otevíraná okna konfigurace s asistencí s výběrem možnosti soubor a nahrání a instalace](./media/kerbf5-tutorial/configure15.png) 
 
 4. Po dokončení upgradu klikněte na tlačítko **pokračovat** .
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure16.png)
+    ![Snímek obrazovky zobrazující dialog aktualizace s asistencí je dokončen a vybrané tlačítko pokračovat.](./media/kerbf5-tutorial/configure16.png)
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -213,60 +213,60 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Přejděte do **seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . Zadejte **název certifikátu** (bude odkazován později v konfiguraci). Ve **zdroji certifikátu**vyberte Odeslat soubor a při konfiguraci jednotného přihlašování SAML zadejte certifikát stažený z Azure. Klikněte na **importovat**.
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure01.png) 
+    ![Snímek obrazovky se stránkou s názvem "s S certifikátem/zdrojem klíčů", která obsahuje zvýrazněný název certifikátu, nahrát soubor a vybrané tlačítko Import](./media/kerbf5-tutorial/configure01.png) 
 
 1. Kromě toho budete vyžadovat **certifikát SSL pro název hostitele aplikace. Přejděte do seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . **Typ importu** bude **PKCS 12 (IIS)**. Zadejte **název klíče** (bude odkazován později v konfiguraci) a zadejte soubor PFX. Zadejte **heslo** pro PFX. Klikněte na **importovat**.
 
     >[!NOTE]
     >V příkladu našeho názvu aplikace `Kerbapp.superdemo.live` používáme certifikát se zástupnými kartami. naše KeyName je `WildCard-SuperDemo.live`
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure02.png) 
+    ![Snímek obrazovky se stránkou "S S certifikátem/zdrojem klíčů" s zadanými hodnotami a vybraným tlačítkem import.](./media/kerbf5-tutorial/configure02.png) 
  
 1. K nastavení federace služby Azure AD a přístupu k aplikacím použijeme prostředí s asistencí. Přejděte na – F5 BIG-IP **Main** a vyberte **přístup > s asistencí konfigurace > federaci > poskytovatele služeb SAML**. Klikněte na **Další** a potom na **Další** . tím spustíte konfiguraci.
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure03.png) 
+    ![Snímek obrazovky zobrazující stránku s asistencí konfigurací se zvýrazněnou ikonou "federace" a "S" poskytovatelem služeb A.](./media/kerbf5-tutorial/configure03.png) 
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure04.png)
+    ![Snímek obrazovky se stránkou "konfigurace s asistencí-S" poskytovatelem služby M "s vybraným tlačítkem" Další ".](./media/kerbf5-tutorial/configure04.png)
 
 1. Zadejte **název konfigurace**. Zadejte **ID entity** (stejné jako to, co jste nakonfigurovali v konfiguraci aplikace Azure AD). Zadejte **název hostitele**. Přidejte **Popis** pro referenci. Přijměte zbývající výchozí položky a vyberte a pak klikněte na **uložit & další**.
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure05.png) 
+    ![Snímek obrazovky s zvýrazněnými textovými poli "Service Provider Properties" a "Description" a vybraným tlačítkem Uložit & Next.](./media/kerbf5-tutorial/configure05.png) 
 
 1. V tomto příkladu vytváříme nový virtuální server jako 192.168.30.200 s portem 443. Zadejte IP adresu virtuálního serveru v **cílové adrese**. Vyberte **profil SSL**klienta, vyberte vytvořit novou. Zadejte dříve nahraný certifikát aplikace (v tomto příkladu certifikát zástupné karty) a související klíč a potom klikněte na **uložit & další**.
 
     >[!NOTE]
     >v tomto příkladu náš interní webserver běží na portu 80 a chceme ho publikovat v 443.
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure06.png)
+    ![Snímek obrazovky zobrazující stránku vlastností virtuálního serveru se zvýrazněným textovým polem cílová adresa a vybraným tlačítkem Uložit & další.](./media/kerbf5-tutorial/configure06.png)
 
 1. V části **Vybrat metodu Nakonfigurujte konektor IDP**, zadejte metadata, klikněte na vybrat soubor a nahrajte soubor XML s metadaty staženými dříve ze služby Azure AD. Zadejte jedinečný **název** pro IDP konektor SAML. Vyberte **certifikát pro podpis metadat** , který se nahrál dříve. Klikněte na **uložit & další**.
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure07.png)  
+    ![Snímek obrazovky zobrazující stránku nastavení konektoru externího zprostředkovatele identity se zvýrazněným textovým polem název a vybraným tlačítkem Uložit & další.](./media/kerbf5-tutorial/configure07.png)  
 
 1. V části **Vybrat fond**zadejte **vytvořit novou** (případně vyberte fond, který už existuje). Nechte výchozí hodnotu.    V části servery fondů zadejte IP adresu do pole **IP adresa/název uzlu**. Zadejte **port**. Klikněte na **uložit & další**.
  
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure08.png)
+    ![Snímek obrazovky zobrazující stránku vlastností fondu se zvýrazněnými textovými poli IP adresa/název uzlu a portem a vybraným tlačítkem Uložit & další.](./media/kerbf5-tutorial/configure08.png)
 
-1. Na obrazovce nastavení jednotného přihlašování vyberte **Povolit jednotné přihlašování**. V části **vybraný typ jednotného přihlašování** vyberte **Kerberos**. Nahraďte **Session. SAML. Last. identity**  pomocí **Session. SAML. Last. attr. Name. identity** v rámci **zdroje uživatelského jména** (Tato proměnná se nastaví pomocí mapování deklarací v Azure AD). Vyberte **Zobrazit upřesňující nastavení**. V části **sféra protokolu Kerberos** zadejte název domény. V části **název účtu/heslo účtu** zadejte účet delegování APM a heslo. Zadejte IP adresu řadiče domény v poli **KDC** . Klikněte na **uložit & další**.
+1. Na obrazovce nastavení jednoho Sign-On vyberte **Povolit jednotné přihlašování**. V části **vybraný typ jednoho Sign-On** vyberte možnost **Kerberos**. Nahraďte **Session. SAML. Last. identity**  pomocí **Session. SAML. Last. attr. Name. identity** v rámci **zdroje uživatelského jména** (Tato proměnná se nastaví pomocí mapování deklarací v Azure AD). Vyberte **Zobrazit upřesňující nastavení**. V části **sféra protokolu Kerberos** zadejte název domény. V části **název účtu/heslo účtu** zadejte účet delegování APM a heslo. Zadejte IP adresu řadiče domény v poli **KDC** . Klikněte na **uložit & další**.
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure09.png)   
+    ![Snímek obrazovky zobrazující nastavení "jednotné Sign-On" se zvýrazněnými textovými poli a vybraným tlačítkem Uložit & další.](./media/kerbf5-tutorial/configure09.png)   
 
 1. Pro účely tohoto návodu provedeme přeskočení kontrol koncových bodů.  Podrobnosti najdete v dokumentaci k F5.  Na obrazovce vyberte **uložit & další**.
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure10.png) 
+    ![Snímek obrazovky, na kterém je zobrazená stránka kontroly koncových bodů a vybrané tlačítko Uložit & další](./media/kerbf5-tutorial/configure10.png) 
 
 1. Přijměte výchozí hodnoty a klikněte na **uložit & další**. Podrobnosti o nastavení správy relace SAML najdete v dokumentaci ke službě F5.
 
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure11.png) 
+    ![Snímek obrazovky zobrazující stránku nastavení časového limitu s vybraným tlačítkem Uložit & další](./media/kerbf5-tutorial/configure11.png) 
  
 1. Zkontrolujte obrazovku souhrnu a vyberte **nasadit** a NAKONFIGURUJTE tak Big-IP.
  
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure12.png)
+    ![Snímek obrazovky zobrazující, že vaše aplikace je připravená k nasazení, se zvýrazněným oddílem souhrn a vybraným tlačítkem nasadit.](./media/kerbf5-tutorial/configure12.png)
 
 1. Po nakonfigurování aplikace klikněte na **Dokončit**.
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure13.png)
+    ![Snímek obrazovky zobrazující stránku aplikace, která je nasazená, s vybraným tlačítkem Dokončit](./media/kerbf5-tutorial/configure13.png)
 
 ## <a name="advanced-configuration"></a>Pokročilá konfigurace
 
@@ -317,27 +317,27 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
 15. Klikněte na **Hotovo**. Nový server se zobrazí v seznamu. Tím se nový server služby Active Directory přidá do seznamu serverů služby Active Directory.
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure17.png)
+    ![Snímek obrazovky zobrazující oddíly "Obecné vlastnosti" a "konfigurace".](./media/kerbf5-tutorial/configure17.png)
 
 ### <a name="saml-configuration"></a>Konfigurace SAML
 
 1. Certifikát metadat bude nutné importovat do F5, který bude později použit v procesu instalace. Přejděte do **seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** .
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure18.png)
+    ![Snímek obrazovky se stránkou "Import s certifikátem nebo zdrojem klíčů" s vybraným tlačítkem import.](./media/kerbf5-tutorial/configure18.png)
 
 2. Pro nastavení IDP SAML **přejděte na přístup > federace > SAML: Service Provider > externí konektory IDP**a klikněte na **vytvořit > z metadat**.
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure19.png)
+    ![Snímek obrazovky se stránkou poskytovatele "S A M L" s "z metadat", která je vybrána v rozevíracím seznamu "vytvořit".](./media/kerbf5-tutorial/configure19.png)
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure20.png)
+    ![Snímek obrazovky s dialogovým oknem vytvořit novou S A M L A d P konektor](./media/kerbf5-tutorial/configure20.png)
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure21.png)
+    ![Snímek obrazovky, který zobrazuje okno "upravit S A M L I d P konektor" s vybraným obecným nastavením.](./media/kerbf5-tutorial/configure21.png)
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure22.png)
+    ![Snímek obrazovky, který zobrazuje okno "upravit S A M L I d P konektor" s vybraným nastavením služby Jednotné přihlašování.](./media/kerbf5-tutorial/configure22.png)
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure23.png)
+    ![Snímek obrazovky, který zobrazuje okno "upravit S A M L I d P konektor" s vybraným nastavením zabezpečení.](./media/kerbf5-tutorial/configure23.png)
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure24.png)
+    ![Snímek obrazovky, který zobrazuje okno "upravit S A M L I d P konektor" s vybraným S nastavením služby S.](./media/kerbf5-tutorial/configure24.png)
 
 1. Pokud chcete nastavit službu SAML SP, přejděte k části **přístup > federaci > poskytovatele služby saml > místní služby SP** a klikněte na **vytvořit**. Vyplňte následující informace a klikněte na tlačítko **OK**.
 
@@ -348,17 +348,17 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
     * Host: kerbapp200. demo. Live
     * Popis: kerbapp200. demo. Live
 
-     ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure25.png)
+     ![Snímek obrazovky s oknem upravit S A M L S P Service s vybraným obecným nastavením](./media/kerbf5-tutorial/configure25.png)
 
      b. Vyberte konfiguraci SP, KerbApp200SAML a klikněte na **BIND/zrušit konektory IDP**.
 
-     ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure26.png)
+     ![Snímek obrazovky se stránkou "S A M L Service Provider-Local S P Services", která má vybranou možnost "KerbAPP200 S A M L".](./media/kerbf5-tutorial/configure26.png)
 
-     ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure27.png)
+     ![Snímek obrazovky zobrazující, že je vybrané tlačítko pro konektory vytvořit vazbu/vyvážet I d P](./media/kerbf5-tutorial/configure27.png)
 
      c. Klikněte na **Přidat nový řádek** a vyberte **externí konektor IDP** vytvořený v předchozím kroku, klikněte na **aktualizovat**a pak klikněte na **OK**.
 
-     ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure28.png)
+     ![Snímek obrazovky s vybraným oknem pro úpravy S A M L A d PS, který v okně Přidat nový řádek používá toto okno S](./media/kerbf5-tutorial/configure28.png)
 
 1. Pokud chcete nakonfigurovat jednotné přihlašování Kerberos, přejděte na **Access > jednotné přihlašování > Kerberos**, vyplňte informace a klikněte na **Hotovo**.
 
@@ -369,7 +369,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
     * **Zdroj sféry uživatele**: Session. Logon. Last. Domain
 
-        ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure29.png)
+        ![Snímek obrazovky se zvýrazněnou stránkou "Single Sign-On-Properties" se zvýrazněnými textovými poli "zdroj uživatelského jména" a "zdroj sféry uživatele".](./media/kerbf5-tutorial/configure29.png)
 
 1. Pro konfiguraci přístupového profilu přejděte na **access > Profile/zásady > přístup k profilu (zásady pro každou relaci)**, klikněte na **vytvořit**, dokončete následující informace a klikněte na **Hotovo**.
 
@@ -378,38 +378,38 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
     * Rozsah profilu: Profil
     * Jazyky: angličtina
 
-        ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure30.png)
+        ![Snímek obrazovky zobrazující stránku Profiles/policies-Properties s zvýrazněnými textovými poli "název", "typ profilu" a "langauges".](./media/kerbf5-tutorial/configure30.png)
 
 1. Klikněte na název, KerbApp200, vyplňte následující informace a klikněte na **aktualizovat**.
 
     * Doménový soubor cookie: Ukázka. Live
     * Konfigurace jednotného přihlašování: KerAppSSO_sso
 
-        ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure31.png)
+        ![Snímek obrazovky, na které se zobrazuje stránka s názvem domény s D/ověřením se zvýrazněným rozevíracím seznamem "doména soubor cookie" a "S S konfigurací", a vybraným tlačítkem aktualizovat.](./media/kerbf5-tutorial/configure31.png)
 
 1. Klikněte na **zásady přístupu** a pak klikněte na **upravit zásady přístupu** pro profil "KerbApp200".
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure32.png)
+    ![Snímek obrazovky se stránkou "zásady přístupu" se zvolenou akcí upravit zásady přístupu pro KerbApp200 Profile.](./media/kerbf5-tutorial/configure32.png)
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure33.png)
+    ![Snímek obrazovky zobrazující stránku "zásady přístupu" a dialogové okno S A M L ověřováním S P](./media/kerbf5-tutorial/configure33.png)
 
-    ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure34.png)
+    ![Snímek obrazovky se zvýrazněnou stránkou "zásady přístupu" a dialog přiřazení "proměnné" se zvýrazněnými textovými poli přiřazení.](./media/kerbf5-tutorial/configure34.png)
 
     * **Session. Logon. Last. usernameUPN expr {[mcget {Session. SAML. Last. identity}]}**
 
     * **Session. AD. lastactualdomain TEXT demo. Live**
 
-        ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure35.png)
+        ![Snímek obrazovky zobrazující stránku "zásady přístupu" a dialogové okno Active Directory se zvýrazněným textovým polem "SearchFilter".](./media/kerbf5-tutorial/configure35.png)
 
     * **(userPrincipalName =% {Session. Logon. Last. usernameUPN})**
 
-        ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure36.png)
+        ![Snímek obrazovky se stránkou "zásada přístupu" s dialogovým oknem pravidla pro dotazování A D](./media/kerbf5-tutorial/configure36.png)
 
-        ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure37.png)
+        ![Snímek obrazovky se zvýrazněnými textovými poli vlastní proměnná a vlastní výraz](./media/kerbf5-tutorial/configure37.png)
 
     * **Session. Logon. Last. username expr {"[mcget {Session. AD. Last. attr. sAMAccountName}]"}**
 
-        ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure38.png)
+        ![Snímek obrazovky, který zobrazuje zvýrazněné textové pole uživatelské jméno z přihlašovací stránky](./media/kerbf5-tutorial/configure38.png)
 
     * **mcget {Session. Logon. Last. username}**
     * **mcget {Session. Logon. Last. Password**
@@ -420,7 +420,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
     * Popis: KerbApp200
     * Adresa: 192.168.20.200
 
-        ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure39.png)
+        ![Snímek obrazovky zobrazující stránku nový uzel s zvýrazněnými textovými poli "název", popis "a" adresa "a vybrané tlačítko" dokončeno ".](./media/kerbf5-tutorial/configure39.png)
 
 1. Pokud chcete vytvořit nový fond, přejděte na **místní provoz > fondy > seznam fondů, klikněte na vytvořit**, dokončete následující informace a klikněte na **Hotovo**.
 
@@ -430,7 +430,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
     * Adresa: 192.168.20.200
     * Port služby: 81
 
-        ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure40.png)
+        ![Snímek obrazovky se stránkou "nový fond" s zadanými hodnotami a vybraným tlačítkem "dokončeno".](./media/kerbf5-tutorial/configure40.png)
 
 1. Pro vytvoření virtuálního serveru přejděte na **místní provoz > virtuální servery > seznam virtuálních serverů > +**, dokončete následující informace a klikněte na **Hotovo**.
 
@@ -440,9 +440,9 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
     * Profil přístupu: KerbApp200
     * Zadejte profil přístupu vytvořený v předchozím kroku.
 
-        ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure41.png)
+        ![Snímek obrazovky zobrazující stránku "seznam virtuálních serverů" s názvem "název", "cílová adresa/maska" a "port služby", kde jsou zvýrazněna.](./media/kerbf5-tutorial/configure41.png)
 
-        ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure42.png)
+        ![Snímek obrazovky zobrazující stránku seznam virtuálních serverů s zvýrazněným rozevíracím seznamem profil přístupu](./media/kerbf5-tutorial/configure42.png)
 
 ### <a name="setting-up-kerberos-delegation"></a>Nastavení delegování protokolu Kerberos 
 
