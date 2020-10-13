@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13bb7782f6396466200fbb3e2df77158bb75d8a4
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705397"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>Přehled služby Azure Multi-Factor Authentication pro vaši organizaci
@@ -56,9 +56,9 @@ Poskytuje nejsilnější umístění zabezpečení a vylepšené uživatelské p
 | Metoda | Výchozí nastavení zabezpečení | Všechny ostatní metody |
 | --- | --- | --- |
 | Oznámení prostřednictvím mobilní aplikace | X | X |
-| Ověřovací kód z mobilní aplikace nebo hardwarového tokenu |   | X |
-| Textová zpráva na telefon |   | X |
-| Zavolat na telefon |   | X |
+| Ověřovací kód z mobilní aplikace nebo hardwarového tokenu |   | × |
+| Textová zpráva na telefon |   | × |
+| Zavolat na telefon |   | × |
 
 ## <a name="next-steps"></a>Další kroky
 

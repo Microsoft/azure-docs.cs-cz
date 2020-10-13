@@ -12,10 +12,10 @@ ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
 ms.openlocfilehash: 617128640c4f4ae4ce5ac32803e459a9a3eb448f
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706462"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Povolení automatického zřizování uživatelů pro aplikaci s více klienty
@@ -64,13 +64,13 @@ Pokud chcete zjistit, která možnost integrace se má použít pro vaši aplika
 |---|---|---|---|
 | Správa uživatelů a skupin ve službě Azure AD| √| √| Pouze uživatel |
 | Správa uživatelů a skupin synchronizovaných z místní služby Active Directory| √*| √*| Jenom uživatel * |
-| Přístup k datům mimo uživatele a skupiny během zřizování přístupu k Microsoft 365 dat (týmy, SharePoint, E-mail, kalendář, dokumenty atd.)| X +| √| X |
+| Přístup k datům mimo uživatele a skupiny během zřizování přístupu k Microsoft 365 dat (týmy, SharePoint, E-mail, kalendář, dokumenty atd.)| X +| √| × |
 | Vytváření, čtení a aktualizace uživatelů na základě obchodních pravidel| √| √| √ |
-| Odstranění uživatelů na základě obchodních pravidel| √| √| X |
-| Správa automatického zřizování uživatelů pro všechny aplikace z Azure Portal| √| X| √ |
-| Podpora více zprostředkovatelů identity| √| X| √ |
+| Odstranění uživatelů na základě obchodních pravidel| √| √| × |
+| Správa automatického zřizování uživatelů pro všechny aplikace z Azure Portal| √| ×| √ |
+| Podpora více zprostředkovatelů identity| √| ×| √ |
 | Podpora účtů hostů (B2B)| √| √| √ |
-| Podpora účtů mimo podnik (B2C)| X| √| √ |
+| Podpora účtů mimo podnik (B2C)| ×| √| √ |
 
 <sup>*</sup> – Azure AD Connect instalační program je nutný k synchronizaci uživatelů ze služby AD do Azure AD.  
 <sup>+</sup >– Použití SCIM pro zřizování vám nevylučuje integraci aplikace s Microsoft Graph pro jiné účely.

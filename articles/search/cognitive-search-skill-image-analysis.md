@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 63a1f8e30be2983c0df93ff5a7229460f8f39214
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69b84a3edb606ed99b6aaca7db5ad0e57124f1b9
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936040"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948931"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Vnímání znalostí analýzy obrázků
 
-Dovednost **analýzy obrázků** extrahuje bohatou sadu vizuálních funkcí založenou na obsahu obrázku. Můžete například vygenerovat titulek z obrázku, generovat značky nebo identifikovat celebrit a orientačních bodů. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [počítačové zpracování obrazu](../cognitive-services/computer-vision/home.md) . 
+Dovednost **analýzy obrázků** extrahuje bohatou sadu vizuálních funkcí založenou na obsahu obrázku. Můžete například vygenerovat titulek z obrázku, generovat značky nebo identifikovat celebrit a orientačních bodů. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [počítačové zpracování obrazu](../cognitive-services/computer-vision/overview.md) . 
 
 > [!NOTE]
 > Malé objemy (pod 20 transakcí) se dají v Azure Kognitivní hledání zdarma spustit, ale větší úlohy vyžadují [připojení fakturovatelné Cognitive Services prostředků](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
@@ -40,7 +40,7 @@ U parametrů se rozlišují malá a velká písmena.
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu      | Description                                          |
+| Název vstupu      | Popis                                          |
 |---------------|------------------------------------------------------|
 | `image`         | Komplexní typ. V současné době funguje pouze s polem "/Document/normalized_images" vytvořeným indexerem Azure Blob, pokud ```imageAction``` je nastavena na jinou hodnotu než ```none``` . Další informace najdete v [ukázce](#sample-output) .|
 
@@ -512,7 +512,7 @@ Můžete definovat mapování polí pro výstup na vlastnosti nižší úrovně,
 ## <a name="error-cases"></a>Chybové případy
 V následujících chybových případech nejsou extrahovány žádné prvky.
 
-| Kód chyby | Description |
+| Kód chyby | Popis |
 |------------|-------------|
 | `NotSupportedLanguage` | Zadaný jazyk není podporován. |
 | `InvalidImageUrl` | Adresa URL obrázku je chybně naformátovaná nebo není přístupná.|

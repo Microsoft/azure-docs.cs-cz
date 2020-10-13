@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak řešit potíže s instalací a r
 ms.topic: troubleshooting
 ms.date: 07/15/2019
 ms.openlocfilehash: 86f9dfd8554e2560ea16a85c3551dba3f7dc01f1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019619"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
@@ -67,7 +67,7 @@ Doporučujeme, abyste před zahájením řešení potíží s agentem služby Az
 
 | Chyba   | Doporučené akce |
 | ---     | ---    |
-|Nepovedlo se stáhnout soubor s přihlašovacími údaji trezoru. (ID: 403) | <ul><li> Zkuste stáhnout přihlašovací údaje trezoru pomocí jiného prohlížeče nebo proveďte tyto kroky: <ul><li> Spusťte aplikaci Internet Explorer. Vyberte F12. </li><li> Přejdete na kartu **síť** a vymažte mezipaměť a soubory cookie. </li> <li> Aktualizujte stránku.<br></li></ul> <li> Ověřte, jestli je předplatné zakázané nebo vypršela jeho platnost.<br></li> <li> Zkontroluje, jestli nějaké pravidlo brány firewall neblokuje stahování. <br></li> <li> Ujistěte se, že jste vyčerpali limit úložiště (50 počítačů na trezor).<br></li>  <li> Zajistěte, aby měl uživatel Azure Backup oprávnění, která jsou nutná ke stažení přihlašovacích údajů trezoru a registraci serveru v trezoru. Další informace najdete v tématu [použití Access Control na základě rolí ke správě Azure Backup bodů obnovení](backup-rbac-rs-vault.md).</li></ul> |
+|Nepovedlo se stáhnout soubor s přihlašovacími údaji trezoru. (ID: 403) | <ul><li> Zkuste stáhnout přihlašovací údaje trezoru pomocí jiného prohlížeče nebo proveďte tyto kroky: <ul><li> Spusťte aplikaci Internet Explorer. Vyberte F12. </li><li> Přejdete na kartu **síť** a vymažte mezipaměť a soubory cookie. </li> <li> Aktualizujte stránku.<br></li></ul> <li> Ověřte, jestli je předplatné zakázané nebo vypršela jeho platnost.<br></li> <li> Zkontroluje, jestli nějaké pravidlo brány firewall neblokuje stahování. <br></li> <li> Ujistěte se, že jste vyčerpali limit úložiště (50 počítačů na trezor).<br></li>  <li> Zajistěte, aby měl uživatel Azure Backup oprávnění, která jsou nutná ke stažení přihlašovacích údajů trezoru a registraci serveru v trezoru. Další informace najdete v tématu [použití Role-Based Access Control ke správě Azure Backup bodů obnovení](backup-rbac-rs-vault.md).</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Agent Microsoft Azure Recovery Services se nemohl připojit ke službě Microsoft Azure Backup
 
@@ -222,7 +222,7 @@ Pokud obnovení ještě neproběhne úspěšně, restartujte server nebo klienta
 
 Operace zálohování může selhat, pokud je složka mezipaměti (také označovaná jako pomocná složka) nesprávně nakonfigurovaná, chybějící předpoklady nebo má omezený přístup.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Aby operace agenta MARS uspěly ve složce mezipaměti, musí splňovat následující požadavky:
 

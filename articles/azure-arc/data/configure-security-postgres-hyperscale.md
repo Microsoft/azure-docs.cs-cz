@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zabezpečení pro skupinu serverů PostgreSQL s podporou rozšíření Azure ARC
-description: Konfigurace zabezpečení pro skupinu serverů PostgreSQL s podporou rozšíření Azure ARC
+title: Konfigurace zabezpečení pro skupinu serverů PostgreSQL Hyperscale s podporou služby Azure Arc
+description: Konfigurace zabezpečení pro skupinu serverů PostgreSQL Hyperscale s podporou služby Azure Arc
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -10,13 +10,13 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273196"
 ---
-# <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Konfigurace zabezpečení pro skupinu serverů PostgreSQL s podporou rozšíření Azure ARC
+# <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Konfigurace zabezpečení pro skupinu serverů PostgreSQL Hyperscale s podporou služby Azure Arc
 
 Tento dokument popisuje různé aspekty týkající se zabezpečení skupiny serverů:
 - Šifrování neaktivních uložených dat
@@ -117,7 +117,7 @@ Výstup:
 - Uživatelské jméno: Já
 - USERpassword: $1 $ Uc7jzZOp $ NTfcGo7F10zGOkXOwjHy31
 
-Když se připojím k aplikaci a předáte heslo, vyhledá se v `mysecrets` tabulce a vrátí jméno uživatele, pokud existuje shoda mezi heslem poskytnutým aplikací a hesly uloženými v tabulce. Příklad:
+Když se připojím k aplikaci a předáte heslo, vyhledá se v `mysecrets` tabulce a vrátí jméno uživatele, pokud existuje shoda mezi heslem poskytnutým aplikací a hesly uloženými v tabulce. Například:
 
 - Předáte chybné heslo:
    ```console
@@ -150,7 +150,7 @@ Tento malý příklad ukazuje, že můžete data v klidovém stavu zašifrovat (
 
 ## <a name="user-management"></a>Správa uživatelů
 ### <a name="general-perspectives"></a>Obecné perspektivy
-K vytvoření uživatelů nebo rolí můžete použít standardní Postgres způsob. Nicméně pokud to uděláte, budou tyto artefakty k dispozici pouze v roli koordinátora. Během období Preview nebudou tito uživatelé nebo role mít nadále přístup k datům distribuovaným mimo uzel koordinátora a na pracovních uzlech skupiny serverů. Důvodem je, že definice uživatele není ve verzi Preview replikována do pracovních uzlů.
+K vytvoření uživatelů nebo rolí můžete použít standardní Postgres způsob. Tyto artefakty však budou dostupné pouze na koordinačním uzlu. Ve verzi Preview tito uživatelé a tyto role ještě nebudou mít přístup k datům distribuovaným mimo koordinační uzel a na pracovních uzlech vaší skupiny serverů. Důvodem je to, že ve verzi Preview se definice uživatele nereplikuje na pracovní uzly.
 
 ### <a name="change-the-password-of-the-_postgres_-administrative-user"></a>Změna hesla _Postgres_ administrativního uživatele
 PostgreSQL s povoleným rozšířením Azure ARC přináší standardní Postgres administrativního uživatele _Postgres_ , pro který nastavíte heslo při vytváření skupiny serverů.

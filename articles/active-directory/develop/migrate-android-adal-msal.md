@@ -13,12 +13,12 @@ ms.date: 09/6/2019
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2a6722cfff392a18629c8bb47fad0ad5ac1a95b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77084049"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965994"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Příručka k migraci ADAL do MSAL pro Android
 
@@ -238,19 +238,16 @@ public interface SilentAuthenticationCallback {
 V ADAL existuje jeden typ výjimky, `AuthenticationException` která obsahuje metodu pro načtení `ADALError` hodnoty výčtu.
 V MSAL existuje hierarchie výjimek a každá má vlastní sadu souvisejících specifických kódů chyb.
 
-Seznam výjimek MSAL
-
-|Výjimka  | Popis  |
-|---------|---------|
-| `MsalException`     | Výchozí vyzkoušená výjimka vyvolaná nástrojem MSAL.  |
-| `MsalClientException`     | Vyvolána, pokud se jedná o chybu na straně klienta. |
-| `MsalArgumentException`     | Vyvoláno, pokud je jeden nebo více argumentů vstupů neplatných. |
-| `MsalClientException`     | Vyvolána, pokud se jedná o chybu na straně klienta. |
-| `MsalServiceException`     | Vyvolána, pokud je chyba na straně serveru. |
-| `MsalUserCancelException`     | Vyvolána, pokud uživatel zrušil tok ověřování.  |
-| `MsalUiRequiredException`     | Vyvoláno, pokud token nelze aktualizovat tiše.  |
-| `MsalDeclinedScopeException`     | Vyvoláno, pokud server odmítl jeden nebo více požadovaných oborů.  |
-| `MsalIntuneAppProtectionPolicyRequiredException` | Vyvoláno, pokud má prostředek zapnutou zásadu ochrany MAMCA. |
+| Výjimka                                        | Popis                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| `MsalException`                                  | Výchozí vyzkoušená výjimka vyvolaná nástrojem MSAL.                           |
+| `MsalClientException`                            | Vyvolána, pokud se jedná o chybu na straně klienta.                                 |
+| `MsalArgumentException`                          | Vyvoláno, pokud je jeden nebo více argumentů vstupů neplatných.                 |
+| `MsalServiceException`                           | Vyvolána, pokud je chyba na straně serveru.                                 |
+| `MsalUserCancelException`                        | Vyvolána, pokud uživatel zrušil tok ověřování.                |
+| `MsalUiRequiredException`                        | Vyvoláno, pokud token nelze aktualizovat tiše.                    |
+| `MsalDeclinedScopeException`                     | Vyvoláno, pokud server odmítl jeden nebo více požadovaných oborů. |
+| `MsalIntuneAppProtectionPolicyRequiredException` | Vyvoláno, pokud má prostředek zapnutou zásadu ochrany MAMCA.         |
 
 ### <a name="adalerror-to-msalexception-errorcode"></a>ADALError kód chyby MsalException
 

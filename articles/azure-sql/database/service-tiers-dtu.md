@@ -12,10 +12,10 @@ ms.author: sstein
 ms.date: 10/07/2020
 ms.reviewer: ''
 ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91848853"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služby v nákupním modelu založeném na DTU
@@ -73,7 +73,7 @@ Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (D
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Omezení eDTU elastického fondu, úložiště a databáze ve fondu
 
-|| **Basic** | **Standardní** | **Premium** |
+|| **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
 | **Maximální velikost úložiště na databázi**  | 2 GB | 1 TB | 1 TB |
 | **Maximální velikost úložiště na fond** | 156 GB | 4 TB | 4 TB |
@@ -114,7 +114,7 @@ Databáze má velikost na základě "faktoru škálování". Faktor škálován�
 
 Zatížení se skládá z devíti typů transakcí, jak je znázorněno v následující tabulce. Každá transakce je navržena k zdůraznění konkrétní sady systémových vlastností v databázovém stroji a na systémovém hardwaru s vysokým kontrastem od ostatních transakcí. Tento přístup usnadňuje vyhodnocení dopadu různých komponent na celkový výkon. Například transakce "Read těžký" vytváří velký počet operací čtení z disku.
 
-| Transaction Type (Typ transakce) | Popis |
+| Transaction Type (Typ transakce) | Description |
 | --- | --- |
 | Přečíst Lite |VYBRALI v paměti; jen pro čtení |
 | Přečíst médium |VYBRALI hlavně v paměti; jen pro čtení |
@@ -123,7 +123,7 @@ Zatížení se skládá z devíti typů transakcí, jak je znázorněno v násle
 | Aktualizace těžkých |Update hlavně není v paměti; čtení i zápis |
 | Vložit Lite |ZADAT v paměti; čtení i zápis |
 | Vložit těžký |ZADAT hlavně není v paměti; čtení i zápis |
-| Delete |DSTRANIT kombinace v paměti a nikoli v paměti; čtení i zápis |
+| Odstranit |DSTRANIT kombinace v paměti a nikoli v paměti; čtení i zápis |
 | Vysoký procesor |VYBRALI v paměti; poměrně silné zatížení procesoru; jen pro čtení |
 
 ### <a name="workload-mix"></a>Kombinace úloh
@@ -139,7 +139,7 @@ Transakce se vyberou náhodně z vážené distribuce s následující celkovou 
 | Aktualizace těžkých |3 |
 | Vložit Lite |3 |
 | Vložit těžký |2 |
-| Delete |2 |
+| Odstranit |2 |
 | Vysoký procesor |10 |
 
 ### <a name="users-and-pacing"></a>Uživatelé a stimulace

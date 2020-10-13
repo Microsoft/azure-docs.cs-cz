@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 1967a2fb5adebe01ef4bff8d58f7832bffe95762
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531266"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Kurz: nasazení a návod pro šablonu aplikace monitorování průběžného pacienta
@@ -61,11 +61,11 @@ Po nasazení šablony aplikace se na **řídicím panelu monitorování Lamna na
 
 * Změňte **stav pacienta** zařízení tak, aby označovalo, jestli se zařízení používá pro pacienta nebo vzdálený scénář.
 
-:::image type="content" source="media/lamna-in-patient.png" alt-text="Stav ve stavu pacient":::
+:::image type="content" source="media/lamna-in-patient.png" alt-text="Šablona aplikace Healthcre":::
 
 Můžete také vybrat **Přejít na řídicí panel Remote pacient** , kde se zobrazí řídicí panel pro Burkville ústavní zdravotní pracovník. Tento řídicí panel obsahuje podobnou sadu akcí, telemetrie a informací. Můžete také zobrazit více používaných zařízení a zvolit, aby **firmware aktualizoval** .
 
-:::image type="content" source="media/lamna-remote.png" alt-text="Řídicí panel vzdáleného operátoru":::
+:::image type="content" source="media/lamna-remote.png" alt-text="Šablona aplikace Healthcre":::
 
 ### <a name="device-templates"></a>Šablony zařízení
 
@@ -75,7 +75,7 @@ Pokud vyberete možnost **šablony zařízení**, zobrazí se v šabloně tyto d
 
 * **Chytrá složená závorka**: Toto zařízení představuje složenou závorku, kterou pacienti používá při obnovování z karty s výměnou kolena. Pokud vyberete tuto šablonu, zobrazí se vám možnosti, jako jsou data zařízení, rozsah pohybu a akcelerace.
 
-:::image type="content" source="media/smart-vitals-device-template.png" alt-text="Šablona inteligentní opravy":::
+:::image type="content" source="media/smart-vitals-device-template.png" alt-text="Šablona aplikace Healthcre":::
 
 ### <a name="device-groups"></a>skupiny zařízení.
 
@@ -93,7 +93,7 @@ Pokud vyberete možnost **pravidla**, zobrazí se v šabloně tři pravidla:
 
 * **Oprava baterie nízká**: Toto pravidlo se aktivuje, když úroveň baterie na zařízení překročí 10%. Toto pravidlo použijte, když chcete, aby se do pacienta aktivovalo oznámení, aby se mohlo účtovat zařízení.
 
-:::image type="content" source="media/brace-temp-rule.png" alt-text="Pravidla":::
+:::image type="content" source="media/brace-temp-rule.png" alt-text="Šablona aplikace Healthcre":::
 
 ### <a name="jobs"></a>Úlohy
 
@@ -113,7 +113,7 @@ Karta **vlastnosti** umožňuje upravit vlastnosti cloudu a vlastnosti zařízen
 
 Karta **příkazy** umožňuje spouštět na zařízení příkazy.
 
-:::image type="content" source="media/knee-brace-dashboard.png" alt-text="Řídicí panel pro kolenum ve složených závorkách":::
+:::image type="content" source="media/knee-brace-dashboard.png" alt-text="Šablona aplikace Healthcre":::
 
 ### <a name="data-export"></a>Export dat
 
@@ -123,7 +123,7 @@ Export dat umožňuje nepřetržitě exportovat data zařízení do jiných slu�
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte aplikaci tím, že navštívíte **správu > nastavení aplikace** a kliknete na **Odstranit**.
 
-:::image type="content" source="media/admin-delete.png" alt-text="Prostředky uklizený":::
+:::image type="content" source="media/admin-delete.png" alt-text="Šablona aplikace Healthcre":::
 
 ## <a name="next-steps"></a>Další kroky
 

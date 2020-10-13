@@ -170,9 +170,11 @@
             - name: Přepnutí živého chatu
               href: howto-show-hide-chat.md
     - name: Řešení potíží
-      items: null
-      '-name': Device connections
-      href: troubleshoot-connection.md
+      items:
+        - name: Připojení zařízení
+          href: troubleshoot-connection.md
+    - name: Nejčastější dotazy
+      href: howto-faq.md
 - name: Referenční informace
   items:
     - name: Azure CLI

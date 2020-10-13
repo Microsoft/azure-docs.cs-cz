@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 06/17/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 6aacc2778e02b96f31c633671da014ced30778fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ffdb7a3bb177092d728fbd469aa8cf95e93edb5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756666"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966096"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využívání modelu služby Azure Machine Learning nasazeného jako webová služba
 
@@ -46,7 +46,9 @@ Třída [AzureML. Core. WebService](https://docs.microsoft.com/python/api/azurem
 * `scoring_uri` – Adresa REST API.
 * `swagger_uri` – Adresa specifikace OpenAPI Tento identifikátor URI je k dispozici, pokud jste povolili automatické generování schématu. Další informace najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
-Existují tři způsoby, jak načíst tyto informace pro nasazené webové služby:
+Existuje několik způsobů, jak načíst tyto informace pro nasazené webové služby:
+
+# <a name="python"></a>[Python](#tab/python)
 
 * Při nasazení modelu se `Webservice` vrátí objekt s informacemi o službě:
 
@@ -72,6 +74,30 @@ Existují tři způsoby, jak načíst tyto informace pro nasazené webové služ
     print(service.scoring_uri)
     print(service.swagger_uri)
     ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud znáte název nasazené služby, použijte příkaz [AZ ml Service show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) :
+
+```azurecli
+az ml service show -n <service-name>
+```
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+V Azure Machine Learning Studiu vyberte __koncové__body, __koncové body v reálném čase__a potom název koncového bodu. V podrobnostech pro koncový bod obsahuje pole __koncový bod REST__ identifikátor URI pro vyhodnocování. __Identifikátor URI Swagger__ obsahuje identifikátor URI Swagger.
+
+---
+
+Následující tabulka ukazuje, jaké mají tyto identifikátory URI vypadat:
+
+| Typ URI | Příklad |
+| ----- | ----- |
+| Identifikátor URI pro vyhodnocování | `http://104.214.29.152:80/api/v1/service/<service-name>/score` |
+| Identifikátor URI Swagger | `http://104.214.29.152/api/v1/service/<service-name>/swagger.json` |
+
+> [!TIP]
+> IP adresa se pro vaše nasazení liší. Každý cluster AKS bude mít vlastní IP adresu, která je sdílená nasazeními do tohoto clusteru.
 
 ### <a name="secured-web-service"></a>Zabezpečená webová služba
 
@@ -268,7 +294,7 @@ Vrácené výsledky jsou podobné následujícímu dokumentu JSON:
 
 ## <a name="call-the-service-go"></a>Volání služby (Přejít)
 
-Tento příklad ukazuje, jak použít funkci přejít k volání webové služby vytvořené z [vlaku v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) :
+Tento příklad ukazuje, jak použít funkci přejít k volání webové služby vytvořené z [vlaku v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) :
 
 ```go
 package main
@@ -360,7 +386,7 @@ Vrácené výsledky jsou podobné následujícímu dokumentu JSON:
 
 ## <a name="call-the-service-java"></a>Volání služby (Java)
 
-Tento příklad ukazuje, jak použít jazyk Java k volání webové služby vytvořené z [vlaku v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) :
+Tento příklad ukazuje, jak použít jazyk Java k volání webové služby vytvořené z [vlaku v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) :
 
 ```java
 import java.io.IOException;
@@ -440,7 +466,7 @@ Vrácené výsledky jsou podobné následujícímu dokumentu JSON:
 
 ## <a name="call-the-service-python"></a>Volání služby (Python)
 
-Tento příklad ukazuje, jak použít Python pro volání webové služby vytvořené z [vlaku v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) :
+Tento příklad ukazuje, jak použít Python pro volání webové služby vytvořené z [vlaku v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) :
 
 ```python
 import requests
