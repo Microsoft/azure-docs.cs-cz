@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: e6a9560cfe0daf158dad03a3171047669a19eade
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13dd930842cb724d12711ac9e7704fd9af4e29d8
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547952"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944376"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>Kurz: Azure Active Directory integrace s Oneteam
 
@@ -101,7 +101,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Oneteam,
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně Oneteam a adresách URL](common/idp-intiated.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "základní S A M L konfigurace" se zvýrazněnými textovými poli "identifikátor" a "Reply U R L" a vybraným tlačítkem Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://api.one-team.io/teams/<team name>`
 

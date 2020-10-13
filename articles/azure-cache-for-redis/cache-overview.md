@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 26f6c8e3aceddc6f766bb43a1e384d761dee32bf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ec2a302226e3dc44701209a8cbb47b7814a5a2c
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631373"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874845"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 Azure cache pro Redis poskytuje úložiště dat v paměti založené na open source softwaru [Redis](https://redis.io/). Redis vylepšuje výkon a škálovatelnost aplikace, která se používá v úložištích back-end dat. Může zpracovávat velké objemy žádostí o aplikace tím, že udržuje často používaná data v paměti serveru, na kterou je možné zapisovat a číst rychleji. Redis přináší pro moderní aplikace kritická řešení pro úložiště dat s nízkou latencí a vysokou propustností.
@@ -23,7 +23,7 @@ Mezipaměť Azure pro Redis se dá použít jako distribuovaná data nebo mezipa
 ## <a name="key-scenarios"></a>Klíčové scénáře
 Azure cache pro Redis vylepšuje výkon aplikace tím, že podporuje běžné vzory architektury aplikací. Mezi nejběžnější případy použití patří:
 
-| Vzor      | Popis                                        |
+| Vzor      | Description                                        |
 | ------------ | -------------------------------------------------- |
 | [Mezipaměť dat](cache-web-app-cache-aside-leaderboard.md) | Databáze jsou často příliš velké, aby se načetly přímo do mezipaměti. Je běžné použít model doplňování [mezipaměti](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) k načtení dat do mezipaměti, jak je potřeba. Když systém provede změny dat, může systém aktualizovat také mezipaměť, která je poté distribuována jiným klientům. Kromě toho může systém nastavit vypršení platnosti dat nebo použít zásadu vyřazení k aktivaci aktualizací dat do mezipaměti.|
 | [Mezipaměť obsahu](cache-aspnet-output-cache-provider.md) | Mnoho webových stránek se generuje ze šablon, které používají statický obsah, jako jsou záhlaví, zápatí a bannery. Tyto statické položky by se neměly často měnit. Použití mezipaměti v paměti poskytuje rychlý přístup ke statickému obsahu v porovnání s úložištěm dat back-endu. Tento model zkracuje dobu zpracování a zatížení serveru, což umožňuje webovým serverům rychlejší odezvu. Umožňuje snížit počet serverů potřebných ke zpracování zatížení. Azure cache pro Redis poskytuje poskytovateli výstupní mezipaměti Redis pro podporu tohoto vzoru s ASP.NET.|
@@ -42,7 +42,7 @@ Azure cache pro Redis podporuje Redis verze 4. x a jako verzi Preview 6,0. Prove
 ## <a name="service-tiers"></a>Úrovně služby
 Mezipaměť Azure pro Redis je k dispozici na následujících úrovních:
 
-| Úroveň | Popis |
+| Úroveň | Description |
 |---|---|
 | Základní | Mezipaměť s jedním uzlem. Tato úroveň podporuje více velikostí paměti (250 MB až 53 GB) a je ideální pro vývoj a testování a méně důležité úlohy. Úroveň Basic nemá smlouvu o úrovni služeb (SLA). |
 | Standard | Replikovaná mezipaměť v konfiguraci se dvěma uzly, primárním serverem nebo replikou, kterou spravuje Azure s smlouvou [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)s vysokou dostupností. |
@@ -70,7 +70,7 @@ Při výběru mezipaměti Azure pro úroveň Redis byste měli vzít v úvahu n�
 * **Paměť**: úrovně Basic a Standard nabízejí 250 MB – 53 GB. Úroveň Premium nabízí až 1,2 TB (jako cluster) nebo 120 GB (neclusterovaný). Další informace najdete v tématu [ceny služby Azure cache pro Redis](https://azure.microsoft.com/pricing/details/cache/).
 * **Výkon sítě**: Pokud máte úlohu, která vyžaduje vysokou propustnost, úroveň Premium nabízí větší šířku pásma v porovnání se standardem nebo základním. Kromě toho v každé vrstvě mají větší velikost mezipaměti větší šířku pásma kvůli základnímu virtuálnímu počítači, který hostuje mezipaměť. Další informace najdete v tématu [o výkonu služby Azure cache pro Redis](cache-planning-faq.md#azure-cache-for-redis-performance).
 * **Propustnost**: úroveň Premium nabízí maximální dostupnou propustnost. Pokud server mezipaměti nebo klient dosáhne limitů šířky pásma, může docházet k vypršení časového limitu na straně klienta. Další informace najdete v následující tabulce.
-* **Vysoká dostupnost**: mezipaměť Azure pro Redis zaručuje, že mezipaměť Standard/Premium je dostupná podle naší [smlouvy SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Smlouva SLA pokrývá jenom připojení ke koncovým bodům mezipaměti. Smlouva SLA nepokrývá ochranu před ztrátou dat. Pro zvýšení odolnosti proti ztrátě dat doporučujeme používat funkci trvalosti dat Redis na úrovni Premium.
+* **Vysoká dostupnost**: Azure cache for Redis nabízí několik možností [vysoké dostupnosti](cache-high-availability.md) . Zaručuje, že mezipaměť Standard/Premium je k dispozici podle naší [smlouvy SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Smlouva SLA pokrývá jenom připojení ke koncovým bodům mezipaměti. Smlouva SLA nepokrývá ochranu před ztrátou dat. Pro zvýšení odolnosti proti ztrátě dat doporučujeme používat funkci trvalosti dat Redis na úrovni Premium.
 * **Trvalost dat Redis**: úroveň Premium vám umožňuje uchovávat data z mezipaměti v účtu Azure Storage. V mezipaměti Basic a Standard jsou všechna data uložena pouze v paměti. Základní problémy s infrastrukturou můžou způsobit ztrátu dat. Pro zvýšení odolnosti proti ztrátě dat doporučujeme používat funkci trvalosti dat Redis na úrovni Premium. Azure cache for Redis nabízí možnosti RDB a AOF (Preview) v Redis persistenci. Další informace najdete v tématu [Konfigurace trvalosti pro službu Azure cache Premium pro Redis](cache-how-to-premium-persistence.md).
 * **Cluster Redis**: Pokud chcete vytvořit mezipaměti větší než 120 GB nebo horizontálních oddílů data napříč několika uzly Redis, můžete použít clustering Redis, který je k dispozici na úrovni Premium. Každý uzel se skládá z dvojice mezipaměti primárního/repliky pro zajištění vysoké dostupnosti. Další informace najdete v tématu [Konfigurace clusteringu pro službu Azure cache v úrovni Premium pro Redis](cache-how-to-premium-clustering.md).
 * **Rozšířené zabezpečení a izolace sítě**: nasazení služby Azure Virtual Network (VNET) poskytuje rozšířené zabezpečení a izolaci pro službu Azure cache pro Redis a podsítě, zásady řízení přístupu a další funkce, které umožňují další omezení přístupu. Další informace najdete v tématu [jak nakonfigurovat Virtual Network podporu pro Azure cache Premium pro Redis](cache-how-to-premium-vnet.md).

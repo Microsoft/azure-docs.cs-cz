@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
 ms.openlocfilehash: f54245013b6a57c02120c0e97ecf5f39094148b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317731"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Integrace Azure Machine Learning Studio (Classic) v Stream Analytics (Preview)
@@ -187,7 +187,7 @@ Nyní se v případě každé události vstupu do systému souborů UDF (zde naz
 ```
 
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 Pokud potřebujete další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)
 
 ## <a name="next-steps"></a>Další kroky

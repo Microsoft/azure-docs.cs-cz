@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
 ms.openlocfilehash: 2b5440ad2bec94d4ef14fa29e723cc91a4fcdf10
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91766861"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integrace s nasazením Kubernetes pomocí Helm
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 V tomto kurzu se předpokládá základní znalost správy Kubernetes pomocí Helm. Přečtěte si další informace o instalaci aplikací pomocí Helm ve [službě Azure Kubernetes](https://docs.microsoft.com/azure/aks/kubernetes-helm).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 - Instalace rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) (verze 2.4.0 nebo novější)

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
 ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91766674"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurace vlastních upozornění pro monitorování inzerovaných tras
@@ -391,7 +391,7 @@ Po analýze formátu JSON akce **operace analýzy dat JSON** uloží obsah do v�
 
    :::image type="content" source="./media/custom-route-alert-portal/condition-control.png" alt-text="Přidat účet Automation":::
 
-5. V seznamu **Akce** vyberte možnost **řízení podmíněného řízení**. Řízení podmínky je struktura ovládacího prvku, porovnává data v pracovním postupu s konkrétními hodnotami nebo poli. Pak můžete zadat různé akce, které se spustí na základě toho, jestli data splňují podmínky.
+5. V seznamu **Akce** vyberte možnost **řízení podmíněného řízení**. Condition-Control je struktura ovládacího prvku porovnává data v pracovním postupu s konkrétními hodnotami nebo poli. Pak můžete zadat různé akce, které se spustí na základě toho, jestli data splňují podmínky.
 
    :::image type="content" source="./media/custom-route-alert-portal/condition.png" alt-text="Přidat účet Automation":::
 

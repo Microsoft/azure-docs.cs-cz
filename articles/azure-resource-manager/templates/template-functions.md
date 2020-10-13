@@ -2,13 +2,13 @@
 title: Funkce šablon
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení hodnot, práci s řetězci a čísly a načtení informací o nasazení.
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: c78e9481e6f2ba1f17389992aab2712719fc4c3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: a479b81d0f0bc378f77885cbd644e70d7be1d857
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378402"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961166"
 ---
 # <a name="arm-template-functions"></a>Funkce šablon ARM
 
@@ -104,9 +104,11 @@ Správce prostředků poskytuje následující funkce pro práci s logickými po
 
 * [and](template-functions-logical.md#and)
 * [bool](template-functions-logical.md#bool)
+* [chybné](template-functions-logical.md#false)
 * [if](template-functions-logical.md#if)
 * [mění](template-functions-logical.md#not)
-* [nebo](template-functions-logical.md#or)
+* [ani](template-functions-logical.md#or)
+* [podmínka](template-functions-logical.md#true)
 
 <a id="add" aria-hidden="true"></a>
 <a id="copyindex" aria-hidden="true"></a>
@@ -141,10 +143,12 @@ Správce prostředků poskytuje následující funkce pro práci s celými čís
 Správce prostředků poskytuje několik funkcí pro práci s objekty.
 
 * [zobrazí](template-functions-object.md#contains)
+* [Metody](template-functions-object.md#createobject)
 * [empty](template-functions-object.md#empty)
 * [průnik](template-functions-object.md#intersection)
 * [JSON](template-functions-object.md#json)
 * [length](template-functions-object.md#length)
+* [null](template-functions-object.md#null)
 * [sjednocovací](template-functions-object.md#union)
 
 <a id="extensionResourceId" aria-hidden="true"></a>

@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: 7e8ccc832cdf12176cd88cce0157c08d8bf92507
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5baa6d57bd3895640f1654cf7a5ebca52f101cbe
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372582"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970567"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Spouštění skriptů prostředí ve VIRTUÁLNÍm počítači se systémem Linux pomocí příkazu Spustit
 
@@ -39,7 +39,7 @@ Při použití příkazu Run platí následující omezení:
 * K vrácení výsledků skriptu se vyžaduje odchozí připojení z virtuálního počítače.
 
 > [!NOTE]
-> Aby bylo možné správně fungovat, příkaz run vyžaduje připojení (port 443) k veřejným IP adresám Azure. Pokud rozšíření nemá k těmto koncovým bodům přístup, můžou se skripty úspěšně spouštět, ale nevrátí výsledky. Pokud blokujete provoz na virtuálním počítači, můžete pomocí [značek služby](../../virtual-network/security-overview.md#service-tags) dovolit provoz na veřejné IP adresy Azure pomocí `AzureCloud` značky.
+> Aby bylo možné správně fungovat, příkaz run vyžaduje připojení (port 443) k veřejným IP adresám Azure. Pokud rozšíření nemá k těmto koncovým bodům přístup, můžou se skripty úspěšně spouštět, ale nevrátí výsledky. Pokud blokujete provoz na virtuálním počítači, můžete pomocí [značek služby](../../virtual-network/network-security-groups-overview.md#service-tags) dovolit provoz na veřejné IP adresy Azure pomocí `AzureCloud` značky.
 
 ## <a name="available-commands"></a>Dostupné příkazy
 
@@ -85,7 +85,7 @@ Po výběru příkazu spusťte skript výběrem možnosti **Spustit** . Po dokon
 Následující příklad používá ke spuštění skriptu PowerShellu na virtuálním počítači Azure rutinu [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) . Rutina očekává, že se skript, na který je odkazováno v `-ScriptPath` parametru, nachází v místním prostředí, kde se rutina spouští.
 
 ```powershell-interactive
-Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
+Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
 ```
 
 ## <a name="limiting-access-to-run-command"></a>Omezení přístupu ke spuštění příkazu

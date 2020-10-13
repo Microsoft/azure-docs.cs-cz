@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ae504a7dcd6f598c13b5fabffaca4ec6ec067e4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cb6a9691e1b3186e6493b4ae0b62857fb03f38c
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549921"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944000"
 ---
 # <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>Kurz: integrace Kiteworks s Azure Active Directory
 
@@ -100,11 +100,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na panelu nástrojů v horní části klikněte na **Nastavení**.
 
-    ![Konfigurace jednoho Sign-On](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
+    ![Snímek obrazovky zobrazující ikonu nastavení na panelu nástrojů](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
 
 1. V části **ověřování a autorizace** klikněte na **nastavení jednotného přihlašování**.
 
-    ![Konfigurace jednoho Sign-On](./media/kiteworks-tutorial/tutorial_kiteworks_07.png)
+    ![Snímek obrazovky, který zobrazuje nastavení "S S O" vybrané v části "ověřování a autorizace".](./media/kiteworks-tutorial/tutorial_kiteworks_07.png)
 
 1. Na stránce nastavení jednotného přihlašování proveďte následující kroky:
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: 97797e309c32c6ea996d5ae1901b9a266a683173
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537629"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Přidání profilů vyhodnocování do indexu služby Azure Cognitive Search
@@ -254,7 +254,7 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 ##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a> Nastavit interpoly  
  Interpolace umožňují nastavit tvar sklonu, který se používá pro bodování. Vzhledem k tomu, že je bodování vysoké, je sklon vždy nižší, ale interpolace určuje křivku sklonu dolů. Můžete použít následující interpolace:  
 
-| Interpolace | Popis |  
+| Interpolace | Description |  
 |-|-|  
 |`linear`|U položek, které jsou v rozsahu Max a min, se zvýšení použité pro položku provede v nepřetržitém snížení množství. Lineární je výchozí interpolací pro profil vyhodnocování.|  
 |`constant`|Pro položky, které jsou v rozsahu od začátku do konce, se pro výsledky řazení použije konstantní zvýšení.|  
@@ -281,6 +281,6 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 
 ## <a name="see-also"></a>Viz také  
 
-+ [Odkaz na REST API](/rest/api/searchservice/)
++ [Reference k rozhraní REST API](/rest/api/searchservice/)
 + [Vytvoření rozhraní API pro index](/rest/api/searchservice/create-index)
 + [Sada Azure Kognitivní hledání .NET SDK](/dotnet/api/overview/azure/search?)

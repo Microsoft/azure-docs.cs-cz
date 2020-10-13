@@ -7,14 +7,16 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: 78ad3c643b839d2a0901ac2c1d930d73b718cd8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b06306939884c046c1ed8113ff8523b53099667
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88999253"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970363"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Vytvořte Kubernetes vývojového prostoru: Visual Studio a .NET Core s Azure Dev Spaces
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 V tomto průvodci se naučíte:
 
@@ -160,7 +162,7 @@ Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes.
     <h2>Hello k8s in Azure!</h2>`
     ```
 
-2. Uložte soubor.
+2. Soubor uložte.
 3. Přejděte do prohlížeče a aktualizujte stránku. Na webové stránce by se měl zobrazit aktualizovaný kód HTML.
 
 Co se stalo? Úpravy souborů obsahu jako HTML a CSS nevyžadují rekompilaci ve webové aplikaci .NET Core. Aktivní relace F5 totiž automaticky synchronizuje všechny upravené soubory obsahu do kontejneru spuštěného v AKS, abyste změny obsahu viděli okamžitě.
@@ -170,7 +172,7 @@ Aktualizace souborů s kódem je o něco pracnější, protože aplikace .NET Co
 
 1. Zastavte ladicí program v sadě Visual Studio.
 1. Otevřete soubor s kódem, který se jmenuje `Controllers/HomeController.cs`, a upravte zprávu, která se zobrazí na stránce O aplikaci: `ViewData["Message"] = "Your application description page.";`
-1. Uložte soubor.
+1. Soubor uložte.
 1. Stisknutím klávesy **F5** znovu spusťte ladění. 
 
 Místo opětovného sestavení a nasazení nové image kontejneru po každé provedené změně, což často dlouho trvá, rekompiluje služba Azure Dev Spaces kód po přírůstcích ve stávajícím kontejneru, aby se zrychlil cyklus úprav/ladění.

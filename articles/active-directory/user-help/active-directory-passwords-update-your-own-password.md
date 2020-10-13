@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
 ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827763"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Resetujte své pracovní nebo školní heslo pomocí bezpečnostních údajů
@@ -155,7 +155,7 @@ Pokud správce zapnul funkci, uvidíte odkaz na **resetování hesla** na přihl
 
 Tady jsou některé běžné chybové případy a jejich řešení:
 
-|Problém|Popis|Řešení|
+|Problém|Description|Řešení|
 | --- | --- | --- |
 |Při pokusu o změnu mého hesla se zobrazí chyba. |Heslo obsahuje slovo, frázi nebo vzor, který umožňuje snadnou možnost uhodnout heslo.| Zkuste to znovu s silnějším heslem.|
 |Když zadáte moje ID uživatele, přejdete na stránku s oznámením "kontaktujte správce."|Společnost Microsoft určila, že vaše heslo účtu uživatele spravuje správce v místním prostředí. V důsledku toho nemůžete resetovat heslo z odkazu "nepřístup k vašemu účtu". |Další nápovědu získáte od správce.|

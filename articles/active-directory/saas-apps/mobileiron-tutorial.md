@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 45ad613fd250f905dd1cd5e14b5c8aeb42896a51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edfd14d979b84061690410f3da9e29ba07899654
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554630"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940969"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Kurz: Azure Active Directory integrace s MobileIron
 
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí MobileIr
 
 4. V části **základní konfigurace SAML** proveďte následující kroky, pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** :
 
-    ![Informace o jednotném přihlašování v doméně MobileIron a adresách URL](common/idp-intiated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://www.mobileiron.com/<key>`
 
@@ -107,7 +107,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí MobileIr
 
     c. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Informace o jednotném přihlašování v doméně MobileIron a adresách URL](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<host>.mobileiron.com/user/login.html`
 
@@ -124,11 +124,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí MobileIr
 
 2. **Admin**  >  **Identity** V poli **informace o nastavení cloudu IDPu** vyberte možnost AAD a vyberte možnost **AAD** .
 
-    ![Tlačítko Konfigurovat jednoho správce Sign-On](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
+    ![Snímek obrazovky se zobrazí karta pro správu MobileIron webu s vybranou identitou.](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
 3. Zkopírujte hodnoty **klíč** a **Host** a vložte je, abyste dokončili adresy URL v **základní části Konfigurace SAML** v Azure Portal.
 
-    ![Tlačítko Konfigurovat jednoho správce Sign-On](./media/mobileiron-tutorial/key.png)
+    ![Snímek obrazovky s nastavením klíče a hodnoty hostitele zobrazuje možnost nastavení SAML.](./media/mobileiron-tutorial/key.png)
 
 4. V **poli exportovat soubor metadat z AAD a importovat do MobileIron cloudu** klikněte na **zvolit soubor** a nahrajte stažená metadata z Azure Portal. Po nahrání klikněte na **Hotovo** .
 
