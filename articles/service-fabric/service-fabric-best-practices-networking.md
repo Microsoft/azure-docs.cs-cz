@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
 ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91630698"
 ---
 # <a name="networking"></a>Sítě
@@ -62,7 +62,7 @@ Aby bylo možné zrychlit síťové služby v existujícím clusteru, je potřeb
 Základní pravidla jsou minimální pro uzamčení zabezpečení clusteru spravovaného Service Fabric Azure. Nepodaří-li se otevřít následující porty nebo schválit IP adresu nebo adresu URL, zabráníte správnému fungování clusteru a nemusí být podporované. Pomocí této sady pravidel je naprosto potřeba použít [automatické upgrady imagí operačního systému](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md), jinak bude potřeba otevřít další porty.
 
 ### <a name="inbound"></a>Příchozí 
-|Priorita   |Název               |Port        |Protokol  |Zdroj             |Cíl       |Akce   
+|Priorita   |Name               |Port        |Protokol  |Zdroj             |Cíl       |Akce   
 |---        |---                |---         |---       |---                |---               |---
 |3900       |Azure              |19080       |TCP       |Internet           |VirtualNetwork    |Povolit
 |3910       |Klient             |19000       |TCP       |Internet           |VirtualNetwork    |Povolit
@@ -97,7 +97,7 @@ Další informace o příchozích pravidlech zabezpečení:
 
 ### <a name="outbound"></a>Odchozí
 
-|Priorita   |Název               |Port        |Protokol  |Zdroj             |Cíl       |Akce   
+|Priorita   |Name               |Port        |Protokol  |Zdroj             |Cíl       |Akce   
 |---        |---                |---         |---       |---                |---               |---
 |3900       |Síť            |Všechny         |TCP       |VirtualNetwork     |VirtualNetwork    |Povolit
 |3910       |Poskytovatel prostředků  |443         |TCP       |VirtualNetwork     |ServiceFabric     |Povolit

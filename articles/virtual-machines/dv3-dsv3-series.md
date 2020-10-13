@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
 ms.openlocfilehash: eff3ff3d8fa2ab3025ca8b8d4f974d6944c88433
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649639"
 ---
 # <a name="dv3-and-dsv3-series"></a>Řada Dv3 a DSv3
@@ -26,7 +26,7 @@ Velikosti řady Dv3-Series běží na Intel® Xeon® Platinum 8272CL (Cascade La
 
 Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Premium Storage, použijte velikosti Dsv3. Měřiče cen a účtování pro velikosti Dsv3 jsou stejné jako pro Dv3-series.
 
-Virtuální počítače Dv3-Series jsou součástí technologie Intel® technologie Hyper-Threading.
+Virtuální počítače Dv3-Series jsou součástí technologie Intel® Hyper-Threading.
 
 [ACU](acu.md): 160-190<br>
 [Premium Storage](premium-storage-performance.md): nepodporováno<br>
@@ -50,7 +50,7 @@ Virtuální počítače Dv3-Series jsou součástí technologie Intel® technolo
 
 Velikosti řady Dsv3-Series běží na Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) nebo procesory Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell) s technologií Intel Turbo pro zvýšení úrovně 2,0 a používat Premium Storage. Velikosti Dsv3-series nabízejí kombinaci virtuálního procesoru, paměti a dočasného úložiště pro většinu produkčních úloh.
 
-Virtuální počítače Dsv3-Series jsou součástí technologie Intel® technologie Hyper-Threading.
+Virtuální počítače Dsv3-Series jsou součástí technologie Intel® Hyper-Threading.
 
 [ACU](acu.md): 160-190<br>
 [Premium Storage](premium-storage-performance.md): podporováno<br>

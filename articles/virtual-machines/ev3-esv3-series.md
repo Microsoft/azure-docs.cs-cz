@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: lahugh
 ms.openlocfilehash: 698b95dc5b38e1d365a80878a5057dee357d81af
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649571"
 ---
 # <a name="ev3-and-esv3-series"></a>Řada Ev3 a Esv3
@@ -24,7 +24,7 @@ Instance Ev3-Series běží na Intel® Xeon® Platinum 8272CL (Cascade Lake), In
 
 Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Premium Storage, použijte velikosti ESv3. Měřiče cen a účtování pro velikosti ESv3 jsou stejné jako pro Ev3-series.
 
-Funkce virtuálního počítače Ev3-Series Intel® technologie Hyper-Threading.
+Funkce virtuálního počítače Ev3-Series Hyper-Threading technologie Intel®.
 
 [ACU](acu.md): 160-190<br>
 [Premium Storage](premium-storage-performance.md): nepodporováno<br>
@@ -54,7 +54,7 @@ jsou k dispozici <sup>1</sup> omezené základní velikosti.
 
 Instance Esv3-Series běží na procesorech Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (Skylake) nebo procesor Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell), funkce Intel Turbo pro zvýšení úrovně 2,0 a používat Premium Storage. Instance Esv3-Series jsou ideální pro podnikové aplikace náročné na paměť.
 
-Funkce virtuálního počítače Esv3-Series Intel® technologie Hyper-Threading.
+Funkce virtuálního počítače Esv3-Series Hyper-Threading technologie Intel®.
 
 [ACU](acu.md): 160-190<br>
 [Premium Storage](premium-storage-performance.md): podporováno<br>

@@ -8,10 +8,10 @@ ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: e5ca792c6dbc3c08847315b916913e8c38909a7a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91637132"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Základní hodnoty zabezpečení Azure pro Azure Kubernetes Service
@@ -1237,7 +1237,7 @@ Příkazy PowerShellu umožňují pravidelné automatizované zálohování Key 
 
 Například:
 
-Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup – AzKeyVaultManagedStorageAccount Backup-AzKeyVaultSecret
+Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorageAccount Backup-AzKeyVaultSecret
 
 - [Postup zálohování certifikátů Key Vault](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate)
 
@@ -1281,11 +1281,11 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 **Pokyny**: Zálohujte svá data pomocí vhodného nástroje pro typ úložiště, jako je například Velero, který může zálohovat trvalé svazky spolu s dalšími prostředky a konfiguracemi clusteru. 
 
-Povolit obnovitelné odstranění v Key Vault k ochraně klíčů před náhodným nebo škodlivým odstraněním, pokud se Azure Key Vault používá pro nasazení služby Azure Kubernetes Service (AKS).
+Povolí Soft-Delete v Key Vault k ochraně klíčů před náhodným nebo škodlivým odstraněním, pokud se Azure Key Vault používá s nasazeními AKS (Azure Kubernetes Service).
 
 - [Principy šifrování služby Azure Storage](../storage/common/storage-service-encryption.md)
 
-- [Jak povolit obnovitelné odstranění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Postup povolení Soft-Delete v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: nelze použít
 

@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a963a9f10ee23c50f50e66191e92f0839c457d9c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362836"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Nasazení webových služeb Azure Machine Learning Studio (Classic), které používají moduly importu a exportu dat
@@ -118,7 +118,7 @@ Nasazení jako klasické webové služby a vytvoření aplikace pro její využ�
         }
     };
     ```
-10. Aplikaci spusťte.
+10. Spusťte aplikaci.
 
 Po dokončení spuštění je do databáze obsahující výsledky bodování přidána nová tabulka.
 
@@ -151,5 +151,5 @@ Nasazení jako nové webové služby a vytvoření aplikace pro její využívá
         }
     };
     ```
-10. Aplikaci spusťte.
+10. Spusťte aplikaci.
 
