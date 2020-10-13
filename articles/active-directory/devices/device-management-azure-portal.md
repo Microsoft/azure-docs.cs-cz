@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e76c5f51486f7c1673fb5359eabc99ee41130472
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91278852"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení přes Azure Portal
@@ -38,7 +38,7 @@ Stránka **všechna zařízení** vám umožní:
 
 Přístup k portálu zařízení získáte pomocí následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte na **Azure Active Directory**  >  **zařízení**.
 
 ## <a name="manage-devices"></a>Správa zařízení
@@ -139,7 +139,7 @@ Povolení funkce filtrování ve verzi Preview v zobrazení **všechna zařízen
 
 ![Povolit funkci Preview pro filtrování](./media/device-management-azure-portal/device-filter-preview-enable.png)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte na **Azure Active Directory**  >  **zařízení**.
 1. Vyberte banner, který uvádí, a **Vyzkoušejte si nová vylepšení filtrování zařízení. Kliknutím povolíte náhled.**
 

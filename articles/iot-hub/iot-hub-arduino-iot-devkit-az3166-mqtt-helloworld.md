@@ -11,10 +11,10 @@ ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
 ms.openlocfilehash: 09ea3ceb15c9b175b8366bf3ac57a61e468ab72a
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356022"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Odesílání zpráv na server MQTT
@@ -33,7 +33,7 @@ V tomto projektu se naučíte:
 
 Dokončete [průvodce Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) :
 
-* Připojení DevKit k Wi-Fi
+* Připojte DevKit k Wi-Fi
 * Příprava vývojového prostředí
 
 ## <a name="open-the-project-folder"></a>Otevření složky projektu
@@ -70,7 +70,7 @@ V VS Code postupujte podle následujícího postupu a otevřete a nastavte monit
   
 3. Na stavovém řádku klikněte na číslo, které představuje přenosovou rychlost a nastavte na `115200` : ![ snímek obrazovky nastavení přenosové rychlosti v Visual Studio Code.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
 
-Nástroj sériového zobrazení zobrazí všechny zprávy odesílané vzorovým nákresem. Náčrt připojuje DevKit k Wi-Fi. Po úspěšném připojení k síti Wi-Fi pošle skica zprávu zprostředkovateli MQTT. Poté ukázka opakovaně odesílá dvě zprávy "iot.eclipse.org" pomocí technologie QoS 0 a QoS 1 v uvedeném pořadí.
+Nástroj sériového zobrazení zobrazí všechny zprávy odesílané vzorovým nákresem. Náčrt připojuje DevKit k Wi-Fi. Po úspěšném připojení Wi-Fi pošle skica zprávu zprostředkovateli MQTT. Poté ukázka opakovaně odesílá dvě zprávy "iot.eclipse.org" pomocí technologie QoS 0 a QoS 1 v uvedeném pořadí.
 
 ![Snímek obrazovky ukazuje monitor sériového zobrazení zpráv odesílaných nákresem.](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
 

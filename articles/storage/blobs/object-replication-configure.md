@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 10/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0e42c8e22d004b574e65442f0fbdfce1c9bcabd7
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715631"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939408"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Konfigurace replikace objektů pro objekty blob bloku
 
@@ -345,6 +345,40 @@ az storage account or-policy create \
     -resource-group <resource-group> \
     --source-account <source-account-name> \
     --policy @policy.json
+```
+
+---
+
+## <a name="check-the-replication-status-of-a-blob"></a>Zkontroluje stav replikace objektu BLOB.
+
+Stav replikace objektu BLOB ve zdrojovém účtu můžete zjistit pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI. Vlastnosti replikace objektu nejsou naplněny, dokud replikace buď není dokončena, nebo se nezdařila.
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Chcete-li zjistit stav replikace pro objekt BLOB ve zdrojovém účtu v Azure Portal, postupujte podle následujících kroků:
+
+1. Přejděte ke zdrojovému účtu v Azure Portal.
+1. Vyhledejte kontejner, který obsahuje zdrojový objekt BLOB.
+1. Vyberte objekt blob, pro který chcete zobrazit jeho vlastnosti. Pokud je objekt BLOB úspěšně replikovaný, zobrazí se v části **replikace objektů** , u kterého je stav nastavený na *dokončeno*. V seznamu jsou uvedeny i ID zásad replikace a ID pro replikaci objektů pro tento kontejner.
+
+:::image type="content" source="media/object-replication-configure/check-replication-status-source.png" alt-text="Snímek obrazovky zobrazující pravidla replikace v Azure Portal":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Není k dispozici
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pokud chcete zjistit stav replikace objektu BLOB ve zdrojovém účtu pomocí Azure CLI, Získejte hodnotu vlastnosti **stav** replikace objektu, jak je znázorněno v následujícím příkladu:
+
+```azurecli
+az storage blob show \
+    --account-name <source-account-name> \
+    --container-name <source-container-name> \
+    --name <source-blob-name> \
+    --query 'objectReplicationSourceProperties[].rules[].status' \
+    --output tsv \
+    --auth-mode login
 ```
 
 ---

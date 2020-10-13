@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e1cf9faeab60264d491539256828151e496ade8f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267495"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Scénář: směrování provozu prostřednictvím síťová virtuální zařízení-Custom (Preview)
@@ -65,14 +65,14 @@ Naše matrice připojení proto nabízí tři rozdílné vzory připojení, kter
 
 Tyto statické trasy potřebujeme, abychom zajistili, že provoz VNet-to-VNet a propojení mezi virtuálními sítěmi prochází síťové virtuální zařízení ve virtuální síti služby (virtuální síť 4):
 
-| Popis | Tabulka směrování | Statická trasa              |
+| Description | Tabulka směrování | Statická trasa              |
 | ----------- | ----------- | ------------------------- |
 | Větve    | RT_V2B      | 10.2.0.0/16 – > vnet4conn  |
 | SÍŤOVÉ virtuální zařízení paprsky  | Výchozí     | 10.1.0.0/16 – > vnet4conn  |
 
 Virtuální síť WAN teď ví, ke kterému připojení se mají odesílat pakety, ale připojení potřebuje vědět, co dělat při přijímání těchto paketů: v tomto umístění se používají tabulky směrování připojení.
 
-| Popis | Připojení | Statická trasa            |
+| Description | Připojení | Statická trasa            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16 – > 10.4.0.5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16 – > 10.4.0.5 |
@@ -129,7 +129,7 @@ Pokud chcete nastavit směrování přes síťové virtuální zařízení, tady
 
 **Obrázek 2**
 
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Obrázek 2" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Obrázek 1" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
 ## <a name="next-steps"></a>Další kroky
 

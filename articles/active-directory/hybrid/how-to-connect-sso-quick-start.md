@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: bezproblémové jednotné přihlašování – rychlý Start | Microsoft Docs'
-description: Tento článek popisuje, jak začít s Azure Active Directory bezproblémové jednotné přihlašování.
+title: 'Azure AD Connect: bezproblémové jednoduché Sign-On rychlé zprovoznění | Microsoft Docs'
+description: Tento článek popisuje, jak začít s Azure Active Directory bezproblémovém jednoduchém Sign-On
 services: active-directory
 keywords: Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
 documentationcenter: ''
@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295018"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý Start
 
-## <a name="deploy-seamless-single-sign-on"></a>Nasazení bezproblémového jednotného přihlašování
+## <a name="deploy-seamless-single-sign-on"></a>Snadné nasazení jednoduchého Sign-On
 
-Azure Active Directory (Azure AD) bezproblémové jednotné přihlašování (bezproblémové jednotné přihlašování) se automaticky přihlásí k podnikovým plochám, které jsou připojené k podnikové síti. Bezproblémové jednotné přihlašování poskytuje uživatelům snadný přístup k vašim cloudovým aplikacím bez nutnosti dalších místních komponent.
+Azure Active Directory (Azure AD) bezproblémové jednoduché Sign-On (bezproblémové jednotné přihlašování) se automaticky přihlásí k podnikovým plochám, které jsou připojené k podnikové síti. Bezproblémové jednotné přihlašování poskytuje uživatelům snadný přístup k vašim cloudovým aplikacím bez nutnosti dalších místních komponent.
 
 Chcete-li nasadit bezproblémové jednotné přihlašování, postupujte podle těchto kroků.
 
@@ -236,7 +236,7 @@ Pokyny k postupu při převzetí klíčů najdete v tématu [Azure Active Direct
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Technický hluboký podrobně](how-to-connect-sso-how-it-works.md): pochopení fungování funkce bezproblémového jednotného přihlašování.
+- [Technický hluboký podrobně](how-to-connect-sso-how-it-works.md): Zjistěte, jak funguje bezproblémové jednoduché funkce Sign-On.
 - [Nejčastější dotazy](how-to-connect-sso-faq.md): Získejte odpovědi na nejčastější dotazy týkající se bezproblémového jednotného přihlašování.
-- [Řešení potíží](tshoot-connect-sso.md): Naučte se řešit běžné problémy s funkcí bezproblémového jednotného přihlašování.
+- [Řešení potíží](tshoot-connect-sso.md): Naučte se řešit běžné problémy s bezproblémové jednou Sign-On funkcí.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): použijte Fórum Azure Active Directory k započetí nových požadavků na funkce.

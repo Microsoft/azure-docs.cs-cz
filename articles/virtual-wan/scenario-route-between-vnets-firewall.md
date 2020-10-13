@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 301bc64bee291fa25506e7f435e923be7e244cd4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267512"
 ---
 # <a name="scenario-azure-firewall---custom"></a>Scénář: Azure Firewall-vlastní
@@ -28,7 +28,7 @@ Aby bylo možné zjistit, kolik směrovacích tabulek bude potřeba, můžete vy
 
 | Z           | Do:      | *Virtuální sítě*      | *Větve*    | *Internet*   |
 |---             |---       |---           |---            |---           |
-| **Virtuální sítě**      |   &#8594;|     X        |     AzFW      |     AzFW     |
+| **Virtuální sítě**      |   &#8594;|     ×        |     AzFW      |     AzFW     |
 | **Větve**   |   &#8594;|    AzFW      |       X       |       X      |
 
 V předchozí tabulce představuje "X" přímé připojení mezi dvěma připojeními bez provozu přenášeného Azure Firewall ve virtuální síti WAN a "AzFW" znamená, že tok projde Azure Firewall. Vzhledem k tomu, že v matici existují dva odlišné vzory připojení, budeme potřebovat dvě směrovací tabulky, které budou nakonfigurovány takto:

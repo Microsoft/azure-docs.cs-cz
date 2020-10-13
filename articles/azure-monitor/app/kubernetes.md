@@ -6,10 +6,10 @@ author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
 ms.openlocfilehash: 3cd43963175594fcdc1c3c67d6b2493ce1ccd313
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321917"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Nula monitorování aplikace instrumentace pro aplikace hostované v Kubernetes s Istio – zastaralé
@@ -126,11 +126,11 @@ Níže je uvedený postup řešení potíží, který se použije v případě, 
    ```
    Vyhledejte případné chyby, zejména související s komunikací s *applicationinsightsadapter* adaptérem.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 Nejnovější informace o průběhu tohoto projektu najdete na [githubu Application Insights Adapter pro projekt mixer Istio](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq).
 
-## <a name="uninstall"></a>Odinstalace
+## <a name="uninstall"></a>Odinstalovat
 
 Chcete-li odinstalovat produkt, pro *každý* soubor YAML nalezený v části *Src/Kubernetes/* Run:
 

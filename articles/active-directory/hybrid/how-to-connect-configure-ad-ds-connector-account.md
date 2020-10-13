@@ -13,10 +13,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 9a082270e2c113bcdf31ed6bd6db3d38a7117500
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279291"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurace oprávnění účtu konektoru služby AD DS 
@@ -119,7 +119,7 @@ Show-ADSyncADObjectPermissions -ADobjectDN '<DistinguishedName>'
 
 ## <a name="configure-ad-ds-connector-account-permissions"></a>Konfigurace oprávnění účtu konektoru služby AD DS 
  
-### <a name="configure-basic-read-only-permissions"></a>Konfigurace základních oprávnění jen pro čtení 
+### <a name="configure-basic-read-only-permissions"></a>Konfigurace základních oprávnění Read-Only 
 Chcete-li nastavit základní oprávnění jen pro čtení pro účet služba AD DSho konektoru, když nepoužíváte žádnou Azure AD Connect funkci, spusťte příkaz: 
 
 ``` powershell

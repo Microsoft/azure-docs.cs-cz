@@ -17,10 +17,10 @@ ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 14ffcbf2e111e052f4b45259b0b25664049d3b3d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855372"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Příprava infrastruktury Azure na vysokou dostupnost pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instance SAP ASCS/SCS
@@ -218,8 +218,8 @@ Než začnete s instalací, přečtěte si následující článek:
 | --- | --- | --- | --- |
 | Cluster ASCS/SCS prvního uzlu clusteru | ASCS-1 | 10.0.6.4 | ASCS jako |
 | Druhý cluster node ASCS/SCS | ASCS – 2 | 10.0.6.5 | ASCS jako |
-| Název sítě s clustery |ASCS – CL | 10.0.6.6 | Není k dispozici |
-| Název sítě clusteru SAP PR1 ASCS |PR1 – ASCS | 10.0.6.7 | Není k dispozici |
+| Název sítě s clustery |ASCS – CL | 10.0.6.6 | neuvedeno |
+| Název sítě clusteru SAP PR1 ASCS |PR1 – ASCS | 10.0.6.7 | neuvedeno |
 
 
 **Tabulka 1**: cluster ASCS/SCS
@@ -236,10 +236,10 @@ Než začnete s instalací, přečtěte si následující článek:
 | První uzel clusteru | SOFS-1 | 10.0.6.10 | SOFS jako |
 | Druhý uzel clusteru | SOFS – 2 | 10.0.6.11 | SOFS jako |
 | Třetí uzel clusteru | SOFS-3 | 10.0.6.12 | SOFS jako |
-| Název sítě s clustery | SOFS – CL | 10.0.6.13 | Není k dispozici |
-| Název globálního hostitele SAP | sapglobal | Použít IP adresy všech uzlů clusteru | Není k dispozici |
+| Název sítě s clustery | SOFS – CL | 10.0.6.13 | neuvedeno |
+| Název globálního hostitele SAP | sapglobal | Použít IP adresy všech uzlů clusteru | neuvedeno |
 
-**Tabulka 3**: souborový server se škálováním na více systémů cluster
+**Tabulka 3**: Scale-Out clusteru souborových serverů
 
 
 ## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>Nasazení virtuálních počítačů pro cluster SAP ASCS/SCS, cluster systému správy databáze (DBMS) a instance aplikačního serveru SAP
@@ -259,9 +259,9 @@ K přípravě infrastruktury Azure proveďte následující:
 * Při použití Windows serveru 2016 doporučujeme nakonfigurovat [sdílené složky Azure v cloudu][deploy-cloud-witness].
 
 
-## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Ruční nasazení clusteru Souborový server se škálováním na více systémů 
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Ruční nasazení clusteru souborových serverů Scale-Out 
 
-Cluster Microsoft Souborový server se škálováním na více systémů můžete nasadit ručně, jak je popsáno v blogu [prostory úložiště s přímým přístupem v Azure][ms-blog-s2d-in-azure], spuštěním následujícího kódu:  
+Cluster souborových serverů Microsoft Scale-Out můžete nasadit ručně, jak je popsáno v blogu [prostory úložiště s přímým přístupem v Azure][ms-blog-s2d-in-azure], spuštěním následujícího kódu:  
 
 
 ```powershell
@@ -294,25 +294,25 @@ $SAPGlobalHostName = "sapglobal"
 Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 ```
 
-## <a name="deploy-scale-out-file-server-automatically"></a>Nasadit Souborový server se škálováním na více systémů automaticky
+## <a name="deploy-scale-out-file-server-automatically"></a>Automaticky nasadit Scale-Out souborový server
 
-Nasazení Souborový server se škálováním na více systémů můžete automatizovat také pomocí šablon Azure Resource Manager v existující virtuální síti a prostředí Active Directory.
+Nasazení Scale-Outho souborového serveru můžete taky automatizovat pomocí šablon Azure Resource Manager v existující virtuální síti a prostředí Active Directory.
 
 > [!IMPORTANT]
-> Doporučujeme mít tři nebo více uzlů clusteru pro Souborový server se škálováním na více systémů s třícestným zrcadlením.
+> Doporučujeme, abyste měli k dispozici tři nebo více uzlů clusteru pro Scale-Out souborový server s třícestným zrcadlením.
 >
-> V uživatelském rozhraní šablony Souborový server se škálováním na více systémů Správce prostředků musíte zadat počet virtuálních počítačů.
+> V uživatelském rozhraní šablony Scale-Out Správce prostředků souborového serveru musíte zadat počet virtuálních počítačů.
 >
 
 ### <a name="use-managed-disks"></a>Použití spravovaných disků
 
-Azure Resource Manager šablona pro nasazení Souborový server se škálováním na více systémů s Prostory úložiště s přímým přístupem a Azure Managed Disks je k dispozici na [GitHubu][arm-sofs-s2d-managed-disks].
+Azure Resource Manager šablona pro nasazení Scale-Out souborového serveru s Prostory úložiště s přímým přístupem a Managed Disks Azure je k dispozici na [GitHubu][arm-sofs-s2d-managed-disks].
 
 Doporučujeme použít Managed Disks.
 
-![Obrázek 1: obrazovka uživatelského rozhraní pro šablonu Souborový server se škálováním na více systémů Správce prostředků se spravovanými disky][sap-ha-guide-figure-8010]
+![Obrázek 1: obrazovka uživatelského rozhraní pro Scale-Out souborového serveru Správce prostředků šablona se spravovanými disky][sap-ha-guide-figure-8010]
 
-_**Obrázek 1**: obrazovka uživatelského rozhraní pro šablonu souborový server se škálováním na více systémů správce prostředků se spravovanými disky_
+_**Obrázek 1**: obrazovka uživatelského rozhraní pro Scale-Out souborového serveru správce prostředků šablona se spravovanými disky_
 
 V šabloně udělejte toto:
 1. V poli **počet virtuálních počítačů** zadejte minimální počet **2**.
@@ -322,17 +322,17 @@ V šabloně udělejte toto:
 
 ### <a name="use-unmanaged-disks"></a>Použít nespravované disky
 
-Azure Resource Manager šablona pro nasazení Souborový server se škálováním na více systémů s Prostory úložiště s přímým přístupem a nespravovanými disky Azure je k dispozici na [GitHubu][arm-sofs-s2d-non-managed-disks].
+Azure Resource Manager šablona pro nasazení Scale-Out souborového serveru s Prostory úložiště s přímým přístupem a nespravovanými disky Azure je k dispozici na [GitHubu][arm-sofs-s2d-non-managed-disks].
 
-![Obrázek 2: obrazovka uživatelského rozhraní pro šablonu Souborový server se škálováním na více systémů Azure Resource Manager bez spravovaných disků][sap-ha-guide-figure-8011]
+![Obrázek 2: obrazovka uživatelského rozhraní pro Scale-Out souborového serveru Azure Resource Manager šablony bez spravovaných disků][sap-ha-guide-figure-8011]
 
-_**Obrázek 2**: obrazovka uživatelského rozhraní pro šablonu souborový server se škálováním na více systémů Azure Resource Manager bez spravovaných disků_
+_**Obrázek 2**: obrazovka uživatelského rozhraní pro Scale-Out souborového serveru Azure Resource Manager šablony bez spravovaných disků_
 
 V poli **typ účtu úložiště** vyberte **Premium Storage**. Všechna ostatní nastavení se shodují s nastavením pro služby Managed disks.
 
 ## <a name="adjust-cluster-timeout-settings"></a>Úprava nastavení časového limitu clusteru
 
-Po úspěšné instalaci clusteru Windows Souborový server se škálováním na více systémů Přizpůsobte prahové hodnoty časového limitu pro detekci převzetí služeb při selhání na podmínky v Azure. Parametry, které se mají změnit, jsou popsané v části [ladění prahových hodnot sítě clusteru s podporou převzetí služeb][tuning-failover-cluster-network-thresholds] Za předpokladu, že jsou clusterové virtuální počítače ve stejné podsíti, změňte následující parametry na tyto hodnoty:
+Po úspěšné instalaci serveru Windows Scale-Out clusteru souborových serverů Přizpůsobte prahové hodnoty časového limitu pro detekci převzetí služeb při selhání na podmínky v Azure. Parametry, které se mají změnit, jsou popsané v části [ladění prahových hodnot sítě clusteru s podporou převzetí služeb][tuning-failover-cluster-network-thresholds] Za předpokladu, že jsou clusterové virtuální počítače ve stejné podsíti, změňte následující parametry na tyto hodnoty:
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15

@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak spravovat protokol DHCP v řešení
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 2c059918f57b7f01058a031f1bf281b243855661
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332827"
 ---
 # <a name="how-to-create-and-manage-dhcp-in-azure-vmware-solution"></a>Jak vytvořit a spravovat DHCP v řešení Azure VMWare
@@ -26,15 +26,15 @@ V NSX Manageru přejděte na kartu **sítě** a v části **Správa IP adres**vy
 
 1. Vyberte **brány úrovně 1**, bránu a pak vyberte **Upravit** .
 
-   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="Vyberte bránu, kterou chcete použít." border="true":::
+   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="Přidat server DHCP" border="true":::
 
 1. Přidat podsíť výběrem možnosti **nenastavené přidělení IP adres**
 
-   :::image type="content" source="./media/manage-dhcp/add-subnet.png" alt-text="Přidat podsíť" border="true":::
+   :::image type="content" source="./media/manage-dhcp/add-subnet.png" alt-text="Přidat server DHCP" border="true":::
 
 1. Na další obrazovce vyberte v rozevíracím seznamu **typ** možnost **místní server DHCP** . Pro **Server DHCP**vyberte **výchozí DHCP** a vyberte **Uložit**.
 
-   :::image type="content" source="./media/manage-dhcp/set-ip-address-management.png" alt-text="vybrat možnosti pro server DHCP" border="true":::
+   :::image type="content" source="./media/manage-dhcp/set-ip-address-management.png" alt-text="Přidat server DHCP" border="true":::
 
 1. V okně **brány vrstvy 1** vyberte **Uložit**. Na další obrazovce uvidíte **uložené změny**a dokončete výběr **Zavřít úpravy** .
 
@@ -44,33 +44,33 @@ Po vytvoření serveru DHCP budete muset do něj přidat segmenty sítě.
 
 1. V NSX-T vyberte kartu **síť** a v části **připojení**vyberte **segmenty** . Vyberte **Přidat segment**. Pojmenujte segment a připojení k bráně úrovně 1. V dalším kroku vyberte možnost **nastavit podsítě** pro konfiguraci nové podsítě. 
 
-   :::image type="content" source="./media/manage-dhcp/add-segment.png" alt-text="Přidat nový segment sítě" border="true":::
+   :::image type="content" source="./media/manage-dhcp/add-segment.png" alt-text="Přidat server DHCP" border="true":::
 
 1. V okně **nastavit podsítě** vyberte **Přidat podsíť**. Zadejte IP adresu brány a rozsah DHCP a vyberte **Přidat** a potom **použít** .
 
-   :::image type="content" source="./media/manage-dhcp/add-subnet-segment.png" alt-text="Přidat segment sítě" border="true":::
+   :::image type="content" source="./media/manage-dhcp/add-subnet-segment.png" alt-text="Přidat server DHCP" border="true":::
 
 1. Až budete hotovi, vyberte **Uložit** a dokončete přidání segmentu sítě.
 
-   :::image type="content" source="./media/manage-dhcp/segments-complete.png" alt-text="dokončené segmenty" border="true":::
+   :::image type="content" source="./media/manage-dhcp/segments-complete.png" alt-text="Přidat server DHCP" border="true":::
 
 ## <a name="create-dhcp-relay-service"></a>Vytvořit předávací službu DHCP
 
 1. V okně NXT-T vyberte kartu **síť** a v části **Správa IP adres**vyberte **DHCP**. Vyberte **Přidat server**. Jako **Typ serveru** vyberte možnost předávání DHCP a zadejte název serveru a IP adresu pro Server Relay. Vyberte **Uložit** a uložte tak provedené změny.
 
-   :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="vytvořit server pro předávání DHCP" border="true":::
+   :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="Přidat server DHCP" border="true":::
 
 1. V části **připojení**vyberte **brány úrovně 1** . V bráně vrstvy 1 vyberte svislá výpustka a zvolte **Upravit**.
 
-   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway-relay.png" alt-text="Úprava brány vrstvy 1" border="true":::
+   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway-relay.png" alt-text="Přidat server DHCP" border="true":::
 
 1. Vyberte možnost **bez nastavení přidělení IP** adres pro definování přidělování IP adres.
 
-   :::image type="content" source="./media/manage-dhcp/edit-ip-address-allocation.png" alt-text="Upravit přidělování IP adres" border="true":::
+   :::image type="content" source="./media/manage-dhcp/edit-ip-address-allocation.png" alt-text="Přidat server DHCP" border="true":::
 
 1. Do dialogového okna **Zadejte pro typ**možnost **Server DHCP Relay**. V rozevíracím seznamu **Relay protokolu DHCP** vyberte svůj server přenosu DHCP. Po dokončení vyberte **Uložit** .
 
-   :::image type="content" source="./media/manage-dhcp/set-ip-address-management-relay.png" alt-text="nastavení správy IP adres" border="true":::
+   :::image type="content" source="./media/manage-dhcp/set-ip-address-management-relay.png" alt-text="Přidat server DHCP" border="true":::
 
 ## <a name="specify-a-dhcp-range-ip-on-segment"></a>Zadejte IP adresu rozsahu DHCP v segmentu.
 
@@ -79,16 +79,16 @@ Po vytvoření serveru DHCP budete muset do něj přidat segmenty sítě.
 
 1. V části **připojení**vyberte **segmenty**. Vyberte svislé elipsy a vyberte **Upravit**. Místo toho, pokud jste chtěli přidat nový segment, můžete vybrat **Přidat segment** a vytvořit nový segment.
 
-   :::image type="content" source="./media/manage-dhcp/edit-segments.png" alt-text="Úprava podsítě sítě" border="true":::
+   :::image type="content" source="./media/manage-dhcp/edit-segments.png" alt-text="Přidat server DHCP" border="true":::
 
 1. Přidejte podrobnosti o segmentu. Vyberte hodnotu v **podsítích** nebo **nastavte podsítě** pro přidání nebo úpravu podsítě.
 
-   :::image type="content" source="./media/manage-dhcp/network-segments.png" alt-text="segmenty sítě" border="true":::
+   :::image type="content" source="./media/manage-dhcp/network-segments.png" alt-text="Přidat server DHCP" border="true":::
 
 1. Vyberte svislé elipsy a zvolte **Upravit**. Pokud potřebujete vytvořit novou podsíť, vyberte **Přidat podsíť** a vytvořte bránu a NAKONFIGURUJTE rozsah DHCP. Zadejte rozsah fondu IP adres a vyberte **použít**a pak vyberte **Uložit** .
 
-   :::image type="content" source="./media/manage-dhcp/edit-subnet.png" alt-text="Upravit podsítě" border="true":::
+   :::image type="content" source="./media/manage-dhcp/edit-subnet.png" alt-text="Přidat server DHCP" border="true":::
 
 1. Do segmentu se teď přiřadí fond serverů DHCP.
 
-   :::image type="content" source="./media/manage-dhcp/assigned-to-segment.png" alt-text="Fond serverů DHCP přiřazený k segmentu" border="true":::
+   :::image type="content" source="./media/manage-dhcp/assigned-to-segment.png" alt-text="Přidat server DHCP" border="true":::

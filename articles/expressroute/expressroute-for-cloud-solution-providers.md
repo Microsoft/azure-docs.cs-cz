@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653634"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Azure ExpressRoute pro poskytovatele Cloud Solution Provider
@@ -112,7 +112,7 @@ Výchozí směrovací tabulka obsahuje následující trasy:
 ![Diagram, který zobrazuje výchozí možnosti směrování.](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
 
 ### <a name="user-defined-routing-udr"></a>Směrování definované uživatelem (UDR)
-Trasy definované uživatelem umožňují řízení odchozího provozu z přiřazené podsítě do jiných podsítí ve virtuální síti nebo prostřednictvím některé z ostatních předdefinovaných bran (ExpressRoute; internet nebo VPN). Výchozí systémovou tabulku směrování je možné směrovací tabulkou definovanou uživatelem. V takovém případě se výchozí směrovací tabulka nahradí vlastními trasami. V případě směrování definovaného uživatelem mohou zákazníci vytvářet konkrétní trasy do zařízení, jako jsou brány firewall nebo zařízení pro detekci narušení, či blokovat přístup ke konkrétním podsítím z podsítě, která je hostitelem trasy definované uživatelem. Přehled uživatelsky definovaných tras najdete [tady](../virtual-network/virtual-networks-udr-overview.md). 
+Trasy definované uživatelem umožňují řízení odchozího provozu z přiřazené podsítě do jiných podsítí ve virtuální síti nebo prostřednictvím některé z ostatních předdefinovaných bran (ExpressRoute; internet nebo VPN). Výchozí systémovou tabulku směrování je možné směrovací tabulkou definovanou uživatelem. V takovém případě se výchozí směrovací tabulka nahradí vlastními trasami. V případě směrování definovaného uživatelem mohou zákazníci vytvářet konkrétní trasy do zařízení, jako jsou brány firewall nebo zařízení pro detekci narušení, či blokovat přístup ke konkrétním podsítím z podsítě, která je hostitelem trasy definované uživatelem. Přehled tras User-Defined najdete [tady](../virtual-network/virtual-networks-udr-overview.md). 
 
 ## <a name="security"></a>Zabezpečení
 V závislosti na používaném modelu (přímé připojení nebo nepřímé připojení) zákazník definuje zásady zabezpečení ve své virtuální síti nebo předá požadavky na zásady zabezpečení poskytovateli CSP, aby je pro příslušné virtuální sítě definoval. Je možné definovat následující kritéria zabezpečení:

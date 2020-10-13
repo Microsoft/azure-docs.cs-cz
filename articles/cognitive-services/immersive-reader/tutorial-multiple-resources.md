@@ -11,10 +11,10 @@ ms.date: 01/14/2020
 ms.author: skamal
 ms.custom: devx-track-js
 ms.openlocfilehash: eba2b53c20f3b0edb79cc32f3c8fb3d82d5433b8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309281"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Kurz: Integrace více prostředků moderního čtecího zařízení
@@ -25,7 +25,7 @@ V tomto [přehledu](./overview.md)jste se dozvěděli o tom, co je moderní čte
 > * Vytvoření více prostředků moderního čtecího zařízení v existující skupině prostředků
 > * Spuštění moderního čtečky s využitím několika prostředků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 

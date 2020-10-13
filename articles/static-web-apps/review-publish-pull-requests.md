@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
 ms.openlocfilehash: f8f2e352ae458e3e2825c9701437ea652ba07375
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825652"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Kontrola žádostí o přijetí změn v předprodukčních prostředích ve službě Azure Static Web Apps ve verzi Preview
@@ -35,7 +35,7 @@ Používání předprodukčních prostředí přináší spoustu výhod. Můžet
 > [!NOTE]
 > Během období Preview je povolena [maximálně jedna Příprava pracovního prostředí](quotas.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Existující úložiště GitHub s nakonfigurovaným statickým Web Appsm Azure. Pokud ho nemáte, přečtěte si téma [Vytvoření první statické aplikace](getting-started.md) .
 

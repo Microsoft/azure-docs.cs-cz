@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: b760ad03318b3c31b39b6470251847150dc5a70a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869418"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics výstup do Azure SQL Database
@@ -39,7 +39,7 @@ Tady je několik konfigurací v rámci každé služby, které mohou pomoci zlep
 
 - **Vyhněte se narušení jedinečnosti klíčů** – Pokud se v protokolu Azure Stream Analyticsch aktivit zobrazí [více výstražných zpráv o porušení klíčů](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) , zajistěte, aby vaše úloha neovlivnila omezením jedinečnosti omezení, která se pravděpodobně vyskytují během případů obnovení. To je možné vyhnout nastavením možnosti [Ignorovat \_ \_ klíč duplicity](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) na vašich indexech.
 
-## <a name="azure-data-factory-and-in-memory-tables"></a>Tabulky Azure Data Factory a v paměti
+## <a name="azure-data-factory-and-in-memory-tables"></a>Tabulky Azure Data Factory a In-Memory
 
 - **Tabulka v paměti jako dočasná tabulka** – [tabulky v paměti](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) umožňují velmi vysokorychlostní načítání dat, ale data se musí vejít do paměti. Srovnávací testy ukazují hromadné načítání z tabulky v paměti do tabulky založené na disku je přibližně desetkrát rychlejší než přímé hromadné vložení pomocí jediného zapisovače do tabulky založené na disku se sloupcem identity a clusterovaným indexem. Chcete-li využít tento hromadný výkon, nastavte [úlohu kopírování pomocí Azure Data Factory](../data-factory/connector-azure-sql-database.md) , která kopíruje data z tabulky v paměti do tabulky založené na disku.
 
@@ -48,10 +48,10 @@ Hromadné vkládání dat je mnohem rychlejší než načítání dat pomocí je
 
 Pokud je míra příchozích událostí nízká, může snadno vytvořit velikosti dávek nižší než 100 řádků, což znamená, že hromadné vložení je neefektivní a využívá příliš mnoho místa na disku. Chcete-li toto omezení obejít, můžete provést jednu z následujících akcí:
 * Vytvořte místo [triggeru](/sql/t-sql/statements/create-trigger-transact-sql) pro použití jednoduchého vložení pro každý řádek.
-* Použijte dočasnou tabulku v paměti, jak je popsáno v předchozí části.
+* Použijte dočasnou tabulku In-Memory, jak je popsáno v předchozí části.
 
 K dalšímu takovému scénáři dochází při psaní do neclusterovaných indexů columnstore (NCCI), kde menší hromadné vložení může vytvořit příliš mnoho segmentů, což může způsobit selhání indexu. V takovém případě doporučujeme místo toho použít clusterovaný index columnstore.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
-V souhrnu se funkce děleného výstupu v Azure Stream Analytics pro výstup SQL zarovnala paralelnímu využití úlohy s dělenou tabulkou v SQL Azure by vám mělo poskytnout významné vylepšení propustnosti. Využití Azure Data Factory pro orchestraci přesunu dat z tabulky v paměti do tabulek založených na disku může mít za následek nárůst propustnosti velikosti. Pokud je to proveditelné, vylepšení hustoty zpráv může být také významným faktorem při zvyšování celkové propustnosti.
+V souhrnu se funkce děleného výstupu v Azure Stream Analytics pro výstup SQL zarovnala paralelnímu využití úlohy s dělenou tabulkou v SQL Azure by vám mělo poskytnout významné vylepšení propustnosti. Využití Azure Data Factory pro orchestraci přesunu dat z tabulky In-Memory do tabulek založených na disku může mít za způsob nárůstu propustnosti velikosti. Pokud je to proveditelné, vylepšení hustoty zpráv může být také významným faktorem při zvyšování celkové propustnosti.

@@ -17,10 +17,10 @@ ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279410"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
@@ -93,7 +93,7 @@ Azure AD Connect Health pro synchronizaci je integrována s instalací Azure AD 
 
 * Agent Azure AD Connect Health pro AD FS (verze 3.1.24.0)  
    1. Dodržování předpisů a vynucování protokolu TLS (Transport Layer Security) verze 1,2
-   2. Podpora testu – ADFSRequestToken pro lokalizovaný operační systém
+   2. Podpora Test-ADFSRequestToken lokalizovaného operačního systému
    3. Problém s vyřešeným uzamknutím agenta diagnostiky
    4. Opravy chyb registrace agenta stavu
 

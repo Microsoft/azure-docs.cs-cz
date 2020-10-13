@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2bb8c6c64e0a68f5176c4eb0c0177c5220394695
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268753"
 ---
 # <a name="enforce-tls-12-for-the-azure-ad-registration-service"></a>Vynutilit TLS 1,2 pro službu Azure AD Registration Service
@@ -37,13 +37,13 @@ Pro Windows servery, které používají službu Azure AD Device Registration Se
 
 Ujistěte se, že jsou nakonfigurované následující řetězce registru, jak je znázorněno níže:
 
-- HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ klient
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ klient
   - "DisabledByDefault" = DWORD: 00000000
   - "Enabled" = DWORD: 00000001
-- HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Server
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Server
   - "DisabledByDefault" = DWORD: 00000000
   - "Enabled" = DWORD: 00000001
-- HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \. NETFramework\v4.0.30319
+- HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\. NETFramework\v4.0.30319
   - "Do schusestrongcrypto" = DWORD: 00000001
 
 ## <a name="update-non-windows-proxies"></a>Aktualizovat proxy servery jiného typu než Windows

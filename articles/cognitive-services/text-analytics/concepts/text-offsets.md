@@ -12,10 +12,10 @@ ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
 ms.openlocfilehash: 14fd7c2b034077d818d1a1224d3c4c12a7fc07bc
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855650"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Posunutí textu ve výstupu rozhraní API pro analýzu textu
@@ -54,6 +54,6 @@ Pokud `stringIndexType` požadované odpovídá programovacímu prostředí volb
 
 * [Přehled analýzy textu](../overview.md)
 * [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [rozpoznávání entit,](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Zjištění jazyka](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Rozpoznávání entit](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Zjistit jazyk](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Rozpoznávání jazyka](../how-tos/text-analytics-how-to-language-detection.md)

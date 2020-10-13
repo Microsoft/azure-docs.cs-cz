@@ -10,10 +10,10 @@ ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 35eef6951f844ab60caec70033e41e23a7920d3a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91288303"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotazování souborů Parquet pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics
@@ -182,7 +182,7 @@ Soubory Parquet obsahují popisy typů pro každý sloupec. Následující tabul
 | UVEDENA |INT (8, false) |tinyint |
 | UVEDENA |INT (16, false) |int |
 | UVEDENA |INT (32, false) |bigint |
-| UVEDENA |DATE (Datum) |datum |
+| UVEDENA |DATE |date |
 | UVEDENA |NOTACI |decimal |
 | UVEDENA |ČAS (LISOVNY)|time |
 | INT64 |INT (64; true) |bigint |

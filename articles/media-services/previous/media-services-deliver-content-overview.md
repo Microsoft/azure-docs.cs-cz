@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b636d1cdf2e4b9bd137768e22240d8a47d724a97
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266030"
 ---
 # <a name="deliver-content-to-customers"></a>Doručování obsahu zákazníkům
@@ -154,7 +154,7 @@ Koncový bod streamování představuje službu streamování, která může dor
 
 ## <a name="known-issues"></a>Známé problémy
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Změny verze manifestu Smooth Streaming
-Před vydáním služby z července 2016 – když byly assety vytvořené pomocí Media Encoder Standard, Media Encoder Premium Workflow nebo dřívější Azure Media Encoder streamované pomocí dynamického balení – vrácený Smooth Streamingový manifest by odpovídal verzi 2,0. Ve verzi 2,0 nejsou fragmenty trvání fragmentů použity jako značky opakování (' r '). Příklad:
+Před vydáním služby z července 2016 – když byly assety vytvořené pomocí Media Encoder Standard, Media Encoder Premium Workflow nebo dřívější Azure Media Encoder streamované pomocí dynamického balení – vrácený Smooth Streamingový manifest by odpovídal verzi 2,0. Ve verzi 2,0 nejsou fragmenty trvání fragmentů použity jako značky opakování (' r '). Například:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -169,7 +169,7 @@ Před vydáním služby z července 2016 – když byly assety vytvořené pomoc
 </SmoothStreamingMedia>
 ```
 
-Ve vydání z července 2016 se vygenerovaný manifest Smooth Streaming v souladu s verzí 2,2 s dobami fragmentace pomocí značek opakování. Příklad:
+Ve vydání z července 2016 se vygenerovaný manifest Smooth Streaming v souladu s verzí 2,2 s dobami fragmentace pomocí značek opakování. Například:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

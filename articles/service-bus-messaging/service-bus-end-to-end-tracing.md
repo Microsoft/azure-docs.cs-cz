@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9b46f85e16370d15e3a8def98cdcdf8b3878208d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021625"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Distribuované trasování a korelace prostřednictvím Service Bus zasílání zpráv
@@ -21,10 +21,10 @@ Když producent pošle zprávu přes frontu, obvykle se děje v rozsahu někter�
 Microsoft Azure Service Bus zasílání zpráv má definované vlastnosti datové části, které by producenti a spotřebitelé měli použít k předání takového kontextu trasování.
 Protokol je založený na [protokolu korelace http](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
 
-| Název vlastnosti        | Popis                                                 |
+| Název vlastnosti        | Description                                                 |
 |----------------------|-------------------------------------------------------------|
-|  ID diagnostiky       | Jedinečný identifikátor externího volání od producenta do fronty. Odůvodnění, požadavky a formát najdete [v protokolu HTTP pro žádosti o ID](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) . |
-|  Korelace – kontext | Kontext operace, který je šířený napříč všemi službami zapojenými do zpracování operací. Další informace najdete v tématu [korelace – kontext v protokolu HTTP](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) . |
+|  Diagnostic-Id       | Jedinečný identifikátor externího volání od producenta do fronty. Odůvodnění, požadavky a formát najdete [v protokolu HTTP pro žádosti o ID](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) . |
+|  Correlation-Context | Kontext operace, který je šířený napříč všemi službami zapojenými do zpracování operací. Další informace najdete v tématu [korelace – kontext v protokolu HTTP](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) . |
 
 ## <a name="service-bus-net-client-autotracing"></a>Service Bus autotracing klienta .NET
 

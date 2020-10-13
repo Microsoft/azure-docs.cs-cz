@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
 ms.openlocfilehash: 3e1c5f3b360960779dd58c8c05b25885df81d2e9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91276497"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Rozdílový formát v Azure Data Factory
@@ -77,7 +77,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti, které jsou podporovány rozd
 | Cesta ke složce | Přímo na rozdíl od rozdílových Lake | ano | Řetězec | folderPath |
 | Typ komprese | Typ komprese tabulky Delta | ne | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | Argument |
 | Úroveň komprese | Vyberte, jestli se komprese dokončí co nejrychleji, nebo jestli se má výsledný soubor optimálně komprimovat. | požadováno `compressedType` , pokud je zadáno. | `Optimal` nebo `Fastest` | compressionLevel |
-| Vacuum | Zadejte prahovou hodnotu uchování v hodinách pro starší verze tabulky. Výchozí hodnota je 0 nebo menší než 30 dní. | ano | Celé číslo | sávací |
+| Vacuum | Zadejte prahovou hodnotu uchování v hodinách pro starší verze tabulky. Výchozí hodnota je 0 nebo menší než 30 dní. | ano | Integer | sávací |
 | Update – metoda | Určete, které operace aktualizace jsou povoleny na rozdílovém Lake. Pro metody, které nejsou vloženy, je nutné před označením řádků označit předchozí transformaci řádků. | ano | `true` nebo `false` | lze odstranit <br> vložitelný <br> aktualizovatelné <br> upsertable |
 
 ### <a name="delta-sink-script-example"></a>Příklad skriptu jímky v rozdílu

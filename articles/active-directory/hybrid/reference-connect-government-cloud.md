@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89276180"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Požadavky na hybridní identitu pro cloud Azure Government
@@ -74,9 +74,9 @@ Pokud jako metodu přihlašování použijete předávací ověřování, nevyž
 
   V takovém případě povolte přístup k rozsahům IP adres datacentra Azure, které se aktualizují týdně. Tato podmínka platí pouze v případě, že funkci povolíte. Nevyžaduje se pro vlastní přihlášení uživatelů.
 
-### <a name="roll-out-seamless-single-sign-on"></a>Zavedení bezproblémového jednotného přihlašování
+### <a name="roll-out-seamless-single-sign-on"></a>Zavedení bezproblémového jednoduchého Sign-On
 
-K bezproblémovému jednotnému přihlašování uživatelů Azure AD můžete použít následující pokyny. Začnete přidáním adresy URL Azure AD `https://autologon.microsoft.us` do nastavení zóny intranetu pro všechny nebo vybrané uživatele pomocí Zásady skupiny ve službě Active Directory.
+K Sign-On bezproblémovému nasazení Azure AD pro uživatele můžete použít následující pokyny. Začnete přidáním adresy URL Azure AD `https://autologon.microsoft.us` do nastavení zóny intranetu pro všechny nebo vybrané uživatele pomocí Zásady skupiny ve službě Active Directory.
 
 Musíte taky povolit nastavení zásad zóny intranetu **Povolit aktualizace stavového řádku prostřednictvím skriptu prostřednictvím zásady skupiny**.
 

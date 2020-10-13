@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: faf2257f944127748569466d314ff0a76faae4f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fe9b0e9d2e2e46c7c4d04549777a5c27df6bdf18
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906734"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940102"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Kurz: použití R k vytvoření modelu Machine Learning (Preview)
 
@@ -68,7 +68,7 @@ Ke spuštění tohoto kurzu použijte RStudio na instanci výpočetní služby A
 
 ## <a name="clone-the-sample-vignettes"></a><a name="azure"></a>Naklonujte vzorový Vignettes 
 
-Naklonujte https://github.com/azure/azureml-sdk-for-r úložiště GitHub pro kopii souborů Vignette, které budete spouštět v tomto kurzu.
+Naklonujte https://github.com/Azure/azureml-sdk-for-r úložiště GitHub pro kopii souborů Vignette, které budete spouštět v tomto kurzu.
 
 1. V RStudio přejděte do adresáře, kam chcete klonovat úložiště, na kartu terminálu a na disk CD.
 

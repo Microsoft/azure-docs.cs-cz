@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 0e8ea218aa9c557fb109aee0dba318cfd5f605c7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836237"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Azure Disk Encryption s Azure AD pro virtuální počítače s Windows (předchozí verze)
@@ -63,17 +63,17 @@ V následující tabulce jsou uvedeny parametry šablon Správce prostředků pr
 | subnetName | Název podsítě ve virtuální síti, do které by měl patřit síťová karta virtuálního počítače. |
 | AADClientID | ID klienta aplikace Azure AD, která má oprávnění k zápisu tajných kódů do trezoru klíčů. |
 | AADClientSecret | Tajný kód klienta aplikace Azure AD, který má oprávnění k zápisu tajných kódů do trezoru klíčů. |
-| keyVaultURL | Adresa URL trezoru klíčů, do kterého se má klíč BitLocker nahrát Můžete ji získat pomocí rutiny `(Get-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyKeyVaultResourceGroupName").VaultURI` nebo rozhraní příkazového řádku Azure CLI.`az keyvault show --name "MySecureVault" --query properties.vaultUri` |
+| keyVaultURL | Adresa URL trezoru klíčů, do kterého se má klíč BitLocker nahrát Můžete ji získat pomocí rutiny `(Get-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyKeyVaultResourceGroupName").VaultURI` nebo rozhraní příkazového řádku Azure CLI. `az keyvault show --name "MySecureVault" --query properties.vaultUri` |
 | keyEncryptionKeyURL | Adresa URL klíčového šifrovacího klíče, který se používá k zašifrování vygenerovaného klíče nástroje BitLocker (volitelné). </br> </br>KeyEncryptionKeyURL je nepovinný parametr. Vlastní KEK můžete použít k dalšímu zabezpečení šifrovacího klíče pro přístup k datům (tajné heslo) ve vašem trezoru klíčů. |
 | keyVaultResourceGroup | Skupina prostředků trezoru klíčů. |
 | vmName | Název virtuálního počítače, na kterém se má operace šifrování provést. |
 
 
-## <a name="enable-encryption-on-existing-or-running-iaas-windows-vms"></a><a name="bkmk_RunningWinVM"></a>Povolení šifrování u stávajících nebo spuštěných virtuálních počítačů s IaaS s Windows
+## <a name="enable-encryption-on-existing-or-running-iaas-windows-vms"></a><a name="bkmk_RunningWinVM"></a> Povolení šifrování u stávajících nebo spuštěných virtuálních počítačů s IaaS s Windows
 V tomto scénáři můžete šifrování povolit pomocí šablony, rutin PowerShellu nebo příkazů rozhraní příkazového řádku. Následující části podrobněji popisují, jak Azure Disk Encryption povolit. 
 
 
-### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a><a name="bkmk_RunningWinVMPSH"></a>Povolení šifrování u stávajících nebo spuštěných virtuálních počítačů s Azure PowerShell 
+### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a><a name="bkmk_RunningWinVMPSH"></a> Povolení šifrování u stávajících nebo spuštěných virtuálních počítačů s Azure PowerShell 
 Pomocí rutiny [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) Povolte šifrování na běžícím virtuálním počítači s IaaS v Azure. Informace o povolení šifrování u Azure Disk Encryption pomocí rutin PowerShellu najdete v blogových příspěvcích [prozkoumat Azure Disk Encryption s Azure PowerShell – 1.1](/archive/blogs/azuresecurity/explore-azure-disk-encryption-with-azure-powershell) . [Prozkoumejte Azure Disk Encryption s Azure PowerShell-Part 2](/archive/blogs/azuresecurity/explore-azure-disk-encryption-with-azure-powershell-part-2).
 
 -  **Šifrování spuštěného virtuálního počítače pomocí tajného klíče klienta:** Skript níže inicializuje proměnné a spustí rutinu Set-AzVMDiskEncryptionExtension. U skupiny prostředků, virtuálního počítače, trezoru klíčů, aplikace AAD a tajného klíče klienta by se už měly vytvořit požadavky. Hodnoty MyKeyVaultResourceGroup, MyVirtualMachineResourceGroup, MySecureVM, MySecureVault, my-AAD-Client-ID a my-AAD-Client-Secret nahraďte hodnotami.
@@ -166,7 +166,7 @@ V následující tabulce jsou uvedeny parametry šablon Správce prostředků pr
 | --- | --- |
 | AADClientID | ID klienta aplikace Azure AD, která má oprávnění k zápisu tajných kódů do trezoru klíčů. |
 | AADClientSecret | Tajný kód klienta aplikace Azure AD, který má oprávnění k zápisu tajných kódů do trezoru klíčů. |
-| keyVaultName | Název trezoru klíčů, do kterého se má klíč BitLocker nahrát Můžete ji získat pomocí rutiny `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` nebo příkazu rozhraní příkazového řádku Azure CLI.`az keyvault list --resource-group "MySecureGroup"`|
+| keyVaultName | Název trezoru klíčů, do kterého se má klíč BitLocker nahrát Můžete ji získat pomocí rutiny `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` nebo příkazu rozhraní příkazového řádku Azure CLI. `az keyvault list --resource-group "MySecureGroup"`|
 |  keyEncryptionKeyURL | Adresa URL klíčového šifrovacího klíče, který se používá k zašifrování vygenerovaného klíče nástroje BitLocker. Tento parametr je nepovinný, pokud v rozevíracím seznamu UseExistingKek vyberete **nokek** . Pokud v rozevíracím seznamu UseExistingKek vyberete možnost **KEK** , musíte zadat hodnotu _keyEncryptionKeyURL_ . |
 | volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_, _data_a _vše_. |
 | sequenceVersion | Verze sekvence operace nástroje BitLocker Zvyšte číslo této verze pokaždé, když se na stejném virtuálním počítači provede operace šifrování disku. |
@@ -253,7 +253,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
 
 ## <a name="enable-encryption-using-azure-ad-client-certificate-based-authentication"></a>Povolte šifrování pomocí ověřování na základě certifikátu klienta služby Azure AD.
-Ověřování klientským certifikátem můžete použít s KEK nebo bez něj. Před použitím skriptů PowerShell byste už měli mít certifikát uložený do trezoru klíčů a nasadili ho do virtuálního počítače. Pokud používáte KEK, KEK by již měl existovat. Další informace najdete v části [ověřování na základě certifikátů pro Azure AD](disk-encryption-key-vault-aad.md#certificate-based-authentication-optional) v článku požadavky.
+Ověřování klientským certifikátem můžete použít s KEK nebo bez něj. Před použitím skriptů PowerShell byste už měli mít certifikát uložený do trezoru klíčů a nasadili ho do virtuálního počítače. Pokud používáte KEK, KEK by již měl existovat. Další informace najdete v části  [ověřování na základě certifikátů pro Azure AD](disk-encryption-key-vault-aad.md#certificate-based-authentication-optional) v článku požadavky.
 
 
 ### <a name="enable-encryption-using-certificate-based-authentication-with-azure-powershell"></a>Povolení šifrování pomocí ověřování na základě certifikátů pomocí Azure PowerShell
@@ -324,7 +324,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $VMName -Aa
      ```
 - **Zakázat šifrování pomocí šablony Správce prostředků:** 
 
-    1. Kliknutím na **nasadit do Azure** z části [zakázat šifrování disku při spuštění šablony virtuálního počítače s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) .
+    1. Kliknutím na **nasadit do Azure** z části [zakázat šifrování disku při spuštění šablony virtuálního počítače s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm)  .
     2. Vyberte předplatné, skupinu prostředků, umístění, virtuální počítač, právní podmínku a smlouvu.
     3.  Kliknutím na **koupit** zakažte šifrování disku na běžícím virtuálním počítači s Windows. 
 

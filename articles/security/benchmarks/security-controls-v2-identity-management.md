@@ -8,10 +8,10 @@ ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: e7447d03fc231d8d96b71c7d944a380c10add0d0
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91757932"
 ---
 # <a name="security-control-v2-identity-management"></a>Řízení zabezpečení v2: Správa identit
@@ -59,7 +59,7 @@ Poznámka: Azure AD podporuje externí poskytovatele identity, který umožňuje
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| IM – 2 | – | AC-2, AC-3, IA-2, IA-4, IA-9 |
+| IM – 2 | Není k dispozici | AC-2, AC-3, IA-2, IA-4, IA-9 |
 
 Pro jiné než lidské účty, jako jsou služby nebo automatizace, použijte spravované identity Azure, místo abyste vytvořili výkonnější účet pro přístup k prostředkům nebo spustit kód. Spravované identity Azure se můžou ověřit u služeb a prostředků Azure, které podporují ověřování Azure AD. Ověřování je povoleno prostřednictvím předdefinovaných pravidel udělení přístupu, což vyloučí pevně zakódované přihlašovací údaje ve zdrojovém kódu nebo konfiguračních souborech. 
 
@@ -189,7 +189,7 @@ Rozšířená ochrana před internetovými útoky (ATP) je řešení zabezpečen
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| IM – 6 | – | AC-2, AC-3 |
+| IM – 6 | Není k dispozici | AC-2, AC-3 |
 
 Podmíněný přístup Azure AD můžete použít pro přesnější řízení přístupu na základě uživatelem definovaných podmínek, jako je třeba vyžadování přihlášení uživatelů z určitých rozsahů IP adres pro použití MFA. Pomocí zásad podmíněného přístupu Azure AD pro různé případy použití lze také použít podrobnou správu relace ověřování. 
 

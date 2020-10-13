@@ -7,10 +7,10 @@ ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
 ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91356881"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Vývoj šablon ARM pro cloudovou konzistenci
@@ -55,7 +55,7 @@ Funkce Azure Resource Manager se vždycky do globálního Azure nasadí dřív. 
 
 1. Jakmile budete mít místní klon úložiště, připojte se k Azure Resource Manager cíle pomocí PowerShellu.
 
-1. Importujte modul psm1 a spusťte rutinu test-AzureRmTemplateFunctions:
+1. Importujte modul psm1 a spusťte rutinu Test-AzureRmTemplateFunctions:
 
    ```powershell
    # Import the module
@@ -487,7 +487,7 @@ Pokud chcete načíst seznam dostupných imagí virtuálních počítačů v ně
 az vm image list -all
 ```
 
-Stejný seznam můžete načíst pomocí rutiny Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadat požadované umístění s `-Location` parametrem. Příklad:
+Stejný seznam můžete načíst pomocí rutiny Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadat požadované umístění s `-Location` parametrem. Například:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
@@ -590,7 +590,7 @@ Pokud chcete načíst seznam rozšíření virtuálních počítačů, které js
 az vm extension image list --location myLocation
 ```
 
-Můžete také spustit rutinu Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a použít `-Location` ji k určení umístění bitové kopie virtuálního počítače. Příklad:
+Můžete také spustit rutinu Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a použít `-Location` ji k určení umístění bitové kopie virtuálního počítače. Například:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version

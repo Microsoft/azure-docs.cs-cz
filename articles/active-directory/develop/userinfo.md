@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 8f3fd462a52b035cd5b5447560e5472b41f237fa
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653226"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft Identity Platform – UserInfo – koncový bod
@@ -48,7 +48,7 @@ K volání rozhraní API pro UserInfo použijte následující [OIDC oprávněn�
 |:--------------------|:---------------------------------------------------------|
 |Delegovaný (pracovní nebo školní účet) | OpenID (povinné), profil, e-mail |
 |Delegovaný (osobní účet Microsoft) | OpenID (povinné), profil, e-mail |
-|Aplikace | - |
+|Aplikace | Nelze použít |
 
 > [!TIP]
 > Zkopírujte tuto adresu URL do prohlížeče, abyste získali token pro koncový bod UserInfo a také [token ID](id-tokens.md) a nahradili ID klienta a identifikátor URI přesměrování vlastními. Všimněte si, že žádá jenom o obory pro OpenID nebo pro obory grafů a nic jiného.  To je nutné, protože nemůžete požadovat oprávnění pro dva různé prostředky v rámci stejné žádosti o token.

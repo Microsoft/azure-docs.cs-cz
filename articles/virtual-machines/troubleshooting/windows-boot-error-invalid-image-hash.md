@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
-ms.openlocfilehash: f607ebb64b27c45ec696d7fcd431a0ba2342697f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e58e349d7b7385ec913986c39462c17deadcb61d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89447811"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969598"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Chyba správce spouštění systému Windows – hodnota 0xC0000428 neplatné hodnoty hash obrázku
 
@@ -28,7 +28,7 @@ Tento článek popisuje kroky pro řešení problémů, ve kterých se použil o
 
 ## <a name="symptom"></a>Příznak
 
-Když použijete [diagnostiku spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) k zobrazení snímku obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje správce spouštění systému Windows s touto zprávou:
+Když použijete [diagnostiku spouštění](./boot-diagnostics.md) k zobrazení snímku obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje správce spouštění systému Windows s touto zprávou:
 
   `File: \windows\system32\boot\winload.exe`
 
@@ -66,7 +66,7 @@ Datum ukončení platnosti image verze Preview není možné oddálit. Po vyprš
 
 ## <a name="solution"></a>Řešení
 
-Pokud se jedná o image ve verzi Preview, neexistuje žádný způsob, jak pro použitou image rozšíříte datum vypršení platnosti, budete muset [nasadit nový virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) pomocí Image, která není ve verzi Preview. Následující postup vám pomůže zjistit, jestli jste použili bitovou kopii verze Preview, a poskytnout prostředky, které vám pomůžou při přenosu dat z tohoto virtuálního počítače do nového virtuálního počítače. Pokud jste image označili jako image ve verzi Preview, image se nedá obnovit, protože už vypršela její platnost.
+Pokud se jedná o image ve verzi Preview, neexistuje žádný způsob, jak pro použitou image rozšíříte datum vypršení platnosti, budete muset [nasadit nový virtuální počítač](../windows/quick-create-portal.md) pomocí Image, která není ve verzi Preview. Následující postup vám pomůže zjistit, jestli jste použili bitovou kopii verze Preview, a poskytnout prostředky, které vám pomůžou při přenosu dat z tohoto virtuálního počítače do nového virtuálního počítače. Pokud jste image označili jako image ve verzi Preview, image se nedá obnovit, protože už vypršela její platnost.
 
 V závislosti na vaší předvolbě můžete k dotazování na Image použít buď Azure PowerShell nebo Azure CLI, abyste zjistili, jestli se jedná o image ve verzi Preview. Pomocí těchto příkazů můžete ověřit, že se jedná o obrázek verze Preview.
 
@@ -103,7 +103,7 @@ V závislosti na vaší předvolbě můžete k dotazování na Image použít bu
 
 ### <a name="query-using-the-azure-cli"></a>Dotazování pomocí Azure CLI
 
-1. Pokud jste to ještě neudělali, budete muset [Azure CLI nainstalovat](https://docs.microsoft.com/cli/azure/install-azure-cli).
+1. Pokud jste to ještě neudělali, budete muset [Azure CLI nainstalovat](/cli/azure/install-azure-cli).
 1. Po stažení použijte příkazový řádek nebo PowerShell k zadání `az login` příkazu a pak se přihlaste pomocí přihlašovacích údajů k účtu.
 1. Po přihlášení zadejte následující příkazy:
 

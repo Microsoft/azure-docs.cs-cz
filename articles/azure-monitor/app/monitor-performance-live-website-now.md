@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 6c27c78bf8e3f3b8af342a14a38c9be3821d781a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91758659"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentace webových aplikací za běhu s Application Insights připojením bez kódu
@@ -40,14 +40,14 @@ Tady je rekapitulace toho, co každý způsob přináší:
 
 |  | Při sestavení | Za běhu |
 | --- | --- | --- |
-| **Vyžádá & výjimky.** |Ano |Ano |
-| **[Podrobnější výjimky](./asp-net-exceptions.md)** | |Ano |
+| **Vyžádá & výjimky.** |Yes |Yes |
+| **[Podrobnější výjimky](./asp-net-exceptions.md)** | |Yes |
 | **[Diagnostika závislostí](./asp-net-dependencies.md)** |Na platformě .NET 4.6+, ale méně podrobná |Ano, úplné podrobnosti: kódy výsledků, text příkazu SQL, příkaz HTTP|
-| **[Čítače výkonu systému](./performance-counters.md)** |Ano |Ano |
-| **[Rozhraní API pro vlastní telemetrii][api]** |Ano |No |
-| **[Integrace protokolu trasování](./asp-net-trace-logs.md)** |Ano |No |
-| **[Zobrazení stránky & uživatelských dat](./javascript.md)** |Ano |No |
-| **Nutnost znovu sestavit kód** |Ano | No |
+| **[Čítače výkonu systému](./performance-counters.md)** |Yes |Yes |
+| **[Rozhraní API pro vlastní telemetrii][api]** |Yes |No |
+| **[Integrace protokolu trasování](./asp-net-trace-logs.md)** |Yes |No |
+| **[Zobrazení stránky & uživatelských dat](./javascript.md)** |Yes |No |
+| **Nutnost znovu sestavit kód** |Yes | No |
 
 
 
@@ -85,7 +85,7 @@ Pokud chcete znovu publikovat aniž byste přidali Application Insights do kódu
 4. Obnovte veškeré úpravy, které jste provedli v souboru .config.
 
 
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>Poradce při potížích
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Řešení potíží
 
 ### <a name="confirm-a-valid-installation"></a>Potvrďte platnou instalaci. 
 

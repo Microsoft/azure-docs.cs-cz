@@ -6,10 +6,10 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318993"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Reference k rozhraní API agenta Azure Monitor Application Insights
@@ -26,7 +26,7 @@ Tento článek popisuje rutinu, která je členem [modulu PowerShellu AZ. Applic
 > - Modul instrumentace přidává další režii a je ve výchozím nastavení vypnutý.
 
 
-## <a name="enable-instrumentationengine"></a>Enable – InstrumentationEngine
+## <a name="enable-instrumentationengine"></a>Enable-InstrumentationEngine
 
 Povolí modul instrumentace nastavením některých klíčů registru.
 Restartujte službu IIS, aby se změny projevily.
@@ -62,7 +62,7 @@ Configuring IIS Environment for instrumentation engine...
 Configuring registry for instrumentation engine...
 ```
 
-## <a name="enable-applicationinsightsmonitoring"></a>Enable – ApplicationInsightsMonitoring
+## <a name="enable-applicationinsightsmonitoring"></a>Enable-ApplicationInsightsMonitoring
 
 Povoluje nekódovatelné monitorování aplikací služby IIS na cílovém počítači.
 
@@ -84,10 +84,10 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 #### <a name="example-with-an-instrumentation-key-map"></a>Příklad s mapou klíče instrumentace
 V tomto příkladu:
-- `MachineFilter`odpovídá aktuálnímu počítači pomocí `'.*'` zástupného znaku.
-- `AppFilter='WebAppExclude'`poskytuje `null` klíč instrumentace. Zadaná aplikace nebude instrumentovaná.
-- `AppFilter='WebAppOne'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
-- `AppFilter='WebAppTwo'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
+- `MachineFilter` odpovídá aktuálnímu počítači pomocí `'.*'` zástupného znaku.
+- `AppFilter='WebAppExclude'` poskytuje `null` klíč instrumentace. Zadaná aplikace nebude instrumentovaná.
+- `AppFilter='WebAppOne'` přiřadí zadané aplikaci jedinečný klíč instrumentace.
+- `AppFilter='WebAppTwo'` přiřadí zadané aplikaci jedinečný klíč instrumentace.
 - Nakonec `AppFilter` taky používá `'.*'` zástupný znak ke spárování se všemi webovými aplikacemi, které se neshodují s předchozími pravidly a přiřazují výchozí klíč instrumentace.
 - Jsou přidány mezery pro čitelnost.
 
@@ -476,10 +476,10 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 #### <a name="example-with-an-instrumentation-key-map"></a>Příklad s mapou klíče instrumentace
 V tomto příkladu:
-- `MachineFilter`odpovídá aktuálnímu počítači pomocí `'.*'` zástupného znaku.
-- `AppFilter='WebAppExclude'`poskytuje `null` klíč instrumentace. Zadaná aplikace nebude instrumentovaná.
-- `AppFilter='WebAppOne'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
-- `AppFilter='WebAppTwo'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
+- `MachineFilter` odpovídá aktuálnímu počítači pomocí `'.*'` zástupného znaku.
+- `AppFilter='WebAppExclude'` poskytuje `null` klíč instrumentace. Zadaná aplikace nebude instrumentovaná.
+- `AppFilter='WebAppOne'` přiřadí zadané aplikaci jedinečný klíč instrumentace.
+- `AppFilter='WebAppTwo'` přiřadí zadané aplikaci jedinečný klíč instrumentace.
 - Nakonec `AppFilter` taky používá `'.*'` zástupný znak ke spárování se všemi webovými aplikacemi, které se neshodují s předchozími pravidly a přiřazují výchozí klíč instrumentace.
 - Jsou přidány mezery pro čitelnost.
 
@@ -550,7 +550,7 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-## <a name="start-applicationinsightsmonitoringtrace"></a>Spustit – ApplicationInsightsMonitoringTrace
+## <a name="start-applicationinsightsmonitoringtrace"></a>Start-ApplicationInsightsMonitoringTrace
 
 Shromažďuje [události ETW](/windows/desktop/etw/event-tracing-portal) z běhového modulu připojení s kódováním. Tato rutina je alternativou ke spuštění [PerfView](https://github.com/microsoft/perfview).
 

@@ -13,10 +13,10 @@ ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268600"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
@@ -40,7 +40,7 @@ Aby zařízení s Windows 10 mohl používat službu Enterprise State Roaming, m
 
 ## <a name="data-storage"></a>Úložiště dat
 
-Data Enterprise State Roaming se hostují v jedné nebo několika [oblastech Azure](https://azure.microsoft.com/regions/) , které jsou nejlépe zarovnané s hodnotou země nebo oblasti nastavenou v instanci Azure Active Directory. Data Enterprise State Roaming jsou rozdělená na oddíly na základě tří hlavních geografických oblastí: Severní Amerika, EMEA a APAC. Data Enterprise State Roaming pro tenanta se místně nacházejí v geografickém regionu a nereplikují se mezi regiony.  Příklad:
+Data Enterprise State Roaming se hostují v jedné nebo několika [oblastech Azure](https://azure.microsoft.com/regions/) , které jsou nejlépe zarovnané s hodnotou země nebo oblasti nastavenou v instanci Azure Active Directory. Data Enterprise State Roaming jsou rozdělená na oddíly na základě tří hlavních geografických oblastí: Severní Amerika, EMEA a APAC. Data Enterprise State Roaming pro tenanta se místně nacházejí v geografickém regionu a nereplikují se mezi regiony.  Například:
 
 | Hodnota země/oblasti | hostuje svá data v |
 | -------------------- | ------------------------ |
@@ -80,7 +80,7 @@ Explicitní odstranění je v případě, že správce Azure odstraní uživatel
 
 ### <a name="stale-data-deletion"></a>Odstranění zastaralých dat
 
-Data, která se nezískala po dobu jednoho roku ("doba uchování"), budou považována za zastaralá a je možné je odstranit z cloudu Microsoftu. Doba uchovávání se může změnit, ale nebude nižší než 90 dní. Zastaralá data můžou být konkrétní sadou nastavení Windows/aplikace nebo všech nastavení pro uživatele. Příklad:
+Data, která se nezískala po dobu jednoho roku ("doba uchování"), budou považována za zastaralá a je možné je odstranit z cloudu Microsoftu. Doba uchovávání se může změnit, ale nebude nižší než 90 dní. Zastaralá data můžou být konkrétní sadou nastavení Windows/aplikace nebo všech nastavení pro uživatele. Například:
 
 * Pokud žádná zařízení nepřistupuje ke konkrétní kolekci nastavení (například když je aplikace ze zařízení odebraná nebo pokud je skupina nastavení, jako je "motiv", zakázaná pro všechna zařízení uživatele), pak se tato kolekce po dobu uchování zastará a může se odstranit. 
 * Pokud uživatel vypnul nastavení na všech svých zařízeních, nebude k dispozici žádná data nastavení a veškerá data nastavení pro tohoto uživatele budou zastaralá a můžou se po uplynutí doby uchování odstranit. 

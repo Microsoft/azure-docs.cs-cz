@@ -14,10 +14,10 @@ ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: f4a71509c29555da2fdbc1e7eed2fd985237d6a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91268770"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>Kurz: kódování vzdáleného souboru na základě adresy URL a streamování videa – Azure CLI
@@ -48,7 +48,7 @@ az group create -n amsResourceGroup -l westus2
 
 ### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
 
-V tomto příkladu vytvoříme účet Standard LRS pro obecné účely v2.
+V tomto příkladu vytvoříme účet General-Purpose v2 úrovně Standard LRS.
 
 Pokud chcete experimentovat s účty úložiště, použijte `--sku Standard_LRS` . Když vybíráte SKU pro produkci, zvažte použití nástroje `--sku Standard_RAGRS` , který zajišťuje geografickou replikaci pro kontinuitu podnikových prostředí. Další informace najdete v tématu [účty úložiště](/cli/azure/storage/account).
 

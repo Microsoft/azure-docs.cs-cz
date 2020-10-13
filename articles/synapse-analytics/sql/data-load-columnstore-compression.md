@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: fecb78b240f5c983580d4bdb34535a879ffe3e2e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289272"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Maximalizace kvality skupiny řádků pro výkon indexu columnstore
@@ -42,7 +42,7 @@ Další informace o hromadném načítání najdete v tématu [hromadné načten
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Jak monitorovat kvalitu skupiny řádků
 
-DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([Sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) obsahuje definici zobrazení odpovídající databázi SQL), která zpřístupňuje užitečné informace, jako je počet řádků v rowgroups, a důvod oříznutí, pokud došlo k oříznutí. Následující zobrazení můžete vytvořit jako praktický způsob dotazování na tento DMV, abyste získali informace o ořezávání skupiny řádků.
+DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([Sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) obsahuje definici zobrazení odpovídající databázi SQL), která zpřístupňuje užitečné informace, jako je počet řádků v rowgroups, a důvod oříznutí, pokud došlo k oříznutí. Následující zobrazení můžete vytvořit jako praktický způsob dotazování na tento DMV, abyste získali informace o ořezávání skupiny řádků.
 
 ```sql
 create view dbo.vCS_rg_physical_stats

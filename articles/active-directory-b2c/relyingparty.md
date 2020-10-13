@@ -11,10 +11,10 @@ ms.date: 09/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2d00942331b7e6c881803af366d1c08e173462b3
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90023784"
 ---
 # <a name="relyingparty"></a>RelyingParty
@@ -74,7 +74,7 @@ Následující příklad ukazuje element **RelyingParty** v souboru zásad *B2C_
 
 Volitelný element **RelyingParty** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | Výchozí cesta uživatele pro aplikaci RP. |
 | UserJourneyBehaviors | 0:1 | Rozsah chování při jízdě uživatelů. |
@@ -110,7 +110,7 @@ Element **DefaultUserJourney** obsahuje následující atribut:
 
 Element **UserJourneyBehaviors** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Rozsah chování relace jednotného přihlašování (SSO) pro cestu uživatele. |
 | SessionExpiryType |0:1 | Chování při ověřování relace. Možné hodnoty: `Rolling` nebo `Absolute` . `Rolling`Hodnota (výchozí) znamená, že uživatel zůstane přihlášený, dokud bude uživatel v aplikaci neustále aktivní. `Absolute`Hodnota označuje, že se uživatel bude nucen znovu ověřit po uplynutí časového období určeného v době platnosti relace aplikace. |
@@ -125,7 +125,7 @@ Element **SingleSignon** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Obor | Yes | Rozsah chování jednotného přihlašování. Možné hodnoty: `Suppressed` , `Tenant` , `Application` , nebo `Policy` . `Suppressed`Hodnota znamená, že se chování potlačí a uživatel se vždy zobrazí výzva k výběru poskytovatele identity.  `Tenant`Hodnota označuje, že se chování použije u všech zásad v tenantovi. Například uživatel, který přecházení ze dvou cest zásad pro tenanta, nevyzve k výběru poskytovatele identity. `Application`Hodnota označuje, že chování bude použito pro všechny zásady aplikace, které vytváří požadavek. Například uživatel, který přecházení ze dvou cest zásad pro aplikaci, nezobrazuje výzvu k výběru poskytovatele identity. `Policy`Hodnota znamená, že chování se vztahuje pouze na zásadu. Například uživatel, který přechází ze dvou cest zásad pro rozhraní vztahu důvěryhodnosti, se při přepínání mezi zásadami zobrazí dotaz na výběr poskytovatele identity. |
+| Rozsah | Yes | Rozsah chování jednotného přihlašování. Možné hodnoty: `Suppressed` , `Tenant` , `Application` , nebo `Policy` . `Suppressed`Hodnota znamená, že se chování potlačí a uživatel se vždy zobrazí výzva k výběru poskytovatele identity.  `Tenant`Hodnota označuje, že se chování použije u všech zásad v tenantovi. Například uživatel, který přecházení ze dvou cest zásad pro tenanta, nevyzve k výběru poskytovatele identity. `Application`Hodnota označuje, že chování bude použito pro všechny zásady aplikace, které vytváří požadavek. Například uživatel, který přecházení ze dvou cest zásad pro aplikaci, nezobrazuje výzvu k výběru poskytovatele identity. `Policy`Hodnota znamená, že chování se vztahuje pouze na zásadu. Například uživatel, který přechází ze dvou cest zásad pro rozhraní vztahu důvěryhodnosti, se při přepínání mezi zásadami zobrazí dotaz na výběr poskytovatele identity. |
 | KeepAliveInDays | Yes | Určuje, jak dlouho zůstane uživatel přihlášený. Nastavením hodnoty 0 dojde k vypnutí funkcí políčko zůstat přihlášeni. Další informace najdete v tématu [zůstat přihlášeni](custom-policy-keep-me-signed-in.md). |
 |EnforceIdTokenHintOnLogout| No|  Vynutí předání dříve vydaného tokenu ID koncovému bodu pro odhlášení jako pomocný parametr pro aktuální ověřenou relaci koncového uživatele s klientem. Možné hodnoty: `false` (výchozí), nebo `true` . Další informace najdete v tématu věnovaném [webovému přihlášení pomocí OpenID Connect](openid-connect.md).  |
 
@@ -155,7 +155,7 @@ Následující příklad předává parametr s názvem `campaignId` s hodnotou `
 
 Element **ContentDefinitionParameters** obsahuje následující element:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0: n | Řetězec, který obsahuje dvojici klíč-hodnota, která je připojena k řetězci dotazu identifikátoru URI pro načtení definice obsahu. |
 
@@ -177,10 +177,10 @@ Element **TechnicalProfile** obsahuje následující atribut:
 
 **TechnicalProfile** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Řetězec, který obsahuje název technického profilu. |
-| Popis | 0:1 | Řetězec, který obsahuje popis technického profilu. |
+| Description | 0:1 | Řetězec, který obsahuje popis technického profilu. |
 | Protokol | 1:1 | Protokol používaný pro federaci. |
 | Metadata | 0:1 | Kolekce *položek* párů klíč/hodnota využívané protokolem pro komunikaci s koncovým bodem v průběhu transakce pro konfiguraci interakce mezi předávající stranou a ostatními účastníky komunity. |
 | OutputClaims | 1:1 | Seznam typů deklarací, které jsou pořízeny jako výstup v technickém profilu. Každý z těchto prvků obsahuje odkaz na objekt **ClaimType** , který je již definován v části **ClaimsSchema** nebo v zásadě, ze které tento soubor zásad dědí. |
@@ -209,7 +209,7 @@ Pokud je protokol `SAML` , element metadata obsahuje následující prvky.
 
 Element **OutputClaims** obsahuje následující element:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0: n | Název očekávaného typu deklarace v seznamu podporovaných pro zásadu, které předávající strana přihlašuje k odběru. Tato deklarace slouží jako výstup pro technický profil. |
 
