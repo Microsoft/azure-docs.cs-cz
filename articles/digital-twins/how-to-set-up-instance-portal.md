@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 12b0dd957cb89fc7114c752312b08f1e490499da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f8f5d7ddf25b2df6b2e07818e1b2ed7e90fb867
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89280022"
+ms.locfileid: "91932106"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Nastavení instance a ověřování digitálních vláken Azure (portál)
 
@@ -123,12 +123,13 @@ Na stránce portálu pro registraci aplikace vyberte v nabídce *oprávnění ro
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
-Na stránce *oprávnění rozhraní API* , které následuje, přepněte do *rozhraní API moje organizace používá* kartu a vyhledejte *digitální vlákna Azure*. Pokud chcete pokračovat v přiřazování oprávnění pro rozhraní API digitálních vláken Azure, vyberte z výsledků hledání možnost *digitálních vláken Azure* .
+Na stránce *oprávnění rozhraní API* , které následuje, přepněte do *rozhraní API moje organizace používá* kartu a vyhledejte *digitální vlákna Azure*. Pokud chcete pokračovat v přiřazování oprávnění pro rozhraní API digitálních vláken Azure, vyberte z výsledků hledání možnost _**digitálních vláken Azure**_ .
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 >[!NOTE]
-> Pokud máte existující instanci digitálních vláken Azure z předchozí verze Public Preview služby (starší než červenec 2020) ve vašem předplatném, budete muset místo toho hledat *službu inteligentních prostorů Azure* . Toto je starší název pro stejnou sadu rozhraní API a nemění se tím prostředí nad rámec tohoto kroku.
+> Pokud vaše předplatné stále obsahuje existující instanci digitálních vláken Azure z předchozí verze Public Preview služby (do července 2020), budete muset místo toho vyhledat a vybrat _**službu Azure Smart Spaces**_ . Toto je starší název pro stejnou sadu rozhraní API (Všimněte si, že *ID aplikace (klienta)* je stejné jako na snímku obrazovky výše) a vaše prostředí se po tomto kroku nemění.
+> :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1-smart-spaces.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 V dalším kroku vyberete, která oprávnění chcete těmto rozhraním API udělit. Rozbalte oprávnění **číst (1)** a zaškrtněte políčko *číst. zapsat* pro udělení oprávnění pro přístup k registraci aplikace a oprávnění k zápisu.
 
@@ -163,7 +164,7 @@ Poznamenejte si *ID aplikace (klienta)* a *ID adresáře (tenanta)* **zobrazené
 ## <a name="next-steps"></a>Další kroky
 
 Otestujte jednotlivá REST API volání na vaši instanci pomocí příkazů rozhraní příkazového řádku Azure Digital revlákens CLI: 
-* [AZ DT reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [AZ DT reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
 * [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md)
 
 Případně můžete informace o tom, jak připojit klientskou aplikaci k instanci, napsáním ověřovacího kódu klientské aplikace:

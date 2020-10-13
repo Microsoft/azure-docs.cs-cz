@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
 ms.openlocfilehash: 6f089a67262c78f31092780bb8b4d7d803d47e0d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91369089"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Kurz: načtení dat do fondu SQL ve službě Azure synapse Analytics
@@ -42,7 +42,7 @@ Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi apl
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>Vytvoření prázdného datového skladu ve fondu SQL
 
@@ -536,7 +536,7 @@ V této části se používají externí tabulky, které jste definovali pro na�
 
 Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) načítá data z Azure Storage Blob do nových tabulek ve vašem datovém skladu. Příkaz CTAS vytvoří novou tabulku na základě výsledků příkazu SELECT. Nová tabulka obsahuje stejné sloupce a datové typy jako výsledky příkazu SELECT. Když příkaz SELECT vybere z externí tabulky, data se naimportují do relační tabulky v datovém skladu.
 
-Tento skript nenačítá data do tabulek WWI. dimension_Date a WWI. fact_Sale. Tyto tabulky se vygenerují v pozdějším kroku, aby mohly obsahovat velké množství řádků.
+Tento skript nenačítá data do tabulek wwi.dimension_Date a wwi.fact_Sale. Tyto tabulky se vygenerují v pozdějším kroku, aby mohly obsahovat velké množství řádků.
 
 1. Spuštěním následujícího skriptu načtěte data do nových tabulek ve svém datovém skladu.
 
@@ -732,7 +732,7 @@ Tento skript nenačítá data do tabulek WWI. dimension_Date a WWI. fact_Sale. T
 
 ## <a name="create-tables-and-procedures-to-generate-the-date-and-sales-tables"></a>Vytvoření tabulek a procedur pro vygenerování tabulek Date a Sales
 
-Tato část vytvoří tabulky WWI. dimension_Date a WWI. fact_Sale. Vytvoří také uložené procedury, které mohou generovat miliony řádků v tabulkách WWI. dimension_Date a WWI. fact_Sale.
+Tato část vytvoří tabulky wwi.dimension_Date a wwi.fact_Sale. Vytvoří také uložené procedury, které mohou generovat miliony řádků v tabulkách wwi.dimension_Date a wwi.fact_Sale.
 
 1. Vytvořte tabulky dimension_Date a fact_Sale.  
 
@@ -876,7 +876,7 @@ Tato část vytvoří tabulky WWI. dimension_Date a WWI. fact_Sale. Vytvoří ta
     END;
     ```
 
-4. Vytvořte tento postup, který naplní tabulky WWI. dimension_Date a WWI. fact_Sale. Tato procedura volá uloženou proceduru [wwi].[PopulateDateDimensionForYear], která naplní tabulku wwi.dimension_Date.
+4. Vytvořte tento postup, který naplní tabulky wwi.dimension_Date a wwi.fact_Sale. Tato procedura volá uloženou proceduru [wwi].[PopulateDateDimensionForYear], která naplní tabulku wwi.dimension_Date.
 
     ```sql
     CREATE PROCEDURE [wwi].[Configuration_PopulateLargeSaleTable] @EstimatedRowsPerDay [bigint],@Year [int] AS
@@ -933,7 +933,7 @@ Tato část vytvoří tabulky WWI. dimension_Date a WWI. fact_Sale. Vytvoří ta
 
 ## <a name="generate-millions-of-rows"></a>Generování milionů řádků
 
-Pomocí uložených procedur, které jste vytvořili, můžete vygenerovat miliony řádků v tabulce WWI. fact_Sale a odpovídající data v tabulce WWI. dimension_Date.
+Pomocí uložených procedur, které jste vytvořili, můžete vygenerovat miliony řádků v tabulce wwi.fact_Sale a odpovídající data v tabulce wwi.dimension_Date.
 
 1. Spuštěním této procedury přidejte do [wwi].[seed_Sale] další řádky.
 
@@ -941,7 +941,7 @@ Pomocí uložených procedur, které jste vytvořili, můžete vygenerovat milio
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. Spusťte tento postup k naplnění WWI. fact_Sale s 100 000 řádky za den pro každý den v roce 2000.
+2. Spuštěním tohoto postupu naplníte wwi.fact_Sale 100 000 řádků za den za každý den v roce 2000.
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000

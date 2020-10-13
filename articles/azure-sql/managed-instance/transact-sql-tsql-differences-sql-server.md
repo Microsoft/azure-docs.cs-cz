@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1298a1676d7a7ac0321ae768c3e596f481e80a8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36377d34a03150fefb8332bcfbe7bb6633ccc606
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617869"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973304"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -353,7 +353,11 @@ Nedokumentované příkazy DBCC povolené v SQL Server nejsou ve spravované ins
 
 ### <a name="distributed-transactions"></a>Distribuované transakce
 
-MSDTC a [elastické transakce](../database/elastic-transactions-overview.md) aktuálně nejsou ve spravované instanci SQL podporovány.
+Částečná podpora [distribuovaných transakcí](../database/elastic-transactions-overview.md) je v současnosti ve verzi Public Preview. Podporované scénáře:
+* Transakce, kde se účastní jenom spravované instance Azure SQL, které jsou součástí [skupiny důvěryhodných serverů](https://aka.ms/mitrusted-groups).
+* Transakce iniciované z rozhraní .NET (třída TransactionScope) a jazyka Transact-SQL.
+
+Azure SQL Managed instance v současné době nepodporuje další scénáře, které jsou pravidelně podporované službou MSDTC místně nebo v Azure Virtual Machines.
 
 ### <a name="extended-events"></a>Rozšířené události
 

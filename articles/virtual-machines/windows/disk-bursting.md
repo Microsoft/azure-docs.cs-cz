@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ab54b68ab3f7984ee18a39cf3a81fa663af54dee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 547834542b605b226ebffd68e05296ee847dc6de
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90889106"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974324"
 ---
 # <a name="disk-bursting"></a>Zvládání výkonových špiček disků
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
@@ -29,7 +29,7 @@ V Středozápadní USA je k dispozici také rozšíření na úrovni virtuální
 Pro virtuální počítače, které ji podporují, je shluking povolen ve výchozím nastavení.
 
 ## <a name="disk-level-bursting"></a>Roztržení na úrovni disku
-K dispozici je také SSD na úrovni [Premium](disks-types.md#premium-ssd) pro velikosti disků P20 a menší ve všech oblastech. Při nových nasazení velikosti disků, která ho podporují, je rozšíření disku ve výchozím nastavení povolené. Stávající velikosti disků, pokud podporují shlukování disku, mohou umožňovat roztržení pomocí jedné z následujících metod: 
+K dispozici je také SSD na úrovni [Premium](../disks-types.md#premium-ssd) pro velikosti disků P20 a menší ve všech oblastech. Při nových nasazení velikosti disků, která ho podporují, je rozšíření disku ve výchozím nastavení povolené. Stávající velikosti disků, pokud podporují shlukování disku, mohou umožňovat roztržení pomocí jedné z následujících metod: 
 - **Restartování virtuálního počítače** 
 - **Odpojení a opětovné připojení disku**
 

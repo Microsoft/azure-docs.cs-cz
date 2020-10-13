@@ -12,7 +12,7 @@ ms.openlocfilehash: 104424c1e3bd1df69106db7da45b744755b51e82
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858764"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-the-azure-portal"></a>Vytvoření clusteru s Data Lake Storage Gen2 pomocí Azure Portal
@@ -29,7 +29,7 @@ Pokud chcete vytvořit cluster HDInsight, který používá Data Lake Storage Ge
 
 Vytvořte spravovanou identitu přiřazenou uživatelem, pokud ji ještě nemáte.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V levém horním rohu klikněte na **vytvořit prostředek**.
 1. Do vyhledávacího pole zadejte **přiřazený uživatel** a klikněte na položku **spravovaná identita přiřazená uživateli**.
 1. Klikněte na **Vytvořit**.
@@ -44,7 +44,7 @@ Další informace o tom, jak spravované identity fungují ve službě Azure HDI
 
 Vytvořte účet úložiště pro použití s Azure Data Lake Storage Gen2.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V levém horním rohu klikněte na **vytvořit prostředek**.
 1. Do vyhledávacího pole zadejte **Storage** a klikněte na **účet úložiště**.
 1. Klikněte na **Vytvořit**.

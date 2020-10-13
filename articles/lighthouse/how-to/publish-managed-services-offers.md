@@ -3,16 +3,16 @@ title: Publikování nabídky spravované služby pro Azure Marketplace
 description: Naučte se publikovat nabídku spravované služby, která zákazníkům zařadí do Azure Lighthouse.
 ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589720"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974358"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Publikování nabídky spravované služby pro Azure Marketplace
 
-V tomto článku se dozvíte, jak publikovat veřejnou nebo soukromou nabídku spravované služby, která se [Azure Marketplace](https://azuremarketplace.microsoft.com) pomocí programu [komerčního obchodu](../../marketplace/partner-center-portal/commercial-marketplace-overview.md) v partnerském centru. Zákazníci, kteří nabídku kupují, pak budou delegovat předplatná nebo skupiny prostředků, což vám umožní je spravovat prostřednictvím [Azure Lighthouse](../overview.md).
+V tomto článku se dozvíte, jak publikovat veřejnou nebo soukromou nabídku spravované služby, která se [Azure Marketplace](https://azuremarketplace.microsoft.com) pomocí programu [komerčního obchodu](../../marketplace/overview.md) v partnerském centru. Zákazníci, kteří nabídku kupují, pak budou delegovat předplatná nebo skupiny prostředků, což vám umožní je spravovat prostřednictvím [Azure Lighthouse](../overview.md).
 
 ## <a name="publishing-requirements"></a>Požadavky na publikování
 
@@ -28,19 +28,19 @@ Následující tabulka vám pomůže určit, jestli se zákazníci mají připoj
 
 |**Aspekty**  |**Nabídka spravované služby**  |**Šablony ARM**  |
 |---------|---------|---------|
-|Vyžaduje [účet partnerského centra](../../marketplace/partner-center-portal/create-account.md)   |Yes         |No        |
-|Vyžaduje [úroveň kompetence cloudové platformy stříbrného nebo Gold](/partner-center/learn-about-competencies) nebo [Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) .      |Yes         |No         |
-|K dispozici novým zákazníkům prostřednictvím Azure Marketplace     |Yes     |No       |
-|Může omezit nabídku na konkrétní zákazníky.     |Ano (jenom s privátními nabídkami, které se nedají použít s odběry vytvořenými prostřednictvím prodejce v programu Cloud Solution Provider (CSP))         |Yes         |
-|Vyžaduje přijetí zákazníkem v Azure Portal     |Yes     |No   |
-|Může používat automatizaci k připojování více předplatných, skupin prostředků nebo zákazníků. |No     |Yes    |
-|Okamžitý přístup k novým vestavěným rolím a funkcím Azure Lighthouse     |Ne vždy (všeobecně dostupné po nějaké prodlevě)         |Yes         |
+|Vyžaduje [účet partnerského centra](../../marketplace/partner-center-portal/create-account.md)   |Ano         |No        |
+|Vyžaduje [úroveň kompetence cloudové platformy stříbrného nebo Gold](/partner-center/learn-about-competencies) nebo [Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) .      |Ano         |No         |
+|K dispozici novým zákazníkům prostřednictvím Azure Marketplace     |Ano     |No       |
+|Může omezit nabídku na konkrétní zákazníky.     |Ano (jenom s privátními nabídkami, které se nedají použít s odběry vytvořenými prostřednictvím prodejce v programu Cloud Solution Provider (CSP))         |Ano         |
+|Vyžaduje přijetí zákazníkem v Azure Portal     |Ano     |No   |
+|Může používat automatizaci k připojování více předplatných, skupin prostředků nebo zákazníků. |No     |Ano    |
+|Okamžitý přístup k novým vestavěným rolím a funkcím Azure Lighthouse     |Ne vždy (všeobecně dostupné po nějaké prodlevě)         |Ano         |
 
 ## <a name="create-your-offer"></a>Vytvoření nabídky
 
 Podrobné pokyny k vytvoření nabídky, včetně všech informací a prostředků, které budete potřebovat, najdete v tématu [Vytvoření nabídky spravované služby](../../marketplace/partner-center-portal/create-new-managed-service-offer.md).
 
-Další informace o obecném procesu publikování najdete v tématu [Průvodce publikováním Azure Marketplace a AppSource](../../marketplace/marketplace-publishers-guide.md). Měli byste si také projít [zásady certifikace komerčního tržiště](/legal/marketplace/certification-policies), zejména část [spravované služby](/legal/marketplace/certification-policies#700-managed-services) .
+Další informace o obecném procesu publikování najdete v tématu [Průvodce publikováním Azure Marketplace a AppSource](../../marketplace/overview.md). Měli byste si také projít [zásady certifikace komerčního tržiště](/legal/marketplace/certification-policies), zejména část [spravované služby](/legal/marketplace/certification-policies#700-managed-services) .
 
 Jakmile zákazník vaši nabídku přidá, bude moct delegovat jedno nebo víc předplatných nebo skupin prostředků, které se pak připojí [do Azure Lighthouse](#the-customer-onboarding-process).
 
@@ -64,6 +64,6 @@ Jakmile zákazník deleguje předplatné (nebo jednu nebo více skupin prostřed
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [komerčním tržišti](../../marketplace/partner-center-portal/commercial-marketplace-overview.md).
+- Přečtěte si o [komerčním tržišti](../../marketplace/overview.md).
 - Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).
 - V **Azure Portal můžete** [Zobrazit a spravovat zákazníky](view-manage-customers.md) .

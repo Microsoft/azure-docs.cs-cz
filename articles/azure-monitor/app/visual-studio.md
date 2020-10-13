@@ -2,17 +2,14 @@
 title: Ladění v aplikaci Visual Studio s využitím Azure Application Insights
 description: Analýza výkonu a diagnostika webové aplikace během ladění a v produkčním prostředí.
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 07/07/2017
-ms.reviewer: mbullwin
+ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: 1bb18cc43ef306a208500ff49ec41dbfb74b788e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3937719fd47ba988cf1e0a93f4c06fcc8112d3e
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323464"
+ms.locfileid: "91932205"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Ladění aplikací pomocí Azure Application Insights v aplikaci Visual Studio
 V sadě Visual Studio (2015 a novější) můžete analyzovat výkon a diagnostikovat problémy ve vaší webové aplikaci v ASP.NET během ladění i v produkčním prostředí pomocí telemetrie z [Azure Application Insights](./app-insights-overview.md).
@@ -94,8 +91,6 @@ Je také užitečné, pokud máte některou [vlastní telemetrii](./api-custom-e
 
 
 ## <a name="next-steps"></a>Další kroky
-|  |  |
-| --- | --- |
-| **[Přidání dalších dat](./asp-net-more.md)**<br/>Sledování využití, dostupnosti, závislostí, výjimek. Integrujte trasování z rozhraní protokolování. Zapisuje vlastní telemetrii. |![Visual Studio](./media/visual-studio/64.png) |
-| **[Práce s portálem Application Insights](./overview-dashboard.md)**<br/>Zobrazit řídicí panely, výkonné nástroje pro diagnostiku a analýzy, výstrahy, živou mapu závislostí vaší aplikace a exportovaná data telemetrie. |![Visual Studio](./media/visual-studio/62.png) |
+
+ * **[Práce s portálem Application Insights](./overview-dashboard.md)**. Zobrazit řídicí panely, výkonné nástroje pro diagnostiku a analýzy, výstrahy, živou mapu závislostí vaší aplikace a exportovaná data telemetrie. 
 
