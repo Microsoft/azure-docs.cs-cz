@@ -11,23 +11,22 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1414859d0735e75e2139dd79aab7dbba5b1e2f13
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 909ea33ed96225c75a2d093f5bf2f4878ea51d2e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710183"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939180"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure synapse Analytics business intelligence partneři
 
 Pokud chcete vytvořit řešení datového skladu, můžete si vybrat z různých typů špičkových nástrojů. V tomto článku se zvýrazňují partneři Microsoftu s řešeními business intelligence (BI), která oficiálně podporují Azure synapse Analytics.
 
 ## <a name="our-business-intelligence-partners"></a>Naši business intelligence partneři
-| Partner | Description | Odkaz na web/produkt |
+| Partner | Popis | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
 | ![AtScale](./media/sql-data-warehouse-partner-business-intelligence/atscale-logo.png) |**AtScale**<br>AtScale poskytuje jeden, zabezpečený a řízený pracovní prostor pro distribuovaná data. AtScale cloudové OLAP, autonomní data a™ technologie Universal sémantické vrstvy™ business intelligence výsledky pro rychlejší a přesnější obchodní rozhodnutí. |[Stránka produktu](https://www.atscale.com/partners/microsoft/)<br> |
 | ![Birst](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birst**<br>Birst připojuje celou organizaci prostřednictvím sítě nedostanou virtualizovaných instancí BI na nejvyšší úrovni sdílených běžných analytických prostředků.|[Stránka produktu](https://www.birst.com/)<br> |
-| ![ClearStory data](./media/sql-data-warehouse-partner-business-intelligence/clearstory_data_logo.png) |**Data ClearStory (průběžné obchodní přehledy)**<br>ClearStory data umožňují rychlou analýzu napříč různými daty uloženými ve fondu synapse SQL. Integrovaná platforma založená na Sparku a analytické aplikace v ClearStory, přístup k datům a jejich sladění pro různorodé datové sady. Umožňují rychlý průzkum v rámci spolupráce, který podporuje firemní uživatele při získávání rychlých přehledů. |[Stránka produktu](https://www.clearstorydata.com/product/continuous-insights/)<br> |
 | ![Dremio](./media/sql-data-warehouse-partner-business-intelligence/dremio-logo.png) |**Dremio**<br> Analytici a odborníci na data mohou zjišťovat, zkoumat a obzkoumávat data pomocí intuitivního uživatelského rozhraní Dremio a přitom zachovává zásady správného řízení a zabezpečení. Dremio usnadňuje připojení ADLS pomocí Blob Storage, Azure SQL Database, Azure synapse SQL, HDInsight a dalších. Díky Dremio můžou analytikům Power BI hledat nové datové sady uložené v ADLS a hned k nim přistupovat v Power BI bez přípravení, vytvářet vizualizace a iterativním upřesněním sestav v reálném čase. A analytici můžou vytvářet nové sestavy, které kombinují data mezi ADLS a dalšími databázemi. |[Stránka produktu](https://www.dremio.com/azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dremiocorporation.dremio_ce)<br> |
 | ![Dundas](./media/sql-data-warehouse-partner-business-intelligence/dundas_software_logo.png) |**Dundas BI**<br>Dundas data vizualizace je přední globální poskytovatel softwaru Business Intelligence a vizualizace dat.  Dundas řídicí panely, generování sestav a vizuální analýzy dat poskytují bezproblémovou integraci do obchodních aplikací a umožňují lepší rozhodování a rychlejší přehledy.|[Stránka produktu](https://www.dundas.com/dundas-bi)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dundas.dundas-bi)<br> |
 | ![IBM Cognos](./media/sql-data-warehouse-partner-business-intelligence/cognos_analytics_logo.png) |**Analýza IBM Cognos**<br>Cognos Analytics zahrnuje funkce samoobslužné služby, které usnadňují, nejasní a usnadňují použití, ať už jste zkušený obchodní analytik, který prověří obrovské dodavatelský řetězec, nebo pokud je na trhu optimalizace kampaně. Cognos Analytics používá AI a další funkce k seznámení s průzkumem dat. Uživatelům usnadňuje získání potřebných odpovědí.|[Stránka produktu](https://www.ibm.com/products/cognos-analytics)<br>|

@@ -17,10 +17,10 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f2625698ae1d76dbae3ed8a8855b88dd6ac7bb17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763682"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Rozšířené možnosti podepisování certifikátů v tokenu SAML pro aplikace Galerie v Azure Active Directory
@@ -62,10 +62,10 @@ Pokud chcete změnit možnosti podepisování certifikátů SAML aplikace a algo
 V dalším kroku změňte možnosti podepsání certifikátu v tokenu SAML pro tuto aplikaci:
 
 1. V levém podokně stránky přehled aplikace vyberte **jednotné přihlašování**.
-1. Pokud se zobrazí stránka **nastavit jednotné přihlašování pomocí SAML-Preview** , pokračujte krokem 5.
+1. Pokud se zobrazí stránka **nastavit jeden Sign-On se zobrazením SAML-Preview** , pokračujte krokem 5.
 1. Pokud se nezobrazí stránka pro **Výběr metody jednotného přihlašování** , vyberte možnost **změnit režimy jednotného přihlašování** a tuto stránku zobrazte.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** , pokud je k dispozici. (Pokud není **SAML** k dispozici, aplikace nepodporuje SAML, ale můžete zbývající část tohoto postupu a článku ignorovat.)
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML-Preview** Najděte hlavičku **podpisového certifikátu SAML** a vyberte ikonu pro **Úpravy** (tužka). Zobrazí se stránka **podpisový certifikát SAML** .
+1. Na stránce **nastavit jeden Sign-On se službou SAML-Preview** Najděte hlavičku **podpisového certifikátu SAML** a vyberte ikonu pro **Úpravy** (tužka). Zobrazí se stránka **podpisový certifikát SAML** .
 
    ![Příklad: stránka podpisového certifikátu SAML](./media/certificate-signing-options/saml-signing-page.png)
 
@@ -76,4 +76,4 @@ V dalším kroku změňte možnosti podepsání certifikátu v tokenu SAML pro t
 ## <a name="next-steps"></a>Další kroky
 
 * [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](configure-federated-single-sign-on-non-gallery-applications.md)
-* [Řešení potíží s jednotným přihlašováním založeném na SAML](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+* [Řešení potíží s jednotným přihlašováním založeným na SAML](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

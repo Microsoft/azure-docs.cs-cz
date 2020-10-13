@@ -6,13 +6,13 @@ manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
 ms.openlocfilehash: 7f9c5afbeed0c772f76e013a37dd870ed2185be7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87827669"
 ---
-# <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Replikace virtuálních počítačů Azure běžících ve skupinách umístění s blízkými změnami do jiné oblasti
+# <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Replikace virtuálních počítačů Azure spuštěných ve skupinách umístění bezkontaktní komunikace do jiné oblasti
 
 Tento článek popisuje, jak replikovat, převzetí služeb při selhání a navrácení služeb po obnovení z provozu do skupiny umístění blízkosti do sekundární oblasti.
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak replikovat, převzetí služeb při selhání a nav
 
 V typickém scénáři můžete mít virtuální počítače běžící ve skupině umístění s blízkostí, abyste se vyhnuli latenci sítě mezi různými úrovněmi vaší aplikace. I když to může zajistit optimální latenci sítě, chcete tyto aplikace ochránit pomocí Site Recovery pro jakékoli selhání úrovně oblasti. Site Recovery replikuje data z jedné oblasti do jiné oblasti Azure a v případě převzetí služeb při selhání zobrazí počítače v oblasti zotavení po havárii.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 - Nejlepším úsilím pro převzetí služeb při selhání a navrácení služeb po obnovení z provozu do skupiny umístění s blízkými akcemi. Pokud se ale virtuální počítač nemůže během převzetí služeb při selhání nebo navrácení služeb po obnovení přenést do umístění blízkosti, pak se virtuální počítače vytvoří mimo skupinu umístění blízkosti.
 -  Pokud je skupina dostupnosti připnuté do skupiny umístění blízkosti a během virtuálních počítačů s podporou převzetí služeb při selhání/navrácení služeb po obnovení mají v sadě dostupnosti omezení přidělení, vytvoří se virtuální počítače mimo skupinu dostupnosti a umístění blízkosti.
@@ -31,7 +31,7 @@ V typickém scénáři můžete mít virtuální počítače běžící ve skupi
 > [!NOTE]
 > Azure Site Recovery nepodporuje navrácení služeb po obnovení ze spravovaných disků pro scénáře Hyper-V do Azure. Z tohoto důvodu není podporováno navrácení služeb po obnovení ze skupiny umístění v Azure do technologie Hyper-V.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Ujistěte se, že máte Azure PowerShell AZ Module. Pokud potřebujete nainstalovat nebo upgradovat Azure PowerShell, postupujte podle pokynů v tomto [Průvodci a nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/install-az-ps).
 2. Minimální Azure PowerShell AZ verze by měl být 4.1.0. Chcete-li zjistit aktuální verzi, použijte následující příkaz –

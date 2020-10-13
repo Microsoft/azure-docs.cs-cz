@@ -7,10 +7,10 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 3826019a19aa744cb03737ed7f0c985f8063a1aa
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88815602"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Možnosti dostupnosti pro virtuální počítače v Azure
@@ -55,7 +55,7 @@ Služba Virtual Machine Scale Sets zjednodušuje návrh vysoké dostupnosti tím
 
 
 ## <a name="availability-sets"></a>Skupiny dostupnosti
-Skupina dostupnosti je logické seskupení virtuálních počítačů v rámci datového centra, které umožňuje službě Azure pochopit, jak je vaše aplikace sestavená, aby poskytovala redundanci a dostupnost. Doporučujeme, aby se v rámci skupiny dostupnosti vytvořily dva nebo víc virtuálních počítačů, které poskytují vysoce dostupné aplikace a splňovaly [99,95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Pro samotnou skupinu dostupnosti se neúčtují žádné náklady. platíte jenom za každou vytvořenou instanci virtuálního počítače. Pokud jeden virtuální počítač používá [Azure Premium SSD](./disks-types.md#premium-ssd), platí Azure SLA pro neplánované události údržby.
+Skupina dostupnosti je logické seskupení virtuálních počítačů v datovém centru, které umožňuje Azure pochopit, jak je aplikace sestavená z hlediska zajištění redundance a dostupnosti. Doporučujeme, aby se v rámci skupiny dostupnosti vytvořily dva nebo víc virtuálních počítačů, které poskytují vysoce dostupné aplikace a splňovaly [99,95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Pro samotnou skupinu dostupnosti se neúčtují žádné náklady. platíte jenom za každou vytvořenou instanci virtuálního počítače. Pokud jeden virtuální počítač používá [Azure Premium SSD](./disks-types.md#premium-ssd), platí Azure SLA pro neplánované události údržby.
 
 Ve skupině dostupnosti jsou virtuální počítače automaticky distribuované napříč těmito doménami selhání. Tento přístup omezuje dopady potenciálního selhání fyzického hardwaru, výpadků sítě nebo přerušení napájení.
 

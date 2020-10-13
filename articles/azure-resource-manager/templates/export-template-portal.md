@@ -4,10 +4,10 @@ description: Pomocí Azure Portal můžete exportovat šablonu Azure Resource Ma
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423231"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Export jednoho a více prostředků do šablony v Azure Portal
@@ -55,7 +55,7 @@ Chcete-li exportovat prostředky vytvořené prostřednictvím modelu nasazení 
 
 Pokud se zobrazí upozornění při exportu šablony, která indikuje, že se typ prostředku neexportoval, můžete stále zjistit vlastnosti daného prostředku. Další informace o různých možnostech zobrazení vlastností prostředků najdete v tématu věnovaném [zjištění vlastností prostředku](view-resources.md). Můžete se také podívat na [REST API Azure](/rest/api/azure/) pro daný typ prostředku.
 
-## <a name="export-template-from-a-resource-group"></a>Exportovat šablonu ze skupiny prostředků
+## <a name="export-template-from-a-resource-group"></a>Export šablony ze skupiny prostředků
 
 Export jednoho nebo více prostředků ze skupiny prostředků:
 

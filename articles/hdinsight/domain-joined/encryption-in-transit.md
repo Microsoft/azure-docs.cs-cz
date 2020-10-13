@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.openlocfilehash: 25e38beb561ee954db2987643775f3a3c6e05737
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89668778"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>Šifrování IPSec při přenosu pro Azure HDInsight
@@ -42,7 +42,7 @@ Chcete-li vytvořit nový cluster se šifrováním při přenosu povoleno pomoc�
 
 1. Na kartě **zabezpečení a sítě** klikněte na zaškrtávací políčko **Povolit šifrování v cestě** .
 
-    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Vytvoření clusteru – povolí šifrování při přenosu.":::
+    :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Vytvoření clusteru – karta zabezpečení a sítě.":::
 
 ### <a name="create-a-cluster-with-encryption-in-transit-enabled-through-the-azure-cli"></a>Vytvoření clusteru se šifrováním v přenosu povoleném prostřednictvím rozhraní příkazového řádku Azure
 
@@ -50,7 +50,7 @@ Chcete-li vytvořit nový cluster se šifrováním při přenosu povoleno pomoc�
 
 Můžete [Stáhnout vzorovou šablonu a soubor parametrů](https://github.com/Azure-Samples/hdinsight-enterprise-security). Než použijete šablonu a fragment kódu Azure CLI níže, nahraďte následující zástupné symboly jejich správnými hodnotami:
 
-| Zástupný symbol | Popis |
+| Zástupný symbol | Description |
 |---|---|
 | `<SUBSCRIPTION_ID>` | ID vašeho předplatného Azure |
 | `<RESOURCE_GROUP>` | Skupina prostředků, ve které chcete vytvořit nový cluster a účet úložiště. |

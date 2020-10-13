@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 746fe9132dcb06678e2a0a975c8eed0aba6c3fad
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89269620"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Práce s kanály, které přijímají živý datový proud s více přenosovými rychlostmi z místních kodérů
@@ -189,9 +189,9 @@ Následující tabulka ukazuje, jak se stavy kanálu mapují na režim fakturace
 | Stav kanálu | Indikátory uživatelského rozhraní portálu | Účtuje? |
 | --- | --- | --- |
 | **Spouštění** |**Spouštění** |Ne (přechodný stav) |
-| **Spuštěno** |**Připraveno** (žádné spuštěné programy)<p><p>nebo<p>**Streamování** (aspoň jeden spuštěný program) |Ano |
+| **Spuštěno** |**Připraveno** (žádné spuštěné programy)<p><p>nebo<p>**Streamování** (aspoň jeden spuštěný program) |Yes |
 | **Zastavování** |**Zastavování** |Ne (přechodný stav) |
-| **Zastaveno** |**Zastaveno** |Ne |
+| **Zastaveno** |**Zastaveno** |No |
 
 ## <a name="closed-captioning-and-ad-insertion"></a><a id="cc_and_ads"></a>Skryté titulky a vkládání reklam
 Následující tabulka ukazuje podporované standardy pro uzavřené titulky a vkládání reklam.
@@ -202,7 +202,7 @@ Následující tabulka ukazuje podporované standardy pro uzavřené titulky a v
 | TTML uvnitř. ismt (textové stopy Smooth Streaming) |Media Services dynamické balení umožňuje klientům streamovat obsah v libovolném z následujících formátů: POMLČKy, HLS nebo Smooth Streaming. Pokud však ingestují fragmenty MP4 (Smooth Streaming) s titulky uvnitř. ismt (Smooth Streaming textové stopy), můžete datový proud doručovat pouze do Smooth Streaming klientů. |
 | SCTE-35 |SCTE-35 je systém digitálního signálu, který se používá k oznámení vkládání inzerce. Přijímač pro příjem dat používají signál k spojení inzerce do datového proudu za přidělený čas. SCTE-35 musí být odesláno jako zhuštěné stopa ve vstupním datovém proudu.<p><p>V současné době je jediným podporovaným formátem vstupního datového proudu, který přenáší signály AD, fragmentem MP4 (Smooth Streaming). Jediným podporovaným formátem výstupu je také Smooth Streaming. |
 
-## <a name="considerations"></a><a id="considerations"></a>Požadavky
+## <a name="considerations"></a><a id="considerations"></a>Důležité informace
 Pokud k odeslání datového proudu s více přenosovými rychlostmi do kanálu používáte místní živý kodér, platí následující omezení:
 
 * Ujistěte se, že máte dostatečné bezplatné připojení k Internetu, aby bylo možné odesílat data do bodů příjmu.

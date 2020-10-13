@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
 ms.openlocfilehash: dfd7b3dcc7e27dd1251c35c6272b5aa7f8036006
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88942345"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Kurz: ukládání Azure Media Servicesch událostí v Azure Log Analytics
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > * [Předplatné Azure](how-to-set-azure-subscription.md)
 > * Účet [Media Services](create-account-howto.md) a skupina prostředků.
@@ -124,7 +124,7 @@ Teď, když jste se přihlásili k odběru událostí, vytvořte akci.
     > [!div class="mx-imgBorder"]
     > ![Vybrané téma](media/tutorial-events-log-analytics/topic-selected.png)
 
-1. Vyberte **zobrazení kódu** aplikace logiky. Vyhledejte vstupy a řádky typu log.
+1. Vyberte **zobrazení kódu** aplikace logiky. Vyhledejte vstupy a Log-Type řádky.
     > [!div class="mx-imgBorder"]
     > ![Zobrazení kódu dvou řádků](media/tutorial-events-log-analytics/code-view-two-lines.png)
 

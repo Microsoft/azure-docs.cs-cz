@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a53e9ae42031203347784b78e162e8f806eb3c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16659eafccd4c15e37ef8a6d16a3765d0afdbc3e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320233"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960639"
 ---
 # <a name="linux-support"></a>Podpora Linuxu
 
-K prostředkům virtuálních klientů s Windows můžete přistupovat ze zařízení se systémem Linux pomocí následujících podporovaných klientů, které poskytují naši klienti se systémem Linux tenkých klientů. Spolupracujeme s řadou partnerů, aby bylo možné podporovat Podporované klienty virtuálních počítačů s Windows na dalších operačních systémech a zařízeních se systémem Linux. Pokud potřebujete podporu virtuálních počítačů s Windows na platformě Linux, která zde není uvedená, dejte nám prosím na naší [stránce UserVoice](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux)informace.
+K prostředkům virtuálních klientů s Windows se můžete dostat ze zařízení se systémem Linux pomocí [webového klienta](connect-web.md) nebo následujících podporovaných klientů, které poskytují naši klienti se systémem Linux tenkých klientů. Pracujeme s řadou partnerů, aby bylo možné podporovat Podporované klienty virtuálních klientů Windows na dalších operačních systémech a zařízeních se systémem Linux. Pokud potřebujete podporu virtuálních počítačů s Windows na platformě Linux, která zde není uvedená, dejte nám na naší [stránce UserVoice](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux)informace.
 
 ## <a name="connect-with-your-linux-device"></a>Připojení k zařízení se systémem Linux
 

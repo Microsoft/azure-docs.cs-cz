@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90601360"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenční příručka operací správy ověřování Azure Active Directory
@@ -105,7 +105,7 @@ Pokud chcete lépe porozumět možnostem ověřování, přečtěte si téma [Vo
 
 ### <a name="programmatic-usage-of-credentials"></a>Programové použití přihlašovacích údajů
 
-Skripty Azure AD s využitím PowerShellu nebo aplikací, které používají rozhraní Microsoft Graph API, vyžadují zabezpečené ověřování. Nízká Správa přihlašovacích údajů provádí tyto skripty a nástroje, které zvyšují riziko krádeže přihlašovacích údajů. Pokud používáte skripty nebo aplikace, které spoléhají na pevně kódovaná hesla nebo výzvy k zadání hesla, měli byste nejdřív zkontrolovat hesla v konfiguračních souborech nebo ve zdrojovém kódu, pak tyto závislosti nahradit a používat spravované identity Azure, integrované ověřování systému Windows nebo [certifikáty](../reports-monitoring/tutorial-access-api-with-certificates.md) , kdykoli to bude možné. U aplikací, kde předchozí řešení nemůžete použít, zvažte použití [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+Skripty Azure AD s využitím PowerShellu nebo aplikací, které používají rozhraní Microsoft Graph API, vyžadují zabezpečené ověřování. Nízká Správa přihlašovacích údajů provádí tyto skripty a nástroje, které zvyšují riziko krádeže přihlašovacích údajů. Pokud používáte skripty nebo aplikace, které spoléhají na pevně kódovaná hesla nebo výzvy k zadání hesla, měli byste nejdřív zkontrolovat hesla v konfiguračních souborech nebo ve zdrojovém kódu, pak tyto závislosti nahradit a používat spravované identity Azure, Integrated-Windows ověřování nebo [certifikáty](../reports-monitoring/tutorial-access-api-with-certificates.md) , kdykoli to bude možné. U aplikací, kde předchozí řešení nemůžete použít, zvažte použití [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
 Pokud zjistíte, že existují instanční objekty s přihlašovacími údaji hesla a nejste si jistí, jak jsou přihlašovací údaje hesla zabezpečené skripty nebo aplikacemi, obraťte se na vlastníka aplikace, aby lépe pochopil vzorce používání.
 
@@ -115,7 +115,7 @@ Microsoft také doporučuje, abyste kontaktovali vlastníky aplikací a pochopil
 
 ### <a name="on-premises-authentication"></a>Místní ověřování
 
-Federované ověřování s integrovaným ověřováním systému Windows (IWA) nebo bezproblémové ověřování typu jednotného přihlašování (SSO) pomocí synchronizace hodnot hash hesel nebo předávacího ověřování je nejlepší uživatelské prostředí, když se nachází v podnikové síti s dohledem místních řadičů domény. Minimalizuje únavu výzvy k zadání přihlašovacích údajů a snižuje riziko, že uživatelé Prey útoky typu phishing. Pokud už používáte ověřování pomocí cloudu s KOSMETICE nebo PTA, ale uživatelé pořád potřebují zadat svoje heslo při ověřování v místním prostředí, měli byste hned [nasadit bezproblémové jednotné přihlašování](../hybrid/how-to-connect-sso.md). Na druhé straně, pokud jste v současné době federované s plány, abyste nakonec migrovali na ověřování pomocí cloudu, měli byste v rámci projektu migrace implementovat bezproblémové jednotné přihlašování.
+Federované ověřování s integrovaným ověřováním systému Windows (IWA) nebo bezproblémové ověřování typu Single Sign-On (SSO) se spravovaným ověřováním hodnoty hash hesla nebo předávacím ověřováním je nejlepší uživatelské prostředí, když se nachází v podnikové síti s uživatelským dohledem na místních řadičích domény. Minimalizuje únavu výzvy k zadání přihlašovacích údajů a snižuje riziko, že uživatelé Prey útoky typu phishing. Pokud už používáte ověřování pomocí cloudu s KOSMETICE nebo PTA, ale uživatelé pořád potřebují zadat svoje heslo při ověřování v místním prostředí, měli byste hned [nasadit bezproblémové jednotné přihlašování](../hybrid/how-to-connect-sso.md). Na druhé straně, pokud jste v současné době federované s plány, abyste nakonec migrovali na ověřování pomocí cloudu, měli byste v rámci projektu migrace implementovat bezproblémové jednotné přihlašování.
 
 ### <a name="device-trust-access-policies"></a>Zásady přístupu důvěryhodnosti zařízení
 
@@ -309,7 +309,7 @@ Níže najdete seznam aplikací s oprávněními, které byste mohli chtít poř
 | | Pošta. Read. Shared |
 | | Pošta. v zápisu |
 
-- Aplikace udělily úplnému zosobnění uživatele přihlášeného uživatele. Příklad:
+- Aplikace udělily úplnému zosobnění uživatele přihlášeného uživatele. Například:
 
 |Prostředek | Oprávnění |
 | :- | :- |

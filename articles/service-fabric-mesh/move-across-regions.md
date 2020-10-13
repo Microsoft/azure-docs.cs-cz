@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: c842a065f108a924c6bffd70d6c2edbbd31b6dff
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260157"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Přesunutí aplikace Service Fabric sítě do jiné oblasti Azure
@@ -19,7 +19,7 @@ Tento článek popisuje, jak přesunout aplikaci Service Fabric sítě a její p
 
  [Service Fabricová síť](../azure-resource-manager/management/region-move-support.md#microsoftservicefabricmesh) nepodporuje možnost přímého přesouvání prostředků napříč oblastmi Azure. Prostředky je ale možné nepřímo přesunout tím, že do nové cílové oblasti nasadíte kopii aktuální Azure Resource Manager šablony a potom přesměrujete příchozí přenos dat a závislosti na nově vytvořenou aplikaci Service Fabric sítě.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Řadič příchozího přenosu dat (například [Application Gateway](../application-gateway/index.yml)), který slouží jako prostředník pro směrování provozu mezi klienty a aplikací Service Fabric sítě
 * Dostupnost Service Fabric sítě (Preview) v cílové oblasti Azure ( `westus` , `eastus` nebo `westeurope` )
@@ -56,7 +56,7 @@ Pokud chcete dokončit přesun aplikace Service Fabric sítě, [odstraňte zdroj
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přesunutí prostředků Azure do různých oblastí](../azure-resource-manager/management/move-region.md)
+* [Přesun prostředků Azure napříč oblastmi](../azure-resource-manager/management/move-region.md)
 * [Podpora přesunu prostředků Azure napříč oblastmi](../azure-resource-manager/management/region-move-support.md)
 * [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md)
 * [Podpora operace přesunutí pro prostředky](../azure-resource-manager/management/move-support-resources.md

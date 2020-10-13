@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: e87ddd243aa248b896a26e6389ac1a219579a06d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325572"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor datovou platformu
@@ -32,7 +32,7 @@ Prostředky Azure generují významné množství dat monitorování. Azure Moni
 
 
 ### <a name="metrics"></a>Metriky
-[Metriky](data-platform-metrics.md) jsou číselné hodnoty, které popisují určitý aspekt systému v určitém časovém okamžiku. Jsou shromažďovány v pravidelných intervalech a jsou označeny časovým razítkem, názvem, hodnotou a jedním nebo více definujícími popisky. Metriky se dají agregovat pomocí nejrůznějších algoritmů, ve srovnání s jinými metrikami a analyzovat trendy v čase. 
+[Metriky](data-platform-metrics.md) jsou číselné hodnoty, které popisují určitý aspekt systému v určitém časovém okamžiku. Jsou shromažďovány v pravidelných intervalech a jsou označeny časovým razítkem, názvem, hodnotou a jedním nebo více definujícími popisky. Metriky se dají agregovat pomocí nejrůznějších algoritmů, srovnávat s jinými metrikami a analyzovat z hlediska trendů v čase. 
 
 Metriky v Azure Monitor jsou uloženy v databázi časových řad, která je optimalizována pro analýzu časových údajů s časovým razítkem. Díky tomu jsou metriky zvláště vhodné pro upozorňování a rychlé zjišťování problémů. Můžou vám sdělit, jak systém funguje, ale obvykle se musí kombinovat s protokoly, aby identifikoval hlavní příčinu problémů.
 
@@ -41,7 +41,7 @@ Metriky jsou k dispozici pro interaktivní analýzu v Azure Portal s využitím 
 Přečtěte si další informace o Azure Monitor metrikách, včetně jejich zdrojů dat v [metrikách v Azure monitor](data-platform-metrics.md).
 
 ### <a name="logs"></a>Protokoly
-[Protokoly](data-platform-logs.md) jsou události, ke kterým došlo v rámci systému. Můžou obsahovat různé druhy dat a můžou být strukturované nebo volné textové zprávy s časovým razítkem. Můžou být vytvořené občas, protože události v prostředí generují položky protokolu a systém v rámci velkého zatížení obvykle vygeneruje více svazků protokolu.
+[Protokoly](data-platform-logs.md) jsou události, ke kterým došlo v rámci systému. Můžou obsahovat různé druhy dat a můžou být strukturované nebo volné textové zprávy s časovým razítkem. Můžou být vytvářené občas, jak události v prostředí generují položky protokolu. Systém při velkém zatížení obvykle vygeneruje objemnější protokol.
 
 Protokoly v Azure Monitor jsou uložené v pracovním prostoru Log Analytics, který je založený na [službě Azure Průzkumník dat](/azure/data-explorer/) , která poskytuje výkonný analytický modul a [bohatý dotazovací jazyk](/azure/kusto/query/). Protokoly obvykle poskytují dostatek informací, které poskytují úplný kontext zjištěného problému a jsou důležité pro identifikaci kořenového případu problémů.
 
@@ -72,7 +72,7 @@ Následující tabulka porovnává metriky a protokoly v Azure Monitor.
 | Struktura | Standardní sada vlastností včetně času vzorkování, monitorovaného prostředku a číselné hodnoty Některé metriky obsahují více dimenzí pro další definice. | Jedinečná sada vlastností v závislosti na typu protokolu. |
 | Kolekce | Shromažďováno v pravidelných intervalech. | Může být shromažďována občas, protože události spouštějí záznam, který se má vytvořit. |
 | Zobrazení na webu Azure Portal | Průzkumník metrik | Log Analytics |
-| Zdroje dat zahrnují | Metriky platformy shromážděné z prostředků Azure.<br>Aplikace monitorované pomocí Application Insights.<br>Vlastní definuje aplikace nebo rozhraní API. | Protokoly aplikací a prostředků.<br>Monitorování řešení.<br>Agenti a rozšíření virtuálních počítačů.<br>Žádosti a výjimky aplikace<br>Azure Security Center.<br>Rozhraní API kolekce dat. |
+| Zdroje dat zahrnují | Metriky platformy shromážděné z prostředků Azure.<br>Aplikace monitorované pomocí Application Insights.<br>Vlastní definuje aplikace nebo rozhraní API. | Protokoly aplikací a prostředků.<br>Monitorování řešení.<br>Agenti a rozšíření virtuálních počítačů.<br>Žádosti a výjimky aplikace<br>Azure Security Center<br>Rozhraní API kolekce dat. |
 
 ## <a name="collect-monitoring-data"></a>Shromažďování dat monitorování
 Různé [zdroje dat pro Azure monitor](data-sources.md) budou zapisovat do pracovního prostoru Log Analytics (protokoly) nebo do databáze metriky Azure monitor (metriky) nebo do obou možností. Některé zdroje budou zapisovat přímo do těchto úložišť dat, zatímco ostatní můžou zapisovat do jiného umístění, jako je Azure Storage, a vyžadují, aby některá konfigurace naplnila protokoly nebo metriky. 

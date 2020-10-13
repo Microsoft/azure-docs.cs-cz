@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: e69bcb3d9e4dca4c45bf9a6fe8ed4d54e7f4a8cd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935895"
 ---
 # <a name="point-in-time-restore-of-a-flexible-server"></a>Obnovení flexibilního serveru v určitém časovém okamžiku
@@ -40,7 +40,7 @@ Postupujte podle těchto kroků a obnovte flexibilní Server pomocí nejstarší
 
 4.  Vyberte **nejstarší bod obnovení** a v poli **obnovit do nového serveru** zadejte nový název serveru. Zobrazí se nejbližší časové razítko, které můžete obnovit. 
    
-   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="Nejstarší čas obnovení":::
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="Přehled obnovení":::
 
 5.  Klikněte na **OK**.
 
@@ -61,7 +61,7 @@ Postupujte podle těchto kroků a obnovte flexibilní Server pomocí nejstarší
 
 5.  Vyberte datum a čas a zadejte nový název serveru v poli **obnovit na nový server** . 
    
-:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="Čas vlastního obnovení":::
+:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="Přehled obnovení":::
  
 6.  Klikněte na **OK**.
 

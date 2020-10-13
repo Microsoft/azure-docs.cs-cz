@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531186"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží s agentem Log Analytics pro Linux 
@@ -193,7 +193,7 @@ K chybám souvisejícím s výkonem nedojde po celou dobu a jejich reprodukován
 
 ### <a name="resolution-step-by-step"></a>Řešení (krok za krokem)
 
-1. Upgradujte balíček NSS-PEM na verzi [v 1.0.3-5. el7_6.1](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html). <br/>
+1. Upgradujte balíček NSS-PEM na verzi [v 1.0.3-5.el7_6.1](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html). <br/>
 `sudo yum upgrade nss-pem`
 
 2. Pokud NSS-PEM není k dispozici pro upgrade (většinou probíhá na CentOS), pak downgrade na 7.29.0-46. Pokud omylem spustíte "Yumu Update" (aktualizace), bude se tato možnost aktualizovat na 7.29.0-51 a k problému dojde znovu. <br/>
@@ -298,7 +298,7 @@ Tato chyba znamená, že diagnostické rozšíření Linux (LAD) je nainstalovan
 * Balíček OMI se ručně upgradoval na novější verzi ve srovnání s instalací balíčku Log Analytics Agent pro Linux.
 * V souboru protokolu *se nenašla chyba třídy* prostředků DSC. `omsconfig.log`
 * Zálohuje se Log Analytics agenta pro data
-* *Aktuální konfigurace protokolu DSC neexistuje. Spusťte příkaz Start-DscConfiguration s parametrem-Path pro určení konfiguračního souboru a nejprve vytvořte aktuální konfiguraci.* v `omsconfig.log` souboru protokolu neexistují žádná zpráva protokolu o `PerformRequiredConfigurationChecks` operacích.
+* *Aktuální konfigurace protokolu DSC neexistuje. Spusťte Start-DscConfiguration příkazu s parametrem-Path pro určení konfiguračního souboru a nejprve vytvořte aktuální konfiguraci.* v `omsconfig.log` souboru protokolu neexistují žádná zpráva protokolu o `PerformRequiredConfigurationChecks` operacích.
 
 ### <a name="resolution"></a>Řešení
 1. Nainstalujte všechny závislosti jako auditované balíčky.

@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 146a257a9b8f31e79283d71ede1e1c5c0355765c
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: d1402bcc0c46003429e1809e8d09e9662218cd82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89147818"
 ---
 | Prostředek | Omezení |
@@ -24,10 +24,8 @@ ms.locfileid: "89147818"
 | Maximální počet tras inzerovaných z privátního partnerského vztahu Azure z adresního prostoru virtuální sítě pro připojení ExpressRoute |200 |
 | Maximální počet tras inzerovaných pro partnerský vztah Microsoftu s ExpressRoute standardem |200 |
 | Maximální počet tras inzerovaných pro partnerský vztah Microsoftu s doplňkem ExpressRoute Premium |200 |
-| Dosažen maximální počet okruhů ExpressRoute propojených se standardním výkonem nebo bránou ErGw1AZ |4 | 
-| Dosažen maximální počet okruhů ExpressRoute propojených s vysokým výkonem nebo bránou ErGw2AZ |8 | 
-| Dosažen maximální počet okruhů ExpressRoute propojených s bránou Ultra Performance/ErGw3AZ |16 | 
-| Maximální počet okruhů ExpressRoute propojených se stejnou virtuální sítí v různých umístěních partnerského vztahu (všechny SKU) |4 |
+| Maximální počet okruhů ExpressRoute propojených se stejnou virtuální sítí ve stejném umístění partnerského vztahu |4 |
+| Maximální počet okruhů ExpressRoute propojených se stejnou virtuální sítí v různých umístěních partnerských vztahů |4 |
 | Počet povolených propojení virtuálních sítí na okruh ExpressRoute |Podívejte se na [počet virtuálních sítí na jednu tabulku okruhů ExpressRoute](#vnetpercircuit) .  |
 
 #### <a name="number-of-virtual-networks-per-expressroute-circuit"></a><a name="vnetpercircuit"></a> Počet virtuálních sítí na okruh ExpressRoute

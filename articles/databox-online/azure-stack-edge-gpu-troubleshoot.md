@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/19/2020
+ms.date: 10/07/2020
 ms.author: alkohli
-ms.openlocfilehash: 026f476b888380b6f262a6a52c064c939e27e931
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 413847b7858549dc6130f219829b220b2857c7e2
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743195"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938886"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Řešení potíží na zařízení GPU Azure Stack Edge pro 
 
@@ -200,6 +200,7 @@ Tady jsou chyby související s úložištěm objektů BLOB v Azure Stack hrani�
 |Vypršel časový limit připojení.|Přihlaste se k Azure Stack Edge pro a potom zkontrolujte, že je odemčený. Pokaždé, když se zařízení restartuje, zůstane uzamčené, dokud se někdo přihlásí.|
 
 
+
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [známých potížích v této verzi](azure-stack-edge-gpu-2008-release-notes.md).
+- Přečtěte si další informace o tom, jak [řešit problémy s aktivací zařízení](azure-stack-edge-gpu-troubleshoot-activation.md).

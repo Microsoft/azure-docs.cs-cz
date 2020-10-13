@@ -9,12 +9,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 06/26/2020
   ms.author: 
-  ms.openlocfilehash: 7c643d10971d93a3c6194bc7390d2271c1ed561b
-  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.openlocfilehash: a305e50287187292b2a1b9c90b1e6dee98baf75b
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/24/2020
-  ms.locfileid: "88763719"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91824158"
 landingContent:
 - title: Připojení clusterů Kubernetes k Azure s využitím služby Azure Arc
   linkLists:
@@ -36,3 +36,9 @@ landingContent:
       url: use-azure-policy.md
     - text: Nasazení úloh Azure IoT Edge
       url: deploy-azure-iot-edge-workloads.md
+- title: Referenční architektura
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Správa nasazení a konfigurací pro hybridní clustery Kubernetes
+      url: /architecture/hybrid/arc-hybrid-kubernetes

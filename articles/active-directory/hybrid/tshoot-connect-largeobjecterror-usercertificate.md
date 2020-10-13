@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2eb656e46ce5e26fca5ae5c094f9b8bb85819caa
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89275772"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect synchronizace: zpracování chyb LargeObject způsobených atributem userCertificate
@@ -108,7 +108,7 @@ Mělo by existovat existující synchronizační pravidlo, které je povolené a
     | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
     | sourceObjectType | VÝŠI | Uživatel |
-    | cloudMastered | NOTEQUAL | Pravda |
+    | cloudMastered | NOTEQUAL | Ano |
 
 ### <a name="step-3-create-the-outbound-sync-rule-required"></a>Krok 3. Vytvořit požadované pravidlo pro odchozí synchronizaci
 Nové pravidlo synchronizace musí mít stejný **Filtr oboru** a **vyšší prioritu** než stávající pravidlo synchronizace. Tím se zajistí, že se nové pravidlo synchronizace bude vztahovat na stejnou sadu objektů jako stávající pravidlo synchronizace a přepíše stávající pravidlo synchronizace pro atribut userCertificate. Postup vytvoření pravidla synchronizace:
@@ -118,7 +118,7 @@ Nové pravidlo synchronizace musí mít stejný **Filtr oboru** a **vyšší pri
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
     | Name | *Zadat název* | Například *"odchozí AAD – vlastní přepsání pro userCertificate"* |
-    | Popis | *Zadejte popis.* | Například *"Pokud má atribut userCertificate více než 15 hodnot, exportujte hodnotu null."* |
+    | Description | *Zadejte popis.* | Například *"Pokud má atribut userCertificate více než 15 hodnot, exportujte hodnotu null."* |
     | Připojený systém | *Vyberte konektor Azure AD.* |
     | Typ připojeného systémového objektu | **uživatelský** | |
     | Typ objektu úložiště metaverse | **uživateli** | |

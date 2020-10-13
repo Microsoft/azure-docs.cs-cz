@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
 ms.openlocfilehash: e06a7a759c712b47f3a725a3c49a660226da6a09
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90064147"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-preview-permission-model"></a>Migrace ze zásad přístupu k trezoru na model oprávnění řízení přístupu na základě role (Preview) Azure
@@ -75,11 +75,11 @@ Předdefinované šablony oprávnění k zásadám přístupu:
 | Správa tajných klíčů | Tajné kódy: všechny operace| Úředník Key Vault tajných klíčů (Preview)|
 | Správa certifikátů | Certifikáty: všechny operace | Key Vault úřední certifikát (Preview)|
 | Konektor SQL Serveru | Klíče: získání, seznam, zabalení klíče, rozbalení klíče | Key Vault šifrování šifrovací služby (Preview)|
-| Azure Data Lake Storage nebo Azure Storage | Klíče: získání, vypsání, rozbalení klíče | –<br> Vyžaduje se vlastní role.|
-| Azure Backup | Klíče: získání, seznam, zálohování<br> Certifikát: získání, seznam, zálohování | –<br> Vyžaduje se vlastní role.|
+| Azure Data Lake Storage nebo Azure Storage | Klíče: získání, vypsání, rozbalení klíče | Není k dispozici<br> Vyžaduje se vlastní role.|
+| Azure Backup | Klíče: získání, seznam, zálohování<br> Certifikát: získání, seznam, zálohování | Není k dispozici<br> Vyžaduje se vlastní role.|
 | Klíč zákazníka Exchange Online | Klíče: získání, seznam, zabalení klíče, rozbalení klíče | Key Vault šifrování šifrovací služby (Preview)|
 | Klíč zákazníka Exchange Online | Klíče: získání, seznam, zabalení klíče, rozbalení klíče | Key Vault šifrování šifrovací služby (Preview)|
-| Azure Information BYOK | Klíče: získat, dešifrovat, podepsat | –<br>Vyžaduje se vlastní role.|
+| Azure Information BYOK | Klíče: získat, dešifrovat, podepsat | Není k dispozici<br>Vyžaduje se vlastní role.|
 
 
 ## <a name="assignment-scopes-mapping"></a>Mapování oborů přiřazení  
@@ -110,7 +110,7 @@ Existuje mnoho rozdílů mezi modelem oprávnění zásad přístupu k Azure RBA
 > [!NOTE]
 > Když je povolený model oprávnění Azure RBAC, všechny skripty, které se pokusí aktualizovat zásady přístupu, selžou. Je důležité tyto skripty aktualizovat, aby používaly Azure RBAC.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 -  Přiřazení role nefunguje po několika minutách – existují situace, kdy přiřazení rolí může trvat delší dobu. Je důležité napsat logiku opakování v kódu pro pokrytí těchto případů.
 - Přiřazení rolí zmizelo, když se Key Vault odstranila (obnovitelné odstranění) a obnovila se – v současné době se jedná o omezení funkce obnovitelného odstranění napříč všemi službami Azure. Po obnovení je nutné znovu vytvořit všechna přiřazení rolí.    
 

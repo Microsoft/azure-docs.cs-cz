@@ -9,13 +9,13 @@ ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
 ms.openlocfilehash: 1c2156975eb8d8dcb3580603dfbe1f5d1390b79a
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88852489"
 ---
-# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Zabezpečení a používání zásad na virtuálních počítačích v Azure
+# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Zásady zabezpečení a používání virtuálních počítačů v Azure
 
 Pro aplikace, které spouštíte, je důležité udržovat svůj virtuální počítač zabezpečený. Zabezpečení virtuálních počítačů může zahrnovat jednu nebo víc služeb Azure a funkcí, které pokrývají zabezpečený přístup k virtuálním počítačům a zabezpečené úložiště vašich dat. Tento článek poskytuje informace, které vám umožní zajistit zabezpečení virtuálních počítačů a aplikací.
 
