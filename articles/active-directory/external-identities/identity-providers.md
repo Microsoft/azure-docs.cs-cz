@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a61eca3340985886ef782b28a59a1283c5f473ce
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91265707"
 ---
 # <a name="identity-providers-for-external-identities"></a>Zprostředkovatelé identity pro externí identity
@@ -30,7 +30,7 @@ Můžete ale uživatelům povolit, aby se přihlásili pomocí různých poskyto
 
 - **Facebook**: při sestavování aplikace můžete nakonfigurovat samoobslužné registrace a povolit facebookovou federaci, aby se uživatelé mohli k vaší aplikaci zaregistrovat pomocí vlastních účtů Facebook. Facebook se dá použít jenom pro uživatelské toky přihlašování k samoobslužným službám a není k dispozici jako možnost přihlášení, když uživatelé uplatní pozvánky od vás.
 
-- **Přímá federace**: můžete také nastavit přímou federaci s jakýmkoli externím zprostředkovatelem identity, který podporuje protokoly SAML nebo WS. Přímá federace umožňuje externím uživatelům uplatnit pozvánky od vás tím, že se přihlásí ke svým aplikacím pomocí stávajících sociálních nebo podnikových účtů. 
+- **Přímá federace**: můžete také nastavit přímou federaci s jakýmkoli externím zprostředkovatelem identity, který podporuje protokoly SAML nebo WS-Fed. Přímá federace umožňuje externím uživatelům uplatnit pozvánky od vás tím, že se přihlásí ke svým aplikacím pomocí stávajících sociálních nebo podnikových účtů. 
    > [!NOTE]
    > Přímé zprostředkovatele identity federace nelze použít v uživatelských tocích samoobslužné registrace.
 
@@ -59,4 +59,4 @@ Informace o tom, jak přidat zprostředkovatele identity pro přihlášení k va
 
 - [Přidat Google](google-federation.md) do seznamu poskytovatelů sociálních identit
 - [Přidat Facebook](facebook-federation.md) do seznamu poskytovatelů sociálních identit
-- [Nastavte přímou federaci](direct-federation.md) s jakoukoli organizací, jejíž poskytovatel identity podporuje protokol SAML 2,0 nebo WS-dodávání. Upozorňujeme, že přímá federace není možností pro uživatelské toky samoobslužné registrace.
+- [Nastavte přímou federaci](direct-federation.md) s jakoukoli organizací, jejíž poskytovatel identity podporuje protokol SAML 2,0 nebo WS-Fed. Upozorňujeme, že přímá federace není možností pro uživatelské toky samoobslužné registrace.

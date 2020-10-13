@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: jasonh
 ms.openlocfilehash: 27a9c7eb48c4a0148401c0d146a50a5197593806
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409625"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Řešení běžných problémů v rozhraní Azure Cosmos DB API pro MongoDB
@@ -23,7 +23,7 @@ Následující článek popisuje běžné chyby a řešení pro databáze pomoc�
 
 ## <a name="common-errors-and-solutions"></a>Běžné chyby a řešení
 
-| Chyba               | Kód  | Popis  | Řešení  |
+| Chyba               | Kód  | Description  | Řešení  |
 |---------------------|-------|--------------|-----------|
 | ExceededTimeLimit   | 50 | Požadavek překročil 60sekundový časový limit provádění. | Tato chyba může mít mnoho příčin. Jednou z možných příčin je nedostatečná aktuální kapacita přidělených jednotek žádostí k dokončení požadavku. Tento problém je možné vyřešit zvýšením počtu jednotek žádostí dané kolekce nebo databáze. V ostatních případech se tato chyba může vyřešit tak, že se velký požadavek rozdělí na menší. |
 | TooManyRequests     | 16500 | Celkový počet spotřebovaných jednotek žádostí je vyšší než zřízený počet jednotek žádostí pro kolekci, a proto došlo k omezení. | Zvažte škálování propustnosti přiřazené kontejneru nebo sadě kontejnerů na webu Azure Portal, případně můžete zkusit operaci zopakovat. |

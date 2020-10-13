@@ -10,10 +10,10 @@ ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 4b25458cc934097b5477c174ae7ecc47762e2929
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91280296"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Povolení a Správa obnovitelného odstranění pro kontejnery (Preview)
@@ -86,7 +86,7 @@ Chcete-li zobrazit kontejnery odstraněné v Azure Portal, postupujte takto:
 1. V Azure Portal přejděte na svůj účet úložiště a zobrazte seznam kontejnerů.
 1. Přepněte přepínač Zobrazit odstraněné kontejnery tak, aby zahrnoval odstraněné kontejnery v seznamu.
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="Snímek obrazovky ukazující, jak zobrazit obnovitelné odstraněné kontejnery v Azure Portal":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="Snímek obrazovky ukazující, jak povolit obnovitelné odstranění kontejneru v Azure Portal":::
 
 ## <a name="restore-a-soft-deleted-container"></a>Obnovení podmíněného odstraněné kontejneru
 
@@ -95,7 +95,7 @@ V rámci doby uchování můžete obnovit dočasná odstraněný kontejner a jeh
 1. V Azure Portal přejděte na svůj účet úložiště a zobrazte seznam kontejnerů.
 1. Zobrazte kontextovou nabídku pro kontejner, který chcete obnovit, a v nabídce vyberte možnost **zrušit odstranění** .
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Snímek obrazovky, který ukazuje, jak obnovit odstraněný kontejner v Azure Portal":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Snímek obrazovky ukazující, jak povolit obnovitelné odstranění kontejneru v Azure Portal":::
 
 ## <a name="next-steps"></a>Další kroky
 

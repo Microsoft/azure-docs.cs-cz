@@ -12,10 +12,10 @@ ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259132"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Saviynt s využitím Azure Active Directory B2C
@@ -54,7 +54,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Obrázek znázorňující diagram architektury saviynt](./media/partner-saviynt/saviynt-architecture-diagram.png)
 
-|Krok | Popis |
+|Krok | Description |
 |:-----| :-----------|
 | 1. | Delegovaný správce spustí uživatelskou operaci spravovat Azure AD B2C pomocí Saviynt.
 | 2. | Saviynt ověří pomocí svého autorizačního modulu, pokud může provést konkrétní operace.
@@ -75,7 +75,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ### <a name="create-an-azure-ad-application-for-saviynt"></a>Vytvoření aplikace Azure AD pro Saviynt
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/#home).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/#home).
 
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 

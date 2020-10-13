@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb0147af559d9de4a8589344d61b06368086dd20
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91278783"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Povolení externí spolupráce B2B a správa toho, kdo může zvát hosty
@@ -61,7 +61,7 @@ Ve výchozím nastavení mohou všichni uživatelé, včetně hostů, pozvat už
 
    - **Hosté můžou pozvat**: Pokud chcete, aby hosty mohli pozvat další hosty, nastavte tuto zásadu na **Ano**.
 
-   - **Povolení e-mailového hesla pro hosty (Preview)**: Další informace o funkci jednorázového hesla najdete v tématu e- [mailové ověřování heslem jednorázového hesla (Preview)](one-time-passcode.md).
+   - **Povolení e-mailu One-Time hesla pro hosty (Preview)**: Další informace o funkci jednorázového hesla najdete v tématu [e-mailové ověřování hesla jednorázovým heslem (Preview)](one-time-passcode.md).
 
    - **Povolit samoobslužnou registraci hosta prostřednictvím toků uživatelů (Preview)**: Další informace o tomto nastavení najdete v tématu [Přidání uživatelského toku samoobslužné registrace do aplikace (Preview)](self-service-sign-up-user-flow.md).
 
