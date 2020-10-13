@@ -4,10 +4,10 @@ description: Seznamte se s ovládacími prvky zabezpečení použitými ve služ
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.openlocfilehash: 7ff3ff5c1b024a228778b0214e67239d3c8ab721
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89418751"
 ---
 # <a name="security-controls-for-azure-backup"></a>Ovládací prvky zabezpečení pro Azure Backup
@@ -39,7 +39,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Bac
 | Řízení zabezpečení | Ano/Ne | Poznámky| Dokumentace
 |---|---|--|--|
 | Authentication| Yes | Ověřování probíhá prostřednictvím Azure Active Directory. |  |
-| Autorizace| Yes | Používají se vytvořené zákazníky a předdefinované role Azure. Další informace najdete v tématu [použití Access Control na základě rolí ke správě Azure Backup bodů obnovení](./backup-rbac-rs-vault.md). |  |
+| Autorizace| Yes | Používají se vytvořené zákazníky a předdefinované role Azure. Další informace najdete v tématu [použití Role-Based Access Control ke správě Azure Backup bodů obnovení](./backup-rbac-rs-vault.md). |  |
 
 ## <a name="data-protection"></a>Ochrana dat
 
@@ -48,7 +48,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Bac
 | Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Yes | Používá se šifrování služby Storage pro účty úložiště. |  |
 | Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | No |  |  |
 | Šifrování na úrovni sloupce (Azure Data Services)| No |  |  |
-| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| No | Pomocí protokolu HTTPS. |  |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování VNet-VNet)| No | Pomocí protokolu HTTPS. |  |
 | Zašifrovaná volání rozhraní API| Yes |  |  |
 
 ## <a name="configuration-management"></a>Správa konfigurace

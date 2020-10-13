@@ -7,10 +7,10 @@ ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 9e5b9017854465724724638bfe5d32783a031030
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056384"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
@@ -236,7 +236,7 @@ Přihlašovací VSI je poskytovatel služeb s přidanými virtuálními počíta
 
 Nasuni Corp., přední poskytovatel cloudových souborových služeb a nejvyšší globální partner společnosti Azure, nabízí jako moderní řešení úložiště pro moderní virtuální plochy Nasuniovou platformu jako službu jako moderní úložiště souborů. Nasuni v kombinaci s Azure Blob Storage konsoliduje primární úložiště souborů (NAS), zálohování souborů, zotavení po havárii a synchronizaci souborů mezi oblastmi v jednom sjednoceném řešení. S Nasuni podniky můžou nasazovat virtuální plochy Windows pro další případy použití a ve více oblastech Azure, zjednodušit správu a zajistit kontinuitu podnikových procesů. 
 
-V rámci moderního cloudového řešení VDI vyžaduje Windows virtuální počítač moderní cloudové úložiště souborů. Tradičně je úložiště souborů VDI založené na síti SAN (Network-Attached Storage) a hardwaru souborového serveru, který je místně umístěný v místním prostředí, a v doprovodné požadované technologii pro poskytování záloh souborů, obnovení a zotavení po havárii. Tyto tradiční přístupy jsou nákladné, složité pro údržbu a správu a neumožňují snadné škálování. Zavádějí taky latenci, pokud se používá u moderního cloudového řešení VDI, jako je třeba virtuální počítač s Windows, protože se jedná o fyzickou vzdálenost a pomalejší připojení WAN mezi stolními počítači, které jsou založené na Azure, a úložištěm souborů v místním prostředí. Nasuni, platforma souborové služby vytvořená speciálně pro Azure, nabízí neomezenou kapacitu úložiště souborů a vysoce výkonný přístup k souborům. Nasuni může být umístěn společně s virtuálním počítačem s Windows ve stejných oblastech Azure pro zajištění úsporného a vysoce výkonného přístupového souboru k jednomu globálnímu oboru názvů. Nasuni nabízí úložiště souborů virtuálních klientů Windows ve zlomcích nákladů na tradiční servery NAS a souborové servery Windows a zahrnuje integrované zálohy a zotavení po havárii pro další snížení nákladů a uvolnění IT prostředků.
+V rámci moderního cloudového řešení VDI vyžaduje Windows virtuální počítač moderní cloudové úložiště souborů. Tradičně je úložiště souborů VDI založené na Network-Attached Storage (NAS) a hardwaru souborového serveru v místním prostředí a doprovodně požadované technologii pro poskytování záloh souborů, obnovení a zotavení po havárii. Tyto tradiční přístupy jsou nákladné, složité pro údržbu a správu a neumožňují snadné škálování. Zavádějí taky latenci, pokud se používá u moderního cloudového řešení VDI, jako je třeba virtuální počítač s Windows, protože se jedná o fyzickou vzdálenost a pomalejší připojení WAN mezi stolními počítači, které jsou založené na Azure, a úložištěm souborů v místním prostředí. Nasuni, platforma souborové služby vytvořená speciálně pro Azure, nabízí neomezenou kapacitu úložiště souborů a vysoce výkonný přístup k souborům. Nasuni může být umístěn společně s virtuálním počítačem s Windows ve stejných oblastech Azure pro zajištění úsporného a vysoce výkonného přístupového souboru k jednomu globálnímu oboru názvů. Nasuni nabízí úložiště souborů virtuálních klientů Windows ve zlomcích nákladů na tradiční servery NAS a souborové servery Windows a zahrnuje integrované zálohy a zotavení po havárii pro další snížení nákladů a uvolnění IT prostředků.
 
 - [Přejít na web partnera](https://www.nasuni.com/partner/microsoft/#wvd).
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeS).

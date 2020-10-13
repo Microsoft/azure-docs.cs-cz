@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89047072"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Nastavení zotavení po havárii ve velkém měřítku pro virtuální počítače VMware nebo fyzické servery
@@ -83,7 +83,7 @@ Tato doporučení můžete použít k plánování prostředků Azure, šířky 
 
 Chceme zajistit, aby dostupné kvóty v cílovém předplatném byly dostatečné pro zpracování převzetí služeb při selhání.
 
-**Úkol** | **Podrobnosti** | **Akce**
+**Úloha** | **Podrobnosti** | **Akce**
 --- | --- | ---
 **Kontrolovat jádra** | Pokud se jádra v dostupné kvótě nerovnají nebo překračují celkový počet cílů v době převzetí služeb při selhání, převzetí služeb při selhání se nezdaří. | V případě virtuálních počítačů VMware ověřte, že je v cílovém předplatném dostatek jader, aby splňovaly doporučení Plánovač nasazení Core.<br/><br/> U fyzických serverů ověřte, že Azure Core vyhovují vašim ručním odhadům.<br/><br/> Pokud chcete kontrolovat kvóty, klikněte v **Předplatném**Azure Portal > na **využití + kvóty**.<br/><br/> [Přečtěte si další informace](../azure-portal/supportability/resource-manager-core-quotas-request.md) o zvýšení kvót.
 **Kontrolovat omezení převzetí služeb při selhání** | Počet převzetí služeb při selhání nesmí překračuje Site Recovery limity převzetí služeb při selhání. |  Pokud převzetí služeb při selhání překročilo limity, můžete přidat odběry, převzít služby při selhání na více předplatných nebo zvýšit kvótu pro předplatné. 
@@ -95,13 +95,13 @@ Omezení označují počet převzetí služeb při selhání, které Site Recove
 
 Co to znamená? Aby bylo možné spustit virtuální počítač Azure, Azure vyžaduje, aby byly některé ovladače v počátečním stavu spouštění, a služby jako DHCP mají být nastavené tak, aby se spouštěly automaticky.
 - Počítače, které vyhovují, již mají tato nastavení zavedena.
-- V případě počítačů s Windows můžete proaktivní kontrolu dodržování předpisů a v případě potřeby je v případě potřeby nastavit jako vyhovující. [Přečtěte si další informace](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010).
+- V případě počítačů s Windows můžete proaktivní kontrolu dodržování předpisů a v případě potřeby je v případě potřeby nastavit jako vyhovující. [Další informace](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010).
 - Počítače se systémem Linux se v době převzetí služeb při selhání zanesou do dodržování předpisů.
 
 **Počítač vyhovuje Azure?** | **Omezení virtuálních počítačů Azure (převzetí služeb při selhání spravovaného disku)**
 --- | --- 
-Ano | 2000
-Ne | 1000
+Yes | 2000
+No | 1000
 
 - Omezení předpokládají, že v cílové oblasti pro předplatné probíhá minimálně jiné úlohy.
 - Některé oblasti Azure jsou menší a můžou mít mírně nižší omezení.
@@ -127,7 +127,7 @@ Je důležité, abyste měli dostatek konfiguračních serverů a procesových s
  
 Kapacita konfiguračního serveru je ovlivněná počtem počítačů, které se replikují, a ne podle míry četnosti změn dat. Pokud chcete zjistit, jestli potřebujete další konfigurační servery, použijte tyto definované limity virtuálních počítačů.
 
-**Procesor** | **Paměť** | **Disk mezipaměti** | **Limit replikovaného počítače**
+**Procesor** | **Memory (Paměť)** | **Disk mezipaměti** | **Limit replikovaného počítače**
  --- | --- | --- | ---
 8 vCPU<br> 2 sokety × 4 jádra @ 2,5 GHz | 16 GB | 600 GB | Až 550 počítačů<br> Předpokládá, že každý počítač má tři disky o velikosti 100 GB.
 
@@ -153,7 +153,7 @@ Kapacita procesového serveru je ovlivněná mírami četnosti změn dat, nikoli
 - Doporučujeme přidat server s nejvyšší specifikací. 
 
 
-**Procesor** | **Paměť** | **Disk mezipaměti** | **Míra četnosti změn**
+**Procesor** | **Memory (Paměť)** | **Disk mezipaměti** | **Míra četnosti změn**
  --- | --- | --- | --- 
 12 vCPU<br> 2 sokety × 6 jader @ 2,5 GHz | 24 GB | 1 GB | Až 2 TB za den
 

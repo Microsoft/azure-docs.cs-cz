@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77024836"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>Nastavení vCenter v privátním cloudu pro automatizaci VMware vRealize
@@ -38,7 +38,7 @@ Před konfigurací serveru vCenter proveďte tyto úlohy:
 | Prostředek | Přiřazení virtuálního počítače ke fondu zdrojů<br>Migrace vypnutého virtuálního počítače<br>Migrace zapnutá na virtuálním počítači |
 | Inventář virtuálních počítačů |  Vytvořit z existujících<br>Vytvořit nové<br>Přesunout<br>Odebrat | 
 | Interakce virtuálního počítače |  Konfigurace média CD<br>Interakce konzoly<br>Připojení zařízení<br>Vypnutí napájení<br>Zapnout<br>Resetovat<br>Suspend<br>Instalace nástrojů | 
-| Konfigurace virtuálního počítače |  Přidat existující disk<br>Přidat nový disk<br>Přidat nebo odebrat<br>Odebrat disk<br>Pokročilý<br>Změna počtu PROCESORů<br>Změnit prostředek<br>Zvětšit virtuální disk<br>Change Tracking disku<br>Memory (Paměť)<br>Úprava nastavení zařízení<br>přejmenování<br>Nastavit poznámku (verze 5,0 a novější)<br>Nastavení<br>Umístění swapfile |
+| Konfigurace virtuálního počítače |  Přidat existující disk<br>Přidat nový disk<br>Přidat nebo odebrat<br>Odebrat disk<br>Upřesnit<br>Změna počtu PROCESORů<br>Změnit prostředek<br>Zvětšit virtuální disk<br>Change Tracking disku<br>Paměť<br>Úprava nastavení zařízení<br>přejmenování<br>Nastavit poznámku (verze 5,0 a novější)<br>Nastavení<br>Umístění swapfile |
 | Zřizování |  Přizpůsobení<br>Klonovat šablonu<br>Klonovat virtuální počítač<br>Nasazení šablony<br>Číst specifikace přizpůsobení |
 | Stav virtuálního počítače | Vytvořit snímek<br>Odebrat snímek<br>Vrátit se ke snímku |
 
@@ -63,8 +63,8 @@ Před konfigurací serveru vCenter proveďte tyto úlohy:
 
         ![Instalační proxy server vRA](media/configure-vra-endpoint-proxy.png)
 
-    11. Klikněte na **Další**.
-    12. Klikněte na **nainstalovat**.
+    11. Klikněte na **Next** (Další).
+    12. Klikněte na **Install** (Nainstalovat).
 
 ## <a name="configure-the-vsphere-agent"></a>Konfigurace agenta vSphere
 

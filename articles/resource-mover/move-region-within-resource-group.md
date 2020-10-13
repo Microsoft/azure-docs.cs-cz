@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
 ms.openlocfilehash: 716928761d23c2cf04ebcc72e253ad7884408065
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90061834"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>Přesunutí prostředků mezi oblasti (ze skupiny prostředků)
@@ -22,12 +22,12 @@ V tomto článku se dozvíte, jak přesunout prostředky z konkrétní skupiny p
 > Prostředek Azure Resource stěhovací je momentálně ve verzi Public Preview.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pro předplatné, ve kterém se nacházejí prostředky, které chcete přesunout, potřebujete přístup *vlastníka* .
     - Při prvním přidání prostředku pro konkrétní mapování zdrojového a cílového umístění v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná.
     - Pokud chcete vytvořit identitu a přiřadit jí požadovanou roli (přispěvatel nebo správce přístupu uživatele ve zdrojovém předplatném), účet, který použijete k přidání prostředků, potřebuje oprávnění *vlastníka* k tomuto předplatnému. [Přečtěte si další informace](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) o rolích Azure.
-- K vytvoření zdrojových prostředků v cílové oblasti vyžaduje předplatné dostatečnou kvótu. Pokud ne, požádejte o další omezení. [Přečtěte si další informace](/azure/azure-resource-manager/management/azure-subscription-service-limits).
+- K vytvoření zdrojových prostředků v cílové oblasti vyžaduje předplatné dostatečnou kvótu. Pokud ne, požádejte o další omezení. [Další informace](/azure/azure-resource-manager/management/azure-subscription-service-limits).
 - Ověřte ceny a poplatky spojené s cílovou oblastí, do které přesouváte virtuální počítače. Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) vám pomůžeme.
 - Přečtěte si, že prostředky, které chcete přesunout, jsou podporovány nástrojem Resource stěhovací:
     - Virtuální počítače Azure a přidružené disky
@@ -144,7 +144,7 @@ Potvrzení a dokončení procesu přesunutí:
 > [!NOTE]
 > Po potvrzení přesunutí je zdrojová skupina prostředků ve stavu *čekání na odstranění zdroje* .
 
-## <a name="modify-target-settings"></a>Upravit nastavení cíle
+## <a name="modify-target-settings"></a>Úprava nastavení cíle
 
 Pokud nechcete přesunout zdrojový prostředek, můžete provést jednu z následujících akcí:
 

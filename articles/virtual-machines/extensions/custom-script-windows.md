@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
 ms.openlocfilehash: e50c0b0fcb883b43650a5d99cea5aa39bae1cd94
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89426261"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozšíření vlastních skriptů pro virtuální počítače
@@ -26,7 +26,7 @@ Tento dokument popisuje, jak používat rozšíření vlastních skriptů pomoc�
 ## <a name="prerequisites"></a>Požadavky
 
 > [!NOTE]  
-> Nepoužívejte rozšíření vlastních skriptů ke spuštění rutiny Update-AzVM se stejným virtuálním počítačem jako jeho parametr, protože se bude čekat sám na sebe.  
+> Nepoužívejte rozšíření vlastních skriptů ke spuštění Update-AzVM se stejným virtuálním počítačem jako jeho parametr, protože se bude čekat sám na sebe.  
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -275,7 +275,7 @@ Pokud chcete rozšíření vlastních skriptů spustit více než jednou, může
 
 Případně můžete nastavit vlastnost [ForceUpdateTag](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension.forceupdatetag) na **hodnotu true**.
 
-### <a name="using-invoke-webrequest"></a>Použití metody Invoke-WebRequest
+### <a name="using-invoke-webrequest"></a>Použití Invoke-WebRequest
 
 Pokud ve svém skriptu používáte [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) , musíte zadat parametr `-UseBasicParsing` nebo jinak se při kontrole podrobného stavu zobrazí následující chyba:
 
@@ -320,7 +320,7 @@ $vm | Update-AzureVM
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstraňování potíží
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí modulu Azure PowerShell. Chcete-li zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz:
 

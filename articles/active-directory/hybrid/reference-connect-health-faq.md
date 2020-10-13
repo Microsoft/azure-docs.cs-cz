@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6140f5fd431a0b089b45892130e075bde02a2eb2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91299761"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health nejčastějších dotazech
@@ -98,7 +98,7 @@ Následující čísla představují aproximaci:
 
 **Otázka: bude nutné restartovat servery během instalace agentů Azure AD Connect Health?**
 
-No. Instalace agentů nebude vyžadovat restartování serveru. Instalace některých nezbytných kroků ale může vyžadovat restartování serveru.
+Ne. Instalace agentů nebude vyžadovat restartování serveru. Instalace některých nezbytných kroků ale může vyžadovat restartování serveru.
 
 Například v systému Windows Server 2008 R2 vyžaduje instalace rozhraní .NET 4,5 restartování serveru.
 
@@ -115,7 +115,7 @@ Pokud během registrace agenta potřebujete nakonfigurovat proxy server, může 
 
 **Otázka: podporuje Azure AD Connect Health základní ověřování při připojování k proxy HTTP?**
 
-No. Mechanismus pro zadání libovolného uživatelského jména a hesla pro základní ověřování není v současné době podporován.
+Ne. Mechanismus pro zadání libovolného uživatelského jména a hesla pro základní ověřování není v současné době podporován.
 
 **Otázka: jaké porty brány firewall potřebuji k tomu, aby mohl agent Azure AD Connect Health fungovat?**
 
@@ -131,7 +131,7 @@ V takovém případě ručně odstraňte položku, která patří do staršího 
 
 **Otázka: mohu nainstalovat agenta Azure AD Connect Health v systému Windows Server Core?**
 
-No.  Instalace na jádro serveru není podporovaná.
+Ne.  Instalace na jádro serveru není podporovaná.
 
 ## <a name="health-agent-registration-and-data-freshness"></a>Registrace a aktuálnost dat agenta stavu
 

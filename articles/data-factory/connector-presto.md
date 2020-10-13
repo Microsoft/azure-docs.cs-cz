@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 15f4133b03c1fe77548425500445937e86ed5a8e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372497"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Kopírování dat z Presto pomocí Azure Data Factory (Preview)
@@ -49,22 +49,22 @@ Pro propojenou službu Presto jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **Presto** . | Ano |
-| Hostitel | IP adresa nebo název hostitele serveru Presto (např. 192.168.222.160)  | Ano |
-| serverVersion | Verze serveru Presto (např. 0,148-t)  | Ano |
-| zařazení | Kontext katalogu pro všechny požadavky na serveru.  | Ano |
-| port | Port TCP, který server Presto používá k naslouchání klientským připojením. Výchozí hodnota je 8080.  | Ne |
-| authenticationType | Ověřovací mechanismus, který se používá pro připojení k serveru Presto. <br/>Povolené hodnoty jsou: **anonymní**, **LDAP** | Ano |
-| username | Uživatelské jméno použité pro připojení k serveru Presto.  | Ne |
-| heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je False.  | Ne |
-| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority pro ověření serveru při připojení přes protokol TLS. Tuto vlastnost lze nastavit pouze při použití protokolu TLS v místním prostředí IR. Výchozí hodnota je soubor cacerts. pem nainstalovaný s IR.  | Ne |
-| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Výchozí hodnota je False.  | Ne |
-| allowHostNameCNMismatch | Určuje, jestli se má při připojování přes protokol TLS vyžadovat, aby název certifikátu TLS/SSL vydaný certifikační autoritou odpovídal názvu hostitele serveru. Výchozí hodnota je False.  | Ne |
-| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | Ne |
-| timeZoneID | Místní časové pásmo používané připojením. Platné hodnoty pro tuto možnost se zadává v databázi časového pásma IANA. Výchozí hodnota je systémové časové pásmo.  | Ne |
+| typ | Vlastnost Type musí být nastavená na: **Presto** . | Yes |
+| Hostitel | IP adresa nebo název hostitele serveru Presto (např. 192.168.222.160)  | Yes |
+| serverVersion | Verze serveru Presto (např. 0,148-t)  | Yes |
+| zařazení | Kontext katalogu pro všechny požadavky na serveru.  | Yes |
+| port | Port TCP, který server Presto používá k naslouchání klientským připojením. Výchozí hodnota je 8080.  | No |
+| authenticationType | Ověřovací mechanismus, který se používá pro připojení k serveru Presto. <br/>Povolené hodnoty jsou: **anonymní**, **LDAP** | Yes |
+| username | Uživatelské jméno použité pro připojení k serveru Presto.  | No |
+| heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
+| enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je False.  | No |
+| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority pro ověření serveru při připojení přes protokol TLS. Tuto vlastnost lze nastavit pouze při použití protokolu TLS v místním prostředí IR. Výchozí hodnota je soubor cacerts. pem nainstalovaný s IR.  | No |
+| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Výchozí hodnota je False.  | No |
+| allowHostNameCNMismatch | Určuje, jestli se má při připojování přes protokol TLS vyžadovat, aby název certifikátu TLS/SSL vydaný certifikační autoritou odpovídal názvu hostitele serveru. Výchozí hodnota je False.  | No |
+| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | No |
+| timeZoneID | Místní časové pásmo používané připojením. Platné hodnoty pro tuto možnost se zadává v databázi časového pásma IANA. Výchozí hodnota je systémové časové pásmo.  | No |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -96,9 +96,9 @@ Chcete-li kopírovat data z Presto, nastavte vlastnost Type datové sady na **Pr
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **PrestoObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **PrestoObject** . | Yes |
 | schema | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
-| table | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
+| stolu | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. `schema` `table` Pro nové zatížení použijte a. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -128,10 +128,10 @@ Chcete-li kopírovat data z Presto, nastavte typ zdroje v aktivitě kopírován�
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **PrestoSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **PrestoSource** . | Yes |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

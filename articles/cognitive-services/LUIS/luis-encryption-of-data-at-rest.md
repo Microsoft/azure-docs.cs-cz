@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: ce6561652801d52e5600ddc63e573070281da3f2
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078125"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>Šifrování neaktivních dat Language Understanding služby
@@ -32,11 +32,11 @@ Vaše předplatné ve výchozím nastavení používá šifrovací klíče sprav
 
 K dispozici je také možnost Spravovat předplatné s vlastními klíči. Klíče spravované zákazníkem (CMK), označované také jako Přineste si vlastní klíč (BYOK), nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Šifrovací klíče sloužící k ochraně vašich dat můžete také auditovat.
 
-K ukládání klíčů spravovaných zákazníkem je nutné použít Azure Key Vault. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Prostředek Cognitive Services a trezor klíčů musí být ve stejné oblasti a v rámci stejného tenanta Azure Active Directory (Azure AD), ale můžou být v různých předplatných. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+K ukládání klíčů spravovaných zákazníkem musíte použít službu Azure Key Vault. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Prostředek Cognitive Services a trezor klíčů musí být ve stejné oblasti a v rámci stejného tenanta Azure Active Directory (Azure AD), ale můžou být v různých předplatných. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
 ### <a name="customer-managed-keys-for-language-understanding"></a>Klíče spravované zákazníkem pro Language Understanding
 
-Chcete-li požádat o možnost použití klíčů spravovaných zákazníkem, vyplňte a odešlete [formulář žádosti o klíč spravovaný zákazníkem služby Luis](https://aka.ms/cogsvc-cmk). Bude to trvat přibližně 3-5 pracovních dnů, než se vrátí na stav vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro použití CMK s LUIS budete muset vytvořit nový prostředek Language Understanding z Azure Portal a vybrat E0 jako cenovou úroveň. Nová SKU bude fungovat stejně jako SKU F0, která je již k dispozici, s výjimkou CMK. Uživatelé nebudou moct upgradovat z F0 na novou SKLADOVOU položku E0.
+Chcete-li požádat o možnost použití klíčů spravovaných zákazníkem, vyplňte a odešlete [formulář žádosti o klíč Customer-Managed Luis Service](https://aka.ms/cogsvc-cmk). Bude to trvat přibližně 3-5 pracovních dnů, než se vrátí na stav vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro použití CMK s LUIS budete muset vytvořit nový prostředek Language Understanding z Azure Portal a vybrat E0 jako cenovou úroveň. Nová SKU bude fungovat stejně jako SKU F0, která je již k dispozici, s výjimkou CMK. Uživatelé nebudou moct upgradovat z F0 na novou SKLADOVOU položku E0.
 
 ![Obrázek předplatného LUIS](../media/cognitive-services-encryption/luis-subscription.png)
 
@@ -85,5 +85,5 @@ K odvolání přístupu ke klíčům spravovaným zákazníkem použijte PowerSh
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Formulář žádosti o klíč spravovaný zákazníkem služby LUIS](https://aka.ms/cogsvc-cmk)
+* [Formulář žádosti o klíč Customer-Managed služby LUIS](https://aka.ms/cogsvc-cmk)
 * [Další informace o Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

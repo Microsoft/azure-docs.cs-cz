@@ -17,15 +17,15 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7cfbca2e7542315b59d741a9e8f6f9eb92af6ebf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84760214"
 ---
 # <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Jak nakonfigurovat aplikaci proxy aplikací pro použití PingAccess
 
-Naše spolupráce s PingAccess teď umožňuje rozšiřování výhod aplikačního proxy serveru do aplikací pomocí ověřování založeného na hlavičkách. Pokud vaše aplikace nepoužívají hlavičky, přečtěte si v [dokumentaci k jednotnému přihlašování](application-proxy-configure-single-sign-on-with-kcd.md) podrobnosti o dalších možnostech.
+Naše spolupráce s PingAccess teď umožňuje rozšiřování výhod aplikačního proxy serveru do aplikací pomocí ověřování založeného na hlavičkách. Pokud vaše aplikace nepoužívají hlavičky, další informace o dalších možnostech najdete v naší [dokumentaci k jednomu Sign-On](application-proxy-configure-single-sign-on-with-kcd.md) .
 
 ## <a name="overview-of-steps-and-recommended-documents"></a>Přehled kroků a doporučených dokumentů
 
@@ -39,4 +39,4 @@ Ke konfiguraci aplikace pomocí PingAccess existují čtyři kroky:
 
 4.  Konfigurace aplikací v PingAccess
 
-Podrobnosti o každém z těchto kroků najdete v našem [jednotném přihlašování s hlavičkou](application-proxy-configure-single-sign-on-with-ping-access.md).
+Podrobnosti o každém z těchto kroků najdete v naší [Sign-On dokumentaci k hlavičkám](application-proxy-configure-single-sign-on-with-ping-access.md).

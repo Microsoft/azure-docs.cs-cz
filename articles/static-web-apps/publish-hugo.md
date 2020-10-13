@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.openlocfilehash: ff408f114784fa3f0b8fab49521b5ec7ec2be102
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797713"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Hugo ve službě Azure static Web Apps Preview
@@ -115,7 +115,7 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 1. V případě _SKU_vyberte možnost **Free**.
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Podrobnosti vyplněné":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Vytvoření prostředku statického Web Apps Azure na portálu":::
 
 1. Klikněte na tlačítko **Přihlásit se pomocí GitHubu** .
 
@@ -125,7 +125,7 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 1. Pro _větev_ vyberte **hlavní**uzel.
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Informace o dokončeném GitHubu":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Vytvoření prostředku statického Web Apps Azure na portálu":::
 
 ### <a name="build"></a>Sestavení
 
@@ -149,7 +149,7 @@ Dále přidáte nastavení konfigurace, které proces sestavení používá k se
 
 1. V okně _přehledu_ Azure Portal nově vytvořeného prostředku služby Azure static Web Apps kliknutím na odkaz _URL_ otevřete nasazenou aplikaci.
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Nasazená aplikace":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Vytvoření prostředku statického Web Apps Azure na portálu":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

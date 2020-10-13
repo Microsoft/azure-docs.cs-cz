@@ -13,10 +13,10 @@ ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f58e5a07348dfde4e4618eb58746f08016c55ed6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049566"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvoření odolné strategie správy řízení přístupu pomocí Azure Active Directory
@@ -119,8 +119,8 @@ Pohotovostní zásada podmíněného přístupu je **zásada zálohování** , k
 
 * Nakonfigurujte sadu záložních zásad, pokud dojde k výpadku jednoho typu přihlašovacích údajů nebo jednoho mechanismu řízení přístupu, který má vliv na přístup k vašim aplikacím. Nakonfigurujte zásady ve stavu pouze sestavy, který vyžaduje připojení k doméně jako řízení, jako zálohu aktivní zásady, která vyžaduje poskytovatele vícefaktorového ověřování od jiného výrobce.
 * Pomocí postupů uvedených v dokumentu White Paper s [pokyny k heslům](https://aka.ms/passwordguidance) snížíte riziko chybných aktérů, které se týkají pokusů o hesla.
-* Nasaďte [Samoobslužné resetování hesel Azure AD (SSPR)](./tutorial-enable-sspr.md) a [Azure AD Password Protection](./howto-password-ban-bad-on-premises-deploy.md) , abyste se ujistili, že uživatelé nepoužívají běžné heslo a výrazy, které se rozhodnete zakázat.
-* Používejte zásady, které omezují přístup v rámci aplikací, Pokud nedosáhnete určité úrovně ověřování, místo toho, abyste museli jednoduše vracet přístup k úplnému přístupu. Příklad:
+* Nasaďte [Azure ad Self-Service resetování hesla (SSPR)](./tutorial-enable-sspr.md) a [ochranu heslem Azure AD](./howto-password-ban-bad-on-premises-deploy.md) , abyste se ujistili, že uživatelé nepoužívají běžné heslo a výrazy, které se rozhodnete zakázat.
+* Používejte zásady, které omezují přístup v rámci aplikací, Pokud nedosáhnete určité úrovně ověřování, místo toho, abyste museli jednoduše vracet přístup k úplnému přístupu. Například:
   * Nakonfigurujte zásady zálohování, které odesílají deklaraci omezené relace na Exchange a SharePoint.
   * Pokud vaše organizace používá Microsoft Cloud App Security, zvažte návrat k zásadám, které MCAS a pak MCAS povolí přístup jen pro čtení, ale ne nahrávání.
 * Pojmenujte zásady, abyste se ujistili, že je budete moct snadno najít při přerušení. Do názvu zásady zahrňte tyto prvky:
@@ -215,13 +215,13 @@ Pokud jste nasadili rozšíření Azure AD MFA NPS pro ochranu premch prostředk
 V takovém případě můžete zakázat rozšíření serveru NPS. Server NPS proto ověří jenom primární ověřování a neuplatní MFA pro uživatele.
 
 Zakázat rozšíření serveru NPS: 
--   Exportujte klíč registru HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters jako zálohu. 
+-   Exportujte klíč registru HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters jako zálohu. 
 -   Odstraňte hodnoty registru "AuthorizationDLLs" a "ExtensionDLLs", nikoli klíč parametrů. 
 -   Restartujte službu NPS (Network Policy Service), aby se změny projevily. 
 -   Zjistěte, jestli je primární ověřování pro síť VPN úspěšné.
 
 Jakmile se služba obnoví a jste připraveni znovu vymáhat MFA pro uživatele, povolte rozšíření serveru NPS: 
--   Importujte klíč registru ze zálohy HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
+-   Importujte klíč registru ze zálohy HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
 -   Restartujte službu NPS (Network Policy Service), aby se změny projevily. 
 -   Určete, zda je primární ověřování a také sekundární ověřování pro síť VPN úspěšné.
 -   Zkontrolujte servery NPS a protokol VPN a určete, kteří uživatelé se přihlásili během nouzového okna.

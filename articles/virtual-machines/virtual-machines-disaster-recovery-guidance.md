@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: 3c87c234e376cc8380afbb26edf63e1969243475
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d659f0bc65d3dbe7cbb656d505275a52a9742eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87831137"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976619"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Co když služba Azure ovlivňuje přerušení virtuálních počítačů Azure
 V Microsoftu pracujeme na tom, abychom zajistili, že naše služby jsou vždycky k dispozici, až je budete potřebovat. Síly nad rámec našeho ovládacího prvku někdy ovlivňují způsob, jakým způsobují neplánované výpadky služeb.
@@ -25,7 +25,7 @@ Tento článek se zabývá skutečným scénářem zotavení po havárii, když 
 Abychom vám pomohli zvládnout tyto výjimečné výskyty, poskytujeme následující pokyny pro virtuální počítače Azure v případě výpadku služby celé oblasti, kde je nasazená vaše aplikace virtuálního počítače Azure.
 
 ## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Možnost 1: zahájení převzetí služeb při selhání pomocí Azure Site Recovery
-Pro své virtuální počítače můžete nakonfigurovat Azure Site Recovery, abyste mohli aplikaci obnovit jediným kliknutím v několika minutách. Můžete replikovat do oblasti Azure podle vašeho výběru a Neomezovat na spárované oblasti. Můžete začít [replikací virtuálních počítačů](https://aka.ms/a2a-getting-started). Můžete [vytvořit plán obnovení](../site-recovery/site-recovery-create-recovery-plans.md) , abyste mohli automatizovat celý proces převzetí služeb při selhání pro vaši aplikaci. Převzetí [služeb při selhání](../site-recovery/site-recovery-test-failover-to-azure.md) můžete předem testovat bez dopadu na produkční aplikaci nebo probíhající replikaci. V případě přerušení primární oblasti stačí [zahájit převzetí služeb při selhání](../site-recovery/site-recovery-failover.md) a přenést aplikaci do cílové oblasti.
+Pro své virtuální počítače můžete nakonfigurovat Azure Site Recovery, abyste mohli aplikaci obnovit jediným kliknutím v několika minutách. Můžete replikovat do oblasti Azure podle vašeho výběru a Neomezovat na spárované oblasti. Můžete začít [replikací virtuálních počítačů](../site-recovery/azure-to-azure-quickstart.md). Můžete [vytvořit plán obnovení](../site-recovery/site-recovery-create-recovery-plans.md) , abyste mohli automatizovat celý proces převzetí služeb při selhání pro vaši aplikaci. Převzetí [služeb při selhání](../site-recovery/site-recovery-test-failover-to-azure.md) můžete předem testovat bez dopadu na produkční aplikaci nebo probíhající replikaci. V případě přerušení primární oblasti stačí [zahájit převzetí služeb při selhání](../site-recovery/site-recovery-failover.md) a přenést aplikaci do cílové oblasti.
 
 
 ## <a name="option-2-wait-for-recovery"></a>Možnost 2: čekání na obnovení
@@ -41,7 +41,7 @@ Tato možnost je nejlepší, pokud jste nemuseli nastavovat Azure Site Recovery,
 
 ## <a name="next-steps"></a>Další kroky
 
-- Začněte [chránit své aplikace běžící na virtuálních počítačích Azure](https://aka.ms/a2a-getting-started) pomocí Azure Site Recovery
+- Začněte [chránit své aplikace běžící na virtuálních počítačích Azure](../site-recovery/azure-to-azure-quickstart.md) pomocí Azure Site Recovery
 
 - Další informace o tom, jak implementovat strategii zotavení po havárii a vysokou dostupnost, najdete v tématu [zotavení po havárii a vysoká dostupnost pro aplikace Azure](/azure/architecture/framework/resiliency/backup-and-recovery).
 

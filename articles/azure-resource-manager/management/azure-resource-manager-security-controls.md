@@ -4,10 +4,10 @@ description: Kontrolní seznam předdefinovaných ovládacích prvků zabezpeče
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.openlocfilehash: bb8742c38fae88dc1fd1fd1ec175b248f30df3a0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86054453"
 ---
 # <a name="security-controls-for-azure-resource-manager"></a>Ovládací prvky zabezpečení pro Azure Resource Manager
@@ -21,7 +21,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Res
 | Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
 | Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Yes |  |
-| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Yes | HTTPS/TLS. |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování VNet-VNet)| Yes | HTTPS/TLS. |
 | Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Není k dispozici | Azure Resource Manager neukládá žádný zákaznický obsah, řídí se jenom data. |
 | Šifrování na úrovni sloupce (Azure Data Services)| Yes | |
 | Zašifrovaná volání rozhraní API| Yes | |

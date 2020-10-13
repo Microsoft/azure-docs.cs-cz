@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87407111"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Rychlý Start: vývoj ve službě Azure Kubernetes Service (AKS) s využitím Helm
@@ -19,7 +19,7 @@ ms.locfileid: "87407111"
 
 V tomto článku se dozvíte, jak pomocí Helm zabalit a spustit aplikaci na AKS. Další informace o instalaci existující aplikace pomocí Helm najdete v tématu [instalace existujících aplikací pomocí Helm v AKS][helm-existing].
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 * [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -131,10 +131,10 @@ helm create webfrontend
 
 Proveďte následující aktualizace *webendu/Values. yaml*. Nahraďte loginServer registru, který jste si poznamenali v předchozím kroku, jako je například *myhelmacr.azurecr.IO*:
 
-* Změnit `image.repository` na`<loginServer>/webfrontend`
-* Změnit `service.type` na`LoadBalancer`
+* Změnit `image.repository` na `<loginServer>/webfrontend`
+* Změnit `service.type` na `LoadBalancer`
 
-Příklad:
+Například:
 
 ```yml
 # Default values for webfrontend.
@@ -201,7 +201,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 Další informace o použití Helm najdete v dokumentaci k Helm.
 
 > [!div class="nextstepaction"]
-> [Dokumentace k Helm][helm-documentation]
+> [Dokumentace k nástroji Helm][helm-documentation]
 
 [az-acr-create]: /cli/azure/acr#az-acr-create
 [az-acr-build]: /cli/azure/acr#az-acr-build

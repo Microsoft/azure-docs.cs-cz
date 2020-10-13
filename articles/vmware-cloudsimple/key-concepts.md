@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 8677bc7e4b9f4c2b24b5439aeefb307b9c544ed3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86525020"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>Klíčové koncepty pro správu řešení Azure VMware podle CloudSimple
@@ -50,7 +50,7 @@ Služba CloudSimple poskytuje síť pro každou oblast, ve které je nasazená v
 
 * [Sítě VLAN a podsítě](cloudsimple-vlans-subnets.md)
 * [Tabulky bran firewall](cloudsimple-firewall-tables.md)
-* [Brány VPN](cloudsimple-vpn-gateways.md)
+* [VPN Gateway](cloudsimple-vpn-gateways.md)
 * [Veřejná IP adresa](cloudsimple-public-ip-address.md)
 * [Síťová připojení Azure](cloudsimple-azure-network-connection.md)
 

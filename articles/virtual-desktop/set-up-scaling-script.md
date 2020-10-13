@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 12a15ab1a4c7369c448e9f65862121b03ca05bba
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078550"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Škálování hostitelů relací pomocí Azure Automation
@@ -25,9 +25,9 @@ Nástroj pro škálování nabízí možnost automatizace s nízkými náklady p
 
 Nástroj pro škálování můžete použít k těmto akcím:
 
-- Naplánujte, aby se virtuální počítače spouštěly a zastavily na základě špičky a špičky v pracovní době.
+- Naplánování spouštění a zastavování virtuálních počítačů na základě špičky a Off-Peak pracovní doby.
 - Horizontální navýšení kapacity virtuálních počítačů na základě počtu relací na jádro procesoru.
-- Škálování virtuálních počítačů v době mimo špičku ponechte minimální počet spuštěných virtuálních počítačů hostitele relace.
+- Škálování virtuálních počítačů během Off-Peak hodin ponechte minimální počet spuštěných virtuálních počítačů hostitele relace.
 
 Nástroj pro škálování používá kombinaci Azure Automation účtu, Runbooku PowerShellu, Webhooku a aplikace logiky Azure k fungování. Když se nástroj spustí, aplikace logiky Azure zavolá Webhook a spustí Azure Automation sadu Runbook. Sada Runbook potom vytvoří úlohu.
 

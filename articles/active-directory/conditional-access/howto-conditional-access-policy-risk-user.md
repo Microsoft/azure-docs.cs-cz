@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5423a61c8febee72f32935f3dee4e9f9e868630
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89049073"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>Podmíněný přístup: podmíněný přístup na základě rizika uživatele
@@ -42,7 +42,7 @@ Existují dvě místa, kde je možné tuto zásadu přiřadit. Organizace by si 
 
 ## <a name="enable-through-identity-protection"></a>Povolit prostřednictvím Identity Protection
 
-1. Přihlaste se k webu **Azure Portal**.
+1. Přihlaste se k **portálu Azure Portal**.
 1. Vyberte **všechny služby**a pak vyhledejte **Azure AD Identity Protection**.
 1. Vyberte **zásady rizik uživatelů**.
 1. V části **přiřazení**vyberte **Uživatelé**.

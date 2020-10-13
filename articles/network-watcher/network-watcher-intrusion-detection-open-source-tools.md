@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737355"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Zjišťování neoprávněných vniknutí k síti pomocí Network Watcher a open source nástrojů
@@ -34,11 +34,11 @@ Tento článek vysvětluje, jak nastavit prostředí pro provádění zjišťov�
 
 Na VIRTUÁLNÍm počítači Azure je možné nastavit jak Open Source nástroje, což vám umožní provádět tuto analýzu v rámci vlastního síťového prostředí Azure.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Postup
 
 ### <a name="install-suricata"></a>Nainstalovat Suricata
 
-Všechny ostatní metody instalace najdete na stráncehttps://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
+Všechny ostatní metody instalace najdete na stránce https://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
 
 1. V terminálu příkazového řádku pro virtuální počítač spusťte následující příkazy:
 
@@ -217,7 +217,7 @@ Další pokyny k instalaci elastického vyhledávání najdete v tématu [instal
 
 Další pokyny k instalaci Logstash najdete v [oficiální dokumentaci](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html) .
 
-### <a name="install-kibana"></a>Nainstalovat Kibana
+### <a name="install-kibana"></a>Instalace Kibany
 
 1. Spusťte následující příkazy a nainstalujte Kibana:
 
@@ -233,7 +233,7 @@ Další pokyny k instalaci Logstash najdete v [oficiální dokumentaci](https://
     ./bin/kibana
     ```
 
-1. Pokud chcete zobrazit webové rozhraní Kibana, přejděte na`http://localhost:5601`
+1. Pokud chcete zobrazit webové rozhraní Kibana, přejděte na `http://localhost:5601`
 1. Pro tento scénář je vzor indexu použitý pro protokoly Suricata "logstash-*".
 
 1. Pokud chcete zobrazit řídicí panel Kibana vzdáleně, vytvořte příchozí pravidlo NSG, které umožní přístup k **portu 5601**.

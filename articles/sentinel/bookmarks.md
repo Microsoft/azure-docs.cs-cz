@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
 ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77588684"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Udržujte si přehled o datech během přilovu k Azure Sentinel
@@ -23,7 +23,7 @@ Lovecké hrozby obvykle vyžadují kontrolu Mountains dat protokolu a hledání 
 
 Rozkládání záložek v Azure Sentinel vám to uděláte tak, že zachováte dotazy, které jste spustili v **protokolech Azure Sentinel**, společně s výsledky dotazu, které považujete za relevantní. Můžete také zaznamenat kontextová pozorování a odkazovat na své závěry přidáním poznámek a značek. Data s záložkami jsou viditelná pro vás a vaše ostatními týmu pro jednoduchou spolupráci.
 
-Data v záložkách můžete kdykoli znovu navštívit na kartě **záložky** v podokně pro **lov** . Pomocí možností filtrování a hledání můžete rychle najít konkrétní data pro vaše aktuální šetření. Případně můžete data z vaší záložky zobrazit přímo v tabulce **HuntingBookmark** v pracovním prostoru Log Analytics. Příklad:
+Data v záložkách můžete kdykoli znovu navštívit na kartě **záložky** v podokně pro **lov** . Pomocí možností filtrování a hledání můžete rychle najít konkrétní data pro vaše aktuální šetření. Případně můžete data z vaší záložky zobrazit přímo v tabulce **HuntingBookmark** v pracovním prostoru Log Analytics. Například:
 
 > [!div class="mx-imgBorder"]
 > ![Zobrazit tabulku HuntingBookmark](./media/bookmarks/bookmark-table.png)
@@ -40,7 +40,7 @@ Také ve verzi Preview můžete vizualizovat data v záložkách kliknutím na t
 
 2. Vyberte jeden z loveckých dotazů a na pravé straně v části Podrobnosti o loveckém dotazu vyberte **Spustit dotaz**. 
 
-3. Vyberte **Zobrazit výsledky dotazu**. Příklad:
+3. Vyberte **Zobrazit výsledky dotazu**. Například:
     
     > [!div class="mx-imgBorder"]
     > ![zobrazení výsledků dotazu z hlediska pro lov Azure Sentinel](./media/bookmarks/new-processes-observed-example.png)
@@ -56,7 +56,7 @@ Také ve verzi Preview můžete vizualizovat data v záložkách kliknutím na t
 
 6. Napravo můžete v podokně **Přidat záložek** volitelně aktualizovat název záložky, přidat značky a poznámky, které vám pomůžou zjistit, co bylo pro danou položku zajímavé.
 
-7. V části **informace o dotazu** můžete pomocí rozevíracích seznamů extrahovat informace z výsledků dotazu pro typ entity **účet**, **hostitele**a **IP adresy** . Tato akce mapuje vybraný typ entity na konkrétní sloupec z výsledku dotazu. Příklad:
+7. V části **informace o dotazu** můžete pomocí rozevíracích seznamů extrahovat informace z výsledků dotazu pro typ entity **účet**, **hostitele**a **IP adresy** . Tato akce mapuje vybraný typ entity na konkrétní sloupec z výsledku dotazu. Například:
     
     > [!div class="mx-imgBorder"]
     > ![Mapování typů entit pro lovecké záložky](./media/bookmarks/map-entity-types-bookmark.png)
@@ -110,7 +110,7 @@ Pokyny k používání grafu šetření najdete v tématu [použití grafu šet�
     > [!div class="mx-imgBorder"]
     > ![Přidat záložky k incidentu](./media/bookmarks/incident-actions.png)
 
-3. V případě potřeby vyberte možnost **vytvořit nový incident** nebo **Přidat k existujícímu incidentu**. Potom:
+3. V případě potřeby vyberte možnost **vytvořit nový incident** nebo **Přidat k existujícímu incidentu**. Pak:
     
     - Pro nový incident: volitelně aktualizujte podrobnosti incidentu a potom vyberte **vytvořit**.
     - Přidání záložky do existujícího incidentu: vyberte jeden incident a pak vyberte **Přidat**. 

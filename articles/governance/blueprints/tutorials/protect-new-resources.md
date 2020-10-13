@@ -4,10 +4,10 @@ description: V tomto kurzu použijete možnosti zámků prostředků Azure modro
 ms.date: 08/27/2020
 ms.topic: tutorial
 ms.openlocfilehash: 3ed75a1dee925f2a55ac46705a171bec5fc1d30e
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89048566"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Kurz: ochrana nových prostředků pomocí zámků prostředků Azure modrotisky
@@ -31,7 +31,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Nejprve vytvořte definici podrobného plánu.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
 1. Na stránce **Začínáme** na levé straně vyberte **vytvořit** v části vytvořit podrobný **plán**.
 
@@ -109,11 +109,11 @@ Po úspěšném zobrazení oznámení na portálu pro **uložení definice** pod
 
 Ve vašem prostředí se teď vytvořila vaše definice podrobného plánu. Je vytvořená v režimu **konceptu** a musí být publikována před tím, než bude možné ji přiřadit a nasadit.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
-1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů vyhledejte definici **storageaccount podrobného** plánu a vyberte ji.
+1. Vyberte stránku **Definice podrobných plánů** vlevo. Pomocí filtrů vyhledejte definici **storageaccount podrobného** plánu a vyberte ji.
 
-1. V horní části stránky vyberte **publikovat podrobný plán** . V pravém podokně vpravo zadejte **1,0** jako **verzi**. Tato vlastnost je užitečná, pokud provedete změnu později. Zadejte **poznámky ke změnám**, jako je například **první verze publikovaná pro uzamykání prostředků nasazených v podrobném**plánu. Potom v dolní části stránky vyberte **publikovat** .
+1. Nahoře na stránce vyberte **Publikovat podrobný plán**. V pravém podokně vpravo zadejte **1,0** jako **verzi**. Tato vlastnost je užitečná, pokud provedete změnu později. Zadejte **poznámky ke změnám**, jako je například **první verze publikovaná pro uzamykání prostředků nasazených v podrobném**plánu. Na konci stránky pak vyberte **Publikovat**.
 
 Tento krok umožňuje přiřadit podrobný plán k předplatnému. Po publikování definice podrobného plánu můžete provádět změny. Pokud provedete změny, je nutné publikovat definici s novou hodnotou verze ke sledování rozdílů mezi verzemi stejné definice podrobného plánu.
 
@@ -123,11 +123,11 @@ Po **úspěšném** zobrazení oznámení na portálu pro definici podrobného p
 
 Po publikování definice podrobného plánu ji můžete přiřadit k předplatnému v rámci skupiny pro správu, do které jste ji uložili. V tomto kroku zadáte parametry, které zajistí, aby každé nasazení definice podrobného plánu bylo jedinečné.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
-1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů vyhledejte definici **storageaccount podrobného** plánu a vyberte ji.
+1. Vyberte stránku **Definice podrobných plánů** vlevo. Pomocí filtrů vyhledejte definici **storageaccount podrobného** plánu a vyberte ji.
 
-1. V horní části stránky definice podrobného plánu vyberte **přiřadit podrobný plán** .
+1. V horní části stránky definice podrobného plánu vyberte **Přiřadit podrobný plán**.
 
 1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
@@ -147,13 +147,13 @@ Po publikování definice podrobného plánu ji můžete přiřadit k předplatn
 
      Použijte výchozí možnost: **přiřazený systém**. Další informace najdete v tématu [spravované identity](../../../active-directory/managed-identities-azure-resources/overview.md).
 
-   - **Parametry artefaktu**
+   - **Parametry artefaktů**
 
      Parametry definované v této části se vztahují na artefakt, ve kterém jsou definovány. Tyto parametry jsou [dynamické parametry](../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Pro každý artefakt nastavte hodnotu parametru tak, aby se zobrazila ve sloupci **hodnota** .
 
      |Název artefaktu|Typ artefaktu|Název parametru|Hodnota|Popis|
      |-|-|-|-|-|
-     |Skupina prostředků RGtoLock|Skupina prostředků|Name|TestingBPLocks|Definuje název nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
+     |Skupina prostředků RGtoLock|Skupina prostředků|Název|TestingBPLocks|Definuje název nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
      |Skupina prostředků RGtoLock|Skupina prostředků|Umístění|Západní USA 2|Definuje umístění nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
      |StorageAccount|Šablona Resource Manageru|storageAccountType (StorageAccount)|Standard_GRS|SKU úložiště. Výchozí hodnota je _Standard_LRS_.|
 
@@ -167,7 +167,7 @@ Až se zobrazí oznámení na portálu **přiřazení definice** podrobného pl�
 
 Přiřazením se vytvoří skupina prostředků _TestingBPLocks_ a účet úložiště nasazený artefaktem šablony ARM. Nová skupina prostředků a vybraný stav uzamčení se zobrazí na stránce Podrobnosti přiřazení.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
 1. Na levé straně vyberte stránku **přiřazené plány** . Pomocí filtrů vyhledejte přiřazení **podrobného plánu přiřazení storageaccount-TestingBPLocks** a pak ho vyberte.
 
@@ -199,7 +199,7 @@ Tyto kroky ukazují, že naše nasazené prostředky jsou teď chráněné pomoc
 
 Posledním krokem je odebrání přiřazení definice podrobného plánu. Odebráním přiřazení nedojde k odebrání přidružených artefaktů.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
 1. Na levé straně vyberte stránku **přiřazené plány** . Pomocí filtrů vyhledejte přiřazení **podrobného plánu přiřazení storageaccount-TestingBPLocks** a pak ho vyberte.
 

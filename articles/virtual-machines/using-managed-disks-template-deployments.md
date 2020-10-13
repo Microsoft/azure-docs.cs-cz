@@ -10,12 +10,12 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 298c6e4f33fff99fff01b6b911ec77c78f1fbd26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c66a8b8483673a9d8fbdc9922b9cc377781bab3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666547"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976656"
 ---
 # <a name="using-disks-in-azure-resource-manager-templates"></a>Použití disků v šablonách Azure Resource Manager
 
@@ -266,5 +266,4 @@ Kompletní příklad vytvoření SSD úrovně Standard disku pomocí šablony na
 * Další informace o spravovaných discích najdete v dokumentu [Přehled služby Azure Managed disks](managed-disks-overview.md) .
 * Projděte si referenční dokumentaci k šabloně pro prostředky virtuálních počítačů, a to návštěvou [referenčního dokumentu šablony Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines) .
 * Projděte si referenční dokumentaci k šabloně pro diskové prostředky, která se nachází v [referenčním dokumentu šablony Microsoft. COMPUTE/disks](/azure/templates/microsoft.compute/disks) .
-* Informace o tom, jak používat spravované disky ve službě Azure Virtual Machine Scale Sets, najdete v dokumentu [použití datových disků se sadami škálování](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks) .
-
+* Informace o tom, jak používat spravované disky ve službě Azure Virtual Machine Scale Sets, najdete v dokumentu [použití datových disků se sadami škálování](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md) .

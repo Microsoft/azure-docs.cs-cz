@@ -8,10 +8,10 @@ ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
 ms.openlocfilehash: 7f00b57edb37cc5bb5c8340663d619e526c2eacb
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89075422"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Nasazení a konfigurace Azure Firewall pomocí rozhraní příkazového řádku Azure
@@ -105,7 +105,7 @@ az network vnet subnet create \
 Teď vytvoříte virtuální počítače pro jump server a server úloh a umístíte je do příslušných podsítí.
 Po zobrazení výzvy zadejte heslo pro virtuální počítač.
 
-Vytvořte virtuální počítač s odkazem na SRV.
+Vytvořte virtuální počítač s Srv-Jump.
 
 ```azurecli-interactive
 az vm create \
@@ -121,7 +121,7 @@ az vm open-port --port 3389 --resource-group Test-FW-RG --name Srv-Jump
 
 
 
-Vytvořte síťovou kartu pro službu SRV – Pracujte s konkrétními IP adresami serverů DNS a bez veřejné IP adresy k testování.
+Vytvořte síťovou kartu pro Srv-Work s konkrétními IP adresami serveru DNS a bez veřejné IP adresy pro testování.
 
 ```azurecli-interactive
 az network nic create \

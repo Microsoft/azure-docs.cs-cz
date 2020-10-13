@@ -17,13 +17,13 @@ ms.custom: it-pro
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89396756"
 ---
-# <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy pomocí Azure Proxy aplikací služby AD
+# <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování Vzdálené plochy pomocí Proxy aplikací služby Azure AD
 
 Služba Vzdálená plocha a Azure Proxy aplikací služby AD společně spolupracují na zlepšení produktivity zaměstnanců, kteří jsou mimo podnikovou síť. 
 

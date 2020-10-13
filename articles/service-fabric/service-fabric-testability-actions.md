@@ -7,10 +7,10 @@ ms.date: 06/07/2017
 ms.author: motanv
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8b1d4ae42fa033c03bd82ae5cee5794d98c23c65
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022169"
 ---
 # <a name="testability-actions"></a>Testovací akce
@@ -33,18 +33,18 @@ Pro lepší ověřování kvality spouštějte úlohy služby a podniku při vyp
 | --- | --- | --- | --- | --- |
 | CleanTestState |Odebere všechny stavy testu z clusteru v případě chybného vypnutí ovladače testu. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nelze použít |
 | InvokeDataLoss |Vydělí ztrátu dat na oddíl služby. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Snížen |
-| InvokeQuorumLoss |Vloží daný stavovou službu do ztráty kvora. |InvokeQuorumLossAsync |Invoke – ServiceFabricQuorumLoss |Snížen |
+| InvokeQuorumLoss |Vloží daný stavovou službu do ztráty kvora. |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |Snížen |
 | Operace moveprimary |Přesune zadanou primární repliku stavové služby do zadaného uzlu clusteru. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Snížen |
 | Movesecondary jde provést |Přesune aktuální sekundární repliku stavové služby na jiný uzel clusteru. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Snížen |
 | RemoveReplica |Simuluje selhání repliky odstraněním repliky z clusteru. Tím se replika ukončí a převede ji na role ' None '. tím se odebere celý stav z clusteru. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Snížen |
-| RestartDeployedCodePackage |Simuluje selhání procesu balíčku kódu restartováním balíčku kódu nasazeného na uzlu v clusteru. Tím dojde k přerušení procesu balíčku kódu, který restartuje všechny repliky služby uživatele hostované v tomto procesu. |RestartDeployedCodePackageAsync |Restart – ServiceFabricDeployedCodePackage |Nestandardním |
-| RestartNode |Simuluje selhání uzlu clusteru Service Fabric restartováním uzlu. |RestartNodeAsync |Restart – ServiceFabricNode |Nestandardním |
+| RestartDeployedCodePackage |Simuluje selhání procesu balíčku kódu restartováním balíčku kódu nasazeného na uzlu v clusteru. Tím dojde k přerušení procesu balíčku kódu, který restartuje všechny repliky služby uživatele hostované v tomto procesu. |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |Nestandardním |
+| RestartNode |Simuluje selhání uzlu clusteru Service Fabric restartováním uzlu. |RestartNodeAsync |Restart-ServiceFabricNode |Nestandardním |
 | RestartPartition |Simuluje scénář Datacenter nedostupnosti nebo cluster nedostupnosti restartováním některých nebo všech replik oddílu. |RestartPartitionAsync |Restart-ServiceFabricPartition |Snížen |
-| RestartReplica |Simuluje selhání repliky restartováním trvalé repliky v clusteru, zavřením repliky a jejím opětovným otevřením. |RestartReplicaAsync |Restart – ServiceFabricReplica |Snížen |
+| RestartReplica |Simuluje selhání repliky restartováním trvalé repliky v clusteru, zavřením repliky a jejím opětovným otevřením. |RestartReplicaAsync |Restart-ServiceFabricReplica |Snížen |
 | StartNode |Spustí uzel v clusteru, který je již zastaven. |StartNodeAsync |Start-ServiceFabricNode |Nelze použít |
 | Příkaz stopnode |Simuluje selhání uzlu zastavením uzlu v clusteru. Uzel zůstane v nefunkčním případě volání StartNode. |StopNodeAsync |Stop-ServiceFabricNode |Nestandardním |
-| ValidateApplication |Ověří dostupnost a stav všech služeb Service Fabric v rámci aplikace, obvykle po vystavení nějaké chyby do systému. |ValidateApplicationAsync |Test – ServiceFabricApplication |Nelze použít |
-| ValidateService |Ověří dostupnost a stav služby Service Fabric, obvykle po vystavení nějaké chybě systému. |ValidateServiceAsync |Test – ServiceFabricService |Nelze použít |
+| ValidateApplication |Ověří dostupnost a stav všech služeb Service Fabric v rámci aplikace, obvykle po vystavení nějaké chyby do systému. |ValidateApplicationAsync |Test-ServiceFabricApplication |Nelze použít |
+| ValidateService |Ověří dostupnost a stav služby Service Fabric, obvykle po vystavení nějaké chybě systému. |ValidateServiceAsync |Test-ServiceFabricService |Nelze použít |
 
 ## <a name="running-a-testability-action-using-powershell"></a>Spuštění akce testování pomocí prostředí PowerShell
 V tomto kurzu se dozvíte, jak spustit akci testování pomocí prostředí PowerShell. Naučíte se, jak spustit akci testování v místním clusteru (s jedním box) nebo v clusteru Azure. Microsoft.Fabric.Powershell.dll – modul Service Fabric PowerShellu – se nainstaluje automaticky při instalaci Microsoft Service Fabric MSI. Modul se načte automaticky, když otevřete příkazový řádek PowerShellu.
@@ -80,7 +80,7 @@ Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 
 Na následujícím snímku obrazovky vidíte v akci příkaz k **restartování-ServiceFabricNode** testování.
 
-![Snímek obrazovky s spuštěním příkazu restart-ServiceFabricNode v prostředí PowerShell](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
+![Snímek obrazovky s spuštěním příkazu Restart-ServiceFabricNode v prostředí PowerShell](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
 Výstup první rutiny **Get-ServiceFabricNode** (rutina z modulu Service Fabric PowerShellu) ukazuje, že místní cluster má pět uzlů: Node. 1 do Node. 5. Po provedení akce testování (rutina) **restart-ServiceFabricNode** na uzlu s názvem Node. 4 se zobrazí informace o tom, že doba provozu uzlu byla resetována.
 

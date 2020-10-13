@@ -9,13 +9,13 @@ ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 0d697f2100360732666c9f5ea8050800dad154b4
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653813"
 ---
-# <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Příprava Azure na místní zotavení po havárii do Azure
+# <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Příprava Azure na zotavení po havárii místního prostředí do Azure
 
 Tento článek popisuje, jak připravit prostředky a součásti Azure tak, aby bylo možné nastavit zotavení po havárii místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V nebo fyzických serverů s Windows/Linux do Azure pomocí služby [Azure Site Recovery](site-recovery-overview.md) .
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 - Projděte si architekturu pro zotavení po havárii [VMware](vmware-azure-architecture.md), [Hyper-V](hyper-v-azure-architecture.md)a [fyzického serveru](physical-azure-architecture.md) .
 - Čtení běžných otázek pro [VMware](vmware-azure-common-questions.md) a [Hyper-V](hyper-v-azure-common-questions.md)
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
 
 
 ## <a name="verify-account-permissions"></a>Ověření oprávnění k účtu

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: d67b0c89fbec8da9a3057164aa59d458a85c41d7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0e80f866aa7affb07b13847b44658e33c7044da6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91280585"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976891"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Rychlý Start: sestavování a nasazování aplikací do jarního cloudu Azure
 
@@ -162,7 +162,7 @@ K otestování aplikace odešlete požadavek HTTP GET do `solar-system-weather` 
 
 ## <a name="test-the-application"></a>Testování aplikace
 
-Odeslat požadavek GET do `solar-system-weather` aplikace V prohlížeči přejděte na veřejnou adresu URL, která se `/weatherforecast` připojí ke konci. Příklad:
+Odeslat požadavek GET do `solar-system-weather` aplikace V prohlížeči přejděte na veřejnou adresu URL, která se `/weatherforecast` připojí ke konci. Například:
 
 ```
 https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
@@ -276,7 +276,7 @@ Potřebujeme způsob, jak získat přístup k aplikaci přes webový prohlíže�
 1. Generujte konfigurace spuštěním následujícího příkazu v kořenové složce PiggyMetrics obsahujícího nadřazený POM. Pokud jste se už přihlásili pomocí Azure CLI, příkaz automaticky vybere přihlašovací údaje. V opačném případě vás bude přihlašovat pomocí pokynů pro příkazový řádek. Další informace najdete na naší [stránce wikiwebu](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
 
     ```
-    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.1.0:config
+    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.3.0:config
     ```
     
     Zobrazí se výzva k výběru:

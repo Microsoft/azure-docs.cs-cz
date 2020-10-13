@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: b1a23c01fdf8a0145c26b709f36709a7b710103f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374299"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>Konfigurace samostatného agenta JVM args Java pro Azure Monitor Application Insights
@@ -43,7 +43,7 @@ ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -
 
 ## <a name="tomcat-8-linux"></a>Tomcat 8 (Linux)
 
-### <a name="tomcat-installed-via-apt-get-or-yum"></a>Tomcat nainstalované prostřednictvím `apt-get` nebo`yum`
+### <a name="tomcat-installed-via-apt-get-or-yum"></a>Tomcat nainstalované prostřednictvím `apt-get` nebo `yum`
 
 Pokud jste nainstalovali Tomcat přes `apt-get` nebo `yum` , měli byste mít soubor `/etc/tomcat8/tomcat8.conf` .  Přidejte tento řádek na konec tohoto souboru:
 
@@ -139,12 +139,12 @@ Pokud na jednom hostiteli spouštíte víc spravovaných serverů, budete muset 
 ...
 ```
 
-Zadaná `applicationinsights.agent.id` hodnota musí být jedinečná. Slouží k vytvoření podadresáře v adresáři ApplicationInsights, protože každý proces JVM potřebuje svůj vlastní místní soubor ApplicationInsights config a místní soubor protokolu ApplicationInsights. Také při vytváření sestav do centrálního sběrače `applicationinsights.properties` soubor sdílí více spravovaných serverů, a proto `applicationinsights.agent.id` je potřeba k přepsání `agent.id` nastavení v tomto sdíleném souboru. `applicationinsights.agent.rollup.id`v `system-properties` případě, že je potřeba přepsat `agent.rollup.id` nastavení na spravovaný server, je možné ho podobně zadat na serveru.
+Zadaná `applicationinsights.agent.id` hodnota musí být jedinečná. Slouží k vytvoření podadresáře v adresáři ApplicationInsights, protože každý proces JVM potřebuje svůj vlastní místní soubor ApplicationInsights config a místní soubor protokolu ApplicationInsights. Také při vytváření sestav do centrálního sběrače `applicationinsights.properties` soubor sdílí více spravovaných serverů, a proto `applicationinsights.agent.id` je potřeba k přepsání `agent.id` nastavení v tomto sdíleném souboru. `applicationinsights.agent.rollup.id` v `system-properties` případě, že je potřeba přepsat `agent.rollup.id` nastavení na spravovaný server, je možné ho podobně zadat na serveru.
 
 
 ## <a name="jetty-9"></a>Jetty 9
 
-Přidat tyto řádky do`start.ini`
+Přidat tyto řádky do `start.ini`
 
 ```
 --exec
