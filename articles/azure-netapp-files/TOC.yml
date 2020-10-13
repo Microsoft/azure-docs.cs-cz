@@ -37,6 +37,8 @@
       href: azure-netapp-files-cost-model.md
     - name: Pokyny pro plánování sítě Azure NetApp Files
       href: azure-netapp-files-network-topologies.md
+    - name: Fond ručně zřizované kapacity QoS
+      href: manual-qos-capacity-pool-introduction.md
     - name: Replikace mezi oblastmi
       items:
         - name: Principy replikace mezi oblastmi
@@ -126,7 +128,7 @@
 - name: Referenční informace
   items:
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/netapp/'
+      href: /rest/api/netapp/
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.netapp/allversions
 - name: Zdroje a prostředky

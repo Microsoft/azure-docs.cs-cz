@@ -36,6 +36,8 @@
           href: connect-ios.md
         - name: Připojení s klientem Microsoft Storu
           href: connect-microsoft-store.md
+    - name: Konfigurace přesměrování zařízení
+      href: configure-device-redirections.md
     - name: Instalace modulu PowerShellu
       href: powershell-module.md
     - name: Vytvoření fondu hostitelů a hostitelů relací
@@ -102,6 +104,8 @@
       href: azure-advisor.md
     - name: Řešení doporučení
       href: azure-advisor-recommendations.md
+    - name: Nastavení plánu zotavení po havárii
+      href: disaster-recovery.md
 - name: Koncepty
   items:
     - name: Ověřování

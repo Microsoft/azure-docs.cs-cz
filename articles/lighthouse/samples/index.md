@@ -2,13 +2,13 @@
 title: Šablony a ukázky pro Azure Lighthouse
 description: Tyto ukázky a šablony Azure Resource Manageru ukazují, jak nasadit zákazníky pro správu delegovaných prostředků Azure a podporovat scénářů služby Azure Lighthouse.
 ms.topic: sample
-ms.date: 09/24/2020
-ms.openlocfilehash: 2ed6445d34bffc10e1a4ebe3bfe1d3158feacd63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: decb0d48f8fd5c52d6bf4301baff0bdfffb32d71
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336563"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974276"
 ---
 # <a name="azure-lighthouse-samples"></a>Ukázky služby Azure Lighthouse
 

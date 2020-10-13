@@ -35,7 +35,11 @@
         - name: 0. Nasazení aplikace pro detekci objektů a pohybu
           href: tutorial-video-analytics-deploy.md
         - name: 1. Vytvoření aplikace pro analýzu videa
-          href: tutorial-video-analytics-create-app.md
+          items:
+            - name: Detekce objektů a pohybu (YOLO v3)
+              href: tutorial-video-analytics-create-app-yolo-v3.md
+            - name: Detekce objektů a pohybu (OpenVINO)
+              href: tutorial-video-analytics-create-app-openvino.md
         - name: 2. Konfigurace zařízení IoT Edge
           items:
             - name: Vytvoření hraničního zařízení pro analýzu videa (virtuální počítač s Linuxem)

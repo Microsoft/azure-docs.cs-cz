@@ -162,6 +162,8 @@
       href: client-libraries.md
     - name: Kódy chyb rozhraní REST API –⁠ Azure Key Vault
       href: rest-error-codes.md
+    - name: Běžné kódy chyb – Azure Key Vault
+      href: common-error-codes.md
     - name: Běžné parametry a záhlaví
       href: common-parameters-and-headers.md
     - name: Verze Key Vaultu

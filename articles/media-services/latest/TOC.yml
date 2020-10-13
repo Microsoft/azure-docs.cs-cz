@@ -61,6 +61,8 @@
           href: protect-with-aes128.md
         - name: Dynamické šifrování s využitím DRM
           href: protect-with-drm.md
+        - name: Ochrana obsahu s využitím Azure AD
+          href: azure-ad-content-protection.md
     - name: REST
       items:
         - name: Kódování a streamování vzdáleného souboru – REST
@@ -188,8 +190,6 @@
           href: streaming-policy-concept.md
         - name: Zásady symetrických klíčů
           href: content-key-policy-concept.md
-        - name: Ochrana obsahu s využitím Azure AD
-          href: azure-ad-content-protection.md
     - name: Monitorování
       items:
         - name: Události s využitím Event Gridu

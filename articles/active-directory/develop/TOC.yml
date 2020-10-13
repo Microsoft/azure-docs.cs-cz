@@ -4,6 +4,8 @@
   items:
     - name: Co je Microsoft Identity Platform?
       href: v2-overview.md
+    - name: Novinky v dokumentaci
+      href: whats-new-docs.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -472,7 +474,7 @@
       items:
         - name: Přehled
           href: authentication-national-cloud.md
-        - name: Authentication
+        - name: Ověřování
           href: msal-national-cloud.md
     - name: Automatické zřizování uživatelů (SCIM)
       items:

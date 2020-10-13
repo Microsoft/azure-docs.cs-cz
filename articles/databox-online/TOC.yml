@@ -165,6 +165,8 @@
               href: azure-stack-edge-gpu-troubleshoot.md
             - name: Potíže s objednáním
               href: azure-stack-edge-troubleshoot-ordering.md
+            - name: Potíže s aktivací
+              href: azure-stack-edge-gpu-troubleshoot-activation.md
             - name: Kontaktovat podporu Microsoftu
               href: azure-stack-edge-contact-microsoft-support.md
     - name: "Poznámky k\_verzi"
