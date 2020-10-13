@@ -3,12 +3,12 @@ title: Postup vytváření zásad konfigurace hosta pro Windows
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Windows.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 3c8ab71b4ffc87209d190bc7ede0257f1377ff2b
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: ef571857664739c055912cb6460c4638d4cad32b
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728926"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893114"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Postup vytváření zásad konfigurace hosta pro Windows
 
@@ -88,7 +88,7 @@ Když Audituje konfigurace hosta počítač, sekvence událostí se liší od ro
 
 Parametry v Azure Policy, které předávají hodnoty přiřazení konfigurace hosta musí být typu _řetězec_ . Není možné předat pole pomocí parametrů, i když prostředek DSC podporuje pole.
 
-### <a name="get-targetresource-requirements"></a>Požadavky GET-TargetResource
+### <a name="get-targetresource-requirements"></a>Get-TargetResource požadavky
 
 Funkce `Get-TargetResource` má zvláštní požadavky na konfiguraci hosta, která není potřebná pro konfiguraci požadovaného stavu Windows.
 
@@ -210,7 +210,7 @@ New-GuestConfigurationPackage `
   -Configuration './Config/AuditBitlocker.mof'
 ```
 
-Po vytvoření konfiguračního balíčku, ale před jeho publikováním do Azure, můžete balíček otestovat z prostředí pracovní stanice nebo CI/CD. Rutina GuestConfiguration `Test-GuestConfigurationPackage` zahrnuje stejného agenta ve vývojovém prostředí, které se používá v počítačích Azure. Pomocí tohoto řešení můžete provádět testování integrací místně před vydáním do fakturovaných cloudových prostředí.
+Po vytvoření konfiguračního balíčku, ale před jeho publikováním do Azure, můžete balíček otestovat z prostředí pracovní stanice nebo průběžné integrace a prostředí průběžného nasazování (CI/CD). Rutina GuestConfiguration `Test-GuestConfigurationPackage` zahrnuje stejného agenta ve vývojovém prostředí, které se používá v počítačích Azure. Pomocí tohoto řešení můžete provádět testování integrací místně před vydáním do fakturovaných cloudových prostředí.
 
 Vzhledem k tomu, že agent ve skutečnosti vyhodnocuje místní prostředí, ve většině případů je třeba spustit rutinu test-rutiny na stejné platformě operačního systému, jakou máte v plánu auditovat. Test používá pouze moduly, které jsou součástí balíčku obsahu.
 
@@ -233,7 +233,7 @@ Rutina podporuje také vstup z kanálu PowerShellu. Přesměrování výstupu `N
 New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-Dalším krokem je publikování souboru do úložiště objektů BLOB. Následující skript obsahuje funkci, kterou můžete použít k automatizaci této úlohy. Příkazy používané ve `publish` funkci vyžadují `Az.Storage` modul.
+Dalším krokem je publikování souboru do Azure Blob Storage. Následující skript obsahuje funkci, kterou můžete použít k automatizaci této úlohy. Příkazy používané ve `publish` funkci vyžadují `Az.Storage` modul.
 
 ```azurepowershell-interactive
 function publish {

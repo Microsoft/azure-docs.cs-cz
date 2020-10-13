@@ -11,10 +11,10 @@ ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
 ms.openlocfilehash: 3be0695c20eafb71564211d1168bc59813f8800a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617753"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Uživatelsky iniciované ruční převzetí služeb při selhání na spravované instanci SQL
@@ -125,7 +125,7 @@ Stav operace se dá sledovat prostřednictvím revizí odpovědí rozhraní API 
 
 ## <a name="monitor-the-failover"></a>Monitorování převzetí služeb při selhání
 
-Chcete-li monitorovat průběh uživatelem iniciované ruční převzetí služeb při selhání, spusťte následující dotaz T-SQL ve vašem oblíbeném klientovi (například SSMS) na spravované instanci SQL. Přečte zobrazení System View sys. dm_hadr_fabric_replica_states a vygeneruje repliky sestav, které jsou k dispozici v instanci. Po zahájení ručního převzetí služeb při selhání aktualizujte stejný dotaz.
+Chcete-li monitorovat průběh uživatelem iniciované ruční převzetí služeb při selhání, spusťte následující dotaz T-SQL ve vašem oblíbeném klientovi (například SSMS) na spravované instanci SQL. Přečte zobrazení systému sys.dm_hadr_fabric_replica_states a repliky sestav, které jsou k dispozici na instanci. Po zahájení ručního převzetí služeb při selhání aktualizujte stejný dotaz.
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states

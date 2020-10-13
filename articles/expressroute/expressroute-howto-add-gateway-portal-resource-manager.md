@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761776"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Kurz: Konfigurace brány virtuální sítě pro ExpressRoute pomocí Azure Portal
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > - Vytvořte podsíť brány.
 > - Vytvořte bránu Virtual Network.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup pro tuto úlohu používá virtuální síť na základě hodnot v následujícím seznamu odkazů konfigurace. Tento seznam používáme v našem ukázkovém postupu. Seznam můžete zkopírovat pro použití jako odkaz a nahradit hodnoty vlastními.
 
@@ -70,11 +70,11 @@ Před zahájením konfigurace si můžete zobrazit [video](https://azure.microso
     | Nastavení | Hodnota |
     | --------| ----- |
     | Předplatné | Ověřte, zda je vybráno správné předplatné. |
-    | Skupina prostředků | Skupina prostředků se automaticky vybere po výběru virtuální sítě. | 
+    | Resource Group | Skupina prostředků se automaticky vybere po výběru virtuální sítě. | 
     | Název | Pojmenujte bránu. To není totéž jako pojmenování podsítě brány. Jedná se o název objektu brány, který vytváříte.|
     | Oblast | Změňte pole **region** tak, aby odkazovalo na umístění, kde se nachází vaše virtuální síť. Pokud umístění neukazuje na oblast, ve které je vaše virtuální síť, tato virtuální síť se nezobrazí v rozevírací nabídce zvolit virtuální síť. |
     | Typ brány | Vybrat **ExpressRoute**|
-    | Skladová jednotka (SKU) | Z rozevíracího seznamu vyberte SKU brány. |
+    | SKU | Z rozevíracího seznamu vyberte SKU brány. |
     | Virtuální síť | Vyberte *TestVNet*. |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu.|
     | Název veřejné IP adresy | Zadejte název veřejné IP adresy. |

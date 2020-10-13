@@ -8,10 +8,10 @@ ms.date: 02/17/2020
 author: shganesh-dev
 ms.author: shganesh
 ms.openlocfilehash: aff26d3b491896aa9a1b1fee93d39a5ec93d730c
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665137"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Terminologie a běžné otázky ke komerčním analýzám na webu Marketplace

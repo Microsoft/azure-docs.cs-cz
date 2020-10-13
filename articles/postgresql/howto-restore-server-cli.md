@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 10/25/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: c7e8f0fc3a90a0811d38840004f7ae12a9a225ce
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708505"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Postup zálohování a obnovení serveru na serveru Azure Database for PostgreSQL pomocí Azure CLI
 
 Azure Database for PostgreSQL servery se pravidelně zálohují, aby se povolily funkce obnovení. Pomocí této funkce můžete obnovit server a všechny jeho databáze k dřívějšímu bodu v čase na novém serveru.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 K dokončení tohoto průvodce budete potřebovat:
 - [Server a databáze Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md)
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 02490839a9e35695ae2e8b3f750e139ad7413aa4
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89280209"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect synchronizace: principy deklarativních zřizovacích výrazů
@@ -41,7 +41,7 @@ Atributy jsou silného typu. Funkce přijímá pouze atributy správného typu. 
 * Logické hodnoty jsou vyjádřeny konstantami: true, false.
 * Předdefinované konstanty a literály jsou vyjádřeny pouze pomocí jejich názvu: NULL, CRLF, IgnoreThisFlow
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkce
 Deklarativní zřizování používá mnoho funkcí k umožnění možnosti transformace hodnot atributů. Tyto funkce mohou být vnořené, takže výsledek z jedné funkce je předán do jiné funkce.
 
 `Function1(Function2(Function3()))`

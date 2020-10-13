@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 2128559d8074281c1019d99e1316da34c7ec6797
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed3d5de27a2d9ce5060ff4bfe71c595512658e58
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554596"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940612"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mondaycom"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s monday.com
 
@@ -88,14 +88,14 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     c. Po úspěšném nahrání souboru metadat se hodnoty **adresy URL** pro **identifikátor** a odpověď získají automaticky v základní části Konfigurace SAML.
 
-    ![image](common/idp-intiated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
 
     > [!Note]
     > Pokud se hodnoty **adresy URL** **identifikátoru** a odpovědi nevrátí automaticky, zadejte hodnoty ručně. **Identifikátor** a **Adresa URL odpovědi** jsou stejné a hodnota je v následujícím vzoru:`https://<your-domain>.monday.com/saml/saml_callback`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<YOUR_DOMAIN>.monday.com`
 
@@ -104,7 +104,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. monday.com aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
-    ![image](common/default-attributes.png)
+    ![Snímek obrazovky ukazuje atributy uživatele & deklarací s výchozími hodnotami, jako je například daný uživatel. jméno a EmailAddress User. mail.](common/default-attributes.png)
 
 1. Kromě toho očekává aplikace monday.com několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
@@ -166,15 +166,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Přejděte do **profilu** v pravém horním rohu stránky a klikněte na **správce**.
 
-    ![Konfigurace monday.com](./media/mondaycom-tutorial/configuration01.png)
+    ![Snímek obrazovky se zobrazí vybraný profil pro správu.](./media/mondaycom-tutorial/configuration01.png)
 
 1. Vyberte **zabezpečení** a ujistěte se, že kliknete na **otevřít** vedle SAML.
 
-    ![Konfigurace monday.com](./media/mondaycom-tutorial/configuration02.png)
+    ![Snímek obrazovky se zobrazí karta zabezpečení s možností otevření vedle SAML.](./media/mondaycom-tutorial/configuration02.png)
 
 1. Vyplňte následující podrobnosti z IDP.
 
-    ![Konfigurace monday.com](./media/mondaycom-tutorial/configuration03.png)
+    ![Snímek obrazovky se zobrazuje jako poskytovatel SAML, kde můžete zadat informace od I D P.](./media/mondaycom-tutorial/configuration03.png)
 
     > [!NOTE]
     > Další podrobnosti najdete v [tomto](https://support.monday.com/hc/articles/360000460605-SAML-Single-Sign-on?abcb=34642) článku.

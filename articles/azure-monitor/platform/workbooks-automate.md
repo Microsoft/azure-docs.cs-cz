@@ -2,19 +2,16 @@
 title: Azure Monitor sešitů a šablon Azure Resource Manager
 description: Zjednodušení složitých sestav s předem sestavenými a vlastními parametrizovanými Azure Monitor sešity nasazených prostřednictvím šablon Azure Resource Manager
 services: azure-monitor
-author: mrbullwinkle
-manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.author: mbullwin
-ms.openlocfilehash: e2463c2ea4044af0b20a1dee91b30870639dc7ce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 77190b85da08d09cf05a02dcc5787f0c24229948
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504916"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929723"
 ---
 # <a name="programmatically-manage-workbooks"></a>Správa sešitů prostřednictvím kódu programu
 
@@ -201,7 +198,7 @@ V této šabloně se dozvíte, jak nasadit jednoduchý sešit, který zobrazuje 
 | `serializedData` | Obsahuje obsah nebo datovou část, která se má použít v sešitu. K získání hodnoty použijte šablonu Správce prostředků z uživatelského rozhraní sešity. |
 
 ### <a name="workbook-types"></a>Typy sešitů
-Typy sešitu: Určete, v jakém typu Galerie sešitů se bude nová instance sešitu zobrazovat. Vaše možnosti jsou:
+Typy sešitu: Určete, v jakém typu Galerie sešitů se bude nová instance sešitu zobrazovat. Mezi možnosti patří:
 
 | Typ | Umístění galerie |
 | :------------- |:-------------|

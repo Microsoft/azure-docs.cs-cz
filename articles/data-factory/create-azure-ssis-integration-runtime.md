@@ -12,10 +12,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: d193438a232cc6bc113efb31ce4276117a366add
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91276845"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory
@@ -230,7 +230,7 @@ Vyberte možnost **Testovat připojení** , pokud je to možné, a pokud je to �
 
 Na stránce **Upřesnit nastavení** v podokně **instalace prostředí Integration runtime** proveďte následující kroky.
 
-   ![Pokročilá nastavení](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
+   ![Rozšířená nastavení](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
    1. Pro **maximální paralelní spouštění na uzel**vyberte maximální počet balíčků, které mají být spuštěny souběžně na jeden uzel v clusteru Integration runtime. Zobrazí se pouze podporované počty balíčků. Vyberte nízké číslo, pokud chcete použít více než jedno jádro pro spuštění jednoho velkého balíčku, který je náročné na výpočetní výkon nebo paměť. Vyberte vysoké číslo, pokud chcete spustit jeden nebo více malých balíčků v jednom jádru.
 
@@ -274,7 +274,7 @@ Na stránce **Upřesnit nastavení** v podokně **instalace prostředí Integrat
       
          1. U **druhé statické veřejné IP adresy**vyberte druhou STATICKOU veřejnou IP adresu, která splňuje požadavky pro váš Azure-SSIS IR. Pokud žádné nemáte, klikněte na **vytvořit nový** odkaz pro vytvoření statických veřejných IP adres na Azure Portal a pak klikněte na tlačítko Aktualizovat, abyste je mohli vybrat.
 
-   1. Zaškrtněte políčko **nastavit Integration runtime pro místní hostování jako proxy pro Azure-SSIS Integration runtime** zaškrtávací políčko pro výběr, zda chcete pro své Azure-SSIS IR nakonfigurovat prostředí IR v místním prostředí jako proxy. Další informace najdete v tématu [nastavení místního hostitele IR jako proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis). 
+   1. Zaškrtněte políčko **nastavit Self-Hosted Integration runtime jako proxy pro Azure-SSIS Integration runtime** zaškrtávací políčko pro výběr, zda chcete pro Azure-SSIS IR nakonfigurovat jako proxy místní prostředí IR jako proxy. Další informace najdete v tématu [nastavení místního hostitele IR jako proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis). 
 
       Pokud zaškrtnete políčko, proveďte následující kroky.
 

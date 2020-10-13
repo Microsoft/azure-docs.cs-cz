@@ -12,10 +12,10 @@ author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
 ms.openlocfilehash: d33af7a9c2d48ded84bd675364469dab09a79d3a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91711296"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Vytvoření clusteru Azure Machine Learning COMPUTE
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak:
 * Snižte náklady na výpočetní cluster.
 * Nastavení [spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pro cluster
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 

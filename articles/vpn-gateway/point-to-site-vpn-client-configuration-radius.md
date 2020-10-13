@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: e6d811e19bb19c8c8bf96764cfcca2b1294f4a85
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91440065"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro ověřování RADIUS P2S
@@ -43,7 +43,7 @@ Chcete-li použít části v tomto článku, nejprve se rozhodněte, jaký typ o
 
 Ověřování uživatelského jména a hesla můžete nakonfigurovat buď tak, že použijete službu Active Directory, nebo nechcete používat službu Active Directory. V obou případech se ujistěte, že všichni připojující uživatelé mají přihlašovací údaje k uživatelskému jménu nebo heslu, které se dají ověřit prostřednictvím protokolu RADIUS.
 
-Při konfiguraci ověřování uživatelského jména a hesla můžete vytvořit pouze konfiguraci pro protokol EAP-MSCHAPv2 uživatelského jména/hesla ověřování. V příkazech `-AuthenticationMethod` je `EapMSChapv2` .
+Když konfigurujete ověřování uživatelského jména a hesla, můžete vytvořit pouze konfiguraci pro EAP-MSCHAPv2 protokol pro ověřování uživatelského jména a hesla. V příkazech `-AuthenticationMethod` je `EapMSChapv2` .
 
 ### <a name="1-generate-vpn-client-configuration-files"></a><a name="usernamefiles"></a> 1. generování konfiguračních souborů klienta VPN
 
@@ -265,7 +265,7 @@ Pomocí následujících kroků nakonfigurujete nativního klienta VPN na Macu p
 
 ## <a name="working-with-other-authentication-types-or-protocols"></a><a name="otherauth"></a>Práce s jinými typy ověřování nebo protokoly
 
-Chcete-li použít jiný typ ověřování (například jednorázové heslo) nebo použít jiný ověřovací protokol (například protokol PEAP-MSCHAPv2 namísto protokolu EAP-MSCHAPv2), je nutné vytvořit vlastní konfigurační profil klienta VPN. Chcete-li vytvořit profil, potřebujete informace, jako je například IP adresa brány virtuální sítě, typ tunelu a trasy děleného tunelového propojení. Tyto informace můžete získat pomocí následujících kroků:
+Chcete-li použít jiný typ ověřování (například jednorázové heslo) nebo použít jiný ověřovací protokol (například PEAP-MSCHAPv2 namísto protokolu EAP-MSCHAPv2), je nutné vytvořit vlastní konfigurační profil klienta VPN. Chcete-li vytvořit profil, potřebujete informace, jako je například IP adresa brány virtuální sítě, typ tunelu a trasy děleného tunelového propojení. Tyto informace můžete získat pomocí následujících kroků:
 
 1. Pomocí `Get-AzVpnClientConfiguration` rutiny vygenerujte konfiguraci klienta VPN pro EapMSChapv2.
 

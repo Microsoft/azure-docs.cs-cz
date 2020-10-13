@@ -10,10 +10,10 @@ ms.date: 02/20/2019
 ms.author: kgremban
 ms.custom: fasttrack-edit
 ms.openlocfilehash: fa5c4bc1aae91e9e40b6d14ad5c12b8d1aee68f6
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91767602"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Porovnat směrování zpráv a Event Grid IoT Hub
@@ -30,7 +30,7 @@ Azure IoT Hub poskytuje možnost streamovat data z připojených zařízení a i
 
 Jak směrování zpráv, tak Event Grid povolit konfiguraci výstrah, existují některé klíčové rozdíly mezi těmito dvěma typy. Podrobnosti najdete v následující tabulce:
 
-| Funkce | Směrování zpráv IoT Hub | IoT Hub integrace s Event Grid |
+| Příznak | Směrování zpráv IoT Hub | IoT Hub integrace s Event Grid |
 | ------- | --------------- | ---------- |
 | **Zprávy a události zařízení** | Ano, směrování zpráv lze použít pro data telemetrie, sestavu nedokončených změn zařízení a události životního cyklu zařízení (např. Když jsou zařízení vytvořená, Odstraněná, připojená a odpojená od IoT Hub), a události změny digitálního vlákna. | Ano, Event Grid lze použít pro události dat telemetrie a životního cyklu zařízení. Ale Event Grid se nedá použít pro události změny zařízení, které jsou v něm události, a události změny digitálního vlákna. |
 | **Řazení** | Ano, řazení událostí je zachováno.  | Ne, pořadí událostí není zaručeno. | 
@@ -42,7 +42,7 @@ Jak směrování zpráv, tak Event Grid povolit konfiguraci výstrah, existují 
 
 IoT Hub směrování zpráv a Event Grid mají podobné podobnosti, některé z nich jsou podrobně popsané v následující tabulce:
 
-| Funkce | Směrování zpráv IoT Hub | IoT Hub integrace s Event Grid |
+| Příznak | Směrování zpráv IoT Hub | IoT Hub integrace s Event Grid |
 | ------- | --------------- | ---------- |
 | **Maximální velikost zprávy** | 256 KB, ze zařízení do cloudu | 256 KB, ze zařízení do cloudu |
 | **Spolehlivost** | Vysoká: každý pro každou trasu dodá každé zprávě na koncový bod aspoň jednou. Vyprší platnost všech zpráv, které nejsou doručeny do jedné hodiny. | Vysoká: každý odběr zajišťuje každou zprávu pro Webhook alespoň jednou. Vyprší platnost všech událostí, které nejsou dodány do 24 hodin. | 

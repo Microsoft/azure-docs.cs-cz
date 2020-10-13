@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 00d9de422e40ce5ccad3790a46463d2916069315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08f8c1b4a127c7ed5128bbbd119bc49869984649
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554698"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940633"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobi"></a>Kurz: Azure Active Directory integrace s MOBI
 
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí MOBI, pr
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně MOBI a adresách URL](common/idp-intiated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.thefutureis.mobi`
 
@@ -107,7 +107,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí MOBI, pr
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Informace o jednotném přihlašování v doméně MOBI a adresách URL](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<subdomain>.thefutureis.mobi/login`
 

@@ -12,10 +12,10 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 ms.openlocfilehash: 0d3afc8d24b95f170bd22b3dc2cf29e7f97e77c3
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91839550"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Připojení IoT DevKit AZ3166 k Azure IoT Hub

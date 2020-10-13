@@ -4,10 +4,10 @@ description: Přečtěte si o odebrání a nasazení aplikací v Azure Service F
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: 8bc4557c5d0d59330c7e91a4b3fdce83cfbf334c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827433"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Nasazení a odebrání aplikací pomocí PowerShellu
@@ -314,7 +314,7 @@ Unregister-ServiceFabricApplicationType MyApplicationType 1.0.0
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage žádá o ImageStoreConnectionString
+### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage požádá o ImageStoreConnectionString
 
 Prostředí Service Fabric SDK by již mělo mít nastavené správné výchozí hodnoty. V případě potřeby by ale ImageStoreConnectionString pro všechny příkazy měly odpovídat hodnotě, kterou používá Cluster Service Fabric. ImageStoreConnectionString můžete najít v manifestu clusteru, který jste získali pomocí příkazů [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) a Get-ImageStoreConnectionStringFromClusterManifest:
 

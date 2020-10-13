@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 5748ff87e94daef80b140e015371eb7a334fffac
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361479"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzických serverů nebo virtuálních počítačů VMware
@@ -164,7 +164,7 @@ V případě potřeby můžete konfigurační server ve stejném trezoru znovu z
 
 ## <a name="upgrade-the-configuration-server"></a>Upgrade konfiguračního serveru
 
-Aktualizace konfiguračního serveru spustíte spuštěním kumulativních aktualizací. Aktualizace je možné použít až pro N-4 verze. Příklad:
+Aktualizace konfiguračního serveru spustíte spuštěním kumulativních aktualizací. Aktualizace je možné použít až pro N-4 verze. Například:
 
 - Pokud spouštíte 9,7, 9,8, 9,9 nebo 9,10, můžete upgradovat přímo na 9,11.
 - Pokud spustíte 9,6 nebo starší a chcete upgradovat na 9,11, musíte nejdřív upgradovat na verzi 9,7. před 9,11.
@@ -212,7 +212,7 @@ Spusťte instalační soubor následujícím způsobem:
 
 ### <a name="parameters"></a>Parametry
 
-|Název parametru| Typ | Popis| Hodnoty|
+|Název parametru| Typ | Description| Hodnoty|
 |-|-|-|-|
 | /ServerMode|Vyžadováno|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
 |/InstallLocation|Vyžadováno|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
@@ -287,7 +287,7 @@ Volitelně můžete konfigurační server odstranit pomocí prostředí PowerShe
     `Remove-AzSiteRecoveryFabric -Fabric $fabric [-Force]`
 
 > [!NOTE]
-> Pro vynucené odstranění konfiguračního serveru můžete použít možnost **-Force** v příkazu Remove-AzSiteRecoveryFabric.
+> Můžete použít možnost **-Force** v Remove-AzSiteRecoveryFabric pro vynucené odstranění konfiguračního serveru.
 
 ## <a name="generate-configuration-server-passphrase"></a>Generovat heslo konfiguračního serveru
 

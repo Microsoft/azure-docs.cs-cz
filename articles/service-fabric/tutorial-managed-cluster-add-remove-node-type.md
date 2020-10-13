@@ -4,10 +4,10 @@ description: V tomto kurzu se dozvíte, jak přidat a odebrat typy uzlů Service
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.openlocfilehash: 860345f5b297edaeea9d099ac392243176dfaca7
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91410438"
 ---
 # <a name="tutorial-add-and-remove-node-types-from-a-service-fabric-managed-cluster-preview"></a>Kurz: Přidání a odebrání typů uzlů z Service Fabric spravovaného clusteru (Preview)
@@ -26,7 +26,7 @@ Tato část řady se zabývá těmito postupy:
 > * Přidat typ uzlu do spravovaného clusteru Service Fabric
 > * Odstranění typu uzlu z Service Fabric spravovaného clusteru
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Service Fabric spravovaný cluster (viz [*nasazení spravovaného clusteru*](tutorial-managed-cluster-deploy.md)).
 * [Azure PowerShell 4.7.0](https://docs.microsoft.com/powershell/azure/release-notes-azureps?view=azps-4.7.0&preserve-view=true#azservicefabric) nebo novějším (viz [*instalace Azure PowerShell*](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.7.0&preserve-view=true)).

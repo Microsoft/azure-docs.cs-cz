@@ -4,10 +4,10 @@ description: Přehled Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: c8089e907f555ac970fea06361a2ab1bbc944778
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536490"
 ---
 # <a name="azure-resource-health-faq"></a>Nejčastější dotazy k Azure Resource Health
@@ -76,7 +76,7 @@ Je důležité si všimnout, že abyste mohli poskytnout kompletní přehled o u
 Ne, informace o stavu jsou k dispozici pro všechny typy prostředků, které jsou k dispozici prostřednictvím Resource Health. 
 
 ## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>Musíme Resource Health pro moji organizaci povolit?
-No.  Azure Resource Health je k dispozici v Azure Portal bez jakýchkoli požadavků na instalaci.
+Ne.  Azure Resource Health je k dispozici v Azure Portal bez jakýchkoli požadavků na instalaci.
 
 ## <a name="is-resource-health-available-free-of-charge"></a>Je Resource Health k dispozici zdarma?
 Ano.  Azure Resource Health je bezplatná.

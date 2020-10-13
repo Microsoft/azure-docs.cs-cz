@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/22/2020
 ms.author: duau
 ms.openlocfilehash: d51f47b73fe572ce81d3e7b54f902f94fcd11b5b
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567669"
 ---
 # <a name="using-azure-expressroute-to-create-hybrid-connectivity-to-support-remote-users"></a>Použití Azure ExpressRoute k vytvoření hybridního připojení pro podporu vzdálených uživatelů
@@ -35,7 +35,7 @@ Tento článek popisuje, jak můžete využívat ExpressRoute, Azure, síť Micr
 * [Otázky asymetrického směrování](expressroute-asymmetric-routing.md)
 * [Postup otevření žádosti o podporu v Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 
-## <a name="troubleshoot"></a>Odstraňování potíží
+## <a name="troubleshoot"></a>Řešení potíží
 
 * [Ověření připojení ExpressRoute](expressroute-troubleshooting-expressroute-overview.md)
 * Získání tabulky ARP v [Správce prostředků](expressroute-troubleshooting-arp-resource-manager.md) a [Classic](expressroute-troubleshooting-arp-classic.md)

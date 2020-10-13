@@ -18,10 +18,10 @@ ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: cf9f484a3f9285d1be06443b39bd50ec73ccf632
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665289"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy se spravovanými identitami pro prostředky Azure
@@ -129,7 +129,7 @@ Alternativní řešení pro spravované identity v předplatném, které se pře
  - Pro spravované identity přiřazené systémem: zakažte a znovu povolte. 
  - Pro spravované identity přiřazené uživateli: Odstraňte, znovu ho vytvořte a znovu připojte k potřebným prostředkům (např. virtuální počítače).
 
-Další informace najdete v tématu [přenos předplatného Azure do jiného adresáře služby Azure AD](../../role-based-access-control/transfer-subscription.md).
+Další informace najdete v tématu věnovaném [převodu předplatných Azure do jiného adresáře Azure AD](../../role-based-access-control/transfer-subscription.md).
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Přesunutí spravované identity přiřazené uživatelem do jiné skupiny prostředků nebo předplatného
 

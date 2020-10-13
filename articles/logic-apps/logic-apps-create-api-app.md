@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
 ms.openlocfilehash: 3fe98160cc10eb3607b8309a9a263d63380dcfb5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89073212"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Vytváření vlastních rozhraní API, která můžete volat z Azure Logic Apps
@@ -173,8 +173,8 @@ Pokud třeba chcete pravidelně kontrolovat službu pro nové soubory, můžete 
 
 | Obsahuje požadavek `triggerState` ? | Odpověď rozhraní API | 
 | -------------------------------- | -------------| 
-| Ne | Vrátí stav HTTP a `202 ACCEPTED` `location` hlavičku s `triggerState` nastavenou na aktuální čas a `retry-after` interval na 15 sekund. | 
-| Ano | Ověřte službu pro soubory přidané po `DateTime` pro `triggerState` . | 
+| No | Vrátí stav HTTP a `202 ACCEPTED` `location` hlavičku s `triggerState` nastavenou na aktuální čas a `retry-after` interval na 15 sekund. | 
+| Yes | Ověřte službu pro soubory přidané po `DateTime` pro `triggerState` . | 
 ||| 
 
 | Počet nalezených souborů | Odpověď rozhraní API | 
@@ -224,7 +224,7 @@ Aby vaše vlastní rozhraní API byla dostupná pro ostatní Logic Apps uživate
 
 Pokud chcete, aby vaše vlastní rozhraní API byla dostupná pro všechny uživatele v Logic Apps, automatizaci a aplikacích Microsoft Power, musíte přidat zabezpečení, zaregistrovat vaše rozhraní API jako konektory aplikací logiky a pojmenovat konektory pro [program Microsoft Azure Certified](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/). 
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
 * Pro konkrétní nápovědu k vlastním rozhraním API kontaktujte [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) .
 

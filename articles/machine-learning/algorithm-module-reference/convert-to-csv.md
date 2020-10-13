@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 3b7c781717952765941acd4ea4aa47593d4b8a0f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898784"
 ---
 # <a name="convert-to-csv-module"></a>Převést na modul CSV
@@ -26,7 +26,7 @@ Pomocí tohoto modulu můžete převést datovou sadu na formát CSV, který se 
 
 Formát CSV, který představuje "hodnoty oddělené čárkami", je formát souboru, který používá mnoho externích nástrojů strojového učení. CSV je běžný formát pro výměnu při práci s open source jazyky, jako je R nebo Python.
 
-I v případě, že většinu práce v Azure Machine Learning používáte, v některých případech může být užitečné převést datovou sadu na CSV a použít ji v externích nástrojích. Příklad:
+I v případě, že většinu práce v Azure Machine Learning používáte, v některých případech může být užitečné převést datovou sadu na CSV a použít ji v externích nástrojích. Například:
 
 + Stáhněte soubor CSV a otevřete ho v Excelu nebo ho importujte do relační databáze.  
 + Uložte soubor CSV do cloudového úložiště a připojte se k němu z Power BI, abyste mohli vytvářet vizualizace.  

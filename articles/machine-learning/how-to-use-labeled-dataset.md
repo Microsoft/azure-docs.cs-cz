@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/14/2020
 ms.openlocfilehash: 7f21d3ed3d5e71c2f87777316e7584011490043a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91757771"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Vytvoření a zkoumání Azure Machine Learning datové sady s popisky
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak exportovat popisky dat z Azure Machine Learnin
 
 Odkazujeme na Azure Machine Learning datových sad s popisky jako s označenými datovými sadami. Tyto konkrétní typy datových sad s označenými datovými sadami jsou vytvořeny pouze jako výstup Azure Machine Learning projektů pro označování dat. Pomocí [těchto kroků](how-to-create-labeling-projects.md)vytvořte projekt pro označování dat. Machine Learning podporuje popisky dat pro klasifikaci obrázků, a to buď s více popisky, nebo s více třídami, a identifikacemi objektů společně s ohraničenými poli.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree) před tím, než začnete.
 * [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)nebo přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).

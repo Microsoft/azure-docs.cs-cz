@@ -12,10 +12,10 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604406"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Pro Azure Machine Learning použít pracovní prostor za bránou firewall
@@ -96,7 +96,7 @@ Požadované adresy URL pro oblasti Azure Government
 | **Název hostitele** | **Účel** |
 | ---- | ---- |
 | **usgovarizona.api.ml.azure.us** | Oblast US-Arizona |
-| **usgovvirginia.api.ml.azure.us** | Oblast US-) – Virginia |
+| **usgovvirginia.api.ml.azure.us** | Oblast US-Virginia |
 
 ## <a name="next-steps"></a>Další kroky
 

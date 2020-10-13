@@ -4,12 +4,12 @@ description: Přečtěte si o zásadách podpory Azure Kubernetes Service (AKS),
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 188416d9ef6f8e7568b10e8ccbb405be0bff315d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888987"
+ms.locfileid: "91892706"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zásady podpory pro službu Azure Kubernetes
 
@@ -130,8 +130,7 @@ Skupin zabezpečení sítě můžete přizpůsobit jenom pro vlastní podsítě.
 
 ## <a name="stopped-or-de-allocated-clusters"></a>Zastavené nebo nepřidělené clustery
 
-Podle výše uvedeného způsobu ruční zrušení přidělení všech uzlů clusteru prostřednictvím rozhraní API IaaS/CLI/portálu vykreslí cluster mimo podporu.
-Jediným podporovaným způsobem, jak zastavit/zrušit přidělení všech uzlů, je [zastavit cluster AKS, který bude zachovávat stav clusteru až na 12 měsíců.
+Jak bylo uvedeno dříve, ruční zrušení přidělení všech uzlů clusteru prostřednictvím rozhraní API IaaS/CLI/portálu vykreslí cluster mimo podporu. Jediným podporovaným způsobem, jak zastavit/zrušit přidělení všech uzlů, je [zastavit cluster AKS](start-stop-cluster.md#stop-an-aks-cluster), který zachovává stav clusteru až na 12 měsíců.
 
 Clustery, které jsou zastavené déle než 12 měsíců, již nebudou zachovávat stav. 
 

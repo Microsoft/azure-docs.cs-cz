@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: 358de5761f3535b5f1e75d82539ee8e3ecdbd289
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665589"
 ---
 **Azure Data Lake Storage Gen2** není vyhrazený typ služby nebo účtu úložiště. Je to nejnovější verze schopností, které jsou vyhrazeny pro analýzy velkých objemů dat.  Tyto možnosti jsou dostupné v účtu úložiště pro obecné účely v2 nebo BlockBlobStorage a můžete je získat tím, že v účtu povolíte funkci **hierarchického oboru názvů** . Cílení na škálování najdete v těchto článcích. 

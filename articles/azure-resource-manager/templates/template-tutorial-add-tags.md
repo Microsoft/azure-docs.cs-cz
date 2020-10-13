@@ -7,17 +7,17 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
 ms.openlocfilehash: 16fc294784d9d6ff3c2fdd920d053eae5cd4b56d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613199"
 ---
 # <a name="tutorial-add-tags-in-your-arm-template"></a>Kurz: Přidání značek do šablony ARM
 
 V tomto kurzu se naučíte přidávat značky do prostředků v šabloně Azure Resource Manager (ARM). [Značky](../management/tag-resources.md) vám pomůžou logicky organizovat vaše prostředky. Hodnoty značek se zobrazí v sestavách nákladů. Dokončení tohoto kurzu trvá **8 minut** .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Doporučujeme, abyste dokončili [kurz týkající se šablon pro rychlý Start](template-tutorial-quickstart-template.md), ale není to nutné.
 
@@ -78,7 +78,7 @@ az deployment group create \
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. Vyberte jeden z prostředků, například prostředek účtu úložiště. Vidíte, že má nyní značky.

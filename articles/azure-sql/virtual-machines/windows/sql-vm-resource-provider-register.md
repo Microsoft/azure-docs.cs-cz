@@ -15,10 +15,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: b48f0429525822d09f08965128df0ceb1e32898a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761307"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>Registrace virtuálního počítače s SQL Server v Azure pomocí poskytovatele prostředků virtuálního počítače SQL (RP)
@@ -59,7 +59,7 @@ Nasazení Azure Marketplace image SQL Server virtuálního počítače pomocí A
 
 Abyste mohli využít poskytovatele prostředků virtuálního počítače SQL, musíte nejdřív [zaregistrovat předplatné u poskytovatele prostředků](#register-subscription-with-rp), který poskytovateli prostředků umožní vytvářet prostředky v rámci tohoto konkrétního předplatného.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, budete potřebovat: 
 
@@ -247,7 +247,7 @@ Postup upgradu režimu agenta na úplný:
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejít na prostředek [virtuálních počítačů SQL](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) . 
 1. Vyberte svůj virtuální počítač SQL Server a vyberte **Přehled**. 
 1. V případě SQL Server virtuálních počítačů pomocí agenta nebo režimu zjednodušeného IaaS vyberte možnost **jediný typ licence a aktualizace edice jsou k dispozici ve zprávě rozšíření SQL IaaS** .
@@ -288,7 +288,7 @@ Můžete ověřit, jestli váš virtuální počítač s SQL Server už je zareg
 
 ### <a name="azure-portal"></a>portál Azure 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 1. Přejít na [virtuální počítače s SQL Server](manage-sql-vm-portal.md).
 1. Ze seznamu vyberte svůj virtuální počítač SQL Server. Pokud zde SQL Server virtuální počítač, pravděpodobně není zaregistrovaný u poskytovatele prostředků virtuálního počítače SQL. 
 1. Zobrazit hodnotu v části **stav** Pokud **Status** je stav **úspěšný**, byl virtuální počítač SQL Server zaregistrován u poskytovatele prostředků virtuálního počítače SQL úspěšně. 
@@ -327,7 +327,7 @@ Zrušení registrace virtuálního počítače SQL pomocí poskytovatele prostř
 
 Chcete-li zrušit registraci SQL Serverho virtuálního počítače poskytovatelem prostředků pomocí Azure Portal, postupujte podle následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte k prostředku virtuálního počítače SQL. 
   
    ![Prostředek virtuálních počítačů SQL](./media/sql-vm-resource-provider-register/sql-vm-manage.png)

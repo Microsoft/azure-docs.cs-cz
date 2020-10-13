@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
 ms.openlocfilehash: 90e499b436a3ae44fa29cec1138d939a106a4db7
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357161"
 ---
 # <a name="agent-based-migration-architecture"></a>Architektura migrace založené na agentech
@@ -115,7 +115,7 @@ Pokud potřebujete nasadit procesový Server se škálováním na více instanc�
 
 Provoz VMware, který se replikuje do Azure, prochází přes konkrétní procesový Server. Propustnost nahrávání můžete omezit omezením šířky pásma na počítačích, které jsou spuštěny jako procesové servery. Šířku pásma můžete ovlivnit pomocí tohoto klíče registru:
 
-- Hodnota registru HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM určuje počet vláken, která se používají pro přenos dat (počáteční nebo rozdílovou replikaci) disku. Vyšší hodnota zvyšuje šířku pásma sítě, která se používá pro replikaci. Výchozí hodnota je 4. Maximální hodnota je 32. Monitorováním provozu hodnotu optimalizujte.
+- Hodnota registru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM určuje počet vláken, která se používají pro přenos dat (počáteční nebo rozdílovou replikaci) disku. Vyšší hodnota zvyšuje šířku pásma sítě, která se používá pro replikaci. Výchozí hodnota je 4. Maximální hodnota je 32. Monitorováním provozu hodnotu optimalizujte.
 - Navíc můžete omezit šířku pásma na počítači procesového serveru následujícím způsobem:
 
     1. Na počítači procesového serveru otevřete modul snap-in Azure Backup MMC. Je k dispozici zástupce na ploše nebo ve složce C:\Program Files\Microsoft Azure Recovery Services Agent\bin. 

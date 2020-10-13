@@ -8,13 +8,12 @@ ms.author: mbaldwin
 ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
-ms.subservice: general
-ms.openlocfilehash: fccd838b47cbb565ffdbe5250a91cd293238bf9b
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 1a6ec20d860a409bbe7d3114c54e1e46a75968a0
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940442"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970108"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba-služba pro Azure Key Vault pomocí .NET
 
@@ -27,7 +26,7 @@ Správa takových přihlašovacích údajů může být obtížná. Setrvání p
 
 `Microsoft.Azure.Services.AppAuthentication`Knihovna spravuje ověřování automaticky, což zase umožňuje soustředit se na vaše řešení, nikoli na vaše přihlašovací údaje. Podporuje místní vývoj pomocí Microsoft Visual Studio, Azure CLI nebo integrovaného ověřování Azure AD. Při nasazení do prostředku Azure, který podporuje spravovanou identitu, knihovna automaticky používá [spravované identity pro prostředky Azure](../../active-directory/msi-overview.md). Nejsou vyžadovány žádné změny kódu nebo konfigurace. Knihovna také podporuje přímé použití [přihlašovacích údajů klienta](../../azure-resource-manager/resource-group-authenticate-service-principal.md) Azure AD, když spravovaná identita není k dispozici, nebo když není možné určit kontext zabezpečení vývojáře během místního vývoje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual studio 2019](https://www.visualstudio.com/downloads/) nebo [Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/).
 

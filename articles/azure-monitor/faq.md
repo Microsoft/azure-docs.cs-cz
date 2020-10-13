@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/15/2020
-ms.openlocfilehash: b524b0d8f24f011065772495bc2bb283a3c90d4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/08/2020
+ms.openlocfilehash: 06b92d982b42d97849994b4a21696b72461efe1f
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760249"
+ms.locfileid: "91893760"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -322,7 +322,6 @@ IP adresu (IPv4 nebo IPv6) webového klienta vyhledáme pomocí [GeoLite2](https
 * Telemetrie serveru: modul Application Insights shromažďuje IP adresu klienta. Není shromažďována, pokud `X-Forwarded-For` je nastavena.
 * Další informace o tom, jak se shromažďují údaje o IP adrese a geografickém umístění v Application Insights najdete v tomto [článku](./app/ip-collection.md).
 
-
 Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP` . [Další informace](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 [Pomocí Power BI](app/export-power-bi.md ) můžete zobrazit telemetrii žádostí na mapě.
@@ -398,6 +397,29 @@ Každá odeslaná položka nese `itemCount` vlastnost, která ukazuje, kolik pů
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
 ```
 
+### <a name="how-do-i-move-an-application-insights-resource-to-a-new-region"></a>Návody přesunout prostředek Application Insights do nové oblasti?
+
+Přesunutí stávajících Application Insightsch prostředků z jedné oblasti do druhé není v **současné době podporováno**. Historická data, která jste shromáždili, **nelze migrovat** do nové oblasti. Jedinou částečnou alternativou je:
+
+1. Vytvořte novou značku Application Insights prostředku (v[klasickém](app/create-new-resource.md) [prostředí nebo na základě pracovního prostoru](/app/create-workspace-resource.md)) v nové oblasti.
+2. Znovu vytvořit všechna jedinečná vlastní nastavení specifická pro původní prostředek v novém prostředku.
+3. Upravte aplikaci tak, aby používala [klíč instrumentace](app/create-new-resource.md#copy-the-instrumentation-key) prostředku nové oblasti nebo [připojovací řetězec](app/sdk-connection-string.md).  
+4. Otestujte, abyste potvrdili, že vše pokračuje v práci podle očekávání u nového prostředku Application Insights. 
+5. V tomto okamžiku můžete buď odstranit původní prostředek, což způsobí **ztrátu všech historických dat**. Nebo si zachovejte původní prostředek pro účely historických sestav po dobu trvání jeho nastavení uchovávání dat.
+
+Jedinečné vlastní nastavení, která se běžně musí ručně znovu vytvořit nebo aktualizovat pro prostředek v nové oblasti, patří mimo jiné:
+
+- Znovu vytvořte vlastní řídicí panely a sešity. 
+- Opětovné vytvoření nebo aktualizace rozsahu jakýchkoli vlastních výstrah protokolu/metriky. 
+- Znovu vytvořte výstrahy dostupnosti.
+- Vytvořte znovu všechna vlastní nastavení Role-Based Access Control (RBAC), která jsou nutná pro to, aby vaši uživatelé měli přístup k novému prostředku. 
+- Umožňuje replikovat nastavení zahrnující vzorkování ingestování, uchovávání dat, denní limit a vlastní metriky. Tato nastavení se řídí přes podokno **využití a odhadované náklady** .
+- Veškerá integrace, která spoléhá na klíče rozhraní API, jako jsou [poznámky k verzi](/app/annotations.md), [kanály zabezpečeného řízení metriky](app/live-stream.md#secure-the-control-channel) atd. Budete muset vygenerovat nové klíče rozhraní API a aktualizovat přidruženou integraci. 
+- Průběžný export v klasických zdrojích by se musel znovu nakonfigurovat.
+- Nastavení diagnostiky v prostředcích založených na pracovních prostorech by se muselo nakonfigurovat znovu.
+
+> [!NOTE]
+> Pokud prostředek, který vytváříte v nové oblasti, nahrazuje klasický prostředek, doporučujeme, abyste prozkoumali výhody [vytváření nového prostředku založeného na pracovních prostorech](app/create-workspace-resource.md) nebo případně [migrujete stávající prostředek na základě pracovního prostoru](app/convert-classic-resource.md). 
 
 ### <a name="automation"></a>Automation
 

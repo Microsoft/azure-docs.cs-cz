@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 417cc13c4a201a0dd86a846c347cb395b8d81c43
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535521"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Integrované schopnosti rozpoznávání textu a zpracování obrázků při indexování (Azure Kognitivní hledání)
@@ -31,7 +31,7 @@ V tomto článku se dozvíte o dovednostech rozpoznávání poskytované s Azure
 
 Několik dovedností je flexibilní v tom, co spotřebovávají nebo vyrábí. Obecně platí, že většina dovedností je založena na předem vyškolených modelech, což znamená, že model nemůžete pomocí vlastních školicích dat proškolit. Následující tabulka obsahuje výčet dovedností poskytovaných Microsoftem a popisuje je. 
 
-| Tuhle | Popis |
+| Tuhle | Description |
 |-------|-------------|
 |[Microsoft. dovednosti. text. CustomEntityLookupSkill](cognitive-search-skill-custom-entity-lookup.md)| Vyhledá text z vlastního uživatelsky definovaného seznamu slov a frází.|
 | [Microsoft. dovednosti. text. KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Tato dovednost používá předvýukový model k detekci důležitých frází na základě pojmu umístění, lingvistických pravidel, blízkost k ostatním podmínkám a způsobu, jakým je neobvyklá doba v rámci zdrojových dat. |

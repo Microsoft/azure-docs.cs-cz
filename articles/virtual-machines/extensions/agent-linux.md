@@ -9,10 +9,10 @@ ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2237b0b0d0c1f6e95e100743b377f9c04f57210f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279699"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Porozumění a použití agenta Azure Linux
@@ -101,7 +101,7 @@ Upřednostňovanou metodou instalace a upgrade agenta Azure Linux je instalace p
 
 Další možnosti instalace najdete v dokumentaci v [úložišti agenta Azure Linux na GitHubu](https://github.com/Azure/WALinuxAgent) , kde najdete rozšířené možnosti instalace, jako je například instalace ze zdroje nebo vlastní umístění nebo předpony.
 
-## <a name="command-line-options"></a>Možnosti příkazového řádku
+## <a name="command-line-options"></a>Možnosti Command-Line
 ### <a name="flags"></a>Příznaky
 * verbose: zvýšit podrobnost zadaného příkazu
 * Force: přeskočit interaktivní potvrzení u některých příkazů

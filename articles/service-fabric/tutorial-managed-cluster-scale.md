@@ -4,10 +4,10 @@ description: V tomto kurzu se naučíte škálovat typ uzlu Service Fabric sprav
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.openlocfilehash: a6777743932f3cc73db973c4d9935d4b5827700b
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91410434"
 ---
 # <a name="tutorial-scale-out-a-service-fabric-managed-cluster-preview"></a>Kurz: horizontální navýšení kapacity Service Fabric spravovaného clusteru (Preview)
@@ -25,7 +25,7 @@ Tato část řady se zabývá těmito postupy:
 > [!div class="checklist"]
 > * Škálování Service Fabric spravovaného uzlu clusteru
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Service Fabric spravovaný cluster (viz [*nasazení spravovaného clusteru*](tutorial-managed-cluster-deploy.md)).
 * [Azure PowerShell 4.7.0](https://docs.microsoft.com/powershell/azure/release-notes-azureps?view=azps-4.7.0&preserve-view=true#azservicefabric) nebo novějším (viz [*instalace Azure PowerShell*](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.7.0&preserve-view=true)).
