@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: a4965c587cb2f42c8411d48af2417dd3fe3d5edb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360782"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Zálohování a obnovení pro SQL Server na virtuálních počítačích Azure
@@ -31,7 +31,7 @@ První část tohoto článku poskytuje přehled dostupných možností zálohov
 
 Následující tabulka poskytuje informace o různých možnostech zálohování a obnovení pro SQL Server na virtuálních počítačích Azure:
 
-| Strategie | Verze SQL | Popis |
+| Strategie | Verze SQL | Description |
 |---|---|---|
 | [Automatizované zálohování](#automated) | 2014<br/> 2016<br/> 2017 | Automatizované zálohování umožňuje naplánovat pravidelné zálohování pro všechny databáze na SQL Serverm virtuálním počítači. Zálohy se ukládají v Azure Storage po dobu až 30 dnů. Počínaje SQL Server 2016 nabízí automatizované zálohování v2 další možnosti, jako je třeba konfigurace ručního plánování a četnost úplných záloh a zálohování protokolů. |
 | [Azure Backup pro virtuální počítače SQL](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | Azure Backup poskytuje možnost zálohování podnikové třídy pro SQL Server na virtuálních počítačích Azure. Pomocí této služby můžete centrálně spravovat zálohy pro víc serverů a tisíců databází. Databáze je možné obnovit do určitého bodu v čase na portálu. Nabízí přizpůsobitelné zásady uchovávání informací, které můžou uchovávat zálohy po rocích. |
@@ -104,7 +104,7 @@ Počínaje SQL Server 2012 SP1 CU2 můžete zálohovat a obnovovat přímo do Mi
 | 2016 vylepšení | Podrobnosti |
 | --- | --- |
 | **Prokládáním** |Při zálohování na úložiště objektů BLOB Microsoft Azure SQL Server 2016 podporuje zálohování do více objektů blob, aby bylo možné zálohovat velké databáze, maximálně na 12,8 TB. |
-| **Záloha snímku** |Pomocí snímků Azure SQL Server zálohování snímků souborů nabízí skoro okamžité zálohování a rychlé obnovení souborů databáze uložených pomocí služby Azure Blob Storage. Tato funkce vám umožní zjednodušit zásady zálohování a obnovení. Zálohování souborů a snímků také podporuje obnovení k časovému okamžiku. Další informace najdete v tématu [zálohování snímků pro soubory databáze v Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure). |
+| **Záloha snímku** |Pomocí snímků Azure SQL Server zálohování File-Snapshot nabízí skoro okamžité zálohování a rychlé obnovení souborů databáze uložených pomocí služby Azure Blob Storage. Tato funkce vám umožní zjednodušit zásady zálohování a obnovení. Zálohování souborů a snímků také podporuje obnovení k časovému okamžiku. Další informace najdete v tématu [zálohování snímků pro soubory databáze v Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure). |
 
 Další informace najdete v jednom z následujících článků na základě vaší verze SQL Server:
 

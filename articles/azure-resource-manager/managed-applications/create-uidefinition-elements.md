@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: 8b6c6e78c64f83ca39a29f319a103e893d8d8b38
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88923717"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition elementy
@@ -33,16 +33,16 @@ Schéma pro většinu prvků je následující:
 }
 ```
 
-| Vlastnost | Povinné | Popis |
+| Vlastnost | Požaduje se | Popis |
 | -------- | -------- | ----------- |
-| name | Ano | Vnitřní identifikátor, který odkazuje na konkrétní instanci elementu. Nejběžnější použití názvu elementu je v `outputs` , kde jsou výstupní hodnoty určených prvků namapovány na parametry šablony. Můžete ji také použít k vytvoření vazby výstupní hodnoty prvku na `defaultValue` jiný prvek. |
-| typ | Ano | Ovládací prvek uživatelského rozhraní pro vykreslení elementu. Seznam podporovaných typů naleznete v tématu [elementy](#elements). |
-| label | Ano | Zobrazený text elementu Některé typy prvků obsahují více popisků, takže hodnota může být objekt obsahující více řetězců. |
-| Hodnot | Ne | Výchozí hodnota elementu. Některé typy prvků podporují komplexní výchozí hodnoty, takže hodnota může být objekt. |
-| Okna | Ne | Text, který se má zobrazit v popisku nástroje elementu. Podobně jako `label` některé prvky podporují více řetězců tipů nástroje. Vložené odkazy mohou být vloženy pomocí syntaxe Markdownu.
-| jednotlivým | Ne | Jedna nebo více vlastností, které jsou použity k přizpůsobení chování ověřování prvku. Podporované vlastnosti pro omezení se liší podle typu elementu. Některé typy prvků nepodporují přizpůsobení chování ověřování, a proto nemají žádnou vlastnost omezení. |
-| možnosti | Ne | Další vlastnosti, které přizpůsobují chování prvku. Podobně jako `constraints` se podporované vlastnosti liší podle typu prvku. |
-| zobrazeny | Ne | Určuje, zda je prvek zobrazen. Pokud se `true` zobrazí element a příslušné podřízené prvky. Výchozí hodnota je `true`. K dynamickému řízení hodnoty této vlastnosti použijte [logické funkce](create-uidefinition-functions.md#logical-functions) .
+| name | Yes | Vnitřní identifikátor, který odkazuje na konkrétní instanci elementu. Nejběžnější použití názvu elementu je v `outputs` , kde jsou výstupní hodnoty určených prvků namapovány na parametry šablony. Můžete ji také použít k vytvoření vazby výstupní hodnoty prvku na `defaultValue` jiný prvek. |
+| typ | Yes | Ovládací prvek uživatelského rozhraní pro vykreslení elementu. Seznam podporovaných typů naleznete v tématu [elementy](#elements). |
+| label | Yes | Zobrazený text elementu Některé typy prvků obsahují více popisků, takže hodnota může být objekt obsahující více řetězců. |
+| Hodnot | No | Výchozí hodnota elementu. Některé typy prvků podporují komplexní výchozí hodnoty, takže hodnota může být objekt. |
+| Okna | No | Text, který se má zobrazit v popisku nástroje elementu. Podobně jako `label` některé prvky podporují více řetězců tipů nástroje. Vložené odkazy mohou být vloženy pomocí syntaxe Markdownu.
+| jednotlivým | No | Jedna nebo více vlastností, které jsou použity k přizpůsobení chování ověřování prvku. Podporované vlastnosti pro omezení se liší podle typu elementu. Některé typy prvků nepodporují přizpůsobení chování ověřování, a proto nemají žádnou vlastnost omezení. |
+| možnosti | No | Další vlastnosti, které přizpůsobují chování prvku. Podobně jako `constraints` se podporované vlastnosti liší podle typu prvku. |
+| zobrazeny | No | Určuje, zda je prvek zobrazen. Pokud se `true` zobrazí element a příslušné podřízené prvky. Výchozí hodnota je `true`. K dynamickému řízení hodnoty této vlastnosti použijte [logické funkce](create-uidefinition-functions.md#logical-functions) .
 
 ## <a name="elements"></a>Elementy
 

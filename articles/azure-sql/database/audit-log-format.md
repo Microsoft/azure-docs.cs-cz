@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
 ms.openlocfilehash: 49e885862a49bb3bbea718566ee5389e6b08e860
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444591"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database formát protokolu auditu
@@ -46,7 +46,7 @@ Události auditu se zapisují do Log Analytics pracovního prostoru definovanéh
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>Pole protokolu auditu
 
-| Název (objekt BLOB) | Název (Event Hubs/Log Analytics) | Popis | Typ objektu blob | Typ Event Hubs/Log Analytics |
+| Název (objekt BLOB) | Název (Event Hubs/Log Analytics) | Description | Typ objektu blob | Typ Event Hubs/Log Analytics |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | ID akce | varchar (4) | řetězec |
 | action_name | action_name_s | Název akce | Není k dispozici | řetězec |

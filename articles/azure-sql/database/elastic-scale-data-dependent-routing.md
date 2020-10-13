@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 2e6efc08cb7d38a856098395aff363d9d7ec2bab
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442991"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-an-appropriate-database"></a>Směrování dotazu do příslušné databáze pomocí směrování závislého na datech
@@ -25,7 +25,7 @@ ms.locfileid: "91442991"
 
 Aplikace nemusí sledovat různé připojovací řetězce nebo umístění databáze přidružené k různým řezům dat v prostředí horizontálně dělené. Místo toho [správce mapy horizontálních oddílů](elastic-scale-shard-map-management.md) otevře připojení ke správným databázím v případě potřeby na základě dat v mapě horizontálních oddílů a hodnoty klíče horizontálního dělení, který je cílem žádosti aplikace. Klíčem je obvykle *Customer_ID*, *tenant_id*, *date_key*nebo nějaký jiný konkrétní identifikátor, který je základním parametrem požadavku databáze.
 
-Další informace najdete v tématu horizontální navýšení kapacity [SQL Server se směrováním závislým na datech](https://technet.microsoft.com/library/cc966448.aspx).
+Další informace najdete v tématu horizontální navýšení kapacity [SQL Server se směrováním Data-Dependent](https://technet.microsoft.com/library/cc966448.aspx).
 
 ## <a name="download-the-client-library"></a>Stažení klientské knihovny
 
@@ -118,7 +118,7 @@ Metoda **OpenConnectionForKey** vrací nové již otevřené připojení ke spr�
 
 Osvědčeným postupem při vývoji aplikací pro přístup k datům v cloudu je zajistit, aby byla aplikace zachycena přechodným chybám a aby se operace opakovala několikrát před vyvoláním chyby. Přechodný zpracování chyb pro cloudové aplikace je popsáno v tématu zpracování přechodného selhání ([Java](/java/api/com.microsoft.azure.elasticdb.core.commons.transientfaulthandling), [.NET](https://docs.microsoft.com/previous-versions/msp-n-p/dn440719(v=pandp.60))).
 
-Zpracování přechodných chyb může být přirozeně přirozeně s datovým vzorem směrování závislého na datech. Klíčovým požadavkem je opakovat celou žádost o přístup k datům, včetně bloku **using** , který získal připojení směrování závislé na datech. Předchozí příklad může být přepsán následujícím způsobem.
+Zpracování přechodných chyb může být přirozeně v rámci Data-Dependentho vzoru směrování. Klíčovým požadavkem je opakovat celou žádost o přístup k datům, včetně bloku **using** , který získal připojení směrování závislé na datech. Předchozí příklad může být přepsán následujícím způsobem.
 
 ### <a name="example---data-dependent-routing-with-transient-fault-handling"></a>Příklad – směrování závislé na datech s dočasným zpracováním chyb
 

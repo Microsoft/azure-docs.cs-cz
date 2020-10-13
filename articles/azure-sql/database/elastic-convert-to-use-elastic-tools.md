@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 95afd0b9117caca4b531c453417217d8a8de7c7f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443466"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrace existujících databází pro horizontální navýšení kapacity
@@ -138,7 +138,7 @@ Add-RangeMapping -KeyType $([int]) -RangeHigh '5' -RangeLow '1' -RangeShardMap $
 
 ### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>Krok 4 – možnost 3: mapování dat pro více tenantů v jednotlivých databázích
 
-Pro každého tenanta spusťte rutinu Add-ListMapping (možnost 1).
+Pro každého tenanta spusťte Add-ListMapping (možnost 1).
 
 ## <a name="checking-the-mappings"></a>Kontrola mapování
 
@@ -156,13 +156,13 @@ Po dokončení instalace můžete začít používat klientskou knihovnu Elastic
 
 ## <a name="next-steps"></a>Další kroky
 
-Získejte skripty PowerShellu z [skriptů nástroje Azure SQL Database-elastic Database](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+Získejte skripty PowerShellu z [skriptů Azure SQL Database-Elastic Database Tools](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
 Nástroje jsou také na GitHubu: [Azure nebo elastické databáze-Tools](https://github.com/Azure/elastic-db-tools).
 
 Pomocí nástroje pro dělení k přesunu dat do nebo z modelu více tenantů na jeden model tenanta. Viz [Nástroj rozdělit sloučení](elastic-scale-get-started.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 Informace o běžných vzorech architektury dat databázových aplikací softwaru s více tenanty jako služby (SaaS) naleznete v části [Vzory návrhu pro aplikace SaaS s více tenanty s databází Azure SQL Database](saas-tenancy-app-design-patterns.md).
 

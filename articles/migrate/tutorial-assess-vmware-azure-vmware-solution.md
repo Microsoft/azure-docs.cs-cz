@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: 29f7f824d96aedd80e490ba84c390be4d9493683
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604236"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Kurz: posouzení virtuálních počítačů VMware pro migraci do služby AVS
@@ -29,7 +29,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete postupovat podle tohoto kurzu a vyhodnoťte počítače pro migraci do služby AVS, ujistěte se, že jste zjistili počítače, které chcete vyhodnotit:
 
@@ -44,7 +44,7 @@ Rozhodněte, jestli chcete spustit posouzení pomocí kritérií pro změnu veli
 
 **Posouzení** | **Podrobnosti** | **Doporučení**
 --- | --- | ---
-**V místním prostředí** | Vyhodnoťte na základě dat nebo metadat konfigurace počítače.  | Doporučená velikost uzlů v prostředí AVS je založená na velikosti místního virtuálního počítače, spolu s nastavením, které zadáte při posuzování pro typ uzlu, typ úložiště a nastavení neúspěšného přihlášení.
+**Jako v místním prostředí** | Vyhodnoťte na základě dat nebo metadat konfigurace počítače.  | Doporučená velikost uzlů v prostředí AVS je založená na velikosti místního virtuálního počítače, spolu s nastavením, které zadáte při posuzování pro typ uzlu, typ úložiště a nastavení neúspěšného přihlášení.
 **Na základě výkonu** | Vyhodnoťte na základě shromážděných dynamických údajů o výkonu. | Doporučená velikost uzlů v rámci služby AVS je založená na datech využití procesoru a paměti spolu s nastaveními, která zadáte při posuzování typu uzlu, typu úložiště a nastavení neúspěšného přihlášení.
 
 ## <a name="run-an-assessment"></a>Spuštění posouzení
@@ -92,7 +92,7 @@ Proveďte posouzení následujícím způsobem:
         **Komponenta** | **Efektivní využití** | **Přidat faktor pohodlí (2,0)**
         --- | --- | ---  
         Cores | 2 | 4
-        Memory (Paměť) | 8 GB | 16 GB     
+        Paměť | 8 GB | 16 GB     
 
 10. V **ceně**:
     - V **nabídce**se zobrazí [Nabídka Azure](https://azure.microsoft.com/support/legal/offer-details/) , kterou jste zaregistrovali v nástroji, a zobrazí se odhad serveru. cena za tuto nabídku se vyhodnotí.
@@ -120,12 +120,12 @@ Posouzení služby AVS popisuje:
 - Využití v uzlech služby AVS: předpokládané využití procesoru, paměti a úložiště napříč všemi uzly.
 - Odhad měsíčních nákladů: Odhadované měsíční náklady na všechny uzly řešení Azure VMware (AVS), na kterých běží místní virtuální počítače.
 
-## <a name="view-an-assessment"></a>Zobrazit posouzení
+## <a name="view-an-assessment"></a>Zobrazení posouzení
 
 Zobrazení posouzení:
 
 1. V části **servery**  >  **Azure Migrate: vyhodnocování serveru**klikněte na číslo vedle **posouzení**.
-2. V **posouzení**vyberte posouzení, které chcete otevřít. 
+2. Výběrem posouzení v části **Posouzení** ho otevřete. 
 3. Přečtěte si Souhrn posouzení. Můžete také upravit vlastnosti posouzení nebo přepočítat vyhodnocení.
  
 

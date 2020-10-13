@@ -15,10 +15,10 @@ ms.date: 09/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6911128cfbaa87229a09bcea0d655c6110c2d208
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259777"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>Dostupné SKU pro velké instance HANA
@@ -48,7 +48,7 @@ Seznam dostupných velkých instancí Azure, které jsou nabízeny jako následu
 
 
 
-| SAP HANA certifikováno | Modelování | Celková paměť | Paměť DRAM | Optane paměti | Storage | Dostupnost |
+| SAP HANA certifikováno | Model | Celková paměť | Paměť DRAM | Optane paměti | Storage | Dostupnost |
 | --- | --- | --- | --- | --- | --- | --- |
 | ANO <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2185), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2265) | SAP HANA v Azure S96<br /> – 2 x Intel® Xeon® procesor E7-8890 v4 <br /> 48 procesorových jader a 96 PROCESORových vláken |  768 GB | 768 GB | --- | 3,0 TB | K dispozici |
 | ANO <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2186), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2269) | SAP HANA v Azure S224<br /> – 4 x procesor Intel® Xeon® Platinum 8276 <br /> 112 procesorových jader a 224 PROCESORových vláken |  3,0 TB | 3,0 TB | --- | 6,3 TB | K dispozici |
@@ -86,8 +86,8 @@ Seznam dostupných velkých instancí Azure, které jsou nabízeny jako následu
 
 
 - PROCESORová jádra = součet procesorů nevyužívajících technologii Hyper-v součtu procesorů serverové jednotky.
-- Vlákna procesoru = součet výpočetních vláken poskytovaných jádry procesoru s technologií Hyper-v součtu procesorů serverové jednotky. Většina jednotek je ve výchozím nastavení nakonfigurovaná tak, aby používala technologii Hyper-Threading.
-- Na základě doporučení dodavatele S768m, S768xm a S960m nejsou nakonfigurována pro použití technologie Hyper-Threading pro spouštění SAP HANA.
+- Vlákna procesoru = součet výpočetních vláken poskytovaných jádry procesoru s technologií Hyper-v součtu procesorů serverové jednotky. Většina jednotek je ve výchozím nastavení nakonfigurována tak, aby používala Hyper-Threading technologie.
+- Na základě doporučení dodavatele S768m, S768xm a S960m nejsou nakonfigurována k použití Hyper-Threading ke spouštění SAP HANA.
 
 
 > [!IMPORTANT]

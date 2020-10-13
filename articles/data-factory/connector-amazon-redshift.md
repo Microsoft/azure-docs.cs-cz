@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: a756a3cec5702570751e0bea09a4f59152accafc
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89484540"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopírování dat z Amazon RedShift pomocí Azure Data Factory
@@ -223,14 +223,14 @@ Při kopírování dat z Amazon RedShift se z datových typů Amazon RedShift po
 | BIGINT |Int64 |
 | DATOVÉHO |Řetězec |
 | CHAR |Řetězec |
-| DATE (Datum) |Datum a čas |
+| DATE |DateTime |
 | NOTACI |Decimal |
 | DVOJITÁ PŘESNOST |dvojité |
 | CELÉ ČÍSLO |Int32 |
 | REÁLNÉ |Jednoduché |
 | SMALLINT |Int16 |
 | TEXT |Řetězec |
-| ČASOVÉ razítko |Datum a čas |
+| ČASOVÉ razítko |DateTime |
 | VARCHAR |Řetězec |
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání

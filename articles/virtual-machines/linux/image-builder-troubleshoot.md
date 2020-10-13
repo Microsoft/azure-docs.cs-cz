@@ -7,12 +7,12 @@ ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: dd17057a56e8dfb269a22458b9aa20fefaab68bc
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 7c937353c645ee5d977a52ec0f8e935eba19a940
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91661104"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969972"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Řešení potíží se službou Azure image Builder
 
@@ -522,7 +522,7 @@ PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 230
 Služba image Builder používá port 22 (Linux) nebo 5986 (Windows) pro připojení k virtuálnímu počítači sestavení, k tomu dochází, když je služba odpojená od virtuálního počítače sestavení během sestavení image. Důvody odpojení se můžou lišit, ale když povolíte nebo nakonfigurujete brány firewall ve skriptu, můžou se výše uvedené porty blokovat.
 
 #### <a name="solution"></a>Řešení
-Projděte si skripty pro změny nebo povolení brány firewall nebo změny v SSH nebo WinRM a zajistěte, aby všechny změny umožňovaly stálé připojení mezi službou a sestavení virtuálního počítače na výše uvedených portech. Další informace o sítích s tvůrcem imagí najdete v [požadavcích](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking).
+Projděte si skripty pro změny nebo povolení brány firewall nebo změny v SSH nebo WinRM a zajistěte, aby všechny změny umožňovaly stálé připojení mezi službou a sestavení virtuálního počítače na výše uvedených portech. Další informace o sítích s tvůrcem imagí najdete v [požadavcích](./image-builder-networking.md).
 
 ## <a name="devops-task"></a>Úloha DevOps 
 
@@ -547,7 +547,7 @@ Přejít na účet úložiště > objekty blob > kontejnery > protokoly.
 ### <a name="troubleshooting-successful-builds"></a>Řešení potíží s úspěšným sestavením
 Může se jednat o některé případy, kdy potřebujete prozkoumat úspěšná sestavení a chcete si prohlédnout protokol. Jak už bylo zmíněno, pokud je sestavení image úspěšné, pracovní skupina prostředků, která obsahuje protokoly, se odstraní v rámci vyčištění. To, co všechno můžete dělat, je ale po vloženém příkazu po vložení přejít do režimu spánku a pak získá protokoly jako pozastavené sestavení. Použijte následující postup:
  
-1. Aktualizujte vložený příkaz a přidejte: write-host/echo "spánek" – to vám umožní vyhledávat v protokolu.
+1. Aktualizujte vložený příkaz a přidejte: Write-Host/echo "spánek" – to vám umožní vyhledávat v protokolu.
 2. Přidejte režim spánku aspoň na 10mins, můžete použít příkaz [Start-Sleep](/powershell/module/microsoft.powershell.utility/start-sleep)nebo `Sleep` Linux.
 3. K identifikaci umístění protokolu použijte výše uvedenou metodu a pak si nechte protokol stáhnout nebo zkontrolovat, dokud se nedostane do režimu spánku.
 
@@ -586,7 +586,7 @@ Může se jednat o některé případy, kdy potřebujete prozkoumat úspěšná 
 
 Pokud uživatel sestavení nezrušil, byl zrušen uživatelským agentem služby Azure DevOps. V důsledku možností Azure DevOps došlo k nejpravděpodobnějšímu vypršení platnosti 1 hodiny. Pokud používáte privátní projekt a agenta, dostanete 60 minut času sestavení. Pokud sestavení překračuje časový limit, DevOps zruší spuštěnou úlohu.
 
-Další informace o možnostech a omezeních Azure DevOps najdete v tématu [agenti hostované v Microsoftu](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations) .
+Další informace o možnostech a omezeních Azure DevOps najdete v tématu [agenti hostované v Microsoftu](/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations) .
  
 #### <a name="solution"></a>Řešení
 
@@ -601,7 +601,7 @@ Please wait for the Windows Modules Installer
 ```
 
 #### <a name="solution"></a>Řešení
-Nejprve v sestavení bitové kopie ověřte, že neexistují žádná nevyřízená restartování, a to tak, že jako poslední přizpůsobení přidáte restart systému Windows a všechny instalace softwaru budou dokončeny. Nakonec přidejte možnost [/Mode: VM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-command-line-options) do výchozího nástroje Sysprep, který AIB používá. Další informace najdete v části virtuální počítače vytvořené z imagí AIB se úspěšně nevytvořily > přepsání příkazů.  
+Nejprve v sestavení bitové kopie ověřte, že neexistují žádná nevyřízená restartování, a to tak, že jako poslední přizpůsobení přidáte restart systému Windows a všechny instalace softwaru budou dokončeny. Nakonec přidejte možnost [/Mode: VM](/windows-hardware/manufacture/desktop/sysprep-command-line-options) do výchozího nástroje Sysprep, který AIB používá. Další informace najdete v části virtuální počítače vytvořené z imagí AIB se úspěšně nevytvořily > přepsání příkazů.  
 
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>Virtuální počítače vytvořené z imagí AIB se nevytvoří úspěšně.

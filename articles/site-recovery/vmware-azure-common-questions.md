@@ -4,10 +4,10 @@ description: Získejte odpovědi na běžné dotazy týkající se zotavení po 
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: 1d61b8556038959f6acab447fc0510830b1dd943
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89054967"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Běžné otázky týkající se replikace z VMware do Azure
@@ -22,7 +22,7 @@ Tento článek obsahuje odpovědi na běžné dotazy, které se můžou při nas
 
 ### <a name="can-i-use-site-recovery-to-migrate-vmware-vms-to-azure"></a>Můžu použít Site Recovery k migraci virtuálních počítačů VMware do Azure?
 
-Yes. Kromě použití Site Recovery k nastavení úplného zotavení po havárii pro virtuální počítače VMware můžete použít také Site Recovery k migraci místních virtuálních počítačů VMware do Azure. V tomto scénáři replikujte místní virtuální počítače VMware do Azure Storage. Pak převezmete služby při selhání z místního prostředí do Azure. Po převzetí služeb při selhání jsou vaše aplikace a úlohy dostupné a spuštěné na virtuálních počítačích Azure. Tento proces je podobný nastavení úplného zotavení po havárii s tím rozdílem, že v migraci nemůžete navracet služby po obnovení z Azure.
+Ano. Kromě použití Site Recovery k nastavení úplného zotavení po havárii pro virtuální počítače VMware můžete použít také Site Recovery k migraci místních virtuálních počítačů VMware do Azure. V tomto scénáři replikujte místní virtuální počítače VMware do Azure Storage. Pak převezmete služby při selhání z místního prostředí do Azure. Po převzetí služeb při selhání jsou vaše aplikace a úlohy dostupné a spuštěné na virtuálních počítačích Azure. Tento proces je podobný nastavení úplného zotavení po havárii s tím rozdílem, že v migraci nemůžete navracet služby po obnovení z Azure.
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Potřebuje můj účet Azure oprávnění k vytváření virtuálních počítačů?
 
@@ -112,7 +112,7 @@ Site Recovery replikuje místní virtuální počítače VMware a fyzické serve
 
 ### <a name="can-i-replicate-new-machines-to-storage-accounts"></a>Můžu replikovat nové počítače do účtů úložiště?
 
-No. Od března 2019 můžete v Azure Portal replikovat pouze do Azure Managed disks.
+Ne. Od března 2019 můžete v Azure Portal replikovat pouze do Azure Managed disks.
 
 Replikace nových virtuálních počítačů do účtu úložiště je k dispozici pouze pomocí prostředí PowerShell ([AZ. RecoveryServices Module verze 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) nebo REST API (verze 2018-01-10 nebo 2016-08-10). [Přečtěte si, jak](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell) nastavit replikaci pomocí příkazů PowerShellu.
 
@@ -131,7 +131,7 @@ Ano, pro průběžné replikace můžete snadno [změnit typ spravovaného disku
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>Můžu přepínat replikaci ze spravovaných disků na nespravované disky?
 
-No. Přepnutí ze spravovaného na nespravované není podporováno.
+Ne. Přepnutí ze spravovaného na nespravované není podporováno.
 
 ## <a name="replication"></a>Replikace
 
@@ -176,7 +176,7 @@ Pro replikaci VMware do Azure můžete změnit velikost disku zdrojových virtu�
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>Můžu migrovat místní počítače na novou vCenter Server, aniž by to ovlivnilo probíhající replikaci?
 
-No. Změna VMware vCenter nebo migrace by ovlivnila průběžnou replikaci. Nastavte Site Recovery s novým vCenter Server a znovu povolte replikaci pro počítače.
+Ne. Změna VMware vCenter nebo migrace by ovlivnila průběžnou replikaci. Nastavte Site Recovery s novým vCenter Server a znovu povolte replikaci pro počítače.
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>Můžu replikovat do mezipaměti nebo cílového účtu úložiště, který má nakonfigurovanou virtuální síť (s bránami firewall Azure)?
 
@@ -202,7 +202,7 @@ Site Recovery se řídí modelem podpory N-4. [Přečtěte si další informace]
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>Musím pro každý upgrade restartovat zdrojové počítače?
 
-Pro každý upgrade se doporučuje restart, ale není povinný. [Přečtěte si další informace](https://aka.ms/asr_vmware_upgrades).
+Pro každý upgrade se doporučuje restart, ale není povinný. [Další informace](https://aka.ms/asr_vmware_upgrades).
 
 ## <a name="configuration-server"></a>Konfigurační server
 
@@ -234,7 +234,7 @@ Doporučujeme [vytvořit virtuální počítač konfiguračního serveru](vmware
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>Může být konfigurační server replikován do více než jedné oblasti?
 
-No. Chcete-li provést replikaci do více než jedné oblasti, budete potřebovat konfigurační server v každé oblasti.
+Ne. Chcete-li provést replikaci do více než jedné oblasti, budete potřebovat konfigurační server v každé oblasti.
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>Můžu hostovat konfigurační server v Azure?
 
@@ -258,23 +258,23 @@ Doporučujeme, abyste provedli pravidelné naplánované zálohy konfiguračníh
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>Můžu při nastavování konfiguračního serveru ručně stáhnout a nainstalovat MySQL?
 
-Yes. Stáhněte si MySQL a umístěte ho do složky C:\Temp\ASRSetup. Pak ji nainstalujte ručně. Když nastavíte virtuální počítač konfiguračního serveru a přijmete podmínky, bude MySQL uveden jako **již nainstalovaný** při **Stažení a instalaci**.
+Ano. Stáhněte si MySQL a umístěte ho do složky C:\Temp\ASRSetup. Pak ji nainstalujte ručně. Když nastavíte virtuální počítač konfiguračního serveru a přijmete podmínky, bude MySQL uveden jako **již nainstalovaný** při **Stažení a instalaci**.
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>Můžu se vyhnout stažení MySQL, ale nechat si ji Site Recovery nainstalovat?
 
-Yes. Stáhněte si instalační program MySQL a umístěte ho do složky C:\Temp\ASRSetup. Při nastavování virtuálního počítače konfiguračního serveru přijměte podmínky a vyberte **Stáhnout a nainstalovat**. Portál použije instalační program, který jste přidali k instalaci MySQL.
+Ano. Stáhněte si instalační program MySQL a umístěte ho do složky C:\Temp\ASRSetup. Při nastavování virtuálního počítače konfiguračního serveru přijměte podmínky a vyberte **Stáhnout a nainstalovat**. Portál použije instalační program, který jste přidali k instalaci MySQL.
 
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>Můžu použít virtuální počítač konfiguračního serveru pro cokoli jiného?
 
-No. Virtuální počítač používejte jenom pro konfigurační server.
+Ne. Virtuální počítač používejte jenom pro konfigurační server.
 
 ### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>Můžu naklonovat konfigurační server a použít ho k orchestraci?
 
-No. Nastavte nový konfigurační server, aby nedocházelo k problémům s registrací.
+Ne. Nastavte nový konfigurační server, aby nedocházelo k problémům s registrací.
 
 ### <a name="can-i-change-the-vault-in-which-the-configuration-server-is-registered"></a>Můžu změnit trezor, ve kterém je konfigurační server zaregistrovaný?
 
-No. Po přidružení trezoru ke konfiguračnímu serveru ho nelze změnit. [Přečtěte si](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault) o registraci konfiguračního serveru pomocí jiného trezoru.
+Ne. Po přidružení trezoru ke konfiguračnímu serveru ho nelze změnit. [Přečtěte si](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault) o registraci konfiguračního serveru pomocí jiného trezoru.
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>Můžu použít stejný konfigurační server pro zotavení po havárii virtuálních počítačů VMware i fyzických serverů?
 
@@ -330,7 +330,7 @@ V případě VMware do Azure je nejstarším bodem obnovení, který můžete po
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Návody přístup k virtuálním počítačům Azure po převzetí služeb při selhání
 
-Po převzetí služeb při selhání získáte přístup k virtuálním počítačům Azure přes zabezpečené připojení k Internetu, přes síť VPN typu Site-to-site nebo přes Azure ExpressRoute. Chcete-li se připojit, je nutné připravit několik věcí. [Přečtěte si další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+Po převzetí služeb při selhání získáte přístup k virtuálním počítačům Azure přes zabezpečené připojení k Internetu, přes síť VPN typu Site-to-site nebo přes Azure ExpressRoute. Chcete-li se připojit, je nutné připravit několik věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 ### <a name="is-failed-over-data-resilient"></a>Nedošlo k převzetí služeb při selhání proti datům?
 
@@ -342,7 +342,7 @@ Služba Azure je pro odolnost navržena. Site Recovery je navržena pro převzet
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Můžu navrátit služby po obnovení do jiného umístění?
 
-Yes. Pokud převezmete služby při selhání do Azure, můžete navrátit služby po obnovení do jiného umístění, pokud není k dispozici původní. [Přečtěte si další informace](concepts-types-of-failback.md#alternate-location-recovery-alr).
+Ano. Pokud převezmete služby při selhání do Azure, můžete navrátit služby po obnovení do jiného umístění, pokud není k dispozici původní. [Další informace](concepts-types-of-failback.md#alternate-location-recovery-alr).
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-with-private-peering-to-fail-back"></a>Proč potřebuji připojení VPN nebo ExpressRoute se soukromým partnerským vztahem k navrácení služeb po obnovení?
 
@@ -353,13 +353,13 @@ Po navrácení služeb po obnovení z Azure se data z Azure zkopírují zpátky 
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>Je možné nastavit replikaci pomocí skriptování?
 
-Yes. Site Recovery pracovní postupy můžete automatizovat pomocí rozhraní REST API, PowerShellu nebo sady Azure SDK. [Přečtěte si další informace](vmware-azure-disaster-recovery-powershell.md).
+Ano. Site Recovery pracovní postupy můžete automatizovat pomocí rozhraní REST API, PowerShellu nebo sady Azure SDK. [Další informace](vmware-azure-disaster-recovery-powershell.md).
 
 ## <a name="performance-and-capacity"></a>Výkon a kapacita
 
 ### <a name="can-i-throttle-replication-bandwidth"></a>Je možné šířku pásma replikace omezit?
 
-Yes. [Přečtěte si další informace](site-recovery-plan-capacity-vmware.md).
+Ano. [Další informace](site-recovery-plan-capacity-vmware.md).
 
 ## <a name="next-steps"></a>Další kroky
 

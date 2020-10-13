@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: c4ac9e182a7504ea96f73f2ab95d50fb9d859e47
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665221"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Elium
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Elium s Azure Active Directory (Azure 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Elium svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -96,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Elium několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| ----------------|
     | e-mail   |uživatel. pošta |
     | first_name| User. křestní jméno |
@@ -125,7 +125,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Create** (Vytvořit).
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -153,15 +153,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **Profil uživatele** z pravého horního rohu a pak vyberte **Nastavení**.
 
-    ![Konfigurace jednotného přihlašování Elium 01](./media/elium-tutorial/elium-01.png)
+    ![Konfigurace jednoho Sign-On Elium 01](./media/elium-tutorial/elium-01.png)
 
 1. V části **Upřesnit**vyberte **zabezpečení** .
 
-    ![Konfigurace jednotného přihlašování Elium 02](./media/elium-tutorial/elium-02.png)
+    ![Konfigurace jednoho Sign-On Elium 02](./media/elium-tutorial/elium-02.png)
 
 1. Posuňte se dolů k části **jednotné přihlašování (SSO)** a proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování Elium 03](./media/elium-tutorial/elium-03.png)
+    ![Konfigurace jednoho Sign-On Elium 03](./media/elium-tutorial/elium-03.png)
 
     a. Zkopírujte hodnotu **ověřit, jestli typu Saml2 ověřování funguje pro váš účet** , a vložte ho do textového pole **přihlašovací adresa URL** v základní části **Konfigurace SAML** v Azure Portal.
 
@@ -176,11 +176,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     e. Vyhledejte **entityID** v souboru **metadat SP** , zkopírujte hodnotu **entityID** a vložte ji do textového pole **identifikátor** v **základní části Konfigurace SAML** v Azure Portal. 
 
-    ![Konfigurace jednotného přihlašování Elium 04](./media/elium-tutorial/elium-04.png)
+    ![Konfigurace jednoho Sign-On Elium 04](./media/elium-tutorial/elium-04.png)
 
     f. Vyhledejte **AssertionConsumerService** v souboru **metadat SP** , zkopírujte hodnotu **umístění** a vložte ji do textového pole **Adresa URL odpovědi** v části **základní konfigurace SAML** v Azure Portal.
 
-    ![Konfigurace jednotného přihlašování Elium 05](./media/elium-tutorial/elium-05.png)
+    ![Konfigurace jednoho Sign-On Elium 05](./media/elium-tutorial/elium-05.png)
 
     například Otevřete stažený soubor metadat z Azure Portal do programu Poznámkový blok, zkopírujte obsah a vložte ho do textového pole **metadat IDP** .
 

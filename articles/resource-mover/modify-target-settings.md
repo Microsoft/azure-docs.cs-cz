@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: ca22def6bc152d03c3992ed7e94ac2b5ccf179e9
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604474"
 ---
-# <a name="modify-target-settings"></a>Upravit nastavení cíle
+# <a name="modify-target-settings"></a>Úprava nastavení cíle
 
 Tento článek popisuje, jak upravit nastavení cíle při přesouvání prostředků mezi oblastmi Azure pomocí nástroje [Azure Resource stěhovací](overview.md).
 

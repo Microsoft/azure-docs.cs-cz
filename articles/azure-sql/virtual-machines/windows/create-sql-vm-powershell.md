@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: bb3fd9136f78a332a22f973d211dec748c4fb260
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317068"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Jak pomocí Azure PowerShell zřídit SQL Server v Azure Virtual Machines
@@ -28,7 +28,7 @@ ms.locfileid: "91317068"
 
 Tato příručka popisuje možnosti použití prostředí PowerShell ke zřízení SQL Server v Azure Virtual Machines (VM). Zjednodušený Azure PowerShell příklad, který závisí na výchozích hodnotách, najdete v článku [rychlý Start k SQL VM Azure PowerShell](sql-vm-create-powershell-quickstart.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 

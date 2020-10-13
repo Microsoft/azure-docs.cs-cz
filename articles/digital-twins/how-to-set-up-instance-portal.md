@@ -8,10 +8,10 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 12b0dd957cb89fc7114c752312b08f1e490499da
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89280022"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Nastavení instance a ověřování digitálních vláken Azure (portál)
@@ -36,7 +36,7 @@ Na portálu Začněte výběrem možnosti _vytvořit prostředek_ v nabídce dom
 
 Ve vyhledávacím poli vyhledejte *digitální vlákna Azure* a z výsledků vyberte službu **Azure Digital revlákens (Preview)** . Kliknutím na tlačítko _vytvořit_ vytvořte novou instanci služby.
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Výběr možnosti ' vytvořit ' na stránce služby Azure Digital Service":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 Na následující stránce *vytvořit prostředek* vyplňte hodnoty uvedené níže:
 * **Předplatné**: předplatné Azure, které používáte
@@ -44,7 +44,7 @@ Na následující stránce *vytvořit prostředek* vyplňte hodnoty uvedené ní
 * **Umístění**: oblast s povolenými digitálními podtechnologiemi Azure pro nasazení. Další podrobnosti o místní podpoře najdete v [*produktech Azure dostupných v oblasti (digitální vlákna Azure)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
 * **Název prostředku**: název vaší instance digitálního vlákna Azure. Název nové instance musí být v rámci vašeho předplatného jedinečný (to znamená, že pokud má vaše předplatné jinou instanci digitálních vláken Azure v oblasti, která už používá zvolený název, zobrazí se výzva k výběru jiného názvu).
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Naplnění popsaných hodnot k vytvoření prostředku digitálních vláken Azure":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 Po dokončení vyberte _zkontrolovat + vytvořit_. Tím přejdete na stránku Souhrn, kde můžete zkontrolovat podrobnosti instance, které jste zadali, a _vytvořit_. 
 
@@ -52,7 +52,7 @@ Po dokončení vyberte _zkontrolovat + vytvořit_. Tím přejdete na stránku So
 
 Po nahrání *Vytvoření*můžete zobrazit stav nasazení vaší instance v oznámeních Azure na panelu ikon portálu. Oznámení bude označovat, že nasazení proběhlo úspěšně, a budete moci vybrat tlačítko _Přejít k prostředku_ a zobrazit vytvořenou instanci.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Zobrazení oznámení Azure znázorňující úspěšné nasazení a zvýraznění tlačítka přejít na prostředek":::
+:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 Případně, pokud se nasazení nezdaří, oznámení indikuje, proč. Sledujte Rady z chybové zprávy a zkuste instanci vytvořit znovu.
 
@@ -61,7 +61,7 @@ Případně, pokud se nasazení nezdaří, oznámení indikuje, proč. Sledujte 
 
 Na stránce *Přehled* instance si poznamenejte její *název*, *skupinu prostředků*a *název hostitele*. Jedná se o všechny důležité hodnoty, které možná budete potřebovat, když budete pokračovat v práci s vaší instancí digitálních vláken Azure. Pokud budou jiné uživatele programovat s instancí, měli byste je s těmito hodnotami sdílet.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Zvýrazňování důležitých hodnot na stránce přehledu instance":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 Teď máte k dispozici instanci digitálních vláken Azure, která je připravená k přechodu. V dalším kroku poskytnete příslušnému uživateli Azure oprávnění ke správě.
 
@@ -71,7 +71,7 @@ Teď máte k dispozici instanci digitálních vláken Azure, která je připrave
 
 Nejdřív otevřete stránku pro instanci digitálních vláken Azure v Azure Portal. V nabídce instance vyberte *řízení přístupu (IAM)*. V části *Přidat přiřazení role*vyberte tlačítko *Přidat* .
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Výběr přidání přiřazení role ze stránky řízení přístupu (IAM)":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 Na následující stránce *Přidat přiřazení role* vyplňte hodnoty (musí být dokončené uživatelem s [dostatečnými oprávněními](#prerequisites-permission-requirements) v předplatném Azure):
 * **Role**: v rozevírací nabídce vyberte *vlastníka digitálních vláken Azure (Preview)* .
@@ -80,7 +80,7 @@ Na následující stránce *Přidat přiřazení role* vyplňte hodnoty (musí b
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="Naplnění uvedených polí do dialogového okna Přidat přiřazení role":::
+        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -92,7 +92,7 @@ Až skončíte s zadáváním podrobností, stiskněte tlačítko *Uložit* .
 
 Můžete zobrazit přiřazení role, které jste nastavili v části *řízení přístupu (IAM) > přiřazení rolí*. Uživatel by se měl zobrazit v seznamu s rolí *vlastníka digitálních vláken Azure (Preview)*. 
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Zobrazení přiřazení rolí pro instanci digitálních vláken Azure v Azure Portal":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 Teď máte k dispozici instanci digitálních vláken Azure, která je připravená k použití, a máte přiřazená oprávnění ke správě IT. Potom nastavíte oprávnění pro klientské aplikace pro přístup k ní.
 
@@ -102,7 +102,7 @@ Teď máte k dispozici instanci digitálních vláken Azure, která je připrave
 
 Začněte tím, že přejdete na [Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) v Azure Portal (můžete použít tento odkaz nebo ho najít pomocí panelu hledání na portálu). V nabídce služba vyberte *Registrace aplikací* a potom klikněte na *+ Nová registrace*.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="Zobrazení stránky služby Azure AD v Azure Portal, zvýraznění možnosti nabídky Registrace aplikací a + nová registrace":::
+:::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 Na následující stránce *Registrovat aplikaci* vyplňte požadované hodnoty:
 * **Název**: zobrazovaný název aplikace Azure AD, který se má přidružit k registraci.
@@ -111,7 +111,7 @@ Na následující stránce *Registrovat aplikaci* vyplňte požadované hodnoty:
 
 Až skončíte, stiskněte tlačítko *zaregistrovat* .
 
-:::image type="content" source="media/how-to-set-up-instance/portal/register-an-application.png" alt-text="Zobrazení stránky registrace aplikace s popsanými hodnotami, které jsou vyplněny":::
+:::image type="content" source="media/how-to-set-up-instance/portal/register-an-application.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 Po dokončení nastavení registrace bude portál přesměrován na stránku podrobností.
 
@@ -121,18 +121,18 @@ V dalším kroku nakonfigurujte registraci aplikace, kterou jste vytvořili, s o
 
 Na stránce portálu pro registraci aplikace vyberte v nabídce *oprávnění rozhraní API* . Na následující stránce oprávnění stiskněte tlačítko *+ Přidat oprávnění* .
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Zobrazení registrace aplikace v Azure Portal, zvýraznění možnosti nabídky oprávnění rozhraní API a tlačítka + Přidat oprávnění":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 Na stránce *oprávnění rozhraní API* , které následuje, přepněte do *rozhraní API moje organizace používá* kartu a vyhledejte *digitální vlákna Azure*. Pokud chcete pokračovat v přiřazování oprávnění pro rozhraní API digitálních vláken Azure, vyberte z výsledků hledání možnost *digitálních vláken Azure* .
 
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Zobrazení výsledků hledání stránky žádosti API s informacemi o tom, že se zobrazují digitální vlákna Azure":::
+:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 >[!NOTE]
 > Pokud máte existující instanci digitálních vláken Azure z předchozí verze Public Preview služby (starší než červenec 2020) ve vašem předplatném, budete muset místo toho hledat *službu inteligentních prostorů Azure* . Toto je starší název pro stejnou sadu rozhraní API a nemění se tím prostředí nad rámec tohoto kroku.
 
 V dalším kroku vyberete, která oprávnění chcete těmto rozhraním API udělit. Rozbalte oprávnění **číst (1)** a zaškrtněte políčko *číst. zapsat* pro udělení oprávnění pro přístup k registraci aplikace a oprávnění k zápisu.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="Zobrazení stránky žádosti o oprávnění API výběr oprávnění číst. zapsat pro rozhraní API digitálních vláken Azure":::
+:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 Po dokončení stiskněte *Přidat oprávnění* .
 
@@ -140,19 +140,19 @@ Po dokončení stiskněte *Přidat oprávnění* .
 
 Zpátky na stránce *oprávnění rozhraní API* ověřte, že je teď záznam pro digitální vlákna Azure, který odráží oprávnění ke čtení a zápisu:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Zobrazení portálu oprávnění rozhraní API pro registraci aplikace Azure AD, které zobrazuje přístup pro čtení a zápis pro digitální vlákna Azure":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 Můžete také ověřit připojení k digitálním vyplnění Azure v rámci registrace aplikace *manifest.jsv*, která byla automaticky aktualizována pomocí informací o digitálním prostředí Azure, když jste přidali oprávnění rozhraní API.
 
 Provedete to tak, že v nabídce vyberete *manifest* a zobrazíte kód manifestu registrace aplikace. Posuňte se do dolní části okna Code (kód) a vyhledejte tato pole v části `requiredResourceAccess` . Hodnoty by měly odpovídat hodnotám na snímku obrazovky níže:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Zobrazení portálu manifestu pro registraci aplikace služby Azure AD. Vnořená pod ' requiredResourceAccess ', existuje hodnota ' resourceAppId ' 0b07f429-9f4b-4714-9392-cc5e8e80c8b0 a hodnota ' resourceAccess > ID ' 4589bd03-58cb-4e6c-b17f-b580e39652f8":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 ### <a name="collect-important-values"></a>Shromažďovat důležité hodnoty
 
 V dalším kroku na řádku nabídek vyberte *Přehled* a zobrazte podrobnosti o registraci aplikace:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Zobrazení důležitých hodnot pro registraci aplikace na portálu":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 Poznamenejte si *ID aplikace (klienta)* a *ID adresáře (tenanta)* **zobrazené na stránce** . Tyto hodnoty budete potřebovat později při [ověřování klientské aplikace proti rozhraním API pro digitální vlákna Azure](how-to-authenticate-client.md). Pokud nejste osoba, která bude psát kód pro takové aplikace, měli byste tyto hodnoty sdílet s osobou, která bude.
 

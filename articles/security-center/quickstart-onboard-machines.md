@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: df780e4e55bb5c119320d4b33502d50a95da1eaf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612213"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Připojení počítačů mimo Azure k Security Center
@@ -116,7 +116,7 @@ Další informace o instalaci a konfiguraci agenta najdete v tématu [připojen�
 
 
 ## <a name="verifying"></a>Ověřoval
-Blahopřejeme! Teď můžete na jednom místě zobrazit počítače s Azure a mimo Azure společně. Otevřete [stránku inventarizace assetů](asset-inventory.md) a vyfiltrujte příslušné typy prostředků. Tyto ikony rozlišují tyto typy:
+Gratulujeme! Teď můžete na jednom místě zobrazit počítače s Azure a mimo Azure společně. Otevřete [stránku inventarizace assetů](asset-inventory.md) a vyfiltrujte příslušné typy prostředků. Tyto ikony rozlišují tyto typy:
 
   ![Ikona ASC pro počítač mimo Azure](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Počítač mimo Azure
 

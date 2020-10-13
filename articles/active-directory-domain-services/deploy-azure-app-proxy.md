@@ -2,7 +2,7 @@
 title: Nasadit Azure Proxy aplikací služby AD pro Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si, jak zajistit zabezpečený přístup k interním aplikacím pro vzdálené procesy nasazením a konfigurací Proxy aplikací služby Azure Active Directory ve Azure Active Directory Domain Services spravované doméně.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: f02f8c0c5aabc48e7b9966898028485a4687f413
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: bc16f75a4ed2f9fe3be8a8bdc2d981a339780cc3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723074"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960775"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Nasazení Azure Proxy aplikací služby AD pro zabezpečený přístup k interním aplikacím ve Azure Active Directory Domain Services spravované doméně
 

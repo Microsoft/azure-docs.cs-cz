@@ -11,17 +11,17 @@ ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
 ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761545"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Referenční dokumentace sady pro moderní čtečku JavaScript SDK (v 1.1)
 
 Sada moderní čtečka SDK obsahuje knihovnu JavaScriptu, která umožňuje integrovat moderní čtečku do vaší aplikace.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
 Sada SDK zpřístupňuje funkce:
 
@@ -115,7 +115,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 #### <a name="renderbuttons-parameters"></a>Parametry renderButtons
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | ---- | ---- |------------ |
 | `options` | [renderButtons možnosti](#renderbuttons-options) | Možnosti pro konfiguraci určitého chování funkce renderButtons Nepovinný parametr. |
 
@@ -131,7 +131,7 @@ Možnosti pro vykreslování tlačítek pro moderní čtečku
 
 #### <a name="renderbuttons-options-parameters"></a>Parametry možností renderButtons
 
-| Nastavení | Typ | Popis |
+| Nastavení | Typ | Description |
 | ------- | ---- | ----------- |
 | elementy | HTMLDivElement[] | Prvky pro vykreslení tlačítek pro moderní čtečku v. |
 
@@ -156,7 +156,7 @@ Obsahuje odpověď od volání `ImmersiveReader.launchAsync` . Všimněte si, ž
 
 #### <a name="launchresponse-parameters"></a>Parametry LaunchResponse
 
-| Nastavení | Typ | Popis |
+| Nastavení | Typ | Description |
 | ------- | ---- | ----------- |
 | kontejner | HTMLDivElement | Prvek HTML, který obsahuje prvek pro moderní čtečku. |
 | sessionId | Řetězec | Globálně jedinečný identifikátor pro tuto relaci, který se používá pro ladění. |
@@ -174,14 +174,14 @@ Obsahuje informace o chybě.
 
 #### <a name="error-parameters"></a>Parametry chyby
 
-| Nastavení | Typ | Popis |
+| Nastavení | Typ | Description |
 | ------- | ---- | ----------- |
 | kód | Řetězec | Jeden ze sady chybových kódů. Viz [kódy chyb](#error-codes). |
 | zpráva | Řetězec | Reprezentace chyby v čitelném člověku |
 
 #### <a name="error-codes"></a>Kódy chyb
 
-| Kód | Popis |
+| Kód | Description |
 | ---- | ----------- |
 | BadArgument | Zadaný argument je neplatný, viz `message` parametr [chyby](#error). |
 | Časový limit | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
@@ -205,7 +205,7 @@ Obsahuje obsah, který se zobrazí v moderní čtečce.
 
 #### <a name="content-parameters"></a>Parametry obsahu
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | ---- | ---- |------------ |
 | title | Řetězec | Text nadpisu zobrazený v horní části moderního čtecího zařízení (volitelné) |
 | bloky dat | [Blok dat []](#chunk) | Pole bloků |
@@ -240,7 +240,7 @@ Jeden blok dat, který se předává do obsahu moderního čtecího zařízení.
 
 #### <a name="chunk-parameters"></a>Parametry bloku dat
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | ---- | ---- |------------ |
 | obsah | Řetězec | Řetězec obsahující obsah odeslaný do moderního čtecího zařízení. |
 | jazyk | Řetězec | Jazyk textu, hodnota je ve formátu značek IETF BCP 47, například en, ES-ES. Jazyk bude detekován automaticky, pokud není zadán. Viz [Podporované jazyky](#supported-languages). |
@@ -269,7 +269,7 @@ Default value: "text/plain"
 
 #### <a name="supported-mime-types"></a>Podporované typy MIME
 
-| Typ MIME | Popis |
+| Typ MIME | Description |
 | --------- | ----------- |
 | Text/prostý | Prostý text. |
 | text/html | Obsah HTML. [Další informace](#html-support)|
@@ -305,7 +305,7 @@ Obsahuje vlastnosti, které konfigurují určité chování moderního čtecího
 
 #### <a name="options-parameters"></a>Parametry možností
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | ---- | ---- |------------ |
 | uiLang | Řetězec | Jazyk uživatelského rozhraní, hodnota je ve formátu značek IETF BCP 47, například en, ES-ES. Pokud není zadaný, použije se výchozí jazyk prohlížeče. |
 | timeout | Číslo | Doba (v milisekundách), po jejímž uplynutí [launchAsync](#launchasync) dojde k chybě s časovým limitem (výchozí hodnota je 15000 MS). Tento časový limit se vztahuje pouze na počáteční spuštění stránky čtenář, kde po otevření stránky čtenář a spuštění číselníku dojde k úspěchu. Nastavení časového limitu by nemělo být nutné. |
@@ -390,7 +390,7 @@ type ReadAloudOptions = {
 
 #### <a name="readaloudoptions-parameters"></a>Parametry ReadAloudOptions
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | ---- | ---- |------------ |
 | telefonní | Řetězec | Voice, buďto "žena" nebo "muž". Všimněte si, že ne všechny jazyky podporují pohlaví. |
 | rychlost | Číslo | Rychlost přehrávání musí být v rozmezí od 0,5 do 2,5 (včetně). |
@@ -429,7 +429,7 @@ type TranslationOptions = {
 
 #### <a name="translationoptions-parameters"></a>Parametry TranslationOptions
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | ---- | ---- |------------ |
 | language | Řetězec | Nastaví jazyk překladu, hodnota je ve formátu značky jazyka IETF BCP 47, například fr-FR, ES-MX, zh-Hans-CN. Vyžaduje se pro automatické povolení převodu Wordu nebo dokumentu. |
 | autoEnableDocumentTranslation | Logická hodnota | Automaticky převede celý dokument. |
@@ -457,7 +457,7 @@ type DisplayOptions = {
 
 #### <a name="displayoptions-parameters"></a>Parametry DisplayOptions
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | ---- | ---- |------------ |
 | textSize | Číslo | Nastaví zvolenou velikost textu. |
 | increaseSpacing | Logická hodnota | Nastaví, zda se má zapnout nebo vypnout řádkování textu. |
@@ -491,7 +491,7 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="settings-parameters"></a>Parametry nastavení
 
-| Nastavení | Typ | Popis |
+| Nastavení | Typ | Description |
 | ------- | ---- | ----------- |
 | textSize | Číslo | Nastaví zvolenou velikost textu. |
 | fontFamily | Řetězec | Nastaví zvolené písmo ("Calibri", "ComicSans" nebo "Sitka"). |
@@ -526,7 +526,7 @@ Když je povolené formátování, v moderním čtečce se v moderní čtečce v
 | --------- | ----------- |
 | Styly písma | Tučné, kurzíva, podtržení, kód, přeškrtnutí, horní index, dolní index |
 | Neuspořádané seznamy | Disk, kruh, čtverec |
-| Seřazené seznamy | Decimal, Upper-Alpha, nižší-alfa, horní – Roman, nižší – Roman |
+| Seřazené seznamy | Decimal, Upper-Alpha, nižší-alfa, horní – Roman, Lower-Roman |
 
 Nepodporované značky budou vykresleny srovnatelně. Obrázky a tabulky se aktuálně nepodporují.
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0aefe95f3e78afc4b449539fd683ffc1fe525a15
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89280175"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory předávací ověřování: rychlý Start
@@ -79,7 +79,7 @@ Ujistěte se, že jsou splněné následující požadavky.
 ### <a name="azure-government-cloud-prerequisite"></a>Cloudová součást Azure Government
 Před povolením předávacího ověřování prostřednictvím Azure AD Connect v kroku 2 si stáhněte nejnovější verzi agenta PTA z Azure Portal.  Musíte zajistit, aby byl váš Agent 1.5.1742.0 verze **.** nebo novější.  Postup ověření agenta najdete v tématu [Upgrade agentů ověřování](how-to-connect-pta-upgrade-preview-authentication-agents.md) .
 
-Po stažení nejnovější verze agenta pokračujte níže uvedenými pokyny ke konfiguraci předávacího ověřování prostřednictvím Azure AD Connect.
+Po stažení nejnovější verze agenta pokračujte níže uvedenými pokyny ke konfiguraci ověřování Pass-Through prostřednictvím Azure AD Connect.
 
 ## <a name="step-2-enable-the-feature"></a>Krok 2: povolení funkce
 

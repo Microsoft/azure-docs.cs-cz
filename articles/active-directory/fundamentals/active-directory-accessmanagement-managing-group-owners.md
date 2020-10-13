@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b547ecd4ff76e650d7be837fa5bce03046da50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 788386dc3cbfb8b4252e8710d8ee1bfd9dbe4e66
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318586"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969910"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Přidat nebo odebrat vlastníky skupiny v Azure Active Directory
 Skupiny Azure Active Directory (Azure AD) jsou vlastněné a spravované vlastníky skupin. Vlastníci skupiny můžou být uživatelé nebo instanční objekty a můžou spravovat skupinu včetně členství. Vlastníci skupiny můžou přiřadit jenom existující vlastníci skupiny nebo skupiny – Správa správců. Vlastníci skupiny nemusí být členy skupiny.
@@ -52,7 +52,7 @@ Odebrání vlastníka ze skupiny pomocí Azure AD
 
 3. Na stránce **Přehled zásad MDM – západ** vyberte **vlastníci**.
 
-    ![Zásady MDM – Stránka s přehledem s vybranými vlastníky – západ](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
+    ![Zásady MDM – Stránka s přehledem s vybranou možností odebrat vlastníky](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
 
 4. Na stránce **zásady MDM – západ – vlastníci** vyberte uživatele, kterého chcete odebrat jako vlastníka skupiny, zvolte ze stránky informace o uživateli možnost **Odebrat** a potvrďte své rozhodnutí kliknutím na **Ano** .
 

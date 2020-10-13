@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: 77ab19296d1e310e48cdf3609c9f109dc42f6ec1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b5fc15815c9843c55bf31efe31e12e2de02d3be3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91408291"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874012"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rychlý Start: vytvoření chatovací místnosti pomocí služby Signal
 
@@ -27,7 +27,7 @@ Kód pro tento kurz je k dispozici ke stažení v [úložišti GitHub AzureSigna
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte [.NET Core SDK](https://www.microsoft.com/net/download/windows).
 * Stáhněte nebo naklonujte úložiště GitHub [AzureSignalR-Sample](https://github.com/aspnet/AzureSignalR-samples) . 
@@ -112,11 +112,11 @@ V této části přidáte do svého projektu [Nástroj Správce tajných klíč�
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddSignalR();
+        services.AddAzureSignalR();
     }
     ```
 
-    Když nepředá parametr do `AddSignalR()` , tento kód použije výchozí konfigurační klíč pro připojovací řetězec prostředků služby Signal. Výchozí konfigurační klíč je *Azure: signaler: ConnectionString*.
+    Když nepředá parametr do `AddAzureSignalR()` , tento kód použije výchozí konfigurační klíč pro připojovací řetězec prostředků služby Signal. Výchozí konfigurační klíč je *Azure: signaler: ConnectionString*.
 
 5. V *Startup.cs*aktualizujte `Configure` metodu tak, že ji nahradíte následujícím kódem.
 

@@ -12,10 +12,10 @@ ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
 ms.openlocfilehash: d90cc76da20861ae9eca7aaf59a49e5f3e866c92
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444428"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Použití ověřování Azure Active Directory
@@ -155,7 +155,7 @@ Pro objekty zabezpečení serveru Azure AD (přihlášení) se podporují násle
 - Doporučujeme nastavit časový limit připojení na 30 sekund.
 - SQL Server 2016 Management Studio a SQL Server Data Tools for Visual Studio 2015 (verze 14.0.60311.1 Duben 2016 nebo novější) podporují Azure Active Directory ověřování. (Ověřování Azure AD podporuje **.NET Framework Zprostředkovatel dat pro SQLServer**; minimálně verze .NET Framework 4,6). Proto můžou nejnovější verze těchto nástrojů a aplikací na datové vrstvě (DAC a BACPAC) používat ověřování Azure AD.
 - Od verze 15.0.1 [Nástroj Sqlcmd Utility](/sql/tools/sqlcmd-utility) a [BCP](/sql/tools/bcp-utility) podporuje interaktivní ověřování služby Active Directory s Multi-Factor Authentication.
-- Nástroj SQL Server Data Tools for Visual Studio 2015 vyžaduje alespoň 2016 verze nástrojů Data Tools (verze 14.0.60311.1) z dubna. V současné době se uživatelé Azure AD nezobrazí v SSDT Průzkumník objektů. Alternativním řešením je zobrazit uživatele v zobrazení [Sys. database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
+- Nástroj SQL Server Data Tools for Visual Studio 2015 vyžaduje alespoň 2016 verze nástrojů Data Tools (verze 14.0.60311.1) z dubna. V současné době se uživatelé Azure AD nezobrazí v SSDT Průzkumník objektů. Alternativním řešením je zobrazit uživatele v [Sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
 - [Microsoft JDBC Driver 6,0 pro SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) podporuje ověřování Azure AD. Viz také [Nastavení vlastností připojení](/sql/connect/jdbc/setting-the-connection-properties).
 - Základ se nedá ověřit pomocí ověřování Azure AD.
 - Ověřování Azure AD se podporuje pro Azure SQL Database a Azure synapse pomocí Azure Portal **importovat databáze** a **exportovat databáze** . Import a export pomocí ověřování Azure AD se taky podporuje z příkazu PowerShellu.

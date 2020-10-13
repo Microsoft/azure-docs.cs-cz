@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3ec3e44c667d6821c4a6dc0779a760b65de5046e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d134914567c26d1f4823f5f6860e86d3e52d7dd3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321836"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989481"
 ---
 <a name="HOLTop"></a>
 
@@ -24,27 +24,34 @@ ms.locfileid: "89321836"
 ## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
-* Nejnovější verze [.NET Core SDK](https://dotnet.microsoft.com/download/).
+* [Integrované vývojové prostředí (IDE) sady Visual Studio](https://visualstudio.microsoft.com/vs/) nebo aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 * Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k Počítačové zpracování obrazu službě budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
-* [Vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč a adresu URL koncového bodu s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a v `COMPUTER_VISION_ENDPOINT` uvedeném pořadí.
 
 ## <a name="setting-up"></a>Nastavení
 
 ### <a name="create-a-new-c-application"></a>Vytvoření nové aplikace v C#
 
-Vytvořte novou aplikaci .NET Core v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE). 
+#### <a name="visual-studio-ide"></a>[Integrované vývojové prostředí sady Visual Studio](#tab/visual-studio)
+
+Pomocí sady Visual Studio vytvořte novou aplikaci .NET Core. 
+
+### <a name="install-the-client-library"></a>Instalace klientské knihovny 
+
+Po vytvoření nového projektu nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení projektu v **Průzkumník řešení** a vyberete **Spravovat balíčky NuGet**. Ve Správci balíčků, který se otevře, vyberte **Procházet**, zaškrtněte políčko **Zahrnout předprodejní**a vyhledejte `Microsoft.Azure.CognitiveServices.Vision.ComputerVision` . Vyberte verzi `6.0.0-preview.1` a pak **nainstalujte**. 
+
+#### <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli)
 
 V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `computer-vision-quickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *ComputerVisionQuickstart.cs*.
 
-```dotnetcli
-dotnet new console -n computer-vision-quickstart
+```console
+dotnet new console -n (product-name)-quickstart
 ```
 
 Změňte adresář na nově vytvořenou složku aplikace. Aplikaci můžete vytvořit pomocí:
 
-```dotnetcli
+```console
 dotnet build
 ```
 
@@ -58,6 +65,19 @@ Build succeeded.
 ...
 ```
 
+### <a name="install-the-client-library"></a>Instalace klientské knihovny
+
+V adresáři aplikace nainstalujte Počítačové zpracování obrazu klientskou knihovnu pro .NET pomocí následujícího příkazu:
+
+```console
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 6.0.0-preview.1
+```
+
+---
+
+> [!TIP]
+> Chcete zobrazit celý soubor kódu pro rychlý Start najednou? Můžete ji najít na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs), který obsahuje příklady kódu v tomto rychlém startu.
+
 V adresáři projektu otevřete soubor *ComputerVisionQuickstart.cs* v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Přidejte následující `using` direktivy:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_using)]
@@ -66,15 +86,19 @@ Do třídy **programu** aplikace vytvořte proměnné pro koncový bod a klíč 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_vars)]
 
-### <a name="install-the-client-library"></a>Instalace klientské knihovny
+> [!IMPORTANT]
+> Přejděte na Azure Portal. Pokud se prostředek Počítačové zpracování obrazu, který jste vytvořili v části **předpoklady** , se úspěšně nasadil, klikněte v části **Další kroky**na tlačítko **Přejít k prostředku** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků**. 
+>
+> Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) Cognitive Services.
 
-V adresáři aplikace nainstalujte Počítačové zpracování obrazu klientskou knihovnu pro .NET pomocí následujícího příkazu:
+V `Main` metodě aplikace přidejte volání metod používaných v rámci tohoto rychlého startu. Budete je vytvářet později.
 
-```dotnetcli
-dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 6.0.0-preview.1
-```
 
-Pokud používáte integrované vývojové prostředí (IDE) sady Visual Studio, je knihovna klienta k dispozici jako balíček NuGet ke stažení.
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_client)]
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyzeinmain)]
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttextinmain)]
 
 ## <a name="object-model"></a>Objektový model
 
@@ -103,17 +127,12 @@ V nové metodě vytvořte instanci klienta s vaším koncovým bodem a klíčem.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_auth)]
 
-Pravděpodobně budete chtít zavolat tuto metodu v `Main` metodě.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_client)]
 
 ## <a name="analyze-an-image"></a>Analýza obrázku
 
 Následující kód definuje metodu, `AnalyzeImageUrl` která používá objekt klienta k analýze vzdálené image a vytisknutí výsledků. Metoda vrátí textový popis, kategorizaci, seznam značek, zjištěné plošky, příznaky obsahu pro dospělé, hlavní barvy a typ obrázku.
 
-Přidejte volání metody do `Main` metody.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyzeinmain)]
 
 ### <a name="set-up-test-image"></a>Nastavit testovací image
 
@@ -214,9 +233,6 @@ Následující kód Vytiskne informace o typu obrázku &mdash; , ať už se jedn
 
 Počítačové zpracování obrazu může číst zobrazený text v obrázku a převést jej na datový proud znaků. Další informace o rozpoznávání textu naleznete v koncepčním dokumentu [optického rozpoznávání znaků (OCR)](../../concept-recognizing-text.md#read-api) . Kód v této části používá nejnovější [verzi sady počítačové zpracování obrazu SDK pro čtení 3,0](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/6.0.0-preview.1) a definuje metodu, `BatchReadFileUrl` která používá objekt klienta ke zjištění a extrakci textu v obrázku.
 
-Přidejte volání metody do `Main` metody.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttextinmain)]
 
 ### <a name="set-up-test-image"></a>Nastavit testovací image
 
@@ -247,11 +263,19 @@ Přidejte následující kód, který analyzuje a zobrazí získaná textová da
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
+#### <a name="visual-studio-ide"></a>[Integrované vývojové prostředí sady Visual Studio](#tab/visual-studio)
+
+Spusťte aplikaci kliknutím na tlačítko **ladění** v horní části okna IDE.
+
+#### <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli)
+
 Spusťte aplikaci z adresáře aplikace pomocí `dotnet run` příkazu.
 
-```dotnetcli
+```dotnet
 dotnet run
 ```
+
+---
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

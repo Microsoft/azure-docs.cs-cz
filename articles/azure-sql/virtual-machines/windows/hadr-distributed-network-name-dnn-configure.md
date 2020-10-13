@@ -15,10 +15,10 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ce3261eca8697ae1fabc07785353a4e845dadeba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317000"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>Konfigurace distribuovaného síťového názvu pro FCI 
@@ -119,7 +119,7 @@ Chcete-li aktualizovat možné vlastníky, použijte následující postup:
    :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/fci-dnn-properties.png" alt-text="Místní nabídka pro prostředek DNN s zvýrazněným příkazem Properties":::
 1. Zrušte zaškrtnutí políček u všech uzlů, které se nepodílejí v instanci clusteru s podporou převzetí služeb při selhání. Seznam možných vlastníků prostředku DNN by měl odpovídat seznamu možných vlastníků pro prostředek instance SQL Server. Například za předpokladu, že se DATA3 neúčastní v FCI, je následující obrázek příklad odebrání DATA3 ze seznamu možných vlastníků pro prostředek DNN: 
 
-   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="Zrušte zaškrtnutí políčka vedle uzlů, které nejsou součástí FCIu pro možné vlastníky prostředku DNN.":::
+   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="Místní nabídka pro prostředek DNN s zvýrazněným příkazem Properties":::
 
 1. Kliknutím na **OK** uložte nastavení. 
 

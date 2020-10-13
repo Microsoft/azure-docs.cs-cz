@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f7a1b63864f0fbd945b97d6c2e285bfccbf934f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321942"
+ms.locfileid: "91874539"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Neočekávaná chyba při provádění souhlasu s aplikací
 
@@ -79,10 +79,12 @@ K těmto chybám dochází, když aplikace, se kterou se uživatel snaží souhl
     -   Přidání aplikace z Galerie aplikací Azure AD
 
 ## <a name="risky-app-error-and-warning"></a>Chybová zpráva a upozornění rizikové aplikace
+* **AADSTS900941:** Je vyžadován souhlas správce. Aplikace se považuje za rizikové. (AdminConsentRequiredDueToRiskyApp)
 * Tato aplikace může být riskantní. Pokud tuto aplikaci považujete za důvěryhodnou, požádejte správce, aby vám udělil přístup.
+* **AADSTS900981:** Pro rizikovou aplikaci byla přijata žádost o souhlas správce. (AdminConsentRequestRiskyAppWarning)
 * Tato aplikace může být riskantní. Pokračujte pouze v případě, že tuto aplikaci důvěřujete.
 
-Obě tyto zprávy se zobrazí, když společnost Microsoft zjistí, že žádost o souhlas může být riskantní. V mnoha dalších faktorech to může nastat, pokud se [ověřený vydavatel](../develop/publisher-verification-overview.md) nepřidal do registrace aplikace. První zpráva se zobrazí koncovým uživatelům, když je [pracovní postup pro vyjádření souhlasu správce](configure-admin-consent-workflow.md) zakázán. Druhá zpráva se zobrazí koncovým uživatelům, když je povolen pracovní postup souhlasu správce a správců. 
+Obě tyto zprávy se zobrazí, když společnost Microsoft zjistí, že žádost o souhlas může být riskantní. V mnoha dalších faktorech to může nastat, pokud se [ověřený vydavatel](../develop/publisher-verification-overview.md) nepřidal do registrace aplikace. První kód chyby a zpráva se koncovým uživatelům zobrazí, když je [pracovní postup pro vyjádření souhlasu správce](configure-admin-consent-workflow.md) zakázán. Druhý kód a zpráva se zobrazí koncovým uživatelům, když je povolen pracovní postup souhlasu správce a správců. 
 
 Koncoví uživatelé nebudou moci udělit souhlas aplikacím, které byly zjištěny jako rizikové. Správci jsou schopni, ale měli by zhodnotit, že aplikace je velmi opatrní a bude postupovat opatrně. Pokud se aplikace při další kontrole jeví jako podezřelá, může se Microsoftu ohlásit na obrazovce pro vyjádření souhlasu. 
 

@@ -8,27 +8,26 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13c7178b4a0866066dc74e409f8f4bfcd21a23f4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90086398"
+ms.locfileid: "91874590"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Osvědčené postupy pro službu Azure Maps Route
 
 Rozhraní API pro trasy tras a směrovací matice v Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route) lze použít k výpočtu předpokládaných časů doručení (ETAs) pro každou požadovanou trasu. Rozhraní API pro směrování uvažují o faktorech, jako jsou informace o přenosech v reálném čase a historické údaje o provozu, jako je obvyklá rychlost provozu v požadovaném dni v týdnu a denní doba. Rozhraní API vrací nejkratší nebo nejrychlejší trasy, které jsou k dispozici více cílům v čase v pořadí nebo v optimalizovaném pořadí, na základě času nebo vzdálenosti. Uživatelé si také můžou vyžádat specializované trasy a podrobnosti pro cyklisty a komerční vozidla, jako je nákladní automobily. V tomto článku budeme sdílet osvědčené postupy pro volání Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route)a naučíte se, jak:
 
-> [!div class="checklist"]
-> * Volba mezi rozhraními API pro trasy tras a směrovacím rozhraním API pro matici
-> * Vyžádat si historické a predikované dojezdové časy na základě aktuálních i historických dat o provozu
-> * Podrobnosti o trasách, jako je čas a vzdálenost, pro celou trasu a všechny fáze trasy
-> * Vyžádat trasu pro komerční vozidlo, jako je nákladní vůz
-> * Požadovat informace o přenosech podél trasy, jako jsou informace o zaseknutí a záplatcích
-> * Vyžádat trasu, která se skládá z jedné nebo více zarážek (Waypoints)
-> * Optimalizace trasy jednoho nebo více zastavení za účelem získání nejlepšího příkazu k návštěvě každého zastavení (bod na trase)
-> * Optimalizujte alternativní trasy pomocí pomocných bodů. Můžete například nabídnout alternativní trasy, které předají elektricky zpoplatněné trakční vozidlo.
-> * Použití [Route Service](https://docs.microsoft.com/rest/api/maps/route) s Azure Maps Web SDK
+ * Volba mezi rozhraními API pro trasy tras a směrovacím rozhraním API pro matici
+ * Vyžádat si historické a predikované dojezdové časy na základě aktuálních i historických dat o provozu
+ * Podrobnosti o trasách, jako je čas a vzdálenost, pro celou trasu a všechny fáze trasy
+ * Vyžádat trasu pro komerční vozidlo, jako je nákladní vůz
+ * Požadovat informace o přenosech podél trasy, jako jsou informace o zaseknutí a záplatcích
+ * Vyžádat trasu, která se skládá z jedné nebo více zarážek (Waypoints)
+ * Optimalizace trasy jednoho nebo více zastavení za účelem získání nejlepšího příkazu k návštěvě každého zastavení (bod na trase)
+ * Optimalizujte alternativní trasy pomocí pomocných bodů. Můžete například nabídnout alternativní trasy, které předají elektricky zpoplatněné trakční vozidlo.
+ * Použití [Route Service](https://docs.microsoft.com/rest/api/maps/route) s Azure Maps Web SDK
 
 ## <a name="prerequisites"></a>Požadavky
 

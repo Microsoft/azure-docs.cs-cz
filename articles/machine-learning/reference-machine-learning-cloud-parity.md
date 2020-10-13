@@ -12,10 +12,10 @@ author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
 ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892972"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Parita cloudu Azure Machine Learning svrchovan
@@ -34,7 +34,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 
 ## <a name="azure-government"></a>Azure Government 
 
-| Příznak | Stav veřejného cloudu  | US –) – Virginia | US – Arizona| 
+| Příznak | Stav veřejného cloudu  | US-Virginia | US-Arizona| 
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|:-------------:|
 | **Automatizované strojové učení** | | | |
 | Vytváření a spouštění experimentů v poznámkových blocích                                    | GA                   | ANO                | ANO         |
@@ -112,7 +112,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 
 ### <a name="azure-government-scenarios"></a>Azure Government scénáře
 
-| Scénář                                                    | US –) – Virginia | US – Arizona| Omezení  |
+| Scénář                                                    | US-Virginia | US-Arizona| Omezení  |
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|-------------|
 | **Obecné nastavení zabezpečení** |   | | |
 | Komunikace privátní sítě mezi službami                                     | NO | NO | Momentálně není k dispozici žádný privátní odkaz. | 
@@ -122,7 +122,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 | Přístup k výpočetním prostředkům rootem a SSH.                                          | ANO | ANO |  |
 | Udržování zabezpečení nasazených systémů (instancí, koncových bodů atd.), včetně Endpoint Protection, opravování a protokolování |  ČÁSTEČNÉ|  ČÁSTEČNÉ |ACI za virtuální sítí a soukromým koncovým bodem není momentálně k dispozici. |                                  
 | Řízení (zakázání/omezení/omezení) používání integrace ACI/AKS                    | ČÁSTEČNÉ| ČÁSTEČNÉ |ACI za virtuální sítí a soukromým koncovým bodem není momentálně k dispozici.|
-| Access Control na základě rolí (RBAC) – vytváření vlastních rolí                           | ANO | ANO |  |
+| Role-Based Access Control (RBAC) – vytváření vlastních rolí                           | ANO | ANO |  |
 | Řízení přístupu k ACR imagí, které používá služba ML (poskytnuté/udržované v Azure versus vlastní)  |ČÁSTEČNÉ|  ČÁSTEČNÉ | ACR za privátním koncovým bodem a virtuální síť nejsou podporované v Azure Government |
 | **Obecné použití Machine Learning služby** |  | | |
 | Možnost mít vývojové prostředí pro sestavování modelu, výuku modelu, jeho hostování jako koncového bodu a jeho využití prostřednictvím WebApp     | ANO | ANO |  |
@@ -134,7 +134,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 ### <a name="additional-azure-government-limitations"></a>Další omezení Azure Government
 
 * V případě Azure Machine Learning výpočetních instancí není v Azure Government dostupná možnost aktualizace tokenu trvajícího více než 24 hodin.
-* Profilace modelů nepodporuje 4 procesory v oblasti US-Arizona.   
+* Profilace modelů nepodporuje 4 procesory v US-Arizona oblasti.   
 * Ukázkové poznámkové bloky nemusí v Azure Government fungovat, pokud potřebují přístup k veřejným datům.
 * IP adresy: příkaz CLI použitý ve virtuální síti [a pokyny pro vynucené tunelování](how-to-secure-training-vnet.md#forced-tunneling) nevrací ROZSAHy IP adres. Místo toho použijte [rozsahy IP adres Azure a značky služeb pro Azure Government](https://www.microsoft.com/download/details.aspx?id=57063) .
 * U naplánovaných kanálů poskytujeme i mechanismus triggeru založený na objektech blob. Tento mechanismus není podporován pro CMK pracovní prostory. Pro povolení triggeru založeného na objektu BLOB pro pracovní prostory CMK je nutné provést další nastavení. Další informace najdete v tématu spuštění [kanálu strojového učení z aplikace logiky](how-to-trigger-published-pipeline.md).
@@ -229,7 +229,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 * Azure Čína má omezené SKU virtuálních počítačů, zejména pro SKU GPU. Má pouze rodinu NCv3 (V100).
 * Koncové body REST API se liší od globální služby Azure. Následující tabulku použijte k nalezení REST APIho koncového bodu pro oblasti Azure Čína:
 
-    | Koncový bod REST                 | Globální Azure                                 | Čína – státní správa                           |
+    | Koncový bod REST                 | Globální Azure                                 | China-Government                           |
     |------------------|--------------------------------------------|--------------------------------------------|
     | Rovina správy | `https://management.azure.com/`              | `https://management.chinacloudapi.cn/`       |
     | Rovina dat       | `https://{location}.experiments.azureml.net` | `https://{location}.experiments.ml.azure.cn` |

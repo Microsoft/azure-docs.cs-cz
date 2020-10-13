@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/17/2020
 ms.author: Zhchia
 ms.openlocfilehash: e8d8f2af0350a8b4457f70632341f070c890cba0
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761052"
 ---
 # <a name="tutorial-configure-myday-for-automatic-user-provisioning"></a>Kurz: Konfigurace MyDay pro Automatické zřizování uživatelů
@@ -35,7 +35,7 @@ Tento kurz popisuje kroky, které je třeba provést v MyDay i Azure Active Dire
 > * Zřizování skupin a členství ve skupinách v MyDay
 > * Jednotné přihlašování k MyDay (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -128,7 +128,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |roles[primary eq "True"].value|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Odkaz|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Organization|Řetězec|
 
 10. V části **mapování** vyberte možnost **zřídit Azure Active Directory skupiny**.
@@ -164,7 +164,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user).
 3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

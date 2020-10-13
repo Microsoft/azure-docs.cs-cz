@@ -15,10 +15,10 @@ ms.date: 05/04/2016
 ms.author: mimckitt
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 536a28801193cdbb4204ca1432892abdc7fb297e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91268481"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Jak uskutečnit telefonní hovor pomocí Twilio ve webové roli v Azure
@@ -151,7 +151,7 @@ Volání se provede a zobrazí se koncový bod Twilio, verze rozhraní API a sta
 Další informace o TwiML najdete na adrese [https://www.twilio.com/docs/api/twiml][twiml] . Další informace o &lt; slovnících &gt; a dalších příkazech Twilio najdete na adrese [https://www.twilio.com/docs/api/twiml/say][twilio_say] .
 
 ## <a name="next-steps"></a><a id="nextsteps"></a>Další kroky
-Tento kód vám poskytne základní funkce využívající Twilio ve webové roli ASP.NET v Azure. Před nasazením do Azure v produkčním prostředí budete možná chtít přidat další zpracování chyb nebo jiné funkce. Příklad:
+Tento kód vám poskytne základní funkce využívající Twilio ve webové roli ASP.NET v Azure. Před nasazením do Azure v produkčním prostředí budete možná chtít přidat další zpracování chyb nebo jiné funkce. Například:
 
 * Místo používání webového formuláře můžete použít službu Azure Blob Storage nebo instanci Azure SQL Database k ukládání telefonních čísel a textů volání. Informace o používání objektů BLOB v Azure najdete v tématu [Jak používat službu Azure Blob Storage v .NET][howto_blob_storage_dotnet]. Informace o použití SQL Database najdete v tématu [použití Azure SQL Database v aplikacích .NET][howto_sql_azure_dotnet].
 * Můžete použít `RoleEnvironment.getConfigurationSettings` k načtení ID účtu Twilio a ověřovacího tokenu z nastavení konfigurace nasazení místo hardwarového kódování hodnot ve formuláři. Informace o `RoleEnvironment` třídě naleznete v tématu [obor názvů Microsoft. windowsazure. ServiceRuntime][azure_runtime_ref_dotnet].

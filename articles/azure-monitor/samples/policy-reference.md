@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.custom: subject-policy-reference
 ms.openlocfilehash: 05d7e2266a83c0dc0d2fe486c7ec5619c5cd7ed9
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825695"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-monitor"></a>Azure Policy předdefinované definice pro Azure Monitor

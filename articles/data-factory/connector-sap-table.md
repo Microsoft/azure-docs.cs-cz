@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
 ms.openlocfilehash: 608694c07894c8bdff8b1101d607e07ea4383764
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279822"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky SAP pomocí Azure Data Factory
@@ -91,7 +91,7 @@ Následující vlastnosti jsou podporovány pro propojenou službu SAP BW Open h
 | `systemId` | ID systému SAP, ve kterém je tabulka umístěna.<br/>Slouží k připojení k serveru zpráv SAP. | No |
 | `logonGroup` | Přihlašovací skupina pro systém SAP.<br/>Slouží k připojení k serveru zpráv SAP. | No |
 | `clientId` | ID klienta v systému SAP.<br/>Povolená hodnota: desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Yes |
-| `language` | Jazyk, který používá systém SAP.<br/>Výchozí hodnota je `EN` .| No |
+| `language` | Jazyk, který používá systém SAP.<br/>Výchozí hodnota je `EN`.| No |
 | `userName` | Jméno uživatele, který má přístup k serveru SAP. | Yes |
 | `password` | Heslo pro uživatele. Označte toto pole `SecureString` typem pro bezpečné uložení v Data Factory nebo [odkaz na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | `sncMode` | Indikátor aktivace SNC pro přístup k serveru SAP, na kterém je tabulka umístěna.<br/>Použijte, pokud chcete použít SNC pro připojení k serveru SAP.<br/>Povolené hodnoty jsou `0` (vypnuto, výchozí) nebo `1` (zapnuto). | No |
@@ -248,9 +248,9 @@ V nástroji `rfcTableOptions` můžete použít následující běžné operáto
 | :------- | :------- |
 | `EQ` | Rovno |
 | `NE` | Není rovno |
-| `LT` | Menší než |
+| `LT` | Je menší než |
 | `LE` | Menší než nebo rovno |
-| `GT` | Větší než |
+| `GT` | Je větší než |
 | `GE` | Větší než nebo rovno |
 | `IN` | Jako v `TABCLASS IN ('TRANSP', 'INTTAB')` |
 | `LIKE` | Jako v `LIKE 'Emma%'` |

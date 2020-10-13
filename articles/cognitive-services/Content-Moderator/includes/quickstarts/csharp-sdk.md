@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 125a823acc79143d9d6556e496f7728c718db089
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cb0d9ff1074ba1a309cf4f5a8cad12f34335e435
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91332549"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989565"
 ---
 Začněte s klientskou knihovnou Azure Content Moderator pro .NET. Postupujte podle těchto kroků a nainstalujte balíček NuGet a vyzkoušejte ukázkový kód pro základní úlohy. 
 
@@ -33,19 +33,24 @@ Pomocí klientské knihovny Content Moderator pro .NET:
 ## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
-* Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* [Integrované vývojové prostředí (IDE) sady Visual Studio](https://visualstudio.microsoft.com/vs/) nebo aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* Jakmile budete mít předplatné Azure, <a href="https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account"  title=" vytvořte prostředek [název produktu], "  target="_blank"> Content moderator vytvořte <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal prostředek, který vám umožní získat klíč a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
+    * K připojení aplikace k Content Moderator budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
-## <a name="create-a-content-moderator-resource"></a>Vytvoření prostředku Content Moderator
+## <a name="setting-up"></a>Nastavení
 
-Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro Content Moderator pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na vašem místním počítači. Můžete také:
+### <a name="create-a-new-c-application"></a>Vytvoření nové aplikace v C#
 
-* Zobrazení prostředku na [Azure Portal](https://portal.azure.com/)
+#### <a name="visual-studio-ide"></a>[Integrované vývojové prostředí sady Visual Studio](#tab/visual-studio)
 
-Po získání klíče z prostředku [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč a adresu URL koncového bodu s názvem `CONTENT_MODERATOR_SUBSCRIPTION_KEY` a `CONTENT_MODERATOR_ENDPOINT` , v uvedeném pořadí.
+Pomocí sady Visual Studio vytvořte novou aplikaci .NET Core. 
 
-## <a name="create-a-new-c-application"></a>Vytvoření nové aplikace v C#
+### <a name="install-the-client-library"></a>Instalace klientské knihovny 
 
-Vytvořte novou aplikaci .NET Core v upřednostňovaném textovém editoru nebo v integrovaném vývojovém prostředí. 
+Po vytvoření nového projektu nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení projektu v **Průzkumník řešení** a vyberete **Spravovat balíčky NuGet**. Ve Správci balíčků, který se otevře, vyberte **Procházet**, zaškrtněte políčko **Zahrnout předprodejní**a vyhledejte `Microsoft.Azure.CognitiveServices.ContentModerator` . Vyberte verzi `2.0.0` a pak **nainstalujte**. 
+
+#### <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli)
 
 V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `content-moderator-quickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *program.cs*.
 
@@ -69,18 +74,7 @@ Build succeeded.
 ...
 ```
 
-V adresáři projektu otevřete soubor *program.cs* v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Přidejte následující příkazy `using`:
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_using)]
-
-Ve třídě **program** vytvořte proměnné pro umístění a klíč koncového bodu prostředku jako proměnné prostředí.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_creds)]
-
-> [!NOTE]
-> Pokud jste po spuštění aplikace vytvořili proměnné prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k proměnným.
-
-## <a name="install-the-client-library"></a>Instalace klientské knihovny
+### <a name="install-the-client-library"></a>Instalace klientské knihovny 
 
 V adresáři aplikace nainstalujte Content Moderator klientskou knihovnu pro .NET pomocí následujícího příkazu:
 
@@ -88,7 +82,35 @@ V adresáři aplikace nainstalujte Content Moderator klientskou knihovnu pro .NE
 dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 2.0.0
 ```
 
-Pokud používáte integrované vývojové prostředí (IDE) sady Visual Studio, je knihovna klienta k dispozici jako balíček NuGet ke stažení.
+---
+
+> [!TIP]
+> Chcete zobrazit celý soubor kódu pro rychlý Start najednou? Můžete ji najít na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ContentModerator/Program.cs), který obsahuje příklady kódu v tomto rychlém startu.
+
+V adresáři projektu otevřete soubor *program.cs* v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Přidejte následující příkazy `using`:
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_using)]
+
+Ve třídě **program** vytvořte proměnné pro klíč a koncový bod prostředku.
+
+> [!IMPORTANT]
+> Přejděte na Azure Portal. Pokud se prostředek Content Moderator, který jste vytvořili v části **předpoklady** , se úspěšně nasadil, klikněte v části **Další kroky**na tlačítko **Přejít k prostředku** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků**. 
+>
+> Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) Cognitive Services.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_creds)]
+
+
+V `main()` metodě aplikace přidejte volání metod používaných v rámci tohoto rychlého startu. Budete je vytvářet později.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_client)]
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_call)]
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_call)]
+
 
 ## <a name="object-model"></a>Objektový model
 
@@ -112,9 +134,9 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-V nové metodě vytvořte instanci objektů klienta s vaším koncovým bodem a klíčem. Nepotřebujete pro každý scénář jiného klienta, ale může vám to usnadnit uspořádání kódu.
+V nové metodě vytvořte instanci objektů klienta s vaším koncovým bodem a klíčem.
 
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_client)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_auth)]
 
 ## <a name="moderate-text"></a>Střední text
 
@@ -122,16 +144,13 @@ Následující kód používá klienta Content Moderator k analýze textu a k vy
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_text_vars)]
 
-Potom v kořenovém adresáři projektu a přidejte soubor *TextFile.txt* . Přidejte do tohoto souboru vlastní text nebo použijte následující vzorový text:
+Potom v kořenovém adresáři projektu přidejte soubor *TextFile.txt* . Přidejte do tohoto souboru vlastní text nebo použijte následující vzorový text:
 
 ```
 Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
 Crap is the profanity here. Is this information PII? phone 4255550111
 ```
 
-Do své metody přidejte následující volání metody `Main` :
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
 
 Pak definujte metodu moderování textu někde ve vaší třídě **programu** :
 
@@ -146,7 +165,7 @@ Následující kód používá klienta Content Moderator společně s objektem [
 
 ### <a name="get-sample-images"></a>Získat ukázkové obrázky
 
-Zadejte vstupní a výstupní soubory:
+Definujte vstupní a výstupní soubory v kořenovém adresáři vaší třídy **programu** :
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_image_vars)]
 
@@ -156,10 +175,6 @@ Pak vytvořte vstupní soubor *ImageFiles.txt*v kořenu projektu. V tomto soubor
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 ```
-
-Předejte vstupní a výstupní soubory do následujícího volání metody v `Main` metodě. Tuto metodu definujete v pozdějším kroku.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_imagemod_call)]
 
 ### <a name="define-helper-class"></a>Definovat pomocnou třídu
 
@@ -189,9 +204,7 @@ Další informace o atributech obrázků, které Content Moderator obrazovky pro
 
 Můžete použít knihovnu klienta Content Moderator .NET k zakládání obsahu do [Nástroje pro revize](https://contentmoderator.cognitive.microsoft.com) , aby ho mohli recenzenti prohlížet. Další informace o nástroji pro kontrolu najdete v [koncepční příručce k nástroji pro kontrolu](../../review-tool-user-guide/human-in-the-loop.md).
 
-Metoda v tomto oddílu používá třídu [Reviews](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) k vytvoření revize, načtení jeho ID a kontrolu jeho podrobností po přijetí lidského vstupu prostřednictvím webového portálu nástroje pro kontrolu. Protokoluje všechny tyto informace ve výstupním textovém souboru. Zavolejte metodu z vaší `Main` metody:
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_call)]
+Metoda v tomto oddílu používá třídu [Reviews](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) k vytvoření revize, načtení jeho ID a kontrolu jeho podrobností po přijetí lidského vstupu prostřednictvím webového portálu nástroje pro kontrolu. Protokoluje všechny tyto informace ve výstupním textovém souboru. 
 
 ### <a name="get-sample-images"></a>Získat ukázkové obrázky
 
@@ -257,11 +270,19 @@ Pokud jste v tomto scénáři použili koncový bod zpětného volání, měla b
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
+#### <a name="visual-studio-ide"></a>[Integrované vývojové prostředí sady Visual Studio](#tab/visual-studio)
+
+Spusťte aplikaci kliknutím na tlačítko **ladění** v horní části okna IDE.
+
+#### <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli)
+
 Spusťte aplikaci z adresáře aplikace pomocí `dotnet run` příkazu.
 
 ```dotnet
-dotnet run 
+dotnet run
 ```
+
+---
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

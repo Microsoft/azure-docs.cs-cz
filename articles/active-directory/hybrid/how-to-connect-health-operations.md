@@ -16,10 +16,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a83d1a4bdc2496f874a963b8858192273260cc8
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89276265"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health operace
@@ -74,7 +74,7 @@ Azure AD Connect Health pro Active Directory Federation Services (AD FS) (AD FS)
 2. V okně **Server** klikněte na panelu akcí na **Odstranit**.
 ![Snímek obrazovky Azure AD Connect Health odstranění serveru](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. Potvrďte zadáním názvu serveru do potvrzovacího pole.
-4. Klikněte na tlačítko **Odstranit**.
+4. Klikněte na **Odstranit**.
 
 Azure AD Connect Health pro Azure Active Directory Domain Services:
 
@@ -82,7 +82,7 @@ Azure AD Connect Health pro Azure Active Directory Domain Services:
 2. Vyberte řadič domény, který se má odebrat.
 3. Na panelu akcí klikněte na **Odstranit vybrané**.
 4. Potvrďte akci odstranění serveru.
-5. Klikněte na tlačítko **Odstranit**.
+5. Klikněte na **Odstranit**.
 
 ### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Odstraní instanci služby z Azure AD Connect Health služby.
 V některých případech je vhodné odebrat instanci služby. Tady je přehled toho, co potřebujete znát k odebrání instance služby z Azure AD Connect Health služby.
@@ -99,7 +99,7 @@ Při odstraňování instance služby mějte na paměti následující skutečno
 2. V okně **Služba** klikněte na panelu akcí na **Odstranit**. 
 ![Snímek obrazovky Azure AD Connect Health odstranění služby](./media/how-to-connect-health-operations/DeleteServer.png)
 3. Potvrďte zadáním názvu služby do potvrzovacího pole (například: sts.contoso.com).
-4. Klikněte na tlačítko **Odstranit**.
+4. Klikněte na **Odstranit**.
    <br><br>
 
 [//]: # (Začátek oddílu RBAC)

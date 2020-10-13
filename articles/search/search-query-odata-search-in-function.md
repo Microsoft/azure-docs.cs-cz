@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 9ad6f89392846564631b70f0acfb5658a050be80
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88922816"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>`search.in`Funkce OData v Azure kognitivní hledání
@@ -48,7 +48,7 @@ Existuje však kratší způsob, jak to napsat pomocí `search.in` funkce:
 
 ## <a name="syntax"></a>Syntax
 
-Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `search.in` funkce:
+Následující EBNF ([rozšířený Backus-Naur formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `search.in` funkce:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -74,7 +74,7 @@ Existují dvě přetížení `search.in` funkce:
 
 Parametry jsou definovány v následující tabulce:
 
-| Název parametru | Typ | Popis |
+| Název parametru | Typ | Description |
 | --- | --- | --- |
 | `variable` | `Edm.String` | Odkaz na pole řetězce (nebo proměnná rozsahu v poli kolekce řetězců v případě, kdy `search.in` se používá uvnitř `any` `all` výrazu or). |
 | `valueList` | `Edm.String` | Řetězec obsahující oddělený seznam hodnot, který se má shodovat s `variable` parametrem. Pokud `delimiters` parametr není zadán, výchozí oddělovače jsou mezera a čárka. |

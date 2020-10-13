@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3031ec6ba17c61c780351169c4e8c2e5e94ab257
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90606555"
 ---
 Když vygenerujete certifikát klienta, je automaticky nainstalován v počítači, který jste použili k jeho vygenerování. Chcete-li nainstalovat klientský certifikát do jiného klientského počítače, je nutné exportovat klientský certifikát, který jste vygenerovali.

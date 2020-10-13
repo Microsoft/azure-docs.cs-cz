@@ -10,13 +10,13 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: fb628df5151f9124d7b7f319ff109ffca030ee90
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317340"
 ---
-# <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Vytvoření skupiny serverů s povoleným PostgreSQLm rozšířením Azure ARC
+# <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Vytvoření skupiny serverů PostgreSQL Hyperscale s podporou služby Azure Arc
 
 Tento dokument popisuje kroky pro vytvoření PostgreSQL skupiny serverů s škálovatelným škálováním na Azure ARC.
 
@@ -112,7 +112,7 @@ Chcete-li zobrazit koncové body pro instanci PostgreSQL, spusťte následujíc�
 ```console
 azdata arc postgres endpoint list -n <server group name>
 ```
-Příklad:
+Například:
 ```console
 [
   {
@@ -196,7 +196,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 
     > \* V dokumentech výše přeskočte oddíly, **které se přihlásí k Azure Portal**, & **Vytvoření Azure Database for PostgreSQL-Citus (škálování)**. Implementujte zbývající kroky v nasazení ARC Azure. Tyto části jsou specifické pro Azure Database for PostgreSQL Citus (PaaS), které nabízíme jako službu v cloudu Azure, ale ostatní části dokumentů jsou přímo použitelné pro PostgreSQL škálování na úrovni Azure ARC.
 
-- [Horizontální navýšení kapacity Azure Database for PostgreSQL skupiny serverů s škálovatelným škálováním](scale-out-postgresql-hyperscale-server-group.md)
+- [Škálování skupiny serverů Azure Database for PostgreSQL Hyperscale na více instancí](scale-out-postgresql-hyperscale-server-group.md)
 - [Koncepty konfigurace úložiště a Kubernetes úložiště](storage-configuration.md)
 - [Rozšiřování deklarací trvalých svazků](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Model prostředků Kubernetes](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

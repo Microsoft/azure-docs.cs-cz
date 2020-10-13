@@ -4,10 +4,10 @@ description: Seznamte se s Azure DevTest Labs funkcemi, které se dají použít
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b4f195f843e30ad1a56bad7d5b9ca9e73888783b
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89296239"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>Použití Azure DevTest Labs pro vývojáře

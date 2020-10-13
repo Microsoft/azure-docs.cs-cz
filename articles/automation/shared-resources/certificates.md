@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 09/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: 1c79b7c239c41e8d195230423b17fa3c5a7f51a6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825812"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Správa certifikátů v Azure Automation
@@ -36,7 +36,7 @@ Pomocí rutiny [Add-AzureCertificate](/powershell/module/servicemanagement/azure
 
 Interní rutina v následující tabulce se používá pro přístup k certifikátům ve vašich sadách Runbook. Tato rutina se dodává s globálním modulem `Orchestrator.AssetManagement.Cmdlets` . Další informace najdete v tématu [interní rutiny](modules.md#internal-cmdlets).
 
-| Interní rutina | Popis |
+| Interní rutina | Description |
 |:---|:---|
 |`Get-AutomationCertificate`|Načte certifikát, který se má použít v sadě Runbook nebo konfiguraci DSC. Vrátí objekt [System. Security. Cryptography. X509Certificates. X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) .|
 
@@ -47,7 +47,7 @@ Interní rutina v následující tabulce se používá pro přístup k certifik�
 
 Použijte funkci v následující tabulce pro přístup k certifikátům v sadě Runbook Python 2.
 
-| Funkce | Popis |
+| Funkce | Description |
 |:---|:---|
 | `automationassets.get_automation_certificate` | Načte informace o prostředku certifikátu. |
 
