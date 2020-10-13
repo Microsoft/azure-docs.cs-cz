@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d0df2199a2afdbea1ee1c6c543df324e9fe3cc3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02755c164e72e3149497ee8e3c1fdc19141fd54f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450705"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973627"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>Svazky NFS v4.1 ve službě Azure NetApp Files pro SAP HANA
 
@@ -131,7 +131,7 @@ Totéž platí pro svazek, který používáte k zápisu úplných záloh datab�
  
 
 ## <a name="backup"></a>Backup
-Kromě záloh streamování a back-SAP HANA mailové služby Azure, která je popsaná v [Průvodci zálohováním článku pro SAP HANA v Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide), Azure NetApp Files otevře možnost provádět zálohování snímků na základě úložiště. 
+Kromě záloh streamování a back-SAP HANA mailové služby Azure, která je popsaná v [Průvodci zálohováním článku pro SAP HANA v Azure Virtual Machines](./sap-hana-backup-guide.md), Azure NetApp Files otevře možnost provádět zálohování snímků na základě úložiště. 
 
 SAP HANA podporuje:
 
@@ -195,4 +195,4 @@ root # > azcopy sync '/hana/data/SID/mnt00001/.snapshot' 'https://azacsnaptmytes
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si článek:
 
-- [SAP HANA vysoké dostupnosti pro virtuální počítače Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
+- [SAP HANA vysoké dostupnosti pro virtuální počítače Azure](./sap-hana-availability-overview.md)

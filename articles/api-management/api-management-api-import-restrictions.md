@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 86ed7f3941965bcac525a2ba71786d20a4753489
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a53cc2b2ec6d46b4bde54af58b4e5542ff6cf79
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335496"
+ms.locfileid: "91932630"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Omezení pro import rozhraní API a známé problémy
 
@@ -42,6 +42,7 @@ Pokud obdržíte chyby při importu dokumentu OpenAPI, ujistěte se, že jste ho
 -   Definice zabezpečení jsou ignorovány.
 -   Vložené definice schématu pro operace rozhraní API nejsou podporovány. Definice schématu jsou definované v oboru rozhraní API a můžou se na ně odkazovat v oborech požadavků a odpovědích na operace rozhraní API.
 -   Definovaný parametr adresy URL musí být součástí šablony adresy URL.
+-   `server` objekt není podporován na úrovni operace rozhraní API.
 -   `Produces` klíčové slovo, které popisuje typy MIME vracené rozhraním API, se nepodporuje. 
 
 ### <a name="openapi-version-2"></a><a name="open-api-v2"> </a>Openapi verze 2

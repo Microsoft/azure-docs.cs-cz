@@ -5,12 +5,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: zivr
-ms.openlocfilehash: 6bf01f4da6ce96b413c87b81c14a998603cebd6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 822d67211982526bdd7a36cb5922f33b448eb7c7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279719"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973372"
 ---
 # <a name="co-locate-resources-for-improved-latency"></a>Snížení latence umisťováním prostředků do společného umístění
 
@@ -24,7 +24,7 @@ Při nasazování aplikace v Azure vytvoří rozšíření instancí napříč o
 
 Nasaďte virtuální počítač do [skupiny umístění blízkosti](proximity-placement-groups.md) pomocí Azure CLI.
 
-Naučte se [testovat latenci sítě](https://aka.ms/TestNetworkLatency?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Naučte se [testovat latenci sítě](../../virtual-network/virtual-network-test-latency.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json).
 
 Naučte se [optimalizovat propustnost sítě](../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 

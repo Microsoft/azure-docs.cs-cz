@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: e50c0b0fcb883b43650a5d99cea5aa39bae1cd94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bb1e4cb9b24c9b46f623e1604930367b82a47eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426261"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973814"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozšíření vlastních skriptů pro virtuální počítače
 
@@ -23,7 +23,7 @@ Rozšíření vlastních skriptů stáhne a spustí skripty na virtuálních po�
 
 Tento dokument popisuje, jak používat rozšíření vlastních skriptů pomocí modulu Azure PowerShell, Azure Resource Manager šablony a podrobně popisuje postup řešení potíží v systémech Windows.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!NOTE]  
 > Nepoužívejte rozšíření vlastních skriptů ke spuštění Update-AzVM se stejným virtuálním počítačem jako jeho parametr, protože se bude čekat sám na sebe.  
@@ -48,7 +48,7 @@ Pro přístup k úložišti objektů BLOB v Azure můžete nakonfigurovat rozš�
 
 ### <a name="internet-connectivity"></a>Připojení k Internetu
 
-Pokud potřebujete stáhnout skript externě, například z GitHubu nebo Azure Storage, je nutné otevřít další porty brány firewall a skupiny zabezpečení sítě. Pokud se například váš skript nachází v Azure Storage, můžete povolení přístupu pomocí značek služeb Azure NSG pro [úložiště](../../virtual-network/security-overview.md#service-tags).
+Pokud potřebujete stáhnout skript externě, například z GitHubu nebo Azure Storage, je nutné otevřít další porty brány firewall a skupiny zabezpečení sítě. Pokud se například váš skript nachází v Azure Storage, můžete povolení přístupu pomocí značek služeb Azure NSG pro [úložiště](../../virtual-network/network-security-groups-overview.md#service-tags).
 
 Pokud je váš skript na místním serveru, budete možná potřebovat otevřít i další porty brány firewall a skupiny zabezpečení sítě.
 
@@ -122,7 +122,7 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name | Hodnota/příklad | Typ dat |
+| Název | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft.Compute | řetězec |

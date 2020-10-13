@@ -8,18 +8,18 @@ ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3e501cd74d652e6415b6e8f750ddfb3d182a8387
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 08324cc32abdf78cf6ff9ef2d04352eb44f709ef
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87496130"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974205"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>Rychlý Start: vytvoření a šifrování virtuálního počítače s Windows pomocí Azure CLI
 
 Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového řádku Azure vytvořit a zašifrovat virtuální počítač s Windows serverem 2016 (VM).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -82,7 +82,7 @@ az vm encryption enable -g MyResourceGroup --name MyVM --disk-encryption-keyvaul
 Můžete ověřit, že je na vašem VIRTUÁLNÍm počítači povolené šifrování pomocí [AZ VM show](/cli/azure/vm/encryption#az-vm-encryption-show) .
 
 ```azurecli-interactive
-az vm show --name MyVM -g MyResourceGroup
+az vm encryption show --name MyVM -g MyResourceGroup
 ```
 
 Ve vráceném výstupu se zobrazí následující:

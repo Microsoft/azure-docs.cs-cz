@@ -2,7 +2,7 @@
 title: Vytvoření a použití zásad hesel v Azure AD Domain Services | Microsoft Docs
 description: Přečtěte si, jak a proč používat podrobné zásady pro hesla k zabezpečení a řízení hesel účtů ve spravované doméně Azure služba AD DS.
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: e3e524df2e98229698a86a721b7312a4d054ff70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 240b96a47c84ec3b15a356edc35549a4a197b219
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86040040"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967963"
 ---
 # <a name="password-and-account-lockout-policies-on-active-directory-domain-services-managed-domains"></a>Zásady hesel a uzamčení účtů v Active Directory Domain Services spravované domény
 

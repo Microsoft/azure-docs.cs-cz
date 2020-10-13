@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 394c87bcd3e4580289fbccc6a31b164f914dc8a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bedb619d77d9e5a88fdc16d0fbd066fa092e0765
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020792"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950784"
 ---
 # <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>Jak používat Microsoft. Azure. Search (v10 za účelem) v aplikaci .NET
 
@@ -44,7 +44,7 @@ Pokud chcete poskytnout zpětnou vazbu k budoucí aktualizaci sady SDK, přečt�
 
 Sada .NET SDK cílí `2019-05-06` na verzi [Azure kognitivní hledání REST API](/rest/api/searchservice/). Tato verze zahrnuje podporu [komplexních typů](search-howto-complex-data-types.md), funkce [rozšíření AI](cognitive-search-concept-intro.md), [automatického dokončování](/rest/api/searchservice/autocomplete)a [režimu analýzy JsonLines](search-howto-index-json-blobs.md) při indexování objektů blob Azure. 
 
-Tato sada SDK nepodporuje [operace správy](/rest/api/searchmanagement/) , jako je vytváření a škálování vyhledávacích služeb a Správa klíčů rozhraní API. Pokud potřebujete spravovat svoje prostředky hledání z aplikace .NET, můžete použít [sadu SDK pro správu Azure kognitivní hledání .NET](https://aka.ms/search-mgmt-sdk).
+Tato sada SDK nepodporuje [operace správy](/rest/api/searchmanagement/) , jako je vytváření a škálování vyhledávacích služeb a Správa klíčů rozhraní API. Pokud potřebujete spravovat svoje prostředky hledání z aplikace .NET, můžete použít [sadu SDK pro správu Azure kognitivní hledání .NET](/dotnet/api/overview/azure/search).
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>Upgrade na nejnovější verzi sady SDK
 Pokud už používáte starší verzi sady Azure Kognitivní hledání .NET SDK a chcete upgradovat na nejnovější verzi, která je obecně dostupná, [Tento článek](search-dotnet-sdk-migration-version-9.md) vysvětluje, jak.
@@ -65,7 +65,7 @@ V aplikaci pro hledání je potřeba udělat několik věcí. V tomto kurzu se z
 
 Následující vzorový kód znázorňuje každý z těchto scénářů. Používejte fragmenty kódu ve vaší vlastní aplikaci.
 
-### <a name="overview"></a>Přehled
+### <a name="overview"></a>Overview
 Ukázková aplikace, kterou prozkoumáme, vytvoří nový index s názvem "hotely", naplní ho několika dokumenty a potom spustí některé vyhledávací dotazy. Toto je hlavní program, který zobrazuje celkový tok:
 
 ```csharp

@@ -6,14 +6,16 @@ ms.topic: conceptual
 description: Naučte se používat tajné klíče Kubernetes při vývoji aplikací s využitím Azure Dev Spaces nebo při jejich sestavování.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
 ms.custom: devx-track-js
-ms.openlocfilehash: b9a9ef2592e7b2aa3630f19e2bc1a47b2b9ef0f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8791480f420dfd76d5291ce82e8ebf7412a41326
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308720"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972964"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Správa tajných kódů při práci s vývojovým prostorem Azure
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Vaše služby můžou vyžadovat určitá hesla, připojovací řetězce a další tajné kódy, například pro databáze nebo jiné zabezpečené služby Azure. Nastavením hodnot těchto tajných kódů v konfiguračních souborech je můžete zpřístupnit v kódu jako proměnné prostředí.  Aby se zabránilo ohrožení zabezpečení tajných kódů, musí být tyto konfigurační soubory zpracovávány opatrně.
 

@@ -3,12 +3,12 @@ title: Úspora nákladů pomocí rezervované instance řešení Azure VMware
 description: Naučte se koupit rezervovanou instanci pro řešení Azure VMware.
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: a477b1730d70ec729a2be333b545b6faeb009998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa354d4fbfef868ea1e6783656be7871669f200d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91492394"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951413"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Úspora nákladů pomocí řešení Azure VMware
 
@@ -22,7 +22,7 @@ Rezervované instance jsou k dispozici s některými výjimkami.
 
 -   **Nedostatečná kvóta**   – Rezervace, která je vymezená pro jedno nebo sdílené předplatné, musí mít v předplatném k dispozici kvótu hostitelů pro novou rezervovanou instanci. K vyřešení tohoto problému můžete [vytvořit žádost o zvýšení kvóty](enable-azure-vmware-solution.md) .
 
--   **Nárok na nabídku**– budete potřebovat [Azure smlouva Enterprise (EA)](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements)   s Microsoftem.
+-   **Nárok na nabídku**– budete potřebovat [Azure smlouva Enterprise (EA)](../cost-management-billing/manage/ea-portal-agreements.md)   s Microsoftem.
 
 -   **Omezení kapacity**   – Ve výjimečných případech Azure omezuje nákup nových rezervací pro skladové jednotky hostitele řešení Azure VMware z důvodu nízké kapacity v oblasti.
 

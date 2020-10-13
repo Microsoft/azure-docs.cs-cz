@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 02937c22cbc16defb0b7672ac7ebc56c2ae2beb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 315dfcb10b11278401d6cc0abd42b40b5f55f72a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89068775"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968357"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Monitorování a kontrola protokolů pro místní prostředí ochrany heslem služby Azure AD
 
@@ -236,7 +236,7 @@ Protokolování textu je ve výchozím nastavení zakázáno. Aby se změny tét
 
 Software služby agenta DC nainstaluje objekt čítače výkonu s názvem **ochrana heslem Azure AD**. Nyní jsou k dispozici následující čítače výkonu:
 
-|Název čítače výkonu | Description|
+|Název čítače výkonu | Popis|
 | --- | --- |
 |Zpracovaná hesla |Tento čítač zobrazuje celkový počet zpracovaných a odmítnutých hesel od posledního restartování.|
 |Hesla přijata |Tento čítač zobrazuje celkový počet hesel, která byla přijata od posledního restartování.|

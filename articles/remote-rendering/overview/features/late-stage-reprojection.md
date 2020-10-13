@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad9d135df428c79df745ad24d9e7382e06599168
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "84022176"
+ms.locfileid: "91893199"
 ---
 # <a name="late-stage-reprojection"></a>Reprojekce pozdní fáze
 
@@ -34,7 +34,9 @@ Pokud je, vaše aplikace bude používat LSR hloubku, jinak bude používat plan
 
 Aby LSRa hloubka fungovala, musí klientská aplikace dodat platnou hloubkovou vyrovnávací paměť, která obsahuje všechny relevantní geometrie, které by měly být během LSR zváženy.
 
-LSR hloubky se pokusí stabilizovat snímek videa na základě obsahu poskytnuté vyrovnávací paměti s hloubkou. Vzhledem k tomu, že obsah, který se na něj nevykresluje, jako jsou průhledné objekty, nejde upravit pomocí LSR a může zobrazovat artefakty nestability a reprojekce.
+LSR hloubky se pokusí stabilizovat snímek videa na základě obsahu poskytnuté vyrovnávací paměti s hloubkou. Vzhledem k tomu, že obsah, který se na něj nevykresluje, jako jsou průhledné objekty, nejde upravit pomocí LSR a může zobrazovat artefakty nestability a reprojekce. 
+
+Chcete-li zmírnit nestabilitu reprojekce u průhledných objektů, můžete vynutit zápis hloubky do vyrovnávací paměti. Prohlédněte si příznak materiál *TransparencyWritesDepth* pro [barevný](color-materials.md) a [PBR](pbr-materials.md) materiál. Všimněte si ale, že při povolování tohoto příznaku může dojít k tomu, že vizuální kvalita transparentního nebo neprůhledné interakce objektu.
 
 ## <a name="planar-lsr"></a>Planární LSR
 

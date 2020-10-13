@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 94ba4b159e0a7e52603e7c200c11828f996cf6d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b45eea7a6c4bccbdc6669752255469174493ab55
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090512"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938334"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps projekty open-source v komunitě
 
@@ -24,7 +24,7 @@ Následující seznam obsahuje nejoblíbenější Azure Maps open source projekt
 
 **Roboti**
 
-| Název projektu | Description |
+| Název projektu | Popis |
 |-|-|
 | [Rozhraní bot Framework – bod zájmu s zajímavou znalostí](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Bod zájmu dovedností poskytuje POI související možnosti pro virtuální asistenta pomocí Azure Maps s Azure Bot Service a robotovou architekturou. |
 | [Umístění BotBuilder](https://github.com/Microsoft/BotBuilder-Location) | Řídicí panel pro výběr zdrojového umístění pro Microsoft bot Framework, který využívá služby Bing Maps. |
@@ -35,18 +35,20 @@ Následující seznam obsahuje nejoblíbenější Azure Maps open source projekt
 
 Následuje seznam open source projektů, které rozšiřuje možnosti Azure Maps webové sady SDK.
 
-| Název projektu | Description |
+| Název projektu | Popis |
 |-|-|
 | [Modul animace Azure Maps](https://github.com/Azure-Samples/azure-maps-animations) | Bohatá knihovna animací pro použití s Azure Maps Web SDK |
 | [Azure Maps řídicí modul geografického umístění](https://github.com/Azure-Samples/azure-maps-geolocation-control) | Azure Maps modul webové sady SDK, který poskytuje ovládací prvek, který používá rozhraní API geografického umístění v prohlížeči k vyhledání uživatele na mapě. |
+| [Azure Maps modul zdroje dat Gridded](https://github.com/Azure-Samples/azure-maps-gridded-data-source) | Modul pro Azure Maps Web SDK, který poskytuje zdroj dat, který clusteruje data na buňky oblasti mřížky. Tato operace je známá také mnoha názvy, například teselacemi, binningu dat nebo hex přihrádkami.  |
 | [Azure Maps modul řízení na celé obrazovce](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | Azure Maps modul webové sady SDK, který poskytuje ovládacímu prvku zobrazení mapy v celoobrazovkovém režimu. |
 | [Modul řízení výběru Azure Maps](https://github.com/Azure-Samples/azure-maps-selection-control) | Azure Maps modul webové sady SDK, který poskytuje ovládací prvky pro výběr dat ve zdroji dat pomocí nástrojů pro kreslení nebo požádá mnohoúhelník na rozsah tras. |
+| [Azure Maps modul mapy potažení](https://github.com/Azure-Samples/azure-maps-swipe-map) | Modul pro Azure Maps webovou sadu SDK, který umožňuje přetáhnutí mezi dvěma překrývajícími se mapami, ideální pro porovnávání dvou překrývajících se datových sad. |
 | [Mapový modul Azure Maps Sync](https://github.com/Azure-Samples/azure-maps-sync-maps) | Azure Maps modul webové sady SDK, který synchronizuje fotoaparáty dvou nebo více map. |
 | [Modul uživatelského rozhraní Azure Maps Services](https://github.com/Azure-Samples/azure-maps-services-ui) | Sada ovládacích prvků webového uživatelského rozhraní, která zabalí služby Azure Maps REST. |
 
 **ukázky**
 
-| Název projektu | Description |
+| Název projektu | Popis |
 |-|-|
 | [Ukázky kódu Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Kolekce ukázek kódu pro použití Azure Maps v aplikacích založených na webu. |
 | [Ukázky cloudového kódu Azure Maps gov](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Kolekce ukázek kódu pro použití Azure Maps prostřednictvím Azure Government cloudu. |
@@ -57,7 +59,7 @@ Následuje seznam open source projektů, které rozšiřuje možnosti Azure Maps
 
 **Nástroje a prostředky**
 
-| Název projektu | Description |
+| Název projektu | Popis |
 |-|-|
 | [Azure Maps docs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | Zdroj pro veškerou dokumentaci Azure Location Based Services. |
 | [Nástroje Azure Maps Creator](https://github.com/Azure-Samples/AzureMapsCreator) | Nástroje Pythonu pro nástroje Azure Maps Creator. |

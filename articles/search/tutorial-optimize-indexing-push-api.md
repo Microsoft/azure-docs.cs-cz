@@ -7,31 +7,31 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 10/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb012fcc701e9dd18dbe1db5304807b4d96c2a86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13825422358fdddf6742353fbabaac0303b0c82e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757788"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973440"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Kurz: optimalizace indexování pomocí rozhraní API push
 
 Azure Kognitivní hledání podporuje [dva základní přístupy](search-what-is-data-import.md) k importu dat do indexu vyhledávání: *vkládání* dat do indexu prostřednictvím kódu programu nebo nasměrování služby [Azure kognitivní hledání indexerem](search-indexer-overview.md) na podporovaný zdroj dat, který se v datech *vyžádá* .
 
-V tomto kurzu se dozvíte, jak efektivně indexovat data pomocí [modelu nabízených oznámení](search-what-is-data-import.md#pushing-data-to-an-index) pomocí dávkování požadavků a pomocí exponenciální strategie omezení rychlosti opakování. Aplikaci si můžete [Stáhnout a spustit](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing). Tento článek vysvětluje klíčové aspekty aplikace a faktory, které je potřeba vzít v úvahu při indexování dat.
+V tomto kurzu se dozvíte, jak efektivně indexovat data pomocí [modelu nabízených oznámení](search-what-is-data-import.md#pushing-data-to-an-index) pomocí dávkování požadavků a pomocí exponenciální strategie omezení rychlosti opakování. Můžete [Stáhnout a spustit ukázkovou aplikaci](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing). Tento článek vysvětluje klíčové aspekty aplikace a faktory, které je potřeba vzít v úvahu při indexování dat.
 
 Tento kurz používá jazyk C# a [sadu .NET SDK](/dotnet/api/overview/azure/search) k provádění následujících úloh:
 
 > [!div class="checklist"]
 > * Vytvoření indexu
 > * Testování různých velikostí dávek a určení nejefektivnější velikosti
-> * Asynchronní data indexu
+> * Asynchronní dávkové indexů
 > * Použití více vláken ke zvýšení rychlosti indexování
-> * Použití exponenciální strategie omezení rychlosti opakování k opakovanému pokusu o neúspěšné položky
+> * Použití exponenciální strategie omezení rychlosti opakování k opakovanému pokusu o neúspěšné dokumenty
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -45,7 +45,7 @@ V tomto kurzu jsou vyžadovány následující služby a nástroje.
 
 ## <a name="download-files"></a>Stažení souborů
 
-Zdrojový kód tohoto kurzu je ve složce [optimzize-data-Indexing](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing) v úložišti GitHub [Azure-Samples/Azure-Search-dotnet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) .
+Zdrojový kód pro tento kurz je ve složce [optimzize-data-Indexing/V11](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing/v11) v úložišti GitHub [Azure-Samples/Azure-Search-dotnet-Samples-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) .
 
 ## <a name="key-considerations"></a>Klíčové aspekty
 
@@ -79,12 +79,11 @@ Volání rozhraní API vyžadují adresu URL služby a přístupový klíč. Vyh
 
 1. Spusťte Visual Studio a otevřete **OptimizeDataIndexing. sln**.
 1. V Průzkumník řešení otevřete **appsettings.js** a zadejte informace o připojení.
-1. `searchServiceName`Pokud je úplná adresa URL " https://my-demo-service.search.windows.net ", název služby, který se má poskytnout, je "Moje ukázka-služba".
 
 ```json
 {
-  "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
-  "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
+  "SearchServiceUri": "https://{service-name}.search.windows.net",
+  "SearchServiceAdminApiKey": "",
   "SearchIndexName": "optimize-indexing"
 }
 ```
@@ -112,7 +111,7 @@ Tato jednoduchá aplikace konzoly C#/.NET provádí následující úlohy:
 
 ### <a name="creating-the-index"></a>Vytvoření indexu
 
-Tento ukázkový program používá sadu .NET SDK k definování a vytvoření indexu služby Azure Kognitivní hledání. Využívá třídu [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) k vygenerování struktury indexu z třídy datového modelu jazyka C#.
+Tento ukázkový program používá sadu .NET SDK k definování a vytvoření indexu služby Azure Kognitivní hledání. Využívá `FieldBuilder` třídu k vygenerování struktury indexu z třídy datového modelu jazyka C#.
 
 Datový model je definován třídou hotelu, která také obsahuje odkazy na třídu Address. FieldBuilder projde k podrobnostem v různých definicích tříd a vygeneruje složitou strukturu dat pro index. Značky metadat slouží k definování atributů každého pole, jako je například, zda je možné prohledávat nebo řadit.
 
@@ -120,27 +119,25 @@ Následující fragmenty kódu ze souboru **Hotel.cs** ukazují, jak lze určit 
 
 ```csharp
 . . .
-[IsSearchable, IsSortable]
+[SearchableField(IsSortable = true)]
 public string HotelName { get; set; }
 . . .
 public Address Address { get; set; }
 . . .
 ```
 
-V souboru **program.cs** je index definován s názvem a kolekcí polí generovaných `FieldBuilder.BuildForType<Hotel>()` metodou a pak vytvořen takto:
+V souboru **program.cs** je index definován s názvem a kolekcí polí generovaných `FieldBuilder.Build(typeof(Hotel))` metodou a pak vytvořen takto:
 
 ```csharp
-private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
+private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)
 {
     // Create a new search index structure that matches the properties of the Hotel class.
     // The Address class is referenced from the Hotel class. The FieldBuilder
     // will enumerate these to create a complex data structure for the index.
-    var definition = new Index()
-    {
-        Name = indexName,
-        Fields = FieldBuilder.BuildForType<Hotel>()
-    };
-    await searchService.Indexes.CreateAsync(definition);
+    FieldBuilder builder = new FieldBuilder();
+    var definition = new SearchIndex(indexName, builder.Build(typeof(Hotel)));
+
+    await indexClient.CreateIndexAsync(definition);
 }
 ```
 
@@ -148,11 +145,12 @@ private static async Task CreateIndex(string indexName, SearchServiceClient sear
 
 V souboru **DataGenerator.cs** je implementována jednoduchá třída pro generování dat pro testování. Jediným účelem této třídy je, aby bylo snadné generovat velký počet dokumentů s jedinečným ID pro indexování.
 
-Chcete-li získat seznam 100 000 hotelů s jedinečnými identifikátory, spusťte následující dva řádky kódu:
+Chcete-li získat seznam 100 000 hotelů s jedinečnými identifikátory, spusťte následující řádky kódu:
 
 ```csharp
+long numDocuments = 100000;
 DataGenerator dg = new DataGenerator();
-List<Hotel> hotels = dg.GetHotels(100000, "large");
+List<Hotel> hotels = dg.GetHotels(numDocuments, "large");
 ```
 
 K dispozici jsou dvě velikosti hotelů pro testování v této ukázce: **malá** a  **Velká**.
@@ -164,7 +162,7 @@ Schéma indexu může mít výrazný vliv na rychlosti indexování. Z důvodu t
 Azure Kognitivní hledání podporuje následující rozhraní API pro načtení jednoho nebo více dokumentů do indexu:
 
 + [Přidávání, aktualizace a odstraňování dokumentů (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [Třída indexAction](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) nebo [třída indexBatch](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
++ Třída [IndexDocumentsAction](/dotnet/api/azure.search.documents.models.indexdocumentsaction?view=azure-dotnet) nebo [Třída IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch?view=azure-dotnet)
 
 Indexování dokumentů v dávkách významně vylepšuje výkon při indexování. Tyto dávky můžou mít až 1000 dokumentů nebo až o 16 MB na jednu dávku.
 
@@ -178,7 +176,7 @@ Vzhledem k tomu, že je optimální velikost dávky závislá na vašem indexu a
 Následující funkce ukazuje jednoduchý přístup k testování velikosti dávek.
 
 ```csharp
-public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min = 100, int max = 1000, int step = 100, int numTries = 3)
+public static async Task TestBatchSizesAsync(SearchClient searchClient, int min = 100, int max = 1000, int step = 100, int numTries = 3)
 {
     DataGenerator dg = new DataGenerator();
 
@@ -192,7 +190,7 @@ public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min 
             List<Hotel> hotels = dg.GetHotels(numDocs, "large");
 
             DateTime startTime = DateTime.Now;
-            await UploadDocuments(indexClient, hotels);
+            await UploadDocumentsAsync(searchClient, hotels).ConfigureAwait(false);
             DateTime endTime = DateTime.Now;
             durations.Add(endTime - startTime);
 
@@ -208,22 +206,24 @@ public static async Task TestBatchSizes(ISearchIndexClient indexClient, int min 
         // Pausing 2 seconds to let the search service catch its breath
         Thread.Sleep(2000);
     }
+
+    Console.WriteLine();
 }
 ```
 
 Vzhledem k tomu, že ne všechny dokumenty mají stejnou velikost (i když jsou v této ukázce), odhadneme velikost dat, která posíláme do vyhledávací služby. Provedeme to pomocí funkce níže, která nejprve převede objekt na JSON a pak určí jeho velikost v bajtech. Tato technika nám umožňuje určit, které velikosti dávek jsou nejúčinnější z hlediska rychlosti indexování MB/s.
 
 ```csharp
+// Returns size of object in MB
 public static double EstimateObjectSize(object data)
 {
-    // converting data to json for more accurate sizing
-    var json = JsonConvert.SerializeObject(data);
-
     // converting object to byte[] to determine the size of the data
     BinaryFormatter bf = new BinaryFormatter();
     MemoryStream ms = new MemoryStream();
     byte[] Array;
 
+    // converting data to json for more accurate sizing
+    var json = JsonSerializer.Serialize(data);
     bf.Serialize(ms, json);
     Array = ms.ToArray();
 
@@ -234,10 +234,10 @@ public static double EstimateObjectSize(object data)
 }
 ```
 
-Funkce vyžaduje a také `ISearchIndexClient` počet pokusů, které chcete testovat u každé velikosti dávky. V případě, že pro každou dávku může dojít k nějakým proměnlivým výsledkům, zkusíme každou dávku ve výchozím nastavení třikrát udělat, aby byly výsledky lépe statisticky důležité.
+Funkce vyžaduje a také `SearchClient` počet pokusů, které chcete testovat u každé velikosti dávky. V případě, že pro každou dávku může dojít k nějakým proměnlivým výsledkům, zkusíme každou dávku ve výchozím nastavení třikrát udělat, aby byly výsledky lépe statisticky důležité.
 
 ```csharp
-await TestBatchSizes(indexClient, numTries: 3);
+await TestBatchSizesAsync(searchClient, numTries: 3);
 ```
 
 Po spuštění funkce by se ve vaší konzole měl zobrazit výstup podobný následujícímu:
@@ -250,8 +250,8 @@ Určete, která velikost dávky je nejúčinnější a pak použijte tuto veliko
 
 Teď, když jsme identifikovali velikost dávky, kterou hodláte použít, je dalším krokem začít indexovat data. Chcete-li efektivně indexovat data, Tato ukázka:
 
-* Používá více vláken a pracovních procesů.
-* Implementuje exponenciální strategii omezení rychlosti opakování.
++ Používá více vláken a pracovních procesů.
++ Implementuje exponenciální strategii omezení rychlosti opakování.
 
 ### <a name="use-multiple-threadsworkers"></a>Použití více vláken/pracovníků
 
@@ -268,13 +268,16 @@ Při navýšení požadavků na službu vyhledávání dojde v případě, že s
 
 Pokud dojde k selhání, žádosti by se měly opakovat pomocí [exponenciální strategie omezení rychlosti opakování](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
 
-Sada .NET SDK pro Azure Kognitivní hledání automaticky opakuje 503s a další neúspěšné požadavky, ale budete muset implementovat vlastní logiku a zkusit to znovu 207s. K implementaci strategie opakování můžete také použít Open Source nástroje, jako je [Polly](https://github.com/App-vNext/Polly) . 
+Sada .NET SDK pro Azure Kognitivní hledání automaticky opakuje 503s a další neúspěšné požadavky, ale budete muset implementovat vlastní logiku a zkusit to znovu 207s. K implementaci strategie opakování můžete také použít Open Source nástroje, jako je [Polly](https://github.com/App-vNext/Polly) .
 
 V této ukázce implementujeme naši vlastní exponenciální strategii omezení rychlosti opakování. K implementaci této strategie Začínáme definováním některých proměnných, včetně `maxRetryAttempts` a počátečního `delay` pro neúspěšnou žádost:
 
 ```csharp
 // Create batch of documents for indexing
-IndexBatch<Hotel> batch = IndexBatch.Upload(hotels);
+var batch = IndexDocumentsBatch.Upload(hotels);
+
+// Create an object to hold the result
+IndexDocumentsResult result = null;
 
 // Define parameters for exponential backoff
 int attempts = 0;
@@ -282,9 +285,9 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-Je důležité zachytit [IndexBatchException](/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) , protože tyto výjimky signalizují, že operace indexování se pouze částečně zdařila (207s). Položky, které selhaly, by se měly opakovat pomocí `FindFailedActionsToRetry` metody, která usnadňuje vytvoření nové dávky obsahující pouze neúspěšné položky.
+Výsledky operace indexování jsou uloženy v proměnné `IndexDocumentResult result` . Tato proměnná je důležitá, protože umožňuje zjistit, jestli se nezdařily žádné dokumenty v dávce, jak vidíte níže. Pokud dojde k částečnému selhání, vytvoří se nová dávka na základě ID neúspěšných dokumentů.
 
-Výjimky jiné než `IndexBatchException` by měly být také zachyceny a označovaly, že žádost byla zcela neúspěšná. Tyto výjimky jsou méně běžné, zejména se sadou .NET SDK při opakovaném pokusu o 503s automaticky.
+`RequestFailedException` výjimky by měly být také zachyceny, protože označují, že žádost byla zcela neúspěšná a měla by se také opakovat.
 
 ```csharp
 // Implement exponential backoff
@@ -293,29 +296,46 @@ do
     try
     {
         attempts++;
-        var response = await indexClient.Documents.IndexAsync(batch);
-        break;
+        result = await searchClient.IndexDocumentsAsync(batch).ConfigureAwait(false);
+
+        var failedDocuments = result.Results.Where(r => r.Succeeded != true).ToList();
+
+        // handle partial failure
+        if (failedDocuments.Count > 0)
+        {
+            if (attempts == maxRetryAttempts)
+            {
+                Console.WriteLine("[MAX RETRIES HIT] - Giving up on the batch starting at {0}", id);
+                break;
+            }
+            else
+            {
+                Console.WriteLine("[Batch starting at doc {0} had partial failure]", id);
+                Console.WriteLine("[Retrying {0} failed documents] \n", failedDocuments.Count);
+
+                // creating a batch of failed documents to retry
+                var failedDocumentKeys = failedDocuments.Select(doc => doc.Key).ToList();
+                hotels = hotels.Where(h => failedDocumentKeys.Contains(h.HotelId)).ToList();
+                batch = IndexDocumentsBatch.Upload(hotels);
+
+                Task.Delay(delay).Wait();
+                delay = delay * 2;
+                continue;
+            }
+        }
+
+        return result;
     }
-    catch (IndexBatchException ex)
+    catch (RequestFailedException ex)
     {
-        Console.WriteLine("[Attempt: {0} of {1} Failed] - Error: {2}", attempts, maxRetryAttempts, ex.Message);
+        Console.WriteLine("[Batch starting at doc {0} failed]", id);
+        Console.WriteLine("[Retrying entire batch] \n");
 
         if (attempts == maxRetryAttempts)
+        {
+            Console.WriteLine("[MAX RETRIES HIT] - Giving up on the batch starting at {0}", id);
             break;
-
-        // Find the failed items and create a new batch to retry
-        batch = ex.FindFailedActionsToRetry(batch, x => x.HotelId);
-        Console.WriteLine("Retrying failed documents using exponential backoff...\n");
-
-        Task.Delay(delay).Wait();
-        delay = delay * 2;
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("[Attempt: {0} of {1} Failed] - Error: {2} \n", attempts, maxRetryAttempts, ex.Message);
-
-        if (attempts == maxRetryAttempts)
-            break;
+        }
 
         Task.Delay(delay).Wait();
         delay = delay * 2;
@@ -325,10 +345,10 @@ do
 
 Odtud rozbalíme exponenciální kód omezení rychlosti do funkce, aby ho bylo možné snadno volat.
 
-Pro správu aktivních vláken se pak vytvoří další funkce. Pro zjednodušení Tato funkce není zde obsažena, ale je možné ji najít v [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v10/OptimizeDataIndexing/ExponentialBackoff.cs). Funkci lze volat pomocí následujícího příkazu `hotels` , kde jsou data, která chceme nahrát, `1000` je velikost dávky a `8` je počet souběžných vláken:
+Pro správu aktivních vláken se pak vytvoří další funkce. Pro zjednodušení Tato funkce není zde obsažena, ale je možné ji najít v [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v11/OptimizeDataIndexing/ExponentialBackoff.cs). Funkci lze volat pomocí následujícího příkazu `hotels` , kde jsou data, která chceme nahrát, `1000` je velikost dávky a `8` je počet souběžných vláken:
 
 ```csharp
-ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
+await ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8);
 ```
 
 Po spuštění funkce by se měl zobrazit výstup podobný následujícímu:
@@ -337,7 +357,10 @@ Po spuštění funkce by se měl zobrazit výstup podobný následujícímu:
 
 Pokud dávka dokumentů selže, je vytištěna chyba indikující selhání a došlo k pokusu o opakování dávky:
 
-![Chyba z funkce data indexu](media/tutorial-optimize-data-indexing/index-data-error.png "Výstup funkce velikosti dávky testu")
+```
+[Batch starting at doc 6000 had partial failure]
+[Retrying 560 failed documents]
+```
 
 Po dokončení spuštění funkce můžete ověřit, že všechny dokumenty byly přidány do indexu.
 
@@ -354,7 +377,7 @@ Existují dvě hlavní možnosti kontroly počtu dokumentů v indexu: rozhraní 
 Operace počet dokumentů načte počet dokumentů ve vyhledávacím indexu:
 
 ```csharp
-long indexDocCount = indexClient.Documents.Count();
+long indexDocCount = await searchClient.GetDocumentCountAsync();
 ```
 
 #### <a name="get-index-statistics"></a>Získat statistiku indexu
@@ -362,7 +385,7 @@ long indexDocCount = indexClient.Documents.Count();
 Operace získat statistiku indexu vrátí počet dokumentů pro aktuální index a využití úložiště. Statistiky indexu budou trvat déle než počet dokumentů, které se mají aktualizovat.
 
 ```csharp
-IndexGetStatisticsResult indexStats = serviceClient.Indexes.GetStatistics(configuration["SearchIndexName"]);
+var indexStats = await indexClient.GetIndexStatisticsAsync(indexName);
 ```
 
 ### <a name="azure-portal"></a>portál Azure

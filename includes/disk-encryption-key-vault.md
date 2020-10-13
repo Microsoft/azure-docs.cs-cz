@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 6f7f319d2ebb4cd39933addf04f249df02d7819f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 234aa602cccb90d130e4d4b6aca375726ca29f0d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81314099"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91989469"
 ---
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -148,7 +148,7 @@ Azure Disk Encryption nepodporuje zadání čísel portů jako součást tajnýc
 Pomocí příkazu Azure CLI [AZ klíčů trezor Key Create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) vytvořte novou KEK a uložte ji do svého trezoru klíčů.
 
 ```azurecli-interactive
-az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA-HSM
+az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA
 ```
 
 Místo toho můžete importovat privátní klíč pomocí příkazu Azure CLI [AZ klíčů trezor Key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) :

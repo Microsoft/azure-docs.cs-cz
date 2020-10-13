@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/21/2020
 ms.author: aahi
-ms.openlocfilehash: 714a4709eceea875798940de962716d34437f2a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 856e73181ee02fe2bb21c4317ec8c733e2536d53
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91530455"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973117"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migrace na přečtené kontejnery OCR v3. x
 
@@ -65,10 +65,10 @@ Základní a paměť odpovídají `--cpus` `--memory` nastavení a, která se po
 >[!NOTE]
 > MongoDB se už nepodporuje ve verzích 3. x kontejneru. Místo toho kontejnery podporují Azure Storage a offline systémy souborů.
 
-| Implementace |  Požadované argumenty za běhu |
+| Implementace |    Požadované argumenty za běhu |
 |---------|---------|
-|Úroveň souboru (výchozí)   | Nejsou vyžadovány žádné argumenty modulu runtime. `/share` bude použit adresář. |
-|Azure Blob | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
+|Úroveň souboru (výchozí)    | Nejsou vyžadovány žádné argumenty modulu runtime. `/share` bude použit adresář. |
+|Azure Blob    | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
 
 ## <a name="queue-implementations"></a>Implementace front
 
@@ -78,7 +78,7 @@ V systému V3. x kontejneru RabbitMQ není aktuálně podporován. Podporované 
 |---------|---------|-------|
 | V paměti (výchozí) | Nejsou vyžadovány žádné argumenty modulu runtime. | Vývoj a testování |
 | Fronty Azure | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | Výroba |
-| RabbitMQ  | Neaktivní | Výroba |
+| RabbitMQ    | Neaktivní | Výroba |
 
 Pro přidání redundance načte kontejner Read v3. x časovač viditelnosti k zajištění úspěšného zpracování požadavků v případě selhání při spuštění v rámci sady více kontejnerů. 
 
@@ -86,7 +86,7 @@ Nastavte časovač s `Queue:Azure:QueueVisibilityTimeoutInMilliseconds` , který
 
 | Výchozí hodnota | Doporučená hodnota |
 |---------|---------|
-| 30000 |   120000 |
+| 30000 |    120000 |
 
 
 ## <a name="next-steps"></a>Další kroky

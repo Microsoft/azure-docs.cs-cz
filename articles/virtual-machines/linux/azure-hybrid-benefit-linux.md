@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
-ms.openlocfilehash: d62eaf96354627e0c1e4e0a31bb16fb3265f66ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da17122de8db41b6ba9ae9597d52bc3e1d8d0062
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279769"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962390"
 ---
 # <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Verze Preview: Zvýhodněné hybridní využití Azure – jak se vztahuje Linux Virtual Machines
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 
 Zvýhodněné hybridní využití Azure vám umožní snadněji migrovat místní virtuální počítače s Red Hat Enterprise Linux (RHEL) a SUSE Linux Enterprise Server (SLES) do Azure pomocí vlastního předplatného Red Hat nebo SUSE softwaru. S touto výhodou platíte jenom za náklady na infrastrukturu vašeho virtuálního počítače, protože poplatek za software je pokrytý vaším předplatným RHEL nebo SLES. Tato výhoda se vztahuje na všechny image RHEL a SLES Marketplace s průběžnými platbami (PAYG).
 
@@ -126,7 +126,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
-V samotném virtuálním počítači můžete zadat dotaz na metadata IMDS identity, abyste určili licenseType virtuálního počítače. Hodnota licenseType "RHEL_BYOS" nebo "SLES_BYOS" bude označovat, že má váš virtuální počítač povolené výhody. [Tady](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service#attested-data) najdete další informace o ověřených metadatech.
+V samotném virtuálním počítači můžete zadat dotaz na metadata IMDS identity, abyste určili licenseType virtuálního počítače. Hodnota licenseType "RHEL_BYOS" nebo "SLES_BYOS" bude označovat, že má váš virtuální počítač povolené výhody. [Tady](./instance-metadata-service.md#attested-data) najdete další informace o ověřených metadatech.
 
 ## <a name="compliance"></a>Dodržování předpisů
 

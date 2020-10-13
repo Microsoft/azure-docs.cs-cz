@@ -2,7 +2,7 @@
 title: Povolit audity zabezpečení pro Azure AD Domain Services | Microsoft Docs
 description: Naučte se, jak povolit audity zabezpečení pro centralizaci protokolování událostí pro analýzu a výstrahy v Azure AD Domain Services
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 98e64f1ea1196b6fd773514d4dad5b6e178a6898
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: b9656b62e2c689d0993fb16c1f1d66b14d3430c6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88722530"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967728"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Povolit audity zabezpečení pro Azure Active Directory Domain Services
 
@@ -217,7 +217,7 @@ Audity zabezpečení Azure služba AD DS odpovídají tradičnímu auditu pro tr
 
 K dispozici jsou následující kategorie událostí auditu:
 
-| Název kategorie auditu | Description |
+| Název kategorie auditu | Popis |
 |:---|:---|
 | Přihlášení k účtu|Audit se pokusí ověřit data účtu na řadiči domény nebo v místním správci zabezpečení účtů (SAM).</p>Nastavení zásad přihlášení a odhlášení a události sledují pokusy o přístup k určitému počítači. Nastavení a události v této kategorii se zaměřují na databázi účtů, která se používá. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat ověřování pověření](/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Auditovat ověřovací službu protokolu Kerberos](/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Auditovat operace lístku služby Kerberos](/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Auditovat jiné události přihlášení a odhlášení](/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | Správa účtů|Audituje změny účtů uživatelů a počítačů a skupin. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat správu skupin aplikací](/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Auditovat správu účtů počítače](/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Auditovat správu skupin distribuce](/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Auditovat další správu účtů](/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Auditovat správu skupiny zabezpečení](/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Auditovat správu účtů uživatelů](/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|

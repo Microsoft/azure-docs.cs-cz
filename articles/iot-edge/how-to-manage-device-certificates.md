@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9e3925d2c14d51785ed4fe00a508ea353490e1cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4159b464493a34e17a04f17540b3f9c7a20f4740
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669034"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971791"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Správa certifikátů na zařízení IoT Edge
 
@@ -31,12 +31,15 @@ Další informace o různých typech certifikátů a jejich rolích najdete v t�
 >[!NOTE]
 >Pojem "Kořenová CA", který se používá v celém tomto článku, odkazuje na veřejný certifikát certifikační autority pro vaše řešení IoT. Nemusíte používat kořen certifikátu pro neoprávněnou certifikační autoritu nebo kořen certifikační autority vaší organizace. V mnoha případech je ve skutečnosti veřejný certifikát zprostředkující certifikační autority.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-* Zařízení IoT Edge spuštěné v [systému Windows](how-to-install-iot-edge-windows.md) nebo [Linux](how-to-install-iot-edge-linux.md).
+* Zařízení IoT Edge.
+
+  Pokud nemáte nastavené zařízení IoT Edge, můžete ho vytvořit na virtuálním počítači Azure. Použijte postup v jednom z článků rychlý Start k [Vytvoření virtuálního zařízení](quickstart-linux.md) se systémem Linux nebo [Vytvoření virtuálního zařízení s Windows](quickstart.md).
+
 * Mít certifikát kořenové certifikační autority (CA), buď podepsaný svým držitelem, nebo zakoupený od důvěryhodné Komerční certifikační autority, jako je Baltimore, VeriSign, DigiCert nebo GlobalSign.
 
-Pokud zatím nemáte kořenovou certifikační autoritu, ale chcete si vyzkoušet IoT Edge funkce, které vyžadují provozní certifikáty (například scénáře bran), můžete [Vytvořit Ukázkové certifikáty pro testování IoT Edge funkcí zařízení](how-to-create-test-certificates.md).
+  Pokud zatím nemáte kořenovou certifikační autoritu, ale chcete si vyzkoušet IoT Edge funkce, které vyžadují provozní certifikáty (například scénáře bran), můžete [Vytvořit Ukázkové certifikáty pro testování IoT Edge funkcí zařízení](how-to-create-test-certificates.md).
 
 ### <a name="create-production-certificates"></a>Vytvoření produkčních certifikátů
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: 6c4ee08c1679abd54b98d2804ab120c9330f6968
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f571dc5f4f3aee2405d4968b050bd2dd92a709db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87827482"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973661"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Vytváření a správa virtuálních počítačů s Windows v Azure pomocí Java
 
@@ -33,7 +33,7 @@ Provedení těchto kroků trvá přibližně 20 minut.
 
 ## <a name="create-a-maven-project"></a>Vytvoření projektu Maven
 
-1. Pokud jste to ještě neudělali, nainstalujte [Java](https://aka.ms/azure-jdks).
+1. Pokud jste to ještě neudělali, nainstalujte [Java](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 2. Nainstalujte [Maven](https://maven.apache.org/download.cgi).
 3. Vytvořte novou složku a projekt:
     
@@ -107,7 +107,7 @@ Provedení těchto kroků trvá přibližně 20 minut.
     </dependency>
     ```
 
-3. Uložte soubor.
+3. Soubor uložte.
 
 ## <a name="create-credentials"></a>Vytvořit pověření
 
@@ -130,7 +130,7 @@ Než začnete tento krok, ujistěte se, že máte přístup k [instančnímu obj
 
     Nahraďte ** &lt; ID &gt; ** předplatného identifikátorem vašeho předplatného, ** &lt; ID &gt; aplikace** s identifikátorem aplikace služby Active ** &lt; &gt; ** Directory, klíčem pro ověřování a klíčovým klíčem aplikace a ** &lt; ID &gt; tenanta** s identifikátorem tenanta.
 
-2. Uložte soubor.
+2. Soubor uložte.
 3. V prostředí nastavte proměnnou prostředí s názvem AZURE_AUTH_LOCATION s úplnou cestou k ověřovacímu souboru.
 
 ### <a name="create-the-management-client"></a>Vytvořit klienta pro správu

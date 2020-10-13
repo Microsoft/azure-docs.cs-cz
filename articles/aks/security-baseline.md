@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e5ca792c6dbc3c08847315b916913e8c38909a7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3adc3dd0e0b7e9f964326f5e637b0fefb2cd173
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91637132"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938455"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Základní hodnoty zabezpečení Azure pro Azure Kubernetes Service
 
@@ -20,7 +20,7 @@ Základní plán zabezpečení Azure pro službu Azure Kubernetes obsahuje dopor
 
 Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](../security/benchmarks/overview.md), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
 
-Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview-v1).
+Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
@@ -1235,7 +1235,7 @@ Před zálohováním odeberte stav z vašich aplikací. V případech, kdy to ne
 
 Příkazy PowerShellu umožňují pravidelné automatizované zálohování Key Vault certifikátů, klíčů, spravovaných účtů úložiště a tajných kódů. 
 
-Například:
+Příklad:
 
 Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorageAccount Backup-AzKeyVaultSecret
 
@@ -1259,7 +1259,7 @@ Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorag
 
 Pomocí příkazů PowerShellu pravidelně provádějte obnovení dat Key Vault certifikátů, klíčů, spravovaných účtů úložiště a tajných kódů. 
 
-Například:
+Příklad:
 
 Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret
 
