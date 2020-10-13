@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/15/2020
 ms.author: cynthn
 ms.reviewer: cynthn
-ms.openlocfilehash: 3a206a7aabee9f75524ab4715afa30ec05c612bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d01ac7d5b01f485c3b0100c468332475a9bd4274
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328059"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978539"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>Řešení potíží s galeriemi sdílených imagí v Azure
 
@@ -79,7 +79,7 @@ Možné příčiny:
 
 *Uživatel, který se pokouší vytvořit virtuální počítač nebo sadu škálování virtuálního počítače, nemá přístup pro čtení k verzi image.*
 
-Obraťte se na vlastníka předplatného a požádejte ho, aby pomocí [řízení přístupu založeného na rolích Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)poskytl přístup pro čtení k verzi Image nebo nadřazeným prostředkům (jako je například galerie sdílených imagí nebo definice obrázku). 
+Obraťte se na vlastníka předplatného a požádejte ho, aby pomocí [řízení přístupu založeného na rolích Azure (Azure RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md)poskytl přístup pro čtení k verzi Image nebo nadřazeným prostředkům (jako je například galerie sdílených imagí nebo definice obrázku). 
 
 *Verze bitové kopie nebyla nalezena.*
 
@@ -91,7 +91,7 @@ Ověřte, že **OSType** verze image, ze které se pokoušíte vytvořit virtuá
 
 ## <a name="unable-to-share-resources"></a>Nejde sdílet prostředky
 
-Sdílení Galerie sdílených imagí, definice obrázku a verze imagí v rámci předplatných je povolené pomocí [řízení přístupu na základě role Azure (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles). 
+Sdílení Galerie sdílených imagí, definice obrázku a verze imagí v rámci předplatných je povolené pomocí [řízení přístupu na základě role Azure (RBAC)](../role-based-access-control/rbac-and-directory-admin-roles.md). 
 
 ## <a name="replication-is-slow"></a>Replikace je pomalá.
 
@@ -99,7 +99,7 @@ Pomocí příznaku **--expand ReplicationStatus** můžete ověřit, jestli se d
 
 ## <a name="azure-limits-and-quotas"></a>Omezení a kvóty Azure 
 
-[Omezení a kvóty Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) se vztahují na všechny prostředky pro galerii sdílených imagí, definice obrázků a verze imagí. Ujistěte se, že jste v omezeních pro vaše předplatná. 
+[Omezení a kvóty Azure](../azure-resource-manager/management/azure-subscription-service-limits.md) se vztahují na všechny prostředky pro galerii sdílených imagí, definice obrázků a verze imagí. Ujistěte se, že jste v omezeních pro vaše předplatná. 
 
 
 ## <a name="next-steps"></a>Další kroky

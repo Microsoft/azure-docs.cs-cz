@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 678bad67b454ec0930d2cf30df45ba7b2c822e35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43e2f1c304a2ede10445fa656dbdd16a4b60ca3c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371452"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978947"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Řešení potíží s připojeními SSH k virtuálnímu počítači Azure s Linuxem, která selžou, skončí chybou nebo se zamítnou
 Tento článek vám pomůže najít a opravit problémy, ke kterým dochází kvůli chybám Secure Shell (SSH), chybám připojení SSH nebo SSH, pokud se pokusíte připojit k virtuálnímu počítači se systémem Linux (VM). K řešení potíží a řešení problémů s připojením můžete použít rozšíření Azure Portal, Azure CLI nebo rozhraní pro přístup k virtuálnímu počítači pro Linux.
@@ -46,7 +46,7 @@ Podrobnější postup řešení potíží a vysvětlení najdete v tématu Dalš
 Přihlašovací údaje nebo konfiguraci SSH můžete resetovat pomocí jedné z následujících metod:
 
 * [Azure Portal](#use-the-azure-portal) – Skvělé, pokud potřebujete rychle Resetovat konfiguraci SSH nebo klíč SSH a nemáte nainstalované nástroje Azure Tools.
-* [Azure VM Serial Console](https://aka.ms/serialconsolelinux) – sériová konzola virtuálních počítačů bude fungovat bez ohledu na konfiguraci SSH a poskytne vám interaktivní konzolu k vašemu virtuálnímu počítači. V některých případech se nejedná o situaci, kdy se služba sériového portu navržená tak, aby pomohla vyřešit. Další podrobnosti najdete níže.
+* [Azure VM Serial Console](./serial-console-linux.md) – sériová konzola virtuálních počítačů bude fungovat bez ohledu na konfiguraci SSH a poskytne vám interaktivní konzolu k vašemu virtuálnímu počítači. V některých případech se nejedná o situaci, kdy se služba sériového portu navržená tak, aby pomohla vyřešit. Další podrobnosti najdete níže.
 * [Azure CLI](#use-the-azure-cli) – Pokud už jste na příkazovém řádku, rychle resetujte konfiguraci SSH nebo přihlašovací údaje. Pokud pracujete s klasickým virtuálním počítačem, můžete použít rozhraní příkazového [řádku Azure Classic](#use-the-azure-classic-cli).
 * [Rozšíření Azure VMAccessForLinux](#use-the-vmaccess-extension) – vytvořte a znovu použijte soubory definice JSON pro resetování přihlašovacích údajů nebo přihlašovacích údajů uživatele.
 
@@ -279,7 +279,7 @@ Zkuste vyřešit nejběžnější chyby připojení SSH pro virtuální počíta
 * Projděte si stav prostředků virtuálního počítače pro všechny problémy s platformou.<br>
      Vyberte svůj virtuální počítač a posuňte **Nastavení**a Projděte si  >  **stav**.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 * Pokud ke svému VIRTUÁLNÍmu počítači stále nemůžete přihlašovat přes následující postup, přečtěte si [podrobnější postup odstraňování potíží](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a Projděte si další kroky k vyřešení vašeho problému.
 * Další informace o řešení potíží s přístupem k aplikacím najdete v tématu [řešení potíží s přístupem k aplikaci spuštěné na virtuálním počítači Azure](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json) .
 * Další informace o řešení potíží s virtuálními počítači, které byly vytvořeny pomocí modelu nasazení Classic, najdete v tématu [Postup resetování hesla nebo SSH pro virtuální počítače](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic)se systémem Linux.

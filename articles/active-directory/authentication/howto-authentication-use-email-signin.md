@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 10/01/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 9b9617b4109318257895587cc0d8e75054a7f729
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: c822aaebb2451d709f6afcdeba959f39c4d491cb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650302"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964532"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Přihlášení k Azure Active Directory používání e-mailu jako alternativního přihlašovacího ID (Preview)
 
@@ -65,7 +65,7 @@ Pokud se uživatel přihlásí pomocí e-mailu bez názvu UPN jako alternativní
 
 Tradiční ověřování Active Directory Domain Services (služba AD DS) nebo Active Directory Federation Services (AD FS) (AD FS) se provádí přímo v síti a je zpracováváno vaší služba AD DS infrastrukturou. Pomocí hybridního ověřování se uživatelé můžou místo toho přihlašovat přímo do Azure AD.
 
-Pro podporu tohoto přístupu k hybridnímu ověřování synchronizujete své místní služba AD DS prostředí s Azure AD pomocí [Azure AD Connect][azure-ad-connect] a nakonfigurujte ho tak, aby používal synchronizaci hodnot hash hesel (kosmetice) nebo předávací ověřování (PTA).
+Pro podporu tohoto přístupu k hybridnímu ověřování synchronizujete své místní služba AD DS prostředí s Azure AD pomocí [Azure AD Connect][azure-ad-connect] a nakonfigurujte ho tak, aby používal synchronizaci hodnoty hash hesla (kosmetice) nebo ověřování Pass-Through (PTA).
 
 V obou možnostech konfigurace odešle uživatel své uživatelské jméno a heslo do služby Azure AD, která ověří přihlašovací údaje a vydá lístek. Když se uživatelé přihlásí ke službě Azure AD, nepotřebují, aby vaše organizace mohla hostovat a spravovat infrastrukturu AD FS.
 
@@ -169,7 +169,7 @@ Při použití těchto zásad může trvat až hodinu, než se rozšíří a už
 
 Pokud chcete otestovat, jestli se uživatelé můžou přihlašovat pomocí e-mailu, přejděte na [https://myprofile.microsoft.com][my-profile] adresu a přihlaste se pomocí uživatelského účtu na základě jejich e-mailové adresy, jako `balas@fabrikam.com` je například hlavní název uživatele (UPN) `balas@contoso.com` . Prostředí pro přihlašování by mělo vypadat stejně jako u přihlašovací události založené na UPN.
 
-## <a name="troubleshoot"></a>Odstraňování potíží
+## <a name="troubleshoot"></a>Řešení potíží
 
 Pokud uživatelé mají problémy s přihlašovacími událostmi pomocí své e-mailové adresy, přečtěte si následující postup řešení potíží:
 

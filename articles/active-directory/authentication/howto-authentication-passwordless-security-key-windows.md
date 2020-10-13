@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 01/30/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66283e4965aea9e24da6041133e2d88e95df6755
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: b88b2ca0a420295a7a53608f02923e72045e1c44
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526982"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964736"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Povolení přihlášení k bezpečnostnímu klíči bez hesla pro zařízení s Windows 10 pomocí Azure Active Directory (Preview)
 
@@ -33,13 +33,13 @@ Tento dokument se zaměřuje na povolení ověřování bez hesla založeného n
 | [Souhrnná registrace informací o zabezpečení ve verzi Preview](concept-registration-mfa-sspr-combined.md) | X | X |
 | Kompatibilní [klíče zabezpečení FIDO2](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | Operace WebAuthN vyžaduje Windows 10 verze 1903 nebo vyšší. | X | X |
-| [Zařízení připojená k Azure AD](../devices/concept-azure-ad-join.md) vyžadují Windows 10 verze 1909 nebo vyšší. | X |   |
-| [Zařízení připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) vyžadují Windows 10 verze 2004 nebo vyšší. |   | X |
-| Plně opravené řadiče domény se systémem Windows Server 2016/2019. |   | X |
-| [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) verze 1.4.32.0 nebo novější |   | X |
+| [Zařízení připojená k Azure AD](../devices/concept-azure-ad-join.md) vyžadují Windows 10 verze 1909 nebo vyšší. | × |   |
+| [Zařízení připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) vyžadují Windows 10 verze 2004 nebo vyšší. |   | × |
+| Plně opravené řadiče domény se systémem Windows Server 2016/2019. |   | × |
+| [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) verze 1.4.32.0 nebo novější |   | × |
 | [Microsoft Intune](/intune/fundamentals/what-is-intune) (volitelné) | X | X |
 | Zřizovací balíček (volitelné) | X | X |
-| Zásady skupiny (volitelné) |   | X |
+| Zásady skupiny (volitelné) |   | × |
 
 ### <a name="unsupported-scenarios"></a>Nepodporované scénáře
 
@@ -78,7 +78,7 @@ Organizace se můžou rozhodnout použít jednu nebo více následujících meto
 
 Pokud chcete povolit použití klíčů zabezpečení pomocí Intune, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte na **Microsoft Intune**  >  **registrace zařízení registrace zařízení**s  >  **Windows registrace**  >  **Windows Hello pro firmy**–  >  **vlastnosti**.
 1. V části **Nastavení**nastavte **možnost použít klíče zabezpečení pro přihlášení** a **Povolit**.
 
@@ -88,15 +88,15 @@ Konfigurace klíčů zabezpečení pro přihlášení nezávisí na konfiguraci 
 
 Pokud chcete cílit na konkrétní skupiny zařízení a povolit poskytovatele přihlašovacích údajů, použijte následující vlastní nastavení přes Intune:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte na **Microsoft Intune**  >  **konfigurační**  >  **profily**zařízení  >  **vytvořit profil**.
 1. Nakonfigurujte nový profil s následujícím nastavením:
-   - Název: bezpečnostní klíče pro přihlášení k Windows
+   - Název: bezpečnostní klíče pro Windows Sign-In
    - Popis: povolí použití klíčů zabezpečení FIDO během přihlašování Windows.
    - Platforma: Windows 10 a novější
    - Typ profilu: vlastní
    - Vlastní nastavení OMA-URI:
-      - Name (název): zapnout FIDO klíče zabezpečení pro přihlášení k Windows
+      - Název: Zapněte FIDO klíče zabezpečení pro Windows Sign-In
       - OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       - Datový typ: celé číslo
       - Hodnota: 1

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 405ebbbfa4a662dd9ee3c8d10dde8f28e5ce9c66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f23e2c58ae25fefb8508474921e476163b33e79
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87830440"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978420"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption pro virtuální počítače s Linuxem 
 
@@ -26,7 +26,7 @@ Pokud používáte [Azure Security Center](../../security-center/index.yml), bud
 > [!WARNING]
 > - Pokud jste předtím používali Azure Disk Encryption se službou Azure AD k šifrování virtuálního počítače, musíte tuto možnost použít k zašifrování virtuálního počítače. Podrobnosti najdete v tématu [Azure Disk Encryption s Azure AD (předchozí verze)](disk-encryption-overview-aad.md) . 
 > - Některá doporučení můžou zvýšit využití dat, sítě nebo výpočetních prostředků, což má za následek další licence nebo náklady na předplatné. Abyste mohli vytvářet prostředky v Azure v podporovaných oblastech, musíte mít platné aktivní předplatné Azure.
-> - V současné době generace 2 virtuální počítače nepodporují Azure Disk Encryption. Podrobnosti najdete v tématu [Podpora pro virtuální počítače 2. generace v Azure](../windows/generation-2.md) .
+> - V současné době generace 2 virtuální počítače nepodporují Azure Disk Encryption. Podrobnosti najdete v tématu [Podpora pro virtuální počítače 2. generace v Azure](../generation-2.md) .
 
 Základní informace o nástroji Azure Disk Encryption pro Linux najdete během několika minut pomocí [virtuálního počítače se systémem Linux pomocí Azure CLI](disk-encryption-cli-quickstart.md) nebo [Vytvoření a šifrování virtuálního počítače se systémem linux pomocí nástroje Azure PowerShell rychlý Start](disk-encryption-powershell-quickstart.md).
 
@@ -46,7 +46,7 @@ Po dokončení procesu šifrování disku s operačním systémem u virtuálníc
 
 Azure Disk Encryption je k dispozici také pro virtuální počítače s Premium Storage.
 
-Azure Disk Encryption není k dispozici pro [virtuální počítače 2. generace](generation-2.md#generation-1-vs-generation-2-capabilities)a [virtuální počítače řady Lsv2-Series](../lsv2-series.md)). Další výjimky naleznete v tématu [Azure Disk Encryption: nepodporované scénáře](disk-encryption-linux.md#unsupported-scenarios).
+Azure Disk Encryption není k dispozici pro [virtuální počítače 2. generace](../generation-2.md#generation-1-vs-generation-2-capabilities) a [virtuální počítače řady Lsv2-Series](../lsv2-series.md). Další výjimky naleznete v tématu [Azure Disk Encryption: nepodporované scénáře](disk-encryption-linux.md#unsupported-scenarios).
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 

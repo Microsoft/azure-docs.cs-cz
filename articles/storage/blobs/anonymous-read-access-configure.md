@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 10/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 3a585bc2bf3872a21bde9be036628922ee5743fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7248dff25af4693f7f264c8cbf42236612dddda0
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087350"
+ms.locfileid: "91931066"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Konfigurace anonymního veřejného přístupu pro čtení pro kontejnery a objekty blob
 
@@ -56,7 +56,7 @@ Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště, na
 > [!NOTE]
 > Vlastnost **AllowBlobPublicAccess** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště umožňuje veřejný přístup, pokud má vlastnost hodnotu **null** nebo je-li hodnota **true**.
 >
-> Vlastnost **AllowBlobPublicAccess** je v tuto chvíli dostupná jenom pro účty úložiště ve veřejném cloudu Azure.
+> Vlastnost **AllowBlobPublicAccess** je k dispozici pro všechny účty úložiště ve veřejném cloudu Azure a v cloudech Azure Government.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 

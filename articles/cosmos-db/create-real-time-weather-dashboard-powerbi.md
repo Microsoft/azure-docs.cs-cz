@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 681929928e6e6b28c7950c8aeeadc8b181491f46
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91804125"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Vytvoření řídicího panelu v reálném čase pomocí Azure Cosmos DB a Power BI
@@ -63,7 +63,7 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
    V závislosti na tom, který sloupec a datový typ se nachází ve zdrojové datové sadě, můžete pole RangeStart a RangeEnd změnit odpovídajícím způsobem.
 
    
-   |Vlastnost  |Datový typ  |Filtr  |
+   |Vlastnost  |Datový typ  |Filtrování  |
    |---------|---------|---------|
    |_ts     |   Numeric      |  [_ts] > Duration. TotalSeconds (RangeStart-#datetime (1970, 1, 1, 0, 0, 0)) a [_ts] < Duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 1, 0, 0, 0)))       |
    |Datum (například:-2019-08-19)     |   Řetězec      | [Document. Date] > DateTime. ToText (RangeStart, "rrrr-MM-DD") a [Document. Date] < DateTime. ToText (RangeEnd, "rrrr-MM-DD")        |

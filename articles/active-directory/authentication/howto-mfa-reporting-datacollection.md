@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03ec8eddf55c6b3e90b56501a2e3b657bef6fc8c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80653637"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964192"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Shromažďování uživatelských dat v Azure Multi-Factor Authentication
 
@@ -98,7 +98,7 @@ Bloky (slouží k určení blokovaného stavu a pro vytváření sestav):
 - Uzamčení účtu
 - Výstraha týkající se podvodů
 - Výstraha týkající se podvodů není blokovaná.
-- Jazyk
+- Language
 
 Vynechané funkce (používané pro vytváření sestav):
 

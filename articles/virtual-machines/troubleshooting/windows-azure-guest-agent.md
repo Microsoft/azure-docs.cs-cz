@@ -11,18 +11,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/15/2020
 ms.author: genli
-ms.openlocfilehash: 597ea6e7ff7dbcfcb8a99d4e4de3c1b82915ee07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 738c2a240ad6c88186357e69b02d33b40d366d7f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561257"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977061"
 ---
 # <a name="troubleshooting-windows-azure-guest-agent"></a>Řešení potíží s agentem hosta systému Windows Azure
 
-Agent hosta Windows Azure je agent virtuálního počítače (VM). Umožňuje virtuálnímu počítači komunikovat s řadičem prostředků infrastruktury (základní fyzický server, na kterém je hostovaný virtuální počítač), na IP adrese 168.63.129.16. Jedná se o virtuální veřejnou IP adresu, která usnadňuje komunikaci. Další informace najdete v tématu [co je IP adresa 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
+Agent hosta Windows Azure je agent virtuálního počítače (VM). Umožňuje virtuálnímu počítači komunikovat s řadičem prostředků infrastruktury (základní fyzický server, na kterém je hostovaný virtuální počítač), na IP adrese 168.63.129.16. Jedná se o virtuální veřejnou IP adresu, která usnadňuje komunikaci. Další informace najdete v tématu [co je IP adresa 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
- Virtuální počítač, který se migruje do Azure z místního prostředí nebo který se vytvoří pomocí přizpůsobené image, nemá nainstalovaný Agent hosta systému Windows Azure. V těchto scénářích musíte agenta virtuálního počítače nainstalovat ručně. Další informace o instalaci agenta virtuálního počítače najdete v tématu [Přehled agenta virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows).
+ Virtuální počítač, který se migruje do Azure z místního prostředí nebo který se vytvoří pomocí přizpůsobené image, nemá nainstalovaný Agent hosta systému Windows Azure. V těchto scénářích musíte agenta virtuálního počítače nainstalovat ručně. Další informace o instalaci agenta virtuálního počítače najdete v tématu [Přehled agenta virtuálních počítačů Azure](../extensions/agent-windows.md).
 
 Po úspěšné instalaci agenta hosta Windows Azure se můžete na virtuálním počítači podívat na tyto služby, které jsou uvedené v části Services. msc:
  
@@ -74,7 +74,7 @@ V Azure Portal na stránce vlastností virtuálního počítače vyberte a ově�
 
     V Ovládacích panelech přejdete na **programy a funkce** , abyste zjistili, jestli je nainstalovaná služba Windows Azure Host agent.
 
-Pokud nenajdete žádné balíčky, služby a procesy spuštěné a nevidíte v části programy a funkce agenta hosta Windows Azure, zkuste [nainstalovat službu agenta hosta systému Windows Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows). Pokud se Agent hosta nenainstaluje správně, můžete [agenta virtuálního počítače nainstalovat offline](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline).
+Pokud nenajdete žádné balíčky, služby a procesy spuštěné a nevidíte v části programy a funkce agenta hosta Windows Azure, zkuste [nainstalovat službu agenta hosta systému Windows Azure](../extensions/agent-windows.md). Pokud se Agent hosta nenainstaluje správně, můžete [agenta virtuálního počítače nainstalovat offline](./install-vm-agent-offline.md).
 
 Pokud vidíte služby a jsou spuštěné, restartujte službu, která zjistí, zda byl problém vyřešen. Pokud jsou služby zastaveny, spusťte je a počkejte několik minut. Potom zkontrolujte, zda je **Stav agenta** hlášen jako **připravený**. Pokud zjistíte, že se tyto služby zhroutí, můžou tyto služby způsobit zhroucení některých procesů třetích stran. Pokud chcete tento problém vyřešit, obraťte se na [Podpora Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
@@ -111,7 +111,7 @@ Agent hosta systému Windows Azure obsahuje funkci Automatické aktualizace. Bud
     ```
     Potom zkontrolujte, zda se služba agenta hosta spouští správně.
  
-    Ve výjimečných případech, kdy se Agent hosta nenainstaluje správně, můžete [agenta virtuálního počítače nainstalovat offline](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline).
+    Ve výjimečných případech, kdy se Agent hosta nenainstaluje správně, můžete [agenta virtuálního počítače nainstalovat offline](./install-vm-agent-offline.md).
     
 
 ### <a name="step-3-check-whether-the-vm-can-connect-to-the-fabric-controller"></a>Krok 3 – ověření, jestli se virtuální počítač může připojit k řadiči prostředků infrastruktury
@@ -189,7 +189,7 @@ Virtuální počítač se nemůže připojit k hostitelskému serveru wireserver
 1. Pokud se nemůžete spojit s adresou URL z kroku 1, zkontrolujte síťové rozhraní, abyste zjistili, jestli je nastavený jako DHCP s povoleným serverem DNS. Chcete-li zjistit stav služby DHCP v síťovém rozhraní, spusťte následující příkaz:  `netsh interface ip show config` .
 1. Pokud je server DHCP zakázán, spusťte následující příkaz, který zajistí změnu hodnoty žlutě na název vašeho rozhraní: `netsh interface ip set address name="Name of the interface" source=dhcp` .
 1. Vyhledejte všechny problémy, které by mohly být způsobeny bránou firewall, proxy serverem nebo jiným zdrojem, které by mohly blokovat přístup k IP adrese 168.63.129.16.
-1. Ověřte, zda brána Windows Firewall nebo brána firewall jiného výrobce blokují přístup k portům 80, 443 a 32526. Další informace o tom, proč by se tato adresa neměla zablokovat, najdete v tématu [co je IP adresa 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
+1. Ověřte, zda brána Windows Firewall nebo brána firewall jiného výrobce blokují přístup k portům 80, 443 a 32526. Další informace o tom, proč by se tato adresa neměla zablokovat, najdete v tématu [co je IP adresa 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
 ### <a name="guest-agent-is-stuck-stopping"></a>Agent hosta je zablokovaný jako zastavení.  
 

@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 706379649b47846b5c020dc76493a98e346c4a8f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317680"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS Protection Standard pomocí Azure Portal
@@ -29,7 +29,7 @@ Naučte se, jak povolit a zakázat distribuovanou ochranu před útoky na DDoS (
 
 Před dokončením všech kroků v tomto kurzu se přihlaste k Azure Portal v https://portal.azure.com rámci pomocí účtu přiřazeného k roli [přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazena k příslušným akcím uvedeným v [oprávněních](#permissions-and-restrictions).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-ddos-protection-plan"></a>Vytvoření plánu DDoS Protection
 
@@ -45,7 +45,7 @@ Pro většinu organizací není nutné vytvářet více než jeden plán. Plán 
     |Nastavení        |Hodnota                                              |
     |---------      |---------                                          |
     |Název           | myDdosProtectionPlan                              |
-    |Předplatné   | Vyberte předplatné.                         |
+    |Předplatné   | Vyberte své předplatné.                         |
     |Skupina prostředků | Vyberte **vytvořit nové** a zadejte *myResourceGroup* . |
     |Umístění       | USA – východ                                           |
 
@@ -58,7 +58,7 @@ Pro většinu organizací není nutné vytvářet více než jeden plán. Plán 
     | Nastavení         | Hodnota                                                        |
     | ---------       | ---------                                                    |
     | Název            | myVirtualNetwork                                             |
-    | Předplatné    | Vyberte předplatné.                                    |
+    | Předplatné    | Vyberte své předplatné.                                    |
     | Skupina prostředků  | Vyberte **použít existující**a pak vyberte **myResourceGroup** . |
     | Umístění        | USA – východ                                                      |
     | DDoS Protection Standard | Vyberte **Povolit**. Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.|

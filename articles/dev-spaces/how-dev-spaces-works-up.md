@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Popisuje procesy spuštění kódu ve službě Azure Kubernetes pomocí Azure Dev Spaces
 keywords: azds. yaml, Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers
-ms.openlocfilehash: a189b26264f3e22a69acb3e3c0410203f9822c31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cace325f9415d46210636e5c04cc2d75589cc11
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981283"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975463"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Způsob spuštění kódu s Azure Dev Spaces funguje
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces poskytuje několik způsobů, jak rychle iterovat a ladit aplikace Kubernetes a spolupracovat s týmem v clusteru Azure Kubernetes Service (AKS). Jakmile [je projekt připraven ke spuštění ve vývojovém prostoru][how-it-works-prep], můžete k sestavení a spuštění projektu v clusteru AKS použít vývojové prostory.
 

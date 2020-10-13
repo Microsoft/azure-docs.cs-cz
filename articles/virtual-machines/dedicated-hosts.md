@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 351b10b68cf1c014d358032f41bb01ac1093bd68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b407ae18316071d77cc87992a70a4fba857ab64
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91373092"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979015"
 ---
 # <a name="azure-dedicated-hosts"></a>Vyhrazení hostitelé Azure
 
@@ -122,7 +122,7 @@ Infrastruktura, která podporuje vaše virtuální počítače, se občas může
 
 **Řízení údržby** poskytuje zákazníkům možnost přeskočit běžné aktualizace platforem naplánované na jejich vyhrazených hostitelích a pak je použít v době jejich výběru v rámci 35ho okna.
 
-Další informace najdete v tématu [Správa aktualizací platformy pomocí řízení údržby](https://docs.microsoft.com/azure/virtual-machines/maintenance-control).
+Další informace najdete v tématu [Správa aktualizací platformy pomocí řízení údržby](./maintenance-control.md).
 
 ## <a name="capacity-considerations"></a>Důležité informace o kapacitách
 
@@ -142,7 +142,7 @@ Zřízení vyhrazeného hostitele bude využívat vyhrazené hostitelské vCPU i
 
 ![Snímek obrazovky se stránkou používání a kvót na portálu](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
-Další informace najdete v tématu [kvóty VCPU virtuálních počítačů](/azure/virtual-machines/windows/quotas).
+Další informace najdete v tématu [kvóty VCPU virtuálních počítačů](./windows/quotas.md).
 
 Bezplatné zkušební verze a Předplatná MSDN nemají kvótu pro vyhrazené hostitele Azure.
 
@@ -172,7 +172,7 @@ Typy velikosti a hardwaru se v jednotlivých oblastech liší. Další informace
 
 Azure monitoruje a spravuje stav hostitelů. Při dotazování hostitele se vrátí následující stavy:
 
-| Stav   | Description       |
+| Stav   | Popis       |
 |----------|----------------|
 | Dostupný hostitel     | Neexistují žádné známé problémy s hostitelem.   |
 | Hostitel v rámci šetření  | Máme nějaké problémy s hostitelem, který se chystáme najít. Toto je přechodný stav nutný k tomu, aby Azure mohl vyzkoušet a identifikovat rozsah a hlavní příčinu zjištěného problému. Může to mít vliv na virtuální počítače, které běží na hostiteli. |
@@ -182,7 +182,7 @@ Azure monitoruje a spravuje stav hostitelů. Při dotazování hostitele se vrá
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vyhrazeného hostitele můžete nasadit pomocí [Azure PowerShell](./windows/dedicated-hosts-powershell.md), [portálu](./windows/dedicated-hosts-portal.md)a [Azure CLI](./linux/dedicated-hosts-cli.md).
+- Vyhrazeného hostitele můžete nasadit pomocí [Azure PowerShell](./windows/dedicated-hosts-powershell.md), [portálu](./dedicated-hosts-portal.md)a [Azure CLI](./linux/dedicated-hosts-cli.md).
 
 - [Zde](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)najdete ukázkovou šablonu, která pro maximální odolnost v oblasti používá zóny i domény selhání.
 

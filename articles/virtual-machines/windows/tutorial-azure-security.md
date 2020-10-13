@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 057cbd5d42eafaa693abc418de62c3ae03a6b995
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eed237b1dd4d6bf6f2903b91c80847d615fe7a1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984580"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978284"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Kurz: Použití služby Azure Security Center k monitorování virtuálních počítačů s Windows
 
@@ -66,7 +66,7 @@ Nastavení zásad zabezpečení pro celé předplatné:
 
 ## <a name="view-vm-configuration-health"></a>Zobrazení stavu konfigurace virtuálních počítačů
 
-Po zapnutí shromažďování dat a nastavení zásady zabezpečení začne Security Center poskytovat upozornění a doporučení. Při nasazování virtuálních počítačů se nainstaluje agent pro shromažďování dat. Security Center se pak naplní daty o těchto nových virtuálních počítačích. Podrobné informace o stavu konfigurace virtuálních počítačů najdete v tématu [Ochrana virtuálních počítačů v Security Center](../../security-center/security-center-virtual-machine-protection.md). 
+Po zapnutí shromažďování dat a nastavení zásady zabezpečení začne Security Center poskytovat upozornění a doporučení. Při nasazování virtuálních počítačů se nainstaluje agent pro shromažďování dat. Security Center se pak naplní daty o těchto nových virtuálních počítačích. Podrobné informace o stavu konfigurace virtuálních počítačů najdete v tématu [Ochrana virtuálních počítačů v Security Center](../../security-center/asset-inventory.md). 
 
 S tím, jak se shromažďují data, se agreguje stav prostředků jednotlivých virtuálních počítačů a souvisejících prostředků Azure. Tyto informace se zobrazí v přehledném grafu. 
 

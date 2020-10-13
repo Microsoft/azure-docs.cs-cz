@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Popisuje procesy pro vzdálené ladění ve službě Azure Kubernetes s Azure Dev Spaces
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0487b80d23974a66bafe93ee1fbdf9b796d0ab53
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213381"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975038"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>Jak vzdálené ladění kódu pomocí Azure Dev Spaces funguje
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces poskytuje několik způsobů, jak rychle iterovat a ladit aplikace Kubernetes a spolupracovat s týmem v clusteru Azure Kubernetes Service (AKS). Po spuštění projektu ve vývojovém prostoru Azure Dev Spaces poskytuje způsob, jak se připojit a ladit běžící aplikace v AKS.
 

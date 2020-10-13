@@ -8,18 +8,20 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 6671b8aa60690bc1915e297bc31b19299be2b1da
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: f39fb5766965e3881068bd6d2fd3a8142f9eb2ac
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629076"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975905"
 ---
 # <a name="register-a-public-client-application-in-azure-active-directory"></a>Registrace veřejné klientské aplikace v Azure Active Directory
 
 V tomto článku se dozvíte, jak zaregistrovat veřejnou aplikaci v Azure Active Directory.  
 
 Registrace klientských aplikací Azure Active Directory reprezentace aplikací, které se můžou ověřit a požádat o oprávnění rozhraní API jménem uživatele. Veřejné klienty jsou aplikace, jako například mobilní aplikace a aplikace JavaScriptu na jedné stránce, které nemůžou udržovat důvěrné tajné kódy. Postup je podobný jako při [registraci důvěrného klienta](register-confidential-azure-ad-client-app.md), ale vzhledem k tomu, že veřejné klienty nemůžou držet tajný klíč aplikace, není potřeba ho přidávat.
+
+Rychlý Start poskytuje obecné informace o tom, jak [zaregistrovat aplikaci s platformou Microsoft Identity](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
 ## <a name="app-registrations-in-azure-portal"></a>Registrace aplikací v Azure Portal
 
@@ -38,6 +40,18 @@ Registrace klientských aplikací Azure Active Directory reprezentace aplikací,
 2. Zadejte adresu URL odpovědi. Adresa URL odpovědi je místo, kde se vrátí ověřovací kódy do klientské aplikace. Můžete přidat další adresy URL odpovědi a později upravit stávající.
 
     ![Azure Portal. Registrace nové veřejné aplikace](media/how-to-aad/portal-aad-register-new-app-registration-PUB-CLIENT-NAME.png)
+
+
+Konfigurace vaší [desktopové](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), [mobilní](https://docs.microsoft.com/azure/active-directory/develop/scenario-mobile-app-registration) nebo [jednostránkové](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) aplikace jako veřejné aplikace:
+
+1. V [Azure Portal](https://portal.azure.com)v části **Registrace aplikací**vyberte svou aplikaci a pak vyberte **ověřování**.
+
+2. Vyberte **Upřesnit nastavení**  >  **typ klienta výchozí**. Pro **považovat aplikaci za veřejného klienta**vyberte **Ano**.
+
+3. U jednostránkové aplikace vyberte **přístupové tokeny** a **tokeny ID** , aby bylo možné povolit implicitní tok.
+
+   - Pokud se vaše aplikace přihlásí uživatelům, vyberte **tokeny ID**.
+   - Pokud vaše aplikace také potřebuje volat chráněné webové rozhraní API, vyberte **přístupové tokeny**.
 
 ## <a name="api-permissions"></a>Oprávnění rozhraní API
 

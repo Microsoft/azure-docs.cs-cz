@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/19/2020
+ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: 58936066abcbe4c3f9fcfad78bf914c74079aa95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc3da6f0d82adab2d21d4dbd91dee8654145b896
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141784"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951481"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Nastavení klíče spravovaného zákazníkem Sentinel Azure
-
 
 Tento článek popisuje základní informace a kroky ke konfiguraci klíče spravovaného zákazníkem (CMK) pro Sentinel Azure. CMK umožňuje šifrovat všechna data uložená nebo odesílaná do Azure Sentinel, aby byla zašifrovaná v rámci všech relevantních prostředků úložiště pomocí Azure Key Vaultho klíče vytvořeného nebo vlastněného vámi.
 
 > [!NOTE]
-> -   Funkce Azure Sentinel CMK je k dispozici pouze pro zákazníky, kteří jsou **noví** a mají přístup k této funkci, a to prostřednictvím registrace funkcí Azure.Můžete požádat o přístup kontaktováním azuresentinelCMK@microsoft.com a jakmile bude dostupná kapacita, čekají na vyřízení žádosti.
-> -   Funkce Azure Sentinel CMK je k dispozici pouze v oblastech Východní USA, Západní USA 2 a South-Central USA.
-> -   Funkce CMK je dostupná jenom pro zákazníky, kteří odesílají 1 TB za den. Při použití Microsoftu k zřízení CMK ve vašem předplatném Azure budete dostávat informace o dalších cenách. Přečtěte si další informace o [cenách Log Analytics](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
+> - Funkce Azure Sentinel CMK je k dispozici pouze **novým zákazníkům**.
+>
+> - Přístup k této funkci závisí na registraci funkcí Azure.Můžete požádat o přístup kontaktováním azuresentinelCMK@microsoft.com . Nedokončené žádosti budou schváleny na základě dostupné kapacity.
+>
+> - Funkce CMK je dostupná jenom pro zákazníky, kteří odesílají 1 TB za den. Při použití Microsoftu k zřízení CMK ve vašem předplatném Azure budete dostávat informace o dalších cenách. Přečtěte si další informace o [cenách Log Analytics](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
 
 ## <a name="how-cmk-works"></a>Jak funguje CMK 
 
@@ -58,7 +59,7 @@ Při zřizování CMK postupujte takto: 
 
 ### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>Krok 1: vytvoření Azure Key Vault a uložení klíče
 
-1.  [Vytvořte prostředek Azure Key Vault](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal?view=azs-1910)a pak vygenerujte nebo importujte klíč, který se použije k šifrování dat.
+1.  [Vytvořte prostředek Azure Key Vault](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal)a pak vygenerujte nebo importujte klíč, který se použije k šifrování dat.
     > [!NOTE]
     >  Aby bylo možné klíč a přístup chránit, Azure Key Vault musí být nakonfigurovány jako obnovitelné.
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 71862bedc009d560adc8131eacc37c0afba25d81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fab49c4242afc2e4f2d0595e2aa95f19f3d976f8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761715"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951575"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Verze rozhraní API v Azure Kognitivní hledání
 
@@ -41,7 +41,7 @@ Verze sady Azure Kognitivní hledání .NET SDK starší než [**3.0.0-RC**](htt
 
 Po tomto datu nebudou aplikace používající některou z zastaralých REST API nebo verzí SDK nadále fungovat a musí být upgradovány. Stejně jako u jakékoli změny tohoto typu se vám pošle 12 měsíců oznámení, takže budete mít adekvátní čas na jeho úpravu.
 
-Pokud chcete dál používat Azure Kognitivní hledání, migrujte prosím stávající kód, který cílí na [REST API](search-api-migration.md) na [REST API verze 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) nebo novější SDK do 15. října 2020.  Pokud máte nějaké dotazy týkající se aktualizace na nejnovější verzi, odešlete e-mail na adresu azuresearch_contact@microsoft.com 15. května 2020, abyste měli dostatek času na aktualizaci kódu.
+Pokud chcete dál používat Azure Kognitivní hledání, migrujte prosím stávající kód, který cílí na [REST API](search-api-migration.md) na [REST API verze 2020-06-30](/rest/api/searchservice/) nebo novější SDK do 15. října 2020.  Pokud máte nějaké dotazy týkající se aktualizace na nejnovější verzi, odešlete e-mail na adresu azuresearch_contact@microsoft.com 15. května 2020, abyste měli dostatek času na aktualizaci kódu.
 
 ## <a name="rest-apis"></a>Rozhraní REST API
 
@@ -74,8 +74,8 @@ Umožňuje vytvořit a nakonfigurovat vyhledávací službu a spravovat klíče 
 
 | Znění&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Status | Popis |
 |-------------------------|--------|------------------------------|
-| [Správa 2020-08-01](https://docs.microsoft.com/rest/api/searchmanagement/) | Stable | Nejnovější stabilní verze rozhraní REST API pro správu Přidá všeobecně dostupnou podporu sdíleného prostředku privátního propojení pro všechny prostředky s odchozím přístupem, kromě těch, které jsou uvedené ve verzi Preview. |
-| [Správa 2020-08-01 – Preview](https://docs.microsoft.com/rest/api/searchmanagement/index-preview) | Preview  | Aktuálně ve verzi Preview: Sdílená podpora prostředků privátního propojení pro Azure Functions a Azure Database for MySQL. |
+| [Správa 2020-08-01](/rest/api/searchmanagement/) | Stable | Nejnovější stabilní verze rozhraní REST API pro správu Přidá všeobecně dostupnou podporu sdíleného prostředku privátního propojení pro všechny prostředky s odchozím přístupem, kromě těch, které jsou uvedené ve verzi Preview. |
+| [Správa 2020-08-01 – Preview](/rest/api/searchmanagement/index-preview) | Preview  | Aktuálně ve verzi Preview: Sdílená podpora prostředků privátního propojení pro Azure Functions a Azure Database for MySQL. |
 | Management 2020-03-13  | Stable | Přidá [privátní koncový bod](service-create-private-endpoint.md) prostřednictvím privátního odkazu a [pravidla pro IP síť](service-configure-firewall.md) pro nové služby. Další informace najdete v této [specifikaci Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01). |
 | Management 2019-10-01-Preview | Preview  | V tomto seznamu nebyly zavedeny žádné funkce verze Preview. Tato verze Preview je funkčně ekvivalentní 2020-03-13. Další informace najdete v této [specifikaci Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview). |
 | Správa 2015-08-19  | Stable | První obecně dostupná verze rozhraní REST API pro správu. Poskytuje zřizování služeb, horizontální navýšení kapacity a správu klíčů rozhraní API. Další informace najdete v této [specifikaci Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19). |

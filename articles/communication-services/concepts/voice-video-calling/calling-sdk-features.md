@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8216bb8c30448e7e91ec9a1bcc531b720eca30c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 44365dec247b9f3135a090cee397cad32598fd29
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665187"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977863"
 ---
 # <a name="calling-client-library-overview"></a>Přehled klientských knihoven pro hovory
 
@@ -34,7 +34,8 @@ Následující seznam obsahuje sadu funkcí, které jsou aktuálně k dispozici 
 |                   | Umístit skupinové volání s více než dvěma uživateli (až 350 uživatelů)                                                       | ✔️   | ✔️            | ✔️ 
 |                   | Zvýšení úrovně volání 1:1 se dvěma uživateli na skupinové volání s více než dvěma uživateli                                 | ✔️   | ✔️            | ✔️ 
 |                   | Připojit se k volání skupiny po jeho spuštění                                                                              | ✔️   | ✔️            | ✔️ 
-|                   | Pozvat dalšího účastníka VoIP, aby se připojil k probíhajícímu volání skupiny                                                       | ✔️   | ✔️            | ✔️ 
+|                   | Pozvat dalšího účastníka VoIP, aby se připojil k probíhajícímu volání skupiny                                                       | ✔️   | ✔️            | ✔️
+|                   | Zapnout/vypnout video                                                         | ✔️   | ✔️            | ✔️ 
 |                   | Ztlumení a ztlumení mikrofonu                                                                                                     | ✔️   | ✔️            | ✔️         
 |                   | Přepínání mezi fotoaparáty                                                                                              | ✔️   | ✔️            | ✔️           
 |                   | Místní blokování/zrušení blokování                                                                                                  | ✔️   | ✔️            | ✔️           

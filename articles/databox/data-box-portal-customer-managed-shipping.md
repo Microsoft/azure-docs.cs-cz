@@ -8,18 +8,18 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b09176ad8cb93d7710975b67de619b4f58eaa2f0
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142532"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951906"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Použití samoobslužného expedice pro Azure Data Box v Azure Portal
 
 Tento článek popisuje samostatné spravované úkoly, které je možné objednat, vybrat a vyřadit z Azure Data Boxho zařízení. Zařízení Data Box můžete spravovat pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Samostatně spravovaná dodávka je k dispozici jako možnost při [objednání Azure Data box](data-box-deploy-ordered.md). Samostatně spravovaná dodávka je k dispozici pouze v následujících oblastech:
 
@@ -41,7 +41,7 @@ Když umístíte Data Box pořadí, můžete vybrat možnost samostatně spravov
 2. Když zvolíte typ přenosu, vyberte možnost **expedice samostatně spravovaná** . Tato možnost je k dispozici pouze v případě, že jste v podporované oblasti, jak je popsáno v části požadavky.
 
 3. Po zadání dodací adresy ji budete muset ověřit a dokončit objednávku.
-   ![Expedice řízená svépomocí](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Dodávka 2 samostatně spravovaná](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Po přípravě zařízení a obdržení e-mailových oznámení můžete naplánovat vyzvednutí.
 
@@ -78,7 +78,7 @@ Když umístíte Data Box pořadí, můžete vybrat možnost samostatně spravov
 
 9. Pokud jste obdrželi událost pro odložení, měla by být objednávka **připravena k přijetí ve stavu datacentra Azure** v Azure Portal. Postupujte podle pokynů v části **plán vypnutí** a vraťte zařízení.
 
-   ![Zobrazení autorizačního kódu](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
+   ![Zobrazení autorizačního kódu 2](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
 
 10. Po ověření ID a autorizačního kódu a vypnutí zařízení v datovém centru by se mělo **přijmout**stav objednávky.
 

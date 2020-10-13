@@ -3,15 +3,15 @@ title: Konfigurace vyrovnávání zatížení virtuálních počítačů s Windo
 description: Jak nakonfigurovat metodu vyrovnávání zatížení pro prostředí virtuálních počítačů s Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4b133f4cfcb86119687d0d9be1ce91d9207af32a
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 2c57ac10fbd318dd4bbb2dc86457e186dd824834
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932511"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951651"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Konfigurace metody vyrovnávání zatížení Windows Virtual Desktop
 
@@ -20,7 +20,7 @@ Konfigurace metody vyrovnávání zatížení pro fond hostitelů vám umožní 
 >[!NOTE]
 > To se nevztahuje na fond hostitelů trvalé plochy, protože uživatelé mají vždycky mapování 1:1 na hostitele relace v rámci fondu hostitelů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste postupovali podle pokynů v tématu [nastavení modulu PowerShellu pro virtuální plochu](powershell-module.md) pro stažení a instalaci modulu PowerShell a přihlásíte se ke svému účtu Azure.
 
@@ -61,6 +61,9 @@ Pokud chcete nakonfigurovat fond hostitelů tak, aby prováděl vyrovnávání z
 ```powershell
 Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
+
+>[!NOTE]
+> Algoritmus pro vyrovnávání zatížení s první hloubkou distribuuje relace na hostitele relace na základě maximálního limitu hostitele relace ( `-MaxSessionLimit` ). Výchozí hodnota tohoto parametru je `999999` , což je také nejvyšší možný počet, na který můžete nastavit tuto proměnnou. Tento parametr se vyžaduje, když použijete algoritmus vyrovnávání zatížení první hloubky. Pro nejlepší možné prostředí uživatele nezapomeňte změnit parametr maximální limit počtu hostitelů relace na číslo, které nejlépe vyhovuje vašemu prostředí.
 
 Pokud se chcete ujistit, že se nastavení aktualizovalo, spusťte tuto rutinu:
 

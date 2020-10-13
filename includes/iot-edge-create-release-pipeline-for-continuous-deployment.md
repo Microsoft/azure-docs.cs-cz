@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
 ms.openlocfilehash: 706b2306fbe9f2a744d2874a8b55f78fa2fc8e4d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89302064"
 ---
 ## <a name="create-a-release-pipeline-for-continuous-deployment"></a>Vytvoření kanálu vydání pro průběžné nasazování
@@ -78,7 +78,7 @@ Vytvořte nový kanál a přidejte novou fázi:
     | Název IoT Hub | Vyberte centrum IoT.|
     | Vybrat jedno nebo více zařízení | Vyberte, zda chcete, aby byl kanál verze nasazen do jednoho nebo více zařízení. Pokud nasadíte do jednoho zařízení, zadejte **ID zařízení IoT Edge**. Pokud nasazujete na více zařízení, zadejte **podmínku cíle**zařízení. Podmínka cíle je filtr, který odpovídá sadě IoT Edge zařízení v IoT Hub. Pokud chcete jako podmínku použít značky zařízení, je potřeba aktualizovat značky odpovídajících zařízení pomocí IoT Hub s dvojitou podmínkou zařízení. Aktualizujte **ID nasazení IoT Edge** a **prioritu nasazení IoT Edge** v rozšířených nastaveních. Další informace o vytváření nasazení pro více zařízení najdete v tématu [principy IoT Edgeho automatického nasazení](../articles/iot-edge/module-deployment-monitoring.md). |
     | ID zařízení nebo cílová podmínka | V závislosti na předchozím výběru zadejte ID zařízení nebo [cílovou podmínku](../articles/iot-edge/module-deployment-monitoring.md#target-condition) pro nasazení do více zařízení. |
-    | Upřesnit | Pro ID nasazení IoT Edge zadejte `$(System.TeamProject)-$(Release.EnvironmentName)` . Tato proměnná mapuje název projektu a verze s vaším ID nasazení IoT Edge. |
+    | Pokročilý | Pro ID nasazení IoT Edge zadejte `$(System.TeamProject)-$(Release.EnvironmentName)` . Tato proměnná mapuje název projektu a verze s vaším ID nasazení IoT Edge. |
 
     ![Přidání úloh Azure IoT Edge pro vaši fázi vývoje](./media/iot-edge-create-release-pipeline-for-continuous-deployment/add-quality-assurance-task.png)
 

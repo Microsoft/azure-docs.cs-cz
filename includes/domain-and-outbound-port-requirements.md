@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: abnarain
 ms.openlocfilehash: 0b2831321c9f4d855a19605c1ce5ace9fa11c88b
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89596106"
 ---
-| Názvy domén                  | Odchozí porty | Popis                              |
+| Názvy domén                  | Odchozí porty | Description                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
 | `*.servicebus.windows.net`    | 443            | Požadováno místním prostředím Integration runtime pro připojení k pohybovým službám dat v Azure Data Factory. |
 | `{datafactory}.{region}.datafactory.azure.net`<br> ani `*.frontend.clouddatahub.net` | 443            | Požadováno místním prostředím Integration runtime pro připojení ke službě Data Factory. <br>Pro nově vytvořená Data Factory prosím, najděte plně kvalifikovaný název domény z vašeho místně hostovaného Integration Runtime klíče, který je ve formátu {DataFactory}. {region}. DataFactory. Azure. NET. Pokud v případě staré datové továrny nevidíte plně kvalifikovaný název domény v integrovaném integračním klíči, použijte místo toho *. frontend.clouddatahub.net. |

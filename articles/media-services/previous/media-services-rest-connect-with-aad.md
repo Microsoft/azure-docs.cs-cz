@@ -15,10 +15,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
 ms.openlocfilehash: 958bfa605e0195b5f4fde2c0ff53a8ce567f50a5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89257139"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Použití ověřování AD pro přístup k rozhraní API služby Media Services s využitím REST
@@ -64,7 +64,7 @@ V tomto kurzu se naučíte:
 
 Chcete-li získat přístup k rozhraní Media Services API, je nutné shromáždit následující datové body.
 
-|Nastavení|Příklad|Popis|
+|Nastavení|Příklad|Description|
 |---|-------|-----|
 |Azure Active Directory doménu tenanta|microsoft.onmicrosoft.com|Služba Azure AD jako koncový bod služby tokenů zabezpečení (STS) je vytvořena v následujícím formátu: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token> . Služba Azure AD vydá token JWT, aby mohl získat přístup k prostředkům (přístupovému tokenu).|
 |Koncový bod rozhraní REST API|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Toto je koncový bod, proti kterému jsou vytvářena všechna Media Services REST API volání ve vaší aplikaci.|

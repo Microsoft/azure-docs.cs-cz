@@ -12,7 +12,7 @@ ms.openlocfilehash: e8cfe55f4843439743535b978483d8518bd020fa
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858758"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-azure-cli"></a>Vytvoření clusteru s Data Lake Storage Gen2 pomocí Azure CLI
@@ -34,7 +34,7 @@ Pokud chcete vytvořit cluster HDInsight, který používá Data Lake Storage Ge
 
 Můžete [stáhnout ukázkový soubor šablony](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) a [stáhnout ukázkový soubor parametrů](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). Než použijete šablonu a fragment kódu Azure CLI níže, nahraďte následující zástupné symboly jejich správnými hodnotami:
 
-| Zástupný symbol | Popis |
+| Zástupný symbol | Description |
 |---|---|
 | `<SUBSCRIPTION_ID>` | ID vašeho předplatného Azure |
 | `<RESOURCEGROUPNAME>` | Skupina prostředků, ve které chcete vytvořit nový cluster a účet úložiště. |

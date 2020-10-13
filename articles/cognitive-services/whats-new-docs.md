@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 10/02/2020
-ms.openlocfilehash: 17d887f0834733fdc833bbbad66c957b057a588a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a49a51886f921c9d37a33229b6db78479d7198bc
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857805"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938317"
 ---
 # <a name="cognitive-services-docs-whats-new-for-september-1-2020---september-30-2020"></a>Cognitive Services Docs: co je nového ve 1. září 2020. září 2020
 
@@ -42,51 +42,51 @@ Vítá vás, co je nového v Cognitive Services docs od 1. září 2020 do 31. z
 
 ### <a name="new-articles"></a>Nové články
 
-- [Instalace a spuštění kontejneru prostorové analýzy (Preview)](/azure/cognitive-services/computer-vision/spatial-analysis-container.md)
+- [Instalace a spuštění kontejneru prostorové analýzy (Preview)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container?tabs=azure-stack-edge)
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Značky image kontejneru Azure Cognitive Services](/azure/cognitive-services/containers/container-image-tags.md)
+- [Značky image kontejneru Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>Rozpoznávání formulářů
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Jazyková podpora pro rozpoznávání formulářů](/azure/cognitive-services/form-recognizer/language-support.md)
-- [Sestavení sady školicích dat pro vlastní model](/azure/cognitive-services/form-recognizer/build-training-data-set.md)
-- [Principy účtenek](/azure/cognitive-services/form-recognizer/concept-receipts.md)
-- [Rozpoznávání vydaných dat v klidovém formátu](/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest.md)
-- [Co je nového ve službě Rozpoznávání formulářů?](/azure/cognitive-services/form-recognizer/whats-new.md)
-- [Principy vizitek](/azure/cognitive-services/form-recognizer/concept-business-cards.md)
-- [Co je služba Rozpoznávání formulářů?](/azure/cognitive-services/form-recognizer/overview.md)
-- [Rychlý Start: použití klientské knihovny pro rozpoznávání formulářů](/azure/cognitive-services/form-recognizer/quickstarts/client-library.md)
+- [Jazyková podpora pro rozpoznávání formulářů](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/language-support)
+- [Sestavení sady školicích dat pro vlastní model](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/build-training-data-set)
+- [Principy účtenek](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/concept-receipts)
+- [Rozpoznávání vydaných dat v klidovém formátu](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest)
+- [Co je nového ve službě Rozpoznávání formulářů?](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/whats-new)
+- [Principy vizitek](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/concept-business-cards)
+- [Co je služba Rozpoznávání formulářů?](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/overview)
+- [Rychlý Start: použití klientské knihovny pro rozpoznávání formulářů](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/client-library)
 
 ## <a name="immersive-reader"></a>Asistivní čtečka
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Podpora jazyků pro moderní čtečku](/azure/cognitive-services/immersive-reader/language-support.md)
-- [Referenční dokumentace sady pro moderní čtečku JavaScript SDK (v 1.1)](/azure/cognitive-services/immersive-reader/reference.md)
-- [Rychlý Start: Začínáme s moderní čtečkou](/azure/cognitive-services/immersive-reader/quickstarts/client-libraries.md)
-- [Kurz: spuštění moderního čtečky pomocí ukázkového projektu Python](/azure/cognitive-services/immersive-reader/tutorial-python.md)
-- [Vytvoření prostředku pro moderní čtečku a konfigurace ověřování Azure Active Directory](/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader.md)
+- [Podpora jazyků pro moderní čtečku](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/language-support)
+- [Referenční dokumentace sady pro moderní čtečku JavaScript SDK (v 1.1)](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference)
+- [Rychlý Start: Začínáme s moderní čtečkou](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/quickstarts/client-libraries)
+- [Kurz: spuštění moderního čtečky pomocí ukázkového projektu Python](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/tutorial-python)
+- [Vytvoření prostředku pro moderní čtečku a konfigurace ověřování Azure Active Directory](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader)
 
 ## <a name="metrics-advisor"></a>Metrics Advisor
 
 ### <a name="new-articles"></a>Nové články
 
-- [Postupy: Konfigurace metrik a doladění konfigurace zjišťování](/azure/cognitive-services/metrics-advisor/how-tos/configure-metrics.md)
-- [Přidání datových kanálů z různých zdrojů dat do Poradce pro metriky](/azure/cognitive-services/metrics-advisor/data-feeds-from-different-sources.md)
-- [Rychlý Start: použití rozhraní REST API k přizpůsobení řešení](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api.md)
-- [Postupy: Konfigurace výstrah a získání oznámení pomocí zavěšení](/azure/cognitive-services/metrics-advisor/how-tos/alerts.md)
+- [Postupy: Konfigurace metrik a doladění konfigurace zjišťování](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/how-tos/configure-metrics)
+- [Přidání datových kanálů z různých zdrojů dat do Poradce pro metriky](/azure/cognitive-services/metrics-advisor/data-feeds-from-different-sources)
+- [Rychlý Start: použití rozhraní REST API k přizpůsobení řešení](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/quickstarts/rest-api)
+- [Postupy: Konfigurace výstrah a získání oznámení pomocí zavěšení](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/how-tos/alerts)
 
 ## <a name="text-analytics"></a>Analýza textu
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Jak používat rozpoznávání pojmenovaných entit v Analýza textu](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [Správa verzí modelů v rozhraní API pro analýzu textu](/azure/cognitive-services/text-analytics/concepts/model-versioning.md)
-- [Rychlý Start: použití klientské knihovny Analýza textu](/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk.md)
+- [Jak používat rozpoznávání pojmenovaných entit v Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)
+- [Správa verzí modelů v rozhraní API pro analýzu textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/model-versioning)
+- [Rychlý Start: použití klientské knihovny Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk)
 
 ## <a name="community-contributors"></a>Přispěvatelé komunity
 

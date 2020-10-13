@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: e08150f5998b71523a986eac1f8a9be993125f5a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619147"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Zotavení po havárii pro víceklientské aplikace SaaS s využitím geografické replikace databáze
@@ -142,7 +142,7 @@ V tuto chvíli běží aplikace normálně v původní oblasti a teď je chrán�
 
 2. Prozkoumejte prostředky ve skupině prostředků pro obnovení.  
 
-3. Na serveru _tenants1-DPT- &lt; User &gt; -Recovery_ klikněte na databázi contoso.  Na levé straně klikněte na geografickou replikaci. 
+3. Na serveru _tenants1-DPT- &lt; User &gt; -Recovery_ klikněte na databázi contoso.  Na levé straně klikněte na Geo-Replication. 
 
     ![Contoso – geografická replikace – odkaz na replikaci](./media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication.png) 
 
@@ -245,7 +245,7 @@ Po dokončení procesu obnovení jsou aplikace a všichni klienti plně funkčn�
     
 4. Otevřete SQL Server _tenants2-DPT- &lt; User &gt; -Recovery_ .  Všimněte si, že obsahuje databázi _hawthornhall_ a elastický fond _Pool1_.  Databáze _hawthornhall_ je nakonfigurovaná jako elastická databáze v elastickém fondu _Pool1_ .
 
-5. Přejděte zpátky do skupiny prostředků a v _tenants1-DPT- &lt; User &gt; -Recovery_ Server klikněte na databázi contoso. Na levé straně klikněte na geografickou replikaci.
+5. Přejděte zpátky do skupiny prostředků a v _tenants1-DPT- &lt; User &gt; -Recovery_ Server klikněte na databázi contoso. Na levé straně klikněte na Geo-Replication.
     
     ![Databáze Contoso po převzetí služeb při selhání](./media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication-after-failover.png)
 
@@ -314,6 +314,6 @@ V tomto kurzu jste se naučili:
 
 Další informace o technologiích Azure SQL Database poskytuje, aby bylo možné zajistit kontinuitu podnikových aplikací v dokumentaci [Přehled provozní kontinuity](business-continuity-high-availability-disaster-recover-hadr-overview.md) .
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Další kurzy, které se vytvářejí na aplikaci Wingtip SaaS](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

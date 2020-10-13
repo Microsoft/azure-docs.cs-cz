@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 5ec419be5c7549553788d009f09fa3e0fb8655e4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258281"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Inicializace klientských aplikací pomocí MSAL.NET
@@ -96,7 +96,7 @@ V fragmentech kódu pomocí tvůrců aplikací `.With` lze použít několik met
 
 Modifikátory, které můžete nastavit ve veřejném klientovi nebo v nástroji pro vytváření důvěrných klientských aplikací, jsou tyto:
 
-|Modifikátor | Popis|
+|Modifikátor | Description|
 |--------- | --------- |
 |`.WithAuthority()` 7 přepsání | Nastaví výchozí autoritu aplikace na autoritu Azure AD s možností výběru cloudu Azure, cílové skupiny, tenanta (ID tenanta nebo názvu domény) nebo poskytnutí přímo identifikátoru URI autority.|
 |`.WithAdfsAuthority(string)` | Nastaví výchozí autoritu aplikace jako autoritu služby ADFS.|
@@ -115,7 +115,7 @@ Modifikátory, které můžete nastavit ve veřejném klientovi nebo v nástroji
 
 Modifikátory, které můžete nastavit na tvůrci veřejné klientské aplikace v Xamarin. iOS, jsou:
 
-|Modifikátor | Popis|
+|Modifikátor | Description|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Jenom Xamarin. iOS**: nastaví skupinu zabezpečení řetězu klíčů pro iOS (pro trvalost mezipaměti).|
 
@@ -123,7 +123,7 @@ Modifikátory, které můžete nastavit na tvůrci veřejné klientské aplikace
 
 V Tvůrci důvěrných klientských aplikací můžete nastavit Modifikátory:
 
-|Modifikátor | Popis|
+|Modifikátor | Description|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | Nastaví certifikát identifikující aplikaci pomocí Azure AD.|
 |`.WithClientSecret(string clientSecret)` | Nastaví tajný klíč klienta (heslo aplikace) identifikující aplikaci pomocí Azure AD.|
