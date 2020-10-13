@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
 ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082246"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj akcí skriptů pomocí HDInsight
@@ -73,7 +73,7 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-### <a name="target-the-operating-system-version"></a><a name="bps10"></a>Cílení na verzi operačního systému
+### <a name="target-the-operating-system-version"></a><a name="bps10"></a> Cílení na verzi operačního systému
 
 HDInsight je založený na distribuci Ubuntu Linux. Různé verze služby HDInsight spoléhají na různé verze Ubuntu, což může změnit způsob, jakým se skript chová. Například HDInsight 3,4 a starší jsou založené na verzích Ubuntu, které používají příkaz Spustit jako. Verze 3,5 a vyšší jsou založené na Ubuntu 16,04, který používá systém. Systém a spuštění jsou závislé na různých příkazech, takže by měl být vytvořen skript pro práci s oběma.
 
@@ -161,13 +161,13 @@ HDInsight protokoluje výstup skriptu, který je zapsaný do STDOUT a STDERR. Ty
 > [!NOTE]  
 > Apache Ambari je k dispozici pouze v případě, že byl cluster úspěšně vytvořen. Použijete-li během vytváření clusteru akci skriptu a vytváření se nepovede, přečtěte si téma [řešení potíží se skripty](./troubleshoot-script-action.md) v případě jiných způsobů přístupu k protokolovaným informacím.
 
-Většina nástrojů a instalačních balíčků již zapisuje informace do STDOUT a STDERR, ale možná budete chtít přidat další protokolování. Chcete-li odeslat text do STDOUT, použijte `echo` . Příklad:
+Většina nástrojů a instalačních balíčků již zapisuje informace do STDOUT a STDERR, ale možná budete chtít přidat další protokolování. Chcete-li odeslat text do STDOUT, použijte `echo` . Například:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Ve výchozím nastavení `echo` odešle řetězec do STDOUT. Pokud ho chcete směrovat do STDERR, přidejte ho do `>&2` `echo` . Příklad:
+Ve výchozím nastavení `echo` odešle řetězec do STDOUT. Pokud ho chcete směrovat do STDERR, přidejte ho do `>&2` `echo` . Například:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -177,7 +177,7 @@ Tento postup přesměruje informace zapsané do STDOUT na STDERR (2). Další in
 
 Další informace o zobrazení informací protokolovaných akcemi skriptu najdete v tématu [řešení potíží se skripty](./troubleshoot-script-action.md).
 
-### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a>Uložení souborů jako ASCII pomocí konců řádků LF
+### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a> Uložení souborů jako ASCII pomocí konců řádků LF
 
 Bash skripty by měly být uložené ve formátu ASCII a řádky zakončené znakem LF. Soubory, které jsou uložené jako UTF-8, nebo v případě konce řádku použijte CRLF, může dojít k následující chybě:
 
@@ -186,7 +186,7 @@ $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a>Pro obnovení z přechodných chyb použít logiku opakování
+### <a name="use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a> Pro obnovení z přechodných chyb použít logiku opakování
 
 Když stahujete soubory, instalujete balíčky pomocí apt-get nebo jiné akce, které přenášejí data prostřednictvím Internetu, může akce selhat kvůli přechodným chybám v síti. Například vzdálený prostředek, který komunikujete, může být v procesu převzetí služeb při selhání do záložního uzlu.
 
@@ -256,7 +256,7 @@ V této části najdete pokyny k implementaci některých běžných vzorů pou�
 
 V některých případech může skript vyžadovat parametry. Při použití REST API Ambari můžete například potřebovat heslo správce clusteru.
 
-Parametry předané skriptu jsou známé jako *poziční parametry*a jsou přiřazeny k `$1` pro první parametr, `$2` pro druhý a tak dále. `$0`obsahuje název samotného skriptu.
+Parametry předané skriptu jsou známé jako *poziční parametry*a jsou přiřazeny k `$1` pro první parametr, `$2` pro druhý a tak dále. `$0` obsahuje název samotného skriptu.
 
 Hodnoty předané skriptu jako parametry by měly být uzavřeny jednoduchými uvozovkami ('). Tím zajistíte, že předaná hodnota je považována za literál.
 
@@ -328,7 +328,7 @@ Další informace o použití jednotlivých metod naleznete v tématu [How to us
 
 Společnost Microsoft poskytuje ukázkové skripty pro instalaci komponent do clusteru HDInsight. Podívejte se [na téma Instalace a použití odstínu v clusterech HDInsight](hdinsight-hadoop-hue-linux.md) jako příklad akce skriptu.
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 V následujícím seznamu jsou chyby, které se můžou při používání skriptů, které jste vyvinuli, nacházet:
 
@@ -360,7 +360,7 @@ K tomuto problému často dochází, když je skript vytvořen v prostředí sys
 awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 ```
 
-Nahraďte souborem, který `INFILE` obsahuje kusovník. `OUTFILE`měl by se jednat o nový název souboru, který obsahuje skript bez tohoto kusovníku.
+Nahraďte souborem, který `INFILE` obsahuje kusovník. `OUTFILE` měl by se jednat o nový název souboru, který obsahuje skript bez tohoto kusovníku.
 
 ## <a name="next-steps"></a><a name="seeAlso"></a>Další kroky
 

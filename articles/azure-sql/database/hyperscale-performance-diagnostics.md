@@ -11,10 +11,10 @@ ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
 ms.openlocfilehash: 7bd2b404627e21a80fc41a4561300d7252d1519c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84324384"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnostika řešení potíží s výkonem s škálovatelným škálováním SQL
@@ -26,7 +26,7 @@ Aby bylo možné řešit problémy s výkonem v databázi s škálovatelným šk
 
 Každá Azure SQL Database úroveň služby má omezení četnosti generování protokolu vyhodnocená prostřednictvím [zásad správného řízení přenosů protokolů](resource-limits-logical-server.md#transaction-log-rate-governance). V měřítku je limit generování protokolu aktuálně nastaven na 100 MB/s bez ohledu na úroveň služby. Existují však situace, kdy je potřeba omezit rychlost generování protokolu u primární repliky výpočetních dat, aby se Slaa obnovitelnost. Toto omezení se stane, když je [Server stránky nebo jiná výpočetní replika](service-tier-hyperscale.md#distributed-functions-architecture) významně za použití nových záznamů protokolu z protokolovací služby.
 
-Následující typy čekání (v [Sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) popisují důvody, proč je možné omezit rychlost protokolu u primární repliky Compute:
+Následující typy čekání (v [Sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) popisují důvody, proč je možné omezit rychlost protokolu u primární repliky Compute:
 
 |Typ čekání    |Description                         |
 |-------------          |------------------------------------|
@@ -45,11 +45,11 @@ Některá dynamická spravovaná zobrazení (zobrazení dynamické správy) a ro
 
 - Sloupce pro čtení na serveru sestav jsou k dispozici v zobrazení dynamické správy provádění a zobrazení katalogu, jako je například:
 
-  - [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
-  - [sys. dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
-  - [sys. dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
-  - [sys. dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
-  - [sys. query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
+  - [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
+  - [sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
+  - [sys.dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
+  - [sys.dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+  - [sys.query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
 - Do následujících rozšířených událostí se přidají čtení stránkového serveru:
   - sql_statement_completed
   - sp_statement_completed
@@ -58,7 +58,7 @@ Některá dynamická spravovaná zobrazení (zobrazení dynamické správy) a ro
   - scan_stopped
   - query_store_begin_persist_runtime_stat
   - dotaz – store_execution_runtime_info
-- ActualPageServerReads/ActualPageServerReadAheads se přidají do XML plánu dotazů pro skutečné plány. Příklad:
+- ActualPageServerReads/ActualPageServerReadAheads se přidají do XML plánu dotazů pro skutečné plány. Například:
 
 `<RunTimeCountersPerThread Thread="8" ActualRows="90466461" ActualRowsRead="90466461" Batches="0" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row" ActualElapsedms="133645" ActualCPUms="85105" ActualScans="1" ActualLogicalReads="6032256" ActualPhysicalReads="0" ActualPageServerReads="0" ActualReadAheads="6027814" ActualPageServerReadAheads="5687297" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobPageServerReads="0" ActualLobReadAheads="0" ActualLobPageServerReadAheads="0" />`
 
@@ -67,11 +67,11 @@ Některá dynamická spravovaná zobrazení (zobrazení dynamické správy) a ro
 
 ## <a name="virtual-file-stats-and-io-accounting"></a>Statistika virtuálních souborů a monitorování vstupně-výstupních operací
 
-V Azure SQL Database je [Sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF primárním způsobem, jak monitorovat SQL Database v/v. Vlastnosti v/v v měřítku se liší v důsledku [distribuované architektury](service-tier-hyperscale.md#distributed-functions-architecture). V této části se zaměřujeme na vstupně-výstupní operace (čtení a zápisy) do datových souborů, jak je vidět v tomto DMF. V rámci škálování každý datový soubor, který je viditelný v tomto DMF, odpovídá serveru vzdálené stránky. Mezipaměť RBPEX, na kterou se odkazuje tady, je místní mezipaměť založená na SSD, která je na výpočetní replice nepokrývá mezipaměť.
+V Azure SQL Database je [Sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF hlavním způsobem, jak monitorovat SQL Database v/v. Vlastnosti v/v v měřítku se liší v důsledku [distribuované architektury](service-tier-hyperscale.md#distributed-functions-architecture). V této části se zaměřujeme na vstupně-výstupní operace (čtení a zápisy) do datových souborů, jak je vidět v tomto DMF. V rámci škálování každý datový soubor, který je viditelný v tomto DMF, odpovídá serveru vzdálené stránky. Mezipaměť RBPEX, na kterou se odkazuje tady, je místní mezipaměť založená na SSD, která je na výpočetní replice nepokrývá mezipaměť.
 
 ### <a name="local-rbpex-cache-usage"></a>Použití místní mezipaměti RBPEX
 
-Místní mezipaměť RBPEX existuje ve službě COMPUTE repliky v místním úložišti SSD. Proto je vstupně-výstupní operace s touto mezipamětí rychlejší než v/v proti serverům vzdálené stránky. V současné době má [Sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) v databázi s velkým škálováním speciální řádek vykazující vstupně-výstupní operace s místní mezipamětí RBPEX na výpočetní replice. Tento řádek má hodnotu 0 pro `database_id` `file_id` sloupec i. Například následující dotaz vrátí statistiku využití RBPEX od spuštění databáze.
+Místní mezipaměť RBPEX existuje ve službě COMPUTE repliky v místním úložišti SSD. Proto je vstupně-výstupní operace s touto mezipamětí rychlejší než v/v proti serverům vzdálené stránky. V současné době [Sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) v databázi s velkým měřítkem obsahuje speciální řádek, který hlásí vstupně-výstupní operace s místní mezipamětí RBPEX na výpočetní replice. Tento řádek má hodnotu 0 pro `database_id` `file_id` sloupec i. Například následující dotaz vrátí statistiku využití RBPEX od spuštění databáze.
 
 `select * from sys.dm_io_virtual_file_stats(0,NULL);`
 
@@ -92,16 +92,16 @@ Poměr čtení provedených v RBPEX pro agregované čtení provedené u všech 
 
 ### <a name="log-writes"></a>Zápisy do protokolu
 
-- V případě primárního COMPUTE se pro zápis do protokolu používá file_id 2 sys. dm_io_virtual_file_stats. Zápis do protokolu primárního COMPUTE je zápis do zóny pro odpočívadlo protokolu.
+- Ve službě Primary COMPUTE je zápis do protokolu v file_id 2 sys.dm_io_virtual_file_stats. Zápis do protokolu primárního COMPUTE je zápis do zóny pro odpočívadlo protokolu.
 - Záznamy protokolu nejsou u sekundární repliky na potvrzení zabezpečení posíleny. V měřítku je protokol protokolovací služby aplikován na asynchronní repliky do sekundární repliky. Vzhledem k tomu, že zápisy protokolů se ve skutečnosti nevyskytují na sekundárních replikách, je jakékoli monitorování protokolu IOs na sekundárních replikách pouze pro účely sledování.
 
 ## <a name="data-io-in-resource-utilization-statistics"></a>Data v/v statistiky využití prostředků
 
-V Neškálovatelné databázi jsou kombinované vstupně-výstupní operace čtení a zápisu [proti datovým](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) souborům v zobrazení [Sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [Sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) uvedeny ve `avg_data_io_percent` sloupci. Stejná hodnota je hlášena v Azure Portal jako _procento vstupně-výstupních dat_.
+V Neškálovatelné databázi, kombinované čtení a zápis IOPS proti datovým souborům, které odpovídají limitu datových IOPS [zásad správného řízení prostředků](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) , se ve sloupci hlásí v [Sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) zobrazení `avg_data_io_percent` . Stejná hodnota je hlášena v Azure Portal jako _procento vstupně-výstupních dat_.
 
 V databázi s velkým měřítkem se v tomto sloupci zprávy týkají využití data IOPS vzhledem k limitu pro místní úložiště pouze v případě výpočetní repliky, konkrétně v/v na RBPEX a `tempdb` . Hodnota 100% v tomto sloupci udává, že zásady správného řízení prostředků omezují místní úložiště IOPS. Pokud se to koreluje s problémem s výkonem, vyladěním úlohy vygenerujte méně vstupně-výstupní operace nebo zvyšte cíl databázové služby, abyste zvýšili _maximální počet datových IOPS_ pro řízení [prostředků.](resource-limits-vcore-single-databases.md) V případě zásad správného řízení prostředků čtení a zápisu RBPEX systém počítá jednotlivé systémy 8 – KB a nikoli větší IOs, které může vydávat SQL Server databázový stroj.
 
-Data v datovém vstupu na serverech vzdálené stránky nejsou hlášena v zobrazeních využití prostředků nebo na portálu, ale jsou uvedena v DMFu [Sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) , jak je uvedeno výše.
+Data v datovém vstupu proti serverům vzdálené stránky nejsou uvedena v zobrazeních využití prostředků nebo na portálu, ale jsou uvedena v [Sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF, jak je uvedeno výše.
 
 ## <a name="additional-resources"></a>Další zdroje
 

@@ -1,6 +1,6 @@
 ---
 title: Sériová konzola Azure pro Linux | Microsoft Docs
-description: Obousměrná sériová Konzola pro Azure Virtual Machines a Virtual Machine Scale Sets pomocí příkladu Linux.
+description: Bi-Directional sériové konzole pro Azure Virtual Machines a Virtual Machine Scale Sets pomocí příkladu Linux.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: 9a31a22a5b037162198f594d9bcf35c91a0a4654
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306867"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure Serial Console for Linux
@@ -109,12 +109,12 @@ Veškerý přístup ke konzole sériového portu je aktuálně přihlášený k 
 Pokud je uživatel připojen ke konzole sériového portu a jiný uživatel úspěšně požaduje přístup ke stejnému virtuálnímu počítači, bude první uživatel odpojen a druhý uživatel připojen ke stejné relaci.
 
 > [!CAUTION]
-> To znamená, že odpojený uživatel nebude odhlášen. Možnost vymáhat odhlášení po odpojení (pomocí SIGHUP nebo podobného mechanismu) je stále v plánu. Pro systém Windows je povolen automatický časový limit ve speciální konzole pro správu (SAC); pro Linux ale můžete nakonfigurovat nastavení časový limit terminálu. Chcete-li to provést, přidejte `export TMOUT=600` do souboru *. bash_profile* nebo *. profil* pro uživatele, který používáte k přihlášení do konzoly. Toto nastavení vyprší časový limit relace po 10 minutách.
+> To znamená, že odpojený uživatel nebude odhlášen. Možnost vymáhat odhlášení po odpojení (pomocí SIGHUP nebo podobného mechanismu) je stále v plánu. Pro systém Windows je povolen automatický časový limit ve speciální konzole pro správu (SAC); pro Linux ale můžete nakonfigurovat nastavení časový limit terminálu. Chcete-li to provést, přidejte `export TMOUT=600` do souboru *.bash_profile* nebo *. profil* pro uživatele, který používáte k přihlášení do konzoly. Toto nastavení vyprší časový limit relace po 10 minutách.
 
 ## <a name="accessibility"></a>Usnadnění
 Přístupnost je klíčovým fokusem pro konzolu sériového rozhraní Azure. Za tímto účelem jsme zajistili, že sériová konzola je plně přístupná.
 
-### <a name="keyboard-navigation"></a>Navigace přes klávesnici
+### <a name="keyboard-navigation"></a>Procházení pomocí klávesnice
 Pomocí klávesy **TAB** na klávesnici přejděte v rozhraní sériové konzoly z Azure Portal. Vaše poloha se zvýrazní na obrazovce. Pokud chcete opustit okno konzoly sériového portu, stiskněte na své klávesnici **kombinaci kláves CTRL** + **F6** .
 
 ### <a name="use-serial-console-with-a-screen-reader"></a>Použití sériové konzoly se čtečkou obrazovky

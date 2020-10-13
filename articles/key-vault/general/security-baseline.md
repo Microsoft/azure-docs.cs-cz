@@ -8,10 +8,10 @@ ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 34036388ce9243c082cf79eb4be9251957eafc01
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400462"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Standardní hodnoty zabezpečení Azure pro službu Key Vault
@@ -1093,13 +1093,13 @@ Pochopení ochrany proti malwaru Microsoftu pro Azure Cloud Services a Virtual M
 
 **Doprovodné**materiály: Zajistěte pravidelné automatizované zálohování Key Vault certifikátů, klíčů, spravovaných účtů úložiště a tajných kódů s následujícími příkazy PowerShellu:
 
-- Backup – AzKeyVaultCertificate
+- Backup-AzKeyVaultCertificate
 
-- Backup – AzKeyVaultKey
+- Backup-AzKeyVaultKey
 
-- Backup – AzKeyVaultManagedStorageAccount
+- Backup-AzKeyVaultManagedStorageAccount
 
-- Backup – AzKeyVaultSecret
+- Backup-AzKeyVaultSecret
 
 V případě potřeby můžete ukládat zálohy Key Vault v Azure Backup.
 
@@ -1123,13 +1123,13 @@ Postup povolení Azure Backup: https://docs.microsoft.com/azure/backup
 
 **Doprovodné**materiály: proveďte zálohy certifikátů Key Vault, klíčů, spravovaných účtů úložiště a tajných kódů s následujícími příkazy PowerShellu:
 
-- Backup – AzKeyVaultCertificate
+- Backup-AzKeyVaultCertificate
 
-- Backup – AzKeyVaultKey
+- Backup-AzKeyVaultKey
 
-- Backup – AzKeyVaultManagedStorageAccount
+- Backup-AzKeyVaultManagedStorageAccount
 
-- Backup – AzKeyVaultSecret
+- Backup-AzKeyVaultSecret
 
 V případě potřeby můžete ukládat zálohy Key Vault v Azure Backup.
 
@@ -1153,13 +1153,13 @@ Postup povolení Azure Backup: https://docs.microsoft.com/azure/backup
 
 **Doprovodné**materiály: pravidelně provádějte obnovení dat Key Vault certifikátů, klíčů, spravovaných účtů úložiště a tajných kódů s následujícími příkazy PowerShellu:
 
-- Obnovit – AzKeyVaultCertificate
+- Restore-AzKeyVaultCertificate
 
-- Obnovit – AzKeyVaultKey
+- Restore-AzKeyVaultKey
 
-- Obnovit – AzKeyVaultManagedStorageAccount
+- Restore-AzKeyVaultManagedStorageAccount
 
-- Obnovit – AzKeyVaultSecret
+- Restore-AzKeyVaultSecret
 
 Postup obnovení Key Vaultch certifikátů:  https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
 

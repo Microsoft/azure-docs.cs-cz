@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: 590416f077fc1ff9430e42e27217548476c9032f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132768"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akcích a kontextu.
@@ -131,7 +131,7 @@ Je možné vylepšit sady funkcí jejich úpravou, aby byly větší a více neb
 
 Například časové razítko dolů na druhou je velmi zhuštěná funkce. Je možné, že je možné provést více hustě (v platnosti) tím, že rozklasifikujete časy do "ráno", "poledne", "odpoledne" atd.
 
-Informace o poloze také obvykle těží z vytváření širších klasifikací. Například souřadnice zeměpisné délky, jako je například lat: 47,67402 ° N, Long: 122,12154 ° W, je příliš přesné a vynutí, aby se model dozvěděl o zeměpisné šířce a délce jako odlišné rozměry. Při pokusu o přizpůsobení na základě informací o poloze pomáhá seskupovat informace o poloze ve větších sektorech. Snadným způsobem, jak to provést, je zvolit vhodnou přesnost zaokrouhlení pro číselné hodnoty v tabulce LAT a kombinovat zeměpisnou šířku a délku do "oblastí" tím, že je provedete do jednoho řetězce. Dobrým způsobem, jak vyjádřit 47,67402 ° N, Long: 122,12154 ° W v oblastech, přibližně pár kilometrů na šířku by bylo "umístění": "34.3, 12,1".
+Informace o poloze také obvykle těží z vytváření širších klasifikací. Například Latitude-Longitude souřadnici, jako je například lat: 47,67402 ° N, Long: 122,12154 ° W, je příliš přesný a vynutí, aby se model dozvěděl o zeměpisné šířce a délce jako odlišné rozměry. Při pokusu o přizpůsobení na základě informací o poloze pomáhá seskupovat informace o poloze ve větších sektorech. Snadným způsobem, jak to provést, je zvolit vhodnou přesnost zaokrouhlení pro Lat-Long čísla a seskupit zeměpisnou šířku a délku do "oblastí" tím, že je provedete do jednoho řetězce. Dobrým způsobem, jak vyjádřit 47,67402 ° N, Long: 122,12154 ° W v oblastech, přibližně pár kilometrů na šířku by bylo "umístění": "34.3, 12,1".
 
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>Rozbalení sad funkcí s použitím extrapolace informací
@@ -144,7 +144,7 @@ Umělá logika a Cognitive Services připravená ke spuštění můžou být vel
 
 Díky předzpracování vašich položek pomocí umělých analytických služeb můžete automaticky extrahovat informace, které jsou pravděpodobně relevantní pro přizpůsobení.
 
-Příklad:
+Například:
 
 * Můžete spustit filmový soubor prostřednictvím [video indexer](https://azure.microsoft.com/services/media-services/video-indexer/) k extrakci elementů scény, text, mínění a mnoha dalších atributů. Tyto atributy je pak možné odrážet tak, aby odrážely vlastnosti, které původní metadata položky neobsahovaly. 
 * Image je možné spouštět pomocí detekce objektů, plošek až po mínění atd.

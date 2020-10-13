@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.openlocfilehash: 2059c473c8429e7498992e26c0a2c90ea835c537
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89646603"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny ID platformy Microsoft identity
@@ -51,7 +51,7 @@ Zobrazit ukázkový token v 2.0 v [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJK
 
 ### <a name="header-claims"></a>Deklarace hlaviček
 
-|Deklarovat | Formát | Popis |
+|Deklarovat | Formát | Description |
 |-----|--------|-------------|
 |`typ` | Řetězec – vždycky "JWT" | Označuje, že token je token JWT.|
 |`alg` | Řetězec | Určuje algoritmus, který se použil k podepsání tokenu. Příklad: "RS256" |
@@ -62,7 +62,7 @@ Zobrazit ukázkový token v 2.0 v [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJK
 
 V tomto seznamu jsou uvedeny deklarace identity JWT, které jsou ve výchozím nastavení ve většině id_tokens (s výjimkou popsaných případů).  Vaše aplikace ale může použít [volitelné deklarace identity](active-directory-optional-claims.md) k vyžádání dalších deklarací JWT v id_token.  Ty můžou být v rozsahu od `groups` deklarace identity až po informace o jménu uživatele.
 
-|Deklarovat | Formát | Popis |
+|Deklarovat | Formát | Description |
 |-----|--------|-------------|
 |`aud` |  Řetězec – identifikátor URI ID aplikace | Identifikuje zamýšleného příjemce tokenu. V aplikaci `id_tokens` je cílovou skupinou ID aplikace vaší aplikace, které je přiřazeno vaší aplikaci v Azure Portal. Vaše aplikace by měla tuto hodnotu ověřit a token zamítnout, pokud se hodnota neshoduje. |
 |`iss` |  Řetězec, identifikátor URI služby STS | Identifikuje službu tokenů zabezpečení (STS), která vytvoří a vrátí token, a tenanta Azure AD, ve kterém byl uživatel ověřený. Pokud byl token vydán koncovým bodem v 2.0, identifikátor URI skončí `/v2.0` .  Identifikátor GUID, který označuje, že uživatel je uživatelem uživatele z účet Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad` . Vaše aplikace by měla použít část s identifikátorem GUID k omezení sady klientů, kteří se mohou k aplikaci přihlásit, pokud jsou k dispozici. |

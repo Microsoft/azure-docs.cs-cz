@@ -4,10 +4,10 @@ description: Přečtěte si, jak API Management chránit rozhraní API spuštěn
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 346d0f795c3d19b115ced771991263cce2104217
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91262973"
 ---
 # <a name="api-management-to-publish-and-protect-apis-running-on-azure-vmware-solution-based-vms"></a>API Management k publikování a ochraně rozhraní API běžících na virtuálních počítačích založených na řešení Azure VMware
@@ -56,4 +56,4 @@ V interním nasazení se rozhraní API zveřejňují na stejnou instanci API Man
 * Externí provoz vstoupí do Azure prostřednictvím Application Gateway, která používá vrstvu externí ochrany pro API Management.
 
 
-:::image type="content" source="media/api-management/internal-deployment.png" alt-text="Interní nasazení – API Management pro řešení Azure VMware":::
+:::image type="content" source="media/api-management/internal-deployment.png" alt-text="Externí nasazení – API Management pro řešení Azure VMware":::

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 9b190b5847c7412344e2bb09fd4000985816219b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085731"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a Správa topologií Apache Storm v Azure HDInsight
@@ -80,7 +80,7 @@ Pomocí nástrojů Data Lake pro Visual Studio můžete odesílat do clusteru s 
 
 ## <a name="submit-a-topology-programmatically"></a>Programové odeslání topologie
 
-Topologii můžete programově nasadit pomocí služby Nimbus. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology)poskytuje ukázkovou aplikaci v jazyce Java, která ukazuje, jak nasadit a spustit topologii prostřednictvím služby Nimbus.
+Topologii můžete programově nasadit pomocí služby Nimbus. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) poskytuje ukázkovou aplikaci v jazyce Java, která ukazuje, jak nasadit a spustit topologii prostřednictvím služby Nimbus.
 
 ## <a name="monitor-and-manage-a-topology-in-visual-studio"></a>Monitorování a Správa topologie v aplikaci Visual Studio
 
@@ -211,7 +211,7 @@ V části **Akce topologie** můžete vybrat následující tlačítka k provede
 | Deaktivovat | Pozastaví běžící topologii. |
 | Obnovení rovnováhy | Upravuje paralelismus topologie. Po změně počtu uzlů v clusteru byste měli znovu vyrovnat běžící topologie. Tato operace umožňuje, aby topologie upravila paralelismus, aby vyrovnala dodatečné nebo omezené množství uzlů v clusteru.<br/><br/>Další informace najdete v tématu <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Princip paralelismu Apache Storm topologie</a>.
 | Kill | Ukončí topologii nečinnosti po zadaném časovém limitu. |
-| Ladění | Spustí ladicí relaci pro spuštěnou topologii. |
+| Ladit | Spustí ladicí relaci pro spuštěnou topologii. |
 | Zastavit ladění | Ukončí relaci ladění pro spuštěnou topologii. |
 | Změnit úroveň protokolu | Upraví úroveň protokolu ladění. |
 

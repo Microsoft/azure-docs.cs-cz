@@ -8,10 +8,10 @@ ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 6ccb74fe58742974798732605b4a017a06777bcc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328169"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>Konfigurace LVM a RAID na šifrovaných zařízeních
@@ -41,7 +41,7 @@ Fyzické svazky (PVs) se vytvoří v zašifrované vrstvě. Fyzické svazky slou
 
 Podobným způsobem se zařízení RAID vytvoří v horní části zašifrované vrstvy na discích. Na zařízení RAID se vytvoří systém souborů a jako běžné zařízení se přidají do/etc/fstab.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Doporučujeme použít LVM-on-crypt. RAID je možnost, když LVM nejde použít kvůli konkrétnímu omezení aplikace nebo prostředí.
 

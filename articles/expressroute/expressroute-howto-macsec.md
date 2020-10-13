@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: duau
 ms.openlocfilehash: 8ee7f42a4b05def7c2239c7a1e5bcef54f6f7e50
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89395770"
 ---
-# <a name="configure-macsec-on-expressroute-direct-ports"></a>Konfigurace MACsec na přímých portech ExpressRoute
+# <a name="configure-macsec-on-expressroute-direct-ports"></a>Konfigurace MACsec na portech ExpressRoute Direct
 
 Tento článek vám pomůže nakonfigurovat MACsec k zabezpečení připojení mezi hraničními směrovači a hraničními směrovači Microsoftu pomocí PowerShellu.
 
@@ -59,7 +59,7 @@ Pokud chcete spustit konfiguraci, přihlaste se ke svému účtu Azure a vyberte
     $identity = New-AzUserAssignedIdentity  -Name "identity_name" -Location "resource_location" -ResourceGroupName "your_resource_group"
     ```
 
-    Pokud rutina New-AzUserAssignedIdentity není rozpoznaná jako platná rutina prostředí PowerShell, nainstalujte následující modul (v režimu správce) a znovu spusťte výše uvedený příkaz.
+    Pokud New-AzUserAssignedIdentity není rozpoznaná jako platná rutina prostředí PowerShell, nainstalujte následující modul (v režimu správce) a znovu spusťte výše uvedený příkaz.
 
     ```azurepowershell-interactive
     Install-Module -Name Az.ManagedServiceIdentity

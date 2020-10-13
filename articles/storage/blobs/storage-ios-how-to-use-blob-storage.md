@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.openlocfilehash: 378c21a6904acad16847bb32955e4bc091e587df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84465486"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Jak používat úložiště objektů BLOB ze systému iOS
@@ -86,7 +86,7 @@ Pokud používáte SWIFT, budete muset vytvořit hlavičku přemostění a naimp
 
 1. Vytvořte hlavičkový soubor `Bridging-Header.h` a přidejte výše uvedený příkaz import.
 2. Přejdete na kartu *nastavení sestavení* a vyhledejte *záhlaví cíl-C přemostění*.
-3. Poklikejte na pole *hlavičky přemostění v cíli C* a přidejte cestu k souboru hlaviček:`ProjectName/Bridging-Header.h`
+3. Poklikejte na pole *hlavičky přemostění v cíli C* a přidejte cestu k souboru hlaviček: `ProjectName/Bridging-Header.h`
 4. Sestavte projekt (⌘ + B), abyste ověřili, že se hlavička přemostění vybrala prostřednictvím Xcode.
 5. Začněte používat knihovnu přímo v jakémkoli souboru SWIFT, není nutné importovat příkazy.
 
@@ -216,7 +216,7 @@ https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblo
 
 Kromě nahrávání objektu blob bloku z NSString existují podobné metody pro NSData, NSInputStream nebo místní soubor.
 
-## <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
+## <a name="list-the-blobs-in-a-container"></a>Seznam objektů blob v kontejneru
 
 Následující příklad ukazuje, jak zobrazit seznam všech objektů BLOB v kontejneru. Při provádění této operace je potřeba mít na vědomí následující parametry:
 

@@ -5,13 +5,13 @@ ms.topic: how-to
 ms.date: 02/28/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 7674c2151922d26e069b5cd285cb311d7a18fa98
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852799"
 ---
-# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />Správa a konfigurace projektů v Azure Notebooks Preview
+# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Správa a konfigurace projektů v Azure Notebooks Preview
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -30,7 +30,7 @@ Projekt ve verzi Preview v Azure Notebooks je v podstatě konfigurací základn�
 
 Azure Notebooks spustí základní virtuální počítač při každém spuštění poznámkového bloku nebo jiného souboru. Server automaticky ukládá soubory a ukončí se po 60 minutách nečinnosti. Server můžete také kdykoli zastavit pomocí příkazu pro **vypnutí** (Klávesová zkratka: h).
 
-## <a name="compute-tier"></a>Výpočetní vrstva
+## <a name="compute-tier"></a>Úroveň výpočetních prostředků
 
 Ve výchozím nastavení jsou projekty spouštěny na **bezplatné výpočetní** úrovni, což je omezeno na 4 GB paměti a 1 GB dat, aby nedocházelo k zneužití. Tato omezení můžete obejít a zvýšit výpočetní výkon pomocí jiného virtuálního počítače, který jste zřídili v rámci předplatného Azure. Další informace najdete v tématu [použití Virtual Machines pro datové vědy](use-data-science-virtual-machine.md).
 
@@ -57,7 +57,7 @@ Na řídicím panelu projekt vyberte **nastavení projektu**a pak vyberte kartu 
 
 Příkaz **+ New** (Klávesová zkratka: n) vytvoří nové soubory nebo složky. Při použití příkazu nejdřív vyberte typ položky, kterou chcete vytvořit:
 
-| Typ položky | Popis | Chování příkazu |
+| Typ položky | Description | Chování příkazu |
 | --- | --- | --- |
 | **Poznámkový blok** | Jupyter Poznámkový blok | Zobrazí místní nabídku, ve které zadáte název souboru a jazyk poznámkového bloku. |
 | **Složka** | Podsložka | Vytvoří pole pro úpravy v seznamu souborů projektu, do kterého zadáte název složky. |
@@ -190,4 +190,4 @@ Příkaz můžete použít také z buňky kódu v poznámkovém bloku Python:
 ## <a name="next-steps"></a>Další kroky
 
 - [Postupy: práce s datovými soubory projektu](work-with-project-data-files.md)
-- [Přístup ke cloudovým datům v poznámkovém bloku](access-data-resources-jupyter-notebooks.md)
+- [Přístup k datům v cloudu v poznámkovém bloku](access-data-resources-jupyter-notebooks.md)

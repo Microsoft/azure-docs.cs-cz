@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
 ms.openlocfilehash: 92149289c6c422179ddb3562274020acf779f10b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186278"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Povolení řešení Change Tracking a Inventory z runbooku
@@ -19,7 +19,7 @@ Tento článek popisuje, jak můžete pomocí Runbooku povolit funkci [Change Tr
 > [!NOTE]
 > Při povolování Change Tracking a inventáře jsou podporovány pouze určité oblasti pro propojení Log Analyticsho pracovního prostoru a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet Automation](./index.yml) pro správu počítačů.
@@ -47,7 +47,7 @@ Po povolení Change Tracking a inventáře můžete přidat virtuální počíta
    ![Povolení Change Tracking a inventáře pro virtuální počítač](media/automation-enable-changes-from-runbook/enable-change-tracking.png)
 
     > [!NOTE]
-    > Pokud se pokusíte povolit další funkci před instalací Change Tracking a inventáře, zobrazí se tato zpráva:`Installation of another solution is in progress on this or a different virtual machine. When that installation completes the Enable button is enabled, and you can request installation of the solution on this virtual machine.`
+    > Pokud se pokusíte povolit další funkci před instalací Change Tracking a inventáře, zobrazí se tato zpráva: `Installation of another solution is in progress on this or a different virtual machine. When that installation completes the Enable button is enabled, and you can request installation of the solution on this virtual machine.`
 
 ## <a name="install-and-update-modules"></a>Instalace a aktualizace modulů
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ccd1192c7597b5a088b1c50b5367030a616b9d77
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919586"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>User Portal pro Azure Multi-Factor Authentication Server
@@ -134,7 +134,7 @@ Volitelná konfigurace:
 
 Server Azure Multi-Factor Authentication poskytuje pro uživatelský portál několik možností. V následující tabulce je seznam těchto možností a vysvětlení, k čemu se používají.
 
-| Nastavení uživatelského portálu | Popis |
+| Nastavení uživatelského portálu | Description |
 |:--- |:--- |
 | Adresa URL portálu User Portal | Zadejte adresu URL, na které se portál hostuje. |
 | Primární ověření | Zadejte typ ověřování, které se má použít pro přihlašování k portálu. Ověření Windows, Radius nebo LDAP. |
@@ -158,7 +158,7 @@ Na portálu se tato nastavení uživatelům zviditelní, jakmile jsou povolena a
 
 ### <a name="self-service-user-enrollment"></a>Samoobslužná registrace uživatele
 
-Pokud chcete, aby se uživatelé přihlásili a zaregistrovali, musíte vybrat možnost **dovolit uživatelům přihlášení** a **Povolení registrace uživatelů** na kartě nastavení. Mějte na paměti, že nastavení, které vyberete, bude mít vliv na přihlašovací uživatelské prostředí.
+Pokud chcete, aby se uživatelé přihlásili a zaregistrovali, musíte vybrat možnost **dovolit uživatelům přihlášení** a **Povolení registrace uživatelů** na kartě nastavení. Mějte na paměti, že nastavení, které vyberete, bude mít vliv na přihlašovací prostředí uživatele.
 
 Pokud se například uživatel přihlásí k portálu User Portal poprvé, bude přesměrován na stránku Azure Multi-Factor Authentication – Nastavení uživatele. Podle toho, jak jste nakonfigurovali ověřování Azure Multi-Factor Authentication si uživatel možná bude moci vybrat metodu ověření.
 

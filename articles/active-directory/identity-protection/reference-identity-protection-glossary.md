@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88949170"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Glosář Azure Active Directory Identity Protection
@@ -32,7 +32,7 @@ Modul zabezpečení Azure Active Directory, který poskytuje konsolidovanou pohl
 ### <a name="conditional-access"></a>Podmíněný přístup
 Zásada pro zabezpečení přístupu k prostředkům. Pravidla podmíněného přístupu se ukládají v Azure Active Directory a před udělením přístupu k prostředku se vyhodnocují ve službě Azure AD.  Příklady pravidel zahrnují omezení přístupu na základě umístění uživatele, stavu zařízení nebo metody ověřování uživatelů.
 
-### <a name="credentials"></a>Přihlašovací údaje
+### <a name="credentials"></a>Credentials
 Informace, které zahrnují identifikaci a ověření identifikace, která se používá k získání přístupu k místním a síťovým prostředkům. Příklady přihlašovacích údajů jsou uživatelská jména a hesla, čipové karty a certifikáty.
 
 ### <a name="event"></a>Událost
@@ -62,7 +62,7 @@ K detekci rizik aktivovanému v případě, že se aktuální přihlašovací ú
 ### <a name="mitigation"></a>Omezení rizik
 Akce omezující nebo eliminující schopnost útočníka zneužít ohroženou identitu nebo zařízení bez obnovení identity nebo zařízení do bezpečného stavu. Zmírnění rizika neřeší předchozí zjištění rizik přidružená k identitě nebo zařízení.
 
-### <a name="multi-factor-authentication"></a>Vícefaktorové ověřování
+### <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
 Metoda ověřování, která vyžaduje dvě nebo víc metod ověřování, které můžou zahrnovat něco, co uživatel má, třeba certifikát; text, který zná uživatel, například uživatelská jména, hesla nebo fráze Pass. fyzické atributy, jako je například kryptografický otisk; a osobní atributy, jako je osobní podpis.
 
 ### <a name="offline-detection"></a>Detekce offline

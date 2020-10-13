@@ -4,10 +4,10 @@ description: Popisuje způsob použití definice iniciativ k seskupení zásad p
 ms.date: 08/17/2020
 ms.topic: conceptual
 ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89645519"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Dodržování předpisů v Azure Policy
@@ -40,11 +40,11 @@ Výběrem **ovládacího prvku** se otevře stránka s podrobnostmi o tomto ovl�
 > [!NOTE]
 > Typ hodnocení **spravovaný společností Microsoft** je pro definici [statické](./definition-structure.md#type) zásady `type` .
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Snímek obrazovky s podrobnostmi o dodržování předpisů pro řízení ochrany hranic v předdefinované definici NIST SP 800-53 R4.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Snímek obrazovky s přehledem dodržování legislativních předpisů pro NIST SP 800-53 R4 předdefinovaná definice zobrazující kompatibilní a nekompatibilní ovládací prvky.":::
 
 Na stejné stránce **ovládacího prvku** se změna na kartu **Kompatibilita prostředků** zobrazí všechny prostředky, které tyto definice zásad tohoto **ovládacího prvku**obsahují. Filtry jsou k dispozici pro název nebo ID, stav dodržování předpisů, typ prostředku a umístění.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Snímek obrazovky s dodržováním předpisů pro řízení ochrany hranic v předdefinované definici NIST SP 800-53 R4.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Snímek obrazovky s přehledem dodržování legislativních předpisů pro NIST SP 800-53 R4 předdefinovaná definice zobrazující kompatibilní a nekompatibilní ovládací prvky.":::
 
 ## <a name="regulatory-compliance-in-sdk"></a>Dodržování předpisů v sadě SDK
 

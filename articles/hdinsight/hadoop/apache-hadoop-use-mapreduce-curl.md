@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207725"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Spouštění úloh MapReduce s využitím Apache Hadoop ve službě HDInsight pomocí REST
@@ -77,7 +77,7 @@ Buď:
 
     Konec identifikátoru URI (/MapReduce/jar) oznamuje WebHCat, že tento požadavek spustí úlohu MapReduce ze třídy v souboru jar. Parametry použité v tomto příkazu jsou následující:
 
-   * **-d**: `-G` nepoužívá se, takže požadavek využije výchozí metoda post. `-d`Určuje hodnoty dat, které se odesílají spolu s požadavkem.
+   * **-d**: `-G` nepoužívá se, takže požadavek využije výchozí metoda post. `-d` Určuje hodnoty dat, které se odesílají spolu s požadavkem.
      * **User.Name**: uživatel, který spouští příkaz
      * **jar**: umístění souboru jar, který obsahuje třídu, která má být spuštěna.
      * **Třída**: třída, která obsahuje logiku MapReduce

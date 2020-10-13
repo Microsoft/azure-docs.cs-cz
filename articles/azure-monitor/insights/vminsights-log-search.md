@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 64884f07bc59e5ff2b29eac645ddb469ef3db465
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87325181"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Dotazování protokolů z Azure Monitor pro virtuální počítače
@@ -112,10 +112,10 @@ Každá vlastnost RemoteIp v tabulce *VMConnection* je kontrolována na základ�
 |:--|:--|
 |MaliciousIp |Adresa RemoteIp |
 |IndicatorThreadType |Zjištěného indikátoru hrozby je jedna z následujících hodnot: *botnetu*, *C2*, *CryptoMining*, *adres darknetu*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*, *seznamu ke zhlédnutí*.   |
-|Popis |Popis pozorované hrozby. |
+|Description |Popis pozorované hrozby. |
 |TLPLevel |Úroveň TLP (provoz Light Protocol) je jedna z definovaných hodnot, *bílá*, *zelená*, *oranžová*a *červená*. |
 |Spolehlivost |Hodnoty jsou *0 – 100*. |
-|Severity |Hodnoty jsou *0 – 5*, přičemž *5* je nejzávažnější a *0* není u sebe závažná. Výchozí hodnota je *3*.  |
+|Závažnost |Hodnoty jsou *0 – 5*, přičemž *5* je nejzávažnější a *0* není u sebe závažná. Výchozí hodnota je *3*.  |
 |FirstReportedDateTime |První, kdy zprostředkovatel nahlásil ukazatel. |
 |LastReportedDateTime |Čas posledního výskytu indikátoru v rámci přetečení. |
 |IsActive |Označuje, že indikátory jsou dezaktivovány hodnotou *true* nebo *false* . |
@@ -164,7 +164,7 @@ Záznamy s typem *VMComputer* mají data inventáře pro servery s agentem závi
 |Počítač | Plně kvalifikovaný název domény počítače | 
 |ID agenta | Jedinečné ID agenta Log Analytics |
 |Počítač | Název prostředku Azure Resource Manager pro počítač vystavený pomocí ServiceMap. Má formu *m-{GUID}*, kde *GUID* je stejný identifikátor GUID jako ID agenta. | 
-|DisplayName | Zobrazovaný název | 
+|DisplayName | Zobrazované jméno | 
 |FullDisplayName | Úplné zobrazované jméno | 
 |Název hostitele | Název počítače bez názvu domény |
 |BootTime | Čas spuštění počítače (UTC) |
@@ -230,10 +230,10 @@ Záznamy s typem *VMProcess* mají data inventáře pro procesy připojené k pr
 |Spustitelný soubor | Název spustitelného procesu | 
 |DisplayName | Zobrazovaný název procesu |
 |Role | Role procesu: *webserver*, *appServer*, *databaseServer*, *ldapServer*, *smbServer* |
-|Skupina | Název skupiny procesů Procesy ve stejné skupině jsou logicky související, například součást stejné produktové nebo systémové komponenty. |
+|Group (Skupina) | Název skupiny procesů Procesy ve stejné skupině jsou logicky související, například součást stejné produktové nebo systémové komponenty. |
 |StartTime | Čas spuštění fondu procesů |
 |FirstPid | První PID ve fondu procesů |
-|Popis | Popis procesu |
+|Description | Popis procesu |
 |CompanyName | Název společnosti |
 |Vnitřní | Interní název |
 |ProductName | Název produktu |
@@ -442,8 +442,8 @@ Záznamy s typem *InsightsMetrics* mají údaje o výkonu z hostovaného operač
 |Počítač | Plně kvalifikovaný název domény počítače | 
 |Zdroj | *vm.azm.ms* |
 |Obor názvů | Kategorie čítače výkonu | 
-|Název | Název čítače výkonu |
-|Počítává | Shromážděná hodnota | 
+|Name | Název čítače výkonu |
+|Val | Shromážděná hodnota | 
 |Značky | Související podrobnosti o záznamu Značky používané s různými typy záznamů najdete v následující tabulce.  |
 |ID agenta | Jedinečný identifikátor pro každého agenta počítače |
 |Typ | *InsightsMetrics* |

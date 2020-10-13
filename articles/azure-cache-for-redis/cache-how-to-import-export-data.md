@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
 ms.openlocfilehash: a89acb73ea5c78c9f82758e0a322fb9001698c24
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004334"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Import a export dat v Azure cache pro Redis
@@ -28,7 +28,7 @@ Tento článek obsahuje průvodce pro import a export dat pomocí Azure cache pr
 >
 >
 
-## <a name="import"></a>Import
+## <a name="import"></a>Importovat
 Import se dá použít k převedení Redis kompatibilních souborů RDB z libovolného serveru Redis spuštěného v jakémkoli cloudu nebo prostředí, včetně Redis, které běží na Linux, Windows nebo jakémkoli poskytovateli cloudu, jako je Amazon Web Services a další. Import dat představuje snadný způsob, jak vytvořit mezipaměť s předem vyplněnými daty. Během procesu importu načte služba Azure cache pro Redis soubory RDB z Azure Storage do paměti a pak tyto klíče vloží do mezipaměti.
 
 > [!NOTE]
@@ -55,7 +55,7 @@ Import se dá použít k převedení Redis kompatibilních souborů RDB z libovo
    >
    >
 
-    ![Import](./media/cache-how-to-import-export-data/cache-import-blobs.png)
+    ![Importovat](./media/cache-how-to-import-export-data/cache-import-blobs.png)
 
     Průběh operace importu můžete monitorovat pomocí oznámení z Azure Portal nebo zobrazením událostí v [protokolu auditu](../azure-resource-manager/management/view-activity-logs.md).
 

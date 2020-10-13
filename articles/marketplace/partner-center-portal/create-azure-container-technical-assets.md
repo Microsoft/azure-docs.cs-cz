@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 04/09/2020
 ms.openlocfilehash: 46102305e99c94fc71ad0934a2c0063fdcbeec4e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317786"
 ---
 # <a name="create-an-azure-container-offer"></a>Vytvoření nabídky kontejneru Azure
@@ -43,7 +43,7 @@ Vyberte jedno z následujících skriptovacích prostředí, které vám pomůž
 
 Doporučujeme přidat tyto nástroje do vašeho vývojového prostředí:
 
-- [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
+- [Průzkumník služby Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Rozšíření: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - Přípona: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)

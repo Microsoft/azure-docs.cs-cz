@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 543050bc899c257c4ad5e0d0c399a1de6f0f58f2
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86220571"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Vytvoření App Service Environment v1 
@@ -28,7 +28,7 @@ Je důležité vědět, co nemůžete změnit. Tyto aspekty nemůžete po vytvo�
 
 * Umístění
 * Předplatné
-* Skupina prostředků
+* Resource Group
 * Použitá virtuální síť
 * Použitá podsíť 
 * Velikost podsítě
@@ -41,7 +41,7 @@ Pokud chcete vytvořit App Service Environment V1, můžete vyhledat Azure Marke
 1. Zadejte název vašeho pomocného programu. Název, který zadáte pro pomocného nástroje, se použije pro aplikace vytvořené v pomocném mechanismu. Pokud je název pomocného mechanismu appsvcenvdemo, název subdomény by byl: *appsvcenvdemo.p.azurewebsites.NET*. Pokud tedy vytvoříte aplikaci s názvem *MyTestApp*, bude se adresovat na *MyTestApp.appsvcenvdemo.p.azurewebsites.NET*. V názvu vašeho pomocného mechanismu se nedá použít prázdné znaky. Použijete-li velká písmena v názvu, bude název domény celková verze tohoto názvu. Pokud použijete interního nástroje, vaše jméno pomocného mechanismu se nepoužije v subdoméně, ale místo toho je explicitně uvedeno během vytváření pomocného mechanismu.
    
     ![Snímek obrazovky, který ukazuje, jak vytvořit App Service Environment (pomocného mechanismu řízení).][1]
-2. Vyberte předplatné. Předplatné, které používáte pro pomocného správce, se použije i pro všechny aplikace, které v tomto pomocném panelu vytvoříte. Do virtuální sítě, která je v jiném předplatném, nemůžete umístit svůj pomocného správce.
+2. Vyberte své předplatné. Předplatné, které používáte pro pomocného správce, se použije i pro všechny aplikace, které v tomto pomocném panelu vytvoříte. Do virtuální sítě, která je v jiném předplatném, nemůžete umístit svůj pomocného správce.
 3. Vyberte nebo zadejte novou skupinu prostředků. Skupina prostředků použitá pro váš správce přidaných mechanismů musí být stejná jako ta, která se používá ve vaší virtuální síti. Pokud vyberete existující virtuální síť, bude se výběr skupiny prostředků pro váš ovládací objekt pro pořízení aktualizovat tak, aby odrážel virtuální síť.
    
     ![Snímek obrazovky, který ukazuje, jak vybrat nebo upravit novou skupinu prostředků.][2]

@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371991"
 ---
 # <a name="machine-learning-features"></a>Funkce strojového učení
@@ -226,7 +226,7 @@ Po vytvoření entity strojového učení musíte do záměru přidat příklad 
 
 Pro příklad rezervace lístku označte příklad projevy v záměru s `TicketBooking` entitou a všemi podentitami v textu.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Příklad popisku projevy":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Ticketbooking – schéma entit":::
 
 ### <a name="example-pizza-ordering-app"></a>Příklad: aplikace řazení Pizza
 
@@ -234,13 +234,13 @@ V druhém příkladu si představte aplikaci pro Pizza restauraci, která přij�
 
 Entita strojového učení v tomto příkladu je složitější s vnořenými subentitami, seznamy frází, předem sestavenými entitami a vlastními entitami.
 
-:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Schéma entity objednávky Pizza":::
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Ticketbooking – schéma entit":::
 
 Tento příklad používá funkce na úrovni subentity a podřízenosti úrovně subentity. Jakou úroveň získá seznam frází nebo model jako funkci, je důležitou součástí návrhu vaší entity.
 
 I když mohou podklíče obsahovat mnoho frázových seznamů jako funkce, které vám pomůžou detekovat entitu, má každá podentita jenom jeden model jako funkci. V této [aplikaci Pizza](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)jsou tyto modely primárně vypsány.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Záměr Pizza objednávek s popisem projevy":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Ticketbooking – schéma entit":::
 
 Správně označený příklad projevy zobrazení způsobem, který ukazuje, jak jsou entity vnořené. 
 

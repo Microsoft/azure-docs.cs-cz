@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 60e75aff79913896bdf1dcdc8754b6ecf5620b06
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87272041"
 ---
 # <a name="publish-an-offer"></a>Publikování nabídky
@@ -28,12 +28,12 @@ Spustí proces publikování pro určenou nabídku. Toto volání je dlouhodobě
 
 |  **Název**      |    **Popis**                               |  **Datový typ** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | Identifikátor vydavatele, například`contoso`      |   Řetězec       |
+|  publisherId   | Identifikátor vydavatele, například `contoso`      |   Řetězec       |
 |  Hodnotami OfferId       | Identifikátor nabídky                                 |   Řetězec       |
 |  verze-api   | Nejnovější verze rozhraní API                        |   Datum         |
 |  |  |
 
-## <a name="header"></a>Hlavička
+## <a name="header"></a>Záhlaví
 ------
 
 |  **Název**        |    **Hodnota**          |
@@ -85,8 +85,8 @@ Spustí proces publikování pro určenou nabídku. Toto volání je dlouhodobě
 
 | **Kód** |  **Popis**                                                                                                                           |
 | ------   |  ----------------------------------------------------------------------------------------------------------------------------------------- |
-| 202   | `Accepted`-Požadavek byl úspěšně přijat. Odpověď obsahuje umístění, které lze použít ke sledování operace, která je spuštěna. |
-| 400   | `Bad/Malformed request`– Tělo chybové odpovědi může poskytovat další informace.                                                               |
-| 422   | `Un-processable entity`– Označuje, že entita, která má být publikována, se nezdařila.                                                        |
-| 404   | `Not found`-Entita určená klientem neexistuje.                                                                              |
+| 202   | `Accepted` -Požadavek byl úspěšně přijat. Odpověď obsahuje umístění, které lze použít ke sledování operace, která je spuštěna. |
+| 400   | `Bad/Malformed request` – Tělo chybové odpovědi může poskytovat další informace.                                                               |
+| 422   | `Un-processable entity` – Označuje, že entita, která má být publikována, se nezdařila.                                                        |
+| 404   | `Not found` -Entita určená klientem neexistuje.                                                                              |
 |  |  |

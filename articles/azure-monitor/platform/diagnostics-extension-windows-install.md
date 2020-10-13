@@ -9,10 +9,10 @@ ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: e6ccba27fb599cb26da86e94d3500f4f806ecb76
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328866"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)
@@ -142,7 +142,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
   -DiagnosticsConfigurationPath "DiagnosticsConfiguration.json"
 ```
 
-Soukromé nastavení je definováno v [elementu PrivateConfig](diagnostics-extension-schema-windows.md#privateconfig-element), zatímco veřejné nastavení je definováno ve [veřejném elementu](diagnostics-extension-schema-windows.md#publicconfig-element) schématu konfigurace. Můžete také zadat podrobnosti účtu úložiště jako parametry rutiny Set-AzVMDiagnosticsExtension a nemusíte je zahrnout do privátního nastavení.
+Soukromé nastavení je definováno v [elementu PrivateConfig](diagnostics-extension-schema-windows.md#privateconfig-element), zatímco veřejné nastavení je definováno ve [veřejném elementu](diagnostics-extension-schema-windows.md#publicconfig-element) schématu konfigurace. Můžete se také rozhodnout, že chcete zadat podrobnosti účtu úložiště jako parametry rutiny Set-AzVMDiagnosticsExtension, a nemusíte je zahrnout do privátního nastavení.
 
 Následuje minimální příklad konfiguračního souboru, který umožňuje shromažďování protokolů diagnostické infrastruktury, jeden čítač výkonu a jeden protokol událostí. Kompletní informace o privátních a veřejných nastaveních najdete v části [příklad konfigurace](diagnostics-extension-schema-windows.md#publicconfig-element) . 
 
@@ -192,7 +192,7 @@ Další informace najdete [v tématu použití PowerShellu k povolení Azure Dia
 V následující tabulce jsou uvedeny různé typy dat shromážděných z rozšíření pro diagnostiku a zda jsou uloženy jako tabulka nebo objekt BLOB. Data uložená v tabulkách je také možné ukládat do objektů BLOB v závislosti na [Nastavení StorageType](diagnostics-extension-schema-windows.md#publicconfig-element) ve vaší veřejné konfiguraci.
 
 
-| Data | Typ úložiště | Popis |
+| Data | Typ úložiště | Description |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Tabulka | Diagnostické monitorování a změny konfigurace. |
 | WADDirectoriesTable | Tabulka | Adresáře, které monitoruje monitorování diagnostiky.  Patří sem protokoly IIS, protokoly neúspěšných požadavků služby IIS a vlastní adresáře.  Umístění souboru protokolu objektu BLOB je zadáno v poli kontejneru a název objektu BLOB je uveden v poli RelativePath.  Pole AbsolutePath označuje umístění a název souboru, který se nachází na virtuálním počítači Azure. |
@@ -204,7 +204,7 @@ V následující tabulce jsou uvedeny různé typy dat shromážděných z rozš
 | Uživatelská | Blob | Vlastní kontejner založený na konfiguraci adresářů monitorovaných monitorováním diagnostiky.  Název tohoto kontejneru objektů BLOB se určí v WADDirectoriesTable. |
 
 ## <a name="tools-to-view-diagnostic-data"></a>Nástroje pro zobrazení diagnostických dat
-K dispozici je několik nástrojů, které vám umožní zobrazit data po přenosu do úložiště. Příklad:
+K dispozici je několik nástrojů, které vám umožní zobrazit data po přenosu do úložiště. Například:
 
 * Průzkumník serveru v aplikaci Visual Studio – Pokud jste nainstalovali nástroje Azure pro Microsoft Visual Studio, můžete použít uzel Azure Storage v Průzkumník serveru k zobrazení dat objektů BLOB jen pro čtení a tabulek z vašich účtů úložiště Azure. Můžete zobrazit data z místního účtu emulátoru úložiště a taky z účtů úložiště, které jste vytvořili pro Azure. Další informace najdete v tématu [procházení a Správa prostředků úložiště pomocí Průzkumník serveru](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * [Průzkumník služby Microsoft Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje snadnou práci s Azure Storagemi daty v systémech Windows, OSX a Linux.

@@ -13,10 +13,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: b4eff5910ff5230902d497b55b2afbe6d605365a
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89177427"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Migrace aplikací pro iOS, které používají Microsoft Authenticator z ADAL.NET na MSAL.NET
@@ -25,7 +25,7 @@ Používali jste knihovnu Azure Active Directory Authentication Library pro .NET
 
 Kde byste měli začít? Tento článek vám pomůže s migrací aplikace pro Xamarin iOS z ADAL do MSAL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto článku se předpokládá, že už máte aplikaci Xamarin iOS integrovanou se zprostředkovatelem iOS. Pokud to neuděláte, přejděte přímo na MSAL.NET a spusťte implementaci zprostředkovatele tam. Informace o tom, jak vyvolat zprostředkovatele iOS v MSAL.NET pomocí nové aplikace, najdete v [této dokumentaci](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications).
 
 ## <a name="background"></a>Pozadí
@@ -119,7 +119,7 @@ V MSAL.NET provedete dvě věci pro nastavení okna objektu pro iOS:
 Toto přiřazení zajišťuje, že existuje UIViewController se voláním zprostředkovatele. Pokud není správně nastavená, může se zobrazit tato chyba: `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 1. Na volání AcquireTokenInteractive použijte `.WithParentActivityOrWindow(App.RootViewController)` a předejte odkaz na okno objektu, které použijete.
 
-**Příklad:**
+**Například:**
 
 V `App.cs`:
 ```csharp
@@ -152,7 +152,7 @@ ADAL.NET a MSAL.NET používají adresy URL k vyvolání zprostředkovatele a vr
 <tr><td>
 Schéma adresy URL je pro vaši aplikaci jedinečné.
 </td><td>
-Prostředek
+Rozhraní
 
 `CFBundleURLSchemes` Název musí zahrnovat
 

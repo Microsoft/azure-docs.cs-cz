@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86508045"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Nastavení Micro Focus CICS BankDemo pro Micro Enterprise Developer 4,0 v Azure
@@ -22,7 +22,7 @@ CICs představuje systém pro řízení informací o zákaznících, platformu t
 > [!NOTE]
 > Už brzy: pokyny pro nastavení [Micro Enterprise Server 5,0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) na virtuálních počítačích Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Virtuální počítač s [podnikovým vývojářem](set-up-micro-focus-azure.md). Mějte na paměti, že Enterprise Developer má pro účely vývoje a testování kompletní instanci podnikového serveru. Tato instance je instancí podnikového serveru, který se používá pro ukázku.
 
@@ -268,7 +268,7 @@ Poslední věcí, kterou musíte udělat, je konfigurace relace 3270 pomocí Rum
 ![Úvodní obrazovka zobrazení sálového počítače v sálovém sálovém zobrazení ](media/14-demo.png)
  ![ -Rumba-subsystému](media/15-demo.png)
 
-Blahopřejeme! Nyní máte v Azure spuštěnou aplikaci CICS s využitím podnikového serveru Micro.
+Gratulujeme! Nyní máte v Azure spuštěnou aplikaci CICS s využitím podnikového serveru Micro.
 
 ## <a name="next-steps"></a>Další kroky
 

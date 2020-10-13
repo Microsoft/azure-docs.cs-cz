@@ -4,10 +4,10 @@ description: Naučte se, jak zadat vlastní úložiště artefaktů pro testovac
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 7553f6b1afa416a5428577a8313bdadb669e32c2
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88270967"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Přidání úložiště artefaktů do testovacího prostředí v DevTest Labs
@@ -55,7 +55,7 @@ Pokud chcete do testovacího prostředí přidat úložiště, nejdřív Získej
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
 V této části najdete postup přidání úložiště artefaktů do testovacího prostředí v Azure Portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vyberte **Další služby**a v seznamu služeb vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte testovací prostředí.
 4. V nabídce vlevo vyberte **Konfigurace a zásady** .
@@ -180,7 +180,7 @@ New-AzResourceGroupDeployment `
     -TemplateParameterFile azuredeploy.parameters.json
 ```
 
-Po úspěšném spuštění rutiny New-AzResourceGroupDeployment budou výstupy příkazu obsahovat důležité informace, jako je stav zřizování (měl by být úspěšný), a všechny výstupy pro šablonu.
+Po úspěšném spuštění New-AzResourceGroupDeployment výstup příkazu vypíše důležité informace, jako je stav zřizování (měl by být úspěšný), a všechny výstupy pro šablonu.
 
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
 V této části najdete ukázkový skript PowerShellu, který se dá použít k přidání úložiště artefaktů do testovacího prostředí. Pokud nemáte Azure PowerShell, přečtěte si téma [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/?view=azps-1.2.0) podrobné pokyny k jeho instalaci.

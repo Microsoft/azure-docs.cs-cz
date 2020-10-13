@@ -4,10 +4,10 @@ description: Service Fabric stavové služby poskytují spolehlivé kolekce, kte
 ms.topic: conceptual
 ms.date: 3/10/2020
 ms.openlocfilehash: 6e0f39b994087fe44038e62e85326945589c719a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245122"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Úvod do spolehlivých kolekcí ve stavových službách Azure Service Fabric
@@ -35,7 +35,7 @@ Aby se zajistila slabší konzistence, můžou aplikace před vrácením asynchr
 Spolehlivé kolekce rozhraní API jsou vývoj souběžných kolekcí rozhraní API (najdete je v oboru názvů **System. Collections. a souběžně** ):
 
 * Asynchronní: vrátí úlohu, protože na rozdíl od souběžných kolekcí se operace replikují a uchovávají.
-* Žádné výstupní parametry: používá `ConditionalValue<T>` pro návrat `bool` a hodnotu namísto parametrů out. `ConditionalValue<T>`je jako, `Nullable<T>` ale nevyžaduje T jako strukturu.
+* Žádné výstupní parametry: používá `ConditionalValue<T>` pro návrat `bool` a hodnotu namísto parametrů out. `ConditionalValue<T>` je jako, `Nullable<T>` ale nevyžaduje T jako strukturu.
 * Transakce: používá transakční objekt k tomu, aby uživatel mohl seskupit akce v několika spolehlivých kolekcích v transakci.
 
 Dnes, **Microsoft. ServiceFabric. data. Collections** obsahuje tři kolekce:
@@ -51,7 +51,7 @@ Dnes, **Microsoft. ServiceFabric. data. Collections** obsahuje tři kolekce:
 * [Transakce a zámky](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Správa dat
   * [Zálohování a obnovení](service-fabric-reliable-services-backup-restore.md)
-  * [Připomenutí](service-fabric-reliable-services-notifications.md)
+  * [Oznámení](service-fabric-reliable-services-notifications.md)
   * [Spolehlivá serializace kolekcí](service-fabric-reliable-services-reliable-collections-serialization.md)
   * [Serializace a upgrade](service-fabric-application-upgrade-data-serialization.md)
   * [Konfigurace spolehlivého správce stavu](service-fabric-reliable-services-configuration.md)

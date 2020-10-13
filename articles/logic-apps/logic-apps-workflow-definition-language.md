@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 71929cd449f4a00b91cc6c8620b33b0e0c6d506c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87078146"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Referenční příručka schématu pro jazyk definice pracovního postupu v Azure Logic Apps
@@ -76,9 +76,9 @@ Tady je obecná struktura definice parametru:
 
 | Atribut | Požaduje se | Typ | Description |
 |-----------|----------|------|-------------|
-| <*název parametru*> | Yes | Řetězec | Název parametru, který chcete definovat |
+| <*název parametru*> | Ano | Řetězec | Název parametru, který chcete definovat |
 | <*typ parametru*> | Yes | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Poznámka**: pro všechna hesla, klíče a tajné klíče použijte `securestring` typy nebo, `secureobject` protože `GET` operace tyto typy nevrátí. Další informace o zabezpečení parametrů najdete v tématu [doporučení zabezpečení pro parametry akce a vstup](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Typ parametru |
-| <*výchozí parametr-hodnota*> | Yes | Stejné jako`type` | Výchozí hodnota parametru, která má být použita, pokud není zadána žádná hodnota při vytváření instance pracovního postupu. `defaultValue`Atribut je vyžadován, aby návrhář aplikace logiky mohl správně zobrazit parametr, ale můžete zadat prázdnou hodnotu. |
+| <*výchozí parametr-hodnota*> | Yes | Stejné jako `type` | Výchozí hodnota parametru, která má být použita, pokud není zadána žádná hodnota při vytváření instance pracovního postupu. `defaultValue`Atribut je vyžadován, aby návrhář aplikace logiky mohl správně zobrazit parametr, ale můžete zadat prázdnou hodnotu. |
 | <*pole s parametrem--------Parameter-Values*> | No | Pole | Pole s hodnotami, které může parametr přijmout |
 | <*Parametr-Description*> | No | Objekt JSON | Jakékoli další podrobnosti o parametrech, jako je například popis parametru |
 ||||
@@ -114,11 +114,11 @@ V `staticResults` atributu definujte prvek akce `outputs` a `status` , který ak
 
 | Atribut | Požaduje se | Typ | Description |
 |-----------|----------|------|-------------|
-| <*statický výsledek – definice – název*> | Yes | Řetězec | Název statické definice výsledku, kterou může definice akce odkazovat prostřednictvím `runtimeConfiguration.staticResult` objektu. Další informace najdete v tématu [nastavení konfigurace modulu runtime](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Můžete použít libovolný jedinečný název, který chcete. Ve výchozím nastavení se tento jedinečný název připojí s číslem, což se zvyšuje podle potřeby. |
+| <*statický výsledek – definice – název*> | Ano | Řetězec | Název statické definice výsledku, kterou může definice akce odkazovat prostřednictvím `runtimeConfiguration.staticResult` objektu. Další informace najdete v tématu [nastavení konfigurace modulu runtime](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Můžete použít libovolný jedinečný název, který chcete. Ve výchozím nastavení se tento jedinečný název připojí s číslem, což se zvyšuje podle potřeby. |
 | <*výstupní atributy-a-vrácené hodnoty*> | Yes | Různé | Požadavky na tyto atributy se liší v závislosti na různých podmínkách. Například pokud `status` je `Succeeded` , `outputs` atribut obsahuje atributy a hodnoty vrácené jako výstupní výstupy akcí. Pokud `status` je `Failed` , `outputs` atribut obsahuje `errors` atribut, což je pole s jedním nebo více `message` objekty Error, které obsahují informace o chybě. |
-| <*hodnoty hlaviček*> | No | JSON | Všechny hodnoty hlaviček vracené akcí |
-| <*stav-kód – vráceno*> | Yes | Řetězec | Stavový kód vrácený akcí |
-| <*akce – stav*> | Yes | Řetězec | Stav akce, například `Succeeded` nebo`Failed` |
+| <*hodnoty hlaviček*> | Ne | JSON | Všechny hodnoty hlaviček vracené akcí |
+| <*stav-kód – vráceno*> | Ano | Řetězec | Stavový kód vrácený akcí |
+| <*akce – stav*> | Ano | Řetězec | Stav akce, například `Succeeded` nebo `Failed` |
 |||||
 
 Například v této definici akce HTTP `runtimeConfiguration.staticResult.name` jsou atributy odkazy v atributu, `HTTP0` `staticResults` kde jsou definovány výstupní výstupy pro akci. `runtimeConfiguration.staticResult.staticResultOptions`Atribut určuje, zda je nastavení statického výsledku `Enabled` v akci HTTP.
@@ -199,7 +199,7 @@ Výsledkem je vždy řetězec, což znamená, že tato funkce bude podobná `con
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-Pokud máte řetězcový literál, který začíná \@ znakem, \@ nahraďte znak jiným \@ znakem jako řídicí znak:\@\@
+Pokud máte řetězcový literál, který začíná \@ znakem, \@ nahraďte znak jiným \@ znakem jako řídicí znak: \@\@
 
 Tyto příklady ukazují, jak jsou výrazy vyhodnocovány:
 
@@ -275,9 +275,9 @@ Tady je obecná struktura definice výstupu:
 }
 ```
 
-| Atribut | Požaduje se | Typ | Popis |
+| Atribut | Požaduje se | Typ | Description |
 |-----------|----------|------|-------------|
-| <*název klíče*> | Yes | Řetězec | Název klíče pro návratovou hodnotu výstupu |
+| <*název klíče*> | Ano | Řetězec | Název klíče pro návratovou hodnotu výstupu |
 | <*typ klíče*> | Yes | int, float, String, SecureString, bool, Array, JSON objekt | Typ výstupní návratové hodnoty |
 | <*hodnota klíče*> | Yes | Stejné jako <*typ klíče*> | Výstupní návratová hodnota |
 |||||
@@ -290,9 +290,9 @@ Pokud chcete získat výstup z pracovního postupu, přečtěte si historii spu�
 
 Ve [výrazech](#expressions) a [funkcích](#functions)operátory provádějí konkrétní úkoly, jako je například odkaz na vlastnost nebo hodnotu v poli.
 
-| Operátor | Úkol |
+| Operátor | Úloha |
 |----------|------|
-| ' | Chcete-li použít řetězcový literál jako vstup nebo ve výrazech a funkcích, zabalte řetězec pouze s jednoduchými uvozovkami, například `'<myString>'` . Nepoužívejte dvojité uvozovky (""), které jsou v konfliktu s formátováním JSON kolem celého výrazu. Příklad: <p>**Ano**: délka (' Hello ') </br>**Ne**: délka ("Hello") <p>Když předáte pole nebo čísla, nebudete potřebovat interpunkci zalomení. Příklad: <p>**Ano**: délka ([1; 2; 3]) </br>**Ne**: délka ("[1, 2, 3]") |
+| ' | Chcete-li použít řetězcový literál jako vstup nebo ve výrazech a funkcích, zabalte řetězec pouze s jednoduchými uvozovkami, například `'<myString>'` . Nepoužívejte dvojité uvozovky (""), které jsou v konfliktu s formátováním JSON kolem celého výrazu. Například: <p>**Ano**: délka (' Hello ') </br>**Ne**: délka ("Hello") <p>Když předáte pole nebo čísla, nebudete potřebovat interpunkci zalomení. Například: <p>**Ano**: délka ([1; 2; 3]) </br>**Ne**: délka ("[1, 2, 3]") |
 | [] | Pro odkazování na hodnotu na konkrétní pozici (index) v poli použijte hranaté závorky. Například pro získání druhé položky v poli: <p>`myArray[1]` |
 | . | Chcete-li odkazovat na vlastnost v objektu, použijte operátor tečka. Například pro získání `name` vlastnosti pro `customer` objekt JSON: <p>`"@parameters('customer').name"` |
 | ? | Chcete-li odkazovat na vlastnosti null v objektu bez běhové chyby, použijte operátor otazník. Chcete-li například zpracovat výstupy s hodnotou null z triggeru, můžete použít tento výraz: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: aahi
 ms.openlocfilehash: 22a1be7231b730c83ca97b0f128e43258ed24533
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935313"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>Postupy: Správa datových kanálů
@@ -66,7 +66,7 @@ Poradce pro metriky umožňuje udělit oprávnění různým skupinám uživatel
 - Viewer: kdo má přístup k zobrazení datového kanálu jen pro čtení.
  
 
-## <a name="advanced-settings"></a>Pokročilá nastavení
+## <a name="advanced-settings"></a>Rozšířená nastavení
 
 Při vytváření nového datového kanálu je k dispozici několik volitelných upřesňujících nastavení, která je možné upravit na stránce s podrobnostmi o datovém kanálu.
 
@@ -106,7 +106,7 @@ Možnosti:
 
 Šablony odkazů na akce slouží k předdefinování akcí HTTP URL, které se skládají ze zástupných symbolů `%datafeed` , `%metric` ,, `%timestamp` `%detect_config` a `%tagset` . Tuto šablonu můžete použít k přesměrování z anomálie nebo incidentu na konkrétní adresu URL pro přechod k podrobnostem.
 
-:::image type="content" source="../media/action-link-template.png" alt-text="Šablona odkazu na akci" lightbox="../media/action-link-template.png":::
+:::image type="content" source="../media/action-link-template.png" alt-text="Datový kanál pro naplnění dat" lightbox="../media/action-link-template.png":::
 
 Jakmile vyplníte odkaz akce, klikněte na **odkaz přejít na akci** v možnosti akce v seznamu incidentu a na místní nabídku stromu incidentů. Zástupné symboly v šabloně odkazu akce nahraďte odpovídajícími hodnotami anomálie nebo incidentu.
 

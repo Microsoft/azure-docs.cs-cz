@@ -11,10 +11,10 @@ ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
 ms.openlocfilehash: 493c18efa8bad2e366424c8c8130754ce0098913
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85250687"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Modely tenantů SaaS Database pro více tenantů
@@ -135,13 +135,13 @@ Obecně platí, že databáze s více klienty mají nejnižší náklady na tena
 
 V následující části jsou popsány dvě varianty modelu databáze s více klienty, přičemž model horizontálně dělené multi-tenant je nejpružnější a škálovatelný.
 
-## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>FJ. Aplikace pro více tenantů s jedinou databází s více klienty
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Aplikace pro více tenantů s jedinou databází s více klienty
 
 Nejjednodušší model víceklientské databáze používá jedinou databázi pro hostování dat pro všechny klienty.  Po přidání dalších tenantů se databáze škáluje s větším úložištěm a výpočetními prostředky.  Toto horizontální navýšení kapacity může být nezbytné, i když je vždy limit maximálního měřítka.  Nicméně dlouho před dosažením tohoto limitu se databáze bude nepraktický spravovat.
 
 Operace správy, které jsou zaměřené na jednotlivé klienty, jsou složitější pro implementaci ve více tenantů databázích.  A ve velkém měřítku tyto operace se mohou stát nepřijatelně pomalu.  Jedním z příkladů je obnovení dat k určitému bodu v čase pouze pro jednoho tenanta.
 
-## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>Věcn. Víceklientská aplikace s horizontálně dělené databázemi s více klienty
+## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>G. Víceklientská aplikace s horizontálně dělené databázemi s více klienty
 
 Většina aplikací SaaS přistupuje pouze k datům v jednom klientovi.  Tento vzor přístupu umožňuje distribuci dat tenanta napříč více databázemi nebo horizontálních oddílů, kde všechna data pro každého tenanta jsou obsažená v jednom horizontálních oddílů.  V kombinaci se vzorem víceklientské databáze umožňuje model horizontálně dělené skoro neomezené škálování.
 
@@ -186,7 +186,7 @@ Následující tabulka shrnuje rozdíly mezi hlavními modely tenantů.
 | Měření | Samostatná aplikace | Databáze – na tenanta | Horizontálně dělené více tenantů |
 | :---------- | :------------- | :------------------ | :------------------- |
 | Měřítko | Střední<br />1 – 100 | Velmi vysoké<br />1 – 100, tisících | Unlimited<br />1 – 1, 000, tisících |
-| Izolace tenanta | Velmi vysoké | Vysoká | Slab s výjimkou jednoho tenanta (který je samostatně v MT DB). |
+| Izolace tenanta | Velmi vysoké | Vysoké | Slab s výjimkou jednoho tenanta (který je samostatně v MT DB). |
 | Náklady na databázi na tenanta | Maximální má velikost pro špičky. | Slab používané fondy. | Nejnižší pro malé klienty v MT databáze. |
 | Sledování a Správa výkonu | Jenom pro tenanta | Agregovaná + pro každého tenanta | Souhrnné i když je jeden tenant jenom pro jednoduchou. |
 | Složitost vývoje | Nízká | Nízká | Úrovně kvůli horizontálního dělení. |

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: duau
 ms.openlocfilehash: 0c85272989a362da77b01af7bb1fe968516e53b6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397997"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Návrh pro zotavení po havárii s privátním partnerským vztahem ExpressRoute
@@ -45,7 +45,7 @@ Pokud ale vyrovnáváte zatížení v rámci geograficky redundantních paraleln
 
 Podívejme se na příklad sítě znázorněné v následujícím diagramu. V tomto příkladu je geograficky redundantní připojení ExpressRoute vytvořeno mezi místním umístěním společnosti Contoso a virtuální sítí contoso v oblasti Azure. V diagramu se plná zelená čára označuje jako upřednostňovaná cesta (přes ExpressRoute 1) a tečkovaná jedna představuje cestu k umístění (prostřednictvím ExpressRoute 2).
 
-[![1]][1]
+[![první]][1]
 
 Pokud navrhujete ExpressRoute konektivitu pro zotavení po havárii, je třeba vzít v úvahu:
 
@@ -68,7 +68,7 @@ Můžete ovlivnit Azure tak, aby dával jeden okruh ExpressRoute přes jiný, a 
 
 Následující diagram ilustruje vliv výběru cest ExpressRoute pomocí konkrétnější inzerce tras. V následujícím příkladu je místní/24 IP rozsah společnosti Contoso inzerován jako dva/25 rozsahů adres přes upřednostňovanou cestu (ExpressRoute 1) a jako/24 prostřednictvím cesty (ExpressRoute 2).
 
-[![2]][2]
+[![odst]][2]
 
 Vzhledem k tomu, že/25 je přesnější, v porovnání s/24, Azure odešle provoz určený k 10.1.11.0/24 prostřednictvím ExpressRoute 1 v normálním stavu. Pokud připojení ExpressRoute 1 přestanou platit, pak síť VNet uvidí trasovou reklamu 10.1.11.0/24 pouze prostřednictvím ExpressRoute 2; Proto se v tomto stavu selhání používá pohotovostní okruh.
 
@@ -76,7 +76,7 @@ Vzhledem k tomu, že/25 je přesnější, v porovnání s/24, Azure odešle prov
 
 Následující snímek obrazovky ukazuje konfiguraci váhy ExpressRoute připojení prostřednictvím Azure Portal.
 
-[![3]][3]
+[![1]][3]
 
 Následující diagram ilustruje vliv výběru cesty ExpressRoute pomocí váhy připojení. Výchozí váha připojení je 0. V následujícím příkladu je váha připojení pro ExpressRoute 1 nakonfigurovaná jako 100. Když virtuální síť přijme předponu trasy inzerovanou přes více než jeden okruh ExpressRoute, virtuální síť bude upřednostňovat připojení s nejvyšší váhou.
 

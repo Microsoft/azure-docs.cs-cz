@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: c7dfbd60b7a668b849c3150bb16e40285c345634
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844109"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co jsou klasická upozornění v Microsoft Azure?
@@ -33,7 +33,7 @@ Nové uživatelské prostředí výstrahy má oproti klasickému prostředí vý
 - **Zobrazit aktivované výstrahy Log Analytics v Azure Portal** – nyní můžete ve svém předplatném zobrazit také aktivované výstrahy Log Analytics. Dříve byly na samostatném portálu.
 - **Oddělení aktivovaných výstrah a pravidel upozornění** – pravidla upozornění (definice podmínky, která aktivuje výstrahu) a aktivované výstrahy (instance pravidla výstrahy se vyvolala) jsou odlišeny, takže provozní a konfigurační zobrazení jsou oddělené.
 - **Lepší pracovní postup** – nové prostředí pro vytváření výstrah vás provede uživatelem na základě procesu konfigurace pravidla upozornění, což usnadňuje zjištění správných věcí, na které se zobrazí upozornění.
-- **Konsolidace inteligentních výstrah** a **Nastavení upozornění** – novější výstrahy zahrnují funkce automatického seskupování ukazující podobná upozornění, aby se snížilo přetížení v uživatelském rozhraní. 
+- **Konsolidace inteligentních výstrah** a **Nastavení upozornění**  – novější výstrahy zahrnují funkce automatického seskupování ukazující podobná upozornění, aby se snížilo přetížení v uživatelském rozhraní. 
 
 Novější výstrahy metriky mají oproti klasickým výstrahám metrik tyto výhody:
 - **Vylepšená latence**: novější upozornění na metriku můžete spouštět stejně často, jako každou jednu minutu. Starší výstrahy metriky se vždycky spouštějí v intervalu 5 minut. Novější výstrahy zvýšily menší zpoždění od výskytu problému s oznámením nebo akcí (3 až 5 minut). Starší výstrahy mají v závislosti na typu 5 až 15 minut.  Výstrahy protokolu obvykle mají prodlevu 10 až 15 minut, protože doba potřebná k ingestování protokolů, ale novější metody zpracování zkracuje tento čas. 
