@@ -9,10 +9,10 @@ ms.date: 08/27/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 517acc5137d70c722d8defade1e218a3b2e78f86
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89052472"
 ---
 Virtuální síť můžete vytvořit pomocí modelu nasazení Správce prostředků a Azure Portal pomocí následujících kroků. Další informace o virtuálních sítích najdete v tématu [přehled Virtual Network](../articles/virtual-network/virtual-networks-overview.md).
@@ -22,7 +22,7 @@ Virtuální síť můžete vytvořit pomocí modelu nasazení Správce prostřed
 >
 >
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Do **vyhledávacích prostředků, služeb a dokumentů (G +/)** zadejte *Virtual Network*.
 
    ![Stránka pro vyhledání prostředku Virtual Network](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace.png "Stránka pro vyhledání prostředku virtuální sítě")
@@ -38,7 +38,7 @@ Virtuální síť můžete vytvořit pomocí modelu nasazení Správce prostřed
    ![Karta základy](./media/vpn-gateway-basic-vnet-rm-portal-include/basics.png "Karta základy") Po vyplnění polí se zobrazí zelená značka zaškrtnutí, pokud jsou znaky, které zadáte do pole, ověřovány. Některé hodnoty jsou vyplněny, které můžete nahradit vlastními hodnotami:
 
    - **Předplatné**: Zkontrolujte, jestli je uvedeno správné předplatné. Předplatná můžete měnit prostřednictvím rozevíracího seznamu.
-   - **Skupina prostředků**: Vyberte existující skupinu prostředků nebo vytvořte novou kliknutím na **vytvořit novou** . Další informace o skupinách prostředků najdete v tématu [přehled Azure Resource Manager](../articles/azure-resource-manager/management/overview.md#resource-groups).
+   - **Skupina prostředků**: Vyberte existující skupinu prostředků nebo vytvořte novou kliknutím na **vytvořit novou** . Další informace o skupinách prostředků najdete v tématu [Přehled Azure Resource Manageru](../articles/azure-resource-manager/management/overview.md#resource-groups).
    - **Název**: zadejte název vaší virtuální sítě.
    - **Oblast**: vyberte umístění pro virtuální síť. Umístění Určuje, kde budou prostředky, které nasadíte do této virtuální sítě, v provozu.
 

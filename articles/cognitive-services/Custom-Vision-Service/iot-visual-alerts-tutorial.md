@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.openlocfilehash: ebc6ca630ea3cabb519805ae8505abf336a2a9ea
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604287"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Kurz: použití Custom Vision se zařízením IoT k hlášení vizuálních stavů
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak:
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [!INCLUDE [create-resources](includes/create-resources.md)]
     > [!IMPORTANT]
@@ -56,7 +56,7 @@ Aplikace pro vizuální výstrahy IoT se spouští v souvislé smyčce, přičem
 
 Následující soubory zpracovávají hlavní funkce aplikace.
 
-| Soubor | Description |
+| Soubor | Popis |
 |-------------|-------------|
 | [MainPage. XAML](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml) | Tento soubor definuje uživatelské rozhraní XAML. Je hostitelem ovládacího prvku webové kamery a obsahuje popisky používané pro aktualizace stavu.|
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Tento kód řídí chování uživatelského rozhraní XAML. Obsahuje kód pro zpracování stavového stroje.|

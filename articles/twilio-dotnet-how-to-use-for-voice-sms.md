@@ -14,10 +14,10 @@ ms.date: 04/24/2015
 ms.author: gwallace
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 104f969f5e27ef36ad43eb10e19176a4bcfd6648
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021132"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Jak používat Twilio pro hlasové funkce a SMS z Azure
@@ -84,7 +84,7 @@ Twilio poskytuje sadu pomocných knihoven .NET, které zabalí různé aspekty T
 
 Twilio poskytuje pro vývojáře v rozhraní .NET pět knihoven:
 
-| Knihovna | Popis |
+| Knihovna | Description |
 | --- | --- |
 | Twilio. API | Základní knihovna Twilio, která zabalí Twilio REST API v uživatelsky přívětivé knihovně .NET. Tato knihovna je k dispozici pro .NET, Silverlight a Windows Phone 7. |
 | Twilio. TwiML | Poskytuje uživatelsky přívětivý způsob, jak generovat kód TwiML. |

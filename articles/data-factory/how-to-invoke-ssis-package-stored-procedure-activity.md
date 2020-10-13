@@ -15,10 +15,10 @@ ms.date: 07/09/2020
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 05ec19fd2351b3a9ac1f383ce4747404eeead936
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89067820"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Spuštění balíčku SSIS pomocí aktivity Uložená procedura ve službě Azure Data Factory
@@ -63,7 +63,7 @@ Prvním krokem je vytvoření datové továrny pomocí Azure Portal.
 4. Jako **verzi** vyberte **V2**.
 5. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze umístění podporovaná službou Data Factory. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou můžou být v jiných umístěních.
 6. Zaškrtněte **Připnout na řídicí panel**.     
-7. Klikněte na možnost **Vytvořit**.
+7. Klikněte na **Vytvořit**.
 8. Na řídicím panelu se zobrazí následující dlaždice se stavem: **nasazování datové továrny**. 
 
      ![nasazování dlaždice datové továrny](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
@@ -117,7 +117,7 @@ V tomto kroku použijete uživatelské rozhraní Data Factory k vytvoření kan�
     ![Ověření kanálu](./media/how-to-invoke-ssis-package-stored-procedure-activity/validate-pipeline.png)
 7. Kliknutím na tlačítko **publikovat vše** klikněte na publikovat kanál a Data Factory. 
 
-    ![Publikování](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
+    ![Publikovat](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
 
 ### <a name="run-and-monitor-the-pipeline"></a>Spuštění a monitorování kanálu
 V této části aktivujete spuštění kanálu a pak ho monitorujte. 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d2355b26fc6a946e47a3d2c135b7c23729b186c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f7ff20dbdd0dac5b56d0f746733b14dfe44803e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554638"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940632"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Kurz: Azure Active Directory integrace s moconavi
 
@@ -191,15 +191,15 @@ V této části vytvoříte uživatele s názvem Britta Simon v moconavi. Pokud 
 
 3. Klikněte na tlačítko **připojit nastavení** .
 
-    ![Testování jednotného přihlašování](./media/moconavi-tutorial/testing1.png)
+    ![Snímek obrazovky s tlačítkem nastavení připojení zobrazí moconavi.](./media/moconavi-tutorial/testing1.png)
 
 4. Do `https://mcs-admin.moconavi.biz/gateway` textového pole **připojit k adrese URL** zadejte text a klikněte na tlačítko **Hotovo** .
 
-    ![Testování jednotného přihlašování](./media/moconavi-tutorial/testing2.png)
+    ![Snímek obrazovky se zobrazí v poli připojit k U R L a tlačítko Hotovo.](./media/moconavi-tutorial/testing2.png)
 
 5. Na následujícím snímku obrazovky proveďte následující kroky:
 
-    ![Testování jednotného přihlašování](./media/moconavi-tutorial/testing3.png)
+    ![Snímek obrazovky se zobrazí stránka moconavi, kde můžete zadat hodnoty, které jsou popsány.](./media/moconavi-tutorial/testing3.png)
 
     a. Zadejte **vstupní ověřovací klíč**: `azureAD` do textového pole **vstupního ověřovacího klíče** .
 
@@ -209,11 +209,11 @@ V této části vytvoříte uživatele s názvem Britta Simon v moconavi. Pokud 
 
 6. Do textového pole **heslo** služby Azure AD zadejte text a klikněte na tlačítko **Přihlásit** .
 
-    ![Testování jednotného přihlašování](./media/moconavi-tutorial/testing4.png)
+    ![Snímek obrazovky s informacemi o tom, kam zadat heslo Azure A D](./media/moconavi-tutorial/testing4.png)
 
 7. Po zobrazení nabídky je ověřování Azure AD úspěšné.
 
-    ![Testování jednotného přihlašování](./media/moconavi-tutorial/testing5.png)
+    ![Snímek obrazovky zobrazuje ikonu telefonu v moconavi.](./media/moconavi-tutorial/testing5.png)
 
 ## <a name="additional-resources"></a>Další materiály
 

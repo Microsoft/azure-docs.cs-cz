@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1f5a68bcf0069663d8ef1101407bea7ee26e9e8b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88919284"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Kurz: Moderování videí a přepisů
@@ -33,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > - Moderování přepisu pomocí služby moderování textu
 > - Přidání moderovaného přepisu do kontroly videa
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Zaregistrujte se na webu [Nástroje pro kontrolu Content moderator](https://contentmoderator.cognitive.microsoft.com/) a vytvořte vlastní značky. Pokud potřebujete s tímto krokem pomáhat, přečtěte si téma [použití značek](Review-Tool-User-Guide/tags.md) .
 
@@ -237,7 +237,7 @@ Proces moderování vrátí seznam klíčových snímků z videa společně s p�
 > [!NOTE]
 > Konzolová aplikace použije knihovnu [FFmpeg](https://ffmpeg.org/) ke generování miniatur. Tyto miniatury (obrázky) odpovídají časovým razítkům snímků ve výstupu moderování videa.
 
-|Úkol|Metody|Soubor|
+|Úloha|Metody|Soubor|
 |-|-|-|
 |Extrakce klíčových snímků z videa a vytvoření miniatur z těchto snímků|`CreateVideoFrames()`<br>`GenerateFrameImages()`|`FrameGeneratorServices.cs`|
 |Kontrola přepisu textu, pokud je k dispozici, pro účely vyhledání obsahu pro dospělé nebo pikantního obsahu|`GenerateTextScreenProfanity()`| `VideoReviewAPI.cs`|
@@ -253,7 +253,7 @@ Dosud se kód uvedený v tomto kurzu zaměřoval na vizuální obsah. Kontrola m
 
 Aplikace provádí následující úlohy:
 
-|Úkol|Metody|Soubor|
+|Úloha|Metody|Soubor|
 |-|-|-|
 |Určení, jestli se mají generovat přepisy textu|`Main()`<br>`GetUserInputs()`|`Program.cs`|
 |Pokud ano, odeslání úlohy přepisu jako součásti moderování|`ConfigureTranscriptTask()`|`VideoModerator.cs`|

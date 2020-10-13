@@ -1,5 +1,5 @@
 ---
-title: Ochrana osobních údajů uživatelů a bezproblémové jednotné přihlašování v Azure AD | Microsoft Docs
+title: Ochrana osobních údajů uživatelů a bezproblémové jednoduché Sign-On služby Azure AD | Microsoft Docs
 description: Tento článek se zabývá Azure Active Directory (Azure AD) bez problémů s jednotným přihlašováním a dodržováním předpisů GDPR.
 services: active-directory
 keywords: Co je Azure AD Connect, GDPR, požadované součásti pro Azure AD, jednotné přihlašování
@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2aa1a30c548ef60cd9b596031f4115297dd20844
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89278594"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Ochrana osobních údajů uživatelů a bezproblémové jednotné přihlašování Azure AD

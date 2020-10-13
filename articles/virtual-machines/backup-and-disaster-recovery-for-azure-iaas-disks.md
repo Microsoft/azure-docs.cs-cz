@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 28a46ad9e53a90c25c239278ee57ea368af395a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01133ab5582e63c0e87d8a5cf8de12f5445394c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88754969"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969700"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Zálohování a zotavení po havárii pro disky Azure IaaS
 
@@ -48,7 +48,7 @@ Z důvodu této architektury dosáhla Azure jednotnou odolnost na IaaS discích 
 
 V případě lokalizovaných hardwarových chyb na výpočetním hostiteli nebo na platformě úložiště může někdy docházet k dočasné nedostupnosti virtuálního počítače, který je pokrytý smlouvou [SLA Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) pro dostupnost virtuálních počítačů. Azure také poskytuje špičkovou smlouvu SLA pro jednotlivé instance virtuálních počítačů, které používají Azure Premium SSD.
 
-K ochraně aplikačních úloh před výpadky kvůli dočasné nedostupnosti disku nebo virtuálního počítače můžou zákazníci používat [skupiny dostupnosti](windows/manage-availability.md). Dva nebo víc virtuálních počítačů v rámci skupiny dostupnosti zajišťují redundanci aplikace. Azure potom vytvoří tyto virtuální počítače a disky v samostatných doménách selhání s různými součástmi napájení, sítě a serveru.
+K ochraně aplikačních úloh před výpadky kvůli dočasné nedostupnosti disku nebo virtuálního počítače můžou zákazníci používat [skupiny dostupnosti](./manage-availability.md). Dva nebo víc virtuálních počítačů v rámci skupiny dostupnosti zajišťují redundanci aplikace. Azure potom vytvoří tyto virtuální počítače a disky v samostatných doménách selhání s různými součástmi napájení, sítě a serveru.
 
 Vzhledem k těmto samostatným doménám selhání neovlivní lokalizovaná hardwarová selhání obvykle více virtuálních počítačů v sadě ve stejnou dobu. Samostatné domény selhání poskytují vysokou dostupnost vaší aplikace. Je vhodné použít skupiny dostupnosti, pokud je potřeba vysoká dostupnost. V další části se dozvíte o aspektech zotavení po havárii.
 
@@ -77,7 +77,7 @@ Vezměte v úvahu provozní databázový server, jako je SQL Server nebo Oracle,
 - Data musí být chráněná a obnovitelná.
 - Server musí být k dispozici pro použití.
 
-Plán zotavení po havárii může vyžadovat údržbu repliky databáze v jiné oblasti jako zálohy. V závislosti na požadavcích na dostupnost serveru a obnovení dat může být řešení v rozsahu od lokality aktivní-aktivní nebo aktivní-pasivní repliky až po periodické zálohování dat v režimu offline. Relační databáze, například SQL Server a Oracle, poskytují různé možnosti pro replikaci. Pro SQL Server použijte pro zajištění vysoké dostupnosti [SQL Server skupiny dostupnosti AlwaysOn](https://msdn.microsoft.com/library/hh510230.aspx) .
+Plán zotavení po havárii může vyžadovat údržbu repliky databáze v jiné oblasti jako zálohy. V závislosti na požadavcích na dostupnost serveru a obnovení dat může být řešení v rozsahu od lokality aktivní-aktivní nebo aktivní-pasivní repliky až po periodické zálohování dat v režimu offline. Relační databáze, například SQL Server a Oracle, poskytují různé možnosti pro replikaci. Pro SQL Server použijte pro zajištění vysoké dostupnosti [SQL Server skupiny dostupnosti AlwaysOn](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) .
 
 Databáze NoSQL, jako je MongoDB, také podporují [repliky](https://docs.mongodb.com/manual/replication/) pro redundanci. Používají se repliky pro vysokou dostupnost.
 
@@ -201,7 +201,7 @@ Další možností, jak vytvořit konzistentní zálohy, je vypnout virtuální 
 
 1. Vytvořte snímek pro každý objekt BLOB virtuálního pevného disku, který trvá jenom několik sekund.
 
-    K vytvoření snímku můžete použít [PowerShell](https://docs.microsoft.com/powershell/module/az.storage), [Azure Storage REST API](https://msdn.microsoft.com/library/azure/ee691971.aspx), [Azure CLI](/cli/azure/)nebo jednu z Azure Storage klientských knihoven, jako [je Klientská knihovna pro úložiště pro .NET](https://msdn.microsoft.com/library/azure/hh488361.aspx).
+    K vytvoření snímku můžete použít [PowerShell](/powershell/module/az.storage), [Azure Storage REST API](/rest/api/storageservices/Snapshot-Blob), [Azure CLI](/cli/azure/)nebo jednu z Azure Storage klientských knihoven, jako [je Klientská knihovna pro úložiště pro .NET](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
 1. Spusťte virtuální počítač, který ukončí výpadek. Obvykle se celý proces dokončí během několika minut.
 
@@ -224,7 +224,7 @@ Pokud chcete kopírovat přírůstkové snímky pro program DR., přečtěte si 
 
 ### <a name="recovery-from-snapshots"></a>Obnovení ze snímků
 
-Chcete-li načíst snímek, zkopírujte jej a vytvořte nový objekt BLOB. Pokud kopírujete snímek z primárního účtu, můžete snímek zkopírovat do základního objektu BLOB snímku. Tento proces vrátí disk do snímku. Tento proces se označuje jako zvýšení úrovně snímku. Pokud kopírujete zálohu snímku ze sekundárního účtu, musíte v případě účtu geograficky redundantního úložiště s přístupem pro čtení zkopírovat ho do primárního účtu. Snímek můžete zkopírovat [pomocí PowerShellu](https://docs.microsoft.com/powershell/module/az.storage) nebo pomocí nástroje AzCopy. Další informace najdete v tématu [přenos dat pomocí nástroje příkazového řádku AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy).
+Chcete-li načíst snímek, zkopírujte jej a vytvořte nový objekt BLOB. Pokud kopírujete snímek z primárního účtu, můžete snímek zkopírovat do základního objektu BLOB snímku. Tento proces vrátí disk do snímku. Tento proces se označuje jako zvýšení úrovně snímku. Pokud kopírujete zálohu snímku ze sekundárního účtu, musíte v případě účtu geograficky redundantního úložiště s přístupem pro čtení zkopírovat ho do primárního účtu. Snímek můžete zkopírovat [pomocí PowerShellu](/powershell/module/az.storage) nebo pomocí nástroje AzCopy. Další informace najdete v tématu [přenos dat pomocí nástroje příkazového řádku AzCopy](../storage/common/storage-use-azcopy-v10.md).
 
 U virtuálních počítačů s více disky je nutné zkopírovat všechny snímky, které jsou součástí stejného koordinovaného bodu obnovení. Po zkopírování snímků do zapisovatelných objektů BLOB VHD můžete pomocí objektů BLOB znovu vytvořit virtuální počítač pomocí šablony pro virtuální počítač.
 
@@ -265,4 +265,3 @@ Přečtěte si téma [zálohování nespravovaných disků virtuálních počít
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png
-

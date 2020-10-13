@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: aahi
 ms.openlocfilehash: a44655571099d936b34a4233bc12fa099e5bc338
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91660951"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Kurz: vizualizace anomálií pomocí zjišťování dávek a Power BI
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Integrace Power BI Desktop s rozhraním API detektoru anomálií pro detekci anomálií služby Batch
 > * Vizualizujte anomálie nalezené v rámci vašich dat, včetně očekávaných a zobrazených hodnot a hranic detekce anomálií.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 * [Předplatné Azure](https://azure.microsoft.com/free/cognitive-services)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), k dispozici zdarma.
 * Excelový soubor (. xlsx), který obsahuje datové body časové řady. Ukázková data pro tento rychlý Start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090962) .

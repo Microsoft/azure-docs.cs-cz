@@ -8,56 +8,63 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/28/2020
-ms.openlocfilehash: 9f5f4b2b069ebc65430fba4bc31a9891ed61fedf
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/09/2020
+ms.openlocfilehash: 2e597299c9b157d79a5317c97550fc30820636d6
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450111"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940346"
 ---
 # <a name="convert-to-image-directory"></a>Převod do adresáře obrázků
 
-Tento článek popisuje, jak pomocí modulu příkazového adresáře převést na obrázek převést datovou sadu na datový typ "adresář obrázků", což je standardizovaný formát dat v úkolech souvisejících s obrázky, jako je například klasifikace obrázku v Návrháři Azure Machine Learning.
+Tento článek popisuje, jak použít modul adresář pro převod do bitové kopie, který umožňuje převést datovou sadu obrázku na datový typ datového *adresáře* , který je standardizovaným formátem dat v úkolech souvisejících s obrázky, jako je například klasifikace obrázků v Návrháři Azure Machine Learning.
 
 ## <a name="how-to-use-convert-to-image-directory"></a>Jak použít převod na adresář imagí  
 
-1.  Přidejte do plátna modul **adresáře převést do obrázku** . Tento modul můžete najít v kategorii "Počítačové zpracování obrazu/Image Transformation data" v seznamu modul. 
+1. Nejprve Připravte datovou sadu obrázku. 
 
-2.  Vstup pro modul **adresáře pro převod do bitové kopie** musí být Souborová sada. [Zaregistrujte datovou sadu obrázku](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) a připojte ji ke vstupnímu portu modulu. Ujistěte se prosím, že ve vstupní datové sadě je obrázek. Aktuálně Návrhář nepodporuje sadu dat vizualizace obrázku.
- 
-    Podporovány jsou následující formáty datové sady:
+    Pro účely učení pod dohledem je nutné zadat popisek datové sady školení. Soubor datové sady imagí by měl být v následující struktuře:
+    
+    ```
+    Your_image_folder_name/Category_1/xxx.png
+    Your_image_folder_name/Category_1/xxy.jpg
+    Your_image_folder_name/Category_1/xxz.jpeg
+    
+    Your_image_folder_name/Category_2/123.png
+    Your_image_folder_name/Category_2/nsdf3.png
+    Your_image_folder_name/Category_2/asd932_.png
+    ```
+    
+    Ve složce datové sady imagí existuje více podsložek. Každá podsložka obsahuje obrázky jedné kategorie. Názvy podsložek se považují za popisky pro úlohy, jako je například klasifikace obrázku. Další informace najdete v tématu [torchvision DataSets](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) .
 
-    - Komprimovaný soubor v těchto rozšířeních:. zip,. tar,. gz,. bz2
-    - Složka obsahující obrázky. **Velmi doporučujeme kompresi takových složek nejprve použít komprimovaný soubor jako datovou sadu**.
+    > [!WARNING]
+    > Aktuálně označené datové sady, které jsou vyexportovány z popisků dat, nejsou v Návrháři podporovány.
+
+    Obrázky s těmito příponami (malými písmeny) jsou podporované: ". jpg", ". jpeg", ". png", ". ppm", ". bmp", ". PGM", ". tif", ". TIFF", ". webp". V jedné složce můžete mít také více typů obrázků. V každé složce kategorií není nutné obsahovat stejný počet imagí.
+
+    Můžete buď použít složku nebo komprimovaný soubor s příponou. zip, ". tar", ". gz" a ". bz2". **Pro lepší výkon se doporučuje komprimovaných souborů.** 
+    
+    ![Ukázková datová sada obrázku](./media/module/image-sample-dataset.png)
+
+    Pro účely bodování musí složka sady dat image obsahovat jenom neklasifikované image.
+
+1. [Zaregistrujte datovou sadu obrázku jako datovou sadu](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) v pracovním prostoru, protože vstup pro modul adresáře pro převod do bitové kopie musí být **Souborová sada**.
+
+1. Přidejte do plátna datovou sadu registrovaných obrázků. Registrovanou datovou sadu můžete najít v kategorii **DataSets** v seznamu modul v levé části plátna. Aktuálně Návrhář nepodporuje sadu dat vizualizace obrázku.
 
     > [!WARNING]
     > Modul **Import dat** **nelze** použít pro import datové sady imagí, protože výstupní typ modulu **importu dat** je adresář datového rámce, který obsahuje pouze řetězec cesty k souboru.
-    
 
-    > [!NOTE]
-    > - Pokud používáte datovou sadu obrázků v dohledovém učení, je nutné zadat popisek datové sady školení.
-    > - V případě úlohy klasifikace obrázku může být popisek vygenerován jako obrázek "kategorie" ve výstupu modulu, pokud je tato datová sada obrázku uspořádána ve formátu torchvision ImageFolder. V opačném případě se bez popisku uloží pouze obrázky. Následuje příklad, jak můžete uspořádat datovou sadu obrázků a získat popisek, použít kategorii obrázku jako název podsložky. 
-    > - Nemusíte nahrávat stejný počet imagí do každé složky kategorií.
-    > - Obrázky s těmito příponami (malými písmeny) jsou podporované: ". jpg", ". jpeg", ". png", ". ppm", ". bmp", ". PGM", ". tif", ". TIFF", ". webp". V jedné složce můžete mít také více typů obrázků.    
-    > - Další informace najdete v tématu [torchvision DataSets](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) .
-    >
-    > ```
-    > Your_image_folder_name/Category_1/xxx.png
-    > Your_image_folder_name/Category_1/xxy.jpg
-    > Your_image_folder_name/Category_1/xxz.jpeg
-    >
-    > Your_image_folder_name/Category_2/123.png
-    > Your_image_folder_name/Category_2/nsdf3.png
-    > Your_image_folder_name/Category_2/asd932_.png
-    > ```
-    > - Pokud použijete pro bodování datovou sadu obrázků, musí datová sada vstupního souboru tohoto modulu obsahovat neklasifikované image.
+1. Přidejte do plátna modul **adresáře převést do obrázku** . Tento modul můžete najít v kategorii "Počítačové zpracování obrazu/Image Transformation data" v seznamu modul. Připojte ho k datové sadě obrázků.
     
 3.  Odešlete kanál. Tento modul se dá spustit buď pro GPU, nebo pro procesor.
 
 ## <a name="results"></a>Výsledky
 
-Výstup do adresářového **adresáře převést na Image** je ve formátu adresáře image a dá se připojit k ostatním modulům souvisejícím s imagemi, ve kterých je formát vstupního portu také adresářem obrázků.
+Výstup modulu **pro výpis adresářů imagí** je ve formátu **adresáře obrázků** a může být připojen k jiným modulům souvisejícím s obrázky, z nichž je formát vstupního portu také adresářem obrázku.
+
+![Převést na výstup adresáře obrázků](./media/module/convert-to-image-directory-output.png)
 
 ## <a name="technical-notes"></a>Technické poznámky 
 

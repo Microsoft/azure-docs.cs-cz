@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/07/2020
 ms.author: memildin
 ms.openlocfilehash: 92feb159fe4c893a55d37fa90c34acf4c4c93631
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826177"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky v programu Microsoft Defender pomocí Azure Security Center
@@ -30,9 +30,9 @@ Azure Security Center se integruje s [pokročilou ochranou před internetovými 
 |----|:----|
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|Vyžaduje [Azure Defender](security-center-pricing.md) .|
-|Podporované počítače:|![Ano](./media/icons/yes-icon.png) Počítače Azure s Windows<br>![Ano](./media/icons/yes-icon.png) Počítače ARC Azure s Windows|
+|Podporované počítače:|![Yes](./media/icons/yes-icon.png) Počítače Azure s Windows<br>![Yes](./media/icons/yes-icon.png) Počítače ARC Azure s Windows|
 |Požadované role a oprávnění:|Povolení nebo zakázání integrace: **Správce zabezpečení** nebo **vlastník**<br>Zobrazení upozornění MDATP v Security Center: **čtecí modul zabezpečení**, **Čtenář**, **Přispěvatel skupiny prostředků**, **vlastník skupiny prostředků**, **Správce zabezpečení**, **vlastník předplatného**nebo **přispěvatele předplatného**|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy.<br>![No](./media/icons/no-icon.png) Zákazníci v RSZ, kteří mají spuštěné úlohy ve veřejných cloudech Azure<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy.<br>![No](./media/icons/no-icon.png) Zákazníci v RSZ, kteří mají spuštěné úlohy ve veřejných cloudech Azure<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 

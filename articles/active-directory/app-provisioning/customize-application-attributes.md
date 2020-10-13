@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: kenwith
 ms.openlocfilehash: 666c4e52ed521c169ff80b33e2ab0e83b13e4d03
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266696"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení uživatelského zřizování atributů – mapování pro SaaS aplikace v Azure Active Directory
@@ -55,7 +55,7 @@ Podporovány jsou čtyři různé typy mapování:
 - **Direct** – cílový atribut se naplní hodnotou atributu propojeného objektu ve službě Azure AD.
 - **Constant** – cílový atribut je naplněný konkrétním řetězcem, který jste zadali.
 - **Výraz** – cílový atribut je vyplněný na základě výsledku výrazu podobného skriptu.
-  Další informace najdete v tématu [zápis výrazů pro mapování atributů v Azure Active Directory](../app-provisioning/functions-for-customizing-application-data.md).
+  Další informace najdete v tématu [zápis výrazů pro Attribute-Mappings v Azure Active Directory](../app-provisioning/functions-for-customizing-application-data.md).
 - **None** – cílový atribut zůstane beze změny. Nicméně pokud cílový atribut je někdy prázdný, je vyplněný výchozí hodnotou, kterou určíte.
 
 Spolu s těmito čtyřmi základními typy jsou vlastní mapování atributů podporují koncept volitelného přiřazení **výchozí** hodnoty. Výchozí přiřazení hodnoty zajišťuje, že cílový atribut je naplněný hodnotou, pokud neexistuje hodnota ve službě Azure AD nebo v cílovém objektu. Nejběžnější konfigurací je ponecháno toto prázdné.

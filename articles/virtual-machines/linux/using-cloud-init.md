@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
 ms.openlocfilehash: 7ddbb48f3598780988feb25a11729a5086d31fde
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88869265"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora Cloud-init pro virtuální počítače v Azure
@@ -45,8 +45,8 @@ K dispozici jsou dvě fáze pro zajištění, že se Cloud-init zpřístupní v 
 ### <a name="rhel"></a>RHEL
 | Vydavatel/verze | Nabídka | SKU | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ano | Ano – podpora z verze balíčku: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ano (Poznámka: Toto je náhled obrázku a **nesmí** se již používat, bude odebrána 1. září 2020) | – |
+|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ano | Ano – podpora z verze balíčku: *18.2-1.el7_6.2*|
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ano (Poznámka: Toto je náhled obrázku a **nesmí** se již používat, bude odebrána 1. září 2020) | Není k dispozici |
 |RedHat 7,7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | ano | Ano – podpora z verze balíčku: *18.5 -6. el7*|
 |RedHat 7,7 (Gen2)|RHEL | 77 – Gen2 | 7.7.2020051913 | ano | Ano – podpora z verze balíčku: *18.5 -6. el7*|
 |RedHat 7,7 (Gen1)|RHEL |7 – LVM | 7.7.2020051921 | ano | Ano – podpora z verze balíčku: *18.5 -6. el7*|
@@ -61,7 +61,7 @@ K dispozici jsou dvě fáze pro zajištění, že se Cloud-init zpřístupní v 
 
 | Vydavatel/verze | Nabídka | SKU | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Ano (Poznámka: Toto je náhled obrázku a **nesmí** se již používat, bude odebrána 1. září 2020) | – |
+|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Ano (Poznámka: Toto je náhled obrázku a **nesmí** se již používat, bude odebrána 1. září 2020) | Není k dispozici |
 |OpenLogic 7,7 |CentOS | 7.7 |7.7.2020062400 |ano | Ano – podpora z verze balíčku: `18.5-6.el7.centos.5`|
 |OpenLogic 7,7 (Gen2) |CentOS | 7_7 – Gen2 |7.7.2020062401 |ano | Ano – podpora z verze balíčku: `18.5-6.el7.centos.5`|
 |OpenLogic 7,7 |CentOS – HPC | 7.7 |7.6.2020062600 |ano | Ano – podpora z verze balíčku: `18.5-6.el7.centos.5`|
@@ -77,7 +77,7 @@ K dispozici jsou dvě fáze pro zajištění, že se Cloud-init zpřístupní v 
 
 | Vydavatel/verze | Nabídka | SKU | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Oracle 7,7 |Oracle – Linux |77 – CI |7.7.01| Náhled obrázku (Poznámka: Toto je obrázek verze Preview a když všechny Image Oracle 7,7 podporují Cloud-init, odstraní se i část 2020, oznámení se zobrazí). | Ne, balíček je ve verzi Preview: *18.5-3.0.1. el7*
+|Oracle 7,7 |Oracle-Linux |77 – CI |7.7.01| Náhled obrázku (Poznámka: Toto je obrázek verze Preview a když všechny Image Oracle 7,7 podporují Cloud-init, odstraní se i část 2020, oznámení se zobrazí). | Ne, balíček je ve verzi Preview: *18.5-3.0.1. el7*
 
 ### <a name="suse-sles"></a>SUSE SLES
 Tyto image SLES se aktualizovaly, aby se zřídily pomocí Cloud-init, ale byly aktualizovány taky varianty imagí Gen2.

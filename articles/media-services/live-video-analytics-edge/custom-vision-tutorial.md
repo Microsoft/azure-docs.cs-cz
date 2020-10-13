@@ -3,12 +3,12 @@ title: Analýza živého videa pomocí živé analýzy videí v IoT Edge a Azure
 description: Naučte se, jak pomocí Custom Vision vytvořit kontejnerový model, který dokáže detekovat nákladní automobil a používat funkci rozšíření AI pro živé video analýzy v IoT Edge (LVA) k nasazení modelu na hraničních zařízeních pro detekci hraček datových toků z živého streamu videa.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5da3186e64dd369dc57a0d5d1b635fc082158765
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 7989b3636fe953b8110e356506a5867fefd2d8b6
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804142"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940170"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Kurz: Analýza živého videa pomocí živé analýzy videí v IoT Edge a Azure Custom Vision
 
@@ -40,7 +40,7 @@ Než začnete, doporučujeme, abyste si přečetli následující články:
 * [Kurz: vývoj modulu IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
 * [Postup úpravy nasazení. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předpoklady pro tento kurz:
 
@@ -56,14 +56,14 @@ Předpoklady pro tento kurz:
 
 ## <a name="review-the-sample-video"></a>Kontrola ukázkového videa
 
-V tomto kurzu se k simulaci živého streamu používá soubor [videa pro odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv/) . Video můžete prošetřit pomocí aplikace, jako je [VLC Media Player](https://www.videolan.org/vlc/). Vyberte CTRL + N a pak vložte odkaz na video o [odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) , kde se má začít přehrávat. Při sledování videa se ve videu zobrazí ve videu Poznámka, 36 že se ve videu objeví nákladní vůz. Vlastní model byl vyškolen k detekci tohoto konkrétního nákladní automobilu. V tomto kurzu budete používat Live video Analytics na IoT Edge k detekci takových hraček a k publikování přidružených událostí odvození do centra IoT Edge.
+V tomto kurzu se k simulaci živého streamu používá soubor [videa pro odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) . Video můžete prošetřit pomocí aplikace, jako je [VLC Media Player](https://www.videolan.org/vlc/). Vyberte CTRL + N a pak vložte odkaz na video o [odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) , kde se má začít přehrávat. Při sledování videa se ve videu zobrazí ve videu Poznámka, 36 že se ve videu objeví nákladní vůz. Vlastní model byl vyškolen k detekci tohoto konkrétního nákladní automobilu. V tomto kurzu budete používat Live video Analytics na IoT Edge k detekci takových hraček a k publikování přidružených událostí odvození do centra IoT Edge.
 
 ## <a name="overview"></a>Přehled
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/custom-vision-tutorial/topology-custom-vision.svg" alt-text="Přehled Custom Vision":::
 
-Tento diagram znázorňuje způsob, jakým se v tomto kurzu Flow signalizují. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server RTSP (Real-time streaming Protocol). [Zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a pošle snímky videa na uzel [procesoru filtru snímkové frekvence](media-graph-concept.md#frame-rate-filter-processor) . Tento procesor omezuje kmitočet snímků streamu videa, který se dorazí na uzel [procesoru rozšíření http](media-graph-concept.md#http-extension-processor) .
+Tento diagram znázorňuje způsob, jakým se v tomto kurzu Flow signalizují. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server protokolu RTSP (Real-Time streaming Protocol). [Zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a pošle snímky videa na uzel [procesoru filtru snímkové frekvence](media-graph-concept.md#frame-rate-filter-processor) . Tento procesor omezuje kmitočet snímků streamu videa, který se dorazí na uzel [procesoru rozšíření http](media-graph-concept.md#http-extension-processor) .
 Uzel rozšíření HTTP hraje roli proxy serveru. Převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes REST do jiného modulu Edge, který spouští model AI za koncovým bodem HTTP. V tomto příkladu je tento hraniční modul modelem automobilového rozpoznávání, sestavený pomocí Custom Vision. Uzel procesoru rozšíření HTTP shromáždí výsledky detekce a publikuje události do uzlu [IoT Hub jímka](media-graph-concept.md#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub).
 
 ## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Sestavení a nasazení modelu detekce Custom Vision hraček 

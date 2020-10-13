@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e62da791e8c60f884855fba16315a03fe22cecb5
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 6d03f0057e657933f4b0f38c48f2a2cdbe1ba2a4
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450697"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940323"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>Základní hodnoty zabezpečení Azure pro Azure Load Balancer
 
@@ -98,7 +98,7 @@ Security Center (úroveň Standard) poskytuje přístup k virtuálnímu počíta
 Použijte funkci adaptivního posílení sítě Security Center k doporučení konfigurace skupiny zabezpečení sítě, které omezují porty a zdrojové IP adresy na základě skutečného provozu a analýzy hrozeb.
  
 
-- [Správa Azure DDoS Protection Standard pomocí Azure Portal](https://docs.microsoft.com/azure/virtual-network/manage-ddos`protection)
+- [Správa Azure DDoS Protection Standard pomocí Azure Portal](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
 
 - [Azure Firewall filtrování na základě logiky hrozeb](https://docs.microsoft.com/azure/firewall/threat-intel)
 

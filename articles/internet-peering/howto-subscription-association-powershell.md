@@ -10,10 +10,10 @@ ms.date: 11/27/2019
 ms.author: prmitiki
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: aed079c467139ac5819951c5895ba753ee38ae2d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89067735"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>Přidružení partnerského čísla ASN k předplatnému Azure pomocí PowerShellu
@@ -108,6 +108,6 @@ Odstranění PeerASN se v tuto chvíli nepodporuje. Pokud potřebujete odstranit
 * [Vytvoření nebo úprava partnerského vztahu serveru Exchange](howto-exchange-powershell.md)
 * [Převod starší verze peeringu typu Exchange na prostředek Azure](howto-legacy-exchange-powershell.md)
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 Další informace najdete v tématu [Nejčastější dotazy týkající se partnerského vztahu Internetu](faqs.md) .

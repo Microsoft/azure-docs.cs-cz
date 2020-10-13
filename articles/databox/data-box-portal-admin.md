@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
 ms.openlocfilehash: 8b36eee38275d18e6977c056192176f6fd54a917
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611652"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Pomocí Azure Portal můžete spravovat Azure Data Box a Azure Data Box Heavy
@@ -55,7 +55,7 @@ Provedením následujících kroků naklonujte pořadí importu.
 
     ![Klonování objednávky 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  Všechny podrobnosti o objednávce zůstávají stejné. Název objednávky má podobu názvu původní objednávky s příponou *-Clone*. Zaškrtnutím políčka potvrďte, že jste si přečetli informace o ochraně osobních údajů. Klikněte na **Create** (Vytvořit).
+2.  Všechny podrobnosti o objednávce zůstávají stejné. Název objednávky má podobu názvu původní objednávky s příponou *-Clone*. Zaškrtnutím políčka potvrďte, že jste si přečetli informace o ochraně osobních údajů. Klikněte na **Vytvořit**.
 
 Během pár minut se vytvoří klon, portál se aktualizuje a zobrazí se na něm nová objednávka.
 
@@ -212,7 +212,7 @@ Když se stav zařízení na portálu změní, dostanete upozornění prostředn
 
 Zde jsou stavy pro pořadí importu.
 
-|Stav objednávky |Popis |
+|Stav objednávky |Description |
 |---------|---------|
 |Objednáno     | Došlo k úspěšnému zadání objednávky. <br>Pokud je zařízení dostupné, určí Microsoft zařízení k odeslání a toto zařízení připraví. <br> Pokud zařízení není dostupné okamžitě, bude objednávka zpracována, až bude zařízení dostupné. Zpracování objednávky může trvat od několika dnů až do dvou měsíců. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka zrušena a budete upozorněni.         |
 |Zpracováno     | Proběhlo zpracování objednávky. Zařízení je připravené k odeslání v datovém centru podle objednávky.         |
@@ -231,7 +231,7 @@ Zde jsou stavy pro pořadí importu.
 
 Zde jsou stavy pro export objednávky.
 
-|Stav objednávky |Popis |
+|Stav objednávky |Description |
 |---------|---------|
 |Objednáno     | Objednávka exportu se úspěšně nastavila. <br>Pokud je zařízení dostupné, určí Microsoft zařízení k odeslání a toto zařízení připraví. <br> Pokud zařízení není dostupné okamžitě, bude objednávka zpracována, až bude zařízení dostupné. Zpracování objednávky může trvat od několika dnů až do dvou měsíců. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka zrušena a budete upozorněni.         |
 |Zrušeno            |Došlo ke zrušení objednávky. <br> Buď jste zrušili objednávku (můžete zrušit pouze před zpracováním objednávky), nebo došlo k chybě a služba zrušila pořadí. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka také zrušena a budete upozorněni.     |
@@ -254,7 +254,7 @@ Zde jsou stavy pro export objednávky.
 
 Pokud používáte samoobslužné doručování, pak po dokončení kopírování a před přijetím zařízení se zobrazí následující stavy (místo těch, které jsou uvedené v předchozí tabulce):
 
-|Stav objednávky |Popis |
+|Stav objednávky |Description |
 |---------|---------|
 |Připraveno k vyzvednutí v datacentru Azure      |Zařízení je připravené k vyzvednutí v datacentru Azure.        |
 |Vyzvednuto    |Zařízení jste si vybrali.         |

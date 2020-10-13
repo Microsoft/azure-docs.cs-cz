@@ -9,10 +9,10 @@ ms.date: 09/14/2020
 ms.author: philmea
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 5092aa0b5b23f04af1f49933bca234815f03f454
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604536"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Kurz: Posílání e-mailových oznámení o událostech služby Azure IoT Hub s využitím služeb Event Grid a Logic Apps
@@ -21,7 +21,7 @@ Azure Event Grid vám umožňuje reagovat na události ve službě IoT Hub aktiv
 
 Tento článek vás provede ukázkovou konfigurací, která používá IoT Hub a Event Grid. Na konci máte aplikaci logiky Azure nastavenou k odeslání e-mailového oznámení pokaždé, když se zařízení připojí nebo odpojí ke službě IoT Hub. Event Grid můžete použít k získání včasného oznámení o odpojení důležitých zařízení. Metriky a diagnostika mohou trvat několik (tj. 20 nebo více), ale minuty se zobrazí v protokolech a výstrahách. To může být nepřijatelné pro kritickou infrastrukturu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Musíte mít aktivní předplatné Azure. Pokud předplatné nemáte, můžete si [vytvořit bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -29,11 +29,11 @@ Tento článek vás provede ukázkovou konfigurací, která používá IoT Hub a
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 Nové centrum IoT můžete rychle vytvořit pomocí Azure Cloud Shell terminálu na portálu.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 
 1. V pravém horním rohu stránky vyberte tlačítko Cloud Shell.
 

@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3950cc16cd8661ee4e509cf14d12f561cb29c4ea
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88236569"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940701"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -72,7 +72,7 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 
 ---
 
-## <a name="sql-managed-instance-new-features-and-known-issues"></a>Nové funkce a známé problémy spravované instance SQL
+## <a name="new-features"></a>Nové funkce
 
 ### <a name="sql-managed-instance-h2-2019-updates"></a>Aktualizace spravované instance SQL H2 2019
 
@@ -93,10 +93,11 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující
   - Nová Vestavěná [role přispěvatele instance](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) umožňuje oddělení povinností (SOD) dodržovat zásady zabezpečení a dodržování předpisů v podnikových normách.
   - Spravovaná instance SQL je k dispozici v následujících oblastech Azure Government v oblasti GA (US Gov – Texas, US Gov – Arizona) a také v Čína – sever 2 a Čína – východ 2. Je také k dispozici v následujících veřejných oblastech: Austrálie – střed, Austrálie – střed 2, Brazílie – jih, Francie – jih, Spojené arabské emiráty střed, Spojené arabské emiráty sever, Jižní Afrika sever, Jižní Afrika – západ.
 
-### <a name="known-issues"></a>Známé problémy
+## <a name="known-issues"></a>Známé problémy
 
 |Problém  |Datum zjištění  |Status  |Datum vyřešení  |
 |---------|---------|---------|---------|
+|[Bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) v Azure SQL a `BACKUP` / `RESTORE` příkazu ve spravované instanci se nemůžou pomocí Azure AD spravovat identitu pro ověřování ve službě Azure Storage.|SEP 2020|Má alternativní řešení||
 |[Instanční objekt nemá přístup k Azure AD a integrace](#service-principal-cannot-access-azure-ad-and-akv)|Srpna 2020|Má alternativní řešení||
 |[Obnovení ručního zálohování bez KONTROLNÍho SOUČTu může selhat](#restoring-manual-backup-without-checksum-might-fail)|Květen 2020|Vyřešeno|Červen 2020|
 |[Agent přestane reagovat při úpravách, zakázání nebo povolování stávajících úloh.](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Květen 2020|Vyřešeno|Červen 2020|
@@ -124,6 +125,21 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující
 |Obnovení databáze v čase z Pro důležité obchodní informace úrovně do Pro obecné účely úrovně nebude úspěšné, pokud zdrojová databáze obsahuje objekty OLTP v paměti.||Vyřešeno|Říjen 2019|
 |Funkce databázového e-mailu s externími poštovními servery (mimo Azure) pomocí zabezpečeného připojení||Vyřešeno|Říjen 2019|
 |Obsažené databáze nejsou ve spravované instanci SQL podporovány.||Vyřešeno|Srpna 2019|
+
+### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>Příkazy BULK INSERT a BACKUP/Restore nemůžou používat spravovanou identitu pro přístup k Azure Storage.
+
+Příkaz hromadného vložení se nedá použít `DATABASE SCOPED CREDENTIAL` se spravovanou identitou k ověření v Azure Storage. Jako alternativní řešení přepněte na ověřování pomocí SDÍLENÉHO PŘÍSTUPového podpisu. Následující příklad nebude fungovat v Azure SQL (databáze i spravovaná instance):
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Identity';
+GO
+CREATE EXTERNAL DATA SOURCE MyAzureBlobStorage
+  WITH ( TYPE = BLOB_STORAGE, LOCATION = 'https://****************.blob.core.windows.net/curriculum', CREDENTIAL= msi_cred );
+GO
+BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
+```
+
+**Alternativní řešení**: k [ověření úložiště použijte sdílený přístupový podpis](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage).
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Instanční objekt nemá přístup k Azure AD a integrace
 

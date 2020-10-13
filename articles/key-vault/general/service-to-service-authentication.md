@@ -9,17 +9,17 @@ ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 00799f7c5239bfd744268f7353e1bac6cb038294
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: fccd838b47cbb565ffdbe5250a91cd293238bf9b
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483333"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940442"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba-služba pro Azure Key Vault pomocí .NET
 
 > [!NOTE]
-> **Microsoft. Azure. Services. AppAuthentication** se už nedoporučuje používat s novou Key Vault SDK. Nahrazuje se novou knihovnou Azure identity **DefaultAzureCredentials** dostupnou pro .NET, Java, TypeScript a Python a měla by se používat pro všechny nové vývojové prostředí. Další informace najdete tady: [ověřování a Azure SDK](https://devblogs.microsoft.com/azure-sdk/authentication-and-the-azure-sdk/).
+> **Microsoft. Azure. Services. AppAuthentication** se už nedoporučuje používat s novou Key Vault SDK. Nahrazuje se novou **knihovnou klienta Azure identity** , která je dostupná pro .NET, Java, TypeScript a Python a měla by se používat pro všechny nové vývojové prostředí. Další informace najdete tady: [ověřování pro Key Vault v kódu](https://docs.microsoft.com/azure/key-vault/general/developers-guide#azure-identity-client-libraries).
 
 K ověření pro Azure Key Vault potřebujete přihlašovací údaje Azure Active Directory (Azure AD), buď sdílený tajný klíč, nebo certifikát.
 
@@ -170,7 +170,7 @@ Existují tři primární metody použití instančního objektu ke spuštění 
 
     Nahraďte hodnoty *{AppID}*, *{TenantId}* a *{kryptografický otisk}* hodnotami generovanými v kroku 1. Nahraďte *{CertificateStore}* buď *LocalMachine*, nebo *CurrentUser*, a to na základě vašeho plánu nasazení.
 
-1. Aplikaci spusťte.
+1. Spusťte aplikaci.
 
 ### <a name="use-a-shared-secret-credential-to-sign-into-azure-ad"></a>Přihlášení ke službě Azure AD pomocí sdíleného tajného pověření
 
@@ -188,7 +188,7 @@ Existují tři primární metody použití instančního objektu ke spuštění 
 
     Nahraďte hodnoty _{AppID}_, _{TenantId}_ a _{ClientSecret}_ hodnotami generovanými v kroku 1.
 
-1. Aplikaci spusťte.
+1. Spusťte aplikaci.
 
 Jakmile se všechno nastaví správně, nemusíte dělat žádné další změny kódu. `AzureServiceTokenProvider` používá k ověření ve službě Azure AD proměnnou prostředí a certifikát.
 
