@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187332"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>Použití integrace správy zdrojového kódu v Azure Automation – starší verze
@@ -115,7 +115,7 @@ Tlačítko synchronizovat na stránce synchronizace úložiště vám umožní n
 
     ![Tlačítko synchronizovat se zprávou potvrzující, že se všechny Runbooky budou synchronizovat](media/source-control-integration-legacy/automation-SyncButtonwithMessage.png)
 
-2. Synchronizace spustí Runbook **Sync-MicrosoftAzureAutomationAccountFromGitHubV1** , který se připojí k GitHubu a vyžádá změny z vašeho úložiště do Azure Automation. Na stránce synchronizace úložiště pro tuto akci by se měla zobrazit nová úloha. Chcete-li zobrazit podrobnosti o úloze synchronizace, kliknutím otevřete stránku s podrobnostmi o úloze.  
+2. Synchronizace spustí Runbook  **Sync-MicrosoftAzureAutomationAccountFromGitHubV1** , který se připojí k GitHubu a vyžádá změny z vašeho úložiště do Azure Automation. Na stránce synchronizace úložiště pro tuto akci by se měla zobrazit nová úloha. Chcete-li zobrazit podrobnosti o úloze synchronizace, kliknutím otevřete stránku s podrobnostmi o úloze.  
 
     ![Okno zobrazující výsledky synchronizace úlohy synchronizace v úložišti GitHub](media/source-control-integration-legacy/automation-SyncRunbook.png)
 

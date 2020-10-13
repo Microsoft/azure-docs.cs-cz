@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: dd911574cd37c18e3043cfc2482bd1fcd5f3857b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260844"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
@@ -27,15 +27,15 @@ Získejte plán chaos definující, kdy a jak se má spustit chaos.
 
 Získá verzi používaného plánu chaos a plán chaos, který definuje, kdy a jak se má spustit chaos.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -48,9 +48,9 @@ Nastavte plán používaný nástrojem chaos.
 
 Chaos automaticky naplánuje spuštění na základě plánu chaos. Plán chaos se aktualizuje, pokud zadaná verze odpovídá verzi na serveru. Při aktualizaci plánu chaos se verze na serveru zvyšuje o 1. Verze na serveru se po dosažení velkého množství zalomí zpět na 0. Pokud je chaos spuštěn při tomto volání, volání se nezdaří.
 
-### <a name="arguments"></a>Arguments
+### <a name="arguments"></a>Argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --chaos-Parameters-Dictionary | Seznam kódovaný v kódování JSON představující mapování názvů řetězců na ChaosParameters, které mají být použity úlohami. |
 | --Datum vypršení platnosti-UTC | Datum a čas, kdy se má zastavit plánování chaos pomocí plánu.  Výchozí hodnota \: 9999-12-31T23 \: 59 \: 59.999 z. |
@@ -61,7 +61,7 @@ Chaos automaticky naplánuje spuštění na základě plánu chaos. Plán chaos 
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Popis|
+|Argument|Description|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |

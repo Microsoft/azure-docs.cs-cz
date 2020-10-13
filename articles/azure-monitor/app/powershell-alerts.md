@@ -4,10 +4,10 @@ description: Automatizujte konfiguraci Application Insights, abyste získali e-m
 ms.topic: conceptual
 ms.date: 07/23/2016
 ms.openlocfilehash: 74d477b6660c0f7ec2ee32b34169bb85886936e5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322461"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Použití prostředí PowerShell k nastavení výstrahy v nástroji Application Insights
@@ -101,7 +101,7 @@ Add-AzMetricAlertRule -Name "poor sales" `
 Stejné pravidlo lze použít pro metriku nahlášenou pomocí [parametru měření](./api-custom-events-metrics.md#properties) jiného sledovacího volání, jako je například TrackEvent nebo trackPageView.
 
 ## <a name="metric-names"></a>Názvy metrik
-| Název metriky | Název obrazovky | Popis |
+| Název metriky | Název obrazovky | Description |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |Výjimky prohlížečů |Počet nezachycených výjimek vyvolaných v prohlížeči |
 | `basicExceptionServer.count` |Výjimky serveru |Počet neošetřených výjimek vyvolaných aplikací |
@@ -138,7 +138,7 @@ Metriky jsou odesílány různými moduly telemetrie:
 ## <a name="webhooks"></a>Webhooky
 [Odpověď na výstrahu můžete automatizovat](../platform/alerts-webhooks.md). Když se vygeneruje výstraha, Azure zavolá webovou adresu dle vašeho výběru.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 * [Skript pro konfiguraci Application Insights](./create-new-resource.md#creating-a-resource-automatically)
 * [Vytvoření prostředků Application Insights a webového testu ze šablon](powershell.md)
 * [Automatizace Diagnostika Microsoft Azure Application Insights](powershell-azure-diagnostics.md)

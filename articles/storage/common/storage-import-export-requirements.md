@@ -9,10 +9,10 @@ ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 7b7915e1b7779c4d0359b9ac190574c43a624cbe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87276393"
 ---
 # <a name="azure-importexport-system-requirements"></a>Požadavky na systém Azure Import/Export
@@ -59,7 +59,7 @@ Služba Azure import/export podporuje následující seznam typů úložišť.
 
 |Úloha  |Služba úložiště |Podporováno  |Nepodporováno  |
 |---------|---------|---------|---------|
-|Import     |  Azure Blob Storage <br><br> Azure File Storage       | Podporované objekty blob bloku a objekty blob stránky <br><br> Podporované soubory          |
+|Importovat     |  Azure Blob Storage <br><br> Azure File Storage       | Podporované objekty blob bloku a objekty blob stránky <br><br> Podporované soubory          |
 |Export     |   Azure Blob Storage       | Podporované objekty blob bloku, objekty blob stránky a doplňovací objekty blob         | Soubory Azure nejsou podporované
 
 

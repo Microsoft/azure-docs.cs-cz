@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/22/2020
 ms.openlocfilehash: 6b76b5bc6158786c7f60e762590d41b7cb243c40
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934859"
 ---
 # <a name="manage-an-azure-database-for-postgresql-single-server-using-the-azure-cli"></a>Správa samostatného serveru s Azure Database for PostgreSQL pomocí rozhraní příkazového řádku Azure
@@ -49,7 +49,7 @@ Zde jsou uvedeny podrobnosti o argumentech výše:
 
 **Nastavení** | **Ukázková hodnota** | **Popis**
 ---|---|---
-jméno | mydemoserver | Zadejte jedinečný název serveru Azure Database for PostgreSQL. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat ze 3 až 63 znaků.
+name | mydemoserver | Zadejte jedinečný název serveru Azure Database for PostgreSQL. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat ze 3 až 63 znaků.
 resource-group | myresourcegroup | Zadejte název skupiny prostředků Azure.
 sku-name|GP_Gen5_2|Zadejte název cenové úrovně a konfiguraci výpočtů. Postupuje podle konvence {cenové úrovně}_{COMPUTE_} {virtuální jádra} ve zkráceném znění. Další informace najdete v [cenové úrovni](./concepts-pricing-tiers.md) .
 velikost úložiště | 6144 | Kapacita úložiště serveru (jednotkou jsou megabajty). Minimální 5120 a zvyšuje se v 1024 přírůstcích.

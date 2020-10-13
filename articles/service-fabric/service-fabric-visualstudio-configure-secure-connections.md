@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 8/04/2017
 ms.author: cawa
 ms.openlocfilehash: d4d6b781d97d481793e69cf2ca97cca5b93ce432
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86256089"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Konfigurace zabezpečených připojení k Service Fabricmu clusteru ze sady Visual Studio
@@ -31,13 +31,13 @@ Dialogové okno **publikovat Service Fabric aplikaci** automaticky ověří při
 
 ### <a name="to-connect-to-a-secure-cluster"></a>Připojení k zabezpečenému clusteru
 1. Ujistěte se, že máte přístup k jednomu z klientských certifikátů, které cílový cluster důvěřuje. Certifikát je obvykle sdílen jako soubor. pfx (Personal Information Exchange). Informace o tom, jak nakonfigurovat server tak, aby udělil přístup klientovi, najdete v tématu [Nastavení clusteru Service Fabric z Azure Portal](service-fabric-cluster-creation-via-portal.md) .
-2. Nainstalujte důvěryhodný certifikát. Pokud to chcete provést, poklikejte na soubor. pfx nebo pomocí skriptu PowerShellu import-vybíráte importujte certifikáty. Nainstalujte certifikát do **certifikátu: \ úložišti LocalMachine\MY**. Pro přijetí všech výchozích nastavení je v pořádku při importu certifikátu.
+2. Nainstalujte důvěryhodný certifikát. Provedete to tak, že dvakrát kliknete na soubor. pfx nebo pomocí skriptu PowerShellu Import-PfxCertificate naimportujete certifikáty. Nainstalujte certifikát do **certifikátu: \ úložišti LocalMachine\MY**. Pro přijetí všech výchozích nastavení je v pořádku při importu certifikátu.
 3. Zvolte příkaz **publikovat...** v místní nabídce projektu pro otevření dialogového okna **publikovat aplikaci Azure** a pak vyberte cílový cluster. Nástroj automaticky vyřeší připojení a uloží parametry zabezpečeného připojení v profilu publikování.
 4. Volitelné: profil publikování můžete upravit a zadat zabezpečené připojení k clusteru.
    
    Vzhledem k tomu, že ručně upravujete soubor XML profilu publikování, abyste určili informace o certifikátu, nezapomeňte si poznamenat název úložiště certifikátů, umístění úložiště a kryptografický otisk certifikátu. Tyto hodnoty budete muset zadat pro název úložiště certifikátu a umístění úložiště. Další informace naleznete v tématu [How to: Načtení kryptografického otisku certifikátu](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) .
    
-   Pomocí parametrů *ClusterConnectionParameters* můžete zadat parametry PowerShellu, které se použijí při připojování ke clusteru Service Fabric. Platné parametry jsou všechny, které jsou přijímány pomocí rutiny Connect-ServiceFabricCluster. Seznam dostupných parametrů najdete v tématu [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
+   Pomocí parametrů *ClusterConnectionParameters* můžete zadat parametry PowerShellu, které se použijí při připojování ke clusteru Service Fabric. Platné parametry jsou všechny, které jsou přijímány rutinou Connect-ServiceFabricCluster. Seznam dostupných parametrů najdete v tématu [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
    
    Pokud publikujete do vzdáleného clusteru, je nutné zadat příslušné parametry pro konkrétní cluster. Následuje příklad připojení k nezabezpečenému clusteru:
    

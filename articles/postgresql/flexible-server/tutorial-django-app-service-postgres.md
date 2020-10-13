@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 3366f39f3aca8ad0114244c122d1003b5e9b91a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90946509"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>Kurz: nasazení aplikace v Django s využitím App Service a Azure Database for PostgreSQLm flexibilním serverem (Preview)
@@ -270,11 +270,11 @@ Přejděte na *http: \/ / \<app-name> . azurewebsites.NET* a otestujte aplikaci 
 
 V [Azure Portal](https://portal.azure.com)vyhledejte název aplikace a ve výsledcích vyberte aplikaci.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="V Azure Portal přejděte do vaší aplikace Python Django":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Příklad výstupu vývojového serveru Django":::
 
 Ve výchozím nastavení na portálu se zobrazí stránka **Přehled** vaší aplikace, která poskytuje obecné zobrazení výkonu. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Správa aplikace Python Django na stránce Přehled v Azure Portal":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Příklad výstupu vývojového serveru Django":::
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

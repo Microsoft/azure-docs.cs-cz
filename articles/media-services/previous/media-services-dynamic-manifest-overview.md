@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 2d83b114487f882b7ee38d3d71c84b6abec04a2b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266914"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtry a dynamické manifesty
@@ -77,14 +77,14 @@ Tady je příklad souboru manifestu:
 ```
 
 ### <a name="dynamic-manifests"></a>Dynamické manifesty
-V případě, že váš klient potřebuje větší flexibilitu než to, co je popsáno v souboru manifestu výchozího prostředku, existují [scénáře](media-services-dynamic-manifest-overview.md#scenarios) . Příklad:
+V případě, že váš klient potřebuje větší flexibilitu než to, co je popsáno v souboru manifestu výchozího prostředku, existují [scénáře](media-services-dynamic-manifest-overview.md#scenarios) . Například:
 
 * Specifické pro zařízení: doručovat pouze zadané verze a/nebo zadané stopy jazyka podporované zařízením, které se používá k přehrání obsahu ("filtrování verzí"). 
 * Snižte manifest pro zobrazení dílčího klipu živé události ("filtrování dílčích klipů").
 * Ořízne začátek videa ("ořezávání videa").
 * Upravte okno prezentace (DVR), aby se v přehrávači zajistila omezená délka okna DVR ("Úprava okna prezentace").
 
-Pro dosažení této flexibility Media Services nabízí **dynamické manifesty** založené na předem definovaných [filtrech](media-services-dynamic-manifest-overview.md#filters).  Po definování filtrů je můžou klienti používat ke streamování konkrétní verze nebo dílčích klipů vašeho videa. Budou určovat filtry v adrese URL streamování. Filtry mohou být aplikovány na protokoly streamování s adaptivní přenosovou rychlostí podporovanou [dynamickým balením](media-services-dynamic-packaging-overview.md): HLS, MPEG-spojovník a Smooth Streaming. Příklad:
+Pro dosažení této flexibility Media Services nabízí **dynamické manifesty** založené na předem definovaných [filtrech](media-services-dynamic-manifest-overview.md#filters).  Po definování filtrů je můžou klienti používat ke streamování konkrétní verze nebo dílčích klipů vašeho videa. Budou určovat filtry v adrese URL streamování. Filtry mohou být aplikovány na protokoly streamování s adaptivní přenosovou rychlostí podporovanou [dynamickým balením](media-services-dynamic-packaging-overview.md): HLS, MPEG-spojovník a Smooth Streaming. Například:
 
 Adresa URL POMLČKy MPEG s filtrem
 
@@ -110,7 +110,7 @@ Existují dva typy filtrů assetů:
 
 Typy globálních a místních filtrů mají stejné vlastnosti. Hlavní rozdíl mezi těmito dvěma hodnotami je, pro které scénáře, jaký typ souborového je vhodnější. Globální filtry jsou obvykle vhodné pro profily zařízení (filtrování verzí), kde se k oříznutí konkrétního prostředku dají použít místní filtry.
 
-## <a name="common-scenarios"></a><a id="scenarios"></a>Obvyklé scénáře
+## <a name="common-scenarios"></a><a id="scenarios"></a>Typické scénáře
 Jak bylo zmíněno dříve, při doručování obsahu zákazníkům (streamování živých událostí nebo videa na vyžádání) je vaším cílem doručovat vysoce kvalitní video do různých zařízení v různých síťových podmínkách. Kromě toho mohou být k dispozici další požadavky, které zahrnují filtrování prostředků a používání **dynamického manifestu**s. Následující části poskytují stručný přehled různých scénářů filtrování.
 
 * Zadejte jenom podmnožinu zvukových a video verzí, které některá zařízení můžou zpracovat (místo všech verzí, které jsou k assetu přidružené). 

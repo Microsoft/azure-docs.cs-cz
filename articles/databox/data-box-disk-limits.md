@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
 ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86203523"
 ---
 # <a name="azure-data-box-disk-limits"></a>Omezení Azure Data Box Disk
@@ -75,7 +75,7 @@ Tady jsou velikosti objektů Azure, které se dají zapsat. Zajistěte, aby vše
 |-------------------|-----------------------------------------------------------|
 | Objekt blob bloku        | ~ 4,75 TiB                                                 |
 | Objekt blob stránky         | 8 TiB <br> (Každý soubor nahraný ve formátu objektu blob stránky musí být 512 bajtů, jinak se nahrávání nepovede. <br> VHD i VHDX jsou zarovnaný 512 bajtů.) |
-|Azure Files        | 1 TiB <br> Max. Velikost sdílené složky je 5 TiB.     |
+|Soubory Azure        | 1 TiB <br> Max. Velikost sdílené složky je 5 TiB.     |
 | Spravované disky     |4 TiB <br> Další informace o velikosti a omezeních najdete v těchto tématech: <li>[Cíle škálovatelnosti pro spravované disky](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 
@@ -84,7 +84,7 @@ Tady jsou velikosti objektů Azure, které se dají zapsat. Zajistěte, aby vše
 | Entita                                       | Konvence                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Názvy kontejnerů pro objekt blob bloku a objekt blob stránky <br> Názvy sdílených složek pro soubory Azure | Musí se jednat o platný název DNS, který má délku 3 až 63 znaků. <br>  Musí začínat písmenem nebo číslicí. <br> Může obsahovat jenom malá písmena, číslice a spojovník (-). <br> Každé pomlčce (-) musí bezprostředně předcházet číslice (0–9) nebo malé písmeno (a–z) a také po ní musí následovat. <br> Názvy nesmí obsahovat po sobě jdoucí pomlčky. |
-| Názvy adresářů a souborů pro soubory Azure     |<li> Bez rozlišování velkých a malých písmen a nesmí překročit 255 znaků. </li><li> Nemůže končit lomítkem (/). </li><li>Pokud je tato akce k dispozici, bude automaticky odebrána. </li><li> Nejsou povoleny následující znaky:<code>" \\ / : \| < > * ?</code></li><li> Vyhrazené znaky v adresách URL musí být správně uzavřené do uvozovek. </li><li> Neplatné znaky cesty URL nejsou povoleny. Kódové body, jako \\ je uE000, nejsou platné znaky Unicode. Některé znaky ASCII nebo Unicode, například řídicí znaky (0x00 až 0x1F, \\ u0081 atd.), nejsou také povoleny. Pravidla upravující řetězce Unicode v HTTP/1.1 najdete v dokumentu RFC 2616, oddíl 2,2: základní pravidla a RFC 3987. </li><li> Následující názvy souborů nejsou povoleny: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, tečka (.) a dva tečky (..).</li>|
+| Názvy adresářů a souborů pro soubory Azure     |<li> Bez rozlišování velkých a malých písmen a nesmí překročit 255 znaků. </li><li> Nemůže končit lomítkem (/). </li><li>Pokud je tato akce k dispozici, bude automaticky odebrána. </li><li> Nejsou povoleny následující znaky: <code>" \\ / : \| < > * ?</code></li><li> Vyhrazené znaky v adresách URL musí být správně uzavřené do uvozovek. </li><li> Neplatné znaky cesty URL nejsou povoleny. Kódové body, jako \\ je uE000, nejsou platné znaky Unicode. Některé znaky ASCII nebo Unicode, například řídicí znaky (0x00 až 0x1F, \\ u0081 atd.), nejsou také povoleny. Pravidla upravující řetězce Unicode v HTTP/1.1 najdete v dokumentu RFC 2616, oddíl 2,2: základní pravidla a RFC 3987. </li><li> Následující názvy souborů nejsou povoleny: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, tečka (.) a dva tečky (..).</li>|
 | Názvy objektů blob bloku a objektů blob stránky      | Názvy objektů blob rozlišují velká a malá písmena a smí obsahovat libovolnou kombinaci znaků. <br> Název objektu blob musí mít délku 1 až 1024 znaků. <br> Vyhrazené znaky v adresách URL musí být správně uzavřené do uvozovek. <br>Počet segmentů cesty, ze kterých se název objektu blob skládá, nesmí překročit 254. Segment cesty je řetězec mezi po sobě jdoucími znaky oddělovače (třeba lomítko „/“), který odpovídá názvu virtuálního adresáře. |
 
 ## <a name="managed-disk-naming-conventions"></a>Zásady vytváření názvů spravovaných disků

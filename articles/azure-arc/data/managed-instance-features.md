@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 810a08d2f72359b385d2a7567b796aa222c6ab14
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936793"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Funkce a možnosti spravované instance SQL ARC Azure
@@ -33,7 +33,7 @@ Spravovaná instance SQL ARC s podporou Azure sdílí společný základ kódu s
 
 ###  <a name="rdbms-high-availability"></a><a name="RDBMSHA"></a> RDBMS vysoká dostupnost  
   
-|Příznak|Spravovaná instance SQL s podporou ARC Azure|
+|Příznak|SQL Managed Instance s podporou služby Azure Arc|
 |-------------|----------------|
 |Přesouvání protokolu|Yes| 
 |Komprese záloh|Yes|
@@ -59,7 +59,7 @@ Spravovaná instance SQL ARC s podporou Azure sdílí společný základ kódu s
 
 ###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS škálovatelnost a výkon  
 
-|Příznak|Spravovaná instance SQL s podporou ARC Azure|
+|Příznak|SQL Managed Instance s podporou služby Azure Arc|
 |-------------|----------------|
 |Clusterovaného|   Yes|
 |Binární soubory velkých objektů v clusterovaných indexech columnstore|    Yes|
@@ -80,7 +80,7 @@ Spravovaná instance SQL ARC s podporou Azure sdílí společný základ kódu s
 |Vylepšení hromadného vkládání   |Yes|
 
 ###  <a name="rdbms-security"></a><a name="RDBMSS"></a> Zabezpečení RDBMS  
-|Příznak|Spravovaná instance SQL s podporou ARC Azure|
+|Příznak|SQL Managed Instance s podporou služby Azure Arc|
 |-------------|----------------|
 |Zabezpečení na úrovni řádků|    Yes|
 |Funkce Always Encrypted|  Yes|
@@ -95,7 +95,7 @@ Spravovaná instance SQL ARC s podporou Azure sdílí společný základ kódu s
 
 ###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> Správa RDBMS  
 
-|Příznak|Spravovaná instance SQL s podporou ARC Azure|
+|Příznak|SQL Managed Instance s podporou služby Azure Arc|
 |-------------|----------------|
 |Vyhrazené připojení správce|    Yes|
 |Podpora skriptování prostředí PowerShell|  Yes|
@@ -114,7 +114,7 @@ Spravovaná instance SQL ARC s podporou Azure sdílí společný základ kódu s
 
 ### <a name="programmability"></a><a name="Programmability"></a> Programovatelnosti  
 
-|Příznak|Spravovaná instance SQL s podporou ARC Azure|
+|Příznak|SQL Managed Instance s podporou služby Azure Arc|
 |-------------|----------------|
 |JSON|  Yes |       |
 |Úložiště dotazů    |Yes    |       
@@ -137,7 +137,7 @@ Spravovaná instance SQL ARC s podporou Azure sdílí společný základ kódu s
 
 Spravovaná instance SQL s podporou ARC Azure podporuje různé datové nástroje, které vám můžou pomoci při správě vašich dat.
 
-| **Nástroj** | Spravovaná instance SQL s podporou ARC Azure|
+| **Nástroj** | SQL Managed Instance s podporou služby Azure Arc|
 | --- | --- | --- |
 | Azure Portal <sup>1</sup> | No |
 | Azure CLI | No |

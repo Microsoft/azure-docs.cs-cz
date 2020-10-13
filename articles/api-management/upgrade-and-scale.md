@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 93c686fb2688a7a8ae71d8156e6e5c7915d6c604
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86205770"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Upgrade a škálování instance služby Azure API Management  
@@ -33,7 +33,7 @@ Cena každé jednotky a dostupné funkce (například nasazení ve více oblaste
 
 Pokud chcete postupovat podle kroků v tomto článku, musíte:
 
-+ Máte aktivní předplatné Azure.
++ Musíte mít aktivní předplatné Azure.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,7 +45,7 @@ Pokud chcete postupovat podle kroků v tomto článku, musíte:
 
 ## <a name="upgrade-and-scale"></a>Upgrade a škálování  
 
-Můžete si vybrat ze čtyř vrstev: **Developer**, **Basic**, **Standard**a **Premium**. K vyhodnocení služby by se měla použít vrstva pro **vývojáře** . neměl by se používat pro produkční prostředí. Úroveň pro **vývojáře** nemá smlouvu SLA a nelze škálovat tuto úroveň (přidat/odebrat jednotky). 
+Můžete si vybrat ze čtyř vrstev: **Developer**, **Basic**,  **Standard**a **Premium**. K vyhodnocení služby by se měla použít vrstva pro **vývojáře** . neměl by se používat pro produkční prostředí. Úroveň pro **vývojáře** nemá smlouvu SLA a nelze škálovat tuto úroveň (přidat/odebrat jednotky). 
 
 **Basic**, **Standard**a **Premium** jsou produkční úrovně, které mají smlouvu SLA a dají se škálovat. Úroveň **Basic** je úroveň nejlevnější s smlouvou SLA a je možné ji škálovat až na dvě jednotky. úroveň **Standard** se dá škálovat až na čtyři jednotky. Do úrovně **Premium** můžete přidat libovolný počet jednotek.
 
