@@ -15,17 +15,17 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
 ms.openlocfilehash: bed1375631c017d23ed53b6102c424533237099e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91447566"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Delegování podsítě do Azure NetApp Files 
 
 Je nutné delegovat podsíť na Azure NetApp Files.   Při vytváření svazku je nutné zadat delegovanou podsíť.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 * Průvodce pro vytvoření nové podsítě je ve výchozím nastavení maska sítě/24, která poskytuje 251 dostupných IP adres. Použití masky sítě/28, která poskytuje pro 11 použitelné IP adresy, je pro službu dostačující.
 * V každé službě Azure Virtual Network (VNet) je možné delegovat Azure NetApp Files jenom jednu podsíť.   

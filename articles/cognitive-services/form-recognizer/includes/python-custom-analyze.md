@@ -5,18 +5,18 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 88be632e17912012618ab559f22f97487ad26c9c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 262774233871a46cf971d95a6cf5d810adf9746a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88723485"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961781"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Analýza formulářů pro páry klíč-hodnota a tabulky
 
 V dalším kroku použijete svůj nově vyškolený model k analýze dokumentu a extrakci párů klíč-hodnota a tabulek z něj. Volejte rozhraní API pro **[analýzu formuláře](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** spuštěním následujícího kódu v novém skriptu Pythonu. Před spuštěním skriptu proveďte tyto změny:
 
-1. Nahraďte `<file path>` cestou k souboru vašeho formuláře (například C:\temp\file.pdf). Může to být také adresa URL vzdáleného souboru. Pro účely tohoto rychlého startu můžete použít soubory ve složce **test** sady [ukázkových dat](https://go.microsoft.com/fwlink/?linkid=2090451).
+1. Nahraďte `<file path>` cestou k souboru vašeho formuláře (například C:\temp\file.pdf). Může to být také adresa URL vzdáleného souboru. Pro účely tohoto rychlého startu můžete použít soubory ve složce **test** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakce *sample_data.zip*).
 1. Nahraďte `<model_id>` ID modelu, které jste obdrželi v předchozí části.
 1. Nahraďte `<endpoint>` koncovým bodem, který jste získali pomocí klíče předplatného pro rozpoznávání formulářů. Můžete ji najít na kartě **Přehled** prostředků nástroje pro rozpoznávání formulářů.
 1. Nahraďte `<file type>` typem souboru. Podporované typy: `application/pdf` , `image/jpeg` , `image/png` , `image/tiff` .

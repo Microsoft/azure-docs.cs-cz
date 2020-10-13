@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: ef907aea940a4f01475cebf72528b9bcdde50f4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbf8c1987a66cad6d9d9bc9dab829af4b42a224e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180231"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971553"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Řešení potíží s virtuálními počítači v Azure pomocí diagnostiky spouštění
 
@@ -52,7 +52,7 @@ Na kartě **Správa** v části **monitorování** se ujistěte, že je zapnutá
 ![Vytvoření virtuálního počítače](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
 > [!NOTE]
-> Funkce diagnostiky spouštění nepodporuje účet Premium Storage. Pokud pro diagnostiku spouštění použijete účet Premium Storage, může se při spuštění virtuálního počítače zobrazit chyba StorageAccountTypeNotSupported.
+> Funkce diagnostiky spouštění nepodporuje typy účtů úložiště úrovně Premium nebo redundent zóny. Pokud pro diagnostiku spouštění použijete účet Premium Storage, může se při spuštění virtuálního počítače zobrazit chyba StorageAccountTypeNotSupported.
 >
 
 ### <a name="deploying-from-an-azure-resource-manager-template"></a>Nasazení ze šablony Azure Resource Manager

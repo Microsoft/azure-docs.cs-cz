@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: a1e77b5f669d1b492f2d71063a6c77bec1178696
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: d533b8fed47b1790cc35429613179f440f1fac51
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449273"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961744"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Monitorování metrik a protokolů v frontách Azure na předních dveřích
 
@@ -34,7 +34,7 @@ Metriky jsou funkce pro určité prostředky Azure, které umožňují zobrazit 
 | RequestCount | Počet požadavků | Počet | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet požadavků klientů poskytovaných předními dveřmi.  |
 | RequestSize | Velikost požadavku | Bajty | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet bajtů odeslaných jako požadavek od klientů do předních dveří. |
 | ResponseSize | Velikost odpovědi | Bajty | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet bajtů odeslaných jako odpověď z front-dveří klientům. |
-| TotalLatency | Celková latence | Milisekund | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Čas vypočítaný z požadavku klienta obdrženého předními dvířky, dokud klient nepotvrdí poslední bajt odpovědi z předních dveří. |
+| TotalLatency | Celková latence | Milisekund | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Celková doba od žádosti klienta přijatá předními dveřmi, dokud poslední bajt odpovědi odeslaný z AFD na klienta. |
 | BackendRequestCount | Počet požadavků back-endu | Počet | Stavu protokolu http</br>HttpStatusGroup</br>Back-end | Počet požadavků odeslaných z předních dveří do back-endu. |
 | BackendRequestLatency | Latence žádosti back-endu | Milisekund | Back-end | Čas vypočítaný z doby, kdy byla žádost odeslána přes dvířka do back-endu, dokud přední dveře nedostaly poslední bajt odezvy z back-endu. |
 | BackendHealthPercentage | Procento stavu back-endu | Procento | Back-end</br>Problémových | Procento úspěšných sond stavu z předních dveří do back-endu. |
@@ -75,7 +75,7 @@ Přední dveře aktuálně poskytují protokoly diagnostiky (v dávce po hodiná
 
 | Vlastnost  | Popis |
 | ------------- | ------------- |
-| BackendHostname | Pokud byl požadavek předán do back-endu, toto pole představuje název hostitele back-endu. Pokud je žádost přesměrována nebo předána do místní mezipaměti (Pokud je pro pravidlo směrování povoleno ukládání do mezipaměti), bude toto pole prázdné. |
+| BackendHostname | Pokud byl požadavek předán do back-endu, toto pole představuje název hostitele back-endu. Pokud se požadavek přesměruje nebo přesměruje do místní mezipaměti (Pokud je u pravidla směrování povolený ukládání do mezipaměti), bude toto pole prázdné. |
 | CacheStatus | V případě scénářů pro ukládání do mezipaměti toto pole definuje počet přístupů do mezipaměti nebo neúspěšný přístup na adresu POP. |
 | ClientIp | IP adresa klienta, který odeslal požadavek. Pokud v žádosti existovala hlavička X předaná-pro, pak je IP adresa klienta převzata ze stejné. |
 | ClientPort | Port IP klienta, který odeslal požadavek. |
@@ -90,19 +90,49 @@ Přední dveře aktuálně poskytují protokoly diagnostiky (v dávce po hodiná
 | RoutingRuleName | Název pravidla směrování, na které se požadavek shodoval. |
 | RulesEngineMatchNames | Názvy pravidel, která požadavek odpovídá. |
 | Tato SecurityProtocol | Verze protokolu TLS/SSL používaná požadavkem nebo hodnotou null, pokud není šifrování. |
-| SentToOriginShield | Logické pole představující, zda v prvním prostředí chyběla mezipaměť a žádost byla odeslána do místní mezipaměti. Ignorujte toto pole, pokud je pravidlo směrování přesměrování nebo když nemá povoleno ukládání do mezipaměti. |
+| SentToOriginShield </br> (nepoužívané) * v **následující části najdete poznámky k** vyřazení.| Pokud má hodnotu true, znamená to, že žádost byla zodpovězena z počáteční mezipaměti ochrany před hraničním rozhraním pop. Počáteční ochrana je nadřazená mezipaměť, která se používá ke zvýšení poměru přístupů do mezipaměti. |
+| isReceivedFromClient | Pokud má hodnotu true, znamená to, že požadavek pochází z klienta. Pokud je hodnota false, je požadavek na hranu (podřízený bod POP) neúspěšný a reaguje na počátek ochrany (nadřazený bod POP). 
 | TimeTaken | Doba od prvního bajtu žádosti do posledního bajtu odpovědi v sekundách. |
 | TrackingReference | Jedinečný referenční řetězec, který identifikuje požadavek, který je obsluhován předními dvířky, je také odeslán jako hlavička X-Azure-ref na klienta. Vyžaduje se pro hledání podrobností v protokolech přístupu pro konkrétní požadavek. |
 | UserAgent | Typ prohlížeče, který klient použil. |
 
-**Poznámka:** U různých konfigurací směrování a chování provozu můžou některá pole jako backendHostname, cacheStatus, sentToOriginShield a POP reagovat pomocí různých hodnot. Následující tabulka vysvětluje různé hodnoty, tato pole budou mít různé scénáře:
+### <a name="sent-to-origin-shield-deprecation"></a>Bylo odesláno do původního základu ochrany.
+Nezpracovaná vlastnost protokolu **isSentToOriginShield** byla zastaralá a nahrazena novým polem **isReceivedFromClient**. Pokud už používáte zastaralé pole, použijte nové pole. 
 
-| Scénáře | Počet položek protokolu | POP | BackendHostname | SentToOriginShield | CacheStatus |
+Nezpracované protokoly obsahují protokoly vygenerované z hraniční sítě CDN (podřízeného bodu POP) i z počátečního štítku. Počátek štítku odkazuje na nadřazené uzly, které jsou strategicky umístěné na celém světě. Tyto uzly komunikují se zdrojovými servery a omezují zatížení provozu na počátku. 
+
+Pro každý požadavek, který směřuje ke zdroji štítku, existují 2 – položky protokolu:
+
+* Jeden pro hraniční uzly
+* Jednu pro zdroj štítku. 
+
+Chcete-li odlišit výstupy nebo odpovědi z hraničních uzlů vs. od počátku, můžete k získání správných dat použít pole **isReceivedFromClient** . 
+
+Pokud je hodnota false, znamená to, že požadavek reaguje od počátku ochrany do hraničních uzlů. Tento přístup je platný pro porovnání nezpracovaných protokolů s fakturačními daty. Neúčtují se poplatky za výstup od počátku ochrany od počátku do hraničních uzlů. Poplatky za výstup z hraničních uzlů do klientů se účtují. 
+
+**Ukázka dotazu Kusto pro vyloučení protokolů vygenerovaných z počátečního štítku v Log Analytics.**
+
+`AzureDiagnostics 
+| where Category == "FrontdoorAccessLog" and isReceivedFromClient_b == true`
+
+> [!NOTE]
+> U různých konfigurací směrování a chování provozu můžou některá pole jako backendHostname, cacheStatus, isReceivedFromClient a POP reagovat pomocí různých hodnot. Následující tabulka vysvětluje různé hodnoty, které tato pole budou mít pro různé scénáře:
+
+| Scénáře | Počet položek protokolu | POP | BackendHostname | isReceivedFromClient | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Pravidlo směrování bez povoleného ukládání do mezipaměti | 1 | Hraniční kód POP | Back-end, kde byl požadavek předán | Nepravda | CONFIG_NOCACHE |
-| Pravidlo směrování s povoleným ukládáním do mezipaměti. Přístup do mezipaměti na hraničním okně Edge | 1 | Hraniční kód POP | Obsahovat | Nepravda | KLEPNUTÍ |
-| Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na hraničním zařízení POP, ale přístupy do mezipaměti v nadřazené mezipaměti | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. prázdné | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. PARTIAL_HIT |
-| Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na úrovni POP hraničních i nadřazených cache | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. back-end, který pomáhá naplnit mezipaměť | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. NEÚSPĚŠNÉ |
+| Pravidlo směrování bez povoleného ukládání do mezipaměti | 1 | Hraniční kód POP | Back-end, kde byl požadavek předán | Ano | CONFIG_NOCACHE |
+| Pravidlo směrování s povoleným ukládáním do mezipaměti. Přístup do mezipaměti na hraničním okně Edge | 1 | Hraniční kód POP | Obsahovat | Ano | KLEPNUTÍ |
+| Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na hraničním zařízení POP, ale přístupy do mezipaměti v nadřazené mezipaměti | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. prázdné | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. PŘÍSTUPŮ |
+| Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na hraničním bodu POP, ale částečné přístupy do mezipaměti v nadřazené mezipaměti | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. back-end, který pomáhá naplnit mezipaměť | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. PARTIAL_HIT |
+| Pravidlo směrování s povoleným ukládáním do mezipaměti. Ukládat PARTIAL_HIT mezipaměti na hraničním bodu POP, ale v mezipaměti se nachází v nadřazené mezipaměti | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. true</br>2. false | 1. PARTIAL_HIT</br>2. PŘÍSTUPŮ |
+| Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na úrovni odebrány na hraničních i nadřazených paměťech | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. NEÚSPĚŠNÉ |
+
+> [!NOTE]
+> V případě scénářů pro ukládání do mezipaměti bude hodnota pro stav mezipaměti partial_hit, když se některé bajty pro požadavek dostanou z hraničního zařízení na okraji předních dveří nebo z mezipaměti ochrany počáteční paměti, zatímco některé z bajtů se dodávají od počátku pro velké objekty.
+
+Přední dvířka používají techniku nazvanou bloků objektů. Když je požadován velký soubor, načte přední dvířka menší části souboru od počátku. Poté, co server POP pro front-in obdrží plný nebo v bajtech požadovaný soubor, požádá server Edge z domu na soubor od počátku v blocích po 8 MB.
+
+Po obdržení bloku dat na přední straně dveře je tato část ukládána do mezipaměti a okamžitě se jí dodrží uživateli. Přední dveře potom předem načítají další blok dat paralelně. Tento předběžný postup zajistí, že obsah zůstane jeden blok před uživatelem, což snižuje latenci. Tento proces pokračuje, dokud se celý soubor nestáhne (Pokud je to požadováno), jsou dostupné všechny rozsahy bajtů (Pokud se požaduje), nebo klient připojení ukončí. Další informace o požadavku na rozsah bajtů najdete v dokumentu RFC 7233. Přední dveře ukládá do mezipaměti všechny bloky, jak jsou přijaty. Celý soubor není nutné ukládat do mezipaměti v mezipaměti front-dveří. Požadavky na rozsah souborů nebo bajtů jsou obsluhovány z mezipaměti front-dveří. Pokud se všechny bloky dat v mezipaměti neukládají do mezipaměti, použije se k vypsání bloků od počátku předběžné načtení. Tato optimalizace spoléhá na to, jestli má zdrojový server podporovat požadavky na rozsah bajtů. Pokud zdrojový server nepodporuje požadavky na rozsah bajtů, tato optimalizace se neprojeví.
 
 ## <a name="next-steps"></a>Další kroky
 

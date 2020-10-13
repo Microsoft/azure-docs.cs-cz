@@ -4,12 +4,12 @@ description: Sledování výkonu aplikací pro Azure App Services. Zatížení g
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 36f6ad4c248b3de54de5de0893410e9b13df0c26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e326f9764147b882a5009c53b9f13a3c3bd0bfc1
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91759454"
+ms.locfileid: "91875599"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
@@ -75,7 +75,7 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-Podporovány jsou následující verze rozhraní .NET Core: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0
+Podporovány jsou následující verze rozhraní .NET Core: ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0, ASP.NET Core 3,1
 
 Použití cílení na úplné rozhraní z rozhraní .NET Core, samostatného nasazení a aplikací založených na systému Linux není v současné době **podporováno** monitorováním na základě agentů nebo rozšíření. ([Ruční instrumentace](./asp-net-core.md) přes kód bude fungovat ve všech předchozích scénářích.)
 
@@ -90,7 +90,7 @@ Použití cílení na úplné rozhraní z rozhraní .NET Core, samostatného nas
 
      ![Používejte webovou aplikaci.](./media/azure-web-apps/create-resource-01.png)
 
-2. Jakmile určíte, který prostředek se má použít, můžete zvolit způsob, jakým má Application Insights shromažďovat data na platformu pro vaši aplikaci. .NET Core nabízí **doporučenou kolekci** nebo **zakázanou** pro .net Core 2,0, 2,1, 2,2 a 3,0.
+2. Jakmile určíte, který prostředek se má použít, můžete zvolit způsob, jakým má Application Insights shromažďovat data na platformu pro vaši aplikaci. .NET Core nabízí **doporučenou kolekci** nebo **zakázanou** pro ASP.NET Core 2,1, 2,2, 3,0 a 3,1.
 
     ![Zvolit možnosti na platformu](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -359,8 +359,8 @@ Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorov�
 
     ![Snímek https://yoursitename.scm.azurewebsites/applicationinsights stránky výsledků](./media/azure-web-apps/app-insights-sdk-status.png)
 
-    * Potvrďte, že `Application Insights Extension Status` je `Pre-Installed Site Extension, version 2.8.12.1527, is running.`
-        * Pokud není spuštěný, postupujte podle [pokynů pro monitorování povolení Application Insights](#enable-application-insights) .
+    * Potvrďte, že `Application Insights Extension Status` je `Pre-Installed Site Extension, version 2.8.12.1527, is running.` 
+    * Pokud není spuštěný, postupujte podle [pokynů pro monitorování povolení Application Insights](#enable-application-insights) .
 
     * Potvrďte, že zdroj stavu existuje a vypadá takto: `Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
         * Pokud není k dispozici podobná hodnota, znamená to, že aplikace momentálně není spuštěná nebo není podporovaná. Chcete-li zajistit, aby aplikace běžela, zkuste ručně navštívit koncové body adresy URL nebo aplikace, čímž umožníte zpřístupnění běhových informací.
@@ -406,6 +406,10 @@ Weby PHP a WordPress nejsou podporovány. V současnosti není k dispozici žád
 ### <a name="connection-string-and-instrumentation-key"></a>Připojovací řetězec a klíč instrumentace
 
 Pokud je používáno monitorování bez kódu, je vyžadován pouze připojovací řetězec. Přesto však doporučujeme nastavit klíč instrumentace, aby se zajistila zpětná kompatibilita se staršími verzemi sady SDK, když se provádí ruční instrumentace.
+
+## <a name="release-notes"></a>Poznámky k verzi
+
+Nejnovější aktualizace a opravy chyb [najdete v poznámkách k verzi](./web-app-extension-release-notes.md).
 
 ## <a name="next-steps"></a>Další kroky
 * [Spusťte profiler v živé aplikaci](./profiler.md).

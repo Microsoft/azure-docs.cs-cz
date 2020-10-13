@@ -4,10 +4,10 @@ description: Popisuje, jak můžete použít Service Bus fronty a témata jako o
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.openlocfilehash: ab219f0dc6009dc01d5915995fc04094e72a88cf
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629501"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus fronty a témata jako obslužné rutiny událostí pro Azure Event Grid události
@@ -53,7 +53,7 @@ az eventgrid event-subscription create \
 ## <a name="message-properties"></a>Vlastnosti zprávy
 Použijete-li **Service Bus téma nebo frontu** jako obslužnou rutinu události z Event Grid, jedná se o vlastnosti, které obdržíte v hlavičkách zprávy: 
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 | ------------- | ----------- | 
 | AEG-Subscription-Name | Název odběru události |
 | AEG – počet doručení | <p>Počet pokusů o provedení události.</p> <p>Příklad: "1"</p> |

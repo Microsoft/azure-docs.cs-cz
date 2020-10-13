@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: 13a0966413519e56199cfce150d9dd7973d634ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c99225b53266fc74ea357151de824cd8d8ed2088
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404714"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946140"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Formát Parquet v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -156,7 +156,7 @@ ParquetSource sink(
 
 ## <a name="data-type-support"></a>Podpora datových typů
 
-Parquet komplexní datové typy se momentálně nepodporují (např. MAP, LIST, STRUCT).
+Parquet komplexní datové typy (například MAP, LIST, STRUCT) se aktuálně podporují jenom v datových tocích, nikoli v aktivitě kopírování. Chcete-li použít komplexní typy v datových tocích, neimportujte do datové sady schéma souborů a v datové sadě nechejte schéma prázdné. Pak ve zdrojové transformaci importujte projekci.
 
 ## <a name="using-self-hosted-integration-runtime"></a>Použití Integration Runtime pro místní hostování
 

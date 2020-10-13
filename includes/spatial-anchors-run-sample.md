@@ -4,11 +4,13 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: shreshar
-ms.openlocfilehash: 38a0ad9ecd7a2a9f1e14be6e4b0d1023a581a675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68dda321f0088a28f7f3ad1a80a02473fe0e7379
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358751"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971344"
 ---
-**Vytvořením kotvy Share &** můžete vytvořit kotvu a uložit ho do služby pro sdílení. V části vrátit se vrátí identifikátor, který můžete použít k načtení ze služby sdílení. Potom můžete spustit druhý scénář, **Vyhledat sdílené kotvy**buď ze svého zařízení, nebo z jiného. **Vyhledání sdílené kotvy** umožňuje vyhledat dříve sdílené kotvy zadáním výše zmíněného identifikátoru. Po výběru scénáře vás aplikace provede dalšími pokyny k tomu, co dělat. Budete například požádáni o přesunutí zařízení do složky pro shromáždění informací o prostředí. Později umístíte kotvu do světa, počkejte na její uložení, spusťte novou relaci a pak ji vyhledejte.
+Pomocí příkazového **kotvy shared &** můžete vytvořit kotvu a uložit ji do služby pro sdílení. V části vrátit se vrátí identifikátor, který můžete použít k načtení ze služby sdílení. Pak můžete spustit druhý scénář, **Vyhledat sdílené kotvy**buď ze svého zařízení, nebo z jiného. 
+
+Při **hledání sdíleného kotvy**můžete vyhledat dříve sdílené kotvy zadáním výše zmíněného identifikátoru. Po výběru scénáře vás aplikace provede dalšími pokyny. Budete například požádáni o přesunutí zařízení do složky pro shromáždění informací o prostředí. Později umístíte kotvu do světa, počkejte na její uložení, spusťte novou relaci a pak ji vyhledejte.

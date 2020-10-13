@@ -8,10 +8,10 @@ ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 4db7727558d0b7f4c26aba3ffa823bebb07862f6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713778"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Základní hodnoty zabezpečení Azure pro API Management
@@ -367,7 +367,7 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí
 
 **Doprovodné**materiály: udržování inventáře účtů, které mají přístup pro správu k rovině řízení API Management Azure (Azure Portal).
 
-Azure Active Directory (AD) mají předdefinované role, které se musí explicitně přiřadit a jsou Queryable. API Management spoléhá na tyto role a Access Control založených na rolích, aby bylo umožněno jemně odstupňované řízení přístupu pro API Management služby a entity.
+Azure Active Directory (AD) mají předdefinované role, které se musí explicitně přiřadit a jsou Queryable. API Management spoléhá na tyto role a Role-Based Access Control pro zajištění jemně odstupňované správy přístupu pro API Management služby a entity.
 
 Kromě toho API Management obsahuje integrovanou skupinu Administrators v uživatelském systému API Management. Skupiny v API Management ovládají viditelnost rozhraní API na portálu pro vývojáře a členové skupiny Administrators uvidí všechna rozhraní API.
 
@@ -1112,9 +1112,9 @@ Spravované identity lze použít k získání certifikátů z Azure Key Vault p
 
 * [Doporučení zabezpečení pro úložiště objektů BLOB](../storage/blobs/security-recommendations.md)
 
-Povolit obnovitelné odstranění v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
+Povolí Soft-Delete v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
-* [Jak povolit obnovitelné odstranění v Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Postup povolení Soft-Delete v Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: nelze použít
 

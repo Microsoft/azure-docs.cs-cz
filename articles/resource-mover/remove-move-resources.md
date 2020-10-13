@@ -7,28 +7,35 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 241ccbda67f7a2518d0c44a0d362673922ad4284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38a633a7a11ac29271231679e7075920e1f33a70
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652947"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945939"
 ---
-# <a name="remove-resources-from-a-move-collection"></a>Odebrání prostředků z kolekce pro přesun
+# <a name="manage-move-collections-and-resource-groups"></a>Správa přesunu kolekcí a skupin prostředků
 
-Tento článek popisuje, jak odebrat prostředky z kolekce přesunů v nástroji [Azure Resource stěhovací](overview.md). Přesun kolekcí se používá při přesunu prostředků Azure mezi oblastmi Azure.
+Tento článek popisuje, jak odebrat prostředky z kolekce přesunutí nebo odebrat kolekci nebo skupinu prostředků v [Azure Resource stěhovací](overview.md). Přesun kolekcí se používá při přesunu prostředků Azure mezi oblastmi Azure.
 
 ## <a name="remove-a-resource-portal"></a>Odebrání prostředku (portál)
 
-Odeberte na portálu pro poinstalaci prostředku následujícím způsobem:
+Prostředky můžete odebrat v kolekci přesunů, a to následujícím způsobem na portálu Resource stěhovací:
 
-1. V **různých oblastech**vyberte prostředky, které chcete odebrat z kolekce > **Odebrat**.
+1. V **různých oblastech**vyberte všechny prostředky, které chcete z kolekce odebrat, a vyberte **Odebrat**. 
 
     ![Tlačítko pro výběr k odebrání](./media/remove-move-resources/portal-select-resources.png)
 
-1. V nabídce **odebrat prostředky**klikněte na **Odebrat**.
+2. V nabídce **odebrat prostředky**klikněte na **Odebrat**.
 
     ![Tlačítko pro výběr odebrání prostředků z kolekce přesunutí](./media/remove-move-resources/remove-portal.png)
+
+## <a name="remove-a-move-collectionresource-group-portal"></a>Odebrání kolekce přesunutí/skupiny prostředků (portál)
+
+Na portálu můžete odebrat kolekci nebo skupinu prostředků přesunout.
+
+1. Pokud chcete odebrat prostředky z kolekce, postupujte podle pokynů v výše uvedeném postupu. Pokud odebíráte skupinu prostředků, ujistěte se, že neobsahuje žádné prostředky.
+2. Odstraňte kolekci přesunutí nebo skupinu prostředků.  
 
 ## <a name="remove-a-resource-powershell"></a>Odebrání prostředku (PowerShell)
 
@@ -41,16 +48,20 @@ Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceG
 **Očekávaný výstup** 
  ![ Výstup textu po odebrání prostředku z kolekce Move](./media/remove-move-resources/remove-resource.png)
 
+
+
 ## <a name="remove-a-collection-powershell"></a>Odebrání kolekce (PowerShell)
 
 Pomocí PowerShellu odeberte celou kolekci Move, a to následujícím způsobem:
 
-```azurepowershell-interactive
-# Remove a resource using the resource ID
-Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus 
-```
-**Očekávaný výstup** 
- ![ Výstupní text po odebrání kolekce Move](./media/remove-move-resources/remove-collection.png)
+1. Pokud chcete odebrat prostředky v kolekci pomocí PowerShellu, postupujte podle výše uvedených pokynů.
+2. Spusťte tento příkaz:
+
+    ```azurepowershell-interactive
+    # Remove a resource using the resource ID
+    Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus 
+    ```
+    **Očekávaný výstup** ![ Výstupní text po odebrání kolekce Move](./media/remove-move-resources/remove-collection.png)
 
 ## <a name="vm-resource-state-after-removing"></a>Stav prostředku virtuálního počítače po odebrání
 

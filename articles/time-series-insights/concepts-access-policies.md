@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: 3528ff790f16b5ec759989966ab35b8bad6565a5
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629450"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Udělení přístupu k datům do prostředí
@@ -24,7 +24,7 @@ Tento článek pojednává o dvou typech zásad přístupu Azure Time Series Ins
 
 ## <a name="sign-in-to-azure-time-series-insights"></a>Přihlášení k Azure Time Series Insights
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Zadejte `Time Series Insights environments` do **vyhledávacího** pole své prostředí Azure Time Series Insights. `Time Series Insights environments`Ve výsledcích hledání vyberte.
 1. Ze seznamu vyberte prostředí Azure Time Series Insights.
 

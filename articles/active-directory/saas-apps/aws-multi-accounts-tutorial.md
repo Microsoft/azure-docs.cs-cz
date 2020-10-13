@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/07/2020
 ms.author: jeedes
 ms.openlocfilehash: 24814ede954980e3a9fc3c3ba60546cedad4e8fd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713429"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Kurz: Azure Active Directory Integration with Amazon Web Services (AWS) (kurz starší verze)
@@ -45,7 +45,7 @@ Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, p
 
 * Všechny účty AWS budou používat stejný soubor XML s federačními metadaty a v době, kdy dojde ke změně certifikátu, je nutné tento obrovské cvičení využít k aktualizaci certifikátu na všech účtech AWS ve stejnou dobu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s Amazon Web Services (AWS) potřebujete následující položky:
 
@@ -93,7 +93,7 @@ V Amazon Web Services (AWS) přiřaďte hodnotu **uživatelské jméno** ve slu�
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Amazon Web Services (AWS), musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Amazon Web Services (AWS)](#configure-amazon-web-services-aws-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování Amazon Web Services (AWS)](#configure-amazon-web-services-aws-single-sign-on)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace.
 3. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
@@ -110,13 +110,13 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. V **základní části Konfigurace SAML** uživatel nemusí provádět žádný krok, protože aplikace už je předem integrovaná s Azure a klikne na **Uložit**.
 
-5. Amazon Web Services (AWS) aplikace očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele & deklarace** na stránce integrace aplikací. Na stránce **nastavit jednotné přihlašování pomocí SAML** kliknutím na tlačítko **Upravit** otevřete **atributy uživatele &** dialogovém okně deklarace.
+5. Amazon Web Services (AWS) aplikace očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele & deklarace** na stránce integrace aplikací. Na stránce **nastavit jeden Sign-On se** stránkou SAML kliknutím na tlačítko **Upravit** otevřete **atributy uživatele &** dialogovém okně deklarace.
 
     ![Snímek obrazovky ukazuje atributy uživatele s ovládacím prvkem pro úpravy, který se vyvolal.](common/edit-attribute.png)
 
@@ -146,29 +146,29 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     například Klikněte na **Uložit**.
 
-7. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** a uložte ho do svého počítače.
+7. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte v části **podpisový certifikát SAML** na **Stáhnout** a Stáhněte si **XML federačních metadat** a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-### <a name="configure-amazon-web-services-aws-single-sign-on"></a>Konfigurace jednotného přihlašování Amazon Web Services (AWS)
+### <a name="configure-amazon-web-services-aws-single-sign-on"></a>Nakonfigurovat Amazon Web Services (AWS) Single Sign-On
 
 1. V jiném okně prohlížeče se přihlaste do vaší Amazon Web Services (AWS) firemní web jako správce.
 
 1. Klikněte na **AWS Home (domů**).
 
-    ![Konfigurace jednotného přihlašování domů][11]
+    ![Nakonfigurovat jednu Sign-On domovskou stránku][11]
 
 1. Klikněte na **Správa identit a přístupu**.
 
-    ![Konfigurovat identitu jednotného přihlašování][12]
+    ![Konfigurovat jednu Sign-On identitu][12]
 
 1. Klikněte na **Zprostředkovatelé identity**a pak klikněte na **vytvořit poskytovatele**.
 
-    ![Konfigurace poskytovatele jednotného přihlašování][13]
+    ![Konfigurovat jednoho poskytovatele Sign-On][13]
 
 1. Na stránce **Konfigurovat poskytovatele** proveďte následující kroky:
 
-    ![Dialogové okno Konfigurace jednotného přihlašování][14]
+    ![Nakonfigurovat jeden Sign-On dialog][14]
 
     a. Jako **Typ poskytovatele**vyberte **SAML**.
 
@@ -180,15 +180,15 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 1. Na stránce **ověřit informace o poskytovateli** klikněte na **vytvořit**.
 
-    ![Konfigurace ověření jednotného přihlašování][15]
+    ![Konfigurace jednoho Sign-On ověření][15]
 
 1. Klikněte na **role**a pak klikněte na **vytvořit roli**.
 
-    ![Konfigurace rolí jednotného přihlašování][16]
+    ![Konfigurace rolí s jednou Sign-On][16]
 
 1. Na stránce **vytvořit roli** proveďte následující kroky:  
 
-    ![Nakonfigurovat vztah důvěryhodnosti s jednotným přihlašováním][19]
+    ![Nakonfigurovat jeden Sign-On Trust][19]
 
     a. V části **Vybrat typ důvěryhodné entity**vyberte možnost **federace SAML 2,0** .
 
@@ -214,7 +214,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 1. V dialogovém okně **Kontrola** proveďte následující kroky:
 
-    ![Konfigurace kontroly jednotného přihlašování][34]
+    ![Konfigurovat jednu kontrolu Sign-On][34]
 
     a. Do textového pole **název role** zadejte hodnotu v následujícím vzoru `accountname-aws-admin` .
 
@@ -365,7 +365,7 @@ Můžete také ověřit odpověď SAML a zobrazit role předávané jako deklara
 
 Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Jak nakonfigurovat zřizování pomocí rozhraní MS Graph API](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
 * [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](tutorial-list.md)

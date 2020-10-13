@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49626d418f90f8b4bc7288a6d2f7d195cd906f7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202292"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961353"
 ---
 # <a name="display-controls"></a>Ovládací prvky zobrazení
 
@@ -55,9 +55,9 @@ Element **Zobrazit ovládací** prvek obsahuje následující prvky:
 
 | Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| InputClaims | 0:1 | **InputClaims** slouží k předvyplnění hodnoty deklarací, které se mají shromažďovat od uživatele. |
-| DisplayClaims | 0:1 | **DisplayClaims** slouží k reprezentaci deklarací, které se mají shromažďovat od uživatele. |
-| OutputClaims | 0:1 | **OutputClaims** slouží k reprezentaci deklarací, které se dočasně ukládají pro tento **ovládací prvek**zobrazení. |
+| InputClaims | 0:1 | **InputClaims** slouží k předvyplnění hodnoty deklarací, které se mají shromažďovat od uživatele. Další informace naleznete v tématu [InputClaims](technicalprofiles.md#inputclaims) element. |
+| DisplayClaims | 0:1 | **DisplayClaims** slouží k reprezentaci deklarací, které se mají shromažďovat od uživatele. Další informace naleznete v tématu [DisplayClaim](technicalprofiles.md#displayclaim) element.|
+| OutputClaims | 0:1 | **OutputClaims** slouží k reprezentaci deklarací, které se dočasně ukládají pro tento **ovládací prvek**zobrazení. Další informace naleznete v tématu [OutputClaims](technicalprofiles.md#outputclaims) element.|
 | Akce | 0:1 | **Akce** se používají k vypsání technických profilů ověřování pro vyvolání uživatelských akcí, které probíhají na front-endu. |
 
 ### <a name="input-claims"></a>Vstupní deklarace identity
@@ -98,7 +98,90 @@ Chcete-li zobrazit výstupní deklarace identity k dalšímu kroku orchestrace, 
 
 Akce definuje seznam **technických profilů ověření**. Používají se k ověřování některých nebo všech zobrazení deklarací ovládacího prvku zobrazení. Technický profil ověření ověřuje vstup uživatele a může uživateli vrátit chybu. V akci ovládacího prvku zobrazení můžete použít **ContinueOnError**, **ContinueOnSuccess**a **předběžné podmínky** podobné způsobu, jakým jsou použity v technických profilech [ověření](validation-technical-profile.md) v rámci kontrolního technického profilu.
 
-Následující příklad odešle kód v e-mailu nebo SMS na základě výběru deklarace identity **mfaType** uživatele.
+#### <a name="actions"></a>Akce
+
+Element **Actions** obsahuje následující element:
+
+| Prvek | Výskytů | Popis |
+| ------- | ----------- | ----------- |
+| Akce | 1: n | Seznam akcí, které mají být provedeny. |
+
+#### <a name="action"></a>Akce
+
+Element **Action** obsahuje následující atribut:
+
+| Atribut | Povinné | Popis |
+| --------- | -------- | ----------- |
+| Id | Ano | Typ operace. Možné hodnoty: `SendCode` nebo `VerifyCode` . `SendCode`Hodnota pošle uživateli kód. Tato akce může obsahovat dva technické profily ověřování: jednu pro vygenerování kódu a jednu pro odeslání. `VerifyCode`Hodnota ověří kód, který uživatel zadal ve vstupním textovém poli. |
+
+Element **Action** obsahuje následující element:
+
+| Prvek | Výskytů | Popis |
+| ------- | ----------- | ----------- |
+| ValidationClaimsExchange | 1:1 | Identifikátory technických profilů, které se používají k ověření některých nebo všech zobrazených deklarací identity s referenčním technickým profilem. Všechny vstupní deklarace odkazovaného technického profilu se musí zobrazit v deklaracích, které odkazují na technický profil. |
+
+#### <a name="validationclaimsexchange"></a>ValidationClaimsExchange
+
+Element **ValidationClaimsExchange** obsahuje následující element:
+
+| Prvek | Výskytů | Popis |
+| ------- | ----------- | ----------- |
+| ValidationTechnicalProfile | 1: n | Technický profil, který se má použít k ověření některých nebo všech zobrazených deklarací identity s referenčním technickým profilem. |
+
+Element **ValidationTechnicalProfile** obsahuje následující atributy:
+
+| Atribut | Povinné | Popis |
+| --------- | -------- | ----------- |
+| ReferenceId | Ano | Identifikátor technického profilu, který je už definovaný v zásadách nebo v nadřazené zásadě. |
+|ContinueOnError|No| Určuje, jestli se má v případě, že bude tento technický profil ověřování zobrazovat chyba, ověřit, jestli má ověřování všech následných technických profilů. Možné hodnoty: `true` nebo `false` (výchozí, zpracování dalších profilů ověřování se zastaví a vrátí se chyba). |
+|ContinueOnSuccess | No | Určuje, zda má ověřování všech následných ověřovacích profilů pokračovat v případě úspěšného ověření tohoto technického profilu. Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `true` , což znamená, že zpracování dalších profilů ověření bude pokračovat. |
+
+Element **ValidationTechnicalProfile** obsahuje následující element:
+
+| Prvek | Výskytů | Popis |
+| ------- | ----------- | ----------- |
+| Předběžné podmínky | 0:1 | Seznam předpokladů, které musí být splněny, aby byl technický profil ověření proveden. |
+
+Prvek **předběžné podmínky** obsahuje následující atributy:
+
+| Atribut | Povinné | Popis |
+| --------- | -------- | ----------- |
+| `Type` | Ano | Typ kontroly nebo dotazu, který má být proveden pro předběžnou podmínku. Možné hodnoty: `ClaimsExist` nebo `ClaimEquals` . `ClaimsExist` Určuje, že akce by se měly provádět v případě, že zadané deklarace existují v aktuální sadě deklarací uživatele. `ClaimEquals` Určuje, že akce mají být provedeny, pokud existuje zadaná deklarace identity a její hodnota je rovna zadané hodnotě. |
+| `ExecuteActionsIf` | Ano | Určuje, zda mají být provedeny akce v předběžné podmínce, pokud je test nastaven na hodnotu true nebo false. |
+
+Prvek **podmínky** obsahuje následující prvky:
+
+| Prvek | Výskytů | Popis |
+| ------- | ----------- | ----------- |
+| Hodnota | 1: n | Data, která se používají při kontrole. Pokud je typ této kontroly `ClaimsExist` , toto pole určuje ClaimTypeReferenceId k dotazování na. Pokud je typ kontroly `ClaimEquals` , toto pole určuje ClaimTypeReferenceId k dotazování na. Zadejte hodnotu, kterou chcete zkontrolovat v jiném hodnotovém prvku.|
+| Akce | 1:1 | Akce, která má být provedena, pokud je splněna podmínka kontroly předběžných podmínek v rámci kroku orchestrace. Hodnota **Akce** je nastavena na hodnotu `SkipThisValidationTechnicalProfile` , která určuje, zda by neměl být proveden příslušný technický profil ověření. |
+
+Následující příklad odešle a ověří e-mailovou adresu pomocí [technického profilu Azure AD SSPR](aad-sspr-technical-profile.md).
+
+```xml
+<DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">
+  <InputClaims></InputClaims>
+  <DisplayClaims>
+    <DisplayClaim ClaimTypeReferenceId="email" Required="true" />
+    <DisplayClaim ClaimTypeReferenceId="verificationCode" ControlClaimType="VerificationCode" Required="true" />
+  </DisplayClaims>
+  <OutputClaims></OutputClaims>
+  <Actions>
+    <Action Id="SendCode">
+      <ValidationClaimsExchange>
+        <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AadSspr-SendCode" />
+      </ValidationClaimsExchange>
+    </Action>
+    <Action Id="VerifyCode">
+      <ValidationClaimsExchange>
+        <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AadSspr-VerifyCode" />
+      </ValidationClaimsExchange>
+    </Action>
+  </Actions>
+</DisplayControl>
+```
+
+Následující příklad odešle kód v e-mailu nebo SMS na základě výběru deklarace identity **mfaType** s využitím předběžných podmínek.
 
 ```xml
 <Action Id="SendCode">
@@ -129,7 +212,7 @@ Následující příklad odešle kód v e-mailu nebo SMS na základě výběru d
 
 Na ovládací prvky zobrazení se odkazuje ve [zobrazení deklarací](self-asserted-technical-profile.md#display-claims) [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md).
 
-Příklad:
+Například:
 
 ```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -141,3 +224,10 @@ Příklad:
     <DisplayClaim ClaimTypeReferenceId="givenName" Required="true" />
     <DisplayClaim ClaimTypeReferenceId="surName" Required="true" />
 ```
+
+## <a name="next-steps"></a>Další kroky
+
+Ukázky použití ovládacího prvku zobrazení najdete v těchto tématech: 
+
+- [Vlastní ověření e-mailu pomocí Mailjet](custom-email-mailjet.md)
+- [Vlastní ověření e-mailu pomocí SendGrid](custom-email-sendgrid.md)

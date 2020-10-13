@@ -3,17 +3,17 @@ title: Interakce se zařízením IoT technologie Plug and Play připojeným k ř
 description: Pomocí Node.js se můžete připojit k zařízení IoT technologie Plug and Play, které je připojené k řešení Azure IoT, a pracovat s ním.
 author: elhorton
 ms.author: elhorton
-ms.date: 08/11/2020
+ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 6ad6e48642e7b7df4b93b37b5ef66381833d8bbc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a6ade8d44e6c751f45849743c66d0a34075943b4
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91574989"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946123"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play připojeným k vašemu řešení (Node.js)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91574989"
 
 IoT technologie Plug and Play zjednodušuje IoT tím, že vám umožní pracovat s funkcemi zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí Node.js připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 Další informace o ukázkové konfiguraci najdete v [ukázkovém souboru Readme](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md).
 
-V tomto rychlém startu můžete použít ukázkový termostat zařízení, které je napsané v Node.js jako zařízení technologie Plug and Play IoT. Spuštění ukázkového zařízení:
+V tomto rychlém startu použijete vzorový termostat zařízení, které je napsané v Node.js jako zařízení technologie Plug and Play IoT. Spuštění ukázkového zařízení:
 
 1. Otevřete okno terminálu a přejděte do místní složky, která obsahuje sadu Microsoft Azure IoT SDK pro Node.js úložiště, které jste naklonoval z GitHubu.
 
@@ -94,48 +94,103 @@ V tomto rychlém startu použijete ukázkové řešení IoT v Node.js k interakc
 1. Přejděte do terminálu **služby** a pomocí následujícího příkazu spusťte ukázku pro čtení informací o zařízení:
 
     ```cmd/sh
-    node get_digital_twin.js
+    node twin.js
     ```
 
-1. Ve výstupu terminálu **služby** si všimněte odezvy digitálního vlákna. Zobrazí se ID modelu a přidružené vlastnosti zařízení, které se nahlásily:
+1. Ve výstupu terminálu **služby** si všimněte odezvy zařízení. Zobrazí se ID modelu a přidružené vlastnosti zařízení, které se nahlásily:
 
     ```json
-    "$dtId": "mySimpleThermostat",
-    "serialNumber": "123abc",
-    "maxTempSinceLastReboot": 51.96167432818655,
-    "$metadata": {
-      "$model": "dtmi:com:example:Thermostat;1",
-      "serialNumber": { "lastUpdateTime": "2020-07-09T14:04:00.6845182Z" },
-      "maxTempSinceLastReboot": { "lastUpdateTime": "2020-07-09T14:04:00.6845182" }
+    Model Id: dtmi:com:example:Thermostat;1
+    {
+      "deviceId": "my-pnp-device",
+      "etag": "AAAAAAAAAAE=",
+      "deviceEtag": "Njc3MDMxNDcy",
+      "status": "enabled",
+      "statusUpdateTime": "0001-01-01T00:00:00Z",
+      "connectionState": "Connected",
+      "lastActivityTime": "0001-01-01T00:00:00Z",
+      "cloudToDeviceMessageCount": 0,
+      "authenticationType": "sas",
+      "x509Thumbprint": {
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+      },
+      "modelId": "dtmi:com:example:Thermostat;1",
+      "version": 4,
+      "properties": {
+        "desired": {
+          "$metadata": {
+            "$lastUpdated": "2020-10-05T11:35:19.4574755Z"
+          },
+          "$version": 1
+        },
+        "reported": {
+          "maxTempSinceLastReboot": 31.343640523762232,
+          "serialNumber": "123abc",
+          "$metadata": {
+            "$lastUpdated": "2020-10-05T11:35:23.7339042Z",
+            "maxTempSinceLastReboot": {
+              "$lastUpdated": "2020-10-05T11:35:23.7339042Z"
+            },
+            "serialNumber": {
+              "$lastUpdated": "2020-10-05T11:35:23.7339042Z"
+            }
+          },
+          "$version": 3
+        }
+      },
+      "capabilities": {
+        "iotEdge": false
+      },
+      "tags": {}
     }
     ```
 
-1. Následující fragment kódu ukazuje kód v *get_digital_twin.js* , který načte ID modelu vlákna zařízení:
+1. Následující fragment kódu ukazuje kód v *twin.js* , který načte ID modelu vlákna zařízení:
 
     ```javascript
-    console.log("Model Id: " + inspect(digitalTwin.$metadata.$model))
+    var registry = Registry.fromConnectionString(connectionString);
+    registry.getTwin(deviceId, function(err, twin) {
+      if (err) {
+        console.error(err.message);
+      } else {
+        console.log('Model Id: ' + twin.modelId);
+        //...
+      }
+      //...
+    }
     ```
 
 V tomto scénáři výstup IT `Model Id: dtmi:com:example:Thermostat;1` .
 
+> [!NOTE]
+> Tyto ukázky služeb používají třídu **registru** z **klienta služby IoT Hub**. Další informace o rozhraních API, včetně rozhraní Digital props API, najdete v [příručce pro vývojáře služby](concepts-developer-guide-service.md).
+
 ### <a name="update-a-writable-property"></a>Aktualizovat vlastnost s možností zápisu
 
-1. Otevřete soubor *update_digital_twin.js* v editoru kódu.
+1. Otevřete soubor *twin.js* v editoru kódu.
 
-1. Přečtěte si vzorový kód. Můžete si prohlédnout, jak vytvořit opravu JSON pro aktualizaci digitálního vlákna vašeho zařízení. V této ukázce kód nahradí teplotu termostatu hodnotou 42:
+1. Přečtěte si vzorový kód, který ukazuje dva způsoby, jak se zařízení dodrží. Chcete-li použít první způsob, upravte `twinPatch` proměnnou následujícím způsobem:
 
     ```javascript
-    const patch = [{
-        op: 'add',
-        path: '/targetTemperature',
-        value: '42'
-      }]
+    var twinPatch = {
+      tags: {
+        city: "Redmond"
+      },
+      properties: {
+        desired: {
+          targetTemperature: 42
+        }
+      }
+    };
     ```
+
+    `targetTemperature`Vlastnost je definována jako vlastnost s možností zápisu v modelu zařízení termostatu.
 
 1. V terminálu **služby** použijte následující příkaz ke spuštění ukázky pro aktualizaci vlastnosti:
 
     ```cmd/sh
-    node update_digital_twin.js
+    node twin.js
     ```
 
 1. V terminálu **zařízení** vidíte, že zařízení obdrželo aktualizaci:
@@ -151,44 +206,54 @@ V tomto scénáři výstup IT `Model Id: dtmi:com:example:Thermostat;1` .
       }
     }
     updated the property
-    Properties have been reported for component
     ```
 
 1. V terminálu **služby** spusťte následující příkaz, kterým potvrdíte aktualizaci této vlastnosti:
 
     ```cmd/sh
-    node get_digital_twin.js
+    node twin.js
     ```
 
-1. Ve výstupu terminálu **služby** se v digitální nedokončené reakci v rámci `thermostat1` komponenty zobrazí aktualizovaná cílová teplota. Může chvíli trvat, než zařízení dokončí aktualizaci. Opakujte tento krok, dokud zařízení nezpracuje aktualizaci vlastnosti:
+1. Ve výstupu terminálu **služby** se v části vlastnosti hlášené ¬ zobrazí aktualizovaná cílová teplota. Může chvíli trvat, než zařízení dokončí aktualizaci. Opakujte tento krok, dokud zařízení nezpracuje aktualizaci vlastnosti:
 
     ```json
-    targetTemperature: 42,
+    "reported": {
+      //...
+      "targetTemperature": {
+        "value": 42,
+        "ac": 200,
+        "ad": "Successfully executed patch for targetTemperature",
+        "av": 4
+      },
+      //...
+    }
     ```
 
 ### <a name="invoke-a-command"></a>Vyvolání příkazu
 
-1. Otevřete soubor *invoke_command.js* a zkontrolujte kód.
+1. Otevřete soubor *device_method.js* a zkontrolujte kód.
 
 1. Přejděte do terminálu **služby** . Pomocí následujícího příkazu spusťte ukázku pro vyvolání příkazu:
 
     ```cmd/sh
-    set IOTHUB_COMMAND_NAME=getMaxMinReport
-    set IOTHUB_COMMAND_PAYLOAD=commandpayload
-    node invoke_command.js
+    set IOTHUB_METHOD_NAME=getMaxMinReport
+    set IOTHUB_METHOD_PAYLOAD=commandpayload
+    node device_method.js
     ```
 
 1. Výstup v terminálu **služby** zobrazuje následující potvrzení:
 
     ```cmd/sh
+    getMaxMinReport on my-pnp-device:
     {
-        xMsCommandStatuscode: 200,  
-        xMsRequestId: 'ee9dd3d7-4405-4983-8cee-48b4801fdce2',  
-        connection: 'close',  'content-length': '18',  
-        'content-type': 'application/json; charset=utf-8',  
-        date: 'Thu, 09 Jul 2020 15:05:14 GMT',  
-        server: 'Microsoft-HTTPAPI/2.0',  vary: 'Origin',  
-        body: 'min/max response'
+      "status": 200,
+      "payload": {
+        "maxTemp": 23.460596940801928,
+        "minTemp": 23.460596940801928,
+        "avgTemp": 23.460596940801928,
+        "endTime": "2020-10-05T12:48:08.562Z",
+        "startTime": "2020-10-05T12:47:54.450Z"
+      }
     }
     ```
 

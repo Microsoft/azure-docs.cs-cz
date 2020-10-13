@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: kumud
 ms.openlocfilehash: 791a248c8fb10bc4db483451971d452a359c8a07
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91569229"
 ---
 # <a name="azure-networking-services-overview"></a>Přehled síťových služeb Azure
@@ -33,7 +33,7 @@ Tato část popisuje služby, které poskytují připojení mezi prostředky Azu
 |---|---|---|
 |[Virtuální síť](#vnet)|Umožňuje prostředkům Azure zabezpečeně komunikovat mezi sebou, internetem a místními sítěmi.| <p>[Filtrování síťového provozu](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[Směrování síťového provozu](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[Omezení síťového přístupu k prostředkům](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[Propojení virtuálních sítí](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
 |[ExpressRoute](#expressroute)|Rozšiřuje vaše místní sítě do cloudu Microsoftu přes soukromé připojení, které usnadňuje poskytovatel připojení.|<p>[Vytvoření a úprava okruhu ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[Propojení virtuální sítě s okruhem ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[Konfigurace a Správa filtrů tras pro okruhy ExpressRoute](../expressroute/how-to-routefilter-portal.md)</p>|
-|[VPN Gateway](#vpngateway)|Odesílá zašifrovaný provoz mezi virtuální sítí Azure a místním umístěním přes veřejný Internet.|<p>[Připojení typu site-to-site](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[Připojení typu VNet-to-VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Připojení typu point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
+|[VPN Gateway](#vpngateway)|Odesílá zašifrovaný provoz mezi virtuální sítí Azure a místním umístěním přes veřejný Internet.|<p>[Připojení typu site-to-site](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[Připojení typu VNet-to-VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Připojení Point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
 |[Virtual WAN](#virtualwan)|Optimalizuje a automatizuje připojení větví k Azure. Oblasti Azure slouží jako centra, ke kterým se můžete připojit ke svým větvím.|<p>[Připojení Site-to-site](../virtual-wan/virtual-wan-site-to-site-portal.md), [připojení ExpressRoute](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
 |[Azure DNS](#dns)|Hostuje domény DNS, které poskytují překlad názvů pomocí Microsoft Azure infrastruktury.|<p>[Hostování vaší domény v Azure DNS](../dns/dns-delegate-domain-azure-dns.md)</p><p>[Vytvoření záznamů DNS pro webovou aplikaci](../dns/dns-web-sites-custom-domain.md)</p> <p>[Vytvořit záznam aliasu pro Traffic Manager](../dns/tutorial-alias-tm.md)</p> <p>[Vytvořit záznam aliasu pro veřejnou IP adresu](../dns/tutorial-alias-pip.md)</p> <p>[Vytvoří záznam aliasu pro záznam prostředku zóny.](../dns/tutorial-alias-rr.md)</p>|
 |[Azure Bastion](#bastion)|Nakonfigurujte zabezpečené a bezproblémové připojení RDP/SSH k virtuálním počítačům přímo v Azure Portal přes TLS. Když se připojujete přes Azure bastionu, virtuální počítače nepotřebují veřejnou IP adresu.|<p>[Vytvoření hostitele služby Azure Bastion](../bastion/bastion-create-host-portal.md)</p><p>[Připojení pomocí SSH k virtuálnímu počítači se systémem Linux](../bastion/bastion-connect-vm-ssh.md)</p><p>[Připojení pomocí protokolu RDP k virtuálnímu počítači s Windows](../bastion/bastion-connect-vm-rdp.md)</p>|
