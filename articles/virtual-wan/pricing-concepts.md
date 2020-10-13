@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: reyandap
 ms.custom: references_pricing
 ms.openlocfilehash: b4025990a1a62351d3971d788558dea8ecb390ba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327953"
 ---
 # <a name="about-virtual-wan-pricing"></a>Informace o cenách virtuální sítě WAN
@@ -30,7 +30,7 @@ Ceny každé služby ve virtuální síti WAN se účtují. Proto se pro virtuá
 
 ### <a name="what-is-a-scale-unit"></a><a name="scale-unit"></a>Co je jednotka škálování?
 
-**Jednotka škálování** poskytuje jednotku pro agregovanou kapacitu typu Site-to-Site (S2S), Point-to-Site (P2S) a EXPRESSROUTE (ER) ve virtuálním rozbočovači. Příklad:
+**Jednotka škálování** poskytuje jednotku pro agregovanou kapacitu typu Site-to-Site (S2S), Point-to-Site (P2S) a EXPRESSROUTE (ER) ve virtuálním rozbočovači. Například:
 
 * **1 jednotka ŠKÁLOVÁNÍ S2S VPN** označuje celkovou kapacitu 500 MB/s VPN Gateway (duální instance se nasazují pro odolnost proti chybám) ve virtuálních rozbočovačích za cenu $0.361/hod.
 * **1 jednotka pro ŠKÁLOVÁNÍ ER** implikuje celkem 2 GB/s.
@@ -38,7 +38,7 @@ Ceny každé služby ve virtuální síti WAN se účtují. Proto se pro virtuá
 
 ### <a name="what-is-a-connection-unit"></a><a name="connection-unit"></a>Co je jednotka připojení?
 
-**Jednotka připojení** se vztahuje na všechny místní nebo jiné koncové body, které se připojují k bránám Azure. V případě sítě VPN typu Site-to-Site to znamená, že se jedná o větve. Pro uživatele VPN (Point-to-site) to implikuje vzdálené uživatele. Pro ExpressRoute to znamená připojení okruhu ExpressRoute.<br>Příklad:
+**Jednotka připojení** se vztahuje na všechny místní nebo jiné koncové body, které se připojují k bránám Azure. V případě sítě VPN typu Site-to-Site to znamená, že se jedná o větve. Pro uživatele VPN (Point-to-site) to implikuje vzdálené uživatele. Pro ExpressRoute to znamená připojení okruhu ExpressRoute.<br>Například:
 
 * Jedno připojení k síti VPN se připojuje k Azure VPN v nákladech virtuálního rozbočovače. $0,05/hod. Proto připojení větví 100, která se připojují k virtuálnímu rozbočovači Azure, by znamenala náklady na $0,05 * 100/hod.
 
@@ -56,7 +56,7 @@ Níže uvedené tabulky používají následující zkratky: {pole: Severní Ame
 
 **Ceny v rámci kontinentu (*)**
 
-| Uvnitř kontinentu| Cena ($/GB)|
+| Intra-Continent| Cena ($/GB)|
 |---|---|
 | Do ' Nam '|0,02 USD |
 | EU až EU |0,02 USD |
@@ -67,7 +67,7 @@ Níže uvedené tabulky používají následující zkratky: {pole: Severní Ame
 
 **Ceny za přenos mezi kontinentálními písmeny (*)**
 
-| Mezi kontinentálními| Cena ($/GB)|
+| Inter-Continental| Cena ($/GB)|
 |---|---|
 | OD ze země do EU nebo EU do |$0,07 |
 | OD LATAM k libovolnému místu |$0,17 |

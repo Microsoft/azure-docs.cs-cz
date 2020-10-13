@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f953d87c53bc13af623c2bfd49ceb953280f8f2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e72c9d64a71fceb90d0a6ae9984997f73c1b5c6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540706"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963529"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Nasazení Azure DBMS pro úlohy SAP v Virtual Machines Oracle
 
@@ -422,7 +422,7 @@ Další informace o zotavení po havárii pro databáze Oracle v Azure najdete v
 
 ### <a name="accelerated-networking"></a>Urychlení sítě
 Pro nasazení Oracle ve Windows důrazně doporučujeme zrychlit sítě, jak je popsáno v tématu [urychlené síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Zvažte také doporučení, která jsou k [disVirtual Machines v části požadavky na nasazení Azure DBMS pro úlohy SAP](dbms_guide_general.md). 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Ostatní
 [Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) popisují další důležité koncepty týkající se nasazení virtuálních počítačů s Oracle Database, včetně skupin dostupnosti Azure a monitorování SAP.
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Specifické pro Oracle Database Oracle Linux
@@ -444,7 +444,7 @@ V takovém případě doporučujeme nainstalovat nebo najít Oracle Home, Stage,
 
 ### <a name="storage-configuration"></a>Konfigurace úložiště
 
-Systémy souborů ext4, XFS a Oracle ASM jsou podporovány pro Oracle Database soubory v Azure. Všechny soubory databáze musí být uložené v těchto systémech souborů na základě VHD nebo Managed Disks. Tyto disky jsou připojené k virtuálnímu počítači Azure a jsou založené na [Azure Page BLOB Storage](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) nebo [Azure Managed disks](../../managed-disks-overview.md).
+Systémy souborů ext4, XFS a Oracle ASM jsou podporovány pro Oracle Database soubory v Azure. Všechny soubory databáze musí být uložené v těchto systémech souborů na základě VHD nebo Managed Disks. Tyto disky jsou připojené k virtuálnímu počítači Azure a jsou založené na [Azure Page BLOB Storage](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) nebo [Azure Managed disks](../../managed-disks-overview.md).
 
 Pro Oracle Linux jádra UEK se vyžaduje minimálně UEK verze 4, která podporuje [Azure Premium SSD](../../premium-storage-performance.md#disk-caching).
 
@@ -508,7 +508,7 @@ Pro virtuální počítače Azure M-Series se při použití Azure Akcelerátor 
 ### <a name="backuprestore"></a>Zálohování a obnovení
 V případě funkcí zálohování a obnovení jsou podporované nástroje SAP BR * pro Oracle stejným způsobem jako na holém počítači a Hyper-V. Oracle Recovery Manager (RMAN) se podporuje taky pro zálohování na disk a obnovení z disku.
 
-Další informace o tom, jak můžete pomocí Azure Backup a Recovery Services zálohovat a obnovovat databáze Oracle, najdete v tématu [zálohování a obnovení databáze Oracle Database 12c na virtuálním počítači Azure Linux](../oracle/oracle-backup-recovery.md).
+Další informace o tom, jak můžete pomocí Azure Backup a Recovery Services zálohovat a obnovovat databáze Oracle, najdete v tématu [zálohování a obnovení databáze Oracle Database 12c na virtuálním počítači Azure Linux](../oracle/oracle-overview.md).
 
 ### <a name="high-availability"></a>Vysoká dostupnost
 Oracle data Guard je podporováno pro účely vysoké dostupnosti a zotavení po havárii. Chcete-li dosáhnout automatického převzetí služeb při selhání v ochraně dat, je nutné použít Fast-Start převzetí služeb při selhání (FSFA). Funkce pozorovatele (FSFA) aktivuje převzetí služeb při selhání. Pokud FSFA nepoužíváte, můžete použít jenom ruční konfiguraci převzetí služeb při selhání. Další informace najdete v tématu [implementace Oracle data Guard na virtuálním počítači Azure Linux](../oracle/configure-oracle-dataguard.md).
@@ -531,5 +531,3 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 Přečtěte si článek 
 
 - [Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md)
- 
-

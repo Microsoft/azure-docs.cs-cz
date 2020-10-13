@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/30/2020
 ms.author: allensu
 ms.openlocfilehash: 6b9f454c75a10644e86931dc86ebd9514e5431d3
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91649792"
 ---
 # <a name="outbound-connections"></a>Odchozí připojení
@@ -375,7 +375,7 @@ Pro každou cílovou IP adresu a port každého toku se spotřebuje jeden port S
 
 | Příslušný protokol (y) |
 |------------------------|
-| – |
+| Není k dispozici |
 
 #### <a name="details"></a>Podrobnosti
 

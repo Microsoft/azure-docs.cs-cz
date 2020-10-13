@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: jushiman
-ms.openlocfilehash: 05da5a21fb558b7d936b7569a69578eda06e11cf
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 175d572e69dd34a09787f44cf14ae0336c8e95e0
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875270"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975599"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních počítačů
 
@@ -205,7 +205,7 @@ DC-Series využívá nejnovější generaci procesorů Intel XEON s 2176G s vyu�
 
 > [!IMPORTANT]
 >
-> Virtuální počítače DC-Series jsou [virtuální počítače generace 2](./linux/generation-2.md#creating-a-generation-2-vm) a podporují jenom `Gen2` image.
+> Virtuální počítače DC-Series jsou [virtuální počítače generace 2](./generation-2.md#creating-a-generation-2-vm) a podporují jenom `Gen2` image.
 
 
 ### <a name="ds-series"></a>DS-series  

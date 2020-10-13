@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 05/15/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6bc07dc4a46327981c432cf8982f0c3a646fda0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 676b8b6fbb56536ec3a49100f5de1419ac417bb6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89068911"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964141"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>Použití sestavy přihlášení ke kontrole událostí Azure Multi-Factor Authentication
 
@@ -119,7 +119,7 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 Následující tabulka může pomoct řešit události pomocí stažené verze sestavy aktivity z předchozích kroků portálu nebo příkazů PowerShellu. Tyto kódy výsledku se nezobrazí přímo v Azure Portal.
 
-| Výsledek volání | Description | Obecný popis |
+| Výsledek volání | Popis | Obecný popis |
 | --- | --- | --- |
 | SUCCESS_WITH_PIN | Zadán kód PIN | Uživatel zadal kód PIN. Pokud ověření proběhlo úspěšně, zadali jste správný PIN kód. Pokud je ověřování odepřeno, zadali jste nesprávný kód PIN nebo je uživatel nastaven na standardní režim. |
 | SUCCESS_NO_PIN | Pouze zadání # | Pokud je uživatel nastavený na režim připnutí a ověřování je odepřeno, znamená to, že uživatel nezadal PIN kód a zadali jste jenom #.  Pokud je uživatel nastavený na standardní režim a ověřování je úspěšné, znamená to, že uživatel zadal jenom #, což je správné nastavení v režimu Standard. |
@@ -171,7 +171,7 @@ Následující tabulka může pomoct řešit události pomocí stažené verze s
 
 K dispozici jsou následující další informace a sestavy pro události MFA, včetně těch pro MFA Server:
 
-| Sestava | Umístění | Description |
+| Sestava | Umístění | Popis |
 |:--- |:--- |:--- |
 | Historie blokovaného uživatele | Azure AD > Security > MFA > blokování nebo odblokování uživatelů | Zobrazuje historii požadavků na blokování nebo odblokování uživatelů. |
 | Využití pro místní součásti | Zpráva o aktivitě > > MFA služby Azure AD > Security | Poskytuje informace o celkovém využití MFA serveru prostřednictvím rozšíření NPS, ADFS a MFA serveru. |

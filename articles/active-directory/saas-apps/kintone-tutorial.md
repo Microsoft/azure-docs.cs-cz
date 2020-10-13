@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e831fd561b7c8dcf78e9203ec6d38c60c22a5bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1e966595422f353067d66483defa0b880874415
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88535335"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944277"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Kurz: Azure Active Directory integrace s Kintone
 
@@ -145,7 +145,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Kintone,
 
 1. Klikněte na **Povolit ověřování SAML**.
 
-    ![Ověřování SAML](./media/kintone-tutorial/ic785882.png "Ověřování SAML")
+    ![Snímek obrazovky zobrazující, že je vybrána možnost Uživatelé & Správa systému.](./media/kintone-tutorial/ic785882.png "Ověřování SAML")
 
 1. V části ověřování SAML proveďte následující kroky:
 
@@ -232,7 +232,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Kintone, musí se zřídit v K
 
 1. Klikněte na **Nový uživatel**.
 
-    ![New Users](./media/kintone-tutorial/ic785889.png "New Users")
+    ![Snímek obrazovky, který zobrazuje oddíl "uživatelé" s vybranou akcí "nový uživatel".](./media/kintone-tutorial/ic785889.png "New Users")
 
 1. V části **Nový uživatel** proveďte následující kroky:
 

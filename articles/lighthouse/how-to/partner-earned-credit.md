@@ -4,10 +4,10 @@ description: Přečtěte si, jak přidružit ID partnera pro příjem kreditu (P
 ms.date: 10/05/2020
 ms.topic: how-to
 ms.openlocfilehash: 5caa205ce74152c7ec047952f66c1bf9188ddf02
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776166"
 ---
 # <a name="link-your-partner-id-to-enable-partner-earned-credit-on-delegated-resources"></a>Propojte své ID partnera, aby bylo možné u delegovaných prostředků povolit kredit získaný pro partnery.
@@ -20,7 +20,7 @@ Pokud připojíte [zákazníky pomocí šablon správy prostředků Azure](onboa
 
 ## <a name="associate-your-partner-id-when-you-onboard-new-customers"></a>Přidružte své ID partnera při připojování nových zákazníků.
 
-Při připojování zákazníků prostřednictvím šablon Azure Resource Manager (šablony ARM) použijte následující postup, který propojí ID partnera a povolí získaný kredit pro partnery. K provedení těchto kroků budete muset znát [ID partnera MPN](/partner-center/partner-center-account-setup#locate-your-mpn-id) . Nezapomeňte použít **přidružené ID MPN** , které vidíte na vašem partnerském profilu.
+Při připojování zákazníků prostřednictvím šablon Azure Resource Manager (šablony ARM) použijte následující postup, který propojí ID partnera a povolí získaný kredit pro partnery. K provedení těchto kroků budete muset znát [ID partnera MPN](/partner-center/partner-center-account-setup#locate-your-mpn-id) . Nezapomeňte použít **přidružené ID MPN**, které je uvedené ve vašem partnerském profilu.
 
 Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního objektu, propojit ho s **přidruženým ID MPN**a pak mu udělit přístup ke každému zákazníkovi, který zařadíte pomocí [předdefinované role Azure, která má nárok na pec](https://docs.microsoft.com/partner-center/azure-roles-perms-pec).
 

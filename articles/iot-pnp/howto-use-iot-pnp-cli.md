@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 680cd4ef4f73c63850a2137b344fd0af6b27c673
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91577454"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Instalace a použití rozšíření Azure IoT pro rozhraní příkazového řádku Azure
@@ -44,7 +44,7 @@ K odebrání rozšíření můžete použít příkaz `az extension remove --nam
 
 ## <a name="use-azure-iot-extension-for-the-azure-cli"></a>Použití rozšíření Azure IoT pro rozhraní příkazového řádku Azure
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Pokud se chcete přihlásit ke svému předplatnému Azure, spusťte následující příkaz:
 
@@ -160,7 +160,7 @@ Například proveďte veřejný model s ID `dtmi:com:example:ClimateSensor;1` :
 az iot pnp model publish --dtmi "dtmi:com:example:ClimateSensor;1"
 ```
 
-Chcete-li publikovat model, musí být splněny následující požadavky:
+K publikování modelu je třeba splnit následující požadavky:
 
 - Tenant společnosti nebo organizace musí být partnerem Microsoftu. 
 - Uživatel nebo instanční objekt musí být členem role **vydavatele** tenanta úložiště.

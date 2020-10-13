@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: 5f249a7e6e7fac13301f0d2717336651b171b422
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776302"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení a upgrady clusterů ve službě Azure Kubernetes Service (AKS)
@@ -30,7 +30,7 @@ Můžete si také přečíst osvědčené postupy pro [správu imagí kontejner�
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Zabezpečený přístup k serveru rozhraní API a uzlům clusteru
 
-**Pokyny k osvědčeným postupům** – zabezpečení přístupu k rozhraní Kubernetes API – Server je jedním z nejdůležitějších věcí, které můžete provést pro zabezpečení clusteru. Integrujte Kubernetes řízení přístupu na základě role (RBAC) s Azure Active Directory k řízení přístupu k serveru rozhraní API. Tyto ovládací prvky vám umožní zabezpečit AKS stejným způsobem jako při zabezpečení přístupu k předplatným Azure.
+**Pokyny k osvědčeným postupům** – zabezpečení přístupu k Kubernetes API-Server je jedním z nejdůležitějších věcí, které můžete provést pro zabezpečení clusteru. Integrujte Kubernetes řízení přístupu na základě role (RBAC) s Azure Active Directory k řízení přístupu k serveru rozhraní API. Tyto ovládací prvky vám umožní zabezpečit AKS stejným způsobem jako při zabezpečení přístupu k předplatným Azure.
 
 Server Kubernetes API poskytuje jeden spojovací bod pro požadavky na provádění akcí v rámci clusteru. Pokud chcete zabezpečit a auditovat přístup k serveru rozhraní API, omezte přístup a poskytněte minimální požadovaná oprávnění přístupu. Tento přístup není jedinečný pro Kubernetes, ale je obzvláště důležitý, když je cluster AKS logicky izolovaný pro víceklientské použití.
 

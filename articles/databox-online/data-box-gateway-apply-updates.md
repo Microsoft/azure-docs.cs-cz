@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: alkohli
 ms.openlocfilehash: 337c0c4434eb768ee45429d9b2d23536db4c3fc7
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575448"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>Aktualizace Azure Data Box Gateway
@@ -63,7 +63,7 @@ Doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Zařízen
 
     ![Snímek obrazovky Azure Stack Edge Data Box Gateway domovské stránce s možností přehled a staženým nápisem oznámení o aktualizacích.](./media/data-box-gateway-apply-updates/portal-apply-update-10a.png)
 
-    Pokud se rozhodnete stahovat pouze aktualizace, vyberte oznámení a otevřete okno **aktualizace zařízení** . Vyberte **Install** (Nainstalovat).
+    Pokud se rozhodnete stahovat pouze aktualizace, vyberte oznámení a otevřete okno **aktualizace zařízení** . Vyberte **Nainstalovat**.
   
     ![Snímek obrazovky dialogového okna aktualizace zařízení s možností instalovat s názvem.](./media/data-box-gateway-apply-updates/portal-apply-update-11a.png)
 

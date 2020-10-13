@@ -12,7 +12,7 @@ ms.openlocfilehash: a866a225da87c22a3a276a5d59b8e86f1f955cae
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856190"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porovnání možností úložiště pro použití s clustery Azure HDInsight
@@ -47,13 +47,13 @@ Clustery můžete vytvářet pomocí kombinací služeb pro primární a volitel
 
 | Verze HDInsight | Primární úložiště | Sekundární úložiště | Podporováno |
 |---|---|---|---|
-| 3,6 & 4,0 | Pro obecné účely V1, Pro obecné účely v2 | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Ano |
+| 3,6 & 4,0 | Pro obecné účely V1, Pro obecné účely v2 | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Yes |
 | 3,6 & 4,0 | Pro obecné účely V1, Pro obecné účely v2 | Data Lake Storage Gen2 | No |
-| 3,6 & 4,0 | Data Lake Storage Gen2 * | Data Lake Storage Gen2 | Ano |
-| 3,6 & 4,0 | Data Lake Storage Gen2 * | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Ano |
+| 3,6 & 4,0 | Data Lake Storage Gen2 * | Data Lake Storage Gen2 | Yes |
+| 3,6 & 4,0 | Data Lake Storage Gen2 * | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Yes |
 | 3,6 & 4,0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | No |
-| 3,6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | Ano |
-| 3,6 | Data Lake Storage Gen1 | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Ano |
+| 3,6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | Yes |
+| 3,6 | Data Lake Storage Gen1 | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Yes |
 | 3,6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | No |
 | 4,0 | Data Lake Storage Gen1 | Všechny | No |
 | 4,0 | Pro obecné účely V1, Pro obecné účely v2 | Data Lake Storage Gen1 | No |

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 66d62cde9ea17e73f561dfbce94eb3d3e7175b6d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b8e5c6b6b755134772cc8eaea3dab3af7f5346c9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827823"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963359"
 ---
 # <a name="use-spot-vms-in-azure"></a>Použití bodových virtuálních počítačů v Azure
 
@@ -99,17 +99,17 @@ V oblasti portálu můžete zobrazit historické ceny a sazby vyřazení podle v
 
 **Otázka:** Jak se Správa kvót spravuje pro virtuální počítače na místě?
 
-**A:** Virtuální počítače s přímým chodem budou mít samostatný fond kvót. Kvóta na místě se bude sdílet mezi virtuálními počítači a instancemi sady škálování. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+**A:** Virtuální počítače s přímým chodem budou mít samostatný fond kvót. Kvóta na místě se bude sdílet mezi virtuálními počítači a instancemi sady škálování. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 
 **Otázka:** Můžu požádat o další kvótu na místě?
 
-**A:** Ano, žádost budete moci odeslat, abyste zvýšili kvótu pro virtuální počítače pomocí [procesu žádosti o standardní kvótu](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
+**A:** Ano, žádost budete moci odeslat, abyste zvýšili kvótu pro virtuální počítače pomocí [procesu žádosti o standardní kvótu](../azure-portal/supportability/per-vm-quota-requests.md).
 
 
 **Otázka:** Kde můžu publikovat otázky?
 
-**A:** Svůj dotaz můžete odeslat a označit `azure-spot` na adrese [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html). 
+**A:** Svůj dotaz můžete odeslat a označit `azure-spot` na adrese [Q&A](/answers/topics/azure-spot.html). 
 
 ## <a name="next-steps"></a>Další kroky
 K nasazení virtuálních počítačů na místě použijte rozhraní příkazového [řádku](./linux/spot-cli.md), [portálu](spot-portal.md), [ARM](./linux/spot-template.md)nebo [PowerShell](./windows/spot-powershell.md) .

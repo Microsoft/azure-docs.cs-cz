@@ -15,7 +15,7 @@ ms.openlocfilehash: 7bdb2c6ba6717624b19184ca3bcb47ee9b3da367
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856105"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Co je Synchronizace dat SQL pro Azure?
@@ -149,7 +149,7 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 
 #### <a name="unsupported-column-types"></a>Nepodporované typy sloupců
 
-Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Příklad:
+Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Například:
 
 - Vypočítané sloupce.
 - Systémem generované sloupce pro dočasné tabulky.

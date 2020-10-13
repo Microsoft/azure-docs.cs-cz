@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/26/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50e202d26574c0fc8adfeb7f73eb150ebb1781af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94b8d744c964b07c1ed6a4d7e8b89bca2258c1bc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89663857"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963954"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Řešení potíží se zpětným zápisem pro Samoobslužné resetování hesla ve službě Azure Active Directory
 
@@ -150,7 +150,7 @@ Osvědčeným postupem při odstraňování potíží se zpětným zápisem hesl
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>Pokud je zdrojem události ADSync
 
-| Kód | Název nebo zpráva | Description |
+| Kód | Název nebo zpráva | Popis |
 | --- | --- | --- |
 | 6329 | BAIL: MMS (4924) 0x80230619: "omezení brání změně hesla na aktuálně zadaný." | K této události dojde, když se služba zpětného zápisu hesla pokusí nastavit heslo v místním adresáři, které nesplňuje stáří hesla, historii, složitost nebo požadavky na filtrování domény. <br> <br> Pokud máte minimální stáří hesla a v časovém intervalu jste nedávno změnili heslo, nebudete moct znovu změnit heslo, dokud nedosáhne zadaného stáří ve vaší doméně. Pro účely testování musí být minimální stáří nastavené na 0. <br> <br> Pokud máte povolené požadavky na historii hesel, musíte vybrat heslo, které se nepoužilo v posledních *n* časech, kde *N* je nastavení historie hesel. Pokud vyberete heslo, které se v posledních *N* časech používalo, zobrazí se v tomto případě chyba. Pro účely testování by měla být historie hesel nastavená na 0. <br> <br> Pokud máte požadavky na složitost hesla, budou všechny tyto zásady vynutily, když se uživatel pokusí změnit nebo resetovat heslo. <br> <br> Pokud máte povolené filtry hesel a uživatel vybere heslo, které nesplňuje kritéria filtrování, operace obnovení nebo změny se nezdařila. |
 | 6329 | MMS (3040): admaexport. cpp (2837): Server neobsahuje ovládací prvek zásad hesel LDAP. | K tomuto problému dochází, pokud se na řadičích domény nepovoluje LDAP_SERVER_POLICY_HINTS_OID Control (1.2.840.113556.1.4.2066). Chcete-li použít funkci zpětného zápisu hesla, je nutné povolit ovládací prvek. K tomu je potřeba, aby řadiče domény byly na Windows serveru 2008 R2 nebo novějším. |
@@ -158,7 +158,7 @@ Osvědčeným postupem při odstraňování potíží se zpětným zápisem hesl
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Pokud je zdrojem události PasswordResetService
 
-| Kód | Název nebo zpráva | Description |
+| Kód | Název nebo zpráva | Popis |
 | --- | --- | --- |
 | 31001 | PasswordResetStart | Tato událost označuje, že místní služba zjistila požadavek na resetování hesla pro federované, předávací ověřování nebo uživatele synchronizující hodnotu hash hesla, které pocházejí z cloudu. Tato událost představuje první událost při každé operaci zpětného zápisu hesla a obnovení. |
 | 31002 | PasswordResetSuccess | Tato událost označuje, že uživatel během operace resetování hesla vybral nové heslo. Zjistili jsme, že toto heslo splňuje požadavky na heslo společnosti. Heslo se úspěšně zapsalo zpátky do místního prostředí Active Directory. |

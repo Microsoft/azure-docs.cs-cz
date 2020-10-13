@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: baf89ec75f844ae1a1f7797d26d2fb04a0d5df34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1288f117a6b6c9fb05fd29578be35c676453177
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849839"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975157"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrace s Logic Apps s využitím vlastního konektoru
 
@@ -26,7 +26,7 @@ Digitální vlákna Azure momentálně nemají certifikovaný (předem sestaven�
 
 V tomto článku použijete [Azure Portal](https://portal.azure.com) k **Vytvoření vlastního konektoru** , který se dá použít k připojení Logic Apps k instanci digitálních vláken Azure. Pak **vytvoříte aplikaci logiky** , která bude toto připojení používat pro ukázkový scénář, ve kterém události aktivované časovačem automaticky aktualizují dvojitou repliku v instanci digitálních vláken Azure. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si ** [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) ** před tím, než začnete.
 Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí tohoto účtu. 
@@ -108,7 +108,7 @@ Na následující stránce *upravit Logic Apps vlastní konektor* nakonfigurujte
 * **Vlastní konektory**
     - Koncový bod rozhraní API: REST (ponechat výchozí)
     - Režim importu: soubor OpenAPI (ponechat výchozí)
-    - Soubor: Toto je vlastní soubor Swagger, který jste stáhli dříve. Spusťte *Import*, vyhledejte soubor na počítači (*Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.jszapnutý*) a stiskněte *otevřít*.
+    - Soubor: Toto je vlastní soubor Swagger, který jste stáhli dříve. Stiskněte tlačítko *importovat*, vyhledejte soubor na počítači (*Azure_Digital_Twins_Custom_Swaggers \logicapps \...\digitaltwins.jszapnutý*) a stiskněte *otevřít*.
 * **Obecné informace**
     - Ikona: Nahrajte ikonu, kterou se vám líbí.
     - Barva pozadí ikony: pro barvu zadejte hexadecimální kód ve formátu ' #xxxxxx '.
@@ -201,7 +201,7 @@ Může se zobrazit výzva k přihlášení pomocí přihlašovacích údajů Azu
 V poli New *DigitalTwinsAdd* vyplňte pole následujícím způsobem:
 * _ID_: Vyplňte *dvojitou identifikaci* digitálního vlákna ve vaší instanci, kterou chcete, aby aplikace logiky aktualizovala.
 * Prop _: do_tohoto pole zadáte text, který vyžaduje vybraná žádost o rozhraní API. V případě *DigitalTwinsUpdate*je tento text ve formě kódu opravy JSON. Další informace o strukturování opravy JSON pro aktualizaci vlákna najdete v části [aktualizace digitálního vlákna](how-to-manage-twin.md#update-a-digital-twin) v tématu *Postupy: Správa digitálních vláken*.
-* _verze API-Version_: v aktuální verzi Public Preview je tato hodnota *2020-05-31 – Preview*
+* _API-Version_: nejnovější verze rozhraní API. V aktuální veřejné verzi Preview je tato hodnota *2020-05-31-Preview* .
 
 Stiskněte *Uložit* v Návrháři Logic Apps.
 

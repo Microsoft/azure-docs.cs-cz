@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892901"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Kurz: nasazení jarního cloudu Azure ve službě Azure Virtual Network (vkládání virtuální sítě)
@@ -55,7 +55,7 @@ Pokud již máte virtuální síť pro hostování instance služby Azure jaře 
 
     |Nastavení          |Hodnota                                             |
     |-----------------|--------------------------------------------------|
-    |Předplatné     |Vyberte předplatné.                         |
+    |Předplatné     |Vyberte své předplatné.                         |
     |Skupina prostředků   |Vyberte skupinu prostředků nebo vytvořte novou.  |
     |Name             |Přechod do *Azure-jaře-Cloud-VNet*                   |
     |Umístění         |Vyberte **východní USA**                                |

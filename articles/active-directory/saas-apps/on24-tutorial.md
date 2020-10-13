@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 3977aee84b1281e7918987c63185069892b5909e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 163a0c9a7e728ee9cd08c4a154ea499c059cf2f6
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554248"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944375"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Kurz: Azure Active Directory integrace s virtuálním prostředím ON24 s připojením SAML
 
@@ -147,7 +147,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s připojením S
 
 5.  Pokud chcete nakonfigurovat aplikaci v režimu **SP** iniciované, proveďte následující krok:
 
-    ![Informace o jednotném přihlašování ON24 virtuálního prostředí SAML pro doménu připojení SAML a adresy URL](common/both-signonurl.png)
+    ![Snímek obrazovky, který zobrazuje část "nastavit další U R ls" se zvýrazněným textovým polem "přihlašovat u R L".](common/both-signonurl.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://vshow.on24.com/vshow/<INSTANCENAME>`
 
