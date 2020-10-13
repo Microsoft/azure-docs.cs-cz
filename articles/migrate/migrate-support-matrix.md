@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
 ms.openlocfilehash: ee45d2f489b23289e4f92a544590a510e77ece13
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627946"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrateová matice podpory
@@ -21,7 +21,7 @@ Tabulka shrnuje podporované scénáře zjišťování, hodnocení a migrace.
 
 **Nasazení** | **Podrobnosti** 
 --- | --- 
-**Rozpoznávání** | Můžete zjistit metadata počítače a dynamická data o výkonu.
+**Zjišťování** | Můžete zjistit metadata počítače a dynamická data o výkonu.
 **Zjišťování aplikací** | Můžete zjišťovat aplikace, role a funkce spuštěné na virtuálních počítačích VMware. V tuto chvíli je tato funkce omezená jenom na zjišťování. Posouzení je aktuálně na úrovni počítače. Ještě nenabízíme vyhodnocení na základě aplikací, rolí nebo funkcí. 
 **Posouzení** | Vyhodnoťte místní úlohy a data běžící na virtuálních počítačích VMware, virtuálních počítačích Hyper-V a fyzických serverech. Vyhodnotit pomocí Azure Migrate posouzení serveru, Microsoft Data Migration Assistant (DMA) a také dalších nástrojů a nabídek ISV.
 **Migrace** | Migrujte úlohy a data spuštěná na fyzických serverech, virtuálních počítačích VMware, virtuálních počítačích Hyper-V, fyzických serverech a cloudových virtuálních počítačích do Azure. Migrujte pomocí Azure Migrate Server Assessment and Azure Database Migration Service (DMS) a také další nástroje a nabídky ISV.
@@ -34,7 +34,7 @@ Tabulka shrnuje podporované scénáře zjišťování, hodnocení a migrace.
 
 Konkrétní podpora nástrojů je shrnuta v tabulce.
 
-**Nástroj** | **Posouzení** | **Migrace** 
+**Nástroj** | **Posouzení** | **Migrate** 
 --- | --- | ---
 Vyhodnocování serveru Azure Migrate | Posouzení [virtuálních počítačů VMware](tutorial-prepare-vmware.md), [virtuálních počítačů Hyper-V](tutorial-prepare-hyper-v.md)a [fyzických serverů](tutorial-prepare-physical.md). |  Není k dispozici (NA)
 Migrace serverů Azure Migrate | Není k dispozici | Migrujte [virtuální počítače VMware](tutorial-migrate-vmware.md), [virtuální počítače Hyper-V](tutorial-migrate-hyper-v.md)a [fyzické servery](tutorial-migrate-physical-virtual-machines.md).
@@ -81,7 +81,7 @@ Azure Migrate projekt můžete vytvořit v řadě geografických oblastí ve ve�
 - Geografie projektu se používá pouze k uložení zjištěných metadat.
 - Když vytvoříte projekt, vyberete zeměpisnou oblast. Projekt a související prostředky jsou vytvořeny v jedné z oblastí zeměpisné oblasti. Oblast je přidělená službou Azure Migrate.
 
-**Geografické** | **Umístění úložiště metadat**
+**Geografie** | **Umístění úložiště metadat**
 --- | ---
 Asie a Tichomoří | Východní Asie nebo jihovýchodní Asie
 Austrálie | Austrálie – východ nebo Austrálie – jihovýchod
@@ -101,7 +101,7 @@ USA | Střed USA nebo Západní USA 2
 
 ## <a name="supported-geographies-azure-government"></a>Podporovaná geografická oblast (Azure Government)
 
-**Úloha** | **Geografické** | **Podrobnosti**
+**Úloha** | **Geografie** | **Podrobnosti**
 --- | --- | ---
 Vytvoření projektu | USA | Metadata jsou uložena v US Gov – Arizona, US Gov – Virginie
 Posouzení cíle | USA | Cílové oblasti: US Gov – Arizona, US Gov – Virginie US Gov – Texas
@@ -122,7 +122,7 @@ Cílová replikace | USA | Cílové oblasti: US DoD – střed, US DoD – vých
 
 Existují dvě verze služby Azure Migrate:
 
-- **Aktuální verze**: pomocí této verze můžete vytvořit nové projekty Azure Migrate, zjišťovat místní vyhodnocení a orchestrovat posouzení a migrace. [Přečtěte si další informace](whats-new.md).
+- **Aktuální verze**: pomocí této verze můžete vytvořit nové projekty Azure Migrate, zjišťovat místní vyhodnocení a orchestrovat posouzení a migrace. [Další informace](whats-new.md).
 - **Předchozí verze**: pro zákazníky používající předchozí verzi Azure Migrate (podporuje se jenom posouzení místních virtuálních počítačů VMware), měli byste teď použít aktuální verzi. V předchozí verzi nemůžete vytvářet nové projekty Azure Migrate ani provádět nové zjišťování.
 
 ## <a name="next-steps"></a>Další kroky

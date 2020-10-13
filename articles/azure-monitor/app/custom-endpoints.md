@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/26/2019
 ms.custom: references_regions, devx-track-js
 ms.openlocfilehash: d6cea9044cd4898480fcc30532a05e6c8a407012
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333286"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights přepsání výchozích koncových bodů
@@ -158,7 +158,7 @@ Pokyny k úpravě koncového bodu ingestování pro sadu SDK opencensus-Python s
 
 V současné době jsou k [disAzure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) a [Azure Čína](/azure/china/resources-developer-guide)jedinými oblastmi, které vyžadují úpravy koncových bodů.
 
-|Region |  Název koncového bodu | Hodnota |
+|Oblast |  Název koncového bodu | Hodnota |
 |-----------------|:------------|:-------------|
 | Azure (Čína) | Kanál telemetrie | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure (Čína) | QuickPulse (živé metriky) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -170,7 +170,7 @@ V současné době jsou k [disAzure Government](../../azure-government/compare-a
 Pokud aktuálně používáte [REST API Application Insights](https://dev.applicationinsights.io/
 ) , ke kterému se běžně používá API.ApplicationInsights.IO prostřednictvím "", budete muset použít koncový bod, který je místní pro vaši oblast:
 
-|Region |  Název koncového bodu | Hodnota |
+|Oblast |  Název koncového bodu | Hodnota |
 |-----------------|:------------|:-------------|
 | Azure (Čína) | REST API | `api.applicationinsights.azure.cn` |
 | Azure Government | REST API | `api.applicationinsights.us`|

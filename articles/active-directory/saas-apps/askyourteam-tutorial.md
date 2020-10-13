@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 6ab6a355b986daeca41ffd18a51689cd9d880dcd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713814"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askyourteam"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s AskYourTeam
@@ -85,7 +85,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<COMPANY>.app.askyourteam.com/login`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a adres URL pro přihlášení, které jsou vysvětleny dále v tomto kurzu.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a Sign-On hodnoty URL, které jsou vysvětleny dále v tomto kurzu.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -105,7 +105,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Create** (Vytvořit).
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -139,13 +139,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **Upravit nastavení**.
 
-    ![Snímek obrazovky s tlačítkem upravit nastavení zobrazí zprávu jednotného přihlašování.](./media/askyourteam-tutorial/configure2.png)
+    ![Snímek obrazovky s tlačítkem upravit nastavení zobrazí jednu Sign-Onovou zprávu.](./media/askyourteam-tutorial/configure2.png)
 
-1. Na stránce **Upravit integraci jednotného přihlašování** proveďte následující kroky: 
+1. Na stránce **Upravit integraci jednoho Sign-On** proveďte následující kroky: 
 
-    ![Snímek obrazovky ukazuje integraci s jednotným přihlašováním, kde můžete zadat hodnoty pro tento krok.](./media/askyourteam-tutorial/configure3.png)
+    ![Snímek obrazovky znázorňující integraci s jednou Sign-On, kde můžete zadat hodnoty pro tento krok.](./media/askyourteam-tutorial/configure3.png)
 
-    a. Do textového pole **Adresa URL služby jednotného přihlašování SAML** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+    a. Do textového pole **Adresa URL služby Single Sign-On Service v SAML** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
     b. Do textového pole **ID entity SAML** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
 
@@ -194,7 +194,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici AskYourTeam, měli byste se automaticky přihlásit k AskYourTeam, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

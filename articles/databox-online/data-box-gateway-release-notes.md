@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
 ms.openlocfilehash: 1a8a9840cc6e1f3627c5fbd30e0b7432db0f16e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82561045"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Poznámky k verzi pro obecné dostupnosti Azure Data Box Edge/Azure Data Box Gateway
@@ -40,7 +40,7 @@ Verze GA odpovídá verzím softwaru:
 
 Následující tabulka poskytuje souhrn známých problémů Data Box Gateway vydaných verzí.
 
-| Ne. | Funkce | Problém | Alternativní řešení/komentáře |
+| Ne. | Příznak | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 | **1.** |Typy souborů | Následující typy souborů nejsou podporovány: soubory znaků, blokovat soubory, sokety, kanály, symbolické odkazy.  |Kopírování těchto souborů způsobí, že se ve sdílené složce NFS vytvoří soubory s délkou 0. Tyto soubory zůstávají v chybovém stavu a jsou také hlášeny v *error.xml*. <br> Symbolické odkazy na adresáře mají za následek, že se v adresářích nikdy nezobrazuje označení offline. V důsledku toho se nezobrazuje šedý průřez v adresářích, které ukazují, že adresáře jsou offline a veškerý přidružený obsah byl zcela nahrán do Azure. |
 | **2.** |Odstranění | Kvůli chybě v této verzi, pokud je odstraněna sdílená složka NFS, sdílená složka nemusí být smazána. V části stav sdílení se zobrazí *odstranění*.  |K tomu dojde pouze v případě, že sdílená složka používá nepodporovaný název souboru. |

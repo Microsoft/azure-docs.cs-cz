@@ -1,6 +1,6 @@
 ---
-title: OLTP v paměti zlepšuje výkon SQL TXN.
-description: Přijmout OLTP v paměti pro zlepšení transakčního výkonu v existující databázi v Azure SQL Database a Azure SQL Managed instance.
+title: In-Memory OLTP vylepšuje výkon SQL TXN.
+description: Přijmout In-Memory OLTP pro zlepšení transakčního výkonu v existující databázi v Azure SQL Database a spravované instanci Azure SQL.
 services: sql-database
 ms.service: sql-database
 ms.custom: sqldbrb=2
@@ -11,13 +11,13 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
 ms.openlocfilehash: e17e98e784b7453c87814c5cce5c03568f66b1cb
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619742"
 ---
-# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Použití OLTP v paměti ke zlepšení výkonu aplikace v Azure SQL Database a spravované instanci Azure SQL
+# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Použití In-Memory OLTP ke zlepšení výkonu aplikace v Azure SQL Database a spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 [OLTP v paměti](in-memory-oltp-overview.md) lze použít ke zlepšení výkonu zpracování transakcí, přijímání dat a přechodných scénářů dat v databázích [úrovně Premium a pro důležité obchodní informace](database/service-tiers-vcore.md) bez zvýšení cenové úrovně.
@@ -25,11 +25,11 @@ ms.locfileid: "91619742"
 > [!NOTE]
 > Přečtěte si [, jak kvorum podvoje úlohy klíčové databáze při snižování DTU o 70% s Azure SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
-Pomocí těchto kroků můžete v existující databázi přijmout OLTP v paměti.
+Pomocí těchto kroků můžete v existující databázi přijmout In-Memory OLTP.
 
 ## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>Krok 1: Ujistěte se, že používáte databázi úrovně Premium a Pro důležité obchodní informace.
 
-OLTP v paměti je podporováno pouze v databázích úrovně Premium a Pro důležité obchodní informace. V paměti je podporována, pokud je vrácený výsledek 1 (ne 0):
+In-Memory OLTP je podporováno pouze v databázích úrovně Premium a Pro důležité obchodní informace. In-Memory se podporuje, pokud je vrácený výsledek 1 (ne 0):
 
 ```sql
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
@@ -37,16 +37,16 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 *XTP* pro *extrémní zpracování transakcí*
 
-## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Krok 2: určení objektů, které se mají migrovat do OLTP v paměti
+## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Krok 2: určení objektů, které se mají migrovat do In-Memory OLTP
 
-SSMS zahrnuje sestavu s **přehledem analýzy výkonu transakcí** , kterou můžete spustit pro databázi s aktivním zatížením. Tato sestava identifikuje tabulky a uložené procedury, které jsou kandidáty na migraci do OLTP v paměti.
+SSMS zahrnuje sestavu s **přehledem analýzy výkonu transakcí** , kterou můžete spustit pro databázi s aktivním zatížením. Tato sestava identifikuje tabulky a uložené procedury, které jsou kandidáty na migraci In-Memory OLTP.
 
 V SSMS vygenerujte sestavu:
 
 * V **Průzkumník objektů**klikněte pravým tlačítkem myši na uzel databáze.
 * Klikněte na **sestavy**  >  **standardní**  >  **Přehled analýzy výkonu transakce**.
 
-Další informace najdete v tématu [určení, zda by měla být tabulka nebo uložená procedura převoditelné do OLTP v paměti](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp).
+Další informace najdete v tématu [určení, zda by měla být tabulka nebo uložená procedura In-Memory OLTP](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp).
 
 ## <a name="step-3-create-a-comparable-test-database"></a>Krok 3: vytvoření srovnatelné testovací databáze
 
@@ -83,8 +83,8 @@ Postup použití této možnosti migrace:
 3. V průvodci klikněte na **Ověření migrace** (nebo na tlačítko **Další** ) a zjistěte, jestli má tabulka nějaké nepodporované funkce, které nejsou podporované v paměťově optimalizovaných tabulkách. Další informace naleznete v tématech:
 
    * *Kontrolní seznam optimalizace paměti* v [poradci optimalizace paměti](/sql/relational-databases/in-memory-oltp/memory-optimization-advisor).
-   * [OLTP v paměti nepodporují konstrukce jazyka Transact-SQL](/sql/relational-databases/in-memory-oltp/transact-sql-constructs-not-supported-by-in-memory-oltp).
-   * [Migrace do OLTP v paměti](/sql/relational-databases/in-memory-oltp/plan-your-adoption-of-in-memory-oltp-features-in-sql-server).
+   * [In-Memory OLTP nepodporuje konstrukce Transact-SQL](/sql/relational-databases/in-memory-oltp/transact-sql-constructs-not-supported-by-in-memory-oltp).
+   * [Migruje se na In-Memory OLTP](/sql/relational-databases/in-memory-oltp/plan-your-adoption-of-in-memory-oltp-features-in-sql-server).
 4. Pokud tabulka neobsahuje žádné nepodporované funkce, může poradce pro vás provést vlastní migraci schématu a dat.
 
 ### <a name="manual-t-sql"></a>Ruční T-SQL
@@ -109,7 +109,7 @@ INSERT INTO <new_memory_optimized_table>
 
 ## <a name="step-5-optional-migrate-stored-procedures"></a>Krok 5 (volitelné): migrace uložených procedur
 
-Funkce v paměti může také upravovat uloženou proceduru pro zlepšení výkonu.
+Funkce In-Memory může také upravit uloženou proceduru pro zlepšení výkonu.
 
 ### <a name="considerations-with-natively-compiled-stored-procedures"></a>Otázky s nativně kompilovanými uloženými procedurami
 
@@ -157,7 +157,7 @@ Postup migrace je následující:
 
 ## <a name="step-6-run-your-workload-in-test"></a>Krok 6: spuštění úlohy v testu
 
-Spusťte v testovací databázi úlohu, která bude podobná zatížení, které běží ve vaší provozní databázi. To by mělo odhalit nárůst výkonu dosažený využitím funkce v paměti pro tabulky a uložené procedury.
+Spusťte v testovací databázi úlohu, která bude podobná zatížení, které běží ve vaší provozní databázi. To by mělo odhalit zvýšení výkonu dosažené při používání funkce In-Memory pro tabulky a uložené procedury.
 
 Hlavní atributy úlohy jsou:
 
@@ -170,9 +170,9 @@ Chcete-li minimalizovat latenci sítě, spusťte test ve stejné geografické ob
 
 ## <a name="step-7-post-implementation-monitoring"></a>Krok 7: monitorování po implementaci
 
-Zvažte monitorování vlivu implementace v paměti v produkčním prostředí:
+Zvažte monitorování vlivu In-Memory implementace v produkčním prostředí:
 
-* [Monitorujte úložiště v paměti](in-memory-oltp-monitor-space.md).
+* [Monitorujte In-Memory úložiště](in-memory-oltp-monitor-space.md).
 * [Monitorování pomocí zobrazení dynamické správy](database/monitoring-with-dmvs.md)
 
 ## <a name="related-links"></a>Související odkazy

@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
 ms.openlocfilehash: 5774acbfc035ab61267dddb31b01b0e82689f690
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91849788"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření automatického vzorce pro škálování výpočetních uzlů ve fondu služby Batch
@@ -188,11 +188,11 @@ Tyto operace jsou povoleny u typů, které jsou uvedeny v předchozí části.
 
 Při testování typu Double pomocí ternárního operátoru ( `double ? statement1 : statement2` ), nenulová hodnota je **true**a nula je **false**.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
 Při definování vzorce automatického škálování můžete použít tyto předdefinované **funkce** .
 
-| Funkce | Návratový typ | Popis |
+| Funkce | Návratový typ | Description |
 | --- | --- | --- |
 | průměr (doubleVecList) |double |Vrátí průměrnou hodnotu pro všechny hodnoty v doubleVecList. |
 | len (doubleVecList) |double |Vrátí délku vektoru, který je vytvořen z doubleVecList. |
@@ -214,7 +214,7 @@ Při definování vzorce automatického škálování můžete použít tyto př
 | čas (String dateTime = "") |časové razítko |Vrátí časové razítko aktuálního času, pokud nejsou předány žádné parametry, nebo časové razítko řetězce dateTime, pokud je předáno. Podporované formáty data a času jsou W3C-DTF a RFC 1123. |
 | Val (doubleVec v, Double i) |double |Vrátí hodnotu elementu, který je v umístění i ve vektoru v, s počátečním indexem nula. |
 
-Některé z funkcí, které jsou popsány v předchozí tabulce, mohou seznam přijmout jako argument. Seznam oddělený čárkami je libovolná kombinace typu *Double* a *doubleVec*. Příklad:
+Některé z funkcí, které jsou popsány v předchozí tabulce, mohou seznam přijmout jako argument. Seznam oddělený čárkami je libovolná kombinace typu *Double* a *doubleVec*. Například:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -309,7 +309,7 @@ K tomu použijte `GetSample(interval look-back start, interval look-back end)` k
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Když je výše uvedený řádek vyhodnocován pomocí Batch, vrátí rozsah ukázek jako vektor hodnot. Příklad:
+Když je výše uvedený řádek vyhodnocován pomocí Batch, vrátí rozsah ukázek jako vektor hodnot. Například:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -473,7 +473,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Povolit automatické škálování u existujícího fondu
 
-Každá sada Batch SDK nabízí způsob, jak povolit automatické škálování. Příklad:
+Každá sada Batch SDK nabízí způsob, jak povolit automatické škálování. Například:
 
 - [BatchClient. PoolOperations. EnableAutoScaleAsync](/dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync) (Batch .NET)
 - [Povolit automatické škálování ve fondu](/rest/api/batchservice/enable-automatic-scaling-on-a-pool) (REST API)

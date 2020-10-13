@@ -4,13 +4,13 @@ description: Tento článek popisuje, jak můžete nakonfigurovat agenta Azure M
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.openlocfilehash: 039c6355bef638aae0b2ef074f006aabc04185c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84299277"
 ---
-# <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurace shromažďování dat agenta pro Azure Monitor pro kontejnery
+# <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurace shromažďování dat agenta pro službu Azure Monitor pro kontejnery
 
 Azure Monitor pro kontejnery shromáždí z kontejnerového agenta prostředí stdout, stderr a environmentální proměnné z úloh kontejneru nasazených do spravovaných clusterů Kubernetes. Nastavení shromažďování dat agenta můžete nakonfigurovat vytvořením vlastního ConfigMaps Kubernetes pro řízení tohoto prostředí. 
 
@@ -31,15 +31,15 @@ K dispozici je soubor šablony ConfigMap, který umožňuje snadnou úpravu pomo
 
 Níže jsou uvedené nastavení, které lze nakonfigurovat pro řízení shromažďování dat.
 
-| Klíč | Datový typ | Hodnota | Description |
+| Klíč | Datový typ | Hodnota | Popis |
 |--|--|--|--|
 | `schema-version` | Řetězec (rozlišuje velká a malá písmena) | V1 | Toto je verze schématu používaná agentem.<br> při analýze tohoto ConfigMap.<br> Aktuálně podporovaná verze schématu je v1.<br> Úprava této hodnoty není podporována a bude<br> odmítnuto, když je vyhodnocen ConfigMap |
 | `config-version` | Řetězec |  | Podporuje schopnost sledovat tuto verzi konfiguračního souboru v systému správy zdrojů nebo v úložišti.<br> Maximální povolený počet znaků je 10 a všechny ostatní znaky jsou zkráceny. |
 | `[log_collection_settings.stdout] enabled =` | Logická hodnota | true nebo false | Tento ovládací prvek určuje, zda je povoleno shromažďování protokolů kontejnerů STDOUT. Při nastavení na `true` a nejsou vyloučeny žádné obory názvů pro shromažďování protokolů STDOUT.<br> ( `log_collection_settings.stdout.exclude_namespaces` Nastavení níže), protokoly stdout budou shromažďovány ze všech kontejnerů napříč všemi lusky/uzly v clusteru. Pokud není zadán v ConfigMaps,<br> Výchozí hodnota je `enabled = true` . |
 | `[log_collection_settings.stdout] exclude_namespaces =` | Řetězec | Pole oddělené čárkami | Pole oborů názvů Kubernetes, pro které se protokoly stdout nebudou shromažďovat Toto nastavení je platné pouze v případě, že<br> `log_collection_settings.stdout.enabled`<br> je nastaven na `true` .<br> Pokud není zadán v ConfigMap, výchozí hodnota je<br> `exclude_namespaces = ["kube-system"]`. |
 | `[log_collection_settings.stderr] enabled =` | Logická hodnota | true nebo false | Tyto ovládací prvky, pokud je povoleno shromažďování protokolů kontejneru stderr.<br> Při nastavení na `true` a nejsou vyloučeny žádné obory názvů pro shromažďování protokolů STDOUT.<br> ( `log_collection_settings.stderr.exclude_namespaces` nastavení), protokoly stderr budou shromažďovány ze všech kontejnerů napříč všemi lusky nebo uzly v clusteru.<br> Pokud není zadán v ConfigMaps, výchozí hodnota je<br> `enabled = true`. |
-| `[log_collection_settings.stderr] exclude_namespaces =` | Řetězec | Pole oddělené čárkami | Pole oborů názvů Kubernetes, pro které nebudou shromažďovány protokoly stderr<br> Toto nastavení je platné pouze v případě, že<br> `log_collection_settings.stdout.enabled`je nastaven na `true` .<br> Pokud není zadán v ConfigMap, výchozí hodnota je<br> `exclude_namespaces = ["kube-system"]`. |
-| `[log_collection_settings.env_var] enabled =` | Logická hodnota | true nebo false | Toto nastavení řídí kolekci proměnných prostředí.<br> napříč všemi lusky/uzly v clusteru<br> a výchozí hodnota, `enabled = true` Pokud není zadána<br> v ConfigMaps.<br> Pokud je kolekce proměnných prostředí globálně povolená, můžete ji zakázat pro konkrétní kontejner.<br> nastavením proměnné prostředí<br> `AZMON_COLLECT_ENV`na **hodnotu false** buď s nastavením souboru Dockerfile, nebo v [konfiguračním souboru pro](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) bod pod **obálkou ENV:** .<br> Pokud je kolekce proměnných prostředí globálně zakázaná, nemůžete povolit shromažďování pro konkrétní kontejner (to znamená, že jediné přepsání, které může být použito na úrovni kontejneru, je zakázat shromažďování, pokud je již povoleno globálně). |
+| `[log_collection_settings.stderr] exclude_namespaces =` | Řetězec | Pole oddělené čárkami | Pole oborů názvů Kubernetes, pro které nebudou shromažďovány protokoly stderr<br> Toto nastavení je platné pouze v případě, že<br> `log_collection_settings.stdout.enabled` je nastaven na `true` .<br> Pokud není zadán v ConfigMap, výchozí hodnota je<br> `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.env_var] enabled =` | Logická hodnota | true nebo false | Toto nastavení řídí kolekci proměnných prostředí.<br> napříč všemi lusky/uzly v clusteru<br> a výchozí hodnota, `enabled = true` Pokud není zadána<br> v ConfigMaps.<br> Pokud je kolekce proměnných prostředí globálně povolená, můžete ji zakázat pro konkrétní kontejner.<br> nastavením proměnné prostředí<br> `AZMON_COLLECT_ENV` na **hodnotu false** buď s nastavením souboru Dockerfile, nebo v [konfiguračním souboru pro](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) bod pod **obálkou ENV:** .<br> Pokud je kolekce proměnných prostředí globálně zakázaná, nemůžete povolit shromažďování pro konkrétní kontejner (to znamená, že jediné přepsání, které může být použito na úrovni kontejneru, je zakázat shromažďování, pokud je již povoleno globálně). |
 | `[log_collection_settings.enrich_container_logs] enabled =` | Logická hodnota | true nebo false | Toto nastavení řídí rozšíření protokolu kontejneru, aby se naplnily hodnoty vlastností název a obrázek.<br> pro každý záznam protokolu zapsaný do tabulky ContainerLog pro všechny protokoly kontejnerů v clusteru.<br> Nastaví se na výchozí hodnotu, `enabled = false` Pokud není zadána v ConfigMap. |
 | `[log_collection_settings.collect_all_kube_events]` | Logická hodnota | true nebo false | Toto nastavení umožňuje shromažďování událostí Kube všech typů.<br> Ve výchozím nastavení nejsou shromažďovány události Kube s typem *Normal* . Pokud je toto nastavení nastaveno na hodnotu `true` , *běžné* události již nejsou filtrovány a jsou shromažďovány všechny události.<br> Ve výchozím nastavení je tato hodnota nastavena na `false` . |
 
@@ -115,7 +115,7 @@ Dokončení změny konfigurace může trvat několik minut, než se projeví, a 
 
 ## <a name="verifying-schema-version"></a>Ověřuje se verze schématu.
 
-Podporované verze schématu konfigurace jsou k dispozici jako Poznámka (verze schématu) na omsagent pod. Můžete je zobrazit pomocí následujícího příkazu kubectl:`kubectl describe pod omsagent-fdf58 -n=kube-system`
+Podporované verze schématu konfigurace jsou k dispozici jako Poznámka (verze schématu) na omsagent pod. Můžete je zobrazit pomocí následujícího příkazu kubectl: `kubectl describe pod omsagent-fdf58 -n=kube-system`
 
 Ve výstupu se zobrazí zpráva podobná následující se schématy poznámky – verze:
 

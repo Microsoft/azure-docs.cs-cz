@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: 22112272bb302769e5969cf6995d486438deb41f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75431613"
 ---
 # <a name="azure-stream-analytics-output-error-policy"></a>Zásada pro chyby výstupu Azure Stream Analytics
@@ -23,7 +23,7 @@ Zásady zpracování chyb výstupních dat se vztahují jenom na chyby převodu 
 ![Umístění zásad chyb výstupu Azure Stream Analytics](./media/stream-analytics-output-error-policy/stream-analytics-error-policy-locate.png)
 
 
-## <a name="retry"></a>Zkusit znovu
+## <a name="retry"></a>Retry
 Pokud dojde k chybě, Azure Stream Analytics pokusy o zápis události po neomezenou dobu, dokud zápis nebude úspěšný. Pro opakované pokusy není k dispozici žádný časový limit. Nakonec se všechny následné události zablokují ze zpracování událostí, která se opakuje. Tato možnost je výchozí zásadou zpracování chyb výstupu.
 
 ## <a name="drop"></a>Umístíte

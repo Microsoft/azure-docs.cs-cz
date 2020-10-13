@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: b6e5a22a073a2a61db4a630388fee886e2f4ed26
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543329"
 ---
 # <a name="azure-operational-security"></a>Provozní zabezpečení Azure
@@ -228,7 +228,7 @@ Network Watcher v současné době má následující možnosti:
 -   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Protokoly auditu</a>**– zaprotokolují se operace prováděné jako součást konfigurace sítí. Tyto protokoly můžete zobrazit v Azure Portal nebo načíst pomocí nástrojů Microsoftu, jako jsou Power BI nebo nástroje třetích stran. Protokoly auditu jsou k dispozici prostřednictvím portálu, PowerShellu, CLI a rozhraní REST API. Další informace o protokolech auditu najdete v tématu operace auditu s Správce prostředků. Protokoly auditu jsou k dispozici pro operace provedené na všech síťových prostředcích.
 
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">Ověření toku protokolu IP</a>** – kontroluje, jestli je paket povolený nebo zakázaný na základě informací o toku 5 – parametry paketů řazené kolekce členů (cílová IP adresa, zdrojová IP adresa, cílový port, zdrojový port a protokol). Pokud je paket odepřen skupinou zabezpečení sítě, vrátí se pravidlo a skupina zabezpečení sítě, která paket zamítla.
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">Ověření toku protokolu IP </a>** – kontroluje, jestli je paket povolený nebo zakázaný na základě informací o toku 5 – parametry paketů řazené kolekce členů (cílová IP adresa, zdrojová IP adresa, cílový port, zdrojový port a protokol). Pokud je paket odepřen skupinou zabezpečení sítě, vrátí se pravidlo a skupina zabezpečení sítě, která paket zamítla.
 
 -   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview">Další směrování</a>** – Určuje další segment směrování pro pakety směrované do síťových prostředků Azure, což vám umožní diagnostikovat všechny nesprávně nakonfigurované trasy definované uživatelem.
 
@@ -308,7 +308,7 @@ Události v sestavě auditu Azure AD se uchovávají po dobu 180 dnů.
 
 Pro zákazníky, kteří mají zájem o ukládání svých [událostí auditu](../../active-directory/active-directory-reporting-activity-audit-logs.md) pro delší dobu uchování, se dá rozhraní API pro vytváření sestav použít k pravidelnému vystavování událostí auditu do samostatného úložiště dat.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku se dozvíte, jak ochránit vaše osobní údaje a zabezpečovat vaše data, a přitom doručovat software a služby, které vám pomůžou se správou IT infrastruktury vaší organizace. Společnost Microsoft rozpoznává, že když pověří svá data jinými uživateli, je nutné, aby důvěryhodnost vyžadovala přísné zabezpečení. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb. Zabezpečení a ochrana dat je nejvyšší prioritou Microsoftu.
 
@@ -325,7 +325,7 @@ Tento článek vysvětluje
 <ul>
 <li>Shromažďování událostí souvisejících se zabezpečením, auditem a analýzou nedodržení těchto prostředků:</li>
 <ul>
-<li>Stav zabezpečení</li>
+<li>Postoj k zabezpečení</li>
 <li>Významné problémy</li>
 <li>Shrnutí hrozeb</li>
 </ul>

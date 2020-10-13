@@ -10,10 +10,10 @@ ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: 91527b5f2159a336e8339c6a128e8d61965292a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81732605"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Sada SDK pro zařízení Azure IoT pro C – Další informace o IoTHubClient
@@ -256,7 +256,7 @@ Může se zdát, že byste chtěli použít **IoTHubClient \_ CreateFromConnecti
 
 ## <a name="configuration-options"></a>Možnosti konfigurace
 
-Zatím všechno popsané o způsobu, jakým funguje knihovna **IoTHubClient** , odráží její výchozí chování. Existuje však několik možností, kterými můžete změnit způsob fungování knihovny. K tomu je možné využít rozhraní API IoTHubClient s funkcí ** \_ \_ SetOption** . Vezměte v úvahu tento příklad:
+Zatím všechno popsané o způsobu, jakým funguje knihovna **IoTHubClient** , odráží její výchozí chování. Existuje však několik možností, kterými můžete změnit způsob fungování knihovny. K tomu je možné využít rozhraní API IoTHubClient s funkcí ** \_ \_ SetOption** . Podívejte se na tento příklad:
 
 ```C
 unsigned int timeout = 30000;

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 86c2c7383f3850b0c51831f94e673c3941894a08
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88548866"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Kurz: Azure Active Directory integrace s rozpoznáváním
@@ -73,7 +73,7 @@ Aby se jednotné přihlašování fungovalo, je potřeba zřídit vztah propojen
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s rozpoznáváním, je potřeba dokončit následující stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte rozpoznávání jednotného přihlašování](#configure-recognize-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte rozpoznávání jednotného přihlašování](#configure-recognize-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření rozpoznávání testovacího uživatele](#create-recognize-test-user)** – Pokud chcete mít v rozpoznávání Britta Simon, které je propojené s reprezentací uživatele Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete konfigurovat jednotné přihlašování Azure AD pomocí rozpoznáv
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -119,7 +119,7 @@ Pokud chcete konfigurovat jednotné přihlašování Azure AD pomocí rozpoznáv
     > [!Note]
     > Pokud hodnota **identifikátoru** není automaticky vyplněna, zobrazí se hodnota identifikátoru otevřením adresy URL metadat poskytovatele služby z oddílu nastavení jednotného přihlašování, která je vysvětlena dále v části **Konfigurace rozpoznávání rozpoznávat jednotné přihlašování** v tomto kurzu. Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pro získání hodnoty kontaktujte [tým podpory pro klienty](mailto:support@recognizeapp.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -133,21 +133,21 @@ Pokud chcete konfigurovat jednotné přihlašování Azure AD pomocí rozpoznáv
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-recognize-single-sign-on"></a>Nakonfigurovat rozpoznávání jednotného přihlašování
+### <a name="configure-recognize-single-sign-on"></a>Konfigurace rozpoznávání jednoduchého Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k vašemu rozpoznávacímu klientovi jako správce.
 
 2. V pravém horním rohu klikněte na **nabídku**. Přejít na **Správce společnosti**.
    
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/recognize-tutorial/tutorial_recognize_000.png)
+    ![Konfigurovat jednu Sign-On na straně aplikace](./media/recognize-tutorial/tutorial_recognize_000.png)
 
 3. V levém navigačním podokně klikněte na **Nastavení**.
    
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/recognize-tutorial/tutorial_recognize_001.png)
+    ![Konfigurovat jednu Sign-On na straně aplikace](./media/recognize-tutorial/tutorial_recognize_001.png)
 
 4. V části **nastavení jednotného přihlašování** proveďte následující kroky.
    
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/recognize-tutorial/tutorial_recognize_002.png)
+    ![Konfigurovat jednu Sign-On na straně aplikace](./media/recognize-tutorial/tutorial_recognize_002.png)
     
     a. Jako **Povolit jednotné přihlašování**vyberte **zapnuto**.
 
@@ -163,11 +163,11 @@ Pokud chcete konfigurovat jednotné přihlašování Azure AD pomocí rozpoznáv
 
 5. Vedle části **nastavení jednotného přihlašování** zkopírujte adresu URL v části **Adresa URL metadat poskytovatele služby**.
    
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/recognize-tutorial/tutorial_recognize_003.png)
+    ![Konfigurovat jednu Sign-On na straně aplikace](./media/recognize-tutorial/tutorial_recognize_003.png)
 
 6. Otevřete **odkaz metadata URL** v rámci prázdného prohlížeče a Stáhněte si dokument metadat. Pak z tohoto souboru Zkopírujte hodnotu EntityDescriptor (entityID) a vložte ji do textového pole **identifikátoru** v **základní konfiguraci SAML** na Azure Portal.
     
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/recognize-tutorial/tutorial_recognize_004.png)
+    ![Konfigurovat jednu Sign-On na straně aplikace](./media/recognize-tutorial/tutorial_recognize_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -191,7 +191,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -199,7 +199,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **rozpoznat**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **rozpoznat**.
 

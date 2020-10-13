@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 41ea41b4d7c181dad9246653a68c329387ac5381
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80884677"
 ---
 # <a name="microsoft-identity-platform-authentication-protocols"></a>Protokoly ověřování platformy Microsoft identity
@@ -31,7 +31,7 @@ Platforma Microsoft Identity Platform podporuje několik nejčastěji používan
 * [OpenID Connect 1,0](v2-protocols-oidc.md) – Naučte se používat ověřovací protokol OAuth 2,0 pro ověřování.
 * [Volání služeb s přihlašovacími údaji klienta](v2-oauth2-client-creds-grant-flow.md) – Zjistěte, jak pomocí přihlašovacích údajů klienta OAuth 2,0 udělit tok pro volání služeb.
 * Obsluha [volání služby s](v2-oauth2-on-behalf-of-flow.md) využitím toku – Naučte se, jak používat službu OAuth 2,0 za běhu za účelem obsluhy volání služeb.
-* [Odkaz na protokol SAML](active-directory-saml-protocol-reference.md) – informace o jednotném přihlašování a jednom z profilů SAML platformy Microsoft Identity Platform
+* [Referenční informace o protokolu SAML](active-directory-saml-protocol-reference.md) – Přečtěte si o jednom Sign-On a jednom z profilů SAML pro jednotné přihlašování na platformě Microsoft Identity Platform.
 
 ## <a name="see-also"></a>Viz také
 

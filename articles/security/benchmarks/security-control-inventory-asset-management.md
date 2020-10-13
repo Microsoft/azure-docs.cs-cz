@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: aece7278d134145e00b027c184f3817d5566e1e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81408352"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Řízení zabezpečení: inventář a Správa prostředků
@@ -38,7 +38,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 6.2 | 1.5 | Zákazník |
+| 6,2 | 1.5 | Zákazník |
 
 Použijte značky pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
@@ -94,7 +94,7 @@ Pomocí inventáře virtuálních počítačů Azure můžete automatizovat shro
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 6.7 | 2.5 | Zákazník |
+| 6.7 | 2,5 | Zákazník |
 
 K identifikaci veškerého softwaru nainstalovaného v Virtual Machines použijte Azure Security Center monitorování integrity souborů (Change Tracking) a inventář virtuálních počítačů. Můžete implementovat vlastní proces odebrání neautorizovaného softwaru. K identifikaci neschváleného softwaru můžete také použít řešení třetí strany.
 

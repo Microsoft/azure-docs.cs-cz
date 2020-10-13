@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: a7ae1a0f77d0d19fc48695ddc5cc3d3a14d65ab9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82195124"
 ---
 # <a name="azure-data-lake-storage-gen2-overview-in-hdinsight"></a>Přehled Azure Data Lake Storage Gen2 v HDInsight
@@ -57,11 +57,11 @@ Azure Data Lake Storage Gen2 používá nové schéma identifikátoru URI pro p�
 
 Schéma identifikátoru URI poskytuje přístup šifrovaný protokolem SSL.
 
-`<FILE_SYSTEM_NAME>`Určuje cestu Data Lake Storage Gen2 systému souborů.
+`<FILE_SYSTEM_NAME>` Určuje cestu Data Lake Storage Gen2 systému souborů.
 
-`<ACCOUNT_NAME>`Určuje název Azure Storage účtu. Vyžaduje se plně kvalifikovaný název domény (FQDN).
+`<ACCOUNT_NAME>` Určuje název Azure Storage účtu. Vyžaduje se plně kvalifikovaný název domény (FQDN).
 
-`<PATH>`je název cesty HDFS souboru nebo adresáře.
+`<PATH>` je název cesty HDFS souboru nebo adresáře.
 
 Pokud `<FILE_SYSTEM_NAME>` `<ACCOUNT_NAME>` nejsou zadány hodnoty pro a, použije se výchozí systém souborů. Pro soubory ve výchozím systému souborů použijte relativní cestu nebo absolutní cestu. Například `hadoop-mapreduce-examples.jar` soubor, který je součástí clusterů HDInsight, lze odkazovat pomocí jedné z následujících cest:
 

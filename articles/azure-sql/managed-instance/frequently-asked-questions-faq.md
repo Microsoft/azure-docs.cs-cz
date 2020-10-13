@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
 ms.openlocfilehash: fedbcf00512e2eb671656ca1c585df83560a8c02
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91627614"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure SQL Managed Instance
@@ -262,7 +262,7 @@ Ano. Po zřízení spravované instance můžete nastavit NSG, který řídí p�
 
 **Můžu nastavit síťové virtuální zařízení nebo místní bránu firewall pro filtrování odchozího provozu správy na základě plně kvalifikovaných názvů domén?**
 
-No. Tato akce není podporována z několika důvodů:
+Ne. Tato akce není podporována z několika důvodů:
 -   Směrování provozu, který reprezentuje odpověď na příchozí požadavek na správu, by bylo asymetrické a nebylo možné ho použít.
 -   Směrování provozu na úložiště by ovlivnilo omezení propustnosti a latenci, takže nebudeme moct poskytovat očekávanou kvalitu a dostupnost služby.
 -   Na základě zkušeností jsou tyto konfigurace náchylné k chybám a nepodporují se.
@@ -281,7 +281,7 @@ V případě, že v podsíti, ve které je zřízena vaše spravovaná instance,
 
 **Potřebuji prázdnou podsíť pro vytvoření spravované instance?**
 
-No. Můžete použít buď prázdnou podsíť, nebo podsíť, která již obsahuje spravované instance. 
+Ne. Můžete použít buď prázdnou podsíť, nebo podsíť, která již obsahuje spravované instance. 
 
 **Můžu změnit rozsah adres podsítě?**
 
@@ -289,7 +289,7 @@ Není v případě, že jsou k dispozici spravované instance. Toto je omezení 
 
 **Můžu svoje spravované instance přesunout do jiné podsítě?**
 
-No. Toto je aktuální omezení návrhu spravované instance. Můžete ale zřídit novou instanci v jiné podsíti a ručně zálohovat a obnovovat data mezi starou a novou instancí nebo provést [obnovení k určitému časovému okamžiku](point-in-time-restore.md?tabs=azure-powershell)mezi instancemi.
+Ne. Toto je aktuální omezení návrhu spravované instance. Můžete ale zřídit novou instanci v jiné podsíti a ručně zálohovat a obnovovat data mezi starou a novou instancí nebo provést [obnovení k určitému časovému okamžiku](point-in-time-restore.md?tabs=azure-powershell)mezi instancemi.
 
 **Potřebuji k vytvoření spravované instance prázdnou virtuální síť?**
 
@@ -297,7 +297,7 @@ Tento krok není povinný. Můžete buď [vytvořit virtuální síť pro spravo
 
 **Můžu v podsíti umístit spravovanou instanci na jiné služby?**
 
-No. V současné době nepodporujeme umístění spravované instance v podsíti, která už obsahuje jiné typy prostředků.
+Ne. V současné době nepodporujeme umístění spravované instance v podsíti, která už obsahuje jiné typy prostředků.
 
 ## <a name="connectivity"></a>Připojení 
 

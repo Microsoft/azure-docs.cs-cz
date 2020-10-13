@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 70db1ff63e3c2a7e7806e5ef3c55b4e4af4a5259
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89263565"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Vkládání reklam na straně klienta
@@ -353,7 +353,7 @@ Soubor MAST začíná elementem **mast** , který obsahuje jeden element **Trigg
     </trigger>
 ```
 
-### <a name="using-video-player-ad-interface-definition-vpaid"></a>Použití přehrávače videa – definice rozhraní AD (VPAID)
+### <a name="using-video-player-ad-interface-definition-vpaid"></a>Použití definice rozhraní video Player-Ad (VPAID)
 VPAID je rozhraní API pro povolení komunikace spustitelných jednotek AD s přehrávačem videa. To umožňuje vysoce interaktivní prostředí Active Directory. Uživatel může komunikovat se službou AD a služba AD může reagovat na akce podniknuté prohlížečem. Například reklama může zobrazit tlačítka, která uživateli umožňují zobrazit další informace nebo delší verzi služby AD. Přehrávač videa musí podporovat rozhraní VPAID API a spustitelný soubor AD musí implementovat rozhraní API. Když hráč vyžádá reklamu ze serveru AD, server může reagovat s obrovské odezvy, která obsahuje VPAID AD.
 
 V kódu, který musí být spuštěn v běhovém prostředí, jako je například Adobe Flash™ nebo JavaScript, který lze spustit ve webovém prohlížeči, je vytvořen spustitelný objekt AD. Pokud server AD vrátí nepřebernou odpověď obsahující VPAID AD, hodnota atributu apiFramework v `<MediaFile>` elementu musí být "VPAID". Tento atribut určuje, že obsažená služba AD je VPAID spustitelná služba AD. Atribut Type musí být nastaven na typ MIME spustitelného souboru, například application/x-Shockwave-Flash nebo Application/x-JavaScript. Následující fragment kódu XML ukazuje `<MediaFile>` prvek z obrovské odpovědi obsahující spustitelnou službu AD VPAID.

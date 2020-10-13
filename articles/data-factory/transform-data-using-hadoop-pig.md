@@ -12,10 +12,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: 54eff77daa7e69c39e9ec5d6f326f2f64c9fcafb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83849225"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity systému Hadoop pro vepřové použití v Azure Data Factory
@@ -59,10 +59,10 @@ Pokud Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data
 ```
 ## <a name="syntax-details"></a>Podrobnosti syntaxe
 
-| Vlastnost            | Popis                              | Vyžadováno |
+| Vlastnost            | Popis                              | Povinné |
 | ------------------- | ---------------------------------------- | -------- |
 | name                | Název aktivity                     | Yes      |
-| description         | Text popisující, k čemu se aktivita používá | No       |
+| Popis         | Text popisující, k čemu se aktivita používá | No       |
 | typ                | V případě aktivity podregistru je typ aktivity HDinsightPig. | Yes      |
 | linkedServiceName   | Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Yes      |
 | scriptLinkedService | Odkaz na propojenou službu Azure Storage, která se používá k uložení skriptu prasete, který se má spustit. Tady se podporují jenom propojené služby **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** a **[adls Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** . Pokud tuto propojenou službu nezadáte, použije se propojená služba Azure Storage definovaná v propojené službě HDInsight. | No       |

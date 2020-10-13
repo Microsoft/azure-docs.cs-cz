@@ -9,13 +9,13 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fc1154a3d4cefc84f223810a1972dd85673a6b3e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530892"
 ---
-# <a name="how-to-use-custom-allocation-policies"></a>Jak používat vlastní zásady přidělování
+# <a name="how-to-use-custom-allocation-policies"></a>Postupy používání vlastních zásad přidělování
 
 Vlastní zásady přidělení poskytují větší kontrolu nad tím, jak se zařízení přiřazují do služby IoT Hub. K tomu je potřeba pomocí vlastního kódu ve [službě Azure Function](../azure-functions/functions-overview.md) přiřazovat zařízení ke službě IoT Hub. Služba Device Provisioning zavolá váš kód funkce Azure, který poskytuje všechny relevantní informace o zařízení a registraci. Váš kód funkce se spustí a vrátí informace o službě IoT Hub použité ke zřízení zařízení.
 
@@ -100,7 +100,7 @@ V této části použijete Azure Cloud Shell k vytvoření služby zřizování 
 
 V této části vytvoříte funkci Azure, která implementuje vaše vlastní zásady přidělování. Tato funkce určuje, ke kterému centru IoT Hub má být zařízení zaregistrováno na základě toho, zda ID registrace obsahuje řetězec **-Contoso-tstrsd-007** nebo **-Contoso-hpsd-088**. Také nastaví počáteční stav vlákna zařízení na základě toho, zda je zařízení informační nebo tepelné čerpadlo.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Na domovské stránce vyberte **+ vytvořit prostředek**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Na domovské stránce vyberte **+ vytvořit prostředek**.
 
 2. Do vyhledávacího pole *Hledat na Marketplace* zadejte "Function App". V rozevíracím seznamu vyberte **Function App**a pak vyberte **vytvořit**.
 
@@ -506,7 +506,7 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
     prov_dev_set_symmetric_key_info("breakroom499-contoso-tstrsd-007", "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=");
     ```
 
-    Soubor uložte.
+    Uložte soubor.
 
 2. V nabídce sady Visual Studio vyberte **ladit**  >  **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano**a znovu sestavte projekt před spuštěním.
 
@@ -535,7 +535,7 @@ Tento ukázkový kód simuluje spouštěcí sekvenci zařízení, která odesíl
     prov_dev_set_symmetric_key_info("mainbuilding167-contoso-hpsd-088", "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=");
     ```
 
-    Soubor uložte.
+    Uložte soubor.
 
 2. V nabídce sady Visual Studio vyberte **ladit**  >  **Spustit bez ladění** a spusťte řešení. V příkazovém řádku pro opětovné sestavení projektu vyberte **Ano** pro opětovné sestavení projektu před spuštěním.
 

@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 2a10558e76a6e9af7c7571dc4ba3d063ce3e2286
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84021156"
 ---
 # <a name="create-client-side-performance-traces"></a>Vytvoření trasování výkonu na straně klienta
@@ -81,7 +81,7 @@ Pokud chcete zaznamenat trasování na HoloLens, spusťte zařízení a zadejte 
 
 1. Na levé straně přejděte na *výkon > sledování výkonu*.
 1. Vybrat **vlastní profily**
-1. Klepněte**:::no-loc text="Browse...":::**
+1. Klepněte **:::no-loc text="Browse...":::**
 1. Vyberte soubor *AzureRemoteRenderingNetworkProfiling. wprp*. Tento soubor najdete v sadě ARR SDK v nabídce *nástroje/ETLProfiles*.
 1. Klikněte na **Spustit trasování** .
 1. HoloLens nyní zaznamenává trasování. Nezapomeňte aktivovat problémy s výkonem, které chcete prozkoumat. Pak klikněte na **Zastavit trasování**.
