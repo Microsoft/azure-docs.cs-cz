@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeedes
-ms.openlocfilehash: daef8a91c2f31379ebf50d1e8ec66d0b33ebb2cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 081c61610c4134917ffa90cf45fb096f3df4bcbe
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88534808"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939235"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s konzolou správce Netskope
 
@@ -148,19 +148,19 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. V levém navigačním podokně klikněte na kartu **Nastavení** .
 
-    ![Konfigurace konzoly správce Netskope](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![Snímek obrazovky se zobrazeným nastavením vybraným v navigačním podokně.](./media/netskope-cloud-security-tutorial/config-settings.png)
 
 1. Klikněte na kartu **Správa** .
 
-    ![Konfigurace konzoly správce Netskope](./media/netskope-cloud-security-tutorial/config-administration.png)
+    ![Snímek obrazovky se zobrazí Správa vybraná z nastavení.](./media/netskope-cloud-security-tutorial/config-administration.png)
 
 1. Klikněte na kartu **jednotné přihlašování** .
 
-    ![Konfigurace konzoly správce Netskope](./media/netskope-cloud-security-tutorial/config-sso.png)
+    ![Snímek obrazovky S vybraným v administrativním zobrazení.](./media/netskope-cloud-security-tutorial/config-sso.png)
 
 1. V části **nastavení sítě** proveďte následující kroky:
     
-    ![Konfigurace konzoly správce Netskope](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
+    ![Snímek obrazovky zobrazuje nastavení sítě, kde můžete zadat hodnoty, které jsou popsány.](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
 
     a. Zkopírujte hodnotu **adresy URL služby assertion Consumer Service** a vložte ji do textového pole **Adresa URL odpovědi** v části **základní konfigurace SAML** v Azure Portal.
 
@@ -168,11 +168,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. V části **nastavení jednotného přihlašování/slo** klikněte na **Upravit nastavení** .
 
-    ![Konfigurace konzoly správce Netskope](./media/netskope-cloud-security-tutorial/config-editsettings.png)
+    ![Snímek obrazovky ukazuje nastavení s S/S v, kde můžete vybrat upravit nastavení.](./media/netskope-cloud-security-tutorial/config-editsettings.png)
 
 1. V místním okně **Nastavení** proveďte následující kroky:
 
-    ![Konfigurace konzoly správce Netskope](./media/netskope-cloud-security-tutorial/configuration.png)
+    ![Snímek obrazovky se zobrazí dialogové okno nastavení, ve kterém můžete zadat hodnoty, které jsou popsány.](./media/netskope-cloud-security-tutorial/configuration.png)
 
     a. Vyberte možnost **Povolit jednotné přihlašování**.
 
@@ -194,23 +194,23 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. V levém navigačním podokně klikněte na kartu **Nastavení** .
 
-    ![Vytvoření uživatele konzoly správce Netskope](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![Snímek obrazovky zobrazuje vybraná nastavení.](./media/netskope-cloud-security-tutorial/config-settings.png)
 
 1. Klikněte na kartu **Aktivní platforma** .
 
-    ![Vytvoření uživatele konzoly správce Netskope](./media/netskope-cloud-security-tutorial/user1.png)
+    ![Snímek obrazovky se zobrazí aktivní Platforma vybraná z nastavení.](./media/netskope-cloud-security-tutorial/user1.png)
 
 1. Klikněte na kartu **Uživatelé** .
 
-    ![Vytvoření uživatele konzoly správce Netskope](./media/netskope-cloud-security-tutorial/add-user.png)
+    ![Snímek obrazovky zobrazuje uživatele vybrané z aktivní platformy.](./media/netskope-cloud-security-tutorial/add-user.png)
 
 1. Klikněte na **Přidat uživatele**.
 
-    ![Vytvoření uživatele konzoly správce Netskope](./media/netskope-cloud-security-tutorial/user-add.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně uživatelé, kde můžete vybrat přidat uživatele.](./media/netskope-cloud-security-tutorial/user-add.png)
 
 1. Zadejte e-mailovou adresu uživatele, kterého chcete přidat, a klikněte na **Přidat**.
 
-    ![Vytvoření uživatele konzoly správce Netskope](./media/netskope-cloud-security-tutorial/add-user-popup.png)
+    ![Snímek obrazovky ukazuje přidat uživatele, kde můžete zadat seznam uživatelů.](./media/netskope-cloud-security-tutorial/add-user-popup.png)
 
 ## <a name="test-sso"></a>Test SSO
 

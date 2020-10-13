@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: efbe8bc24b430716da46601ed073300e4c79cca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b7d670f5e38968fa6592e323ede075abf687435
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743722"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939013"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Úrovně výkonu pro Managed Disks (Preview)
 
@@ -58,7 +58,7 @@ Informace o fakturaci najdete v tématu [ceny za spravované disky](https://azur
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Možnost upravit úroveň výkonu spravovaného disku je v tuto chvíli dostupná jenom na úrovni Premium SSD v oblasti Středozápadní USA. 
+Možnost upravit úroveň výkonu spravovaného disku je v současnosti dostupná jenom na SSD Premium v oblastech Východní USA 2, Střed USA – jih, Středozápadní USA a Austrálie – jih – východ.
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Vytvoření prázdného datového disku s úrovní vyšší než základní úroveň
 

@@ -8,10 +8,10 @@ ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 69a47820d2afaf24f413aabf2c59a40c032070c1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89231380"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>Základní hodnoty zabezpečení Azure pro ExpressRoute
@@ -242,7 +242,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 K nakonfigurování řízení přístupu na základě role Azure (Azure RBAC) můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory.
 
-Partneři, kteří používají Správce prostředků Partnerská rozhraní API, můžou navíc na prostředek expressRouteCrossConnection použít Access Control na základě rolí. Tyto ovládací prvky mohou definovat oprávnění, pro které mohou uživatelské účty upravovat prostředek expressRouteCrossConnection a konfigurace partnerských vztahů Přidat/aktualizovat/odstranit.
+Partneři, kteří používají Správce prostředků Partnerská rozhraní ExpressRoute, můžou navíc Role-Based Access Control na prostředek expressRouteCrossConnection. Tyto ovládací prvky mohou definovat oprávnění, pro které mohou uživatelské účty upravovat prostředek expressRouteCrossConnection a konfigurace partnerských vztahů Přidat/aktualizovat/odstranit.
 
 * [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
@@ -459,7 +459,7 @@ Jak nakonfigurovat lokalitu na síť IPSEC přes ExpressRoute: https://docs.micr
 
 Azure ExpressRoute má také vlastníka okruhu a uživatelské role okruhu. Uživatelé okruhu jsou vlastníky bran virtuální sítě, které nejsou v rámci stejného předplatného jako okruh ExpressRoute. Vlastník okruhu má kdykoliv oprávnění upravovat a odvolat. Odvolání výsledků autorizace ve všech připojeních propojení, která se odstraňují z předplatného, jehož přístup byl odvolán. Uživatelé okruhu můžou uplatnit autorizaci (jednu autorizaci na virtuální síť).
 
-Partneři, kteří používají Správce prostředků Partnerská rozhraní API, můžou navíc na prostředek expressRouteCrossConnection použít Access Control na základě rolí. Tyto ovládací prvky mohou definovat oprávnění, pro které mohou uživatelské účty upravovat prostředek expressRouteCrossConnection a konfigurace partnerských vztahů Přidat/aktualizovat/odstranit.
+Partneři, kteří používají Správce prostředků Partnerská rozhraní ExpressRoute, můžou navíc Role-Based Access Control na prostředek expressRouteCrossConnection. Tyto ovládací prvky mohou definovat oprávnění, pro které mohou uživatelské účty upravovat prostředek expressRouteCrossConnection a konfigurace partnerských vztahů Přidat/aktualizovat/odstranit.
 
 * [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
@@ -891,9 +891,9 @@ Je vaše zodpovědnost za to, že se veškerý obsah nahrává do prostředků A
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a klíčů spravovaných zákazníkem
 
-**Pokyny**: povolení obnovitelného odstranění v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
+**Pokyny**: povolení Soft-Delete v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
-* [Jak povolit obnovitelné odstranění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Postup povolení Soft-Delete v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: nelze použít
 

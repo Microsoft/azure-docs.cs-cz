@@ -14,10 +14,10 @@ ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
 ms.openlocfilehash: da358ecb126dda21d18120bbe698fec234c85e4f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88798954"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Správa uživatelů pomocí mých zaměstnanců (Preview)
@@ -91,7 +91,7 @@ Následující role mají oprávnění resetovat heslo uživatele:
 - [Správce privilegovaného ověřování](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [Globální správce](directory-assign-admin-roles.md#global-administrator--company-administrator)
 - [Správce helpdesku](directory-assign-admin-roles.md#helpdesk-administrator)
-- [Správce uživatelů](directory-assign-admin-roles.md#user-administrator)
+- [Správce uživatele](directory-assign-admin-roles.md#user-administrator)
 - [Správce hesel](directory-assign-admin-roles.md#password-administrator)
 
 V **okně Moji zaměstnanci**otevřete profil uživatele. Vyberte **resetovat heslo**.
