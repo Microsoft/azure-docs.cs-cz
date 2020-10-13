@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: bcb9ca9e73c0898dc778202eca036a5ae92bebf8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076133"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace a shromažďování událostí pomocí Azure Diagnostics Windows
@@ -26,7 +26,7 @@ Jedním ze způsobů, jak nahrávat a shromažďovat protokoly, je použít roz�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto článku se používají následující nástroje:
 
 * [Azure Resource Manager](../azure-resource-manager/management/overview.md)
@@ -193,7 +193,7 @@ Po úpravě template.jsv souboru, jak je popsáno, znovu publikujte šablonu Spr
 
 ### <a name="update-storage-quota"></a>Aktualizovat kvótu úložiště
 
-Vzhledem k tomu, že tabulky naplněné rozšířením roste až do dosažení kvóty, možná budete chtít zvážit snížení velikosti kvóty. Výchozí hodnota je 50 GB a v šabloně se dá nakonfigurovat pod `overallQuotaInMB` polem`DiagnosticMonitorConfiguration`
+Vzhledem k tomu, že tabulky naplněné rozšířením roste až do dosažení kvóty, možná budete chtít zvážit snížení velikosti kvóty. Výchozí hodnota je 50 GB a v šabloně se dá nakonfigurovat pod `overallQuotaInMB` polem `DiagnosticMonitorConfiguration`
 
 ```json
 "overallQuotaInMB": "50000",
@@ -284,7 +284,7 @@ Chcete-li aktualizovat diagnostiku pro shromažďování protokolů z nových ka
 
 Aktualizujte `EtwEventSourceProviderConfiguration` část template.jsv souboru, abyste mohli přidat položky pro nové kanály EventSource předtím, než použijete aktualizaci konfigurace pomocí `New-AzResourceGroupDeployment` příkazu PowerShellu. Název zdroje události je definován jako součást kódu v souboru ServiceEventSource.cs generovaném systémem Visual Studio.
 
-Pokud se například váš zdroj události jmenuje my-EventSource, přidejte následující kód, který umístí události z mé vlastnosti EventSource do tabulky s názvem MyDestinationTableName.
+Pokud se například váš zdroj události jmenuje my-EventSource, přidejte následující kód, který umístí události z My-Eventsource do tabulky s názvem MyDestinationTableName.
 
 ```json
         {

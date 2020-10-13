@@ -10,10 +10,10 @@ ms.date: 02/03/2020
 ms.author: mimckitt
 ms.reviewer: davberg
 ms.openlocfilehash: ba8c3f730897c01c52aaf4499269425426d0b7b5
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667176"
 ---
 # <a name="azure-compute-unit-acu"></a>Výpočetní jednotka Azure (ACU)
@@ -64,12 +64,12 @@ Vlákny s technologií Hyper a schopné spustit vnořenou virtualizaci
 | [F1s úrovně – F16s úrovně](sizes-previous-gen.md) |210 - 250* | 1:1 |
 | [G1-G5](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [GS1 – GS5](sizes-previous-gen.md) |180 - 240* | 1:1 |
-| [H](h-series.md) |290 - 300* | 1:1 |
+| [Y](h-series.md) |290 - 300* | 1:1 |
 | [HB](hb-series.md) |199 – 216 * * | 1:1 |
 | [HC](hc-series.md) |297 – 315 * | 1:1 |
 | [L4S úrovně – L32s úrovně](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [L8s_v2 – L80s_v2](lsv2-series.md) |150 – 175 * * | 2:1 |
-| [M](m-series.md) | 160 – 180 | 2:1\*\*\* |
+| [4m](m-series.md) | 160 – 180 | 2:1\*\*\* |
 | [NVv4](nvv4-series.md) |230 – 260 * * | 2:1 |
 
 Tady jsou odkazy na Další informace o různých velikostech:

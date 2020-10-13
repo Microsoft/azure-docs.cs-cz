@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
 ms.openlocfilehash: c41e9fe1f197334bce27241ab9f28309c92f7e0a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316541"
 ---
 # <a name="testing-for-luis-devops"></a>Testování pro LUIS DevOps
@@ -42,7 +42,7 @@ Při psaní sady testů pro každý test, který je třeba definovat:
 * Očekávaný záměr
 * Očekávané entity.
 
-Pomocí [syntaxe dávkového souboru](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-syntax-template-for-intents-with-entities) Luis definujte skupinu testů v souboru ve formátu JSON. Příklad:
+Pomocí [syntaxe dávkového souboru](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-syntax-template-for-intents-with-entities) Luis definujte skupinu testů v souboru ve formátu JSON. Například:
 
 ```JSON
 [

@@ -9,10 +9,10 @@ ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
 ms.openlocfilehash: eb96537f67c61fb31759da020068f784d0e89993
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323396"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Monitorování využití a odhadovaných nákladů v Azure Monitor
@@ -70,11 +70,11 @@ Odtud můžete přejít z tohoto souhrnného souhrnu nákladů a získat tak př
 Podrobnější informace o využití najdete na stránce [stažení vašeho využití z Azure Portal](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). Ve stažených tabulkách můžete zobrazit využití podle prostředku Azure za den. V této excelové tabulce můžete využití vašich Application Insightsch prostředků najít při prvním filtrování ve sloupci měřiče měření, pokud chcete zobrazit Application Insights a Log Analytics, a pak přidat filtr na sloupec ID instance, který je obsahuje Microsoft. Insights/Components.  Většina využití Application Insights se oznamuje u měřičů s kategorií měřičů Log Analytics, protože pro všechny Azure Monitor komponenty existuje back-end s jedním protokolem.  Pouze Application Insights prostředky se staršími cenovými úrovněmi a webovými testy ve více krocích jsou hlášeny s kategorií měřičů Application Insights.  Využití se zobrazí ve sloupci "spotřebované množství" a jednotka pro každou položku je zobrazena ve sloupci Měrná jednotka.  K dispozici jsou také další podrobnosti, které vám pomůžou [porozumět informacím na faktuře za Microsoft Azure](../../cost-management-billing/understand/review-individual-bill.md). 
 
 > [!NOTE]
-> Použití **cost management** v centrálním centru **Azure cost management +** je upřednostňovaným přístupem k rozsáhlému porozumění nákladům na monitorování.  Prostředí pro **využití a odhadované náklady** [Log Analytics](./manage-cost-storage.md#understand-your-usage-and-estimate-costs) a [Application Insights](../app/pricing.md#understand-your-usage-and-estimate-costs) poskytují hlubší přehledy pro každou z těchto částí Azure monitor.
+> Použití **cost management** v centrálním centru **Azure cost management +** je upřednostňovaným přístupem k rozsáhlému porozumění nákladům na monitorování.  Prostředí pro **využití a odhadované náklady** [Log Analytics](./manage-cost-storage.md#understand-your-usage-and-estimate-costs)  a [Application Insights](../app/pricing.md#understand-your-usage-and-estimate-costs) poskytují hlubší přehledy pro každou z těchto částí Azure monitor.
 
 Další možností zobrazení Azure Monitor využití jsou stránky **využití a odhadované náklady** v centru monitorování. Zobrazuje se tím použití základních monitorovacích funkcí, jako jsou například [výstrahy, metriky, oznámení](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)a [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). Pro zákazníky, kteří mají cenové tarify k dispozici před dubna 2018, to zahrnuje i Log Analytics využití zakoupené prostřednictvím nabídky Insights a Analytics.
 
-Na této stránce můžou uživatelé zobrazit své využití prostředků za posledních 31 dnů, agregované podle předplatného. `Drill-ins`Zobrazit trendy využití za 31 dní. Pro tento odhad je potřeba udělat spoustu dat, a proto se prosím ujistěte, že se stránka načítá.
+Na této stránce můžou uživatelé zobrazit své využití prostředků za posledních 31 dnů, agregované podle předplatného. `Drill-ins` Zobrazit trendy využití za 31 dní. Pro tento odhad je potřeba udělat spoustu dat, a proto se prosím ujistěte, že se stránka načítá.
 
 Tento příklad ukazuje využití monitorování a odhad výsledných nákladů:
 

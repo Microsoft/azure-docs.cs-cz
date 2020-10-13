@@ -9,10 +9,10 @@ ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: a79a030c4f57c3dabdd14c01aa2062cab7026cd3
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611516"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Dočasné disky s operačním systémem pro virtuální počítače Azure
@@ -40,7 +40,7 @@ Klíčové rozdíly mezi trvalými a dočasnými disky s operačním systémem:
 | **Podpora oblastí**              | Všechny oblasti                                                                                  | Všechny oblasti                              |
 | **Trvalost dat**            | Data disku s operačním systémem zapsaná na disk s operačním systémem se ukládají v Azure Storage                                  | Data zapsaná na disk s operačním systémem se ukládají do místního úložiště virtuálního počítače a neukládají se do Azure Storage. |
 | **Stav zastavení a zrušení přidělení**      | Virtuální počítače a instance sady škálování se dají zastavit – zrušit přidělení a restartovat ze stavu Zastaveno (přidělení). | Virtuální počítače a instance sady škálování nelze zastavit – zrušit přidělení                                  |
-| **Specializovaná podpora disků s operačním systémem** | Ano                                                                                          | Ne                                                                                 |
+| **Specializovaná podpora disků s operačním systémem** | Yes                                                                                          | No                                                                                 |
 | **Změna velikosti disku s operačním systémem**              | Podporováno během vytváření virtuálních počítačů a po zastavení virtuálního počítače – zrušení přidělení                                | Podporováno pouze během vytváření virtuálních počítačů                                                  |
 | **Změna velikosti nového virtuálního počítače**   | Data disku operačního systému se zachovají.                                                                    | Data na disku s operačním systémem se odstraní, operační systém se znovu zřídí.                                      |
 

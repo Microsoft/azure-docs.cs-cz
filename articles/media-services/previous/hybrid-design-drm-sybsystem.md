@@ -16,10 +16,10 @@ ms.date: 08/31/2020
 ms.author: willzhan
 ms.reviewer: juliako
 ms.openlocfilehash: 1bf01e98e418edfe8f15043d16a199b276b71020
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266897"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hybridní návrh subsystémů DRM
@@ -101,9 +101,9 @@ Na základě vysvětlení v předchozí části používají následující pět
 |---|---|---|---|---|---|
 |AMS|AMS|AMS|Yes|Yes|Ukázka 1|
 |AMS|AMS|Třetí strana|Yes|Yes|Ukázka 2|
-|AMS|Třetí strana|AMS|Ano|No|Ukázka 3|
+|AMS|Třetí strana|AMS|Yes|No|Ukázka 3|
 |AMS|Třetí strana|Nenachází|No|No|Ukázka 4|
-|Třetí strana|Třetí strana|AMS|Ano|No|    
+|Třetí strana|Třetí strana|AMS|Yes|No|    
 
 V ukázkách funguje ochrana PlayReady pro PŘERUŠOVANé i hladké streamování. Níže uvedené adresy URL videa jsou vyhlazené adresy URL streamování. Chcete-li získat odpovídající POMLČKy URL, stačí připojit "(Format = MPD-Time-CSF)". K otestování v prohlížeči můžete použít [přehrávač Azure Media test Player](https://aka.ms/amtest) . Umožňuje vám nakonfigurovat, který protokol streamování se má použít, na kterém tech. IE11 a Microsoft Edge na Windows 10 podporují PlayReady prostřednictvím EME. Další informace najdete v [podrobnostech o testovacím nástroji](./offline-playready-streaming-windows-10.md).
 
@@ -133,7 +133,7 @@ V ukázkách funguje ochrana PlayReady pro PŘERUŠOVANé i hladké streamován�
 
 * Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V souhrnu Azure Media Services komponenty DRM flexibilní, můžete je použít v hybridním scénáři tím, že správně nakonfigurujete klíč obsahu a zásady doručování prostředků, jak je popsáno v tomto tématu.
 

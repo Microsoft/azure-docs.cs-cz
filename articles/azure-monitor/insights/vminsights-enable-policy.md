@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: 240c96016304c009c36485869ac15f5f38076fb7
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90088285"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Povolení Azure Monitor pro virtuální počítače pomocí Azure Policy
@@ -21,7 +21,7 @@ Pokud nejste obeznámeni s Azure Policy, získáte stručný úvod k [nasazení 
 > [!NOTE]
 > Pokud chcete používat Azure Policy se službou Azure Virtual Machine Scale Sets nebo pokud chcete pracovat s Azure Policy přímo k povolení virtuálních počítačů Azure, přečtěte si téma [nasazení Azure monitor se škálováním pomocí Azure Policy](../deploy-scale.md#azure-monitor-for-vms).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](vminsights-configure-workspace.md).
 - V části [podporované operační systémy](vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
 

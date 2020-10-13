@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 04b5c9464c614c32f178e35e72cee98450007a62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4c48f25f1d4bd3822a93d2c780dd148d9e29827
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772783"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940527"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure (Preview)
 
@@ -48,7 +48,7 @@ Další informace o pokynech pro správu Azure Key Vault najdete v tématech:
 > [!NOTE]
 > `Key Vault Contributor` role je určena pro operace roviny správy ke správě trezorů klíčů. Neumožňuje přístup k klíčům, tajným klíčům a certifikátům.
 
-| Předdefinovaná role | Description | ID |
+| Předdefinovaná role | Popis | ID |
 | --- | --- | --- |
 | Správce Key Vault (Preview) | Proveďte všechny operace roviny dat u trezoru klíčů a všech objektů, včetně certifikátů, klíčů a tajných klíčů. Nejde spravovat prostředky trezoru klíčů ani spravovat přiřazení rolí. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
 | Key Vault úřední certifikát (Preview) | S výjimkou oprávnění spravovat je možné provést jakoukoli akci s certifikáty trezoru klíčů. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | a4417e6f-fecd-4de8-b567-7b0420556985 |
@@ -70,7 +70,7 @@ Nový model oprávnění Azure RBAC pro Trezor klíčů poskytuje alternativu k 
 Chcete-li přidat přiřazení rolí, je nutné mít následující:
 
 - Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- `Microsoft.Authorization/roleAssignments/write`a `Microsoft.Authorization/roleAssignments/delete` oprávnění, jako je například správce nebo [vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#owner) [přístupu uživatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#user-access-administrator)
+- `Microsoft.Authorization/roleAssignments/write`a `Microsoft.Authorization/roleAssignments/delete` oprávnění, jako je například správce nebo [vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) [přístupu uživatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Povolit oprávnění Azure RBAC na Key Vault
 

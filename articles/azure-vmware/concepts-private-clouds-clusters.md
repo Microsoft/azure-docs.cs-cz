@@ -4,10 +4,10 @@ description: Seznamte se s klíčovými možnostmi pro služby Azure VMware Soft
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 715293d9951876ff0f794f8f6b580093f89571b3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316864"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Koncepce privátního cloudu a clusteru řešení Azure VMware
@@ -38,7 +38,7 @@ V clusterech v rámci řešení Azure VMware pro privátní cloudy se používaj
 
 | Typ hostitele              |             Procesor             |   RAM (GB)   |  Síti vSAN NVMe cache úrovně (TB, RAW)  |  úroveň kapacity síti vSAN SSD (TB, RAW)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
-| Horní – konec (HE)          |  Dual Intel 18 Core 2,3 GHz  |     576      |                3.2               |                15,20               |
+| High-End (HE)          |  Dual Intel 18 Core 2,3 GHz  |     576      |                3.2               |                15,20               |
 
 Hostitelé, kteří se používají k sestavení nebo škálování clusterů, se získávají z izolovaného fondu hostitelů. Tito hostitelé prošli hardwarovými testy a museli jste bezpečně odstranit všechna data z disků Flash. Když odeberete hostitele z clusteru, interní disky se bezpečně vymažou a hostitelé se umístí do izolovaného fondu hostitelů. Když přidáte hostitele do clusteru, použije se upravený hostitel z izolovaného fondu.
 
@@ -61,7 +61,7 @@ Obecné zásady a procesy upgradu pro software platformy řešení Azure VMware 
 
 Údržba hostitelů a správa životního cyklu se provádí bez dopadu na kapacitu nebo výkon clusterů privátního cloudu. Mezi příklady automatizované údržby hostitele patří upgrady firmwaru a oprava hardwaru nebo náhrada.
 
-Společnost Microsoft zodpovídá za správu životního cyklu zařízení NSX-T, jako je NSX-T Manager a NSX-T Edge. Společnost Microsoft je také zodpovědná za zavedení konfigurace sítě, například vytvoření brány vrstvy 0 a povolení směrování na sever-jih. Jako správce privátního cloudu vašeho řešení VMware Azure zodpovídáte za konfiguraci NSX-T SDN. Například segmenty sítě, pravidla pro distribuované brány firewall, brány 1 a nástroje pro vyrovnávání zatížení.
+Společnost Microsoft zodpovídá za správu životního cyklu zařízení NSX-T, jako je NSX-T Manager a NSX-T Edge. Společnost Microsoft je také zodpovědná za zavedení konfigurace sítě, například vytvoření brány vrstvy 0 a povolení směrování North-South. Jako správce privátního cloudu vašeho řešení VMware Azure zodpovídáte za konfiguraci NSX-T SDN. Například segmenty sítě, pravidla pro distribuované brány firewall, brány 1 a nástroje pro vyrovnávání zatížení.
 
 > [!IMPORTANT]
 > Správce řešení Azure VMware nesmí měnit konfiguraci brány NSX-T Edge nebo vrstvy 0. To může mít za následek ztrátu služby.

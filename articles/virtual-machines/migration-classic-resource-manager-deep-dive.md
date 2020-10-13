@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 233ba17e1ae1b554eff092151ad9f05fd660beb3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855922"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970006"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager
 
@@ -135,7 +135,7 @@ Tento krok je volitelný, pokud chcete vrátit změny v modelu nasazení Classic
 Po dokončení ověření můžete migraci potvrdit. Prostředky se již v modelu nasazení Classic neobjevují a jsou k dispozici pouze v modelu nasazení Správce prostředků. Migrované prostředky je možné spravovat pouze na novém portálu.
 
 > [!NOTE]
-> Toto je idempotentní operace. Pokud dojde k chybě, zkuste operaci zopakovat. Pokud se tato chyba bude opakovat, vytvořte lístek podpory nebo vytvořte fórum na [webu Microsoft Q&](https://docs.microsoft.com/answers/index.html)
+> Toto je idempotentní operace. Pokud dojde k chybě, zkuste operaci zopakovat. Pokud se tato chyba bude opakovat, vytvořte lístek podpory nebo vytvořte fórum na [webu Microsoft Q&](/answers/index.html)
 >
 >
 

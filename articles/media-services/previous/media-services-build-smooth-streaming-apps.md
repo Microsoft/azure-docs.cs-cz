@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9b616b03698e83d256a7b81e4548edbf21dba058
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264636"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Postup sestavení Smooth Streaming aplikace pro Windows Store
@@ -88,7 +88,7 @@ Další informace o vývoji aplikací pro Windows Store najdete v tématu [vývo
     | Name | Hodnota |
     | --- | --- |
     | Referenční skupina |Windows/rozšíření |
-    | Reference |Vyberte sadu Microsoft Smooth Streaming Client SDK pro Windows 8 a balíček Microsoft Visual C++ Runtime |
+    | Odkaz |Vyberte sadu Microsoft Smooth Streaming Client SDK pro Windows 8 a balíček Microsoft Visual C++ Runtime |
 
 1. Klikněte na **OK**. 
 
@@ -519,7 +519,7 @@ Stejné události jsou také k dispozici na úrovni adaptivního zdrojového spr
    ```
 
    > [!NOTE]
-   > CoreDispatcher se používá k provádění změn vlákna uživatelského rozhraní z vlákna, které není v uživatelském rozhraní. V případě kritických míst ve vlákně dispečera může vývojář zvolit, že se má použít dispečer poskytovaný prvky uživatelského rozhraní, které mají v úmyslu aktualizovat.  Příklad:
+   > CoreDispatcher se používá k provádění změn vlákna uživatelského rozhraní z vlákna, které není v uživatelském rozhraní. V případě kritických míst ve vlákně dispečera může vývojář zvolit, že se má použít dispečer poskytovaný prvky uživatelského rozhraní, které mají v úmyslu aktualizovat.  Například:
 
    ```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 

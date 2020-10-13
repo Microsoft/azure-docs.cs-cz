@@ -1,22 +1,22 @@
 ---
-title: Migrace webových služeb z Google Maps | Mapy Microsoft Azure
-description: Migrace webových služeb z Map Google na mapy Microsoft Azure
+title: Kurz – migrace webových služeb z Google Maps | Mapy Microsoft Azure
+description: Kurz migrace webových služeb z Google Maps na mapy Microsoft Azure
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/19/2020
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 57d71d517cb953a2a2c84b7e003fd08541416539
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5da42ebd31e4b09eb8bc223560aec976584c47e9
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319567"
+ms.locfileid: "91874454"
 ---
-# <a name="migrate-web-service-from-google-maps"></a>Migrace webové služby z Google Maps
+# <a name="tutorial---migrate-web-service-from-google-maps"></a>Kurz – migrace webové služby z Google Maps
 
 Mapy Azure i Google poskytují přístup k prostorovým rozhraním API prostřednictvím webových služeb REST. Rozhraní API těchto platforem fungují podobně jako funkce. Ale každý z nich používá různé konvence pojmenování a objekty odpovědí.
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c9dce90b0dc563fb0fa7ecaaa0882167eef444a0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89019891"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Vytváření, sledování a Správa datových továrn Azure pomocí sady Azure Data Factory .NET SDK
@@ -29,7 +29,7 @@ Pomocí sady Data Factory .NET SDK můžete programově vytvářet, monitorovat 
 > [!NOTE]
 > Tento článek nepopisuje všechny možnosti rozhraní .NET API služby Data Factory. V tématu [Data Factory rozhraní .NET API Reference](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) pro komplexní dokumentaci k rozhraní .NET api pro Data Factory. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -104,7 +104,7 @@ Z těchto kroků byste měli mít tyto čtyři hodnoty:
 * ID aplikace
 * Heslo (zadané v prvním příkazu)
 
-## <a name="walkthrough"></a>Návod
+## <a name="walkthrough"></a>Názorný postup
 V tomto návodu vytvoříte datovou továrnu s kanálem, který obsahuje aktivitu kopírování. Aktivita kopírování kopíruje data ze složky ve vašem úložišti objektů BLOB v Azure do jiné složky ve stejném úložišti objektů BLOB. 
 
 Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelným způsobem. Podrobnosti o aktivitě kopírování najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md).

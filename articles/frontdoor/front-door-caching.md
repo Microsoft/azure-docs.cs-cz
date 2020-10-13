@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
 ms.openlocfilehash: 1a8064c3ff89c0bc8b0ceb5249492b912c219ce8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535827"
 ---
 # <a name="caching-with-azure-front-door"></a>Ukládání do mezipaměti s předními dvířky Azure
@@ -113,13 +113,13 @@ Následující pořadí hlaviček se používá k určení, jak dlouho bude polo
 2. Řízení mezipaměti: max. stáří =\<seconds>
 3. Expires \<http-date>
 
-Hlavičky odpovědí, které určují, že odpověď nebude ukládána do mezipaměti, jako je například řízení mezipaměti: soukromé, Cache-Control: no-cache a Cache-Control: No-Store se nerespektuje.  Pokud není k dispozici žádný kontrolní modul cache, výchozí chování je, že přední dveře budou ukládat prostředky do mezipaměti po dobu X, kde se náhodně vybere hodnota X od 1 do 3 dnů.
+Cache-Control hlavičky odpovědí, které naznačují, že odpověď nebude ukládána do mezipaměti, jako je například Cache-Control: Private, Cache-Control: no-cache a Cache-Control: No-Store se nerespektuje.  Pokud není k dispozici žádný Cache-Control, výchozí chování je, že přední dveře budou ukládat prostředky do mezipaměti po dobu X času, kdy se X náhodně vybere 1 až 3 dny.
 
 ## <a name="request-headers"></a>Hlavičky požadavku
 
 Při použití ukládání do mezipaměti nebudou předávány následující hlavičky požadavků do back-endu.
 - Délka obsahu
-- Přenos – kódování
+- Transfer-Encoding
 
 ## <a name="cache-duration"></a>Doba uložení mezipaměti
 

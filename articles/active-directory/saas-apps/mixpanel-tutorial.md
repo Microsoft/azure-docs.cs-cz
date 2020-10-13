@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
-ms.openlocfilehash: eecd7281c925fa26ade3aa140df310e69f3385c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 123b85905a5c56949a0c1d35bb1e37215ed8097c
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554705"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940697"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Kurz: Azure Active Directory integrace s Mixpanelu
 
@@ -130,15 +130,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Mixpanel
 
 3. Klikněte na kartu **zabezpečení přístupu** a pak klikněte na **změnit nastavení**.
    
-    ![Nastavení mixpanelu](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
+    ![Snímek obrazovky se zobrazí karta zabezpečení přístupu, kde můžete změnit nastavení.](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
 
 4. Na stránce **změnit certifikát** klikněte na **zvolit soubor** a nahrajte stažený certifikát a potom klikněte na **Další**.
    
-    ![Nastavení mixpanelu](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
+    ![Snímek obrazovky se zobrazí dialogové okno změnit certifikát, kde můžete vybrat soubor certifikátu.](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
 
 5.  Do textového pole Adresa URL pro ověřování na stránce **změnit adresu URL pro ověření** vložte hodnotu **přihlašovací adresy URL** , kterou jste zkopírovali z Azure Portal, a potom klikněte na tlačítko **Další**.
    
-    ![Nastavení mixpanelu](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
+    ![Snímek obrazovky se zobrazí v podokně změnit ověřování U R L, kde můžete zkopírovat přihlašovací údaje U R L.](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
 
 6. Klikněte na **Hotovo**.
 
@@ -205,7 +205,7 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v Mixpanelu.
 
 4. Do textového pole **člena týmu** zadejte e-mailovou adresu Britta v Azure.
    
-    ![Nastavení mixpanelu](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
+    ![Snímek obrazovky znázorňuje kartu týmu, na kterou přidáte adresu pro pozvání.](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
 
 5. Klikněte na **pozvat**. 
 

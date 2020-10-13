@@ -7,12 +7,13 @@ ms.date: 10/01/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: df780e4e55bb5c119320d4b33502d50a95da1eaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+zone_pivot_groups: non-azure-machines
+ms.openlocfilehash: 818ef3a29724f18cad5924bf1961b74afadfdb75
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612213"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939592"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Připojení počítačů mimo Azure k Security Center
 
@@ -23,7 +24,9 @@ Počítače mimo Azure můžete přidat některým z následujících způsobů:
 - Používání Azure ARC (**doporučeno**)
 - Ze stránek Security Center v Azure Portal (**Začínáme** a **inventář**)
 
-Každá z nich je popsána níže.
+Každá z nich je popsána na této stránce.
+
+::: zone pivot="azure-arc"
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>Přidání počítačů mimo Azure pomocí ARC Azure
 
@@ -42,6 +45,10 @@ Přečtěte si další informace o [ARC Azure](../azure-arc/servers/overview.md)
 
 > [!TIP]
 > Pokud se připojujete k AWS počítačům Security Center, konektor pro AWS transparentně zpracovává nasazení ARC Azure za vás. Další informace najdete v informacích [o připojení účtů AWS k Azure Security Center](quickstart-onboard-aws.md).
+
+::: zone-end
+
+::: zone pivot="azure-portal"
 
 ## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>Přidání počítačů mimo Azure ze stránek portálu Security Center
 
@@ -114,6 +121,7 @@ Po dokončení se **agent Log Analytics** zobrazí v **Ovládacích panelech**. 
 
 Další informace o instalaci a konfiguraci agenta najdete v tématu [připojení počítačů s Windows](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard).
 
+::: zone-end
 
 ## <a name="verifying"></a>Ověřoval
 Gratulujeme! Teď můžete na jednom místě zobrazit počítače s Azure a mimo Azure společně. Otevřete [stránku inventarizace assetů](asset-inventory.md) a vyfiltrujte příslušné typy prostředků. Tyto ikony rozlišují tyto typy:

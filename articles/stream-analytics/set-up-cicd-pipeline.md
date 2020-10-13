@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.openlocfilehash: d9b6dfc977aab7d8907b5d3c3851a22f96227d78
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91757754"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Vytvoření kanálu CI/CD pro úlohu Stream Analytics pomocí Azure DevOps
@@ -65,7 +65,7 @@ V této části se dozvíte, jak vytvořit kanál sestavení. Na tuto ukázku m�
    |-|-|
    |projectRootPath|Názevvašehoprojektu|
    |outputPath|Výstup|
-   |deployPath|Nasazení|
+   |deployPath|Nasadit|
 
 2. Na stránce **úlohy** vyberte znaménko plus vedle **úlohy agenta 1**. Vyhledejte **příkazový řádek**.
 

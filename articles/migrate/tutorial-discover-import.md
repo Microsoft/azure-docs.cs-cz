@@ -4,10 +4,10 @@ description: Popisuje, jak zjišťovat místní servery pro migraci do Azure pom
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.openlocfilehash: 743f18ce72e3f14fe54e0bbadff254ea03fc6278
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604219"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>Kurz: posouzení serverů pomocí importovaného souboru CSV
@@ -18,10 +18,10 @@ V tomto kurzu se dozvíte, jak vyhodnotit místní počítače pomocí nástroje
 
 Pokud používáte soubor CSV, nemusíte nastavovat zařízení Azure Migrate, abyste mohli zjišťovat a vyhodnocovat servery. Data, která v souboru sdílíte, můžete řídit a většina dat je volitelná. Tato metoda je užitečná v případě, že:
 
-- Před nasazením zařízení chcete vytvořit rychlé a počáteční posouzení.
-- Zařízení Azure Migrate ve vaší organizaci nemůžete nasadit.
-- Nemůžete sdílet přihlašovací údaje, které povolují přístup k místním serverům.
-- Omezení zabezpečení brání v shromažďování a odesílání dat shromážděných zařízením do Azure.
+- Chcete vytvořit rychlé počáteční posouzení před nasazením zařízení.
+- Nemůžete ve vaší organizaci nasadit zařízení Azure Migrate.
+- Nemůžete sdílet přihlašovací údaje umožňující přístup k místním serverům.
+- Kvůli omezením zabezpečení nemůžete shromažďovat a odesílat data shromážděná zařízením do Azure.
 
 > [!NOTE]
 > Nemůžete migrovat servery importované pomocí souboru CSV.
@@ -29,7 +29,7 @@ Pokud používáte soubor CSV, nemusíte nastavovat zařízení Azure Migrate, a
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Nastavení účtu Azure
-> * Nastavení Azure Migrateho projektu
+> * Nastavení projektu Azure Migrate
 > * Příprava souboru CSV
 > * Import souboru
 > * Vyhodnotit servery
@@ -39,7 +39,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Do jednoho souboru CSV a do Azure Migrateho projektu můžete přidat až 20 000 serverů. 
 - Názvy operačních systémů zadané v souboru CSV musí obsahovat a odpovídat [podporovaným názvům](#supported-operating-system-names).
@@ -51,7 +51,7 @@ Chcete-li vytvořit projekt Azure Migrate, budete potřebovat účet s:
 - Oprávnění přispěvatele nebo vlastníka v předplatném Azure.
 - Oprávnění k registraci aplikací Azure Active Directory.
 
-Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
+Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vašeho předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
 
 1. V Azure Portal vyhledejte "předplatná" a v části **služby**vyberte **předplatná**.
 
@@ -94,98 +94,98 @@ Nastavte nový projekt Azure Migrate, pokud ho ještě nemáte.
 
 ![Stránka zobrazující Nástroj pro vyhodnocení serveru přidaný ve výchozím nastavení](./media/tutorial-discover-import/added-tool.png)
 
-## <a name="prepare-the-csv"></a>Příprava sdíleného svazku clusteru
+## <a name="prepare-the-csv"></a>Příprava souboru CSV
 
-Stáhněte si šablonu sdíleného svazku clusteru a přidejte do ní informace o serveru.
+Stáhněte si šablonu CSV a přidejte do ní informace o serverech.
 
 ### <a name="download-the-template"></a>Stažení šablony
 
-1. V **Azure Migrate cíle migrace**  >  **Servers**  >  **Azure Migrate: Server Assessment**vyberte **Vyhledat**.
-2. V možnosti **zjistit počítače**vyberte **importovat pomocí CSV**.
-3. Vyberte **Stáhnout** a stáhněte šablonu sdíleného svazku clusteru. Případně si ho můžete [stáhnout přímo](https://go.microsoft.com/fwlink/?linkid=2109031).
+1. V části **Cíle migrace** > **Servery** > **Azure Migrate: Hodnocení serverů** vyberte **Zjistit**.
+2. Na stránce **Zjistit počítače** vyberte **Importovat pomocí souboru CSV**.
+3. Vyberte **Stáhnout** a stáhněte si šablonu CSV. Případně si ji můžete [stáhnout přímo](https://go.microsoft.com/fwlink/?linkid=2109031).
 
-    ![Stáhnout šablonu CSV](./media/tutorial-discover-import/download-template.png)
+    ![Stažení šablony CSV](./media/tutorial-discover-import/download-template.png)
 
-### <a name="add-server-information"></a>Přidat informace o serveru
+### <a name="add-server-information"></a>Přidání informací o serverech
 
-Shromážděte data serveru a přidejte je do souboru CSV.
+Shromážděte data serverů a přidejte je do souboru CSV.
 
-- Pokud chcete shromažďovat data, můžete je exportovat z nástrojů, které používáte pro správu místního serveru, jako je například VMware vSphere nebo vaše databáze správy konfigurace (CMDB).
-- Pokud chcete zkontrolovat ukázková data, Stáhněte si náš [ukázkový soubor](https://go.microsoft.com/fwlink/?linkid=2108405).
+- Data můžete shromáždit tak, že je exportujete z nástrojů, které používáte ke správě místních serverů, jako jsou VMware vSphere nebo vaše databáze CMDB (Configuration Management Database).
+- Pokud si chcete projít ukázková data, stáhněte si náš [ukázkový soubor](https://go.microsoft.com/fwlink/?linkid=2108405).
 
-Následující tabulka shrnuje pole souborů k vyplnění:
+Následující tabulka shrnuje pole v souboru, která se mají vyplnit:
 
-**Název pole** | **Závaznou** | **Podrobnosti**
+**Název pole** | **Povinné** | **Podrobnosti**
 --- | --- | ---
 **Název serveru** | Yes | Doporučujeme zadat plně kvalifikovaný název domény (FQDN).
-**IP adresa** | No | Adresa serveru.
-**Cores** | Yes | Počet jader procesoru přidělených serveru.
-**Memory (Paměť)** | Yes | Celková velikost paměti RAM (v MB) přidělená serveru.
-**Název operačního systému** | Yes | Serverový operační systém. <br/> Vyhodnocování rozpoznávají názvy operačních systémů, které odpovídají nebo obsahují názvy v [tomto](#supported-operating-system-names) seznamu.
-**Verze operačního systému** | No | Verze operačního systému serveru.
-**Architektura operačního systému** | No | Architektura operačního systému serveru <br/> Platné hodnoty jsou: x64, x86, AMD64, 32-bit nebo 64-bit
-**Počet disků** | No | Není nutné, pokud jsou k dispozici podrobnosti o jednotlivých discích.
-**Velikost disku 1**  | No | Maximální velikost disku (v GB)<br/>[Přidáním sloupců](#add-multiple-disks) do šablony můžete přidat podrobnosti o dalších discích. Můžete přidat až osm disků.
-**Disk 1 operace čtení** | No | Operace čtení z disku za sekundu
+**IP adresa** | No | Adresa serveru
+**Cores** | Yes | Počet jader procesoru přidělených serveru
+**Memory (Paměť)** | Yes | Celková velikost paměti RAM v MB přidělené serveru
+**Název operačního systému** | Yes | Operační systém serveru. <br/> Posouzení rozpoznává názvy operačních systémů uvedené v [tomto](#supported-operating-system-names) seznamu (nebo názvy, které je obsahují).
+**Verze operačního systému** | No | Verze operačního systému serveru
+**Architektura operačního systému** | No | Architektura operačního systému serveru. <br/> Platné hodnoty: x64, x86, amd64, 32bitová nebo 64bitová
+**Počet disků** | No | Není potřeba, pokud zadáte podrobnosti o jednotlivých discích.
+**Velikost disku 1**  | No | Maximální velikost disku v GB.<br/>Podrobnosti o dalších discích můžete přidat tak, že do šablony [přidáte sloupce](#add-multiple-disks). Můžete přidat až osm disků.
+**Operace čtení z disku 1** | No | Operace čtení z disku za sekundu
 **Operace zápisu na disk 1** | No | Operace zápisu na disk za sekundu
-**Propustnost čtení disku 1** | No | Data načtená z disku za sekundu, v MB za sekundu.
-**Propustnost zápisu disku 1** | No | Data zapsaná na disk za sekundu, v MB za sekundu.
+**Propustnost čtení z disku 1** | No | Data načtená z disku za sekundu v MB/s
+**Propustnost zápisu na disk 1** | No | Data zapsaná na disk za sekundu v MB/s
 **Procento využití procesoru** | No | Procento využitého procesoru
 **Procento využití paměti** | No | Procento využité paměti RAM
-**Operace čtení z celkového počtu disků** | No | Operace čtení disku za sekundu
-**Operace zápisu z celkového počtu disků** | No | Operace zápisu na disk za sekundu
-**Propustnost čtení celkem disků** | No | Data načtená z disku v MB za sekundu.
-**Propustnost zápisu celkem disků** | No | Data zapsaná na disk v MB za sekundu.
-**Síť v propustnosti** | No | Data přijatá serverem v MB za sekundu.
-**Propustnost sítě** | No | Data přenášená serverem v MB za sekundu.
-**Typ firmwaru** | No | Firmware serveru. Hodnoty mohou být "BIOS" nebo "UEFI".
-**Adresa MAC**| No | Adresa MAC serveru.
+**Celkový počet operací čtení z disků** | No | Operace čtení disku za sekundu
+**Celkový počet operací zápisu na disky** | No | Operace zápisu na disk za sekundu
+**Celková propustnost čtení z disků** | No | Data načtená z disku v MB za sekundu.
+**Celková propustnost zápisu na disky** | No | Data zapsaná na disk v MB za sekundu.
+**Propustnost síťových vstupů** | No | Data přijatá serverem v MB/s
+**Propustnost síťových výstupů** | No | Data odeslaná serverem v MB/s
+**Typ firmwaru** | No | Firmware serveru. Možné hodnoty: BIOS nebo UEFI.
+**Adresa MAC**| No | Adresa MAC serveru
 
 
-### <a name="add-operating-systems"></a>Přidat operační systémy
+### <a name="add-operating-systems"></a>Přidání operačních systémů
 
-Posouzení rozpoznává konkrétní názvy operačních systémů. Libovolný název, který zadáte, musí přesně odpovídat jednomu z řetězců v [seznamu podporovaných názvů](#supported-operating-system-names).
+Posouzení rozpoznává konkrétní názvy operačních systémů. Všechny názvy, které zadáte, se musí přesně shodovat s některým z řetězců v [seznamu podporovaných názvů](#supported-operating-system-names).
 
-### <a name="add-multiple-disks"></a>Přidat více disků
+### <a name="add-multiple-disks"></a>Přidání více disků
 
-Šablona poskytuje výchozí pole pro první disk. Podobné sloupce můžete přidat až na osm disků.
+Šablona obsahuje výchozí pole pro první disk. Můžete přidat podobné sloupce až pro osm disků.
 
-Pokud například chcete zadat všechna pole pro druhý disk, přidejte tyto sloupce:
+Například pokud chcete zadat všechna pole pro druhý disk, přidejte tyto sloupce:
 
 - Velikost disku 2
-- Operace čtení disku 2
+- Operace čtení z disku 2
 - Operace zápisu na disk 2
-- Propustnost čtení disku 2
-- Propustnost zápisu disku 2
+- Propustnost čtení z disku 2
+- Propustnost zápisu na disk 2
 
 
-## <a name="import-the-server-information"></a>Importovat informace o serveru
+## <a name="import-the-server-information"></a>Import informací o serverech
 
 Po přidání informací do šablony sdíleného svazku clusteru importujte soubor CSV do vyhodnocování serveru.
 
-1. V Azure Migrate v části **zjišťování počítačů**přejít na dokončenou šablonu.
+1. Ve službě Azure Migrate na stránce **Zjistit počítače** přejděte k dokončené šabloně.
 2. Vyberte **Importovat**.
 3. Zobrazí se stav importu.
-    - Pokud se ve stavu zobrazí upozornění, můžete je buď opravit, nebo pokračovat bez jejich adresování.
-    - Pro zlepšení přesnosti hodnocení Vylepšete informace o serveru, jak je navrženo v části upozornění.
-    - Chcete-li zobrazit a opravit upozornění, vyberte možnost **Stáhnout podrobnosti upozornění. Sdílený svazek clusteru**. Tato operace stáhne sdílený svazek clusteru s upozorněními, která jsou součástí. Přečtěte si upozornění a opravte problémy podle potřeby.
-    - Pokud se ve stavu objeví chyby, takže se stav importu **nezdařil**, je nutné tyto chyby opravit, aby bylo možné pokračovat v importu:
-        1. Stáhněte si sdílený svazek clusteru, který teď obsahuje podrobnosti o chybě.
-        1. Zkontrolujte a podle potřeby vyřešte chyby. 
-        1. Znovu nahrajte změněný soubor.
-4. Po **dokončení**importu se informace o serveru naimportovaly. Aktualizujte, pokud se zdá, že proces importu není dokončen.
+    - Pokud se ve stavu zobrazí upozornění, můžete je vyřešit nebo pokračovat bez jejich vyřešení.
+    - Pokud chcete zvýšit přesnost posouzení, zlepšete informace o serverech podle pokynů v upozorněních.
+    - Pokud chcete zobrazit a vyřešit upozornění, vyberte **Stáhnout soubor CSV s podrobnostmi o upozorněních**. Tato operace stáhne soubor CSV s upozorněními. Zkontrolujte upozornění a podle potřeby vyřešte problémy.
+    - Pokud se ve stavu zobrazí chyby a stav importu je **Selhání**, musíte tyto chyby opravit, abyste mohli pokračovat v importu:
+        1. Stáhněte si soubor CSV, který teď obsahuje podrobnosti o chybách.
+        1. Zkontrolujte tyto chyby a podle potřeby je opravte. 
+        1. Znovu nahrajte upravený soubor.
+4. Když je stav importu **Dokončeno**, znamená to, že se informace o serverech importovaly. Aktualizujte, pokud se zdá, že proces importu není dokončen.
 
-## <a name="update-server-information"></a>Aktualizovat informace o serveru
+## <a name="update-server-information"></a>Aktualizace informací o serverech
 
-Informace o serveru můžete aktualizovat tak, že znovu naimportujete data pro server se stejným **názvem serveru**. Pole **název serveru** nemůžete změnit. Odstraňování serverů se v tuto chvíli nepodporuje.
+Informace o serveru můžete aktualizovat opětovným importem dat o serveru s použitím stejného **názvu serveru**. Pole **Název serveru** nemůžete upravit. Odstraňování serverů se v současné době nepodporuje.
 
-## <a name="verify-servers-in-the-portal"></a>Ověřit servery na portálu
+## <a name="verify-servers-in-the-portal"></a>Ověření serverů na portálu
 
-Ověření, že se servery zobrazí v Azure Portal po zjištění:
+Ověření zobrazování serverů na webu Azure Portal po zjišťování:
 
-1. Otevřete řídicí panel Azure Migrate.
-2. Na stránce **Azure Migrate-servery**  >  **Azure Migrate: posouzení serveru** vyberte ikonu, která zobrazuje počet **zjištěných serverů**.
-3. Vyberte kartu **Import na základě** .
+1. Otevřete řídicí panel služby Azure Migrate.
+2. Na stránce **Azure Migrate – Servery** > **Azure Migrate: Hodnocení serverů** vyberte ikonu s počtem **zjištěných serverů**.
+3. Vyberte kartu **Na základě importu**.
 
 
 
@@ -195,7 +195,7 @@ Názvy operačních systémů, které jsou k dispozici ve sdíleném svazku clus
 
 **A-H** | **I-R** | **S-T** | **U-Z**
 --- | --- | --- | ---
-Apple Mac OS X 10<br/>Asianux 3<br/>Asianux 4<br/>Asianux 5<br/>CentOS<br/>CentOS 4/5<br/>CoreOS Linux<br/>Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8<br/>FreeBSD | IBM OS/2<br/>systémem<br/>Novell NetWare 5<br/>Novell NetWare 6<br/>Oracle Linux<br/>Oracle Linux 4/5<br/>Oracle Solaris 10<br/>Oracle Solaris 11<br/>Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7<br/> Serenity systémy eComStation 1<br/>Serenity systémy eComStation <br/>Systém Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9<br/><br/>SUSE Linux Enterprise 10<br/>SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE | Ubuntu Linux<br/>VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6<br/>Windows 10<br/>Windows 2000<br/>Systém Windows 3<br/>Windows 7<br/>Windows 8<br/>Systém Windows 95<br/>Windows 98<br/>Systém Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003<br/>Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Prahová hodnota pro Windows Server<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
+Apple Mac OS X 10<br/>Asianux 3<br/>Asianux 4<br/>Asianux 5<br/>CentOS<br/>CentOS 4/5<br/>CoreOS Linux<br/>Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8<br/>FreeBSD | IBM OS/2<br/>MS-DOS<br/>Novell NetWare 5<br/>Novell NetWare 6<br/>Oracle Linux<br/>Oracle Linux 4/5<br/>Oracle Solaris 10<br/>Oracle Solaris 11<br/>Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7<br/> Serenity Systems eComStation 1<br/>Serenity systémy eComStation <br/>Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9<br/><br/>SUSE Linux Enterprise 10<br/>SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE | Ubuntu Linux<br/>VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6<br/>Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003<br/>Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server Threshold<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
 
 ## <a name="next-steps"></a>Další kroky
 

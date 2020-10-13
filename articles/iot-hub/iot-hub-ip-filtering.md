@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: robinsh
 ms.openlocfilehash: 1ba3c89ea4f964f9e6fd5f902aab29a83a058f25
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074726"
 ---
 # <a name="use-ip-filters"></a>Použití filtrů IP adres
@@ -47,11 +47,11 @@ Pokud se chcete dostat na stránku nastavení filtru IP adres, vyberte **sítě*
 
 Pokud chcete přidat pravidlo filtru IP, vyberte **+ Přidat pravidlo filtru IP**.
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="Přidání pravidla filtru IP do služby IoT Hub":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="Výchozí nastavení filtru IP IoT Hub":::
 
 Po výběru možnosti **Přidat pravidlo filtru protokolu IP**zadejte pole.
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="Po výběru možnosti Přidat pravidlo filtru IP":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="Výchozí nastavení filtru IP IoT Hub":::
 
 * Zadejte **název** pravidla filtru IP. Musí se jednat o jedinečný řetězec bez rozlišení velkých a malých písmen, který je dlouhý až 128 znaků. Jsou přijímány pouze alfanumerické znaky ASCII a 7 `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` .
 
@@ -61,7 +61,7 @@ Po výběru možnosti **Přidat pravidlo filtru protokolu IP**zadejte pole.
 
 Po vyplnění polí vyberte **Uložit** a uložte pravidlo. Zobrazí se upozornění oznamující, že probíhá aktualizace.
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="Oznámení o uložení pravidla filtru IP":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="Výchozí nastavení filtru IP IoT Hub":::
 
 Možnost **Přidat** je zakázaná, když dosáhnete maximálního počtu 10 pravidel filtru IP.
 
@@ -71,7 +71,7 @@ Pokud chcete upravit stávající pravidlo, vyberte data, která chcete změnit,
 
 Pokud chcete odstranit pravidlo filtru IP, vyberte na tomto řádku ikonu odpadkového koše a pak vyberte **Uložit**. Pravidlo se odebere a změna se uloží.
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="Odstraní pravidlo filtru IP IoT Hub.":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="Výchozí nastavení filtru IP IoT Hub":::
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Načtení a aktualizace filtrů IP adres pomocí Azure CLI
 
@@ -161,7 +161,7 @@ Pořadí pravidel filtru IP v mřížce můžete změnit kliknutím na tři svis
 
 Pokud chcete uložit nové pořadí pravidel filtru IP, klikněte na **Uložit**.
 
-:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="Změna pořadí pravidel filtru IP adres služby IoT HUb":::
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="Výchozí nastavení filtru IP IoT Hub":::
 
 ## <a name="next-steps"></a>Další kroky
 
