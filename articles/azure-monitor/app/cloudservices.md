@@ -4,12 +4,12 @@ description: Efektivní sledování webových rolí a rolí pracovních procesů
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 676d3543cbcbf86feb67cad4bd2b9709c2b81437
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cae2e4e1d5b5e199e772c5263a46d82289f5d6ac
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91759369"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992845"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
 [Application Insights][start] můžou monitorovat [aplikace cloudových služeb Azure](https://azure.microsoft.com/services/cloud-services/) kvůli dostupnosti, výkonu, selhání a využití díky kombinování dat ze Application Insights sad SDK s [Azure Diagnosticsmi](../platform/diagnostics-extension-overview.md) daty z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
@@ -67,7 +67,7 @@ Chcete-li se této situaci vyhnout, vytvořte samostatné prostředky pro každo
 
 Chcete-li odeslat telemetrii do příslušných prostředků, můžete nastavit sadu Application Insights SDK tak, aby v závislosti na konfiguraci sestavení vystavila jiný klíč instrumentace. 
 
-Naučte se [dynamicky nastavovat klíč instrumentace](https://docs.microsoft.com/azure/azure-monitor/app/separate-resources#dynamic-ikey) pro různé fáze. 
+Naučte se [dynamicky nastavovat klíč instrumentace](./separate-resources.md#dynamic-ikey) pro různé fáze. 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Vytvoření prostředku Application Insights pro každou roli
 
@@ -290,4 +290,3 @@ Vytvořili jste sestavení pro .NET 4.6? Rozhraní .NET 4,6 se v rolích Azure C
 [qna]: ../faq.md
 [redfield]: ./monitor-performance-live-website-now.md
 [start]: ./app-insights-overview.md
-

@@ -1,20 +1,18 @@
 ---
 title: Úlohy Red Hat na Azure – přehled | Microsoft Docs
 description: Seznamte se s nabídkami produktů Red Hat dostupnými v Azure.
-services: virtual-machines-linux
 author: asinn826
-manager: borisb2015
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: b08a7d6ab271c266ba850d72d5a8b23a06dc5a3f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.reviewer: cynthn
+ms.openlocfilehash: 61f7461633aba18a21fcc18709055dc790ffee7b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977659"
+ms.locfileid: "91993229"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Úlohy Red Hat v Azure
 

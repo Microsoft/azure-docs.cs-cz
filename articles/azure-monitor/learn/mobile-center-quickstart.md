@@ -8,18 +8,18 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 0539dcecbbbfe28817122e0f47e813182a9abd9d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 27b74f99d926bf72bc22f153a8d76deb56646987
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87322138"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993882"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Začínáme s analýzou mobilní aplikace pomocí App Center a Application Insights
 
 Tento rychlý start vás provede propojením instance App Center vaší aplikace s Application Insights. S Application Insights můžete dotazovat, segmentovat, filtrovat a analyzovat telemetrická data pomocí výkonnějších nástrojů, které jsou dostupné ve službě [Analytics](/mobile-center/analytics/) v App Center.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Co budete potřebovat k dokončení tohoto rychlého startu:
 
@@ -67,7 +67,7 @@ Pokud chcete ověřit přijímání vlastních událostí, přejděte v App Cent
 
 Jakmile vaše aplikace odesílá vlastní události a App Center tyto události přijímá, je potřeba na webu Azure Portal vytvořit prostředek Application Insights typu App Center:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Vyberte **vytvořit prostředek pro**  >  **vývojáře**  >  **Application Insights**.
 
     > [!NOTE]
@@ -81,7 +81,7 @@ Jakmile vaše aplikace odesílá vlastní události a App Center tyto události 
      | **Skupina prostředků**     | Nová skupina prostředků nebo existující skupina prostředků z nabídky | Skupina prostředků, ve které se má vytvořit nový prostředek Application Insights |
    | **Umístění** | Umístění z nabídky | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
-3. Klikněte na **Create** (Vytvořit).
+3. Klikněte na **Vytvořit**.
 
 Pokud vaše aplikace podporuje více platforem (iOS, Android atd.), je vhodné vytvořit pro každou platformu samostatný prostředek Application Insights.
 
@@ -124,7 +124,7 @@ Nad rámec analytických nástrojů, které poskytuje App Center, může Applica
    1. Vyberte dotaz kliknutím na libovolnou část dotazu v textovém editoru.
    2. Pak dotaz spusťte kliknutím na **Přejít**. 
 
-   Další informace o [Application Insights Analytics](../log-query/log-query-overview.md) a [dotazovacím jazyku Log Analytics](https://aka.ms/LogAnalyticsLanguageReference).
+   Další informace o [Application Insights Analytics](../log-query/log-query-overview.md) a [dotazovacím jazyku Log Analytics](/azure/data-explorer/kusto/query/).
 
 
 2. **Segmentace a filtrování vlastní telemetrie událostí.** Na stránce **Přehled** Application Insights zvolte v obsahu **Uživatelé**.
@@ -168,4 +168,3 @@ Odstranění prostředku Application Insights:
 
 > [!div class="nextstepaction"]
 > [Porozumění způsobu, jakým zákazníci používají vaši aplikaci](../app/usage-overview.md)
-

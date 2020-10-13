@@ -7,12 +7,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 652d63cbf71f7a998462780a5057ce8269463da4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69ec25348c3056536a2e09fd889b48e1e63ea7bb
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930379"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992779"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core webové aplikace Azure Linux pomocí Application Insights Profiler
 
@@ -107,7 +107,7 @@ Následující pokyny platí pro všechna prostředí pro vývoj pro Windows, Li
 
     ![Nastavení úložiště Git](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-Další možnosti nasazení najdete v [dokumentaci App Service](https://docs.microsoft.com/azure/app-service).
+Další možnosti nasazení najdete v [dokumentaci App Service](../../app-service/index.yml).
 
 ## <a name="deploy-your-project"></a>Nasazení projektu
 
@@ -172,4 +172,3 @@ Další možnosti nasazení najdete v [dokumentaci App Service](https://docs.mic
 Pokud používáte vlastní kontejnery, které jsou hostovány Azure App Service, postupujte podle pokynů v části [ povolení Service profiler pro kontejnerové ASP.NET Core aplikace](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) , aby bylo možné povolit Application Insights Profiler.
 
 Nahlaste všechny problémy nebo návrhy do úložiště GitHub Application Insights: [ApplicationInsights-Profiler-AspNetCore: problémy](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
-

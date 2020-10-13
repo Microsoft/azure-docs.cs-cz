@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: 4ec7cd2b0f573a9a74f82546da2367edcf721539
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2f2272363cbc26895b061fe7b6263ed2a29fbab
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441451"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993252"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Nasazení Azure Monitor ve velkém měřítku pomocí Azure Policy
 I když jsou některé funkce Azure Monitor nakonfigurované jednou nebo omezeným počtem časů, musí se pro každý prostředek, který chcete monitorovat, opakovat jiné. Tento článek popisuje metody použití Azure Policy k implementaci Azure Monitor škálování, aby se zajistilo, že monitorování je konzistentně a správně nakonfigurované pro všechny prostředky Azure.
@@ -33,7 +33,7 @@ Azure Policy se skládá z objektů v následující tabulce. Podrobnější vys
 | Přiřazení | Definice zásady nebo podnět se neprojeví, dokud není přiřazena k oboru. Přiřaďte například zásadu ke skupině prostředků, kterou použijete pro všechny prostředky vytvořené v tomto prostředku, nebo ji použijte u předplatného, aby ji bylo možné použít u všech prostředků v tomto předplatném.  Další podrobnosti najdete v tématu [Struktura přiřazení Azure Policy](../governance/policy/concepts/assignment-structure.md). |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Předdefinované definice zásad pro Azure Monitor
-Azure Policy obsahuje několik předem sestavených definic souvisejících s Azure Monitor. Tyto definice zásad můžete přiřadit k existujícímu předplatnému nebo je použít jako základ pro vytvoření vlastních definicí. Úplný seznam integrovaných politika v kategorii **monitorování** najdete v tématu [Azure Policy předdefinované definice zásad pro Azure monitor](samples/policy-samples.md).
+Azure Policy obsahuje několik předem sestavených definic souvisejících s Azure Monitor. Tyto definice zásad můžete přiřadit k existujícímu předplatnému nebo je použít jako základ pro vytvoření vlastních definicí. Úplný seznam integrovaných politika v kategorii **monitorování** najdete v tématu [Azure Policy předdefinované definice zásad pro Azure monitor](./samples/policy-reference.md).
 
 Pokud chcete zobrazit integrované definice zásad související s monitorováním, udělejte toto:
 

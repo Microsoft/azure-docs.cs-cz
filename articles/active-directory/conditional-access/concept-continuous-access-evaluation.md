@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ca23c1503b01c1aa9523edc2576599d7b6ab458
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266055"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992802"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
@@ -103,7 +103,7 @@ Pokud nepoužíváte klienty podporující CAE, vaše výchozí doba platnosti p
 
 1. Klient podporující CAE prezentuje přihlašovací údaje nebo obnovovací token pro Azure AD, který žádá o přístupový token pro určitý prostředek.
 1. Přístupový token je vrácen spolu s jinými artefakty klientovi.
-1. Správce explicitně [odvolá všechny aktualizační tokeny pro uživatele](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Do poskytovatele prostředků z Azure AD se pošle událost odvolání.
+1. Správce explicitně [odvolá všechny aktualizační tokeny pro uživatele](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Do poskytovatele prostředků z Azure AD se pošle událost odvolání.
 1. Poskytovateli prostředků se zobrazí přístupový token. Poskytovatel prostředků vyhodnocuje platnost tokenu a zkontroluje, jestli pro uživatele existuje nějaká událost odvolání. Poskytovatel prostředků používá tyto informace k rozhodnutí o udělení přístupu k prostředku nebo ne.
 1. V takovém případě poskytovatel prostředků odepře přístup a pošle klientovi výzvu s deklarací 401 +.
 1. Klient podporující CAE rozumí výzvě 401 + Claim. Obchází mezipaměti a vrací se ke kroku 1, odesílá obnovovací token spolu s výzvou k deklaraci identity zpátky do služby Azure AD. Služba Azure AD potom znovu vyhodnotí všechny podmínky a vyzve uživatele k opětovnému ověření v tomto případě.
@@ -144,7 +144,7 @@ V případě CAE máme přehledy o pojmenovaných umístěních založených na 
 
 ### <a name="ip-address-configuration"></a>Konfiguraci IP adresy
 
-Poskytovatelé identity a poskytovatelé prostředků můžou zobrazovat různé IP adresy. Tato neshoda může nastat kvůli implementaci síťových proxy serverů ve vaší organizaci nebo nesprávných konfiguracích protokolu IPv4/IPv6 mezi poskytovatelem identity a poskytovatelem prostředků. Například:
+Poskytovatelé identity a poskytovatelé prostředků můžou zobrazovat různé IP adresy. Tato neshoda může nastat kvůli implementaci síťových proxy serverů ve vaší organizaci nebo nesprávných konfiguracích protokolu IPv4/IPv6 mezi poskytovatelem identity a poskytovatelem prostředků. Příklad:
 
 - Poskytovatel identity uvidí jednu IP adresu z klienta.
 - Poskytovatel prostředků uvidí od klienta jinou IP adresu po předání prostřednictvím proxy serveru.
@@ -159,7 +159,7 @@ Pokud tento scénář existuje ve vašem prostředí, aby se předešlo nekoneč
 | Semi-Annual podnikového kanálu | Pokud je nastavené na povoleno nebo 1, CAE se nepodporuje. | Pokud je nastavené na povoleno nebo 1, CAE se nepodporuje. |
 | Aktuální kanál <br> nebo <br> Měsíční podnikový kanál | CAE se podporuje bez ohledu na nastavení. | CAE se podporuje bez ohledu na nastavení. |
 
-Vysvětlení kanálů aktualizace Office najdete v tématu [Přehled kanálů aktualizací pro aplikace Microsoft 365](https://docs.microsoft.com/deployoffice/overview-update-channels). Doporučuje se, aby organizace nezakázal správce webových účtů (WAM).
+Vysvětlení kanálů aktualizace Office najdete v tématu [Přehled kanálů aktualizací pro aplikace Microsoft 365](/deployoffice/overview-update-channels). Doporučuje se, aby organizace nezakázal správce webových účtů (WAM).
 
 ### <a name="policy-change-timing"></a>Časování změny zásad
 

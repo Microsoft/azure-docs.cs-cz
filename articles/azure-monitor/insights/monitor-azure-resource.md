@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 70ab387018fc54b4dad9ee911d4c7557e1e7805c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3a8e8b908c9d278654bfe992474811d6a9ddb86
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030340"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993708"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Monitorování prostředků Azure s využitím služby Azure Monitor
 Pokud máte důležité aplikace a obchodní procesy spoléhající se na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování vygenerovaná prostředky Azure a o tom, jak můžete pomocí funkcí Azure Monitor analyzovat tato data a upozorňovat na ně.
@@ -80,7 +80,7 @@ Nastavení diagnostiky definují, kam se mají odesílat protokoly prostředků 
 - [Centra událostí](../platform/resource-logs.md#send-to-azure-event-hubs) pro streamování dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics. 
 - [Účet služby Azure Storage](../platform/resource-logs.md#send-to-azure-storage) , který je vhodný pro audit, statickou analýzu nebo zálohování.
 
-Pomocí postupu v části [Vytvoření nastavení diagnostiky Shromážděte protokoly a metriky platforem v Azure](../platform/diagnostic-settings.md) , abyste mohli vytvořit a spravovat nastavení diagnostiky prostřednictvím Azure Portal. V tématu [Vytvoření nastavení diagnostiky v Azure použijte šablonu správce prostředků](../platform/diagnostic-settings-template.md) k jejich definování v šabloně a povolení kompletního monitorování prostředku při jeho vytvoření.
+Pomocí postupu v části [Vytvoření nastavení diagnostiky Shromážděte protokoly a metriky platforem v Azure](../platform/diagnostic-settings.md) , abyste mohli vytvořit a spravovat nastavení diagnostiky prostřednictvím Azure Portal. V tématu [Vytvoření nastavení diagnostiky v Azure použijte šablonu správce prostředků](../samples/resource-manager-diagnostic-settings.md) k jejich definování v šabloně a povolení kompletního monitorování prostředku při jeho vytvoření.
 
 
 ## <a name="monitoring-in-the-azure-portal"></a>Monitorování v Azure Portal
@@ -160,5 +160,4 @@ Pomocí **Upozornění** z nabídky prostředku můžete zobrazit výstrahy a sp
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobnosti o protokolech prostředků pro různé služby Azure najdete v tématu [podporované služby, schémata a kategorie pro protokoly prostředků Azure](../platform/resource-logs-schema.md) .  
-
+* Podrobnosti o protokolech prostředků pro různé služby Azure najdete v tématu [podporované služby, schémata a kategorie pro protokoly prostředků Azure](../platform/resource-logs-schema.md) .

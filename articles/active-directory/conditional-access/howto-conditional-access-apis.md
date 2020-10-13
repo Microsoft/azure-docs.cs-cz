@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33f3766e02316eccb519bea15246541531750ed1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d681eba53aa85fe5df05f8404bcddb7c6877477
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90007995"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992788"
 ---
 # <a name="conditional-access-programmatic-access"></a>Podmíněný přístup: programový přístup
 
@@ -56,13 +56,13 @@ Tento příklad modeluje bezpečnější postupy nasazení s pracovními postupy
 
 - [Zvýšení úrovně zásad podmíněného přístupu z testovacích prostředí](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/02-test)
 
-## <a name="deploy"></a>Nasadit
+## <a name="deploy"></a>Nasazení
 
 V tomto příkladu je k dispozici mechanismus pro postupné provádění zásad podmíněného přístupu k naplnění uživatelů, což vám umožní včas spravovat dopad na podporu a odhalit problémy.
 
 - [Nasazení zásad podmíněného přístupu do produkčních prostředí s pracovními postupy schvalování](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/03-deploy)
 
-## <a name="monitor"></a>Monitor
+## <a name="monitor"></a>Monitorování
 
 Tento příklad poskytuje mechanismus pro monitorování změn zásad podmíněného přístupu v průběhu času a může aktivovat upozornění při změně klíčových zásad.
 
@@ -78,7 +78,7 @@ Pomocí tohoto příkladu Automatizujte zálohování a obnovení zásad podmín
 
 ### <a name="emergency-access-accounts"></a>Účty pro nouzový přístup
 
-Několik správců může vytvářet zásady podmíněného přístupu a může pro ně přidat [účty pro nouzový přístup](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access) jako vyloučení těchto zásad. V tomto příkladu se zajistí, že se všechny zásady aktualizují tak, aby zahrnovaly určené účty pro nouzový přístup.
+Několik správců může vytvářet zásady podmíněného přístupu a může pro ně přidat [účty pro nouzový přístup](../users-groups-roles/directory-emergency-access.md) jako vyloučení těchto zásad. V tomto příkladu se zajistí, že se všechny zásady aktualizují tak, aby zahrnovaly určené účty pro nouzový přístup.
 
 - [Správa přiřazování účtů pro nouzový přístup k zásadám podmíněného přístupu pomocí volání rozhraní API Microsoft Graph](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/05-manage/02-emergency-access)
 

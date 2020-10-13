@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 818ef3a29724f18cad5924bf1961b74afadfdb75
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939592"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993608"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Připojení počítačů mimo Azure k Security Center
 
-Security Center může monitorovat stav zabezpečení počítačů mimo Azure, tyto prostředky je však nejprve potřeba připojit. 
+Security Center můžou monitorovat stav zabezpečení počítačů mimo Azure, ale nejdřív je budete muset připojit k Azure. 
 
-Počítače mimo Azure můžete přidat některým z následujících způsobů:
+Počítače mimo Azure můžete připojit některým z následujících způsobů:
 
 - Používání Azure ARC (**doporučeno**)
 - Ze stránek Security Center v Azure Portal (**Začínáme** a **inventář**)
@@ -30,7 +30,7 @@ Každá z nich je popsána na této stránce.
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>Přidání počítačů mimo Azure pomocí ARC Azure
 
-Používání ARC Azure je preferovaným způsobem, jak přidat počítače mimo Azure do Azure Security Center.
+Azure ARC je preferovaný způsob přidávání počítačů mimo Azure do Azure Security Center.
 
 Počítač s povoleným ARC Azure se stal zdrojem Azure a zobrazí se v Security Center s doporučeními, jako jsou vaše jiné prostředky Azure. 
 
@@ -50,7 +50,7 @@ Přečtěte si další informace o [ARC Azure](../azure-arc/servers/overview.md)
 
 ::: zone pivot="azure-portal"
 
-## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>Přidání počítačů mimo Azure ze stránek portálu Security Center
+## <a name="add-non-azure-machines-from-the-azure-portal"></a>Přidání počítačů mimo Azure z Azure Portal
 
 1. V nabídce Security Center otevřete stránku **Začínáme** .
 1. Vyberte kartu **Začínáme**.

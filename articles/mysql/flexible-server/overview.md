@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: d3d58cab6e3b9ed0bf3b8ed409aa736357687f09
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: da9b7216908b4a4ba80a421427f473c217f76c28
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759641"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993737"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -117,8 +117,19 @@ Služba spouští komunitní verze MySQL. To umožňuje úplnou kompatibilitu ap
 - **Vypsat a obnovit** – pro offline migrace, kde můžou uživatelé získat nějaké výpadky, vypsat a obnovit pomocí nástrojů komunity, jako je mysqldump/mydumper, může poskytnout nejrychlejší způsob migrace. Podrobnosti najdete v tématu migrace pomocí výpisu paměti a obnovení. 
 - **Azure Database Migration Service** – pro bezproblémové a zjednodušené migrace na jediný server s minimálními výpadky je možné využít [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) . 
 
+## <a name="azure-regions"></a>Oblast Azure
+
+Jednou z výhod spouštění úloh v Azure je globální dosah. Flexibilní Server pro Azure Database for MySQL je k dispozici v současnosti v následujících oblastech Azure:
+
+- Severní Evropa
+- Jihovýchodní Asie
+- USA – východ 2
+- Západní USA 2
+
+Pracujeme na přidávání nových serverů brzy.
+
 ## <a name="contacts"></a>Kontakty
-Pokud máte jakékoli dotazy nebo návrhy, které byste mohli potřebovat při práci s Azure Database for MySQL, pošlete e-mail týmu Azure Database for MySQL ([ @Ask Azure DB pro MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Tato e-mailová adresa není alias technické podpory.
+V případě jakýchkoli otázek nebo návrhů, které byste mohli mít Azure Database for MySQL flexibilní Server, pošlete e-mail týmu Azure Database for MySQL ([ @Ask Azure DB pro MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Tato e-mailová adresa není alias technické podpory.
 
 Můžete také využít tyto komunikační kanály:
 

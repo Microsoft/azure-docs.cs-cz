@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: c78132ca85b87486e2fa8f41da6ae430c6eabba0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a5df4f6a20a9f7061f56dac507a474f7bda6100
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767654"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992878"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Použití analýzy změn aplikace (Preview) v Azure Monitor
 
@@ -124,12 +124,12 @@ Přejít na nástroj Diagnostika a řešení problémů pro virtuální počíta
 ![Analyzátor změn v nástrojích pro řešení potíží](./media/change-analysis/analyze-recent-changes.png)
 
 ### <a name="activity-log-change-history"></a>Historie změn protokolu aktivit
-Funkce [Zobrazit historii změn](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log#view-change-history) v protokolu aktivit volá back-end služby Analysis Service v aplikaci, aby se získaly změny přidružené k operaci. **Historii změn** , která se používá k přímému volání [Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/overview) , ale přeměnila back-end na volání analýzy změn aplikace, takže vrácené změny budou zahrnovat změny úrovně prostředků z [Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/overview), vlastnosti prostředku z [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)a změny v hostu z PaaS Services, jako je App Services webová aplikace. Aby mohla služba Analysis Services pro změny aplikace kontrolovat změny v předplatných uživatelů, musí být zaregistrovaný poskytovatel prostředků. Při prvním zadání karty **historie změn** se nástroj automaticky spustí, aby zaregistroval poskytovatele prostředků **Microsoft. ChangeAnalysis** . Po registraci budou změny z **Azure Resource Graph** k dispozici okamžitě a budou zahrnovat posledních 14 dní. Změny z jiných zdrojů budou k dispozici po přibližně 4 hodinách po zprovoznění předplatného.
+Funkce [Zobrazit historii změn](../platform/activity-log.md#view-change-history) v protokolu aktivit volá back-end služby Analysis Service v aplikaci, aby se získaly změny přidružené k operaci. **Historii změn** , která se používá k přímému volání [Azure Resource graphu](../../governance/resource-graph/overview.md) , ale přeměnila back-end na volání analýzy změn aplikace, takže vrácené změny budou zahrnovat změny úrovně prostředků z [Azure Resource graphu](../../governance/resource-graph/overview.md), vlastnosti prostředku z [Azure Resource Manager](../../azure-resource-manager/management/overview.md)a změny v hostu z PaaS Services, jako je App Services webová aplikace. Aby mohla služba Analysis Services pro změny aplikace kontrolovat změny v předplatných uživatelů, musí být zaregistrovaný poskytovatel prostředků. Při prvním zadání karty **historie změn** se nástroj automaticky spustí, aby zaregistroval poskytovatele prostředků **Microsoft. ChangeAnalysis** . Po registraci budou změny z **Azure Resource Graph** k dispozici okamžitě a budou zahrnovat posledních 14 dní. Změny z jiných zdrojů budou k dispozici po přibližně 4 hodinách po zprovoznění předplatného.
 
 ![Integrace historie změn protokolu aktivit](./media/change-analysis/activity-log-change-history.png)
 
 ### <a name="vm-insights-integration"></a>Integrace se službou VM Insights
-Uživatelé s povoleným [virtuálním počítačem Insights](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) můžou zobrazit, co se změnilo ve svých virtuálních počítačích, které by mohly způsobit jakékoli špičky v grafu metrik, jako je například procesor nebo paměť, a taky to, jestli to způsobilo. Data změny jsou integrovaná v navigačním panelu na straně virtuálních počítačů Insights. Uživatel může zobrazit, jestli na virtuálním počítači došlo ke změnám, a kliknout na **prozkoumat změny** a zobrazit podrobnosti o změně v uživatelském rozhraní pro analýzu změn aplikace.
+Uživatelé s povoleným [virtuálním počítačem Insights](../insights/vminsights-overview.md) můžou zobrazit, co se změnilo ve svých virtuálních počítačích, které by mohly způsobit jakékoli špičky v grafu metrik, jako je například procesor nebo paměť, a taky to, jestli to způsobilo. Data změny jsou integrovaná v navigačním panelu na straně virtuálních počítačů Insights. Uživatel může zobrazit, jestli na virtuálním počítači došlo ke změnám, a kliknout na **prozkoumat změny** a zobrazit podrobnosti o změně v uživatelském rozhraní pro analýzu změn aplikace.
 
 [![Integrace se službou VM Insights](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
 
