@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 4c3eb3706858bd2bfd2160e58698c0f5136c41f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e8ed59783a6a714434b17a1d1abbb22fbe30939
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547903"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944020"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onedesk"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s OneDesk
 
@@ -141,7 +141,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na kartu **integrace** .
 
-    ![Karta nastavení](./media/onedesk-tutorial/img-integration.png)
+    ![Snímek obrazovky znázorňující vybranou kartu Integration](./media/onedesk-tutorial/img-integration.png)
 
 1. Klikněte na **jednotné přihlašování**, vyberte **nahrát soubor metadat** a klikněte na **zvolit soubor** , abyste nahráli soubor metadat, který jste stáhli z Azure Portal.
 
