@@ -3,12 +3,12 @@ title: Nastavení serveru GitHub Enterprise v privátním cloudu řešení Azure
 description: Přečtěte si, jak nastavit server GitHub Enterprise v privátním cloudu řešení Azure VMware.
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 53e5264eed761909217c2e3a902c9fee9faaffaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afce212416c7c12631a7f8d388dc991ed957736f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91341896"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949305"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Nastavení serveru GitHub Enterprise v privátním cloudu řešení Azure VMware
 
@@ -74,7 +74,7 @@ Pro posílení vaší instance pro produkční použití jsou doporučeny tyto v
 > [!NOTE]
 > Akce GitHubu jsou [v tuto chvíli dostupné jako omezená beta verze na webu GitHub Enterprise Server verze 2,22](https://docs.github.com/en/enterprise/admin/github-actions).
 
-Externí úložiště objektů BLOB je potřeba k povolení akcí GitHubu na serveru GitHub Enterprise (aktuálně dostupného jako "beta" funkce). Toto externí úložiště objektů BLOB se používá v akcích k ukládání artefaktů a protokolů. Akce na serveru GitHub Enterprise Server [podporují službu Azure Blob Storage jako poskytovatele úložiště](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (a některé jiné). Proto zřídíme nový účet Azure Storage s [typem účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#types-of-storage-accounts) BlobStorage:
+Externí úložiště objektů BLOB je potřeba k povolení akcí GitHubu na serveru GitHub Enterprise (aktuálně dostupného jako "beta" funkce). Toto externí úložiště objektů BLOB se používá v akcích k ukládání artefaktů a protokolů. Akce na serveru GitHub Enterprise Server [podporují službu Azure Blob Storage jako poskytovatele úložiště](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (a některé jiné). Proto zřídíme nový účet Azure Storage s [typem účtu úložiště](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts) BlobStorage:
 
 :::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
 
@@ -215,7 +215,7 @@ Pokud vše úspěšně proběhlo, měli byste v úložišti zobrazit nový probl
 
 :::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="Vyberte, chcete-li spustit GitHub místně nebo v cloudu.":::
 
-Gratulujeme! Právě jste dokončili pracovní postup prvního pracovního postupu na serveru GitHub Enterprise, který běží na vašem privátním cloudu řešení Azure VMware.
+Blahopřejeme! Právě jste dokončili pracovní postup prvního pracovního postupu na serveru GitHub Enterprise, který běží na vašem privátním cloudu řešení Azure VMware.
 
 Právě dosazujeme plochu toho, co můžete dělat s akcemi na GitHubu. Další inspiraci najdete v seznamu akcí na [webu GitHub](https://github.com/marketplace)nebo si [vytvořte vlastní](https://docs.github.com/en/actions/creating-actions).
 

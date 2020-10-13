@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 9dc195f98310e63cbde06885effe86ea3c239249
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91576094"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování služba-služba pomocí Azure Data Lake Storage Gen1 s využitím Azure Active Directory
@@ -29,7 +29,7 @@ Obě tyto možnosti mají za následek, že vaše aplikace bude k dispozici s to
 
 Tento článek pojednává o tom, jak vytvořit **webovou aplikaci Azure AD pro ověřování služby-služba**. Pokyny týkající se konfigurace aplikací Azure AD pro ověřování koncových uživatelů najdete v tématu [ověřování koncových uživatelů pomocí Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="step-1-create-an-active-directory-web-application"></a>Krok 1: Vytvoření webové aplikace Active Directory

@@ -1,22 +1,22 @@
 ---
-title: Migrace z Google Maps na Azure Maps | Mapy Microsoft Azure
-description: Jak migrovat z Google Maps na mapy Microsoft Azure. Průvodce vás seznámí s postupem, jak přepnout na Azure Maps rozhraní API a sady SDK.
+title: Kurz – migrace z Google Maps na Azure Maps | Mapy Microsoft Azure
+description: Kurz migrace z Google Maps na Microsoft Azure Maps Průvodce vás seznámí s postupem, jak přepnout na Azure Maps rozhraní API a sady SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/23/2020
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: c60890b301ba650c95584e33b5326217086c08c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee7eda58c211ca570b052d55c813999e62b95fde
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264163"
+ms.locfileid: "91876307"
 ---
-# <a name="migrate-from-google-maps-to-azure-maps"></a>Migrace z Google Maps do Azure Maps
+# <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>Kurz – migrace z Google Maps na Azure Maps
 
 Tento článek poskytuje přehledy o tom, jak migrovat webové a mobilní aplikace a aplikace založené na serveru z Google Maps na platformu Microsoft Azure Maps. Tento kurz obsahuje srovnávací ukázky kódu, návrhy migrace a osvědčené postupy pro migraci na Azure Maps.
 

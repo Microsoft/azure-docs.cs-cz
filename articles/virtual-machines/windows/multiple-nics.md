@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: ed1c5b749b778ef8334ea3b31ef17d3bf106484f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66a135cd1629aa2befcd4c56d835473791d62ce8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835540"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974001"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Vytvoření a Správa virtuálního počítače s Windows s více síťovými kartami
 K virtuálním počítačům v Azure můžou být připojené několik síťových adaptérů (nic). Běžným scénářem je použití různých podsítí pro front-endové a back-endové připojení. K virtuálnímu počítači můžete přidružit více síťových adaptérů k několika podsítím, ale tyto podsítě se musí nacházet ve stejné virtuální síti (vNet). Tento článek podrobně popisuje, jak vytvořit virtuální počítač s připojenými více síťovými rozhraními. Naučíte se také, jak přidat nebo odebrat síťové karty z existujícího virtuálního počítače. Různé [velikosti virtuálních počítačů](../sizes.md) podporují proměnlivý počet síťových adaptérů, proto si odpovídajícím způsobem nasaďte velikost svého virtuálního počítače.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů jsou *myResourceGroup*, *myVnet*a *myVM*.
 
@@ -70,7 +70,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     -SubnetId $backEnd.Id
 ```
 
-Obvykle vytvoříte také [skupinu zabezpečení sítě](../../virtual-network/security-overview.md) pro filtrování síťového provozu do virtuálního počítače a [Nástroj pro vyrovnávání zatížení](../../load-balancer/load-balancer-overview.md) pro distribuci provozu napříč několika virtuálními počítači.
+Obvykle vytvoříte také [skupinu zabezpečení sítě](../../virtual-network/network-security-groups-overview.md) pro filtrování síťového provozu do virtuálního počítače a [Nástroj pro vyrovnávání zatížení](../../load-balancer/load-balancer-overview.md) pro distribuci provozu napříč několika virtuálními počítači.
 
 ### <a name="create-the-virtual-machine"></a>Vytvoření virtuálního počítače
 Teď začněte sestavovat konfiguraci virtuálních počítačů. Velikost každého virtuálního počítače má omezení celkového počtu síťových adaptérů, které můžete přidat do virtuálního počítače. Další informace najdete v tématu [velikosti virtuálních počítačů s Windows](../sizes.md).
@@ -288,4 +288,4 @@ Azure přiřadí výchozí bránu k prvnímu (primárnímu) síťovému rozhran�
     Trasa uvedená v části **Gateway** *je ve výchozím* nastavení trasa pro primární síťové rozhraní. Trasa s *192.168.2.1* pod **branou**je trasa, kterou jste přidali.
 
 ## <a name="next-steps"></a>Další kroky
-Zkontrolujte [velikosti virtuálních počítačů s Windows](../sizes.md) , když se pokoušíte vytvořit virtuální počítač s více síťovými kartami. Věnujte pozornost maximálnímu počtu síťových adaptérů, které podporují jednotlivé velikosti virtuálních počítačů. 
+Zkontrolujte [velikosti virtuálních počítačů s Windows](../sizes.md) , když se pokoušíte vytvořit virtuální počítač s více síťovými kartami. Věnujte pozornost maximálnímu počtu síťových adaptérů, které podporují jednotlivé velikosti virtuálních počítačů.

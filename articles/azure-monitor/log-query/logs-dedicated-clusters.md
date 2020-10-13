@@ -7,10 +7,10 @@ author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
 ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575516"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor protokolovat vyhrazené clustery
@@ -116,12 +116,12 @@ Mělo by být 200 OK a záhlaví.
 
 Zřizování clusteru Log Analytics trvá delší dobu. Stav zřizování můžete zjistit několika způsoby:
 
-- Spusťte příkaz Get-AzOperationalInsightsCluster prostředí PowerShell s názvem skupiny prostředků a ověřte vlastnost ProvisioningState. Hodnota je *ProvisioningAccount* při zřizování a *úspěšném* dokončení.
+- Spusťte příkaz Get-AzOperationalInsightsCluster PowerShell s názvem skupiny prostředků a ověřte vlastnost ProvisioningState. Hodnota je *ProvisioningAccount* při zřizování a *úspěšném* dokončení.
   ```powershell
   New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} 
   ```
 
-- Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle kontroly stavu asynchronních operací.
+- Zkopírujte hodnotu URL Azure-AsyncOperation z odpovědi a postupujte podle kontroly stavu asynchronních operací.
 
 - Odešlete požadavek GET na prostředek *clusteru* a podívejte se na hodnotu *provisioningState* . Hodnota je *ProvisioningAccount* při zřizování a *úspěšném* dokončení.
 
@@ -218,7 +218,7 @@ Content-type: application/json
 
 Dokončení šíření identifikátoru klíče trvá několik minut. Stav aktualizace můžete zjistit dvěma způsoby:
 
-- Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle kontroly stavu asynchronních operací. 
+- Zkopírujte hodnotu URL Azure-AsyncOperation z odpovědi a postupujte podle kontroly stavu asynchronních operací. 
 
    NEBO
 
@@ -319,7 +319,7 @@ Pokud používáte klíče spravované zákazníkem, budou se po operaci přidru
 
 Stav přidružení pracovního prostoru můžete zjistit dvěma způsoby:
 
-- Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle kontroly stavu asynchronních operací.
+- Zkopírujte hodnotu URL Azure-AsyncOperation z odpovědi a postupujte podle kontroly stavu asynchronních operací.
 
 - Odeslání [pracovních prostorů – Získejte](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) požadavek a sledujte odpověď. V přidruženém pracovním prostoru je clusterResourceId v části funkce.
 

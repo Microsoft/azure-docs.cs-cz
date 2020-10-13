@@ -10,13 +10,13 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574313"
 ---
-# <a name="iot-plug-and-play-architecture"></a>Architektura IoT technologie Plug and Play
+# <a name="iot-plug-and-play-architecture"></a>Architektura technologie IoT Plug and Play
 
 IoT technologie Plug and Play umožňuje tvůrcům řešení integrovat inteligentní zařízení s jejich řešeními bez jakékoli ruční konfigurace. V jádru IoT technologie Plug and Play je _model_ zařízení, který popisuje možnosti zařízení pro aplikaci s podporou technologie Plug and Play IoT. Tento model je strukturovaný jako sada rozhraní definujících:
 
@@ -28,7 +28,7 @@ Každý model a rozhraní má jedinečné ID.
 
 Následující diagram znázorňuje klíčové prvky řešení IoT technologie Plug and Play:
 
-:::image type="content" source="media/concepts-architecture/pnp-architecture.png" alt-text="Architektura IoT technologie Plug and Play":::
+:::image type="content" source="media/concepts-architecture/pnp-architecture.png" alt-text="Architektura technologie IoT Plug and Play":::
 
 ## <a name="model-repository"></a>Úložiště modelů
 
