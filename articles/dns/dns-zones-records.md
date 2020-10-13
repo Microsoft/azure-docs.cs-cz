@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85846842"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Přehled zón a záznamů DNS
@@ -129,8 +129,8 @@ Na úrovni Azure DNS REST API jsou značky ETag zadány pomocí hlaviček protok
 
 | Záhlaví | Chování |
 | --- | --- |
-| Žádná |Úspěšné vložení (žádné kontroly ETag) |
-| If-Match\<etag> |Pokaždé, když existuje prostředek a shody ETag, se vloží jenom úspěšně. |
+| Žádné |Úspěšné vložení (žádné kontroly ETag) |
+| If-Match \<etag> |Pokaždé, když existuje prostředek a shody ETag, se vloží jenom úspěšně. |
 | If-Match * |Podávat jenom úspěšné, pokud prostředek existuje |
 | If-None-Match * |Pokud prostředek neexistuje, operace PUT se zdaří. |
 

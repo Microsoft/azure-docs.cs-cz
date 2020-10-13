@@ -8,10 +8,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
 ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563688"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
@@ -277,7 +277,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="ad-aad-smb-files"></a>
 **Je nějaký rozdíl v tom, že vytvoření účtu počítače nebo přihlašovacího účtu služby pro reprezentaci účtu úložiště ve službě AD?**
 
-    Vytvoření [účtu počítače](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí) nebo [přihlašovacího účtu služby](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) nemá žádný rozdíl nad tím, jak ověřování funguje se soubory Azure. Můžete si vybrat, jak vyjádřit účet úložiště jako identitu ve vašem prostředí služby AD. Výchozí DomainAccountType sada v rutině JOIN-AzStorageAccountForAuth je účet počítače. Doba vypršení platnosti hesla nakonfigurovaná ve vašem prostředí služby AD se ale může lišit pro účet počítače nebo přihlašovací účet služby a Vy musíte vzít v úvahu, abyste si [aktualizovali heslo své identity účtu úložiště ve službě AD](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password).
+    Vytvoření [účtu počítače](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (výchozí) nebo [přihlašovacího účtu služby](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) nemá žádný rozdíl nad tím, jak ověřování funguje se soubory Azure. Můžete si vybrat, jak vyjádřit účet úložiště jako identitu ve vašem prostředí služby AD. Výchozí DomainAccountType sada v rutině Join-AzStorageAccountForAuth je počítačový účet. Doba vypršení platnosti hesla nakonfigurovaná ve vašem prostředí služby AD se ale může lišit pro účet počítače nebo přihlašovací účet služby a Vy musíte vzít v úvahu, abyste si [aktualizovali heslo své identity účtu úložiště ve službě AD](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password).
  
 * <a id="ad-support-rest-apis"></a>
 **Existují rozhraní REST API, která podporují seznamy ACL pro získání, nastavení/kopírování adresářů/souborů?**
@@ -311,7 +311,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="expressroute-not-required"></a>
 **Musím použít Azure ExpressRoute k připojení k souborům Azure nebo k používání Azure File Sync v místním prostředí?**  
 
-    No. ExpressRoute se nevyžaduje pro přístup ke sdílené složce Azure. Pokud připojujete sdílenou složku Azure přímo v místním prostředí, je nutné, aby byl pro přístup k Internetu otevřený port 445 (odchozí TCP) (Jedná se o port, který protokol SMB používá ke komunikaci). Pokud používáte Azure File Sync, vyžaduje se pro přístup HTTPS port 443 (odchozí TCP) (bez požadavku SMB). ExpressRoute ale *můžete* použít pro jednu z těchto možností přístupu.
+    Ne. ExpressRoute se nevyžaduje pro přístup ke sdílené složce Azure. Pokud připojujete sdílenou složku Azure přímo v místním prostředí, je nutné, aby byl pro přístup k Internetu otevřený port 445 (odchozí TCP) (Jedná se o port, který protokol SMB používá ke komunikaci). Pokud používáte Azure File Sync, vyžaduje se pro přístup HTTPS port 443 (odchozí TCP) (bez požadavku SMB). ExpressRoute ale *můžete* použít pro jednu z těchto možností přístupu.
 
 * <a id="mount-locally"></a>
 **Jak můžu připojit sdílenou složku Azure na svém místním počítači?**  
@@ -415,7 +415,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="lfs-performance-impact"></a>
 **Má rozšíření kvóty sdílené složky vliv na moje úlohy nebo Azure File Sync?**
     
-    No. Rozšiřování kvóty nebude mít vliv na vaše úlohy ani Azure File Sync.
+    Ne. Rozšiřování kvóty nebude mít vliv na vaše úlohy ani Azure File Sync.
 
 * <a id="open-handles-quota"></a>
 **Kolik klientů má přístup ke stejnému souboru současně?**   
@@ -444,7 +444,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="nested-shares"></a>
 **Můžu nastavit vnořené sdílené složky? Jinými slovy, sdílená složka ve sdílené složce?**  
-    No. Sdílená složka *je* virtuální ovladač, který se dá připojit, takže vnořené sdílené složky se nepodporují.
+    Ne. Sdílená složka *je* virtuální ovladač, který se dá připojit, takže vnořené sdílené složky se nepodporují.
 
 * <a id="ibm-mq"></a>
 **Návody používat soubory Azure s IBM MQ?**  

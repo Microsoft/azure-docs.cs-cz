@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: enewman
 ms.openlocfilehash: 4bbf4c9d4bc83b48b8ecc62946fa9bffa8af50bc
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91533516"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Nastavení testovacího prostředí pro učení datových věd pomocí poznámkových bloků Python a Jupyter
@@ -20,7 +20,7 @@ Jupyter Poznámkový blok je open source projekt, který umožňuje snadno kombi
 ## <a name="set-up-the-lab"></a>Nastavení testovacího prostředí
 
 ### <a name="lab-configuration"></a>Konfigurace testovacího prostředí
-K nastavení tohoto testovacího prostředí potřebujete přístup k předplatnému Azure a účtu testovacího prostředí. Prodiskutujte se správcem vaší organizace a zjistěte, jestli můžete získat přístup k existujícímu předplatnému Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+K nastavení tohoto testovacího prostředí potřebujete přístup k předplatnému Azure a účtu testovacího prostředí. Prodiskutujte se správcem vaší organizace a zjistěte, jestli můžete získat přístup k existujícímu předplatnému Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 Jakmile budete mít předplatné Azure, vytvořte nový účet testovacího prostředí v Azure Lab Services podle pokynů v tomto kurzu: [Nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md). Můžete použít i existující účet testovacího prostředí.
 

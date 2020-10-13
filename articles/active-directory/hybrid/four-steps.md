@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90600792"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Čtyři kroky pro silnou identitu Foundation s Azure Active Directory
@@ -131,7 +131,7 @@ V dnešním digitálním pracovišti je důležité zajistit rovnováhu mezi zab
 
 V této části jsou uvedena doporučení pro odstranění tření z vaší organizace tím, že vašim uživatelům umožníte zbývající ostražití.
 
-### <a name="enable-self-service-password-reset-for-all-users"></a>Povolit Samoobslužné resetování hesla pro všechny uživatele
+### <a name="enable-self-service-password-reset-for-all-users"></a>Povolit Self-Service resetování hesla pro všechny uživatele
 
 [Samoobslužné resetování hesla](../authentication/tutorial-enable-sspr.md) (SSPR) v Azure nabízí správcům IT jednoduchý způsob, jak uživatelům dovolit resetování a odemknutí hesel nebo účtů bez zásahu správce. Tento systém zahrnuje generování podrobných sestav, které sledují, kdy uživatelé k systému přistupují, spolu s oznámeními, která upozorňují na zneužití.
 
@@ -147,7 +147,7 @@ Podobně je možné pomocí [sestavy samoobslužné správy hesel](../authentica
 
 ### <a name="self-service-app-management"></a>Samoobslužná správa aplikací
 
-Než budou moct vaši uživatelé sami zjišťovat aplikace z přístupového panelu, musíte povolit [Samoobslužný přístup](../manage-apps/access-panel-manage-self-service-access.md) k aplikacím, u kterých chcete uživatelům umožnit, aby si mohli sami vyhledat a požádat o přístup. Samoobslužný přístup k aplikacím je skvělý způsob, jak uživatelům povolit, aby si mohli sami zjistit aplikace a volitelně povolit obchodní skupině schvalovat přístup k těmto aplikacím. Obchodní skupině můžete dovolit, aby uživatelé mohli spravovat přihlašovací údaje přiřazená těmto uživatelům pro [samoobslužné přihlašování pomocí hesel](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) přímo ze svých přístupových panelů.
+Než budou moct vaši uživatelé sami zjišťovat aplikace z přístupového panelu, musíte povolit [Samoobslužný přístup](../manage-apps/access-panel-manage-self-service-access.md) k aplikacím, u kterých chcete uživatelům umožnit, aby si mohli sami vyhledat a požádat o přístup. Samoobslužný přístup k aplikacím je skvělý způsob, jak uživatelům povolit, aby si mohli sami zjistit aplikace a volitelně povolit obchodní skupině schvalovat přístup k těmto aplikacím. Obchodní skupině můžete dovolit, aby uživatelé spravovali přihlašovací údaje přiřazené k [heslům Single-Sign v aplikacích](../manage-apps/application-sign-in-problem-password-sso-gallery.md#configure-password-sso-for-an-azure-ad-gallery-app) přímo ze svých přístupových panelů.
 
 ### <a name="self-service-group-management"></a>Samoobslužná správa skupin
 

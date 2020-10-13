@@ -9,10 +9,10 @@ ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 25571db967608c238bccb1ab44f75a0a163803d5
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90020279"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Základní plán zabezpečení Azure pro službu Azure Sentinel
@@ -551,13 +551,13 @@ Vaše zodpovědnost za veškerý obsah, který se nahrává do nevýpočetních 
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a klíčů spravovaných zákazníkem
 
-**Pokyny**: povolení obnovitelného odstranění v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění. V případě, že uživatel Odvolá šifrovací klíč klíče, a to buď odstraněním nebo odebráním přístupu pro službu Azure Sentinel, během jedné hodiny Azure Sentinele změní a bude fungovat, jako by data už nebudou dostupná. V tomto okamžiku bude znemožněna jakákoli operace, která využívá trvalé prostředky úložiště, jako je například ingestování dat, trvalé změny konfigurace a vytvoření incidentu. Dříve uložená data nebudou smazána, ale zůstanou nepřístupná. Nepřístupná data se řídí zásadami uchovávání dat a budou se v souladu s těmito zásadami vyprázdnit.
+**Pokyny**: povolení Soft-Delete v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění. V případě, že uživatel Odvolá šifrovací klíč klíče, a to buď odstraněním nebo odebráním přístupu pro službu Azure Sentinel, během jedné hodiny Azure Sentinele změní a bude fungovat, jako by data už nebudou dostupná. V tomto okamžiku bude znemožněna jakákoli operace, která využívá trvalé prostředky úložiště, jako je například ingestování dat, trvalé změny konfigurace a vytvoření incidentu. Dříve uložená data nebudou smazána, ale zůstanou nepřístupná. Nepřístupná data se řídí zásadami uchovávání dat a budou se v souladu s těmito zásadami vyprázdnit.
 
 Jediná operace, kterou je možné provést po odvolání nebo odstranění šifrovacího klíče, je odstranění účtu.
 
 Pokud se po odvolání obnoví přístup, Azure Sentinel obnoví přístup k datům během hodiny.
 
-- [Jak povolit obnovitelné odstranění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Postup povolení Soft-Delete v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 - [Vysvětlení klíčů spravovaných zákazníkem v Azure Sentinel](customer-managed-keys.md)
 

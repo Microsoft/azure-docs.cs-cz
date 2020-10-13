@@ -4,13 +4,13 @@ description: Popisuje, jak přizpůsobit možnosti doručení událostí pro Eve
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.openlocfilehash: e780ddd5c49b1a2cced10a1907d25784b0285f01
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91261800"
 ---
-# <a name="set-dead-letter-location-and-retry-policy"></a>Nastavit umístění nedoručených zpráv a zásady opakování
+# <a name="set-dead-letter-location-and-retry-policy"></a>Nastavení umístění pro nedoručené zprávy a zásady opakování
 
 Při vytváření odběru událostí můžete přizpůsobit nastavení pro doručování událostí. V tomto článku se dozvíte, jak nastavit umístění nedoručených zpráv a přizpůsobit nastavení opakování. Informace o těchto funkcích naleznete v tématu [Event Grid doručování zpráv a zkuste to znovu](delivery-and-retry.md).
 

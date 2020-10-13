@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: e8c3a0d60e10b1cf1f8a827cec8fcc25f3d33b05
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564300"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
@@ -344,7 +344,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="windows-server-container-os-and-host-os-compatibility"></a>Systém Windows Server Container OS a kompatibilita s hostitelským operačním systémem
 
-Kontejnery Windows serveru nejsou kompatibilní napříč všemi verzemi hostitelského operačního systému. Příklad:
+Kontejnery Windows serveru nejsou kompatibilní napříč všemi verzemi hostitelského operačního systému. Například:
  
 - Kontejnery Windows serveru sestavené pomocí Windows serveru verze 1709 nefungují na hostiteli se systémem Windows Server verze 2016. 
 - Kontejnery Windows serveru vytvořené pomocí systému Windows Server 2016 fungují v režimu izolace technologie Hyper-V pouze v hostiteli se systémem Windows Server verze 1709. 
@@ -352,7 +352,7 @@ Kontejnery Windows serveru nejsou kompatibilní napříč všemi verzemi hostite
  
 Další informace najdete v tématu [Kompatibilita verzí kontejnerů Windows](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Při sestavování a nasazování kontejnerů do clusteru Service Fabric zvažte kompatibilitu s hostitelským operačním systémem a vaším kontejnerovým operačním systémem. Příklad:
+Při sestavování a nasazování kontejnerů do clusteru Service Fabric zvažte kompatibilitu s hostitelským operačním systémem a vaším kontejnerovým operačním systémem. Například:
 
 - Ujistěte se, že jste nasadili kontejnery s operačním systémem kompatibilním s operačním systémem na uzlech clusteru.
 - Zajistěte, aby byl režim izolace zadaný pro vaši aplikaci kontejneru konzistentní s podporou pro kontejnerový operační systém na uzlu, na kterém je nasazený.

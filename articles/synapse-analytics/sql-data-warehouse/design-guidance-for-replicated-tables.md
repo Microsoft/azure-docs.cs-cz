@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86181331"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Pokyny k návrhu pro použití replikovaných tabulek ve fondu SQL synapse
@@ -24,7 +24,7 @@ Tento článek obsahuje doporučení pro návrh replikovaných tabulek ve schém
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte zkušenosti s koncepty distribuce dat a přesunu dat ve fondu SQL.Další informace najdete v článku o [architektuře](massively-parallel-processing-mpp-architecture.md) .
 
@@ -47,7 +47,7 @@ Replikované tabulky dobře fungují pro tabulky dimenzí ve schématu hvězdič
 Při použití replikované tabulky zvažte následující:
 
 - Velikost tabulky na disku je menší než 2 GB, bez ohledu na počet řádků. Chcete-li zjistit velikost tabulky, můžete použít příkaz [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) : `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')` .
-- Tabulka se používá ve spojeních, která by jinak vyžadovala přesun dat. Při spojování tabulek, které nejsou distribuované na stejném sloupci, jako je tabulka distribuovaná pomocí algoritmu hash, do tabulky kruhového dotazování, je pro dokončení dotazu potřeba přesun dat.  Pokud je jedna z tabulek malá, vezměte v úvahu replikovanou tabulku. Ve většině případů doporučujeme použít replikované tabulky místo tabulek kruhového dotazování. Chcete-li zobrazit operace přesunu dat v plánech dotazů, použijte [Sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  BroadcastMoveOperation je typická operace přesunu dat, kterou lze eliminovat pomocí replikované tabulky.  
+- Tabulka se používá ve spojeních, která by jinak vyžadovala přesun dat. Při spojování tabulek, které nejsou distribuované na stejném sloupci, jako je tabulka distribuovaná pomocí algoritmu hash, do tabulky kruhového dotazování, je pro dokončení dotazu potřeba přesun dat.  Pokud je jedna z tabulek malá, vezměte v úvahu replikovanou tabulku. Ve většině případů doporučujeme použít replikované tabulky místo tabulek kruhového dotazování. Chcete-li zobrazit operace přesunu dat v plánech dotazů, použijte [Sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  BroadcastMoveOperation je typická operace přesunu dat, kterou lze eliminovat pomocí replikované tabulky.  
 
 Replikované tabulky nemůžou poskytovat nejlepší výkon dotazů v těchto případech:
 
@@ -99,7 +99,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 ### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Příklad výkonu dotazů pro kruhové dotazování versus replikaci
 
-Replikovaná tabulka nevyžaduje žádné přesuny dat pro spojení, protože celá tabulka je již na každém výpočetním uzlu přítomna. Pokud jsou tabulky dimenzí distribuované kruhové dotazování, připojí se tabulka Dimension v plném rozsahu ke každému výpočetnímu uzlu. K přesunu dat plán dotazu obsahuje operaci nazvanou BroadcastMoveOperation. Tento typ operace přesunu dat zpomaluje dotazování a eliminuje se pomocí replikovaných tabulek. Pokud chcete zobrazit kroky plánu dotazů, použijte zobrazení katalogu [Sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) System.  
+Replikovaná tabulka nevyžaduje žádné přesuny dat pro spojení, protože celá tabulka je již na každém výpočetním uzlu přítomna. Pokud jsou tabulky dimenzí distribuované kruhové dotazování, připojí se tabulka Dimension v plném rozsahu ke každému výpočetnímu uzlu. K přesunu dat plán dotazu obsahuje operaci nazvanou BroadcastMoveOperation. Tento typ operace přesunu dat zpomaluje dotazování a eliminuje se pomocí replikovaných tabulek. Chcete-li zobrazit kroky plánu dotazů, použijte zobrazení katalog systému [Sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  
 
 Například v následujících dotazech na schéma AdventureWorks `FactInternetSales` je tabulka rozložená pomocí algoritmu hash. `DimDate`Tabulky a `DimSalesTerritory` jsou menší tabulky dimenzí. Tento dotaz vrátí celkový prodej v Severní Amerika pro fiskální rok 2004:
 
@@ -170,7 +170,7 @@ Například tento vzor zatížení načte data ze čtyř zdrojů, ale vyvolá po
 
 Chcete-li zajistit konzistentní dobu provádění dotazů, zvažte vynucení sestavení replikovaných tabulek po načtení dávky. V opačném případě bude první dotaz dál používat přesun dat k dokončení dotazu.
 
-Tento dotaz používá DMV [Sys. pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) k vypsání replikovaných tabulek, které byly upraveny, ale nebyly znovu sestaveny.
+Tento dotaz používá [Sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV k vypsání replikovaných tabulek, které byly upraveny, ale ne znovu sestaveny.
 
 ```sql
 SELECT [ReplicatedTable] = t.[name]

@@ -4,10 +4,10 @@ description: Naučte se integrovat Azure Relay se službou Azure Private Link.
 ms.date: 09/24/2020
 ms.topic: article
 ms.openlocfilehash: 10d82fe8e272ed18dcc339830dfef0f71d4b2ddb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91263836"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Integrace Azure Relay s privátním odkazem Azure (Preview)
@@ -33,7 +33,7 @@ Váš privátní koncový bod používá privátní IP adresu ve vaší virtuál
 ### <a name="steps"></a>Postup
 Podrobné pokyny k vytvoření nového oboru názvů Azure Relay a entit v této části najdete v tématu [Vytvoření oboru názvů Azure Relay pomocí Azure Portal](relay-create-namespace-portal.md).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. Do vyhledávacího panelu zadejte text **Relay**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
 4. V části **Nastavení**vyberte kartu **síť** .
@@ -152,9 +152,9 @@ Při vytváření privátního koncového bodu musí být připojení schváleno
 
 Existují čtyři stavy zřizování:
 
-| Akce služby | Stav privátního koncového bodu příjemce služby | Popis |
+| Akce služby | Stav privátního koncového bodu příjemce služby | Description |
 |--|--|--|
-| Žádné | Čekající | Připojení je vytvořeno ručně a čeká na schválení od Azure Relay vlastníka oboru názvů. |
+| Žádná | Čekající | Připojení je vytvořeno ručně a čeká na schválení od Azure Relay vlastníka oboru názvů. |
 | Schválení | Schválené | Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití. |
 | Odmítnout | Zamítnuto | Připojení Azure Relay vlastník oboru názvů odmítnuto. |
 | Odebrat | Propojení | Připojení odebral vlastník oboru názvů Azure Relay, privátní koncový bod se bude zobrazovat jako informativní a měl by se odstranit pro vyčištění. |
@@ -236,7 +236,7 @@ Aliases:  <namespace-name>.servicebus.windows.net
 ### <a name="limitations"></a>Omezení 
 - Maximální počet privátních koncových bodů na obor názvů Azure Relay: 64.
 - Maximální počet Azure Relay oborů názvů se soukromými koncovými body na předplatné: 64.
-- Pravidla skupiny zabezpečení sítě (NSG) a uživatelsky definované trasy se nevztahují na soukromý koncový bod. Další informace najdete v tématu [Služba pro privátní připojení Azure: omezení](../private-link/private-link-service-overview.md#limitations)
+- Pravidla skupiny zabezpečení sítě (NSG) a trasy User-Defined se nevztahují na soukromý koncový bod. Další informace najdete v tématu [Služba pro privátní připojení Azure: omezení](../private-link/private-link-service-overview.md#limitations)
 
 ## <a name="next-steps"></a>Další kroky
 

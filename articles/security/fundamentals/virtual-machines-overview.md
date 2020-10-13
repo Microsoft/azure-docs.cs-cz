@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
 ms.openlocfilehash: d2862d5ab2c42ebdd1787022dc86119bc4e0f596
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86229359"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Přehled zabezpečení služby Azure Virtual Machines
@@ -129,7 +129,7 @@ Virtuální síť Azure je logická konstrukce, která je postavená na fyzický
 Další informace:
 
 * [Přehled zabezpečení sítě Azure](network-overview.md)
-* [Přehled služby Virtual Network](/azure/virtual-network/virtual-networks-overview)
+* [Přehled Virtual Network](/azure/virtual-network/virtual-networks-overview)
 * [Síťové funkce a partnerství pro podnikové scénáře](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>Správa zásad zabezpečení a vytváření sestav
@@ -160,7 +160,7 @@ Další informace:
 
 I když důvěrné výpočetní operace není technicky součástí zabezpečení virtuálních počítačů, téma zabezpečení virtuálních počítačů patří do předmětu vyšší úrovně zabezpečení Compute. Důvěrné výpočetní prostředky patří do kategorie zabezpečení Compute.
 
-Důvěrné výpočetní operace zajišťuje, že pokud jsou data "v jasném formátu", který je vyžadován pro efektivní zpracování, data jsou chráněna v prostředí s důvěryhodným spouštěním https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE-také označované jako enklávy), což je příklad, který je znázorněn na následujícím obrázku.  
+Důvěrné výpočetní operace zajišťuje, že pokud jsou data "v jasném formátu", který je vyžadován pro efektivní zpracování, data jsou chráněna v prostředí s důvěryhodným spouštěním  https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE-také označované jako enklávy), což je příklad, který je znázorněn na následujícím obrázku.  
 
 TEEs zajistěte, aby neexistoval žádný způsob, jak zobrazit data ani operace uvnitř vně, ani pomocí ladicího programu. Ještě zajistí, že přístup k datům je povolen pouze autorizovaným kódem. Pokud dojde ke změně nebo poškození kódu, operace jsou zamítnuté a prostředí je zakázané. TEE vynutila tyto ochrany v průběhu provádění kódu v rámci IT.
 

@@ -4,10 +4,10 @@ description: Tento článek poskytuje přehled živé analýzy videí na IoT Edg
 ms.topic: conceptual
 ms.date: 05/30/2020
 ms.openlocfilehash: e3a77b69adf2241a4af2652db4edb6673a63b4f0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88690608"
 ---
 # <a name="terminology"></a>Terminologie
@@ -38,7 +38,7 @@ V kontextu systému správy videí pro bezpečnostní kamery se záznam videa oz
 
 ## <a name="rtsp"></a>PROTOKOL
 
-[RTSP](https://tools.ietf.org/html/rfc2326) odkazuje na protokol streamování v reálném čase. Jedná se o protokol na úrovni aplikace pro kontrolu nad doručením dat pomocí vlastností v reálném čase. RTSP poskytuje rozšiřitelnou architekturu, která umožňuje řízené doručování dat v reálném čase, jako je třeba zvuk a video, na vyžádání. 
+[RTSP](https://tools.ietf.org/html/rfc2326) označuje protokol streamování Real-Time. Jedná se o protokol na úrovni aplikace pro kontrolu nad doručením dat pomocí vlastností v reálném čase. RTSP poskytuje rozšiřitelnou architekturu, která umožňuje řízené doručování dat v reálném čase, jako je třeba zvuk a video, na vyžádání. 
 
 ## <a name="streaming"></a>Streamování
 

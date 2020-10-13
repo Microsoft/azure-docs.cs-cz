@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13ed87903845d9f8295e56f187b643d73fbfb04e
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717859"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrujte svoji infrastrukturu VPN s Azure MFA pomocí rozšíření serveru NPS (Network Policy Server) pro Azure.
@@ -72,7 +72,7 @@ Když je rozšíření NPS pro Azure integrované s NPS, výsledky toku úspěš
 7. Jakmile je pokus o připojení ověřen i autorizován, server NPS, ve kterém je rozšíření nainstalováno, odesílá zprávu RADIUS *Access-Accept* na server VPN (klient RADIUS).
 8. Uživateli je udělen přístup k virtuálnímu portu na serveru VPN a vytvoří šifrované tunelové propojení VPN.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tato část podrobně popisuje požadavky, které je třeba provést před integrací vícefaktorového ověřování pomocí sítě VPN. Než začnete, musíte mít splněné následující předpoklady:
 

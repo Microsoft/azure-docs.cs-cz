@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
 ms.openlocfilehash: eea4de106fe566b55ae30330d4c9d101f7126bbf
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86229614"
 ---
 # <a name="use-source-control-integration"></a>Použití integrace správy zdrojového kódu
@@ -22,11 +22,11 @@ ms.locfileid: "86229614"
 
 Azure Automation podporuje tři typy správy zdrojového kódu:
 
-* GitHub
+* GitHubu
 * Azure Repos (Git)
 * Azure Repos (TFVC)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Úložiště správy zdrojového kódu (GitHub nebo Azure Repos)
 * [Účet Spustit jako](manage-runas-account.md)
@@ -62,7 +62,7 @@ Pomocí tohoto postupu můžete nakonfigurovat správu zdrojového kódu pomocí
     |Cesta ke složce     | Složka, která obsahuje Runbooky, které se mají synchronizovat, například **/runbooks**. Synchronizovány jsou pouze Runbooky v zadané složce. Rekurze není podporována.        |
     |Automatická synchronizace<sup>1</sup>     | Nastavení, které zapne nebo vypne automatickou synchronizaci při provedení potvrzení v úložišti správy zdrojů.        |
     |Publikování Runbooku     | Nastavení zapnuto, pokud jsou Runbooky automaticky publikovány po synchronizaci ze správy zdrojového kódu a mimo jiné.           |
-    |Popis     | Text určující další podrobnosti o správě zdrojového kódu.        |
+    |Description     | Text určující další podrobnosti o správě zdrojového kódu.        |
 
     <sup>1</sup> Chcete-li povolit automatickou synchronizaci při konfiguraci integrace správy zdrojového kódu pomocí Azure Repos, musíte být správcem projektu.
 
@@ -124,7 +124,7 @@ Následující tabulka definuje minimální oprávnění PAT potřebná pro GitH
 
 Následující seznam definuje minimální oprávnění PAT potřebná pro Azure Repos. Další informace o vytvoření PAT v Azure Repos najdete v tématu [ověření přístupu pomocí tokenů osobního přístupu](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page).
 
-| Obor  |  Typ přístupu  |
+| Rozsah  |  Typ přístupu  |
 |---------| ----------|
 | `Code`      | Čtení  |
 | `Project and team` | Čtení |

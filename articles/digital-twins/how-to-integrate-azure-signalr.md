@@ -8,10 +8,10 @@ ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 38e3526627eb4191643f8bc86b9ce5f49e41a71f
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90564402"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrace digitálních vláken Azure s využitím služby Azure Signal
@@ -34,7 +34,7 @@ Můžete také pokračovat a přihlásit se k [Azure Portal](https://portal.azur
 
 Pomocí níže uvedené cesty budete připojovat službu Azure Signal k digitálním Vlákenám Azure. Oddíly A, B a C v diagramu jsou pořízeny z diagramu architektury [kompletního kurzu](tutorial-end-to-end.md). v tomto postupu to vytvoříte přidáním oddílu D.
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-integration-topology.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře. Znázorňuje tok dat ze zařízení do IoT Hub, prostřednictvím funkce Azure (šipka B) k instanci digitálních vláken Azure (oddíl A), pak prostřednictvím Event Grid na jinou funkci Azure pro zpracování (šipka C). V části D se zobrazuje tok dat ze stejného Event Grid na šipku C až po funkci Azure s označením Broadcast. všesměrové vysílání komunikuje s jinou funkcí Azure s názvem Negotiate a komunikují všesměrově a Negotiate spolu s počítači." lightbox="media/how-to-integrate-azure-signalr/signalr-integration-topology.png":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-integration-topology.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře. Znázorňuje tok dat ze zařízení do IoT Hub, prostřednictvím funkce Azure (šipka B) k instanci digitálních vláken Azure (oddíl A), pak prostřednictvím Event Grid na jinou funkci Azure pro zpracování (šipka C). V části D se zobrazuje tok dat ze stejného Event Grid na šipku C až po funkci Azure s označením &quot;Broadcast&quot;. všesměrové vysílání komunikuje s jinou funkcí Azure s názvem Negotiate a komunikují všesměrově a Negotiate spolu s počítači." lightbox="media/how-to-integrate-azure-signalr/signalr-integration-topology.png":::
 
 ## <a name="download-the-sample-applications"></a>Stažení ukázkových aplikací
 
@@ -61,7 +61,7 @@ Nejprve přejdete do prohlížeče, kde je Azure Portal otevřeno, a provedením
 
 1. Vyberte ikonu pro zkopírování primárního připojovacího řetězce.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Snímek obrazovky Azure Portal, který zobrazuje stránku klíčů pro instanci signalizace. Zvýrazní se ikona kopírovat do schránky vedle primárního PŘIPOJOVACÍho řetězce." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře. Znázorňuje tok dat ze zařízení do IoT Hub, prostřednictvím funkce Azure (šipka B) k instanci digitálních vláken Azure (oddíl A), pak prostřednictvím Event Grid na jinou funkci Azure pro zpracování (šipka C). V části D se zobrazuje tok dat ze stejného Event Grid na šipku C až po funkci Azure s označením &quot;Broadcast&quot;. všesměrové vysílání komunikuje s jinou funkcí Azure s názvem Negotiate a komunikují všesměrově a Negotiate spolu s počítači." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
 Dále spusťte sadu Visual Studio (nebo jiný Editor kódu dle vašeho výběru) a otevřete řešení Code ve složce *Azure_Digital_Twins_samples > ADTSampleApp* . Potom postupujte podle následujících kroků a vytvořte funkce:
 
@@ -139,11 +139,11 @@ Dále spusťte sadu Visual Studio (nebo jiný Editor kódu dle vašeho výběru)
 V dalším kroku publikujte funkci do Azure pomocí postupu popsaného v části [ *publikování aplikace* v tématu](tutorial-end-to-end.md#publish-the-app) *připojení k řešení* v rámci začátku. Můžete ji publikovat do stejné aplikace App Service/Function App, kterou jste použili v rámci kompletního kurzu požadavků ohlásila, nebo vytvořit novou. můžete ji ale použít k minimalizaci duplicity. Také dokončete publikování aplikace pomocí následujících kroků:
 1. Shromážděte **adresu URL koncového bodu http**funkce *Negotiate* . Provedete to tak, že přejdete na stránku [funkcí aplikace](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) Azure Portal a ze seznamu vyberete svoji aplikaci Function App. V nabídce aplikace vyberte *funkce* a zvolte funkci *Negotiate* .
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Azure Portal zobrazení aplikace Function App se zvýrazněnou funkcí v nabídce. Seznam funkcí se zobrazí na stránce a zvýrazní se i funkce Negotiate.":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře. Znázorňuje tok dat ze zařízení do IoT Hub, prostřednictvím funkce Azure (šipka B) k instanci digitálních vláken Azure (oddíl A), pak prostřednictvím Event Grid na jinou funkci Azure pro zpracování (šipka C). V části D se zobrazuje tok dat ze stejného Event Grid na šipku C až po funkci Azure s označením &quot;Broadcast&quot;. všesměrové vysílání komunikuje s jinou funkcí Azure s názvem Negotiate a komunikují všesměrově a Negotiate spolu s počítači.":::
 
     Stiskněte *získat adresu URL funkce* a zkopírujte hodnotu **nahoru přes _/API_ (nezahrnujte poslední _/Negotiate?_)**. Použijete ji později.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Azure Portal zobrazení funkce Negotiate. Tlačítko získat adresu URL funkce je zvýrazněné a část adresy URL od začátku do '/API '.":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře. Znázorňuje tok dat ze zařízení do IoT Hub, prostřednictvím funkce Azure (šipka B) k instanci digitálních vláken Azure (oddíl A), pak prostřednictvím Event Grid na jinou funkci Azure pro zpracování (šipka C). V části D se zobrazuje tok dat ze stejného Event Grid na šipku C až po funkci Azure s označením &quot;Broadcast&quot;. všesměrové vysílání komunikuje s jinou funkcí Azure s názvem Negotiate a komunikují všesměrově a Negotiate spolu s počítači.":::
 
 1. Nakonec pomocí následujícího příkazu rozhraní příkazového řádku Azure přidejte do nastavení aplikace funkce **připojovací řetězec** služby Azure Signal. Příkaz můžete spustit v [Azure Cloud Shell](https://shell.azure.com)nebo lokálně, pokud máte [v počítači nainstalované](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)rozhraní příkazového řádku Azure:
  
@@ -153,7 +153,7 @@ V dalším kroku publikujte funkci do Azure pomocí postupu popsaného v části
 
     Výstup tohoto příkazu vytiskne všechna nastavení aplikace nastavená pro funkci Azure Functions. Vyhledejte `AzureSignalRConnectionString` v dolní části seznamu a ověřte, že byla přidána.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="Ukázka výstupu v příkazovém okně zobrazující položku seznamu s názvem ' AzureSignalRConnectionString '":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře. Znázorňuje tok dat ze zařízení do IoT Hub, prostřednictvím funkce Azure (šipka B) k instanci digitálních vláken Azure (oddíl A), pak prostřednictvím Event Grid na jinou funkci Azure pro zpracování (šipka C). V části D se zobrazuje tok dat ze stejného Event Grid na šipku C až po funkci Azure s označením &quot;Broadcast&quot;. všesměrové vysílání komunikuje s jinou funkcí Azure s názvem Negotiate a komunikují všesměrově a Negotiate spolu s počítači.":::
 
 #### <a name="connect-the-function-to-event-grid"></a>Připojení funkce k Event Grid
 
@@ -163,7 +163,7 @@ Uděláte to tak, že vytvoříte **předplatné Event Grid** z tématu Event gr
 
 V [Azure Portal](https://portal.azure.com/)přejděte na téma Event gridu tak, že na horním panelu vyhledávání vyhledáte jeho název. Vyberte *+ Odběr události*.
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/event-subscription-1b.png" alt-text="Azure Portal: odběr událostí Event Grid":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/event-subscription-1b.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře. Znázorňuje tok dat ze zařízení do IoT Hub, prostřednictvím funkce Azure (šipka B) k instanci digitálních vláken Azure (oddíl A), pak prostřednictvím Event Grid na jinou funkci Azure pro zpracování (šipka C). V části D se zobrazuje tok dat ze stejného Event Grid na šipku C až po funkci Azure s označením &quot;Broadcast&quot;. všesměrové vysílání komunikuje s jinou funkcí Azure s názvem Negotiate a komunikují všesměrově a Negotiate spolu s počítači.":::
 
 Na stránce *vytvořit odběr události* vyplňte pole následujícím způsobem (pole vyplněná ve výchozím nastavení nejsou zmíněná):
 * *Podrobnosti*  >  odběru události **Název**: zadejte název předplatného události.
@@ -172,7 +172,7 @@ Na stránce *vytvořit odběr události* vyplňte pole následujícím způsobem
     - Vyplňte svoje **předplatné**, **skupinu prostředků**, **aplikaci funkcí** a **funkci** (*všesměrové vysílání*). Některé z těchto možností mohou automaticky být vyplněny po výběru předplatného.
     - **Potvrďte výběr**.
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Azure Portal zobrazení vytvoření odběru událostí. Výše uvedená pole jsou vyplněna a zvýrazní se tlačítka potvrdit výběr a vytvořit.":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře. Znázorňuje tok dat ze zařízení do IoT Hub, prostřednictvím funkce Azure (šipka B) k instanci digitálních vláken Azure (oddíl A), pak prostřednictvím Event Grid na jinou funkci Azure pro zpracování (šipka C). V části D se zobrazuje tok dat ze stejného Event Grid na šipku C až po funkci Azure s označením &quot;Broadcast&quot;. všesměrové vysílání komunikuje s jinou funkcí Azure s názvem Negotiate a komunikují všesměrově a Negotiate spolu s počítači.":::
 
 Zpátky na stránce *vytvořit odběr události* klikněte na **vytvořit**.
 
@@ -186,7 +186,7 @@ V rámci kompletního předplatného kurzu jste [nakonfigurovali simulátor zař
 
 Nyní stačí spustit projekt simulátoru, který je umístěn v *Azure_Digital_Twins_samples > DeviceSimulator > DeviceSimulator. sln*. Pokud používáte Visual Studio, můžete projekt otevřít a pak ho spustit pomocí tohoto tlačítka na panelu nástrojů:
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Tlačítko Start pro Visual Studio (projekt DeviceSimulator)":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře. Znázorňuje tok dat ze zařízení do IoT Hub, prostřednictvím funkce Azure (šipka B) k instanci digitálních vláken Azure (oddíl A), pak prostřednictvím Event Grid na jinou funkci Azure pro zpracování (šipka C). V části D se zobrazuje tok dat ze stejného Event Grid na šipku C až po funkci Azure s označením &quot;Broadcast&quot;. všesměrové vysílání komunikuje s jinou funkcí Azure s názvem Negotiate a komunikují všesměrově a Negotiate spolu s počítači.":::
 
 Otevře se okno konzoly, ve kterém se zobrazí simulované zprávy telemetrie o teplotě. Odesílají se z instance digitálního vlákna Azure, kde je pak vybrala služba Azure functions a Signal.
 
@@ -214,7 +214,7 @@ V dalším kroku nastavte oprávnění ve vaší aplikaci Function App na Azure 
 1. Na stránce [funkce aplikace](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) Azure Portal vyberte instanci aplikace Function App.
 1. V nabídce instance se posuňte dolů a vyberte *CORS*. Na stránce CORS přidejte `http://localhost:3000` jako povolený počátek zadáním do prázdného pole. Zaškrtněte políčko *Povolit přístup-řízení – povolit-přihlašovací údaje* a klikněte na *Uložit*.
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="Nastavení CORS ve službě Azure Functions":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře. Znázorňuje tok dat ze zařízení do IoT Hub, prostřednictvím funkce Azure (šipka B) k instanci digitálních vláken Azure (oddíl A), pak prostřednictvím Event Grid na jinou funkci Azure pro zpracování (šipka C). V části D se zobrazuje tok dat ze stejného Event Grid na šipku C až po funkci Azure s označením &quot;Broadcast&quot;. všesměrové vysílání komunikuje s jinou funkcí Azure s názvem Negotiate a komunikují všesměrově a Negotiate spolu s počítači.":::
 
 ### <a name="see-the-results"></a>Zobrazení výsledků
 
@@ -226,7 +226,7 @@ npm start
 
 Tím se otevře okno prohlížeče, ve kterém je spuštěná ukázková aplikace, která zobrazuje měřič vizuální teploty. Po spuštění aplikace byste měli začít zobrazovat hodnoty telemetrie teplot z simulátoru zařízení, která se šíří přes digitální vlákna Azure, která se v reálném čase odráží v reálném čase.
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-webapp-output.png" alt-text="Výňatek z ukázkové klientské webové aplikace zobrazující vizuální Měřič teploty. Reflektovaná teplota je 67,52.":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-webapp-output.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře. Znázorňuje tok dat ze zařízení do IoT Hub, prostřednictvím funkce Azure (šipka B) k instanci digitálních vláken Azure (oddíl A), pak prostřednictvím Event Grid na jinou funkci Azure pro zpracování (šipka C). V části D se zobrazuje tok dat ze stejného Event Grid na šipku C až po funkci Azure s označením &quot;Broadcast&quot;. všesměrové vysílání komunikuje s jinou funkcí Azure s názvem Negotiate a komunikují všesměrově a Negotiate spolu s počítači.":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -7,10 +7,10 @@ ms.date: 07/10/2019
 ms.author: vturecek
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f775608c6c349c93a43ef4aef26ad50707cd39b7
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743756"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Začínáme s Reliable Actors
@@ -20,7 +20,7 @@ ms.locfileid: "91743756"
 
 Tento článek vás provede vytvořením a laděním jednoduché aplikace typu Reliable actor v aplikaci Visual Studio. Další informace o Reliable Actors najdete v tématu [Úvod do Service Fabric Reliable Actors](service-fabric-reliable-actors-introduction.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte vývojové prostředí Service Fabric, včetně sady Visual Studio, a nastavte na svém počítači. Podrobnosti najdete v tématu [Postup nastavení vývojového prostředí](service-fabric-get-started.md).
 

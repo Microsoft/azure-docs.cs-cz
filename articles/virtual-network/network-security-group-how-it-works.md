@@ -14,10 +14,10 @@ ms.date: 08/24/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: e60cdfb00d0dc9d446bd52a72e9fd15676acd285
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89458191"
 ---
 # <a name="how-network-security-groups-filter-network-traffic"></a>Jak skupiny zabezpečení sítě filtr síťového provozu
@@ -52,7 +52,7 @@ V případě odchozího provozu zpracuje Azure nejprve pravidla ve skupině zabe
 - **VM4:** Veškerý odchozí provoz z virtuálního počítače *VM4* se povolí, protože k síťovému rozhraní připojenému k virtuálnímu počítači ani k podsíti *Subnet3* není přidružená žádná skupina zabezpečení sítě.
 
 
-## <a name="intra-subnet-traffic"></a>Provoz uvnitř podsítě
+## <a name="intra-subnet-traffic"></a>Intra-Subnet provoz
 
 Je důležité si uvědomit, že pravidla zabezpečení v NSG přidružené k podsíti můžou mít vliv na připojení mezi virtuálním počítačem v rámci tohoto virtuálního počítače. Například pokud je do *NSG1* přidáno pravidlo, které zakazuje veškerý příchozí a odchozí provoz, *VM1* a *VM2* už nebudou moct vzájemně komunikovat. Další pravidlo by se muselo přidat konkrétně, aby to bylo možné. 
 

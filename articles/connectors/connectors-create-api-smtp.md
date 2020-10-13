@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 9989d0ebd95bfe5ee49be2ba76b73e07630b519a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87283941"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Odeslání e-mailu z účtu SMTP pomocí Azure Logic Apps
@@ -49,14 +49,14 @@ Pomocí Azure Logic Apps a konektoru SMTP (Simple Mail Transfer Protocol) může
 
 1. Po zobrazení výzvy zadejte tyto informace o připojení:
 
-   | Vlastnost | Povinné | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
-   | **Název připojení** | Ano | Název připojení k serveru SMTP | 
-   | **Adresa serveru SMTP** | Ano | Adresa serveru SMTP | 
-   | **Uživatelské jméno** | Ano | Vaše uživatelské jméno pro váš účet SMTP | 
-   | **Heslo** | Ano | Heslo pro váš účet SMTP | 
-   | **Port serveru SMTP** | Ne | Konkrétní port na serveru SMTP, který chcete použít | 
-   | **Povolit SSL?** | Ne | Zapněte nebo vypněte šifrování TLS/SSL. | 
+   | **Název připojení** | Yes | Název připojení k serveru SMTP | 
+   | **Adresa serveru SMTP** | Yes | Adresa serveru SMTP | 
+   | **Uživatelské jméno** | Yes | Vaše uživatelské jméno pro váš účet SMTP | 
+   | **Heslo** | Yes | Heslo pro váš účet SMTP | 
+   | **Port serveru SMTP** | No | Konkrétní port na serveru SMTP, který chcete použít | 
+   | **Povolit SSL?** | No | Zapněte nebo vypněte šifrování TLS/SSL. | 
    |||| 
 
 1. Zadejte potřebné podrobnosti pro vybranou akci. 

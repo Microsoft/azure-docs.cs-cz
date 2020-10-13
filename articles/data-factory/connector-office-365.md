@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
 ms.openlocfilehash: dda761e12abe7ec866ad9426982563b6f629f6b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513302"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Kopírování dat z Office 365 do Azure pomocí Azure Data Factory
@@ -77,7 +77,7 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro propojenou službu Office 365 jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **Office 365** . | Yes |
 | office365TenantId | ID tenanta Azure, ke kterému patří účet Office 365. | Yes |
@@ -117,7 +117,7 @@ Pro propojenou službu Office 365 jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z Office 365, jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **Office365Table** . | Yes |
 | tableName | Název datové sady, která se má extrahovat z Office 365. Seznam datových sad Office 365, které jsou k dispozici pro extrakci, najdete [tady](https://docs.microsoft.com/graph/data-connect-datasets#datasets) . | Yes |
@@ -151,7 +151,7 @@ Pokud jste nacházeli `dateFilterColumn` , `startTime` , `endTime` , a `userScop
 
 Pokud chcete kopírovat data ze sady Office 365, v části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **Office365Source** . | Yes |
 | allowedGroups | Predikát výběru skupiny  Tato vlastnost slouží k výběru až 10 skupin uživatelů, pro které budou data načtena.  Pokud nejsou zadané žádné skupiny, vrátí se data pro celou organizaci. | No |

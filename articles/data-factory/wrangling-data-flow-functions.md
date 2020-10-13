@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.openlocfilehash: e63c3f329cb9c1fd5ca91274540f5145c3ad098a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921555"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformační funkce v toku dat tahání
@@ -68,15 +68,15 @@ Následující funkce M přidají nebo transformují sloupce: [Table. AddColumn]
 ----------------------
 * Power Query vygeneruje vnořené spojení (Table. NestedJoin; uživatelé můžou také ručně zapisovat [Table. AddJoinColumn](https://docs.microsoft.com/powerquery-m/table-addjoincolumn)).
     Uživatelé pak musí rozšířit vnořený sloupec JOIN do nevnořeného typu Join (Table. ExpandTableColumn, který není podporován v žádném jiném kontextu).
-* Tabulka funkcí M [. spojení](https://docs.microsoft.com/powerquery-m/table-join) lze zapsat přímo, aby nedocházelo k nutnosti dalšího kroku rozšíření, ale uživatel musí zajistit, aby mezi připojenými tabulkami nebyly žádné duplicitní názvy sloupců.
-* Podporované typy spojení: [vnitřní](https://docs.microsoft.com/powerquery-m/joinkind-inner), [LeftOuter](https://docs.microsoft.com/powerquery-m/joinkind-leftouter), [RightOuter](https://docs.microsoft.com/powerquery-m/joinkind-rightouter), [FullOuter](https://docs.microsoft.com/powerquery-m/joinkind-fullouter)
+* Tabulka funkcí M   [. spojení](https://docs.microsoft.com/powerquery-m/table-join) lze zapsat přímo, aby nedocházelo k nutnosti dalšího kroku rozšíření, ale uživatel musí zajistit, aby mezi připojenými tabulkami nebyly žádné duplicitní názvy sloupců.
+* Podporované typy spojení:   [vnitřní](https://docs.microsoft.com/powerquery-m/joinkind-inner),   [LeftOuter](https://docs.microsoft.com/powerquery-m/joinkind-leftouter),   [RightOuter](https://docs.microsoft.com/powerquery-m/joinkind-rightouter),   [FullOuter](https://docs.microsoft.com/powerquery-m/joinkind-fullouter)
 * [Hodnota. Equals](https://docs.microsoft.com/powerquery-m/value-equals) a [Value. NullableEquals](https://docs.microsoft.com/powerquery-m/value-nullableequals) jsou podporovány jako porovnávače pro klíčová rovnost.
 
 ## <a name="group-by"></a>Seskupit podle
 
 K agregaci hodnot použijte [Table. Group](https://docs.microsoft.com/powerquery-m/table-group) .
 * Musí se používat s agregační funkcí
-* Podporované agregační funkce: [Table. RowCount](https://docs.microsoft.com/powerquery-m/table-rowcount), [list. Sum](https://docs.microsoft.com/powerquery-m/list-sum), [list. Count](https://docs.microsoft.com/powerquery-m/list-count), [list. Average](https://docs.microsoft.com/powerquery-m/list-average), [list. min](https://docs.microsoft.com/powerquery-m/list-min), [list. Max](https://docs.microsoft.com/powerquery-m/list-max), [list. StandardDeviation](https://docs.microsoft.com/powerquery-m/list-standarddeviation), [list. First](https://docs.microsoft.com/powerquery-m/list-first), [list. Last](https://docs.microsoft.com/powerquery-m/list-last)
+* Podporované agregační funkce:   [Table. RowCount](https://docs.microsoft.com/powerquery-m/table-rowcount),   [list. Sum](https://docs.microsoft.com/powerquery-m/list-sum),   [list. Count](https://docs.microsoft.com/powerquery-m/list-count),   [list. Average](https://docs.microsoft.com/powerquery-m/list-average),   [list. min](https://docs.microsoft.com/powerquery-m/list-min),   [list. Max](https://docs.microsoft.com/powerquery-m/list-max),   [list. StandardDeviation](https://docs.microsoft.com/powerquery-m/list-standarddeviation),   [list. First](https://docs.microsoft.com/powerquery-m/list-first),   [list. Last](https://docs.microsoft.com/powerquery-m/list-last)
 
 ## <a name="sorting"></a>Řazení
 
@@ -90,7 +90,7 @@ Zachovat a odebrat horní, zachovat rozsah (odpovídající funkce M, jenom poč
 
 | Funkce | Status |
 | -- | -- |
-| Table.PromoteHeaders | Není podporováno. Stejný výsledek lze dosáhnout nastavením "první řádek jako záhlaví" v datové sadě. |
+| Table.PromoteHeaders | Nepodporováno Stejný výsledek lze dosáhnout nastavením "první řádek jako záhlaví" v datové sadě. |
 | Table.CombineColumns | Toto je běžný scénář, který není přímo podporován, ale je možné ho dosáhnout přidáním nového sloupce, který zřetězí dva sloupce.  Například Table. AddColumn (RemoveEmailColumn; "Name"; Each [FirstName] & "" & [LastName]) |
 | Table.TransformColumnTypes | To se ve většině případů podporuje. Následující scénáře nejsou podporovány: transformuje řetězec na typ měny, transformuje řetězec na typ času a transformuje řetězec na typ procent. |
 | Table.NestedJoin | Pouhým připojením dojde k chybě ověření. Aby bylo možné tyto sloupce fungovat, musí být rozbaleny. |
@@ -98,8 +98,8 @@ Zachovat a odebrat horní, zachovat rozsah (odpovídající funkce M, jenom poč
 | Table.RemoveLastN | Odebrat dolní řádky nejsou podporovány. |
 | Table.RowCount | Nepodporuje se, ale dá se dosáhnout pomocí výrazu přidat sloupec se všemi buňkami s prázdným sloupcem (můžete použít sloupec podmínka) a potom v tomto sloupci použít Group by. Tabulka. Group je podporována. | 
 | Zpracování chyb na úrovni řádků | Zpracování chyb na úrovni řádků se momentálně nepodporuje. Chcete-li například vyfiltrovat nečíselné hodnoty ze sloupce, může být jedním z přístupů převod textového sloupce na číslo. Každá buňka, která se nedokáže transformovat, bude v chybovém stavu a bude nutné ji filtrovat. Tento scénář není možný v toku dat tahání. |
-| Table.Transpose | Nepodporuje se |
-| Table.Pivot | Nepodporuje se |
+| Table.Transpose | Nepodporováno |
+| Table.Pivot | Nepodporováno |
 
 ## <a name="next-steps"></a>Další kroky
 

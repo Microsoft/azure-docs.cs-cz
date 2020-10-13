@@ -10,17 +10,17 @@ ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 8a975673bec3b3579eaa699f873fe8c4b1481d38
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744803"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Postup povolení protokolování Key Vault
 
 Po vytvoření jednoho nebo více trezorů klíčů budete pravděpodobně chtít sledovat, jak a kdy jsou k vašim trezorům klíčů přistupované a kým. Úplné informace o této funkci najdete v tématu [protokolování Key Vault](logging.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete:
 
@@ -183,7 +183,7 @@ $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context | Get-AzSt
 
 Při spuštění této druhé rutiny v prostředí PowerShell **/** vytvoří oddělovač v názvech objektů BLOB úplnou strukturu složek v cílové složce. Pomocí této struktury budete stahovat a ukládat objekty BLOB jako soubory.
 
-Chcete-li stahovat objekty blob selektivně, použijte zástupné znaky. Příklad:
+Chcete-li stahovat objekty blob selektivně, použijte zástupné znaky. Například:
 
 * Máte-li více trezorů klíčů a chcete stáhnout pouze protokoly pro jeden trezor klíčů s názvem CONTOSOKEYVAULT3:
 

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 9cbcbeb9d9e216a0b686cba258288db8439e0a9c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90946505"
 ---
 # <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>Kurz: vytvoření Azure Database for MySQL-flexibilního serveru (ve verzi Preview) pomocí App Services webové aplikace ve virtuální síti
@@ -22,7 +22,7 @@ ms.locfileid: "90946505"
 
 V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci v Azure App Service pomocí MySQL flexibilního serveru (Preview) ve [virtuální síti](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

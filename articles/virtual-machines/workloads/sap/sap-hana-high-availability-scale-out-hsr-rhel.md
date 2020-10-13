@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 10/02/2020
 ms.author: radeltch
 ms.openlocfilehash: edca4b44bd9e7aa9f100db3cea0bc69880a4c533
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744785"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA systému škálování na více systémů na Red Hat Enterprise Linux 
@@ -80,14 +80,14 @@ Než začnete, přečtěte si následující poznámky a dokumenty SAP:
 * [Nasazení Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide]
 * [SAP HANA požadavky na síť](https://www.sap.com/documents/2016/08/1cd2c2fb-807c-0010-82c7-eda71af511fa.html)
 * Obecná dokumentace k RHEL
-  * [Přehled doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Správa doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Referenční informace k doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Přehled Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Správa Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Referenční informace o Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Průvodce Red Hat Enterprise Linux sítě](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide)
-  * [Návody konfigurace SAP HANA replikace systému se škálováním na více systémů v clusteru Pacemaker se systémy souborů HANA ve sdílených složkách NFS](https://access.redhat.com/solutions/5423971)
+  * [Návody konfigurace replikace SAP HANA Scale-Out systému v clusteru Pacemaker se systémy souborů HANA ve sdílených složkách NFS](https://access.redhat.com/solutions/5423971)
 * Dokumentace k RHEL specifické pro Azure:
   * [Instalace SAP HANA na Red Hat Enterprise Linux pro použití v Microsoft Azure](https://access.redhat.com/public-cloud/microsoft-azure)
-  * [Red Hat Enterprise Linux řešení pro SAP HANA škálování na více systémů a replikaci systému](https://access.redhat.com/solutions/4386601)
+  * [Red Hat Enterprise Linux řešení pro SAP HANA Scale-Out a replikaci systému](https://access.redhat.com/solutions/4386601)
 * [NetApp aplikace SAP na Microsoft Azure pomocí Azure NetApp Files][anf-sap-applications-azure]
 * [Dokumentace k Azure NetApp Files][anf-azure-doc] 
 
@@ -836,7 +836,7 @@ Zahrňte všechny virtuální počítače, včetně většiny maker v clusteru.
     ```
 
    > [!TIP]
-   > Pokud vaše konfigurace zahrnuje další systémy souborů, kromě/ `hana/shared` , které jsou připojené k systému souborů NFS, pak možnost zahrňte, `sequential=false` aby nedocházelo k žádným závislostem mezi systémy souborů. Všechny systémy souborů připojené k systému souborů NFS musí začínat před odpovídajícím prostředkem atributu, ale nemusí být spouštěny v libovolném pořadí, které je vzájemně relativní. Další informace najdete v tématu [návody konfigurace SAP HANA horizontálního navýšení kapacity v clusteru Pacemaker, když jsou souborové systémy NFS sdílené složky systému souborů NFS](https://access.redhat.com/solutions/5423971).  
+   > Pokud vaše konfigurace zahrnuje další systémy souborů, kromě/ `hana/shared` , které jsou připojené k systému souborů NFS, pak možnost zahrňte, `sequential=false` aby nedocházelo k žádným závislostem mezi systémy souborů. Všechny systémy souborů připojené k systému souborů NFS musí začínat před odpovídajícím prostředkem atributu, ale nemusí být spouštěny v libovolném pořadí, které je vzájemně relativní. Další informace najdete v tématu [návody konfigurace SAP HANA Scale-Out HSR v clusteru Pacemaker, když jsou systémy souborů Hana sdílené složkou NFS](https://access.redhat.com/solutions/5423971).  
 
 8. **[1]** umístěte Pacemaker do režimu údržby a v přípravě na vytvoření prostředků clusteru Hana.  
     ```

@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.openlocfilehash: 69824df1b84f6cdfafa08a662816281442ad44fd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86044375"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií v Azure Stream Analytics
@@ -131,7 +131,7 @@ Následující tabulka obsahuje pozorování propustnosti pro jeden uzel (6 SU) 
 
 | Velikost historie (události) | Doba trvání okna (MS) | Celkový počet událostí vstupu za sekundu |
 | --------------------- | -------------------- | -------------------------- |
-| 60 | 55 | 2 200 |
+| 60 | 55 | 2 200 |
 | 600 | 728 | 1 650 |
 | 6 000 | 10 910 | 1 100 |
 

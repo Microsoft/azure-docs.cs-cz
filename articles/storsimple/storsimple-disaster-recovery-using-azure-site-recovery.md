@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514911"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatizované řešení zotavení po havárii s využitím Azure Site Recovery pro sdílené složky hostované v StorSimple
@@ -91,7 +91,7 @@ Tento krok vyžaduje, abyste připravili místní prostředí souborového serve
          > [!NOTE]
          > Název souboru se může změnit v závislosti na verzi.
       
-1. Klikněte na **Další**.
+1. Klikněte na **Next** (Další).
 1. Přijměte **podmínky smlouvy** a klikněte na tlačítko **Další**.
 1. Klikněte na **Finish** (Dokončit).
 1. Vytvářejte sdílené složky pomocí svazků Carved z úložiště StorSimple. Další informace najdete v tématu [Správa svazků pomocí služby StorSimple Manager](storsimple-manage-volumes.md).
@@ -104,7 +104,7 @@ Tento krok vyžaduje, abyste připravili místní prostředí souborového serve
    1. Vytvořte kontejnery svazků a pak vytvořte svazky (celkem). (Tyto svazky jsou pro sdílené složky na virtuálních počítačích souborového serveru). Zkopírujte název iniciátoru a při vytváření svazků zadejte vhodný název záznamů Access Control.
    1. Vyberte kartu **Konfigurovat** a poznamenejte si IP adresu zařízení.
    1. Na místních virtuálních počítačích znovu přejděte do **iniciátoru iSCSI** a zadejte IP adresu do oddílu rychlé připojení. Klikněte na **rychlé připojení** (zařízení by teď mělo být připojené).
-   1. Otevřete Azure Portal a vyberte kartu **svazky a zařízení** . klikněte na tlačítko **automaticky konfigurovat**. Svazek, který jste vytvořili, by se měl zobrazit.
+   1. Otevřete Azure Portal a vyberte kartu **svazky a zařízení** . Klikněte na možnost **automaticky konfigurovat**. Svazek, který jste vytvořili, by se měl zobrazit.
    1. Na portálu vyberte kartu **zařízení** a pak vyberte **vytvořit nové virtuální zařízení.** (Toto virtuální zařízení se použije, pokud dojde k převzetí služeb při selhání.) Toto nové virtuální zařízení může být ponecháno v offline stavu, aby nedocházelo k dodatečným nákladům. Pokud chcete virtuální zařízení převést do režimu offline, přejděte na portálu na část **Virtual Machines** a vypněte ji.
    1. Vraťte se k místním virtuálním počítačům a otevřete správu disků (stiskněte klávesu Windows + X a vyberte **Správa disků**).
    1. Všimnete si některých dalších disků (v závislosti na počtu vytvořených svazků). Klikněte na první z nich pravým tlačítkem, vyberte **inicializovat disk**a pak vyberte **OK**. Klikněte pravým tlačítkem na **nepřidělený** oddíl, vyberte **Nový jednoduchý svazek**, přiřaďte mu písmeno jednotky a dokončete průvodce.
@@ -170,7 +170,7 @@ V ASR můžete vytvořit plán obnovení pro automatizaci procesu převzetí slu
    
 1. V účtu Automation klikněte na **proměnné** &gt; **přidat proměnnou** a přidejte následující proměnné. Můžete zvolit šifrování těchto prostředků. Tyto proměnné jsou specifické pro plán obnovení. Pokud máte plán obnovení, který vytvoříte v dalším kroku, název je testovací plán, proměnné by měly být testovací plán-StorSimRegKey, testovací plán-AzureSubscriptionName a tak dále.
 
-   - **Baseurl**: adresa URL správce prostředků pro cloud Azure. Získání pomocí **Get-AzEnvironment | Vyberte – název objektu,** rutina ResourceManagerUrl.
+   - **Baseurl**: adresa URL správce prostředků pro cloud Azure. Použijte rutinu **Get-AzEnvironment | Select-Object název,** rutina ResourceManagerUrl.
    - _RecoveryPlanName_**-ResourceGroupName**: skupina Správce prostředků, která má prostředek StorSimple.
    - _RecoveryPlanName_**-Manager**: prostředek StorSimple, který má zařízení StorSimple.
    - _RecoveryPlanName_**-název_zařízení**: zařízení StorSimple, u kterého se má převzít převzetí služeb při selhání.
@@ -361,5 +361,5 @@ Plánování kapacity se skládá nejméně ze dvou důležitých procesů:
   > Po dokončení převzetí služeb při selhání zařízení znovu spusťte plán obnovení.
 
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Pomocí Azure Site Recovery můžete vytvořit úplný automatizovaný plán zotavení po havárii pro virtuální počítač souborového serveru, který má sdílené složky hostované v úložišti StorSimple. Převzetí služeb při selhání můžete zahájit během několika sekund odkudkoli v případě výpadku a během několika minut aplikaci spustit.

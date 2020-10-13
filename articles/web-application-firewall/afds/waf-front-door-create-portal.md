@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: victorh
 ms.openlocfilehash: 7c7ea5297276ed9a1d1f2ca8f4190997dcab57c3
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90602213"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Kurz: Vytvoření zásad brány firewall webových aplikací na frontách Azure pomocí Azure Portal
@@ -53,7 +53,7 @@ Nejdřív vytvořte základní zásadu WAF se sadou spravovaných výchozích pr
     
     > [!NOTE]
     > Pokud je hostitel se front-end přidružený k zásadám WAF, zobrazí se jako šedý. Nejdřív je potřeba odebrat hostitele front-end z přidružených zásad a pak znovu přidružit hostitele front-end k novým zásadám WAF.
-1. Vyberte **zkontrolovat + vytvořit**a pak vyberte **vytvořit**.
+1. Vyberte **Zkontrolovat a vytvořit** a pak **Vytvořit**.
 
 ## <a name="configure-web-application-firewall-rules-optional"></a>Konfigurace pravidel firewallu webových aplikací (volitelné)
 

@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5bcfb21ab15355653780355f1b5e459bc806ec8c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90600717"
 ---
 # <a name="start-using-privileged-identity-management"></a>Zahájení využití technologie Privileged Identity Management
@@ -80,7 +80,7 @@ Jakmile Privileged Identity Management nastavíte, můžete se naučit, jak se p
 
 Pokud chcete usnadnit otevírání Privileged Identity Management, přidejte do řídicího panelu Azure Portal dlaždici PIM.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. Vyberte **všechny služby** a vyhledejte službu **Azure AD Privileged Identity Management** .
 

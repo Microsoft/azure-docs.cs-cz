@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
 ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86496991"
 ---
 # <a name="weather-partner-integration"></a>Integrace partnerských řešení pro počasí
@@ -18,7 +18,7 @@ Tento článek poskytuje informace o komponentě Docker **konektoru** služby Az
 
  > [!NOTE]
  > Pro účely této dokumentace budeme používat referenční implementaci vytvořenou pomocí NOAA z Azure Open DataSets a je k dispozici na adrese [https://github.com/azurefarmbeats/noaa_docker](https://github.com/azurefarmbeats/noaa_docker) .
- > Odpovídající image Docker je k dispozici na adrese[https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa](https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa)
+ > Odpovídající image Docker je k dispozici na adrese [https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa](https://hub.docker.com/r/azurefarmbeats/farmbeats-noaa)
 
 Nepříznivý partner musí poskytnout Image nebo program Docker (se specifikacemi uvedenými níže) a hostovat image Docker v registru kontejneru, který je přístupný pro zákazníky. Informující partner bude muset zákazníkům poskytnout tyto informace:
 
@@ -36,16 +36,16 @@ Pomocí výše uvedených informací Docker si zákazník zaregistruje počasí 
 
 Rozhraní API FarmBeats obsahují technickou dokumentaci k Swagger. Informace o všech rozhraních API a jejich odpovídajících požadavcích nebo odpovědích najdete v tématu [FarmBeats Swagger](https://aka.ms/farmbeatsswagger). 
 
-Pokud jste nainstalovali FarmBeats, získáte přístup k FarmBeats Swagger na adrese`https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
+Pokud jste nainstalovali FarmBeats, získáte přístup k FarmBeats Swagger na adrese `https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
 
 Všimněte si, že rozhraní "-API" se připojuje k vašemu názvu webu FarmBeats.
-Koncový bod rozhraní API bude:`https://yourfarmbeatswebsitename-api.azurewebsites.net`
+Koncový bod rozhraní API bude: `https://yourfarmbeatswebsitename-api.azurewebsites.net`
 
 ### <a name="datahub-lib"></a>DataHub lib
 
 FarmBeats poskytne lib, kterou může použít partner pro počasí. Lib je aktuálně k dispozici jako součást implementace reference [zde](https://github.com/azurefarmbeats/noaa_docker/tree/master/datahub_lib). V budoucnu bude k dispozici jako sada SDK pro více jazyků.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 **Ověřování pomocí rozhraní FarmBeats API**
 
@@ -55,7 +55,7 @@ FarmBeats používá ověřování pomocí nosiče a rozhraní API jsou přístu
 headers = *{"Authorization": "Bearer " + access_token, …}*
 ```
 
-Přístupový token se dá požádat z funkce Azure, která běží na instanci FarmBeats zákazníka. Adresa URL funkce Azure se poskytne programu Docker jako argument a přístupový token se dá získat tak, že na adrese URL vytvoříte požadavek GET. Odpověď z adresy URL bude obsahovat přístupový token. DataHub lib poskytuje pomocné funkce, které partnerům umožňují získat přístupový token. Další podrobnosti najdete [tady](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_auth_helper.py).
+Přístupový token se dá požádat z funkce Azure, která běží na instanci FarmBeats zákazníka. Adresa URL funkce Azure se poskytne programu Docker jako argument a přístupový token se dá získat tak, že na adrese URL vytvoříte požadavek GET. Odpověď z adresy URL bude obsahovat přístupový token. DataHub lib poskytuje pomocné funkce, které partnerům umožňují získat přístupový token. Další podrobnosti [najdete tady](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_auth_helper.py).
 
 Přístupový token je platný jenom pár hodin a po vypršení platnosti je potřeba ho znovu požádat.
 
@@ -85,7 +85,7 @@ Služba API tuto dict – zaserializace a uloží ji do [trezoru](https://docs.m
 ```
 Všimněte si, že "partnerCredentials" bude k dispozici přesným způsobem, který poskytl zákazník během registrace partnera.
 
-FarmBeats lib poskytuje pomocné funkce, které umožní partnerům číst přihlašovací údaje z vlastností aktivity. Další podrobnosti najdete [tady](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_adf_helper.py).
+FarmBeats lib poskytuje pomocné funkce, které umožní partnerům číst přihlašovací údaje z vlastností aktivity. Další podrobnosti [najdete tady](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/auth/partner_adf_helper.py).
 
 Doba života souboru je pouze v průběhu provádění Docker Code a bude odstraněna po skončení běhu Docker.
 
@@ -95,10 +95,10 @@ Další informace o tom, jak kanály a aktivity služby ADF fungují, najdete v 
 
 Tady jsou nejběžnější hlavičky požadavků, které je potřeba zadat při volání rozhraní API do FarmBeats.
 
-**Hlavička** | **Popis a příklad**
+**Hlaviček** | **Popis a příklad**
 --- | ---
 Typ obsahu | Formát požadavku (Content-Type: Application/ <format> ). Pro rozhraní FarmBeats DataHub API je formát JSON. Content-Type: Application/JSON
-Autorizace | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosný <přístup-token>
+Autorizace | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosič <Access-Token>
 Přijmout | Formát odpovědi. Pro rozhraní FarmBeats DataHub API je formát JSON. Přijmout: Application/JSON
 
 ## <a name="data-format"></a>Formát dat
@@ -137,7 +137,7 @@ Tato součást bude vyvolána pokaždé, když uživatel FarmBeats spustí úloh
   WeatherDataModel | Popis |
   --- | ---
   Název  | Název datového modelu počasí |
-  Popis  | Poskytněte smysluplný popis modelu. |
+  Description  | Poskytněte smysluplný popis modelu. |
   Vlastnosti  | Další vlastnosti definované poskytovatelem dat. |
   Název > weatherMeasures  | Název míry počasí Například humidity_max |
   weatherMeasures > datový typ  | buď typ Double, nebo Enum. Pokud je vyžadováno Enum, measureEnumDefinition |
@@ -148,7 +148,7 @@ Tato součást bude vyvolána pokaždé, když uživatel FarmBeats spustí úloh
   Hloubka > weatherMeasures  | Hloubka senzoru v centimetrech Například měření vlhkosti 10 cm pod vozovkou.
   Popis > weatherMeasures  | Poskytněte smysluplný popis měření. |
   **JobType** | **Popis** |
-  Název  | název úlohy, například Get_Daily_Forecast; úloha, kterou zákazník spustí, aby získala data o počasí|
+  Name  | název úlohy, například Get_Daily_Forecast; úloha, kterou zákazník spustí, aby získala data o počasí|
   pipelineDetails > parametry > název  | název parametru |
   pipelineDetails > parametry > typu | buď řetězec, int, float, bool, Array |
   parametry > pipelineDetails > je potřeba. | datového true, pokud je parametr povinný, false, pokud ne; Výchozí hodnota je true. |
@@ -159,8 +159,8 @@ Tato součást bude vyvolána pokaždé, když uživatel FarmBeats spustí úloh
   **WeatherDataLocation** | **Popis** |
   weatherDataModelId  | ID odpovídající WeatherDataModel, která byla vytvořena během Bootstrap|
   location  | představuje zeměpisnou šířku, délku a zvýšení úrovně oprávnění. |
-  Název | Název objektu |
-  Popis | Popis |
+  Name | Název objektu |
+  Description | Description |
   farmId | **volitelné** ID farmy poskytované zákazníkem jako součást parametru úlohy |
   Vlastnosti  | Další vlastnosti od výrobce.
 
@@ -249,7 +249,7 @@ Tady je například zpráva telemetrie:
 
 Vzhledem k tomu, že se úloha partnerských úloh bude spouštět v existujícím prostředí úloh – chyby se budou protokolovat stejným způsobem jako chyby pro jiné již existující úlohy v FarmBeats (například GetFarmData, SensorPlacement atd.). Aktivita ADF spuštěná v kanálu ADF se zaznamená do protokolu STDERR i STDOUT. Oba soubory jsou k dispozici v účtu úložiště "datahublogs-XXX" v rámci skupiny prostředků FarmBeats.
 
-DataHub lib poskytuje pomocné funkce pro povolení protokolování v rámci celkových protokolů DataHub. Další podrobnosti najdete [tady](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/framework/logger.py).
+DataHub lib poskytuje pomocné funkce pro povolení protokolování v rámci celkových protokolů DataHub. Další podrobnosti [najdete tady](https://github.com/azurefarmbeats/noaa_docker/blob/master/datahub_lib/framework/logger.py).
 
 **Řešení potíží s možností nebo podporou**
 

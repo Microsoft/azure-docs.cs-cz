@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c5084ff770f27438c85b7bc57cef0145182abb4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256887"
+ms.locfileid: "91873145"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Řešení potíží s ověřením vydavatele
 Pokud se vám nedaří dokončit proces nebo došlo k neočekávanému chování při [ověřování vydavatele](publisher-verification-overview.md), měli byste začít následujícím způsobem, pokud obdržíte chyby nebo neočekávané chování: 
@@ -58,7 +58,7 @@ Níže jsou uvedeny některé běžné problémy, ke kterým může dojít běhe
     Registrace aplikací mohla být vytvořena pomocí jiného uživatelského účtu v tomto tenantovi, účtu osobní/příjemce nebo v jiném tenantovi. Ujistěte se, že jste přihlášeni pomocí správného účtu v tenantovi, ve kterém byly vytvořeny registrace aplikací.
 
 - **Zobrazuje se chyba související se službou Multi-Factor Authentication. Co mám dělat?** 
-    Ujistěte se prosím, že je pro uživatele, se kterým se přihlašujete, zapnuté služby [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) a v tomto scénáři se vyžaduje. Vícefaktorové ověřování může být například:
+    Ujistěte se prosím, že je pro uživatele, se kterým se přihlašujete, zapnuté služby [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) a v tomto scénáři se **vyžaduje** . Vícefaktorové ověřování může být například:
     - Vždy vyžadováno pro uživatele, se kterým se přihlašujete
     - [Vyžaduje se pro správu Azure](../conditional-access/howto-conditional-access-policy-azure-management.md).
     - [Vyžaduje se pro typ Správce](../conditional-access/howto-conditional-access-policy-admin-mfa.md) , se kterým se přihlašujete.
@@ -226,7 +226,9 @@ Tato funkce není u zákaznických účtů Microsoftu podporována. Podporují s
 
 ### <a name="interactionrequired"></a>InteractionRequired
 
-Nastane, pokud se Multi-Factor Authentication neuskutečnil před tím, než se pokusíte přidat ověřeného vydavatele do aplikace. Další informace najdete v tématu [běžné problémy](#common-issues) .
+Nastane, pokud se Multi-Factor Authentication neuskutečnil před tím, než se pokusíte přidat ověřeného vydavatele do aplikace. Další informace najdete v tématu [běžné problémy](#common-issues) . Poznámka: vícefaktorové ověřování musí být provedeno ve stejné relaci při pokusu o přidání ověřeného vydavatele. Pokud je povoleno vícefaktorové ověřování, ale není nutné ho v relaci provést, požadavek se nezdaří.   
+
+Zobrazená chybová zpráva bude: "z důvodu změny konfigurace provedené správcem, nebo vzhledem k tomu, že jste přešli na nové umístění, musíte použít službu Multi-Factor Authentication pro pokračování."
 
 ## <a name="next-steps"></a>Další kroky
 

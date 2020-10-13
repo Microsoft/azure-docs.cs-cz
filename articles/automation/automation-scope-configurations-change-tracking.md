@@ -6,10 +6,10 @@ ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 353f29d9b4c6599226619d40e4378e21618bcad4
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185904"
 ---
 # <a name="limit-change-tracking-and-inventory-deployment-scope"></a>Omezení rozsahu nasazení Change Tracking a inventáře
@@ -30,11 +30,11 @@ Omezení rozsahu pro nasazení Change Tracking a inventáře:
 
 3. V části **zdroje dat pracovního prostoru**vyberte **Konfigurace oboru (Preview)** .
 
-4. Vyberte tři tečky napravo od `MicrosoftDefaultScopeConfig-ChangeTracking` Konfigurace oboru a klikněte na **Upravit**. 
+4. Vyberte tři tečky napravo od  `MicrosoftDefaultScopeConfig-ChangeTracking` Konfigurace oboru a klikněte na **Upravit**. 
 
 5. V podokně úpravy vyberte **Vybrat skupiny počítačů**. V podokně skupiny počítačů se zobrazí uložená hledání, která slouží k vytvoření konfigurace oboru. Uložené výsledky hledání, které používá Change Tracking a inventář:
 
-    |Název     |Kategorie  |Alias  |
+    |Name     |Kategorie  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     |  Sledování změn ve       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 

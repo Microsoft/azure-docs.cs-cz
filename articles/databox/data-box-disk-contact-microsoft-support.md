@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
 ms.openlocfilehash: d0c45626016049424c8028eea7ffbd7f281e9012
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744147"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Otevřete lístek podpory pro Azure Data Box
@@ -57,7 +57,7 @@ Chcete-li vytvořit žádost o podporu, proveďte následující kroky:
 
    1. V **možnostech kontaktů**zadejte preferovanou metodu kontaktu (telefon nebo e-mail) a jazyk. Doba odezvy se automaticky vybere na základě vašeho plánu předplatného.
    2. V **kontaktní informace**zadejte své jméno, e-mail, nepovinný kontakt, země/oblast. Vyberte **Uložit změny kontaktů pro budoucí žádosti o podporu**.
-   3. Klikněte na **Create** (Vytvořit).
+   3. Klikněte na **Vytvořit**.
 
        ![Kontaktní informace](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 

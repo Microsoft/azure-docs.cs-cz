@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 9f3ba6b2f13b9f2bb1d538db84723e3a9baaef12
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87271837"
 ---
 # <a name="retrieve-a-specific-offer"></a>Načíst konkrétní nabídku
@@ -41,12 +41,12 @@ Můžete také načíst konkrétní verzi nabídky nebo načíst nabídku v konc
 |-------------|------------------------------------------------------------------------------------------|---------------|
 | publisherId | publisherId. Například contoso                                                        | Řetězec        |
 | Hodnotami OfferId     | Identifikátor GUID, který jedinečně identifikuje nabídku                                                 | Řetězec        |
-| verze     | Verze získané nabídky Ve výchozím nastavení se načte nejnovější verze nabídky. | Celé číslo       |
-| slotId      | Slot, ze kterého má být nabídka načtena, může být jedním z těchto:      <br/>  - `Draft`(výchozí) načte verzi nabídky, která je aktuálně v konceptu.  <br/>  -  `Preview`Načte verzi nabídky, která je aktuálně ve verzi Preview.     <br/>  -  `Production`Načte verzi nabídky, která je aktuálně v produkčním prostředí.          |      enum |
+| verze     | Verze získané nabídky Ve výchozím nastavení se načte nejnovější verze nabídky. | Integer       |
+| slotId      | Slot, ze kterého má být nabídka načtena, může být jedním z těchto:      <br/>  - `Draft` (výchozí) načte verzi nabídky, která je aktuálně v konceptu.  <br/>  -  `Preview` Načte verzi nabídky, která je aktuálně ve verzi Preview.     <br/>  -  `Production` Načte verzi nabídky, která je aktuálně v produkčním prostředí.          |      enum |
 | verze-api | Nejnovější verze rozhraní API                                                                    | Datum          |
 |  |  |  |
 
-## <a name="header"></a>Hlavička
+## <a name="header"></a>Záhlaví
 
 |  **Název**          |   **Hodnota**            |
 |  ---------------   |  --------------        |
@@ -186,10 +186,10 @@ Můžete také načíst konkrétní verzi nabídky nebo načíst nabídku v konc
 
 | **Kód**  | **Popis**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK`-Požadavek byl úspěšně zpracován a do klienta byly vráceny všechny nabídky pod vydavatelem.               |
-|  400      | `Bad/Malformed request`– Tělo chybové odpovědi může obsahovat více informací.                                                 |
-|  403      | `Forbidden`– Klient nemá přístup k zadanému oboru názvů.                                                        |
-|  404      | `Not found`-Zadaná entita neexistuje. Klient by měl kontrolovat publisherId, hodnotami OfferId a verzi (Pokud je zadaný).      |
+|  200      | `OK` -Požadavek byl úspěšně zpracován a do klienta byly vráceny všechny nabídky pod vydavatelem.               |
+|  400      | `Bad/Malformed request` – Tělo chybové odpovědi může obsahovat více informací.                                                 |
+|  403      | `Forbidden` – Klient nemá přístup k zadanému oboru názvů.                                                        |
+|  404      | `Not found` -Zadaná entita neexistuje. Klient by měl kontrolovat publisherId, hodnotami OfferId a verzi (Pokud je zadaný).      |
 |  |  |
 
 ### <a name="offer-status"></a>Stav nabídky
@@ -199,7 +199,7 @@ Můžete také načíst konkrétní verzi nabídky nebo načíst nabídku v konc
 |  NeverPublished             | Nabídka nebyla nikdy publikována.               |
 |  NotStarted                 | Nabídka je nová, ale není spuštěná.              |
 |  WaitingForPublisherReview  | Nabídka čeká na schválení vydavatele.      |
-|  Spuštěný                    | Zpracovává se odeslání nabídky.          |
+|  Spuštěno                    | Zpracovává se odeslání nabídky.          |
 |  Úspěšný                  | Bylo dokončeno zpracování příspěvku nabídky.    |
 |  Zrušeno                   | Odeslání nabídky se zrušilo.                |
 |  Neúspěšný                     | Odeslání nabídky se nezdařilo.                      |

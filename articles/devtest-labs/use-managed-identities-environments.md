@@ -4,10 +4,10 @@ description: Naučte se používat spravované identity v Azure k nasazení pros
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: e5bac4210afee6db1c7617dac1cd6d2ff9149439
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88718968"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Použití spravovaných identit Azure k nasazení prostředí v testovacím prostředí 
@@ -17,7 +17,7 @@ Jako vlastník testovacího prostředí můžete pomocí spravované identity na
 > [!NOTE]
 > V současné době je v rámci testovacího prostředí podporována jediná uživatelsky přiřazená identita. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Umožňuje vytvořit, vypsat, odstranit nebo přiřadit roli k spravované identitě přiřazené uživatelem pomocí Azure Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
     
@@ -27,7 +27,7 @@ Jako vlastník testovacího prostředí můžete pomocí spravované identity na
 
 V této části jako vlastník testovacího prostředí použijte Azure Portal k přidání identity spravované uživatelem do testovacího prostředí. 
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Vyhledejte **DevTest Labs**.
 1. V seznamu cvičení vyberte testovací prostředí, které chcete.
 1. Vyberte **Konfigurace a zásady**  ->  **identita (Preview)**. 

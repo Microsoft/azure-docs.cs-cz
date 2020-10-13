@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: daberry
 ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86509354"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Řešení potíží s chybami přidělení při vytváření, restartování nebo změně velikosti virtuálních počítačů v Azure
@@ -73,7 +73,7 @@ Tím se zajistí, že se spustí nový pokus o přidělení a že se dá vybrat 
 ### <a name="workaround"></a>Alternativní řešení
 
 Pokud používáte starší řady nebo velikosti virtuálních počítačů, například Dv1, DSv1, Av1, D15v2 nebo DS15v2, zvažte přechod na novější verze. V těchto doporučeních najdete konkrétní velikosti virtuálních počítačů.
-Pokud nemáte možnost použít jinou velikost virtuálního počítače, zkuste nasadit do jiné oblasti v rámci stejného geografického umístění. Další informace o dostupných velikostech virtuálních počítačů v každé oblastihttps://aka.ms/azure-regions
+Pokud nemáte možnost použít jinou velikost virtuálního počítače, zkuste nasadit do jiné oblasti v rámci stejného geografického umístění. Další informace o dostupných velikostech virtuálních počítačů v každé oblasti https://aka.ms/azure-regions
 
 Pokud používáte zóny dostupnosti, zkuste jinou zónu v rámci oblasti, která může mít dostupnou kapacitu pro požadovanou velikost virtuálního počítače.
 

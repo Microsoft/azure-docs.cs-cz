@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 42aa51fdd3b0da5a0d438ba46b39bada159aeba6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 429d0b9c3a118061d713484a7db3aca376a24d04
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611467"
+ms.locfileid: "91873179"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Kurz: Vytvoření aplikace serveru Blazor, která pro ověřování používá platformu Microsoft Identity Platform
 
@@ -84,7 +84,7 @@ V prohlížeči přejděte na `https://localhost:5001` adresu a přihlaste se po
 
 ## <a name="retrieving-data-from-microsoft-graph"></a>Načítání dat z Microsoft Graph
 
-[Microsoft Graph](/graph/overview) nabízí řadu rozhraní API, která poskytují přístup k datům Microsoft 365 vašich uživatelů. Pomocí platformy Microsoft Identity jako poskytovatele identity vaší aplikace máte jednodušší přístup k těmto informacím, protože Microsoft Graph přímo podporuje tokeny vydané platformou Microsoft identity. V této části můžete přidat kód, který zobrazí e-maily přihlášeného uživatele na stránce načíst data aplikace.
+[Microsoft Graph](/graph/overview) nabízí řadu rozhraní API, která poskytují přístup k datům Microsoft 365 vašich uživatelů. Pomocí platformy Microsoft Identity jako poskytovatele identity vaší aplikace máte jednodušší přístup k těmto informacím, protože Microsoft Graph přímo podporuje tokeny vydané platformou Microsoft identity. V této části přidáte kód pro zobrazení e-mailů přihlášeného uživatele na stránce načíst data aplikace.
 
 Než začnete, odhlaste se od své aplikace, protože budete provádět změny požadovaných oprávnění a váš aktuální token nebude fungovat. Pokud jste to ještě neudělali, spusťte aplikaci znovu a před aktualizací kódu níže vyberte možnost **Odhlásit** se.
 

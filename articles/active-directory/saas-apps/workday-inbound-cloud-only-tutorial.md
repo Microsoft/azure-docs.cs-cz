@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 7d47c21da1279271b12933a2e4642abcce622600
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90015479"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Kurz: Konfigurace zřizování uživatelů v Workday na Azure AD
@@ -183,7 +183,7 @@ V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday
 
      * **Pouze během vytváření** – použít toto mapování pouze při akcích vytvoření uživatele
 
-6. Pokud chcete uložit mapování, klikněte na **Uložit** v horní části oddílu mapování atributů.
+6. Pokud chcete uložit mapování, klikněte na **Uložit** v horní části Attribute-Mapping části.
 
 
 ## <a name="enable-and-launch-user-provisioning"></a>Povolení a spuštění zřizování uživatelů
@@ -210,7 +210,7 @@ Po dokončení konfigurace aplikace pro zřizování Workday můžete službu z�
 
 * [Další informace o podporovaných atributech Workday pro příchozí zřizování](../app-provisioning/workday-attribute-reference.md)
 * [Informace o tom, jak nakonfigurovat zpětný zápis do Workday](workday-writeback-tutorial.md)
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
 * [Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Workday a Azure Active Directory](workday-tutorial.md)
 * [Naučte se integrovat další aplikace SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Naučte se exportovat a importovat vaše konfigurace zřizování.](../app-provisioning/export-import-provisioning-configuration.md)

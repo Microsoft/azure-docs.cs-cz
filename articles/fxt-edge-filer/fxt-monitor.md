@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: 7027fe9988c0c559db72c3c388c7a579d533c57e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85509434"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Monitorovat stav hardwaru Azure FXT Edge souborového
@@ -75,7 +75,7 @@ Velké tlačítko rozsvícené na pravé straně levého ovládacího panelu ind
 
 Stisknutím tlačítka stav systému a ID přepnete mezi režimem ID systému a režimem stavu systému.
 
-|Stav systému stav | Podmínka |
+|Stav systému stav | Stav |
 |-------------------------------------------|-----------------------------------------------|
 | Plná modrá | Normální operace: systém je zapnutý, pracuje normálně a režim ID systému není aktivní. <br/>Pokud chcete přepnout do režimu ID systému, stiskněte tlačítko Stav systému a ID. |
 | Modré blikání | Režim ID systému je aktivní. Pokud chcete přepnout do režimu stavu systému, stiskněte tlačítko Stav systému a systémové ID. |

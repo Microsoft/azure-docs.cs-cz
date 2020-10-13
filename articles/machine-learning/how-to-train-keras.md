@@ -12,10 +12,10 @@ ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: d7cd452b6d1107f440d952c7db930281f3d86c11
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743794"
 ---
 # <a name="train-keras-models-at-scale-with-azure-machine-learning"></a>Keras se škálováním modelů pomocí Azure Machine Learning
@@ -31,7 +31,7 @@ Bez ohledu na to, jestli vyvíjíte model Keras z provozu nebo přenášíte exi
 > [!NOTE]
 > Pokud používáte rozhraní Keras API **TF. Keras** , které je integrované v TensorFlow, a ne na samostatný balíček Keras, přečtěte si místo toho, abyste mohli [naučit TensorFlow modely](how-to-train-tensorflow.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Spusťte tento kód v jednom z těchto prostředí:
 

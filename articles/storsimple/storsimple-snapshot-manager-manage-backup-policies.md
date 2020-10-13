@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 745aeb9844f1abad075d34b34735563200ea618b
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054938"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Použití Snapshot Manager StorSimple k vytváření a správě zásad zálohování
@@ -27,18 +27,18 @@ Zásada zálohování vytvoří plán pro zálohování dat svazku místně nebo
 
 Tento kurz vysvětluje následující postupy:
 
-* Vytvoření zásady zálohování
+* Vytvoření zásad zálohování
 * Úprava zásady zálohování
 * Odstranění zásady zálohování
 
-## <a name="create-a-backup-policy"></a>Vytvoření zásady zálohování
+## <a name="create-a-backup-policy"></a>Vytvoření zásad zálohování
 Pomocí následujícího postupu vytvořte nové zásady zálohování.
 
 #### <a name="to-create-a-backup-policy"></a>Vytvoření zásady zálohování
 1. Kliknutím na ikonu na ploše spusťte StorSimple Snapshot Manager.
 2. V podokně **obor** klikněte pravým tlačítkem na **zásady zálohování**a pak klikněte na **vytvořit zásadu zálohování**.
 
-    ![Vytvoření zásady zálohování](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
+    ![Vytvoření zásad zálohování](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
 
     Zobrazí se dialogové okno **vytvořit zásadu** .
 
