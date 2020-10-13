@@ -4,10 +4,10 @@ description: Naimportujte image kontejneru do služby Azure Container Registry p
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: 2c99d3c32bf6dad3a1950da56b29f47d2a988161
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541573"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Import imagí kontejneru do registru kontejneru
@@ -36,7 +36,7 @@ Aby bylo možné importovat image kontejnerů, Tento článek vyžaduje, abyste 
 > Pokud potřebujete distribuovat identické image kontejneru napříč několika oblastmi Azure, Azure Container Registry podporuje taky [geografickou replikaci](container-registry-geo-replication.md). Když geograficky replikuje registr (vyžaduje se úroveň Premium Service), můžete zajišťovat více oblastí s identickými názvy obrázků a značek z jednoho registru.
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte službu Azure Container Registry, vytvořte registr. Postup najdete v tématu [rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md).
 

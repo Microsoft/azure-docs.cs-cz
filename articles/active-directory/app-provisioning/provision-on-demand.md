@@ -12,10 +12,10 @@ ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629008"
 ---
 # <a name="on-demand-provisioning"></a>Zřizování na vyžádání
@@ -27,7 +27,7 @@ Pomocí zřizování na vyžádání můžete zřídit uživatele v aplikaci bě
 
 ## <a name="how-to-use-on-demand-provisioning"></a>Jak používat zřizování na vyžádání
 
-1. Přihlaste se na web **Azure Portal**.
+1. Přihlaste se k **portálu Azure Portal**.
 1. Přejít na **všechny služby**v  >  **podnikových aplikacích**.
 1. Vyberte svou aplikaci a pak klikněte na stránku konfigurace zřizování.
 1. Nakonfigurujte zřizování poskytnutím přihlašovacích údajů správce.

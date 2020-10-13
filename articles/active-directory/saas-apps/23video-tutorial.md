@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 1dc2aba6241ef498cd6802c7490e46552e7737ab
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708806"
 ---
 # <a name="tutorial-integrate-23-video-with-azure-active-directory"></a>Kurz: integrace 23 videa s Azure Active Directory
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat 23 videa s Azure Active Directory (Azu
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -59,7 +59,7 @@ Nakonfigurujte a otestujte jednotné přihlašování Azure AD s 23 video pomoc�
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s 23 video, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte 23 přihlašování k videu](#configure-23-video-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte 23 přihlašování k videu](#configure-23-video-sso)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 5. **[Vytvořit 23 zkušebních uživatelů pro video](#create-23-video-test-user)** , aby měli protějšek B. Simon ve 23 videu, která je propojená s reprezentací uživatele v Azure AD.
@@ -71,7 +71,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce 23 integrace **video** aplikace vyhledejte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -84,7 +84,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pro získání těchto hodnot kontaktujte [23 tým podpory pro video klienta](mailto:support@23company.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte si certifikát a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -106,7 +106,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Create** (Vytvořit).
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -158,7 +158,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici s videem, budete se muset automaticky přihlášeni k obrazci 23, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

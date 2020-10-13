@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
 ms.openlocfilehash: 407183837f7be01f5182ff0890426170da223161
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91363167"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Kurz: migrace Oracle pro Azure Database for PostgreSQL online pomocí DMS (Preview)
@@ -43,7 +43,7 @@ V tomto kurzu se naučíte:
 
 Tento článek popisuje, jak provést online migraci z Oracle do Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -186,7 +186,7 @@ Můžete spustit ora2pg pro export všech databázových objektů do souborů. S
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-Příklad:
+Například:
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
@@ -239,12 +239,12 @@ Jak začít:
 
     Pokud název schématu ve zdroji Oracle odpovídá hodnotě v Azure Database for PostgreSQL, Azure Database Migration Service *vytvoří schéma tabulky pomocí stejného případu jako v cíli*.
 
-    Příklad:
+    Například:
 
     | Zdrojové schéma Oracle | Cílová databáze PostgreSQL. schéma | DMS vytvořil schéma. Table. Column. |
     | ------------- | ------------- | ------------- |
-    | HR | targetHR. Public | veřejné. země. country_id |
-    | HR | targetHR.trgthr | trgthr. zemích. country_id |
+    | HR | targetHR. Public | public.countries.country_id |
+    | HR | targetHR.trgthr | trgthr.countries.country_id |
     | HR | targetHR.TARGETHR | "TARGETHR"." ZEMĚ "." COUNTRY_ID " |
     | HR | targetHR.HR | "HR". ZEMĚ "." COUNTRY_ID " |
     | HR | targetHR.Hr | * Nejde namapovat smíšené případy. |

@@ -11,10 +11,10 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
 ms.openlocfilehash: 35b39ceb7ef54b0e00eaa53dad821c9336ea88ca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91302617"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
@@ -42,7 +42,7 @@ Další informace najdete v tématu [nastavení ověřování pro Azure Machine 
 
 Azure Machine Learning podporuje dvě formy ověřování pro webové služby: klíč a token. Každá webová služba může současně povolit jenom jednu formu ověřování.
 
-|Metoda ověřování|Popis|Azure Container Instances|AKS|
+|Metoda ověřování|Description|Azure Container Instances|AKS|
 |---|---|---|---|
 |Klíč|Klíče jsou statické a není nutné je aktualizovat. Klíče je možné znovu vygenerovat ručně.|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povolená|
 |Token|Po zadaném časovém období vyprší platnost tokenů a je nutné ji aktualizovat.| Není k dispozici| Zakázáno ve výchozím nastavení |
@@ -197,7 +197,7 @@ Pokud chcete klíč použít při nasazování modelu do služby Azure Container
 
 Další informace o vytváření a používání konfigurace nasazení najdete v následujících článcích:
 
-* Odkaz na [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
+* Odkaz na [AciWebservice.deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
 * [Kde a jak nasadit](how-to-deploy-and-where.md)
 * [Nasazení modelu do služby Azure Container Instances](how-to-deploy-azure-container-instance.md)
 

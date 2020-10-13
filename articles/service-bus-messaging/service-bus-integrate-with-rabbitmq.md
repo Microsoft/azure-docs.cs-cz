@@ -8,10 +8,10 @@ ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
 ms.openlocfilehash: 6366824b8dc7f63f99ebda2a542d95d3eb1c6146
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91301092"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>Integrace RabbitMQ s Azure Service Bus
@@ -38,27 +38,27 @@ V Azure Portal klikněte na velké tlačítko plus a přidejte nový prostředek
 
 Pak vyberte integrace a kliknutím na Azure Service Bus vytvořte obor názvů pro zasílání zpráv:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="Výběr služby Azure Service Bus":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="Vytvoření prostředku":::
 
 Zobrazí se výzva k zadání informací o oboru názvů. Vyberte předplatné Azure, které chcete použít. Pokud [skupinu prostředků](../azure-resource-manager/management/manage-resource-groups-portal.md)nemáte, můžete vytvořit novou.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="Vytvoření oboru názvů":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="Vytvoření prostředku":::
 
 Použijte `rabbitmq` pro `Namespace name` , ale může to být cokoli, co potřebujete. Potom nastavte `East US` umístění. `Basic`Jako cenovou úroveň vyberte.
 
 Pokud se všechno objevilo dobře, měla by se zobrazit následující obrazovka s potvrzením:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace-confirm.png" alt-text="Potvrzení vytvoření oboru názvů":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace-confirm.png" alt-text="Vytvoření prostředku":::
 
 Pak se vraťte na Azure Portal uvidíte svůj nový `rabbitmq` obor názvů. Kliknutím na něj získáte přístup k prostředku, abyste k němu mohli přidat frontu.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/resource-view-with-namespace.png" alt-text="Seznam prostředků s novým oborem názvů":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/resource-view-with-namespace.png" alt-text="Vytvoření prostředku":::
 
 ## <a name="creating-our-azure-service-bus-queue"></a>Vytváření Azure Service Bus fronty
 
 Teď, když máte obor názvů Azure Service Bus, klikněte na `Queues` tlačítko vlevo v části `Entities` , abyste mohli přidat novou frontu:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-queue.png" alt-text="Vytvořit frontu":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-queue.png" alt-text="Vytvoření prostředku":::
 
 Název fronty bude `from-rabbitmq` pouze připomenutí, kde jsou zprávy přicházející z. Všechny ostatní možnosti můžete ponechat jako výchozí, ale můžete je změnit, aby vyhovovaly potřebám vaší aplikace.
 
@@ -78,21 +78,21 @@ Teď je čas získat přihlašovací údaje potřebné pro připojení RabbitMQ 
 
 Pro vaši frontu budete muset vytvořit [zásadu sdíleného přístupu](../storage/common/storage-sas-overview.md) (SAS), takže RabbitMQ může do ní publikovat zprávy. Zásady SAS umožňují určit, co externí strana může s vaším prostředkem dělat. Účelem je, aby RabbitMQ mohl odesílat zprávy, ale neposlouchal ani nespravuje fronty.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="Přidat zásady SAS":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="Vytvoření prostředku":::
 
 Zaškrtnete `Send` políčko a kliknutím na něj `Create` budete mít naše zásady SAS na místě.
 
 Po vytvoření zásady klikněte na ni a zobrazte **primární připojovací řetězec**. Budeme ho používat k tomu, aby RabbitMQ komunikovat s Azure Service Bus:
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/sas-policy-key.png" alt-text="Získat zásady SAS":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/sas-policy-key.png" alt-text="Vytvoření prostředku":::
 
 Než budete moct tento připojovací řetězec použít, budete ho muset převést na AMQP formát připojení RabbitMQ. Přejděte do [nástroje Převaděč připojovacího řetězce](https://red-mushroom-0f7446a0f.azurestaticapps.net/) a vložte svůj připojovací řetězec do formuláře, klikněte na tlačítko převést. Získáte připojovací řetězec, který je RabbitMQ připravený. (Tento web v prohlížeči spustí vše, aby se vaše data neodesílala přes kabel). Ke svému zdrojovému kódu můžete přistupovat na [GitHubu](https://github.com/videlalvaro/connstring_to_amqp).
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="Převést připojovací řetězec":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="Vytvoření prostředku":::
 
 Teď otevřete modul plug-in pro správu RabbitMQ v našich prohlížečích `http://localhost:15672/#/dynamic-shovels` a `Admin -> Shovel Management` pak na, kde můžete přidat nové Shovel, které postará o posílání zpráv z fronty RabbitMQ do fronty Azure Service Bus.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="Přidat Shovel RabbitMQ":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="Vytvoření prostředku":::
 
 Zde zavolejte své Shovel `azure` a vyberte `AMQP 0.9.1` jako zdrojový protokol. Na snímku obrazovky máme `amqp://` výchozí identifikátor URI, který vás připojí k místnímu serveru RabbitMQ. Nezapomeňte ho přizpůsobit vašemu aktuálnímu nasazení.
 
@@ -110,15 +110,15 @@ Do `Address` pole zadáte název vaší **fronty Azure Service Bus**, v tomto p�
 
 V rozhraní pro správu RabbitMQ můžete přejít na `Queues` , vybrat `azure` frontu a vyhledat `Publish message` panel. Zobrazí se formulář, který vám umožní publikovat zprávy přímo do fronty. Pro náš příklad jsme připravujeme `fist message` jako `Payload` volání a `Publish Message` :
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/first-message.png" alt-text="Publikovat první zprávu":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/first-message.png" alt-text="Vytvoření prostředku":::
 
 Vraťte se do Azure a prověřte svou frontu. Klikněte na `Service Bus Explorer` levý panel a potom klikněte na tlačítko _Náhled_ . Pokud všechno proběhlo správně, zobrazí se ve vaší frontě jedna zpráva. Yay!
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/service-bus-queue.png" alt-text="Fronta služby Azure Service Bus":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/service-bus-queue.png" alt-text="Vytvoření prostředku":::
 
 Pojďme se ale ujistit, že se jedná o zprávu, kterou jste odeslali z RabbitMQ. Vyberte `Peek` kartu a kliknutím na `Peek` tlačítko načtěte poslední zprávy ve frontě. Kliknutím na zprávu zkontrolujete její obsah. Měli byste vidět něco jako na obrázku níže, kde `first message` je uvedený obrázek.
 
-:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/peek.png" alt-text="Náhled fronty":::
+:::image type="content" source="./media/service-bus-integrate-with-rabbitmq/peek.png" alt-text="Vytvoření prostředku":::
 
 ## <a name="lets-recap"></a>Pojďme se rekapitulace
 

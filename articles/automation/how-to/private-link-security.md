@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
 ms.openlocfilehash: a4985784a17f2e0350a7b2c7a4f62f574862d50c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714350"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Použití privátního odkazu Azure k bezpečnému připojení sítí k Azure Automation (Preview)
@@ -82,7 +82,7 @@ V této části vytvoříte privátní koncový bod pro svůj účet Automation.
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **PODROBNOSTI O PROJEKTU** | |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
     | Name | Zadejte své *PrivateEndpoint*. |
@@ -96,7 +96,7 @@ V této části vytvoříte privátní koncový bod pro svůj účet Automation.
     | Nastavení | Hodnota |
     | ------- | ----- |
     |Způsob připojení  | V adresáři vyberte připojit k prostředku Azure.|
-    | Předplatné| Vyberte předplatné. |
+    | Předplatné| Vyberte své předplatné. |
     | Typ prostředku | Vyberte **Microsoft. Automation/automationAccounts**. |
     | Prostředek |Vybrat *myAutomationAccount*|
     |Cílový podprostředek |V závislosti na vašem scénáři vyberte *Webhook* nebo *DSCAndHybridWorker* .|

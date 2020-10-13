@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
 ms.openlocfilehash: e2cdf7d5213f1667b0b588cc5bfa9f105245b6b3
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619113"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell a rozhraní příkazového řádku Azure CLI: povolení transparentní šifrování dat s klíčem spravovaným zákazníkem z Azure Key Vault
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete nainstalovat požadovanou verzi Azure CLI (verze 2,0 nebo novější) a připojit se k předplatnému Azure, přečtěte si téma [instalace a konfigurace 2,0 rozhraní příkazového řádku Azure pro více platforem](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud chcete nainstalovat požadovanou verzi rozhraní příkazového řádku Azure CLI (verze 2,0 nebo novější) a připojit se k předplatnému Azure, přečtěte si téma [instalace a konfigurace Azure pro více platforem Command-Line rozhraní 2,0](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 Konkrétní informace o Key Vault najdete v tématech [správa Key Vault pomocí rozhraní příkazového řádku (cli 2,0](../../key-vault/general/manage-with-cli2.md) ) a [Jak používat Key Vault obnovitelného odstranění pomocí rozhraní](../../key-vault/general/soft-delete-cli.md)příkazového řádku.
 

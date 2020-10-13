@@ -14,10 +14,10 @@ ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 17e5b5eaea90b5f67ad91f0b09a51b2f1aeffd68
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322611"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformace dat spuštěním skriptů U-SQL v Azure Data Lake Analytics 
@@ -331,7 +331,7 @@ V definici ukázkového kanálu se v parametrech a výstupní parametry přiřaz
 }
 ```
 
-Místo toho je možné použít dynamické parametry. Příklad: 
+Místo toho je možné použít dynamické parametry. Například: 
 
 ```json
 "parameters": {

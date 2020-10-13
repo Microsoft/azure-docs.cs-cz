@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
 ms.openlocfilehash: 5363a1b7321bfcbb53b4494b51ee2ea2e7217782
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619640"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Nasazení a zkoumání horizontálně dělené aplikace pro více tenantů
@@ -244,7 +244,7 @@ V některých případech databáze s více klienty vyžaduje více prostředků
 
 Úlohy vygenerované skriptem generátoru zatížení slouží pouze k ilustraci pro účely.
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - Další informace o víceklientské aplikacích SaaS najdete v tématu [vzory návrhu pro víceklientské aplikace SaaS](saas-tenancy-app-design-patterns.md).
 

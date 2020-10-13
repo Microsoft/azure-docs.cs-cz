@@ -4,10 +4,10 @@ description: V tomto kurzu se připojíte ke spravovanému clusteru Service Fabr
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.openlocfilehash: 36a91d2852bcda5f958441b48ef4721d6ccc83c4
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91410439"
 ---
 # <a name="tutorial-deploy-an-app-to-a-service-fabric-managed-cluster-preview"></a>Kurz: nasazení aplikace do spravovaného clusteru Service Fabric (Preview)
@@ -28,7 +28,7 @@ Tato část řady se zabývá těmito postupy:
 > * Vytvoření instance aplikace v clusteru
 > * Odebrání aplikace z clusteru
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Service Fabric spravovaný cluster (viz [*nasazení spravovaného clusteru*](tutorial-managed-cluster-deploy.md)).
 
@@ -75,7 +75,7 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore Debug
 
 ### <a name="create-an-application"></a>Vytvoření aplikace
 
-Pomocí rutiny New-ServiceFabricApplication můžete vytvořit instanci aplikace z jakékoli verze typu aplikace, která byla úspěšně zaregistrována. Název každé aplikace musí začínat schématem "Fabric:" a musí být jedinečný pro každou instanci aplikace. Vytvoří se také všechny výchozí služby definované v manifestu aplikace typu cílové aplikace.
+Můžete vytvořit instanci aplikace z jakékoli verze typu aplikace, která byla úspěšně zaregistrována pomocí rutiny New-ServiceFabricApplication. Název každé aplikace musí začínat schématem "Fabric:" a musí být jedinečný pro každou instanci aplikace. Vytvoří se také všechny výchozí služby definované v manifestu aplikace typu cílové aplikace.
 
 ```powershell
 New-ServiceFabricApplication fabric:/Voting VotingType 1.0.0

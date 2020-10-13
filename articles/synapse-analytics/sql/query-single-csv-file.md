@@ -10,10 +10,10 @@ ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: d2f8a30503e14e647cbc9151ebcea7efa000ca07
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91288286"
 ---
 # <a name="query-csv-files"></a>Dotazování souborů CSV
@@ -131,7 +131,7 @@ Následující dotaz ukazuje, jak číst soubor bez řádku záhlaví, s novým 
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV bez řádku záhlaví a s novým řádkem ve stylu UNIX](./media/query-single-csv-file/population-unix.png)
+![Prvních 10 řádků souboru CSV bez řádku záhlaví a Unix-Style nový řádek](./media/query-single-csv-file/population-unix.png)
 
 ```sql
 SELECT *
@@ -159,7 +159,7 @@ Následující dotaz ukazuje, jak číst soubor s řádkem záhlaví, s novým �
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV s řádkem záhlaví a s novým řádkem ve stylu UNIX.](./media/query-single-csv-file/population-unix-hdr.png)
+![Prvních 10 řádků souboru CSV s řádkem záhlaví a Unix-Style nový řádek.](./media/query-single-csv-file/population-unix-hdr.png)
 
 ```sql
 SELECT *
@@ -187,7 +187,7 @@ Následující dotaz ukazuje, jak přečíst soubor s řádkem záhlaví s nový
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV s řádkem záhlaví a s hodnotami nového řádku a v uvozovkách ve stylu systému UNIX.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
+![Prvních 10 řádků souboru CSV s řádkem záhlaví a Unix-Style nový řádek a hodnoty v uvozovkách.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
 
 ```sql
 SELECT *
@@ -220,7 +220,7 @@ Následující dotaz ukazuje, jak číst soubor s řádkem záhlaví s novým ř
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV s řádkem záhlaví a s novým řádkem a řídicím znakem ve stylu systému UNIX, který se používá pro oddělovač polí.](./media/query-single-csv-file/population-unix-hdr-escape.png)
+![Prvních 10 řádků souboru CSV s řádkem záhlaví a Unix-Style nový řádek a řídicí znak, který se používá pro oddělovač polí.](./media/query-single-csv-file/population-unix-hdr-escape.png)
 
 ```sql
 SELECT *
@@ -283,7 +283,7 @@ Následující dotaz ukazuje, jak číst soubor s řádkem záhlaví, s novým �
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV s řádkem záhlaví a se systémem UNIX – nový řádek a oddělovač tabulátoru](./media/query-single-csv-file/population-unix-hdr-tsv.png)
+![Prvních 10 řádků souboru CSV s řádkem záhlaví a Unix-Style nový řádek a oddělovač tabulátoru.](./media/query-single-csv-file/population-unix-hdr-tsv.png)
 
 ```sql
 SELECT *

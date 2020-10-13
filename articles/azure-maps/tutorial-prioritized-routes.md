@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: 0d57e86088ee472c63b433bde14a0e4316cc20a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321743"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Kurz: vyhledání a zobrazení tras pro různé režimy cestování pomocí Azure Maps
@@ -27,7 +27,7 @@ V tomto kurzu se dozvíte, jak pomocí [služby Azure Maps Route Service](https:
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. [Vytvořte účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account).
 
@@ -121,7 +121,7 @@ Následující kroky ukazují, jak vytvořit a zobrazit mapový ovládací prvek
 
 2. Uložte soubor **MapTruckRoute.html** a aktualizujte stránku v prohlížeči. Pokud se přiblížíte k libovolnému městu, třeba k Los Angeles, uvidíte, že se ulic zobrazuje s aktuálními daty toku provozu.
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="Zobrazení provozu na mapě":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="Základní vykreslování mapy mapového ovládacího prvku":::
 
 <a id="queryroutes"></a>
 
@@ -197,7 +197,7 @@ V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. První 
 
 3. Uložte **TruckRoute.html** a aktualizujte prohlížeč. Mapa se teď nacentruje na střed Seattle. Modrý kód pro 15kolíkový označí počáteční bod. Kulatě modrý kód PIN označuje koncový bod.
 
-   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="Zobrazení mapy s počátečním a koncovým bodem":::
+   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="Základní vykreslování mapy mapového ovládacího prvku":::
 
 <a id="multipleroutes"></a>
 
@@ -277,7 +277,7 @@ V této části se dozvíte, jak používat službu Azure Maps Route k získán�
 
 4. Uložte soubor **TruckRoute.html** a aktualizujte webový prohlížeč. Mapa by nyní měla zobrazovat trasy nákladní automobil a auto.
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="Směrování privátních a komerčních vozidel na mapě s využitím Azure Route Service":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="Základní vykreslování mapy mapového ovládacího prvku":::
 
     Trasa za nákladní vůz se zobrazuje pomocí tlusté modré čáry. Trasa auta se zobrazí s použitím tenké fialové čáry. Trasa automobilu prochází přes Lake Washington prostřednictvím I-90 a prochází tunely pod místními oblastmi. Vzhledem k tomu, že tunely jsou blízko domácích oblastí, je zakázaný nebezpečný odpadní náklad. Směr nákladní lodě, který určuje `USHazmatClass2` typ nákladu, je směrován na použití jiné dálnice.
 

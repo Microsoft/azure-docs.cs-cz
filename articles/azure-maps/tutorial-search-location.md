@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: 4d6728d4fbde4b7d6cc8ed06e961642264ad31bc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321692"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Kurz: hledání okolních bodů zájmu pomocí Azure Maps
@@ -26,12 +26,12 @@ V tomto kurzu se dozvíte, jak nastavit účet s Azure Maps a pak pomocí rozhra
 > * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
 > * Vyhledání okolního bodu zájmu pomocí vyhledávací služby Maps
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 <a id="createaccount"></a>
 <a id="getkey"></a>
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 

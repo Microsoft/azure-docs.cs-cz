@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: jeedes
 ms.openlocfilehash: d980e0a5dd4b042f919775c205a20ea69e51f0bd
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708998"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-123formbuilder-sso"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s 123FormBuilder SSO
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat jednotné přihlašování 123FormBuil
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -109,7 +109,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Create** (Vytvořit).
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -143,7 +143,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 2. V **Microsoft Azure AD – jednotné přihlašování – konfigurovat nastavení aplikace** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/123formbuilder-tutorial/url3.png)
+    ![Konfigurace jednoho Sign-On](./media/123formbuilder-tutorial/url3.png)
 
     a. Pokud chcete nakonfigurovat aplikaci v **režimu iniciované IDP**, zkopírujte hodnotu **identifikátoru** instance a vložte ji do textového pole **identifikátoru** v základní části **Konfigurace SAML** na Azure Portal.
 
@@ -161,7 +161,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici 123FormBuilder SSO na přístupovém panelu, měli byste se automaticky přihlásit k 123FormBuilder SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

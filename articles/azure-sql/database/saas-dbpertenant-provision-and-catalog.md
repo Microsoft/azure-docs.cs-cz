@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: bc649551986190f944e3225ff0914d091acd3f88
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619691"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Naučte se zřizovat nové klienty a registrovat je v katalogu.
@@ -86,7 +86,7 @@ Aby bylo možné pochopit, jak aplikace Wingtip Tickets implementuje nové zřiz
 
 2. Chcete-li přidat zarážku, umístěte kurzor na libovolné místo na řádku, který říká *New-tenant*. Pak stiskněte F9.
 
-   ![Snímek obrazovky se zvýrazněním nového tenanta, který je zvýrazněný pro přidání zarážky.](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
+   ![Snímek obrazovky zobrazuje skript s New-Tenant zvýrazněnou pro přidání zarážky.](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
 
 3. Pokud chcete skript spustit, stiskněte klávesu F5.
 
@@ -103,7 +103,7 @@ Tento pracovní postup nemusíte explicitně sledovat. Vysvětluje, jak skript l
 
 * **Importujte modul CatalogAndDatabaseManagement. psm1.** Poskytuje katalog a abstrakci na úrovni tenanta v rámci funkcí [správy horizontálních oddílů](elastic-scale-shard-map-management.md) . Tento modul zapouzdřuje většinu vzorů katalogu a je prozkoumávat.
 * **Importujte modul SubscriptionManagement. psm1.** Obsahuje funkce pro přihlášení k Azure a výběr předplatného Azure, se kterým chcete pracovat.
-* **Získat podrobnosti o konfiguraci.** Krok do získání konfigurace pomocí klávesy F11 a podívejte se, jak je zadaná konfigurace aplikace. Tady jsou definované názvy prostředků a další hodnoty specifické pro danou aplikaci. Tyto hodnoty neměňte, dokud nebudete znát skripty.
+* **Získat podrobnosti o konfiguraci.** Krok do Get-Configuration pomocí klávesy F11 a podívejte se, jak je zadaná konfigurace aplikace. Tady jsou definované názvy prostředků a další hodnoty specifické pro danou aplikaci. Tyto hodnoty neměňte, dokud nebudete znát skripty.
 * **Získá objekt katalogu.** Krok do příkazového katalogu Get-Catalog, který vytváří a vrací objekt katalogu, který se používá ve skriptu vyšší úrovně. Tato funkce používá funkce správy horizontálních oddílů, které jsou importovány z **AzureShardManagement. psm1**. Objekt Catalog se skládá z následujících prvků:
 
    * $catalogServerFullyQualifiedName je vytvořen pomocí standardního kmene plus vaše uživatelské jméno: _Catalog- \<user\> . Database. Windows .NET_.
@@ -174,7 +174,7 @@ V tomto kurzu jste se naučili:
 
 Vyzkoušejte si [kurz k monitorování výkonu](../../sql-database/saas-dbpertenant-performance-monitoring.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * Další [kurzy, které se vytvářejí na základě aplikace Wingtip Tickets SaaS Database-per-tenant](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Klientská knihovna Elastic Database](elastic-database-client-library.md)

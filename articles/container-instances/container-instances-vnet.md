@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: e5a31742956c2ba9bd15026f7667c971c20694a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91303004"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejnerů do virtuální sítě Azure
@@ -77,7 +77,7 @@ az container show --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv
 ```
 
-Výstup zobrazí IP adresu skupiny kontejnerů v privátní podsíti. Příklad:
+Výstup zobrazí IP adresu skupiny kontejnerů v privátní podsíti. Například:
 
 ```console
 10.0.0.4

@@ -2,17 +2,14 @@
 title: Telemetrie Application Insights ve Visual Studio CodeLens | Dokumentace Microsoftu
 description: Přistupujte rychle k požadavkům Application Insights a telemetrii výjimek pomocí CodeLens v sadě Visual Studio.
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
 ms.date: 03/17/2017
-ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 2a562378ae626351922e43d33f38e62331ab58de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92879e9dc7b9de7ef5862f30241f2b80e6aac9e8
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323481"
+ms.locfileid: "91932647"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Telemetrie Application Insights ve Visual Studio CodeLens
 Metody v kódu vaší webové aplikace mohou být opatřeny poznámkami s telemetrií o výjimkách za běhu a časech odezvy na požadavky. Pokud ve své aplikaci nainstalujete [Azure Application Insights](./app-insights-overview.md), telemetrie se zobrazí ve Visual Studio [CodeLens](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015) s poznámkami v horní části každé funkce, kde jste zvyklí vídat užitečné informace, jako například počet míst, ze kterých se na funkci odkazuje, nebo jméno poslední osoby, která ji upravila.
@@ -68,9 +65,6 @@ Chcete-li zobrazit podrobnosti, klikněte na indikátor požadavků CodeLens:
 * Chcete-li změnit, který prostředek je zdrojem dat pro CodeLens, v levém horním rohu zobrazení podrobností CodeLens zvolte název prostředku Application Insights.
 
 ## <a name="next-steps"></a><a name="next"></a>Další kroky
-|  |  |
-| --- | --- |
-| **[Práce s Application Insights v sadě Visual Studio](./visual-studio.md)**<br/>Hledejte telemetrii, zobrazujte data v CodeLens a konfigurujte Application Insights. Vše v sadě Visual Studio. |![Klikněte pravým tlačítkem myši na projekt a vyberte Application Insights, Vyhledávání](./media/visual-studio-codelens/34.png) |
-| **[Přidání dalších dat](./asp-net-more.md)**<br/>Sledování využití, dostupnosti, závislostí, výjimek. Integrujte trasování z rozhraní protokolování. Zapisuje vlastní telemetrii. |![Visual Studio](./media/visual-studio-codelens/64.png) |
-| **[Práce s portálem Application Insights](./overview-dashboard.md)**<br/>Řídicí panely, výkonné nástroje pro diagnostiku a analýzy, výstrahy, aktivní mapa závislostí vaší aplikace a export telemetrie. |![Visual Studio](./media/visual-studio-codelens/62.png) |
+* **[Práce s Application Insights v aplikaci Visual Studio](./visual-studio.md)**. Hledejte telemetrii, zobrazujte data v CodeLens a konfigurujte Application Insights. Vše v sadě Visual Studio. 
+* **[Práce s portálem Application Insights](./overview-dashboard.md)**. Řídicí panely, výkonné nástroje pro diagnostiku a analýzy, výstrahy, aktivní mapa závislostí vaší aplikace a export telemetrie. 
 

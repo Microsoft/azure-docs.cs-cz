@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
 ms.openlocfilehash: 43b0f64a1d88a71b221fac240392dc71b93eef76
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91298824"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurace skupiny dostupnosti pracovní skupiny 
@@ -113,7 +113,7 @@ Významné rozdíly mezi kurzem a to, co je potřeba udělat pro cluster pracovn
    - `AGNode2.ag.wgcluster.example.com`
 - Zrušte kontrolu **Přidat do clusteru veškeré oprávněné úložiště**. 
 
-Po vytvoření clusteru přiřaďte IP adresu statického clusteru. Postup je následující:
+Po vytvoření clusteru přiřaďte IP adresu statického clusteru. To můžete provést pomocí těchto kroků:
 
 1. Na jednom z uzlů otevřete **Správce clusteru s podporou převzetí služeb při selhání**, vyberte cluster, klikněte pravým tlačítkem myši na **Název: \<ClusterNam> ** v části **základní prostředky clusteru** a pak vyberte **vlastnosti**. 
 

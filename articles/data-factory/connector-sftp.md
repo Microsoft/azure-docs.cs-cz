@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
 ms.openlocfilehash: f4b78c6cb2af8d18dc761e9bfc78740a845f54fc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252931"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Kopírování dat z a do serveru SFTP pomocí Azure Data Factory
@@ -295,7 +295,7 @@ Následující vlastnosti jsou podporovány pro SFTP v `storeSettings` nastaven�
 | typ                     | Vlastnost *Type* v poli `storeSettings` musí být nastavená na *SftpWriteSettings*. | Yes      |
 | copyBehavior             | Definuje chování kopírování, pokud je zdrojem soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>-PreserveHierarchy (výchozí)</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru ke zdrojové složce je shodná s relativní cestou cílového souboru k cílové složce.<br/><b>-FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>-MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Je-li zadán název souboru, Název sloučeného souboru je zadaný název. V opačném případě se jedná o automaticky vygenerovaný název souboru. | No       |
 | maxConcurrentConnections | Počet připojení, která se můžou souběžně připojit k úložišti úložiště. Zadejte hodnotu pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | No       |
-| useTempFileRename | Určete, zda se mají nahrávat do dočasných souborů a přejmenovat je, nebo přímo zapisovat do cílové složky nebo umístění souboru. Ve výchozím nastavení Azure Data Factory nejprve zapisovat do dočasných souborů a po dokončení nahrávání je přejmenuje. Tato sekvence pomáhá (1) vyhnout se konfliktům, které by mohly vést k poškození souboru, pokud máte jiné procesy zapsané do stejného souboru a (2) zajistěte, aby během přenosu existovala původní verze souboru. Pokud váš server SFTP nepodporuje operaci přejmenování, zakažte tuto možnost a ujistěte se, že nemáte souběžný zápis do cílového souboru. Další informace najdete v tipu Poradce při potížích na konci této tabulky. | No. Výchozí hodnota je *true*. |
+| useTempFileRename | Určete, zda se mají nahrávat do dočasných souborů a přejmenovat je, nebo přímo zapisovat do cílové složky nebo umístění souboru. Ve výchozím nastavení Azure Data Factory nejprve zapisovat do dočasných souborů a po dokončení nahrávání je přejmenuje. Tato sekvence pomáhá (1) vyhnout se konfliktům, které by mohly vést k poškození souboru, pokud máte jiné procesy zapsané do stejného souboru a (2) zajistěte, aby během přenosu existovala původní verze souboru. Pokud váš server SFTP nepodporuje operaci přejmenování, zakažte tuto možnost a ujistěte se, že nemáte souběžný zápis do cílového souboru. Další informace najdete v tipu Poradce při potížích na konci této tabulky. | Ne. Výchozí hodnota je *true*. |
 | operationTimeout | Doba čekání před vypršením časového limitu každého požadavku na zápis na server SFTP Výchozí hodnota je 60 min (01:00:00).|No |
 
 >[!TIP]

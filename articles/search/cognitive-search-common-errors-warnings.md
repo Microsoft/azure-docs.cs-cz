@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 8ceb6d4dddb76148be1e82ebc8c1994886a11da3
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362810"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení běžných chyb a upozornění v indexeru v Azure Kognitivní hledání
@@ -35,7 +35,7 @@ Počínaje verzí rozhraní API `2019-05-06` jsou chyby a upozornění indexerů
 | Vlastnost | Popis | Příklad |
 | --- | --- | --- |
 | key | ID dokumentu dokumentu ovlivněného chybou nebo upozorněním. | https: \/ /coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
-| jméno | Název operace popisující, kde došlo k chybě nebo upozornění. Tato struktura je generována následující strukturou: [Category]. [Subcategory]. [ResourceType]. resourceName | DocumentExtraction. azureblobu. myBlobContainerName obohacení. WebApiSkill. mySkillName projekce. SearchIndex. OutputFieldMapping. myOutputFieldName projekce. SearchIndex. MergeOrUpload. myIndexName projekce. KnowledgeStore. Table. myTableName |
+| name | Název operace popisující, kde došlo k chybě nebo upozornění. Tato struktura je generována následující strukturou: [Category]. [Subcategory]. [ResourceType]. resourceName | DocumentExtraction. azureblobu. myBlobContainerName obohacení. WebApiSkill. mySkillName projekce. SearchIndex. OutputFieldMapping. myOutputFieldName projekce. SearchIndex. MergeOrUpload. myIndexName projekce. KnowledgeStore. Table. myTableName |
 | zpráva | Popis chyby nebo varování na nejvyšší úrovni. | Nelze provést dovednost, protože požadavek webového rozhraní API se nezdařil. |
 | zobrazí | Jakékoli další podrobnosti, které mohou být užitečné při diagnostice problému, jako je například odpověď WebApi při provádění vlastní dovednosti, se nezdařila. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 zdroj, Func `2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ... zbytek trasování zásobníku... |
 | documentationLink | Odkaz na příslušnou dokumentaci s podrobnými informacemi pro ladění a vyřešení problému. Tento odkaz často odkazuje na jednu z níže uvedených částí na této stránce. | https://go.microsoft.com/fwlink/?linkid=2106475 |

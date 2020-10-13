@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: fe5ba25904298fe1a394a4b01d6bdacc72d599c9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448679"
 ---
 # <a name="split-image-directory"></a>Rozdělení adresáře obrázků
@@ -35,19 +35,19 @@ Tento modul je zvláště užitečný v případě, že potřebujete oddělit ob
 
 ### <a name="expected-inputs"></a>Očekávané vstupy
 
-| Název                  | Typ           | Popis              |
+| Název                  | Typ           | Description              |
 | --------------------- | -------------- | ------------------------ |
 | Adresář vstupní bitové kopie | ImageDirectory | Adresář obrázku, který se má rozdělit |
 
 ### <a name="module-parameters"></a>Parametry modulu
 
-| Název                                   | Typ  | Rozsah | Volitelné | Popis                            | Výchozí |
+| Název                                   | Typ  | Rozsah | Volitelné | Description                            | Výchozí |
 | -------------------------------------- | ----- | ----- | -------- | -------------------------------------- | ------- |
 | Zlomek obrázků v prvním výstupu | Float | 0-1   | Vyžadováno | Zlomek obrázků v prvním výstupu | 0,9     |
 
 ### <a name="outputs"></a>Výstupy
 
-| Název                    | Typ           | Popis                              |
+| Název                    | Typ           | Description                              |
 | ----------------------- | -------------- | ---------------------------------------- |
 | Výstupní image directory1 | ImageDirectory | Adresář imagí obsahující vybrané image |
 | Výstupní image directory2 | ImageDirectory | Adresář imagí, který obsahuje všechny ostatní image |

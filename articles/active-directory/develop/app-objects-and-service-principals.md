@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.openlocfilehash: db25e0a9ebe01a45c594fe214efcdd3551cf6c14
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449361"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Instanční objekty aplikací a služeb v Azure Active Directory
@@ -82,7 +82,7 @@ Následující diagram znázorňuje vztah mezi objektem aplikace aplikace a odpo
 
 V tomto ukázkovém scénáři:
 
-| Krok | Popis |
+| Krok | Description |
 |------|-------------|
 | 1    | Je proces vytváření aplikací a objektů zabezpečení služby v domovském tenantovi aplikace. |
 | 2    | Když správci společnosti Contoso a Fabrikam dokončí souhlas, vytvoří se v tenantovi služby Azure AD ve své společnosti objekt instančního objektu a přiřadí se mu oprávnění udělená správcem. Všimněte si také, že aplikace pro personální oddělení může být nakonfigurovaná/navržená tak, aby umožňovala souhlas uživatelům při individuálním použití. |

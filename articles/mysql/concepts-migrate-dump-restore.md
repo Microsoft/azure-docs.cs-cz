@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: a0171481b97cff2ea085a80b387bff13590529a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905906"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrace databáze MySQL do služby Azure Database for MySQL pomocí výpisu a obnovení.
@@ -67,7 +67,7 @@ Pokud se chcete připojit, vyhledejte informace o připojení v **přehledu** Az
 
 Přidejte informace o připojení do aplikace MySQL Workbench.
 
-:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="Připojovací řetězec MySQL Workbench":::
+:::image type="content" source="./media/concepts-migrate-dump-restore/2_setup-new-connection.png" alt-text="Vyhledat informace o připojení v Azure Portal":::
 
 ## <a name="preparing-the-target-azure-database-for-mysql-server-for-fast-data-loads"></a>Příprava cílového serveru Azure Database for MySQL pro rychlé načítání dat
 Chcete-li připravit cílový Azure Database for MySQL server pro rychlejší načítání dat, je třeba změnit následující parametry serveru a konfiguraci.

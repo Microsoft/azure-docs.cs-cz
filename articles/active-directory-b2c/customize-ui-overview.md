@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259539"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
@@ -168,7 +168,7 @@ Chcete-li přizpůsobit stránky toku uživatele, je třeba nejprve nakonfigurov
 
 Začněte tím, že nastavíte logo banner, obrázek pozadí a barvu pozadí v rámci **brandingu společnosti**.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. V části **Spravovat**vyberte **Branding společnosti**.

@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 085da17a29e1d5ff1fa69a62e0029fb917d56bb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5e404e4cc0e4131ba7ade5ec8ec6115e26268a2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936329"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965892"
 ---
 # <a name="call-the-computer-vision-api"></a>Volání rozhraní API pro počítačové zpracování obrazu
 
@@ -35,7 +35,7 @@ Tyto funkce nabízí následující možnosti:
 - **Možnost 1**: analýza vymezená v oboru – analýza pouze zadaného modelu
 - **Možnost 2**: Vylepšená analýza – proveďte analýzu a poskytněte další podrobnosti pomocí [taxonomie 86-Categories](../Category-Taxonomy.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
@@ -254,4 +254,4 @@ Tyto chyby jsou stejné jako v Vision. Analyzujte s další chybou NotSupportedM
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete použít REST API, přejděte k [referenčním informacím k rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f21b).
+Pokud chcete použít REST API, přejděte k [referenčním informacím k rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b).

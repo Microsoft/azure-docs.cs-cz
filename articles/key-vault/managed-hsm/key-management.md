@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 846153dd482130bbb3b35c38a3dbb791e0d0d32e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448267"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Správa spravovaného modulu HSM pomocí Azure CLI
@@ -24,7 +24,7 @@ Přehled spravovaného modulu HSM najdete v tématu [co je spravovaný modul HSM
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku musíte mít následující položky:
 

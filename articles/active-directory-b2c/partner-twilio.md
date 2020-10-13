@@ -12,10 +12,10 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259064"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Integrace aplikace Twilio Verify s Azure Active Directory B2C
@@ -42,10 +42,10 @@ Abyste mohli začít, budete potřebovat:
 
     ![tok Twilio](media/partner-twilio/twilio-flow.png)
 
-| Krok | Popis |
+| Krok | Description |
 |------|------|
 | 1     | Uživatel zahájí přihlášení nebo se zaregistruje do ukázkové aplikace PSD2. Uživatel je ověřený prostřednictvím kombinovaného přihlášení Azure AD B2C a zásady registrace. Do aplikace se vrátí token. Při registraci se telefonní číslo uživatele ověřuje pomocí serveru SMS nebo telefonu a zaznamenaného na svém Azure AD B2C účtu.     |
-| 2     | Uživatel zahájí transakci s vysokým rizikem, jako je například přenos $50,00. Aktuální přístupový token uživatele se vyhodnocuje pro PolicyId, aby se zjistilo, jestli se uživatel už ověřený prostřednictvím vlastní zásady pro krokování.     |
+| 2     | Uživatel zahájí transakci s vysokým rizikem, jako je například přenos $50,00. Aktuální přístupový token uživatele se vyhodnocuje pro PolicyId, aby zjistil, jestli se uživatel už ověřil prostřednictvím Step-Up vlastní zásady.     |
 | 3     | Aplikace zaznamenává hodnotu transakce a příjemce, $50,00 a Jan Novák a vygeneruje podepsaný token. Tento token se nazývá `id_token_hint` a obsahuje deklaraci identity `amount:$500, payee:john doe` . Se `id_token_hint` pošle spolu s požadavkem na vlastní zásadu Azure AD B2C, která je integrovaná s Twilio.     |
 | 4     | Azure AD B2C ověří podpis id_token_hint kontrolou `/.well-known` koncového bodu aplikace OpenId Connect. Po ověření extrahuje deklarace z tohoto tokenu, zejména `amount` a `payee` . Uživateli se zobrazí stránka pro ověření svého mobilního telefonního čísla prostřednictvím zprávy SMS.     |
 | 5     | Uživatel žádá o ověření svého telefonního čísla prostřednictvím zprávy SMS a Azure AD B2C provede požadavek REST API na ověření koncového bodu rozhraní API pro Twilio. Odesílá také transakce `amount` a `payee` jako součást procesu PSD2 k VYgenerování jednorázového hesla. Twilio pošle zprávu SMS zaregistrovanému telefonnímu číslu uživatele.     |

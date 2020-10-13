@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/02/2019
 ms.openlocfilehash: 868443e52b7159e6ee9478f64b7b2f376a10f604
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541002"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportujte a odstraňte zákaznická data v Language Understanding (LUIS) v Cognitive Services
@@ -37,8 +37,8 @@ LUIS uživatelé mají plnou kontrolu nad tím, že budou odstraňovat obsahy u�
 
 | | **Uživatelský účet** | **Aplikace** | **Příklad utterance** | **Dotazy pro koncové uživatele** |
 | --- | --- | --- | --- | --- |
-| **Azure Portal** | [Odkaz](luis-concept-data-storage.md#delete-an-account) | [Odkaz](luis-how-to-start-new-app.md#delete-app) | [Odkaz](luis-concept-data-storage.md#utterances-in-an-intent) | [Projevy Active Learning](luis-how-to-review-endpoint-utterances.md#disable-active-learning)<br>[Protokol projevy](luis-concept-data-storage.md#disable-logging-utterances) |
-| **Rozhraní API** | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
+| **Azure Portal** | [Propojit](luis-concept-data-storage.md#delete-an-account) | [Propojit](luis-how-to-start-new-app.md#delete-app) | [Propojit](luis-concept-data-storage.md#utterances-in-an-intent) | [Projevy Active Learning](luis-how-to-review-endpoint-utterances.md#disable-active-learning)<br>[Protokol projevy](luis-concept-data-storage.md#disable-logging-utterances) |
+| **Rozhraní API** | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
 
 
 ## <a name="exporting-customer-data"></a>Export zákaznických dat
@@ -46,7 +46,7 @@ LUIS uživatelé mají úplné řízení pro zobrazení dat na portálu, ale mus
 
 | | **Uživatelský účet** | **Aplikace** | **Utterance (celkem)** | **Dotazy pro koncové uživatele** |
 | --- | --- | --- | --- | --- |
-| **Rozhraní API** | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c48) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0a) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36) |
+| **Rozhraní API** | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c48) | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0a) | [Propojit](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36) |
 
 ## <a name="location-of-active-learning"></a>Umístění aktivního učení
 

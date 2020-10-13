@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: victorh
 ms.openlocfilehash: c4d1d16d07aaf92a0bc3cc365ac094893fc41c79
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91446515"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Vytvoření aplikační brány s přesměrováním HTTP na HTTPS pomocí Azure PowerShell
@@ -26,7 +26,7 @@ V tomto článku získáte informace o těchto tématech:
 * Přidat pravidlo naslouchacího procesu a přesměrování
 * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

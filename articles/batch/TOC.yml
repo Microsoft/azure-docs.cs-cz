@@ -257,12 +257,16 @@
           href: batch-pool-resize-start-event.md
         - name: Událost dokončení změny velikosti fondu
           href: batch-pool-resize-complete-event.md
+        - name: Událost automatického škálování fondu
+          href: batch-pool-autoscale-event.md
         - name: Událost zahájení úlohy
           href: batch-task-start-event.md
         - name: Událost dokončení úlohy
           href: batch-task-complete-event.md
         - name: Událost selhání úlohy
           href: batch-task-fail-event.md
+        - name: Událost selhání plánu úloh
+          href: batch-task-schedule-fail-event.md
     - name: Integrované služby Azure Policy
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

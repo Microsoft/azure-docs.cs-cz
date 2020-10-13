@@ -1,14 +1,14 @@
 ---
 title: Ukázkové ovládací prvky podrobného plánu pro úrovni DoD úrovně 4
-description: Mapování ovládacího prvku pro ukázku plánu dopadu DoD. 4. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
+description: Mapování ovládacího prvku pro ukázku plánu dopadu DoD. 4. Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
 ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: 52482fae2fefa0a58e82b3af38b56db7d5b19c25
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 433e77775fdd28032db27c017fe370ab32074a95
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540553"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929519"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Mapování ovládacího prvku pro ukázku plánu dopadu na 3. plán na úrovni.
 
@@ -17,8 +17,7 @@ Následující článek podrobně popisuje, jak je oddělení Azure modrotisky v
 Následující mapování jsou ovládací prvky **úrovně dopadu dod. 4** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ** \[ ukázková iniciativa \] úrovně dopadu 3** .
 
 > [!IMPORTANT]
-> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit.
-> Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-4/control-mapping.md).
+> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. Nicméně často není jedna nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-4/control-mapping.md).
 
 ## <a name="ac-2-account-management"></a>Správa účtů AC-2
 
@@ -30,7 +29,7 @@ Tento podrobný plán vám pomůže zkontrolovat účty, které nemusí být v r
 - Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.
 
-## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) Správa účtů | Schémata založená na rolích
+## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) Správa účtů | Role-Based schémata
 
 Azure implementuje [řízení přístupu na základě role Azure (Azure RBAC)](../../../../role-based-access-control/overview.md) , které vám pomůžou se správou toho, kdo má přístup k prostředkům v Azure. Pomocí Azure Portal můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán také přiřadí [Azure Policy](../../../policy/overview.md) definice k auditu používání ověřování Azure Active Directory pro servery SQL a Service Fabric. Ověřování pomocí Azure Active Directory umožňuje zjednodušenou správu oprávnění a centralizovanou správu identit uživatelů databáze a dalších služeb Microsoftu. Tento podrobný plán navíc přiřadí definici Azure Policy pro audit používání vlastních pravidel služby Azure RBAC. Princip implementace vlastních pravidel služby Azure RBAC vám může pomáhat ověřit potřebnou a správnou implementaci, protože vlastní pravidla služby Azure RBAC jsou náchylná k chybám.
 
@@ -166,7 +165,7 @@ Tyto definice zásad také auditují konfiguraci diagnostických protokolů a po
 - Nasazení auditování na SQL serverech
 - Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě
 
-## <a name="au-12-01-audit-generation--system-wide--time-correlated-audit-trail"></a>Generování auditu AU-12 (01) | Záznam auditu v reálném čase a podle časového rozsahu
+## <a name="au-12-01-audit-generation--system-wide--time-correlated-audit-trail"></a>Generování auditu AU-12 (01) | Záznam pro audit System-Wide/Time-Correlated
 
 Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaznamenávány přiřazením [Azure Policy](../../../policy/overview.md) definicí, které auditují nastavení protokolů v prostředcích Azure.
 Tato předdefinovaná zásada vyžaduje, abyste určili pole typů prostředků, abyste zkontrolovali, jestli jsou nastavení diagnostiky povolená, nebo ne.
@@ -185,7 +184,7 @@ Adaptivní řízení aplikací v Azure Security Center je inteligentní, automat
 
 - V počítačích by měly být povolené Adaptivní řízení aplikací pro definování bezpečných aplikací.
 
-## <a name="cm-11-user-installed-software"></a>Software nainstalovaný uživatelem CM-11
+## <a name="cm-11-user-installed-software"></a>CM-11 User-Installed software
 
 Adaptivní řízení aplikací v Azure Security Center je inteligentní, automatizované a automatizované řešení seznamu povolených aplikací, které může blokovat nebo bránit spuštění určitého softwaru na virtuálních počítačích. Řízení aplikací vám může pomáhat vymáhat a monitorovat dodržování zásad omezení softwaru. Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže monitorovat virtuální počítače, ve kterých se doporučuje seznam povolených aplikací, ale ještě není nakonfigurovaný.
 
@@ -212,7 +211,7 @@ Tento podrobný plán přiřadí Azure Policy definice, které v elektronické p
 Tento podrobný plán vám pomůže omezit a řídit privilegovaný přístup tím, že přiřadíte definice [Azure Policy](../../../policy/overview.md) k auditování účtů s oprávněním vlastníka nebo zápisu, u kterých není povolené Multi-Factor Authentication. Multi-Factor Authentication pomáhá udržet zabezpečení účtů i v případě, že dojde k ohrožení bezpečnosti některých informací o ověřování. Monitorováním účtů bez povoleného ověřování službou Multi-Factor Authentication můžete identifikovat účty, jejichž zabezpečení může být pravděpodobnější.
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
-- Pro účty s oprávněním k zápisu do vašeho předplatného by se měla povolit vícefaktorové ověřování.
+- Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA
 
 ## <a name="ia-2-2-identification-and-authentication-organizational-users--network-access-to-non-privileged-accounts"></a>IA-2 (2) identifikace a ověřování (uživatelé organizace) | Přístup k síti bez privilegovaných účtů
 
@@ -231,7 +230,7 @@ Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) def
 - \[Verze Preview \] : nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které mají účty bez hesla
 - \[Verze Preview \] : nasazení požadavků pro audit virtuálních počítačů s Windows, které neukládají hesla pomocí reverzibilního šifrování
 
-## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) Správa ověřovatele | Ověřování založené na heslech
+## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) Správa ověřovatele | Ověřování Password-Based
 
 Tento podrobný plán vám pomůže vynutilit silná hesla tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které auditují virtuální počítače s Windows, které nevyžadují minimální sílu a jiné požadavky na heslo. Povědomí o problémech s virtuálními počítači, které jsou v rozporu s zásadami složitosti hesla, vám pomůžou provést nápravné akce, které zajistí, aby hesla všech uživatelských účtů virtuálních počítačů byla v pořádku se zásadami hesel vaší organizace.
 

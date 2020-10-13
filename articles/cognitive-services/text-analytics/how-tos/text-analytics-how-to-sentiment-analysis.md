@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 08/25/2020
+ms.date: 10/09/2020
 ms.author: aahi
-ms.openlocfilehash: a0557c3ccf6510ab3ee2ae29cbef1fc754473345
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 570a21a307d60ab1e2c02d6481746576f5dcf0e3
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "88933014"
+ms.locfileid: "91930284"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Postupy: zjištění mínění pomocí rozhraní API pro analýzu textu
 
@@ -78,13 +78,13 @@ Velikost dokumentu musí být v rozmezí 5 120 znaků na dokumentu. Pro každou 
 
 Vytvořte žádost POST. V následujících referenčních odkazech můžete [použít možnost post](text-analytics-how-to-call-api.md) nebo **Konzola pro testování API** k rychlému uspořádání a odeslání jednoho. 
 
-#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
-
-[Reference Analýza mínění V3](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment)
-
 #### <a name="version-31-preview1"></a>[Verze 3,1-Preview. 1](#tab/version-3-1)
 
 [Referenční informace pro Analýza mínění v 3.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Sentiment)
+
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
+
+[Reference Analýza mínění V3](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment)
 
 ---
 
@@ -95,10 +95,6 @@ Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza 
 > [!NOTE]
 > Klíč a koncový bod pro váš Analýza textu prostředek najdete na webu Azure Portal. Budou se nacházet na stránce **rychlý Start** prostředku v části **Správa prostředků**. 
 
-#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment`
-
 #### <a name="version-31-preview1"></a>[Verze 3,1-Preview. 1](#tab/version-3-1)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment`
@@ -108,6 +104,10 @@ Chcete-li získat názory výsledků dolování, je nutné zahrnout `opinionMini
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment?opinionMining=true`
 
 Tento parametr je ve výchozím nastavení nastaven na hodnotu `false` . 
+
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment`
 
 ---
 
@@ -141,44 +141,6 @@ Rozhraní API pro analýzu textu je Bezstavová. Ve vašem účtu se neukládaj�
 Mínění Analysis vrátí popisek mínění a hodnocení spolehlivosti pro celý dokument a každou větu v něm. Skóre Blíže k 1 znamenají vyšší důvěru v klasifikaci popisku, zatímco nižší skóre znamenají nižší důvěru. Dokument může mít několik vět a hodnocení spolehlivosti v jednotlivých dokumentech nebo větách přidalo až 1.
 
 Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo uložit výstup do souboru v místním systému. Pak importujte výstup do aplikace, kterou můžete použít k řazení, vyhledávání a manipulaci s daty. Vzhledem k podpoře vícejazyčných a Emoji může odpověď obsahovat posunutí textu. Další informace najdete v tématu [postup zpracování posunů](../concepts/text-offsets.md) .
-
-#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
-
-### <a name="sentiment-analysis-v30-example-response"></a>Příklad odpovědi Analýza mínění v 3.0
-
-Odpovědi z Analýza mínění V3 obsahují mínění popisky a skóre pro každou analyzovanou větu a dokument.
-
-```json
-{
-    "documents": [
-        {
-            "id": "1",
-            "sentiment": "positive",
-            "confidenceScores": {
-                "positive": 1.0,
-                "neutral": 0.0,
-                "negative": 0.0
-            },
-            "sentences": [
-                {
-                    "sentiment": "positive",
-                    "confidenceScores": {
-                        "positive": 1.0,
-                        "neutral": 0.0,
-                        "negative": 0.0
-                    },
-                    "offset": 0,
-                    "length": 58,
-                    "text": "The restaurant had great food and our waiter was friendly."
-                }
-            ],
-            "warnings": []
-        }
-    ],
-    "errors": [],
-    "modelVersion": "2020-04-01"
-}
-```
 
 #### <a name="version-31-preview1"></a>[Verze 3,1-Preview. 1](#tab/version-3-1)
 
@@ -266,6 +228,44 @@ Analýza mínění v 3.1 nabízí kromě objektu Response na kartě **verze 3,0*
                             "isNegated": false
                         }
                     ]
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
+}
+```
+
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
+
+### <a name="sentiment-analysis-v30-example-response"></a>Příklad odpovědi Analýza mínění v 3.0
+
+Odpovědi z Analýza mínění V3 obsahují mínění popisky a skóre pro každou analyzovanou větu a dokument.
+
+```json
+{
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "confidenceScores": {
+                "positive": 1.0,
+                "neutral": 0.0,
+                "negative": 0.0
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1.0,
+                        "neutral": 0.0,
+                        "negative": 0.0
+                    },
+                    "offset": 0,
+                    "length": 58,
+                    "text": "The restaurant had great food and our waiter was friendly."
                 }
             ],
             "warnings": []

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a788134f64066b0469d34fbfbacacd8c45438bde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 295c6376d555585d58f7c0b57c3ac4ba682e9bd5
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203142"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948268"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -84,8 +84,8 @@ Element **TechnicalProfile** obsahuje následující atribut:
 | Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Doména | 0:1 | Název domény pro technický profil. Pokud například váš technický profil určuje poskytovatele identity Facebooku, název domény je Facebook.com. |
-| DisplayName | 1:1 | Název technického profilu, který se může zobrazit uživatelům |
-| Popis | 0:1 | Popis technického profilu, který se může zobrazit uživatelům |
+| DisplayName | 1:1 | Zobrazovaný název technického profilu. |
+| Popis | 0:1 | Popis technického profilu. |
 | Protokol | 0:1 | Protokol používaný pro komunikaci s druhou stranou. |
 | Metadata | 0:1 | Kolekce párů klíč/hodnota, které jsou využívány protokolem pro komunikaci s koncovým bodem v průběhu transakce. |
 | InputTokenFormat | 0:1 | Formát vstupního tokenu. Možné hodnoty: `JSON` , `JWT` , `SAML11` , nebo `SAML2` . `JWT`Hodnota představuje JSON web token podle specifikace IETF. `SAML11`Hodnota představuje token zabezpečení SAML 1,1 podle specifikace pro Oasis.  `SAML2`Hodnota představuje token zabezpečení SAML 2,0 podle specifikace pro Oasis. |
@@ -199,7 +199,7 @@ Element **DisplayClaim** obsahuje následující atributy:
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | No | Identifikátor typu deklarace identity, který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
 | DisplayControlReferenceId | No | Identifikátor [ovládacího prvku zobrazení](display-controls.md) , který je už definovaný v oddílu ClaimsSchema v souboru zásad nebo v nadřazeném souboru zásad. |
-| Požaduje se | No | Určuje, zda je požadována deklarace identity zobrazení. |
+| Povinné | No | Určuje, zda je požadována deklarace identity zobrazení. |
 
 **DisplayClaim** vyžaduje, abyste zadali buď `ClaimTypeReferenceId` nebo `DisplayControlReferenceId` .
 
