@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
 ms.openlocfilehash: fdc598a5afed5eb29e285b279eced98ad06e296c
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500841"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-raumfrraum"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Raum] für [Raum
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Raum] für [Raum s Azure Active Direct
 * Umožněte uživatelům, aby se automaticky přihlásili k Raum] für [Raum s jejich účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -121,7 +121,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

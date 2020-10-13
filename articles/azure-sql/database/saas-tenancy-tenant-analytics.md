@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 19c09bd03a3d1eb3b16f69b9a605a4ccb763030a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619538"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Analýza mezi klienty pomocí extrahované aplikace pro jednoho tenanta
@@ -156,7 +156,7 @@ V této části kurzu definujete a spustíte úlohu, která sloučí extrahovan�
 2. V SSMS otevřete *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.SQL*.
 3. Stisknutím klávesy **F5** spusťte skript pro definování úlohy, která volá sp_ShredRawExtractedData uloženou proceduru v analytickém úložišti.
 4. Umožněte, aby úloha běžela dostatečně dlouho.
-    - Prohlédněte si sloupec **životní cyklus** úloh. jobs_execution tabulce stav úlohy. Než budete pokračovat, ujistěte se, že byla úloha **úspěšně dokončena** . Úspěšné spuštění zobrazuje data podobná následujícímu grafu:
+    - Stav úlohy najdete ve sloupci **životní cyklus** Jobs.jobs_execution tabulky. Než budete pokračovat, ujistěte se, že byla úloha **úspěšně dokončena** . Úspěšné spuštění zobrazuje data podobná následujícímu grafu:
 
 ![Skartace](./media/saas-tenancy-tenant-analytics/shreddingJob.PNG)
 
@@ -181,7 +181,7 @@ Pomocí následujících kroků se připojte k Power BI a importujte zobrazení,
 
 6. V podokně **navigátor** v části analytická databáze vyberte tabulky schématu hvězdiček: fact_Tickets, dim_Events, dim_Venues, dim_Customers a dim_Dates. Pak vyberte **načíst**. 
 
-Blahopřejeme! Data byla úspěšně načtena do Power BI. Teď můžete začít zkoumat zajímavé vizualizace, které vám pomůžou získat přehled o vašich klientech. Dále vám ukážeme, jak vám analýza umožní poskytnout doporučení na základě dat pro obchodní tým Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
+Gratulujeme! Data byla úspěšně načtena do Power BI. Teď můžete začít zkoumat zajímavé vizualizace, které vám pomůžou získat přehled o vašich klientech. Dále vám ukážeme, jak vám analýza umožní poskytnout doporučení na základě dat pro obchodní tým Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
 
 Začnete analýzou dat o prodeji lístků, abyste viděli variaci využití v rámci míst. Vyberte následující možnosti v Power BI k vykreslení pruhového grafu celkového počtu lístků prodávaných každým jejich konáním. V důsledku náhodné variace generátoru lístků se vaše výsledky můžou lišit.
  
@@ -236,9 +236,9 @@ V tomto kurzu jste se naučili:
 > - Dotazování analytické databáze 
 > - Použití Power BI pro vizualizaci dat ke sledování trendů v datech tenanta 
 
-Blahopřejeme!
+Gratulujeme!
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - Další [kurzy, které se vytvářejí na aplikaci Wingtip SaaS](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 - [Elastické úlohy](../../sql-database/elastic-jobs-overview.md).

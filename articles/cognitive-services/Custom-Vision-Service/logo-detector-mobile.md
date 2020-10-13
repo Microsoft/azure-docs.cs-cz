@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 98d94e9544e75f762d4532101a92d14106d6a575
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88931790"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: rozpoznání loga služeb Azure v obrázcích fotoaparátu
@@ -29,9 +29,9 @@ V tomto kurzu se dozvíte, jak:
 > - Připojte svoji aplikaci k Azure Počítačové zpracování obrazu a Custom Vision.
 > - Vytvoření účtu instančního objektu Azure pro nasazení služeb Azure z aplikace
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
 - Úlohy Xamarin pro Visual Studio (viz [instalace Xamarin](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))

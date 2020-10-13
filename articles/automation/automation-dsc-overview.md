@@ -11,10 +11,10 @@ ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 437a917e0f9b6e7a7370e828c8e3ee95218cea3f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079736"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled konfigurace stavu Azure Automation
@@ -53,7 +53,7 @@ Konfigurace stavu Azure Automation přináší stejnou vrstvu správy pro [konfi
 
 Uzly spravované pomocí konfigurace stavu Azure Automation odesílají podrobné údaje o stavu vytváření sestav na integrovaný server vyžádané replikace. Konfiguraci stavu Azure Automation můžete nakonfigurovat tak, aby odesílala tato data do pracovního prostoru Log Analytics. Přečtěte si informace [o konfiguraci stavu Dopředné Azure Automation do protokolů Azure monitor](automation-dsc-diagnostics.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Při použití konfigurace stavu Azure Automation Vezměte v úvahu požadavky v této části.
 
@@ -68,7 +68,7 @@ Pro uzly s Windows se podporují tyto verze:
 - Windows Server 2008 R2 SP1
 - Windows 10
 - Windows 8.1
-- Windows 7
+- Windows 7
 
 >[!NOTE]
 >SKU samostatného produktového [serveru Microsoft Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-server-2016) neobsahuje implementaci DSC. Proto ho nejde spravovat pomocí prostředí PowerShell DSC nebo konfigurace stavu Azure Automation.

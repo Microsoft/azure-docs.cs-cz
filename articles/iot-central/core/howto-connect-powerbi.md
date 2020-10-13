@@ -8,10 +8,10 @@ ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
 ms.openlocfilehash: f996bb2d5126ef038ca872aee1f1893979a5229b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080994"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Vizualizace a analýza dat IoT Central Azure v řídicím panelu Power BI
@@ -29,9 +29,9 @@ Použijte řešení Power BI pro Azure IoT Central V3 k vytvoření výkonného 
 
 Toto řešení nastaví kanál, který čte data z účtu služby Azure Blob Storage pro [průběžnou datovou export](howto-export-data-blob-storage.md) . Kanál používá ke zpracování a transformaci dat Azure Functions, Azure Data Factory a Azure SQL Database. data můžete vizualizovat a analyzovat v Power BI sestavě, kterou stáhnete jako soubor PBIX. Všechny prostředky se vytvoří ve vašem předplatném Azure, takže můžete jednotlivé komponenty přizpůsobit tak, aby vyhovovaly vašim potřebám.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Nastavení řešení vyžaduje následující zdroje:
 
@@ -55,13 +55,13 @@ Když otevřete soubor PBIX, ujistěte se, že je čten a postupujte podle pokyn
 
 Soubor PBIX obsahuje zprávu **zařízení a telemetrie** zobrazuje historický přehled telemetrie, která byla odeslána zařízeními. Poskytuje rozpis různých typů telemetrie a také zobrazuje nejnovější telemetrie, kterou odesílají zařízení.
 
-:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI zařízení a sestava telemetrie":::
+:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI kanál řešení":::
 
 ## <a name="pipeline-resources"></a>Prostředky kanálu
 
 Ke všem prostředkům Azure, které tvoří kanál, máte přístup v Azure Portal. Všechny prostředky jsou ve skupině prostředků, kterou jste vytvořili při nastavení kanálu.
 
-:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Azure Portal zobrazení skupiny prostředků":::
+:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Power BI kanál řešení":::
 
 Následující seznam popisuje role jednotlivých prostředků v kanálu:
 

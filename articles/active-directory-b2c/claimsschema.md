@@ -11,10 +11,10 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d02bc8d97b65f4ea2c2585201654899a63d3229b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201357"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
@@ -44,11 +44,11 @@ Element **ClaimType** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Yes | Identifikátor, který se používá pro typ deklarace. Ostatní elementy můžou tento identifikátor v zásadách použít. |
+| Id | Ano | Identifikátor, který se používá pro typ deklarace. Ostatní elementy můžou tento identifikátor v zásadách použít. |
 
 Element **ClaimType** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizována](localization.md). |
 | DataType | 1:1 | Typ deklarace identity. |
@@ -66,12 +66,12 @@ PredicateValidationReference| 0:1 | Odkaz na element **PredicateValidationsInput
 
 Element **DataType** podporuje následující hodnoty:
 
-| Typ | Description |
+| Typ | Popis |
 | ------- | ----------- |
-|Boolean|Představuje logickou `true` hodnotu (nebo `false` ).|
+|boolean|Představuje logickou `true` hodnotu (nebo `false` ).|
 |date| Představuje okamžitý čas, obvykle vyjádřený jako datum dne. Hodnota data dodržuje konvenci ISO 8601.|
 |data a času.|Představuje okamžitý čas, obvykle vyjádřený jako datum a denní dobu. Hodnota data dodržuje konvenci ISO 8601.|
-|doba trvání|Představuje časový interval v letech, měsících, dnech, hodinách, minutách a sekundách. Formát je `PnYnMnDTnHnMnS` , kde `P` označuje kladná nebo `N` záporná hodnota. `nY`je počet roků následovaný literálem `Y` . `nMo`je počet měsíců následovaný literálem `Mo` . `nD`je počet dní následovaný literálem `D` . Příklady: `P21Y` reprezentuje 21 let. `P1Y2Mo`představuje jeden rok a dva měsíce. `P1Y2Mo5D`představuje jeden rok, dva měsíce a pět dní.  `P1Y2M5DT8H5M620S`představuje jeden rok, dva měsíce, pět dní, osm hodin, pět minut a dvacet sekund.  |
+|doba trvání|Představuje časový interval v letech, měsících, dnech, hodinách, minutách a sekundách. Formát je `PnYnMnDTnHnMnS` , kde `P` označuje kladná nebo `N` záporná hodnota. `nY` je počet roků následovaný literálem `Y` . `nMo` je počet měsíců následovaný literálem `Mo` . `nD` je počet dní následovaný literálem `D` . Příklady: `P21Y` reprezentuje 21 let. `P1Y2Mo` představuje jeden rok a dva měsíce. `P1Y2Mo5D` představuje jeden rok, dva měsíce a pět dní.  `P1Y2M5DT8H5M620S` představuje jeden rok, dva měsíce, pět dní, osm hodin, pět minut a dvacet sekund.  |
 |phoneNumber|Představuje telefonní číslo. |
 |int| Představuje číslo mezi-2 147 483 648 a 2 147 483 647.|
 |long| Představuje číslo mezi-9223372036854775808 a 9 223 372 036 854 775 807. |
@@ -84,16 +84,16 @@ Element **DataType** podporuje následující hodnoty:
 
 **DefaultPartnerClaimTypes** může obsahovat následující element:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Protocol (Protokol) | 1: n | Seznam protokolů s výchozím názvem typu deklarace identity partnera. |
+| Protokol | 1: n | Seznam protokolů s výchozím názvem typu deklarace identity partnera. |
 
 Element **Protocol** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Name | Yes | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou: OAuth1, OAuth2, typu Saml2, OpenIdConnect. |
-| PartnerClaimType | Yes | Název typu deklarace, který se má použít |
+| Název | Ano | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou: OAuth1, OAuth2, typu Saml2, OpenIdConnect. |
+| PartnerClaimType | Ano | Název typu deklarace, který se má použít |
 
 V následujícím příkladu, když architektura prostředí identity komunikuje s poskytovatelem identity typu Saml2 nebo s aplikací předávající strany, je **přidaná deklarace identity** namapovaná na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` OpenIdConnect a OAuth2, na kterou je tato deklarace namapovaná `family_name` .
 
@@ -127,7 +127,7 @@ Element **Maske** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| `Type` | Yes | Typ masky deklarace identity. Možné hodnoty: `Simple` nebo `Regex` . `Simple`Hodnota označuje, že je použita jednoduchá textová maska pro úvodní část deklarace řetězce. `Regex`Hodnota označuje, že regulární výraz je použit na deklaraci řetězce jako celek.  Pokud `Regex` je zadána hodnota, volitelný atribut musí být také definován s regulárním výrazem, který má být použit. |
+| `Type` | Ano | Typ masky deklarace identity. Možné hodnoty: `Simple` nebo `Regex` . `Simple`Hodnota označuje, že je použita jednoduchá textová maska pro úvodní část deklarace řetězce. `Regex`Hodnota označuje, že regulární výraz je použit na deklaraci řetězce jako celek.  Pokud `Regex` je zadána hodnota, volitelný atribut musí být také definován s regulárním výrazem, který má být použit. |
 | `Regex` | No | Pokud **`Type`** je nastaven na `Regex` , zadejte regulární výraz, který se má použít.
 
 Následující příklad konfiguruje deklaraci **PhoneNumber** s `Simple` maskou:
@@ -171,7 +171,7 @@ Element **omezení** může obsahovat následující atribut:
 
 Element **omezení** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Výčet | 1: n | Dostupné možnosti v uživatelském rozhraní pro uživatele, kteří mají vybrat pro deklaraci identity, například hodnotu v rozevíracím seznamu. |
 | Vzor | 1:1 | Regulární výraz, který má být použit. |
@@ -184,8 +184,8 @@ Prvek **výčtu** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Text | Yes | Zobrazovaný řetězec, který je zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
-|Hodnota | Yes | Hodnota deklarace identity, která je přidružená k výběru této možnosti. |
+| Text | Ano | Zobrazovaný řetězec, který je zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
+|Hodnota | Ano | Hodnota deklarace identity, která je přidružená k výběru této možnosti. |
 | SelectByDefault | No | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: true nebo false. |
 
 Následující příklad konfiguruje deklaraci identity rozevíracího seznamu **měst** s výchozí hodnotou nastavenou na `New York` :
@@ -213,7 +213,7 @@ Prvek **vzoru** může obsahovat následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| RegularExpression | Yes | Regulární výraz, který deklarace identity tohoto typu musí splňovat, aby byl platný. |
+| RegularExpression | Ano | Regulární výraz, který deklarace identity tohoto typu musí splňovat, aby byl platný. |
 | HelpText | No | Chybová zpráva pro uživatele, pokud se chyba kontroly regulárního výrazu nezdařila. |
 
 V následujícím příkladu je nakonfiguruje deklarace **e-mailu** pomocí ověřování vstupu regulárního výrazu a textu v nápovědě:
@@ -243,7 +243,7 @@ Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, he
 
 K dispozici jsou typy vstupu uživatele dostupné pro **UserInputType** prvky:
 
-| UserInputType | Podporovaný deklarace ClaimType | Description |
+| UserInputType | Podporovaný deklarace ClaimType | Popis |
 | --------- | -------- | ----------- |
 |CheckboxMultiSelect| `string` |Rozevírací seznam pro vícenásobný výběr. Hodnota deklarace je reprezentovaná v řetězci oddělovače (čárky) vybraných hodnot. |
 |DateTimeDropdown | `date`, `dateTime` |Rozevírací seznam pro výběr dne, měsíce a roku. |

@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3a330fc18f39ffd7007e2a41a28016df69a2b739
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91314653"
 ---
 # <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>Vysoce dostupná Azure Virtual Machines pro SAP NetWeaver
@@ -522,7 +522,7 @@ Následující části obsahují další podrobnosti o šablonách a parametry, 
   -  **Dostupnost systému**. Vyberte **ha**.
   -  **Uživatelské jméno správce a heslo správce**. Vytvořte nového uživatele, který se dá použít k přihlášení k počítači.
   -  **Nová nebo existující podsíť**. Nastavte, zda má být vytvořena nová virtuální síť a podsíť, nebo by měla být použita existující podsíť. Pokud už máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-  -  **ID podsítě** Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: *ID předplatného* /subscriptions/<>/ResourceGroups/<*název skupiny prostředků*>/Providers/Microsoft.Network/virtualnetworks/<*virtuální síť* název>/subnets/<*název podsítě*>
+  -  **ID podsítě** Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: *ID předplatného* /subscriptions/<>/resourceGroups/<*název skupiny prostředků*>/Providers/Microsoft.Network/virtualNetworks/<*virtuální síť* název>/subnets/<*název podsítě*>
 
 Šablona nasadí jednu instanci Azure Load Balancer, která podporuje více systémů SAP.
 

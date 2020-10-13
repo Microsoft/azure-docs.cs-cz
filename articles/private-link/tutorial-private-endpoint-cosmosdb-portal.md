@@ -8,10 +8,10 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
 ms.openlocfilehash: 8b38c72efff5b76392d23837696c340e3cfb58de
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91844235"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Kurz: připojení k účtu Azure Cosmos pomocí privátního koncového bodu Azure
@@ -30,7 +30,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network-and-bastion-host"></a>Vytvoření virtuální sítě a hostitele bastionu
 
@@ -170,7 +170,7 @@ V této části vytvoříte účet Cosmos DB a nakonfigurujete privátní koncov
     | Předplatné | Vyberte své předplatné Azure. |
     | Resource Group | Vybrat **myResourceGroup** |
     | Umístění | Vyberte **východní USA** |
-    | Název | Zadejte **myPrivateEndpoint** |
+    | Name | Zadejte **myPrivateEndpoint** |
     | Cílový podprostředek | Ponechat výchozí **jádro (SQL)** |
     | **Sítě** |  |
     | Virtuální síť | Vybrat **myVNet** |

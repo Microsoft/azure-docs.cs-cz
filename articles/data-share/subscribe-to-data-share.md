@@ -7,13 +7,13 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.openlocfilehash: ce47bc5e880f15eaa1bbf07477673d2475e5a10a
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89489914"
 ---
-# <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Kurz: přijetí a příjem dat pomocí Azure Data Share  
+# <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Kurz: Přijetí a získání dat prostřednictvím služby Azure Data Share  
 
 V tomto kurzu se dozvíte, jak přijmout pozvánku ke sdílení dat pomocí Azure Data Share. Naučíte se, jak přijímat data, která s vámi sdílíte, a jak povolit pravidelný interval aktualizace, abyste měli jistotu, že budete mít vždycky nejnovější snímek dat, která s vámi někdo sdílí. 
 
@@ -36,7 +36,7 @@ Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné vš
 
 * Účet Azure Storage: Pokud ho ještě nemáte, můžete vytvořit [účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
 * Oprávnění k zápisu do účtu úložiště, který je k dispozici v *Microsoft. Storage/storageAccounts/Write*. Toto oprávnění existuje v roli Přispěvatel. 
-* Oprávnění k přidání přiřazení role k účtu úložiště, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli vlastníka.  
+* Oprávnění k přidání přiřazení role k účtu úložiště, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli Vlastník.  
 
 ### <a name="receive-data-into-a-sql-based-target"></a>Příjem dat do cíle založeného na SQL:
 
@@ -64,11 +64,11 @@ Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné vš
 
 * Cluster Azure Průzkumník dat ve stejném datovém centru Azure jako cluster Průzkumník dat poskytovatele dat: Pokud ho ještě nemáte, můžete vytvořit [cluster Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal). Pokud si nejste jisti datovým centrem Azure v clusteru poskytovatele dat, můžete cluster vytvořit později v procesu.
 * Oprávnění k zápisu do clusteru Azure Průzkumník dat, který se nachází v *Microsoft. Kusto/Clusters/Write*. Toto oprávnění existuje v roli Přispěvatel. 
-* Oprávnění k přidání přiřazení role do clusteru Azure Průzkumník dat, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli vlastníka. 
+* Oprávnění k přidání přiřazení role do clusteru Azure Průzkumník dat, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli Vlastník. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="open-invitation"></a>Otevřít pozvánku
 

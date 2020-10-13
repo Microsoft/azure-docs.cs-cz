@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: a19f81fab525b44f0b55244281930977e0e1f476
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85254612"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Podporované formáty souborů a kompresní kodeky v Azure Data Factory (starší verze)
@@ -25,14 +25,14 @@ ms.locfileid: "85254612"
 >[!IMPORTANT]
 >Data Factory představil nový model datové sady založené na formátu, viz odpovídající článek o formátu s podrobnostmi: <br>- [Formát Avro](format-avro.md)<br>- [Binární formát](format-binary.md)<br>- [Textový formát s oddělovači](format-delimited-text.md)<br>- [Formát JSON](format-json.md)<br>- [Formát ORC](format-orc.md)<br>- [Formát Parquet](format-parquet.md)<br>Konfigurace REST, které jsou uvedené v tomto článku, se pořád podporují, protože jsou pro zpětnou compabitility. Navrhnete použití nového modelu. 
 
-## <a name="text-format-legacy"></a><a name="text-format"></a>Formát textu (starší verze)
+## <a name="text-format-legacy"></a><a name="text-format"></a> Formát textu (starší verze)
 
 >[!NOTE]
 >Naučte se nový model z článku [oddělený text format](format-delimited-text.md) . Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
 
 Pokud chcete číst z textového souboru nebo zapisovat do textového souboru, nastavte `type` vlastnost v `format` části datové sady na **TextFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu TextFormat](#textformat-example).
 
-| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
+| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
 | columnDelimiter |Znak, který slouží k oddělení sloupců v souboru. Můžete uvažovat o použití zřídka netisknutelného znaku, který ve vašich datech možná neexistuje. Zadejte například "\u0001", který představuje začátek záhlaví (SOH). |Je povolený jenom jeden znak. **Výchozí** hodnota je **čárka (,)**. <br/><br/>Chcete-li použít znak Unicode, přečtěte si text [znaků Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) a získejte pro něj odpovídající kód. |No |
 | rowDelimiter |Znak, který slouží k oddělení řádků v souboru. |Je povolený jenom jeden znak. **Výchozí** hodnotou pro čtení může být libovolná z těchto hodnot: **[\r\n, \r, \n]** a pro zápis hodnota **\r\n**. |No |
@@ -40,9 +40,9 @@ Pokud chcete číst z textového souboru nebo zapisovat do textového souboru, n
 | quoteChar |Znak, který slouží k uvození textového řetězce. Oddělovače sloupců a řádků uvnitř znaků uvozovek budou považované za součást hodnoty příslušného řetězce. Tato vlastnost se vztahuje na vstupní i výstupní datové sady.<br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud jako oddělovač sloupců používáte čárku (,), ale chcete znak čárky použít v textu (příklad: <Hello, world>), můžete jako znak uvozovek definovat " (dvojité uvozovky) a použít ve zdroji řetězec "Hello$, world". |No |
 | nullValue |Jeden nebo několik znaků, které se používají jako reprezentace hodnoty Null. |Jeden nebo několik znaků. **Výchozí** hodnoty jsou **\N a NULL** pro čtení a **\N** pro zápis. |No |
 | encodingName |Zadejte název kódování. |Platný název kódování. Další informace najdete v tématu [Vlastnost Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Příklad: windows-1250 nebo shift_jis. **Výchozí** hodnota je **UTF-8**. |No |
-| firstRowAsHeader |Určuje, jestli se má první řádek považovat za záhlaví. U vstupní datové sady Data Factory načítá první řádek jako záhlaví. U výstupní datové sady Data Factory zapisuje první řádek jako záhlaví. <br/><br/>Vzorové scénáře najdete v tématu [Scénáře použití `firstRowAsHeader` a `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |True<br/><b>False (výchozí)</b> |No |
+| firstRowAsHeader |Určuje, jestli se má první řádek považovat za záhlaví. U vstupní datové sady Data Factory načítá první řádek jako záhlaví. U výstupní datové sady Data Factory zapisuje první řádek jako záhlaví. <br/><br/>Vzorové scénáře najdete v tématu [Scénáře použití `firstRowAsHeader` a `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Ano<br/><b>False (výchozí)</b> |No |
 | skipLineCount |Označuje počet **neprázdných** řádků, které se mají přeskočit při čtení dat ze vstupních souborů. Pokud je zadaný parametr skipLineCount i firstRowAsHeader, nejdřív se přeskočí příslušný počet řádků a potom se ze vstupního souboru načtou informace záhlaví. <br/><br/>Vzorové scénáře najdete v tématu [Scénáře použití `firstRowAsHeader` a `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Integer |No |
-| treatEmptyAsNull |Určuje, jestli se při čtení dat ze vstupního souboru má prázdný řetězec nebo řetězec s hodnotou null považovat za hodnotu null. |**True (výchozí)**<br/>False |No |
+| treatEmptyAsNull |Určuje, jestli se při čtení dat ze vstupního souboru má prázdný řetězec nebo řetězec s hodnotou null považovat za hodnotu null. |**True (výchozí)**<br/>Nepravda |No |
 
 ### <a name="textformat-example"></a>Příklad typu TextFormat
 
@@ -79,7 +79,7 @@ Pokud chcete místo `quoteChar` použít `escapeChar`, nahraďte řádek s `quot
 * Kopírujete text z textového souboru obsahujícího řádek záhlaví do nesouborové jímky a chcete tento řádek vynechat. Zadejte ve vstupní sadě `firstRowAsHeader` jako true.
 * Kopírujete text z textového souboru a chcete vynechat několik prvních řádků, které neobsahují data ani informace záhlaví. Zadáním `skipLineCount` určete, kolik řádků se má přeskočit. Pokud zbytek souboru obsahuje řádek záhlaví, můžete také zadat `firstRowAsHeader`. Pokud je zadaný parametr `skipLineCount` i `firstRowAsHeader`, nejdřív se přeskočí příslušný počet řádků a potom se ze vstupního souboru načtou informace záhlaví.
 
-## <a name="json-format-legacy"></a><a name="json-format"></a>Formát JSON (starší verze)
+## <a name="json-format-legacy"></a><a name="json-format"></a> Formát JSON (starší verze)
 
 >[!NOTE]
 >Přečtěte si článek o novém modelu z [formátu JSON](format-json.md) . Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
@@ -88,7 +88,7 @@ Pokud chcete **Importovat/exportovat soubor JSON tak, jak je do nebo z Azure Cos
 
 Chcete-li analyzovat soubory JSON nebo zapsat data ve formátu JSON, nastavte `type` vlastnost v `format` oddílu na **JsonFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example).
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | filePattern |Určete vzor dat uložených v jednotlivých souborech JSON. Povolené hodnoty jsou **setOfObjects** a **arrayOfObjects**. **Výchozí hodnota** je **setOfObjects**. Podrobné informace o těchto vzorech najdete v tématu [Vzory souborů JSON](#json-file-patterns). |No |
 | jsonNodeReference | Pokud chcete iterovat a extrahovat data z objektů uvnitř pole se stejným vzorem, zadejte pro toto pole cestu JSON. Tato vlastnost je podporována pouze při kopírování dat **ze** souborů JSON. | No |
@@ -306,7 +306,7 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
 - Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové sloupce datové sady](copy-activity-schema-and-type-mapping.md).
-- `jsonNodeReference`Určuje, že se mají iterovat a extrahovat data z objektů se stejným vzorem v **poli Array** `orderlines` .
+- `jsonNodeReference` Určuje, že se mají iterovat a extrahovat data z objektů se stejným vzorem v **poli Array** `orderlines` .
 - `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. V tomto příkladu, `ordernumber` , `orderdate` a `city` jsou pod kořenovým objektem s cestou JSON začínající `$.` , zatímco `order_pd` a `order_price` jsou definovány s cestou odvozenou z prvku pole bez `$.` .
 
 ```json
@@ -406,7 +406,7 @@ Výstupní datová sada typu **JsonFormat** je definovaná následujícím způs
 }
 ```
 
-## <a name="parquet-format-legacy"></a><a name="parquet-format"></a>Formát Parquet (starší verze)
+## <a name="parquet-format-legacy"></a><a name="parquet-format"></a> Formát Parquet (starší verze)
 
 >[!NOTE]
 >Seznamte se s novým modelem z článku [Parquet Format](format-parquet.md) . Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
@@ -445,7 +445,7 @@ Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g` . P
 
 | Typ dat interim Data Factory | Parquet primitivní typ | Původní typ Parquet (deserializace) | Parquet – původní typ (serializace) |
 |:--- |:--- |:--- |:--- |
-| Logická hodnota | Logická hodnota | Není k dispozici | Není k dispozici |
+| Logická hodnota | Logická hodnota | N/A | N/A |
 | SByte | Int32 | Int8 | Int8 |
 | Byte | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -453,20 +453,20 @@ Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g` . P
 | Int32 | Int32 | Int32 | Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64/binární | UInt64 | Desetinné číslo |
-| Jeden | Float | Není k dispozici | Není k dispozici |
-| Double | Double | Není k dispozici | Není k dispozici |
-| Desetinné číslo | Binární | Desetinné číslo | Desetinné číslo |
+| UInt64 | Int64/binární | UInt64 | Decimal |
+| Jednoduché | Float | N/A | N/A |
+| dvojité | dvojité | N/A | N/A |
+| Decimal | Binární | Decimal | Decimal |
 | Řetězec | Binární | UTF | UTF |
-| DateTime | Int96 | Není k dispozici | Není k dispozici |
-| TimeSpan | Int96 | Není k dispozici | Není k dispozici |
-| DateTimeOffset | Int96 | Není k dispozici | Není k dispozici |
-| ByteArray | Binární | Není k dispozici | Není k dispozici |
+| DateTime | Int96 | N/A | N/A |
+| TimeSpan | Int96 | N/A | N/A |
+| DateTimeOffset | Int96 | N/A | N/A |
+| ByteArray | Binární | N/A | N/A |
 | Identifikátor GUID | Binární | UTF | UTF |
 | Char | Binární | UTF | UTF |
-| CharArray | Nepodporuje se | Není k dispozici | Není k dispozici |
+| CharArray | Nepodporováno | N/A | N/A |
 
-## <a name="orc-format-legacy"></a><a name="orc-format"></a>Formát ORC (starší verze)
+## <a name="orc-format-legacy"></a><a name="orc-format"></a> Formát ORC (starší verze)
 
 >[!NOTE]
 >Seznamte se s novým modelem z článku [ORC Format](format-orc.md) . Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
@@ -507,18 +507,18 @@ Pro kopírování běžící v prostředí IR v místním prostředí s ORC seri
 | UInt32 | Dlouhou |
 | Int64 | Dlouhou |
 | UInt64 | Řetězec |
-| Jeden | Float |
-| Double | Double |
-| Desetinné číslo | Desetinné číslo |
+| Jednoduché | Float |
+| dvojité | dvojité |
+| Decimal | Decimal |
 | Řetězec | Řetězec |
-| DateTime | Časové razítko |
-| DateTimeOffset | Časové razítko |
-| TimeSpan | Časové razítko |
+| DateTime | Timestamp |
+| DateTimeOffset | Timestamp |
+| TimeSpan | Timestamp |
 | ByteArray | Binární |
 | Identifikátor GUID | Řetězec |
 | Char | Char (1) |
 
-## <a name="avro-format-legacy"></a><a name="avro-format"></a>Formát AVRO (starší verze)
+## <a name="avro-format-legacy"></a><a name="avro-format"></a> Formát AVRO (starší verze)
 
 >[!NOTE]
 >Seznamte se s novým modelem z článku [Avro Format](format-avro.md) . Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
@@ -538,7 +538,7 @@ Je třeba počítat s následujícím:
 
 * [Komplexní datové typy](https://avro.apache.org/docs/current/spec.html#schema_complex) se nepodporují (záznamy, výčty, pole, mapy, sjednocení a pevná).
 
-## <a name="compression-support-legacy"></a><a name="compression-support"></a>Podpora komprese (starší verze)
+## <a name="compression-support-legacy"></a><a name="compression-support"></a> Podpora komprese (starší verze)
 
 Azure Data Factory v průběhu kopírování podporuje komprimaci a dekomprimaci dat. Když zadáte `compression` vlastnost ve vstupní datové sadě, aktivita kopírování přečte komprimovaná data ze zdroje a dekomprimuje je. když zadáte vlastnost do výstupní datové sady, komprimace aktivity kopírování pak zapíše data do jímky. Tady je několik ukázkových scénářů:
 

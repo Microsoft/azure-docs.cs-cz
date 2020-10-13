@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 83170f4090909e3edcc163312383773d088d8c57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212118"
 ---
 # <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Konfigurace důležitosti úloh ve službě Azure synapse Analytics
@@ -24,7 +24,7 @@ Nastavení důležitosti v synapse SQL pro Azure synapse umožňuje ovlivnit pl�
 
 ## <a name="create-a-workload-classifier-with-importance"></a>Vytvoření klasifikátoru úloh s důležitostí
 
-V případě zaneprázdněného systému, který potřebují rychlé spouštění dotazů, často ve scénáři datového skladu máte uživatele.  Uživatel může být vedoucí pracovníky společnosti, kteří potřebují spouštět sestavy, nebo může být uživatel analytikem, který spouští dotaz ad hoc. Chcete-li přiřadit důležitost, je třeba vytvořit klasifikátor úlohy a důležitost je přiřazena k dotazu.  Níže uvedené příklady používají k vytvoření dvou klasifikátorů syntaxi [Vytvoření třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) . `Membername`může se jednat o jednoho uživatele nebo skupinu.  Chcete-li najít existující uživatele datového skladu, spusťte příkaz:
+V případě zaneprázdněného systému, který potřebují rychlé spouštění dotazů, často ve scénáři datového skladu máte uživatele.  Uživatel může být vedoucí pracovníky společnosti, kteří potřebují spouštět sestavy, nebo může být uživatel analytikem, který spouští dotaz ad hoc. Chcete-li přiřadit důležitost, je třeba vytvořit klasifikátor úlohy a důležitost je přiřazena k dotazu.  Níže uvedené příklady používají k vytvoření dvou klasifikátorů syntaxi  [Vytvoření třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) . `Membername` může se jednat o jednoho uživatele nebo skupinu.  Chcete-li najít existující uživatele datového skladu, spusťte příkaz:
 
 ```sql
 Select name from sys.sysusers

@@ -16,10 +16,10 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87068511"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Ladění výkonu protokolu TCP/IP pro virtuální počítače Azure
@@ -210,7 +210,7 @@ Get-NetTCPConnection
 Get-NetTCPSetting
 ```
 
-Počáteční velikost okna TCP a faktor škálování TCP v systému Windows můžete nastavit pomocí `Set-NetTCPSetting` příkazu prostředí PowerShell. Další informace najdete v tématu [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
+Počáteční velikost okna TCP a faktor škálování TCP v systému Windows můžete nastavit pomocí `Set-NetTCPSetting` příkazu prostředí PowerShell. Další informace najdete v tématu  [set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
 
 ```powershell
 Set-NetTCPSetting

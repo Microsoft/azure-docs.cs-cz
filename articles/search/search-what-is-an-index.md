@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.openlocfilehash: 3aa4a1917711f8997c282ba577c33e7a7f94472b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88932878"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Vytvoření základního vyhledávacího indexu v Azure Kognitivní hledání
@@ -169,7 +169,7 @@ Pole mají název, typ, který klasifikuje uložená data a atributy, které ur�
 
 ### <a name="data-types"></a>Typy dat
 
-| Typ | Popis |
+| Typ | Description |
 |------|-------------|
 | Edm.String |Text, který lze volitelně použít pro fulltextové vyhledávání (dělení slov, odvozování a tak dále). |
 | Collection(Edm.String) |Seznam řetězců, které jde volitelně tokenizovat k fulltextovému hledání. Ačkoli neexistuje žádné teoretické omezení počtu položek v kolekci, na kolekce se vztahuje 16MB omezení velikosti datové části. |
@@ -242,7 +242,7 @@ Následující snímek obrazovky znázorňuje vzory úložiště indexů, které
 
 ![Velikost indexu na základě výběru atributu](./media/search-what-is-an-index/realestate-index-size.png "Velikost indexu na základě výběru atributu")
 
-I když jsou tyto varianty indexu umělé, můžeme na ně odkazovat, aby bylo možné využít široké porovnání atributů úložiště. Nastavím možnost "získatelné" zvýšit velikost indexu? No. Přidávají se pole do **přizpůsobitelné** velikosti indexu? Yes.
+I když jsou tyto varianty indexu umělé, můžeme na ně odkazovat, aby bylo možné využít široké porovnání atributů úložiště. Nastavím možnost "získatelné" zvýšit velikost indexu? Ne. Přidávají se pole do **přizpůsobitelné** velikosti indexu? Ano.
 
 Indexy, které podporují filtrování a řazení, jsou proporcionálně větší než indexy podporující pouze fulltextové vyhledávání. Důvodem je to, že operace filtrování a řazení prohledají přesné shody a vyžadují přítomnost doslovnéch textových řetězců. Naopak vyhledávací pole podporující fulltextové dotazy používají obrácené indexy, které jsou vyplněny pomocí tokenů, které spotřebovávají méně místa než celé dokumenty. 
 

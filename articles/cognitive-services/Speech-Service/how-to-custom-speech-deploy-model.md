@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: c7f03027abf7f3c5e330e5cd95075cce1152a7d9
-ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85130411"
 ---
 # <a name="deploy-a-custom-model"></a>Nasazení vlastního modelu
@@ -46,10 +46,10 @@ Data protokolování jsou k dispozici ke stažení v části **koncový bod > po
 
 * Naučte se používat vlastní model [tady](how-to-specify-source-language.md).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Příprava a testování dat](how-to-custom-speech-test-data.md)
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)
 * [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
-* [Trénování vašeho modelu](how-to-custom-speech-train-model.md)
+* [Trénování modelu](how-to-custom-speech-train-model.md)
 * [Nasazení modelu](how-to-custom-speech-deploy-model.md)

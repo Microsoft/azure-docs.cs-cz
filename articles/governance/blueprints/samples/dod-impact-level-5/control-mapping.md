@@ -1,24 +1,24 @@
 ---
 title: Ukázkové ovládací prvky podrobného plánu pro úroveň úderu DoD. 5
-description: Mapování ovládacího prvku v ukázce 5 podrobného plánu úrovně dopadu DoD. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
+description: Mapování ovládacího prvku v ukázce 5 podrobného plánu úrovně dopadu DoD. Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
 ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: 6cd92cba69367c611a0e3a3c435e41e973a80d73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc187480f5342f076a7f07f058e8e570a0e7f146
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540536"
+ms.locfileid: "91929485"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>Mapování ovládacího prvku pro vzorek dopadu na 5. plán na úrovni účinku
 
-Následující článek podrobně popisuje, jak má oddělení Azure modrotisky v rámci podrobného plánu o dopadu ochrany 5 (DoD IL5) na základě kontrolního plánu úrovně účinku DoD. 5. Další informace o ovládacích prvcích najdete v tématu [Průvodce požadavky na zabezpečení služby DoD Cloud Computing (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf). Agentura DISA (obrany Information Systems) je agenturou ministerstva obrany USA, která je odpovědná za vývoj a udržování Průvodce požadavky zabezpečení cloud computingu DoD (SRG). SRG definuje základní požadavky na zabezpečení pro poskytovatele cloudových služeb (CSP), kteří hostují informace, systémy a aplikace, a pro používání cloudových služeb DoD.  
+Následující článek podrobně popisuje, jak má oddělení Azure modrotisky v rámci podrobného plánu o dopadu ochrany 5 (DoD IL5) na základě kontrolního plánu úrovně účinku DoD. 5. Další informace o ovládacích prvcích najdete v tématu [Průvodce požadavky na zabezpečení služby DoD Cloud Computing (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf).
+Agentura DISA (obrany Information Systems) je agenturou ministerstva obrany USA, která je odpovědná za vývoj a udržování Průvodce požadavky zabezpečení cloud computingu DoD (SRG). SRG definuje základní požadavky na zabezpečení pro poskytovatele cloudových služeb (CSP), kteří hostují informace, systémy a aplikace, a pro používání cloudových služeb DoD.  
 
 Následující mapování jsou ovládací prvky **úrovně dopadu dod. 5** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ** \[ ukázkovou iniciativu \] úrovně dopadu dod. 5** .
 
 > [!IMPORTANT]
-> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit.
-> Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-5/control-mapping.md).
+> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. Nicméně často není jedna nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-5/control-mapping.md).
 
 ## <a name="ac-2-account-management"></a>Správa účtů AC-2
 
@@ -238,7 +238,8 @@ Tento podrobný plán poskytuje definice zásad, které auditují záznamy s ana
 
 ## <a name="ra-5-vulnerability-scanning"></a>Kontrola ohrožení zabezpečení RA-5
 
-Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí přiřazení [Azure Policy](../../../policy/overview.md) definicí, které sledují chyby zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v Azure Security Center. Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase. Tento podrobný plán také přiřazuje definice zásad, které auditují a vynutily pokročilou zabezpečení dat na SQL serverech. Pokročilé zabezpečení dat zahrnuje posouzení ohrožení zabezpečení a rozšířené možnosti ochrany před internetovými útoky, které vám pomůžou pochopit ohrožení zabezpečení v nasazených prostředcích.
+Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí přiřazení [Azure Policy](../../../policy/overview.md) definicí, které sledují chyby zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v Azure Security Center.
+Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase. Tento podrobný plán také přiřazuje definice zásad, které auditují a vynutily pokročilou zabezpečení dat na SQL serverech. Pokročilé zabezpečení dat zahrnuje posouzení ohrožení zabezpečení a rozšířené možnosti ochrany před internetovými útoky, které vám pomůžou pochopit ohrožení zabezpečení v nasazených prostředcích.
 
 - V případě spravované instance SQL by mělo být povolené rozšířené zabezpečení dat
 - Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
@@ -255,8 +256,7 @@ Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomoc
 
 ## <a name="sc-7-boundary-protection"></a>Ochrana hranice SC-7
 
-Tento podrobný plán vám pomůže spravovat a řídit hranici systému tím, že přiřadí definici [Azure Policy](../../../policy/overview.md) , která monitoruje doporučení pro posílení zabezpečení skupiny zabezpečení sítě v Azure Security Center. Azure Security Center analyzuje modely provozu virtuálních počítačů s internetem a poskytuje doporučení pro pravidlo skupiny zabezpečení sítě, aby se snížila potenciální plocha pro útok.
-Kromě toho tento podrobný plán také přiřazuje definice zásad, které sledují nechráněné koncové body, aplikace a účty úložiště. Koncové body a aplikace, které nejsou chráněné bránou firewall a účty úložiště s neomezeným přístupem, můžou dovolit neúmyslný přístup k informacím obsaženým v informačním systému.
+Tento podrobný plán vám pomůže spravovat a řídit hranici systému tím, že přiřadí definici [Azure Policy](../../../policy/overview.md) , která monitoruje doporučení pro posílení zabezpečení skupiny zabezpečení sítě v Azure Security Center. Azure Security Center analyzuje modely provozu virtuálních počítačů s internetem a poskytuje doporučení pro pravidlo skupiny zabezpečení sítě, aby se snížila potenciální plocha pro útok. Kromě toho tento podrobný plán také přiřazuje definice zásad, které sledují nechráněné koncové body, aplikace a účty úložiště. Koncové body a aplikace, které nejsou chráněné bránou firewall a účty úložiště s neomezeným přístupem, můžou dovolit neúmyslný přístup k informacím obsaženým v informačním systému.
 
 - Přístup přes internetový koncový bod by měl být omezený.
 - Účty úložiště by měly omezovat síťový přístup
