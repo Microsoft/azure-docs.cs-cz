@@ -8,10 +8,10 @@ ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: c34ace92fffee3c135cb05e07f06d885751bbce5
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629739"
 ---
 # <a name="azure-security-baseline-for-virtual-network"></a>Základní hodnoty zabezpečení Azure pro Virtual Network
@@ -714,13 +714,13 @@ Udělení nebo odmítnutí oprávnění konkrétním uživatelům, vestavěným 
 
 K ochraně klíčů spravovaných zákazníkem použijte řízení přístupu na základě role Azure (Azure RBAC).   
 
-Povolení ochrany před náhodným odstraněním a vyprázdněním v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.  
+Povolit Soft-Delete a vyprázdnit ochranu v Key Vault a chránit tak klíče proti náhodnému nebo škodlivému odstranění.  
 
 - [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
 - [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
-- [Jak povolit ochranu s možnostmi obnovitelného odstranění a vyprázdnění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal) 
+- [Postup povolení ochrany Soft-Delete a vyprázdnění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal) 
 
 - [Obnovitelné odstranění objektů blob služby Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 

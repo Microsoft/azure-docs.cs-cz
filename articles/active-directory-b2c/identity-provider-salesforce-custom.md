@@ -12,10 +12,10 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 668bc645edd1be611fe71b8fc1fa81288572e843
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388064"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Pomocí vlastních zásad v Azure Active Directory B2C nastavte přihlášení pomocí zprostředkovatele SAML služby Salesforce.
@@ -40,7 +40,7 @@ V tomto článku se dozvíte, jak povolit přihlášení uživatelů z organizac
 
 ### <a name="create-a-connected-app-in-salesforce"></a>Vytvoření připojené aplikace v Salesforce
 
-1. Na stránce **zprostředkovatel identity** **se nyní budou vytvářet poskytovatelé služeb prostřednictvím připojených aplikací. Klikněte sem.**
+1. Na stránce **zprostředkovatel identity** **se teď v části připojené aplikace vytvoří poskytovatelé služeb. Klikněte sem.**
 2. V části **základní informace**zadejte požadované hodnoty pro připojenou aplikaci.
 3. V části **nastavení webové aplikace**zaškrtněte políčko **Povolit SAML** .
 4. Do pole **ID entity** zadejte následující adresu URL. Ujistěte se, že jste nahradili hodnotu pro `your-tenant` s názvem vašeho tenanta Azure AD B2C.

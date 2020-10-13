@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.openlocfilehash: b23783080e976f70ba8c5e02f67dcee36bbc9c34
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444960"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>Připojení SSL/TLS v Azure Database for MariaDB

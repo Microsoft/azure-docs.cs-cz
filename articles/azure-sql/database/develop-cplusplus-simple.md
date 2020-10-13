@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
 ms.openlocfilehash: 38e4839a41ad8e58e575e552e877303a5105ff36
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443659"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Připojení k SQL Database pomocí jazyka C a C++
@@ -145,7 +145,7 @@ Gratulujeme! Úspěšně jste dokončili kurz a můžete se teď připojit k Azu
 * Přečtěte si téma [Přehled vývoje SQL Database](develop-overview.md) .
 * Další informace o [referenci rozhraní API ODBC](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Vzory návrhu pro aplikace SaaS s více tenanty využívající Azure SQL Database](saas-tenancy-app-design-patterns.md)
 * Prozkoumejte všechny [schopnosti služby SQL Database](https://azure.microsoft.com/services/sql-database/).

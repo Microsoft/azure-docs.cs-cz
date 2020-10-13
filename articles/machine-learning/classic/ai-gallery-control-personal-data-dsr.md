@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
 ms.openlocfilehash: 6276d5c8d333f29c55720f2255f2cdf27e1e36cc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342232"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Umožňuje zobrazit a odstranit data uživatelů v produktu z Azure AI Gallery
@@ -88,7 +88,7 @@ Chcete-li zobrazit publikované entity, přejděte na následující adresu URL,
 
 `https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'`
 
-Příklad:
+Například:
 
 `https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'`
 

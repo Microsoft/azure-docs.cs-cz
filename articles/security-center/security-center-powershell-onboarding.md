@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
 ms.openlocfilehash: c805b35b2c05600f96983da42ea7206a09e2e3e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91447384"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatizace připojování Azure Security Center pomocí prostředí PowerShell
@@ -41,7 +41,7 @@ V tomto příkladu povolíme Security Center v předplatném s ID: d07c0080-170c
 
 6. Přiřaďte [výchozí zásady zabezpečení](tutorial-security-policy.md)Security Center.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tyto kroky je potřeba provést před spuštěním rutin Security Center:
 

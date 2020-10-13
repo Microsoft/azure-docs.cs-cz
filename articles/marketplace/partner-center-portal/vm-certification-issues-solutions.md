@@ -8,10 +8,10 @@ author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
 ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91803462"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Běžné problémy při certifikaci imagí virtuálních počítačů pro Azure Marketplace
@@ -97,7 +97,7 @@ Stáhněte si [sadu nástrojů Microsoft Certification Toolkit](azure-vm-image-c
 
 V následující tabulce jsou uvedeny testovací případy pro Linux, které sada nástrojů spustí. Ověření testu je uvedeno v popisu.
 
-|Scénář|Testovací případ|Popis|
+|Scénář|Testovací případ|Description|
 |---|---|---|
 |1|Bash historii|Před vytvořením image virtuálního počítače by se měly vymazat soubory historie bash.|
 |2|Verze agenta pro Linux|Je potřeba nainstalovat agenta Azure Linux 2.2.41 nebo novější.|
@@ -125,7 +125,7 @@ V následující tabulce jsou uvedeny běžné chyby, které byly nalezeny při 
 
 V následující tabulce jsou uvedeny testovací případy systému Windows, které sada nástrojů spustí, spolu s popisem ověření testu:
 
-|Scénář |Testovací případy|Popis|
+|Scénář |Testovací případy|Description|
 |---|---|---|---|
 |1|Architektura operačního systému|Azure podporuje jenom 64 operačních systémů.|
 |2|Závislost uživatelského účtu|Spuštění aplikace by nemělo být závislé na účtu správce.|
@@ -338,7 +338,7 @@ Krok 3. Po úspěšném provedení příkazu restartujte virtuální počítač.
 
 Krok 4: Generalizujte virtuální počítač, povezměte virtuální pevný disk image a zastavte virtuální počítač.
 
-Krok 5.     Znovu odešlete zobecněnou bitovou kopii.
+Krok 5.     Re-Submit generalizovaná bitová kopie.
 
 ## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>Požadavky na výjimky (vlastní šablony) na image virtuálních počítačů pro selektivní testy
 

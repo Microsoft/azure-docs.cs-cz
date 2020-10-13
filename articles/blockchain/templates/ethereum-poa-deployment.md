@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-js
 ms.openlocfilehash: d1d3ad94957e791b2178b6c60d4c7debdec2b391
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283424"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Nasazení šablony řešení Ethereem pro kontrolu pravopisu pro účely úřadu v Azure
@@ -98,7 +98,7 @@ Uživatelské jméno virtuálního počítače | Uživatelské jméno správce k
 Typ ověřování | Metoda, která se má ověřit pro virtuální počítač. | Heslo
 Heslo | Heslo pro účet správce pro každý nasazený virtuální počítač. Všechny virtuální počítače mají zpočátku stejné heslo. Po zřízení můžete heslo změnit. | 12-72 znaků 
 Předplatné | Předplatné, ke kterému se má nasadit síť konsorcia |
-Skupina prostředků| Skupina prostředků, do které se má nasadit síť konsorcia | myResourceGroup
+Resource Group| Skupina prostředků, do které se má nasadit síť konsorcia | myResourceGroup
 Umístění | Oblast Azure pro skupinu prostředků. | Západní USA 2
 
 Vyberte **OK**.
@@ -333,7 +333,7 @@ Z bezpečnostních důvodů je ve výchozím nastavení odepřený přístup por
 
 1. Vyberte **Uložit**. Použití změn může trvat několik minut.
 
-Vzdáleně se můžete připojit k virtuálním počítačům pro uzly validátoru přes SSH s vaším uživatelským jménem správce a heslem/klíčem SSH. Příkaz SSH pro přístup k prvnímu ověřovacímu uzlu je uveden ve výstupu nasazení šablony. Příklad:
+Vzdáleně se můžete připojit k virtuálním počítačům pro uzly validátoru přes SSH s vaším uživatelským jménem správce a heslem/klíčem SSH. Příkaz SSH pro přístup k prvnímu ověřovacímu uzlu je uveden ve výstupu nasazení šablony. Například:
 
 ``` bash
 ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
@@ -685,7 +685,7 @@ Teď, když je vaše inteligentní smlouva nasazená, můžete odeslat transakci
 
 ## <a name="webassembly-wasm-support"></a>Podpora WebAssembly (WASM)
 
-Podpora WebAssembly je už povolená na nově nasazených sítích PoA. Umožňuje vývoj inteligentních kontraktů v jakémkoli jazyce, který předává do webového sestavení (Rust, C, C++). Další informace najdete v tématech [Přehled parity WebAssembly](https://wiki.parity.io/WebAssembly-Home) a [tutorial z parity tech](https://github.com/paritytech/pwasm-tutorial) .
+Podpora WebAssembly je už povolená na nově nasazených sítích PoA. Umožňuje vývoj inteligentních kontraktů v jakémkoli jazyce, který předává Web-Assembly (Rust, C, C++). Další informace najdete v tématech [Přehled parity WebAssembly](https://wiki.parity.io/WebAssembly-Home) a [tutorial z parity tech](https://github.com/paritytech/pwasm-tutorial) .
 
 ## <a name="faq"></a>Časté otázky
 
@@ -715,7 +715,7 @@ Monitorování je volitelná funkce. Ve výjimečných případech, kdy se nasaz
 
 ### <a name="are-public-ip-deployments-compatible-with-private-network-deployments"></a>Jsou nasazení veřejné IP adresy kompatibilní s nasazeními privátních sítí?
 
-No. Partnerský vztah vyžaduje obousměrnou komunikaci, takže celá síť musí být buď veřejná, nebo soukromá.
+Ne. Partnerský vztah vyžaduje obousměrnou komunikaci, takže celá síť musí být buď veřejná, nebo soukromá.
 
 ### <a name="what-is-the-expected-transaction-throughput-of-proof-of-authority"></a>Jaká je očekávaná propustnost transakce v rámci autority pro ověření?
 

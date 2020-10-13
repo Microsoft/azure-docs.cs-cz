@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
 ms.openlocfilehash: 5599a64e812c3006cf4379f98c5a0f0b0cd067e7
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91801847"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Použití integrovaných příkazů a funkcí poznámkového bloku v Azure Cosmos DB poznámkových blocích Pythonu (Preview)
@@ -42,7 +42,7 @@ Pomocí ``%%sql`` příkazu Magic můžete spustit [dotaz SQL](sql-query-getting
 - Nahraďte ``{database_id}`` a ``{container_id}`` názvem databáze a kontejneru v účtu Cosmos. Nejsou ``--database`` -li ``--container`` argumenty a zadány, dotaz bude proveden ve [výchozí databázi a kontejneru](#set-default-database-for-queries).
 - Můžete spustit libovolný dotaz SQL, který je platný v Azure Cosmos DB. Text dotazu musí být na novém řádku.
 
-Příklad: 
+Například: 
 ```python
 %%sql --database RetailDemo --container WebsiteData
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
@@ -61,7 +61,7 @@ Výsledky dotazu můžete vyvýstupovat ``%%sql`` do [PANDAS dataframe](https://
 - Nahraďte ``{outputDataFrameVar}`` názvem proměnné datového rámce, která bude obsahovat výsledky.
 - Můžete spustit libovolný dotaz SQL, který je platný v Azure Cosmos DB. Text dotazu musí být na novém řádku. 
 
-Příklad:
+Například:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -108,7 +108,7 @@ Pomocí ``%%upload`` příkazu Magic můžete nahrávat data ze souboru JSON do 
 - Nahraďte ``{database_id}`` a ``{container_id}`` názvem databáze a kontejneru v účtu Azure Cosmos. Nejsou ``--database`` -li ``--container`` argumenty a zadány, dotaz bude proveden ve [výchozí databázi a kontejneru](#set-default-database-for-queries).
 - Nahraďte ``{url_location_of_file}`` umístěním souboru JSON. Tento soubor musí být pole platných objektů JSON a měl by být přístupný prostřednictvím veřejného Internetu.
 
-Příklad:
+Například:
 
 ```python
 %%upload --database databaseName --container containerName --url 
@@ -147,7 +147,7 @@ V prostředí poznámkového bloku pro účet Azure Cosmos je nainstalovaná ver
 
 Použijte vestavěnou ``cosmos_client`` instanci pro spuštění jakékoli operace sady SDK. 
 
-Příklad:
+Například:
 
 ```python
 ## Import modules as needed

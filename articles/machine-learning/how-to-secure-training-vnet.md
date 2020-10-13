@@ -12,10 +12,10 @@ author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
 ms.openlocfilehash: 6e7499d8402bf31d5ecc4d1b212c08b7064d0446
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629722"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho školicího prostředí s využitím virtuálních sítí
@@ -171,7 +171,7 @@ Můžete to provést dvěma způsoby:
         ```
 
         > [!TIP]
-        > Pokud používáte oblasti US-) – Virginia, US-Arizona nebo Čínu – východ-2, tyto příkazy nevrátí žádné IP adresy. Místo toho použijte jeden z následujících odkazů ke stažení seznamu IP adres:
+        > Pokud používáte oblasti US-) – Virginia, US-Arizona oblasti nebo Čínu – východ-2, tyto příkazy nevrátí žádné IP adresy. Místo toho použijte jeden z následujících odkazů ke stažení seznamu IP adres:
         >
         > * [Rozsahy IP adres a značek služeb Azure pro Azure Government](https://www.microsoft.com/download/details.aspx?id=57063)
         > * [Rozsahy IP adres a značky služeb Azure pro Azure Čína](https://www.microsoft.com//download/details.aspx?id=57062)

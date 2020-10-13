@@ -10,10 +10,10 @@ ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: 509c6e7a7940cb740a3dcbf81deed9f0d26c2bc8
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91802850"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Async Java SDK pro SQL API: poznámky k verzi a prostředky
@@ -53,7 +53,7 @@ Asynchronní sada Java SDK pro SQL API se liší od sady SQL API Java SDK tím, 
 | **Minimální podporovaná doba běhu**|[JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) | 
 
 [!INCLUDE [Release notes](~/azure-cosmosdb-java-v2/changelog/README.md)]
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také

@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383933"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
@@ -32,7 +32,7 @@ Události protokolu auditu se uchovávají jenom po dobu **sedmi dnů**. Naplán
 
 Kategorie **B2C** v protokolech auditu obsahuje následující typy aktivit:
 
-|Typ aktivity |Description  |
+|Typ aktivity |Popis  |
 |---------|---------|
 |Autorizace |Aktivity týkající se autorizace uživatele pro přístup k prostředkům B2C (například správce, který přistupuje k seznamu zásad B2C).         |
 |Adresář |Aktivity týkající se atributů adresáře načtené, když se správce přihlásí pomocí Azure Portal. |
@@ -51,21 +51,21 @@ Tento příklad obrázku z Azure Portal zobrazuje data zachycená, když se uži
 
 Panel Podrobnosti o aktivitě obsahuje následující relevantní informace:
 
-|Sekce|Pole|Description|
+|Sekce|Pole|Popis|
 |-------|-----|-----------|
-| Aktivita | Name | Která aktivita trvala. Například *vydejte id_token aplikaci*, která uzavře skutečné přihlášení uživatele. |
+| Aktivita | Název | Která aktivita trvala. Například *vydejte id_token aplikaci*, která uzavře skutečné přihlášení uživatele. |
 | Iniciované uživatelem (actor) | ObjectId | **ID objektu** aplikace B2C, ke které se uživatel přihlašuje Tento identifikátor není viditelný v Azure Portal, ale je přístupný prostřednictvím rozhraní Microsoft Graph API. |
 | Iniciované uživatelem (actor) | SPN | **ID aplikace** B2C, ke které se uživatel přihlašuje |
 | Cíle | ObjectId | **ID objektu** uživatele, který se přihlašuje. |
-| Další podrobnosti | TenantId | **ID tenanta** klienta Azure AD B2C. |
-| Další podrobnosti | PolicyId | **ID zásady** toku uživatele (zásady), která se používá k podepsání uživatele v. |
-| Další podrobnosti | ApplicationId | **ID aplikace** B2C, ke které se uživatel přihlašuje |
+| Additional Details | TenantId | **ID tenanta** klienta Azure AD B2C. |
+| Additional Details | PolicyId | **ID zásady** toku uživatele (zásady), která se používá k podepsání uživatele v. |
+| Additional Details | ApplicationId | **ID aplikace** B2C, ke které se uživatel přihlašuje |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Zobrazit protokoly auditu v Azure Portal
 
 Azure Portal poskytuje přístup k událostem protokolu auditu ve vašem tenantovi Azure AD B2C.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 1. Přejděte do adresáře, který obsahuje vašeho tenanta Azure AD B2C, a pak přejděte do **Azure AD B2C**.
 1. V části **aktivity** v nabídce vlevo vyberte **protokoly auditu**.
 

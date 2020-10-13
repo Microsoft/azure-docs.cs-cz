@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
 ms.openlocfilehash: 0f93c7b185b292f8d9792a11807b7c99ad846d37
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89565833"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní zjišťování – anomálie selhání
@@ -73,11 +73,11 @@ Toto pravidlo upozornění se vytvoří s přidruženou [skupinou akcí](../plat
 
 Otevřete stránku výstrahy. Pravidla výstrah upozorňující na chyby jsou zahrnuta společně se všemi výstrahami, které jste nastavili ručně, a vidíte, zda je aktuálně ve stavu výstrahy.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Na stránce Application Insights prostředek klikněte na dlaždice výstrahy a pak na Spravovat pravidla výstrah." lightbox="./media/proactive-failure-diagnostics/021.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Ukázka výstrahy inteligentního zjišťování, která zobrazuje analýzu clusteru okolo selhání." lightbox="./media/proactive-failure-diagnostics/021.png":::
 
 Kliknutím na výstrahu ji nakonfigurujte.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="Obrazovka konfigurace pravidla" lightbox="./media/proactive-failure-diagnostics/032.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="Ukázka výstrahy inteligentního zjišťování, která zobrazuje analýzu clusteru okolo selhání." lightbox="./media/proactive-failure-diagnostics/032.png":::
 
 Všimněte si, že můžete zakázat nebo odstranit pravidlo upozornění na anomálie při selhání, ale nemůžete ho vytvořit na stejném Application Insights prostředku.
 
@@ -299,7 +299,7 @@ Můžete také otevřít [Azure Portal](https://portal.azure.com), přejít k pr
 
 Kliknutím na Diagnostika selhání získáte další podrobnosti a vyřešte problém.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="Diagnostické vyhledávání." lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
+:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="Ukázka výstrahy inteligentního zjišťování, která zobrazuje analýzu clusteru okolo selhání." lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
 
 V procentech požadavků a počtu ovlivněných uživatelů se můžete rozhodnout, jak naléhavě je problém. V předchozím příkladu je míra selhání 78,5% porovnávána s normální sazbou 2,2%, což znamená, že probíhá něco špatného. Na druhé straně byly zasaženy jenom 46 uživatelů. Pokud by to byla vaše aplikace, měli byste posoudit, jak závažná je.
 
@@ -307,13 +307,13 @@ V mnoha případech bude možné problém rychle diagnostikovat z názvu žádos
 
 V tomto příkladu se vyskytla výjimka z SQL Database z důvodu dosažení limitu požadavků.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="Podrobnosti o neúspěšné žádosti" lightbox="./media/proactive-failure-diagnostics/052.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="Ukázka výstrahy inteligentního zjišťování, která zobrazuje analýzu clusteru okolo selhání." lightbox="./media/proactive-failure-diagnostics/052.png":::
 
 ## <a name="review-recent-alerts"></a>Zkontrolovat nedávné výstrahy
 
 Kliknutím na **výstrahy** na stránce Application Insights prostředku se dostanete k nejnovějším výstrahám aktivovaném:
 
-:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="Souhrn výstrah" lightbox="./media/proactive-failure-diagnostics/070.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="Ukázka výstrahy inteligentního zjišťování, která zobrazuje analýzu clusteru okolo selhání." lightbox="./media/proactive-failure-diagnostics/070.png":::
 
 ## <a name="whats-the-difference-"></a>Jaký je rozdíl...
 Inteligentní zjišťování anomálií selhání doplňuje jiné podobné, ale odlišné funkce Application Insights.
@@ -333,11 +333,11 @@ Inteligentní zjišťování anomálií selhání doplňuje jiné podobné, ale 
 
 *Teď se díváte na moje data aplikací?*
 
-* No. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](./data-retention-privacy.md).
+* Ne. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](./data-retention-privacy.md).
 
 *Musím se přihlásit k odběru této výstrahy?*
 
-* No. Každá aplikace, která odesílá data požadavku, má pravidlo výstrahy inteligentního zjišťování.
+* Ne. Každá aplikace, která odesílá data požadavku, má pravidlo výstrahy inteligentního zjišťování.
 
 *Můžu místo toho zrušit odběr nebo dostávat oznámení odesílaná kolegům?*
 

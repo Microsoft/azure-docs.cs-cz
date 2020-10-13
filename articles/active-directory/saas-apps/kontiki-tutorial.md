@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: cb652cfdae0ce785d6a076b8b1592d9f700b3383
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88549955"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Kurz: Azure Active Directory integrace s Kontiki
@@ -50,7 +50,7 @@ Kontiki podporuje následující funkce:
 
 Pokud chcete integrovat Kontiki s Azure AD, musíte přidat Kontiki do seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo vyberte **Azure Active Directory**.
 
@@ -74,7 +74,7 @@ V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Kontiki, musíte dokončit tyto stavební bloky:
 
-| Úkol | Popis |
+| Úloha | Popis |
 | --- | --- |
 | **[Konfigurace jednotného přihlašování Azure AD](#configure-azure-ad-single-sign-on)** | Umožňuje uživatelům používat tuto funkci. |
 | **[Konfigurace jednotného přihlašování Kontiki](#configure-kontiki-single-sign-on)** | Nakonfiguruje nastavení jednotného přihlašování v aplikaci. |
@@ -95,7 +95,7 @@ V této části nakonfigurujete jednotné přihlašování Azure AD pomocí Kont
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-1. V podokně **nastavit jednotné přihlašování pomocí SAML** vyberte **Upravit** (ikona tužky) a otevřete **základní podokno konfigurace SAML** .
+1. V podokně **nastavit jednu Sign-On s** podoknem SAML vyberte **Upravit** (ikona tužky) a otevřete základní podokno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -106,7 +106,7 @@ V této části nakonfigurujete jednotné přihlašování Azure AD pomocí Kont
     > [!NOTE]
     > Pokud chcete získat správnou hodnotu, obraťte se na [tým podpory klienta Kontiki](https://customersupport.kontiki.com/enterprise/contactsupport.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. V podokně **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte **Stáhnout** vedle **federačních metadat XML**. Vyberte možnost stažení podle vašich požadavků. Uložte certifikát do počítače.
+1. V podokně **nastavit jednu Sign-On s** podoknem SAML vyberte v části **podpisový certifikát SAML** možnost **Stáhnout** vedle **metadat federace XML**. Vyberte možnost stažení podle vašich požadavků. Uložte certifikát do počítače.
 
     ![Možnost stažení certifikátu XML federačních metadat](common/metadataxml.png)
 

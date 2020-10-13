@@ -12,10 +12,10 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
 ms.openlocfilehash: 4e5634633aacb56e7c7744b3afdb3aec0fe2b70f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91629586"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Správa & zvýšení kvót pro prostředky pomocí Azure Machine Learning
@@ -69,11 +69,11 @@ Dostupné prostředky:
 | Maximální počet MPI procesů GPU na uzel | 1-4 |
 | Maximální počet pracovníků GPU na uzel | 1-4 |
 | Maximální doba života úlohy | 21 dnů<sup>1</sup> |
-| Maximální doba života úlohy na uzlu s nízkou prioritou | 7 dnů<sup>2</sup> |
+| Maximální doba života úlohy na Low-Priority uzlu | 7 dnů<sup>2</sup> |
 | Maximální počet serverů parametrů na uzel | 1 |
 
 <sup>1</sup> maximální doba života označuje čas spuštění a jeho dokončení. Dokončená spuštění trvalá po neomezenou dobu; data pro spuštění nedokončená v rámci maximální doby života nejsou dostupná.
-<sup>2</sup> úlohy v uzlu s nízkou prioritou by mohly být přerušeny, kdykoli existuje omezení kapacity. V rámci úlohy doporučujeme implementovat kontrolní body.
+<sup>2</sup> úlohy na Low-Priority uzlu by mohly být přerušeny, kdykoli existuje omezení kapacity. V rámci úlohy doporučujeme implementovat kontrolní body.
 
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning kanály
 U [Azure Machine Learningch kanálů](concept-ml-pipelines.md)existuje kvótový limit počtu kroků v kanálu a počtu spuštění publikovaných kanálů na základě plánu na oblast v rámci předplatného.

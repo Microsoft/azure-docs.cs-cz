@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
 ms.openlocfilehash: 17c0ba7306ab4cc51fe8bbe3709d5b6bc85fa487
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91344646"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Přineste si vlastní Machine Learning (ML) do Azure Sentinel
@@ -79,7 +79,7 @@ Pokud už máte datacihly nebo jiné prostředí Sparku a chcete raději použí
 
 Balíček vlastní ML obsahuje osvědčené postupy a výzkum Microsoftu na front-endu ML pro zabezpečení. V tomto balíčku poskytujeme následující seznam nástrojů, notebooků a šablon algoritmů pro problémy se zabezpečením.
 
-| Název souboru | Popis |
+| Název souboru | Description |
 | --------- | ----------- |
 | azure_sentinel_utilities. WHL | Obsahuje nástroje pro čtení objektů BLOB z Azure a zápis do Log Analytics. |
 | AnomalousRASampleData | Poznámkový blok znázorňuje použití modelu přístupu k prostředkům neobvyklé v Sentinel s vygenerovaným školením a testováním ukázkových dat. |
@@ -159,13 +159,13 @@ Jakmile získáte hodnocení naplánované, můžete pomocí modulu v poznámkov
 
 Pokud se chcete podívat na výsledky skóre spolu s odpovídajícími podrobnostmi protokolu, vraťte se zpátky na svůj portál Sentinel Azure. V části **protokoly** > vlastní protokoly uvidíte výsledky v tabulce **AnomalousResourceAccessResult_CL** (nebo vlastní název tabulky). Tyto výsledky můžete použít k vylepšení šetření a loveckého prostředí.
 
-:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="protokoly přístupu k prostředkům neobvyklé":::
+:::image type="content" source="./media/bring-your-own-ml/anomalous-resource-access-logs.png" alt-text="Architektura strojového učení":::
 
 ### <a name="build-custom-analytics-rule-with-ml-results"></a>Sestavení vlastního pravidla analýzy pomocí ML výsledků
 
 Jakmile ověříte, že jsou výsledky ML v tabulce vlastních protokolů a Vy jste spokojeni s věrným skóre, můžete na základě výsledků vytvořit detekci. Z portálu Sentinel Azure můžete přejít na **analýzy** a [vytvořit nové pravidlo detekce](tutorial-detect-threats-custom.md). Níže je uveden příklad ukazující dotaz použitý k vytvoření detekce.
 
-:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="vytvořit vlastní pravidlo analýzy pro zjišťování B Y O M L":::
+:::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="Architektura strojového učení":::
 
 ### <a name="view-and-respond-to-incidents"></a>Zobrazit incidenty a reagovat na ně
 Když nastavíte pravidlo analýzy na základě výsledků ML, pokud jsou výsledky nad prahovou hodnotou, kterou jste v dotazu nastavili, vygeneruje se incident a zobrazí se na stránce **incidenty** ve službě Azure Sentinel. 

@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
 ms.openlocfilehash: 6b252164027f07e4f26ab84ac12e2425e1da05f5
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357281"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Použití ukázkových datových sad v Azure Machine Learning Studio (klasický)
@@ -92,7 +92,7 @@ Kód pro převod obrázku je k dispozici na stránce <strong>Color kvantizační
 <tr>
   <td>Krevní data darování</td>
   <td>
-Podmnožina dat z krevní databáze dárce pro krevní transfúzi střediska Hsin-chu City, Tchaj-wan.
+Podmnožina dat z krevní databáze dárce v rámci služby Hsin-Chu City, Tchaj-wan pro krev transfúze.
 <p></p>
 Data dárce zahrnují měsíce od posledního darování) a četnost nebo celkový počet odběrů, čas od posledního darování a množství krevních darovaných.
 <p></p>
@@ -158,7 +158,7 @@ Datová sada obsahuje zákazníky 50 tis z francouzské telekomunikační spole�
 </tr>
 
 <tr>
-  <td>Data regrese pro energetickou účinnost</td>
+  <td>Energy-Efficiency regresní data</td>
   <td>
 Kolekce simulovaných energetických profilů na základě 12 různých stavebních tvarů. Budovy jsou odlišené o osm funkcí. To zahrnuje oblast zasklení, distribuci zasklení oblasti a orientaci.
 <p></p>
@@ -172,7 +172,7 @@ Kolekce simulovaných energetických profilů na základě 12 různých stavebn�
   <td>
 Data o výkonu pro osobní čas, která jsou přijímána z kolekce TranStatsch dat ministerstva dopravy USA (<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">včas).</a>
 <p></p>
-Datová sada se zabývá časovým obdobím od dubna do října 2013. Před nahráním do Azure Machine Learning Studio (Classic) byla datová sada zpracována následujícím způsobem:
+Datová sada se zabývá časovým obdobím April-October 2013. Před nahráním do Azure Machine Learning Studio (Classic) byla datová sada zpracována následujícím způsobem:
 <ul>
   <li>Datová sada se vyfiltruje tak, aby se kryla jenom 70 nejvytíženější letiště v kontinentální části USA.</li>
   <li>Zrušené lety byly označeny za zpožděné o více než 15 minut.</li>
@@ -332,7 +332,7 @@ Všimněte si také, že počet událostí na pozadí (h, pro hadronic sprchy) j
   <td>
 Hodinově založené počasí z NOAA (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">sloučená data z 201304 do 201310</a>).
 <p></p>
-Údaje o počasí se týkají pozorování z povětrnostních stanic na letišti, které pokrývají dobu od dubna do října 2013. Před nahráním do Azure Machine Learning Studio (Classic) byla datová sada zpracována následujícím způsobem:
+Údaje o počasí se týkají pozorování z povětrnostních stanic na letišti, které pokrývají časové období April-October 2013. Před nahráním do Azure Machine Learning Studio (Classic) byla datová sada zpracována následujícím způsobem:
 <ul>
   <li>ID povětrnostních stanic byly namapovány na odpovídající ID letišť.</li>
   <li>Nefiltrované povětrnostní stanice, které nejsou spojené s nejvytíženější letiště 70.</li>

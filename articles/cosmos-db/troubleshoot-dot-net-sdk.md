@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 581c8fcad62c40555a90b7455a260259f3a09212
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91802409"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
@@ -55,7 +55,7 @@ Kontrola [metrik portálu](monitor-accounts.md) vám pomůže určit, jestli se 
 
 ## <a name="common-error-status-codes"></a>Běžné chybové kódy stavu <a id="error-codes"></a>
 
-| Stavový kód | Popis | 
+| Stavový kód | Description | 
 |----------|-------------|
 | 400 | Chybný požadavek (závisí na chybové zprávě)| 
 | 401 | [Neautorizováno](troubleshoot-unauthorized.md) | 

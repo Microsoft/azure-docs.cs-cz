@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ba90724f75635ea9fd5f72f75de6a46d7b6d288
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91447003"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Řešení potíží se správou nároků Azure AD
@@ -141,7 +141,7 @@ Můžete zrušit pouze nevyřízenou žádost, která ještě nebyla doručena, 
 
 * Když se uplatní víc zásad, vybere se automaticky vybraná zásada nebo zásady, které se zobrazí žadateli, na základě následující prioritní logiky:
 
-    | Priorita zásad | Obor |
+    | Priorita zásad | Rozsah |
     | --- | --- |
     | P1 | Konkrétní uživatelé a skupiny v adresáři nebo konkrétní připojené organizace |
     | P2 | Všichni členové adresáře (kromě hostů) |

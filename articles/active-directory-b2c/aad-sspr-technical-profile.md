@@ -12,10 +12,10 @@ ms.date: 06/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3e6fcf956639d827a8654c5ee80e7cab8cadf930
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383593"
 ---
 # <a name="define-an-azure-ad-sspr-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování technického profilu Azure AD SSPR v Azure AD B2C vlastní zásady
@@ -32,7 +32,7 @@ Tento technický profil:
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protokol
 
 Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `Proprietary` . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C:
 
@@ -49,7 +49,7 @@ Následující příklad ukazuje technický profil Azure AD SSPR:
     ...
 ```
 
-## <a name="send-email"></a>Odeslat e-mail
+## <a name="send-email"></a>Odeslání e-mailu
 
 Prvním režimem tohoto technického profilu je vygenerování kódu a jeho odeslání. Pro tento režim lze nakonfigurovat následující možnosti.
 
@@ -59,7 +59,7 @@ Element **InputClaims** obsahuje seznam deklarací, které se mají odeslat do A
 
 | ClaimReferenceId | Povinné | Popis |
 | --------- | -------- | ----------- |
-| emailAddress | Yes | Identifikátor uživatele, který vlastní e-mailovou adresu. `PartnerClaimType`Vlastnost vstupní deklarace identity musí být nastavená na `emailAddress` . |
+| emailAddress | Ano | Identifikátor uživatele, který vlastní e-mailovou adresu. `PartnerClaimType`Vlastnost vstupní deklarace identity musí být nastavená na `emailAddress` . |
 
 
 Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací identity nebo k vygenerování nových dat před odesláním do služby Azure AD SSPR.
@@ -74,7 +74,7 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Operace | Yes | Musí být **SendCode**.  |
+| Operace | Ano | Musí být **SendCode**.  |
 
 #### <a name="ui-elements"></a>Prvky uživatelského rozhraní
 
@@ -113,8 +113,8 @@ Element **InputClaims** obsahuje seznam deklarací, které se mají odeslat do A
 
 | ClaimReferenceId | Povinné | Popis |
 | --------- | -------- | ----------- | ----------- |
-| emailAddress| Yes | Stejná e-mailová adresa, jakou jste použili k odeslání kódu. Používá se také k vyhledání relace ověřování e-mailem. `PartnerClaimType`Vlastnost vstupní deklarace identity musí být nastavená na `emailAddress` .|
-| verificationCode  | Yes | Ověřovací kód poskytnutý uživatelem, který se má ověřit `PartnerClaimType`Vlastnost vstupní deklarace identity musí být nastavená na `verificationCode` . |
+| emailAddress| Ano | Stejná e-mailová adresa, jakou jste použili k odeslání kódu. Používá se také k vyhledání relace ověřování e-mailem. `PartnerClaimType`Vlastnost vstupní deklarace identity musí být nastavená na `emailAddress` .|
+| verificationCode  | Ano | Ověřovací kód poskytnutý uživatelem, který se má ověřit `PartnerClaimType`Vlastnost vstupní deklarace identity musí být nastavená na `verificationCode` . |
 
 Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací identity nebo k vygenerování nových před VOLÁNÍM služby Azure AD SSPR.
 
@@ -128,7 +128,7 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Operace | Yes | Musí být **VerifyCode** |
+| Operace | Ano | Musí být **VerifyCode** |
 
 #### <a name="ui-elements"></a>Prvky uživatelského rozhraní
 

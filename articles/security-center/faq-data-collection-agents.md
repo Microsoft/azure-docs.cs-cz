@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 0a368e54c940ff580b7e8f49dd108fafddde5b17
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441492"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Nejčastější dotazy týkající se shromažďování dat, agentů a pracovních prostorů
@@ -27,7 +27,7 @@ Security Center shromažďuje data z virtuálních počítačů Azure, sady šk�
 
 ## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Účtují se mi Azure Monitor protokoly v pracovních prostorech vytvořených pomocí Security Center?
 
-No. Pracovní prostory vytvořené pomocí Security Center, i když jsou nakonfigurované pro Azure Monitor protokolů za uzel, se neúčtují Azure Monitor poplatky. Security Center fakturace je vždycky založená na vašich Security Center zásadách zabezpečení a řešeních, která jsou nainstalovaná v pracovním prostoru:
+Ne. Pracovní prostory vytvořené pomocí Security Center, i když jsou nakonfigurované pro Azure Monitor protokolů za uzel, se neúčtují Azure Monitor poplatky. Security Center fakturace je vždycky založená na vašich Security Center zásadách zabezpečení a řešeních, která jsou nainstalovaná v pracovním prostoru:
 
 - **Azure Defender off** – Security Center ve výchozím pracovním prostoru povolí řešení ' SecurityCenterFree '. Pokud je Azure Defender vypnutý, nebude se vám účtovat.
 

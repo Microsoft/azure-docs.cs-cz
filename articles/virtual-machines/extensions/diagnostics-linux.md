@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
 ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448197"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití diagnostického rozšíření Linuxu k monitorování metrik a protokolů
@@ -202,7 +202,7 @@ Tato sada informací o konfiguraci obsahuje citlivé informace, které by měly 
 }
 ```
 
-Název | Hodnota
+Name | Hodnota
 ---- | -----
 storageAccountName | Název účtu úložiště, ve kterém se má rozšíření zapsat data
 storageAccountEndPoint | volitelné Koncový bod identifikující Cloud, ve kterém existuje účet úložiště. Pokud toto nastavení chybí, LAD se výchozí nastavení pro veřejný cloud Azure, `https://core.windows.net` . Pokud chcete použít účet úložiště v Azure Německo, Azure Government nebo Azure Čína, nastavte tuto hodnotu odpovídajícím způsobem.
@@ -497,7 +497,7 @@ Je třeba zadat buď Table, nebo "jímky", nebo obojí.
 Předdefinovaná zprostředkovatel metriky je zdrojem metrik, které jsou zajímavé pro širokou škálu uživatelů. Tyto metriky spadají do pěti širších tříd:
 
 * Procesor
-* Memory (Paměť)
+* Paměť
 * Síť
 * Filesystem
 * Disk

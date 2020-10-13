@@ -4,10 +4,10 @@ description: Tento článek poskytuje přehled živé analýzy videí na IoT Edg
 ms.topic: reference
 ms.date: 04/27/2020
 ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567550"
 ---
 # <a name="monitoring-and-logging"></a>Monitorování a protokolování
@@ -21,7 +21,7 @@ Naučíte se také, jak můžete řídit protokoly, které modul generuje.
 Live video Analytics na IoT Edge generuje události nebo data telemetrie podle následující taxonomie.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Taxonomie událostí":::
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Taxonomie událostí&quot;:::
 
 * Provozní: události, které jsou generovány jako součást akcí prováděných uživatelem nebo během provádění [mediálního grafu](media-graph-concept.md).
    
@@ -32,16 +32,16 @@ Live video Analytics na IoT Edge generuje události nebo data telemetrie podle n
       
       ```
       {
-        "body": {
-          "outputType": "assetName",
-          "outputLocation": "sampleAssetFromEVR-LVAEdge-20200512T233309Z"
+        &quot;body&quot;: {
+          &quot;outputType&quot;: &quot;assetName&quot;,
+          &quot;outputLocation&quot;: &quot;sampleAssetFromEVR-LVAEdge-20200512T233309Z&quot;
         },
-        "applicationProperties": {
-          "topic": "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>",
-          "subject": "/graphInstances/Sample-Graph-2/sinks/assetSink",
-          "eventType": "Microsoft.Media.Graph.Operational.RecordingStarted",
-          "eventTime": "2020-05-12T23:33:10.392Z",
-          "dataVersion": "1.0"
+        &quot;applicationProperties&quot;: {
+          &quot;topic&quot;: &quot;/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>&quot;,
+          &quot;subject&quot;: &quot;/graphInstances/Sample-Graph-2/sinks/assetSink&quot;,
+          &quot;eventType&quot;: &quot;Microsoft.Media.Graph.Operational.RecordingStarted&quot;,
+          &quot;eventTime&quot;: &quot;2020-05-12T23:33:10.392Z&quot;,
+          &quot;dataVersion&quot;: &quot;1.0"
         }
       }
       ```
@@ -205,7 +205,7 @@ Typy událostí jsou přiřazeny k oboru názvů podle následujícího schémat
 
 #### <a name="event-classes"></a>Třídy událostí
 
-|Název třídy|Popis|
+|Název třídy|Description|
 |---|---|
 |Analýzy  |Události generované jako součást analýzy obsahu|
 |Diagnostika    |Události, které pomáhají diagnostikovat problémy a výkon.|
@@ -264,7 +264,7 @@ Výše vám umožní, aby modul Edge zapisoval protokoly do cesty úložiště (
 
 Modul pak bude zapisovat protokoly ladění v binárním formátu do cesty úložiště (zařízení)/var/local/MediaServices/debuglogs/, kterou můžete sdílet s podporou Azure.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 [Nejčastější dotazy](faq.md#monitoring-and-metrics)
 

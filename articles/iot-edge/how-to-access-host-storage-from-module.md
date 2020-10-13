@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 4af63421e831318e6250825cffd1abad415b85bb
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91447830"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Udělení přístupu k místnímu úložišti zařízení pro moduly
@@ -26,11 +26,11 @@ Pokud chcete povolit odkaz z úložiště modulu do úložiště v hostitelském
 Pokud byste například chtěli povolit, aby Centrum IoT Edge ukládalo zprávy do místního úložiště vašeho zařízení a načetli je později, můžete nakonfigurovat proměnné prostředí a možnosti vytváření v Azure Portal v části **nastavení modulu runtime** .
 
 1. U IoT Edgeového centra i agenta IoT Edge přidejte proměnnou prostředí s názvem **storageFolder** , která odkazuje na adresář v modulu.
-1. U IoT Edgeového centra i agenta IoT Edge přidejte vazby pro připojení místního adresáře na hostitelském počítači k adresáři v modulu. Příklad:
+1. U IoT Edgeového centra i agenta IoT Edge přidejte vazby pro připojení místního adresáře na hostitelském počítači k adresáři v modulu. Například:
 
    ![Přidání možností vytvoření a proměnných prostředí pro místní úložiště](./media/how-to-access-host-storage-from-module/offline-storage.png)
 
-Nebo můžete nakonfigurovat místní úložiště přímo v manifestu nasazení. Příklad:
+Nebo můžete nakonfigurovat místní úložiště přímo v manifestu nasazení. Například:
 
 ```json
 "systemModules": {

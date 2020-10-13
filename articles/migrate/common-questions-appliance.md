@@ -4,10 +4,10 @@ description: Získejte odpovědi na běžné otázky týkající se zařízení 
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: 7839c2678152837cc9217e6afe13f7cca36ab4b0
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91630487"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Zařízení Azure Migrate: běžné otázky
@@ -101,7 +101,7 @@ Tento postup popisuje, jak se zařízení připojuje k VMware vCenter Server:
 
 ## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Může se zařízení Azure Migrate připojit k více serverům vCenter?
 
-No. Mezi [zařízením Azure Migrate](migrate-appliance.md) a vCenter Server existuje mapování 1:1. Chcete-li zjistit virtuální počítače ve více instancích vCenter Server, je nutné nasadit více zařízení. 
+Ne. Mezi [zařízením Azure Migrate](migrate-appliance.md) a vCenter Server existuje mapování 1:1. Chcete-li zjistit virtuální počítače ve více instancích vCenter Server, je nutné nasadit více zařízení. 
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Může Azure Migrate projekt mít více zařízení?
 
@@ -131,11 +131,11 @@ Také nelze znovu použít existující klíč projektu Azure Migrate na znovu n
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Můžu zařízení nastavit na virtuálním počítači Azure?
 
-No. V tuto chvíli není tato možnost podporovaná. 
+Ne. V tuto chvíli není tato možnost podporovaná. 
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>Můžu na hostiteli ESXi zjistit?
 
-No. Pokud chcete zjistit virtuální počítače VMware, musíte mít vCenter Server.
+Ne. Pokud chcete zjistit virtuální počítače VMware, musíte mít vCenter Server.
 
 ## <a name="how-do-i-update-the-appliance"></a>Návody aktualizovat zařízení?
 

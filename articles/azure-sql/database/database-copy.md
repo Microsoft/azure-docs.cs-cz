@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
 ms.openlocfilehash: 45544d246f1390271300d5ffa1fff1fdc5d9317f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443786"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopírování přetransakční kopie databáze v Azure SQL Database
@@ -128,7 +128,7 @@ Pomocí postupu v části [kopírování SQL Database do jiného serveru](#copy-
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>Sledování průběhu operace kopírování
 
-Pomocí dotazu na zobrazení [Sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [Sys. dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)a [Sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) monitorujte proces kopírování. V průběhu kopírování je sloupec **state_desc** zobrazení sys. databases pro novou databázi nastaven na **kopírování**.
+Pomocí dotazu na zobrazení [Sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [Sys.dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)a [Sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) monitorujte proces kopírování. V průběhu kopírování je sloupec **state_desc** zobrazení sys. databases pro novou databázi nastaven na **kopírování**.
 
 * Pokud kopírování neproběhne úspěšně, je sloupec **state_desc** zobrazení sys. databases pro novou databázi nastaven na hodnotu **podezřelý**. Spusťte příkaz DROP v nové databázi a opakujte akci později.
 * Pokud je kopírování úspěšné, sloupec **state_desc** zobrazení sys. databases pro novou databázi je nastaven na hodnotu **online**. Kopírování je dokončeno a nová databáze je běžná databáze, kterou lze změnit nezávisle na zdrojové databázi.

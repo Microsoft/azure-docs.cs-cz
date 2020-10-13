@@ -11,10 +11,10 @@ ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 11/21/2019
 ms.openlocfilehash: 9d6592ccfb3ba5236a660d689d8b5d2cd1600c48
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283186"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Kurz: Konfigurace transakční replikace mezi spravovanou instancí Azure SQL a SQL Server
@@ -146,7 +146,7 @@ Privátní zóna DNS umožňuje směrování DNS mezi spravovanými instancemi a
 
 ### <a name="create-a-private-dns-zone"></a>Vytvoření privátní zóny DNS
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Pokud chcete vytvořit nový prostředek Azure, vyberte **vytvořit prostředek** .
 1. Hledat `private dns zone` na Azure Marketplace.
 1. Zvolte prostředek **zóny privátní DNS** publikovaný Microsoftem a pak vyberte **vytvořit** a vytvořte zónu DNS.
@@ -196,7 +196,7 @@ Další informace najdete v tématu [Správa přístupových klíčů účtu úl
 
 ## <a name="7---create-a-database"></a>7. vytvoření databáze
 
-Vytvoří novou databázi na spravované instanci vydavatele. Postup je následující:
+Vytvoří novou databázi na spravované instanci vydavatele. To můžete provést pomocí těchto kroků:
 
 1. Spustí SQL Server Management Studio na SQL Server.
 1. Připojte se ke `sql-mi-publisher` spravované instanci.
@@ -244,7 +244,7 @@ GO
 
 ## <a name="8---configure-distribution"></a>8. konfigurace distribuce
 
-Jakmile se naváže připojení a máte ukázkovou databázi, můžete nakonfigurovat distribuci na `sql-mi-distributor` spravované instanci. Postup je následující:
+Jakmile se naváže připojení a máte ukázkovou databázi, můžete nakonfigurovat distribuci na `sql-mi-distributor` spravované instanci. To můžete provést pomocí těchto kroků:
 
 1. Spustí SQL Server Management Studio na SQL Server.
 1. Připojte se ke `sql-mi-distributor` spravované instanci.
@@ -279,7 +279,7 @@ Jakmile se naváže připojení a máte ukázkovou databázi, můžete nakonfigu
 
 ## <a name="9---create-the-publication"></a>9. vytvoření publikace
 
-Po nakonfigurování distribuce teď můžete vytvořit publikaci. Postup je následující:
+Po nakonfigurování distribuce teď můžete vytvořit publikaci. To můžete provést pomocí těchto kroků:
 
 1. Spustí SQL Server Management Studio na SQL Server.
 1. Připojte se ke `sql-mi-publisher` spravované instanci.
@@ -300,7 +300,7 @@ Po nakonfigurování distribuce teď můžete vytvořit publikaci. Postup je ná
 
 ## <a name="10---create-the-subscription"></a>10. vytvoření odběru
 
-Po vytvoření publikace můžete vytvořit předplatné. Postup je následující:
+Po vytvoření publikace můžete vytvořit předplatné. To můžete provést pomocí těchto kroků:
 
 1. Spustí SQL Server Management Studio na SQL Server.
 1. Připojte se ke `sql-mi-publisher` spravované instanci.
