@@ -4,10 +4,10 @@ description: Naučte se integrovat Traffic Manager se službou Azure VMware Solu
 ms.topic: how-to
 ms.date: 08/14/2020
 ms.openlocfilehash: d461cc444c60e1907a34a08c68139446301c133c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91579842"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>Nasazení Traffic Manager pro vyrovnávání zatížení Azure VMware Solution (AVS)
@@ -32,7 +32,7 @@ Připojení k virtuální síti mezi dvěma oblastmi privátního cloudu služby
 
 ![Integrace Traffic Manager s využitím AVS](media/traffic-manager/traffic-manager-topology.png)
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Tři virtuální počítače nakonfigurované jako servery Microsoft IIS spuštěné v různých oblastech služby AVS: Západní USA, Západní Evropa a místní. 
 

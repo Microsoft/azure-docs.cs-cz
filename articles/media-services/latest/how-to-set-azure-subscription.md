@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: cli,portal
 ms.openlocfilehash: 8924b77cddc9efc4d2b1b8451df38de77b37c09c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89267355"
 ---
 # <a name="find-your-azure-subscription"></a>Vyhledání předplatného Azure
@@ -31,7 +31,7 @@ ms.locfileid: "89267355"
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V nadpisu služby Azure vyberte předplatná. (Pokud nejsou uvedené žádné odběry, možná budete muset přepnout klienty Azure AD.) ID vašich předplatných jsou uvedená ve druhém sloupci.
 1. Zkopírujte ID předplatného a vložte ho do textového dokumentu podle vlastního výběru pro pozdější použití.
 

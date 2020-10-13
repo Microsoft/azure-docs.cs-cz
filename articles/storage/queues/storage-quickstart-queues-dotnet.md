@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fd60adf94e57be3892a264c2a8457b839e1c8778
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f23512bfd85c520c36cd98843db37371b84af293
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89011289"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939198"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro .NET
 
@@ -36,7 +36,7 @@ Další prostředky:
 * [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
 * [ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Účet úložiště Azure – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -77,7 +77,7 @@ Z adresáře projektu:
 1. V editoru otevřete soubor *program.cs*
 1. Odebrat `Console.WriteLine("Hello World!");` příkaz
 1. Přidat `using` direktivy
-1. Aktualizujte `Main` deklaraci metody pro [podporu asynchronního kódu](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7-1#async-main) .
+1. Aktualizujte `Main` deklaraci metody pro [podporu asynchronního kódu](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#async-main) .
 
 
 

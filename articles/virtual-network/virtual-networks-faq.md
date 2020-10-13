@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
 ms.openlocfilehash: 171fc11c8de9cd53a7abd9602768a117341826ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91306596"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure Virtual Network
@@ -86,22 +86,22 @@ Ano. Azure si v každé podsíti vyhrazuje 5 IP adres. Jedná se o x. x. x. 0-x.
 Nejnižší podporovaná podsíť IPv4 je/29 a největší je/8 (pomocí definice podsítě CIDR).  Podsítě IPv6 musí mít velikost přesně/64.  
 
 ### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>Můžu své sítě VLAN přenést do Azure pomocí virtuální sítě?
-No. Virtuální sítě jsou překryvy vrstvy 3. Azure nepodporuje žádné sémantiky vrstvy 2.
+Ne. Virtuální sítě jsou překryvy vrstvy 3. Azure nepodporuje žádné sémantiky vrstvy 2.
 
 ### <a name="can-i-specify-custom-routing-policies-on-my-vnets-and-subnets"></a>Můžu v virtuální sítě a podsítích zadat vlastní zásady směrování?
 Ano. Můžete vytvořit směrovací tabulku a přidružit ji k podsíti. Další informace o směrování v Azure najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md#custom-routes).
 
 ### <a name="do-vnets-support-multicast-or-broadcast"></a>Podporuje virtuální sítě vícesměrové vysílání nebo všesměrové vysílání?
-No. Vícesměrové vysílání a všesměrové vysílání nejsou podporovány.
+Ne. Vícesměrové vysílání a všesměrové vysílání nejsou podporovány.
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>Jaké protokoly můžu v virtuální sítě použít?
 V virtuální sítě můžete používat protokoly TCP/IP protokolu TCP, UDP a ICMP. Jednosměrové vysílání se podporuje v rámci virtuální sítě, s výjimkou protokolu DHCP (Dynamic Host Configuration Protocol) prostřednictvím jednosměrového vysílání (zdrojový port UDP/68/cílový port UDP/67) a zdrojového portu UDP 65330, který je vyhrazený pro hostitele. Vícesměrové vysílání, všesměrové vysílání, zapouzdřené pakety IP-in-IP a pakety GRE (Generic Routing Encapsulation) jsou v rámci virtuální sítě blokované. 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>Můžu v rámci virtuální sítě testovat svůj výchozí směrovač?
-No.
+Ne.
 
 ### <a name="can-i-use-tracert-to-diagnose-connectivity"></a>Můžu pomocí příkazu tracert diagnostikovat připojení?
-No.
+Ne.
 
 ### <a name="can-i-add-subnets-after-the-vnet-is-created"></a>Můžu po vytvoření virtuální sítě přidat podsítě?
 Ano. Podsítě lze kdykoli přidat do virtuální sítě, pokud rozsah adres podsítě není součástí jiné podsítě a v rozsahu adres virtuální sítě je dostupné místo.
@@ -119,7 +119,7 @@ Ano. Všechny služby nasazené ve virtuální síti můžou připojit odchozí 
 Ano, virtuální sítě může být jenom IPv4 nebo duální zásobník (IPv4 + IPv6).  Podrobnosti najdete v tématu [Přehled protokolu IPv6 pro virtuální sítě Azure](./ipv6-overview.md).
 
 ### <a name="can-a-vnet-span-regions"></a>Můžou být virtuální sítě oblastí rozsahů?
-No. Virtuální síť je omezená jenom na jednu oblast. Virtuální síť ale zahrnuje zóny dostupnosti. Další informace o zónách dostupnosti najdete v tématu [Přehled zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Virtuální sítě můžete propojit v různých oblastech s využitím partnerského vztahu virtuálních sítí. Podrobnosti najdete v tématu [Přehled partnerských vztahů virtuálních sítí](virtual-network-peering-overview.md) .
+Ne. Virtuální síť je omezená jenom na jednu oblast. Virtuální síť ale zahrnuje zóny dostupnosti. Další informace o zónách dostupnosti najdete v tématu [Přehled zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Virtuální sítě můžete propojit v různých oblastech s využitím partnerského vztahu virtuálních sítí. Podrobnosti najdete v tématu [Přehled partnerských vztahů virtuálních sítí](virtual-network-peering-overview.md) .
 
 ### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Můžu připojit virtuální síť k jiné virtuální síti v Azure?
 Ano. Jednu virtuální síť můžete připojit k jiné virtuální síti pomocí těchto akcí:
@@ -149,7 +149,7 @@ K dispozici jsou omezení prvních 100 cloudových služeb ve virtuální síti 
 Ano. Můžete nastavit servery DNS na virtuální počítač nebo cloudovou službu a přepsat tak výchozí nastavení sítě. Doporučuje se ale co nejvíc používat službu DNS v rámci sítě.
 
 ### <a name="can-i-bring-my-own-dns-suffix"></a>Můžu si přenést vlastní příponu DNS?
-No. Pro virtuální sítě nejde zadat vlastní příponu DNS.
+Ne. Pro virtuální sítě nejde zadat vlastní příponu DNS.
 
 ## <a name="connecting-virtual-machines"></a>Připojení virtuálních počítačů
 
@@ -165,7 +165,7 @@ Ano. Všechna síťová rozhraní (NIC) připojená k virtuálnímu počítači 
 * **Veřejné:** Volitelně se přiřazují síťové adaptéry připojené k virtuálním počítačům nasazeným prostřednictvím modelu nasazení Azure Resource Manager. Adresa může být přiřazena se statickou nebo dynamickou metodou přidělování. Všechny virtuální počítače a Cloud Services instance rolí nasazené prostřednictvím modelu nasazení Classic existují v rámci cloudové služby, která je přiřazená k *dynamické*veřejné virtuální IP adrese (VIP). Veřejnou *statickou* IP adresu, která se nazývá [vyhrazená IP adresa adresa](virtual-networks-reserved-public-ip.md), se dá volitelně přiřadit jako virtuální IP adresa. Veřejné IP adresy můžete přiřadit jednotlivým virtuálním počítačům nebo Cloud Services instancím rolí nasazeným prostřednictvím modelu nasazení Classic. Tyto adresy se nazývají [veřejné IP adresy na úrovni instance (adresy ILPIP](virtual-networks-instance-level-public-ip.md) a dají se dynamicky přiřazovat.
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Můžu si vyhradit soukromou IP adresu pro virtuální počítač, který vytvořím později?
-No. Nemůžete rezervovat privátní IP adresu. Pokud je k dispozici privátní IP adresa, je server DHCP přiřazen k virtuálnímu počítači nebo instanci role. Virtuální počítač může nebo nemusí být ten, ke kterému chcete přiřadit privátní IP adresu. Můžete však změnit soukromou IP adresu již vytvořeného virtuálního počítače na libovolnou dostupnou privátní IP adresu.
+Ne. Nemůžete rezervovat privátní IP adresu. Pokud je k dispozici privátní IP adresa, je server DHCP přiřazen k virtuálnímu počítači nebo instanci role. Virtuální počítač může nebo nemusí být ten, ke kterému chcete přiřadit privátní IP adresu. Můžete však změnit soukromou IP adresu již vytvořeného virtuálního počítače na libovolnou dostupnou privátní IP adresu.
 
 ### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>Mění se privátní IP adresy pro virtuální počítače ve virtuální síti?
 To závisí na okolnostech. Pokud byl virtuální počítač nasazen prostřednictvím Správce prostředků, ne bez ohledu na to, zda byla IP adresa přiřazena se statickou nebo dynamickou metodou přidělení. Pokud byl virtuální počítač nasazen prostřednictvím modelu nasazení Classic, dynamické IP adresy se můžou změnit, když se virtuální počítač spustí po uplynutí stavu Zastaveno (přidělení zrušeno). Adresa se uvolní z virtuálního počítače nasazeného pomocí modelu nasazení v případě odstranění virtuálního počítače.
@@ -180,7 +180,7 @@ Ničeho. IP adresy (veřejné virtuální IP adresy, veřejné a privátní) zů
 Ano. Další informace najdete v tématu [Postup přesunutí instance virtuálního počítače nebo role do jiné podsítě](virtual-networks-move-vm-role-to-subnet.md) .
 
 ### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>Můžu pro svůj virtuální počítač nakonfigurovat statickou adresu MAC?
-No. Adresu MAC nelze staticky konfigurovat.
+Ne. Adresu MAC nelze staticky konfigurovat.
 
 ### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-its-created"></a>Zůstane adresa MAC pro svůj virtuální počítač stejná, až se vytvoří?
 Ano, adresa MAC zůstane stejná pro virtuální počítač nasazený prostřednictvím modelu nasazení Správce prostředků i klasický, dokud ho neodstraníte. Dříve byla adresa MAC uvolněna v případě, že byl virtuální počítač zastaven (přidělení zrušeno), ale nyní je adresa MAC uchována i v případě, že je virtuální počítač ve stavu zrušeno přidělení. Adresa MAC zůstane přiřazená síťovému rozhraní, dokud se neodstraní síťové rozhraní nebo se nezmění privátní IP adresa přiřazená k primární konfiguraci IP rozhraní primárního síťového rozhraní. 
@@ -212,7 +212,7 @@ Ano, podrobnosti najdete v tématu [Integrace virtuální sítě pro služby Azu
 Prostředky nasazené prostřednictvím některých služeb Azure PaaS (například Azure Storage a Azure SQL Database) můžou omezit síťový přístup k virtuální síti prostřednictvím použití koncových bodů služby virtuální sítě nebo privátního propojení Azure. Podrobnosti najdete v tématu [Přehled koncových bodů služby virtuální sítě](virtual-network-service-endpoints-overview.md), [Přehled privátních odkazů Azure](../private-link/private-link-overview.md) .
 
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Můžu přesunout služby z virtuální sítě a z něj?
-No. Nemůžete přesouvat služby z virtuální sítě a z ní. Pokud chcete přesunout prostředek do jiné virtuální sítě, musíte prostředek odstranit a znovu nasadit.
+Ne. Nemůžete přesouvat služby z virtuální sítě a z ní. Pokud chcete přesunout prostředek do jiné virtuální sítě, musíte prostředek odstranit a znovu nasadit.
 
 ## <a name="security"></a>Zabezpečení
 
@@ -278,22 +278,22 @@ Pokud je připojení partnerského vztahu virtuálních sítí v *odpojeném* st
 Ano. Můžete peer virtuální sítě napříč předplatnými a různými oblastmi.
 
 ### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>Můžu mít dva virtuální sítěy rovnocennosti se stejnými nebo překrývajícími se rozsahy adres?
-No. Adresní prostory se nesmí překrývat, aby bylo možné povolit partnerský vztah virtuální sítě.
+Ne. Adresní prostory se nesmí překrývat, aby bylo možné povolit partnerský vztah virtuální sítě.
 
 ### <a name="how-much-do-vnet-peering-links-cost"></a>Kolik stojí propojení partnerských vztahů mezi virtuálními sítěmi?
 Za vytvoření připojení partnerského vztahu virtuálních sítí se neúčtují žádné poplatky. Přenos dat mezi připojeními partnerských vztahů se účtuje. [Podívejte se sem](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>Je provoz partnerských vztahů virtuálních sítí zašifrovaný?
-No. Provoz mezi prostředky v virtuální sítě s partnerským vztahem je privátní a izolovaný. Zůstane v páteřním rámci společnosti Microsoft celá.
+Ne. Provoz mezi prostředky v virtuální sítě s partnerským vztahem je privátní a izolovaný. Zůstane v páteřním rámci společnosti Microsoft celá.
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Proč je moje připojení partnerského vztahu v *odpojeném* stavu?
 Připojení partnerských vztahů virtuálních sítí se při odstranění jednoho partnerského vztahu mezi virtuálními sítěmi přejdou do *odpojeného* stavu. Aby bylo možné znovu vytvořit úspěšné připojení partnerského vztahu, je nutné odstranit oba odkazy.
 
 ### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>Pokud se mi partnerském peer-to-VNetB and I peer VNetB to sítí vnetc, znamená to, že se jedná o partnerský vztah partnerském a sítí vnetc?
-No. Přenosných partnerských vztahů se nepodporuje. Aby bylo možné provést tuto službu, je nutné, aby byly partnerské partnerském a sítí vnetc.
+Ne. Přenosných partnerských vztahů se nepodporuje. Aby bylo možné provést tuto službu, je nutné, aby byly partnerské partnerském a sítí vnetc.
 
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Existují nějaká omezení šířky pásma pro připojení partnerských vztahů?
-No. Síť VNet peering, ať už místní nebo globální, neomezuje žádná omezení šířky pásma. Šířka pásma je omezená jenom virtuálním počítačem nebo výpočetním prostředkem.
+Ne. Síť VNet peering, ať už místní nebo globální, neomezuje žádná omezení šířky pásma. Šířka pásma je omezená jenom virtuálním počítačem nebo výpočetním prostředkem.
 
 ### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>Jak mohu řešit problémy s partnerským vztahem virtuální sítě?
 Tady je [Průvodce odstraňováním potíží](https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues) , který můžete vyzkoušet.

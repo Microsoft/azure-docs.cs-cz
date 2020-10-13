@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
 ms.openlocfilehash: 0b7aab13871f1450a3c6907b30b446869b2fefa7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91443880"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení pro výkon
@@ -29,7 +29,7 @@ Pokud chcete zobrazit a použít doporučení pro výkon, budete potřebovat spr
 
 Pomocí následujících kroků můžete najít doporučení týkající se výkonu Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Přejít na **všechny služby**  >  **databáze SQL**a vyberte svou databázi.
 3. Přejděte do **doporučení ke zvýšení výkonu** a zobrazte dostupná doporučení pro vybranou databázi.
 
@@ -39,7 +39,7 @@ Doporučení týkající se výkonu se zobrazují v tabulce podobné tomu na ná
 
 Doporučení jsou seřazená podle jejich potenciálního dopadu na výkon do následujících kategorií:
 
-| Dopad | Popis |
+| Dopad | Description |
 |:--- |:--- |
 | Vysoké |Doporučení s vysokým dopadem by měla poskytovat nejvýznamnější dopad na výkon. |
 | Střední |Doporučení středně velkých dopadů by měla zlepšit výkon, ale ne podstatně. |
@@ -156,7 +156,7 @@ Po úspěšném dokončení implementace doporučení (v současné době platí
 
 ![Sledovat dopad na výkon](./media/database-advisor-find-recommendations-portal/query-insights.png)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Azure SQL Database poskytuje doporučení pro zlepšení výkonu databáze. Díky skriptům T-SQL získáte pomoc při optimalizaci databáze a nakonec se zlepší výkon dotazů.
 

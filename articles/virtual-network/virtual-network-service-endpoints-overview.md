@@ -14,10 +14,10 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 7d937542201792c0d1c0be69df9bd1c2b34edea3
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89434465"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby pro virtuální síť
@@ -62,7 +62,7 @@ Koncové body služby poskytují následující výhody:
 
 - Tato funkce je dostupná pouze pro virtuální sítě nasazené pomocí modelu nasazení Azure Resource Manager.
 - Koncové body jsou povolené na podsítích nakonfigurovaných ve virtuálních sítích Azure. Koncové body není možné použít pro provoz z vašich místních služeb do služeb Azure. Další informace najdete v tématu [zabezpečení přístupu ke službě Azure z místního](#secure-azure-services-to-virtual-networks) prostředí.
-- Pro Azure SQL se koncový bod služby vztahuje jenom na provoz služeb Azure v rámci oblasti virtuální sítě. V případě Azure Storage se koncové body také rozšíří tak, aby zahrnovaly spárované oblasti, ve kterých nasadíte virtuální síť, která podporuje přenos geograficky redundantního úložiště s přístupem pro čtení (RA-GRS) a geograficky redundantní úložiště (GRS). Další informace najdete v tématu [spárované oblasti Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
+- Pro Azure SQL se koncový bod služby vztahuje jenom na provoz služeb Azure v rámci oblasti virtuální sítě. V případě Azure Storage se koncové body také rozšíří tak, aby zahrnovaly spárované oblasti, ve kterých nasadíte virtuální síť pro podporu provozu služby Read-Access Geo-Redundant Storage (RA-GRS) a úložiště Geo-Redundant (GRS). Další informace najdete v tématu [spárované oblasti Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
 - V případě Azure Data Lake Storage (ADLS) 1. generace je možnost integrace virtuální sítě dostupná jenom pro virtuální sítě v rámci stejné oblasti. Také si všimněte, že integrace virtuální sítě pro ADLS Gen1 používá ke generování dalších deklarací zabezpečení v přístupovém tokenu zabezpečení koncového bodu služby virtuální sítě mezi vaší virtuální sítí a Azure Active Directory (Azure AD). Tyto deklarace identity pak slouží k ověření vaší virtuální sítě v účtu Data Lake Storage Gen1 a povolení přístupu. Značka *Microsoft. azureactivedirectory selhala* uvedená v části služby podporující koncové body služby se používá jenom pro podporu koncových bodů služby na ADLSu Gen 1. Azure AD nepodporuje nativně koncové body služby. Další informace o Azure Data Lake Store integraci virtuální sítě 1. generace najdete [v tématu zabezpečení sítě v Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="secure-azure-services-to-virtual-networks"></a>Zabezpečení služeb Azure pro virtuální sítě
@@ -89,7 +89,7 @@ Koncové body služby poskytují následující výhody:
 - Virtuální síť, ve které je koncový bod nakonfigurovaný, může být ve stejném předplatném jako prostředek služby Azure nebo v jiném předplatném. Další informace o oprávněních požadovaných pro nastavení koncových bodů a zabezpečení služeb Azure najdete v části [Zřizování](#provisioning).
 - U podporovaných služeb můžete pomocí koncových bodů služby svázat s virtuálními sítěmi nové nebo existující prostředky.
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 - Po povolení koncového bodu služby se zdrojová IP adresa přepne z použití veřejných IPv4 adres na používání jejich privátní IPv4 adresy při komunikaci se službou z této podsítě. Během tohoto přepnutí se ukončí všechna existující otevřená připojení TCP ke službě. Při povolování nebo zakazování koncového bodu služby pro podsíť se ujistěte, že nejsou spuštěné žádné důležité úlohy. Také se ujistěte, že se vaše aplikace můžou po přepnutí IP adres automaticky připojit ke službám Azure.
 
@@ -152,4 +152,4 @@ Nejčastější dotazy najdete v tématu [Virtual Network časté otázky týkaj
 - [Zabezpečení služby Azure synapse Analytics na virtuální síť](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Integrace služeb Azure ve virtuálních sítích](virtual-network-for-azure-services.md)
 - [Virtual Network zásady koncového bodu služby](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
-- [Šablona Azure Resource Manager](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
+- [Šablona Azure Resource Manageru](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)

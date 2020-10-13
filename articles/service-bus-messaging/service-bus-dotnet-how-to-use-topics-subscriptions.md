@@ -6,10 +6,10 @@ ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bc7435fb46d5783cb487038a10709a9e40b0d136
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021642"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Začínáme s tématy služby Service Bus
@@ -21,7 +21,7 @@ Tento kurz se zabývá následujícími kroky:
 1. Napíšeme konzolovou aplikaci .NET Core pro odeslání sady zpráv do tématu.
 2. Napíšeme konzolovou aplikaci .NET Core pro příjem těchto zpráv z odběru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Postupujte podle kroků v [rychlém startu: pomocí Azure Portal vytvořte Service Bus téma a odběry k tématu](service-bus-quickstart-topics-subscriptions-portal.md) , abyste mohli provádět následující úlohy:
@@ -359,7 +359,7 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další konzolo
    
     ![Délka tématu][topic-message-receive]
 
-Blahopřejeme! Právě jste s použitím knihovny .NET Standard vytvořili téma a odběr, odeslali 10 zpráv a přijali tyto zprávy.
+Gratulujeme! Právě jste s použitím knihovny .NET Standard vytvořili téma a odběr, odeslali 10 zpráv a přijali tyto zprávy.
 
 > [!NOTE]
 > Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 

@@ -4,10 +4,10 @@ description: Při používání Azure Lighthouse je důležité vzít v úvahu z
 ms.date: 08/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 097611837e3bba2d1a44ec521862e03cc467d707
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399376"
 ---
 # <a name="recommended-security-practices"></a>Doporučené postupy zabezpečení

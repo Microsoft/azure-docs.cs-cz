@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 8b74e23147e4dcc6f786c1c08b8a03bd07dd0b9a
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91744028"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Použití Azure Automation Runbooky ke správě zařízení StorSimple
@@ -22,7 +22,7 @@ Tento článek popisuje, jak se Azure Automation Runbooky používají ke správ
 
 V této části najdete příklad skriptu Windows PowerShellu pro StorSimple a podrobnosti o různých krocích potřebných k importu skriptu do sady Runbook a následném publikování a spuštění sady Runbook.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -182,7 +182,7 @@ Chcete-li vytvořit modul automatizace pro správu zařízení řady StorSimple 
    3. Vytvořte novou skupinu prostředků nebo vyberte některou z existujících skupin prostředků.
    4. Vyberte **umístění** (Pokud je to možné stejné jako v případě, kde je služba spuštěná).
    5. Ponechte vybranou možnost výchozí **účet Spustit jako** .
-   6. Volitelně můžete zaškrtnout **Připnout na řídicí panel**. Klikněte na **Create** (Vytvořit).
+   6. Volitelně můžete zaškrtnout **Připnout na řídicí panel**. Klikněte na **Vytvořit**.
 
        ![Snímek obrazovky se zobrazí v podokně Přidat účet Automation hodnoty pro předplatné, vytvořit účet Spustit jako pro Azure a vytvořit 2.](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
@@ -198,7 +198,7 @@ Chcete-li vytvořit modul automatizace pro správu zařízení řady StorSimple 
 
     ![Snímek obrazovky se zobrazí podokno přidat modul s hodnotou odeslat soubor a OK.](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. Přejděte na **proces automatizace automatizace > Runbooky a klikněte na + Přidat Runbook**. V okně **Přidat Runbook** klikněte na **importovat existující Runbook**. Přejděte na soubor skriptu prostředí Windows PowerShell pro **soubor sady Runbook**. Typ Runbooku se vybere automaticky. Zadejte název a nepovinný popis Runbooku. Klikněte na **Create** (Vytvořit).
+6. Přejděte na **proces automatizace automatizace > Runbooky a klikněte na + Přidat Runbook**. V okně **Přidat Runbook** klikněte na **importovat existující Runbook**. Přejděte na soubor skriptu prostředí Windows PowerShell pro **soubor sady Runbook**. Typ Runbooku se vybere automaticky. Zadejte název a nepovinný popis Runbooku. Klikněte na **Vytvořit**.
 
     ![přidat modul](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 

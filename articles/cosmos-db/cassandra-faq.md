@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
 ms.openlocfilehash: b327c0786fb07488fd8863272598dbffe19bfe07
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88167602"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Nejčastější dotazy týkající se rozhraní API Cassandra v Azure Cosmos DB
@@ -133,7 +133,7 @@ Ano, hodnota TTL je podporována.
 
 ### <a name="how-can-i-monitor-infrastructure-along-with-throughput"></a>Jak můžu monitorovat infrastrukturu spolu s propustností?
 
-Azure Cosmos DB je služba platformy, která vám pomůže zvýšit produktivitu a nedělejte si starosti se správou a monitorováním infrastruktury. Například nemusíte monitorovat stav uzlu, stav repliky, GC a parametry operačního systému dříve s různými nástroji. Stačí jenom zajistit propustnost, která je k dispozici v metrikách portálu, abyste viděli, jestli se vám omezilo omezení, a pak tuto propustnost zvýšíte nebo snížíte. Další možnosti:
+Azure Cosmos DB je služba platformy, která vám pomůže zvýšit produktivitu a nedělejte si starosti se správou a monitorováním infrastruktury. Například nemusíte monitorovat stav uzlu, stav repliky, GC a parametry operačního systému dříve s různými nástroji. Stačí jenom zajistit propustnost, která je k dispozici v metrikách portálu, abyste viděli, jestli se vám omezilo omezení, a pak tuto propustnost zvýšíte nebo snížíte. Můžete:
 
 - Monitorovat [SLA](monitor-accounts.md)
 - Použití [metrik](use-metrics.md)

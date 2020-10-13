@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: sharrai
 ms.openlocfilehash: 51f45b5c0b8a2729f64eb376e06875719474cbfc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89663890"
 ---
 # <a name="monitoring-churn-patterns-on-virtual-machines"></a>Monitorování vzorů změn na virtuálních počítačích
@@ -19,9 +19,9 @@ Tento článek poskytuje přehled různých nástrojů, které se dají použít
 
 ## <a name="for-azure-virtual-machines-windows-or-linux"></a>Pro virtuální počítače Azure (Windows nebo Linux)
 
-Pokud je váš počítač hostovaný v Azure a používá spravovaný nebo nespravovaný disk pro úložiště, můžete snadno sledovat výkon sledováním metrik disků. To vám umožní pečlivě monitorovat a nastavit správný výběr disku tak, aby vyhovoval vašemu vzoru použití aplikace. Můžete ji také použít k vytvoření výstrah, diagnostiky a automatizace sestavení. [Přečtěte si další informace](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
+Pokud je váš počítač hostovaný v Azure a používá spravovaný nebo nespravovaný disk pro úložiště, můžete snadno sledovat výkon sledováním metrik disků. To vám umožní pečlivě monitorovat a nastavit správný výběr disku tak, aby vyhovoval vašemu vzoru použití aplikace. Můžete ji také použít k vytvoření výstrah, diagnostiky a automatizace sestavení. [Další informace](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
 
-Po ochraně počítačů pomocí Azure Site Recovery můžete monitorovat počítače pomocí protokolů Azure Monitor a Log Analytics. [Přečtěte si další informace](https://docs.microsoft.com/azure/site-recovery/monitor-log-analytics).
+Po ochraně počítačů pomocí Azure Site Recovery můžete monitorovat počítače pomocí protokolů Azure Monitor a Log Analytics. [Další informace](https://docs.microsoft.com/azure/site-recovery/monitor-log-analytics).
 
 K dispozici jsou také některé nástroje specifické pro operační systém, které můžete použít.
 

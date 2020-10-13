@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91822998"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Power BI výstup z Azure Stream Analytics
@@ -24,7 +24,7 @@ Power BI výstup z Stream Analytics v současnosti není k dispozici v oblastech
 
 V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro konfiguraci Power BIho výstupu.
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 | --- | --- |
 | Alias pro výstup |Zadejte popisný název, který se použije v dotazech k nasměrování výstupu dotazu do tohoto Power BI výstupu. |
 | Pracovní prostor skupiny |Pokud chcete povolit sdílení dat s jinými Power BI uživateli, můžete vybrat skupiny v rámci účtu Power BI nebo zvolit **pracovní prostor** , pokud ho nechcete zapisovat do skupiny. Aktualizace existující skupiny vyžaduje obnovení Power BI ověřování. |

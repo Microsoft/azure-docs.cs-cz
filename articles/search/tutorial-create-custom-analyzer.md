@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.openlocfilehash: ac7cee2c1d72b4102fb397aa8093c2d38686fc88
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397262"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Kurz: Vytvoření vlastního analyzátoru pro telefonní čísla
@@ -29,7 +29,7 @@ V tomto kurzu použijeme post a [rozhraní REST API](/rest/api/searchservice/) s
 > * Testování způsobu, jakým vlastní text analyzátoru tokenizes
 > * Vytvoření samostatných analyzátorů pro indexování a hledání k dalšímu zlepšení výsledků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu jsou vyžadovány následující služby a nástroje.
 
@@ -160,7 +160,7 @@ POST https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basi
 
 S daty v indexu jsme připraveni začít hledat.
 
-### <a name="search"></a>Search
+### <a name="search"></a>Hledání
 
 Aby bylo hledání intuitivní, doporučujeme, abyste uživatelům neočekávali formátování dotazů konkrétním způsobem. Uživatel může hledat `(425) 555-0100` v jakémkoli z formátů, které jsme ukázali výše, a pořád očekává, že budou vráceny výsledky. V tomto kroku otestujeme několik ukázkových dotazů, abyste zjistili, jak se provádějí.
 
@@ -239,11 +239,11 @@ Analyzátory se skládají ze tří součástí:
 
 V následujícím diagramu vidíte, jak budou tyto tři komponenty spolupracovat, aby tokenizovat větu:
 
-  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="Diagram procesu analyzátoru, který tokenizovat větu":::
+  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="Adresa URL a záhlaví žádosti post":::
 
 Tyto tokeny se pak ukládají v obráceném indexu, který umožňuje rychlé fulltextové vyhledávání.  Obrácený index umožňuje fulltextové vyhledávání podle mapování všech jedinečných podmínek extrahovaných během lexikální analýzy do dokumentů, ve kterých se vyskytují. Příklad můžete vidět v následujícím diagramu:
 
-  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="Příklad obráceného indexu":::
+  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="Adresa URL a záhlaví žádosti post":::
 
 Při hledání podmínek uložených v obráceném indexu se objeví vše hledání. Když uživatel vydá dotaz:
 
@@ -251,7 +251,7 @@ Při hledání podmínek uložených v obráceném indexu se objeví vše hledá
 1. Obrácený index pak vyhledá dokumenty s vyhovujícími podmínkami.
 1. Nakonec jsou načtené dokumenty seřazeny podle [algoritmu podobnosti](index-ranking-similarity.md).
 
-  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="Diagram podobnosti pořadí procesů analyzátoru":::
+  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="Adresa URL a záhlaví žádosti post":::
 
 Pokud se výrazy dotazu neshodují s podmínkami v obráceném indexu, výsledky se nevrátí. Další informace o tom, jak dotazy fungují, najdete v tomto článku pro [fulltextové vyhledávání](search-lucene-query-architecture.md).
 

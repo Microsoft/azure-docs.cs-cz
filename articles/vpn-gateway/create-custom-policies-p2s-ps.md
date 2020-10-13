@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: a77a870304e20c179e22b4a4ffe404315894d8a0
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743688"
 ---
 # <a name="create-and-set-custom-ipsec-policies-for-point-to-site-preview"></a>Vytvoření a nastavení vlastních zásad IPsec pro Point-to-Site (Preview)
@@ -21,7 +21,7 @@ Pokud vaše prostředí vyžaduje vlastní zásadu IPsec pro šifrování, můž
 
 ## <a name="before-you-begin"></a>Než začnete
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ověřte, že vaše prostředí splňuje následující předpoklady:
 

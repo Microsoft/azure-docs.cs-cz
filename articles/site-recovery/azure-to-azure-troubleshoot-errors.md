@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
 ms.openlocfilehash: ab3597ddba3e41e88c8b2b575ed5857aca01e610
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397959"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Řešení chyb replikace virtuálních počítačů Azure do Azure
@@ -281,14 +281,14 @@ Chcete-li znovu nastavit stav replikace virtuálního počítače, můžete zvol
 1. Přejít na disky s názvem **replikované položky**  >  _název virtuálního počítače_  >  **Disks**.
 1. Vyberte nechráněný disk a pak vyberte **Povolit replikaci**:
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="Povolte replikaci na discích virtuálních počítačů.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="com – chyba.":::
 
 #### <a name="to-dismiss-the-warning"></a>Zavření upozornění
 
 1. Přejít na **Replicated items**  >  _název virtuálního počítače_replikovaných položek.
 1. V části **Přehled** vyberte upozornění a pak vyberte **OK**.
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="Zavřít upozornění na nový disk":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="com – chyba.":::
 
 ## <a name="vm-removed-from-vault-completed-with-information-error-code-150225"></a>Virtuální počítač odebraný z trezoru byl dokončen s informacemi (kód chyby 150225).
 
@@ -309,7 +309,7 @@ Toto upozornění můžete ignorovat, pokud už nemáte v úmyslu chránit tento
 
 1. Odeberte zámek z virtuálního počítače nebo skupiny prostředků virtuálního počítače. Například na následujícím obrázku musí být odstraněn zámek prostředků na virtuálním počítači s názvem `MoveDemo` :
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Odeberte z virtuálního počítače zámek.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com – chyba.":::
 
 1. Stáhněte si skript, kterým [odeberete starou konfiguraci Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
 1. Spusťte skript _Cleanup-stale-asr-config-Azure-VM.ps1_. Jako parametry zadejte **ID předplatného**, **skupinu prostředků virtuálního počítače**a **název virtuálního počítače** .
@@ -334,7 +334,7 @@ Pokud jste povolili replikaci pro virtuální počítač Azure pomocí Site Reco
 
 1. Odeberte zámek z virtuálního počítače nebo skupiny prostředků virtuálního počítače. Například na následujícím obrázku musí být odstraněn zámek prostředků na virtuálním počítači s názvem `MoveDemo` :
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Odeberte z virtuálního počítače zámek.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com – chyba.":::
 
 1. Stáhněte si skript, kterým [odeberete starou konfiguraci Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
 1. Spusťte skript _Cleanup-stale-asr-config-Azure-VM.ps1_. Jako parametry zadejte **ID předplatného**, **skupinu prostředků virtuálního počítače**a **název virtuálního počítače** .
@@ -367,7 +367,7 @@ Pokud na virtuálním počítači Azure existuje stará Site Recovery konfigurac
 
 1. Odeberte zámek (pokud existuje) z virtuálního počítače nebo skupiny prostředků virtuálního počítače. Například na následujícím obrázku musí být odstraněn zámek prostředků na virtuálním počítači s názvem `MoveDemo` :
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="Odeberte z virtuálního počítače zámek.":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com – chyba.":::
 
 1. Stáhněte si skript, kterým [odeberete starou konfiguraci Site Recovery](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1).
 1. Spusťte skript _Cleanup-stale-asr-config-Azure-VM.ps1_. Jako parametry zadejte **ID předplatného**, **skupinu prostředků virtuálního počítače**a **název virtuálního počítače** .
@@ -404,17 +404,17 @@ Aby bylo možné povolit replikaci na virtuálním počítači, musí být jeho 
 
 Pokud je zdrojový virtuální počítač součástí virtuální sítě a v konfiguraci zotavení po havárii je už namapovaný jiný virtuální počítač ze stejné virtuální sítě, rozevírací seznam výběr sítě není k dispozici (ve výchozím nastavení se zobrazuje šedě).
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="Seznam výběru sítě není dostupný.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="com – chyba.":::
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>Problém 2: dříve jste chránili virtuální počítač a potom jste zakázali replikaci.
 
 Vypnutím replikace virtuálního počítače se neodstraní mapování sítě. Mapování je nutné odstranit z Recovery Services trezoru, ve kterém byl virtuální počítač chráněn. Vyberte **Recovery Services trezor** a přejít na **Správa**  >  **Site Recovery infrastruktury**  >  **pro**  >  **mapování sítě**virtuálních počítačů Azure.
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="Odstraňte mapování sítě.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="com – chyba.":::
 
 Cílová síť, která byla nakonfigurovaná během instalace pro zotavení po havárii, se dá po počáteční instalaci změnit a po ochraně virtuálního počítače. Pokud chcete **Upravit mapování sítě** , vyberte název sítě:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="Upravte mapování sítě.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="com – chyba.":::
 
 
 ## <a name="com-or-vss-error-code-151025"></a>COM+ nebo VSS (kód chyby 151025)
@@ -437,7 +437,7 @@ Nastavte systémovou aplikaci modelu COM+ a služba Stínová kopie svazku na au
 1. Otevřete konzolu služby v systému Windows.
 1. Ujistěte se, že systémová aplikace modelu COM+ a služba Stínová kopie svazku nejsou nastavené na **zakázáno** jako **Typ spouštění**.
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="Ověřte typ spouštění aplikace COM a systémové aplikace a služba Stínová kopie svazku.":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="com – chyba.":::
 
 ## <a name="unsupported-managed-disk-size-error-code-150172"></a>Nepodporovaná velikost spravovaného disku (kód chyby 150172)
 
@@ -475,7 +475,7 @@ V následujících příkladech jsou řádky ze souborů GRUB, kde se místo po�
 
 Nahraďte názvy každého zařízení odpovídajícím identifikátorem UUID:
 
-1. Vyhledá UUID zařízení provedením příkazu `blkid <device name>` . Příklad:
+1. Vyhledá UUID zařízení provedením příkazu `blkid <device name>` . Například:
 
    ```shell
    blkid /dev/sda1

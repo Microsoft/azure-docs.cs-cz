@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 466e590ba22efe1c2fbb457c15bc7f979f8a172e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259631"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací identity v Azure Active Directory B2C vlastní zásady
@@ -86,7 +86,7 @@ Následující části uvádějí dostupné překladače deklarací identity.
 | {Context: BuildNumber} | Verze architektury rozhraní identity Experience Framework (číslo buildu).  | 1.0.507.0 |
 | {Context: ID korelace} | ID korelace.  | 00000000-0000-0000-0000-000000000000 |
 | {Context: DateTimeInUtc} |Datum a čas ve standardu UTC.  | 10/10/2018 12:00:00 ODP. |
-| {Context: DeploymentMode} |Režim nasazení zásad.  | Produkce |
+| {Context: DeploymentMode} |Režim nasazení zásad.  | Výroba |
 | {Context: IPAddress} | IP adresa uživatele. | 11.111.111.11 |
 | {Context: políčko zůstat přihlášeni} | Určuje, zda je zaškrtnuto políčko [zůstat přihlášeni](custom-policy-keep-me-signed-in.md) . |  true |
 

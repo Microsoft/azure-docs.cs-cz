@@ -12,10 +12,10 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cfce5b42d37908d0ba89cff9c4831cb25b968524
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259318"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci IDology s využitím Azure Active Directory B2C 
@@ -41,7 +41,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Diagram architektury IDology](media/partner-idology/idology-architecture-diagram.png)
 
-| Krok | Popis |
+| Krok | Description |
 |------|------|
 |1     | Uživatel přijde na přihlašovací stránku. |
 |2     | Uživatel vybere možnost registrace pro vytvoření nového účtu a zadání informací do stránky. Azure AD B2C shromažďuje atributy uživatele. |

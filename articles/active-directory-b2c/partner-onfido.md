@@ -12,10 +12,10 @@ ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91259216"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Onfido s využitím Azure Active Directory B2C
@@ -50,7 +50,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![snímek obrazovky pro onfido – architektura – diagram](media/partner-onfido/onfido-architecture-diagram.png)
 
-|Krok | Popis |
+|Krok | Description |
 |:-----| :-----------|
 | 1. | Uživatel dorazí na přihlašovací stránku. Uživatel se přihlásí k vytvoření nového účtu a zadá informace na stránku. Azure AD B2C shromažďuje atributy uživatele. Klientská aplikace Onfido hostovaná v Azure AD B2C provede předběžné kontroly informací o uživateli.
 | 2. | Azure AD B2C volá rozhraní API střední vrstvy a předá ho atributům uživatele.

@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89443020"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Přesun dat z Amazon RedShift pomocí Azure Data Factory
@@ -61,12 +61,12 @@ Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pr
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| **textový** |Tato vlastnost musí být nastavená na **AmazonRedshift**. |Ano |
-| **WebServer** |IP adresa nebo název hostitele serveru Amazon RedShift. |Ano |
+| **textový** |Tato vlastnost musí být nastavená na **AmazonRedshift**. |Yes |
+| **WebServer** |IP adresa nebo název hostitele serveru Amazon RedShift. |Yes |
 | **přístavní** |Číslo portu TCP, který server Amazon RedShift používá k naslouchání klientským připojením. |Ne (výchozí hodnota je 5439) |
-| **databáze** |Název databáze Amazon RedShift. |Ano |
-| **jmen** |Jméno uživatele, který má přístup k databázi. |Ano |
-| **heslo** |Heslo pro uživatelský účet. |Ano |
+| **databáze** |Název databáze Amazon RedShift. |Yes |
+| **jmen** |Jméno uživatele, který má přístup k databázi. |Yes |
+| **heslo** |Heslo pro uživatelský účet. |Yes |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
@@ -87,7 +87,7 @@ V případě aktivity kopírování je-li zdrojem typu **AmazonRedshiftSource**,
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | **zadávání** | K načtení dat použijte vlastní dotaz. |Ne (Pokud je určena vlastnost **TableName** objektu DataSet) |
-| **redshiftUnloadSettings** | Obsahuje skupinu vlastností při použití příkazu RedShift **Unload** . | Ne |
+| **redshiftUnloadSettings** | Obsahuje skupinu vlastností při použití příkazu RedShift **Unload** . | No |
 | **s3LinkedServiceName** | Amazon S3 pro použití jako dočasné úložiště. Propojená služba je určena pomocí Azure Data Factory název typu **AwsAccessKey**. | Povinné při použití vlastnosti **redshiftUnloadSettings** |
 | **interval intervalu** | Určuje, který blok Amazon S3 se má použít k uložení dočasných dat. Pokud tato vlastnost není k dispozici, aktivita kopírování automaticky vygeneruje kontejner. | Povinné při použití vlastnosti **redshiftUnloadSettings** |
 
@@ -338,7 +338,7 @@ Následující mapování se používají, když aktivita kopírování převede
 | DATOVÉHO |Řetězec |
 | CHAR |Řetězec |
 | VARCHAR |Řetězec |
-| DATE (Datum) |DateTime |
+| DATE |DateTime |
 | ČASOVÉ razítko |DateTime |
 | TEXT |Řetězec |
 

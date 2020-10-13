@@ -9,13 +9,13 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 224f86a40fa812003463301f97bcae07de907f3c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91579984"
 ---
-# <a name="iot-plug-and-play-bridge"></a>Most IoT technologie Plug and Play
+# <a name="iot-plug-and-play-bridge"></a>Přemostění IoT Plug and Play
 
 IoT technologie Plug and Play most je open-source aplikace pro připojení stávajících zařízení připojených k bráně Windows nebo Linux jako zařízení IoT technologie Plug and Play. Po instalaci a konfiguraci aplikace v počítači se systémem Windows nebo Linux ji můžete použít k připojení připojených zařízení ke službě IoT Hub. Pomocí tohoto mostu můžete namapovat rozhraní IoT technologie Plug and Play do telemetrie, která připojená zařízení odesílají, pracují s vlastnostmi zařízení a vyvolávat příkazy.
 
@@ -29,17 +29,17 @@ IoT technologie Plug and Play most podporuje ve výchozím nastavení následuj�
 
 |Okraj|Windows|Linux|
 |---------|---------|---------|
-|[Bluetooth LE](https://aka.ms/iot-pnp-bridge-bluetooth)       |Ano|Ne|
-|[Kamery](https://aka.ms/iot-pnp-bridge-camera)               |Ano|Ne|
-|[Modbus](https://aka.ms/iot-pnp-bridge-modbus)                |Ano|Ano|
-|[MQTT](https://aka.ms/iot-pnp-bridge-mqtt)                    |Ano|Ano|
-|[Sér](https://aka.ms/iot-pnp-bridge-serial)                |Ano|Ano|
-|[Periferní zařízení s Windows USB](https://aka.ms/iot-pnp-bridge-usb)  |Ano|Neuvedeno|
+|[Bluetooth LE](https://aka.ms/iot-pnp-bridge-bluetooth)       |Yes|No|
+|[Kamery](https://aka.ms/iot-pnp-bridge-camera)               |Yes|No|
+|[Modbus](https://aka.ms/iot-pnp-bridge-modbus)                |Yes|Yes|
+|[MQTT](https://aka.ms/iot-pnp-bridge-mqtt)                    |Yes|Yes|
+|[Sér](https://aka.ms/iot-pnp-bridge-serial)                |Yes|Yes|
+|[Periferní zařízení s Windows USB](https://aka.ms/iot-pnp-bridge-usb)  |Yes|Neuvedeno|
 
 >[!Important]
 >Vývojáři můžou pomocí pokynů v **[dokumentaci pro vývojáře iot technologie Plug and Play přemostění](https://aka.ms/iot-pnp-bridge-dev-doc)** v rámci dokumentace ke službě IoT technologie Plug and Play Přemostit podporu dalších protokolů zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="os-platform"></a>Platforma operačního systému
 

@@ -8,10 +8,10 @@ ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: efc507cb69b3368a2102b6de0b905657d5806ef2
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90561427"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Automatická správa zařízení v digitálních prostředcích Azure pomocí služby Device Provisioning (DPS)
@@ -40,7 +40,7 @@ Simulátor zařízení je založený na **Node.js**, verzi 10.0. x nebo novějš
 
 Následující obrázek znázorňuje architekturu tohoto řešení pomocí digitálních vláken Azure se službou Device Provisioning. Zobrazuje jak zřizování zařízení, tak i jejich vyřazení.
 
-:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="Zobrazení zařízení a několika služeb Azure v rámci kompletního scénáře. Data se převedou mezi zařízením termostata a DPS. Data také přecházejí z DPS do IoT Hub a do digitálních vláken Azure pomocí funkce Azure s označením přidělení. Data z manuální akce odstranit zařízení přecházejí do IoT Hub > Event Hubs > Azure Functions digitálních vláken Azure.":::
+:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="Zobrazení zařízení a několika služeb Azure v rámci kompletního scénáře. Data se převedou mezi zařízením termostata a DPS. Data také přecházejí z DPS do IoT Hub a do digitálních vláken Azure pomocí funkce Azure s označením &quot;přidělení&quot;. Data z manuální akce odstranit zařízení přecházejí do IoT Hub > Event Hubs > Azure Functions digitálních vláken Azure.":::
 
 Tento článek je rozdělen do dvou částí:
 * [*Automatické zřizování zařízení pomocí služby Device Provisioning Service*](#auto-provision-device-using-device-provisioning-service)
@@ -52,7 +52,7 @@ Podrobnější vysvětlení jednotlivých kroků v architektuře najdete v jejic
 
 V této části budete připojovat službu Device Provisioning k digitálním Vlákenám Azure k automatickému zřizování zařízení přes níže uvedenou cestu. Toto je výňatek z plné architektury uvedené [výše](#solution-architecture).
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Zřizovací tok – ukázka diagramu architektury řešení, s čísly, která se přidávají k označení částí toku. Data se převedou mezi zařízeními termostata a DPS (1 pro zařízení > DPS a 5 pro zařízení DPS >). Data také přecházejí z DPS do IoT Hub (4) a do digitálních vláken Azure (3) prostřednictvím funkce Azure s označením přidělení (2).":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Zobrazení zařízení a několika služeb Azure v rámci kompletního scénáře. Data se převedou mezi zařízením termostata a DPS. Data také přecházejí z DPS do IoT Hub a do digitálních vláken Azure pomocí funkce Azure s označením &quot;přidělení&quot;. Data z manuální akce odstranit zařízení přecházejí do IoT Hub > Event Hubs > Azure Functions digitálních vláken Azure.":::
 
 Tady je popis toku procesu:
 1. Zařízení kontaktuje koncový bod DPS a předává identifikační informace, aby prokázal svoji identitu.
@@ -287,7 +287,7 @@ node .\adt_custom_register.js
 ```
 
 Mělo by se zobrazit, že zařízení je registrované a připojené k IoT Hub, a pak začít odesílat zprávy.
-:::image type="content" source="media/how-to-provision-using-dps/output.png" alt-text="okno Příkaz zobrazení registrace zařízení a odesílání zpráv":::
+:::image type="content" source="media/how-to-provision-using-dps/output.png" alt-text="Zobrazení zařízení a několika služeb Azure v rámci kompletního scénáře. Data se převedou mezi zařízením termostata a DPS. Data také přecházejí z DPS do IoT Hub a do digitálních vláken Azure pomocí funkce Azure s označením &quot;přidělení&quot;. Data z manuální akce odstranit zařízení přecházejí do IoT Hub > Event Hubs > Azure Functions digitálních vláken Azure.":::
 
 ### <a name="validate"></a>Ověření
 
@@ -298,13 +298,13 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 ```
 
 Mělo by se zobrazit nevláken zařízení, které se nachází v instanci digitálních vláken Azure.
-:::image type="content" source="media/how-to-provision-using-dps/show-provisioned-twin.png" alt-text="okno Příkaz zobrazení nově vytvořeného vlákna":::
+:::image type="content" source="media/how-to-provision-using-dps/show-provisioned-twin.png" alt-text="Zobrazení zařízení a několika služeb Azure v rámci kompletního scénáře. Data se převedou mezi zařízením termostata a DPS. Data také přecházejí z DPS do IoT Hub a do digitálních vláken Azure pomocí funkce Azure s označením &quot;přidělení&quot;. Data z manuální akce odstranit zařízení přecházejí do IoT Hub > Event Hubs > Azure Functions digitálních vláken Azure.":::
 
 ## <a name="auto-retire-device-using-iot-hub-lifecycle-events"></a>Automatické vyřazení zařízení pomocí IoT Hub událostí životního cyklu
 
 V této části budete připojovat IoT Hub události životního cyklu do digitálních vláken Azure k automatickému vyřazení zařízení pomocí níže uvedené cesty. Toto je výňatek z plné architektury uvedené [výše](#solution-architecture).
 
-:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="Vyřazení toku zařízení – výňatek diagramu architektury řešení, s čísly, která se přiřadí k oddílům toku. Zařízení termostatu se zobrazí bez připojení ke službám Azure v diagramu. Data z manuální akce odstranit zařízení nacházejí do IoT Hub (1) > Event Hubs (2) > Azure Functions > digitálních vláken Azure (3).":::
+:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="Zobrazení zařízení a několika služeb Azure v rámci kompletního scénáře. Data se převedou mezi zařízením termostata a DPS. Data také přecházejí z DPS do IoT Hub a do digitálních vláken Azure pomocí funkce Azure s označením &quot;přidělení&quot;. Data z manuální akce odstranit zařízení přecházejí do IoT Hub > Event Hubs > Azure Functions digitálních vláken Azure.":::
 
 Tady je popis toku procesu:
 1. Externí nebo ruční proces aktivuje odstranění zařízení v IoT Hub.
@@ -470,7 +470,7 @@ Pokyny k vytvoření IoT Hub trasy jsou popsány v tomto článku: [*použití s
 Postup, který je třeba provést v této instalaci:
 1. Vytvořte vlastní koncový bod centra událostí IoT Hub. Tento koncový bod by měl cílit na centrum událostí, které jste vytvořili v části [*vytvoření centra událostí*](#create-an-event-hub) .
 2. Přidejte trasu *událostí životního cyklu zařízení* . Použijte koncový bod vytvořený v předchozím kroku. Události životního cyklu zařízení můžete omezit tak, aby se události odstranění odesílaly jenom tak, že přidáte dotaz směrování `opType='deleteDeviceIdentity'` .
-    :::image type="content" source="media/how-to-provision-using-dps/lifecycle-route.png" alt-text="Přidat trasu":::
+    :::image type="content" source="media/how-to-provision-using-dps/lifecycle-route.png" alt-text="Zobrazení zařízení a několika služeb Azure v rámci kompletního scénáře. Data se převedou mezi zařízením termostata a DPS. Data také přecházejí z DPS do IoT Hub a do digitálních vláken Azure pomocí funkce Azure s označením &quot;přidělení&quot;. Data z manuální akce odstranit zařízení přecházejí do IoT Hub > Event Hubs > Azure Functions digitálních vláken Azure.":::
 
 Jakmile projdete tento tok, vše je nastaveno na kompletní vyřazení zařízení do konce.
 
@@ -491,7 +491,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 ```
 
 Měli byste vidět, že se vlákna zařízení v instanci digitálních vláken Azure už nenašly.
-:::image type="content" source="media/how-to-provision-using-dps/show-retired-twin.png" alt-text="okno Příkaz zobrazení vlákna Nenalezeno":::
+:::image type="content" source="media/how-to-provision-using-dps/show-retired-twin.png" alt-text="Zobrazení zařízení a několika služeb Azure v rámci kompletního scénáře. Data se převedou mezi zařízením termostata a DPS. Data také přecházejí z DPS do IoT Hub a do digitálních vláken Azure pomocí funkce Azure s označením &quot;přidělení&quot;. Data z manuální akce odstranit zařízení přecházejí do IoT Hub > Event Hubs > Azure Functions digitálních vláken Azure.":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

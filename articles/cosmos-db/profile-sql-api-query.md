@@ -9,10 +9,10 @@ ms.date: 05/17/2019
 ms.author: girobins
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 71ebc90834083def5b82e16dc387a6e61943206d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89021744"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>Získat metriky spouštění dotazů SQL a analyzovat výkon dotazů pomocí sady .NET SDK
@@ -234,7 +234,7 @@ Tento dotaz je nyní možné zpracovat z indexu.
 
 Další informace o ladění výkonu dotazů najdete v článku o [výkonu dotazů ladění](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) .
 
-## <a name="references"></a><a id="References"></a>Odkazy
+## <a name="references"></a><a id="References"></a>Reference
 
 - [Azure Cosmos DB specifikace SQL](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 - [ANSI SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)

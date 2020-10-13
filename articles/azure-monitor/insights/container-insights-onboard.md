@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak povolit a nakonfigurovat Azure Monitor
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 1cb393faded714593ce635669f585d5979ee69b8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320302"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Povolit Azure Monitor pro kontejnery
@@ -80,7 +80,7 @@ V následující tabulce jsou uvedeny informace o konfiguraci proxy serveru a br
 
 V následující tabulce jsou uvedené informace o konfiguraci proxy serveru a brány firewall pro Azure Čína 21Vianet:
 
-|Prostředek agenta|Port |Popis | 
+|Prostředek agenta|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Přijímání dat |
 | `*.oms.opinsights.azure.cn` | 443 | Připojování OMS |
@@ -88,7 +88,7 @@ V následující tabulce jsou uvedené informace o konfiguraci proxy serveru a b
 
 Následující tabulka uvádí informace o konfiguraci proxy serveru a brány firewall pro vládu Azure USA:
 
-|Prostředek agenta|Port |Popis | 
+|Prostředek agenta|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Přijímání dat |
 | `*.oms.opinsights.azure.us` | 443 | Připojování OMS |
