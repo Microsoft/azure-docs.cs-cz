@@ -3,12 +3,12 @@ title: Nejčastější dotazy k zálohování Souborů Azure
 description: V tomto článku najdete odpovědi na běžné otázky týkající se ochrany sdílených složek Azure pomocí služby Azure Backup.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 74d8cc9cdb1d9c01c8238f205ae485b61d665cd7
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: e2b6afb25e189ee2848f25c0ba59d843baf37090
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91729062"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940831"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 
@@ -78,20 +78,20 @@ Ke všem snímkům pořízeným pomocí Azure Backup lze přihlédnout zobrazen�
 
 ### <a name="what-happens-after-i-move-a-backed-up-file-share-to-a-different-subscription"></a>Co se stane po přesunu zálohované sdílené složky do jiného předplatného?
 
-Jakmile se sdílená složka přesune do jiného předplatného, považuje se za novou sdílenou složku Azure Backup. Níže jsou uvedené doporučené kroky:
+Jakmile se sdílená složka přesune do jiného předplatného, považuje se za novou sdílenou složku Azure Backup. Toto jsou doporučené kroky:
  
-Scénář: řekněme, že máte sdílenou složku FS1 v předplatném S1 a že je chráněná pomocí trezoru v1. Nyní chcete přesunout sdílenou složku do předplatného S2.
+Scénář: řekněme, že máte sdílenou složku *FS1* v předplatném *S1* a že je chráněná pomocí trezoru *v1* . Nyní chcete přesunout sdílenou složku do předplatného *S2*.
  
 1.  Přesuňte požadovaný účet úložiště a sdílení souborů (FS1) do jiného předplatného (S2).
-2.  V trezoru v1 spusťte funkci zastavit ochranu s operací odstranit data pro FS1.
-3.  Zrušte registraci účtu úložiště, který je hostitelem nástroje FS1 z trezoru v1.
+2.  V trezoru v1 aktivujte operaci zastavení ochrany s operací odstranit data pro FS1.
+3.  Zrušte registraci účtu úložiště, který je hostitelem nástroje FS1, z trezoru v1.
 4.  Překonfigurujte zálohu pro FS1, teď se přesunula do S2 s trezorem (v2) v předplatném S2. 
  
-Počítejte s tím, že po překonfigurování zálohy s v2 již nebudou snímky, které byly provedeny s V1, spravovány Azure Backup, a proto bude nutné tyto snímky odstranit ručně podle vašeho požadavku.
+Všimněte si, že po změně konfigurace zálohy s v2 již nebudou snímky, které byly provedeny s V1, spravovány Azure Backup. Proto budete muset snímky odstranit ručně podle vašich požadavků.
 
 ### <a name="can-i-move-my-backed-up-file-share-to-a-different-resource-group"></a>Můžu přesunout zálohovanou sdílenou složku na jinou skupinu prostředků?
  
-Ano, zálohovanou sdílenou složku můžete přesunout do jiné skupiny prostředků. Pro sdílenou složku ale budete muset zálohování znovu nakonfigurovat tak, jak by bylo považováno za nový prostředek Azure Backup. Také snímky, které byly vytvořeny před přesunutím skupiny prostředků, již nebudou spravovány pomocí služby Azure Backup. Proto bude nutné tyto snímky odstranit ručně podle vašich požadavků.
+Ano, zálohovanou sdílenou složku můžete přesunout do jiné skupiny prostředků. Pro sdílenou složku budete ale muset zálohování znovu nakonfigurovat, protože se bude zacházet jako s novým prostředkem Azure Backup. Také snímky, které byly vytvořeny před přesunem skupiny prostředků, již nebudou spravovány službou Azure Backup. Proto budete muset snímky odstranit ručně podle vašich požadavků.
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Jaká je maximální doba uchování, kterou je možné nakonfigurovat pro zálohování?
 

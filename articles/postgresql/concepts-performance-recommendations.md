@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: d547844671e6485e71be7dd8c355de08f3dec5e6
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710562"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Doporučení týkající se výkonu v Azure Database for PostgreSQL – jeden server
@@ -47,7 +47,7 @@ Doporučení *vytvořit index* návrhy nových indexů vám umožní zrychlit ne
 ### <a name="drop-index-recommendations"></a>Vyřadit doporučení indexu
 Kromě detekce chybějících indexů Azure Database for PostgreSQL analyzuje výkon existujících indexů. Pokud je index buď zřídka používaný, nebo redundantní, analyzátor ho doporučuje odstranit.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 * Doporučení k výkonu nejsou pro [repliky čtení](concepts-read-replicas.md)k dispozici.
 ## <a name="next-steps"></a>Další kroky
 - Další informace o [sledování a ladění ](concepts-monitoring.md) ve službě Azure Database for PostgreSQL.

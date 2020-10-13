@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
 ms.openlocfilehash: caaf8e25cdf43602fda8fc72caf7d16b7b56c06a
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361887"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Správa webové služby pomocí portálu Web Services Azure Machine Learning Studio (Classic)
@@ -73,8 +73,8 @@ Klikněte na kartu **řídicí panel** .
 Z řídicího panelu můžete zobrazit celkové využití webové služby v časovém intervalu. V rozevírací nabídce tečka v pravém horním rohu grafu využití můžete vybrat období, které chcete zobrazit. Řídicí panel zobrazuje následující informace:
 
 * **Žádosti v průběhu času** zobrazují krokový graf počtu požadavků v průběhu vybraného časového období. Může vám to usnadnit určení, jestli máte špičky využití.
-* **Požadavek – požadavky na odpověď** zobrazí celkový počet volání požadavků a odpovědí, které služba přijala během vybraného časového období, a počet selhání.
-* **Průměrná doba výpočtu odezvy požadavku** zobrazuje průměrnou dobu potřebnou k provedení přijatých požadavků.
+* **Požadavek – požadavky na odpověď** zobrazí celkový počet Request-Response volání služby přijatá za vybrané časové období a počet selhání.
+* **Průměrná doba Request-Response výpočetního času** zobrazuje průměrnou dobu potřebnou ke spuštění přijatých požadavků.
 * **Dávková žádost** zobrazuje celkový počet požadavků na dávky, které služba přijala během vybraného časového období, a počet selhání.
 * **Průměrná latence úlohy** zobrazuje průměrnou dobu potřebnou k provedení přijatých požadavků.
 * **Chyba** zobrazuje agregovaný počet chyb, ke kterým došlo při volání webové služby.
@@ -140,8 +140,8 @@ Klikněte na kartu **řídicí panel** .
 Z řídicího panelu můžete zobrazit celkové využití webové služby v časovém intervalu. V rozevírací nabídce tečka v pravém horním rohu grafu využití můžete vybrat období, které chcete zobrazit. Řídicí panel zobrazuje následující informace:
 
 * **Žádosti v průběhu času** zobrazují krokový graf počtu požadavků v průběhu vybraného časového období. Může vám to usnadnit určení, jestli máte špičky využití.
-* **Požadavek – požadavky na odpověď** zobrazí celkový počet volání požadavků a odpovědí, které služba přijala během vybraného časového období, a počet selhání.
-* **Průměrná doba výpočtu odezvy požadavku** zobrazuje průměrnou dobu potřebnou k provedení přijatých požadavků.
+* **Požadavek – požadavky na odpověď** zobrazí celkový počet Request-Response volání služby přijatá za vybrané časové období a počet selhání.
+* **Průměrná doba Request-Response výpočetního času** zobrazuje průměrnou dobu potřebnou ke spuštění přijatých požadavků.
 * **Dávková žádost** zobrazuje celkový počet požadavků na dávky, které služba přijala během vybraného časového období, a počet selhání.
 * **Průměrná latence úlohy** zobrazuje průměrnou dobu potřebnou k provedení přijatých požadavků.
 * **Chyba** zobrazuje agregovaný počet chyb, ke kterým došlo při volání webové služby.

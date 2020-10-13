@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 627c0c77cc206cd1b3210fcfc7b2a9bbc3c6daea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9468b9c2c906ffe26bae400dc9e4746630a66e0e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401091"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970312"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Základní hodnoty zabezpečení Azure pro Linux Virtual Machines
 
@@ -32,7 +32,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 Případně, pokud máte konkrétní případ použití pro centralizovanou bránu firewall, Azure Firewall lze také použít ke splnění těchto požadavků.
 
-* [Virtuální sítě a virtuální počítače v Azure](../windows/network-overview.md)
+* [Virtuální sítě a virtuální počítače v Azure](../network-overview.md)
 
 * [Vytvoření Virtual Network](../../virtual-network/quick-create-portal.md)
 
@@ -64,7 +64,7 @@ Můžete také nasadit Firewall webových aplikací Azure (WAF) před kritickým
 
 * [Vytvoření aplikační brány pomocí brány firewall webových aplikací pomocí Azure Portal](../../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
 
-* [Virtuální sítě a virtuální počítače v Azure](../windows/network-overview.md)
+* [Virtuální sítě a virtuální počítače v Azure](../network-overview.md)
 
 * [Informace o skupinách zabezpečení sítě](../../virtual-network/tutorial-filter-network-traffic.md)
 
@@ -82,7 +82,7 @@ K omezení rizika Linux Virtual Machines na schválené IP adresy po omezenou do
 
 * [Postup nasazení Azure Firewall](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Pochopení Azure Security Center integrované analýzy hrozeb](../../security-center/threat-protection.md)
+* [Pochopení Azure Security Center integrované analýzy hrozeb](../../security-center/azure-defender.md)
 
 * [Pochopení Azure Security Center adaptivního posílení zabezpečení sítě](../../security-center/security-center-adaptive-network-hardening.md)
 
@@ -148,7 +148,7 @@ K omezení rizika Linux Virtual Machines na schválené IP adresy po omezenou do
 
 * [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Ukázky Azure Policy pro sítě](/azure/governance/policy/samples/#network)
+* [Ukázky Azure Policy pro sítě](../../governance/policy/samples/built-in-policies.md#network)
 
 * [Vytvoření Azure Blueprint](../../governance/blueprints/create-blueprint-portal.md)
 
@@ -182,7 +182,7 @@ Použijte Azure Policy k ověření (nebo nápravě) konfigurací síťových pr
 
 * [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Ukázky Azure Policy pro sítě](/azure/governance/policy/samples/#network)
+* [Ukázky Azure Policy pro sítě](../../governance/policy/samples/built-in-policies.md#network)
 
 **Monitorování Azure Security Center**: není k dispozici.
 
@@ -306,7 +306,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 **Doprovodné**materiály: budete potřebovat nástroj třetí strany pro detekci ohrožení zabezpečení proti malwaru v rámci operačního systému Linux.
 
-* [Pokyny pro připojování serverů se systémem Linux do Azure Security Center](../../security-center/quick-onboard-linux-computer.md)
+* [Pokyny pro připojování serverů se systémem Linux do Azure Security Center](../../security-center/quickstart-onboard-machines.md)
 
 * [Následující odkaz poskytuje doporučené bezpečnostní pokyny Microsoftu, které můžou sloužit jako seznam kritérií pro vybraný software o ohrožení zabezpečení.](./security-recommendations.md)
 
@@ -514,7 +514,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 * [Vytvoření dalších předplatných Azure](../../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](../../governance/management-groups/create.md)
+* [Postup vytvoření Skupiny pro správu](../../governance/management-groups/create-management-group-portal.md)
 
 * [Vytváření a používání značek](../../azure-resource-manager/management/tag-resources.md)
 
@@ -616,7 +616,7 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 **Doprovodné**materiály: budete potřebovat nástroj třetí strany pro detekci ohrožení zabezpečení proti malwaru v rámci operačního systému Linux.
 
-* [Pokyny pro připojování serverů se systémem Linux do Azure Security Center](../../security-center/quick-onboard-linux-computer.md)
+* [Pokyny pro připojování serverů se systémem Linux do Azure Security Center](../../security-center/quickstart-onboard-machines.md)
 
 * [Doporučené bezpečnostní pokyny pro Microsoft](./security-recommendations.md)
 
@@ -700,7 +700,7 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 * [Vytvoření dalších předplatných Azure](../../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](../../governance/management-groups/create.md)
+* [Postup vytvoření Skupiny pro správu](../../governance/management-groups/create-management-group-portal.md)
 
 * [Vytváření a používání značek](../../azure-resource-manager/management/tag-resources.md)
 
@@ -784,7 +784,7 @@ Kromě použití Change Tracking ke sledování softwarových aplikací, adaptiv
 
 * [Konfigurace a Správa Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../../governance/policy/samples/index.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -824,13 +824,13 @@ Kromě použití Change Tracking ke sledování softwarových aplikací, adaptiv
 
 **Doprovodné**materiály: vysoce rizikové aplikace nasazené ve vašem prostředí Azure mohou být izolované pomocí virtuálních sítí, podsítí, předplatných, skupin pro správu a dostatečně zabezpečených pomocí Azure firewall, firewallu webových aplikací (WAF) nebo skupiny zabezpečení sítě (NSG).
 
-* [Virtuální sítě a virtuální počítače v Azure](../windows/network-overview.md)
+* [Virtuální sítě a virtuální počítače v Azure](../network-overview.md)
 
 * [Přehled Azure Firewall](../../firewall/overview.md)
 
 * [Přehled Firewallu webových aplikací](../../web-application-firewall/overview.md)
 
-* [Přehled zabezpečení sítě](../../virtual-network/security-overview.md)
+* [Přehled zabezpečení sítě](../../virtual-network/network-security-groups-overview.md)
 
 * [Přehled služby Azure Virtual Network](../../virtual-network/virtual-networks-overview.md)
 

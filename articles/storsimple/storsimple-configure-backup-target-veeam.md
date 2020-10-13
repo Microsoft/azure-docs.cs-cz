@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
 ms.openlocfilehash: 052859e99ffd0082994d313508ebb6f0496d980b
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710341"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple jako cíl zálohování s Veeam
@@ -104,7 +104,7 @@ V následujících tabulkách jsou uvedeny úvodní pokyny k modelům zařízen�
 | Scénář zálohování  | Kapacita místního úložiště  | Kapacita cloudového úložiště  |
 |---|---|---|
 | Primární záloha  | Poslední zálohy uložené v místním úložišti pro rychlé obnovení, aby splňovaly cíl bodu obnovení (RPO) | Historie zálohování (RPO) se vejde do kapacity cloudu |
-| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | –  |
+| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | Není k dispozici  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple jako primární cíl zálohování
 
@@ -308,7 +308,7 @@ Na základě předchozích předpokladů vytvořte TiB StorSimple vrstvený svaz
 > [!IMPORTANT]
 > Obnovení dat ze zálohy, která byla vrstvená do cloudu, probíhá při rychlosti cloudu.
 
-Následující obrázek ukazuje mapování typického svazku na úlohu zálohování. V tomto případě se všechny týdenní zálohy mapují na celý disk v sobotu a přírůstkové zálohy se mapují na přírůstkové disky v pondělí až pátek. Všechny zálohy a obnovení jsou ze StorSimple vrstveného svazku.
+Následující obrázek ukazuje mapování typického svazku na úlohu zálohování. V tomto případě se všechny týdenní zálohy mapují na celý disk v sobotu a mapa přírůstkových záloh na Monday-Friday přírůstkové disky. Všechny zálohy a obnovení jsou ze StorSimple vrstveného svazku.
 
 ![Logický diagram primární konfigurace cíle zálohování](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetdiagram.png)
 
@@ -318,7 +318,7 @@ Tady je příklad plánu GFS rotace na čtyři týdny, měsíčně a ročně:
 
 | Frekvence/typ zálohování | Do bloku | Přírůstkové (dny 1-5)  |   
 |---|---|---|
-| Týdně (týdny 1-4) | Sobota | Pondělí – pátek |
+| Týdně (týdny 1-4) | Sobota | Monday-Friday |
 | Měsíčně  | Sobota  |   |
 | Ročně | Sobota  |   |
 
@@ -507,7 +507,7 @@ Havárie může být způsobeno nejrůznějšími faktory. V následující tabu
 | Selhání lokality, které vede ke ztrátě záložního serveru i StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nejprve obnovte StorSimple a pak obnovte Veeam. | Nejprve obnovte StorSimple a pak obnovte Veeam. Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se z cloudu načtou do nového zařízení. Všechny operace jsou v cloudových rychlostech. |
 
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 Následující dokumenty byly odkazovány na tento článek:
 

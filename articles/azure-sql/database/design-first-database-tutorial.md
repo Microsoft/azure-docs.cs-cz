@@ -11,10 +11,10 @@ ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
 ms.openlocfilehash: 1e0ab1d6c1266b37dfcba461fbbdc373fc526783
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362159"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>Kurz: návrh relační databáze v Azure SQL Database pomocí SSMS
@@ -39,7 +39,7 @@ Azure SQL Database je relační databáze jako služba (DBaaS) v Microsoft Cloud
 > [!NOTE]
 > Pro účely tohoto kurzu používáme Azure SQL Database. Můžete použít také databázi ve fondu v elastickém fondu nebo v spravované instanci SQL. Informace o připojení ke spravované instanci SQL najdete v těchto rychlých startech spravované instance SQL: [rychlý Start: konfigurace virtuálního počítače Azure pro připojení ke spravované instanci Azure SQL](../managed-instance/connect-vm-instance-configure.md) a [rychlé zprovoznění: Konfigurace připojení typu Point-to-site k spravované instanci Azure SQL z místního](../managed-instance/point-to-site-p2s-configure.md)prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro dokončení tohoto kurzu se ujistěte, že jste nainstalovali:
 
@@ -48,7 +48,7 @@ Pro dokončení tohoto kurzu se ujistěte, že jste nainstalovali:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-database-in-azure-sql-database"></a>Vytvoření prázdné databáze v Azure SQL Database
 
@@ -56,7 +56,7 @@ Databáze v Azure SQL Database se vytvoří s definovanou sadou výpočetních p
 
 Pomocí těchto kroků vytvořte prázdnou databázi.
 
-1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Create a resource** (Vytvořit prostředek).
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 2. Na stránce **Nový** v části Azure Marketplace vyberte **Databases** a potom klikněte v části **Doporučené** na **SQL Database**.
 
    ![Vytvoření prázdné databáze](./media/design-first-database-tutorial/create-empty-database.png)

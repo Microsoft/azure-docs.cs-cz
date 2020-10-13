@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 4fe15d1bd23f36b7289c54bedf575ae4760600e0
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710800"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrace databáze PostgreSQL pomocí výpisu a obnovení
@@ -18,7 +18,7 @@ ms.locfileid: "91710800"
 
 Můžete použít [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) k extrakci databáze PostgreSQL do souboru s výpisem paměti a [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) k obnovení databáze PostgreSQL z archivního souboru vytvořeného pg_dump.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete projít tento průvodce, budete potřebovat:
 - [Azure Database for PostgreSQL Server](quickstart-create-server-database-portal.md) s pravidly brány firewall pro povolení přístupu a databáze pod ní.
 - nainstalované nástroje příkazového řádku [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) a [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html)

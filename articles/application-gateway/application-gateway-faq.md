@@ -9,10 +9,10 @@ ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
 ms.openlocfilehash: 11b41f4dcffad2c98ea5d1f70346ba150fd18c17
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91278630"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
@@ -71,7 +71,7 @@ Pokud jako koncový bod používáte veřejnou IP adresu, najdete informace o IP
 
 V případě SKU verze V2 otevřete prostředek veřejné IP adresy a vyberte **Konfigurace**. K dispozici je pole **popisek názvu DNS (volitelné)** pro konfiguraci názvu DNS.
 
-### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Jaká jsou nastavení časového limitu pro zachování a časový limit nečinnosti protokolu TCP?
+### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Jaká jsou nastavení časového limitu Keep-Alive a vypršení časového limitu nečinnosti protokolu TCP?
 
 *Časový limit zachování* určuje, jak dlouho Application Gateway čekat, než klient pošle další požadavek HTTP na trvalé připojení, než ho znovu použije nebo zavře. *Časový limit nečinnosti protokolu TCP* určuje, jak dlouho zůstane připojení TCP otevřené v případě žádné aktivity. 
 
@@ -121,7 +121,7 @@ Zřizování většiny nasazení, která používají SKU v2, trvá přibližně
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Můžu použít Exchange Server jako back-end s Application Gateway?
 
-No. Application Gateway nepodporuje e-mailové protokoly, jako jsou SMTP, IMAP a POP3.
+Ne. Application Gateway nepodporuje e-mailové protokoly, jako jsou SMTP, IMAP a POP3.
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Je k dispozici návod k migraci z SKU V1 na SKU 2?
 
@@ -133,7 +133,7 @@ Ano. SKU Application Gateway v1 bude nadále podporována. Důrazně však dopor
 
 ### <a name="does-application-gateway-v2-support-proxying-requests-with-ntlm-authentication"></a>Podporuje Application Gateway v2 požadavky na proxy s ověřováním NTLM?
 
-No. Application Gateway v2 nepodporuje proxy požadavky s ověřováním NTLM ještě nepodporují.
+Ne. Application Gateway v2 nepodporuje proxy požadavky s ověřováním NTLM ještě nepodporují.
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Podporuje soubor cookie spřažení Application Gateway atribut SameSite?
 Ano, [v80](https://chromiumdash.appspot.com/schedule) v [prohlížeči chrom](https://www.chromium.org/Home) představila v souborech cookie protokolu HTTP pověření bez SameSite atributu, aby bylo považováno za SameSite = Lax. To znamená, že prohlížeč nebude odesílat soubory cookie spřažení Application Gateway v kontextu třetí strany. 
@@ -158,7 +158,7 @@ Ano, skladová položka Application Gateway v2 podporuje automatické škálová
 
 ### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>Způsobuje ruční nebo automatické horizontální navýšení nebo snížení kapacity při výpadku?
 
-No. Instance se distribuují napříč doménami upgradu a doménami selhání.
+Ne. Instance se distribuují napříč doménami upgradu a doménami selhání.
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Podporuje Application Gateway vyprazdňování připojení?
 
@@ -180,7 +180,7 @@ Pokud máte připojení IP, Application Gateway můžou komunikovat s instancemi
 
 ### <a name="can-i-deploy-anything-else-in-the-application-gateway-subnet"></a>Můžu v podsíti aplikační brány nasazovat cokoli jiného?
 
-No. V podsíti ale můžete nasadit i jiné aplikační brány.
+Ne. V podsíti ale můžete nasadit i jiné aplikační brány.
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>Jsou skupiny zabezpečení sítě podporované v podsíti služby Application Gateway?
 
@@ -192,7 +192,7 @@ Viz [trasy definované uživatelem podporované v Application Gateway podsíti](
 
 ### <a name="are-service-endpoint-policies-supported-in-the-application-gateway-subnet"></a>Podporují se v Application Gateway podsíti zásady koncového bodu služby?
 
-No. [Zásady koncového bodu služby](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview) pro účty úložiště nejsou podporované v Application Gateway podsíti a nakonfigurují se tak, že budou blokovat přenosy infrastruktury Azure.
+Ne. [Zásady koncového bodu služby](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview) pro účty úložiště nejsou podporované v Application Gateway podsíti a nakonfigurují se tak, že budou blokovat přenosy infrastruktury Azure.
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Jaká jsou omezení pro Application Gateway? Můžu tato omezení zvýšit?
 
@@ -216,7 +216,7 @@ Architektura mikroslužeb je podporovaná. Chcete-li provést test na různých 
 
 ### <a name="do-custom-probes-support-wildcards-or-regex-on-response-data"></a>Podporují vlastní testy zástupné znaky nebo regulární výrazy v datech odpovědí?
 
-No. 
+Ne. 
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>Jak se zpracovávají pravidla směrování v Application Gateway?
 
@@ -232,7 +232,7 @@ Ano. Viz [omezení přístupu na konkrétní zdrojové IP adresy](https://docs.m
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Můžu použít stejný port pro veřejné i privátní naslouchací procesy?
 
-No.
+Ne.
 
 ### <a name="does-application-gateway-support-ipv6"></a>Podporuje Application Gateway IPv6?
 

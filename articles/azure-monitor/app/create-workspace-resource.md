@@ -6,17 +6,17 @@ ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.openlocfilehash: 196be1caf91b6f1f1731d7c4afbfe72482c8f2ac
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894537"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Prostředky Application Insights založené na pracovním prostoru
 
 Prostředky založené na pracovním prostoru podporují úplnou integraci mezi Application Insights a Log Analytics. Nyní se můžete rozhodnout pro odeslání telemetrie Application Insights do společného pracovního prostoru Log Analytics, který vám umožní úplný přístup ke všem funkcím Log Analytics a zároveň udržuje protokoly aplikací, infrastruktury a platforem v jednom konsolidovaném umístění.
 
-To také umožňuje běžné Access Control na základě rolí (RBAC) napříč vašimi prostředky a eliminuje nutnost dotazů mezi aplikacemi a pracovními prostory.
+To umožňuje také společné Role-Based Access Controli (RBAC) napříč prostředky a eliminují nutnost dotazů mezi aplikacemi a pracovními prostory.
 
 > [!NOTE]
 > Ingestování a uchovávání dat pro prostředky Application Insights založené na pracovních prostorech se účtují prostřednictvím pracovního prostoru Log Analytics, kde se data nacházejí. [Přečtěte si další informace]( ./pricing.md#workspace-based-application-insights) o fakturaci pro prostředky Application Insights založené na pracovních prostorech.

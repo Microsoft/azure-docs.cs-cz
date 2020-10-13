@@ -8,26 +8,26 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 1ccbe6cb332f357eeef02dff22b8a4be328b8de0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 53887b7487c3f0bb70c9f8cc7cd61246fabc0b37
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324225"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970125"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Vytváření vlastních sad SDK pro digitální vlákna Azure pomocí AutoRest
 
 V současné době jsou pro rozhraní .NET (C#), JavaScript a Java pouze sady SDK pro rovinu publikovaných dat pro interakci s rozhraními API digitálních vláken Azure. O těchto sadách SDK si můžete přečíst a obecně v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md). Pokud pracujete v jiném jazyce, v tomto článku se dozvíte, jak vygenerovat vlastní sadu SDK pro datovou rovinu v jazyce podle vašeho výběru pomocí funkce AutoRest.
 
 >[!NOTE]
-> Můžete také použít AutoRest k vygenerování sady SDK řídicí roviny, pokud byste chtěli. Provedete to tak, že provedete kroky v tomto článku pomocí [souboru Swagger (openapi) plochy ovládacího prvku](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) místo pro jednu rovinu dat.
+> Můžete také použít AutoRest k vygenerování sady SDK řídicí roviny, pokud byste chtěli. Provedete to tak, že provedete kroky v tomto článku pomocí nejnovějšího souboru Swagger (openapi) **řídicí plochy** (místo toho, aby byla rovina ovládacího prvku Swagger]]) ( https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) místo pro jednu rovinu dat).
 
 ## <a name="set-up-your-machine"></a>Nastavení počítače
 
 K vygenerování sady SDK budete potřebovat:
 * [AutoRest](https://github.com/Azure/autorest), verze 2.0.4413 (verze 3 není momentálně podporovaná)
 * [Node.js](https://nodejs.org) jako předpoklad pro AutoRest
-* [Soubor Swagger (openapi) roviny dat](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins/preview/2020-05-31-preview) v Azure se s názvem *digitaltwins.jsv a v*doprovodné složce příkladů. Stáhněte si soubor Swagger a jeho složku s příklady do svého místního počítače.
+* Nejnovější soubor Swagger (openapi) **roviny dat** v Azure, ze [složky Swagger datové roviny](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins), a do doprovodné složky příkladů.  Stáhněte si soubor Swagger *digitaltwins.js* a jeho složku příkladů do svého místního počítače.
 
 Jakmile je počítač vybavený vše ze seznamu výše, jste připraveni použít k vytvoření sady SDK sadu AutoRest.
 
@@ -57,7 +57,7 @@ Můžete zahrnout soubory generované AutoRest přímo do řešení .NET. Je ale
 
 V této části jsou uvedeny pokyny k sestavení sady SDK jako knihovny tříd, což je vlastní projekt a lze je zahrnout do jiných projektů. Tyto kroky spoléhají na **Visual Studio** ( [tady](https://visualstudio.microsoft.com/downloads/)si můžete nainstalovat nejnovější verzi).
 
-Tady je postup:
+Postupujte takto:
 
 1. Vytvoření nového řešení sady Visual Studio pro knihovnu tříd
 2. Jako název projektu použijte *ADTApi*

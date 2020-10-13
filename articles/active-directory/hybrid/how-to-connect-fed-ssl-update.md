@@ -17,10 +17,10 @@ ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 451b50e70b98849dfc4654566d09a5a961abe451
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89279903"
 ---
 # <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualizace certifikátu TLS/SSL pro farmu Active Directory Federation Services (AD FS) (AD FS)
@@ -99,7 +99,7 @@ Po dokončení konfigurace Azure AD Connect zobrazí zprávu, která indikuje st
 
 * **Můžu aktualizovat podmnožinu serverů farmy pomocí nového certifikátu TLS/SSL?**
 
-    Yes. Vždy můžete znovu spustit **certifikát SSL aktualizace** a aktualizovat zbývající servery. Na stránce **Vybrat servery pro aktualizaci certifikátu SSL** můžete seřadit seznam serverů v **datu vypršení platnosti SSL** a snadno tak přistupovat k serverům, které ještě nejsou aktualizované.
+    Ano. Vždy můžete znovu spustit **certifikát SSL aktualizace** a aktualizovat zbývající servery. Na stránce **Vybrat servery pro aktualizaci certifikátu SSL** můžete seřadit seznam serverů v **datu vypršení platnosti SSL** a snadno tak přistupovat k serverům, které ještě nejsou aktualizované.
 
 * **Odebral (a) jsem server v předchozím běhu, ale pořád se zobrazuje v režimu offline a je uvedený na stránce AD FS servery. Proč je offline server stále i po jeho odebrání?**
 

@@ -8,10 +8,10 @@ author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
 ms.openlocfilehash: 46749015d5141053eaea3f2f251bbba7d9455481
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91709012"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Vytvoření nabídky virtuálních počítačů Azure na Azure Marketplace

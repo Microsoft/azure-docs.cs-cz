@@ -7,10 +7,10 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.openlocfilehash: 0a632e8c57ab57869e4454b0d6a4018de6bd5548
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613760"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Propojení Azure s nástroji ITSM s využitím ITSM konektoru
@@ -65,7 +65,7 @@ Než budete moct vytvořit připojení, musíte přidat řešení konektoru ITSM
    >[!NOTE]
    >V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se teď pracovní prostory OMS označují jako Log Analytics pracovní prostory.
 
-5. Klikněte na **Create** (Vytvořit).
+5. Klikněte na **Vytvořit**.
 
 Po nasazení prostředku řešení se zobrazí oznámení v pravém horním rohu okna.
 
@@ -159,7 +159,7 @@ Data incidentu a žádosti o změnu lze vizuálně vylepšovat pomocí řídicí
 
 Můžete také vizualizovat incidenty synchronizované s ovlivněnými počítači v rámci řešení Service Map.
 
-Service Map automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Umožňuje zobrazit servery přirozeným způsobem – jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené pomocí protokolu TCP a nevyžaduje přitom žádnou konfiguraci kromě instalace agenta. [Přečtěte si další informace](../insights/service-map.md).
+Service Map automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Umožňuje zobrazit servery přirozeným způsobem – jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené pomocí protokolu TCP a nevyžaduje přitom žádnou konfiguraci kromě instalace agenta. [Další informace](../insights/service-map.md).
 
 Pokud používáte řešení Service Map, můžete zobrazit položky oddělení služeb vytvořené v řešeních ITSM, jak je znázorněno v následujícím příkladu:
 
@@ -186,7 +186,7 @@ ServiceDeskWorkItemType_s = incident
 
 - ServiceDeskConnectionName
 - ID oddělení služeb
-- Stav
+- State
 - Naléhavost
 - Dopad
 - Priorita
@@ -220,7 +220,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 - Nadpis
 - Typ
 - Kategorie
-- Stav
+- State
 - Eskalace
 - Stav konfliktu
 - Naléhavost
@@ -236,7 +236,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 - Plánované koncové datum
 - Datum zahájení práce
 - Datum ukončení práce
-- Popis
+- Description
 - Počítač
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Výstupní data pro incident ServiceNow
@@ -244,7 +244,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 | Log Analytics pole | Pole ServiceNow |
 |:--- |:--- |
 | ServiceDeskId_s| Číslo |
-| IncidentState_s | Stav |
+| IncidentState_s | State |
 | Urgency_s |Naléhavost |
 | Impact_s |Dopad|
 | Priority_s | Priorita |
@@ -272,7 +272,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 | Title_s|  Krátký popis |
 | Type_s|  Typ |
 | Category_s|  Kategorie |
-| CRState_s|  Stav|
+| CRState_s|  State|
 | Urgency_s|  Naléhavost |
 | Priority_s| Priorita|
 | Risk_s| Riziko|
@@ -283,7 +283,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 | PlannedEndDate_t  |   Plánované koncové datum |
 | WorkStartDate_t  | Skutečné datum zahájení |
 | WorkEndDate_t | Skutečné datum ukončení|
-| Description_s | Popis |
+| Description_s | Description |
 | Počítač  | Položka konfigurace |
 
 

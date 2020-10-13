@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: 02bd4927216b6b60d2720e6f32c5768499e310bb
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710868"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Vytvoření a Správa pravidel brány firewall pro Azure Database for PostgreSQL s jedním serverem pomocí Azure Portal
@@ -18,7 +18,7 @@ Pravidla brány firewall na úrovni serveru se dají použít ke správě přís
 
 Pravidla Virtual Network (VNet) je možné použít také k zabezpečení přístupu k serveru. Přečtěte si další informace o [vytváření a správě Virtual Networkch koncových bodů a pravidel služby pomocí Azure Portal](howto-manage-vnet-using-portal.md).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete projít tento průvodce, budete potřebovat:
 - Server [vytvoří Azure Database for PostgreSQL](quickstart-create-server-database-portal.md)
 

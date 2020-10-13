@@ -4,10 +4,10 @@ description: Tento článek obsahuje odpovědi na některé nejčastější dota
 ms.topic: article
 ms.date: 09/16/2020
 ms.openlocfilehash: addd629f137c5f638cd32a639f79cdbbafc4a94d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90894517"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Service Bus (FAQ)
@@ -113,7 +113,7 @@ Pro obecné informace o cenách Azure můžete také navštívit [Nejčastějš�
 Jakýkoli přenos dat v rámci dané oblasti Azure se poskytuje zdarma, stejně jako všechny příchozí přenosy dat. Přenos dat mimo oblast podléhá poplatkům za výstup, který najdete [tady](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 ### <a name="does-service-bus-charge-for-storage"></a>Účtuje se Service Bus za úložiště?
-No. Za úložiště se neúčtují Service Bus. Existuje však kvóta, která omezuje maximální množství dat, která lze uchovávat pro jednotlivé fronty nebo témata. Podívejte se na další Nejčastější dotazy.
+Ne. Za úložiště se neúčtují Service Bus. Existuje však kvóta, která omezuje maximální množství dat, která lze uchovávat pro jednotlivé fronty nebo témata. Podívejte se na další Nejčastější dotazy.
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Mám obor názvů Service Bus Standard. Proč se mi v rámci skupiny prostředků ' $system ' účtují poplatky?
 Azure Service Bus nedávno upgradovali komponenty fakturace. V důsledku této změny se může stát, že pokud máte obor názvů Service Bus Standard, můžete zobrazit položky řádku pro prostředek "/Subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" v části Skupina prostředků "$system".

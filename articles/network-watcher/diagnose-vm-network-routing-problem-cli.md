@@ -18,17 +18,17 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
 ms.openlocfilehash: 5fa083626135170a05844a5e4434b608a1fabe60
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91302226"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnostika potíží se síťovým směrováním virtuálního počítače – Azure CLI
 
 V tomto článku nasadíte virtuální počítač (VM) a pak zkontrolujete komunikaci s IP adresou a adresou URL. Určíte příčinu selhání komunikace a najdete jeho řešení.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

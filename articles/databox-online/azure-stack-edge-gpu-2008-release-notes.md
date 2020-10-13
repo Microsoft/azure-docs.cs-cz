@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/07/2020
 ms.author: alkohli
 ms.openlocfilehash: d166b0a4c4b69f03d7dba9d997d7d07fbd81ef41
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90893982"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-preview-release-notes"></a>Zpráva k vydání verze pro verzi Preview pro PROCESORy Azure Stack Edge pro
@@ -25,7 +25,7 @@ Tento článek se týká následujícího vydání softwaru **Azure Stack Edge P
 
 <!--- **2.1.1328.1904**-->
 
-## <a name="whats-new"></a>Novinky
+## <a name="whats-new"></a>Co je nového
 
 Ve verzi Azure Stack Edge 2008 byly přidány následující nové funkce. V závislosti na verzi konkrétní verze Preview, kterou používáte, se může zobrazit podmnožina těchto funkcí. 
 
@@ -37,7 +37,7 @@ Ve verzi Azure Stack Edge 2008 byly přidány následující nové funkce. V zá
 
 Následující tabulka poskytuje souhrn známých problémů pro zařízení Azure Stack Edge pro.
 
-| No. | Příznak | Problém | Alternativní řešení/komentáře |
+| Ne. | Příznak | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 | **1.** |Azure Stack Edge pro + Azure SQL | Vytvoření databáze SQL vyžaduje přístup správce.   |Proveďte následující kroky místo kroků 1-2 v [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database) . <ul><li>V místním uživatelském rozhraní zařízení povolte výpočetní rozhraní. Vyberte **compute > port # > povolit pro výpočetní > použít.**</li><li>Stáhnout `sqlcmd` na klientském počítači z https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>Připojte se k IP adrese rozhraní COMPUTE (port, který byl povolený), a přidejte na konec adresy znak ", 1401".</li><li>Poslední příkaz bude vypadat takto: Sqlcmd-S {Interface IP}, 1401-U SA-P "Strong! Passw0rd".</li>Pak by se měly shodovat kroky 3-4 z aktuální dokumentace. </li></ul> |
 | **2.** |Aktualizovat| Přírůstkové změny objektů BLOB obnovených prostřednictvím **aktualizace** se nepodporují. |U koncových bodů objektů BLOB jsou částečné aktualizace objektů BLOB po obnovení možné kvůli tomu, že se aktualizace nebudou nahrávat do cloudu. Například posloupnost akcí, jako například:<ul><li>Vytvoření objektu BLOB v cloudu Nebo odstraňte dříve nahraný objekt BLOB ze zařízení.</li><li>Obnovte objekt BLOB z cloudu do zařízení pomocí funkce aktualizovat.</li><li>Aktualizujte jenom část objektu BLOB pomocí rozhraní REST API sady Azure SDK.</li></ul>Tyto akce můžou vést k tomu, že aktualizované oddíly objektu BLOB se v cloudu neaktualizují. <br>**Alternativní řešení**: Nahraďte celé objekty BLOB pomocí nástrojů, jako je například Robocopy nebo běžné kopírování souborů prostřednictvím Průzkumníka nebo příkazového řádku.|

@@ -4,10 +4,10 @@ description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analyt
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: d40da1ebd87ef7d7a43d0be9ae0d34911e854d0e
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91567430"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
@@ -71,7 +71,7 @@ Kliknutím na tento odkaz otevřete sešit zálohované sestavy.
 
 Sestava obsahuje různé karty:
 
-##### <a name="summary"></a>Souhrn
+##### <a name="summary"></a>Shrnutí
 
 Tato karta vám umožní získat podrobný přehled o vaší nemovitosti k zálohování. Můžete získat rychlý přehled o celkovém počtu zálohovaných položek, celkovém využitém cloudovém úložišti, počtu chráněných instancí a četnosti úspěšnosti úlohy na jeden typ pracovního vytížení. Podrobnější informace o konkrétním typu artefaktu zálohování získáte, když přejdete na příslušné karty.
 

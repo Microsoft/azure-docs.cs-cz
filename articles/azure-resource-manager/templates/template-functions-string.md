@@ -3,12 +3,12 @@ title: Template Functions – String
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager pro práci s řetězci.
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 42df0317658971b9e9bf3fb805c9a5ff44efaf45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0733ffc790854c60dca46da3f763738b7820215
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "85962063"
+ms.locfileid: "91874709"
 ---
 # <a name="string-functions-for-arm-templates"></a>Řetězcové funkce pro šablony ARM
 
@@ -27,6 +27,7 @@ Správce prostředků poskytuje následující funkce pro práci s řetězci v �
 * [formátovat](#format)
 * [guid](#guid)
 * [indexOf](#indexof)
+* [JSON](#json)
 * [posledního](#last)
 * [lastIndexOf](#lastindexof)
 * [length](#length)
@@ -894,6 +895,12 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | firstString | Int | 2 |
 | lastString | Int | 0 |
 | notFound | Int | -1 |
+
+## <a name="json"></a>json
+
+`json(arg1)`
+
+Převede platný řetězec JSON na datový typ JSON. Další informace najdete v tématu [funkce JSON](template-functions-object.md#json).
 
 ## <a name="last"></a>poslední
 

@@ -14,10 +14,10 @@ ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 7cc28aef76158f039f1174fc76d0ed29e8f67aea
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91565135"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatizované zálohování v2 pro virtuální počítače Azure (Správce prostředků)
@@ -310,11 +310,11 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 Pokud chcete monitorovat automatizované zálohování na SQL Server 2016/2017, máte dvě hlavní možnosti. Vzhledem k tomu, že automatizované zálohování používá funkci spravovaného zálohování SQL Server, platí stejné postupy monitorování i pro obě.
 
-Nejprve můžete dotazovat stav voláním [msdb. managed_backup. sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql). Nebo dotaz na funkci funkce vracející tabulku [msdb. managed_backup. fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) .
+Nejprve můžete dotazovat stav voláním [msdb. managed_backup. sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql). Nebo dotaz na funkci vracející tabulku [msdb. managed_backup. fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) .
 
 Další možností je využít integrované funkce Databázová pošta pro oznámení.
 
-1. Chcete-li přiřadit e-mailovou adresu parametru **SSMBackup2WANotificationEmailIds** , zavolejte uloženou proceduru [msdb. managed_backup. sp_set_parameter](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) . 
+1. Zavolejte uloženou proceduru [msdb. managed_backup. sp_set_parameter](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) , abyste přiřadili e-mailovou adresu parametru **SSMBackup2WANotificationEmailIds** . 
 1. Povolí [SendGrid](../../../sendgrid-dotnet-how-to-send-email.md) odesílání e-mailů z virtuálního počítače Azure.
 1. Pro konfiguraci Databázová pošta použijte server SMTP a uživatelské jméno. Databázová pošta můžete nakonfigurovat v SQL Server Management Studio nebo pomocí příkazů jazyka Transact-SQL. Další informace najdete v tématu [databázová pošta](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail).
 1. [Nakonfigurujte agenta SQL Server pro použití databázová pošta](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail).

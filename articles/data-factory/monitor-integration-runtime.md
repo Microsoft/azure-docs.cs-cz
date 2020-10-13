@@ -11,10 +11,10 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 4a0c2813a45fab497173d0101f87b30288e93884
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91568895"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování prostředí Integration Runtime ve službě Azure Data Factory
@@ -48,7 +48,7 @@ Následující tabulka uvádí popis vlastností vrácených rutinou pro prostř
 | Vlastnost | Popis |
 -------- | ------------- | 
 | Název | Název prostředí Azure Integration runtime. |  
-| Stav | Stav prostředí Azure Integration runtime. | 
+| State | Stav prostředí Azure Integration runtime. | 
 | Umístění | Umístění prostředí Azure Integration runtime. Podrobnosti o umístění prostředí Azure Integration runtime najdete v tématu [Úvod do prostředí Integration runtime](concepts-integration-runtime.md). |
 | DataFactoryName | Název objektu pro vytváření dat, ke kterému patří Azure Integration runtime | 
 | ResourceGroupName | Název skupiny prostředků, do které patří objekt pro vytváření dat.  |
@@ -65,7 +65,7 @@ Následující tabulka nabízí možné stavy prostředí Azure Integration Runt
 
 ## <a name="self-hosted-integration-runtime"></a>Prostředí Integration Runtime v místním prostředí
 
-V této části najdete popis vlastností vrácených pomocí rutiny Get-AzDataFactoryV2IntegrationRuntime. 
+V této části najdete popis vlastností vrácených rutinou Get-AzDataFactoryV2IntegrationRuntime. 
 
 > [!NOTE] 
 > Vrácené vlastnosti a stav obsahují informace o celkovém prostředí Integration runtime a všech uzlech modulu runtime.  
@@ -181,7 +181,7 @@ Následující tabulka uvádí popisy vlastností vrácených výše uvedenou ru
 | Uzly                        | Přidělené nebo dostupné uzly vašeho Azure-SSIS IR se stavem specifickým pro uzel (spuštění/k dispozici/recyklace/nedostupné) a chybami, které lze provést. |
 | OtherErrors                  | Chyby, které nejsou specifické pro uzel v Azure-SSIS IR. |
 | LastOperation                | Výsledek poslední operace spuštění/zastavení ve vašem Azure-SSIS IR s chybami, pokud se nezdařila. |
-| Stav                        | Celkový stav vašeho Azure-SSIS IR (počáteční/počáteční/spuštěný/zastavný/zastavený/zastavený). |
+| State                        | Celkový stav vašeho Azure-SSIS IR (počáteční/počáteční/spuštěný/zastavný/zastavený/zastavený). |
 | Umístění                     | Umístění vašeho Azure-SSIS IR. |
 | NodeSize                     | Velikost každého uzlu v Azure-SSIS IR. |
 | NodeCount                    | Počet uzlů v Azure-SSIS IR. |
@@ -246,7 +246,7 @@ Pokud používáte model nasazení projektu, kde jsou balíčky uložené v SSIS
 
 #### <a name="proxy--staging-tile"></a>Dlaždice PROXY/přípravy
 
-Pokud si stáhnete, nainstalujete a nakonfigurujete Azure-SSIS IR místní prostředí IR (SHIR) jako proxy serveru pro přístup k datům v místním prostředí, na stránce monitorování Azure-SSIS IR se zobrazí dlaždice **proxy/fázování** (viz téma [Konfigurace SHIR jako proxy serveru pro Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)). Na této dlaždici můžete vybrat odkaz, který určí SHIR, aby se otevřela jeho stránka monitorování. Můžete také vybrat jiný odkaz určením Blob Storage služby Azure pro přípravu a znovu nakonfigurovat její propojenou službu.
+Pokud si stáhnete, nainstalujete a nakonfigurujete Self-Hosted IR (SHIR) jako proxy pro Azure-SSIS IR k přístupu k datům v místním prostředí, na stránce monitorování Azure-SSIS IR se zobrazí dlaždice **proxy/fázování** (viz téma [Konfigurace SHIR jako proxy serveru pro váš Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)). Na této dlaždici můžete vybrat odkaz, který určí SHIR, aby se otevřela jeho stránka monitorování. Můžete také vybrat jiný odkaz určením Blob Storage služby Azure pro přípravu a znovu nakonfigurovat její propojenou službu.
 
 #### <a name="validate-vnet--subnet-tile"></a>Dlaždice ověřit virtuální síť/podsíť
 

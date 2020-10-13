@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
 ms.openlocfilehash: 9212142ff6f43a84b141b0781fbe9828eebcbd40
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537153"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replikovat data do Azure Database for MySQL

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: dea009d6d246d68f0686c3dc85f3518ccb13705c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1c1ddeb8cafd8aa7584da48a715139c5d12eeb10
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575193"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874794"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Kurz: monitorování a Správa aplikace video Analytics – objekt a detekce pohybu
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 
 Než začnete, měli byste dokončit:
 
-* Kurz [Vytvoření aplikace Live video Analytics v Azure IoT Central](./tutorial-video-analytics-create-app.md) kurzu.
+* Jedna z předchozích [vytvoření živé aplikace video Analytics v azure IoT Central](./tutorial-video-analytics-create-app-yolo-v3.md) nebo [Vytvoření analýzy videí v Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md) kurzy.
 * Jedna z předchozích [vytvoření instance IoT Edge pro Live video Analytics (virtuální počítač se systémem Linux)](tutorial-video-analytics-iot-edge-vm.md) nebo [vytvoření instance IoT Edge pro kurzy NUC (Live video Analytics)](tutorial-video-analytics-iot-edge-nuc.md) .
 
 Měli byste mít na svém místním počítači nainstalovaný [Docker](https://www.docker.com/products/docker-desktop) pro spuštění aplikace Prohlížeč videa.

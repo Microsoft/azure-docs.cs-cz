@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
 ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91298707"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Vytvoření FCI se souborovou sdílenou složkou Premium (SQL Server na virtuálních počítačích Azure)
@@ -41,7 +41,7 @@ Před dokončením kroků v tomto článku byste už měli mít:
 
 ## <a name="mount-premium-file-share"></a>Připojit prémiovou sdílenou složku
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). a přejít na účet úložiště.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). a přejít na účet úložiště.
 1. V části **Souborová služba**klikněte na **sdílené složky** a potom vyberte sdílenou složku Premium, kterou chcete použít pro své úložiště SQL.
 1. Výběrem **připojit** otevřete připojovací řetězec pro sdílenou složku.
 1. V rozevíracím seznamu vyberte písmeno jednotky, které chcete použít, a potom zkopírujte oba bloky kódu do poznámkového bloku.
@@ -96,17 +96,7 @@ Pokud chcete cluster ověřit pomocí uživatelského rozhraní, udělejte na je
 1. Vyberte **Další**.
 1. V části **Výběr testu**vyberte všechny testy s výjimkou **úložiště** a **prostory úložiště s přímým přístupem**, jak je znázorněno zde:
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Výběr testů pro ověření clusteru":::
-
-1. Vyberte **Další**.
-1. V části **potvrzení**vyberte **Další**.
-
-Průvodce **ověřením konfigurace** spustí ověřovací testy.
-
-Pokud chcete cluster ověřit pomocí PowerShellu, spusťte následující skript z relace prostředí PowerShell správce na jednom z virtuálních počítačů:
-
-   ```powershell
-   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Kopírování příkazů PowerShellu z portálu pro připojení ke sdílené složce"
    ```
 
 Po ověření clusteru vytvořte cluster s podporou převzetí služeb při selhání.
@@ -151,7 +141,7 @@ Nakonfigurujte řešení kvora, které nejlépe vyhovuje vašim obchodním potř
 
 Otestujte převzetí služeb při selhání clusteru. V **Správce clusteru s podporou převzetí služeb při selhání**klikněte pravým tlačítkem na svůj cluster, vyberte **Další akce**  >  **přesunout základní prostředek clusteru**  >  **Vybrat uzel**a pak vyberte druhý uzel clusteru. Přesuňte základní prostředek clusteru do každého uzlu clusteru a pak ho přesuňte zpátky do primárního uzlu. Pokud můžete cluster úspěšně přesunout do každého uzlu, budete připraveni nainstalovat SQL Server.  
 
-:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Testování převzetí služeb při selhání clusteru přesunutím základního prostředku do ostatních uzlů":::
+:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Kopírování příkazů PowerShellu z portálu pro připojení ke sdílené složce":::
 
 
 ## <a name="create-sql-server-fci"></a>Vytvořit SQL Server FCI
@@ -172,7 +162,7 @@ Po dokončení konfigurace clusteru s podporou převzetí služeb při selhání
 
    Datové adresáře FCI musí být ve sdílené souborové složce Premium. Zadejte úplnou cestu ke sdílené složce v tomto formátu: `\\storageaccountname.file.core.windows.net\filesharename\foldername` . Zobrazí se upozornění s oznámením, že jste jako datový adresář zadali souborový server. Toto upozornění je očekávané. Ujistěte se, že uživatelský účet, který jste použili pro přístup k virtuálnímu počítači přes protokol RDP při trvalém sdílení souborů, je stejný účet, který služba SQL Server používá, aby se předešlo možným chybám.
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Použít sdílení souborů jako datové adresáře SQL":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Kopírování příkazů PowerShellu z portálu pro připojení ke sdílené složce":::
 
 1. Po dokončení kroků v průvodci instalační program nainstaluje SQL Server FCI na první uzel.
 

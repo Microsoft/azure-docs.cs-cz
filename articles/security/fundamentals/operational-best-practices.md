@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 7c429ad04a4c1e881c84c3af9dfa9ee553963917
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 5696bd167010ae81249eeac3134b79d3d5307288
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629790"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91943862"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy pro provozní zabezpečení Azure
 Tento článek poskytuje sadu provozních osvědčených postupů pro ochranu vašich dat, aplikací a dalších prostředků v Azure.
@@ -116,7 +116,7 @@ Bezpečné skóre, které je založeno na ovládacích prvcích Center for Inter
 **Podrobnosti**: podle [doporučení pro zabezpečení](../../security-center/security-center-recommendations.md) v Security Center začínají s položkami s nejvyšší prioritou.
 
 **Osvědčený postup**: Integrujte výstrahy Security Center do řešení pro správu událostí a zabezpečení Siem (Security Information and Event Management).   
-**Podrobnosti**: většina organizací a Siem ji používá jako centrální službu Clearinghouse pro výstrahy zabezpečení, které vyžadují reakci analytika. Zpracované události vytvořené pomocí Security Center jsou publikovány v protokolu aktivit Azure, což je jeden z protokolů, který je k dispozici prostřednictvím Azure Monitor. Azure Monitor nabízí konsolidovaný kanál pro směrování všech dat monitorování do nástroje SIEM. Pokyny najdete v tématu [Export výstrah zabezpečení a doporučení](../../security-center/continuous-export.md#configure-siem-integration-via-azure-event-hubs) ... Pokud používáte Azure Sentinel, přečtěte si téma [připojení Azure Security Center](../../sentinel/connect-azure-security-center.md).
+**Podrobnosti**: většina organizací a Siem ji používá jako centrální službu Clearinghouse pro výstrahy zabezpečení, které vyžadují reakci analytika. Zpracované události vytvořené pomocí Security Center jsou publikovány v protokolu aktivit Azure, což je jeden z protokolů, který je k dispozici prostřednictvím Azure Monitor. Azure Monitor nabízí konsolidovaný kanál pro směrování všech dat monitorování do nástroje SIEM. Pokyny najdete v tématu [výstrahy streamování pro Siem, společnosti nebo řešení pro správu služeb](../../security-center/export-to-siem.md) v oddělení IT. Pokud používáte Azure Sentinel, přečtěte si téma [připojení Azure Security Center](../../sentinel/connect-azure-security-center.md).
 
 **Osvědčený postup**: Integrujte protokoly Azure s Siem.   
 **Podrobnosti**: [k shromažďování a exportu dat použijte Azure monitor](/azure/azure-monitor/overview#integrate-and-export-data). Tento postup je nezbytný pro povolení vyšetřování incidentů zabezpečení a uchování online protokolů je omezené. Pokud používáte Azure Sentinel, přečtěte si téma [připojení zdrojů dat](../../sentinel/connect-data-sources.md).

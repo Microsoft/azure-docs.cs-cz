@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
 ms.openlocfilehash: 8f92501bdb8261a67d3dc2b8aefbe1fb1498ef1e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91445894"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Windows v clusteru Service Fabric
@@ -166,7 +166,7 @@ Chování POA můžete nakonfigurovat tak, aby vyhovovalo vašim potřebám. Př
 | WURescheduleCount     | Int <br> (Výchozí: *5*)                  | Maximální počet, kolikrát služba aktualizuje službu Windows Update, pokud se operace trvale nezdařila.          |
 | WURescheduleTimeInMinutes | Int <br>(Výchozí: *30*) | Interval, ve kterém služba aktualizuje aktualizace systému Windows, pokud chyba přetrvává. |
 | WUFrequency           | Textový řetězec s oddělovači (výchozí: *týdně, středa, 7:00:00*)     | Frekvence pro instalaci aktualizací systému Windows. Formáty a možné hodnoty jsou následující: <br>-Monthly, DD, HH: MM: SS (příklad: *měsíčně, 5, 12:22:32*). Povolené hodnoty pro pole _DD_ (den) jsou čísla od 1 do 28 do _Poslední_. <br>-Týdně, Day, HH: MM: SS (příklad: *týdně, úterý, 12:22:32*)  <br>-Denně, HH: MM: SS (příklad: *denně, 12:22:32*)  <br>-Week, Day, HH: MM: SS (příklad: *2, pátek, 21:00:00* INDIKUJE 9:00 dop. UTC v pátek za druhý týden v každém měsíci) <br>- *Žádné* znamená, že aktualizace systému Windows by se neměly provádět.  <br><br> Časy jsou ve formátu UTC.|
-| AcceptWindowsUpdateEula | Logická hodnota <br>(Výchozí: *pravda*) | Nastavením tohoto příznaku aplikace přijme licenční smlouvu s koncovým uživatelem pro web Windows Update jménem vlastníka počítače.              |
+| AcceptWindowsUpdateEula | Logická hodnota <br>(Výchozí: *pravda*) | Nastavením tohoto příznaku přijímá aplikace End-User licenční smlouvu web Windows Update jménem vlastníka počítače.              |
 
 > [!TIP]
 > Pokud chcete, aby aktualizace systému Windows byly provedeny ihned, nastavte `WUFrequency` relativní čas nasazení aplikace. Předpokládejme například, že máte testovací cluster s pěti uzly a naplánujete nasazení aplikace v přibližně 5:00./odp. UTC. Pokud předpokládáte, že upgrade nebo nasazení aplikace trvá maximálně 30 minut, nastavte WUFrequency jako *denní 17:30:00*.
@@ -313,7 +313,7 @@ Abychom vám pomohli porozumět tomu, jak aktualizace postupují v uzlu, pojďme
 
    Pokud se stále nacházejí další problémy, přihlaste se k virtuálnímu počítači nebo virtuálním počítačům a seznamte se s nimi pomocí protokolů událostí systému Windows. Dřív zmíněná úloha opravy může existovat jenom v následujících podstavech prováděcího modulu:
 
-      ExecutorSubState | Popis
+      ExecutorSubState | Description
     -- | -- 
       Žádné = 1 |  Znamená, že na uzlu neexistují žádné probíhající operace. Stav může být v přechodném stavu.
       DownloadCompleted = 2 | Znamená, že operace stahování byla dokončena se úspěchem, částečnou chybou nebo selháním.
@@ -439,7 +439,7 @@ A: POA používá Service Fabric Repair Manager k vytvoření úloh opravy pro u
 
 ## <a name="disclaimers"></a>Právní omezení
 
-- POA přijímá licenční smlouvu s koncovým uživatelem pro web Windows Update jménem uživatele. Volitelně můžete nastavení vypnout v konfiguraci aplikace.
+- POA přijímá licenční smlouvu End-User pro web Windows Update jménem uživatele. Volitelně můžete nastavení vypnout v konfiguraci aplikace.
 
 - POA shromažďuje telemetrii pro sledování využití a výkonu. Telemetrie aplikace sleduje nastavení nastavení telemetrie Service Fabric runtime (což je ve výchozím nastavení zapnuté).
 

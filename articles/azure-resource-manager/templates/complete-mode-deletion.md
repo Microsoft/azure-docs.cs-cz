@@ -4,10 +4,10 @@ description: Ukazuje, jak typy prostředků zpracovávají úplné odstraňován
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.openlocfilehash: 72303a7916aec39c05f9b4fa2cbc77de18b7fb3e
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91766708"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Odstranění prostředků Azure pro nasazení v úplném režimu
@@ -209,7 +209,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | DomainServices | Ano |
+> | DomainServices | Yes |
 > | DomainServices / oucontainer | No |
 
 ## <a name="microsoftaddons"></a>Microsoft. addons
@@ -251,20 +251,20 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | farmBeats | Ano |
+> | farmBeats | Yes |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | actionRules | Ano |
+> | actionRules | Yes |
 > | výstrahy | No |
 > | alertsList | No |
 > | alertsMetaData | No |
 > | alertsSummary | No |
 > | alertsSummaryList | No |
-> | smartDetectorAlertRules | Ano |
+> | smartDetectorAlertRules | Yes |
 > | smartGroups | No |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
@@ -272,7 +272,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | servery | Ano |
+> | servery | Yes |
 
 ## <a name="microsoftapimanagement"></a>Microsoft. ApiManagement
 
@@ -280,7 +280,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | reportFeedback | No |
-> | service | Ano |
+> | service | Yes |
 > | validateServiceName | No |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
@@ -288,7 +288,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | configurationStores | Ano |
+> | configurationStores | Yes |
 > | configurationStores / eventGridFilters | No |
 > | configurationStores/hodnoty | No |
 
@@ -297,7 +297,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Spring | Ano |
+> | Spring | Yes |
 > | Pružina/aplikace | No |
 > | Jarní/aplikace/nasazení | No |
 
@@ -306,7 +306,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | attestationProviders | Ano |
+> | attestationProviders | Yes |
 > | defaultProvider – neexistují | No |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
@@ -329,7 +329,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | policySetDefinitions | No |
 > | privateLinkAssociations | No |
 > | providerOperations | No |
-> | resourceManagementPrivateLinks | Ano |
+> | resourceManagementPrivateLinks | Yes |
 > | roleAssignments | No |
 > | roleAssignmentsUsageMetrics | No |
 > | roleDefinitions | No |
@@ -339,22 +339,22 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | accounts | Ano |
+> | accounts | Yes |
 > | configurationProfileAssignments | No |
-> | configurationProfilePreferences | Ano |
+> | configurationProfilePreferences | Yes |
 
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | automationAccounts | Ano |
-> | automationAccounts/konfigurace | Ano |
+> | automationAccounts | Yes |
+> | automationAccounts/konfigurace | Yes |
 > | automationAccounts/úlohy | No |
 > | automationAccounts / privateEndpointConnectionProxies | No |
 > | automationAccounts / privateEndpointConnections | No |
 > | automationAccounts / privateLinkResources | No |
-> | automationAccounts/Runbooky | Ano |
+> | automationAccounts/Runbooky | Yes |
 > | automationAccounts / softwareUpdateConfigurations | No |
 > | automationAccounts nebo Webhooky | No |
 
@@ -363,7 +363,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | privateClouds | Ano |
+> | privateClouds | Yes |
 > | privateClouds/autorizace | No |
 > | privateClouds/clustery | No |
 > | privateClouds / globalReachConnections | No |
@@ -391,20 +391,20 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | b2cDirectories | Ano |
+> | b2cDirectories | Yes |
 > | b2ctenants | No |
-> | guestUsages | Ano |
+> | guestUsages | Yes |
 
 ## <a name="microsoftazuredata"></a>Microsoft. AzureData
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | datacontrollery | Ano |
-> | postgresInstances | Ano |
-> | sqlManagedInstances | Ano |
-> | sqlServerInstances | Ano |
-> | sqlServerRegistrations | Ano |
+> | datacontrollery | Yes |
+> | postgresInstances | Yes |
+> | sqlManagedInstances | Yes |
+> | sqlServerInstances | Yes |
+> | sqlServerRegistrations | Yes |
 > | sqlServerRegistrations/sqlServers | No |
 
 ## <a name="microsoftazurestack"></a>Microsoft. AzureStack
@@ -413,9 +413,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | cloudManifestFiles | No |
-> | edgeSubscriptions | Ano |
-> | linkedSubscriptions | Ano |
-> | rozpoznávání | Ano |
+> | edgeSubscriptions | Yes |
+> | linkedSubscriptions | Yes |
+> | rozpoznávání | Yes |
 > | registrace/customerSubscriptions | No |
 > | registrace/produkty | No |
 
@@ -424,14 +424,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | existující | Ano |
+> | existující | Yes |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | batchAccounts | Ano |
+> | batchAccounts | Yes |
 
 ## <a name="microsoftbilling"></a>Microsoft. fakturace
 
@@ -537,7 +537,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | mapApis | Ano |
+> | mapApis | Yes |
 > | updateCommunicationPreference | No |
 
 ## <a name="microsoftblockchain"></a>Microsoft. blockchain
@@ -545,16 +545,16 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | blockchainMembers | Ano |
-> | cordaMembers | Ano |
-> | sledovacích procesů | Ano |
+> | blockchainMembers | Yes |
+> | cordaMembers | Yes |
+> | sledovacích procesů | Yes |
 
 ## <a name="microsoftblockchaintokens"></a>Microsoft. BlockchainTokens
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | TokenServices | Ano |
+> | TokenServices | Yes |
 > | TokenServices / BlockchainNetworks | No |
 > | TokenServices/skupiny | No |
 > | TokenServices/skupiny/účty | No |
@@ -578,7 +578,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | botServices | Ano |
+> | botServices | Yes |
 > | botServices/kanály | No |
 > | botServices/připojení | No |
 > | jazyky | No |
@@ -589,13 +589,13 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Redis | Ano |
+> | Redis | Yes |
 > | Redis/EventGridFilters | No |
 > | Redis/privateEndpointConnectionProxies | No |
 > | Redis/privateEndpointConnectionProxies/ověřit | No |
 > | Redis/privateEndpointConnections | No |
 > | Redis/privateLinkResources | No |
-> | redisEnterprise | Ano |
+> | redisEnterprise | Yes |
 > | RedisEnterprise / privateEndpointConnectionProxies | No |
 > | RedisEnterprise/privateEndpointConnectionProxies/ověřit | No |
 > | RedisEnterprise / privateEndpointConnections | No |
@@ -635,10 +635,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | CdnWebApplicationFirewallManagedRuleSets | No |
-> | CdnWebApplicationFirewallPolicies | Ano |
+> | CdnWebApplicationFirewallPolicies | Yes |
 > | edgenodes | No |
-> | uživatelů | Ano |
-> | profily/koncové body | Ano |
+> | uživatelů | Yes |
+> | profily/koncové body | Yes |
 > | profily/koncové body/customdomains | No |
 > | profily/koncové body/origingroups | No |
 > | profily/koncové body/zdroje | No |
@@ -649,7 +649,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | certificateOrders | Ano |
+> | certificateOrders | Yes |
 > | certificateOrders/certifikáty | No |
 > | validateCertificateRegistrationInformation | No |
 
@@ -667,7 +667,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | možnosti | No |
-> | domainNames | Ano |
+> | domainNames | Yes |
 > | domainNames/možnosti | No |
 > | domainNames / internalLoadBalancers | No |
 > | domainNames / serviceCertificates | No |
@@ -681,7 +681,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | quotas | No |
 > | Typ prostředků | No |
 > | validateSubscriptionMoveAvailability | No |
-> | virtualMachines | Ano |
+> | virtualMachines | Yes |
 > | virtualMachines / diagnosticSettings | No |
 > | virtualMachines / metricDefinitions | No |
 > | virtualMachines/metriky | No |
@@ -702,10 +702,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > | expressRouteCrossConnections | No |
 > | expressRouteCrossConnections/partnerské vztahy | No |
 > | gatewaySupportedDevices | No |
-> | networkSecurityGroups | Ano |
+> | networkSecurityGroups | Yes |
 > | quotas | No |
-> | reservedIps | Ano |
-> | virtualNetworks | Ano |
+> | reservedIps | Yes |
+> | virtualNetworks | Yes |
 > | virtualNetworks/remoteVirtualNetworkPeeringProxies | No |
 > | virtualNetworks/virtualNetworkPeerings | No |
 
@@ -721,7 +721,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | osPlatformImages | No |
 > | publicImages | No |
 > | quotas | No |
-> | storageAccounts | Ano |
+> | storageAccounts | Yes |
 > | storageAccounts/blobServices | No |
 > | storageAccounts/služby | No |
 > | storageAccounts/metricDefinitions | No |
@@ -740,7 +740,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | plánují | Ano |
+> | plánují | Yes |
 > | registeredSubscriptions | No |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft. Cognitiveservices Account
@@ -748,7 +748,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | accounts | Ano |
+> | accounts | Yes |
 > | účty/privateEndpointConnectionProxies | No |
 > | účty/privateEndpointConnections | No |
 > | účty/privateLinkResources | No |
@@ -766,38 +766,38 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | availabilitySets | Ano |
-> | cloudServices | Ano |
+> | availabilitySets | Yes |
+> | cloudServices | Yes |
 > | cloudServices / networkInterfaces | No |
 > | cloudServices/publicIPAddresses | No |
 > | cloudServices / roleInstances | No |
 > | cloudServices / roleInstances / networkInterfaces | No |
 > | cloudServices/role | No |
-> | diskAccesses | Ano |
-> | diskEncryptionSets | Ano |
-> | disků | Ano |
-> | Galerie | Ano |
+> | diskAccesses | Yes |
+> | diskEncryptionSets | Yes |
+> | disků | Yes |
+> | Galerie | Yes |
 > | Galerie/aplikace | No |
 > | Galerie/aplikace/verze | No |
 > | Galerie/image | No |
 > | Galerie/image/verze | No |
-> | hostGroups | Ano |
-> | hostGroups/hostitelé | Ano |
-> | images | Ano |
-> | proximityPlacementGroups | Ano |
-> | restorePointCollections | Ano |
+> | hostGroups | Yes |
+> | hostGroups/hostitelé | Yes |
+> | images | Yes |
+> | proximityPlacementGroups | Yes |
+> | restorePointCollections | Yes |
 > | restorePointCollections / restorePoints | No |
-> | sharedVMExtensions | Ano |
+> | sharedVMExtensions | Yes |
 > | sharedVMExtensions/verze | No |
-> | sharedVMImages | Ano |
+> | sharedVMImages | Yes |
 > | sharedVMImages/verze | No |
-> | snímky | Ano |
-> | sshPublicKeys | Ano |
-> | virtualMachines | Ano |
-> | virtualMachines/rozšíření | Ano |
+> | snímky | Yes |
+> | sshPublicKeys | Yes |
+> | virtualMachines | Yes |
+> | virtualMachines/rozšíření | Yes |
 > | virtualMachines / metricDefinitions | No |
-> | virtualMachines / runCommands | Ano |
-> | virtualMachineScaleSets | Ano |
+> | virtualMachines / runCommands | Yes |
+> | virtualMachineScaleSets | Yes |
 > | virtualMachineScaleSets/rozšíření | No |
 > | virtualMachineScaleSets/networkInterfaces | No |
 > | virtualMachineScaleSets/publicIPAddresses | No |
@@ -809,7 +809,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | CacheNodes | Ano |
+> | CacheNodes | Yes |
 
 ## <a name="microsoftconsumption"></a>Microsoft. spotřeba
 
@@ -843,7 +843,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | containerGroups | Ano |
+> | containerGroups | Yes |
 > | serviceAssociationLinks | No |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
@@ -851,12 +851,12 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | registr | Ano |
-> | Registry/agentPools | Ano |
+> | registr | Yes |
+> | Registry/agentPools | Yes |
 > | Registry a sestavení | No |
 > | Registry/buildy/zrušit | No |
 > | Registry/buildy/getLogLink | No |
-> | Registry/buildTasks | Ano |
+> | Registry/buildTasks | Yes |
 > | Registry/buildTasks/kroky | No |
 > | Registry/eventGridFilters | No |
 > | Registry/exportPipelines | No |
@@ -873,16 +873,16 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Registry/queueBuild | No |
 > | Registry/regenerateCredential | No |
 > | Registry/regenerateCredentials | No |
-> | Registry/replikace | Ano |
+> | Registry/replikace | Yes |
 > | Registry/běhy | No |
 > | Registry/spuštění/zrušit | No |
 > | Registry/scheduleRun | No |
 > | Registry/scopeMaps | No |
 > | Registry/taskRuns | No |
-> | Registry/úlohy | Ano |
+> | Registry/úlohy | Yes |
 > | Registry a tokeny | No |
 > | Registry/updatePolicies | No |
-> | Registry a Webhooky | Ano |
+> | Registry a Webhooky | Yes |
 > | Registry/Webhooky/getCallbackConfig | No |
 > | Registry/Webhooky/příkazy k odeslání | No |
 
@@ -891,9 +891,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | containerServices | Ano |
-> | managedClusters | Ano |
-> | openShiftManagedClusters | Ano |
+> | containerServices | Yes |
+> | managedClusters | Yes |
+> | openShiftManagedClusters | Yes |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft. CostManagement
 
@@ -904,7 +904,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | BillingAccounts | No |
 > | Rozpočty | No |
 > | CloudConnectors | No |
-> | Konektory | Ano |
+> | Konektory | Yes |
 > | costAllocationRules | No |
 > | Oddělení | No |
 > | Dimenze | No |
@@ -943,35 +943,35 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | přidružení | No |
-> | resourceProviders | Ano |
+> | resourceProviders | Yes |
 
 ## <a name="microsoftd365customerinsights"></a>Microsoft. D365CustomerInsights
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | instance | Ano |
+> | instance | Yes |
 
 ## <a name="microsoftdatabox"></a>Microsoft. DataBox
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | úlohy | Ano |
+> | úlohy | Yes |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft. DataBoxEdge
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | DataBoxEdgeDevices | Ano |
+> | DataBoxEdgeDevices | Yes |
 
 ## <a name="microsoftdatabricks"></a>Cihly Microsoft.
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | pracovní prostory | Ano |
+> | pracovní prostory | Yes |
 > | pracovní prostory/dbWorkspaces | No |
 > | pracovní prostory/storageEncryption | No |
 > | pracovní prostory/virtualNetworkPeerings | No |
@@ -981,18 +981,18 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | spustí | Ano |
+> | spustí | Yes |
 
 ## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Objekty DataFactory | Ano |
+> | Objekty DataFactory | Yes |
 > | DataFactory/diagnosticSettings | No |
 > | DataFactory/metricDefinitions | No |
 > | dataFactorySchema | No |
-> | továrny | Ano |
+> | továrny | Yes |
 > | továrny/integrationRuntimes | No |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft. DataLakeAnalytics
@@ -1000,7 +1000,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | accounts | Ano |
+> | accounts | Yes |
 > | účty/dataLakeStoreAccounts | No |
 > | účty/storageAccounts | No |
 > | účty/storageAccounts/kontejnery | No |
@@ -1011,7 +1011,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | accounts | Ano |
+> | accounts | Yes |
 > | účty/eventGridFilters | No |
 > | účty/firewallRules | No |
 
@@ -1020,23 +1020,23 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | services | Ano |
-> | služby a projekty | Ano |
+> | services | Yes |
+> | služby a projekty | Yes |
 
 ## <a name="microsoftdataprotection"></a>Microsoft. DataProtection
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | BackupVaults | Ano |
-> | ResourceOperationGateKeepers | Ano |
+> | BackupVaults | Yes |
+> | ResourceOperationGateKeepers | Yes |
 
 ## <a name="microsoftdatashare"></a>Microsoft. datashare
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | accounts | Ano |
+> | accounts | Yes |
 > | účty/sdílené složky | No |
 > | účty/akcie/datové sady | No |
 > | účty/akcie/pozvánky | No |
@@ -1052,7 +1052,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | servery | Ano |
+> | servery | Yes |
 > | servery/poradci | No |
 > | servery/klíče | No |
 > | servery/privateEndpointConnectionProxies | No |
@@ -1071,8 +1071,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | flexibleServers | Ano |
-> | servery | Ano |
+> | flexibleServers | Yes |
+> | servery | Yes |
 > | servery/poradci | No |
 > | servery/klíče | No |
 > | servery/privateEndpointConnectionProxies | No |
@@ -1092,9 +1092,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | flexibleServers | Ano |
-> | serverGroups | Ano |
-> | servery | Ano |
+> | flexibleServers | Yes |
+> | serverGroups | Yes |
+> | servery | Yes |
 > | servery/poradci | No |
 > | servery/klíče | No |
 > | servery/privateEndpointConnectionProxies | No |
@@ -1105,47 +1105,47 @@ Přejít na obor názvů poskytovatele prostředků:
 > | servery/topQueryStatistics | No |
 > | servery/virtualNetworkRules | No |
 > | servery/waitStatistics | No |
-> | serversv2 | Ano |
+> | serversv2 | Yes |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft. DeploymentManager
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | artifactSources | Ano |
-> | uvádění | Ano |
-> | serviceTopologies | Ano |
-> | serviceTopologies/služby | Ano |
-> | serviceTopologies/služby/serviceUnits | Ano |
-> | kroky | Ano |
+> | artifactSources | Yes |
+> | uvádění | Yes |
+> | serviceTopologies | Yes |
+> | serviceTopologies/služby | Yes |
+> | serviceTopologies/služby/serviceUnits | Yes |
+> | kroky | Yes |
 
 ## <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | applicationgroups | Ano |
+> | applicationgroups | Yes |
 > | applicationgroups/aplikace | No |
 > | applicationgroups/desktopy | No |
 > | applicationgroups / startmenuitems | No |
-> | hostpools | Ano |
+> | hostpools | Yes |
 > | hostpools / sessionhosts | No |
 > | hostpools / sessionhosts / usersessions | No |
 > | hostpools / usersessions | No |
-> | pracovní prostory | Ano |
+> | pracovní prostory | Yes |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | ElasticPools | Ano |
-> | ElasticPools / IotHubTenants | Ano |
+> | ElasticPools | Yes |
+> | ElasticPools / IotHubTenants | Yes |
 > | ElasticPools/IotHubTenants/securitySettings | No |
-> | IotHubs | Ano |
+> | IotHubs | Yes |
 > | IotHubs/eventGridFilters | No |
 > | IotHubs/securitySettings | No |
-> | ProvisioningServices | Ano |
+> | ProvisioningServices | Yes |
 > | použití | No |
 
 ## <a name="microsoftdeviceupdate"></a>Microsoft. DeviceUpdate
@@ -1153,41 +1153,41 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | accounts | Ano |
-> | účty/instance | Ano |
+> | accounts | Yes |
+> | účty/instance | Yes |
 
 ## <a name="microsoftdevops"></a>Microsoft. DevOps
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | kanály | Ano |
+> | kanály | Yes |
 
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | kontrolery | Ano |
+> | kontrolery | Yes |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | labcenters | Ano |
-> | Labs | Ano |
-> | laboratoře/prostředí | Ano |
-> | Labs/serviceRunners | Ano |
-> | Labs/virtualMachines | Ano |
-> | časových | Ano |
+> | labcenters | Yes |
+> | Labs | Yes |
+> | laboratoře/prostředí | Yes |
+> | Labs/serviceRunners | Yes |
+> | Labs/virtualMachines | Yes |
+> | časových | Yes |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | digitalTwinsInstances | Ano |
+> | digitalTwinsInstances | Yes |
 > | digitalTwinsInstances/koncové body | No |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
@@ -1196,7 +1196,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | databaseAccountNames | No |
-> | databaseAccounts | Ano |
+> | databaseAccounts | Yes |
 > | restorableDatabaseAccounts | No |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft. DomainRegistration
@@ -1204,7 +1204,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | doménu | Ano |
+> | doménu | Yes |
 > | domény/domainOwnershipIdentifiers | No |
 > | generateSsoRequest | No |
 > | topLevelDomains | No |
@@ -1224,25 +1224,25 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | services | Ano |
+> | services | Yes |
 
 ## <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | doménu | Ano |
+> | doménu | Yes |
 > | domény a témata | No |
 > | eventSubscriptions | No |
 > | extensionTopics | No |
-> | partnerNamespaces | Ano |
+> | partnerNamespaces | Yes |
 > | partnerNamespaces/eventChannels | No |
-> | partnerRegistrations | Ano |
-> | partnerTopics | Ano |
+> | partnerRegistrations | Yes |
+> | partnerTopics | Yes |
 > | partnerTopics / eventSubscriptions | No |
-> | systemTopics | Ano |
+> | systemTopics | Yes |
 > | systemTopics / eventSubscriptions | No |
-> | popisující | Ano |
+> | popisující | Yes |
 > | topicTypes | No |
 
 ## <a name="microsofteventhub"></a>Microsoft. EventHub
@@ -1250,8 +1250,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | existující | Ano |
-> | obsažené | Ano |
+> | existující | Yes |
+> | obsažené | Yes |
 > | obory názvů/autorizačních pravidel | No |
 > | obory názvů/disasterrecoveryconfigs | No |
 > | obory názvů/eventhubs | No |
@@ -1265,14 +1265,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | experimentWorkspaces | Ano |
+> | experimentWorkspaces | Yes |
 
 ## <a name="microsoftfalcon"></a>Microsoft. Falcon
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | obsažené | Ano |
+> | obsažené | Yes |
 
 ## <a name="microsoftfeatures"></a>Microsoft. Features
 
@@ -1307,15 +1307,15 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | accounts | Ano |
+> | accounts | Yes |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | autoManagedAccounts | Ano |
-> | autoManagedVmConfigurationProfiles | Ano |
+> | autoManagedAccounts | Yes |
+> | autoManagedVmConfigurationProfiles | Yes |
 > | configurationProfileAssignments | No |
 > | guestConfigurationAssignments | No |
 > | Vybavení | No |
@@ -1327,22 +1327,22 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | hanaInstances | Ano |
-> | sapMonitors | Ano |
+> | hanaInstances | Yes |
+> | sapMonitors | Yes |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft. HardwareSecurityModules
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | dedicatedHSMs | Ano |
+> | dedicatedHSMs | Yes |
 
 ## <a name="microsofthdinsight"></a>Microsoft. HDInsight
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | existující | Ano |
+> | existující | Yes |
 > | clustery/aplikace | No |
 
 ## <a name="microsofthealthcareapis"></a>Microsoft. HealthcareApis
@@ -1350,7 +1350,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | services | Ano |
+> | services | Yes |
 > | služby/iomtconnectors | No |
 > | služby/iomtconnectors/připojení | No |
 > | služby/iomtconnectors/mapování | No |
@@ -1363,9 +1363,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | virtuální | Ano |
+> | virtuální | Yes |
 > | počítače/assessPatches | No |
-> | počítače/rozšíření | Ano |
+> | počítače/rozšíření | Yes |
 > | počítače/installPatches | No |
 
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
@@ -1373,19 +1373,19 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | datamanagery | Ano |
+> | datamanagery | Yes |
 
 ## <a name="microsofthybridnetwork"></a>Microsoft. HybridNetwork
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | zařízení | Ano |
+> | zařízení | Yes |
 > | registeredSubscriptions | No |
 > | dodavateli | No |
 > | dodavatelé/vendorskus | No |
 > | dodavatelé/vendorskus/previewSubscriptions | No |
-> | virtualnetworkfunctions | Ano |
+> | virtualnetworkfunctions | Yes |
 > | virtualnetworkfunctionvendors | No |
 
 ## <a name="microsofthydra"></a>Microsoft. Hydra
@@ -1393,15 +1393,15 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | konstrukční | Ano |
-> | networkScopes | Ano |
+> | konstrukční | Yes |
+> | networkScopes | Yes |
 
 ## <a name="microsoftimportexport"></a>Microsoft. ImportExport
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | úlohy | Ano |
+> | úlohy | Yes |
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
 
@@ -1417,14 +1417,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | appTemplates | No |
-> | IoTApps | Ano |
+> | IoTApps | Yes |
 
 ## <a name="microsoftiotspaces"></a>Microsoft. IoTSpaces
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Graph | Ano |
+> | Graph | Yes |
 
 ## <a name="microsoftkeyvault"></a>Trezor Microsoft.
 
@@ -1432,9 +1432,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | deletedVaults | No |
-> | hsmPools | Ano |
-> | managedHSMs | Ano |
-> | trezory | Ano |
+> | hsmPools | Yes |
+> | managedHSMs | Yes |
+> | trezory | Yes |
 > | trezory/accessPolicies | No |
 > | trezory/eventGridFilters | No |
 > | trezory a klíče | No |
@@ -1446,7 +1446,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | connectedClusters | Ano |
+> | connectedClusters | Yes |
 > | registeredSubscriptions | No |
 
 ## <a name="microsoftkubernetesconfiguration"></a>Microsoft. KubernetesConfiguration
@@ -1462,7 +1462,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | existující | Ano |
+> | existující | Yes |
 > | clustery/attacheddatabaseconfigurations | No |
 > | clustery/databáze | No |
 > | clustery, databáze/datapřipojení | No |
@@ -1477,7 +1477,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | labaccounts | Ano |
+> | labaccounts | Yes |
 > | uživatelé | No |
 
 ## <a name="microsoftlogic"></a>Microsoft. Logic
@@ -1485,28 +1485,28 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | hostingEnvironments | Ano |
-> | integrationAccounts | Ano |
-> | integrationServiceEnvironments | Ano |
-> | integrationServiceEnvironments/Inspirujte | Ano |
-> | isolatedEnvironments | Ano |
-> | Zpracovávaný | Ano |
+> | hostingEnvironments | Yes |
+> | integrationAccounts | Yes |
+> | integrationServiceEnvironments | Yes |
+> | integrationServiceEnvironments/Inspirujte | Yes |
+> | isolatedEnvironments | Yes |
+> | Zpracovávaný | Yes |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | commitmentPlans | Ano |
-> | webServices | Ano |
-> | Pracovní prostory | Ano |
+> | commitmentPlans | Yes |
+> | webServices | Yes |
+> | Pracovní prostory | Yes |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | pracovní prostory | Ano |
+> | pracovní prostory | Yes |
 > | pracovní prostory a výpočetní prostředky | No |
 > | pracovní prostory/eventGridFilters | No |
 > | pracovní prostory/linkedServices | No |
@@ -1518,7 +1518,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- |
 > | applyUpdates | No |
 > | configurationAssignments | No |
-> | maintenanceConfigurations | Ano |
+> | maintenanceConfigurations | Yes |
 > | publicMaintenanceConfigurations | No |
 > | aktualizovány | No |
 
@@ -1528,17 +1528,17 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | Identity | No |
-> | userAssignedIdentities | Ano |
+> | userAssignedIdentities | Yes |
 
 ## <a name="microsoftmanagednetwork"></a>Microsoft. ManagedNetwork
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | managedNetworks | Ano |
-> | managedNetworks / managedNetworkGroups | Ano |
-> | managedNetworks / managedNetworkPeeringPolicies | Ano |
-> | oznámení | Ano |
+> | managedNetworks | Yes |
+> | managedNetworks / managedNetworkGroups | Yes |
+> | managedNetworks / managedNetworkPeeringPolicies | Yes |
+> | oznámení | Yes |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
 
@@ -1566,9 +1566,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | accounts | Ano |
+> | accounts | Yes |
 > | účty/eventGridFilters | No |
-> | účty/privateAtlases | Ano |
+> | účty/privateAtlases | Yes |
 
 ## <a name="microsoftmarketplace"></a>Microsoft. Marketplace
 
@@ -1599,7 +1599,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | classicDevServices | Ano |
+> | classicDevServices | Yes |
 > | updateCommunicationPreference | No |
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft. MarketplaceOrdering
@@ -1615,14 +1615,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | MediaServices | Ano |
+> | MediaServices | Yes |
 > | MediaServices/accountFilters | No |
 > | MediaServices/assety | No |
 > | MediaServices/assety/assetFilters | No |
 > | MediaServices/contentKeyPolicies | No |
 > | MediaServices/eventGridFilters | No |
 > | MediaServices/liveEventOperations | No |
-> | MediaServices/liveEvents | Ano |
+> | MediaServices/liveEvents | Yes |
 > | MediaServices/liveEvents/liveOutputs | No |
 > | MediaServices/liveOutputOperations | No |
 > | MediaServices/mediaGraphs | No |
@@ -1630,7 +1630,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | MediaServices/privateEndpointConnectionProxies | No |
 > | MediaServices/privateEndpointConnections | No |
 > | MediaServices/streamingEndpointOperations | No |
-> | MediaServices/starají | Ano |
+> | MediaServices/starají | Yes |
 > | MediaServices/streamingLocators | No |
 > | MediaServices/streamingPolicies | No |
 > | MediaServices/transformace | No |
@@ -1641,55 +1641,55 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | appClusters | Ano |
+> | appClusters | Yes |
 
 ## <a name="microsoftmigrate"></a>Microsoft. migruje
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | assessmentProjects | Ano |
-> | migrateprojects | Ano |
-> | moveCollections | Ano |
-> | projekty | Ano |
+> | assessmentProjects | Yes |
+> | migrateprojects | Yes |
+> | moveCollections | Yes |
+> | projekty | Yes |
 
 ## <a name="microsoftmixedreality"></a>Microsoft. MixedReality
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | holographicsBroadcastAccounts | Ano |
-> | objectUnderstandingAccounts | Ano |
-> | remoteRenderingAccounts | Ano |
-> | spatialAnchorsAccounts | Ano |
+> | holographicsBroadcastAccounts | Yes |
+> | objectUnderstandingAccounts | Yes |
+> | remoteRenderingAccounts | Yes |
+> | spatialAnchorsAccounts | Yes |
 
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | netAppAccounts | Ano |
+> | netAppAccounts | Yes |
 > | netAppAccounts / accountBackups | No |
-> | netAppAccounts / capacityPools | Ano |
-> | netAppAccounts/capacityPools/svazky | Ano |
+> | netAppAccounts / capacityPools | Yes |
+> | netAppAccounts/capacityPools/svazky | Yes |
 > | netAppAccounts/capacityPools/svazky/snímky | No |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | applicationGateways | Ano |
-> | applicationGatewayWebApplicationFirewallPolicies | Ano |
-> | applicationSecurityGroups | Ano |
+> | applicationGateways | Yes |
+> | applicationGatewayWebApplicationFirewallPolicies | Yes |
+> | applicationSecurityGroups | Yes |
 > | azureFirewallFqdnTags | No |
-> | azureFirewalls | Ano |
-> | bastionHosts | Ano |
+> | azureFirewalls | Yes |
+> | bastionHosts | Yes |
 > | bgpServiceCommunities | No |
-> | připojení | Ano |
-> | ddosCustomPolicies | Ano |
-> | ddosProtectionPlans | Ano |
+> | připojení | Yes |
+> | ddosCustomPolicies | Yes |
+> | ddosProtectionPlans | Yes |
 > | dnsOperationStatuses | No |
-> | dnszones | Ano |
+> | dnszones | Yes |
 > | dnszones/A | No |
 > | dnszones/AAAA | No |
 > | dnszones/vše | No |
@@ -1702,33 +1702,33 @@ Přejít na obor názvů poskytovatele prostředků:
 > | dnszones/SOA | No |
 > | dnszones/SRV | No |
 > | dnszones/TXT | No |
-> | expressRouteCircuits | Ano |
-> | expressRouteCrossConnections | Ano |
-> | expressRouteGateways | Ano |
-> | expressRoutePorts | Ano |
+> | expressRouteCircuits | Yes |
+> | expressRouteCrossConnections | Yes |
+> | expressRouteGateways | Yes |
+> | expressRoutePorts | Yes |
 > | expressRouteServiceProviders | No |
-> | firewallPolicies | Ano |
-> | frontdoors | Ano |
+> | firewallPolicies | Yes |
+> | frontdoors | Yes |
 > | frontdoorWebApplicationFirewallManagedRuleSets | No |
-> | frontdoorWebApplicationFirewallPolicies | Ano |
+> | frontdoorWebApplicationFirewallPolicies | Yes |
 > | getDnsResourceReference | No |
 > | internalNotify | No |
-> | ipGroups | Ano |
-> | loadBalancers | Ano |
-> | localNetworkGateways | Ano |
-> | natGateways | Ano |
-> | networkIntentPolicies | Ano |
-> | networkInterfaces | Ano |
-> | networkProfiles | Ano |
-> | networkSecurityGroups | Ano |
-> | networkWatchers | Ano |
-> | networkWatchers / connectionMonitors | Ano |
-> | networkWatchers / flowLogs | Ano |
-> | networkWatchers/čočky | Ano |
-> | networkWatchers / pingMeshes | Ano |
-> | p2sVpnGateways | Ano |
+> | ipGroups | Yes |
+> | loadBalancers | Yes |
+> | localNetworkGateways | Yes |
+> | natGateways | Yes |
+> | networkIntentPolicies | Yes |
+> | networkInterfaces | Yes |
+> | networkProfiles | Yes |
+> | networkSecurityGroups | Yes |
+> | networkWatchers | Yes |
+> | networkWatchers / connectionMonitors | Yes |
+> | networkWatchers / flowLogs | Yes |
+> | networkWatchers/čočky | Yes |
+> | networkWatchers / pingMeshes | Yes |
+> | p2sVpnGateways | Yes |
 > | privateDnsOperationStatuses | No |
-> | privateDnsZones | Ano |
+> | privateDnsZones | Yes |
 > | privateDnsZones/A | No |
 > | privateDnsZones/AAAA | No |
 > | privateDnsZones/vše | No |
@@ -1738,27 +1738,27 @@ Přejít na obor názvů poskytovatele prostředků:
 > | privateDnsZones/SOA | No |
 > | privateDnsZones/SRV | No |
 > | privateDnsZones/TXT | No |
-> | privateDnsZones / virtualNetworkLinks | Ano |
-> | privateEndpoints | Ano |
-> | privateLinkServices | Ano |
-> | publicIPAddresses | Ano |
-> | publicIPPrefixes | Ano |
-> | routeFilters | Ano |
-> | routeTables | Ano |
-> | serviceEndpointPolicies | Ano |
+> | privateDnsZones / virtualNetworkLinks | Yes |
+> | privateEndpoints | Yes |
+> | privateLinkServices | Yes |
+> | publicIPAddresses | Yes |
+> | publicIPPrefixes | Yes |
+> | routeFilters | Yes |
+> | routeTables | Yes |
+> | serviceEndpointPolicies | Yes |
 > | trafficManagerGeographicHierarchies | No |
-> | trafficmanagerprofiles | Ano |
+> | trafficmanagerprofiles | Yes |
 > | trafficmanagerprofiles/Heat mapy | No |
 > | trafficManagerUserMetricsKeys | No |
-> | virtualHubs | Ano |
-> | virtualNetworkGateways | Ano |
-> | virtualNetworks | Ano |
+> | virtualHubs | Yes |
+> | virtualNetworkGateways | Yes |
+> | virtualNetworks | Yes |
 > | virtualNetworks/podsítě | No |
-> | virtualNetworkTaps | Ano |
-> | virtualWans | Ano |
-> | vpnGateways | Ano |
-> | vpnSites | Ano |
-> | webApplicationFirewallPolicies | Ano |
+> | virtualNetworkTaps | Yes |
+> | virtualWans | Yes |
+> | vpnGateways | Yes |
+> | vpnSites | Yes |
+> | webApplicationFirewallPolicies | Yes |
 
 ## <a name="microsoftnotebooks"></a>Microsoft. poznámkové bloky
 
@@ -1772,37 +1772,37 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | obsažené | Ano |
-> | obory názvů/notificationHubs | Ano |
+> | obsažené | Yes |
+> | obory názvů/notificationHubs | Yes |
 
 ## <a name="microsoftobjectstore"></a>Microsoft. ObjectStore
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | osNamespaces | Ano |
+> | osNamespaces | Yes |
 
 ## <a name="microsoftoffazure"></a>Microsoft. OffAzure
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | HyperVSites | Ano |
-> | ImportSites | Ano |
-> | MasterSites | Ano |
-> | ServerSites | Ano |
-> | VMwareSites | Ano |
+> | HyperVSites | Yes |
+> | ImportSites | Yes |
+> | MasterSites | Yes |
+> | ServerSites | Yes |
+> | VMwareSites | Yes |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft. OperationalInsights
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | existující | Ano |
+> | existující | Yes |
 > | deletedWorkspaces | No |
 > | linkTargets | No |
 > | storageInsightConfigs | No |
-> | pracovní prostory | Ano |
+> | pracovní prostory | Yes |
 > | pracovní prostory/dataexporty | No |
 > | pracovní prostory/zdroje dat | No |
 > | pracovní prostory/linkedServices | No |
@@ -1817,9 +1817,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | managementassociations | No |
-> | managementconfigurations | Ano |
-> | Řešení | Ano |
-> | zobrazení | Ano |
+> | managementconfigurations | Yes |
+> | Řešení | Yes |
+> | zobrazení | Yes |
 
 ## <a name="microsoftpeering"></a>Microsoft. peering
 
@@ -1828,10 +1828,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- |
 > | legacyPeerings | No |
 > | peerAsns | No |
-> | partnerské vztahy | Ano |
+> | partnerské vztahy | Yes |
 > | peeringServiceCountries | No |
 > | peeringServiceProviders | No |
-> | peeringServices | Ano |
+> | peeringServices | Yes |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft. PolicyInsights
 
@@ -1851,7 +1851,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | Konzoly nástroje | No |
-> | řídicí panely | Ano |
+> | řídicí panely | Yes |
 > | userSettings | No |
 
 ## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
@@ -1859,24 +1859,24 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | privateLinkServicesForPowerBI | Ano |
-> | tenantů | Ano |
+> | privateLinkServicesForPowerBI | Yes |
+> | tenantů | Yes |
 > | klienti/pracovní prostory | No |
-> | workspaceCollections | Ano |
+> | workspaceCollections | Yes |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | schopností | Ano |
+> | schopností | Yes |
 
 ## <a name="microsoftprojectbabylon"></a>Microsoft. ProjectBabylon
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | accounts | Ano |
+> | accounts | Yes |
 > | deletedAccounts | No |
 
 ## <a name="microsoftproviderhub"></a>Microsoft. ProviderHub
@@ -1887,14 +1887,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > | providerRegistrations | No |
 > | providerRegistrations / defaultRollouts | No |
 > | providerRegistrations / resourceTypeRegistrations | No |
-> | uvádění | Ano |
+> | uvádění | Yes |
 
 ## <a name="microsoftquantum"></a>Microsoft.
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Pracovní prostory | Ano |
+> | Pracovní prostory | Yes |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft. RecoveryServices
 
@@ -1902,21 +1902,21 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | backupProtectedItems | No |
-> | trezory | Ano |
+> | trezory | Yes |
 
 ## <a name="microsoftredhatopenshift"></a>Microsoft. RedHatOpenShift
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | OpenShiftClusters | Ano |
+> | OpenShiftClusters | Yes |
 
 ## <a name="microsoftrelay"></a>Microsoft. Relay
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | obsažené | Ano |
+> | obsažené | Yes |
 > | obory názvů/autorizačních pravidel | No |
 > | obory názvů/hybridconnections | No |
 > | obory názvů/hybridconnections/autorizačních pravidel | No |
@@ -1929,7 +1929,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | odešle | Ano |
+> | odešle | Yes |
 > | resourceChangeDetails | No |
 > | resourceChanges | No |
 > | resources | No |
@@ -1958,15 +1958,15 @@ Přejít na obor názvů poskytovatele prostředků:
 > | calculateTemplateHash | No |
 > | nasazení | No |
 > | nasazení/operace | No |
-> | deploymentScripts | Ano |
+> | deploymentScripts | Yes |
 > | deploymentScripts/protokoly | No |
 > | odkazy | No |
 > | notifyResourceJobs | No |
 > | dodavateli | No |
 > | resourceGroups | No |
 > | odběru | No |
-> | templateSpecs | Ano |
-> | templateSpecs/verze | Ano |
+> | templateSpecs | Yes |
+> | templateSpecs/verze | Yes |
 > | tenantů | No |
 
 ## <a name="microsoftsaas"></a>Microsoft. SaaS
@@ -1974,7 +1974,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | aplikace | Ano |
+> | aplikace | Yes |
 > | saasresources | No |
 
 ## <a name="microsoftscvmm"></a>Microsoft. ScVmm
@@ -1982,11 +1982,11 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Cloud | Ano |
-> | VirtualMachines | Ano |
-> | VirtualMachineTemplates | Ano |
-> | VirtualNetworks | Ano |
-> | vmmservers | Ano |
+> | Cloud | Yes |
+> | VirtualMachines | Yes |
+> | VirtualMachineTemplates | Yes |
+> | VirtualNetworks | Yes |
+> | vmmservers | Yes |
 
 ## <a name="microsoftsearch"></a>Microsoft. Search
 
@@ -1994,7 +1994,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | resourceHealthMetadata | No |
-> | searchServices | Ano |
+> | searchServices | Yes |
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
@@ -2010,7 +2010,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | assessmentMetadata | No |
 > | hodnocení | No |
 > | autoDismissAlertsRules | No |
-> | automatizace | Ano |
+> | automatizace | Yes |
 > | AutoProvisioningSettings | No |
 > | Předpisů | No |
 > | konektory | No |
@@ -2020,7 +2020,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | externalSecuritySolutions | No |
 > | InformationProtectionPolicies | No |
 > | iotDefenderSettings | No |
-> | iotSecuritySolutions | Ano |
+> | iotSecuritySolutions | Yes |
 > | iotSecuritySolutions / analyticsModels | No |
 > | iotSecuritySolutions / analyticsModels / aggregatedAlerts | No |
 > | iotSecuritySolutions / analyticsModels / aggregatedRecommendations | No |
@@ -2094,7 +2094,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | obsažené | Ano |
+> | obsažené | Yes |
 > | obory názvů/autorizačních pravidel | No |
 > | obory názvů/disasterrecoveryconfigs | No |
 > | obory názvů/eventgridfilters | No |
@@ -2113,32 +2113,32 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | aplikace | Ano |
-> | existující | Ano |
+> | aplikace | Yes |
+> | existující | Yes |
 > | clustery/aplikace | No |
-> | containerGroups | Ano |
-> | containerGroupSets | Ano |
-> | edgeclusters | Ano |
+> | containerGroups | Yes |
+> | containerGroupSets | Yes |
+> | edgeclusters | Yes |
 > | edgeclusters/aplikace | No |
-> | managedclusters | Ano |
+> | managedclusters | Yes |
 > | managedclusters/nodetypes | No |
-> | sítí | Ano |
-> | secretstores | Ano |
+> | sítí | Yes |
+> | secretstores | Yes |
 > | secretstores/certifikáty | No |
 > | secretstores/tajné kódy | No |
-> | volumes | Ano |
+> | volumes | Yes |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | aplikace | Ano |
-> | containerGroups | Ano |
-> | brány | Ano |
-> | sítí | Ano |
-> | záleží | Ano |
-> | volumes | Ano |
+> | aplikace | Yes |
+> | containerGroups | Yes |
+> | brány | Yes |
+> | sítí | Yes |
+> | záleží | Yes |
+> | volumes | Yes |
 
 ## <a name="microsoftservices"></a>Microsoft. Services
 
@@ -2147,14 +2147,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- |
 > | providerRegistrations | No |
 > | providerRegistrations / resourceTypeRegistrations | No |
-> | uvádění | Ano |
+> | uvádění | Yes |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | SignalR | Ano |
+> | SignalR | Yes |
 > | Signál/eventGridFilters | No |
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
@@ -2169,17 +2169,17 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | applicationDefinitions | Ano |
-> | aplikace | Ano |
-> | jitRequests | Ano |
+> | applicationDefinitions | Yes |
+> | aplikace | Yes |
+> | jitRequests | Yes |
 
 ## <a name="microsoftsql"></a>Microsoft. SQL
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | managedInstances | Ano |
-> | managedInstances/databáze | Ano |
+> | managedInstances | Yes |
+> | managedInstances/databáze | Yes |
 > | managedInstances/databáze/backupShortTermRetentionPolicies | No |
 > | managedInstances/databáze/schémata/tabulky/sloupce/sensitivityLabels | No |
 > | managedInstances/databáze/vulnerabilityAssessments | No |
@@ -2188,10 +2188,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > | managedInstances/klíče | No |
 > | managedInstances / restorableDroppedDatabases / backupShortTermRetentionPolicies | No |
 > | managedInstances / vulnerabilityAssessments | No |
-> | servery | Ano |
+> | servery | Yes |
 > | servery/správci | No |
 > | servery/communicationLinks | No |
-> | servery/databáze | Ano |
+> | servery/databáze | Yes |
 > | servery/encryptionProtector | No |
 > | servery/firewallRules | No |
 > | servery/klíče | No |
@@ -2205,9 +2205,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | SqlVirtualMachineGroups | Ano |
+> | SqlVirtualMachineGroups | Yes |
 > | SqlVirtualMachineGroups / AvailabilityGroupListeners | No |
-> | SqlVirtualMachines | Ano |
+> | SqlVirtualMachines | Yes |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
@@ -2215,7 +2215,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | deletedAccounts | No |
-> | storageAccounts | Ano |
+> | storageAccounts | Yes |
 > | storageAccounts/blobServices | No |
 > | storageAccounts/služby | No |
 > | storageAccounts/queueServices | No |
@@ -2229,7 +2229,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | mezipaměti | Ano |
+> | mezipaměti | Yes |
 > | mezipaměti/storageTargets | No |
 > | usageModels | No |
 
@@ -2245,7 +2245,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | storageSyncServices | Ano |
+> | storageSyncServices | Yes |
 > | storageSyncServices/registeredServer | No |
 > | storageSyncServices / syncGroups | No |
 > | storageSyncServices / syncGroups / cloudEndpoints | No |
@@ -2257,7 +2257,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | storageSyncServices | Ano |
+> | storageSyncServices | Yes |
 > | storageSyncServices/registeredServer | No |
 > | storageSyncServices / syncGroups | No |
 > | storageSyncServices / syncGroups / cloudEndpoints | No |
@@ -2269,7 +2269,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | storageSyncServices | Ano |
+> | storageSyncServices | Yes |
 > | storageSyncServices/registeredServer | No |
 > | storageSyncServices / syncGroups | No |
 > | storageSyncServices / syncGroups / cloudEndpoints | No |
@@ -2281,15 +2281,15 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | jednatel | Ano |
+> | jednatel | Yes |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft. StreamAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | existující | Ano |
-> | streamingjobs | Ano |
+> | existující | Yes |
+> | streamingjobs | Yes |
 
 ## <a name="microsoftsubscription"></a>Microsoft. Subscription
 
@@ -2313,29 +2313,29 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | privateLinkHubs | Ano |
-> | pracovní prostory | Ano |
-> | pracovní prostory/bigDataPools | Ano |
+> | privateLinkHubs | Yes |
+> | pracovní prostory | Yes |
+> | pracovní prostory/bigDataPools | Yes |
 > | pracovní prostory/operationStatuses | No |
-> | pracovní prostory/sqlDatabases | Ano |
-> | pracovní prostory/sqlPools | Ano |
+> | pracovní prostory/sqlDatabases | Yes |
+> | pracovní prostory/sqlPools | Yes |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft. TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Environment | Ano |
+> | Environment | Yes |
 > | prostředí/accessPolicies | No |
-> | prostředí/EventSources | Ano |
-> | prostředí/referenceDataSets | Ano |
+> | prostředí/EventSources | Yes |
+> | prostředí/referenceDataSets | Yes |
 
 ## <a name="microsofttoken"></a>Microsoft. token
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | Store | Ano |
+> | Store | Yes |
 > | obchody/accessPolicies | No |
 > | obchody/služby | No |
 > | úložiště/služby/tokeny | No |
@@ -2345,7 +2345,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | imageTemplates | Ano |
+> | imageTemplates | Yes |
 > | imageTemplates / runOutputs | No |
 
 ## <a name="microsoftvmware"></a>Microsoft. VMware
@@ -2353,42 +2353,42 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | ArcZones | Ano |
-> | ResourcePools | Ano |
-> | Servery vCenter | Ano |
-> | VirtualMachines | Ano |
-> | VirtualMachineTemplates | Ano |
-> | VirtualNetworks | Ano |
+> | ArcZones | Yes |
+> | ResourcePools | Yes |
+> | Servery vCenter | Yes |
+> | VirtualMachines | Yes |
+> | VirtualMachineTemplates | Yes |
+> | VirtualNetworks | Yes |
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft. VMwareCloudSimple
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | dedicatedCloudNodes | Ano |
-> | dedicatedCloudServices | Ano |
-> | virtualMachines | Ano |
+> | dedicatedCloudNodes | Yes |
+> | dedicatedCloudServices | Yes |
+> | virtualMachines | Yes |
 
 ## <a name="microsoftvnfmanager"></a>Microsoft. VnfManager
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | zařízení | Ano |
+> | zařízení | Yes |
 > | registeredSubscriptions | No |
 > | dodavateli | No |
 > | dodavatelé/SKU | No |
 > | dodavatelé/vnfs | No |
 > | virtualNetworkFunctionSkus | No |
-> | vnfs | Ano |
+> | vnfs | Yes |
 
 ## <a name="microsoftvsonline"></a>Microsoft. VSOnline
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | accounts | Ano |
-> | plánují | Ano |
+> | accounts | Yes |
+> | plánují | Yes |
 > | registeredSubscriptions | No |
 
 ## <a name="microsoftweb"></a>Microsoft. Web
@@ -2407,34 +2407,34 @@ Přejít na obor názvů poskytovatele prostředků:
 > | apiManagementAccounts / connectionAcls | No |
 > | apiManagementAccounts/připojení | No |
 > | billingMeters | No |
-> | certifikáty | Ano |
-> | connectionGateways | Ano |
-> | připojení | Ano |
-> | customApis | Ano |
+> | certifikáty | Yes |
+> | connectionGateways | Yes |
+> | připojení | Yes |
+> | customApis | Yes |
 > | deletedSites | No |
-> | hostingEnvironments | Ano |
+> | hostingEnvironments | Yes |
 > | hostingEnvironments / eventGridFilters | No |
 > | hostingEnvironments / multiRolePools | No |
 > | hostingEnvironments / workerPools | No |
-> | kubeEnvironments | Ano |
+> | kubeEnvironments | Yes |
 > | publishingUsers | No |
 > | doporučit | No |
 > | resourceHealthMetadata | No |
 > | moduly runtime | No |
-> | Serverových farem | Ano |
+> | Serverových farem | Yes |
 > | Serverových farem/eventGridFilters | No |
-> | místa | Ano |
+> | místa | Yes |
 > | lokality/konfigurace  | No |
 > | lokality/eventGridFilters | No |
 > | lokality/hostNameBindings | No |
 > | lokality/networkConfig | No |
-> | lokality/premieraddons | Ano |
-> | lokality/sloty | Ano |
+> | lokality/premieraddons | Yes |
+> | lokality/sloty | Yes |
 > | lokality/sloty/eventGridFilters | No |
 > | lokality/sloty/hostNameBindings | No |
 > | lokality/sloty/networkConfig | No |
 > | sourceControls | No |
-> | staticSites | Ano |
+> | staticSites | Yes |
 > | oproti | No |
 > | verifyHostingEnvironmentVnet | No |
 
@@ -2451,21 +2451,21 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | multipleActivationKeys | Ano |
+> | multipleActivationKeys | Yes |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft. WindowsIoT
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | DeviceServices | Ano |
+> | DeviceServices | Yes |
 
 ## <a name="microsoftworkloadbuilder"></a>Microsoft. WorkloadBuilder
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | úlohy | Ano |
+> | úlohy | Yes |
 > | úlohy/instance | No |
 > | zatížení a verze | No |
 > | úlohy/verze/artefakty | No |

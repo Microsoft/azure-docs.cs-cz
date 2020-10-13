@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
 ms.openlocfilehash: 7dfd6bddd19e5559918889da5f6ef38dbe6eef15
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91767503"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>Správa prostředků Azure Cosmos DB Core (SQL) API pomocí šablon Azure Resource Manageru
@@ -82,7 +82,7 @@ Tato šablona vytvoří bezplatný účet Azure Cosmos a databázi se sdílenou 
 
 Tady je několik dalších zdrojů:
 
-* [Dokumentace k Azure Resource Manager](/azure/azure-resource-manager/)
+* [Dokumentace ke službě Azure Resource Manager](/azure/azure-resource-manager/)
 * [Azure Cosmos DB schéma poskytovatele prostředků](/azure/templates/microsoft.documentdb/allversions)
 * [Šablony pro rychlý Start Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb&pageNumber=1&sort=Popular)
 * [Řešení běžných chyb při nasazení Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md)

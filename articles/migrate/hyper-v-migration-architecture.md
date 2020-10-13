@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362193"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Jak funguje replikace Hyper-V?
@@ -80,7 +80,7 @@ I
 Pokud máte volnou šířku pásma pro replikaci a chcete zvýšit nahrávání, můžete zvýšit počet vláken přidělených pro úlohu odeslání následujícím způsobem:
 
 1. Otevřete registr pomocí příkazu regedit.
-2. Přejděte na Key HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM
+2. Přejít na klíčovou HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM
 3. Zvyšte hodnotu počtu vláken používaných pro nahrávání dat pro každý virtuální počítač repliky. Výchozí hodnota je 4 a maximální hodnota je 32. 
 
 

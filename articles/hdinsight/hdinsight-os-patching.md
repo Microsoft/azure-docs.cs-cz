@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
 ms.openlocfilehash: 005bfd4b7e7d062640a79896ccd3d7f76e3d6fb3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91447200"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Konfigurace plánu oprav operačního systému pro clustery HDInsight se systémem Linux
@@ -52,7 +52,7 @@ Plán skriptu [–](https://hdiconfigactions.blob.core.windows.net/linuxospatchi
 
 `schedule-reboots script`Přijímá jeden číselný parametr:
 
-| parametr | Přípustné hodnoty | Definice |
+| Parametr | Přípustné hodnoty | Definice |
 | --- | --- | --- |
 | Typ restartování, který se má provést | 1 nebo 2 | Hodnota 1 povolí restart plánu (naplánováno během 12-24 hodin). Hodnota 2 umožňuje okamžité restartování (5 minut). Pokud není zadán žádný parametr, výchozí hodnota je 1. |  
 
@@ -62,7 +62,7 @@ Skript [install-Updates-Schedule-Reboots.sh](https://hdiconfigactions.blob.core.
 
 `install-updates-schedule-reboots`Skript přijímá dva číselné parametry, jak je popsáno v následující tabulce:
 
-| parametr | Přípustné hodnoty | Definice |
+| Parametr | Přípustné hodnoty | Definice |
 | --- | --- | --- |
 | Typ aktualizací, které se mají nainstalovat | 0, 1 nebo 2 | Hodnota 0 nainstaluje pouze aktualizace jádra. Hodnota 1 nainstaluje všechny aktualizace a 2 nainstaluje pouze aktualizace jádra a zabezpečení. Pokud není zadán žádný parametr, výchozí hodnota je 0. |
 | Typ restartování, který se má provést | 0, 1 nebo 2 | Hodnota 0 zakáže restart. Hodnota 1 umožňuje naplánovat restart a 2 umožňuje okamžité restartování. Pokud není zadán žádný parametr, výchozí hodnota je 0. Uživatel musí změnit vstupní parametr 1 na vstupní parametr 2. |

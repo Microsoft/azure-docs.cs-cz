@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.openlocfilehash: e0dcd5db36e41093bf1cd75779770b04df2fc26a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710647"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Vytvoření nabídky aplikací Power BI
@@ -142,7 +142,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 6. Podmínky použití
 7. Zásady ochrany osobních údajů
 8. Název nabídky
-9. Souhrn
+9. Shrnutí
 10. Description
 11. Snímky obrazovky a videa
 

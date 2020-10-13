@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
 ms.openlocfilehash: 48a2c00f7ff487def13e9872c4f43a3ca36809ba
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444641"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Šablony Azure Resource Manager pro Azure SQL Database & spravované instance SQL
@@ -27,7 +27,7 @@ ms.locfileid: "91444641"
 
 Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro Azure SQL Database.
 
-|Odkaz |Popis|
+|Odkaz |Description|
 |---|---|
 | [SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | Tato šablona Azure Resource Manager vytvoří v Azure SQL Database jednu databázi a nakonfiguruje pravidla brány firewall protokolu IP na úrovni serveru. |
 | [Server](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Tato šablona Azure Resource Manager vytvoří server pro Azure SQL Database. |
@@ -46,7 +46,7 @@ Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro Az
 
 Následující tabulka obsahuje odkazy na šablony Azure Resource Manager pro spravovanou instanci Azure SQL.
 
-|Odkaz|Popis|
+|Odkaz|Description|
 |---|---|
 | [Spravovaná instance SQL v nové virtuální síti](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | Tato šablona Azure Resource Manager vytvoří ve virtuální síti novou nakonfigurovanou virtuální síť Azure a spravovanou instanci. |
 | [Síťové prostředí pro spravovanou instanci SQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Toto nasazení vytvoří nakonfigurovanou virtuální síť Azure se dvěma podsítěmi, jednu, která bude vyhrazená pro vaše spravované instance, a další, kde můžete umístit další prostředky (například virtuální počítače, App Service prostředí atd.). Tato šablona vytvoří správně nakonfigurované síťové prostředí, ve kterém můžete nasadit spravované instance. |

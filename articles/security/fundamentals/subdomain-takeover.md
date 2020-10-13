@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/29/2020
 ms.author: memildin
 ms.openlocfilehash: bde4b21f9dfff62ef43afc9c9d8e5a858631d304
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91447369"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Zabránit položkám DNS v dangling a vyhnout se převzetí subdomény

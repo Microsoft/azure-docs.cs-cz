@@ -11,10 +11,10 @@ ms.workload: big-data
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: 9bf857a66643b1e95ea2559601761a7217babad4
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665323"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Sdílení vlastního zobrazení pomocí parametrizovaných adres URL
@@ -69,7 +69,7 @@ Přijaté hodnoty odpovídají nabídce **rychlý čas** v Průzkumníkovi Azure
 
 `timeSeriesDefinitions=<collection of term objects>`Parametr určuje výrazy predikátu, které se zobrazí v zobrazení Azure Time Series Insights:
 
-| parametr | Položka URL | Description |
+| Parametr | Položka URL | Description |
 | --- | --- | --- |
 | **Jméno** | `\<string>` | Název *podmínky*. |
 | **splitBy** | `\<string>` | Název sloupce, podle kterého se bude *rozdělovat*. |

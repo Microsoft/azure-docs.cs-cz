@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
 ms.openlocfilehash: 0382c7c7f7d068ea227397ae7accf4bc410de04a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761443"
 ---
 # <a name="receipt-concepts"></a>Principy účtenek
@@ -82,7 +82,7 @@ Při [analýze se obdrží](https://westcentralus.dev.cognitive.microsoft.com/do
 
 |Hlavička odpovědi| Adresa URL výsledku |
 |:-----|:----|
-|Operace – umístění | `https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/analyzeResults/56a36454-fc4d-4354-aa07-880cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/analyzeResults/56a36454-fc4d-4354-aa07-880cfbf0064f` |
 
 ## <a name="the-get-analyze-receipt-result-operation"></a>Operace získání výsledku analýzy pro příjem
 

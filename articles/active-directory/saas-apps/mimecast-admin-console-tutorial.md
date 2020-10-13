@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: f3029acd791e7c45eb5943d298189430ac308e99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a9599c20905168b425675d0b028545143c7d19f
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88528450"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941071"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-admin-console"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s konzolou správce Mimecast
 
@@ -155,23 +155,23 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Přejděte na **aplikace pro správu**  >  **Services**  >  **Applications**.
 
-    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/services.png)
+    ![Snímek obrazovky zobrazuje okno Mimecast s vybranými aplikacemi.](./media/mimecast-admin-console-tutorial/services.png)
 
 1. Klikněte na kartu **profily ověřování** .
     
-    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/authentication-profiles.png)
+    ![Snímek obrazovky se zobrazí karta aplikace s vybranými profily ověřování.](./media/mimecast-admin-console-tutorial/authentication-profiles.png)
 
 1. Klikněte na **Nová karta profil ověřování** .
 
-    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/new-authenticatio-profile.png)
+    ![Snímek obrazovky zobrazuje vybraný nový profil ověřování.](./media/mimecast-admin-console-tutorial/new-authenticatio-profile.png)
 
 1. Do textového pole **Popis** zadejte platný popis a zaškrtněte políčko **vyhovět ověřování SAML pro konzolu pro správu** .
 
-    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/selecting-admin-consle.png)
+    ![Snímek obrazovky ukazuje, kde vybrat vynutilo ověřování SAML pro konzolu pro správu.](./media/mimecast-admin-console-tutorial/selecting-admin-consle.png)
 
 1. Na stránce **konzoly Konfigurace SAML pro správu** proveďte následující kroky:
 
-    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/sso-settings.png)
+    ![Snímek obrazovky ukazuje stránku konfigurace SAML pro konzolu pro správu, kde můžete zadat hodnoty, které jsou popsány.](./media/mimecast-admin-console-tutorial/sso-settings.png)
 
     a. V rozevíracím seznamu **poskytovatel**vyberte **Azure Active Directory** .
 
@@ -189,19 +189,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Přejděte do **složky pro správu**  >  **Directories**  >  **interní adresáře**.
 
-    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/internal-directories.png)
+    ![Snímek obrazovky zobrazuje okno Mimecast s vybranými interními adresáři.](./media/mimecast-admin-console-tutorial/internal-directories.png)
 
 1. Pokud je doména uvedená níže, vyberte v doméně. v opačném případě vytvořte novou doménu kliknutím na **novou doménu**.
 
-    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/domain-name.png)
+    ![Snímek obrazovky se zobrazí vybraná doména.](./media/mimecast-admin-console-tutorial/domain-name.png)
 
 1. Klikněte na kartu **Nová adresa** .
 
-    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/new-address.png)
+    ![Snímek obrazovky zobrazuje vybranou novou adresu.](./media/mimecast-admin-console-tutorial/new-address.png)
 
 1. Zadejte požadované informace o uživateli na následující stránce:
 
-    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/user-information.png)
+    ![Snímek obrazovky se zobrazí stránka, kde můžete zadat hodnoty, které jsou popsány.](./media/mimecast-admin-console-tutorial/user-information.png)
 
     a. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele, jako je `B.Simon@yourdomainname.com` .
 
@@ -215,7 +215,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     f. Pokud chcete přiřadit role uživateli, klikněte na **Upravit roli** a přiřaďte požadovanou roli uživateli podle požadavků vaší organizace.
 
-    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/assign-role.png)
+    ![Snímek obrazovky zobrazuje nastavení adres, kde můžete vybrat možnost Upravit roli.](./media/mimecast-admin-console-tutorial/assign-role.png)
 
 ## <a name="test-sso"></a>Test SSO 
 

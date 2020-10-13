@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/11/2019
 ms.openlocfilehash: e0214cb9515a5974f1de9a27760dc037f7593f30
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90892291"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Kopírování nebo zálohování úloh Azure Stream Analytics
@@ -21,7 +21,7 @@ Nasazené Azure Stream Analytics úlohy můžete kopírovat nebo zálohovat pomo
 ## <a name="before-you-begin"></a>Než začnete
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+* Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 * Nainstalujte [Azure Stream Analytics rozšíření pro Visual Studio Code](quick-create-visual-studio-code.md#install-the-azure-stream-analytics-tools-extension) nebo [Azure Stream Analytics nástroje pro Visual Studio](quick-create-visual-studio-code.md#install-the-azure-stream-analytics-tools-extension).  
 

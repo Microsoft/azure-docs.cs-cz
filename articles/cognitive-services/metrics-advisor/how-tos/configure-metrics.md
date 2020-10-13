@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: aahi
 ms.openlocfilehash: 93fdf2884ca6593cfdb4fb2878ba0dd21246266d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91446356"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>Postupy: Konfigurace metrik a doladění konfigurace zjišťování
@@ -136,7 +136,7 @@ Existuje několik dalších hodnot, které můžete nakonfigurovat:
 |**Dny k rozšíření**    |  Ovlivněné dny před a po svátek.        |
 
 
-Část **události cyklu** se dá v některých scénářích použít k omezení zbytečných upozornění pomocí cyklických vzorů v datech. Příklad: 
+Část **události cyklu** se dá v některých scénářích použít k omezení zbytečných upozornění pomocí cyklických vzorů v datech. Například: 
 
 - Metriky, které mají více vzorů nebo cyklů, jako je například týdenní i měsíční vzor. 
 - Metriky, které nemají jasný vzor, ale data jsou srovnatelné roky za rok (YoY), měsíc za měsíc (MoM), týden v týdnu (WoW) nebo den za den (DoD).
@@ -148,7 +148,7 @@ Ne všechny možnosti lze vybrat pro každou členitost. K dispozici jsou násle
 | Ročně | X | X | X | X |
 | Měsíčně | X | X | X | X |
 | Každý týden | ✔ | X | X | X |
-| Každý den | ✔ | ✔ | ✔ | X |
+| Každý den | ✔ | ✔ | ✔ | × |
 | Hodinově | ✔ | ✔ | ✔ | ✔ |
 | Po minutách | X | X | X | X |
 | Za druhé | X | X | X | X |

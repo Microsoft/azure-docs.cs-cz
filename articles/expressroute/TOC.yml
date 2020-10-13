@@ -4,7 +4,7 @@
   items:
     - name: Co je ExpressRoute?
       href: expressroute-introduction.md
-- name: Rychlý start
+- name: Rychlé starty
   items:
     - name: Vytvoření okruhu ExpressRoute – portál
       href: expressroute-howto-circuit-portal-resource-manager.md

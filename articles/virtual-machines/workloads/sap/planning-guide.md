@@ -12,10 +12,10 @@ ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8884711bbb32054ca1d8e4d9f9e7dee753f0c629
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361921"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
@@ -963,7 +963,7 @@ V době stahování VHD nebo Managed Disks nejde aktivovat. I když stahujete di
   Save-AzVhd -ResourceGroupName <resource group name of storage account> -SourceUri http://<storage account name>.blob.core.windows.net/<container name>/sapidedata.vhd -LocalFilePath E:\Azure_downloads\sapidesdata.vhd
   ```
 
-  Další podrobnosti o rutině Save-AzVhd najdete tady <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd> .
+  Další informace o rutině Save-AzVhd najdete zde <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd> .
 
 #### <a name="azure-cli"></a>Azure CLI
 * Stahuje se spravovaný disk. nejdřív potřebujete získat přístup k základnímu objektu BLOB spravovaného disku. Pak můžete původní objekt BLOB zkopírovat do nového účtu úložiště a stáhnout objekt BLOB z tohoto účtu úložiště.
@@ -1168,7 +1168,7 @@ Zkušenosti s nasazením SAP za poslední dva roky nám pomohou s některými le
 >
 
 ---
-* Premium Storage se zobrazuje s významným lepším výkonem, zejména pro zápis kritických protokolů transakcí. U scénářů SAP, u kterých se očekává, že dodávají produkční prostředí jako výkon, se důrazně doporučuje použít řadu virtuálních počítačů, které můžou využít Azure Premium Storage.
+* Premium Storage se zobrazuje s významným lepším výkonem, zejména pro zápis kritických protokolů transakcí. U scénářů SAP, u kterých se očekává, že dodávají produkční prostředí jako výkon, se důrazně doporučuje použít VM-Series, které můžou využít Azure Premium Storage.
 
 Mějte na paměti, že disk, který obsahuje operační systém a jak doporučujeme, binární soubory SAP a databáze (základní virtuální počítač) už nejsou omezené na 127 GB. Teď může mít velikost až 1 TB. V takovém případě by měl být dostatek místa pro uchování všech potřebných souborů, například protokolů dávkové úlohy SAP.
 
@@ -1219,7 +1219,7 @@ Geografická replikace Azure funguje lokálně na každém virtuálním pevném 
 >
 > Pokud chcete nastavit automount, Projděte si dokumentaci ke spustitelnému souboru příkazového řádku diskpart.exe tady:
 >
-> * [Parametry příkazového řádku nástroje DiskPart](/previous-versions/windows/it-pro/windows-xp/bb490893(v=technet.10))
+> * [Možnosti Command-Line DiskPart](/previous-versions/windows/it-pro/windows-xp/bb490893(v=technet.10))
 > * [Automaticky připojit](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc753703(v=ws.11))
 >
 > Okno příkazového řádku systému Windows by mělo být otevřeno jako správce.
@@ -1738,7 +1738,7 @@ Celková architektura rozšíření Azure pro SAP vypadá takto:
 
 Instance SAP běžící v Azure musí být dostupné i z SAProuter.
 
-![Síťové připojení ke směrovači SAP][planning-guide-figure-2600]
+![SAP-Router síťové připojení][planning-guide-figure-2600]
 
 SAProuter umožňuje komunikaci TCP/IP mezi zúčastněnými systémy, pokud není k dispozici žádné přímé připojení IP. Díky tomu je zajištěno, že žádné koncové spojení mezi komunikačními partnery není nutné na úrovni sítě. SAProuter ve výchozím nastavení naslouchá na portu 3299.
 Pokud chcete spojit instance SAP prostřednictvím SAProuter, musíte zadat řetězec SAProuter a název hostitele s jakýmkoli pokusem o připojení.
@@ -1936,7 +1936,7 @@ Další informace týkající se autostart pro instance SAP najdete tady:
 * [Jak povolit automatické spuštění databáze HANA](http://sapbasisinfo.com/blog/2016/08/15/enabling-autostart-of-sap-hana-database-on-server-boot-situation/)
 
 ### <a name="larger-3-tier-sap-systems"></a>Větší systémy SAP úrovně 3
-Aspekty vysoce dostupné konfigurace SAP pro 3 vrstvy byly popsány v předchozích oddílech. Ale informace o systémech, ve kterých jsou požadavky na server DBMS moc velké, aby se nacházely v Azure, ale aplikační vrstva SAP by mohla být nasazená do Azure?
+High-Availability aspekty 3 úrovní konfigurací SAP popsaných v předchozích oddílech již existuje. Ale informace o systémech, ve kterých jsou požadavky na server DBMS moc velké, aby se nacházely v Azure, ale aplikační vrstva SAP by mohla být nasazená do Azure?
 
 #### <a name="location-of-3-tier-sap-configurations"></a>Umístění konfigurací pro 3 vrstvy SAP
 Pro rozdělení samotné aplikační vrstvy nebo aplikace a DBMS mezi místními prostředími a Azure se nepodporuje. Systém SAP je buď zcela nasazený místně nebo v Azure. Také se nepodporuje, aby některé aplikační servery běžely v místním prostředí a jiné v Azure. To je výchozí bod diskuze. Nepodporujeme také komponenty DBMS systému SAP a vrstvy aplikačního serveru SAP nasazené ve dvou různých oblastech Azure. Například DBMS v Západní USA a aplikační vrstva SAP v Střed USA. Důvodem pro nepodporu takových konfigurací je citlivost na latenci architektury SAP NetWeaver.

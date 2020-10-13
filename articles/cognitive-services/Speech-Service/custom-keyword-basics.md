@@ -12,17 +12,17 @@ ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91667689"
 ---
-# <a name="get-started-with-custom-keyword"></a>Začínáme s vlastním klíčovým slovem
+# <a name="get-started-with-custom-keyword"></a>Začínáme se službou Vlastní klíčové slovo
 
 V tomto rychlém startu se naučíte základy práce s vlastními klíčovými slovy pomocí rozpoznávání řeči Studio a sady Speech SDK. Klíčové slovo je slovo nebo krátká fráze, která umožňuje, aby byl váš produkt hlasově aktivovaný. Modely klíčových slov vytvoříte v nástroji Speech Studio a potom exportujete soubor modelu, který používáte se sadou Speech SDK ve vašich aplikacích.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Postup v tomto článku vyžaduje předplatné řeči a sadu Speech SDK. Pokud ještě nemáte předplatné, [Vyzkoušejte službu Speech Service zdarma](overview.md#try-the-speech-service-for-free). Chcete-li získat sadu SDK, přečtěte si [příručku Instalace](quickstarts/setup-platform.md) pro vaši platformu.
 

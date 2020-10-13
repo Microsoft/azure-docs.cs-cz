@@ -8,10 +8,10 @@ author: navits09
 ms.author: navits
 ms.date: 06/17/2020
 ms.openlocfilehash: bcb14c786ab652b1c51a3d3bf487e39fd0ebfdb6
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710681"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps

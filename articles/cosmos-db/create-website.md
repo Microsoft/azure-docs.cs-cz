@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
 ms.openlocfilehash: 8e6a6d1c557a765e55152685f08e80ad54bbd903
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362006"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Nasazení Azure Cosmos DB a Azure App Service pomocí webové aplikace z GitHubu pomocí šablony Azure Resource Manager
@@ -40,7 +40,7 @@ Nejdřív kliknutím na tlačítko **nasadit do Azure** níže otevřete Azure P
 
 V Azure Portal vyberte předplatné, které chcete nasadit, a vyberte nebo vytvořte novou skupinu prostředků. Pak vyplňte následující hodnoty.
 
-:::image type="content" source="./media/create-website/template-deployment.png" alt-text="Snímek obrazovky uživatelského rozhraní nasazení šablony":::
+:::image type="content" source="./media/create-website/template-deployment.png" alt-text="Nasazení do Azure":::
 
 * **Region** – to je vyžadováno správce prostředků. Zadejte stejnou oblast, kterou používá parametr Location, kde se nacházejí vaše prostředky.
 * **Název aplikace** – tento název se používá u všech prostředků tohoto nasazení. Ujistěte se, že jste zvolili jedinečný název, aby nedošlo ke konfliktu se stávajícími účty Azure Cosmos DB a App Service.
@@ -64,31 +64,31 @@ Po vyplnění hodnot kliknutím na tlačítko **vytvořit** spusťte nasazení. 
 
 Až šablona nasadí prostředky, můžete si ji teď zobrazit ve své skupině prostředků.
 
-:::image type="content" source="./media/create-website/resource-group.png" alt-text="Skupina prostředků":::
+:::image type="content" source="./media/create-website/resource-group.png" alt-text="Nasazení do Azure":::
 
 ### <a name="view-cosmos-db-endpoint-and-keys"></a>Zobrazit Cosmos DB koncový bod a klíče
 
 Pak otevřete účet Azure Cosmos na portálu. Na následujícím snímku obrazovky vidíte koncový bod a klíče pro účet Azure Cosmos.
 
-:::image type="content" source="./media/create-website/cosmos-keys.png" alt-text="Cosmos klíče":::
+:::image type="content" source="./media/create-website/cosmos-keys.png" alt-text="Nasazení do Azure":::
 
 ### <a name="view-the-azure-cosmos-db-keys-in-application-settings"></a>Zobrazit Azure Cosmos DB klíče v nastavení aplikace
 
 Potom přejděte do Azure App Service ve skupině prostředků. Kliknutím na kartu Konfigurace zobrazíte nastavení aplikace pro App Service. Nastavení aplikace obsahuje účet Cosmos DB a hodnoty primárního klíče, které jsou nezbytné pro připojení k Cosmos DB, a také názvy databází a kontejnerů, které byly předány z nasazení šablony.
 
-:::image type="content" source="./media/create-website/application-settings.png" alt-text="Nastavení aplikace":::
+:::image type="content" source="./media/create-website/application-settings.png" alt-text="Nasazení do Azure":::
 
 ### <a name="view-web-app-in-deployment-center"></a>Zobrazit webovou aplikaci v centru nasazení
 
 Dál přejdete do centra nasazení App Service. Tady uvidíte body úložiště v úložišti GitHubu, které jste předali do šablony. Následující stav také indikuje úspěch (aktivní), což znamená, že aplikace byla úspěšně nasazena a spuštěna.
 
-:::image type="content" source="./media/create-website/deployment-center.png" alt-text="Deployment Center":::
+:::image type="content" source="./media/create-website/deployment-center.png" alt-text="Nasazení do Azure":::
 
 ### <a name="run-the-web-application"></a>Spuštění webové aplikace
 
 Kliknutím na **Procházet** v horní části centra nasazení otevřete webovou aplikaci. Webová aplikace se otevře na domovské obrazovce. Klikněte na **vytvořit nový** a do polí zadejte nějaká data a klikněte na Uložit. Výsledná obrazovka zobrazuje data uložená v Cosmos DB.
 
-:::image type="content" source="./media/create-website/app-home-screen.png" alt-text="Domovská obrazovka":::
+:::image type="content" source="./media/create-website/app-home-screen.png" alt-text="Nasazení do Azure":::
 
 ## <a name="step-3-how-does-it-work"></a>Krok 3: jak to funguje
 
@@ -98,23 +98,23 @@ Existují tři prvky potřebné k tomu, aby fungovaly.
 
 Nejprve aplikace potřebuje požádat o koncový bod Cosmos DB a klíč ve `Startup` třídě ve webové aplikaci ASP.NET MVC. [Ukázka Cosmos DB to udělat](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app) může běžet místně, kde můžete zadat informace o připojení do appsettings.jsna. Při nasazení se ale tento soubor nasadí s aplikací. Pokud tyto řádky červeného přístupu k nastavením z appsettings.js, pokusí se z nastavení aplikace v Azure App Service.
 
-:::image type="content" source="./media/create-website/startup.png" alt-text="Snímek obrazovky ukazuje metodu s několika řetězcovými proměnnými, které jsou označeny červeně, včetně databaseName, ContainerName, Account a Key.":::
+:::image type="content" source="./media/create-website/startup.png" alt-text="Nasazení do Azure":::
 
 ### <a name="using-special-azure-resource-management-functions"></a>Používání speciálních funkcí správy prostředků Azure
 
 Aby byly tyto hodnoty k dispozici pro aplikaci při nasazení, může šablona Azure Resource Manager požádat o tyto hodnoty z účtu Cosmos DB pomocí speciálních funkcí správy prostředků Azure, včetně [odkazů](../azure-resource-manager/templates/template-functions-resource.md#reference) a [klíče listkey](../azure-resource-manager/templates/template-functions-resource.md#listkeys) , které přeplňují hodnoty z účtu Cosmos DB a vkládat je do hodnot nastavení aplikace s názvy klíčů, které odpovídají tomu, co se používá v aplikaci výše ve formátu {section: Key}. Například, `CosmosDb:Account`.
 
-:::image type="content" source="./media/create-website/template-keys.png" alt-text="Klíče šablony":::
+:::image type="content" source="./media/create-website/template-keys.png" alt-text="Nasazení do Azure":::
 
 ### <a name="deploying-web-apps-from-github"></a>Nasazení webových aplikací z GitHubu
 
 Nakonec musíme nasadit webovou aplikaci z GitHubu do App Service. To se provádí pomocí JSON níže. Jako typ a název tohoto prostředku se musí zadat pozor dvě věci. `"type": "sourcecontrols"` `"name": "web"` Hodnoty vlastností a jsou pevně kódované a neměly by být změněny.
 
-:::image type="content" source="./media/create-website/deploy-from-github.png" alt-text="Nasazení z GitHubu":::
+:::image type="content" source="./media/create-website/deploy-from-github.png" alt-text="Nasazení do Azure":::
 
 ## <a name="next-steps"></a>Další kroky
 
-Blahopřejeme! Nasadili jste Azure Cosmos DB, Azure App Service a ukázkovou webovou aplikaci, která má automaticky informace o připojení potřebné pro připojení k Cosmos DB, vše v jedné operaci a bez nutnosti vyjímat a vkládat citlivé informace. Když použijete tuto šablonu jako výchozí bod, můžete ji upravit tak, aby se stejně tak nasadila vaše vlastní webové aplikace.
+Gratulujeme! Nasadili jste Azure Cosmos DB, Azure App Service a ukázkovou webovou aplikaci, která má automaticky informace o připojení potřebné pro připojení k Cosmos DB, vše v jedné operaci a bez nutnosti vyjímat a vkládat citlivé informace. Když použijete tuto šablonu jako výchozí bod, můžete ji upravit tak, aby se stejně tak nasadila vaše vlastní webové aplikace.
 
 * Pro šablonu Azure Resource Manager pro tuto ukázku přejít na [galerii šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-webapp)
 * Zdrojový kód pro ukázkovou aplikaci přejde na [Cosmos DB a provede aplikaci na GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app).

@@ -11,10 +11,10 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
 ms.openlocfilehash: 4908f66dbc699a449b7b94febac8133bacc9f669
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760965"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
@@ -116,7 +116,7 @@ Pro automatizované experimenty strojového učení se featurization aplikuje au
 
 V každém automatizovaném experimentu Machine Learning se vaše data automaticky škálují nebo normalizují, aby se algoritmy lépe prováděly. Během školení modelů se u každého modelu použije jedna z následujících technik škálování nebo normalizace. Přečtěte si, jak AutoML pomáhá [zabránit přebudování a nevyváženým datům](concept-manage-ml-pitfalls.md) ve vašich modelech.
 
-|&nbsp; & &nbsp; Normalizace škálování| Popis |
+|&nbsp; & &nbsp; Normalizace škálování| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Standardizace funkcí odebráním střední odchylky a měřítka jednotky  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformuje funkce změnou velikosti jednotlivých funkcí na minimum a maximum tohoto sloupce.  |
@@ -172,7 +172,7 @@ Při volbě místní a vzdálené považovat tyto specialisty i nevýhody.
 
  K dispozici jsou další funkce, pokud používáte vzdálené výpočty, jak je znázorněno v následující tabulce. 
 
-| Funkce                                                    | Vzdálené | Místní | 
+| Příznak                                                    | Vzdálené | Místní | 
 |------------------------------------------------------------|--------|-------|
 | Streamování dat (podpora velkých objemů dat, až 100 GB)          | ✓      |       | 
 | Featurization a školení textu založeného na DNN-BERT             | ✓      |       |

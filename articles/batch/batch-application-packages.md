@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91277695"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
@@ -77,7 +77,7 @@ Služba Batch používá Azure Storage k ukládání balíčků aplikací jako o
 
 Pokud chcete zobrazit aplikace ve vašem účtu Batch, v levé navigační nabídce vyberte **aplikace** .
 
-:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Snímek obrazovky s položkou nabídky aplikace v Azure Portal":::
+:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Diagram znázorňující zobrazení aplikací a balíčků aplikací na vysoké úrovni.":::
 
 Po výběru této možnosti nabídky se otevře okno **aplikace** . V tomto okně se zobrazuje ID jednotlivých aplikací ve vašem účtu a následující vlastnosti:
 
@@ -101,7 +101,7 @@ Chcete-li vytvořit novou aplikaci, přidejte balíček aplikace a zadejte jedin
 
 V účtu Batch vyberte **aplikace** a pak vyberte **Přidat**.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Snímek obrazovky procesu vytváření nové aplikace v Azure Portal.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Diagram znázorňující zobrazení aplikací a balíčků aplikací na vysoké úrovni.":::
 
 Zadejte následující informace:
 
@@ -128,7 +128,7 @@ Stejně jako u nové aplikace zadejte **verzi** nového balíčku, nahrajte soub
 
 Chcete-li aktualizovat nebo odstranit existující balíček aplikace, vyberte aplikaci v části **aplikace** účtu Batch. Vyberte tři tečky na řádku balíčku aplikace, který chcete upravit, a pak vyberte akci, kterou chcete provést.
 
-:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Snímek obrazovky znázorňující možnosti aktualizace a odstranění pro balíčky aplikací v Azure Portal.":::
+:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Diagram znázorňující zobrazení aplikací a balíčků aplikací na vysoké úrovni.":::
 
 Pokud vyberete možnost **aktualizovat**, budete moct nahrát nový soubor. zip. Tím se nahradí předchozí soubor zip, který jste nahráli pro danou verzi.
 
@@ -202,7 +202,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-V uzlech se systémem Linux se formát mírně liší. Tečky (.), spojovníky (-) a znaménko čísla (#) jsou shrnuty do podtržítek v proměnné prostředí. Všimněte si také, že se zachová případ ID aplikace. Příklad:
+V uzlech se systémem Linux se formát mírně liší. Tečky (.), spojovníky (-) a znaménko čísla (#) jsou shrnuty do podtržítek v proměnné prostředí. Všimněte si také, že se zachová případ ID aplikace. Například:
 
 ```
 Linux:
@@ -243,7 +243,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 
 ## <a name="update-a-pools-application-packages"></a>Aktualizace balíčků aplikací fondu
 
-Pokud je už existující fond nakonfigurovaný pomocí balíčku aplikace, můžete pro tento fond zadat nový balíček. To znamená:
+Pokud je už existující fond nakonfigurovaný pomocí balíčku aplikace, můžete pro tento fond zadat nový balíček. To znamená, že:
 
 - Služba Batch nainstaluje nově zadaný balíček na všech nových uzlech, které se připojí k fondu, a na všech stávajících uzlech, které se restartují nebo obnoví z image.
 - Výpočetní uzly, které už jsou ve fondu, když aktualizujete odkazy na balíček, neinstalují automaticky nový balíček aplikace. Aby bylo možné získat nový balíček, musí se tyto výpočetní uzly restartovat nebo obnovit z image.

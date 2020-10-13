@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: cd96a4e8af5faab618f3302c423675b2dadca79a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710851"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Vytvoření a Správa pravidel brány firewall na Azure Database for PostgreSQLm samostatném serveru pomocí Azure CLI
@@ -20,7 +20,7 @@ Pravidla brány firewall na úrovni serveru se dají použít ke správě přís
 
 Pravidla Virtual Network (VNet) je možné použít také k zabezpečení přístupu k serveru. Přečtěte si další informace o [vytváření a správě koncových bodů a pravidel služby Virtual Network pomocí Azure CLI](howto-manage-vnet-using-cli.md).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete projít tento průvodce, budete potřebovat:
 - Nainstalujte nástroj příkazového řádku [Azure CLI](/cli/azure/install-azure-cli) nebo použijte Azure Cloud Shell v prohlížeči.
 - [Server a databáze Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md).

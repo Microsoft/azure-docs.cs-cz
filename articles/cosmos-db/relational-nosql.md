@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 50d077c1d7c9e4e421a43a4e0379b57608d1192c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361762"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>Princip rozdílů mezi NoSQL a relačními databázemi
@@ -39,7 +39,7 @@ V současné době ale ještě výrazně vzrostla oblíbenosti databází ve sty
 
 V případě potřeby vývoje [objektově orientovaného návrhu](https://en.wikipedia.org/wiki/Object-oriented_design)a [neshody dopadů](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch) , které vznikají při kombinaci s relačními modely, se také zvýrazní antipattern relačních databází pro určité případy použití. V důsledku toho mohou nastat skryté, ale často významné náklady na údržbu. I když se přístupy ke službě [ORM](https://en.wikipedia.org/wiki/Object-relational_mapping) vyvinuly tak, aby částečně zmírnily tyto databáze zaměřené na dokumenty, ale s využitím objektově orientovaných přístupů mnohem lépe. S tímto přístupem nebudou vývojáři nucení docházet k ovladačům ORM ani [databázovým strojům](https://en.wikipedia.org/wiki/Object_database)Bespoke specifickým pro jazyk. Pokud vaše data obsahují mnoho vztahů mezi nadřazenými a podřízenými tabulkami a hlubokou úrovní hierarchie, můžete zvážit použití databáze dokumentů NoSQL, jako je [Azure Cosmos DB rozhraní SQL API](https://docs.microsoft.com/azure/cosmos-db/introduction).
 
-:::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="OrderDetails":::
+:::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="Back-end":::
 
 ## <a name="complex-networks-and-relationships"></a>Komplexní sítě a vztahy
 
@@ -49,7 +49,7 @@ V době, kdy se v relačních databázích objevily různé formy "síťových" 
 
 Pokud udržujete složitou síť relací ve vaší databázi, možná budete chtít zvážit databázi grafu, jako je [Azure Cosmos DB rozhraní API Gremlin](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) pro správu těchto dat.
 
-:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Databázový diagram zobrazuje několik zaměstnanců a oddělení připojených k sobě navzájem.":::
+:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Back-end":::
 
 Azure Cosmos DB je databázová služba pro více modelů, která nabízí projekci rozhraní API pro všechny hlavní typy modelů NoSQL; Sloupce – rodina, dokument, graf a klíč-hodnota. Vrstvy rozhraní API pro [Gremlin (Graph)](https://docs.microsoft.com/azure/cosmos-db/gremlin-support) a SQL (Core) jsou plně interoperabilní. Přináší to výhody pro přepínání mezi různými modely na úrovni programovatelnosti. Obchody s grafy je možné dotazovat v podobě složitých síťových procházení a transakcí modelování jako záznamů dokumentů ve stejném úložišti.
 
@@ -76,9 +76,7 @@ I když při implementaci databází NoSQL existují nějaké jasné výhody, ex
 
 Při první výzvě je pravidlo pro povýšení v databázích NoSQL obecně denormalizace, která se jako kloubová operace vyprodukuje v distribuovaném systému efektivněji. Existují však problémy s návrhem, které přicházejí do hry s tímto přístupem. Podíváme se na příklad produktu, který se vztahuje k jedné kategorii a několika značkám:
 
-:::image type="content" source="./media/relational-or-nosql/many-joins.png" alt-text="Spojení":::
-
-Osvědčeným postupem v databázi dokumentů NoSQL by bylo denormalizovat název kategorie a názvy značek přímo v "dokumentu produktu". Chcete-li však zachovat kategorie, značky a produkty v rámci synchronizace, možnosti návrhu, které je třeba zjednodušit, přidávají složitost údržby, protože data jsou duplikována napříč několika záznamy v produktu, a ne jako jednoduchá aktualizace v relaci "1: n" a spojení k načtení dat. 
+:::image type="content" source="./media/relational-or-nosql/many-joins.png" alt-text="Back-end" a spojení k načtení dat. 
 
 Kompromis je v tom, že čtení jsou efektivnější v denormalizovaném záznamu a stále efektivnější, protože se zvyšuje počet propojených entit. Stejně jako efektivita čtení se však zvyšuje s rostoucím počtem spojených entit v nenormalizované podobě, proto je příliš náročná údržba zachování entit v synchronizaci. Jedním ze způsobů, jak tento obchod snížit, je vytvoření [hybridního datového modelu](https://docs.microsoft.com/azure/cosmos-db/modeling-data#hybrid-data-models).
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
 ms.openlocfilehash: b2e4bc71a0883c6fef6f0115080a79a74ced92b0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542423"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Přesunutí serveru Azure Database for MariaDB do jiné oblasti pomocí Azure Portal
@@ -23,7 +23,7 @@ K dokončení přesunu do jiné oblasti můžete použít [repliku čtení Azure
 > [!NOTE]
 > Tento článek se zaměřuje na přesun serveru do jiné oblasti. Pokud chcete přesunout server do jiné skupiny prostředků nebo předplatného, přečtěte si článek o [přesunutí](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) . 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Funkce replika čtení je k dispozici pouze pro Azure Database for MariaDB servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je zdrojový server v jedné z těchto cenových úrovní.
 
@@ -33,7 +33,7 @@ K dokončení přesunu do jiné oblasti můžete použít [repliku čtení Azure
 
 Pokud chcete vytvořit v cílové oblasti server repliky pro různé oblasti pomocí Azure Portal, použijte následující postup:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Vyberte existující server Azure Database for MariaDB, který chcete použít jako zdrojový server. Tato akce otevře stránku s **přehledem** .
 1. V nabídce v části **Nastavení**vyberte **replikace** .
 1. Vyberte **Přidat repliku**.

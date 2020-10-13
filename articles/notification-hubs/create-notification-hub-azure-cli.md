@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5361931328ed107c7cc130b633a40b1582828aa1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ebed70a99e8e906db802099e052e69ab2575d737
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90024113"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875019"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Rychlý Start: vytvoření centra oznámení Azure pomocí Azure CLI
 
@@ -32,17 +32,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 > [!IMPORTANT]
-> Notification Hubs vyžaduje verzi rozhraní příkazového řádku Azure 2.0.67 nebo novější. Spusťte `az --version` a zjistěte verzi a závislé knihovny, které jsou nainstalované. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
-
-## <a name="install-the-azure-cli-extension"></a>Instalace rozšíření Azure CLI
-
-Když pracujete s odkazy na rozšíření rozhraní příkazového řádku Azure (Azure CLI), musíte nejdřív rozšíření nainstalovat. Rozšíření Azure CLI poskytují přístup k experimentálním a předběžným příkazům, které se nedodaly jako součást základního rozhraní příkazového řádku. Další informace o rozšířeních, včetně aktualizace a odinstalace, najdete v tématu [Využití rozšíření v Azure CLI](/cli/azure/azure-cli-extensions-overview).
-
-Nainstalujte rozšíření Azure CLI pro Notification Hubs.
-
-```azurecli
-az extension add --name notification-hub
-```
+> Notification Hubs vyžaduje verzi rozhraní příkazového řádku Azure 2.0.67 nebo novější. Spuštěním [AZ Version](/cli/azure/reference-index?#az_version) vyhledejte verzi a závislé knihovny, které jsou nainstalovány. Pokud chcete upgradovat na nejnovější verzi, spusťte příkaz [AZ upgrade](/cli/azure/reference-index?#az_upgrade).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 

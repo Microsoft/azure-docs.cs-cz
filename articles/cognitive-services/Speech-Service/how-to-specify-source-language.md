@@ -13,10 +13,10 @@ ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 1b134fd3d09eeda340e7323638a36b68336242c2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362023"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>Určení zdrojového jazyka pro převod řeči na text
