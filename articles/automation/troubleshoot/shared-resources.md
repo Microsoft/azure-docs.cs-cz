@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187162"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Řešení potíží se sdílenými prostředky
@@ -97,7 +97,7 @@ Není běžné, že ve stejném účtu Automation jsou vyžadovány všechny mod
 > [!NOTE]
 > Vyhněte se importování celého `Az.Automation` `AzureRM.Automation` modulu nebo, který importuje všechny obsažené moduly.
 
-Pokud se proces aktualizace pozastaví, přidejte `SimultaneousModuleImportJobCount` do skriptu **Update-AzureModules.ps1** parametr a zadejte nižší hodnotu než výchozí hodnota 10. Pokud implementujete tuto logiku, zkuste začít hodnotou 3 nebo 5. `SimultaneousModuleImportJobCount`je parametr Runbooku sady **Update-AutomationAzureModulesForAccount** , který se používá k aktualizaci modulů Azure. Pokud provedete tuto úpravu, proces aktualizace se spustí déle, ale bude mít lepší šanci na jejich dokončení. Následující příklad ukazuje parametr a místo vložení do sady Runbook:
+Pokud se proces aktualizace pozastaví, přidejte `SimultaneousModuleImportJobCount` do skriptu **Update-AzureModules.ps1** parametr a zadejte nižší hodnotu než výchozí hodnota 10. Pokud implementujete tuto logiku, zkuste začít hodnotou 3 nebo 5. `SimultaneousModuleImportJobCount` je parametr Runbooku sady **Update-AutomationAzureModulesForAccount** , který se používá k aktualizaci modulů Azure. Pokud provedete tuto úpravu, proces aktualizace se spustí déle, ale bude mít lepší šanci na jejich dokončení. Následující příklad ukazuje parametr a místo vložení do sady Runbook:
 
  ```powershell
          $Body = @"

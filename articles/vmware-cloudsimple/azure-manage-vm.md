@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 82aa1ba6ec20e8242568a2725899ddc515a4dc0f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082065"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Správa virtuálních počítačů privátního cloudu CloudSimple v Azure
@@ -23,7 +23,7 @@ Pro správu virtuálních počítačů, které jste [vytvořili pro privátní c
 
 Následující ovládací prvky jsou k dispozici na stránce **Přehled** pro vybraný virtuální počítač.
 
-| Řízení | Popis |
+| Řízení | Description |
 | ------------ | ------------- |
 | Připojit | Připojte se k zadanému virtuálnímu počítači.  |
 | Spustit | Spusťte zadaný virtuální počítač.  |

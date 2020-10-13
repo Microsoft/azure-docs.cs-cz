@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 09/17/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2e32fc7c1872bf18b7f1c995f281a9b09ec45dc8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91264447"
 ---
 # <a name="view-update-assessments-in-update-management"></a>Zobrazit posouzení aktualizací v Update Management
@@ -70,7 +70,7 @@ V následujících tabulkách jsou uvedeny podporované klasifikace aktualizací
 |Balíčky funkcí     | Nové funkce produktu distribuované mimo vydání produktu.        |
 |Aktualizace Service Pack     | Sady oprav hotfix, které se aplikují na aplikaci.        |
 |Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
-|nástroje     | Nástroje nebo funkce, které pomůžou dokončit jednu nebo více úloh.        |
+|Nástroje     | Nástroje nebo funkce, které pomůžou dokončit jednu nebo více úloh.        |
 |Aktualizace     | Aktualizace aplikací nebo souborů, které jsou aktuálně nainstalovány.        |
 
 ### <a name="linux"></a>Linux

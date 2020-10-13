@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: apimpm
 ms.openlocfilehash: 043a3d0b63dfc74f587b58b3c2ac42f1a084cc4a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86250307"
 ---
 # <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Správa protokolů a šifer ve službě Azure API Management
@@ -27,7 +27,7 @@ V této příručce se dozvíte, jak spravovat konfiguraci protokolů a šifrov�
 
 ![Správa protokolů a šifr v APIM](./media/api-management-howto-manage-protocols-ciphers/api-management-protocols-ciphers.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete postupovat podle kroků v tomto článku, musíte mít:
 
@@ -38,7 +38,7 @@ Pokud chcete postupovat podle kroků v tomto článku, musíte mít:
 1. V Azure Portal přejděte ke své **instanci API Management** .
 2. V nabídce vyberte **nastavení protokolu** .  
 3. Povolte nebo zakažte požadované protokoly nebo šifry.
-4. Klikněte na **Save** (Uložit). Změny budou provedeny během hodiny.  
+4. Klikněte na **Uložit**. Změny budou provedeny během hodiny.  
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: a3870ae192955df11107f0ebb5c618b90a0cc799
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87833245"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>Postup zálohování a obnovení serveru Azure Database for MariaDB pomocí prostředí PowerShell
 
 Azure Database for MariaDB servery se pravidelně zálohují, aby se povolily funkce obnovení. Pomocí této funkce můžete obnovit server a všechny jeho databáze k dřívějšímu bodu v čase na novém serveru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto průvodce budete potřebovat:
 
@@ -78,7 +78,7 @@ Sada parametrů **PointInTimeRestore** `Restore-AzMariaDbServer` rutiny vyžaduj
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
-| Název | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
+| Name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | RestorePointInTime | 2020-03-13T13:59:00Z | Vyberte bod v čase, který chcete obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete například použít vlastní místní časové pásmo, například **2020-03-13T05:59:00-08:00**. Můžete také použít formát Zulu UTC, například **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | K obnovení použijte režim bodu v čase. |
 
@@ -120,7 +120,7 @@ Sada **GeoRestore** parametrů pro dopředné obnovení `Restore-AzMariaDbServer
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Název skupiny prostředků, do které nový server patří|
-|Název | mydemoserver – geograficky obnovené | Název nového serveru. |
+|Name | mydemoserver – geograficky obnovené | Název nového serveru. |
 |Umístění | eastus | Umístění nového serveru. |
 |UseGeoRestore | `<SwitchParameter>` | K obnovení použijte geografický režim. |
 

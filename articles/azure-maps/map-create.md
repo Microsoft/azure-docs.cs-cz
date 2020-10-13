@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 62aa8f966126d95af003478e7f43d3ccea2b48cd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310403"
 ---
 # <a name="create-a-map"></a>Vytvoření mapy
@@ -130,7 +130,7 @@ V následujícím kódu vytvoří první blok kódu mapu a nastaví styly pro vl
 
 ## <a name="request-transforms"></a>Transformace požadavků
 
-Někdy je vhodné, aby bylo možné upravovat požadavky HTTP provedené mapovým ovládacím prvkem. Příklad:
+Někdy je vhodné, aby bylo možné upravovat požadavky HTTP provedené mapovým ovládacím prvkem. Například:
 
 - Přidejte další záhlaví do požadavků dlaždic. To se často provádí pro služby chráněné heslem.
 - Upravte adresy URL tak, aby se spouštěly požadavky prostřednictvím proxy služby.
@@ -180,7 +180,7 @@ Podívejte se na ukázky kódu. Kód jazyka JavaScript můžete upravit na **kar
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)

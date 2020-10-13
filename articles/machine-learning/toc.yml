@@ -15,7 +15,7 @@
 - name: Kurzy
   expanded: true
   items:
-    - name: Python (1. den) – začínáme
+    - name: Začínáme s Pythonem (1. den)
       expanded: true
       items:
         - name: 1. Nastavení místního počítače
@@ -188,6 +188,8 @@
             - name: Použití Private Linku
               displayName: private endpoint
               href: how-to-configure-private-link.md
+            - name: Použití vlastní služby DNS
+              href: how-to-custom-dns.md
             - name: Konfigurace zabezpečených webových služeb
               displayName: 'ssl, tls'
               href: how-to-secure-web-service.md

@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: 3055b5d32055d0ed0e3870f16f6af95407a68cd9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86243932"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Použití statické veřejné IP adresy a popisku DNS pomocí nástroje pro vyrovnávání zatížení AKS (Azure Kubernetes Service)
@@ -63,7 +63,7 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>Vytvoření služby pomocí statické IP adresy
 
-Než začnete vytvářet službu, ujistěte se, že instanční objekt používaný clusterem AKS má delegovaná oprávnění k jiné skupině prostředků. Příklad:
+Než začnete vytvářet službu, ujistěte se, že instanční objekt používaný clusterem AKS má delegovaná oprávnění k jiné skupině prostředků. Například:
 
 ```azurecli-interactive
 az role assignment create \
@@ -102,7 +102,7 @@ kubectl apply -f load-balancer-service.yaml
 
 Pokud vaše služba používá dynamickou nebo statickou veřejnou IP adresu, můžete použít anotaci služby `service.beta.kubernetes.io/azure-dns-label-name` k nastavení popisku DNS s veřejným přístupem. Tím se publikuje plně kvalifikovaný název domény pro vaši službu pomocí veřejných serverů DNS Azure a domény nejvyšší úrovně. Hodnota anotace musí být jedinečná v rámci umístění Azure, proto se doporučuje použít dostatečně kvalifikovaný popisek.   
 
-Azure pak automaticky připojí výchozí podsíť, například `<location>.cloudapp.azure.com` (kde umístění je oblast, kterou jste zvolili), k názvu, který zadáte, k vytvoření plně kvalifikovaného názvu DNS. Příklad:
+Azure pak automaticky připojí výchozí podsíť, například `<location>.cloudapp.azure.com` (kde umístění je oblast, kterou jste zvolili), k názvu, který zadáte, k vytvoření plně kvalifikovaného názvu DNS. Například:
 
 ```yaml
 apiVersion: v1

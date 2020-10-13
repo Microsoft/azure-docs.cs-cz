@@ -6,10 +6,10 @@ ms.author: spelluru
 ms.date: 10/07/2020
 ms.topic: article
 ms.openlocfilehash: 54649c47a896937a512a6041e485abfb03ca88dd
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91824955"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Povolení přístupu k Azure Service Bus obory názvů prostřednictvím privátních koncových bodů
@@ -40,7 +40,7 @@ Další informace najdete v tématu [co je privátní propojení Azure?](../priv
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Přidání privátního koncového bodu pomocí Azure Portal
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Pokud chcete integrovat obor názvů Service Bus s privátním propojením Azure, budete potřebovat následující entity nebo oprávnění:
 
@@ -55,7 +55,7 @@ Váš privátní koncový bod a virtuální síť musí být ve stejné oblasti.
 
 Pokud již máte existující obor názvů, můžete vytvořit privátní koncový bod pomocí následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. Na panelu hledání zadejte **Service Bus**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
 2. V nabídce vlevo vyberte v části **Nastavení**možnost **sítě** . 

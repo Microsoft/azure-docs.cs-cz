@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
 ms.openlocfilehash: 9f0a7b6f68c5a3adeb320fd18bec2f195a833dbf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309995"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Log Analytics
@@ -39,7 +39,7 @@ Pro agenta Log Analytics se neúčtují žádné náklady, ale za ingestování 
 ## <a name="data-collected"></a>Shromažďovaná data
 Následující tabulka uvádí typy dat, které můžete nakonfigurovat Log Analytics pracovní prostor pro shromažďování ze všech připojených agentů. Podívejte se na téma [co je monitorované pomocí Azure monitor?](../monitor-reference.md) v seznamu přehledů, řešení a dalších řešení, která používají agenta Log Analytics ke shromažďování dalších typů dat.
 
-| Zdroj dat | Popis |
+| Zdroj dat | Description |
 | --- | --- |
 | [Protokoly událostí systému Windows](data-sources-windows-events.md) | Informace odesílané systému protokolování událostí systému Windows. |
 | [Syslog](data-sources-syslog.md)                     | Informace odesílané systému protokolování událostí pro Linux. |

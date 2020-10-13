@@ -14,10 +14,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: 4df4f7e1db880a38f647e8e384cbfb29b70954ec
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187247"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Plánované spouštění a zastavování prostředí Azure-SSIS Integration Runtime
@@ -72,7 +72,7 @@ Pokud vytvoříte třetí Trigger, u kterého je naplánováno každodenní spu�
 6. V případě **verze**vyberte **v2** .
 7. V poli **umístění**vyberte jedno z umístění podporovaného pro vytvoření ADF z rozevíracího seznamu.
 8. Zaškrtněte **Připnout na řídicí panel**.     
-9. Klikněte na **Create** (Vytvořit).
+9. Klikněte na **Vytvořit**.
 10. Na řídicím panelu Azure se zobrazí následující dlaždice se stavem: **nasazení Data Factory**. 
 
     ![nasazování dlaždice datové továrny](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
@@ -91,7 +91,7 @@ Pokud vytvoříte třetí Trigger, u kterého je naplánováno každodenní spu�
    
 2. Na panelu nástrojů **aktivity** rozbalte nabídku **obecné** a přetáhněte & přetáhněte aktivitu **webu** na plochu návrháře kanálu. Na kartě **Obecné** v okně vlastnosti aktivity změňte název aktivity na **startMyIR**. Přepněte na kartu **Nastavení** a proveďte následující akce.
 
-    1. Do pole **Adresa URL**zadejte následující adresu URL pro REST API, která začíná Azure-SSIS IR, nahrazuje `{subscriptionId}` , `{resourceGroupName}` , `{factoryName}` a `{integrationRuntimeName}` skutečnými hodnotami pro infračervený zápis: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` případně můžete také zkopírovat & ID prostředku IR ze své stránky monitorování v uživatelském rozhraní ADF nebo aplikaci nahradit následující část výše uvedené adresy URL:`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
+    1. Do pole **Adresa URL**zadejte následující adresu URL pro REST API, která začíná Azure-SSIS IR, nahrazuje `{subscriptionId}` , `{resourceGroupName}` , `{factoryName}` a `{integrationRuntimeName}` skutečnými hodnotami pro infračervený zápis: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` případně můžete také zkopírovat & ID prostředku IR ze své stránky monitorování v uživatelském rozhraní ADF nebo aplikaci nahradit následující část výše uvedené adresy URL: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
     
        ![ID prostředku IR SSIS](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
   
@@ -104,7 +104,7 @@ Pokud vytvoříte třetí Trigger, u kterého je naplánováno každodenní spu�
   
 3. Naklonujte první kanál tak, aby se vytvořil druhý, a to tak, že změníte název aktivity na **stopMyIR** a nahradíte následující vlastnosti.
 
-    1. Do pole **Adresa URL**zadejte následující adresu URL pro REST API, která zastaví Azure-SSIS IR, nahradí `{subscriptionId}` , a `{resourceGroupName}` `{factoryName}` a `{integrationRuntimeName}` skutečnými hodnotami pro váš infračervený přenos:`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
+    1. Do pole **Adresa URL**zadejte následující adresu URL pro REST API, která zastaví Azure-SSIS IR, nahradí `{subscriptionId}` , a `{resourceGroupName}` `{factoryName}` a `{integrationRuntimeName}` skutečnými hodnotami pro váš infračervený přenos: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
     
     2. V části **text**zadejte `{"message":"Stop my IR"}` . 
 
@@ -117,7 +117,7 @@ Pokud vytvoříte třetí Trigger, u kterého je naplánováno každodenní spu�
     1. Jako **role**vyberte **Přispěvatel**. 
     2. V případě **přiřazení přístupu k**vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD**. 
     3. Pro **možnost vybrat**vyhledejte název ADF a vyberte ho. 
-    4. Klikněte na **Save** (Uložit).
+    4. Klikněte na **Uložit**.
     
    ![Přiřazení role identity spravovaného ADF](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
 

@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
 ms.openlocfilehash: 0f17e489cabb047ca2e9f0ad7406c34cd292e556
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309485"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Jazyk porozumění běžným slovníkům a konceptům
@@ -194,7 +194,7 @@ V LUIS můžete [Označit](label-entity-example-utterance.md) slovo nebo frázi 
 
 Viz definice [aplikace (aplikace)](#application-app).
 
-## <a name="model"></a>Modelování
+## <a name="model"></a>Model
 
 Model A (strojové učení) je funkce, která provádí předpověď na vstupní data. V LUIS odkazujeme na třídění záměrů a extraktory entit obecně jako na "modely" a odkazujeme na kolekci modelů, které jsou výukové, publikované a společně dotazované jako "aplikace".
 
@@ -285,9 +285,9 @@ V LUIS [seznam entit](reference-entity-list.md)můžete vytvořit normalizovanou
 
 |Hodnota Nomalized| Synonyma|
 |--|--|
-|Malá| trochu jedna, 8 unce|
+|Malý| trochu jedna, 8 unce|
 |Střední| Regular, 12 unce|
-|Velká| velký, 16 unce|
+|Velký| velký, 16 unce|
 |Xtra velký| největší z nich, 24 unce|
 
 Model Vrátí normalizovanou hodnotu pro entitu, pokud se ve vstupu objeví kterákoli z synonym.

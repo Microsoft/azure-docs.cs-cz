@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91610071"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>Implementace IoT technologie Plug and Play na omezených zařízeních
@@ -24,7 +24,7 @@ Sada SDK pro Embedded C nabízí zjednodušené řešení pro připojení omezen
 
 ### <a name="use-a-real-device"></a>Použití skutečného zařízení
 
-Úplný kurz, který používá sadu SDK pro Embedded C, službu Device Provisioning a IoT technologie Plug and Play na reálném zařízení, najdete v tématu o tom, jak se ke službě [Azure připojit pomocí IoT Hub Device Provisioning Service pro WX](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx).
+Úplný kurz, který používá sadu SDK pro Embedded C, službu Device Provisioning a IoT technologie Plug and Play na reálném zařízení, najdete v tématu [účel PIC-IoT WX Development Board pro připojení k Azure prostřednictvím IoT Hub Device Provisioning Service](https://github.com/Azure-Samples/Microchip-PIC-IoT-Wx).
 
 ### <a name="introductory-samples"></a>Úvodní ukázky
 

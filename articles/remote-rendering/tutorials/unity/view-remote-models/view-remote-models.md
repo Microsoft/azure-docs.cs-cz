@@ -7,10 +7,10 @@ ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bcee951dc85d9c317bad481ebdb91ff6c761371c
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91653668"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Kurz: zobrazení vzdáleného vykresleného modelu
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Připojení a odpojení od relací
 > * Načtení modelů do relace vykreslování
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Pro tento kurz potřebujete:
 
@@ -843,7 +843,7 @@ Teď máme veškerý kód potřebný k zobrazení vzdáleně vykresleného model
 
 ![Model načten](./media/test-model-rendered.png)
 
-Gratulujeme! Vytvořili jste základní aplikaci, která umožňuje zobrazit vzdáleně vykreslené modely pomocí vzdáleného vykreslování Azure. V dalším kurzu budeme integrovat MRTK a importovat naše vlastní modely.
+Blahopřejeme! Vytvořili jste základní aplikaci, která umožňuje zobrazit vzdáleně vykreslené modely pomocí vzdáleného vykreslování Azure. V dalším kurzu budeme integrovat MRTK a importovat naše vlastní modely.
 
 > [!div class="nextstepaction"]
 > [Další: rozhraní a vlastní modely](../custom-models/custom-models.md)

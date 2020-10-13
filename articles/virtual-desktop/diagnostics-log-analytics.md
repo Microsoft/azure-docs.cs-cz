@@ -7,10 +7,10 @@ ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a3fccc934fafd8ff7db2cffbd6ba641329ba8de2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89006801"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Použití Log Analytics pro diagnostickou funkci
@@ -18,7 +18,7 @@ ms.locfileid: "89006801"
 >[!IMPORTANT]
 >Tento obsah se vztahuje na virtuální plochu Windows s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows (Classic) bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md).
 
-Virtuální plocha Windows používá [Azure monitor](../azure-monitor/overview.md) pro monitorování a výstrahy, jako je mnoho dalších služeb Azure. To správcům umožňuje identifikovat problémy přes jediné rozhraní. Služba vytvoří protokoly aktivit pro uživatele i pro akce správy. Každý protokol aktivit spadá do následujících kategorií:
+Virtuální plocha Windows používá [Azure monitor](../azure-monitor/overview.md) pro monitorování a výstrahy, jako je mnoho dalších služeb Azure. Správci tak mají jedno rozhraní, ve kterém můžou zjišťovat problémy. Služba vytvoří protokoly aktivit pro uživatele i pro akce správy. Každý protokol aktivit spadá do následujících kategorií:
 
 - Aktivity správy:
     - Můžete sledovat, jestli pokusy o změnu objektů virtuálních klientů Windows pomocí rozhraní API nebo PowerShellu jsou úspěšné. Může například někdo úspěšně vytvořit fond hostitelů pomocí PowerShellu?
@@ -91,7 +91,7 @@ K Log Analytics pracovním prostorům můžete přistupovat Azure Portal nebo Az
 
 ### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Přístup k Log Analytics v pracovním prostoru Log Analytics
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 
 2. Vyhledejte **Log Analytics pracovní prostor**.
 
