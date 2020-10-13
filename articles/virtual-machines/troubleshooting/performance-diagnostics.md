@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 857d49fa579e7ea1a6e2c14ae8198cd8ac4fe228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04b70e593e8b1bee8beb72ac88bc8441bc38bb9a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090631"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963240"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Diagnostika výkonu pro virtuální počítače Azure
 
@@ -38,7 +38,7 @@ Můžete spustit diagnostiku výkonu přímo z Azure Portal, kde můžete také 
 * Windows Server 2012 R2
 * Windows Server 2012
 * Windows Server 2008 R2
-* Windows 10
+* Windows 10
 * Windows 8.1
 * Windows 8
 
@@ -61,7 +61,7 @@ Můžete spustit diagnostiku výkonu přímo z Azure Portal, kde můžete také 
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>Nainstalujte a spusťte na svém VIRTUÁLNÍm počítači diagnostiku výkonu.
 
-Nástroj Diagnostika výkonu nainstaluje rozšíření virtuálního počítače, které spouští diagnostický nástroj s názvem PerfInsights. PerfInsights je k dispozici pro [systémy Windows](https://aka.ms/perfinsights) i [Linux](https://aka.ms/perfinsightslinux). Chcete-li nainstalovat a spustit diagnostiku výkonu, postupujte podle následujících kroků:
+Nástroj Diagnostika výkonu nainstaluje rozšíření virtuálního počítače, které spouští diagnostický nástroj s názvem PerfInsights. PerfInsights je k dispozici pro [systémy Windows](./how-to-use-perfinsights.md) i [Linux](./how-to-use-perfinsights-linux.md). Chcete-li nainstalovat a spustit diagnostiku výkonu, postupujte podle následujících kroků:
 
 1. V levém sloupci příkazů vyberte **virtuální počítače**.
 1. V seznamu názvů virtuálních počítačů vyberte virtuální počítač, na kterém chcete spustit diagnostiku.
@@ -91,16 +91,16 @@ Nástroj Diagnostika výkonu nainstaluje rozšíření virtuálního počítače
 Následující scénáře analýzy jsou k dispozici na Azure Portal. Vyberte analýzu v závislosti na potížích s výkonem, které máte. Vyberte možnosti trvání a trasování podle potřeby pro analýzu.
 
 * **Rychlá analýza výkonu**  
-    Kontroluje známé problémy, analyzuje osvědčené postupy a shromažďuje diagnostická data. Spuštění této analýzy trvá několik minut. Další informace pro [Windows](https://aka.ms/perfinsights/quick) nebo [Linux](https://aka.ms/perfinsightslinux/quick)
+    Kontroluje známé problémy, analyzuje osvědčené postupy a shromažďuje diagnostická data. Spuštění této analýzy trvá několik minut. Další informace pro [Windows](./how-to-use-perfinsights.md) nebo [Linux](./how-to-use-perfinsights-linux.md)
 
 * **Analýza výkonu**  
-    Zahrnuje všechny kontroly v rychlé analýze výkonu a monitorují vysokou spotřebu prostředků. Pomocí této verze můžete řešit běžné problémy s výkonem, jako je například vysoké využití procesoru, paměti a disku. Tato analýza trvá 30 sekund až 15 minut v závislosti na vybrané době trvání. Další informace pro [Windows](https://aka.ms/perfinsights/vmslow) nebo [Linux](https://aka.ms/perfinsightslinux/vmslow)
+    Zahrnuje všechny kontroly v rychlé analýze výkonu a monitorují vysokou spotřebu prostředků. Pomocí této verze můžete řešit běžné problémy s výkonem, jako je například vysoké využití procesoru, paměti a disku. Tato analýza trvá 30 sekund až 15 minut v závislosti na vybrané době trvání. Další informace pro [Windows](./how-to-use-perfinsights.md) nebo [Linux](./how-to-use-perfinsights-linux.md)
 
 * **Pokročilá analýza výkonu**`*`  
-    Zahrnuje všechny kontroly v analýze výkonu a shromažďuje jedno nebo více trasování, jak je uvedeno v následujících částech. Tento scénář použijte k řešení složitých problémů, které vyžadují další trasování. Spuštění tohoto scénáře po delší dobu zvýší celkovou velikost výstupu diagnostiky v závislosti na velikosti virtuálního počítače a vybraných možnostech trasování. Spuštění této analýzy trvá 30 až 15 minut, a to v závislosti na vybrané době trvání. [Další informace](https://aka.ms/perfinsights/advanced)
+    Zahrnuje všechny kontroly v analýze výkonu a shromažďuje jedno nebo více trasování, jak je uvedeno v následujících částech. Tento scénář použijte k řešení složitých problémů, které vyžadují další trasování. Spuštění tohoto scénáře po delší dobu zvýší celkovou velikost výstupu diagnostiky v závislosti na velikosti virtuálního počítače a vybraných možnostech trasování. Spuštění této analýzy trvá 30 až 15 minut, a to v závislosti na vybrané době trvání. [Další informace](./how-to-use-perfinsights.md)
 
 * **Analýza souborů Azure**`*`  
-    Zahrnuje všechny kontroly v analýze výkonu a zachycuje trasování sítě a čítače protokolu SMB. Tento scénář použijte k odstranění potíží s výkonem služby soubory Azure. Spuštění této analýzy trvá 30 až 15 minut, a to v závislosti na vybrané době trvání. [Další informace](https://aka.ms/perfinsights/azurefiles)
+    Zahrnuje všechny kontroly v analýze výkonu a zachycuje trasování sítě a čítače protokolu SMB. Tento scénář použijte k odstranění potíží s výkonem služby soubory Azure. Spuštění této analýzy trvá 30 až 15 minut, a to v závislosti na vybrané době trvání. [Další informace](./how-to-use-perfinsights.md)
 
 >[!Note]
 >[ `*` ] Tyto scénáře analýzy jsou podporovány pouze v systému Windows.

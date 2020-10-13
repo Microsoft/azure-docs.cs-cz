@@ -11,10 +11,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 ms.openlocfilehash: 9b5463ba789a1bcfb707fb03c70f1a8464cb6b59
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91767346"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Syntaxe dotazu směrování zpráv IoT Hubu
@@ -53,7 +53,7 @@ IoT Hub definuje [společný formát](iot-hub-devguide-messages-construct.md) pr
 
 Vlastnosti systému vám pomůžou identifikovat obsah a zdroj zpráv. 
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | Třída | řetězec | Uživatel Určuje typ obsahu zprávy. Pokud chcete pro tělo zprávy zapnout dotaz, měla by být tato hodnota nastavená na Application/JSON. |
 | contentEncoding | řetězec | Uživatel Určuje typ kódování zprávy. Povolené hodnoty jsou UTF-8, UTF-16, UTF-32, pokud je contentType nastavený na Application/JSON. |
@@ -70,7 +70,7 @@ Vlastnosti aplikace jsou uživatelsky definované řetězce, které lze přidat 
 
 ### <a name="query-expressions"></a>Výrazy dotazů
 
-Dotaz na vlastnosti systému zpráv musí být s `$` symbolem předpony. Dotazy na vlastnosti aplikace jsou k dispozici s jejich názvem a neměly by obsahovat předponu `$` . Pokud název vlastnosti aplikace začíná `$` na, IoT Hub ho vyhledat ve vlastnostech systému a nebude nalezen, bude vypadat ve vlastnostech aplikace. Příklad: 
+Dotaz na vlastnosti systému zpráv musí být s `$` symbolem předpony. Dotazy na vlastnosti aplikace jsou k dispozici s jejich názvem a neměly by obsahovat předponu `$` . Pokud název vlastnosti aplikace začíná `$` na, IoT Hub ho vyhledat ve vlastnostech systému a nebude nalezen, bude vypadat ve vlastnostech aplikace. Například: 
 
 Dotaz na systémovou vlastnost contentEncoding 
 

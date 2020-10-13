@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.custom: devx-track-js
 ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614100"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hostování aplikace Node.js na platformě Azure Service Fabric
 
 Tento rychlý start vám pomůže s nasazením existující aplikace (v tomto příkladu Node.js) do clusteru Service Fabric spuštěného v Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte [nastavené vývojové prostředí](service-fabric-get-started.md). Který zahrnuje instalaci Service Fabric SDK a sady Visual Studio 2019 nebo 2015.
 
@@ -61,7 +61,7 @@ Projekt aplikace (**MyGuestApp**) neobsahuje přímo kód. Projekt odkazuje na s
 * **Profily publikování**  
 Předvolby nástrojů pro různá prostředí.
 
-* **Skripty**  
+* **Znakové**  
 Skript PowerShellu pro nasazení/upgrade aplikace.
 
 * **Definice aplikace**  

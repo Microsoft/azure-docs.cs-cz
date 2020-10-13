@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
 ms.openlocfilehash: 3753004b2bd9c18399655cffd594392b63c14264
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325160"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Co je fond spravovaných instancí Azure SQL (Preview)?
@@ -24,7 +24,7 @@ ms.locfileid: "91325160"
 
 Fondy instancí ve spravované instanci Azure SQL poskytují pohodlný a cenově výhodný způsob migrace menších instancí SQL Server do cloudu ve velkém měřítku.
 
-Fondy instancí umožňují předem zřídit výpočetní prostředky podle vašich celkových požadavků na migraci. Následně můžete nasadit několik jednotlivých spravovaných instancí až do předem zřízené výpočetní úrovně. Pokud například předzřídíte 8 virtuální jádra, můžete nasadit dvě 2 – vCore a jednu instanci 4 – vCore a následně migrovat databáze do těchto instancí. Před tím, než jsou fondy instancí k dispozici, je při migraci do cloudu často nutné konsolidovat menší a méně úlohy náročné na výpočetní výkon. Nutnost migrace skupin databází na velkou instanci obvykle vyžaduje pečlivé plánování kapacity a zásady správného řízení prostředků, další požadavky na zabezpečení a další práci při konsolidaci dat na úrovni instance.
+Fondy instancí umožňují předem zřídit výpočetní prostředky podle vašich celkových požadavků na migraci. Následně můžete nasadit několik jednotlivých spravovaných instancí až do předem zřízené výpočetní úrovně. Pokud například předzřídíte 8 virtuální jádra, můžete nasadit instanci 2 2-vCore a 1 4-vCore a následně migrovat databáze do těchto instancí. Před tím, než jsou fondy instancí k dispozici, je při migraci do cloudu často nutné konsolidovat menší a méně úlohy náročné na výpočetní výkon. Nutnost migrace skupin databází na velkou instanci obvykle vyžaduje pečlivé plánování kapacity a zásady správného řízení prostředků, další požadavky na zabezpečení a další práci při konsolidaci dat na úrovni instance.
 
 Fondy instancí navíc podporují nativní integraci virtuální sítě, takže můžete ve stejné podsíti nasadit více fondů instancí a více instancí s několika samostatnými instancemi.
 
@@ -113,7 +113,7 @@ Volitelné funkce nebo funkce, které vyžadují, abyste vybrali konkrétní hod
 
 I když spravované instance v rámci fondů mají vyhrazené vCore a RAM, sdílí místní disk (pro použití databáze tempdb) a síťové prostředky. Není pravděpodobné, ale je možné vyzkoušet *sousední* efekt v případě vysokého počtu instancí, pokud má více instancí ve fondu současně stejnou spotřebu prostředků. Pokud toto chování provedete, zvažte nasazení těchto instancí do většího fondu nebo jako jedné instance.
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
 Vzhledem k tomu, že instance nasazené ve fondu sdílejí stejný virtuální počítač, možná budete chtít vzít v úvahu, že jsou zakázané funkce, které vedou k vyšším bezpečnostním rizikům, nebo abyste k těmto funkcím měli oprávnění Například integrace modulu CLR, nativní zálohování a obnovení, databázový e-mail atd.
 

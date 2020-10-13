@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
 ms.openlocfilehash: 668243f66deff67a923097c116c4b150d0256992
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90882563"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>Vysoká dostupnost v Azure Database for MySQL
@@ -46,7 +46,7 @@ Tady je několik plánovaných scénářů údržby:
 K neplánovanému výpadku může dojít v důsledku neočekávaných selhání, včetně základní hardwarové chyby, potíží se sítí a softwarových chyb. Pokud dojde k neočekávanému výpadku databázového serveru, nový databázový server se automaticky zřídí během několika sekund. Vzdálené úložiště se automaticky připojí k novému databázovému serveru. Modul MySQL provádí operaci obnovení pomocí WAL a databázových souborů a otevírá databázový server, aby se mohli klienti připojit. Nepotvrzené transakce jsou ztraceny a musí je aplikace opakovat. I když nemůžete zabránit neplánovaným výpadkům, Azure Database for MySQL zmírnit výpadky automatickým prováděním operací obnovení na databázovém serveru a vrstvách úložiště bez nutnosti zásahu člověka. 
 
 
-:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="zobrazení vysoké dostupnosti v Azure MySQL":::
+:::image type="content" source="./media/concepts-high-availability/availability-for-mysql-server.png" alt-text="zobrazení elastického škálování v Azure MySQL":::
 
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>Neplánované výpadky: scénáře selhání a obnovení služby
 Tady je několik scénářů selhání a Azure Database for MySQL automatické obnovení:

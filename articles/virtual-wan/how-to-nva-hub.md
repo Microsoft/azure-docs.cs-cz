@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
 ms.openlocfilehash: 014339b02167a1bb4cba11cc10c9740b8fa53f2c
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91773242"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Postup vytvoření síťového virtuálního zařízení ve službě Azure Virtual WAN hub (Preview)
@@ -55,7 +55,7 @@ Centrum je virtuální síť, která může obsahovat brány pro funkce typu Sit
    **Podrobnosti o projektu**
 
    * Oblast (dříve označovaná jako umístění)
-   * Název
+   * Name
    * Privátní adresní prostor centra Minimální adresní prostor je/24 pro vytvoření centra, což znamená, že při vytváření dojde k chybě z rozsahu od/25 do/32. Azure Virtual WAN, což je spravovaná služba Microsoftu, vytvoří ve virtuálním centru příslušné podsítě pro různé brány nebo služby. (Například: Síťová virtuální zařízení, brány VPN, brány ExpressRoute, uživatelské VPN/brány, brány firewall, směrování atd.). Není potřeba, aby uživatel explicitně naplánoval adresní prostor podsítě pro služby ve virtuálním centru, protože Microsoft to dělá jako součást služby.
 1. Vyberte **zkontrolovat + vytvořit** k ověření.
 1. Vyberte **vytvořit** a vytvořte tak centrum.
@@ -90,7 +90,7 @@ V tomto kroku vytvoříte síťové virtuální zařízení v centru. Postup pro
    * **Jednotky infrastruktury síťové virtuální zařízení** – určete počet jednotek infrastruktury síťové virtuální zařízení, s kterými chcete nasadit tuto síťové virtuální zařízení. Vyberte velikost agregované kapacity šířky pásma, kterou chcete poskytnout napříč všemi pobočkami, které se budou připojovat k tomuto centru prostřednictvím tohoto síťové virtuální zařízení.
    * **Token** -Barracuda vyžaduje, abyste v tomto případě zadali ověřovací token, který se identifikuje jako registrovaný uživatel tohoto produktu. Budete ho muset získat z Barracuda.
 1. Pokračujte výběrem tlačítka **zkontrolovat a vytvořit** .
-1. Na této stránce se zobrazí výzva, abyste přijali podmínky smlouvy pro přístup spolusprávce. To je standard u spravovaných aplikací, kde bude mít Vydavatel přístup k některým prostředkům v tomto nasazení. Zaškrtněte políčko **Souhlasím s podmínkami a ujednáními uvedenými nahoře** a pak vyberte **vytvořit**.
+1. Na této stránce se zobrazí výzva, abyste přijali podmínky smlouvy o přístupu k Co-Admin. To je standard u spravovaných aplikací, kde bude mít Vydavatel přístup k některým prostředkům v tomto nasazení. Zaškrtněte políčko **Souhlasím s podmínkami a ujednáními uvedenými nahoře** a pak vyberte **vytvořit**.
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>Připojení virtuální sítě k centru
 

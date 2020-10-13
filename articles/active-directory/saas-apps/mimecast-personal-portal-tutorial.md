@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: c14a519be112e61ed7055debe7a1a454e465bd9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c006e38d30e4e32645024a8c307a18767e8a1090
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549088"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941054"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-personal-portal"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí osobního portálu Mimecast
 
@@ -155,23 +155,23 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Přejděte na **aplikace pro správu**  >  **Services**  >  **Applications**.
 
-    ![Konfigurace osobního portálu Mimecast](./media/mimecast-personal-portal-tutorial/services.png)
+    ![Snímek obrazovky zobrazuje okno Mimecast s vybranými aplikacemi.](./media/mimecast-personal-portal-tutorial/services.png)
 
 1. Klikněte na kartu **profily ověřování** .
     
-    ![Konfigurace osobního portálu Mimecast](./media/mimecast-personal-portal-tutorial/authentication-profiles.png)
+    ![Snímek obrazovky se zobrazí karta aplikace s vybranými profily ověřování.](./media/mimecast-personal-portal-tutorial/authentication-profiles.png)
 
 1. Klikněte na **Nová karta profil ověřování** .
 
-    ![Konfigurace osobního portálu Mimecast](./media/mimecast-personal-portal-tutorial/new-authenticatio-profile.png)
+    ![Snímek obrazovky zobrazuje vybraný nový profil ověřování.](./media/mimecast-personal-portal-tutorial/new-authenticatio-profile.png)
 
 1. Do textového pole **Popis** zadejte platný popis a zaškrtněte políčko **vyhovět ověřování SAML pro Mimecast osobního portálu** .
 
-    ![Konfigurace osobního portálu Mimecast](./media/mimecast-personal-portal-tutorial/selecting-personal-portal.png)
+    ![Snímek obrazovky zobrazuje vybraný nový profil ověřování.](./media/mimecast-personal-portal-tutorial/selecting-personal-portal.png)
 
 1. Na stránce **Konfigurace SAML pro osobní portál Mimecast** proveďte následující kroky:
 
-    ![Konfigurace osobního portálu Mimecast](./media/mimecast-personal-portal-tutorial/sso-settings.png)
+    ![Snímek obrazovky ukazuje, kde vybrat vynutilo ověřování SAML pro konzolu pro správu.](./media/mimecast-personal-portal-tutorial/sso-settings.png)
 
     a. V rozevíracím seznamu **poskytovatel**vyberte **Azure Active Directory** .
 
@@ -189,19 +189,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Přejděte do **složky pro správu**  >  **Directories**  >  **interní adresáře**.
 
-    ![Konfigurace osobního portálu Mimecast](./media/mimecast-personal-portal-tutorial/internal-directories.png)
+    ![Snímek obrazovky ukazuje konfiguraci SAML pro osobní portál Mimecast, kde můžete zadat hodnoty, které jsou popsány.](./media/mimecast-personal-portal-tutorial/internal-directories.png)
 
 1. Pokud je doména uvedená níže, vyberte v doméně. v opačném případě vytvořte novou doménu kliknutím na **novou doménu**.
 
-    ![Konfigurace osobního portálu Mimecast](./media/mimecast-personal-portal-tutorial/domain-name.png)
+    ![Snímek obrazovky zobrazuje okno Mimecast s vybranými interními adresáři.](./media/mimecast-personal-portal-tutorial/domain-name.png)
 
 1. Klikněte na kartu **Nová adresa** .
 
-    ![Konfigurace osobního portálu Mimecast](./media/mimecast-personal-portal-tutorial/new-address.png)
+    ![Snímek obrazovky se zobrazí vybraná doména.](./media/mimecast-personal-portal-tutorial/new-address.png)
 
 1. Zadejte požadované informace o uživateli na následující stránce:
 
-    ![Konfigurace osobního portálu Mimecast](./media/mimecast-personal-portal-tutorial/user-information.png)
+    ![Snímek obrazovky se zobrazí stránka, kde můžete zadat hodnoty, které jsou popsány.](./media/mimecast-personal-portal-tutorial/user-information.png)
 
     a. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele, jako je `B.Simon@yourdomainname.com` .
 
@@ -215,7 +215,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     f. Pokud chcete přiřadit role uživateli, klikněte na **Upravit roli** a přiřaďte požadovanou roli uživateli podle požadavků vaší organizace.
 
-    ![Konfigurace osobního portálu Mimecast](./media/mimecast-personal-portal-tutorial/assign-role.png)
+    ![Snímek obrazovky zobrazuje nastavení adres, kde můžete vybrat možnost Upravit roli.](./media/mimecast-personal-portal-tutorial/assign-role.png)
 
 
 ## <a name="test-sso"></a>Test SSO 

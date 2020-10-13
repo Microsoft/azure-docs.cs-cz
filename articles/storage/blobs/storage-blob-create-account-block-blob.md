@@ -10,10 +10,10 @@ ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 0af98993cc4b3c7d19cdaa61cd7a35e3b444a3df
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613794"
 ---
 # <a name="create-a-blockblobstorage-account"></a>Vytvoření účtu BlockBlobStorage
@@ -64,7 +64,7 @@ Rozhraní příkazového řádku Azure můžete také nainstalovat a používat 
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 19a471b9339828250baa190b1de57c86eb22b30c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8d24d0b71ce537b81ee729109b398042c3b60c5
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554457"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940952"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s novým Relic podle účtu
 
@@ -134,7 +134,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 2. V nabídce v horní části klikněte na **Nastavení účtu**.
    
-    ![Nastavení účtu](./media/new-relic-tutorial/ic797036.png "Nastavení účtu")
+    ![Snímek obrazovky s vybraným nastavením účtu zobrazuje úvodní stránku.](./media/new-relic-tutorial/ic797036.png "Nastavení účtu")
 
 3. Klikněte na kartu **zabezpečení a ověřování** a pak klikněte na kartu **jednotné přihlašování** .
    
@@ -158,11 +158,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 2. V nabídce v horní části klikněte na **Nastavení účtu**.
    
-    ![Nastavení účtu](./media/new-relic-tutorial/ic797040.png "Nastavení účtu")
+    ![Snímek obrazovky zobrazuje nastavení účtu vybrané na úvodní stránce.](./media/new-relic-tutorial/ic797040.png "Nastavení účtu")
 
 3. V podokně **účet** na levé straně klikněte na **Souhrn**a pak klikněte na **Přidat uživatele**.
    
-    ![Nastavení účtu](./media/new-relic-tutorial/ic797041.png "Nastavení účtu")
+    ![Snímek obrazovky se zobrazí v podokně Souhrn, kde můžete vybrat přidat uživatele.](./media/new-relic-tutorial/ic797041.png "Nastavení účtu")
 
 4. V dialogovém okně **aktivní uživatelé** proveďte následující kroky:
    

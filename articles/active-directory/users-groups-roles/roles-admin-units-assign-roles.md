@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 112c1c6a0fbbd7e0011890d1ce92c6e21e168137
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ea638124ed81a494231c814962345c028fc12c9
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818003"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940850"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Přiřazení vymezených rolí k jednotce pro správu
 
@@ -60,7 +60,7 @@ Vyberte roli, kterou chcete přiřadit, a pak vyberte **Přidat přiřazení**. 
 
 > [!Note]
 >
-> Pokud chcete přiřadit roli v jednotce pro správu pomocí PIM [, postupujte podle těchto kroků.](/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md#assign-a-role-with-restricted-scope)
+> Pokud chcete přiřadit roli v jednotce pro správu pomocí PIM [, postupujte podle těchto kroků.](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-add-role-to-user?tabs=new#assign-a-role-with-restricted-scope)
 
 ### <a name="powershell"></a>PowerShell
 

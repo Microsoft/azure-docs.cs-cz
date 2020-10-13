@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 10/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 4749fcb6698ff1716f2cae257cc0efad458bf9a9
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91766195"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Správa proměnných v Azure Automation
@@ -65,7 +65,7 @@ Rutiny v následující tabulce vytvářejí a spravují proměnné automatizace
 
 Interní rutiny v následující tabulce se používají pro přístup k proměnným v sadách Runbook a konfiguracích DSC. Tyto rutiny se dodávají s globálním modulem `Orchestrator.AssetManagement.Cmdlets` . Další informace najdete v tématu [interní rutiny](modules.md#internal-cmdlets).
 
-| Interní rutina | Popis |
+| Interní rutina | Description |
 |:---|:---|
 |`Get-AutomationVariable`|Načte hodnotu existující proměnné.|
 |`Set-AutomationVariable`|Nastaví hodnotu pro existující proměnnou.|
@@ -84,7 +84,7 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 Funkce v následující tabulce se používají pro přístup k proměnným v sadě Runbook Python 2.
 
-|Python 2 – funkce|Popis|
+|Python 2 – funkce|Description|
 |:---|:---|
 |`automationassets.get_automation_variable`|Načte hodnotu existující proměnné. |
 |`automationassets.set_automation_variable`|Nastaví hodnotu pro existující proměnnou. |

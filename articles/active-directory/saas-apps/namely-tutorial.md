@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 00ddd61209af6e0d16b7f7579a6e8729cde0cdf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be48e4bb4f8364e9fafff69e2dc9eb6aa8db223c
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552462"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>Kurz: Azure Active Directory integrace s konkrétně
 
@@ -128,19 +128,19 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
 2. Na panelu nástrojů v horní části klikněte na možnost **Společnost**.
    
-    ![Konfigurace jednoho Sign-On](./media/namely-tutorial/tutorial_namely_06.png) 
+    ![Snímek obrazovky zobrazuje vybranou hodnotu společnosti.](./media/namely-tutorial/tutorial_namely_06.png) 
 
 3. Klikněte na kartu **Nastavení**.
    
-    ![Konfigurace jednoho Sign-On](./media/namely-tutorial/tutorial_namely_07.png) 
+    ![Snímek obrazovky zobrazuje kartu nastavení společnosti.](./media/namely-tutorial/tutorial_namely_07.png) 
 
 4. Klikněte na **SAML**.
    
-    ![Konfigurace jednoho Sign-On](./media/namely-tutorial/tutorial_namely_08.png) 
+    ![Snímek obrazovky zobrazuje vybraný SAML.](./media/namely-tutorial/tutorial_namely_08.png) 
 
 5. Na stránce **Nastavení SAML** proveďte následující kroky:
    
-    ![Konfigurace jednoho Sign-On](./media/namely-tutorial/tutorial_namely_09.png)
+    ![Snímek obrazovky ukazuje nastavení SAML, kde můžete zadat hodnoty, které jsou popsány.](./media/namely-tutorial/tutorial_namely_09.png)
  
     a. Klikněte na **Povolit SAML**. 
 
@@ -211,15 +211,15 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v, konkrétn
 
 2. Na panelu nástrojů v horní části klikněte na **lidé**.
    
-    ![Konfigurace jednoho Sign-On](./media/namely-tutorial/tutorial_namely_10.png) 
+    ![Snímek obrazovky zobrazuje vybranou hodnotu lidé.](./media/namely-tutorial/tutorial_namely_10.png) 
 
 3. Klikněte na kartu **adresář** .
    
-    ![Konfigurace jednoho Sign-On](./media/namely-tutorial/tutorial_namely_11.png) 
+    ![Snímek obrazovky se zobrazí karta adresář osoby.](./media/namely-tutorial/tutorial_namely_11.png) 
 
 4. Klikněte na **Přidat novou osobu**.
 
-    ![Konfigurace jednoho Sign-On](./media/namely-tutorial/tutorial_namely_12.png)
+    ![Snímek obrazovky se zobrazí možnost Přidat novou osobu.](./media/namely-tutorial/tutorial_namely_12.png)
 
 5. V dialogovém okně **Přidat novou osobu** proveďte následující kroky:
 

@@ -9,10 +9,10 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: 25f18eb0f55560b7abd250b8511b2e250ea55852
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250432"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-300-preview1"></a>Kurz: odesílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs (verze 3.0.0-preview1)
@@ -53,11 +53,11 @@ Než budete pokračovat, přečtěte si předchozí kurz na webu Začínáme s [
 
    Pokud nevidíte nový profil zřizování, který jste vytvořili v Xcode, pokuste se aktualizovat profily pro podpisové identity. Klikněte na **Xcode**   na panelu nabídek, klikněte na **Předvolby**, klikněte na kartu **účet**   , klikněte na tlačítko **Zobrazit podrobnosti**   , klikněte na svou podpisovou identitu a pak klikněte na tlačítko Aktualizovat v pravém dolním rohu.
 
-   :::image type="content" source="media/ios-sdk/image2.png" alt-text="Zobrazit podrobnosti":::
+   :::image type="content" source="media/ios-sdk/image2.png" alt-text="Vybrat šablonu":::
 
 4. Na kartě **Možnosti podpisového &**   Vyberte **+ funkce**. Dvojím kliknutím na **nabízená oznámení**   ji povolte.
 
-   :::image type="content" source="media/ios-sdk/image3.png" alt-text="Funkce":::
+   :::image type="content" source="media/ios-sdk/image3.png" alt-text="Vybrat šablonu":::
 
 5. Přidejte moduly Azure Notification Hubs SDK.
 
@@ -81,7 +81,7 @@ Než budete pokračovat, přečtěte si předchozí kurz na webu Začínáme s [
 
         - V Xcode klikněte pravým tlačítkem na projekt a kliknutím na **Přidat soubory do**   přidejte do svého projektu Xcode složku **WindowsAzureMessaging. Framework**   . Vyberte **Možnosti**   a ujistěte se, že je vybraná možnost **Kopírovat položky v případě potřeby**   , a pak klikněte na **Přidat**.
 
-          :::image type="content" source="media/ios-sdk/image4.png" alt-text="Přidat rozhraní":::
+          :::image type="content" source="media/ios-sdk/image4.png" alt-text="Vybrat šablonu":::
 
 6. Přidejte nový hlavičkový soubor do projektu s názvem **konstanty. h**. Provedete to tak, že kliknete pravým tlačítkem myši na název projektu a vyberete **nový soubor...**. Pak vyberte **hlavičkový soubor**. V tomto souboru jsou konstanty vašeho centra oznámení. Pak vyberte **Další**. Pojmenujte soubor **konstanty. h**.
 
@@ -98,13 +98,7 @@ Než budete pokračovat, přečtěte si předchozí kurz na webu Začínáme s [
 
 8. Přidejte implementační soubor pro konstanty. h. Provedete to tak, že kliknete pravým tlačítkem myši na název projektu a vyberete **nový soubor...**. Vyberte **cíl-C soubor**a pak vyberte **Další**. Pojmenujte soubor **konstantami. m**.
 
-   :::image type="content" source="media/ios-sdk/image5.png" alt-text="Přidat implementační soubor":::
-
-9. Otevřete soubor **konstanty. m**   a nahraďte jeho obsah následujícím kódem. Nahraďte zástupné symboly řetězcového literálu  `NotificationHubConnectionString`   a  `NotificationHubConnectionString`   názvem centra a **DefaultListenSharedAccessSignature**, v uvedeném pořadí, jak jste předtím získali z portálu:
-
-   ```objc
-   #import <Foundation/Foundation.h>
-   #import "Constants.h"
+   :::image type="content" source="media/ios-sdk/image5.png" alt-text="Vybrat šablonu"
 
    NSString* const NHInfoConnectionString = @"NotificationHubConnectionString";
    NSString* const NHInfoHubName = @"NotificationHubName";NSString* const NHUserDefaultTags = @"notification_tags";
@@ -311,7 +305,7 @@ Než budete pokračovat, přečtěte si předchozí kurz na webu Začínáme s [
 
 Příjem oznámení ve vaší aplikaci můžete otestovat pomocí možnosti **Odeslat test**   v [Azure Portal](https://portal.azure.com/). Do zařízení se odešle testovací nabízené oznámení.
 
-:::image type="content" source="media/ios-sdk/image6.png" alt-text="Odeslat test":::
+:::image type="content" source="media/ios-sdk/image6.png" alt-text="Vybrat šablonu":::
 
 Nabízená oznámení se většinou posílají ve službě back-end, jako je služba Mobile Apps, nebo v technologii ASP.NET pomocí kompatibilní knihovny. Pokud pro váš back-end není dostupná žádná knihovna, můžete k posílání oznámení použít také REST API přímo.
 
@@ -328,13 +322,13 @@ Chcete-li otestovat nabízená oznámení na iOS, musíte aplikaci nasadit do fy
 
 1. Spusťte aplikaci a ověřte, že registrace proběhla úspěšně, a pak stiskněte **OK**.
 
-   :::image type="content" source="media/ios-sdk/image7.png" alt-text="Zaregistrovat":::
+   :::image type="content" source="media/ios-sdk/image7.png" alt-text="Vybrat šablonu":::
 
 2. Dále odešlete testovací nabízené oznámení z [Azure Portal](https://portal.azure.com/), jak je popsáno v předchozí části.
 
 3. Nabízené oznámení se odešle na všechna zařízení, která jsou zaregistrovaná pro příjem oznámení z daného centra oznámení.
 
-   :::image type="content" source="media/ios-sdk/image8.png" alt-text="Odeslat test":::
+   :::image type="content" source="media/ios-sdk/image8.png" alt-text="Vybrat šablonu":::
 
 ## <a name="next-steps"></a>Další kroky
 

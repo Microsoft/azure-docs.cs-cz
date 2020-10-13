@@ -7,17 +7,17 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
 ms.openlocfilehash: 310637ce099aca7b8b9057a674d6b2094b008a87
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613607"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Kurz: použití exportované šablony z Azure Portal
 
 V této sérii kurzů jste vytvořili šablonu pro nasazení účtu úložiště Azure. V následujících dvou kurzech můžete přidat *plán App Service* a *Web*. Místo vytváření šablon od začátku se naučíte exportovat šablony z Azure Portal a jak používat ukázkové šablony ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/). Tyto šablony můžete přizpůsobit pro použití. Tento kurz se zaměřuje na export šablon a přizpůsobení výsledku pro šablonu. Dokončení trvá přibližně **14 minut** .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Doporučujeme, abyste dokončili [kurz týkající se výstupů](template-tutorial-add-outputs.md), ale není to nutné.
 
@@ -33,7 +33,7 @@ Tato šablona funguje dobře pro nasazení účtů úložiště, ale můžete ch
 
 ## <a name="create-app-service-plan"></a>Vytvoření plánu služby App Service
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Vyberte **Vytvořit prostředek**.
 1. V **části Hledat na Marketplace**zadejte **App Service plán**a potom vyberte **App Service plán**.  Nevybírat **plán App Service (klasický)**
 1. Vyberte **Vytvořit**.
@@ -117,7 +117,7 @@ az deployment group create \
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. Skupina prostředků obsahuje účet úložiště a plán App Service.

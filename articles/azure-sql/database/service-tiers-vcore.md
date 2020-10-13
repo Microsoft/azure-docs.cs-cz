@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 09/30/2020
 ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614423"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Přehled modelu vCore – Azure SQL Database a Azure SQL Managed instance 
@@ -104,14 +104,14 @@ To enable M-series hardware for a subscription and region, a support request mus
 ### <a name="compute-and-memory-specifications"></a>Specifikace výpočtů a paměti
 
 
-|Generování hardwaru  |Compute  |Memory (Paměť)  |
+|Generování hardwaru  |Compute  |Paměť  |
 |:---------|:---------|:---------|
 |COMPUTE GEN4 –     |– Procesory Intel® E5-2673 V3 (Haswell) 2,4 GHz<br>-Zřídit až 24 virtuální jádra (1 vCore = 1 fyzický jádro)  |– 7 GB na vCore<br>– Zřídit až 168 GB|
 |Gen5     |**Zřízené výpočetní prostředky**<br>– Intel® E5-2673 v4 (Broadwell) 2,3-GHz, Intel® SP-8160 (Skylake) \* a intel® 8272CL (Cascade Lake) 2,5 GHz \*<br>-Zřídit až 80 virtuální jádra (1 vCore = 1 Hyper-thread)<br><br>**Bezserverové výpočetní prostředí**<br>-Intel® E5-2673 v4 (Broadwell) 2,3-GHz a Intel® SP-8160 (Skylake) * procesory<br>– Automatické škálování až do 40 virtuální jádra (1 vCore = 1 Hyper-thread)|**Zřízené výpočetní prostředky**<br>-5,1 GB na vCore<br>– Zřídit až 408 GB<br><br>**Bezserverové výpočetní prostředí**<br>– Automatické škálování až na 24 GB na vCore<br>– Automatické škálování až do 120 GB max.|
 |Řada Fsv2     |– Procesory Intel® 8168 (Skylake)<br>– S trvalou frekvencí 3,4 GHz a maximální jednotnou rychlostí Turbo 3,7 GHz v jádře.<br>-Zřídit až 72 virtuální jádra (1 vCore = 1 Hyper-thread)|-1,9 GB na vCore<br>– Zřídit až 136 GB|
 |Řada M     |– Intel® E7-8890 V3 2,5 GHz a Intel® 8280M 2,7 GHz (Cascade Lake) procesory<br>-Zřídit až 128 virtuální jádra (1 vCore = 1 Hyper-thread)|– 29 GB na vCore<br>– Zřídit až 3,7 TB|
 
-\* V zobrazení [Sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dynamické správy se generování hardwaru pro databáze, které používají procesory Intel® SP-8160 (Skylake), zobrazuje jako Gen6, zatímco generování hardwaru pro databáze pomocí technologie Intel® 8272CL (Cascade Lake) se zobrazuje jako Gen7. Omezení prostředků pro všechny databáze Gen5 jsou stejná bez ohledu na typ procesoru (Broadwell, Skylake nebo Cascade Lake).
+\* V zobrazení dynamické správy [Sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) se generování hardwaru pro databáze používající procesory Intel® SP-8160 (Skylake) zobrazuje jako Gen6, zatímco generování hardwaru pro databáze pomocí technologie Intel® 8272CL (Cascade Lake) se zobrazuje jako Gen7. Omezení prostředků pro všechny databáze Gen5 jsou stejná bez ohledu na typ procesoru (Broadwell, Skylake nebo Cascade Lake).
 
 Další informace o omezeních prostředků najdete v tématech [omezení prostředků pro izolované databáze (Vcore)](resource-limits-vcore-single-databases.md)nebo [omezení prostředků pro elastické fondy (Vcore)](resource-limits-vcore-elastic-pools.md).
 

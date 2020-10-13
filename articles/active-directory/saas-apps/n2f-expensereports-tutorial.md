@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 6036ff86c430422556ed4f7e1bc80fe122ed0a30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eee16c1ba207eb35633d7ec1a7167300d40d662
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552551"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91941004"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Kurz: Azure Active Directory integrací se sestavami N2F-výdajů
 
@@ -99,11 +99,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí sestav N
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , uživatel v **základní části Konfigurace SAML** neprovede žádné kroky, protože aplikace už je předem integrovaná s Azure.
 
-    ![N2F – informace o jednotném přihlašování v doménových zprávách a adresách URL](common/preintegrated.png)
+    ![Snímek obrazovky ukazuje přihlašovací stránku založenou na SAML se základní konfigurací SAML.](common/preintegrated.png)
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![N2F – informace o jednotném přihlašování v doménových zprávách a adresách URL](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky zobrazující stránku integrace, kde můžete přidat Azure A D jednotného přihlašování.](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://www.n2f.com/app/`
 
@@ -127,23 +127,23 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí sestav N
 
 2. Klikněte na **Nastavení** a potom z rozevíracího seznamu vyberte **nastavení zálohy** .
 
-    ![N2F – konfigurace sestav výdajů](./media/n2f-expensereports-tutorial/configure1.png)
+    ![Snímek obrazovky zobrazuje vybraná Rozšířená nastavení.](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. Vyberte kartu **Nastavení účtu** .
 
-    ![N2F – konfigurace sestav výdajů](./media/n2f-expensereports-tutorial/configure2.png)
+    ![Snímek obrazovky zobrazuje vybrané nastavení účtu.](./media/n2f-expensereports-tutorial/configure2.png)
 
 4. Vyberte **ověřování** a pak vyberte **+ Přidat kartu metoda ověřování** .
 
-    ![N2F – konfigurace sestav výdajů](./media/n2f-expensereports-tutorial/configure3.png)
+    ![Snímek obrazovky ukazuje ověřování nastavení účtu, kde můžete přidat metodu ověřování.](./media/n2f-expensereports-tutorial/configure3.png)
 
 5. Jako metodu ověřování vyberte **SAML systém Microsoft Office 365** .
 
-    ![N2F – konfigurace sestav výdajů](./media/n2f-expensereports-tutorial/configure4.png)
+    ![Snímek obrazovky zobrazuje metodu ověřování s vybraným SAML systém Microsoft Office 365.](./media/n2f-expensereports-tutorial/configure4.png)
 
 6. V části **metoda ověřování** proveďte následující kroky:
 
-    ![N2F – konfigurace sestav výdajů](./media/n2f-expensereports-tutorial/configure5.png)
+    ![Snímek obrazovky ukazuje metodu ověřování, kde můžete zadat hodnoty, které jsou popsány.](./media/n2f-expensereports-tutorial/configure5.png)
 
     a. Do textového pole **ID entity** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
 
@@ -212,19 +212,19 @@ Aby se uživatelé Azure AD mohli přihlásit k N2Fým zprávám, musí se zří
 
 2. Klikněte na **Nastavení** a potom z rozevíracího seznamu vyberte **nastavení zálohy** .
 
-    ![N2F – přidání uživatele do výdajů](./media/n2f-expensereports-tutorial/configure1.png)
+    ![Snímek obrazovky zobrazuje vybraná Rozšířená nastavení.](./media/n2f-expensereports-tutorial/configure1.png)
 
 3. V levém navigačním panelu vyberte kartu **Uživatelé** .
 
-    ![N2F – konfigurace sestav výdajů](./media/n2f-expensereports-tutorial/user1.png)
+    ![Snímek obrazovky znázorňující vybrané uživatele.](./media/n2f-expensereports-tutorial/user1.png)
 
 4. Vyberte **+ Nová karta uživatel** .
 
-    ![N2F – konfigurace sestav výdajů](./media/n2f-expensereports-tutorial/user2.png)
+    ![Snímek obrazovky se zobrazí jako možnost Nový uživatel.](./media/n2f-expensereports-tutorial/user2.png)
 
 5. V části **uživatel** proveďte následující kroky:
 
-    ![N2F – konfigurace sestav výdajů](./media/n2f-expensereports-tutorial/user3.png)
+    ![Snímek obrazovky se zobrazí část, kde můžete zadat hodnoty, které jsou popsány.](./media/n2f-expensereports-tutorial/user3.png)
 
     a. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele, jako je **brittasimon \@ contoso.com**.
 

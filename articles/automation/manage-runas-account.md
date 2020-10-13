@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3357cb40ff476a3cc0bce259930068aeccf2c10c
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91767381"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Správa účtu Azure Automation spustit jako

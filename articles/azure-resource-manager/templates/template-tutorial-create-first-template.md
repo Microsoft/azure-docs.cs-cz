@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
 ms.openlocfilehash: 25ddcc2c3a890b407b2116f64ebab577e30c9457
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613182"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Kurz: vytvoření a nasazení první šablony ARM
@@ -184,7 +184,7 @@ Příkaz pro nasazení vrátí výsledky. Vyhledejte, pokud `ProvisioningState` 
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 

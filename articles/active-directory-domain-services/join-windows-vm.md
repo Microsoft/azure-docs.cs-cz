@@ -1,20 +1,20 @@
 ---
 title: Připojení virtuálního počítače s Windows serverem k spravované doméně Azure AD Domain Services | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak připojit virtuální počítač s Windows serverem k spravované doméně Azure Active Directory Domain Services.
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 259b27528779c9934da6d69ca46f2794e2257d24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: joflore
+ms.openlocfilehash: 3df96f5576829694b5eb12fd1811de112279884d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723023"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963223"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: připojení virtuálního počítače s Windows serverem k spravované doméně Azure Active Directory Domain Services
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující zdroje:
 

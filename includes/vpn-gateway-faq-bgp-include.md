@@ -9,10 +9,10 @@ ms.date: 09/17/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 32e4658af48a0ae3bde08de18cf1d8204878d671
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91024886"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Je protokol BGP podporován ve všech SKU služby Azure VPN Gateway?

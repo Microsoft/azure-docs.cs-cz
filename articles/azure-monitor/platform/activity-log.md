@@ -8,10 +8,10 @@ ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 6543b629af8d67658afe61ef81e22eb7355e1de7
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91772800"
 ---
 # <a name="azure-activity-log"></a>Protokol aktivit Azure
@@ -201,11 +201,11 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
 
     | Vlastnost | Požaduje se | Popis |
     | --- | --- | --- |
-    | Název |Ano |Název vašeho profilu protokolu. |
+    | Název |Yes |Název vašeho profilu protokolu. |
     | StorageAccountId |No |ID prostředku účtu úložiště, do kterého se má ukládat protokol aktivit |
     | serviceBusRuleId |No |Service Bus ID pravidla pro Service Bus oboru názvů, ve kterém chcete vytvořit centra událostí. Toto je řetězec ve formátu: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Umístění |Ano |Čárkami oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. |
-    | RetentionInDays |Ano |Počet dní, po které se mají události uchovávat v účtu úložiště v rozmezí od 1 do 365. Hodnota nula ukládá protokoly po neomezenou dobu. |
+    | RetentionInDays |Yes |Počet dní, po které se mají události uchovávat v účtu úložiště v rozmezí od 1 do 365. Hodnota nula ukládá protokoly po neomezenou dobu. |
     | Kategorie |No |Čárkami oddělený seznam kategorií událostí, které se mají shromáždit. Možné hodnoty jsou _Write_, _Delete_a _Action_. |
 
 ### <a name="example-script"></a>Ukázkový skript
@@ -244,12 +244,12 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
 
     | Vlastnost | Požaduje se | Popis |
     | --- | --- | --- |
-    | name |Ano |Název vašeho profilu protokolu. |
-    | úložiště – ID účtu |Ano |ID prostředku účtu úložiště, do kterého se mají ukládat protokoly aktivit |
-    | polohy |Ano |Mezerou oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Seznam všech oblastí pro vaše předplatné můžete zobrazit pomocí `az account list-locations --query [].name` . |
-    | denní |Ano |Počet dní, po které se mají uchovávat události v rozmezí od 1 do 365. Hodnota nula bude ukládat protokoly po neomezenou dobu (navždy).  Je-li nastavena hodnota nula, parametr Enabled by měl být nastaven na hodnotu false. |
-    |enabled | Ano |Ano nebo ne:  Slouží k povolení nebo zakázání zásad uchovávání informací.  Pokud je hodnota true, parametr Days musí být hodnota větší než 0.
-    | categories |Ano |Prostor – seznam kategorií událostí, které mají být shromážděny. Možné hodnoty jsou Write, DELETE a Action. |
+    | name |Yes |Název vašeho profilu protokolu. |
+    | úložiště – ID účtu |Yes |ID prostředku účtu úložiště, do kterého se mají ukládat protokoly aktivit |
+    | polohy |Yes |Mezerou oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Seznam všech oblastí pro vaše předplatné můžete zobrazit pomocí `az account list-locations --query [].name` . |
+    | denní |Yes |Počet dní, po které se mají uchovávat události v rozmezí od 1 do 365. Hodnota nula bude ukládat protokoly po neomezenou dobu (navždy).  Je-li nastavena hodnota nula, parametr Enabled by měl být nastaven na hodnotu false. |
+    |enabled | Yes |Ano nebo ne:  Slouží k povolení nebo zakázání zásad uchovávání informací.  Pokud je hodnota true, parametr Days musí být hodnota větší než 0.
+    | categories |Yes |Prostor – seznam kategorií událostí, které mají být shromážděny. Možné hodnoty jsou Write, DELETE a Action. |
 
 
 ### <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics

@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: d538625785020b2d3ab39b88c3c7a0ddcf18bfc8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91249599"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí jazyka Java
@@ -397,7 +397,7 @@ static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClien
 
 * [Referenční dokumentace k rozhraní API](/java/api/overview/azure/storage-file-datalake-readme)
 * [Balíček (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)
-* [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
+* [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
 * [Mapování Gen1 na Gen2](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 * [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-java/issues)

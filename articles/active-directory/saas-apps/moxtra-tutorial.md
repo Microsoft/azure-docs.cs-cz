@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 7fffe58dfdb63da28edc19c19b56b576f4fbadd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 132da93bcb1e8138b63361cdb448c05b985cdf27
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544039"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940901"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Moxtra
 
@@ -156,11 +156,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Na panelu nástrojů na levé straně klikněte na **Konzola pro správu > jednotné přihlašování SAML**a potom klikněte na **Nový**.
    
-    ![Konfigurace jednoho Sign-On](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
+    ![Snímek obrazovky se stránkou jednotného přihlašování SAML s možností vytvoření nového jednotného přihlašování SAML.](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
 
 3. Na stránce **SAML** proveďte následující kroky:
    
-    ![Konfigurace jednoho Sign-On](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
+    ![Snímek obrazovky ukazuje stránku SAML, kde můžete zadat hodnoty, které jsou popsány.](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
     a. Do textového pole **název** zadejte název vaší konfigurace (např.: *SAML*). 
   
@@ -191,7 +191,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v Moxtra.
 
 1. Na panelu nástrojů na levé straně klikněte na **Konzola pro správu > Správa uživatelů**a pak na **Přidat uživatele**.
    
-    ![Konfigurace jednoho Sign-On](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
+    ![Snímek obrazovky zobrazující stránku správy uživatelů s vybraným přidat uživatele.](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
 1. V dialogovém okně **Přidat uživatele** proveďte následující kroky:
   

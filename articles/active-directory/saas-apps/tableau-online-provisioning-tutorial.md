@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 094a146f8e0e32667986a8e807955be1a5f66e39
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613916"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Kurz: Konfigurace Tableau online pro Automatické zřizování uživatelů
@@ -25,7 +25,7 @@ V tomto kurzu se dozvíte, jak provést Tableau online a Azure Active Directory 
 > [!NOTE]
 > Tento kurz popisuje konektor, který je založený na službě zřizování uživatelů Azure AD. Informace o tom, jak tato služba funguje, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro aplikace typu software jako služba (SaaS) s Azure Active Directory](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že máte následující:
 
@@ -78,7 +78,7 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
 ### <a name="configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Tableau online ve službě Azure AD
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**  >  **Tableau online**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**  >  **Tableau online**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -166,7 +166,7 @@ Informace o tom, jak číst protokoly zřizování služby Azure AD, najdete v t
 ## <a name="change-log"></a>Protokol změn
 * 09/30/2020 – byla přidána podpora atributu "authSetting" pro uživatele.
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
