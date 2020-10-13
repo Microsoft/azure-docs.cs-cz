@@ -8,10 +8,10 @@ ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 9fa3c27f9cc35b31fc78b2a09bea725934093e63
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983356"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Ingestování IoT Hub telemetrie do digitálních vláken Azure
@@ -209,14 +209,14 @@ Po úspěšném publikování se zobrazí výstup v okně příkazového řádku
 ```
 Můžete také ověřit stav procesu publikování v [Azure Portal](https://portal.azure.com/). Vyhledejte _skupinu prostředků_ , přejděte do _protokolu aktivit_ a vyhledejte _profil publikování webové aplikace_ v seznamu a ověřte, jestli je stav úspěšný.
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/azure-function-publish-activity-log.png" alt-text="Snímek obrazovky Azure Portal, který zobrazuje stav procesu publikování.":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/azure-function-publish-activity-log.png" alt-text="Diagram znázorňující vývojový diagram V grafu IoT Hub zařízení odesílá telemetrii teploty prostřednictvím IoT Hub do funkce Azure, která aktualizuje vlastnost teploty v případě, že se v digitálních událostech Azure pracuje s dvojitou teplotou.":::
 
 ## <a name="connect-your-function-to-iot-hub"></a>Připojte funkci k IoT Hub
 
 Nastavte cíl události pro data centra.
 V [Azure Portal](https://portal.azure.com/)přejděte na instanci IoT Hub, kterou jste vytvořili v části [*požadavky*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites) . V části **události**Vytvořte předplatné pro funkci Azure Functions.
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Snímek obrazovky Azure Portal, který ukazuje přidání odběru události":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Diagram znázorňující vývojový diagram V grafu IoT Hub zařízení odesílá telemetrii teploty prostřednictvím IoT Hub do funkce Azure, která aktualizuje vlastnost teploty v případě, že se v digitálních událostech Azure pracuje s dvojitou teplotou.":::
 
 Na stránce **vytvořit odběr události** vyplňte pole následujícím způsobem:
   1. V části **název**zadejte název předplatného, co byste chtěli.
@@ -225,7 +225,7 @@ Na stránce **vytvořit odběr události** vyplňte pole následujícím způsob
   4. V části **Typ koncového bodu**vyberte _Azure Function_.
   5. V části **koncový bod**zvolte _možnost vybrat odkaz na koncový bod_ a vytvořte koncový bod.
     
-:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="Snímek obrazovky Azure Portal k vytvoření podrobností odběru události":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="Diagram znázorňující vývojový diagram V grafu IoT Hub zařízení odesílá telemetrii teploty prostřednictvím IoT Hub do funkce Azure, která aktualizuje vlastnost teploty v případě, že se v digitálních událostech Azure pracuje s dvojitou teplotou.":::
 
 Na stránce _Vybrat funkci Azure_ , která se otevře, ověřte níže uvedené podrobnosti.
  1. **Předplatné**: vaše předplatné Azure
@@ -236,7 +236,7 @@ Na stránce _Vybrat funkci Azure_ , která se otevře, ověřte níže uvedené 
 
 Kliknutím na tlačítko _potvrdit výběr_ uložte podrobnosti.            
       
-:::image type="content" source="media/how-to-ingest-iot-hub-data/select-azure-function.png" alt-text="Snímek obrazovky Azure Portal pro výběr funkce Azure":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/select-azure-function.png" alt-text="Diagram znázorňující vývojový diagram V grafu IoT Hub zařízení odesílá telemetrii teploty prostřednictvím IoT Hub do funkce Azure, která aktualizuje vlastnost teploty v případě, že se v digitálních událostech Azure pracuje s dvojitou teplotou.":::
 
 Vyberte _vytvořit_ a vytvořte odběr událostí.
 

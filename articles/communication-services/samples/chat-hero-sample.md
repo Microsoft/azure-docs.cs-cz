@@ -2,19 +2,19 @@
 title: Ukázka Hero v konverzaci skupin
 titleSuffix: An Azure Communication Services sample overview
 description: Přehled služby chat Hero Sample pomocí komunikačních služeb Azure, které vývojářům umožňují získat další informace o vnitřních pracovních způsobech ukázky a o tom, jak je upravit.
-author: ddematheu
+author: ddematheu2
 manager: nimag
 services: azure-communication-services
 ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0a01036eb4856d9fd306a50958285bd469791f24
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 51b985cd67e1b540e2f24f2f37b19f9bff4223db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823870"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962985"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Začínáme s příkladem skupiny Hero chat
 
@@ -32,7 +32,7 @@ V tomto rychlém startu se dozvíte, jak ukázka funguje před spuštěním uká
 > [!IMPORTANT]
 > [Stažení ukázky z GitHubu](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
 
-## <a name="overview"></a>Přehled
+## <a name="overview"></a>Overview
 
 Ukázka obsahuje aplikaci na straně klienta i aplikaci na straně serveru. **Aplikace na straně klienta** je webová aplikace reagující na Redux, která používá architekturu uživatelského rozhraní Fluent společnosti Microsoft. Tato aplikace posílá požadavky na ASP.NET Core **aplikace na straně serveru** , která pomáhá aplikaci na straně klienta připojit se k Azure. 
 
@@ -78,7 +78,6 @@ Ukázku můžete otestovat místně tak, že otevřete několik relací prohlí�
 2. `git clone https://github.com/Azure/Communication.git`
 3. Získat `Connection String` z Azure Portal. Další informace o připojovacích řetězcích najdete v tématu [vytvoření prostředků komunikace Azure](../quickstarts/create-communication-resource.md) .
 4. Jakmile získáte `Connection String` připojovací řetězec, přidejte ho do souboru **chat nebo appsettings.js** , který se nachází ve složce chat. Zadejte připojovací řetězec do proměnné: `ResourceConnectionString` .
-5. Aktualizujte ENVIRONMENT_URL v `./Chat/ClientApp/src/constants.tsx` umístění prostředku. (např. https://<RESOURCE_NAME>. communication.azure.com)
 
 ### <a name="local-run"></a>Místní spuštění
 

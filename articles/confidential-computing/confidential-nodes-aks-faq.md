@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: amgowda
 ms.openlocfilehash: b4b6c04a1e35031387a006b6350ebf6cbe502fee
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995885"
 ---
 # <a name="frequently-asked-questions-about-confidential-computing-nodes-on-azure-kubernetes-service-aks"></a>Nejčastější dotazy týkající se důvěrných výpočetních uzlů ve službě Azure Kubernetes (AKS)
@@ -39,7 +39,7 @@ Ano. Podpora Azure je poskytována ve verzi Preview. Není připojená žádná 
 
 ## <a name="can-i-inject-post-install-scriptscustomize-drivers-to-the-nodes-provisioned-by-aks"></a>Můžu vložit skripty po instalaci/přizpůsobit ovladače uzlům zřízeným pomocí AKS? 
 
-No. [Důvěrné výpočetní uzly založené na modulu AKS](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md) podporují důvěrné výpočetní uzly, které umožňují vlastní instalace.
+Ne. [Důvěrné výpočetní uzly založené na modulu AKS](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md) podporují důvěrné výpočetní uzly, které umožňují vlastní instalace.
 
 ## <a name="should-i-be-using-a-docker-base-image-to-get-started-on-enclave-applications"></a>Mám použít základní image Docker, abyste mohli začít s enklávy aplikacemi? 
 
@@ -112,7 +112,7 @@ Ano. Rozhraní příkazového řádku Azure můžete také použít jako alterna
 
 ## <a name="can-we-change-the-current-intel-sgx-dcap-diver-version-on-aks"></a>Můžeme změnit aktuální verzi Intel SGX DCAP Diver na AKS? 
 
-No. Abyste mohli provádět jakékoli vlastní instalace, doporučujeme, abyste vybrali nasazení [AKSch pracovních uzlů s důvěrným výpočetním modulem](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md) . 
+Ne. Abyste mohli provádět jakékoli vlastní instalace, doporučujeme, abyste vybrali nasazení [AKSch pracovních uzlů s důvěrným výpočetním modulem](https://github.com/Azure/aks-engine/blob/master/docs/topics/sgx.md) . 
 
 ## <a name="what-version-of-kubernetes-do-you-support-and-recommend"></a>Jakou verzi Kubernetes podporujete a doporučujete? 
 

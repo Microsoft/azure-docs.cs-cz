@@ -12,10 +12,10 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
 ms.openlocfilehash: 116dd65bf04c01f513e196a2f1b37d54aacbf1fe
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91841352"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Připojení k datům pomocí Azure Machine Learning studia
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak získat přístup k datům pomocí [Azure Mach
 
 Následující tabulka definuje a shrnuje výhody datových úložišť a datových sad. 
 
-|Objekt|Popis| Výhody|   
+|Objekt|Description| Výhody|   
 |---|---|---|
 |Úložiště dat| Připojte se bezpečně k vaší službě úložiště v Azure, a to uložením informací o připojení, jako je ID předplatného a autorizace tokenu v [Key Vault](https://azure.microsoft.com/services/key-vault/) přidružené k pracovnímu prostoru. | Vzhledem k tomu, že jsou vaše informace bezpečně uložené, můžete <br><br> <li> &nbsp;Neumísťujte &nbsp; &nbsp; přihlašovací údaje pro ověřování &nbsp; nebo &nbsp; původní &nbsp; zdroje dat na riziko. <li> Už je nemusíte zakódovat ve svých skriptech.
 |Datové sady| Vytvořením datové sady vytvoříte odkaz na umístění zdroje dat společně s kopií jeho metadat. U datových sad můžete, <br><br><li> Přístup k datům během školení modelu.<li> Sdílejte data a spolupracujte s ostatními uživateli.<li> Využijte open source knihovny, jako je PANDAS, pro zkoumání dat. | Vzhledem k tomu, že datové sady jsou vyhodnoceny laxně vytvářená a data zůstávají v jejím existujícím umístění, je <br><br><li>Uchovávejte v úložišti jednu kopii dat.<li> Neúčtují se žádné dodatečné náklady na úložiště. <li> Nehrozí neriziková neúmyslná změna původních zdrojů dat.<li>Zvýšení rychlosti výkonu pracovního postupu ML. 
@@ -113,15 +113,15 @@ Konkrétně datový profil Azure Machine Learning datové sady zahrnuje:
 >[!NOTE]
 > Pro funkce s nepodstatnými typy se zobrazí prázdné položky.
 
-|Statistický údaj|Popis
+|Statistický údaj|Description
 |------|------
-|Funkce| Název sloupce, který je sumarizován.
+|Příznak| Název sloupce, který je sumarizován.
 |Profil| Vložená vizualizace na základě typu odvozeného. Například řetězce, logické hodnoty a data budou mít počty hodnot, zatímco desetinná místa (číslice) mají přibližné histogramy. To vám umožní získat rychlé porozumění distribuci dat.
 |Distribuce typu| Počet vložené hodnoty typů v rámci sloupce. Hodnoty null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro zjištění lichých nebo chybějících hodnot.
 |Typ|Odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.
-|Minimum| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (například logické hodnoty), se zobrazí prázdné položky.
-|Maximum| Maximální hodnota sloupce 
-|Count| Celkový počet chybějících a nechybějících položek ve sloupci
+|Min| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (například logické hodnoty), se zobrazí prázdné položky.
+|Max| Maximální hodnota sloupce 
+|Počet| Celkový počet chybějících a nechybějících položek ve sloupci
 |Počet nechybějících| Počet položek ve sloupci, které nebyly nalezeny. Prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybějícímu počtu".
 |Kvantily| Přibližné hodnoty na jednotlivých Quantile, které poskytují smysl distribuce dat.
 |Mean| Aritmetický průměr nebo průměr sloupce

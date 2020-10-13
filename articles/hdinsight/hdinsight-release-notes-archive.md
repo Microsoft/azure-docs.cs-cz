@@ -7,19 +7,60 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 08/09/2020
-ms.openlocfilehash: ad0ff98174a81518fe26063f9ccc6acbbddbf8d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/07/2020
+ms.openlocfilehash: c1d43da3a0be65b2351a4b6dbeeb2772062356bc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442376"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974630"
 ---
 # <a name="archived-release-notes"></a>Archivované poznámky k verzi
 
 ## <a name="summary"></a>Shrnutí
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky pro Open Source Apache Hadoop a Apache Spark analýzy v Azure.
+
+## <a name="release-date-09282020"></a>Datum vydání: 09/28/2020
+
+Tato verze se týká HDInsight 3,6 i HDInsight 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
+
+### <a name="new-features"></a>Nové funkce
+#### <a name="autoscale-for-interactive-query-with-hdinsight-40-is-now-generally-available"></a>Automatické škálování pro interaktivní dotaz s HDInsight 4,0 je teď všeobecně dostupné.
+Automatické škálování pro typ clusteru interaktivních dotazů je teď všeobecně dostupné (GA) pro HDInsight 4,0. Všechna interaktivní clustery dotazů 4,0 vytvořená po 27. srpna 2020 budou mít podporu GA pro automatické škálování.
+
+#### <a name="hbase-cluster-supports-premium-adls-gen2"></a>Cluster HBA podporuje prémiové ADLS Gen2
+HDInsight teď podporuje Premium ADLS Gen2 jako primární účet úložiště pro clustery HDInsight 3,6 a 4,0. Společně s [akcelerovanými zápisy](./hbase/apache-hbase-accelerated-writes.md)můžete dosáhnout lepšího výkonu clusterů HBA.
+
+#### <a name="kafka-partition-distribution-on-azure-fault-domains"></a>Kafka rozdělení oddílu do domén selhání Azure
+Doména selhání je logické seskupení základního hardwaru v datovém centru Azure. Všechny domény selhání sdílí společný zdroje napájení a síťový přepínač. Předtím, než HDInsight Kafka může ukládat všechny repliky oddílů ve stejné doméně selhání. Od této verze už HDInsight podporuje automatickou distribuci oddílů Kafka na základě domén selhání Azure. 
+
+#### <a name="encryption-in-transit"></a>Šifrování během přenosu
+Zákazníci můžou povolit šifrování při přenosu mezi uzly clusteru pomocí šifrování IPSec s klíči spravovanými platformou. Tuto možnost můžete povolit v době vytváření clusteru. Přečtěte si další podrobnosti o [tom, jak povolit šifrování při přenosu](./domain-joined/encryption-in-transit.md).
+
+#### <a name="encryption-at-host"></a>Šifrování na hostiteli
+Pokud povolíte šifrování na hostiteli, data uložená na hostiteli virtuálního počítače se zašifrují v klidovém stavu a toky se zašifrují do služby úložiště. V této verzi můžete při vytváření clusteru **zapnout šifrování na hostiteli na dočasném datovém disku** . Šifrování na hostiteli se podporuje jenom u [některých SKU virtuálních počítačů v omezených oblastech](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-host-based-encryption-portal). HDInsight podporuje [následující konfiguraci uzlů a SKU](./hdinsight-supported-node-configuration.md). Podívejte se na další podrobnosti o [tom, jak povolit šifrování na hostiteli](https://docs.microsoft.com/azure/hdinsight/disk-encryption#encryption-at-host-using-platform-managed-keys).
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
+HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od této verze se služba postupně migruje na [Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview). Celý proces může trvat měsíce. Po migraci vašich oblastí a předplatných se nově vytvořené clustery HDInsight spustí ve službě Virtual Machine Scale Sets bez akcí zákazníků. Neočekává se žádná neprůlomová změna.
+
+### <a name="deprecation"></a>Vyřazení
+Pro tuto verzi není zastaralost.
+
+### <a name="behavior-changes"></a>Změny chování
+Žádná změna chování pro tuto verzi.
+
+### <a name="upcoming-changes"></a>Nadcházející změny
+V nadcházejících verzích dojde k následujícím změnám.
+
+#### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Možnost výběru různých Zookeeper SKU pro služby Spark, Hadoop a ML
+HDInsight dnes nepodporuje změnu Zookeeper SKU pro typy clusterů Spark, Hadoop a ML. Používá A2_v2 SKU/a2 pro uzly Zookeeper a zákazníkům se za ně neúčtují poplatky. V nadcházející verzi můžou zákazníci podle potřeby měnit SKU Zookeeper pro služby Spark, Hadoop a ML. Zookeeper uzly s jinou skladovou jednotkou než A2_v2/a2 budou účtovány. Výchozí SKU bude i nadále A2_V2/a2 a zadarmo.
+
+### <a name="bug-fixes"></a>Opravy chyb
+HDInsight nadále zdokonaluje spolehlivost a výkon clusteru. 
+
+### <a name="component-version-change"></a>Změna verze součásti
+Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
 
 ## <a name="release-date-08092020"></a>Datum vydání: 08/09/2020
 
@@ -304,7 +345,7 @@ Služba HDInsight identity broker (HIB) umožňuje uživatelům přihlásit se k
 
 #### <a name="kafka-rest-api-proxy-preview"></a>Proxy Kafka REST API (Preview)
 
-Kafka REST API poskytuje nasazení s vysokou dostupností služby REST proxy s clusterem Kafka prostřednictvím zabezpečeného ověřování AAD a protokolu OAuth jediným kliknutím. 
+Kafka REST API poskytuje nasazení s vysoce dostupnými servery REST proxy s Kafka pomocí zabezpečeného ověřování Azure AD a protokolu OAuth jedním kliknutím. 
 
 #### <a name="auto-scale"></a>Automatické škálování
 
@@ -1746,11 +1787,11 @@ Opravené problémy představují vybrané problémy, které byly dříve protok
 
 |**Součást Apache**|**Apache JIRA**|**Souhrn**|**Podrobnosti**|
 |--|--|--|--|
-|**Spark 2,3** |**NENÍ K DISPOZICI** |**Změny popsané v poznámkách k verzi Apache Spark** |– Existuje "zastaralý" dokument a příručka "Změna chování", https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />– Pro součást SQL existuje další Podrobná příručka migrace (od 2,2 do 2,3). https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2,3** |**Není k dispozici** |**Změny popsané v poznámkách k verzi Apache Spark** |– Existuje "zastaralý" dokument a příručka "Změna chování", https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />– Pro součást SQL existuje další Podrobná příručka migrace (od 2,2 do 2,3). https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**PODREGISTR-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Úloha Sparku se úspěšně dokončí, ale dojde k úplné chybě kvóty disku HDFS. |**Scénář:** Pokud je nastavena kvóta ve složce odpadkového uživatele, který spouští příkaz, je spuštění příkazu **Vložit přepsat** .<br /><br />**Předchozí chování:** Úloha se zdaří i v případě, že se nepodaří přesunout data do koše. Výsledek může obsahovat chybná data, která dříve existovala v tabulce.<br /><br />**Nové chování:** Když přesun do složky odpadků dojde k chybě, soubory se trvale odstraní.|
-|**Kafka 1,0**|**NENÍ K DISPOZICI**|**Změny popsané v poznámkách k verzi Apache Spark** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
+|**Kafka 1,0**|**Není k dispozici**|**Změny popsané v poznámkách k verzi Apache Spark** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Podregistr/Ranger** | |Další zásady podregistru Ranger vyžadované pro přepsání INSERT |**Scénář:** Další zásady podregistru Ranger vyžadované pro **přepsání INSERT**<br /><br />**Předchozí chování:** Do podregistru **vložte** dotazy, které jsou obvykle úspěšné.<br /><br />**Nové chování:** Po upgradu na HDP-2.6. x dojde k neočekávanému selhání **vložení** podregistru do registru s chybou:<br /><br />Chyba při kompilování příkazu: SELHALo: HiveAccessControlException oprávnění odepřeno: uživatel pnovak nemá oprávnění k zápisu na/TMP/ \* (State = 42000, Code = 40 000).<br /><br />Od HDP-2.6.0 vyžaduje zásada pro **vložení přepisu** Ranger zásadu, která povoluje operace zápisu, a to i v případě, že má uživatel oprávnění k zápisu udělené prostřednictvím zásad HDFS.<br /><br />**Alternativní řešení/Očekávaná akce zákazníka:**<br /><br />1. v úložišti podregistru vytvořte novou zásadu.<br />2. v rozevíracím seznamu, kde vidíte databázi, vyberte možnost URI.<br />3. Aktualizujte cestu (příklad:/tmp/*)<br />4. přidejte uživatele a skupinu a uložte je.<br />5. znovu spusťte dotaz pro vložení.|
-|**HDFS**|**NENÍ K DISPOZICI** |HDFS by měl podporovat více identifikátorů URI služby správy klíčů. |**Předchozí chování:** pro konfiguraci cesty poskytovatele služby správy klíčů se použila vlastnost DFS. Encryption. Key. Provider. URI.<br /><br />**Nové chování:** DFS. Encryption. Key. Provider. URI je teď zastaralé místo pro konfiguraci cesty poskytovatele služby správy klíčů (Hadoop. Security. Key. Provider. Path).|
+|**HDFS**|**Není k dispozici** |HDFS by měl podporovat více identifikátorů URI služby správy klíčů. |**Předchozí chování:** pro konfiguraci cesty poskytovatele služby správy klíčů se použila vlastnost DFS. Encryption. Key. Provider. URI.<br /><br />**Nové chování:** DFS. Encryption. Key. Provider. URI je teď zastaralé místo pro konfiguraci cesty poskytovatele služby správy klíčů (Hadoop. Security. Key. Provider. Path).|
 |**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Možnost zakázání plánovače |**Ovlivněná součást:** Zeppelin-Server<br /><br />**Předchozí chování:** V předchozích verzích Zeppelin existovala možnost pro zákaz plánovače.<br /><br />**Nové chování:** Ve výchozím nastavení se uživatelům nezobrazí Plánovač, protože je ve výchozím nastavení zakázaný.<br /><br />**Alternativní řešení/Očekávaná akce zákazníka:** Pokud chcete povolit Plánovač, budete muset přidat azeppelin. Poznámkový. cron. Enable s hodnotou true v části Custom Zeppelin web v nastavení Zeppelin z Ambari.|
 
 ### <a name="known-issues"></a>Známé problémy

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: c5be6ef39a3e980852aa3373dbc54da63aa3983e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1845a8371c3b64174b83ce640f91e4ce9221b8e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554511"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940782"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Kurz: Integrace jednotného přihlašování (SSO) Azure AD pomocí NetSuite
 
@@ -96,7 +96,7 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
     * V **<`Instance ID`>** části Konfigurace NetSuite se zobrazí hodnota, která je vysvětlena dále v kurzu v kroku 8 v části Konfigurace NetSuite. V tomto případě najdete konkrétní doménu (například system.na0.netsuite.com).
 
-        ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/domain-value.png)
+        ![Snímek obrazovky se zobrazí stránka nastavení SAML, kde můžete získat doménu.](./media/NetSuite-tutorial/domain-value.png)
 
         > [!NOTE]
         > Hodnoty v předchozích adresách URL nejsou reálné. Aktualizujte je skutečnou adresou URL odpovědi. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta NetSuite](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml). Můžete se také podívat na formáty zobrazené v části **základní konfigurace SAML** v Azure Portal.
@@ -164,31 +164,31 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
 2. V horním navigačním panelu vyberte možnost **Nastavení**a potom vyberte možnost **Company**  >  **Povolit funkce**společnosti.
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-setupsaml.png)
+    ![Snímek obrazovky ukazuje možnost povolit funkce vybrané od společnosti.](./media/NetSuite-tutorial/ns-setupsaml.png)
 
 3. Na panelu nástrojů uprostřed stránky vyberte možnost **SuiteCloud**.
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-suitecloud.png)
+    ![Snímek obrazovky zobrazuje SuiteCloud vybrané.](./media/NetSuite-tutorial/ns-suitecloud.png)
 
 4. V části **spravovat ověřování**zaškrtněte políčko **jednotné přihlašování SAML** , chcete-li povolit možnost jednotného přihlašování SAML v NetSuite.
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-ticksaml.png)
+    ![Snímek obrazovky ukazuje spravovat ověřování, kde můžete vybrat jednotné přihlašování SAML.](./media/NetSuite-tutorial/ns-ticksaml.png)
 
 5. V horním navigačním panelu vyberte možnost **Nastavení**.
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-setup.png)
+    ![Snímek obrazovky se zobrazí nastavení vybrané na navigačním panelu NETSUITE.](./media/NetSuite-tutorial/ns-setup.png)
 
 6. V seznamu **úlohy instalace** vyberte možnost **integrace**.
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-integration.png)
+    ![Snímek obrazovky ukazuje integraci vybranou z úloh nastavení.](./media/NetSuite-tutorial/ns-integration.png)
 
 7. V části **spravovat ověřování**vyberte **jednotné přihlašování SAML**.
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-saml.png)
+    ![Snímek obrazovky: zobrazení jednotného přihlašování SAML vybrané z položky integrace v ÚLOHách nastavení.](./media/NetSuite-tutorial/ns-saml.png)
 
 8. V podokně **Nastavení SAML** v části **Konfigurace NetSuite**postupujte takto:
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-saml-setup.png)
+    ![Snímek obrazovky ukazuje nastavení SAML, kde můžete zadat hodnoty, které jsou popsány.](./media/NetSuite-tutorial/ns-saml-setup.png)
   
     a. Zaškrtněte políčko **primární metoda ověřování** .
 
@@ -198,9 +198,9 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
 9. V horním navigačním panelu NetSuite vyberte **Nastavení**a pak vyberte **Company**  >  **informace o**společnosti společnosti.
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-com.png)
+    ![Snímek obrazovky zobrazuje informace o společnosti vybrané ze společnosti.](./media/NetSuite-tutorial/ns-com.png)
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-account-id.png)
+    ![Snímek obrazovky se zobrazí v podokně, kde můžete zadat hodnoty, které jsou popsány.](./media/NetSuite-tutorial/ns-account-id.png)
 
     b. V podokně **informace o společnosti** v pravém sloupci ZKOPÍRUJTE hodnotu **ID účtu** .
 
@@ -210,23 +210,23 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
     a. V horním navigačním panelu vyberte možnost **Nastavení**.
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-setup.png)
+    ![Snímek obrazovky se zobrazí nastavení vybrané na navigačním panelu NETSUITE.](./media/NetSuite-tutorial/ns-setup.png)
 
     b. V levém podokně vyberte **Uživatelé/role**a pak vyberte **Spravovat role**.
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-manage-roles.png)
+    ![Snímek obrazovky se zobrazí v podokně Spravovat role, kde můžete vybrat možnost Nová role.](./media/NetSuite-tutorial/ns-manage-roles.png)
 
     c. Vyberte **Nová role**.
 
     d. Zadejte **název** nové role.
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-new-role.png)
+    ![Snímek obrazovky se zobrazí Správce instalace, kde můžete zadat název role.](./media/NetSuite-tutorial/ns-new-role.png)
 
     e. Vyberte **Uložit**.
 
     f. V horním navigačním panelu vyberte **oprávnění**. Pak vyberte **Nastavení**.
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-sso.png)
+    ![Snímek obrazovky se zobrazí karta nastavení, kde můžete zadat hodnoty, které jsou popsány.](./media/NetSuite-tutorial/ns-sso.png)
 
     například Vyberte **jednotné přihlašování SAML**a pak vyberte **Přidat**.
 
@@ -234,19 +234,19 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
     i. V horním navigačním panelu vyberte **Nastavení**a pak vyberte **Správce instalace**.
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-setup.png)
+    ![Snímek obrazovky se zobrazí nastavení vybrané na navigačním panelu NETSUITE.](./media/NetSuite-tutorial/ns-setup.png)
 
     j. V levém podokně vyberte **Uživatelé/role**a pak vyberte **Spravovat uživatele**.
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-manage-users.png)
+    ![Snímek obrazovky se zobrazí v podokně spravovat uživatele, kde můžete vybrat možnost ukázkový tým sady.](./media/NetSuite-tutorial/ns-manage-users.png)
 
     k. Vyberte testovacího uživatele, vyberte **Upravit**a pak vyberte kartu **přístup** .
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-edit-user.png)
+    ![Snímek obrazovky se zobrazí v podokně spravovat uživatele, kde můžete vybrat upravit.](./media/NetSuite-tutorial/ns-edit-user.png)
 
     l. V podokně **role** přiřaďte příslušnou roli, kterou jste vytvořili.
 
-    ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/ns-add-role.png)
+    ![Snímek obrazovky se zobrazí správce vybraného od zaměstnance.](./media/NetSuite-tutorial/ns-add-role.png)
 
     m. Vyberte **Uložit**.
 

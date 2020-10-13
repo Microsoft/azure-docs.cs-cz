@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
 ms.openlocfilehash: 1c0247c5adfe60dc2436c832cf3d561882ae3a5d
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760157"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Auditovat dotazy v protokolech Azure Monitor (Preview)
@@ -37,7 +37,7 @@ Můžete získat příklad Správce prostředků šablonu z [nastavení diagnost
 ## <a name="audit-data"></a>Data auditu
 Záznam auditu se vytvoří pokaždé, když se spustí dotaz. Pokud data odešlete do pracovního prostoru Log Analytics, uloží se do tabulky s názvem *LAQueryLogs*. Následující tabulka popisuje vlastnosti v jednotlivých záznamech dat auditu.
 
-| Pole | Popis |
+| Pole | Description |
 |:---|:---|
 | TimeGenerated         | Čas UTC při odeslání dotazu. |
 | CorrelationId         | Jedinečné ID pro identifikaci dotazu. Dá se použít při řešení potíží při kontaktování Microsoftu o pomoc. |
@@ -62,7 +62,7 @@ Záznam auditu se vytvoří pokaždé, když se spustí dotaz. Pokud data odešl
 | StatsWorkspaceCount | Počet pracovních prostorů, ke kterým dotaz přistupoval. Vyplní se jenom v případě, že dotaz vrátí stavový kód 200. |
 | StatsRegionCount | Počet oblastí, ke kterým dotaz přistupoval. Vyplní se jenom v případě, že dotaz vrátí stavový kód 200. |
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 - Dotazy jsou protokolovány pouze při spuštění v kontextu uživatele. V rámci Azure nebude zaznamenána žádná služba pro službu. Dvě primární sady dotazů, které toto vyloučení zahrnuje, jsou výpočty fakturace a automatizované provádění výstrah. V případě výstrah se neprotokoluje pouze plánovaný dotaz výstrahy. počáteční spuštění výstrahy na obrazovce pro vytvoření výstrahy se provádí v uživatelském kontextu a bude k dispozici pro účely auditu. 
 - Statistiky výkonu nejsou k dispozici pro dotazy přicházející z proxy serveru Azure Průzkumník dat. Všechna ostatní data pro tyto dotazy budou i nadále naplněna.

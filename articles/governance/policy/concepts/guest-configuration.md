@@ -3,12 +3,12 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá agenta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d396403f23df1e0c48ea66e0c2a23866f790d3c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88756686"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974715"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -62,12 +62,12 @@ Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí 
 Zásady konfigurace hosta jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici v Azure Marketplace, jsou vyloučené, pokud není agent konfigurace hosta kompatibilní.
 Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
 
-|Publisher|Name|Verze|
+|Publisher|Název|Verze|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 a novější|
 |Credativ|Debian|8 a novější|
 |Partnerský vztah Microsoftu|Windows Server|2012 a novější|
-|Partnerský vztah Microsoftu|Klient Windows|Windows 10|
+|Partnerský vztah Microsoftu|Klient Windows|Windows 10|
 |OpenLogic|CentOS|7,3 a novější|
 |Red Hat|Red Hat Enterprise Linux|7,4 – 7,8|
 |SUSE|SLES|12. SP3 – SP5|
@@ -116,9 +116,7 @@ Zásady konfigurace hostů používají **AuditIfNotExists** efekt. Po přiřaze
 Zásady **AuditIfNotExists** nevrátí výsledky dodržování předpisů, dokud nebudou všechny požadavky splněny v počítači. Službu jsou popsané v části [požadavky na nasazení pro virtuální počítače Azure](#deploy-requirements-for-azure-virtual-machines)
 
 > [!IMPORTANT]
-> V předchozí verzi konfigurace hosta se vyžadovala iniciativa ke kombinování definicí **DeployIfNoteExists** a **AuditIfNotExists** . Definice **DeployIfNotExists** se už nevyžadují. Definice a intiaitives jsou označeny, `[Deprecated]` ale existující přiřazení budou fungovat i nadále.
->
-> Je vyžadován ruční krok. Pokud jste dříve přiřadili iniciativy zásad v kategorii `Guest Configuration` , odstraňte přiřazení zásady a přiřaďte novou definici. Zásady konfigurace hosta mají následující vzor názvů: `Audit <Windows/Linux> machines that <non-compliant condition>`
+> V předchozí verzi konfigurace hosta se vyžadovala iniciativa ke kombinování definicí **DeployIfNoteExists** a **AuditIfNotExists** . Definice **DeployIfNotExists** se už nevyžadují. Definice a intiaitives jsou označeny, `[Deprecated]` ale existující přiřazení budou fungovat i nadále. Informace najdete v blogovém příspěvku: [důležitá změna vydaná pro zásady auditu konfigurace hostů](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316) .
 
 Azure Policy používá vlastnost **complianceStatus** zprostředkovatele prostředků konfigurace hosta k hlášení dodržování předpisů v uzlu **dodržování předpisů** . Další informace najdete v tématu [získání dat o dodržování předpisů](../how-to/get-compliance-data.md).
 

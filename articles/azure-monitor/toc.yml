@@ -658,6 +658,8 @@
                       href: app/javascript-react-plugin.md
                     - name: Modul plug-in React Native
                       href: app/javascript-react-native-plugin.md
+                    - name: Modul plug-in Angular
+                      href: app/javascript-angular-plugin.md
                 - name: Řešení potíží
                   items:
                     - name: Selhání načtení sad SDK

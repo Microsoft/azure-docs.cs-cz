@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
 ms.openlocfilehash: 59bbca9461ff174ebe2451a6c01d84dee404cf56
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91398302"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Řešení potíží s připojením k síti virtuálních počítačů z Azure do Azure
@@ -74,13 +74,11 @@ Tento příklad ukazuje, jak nakonfigurovat NSG pravidla pro replikaci virtuáln
 
 1. Vytvořte odchozí pravidlo zabezpečení HTTPS pro NSG, jak je znázorněno na následujícím snímku obrazovky. Tento příklad používá **cílovou značku služby**: _Storage. EastUS_ a **rozsahy cílových portů**: _443_.
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="Snímek obrazovky se zobrazí podokno přidat odchozí pravidlo zabezpečení pro pravidlo zabezpečení pro úložiště s tečkou na východě U S.":::
+     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="com – chyba":::
 
 1. Vytvořte odchozí pravidlo zabezpečení HTTPS pro NSG, jak je znázorněno na následujícím snímku obrazovky. V tomto příkladu se používá **označení cílové služby**: rozsahy _azureactivedirectory selhala_ a **cílové porty**: _443_.
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="Snímek obrazovky se zobrazí podokno přidat odchozí pravidlo zabezpečení pro pravidlo zabezpečení pro Azure Active Directory.":::
-
-1. Podobně jako u výše uvedených pravidel zabezpečení vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "EventHub. CentralUS" na NSG, které odpovídá cílovému umístění. To umožňuje přístup k Site Recovery monitorování.
+     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="com – chyba" na NSG, které odpovídá cílovému umístění. To umožňuje přístup k Site Recovery monitorování.
 1. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro AzureSiteRecovery na NSG. To umožňuje přístup ke službě Site Recovery v libovolné oblasti.
 
 #### <a name="nsg-rules---central-us"></a>Pravidla NSG – Střed USA
@@ -108,7 +106,7 @@ Nepovedlo se navázat připojení k Azure Site Recovery koncovým bodům služby
 
 #### <a name="resolution"></a>Řešení
 
-Pokud k řízení odchozího připojení k síti na počítači používáte pravidlo skupiny zabezpečení sítě Azure (NSG) nebo proxy serveru brány firewall, je potřeba, abyste mohli povolit několik značek služby. [Přečtěte si další informace](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags).
+Pokud k řízení odchozího připojení k síti na počítači používáte pravidlo skupiny zabezpečení sítě Azure (NSG) nebo proxy serveru brány firewall, je potřeba, abyste mohli povolit několik značek služby. [Další informace](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags).
 
 ### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>Problém 4: replikace z Azure do Azure se nezdařila, když síťový provoz projde místními proxy server (151072)
 

@@ -9,10 +9,10 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 5fea0cb8c6ac3f706cfef5e4a153fbbf4ff465b8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91451580"
 ---
 *Zahřívání mezipaměti*  
@@ -62,24 +62,24 @@ Provedením následujících kroků zahříváte mezipaměť.
 
 1. Vytvořte dvě specifikace přístupu s hodnotami uvedenými níže,
 
-   | Název | Velikost požadavku | Vybraných | Oprávnění |
+   | Name | Velikost požadavku | Vybraných | Oprávnění |
    | --- | --- | --- | --- |
    | RandomWrites \_ 1 MB |1 MB |100 |0 |
    | RandomReads \_ 1 MB |1 MB |100 |100 |
 1. Spusťte test IOMeter pro inicializaci disku mezipaměti s následujícími parametry. Pro cílový svazek použijte tři pracovní vlákna a hloubku fronty 128. Nastavte hodnotu doba běhu testu na 2 hodiny na kartě nastavení testu.
 
-   | Scénář | Cílový svazek | Název | Doba trvání |
+   | Scénář | Cílový svazek | Name | Doba trvání |
    | --- | --- | --- | --- |
    | Inicializovat disk mezipaměti |CacheReads |RandomWrites \_ 1 MB |2 hodiny |
 1. Spusťte test IOMeter pro vyhřívání disku mezipaměti s následujícími parametry. Pro cílový svazek použijte tři pracovní vlákna a hloubku fronty 128. Nastavte hodnotu doba běhu testu na 2 hodiny na kartě nastavení testu.
 
-   | Scénář | Cílový svazek | Název | Doba trvání |
+   | Scénář | Cílový svazek | Name | Doba trvání |
    | --- | --- | --- | --- |
    | Zahřívání disku mezipaměti |CacheReads |RandomReads \_ 1 MB |2 hodiny |
 
 Po zahřívání disku mezipaměti pokračujte podle níže uvedených scénářů testování. Chcete-li spustit test IOMeter, použijte pro **každý** cílový svazek alespoň tři pracovní vlákna. Pro každé pracovní vlákno vyberte cílový svazek, nastavte hloubku fronty a vyberte jednu z uložených specifikací testu, jak je znázorněno v následující tabulce, aby se mohl spustit odpovídající testovací scénář. Tabulka také ukazuje očekávané výsledky pro IOPS a propustnost při spuštění těchto testů. Pro všechny scénáře se používá malá vstupně-výstupní operace o velikosti 8 KB a vysoká hloubka fronty 128.
 
-| Scénář testu | Cílový svazek | Název | Výsledek |
+| Scénář testu | Cílový svazek | Name | Výsledek |
 | --- | --- | --- | --- |
 | Max. Čtení IOPS |CacheReads |RandomWrites \_ 8K |50 000 IOPS |
 | Max. Zápis IOPS |NoCacheWrites |RandomReads \_ 8K |64 000 IOPS |

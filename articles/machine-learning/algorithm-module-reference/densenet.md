@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 2351012738f4cf5697fb29891c9459e4cc86cd3a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91536626"
 ---
 # <a name="densenet"></a>DenseNet
@@ -54,7 +54,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="module-parameters"></a>Parametry modulu  
 
-| Název             | Rozsah | Typ    | Výchozí     | Popis                              |
+| Name             | Rozsah | Typ    | Výchozí     | Description                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
 | Název modelu       | Všechny   | Mode    | densenet201 | Název určité struktury DenseNet     |
 | Předvlakované       | Všechny   | Logická hodnota | Ano        | Jestli se má používat model předučený na ImageNet |
@@ -62,7 +62,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="output"></a>Výstup  
 
-| Název            | Typ                    | Popis                              |
+| Název            | Typ                    | Description                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Nevlakový model | UntrainedModelDirectory | Nevlakový model DenseNet, který se dá připojit ke Pytorch modelu výuky. |
 

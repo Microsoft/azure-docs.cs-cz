@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
 ms.openlocfilehash: 4ec999cc35e7d18287679c74c6d45a5aa2ecb9e7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995555"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Ruší se operace správy spravované instance Azure SQL.
@@ -61,7 +61,7 @@ Chcete-li zrušit operace správy pomocí Azure Portal, postupujte podle násled
 
 1. Vyberte **zrušit operaci** v dolní části stránky. 
 
-   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="Vyberte zrušit a operaci se zruší.":::
+   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="Zaškrtnutím políčka nepřetržitá operace otevřete stránku probíhající operace.":::
 
 1. Potvrďte, že chcete operaci zrušit. 
 
