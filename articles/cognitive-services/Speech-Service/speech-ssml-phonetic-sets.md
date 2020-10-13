@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: jiajzhan
 ms.openlocfilehash: 770e97ad126f66efb43bf8cf7eb12f7510858192
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78675331"
 ---
 # <a name="speech-service-phonetic-sets"></a>Fonetické sady pro hlasové služby
 
-Služba Speech definuje fonetické abecedy ("telefonní sady" pro krátké), které se skládají z sedmi jazyků; `en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`a `zh-TW`. Telefonní sady pro hlasové služby se obvykle mapují na <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">mezinárodní foneticky abecedy ( <span class="docon docon-navigate-external x-hidden-focus"> </span>IPA) </a>. Telefonní sady pro hlasové služby se používají ve spojení s [jazykem SSML (Speech syntézy)](speech-synthesis-markup.md)jako součást nabídky služeb převodu textu na řeč. V tomto článku se dozvíte, jak jsou tyto telefonní sady namapované a kdy použít telefonní sadu.
+Služba Speech definuje fonetické abecedy ("telefonní sady" pro krátké), které se skládají z sedmi jazyků; `en-US`, `fr-FR` , `de-DE` , `es-ES` , `ja-JP` , a `zh-CN` `zh-TW` . Telefonní sady pro hlasové služby se obvykle mapují na <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">mezinárodní foneticky abecedy ( <span class="docon docon-navigate-external x-hidden-focus"></span> IPA) </a>. Telefonní sady pro hlasové služby se používají ve spojení s [jazykem SSML (Speech syntézy)](speech-synthesis-markup.md)jako součást nabídky služeb převodu textu na řeč. V tomto článku se dozvíte, jak jsou tyto telefonní sady namapované a kdy použít telefonní sadu.
 
 # <a name="en-us"></a>[EN-US](#tab/en-US)
 
@@ -123,13 +123,13 @@ Služba Speech definuje fonetické abecedy ("telefonní sady" pro krátké), kte
 
 ### <a name="french-suprasegmentals"></a>Francouzština suprasegmentals
 
-Telefonická sada pro hlasové služby přináší zátěž po samohláskě zatížené slabiky, ale telefonní `fr-FR` sada hlasové služby nepodporuje IPA ˌ. Pokud je požadováno IPA, měli byste použít IPA přímo.
+Telefonická sada pro hlasové služby přináší zátěž po samohláskě zatížené slabiky, ale `fr-FR` telefonní sada hlasové služby nepodporuje IPA ˌ. Pokud je požadováno IPA, měli byste použít IPA přímo.
 
 ### <a name="french-vowels"></a>Francouzské samohlásky
 
 | `sapi` | `ipa` | Příklad 1     | Příklad 2       | Příklad 3 |
 |--------|-------|---------------|-----------------|-----------|
-| a      | `a`   | **rbre**     | p**a**TTE       | IR**a**   |
+| pro      | `a`   | **rbre**     | p**a**TTE       | IR**a**   |
 | aa     | `ɑ`   |               | p **–**– te        | p**a**s   |
 | AA ~   | `ɑ̃`  | **EN**fant    | ENF**EN**t      | t**em**PS |
 | AX     | `ə`   |               | p**e**Tite      | l**e**    |
@@ -179,7 +179,7 @@ Telefonická sada pro hlasové služby přináší zátěž po samohláskě zat�
 **1** *pouze pro některá cizí slova.*
 
 > [!TIP]
-> Telefonní `fr-FR` sada hlasové služby nepodporuje následující francouzské liasions, `n‿`, `t‿`a. `z‿` Pokud jsou potřeba, měli byste zvážit přímé použití IPA.
+> `fr-FR`Telefonní sada hlasové služby nepodporuje následující francouzské liasions, `n‿` , `t‿` a `z‿` . Pokud jsou potřeba, měli byste zvážit přímé použití IPA.
 
 # <a name="de-de"></a>[de-DE](#tab/de-DE)
 
@@ -195,7 +195,7 @@ Telefonická sada pro hlasové služby přináší zátěž po samohláskě zat�
 | `sapi` | `ipa`     | Příklad 1                             | Příklad 2     | Příklad 3                          |
 |--------|-----------|---------------------------------------|---------------|------------------------------------|
 | určitého     | `aː`      | **Ber**                              | Maßst**a**b   | Schem**a**                         |
-| a      | `a`       | **Bfall**                            | B**a**ch      | Agath**a**                         |
+| pro      | `a`       | **Bfall**                            | B**a**ch      | Agath**a**                         |
 | Oh     | `ɔ`       | **O**sten                             | PF**o**sten   |                                    |
 | Uh    | `ɛː`      | **Ä**hnlichkeit                       | B**ä**r       | [<sup>1</sup>](#de-v-1) Fasci**AE** |
 | Uh     | `ɛ`       | **ä**ndern                            | ProZ**e**NT   | Amygdal**AE**                      |
@@ -256,7 +256,7 @@ Telefonická sada pro hlasové služby přináší zátěž po samohláskě zat�
 | licence | `ts` | **Z**g | Ar**z**t | WIT**z** |  |
 | ch | `tʃ` | **Tsch**echien | aufgepu**tsch**t | bundesdeu**tsch** |  |
 | v | `v` | **w**inken | Q**u**Alle | [<sup>9</sup>](#de-c-9) GR**ó**ve |  |
-| x | [<sup>10</sup>](#de-c-10)`x`,[<sup>11</sup>](#de-c-11)`ç` | [<sup>12</sup>](#de-c-12) . Ba**ch**erach | Ma**ch**t mögli**ch**St | Schma**ch** ' i**ch** ' |
+| x | [<sup>10</sup>](#de-c-10) `x` ,[<sup>11</sup>](#de-c-11)`ç` | [<sup>12</sup>](#de-c-12) . Ba**ch**erach | Ma**ch**t mögli**ch**St | Schma**ch** ' i**ch** ' |
 | z | `z` | **s**uper |  |  |  |
 | ZH | `ʒ` | Enre **G** | B**znovu**ezinski | EDVI**g**e |
 
@@ -292,15 +292,15 @@ Telefonická sada pro hlasové služby přináší zátěž po samohláskě zat�
 | ^      | `ʔ`   | beachtlich/b AX – ^ a 1 x t-l IH c/ |
 
 > [!NOTE]
-> Musíme přidat [GS\] telefon mezi dvě odlišná samohlásky, s výjimkou těchto dvou samohlásek je pravý diphthong. <a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank">Tato orální souhláska je ráz, další informace najdete v části ráz a stop <span class="docon docon-navigate-external x-hidden-focus"> </a> </a>.
+> Musíme přidat [GS \] telefon mezi dvě odlišná samohlásky, s výjimkou těchto dvou samohlásek je pravý diphthong. Tato orální souhláska je ráz, další informace najdete v části <a href="http://en.wikipedia.org/wiki/Glottal_stop" target="_blank"> ráz a stop <span class="docon docon-navigate-external x-hidden-focus"> </a> </a> .
 
-# <a name="es-es"></a>[es-ES](#tab/es-ES)
+# <a name="es-es"></a>[ES-ES](#tab/es-ES)
 
 ### <a name="spanish-vowels"></a>Španělština – samohlásky
 
 | `sapi` | `ipa` | Příklad 1    | Příklad 2     | Příklad 3    |
 |--------|-------|--------------|---------------|--------------|
-| a      | `a`   | **LTO**     | c**a**ntar    | CAS**a**     |
+| pro      | `a`   | **LTO**     | c**a**ntar    | CAS**a**     |
 | Mohu      | `i`   | **bérica**  | AV**i**Spa    | daň**i**     |
 | e      | `e`   | **e**LeFante | v**e**nChcete-li    | Elefant**e** |
 | o      | `o`   | **o**caso    | enc**o**ntrar | ocasenc**o** |
@@ -336,7 +336,7 @@ Telefonická sada pro hlasové služby přináší zátěž po samohláskě zat�
 | x      | `x`        | **j**OTA   | a**j**o        | relo**j**      |
 
 > [!TIP]
-> Telefonní `es-ES` sada hlasové služby nepodporuje následující španělský IPA, `β`, `ð`a. `ɣ` Pokud jsou potřeba, měli byste zvážit přímé použití IPA.
+> `es-ES`Telefonní sada hlasové služby nepodporuje následující španělský IPA, `β` , a `ð` `ɣ` . Pokud jsou potřeba, měli byste zvážit přímé použití IPA.
 
 # <a name="zh-cn"></a>[zh-CN](#tab/zh-CN)
 
@@ -360,9 +360,9 @@ Telefonická sada pro hlasové služby `zh-CN` je založena na nativní sadě <a
 | 累进        | Lei 3 – Jin 4                 |
 | 西宅巷       | XI 1 – Zhai 2 – Xiang 4      |
 
-# <a name="zh-tw"></a>[zh-TW](#tab/zh-TW)
+# <a name="zh-tw"></a>[zh – TW](#tab/zh-TW)
 
-Telefonická sada pro `zh-TW` hlasové služby je založená na nativním <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">začu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> s telefonní sadou.
+Telefonická sada pro hlasové služby `zh-TW` je založená na nativním <a href="https://en.wikipedia.org/wiki/Bopomofo" target="_blank">začu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> s telefonní sadou.
 
 ### <a name="tone"></a>Styl podání
 
@@ -384,14 +384,14 @@ Telefonická sada pro `zh-TW` hlasové služby je založená na nativním <a hre
 
 # <a name="ja-jp"></a>[ja-JP](#tab/ja-JP)
 
-Telefonická sada pro `ja-JP` hlasové služby je založená na nativním nastavení telefonu <a href="https://en.wikipedia.org/wiki/Kana" target="_blank">Kana <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
+Telefonická sada pro hlasové služby `ja-JP` je založená na nativním nastavení <a href="https://en.wikipedia.org/wiki/Kana" target="_blank">telefonu <span class="docon docon-navigate-external x-hidden-focus"></span> Kana</a> .
 
 ### <a name="stress"></a>Zdůrazňuje
 
 | `sapi` | `ipa`          |
 |--------|----------------|
-| `ˈ`    | `ˈ`mainstress |
-| `+`    | `ˌ`zátěžový  |
+| `ˈ`    | `ˈ` mainstress |
+| `+`    | `ˌ` zátěžový  |
 
 #### <a name="example"></a>Příklad
 

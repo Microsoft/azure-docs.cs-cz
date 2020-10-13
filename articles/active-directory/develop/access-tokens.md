@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
 ms.openlocfilehash: c59dbe9464e70c1a071b64fabf91ce56f409d8d7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258517"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Tokeny přístupu Microsoft Identity Platform
@@ -71,7 +71,7 @@ Deklarace identity jsou přítomny pouze v případě, že existuje hodnota pro 
 
 ### <a name="header-claims"></a>Deklarace hlaviček
 
-|Deklarovat | Formát | Popis |
+|Deklarovat | Formát | Description |
 |--------|--------|-------------|
 | `typ` | Řetězec – vždycky "JWT" | Označuje, že token je JWT.|
 | `nonce` | Řetězec | Jedinečný identifikátor, který slouží k ochraně před útoky na opakované přehrání tokenu. Prostředek může tuto hodnotu zaznamenat k ochraně před přehráním. |
@@ -81,7 +81,7 @@ Deklarace identity jsou přítomny pouze v případě, že existuje hodnota pro 
 
 ### <a name="payload-claims"></a>Deklarace datové části
 
-| Deklarovat | Formát | Popis |
+| Deklarovat | Formát | Description |
 |-----|--------|-------------|
 | `aud` | Řetězec – identifikátor URI ID aplikace | Identifikuje zamýšleného příjemce tokenu. V tokenech ID jsou cílovou skupinou ID aplikace vaší aplikace, které je přiřazeno vaší aplikaci v Azure Portal. Vaše aplikace by měla tuto hodnotu ověřit a zamítnout token, pokud se hodnota neshoduje. |
 | `iss` | Řetězec, identifikátor URI služby STS | Identifikuje službu tokenů zabezpečení (STS), která vytvoří a vrátí token, a tenanta Azure AD, ve kterém byl uživatel ověřený. Pokud je vydaný token tokenem v 2.0 (viz `ver` deklaraci identity), identifikátor URI skončí `/v2.0` . Identifikátor GUID, který označuje, že uživatel je uživatelem uživatele z účet Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad` . Vaše aplikace by měla použít část s identifikátorem GUID k omezení sady klientů, kteří se mohou k aplikaci přihlásit, pokud jsou k dispozici. |
@@ -139,7 +139,7 @@ Můžete použít `BulkCreateGroups.ps1` ve složce [Scripts pro vytváření ap
 
 Pokud je to možné, budou v tokenech v 1.0 zahrnuté tyto deklarace, ale ve výchozím nastavení nejsou zahrnuté v tokenech verze 2.0. Pokud používáte v 2.0 a potřebujete jednu z těchto deklarací, požádejte o ně použití [volitelných deklarací identity](active-directory-optional-claims.md).
 
-| Deklarovat | Formát | Popis |
+| Deklarovat | Formát | Description |
 |-----|--------|-------------|
 | `ipaddr`| Řetězec | IP adresa, ze které uživatel ověřil. |
 | `onprem_sid`| Řetězec ve [formátu SID](/windows/desktop/SecAuthZ/sid-components) | V případech, kdy má uživatel místní ověřování, tato deklarace identity poskytuje identifikátor SID. Můžete použít `onprem_sid` pro autorizaci ve starších verzích aplikací.|

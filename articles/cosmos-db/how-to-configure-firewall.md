@@ -8,10 +8,10 @@ ms.date: 08/24/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 69c39d2478ed7d488c1209c2c7e16c241c59bcef
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88814174"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurace brány firewall protokolu IP v Azure Cosmos DB
@@ -37,7 +37,7 @@ Když je řízení přístupu IP zapnuté, Azure Portal poskytuje možnost zadat
 
 Pokud zásadu řízení přístupu k IP adrese povolíte programově, je nutné přidat IP adresu pro Azure Portal do vlastnosti **ipRangeFilter** pro zachování přístupu. IP adresy portálu:
 
-|Region|IP adresa|
+|Oblast|IP adresa|
 |------|----------|
 |Německo|51.4.229.218|
 |Čína|139.217.8.252|
@@ -46,13 +46,13 @@ Pokud zásadu řízení přístupu k IP adrese povolíte programově, je nutné 
 
 Žádosti o přístup k Azure Portal můžete povolit tak, že vyberete možnost **Povolit přístup z Azure Portal** , jak je znázorněno na následujícím snímku obrazovky:
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="Snímek obrazovky ukazující, jak povolit přístup k Azure Portal":::
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="Snímek obrazovky ukazující, jak otevřít stránku brány firewall v Azure Portal":::
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>Povolení požadavků z globálních datacenter Azure nebo jiných zdrojů v rámci Azure
 
 Pokud k účtu Azure Cosmos DB přistupujete ze služeb, které neposkytují statickou IP adresu (například Azure Stream Analytics a Azure Functions), můžete k omezení přístupu používat i bránu firewall protokolu IP. Přístup z jiných zdrojů v rámci Azure můžete povolit tak, že v **datacentrech Azure vyberete možnost přijmout připojení** , jak je znázorněno na následujícím snímku obrazovky:
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Snímek obrazovky ukazující, jak přijímat připojení z datových center Azure":::
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Snímek obrazovky ukazující, jak otevřít stránku brány firewall v Azure Portal":::
 
 Pokud povolíte tuto možnost, IP adresa `0.0.0.0` se přidá do seznamu povolených IP adres. `0.0.0.0`IP adresa omezuje požadavky na účet Azure Cosmos DB z rozsahu IP adres datacentra Azure. Toto nastavení neumožňuje přístup k účtu služby Azure Cosmos DB z žádného jiného rozsahu IP adres.
 
@@ -67,7 +67,7 @@ Portál automaticky rozpozná IP adresu klienta. Může to být IP adresa klient
 
 Pokud chcete do seznamu IP adres přidat aktuální IP adresu, vyberte **Přidat moji aktuální IP adresu**. Pak vyberte **Uložit**.
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="Snímek obrazovky, který ukazuje, jak nakonfigurovat nastavení brány firewall pro aktuální IP adresu":::
+:::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="Snímek obrazovky ukazující, jak otevřít stránku brány firewall v Azure Portal":::
 
 ### <a name="requests-from-cloud-services"></a>Žádosti z cloudových služeb
 
@@ -75,7 +75,7 @@ V Azure jsou Cloud Services běžným způsobem hostování logiky služby stře
 
 IP adresy pro cloudové služby můžete načíst v Azure Portal, jak je znázorněno na následujícím snímku obrazovky:
 
-:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses.png" alt-text="Snímek obrazovky s veřejnou IP adresou pro cloudovou službu zobrazenou v Azure Portal":::
+:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses.png" alt-text="Snímek obrazovky ukazující, jak otevřít stránku brány firewall v Azure Portal":::
 
 Při horizontálním navýšení kapacity cloudové služby přidáním instancí rolí budou mít tyto nové instance automaticky přístup k Azure Cosmos DBmu účtu, protože jsou součástí stejné cloudové služby.
 
@@ -85,7 +85,7 @@ Můžete také použít [virtuální počítače](https://azure.microsoft.com/se
 
 Můžete načíst IP adresy pro virtuální počítače v Azure Portal, jak je znázorněno na následujícím snímku obrazovky:
 
-:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses-dns.png" alt-text="Snímek obrazovky s veřejnou IP adresou pro virtuální počítač zobrazený v Azure Portal":::
+:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses-dns.png" alt-text="Snímek obrazovky ukazující, jak otevřít stránku brány firewall v Azure Portal":::
 
 Když do skupiny přidáte instance virtuálních počítačů, automaticky získají přístup k vašemu Azure Cosmos DB účtu.
 

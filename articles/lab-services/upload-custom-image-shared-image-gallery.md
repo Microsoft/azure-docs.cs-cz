@@ -4,13 +4,13 @@ description: Popisuje, jak nahrát vlastní image do galerie sdílených imagí.
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.openlocfilehash: cd701215eb375b7f9b867ba05082afc7ed348ff7
-ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91712390"
 ---
-# <a name="upload-a-custom-image-to-shared-image-gallery"></a>Nahrání vlastní image do galerie sdílených imagí
+# <a name="upload-a-custom-image-to-shared-image-gallery"></a>Nahrání vlastní image do Shared Image Gallery
 
 Galerie sdílených imagí je dostupná pro import vlastních imagí pro vytváření cvičení v Azure Lab Services. IT oddělení v oblasti IT uvidí import imagí obzvláště užitečné z následujících důvodů: 
 

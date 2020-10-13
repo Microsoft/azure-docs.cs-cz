@@ -1,5 +1,5 @@
 ---
-title: Tipy ke zvýšení výkonu pro Azure Cosmos DB Java SDK v4
+title: Tipy pro zvýšení výkonu pro sadu Java SDK v4 služby Azure Cosmos DB
 description: Seznamte se s možnostmi konfigurace klientů pro zlepšení výkonu Azure Cosmos Database pro Java SDK v4
 author: anfeldma-ms
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.date: 07/08/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: a014038996ae2846d059551b565feedd8de560a0
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88258315"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB Java SDK v4
+# <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tipy pro zvýšení výkonu pro sadu Java SDK v4 služby Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [Sada Java SDK v4](performance-tips-java-sdk-v4-sql.md)
@@ -157,7 +157,7 @@ Další podrobnosti najdete v pokynech pro [Windows](https://docs.microsoft.com/
 
     * ***Přehled přímého režimu***
 
-        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Ilustrace architektury přímého režimu" border="false":::
+        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Obrázek zásad Azure Cosmos DBho připojení" border="false":::
 
         Architektura na straně klienta pracující v přímém režimu umožňuje předvídatelné využití sítě a multiplexější přístup k replikám Azure Cosmos DB. Výše uvedený diagram ukazuje, jak přímý režim směruje požadavky klienta na repliky v Cosmos DB back-endu. Architektura přímého režimu přiděluje až 10 **kanálů** na straně klienta pro repliku databáze. Kanál je připojení TCP předchází vyrovnávací paměť požadavků, což je 30 požadavků hluboko. Kanály patřící do repliky se dynamicky přiřazují podle potřeby **koncového bodu služby**repliky. Když uživatel vydá požadavek v přímém režimu, **TransportClient** směruje požadavek do správného koncového bodu služby na základě klíče oddílu. Vyrovnávací paměti front požadavků se **vyžadují** před koncovým bodem služby.
 

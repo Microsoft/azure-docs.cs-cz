@@ -15,15 +15,15 @@ ms.topic: how-to
 ms.date: 06/11/2018
 ms.author: allensu
 ms.openlocfilehash: a799309b6e5d00db3b6c206187eec7097c9dc11a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887259"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Řízení chování při ukládání Azure CDN do mezipaměti pomocí řetězců dotazů – úroveň Premium
 > [!div class="op_single_selector"]
-> * [Úroveň Standard](cdn-query-string.md)
+> * [Standardní úroveň](cdn-query-string.md)
 > * [Úroveň Premium](cdn-query-string-premium.md)
 > 
 

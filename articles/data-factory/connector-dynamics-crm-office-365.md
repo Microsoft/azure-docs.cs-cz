@@ -13,10 +13,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 09/23/2020
 ms.openlocfilehash: 942cbda3652692acc8eedf2ec9508bb501a60547
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332096"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service) nebo Dynamics CRM pomocí Azure Data Factory
@@ -179,7 +179,7 @@ Další vlastnosti, které se porovnávají s Dynamics Online, jsou **název hos
 | typ | Vlastnost Type musí být nastavená na "Dynamics", "DynamicsCrm" nebo "CommonDataServiceForApps". | Ano. |
 | Typ nasazení | Typ nasazení instance Dynamics Tato hodnota musí být "OnPremisesWithIfd" pro místní prostředí Dynamics pomocí internetového nasazení.| Ano. |
 | Název hostitele | Název hostitele místního Dynamics serveru. | Ano. |
-| port | Port místního Dynamics serveru. | No. Výchozí hodnota je 443. |
+| port | Port místního Dynamics serveru. | Ne. Výchozí hodnota je 443. |
 | Organizace | Název organizace instance Dynamics | Ano. |
 | authenticationType | Typ ověřování pro připojení k Dynamics serveru. Zadejte "IFD" pro místní prostředí Dynamics pomocí internetového nasazení. | Ano. |
 | username | Uživatelské jméno pro připojení k Dynamics. | Ano. |
@@ -324,9 +324,9 @@ Pro kopírování dat do Dynamics je v části **jímka** aktivity kopírování
 |:--- |:--- |:--- |
 | typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na "DynamicsSink", "DynamicsCrmSink" nebo "CommonDataServiceForAppsSink". | Ano. |
 | writeBehavior | Chování operace zápisu. Hodnota musí být "Upsert". | Yes |
-| alternateKeyName | Název alternativního klíče definovaný v entitě pro Upsert. | No. |
-| writeBatchSize | Počet řádků dat zapsaných do Dynamics v každé dávce. | No. Výchozí hodnota je 10. |
-| ignoreNullValues | Určuje, zda se mají ignorovat hodnoty null ze vstupních dat kromě klíčových polí během operace zápisu.<br/><br/>Platné hodnoty jsou **true** a **false**:<ul><li>**True**: když provedete operaci Upsert nebo Update, ponechte data v cílovém objektu beze změny. Při operaci INSERT vložte definovanou výchozí hodnotu.</li><li>**False**: Pokud provádíte operaci Upsert nebo Update, aktualizujte data v cílovém objektu na hodnotu null. Při operaci vložení vložte hodnotu null.</li></ul> | No. Výchozí hodnota je **false (NEPRAVDA**). |
+| alternateKeyName | Název alternativního klíče definovaný v entitě pro Upsert. | Ne. |
+| writeBatchSize | Počet řádků dat zapsaných do Dynamics v každé dávce. | Ne. Výchozí hodnota je 10. |
+| ignoreNullValues | Určuje, zda se mají ignorovat hodnoty null ze vstupních dat kromě klíčových polí během operace zápisu.<br/><br/>Platné hodnoty jsou **true** a **false**:<ul><li>**True**: když provedete operaci Upsert nebo Update, ponechte data v cílovém objektu beze změny. Při operaci INSERT vložte definovanou výchozí hodnotu.</li><li>**False**: Pokud provádíte operaci Upsert nebo Update, aktualizujte data v cílovém objektu na hodnotu null. Při operaci vložení vložte hodnotu null.</li></ul> | Ne. Výchozí hodnota je **false (NEPRAVDA**). |
 
 >[!NOTE]
 >Výchozí hodnota pro **writeBatchSize** jímky a aktivita kopírování **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** pro jímku aplikace Dynamics je 10. Proto jsou záznamy 100 souběžně odesílány ve výchozím nastavení do Dynamics.

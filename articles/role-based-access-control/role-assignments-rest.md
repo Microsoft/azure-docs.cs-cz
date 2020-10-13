@@ -16,15 +16,15 @@ ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: d66b4c8e9f41f661cfc399f72a9ad97405a860fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84790842"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>Přidání nebo odebrání přiřazení rolí Azure pomocí REST API
+# <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>Přidání nebo odebrání přiřazení rolí v Azure pomocí REST API
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Tento článek popisuje, jak přiřadit role pomocí REST API.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Tento článek popisuje, jak přiřadit role pomocí REST API.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,7 +38,7 @@ Když v Azure RBAC udělíte přístup, přidáte přiřazení role. K přidán�
 
 1. Použijte REST API [Definice rolí – seznam](/rest/api/authorization/roledefinitions/list) , nebo se podívejte na [předdefinované role](built-in-roles.md) , abyste získali identifikátor definice role, kterou chcete přiřadit.
 
-1. Pomocí nástroje GUID vygenerujte jedinečný identifikátor, který se použije pro identifikátor přiřazení role. Identifikátor má formát:`00000000-0000-0000-0000-000000000000`
+1. Pomocí nástroje GUID vygenerujte jedinečný identifikátor, který se použije pro identifikátor přiřazení role. Identifikátor má formát: `00000000-0000-0000-0000-000000000000`
 
 1. Začněte s následujícím požadavkem a textem:
 
@@ -170,5 +170,5 @@ Následující příklad ukazuje příklad výstupu:
 
 - [Vypsání přiřazení rolí Azure pomocí REST API](role-assignments-list-rest.md)
 - [Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API](../azure-resource-manager/templates/deploy-rest.md)
-- [Reference k Azure REST API](/rest/api/azure/)
+- [Reference k rozhraní Azure REST API](/rest/api/azure/)
 - [Pomocí REST API vytvořit nebo aktualizovat vlastní role Azure](custom-roles-rest.md)

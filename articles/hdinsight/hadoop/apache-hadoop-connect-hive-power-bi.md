@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: 973b8a49c4a849f5a50fb3ab72321746a5ca06a7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083470"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Vizualizace dat Apache Hive s využitím Microsoft Power BI a ODBC ve službě Azure HDInsight
@@ -72,7 +72,7 @@ Pokračujte od posledního postupu.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak vizualizovat data ze služby HDInsight pomocí Power BI.  Další informace najdete v následujících článcích:
+V tomto článku jste zjistili, jak vizualizovat data ze služby HDInsight pomocí Power BI.  Další informace najdete v těchto článcích:
 
 * [Připojte Excel k HDInsight pomocí Microsoft Hive ODBC Driver](./apache-hadoop-connect-excel-hive-odbc-driver.md).
 * [Připojení Excelu k Apache Hadoop pomocí Power Query](apache-hadoop-connect-excel-power-query.md).

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/5/2020
 ms.author: anwigley
 ms.openlocfilehash: 6df65040277ac61cca5fb4bf7fce5b5a7b2f3afe
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84783758"
 ---
 # <a name="apply-devops-to-luis-app-development-using-github-actions"></a>Použití DevOps pro vývoj aplikací LUIS pomocí akcí GitHubu
@@ -38,6 +38,6 @@ Pro úplné řešení, které implementuje DevOps a osvědčené postupy pro LUI
 ## <a name="next-steps"></a>Další kroky
 
 * Použijte [úložiště šablon Luis DevOps](https://github.com/Azure-Samples/LUIS-DevOps-Template) pro použití DevOps s vlastním projektem.
-* [Správa zdrojového kódu a strategie větví pro LUIS](luis-concept-devops-sourcecontrol.md)
+* [Správa zdrojového kódu a strategie větvení pro LUIS](luis-concept-devops-sourcecontrol.md)
 * [Testování pro LUIS DevOps](luis-concept-devops-testing.md)
 * [Pracovní postupy automatizace pro LUIS DevOps](luis-concept-devops-automation.md)

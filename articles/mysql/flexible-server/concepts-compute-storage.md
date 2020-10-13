@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
 ms.openlocfilehash: 8a1b30803494facf6eaabcc3695770d694b4e221
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708675"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Možnosti výpočtů a úložiště v Azure Database for MySQL – flexibilní Server (Preview)
@@ -32,7 +32,7 @@ Azure Database for MySQL flexibilní Server můžete vytvořit v jedné ze tří
 
 Pokud chcete zvolit výpočetní vrstvu, použijte jako výchozí bod následující tabulku.
 
-| Výpočetní vrstva | Cílová zátěž |
+| Úroveň výpočetních prostředků | Cílová zátěž |
 |:-------------|:-----------------|
 | S shluky | Nejvhodnější pro úlohy, které nepotřebují nepřetržitě plný procesor. |
 | Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. K příkladům patří servery, které hostují webové, mobilní a další podnikové aplikace.|

@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
 ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764039"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Vytváření řídicích panelů Azure prostřednictvím kódu programu
@@ -78,7 +78,7 @@ Pokud chcete tento řídicí panel publikovat pro libovolný virtuální počít
 Existují dva přístupy k rozhraním API, která vytvářejí prostředky v Azure:
 
 * Imperativní rozhraní API vytvářejí jeden prostředek najednou. Další informace najdete v tématu [prostředky](/rest/api/resources/resources).
-* Systém nasazení založený na šablonách, který vytváří více závislých prostředků s jedním voláním rozhraní API. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md).
+* Systém nasazení založený na šablonách, který vytváří více závislých prostředků s jedním voláním rozhraní API. Další informace najdete v tématu  [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md).
 
 Nasazení založené na šablonách podporuje Parametrizace a šablonování. Tento postup používáme v tomto článku.
 
@@ -124,7 +124,7 @@ Deklaruje požadovaná metadata šablony a parametry v horní části šablony J
 ```
 Jakmile nakonfigurujete šablonu, nasaďte ji pomocí kterékoli z následujících metod:
 
-* [Rozhraní REST API](/rest/api/resources/deployments)
+* [REST API](/rest/api/resources/deployments)
 * [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [Stránka Azure Portalho nasazení šablony](https://portal.azure.com/#create/Microsoft.Template)

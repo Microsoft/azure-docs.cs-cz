@@ -8,10 +8,10 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: f75f0d1ae12db11590f8ce62f3c7b4c0f3e12817
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541488"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Přidat nebo odebrat koncový bod serveru Azure File Sync
@@ -21,7 +21,7 @@ Synchronizace souborů Azure umožňuje centralizovat sdílené složky organiza
 
 Informace o tom, jak nasadit Azure File Sync kompletní, najdete v tématu [nasazení Azure File Sync](storage-sync-files-deployment-guide.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete vytvořit koncový bod serveru, musíte nejdřív zkontrolovat, jestli jsou splněné následující podmínky: 
 - Server má nainstalovaného agenta Azure File Sync a byl zaregistrován. Pokyny pro instalaci agenta Azure File Sync najdete v článku [registrace nebo zrušení registrace serveru s Azure File Syncm](storage-sync-files-server-registration.md) článkem. 
 - Ujistěte se, že je nasazená služba synchronizace úložiště. Podrobnosti o tom, jak nasadit službu synchronizace úložiště, najdete v tématu [postup nasazení Azure File Sync](storage-sync-files-deployment-guide.md) . 

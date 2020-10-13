@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 96603de7014419b142cc35714b891f9e4b15ec99
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91405079"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Kopírování dat ze serveru HDFS pomocí Azure Data Factory
@@ -42,7 +42,7 @@ Konkrétně konektor HDFS podporuje:
 - Kopírování souborů pomocí protokolu *webhdfs* nebo integrované podpory *DistCp* .
 - Kopírování souborů tak, jak jsou, nebo analýzou nebo generováním souborů s [podporovanými formáty souborů a kompresními kodeky](supported-file-formats-and-compression-codecs.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -253,7 +253,7 @@ Tato část popisuje chování, které je výsledkem použití cesty seznamu sou
 
 Aktivita kopírování podporuje použití DistCp ke kopírování souborů do úložiště objektů BLOB v Azure (včetně [připravené kopie](copy-activity-performance.md)) nebo Azure Data Lake Store. V takovém případě může DistCp využít výkon vašeho clusteru místo spuštění v místním prostředí Integration runtime. Použití DistCp poskytuje lepší propustnost kopírování, zejména v případě, že je cluster velmi výkonný. Na základě konfigurace ve vaší datové továrně aktivita kopírování automaticky vytvoří příkaz DistCp, odešle ho do vašeho clusteru Hadoop a monitoruje stav kopírování.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Pokud chcete pomocí DistCp kopírovat soubory z HDFS do úložiště objektů BLOB v Azure (včetně připravené kopie) nebo Azure Data Lake Store, ujistěte se, že cluster Hadoop splňuje následující požadavky:
 
@@ -412,7 +412,7 @@ Kadmin> addprinc <username>@<REALM.COM>
     Kadmin> addprinc krbtgt/REALM.COM@AD.COM
     ```
 
-3. V konfiguračním souboru služby *Hadoop. Security. auth_to_local* HDFS přidejte `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//` .
+3. Do konfiguračního souboru služby *Hadoop.Security.auth_to_local* HDFS přidejte `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//` .
 
 **Na řadiči domény:**
 

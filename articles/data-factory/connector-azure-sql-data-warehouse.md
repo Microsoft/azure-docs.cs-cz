@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/23/2020
 ms.openlocfilehash: d0c6de2fdf0720e671090e8a817b00e25c5f3d42
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332147"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování a transformace dat ve službě Azure synapse Analytics (dříve SQL Data Warehouse) pomocí Azure Data Factory
@@ -379,12 +379,12 @@ Pokud chcete kopírovat data do služby Azure synapse Analytics, nastavte typ j�
 | Vlastnost          | Popis                                                  | Povinné                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | typ              | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na **SqlDWSink**. | Yes                                           |
-| allowPolyBase     | Označuje, jestli se má k načtení dat do služby Azure synapse Analytics použít základ. `allowCopyCommand` a `allowPolyBase` nemůže být současně true. <br/><br/>Omezení a podrobnosti najdete v části [použití základu k načtení dat do služby Azure synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) .<br/><br/>Povolené hodnoty jsou **true** a **false** (výchozí). | No.<br/>Platí při použití základny.     |
-| polyBaseSettings  | Skupina vlastností, které lze zadat, pokud `allowPolybase` je vlastnost nastavena na **hodnotu true**. | No.<br/>Platí při použití základny. |
-| allowCopyCommand | Označuje, jestli se má při načítání dat do služby Azure synapse Analytics použít [příkaz Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) (Preview). `allowCopyCommand` a `allowPolyBase` nemůže být současně true. <br/><br/>Omezení a podrobnosti najdete v části [použití příkazu copy k načtení dat do služby Azure synapse Analytics](#use-copy-statement) .<br/><br/>Povolené hodnoty jsou **true** a **false** (výchozí). | No.<br>Použijte při použití kopírování. |
-| copyCommandSettings | Skupina vlastností, které lze zadat, pokud `allowCopyCommand` je vlastnost nastavena na hodnotu true. | No.<br/>Použijte při použití kopírování. |
-| writeBatchSize    | Počet řádků, které mají být vloženy do tabulky SQL **na dávku**.<br/><br/>Povolená hodnota je **Integer** (počet řádků). Ve výchozím nastavení Data Factory dynamicky určí vhodnou velikost dávky na základě velikosti řádku. | No.<br/>Platí při použití hromadného vložení.     |
-| writeBatchTimeout | Počkejte, než se operace dávkového vložení dokončí, než vyprší časový limit.<br/><br/>Povolená hodnota je **TimeSpan**. Příklad: "00:30:00" (30 minut). | No.<br/>Platí při použití hromadného vložení.        |
+| allowPolyBase     | Označuje, jestli se má k načtení dat do služby Azure synapse Analytics použít základ. `allowCopyCommand` a `allowPolyBase` nemůže být současně true. <br/><br/>Omezení a podrobnosti najdete v části [použití základu k načtení dat do služby Azure synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) .<br/><br/>Povolené hodnoty jsou **true** a **false** (výchozí). | Ne.<br/>Platí při použití základny.     |
+| polyBaseSettings  | Skupina vlastností, které lze zadat, pokud `allowPolybase` je vlastnost nastavena na **hodnotu true**. | Ne.<br/>Platí při použití základny. |
+| allowCopyCommand | Označuje, jestli se má při načítání dat do služby Azure synapse Analytics použít [příkaz Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) (Preview). `allowCopyCommand` a `allowPolyBase` nemůže být současně true. <br/><br/>Omezení a podrobnosti najdete v části [použití příkazu copy k načtení dat do služby Azure synapse Analytics](#use-copy-statement) .<br/><br/>Povolené hodnoty jsou **true** a **false** (výchozí). | Ne.<br>Použijte při použití kopírování. |
+| copyCommandSettings | Skupina vlastností, které lze zadat, pokud `allowCopyCommand` je vlastnost nastavena na hodnotu true. | Ne.<br/>Použijte při použití kopírování. |
+| writeBatchSize    | Počet řádků, které mají být vloženy do tabulky SQL **na dávku**.<br/><br/>Povolená hodnota je **Integer** (počet řádků). Ve výchozím nastavení Data Factory dynamicky určí vhodnou velikost dávky na základě velikosti řádku. | Ne.<br/>Platí při použití hromadného vložení.     |
+| writeBatchTimeout | Počkejte, než se operace dávkového vložení dokončí, než vyprší časový limit.<br/><br/>Povolená hodnota je **TimeSpan**. Příklad: "00:30:00" (30 minut). | Ne.<br/>Platí při použití hromadného vložení.        |
 | preCopyScript     | Zadejte dotaz SQL pro aktivitu kopírování, která se spustí před zápisem dat do služby Azure synapse Analytics v každém spuštění. Tato vlastnost slouží k vyčištění předem načtených dat. | No                                            |
 | tableOption | Určuje, jestli se má [automaticky vytvořit tabulka jímky](copy-activity-overview.md#auto-create-sink-tables) , pokud na základě schématu zdroje neexistuje. Povolené hodnoty jsou: `none` (výchozí), `autoCreate` . |No |
 | disableMetricsCollection | Data Factory shromažďuje metriky, jako je Azure synapse Analytics DWU, pro optimalizaci výkonu a doporučení pro kopírování. Pokud se s tímto chováním obáváte, určete, jestli `true` ho chcete vypnout. | Ne (výchozí nastavení je `false` ) |
@@ -824,7 +824,7 @@ Když kopírujete data z nebo do služby Azure synapse Analytics, používají s
 | binární                                | Byte []                         |
 | bit                                   | Logická hodnota                        |
 | char                                  | Řetězec, znak []                 |
-| datum                                  | DateTime                       |
+| date                                  | DateTime                       |
 | Datum a čas                              | DateTime                       |
 | datetime2                             | DateTime                       |
 | DateTimeOffset                        | DateTimeOffset                 |

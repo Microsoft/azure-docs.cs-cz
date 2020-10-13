@@ -1,5 +1,5 @@
 ---
-title: 'Příklad: Používejte velkou škálu funkcí – Face'
+title: 'Příklad: použití funkce Large-Scale – Face'
 titleSuffix: Azure Cognitive Services
 description: Tato příručka je článek týkající se horizontálního navýšení kapacity z existujících objektů Person a FaceList na objekty LargePersonGroup a LargeFaceList.
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.date: 05/01/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5341c2613624c6a52f1649dcd8a64b6746b84f67
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332385"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Příklad: použití funkce rozsáhlého škálování
@@ -31,7 +31,7 @@ Ukázky jsou napsány v jazyce C# pomocí klientské knihovny Azure Cognitive Se
 
 ## <a name="step-1-initialize-the-client-object"></a>Krok 1: inicializace objektu klienta
 
-Při použití klientské knihovny pro tvář se klíč předplatného a koncový bod předplatného předávají prostřednictvím konstruktoru třídy FaceClient. Příklad:
+Při použití klientské knihovny pro tvář se klíč předplatného a koncový bod předplatného předávají prostřednictvím konstruktoru třídy FaceClient. Například:
 
 ```csharp
 string SubscriptionKey = "<Subscription Key>";
@@ -65,7 +65,7 @@ Přidejte všechny plošky a osoby ze strany Person do nové LargePersonGroup. D
 | Rozhraní API kolekce FaceList | Rozhraní API kolekce LargeFaceList |
 |:---:|:---:|
 | Vytvořit | Vytvořit |
-| Odstranit | Odstranit |
+| Odstranit | Delete |
 | Získat | Získat |
 | Seznam | Seznam |
 | Aktualizace | Aktualizace |
@@ -262,7 +262,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 
 Další informace o implementacích týkajících se správy dat a identifikace najdete v tématu [Přidání plošek](how-to-add-faces.md).
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V této příručce jste zjistili, jak migrovat existující kód person nebo FaceList, ne data, na LargePersonGroup nebo LargeFaceList:
 

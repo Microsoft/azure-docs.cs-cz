@@ -8,10 +8,10 @@ ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
 ms.openlocfilehash: 0806c6e0ed89c2c0f4712ec985599810119fcf89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86999016"
 ---
 # <a name="monitoring-scheduled-events"></a>Scheduled Events monitorování
@@ -29,7 +29,7 @@ V tomto článku Vás provedeme procesem zaznamenání údržby Scheduled Events
 
 ![Diagram znázorňující životní cyklus události](./media/notifications/events.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto příkladu budete muset vytvořit [virtuální počítač s Windows ve skupině dostupnosti](tutorial-availability-sets.md). Scheduled Events poskytují oznámení o změnách, které můžou ovlivnit některý z virtuálních počítačů ve vaší skupině dostupnosti, cloudové službě, sadě škálování virtuálních počítačů nebo samostatných virtuálních počítačích. Budeme používat [službu](https://github.com/microsoft/AzureScheduledEventsService) , která se dotazuje na naplánované události na jednom z virtuálních počítačů, které se budou chovat jako kolektor, a získat tak události pro všechny ostatní virtuální počítače ve skupině dostupnosti.    
 

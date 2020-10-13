@@ -12,10 +12,10 @@ ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.openlocfilehash: 46a5f4036be2d670689f7e936a31dc63e0690ddc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91302379"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Publikování a sledování kanálů strojového učení
@@ -87,7 +87,7 @@ response = requests.post(published_pipeline1.endpoint,
 
 `json`Argument žádosti post musí pro `ParameterAssignments` klíč obsahovat slovník obsahující parametry kanálu a jejich hodnoty. Kromě toho `json` argument může obsahovat následující klíče:
 
-| Klíč | Popis |
+| Klíč | Description |
 | --- | --- | 
 | `ExperimentName` | Název experimentu přidruženého k tomuto koncovému bodu |
 | `Description` | Text volného tvaru popisující koncový bod | 
