@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 09/21/2020
+ms.date: 10/07/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 2788b22d2b262cfef4b214d75813a203067462cb
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 7adfafbb0b0b11057a21dfbbe6dffcf6d2564606
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779237"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977792"
 ---
 <a name="HOLTop"></a>
 
@@ -150,10 +150,11 @@ Klient Analýza textu je `TextAnalyticsClient` objekt, který se ověřuje v Azu
 
 * [Ověření klienta](#authenticate-the-client)
 * [Analýza mínění](#sentiment-analysis) 
-* [Rozpoznávání jazyka](#language-detection)
+* [Dolování názoru](#opinion-mining)
+* [rozpoznávání jazyka,](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner)
 * [Propojení entit](#entity-linking)
-* [Extrakce klíčových frází](#key-phrase-extraction)
+* [extrakce klíčových frází,](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -314,7 +315,7 @@ Tento článek popisuje pouze verzi 3. x rozhraní API.
 
 ---
 
-## <a name="language-detection"></a>Rozpoznávání jazyka
+## <a name="language-detection"></a>rozpoznávání jazyka,
 
 Vytvořte novou funkci s názvem `detectLanguageExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `detectLanguage()` funkci. Vrácený `DetectLanguageResult` objekt bude obsahovat nalezen primární jazyk, seznam dalších jazyků, který byl nalezen v případě úspěchu, nebo v `errorMessage` případě potřeby. Tento příklad je stejný pro verze 3,0 a 3,1 rozhraní API.
 
@@ -562,7 +563,7 @@ Tento článek popisuje pouze verzi 3. x rozhraní API.
 
 ---
 
-## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
+## <a name="key-phrase-extraction"></a>extrakce klíčových frází,
 
 Vytvořte novou funkci s názvem `extractKeyPhrasesExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `extractKeyPhrases()` funkci. Vrácený `ExtractKeyPhraseResult` objekt bude obsahovat seznam klíčových frází, pokud je to úspěšné, nebo `errorMessage` Pokud ne. Tento příklad je stejný pro verze 3,0 a 3,1 rozhraní API.
 

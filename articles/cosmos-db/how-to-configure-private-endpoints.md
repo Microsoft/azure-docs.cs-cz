@@ -8,10 +8,10 @@ ms.date: 09/18/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: dd1a59c2e6b0656233174c53b08ab013ce73d0f1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334425"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurace privátního odkazu Azure pro účet Azure Cosmos
@@ -42,11 +42,11 @@ Pomocí následujících kroků můžete vytvořit privátní koncový bod pro e
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
-    | Předplatné | Vyberte předplatné. |
+    | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte skupinu prostředků.|
     | **Podrobnosti o instancích** |  |
     | Name | Zadejte libovolný název vašeho privátního koncového bodu. Pokud se tento název povede, vytvořte jedinečný. |
-    |Region| Vyberte oblast, ve které chcete nasadit privátní propojení. Vytvořte privátní koncový bod ve stejném umístění, kde existuje vaše virtuální síť.|
+    |Oblast| Vyberte oblast, ve které chcete nasadit privátní propojení. Vytvořte privátní koncový bod ve stejném umístění, kde existuje vaše virtuální síť.|
     |||
 1. Vyberte **Další: prostředek**.
 1. V **Vytvoření privátního koncového bodu – prostředek**zadejte nebo vyberte tyto informace:
@@ -54,7 +54,7 @@ Pomocí následujících kroků můžete vytvořit privátní koncový bod pro e
     | Nastavení | Hodnota |
     | ------- | ----- |
     |Způsob připojení  | **V adresáři vyberte připojit k prostředku Azure**. <br/><br/> Pak můžete zvolit jeden z vašich prostředků pro nastavení privátního propojení. Nebo se můžete připojit k prostředku jiné osoby pomocí ID prostředku nebo aliasu, který s vámi sdílí.|
-    | Předplatné| Vyberte předplatné. |
+    | Předplatné| Vyberte své předplatné. |
     | Typ prostředku | Vyberte **Microsoft. AzureCosmosDB/databaseAccounts**. |
     | Prostředek |Vyberte svůj účet Azure Cosmos. |
     |Cílový dílčí prostředek |Vyberte Azure Cosmos DB typ rozhraní API, který chcete namapovat. Tato možnost je standardně jenom jedna volba pro rozhraní API SQL, MongoDB a Cassandra. Pro Gremlin a rozhraní Table API můžete také zvolit **SQL** , protože tato rozhraní API se vzájemně spolupracují s rozhraním SQL API. |
@@ -98,7 +98,7 @@ Po zřízení privátního koncového bodu můžete zadat dotaz na IP adresy. Po
 1. Vyhledejte privátní koncový bod, který jste vytvořili dříve. V tomto případě je to **cdbPrivateEndpoint3**.
 1. Vyberte kartu **Přehled** a zobrazte tak nastavení DNS a IP adresy.
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Privátní IP adresy v Azure Portal":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Výběry pro vytvoření privátního koncového bodu v Azure Portal":::
 
 Pro jeden privátní koncový bod se vytvoří víc IP adres:
 
@@ -402,7 +402,7 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-V PowerShellovém skriptu `GroupId` může proměnná obsahovat jenom jednu hodnotu. Tato hodnota je typ rozhraní API tohoto účtu. Povolené hodnoty jsou: `Sql` , `MongoDB` , `Cassandra` , `Gremlin` a `Table` . Některé typy účtů Azure Cosmos jsou přístupné prostřednictvím více rozhraní API. Příklad:
+V PowerShellovém skriptu `GroupId` může proměnná obsahovat jenom jednu hodnotu. Tato hodnota je typ rozhraní API tohoto účtu. Povolené hodnoty jsou: `Sql` , `MongoDB` , `Cassandra` , `Gremlin` a `Table` . Některé typy účtů Azure Cosmos jsou přístupné prostřednictvím více rozhraní API. Například:
 
 * K účtu rozhraní Gremlin API je možné přihlédnout z účtů Gremlin a SQL API.
 * K účtu rozhraní API pro tabulky lze přihlédnout z tabulek i z účtů rozhraní SQL API.
@@ -411,7 +411,7 @@ Pro tyto účty musíte pro každý typ rozhraní API vytvořit jeden privátní
 
 Po úspěšném nasazení šablony se zobrazí výstup podobný následujícímu obrázku. `provisioningState`Hodnota je, `Succeeded` Pokud jsou privátní koncové body nastaveny správně.
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Výstup nasazení pro šablonu Správce prostředků":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Výběry pro vytvoření privátního koncového bodu v Azure Portal":::
 
 Po nasazení šablony jsou privátní IP adresy rezervované v rámci podsítě. Pravidlo brány firewall účtu Azure Cosmos je nakonfigurované tak, aby přijímalo jenom připojení z privátního koncového bodu.
 

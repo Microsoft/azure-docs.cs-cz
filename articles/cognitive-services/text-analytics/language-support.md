@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2020
+ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 185a6a26350f7803d109e26d8985510380b8cc16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed2a5b4688965f790567018bc11051b77c494e7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056587"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977727"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Podpora jazyka rozhraní API pro analýzu textu V3 
 
@@ -25,7 +25,7 @@ ms.locfileid: "90056587"
 
 #### <a name="sentiment-analysis"></a>[Analýza mínění](#tab/sentiment-analysis)
 
-| Jazyk              | Kód jazyka | Podpora v2 | Podpora V3 | Spouští se verze modelu V3: |              Poznámky |
+| Language              | Kód jazyka | Podpora v2 | Podpora V3 | Spouští se verze modelu V3: |              Poznámky |
 |:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
 | Čínština (zjednodušená)    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh` také přijato |
 | Čínština (tradiční)   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
@@ -36,6 +36,7 @@ ms.locfileid: "90056587"
 | Francouzština                |     `fr`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Němčina                |     `de`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Řečtina                 |     `el`      |     ✓      |            |                            |                    |
+| Hindština                 |     `hi`      |           |      ✓      |          2020-04-01                  |                    |
 | Italština               |     `it`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Japonština              |     `ja`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | Korejština                |     `ko`      |            |     ✓      |         2019-10-01         |                    |
@@ -49,7 +50,7 @@ ms.locfileid: "90056587"
 
 ### <a name="opinion-mining-v31-preview-only"></a>Dolování stanovisek (verze 3.1 – Preview)
 
-| Jazyk              | Kód jazyka | Od verze V3 model: |              Poznámky |
+| Language              | Kód jazyka | Od verze V3 model: |              Poznámky |
 |:----------------------|:-------------:|:------------------------------------:|-------------------:|
 | Angličtina               |     `en`      |              2020-04-01              |                    |
 
@@ -60,7 +61,7 @@ ms.locfileid: "90056587"
 > * NER V3 aktuálně podporuje pouze anglické a španělské jazyky. Pokud voláte NER v3 s jiným jazykem, rozhraní API vrátí výsledky v 2.1 za předpokladu, že je jazyk podporován ve verzi 2,1.
 > * v 2.1 vrátí jenom kompletní sadu dostupných entit pro anglické, zjednodušené, francouzské, německé a španělské jazyky.  Entity "Person", "Location" a "Organization" jsou vráceny pro ostatní podporované jazyky.
 
-| Jazyk               | Kód jazyka | Podpora verze 2.1 | Podpora V3 | Od verze V3 model: |       Poznámky        |
+| Language               | Kód jazyka | Podpora verze 2.1 | Podpora V3 | Od verze V3 model: |       Poznámky        |
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | Arabština                |     `ar`      |     ✓      |            |                                 |                    |
 | Čeština                 |     `cs`      |     ✓      |            |                                 |                    |
@@ -86,12 +87,12 @@ ms.locfileid: "90056587"
 | Švédština               |     `sv`      |     ✓      |            |                                 |                    |
 | Turečtina               |     `tr`      |     ✓      |            |                                 |                    |
 
-#### <a name="key-phrase-extraction"></a>[Extrakce klíčových frází](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[extrakce klíčových frází,](#tab/key-phrase-extraction)
 
 > [!NOTE]
 > Verze modelu Extrakce klíčových frází před 2020-07-01 mají limit 64 znaků. Toto omezení není k dispozici v novějších verzích modelů.
 
-| Jazyk              | Kód jazyka | Podpora v2 | Podpora V3 | K dispozici od verze V3 modelu: |       Poznámky        |
+| Language              | Kód jazyka | Podpora v2 | Podpora V3 | K dispozici od verze V3 modelu: |       Poznámky        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
 | Nizozemština                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Angličtina               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
@@ -111,7 +112,7 @@ ms.locfileid: "90056587"
 
 #### <a name="entity-linking"></a>[Propojení entit](#tab/entity-linking)
 
-| Jazyk | Kód jazyka | Podpora v2 | Podpora V3 | K dispozici od verze V3 modelu: | Poznámky |
+| Language | Kód jazyka | Podpora v2 | Podpora V3 | K dispozici od verze V3 modelu: | Poznámky |
 |:---------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:-----:|
 | Angličtina  |     `en`      |     ✓      |     ✓      |                2019-10-01                 |       |
 | Španělština  |     `es`      |     ✓      |     ✓      |                2019-10-01                 |       |

@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/22/2020
 ms.openlocfilehash: 18ff2c9690de1708cd8382d83a0c01662a8e6fb0
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619776"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database Glosář pojmů
@@ -24,7 +24,7 @@ ms.locfileid: "91619776"
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 
-|Kontext|Pojem|Další informace|
+|Kontext|Označení|Další informace|
 |:---|:---|:---|
 |Služba Azure|Azure SQL Database nebo SQL Database|[Azure SQL Database](database/sql-database-paas-overview.md)|
 |Nákupní model|Nákupní model založený na DTU|[Nákupní model založený na DTU](database/service-tiers-dtu.md)|
@@ -32,7 +32,7 @@ ms.locfileid: "91619776"
 |Možnost nasazení |Izolovaná databáze|[Izolované databáze](database/single-database-overview.md)|
 ||Elastický fond|[Elastický fond](database/elastic-pool-overview.md)|
 |Úroveň služeb|Basic, Standard, Premium, Pro obecné účely, škálování Pro důležité obchodní informace|Pro úrovně služeb v modelu vCore si přečtěte téma [SQL Database úrovně služeb](database/service-tiers-vcore.md#service-tiers). Pro úrovně služeb v modelu DTU si přečtěte téma [model DTU](database/service-tiers-dtu.md#compare-the-dtu-based-service-tiers).|
-|Výpočetní vrstva|Bezserverové výpočetní prostředí|[Bezserverové výpočetní prostředí](database/service-tiers-vcore.md#compute-tiers)
+|Úroveň výpočetních prostředků|Bezserverové výpočetní prostředí|[Bezserverové výpočetní prostředí](database/service-tiers-vcore.md#compute-tiers)
 ||Zřízené výpočetní prostředky|[Zřízené výpočetní prostředky](database/service-tiers-vcore.md#compute-tiers)
 |Generování výpočtů|Gen5, řady M-Series, Fsv2-Series|[Generace hardwaru](database/service-tiers-vcore.md#hardware-generations)
 |Entita serveru| Server |[Logické SQL servery](database/logical-servers.md)|
@@ -41,14 +41,14 @@ ms.locfileid: "91619776"
 
 ## <a name="azure-sql-managed-instance"></a>Spravovaná instance Azure SQL
 
-|Kontext|Pojem|Další informace|
+|Kontext|Označení|Další informace|
 |:---|:---|:---|
 |Služba Azure|Spravovaná instance Azure SQL|[Spravovaná instance SQL](managed-instance/sql-managed-instance-paas-overview.md)|
 |Nákupní model|Nákupní model založený na virtuálních jádrech|[Nákupní model založený na virtuálních jádrech](database/service-tiers-vcore.md)|
 |Možnost nasazení |Jedna instance|[Jediná instance](managed-instance/sql-managed-instance-paas-overview.md)|
 ||Fond instancí (Preview)|[Fondy instancí](managed-instance/instance-pools-overview.md)|
 |Úroveň služeb|Pro obecné účely Pro důležité obchodní informace|[Úrovně služeb spravované instance SQL](managed-instance/sql-managed-instance-paas-overview.md#service-tiers)|
-|Výpočetní vrstva|Zřízené výpočetní prostředky|[Zřízené výpočetní prostředky](database/service-tiers-vcore.md#compute-tiers)|
+|Úroveň výpočetních prostředků|Zřízené výpočetní prostředky|[Zřízené výpočetní prostředky](database/service-tiers-vcore.md#compute-tiers)|
 |Generování výpočtů|Gen5|[Generace hardwaru](database/service-tiers-vcore.md#hardware-generations)
 |Entita serveru|Spravovaná instance nebo instance| Není k dispozici, protože spravovaná instance SQL je sama o sobě serverem. |
 |Typ prostředku|Virtuální jádro|Jádro procesoru poskytované výpočetním prostředkem pro spravovanou instanci SQL|

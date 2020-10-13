@@ -3,14 +3,14 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 09/21/2020
+ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 9a7846d1a63ee0b3042bbea473babffbe52f06a6
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: f0e4c8b832b17ee97b6e97aaf94640aaad7aa8db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779877"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977793"
 ---
 <a name="HOLTop"></a>
 
@@ -117,30 +117,31 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Anal
 
 * [Ověření klienta](#authenticate-the-client)
 * [Analýza mínění](#sentiment-analysis)
-* [Rozpoznávání jazyka](#language-detection)
+* [Dolování názoru](#opinion-mining)
+* [rozpoznávání jazyka,](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner) 
 * [Rozpoznávání identifikovatelných osobních údajů](#personally-identifiable-information-recognition) 
 * [Propojení entit](#entity-linking)
-* [Extrakce klíčových frází](#key-phrase-extraction)
+* [extrakce klíčových frází,](#key-phrase-extraction)
 
 
 # <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 * [Ověření klienta](#authenticate-the-client)
 * [Analýza mínění](#sentiment-analysis)
-* [Rozpoznávání jazyka](#language-detection)
+* [rozpoznávání jazyka,](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner) 
 * [Propojení entit](#entity-linking)
-* [Extrakce klíčových frází](#key-phrase-extraction)
+* [extrakce klíčových frází,](#key-phrase-extraction)
 
 # <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
 * [Ověření klienta](#authenticate-the-client)
 * [Analýza mínění](#sentiment-analysis)
-* [Rozpoznávání jazyka](#language-detection)
+* [rozpoznávání jazyka,](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner) 
 * [Propojení entit](#entity-linking)
-* [Extrakce klíčových frází](#key-phrase-extraction)
+* [extrakce klíčových frází,](#key-phrase-extraction)
 
 ---
 
@@ -406,7 +407,7 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ---
 
-## <a name="language-detection"></a>Rozpoznávání jazyka
+## <a name="language-detection"></a>rozpoznávání jazyka,
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
@@ -485,7 +486,7 @@ Document ID: 3 , Language: Chinese_Simplified
 > Ve verzi `3.1` : 
 > * Odkaz na entitu je samostatný požadavek než NER.
 
-Vytvořte novou funkci s názvem `entity_recognition_example` , která převezme klienta jako argument, poté zavolá `recognize_entities()` funkci a projde výsledky. Vrácený objekt Response bude obsahovat seznam zjištěných entit v `entity` případě úspěchu, a `error` Pokud ne. U každé zjištěné entity vytiskněte kategorii a podkategorii, pokud existuje.
+Vytvořte novou funkci s názvem `entity_recognition_example` , která převezme klienta jako argument, poté zavolá `recognize_entities()` funkci a projde výsledky. Vrácený objekt Response bude obsahovat seznam zjištěných entit v `entity` případě úspěchu, a `error` Pokud ne. Pro každou zjištěnou entitu vytiskněte kategorii a Sub-Category, pokud existuje.
 
 ```python
 def entity_recognition_example(client):
@@ -609,7 +610,7 @@ Linked Entities:
 
 ### <a name="personally-identifiable-information-recognition"></a>Rozpoznávání identifikovatelných osobních údajů
 
-Vytvořte novou funkci s názvem `pii_recognition_example` , která převezme klienta jako argument, poté zavolá `recognize_pii_entities()` funkci a projde výsledky. Vrácený objekt Response bude obsahovat seznam zjištěných entit v `entity` případě úspěchu, a `error` Pokud ne. U každé zjištěné entity vytiskněte kategorii a podkategorii, pokud existuje.
+Vytvořte novou funkci s názvem `pii_recognition_example` , která převezme klienta jako argument, poté zavolá `recognize_pii_entities()` funkci a projde výsledky. Vrácený objekt Response bude obsahovat seznam zjištěných entit v `entity` případě úspěchu, a `error` Pokud ne. Pro každou zjištěnou entitu vytiskněte kategorii a Sub-Category, pokud existuje.
 
 ```python
 def pii_recognition_example(client):
@@ -653,7 +654,7 @@ Entity: 555-555-5555
 > Ve verzi `3.0` : 
 > * Odkaz na entitu je samostatný požadavek než NER.
 
-Vytvořte novou funkci s názvem `entity_recognition_example` , která převezme klienta jako argument, poté zavolá `recognize_entities()` funkci a projde výsledky. Vrácený objekt Response bude obsahovat seznam zjištěných entit v `entity` případě úspěchu, a `error` Pokud ne. U každé zjištěné entity vytiskněte kategorii a podkategorii, pokud existuje.
+Vytvořte novou funkci s názvem `entity_recognition_example` , která převezme klienta jako argument, poté zavolá `recognize_entities()` funkci a projde výsledky. Vrácený objekt Response bude obsahovat seznam zjištěných entit v `entity` případě úspěchu, a `error` Pokud ne. Pro každou zjištěnou entitu vytiskněte kategorii a Sub-Category, pokud existuje.
 
 ```python
 def entity_recognition_example(client):
@@ -807,7 +808,7 @@ Document ID: 2
 
 ---
 
-### <a name="key-phrase-extraction"></a>Extrakce klíčových frází
+### <a name="key-phrase-extraction"></a>extrakce klíčových frází,
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 

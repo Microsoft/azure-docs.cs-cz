@@ -10,10 +10,10 @@ services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: f7554843db247ade1cddff78902430a5d84debe1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319163"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně – IntelliJ
@@ -191,16 +191,16 @@ Každá webová služba otevře okno příkazového řádku a okno webového pro
 
 Chcete-li získat přístup ke stavu služeb, přejděte na následující adresy URL:
 
-* Správce IoT Hub:`http://localhost:9002/v1/status`
-* Telemetrie zařízení:`http://localhost:9004/v1/status`
-* Konfigurace`http://localhost:9005/v1/status`
-* adaptér úložiště:`http://localhost:9022/v1/status`
+* Správce IoT-Hub: `http://localhost:9002/v1/status`
+* Telemetrie zařízení: `http://localhost:9004/v1/status`
+* Konfigurace `http://localhost:9005/v1/status`
+* adaptér úložiště: `http://localhost:9022/v1/status`
 
 ### <a name="start-the-stream-analytics-job"></a>Spustit úlohu Stream Analytics
 
 Pomocí následujících kroků spusťte úlohu Stream Analytics:
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 1. Přejít na **skupinu prostředků** vytvořenou pro vaše řešení. Název skupiny prostředků je název, který jste zvolili pro vaše řešení při spuštění skriptu **Start. cmd** .
 1. V seznamu prostředků vyberte **úlohu Stream Analytics** .
 1. Na stránce **Přehled** úlohy Stream Analytics vyberte tlačítko **Start** a potom výběrem tlačítka **Spustit** spusťte úlohu.

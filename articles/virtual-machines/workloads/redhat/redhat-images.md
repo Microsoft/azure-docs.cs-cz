@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07444e32d1808f928de418dd898aa1fa30703c90
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87439467"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977625"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Přehled Red Hat Enterprise Linuxch imagí
 
@@ -108,7 +108,7 @@ Podrobnosti o typech imagí RHEL 8 jsou uvedené níže.
 |Publisher | Nabídka | Hodnota SKU | Verze | Podrobnosti
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191023) | Tyto image jsou image s RHEL 8 LVM oddíly připojené ke standardním úložištím Red Hat.
-|RedHat | RHEL | 8 – Gen2 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191024) | Tyto image jsou image Hyper-V generace 2 RHEL 8 LVM-dělené bitové kopie připojené ke standardním úložištím Red Hat. Další informace o virtuálních počítačích 2. generace v Azure najdete v tématu [Podpora virtuálních počítačů 2. generace v Azure](../../linux/generation-2.md).
+|RedHat | RHEL | 8 – Gen2 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191024) | Tyto image jsou image Hyper-V generace 2 RHEL 8 LVM-dělené bitové kopie připojené ke standardním úložištím Red Hat. Další informace o virtuálních počítačích 2. generace v Azure najdete v tématu [Podpora virtuálních počítačů 2. generace v Azure](../../generation-2.md).
 
 ## <a name="rhel-longer-support-add-ons"></a>RHEL už podporuje doplňky.
 
@@ -116,7 +116,7 @@ Podrobnosti o typech imagí RHEL 8 jsou uvedené níže.
 
 Od dubna 2019 jsou k dispozici image RHEL, které jsou ve výchozím nastavení připojené k úložištím EUS. Další informace o RHEL EUS najdete v [dokumentaci k Red Hat](https://access.redhat.com/articles/rhel-eus).
 
-Přepínání na úložiště EUS je možné a podporuje se. Pokyny, jak přepnout virtuální počítač na EUS a další informace o datech ukončení životnosti EUS, najdete v článku [RHEL EUS a virtuální počítače s zámky verze RHEL](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms).
+Přepínání na úložiště EUS je možné a podporuje se. Pokyny, jak přepnout virtuální počítač na EUS a další informace o datech ukončení životnosti EUS, najdete v článku [RHEL EUS a virtuální počítače s zámky verze RHEL](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms).
 
 >[!NOTE]
 > EUS se v RHEL Extras nepodporuje. To znamená, že pokud nainstalujete balíček, který je obvykle dostupný z kanálu RHEL Extras, nebudete ho moct v EUS použít. Další informace o životním cyklu produktu Red Hat extra získáte v tématu [Red Hat Enterprise Linux životní cyklus dalších](https://access.redhat.com/support/policy/updates/extras/).
@@ -183,6 +183,6 @@ Aktuální zásada zachová všechny dřív publikované image. Vyhrazujeme si p
 ## <a name="next-steps"></a>Další kroky
 
 * Pokud chcete zobrazit úplný seznam imagí RHEL v Azure, přečtěte si část [Red Hat Enterprise Linux (RHEL) imagí dostupné v Azure](./redhat-imagelist.md).
-* Další informace o infrastruktuře aktualizací Red Hat najdete v tématu [infrastruktura aktualizace Red Hat pro virtuální počítače RHEL na vyžádání v Azure](https://aka.ms/rhui-update).
+* Další informace o infrastruktuře aktualizací Red Hat najdete v tématu [infrastruktura aktualizace Red Hat pro virtuální počítače RHEL na vyžádání v Azure](./redhat-rhui.md).
 * Další informace o nabídce BYOS pro RHEL Red Hat Enterprise Linux najdete v článku o tom, jak se v Azure naučíte používat [zlaté image pro vlastní odběry](./byos.md).
 * Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete v tématu [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata).

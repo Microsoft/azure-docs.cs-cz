@@ -3,12 +3,12 @@ title: Kurz – nasazení a konfigurace nástroje VMware HCX
 description: Naučte se, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 69832d1537f0f1be95d3283f543ef6e54187b58d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 341de74c8034eb60c5738720f730ab6b0f0f127f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91583284"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948591"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
 
@@ -37,6 +37,7 @@ Po dokončení můžete postupovat podle doporučených dalších kroků na konc
 * Volitelně si přečtěte téma [požadavky na nasazení VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html).
 * Volitelně si můžete prohlédnout související materiály VMware na HCX, jako je například [série blogů](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) VMware VSPHERE v HCX. 
 * Volitelně můžete požádat o podnikovou aktivaci řešení Azure VMware HCX prostřednictvím kanálů podpory řešení Azure VMware.
+* Volitelně [Zkontrolujte síťové porty vyžadované pro HCX](https://ports.vmware.com/home/VMware-HCX).
 * Pro nasazení zařízení WAN Interconnect jsou už konkrétní rozsahy CIDR přidělené zákazníkovi, který se poskytuje `\22` pro vytvoření privátního cloudu.
 
 Změna velikosti úloh na výpočetní prostředky a prostředky úložiště je základní krok plánování. Vyřešte krok změny velikosti jako součást prvotního plánování prostředí privátního cloudu. 

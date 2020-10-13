@@ -8,10 +8,10 @@ ms.date: 05/28/2020
 ms.author: jasonh
 ms.custom: devx-track-js
 ms.openlocfilehash: a40be5212fb1335482ec5011d24c8eaf5f3d9a00
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409675"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Použití příkazů rozšíření MongoDB ke správě dat uložených v rozhraní API Azure Cosmos DB pro MongoDB 
@@ -26,7 +26,7 @@ Rozhraní API Azure Cosmos DB pro MongoDB je kompatibilní s MongoDB serverem ve
 
 Následující příkazy rozšíření poskytují možnost vytvářet a upravovat prostředky specifické pro Azure Cosmos DB přes požadavky databáze:
 
-* [Vytvořit databázi](#create-database)
+* [Vytvoření databáze](#create-database)
 * [Aktualizovat databázi](#update-database)
 * [Získat databázi](#get-database)
 * [Vytvořit kolekci](#create-collection)
@@ -234,7 +234,7 @@ use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection"});
 ```
 
-Výsledkem bude, že se vytvoří nová pevná, unsharded, kolekce s 400RU/s a `_id` automaticky se vytvoří index pole. Tento typ konfigurace se použije také při vytváření nových kolekcí prostřednictvím `insert()` funkce. Příklad: 
+Výsledkem bude, že se vytvoří nová pevná, unsharded, kolekce s 400RU/s a `_id` automaticky se vytvoří index pole. Tento typ konfigurace se použije také při vytváření nových kolekcí prostřednictvím `insert()` funkce. Například: 
 
 ```javascript
 use test
@@ -423,7 +423,7 @@ Pokud tento parametr nezadáte, vlastní odpověď obsahuje dokument s následuj
 | `code`    |   `int`      |   Vrátí se jenom v případě, že se příkaz nezdařil (tj. ok = = 0). Obsahuje kód chyby MongoDB. Toto je volitelný parametr odpovědi.      |
 |  `errMsg`   |  `string`      |    Vrátí se jenom v případě, že se příkaz nezdařil (tj. ok = = 0). Obsahuje uživatelsky přívětivou chybovou zprávu. Toto je volitelný parametr odpovědi.      |
 
-Příklad:
+Například:
 
 ```javascript
 { "ok" : 1 }

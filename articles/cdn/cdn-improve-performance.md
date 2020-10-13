@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
 ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91358283"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Vylepšení výkonu prostřednictvím komprimace souborů v Azure CDN
@@ -139,7 +139,7 @@ Tyto profily podporují pouze kompresní kódování gzip. Když koncový bod pr
 Následující tabulky popisují Azure CDN chování komprese pro každý scénář:
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>Komprese je zakázaná nebo soubor nemá nárok na kompresi.
-| Formát požadovaný klientem (přes hlavičku Accept-Encoding) | Formát souboru v mezipaměti | Odpověď CDN klientovi | &nbsp; &nbsp; &nbsp; &nbsp; Poznámky &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| Formát požadovaný klientem (přes Accept-Encoding záhlaví) | Formát souboru v mezipaměti | Odpověď CDN klientovi | &nbsp; &nbsp; &nbsp; &nbsp; Poznámky &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | Komprimované |Komprimované |Komprimované | |
 | Komprimované |Nekomprimovaných |Nekomprimovaných | |
@@ -149,7 +149,7 @@ Následující tabulky popisují Azure CDN chování komprese pro každý scén�
 | Nekomprimovaných |Neuložený v mezipaměti |Nekomprimovaných | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>Komprese je povolena a soubor je vhodný pro kompresi
-| Formát požadovaný klientem (přes hlavičku Accept-Encoding) | Formát souboru v mezipaměti | Odpověď CDN klientovi | Poznámky |
+| Formát požadovaný klientem (přes Accept-Encoding záhlaví) | Formát souboru v mezipaměti | Odpověď CDN klientovi | Poznámky |
 | --- | --- | --- | --- |
 | Komprimované |Komprimované |Komprimované |Překóduje síť CDN mezi podporovanými formáty. |
 | Komprimované |Nekomprimovaných |Komprimované |CDN provede kompresi. |

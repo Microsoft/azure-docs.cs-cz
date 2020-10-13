@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 09/09/2020
+ms.date: 10/07/2020
 ms.author: aahi
 keywords: dolování textu, analýza míněníí, analýza textu
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 0fbd8b92846f6436128f64680a1fa9b77763a2c8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6d69c47c4833247ac259f9dcc166d7ab2696c117
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91710776"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977790"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Rychlý Start: použití klientské knihovny Analýza textu
 
@@ -28,8 +28,9 @@ Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 
 * Analýza mínění
 * Rozpoznávání jazyka
-* Rozpoznávání entit
-* Extrakce klíčových frází
+* rozpoznávání entit,
+* extrakce klíčových frází,
+* Dolování názoru
 
 ::: zone pivot="programming-language-csharp"
 
@@ -83,7 +84,7 @@ Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 
 Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovacím jazyce nezobrazili rychlý Start. Nedělejte si starosti, máme k dispozici další rychlé starty. Použijte tabulku k vyhledání správné ukázky pro programovací jazyk.
 
-| Jazyk | Dostupná verze | 
+| Language | Dostupná verze | 
 |----------|------------------------|
 | Ruby     | [Verze 2,1](ruby-sdk.md) | 
 | Přejít       | [Verze 2,1](go-sdk.md) | 
@@ -104,6 +105,6 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 
 * [Přehled analýzy textu](../overview.md)
 * [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Rozpoznávání entit](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Zjištění jazyka](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [rozpoznávání entit,](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Zjistit jazyk](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [Rozpoznávání jazyka](../how-tos/text-analytics-how-to-language-detection.md)

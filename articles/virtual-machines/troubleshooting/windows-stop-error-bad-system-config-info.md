@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4f2b338b8629209363acb7bbe0533831a089fe6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d1233c97ec80d5a2efa8b53c68e9e07a823165d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447327"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977027"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Chyba stop systému Windows – 0x00000074 chybné informace o konfiguraci systému
 
@@ -27,7 +27,7 @@ Tento článek popisuje kroky pro řešení problémů, při kterých se systém
 
 ## <a name="symptom"></a>Příznak
 
-Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje kód zastavení Windows **#0x00000074** nebo **BAD_SYSTEM_CONFIG_INFO**.
+Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje kód zastavení Windows **#0x00000074** nebo **BAD_SYSTEM_CONFIG_INFO**.
 
 *Váš počítač narazil na problém a je potřeba ho restartovat. Můžete restartovat.* 
  *Další informace o tomto problému a možných opravách najdete na http://windows.com/stopcode webu* 
@@ -58,7 +58,7 @@ Kód **BAD_SYSTEM_CONFIG_INFO** stop dojde, pokud je podregistr **systémového*
 
 ### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k opravnému virtuálnímu počítači
 
-1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
+1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) Připravte opravný virtuální počítač.
 1. Vyhledejte poškození podregistru.
 1. Pomocí Připojení ke vzdálené ploše se připojte k opravnému virtuálnímu počítači.
 1. Zkopírujte `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` složku a uložte ji buď v dobrém oddílu disku, nebo v jiném bezpečném umístění. Zazálohujte tuto složku jako preventivní, protože budete upravovat důležité soubory registru. 
@@ -133,4 +133,4 @@ Následující pokyny vám pomůžou určit, jestli příčina byla způsobená 
    
 ### <a name="rebuild-the-vm"></a>Opětovné sestavení virtuálního počítače
 
-K opětovnému sestavení virtuálního počítače použijte [Krok 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+K opětovnému sestavení virtuálního počítače použijte [Krok 5 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .

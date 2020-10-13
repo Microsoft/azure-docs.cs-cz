@@ -10,10 +10,10 @@ ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 96d8c32791bd968dd8740a2d4633496b42e9f3f4
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360969"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Rozšířená konfigurace automatického škálování pomocí šablon Správce prostředků pro VM Scale Sets
@@ -24,7 +24,7 @@ Můžete škálovat a škálovat v Virtual Machine Scale Sets na základě praho
 >
 >
 
-## <a name="walkthrough"></a>Návod
+## <a name="walkthrough"></a>Názorný postup
 V tomto návodu použijeme [Azure Resource Explorer](https://resources.azure.com/) ke konfiguraci a aktualizaci nastavení automatického škálování pro sadu škálování. Azure Resource Explorer je snadný způsob, jak spravovat prostředky Azure prostřednictvím šablon Správce prostředků. Pokud nástroj Azure Resource Explorer Tool začínáte, přečtěte si [Tento Úvod](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/).
 
 1. Nasaďte novou škálu a nastavte základní nastavení automatického škálování. V tomto článku se používá ten z Galerie Azure pro rychlý Start, který má sadu Windows Scale nastavenou se základní šablonou automatického škálování. Systémy Linux Scale Sets fungují stejným způsobem.
@@ -36,7 +36,7 @@ V tomto návodu použijeme [Azure Resource Explorer](https://resources.azure.com
 
 3. Nyní můžete přidat další profily a pravidla na základě plánu nebo konkrétních požadavků. Vytvoříme nastavení automatického škálování se třemi profily. Pokud chcete pochopit profily a pravidla v automatickém škálování, Projděte si [osvědčené postupy pro automatické škálování](autoscale-best-practices.md).  
 
-    | Profily & pravidla | Popis |
+    | Profily & pravidla | Description |
     |--- | --- |
     | **Profil** |**Na základě výkonu nebo metriky** |
     | Pravidlo |Počet zpráv ve frontě Service Bus > x |

@@ -13,10 +13,10 @@ ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89320252"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>Nakonfigurovat možnost zůstat přihlášeni? vyzvat k zadání účtů Azure AD
@@ -40,20 +40,20 @@ Následující diagram znázorňuje tok přihlašování uživatelů pro spravov
    * Pokud zvolíte **ne**, možnost **zůstat přihlášená?** zůstane skrytá, až se uživatel úspěšně přihlásí a uživatel se musí přihlásit pokaždé, když se prohlížeč zavře a znovu otevře.
    * Pokud zvolíte **Ano**, zobrazí se uživateli možnost **zůstat přihlášeni?** .
 
-    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="Snímek obrazovky ukazuje možnost zobrazit, která zůstane pro přihlášení nastavená.":::
+    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="Diagram znázorňující tok přihlašování uživatelů pro spravovaného vs. federovaného tenanta":::
 
 ## <a name="troubleshoot-sign-in-issues"></a>Řešení potíží s přihlašováním
 
 Pokud uživatel nefunguje na příkazovém řádku **zůstat přihlášeni?** , jak je znázorněno v následujícím diagramu, ale nepřesouvá pokus o přihlášení, zobrazí se položka protokolu přihlášení, která indikuje přerušení.
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="Zobrazuje zůstat přihlášený? výzv":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="Diagram znázorňující tok přihlašování uživatelů pro spravovaného vs. federovaného tenanta":::
 
 Podrobnosti o chybě při přihlašování jsou následující a v příkladu jsou zvýrazněné.
 
 * **Kód chyby přihlášení**: 50140
 * **Důvod selhání**: k této chybě došlo v důsledku přerušení přihlášení uživatele, když se uživatel přihlašuje.
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Příklad záznamu přihlašovacího protokolu s přerušením přihlášení":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Diagram znázorňující tok přihlašování uživatelů pro spravovaného vs. federovaného tenanta":::
 
 Uživatelům můžete zabránit v zobrazení přerušení nastavením **možnosti zobrazit možnost zůstat přihlášeni** na hodnotu **ne** v nastavení Pokročilé značky. Tím se zakáže výzva políčko zůstat přihlášeni pro všechny uživatele ve vašem adresáři služby Azure AD.
 

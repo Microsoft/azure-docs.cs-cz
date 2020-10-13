@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 1c2156975eb8d8dcb3580603dfbe1f5d1390b79a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06d71713075b401c876edd87f0ec884bcb252589
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852489"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977744"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Zásady zabezpečení a používání virtuálních počítačů v Azure
 
@@ -25,7 +25,7 @@ Moderní hrozby pro cloudová prostředí jsou dynamické a zvyšují tlak na za
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-[Azure Security Center](../security-center/security-center-intro.md) pomáhá zabránit, zjišťovat a reagovat na hrozby pro vaše virtuální počítače. Security Center poskytuje integrované monitorování zabezpečení a správu zásad napříč předplatnými Azure, pomáhá detekovat hrozby, které by jinak neinformovaly, a spolupracuje s širokou ekosystémem řešení zabezpečení.
+[Azure Security Center](../security-center/security-center-introduction.md) pomáhá zabránit, zjišťovat a reagovat na hrozby pro vaše virtuální počítače. Security Center poskytuje integrované monitorování zabezpečení a správu zásad napříč předplatnými Azure, pomáhá detekovat hrozby, které by jinak neinformovaly, a spolupracuje s širokou ekosystémem řešení zabezpečení.
 
 Přístup za běhu Security Center můžete v rámci nasazení virtuálního počítače použít k uzamknutí příchozího provozu na virtuální počítače Azure. tím se sníží riziko útoků na útoky a v případě potřeby získáte snadný přístup k virtuálním počítačům. Když je povolený za běhu a uživatel požaduje přístup k virtuálnímu počítači, Security Center zkontroluje, jaká oprávnění uživatel má pro daný virtuální počítač. Pokud mají správná oprávnění, požadavek se schválí a Security Center automaticky nakonfiguruje skupiny zabezpečení sítě (skupin zabezpečení sítě) tak, aby umožňovaly příchozí přenosy na vybrané porty po omezené množství času. Po vypršení časového limitu Security Center obnoví skupin zabezpečení sítě do jejich předchozích stavů. 
 
@@ -69,9 +69,8 @@ Tento problém řeší funkce spravovaných identit prostředků Azure v Azure A
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
-Pomocí [řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md)můžete oddělit povinnosti v rámci svého týmu a udělit uživatelům jenom přístup k vašemu virtuálnímu počítači, který potřebují k provádění svých úloh. Místo udělení všech neomezených oprávnění na virtuálním počítači můžete použít jenom určité akce. Řízení přístupu pro virtuální počítač můžete nakonfigurovat v [Azure Portal](../role-based-access-control/role-assignments-portal.md)pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/role)nebo[Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
+Pomocí [řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md)můžete oddělit povinnosti v rámci svého týmu a udělit uživatelům jenom přístup k vašemu virtuálnímu počítači, který potřebují k provádění svých úloh. Místo udělení všech neomezených oprávnění na virtuálním počítači můžete použít jenom určité akce. Řízení přístupu pro virtuální počítač můžete nakonfigurovat v [Azure Portal](../role-based-access-control/role-assignments-portal.md)pomocí rozhraní příkazového [řádku Azure](/cli/azure/role)nebo[Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 - Projděte si kroky pro monitorování zabezpečení virtuálních počítačů pomocí Azure Security Center pro [Linux](../security/fundamentals/overview.md) nebo [Windows](windows/tutorial-azure-security.md).
-
