@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o tom, jak používat Azure Serv
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: e5e97c6860c2cc01048f4f7caf9f40f9e07592d0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295596"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Použití Průzkumníka Service Bus k provádění operací s daty v Service Bus (Preview)
@@ -51,7 +51,7 @@ Po výběru možnosti **fronty** nebo **témata**vyberte konkrétní frontu nebo
 
 V levé navigační nabídce vyberte **Service Bus Explorer (Preview).**
 
-:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="Levá navigační nabídka Průzkumníka SB":::
+:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="Výběr entity":::
 
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>Odeslání zprávy do fronty nebo tématu
 
@@ -66,17 +66,17 @@ Vytvoření zprávy sem –
 
 Po sestavení zprávy stiskněte tlačítko Odeslat.
 
-:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="Napsat zprávu":::
+:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="Výběr entity":::
 
 Po úspěšném dokončení operace odeslání se 
 
 * Při odesílání do fronty se zvýší čítač metrik **aktivních zpráv** .
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Výběr entity":::
 
 * Při odesílání do tématu se čítač metrik **aktivních zpráv** zvýší na odběr, na který byla zpráva směrována.
 
-    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="TopicAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="Výběr entity":::
 
 ### <a name="receiving-a-message-from-a-queue"></a>Příjem zprávy z fronty
 
@@ -93,18 +93,18 @@ Příjem zprávy z fronty (nebo z podfronty nedoručených zpráv)
 1. V Průzkumníkovi Service Bus klikněte na kartu ***přijmout*** .
 2. Podívejte se na metriky a zjistěte, jestli neexistují **aktivní zprávy** nebo **zprávy nedoručených zpráv** .
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Výběr entity":::
 
 3. Vyberte mezi ***frontou*** nebo podfrontou ***nedoručených zpráv*** .
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="Výběr entity":::
 
 4. Klikněte na tlačítko ***přijmout*** a pak na ***Ano*** a potvrďte operaci přijmout a odstranit.
 
 
 Po úspěšném dokončení operace Receive se v mřížce zobrazí podrobnosti zprávy, jak je uvedeno níže. Můžete vybrat zprávu z mřížky a zobrazit její podrobnosti.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Snímek obrazovky okna fronty v Průzkumníkovi Azure Service Bus s podrobnostmi o zprávě zobrazené v aktivní zprávě, která je vybrána ve frontě.":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Výběr entity":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>Prohlížení zprávy z fronty
@@ -113,21 +113,21 @@ Pomocí funkce prohlížení můžete pomocí Průzkumníka Service Bus zobrazit
 
 1. Chcete-li prohlížet zprávy ve frontě, klikněte na kartu ***Náhled*** v Průzkumníkovi Service Bus.
 
-    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="PeekTab":::
+    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="Výběr entity":::
 
 2. Podívejte se na metriky a zjistěte, jestli k prohlížení neexistují **aktivní zprávy** nebo **zprávy nedoručených zpráv** .
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Výběr entity":::
 
 3. Pak vyberte mezi ***frontou*** nebo podfrontou ***nedoručených zpráv*** .
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="Výběr entity":::
 
 4. Klikněte na tlačítko ***Náhled*** . 
 
 Po dokončení operace prohlížet se v mřížce zobrazí až 32 zpráv, jak je uvedeno níže. Chcete-li zobrazit podrobnosti konkrétní zprávy, vyberte ji z mřížky. 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="PeekMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="Výběr entity":::
 
 > [!NOTE]
 >
@@ -146,17 +146,17 @@ Stejně jako u fronty se operace Receive dá provést na základě předplatnéh
 
 1. Klikněte na kartu ***přijmout*** a vyberte konkrétní ***předplatné*** z rozevíracího selektoru.
 
-    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="ReceiveTabSelected":::
+    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="Výběr entity":::
 
 2. Vyberte si z ***předplatného*** nebo z dílčí entity ***nedoručených zpráv*** .
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Výběr entity":::
 
 3. Klikněte na tlačítko ***přijmout*** a pak na ***Ano*** a potvrďte operaci přijmout a odstranit.
 
 Po úspěšném dokončení operace Receive se v mřížce zobrazí přijatá zpráva, jak je uvedeno níže. Chcete-li zobrazit podrobnosti zprávy, klikněte na zprávu.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Snímek obrazovky s kartou Receive v Průzkumníkovi Azure Service Bus s podrobnostmi o zprávě zobrazenými v aktivní přijaté zprávě":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Výběr entity":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>Prohlížení zprávy z předplatného
 
@@ -164,17 +164,17 @@ Chcete-li jednoduše procházet zprávy v rámci předplatného nebo její poden
 
 1. Klikněte na kartu ***Náhled*** a v rozevíracím selektoru vyberte konkrétní ***předplatné*** .
 
-    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="PeekTabSelected":::
+    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="Výběr entity":::
 
 2. Vyberte si mezi ***předplatným*** nebo podentitou ***nedoručených zpráv*** .
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Výběr entity":::
 
 3. Klikněte na tlačítko ***Náhled*** .
 
 Po dokončení operace prohlížet se v mřížce zobrazí až 32 zpráv, jak je uvedeno níže. Chcete-li zobrazit podrobnosti konkrétní zprávy, vyberte ji z mřížky. 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="PeekMessageFromSubscription":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="Výběr entity":::
 
 > [!NOTE]
 >

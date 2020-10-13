@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 0f43b667b94e39548d81e6c6258d987f47074cb1
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e70586fc2000e90b00d06d16bf5ba8df0bf5442f
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761324"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91944978"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play připojeným k vašemu řešení (Java)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91761324"
 
 IoT technologie Plug and Play zjednodušuje IoT tím, že vám umožní pracovat s funkcemi zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí jazyka Java připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -76,7 +76,7 @@ V [části nastavení prostředí pro iot technologie Plug and Play rychlé star
 V tomto rychlém startu použijete ukázkové řešení IoT napsané v jazyce Java k interakci s ukázkovým zařízením, které jste právě nastavili.
 
 > [!NOTE]
-> Tato ukázka používá obor názvů **com. Microsoft. Azure. SDK. IoT. Service. *;** z **klienta služby IoT Hub**. Další informace o tom, jak načíst ID modelu, najdete v [příručce pro vývojáře](concepts-developer-guide-service.md).
+> Tato ukázka používá obor názvů **com. Microsoft. Azure. SDK. IoT. Service** z **klienta služby IoT Hub**. Další informace o rozhraních API, včetně rozhraní Digital props API, najdete v [příručce pro vývojáře služby](concepts-developer-guide-service.md).
 
 1. Otevřete další okno terminálu pro použití jako terminálu **služby** .
 
@@ -88,7 +88,7 @@ V tomto rychlém startu použijete ukázkové řešení IoT napsané v jazyce Ja
     mvm exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.service.Thermostat"
     ```
 
-### <a name="get-digital-twin"></a>Získání digitálního vlákna
+### <a name="get-device-twin"></a>Získat dvojitou dvojici zařízení
 
 Následující fragment kódu ukazuje, jak načíst ve službě vlákna ve službě:
 
@@ -99,9 +99,9 @@ twinClient.getTwin(twin);
 System.out.println("Model Id of this Twin is: " + twin.getModelId());
 ```
 
-### <a name="update-a-digital-twin"></a>Aktualizace digitálního vlákna
+### <a name="update-a-device-twin"></a>Aktualizace vlákna v zařízení
 
-Následující fragment kódu ukazuje, jak použít *opravu* k aktualizaci vlastností prostřednictvím digitálního vlákna:
+Následující fragment kódu ukazuje, jak použít *opravu* k aktualizaci vlastností prostřednictvím vlákna zařízení:
 
 ```java
 String propertyName = "targetTemperature";

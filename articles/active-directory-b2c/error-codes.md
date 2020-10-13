@@ -12,10 +12,10 @@ ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 0122fa43c9d99c01797e3523748e4f31b4b7469a
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91664847"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Kódy chyb: Azure Active Directory B2C
@@ -101,7 +101,7 @@ Služba Azure Active Directory B2C může vrátit následující chyby.
 | `AADB2C90159` | Požadavek na ověření s vlastním uplatněním se nezdařil z důvodu {0} . |
 | `AADB2C90161` | Odpověď na odeslání s vlastním kontrolním výrazem se nezdařila z důvodu {0} . |
 | `AADB2C90165` | Zpráva iniciace SAML s ID {0} nebyla ve stavu nalezena. |
-| `AADB2C90168` | Požadavek HTTP-redirect neobsahuje požadovaný parametr {0} pro podepsaný požadavek. |
+| `AADB2C90168` | Požadavek HTTP-Redirect neobsahuje požadovaný parametr ' {0} ' pro podepsaný požadavek. |
 | `AADB2C90178` | Podpisový certifikát ' {0} ' nemá žádný privátní klíč. |
 | `AADB2C90182` | Dodaná code_verifier se neshodují s přidruženými code_challenge |
 | `AADB2C90183` | Zadaný code_verifier není platný. |

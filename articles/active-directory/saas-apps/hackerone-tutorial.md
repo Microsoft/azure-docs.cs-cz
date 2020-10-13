@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 530ef271091afc3e646d375ea471d8c48f0f8651
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d72e6c6a606a199bd8b0ada601479267e0d728d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544178"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945146"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Kurz: Azure Active Directory integrace s HackerOne
 
@@ -126,11 +126,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí HackerOn
 
 2. V nabídce v horní části klikněte na **Nastavení**.
 
-    ![Konfigurace jednoho Sign-On](./media/hackerone-tutorial/tutorial_hackerone_001.png)
+    ![Snímek obrazovky s názvem "nastavení" vybraným v nabídce](./media/hackerone-tutorial/tutorial_hackerone_001.png)
 
 3. Přejděte na **ověřování** a klikněte na **Přidat nastavení SAML**.
 
-    ![Konfigurace jednoho Sign-On](./media/hackerone-tutorial/tutorial_hackerone_003.png)
+    ![Snímek obrazovky zobrazující stránku nastavení ověřování s vybraným tlačítkem Přidat nastavení S A M L.](./media/hackerone-tutorial/tutorial_hackerone_003.png)
 
 4. V dialogovém okně **Nastavení SAML** proveďte následující kroky:
 
@@ -146,7 +146,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí HackerOn
 
 5. V dialogovém okně nastavení ověřování proveďte následující kroky:
 
-    ![Konfigurace jednoho Sign-On](./media/hackerone-tutorial/tutorial_hackerone_005.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno nastavení ověřování s vybraným tlačítkem spustit test.](./media/hackerone-tutorial/tutorial_hackerone_005.png)
 
     a. Klikněte na **Spustit test**.
 

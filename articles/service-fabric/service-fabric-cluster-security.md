@@ -4,12 +4,12 @@ description: Přečtěte si o scénářích zabezpečení pro cluster Azure Serv
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d6f3e94a735a6a8880d726890f1eb7ac346c755
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261072"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946191"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric scénáře zabezpečení clusteru
 
@@ -134,7 +134,7 @@ Koncept vytváření zabezpečených clusterů je stejný, bez ohledu na to, jes
 
 ### <a name="client-authentication-certificates-optional"></a>Certifikáty pro ověřování klientů (volitelné)
 
-Pro klientské operace správce nebo uživatele lze zadat libovolný počet dalších certifikátů. Klient může tento certifikát použít při vyžadování vzájemného ověřování. Klientské certifikáty obvykle nejsou vydávány certifikační autoritou třetí strany. Místo toho osobní úložiště aktuálního umístění uživatele obvykle obsahuje klientské certifikáty, které jsou umístěny v kořenové autoritě. Certifikát by měl mít **zamýšlenou** hodnotu pro **ověření klienta**.  
+Pro klientské operace správce nebo uživatele lze zadat libovolný počet dalších certifikátů. Klient může tyto certifikáty použít, když je potřeba vzájemné ověřování. Klientské certifikáty obvykle nejsou vydávány certifikační autoritou třetí strany. Místo toho osobní úložiště aktuálního umístění uživatele obvykle obsahuje klientské certifikáty, které jsou umístěny v kořenové autoritě. Certifikát by měl mít **zamýšlenou** hodnotu pro **ověření klienta**.  
 
 Ve výchozím nastavení má certifikát clusteru oprávnění klienta správce. Tyto další klientské certifikáty by neměly být nainstalovány do clusteru, ale jsou zadány jako povolené v konfiguraci clusteru.  Klientské certifikáty ale musí být nainstalované na klientských počítačích pro připojení ke clusteru a provádění operací.
 

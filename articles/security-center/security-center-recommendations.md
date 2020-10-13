@@ -13,19 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7f6c0f2a311590219fb59bfe1ec63831c03e8af2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0efb2c26a63418835dd2b7561a1fb9d3a9d5fee8
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314432"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945549"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Doporučení zabezpečení v Azure Security Center 
 V tomto tématu se dozvíte, jak zobrazit a pochopit doporučení v Azure Security Center, která vám pomůžou chránit vaše prostředky Azure.
 
-> [!NOTE]
-> Tento dokument vám tuto službu představí formou ukázkového nasazení.  Tento dokument není pokrokový průvodce.
->
 
 ## <a name="what-are-security-recommendations"></a>Co jsou doporučení zabezpečení?
 
@@ -35,39 +32,36 @@ Security Center pravidelně analyzuje stav zabezpečení vašich prostředků Az
 
 Každé doporučení vám poskytne:
 
-- Stručný popis problému.
-- Kroky k nápravě, které je nutné provést pro implementaci doporučení.
-- Ovlivněné prostředky.
+- Stručný popis problému
+- Kroky k nápravě, které je potřeba provést, aby bylo možné implementovat doporučení.
+- Ovlivněné prostředky
 
 ## <a name="monitor-recommendations"></a>Doporučení pro monitorování <a name="monitor-recommendations"></a>
 
-Security Center analyzuje stav zabezpečení vašich prostředků, aby identifikoval potenciální ohrožení zabezpečení. Dlaždice **doporučení** v části **Přehled** zobrazuje celkový počet doporučení identifikovaných nástrojem Security Center.
+Security Center analyzuje stav zabezpečení vašich prostředků, aby identifikoval potenciální ohrožení zabezpečení. 
 
-![Přehled služby Security Center](./media/security-center-recommendations/asc-overview.png)
-
-1. V části **Přehled**vyberte **dlaždici doporučení** . Otevře se seznam **doporučení** .
-
-1. Doporučení jsou seskupena do ovládacích prvků zabezpečení.
+1. V nabídce Security Center otevřete stránku **doporučení** a podívejte se na doporučení týkající se vašeho prostředí. Doporučení jsou seskupena do ovládacích prvků zabezpečení.
 
       ![Doporučení seskupená podle řízení zabezpečení](./media/security-center-recommendations/view-recommendations.png)
 
-1. Rozbalením ovládacího prvku a výběrem konkrétního doporučení zobrazíte stránku s doporučeními.
+1. Rozbalením ovládacího prvku a výběrem konkrétního doporučení zobrazíte stránku s podrobnostmi o doporučení.
 
     :::image type="content" source="./media/security-center-recommendations/recommendation-details-page.png" alt-text="Stránka s podrobnostmi o doporučení." lightbox="./media/security-center-recommendations/recommendation-details-page.png":::
 
     Stránka obsahuje:
 
-    - **Vynutilit** a **Odepřít** tlačítka pro podporovaná doporučení (viz [Ochrana před neoprávněnými konfiguracemi s doporučeními pro vymáhání/zamítnutí](prevent-misconfigurations.md)
-    - **Indikátor závažnosti**
-    - **Interval aktuálnosti**  (tam, kde je relevantní) 
-    - **Popis** – stručný popis problému
-    - **Postup nápravy** – popis ručních kroků požadovaných k nápravě potíží se zabezpečením u ovlivněných prostředků. Pro doporučení s "rychlou opravou" můžete před použitím navrhované opravy pro vaše prostředky vybrat možnost **Zobrazit logiku oprav** . 
-    - **Ovlivněné prostředky** – vaše prostředky jsou seskupeny do karet:
+    1. **Vynutilit** a **Odepřít** tlačítka pro podporovaná doporučení (viz [Ochrana před neoprávněnými konfiguracemi s doporučeními pro vymáhání/zamítnutí](prevent-misconfigurations.md)
+    1. **Indikátor závažnosti**
+    1. **Interval aktuálnosti**  (tam, kde je relevantní) 
+    1. **Popis** – stručný popis problému
+    1. **Postup nápravy** – popis ručních kroků požadovaných k nápravě potíží se zabezpečením u ovlivněných prostředků. Pro doporučení s "rychlou opravou" můžete před použitím navrhované opravy pro vaše prostředky vybrat možnost **Zobrazit logiku oprav** . 
+    1. **Ovlivněné prostředky** – vaše prostředky jsou seskupeny do karet:
         - **Prostředky v pořádku** – relevantní prostředky, na které buď nedochází, nebo na které jste už problém napravili.
         - **Zdroje** , které nejsou v pořádku – prostředky, které jsou pořád ovlivněny zjištěným problémem.
         - **Nepoužitelné prostředky** – prostředky, u kterých doporučení nemůže poskytnout definitivní odpověď. Karta netýká se také obsahuje důvody pro každý prostředek. 
 
             :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Stránka s podrobnostmi o doporučení.":::
+    1. Tlačítka akcí k nápravě doporučení nebo spuštění aplikace logiky
 
 ## <a name="preview-recommendations"></a>Doporučení pro verzi Preview
 

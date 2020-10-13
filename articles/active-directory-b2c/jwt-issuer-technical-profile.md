@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e8f5564f9e7e1176db1fed5fae38eee58874c2eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b333c02c3db3e07ad10dc4e4365eb50aced694d
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85204197"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945188"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu pro vystavitele tokenů JWT v Azure Active Directory B2C vlastní zásady
 
@@ -33,7 +33,7 @@ Následující příklad ukazuje technický profil pro `JwtIssuer` :
 ```xml
 <TechnicalProfile Id="JwtIssuer">
   <DisplayName>JWT Issuer</DisplayName>
-  <Protocol Name="OpenIdConnect" />
+  <Protocol Name="None" />
   <OutputTokenFormat>JWT</OutputTokenFormat>
   <Metadata>
     <Item Key="client_id">{service:te}</Item>
@@ -56,7 +56,7 @@ Prvky **InputClaims**, **OutputClaims**a **PersistClaims** jsou prázdné nebo c
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| issuer_refresh_token_user_identity_claim_type | Ano | Deklarace identity, která se má použít jako deklarace identity uživatele v rámci autorizačních kódů OAuth2 a obnovovacích tokenů. Ve výchozím nastavení byste ji měli nastavit na `objectId` , pokud nezadáte jiný typ deklarace identity SubjectNamingInfo. |
+| issuer_refresh_token_user_identity_claim_type | Yes | Deklarace identity, která se má použít jako deklarace identity uživatele v rámci autorizačních kódů OAuth2 a obnovovacích tokenů. Ve výchozím nastavení byste ji měli nastavit na `objectId` , pokud nezadáte jiný typ deklarace identity SubjectNamingInfo. |
 | SendTokenResponseBodyWithJsonNumbers | No | Vždy nastavte na `true` . Pro formát starší verze, kde jsou číselné hodnoty zadány jako řetězce místo čísel JSON, nastavte na `false` . Tento atribut je vyžadován pro klienty, kteří mají závislost na předchozí implementaci, která vrátila tyto vlastnosti jako řetězce. |
 | token_lifetime_secs | No | Doba života přístupového tokenu. Doba života nosného tokenu OAuth 2,0, který se používá k získání přístupu k chráněnému prostředku. Výchozí hodnota je 3 600 sekund (1 hodina). Minimální (včetně) je 300 sekund (5 minut). Maximální (včetně) je 86 400 sekund (24 hodin). |
 | id_token_lifetime_secs | No | Životnost tokenu ID Výchozí hodnota je 3 600 sekund (1 hodina). Minimální (včetně) je 300 sekund (5 minut). Maximální (včetně) je sekund 86 400 (24 hodin). |
@@ -73,8 +73,8 @@ Element CryptographicKeys obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| issuer_secret | Ano | Certifikát x509 (sada klíčů RSA), který se použije k podepsání tokenu JWT. `B2C_1A_TokenSigningKeyContainer`Klíč, který nakonfigurujete v části Začínáme [s vlastními zásadami](custom-policy-get-started.md). |
-| issuer_refresh_token_key | Ano | Certifikát x509 (sada klíčů RSA), který se použije k zašifrování obnovovacího tokenu. Klíč jste nakonfigurovali v části Začínáme `B2C_1A_TokenEncryptionKeyContainer` [s vlastními zásadami](custom-policy-get-started.md) . |
+| issuer_secret | Yes | Certifikát x509 (sada klíčů RSA), který se použije k podepsání tokenu JWT. `B2C_1A_TokenSigningKeyContainer`Klíč, který nakonfigurujete v části Začínáme [s vlastními zásadami](custom-policy-get-started.md). |
+| issuer_refresh_token_key | Yes | Certifikát x509 (sada klíčů RSA), který se použije k zašifrování obnovovacího tokenu. Klíč jste nakonfigurovali v části Začínáme `B2C_1A_TokenEncryptionKeyContainer` [s vlastními zásadami](custom-policy-get-started.md) . |
 
 ## <a name="session-management"></a>Správa relací
 

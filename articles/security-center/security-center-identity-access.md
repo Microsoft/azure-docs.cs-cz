@@ -11,59 +11,83 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/16/2020
+ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 042780c313c444062fd512ab0d9f38aaeb6cf170
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02e78969ce30f109f16309075b040b06c773b0dd
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894561"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946212"
 ---
 # <a name="monitor-identity-and-access"></a>Monitorování identity a přístupu
 
-> [!TIP]
-> Od března 2020 jsou doporučení identit a přístupu Azure Security Center součástí všech předplatných v bezplatné cenové úrovni. Pokud máte předplatné na bezplatné úrovni, bude to mít vliv na jejich bezpečné skóre, protože nebyly dříve vyhodnoceny pro jejich identitu a zabezpečení přístupu. 
+Hraniční zabezpečení se vyvinulo z hraniční sítě až po hranice identity. V tomto vývojovém prostředí je zabezpečení méně o obraně vaší sítě a další informace o správě zabezpečení aplikací, dat a uživatelů.
 
-Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
+Když sledujete aktivity a nastavení konfigurace související s identitou, můžete proaktivně provádět aktivní akce dřív, než dojde k incidentu, nebo reaktivní akce k zastavení pokusů o útok.
 
-Hraniční zabezpečení se vyvinulo z hraniční sítě až po hranice identity. Zabezpečení se zasahuje do ochrany vaší sítě a další informace o tom, jak chrání vaše data, a také o správě zabezpečení vašich aplikací a uživatelů. V současné době se ale čím dál víc dat a aplikací přesouvá do cloudu a novým perimetrem se proto stává identita.
+## <a name="what-identity-and-access-safeguards-does-security-center-provide"></a>Jakou ochranu identity a přístupu Security Center poskytuje? 
 
-Sledováním aktivit identity můžete proaktivně provádět aktivní akce, než dojde k incidentu, nebo reaktivní akce k zastavení pokusu o útok. Security Center například můžou označovat zastaralé účty (účty, které už nepotřebujete, a zablokovat přihlášení pomocí Azure Active Directory) k odebrání. 
+Azure Security Center má dva vyhrazené bezpečnostní prvky zabezpečení pro zajištění, že splňujete požadavky na identitu a zabezpečení vaší organizace: 
 
-Příklady doporučení, která se můžou zobrazit v části Azure Security Center **Identita a přístup k** prostředkům zabezpečení, zahrnují:
+ - **Správa přístupu a oprávnění** – doporučujeme, abyste přijali [model přístupu s minimálními oprávněními](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) a zajistili uživatelům udělení přístupu pouze k tomu, aby mohli provádět své úlohy. Tento ovládací prvek také obsahuje doporučení pro řízení přístupu k vašim prostředkům [pomocí implementace řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) .
+ 
+ - **Povolení MFA** – s povoleným [ověřováním MFA](https://www.microsoft.com/security/business/identity/mfa) jsou vaše účty bezpečnější a uživatelé se můžou i nadále ověřovat prakticky u všech aplikací s jednotným přihlašováním.
+
+### <a name="example-recommendations-for-identity-and-access"></a>Příklady doporučení pro identitu a přístup
+
+Příklady doporučení, která se můžou zobrazit v těchto dvou ovládacích prvcích na stránce s **doporučeními** pro Security Center:
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
 - Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.
 - Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.
-- Zastaralé účty by se měly odebírat z předplatného.
+- Zastaralé účty by se měly odebírat z předplatného (zastaralé účty jsou účty, které už nepotřebujete, a zablokovat přihlášení pomocí Azure Active Directory).
 
-Další informace o těchto doporučeních a úplném seznamu doporučených doporučení najdete v tématu [věnovaném doporučením pro identitu a přístup](recommendations-reference.md#recs-identity).
+> [!TIP]
+> Další informace o těchto doporučeních a dalších těchto ovládacích prvcích najdete v tématu [věnovaném doporučením pro identitu a přístup](recommendations-reference.md#recs-identity).
 
-> [!NOTE]
-> Pokud má vaše předplatné více než 600 účtů, Security Center není možné spustit doporučení identity pro vaše předplatné. Doporučení, která nejsou spuštěná, jsou uvedená v části "nedostupná posouzení" níže.
-Security Center není možné spustit doporučení identity pro agenty správce Cloud Solution Provider (CSP).
->
+### <a name="limitations"></a>Omezení
 
+Existují určitá omezení pro Security Center identity a ochrany přístupu:
 
-Všechna doporučení pro identitu a přístup jsou k dispozici ve dvou ovládacích prvcích zabezpečení na stránce **doporučení** :
+- Doporučení pro identitu nejsou k dispozici pro předplatné s více než 600 účty. V takových případech budou tato doporučení uvedena v části nedostupná posouzení.
+- Doporučení pro identitu nejsou k dispozici pro agenty správce pro poskytovatele Cloud Solution Provider (CSP).
+- Doporučení identity neidentifikují účty spravované pomocí privilegovaného systému identity managementu (PIM). Pokud používáte nástroj PIM, můžou se v ovládacím prvku **Správa přístupu a oprávnění** zobrazit nepřesné výsledky.
 
-- Správa přístupu a oprávnění 
-- Povolení MFA
+## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>Multi-Factor Authentication (MFA) a Azure Active Directory 
 
-![Dva bezpečnostní prvky zabezpečení s doporučeními souvisejícími s identitou a přístupem](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
-
-
-## <a name="enable-multi-factor-authentication-mfa"></a>Povolit službu Multi-Factor Authentication (MFA)
-
-Povolení MFA vyžaduje [oprávnění klienta Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles). 
+Povolení MFA vyžaduje [oprávnění klienta Azure Active Directory (AD)](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 - Pokud máte edici Premium ve službě AD, povolte vícefaktorové ověřování pomocí [podmíněného přístupu](../active-directory/conditional-access/concept-conditional-access-policy-common.md).
+- Pokud používáte bezplatnou edici AD, povolte **výchozí nastavení zabezpečení** , jak je popsáno v [Azure Active Directory dokumentaci](../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
 
-- Pokud používáte bezplatnou edici AD, povolte **výchozí nastavení zabezpečení** v Azure Active Directory, jak je popsáno v [dokumentaci ke službě AD](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults).
+## <a name="identify-accounts-without-multi-factor-authentication-mfa-enabled"></a>Identifikace účtů bez povoleného ověřování MFA (Multi-Factor Authentication)
+
+Pokud chcete zjistit, které účty nemají povolený MFA, použijte následující dotaz na Azure Resource Graph. Dotaz vrátí všechny prostředky, které nejsou v pořádku – účty s doporučením "MFA by se měly povolit u účtů s oprávněním vlastníka v předplatném". 
+
+1. Otevřete **Průzkumníka Azure Resource graphu**.
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Spouští se stránka pro doporučení pro Azure Resource Graph Explorer * *" :::
+
+1. Zadejte následující dotaz a vyberte **Spustit dotaz**.
+
+    ```kusto
+    securityresources
+     | where type == "microsoft.security/assessments"
+     | where properties.displayName == "MFA should be enabled on accounts with owner permissions on your subscription"
+     | where properties.status.code == "Unhealthy"
+    ```
+
+1. `additionalData`Vlastnost odhalí seznam ID objektů účtu pro účty, které nemají vymáhání MFA. 
+
+    > [!NOTE]
+    > Účty se zobrazují jako ID objektů, nikoli názvy účtů, aby chránily soukromí držitelů účtů.
+
+> [!TIP]
+> Alternativně můžete použít vyhodnocení metod REST API Security Center [– získat](https://docs.microsoft.com/rest/api/securitycenter/assessments/get).
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o doporučeních, která se vztahují na jiné typy prostředků Azure, najdete v následujících článcích:
+Další informace o doporučeních, která se vztahují na jiné typy prostředků Azure, najdete v následujícím článku:
 
 - [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)

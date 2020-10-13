@@ -12,10 +12,10 @@ ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: f0ec9d2a3794ea910339b4d329bb28f23c5a76b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297354"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Řešení běžných problémů s Azure Database Migration Service a chyb
@@ -64,7 +64,7 @@ Při zastavování instance Azure Database Migration Service se zobrazí násled
 
 | Příčina         | Řešení |
 | ------------- | ------------- |
-| Tato chyba se zobrazí, když instance služby, kterou se pokoušíte zastavit, zahrnuje aktivity, které jsou pořád spuštěné nebo přítomné v projektech migrace. <br><br><br><br><br><br> | Zajistěte, aby v instanci Azure Database Migration Service, kterou se pokoušíte zastavit, neběžely žádné aktivity. Před pokusem o zastavení služby můžete také odstranit aktivity nebo projekty. Následující postup ukazuje, jak odebrat projekty pro vyčištění instance služby migrace odstraněním všech spuštěných úloh:<br>1. Install-Module-Name AzureRM. datamigration <br>2. přihlášení – AzureRmAccount <br>3. Select-AzureRmSubscription-Subscription " \<subName> " <br> 4. Remove-AzureRmDataMigrationProject-name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
+| Tato chyba se zobrazí, když instance služby, kterou se pokoušíte zastavit, zahrnuje aktivity, které jsou pořád spuštěné nebo přítomné v projektech migrace. <br><br><br><br><br><br> | Zajistěte, aby v instanci Azure Database Migration Service, kterou se pokoušíte zastavit, neběžely žádné aktivity. Před pokusem o zastavení služby můžete také odstranit aktivity nebo projekty. Následující postup ukazuje, jak odebrat projekty pro vyčištění instance služby migrace odstraněním všech spuštěných úloh:<br>1. Install-Module-Name migrace AzureRM. <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription-Subscription " \<subName> " <br> 4. Remove-AzureRmDataMigrationProject-name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Při pokusu o spuštění Azure Database Migration Service došlo k chybě.
 

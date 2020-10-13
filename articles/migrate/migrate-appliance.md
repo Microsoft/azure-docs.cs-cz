@@ -4,10 +4,10 @@ description: Poskytuje souhrn podpory pro zařízení Azure Migrate.
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91450048"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
@@ -84,7 +84,7 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 **Podporované nasazení** | Nasaďte jako vyhrazený fyzický počítač nebo virtuální počítač pomocí instalačního skriptu PowerShellu. Skript je k dispozici ke stažení na portálu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Omezení zjišťování** | Zařízení může zjistit až 1000 fyzických serverů.
-**Skript prostředí PowerShell** | Stáhněte si skript (AzureMigrateInstaller.ps1) ve složce zip z portálu nebo z [tohoto místa](https://go.microsoft.com/fwlink/?linkid=2140334). [Přečtěte si další informace](tutorial-discover-physical.md).<br/><br/> Velikost ke stažení je 85,8 MB.
+**Skript prostředí PowerShell** | Stáhněte si skript (AzureMigrateInstaller.ps1) ve složce zip z portálu nebo z [tohoto místa](https://go.microsoft.com/fwlink/?linkid=2140334). [Další informace](tutorial-discover-physical.md).<br/><br/> Velikost ke stažení je 85,8 MB.
 **Software a hardware** |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 16 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware.<br/>_(V současné době se nasazení zařízení podporuje jenom v systému Windows Server 2016.)_
 **Hodnota hash** | [Ověřte](tutorial-discover-physical.md#verify-security) hodnoty hash skriptu PowerShellu.
 
@@ -180,7 +180,7 @@ IPv6 adresy | síť. Guest.Net
 Propustnost čtení (MB za sekundu) | NET. Received. Average
 Propustnost zápisu (MB za sekundu) | NET. přenášeno. Average
 **Podrobnosti o cestě inventáře** | 
-Název | vnitřního. GetType (). Jméno
+Name | vnitřního. GetType (). Jméno
 Typ podřízeného objektu | vnitřního. ChildType
 Referenční informace | vnitřního. MoRef
 Podrobnosti nadřazené položky | Kontejner. Parent
@@ -227,9 +227,9 @@ Tady jsou funkce data, která zařízení shromažďuje z každého virtuálníh
 
 **Data**  | **Rutina PowerShellu** | **Vlastnost**
 --- | --- | ---
-Název  | Get – WindowsFeature  | Název
-Typ funkce | Get – WindowsFeature  | FeatureType
-Nadřazený  | Get – WindowsFeature  | Nadřazený
+Name  | Get-WindowsFeature  | Name
+Typ funkce | Get-WindowsFeature  | FeatureType
+Nadřazený  | Get-WindowsFeature  | Nadřazený
 
 #### <a name="windows-vm-sql-server-metadata"></a>Metadata SQL Server virtuálních počítačů s Windows
 
@@ -237,7 +237,7 @@ Tady jsou metadata SQL serveru, která zařízení shromažďuje z virtuálních
 
 **Data**  | **Umístění registru**  | **Klíč**
 --- | --- | ---
-Název  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
 Edice  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Edice 
 Aktualizace Service Pack  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
 Verze  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Verze 
@@ -248,7 +248,7 @@ Zde jsou data operačního systému, která zařízení shromažďují každý v
 
 Data  | Třída WMI  | Vlastnost třídy WMI
 --- | --- | ---
-Název  | Win32_operatingsystem  | Titulek
+Name  | Win32_operatingsystem  | Titulek
 Verze  | Win32_operatingsystem  | Verze
 Architektura  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Tady je nainstalovaná data aplikace, která zařízení shromažďuje z každé
 
 Data  | Příkaz
 --- | --- 
-Název | ot./min., bázi dpkg – dotaz, přichycení
+Name | ot./min., bázi dpkg – dotaz, přichycení
 Verze | ot./min., bázi dpkg – dotaz, přichycení
 Poskytovatel | ot./min., bázi dpkg – dotaz, přichycení
 
@@ -268,7 +268,7 @@ Zde jsou data operačního systému, která zařízení shromažďují každý v
 
 **Data**  | **Příkaz** 
 --- | --- | ---
-Název <br/> verze | Shromážděno z jednoho nebo více následujících souborů:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Name <br/> verze | Shromážděno z jednoho nebo více následujících souborů:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 Architektura | uname
 
 
@@ -454,7 +454,7 @@ Zařízení se upgraduje, protože Azure Migrate agenti, kteří běží na zař
 ### <a name="turn-off-auto-update"></a>Vypnout automatické aktualizace
 
 1. V počítači, na kterém je zařízení spuštěno, otevřete Editor registru.
-2. Přejděte na **HKEY_LOCAL_MACHINE \software\microsoft\azureappliance**.
+2. Přejděte na **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
 3. Pokud chcete vypnout automatické aktualizace, vytvořte klíč registru **AutoUpdate** s hodnotou DWORD 0.
 
     ![Nastavení klíče registru](./media/migrate-appliance/registry-key.png)
@@ -464,13 +464,13 @@ Zařízení se upgraduje, protože Azure Migrate agenti, kteří běží na zař
 
 Automatické aktualizace můžete zapnout pomocí některé z těchto metod:
 
-- Odstraněním klíče registru AutoUpdate z HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance.
+- Odstraněním klíče registru AutoUpdate z HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance.
 - Pokud chcete zapnout automatické aktualizace, klikněte na **Zobrazit služby zařízení** z nejnovějších kontrol aktualizací na panelu **nastavit předpoklady** .
 
 Postup odstranění klíče registru:
 
 1. V počítači, na kterém je zařízení spuštěno, otevřete Editor registru.
-2. Přejděte na **HKEY_LOCAL_MACHINE \software\microsoft\azureappliance**.
+2. Přejděte na **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
 3. Odstraňte klíč registru **AutoUpdate**, který byl dříve vytvořen pro vypnutí automatických aktualizací.
 
 Zapnutí z Configuration Manager zařízení po dokončení zjišťování:
@@ -507,7 +507,7 @@ Pokud používáte starší verzi nějaké součásti, musíte službu odinstalo
 
 1. Chcete-li vyhledat nejnovější verze služby zařízení, [stáhněte](https://aka.ms/latestapplianceservices) LatestComponents.jsv souboru.
 2.    Po stažení otevřete LatestComponents.jsv souboru poznámkového bloku.
-3. Vyhledejte nejnovější verzi služby v souboru a odkaz pro stažení. Příklad:
+3. Vyhledejte nejnovější verzi služby v souboru a odkaz pro stažení. Například:
 
     "Name": "ASRMigrationWebApp"; "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 

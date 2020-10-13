@@ -3,17 +3,17 @@ title: Interakce se zařízením IoT technologie Plug and Play připojeným k ř
 description: Pomocí Pythonu se můžete připojit k zařízení IoT technologie Plug and Play, které je připojené k řešení Azure IoT, a pracovat s nimi.
 author: elhorton
 ms.author: elhorton
-ms.date: 7/13/2020
+ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: be5ff3e863752dfc187bd91257425af5e8de85c4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d04a1eda7dc414233075f5d70e29c967c8bdfc35
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91574958"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946072"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-python"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play připojeným k vašemu řešení (Python)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91574958"
 
 IoT technologie Plug and Play zjednodušuje IoT tím, že vám umožní pracovat s modelem zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí Pythonu připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -73,13 +73,16 @@ V tomto rychlém startu použijete vzorový termostat zařízení napsané v Pyt
 
 V tomto rychlém startu použijete v Pythonu ukázkové řešení IoT, které vám umožní pracovat s ukázkovým zařízením, které jste právě nastavili.
 
-1. Otevřete další okno terminálu pro použití jako terminálu **služby** . 
+1. Otevřete další okno terminálu pro použití jako terminálu **služby** .
 
 1. Přejděte do složky */Azure-IoT-SDK-Python/Azure-IoT-Hub/Samples* naklonovaného úložiště Python SDK.
 
-1. Ve složce Samples jsou čtyři ukázkové soubory, které demonstrují operace s digitálním podtřídou správce: *get_digital_twin_sample. py, update_digitial_twin_sample. py, invoke_command_sample. py a invoke_component_command_sample-. py*.  Tyto ukázky ukazují, jak používat jednotlivá rozhraní API pro komunikaci se zařízeními IoT technologie Plug and Play:
+1. Otevřete soubor *registry_manager_pnp_sample. py* a Prohlédněte si kód. V této ukázce se dozvíte, jak používat třídu **IoTHubRegistryManager** k interakci se zařízením IoT technologie Plug and Play.
 
-### <a name="get-digital-twin"></a>Získání digitálního vlákna
+> [!NOTE]
+> Tyto ukázky služeb používají třídu **IoTHubRegistryManager** z **klienta služby IoT Hub**. Další informace o rozhraních API, včetně rozhraní Digital props API, najdete v [příručce pro vývojáře služby](concepts-developer-guide-service.md).
+
+### <a name="get-the-device-twin"></a>Získat zdvojené zařízení
 
 V [části nastavení prostředí pro iot technologie Plug and Play rychlé starty a kurzy](set-up-environment.md) , které jste vytvořili dvě proměnné prostředí pro konfiguraci ukázky pro připojení ke službě IoT Hub a zařízení:
 
@@ -89,79 +92,77 @@ V [části nastavení prostředí pro iot technologie Plug and Play rychlé star
 Pomocí následujícího příkazu v terminálu **služby** spusťte tuto ukázku:
 
 ```cmd/sh
-python get_digital_twin_sample.py
+set IOTHUB_METHOD_NAME="getMaxMinReport"
+set IOTHUB_METHOD_PAYLOAD="hello world"
+python registry_manager_pnp_sample.py
 ```
 
-Výstup ukazuje digitální vyzdvojení zařízení a vytiskne jeho ID modelu:
+> [!NOTE]
+> Pokud tuto ukázku spouštíte v systému Linux, použijte `export` místo `set` .
+
+Výstup zobrazuje nevlákenné zařízení a vytiskne jeho ID modelu:
 
 ```cmd/sh
-{'$dtId': 'mySimpleThermostat', '$metadata': {'$model': 'dtmi:com:example:Thermostat;1'}}
-Model Id: dtmi:com:example:Thermostat;1
+The Model ID for this device is:
+dtmi:com:example:Thermostat;1
 ```
 
-Následující fragment kódu ukazuje vzorový kód z *get_digital_twin_sample. py*:
+Následující fragment kódu ukazuje vzorový kód z *registry_manager_pnp_sample. py*:
 
 ```python
-    # Get digital twin and retrieve the modelId from it
-    digital_twin = iothub_digital_twin_manager.get_digital_twin(device_id)
-    if digital_twin:
-        print(digital_twin)
-        print("Model Id: " + digital_twin["$metadata"]["$model"])
-    else:
-        print("No digital_twin found")
+    # Create IoTHubRegistryManager
+    iothub_registry_manager = IoTHubRegistryManager(iothub_connection_str)
+
+    # Get device twin
+    twin = iothub_registry_manager.get_twin(device_id)
+    print("The device twin is: ")
+    print("")
+    print(twin)
+    print("")
+
+    # Print the device's model ID
+    additional_props = twin.additional_properties
+    if "modelId" in additional_props:
+        print("The Model ID for this device is:")
+        print(additional_props["modelId"])
+        print("")
 ```
 
-### <a name="update-a-digital-twin"></a>Aktualizace digitálního vlákna
+### <a name="update-a-device-twin"></a>Aktualizace vlákna v zařízení
 
-V této ukázce se dozvíte, jak pomocí *opravy* aktualizovat vlastnosti pomocí digitálního vlákna vašeho zařízení. Následující fragment kódu z *update_digital_twin_sample. py* ukazuje, jak sestavit opravu:
+V této ukázce se dozvíte, jak aktualizovat `targetTemperature` vlastnost s možností zápisu v zařízení:
 
 ```python
-# If you already have a component thermostat1:
-# patch = [{"op": "replace", "path": "/thermostat1/targetTemperature", "value": 42}]
-patch = [{"op": "add", "path": "/targetTemperature", "value": 42}]
-iothub_digital_twin_manager.update_digital_twin(device_id, patch)
-print("Patch has been succesfully applied")
-```
-
-Pomocí následujícího příkazu v terminálu **služby** spusťte tuto ukázku:
-
-```cmd/sh
-python update_digital_twin_sample.py
+    # Update twin
+    twin_patch = Twin()
+    twin_patch.properties = TwinProperties(
+        desired={"targetTemperature": 42}
+    )  # this is relevant for the thermostat device sample
+    updated_twin = iothub_registry_manager.update_twin(device_id, twin_patch, twin.etag)
+    print("The twin patch has been successfully applied")
+    print("")
 ```
 
 Můžete ověřit, že se aktualizace aplikuje v terminálu **zařízení** , kde se zobrazí následující výstup:
 
 ```cmd/sh
 the data in the desired properties patch was: {'targetTemperature': 42, '$version': 2}
-previous values
-42
 ```
 
 Terminál **služby** potvrzuje, že byla oprava úspěšná:
 
 ```cmd/sh
-Patch has been successfully applied
+The twin patch has been successfully applied
 ```
 
 ### <a name="invoke-a-command"></a>Vyvolání příkazu
 
-Chcete-li vyvolat příkaz, spusťte ukázku *invoke_command_sample. py* . Tento příklad ukazuje, jak vyvolat příkaz v jednoduchém zařízení termostatu. Před spuštěním této ukázky nastavte `IOTHUB_COMMAND_NAME` `IOTHUB_COMMAND_PAYLOAD` proměnné prostředí a v terminálu **služby** :
-
-```cmd/sh
-set IOTHUB_COMMAND_NAME="getMaxMinReport" # this is the relevant command for the thermostat sample
-set IOTHUB_COMMAND_PAYLOAD="hello world" # this payload doesn't matter for this sample
-```
-
-V terminálu **služby** použijte následující příkaz ke spuštění ukázky:
-  
-```cmd/sh
-python invoke_command_sample.py
-```
+Ukázka potom vyvolá příkaz:
 
 Terminál **služby** Zobrazuje potvrzovací zprávu od zařízení:
 
 ```cmd/sh
-{"tempReport": {"avgTemp": 34.5, "endTime": "13/07/2020 16:03:38", "maxTemp": 49, "minTemp": 11, "startTime": "13/07/2020 16:02:18"}}
+The device method has been successfully invoked
 ```
 
 V terminálu **zařízení** se zobrazí, že zařízení přijímá příkaz:
@@ -172,7 +173,6 @@ hello world
 Will return the max, min and average temperature from the specified time hello to the current time
 Done generating
 {"tempReport": {"avgTemp": 34.2, "endTime": "09/07/2020 09:58:11", "maxTemp": 49, "minTemp": 10, "startTime": "09/07/2020 09:56:51"}}
-Sent message
 ```
 
 ## <a name="next-steps"></a>Další kroky

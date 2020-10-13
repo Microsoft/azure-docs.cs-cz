@@ -1,14 +1,14 @@
 ---
 title: Přehled zásad Azure
 description: Azure Policy je služba v Azure, pomocí které vytváříte, přiřazujete a spravujete definice zásad ve svém prostředí Azure.
-ms.date: 09/22/2020
+ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 596e52cca2be2a347c26502434048053a8b4684c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 54dce519bfaa8c42afa967fc5c0579f31986aefb
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91538952"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873910"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -72,16 +72,16 @@ Služba Azure Policy má několik oprávnění, která se označují jako operac
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft. PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Řada předdefinovaných rolí uděluje oprávnění k prostředkům Azure Policy. Role **Přispěvatel zásad prostředků** zahrnuje většinu operací Azure Policy. **Vlastník** má plná práva. Všichni **přispěvatelé** a **čtenáři** mají přístup ke všem operacím _čtení_ Azure Policy. **Přispěvatel** může aktivovat nápravu prostředků, ale nemůže _vytvořit_ definice nebo přiřazení.
+Řada předdefinovaných rolí uděluje oprávnění k prostředkům Azure Policy. Role **Přispěvatel zásad prostředků** zahrnuje většinu operací Azure Policy. **Vlastník** má plná práva. Všichni **přispěvatelé** a **čtenáři** mají přístup ke všem operacím _čtení_ Azure Policy. **Přispěvatel** může aktivovat nápravu prostředků, ale nemůže _vytvořit_ definice nebo přiřazení. **Správce přístupu uživatele** je nezbytný k udělení oprávnění ke spravované identitě v **deployIfNotExists** nebo k **úpravám** potřebných přiřazení.
 
 Pokud žádná z předdefinovaných rolí nemá požadovaná oprávnění, vytvořte [vlastní roli](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> Spravovaná identita přiřazení zásady **deployIfNotExists** potřebuje dostatečná oprávnění k vytvoření nebo aktualizaci prostředků obsažených v šabloně. Další informace najdete v tématu [Konfigurace definic zásad pro nápravu](./how-to/remediate-resources.md#configure-policy-definition).
+> Spravovaná identita přiřazení zásady **deployIfNotExists** nebo **Modify** potřebuje dostatečná oprávnění k vytvoření nebo aktualizaci prostředků zacílené. Další informace najdete v tématu [Konfigurace definic zásad pro nápravu](./how-to/remediate-resources.md#configure-policy-definition).
 
 ### <a name="resources-covered-by-azure-policy"></a>Prostředky, na které se vztahuje Azure Policy
 
-Azure Policy vyhodnocuje všechny prostředky v Azure. Pro určité poskytovatele prostředků, jako je například [Konfigurace hostů](./concepts/guest-configuration.md), [Služba Azure Kubernetes](../../aks/intro-kubernetes.md)a [Azure Key Vault](../../key-vault/general/overview.md), je k dispozici hlubší integrace pro správu nastavení a objektů. Další informace najdete v tématu [režimy poskytovatele prostředků](./concepts/definition-structure.md).
+Azure Policy vyhodnocuje všechny prostředky v Azure a prostředcích s podporou ARC. Pro určité poskytovatele prostředků, jako je například [Konfigurace hostů](./concepts/guest-configuration.md), [Služba Azure Kubernetes](../../aks/intro-kubernetes.md)a [Azure Key Vault](../../key-vault/general/overview.md), je k dispozici hlubší integrace pro správu nastavení a objektů. Další informace najdete v tématu [režimy poskytovatele prostředků](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>Doporučení pro správu zásad
 
@@ -94,7 +94,7 @@ Tady je několik ukazatelů a tipů, které byste měli mít na paměti:
 - Definice iniciativ doporučujeme vytvářet a přiřazovat i pro jednu definici zásad.
   Například máte definici zásad _policyDefA_ a vytvoříte ji v části iniciativa definice _initiativeDefC_. Pokud později vytvoříte další definici zásad pro _policyDefB_ s cíli podobnými _policyDefA_, můžete ho přidat pod _initiativeDefC_ a sledovat společně.
 
-- Po vytvoření přiřazení iniciativy se definice zásad přidané do iniciativy stanou také součástí těchto přiřazení iniciativ.
+- Jakmile vytvoříte přiřazení iniciativy, definice zásad přidané k iniciativě se také stanou součástí přiřazení v této iniciativě.
 
 - Když se vyhodnotí přiřazení iniciativy, vyhodnotí se taky všechny zásady v iniciativě.
   Pokud potřebujete zásadu vyhodnotit jednotlivě, je lepší ji v iniciativě Nezahrnovat.
@@ -103,16 +103,15 @@ Tady je několik ukazatelů a tipů, které byste měli mít na paměti:
 
 ### <a name="policy-definition"></a>Definice zásady
 
-Postup vytváření a implementace zásady v Azure Policy začíná vytvořením definice zásady. Každá definice zásady obsahuje podmínky, za kterých se vynutilo. A má definovaný účinek, který se provede, pokud jsou splněny podmínky.
+Postup vytváření a implementace zásady v Azure Policy začíná vytvořením definice zásady. Každá definice zásady se vynucuje za určitých podmínek. A má definovaný účinek, který se provede, pokud jsou splněny podmínky.
 
-V Azure Policy nabízíme několik předdefinovaných zásad, které jsou ve výchozím nastavení dostupné. Příklad:
+V Azure Policy nabízíme několik předdefinovaných zásad, které jsou ve výchozím nastavení dostupné. Například:
 
 - **Povolené skladové položky účtu úložiště** (odepřít): Určuje, jestli se nasazený účet úložiště nachází v rámci sady velikostí SKU. Jeho účinkem je odmítnutí všech účtů úložiště, které nedodržují sadu definovaných velikostí SKU.
 - **Povolený typ prostředku** (odepřít): definuje typy prostředků, které můžete nasadit. Jeho účelem je Odepřít všechny prostředky, které nejsou součástí tohoto definovaného seznamu.
 - **Povolená umístění** (odepřít): omezuje dostupná umístění pro nové prostředky. Účinkem je vynucení vašich požadavků na geografické dodržování předpisů.
 - **Povolené SKU virtuálních počítačů** (odepřít): Určuje sadu SKU virtuálních počítačů, které můžete nasadit.
 - **Přidat značku do prostředků** (Upravit): použije požadovanou značku a její výchozí hodnotu, pokud není zadána v žádosti o nasazení.
-- **Připojit značku a její výchozí hodnotu** (připojit): vynutila požadovanou značku a její hodnotu pro prostředek.
 - **Nepovolené typy prostředků** (odepřít): zabrání v nasazení seznamu typů prostředků.
 
 Pokud chcete implementovat tyto definice zásad (předdefinované i vlastní definice), budete je muset přiřadit. Jakékoli z těchto zásad můžeme přiřadit prostřednictvím webu Azure Portal, PowerShellu nebo Azure CLI.

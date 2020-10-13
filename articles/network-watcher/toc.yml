@@ -127,6 +127,8 @@
               href: network-watcher-nsg-flow-logging-rest.md
             - name: Azure Resource Manager
               href: network-watcher-nsg-flow-logging-azure-resource-manager.md
+            - name: Předdefinovaná zásada
+              href: nsg-flow-logs-policy-portal.md
         - name: Odstranění objektů blob úložiště protokolu toků NSG
           href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: Analýza protokolů toku NSG

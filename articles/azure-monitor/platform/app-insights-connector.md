@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.openlocfilehash: 09485d3279e4ca4fff5b6492bab432d8034d7e42
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449411"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Řešení pro správu Application Insights Connector (zastaralé)
@@ -42,12 +42,12 @@ Při použití řešení můžete:
 
 Na rozdíl od většiny ostatních Log Analytics řešení nejsou shromažďována data pro Application Insights Connector agenti. Všechna data, která řešení používá, přichází přímo z Azure.
 
-| Připojený zdroj | Podporováno | Popis |
+| Připojený zdroj | Podporováno | Description |
 | --- | --- | --- |
-| [Agenti systému Windows](./agent-windows.md) | Ne | Řešení neshromažďuje informace od agentů systému Windows. |
-| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace od agentů systému Linux. |
-| [Skupina pro správu SCOM](./om-agents.md) | Ne | Řešení neshromažďuje informace od agentů v připojené skupině pro správu systému SCOM. |
-| [Účet úložiště Azure](./resource-logs.md#send-to-log-analytics-workspace) | Ne | Řešení neumožňuje shromažďování informací z Azure Storage. |
+| [Agenti systému Windows](./agent-windows.md) | No | Řešení neshromažďuje informace od agentů systému Windows. |
+| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace od agentů systému Linux. |
+| [Skupina pro správu SCOM](./om-agents.md) | No | Řešení neshromažďuje informace od agentů v připojené skupině pro správu systému SCOM. |
+| [Účet úložiště Azure](./resource-logs.md#send-to-log-analytics-workspace) | No | Řešení neumožňuje shromažďování informací z Azure Storage. |
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -2,13 +2,13 @@
 title: Vytvoření nového prostředku založeného na pracovním prostoru Azure Monitor Application Insights | Microsoft Docs
 description: Přečtěte si o krocích požadovaných k povolení nových Azure Monitorch Application Insightsch prostředků založených na pracovních prostorech.
 ms.topic: conceptual
-ms.date: 09/10/2020
-ms.openlocfilehash: 29fa9f1dc401ac4132d9c6c0d8c054b3f4a154ac
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.date: 10/06/2020
+ms.openlocfilehash: 9b91e5065729bee6af3f8018c36930e132eb1a15
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932426"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945409"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Prostředky Application Insights založené na pracovním prostoru
 
@@ -204,6 +204,10 @@ V podokně Application Insights prostředku vyberte **vlastnosti**  >  **změnit
 ## <a name="export-telemetry"></a>Exportovat telemetrii
 
 Funkce starší verze průběžného exportu není u prostředků založených na pracovních prostorech podporována. Místo toho vyberte **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky** v rámci vašeho prostředku Application Insights. Můžete vybrat všechny tabulky nebo podmnožinu tabulek k archivaci do účtu úložiště nebo streamovat do centra událostí Azure.
+
+> [!NOTE]
+> Pro export telemetrie se momentálně neúčtují žádné další poplatky. Informace o cenách této funkce budou k dispozici na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).  Před zahájením fakturace budou odeslána oznámení. Pokud se rozhodnete i nadále používat <feature name> po období oznámení, bude se vám účtovat příslušná sazba. 
+ 
 
 ## <a name="next-steps"></a>Další kroky
 

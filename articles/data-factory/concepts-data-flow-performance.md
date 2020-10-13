@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6f2c16730a9140fdbd1710a3aa0df0ee91795d6
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370874"
+ms.locfileid: "91874828"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -260,6 +260,10 @@ Pokud ve svých podmínkách připojení používáte literálové hodnoty nebo 
 #### <a name="sorting-before-joins"></a>Řazení před spojením
 
 Na rozdíl od sloučení slučovacích nástrojů v nástrojích, jako je SSIS, transformace spojení není povinná operace sloučení spojení. Klíče JOIN nevyžadují řazení před transformací. Tým Azure Data Factory v mapování toků dat nedoporučuje používat transformace řazení.
+
+### <a name="window-transformation-performance"></a>Výkon transformace okna
+
+[Okno transformuje](data-flow-window.md) data podle hodnoty ve sloupcích, které jste vybrali jako součást ```over()``` klauzule v nastavení transformace. K dispozici je řada velmi oblíbených agregačních a analytických funkcí, které jsou k dispozici v transformačním programu Windows. Pokud má ale váš případ použití pro účely hodnocení nebo čísla řádku generovat okno pro celou datovou sadu ```rank()``` ```rowNumber()``` , doporučuje se místo toho použít [transformaci pořadí](data-flow-rank.md) a [transformaci náhradního klíče](data-flow-surrogate-key.md). Tyto transformace budou pomocí těchto funkcí lépe opakovat úplné operace s datovou sadou.
 
 ### <a name="repartitioning-skewed-data"></a>Přerozdělení zkosených dat
 

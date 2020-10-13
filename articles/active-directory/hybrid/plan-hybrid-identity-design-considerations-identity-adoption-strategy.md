@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294858"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definice strategie přijetí hybridní identity
@@ -82,7 +82,7 @@ Strategii, kterou použijete, se projeví při přihlašování uživatelů.  N�
 
 Pokud jste zjistili z úlohy 1, kterou máte IdP třetí strany, nebo ji použijete k zajištění federace se službou Azure AD, musíte mít na paměti následující podporované možnosti:
 
-* Ověřování ve službě Azure AD a přidružených aplikacích může podporovat libovolný poskytovatel SAML 2,0, který je kompatibilní s profilem SP-Lite.
+* Jakékoli poskytovatele SAML 2,0, který je kompatibilní s profilem SP-Lite, může podporovat ověřování u služby Azure AD a přidružených aplikací.
 * Podporuje pasivní ověřování, které usnadňuje ověřování pro aplikaci OWA, SPO atd.
 * Klienti Exchange Online se můžou podporovat přes Rozšířený profil klienta SAML 2,0 (ECP).
 

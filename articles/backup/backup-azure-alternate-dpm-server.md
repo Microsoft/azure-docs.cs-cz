@@ -4,10 +4,10 @@ description: Obnovte data, která jste chránili do trezoru Recovery Services, z
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378062"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Obnovení dat z Azure Backup Serveru
@@ -78,7 +78,7 @@ Postup obnovení dat z Azure Backup Server:
 
 ## <a name="troubleshooting-error-messages"></a>Řešení potíží s chybovými zprávami
 
-| No. | Chybová zpráva | Postup při řešení potíží |
+| Ne. | Chybová zpráva | Postup při řešení potíží |
 |:---:|:--- |:--- |
 | 1. |Tento server není zaregistrován do trezoru určeného přihlašovacími údaji trezoru. |**Příčina:** Tato chyba se zobrazí, když vybraný soubor s přihlašovacími údaji trezoru nepatří do trezoru Recovery Services přidruženého k Azure Backup Server, na kterých se provádí obnovení. <br> **Řešení:** Stáhněte si soubor s přihlašovacími údaji trezoru z Recovery Services trezoru, do kterého je Azure Backup Server zaregistrovaný. |
 | 2. |Buď obnovitelná data nejsou k dispozici, nebo zvolený server není server DPM. |**Příčina:** Do trezoru Recovery Services nejsou zaregistrovány žádné další Azure Backup servery, nebo servery ještě neodeslaly metadata, nebo vybraný server není Azure Backup Server (pomocí Windows serveru nebo klienta Windows). <br> **Řešení:** Pokud jsou v trezoru Recovery Services zaregistrované další Azure Backup servery, ujistěte se, že je nainstalovaný nejnovější agent Azure Backup. <br>Pokud jsou v trezoru Recovery Services zaregistrovány jiné Azure Backup servery, počkejte po instalaci za účelem spuštění procesu obnovení dne. Noční úloha odešle metadata pro všechna chráněná zálohování do cloudu. Data budou k dispozici pro obnovení. |

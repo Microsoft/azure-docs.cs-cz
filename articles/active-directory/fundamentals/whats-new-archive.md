@@ -14,10 +14,10 @@ ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1ef7d587cd8bec636f42673941edb69647ee8cb
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91449999"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
@@ -136,19 +136,19 @@ S radostí sdílíme, že teď jsme na Microsoft Azure Government portálu naved
 **Kategorie služby:** Zřizování aplikací  
 **Schopnost produktu:** Správa životního cyklu identit
  
-Služba zřizování Azure AD poskytuje bohatou sadu možností konfigurace. Zákazníci musí mít možnost uložit svou konfiguraci, aby na ně mohli později odkazovat nebo se vrátit na známou správnou verzi. Přidali jsme možnost stáhnout si vaši konfiguraci zřizování jako soubor JSON a nahrát ho, až ho budete potřebovat. [Přečtěte si další informace](../app-provisioning/export-import-provisioning-configuration.md).
+Služba zřizování Azure AD poskytuje bohatou sadu možností konfigurace. Zákazníci musí mít možnost uložit svou konfiguraci, aby na ně mohli později odkazovat nebo se vrátit na známou správnou verzi. Přidali jsme možnost stáhnout si vaši konfiguraci zřizování jako soubor JSON a nahrát ho, až ho budete potřebovat. [Další informace](../app-provisioning/export-import-provisioning-configuration.md).
 
 ---
  
 ### <a name="sspr-self-service-password-reset-now-requires-two-gates-for-admins-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>SSPR (Samoobslužné resetování hesla) teď vyžaduje dvě brány pro správce v Microsoft Azure provozované společností 21Vianet (Azure Čína 21Vianet). 
 
 **Zadejte:** Změněná funkce  
-**Kategorie služby:** Samoobslužné resetování hesla  
+**Kategorie služby:** resetování hesla Self-Service  
 **Schopnost produktu:** Zabezpečení identity & ochrana
  
 Správci, kteří používají Samoobslužné resetování hesla (SSPR), dříve v Microsoft Azure pracovali pomocí samoobslužného resetování hesla () k resetování jejich identity, potřebují jenom jednu bránu (Challenge). Ve veřejných a dalších národních cloudech musí správci při použití SSPR vykazovat svoji identitu pomocí dvou bran. Protože ale nepodporujeme SMS nebo telefonní hovory v Azure Čína 21Vianet, povolili jsme správcům resetování hesla s jednou branou.
 
-Vytváříme paritu funkcí SSPR mezi Azure Čína 21Vianet a veřejným cloudem. Při použití SSPR musí správci používat dvě brány. Podporuje se SMS, telefonní hovory a ověřovací oznámení a kódy aplikace ověřovatele. [Přečtěte si další informace](../authentication/concept-sspr-policy.md#administrator-reset-policy-differences).
+Vytváříme paritu funkcí SSPR mezi Azure Čína 21Vianet a veřejným cloudem. Při použití SSPR musí správci používat dvě brány. Podporuje se SMS, telefonní hovory a ověřovací oznámení a kódy aplikace ověřovatele. [Další informace](../authentication/concept-sspr-policy.md#administrator-reset-policy-differences).
 
 ---
 
@@ -197,7 +197,7 @@ Abychom zákazníkům poskytli pružnější způsob vytváření skupin pro vš
  
 Plánujeme nahradit aktuální vlastní ovládací prvky jako v rámci přístupu, který umožňuje bezproblémovou funkčnost funkcí ověřování poskytovaných partnerem s Azure Active Directory správce a koncového uživatele. V dnešní době se Partnerská řešení MFA setkávají s následujícími omezeními: fungují až po zadání hesla; neslouží jako MFA pro podrobné ověřování v jiných klíčových scénářích. a neintegrují se do funkcí pro správu přihlašovacích údajů pro koncové uživatele nebo správce. Nová implementace umožní partnerským faktorům pro ověřování spolupracovat společně s integrovanými faktory pro klíčové scénáře, včetně registrace, využití, deklarací MFA, krokování ověřování, vytváření sestav a protokolování. 
 
-Vlastní ovládací prvky budou nadále podporovány ve verzi Preview vedle nového návrhu, dokud nedosáhne obecné dostupnosti. V tomto okamžiku zákazníkům poskytneme čas na migraci na nový návrh. Z důvodu omezení současného přístupu nebudeme nové poskytovatele připravujeme, dokud nebude nový návrh k dispozici. Úzce spolupracujeme se zákazníky a poskytovateli a pošle vám časovou osu, jak získáme blíž. [Přečtěte si další informace](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/upcoming-changes-to-custom-controls/ba-p/1144696#).
+Vlastní ovládací prvky budou nadále podporovány ve verzi Preview vedle nového návrhu, dokud nedosáhne obecné dostupnosti. V tomto okamžiku zákazníkům poskytneme čas na migraci na nový návrh. Z důvodu omezení současného přístupu nebudeme nové poskytovatele připravujeme, dokud nebude nový návrh k dispozici. Úzce spolupracujeme se zákazníky a poskytovateli a pošle vám časovou osu, jak získáme blíž. [Další informace](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/upcoming-changes-to-custom-controls/ba-p/1144696#).
 
 ---
 
@@ -532,7 +532,7 @@ Další informace najdete v tématu [Přidání Google jako zprostředkovatele i
 **Kategorie služby:** Podmíněný přístup  
 **Schopnost produktu:** Zabezpečení identity & ochrana
 
-Azure AD pro Microsoft Edge v iOS a Androidu teď podporuje jednotné přihlašování a podmíněný přístup Azure AD:
+Azure AD pro Microsoft Edge v iOS a Androidu teď podporuje jednotné Sign-On a podmíněný přístup Azure AD:
 
 - **Jednotné přihlašování Microsoft Edge (SSO):** Pro všechny aplikace připojené k Azure AD je teď k dispozici jednotné přihlašování v rámci nativních klientů (například Microsoft Outlook a Microsoft Edge).
 
@@ -1256,7 +1256,7 @@ Další informace najdete v tématu [Povolení auditů zabezpečení pro Azure A
 
 **Zadejte:** Nová **Kategorie služby funkcí:** **funkce produktu B2B:** B2B/B2C
 
-Přímá federace pomáhá lépe pracovat s partnery, jejichž řešení identity spravované IT není Azure AD, a to díky práci se systémy identit, které podporují standardy SAML nebo WS-dodávání. Po nastavení přímého federačního vztahu s partnerem může každý nový uživatel typu Host, kterého budete pozvat z této domény, spolupracovat s vámi pomocí stávajícího účtu organizace, takže uživatelské prostředí pro hosty bude bezproblémové.
+Přímá federace pomáhá lépe pracovat s partnery, jejichž řešení identity spravované IT není Azure AD, a to díky práci se systémy identit, které podporují standardy SAML nebo WS-Fed. Po nastavení přímého federačního vztahu s partnerem může každý nový uživatel typu Host, kterého budete pozvat z této domény, spolupracovat s vámi pomocí stávajícího účtu organizace, takže uživatelské prostředí pro hosty bude bezproblémové.
 
 Další informace najdete v tématu [Přímá federace pomocí AD FS a poskytovatelů třetích stran pro uživatele typu Host (Preview)](../external-identities/direct-federation.md).
 
@@ -1344,7 +1344,7 @@ Další informace najdete v [referenční dokumentaci k rozhraní API pro detekc
 
 Do června 2019 jsme do Galerie aplikací přidali tyto 22 nových aplikací s podporou federace:
 
-[Azure AD SAML Toolkit](../saas-apps/saml-toolkit-tutorial.md), [Otsuka Shokai (大塚商会)](../saas-apps/otsuka-shokai-tutorial.md), [ANAQUA](../saas-apps/anaqua-tutorial.md), [klient VPN Azure](https://portal.azure.com/), [ExpenseIn](../saas-apps/expensein-tutorial.md), pomocná [pomocná Nápověda](../saas-apps/helper-helper-tutorial.md) [Costpoint](../saas-apps/costpoint-tutorial.md), [GlobalOne](../saas-apps/globalone-tutorial.md), [Mercedes-Benz v autě Office](https://me.secure.mercedes-benz.com/), [skore](https://app.justskore.it/), [Konzola cloudové infrastruktury Oracle](../saas-apps/oracle-cloud-tutorial.md), [CyberArk ověřování SAML](../saas-apps/cyberark-saml-authentication-tutorial.md), [scrible edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](../saas-apps/pandadoc-tutorial.md), [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise OS](https://proptimise.co.uk/software/), [VTIGER CRM (SAML)](../saas-apps/vtiger-crm-saml-tutorial.md), Oracle Access Manager pro Oracle maloobchodní prodej, Oracle Access Manager pro Oracle E-Business Suite, Oracle IDCS pro E-Business Suite, Oracle IDCS pro PeopleSoft spouštěných místně, Oracle IDCS pro řešení JD Edwards
+[Azure AD SAML Toolkit](../saas-apps/saml-toolkit-tutorial.md), [Otsuka Shokai (大塚商会)](../saas-apps/otsuka-shokai-tutorial.md), [ANAQUA](../saas-apps/anaqua-tutorial.md), [klient VPN Azure](https://portal.azure.com/), [ExpenseIn](../saas-apps/expensein-tutorial.md), pomocná [pomocná Nápověda](../saas-apps/helper-helper-tutorial.md), [Costpoint](../saas-apps/costpoint-tutorial.md), [GlobalOne](../saas-apps/globalone-tutorial.md), [Mercedes-Benz In-Car Office](https://me.secure.mercedes-benz.com/), [skore](https://app.justskore.it/), [konzole pro cloudová infrastruktura Oracle](../saas-apps/oracle-cloud-tutorial.md), [CyberArk ověřování SAML](../saas-apps/cyberark-saml-authentication-tutorial.md), [scrible edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](../saas-apps/pandadoc-tutorial.md), [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise OS](https://proptimise.co.uk/software/), [Vtiger CRM (SAML)](../saas-apps/vtiger-crm-saml-tutorial.md), Oracle Access Manager pro Oracle pro E-Business Suite, Oracle Access Manager pro Oracle E-Business Suite, Oracle IDCS pro IDCS PeopleSoft spouštěných místně
 
 Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](https://aka.ms/appstutorial). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](https://aka.ms/azureadapprequest).
 
@@ -1942,7 +1942,7 @@ Další informace najdete v tématu [e-mailové ověřování heslem jednorázov
 
 Zavedli jsme tři nové nastavení souborů cookie, která jsou k dispozici pro vaše aplikace, které jsou publikované prostřednictvím proxy aplikací:
 
-- **Použijte soubor cookie pouze s protokolem HTTP.** Nastaví příznak **HttpOnly** pro přístup k proxy aplikací a soubory cookie relace. Zapnutím tohoto nastavení získáte další výhody zabezpečení, jako je například pomoc při kopírování a úpravách souborů cookie prostřednictvím skriptování na straně klienta. Pro přidané výhody doporučujeme zapnout tento příznak (vyberte **Ano**).
+- **Použijte HTTP-Only soubor cookie.** Nastaví příznak **HttpOnly** pro přístup k proxy aplikací a soubory cookie relace. Zapnutím tohoto nastavení získáte další výhody zabezpečení, jako je například pomoc při kopírování a úpravách souborů cookie prostřednictvím skriptování na straně klienta. Pro přidané výhody doporučujeme zapnout tento příznak (vyberte **Ano**).
 
 - **Použijte zabezpečený soubor cookie.** Nastaví **zabezpečený** příznak pro přístup k proxy aplikací a soubory cookie relace. Zapnutím tohoto nastavení získáte další výhody zabezpečení tím, že zajistíte, aby se soubory cookie přenesly přes zabezpečené kanály TLS, jako je například HTTPS. Pro přidané výhody doporučujeme zapnout tento příznak (vyberte **Ano**).
 
@@ -2044,7 +2044,7 @@ Ve schématu auditu se mění následující pole:
 |Název pole|Co se změnilo|Staré hodnoty|Nové hodnoty|
 |----------|------------|----------|----------|
 |Kategorie|Toto bylo pole **název služby** . Teď je to pole **kategorie auditu** . **Název služby** byl přejmenován na pole **loggedByService** .|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|<ul><li>Správa uživatelů</li><li>Správa skupin</li><li>Správa aplikací</li></ul>|
-|targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásada</li><li>Aplikace</li><li>Uživatel</li><li>Group (Skupina)</li></ul>|
+|targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásady</li><li>Aplikace</li><li>Uživatel</li><li>Group (Skupina)</li></ul>|
 |loggedByService|Poskytuje název služby, která vygenerovala protokol auditu.|Null|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|
 |Výsledek|Poskytuje výsledek protokolů auditu. Dřív byl tento výčet vyhodnocený, ale nyní zobrazujeme skutečnou hodnotu.|<ul><li>0</li><li>1</li></ul>|<ul><li>Success</li><li>Selhání</li></ul>|
 
@@ -2250,11 +2250,11 @@ Další informace najdete v tématu [Vytvoření dynamické skupiny a kontroly s
 
 ---
 
-### <a name="simplified-single-sign-on-sso-configuration-settings-for-some-third-party-apps"></a>Zjednodušené nastavení konfigurace jednotného přihlašování (SSO) pro některé aplikace třetích stran
+### <a name="simplified-single-sign-on-sso-configuration-settings-for-some-third-party-apps"></a>Zjednodušené nastavení konfigurace jednotného Sign-On (SSO) pro některé aplikace třetích stran
 
 **Zadejte:** Nová **Kategorie služby funkcí:** funkce produktu podnikové aplikace **:** jednotné přihlašování
 
-Uvědomujeme si, že nastavení jednotného přihlašování (SSO) pro aplikace SaaS (software jako služba) může být náročné vzhledem k jedinečné povaze jednotlivých konfigurací aplikací. Sestavili jsme zjednodušené prostředí pro konfiguraci, které automaticky vyplní nastavení konfigurace jednotného přihlašování pro tyto aplikace SaaS třetích stran:
+Uvědomujeme si, že nastavení jednotného Sign-On (SSO) pro aplikace SaaS (software jako služba) může být náročné vzhledem k jedinečné povaze jednotlivých konfigurací aplikací. Sestavili jsme zjednodušené prostředí pro konfiguraci, které automaticky vyplní nastavení konfigurace jednotného přihlašování pro tyto aplikace SaaS třetích stran:
 
 - Zendesk
 
@@ -2323,7 +2323,7 @@ Další informace naleznete v tématech:
 
 ---
 
-### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>Nová podpora samoobslužného resetování hesla z zamykací obrazovky Windows 7/8/8.1
+### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>Nová podpora pro Self-Service resetování hesla z zamykací obrazovky Windows 7/8/8.1
 
 **Zadejte:** Nová **Kategorie služby funkcí:** SSPR **produkt:** ověřování uživatele
 
@@ -2361,7 +2361,7 @@ Další informace o aplikacích naleznete v tématu [SaaS Application Integratio
 
 **Zadejte:** Nová **Kategorie služby funkcí:** funkce produktu podnikové aplikace **:** jednotné přihlašování
 
-Zavedli jsme nové metody transformace deklarace identity, ToLower () a ToUpper (), které je možné použít na tokeny SAML z **konfigurační stránky jednotného přihlašování** založené na SAML.
+Zavedli jsme nové metody transformace deklarace identity, ToLower () a ToUpper (), které je možné použít na tokeny SAML z **jedné Sign-On konfigurační** stránky založené na SAML.
 
 Další informace najdete v tématu [přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace v Azure AD](../develop/active-directory-saml-claims-customization.md) .
 
@@ -2431,7 +2431,7 @@ Toto je veřejná verze Preview. Správci můžou nové prostředí zapnout (Pok
 
 ---
 
-### <a name="new-http-only-cookies-setting-in-azure-ad-application-proxy-apps"></a>Nové nastavení souborů cookie jen pro protokol HTTP v aplikacích proxy aplikace Azure AD
+### <a name="new-http-only-cookies-setting-in-azure-ad-application-proxy-apps"></a>Nastavení nových souborů cookie HTTP-Only v aplikacích Azure AD Application proxy
 
 **Zadejte:** Nová **Kategorie služby funkcí:** **schopnost produktu** proxy aplikace: Access Control
 
@@ -2439,7 +2439,7 @@ Ve vašich aplikacích proxy aplikací se zavolalo nové nastavení s názvem **
 
 Toto nastavení není kompatibilní s aplikacemi, které používají ovládací prvky ActiveX, jako je třeba Vzdálená plocha. Pokud jste v této situaci, doporučujeme toto nastavení vypnout.
 
-Další informace o nastavení souborů cookie pouze pro protokol HTTP najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](../manage-apps/application-proxy-add-on-premises-application.md).
+Další informace o nastavení souborů cookie HTTP-Only najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](../manage-apps/application-proxy-add-on-premises-application.md).
 
 ---
 
@@ -2607,7 +2607,7 @@ Nejnovější vydaná verze Azure AD Connect zahrnuje:
 
 - Opravy chyb a aktualizace podpory
 
-- Obecná dostupnost integrace příkazového testu federovat
+- Obecná dostupnost Ping-Federate integrace
 
 - Aktualizace nejnovějšího klienta SQL 2012
 
@@ -3390,7 +3390,7 @@ Rutiny skupiny, které jsou nyní vydány pro obecnou dostupnost:
 - Remove-AzureADMSGroupLifecyclePolicy
 - Add-AzureADMSLifecyclePolicyGroup
 - Remove-AzureADMSLifecyclePolicyGroup
-- Reset – AzureADMSLifeCycleGroup
+- Reset-AzureADMSLifeCycleGroup
 - Get-AzureADMSLifecyclePolicyGroup
 
 ---
@@ -3428,7 +3428,7 @@ Tato verze obsahuje následující aktualizace a změny:
 
 - Pro inicializaci stránky byly přidány akce konfigurace zpětného zápisu zařízení a indikátor průběhu.
 
-- Vylepšená Obecná diagnostika se sestavou HTML a úplným shromažďováním dat v sestavě typu ZIP/HTML.
+- Vylepšená Obecná diagnostika se sestavou HTML a úplným shromažďováním dat v sestavě ZIP-Text/HTML.
 
 - Zlepšila se spolehlivost automatického upgradu a přidala se další telemetrie, aby bylo zajištěno, že je možné určit stav serveru.
 

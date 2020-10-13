@@ -6,13 +6,13 @@ ms.date: 10/07/2020
 ms.author: dacoulte
 ms.custom: generated
 ms.openlocfilehash: 3fb75198fd93a5e904381bab14080a03012da908
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91859743"
 ---
-|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Zajistěte, aby byla pro servery PostgreSQL povolená vlastní ochrana dat klíčů.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F18adea5e-f416-4d0f-8aa8-d24321e3e274) |Použití klíčů spravovaných zákazníkem k šifrování uložených dat v Azure Database for PostgreSQL databázových serverech umožňuje implementovat oddělení úloh ve správě klíčů a dat. Když konfigurujete klíč spravovaný zákazníkem, klíč se používá k ochraně a řízení přístupu ke klíči, který vaše data šifruje. Máte plnou kontrolu a zodpovědnost za životní cyklus klíčů, včetně rotace a správy.  Pro účely dodržování předpisů se někdy vyžaduje použití klíčů spravovaných zákazníkem. |AuditIfNotExists, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableByok_Audit.json) |
 |[Pro databázové servery PostgreSQL by mělo být povoleno omezování připojení.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5345bb39-67dc-4960-a1bf-427e16b9a0bd) |Tato zásada pomáhá auditovat všechny databáze PostgreSQL ve vašem prostředí bez povoleného omezení připojení. Toto nastavení umožňuje dočasné omezení počtu připojení na IP adresu pro příliš mnoho neplatných neúspěšných přihlášení k heslům. |AuditIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_ConnectionThrottling_Enabled_Audit.json) |

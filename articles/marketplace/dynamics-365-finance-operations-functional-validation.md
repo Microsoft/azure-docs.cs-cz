@@ -8,10 +8,10 @@ author: emuench
 ms.author: navits
 ms.date: 07/17/2020
 ms.openlocfilehash: 10137e59e0ea06fa785fccc215c867b6d8c0cb76
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91651152"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 finance a ověřování funkčnosti operací
@@ -60,7 +60,7 @@ Chcete-li naplánovat konečný hovor na revizi, kontaktujte [appsourceCRM@micro
     | --- | --- |
     | Přehled balíčku | [![Snímek obrazovky se zobrazeným oknem Přehled balíčku](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>Schvalovatelé řešení</li></ul> | [![Obrazovka s přehledem balíčku](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
-    | Obsah balíčku<ul><li>Modelování</li><li>Balíček s nasazením softwaru</li></ul> | [![Obrazovka obsahu balíčku 1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
+    | Obsah balíčku<ul><li>Model</li><li>Balíček s nasazením softwaru</li></ul> | [![Obrazovka obsahu balíčku 1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
     | <ul><li>Konfigurace GER</li><li>Zálohování databáze</li></ul><br>V **konfiguračním oddílu GER** se nevyžadují artefakty. | [![Obrazovka obsahu balíčku 2](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |
     | <ul><li>Model sestavy Power BI</li><li>Artefakt BPM</li></ul><br>Artefakty nejsou v oddílu **Power BI** požadovány. | [![Obrazovka obsahu balíčku – tři](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
     | <ul><li>Zpracovat balíček dat</li><li>Licenční smlouva k řešení a zásady ochrany osobních údajů</li></ul><br>Části **GER Configuration** and **Power BI model sestavy** jsou volitelné, aby se zahrnuly do nabídek finance a operace. | [![Obrazovka obsahu balíčku – čtyři](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |

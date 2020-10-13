@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 1afa5df20c9bcbf63f8ad9f527e54f622eba3d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/10/2020
+ms.openlocfilehash: f4a7f5581703ae6932f3b40e62085fed76f5e6f2
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893794"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945698"
 ---
 # <a name="filter-based-feature-selection"></a>Výběr funkcí na základě filtrů
 
@@ -90,8 +90,14 @@ Zvolíte standardní statistickou metriku. Modul vypočítá korelaci mezi dvoji
 
     - Pokud zadáte méně sloupců výsledků, než jsou sloupce funkce, jsou tyto funkce seřazené podle sestupného skóre. Vrátí se jenom ty hlavní funkce. 
 
-7.  Odešlete kanál nebo vyberte modul Výběr funkce založený na filtrech a pak vyberte **Spustit vybrané**.
+7.  Odešlete kanál.
 
+> [!IMPORTANT]
+> Pokud budete používat **Výběr funkcí založených na filtrech** v odvození, je nutné použít [transformaci Select Columns](./select-columns-transform.md) k uložení vybrané funkce a [použít transformaci](./apply-transformation.md) , která použije funkci vybranou transformace na datovou sadu bodování.
+>
+> Chcete-li zajistit, aby výběry sloupců byly pro proces bodování stejné, přečtěte si následující snímek obrazovky.
+> [!div class="mx-imgBorder"]
+> ![Vzorový kanál](media/module/filter-based-feature-selection-score.png)
 
 ## <a name="results"></a>Výsledky
 

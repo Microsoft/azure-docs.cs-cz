@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b64ff51836f8d291acf57b1cd9ca100c4f87ebed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b6b27f4f71e9159c17ec2df68c6af5f1b98b177
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541165"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946089"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Monitorování integrity souborů v Azure Security Center
 Naučte se konfigurovat monitorování integrity souborů (FIM) v Azure Security Center pomocí tohoto návodu.
@@ -29,28 +29,32 @@ Naučte se konfigurovat monitorování integrity souborů (FIM) v Azure Security
 |Aspekt|Podrobnosti|
 |----|:----|
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
-|Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
+|Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md).<br>FIM nahrává data do pracovního prostoru Log Analytics. Poplatky za data platí na základě objemu dat, která nahráváte. Další informace najdete v tématu [Log Analytics ceny](https://azure.microsoft.com/pricing/details/log-analytics/) .|
 |Požadované role a oprávnění:|**Vlastník pracovního prostoru** může povolit nebo zakázat FIM (Další informace najdete v tématu [role Azure pro Log Analytics](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)).<br>**Čtenář** může zobrazit výsledky.|
-|Cloud|![Ano ](./media/icons/yes-icon.png) komerční cloudy<br>![Ano ](./media/icons/yes-icon.png) US gov<br>![Žádná ](./media/icons/no-icon.png) čínská gov, jiné gov<br>Podporováno pouze v oblastech, kde je k dispozici řešení sledování změn Azure Automation.<br>Viz [podporované oblasti pro propojený pracovní prostor Log Analytics](../automation/how-to/region-mappings.md).<br>[Další informace o sledování změn](../automation/change-tracking.md) |
+|Cloud|![Ano ](./media/icons/yes-icon.png) komerční cloudy<br>![Ano ](./media/icons/yes-icon.png) US gov<br>![Žádná ](./media/icons/no-icon.png) čínská gov, jiné gov<br>Podporováno pouze v oblastech, kde je k dispozici řešení sledování změn Azure Automation.<br>Viz [podporované oblasti pro propojený pracovní prostor Log Analytics](../automation/how-to/region-mappings.md).<br>[Přečtěte si další informace o sledování změn](../automation/change-tracking.md).|
 |||
 
-
-
-
-
 ## <a name="what-is-fim-in-security-center"></a>Co je FIM v Security Center?
-Monitoring integrity souborů (FIM), označovaný také jako sledování změn, prověřuje soubory a Registry operačního systému, aplikačního softwaru a dalších pro změny, které by mohly naznačovat útok. Metoda porovnání se používá k určení, zda je aktuální stav souboru odlišný od poslední kontroly souboru. Toto porovnání můžete využít k určení, zda byly provedeny platné nebo podezřelé úpravy souborů.
+Monitorování integrity souborů (FIM), označované také jako sledování změn, kontroluje soubory operačního systému, Registry systému Windows, aplikační software, systémové soubory systému Linux a další pro změny, které mohou naznačovat útok. 
 
-Security Center monitorování integrity souborů ověřuje integritu souborů Windows, registru Windows a souborů systému Linux. Soubory, které chcete monitorovat, vyberete tak, že povolíte FIM. Security Center monitoruje soubory s povolenou službou FIM pro aktivity, jako například:
+Security Center doporučuje entity, které se mají monitorovat s produktem FIM, a můžete také definovat vlastní zásady FIM nebo entity, které se mají monitorovat. Produkt FIM vás upozorní na podezřelé aktivity, jako je například:
 
-- Vytváření a odstraňování souborů a registru
+- Vytvoření nebo odebrání klíče registru
 - Úpravy souborů (změny velikosti souboru, seznamy řízení přístupu a hodnota hash obsahu)
 - Změny registru (změny velikosti, seznamy řízení přístupu, typ a obsah)
 
-Security Center doporučuje pro monitorované entity, na kterých můžete rychle povolit FIM. Můžete také definovat vlastní zásady FIM nebo entity, které se mají monitorovat. V tomto návodu se dozvíte, jak.
+V tomto kurzu se naučíte:
 
-> [!NOTE]
-> Funkce monitoring integrity souborů (FIM) funguje pro počítače s Windows a Linux a virtuální počítače, které jsou k dispozici jenom v případě, že je **Azure Defender pro servery** povolený. Další informace najdete v tématu [ceny](security-center-pricing.md) . FIM nahrává data do pracovního prostoru Log Analytics. Poplatky za data platí na základě objemu dat, která nahráváte. Další informace najdete v tématu [Log Analytics ceny](https://azure.microsoft.com/pricing/details/log-analytics/) .
+> [!div class="checklist"]
+> * Projděte si seznam navrhovaných entit pro monitorování pomocí produktu FIM
+> * Definování vlastních pravidel FIM
+> * Auditovat změny monitorovaných entit
+> * Zjednodušit sledování v adresářích pomocí zástupných znaků
+
+
+## <a name="how-does-fim-work"></a>Jak produkt FIM funguje?
+
+Když porovnáte aktuální stav těchto položek se stavem během předchozí kontroly, FIM upozorní na to, že byly provedeny podezřelé změny.
 
 FIM používá řešení Azure Change Tracking ke sledování a identifikaci změn ve vašem prostředí. Když je povolené monitorování integrity souborů, máte **Change Tracking** prostředek typu **řešení**. Podrobnosti o frekvenci shromažďování dat v řešení Azure Change Tracking najdete v [podrobnostech o shromažďování dat v řešení Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details).
 
@@ -58,11 +62,11 @@ FIM používá řešení Azure Change Tracking ke sledování a identifikaci zm�
 > Pokud odeberete prostředek **Change Tracking** , zakážete tím také funkci monitorování integrity souborů v Security Center.
 
 ## <a name="which-files-should-i-monitor"></a>Které soubory mám monitorovat?
-Při výběru souborů, které chcete monitorovat, byste si měli myslet na soubory, které jsou pro váš systém a aplikace kritické. Zvažte možnost zvolit soubory, které nebudete chtít měnit bez plánování. Výběr souborů, které jsou často měněny aplikacemi nebo operačním systémem (například soubory protokolů a textové soubory), vytvářejí velký šum, který obtížně identifikuje útok.
+Při volbě souborů, které se mají monitorovat, zvažte, které soubory jsou pro váš systém a aplikace kritické. Monitorujte soubory, které neočekáváte beze změny bez plánování. Pokud zvolíte soubory, které se často změnily aplikacemi nebo operačním systémem (například soubory protokolů a textové soubory), vytvoří se velký šum, což ztěžuje jeho identifikaci.
 
-Security Center poskytuje následující seznam doporučených položek, které se mají monitorovat na základě známých vzorů útoků. Mezi ně patří tyto soubory a klíče registru Windows. Všechny klíče jsou pod HKEY_LOCAL_MACHINE ("HKLM" v tabulce.)
+Security Center poskytuje následující seznam doporučených položek, které se mají monitorovat na základě známých vzorů útoků.
 
-|**Soubory Linux**|**Soubory Windows**|**Klíče registru Windows**|
+|Soubory Linux|Soubory Windows|Klíče registru Windows (HKLM = HKEY_LOCAL_MACHINE)|
 |:----|:----|:----|
 |/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
 |/bin/passwd|C:\boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ 603BCC1F-4B59-4E08-B724-D2C6297EF351}|
@@ -96,6 +100,8 @@ Security Center poskytuje následující seznam doporučených položek, které 
 
 
 ## <a name="enable-file-integrity-monitoring"></a>Povolit monitorování integrity souborů 
+
+FIM je k dispozici pouze ze stránek Security Center v Azure Portal. V tuto chvíli není k dispozici REST API pro práci s produktem FIM.
 
 1. V oblasti **Rozšířená ochrana** řídicího panelu **Azure Defenderu** vyberte **monitorování integrity souborů**.
 

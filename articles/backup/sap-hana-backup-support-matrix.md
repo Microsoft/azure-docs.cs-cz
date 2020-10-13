@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte o podporovaných scénářích a omeze
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: e3bfc5ab9a91ae3aee73d7ed24161acae60211ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3ad68fcaaa820daca842d567ecd40f011df729f
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022322"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946361"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Matice podpory pro zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -32,7 +32,7 @@ Azure Backup podporuje zálohování databází SAP HANA do Azure. Tento článe
 | **Velikost databáze HANA**     | Databáze HANA velikosti <= 2 TB (nejedná se o velikost paměti systému HANA)               |                                                              |
 | **Typy zálohování**           | Úplné a rozdílové zálohy a zálohování protokolů                          | Přírůstkové, snímky                                       |
 | **Typy obnovení**          | Informace o podporovaných typech obnovení najdete v SAP HANA poznámky [1642148](https://launchpad.support.sap.com/#/notes/1642148) . |                                                              |
-| **Omezení zálohování**          | Až 2 TB velikosti úplné zálohy na instanci SAP HANA         |                                                              |
+| **Omezení zálohování**          | Až 2 TB velikosti úplné zálohy na instanci SAP HANA (částečný limit)         |                                                              |
 | **Speciální konfigurace** |                                                              | SAP HANA + dynamické vrstvení <br>  Klonování prostřednictvím LaMa        |
 
 ------

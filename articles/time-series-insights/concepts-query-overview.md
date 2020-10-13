@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: e9491757852b42faef40c107540e0ce3da3c7f99
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91650897"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Dotazování na data z Azure Time Series Insights Gen2
@@ -24,7 +24,7 @@ Azure Time Series Insights Gen2 umožňuje dotazování dat na události a metad
 V Azure Time Series Insights Gen2 jsou k dispozici tři primární kategorie rozhraní API:
 
 * **Rozhraní API prostředí**: Tato rozhraní API povolují dotazy v prostředí Azure Time Series Insights Gen2 samotné. Ty lze použít ke shromáždění seznamu prostředí, ke kterým má volající přístup, a k metadatům prostředí.
-* **Rozhraní API Time Series model-Query (TSM-Q)**: povoluje operace vytvoření, čtení, aktualizace a odstranění (CRUD) v metadatech uložených v modelu časové řady prostředí. Ty je možné použít pro přístup k instancím, typům a hierarchiím a k jejich úpravám.
+* **Rozhraní API Time series Model-Query (TSM-Q)**: povoluje operace vytvoření, čtení, aktualizace a odstranění (CRUD) v metadatech uložených v modelu časových řad prostředí. Ty je možné použít pro přístup k instancím, typům a hierarchiím a k jejich úpravám.
 * **Rozhraní API pro Time Series Query (TSQ)**: umožňuje načíst data telemetrie nebo událostí, jak jsou zaznamenána od poskytovatele zdroje, a umožňuje provádět výpočty a agregace dat pomocí pokročilých skalárních a agregačních funkcí.
 
 Azure Time Series Insights Gen2 používá pro vyjádření výpočtů v [proměnných časových řad](./concepts-variables.md)bohatý jazyk výrazů založený na řetězci, [výraz Time Series (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
@@ -41,7 +41,7 @@ Podporují se následující základní rozhraní API.
 * [Získat rozhraní API pro dostupnost prostředí](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability): vrátí distribuci počtu událostí přes časové razítko události `$ts` . Toto rozhraní API pomáhá určit, jestli se v prostředí vyskytují nějaké události, a to tak, že vrátí počet událostí v časových intervalech, pokud existují.
 * [Získat rozhraní API pro schéma událostí](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema): vrátí metadata schématu události pro daný rozsah hledání. Toto rozhraní API pomáhá načíst všechna metadata a vlastnosti, které jsou ve schématu k dispozici pro daný rozsah hledání.
 
-## <a name="time-series-model-query-tsm-q-apis"></a>Rozhraní API pro Time Series model – Query (TSM-Q)
+## <a name="time-series-model-query-tsm-q-apis"></a>Rozhraní API Time Series Model-Query (TSM-Q)
 
 Většina těchto rozhraní API podporuje operaci dávkového spouštění, aby umožnila dávkové operace CRUD u více entit modelu časové řady:
 

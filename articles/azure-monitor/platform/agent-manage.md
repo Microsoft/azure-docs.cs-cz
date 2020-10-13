@@ -6,11 +6,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79275097"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871894"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správa a údržba agenta Log Analytics pro Windows a Linux
 
@@ -284,11 +284,11 @@ Provedením následujících kroků nakonfigurujte agenta Log Analytics pro syst
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-1. Upravit soubor`/etc/opt/omi/conf/omiserver.conf`
+1. Upravit soubor `/etc/opt/omi/conf/omiserver.conf`
 
-2. Zajistěte, aby řádek začínající řetězcem `httpsport=` definoval port 1270. Například:`httpsport=1270`
+2. Zajistěte, aby řádek začínající řetězcem `httpsport=` definoval port 1270. Například: `httpsport=1270`
 
-3. Restartujte server OMI:`sudo /opt/omi/bin/service_control restart`
+3. Restartujte server OMI: `sudo /opt/omi/bin/service_control restart`
 
 ## <a name="next-steps"></a>Další kroky
 

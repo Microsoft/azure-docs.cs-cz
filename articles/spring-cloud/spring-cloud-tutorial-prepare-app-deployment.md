@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9d4356f5dc0b1eace586b741593b9c718c35caf
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906835"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945443"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Příprava aplikace pro nasazení v jarním cloudu Azure
 
@@ -210,6 +210,8 @@ Pokud používáte jarní spouštění 2,1, zahrňte do souboru pom.xml následu
         <version>2.1.2</version>
 </dependency>
 ```
+> [!WARNING]
+> Nezadávejte `server.port` v konfiguraci. U jarního cloudu Azure se toto nastavení overide na pevné číslo portu. Respektujte prosím toto nastavení a v kódu nespecifikujte port serveru.
 
 ## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Další doporučené závislosti pro povolení funkcí Azure jarního cloudu
 
@@ -227,6 +229,7 @@ Pokud chcete použít spravovanou službu Azure Service Registry, zahrňte `spri
 ```
 
 Koncový bod serveru registru služby se do vaší aplikace automaticky vloží jako proměnné prostředí. Aplikace se mohou registrovat pomocí serveru registru služby a zjišťovat další závislé mikroslužby.
+
 
 #### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient anotace
 
