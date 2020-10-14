@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: první dotaz na cestách'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení balíčku Resource Graph pro přechod a spuštění prvního dotazu.
-ms.date: 06/16/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: cc15b9fe75913ca47a14001a27e1e3c37d9ea71a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 748f6bfa673a2e9fabdcba0c91dc314931df268a
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84899682"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057446"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí příkazu Přejít
 
@@ -16,7 +16,7 @@ Prvním krokem k použití Azure Resource graphu je ověření, že jsou nainsta
 
 Na konci tohoto procesu se balíčky přidají do vaší instalace a spustí se první dotaz na diagram prostředku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

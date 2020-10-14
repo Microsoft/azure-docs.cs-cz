@@ -4,12 +4,12 @@ description: Pokyny, jak přesunout Recovery Services trezor mezi předplatnými
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 19b1c930ffc0e4b519c25f421662547a4d8dcde6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55c906585e6f6d4a2ae3f2279b2c3ffbaaccb025
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773361"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056425"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesunutí trezoru Recovery Services napříč předplatnými Azure a skupinami prostředků
 
@@ -34,7 +34,7 @@ Francie – střed, Francie – jih, Německo – severovýchod, Německo – st
 - Pokud se virtuální počítač nepřesouvá s Recovery Servicesovým trezorem v rámci předplatných nebo na novou skupinu prostředků, v trezoru zůstanou v trezoru nedotčené, dokud nevyprší jejich platnost.
 - Bez ohledu na to, jestli se virtuální počítač přesune do trezoru, nebo ne, můžete virtuální počítač vždycky obnovit z historie uchovávané zálohy v trezoru.
 - Azure Disk Encryption vyžaduje, aby se Trezor klíčů a virtuální počítače nacházely ve stejné oblasti a předplatném Azure.
-- Postup přesunutí virtuálního počítače se spravovanými disky najdete v tomto [článku](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
+- Postup přesunutí virtuálního počítače se spravovanými disky najdete v tomto [článku](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription).
 - Možnosti přesunutí prostředků nasazených přes klasický model se liší v závislosti na tom, zda přesouváte prostředky v rámci předplatného nebo do nového předplatného. Další informace najdete v tomto [článku](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 - Zásady zálohování definované pro trezor se uchovávají po přesunu trezoru mezi předplatnými nebo do nové skupiny prostředků.
 - Můžete přesunout jenom trezor, který obsahuje některý z následujících typů zálohových položek. Všechny zálohované položky typů, které nejsou uvedené níže, se musí zastavit a data se před přesunutím trezoru trvale odstraní.

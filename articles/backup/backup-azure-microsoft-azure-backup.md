@@ -3,12 +3,12 @@ title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 6fe03260cc1759929e7ff9886b1b232a37056866
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1be2af43f4d923a27fd96c5c0888a234725775a3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975513"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056697"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -80,7 +80,7 @@ Bez ohledu na to, jestli odesíláte zálohovaná data do Azure, nebo je uloží
 
 ### <a name="set-storage-replication"></a>Nastavení replikace úložiště
 
-Možnost replikace úložiště umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení používají trezory Recovery Services geograficky redundantní úložiště. Pokud je tento trezor vaším primárním trezorem, ponechte možnost úložiště nastavenou na geograficky redundantní úložiště. Zvolte místně redundantní úložiště, pokud chcete levnější možnost, která není tak trvanlivá. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md#geo-redundant-storage), [místně redundantního](../storage/common/storage-redundancy.md#locally-redundant-storage) a [redundantního úložiště zóny](../storage/common/storage-redundancy.md#zone-redundant-storage) najdete v tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md).
+Možnost replikace úložiště umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení používají trezory Recovery Services geograficky redundantní úložiště. Pokud je tento trezor vaším primárním trezorem, ponechte možnost úložiště nastavenou na geograficky redundantní úložiště. Zvolte místně redundantní úložiště, pokud chcete levnější možnost, která není tak trvanlivá. V tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md)najdete další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md#geo-redundant-storage), [místně redundantního](../storage/common/storage-redundancy.md#locally-redundant-storage)a [redundantního](../storage/common/storage-redundancy.md#zone-redundant-storage) úložiště pro zóny.
 
 Chcete-li upravit nastavení replikace úložiště:
 
@@ -200,6 +200,9 @@ Po dokončení extrakce zaškrtnutím políčka spusťte čerstvě extrahovanou 
     ![Zadejte umístění pro instalaci souborů.](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
     Pracovní umístění je požadavkem pro zálohování do Azure. Ujistěte se, že pracovní umístění je alespoň 5% plánovaného zálohování dat do cloudu. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Příprava úložiště dat](/system-center/dpm/plan-long-and-short-term-data-storage).
+
+    Požadavky na kapacitu pro úložiště na disku závisí hlavně na velikosti chráněných dat, velikosti denních bodů obnovení, očekávané míře nárůstu objemu dat a cílech rozsahu uchování. Doporučujeme, abyste úložiště disku dvakrát změnili velikost chráněných dat. To předpokládá každodenní velikost bodů obnovení odpovídající 10 % velikosti chráněných dat a 10denní rozsah uchování. Chcete-li získat dobrý odhad velikosti, zkontrolujte [Capacity Planner DPM](https://www.microsoft.com/download/details.aspx?id=54301). 
+
 5. Zadejte silné heslo pro omezené místní uživatelské účty a vyberte **Další**.
 
     ![Zadat silné heslo](./media/backup-azure-microsoft-azure-backup/security-screen.png)

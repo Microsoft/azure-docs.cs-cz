@@ -11,20 +11,22 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
-ms.date: 08/29/2019
-ms.openlocfilehash: 7a7373f5fcd36298d2feeff6a2a5b67c9e10e40b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: c1bedf56896332430c6f4b937aab37764a0c6a43
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321590"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058263"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Úspora nákladů pro prostředky s rezervovanou kapacitou – Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
 
 Šetřete peníze pomocí Azure SQL Database a spravované instance SQL tak, že v porovnání s cenami za průběžné platby potvrdíte rezervaci pro výpočetní prostředky. Díky rezervované kapacitě provedete závazek SQL Database a/nebo spravované instance SQL za období jednoho nebo tří let, abyste získali značnou slevu za výpočetní náklady. Pokud si chcete koupit rezervovanou kapacitu, musíte zadat oblast Azure, typ nasazení, úroveň výkonu a termín.
 
-Nemusíte přiřadit rezervaci konkrétní databázi nebo spravované instanci. Tato výhoda se shoduje se stávajícími nasazeními, která jsou již spuštěná nebo jsou nově nasazená automaticky. Když zakoupíte rezervaci, potvrdíte využití výpočetních nákladů po dobu jednoho nebo tří let. Jakmile si koupíte rezervaci, poplatky za výpočetní prostředky, které odpovídají atributům rezervace, se už nebudou účtovat podle tarifů průběžných plateb. Rezervace nepokrývá software, sítě ani poplatky za úložiště přidružené k této službě. Na konci rezervovaného období vyprší platnost fakturačního přínosu a databáze nebo spravovaná instance se účtují podle ceny za průběžné platby. Rezervace se neobnoví automaticky. Informace o cenách najdete v [nabídce vyhrazené kapacity](https://azure.microsoft.com/pricing/details/sql-database/managed/).
+Nemusíte přiřadit rezervaci konkrétní databázi nebo spravované instanci. Tato výhoda se shoduje se stávajícími nasazeními, která jsou již spuštěná nebo jsou nově nasazená automaticky. Když zakoupíte rezervaci, potvrdíte využití výpočetních nákladů po dobu jednoho nebo tří let. Jakmile si koupíte rezervaci, poplatky za výpočetní prostředky, které odpovídají atributům rezervace, se už nebudou účtovat podle tarifů průběžných plateb. 
+
+Rezervace se vztahuje na primární i fakturovatelnou sekundární výpočetní repliky, ale nezahrnuje poplatky za software, sítě ani úložiště spojené se službou. Na konci rezervovaného období vyprší platnost fakturačního přínosu a databáze nebo spravovaná instance se účtují podle ceny za průběžné platby. Rezervace se neobnoví automaticky. Informace o cenách najdete v [nabídce vyhrazené kapacity](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
 Rezervovanou kapacitu můžete koupit v [Azure Portal](https://portal.azure.com). Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](../../cost-management-billing/reservations/prepare-buy-reservation.md). Pro nákup rezervované kapacity platí:
 
@@ -32,6 +34,9 @@ Rezervovanou kapacitu můžete koupit v [Azure Portal](https://portal.azure.com)
 - U předplatných se smlouvou Enterprise musí být na webu [EA Portal](https://ea.azure.com) povolená možnost **Přidat rezervované instance**. Nebo, pokud je toto nastavení zakázané, musíte být správce EA v předplatném. Rezervovaná kapacita.
 
 Další informace o tom, jak se zákazníkům z podnikových zákazníků a průběžné platby účtují poplatky za nákupy rezervací, najdete v tématu [vysvětlení využití rezervace Azure pro vaši registraci v podniku](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) a [pochopení využití rezervací Azure pro vaše předplatné](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)s průběžnými platbami.
+
+> [!NOTE]
+> Zakoupená Rezervovaná kapacita nepředá ani nevyhradí konkrétní prostředky infrastruktury (virtuální počítače nebo uzly) pro vaše použití.
 
 ## <a name="determine-correct-size-before-purchase"></a>Určení správné velikosti před nákupem
 

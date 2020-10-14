@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 09/15/2020
-ms.openlocfilehash: 6589211839a5c1667a6b5cef22220fd917f7e4af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e70897825dfebe03e920ff5948ad597b57bdd7d7
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618956"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058246"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Omezení prostředků pro Azure SQL Database a Azure synapse Analytics Server
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -59,9 +59,9 @@ Když je využití výpočetního procesoru databází vysoké, zvyšuje se late
 Pokud se setkáte s vysokým využitím výpočetních prostředků, zahrnují možnosti zmírnění:
 
 - Zvýšením výpočetní velikosti databáze nebo elastického fondu poskytnete databázi s více výpočetními prostředky. Viz téma [škálování prostředků jedné databáze](single-database-scale.md) a [škálování prostředků elastického fondu](elastic-pool-scale.md).
-- Optimalizace dotazů pro snížení využití prostředků procesoru u každého dotazu. Další informace najdete v tématu [ladění a hinty dotazů](performance-guidance.md#query-tuning-and-hinting).
+- Optimalizace dotazů pro snížení využití prostředků procesoru u každého dotazu. Další informace najdete v části [Ladění dotazů a pomocné parametry](performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
 Když využité místo v databázi dosáhne limitu maximální velikosti, vkládání a aktualizace databáze, které zvyšují velikost dat, selžou a klienti obdrží [chybovou zprávu](troubleshoot-common-errors-issues.md). Příkazy SELECT a DELETE budou i nadále úspěšné.
 
@@ -78,7 +78,7 @@ Maximální počet relací a pracovních procesů závisí na úrovni služby a 
 Pokud se setkáte s vysokým využitím relace nebo pracovního procesu, zahrnují možnosti zmírňování:
 
 - Zvýšení úrovně služby nebo výpočetní velikosti databáze nebo elastického fondu. Viz téma [škálování prostředků jedné databáze](single-database-scale.md) a [škálování prostředků elastického fondu](elastic-pool-scale.md).
-- Optimalizujte dotazy, aby se snížilo využití prostředků každého dotazu, pokud příčinou zvýšení využití pracovního procesu je spor pro výpočetní prostředky. Další informace najdete v tématu [ladění a hinty dotazů](performance-guidance.md#query-tuning-and-hinting).
+- Optimalizujte dotazy, aby se snížilo využití prostředků každého dotazu, pokud příčinou zvýšení využití pracovního procesu je spor pro výpočetní prostředky. Další informace najdete v části [Ladění dotazů a pomocné parametry](performance-guidance.md#query-tuning-and-hinting).
 - Zmenšení nastavení [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (maximální úroveň paralelismu).
 - Optimalizace úlohy dotazů za účelem snížení počtu výskytů a trvání blokování dotazů.
 
@@ -96,7 +96,7 @@ Při zjištění chyb při nedostatku paměti patří mezi ně i tyto možnosti:
 - Zvýšení úrovně služby nebo výpočetní velikosti databáze nebo elastického fondu. Viz téma [škálování prostředků jedné databáze](single-database-scale.md) a [škálování prostředků elastického fondu](elastic-pool-scale.md).
 - Optimalizace dotazů a konfigurací za účelem snížení využití paměti. Společná řešení jsou popsaná v následující tabulce.
 
-|Řešení|Description|
+|Řešení|Popis|
 | :----- | :----- |
 |Snížení velikosti paměti pro udělení|Další informace o grantech paměti najdete v příspěvku na blogu [principy SQL Server paměti pro přidělení](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) . Běžným řešením pro zamezení nadměrného množství paměti je udržování [statistik](https://docs.microsoft.com/sql/relational-databases/statistics/statistics) v aktuálním stavu. Výsledkem je přesnější odhad spotřeby paměti modulem dotazu, což vyloučí nenutně náročné nároky na paměť.</br></br>V databázích využívajících úroveň kompatibility 140 a novější může databázový stroj automaticky upravovat velikost přidělené paměti pomocí [zpětné vazby přidělení paměti v režimu dávky](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-memory-grant-feedback). Databázový stroj v databázích využívajících úroveň kompatibility 150 a novější používá [zpětnou vazbu přidělení paměti v režimu řádků](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)pro další běžné dotazy v režimu řádků. Tato vestavěná funkce pomáhá předejít chybám způsobeným nedostatkem paměti z důvodu zbytečného udělení vysoké velikosti paměti.|
 |Zmenšení velikosti mezipaměti plánu dotazů|Databázový stroj ukládá do mezipaměti plány dotazů v paměti, aby nedocházelo k kompilování plánu dotazů pro každé spuštění dotazu. Aby nedocházelo k dispozici determinističtější mezipaměti plánů dotazů, které jsou způsobené plány ukládání do mezipaměti, které se používají jenom jednou, povolte konfiguraci OPTIMIZE_FOR_AD_HOC_WORKLOADS v [oboru databáze](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).|
@@ -137,11 +137,11 @@ Pokud dotaz například vygeneruje 1000 IOPS bez zásad správného řízení pr
 
 Hodnoty IOPS a min/max propustnosti vracené zobrazením [Sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) slouží jako limity a velká písmena, nikoli jako záruky. Zásady správného řízení prostředků nezaručují žádnou konkrétní latenci úložiště. Nejlepší dosažitelná latence, IOPS a propustnost pro danou úlohu uživatele závisí nejen na omezeních zásad správného řízení prostředků v/v, ale také na kombinaci používaných velikostí v/v a na funkcích základního úložiště. SQL Database používá IOs, které mají různou velikost mezi 512 KB a 4 MB. Pro účely vynucení limitu IOPS jsou všechny vstupně-výstupní operace zaúčtovány bez ohledu na její velikost, s výjimkou databází s datovými soubory v Azure Storage. V takovém případě se IOs větším než 256 KB účtují jako několik 256-KB IOs, aby se mohla zarovnat Azure Storage v/v monitorování účtů.
 
-Pro databáze Basic, Standard a Pro obecné účely, které používají datové soubory v Azure Storage, `primary_group_max_io` nemusí být tato hodnota dosažitelná, pokud databáze nemá k dispozici dostatek datových souborů k kumulativnímu poskytnutí tohoto počtu IOPS, nebo pokud se data nedistribuují rovnoměrně napříč soubory nebo pokud úroveň výkonu podkladových objektů BLOB omezuje za limit řízení prostředků vstupně-výstupní operace. Podobně s malým protokolem IOs generovaným častým zápisem transakce `primary_max_log_rate` nemusí být hodnota dosažitelná úlohou kvůli limitu IOPS v základním objektu BLOB služby Azure Storage.
+Pro databáze Basic, Standard a Pro obecné účely, které používají datové soubory v Azure Storage, `primary_group_max_io` nemusí být tato hodnota dosažitelná, pokud databáze nemá k dispozici dostatek datových souborů k kumulativnímu poskytnutí tohoto počtu IOPS, nebo pokud se data nedistribuují rovnoměrně napříč soubory nebo pokud úroveň výkonu podkladových objektů BLOB omezuje za limity řízení prostředků počet vstupně-výstupních operací za sekundu. Podobně s malým protokolem IOs generovaným častými potvrzeními transakcí `primary_max_log_rate` nemusí být hodnota dosažitelná úlohou kvůli limitu IOPS pro základní Azure Storage objekt BLOB. U databází využívajících Azure Premium Storage využívá Azure SQL Database dostatek rozsáhlých objektů BLOB úložiště k získání potřebných IOPS/propustnosti bez ohledu na velikost databáze. U větších databází se vytvoří více datových souborů za účelem zvýšení celkové kapacity IOPS/propustnosti.
 
 Hodnoty využití prostředků, jako jsou `avg_data_io_percent` a `avg_log_write_percent` , hlášené v zobrazeních [Sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database),  [Sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)a [Sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) , se počítají jako procentuální hodnoty maximálního řízení prostředků. Proto pokud jiné faktory než řízení prostředků omezují počet vstupně-výstupních operací za sekundu, je možné zobrazit sloučení vstupně-výstupních operací za sekundu a latence při zvýšení zatížení, a to i v případě, že hlášené využití prostředků zůstává nižší než 100%.
 
-Chcete-li zobrazit vstupně-výstupní operace čtení a zápisu, propustnost a latenci na databázový soubor, použijte funkci [Sys.dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) . Tato funkce obchází všechny vstupně-výstupní operace na databázi, včetně vstupně-výstupních operací na pozadí, které nepatří k `avg_data_io_percent` , ale používá IOPS a propustnost základního úložiště, a může mít vliv na zjištěnou latenci úložiště. Tato funkce také rozsvítí další latenci, která může být zavedena zásadou správy vstupně-výstupních prostředků pro čtení a zápisy ve `io_stall_queued_read_ms` sloupcích a v `io_stall_queued_write_ms` uvedeném pořadí.
+Chcete-li zobrazit vstupně-výstupní operace čtení a zápisu, propustnost a latenci na databázový soubor, použijte funkci [Sys.dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) . Tato funkce obchází všechny vstupně-výstupní operace na databázi, včetně vstupně-výstupních operací na pozadí, které nepatří k `avg_data_io_percent` , ale používá IOPS a propustnost základního úložiště, a může mít vliv na zjištěnou latenci úložiště. Tato funkce obslouží další latenci, která může být zavedena zásadou správy vstupně-výstupních prostředků pro čtení a zápisy v `io_stall_queued_read_ms` `io_stall_queued_write_ms` pořadí sloupců a.
 
 ### <a name="transaction-log-rate-governance"></a>Řízení sazeb transakčního protokolu
 

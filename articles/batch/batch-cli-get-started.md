@@ -4,12 +4,12 @@ description: Rychlý úvod k příkazům Batch v rozhraní příkazového řádk
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 048dbad89893354ae78c03fc522f8ebeeb6a80f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92d5e60f549855b39185564f7f6d2902b765cf76
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87531673"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055507"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Správa prostředků služby Batch pomocí Azure CLI
 
@@ -107,7 +107,7 @@ Pokud nainstalujete rozšíření rozhraní příkazového řádku služby Azure
 
 ## <a name="script-examples"></a>Příklady skriptu
 
-Viz [příklady skriptu CLI](cli-samples.md) pro službu Batch k provedení běžných úloh. Tyto příklady pokrývají mnoho příkazů dostupných ve službě Azure Batch pomocí příkazového řádku Azure CLI pro vytvoření a správu účtů, fondů, úloh a úkolů. 
+Viz [příklady skriptu CLI](./scripts/batch-cli-sample-create-account.md) pro službu Batch k provedení běžných úloh. Tyto příklady pokrývají mnoho příkazů dostupných ve službě Azure Batch pomocí příkazového řádku Azure CLI pro vytvoření a správu účtů, fondů, úloh a úkolů.
 
 ## <a name="json-files-for-resource-creation"></a>Soubory JSON pro vytváření prostředků
 
@@ -141,7 +141,7 @@ Při dotazování služby Batch pomocí operace `list` můžete určit klauzuli 
 
 Následující tabulka popisuje klauzule OData podporované službou Batch:
 
-| Klauzule | Description |
+| Klauzule | Popis |
 |---|---|
 | `--select-clause [select-clause]` | Vrátí podmnožinu vlastností pro každou entitu. |
 | `--filter-clause [filter-clause]` | Vrátí pouze ty entity, které odpovídají zadanému výrazu OData. |

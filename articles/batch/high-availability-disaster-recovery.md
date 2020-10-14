@@ -3,12 +3,12 @@ title: Vysoká dostupnost a zotavení po havárii
 description: Naučte se navrhovat aplikace Batch pro regionální výpadky.
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 1e22cb19aba1dcedc4ece7ddc2d1de0ab3233238
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c77e6fa672d26545af47b262a982a7d0d7303eec
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83725733"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058008"
 ---
 # <a name="design-your-application-for-high-availability"></a>Návrh aplikace pro zajištění vysoké dostupnosti
 
@@ -39,5 +39,5 @@ Při navrhování řešení, které je možné převzetí služeb při selhání
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o vytváření účtů Batch pomocí [Azure Portal](batch-account-create-portal.md), [Azure CLI](cli-samples.md), [PowerShellu](batch-powershell-cmdlets-get-started.md)nebo [rozhraní API pro správu služby Batch](batch-management-dotnet.md).
+- Přečtěte si další informace o vytváření účtů Batch pomocí [Azure Portal](batch-account-create-portal.md), [Azure CLI](./scripts/batch-cli-sample-create-account.md), [PowerShellu](batch-powershell-cmdlets-get-started.md)nebo [rozhraní API pro správu služby Batch](batch-management-dotnet.md).
 - Výchozí kvóty jsou přidruženy k účtu Batch. [Tento článek](batch-quota-limit.md) obsahuje podrobnosti o výchozích hodnotách kvót a popisuje, jak lze kvóty zvýšit.

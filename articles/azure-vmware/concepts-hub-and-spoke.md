@@ -2,17 +2,18 @@
 title: Koncept – integrace nasazení řešení Azure VMware v architektuře hub a paprsků
 description: Přečtěte si o doporučeních pro integraci nasazení řešení Azure VMware do existující nebo nové architektury hub a paprsků v Azure.
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: 1bbb2a771ac6f7981460b1e81881725a11299242
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 10/14/2020
+ms.openlocfilehash: 66c6cc4841b4b36775fda89b29dc588100c3ad87
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019224"
+ms.locfileid: "92058467"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrace řešení Azure VMware v architektuře hub a paprsků
 
 V tomto článku poskytujeme doporučení pro integraci nasazení řešení Azure VMware do existující nebo nové [architektury hub a paprsků](/azure/architecture/reference-architectures/hybrid-networking/shared-services) v Azure. 
+
 
 Scénář centra a paprsků předpokládá hybridní cloudové prostředí s úlohami na:
 
@@ -25,6 +26,9 @@ Scénář centra a paprsků předpokládá hybridní cloudové prostředí s úl
 *Centrum* je Virtual Network Azure, která funguje jako centrální bod připojení k místnímu a privátnímu cloudu řešení Azure VMware. *Paprsky* jsou virtuální sítě, které jsou v partnerském vztahu s rozbočovačem a umožňují komunikaci mezi virtuálními sítěmi.
 
 Přenosy dat mezi místním datacentrem, privátním cloudem řešení Azure VMware a centrem procházejí prostřednictvím připojení Azure ExpressRoute. Paprskové virtuální sítě obvykle obsahují úlohy založené na IaaS, ale můžou mít PaaS služby, jako je [App Service Environment](../app-service/environment/intro.md), které mají přímou integraci s Virtual Network nebo jiné PaaS služby s povoleným [privátním propojením Azure](../private-link/index.yml) .
+
+>[!IMPORTANT]
+>Existující bránu ExpressRoute můžete použít pro připojení k řešení Azure VMware, pokud nepřekračuje limit čtyř ExpressRoute okruhů na jednu virtuální síť.  Pro přístup k řešení Azure VMware z místního prostředí prostřednictvím ExpressRoute ale musíte mít ExpressRoute Global Reach, protože brána ExpressRoute neposkytuje přechodné směrování mezi připojenými okruhy.
 
 Diagram znázorňuje příklad nasazení centra a paprsků v Azure připojeného k místnímu a řešení Azure VMware prostřednictvím ExpressRoute Global Reach.
 
@@ -105,14 +109,17 @@ Podrobnosti a požadavky najdete v článku týkajícím se řešení Azure VMwa
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Nasazení integrace centra řešení a paprsků Azure VMware" border="false":::
 
 
-### <a name="jumpbox-and-azure-bastion"></a>JumpBox a Azure bastionu
+### <a name="jump-box-and-azure-bastion"></a>Pole pro přesun a Azure bastionu
 
-Přístup k prostředí řešení Azure VMware pomocí JumpBox, což je virtuální počítač s Windows 10 nebo Windows Server nasazený v podsíti sdílené služby v rámci centrální virtuální sítě.
+Přístup k prostředí řešení Azure VMware pomocí pole pro skok, což je virtuální počítač s Windows 10 nebo Windows Server nasazený v podsíti sdílené služby ve virtuální síti centrální sítě.
 
-Z hlediska zabezpečení je nejvhodnější nasadit službu [Microsoft Azure bastionu](../bastion/index.yml) v rámci virtuální sítě rozbočovače. Azure bastionu poskytuje bezproblémové připojení RDP a SSH k virtuálním počítačům nasazeným v Azure bez nutnosti zřídit pro tyto prostředky veřejné IP adresy. Po zřízení služby Azure bastionu můžete k vybranému virtuálnímu počítači přistupovat z Azure Portal. Po navázání připojení se otevře nová karta, kde se zobrazí plocha JumpBox a z této plochy můžete získat přístup k rovině správy privátního cloudu řešení Azure VMware.
+>[!IMPORTANT]
+>Služba Azure bastionu se doporučuje připojit k poli s odkazem, abyste zabránili odhalení řešení Azure VMware na Internet. Azure bastionu se nedá použít pro připojení k virtuálním počítačům řešení VMware Azure, protože se nejedná o objekty Azure IaaS.  
+
+Z hlediska zabezpečení je nejvhodnější nasadit službu [Microsoft Azure bastionu](../bastion/index.yml) v rámci virtuální sítě rozbočovače. Azure bastionu poskytuje bezproblémové připojení RDP a SSH k virtuálním počítačům nasazeným v Azure bez nutnosti zřídit pro tyto prostředky veřejné IP adresy. Po zřízení služby Azure bastionu můžete k vybranému virtuálnímu počítači přistupovat z Azure Portal. Po navázání připojení se otevře nová karta, kde se zobrazí plocha rozevíracího seznamu, a z této plochy můžete získat přístup k rovině správy privátního cloudu řešení Azure VMware.
 
 > [!IMPORTANT]
-> Neposkytněte virtuálnímu počítači s JumpBox veřejnou IP adresu nebo zveřejňujte port 3389/TCP veřejnému Internetu. 
+> Nepřiřazujte veřejnou IP adresu virtuálnímu počítači s odkazem, nebo zveřejňujte port 3389/TCP veřejnému Internetu. 
 
 
 :::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Nasazení integrace centra řešení a paprsků Azure VMware" border="false":::

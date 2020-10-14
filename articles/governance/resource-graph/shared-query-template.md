@@ -1,15 +1,15 @@
 ---
 title: 'Rychlý Start: vytvoření sdíleného dotazu se šablonami'
 description: V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k vytvoření sdíleného dotazu pro diagram prostředků, který počítá virtuální počítače podle operačního systému.
-ms.date: 07/06/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: cc9da201b10b697f125e8ffe7402f23f5eaa8362
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a629dd5325fc20d6f173d9f4e0524885af8fdf49
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88685523"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057004"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Rychlý Start: vytvoření sdíleného dotazu pomocí šablony ARM
 
@@ -21,7 +21,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení šablony ARM pro vytvoření sdíleného dotazu do Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -53,9 +53,9 @@ Prostředek definovaný v šabloně je:
    | Předplatné | Vyberte své předplatné Azure. |
    | Skupina prostředků | Vyberte **vytvořit novou**, zadejte název a pak vyberte **OK**. |
    | Umístění | Vyberte oblast. Například **USA – střed**. |
-   | Název dotazu | Ponechejte výchozí **počet virtuálních počítačů v operačním systému**. |
-   | Dotaz na kód | Ponechte výchozí hodnotu. `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
-   | Popis dotazu | Ponechte výchozí hodnotu, kterou **tento sdílený dotaz počítá s počtem prostředků virtuálního počítače a shrnuje podle typu operačního systému.** |
+   | Název dotazu | Ponechte výchozí hodnotu: **počet virtuálních počítačů podle operačního systému**. |
+   | Dotaz na kód | Ponechte výchozí hodnotu: `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
+   | Popis dotazu | Ponechte výchozí hodnotu: **tento sdílený dotaz počítá všechny prostředky virtuálních počítačů a shrnuje podle typu operačního systému.** |
    | Souhlasím s podmínkami a ujednáními uvedenými nahoře | Vybrali |
 
 1. Vyberte **Koupit**.
@@ -75,7 +75,7 @@ Chcete-li spustit nový sdílený dotaz, postupujte podle následujících krok�
 
 1. Vyberte sdílený dotaz s názvem **počet virtuálních počítačů podle operačního systému**a pak vyberte kartu **výsledky** na stránce **Přehled** .
 
-Alternativně lze sdílený dotaz otevřít z Průzkumníka grafu prostředků:
+Sdílený dotaz lze také otevřít z Průzkumníka grafu prostředků:
 
 1. Na panelu hledání na portálu vyhledejte **Průzkumník diagramů prostředků** a vyberte ho.
 
@@ -83,7 +83,7 @@ Alternativně lze sdílený dotaz otevřít z Průzkumníka grafu prostředků:
 
 1. Změňte **typ** na _sdílené dotazy_. Pokud v seznamu nevidíte **počet virtuálních počítačů podle OS** , použijte k omezení výsledků pole Filtr. Jakmile se sdílený dotaz **počet virtuálních počítačů podle operačního systému** zobrazí, vyberte jeho název.
 
-1. Po načtení dotazu vyberte tlačítko **Spustit dotaz** . Výsledky se zobrazují na kartě **výsledky** níže.
+1. Po načtení dotazu vyberte tlačítko **Spustit dotaz** . Výsledky se zobrazí na kartě **výsledky** .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: cf48e26133326d43754b38df6f3b2caaf7a587ab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c9a7ba63246f747a132c315e22452ca9c7144448
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978084"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058178"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>Vyřazení verze rozhraní API OperationalInsights
 Microsoft poskytuje oznámení alespoň 12 měsíců před vyřazením rozhraní API z důvodu hladkého přechodu na novější/podporovanou verzi. Vydali jsme novou verzi (2020-08-01) pro rozhraní API poskytovatele prostředků **OperationalInsights** a všechny starší verze rozhraní API vyřadíme 31. října 2023. Vzhledem k tomu, že se nové funkce a funkce a optimalizace přidávají jenom k aktuálnímu rozhraní API, měli byste upgradovat na nejnovější verzi rozhraní API co nejdříve.
@@ -67,4 +67,4 @@ V závislosti na metodě konfigurace, kterou používáte, byste měli aktualizo
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na [Reference k rozhraní OperationalInsights API](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/allversions).
+- Podívejte se na [referenční informace pro rozhraní API pracovního prostoru OperationalInsights](https://docs.microsoft.com/rest/api/loganalytics/workspaces).

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 35b59fb0583911b5b9faee96276d1bb09a8d6679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c32ebef16750954f3df1a1d1b379bf42853f2b3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269705"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056851"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Nejčastější dotazy k rozhraní Azure API pro FHIR
 
@@ -43,6 +43,10 @@ Rozhraní Azure API pro FHIR je hostovaná a spravovaná verze serveru Microsoft
 Pokud používáte server FHIR pro Azure, máte přímý přístup k příslušným službám. I když ukládáte data FÍ, zodpovídáte i za údržbu a aktualizaci serveru a všech požadovaných dodržování předpisů.
 
 Z hlediska vývoje je každá funkce nasazená na Open Source Microsoft FHIR Server pro Azure jako první. Po ověření v open source se uvolní do PaaS Azure API pro řešení FHIR. Doba mezi vydáním v open source a PaaS závisí na složitosti funkce a dalších prioritách plánu. 
+
+### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>Kde můžu zjistit, co se uvolňuje do rozhraní API Azure pro FHIR?
+
+Některé z toho, co se uvolňuje do rozhraní API Azure pro FHIR, najdete v článku o [vydání](https://github.com/microsoft/fhir-server/releases) Open-Source serveru FHIR. Pracovali jsme na označení položek pomocí Azure-API-for-FHIR, pokud se budou vydávat do spravované služby a jsou obvykle dostupné dva týdny po jejich uvedení na stránce pro vydání v open source. Také jsme zahrnuli pokyny k testování sestavení [zde](https://github.com/microsoft/fhir-server/blob/master/docs/Testing-Releases.md) , pokud byste chtěli testovat ve vlastním prostředí. Vyhodnocujeme, jak nejlépe sdílet další aktualizace spravované služby.
 
 ### <a name="what-is-smart-on-fhir"></a>Co je inteligentní na FHIR?
 

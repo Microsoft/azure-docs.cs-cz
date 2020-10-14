@@ -6,12 +6,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 57a9186033b8df71d1972289fe33b0fe654690f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8d6481bdf3476f8f91c437138f4b6f1ebd1f1de
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316422"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058195"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Kurz: použití robota webové aplikace s povoleným Language Understanding v jazyce C #
 
@@ -27,7 +27,7 @@ Použijte jazyk C# k sestavení robota pro chat integrovaný s jazykem porozumě
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Emulátor robota](https://aka.ms/abs/build/emulatordownload)
+* [Emulátor pro robot Framework](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
 ## <a name="create-a-web-app-bot-resource"></a>Vytvoření prostředku robota webové aplikace
@@ -314,18 +314,18 @@ V aplikaci Visual Studio 2019 začněte robot. Otevře se okno prohlížeče s w
 
 ![Zobrazí se Domovská stránka s informacemi o robotovi.](./media/bfv4-csharp/running-bot-web-home-page-success.png)
 
-## <a name="use-the-bot-emulator-to-test-the-bot"></a>Použití emulátoru bot k otestování robota
+## <a name="use-the-bot-framework-emulator-to-test-the-bot"></a>Použití emulátoru bot Framework k otestování robota
 
-1. Spusťte emulátor bot a vyberte **otevřít robot**.
+1. Spusťte emulátor rozhraní bot Framework a vyberte **otevřít robot**.
 1. V automaticky **otevřeném okně robota** zadejte adresu URL robota, například `http://localhost:3978/api/messages` . `/api/messages`Trasa je webová adresa pro robota.
 1. Zadejte **ID aplikace Microsoftu** a **heslo aplikace Microsoftu**, které se nachází v **appsettings.js** v souboru v kořenovém adresáři robota, který jste stáhli, a pak vyberte **připojit**.
 
-1. V emulátoru bot zadejte `Book a flight from Seattle to Berlin tomorrow` a získejte stejnou reakci na základní bot, jak jste dostali v rámci **testu ve webovém chatu** v předchozí části.
+1. V emulátoru bot Framework zadejte `Book a flight from Seattle to Berlin tomorrow` a získejte stejnou reakci na základní bot, jak jste dostali v rámci **testu ve webovém chatu** v předchozí části.
 
     [![Snímek obrazovky ukazuje emulátor rozhraní bot Framework se základní reakcí na robot.](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. Vyberte **Ano**. Robot odpoví souhrnem jeho akcí.
-1. V protokolu emulátoru bot vyberte řádek, který obsahuje `<- trace LuisV3 Trace` . Tím se zobrazí odpověď JSON z LUIS pro záměr a entity utterance.
+1. Z protokolu emulátoru bot Framework vyberte řádek, který obsahuje `<- trace LuisV3 Trace` . Tím se zobrazí odpověď JSON z LUIS pro záměr a entity utterance.
 
     [![Snímek obrazovky s vybraným trasováním LuisV3 zobrazí základní odpověď robota a zvýrazní odpověď JSON.](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 

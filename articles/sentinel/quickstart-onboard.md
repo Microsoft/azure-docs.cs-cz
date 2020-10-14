@@ -8,13 +8,14 @@ ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.date: 04/27/2020
-ms.openlocfilehash: e9d7c99a123bd92bf55a33c8d1faaf7da55d3e36
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/14/2020
+ms.custom: references_regions
+ms.openlocfilehash: da1f3154d492a36a196d87eec98af462fd659cd2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90889035"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057514"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Rychlý start: Zprovoznění služby Azure Sentinel
 
@@ -26,7 +27,6 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
 >[!IMPORTANT] 
 > Informace o účtovaných cenách při používání Azure Sentinel najdete v tématu [ceny služby Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/).
-  
 
 ## <a name="global-prerequisites"></a>Globální požadavky
 
@@ -38,7 +38,24 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 - Pokud chcete použít Azure Sentinel, potřebujete oprávnění Přispěvatel nebo čtenář ve skupině prostředků, do které pracovní prostor patří.
 - K připojení konkrétních zdrojů dat se můžou potřebovat další oprávnění.
 - Azure Sentinel je placená služba. Informace o cenách najdete v tématu informace [o službě Azure Sentinel](https://go.microsoft.com/fwlink/?linkid=2104058).
- 
+
+### <a name="geographical-availability-and-data-residency"></a>Zeměpisná dostupnost a zasídlí dat
+
+- U všech [oblastí GA Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) s výjimkou oblastí Čína a Německo (svrchovan) může Azure Sentinel běžet v pracovních prostorech. 
+
+- Data generovaná službou Azure Sentinel, jako jsou incidenty, záložky a analytická pravidla, můžou obsahovat určitá zákaznická data, která jsou zdrojem zákaznických pracovních Log Analytics. Tato data generovaná službou Azure Sentinel se ukládají v geograficky uvedeném v následující tabulce, podle geografického umístění, ve kterém se nachází pracovní prostor:
+
+    | Geografické pracovní prostory | Geografická data generovaná službou Azure Sentinel |
+    | --- | --- |
+    | USA<br>Indie<br>Brazílie<br>Afrika<br>Jižní Korea | USA |
+    | Evropa<br>Francie<br>Švýcarsko | Evropa |
+    | Austrálie | Austrálie |
+    | Spojené království | Spojené království |
+    | Kanada | Kanada |
+    | Asie a Tichomoří | Asie a Tichomoří (Singapur) |
+    | Japonsko | Japonsko |
+    |
+
 ## <a name="enable-azure-sentinel"></a>Povolit službu Azure Sentinel <a name="enable"></a>
 
 1. Přihlaste se k portálu Azure. Ujistěte se, že je zaškrtnuté políčko předplatné, ve kterém je Azure Sentinel vytvořeno.
@@ -55,7 +72,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
    >[!NOTE] 
    > - Výchozí pracovní prostory vytvořené nástrojem Azure Security Center se v seznamu nezobrazí. na ně nemůžete nainstalovat službu Azure Sentinel.
-   > - U všech [oblastí GA Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) s výjimkou oblastí Čína a Německo (svrchovan) může Azure Sentinel běžet v pracovních prostorech. Data generovaná službou Azure Sentinel (jako jsou incidenty, záložky a pravidla výstrah, která mohou obsahovat data zákaznická z těchto pracovních prostorů) se ukládají v Evropě (pro pracovní prostory v Evropě), v Austrálii (pro pracovní prostory v Austrálii) nebo v Východní USA (pro pracovní prostory v jiné oblasti).
+   >
 
    >[!IMPORTANT]
    >
@@ -67,19 +84,21 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
 ## <a name="connect-data-sources"></a>Připojení zdrojů dat
 
-Služba Azure Sentinel vytvoří připojení ke službám a aplikacím pomocí připojení ke službě a předávání událostí a protokolů do služby Azure Sentinel. U počítačů a virtuálních počítačů můžete nainstalovat agenta Azure Sentinel, který shromáždí protokoly a předává je do Azure Sentinel. Pro brány firewall a proxy servery využívá Azure Sentinel Server Linux syslog. Agent se nainstaluje na něj a odkud agent shromáždí soubory protokolu a předá je do Azure Sentinel. 
+Služba Azure Sentinel ingestuje data ze služeb a aplikací připojením ke službě a předáváním událostí a protokolů do služby Azure Sentinel. U fyzických a virtuálních počítačů můžete nainstalovat agenta Log Analytics, který shromáždí protokoly a předává je do Azure Sentinel. U bran firewall a proxy serverů Azure Sentinel nainstaluje agenta Log Analytics na server Linux syslog, ze kterého Agent shromáždí soubory protokolů a předá je službě Azure Sentinel. 
  
-1. Klikněte na **datové konektory**.
-1. K dispozici je dlaždice pro každý zdroj dat, ke kterému se můžete připojit.<br>
-Klikněte například na **Azure Active Directory**. Pokud tento zdroj dat připojíte, budete streamovat všechny protokoly z Azure AD do Azure Sentinel. Můžete vybrat typ protokolů, které jsou v síti WAN k dispozici, přihlášení a protokoly auditu. <br>
-V dolní části poskytuje Azure Sentinel doporučení pro to, které sešity byste měli nainstalovat pro každý konektor, abyste mohli okamžitě získat zajímavé přehledy napříč vašimi daty. <br> Postupujte podle pokynů k instalaci nebo se [podívejte na příslušné Průvodce připojením](connect-data-sources.md) , kde najdete další informace. Informace o datových konektorech najdete v tématu [připojení služeb společnosti Microsoft](connect-data-sources.md).
+1. V hlavní nabídce vyberte **datové konektory**. Tím se otevře Galerie datových konektorů.
 
-Po připojení zdrojů dat začnou vaše data zasílat Stream do Azure Sentinel a je připravená, abyste mohli začít pracovat s. Protokoly můžete zobrazit ve [vestavěných řídicích panelech](quickstart-get-visibility.md) a začít sestavovat dotazy v Log Analytics a [Prozkoumat data](tutorial-investigate-cases.md).
+1. Galerie je seznam všech zdrojů dat, které se můžete připojit. Vyberte zdroj dat a pak tlačítko **otevřít stránku konektoru** .
 
+1. Stránka konektor zobrazuje pokyny ke konfiguraci konektoru a případné další pokyny, které mohou být nezbytné.<br>
+Pokud například vyberete zdroj dat **Azure Active Directory** , který umožňuje streamování protokolů z Azure AD do Azure Sentinel, můžete vybrat typ protokolů, které jsou v síti WAN, a protokoly pro přihlášení a protokoly auditu. <br> Postupujte podle pokynů k instalaci nebo se [podívejte na příslušné Průvodce připojením](connect-data-sources.md) , kde najdete další informace. Informace o datových konektorech najdete v tématu [připojení služeb společnosti Microsoft](connect-data-sources.md).
 
+1. Karta **Další kroky** na stránce konektor zobrazuje relevantní předdefinované sešity, Ukázkové dotazy a šablony analytického pravidla, které doprovázejí datový konektor. Můžete je použít tak, jak jsou, nebo si je upravit – buď můžete okamžitě získat zajímavé přehledy napříč daty. <br>
+
+Po připojení zdrojů dat začnou vaše data zasílat Stream do Azure Sentinel a je připravená, abyste mohli začít pracovat s. Protokoly můžete zobrazit v [vestavěných sešitech](quickstart-get-visibility.md) a začít sestavovat dotazy v Log Analytics a [Prozkoumat data](tutorial-investigate-cases.md).
 
 ## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste se seznámili s připojením zdrojů dat ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+V tomto dokumentu jste se seznámili s připojováním a připojením zdrojů dat ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
 - Streamování dat z [běžných zařízení formátu událostí](connect-common-event-format.md) do Azure Sentinel.

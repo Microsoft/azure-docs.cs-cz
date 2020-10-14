@@ -13,12 +13,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: 831af87159b909ca744839d2997aa2b70cbc72e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e63d2cac97a16674c4e2e880f94373b0af1510de
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91627121"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056408"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Co je Microsoft Identity Platform?
 
@@ -74,8 +74,7 @@ Přečtěte si, jak se základní ověřování a koncepce Azure AD vztahují na
 
 [Azure AD B2B](../external-identities/what-is-b2b.md) – pozvání externích uživatelů do tenanta služby Azure AD jako uživatele typu Host a přiřazení oprávnění k autorizaci, když používají jejich existující pověření k ověřování.
 
-> [!TIP]
-> Hledáte dokumentaci k *platformě Azure Active Directory Developer Platform (verze 1.0)* ? Další informace najdete v tématu [přehled Azure Active Directory pro vývojáře (v 1.0)](../azuread-dev/v1-overview.md).
+[Azure Active Directory pro vývojáře (v 1.0)](../azuread-dev/v1-overview.md) – zobrazené tady pro vývojáře s existujícími aplikacemi, které používají koncový bod starší verze 1.0. **Nepoužívejte v** 1.0 pro nové projekty.
 
 ## <a name="next-steps"></a>Další kroky
 

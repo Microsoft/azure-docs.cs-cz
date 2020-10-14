@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 6c88a1eaee50676cfe6bb9589779d7156b805e30
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 77dc64d9660f9a0bf66559c4a5a976362cf1acd0
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920972"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951634"
 ---
 ::: zone target = "docs"
 
@@ -97,11 +97,11 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 
 1. Prvním krokem je ověření a zahájení relace. Přejděte do části **Připojit a kopírovat**. Kliknutím na **Získat přihlašovací údaje** získejte přihlašovací údaje pro přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště.
 
-    ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
+    ![Získání přihlašovacích údajů sdílené složky](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
 
 2. V dialogovém okně Přístup ke sdílené složce a kopírování dat zkopírujte **Uživatelské jméno** a **Heslo** odpovídající sdílené složce. Klikněte na **OK**.
     
-    ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
+    ![Získání přihlašovacích údajů sdílené složky 2](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
 
 3. Pokud chcete získat přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště (*databoxe2etest* v následujícím příkladu) z hostitelského počítače, otevřete okno příkazového řádku. Na příkazovém řádku zadejte:
 
@@ -122,7 +122,7 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 
 4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Kliknutím na **OK** otevřete Průzkumníka souborů.
     
-    ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
+    ![Připojení ke sdílené složce přes Průzkumníka souborů](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
 
     Sdílené složky by se teď měly zobrazit jako složky.
     

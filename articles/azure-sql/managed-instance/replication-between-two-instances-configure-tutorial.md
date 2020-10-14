@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: b0f2a6fcd888afd7eb99a810fad6e876fe6ff4ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8049df552c9754a1674c9e38e6d9b9b2cea3bd85
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617056"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058212"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Kurz: Konfigurace replikace mezi dvěma spravovanými instancemi
 
@@ -48,7 +48,7 @@ Tento kurz je určený pro zkušené publikum a předpokládá, že uživatel je
 
 Konfigurace spravované instance SQL tak, aby fungovala jako Vydavatel nebo distributor, vyžaduje:
 
-- Zda je spravovaná instance vydavatele ve stejné virtuální síti jako distributor a předplatitel, nebo že [partnerský vztah virtuálních sítí](../../virtual-network/tutorial-connect-virtual-networks-powershell.md) byl nakonfigurován mezi virtuálními sítěmi všech tří entit. 
+- Tato spravovaná instance vydavatele se nachází ve stejné virtuální síti jako distributor a předplatitel, nebo [VPN Gateway](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) byly nakonfigurovány mezi virtuálními sítěmi všech tří entit. 
 - Při připojování mezi účastníky replikace se používá ověřování SQL.
 - Sdílená složka účtu úložiště Azure pro pracovní adresář replikace.
 - Port 445 (odchozí TCP) je otevřen v pravidlech zabezpečení NSG pro spravované instance pro přístup ke sdílené složce Azure.  Pokud dojde k chybě `failed to connect to azure storage \<storage account name> with os error 53` , bude nutné přidat odchozí pravidlo do NSG příslušné podsítě spravované instance SQL.
