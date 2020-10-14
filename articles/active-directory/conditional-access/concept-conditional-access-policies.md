@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ab632010ec2bbbc19ac71cbeccab2ff6b3565f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a79b046170a5a3f3574895490aa649fd02da082
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88948381"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016123"
 ---
 # <a name="building-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
@@ -126,6 +126,8 @@ Zásada podmíněného přístupu musí obsahovat minimálně následující pod
 V článku [společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md) jsou některé zásady, které považujeme za užitečné pro většinu organizací.
 
 ## <a name="next-steps"></a>Další kroky
+
+[Vytvoření zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json#create-a-conditional-access-policy)
 
 [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)
 

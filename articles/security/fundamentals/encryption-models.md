@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 836e01d3cd8fb25dda1616803d8b6f3e9ff4e06f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b92c84234432320aa08017a15fbf8a5a4630eb3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89645747"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019728"
 ---
 # <a name="data-encryption-models"></a>Modely šifrování dat
 
@@ -149,7 +149,7 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Azure Cognitive Search           | Yes                | Yes                | -                  |
 | Azure Cognitive Services         | Yes                | Yes                | -                  |
 | Azure Machine Learning           | Yes                | Yes                | -                  |
-| Azure Machine Learning Studio    | Yes                | Verze Preview, RSA 2048-bit | -               |
+| Azure Machine Learning Studio (klasický) | Yes         | Verze Preview, RSA 2048-bit | -               |
 | Content Moderator                | Yes                | Yes                | -                  |
 | Rozpoznávání tváře                             | Yes                | Yes                | -                  |
 | Language Understanding           | Yes                | Yes                | -                  |
@@ -159,9 +159,9 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Translator Text                  | Yes                | Yes                | -                  |
 | Power BI                         | Yes                | Ano, RSA 4096-bit  | -                  |
 | **Analýzy**                    |                    |                    |                    |
-| Azure Stream Analytics           | Yes                | NENÍ K DISPOZICI\*              | -                  |
+| Azure Stream Analytics           | Yes                | Není k dispozici\*              | -                  |
 | Event Hubs                       | Yes                | Yes                | -                  |
-| Funkce                        | Yes                | Yes                | -                  |
+| Functions                        | Yes                | Yes                | -                  |
 | Azure Analysis Services          | Ano                | -                  | -                  |
 | Azure Data Catalog               | Yes                | -                  | -                  |
 | Azure HDInsight                  | Yes                | Vše                | -                  |
@@ -197,7 +197,7 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Table Storage                    | Yes                | Yes                | Yes                |
 | Azure Cosmos DB                  | Ano                | Yes                | -                  |
 | Azure Databricks                 | Yes                | Yes                | -                  |
-| Azure Database Migration Service | Yes                | NENÍ K DISPOZICI\*              | -                  |
+| Azure Database Migration Service | Yes                | Není k dispozici\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | Yes                | -                  | Yes                |
 | Azure Repos                      | Yes                | -                  | Yes                |
@@ -230,7 +230,7 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Synchronizace souborů                        | Yes                | Yes                | -                  |
 | Queue Storage                    | Yes                | Yes                | Yes                |
 | Avere vFXT                       | Yes                | -                  | -                  |
-| Azure Cache for Redis            | Yes                | NENÍ K DISPOZICI\*              | -                  |
+| Azure Cache for Redis            | Yes                | Není k dispozici\*              | -                  |
 | Azure NetApp Files               | Yes                | Yes                | -                  |
 | Archiv služby Storage                  | Yes                | Yes                | -                  |
 | StorSimple                       | Yes                | Yes                | Yes                |

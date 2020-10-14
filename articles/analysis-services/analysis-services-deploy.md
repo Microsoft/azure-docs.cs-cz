@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d6b737985bc19aa09b26bb0d4a65696a364a903a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45ea75b65e75f9bac4d6d4839ffe7fa095e3b25d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83697593"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018772"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Nasazení modelu ze sady Visual Studio
 
@@ -23,7 +23,7 @@ Jakmile ve svém předplatném Azure vytvoříte server, můžete na něj nasadi
 Na začátek budete potřebovat:
 
 * **Server služby Analysis Services** v Azure Další informace najdete v tématu [Vytvoření serveru služby Azure Analysis Services](analysis-services-create-server.md).
-* **Projekt tabelárního modelu** v aplikaci Visual Studio nebo existující tabulkový model na úrovni kompatibility 1200 nebo vyšší. Nikdy jste ho nevytvářeli? Vyzkoušejte [Kurz tabulkového modelování Adventure Works Internet Sales](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial).
+* **Projekt tabelárního modelu** v aplikaci Visual Studio nebo existující tabulkový model na úrovni kompatibility 1200 nebo vyšší. Nikdy jste ho nevytvářeli? Vyzkoušejte [Kurz tabulkového modelování Adventure Works Internet Sales](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial).
 * **Místní brána** – Pokud máte jeden nebo více místních zdrojů dat v síti organizace, budete si muset nainstalovat [místní bránu dat](analysis-services-gateway.md). Brána je nezbytná pro server v cloudu, aby se mohl připojit k místním zdrojům dat a mohl tak zpracovat a aktualizovat data v modelu.
 
 > [!TIP]
@@ -63,7 +63,4 @@ Pokud nasazení selže u tabulky, bude to pravděpodobně tím, že se server ne
 
 Teď když jste tabulkový model nasadili na váš server, můžete se k němu připojit. Můžete se [k němu připojit pomocí SQL Server Management Studio (SSMS)](analysis-services-manage.md) , abyste ho mohli spravovat. Můžete [se k němu připojit také pomocí klientského nástroje](analysis-services-connect.md), jako je například Power BI, Power BI Desktop nebo Excel, a začít vytvářet sestavy.   
 
-Další informace o pokročilých metodách nasazení najdete v tématu věnovaném [nasazení řešení pro tabelární model](https://docs.microsoft.com/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current).
-
-
-
+Další informace o pokročilých metodách nasazení najdete v tématu věnovaném [nasazení řešení pro tabelární model](/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current).

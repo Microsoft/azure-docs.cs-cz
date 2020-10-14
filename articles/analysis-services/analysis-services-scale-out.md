@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 33f42b1d01bd0a39a268d9425a8406f976534634
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24ee31b941d836d296c30927cfb9636f3023fa89
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90007685"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019425"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Škálování služby Azure Analysis Services na více instancí
 
@@ -46,9 +46,9 @@ Při provádění následných operací škálování, například zvýšení po
 
 * Synchronizace je povolená i v případě, že ve fondu dotazů nejsou žádné repliky. Pokud provádíte horizontální navýšení kapacity z nuly na jednu nebo více replik s novými daty z operace zpracování na primárním serveru, proveďte nejprve synchronizaci bez replik ve fondu dotazů a pak navýšení kapacity. Synchronizace před změnou kapacity zabrání redundantnímu vysazování nově přidaných replik.
 
-* Při odstraňování modelu databáze z primárního serveru se automaticky neodstraní z replik ve fondu dotazů. Operaci synchronizace musíte provést pomocí příkazu [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) prostředí PowerShell, který odebere soubory pro tuto databázi z umístění sdíleného úložiště objektů BLOB repliky a pak odstraní databázi modelů v replikách ve fondu dotazů. Chcete-li zjistit, zda databáze modelů existuje ve replikách ve fondu dotazů, ale ne na primárním serveru, zajistěte, aby byl **samostatný server pro zpracování dotazů od fondu** dotazů nastaven na **hodnotu Ano**. Pak pomocí SSMS se připojte k primárnímu serveru pomocí `:rw` kvalifikátoru a zjistěte, jestli databáze existuje. Pak se připojte k replikám ve fondu dotazů, a to tak, že se připojíte bez `:rw` kvalifikátoru a zjistíte, jestli existuje i stejná databáze. Pokud databáze existuje na replikách ve fondu dotazů, ale ne na primárním serveru, spusťte operaci synchronizace.   
+* Při odstraňování modelu databáze z primárního serveru se automaticky neodstraní z replik ve fondu dotazů. Operaci synchronizace musíte provést pomocí příkazu [Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) prostředí PowerShell, který odebere soubory pro tuto databázi z umístění sdíleného úložiště objektů BLOB repliky a pak odstraní databázi modelů v replikách ve fondu dotazů. Chcete-li zjistit, zda databáze modelů existuje ve replikách ve fondu dotazů, ale ne na primárním serveru, zajistěte, aby byl **samostatný server pro zpracování dotazů od fondu** dotazů nastaven na **hodnotu Ano**. Pak pomocí SSMS se připojte k primárnímu serveru pomocí `:rw` kvalifikátoru a zjistěte, jestli databáze existuje. Pak se připojte k replikám ve fondu dotazů, a to tak, že se připojíte bez `:rw` kvalifikátoru a zjistíte, jestli existuje i stejná databáze. Pokud databáze existuje na replikách ve fondu dotazů, ale ne na primárním serveru, spusťte operaci synchronizace.   
 
-* Při přejmenování databáze na primárním serveru je potřeba další krok, který zajistí, že je databáze správně synchronizovaná na všechny repliky. Po přejmenování proveďte synchronizaci pomocí příkazu [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) , který určuje `-Database` parametr se starým názvem databáze. Tato synchronizace odebere ze všech replik databázi a soubory se starým názvem. Pak proveďte další synchronizaci, která určuje `-Database` parametr s novým názvem databáze. Druhá synchronizace zkopíruje nově pojmenovanou databázi do druhé sady souborů a napředá všechny repliky. Tyto synchronizace nelze provést pomocí příkazu synchronizovat model na portálu.
+* Při přejmenování databáze na primárním serveru je potřeba další krok, který zajistí, že je databáze správně synchronizovaná na všechny repliky. Po přejmenování proveďte synchronizaci pomocí příkazu [Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) , který určuje `-Database` parametr se starým názvem databáze. Tato synchronizace odebere ze všech replik databázi a soubory se starým názvem. Pak proveďte další synchronizaci, která určuje `-Database` parametr s novým názvem databáze. Druhá synchronizace zkopíruje nově pojmenovanou databázi do druhé sady souborů a napředá všechny repliky. Tyto synchronizace nelze provést pomocí příkazu synchronizovat model na portálu.
 
 ### <a name="synchronization-mode"></a>Režim synchronizace
 
@@ -150,11 +150,11 @@ Vrátit stavové kódy:
 
 Před použitím PowerShellu [nainstalujte nebo aktualizujte nejnovější modul Azure PowerShell](/powershell/azure/install-az-ps). 
 
-Chcete-li spustit synchronizaci, použijte rutinu [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance).
+Chcete-li spustit synchronizaci, použijte rutinu [Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance).
 
-K nastavení počtu replik dotazů použijte [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte volitelný `-ReadonlyReplicaCount` parametr.
+K nastavení počtu replik dotazů použijte [set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte volitelný `-ReadonlyReplicaCount` parametr.
 
-K oddělení zpracovatelského serveru z fondu dotazů použijte [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte volitelný `-DefaultConnectionMode` parametr, který se má použít `Readonly` .
+K oddělení zpracovatelského serveru z fondu dotazů použijte [set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver). Zadejte volitelný `-DefaultConnectionMode` parametr, který se má použít `Readonly` .
 
 Další informace najdete v tématu [použití instančního objektu s modulem AZ. AnalysisServices](analysis-services-service-principal.md#azmodule).
 
@@ -183,4 +183,4 @@ Cenovou úroveň můžete na serveru změnit několika replikami. Stejná cenov�
 ## <a name="related-information"></a>Související informace
 
 [Monitorování metrik serveru](analysis-services-monitor.md)   
-[Správa Azure Analysis Services](analysis-services-manage.md) 
+[Správa Azure Analysis Services](analysis-services-manage.md)
