@@ -3,19 +3,19 @@ title: Postup přidání datových kanálů z různých zdrojů do Poradce pro m
 titleSuffix: Azure Cognitive Services
 description: Přidání různých datových kanálů do poradce metrik
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.author: aahi
-ms.openlocfilehash: 11b75bcadc6292c17ef7e1e0f482d0c53bd9f8f5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: mbullwin
+ms.openlocfilehash: a37f3cfd250d152129245395680dbd847359e869
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971944"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046906"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Přidání datových kanálů z různých zdrojů dat do Poradce pro metriky
 
@@ -43,7 +43,7 @@ V tomto článku najdete nastavení a požadavky pro propojení různých typů 
 |[**Azure Data Explorer (Kusto)**](#kusto) | Základní<br>ManagedIdentity|
 |[**Azure Data Lake Storage Gen2**](#adl) | Základní<br>DataLakeGen2SharedKey<br>Instanční objekt<br>Instanční objekt z trezoru klíčů<br> |
 |[**Azure SQL Database/SQL Server**](#sql) | Základní<br>ManagedIdentity<br>Instanční objekt<br>Instanční objekt z trezoru klíčů<br>AzureSQLConnectionString
-|[**Table Storage Azure**](#table) | Základní | 
+|[**Azure Table Storage**](#table) | Základní | 
 |[**ElasticSearch**](#es) | Základní |
 |[**Požadavek http**](#http) | Základní | 
 |[**InfluxDB (InfluxQL)**](#influxdb) | Základní |
@@ -93,7 +93,7 @@ Vytvořte **entitu přihlašovacích údajů** a použijte ji k ověřování va
   
   * V1 (výchozí hodnota)
 
-      Akceptují se jenom *hodnoty* a *název* metriky. Například:
+      Akceptují se jenom *hodnoty* a *název* metriky. Příklad:
     
       ``` JSON
       {"count":11, "revenue":1.23}
@@ -101,7 +101,7 @@ Vytvořte **entitu přihlašovacích údajů** a použijte ji k ověřování va
 
   * v2
 
-      Jsou také přijaty *dimenze* metriky a *časové razítko* . Například:
+      Jsou také přijaty *dimenze* metriky a *časové razítko* . Příklad:
       
       ``` JSON
       [
@@ -159,7 +159,7 @@ Pro každý soubor JSON je povoleno pouze jedno časové razítko.
   * `%h` je hodina formátovaná jako `HH`
   * `%M` je minuta formátovaná jako `mm`
 
-V současné době metrika podporuje schéma dat v souborech JSON následujícím způsobem. Například:
+V současné době metrika podporuje schéma dat v souborech JSON následujícím způsobem. Příklad:
 
 ``` JSON
 [
@@ -210,7 +210,7 @@ The timestamp field must match one of these two formats:
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = '2019-12-12 00:00:00'
     ```
 
-## <a name="span-idtableazure-table-storagespan"></a><span id="table">Table Storage Azure</span>
+## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Table Storage</span>
 
 * **Připojovací řetězec**: Přečtěte si téma [zobrazení a zkopírování připojovacího řetězce](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage?toc=%2Fazure%2Fstorage%2Ftables%2Ftoc.json&tabs=azure-portal#view-account-access-keys) , kde najdete informace o tom, jak načíst připojovací řetězec z Azure Table Storage.
 

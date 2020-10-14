@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: efc507cb69b3368a2102b6de0b905657d5806ef2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a2345dce542f941df0122acd12b4acedd3b49a3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561427"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047230"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Automatická správa zařízení v digitálních prostředcích Azure pomocí služby Device Provisioning (DPS)
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak integrovat digitální vlákna Azure se [služ
 
 Další informace o fázích _zřizování_ a _vyřazení_ a lepší pochopení sady obecných fází správy zařízení, které jsou společné pro všechny projekty IoT v podniku, najdete v [části *životní cyklus zařízení* ](../iot-hub/iot-hub-device-management-overview.md#device-lifecycle) v dokumentaci správy zařízení IoT Hub.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Než budete moct nastavit zřizování, musíte mít **instanci digitálního vlákna Azure** , která obsahuje modely a vlákna. Tato instance by také měla být nastavená na možnost aktualizovat digitální informace na základě dat. 
 
@@ -32,7 +32,7 @@ Následující hodnoty budete potřebovat později v tomto článku, od okamžik
 * **_Název hostitele_** instance digitálních vláken Azure ([najít v portálu](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 * **_Připojovací řetězec_** připojovacího řetězce služby Azure Event Hubs ([najít v portálu](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
 
-Tato ukázka také používá **simulátor zařízení** , který zahrnuje zřizování pomocí služby Device Provisioning. Simulátor zařízení je umístěný tady: [Ukázka digitálních vláken Azure a IoT Hub Integration Sample](https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Získejte vzorový projekt na vašem počítači tak, že přejdete na vzorový odkaz a vyberete tlačítko *Stáhnout ZIP* pod nadpisem. Vyextrahování stažené složky.
+Tato ukázka také používá **simulátor zařízení** , který zahrnuje zřizování pomocí služby Device Provisioning. Simulátor zařízení je umístěný tady: [Ukázka digitálních vláken Azure a IoT Hub Integration Sample](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Získejte vzorový projekt na vašem počítači tak, že přejdete na vzorový odkaz a vyberete tlačítko *Stáhnout ZIP* pod nadpisem. Vyextrahování stažené složky.
 
 Simulátor zařízení je založený na **Node.js**, verzi 10.0. x nebo novější. [*Příprava vývojového prostředí*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node.js pro tento kurz v systému Windows nebo Linux.
 
@@ -69,7 +69,7 @@ Když se ve službě Device Provisioning zřídí nové zařízení, v digitáln
 
 Vytvořte instanci služby Device Provisioning, která se použije ke zřízení zařízení IoT. Můžete buď použít níže uvedené pokyny pro Azure CLI, nebo použít Azure Portal: [*rychlý Start: nastavení IoT Hub Device Provisioning Service s Azure Portal*](../iot-dps/quick-setup-auto-provision.md).
 
-Pomocí následujícího příkazu rozhraní příkazového řádku Azure se vytvoří služba Device Provisioning. Budete muset zadat název, skupinu prostředků a oblast. Příkaz se dá spustit v [Cloud Shell](https://shell.azure.com)nebo lokálně, pokud máte [na svém počítači nainstalované](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)rozhraní příkazového řádku Azure.
+Pomocí následujícího příkazu rozhraní příkazového řádku Azure se vytvoří služba Device Provisioning. Budete muset zadat název, skupinu prostředků a oblast. Příkaz se dá spustit v [Cloud Shell](https://shell.azure.com)nebo lokálně, pokud máte [na svém počítači nainstalované](/cli/azure/install-azure-cli?view=azure-cli-latest)rozhraní příkazového řádku Azure.
 
 ```azurecli
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
@@ -258,7 +258,7 @@ Při procházení tohoto toku propojíte registraci k právě vytvořené funkci
 
 ### <a name="set-up-the-device-simulator"></a>Nastavení simulátoru zařízení
 
-Tato ukázka používá simulátor zařízení, který zahrnuje zřizování pomocí služby Device Provisioning. Simulátor zařízení je umístěný tady: [Ukázka digitálních vláken Azure a IoT Hub Integration Sample](https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Pokud jste už ukázku nestáhli, Získejte ji hned tak, že přejdete na vzorový odkaz a v nadpisu vyberete tlačítko *Stáhnout ZIP* . Vyextrahování stažené složky.
+Tato ukázka používá simulátor zařízení, který zahrnuje zřizování pomocí služby Device Provisioning. Simulátor zařízení je umístěný tady: [Ukázka digitálních vláken Azure a IoT Hub Integration Sample](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Pokud jste už ukázku nestáhli, Získejte ji hned tak, že přejdete na vzorový odkaz a v nadpisu vyberete tlačítko *Stáhnout ZIP* . Vyextrahování stažené složky.
 
 Otevřete příkazové okno a přejděte do stažené složky a pak do adresáře *simulátoru zařízení* . Pomocí následujícího příkazu nainstalujte závislosti pro projekt:
 
@@ -447,7 +447,7 @@ Uložte projekt a pak znovu publikujte aplikaci Function App. Pokyny k publikov�
 
 V dalším kroku budete muset ve své aplikaci Function App nastavit proměnné prostředí, které obsahují odkaz na instanci digitálních vláken Azure, kterou jste vytvořili, a v centru událostí. Pokud jste použili kompletní kurz ([*kurz: připojení k*](./tutorial-end-to-end.md)kompletnímu řešení), první nastavení se už nakonfiguruje.
 
-Přidejte nastavení pomocí tohoto příkazu rozhraní příkazového řádku Azure CLI. Příkaz se dá spustit v [Cloud Shell](https://shell.azure.com)nebo lokálně, pokud máte [na svém počítači nainstalované](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)rozhraní příkazového řádku Azure.
+Přidejte nastavení pomocí tohoto příkazu rozhraní příkazového řádku Azure CLI. Příkaz se dá spustit v [Cloud Shell](https://shell.azure.com)nebo lokálně, pokud máte [na svém počítači nainstalované](/cli/azure/install-azure-cli?view=azure-cli-latest)rozhraní příkazového řádku Azure.
 
 ```azurecli
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
@@ -480,7 +480,7 @@ Chcete-li aktivovat proces vyřazení, je nutné ručně odstranit zařízení z
 
 V [první polovině tohoto článku](#auto-provision-device-using-device-provisioning-service)jste v IoT Hub vytvořili zařízení a odpovídající digitální vlákna. 
 
-Nyní přejdete na IoT Hub a odstraňte toto zařízení (můžete to provést pomocí [příkazu Azure CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) nebo v [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
+Nyní přejdete na IoT Hub a odstraňte toto zařízení (můžete to provést pomocí [příkazu Azure CLI](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) nebo v [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
 
 Zařízení se automaticky odebere z digitálních vláken Azure. 
 
@@ -497,7 +497,7 @@ Měli byste vidět, že se vlákna zařízení v instanci digitálních vláken 
 
 Pokud už prostředky vytvořené v tomto článku nepotřebujete, odstraňte je pomocí těchto kroků.
 
-Pomocí Azure Cloud Shell nebo místních rozhraní příkazového řádku Azure můžete odstranit všechny prostředky Azure ve skupině prostředků pomocí příkazu [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) . Tím odeberete skupinu prostředků. instance digitálního vlákna Azure; Centrum IoT a registrace zařízení v centru téma Event Grid a související odběry; obor názvů centra událostí a aplikace Azure Functions, včetně přidružených prostředků, jako je úložiště.
+Pomocí Azure Cloud Shell nebo místních rozhraní příkazového řádku Azure můžete odstranit všechny prostředky Azure ve skupině prostředků pomocí příkazu [AZ Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) . Tím odeberete skupinu prostředků. instance digitálního vlákna Azure; Centrum IoT a registrace zařízení v centru téma Event Grid a související odběry; obor názvů centra událostí a aplikace Azure Functions, včetně přidružených prostředků, jako je úložiště.
 
 > [!IMPORTANT]
 > Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. 

@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 8b5492a737b733f486455507a8a813b5d583d453
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a58fa45f47ee8dce4ec96591551abad76c1218ee
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91573833"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045478"
 ---
 # <a name="iot-plug-and-play-conventions"></a>Konvence IoT Plug and Play
 
@@ -132,7 +132,7 @@ Zařízení nebo modul by měl potvrdit, že obdržel vlastnost odesláním hlá
 
 Po spuštění zařízení by se mělo vyžádat, aby zařízení bylo zdvojené a kontrolovalo všechny zapisovatelné aktualizace vlastností. Pokud se v době, kdy bylo zařízení v režimu offline, zvýšila verze vlastnosti s možností zápisu, zařízení by mělo odeslat oznámenou odpověď na vlastnost, která potvrdí, že aktualizace přijala.
 
-Když se zařízení poprvé spustí, může odeslat počáteční hodnotu pro hlášené vlastnosti, pokud neobdrží počáteční požadovanou vlastnost z rozbočovače. V takovém případě by mělo být zařízení nastavené `av` na `1` . Například:
+Když se zařízení poprvé spustí, může odeslat počáteční hodnotu pro hlášené vlastnosti, pokud neobdrží počáteční požadovanou vlastnost z rozbočovače. V takovém případě by mělo být zařízení nastavené `av` na `1` . Příklad:
 
 ```json
 "reported": {
@@ -343,6 +343,6 @@ V zařízení nebo modulu více rozhraní komponent používá názvy příkazů
 Teď, když jste se naučili o konvencích IoT technologie Plug and Play, je zde několik dalších prostředků:
 
 - [Jazyk DTDL (Digital autodefinition Definition Language)](https://github.com/Azure/opendigitaltwins-dtdl)
-- [Sada SDK pro zařízení jazyka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [REST API IoT](https://docs.microsoft.com/rest/api/iothub/device)
+- [Sada SDK pro zařízení jazyka C](/azure/iot-hub/iot-c-sdk-ref/)
+- [REST API IoT](/rest/api/iothub/device)
 - [Komponenty modelu](./concepts-components.md)

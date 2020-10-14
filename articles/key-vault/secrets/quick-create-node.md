@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 5149f58879581a67c7fc61e45b2e3025a0042e91
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 045589d3b1f0e376eaf854562d271a4483702997
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013212"
+ms.locfileid: "92047892"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-javascript-v4"></a>Rychlý Start: Azure Key Vault klientskou knihovnu pro JavaScript (v4)
 
@@ -21,7 +21,7 @@ Začínáme s klientskou knihovnou Azure Key Vault tajných klíčů pro JavaScr
 
 [Referenční dokumentace k](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Aktuální [Node.js](https://nodejs.org) pro váš operační systém.
@@ -30,7 +30,7 @@ Začínáme s klientskou knihovnou Azure Key Vault tajných klíčů pro JavaScr
 V tomto rychlém startu se předpokládá, že používáte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) v okně terminálu Linux.
 
 ## <a name="setting-up"></a>Nastavení
-Tento rychlý Start používá Azure identity Library s Azure CLI k ověřování uživatele ve službách Azure. Vývojáři můžou k ověřování hovorů použít taky Visual Studio nebo Visual Studio Code, další informace najdete v tématu [ověření klienta pomocí klientské knihovny Azure identity](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme) .
+Tento rychlý Start používá Azure identity Library s Azure CLI k ověřování uživatele ve službách Azure. Vývojáři můžou k ověřování hovorů použít taky Visual Studio nebo Visual Studio Code, další informace najdete v tématu [ověření klienta pomocí klientské knihovny Azure identity](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme).
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

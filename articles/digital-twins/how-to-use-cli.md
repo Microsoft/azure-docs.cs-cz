@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 65462937db4711066bdb8b31cc22de508321d701
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 118e137f06a49f2c125b1ca156877514d65af86f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950903"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047059"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Použití rozhraní příkazového řádku Azure Digital Twins
 
@@ -35,13 +35,13 @@ Kromě všeobecně spravované instance je také rozhraní příkazového řádk
 
 ## <a name="get-the-extension"></a>Získat rozšíření
 
-Příkazy digitálních vláken Azure jsou součástí [rozšíření Azure IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension). Úplný seznam příkazů a jejich použití můžete zobrazit jako součást Referenční dokumentace pro `az iot` sadu příkazů: [ *AZ DT* Command reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true).
+Příkazy digitálních vláken Azure jsou součástí [rozšíření Azure IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension). Úplný seznam příkazů a jejich použití můžete zobrazit jako součást Referenční dokumentace pro `az iot` sadu příkazů: [ *AZ DT* Command reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest).
 
-Pomocí těchto kroků se můžete ujistit, že máte nejnovější verzi rozšíření. Tyto příkazy můžete spustit v [Azure Cloud Shell](../cloud-shell/overview.md) nebo v místním rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+Pomocí těchto kroků se můžete ujistit, že máte nejnovější verzi rozšíření. Tyto příkazy můžete spustit v [Azure Cloud Shell](../cloud-shell/overview.md) nebo v místním rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
 [!INCLUDE [digital-twins-cloud-shell-extensions.md](../../includes/digital-twins-cloud-shell-extensions.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte rozhraní příkazového řádku a jeho úplnou sadu příkazů prostřednictvím referenčních dokumentů:
-* [*AZ DT* Command reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
+* [*AZ DT* Command reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)

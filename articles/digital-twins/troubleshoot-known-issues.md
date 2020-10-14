@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: e152c0227008dd12088660b2390a8d0a5f54de96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f57f801f2270819d4a67a49590f5ba61b32afcb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89290774"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047637"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Známé problémy v případě digitálních vláken Azure
 
@@ -30,7 +30,7 @@ U digitálních vláken Azure to platí konkrétně pro následující skupiny p
 
 To se dá vyřešit tak, že znovu spustíte `az login` příkaz v Cloud Shell a dokončíte další kroky přihlášení. Za tímto účelem byste měli být schopni spustit příkaz znovu.
 
-Alternativním řešením je [nainstalovat rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) do vašeho počítače, abyste mohli spouštět příkazy Azure CLI místně. V místním rozhraní příkazového řádku se tento problém netýká.
+Alternativním řešením je [nainstalovat rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) do vašeho počítače, abyste mohli spouštět příkazy Azure CLI místně. V místním rozhraní příkazového řádku se tento problém netýká.
 
 ### <a name="possible-causes"></a>Možné příčiny
 
@@ -60,7 +60,7 @@ Pro uživatele, kteří se přihlásili pomocí osobního [účet Microsoft (MSA
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Problém s interaktivním ověřováním prohlížeče
 
-Při psaní ověřovacího kódu v aplikacích digitálního vlákna Azure s využitím **1.2.0** verze v **knihovně [Azure. identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) **může docházet k problémům s metodou [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) .
+Při psaní ověřovacího kódu v aplikacích digitálního vlákna Azure s využitím **1.2.0** verze v **knihovně [Azure. identity](/dotnet/api/azure.identity?view=azure-dotnet) **může docházet k problémům s metodou [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) .
 
 Nejedná se o nejnovější verzi knihovny. Nejnovější verze je **1.2.2**.
 

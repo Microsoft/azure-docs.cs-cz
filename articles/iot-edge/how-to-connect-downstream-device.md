@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 78db26318fc95adec1b31799ed143b3e4a6b3acc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4faec8f79d856b86052745ad530e17b9b25634e8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281452"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045835"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Připojení podřízeného zařízení k bráně služby Azure IoT Edge
 
@@ -37,7 +37,7 @@ Tento článek popisuje běžné problémy s připojením k navazujícím zaří
 
 V tomto článku se pojmem *brána brány* a brána *IoT Edge* odkazují na IoT Edge zařízení nakonfigurované jako transparentní brána.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * K vygenerování certifikátu certifikační autority zařízení v části [konfigurace IoT Edgeho zařízení, které budou fungovat jako transparentní brána](how-to-create-transparent-gateway.md) na vašem zařízení pro příjem dat, je třeba použít kořenový soubor certifikátu certifikační autority. Vaše zařízení pro příjem dat používá tento certifikát k ověření identity zařízení brány. Pokud jste použili ukázkové certifikáty, kořenový certifikát certifikační autority se nazývá **Azure-IoT-test-Only. root. ca. CERT. pem**.
 * Přidaný připojovací řetězec odkazuje na zařízení brány, jak je vysvětleno v tématu [ověření zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
@@ -77,7 +77,7 @@ Další informace o IoT Edgech certifikátů a některých dopadech na produkčn
 
 ## <a name="provide-the-root-ca-certificate"></a>Zadejte certifikát kořenové certifikační autority.
 
-Pro ověření certifikátů zařízení brány musí zařízení pro příjem dat vyžadovat vlastní kopii kořenového certifikátu certifikační autority. Pokud jste pro vytváření testovacích certifikátů použili skripty poskytované v úložišti Git IoT Edge, pak se certifikát kořenové certifikační autority nazývá **Azure-IoT-test-Only. root. ca. CERT. pem**. Pokud jste to ještě neudělali jako součást dalších kroků přípravy na zařízení, přesuňte tento soubor certifikátu do libovolného adresáře v zařízení pro příjem dat. K přesunutí souboru certifikátu můžete použít službu, jako je [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .
+Pro ověření certifikátů zařízení brány musí zařízení pro příjem dat vyžadovat vlastní kopii kořenového certifikátu certifikační autority. Pokud jste pro vytváření testovacích certifikátů použili skripty poskytované v úložišti Git IoT Edge, pak se certifikát kořenové certifikační autority nazývá **Azure-IoT-test-Only. root. ca. CERT. pem**. Pokud jste to ještě neudělali jako součást dalších kroků přípravy na zařízení, přesuňte tento soubor certifikátu do libovolného adresáře v zařízení pro příjem dat. K přesunutí souboru certifikátu můžete použít službu, jako je [Azure Key Vault](../key-vault/index.yml) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .
 
 ## <a name="install-certificates-in-the-os"></a>Instalace certifikátů v operačním systému
 
@@ -98,7 +98,7 @@ Měla by se zobrazit zpráva s informacemi o aktualizaci certifikátů v/etc/SSL
 
 Následující postup ukazuje příklad instalace certifikátu certifikační autority na hostiteli s Windows. V tomto příkladu se předpokládá, že používáte certifikát **Azure-IoT-test-Only. root. ca. CERT. pem** z článků s požadavky a že jste certifikát zkopírovali do umístění na zařízení pro příjem dat.
 
-Certifikáty můžete nainstalovat pomocí rutiny [Import-Certificate](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps) prostředí PowerShell jako správce:
+Certifikáty můžete nainstalovat pomocí rutiny [Import-Certificate](/powershell/module/pkiclient/import-certificate?view=win10-ps) prostředí PowerShell jako správce:
 
 ```powershell
 import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
@@ -113,7 +113,7 @@ Certifikáty můžete nainstalovat také pomocí nástroje **Certlm** :
 
 Certifikáty můžete nainstalovat také programově pomocí rozhraní .NET API, jak je znázorněno v ukázce .NET dále v tomto článku.
 
-Obvykle aplikace používají k zabezpečenému připojení přes TLS sadu protokolů TLS s názvem [Schannel](https://docs.microsoft.com/windows/desktop/com/schannel) . Před pokusem o navázání připojení TLS *vyžaduje* Schannel instalaci všech certifikátů v úložišti certifikátů Windows.
+Obvykle aplikace používají k zabezpečenému připojení přes TLS sadu protokolů TLS s názvem [Schannel](/windows/desktop/com/schannel) . Před pokusem o navázání připojení TLS *vyžaduje* Schannel instalaci všech certifikátů v úložišti certifikátů Windows.
 
 ## <a name="use-certificates-with-azure-iot-sdks"></a>Použití certifikátů se sadami SDK služby Azure IoT
 

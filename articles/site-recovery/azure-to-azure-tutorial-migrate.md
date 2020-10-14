@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: f33d5ff37cbc9923262963b3e59b9266ea6760a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33d1be493cba9fd9f01ecdbad10afb5330256aa0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90006410"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045342"
 ---
 # <a name="move-vms-to-another-azure-region"></a>Přesun virtuálních počítačů do jiné oblasti Azure
 
@@ -46,7 +46,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > V tomto kurzu se dozvíte, jak přesunout virtuální počítače Azure z jedné oblasti do jiné, jak je to. Pokud potřebujete zlepšit dostupnost tím, že přesunete virtuální počítače ve skupině dostupnosti na virtuální počítače připojené k zóně v jiné oblasti, přečtěte si [kurz přesunutí virtuálních počítačů Azure do zóny dostupnosti](move-azure-vms-avset-azone.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - Ujistěte se, že virtuální počítače Azure jsou v oblasti Azure, ze které chcete přejít.
 - Ověřte, zda [je podporována kombinace zdrojové oblasti a cílové](./azure-to-azure-support-matrix.md#region-support)oblasti, a proveďte odpovídající rozhodnutí o cílové oblasti.
@@ -100,8 +100,8 @@ Následující postup ukazuje, jak připravit virtuální počítač pro přesun
 1. Do pole **Název** zadejte popisný název **ContosoVMVault**. Pokud máte více předplatných, vyberte příslušné předplatné.
 1. Vytvořte skupinu prostředků **ContosoRG**.
 1. Zadejte oblast Azure. Pokud chcete zjistit podporované oblasti, přečtěte si článek geografická dostupnost v [Azure Site Recovery podrobnosti o cenách](https://azure.microsoft.com/pricing/details/site-recovery/).
-1. V **Recovery Services trezory**vyberte **Přehled**  >  **ContosoVMVault**  >  **replikované položky**  >  **a replikovat**.
-1. V rozevíracím seznamu **Zdroj** vyberte **Azure**.
+1. V **Recovery Services trezory**vyberte **ContosoVMVault**  >  **replikované položky**  >  **a replikovat**.
+1. V rozevíracím seznamu vyberte **Azure Virtual Machines**.
 1. V rozevíracím seznamu **Umístění zdroje** vyberte zdrojovou oblast Azure, kde máte virtuální počítače aktuálně spuštěné.
 1. Vyberte model nasazení Resource Manager. Pak vyberte **zdrojové předplatné** a **skupinu prostředků zdroje**.
 1. Kliknutím na **OK** uložte nastavení.

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: eae7a44d77d63641ba9ad062c504aaf624582668
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: acd2f12150155efbccc668b99dcc4683d81b87e0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969207"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047008"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rychlý Start: nasazení prvního IoT Edge modulu do virtuálního zařízení s Windows
 
@@ -45,7 +45,7 @@ Přidejte rozšíření Azure IoT do instance Cloud Shell.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 Cloudové prostředky:
 
@@ -74,7 +74,7 @@ Zařízení IoT Edge:
   Otevřete tento soubor s Připojení ke vzdálené ploše pro připojení k virtuálnímu počítači s Windows pomocí jména správce a hesla, které jste zadali pomocí `az vm create` příkazu.
 
 > [!NOTE]
-> Virtuální počítač s Windows začíná na Windows verze 1809 (Build 17763), což je nejnovější [dlouhodobé sestavení podpory Windows](https://docs.microsoft.com/windows/release-information/). Systém Windows ve výchozím nastavení automaticky vyhledává aktualizace každých 22 hodin. Po kontrole virtuálního počítače Windows nabídne aktualizaci verze, která není kompatibilní s IoT Edge pro Windows, což zabrání dalšímu použití IoT Edge funkcí pro Windows. Doporučujeme omezit použití virtuálního počítače na do 22 hodin nebo [dočasně pozastavit aktualizace Windows](https://support.microsoft.com/help/4028233/windows-10-manage-updates).
+> Virtuální počítač s Windows začíná na Windows verze 1809 (Build 17763), což je nejnovější [dlouhodobé sestavení podpory Windows](/windows/release-information/). Systém Windows ve výchozím nastavení automaticky vyhledává aktualizace každých 22 hodin. Po kontrole virtuálního počítače Windows nabídne aktualizaci verze, která není kompatibilní s IoT Edge pro Windows, což zabrání dalšímu použití IoT Edge funkcí pro Windows. Doporučujeme omezit použití virtuálního počítače na do 22 hodin nebo [dočasně pozastavit aktualizace Windows](https://support.microsoft.com/help/4028233/windows-10-manage-updates).
 >
 > V tomto rychlém startu se k jednoduchosti používá virtuální počítač s Windows Desktop. Informace o tom, které operační systémy Windows jsou všeobecně dostupné pro produkční scénáře, najdete v tématu [Azure IoT Edge podporovaných systémech](support.md).
 >

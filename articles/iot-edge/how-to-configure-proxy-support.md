@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: 8d5e5e6cc77c7fe1d32f0834831ef1b930ee834d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ae0c4c69cf500fb352cc889e068888084d1d8f8b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966164"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045954"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurace zařízení IoT Edge tak, aby komunikovalo přes proxy server
 
@@ -93,7 +93,7 @@ $proxyCredential = (Get-Credential).GetNetworkCredential()
 Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-Další informace o parametrech proxy najdete v tématu [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest). Další informace o parametrech instalace systému Windows najdete v tématu [skripty PowerShellu pro IoT Edge ve Windows](reference-windows-scripts.md).
+Další informace o parametrech proxy najdete v tématu [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest). Další informace o parametrech instalace systému Windows najdete v tématu [skripty PowerShellu pro IoT Edge ve Windows](reference-windows-scripts.md).
 
 ## <a name="configure-the-daemons"></a>Konfigurace démonů
 
@@ -108,7 +108,7 @@ Vzhledem k tomu, že Moby je postaven na Docker, použijte dokumentaci k Docker 
 Vyberte článek, který se vztahuje na operační systém IoT Edge zařízení:
 
 * [Konfigurace démona Docker v systému Linux](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) Rozhraní Moby démona v zařízeních se systémem Linux udržuje název Docker.
-* [Konfigurace démona Docker ve Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) Démon Moby na zařízeních s Windows se nazývá iotedge-Moby. Názvy se liší, protože je možné spustit na zařízení s Windows paralelní plochu i Moby.
+* [Konfigurace démona Docker ve Windows](/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration) Démon Moby na zařízeních s Windows se nazývá iotedge-Moby. Názvy se liší, protože je možné spustit na zařízení s Windows paralelní plochu i Moby.
 
 ### <a name="iot-edge-daemon"></a>Démon IoT Edge
 

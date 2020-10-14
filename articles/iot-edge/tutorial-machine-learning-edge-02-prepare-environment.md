@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 22628af5b3e62edfc96699ad051b6a00cf9c1429
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99a0805239ee2437ad6ec9ceb40cf45496a07850
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078938"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047654"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Kurz: nastavení prostředí pro strojové učení na IoT Edge
 
@@ -26,7 +26,7 @@ Tento článek vám pomůže připravit vaše prostředí pro vývoj a nasazení
 
 Tento krok obvykle provádí vývojář cloudu. Některý z těchto softwaru může být užitečný i pro odborníky na data.
 
-Vytvořili jsme PowerShellový skript, který vytvoří virtuální počítač Azure s řadou nezbytných součástí, které už jsou nakonfigurované. Virtuální počítač, který vytváříme, potřebuje mít možnost zpracovat [vnořenou virtualizaci](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization), což je důvod, proč jsme zvolili velikost [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) počítače.
+Vytvořili jsme PowerShellový skript, který vytvoří virtuální počítač Azure s řadou nezbytných součástí, které už jsou nakonfigurované. Virtuální počítač, který vytváříme, potřebuje mít možnost zpracovat [vnořenou virtualizaci](../virtual-machines/windows/nested-virtualization.md), což je důvod, proč jsme zvolili velikost [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) počítače.
 
 Vývojový virtuální počítač se nastaví pomocí:
 
@@ -38,7 +38,7 @@ Vývojový virtuální počítač se nastaví pomocí:
 * [Sada .NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.1.0)
+* [Azure PowerShell](/powershell/azure/?view=azps-1.1.0)
 * [Rozšíření VS Code](https://marketplace.visualstudio.com/search?target=VSCode)
   * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
@@ -82,7 +82,7 @@ Vytvoření a konfigurace virtuálního počítače trvá přibližně 30 minut.
 
    Skript se spustí několik minut, protože provede následující kroky:
 
-    1. Nainstaluje [Azure PowerShell AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0).
+    1. Nainstaluje [Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az?view=azps-1.1.0).
     1. Vyzve vás, abyste se přihlásili k Azure.
     1. Potvrdí informace pro vytvoření virtuálního počítače. Pokračujte stisknutím klávesy **y** nebo **ENTER** .
     1. Vytvoří skupinu prostředků, pokud neexistuje.
@@ -215,7 +215,7 @@ V tomto článku jsme vytvořili IoT Hub a nakonfigurovali trasu k účtu Azure 
 
 Další informace o krocích popsaných v této části Machine Learning v IoT Edge kurzu najdete v tématu:
 
-* [Základy Azure IoT](https://docs.microsoft.com/azure/iot-fundamentals/)
+* [Základy Azure IoT](../iot-fundamentals/index.yml)
 * [Konfigurace směrování zpráv pomocí IoT Hub](../iot-hub/tutorial-routing.md)
 * [Vytvoření centra IoT pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md)
 

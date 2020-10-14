@@ -3,18 +3,21 @@ title: Azure Lab Services v rámci Microsoft Teams
 description: Poskytuje přehled o používání Azure Lab Services v rámci Microsoft Teams.
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 8b70ab3cbf1a342646f6a2897550c4bf8f7601a7
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 0c7defdb6f801a10c5fadfdca805381a31f39378
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946665"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047824"
 ---
 # <a name="azure-lab-services-within-microsoft-teams"></a>Azure Lab Services v rámci Microsoft Teams
 
-Azure Lab Services vlastníci/tvůrci teď můžou vytvářet cvičení v rámci Microsoft Teams.
+Azure Lab Services je možné využít v Microsoft Teams pomocí aplikace **Azure Lab Services** Teams. Každý vlastník týmu s přístupem Owner/Přispěvatel/Creator k účtům testovacího prostředí bude moci vytvářet Labs a zřizovat virtuální počítače pro všechny členy týmu.
 
-Tento článek popisuje výhody integrace týmů a obsahuje odkazy na další články, kde najdete pokyny ke správě Azure Lab Services v rámci týmů. 
+Tento článek popisuje výhody použití Azure Lab Services v rámci týmů a obsahuje odkazy na další články, kde najdete pokyny k vytváření a správě cvičení v rámci týmů. 
+
+> [!NOTE]
+>**Azure Lab Services** Aplikaci týmů lze přidat pouze do týmu, nelze ji přidat do jednotlivých konverzací nebo do skupinových chatů.
 
 ## <a name="benefits"></a>Výhody
 
@@ -31,8 +34,8 @@ Azure Lab Services integrace s Microsoft Teams pomůže učitelům nastavovat pr
 
 Viz následující články:
 
-- [Začínáme a vytvoření testovacího prostředí testovacích služeb z týmů](how-to-get-started-create-lab-within-teams.md)
-- [Správa seznamů uživatelů testovacích služeb z týmů](how-to-manage-user-lists-within-teams.md)
-- [Správa fondu virtuálních počítačů ve službě Lab Services z týmů](how-to-manage-vm-pool-within-teams.md)
-- [Vytváření plánů testovacích služeb z týmů](how-to-create-schedules-within-teams.md)
-- [Přístup k virtuálnímu počítači (zobrazení student) ve službě Lab Services z týmů](how-to-access-vm-for-students-within-teams.md)
+- [Začněte a vytvořte testovací prostředí v rámci týmů.](how-to-get-started-create-lab-within-teams.md)
+- [Správa seznamů uživatelů testovacího prostředí v rámci týmů](how-to-manage-user-lists-within-teams.md)
+- [Správa fondu virtuálních počítačů v testovacím prostředí v rámci týmů](how-to-manage-vm-pool-within-teams.md)
+- [Vytváření a Správa plánů testovacího prostředí v rámci týmů](how-to-create-schedules-within-teams.md)
+- [Přístup k virtuálnímu počítači v rámci týmů – zobrazení studenta](how-to-access-vm-for-students-within-teams.md)

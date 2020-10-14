@@ -8,12 +8,12 @@ ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0e4ec7127df288ec1818df307da1ea9824141309
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 540c4394a73ceff1f68a613561c034ca3bc7efc5
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87902452"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046566"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Řešení potíží s IoT Edgem zařízením
 
@@ -251,7 +251,7 @@ iotedge restart edgeAgent && iotedge restart edgeHub
 
 ## <a name="check-your-firewall-and-port-configuration-rules"></a>Ověřte bránu firewall a pravidla konfigurace portů.
 
-Azure IoT Edge umožňuje komunikaci z místního serveru do cloudu Azure pomocí podporovaných protokolů IoT Hub najdete v tématu [Volba komunikačního protokolu](../iot-hub/iot-hub-devguide-protocols.md). Pro lepší zabezpečení jsou komunikační kanály mezi Azure IoT Edge a Azure IoT Hub vždycky nakonfigurované jako odchozí. Tato konfigurace je založená na [vzoru komunikace s asistencí služeb](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), který minimalizuje plochu pro útok na škodlivou entitu k prozkoumávání. Příchozí komunikace se vyžaduje jenom pro konkrétní scénáře, kdy Azure IoT Hub potřebuje odeslat zprávy do Azure IoT Edge zařízení. Zprávy z cloudu na zařízení jsou chráněné pomocí zabezpečených kanálů TLS a je možné je dál zabezpečit pomocí certifikátů X. 509 a modulů zařízení TPM. Azure IoT Edge Security Manager určuje, jak může být tato komunikace navázána, viz [IoT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
+Azure IoT Edge umožňuje komunikaci z místního serveru do cloudu Azure pomocí podporovaných protokolů IoT Hub najdete v tématu [Volba komunikačního protokolu](../iot-hub/iot-hub-devguide-protocols.md). Pro lepší zabezpečení jsou komunikační kanály mezi Azure IoT Edge a Azure IoT Hub vždycky nakonfigurované jako odchozí. Tato konfigurace je založená na [vzoru komunikace s asistencí služeb](/archive/blogs/clemensv/service-assisted-communication-for-connected-devices), který minimalizuje plochu pro útok na škodlivou entitu k prozkoumávání. Příchozí komunikace se vyžaduje jenom pro konkrétní scénáře, kdy Azure IoT Hub potřebuje odeslat zprávy do Azure IoT Edge zařízení. Zprávy z cloudu na zařízení jsou chráněné pomocí zabezpečených kanálů TLS a je možné je dál zabezpečit pomocí certifikátů X. 509 a modulů zařízení TPM. Azure IoT Edge Security Manager určuje, jak může být tato komunikace navázána, viz [IoT Edge Security Manager](../iot-edge/iot-edge-security-manager.md).
 
 I když IoT Edge poskytuje rozšířenou konfiguraci pro zabezpečení Azure IoT Edge runtime a nasazených modulů, je stále závislý na základní konfiguraci počítače a sítě. Proto je nutné zajistit, aby byla pro zabezpečená komunikace s cloudovou komunikací nastavena správná pravidla sítě a brány firewall. Následující tabulku lze použít jako vodítko při konfiguraci pravidel brány firewall pro základní servery, kde je hostovaný Azure IoT Edge Runtime:
 

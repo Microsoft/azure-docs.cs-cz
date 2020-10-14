@@ -8,25 +8,25 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: d1288f117a6b6c9fb05fd29578be35c676453177
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4e9b9a7fb6e739b3bd288557457d1c152e372e26
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975157"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045291"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrace s Logic Apps s využitím vlastního konektoru
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) je cloudová služba, která pomáhá automatizovat pracovní postupy napříč aplikacemi a službami. Připojením Logic Apps k rozhraním API digitálních vláken Azure můžete vytvářet automatizované toky kolem digitálních vláken Azure a jejich dat.
 
-Digitální vlákna Azure momentálně nemají certifikovaný (předem sestavený) konektor pro Logic Apps. Místo toho aktuální proces použití Logic Apps s digitálními úkoly typu Azure vytvoří [**vlastní konektor Logic Apps**](../logic-apps/custom-connector-overview.md)pomocí [vlastního Swagger](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) , který je upravený tak, aby fungoval s Logic Apps.
+Digitální vlákna Azure momentálně nemají certifikovaný (předem sestavený) konektor pro Logic Apps. Místo toho aktuální proces použití Logic Apps s digitálními úkoly typu Azure vytvoří [**vlastní konektor Logic Apps**](../logic-apps/custom-connector-overview.md)pomocí [vlastního Swagger](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) , který je upravený tak, aby fungoval s Logic Apps.
 
 > [!NOTE]
 > Existuje více verzí Swagger obsažených ve vlastní ukázce Swagger, který je výše propojen. Nejnovější verzi najdete v podsložce s nejaktuálnějším datem, ale starší verze obsažené v ukázce jsou i nadále podporované.
 
 V tomto článku použijete [Azure Portal](https://portal.azure.com) k **Vytvoření vlastního konektoru** , který se dá použít k připojení Logic Apps k instanci digitálních vláken Azure. Pak **vytvoříte aplikaci logiky** , která bude toto připojení používat pro ukázkový scénář, ve kterém události aktivované časovačem automaticky aktualizují dvojitou repliku v instanci digitálních vláken Azure. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 Pokud ještě nemáte předplatné Azure, vytvořte si ** [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) ** před tím, než začnete.
 Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí tohoto účtu. 
@@ -93,7 +93,7 @@ Přejdete na stránku pro nasazení konektoru. Po dokončení nasazení kliknět
 
 Dále nakonfigurujete konektor, který jste vytvořili pro dosažení digitálních vláken Azure.
 
-Nejdřív Stáhněte si vlastní soubor Swagger pro digitální vlákna Azure, který je upravený tak, aby fungoval s Logic Apps. Stáhněte si ukázku **digitálních Swagger z digitálního vlákna Azure** z [**tohoto odkazu**](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) přes tlačítko *Stáhnout soubor zip* . Přejděte do složky Stažené *Azure_Digital_Twins_Custom_Swaggers.zip* a rozbalte ji. 
+Nejdřív Stáhněte si vlastní soubor Swagger pro digitální vlákna Azure, který je upravený tak, aby fungoval s Logic Apps. Stáhněte si ukázku **digitálních Swagger z digitálního vlákna Azure** z [**tohoto odkazu**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) přes tlačítko *Stáhnout soubor zip* . Přejděte do složky Stažené *Azure_Digital_Twins_Custom_Swaggers.zip* a rozbalte ji. 
 
 Vlastní Swagger pro tento kurz je umístěný ve složce _**Azure_Digital_Twins_Custom_Swaggers \logicapps**_ . Tato složka obsahuje podsložky s názvem *stabilní* a ve *verzi Preview*, obě obsahují různé verze Swagger seřazené podle data. Složka s nejnovějším datem bude obsahovat poslední kopii Swagger. Podle vybrané verze se soubor Swagger jmenuje _**digitaltwins.js**_.
 
@@ -213,7 +213,7 @@ Výběrem možnosti _+ Nový krok_ ve stejném okně můžete vybrat jiné opera
 
 Teď, když je vaše aplikace logiky vytvořená, by se událost s dvojitou aktualizací, kterou jste definovali v Návrháři Logic Apps, měla objevit při opakování každé tři sekundy. To znamená, že po třech sekundách byste měli být schopni zadat dotaz na vlákna a zobrazit nové opravené hodnoty.
 
-Můžete se dotazovat na vlákna přes vaši metodu volby (například [vlastní klientská aplikace](tutorial-command-line-app.md), [ukázkovou aplikaci Průzkumníka digitálních vláken Azure](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/), sady [SDK a rozhraní](how-to-use-apis-sdks.md)příkazového [řádku](how-to-use-cli.md)). 
+Můžete se dotazovat na vlákna přes vaši metodu volby (například [vlastní klientská aplikace](tutorial-command-line-app.md), [ukázkovou aplikaci Průzkumníka digitálních vláken Azure](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/), sady [SDK a rozhraní](how-to-use-apis-sdks.md)příkazového [řádku](how-to-use-cli.md)). 
 
 Další informace o dotazování instance digitálního vlákna Azure najdete v tématu [*Postup: dotazování na dvojitou graf*](how-to-query-graph.md).
 

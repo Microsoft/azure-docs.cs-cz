@@ -7,22 +7,22 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bdf7a46dec6f4ea766d5d5a039109022755bc3fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccc450242c50f82d4215f6b172f72d8eceab7c52
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761273"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046332"
 ---
 # <a name="tutorial-how-to-convert-an-iot-plug-and-play-device-to-a-module-c"></a>Kurz: jak převést zařízení technologie Plug and Play IoT na modul (C#)
 
 V tomto kurzu se dozvíte, jak převést kód zařízení IoT technologie Plug and Play tak, aby se spouštěl jako obecný modul.
 
-Zařízení je technologie Plug and Play IoT, pokud při připojení ke službě IoT Hub zveřejňuje své ID modelu a implementuje vlastnosti a metody popsané v modelu DTDL (Digital Data Definition Language), který identifikuje ID modelu. Další informace o tom, jak zařízení používají DTDL a ID modelu, najdete v tématu [Příručka pro vývojáře IoT technologie Plug and Play](concepts-developer-guide.md). Moduly používají identifikátory modelu a modely DTDL stejným způsobem.
+Zařízení je technologie Plug and Play IoT, pokud při připojení ke službě IoT Hub zveřejňuje své ID modelu a implementuje vlastnosti a metody popsané v modelu DTDL (Digital Data Definition Language), který identifikuje ID modelu. Další informace o tom, jak zařízení používají DTDL a ID modelu, najdete v tématu [Příručka pro vývojáře IoT technologie Plug and Play](./concepts-developer-guide-device-csharp.md). Moduly používají identifikátory modelu a modely DTDL stejným způsobem.
 
 V tomto kurzu se dozvíte, jak implementovat modul IoT technologie Plug and Play, v tomto kurzu se dozvíte, jak převést vzorek termostatu pro zařízení C# na obecný modul.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -98,7 +98,7 @@ Otevření a příprava ukázkového projektu:
 
 1. V aplikaci Visual Studio přejděte na **Vlastnosti projektu > termostatu > ladit**. Pak do projektu přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | připojovací řetězec |
     | IOTHUB_MODULE_CONNECTION_STRING | Připojovací řetězec modulu, na který jste si poznamenali předchozí poznámku |
@@ -173,7 +173,7 @@ Sady SDK služby umožňují načíst ID modelu propojených technologie Plug an
 
 1. V aplikaci Visual Studio přejděte na **Vlastnosti projektu > termostatu > ladit**. Pak do projektu přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | ---- | ----- |
     | IOTHUB_DEVICE_ID | můj modul – zařízení |
     | IOTHUB_CONNECTION_STRING | Hodnota, na kterou jste si poznamenali, když jste [nastavili prostředí](set-up-environment.md) |
@@ -224,7 +224,7 @@ Pokud chcete tuto ukázku převést tak, aby fungovala jako IoT Edge modulu IoT 
 Informace o tom, jak nasadit kontejnerový modul, najdete v těchto tématech:
 
 * [Spusťte Azure IoT Edge v Virtual Machines Ubuntu](../iot-edge/how-to-install-iot-edge-ubuntuvm.md).
-* [Nainstalujte modul runtime Azure IoT Edge v systémech Linux založených na Debian](../iot-edge/how-to-install-iot-edge-linux.md).
+* [Nainstalujte modul runtime Azure IoT Edge v systémech Linux založených na Debian](../iot-edge/how-to-install-iot-edge.md).
 
 Pomocí nástroje Azure IoT Explorer můžete zobrazit:
 
@@ -238,4 +238,4 @@ Pomocí nástroje Azure IoT Explorer můžete zobrazit:
 V tomto kurzu jste se naučili připojit zařízení IoT technologie Plug and Play k modulům ke službě IoT Hub. Další informace o modelech zařízení IoT technologie Plug and Play najdete v tématech:
 
 > [!div class="nextstepaction"]
-> [Příručka pro vývojáře IoT technologie Plug and Play Modeling](concepts-developer-guide.md)
+> [Příručka pro vývojáře IoT technologie Plug and Play Modeling](./concepts-developer-guide-device-csharp.md)

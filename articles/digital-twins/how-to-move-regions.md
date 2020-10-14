@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c7f9ed9558adc9d129d1df767a05aff1fa4c66c
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328491"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047382"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Přesunutí instance digitálních vláken Azure do jiné oblasti Azure
 
@@ -30,7 +30,7 @@ Tento proces zahrnuje následující kroky:
     - Znovu propojte připojené prostředky.
 4. Vyčistit zdrojové prostředky: odstranit původní instanci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Předtím, než se pokusíte znovu vytvořit instanci digitálních vláken Azure, je vhodné přejít na součásti původní instance a získat jasný nápad na všechny části, které bude nutné znovu vytvořit.
 
@@ -49,18 +49,18 @@ Tady jsou některé otázky, které byste mohli zvážit:
     - Služba Device Provisioning (DPS)
 * Jaké jiné **osobní nebo firemní aplikace** mám připojit k mé instanci?
 
-Tyto informace můžete shromáždit pomocí [Azure Portal](https://portal.azure.com), [rozhraní API a sad SDK pro Azure](how-to-use-apis-sdks.md), digitálních vláken Azure, [příkazů CLI](how-to-use-cli.md)nebo ukázky v [Průzkumníkovi digitálních vláken Azure (ADT)](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) .
+Tyto informace můžete shromáždit pomocí [Azure Portal](https://portal.azure.com), [rozhraní API a sad SDK pro Azure](how-to-use-apis-sdks.md), digitálních vláken Azure, [příkazů CLI](how-to-use-cli.md)nebo ukázky v [Průzkumníkovi digitálních vláken Azure (ADT)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) .
 
 ## <a name="prepare"></a>Příprava
 
-V této části se připravujete na opětovné vytvoření instance **stažením původních modelů, vláken a grafů** z původní instance. V tomto článku se používá ukázka [Průzkumníka digitálních vláken Azure (ADT)](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) .
+V této části se připravujete na opětovné vytvoření instance **stažením původních modelů, vláken a grafů** z původní instance. V tomto článku se používá ukázka [Průzkumníka digitálních vláken Azure (ADT)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) .
 
 >[!NOTE]
 >Již možná máte soubory obsahující modely a/nebo graf ve vaší instanci. Pokud ano, nemusíte znovu stahovat všechno, ale jenom ty, které jste nezměnili, nebo něco, co se mohlo od původně nahraných těchto souborů změnit (například vlákna, která se možná aktualizovala novými daty).
 
 ### <a name="limitations-of-adt-explorer"></a>Omezení Průzkumníka aplikace ADT
 
-[Ukázka Průzkumníka digitálních vláken Azure (ADT)](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) je ukázka klientské aplikace, která podporuje vizuální znázornění grafu a poskytuje vizuální interakci s vaší instancí. Tento článek ukazuje, jak ho používat ke stažení a pozdějšímu nahrávání, vašich modelů, vláken a grafů.
+[Ukázka Průzkumníka digitálních vláken Azure (ADT)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) je ukázka klientské aplikace, která podporuje vizuální znázornění grafu a poskytuje vizuální interakci s vaší instancí. Tento článek ukazuje, jak ho používat ke stažení a pozdějšímu nahrávání, vašich modelů, vláken a grafů.
 
 Upozorňujeme však, že se jedná o **ukázku** a ne úplný nástroj. Nebyla testována zátěžová a nebyla vytvořena pro zpracování grafů o velké velikosti. V důsledku toho je potřeba vzít v úvahu následující předem uvedená omezení pro vzor:
 * Vzorek se aktuálně testoval jenom na velikost grafu až 1000 uzlů a 2000 vztahů
@@ -76,7 +76,7 @@ Pokud ukázka nedokáže zpracovat velikost grafu, můžete ho exportovat a impo
 
 Pokud chcete pokračovat v Průzkumníkovi aplikace ADT, nejdřív si stáhněte ukázkový kód aplikace a nastavte ho tak, aby se spouštěl na vašem počítači. 
 
-Přejděte k ukázce sem: [Průzkumník digitálních vláken Azure (ADT)](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Stiskněte tlačítko *Stáhnout soubor zip* a Stáhněte si *. Soubor ZIP* tohoto ukázkového kódu na váš počítač jako _**ADT_Explorer.zip**_. Rozbalte soubor.
+Přejděte k ukázce sem: [Průzkumník digitálních vláken Azure (ADT)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Stiskněte tlačítko *Stáhnout soubor zip* a Stáhněte si *. Soubor ZIP* tohoto ukázkového kódu na váš počítač jako _**ADT_Explorer.zip**_. Rozbalte soubor.
 
 Dále nastavte oprávnění pro Průzkumníka aplikace ADT ke spuštění na vašem počítači. Provedete to podle kroků v části [*Nastavení oprávnění Průzkumníka programu ADT*](quickstart-adt-explorer.md#set-adt-explorer-permissions) v rychlém startu pro digitální vlákna Azure.
 
@@ -219,7 +219,7 @@ Po dokončení tohoto kroku by nová instance v cílové oblasti měla být kopi
 Chcete-li ověřit, zda byla nová instance nastavena správně, můžete použít následující nástroje:
 * [**Azure Portal**](https://portal.azure.com) (dobrý pro ověření, že vaše nová instance existuje a je ve správné cílové oblasti. taky dobrý pro ověření koncových bodů a tras a připojení k dalším službám Azure)
 * [ **Příkazy rozhraní příkazového řádku** služby Azure Digital](how-to-use-cli.md) vyplní (dobrým účelem ověření, že vaše nová instance existuje a je ve správné cílové oblasti; dá se taky použít k ověření dat instance).
-* [**Průzkumník aplikace ADT**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (dobrý pro ověřování dat instance, jako jsou modely, vlákna a graf)
+* [**Průzkumník aplikace ADT**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (dobrý pro ověřování dat instance, jako jsou modely, vlákna a graf)
 * [Rozhraní API a sady SDK pro digitální vlákna](how-to-use-apis-sdks.md) (vhodné pro ověřování dat instancí, jako jsou modely, vlákna a graf), jsou vhodné i pro ověření koncových bodů a tras.
 
 Můžete také zkusit spustit libovolné vlastní aplikace nebo komplexní toky, které jste spustili s původní instancí, abyste mohli ověřit, že pracují s novou instancí správně.

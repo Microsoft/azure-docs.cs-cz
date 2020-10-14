@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6c6c1cfdfef864be17adfed2d115150c4fbede0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564355"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045121"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Použití digitálních vláken Azure k aktualizaci mapy vnitřních Azure Maps
 
@@ -25,7 +25,7 @@ Tento postup se zabývá těmito postupy:
 2. Vytvoření funkce Azure, která aktualizuje Azure Maps funkce vnitřních map stateset
 3. Jak ukládat ID map a ID stateset funkcí do grafu digitálních vláken Azure
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Požadované součásti
 
 * Postupujte podle kurzu digitálních vláken Azure [*: připojení kompletního řešení*](./tutorial-end-to-end.md).
     * Tuto dvojitou cestu rozšíříte pomocí dalšího koncového bodu a trasy. Z tohoto kurzu taky přidáte další funkci do aplikace Function App. 
@@ -64,7 +64,7 @@ Tento model čte přímo z místnosti místo zařízení IoT, což vám dává f
     >[!NOTE]
     >V současnosti se jedná o **známý problém** v Cloud Shell ovlivňují tyto skupiny příkazů: `az dt route` , `az dt model` , `az dt twin` .
     >
-    >Chcete-li tento problém vyřešit, buď spusťte `az login` v Cloud Shell před spuštěním příkazu, nebo použijte [místní CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) místo Cloud Shell. Další podrobnosti najdete v tématu [*řešení potíží: známé problémy v Azure Digital revláken*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
+    >Chcete-li tento problém vyřešit, buď spusťte `az login` v Cloud Shell před spuštěním příkazu, nebo použijte [místní CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) místo Cloud Shell. Další podrobnosti najdete v tématu [*řešení potíží: známé problémy v Azure Digital revláken*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
 
     ```azurecli
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -74,7 +74,7 @@ Tento model čte přímo z místnosti místo zařízení IoT, což vám dává f
 
 Chystáte se vytvořit funkci aktivovanou Event Grid v rámci aplikace Function App z kompletního kurzu ([*kurz: připojení kompletního řešení*](./tutorial-end-to-end.md)). Tato funkce rozbalí tato oznámení a pošle aktualizace Azure Maps funkcím stateset k aktualizaci teploty jedné místnosti. 
 
-V následujícím dokumentu najdete referenční informace: [*Azure Event Grid Trigger pro Azure Functions*](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger).
+V následujícím dokumentu najdete referenční informace: [*Azure Event Grid Trigger pro Azure Functions*](../azure-functions/functions-bindings-event-grid-trigger.md).
 
 Kód funkce nahraďte následujícím kódem. Odfiltruje pouze aktualizace vláken na prostor, přečte aktualizovanou teplotu a odešle tyto informace do Azure Maps.
 

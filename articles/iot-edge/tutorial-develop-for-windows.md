@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 409d4195a8c0a4b41996274f68ec74864bebe208
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 0728e5d12b13164d127941a49603836ff92fd515
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873349"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045784"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Kurz: vývoj modulů IoT Edge pro zařízení s Windows
 
@@ -51,7 +51,7 @@ V následující tabulce jsou uvedeny podporované vývojářské scénáře pro
 | **Jazyky** | C# (ladění není podporováno) | C <br> C# |
 | **Další informace** | [Azure IoT Edge pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)<br>[Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Vývojový počítač:
 
@@ -87,13 +87,13 @@ V tomto kurzu se naučíte postup vývoje pro Visual Studio 2019. Pokud použív
 
 1. Připravte Visual Studio 2019 na svém vývojovém počítači.
 
-   * Pokud ještě nemáte Visual Studio ve vývojovém počítači, [nainstalujte Visual studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) s následujícími úlohami:
+   * Pokud ještě nemáte Visual Studio ve vývojovém počítači, [nainstalujte Visual studio 2019](/visualstudio/install/install-visual-studio) s následujícími úlohami:
 
       * Vývoj pro Azure
       * Vývoj desktopových aplikací pomocí C++
       * Vývoj multiplatformních aplikací pomocí rozhraní .NET Core
 
-   * Pokud již máte Visual Studio 2019 ve vývojovém počítači, postupujte podle kroků v části [Změna sady Visual Studio](https://docs.microsoft.com/visualstudio/install/modify-visual-studio) a přidejte požadované úlohy.
+   * Pokud již máte Visual Studio 2019 ve vývojovém počítači, postupujte podle kroků v části [Změna sady Visual Studio](/visualstudio/install/modify-visual-studio) a přidejte požadované úlohy.
 
 2. Stáhněte a nainstalujte rozšíření [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) pro Visual Studio 2019.
 
@@ -157,7 +157,7 @@ Modul runtime IoT Edge potřebuje přihlašovací údaje registru pro vyžádán
 
 1. Otevřete **deployment.template.js** souboru ve vašem řešení modulu.
 
-1. V $edgeAgent požadovaných vlastnostech Najděte vlastnost **registryCredentials** . Měla by mít vaše adresa registru vytvořená z informací, které jste zadali při vytváření projektu, a pole s uživatelským jménem a heslem by měla obsahovat názvy proměnných. Například:
+1. V $edgeAgent požadovaných vlastnostech Najděte vlastnost **registryCredentials** . Měla by mít vaše adresa registru vytvořená z informací, které jste zadali při vytváření projektu, a pole s uživatelským jménem a heslem by měla obsahovat názvy proměnných. Příklad:
 
    ```json
    "registryCredentials": {

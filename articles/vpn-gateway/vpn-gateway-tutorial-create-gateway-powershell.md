@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 34aa805e6af68933326325587c0a442fe5e3652c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e4c0174e9f5e1a15fe85d5744ddcb6ee21c4a86
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420649"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048266"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Kurz: vytvoření a Správa služby VPN Gateway pomocí PowerShellu
 
@@ -28,7 +28,7 @@ Následující diagram ukazuje virtuální síť a bránu VPN vytvořené v rám
 
 ![Virtuální síť a brána VPN](./media/vpn-gateway-tutorial-create-gateway-powershell/vnet1-gateway.png)
 
-### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>Práce s Azure Cloud Shell a Azure PowerShell
+## <a name="prerequisites"></a>Požadované součásti
 
 [!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
@@ -184,9 +184,7 @@ V tomto kurzu jste se dozvěděli o základních úkolech při vytváření a sp
 > * Změna velikosti brány VPN
 > * Resetování brány VPN
 
-V následujících kurzech se seznámíte s připojeními typu Site-to-Site, VNet-to-VNet a Point-to-Site.
+Pak pokračujte v tomto kurzu:
 
 > [!div class="nextstepaction"]
-> * [Vytváření připojení typu Site-to-Site](vpn-gateway-tutorial-vpnconnection-powershell.md)
-> * [Vytváření připojení typu VNet-to-VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [Vytváření připojení typu Point-to-Site](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [Vytvoření připojení](vpn-gateway-tutorial-vpnconnection-powershell.md)

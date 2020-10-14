@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d2f189adf198a7e04edd3900a1e6da134329857e
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 73584353d0d003588ef7de6131d3c3c4bbfcff59
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932137"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046719"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Ověření podřízeného zařízení pro Azure IoT Hub
 
@@ -29,7 +29,7 @@ Zařízení pro příjem dat se můžou pomocí IoT Hub ověřit pomocí jedné 
 
 Kroky v tomto článku ukazují ruční zřizování zařízení. Automatické zřizování podřízených zařízení s Azure IoT Hub Device Provisioning Service (DPS) se nepodporuje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Proveďte kroky v části [konfigurace IoT Edge zařízení, které bude fungovat jako transparentní brána](how-to-create-transparent-gateway.md).
 
@@ -110,7 +110,7 @@ Pro ověřování X. 509 podepsané svým držitelem, které se někdy označuje
 
 4. Zkopírujte certifikáty primárního i sekundárního zařízení a jejich klíče do libovolného umístění v zařízení pro příjem dat. Přesuňte také kopii certifikátu sdílené kořenové certifikační autority, který vygeneroval certifikát zařízení brány i certifikáty pro příjem dat.
 
-   Na tyto soubory certifikátů odkazujete ve všech aplikacích na zařízeních, která se připojují k IoT Hub. K přesunutí souborů certifikátů můžete použít službu, jako je [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .
+   Na tyto soubory certifikátů odkazujete ve všech aplikacích na zařízeních, která se připojují k IoT Hub. K přesunutí souborů certifikátů můžete použít službu, jako je [Azure Key Vault](../key-vault/index.yml) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .
 
 5. V závislosti na preferovaném jazyce si přečtěte ukázky, jak se můžou v aplikacích IoT odkazovat na certifikáty X. 509:
 
@@ -156,7 +156,7 @@ Tato část je založená na pokynech, které jsou popsané v IoT Hub článku [
 
 5. Zkopírujte certifikát a klíče zařízení do libovolného umístění na zařízení pro příjem dat. Přesuňte také kopii certifikátu sdílené kořenové certifikační autority, který vygeneroval certifikát zařízení brány i certifikáty pro příjem dat.
 
-   Na tyto soubory se odkazujete ve všech aplikacích v zařízení, které se připojují k IoT Hub. K přesunutí souborů certifikátů můžete použít službu, jako je [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .
+   Na tyto soubory se odkazujete ve všech aplikacích v zařízení, které se připojují k IoT Hub. K přesunutí souborů certifikátů můžete použít službu, jako je [Azure Key Vault](../key-vault/index.yml) , nebo funkci, jako je [protokol Secure Copy](https://www.ssh.com/ssh/scp/) .
 
 6. V závislosti na preferovaném jazyce si přečtěte ukázky, jak se můžou v aplikacích IoT odkazovat na certifikáty X. 509:
 
@@ -201,7 +201,7 @@ Ani
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-Díky relaci nadřazený-podřízený můžete připojovací řetězec zjednodušit voláním brány přímo jako hostitele připojení. Například:
+Díky relaci nadřazený-podřízený můžete připojovací řetězec zjednodušit voláním brány přímo jako hostitele připojení. Příklad:
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

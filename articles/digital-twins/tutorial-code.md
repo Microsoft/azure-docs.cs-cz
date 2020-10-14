@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a0896ebb788593357e90bea6334c5a3e5abcff1c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 09e5875f6838c14d0d82f19f58a5bfd4f337f368
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976381"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046107"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
@@ -25,7 +25,7 @@ Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžn
 > * Vyčištění prostředků
 > * Další kroky
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 V tomto kurzu se používá příkazový řádek pro nastavení a práci v projektu. Proto můžete použít libovolný editor kódu k procházení cvičení.
 
@@ -181,7 +181,7 @@ V adresáři, ve kterém jste vytvořili projekt, vytvořte nový soubor *. JSON
 > Pokud pro tento kurz používáte sadu Visual Studio, možná budete chtít vybrat nově vytvořený soubor JSON a nastavit vlastnost *Kopírovat do výstupního adresáře* v inspektoru vlastností na hodnotu *Kopírovat, pokud* je vždycky novější nebo *Kopírovat*. To umožní aplikaci Visual Studio najít soubor JSON s výchozí cestou při spuštění programu s klávesou **F5** během zbývající části kurzu.
 
 > [!TIP] 
-> Je k dispozici [Ukázka validátoru](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) jazyka nezávislá DTDL, kterou můžete použít ke kontrole modelu dokumentů, abyste měli jistotu, že je DTDL platný. Je postaven na knihovně analyzátoru DTDL, kterou si můžete přečíst v tématu [*Postupy: analýza a ověření modelů*](how-to-parse-models.md).
+> Je k dispozici [Ukázka validátoru](/samples/azure-samples/dtdl-validator/dtdl-validator) jazyka nezávislá DTDL, kterou můžete použít ke kontrole modelu dokumentů, abyste měli jistotu, že je DTDL platný. Je postaven na knihovně analyzátoru DTDL, kterou si můžete přečíst v tématu [*Postupy: analýza a ověření modelů*](how-to-parse-models.md).
 
 Dále přidejte další kód do *program.cs* , abyste nahráli model, který jste právě vytvořili, do instance digitálního vlákna Azure.
 

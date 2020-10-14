@@ -36,6 +36,8 @@
           href: connect-ios.md
         - name: Připojení s klientem Microsoft Storu
           href: connect-microsoft-store.md
+        - name: Připojení se zařízeními s Linuxem
+          href: linux-overview.md
     - name: Konfigurace přesměrování zařízení
       href: configure-device-redirections.md
     - name: Instalace modulu PowerShellu

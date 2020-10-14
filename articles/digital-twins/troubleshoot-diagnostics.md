@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4abf78c153bd3d61068e4b7607794d6ccf1ed04
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723924"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047671"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Řešení potíží se službou Azure Digital nevláken: protokolování diagnostiky
 
@@ -57,7 +57,7 @@ Nové nastavení se projeví přibližně po dobu 10 minut. Po této konfiguraci
 
 Tady jsou další podrobnosti o kategoriích protokolů, které se dají vybrat v části **Podrobnosti o kategorii** při nastavování nastavení diagnostiky.
 
-| Kategorie protokolu | Description |
+| Kategorie protokolu | Popis |
 | --- | --- |
 | ADTModelsOperation | Protokolovat všechna volání rozhraní API týkající se modelů |
 | ADTQueryOperation | Protokolování všech volání rozhraní API vztahujících se k dotazům |
@@ -73,7 +73,7 @@ Každá kategorie protokolu se skládá z operací zápisu, čtení, odstraněn�
 | Odstranit | DELETE |
 | Akce | POST |
 
-Tady je vyčerpávající seznam operací a odpovídajících [digitálních vláken Azure REST API volání](https://docs.microsoft.com/rest/api/azure-digitaltwins/) , která se protokolují v jednotlivých kategoriích. 
+Tady je vyčerpávající seznam operací a odpovídajících [digitálních vláken Azure REST API volání](/rest/api/azure-digitaltwins/) , která se protokolují v jednotlivých kategoriích. 
 
 >[!NOTE]
 > Každá kategorie protokolu obsahuje několik operací/REST API volání. V následující tabulce jsou všechny kategorie protokolů namapovány na všechny operace/REST API volání pod ní, dokud není uvedena další kategorie protokolu. 

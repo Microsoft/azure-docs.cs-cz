@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: cynthn
-ms.openlocfilehash: dd2d42bb83afa5a97bd5bd71d7b1a4bcc506d93e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 73a7090afe771eef82523753c4067399d9f5dd5e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976160"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048079"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Verze Preview: použití klíčů spravovaných zákazníkem pro šifrování imagí
 
@@ -23,7 +23,7 @@ Pro šifrování vašich imagí můžete spoléhat na klíče spravované platfo
 
 Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem používá Azure Key Vault. Můžete buď importovat [klíče RSA](../key-vault/keys/hsm-protected-keys.md) do svého Key Vault, nebo vygenerovat nové klíče rsa v Azure Key Vault.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 Tento článek vyžaduje, abyste už měli k dispozici sadu Encryption disk pro použití pro vaši image.
 
@@ -41,7 +41,7 @@ Pro šifrování imagí Galerie sdílených imagí je k dispozici několik omeze
 
 - Sady šifrovacích klíčů jsou regionální prostředky, takže každá oblast vyžaduje jinou sadu šifrovacích klíčů.
 
-- Nemůžete sdílet image, které používají spravované klíče zákazníka. 
+- Image, které používají spravované klíče zákazníka, nemůžete kopírovat ani sdílet. 
 
 - Po použití vlastních klíčů k šifrování disku nebo Image se nemůžete vrátit k šifrování disků nebo imagí pomocí klíčů spravovaných platformou.
 

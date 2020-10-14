@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 10/13/2020
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 9b712c1b2e8ac33ec189542bf6f60929ac59858d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61e03f539f000b55ae00d90afa769ca9c1c30dc1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420553"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048283"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>Kurz: vytvoření a Správa připojení S2S VPN pomocí PowerShellu
 
@@ -33,7 +33,7 @@ Následující diagram ukazuje topologii pro tento kurz:
 
 [!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
-## <a name="requirements"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Dokončete první kurz: [Vytvoření brány VPN pomocí Azure PowerShell](vpn-gateway-tutorial-create-gateway-powershell.md) pro vytvoření následujících prostředků:
 
@@ -242,8 +242,7 @@ V tomto kurzu jste se seznámili s vytvářením a správou připojení VPN typu
 > * Přidání dalších připojení VPN
 > * Odstranění připojení VPN
 
-V následujících kurzech se seznámíte s připojeními typu Site-to-Site, VNet-to-VNet a Point-to-Site.
+V dalším kroku můžete přidat připojení P2S:
 
 > [!div class="nextstepaction"]
-> * [Vytváření připojení typu VNet-to-VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Vytváření připojení typu Point-to-Site](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

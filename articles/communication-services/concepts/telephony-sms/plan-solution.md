@@ -10,12 +10,12 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: eb698cf3c4cf2bdc47e3df57c65847f499d8760c
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: b25ac36bc0b424a9d6f76b37b532e52dc56e19e3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893658"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048215"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>Plánování telefonie a řešení pro SMS
 
@@ -74,7 +74,7 @@ Následující tabulka uvádí, kde můžete získat různé typy telefonních �
 
 ## <a name="azure-subscriptions-eligibility"></a>Způsobilost k předplatným Azure
 
-Pokud chcete získat telefonní číslo, musíte se přihlásit k placenému předplatnému Azure. Na zkušebních účtech nejde získat telefonní čísla. 
+Pokud chcete získat telefonní číslo, musíte se přihlásit k placenému předplatnému Azure. Telefonní čísla nejdou získat na zkušebních účtech ani na bezplatné kredity Azure. 
 
 V současné době je dostupnost telefonního čísla omezená na předplatná Azure, která mají fakturační adresu v USA.
 

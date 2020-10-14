@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: aca16e334e594f8adf0c0a3b0354db827fc475fe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9db530c1bdff6521c945ae0c2373bb9d32b8a476
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91333969"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047773"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure PowerShell
 
 Začněte s Azure Load Balancer pomocí Azure PowerShell k vytvoření veřejného nástroje pro vyrovnávání zatížení a tří virtuálních počítačů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure PowerShell lokálně nainstalované nebo Azure Cloud Shell
@@ -1186,7 +1186,7 @@ Vytvoření a konfigurace tří virtuálních počítačů trvá několik minut.
 
 K instalaci rozšíření vlastních skriptů použijte [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension?view=latest) . 
 
-Rozšíření spustí webový server prostředí PowerShell Add-WindowsFeature pro instalaci webového serveru služby IIS a poté aktualizuje stránku Default.htm, aby zobrazovala název hostitele virtuálního počítače:
+Rozšíření spustí PowerShell Add-WindowsFeature Web-Server pro instalaci webserveru IIS a pak aktualizuje stránku Default.htm, aby zobrazovala název hostitele virtuálního počítače:
 
 ### <a name="vm1"></a>VM1 
 
@@ -1271,8 +1271,8 @@ V tomto rychlém startu
 * Nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení a sondu stavu.
 * Otestování nástroje pro vyrovnávání zatížení.
 
-Chcete-li získat další informace o Azure Load Balancer, pokračujte v [Azure Load Balancer?](load-balancer-overview.md) a [Load Balancer Nejčastější dotazy](load-balancer-faqs.md).
-
-* Přečtěte si další informace o [Load Balancer a zónách dostupnosti](load-balancer-standard-availability-zones.md).
+Pokud se chcete dozvědět víc o Azure Load Balancer, pokračujte na..
+> [!div class="nextstepaction"]
+> [Co je Azure Load Balancer?](load-balancer-overview.md)
 
 

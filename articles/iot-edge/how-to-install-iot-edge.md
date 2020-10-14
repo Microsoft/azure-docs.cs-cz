@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: e5dc5601be5bd6d8003b196b5e7768e66bc48478
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3a02459f5b92aa7d708c29c737ed9428ed14215a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979573"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045682"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>Instalace nebo odinstalace modulu runtime Azure IoT Edge
 
@@ -24,7 +24,7 @@ Existují dva kroky pro nastavení IoT Edge zařízení. Prvním krokem je insta
 
 V tomto článku jsou uvedené kroky pro instalaci modulu runtime Azure IoT Edge v zařízeních se systémem Linux nebo Windows. U zařízení s Windows máte k dispozici další možnosti použití kontejnerů systému Linux nebo kontejnerů Windows. V současné době jsou kontejnery Windows ve Windows doporučovány pro produkční scénáře. Kontejnery pro Linux ve Windows jsou užitečné pro scénáře vývoje a testování, zejména pokud vyvíjíte na počítači s Windows, abyste mohli nasadit na zařízení se systémem Linux.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 Nejnovější informace o tom, které operační systémy se v produkčních scénářích aktuálně podporují, najdete v článku [Azure IoT Edge podporované systémy](support.md#operating-systems) .
 
@@ -267,7 +267,7 @@ Pokud bude vaše zařízení během instalace offline nebo pokud chcete nainstal
 
 4. Volitelně můžete stáhnout instalační program pro Visual C++ Redistributable. Například skript PowerShellu používá tuto verzi: [vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe). Uložte instalační program do stejné složky v zařízení IoT jako soubory IoT Edge.
 
-5. Chcete [-li nainstalovat](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) nástroje s offline komponentami, poznamenejte si místní kopii skriptu PowerShellu. 
+5. Chcete [-li nainstalovat](/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) nástroje s offline komponentami, poznamenejte si místní kopii skriptu PowerShellu. 
 
 6. Spusťte příkaz [Deploy-IoTEdge](reference-windows-scripts.md#deploy-iotedge) s `-OfflineInstallationPath` parametrem. Zadejte absolutní cestu k adresáři souborů. Příklad:
 

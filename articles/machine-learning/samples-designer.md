@@ -8,20 +8,20 @@ ms.subservice: core
 ms.topic: sample
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2020
+ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: 15393a0e618c14fbaff46a51a300284d8afb4b77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15f8e424529513b2932dcb18de941a8fe1867c1d
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90889740"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045444"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Příklady kanálů & datových sad pro návrháře Azure Machine Learning
 
 Pomocí vestavěných příkladů v Návrháři Azure Machine Learning můžete rychle začít vytvářet vlastní kanály strojového učení. [Úložiště GitHub](https://github.com/Azure/MachineLearningDesigner) návrháře Azure Machine Learning obsahuje podrobnou dokumentaci, která vám pomůže pochopit některé běžné scénáře strojového učení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree) .
 * Pracovní prostor Azure Machine Learning 
@@ -86,9 +86,7 @@ Prozkoumejte tyto integrované ukázky klasifikace. Další informace o ukázká
 
 Prozkoumejte tyto integrované ukázky počítačové vize. Další informace o ukázkách se dozvíte bez odkazů na dokumentaci, a to tak, že otevřete ukázky a místo toho zobrazíte komentáře modulu.
 
-| Ukázkový název | Popis | 
-| --- | --- |
-| Špičkové doporučení na hloubku & – předpověď hodnocení restaurace | Sestavte modul doporučených pro restaurace z možností restaurace/uživatel a hodnocení.|
+| Klasifikace obrázku pomocí DenseNet | Použijte moduly počítačového vidění k sestavení modelu klasifikace imagí založeného na PyTorch DenseNet. | 
 
 ## <a name="recommender"></a>Doporučovací systém
 
@@ -96,7 +94,8 @@ Prozkoumejte tyto integrované příklady doporučených kroků. Další informa
 
 | Ukázkový název | Popis | 
 | --- | --- |
-| Klasifikace obrázků pomocí DenseNet | Použijte moduly počítačového vidění k sestavení modelu klasifikace imagí založeného na PyTorch DenseNet.| 
+| Špičkové doporučení na hloubku & – předpověď hodnocení restaurace | Sestavte modul doporučených pro restaurace z možností restaurace/uživatel a hodnocení.|
+| Doporučení – tweety hodnocení filmu | Sestavte modul doporučený pro film z funkcí video a uživatele a hodnocení.|
 
 ## <a name="utility"></a>Nástroj
 
@@ -119,7 +118,7 @@ Ukázkové datové sady jsou k dispozici v kategorii ukázky **datových sad** -
 | Název datové sady &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Popis datové sady |
 |-------------|:--------------------|
 | Datová sada klasifikace binárního výnosu pro dospělé | Podmnožina 1994ch databází, která používá pracovní dospělí za stáří 16, s upraveným indexem příjmů > 100.<br/>**Použití**: Klasifikujte lidi pomocí demografických údajů, abyste předpovídat, jestli osoba za 50 tis za rok.<br/> **Související výzkum**: Kohavi, R., Becker, B., (1996). [UCI Machine Learning úložiště](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, školní školy a počítačové vědy|
-|Údaje o cenách automobilu (RAW)|Informace o automatickém mobilním zařízení, včetně ceny, funkcí, jako je třeba počet lahví a MPG, a hodnocení rizikového rizika.<br/> K automatické ceně je zpočátku přidruženo skóre rizika. Pak se upraví na skutečné riziko v procesu známém Pojistní matematici jako symboling. Hodnota + 3 znamená, že auto je rizikové a hodnota-3 je pravděpodobně bezpečná.<br/>**Použití**: </b> předpověď rizikového skóre podle funkcí pomocí regrese nebo klasifikace lineární<br/>**Související výzkum**: </b> Schlimmer, J.C. (1987). [UCI Machine Learning úložiště](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, školní informace a počítačové vědy. |
+|Údaje o cenách automobilu (RAW)|Informace o automatickém mobilním zařízení, včetně ceny, funkcí, jako je třeba počet lahví a MPG, a hodnocení rizikového rizika.<br/> K automatické ceně je zpočátku přidruženo skóre rizika. Pak se upraví na skutečné riziko v procesu známém Pojistní matematici jako symboling. Hodnota + 3 znamená, že auto je rizikové a hodnota-3 je pravděpodobně bezpečná.<br/>**Použití**: předpověď rizikového skóre podle funkcí pomocí regrese nebo klasifikace lineární<br/>**Související výzkum**: Schlimmer, J.C. (1987). [UCI Machine Learning úložiště](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, školní informace a počítačové vědy. |
 | Appetency popisky CRM – sdílené |Štítky z konference KDD ([orange_small_train_appetency. labels](http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels)2009) – výzva pro předpověď vztahů se zákazníky.|
 |Sdílené změny v CRM|Štítky z konference KDD ([orange_small_train_churn. labels](http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels)2009) – výzva pro předpověď vztahů se zákazníky.|
 |Sdílená datová sada CRM | Tato data pocházejí z konference KDDu pro předpověď vztahů se zákazníky 2009 ([orange_small_train.data.zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip)). <br/>Datová sada obsahuje zákazníky 50 tis z francouzské telekomunikační společnosti oranžová. Každý zákazník má 230 funkcí Anonyme, 190 z nich je numerická a 40 jsou kategorií. Funkce jsou velmi zhuštěné. |
@@ -130,7 +129,9 @@ Ukázkové datové sady jsou k dispozici v kategorii ukázky **datových sad** -
 |Hodnocení filmů|Datová sada je rozšířená verze datové sady ve formátu videa. Tato datová sada má 170K hodnocení filmů, která se extrahují z dobře strukturovaných tweety na Twitteru. Každá instance představuje prostupnost a je řazená kolekce členů: ID uživatele, ID videa IMDB, hodnocení, časové razítko, počet oblíbených položek pro tento seznam a počet předaných prostředků. Datová sada byla zpřístupněna prostřednictvím. říkáme, S. Dooms, B. loni a D. Tikk pro doporučované systémy Challenge 2014.|
 |Datová sada počasí|Hodinově založené počasí z NOAA ([sloučená data z 201304 do 201310](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)).<br/>Údaje o počasí se týkají pozorování z povětrnostních stanic na letišti, které pokrývají časové období April-October 2013. Před nahráním do návrháře byla datová sada zpracována takto:    <br/> – ID stanice počasí byly namapovány na odpovídající ID letišť.    <br/> – Počasí, které nejsou přidružené k letiště 70 nejvytíženější, se odfiltrují.    <br/> – Sloupec data byl rozdělen na sloupce samostatného roku, měsíce a dne.    <br/> -Byly vybrány následující sloupce: AirportID, rok, měsíc, den, čas, časové pásmo, SkyCondition, Visibility, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter,,|
 |Wikipedii sada dat SP 500|Data jsou odvozena z Wikipedii ( https://www.wikipedia.org/) na základě článků z každé z&společnosti P 500, uložená jako data XML).    <br/>Před nahráním do návrháře byla datová sada zpracována takto:    <br/> – Extrakce textového obsahu pro každou konkrétní firmu    <br/> -Odebrat formátování wiki    <br/> -Odebrání jiných než alfanumerických znaků    <br/> -Převést veškerý text na malá písmena    <br/> – Přidaly se známé kategorie společnosti.    <br/>Upozorňujeme, že některé společnosti nemohly najít článek, takže počet záznamů je menší než 500.|
-
+|Data funkcí restaurace| Sada metadat o restauracích a jejich funkcích, jako je například typ potraviny, druh stravování a umístění. <br/>**Použití**: tuto datovou sadu použijte v kombinaci s dalšími dvěma datovými sadami restaurace, abyste mohli naučit a testovat doporučující systém.<br/> **Související výzkum**: Bache, K. a Lichman, M. (2013). [UCI Machine Learning úložiště](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, školní informace a počítačové vědy.|
+|Hodnocení restaurace| Obsahuje hodnocení vydaná uživateli do restaurací na škále od 0 do 2.<br/>**Použití**: tuto datovou sadu použijte v kombinaci s dalšími dvěma datovými sadami restaurace, abyste mohli naučit a testovat doporučující systém. <br/>**Související výzkum**: Bache, K. a Lichman, M. (2013). [UCI Machine Learning úložiště](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, školní informace a počítačové vědy.|
+|Zákaznická data restaurace| Sada metadat o zákaznících, včetně demografických údajů a předvoleb. <br/>**Použití**: tuto datovou sadu použijte v kombinaci s dalšími dvěma datovými sadami restaurace, abyste mohli naučit a testovat doporučující systém. <br/> **Související výzkum**: Bache, K. a Lichman, M. (2013). [Machine Learning úložiště UCI](https://archive.ics.uci.edu/ml) Irvine, CA: University of California, školní informace a počítačové vědy.|
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

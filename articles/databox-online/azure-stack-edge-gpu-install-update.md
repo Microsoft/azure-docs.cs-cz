@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/29/2020
+ms.date: 10/13/2020
 ms.author: alkohli
-ms.openlocfilehash: 3ec89b897b4ea2e802188e3aefe9b830d7ff1cf8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b0377d7b209da76b03a115dc82831eeb00e1ff95
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969173"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047076"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Aktualizace GPU Azure Stack Edge pro 
 
@@ -22,7 +22,7 @@ Tento článek popisuje kroky potřebné k instalaci aktualizace na Azure Stack 
 Postup popsaný v tomto článku byl proveden s použitím jiné verze softwaru, ale proces zůstane stejný jako aktuální verze softwaru.
 
 > [!IMPORTANT]
-> - Aktualizace **2009** odpovídá verzi **2.1.1364.2110** softwaru na vašem zařízení. Další informace o této aktualizaci najdete v [poznámkách k verzi](azure-stack-edge-gpu-2009-release-notes.md).
+> - Aktualizace **2010** odpovídá verzi **2.1.1377.2170** softwaru na vašem zařízení. Další informace o této aktualizaci najdete v [poznámkách k verzi](azure-stack-edge-gpu-2009-release-notes.md).
 >
 > - Mějte na paměti, že při instalaci aktualizace nebo opravy hotfix dojde k restartování zařízení. Tato aktualizace vyžaduje, abyste postupně použili dvě aktualizace. Nejdřív použijte aktualizace softwaru zařízení a pak Kubernetes aktualizace. Vzhledem k tom, že Azure Stack Edge pro je zařízení s jedním uzlem, dojde k přerušení všech vstupně-výstupních operací a v zařízení dojde k výpadku až 30 minut od aktualizace softwaru zařízení.
 
@@ -163,9 +163,9 @@ Chcete-li stáhnout aktualizaci z katalogu Microsoft Update, proveďte následuj
 
 2. Do vyhledávacího pole katalogu Microsoft Update zadejte číslo opravy hotfix nebo podmínek pro aktualizaci, kterou chcete stáhnout, do znalostní báze (KB). Zadejte například **Azure Stack Edge pro**a pak klikněte na **Hledat**.
    
-    Seznam aktualizací se zobrazí jako **Azure Stack Edge Pro 2006**.
+    Seznam aktualizací se zobrazí jako **Azure Stack Edge update 2010**.
    
-    ![Hledat v katalogu 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)
+    <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
 
 4. Vyberte **Stáhnout**. Existují dva soubory ke stažení s příponami *SoftwareUpdatePackage.exe* a *Kubernetes_Package.exe* , které odpovídají aktualizacím softwaru zařízení a Kubernetes aktualizací. Stáhněte soubory do složky v místním systému. Můžete také zkopírovat složku do síťové sdílené složky, která je dosažitelná ze zařízení.
 
@@ -198,9 +198,9 @@ Dokončení tohoto postupu trvá přibližně 20 minut. Provedením následujíc
 
 5. Spustí se aktualizace. Po úspěšné aktualizaci zařízení se restartuje. Místní uživatelské rozhraní není v tuto dobu k dispozici.
    
-6. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance**navštivte web  >  **aktualizace softwaru**údržba. Zobrazená verze softwaru v tomto příkladu je **2.0.1257.1591**.
+6. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance**navštivte web  >  **aktualizace softwaru**údržba. V aktuální verzi by se měla zobrazit zobrazená verze softwaru **2.1.1377.2170**.
 
-   ![aktualizace zařízení 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png) 
+   <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
 
 7. Nyní aktualizujete verzi Kubernetes softwaru. Opakujte výše uvedené kroky. Zadejte cestu k souboru aktualizace Kubernetes s příponou *Kubernetes_Package.exe* .  
 

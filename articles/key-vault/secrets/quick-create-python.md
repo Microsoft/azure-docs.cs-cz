@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: b5159ce623c03d1158bf719611c158067fdd5b9e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 751e4dbace2b61f53ef9b8d9bef45aa6ce17f9ca
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019099"
+ms.locfileid: "92047867"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Rychlý Start: Azure Key Vaulta klíčová knihovna klienta pro Python
 
@@ -21,7 +21,7 @@ Začínáme s klientskou knihovnou Azure Key Vault tajných klíčů pro Python 
 
 [Referenční dokumentace k](/python/api/overview/azure/keyvault-secrets-readme)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-keyvault-secrets/)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 + nebo 3.5.3 +](https://docs.microsoft.com/azure/developer/python/configure-local-development-environment)
@@ -31,7 +31,7 @@ V tomto rychlém startu se předpokládá, že používáte rozhraní příkazov
 
 
 ## <a name="set-up-your-local-environment"></a>Nastavení místního prostředí
-Tento rychlý Start používá Azure identity Library s Azure CLI k ověřování uživatele ve službách Azure. Vývojáři můžou k ověřování hovorů použít taky Visual Studio nebo Visual Studio Code, další informace najdete v tématu [ověření klienta pomocí klientské knihovny Azure identity](https://docs.microsoft.com/java/api/overview/azure/identity-readme) .
+Tento rychlý Start používá Azure identity Library s Azure CLI k ověřování uživatele ve službách Azure. Vývojáři můžou k ověřování hovorů použít taky Visual Studio nebo Visual Studio Code, další informace najdete v tématu [ověření klienta pomocí klientské knihovny Azure identity](https://docs.microsoft.com/java/api/overview/azure/identity-readme).
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -49,7 +49,7 @@ Tento rychlý Start používá Azure identity Library s Azure CLI k ověřován�
 
 ### <a name="install-the-packages"></a>Nainstalovat balíčky
 
-1. V terminálu nebo na příkazovém řádku vytvořte vhodnou složku projektu a pak vytvořte a aktivujte virtuální prostředí Pythonu, jak je popsáno v tématu [použití virtuálních prostředí Python](/azure/developer/python/configure-local-development-environment?tabs=cmd#use-python-virtual-environments) .
+1. V terminálu nebo příkazovém řádku vytvořte vhodnou složku projektu a pak vytvořte a aktivujte virtuální prostředí Pythonu, jak je popsáno v tématu [použití virtuálních prostředí Python](/azure/developer/python/configure-local-development-environment?tabs=cmd#use-python-virtual-environments).
 
 1. Nainstalujte Azure Active Directory knihovnu identit:
 

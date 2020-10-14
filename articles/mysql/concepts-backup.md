@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: f64b5a186c026bf752d7975ac4337535ca64458e
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: b3cc70eadfaa1295cd67fa3f2b36c97f107b4bad
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876528"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046991"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Zálohování a obnovení v Azure Database for MySQL
 
@@ -19,18 +19,29 @@ Azure Database for MySQL automaticky vytvoří zálohy serveru a uloží je v u�
 
 ## <a name="backups"></a>Zálohování
 
-Azure Database for MySQL přebírá zálohy datových souborů a transakčního protokolu. V závislosti na podporované maximální velikosti úložiště vezmeme úplné a rozdílové zálohy (4 TB max. servery úložiště) nebo zálohy snímků (až 16 TB maximálních úložných serverů). Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete [nakonfigurovat](howto-restore-server-portal.md#set-backup-configuration) až 35 dní. Všechny zálohy se šifrují s využitím 256bitového šifrování AES.
+Azure Database for MySQL přebírá zálohy datových souborů a transakčního protokolu. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete [nakonfigurovat](howto-restore-server-portal.md#set-backup-configuration) až 35 dní. Všechny zálohy se šifrují s využitím 256bitového šifrování AES.
 
 Tyto záložní soubory nejsou vystavené uživateli a nelze je exportovat. Tyto zálohy lze použít pouze pro operace obnovení v Azure Database for MySQL. Pomocí [mysqldump](concepts-migrate-dump-restore.md) můžete zkopírovat databázi.
 
-### <a name="backup-frequency"></a>Frekvence zálohování
+Typ a četnost zálohování závisí na úložišti back-endu serverů.
 
-#### <a name="servers-with-up-to-4-tb-storage"></a>Servery s úložištěm až 4 TB
+### <a name="backup-type-and-frequency"></a>Typ a frekvence zálohování
 
-Pro servery, které podporují až 4 TB maximálního úložiště, se k úplným zálohám dochází každý týden. Rozdílové zálohy se vyskytují dvakrát denně. Zálohování transakčních protokolů probíhá každých pět minut.
+#### <a name="basic-storage-servers"></a>Servery úrovně Basic Storage
 
-#### <a name="servers-with-up-to-16-tb-storage"></a>Servery s až 16 TB úložiště
-V podmnožině [oblastí Azure](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)můžou všechny nově zřízené servery podporovat úložiště až o 16 TB. Zálohy na těchto velkých serverech úložiště jsou založené na snímcích. První úplné zálohování snímků je naplánované okamžitě po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Další zálohování snímků je pouze rozdílové. 
+Základní servery úložiště jsou back-end úložiště pro [servery základních SKU](concepts-pricing-tiers.md). Zálohy na základních serverech úložiště jsou založené na snímcích. Celý snímek databáze se provádí denně. Pro základní servery úložiště nejsou prováděny žádné rozdílové zálohy a zálohy všech snímků jsou pouze úplné zálohy databáze. 
+
+Zálohování transakčních protokolů probíhá každých pět minut. 
+
+#### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>Servery úložiště pro obecné účely s úložištěm s kapacitou až 4 TB
+
+Pro servery, které podporují až 4 TB maximálního úložiště pro obecné účely, se k úplným zálohám dochází každý týden. Rozdílové zálohy se vyskytují dvakrát denně. K zálohování protokolu transakcí dochází každých pět minut. Zálohy v úložišti pro obecné účely až do 4 TB úložiště nejsou založené na snímcích a v době zálohování spotřebovávají vstupně-výstupní šířku pásma. U rozsáhlých databází (> 1 TB) na 4 TB úložiště doporučujeme zvážit 
+
+- Zřizování dalších IOPs pro účet pro zálohování IOs  
+- Případně migrujte do úložiště pro obecné účely, které podporuje až 16 TB úložiště, pokud je úložiště dostupné v upřednostňovaných [oblastech Azure](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage). Pro účely úložiště pro obecné účely, který podporuje až 16 TB úložiště, se neúčtují žádné další náklady. Pokud potřebujete pomoc s migrací do úložiště o 16 TB, otevřete prosím lístek podpory z Azure Portal. 
+
+#### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Servery úložiště pro obecné účely s úložištěm až 16 TB
+V podmnožině [oblastí Azure](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)můžou všechny nově zřízené servery podporovat úložiště pro obecné účely až do 16 TB úložišť. Zálohy na těchto 16 TB úložných serverech jsou založené na snímcích. První úplné zálohování snímků je naplánované okamžitě po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Další zálohování snímků je pouze rozdílové. 
 
 Rozdílové zálohování snímků se provádí alespoň jednou denně. Rozdílové zálohování snímků se neprovádí podle pevně daného plánu. Rozdílové zálohování snímků probíhá každých 24 hodin, pokud transakční protokol (binlog v MySQL) překračuje 50 GB od poslední rozdílové zálohy. Každý den je možné provést rozdílové zálohování snímků maximálně šestkrát. 
 

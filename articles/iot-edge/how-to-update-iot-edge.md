@@ -9,12 +9,12 @@ ms.date: 06/22/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e16e7fa5ecc2fb947f9f82c1cdd27af6758d6bda
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7cde23372f6a3af0320e2d48c78a0d7fe69a2600
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971745"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045699"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace modulu runtime a procesu démon zabezpečení IoT Edge
 
@@ -108,7 +108,7 @@ Na zařízeních s Windows aktualizujte démona zabezpečení pomocí skriptu Po
 
 Spuštění příkazu Update-IoTEdge odstraní a aktualizuje démona zabezpečení ze zařízení spolu se dvěma bitovými kopiemi kontejnerů modulu runtime. Soubor config. yaml se uchovává v zařízení a také data z modulu kontejneru Moby (Pokud používáte kontejnery Windows). Udržování informací o konfiguraci znamená, že v průběhu procesu aktualizace nemusíte znovu zadávat informace o připojovacím řetězci nebo službě Device Provisioning pro vaše zařízení.
 
-Pokud chcete aktualizovat na konkrétní verzi démona zabezpečení, vyhledejte verzi, kterou chcete cílit z [IoT Edge verzí](https://github.com/Azure/azure-iotedge/releases). V této verzi Stáhněte soubor **Microsoft-Azure-IoTEdge.cab** . Pak použijte parametr, `-OfflineInstallationPath` který odkazuje na umístění místního souboru. Například:
+Pokud chcete aktualizovat na konkrétní verzi démona zabezpečení, vyhledejte verzi, kterou chcete cílit z [IoT Edge verzí](https://github.com/Azure/azure-iotedge/releases). V této verzi Stáhněte soubor **Microsoft-Azure-IoTEdge.cab** . Pak použijte parametr, `-OfflineInstallationPath` který odkazuje na umístění místního souboru. Příklad:
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
@@ -194,7 +194,7 @@ K aktualizaci IoT Edge zařízení se používají dvě komponenty:
 
 3. Pokud má soubor. cab, který jste stáhli, příponu architektury, přejmenujte soubor na pouze **Microsoft-Azure-IoTEdge.cab**.
 
-4. Chcete-li aktualizovat s offline [komponentami, poznamenejte si místní](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) kopii skriptu PowerShellu. Pak použijte `-OfflineInstallationPath` parametr jako součást `Update-IoTEdge` příkazu a zadejte absolutní cestu k adresáři souborů. Příklad:
+4. Chcete-li aktualizovat s offline [komponentami, poznamenejte si místní](/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) kopii skriptu PowerShellu. Pak použijte `-OfflineInstallationPath` parametr jako součást `Update-IoTEdge` příkazu a zadejte absolutní cestu k adresáři souborů. Příklad:
 
    ```powershell
    . <path>\IoTEdgeSecurityDaemon.ps1

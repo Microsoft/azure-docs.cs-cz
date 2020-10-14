@@ -8,12 +8,12 @@ ms.author: kgremban
 ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 823b16dcaf113136b10fdaa054da20840b99f02d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1883ffdff20bbbef8efec1440854f01a21a281dc
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297041"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045716"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití sady Visual Studio 2019 k vývoji a ladění modulů pro Azure IoT Edge
 
@@ -28,11 +28,11 @@ Nástroje pro Azure IoT Edge pro Visual Studio přináší následující výhod
 
 V tomto článku se dozvíte, jak pomocí nástrojů pro Azure IoT Edge pro Visual Studio 2019 vyvíjet moduly IoT Edge. Naučíte se také, jak nasadit projekt do zařízení Azure IoT Edge. V současné době poskytuje Visual Studio 2019 podporu pro moduly napsané v jazyce C a C#. Podporované architektury zařízení jsou Windows x64 a Linux x64 nebo ARM32. Další informace o podporovaných operačních systémech, jazycích a architekturách najdete v tématu [Podpora jazyků a architektur](module-development.md#language-and-architecture-support).
   
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 V tomto článku se předpokládá, že používáte počítač nebo virtuální počítač s Windows jako vývojový počítač. V počítačích s Windows můžete vyvíjet moduly pro Windows nebo Linux. Pro vývoj modulů Windows použijte počítač s Windows, na kterém běží verze 1809/Build 17763 nebo novější. Pokud chcete vyvíjet moduly pro Linux, použijte počítač s Windows, který splňuje [požadavky pro Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install).
 
-Vzhledem k tomu, že tento článek používá Visual Studio 2019 jako hlavní vývojový nástroj, nainstalujte Visual Studio. V instalaci sady Visual Studio 2019 se ujistěte, že jste zahrnuli vývoj pro vývoj a **desktopové** prostředí **Azure** s úlohami C++. Můžete [Upravit Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2019) a přidat požadované úlohy.
+Vzhledem k tomu, že tento článek používá Visual Studio 2019 jako hlavní vývojový nástroj, nainstalujte Visual Studio. V instalaci sady Visual Studio 2019 se ujistěte, že jste zahrnuli vývoj pro vývoj a **desktopové** prostředí **Azure** s úlohami C++. Můžete [Upravit Visual Studio 2019](/visualstudio/install/modify-visual-studio?view=vs-2019) a přidat požadované úlohy.
 
 Po přípravě sady Visual Studio 2019 budete potřebovat také následující nástroje a komponenty:
 
@@ -62,7 +62,7 @@ Po přípravě sady Visual Studio 2019 budete potřebovat také následující n
   vcpkg.exe --triplet x64-windows integrate install
   ```
 
-- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) nebo [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags).
+- [Azure Container Registry](../container-registry/index.yml) nebo [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags).
 
   > [!TIP]
   > Místo registru cloudu můžete použít místní registr Docker pro účely prototypů a testování.

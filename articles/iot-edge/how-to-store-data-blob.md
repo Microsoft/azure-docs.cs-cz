@@ -8,16 +8,16 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 07da9316ea76e609948eed586f776be33c91b4bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6de96b9913b70dd1b2d423e00c58b95ccb8dcb07
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287260"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048147"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Ukládání dat na hraničních zařízeních s využitím služby Azure Blob Storage ve službě IoT Edge
 
-Azure Blob Storage v IoT Edge poskytuje [objekt blob bloku](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) a [připojovat řešení BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) Storage na hranici. Modul BLOB Storage v zařízení IoT Edge se chová jako služba Azure Blob Service, s výjimkou toho, že se objekty blob ukládají místně na vaše IoT Edge zařízení. K objektům blob můžete přistupovat pomocí stejných metod sady SDK služby Azure Storage nebo volání rozhraní API objektů blob, které jste už použili pro. V tomto článku se dozvíte o konceptech souvisejících s Azure Blob Storage v kontejneru IoT Edge, na kterém běží služba blob na zařízení IoT Edge.
+Azure Blob Storage v IoT Edge poskytuje [objekt blob bloku](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) a [připojovat řešení BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) Storage na hranici. Modul BLOB Storage v zařízení IoT Edge se chová jako služba Azure Blob Service, s výjimkou toho, že se objekty blob ukládají místně na vaše IoT Edge zařízení. K objektům blob můžete přistupovat pomocí stejných metod sady SDK služby Azure Storage nebo volání rozhraní API objektů blob, které jste už použili pro. V tomto článku se dozvíte o konceptech souvisejících s Azure Blob Storage v kontejneru IoT Edge, na kterém běží služba blob na zařízení IoT Edge.
 
 Tento modul je užitečný ve scénářích:
 
@@ -53,7 +53,7 @@ Pokud během nahrávání objektu BLOB dojde k neočekávanému ukončení proce
 * Zadejte dobu v minutách (deleteAfterMinutes), po jejímž uplynutí budou objekty blob automaticky odstraněny.
 * Vyberte možnost zachovat objekt BLOB při jeho nahrávání, pokud hodnota deleteAfterMinutes vyprší.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Zařízení Azure IoT Edge:
 
@@ -110,7 +110,7 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
 
-Například:
+Příklad:
 
 ```powershell
 $creds = Get-Credential
@@ -136,7 +136,7 @@ sudo chown -R 11000:11000 <blob-dir>
 sudo chmod -R 700 <blob-dir>
 ```
 
-Například:
+Příklad:
 
 ```terminal
 sudo chown -R 11000:11000 /srv/containerdata
@@ -160,7 +160,7 @@ sudo chmod -R 700 <blob-dir>
 
 ## <a name="configure-log-files"></a>Konfigurace souborů protokolu
 
-Informace o konfiguraci souborů protokolu pro váš modul najdete v tématu věnovaném [osvědčeným postupům pro produkční](https://docs.microsoft.com/azure/iot-edge/production-checklist#set-up-logs-and-diagnostics)prostředí.
+Informace o konfiguraci souborů protokolu pro váš modul najdete v tématu věnovaném [osvědčeným postupům pro produkční](./production-checklist.md#set-up-logs-and-diagnostics)prostředí.
 
 ## <a name="connect-to-your-blob-storage-module"></a>Připojení k modulu BLOB Storage
 
@@ -232,7 +232,7 @@ Neplatné
 * Získat statistiky služby BLOB Service
 * Získat informace o účtu
 
-### <a name="containers"></a>Kontejnery
+### <a name="containers"></a>Containers
 
 Podporováno:
 

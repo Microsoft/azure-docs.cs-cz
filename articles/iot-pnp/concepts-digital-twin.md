@@ -7,12 +7,12 @@ ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea523045875e0abc9e14924c7bb388ea2cfcc2db
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578049"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046464"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>Principy digitálních dvojčat IoT Plug and Play
 
@@ -40,7 +40,7 @@ V digitálním vlákna je k dispozici jednotný pohled na aktuální a požadova
 
 Při reprezentaci jako objektu JSON obsahuje digitální vlákna následující pole:
 
-| Název pole | Description |
+| Název pole | Popis |
 | --- | --- |
 | `$dtId` | Uživatelem zadaný řetězec představující ID digitálního vlákna zařízení |
 | `{propertyName}` | Hodnota vlastnosti ve formátu JSON |
@@ -307,7 +307,7 @@ Následující fragmenty kódu znázorňují souběžnou reprezentaci `thermosta
 
 ## <a name="digital-twin-apis"></a>Digitální dvojitá rozhraní API
 
-Digitální vlákna Azure jsou vybavená pomocí příkazu **získat digitální**vlákna, **aktualizovat digitální vlákna**, **vyvolat příkaz komponenty** a **vyvolat příkaz** pro správu digitálního vlákna zařízení. [Rozhraní REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) můžete buď použít přímo, nebo prostřednictvím [sady SDK služby](../iot-pnp/libraries-sdks.md).
+Digitální vlákna Azure jsou vybavená pomocí příkazu **získat digitální**vlákna, **aktualizovat digitální vlákna**, **vyvolat příkaz komponenty** a **vyvolat příkaz** pro správu digitálního vlákna zařízení. [Rozhraní REST API](/rest/api/iothub/service/digitaltwin) můžete buď použít přímo, nebo prostřednictvím [sady SDK služby](../iot-pnp/libraries-sdks.md).
 
 ## <a name="digital-twin-change-events"></a>Události změn digitálního dvojčete
 
@@ -383,5 +383,5 @@ Teď, když jste se naučili o digitálních prostředcích, tady je několik da
 
 - [Jak používat technologie Plug and Play digitálních vláken rozhraní IoT](howto-manage-digital-twin.md)
 - [Interakce se zařízením z vašeho řešení](quickstart-service-node.md)
-- [Digitální zdvojené REST API IoT](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [Digitální zdvojené REST API IoT](/rest/api/iothub/service/digitaltwin)
 - [Průzkumník Azure IoT](howto-use-iot-explorer.md)

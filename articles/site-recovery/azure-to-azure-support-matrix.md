@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: dd4cbf0228bc68fa253f9e7a06b4eaba5157d2bd
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 390dba92091a9e419bcd7a8f0e8e83f65597305e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952076"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045325"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -247,6 +247,7 @@ Generace 2 (spuštění UEFI) | Podporováno
 NVMe disky | Nepodporováno
 Sdílené disky Azure | Nepodporováno
 Možnost zabezpečeného přenosu | Podporováno
+Disky s povoleným akcelerátorem zápisu | Nepodporováno
 
 >[!IMPORTANT]
 > Abyste se vyhnuli problémům s výkonem, ujistěte se, že je pro virtuální počítače se systémem [Linux](../virtual-machines/linux/disk-scalability-targets.md) nebo [Windows](../virtual-machines/windows/disk-scalability-targets.md) dodržujte škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů. Pokud použijete výchozí nastavení, Site Recovery v závislosti na konfiguraci zdroje vytvoří požadované disky a účty úložiště. Pokud přizpůsobíte a vyberete vlastní nastavení, postupujte podle škálovatelnosti disku a cílů výkonu pro vaše zdrojové virtuální počítače.

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: be79f7bd6687b2e53e6abe19dc0a20999942071d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a7fcd32335b5d9e04986355adeea473cf77b970e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974957"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048198"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -84,7 +84,7 @@ V následujících částech se dozvíte, jak provádět různé operace správy
 Po vytvoření modelů je můžete nahrát do instance digitálních vláken Azure.
 
 > [!TIP]
-> Před odesláním do instance digitálního vlákna Azure doporučujeme vaše modely ověřit offline. Můžete použít [knihovnu analyzátorů DTDL na straně klienta](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) a [ukázku validátoru DTDL](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) popsané v tématu [*Postupy: analýza a ověření modelů*](how-to-parse-models.md) pro kontrolu vašich modelů před jejich odesláním do služby.
+> Před odesláním do instance digitálního vlákna Azure doporučujeme vaše modely ověřit offline. Můžete použít [knihovnu analyzátorů DTDL na straně klienta](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) a [ukázku validátoru DTDL](/samples/azure-samples/dtdl-validator/dtdl-validator) popsané v tématu [*Postupy: analýza a ověření modelů*](how-to-parse-models.md) pro kontrolu vašich modelů před jejich odesláním do služby.
 
 Až budete připraveni k nahrání modelu, můžete použít následující fragment kódu:
 
@@ -113,7 +113,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Například:
+Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Příklad:
 
 ```json
 [

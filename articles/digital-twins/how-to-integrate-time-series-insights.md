@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 636332c52ea71c7f84cca2f7ef526bc31200e11c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eef56bd19ed9912625c8ddca3cbf9ff46a59309
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822167"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048062"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrace digitálních vláken Azure s Azure Time Series Insights
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak integrovat digitální vlákna Azure pomocí [
 
 Řešení popsané v tomto článku vám umožní shromáždit a analyzovat historické údaje o řešení IoT. Digitální vlákna Azure je skvělým způsobem, který umožňuje zasílat data do Time Series Insights, protože umožňuje korelovat více datových proudů a standardizovat informace před jejich odesláním do Time Series Insights. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Než budete moct nastavit relaci s Time Series Insights, musíte mít **instanci digitálního vlákna Azure**. Tato instance by měla být nastavená na možnost aktualizovat digitální informace na základě dat, protože je potřeba aktualizovat zdvojené informace několikrát, aby se zobrazila data sledovaná v Time Series Insights. 
 
@@ -58,7 +58,7 @@ Kurz digitálních vláken Azure [*: připojení uceleného řešení*](./tutori
     az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
-3. Vytvořte [autorizační pravidlo](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) s oprávněními Odeslat a přijmout.
+3. Vytvořte [autorizační pravidlo](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) s oprávněními Odeslat a přijmout.
 
     ```azurecli
     # Create an authorization rule. Specify a name for the rule.
@@ -76,7 +76,7 @@ Kurz digitálních vláken Azure [*: připojení uceleného řešení*](./tutori
     >[!NOTE]
     >V současnosti se jedná o **známý problém** v Cloud Shell ovlivňují tyto skupiny příkazů: `az dt route` , `az dt model` , `az dt twin` .
     >
-    >Chcete-li tento problém vyřešit, buď spusťte `az login` v Cloud Shell před spuštěním příkazu, nebo použijte [místní CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) místo Cloud Shell. Další podrobnosti najdete v tématu [*řešení potíží: známé problémy v Azure Digital revláken*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
+    >Chcete-li tento problém vyřešit, buď spusťte `az login` v Cloud Shell před spuštěním příkazu, nebo použijte [místní CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) místo Cloud Shell. Další podrobnosti najdete v tématu [*řešení potíží: známé problémy v Azure Digital revláken*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
 
     ```azurecli
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -159,7 +159,7 @@ Pokud chcete vytvořit druhé centrum událostí, můžete použít níže uvede
     # Create an event hub. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
-3. Vytvoření [autorizačního pravidla](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) s oprávněními Odeslat a přijmout
+3. Vytvoření [autorizačního pravidla](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create) s oprávněními Odeslat a přijmout
     ```azurecli
     # Create an authorization rule. Specify a name for the rule.
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
@@ -203,7 +203,7 @@ V dalším kroku nastavíte instanci Time Series Insights pro příjem dat z dru
 
 1. V Azure Portal Začněte vytvářet prostředek Time Series Insights. 
     1. Vyberte cenovou úroveň **PAYG (Preview)** .
-    2. Pro toto prostředí budete muset zvolit **ID časové řady** . Vaše ID časové řady může mít až tři hodnoty, které použijete k hledání vašich dat v Time Series Insights. Pro tento kurz můžete použít **$dtId**. Přečtěte si další informace o výběru hodnoty ID v tématu [*osvědčené postupy pro výběr ID časové řady*](https://docs.microsoft.com/azure/time-series-insights/how-to-select-tsid).
+    2. Pro toto prostředí budete muset zvolit **ID časové řady** . Vaše ID časové řady může mít až tři hodnoty, které použijete k hledání vašich dat v Time Series Insights. Pro tento kurz můžete použít **$dtId**. Přečtěte si další informace o výběru hodnoty ID v tématu [*osvědčené postupy pro výběr ID časové řady*](../time-series-insights/how-to-select-tsid.md).
     
         :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře, zvýrazňování Time Series Insights":::
 
@@ -213,7 +213,7 @@ V dalším kroku nastavíte instanci Time Series Insights pro příjem dat z dru
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Zahájení odesílání dat IoT do digitálních vláken Azure
 
-Pokud chcete začít odesílat data do Time Series Insights, budete muset začít aktualizovat digitální vlastnosti v digitálních provlastnostech Azure pomocí změny hodnot dat. Použijte příkaz [AZ DT s dvojitou aktualizací](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) .
+Pokud chcete začít odesílat data do Time Series Insights, budete muset začít aktualizovat digitální vlastnosti v digitálních provlastnostech Azure pomocí změny hodnot dat. Použijte příkaz [AZ DT s dvojitou aktualizací](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) .
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 

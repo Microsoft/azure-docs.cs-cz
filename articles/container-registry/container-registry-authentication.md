@@ -3,12 +3,12 @@ title: Možnosti ověřování v registru
 description: Možnosti ověřování privátního služby Azure Container Registry, včetně přihlašování pomocí Azure Active Directory identity, pomocí instančních objektů a použití volitelných přihlašovacích údajů správce.
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 7c8176d0cdca5d74ed3201071f83ed1181d94b8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1747dfa0664778283d0cea06940ea95982c269a2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657075"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048011"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Ověřování pomocí služby Azure Container Registry
 
@@ -20,7 +20,7 @@ Mezi doporučené způsoby patří ověřování v registru přímo přes [jedno
 
 Následující tabulka obsahuje seznam dostupných metod ověřování a typických scénářů. Podrobnosti najdete v tématu s propojeným obsahem.
 
-| Metoda                               | Ověřování                                           | Scénáře                                                            | RBAC                             | Omezení                                |
+| Metoda                               | Ověřování                                           | Scénáře                                                            | Řízení přístupu na základě role (RBAC)                             | Omezení                                |
 |---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
 | [Individuální identita AD](#individual-login-with-azure-ad)                | `az acr login` v Azure CLI                             | Interaktivní nabízení a vyžádané sdílení pro vývojáře, testery                                    | Yes                              | Token AD se musí obnovit každé 3 hodiny.     |
 | [Instanční objekt služby AD](#service-principal)                  | `docker login`<br/><br/>`az acr login` v Azure CLI<br/><br/> Nastavení přihlášení do registru v rozhraních API nebo nástrojích<br/><br/> [Tajný kód pro vyžádání obsahu Kubernetes](container-registry-auth-kubernetes.md)                                           | Bezobslužné vkládání z kanálu CI/CD<br/><br/> Bezobslužné stažení do Azure nebo externích služeb  | Yes                              | Výchozí platnost hesla SP je 1 rok.       |                                                           
@@ -31,13 +31,14 @@ Následující tabulka obsahuje seznam dostupných metod ověřování a typick�
 
 ## <a name="individual-login-with-azure-ad"></a>Individuální přihlášení pomocí Azure AD
 
-Při přímém práci s registrem, jako je například navýšení a vkládání imagí z vývojové pracovní stanice do registru, který jste vytvořili, můžete ověřit pomocí konkrétní identity Azure. Spusťte příkaz [AZ ACR Login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) v rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli):
+Při přímém práci s registrem, jako je například navýšení a vkládání imagí z vývojové pracovní stanice do registru, který jste vytvořili, můžete ověřit pomocí konkrétní identity Azure. Přihlaste se k [Azure CLI](/cli/azure/install-azure-cli) pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login)a potom spusťte příkaz [AZ ACR Login](/cli/azure/acr#az-acr-login) :
 
 ```azurecli
+az login
 az acr login --name <acrName>
 ```
 
-Při přihlášení pomocí `az acr login` rozhraní příkazového řádku použije token vytvořený při provedení [AZ Login](/cli/azure/reference-index#az-login) k bezproblémovému ověření relace s registrem. K dokončení toku ověřování musí být ve vašem prostředí nainstalovaný a spuštěný démon Docker CLI a Docker. `az acr login` k nastavení tokenu Azure Active Directory v souboru používá klienta Docker `docker.config` . Po přihlášení tohoto postupu jsou vaše přihlašovací údaje uložené v mezipaměti a následné `docker` příkazy ve vaší relaci nevyžadují uživatelské jméno ani heslo.
+Při přihlášení pomocí `az acr login` rozhraní příkazového řádku použije token vytvořený při spuštění `az login` k bezproblémovému ověření relace s registrem. K dokončení toku ověřování musí být ve vašem prostředí nainstalovaný a spuštěný démon Docker CLI a Docker. `az acr login` k nastavení tokenu Azure Active Directory v souboru používá klienta Docker `docker.config` . Po přihlášení tohoto postupu jsou vaše přihlašovací údaje uložené v mezipaměti a následné `docker` příkazy ve vaší relaci nevyžadují uživatelské jméno ani heslo.
 
 > [!TIP]
 > Slouží také `az acr login` k ověření individuální identity v případě, že chcete vyžádat nebo načíst artefakty jiné než Image Docker do registru, například [artefakty OCI](container-registry-oci-artifacts.md).  
@@ -97,7 +98,7 @@ Každý registr kontejnerů obsahuje účet uživatele správce, který je ve v�
 > Účet správce je navržený pro jednoho uživatele, který má přístup k registru, hlavně pro účely testování. Nedoporučujeme sdílení přihlašovacích údajů účtu správce mezi více uživateli. Všichni uživatelé, kteří se ověřují pomocí účtu správce, se zobrazí jako jednotliví uživatelé s přístupem push a pull do registru. Změna nebo zakázání tohoto účtu zakáže přístup k registru pro všechny uživatele, kteří používají své přihlašovací údaje. Pro uživatele a instanční objekty se doporučuje použít pro scénáře s doplňováním provozu individuální identitu.
 >
 
-Účet správce je k dispozici se dvěma hesly, z nichž lze znovu vygenerovat. Dvě hesla umožňují udržovat připojení k registru pomocí jednoho hesla při opětovném vygenerování. Pokud je povolen účet správce, můžete `docker login` při zobrazení výzvy k zadání základního ověřování do registru předat uživatelské jméno a heslo k příkazu. Například:
+Účet správce je k dispozici se dvěma hesly, z nichž lze znovu vygenerovat. Dvě hesla umožňují udržovat připojení k registru pomocí jednoho hesla při opětovném vygenerování. Pokud je povolen účet správce, můžete `docker login` při zobrazení výzvy k zadání základního ověřování do registru předat uživatelské jméno a heslo k příkazu. Příklad:
 
 ```
 docker login myregistry.azurecr.io 
@@ -105,7 +106,7 @@ docker login myregistry.azurecr.io
 
 Osvědčené postupy pro správu přihlašovacích údajů najdete v tématu Reference k příkazům [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) .
 
-Pokud chcete povolit uživatele s oprávněními správce pro existující registr, můžete použít `--admin-enabled` parametr příkazu [AZ ACR Update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) v rozhraní příkazového řádku Azure CLI:
+Pokud chcete povolit uživatele s oprávněními správce pro existující registr, můžete použít `--admin-enabled` parametr příkazu [AZ ACR Update](/cli/azure/acr#az-acr-update) v rozhraní příkazového řádku Azure CLI:
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true

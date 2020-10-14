@@ -8,12 +8,12 @@ ms.date: 07/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6fffa227c4b8bb01c736c70d8d2cd30c57f416c4
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: eae36f6b4baabdcc9831b084602d340a299a7bac
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876579"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047620"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Vývoj vlastních modulů IoT Edge
 
@@ -65,7 +65,7 @@ Připojení k místnímu rozbočovači IoT Edge z modulu zahrnuje dva kroky:
 1. Vytvořte v aplikaci instanci ModuleClient.
 2. Ujistěte se, že vaše aplikace přijímá certifikát prezentovaný IoT Edge centrem v tomto zařízení.
 
-Vytvořte instanci ModuleClient pro připojení modulu k rozbočovači IoT Edge běžícímu na zařízení, podobně jako instance DeviceClient připojují zařízení IoT k IoT Hub. Další informace o třídě ModuleClient a jejích metodách komunikace najdete v referenčních informacích k rozhraní API pro preferovaný jazyk sady SDK: [C#](/dotnet/api/microsoft.azure.devices.client.moduleclient), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient), [Java](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)nebo [Node.js](/javascript/api/azure-iot-device/moduleclient).
+Vytvořte instanci ModuleClient pro připojení modulu k rozbočovači IoT Edge běžícímu na zařízení, podobně jako instance DeviceClient připojují zařízení IoT k IoT Hub. Další informace o třídě ModuleClient a jejích metodách komunikace najdete v referenčních informacích k rozhraní API pro preferovaný jazyk sady SDK: [C#](/dotnet/api/microsoft.azure.devices.client.moduleclient), [C](/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient), [Java](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)nebo [Node.js](/javascript/api/azure-iot-device/moduleclient).
 
 ## <a name="language-and-architecture-support"></a>Podpora jazyků a architektur
 

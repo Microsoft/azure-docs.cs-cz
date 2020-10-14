@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9fa3c27f9cc35b31fc78b2a09bea725934093e63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e53a7f5e76a6161016cbbb6b3566de4cad923f6a
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983356"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048045"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Ingestování IoT Hub telemetrie do digitálních vláken Azure
 
@@ -22,7 +22,7 @@ Proces pro ingestování dat do digitálních vláken Azure je nastavení extern
 
 Tento postup popisuje, jak dokumentovat pomocí procesu vytváření funkce Azure, která může ingestovat telemetrii od IoT Hub.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Než budete pokračovat v tomto příkladu, budete muset nastavit následující prostředky jako požadavky:
 * **Centrum IoT**. Pokyny najdete v části *vytvoření IoT Hub* [tohoto IoT Hub rychlé](../iot-hub/quickstart-send-telemetry-cli.md)spuštění.
@@ -129,7 +129,7 @@ await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
 
 ### <a name="update-your-azure-function-code"></a>Aktualizace kódu funkce Azure
 
-Teď, když rozumíte kódu z předchozích ukázek, otevřete Azure Functions v části [*požadavky*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites) v aplikaci Visual Studio. (Pokud nemáte funkci Azure Functions, navštivte odkaz v části požadavky a vytvořte si ho hned teď).
+Teď, když rozumíte kódu z předchozích ukázek, otevřete Azure Functions v části [*požadavky*](#prerequisites) v aplikaci Visual Studio. (Pokud nemáte funkci Azure Functions, navštivte odkaz v části požadavky a vytvořte si ho hned teď).
 
 Nahraďte kód vaší funkce Azure pomocí tohoto ukázkového kódu.
 
@@ -193,7 +193,7 @@ namespace IotHubtoTwins
     }
 }
 ```
-Uložte kód funkce a publikujte aplikaci Function App do Azure. Můžete to udělat tak, že odkazujete na téma [*publikování Function App*](https://docs.microsoft.com/azure/digital-twins/how-to-create-azure-function#publish-the-function-app-to-azure) tématu [*Postupy: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md).
+Uložte kód funkce a publikujte aplikaci Function App do Azure. Můžete to udělat tak, že odkazujete na téma [*publikování Function App*](./how-to-create-azure-function.md#publish-the-function-app-to-azure) tématu [*Postupy: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md).
 
 Po úspěšném publikování se zobrazí výstup v okně příkazového řádku sady Visual Studio, jak je znázorněno níže:
 
@@ -214,7 +214,7 @@ Můžete také ověřit stav procesu publikování v [Azure Portal](https://port
 ## <a name="connect-your-function-to-iot-hub"></a>Připojte funkci k IoT Hub
 
 Nastavte cíl události pro data centra.
-V [Azure Portal](https://portal.azure.com/)přejděte na instanci IoT Hub, kterou jste vytvořili v části [*požadavky*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites) . V části **události**Vytvořte předplatné pro funkci Azure Functions.
+V [Azure Portal](https://portal.azure.com/)přejděte na instanci IoT Hub, kterou jste vytvořili v části [*požadavky*](#prerequisites) . V části **události**Vytvořte předplatné pro funkci Azure Functions.
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Diagram znázorňující vývojový diagram V grafu IoT Hub zařízení odesílá telemetrii teploty prostřednictvím IoT Hub do funkce Azure, která aktualizuje vlastnost teploty v případě, že se v digitálních událostech Azure pracuje s dvojitou teplotou.":::
 
@@ -242,7 +242,7 @@ Vyberte _vytvořit_ a vytvořte odběr událostí.
 
 ## <a name="send-simulated-iot-data"></a>Odeslat Simulovaná data IoT
 
-Pokud chcete otestovat novou funkci příchozího přenosu dat, použijte simulátor zařízení z [*kurzu: připojení kompletního řešení*](./tutorial-end-to-end.md). Tento kurz se řídí ukázkovým projektem napsaným v jazyce C#. Vzorový kód je umístěný tady: [ukázky digitálních vláken Azure](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). V tomto úložišti budete používat projekt **DeviceSimulator** .
+Pokud chcete otestovat novou funkci příchozího přenosu dat, použijte simulátor zařízení z [*kurzu: připojení kompletního řešení*](./tutorial-end-to-end.md). Tento kurz se řídí ukázkovým projektem napsaným v jazyce C#. Vzorový kód je umístěný tady: [ukázky digitálních vláken Azure](/samples/azure-samples/digital-twins-samples/digital-twins-samples). V tomto úložišti budete používat projekt **DeviceSimulator** .
 
 V tomto koncovém kurzu proveďte následující kroky:
 1. [*Zaregistrujte simulované zařízení s IoT Hub*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)

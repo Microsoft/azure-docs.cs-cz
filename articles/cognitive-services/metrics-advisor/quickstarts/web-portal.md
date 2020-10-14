@@ -3,19 +3,19 @@ title: 'Rychlý Start: webový portál Poradce pro metriky'
 titleSuffix: Azure Cognitive Services
 description: Naučte se, jak začít používat webový portál Advisor metriky.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
-ms.author: aahi
-ms.openlocfilehash: 65542ca88d055af2c537907d7ae801250943ed0b
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.author: mbullwin
+ms.openlocfilehash: 0afd8fab6072e1563d2b2f277e8a53b56a8161c2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930369"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048232"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Rychlý Start: monitorování první metriky pomocí webového portálu
 
@@ -27,7 +27,7 @@ Při zřizování instance služby Advisor metriky můžete použít rozhraní A
 * Prozkoumejte diagnostické poznatky
 * Vytvoření a přihlášení k odběru výstrah anomálií
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Jakmile budete mít předplatné Azure, <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" vytvořte prostředek Advisoru metriky "  target="_blank"> vytvořením prostředku Advisoru metriky <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal k nasazení instance služby Advisor pro metriky.  

@@ -3,19 +3,19 @@ title: Konfigurace instance poradce metriky pomocí webového portálu
 titleSuffix: Azure Cognitive Services
 description: Jak nakonfigurovat instanci poradce metrik a vyladit výsledky detekce anomálií.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.author: aahi
-ms.openlocfilehash: 93fdf2884ca6593cfdb4fb2878ba0dd21246266d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: 7923dad3d47122c0ceb04d1240736e2b66a0dd64
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446356"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048249"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>Postupy: Konfigurace metrik a doladění konfigurace zjišťování
 
@@ -136,7 +136,7 @@ Existuje několik dalších hodnot, které můžete nakonfigurovat:
 |**Dny k rozšíření**    |  Ovlivněné dny před a po svátek.        |
 
 
-Část **události cyklu** se dá v některých scénářích použít k omezení zbytečných upozornění pomocí cyklických vzorů v datech. Například: 
+Část **události cyklu** se dá v některých scénářích použít k omezení zbytečných upozornění pomocí cyklických vzorů v datech. Příklad: 
 
 - Metriky, které mají více vzorů nebo cyklů, jako je například týdenní i měsíční vzor. 
 - Metriky, které nemají jasný vzor, ale data jsou srovnatelné roky za rok (YoY), měsíc za měsíc (MoM), týden v týdnu (WoW) nebo den za den (DoD).

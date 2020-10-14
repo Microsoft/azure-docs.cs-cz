@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 224f86a40fa812003463301f97bcae07de907f3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0435fe3946118d59d786dd3e6cec350a5ab4eee4
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579984"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046447"
 ---
 # <a name="iot-plug-and-play-bridge"></a>Přemostění IoT Plug and Play
 
@@ -39,7 +39,7 @@ IoT technologie Plug and Play most podporuje ve výchozím nastavení následuj�
 >[!Important]
 >Vývojáři můžou pomocí pokynů v **[dokumentaci pro vývojáře iot technologie Plug and Play přemostění](https://aka.ms/iot-pnp-bridge-dev-doc)** v rámci dokumentace ke službě IoT technologie Plug and Play Přemostit podporu dalších protokolů zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 ### <a name="os-platform"></a>Platforma operačního systému
 
@@ -67,7 +67,7 @@ K sestavení, rozšiřování a vývoji technologie Plug and Play mostu IoT bude
 
 ### <a name="azure-iot-products-and-tools"></a>Produkty a nástroje Azure IoT
 
-- **Azure IoT Hub** – v předplatném Azure budete potřebovat službu [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) , ke které vaše zařízení připojíte. Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/). Pokud Centrum IoT nemáte, [vytvořte ho podle těchto pokynů](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-using-cli).
+- **Azure IoT Hub** – v předplatném Azure budete potřebovat službu [Azure IoT Hub](../iot-hub/index.yml) , ke které vaše zařízení připojíte. Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/). Pokud Centrum IoT nemáte, [vytvořte ho podle těchto pokynů](../iot-hub/iot-hub-create-using-cli.md).
 
 > [!Note]
 > Služba IoT technologie Plug and Play je aktuálně dostupná ve službě IoT Hub vytvořených v oblastech Střed USA, Severní Evropa a Východní Japonsko. Podpora IoT technologie Plug and Play není součástí centra IoT na úrovni Basic. Pokud chcete komunikovat se zařízením IoT technologie Plug and Play, můžete použít nástroj Azure IoT Explorer. [Stáhněte a nainstalujte si nejnovější verzi Azure IoT Exploreru](./howto-use-iot-explorer.md) pro váš operační systém.

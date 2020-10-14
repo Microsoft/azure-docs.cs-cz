@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e8e26f73aef155e4194ca7a4178827b6a7366fb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328629"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047416"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Nastavení instance a ověřování Azure pro digitální vlákna (skriptované)
 
@@ -20,7 +20,7 @@ ms.locfileid: "91328629"
 
 Tento článek popisuje postup **Nastavení nové instance digitálního vlákna Azure**, včetně vytvoření instance a nastavení ověřování. Po dokončení tohoto článku budete mít instanci digitálních vláken Azure, která je připravená na zahájení programování.
 
-Tato verze tohoto článku dokončí tento postup spuštěním [ukázky **skriptu automatizovaného nasazení** ](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/) , který zjednodušuje proces. 
+Tato verze tohoto článku dokončí tento postup spuštěním [ukázky **skriptu automatizovaného nasazení** ](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) , který zjednodušuje proces. 
 * Pokud chcete zobrazit kroky ručního rozhraní příkazového řádku, které skript spouští na pozadí, přečtěte si verzi rozhraní příkazového řádku tohoto článku: [*Postupy: nastavení instance a ověřování (CLI)*](how-to-set-up-instance-cli.md).
 * Postup ručního provedení kroků v závislosti na Azure Portal najdete v části verze tohoto článku na portálu: [*Postupy: nastavení instance a ověřování (portál)*](how-to-set-up-instance-portal.md).
 
@@ -28,7 +28,7 @@ Tato verze tohoto článku dokončí tento postup spuštěním [ukázky **skript
 
 ## <a name="prerequisites-download-the-script"></a>Požadavky: Stáhněte si skript
 
-Vzorový skript je napsán v prostředí PowerShell. Je součástí [**ukázek digitálních vláken Azure**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/), které si můžete stáhnout do svého počítače tak, že přejdete na tento ukázkový odkaz a vyberete tlačítko *Stáhnout ZIP* pod nadpisem.
+Vzorový skript je napsán v prostředí PowerShell. Je součástí [**ukázek digitálních vláken Azure**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), které si můžete stáhnout do svého počítače tak, že přejdete na tento ukázkový odkaz a vyberete tlačítko *Stáhnout ZIP* pod nadpisem.
 
 Tím se na váš počítač stáhne ukázkový projekt jako _**Azure_Digital_Twins_samples.zip**_. Přejděte do složky na svém počítači a rozbalte ji, abyste soubory rozbalíte.
 
@@ -157,7 +157,7 @@ Pokud jeden nebo oba tyto kroky ověřování neproběhlo úspěšně, zkuste re
 ## <a name="next-steps"></a>Další kroky
 
 Otestujte jednotlivá REST API volání na vaši instanci pomocí příkazů rozhraní příkazového řádku Azure Digital revlákens CLI: 
-* [AZ DT reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
+* [AZ DT reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md)
 
 Případně můžete informace o tom, jak připojit klientskou aplikaci k instanci, napsáním ověřovacího kódu klientské aplikace:

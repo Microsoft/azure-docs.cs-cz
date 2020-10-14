@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 38e3526627eb4191643f8bc86b9ce5f49e41a71f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c3d3a050c0b929a3f1042b42006c289ddeb9acb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564402"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048113"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrace digitálních vláken Azure s využitím služby Azure Signal
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak integrovat digitální vlákna Azure do [služ
 
 Řešení popsané v tomto článku vám umožní doručovat data digitální nespojité do připojených klientů, jako je jediná webová stránka nebo mobilní aplikace. V důsledku toho se klienti aktualizují pomocí metrik a stavu v reálném čase ze zařízení IoT, a to bez nutnosti dotazování serveru nebo odeslání nových požadavků HTTP na aktualizace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Tady jsou požadavky, které byste měli provést, než budete pokračovat:
 
@@ -39,9 +39,9 @@ Pomocí níže uvedené cesty budete připojovat službu Azure Signal k digitál
 ## <a name="download-the-sample-applications"></a>Stažení ukázkových aplikací
 
 Nejdřív stáhněte požadované ukázkové aplikace. Budete potřebovat obě z těchto možností:
-* [**Ukázky digitálních vláken Azure**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/): Tato ukázka obsahuje *AdtSampleApp* , ve kterém jsou podrženy dvě služby Azure Functions pro přesun dat kolem instance digitálních vláken Azure (Další informace o tomto scénáři najdete podrobněji v [*kurzu: připojení uceleného řešení*](tutorial-end-to-end.md)). Obsahuje také ukázkovou aplikaci *DeviceSimulator* , která simuluje zařízení IoT a generuje novou hodnotu teploty každou sekundu. 
+* [**Ukázky digitálních vláken Azure**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): Tato ukázka obsahuje *AdtSampleApp* , ve kterém jsou podrženy dvě služby Azure Functions pro přesun dat kolem instance digitálních vláken Azure (Další informace o tomto scénáři najdete podrobněji v [*kurzu: připojení uceleného řešení*](tutorial-end-to-end.md)). Obsahuje také ukázkovou aplikaci *DeviceSimulator* , která simuluje zařízení IoT a generuje novou hodnotu teploty každou sekundu. 
     - Přejděte na vzorový odkaz a stisknutím tlačítka *Stáhnout ZIP* Stáhněte kopii ukázky do vašeho počítače, jak _**Azure_Digital_Twins_samples.zip**_. Rozbalte složku.
-* [**Ukázka webové aplikace pro integraci signálů**](https://docs.microsoft.com/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): Jedná se o ukázkovou webovou aplikaci, která bude využívat data telemetrie Azure s digitálními podsítěmi ze služby signalizace Azure.
+* [**Ukázka webové aplikace pro integraci signálů**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): Jedná se o ukázkovou webovou aplikaci, která bude využívat data telemetrie Azure s digitálními podsítěmi ze služby signalizace Azure.
     -  Přejděte na vzorový odkaz a stisknutím tlačítka *Stáhnout ZIP* Stáhněte kopii ukázky do vašeho počítače, jak _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_. Rozbalte složku.
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
@@ -145,7 +145,7 @@ V dalším kroku publikujte funkci do Azure pomocí postupu popsaného v části
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře. Znázorňuje tok dat ze zařízení do IoT Hub, prostřednictvím funkce Azure (šipka B) k instanci digitálních vláken Azure (oddíl A), pak prostřednictvím Event Grid na jinou funkci Azure pro zpracování (šipka C). V části D se zobrazuje tok dat ze stejného Event Grid na šipku C až po funkci Azure s označením &quot;Broadcast&quot;. všesměrové vysílání komunikuje s jinou funkcí Azure s názvem Negotiate a komunikují všesměrově a Negotiate spolu s počítači.":::
 
-1. Nakonec pomocí následujícího příkazu rozhraní příkazového řádku Azure přidejte do nastavení aplikace funkce **připojovací řetězec** služby Azure Signal. Příkaz můžete spustit v [Azure Cloud Shell](https://shell.azure.com)nebo lokálně, pokud máte [v počítači nainstalované](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)rozhraní příkazového řádku Azure:
+1. Nakonec pomocí následujícího příkazu rozhraní příkazového řádku Azure přidejte do nastavení aplikace funkce **připojovací řetězec** služby Azure Signal. Příkaz můžete spustit v [Azure Cloud Shell](https://shell.azure.com)nebo lokálně, pokud máte [v počítači nainstalované](/cli/azure/install-azure-cli?view=azure-cli-latest)rozhraní příkazového řádku Azure:
  
     ```azurecli
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
@@ -232,7 +232,7 @@ Tím se otevře okno prohlížeče, ve kterém je spuštěná ukázková aplikac
 
 Pokud už prostředky vytvořené v tomto článku nepotřebujete, odstraňte je pomocí těchto kroků. 
 
-Pomocí Azure Cloud Shell nebo místních rozhraní příkazového řádku Azure můžete odstranit všechny prostředky Azure ve skupině prostředků pomocí příkazu [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) . Odebrání skupiny prostředků se také odebere...
+Pomocí Azure Cloud Shell nebo místních rozhraní příkazového řádku Azure můžete odstranit všechny prostředky Azure ve skupině prostředků pomocí příkazu [AZ Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) . Odebrání skupiny prostředků se také odebere...
 * instance digitálních vláken Azure (z kompletního kurzu)
 * služby IoT Hub a registrace zařízení centra (z kompletního kurzu)
 * téma Event gridu a související odběry
@@ -259,7 +259,7 @@ Nakonec odstraňte ukázkové složky projektu, které jste stáhli do místníh
 V tomto článku jste nastavili službu Azure Functions s nástrojem Signal, aby vysílaly události telemetrie digitálních vláken Azure do ukázkové klientské aplikace.
 
 Další informace o službě Azure Signaler:
-* [*Co je služba signalizace Azure?*](../azure-signalr/signalr-overview.md)
+* [*Co je služba Azure SignalR Service?*](../azure-signalr/signalr-overview.md)
 
 Nebo si přečtěte další informace o ověřování pomocí služby signalizace Azure pomocí Azure Functions:
 * [*Ověřování služby signalizace Azure*](../azure-signalr/signalr-tutorial-authenticate-azure-functions.md)

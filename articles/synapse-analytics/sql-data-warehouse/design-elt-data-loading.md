@@ -11,12 +11,12 @@ ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 1b73b82b4367d50cc5fbe9881a67e0afa041db86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af3eb828e1fd2c4aa14467e5afc18f1b5a0b7fa1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201154"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047705"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Strategie načítání dat do fondu Synapse SQL
 
@@ -28,10 +28,6 @@ I když fond SQL podporuje mnoho metod načítání, včetně oblíbených SQL S
 
 Pomocí základu a příkazu Kopírovat můžete přistupovat k externím datům uloženým ve službě Azure Blob Storage nebo Azure Data Lake Store prostřednictvím jazyka T-SQL. Pro největší flexibilitu při nasazování doporučujeme použít příkaz COPY.
 
-> [!NOTE]  
-> Příkaz COPY je aktuálně ve verzi Public Preview. Pokud chcete poskytnout zpětnou vazbu, odešlete e-mail na následující distribuční seznam: sqldwcopypreview@service.microsoft.com .
-
-> [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
 ## <a name="what-is-elt"></a>Co je ELT?
 

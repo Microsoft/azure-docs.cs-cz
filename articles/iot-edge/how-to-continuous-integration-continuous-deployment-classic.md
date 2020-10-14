@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c4a9d7fbfbda568c07a528e5a7eafd70b85add45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1866f3360b90a96b5e3f215eb7669a1451262bd8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447802"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046005"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Průběžná integrace a průběžné nasazování na zařízení Azure IoT Edge (klasický Editor)
 
@@ -21,7 +21,7 @@ Pomocí integrovaných Azure IoT Edge úloh v Azure Pipelines můžete snadno p�
 
 ![Diagram – větve CI a CD pro vývoj a produkci](./media/how-to-continuous-integration-continuous-deployment-classic/model.png)
 
-V tomto článku se naučíte, jak používat integrované [úlohy Azure IoT Edge](https://docs.microsoft.com/azure/devops/pipelines/tasks/build/azure-iot-edge) pro Azure Pipelines k vytváření kanálů sestavení a vydání pro vaše řešení IoT Edge. Každý Azure IoT Edge úkol přidaný do vašeho kanálu implementuje jednu z následujících čtyř akcí:
+V tomto článku se naučíte, jak používat integrované [úlohy Azure IoT Edge](/azure/devops/pipelines/tasks/build/azure-iot-edge) pro Azure Pipelines k vytváření kanálů sestavení a vydání pro vaše řešení IoT Edge. Každý Azure IoT Edge úkol přidaný do vašeho kanálu implementuje jednu z následujících čtyř akcí:
 
  | Akce | Popis |
  | --- | --- |
@@ -32,22 +32,22 @@ V tomto článku se naučíte, jak používat integrované [úlohy Azure IoT Edg
 
 Pokud není uvedeno jinak, postupy v tomto článku nezkoumá všechny funkce dostupné prostřednictvím parametrů úlohy. Další informace najdete v následujících článcích:
 
-* [Verze úlohy](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-versions)
+* [Verze úlohy](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
 * **Pokročilá** – Pokud je k dispozici, zadejte moduly, které nechcete sestavit.
-* [Možnosti ovládacích prvků](https://docs.microsoft.com/azure/devops/pipelines/process/tasks?view=azure-devops&tabs=classic#task-control-options)
-* [Proměnné prostředí](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#environment-variables)
-* [Výstupní proměnné](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#use-output-variables-from-tasks)
+* [Možnosti ovládacích prvků](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
+* [Proměnné prostředí](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
+* [Výstupní proměnné](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
-* Úložiště Azure Repos. Pokud ho ještě nemáte, můžete [v projektu vytvořit nové úložiště Git](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav). V tomto článku jsme vytvořili úložiště s názvem **IoTEdgeRepo**.
-* Řešení IoT Edge potvrzené a vložené do úložiště. Chcete-li vytvořit nové ukázkové řešení pro testování tohoto článku, postupujte podle kroků v tématu [vývoj a ladění modulů v Visual Studio Code](how-to-vs-code-develop-module.md) nebo [vývoj a ladění modulů C# v aplikaci Visual Studio](how-to-visual-studio-develop-csharp-module.md). V tomto článku jsme vytvořili řešení v našem úložišti s názvem **IoTEdgeSolution**, které obsahuje kód pro modul s názvem **filtermodule**.
+* Úložiště Azure Repos. Pokud ho ještě nemáte, můžete [v projektu vytvořit nové úložiště Git](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts). V tomto článku jsme vytvořili úložiště s názvem **IoTEdgeRepo**.
+* Řešení IoT Edge potvrzené a vložené do úložiště. Chcete-li vytvořit nové ukázkové řešení pro testování tohoto článku, postupujte podle kroků v tématu [vývoj a ladění modulů v Visual Studio Code](how-to-vs-code-develop-module.md) nebo [vývoj a ladění modulů C# v aplikaci Visual Studio](./how-to-visual-studio-develop-module.md). V tomto článku jsme vytvořili řešení v našem úložišti s názvem **IoTEdgeSolution**, které obsahuje kód pro modul s názvem **filtermodule**.
 
    Pro tento článek stačí, když je složka řešení vytvořená IoT Edge šablonami v Visual Studio Code nebo v aplikaci Visual Studio. Než budete pokračovat, nemusíte tento kód sestavovat, předávat, nasazovat ani ladit. Tyto procesy nastavíte v Azure Pipelines.
 
    Pokud vytváříte nové řešení, naklonujte své úložiště jako první. Pak při vytváření řešení si můžete zvolit, že se má vytvořit přímo ve složce úložiště. Z nich můžete snadno potvrzovat a nabízet nové soubory.
 
-* Registr kontejnerů, kde můžete vkládat image modulu. Můžete použít [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) nebo v registru třetí strany.
+* Registr kontejnerů, kde můžete vkládat image modulu. Můžete použít [Azure Container Registry](../container-registry/index.yml) nebo v registru třetí strany.
 * Aktivní Azure [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) s aspoň dvěma IoT Edgemi zařízeními pro testování samostatných fází testování a produkčního nasazení. Pomocí článků rychlý Start můžete vytvořit zařízení IoT Edge v systému [Linux](quickstart-linux.md) nebo [Windows](quickstart.md) .
 
 ## <a name="create-a-build-pipeline-for-continuous-integration"></a>Vytvoření kanálu sestavení pro kontinuální integraci
@@ -84,7 +84,7 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujete, aby se kan
 
    * Pokud chcete sestavit moduly v kontejnerech AMD64 pro Linux, vyberte **Ubuntu-16,04** .
 
-   * Pokud chcete sestavit moduly v kontejnerech AMD64 pro Windows 1809, musíte [nastavit agenta v místním prostředí ve Windows](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
+   * Pokud chcete sestavit moduly v kontejnerech AMD64 pro Windows 1809, musíte [nastavit agenta v místním prostředí ve Windows](/azure/devops/pipelines/agents/v2-windows?view=vsts).
 
    * Pokud chcete sestavit moduly v kontejnerech platforem arm32v7 nebo arm64 pro Linux, musíte [nastavit agenta v místním](https://devblogs.microsoft.com/iotdev/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent)prostředí pro Linux.
 
@@ -136,14 +136,14 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujete, aby se kan
     | Zobrazované jméno | Použijte výchozí název nebo si ho přizpůsobte. |
     | Zdrojová složka | Složka se soubory, které mají být zkopírovány. |
     | Obsah | Přidejte dva řádky: `deployment.template.json` a `**/module.json` . Tyto dva soubory slouží jako vstupy pro generování manifestu nasazení IoT Edge. |
-    | Cílová složka | Zadejte proměnnou `$(Build.ArtifactStagingDirectory)` . Informace o popisu najdete v tématu věnovaném [proměnným sestavení](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) . |
+    | Cílová složka | Zadejte proměnnou `$(Build.ArtifactStagingDirectory)` . Informace o popisu najdete v tématu věnovaném [proměnným sestavení](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) . |
 
 10. Vyberte úlohu **publikování artefaktů sestavení** a upravte ji. Zadejte cestu pracovního adresáře artefaktu k úloze, aby bylo možné cestu publikovat do kanálu uvolnění.
 
     | Parametr | Popis |
     | --- | --- |
     | Zobrazované jméno | Použijte výchozí název nebo přizpůsobení. |
-    | Cesta pro publikování | Zadejte proměnnou `$(Build.ArtifactStagingDirectory)` . Další informace najdete v tématu věnovaném [proměnným sestavení](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) . |
+    | Cesta pro publikování | Zadejte proměnnou `$(Build.ArtifactStagingDirectory)` . Další informace najdete v tématu věnovaném [proměnným sestavení](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) . |
     | Název artefaktu | Použijte výchozí název: **drop** |
     | Umístění publikování artefaktu | Použijte výchozí umístění: **Azure Pipelines** |
 
@@ -160,7 +160,7 @@ Tento kanál je teď nakonfigurovaný tak, aby se spouštěl automaticky při vl
 >[!NOTE]
 >Pokud chcete ve svém kanálu používat **vrstvená nasazení** , vrstvená nasazení ještě nejsou podporovaná v Azure IoT Edge úlohách v Azure DevOps.
 >
->V Azure DevOps ale můžete použít [úlohu Azure CLI](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) k vytvoření nasazení jako vrstveného nasazení. Pro hodnotu **vloženého skriptu** můžete použít [příkaz AZ IoT Edge Deployment Create](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment):
+>V Azure DevOps ale můžete použít [úlohu Azure CLI](/azure/devops/pipelines/tasks/deploy/azure-cli) k vytvoření nasazení jako vrstveného nasazení. Pro hodnotu **vloženého skriptu** můžete použít [příkaz AZ IoT Edge Deployment Create](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment):
 >
 >   ```azurecli-interactive
 >   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true

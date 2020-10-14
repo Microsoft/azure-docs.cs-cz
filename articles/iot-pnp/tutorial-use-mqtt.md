@@ -7,12 +7,12 @@ ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2e05165a78a54d6aaa49c28a649a97235891f927
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0ac0f000b6a096ae3de1f4f00a17b64f1948c1e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577913"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046277"
 ---
 # <a name="use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>Použití MQTT ke zřízení klienta zařízení IoT technologie Plug and Play
 
@@ -20,13 +20,13 @@ Pokud je to možné, měli byste použít jednu ze sad SDK pro zařízení Azure
 
 Ukázka v tomto kurzu používá [Mosquitto](http://mosquitto.org/) Library MQTT a Visual Studio. Kroky v tomto kurzu předpokládají, že používáte Windows na vašem vývojovém počítači.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 Pro dokončení tohoto kurzu ve Windows nainstalujte do svého místního prostředí Windows následující software:
 
-* [Visual Studio (komunita, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/) – nezapomeňte při [instalaci](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) sady Visual Studio zahrnout **vývoj desktopových aplikací pomocí C++** .
+* [Visual Studio (komunita, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/) – nezapomeňte při [instalaci](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) sady Visual Studio zahrnout **vývoj desktopových aplikací pomocí C++** .
 * [Git](https://git-scm.com/download/)
 * [CMake](https://cmake.org/download/)
 
