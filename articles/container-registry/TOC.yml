@@ -207,6 +207,8 @@
               href: container-registry-tasks-authentication-key-vault.md
         - name: Rychlé spuštění úlohy s využitím šablony Resource Manageru
           href: container-registry-task-run-template.md
+        - name: Spouštění úloh ve vyhrazeném fondu agentů (Preview)
+          href: tasks-agent-pools.md
         - name: Sestavení image s využitím Buildpacks (Preview)
           href: container-registry-tasks-pack-build.md
         - name: Zobrazení protokolů úkolů

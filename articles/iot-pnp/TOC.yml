@@ -95,8 +95,6 @@
       href: howto-use-iot-explorer.md
     - name: Instalace a použití přemostění IoT Plug and Play
       href: howto-use-iot-pnp-bridge.md
-    - name: Instalace a použití rozšíření rozhraní příkazového řádku Azure IoT
-      href: howto-use-iot-pnp-cli.md
     - name: Instalace a použití nástrojů pro vytváření DTDL
       href: howto-use-dtdl-authoring-tools.md
     - name: Použití vloženého kódu C
