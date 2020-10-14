@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.custom: references_regions
 author: bwren
 ms.author: bwren
-ms.date: 10/13/2020
-ms.openlocfilehash: 59febbac1a83e45c8b2bf9c233c3772f561eb111
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.date: 10/14/2020
+ms.openlocfilehash: 6b94b6d66046c29de99339887d5c5c87d6c5bb5f
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92049840"
+ms.locfileid: "92055932"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Export dat pracovního prostoru Log Analytics v Azure Monitor (Preview)
 Export dat v pracovním prostoru Log Analytics v Azure Monitor umožňuje průběžně exportovat data z vybraných tabulek v pracovním prostoru Log Analytics do účtu služby Azure Storage nebo Event Hubs Azure jako shromážděná. Tento článek poskytuje podrobné informace o této funkci a postupu konfigurace exportu dat ve vašich pracovních prostorech.
@@ -79,7 +79,7 @@ Data se odesílají do centra událostí téměř v reálném čase, protože do
 Objem exportovaných dat se v průběhu času často zvětšuje a škálování centra událostí je potřeba zvýšit, aby se zpracovávala větší přenosové rychlosti, a vyhnout se tak scénářům omezování a latenci dat. K automatickému horizontálnímu navýšení kapacity a navýšení počtu jednotek propustnosti a splnění potřeb použití byste měli použít funkci automatického rozšíření Event Hubs. Podrobnosti najdete v tématu [Automatické horizontální navýšení kapacity Event Hubs jednotky propustnosti Azure](../../event-hubs/event-hubs-auto-inflate.md) .
 
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 Níže jsou uvedené požadavky, které je nutné před konfigurací Log Analytics exportu dat dokončit.
 
 - Účet úložiště a centrum událostí se už musí vytvořit a musí být ve stejné oblasti jako pracovní prostor Log Analytics. Pokud potřebujete replikovat data do jiných účtů úložiště, můžete použít kteroukoli z [možností redundance Azure Storage](../../storage/common/storage-redundancy.md).  
@@ -254,6 +254,10 @@ Podporované tabulky jsou aktuálně omezené na ty, které jsou uvedené níže
 | AADDomainServicesLogonLogoff | |
 | AADDomainServicesPolicyChange | |
 | AADDomainServicesPrivilegeUse | |
+| AADManagedIdentitySignInLogs | |
+| AADNonInteractiveUserSignInLogs | |
+| AADProvisioningLogs | |
+| AADServicePrincipalSignInLogs | |
 | ADAssessmentRecommendation | |
 | ADFActivityRun | |
 | ADFPipelineRun | |
@@ -268,7 +272,8 @@ Podporované tabulky jsou aktuálně omezené na ty, které jsou uvedené níže
 | ADXQuery | |
 | AegDeliveryFailureLogs | |
 | AegPublishFailureLogs | |
-| Výstrahy | Některá data této tabulky se ingestují prostřednictvím účtu úložiště. Tato část v současnosti chybí v exportu. |
+| Výstrahy |Částečná podpora. Některá data této tabulky se ingestují prostřednictvím účtu úložiště. Tato data se momentálně neexportují. |
+| Anomálie | |
 | ApiManagementGatewayLogs | |
 | AppCenterError | |
 | AppPlatformSystemLogs | |
@@ -277,6 +282,7 @@ Podporované tabulky jsou aktuálně omezené na ty, které jsou uvedené níže
 | AppServiceConsoleLogs | |
 | AppServiceFileAuditLogs | |
 | AppServiceHTTPLogs | |
+| AppServiceIPSecAuditLogs | |
 | AppServicePlatformLogs | |
 | AuditLogs | |
 | AutoscaleEvaluationsLog | |
@@ -291,7 +297,7 @@ Podporované tabulky jsou aktuálně omezené na ty, které jsou uvedené níže
 | CommonSecurityLog | |
 | CommonSecurityLog | |
 | ComputerGroup | |
-| ConfigurationData | Některá data se ingestují prostřednictvím interních služeb, které se pro export nepodporují. Tato část v současnosti chybí v exportu. |
+| ConfigurationData | Částečná podpora. Některá data se ingestují prostřednictvím interních služeb, které se pro export nepodporují. Tato data se momentálně neexportují. |
 | ContainerImageInventory | |
 | ContainerInventory | |
 | ContainerLog | |
@@ -312,15 +318,43 @@ Podporované tabulky jsou aktuálně omezené na ty, které jsou uvedené níže
 | DnsEvents | |
 | DnsInventory | |
 | Dynamics365Activity | |
-| Událost | Některá data této tabulky se ingestují prostřednictvím účtu úložiště. Tato část v současnosti chybí v exportu. |
+| Událost | Částečná podpora. Některá data této tabulky se ingestují prostřednictvím účtu úložiště. Tato data se momentálně neexportují. |
 | ExchangeAssessmentRecommendation | |
 | ExchangeAssessmentRecommendation | |
 | FailedIngestion | |
 | FunctionAppLogs | |
-| Tep | Podporováno | |
+| HDInsightAmbariClusterAlerts | |
+| HDInsightAmbariSystemMetrics | |
+| HDInsightGatewayAuditLogs | |
+| HDInsightHadoopAndYarnLogs | |
+| HDInsightHadoopAndYarnMetrics | |
+| HDInsightHBaseLogs | |
+| HDInsightHBaseMetrics | |
+| HDInsightHiveAndLLAPLogsSample | |
+| HDInsightKafkaLogs | |
+| HDInsightKafkaMetrics | |
+| HDInsightOozieLogs | |
+| HDInsightSecurityLogs | |
+| HDInsightSparkApplicationEvents | |
+| HDInsightSparkBlockManagerEvents | |
+| HDInsightSparkEnvironmentEvents | |
+| HDInsightSparkEventsLog | |
+| HDInsightSparkExecutorEvents | |
+| HDInsightSparkExtraEvents | |
+| HDInsightSparkJobEvents | |
+| HDInsightSparkLogs | |
+| HDInsightSparkSQLExecutionEvents | |
+| HDInsightSparkStageEvents | |
+| HDInsightSparkStageTaskAccumulables | |
+| HDInsightSparkTaskEvents | |
+| HDInsightStormLogs | |
+| HDInsightStormMetrics | |
+| HDInsightStormTopologyMetrics | |
+| Tep | |
 | HuntingBookmark | |
-| InsightsMetrics | Některá data se ingestují prostřednictvím interních služeb, které se pro export nepodporují. Tato část v současnosti chybí v exportu. |
+| InsightsMetrics | Částečná podpora. Některá data se ingestují prostřednictvím interních služeb, které se pro export nepodporují. Tato část v současnosti chybí v exportu. |
 | IntuneAuditLogs | |
+| IntuneDeviceComplianceOrg | |
 | IntuneOperationalLogs | |
 | KubeEvents | |
 | KubeHealth | |
@@ -329,24 +363,30 @@ Podporované tabulky jsou aktuálně omezené na ty, které jsou uvedené níže
 | KubePodInventory | |
 | KubeServices | |
 | KubeServices | |
+| LAQueryLogs | |
 | McasShadowItReporting | |
 | MicrosoftAzureBastionAuditLogs | |
 | MicrosoftDataShareReceivedSnapshotLog | |
 | MicrosoftDataShareSentSnapshotLog | |
 | MicrosoftDataShareShareLog | |
 | MicrosoftHealthcareApisAuditLogs | |
+| NWConnectionMonitorDestinationListenerResult | |
+| NWConnectionMonitorDNSResult | |
+| NWConnectionMonitorPathResult | |
 | NWConnectionMonitorPathResult | |
 | NWConnectionMonitorTestResult | |
-| OfficeActivity | Některá data pro ingestování prostřednictvím webhooků z O365 do LA. Tato část v současnosti chybí v exportu. |
-| Operace | Některá data se ingestují prostřednictvím interních služeb, které se pro export nepodporují. Tato část v současnosti chybí v exportu. |
-| Výkon | Podporováno | |
-| SCCMAssessmentRecommendation | | 
+| NWConnectionMonitorTestResult | |
+| OfficeActivity | Částečná podpora. Některá data pro ingestování prostřednictvím webhooků z Office 365 do Log Analytics. Tato data se momentálně neexportují. |
+| Operace | Částečná podpora. Některá data se ingestují prostřednictvím interních služeb, které se pro export nepodporují. Tato data se momentálně neexportují. |
+| Výkon | Částečná podpora. V tuto chvíli jsou podporovaná jenom data o výkonu systému Windows. Data o výkonu systému Linux nejsou v současnosti exportována. |
+| ProtectionStatus | |
+| SCCMAssessmentRecommendation | |
 | SCOMAssessmentRecommendation | |
 | SecurityAlert | |
 | SecurityBaseline | |
 | SecurityBaselineSummary | |
 | SecurityDetection | |
-| SecurityEvent | Podporováno | |
+| SecurityEvent | |
 | SecurityIncident | |
 | SecurityIoTRawEvent | |
 | SecurityNestedRecommendation | |
@@ -359,24 +399,29 @@ Podporované tabulky jsou aktuálně omezené na ty, které jsou uvedené níže
 | SPAssessmentRecommendation | |
 | SQLAssessmentRecommendation | |
 | SucceededIngestion | |
-| Syslog |Částečné | Některá data této tabulky se ingestují prostřednictvím účtu úložiště. Tato část v současnosti chybí v exportu. |
+| SynapseGatewayEvents | |
+| SynapseRBACEvents | |
+| Syslog | Částečná podpora. Některá data této tabulky se ingestují prostřednictvím účtu úložiště. Tato data se momentálně neexportují. |
 | ThreatIntelligenceIndicator | |
-| Aktualizace |Částečné | Některá data se ingestují prostřednictvím interních služeb, které se pro export nepodporují. Tato část v současnosti chybí v exportu. |
+| Aktualizace | Částečná podpora. Některá data se ingestují prostřednictvím interních služeb, které se pro export nepodporují. Tato data se momentálně neexportují. |
 | UpdateRunProgress | |
 | UpdateSummary | |
 | Využití | |
 | UserAccessAnalytics | |
 | UserPeerAnalytics | |
+| Seznamu ke zhlédnutí | |
 | WindowsEvent | |
 | WindowsFirewall | |
-| WireData |Částečné | Některá data se ingestují prostřednictvím interních služeb, které se pro export nepodporují. Tato část v současnosti chybí v exportu. |
+| WireData | Částečná podpora. Některá data se ingestují prostřednictvím interních služeb, které se pro export nepodporují. Tato data se momentálně neexportují. |
 | WorkloadMonitoringPerf | |
 | WorkloadMonitoringPerf | |
+| WVDAgentHealthStatus | |
 | WVDCheckpoints | |
 | WVDConnections | |
 | WVDErrors | |
 | WVDFeeds | |
 | WVDManagement | |
+
 
 ## <a name="next-steps"></a>Další kroky
 

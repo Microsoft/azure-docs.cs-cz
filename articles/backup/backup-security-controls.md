@@ -3,12 +3,12 @@ title: Ovládací prvky zabezpečení
 description: Seznamte se s ovládacími prvky zabezpečení použitými ve službě Azure Backup. Tyto ovládací prvky umožňují službě zabránit, zjišťovat a reagovat na ohrožení zabezpečení.
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 7ff3ff5c1b024a228778b0214e67239d3c8ab721
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bd35bdf83d336aebd37cdda0a0b59164ac9f7a
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89418751"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055881"
 ---
 # <a name="security-controls-for-azure-backup"></a>Ovládací prvky zabezpečení pro Azure Backup
 
@@ -30,7 +30,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Bac
 
 | Řízení zabezpečení | Ano/Ne | Poznámky| Dokumentace
 |---|---|--|--|
-| Podpora monitorování Azure (například Log Analytics, App Insights)| Yes | Log Analytics se podporují prostřednictvím protokolů zdrojů. Další informace najdete v tématu [monitorování Azure Backup chráněných úloh pomocí Log Analytics](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/). |  |
+| Podpora monitorování Azure (například Log Analytics, App Insights)| Yes | Log Analytics se podporují prostřednictvím protokolů zdrojů. Další informace najdete v tématu [monitorování Azure Backup chráněných úloh pomocí Log Analytics](backup-azure-diagnostics-mode-data-model.md). |  |
 | Protokolování a audit roviny řízení a správy| Yes | Všechny akce aktivované zákazníkem z Azure Portal jsou protokolovány do protokolů aktivit. |  |
 | Protokolování a audit roviny dat| No | Azure Backup rovině dat nelze přímo získat.  |  |
 
@@ -38,7 +38,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Bac
 
 | Řízení zabezpečení | Ano/Ne | Poznámky| Dokumentace
 |---|---|--|--|
-| Authentication| Yes | Ověřování probíhá prostřednictvím Azure Active Directory. |  |
+| Ověřování| Yes | Ověřování probíhá prostřednictvím Azure Active Directory. |  |
 | Autorizace| Yes | Používají se vytvořené zákazníky a předdefinované role Azure. Další informace najdete v tématu [použití Role-Based Access Control ke správě Azure Backup bodů obnovení](./backup-rbac-rs-vault.md). |  |
 
 ## <a name="data-protection"></a>Ochrana dat

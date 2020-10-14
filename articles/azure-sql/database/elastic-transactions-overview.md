@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 65cd35dd60ed05da51b6da56882af4522b1b7573
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 369f79a436d76e6a1bf1a1ce64f7754f25a5abc5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043407"
+ms.locfileid: "92058042"
 ---
 # <a name="distributed-transactions-across-cloud-databases-preview"></a>Distribuované transakce v cloudových databázích (Preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -145,14 +145,14 @@ Následující vzorový kód Transact-SQL používá ke spuštění distribuovan
     -- Configure the Linked Server
     -- Add one Azure SQL Managed Instance as Linked Server
     EXEC sp_addlinkedserver
-        @server='managedinstance02', -- Linked server name
+        @server='RemoteServer', -- Linked server name
         @srvproduct='',
         @provider='sqlncli', -- SQL Server Native Client
-        @datasrc='sql-managed-instance-02.48ea8fd5ac90.database.windows.net' -- Managed Instance endpoint
+        @datasrc='managed-instance-server.46e7afd5bc81.database.windows.net' -- Managed Instance endpoint
 
     -- Add credentials and options to this Linked Server
     EXEC sp_addlinkedsrvlogin
-        @rmtsrvname = 'managedinstance02', -- Linked server name
+        @rmtsrvname = 'RemoteServer', -- Linked server name
         @useself = 'false',
         @rmtuser = '<login_name>',         -- login
         @rmtpassword = '<secure_password>' -- password
@@ -244,7 +244,7 @@ Pomocí následujících rutin PowerShellu můžete spravovat vztahy komunikace 
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>Transakce napříč několika servery pro spravovanou instanci Azure SQL
 
-Distribuované transakce jsou podporované napříč různými servery ve spravované instanci Azure SQL. Při transakcích, které překračují hranice spravované instance, je nutné, aby se zúčastněné instance nacházely do vzájemného vztahu zabezpečení a komunikace. K tomu je potřeba nastavit [skupinu důvěryhodných serverů](https://aka.ms/mitrusted-groups), kterou je možné provést Azure Portal.
+Distribuované transakce jsou podporované napříč různými servery ve spravované instanci Azure SQL. Při transakcích, které překračují hranice spravované instance, je nutné, aby se zúčastněné instance nacházely do vzájemného vztahu zabezpečení a komunikace. K tomu je potřeba vytvořit [skupinu důvěryhodných serverů](https://aka.ms/mitrusted-groups), kterou je možné provést Azure Portal. Pokud spravované instance nejsou ve stejné virtuální síti, je potřeba nastavit [partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) a příchozí a odchozí pravidla skupiny zabezpečení sítě musí povolit porty 5024 a 11000-12000 ve všech zúčastněných virtuálních sítích.
 
   ![Skupiny důvěryhodných serverů na webu Azure Portal][3]
 

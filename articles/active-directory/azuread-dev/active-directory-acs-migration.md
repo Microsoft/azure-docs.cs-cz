@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f40c91672310d5963dab01180ea92633e970c5c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706247"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055358"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: migrace z Azure Access Control Service
 
@@ -148,7 +148,7 @@ Každá cloudová služba Microsoftu, která přijímá tokeny vydané Access Co
 
 Zákazníci SharePoint 2013, 2016 a SharePointu Online používali službu ACS pro účely ověřování v cloudu, místních i hybridních scénářích. Některé funkce SharePointu a případy použití budou ovlivněny vyřazením služby ACS, i když jiné nebudou. Níže uvedená tabulka shrnuje pokyny k migraci pro některé z nejoblíbenějších funkcí SharePointu, které využívají ACS:
 
-| Příznak | Pokyny |
+| Funkce | Pokyny |
 | ------- | -------- |
 | Ověřují se uživatelé z Azure AD | Dřív služba Azure AD nepodporovala tokeny SAML 1,1 vyžadované službou SharePoint pro ověřování a služba ACS byla použita jako prostředník, který provedl SharePoint kompatibilní s formáty tokenů Azure AD. Teď můžete [SharePoint připojit přímo ke službě Azure AD pomocí aplikace Azure AD Galerie služby SharePoint v místní aplikaci](../saas-apps/sharepoint-on-premises-tutorial.md). |
 | [Ověřování aplikací & ověřování serveru ve službě SharePoint místně](/SharePoint/security-for-sharepoint-server/authentication-overview) | Neovlivněné vyřazením služby ACS; nejsou nutné žádné změny. | 
@@ -214,7 +214,7 @@ Následující tabulka porovnává funkce Access Control, které jsou relevantn�
 
 Pokud se rozhodnete, že Azure AD je nejlepší migrační cestou k vašim aplikacím a službám, měli byste si být vědomi dvou způsobů integrace aplikace s Azure AD.
 
-Pokud chcete pro integraci se službou Azure AD použít WS-Federation nebo WIF, doporučujeme postupovat podle postupu popsaného v tématu [Konfigurace federovaného jednotného přihlašování pro aplikaci mimo galerii](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md). Tento článek se týká konfigurace Azure AD pro jednotné přihlašování založené na SAML, ale funguje taky pro konfiguraci WS-Federation. Následující přístup vyžaduje licenci Azure AD Premium. Tento přístup má dvě výhody:
+Pokud chcete pro integraci se službou Azure AD použít WS-Federation nebo WIF, doporučujeme postupovat podle postupu popsaného v tématu [Konfigurace federovaného jednotného přihlašování pro aplikaci mimo galerii](../manage-apps/configure-saml-single-sign-on.md). Tento článek se týká konfigurace Azure AD pro jednotné přihlašování založené na SAML, ale funguje taky pro konfiguraci WS-Federation. Následující přístup vyžaduje licenci Azure AD Premium. Tento přístup má dvě výhody:
 
 - Získáte plnou flexibilitu přizpůsobení tokenů Azure AD. Deklarace identity, které vydává služba Azure AD, můžete přizpůsobit tak, aby odpovídaly deklaracím, které vydávají Access Control. To zahrnuje zejména ID uživatele nebo deklaraci identity identifikátoru názvu. Pokud chcete pro uživatele po změně technologií nadále dostávat konzistentní identifikátory uživatelů, zajistěte, aby ID uživatelů vydaná službou Azure AD odpovídala vydaným Access Control.
 - Můžete nakonfigurovat podpisový certifikát tokenu, který je specifický pro vaši aplikaci, a s dobou životnosti, kterou ovládáte.
@@ -226,7 +226,7 @@ Alternativním řešením je postupovat v [této ukázce kódu](https://github.c
 
 Pokud si vyberete tento přístup, budete muset pochopit, jak se má [Služba Azure AD vyměnit při podepisování klíčů](../develop/active-directory-signing-key-rollover.md). Tento přístup používá k vydávání tokenů globální podepisovací klíč Azure AD. WIF ve výchozím nastavení automaticky neaktualizuje podpisové klíče. Když Azure AD otočí své globální podpisové klíče, musí být vaše implementace WIF připravená, aby tyto změny přijímala. Další informace najdete v tématu [důležité informace o výměně klíčů v Azure AD](/previous-versions/azure/dn641920(v=azure.100)).
 
-Pokud můžete integrovat se službou Azure AD prostřednictvím protokolů OpenID Connect nebo OAuth, doporučujeme to udělat. Máme rozsáhlou dokumentaci a pokyny, jak integrovat Azure AD do vaší webové aplikace, která je dostupná v naší [příručce pro vývojáře Azure AD](https://aka.ms/aaddev).
+Pokud můžete integrovat se službou Azure AD prostřednictvím protokolů OpenID Connect nebo OAuth, doporučujeme to udělat. Máme rozsáhlou dokumentaci a pokyny, jak integrovat Azure AD do vaší webové aplikace, která je dostupná v naší [příručce pro vývojáře Azure AD](../develop/index.yml).
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>Migrace na Azure Active Directory B2C
 
@@ -332,7 +332,7 @@ Službu Azure AD můžete použít také k ověřování typu Server-Server pomo
 
 Pokyny k implementaci scénářů serveru na server najdete v následujících zdrojích informací:
 
-- Část Service-to-Service příručky pro [vývojáře Azure AD](https://aka.ms/aaddev)
+- Část Service-to-Service příručky pro [vývojáře Azure AD](../develop/index.yml)
 - [Ukázka kódu démona pomocí jednoduchých přihlašovacích údajů klienta hesla](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
 - [Ukázka kódu démona pomocí přihlašovacích údajů klienta Certificate](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 

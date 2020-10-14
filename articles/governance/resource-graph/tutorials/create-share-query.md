@@ -1,14 +1,14 @@
 ---
 title: 'Kurz: Správa dotazů v Azure Portal'
 description: V tomto kurzu vytvoříte dotaz na diagram prostředku a nasdílíte nový dotaz s ostatními uživateli v Azure Portal.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: tutorial
-ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98d4c7d0493686a45bdfef9d85823432cb637a66
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88005186"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057922"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Kurz: vytvoření a sdílení dotazu na graf Azure Resource v Azure Portal
 
@@ -60,8 +60,7 @@ Soukromé dotazy jsou přístupné a viditelné pouze pro účet, který je vytv
 
 ## <a name="create-a-shared-query"></a>Vytvořit sdílený dotaz
 
-Na rozdíl od privátního dotazu je sdílený dotaz Správce prostředkůým prostředkem. Tato skutečnost znamená, že dotaz se uloží do skupiny prostředků, dá se spravovat a řídit pomocí Azure RBAC a může být i chráněný pomocí zámků prostředků. Jako prostředek může zobrazit a používat kdokoli, kdo má příslušná oprávnění.
-Chcete-li vytvořit nový sdílený dotaz, postupujte podle následujících kroků:
+Na rozdíl od privátního dotazu je sdílený dotaz Správce prostředkůým prostředkem. Tato skutečnost znamená, že dotaz se uloží do skupiny prostředků, dá se spravovat a řídit pomocí Azure RBAC a může být i chráněný pomocí zámků prostředků. Jako prostředek může zobrazit a používat kdokoli, kdo má příslušná oprávnění. Chcete-li vytvořit nový sdílený dotaz, postupujte podle následujících kroků:
 
 1. V nabídce portálu vyberte **všechny služby**, nebo pomocí pole Azure Search v horní části všech stránek vyhledejte a vyberte **Průzkumník diagramů prostředků**.
 
@@ -107,7 +106,7 @@ Chcete-li vytvořit nový sdílený dotaz, postupujte podle následujících kro
 
 Vzhledem k tomu, že sdílený dotaz je prostředek Správce prostředků, existuje několik způsobů, jak ho najít:
 
-- V Průzkumníku grafu prostředků vyberte **Otevřít dotaz** a nastavte typ na **Shared Query**.
+- Z Průzkumníka grafu prostředků. Vyberte **Otevřít dotaz** a nastavte typ na **Shared Query**.
 - Na stránce portálu dotazy grafu prostředků.
 - Ze skupiny prostředků, do které byl uložen sdílený dotaz.
 - Pomocí dotazu do grafu prostředků.

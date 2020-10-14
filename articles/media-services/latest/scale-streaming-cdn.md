@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: e1ea0a43783fb7abdc17655e3a3431d125d426f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bdf6015ca5633c77280111a55055a7394cee5bd
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291275"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057650"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Streamování obsahu pomocí integrace CDN
 
@@ -40,7 +40,7 @@ Celkově je bezpečné odhadnout maximální počet souběžných streamů tím,
 
 Toto téma popisuje povolení [integrace CDN](#enable-azure-cdn-integration). Vysvětluje také předběžné načítání (aktivní ukládání do mezipaměti) a koncept od počátku do služby [CDN-Assist](#origin-assist-cdn-prefetch) .
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 - [Koncový bod streamování](streaming-endpoint-concept.md) `hostname` a adresa URL streamování zůstávají stejné, bez ohledu na to, jestli povolíte CDN.
 - Pokud potřebujete mít možnost testovat obsah s CDN nebo bez něj, vytvořte další koncový bod streamování, který není CDN povolený.
@@ -54,7 +54,7 @@ Toto téma popisuje povolení [integrace CDN](#enable-azure-cdn-integration). Vy
 
 Po zřízení koncového bodu streamování s povoleným CDN je u Media Services definovaná čekací doba, než se provede aktualizace DNS pro mapování koncového bodu streamování na koncový bod CDN.
 
-Pokud budete chtít síť CDN později zakázat nebo povolit, musí být koncový bod streamování ve stavu **Zastaveno** . Po spuštění koncového bodu streamování může trvat až dvě hodiny, než se aktivuje Integrace Azure CDN a změny, které budou aktivní ve všech bodech POP CDN. Koncový bod streamování a datový proud ale můžete spustit bez přerušení z koncového bodu streamování. Po dokončení integrace se datový proud doručí ze sítě CDN. Během období zřizování bude koncový bod streamování ve **výchozím** stavu a může se stát, že dojde ke snížení výkonu.
+Pokud budete chtít síť CDN později zakázat nebo povolit, musí být koncový bod streamování ve stavu **Zastaveno** . Po spuštění koncového bodu streamování může trvat až čtyři hodiny, než se aktivuje Integrace Azure CDN a změny, které se mají aktivní napříč všemi body POP CDN. Koncový bod streamování a datový proud ale můžete spustit bez přerušení z koncového bodu streamování. Po dokončení integrace se datový proud doručí ze sítě CDN. Během období zřizování bude koncový bod streamování ve **výchozím** stavu a může se stát, že dojde ke snížení výkonu.
 
 Když se vytvoří koncový bod streamování Standard, je ve výchozím nastavení nakonfigurovaný se standardem Verizon. Pomocí rozhraní REST API můžete nakonfigurovat poskytovatele Premium Verizon nebo Standard Akamai.
 
@@ -155,7 +155,7 @@ Pokud se chcete podívat na část výměny hlaviček v akci, můžete vyzkouše
 
 * Funguje tato funkce s obsahem UHD/HEVC?
 
-    Ano.
+    Yes.
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 

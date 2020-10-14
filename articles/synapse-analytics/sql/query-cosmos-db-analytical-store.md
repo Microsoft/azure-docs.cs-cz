@@ -9,19 +9,19 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6f4dd0836ba04d0e07ada8aced964317498b1f22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c326aed172bb8159185829f80d66e8e00496aad2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757591"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057803"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB pomocí SQL bez serveru v propojení Azure synapse (Preview)
 
 Synapse SQL bez serveru (dříve SQL na vyžádání) umožňuje analyzovat data v kontejnerech Azure Cosmos DB, která jsou povolená pomocí [Azure synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) v téměř reálném čase, aniž by to ovlivnilo výkon transakčních úloh. Nabízí známou syntaxi T-SQL pro dotazování dat z [analytického úložiště](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a integrovaného připojení k široké škále nástrojů pro dotazování BI a ad-hoc, a to prostřednictvím rozhraní T-SQL.
 
 > [!NOTE]
-> Podpora pro dotazování Azure Cosmos DB analytického úložiště bez SQL serveru je v současné době ve verzi ověřované verze Preview. 
+> Podpora pro dotazování Azure Cosmos DB analytického úložiště bez SQL serveru je v současné době ve verzi ověřované verze Preview. Ve verzi Public Preview se zobrazí stránka [aktualizace služby Azure](https://azure.microsoft.com/updates/?status=nowavailable&category=databases) .
 
 Pro dotazování Azure Cosmos DB je dostupná plocha kompletního [výběru](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) plochy prostřednictvím funkce [OpenRowset](develop-openrowset.md) , včetně většiny [funkcí a operátorů SQL](overview-features.md). Můžete také uložit výsledky dotazu, který čte data z Azure Cosmos DB společně s daty v Azure Blob Storage nebo Azure Data Lake Storage pomocí příkazu [vytvořit externí tabulku jako SELECT](develop-tables-cetas.md#cetas-in-sql-on-demand). V tuto chvíli nemůžete ukládat výsledky dotazů bez SQL serveru, abyste je Azure Cosmos DB pomocí [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand).
 
@@ -36,10 +36,15 @@ OPENROWSET(
        'CosmosDB',
        '<Azure Cosmos DB connection string>',
        <Container name>
-    )  [ < with clause > ]
+    )  [ < with clause > ] AS alias
 ```
 
-Připojovací řetězec Azure Cosmos DB určuje Azure Cosmos DB název účtu, název databáze, hlavní klíč databázového účtu a nepovinný název oblasti, který má `OPENROWSET` fungovat. Připojovací řetězec má následující formát:
+Připojovací řetězec Azure Cosmos DB určuje Azure Cosmos DB název účtu, název databáze, hlavní klíč databázového účtu a nepovinný název oblasti, který má `OPENROWSET` fungovat. 
+
+> [!IMPORTANT]
+> Ujistěte se, že používáte alias po `OPENROWSET` . Existuje [známý problém](#known-issues) , který způsobí, že problém s připojením synapse koncový bod SQL bez serveru, pokud nezadáte alias po `OPENROWSET` funkci.
+
+Připojovací řetězec má následující formát:
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
@@ -252,6 +257,13 @@ Azure Cosmos DB účty rozhraní API SQL (Core) API podporují typy vlastností 
 | Vnořený objekt nebo pole | varchar (max) (kolace databáze UTF8), serializovaná jako text JSON |
 
 Pro dotazování Azure Cosmos DBch účtů typu rozhraní API služby Mongo DB můžete získat další informace o úplném vyjádření schématu přesnosti v analytickém úložišti a o rozšířených názvech vlastností, které se [tady](../../cosmos-db/analytical-store-introduction.md#analytical-schema)mají použít.
+
+## <a name="known-issues"></a>Známé problémy
+
+- Po funkci **musí** být zadán alias `OPENROWSET` (například `OPENROWSET (...) AS function_alias` ). Vynechání aliasu může způsobit potíže s připojením a koncový bod SQL synapse bez serveru možná nebude dočasně k dispozici. Tento problém bude vyřešen v listopadu 2020.
+- Synapse SQL bez serveru aktuálně nepodporuje [Azure Cosmos DB úplným schématem přesnosti](../../cosmos-db/analytical-store-introduction.md#schema-representation). Synapse SQL bez serveru používejte jenom pro přístup k Cosmos DB dobře definovanému schématu.
+
+Návrhy a problémy můžete nahlásit na [stránce s názory na Azure synapse](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862).
 
 ## <a name="next-steps"></a>Další kroky
 

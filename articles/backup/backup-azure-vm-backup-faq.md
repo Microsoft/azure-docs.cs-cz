@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné dotazy týkající s
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 8813794d44803a32bc6e156d3ca76360d84604c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51c54aa732259180a5393488891b21956553f581
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370823"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056714"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
 
@@ -21,7 +21,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se zálohován�
 
 Když vytváříte virtuální počítač, můžete povolit zálohování pro virtuální počítače s [podporovanými operačními systémy](backup-support-matrix-iaas.md#supported-backup-actions).
 
-### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>Proč dokončení prvotního zálohování trvá hodně času?
+### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>Proč dokončení počátečního zálohování trvá dlouho?
 
 Prvotní zálohování je vždy úplné zálohování a bude záviset na velikosti dat a při zpracování zálohy. <br>
 Pokud chcete zlepšit výkon zálohování, Projděte si [osvědčené postupy pro zálohování](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices). [Předpoklady zálohování](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) a [výkon zálohování](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
@@ -65,11 +65,11 @@ Průvodce zobrazí jenom virtuální počítače ve stejné oblasti jako trezor,
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>Virtuální počítač je vypnutý. Bude aplikace na vyžádání nebo plánované zálohování fungovat?
 
-Ano. Zálohování se spustí při vypnutí počítače. Bod obnovení je označen jako konzistentní se selháním.
+Yes. Zálohování se spustí při vypnutí počítače. Bod obnovení je označen jako konzistentní se selháním.
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Můžu zrušit probíhající úlohu zálohování?
 
-Ano. Úlohu zálohování můžete zrušit ve stavu **pořizování snímků** . Pokud probíhá přenos dat z snímku, nemůžete úlohu zrušit.
+Yes. Úlohu zálohování můžete zrušit ve stavu **pořizování snímků** . Pokud probíhá přenos dat z snímku, nemůžete úlohu zrušit.
 
 ### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Aktivoval (a) jsem zámek pro skupinu prostředků vytvořenou službou Azure Backup (například `AzureBackupRG_<geo>_<number>` ). Budou moje zálohy stále fungovat?
 
@@ -79,7 +79,7 @@ Odeberte zámek a vymažte kolekci bodů obnovení z dané skupiny prostředků,
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Podporuje Azure Backup standardní disky se správou SSD?
 
-Ano, Azure Backup podporuje [Standard SSD spravované disky](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/).
+Ano, Azure Backup podporuje [Standard SSD spravované disky](https://docs.microsoft.com/azure/virtual-machines/disks-types#standard-ssd).
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Můžeme zálohovat virtuální počítač s diskem s povoleným Akcelerátor zápisu (WA)?
 
@@ -141,7 +141,7 @@ V případě obnovení spravovaného virtuálního počítače i v případě, �
 
 ### <a name="can-i-restore-a-vm-thats-been-deleted"></a>Můžu obnovit odstraněný virtuální počítač?
 
-Ano. I když virtuální počítač odstraníte, můžete přejít na odpovídající zálohovanou položku v trezoru a obnovit z bodu obnovení.
+Yes. I když virtuální počítač odstraníte, můžete přejít na odpovídající zálohovanou položku v trezoru a obnovit z bodu obnovení.
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>Návody obnovit virtuální počítač do stejných skupin dostupnosti?
 
@@ -161,7 +161,7 @@ Operace, jako je tajný klíč nebo klíčová implementace, nevyžadují tento 
 
 Ano, budete mít přístup k virtuálnímu počítači po obnovení, protože došlo k přerušení vztahu virtuálních počítačů s řadičem domény. Další informace najdete v tomto [článku](./backup-azure-arm-restore-vms.md#post-restore-steps) .
 
-### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>Proč dokončení operace obnovení trvá dlouhou dobu?
+### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>Proč dokončení operace obnovení trvá dlouho?
 
 Celková doba obnovení závisí na vstupně-výstupních operacích za sekundu (IOPS) a propustnosti účtu úložiště. Celková doba obnovení může být ovlivněna v případě, že je cílový účet úložiště načten s jinými operacemi čtení a zápisu aplikace. Pokud chcete zlepšit operaci obnovení, vyberte účet úložiště, který není načtený s ostatními aplikačními daty.
 

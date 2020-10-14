@@ -1,14 +1,14 @@
 ---
 title: Odstraňování běžných chyb
 description: Naučte se řešit problémy při vytváření, přiřazování a odebírání podrobných plánů, jako jsou porušení zásad a funkce parametrů podrobného plánu.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e8362e2a22317d73e0fd392bd497cd9f2c5ffe4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1689141f95aaac9183391af79edb0cabf5343b6
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651324"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058280"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Řešení chyb pomocí Azure modrotisky
 
@@ -59,7 +59,7 @@ Předání parametru podrobného plánu, který používá funkci, jako `[resour
 
 #### <a name="resolution"></a>Řešení
 
-Chcete-li funkci předat jako parametr, zařídí celý řetězec `[` tak, aby parametr podrobného plánu vypadal `[[resourceGroup().tags.myTag]` . Řídicí znak způsobí, že při zpracování podrobného plánu bude v sestavách zpracována hodnota jako řetězec. Modrotisky pak umístí funkci na artefakt, což umožňuje, aby byl dynamický, jak bylo očekáváno. Další informace najdete v tématu [syntaxe a výrazy v šablonách Azure Resource Manager](../../../azure-resource-manager/templates/template-expressions.md).
+Chcete-li funkci předat jako parametr, zařídí celý řetězec `[` tak, aby parametr podrobného plánu vypadal `[[resourceGroup().tags.myTag]` . Řídicí znak způsobí, že při zpracování podrobného plánu bude v sestavách zpracována hodnota jako řetězec. Služba modrotisky potom umístí funkci na artefakt, což umožňuje, aby byl dynamický podle očekávání. Další informace najdete v tématu [syntaxe a výrazy v šablonách Azure Resource Manager](../../../azure-resource-manager/templates/template-expressions.md).
 
 ## <a name="delete-errors"></a>Odstranit chyby
 
@@ -75,7 +75,7 @@ Přiřazení podrobného plánu se může při odstranění zablokovat v netermi
 
 #### <a name="resolution"></a>Řešení
 
-Přiřazení podrobného plánu v neterminálovém stavu se po uplynutí _6 hodin_ automaticky označí jako **neúspěšná** . Jakmile časový limit upraví stav přiřazení podrobného plánu, můžete odstranění zkusit znovu.
+Přiřazení podrobného plánu v neterminálu jsou automaticky označena jako **neúspěšná** po _šesti hodinách_ . Jakmile časový limit upraví stav přiřazení podrobného plánu, můžete odstranění zkusit znovu.
 
 ## <a name="next-steps"></a>Další kroky
 

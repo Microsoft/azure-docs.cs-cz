@@ -1,14 +1,14 @@
 ---
 title: Ukázka podrobného plánu srovnávacího testu zabezpečení Azure
 description: Přehled ukázky podrobného plánu srovnávacího testu zabezpečení Azure. Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly.
-ms.date: 06/02/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 4113f350c21087dbda5f69d9c3981e2d169ffc00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b147ffd4efbf814b6119f5d7e90dc7af2ea2687
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651896"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057582"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Ukázka Azure Security test details
 
@@ -46,7 +46,7 @@ Nejprve implementujte ukázku podrobného plánu tak, že z ukázky vytvoříte 
 
 1. Vyberte kartu _Artefakty_ v horní části stránky nebo **Další: Artefakty** dole na stránce.
 
-1. Projděte si seznam artefaktů, které tvoří ukázku podrobného plánu. Mnoho artefaktů má parametry, které budeme definovat později. Až skončíte s kontrolou ukázky podrobného plánu, vyberte **Uložit koncept**.
+1. Zkontrolujte seznam artefaktů, které jsou zahrnuty v ukázce podrobného plánu. Mnoho artefaktů má parametry, které budeme definovat později. Až skončíte s kontrolou ukázky podrobného plánu, vyberte **Uložit koncept**.
 
 ### <a name="publish-the-sample-copy"></a>Publikování kopie ukázky
 

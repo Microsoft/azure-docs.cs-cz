@@ -1,6 +1,6 @@
 ---
 title: Konfigurace transakční replikace mezi spravovanou instancí Azure SQL a SQL Server
-description: Kurz, ve kterém se konfiguruje replikace mezi spravovanou instancí vydavatele, distributorem spravované instance a předplatitelem SQL Server na virtuálním počítači Azure spolu s potřebnými síťovými součástmi, jako jsou privátní zóny DNS a partnerské vztahy VPN.
+description: Kurz, ve kterém se konfiguruje replikace mezi spravovanou instancí vydavatele, distributorem spravované instance a předplatitelem SQL Server na virtuálním počítači Azure, a to spolu s potřebnými síťovými součástmi, jako je například privátní zóna DNS a partnerský vztah virtuální sítě.
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 11/21/2019
-ms.openlocfilehash: 9d6592ccfb3ba5236a660d689d8b5d2cd1600c48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff29e93149c618bb7d6df6b4477cc79fcf4b53d2
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283186"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058552"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Kurz: Konfigurace transakční replikace mezi spravovanou instancí Azure SQL a SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ Tento kurz je určený pro zkušené publikum a předpokládá, že uživatel je
 
 
 > [!NOTE]
-> Tento článek popisuje použití [transakční replikace](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) ve spravované instanci Azure SQL. Nesouvisí se [skupinami převzetí služeb při selhání](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), což je funkce spravované instance Azure SQL, která umožňuje vytvářet kompletní čitelné repliky jednotlivých instancí. Při konfiguraci [replikace transakcí se skupinami převzetí služeb při selhání](replication-transactional-overview.md#with-failover-groups)jsou k dispozici další předpoklady.
+> Tento článek popisuje použití [transakční replikace](/sql/relational-databases/replication/transactional/transactional-replication) ve spravované instanci Azure SQL. Nesouvisí se [skupinami převzetí služeb při selhání](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), což je funkce spravované instance Azure SQL, která umožňuje vytvářet kompletní čitelné repliky jednotlivých instancí. Při konfiguraci [replikace transakcí se skupinami převzetí služeb při selhání](replication-transactional-overview.md#with-failover-groups)jsou k dispozici další předpoklady.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -48,10 +48,10 @@ K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 - Možnosti nasazení dvou spravovaných instancí v rámci stejné virtuální sítě.
 - Předplatitel SQL Server, buď místně, nebo na virtuálním počítači Azure. V tomto kurzu se používá virtuální počítač Azure.  
 - [SQL Server Management Studio (SSMS) 18,0 nebo vyšší](/sql/ssms/download-sql-server-management-studio-ssms).
-- Nejnovější verze [Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0).
+- Nejnovější verze [Azure PowerShell](/powershell/azure/install-az-ps).
 - Porty 445 a 1433 umožňují provoz SQL v bráně firewall Azure i bráně Windows Firewall.
 
-## <a name="1---create-the-resource-group"></a>1. Vytvoření skupiny prostředků
+## <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
 Pomocí následujícího fragmentu kódu PowerShellu vytvořte novou skupinu prostředků:
 
@@ -64,7 +64,7 @@ $Location = "East US 2"
 New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 ```
 
-## <a name="2---create-two-managed-instances"></a>2. vytvoření dvou spravovaných instancí
+## <a name="create-two-managed-instances"></a>Vytvořit dvě spravované instance
 
 Pomocí [Azure Portal](https://portal.azure.com)vytvořte v rámci této nové skupiny prostředků dvě spravované instance.
 
@@ -76,9 +76,9 @@ Pomocí [Azure Portal](https://portal.azure.com)vytvořte v rámci této nové s
 Další informace o vytváření spravované instance najdete v tématu [Vytvoření spravované instance na portálu](instance-create-quickstart.md).
 
   > [!NOTE]
-  > V zájmu jednoduchosti a vzhledem k tomu, že se jedná o nejběžnější konfiguraci, tento kurz navrhuje umístění spravované instance distributora ve stejné virtuální síti jako vydavatel. Distributor je však možné vytvořit v samostatné virtuální síti. Provedete to tak, že budete muset nakonfigurovat partnerský vztah VPN mezi virtuálními sítěmi vydavatele a distributora a potom nakonfigurovat partnerský vztah VPN mezi virtuálními sítěmi distributora a odběratele.
+  > V zájmu jednoduchosti a vzhledem k tomu, že se jedná o nejběžnější konfiguraci, tento kurz navrhuje umístění spravované instance distributora ve stejné virtuální síti jako vydavatel. Distributor je však možné vytvořit v samostatné virtuální síti. Provedete to tak, že budete muset nakonfigurovat partnerský vztah virtuálních sítí mezi virtuálními sítěmi vydavatele a distributora a potom nakonfigurovat partnerský vztah virtuálních sítí mezi virtuálními sítěmi distributora a odběratele.
 
-## <a name="3---create-a-sql-server-vm"></a>3. Vytvoření virtuálního počítače s SQL Server
+## <a name="create-a-sql-server-vm"></a>Vytvoření virtuálního počítače s SQL Server
 
 Vytvořte virtuální počítač s SQL Server pomocí [Azure Portal](https://portal.azure.com). Virtuální počítač s SQL Server by měl mít následující vlastnosti:
 
@@ -89,9 +89,9 @@ Vytvořte virtuální počítač s SQL Server pomocí [Azure Portal](https://por
 
 Další informace o nasazení SQL Server virtuálního počítače do Azure najdete v tématu [rychlý Start: Vytvoření virtuálního počítače s SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md).
 
-## <a name="4---configure-vpn-peering"></a>4. konfigurace partnerského vztahu VPN
+## <a name="configure-vnet-peering"></a>Konfigurace partnerského vztahu virtuální sítě
 
-Nakonfigurujte partnerský vztah VPN tak, aby umožňoval komunikaci mezi virtuální sítí dvou spravovaných instancí a virtuální sítí SQL Server. Provedete to tak, že použijete tento fragment kódu PowerShellu:
+Nakonfigurujte partnerský vztah virtuálních sítí tak, aby umožňoval komunikaci mezi virtuální sítí dvou spravovaných instancí a virtuální sítí SQL Server. Provedete to tak, že použijete tento fragment kódu PowerShellu:
 
 ```powershell-interactive
 # Set variables
@@ -110,13 +110,13 @@ $virtualNetwork1 = Get-AzVirtualNetwork `
   -ResourceGroupName $resourceGroup `
   -Name $subvNet  
 
-# Configure VPN peering from publisher to subscriber
+# Configure VNet peering from publisher to subscriber
 Add-AzVirtualNetworkPeering `
   -Name $pubsubName `
   -VirtualNetwork $virtualNetwork1 `
   -RemoteVirtualNetworkId $virtualNetwork2.Id
 
-# Configure VPN peering from subscriber to publisher
+# Configure VNet peering from subscriber to publisher
 Add-AzVirtualNetworkPeering `
   -Name $subpubName `
   -VirtualNetwork $virtualNetwork2 `
@@ -136,11 +136,11 @@ Get-AzVirtualNetworkPeering `
 
 ```
 
-Po navázání partnerského vztahu VPN se otestuje připojení spuštěním SQL Server Management Studio (SSMS) na SQL Server a připojením ke spravovaným instancím. Další informace o připojení ke spravované instanci pomocí SSMS najdete v tématu [použití SSMS pro připojení ke spravované instanci SQL](point-to-site-p2s-configure.md#connect-with-ssms).
+Po navázání partnerského vztahu virtuálních sítí otestujte připojení spuštěním SQL Server Management Studio (SSMS) na SQL Server a připojením ke spravovaným instancím. Další informace o připojení ke spravované instanci pomocí SSMS najdete v tématu [použití SSMS pro připojení ke spravované instanci SQL](point-to-site-p2s-configure.md#connect-with-ssms).
 
 ![Test připojení ke spravovaným instancím](./media/replication-two-instances-and-sql-server-configure-tutorial/test-connectivity-to-mi.png)
 
-## <a name="5---create-a-private-dns-zone"></a>5. Vytvoření privátní zóny DNS
+## <a name="create-a-private-dns-zone"></a>Vytvoření privátní zóny DNS
 
 Privátní zóna DNS umožňuje směrování DNS mezi spravovanými instancemi a SQL Server.
 
@@ -180,7 +180,7 @@ Privátní zóna DNS umožňuje směrování DNS mezi spravovanými instancemi a
 1. Vyberte **OK** a propojte svoji virtuální síť.
 1. Opakováním těchto kroků přidejte odkaz pro virtuální síť předplatitele s názvem, jako je například `Sub-link` .
 
-## <a name="6---create-an-azure-storage-account"></a>6. vytvoření účtu úložiště Azure
+## <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
 
 [Vytvořte účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) pro pracovní adresář a pak vytvořte [sdílenou složku](../../storage/files/storage-how-to-create-file-share.md) v rámci účtu úložiště.
 
@@ -194,7 +194,7 @@ Příklad: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dY
 
 Další informace najdete v tématu [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md).
 
-## <a name="7---create-a-database"></a>7. vytvoření databáze
+## <a name="create-a-database"></a>Vytvoření databáze
 
 Vytvoří novou databázi na spravované instanci vydavatele. To můžete provést pomocí těchto kroků:
 
@@ -242,7 +242,7 @@ SELECT * FROM ReplTest
 GO
 ```
 
-## <a name="8---configure-distribution"></a>8. konfigurace distribuce
+## <a name="configure-distribution"></a>Konfigurovat distribuci
 
 Jakmile se naváže připojení a máte ukázkovou databázi, můžete nakonfigurovat distribuci na `sql-mi-distributor` spravované instanci. To můžete provést pomocí těchto kroků:
 
@@ -277,7 +277,7 @@ Jakmile se naváže připojení a máte ukázkovou databázi, můžete nakonfigu
    EXEC sys.sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
    ```
 
-## <a name="9---create-the-publication"></a>9. vytvoření publikace
+## <a name="create-the-publication"></a>Vytvoření publikace
 
 Po nakonfigurování distribuce teď můžete vytvořit publikaci. To můžete provést pomocí těchto kroků:
 
@@ -298,7 +298,7 @@ Po nakonfigurování distribuce teď můžete vytvořit publikaci. To můžete p
 1. Na stránce **dokončení průvodce zadejte** název publikace `ReplTest` a vyberte **Další** pro vytvoření publikace.
 1. Po vytvoření publikace aktualizujte **replikační** uzel v **Průzkumník objektů** a rozbalte **místní publikace** . tím se zobrazí nová publikace.
 
-## <a name="10---create-the-subscription"></a>10. vytvoření odběru
+## <a name="create-the-subscription"></a>Vytvoření předplatného
 
 Po vytvoření publikace můžete vytvořit předplatné. To můžete provést pomocí těchto kroků:
 
@@ -331,7 +331,7 @@ exec sp_addpushsubscription_agent
 GO
 ```
 
-## <a name="11---test-replication"></a>11. testování replikace
+## <a name="test-replication"></a>Test replikace
 
 Po dokončení konfigurace replikace ji můžete otestovat vložením nových položek na vydavatele a sledováním změn, které se šíří do odběratele.
 
@@ -393,7 +393,7 @@ Možná řešení:
 - Potvrďte, že se název DNS použil při vytváření odběratele.
 - Ověřte, že jsou vaše virtuální sítě správně propojené v privátní zóně DNS.
 - Ověřte, zda je záznam A správně nakonfigurován.
-- Ověřte, že je nakonfigurován partnerský vztah VPN správně.
+- Ověřte, že je správně nakonfigurovaný partnerský vztah virtuálních sítí.
 
 ### <a name="no-publications-to-which-you-can-subscribe"></a>Žádné publikace, ke kterým se můžete přihlásit k odběru
 
@@ -413,7 +413,7 @@ I když je možné, že tato chybová zpráva je přesná a na vydavateli, ke kt
 - [Funkce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
 - [Detekce hrozeb](threat-detection-configure.md)
 - [Dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking)
-- [Zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security)
+- [Zabezpečení na úrovni řádku](/sql/relational-databases/security/row-level-security)
 - [Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="sql-managed-instance-capabilities"></a>Možnosti spravované instance SQL

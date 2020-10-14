@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: vytvoření sdíleného dotazu pomocí Azure CLI'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení rozšíření grafu prostředků pro Azure CLI a vytvoření sdíleného dotazu.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: c888cee5899c45747db1775ffdfbc0d0c78e00c7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: daaa0dc4039c37094330148f839fadf7b4013276
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667516"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057174"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Rychlý Start: vytvoření sdíleného dotazu v diagramu prostředků pomocí Azure CLI
 
@@ -16,7 +16,7 @@ Prvním krokem při použití Azure Resource graphu pomocí [Azure CLI](/cli/azu
 
 Na konci tohoto procesu se přidá rozšíření k instalaci Azure CLI a vytvoří se sdílený dotaz pro diagram prostředků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -84,7 +84,7 @@ S rozšířením Azure CLI přidaným do vašeho prostředí podle vašeho výb�
    ```
 
 1. Spusťte v Azure CLI sdílený dotaz pomocí `{{shared-query-uri}}` syntaxe v příkazu [AZ Graph Query](/cli/azure/ext/resource-graph/graph#ext-resource-graph-az-graph-query) .
-   Nejdřív zkopírujte `id` pole z výsledku `show` příkazu výše. Nahraďte `shared-query-uri` text v příkladu hodnotou z `id` pole, ale ponechte okolní `{{` `}}` znaky a.
+   Nejdřív zkopírujte `id` pole z výsledku předchozího `show` příkazu. Nahraďte `shared-query-uri` text v příkladu hodnotou z `id` pole, ale ponechte okolní `{{` `}}` znaky a.
 
    ```azurecli-interactive
    # Run a Azure Resource Graph shared query

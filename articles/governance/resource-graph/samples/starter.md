@@ -1,14 +1,14 @@
 ---
 title: Ukázky dotazů pro začátečníky
 description: Pomocí Azure Resource graphu můžete spouštět některé úvodní dotazy, včetně počítání prostředků, řazení prostředků nebo konkrétní značky.
-ms.date: 07/14/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 778e8bb7715f1eda1587ff79c4c9a99b69ab4e70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 013e865f543f966d88132d2dc6aca6102d52d20c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89425258"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057106"
 ---
 # <a name="starter-resource-graph-query-samples"></a>Ukázky dotazů na graf počátečních prostředků
 
@@ -33,7 +33,7 @@ Projdeme následující úvodní dotazy:
 - [Získání souhrnu úspory nákladů z Azure Advisor](#advisor-savings)
 - [Počet počítačů v oboru zásad konfigurace hostů](#count-gcmachines)
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
 
 ## <a name="language-support"></a>Podpora jazyků
 

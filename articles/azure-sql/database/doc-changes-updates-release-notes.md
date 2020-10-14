@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 4328d1da8c82bc09aa8353838d08c31ea77f58aa
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: ebbdd103350e1de36d45ecf84acf15d477fa34db
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043387"
+ms.locfileid: "92058127"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -98,6 +98,8 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující
 
 |Problém  |Datum zjištění  |Status  |Datum vyřešení  |
 |---------|---------|---------|---------|
+|[Distribuované transakce se dají provést po odebrání spravované instance ze skupiny důvěryhodných serverů.](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|SEP 2020|Má alternativní řešení||
+|[Po operaci škálování spravované instance se nedají provést distribuované transakce.](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|SEP 2020|Má alternativní řešení||
 |[Bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) v Azure SQL a `BACKUP` / `RESTORE` příkazu ve spravované instanci se nemůžou pomocí Azure AD spravovat identitu pro ověřování ve službě Azure Storage.|SEP 2020|Má alternativní řešení||
 |[Instanční objekt nemá přístup k Azure AD a integrace](#service-principal-cannot-access-azure-ad-and-akv)|Srpna 2020|Má alternativní řešení||
 |[Obnovení ručního zálohování bez KONTROLNÍho SOUČTu může selhat](#restoring-manual-backup-without-checksum-might-fail)|Květen 2020|Vyřešeno|Červen 2020|
@@ -126,6 +128,14 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující
 |Obnovení databáze v čase z Pro důležité obchodní informace úrovně do Pro obecné účely úrovně nebude úspěšné, pokud zdrojová databáze obsahuje objekty OLTP v paměti.||Vyřešeno|Říjen 2019|
 |Funkce databázového e-mailu s externími poštovními servery (mimo Azure) pomocí zabezpečeného připojení||Vyřešeno|Říjen 2019|
 |Obsažené databáze nejsou ve spravované instanci SQL podporovány.||Vyřešeno|Srpna 2019|
+
+### <a name="distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group"></a>Distribuované transakce se dají provést po odebrání spravované instance ze skupiny důvěryhodných serverů.
+
+[Skupiny důvěryhodnosti serverů](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) slouží k navázání vztahu důvěryhodnosti mezi spravovanými instancemi, které jsou předpokladem pro provádění [distribuovaných transakcí](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview). Po odebrání spravované instance ze skupiny důvěryhodných serverů nebo odstranění skupiny stále budete moci provádět distribuované transakce. Existuje alternativní řešení, které můžete použít, abyste se ujistili, že jsou distribuované transakce zakázané a že je [uživatelem iniciované ruční převzetí služeb při selhání](https://docs.microsoft.com/azure/azure-sql/managed-instance/user-initiated-failover) ve spravované instanci.
+
+### <a name="distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation"></a>Po operaci škálování spravované instance se nedají provést distribuované transakce.
+
+Operace škálování spravované instance, které zahrnují změnu úrovně služby nebo počet virtuální jádra, obnoví nastavení skupiny důvěryhodných serverů na back-endu a zakáže spuštěné [distribuované transakce](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview). Jako alternativní řešení odstraňte a vytvořte novou [skupinu důvěryhodných serverů](https://docs.microsoft.com/azure/azure-sql/managed-instance/server-trust-group-overview) na Azure Portal.
 
 ### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>Příkazy BULK INSERT a BACKUP/Restore nemůžou používat spravovanou identitu pro přístup k Azure Storage.
 

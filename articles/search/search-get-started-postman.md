@@ -2,19 +2,19 @@
 title: 'Rychlý Start: vytvoření indexu vyhledávání v části post pomocí rozhraní REST API'
 titleSuffix: Azure Cognitive Search
 description: V tomto rychlém startu REST API se dozvíte, jak volat rozhraní REST API Azure Kognitivní hledání pomocí post a vzorových dat a definic.
-author: tchristiani
 manager: nitinme
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: 4f969b08c16b26fe67ca6520323fcde780d43925
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eeb467d552cd5ab7fa73684695ed828e3430613b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88929767"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057633"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v části post pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -29,9 +29,9 @@ Tento článek vysvětluje, jak pomocí [rozhraní REST API služby Azure kognit
 
 Tento článek používá aplikaci post. Můžete [Stáhnout a importovat kolekci post](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) , pokud chcete použít předdefinované požadavky. 
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto rychlém startu jsou vyžadovány následující služby a nástroje. 
 
