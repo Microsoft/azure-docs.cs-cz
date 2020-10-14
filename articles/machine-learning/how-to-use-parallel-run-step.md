@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 08/14/2020
+ms.date: 10/13/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 8e8d0a13bc01e95311345154648ecb00b624c4bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e55a8e8dd78a6093c875cd20dd8b240816e7426
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905610"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055099"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Spuštění dávkového odvozování pro velké objemy dat pomocí Azure Machine Learning
 
@@ -26,6 +26,9 @@ V tomto článku se dozvíte, jak paralelně spustit model služby Azure Machine
 Inferencing prostřednictvím velkých datových sad nebo složitých modelů může být časově náročná. Tato `ParallelRunStep` Třída umožňuje zpracovávat paralelně a může rychleji získat celkové výsledky. I v případě, že je jedno vyhodnocení poměrně rychlé, mnoho scénářů (detekce objektů, zpracování videa, zpracování přirozeného jazyka atd.) zahrnuje spouštění mnoha hodnocení. 
 
 V systému je `ParallelRunStep` jednoduché škálovat dávky z dávek na velké clustery počítačů. Tyto clustery můžou zpracovávat terabajty strukturovaných nebo nestrukturovaných dat s vyšší produktivitou a optimalizovanými náklady.
+
+> [!NOTE]
+> ParallelRunStep je navržená pro paralelní úlohy zpracovatelné, dá se také využít k tomu, aby pro mnoho modelů souběžně nebo zpracování velkých objemů dat.
 
 V tomto článku se seznámíte s následujícími úlohami:
 

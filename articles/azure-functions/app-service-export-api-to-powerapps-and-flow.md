@@ -4,16 +4,16 @@ description: Přehled postupu vystavení rozhraní API hostovaného v App Servic
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 359f19598d5f1dff6cda4b303d33ed721ed72d97
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015081"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054793"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Exportování rozhraní API hostovaného v Azure do PowerApps a Microsoft Flow
 
-[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) je služba pro sestavování a používání vlastních obchodních aplikací, které se připojují k vašim datům a pracují na různých platformách. [Microsoft Flow](/learn/modules/get-started-with-flow/index) usnadňuje automatizaci pracovních postupů a obchodních procesů mezi vašimi oblíbenými aplikacemi a službami. PowerApps i Microsoft Flow přináší řadu integrovaných konektorů do zdrojů dat, jako jsou například Office 365, Dynamics 365, Salesforce a další. V některých případech se tvůrci aplikací a toků chtějí připojit ke zdrojům dat a rozhraním API vytvořeným jejich organizací.
+[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) je služba pro sestavování a používání vlastních obchodních aplikací, které se připojují k vašim datům a pracují na různých platformách. [Power automatizuje](/learn/modules/get-started-with-flow/index) usnadňuje automatizaci pracovních postupů a obchodních procesů mezi vašimi oblíbenými aplikacemi a službami. PowerApps i Microsoft Flow přináší řadu integrovaných konektorů do zdrojů dat, jako jsou například Office 365, Dynamics 365, Salesforce a další. V některých případech se tvůrci aplikací a toků chtějí připojit ke zdrojům dat a rozhraním API vytvořeným jejich organizací.
 
 Podobně vývojáři, kteří chtějí své rozhraní API lépe vystavit v rámci organizace, mohou zpřístupnit svá rozhraní API pro sestavování aplikací a toků. V tomto článku se dozvíte, jak exportovat rozhraní API vytvořené pomocí [Azure Functions](../azure-functions/functions-overview.md) nebo [Azure App Service](../app-service/overview.md). Exportované rozhraní API se stal *vlastním konektorem*, který se používá v PowerApps a Microsoft Flow stejně jako vestavěný konektor.
 

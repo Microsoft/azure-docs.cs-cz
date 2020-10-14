@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/04/2020
+ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30c64e4cf467f4e505327414e15b23ee2c6d1543
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f2b4d6da8d4d69a44ca3aabd755c72fd87aaa8e
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89611651"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054895"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu zprostředkovatele identity SAML v Azure Active Directory B2C vlastní zásady
 
@@ -166,7 +166,7 @@ Element **CryptographicKeys** obsahuje následující atributy:
 | Atribut |Povinné | Popis |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |Yes | Certifikát x509 (sada klíčů RSA), který se použije k podepisování zpráv SAML. Azure AD B2C používá tento klíč k podepsání žádostí a jejich odeslání poskytovateli identity. |
-| SamlAssertionDecryption |Yes | Certifikát x509 (sada klíčů RSA), který se použije k dešifrování zpráv SAML. Tento certifikát by měl poskytovat poskytovatel identity. Azure AD B2C používá tento certifikát k dešifrování dat odesílaných poskytovatelem identity. |
+| SamlAssertionDecryption |No | Certifikát x509 (sada klíčů RSA) Zprostředkovatel identity SAML používá veřejnou část certifikátu k zašifrování kontrolního výrazu odpovědi SAML. Azure AD B2C používá soukromou část certifikátu k dešifrování kontrolního výrazu. |
 | MetadataSigning |No | Certifikát x509 (sada klíčů RSA), který se použije k podepisování metadat SAML. Azure AD B2C používá tento klíč k podepsání metadat.  |
 
 ## <a name="saml-entityid-customization"></a>Přizpůsobení entityID SAML

@@ -1,14 +1,14 @@
 ---
 title: Ukázka srovnávacího plánu pro CIS Microsoft Azure Foundation
 description: Přehled ukázky podrobného plánu srovnávacího testu CIS Microsoft Azure Foundations Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly.
-ms.date: 06/02/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 6cc985fe127eae795d9a8e37624c403dd6e6f96a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c09e539e192db8422b25079264b9f4e8965d994
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84740305"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054606"
 ---
 # <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Ukázka srovnávacího plánu pro CIS Microsoft Azure Foundation
 
@@ -46,7 +46,7 @@ Nejprve implementujte ukázku podrobného plánu tak, že z ukázky vytvoříte 
 
 1. Vyberte kartu _Artefakty_ v horní části stránky nebo **Další: Artefakty** dole na stránce.
 
-1. Projděte si seznam artefaktů, které tvoří ukázku podrobného plánu. Mnoho artefaktů má parametry, které budeme definovat později. Až skončíte s kontrolou ukázky podrobného plánu, vyberte **Uložit koncept**.
+1. Zkontrolujte seznam artefaktů, které jsou zahrnuty v ukázce podrobného plánu. Mnoho artefaktů má parametry, které budeme definovat později. Až skončíte s kontrolou ukázky podrobného plánu, vyberte **Uložit koncept**.
 
 ### <a name="publish-the-sample-copy"></a>Publikování kopie ukázky
 

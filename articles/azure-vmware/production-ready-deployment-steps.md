@@ -3,12 +3,12 @@ title: Plánování nasazení řešení Azure VMware
 description: Tento článek popisuje pracovní postup nasazení řešení Azure VMware.  Konečný výsledek je prostředí připravené pro vytváření a migraci virtuálních počítačů.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: e279f14406d464171f0879d85cc33f9844d22ec3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe1396c8f256ba8374208febad2afe03a453e5f5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802204"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055082"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Plánování nasazení řešení Azure VMware
 
@@ -104,7 +104,7 @@ Aby bylo možné získat přístup k privátnímu cloudu řešení Azure VMware,
 Okruh ExpressRoute z řešení Azure VMware se připojuje k bráně ExpressRoute v Azure Virtual Network, kterou definujete v tomto kroku.  
 
 >[!IMPORTANT]
->Pokud zvolíte existující virtuální síť, musíte vybrat jednu, která nemá již existující podsíť brány.  
+>Existující bránu ExpressRoute můžete použít pro připojení k řešení Azure VMware, pokud nepřekračuje limit čtyř ExpressRoute okruhů na jednu virtuální síť.  Pro přístup k řešení Azure VMware z místního prostředí prostřednictvím ExpressRoute ale musíte mít ExpressRoute Global Reach, protože brána ExpressRoute neposkytuje přechodné směrování mezi připojenými okruhy.  
 
 Pokud chcete okruh ExpressRoute připojit z řešení Azure VMware k existující bráně ExpressRoute, můžete to provést po nasazení.  
 

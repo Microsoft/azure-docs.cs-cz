@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytvoření připojení ExpressRoute pomocí Azure Virtual WAN
+title: 'Kurz: vytvoření připojení ExpressRoute pomocí Azure Virtual WAN'
 description: V tomto kurzu se naučíte používat Azure Virtual WAN k vytváření připojení ExpressRoute k prostředím Azure a místním prostředím.
 services: virtual-wan
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 50b86c4c86391b6ffdee18cdadbdddbdff8642a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d880be6cbc37b273258075e6efc7a98d3478384
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841131"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92054810"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Kurz: vytvoření přidružení ExpressRoute pomocí Azure Virtual WAN
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Změna velikosti brány
 > * Inzerování výchozí trasy
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
@@ -153,6 +153,17 @@ Pokud chcete, aby virtuální rozbočovač Azure inzeroval výchozí trasu 0.0.0
 
    ![Rozšířit výchozí trasu](./media/virtual-wan-expressroute-portal/defaultroute2.png "Rozšířit výchozí trasu")
 
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Vyčištění prostředků
+
+Pokud už tyto prostředky nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít rutinu [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup). Položku myResourceGroup nahraďte názvem vaší skupiny prostředků a spusťte následující příkaz PowerShellu:
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name myResourceGroup -Force
+```
+
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o službě Virtual WAN najdete v článku [Přehled služby Virtual WAN](virtual-wan-about.md).
+Další informace o virtuální síti WAN najdete tady:
+
+> [!div class="nextstepaction"]
+> * [Nejčastější dotazy ke službě Virtual WAN](virtual-wan-faq.md)
