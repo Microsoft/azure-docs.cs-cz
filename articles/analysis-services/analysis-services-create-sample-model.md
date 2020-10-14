@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5b84c2e50ae7f5038cf9cb8a96c0c51d6537c929
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f882a40940a5c7202e9cf1f5c8b8927f008f4a39
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230887"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013606"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Kurz: Přidání ukázkového modelu z portálu
 
@@ -30,7 +30,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 - Server Azure Analysis Services. Další informace najdete v článku [Vytvoření serveru – portál](analysis-services-create-server.md).
 - Oprávnění ke správě serveru
-- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
@@ -62,7 +62,7 @@ Tento postup popisuje odstranění modelu ze serveru pomocí SQL Server Manageme
 
 2. Do pole **Připojit k serveru** vložte název serveru, v poli **Ověření** zvolte **Active Directory – univerzální s podporou vícefaktorového ověřování**, zadejte své uživatelské jméno a klikněte na **Připojit**.
 
-    ![Přihlášení](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
+    ![Přihlásit se](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
 3. V **Průzkumníku objektů** klikněte pravým tlačítkem na ukázkovou databázi `adventureworks` a pak klikněte na **Odstranit**.
 
@@ -74,5 +74,3 @@ V tomto kurzu jste se naučili, jak na server přidat základní ukázkový mode
 
 > [!div class="nextstepaction"]
 > [Kurz: Konfigurace správce serveru a uživatelských rolí](tutorials/analysis-services-tutorial-roles.md)
-
-

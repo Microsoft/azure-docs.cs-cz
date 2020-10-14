@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61233173452bb45162c7b254203e0ff2922a9784
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294524"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013742"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Instalace agenta Log Analytics do počítačů se systémem Linux
 Tento článek poskytuje podrobné informace o instalaci agenta Log Analytics v počítačích se systémem Linux pomocí následujících metod:
@@ -184,7 +184,7 @@ Agent Log Analytics pro Linux je k dispozici v balíčku skriptu pro samorozbalo
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
     ```
 
-    Pokud je vyžadováno ověření, je nutné zadat uživatelské jméno a heslo. Například: 
+    Pokud je vyžadováno ověření, je nutné zadat uživatelské jméno a heslo. Příklad: 
     
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>
@@ -215,7 +215,7 @@ Upgrade z předchozí verze, počínaje verzí 1.0.0-47, je podporován v každ�
 ## <a name="cache-information"></a>Informace o mezipaměti
 Data z agenta Log Analytics pro Linux se ukládají do mezipaměti v místním počítači v umístění *% STATE_DIR_WS%/out_oms_common*. Buffer * před odesláním do Azure monitor. Data vlastního protokolu se ukládají do vyrovnávací paměti v *% STATE_DIR_WS%/out_oms_blob*. Buffer *. Tato cesta se může u některých [řešení a datových typů](https://github.com/microsoft/OMS-Agent-for-Linux/search?utf8=%E2%9C%93&q=+buffer_path&type=)lišit.
 
-Agent se pokusí o nahrání každých 20 sekund. Pokud selže, bude počkat exponenciálně rostoucí dobu, než bude úspěšná. Počká 30 sekund před druhým pokusem, 60 sekund před dalších, 120 sekund a tak dále až 9 minut mezi opakovanými pokusy, dokud se znovu úspěšně nepřipojí. Před zahozením a přechodem na další bude agent pro danou datovou část znovu opakovat. To bude pokračovat, dokud se agent nebude moci znovu úspěšně odeslat. Znamená, že data mohou být ukládána do vyrovnávací paměti až 8,5 hodin, než se zahodí.
+Agent se pokusí o nahrání každých 20 sekund. Pokud selže, bude počkat exponenciálně rostoucí dobu, dokud nebude úspěšná: 30 sekund před druhým pokusem, 60 sekund před třetí 120 sekundami... a tak až po dobu maximálně 16 minut mezi opakovanými pokusy, dokud se znovu úspěšně nepřipojí. Před zahozením a přechodem na následující datový blok bude agent opakovat až 6 časů pro danou datovou část. To bude pokračovat, dokud se agent nebude moci znovu úspěšně odeslat. To znamená, že data se můžou ukládat do vyrovnávací paměti přibližně 30 minut, než se zahodí.
 
 Výchozí velikost mezipaměti je 10 MB, ale lze ji upravit v [souboru omsagent. conf](https://github.com/microsoft/OMS-Agent-for-Linux/blob/e2239a0714ae5ab5feddcc48aa7a4c4f971417d4/installer/conf/omsagent.conf).
 

@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/31/2020
 ms.custom: devx-track-java
 ms.author: inhenkel
-ms.openlocfilehash: 0f099a1b807cb860aaeda95a442cfdd7fd3c2869
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f5044a5fb43956e857bc7b93b92e15d40225326
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297378"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013232"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Připojení k Media Services V3 API – Java
 
@@ -126,7 +126,7 @@ Při spuštění příkazu se `pom.xml` `App.java` vytvoří soubory, a.
 
 - [Media Services koncepty](concepts-overview.md)
 - [Java SDK](https://aka.ms/ams-v3-java-sdk)
-- [Referenční dokumentace jazyka Java](https://aka.ms/ams-v3-java-ref)
+- [Referenční dokumentace jazyka Java](/java/api/overview/azure/mediaservices/management)
 - [com.microsoft.azure.mediaservices.v2018_07_01: Azure-Správa-média](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar)
 
 ## <a name="next-steps"></a>Další kroky

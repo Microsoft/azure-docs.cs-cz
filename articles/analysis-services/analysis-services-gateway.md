@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fed184c349789dc38f12f62567acc0d0500ca94c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87438820"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016089"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s místní bránou dat
 
@@ -91,11 +91,11 @@ Bráně můžete vynutit komunikaci s Azure Service Bus pomocí protokolu HTTPS 
 
 V části místní brána dat je součástí obecného obsahu, který se vztahuje na všechny služby, které brána podporuje:
 
-* [Místní brána dat – nejčastější dotazy](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
-* [Použití aplikace místní brány dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   
-* [Správa na úrovni tenantů](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)
-* [Konfigurace nastavení proxy serveru](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   
-* [Úprava nastavení komunikace](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)   
-* [Konfigurace souborů protokolu](https://docs.microsoft.com/data-integration/gateway/service-gateway-log-files)   
-* [Řešení potíží](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [Monitorování a optimalizace výkonu brány](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Místní brána dat – nejčastější dotazy](/data-integration/gateway/service-gateway-onprem-faq)   
+* [Použití aplikace místní brány dat](/data-integration/gateway/service-gateway-app)   
+* [Správa na úrovni tenantů](/data-integration/gateway/service-gateway-tenant-level-admin)
+* [Konfigurace nastavení proxy serveru](/data-integration/gateway/service-gateway-proxy)   
+* [Úprava nastavení komunikace](/data-integration/gateway/service-gateway-communication)   
+* [Konfigurace souborů protokolu](/data-integration/gateway/service-gateway-log-files)   
+* [Řešení potíží](/data-integration/gateway/service-gateway-tshoot)
+* [Monitorování a optimalizace výkonu brány](/data-integration/gateway/service-gateway-performance)

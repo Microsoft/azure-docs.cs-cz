@@ -8,16 +8,16 @@ ms.date: 07/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 66d09c2faa52cee3e94402be708d654b548c0de1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1850f77c1d13c761bfc2a143074b5067b349b4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506991"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014048"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Zálohování a obnovení databáze Analysis Services
 
-Zálohování databází tabelárních modelů v Azure Analysis Services je v podstatě stejné jako u místních Analysis Services. Hlavním rozdílem je místo, kam ukládáte soubory zálohy. Záložní soubory musí být uložené do kontejneru v [účtu úložiště Azure](../storage/common/storage-create-storage-account.md). Můžete použít účet úložiště a kontejner, který už máte, nebo ho můžete vytvořit při konfiguraci nastavení úložiště pro váš server.
+Zálohování databází tabelárních modelů v Azure Analysis Services je v podstatě stejné jako u místních Analysis Services. Hlavním rozdílem je místo, kam ukládáte soubory zálohy. Záložní soubory musí být uložené do kontejneru v [účtu úložiště Azure](../storage/common/storage-account-create.md). Můžete použít účet úložiště a kontejner, který už máte, nebo ho můžete vytvořit při konfiguraci nastavení úložiště pro váš server.
 
 > [!NOTE]
 > Vytvoření účtu úložiště může mít za následek novou fakturovatelnou službu. Další informace najdete v tématu [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/blobs/).
@@ -75,10 +75,10 @@ Před zálohováním musíte nakonfigurovat nastavení úložiště pro váš se
 
 
 ### <a name="powershell"></a>PowerShell
-Použijte rutinu [Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) .
+Použijte rutinu [Backup-ASDatabase](/powershell/module/sqlserver/backup-asdatabase) .
 
 ## <a name="restore"></a>Obnovení
-Při obnovení musí být váš záložní soubor v účtu úložiště, který jste nakonfigurovali pro váš server. Pokud potřebujete přesunout záložní soubor z místního umístění do svého účtu úložiště, použijte [Průzkumník služby Microsoft Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) nebo nástroj příkazového řádku [AzCopy](../storage/common/storage-use-azcopy.md) . 
+Při obnovení musí být váš záložní soubor v účtu úložiště, který jste nakonfigurovali pro váš server. Pokud potřebujete přesunout záložní soubor z místního umístění do svého účtu úložiště, použijte [Průzkumník služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) nebo nástroj příkazového řádku [AzCopy](../storage/common/storage-use-azcopy-v10.md) . 
 
 
 
@@ -102,11 +102,11 @@ Při obnovení musí být váš záložní soubor v účtu úložiště, který 
 
 ### <a name="powershell"></a>PowerShell
 
-Použijte rutinu [Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase) .
+Použijte rutinu [Restore-ASDatabase](/powershell/module/sqlserver/restore-asdatabase) .
 
 
 ## <a name="related-information"></a>Související informace
 
-[Účty služby Azure Storage](../storage/common/storage-create-storage-account.md)  
+[Účty služby Azure Storage](../storage/common/storage-account-create.md)  
 [Vysoká dostupnost](analysis-services-bcdr.md)      
 [Nejčastější dotazy k Analysis Services připojení k síti](analysis-services-network-faq.md)

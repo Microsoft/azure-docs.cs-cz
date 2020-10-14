@@ -5,20 +5,18 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: tutorial
-ms.date: 10/09/2020
+ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: e4f8bc38a79fdbb84624e126c84d679a906a701b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c5361a777b2fdab20fab70214ddcb3bbf5248acb
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91980165"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015255"
 ---
-# <a name="tutorial-create-an-azure-bastion-host-and-connect-to-a-windows-vm"></a>Kurz: vytvoření hostitele Azure bastionu a připojení k virtuálnímu počítači s Windows
+# <a name="tutorial-create-an-azure-bastion-host-and-connect-to-a-windows-vm-through-a-browser"></a>Kurz: vytvoření hostitele Azure bastionu a připojení k virtuálnímu počítači s Windows pomocí prohlížeče
 
-K virtuálnímu počítači s Windows se můžete připojit prostřednictvím prohlížeče prostřednictvím Azure Portal. Připojte se k VIRTUÁLNÍmu počítači přímo přes prohlížeč přes protokol TLS pomocí privátní IP adresy. Nemusíte instalovat a konfigurovat klientský software lokálně.
-
-Pokud se chcete připojit k virtuálnímu počítači pomocí bastionu, musíte zřídit službu Azure bastionu ve vaší virtuální síti (VNet). Po zřízení služby je tento typ připojení dostupný všem virtuálním počítačům, které jsou ve virtuální síti, v závislosti na konfiguraci zabezpečení virtuálního počítače. Nasazení Azure bastionu je vázané na virtuální síť, ne pro předplatné/účet nebo virtuální počítač.
+V tomto kurzu se dozvíte, jak se připojit k virtuálnímu počítači přes prohlížeč pomocí Azure bastionu a Azure Portal. V Azure Portal nasadíte bastionu do vaší virtuální sítě. Po nasazení bastionu se k virtuálnímu počítači připojíte přes jeho privátní IP adresu pomocí Azure Portal. Váš virtuální počítač nepotřebuje veřejnou IP adresu ani speciální software. Po zřízení služby je prostředí RDP/SSH dostupné všem virtuálním počítačům ve stejné virtuální síti. Další informace o Azure bastionu najdete v tématu [co je Azure bastionu?](bastion-overview.md).
 
 V tomto kurzu se naučíte:
 
@@ -28,7 +26,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Virtuální síť.
 * Virtuální počítač s Windows ve virtuální síti.
@@ -42,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Vytvoření hostitele bastionu
 

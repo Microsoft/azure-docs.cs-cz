@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Na nejčastějších dotazech se můžete podívat, když ve službě Azure Kubernetes Service (AKS) spouštíte fondy uzlů Windows serveru a úlohy aplikací.
 services: container-service
 ms.topic: article
-ms.date: 07/29/2020
-ms.openlocfilehash: df9a4dd546ddc5944d9a282e74c2444a5161b862
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 00e749a8b066f72518b38685dd7a7779e406cf74
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927547"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013963"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Nejčastější dotazy týkající se fondů uzlů Windows serveru v AKS
 
@@ -60,7 +60,7 @@ V současné době [zachování IP adresy zdrojového klienta][client-source-ip]
 
 ## <a name="can-i-change-the-max--of-pods-per-node"></a>Můžu změnit max. # lusků na uzel?
 
-Ano. Důsledky a možnosti, které jsou k dispozici, najdete v části [maximální počet lusků][maximum-number-of-pods].
+Yes. Důsledky a možnosti, které jsou k dispozici, najdete v části [maximální počet lusků][maximum-number-of-pods].
 
 ## <a name="why-am-i-seeing-an-error-when-i-try-to-create-a-new-windows-agent-pool"></a>Proč se mi při pokusu o vytvoření nového fondu agentů Windows zobrazuje chyba?
 
@@ -113,6 +113,49 @@ Ano, můžete ale Azure Monitor ve verzi Public Preview pro shromažďování pr
 
 Cluster s uzly Windows může mít přibližně 500 služeb před tím, než dojde k vyčerpání portů.
 
+## <a name="can-i-use-azure-hybrid-benefit-with-windows-nodes"></a>Můžu použít Zvýhodněné hybridní využití Azure s uzly Windows?
+
+Yes. Zvýhodněné hybridní využití Azure pro Windows Server snižuje provozní náklady tím, že vám umožní převést místní licenci Windows serveru na AKS uzly Windows.
+
+Zvýhodněné hybridní využití Azure lze použít na celém clusteru AKS nebo na jednotlivých uzlech. Pro jednotlivé uzly je potřeba přejít do [skupiny prostředků uzlu][resource-groups] a použít zvýhodněné hybridní využití Azure na uzly přímo. Další informace o použití Zvýhodněné hybridní využití Azure u jednotlivých uzlů najdete v tématu [zvýhodněné hybridní využití Azure pro Windows Server][hybrid-vms]. 
+
+Pokud chcete použít Zvýhodněné hybridní využití Azure na novém clusteru AKS, použijte `--enable-ahub` argument.
+
+```azurecli
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-sku Standard \
+    --windows-admin-password 'Password1234$' \
+    --windows-admin-username azure \
+    --network-plugin azure
+    --enable-ahub
+```
+
+Pokud chcete použít Zvýhodněné hybridní využití Azure v existujícím clusteru AKS, aktualizujte cluster pomocí `--enable-ahub` argumentu.
+
+```azurecli
+az aks update \
+    --resource-group myResourceGroup
+    --name myAKSCluster
+    --enable-ahub
+```
+
+Chcete-li zjistit, zda je v clusteru nastavena Zvýhodněné hybridní využití Azure, použijte následující příkaz:
+
+```azurecli
+az vmss show --name myAKSCluster --resource-group MC_CLUSTERNAME
+```
+
+Pokud je cluster Zvýhodněné hybridní využití Azure povolený, výstup `az vmss show` bude podobný následujícímu:
+
+```console
+"platformFaultDomainCount": 1,
+  "provisioningState": "Succeeded",
+  "proximityPlacementGroup": null,
+  "resourceGroup": "MC_CLUSTERNAME"
+```
+
 ## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>Můžu použít webový řídicí panel Kubernetes s kontejnery Windows?
 
 Ano, pomocí [webového řídicího panelu Kubernetes][kubernetes-dashboard] můžete získat přístup k informacím o kontejnerech Windows, ale v tuto chvíli nemůžete spustit *kubectl exec* do běžícího kontejneru Windows přímo z webového řídicího panelu Kubernetes. Další podrobnosti o připojení ke spuštěnému kontejneru Windows najdete v tématu [připojení pomocí protokolu RDP ke službě Azure Kubernetes (AKS) clustery Windows serveru pro účely údržby nebo řešení potíží][windows-rdp].
@@ -152,3 +195,5 @@ Pokud chcete začít s kontejnery Windows serveru v AKS, [vytvořte fond uzlů, 
 [windows-rdp]: rdp.md
 [upgrade-node-image]: node-image-upgrade.md
 [managed-identity]: use-managed-identity.md
+[hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
+[resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d335affa5a06bdb8e5c733c871654cf58947581
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd4f50365ced61e35ae6d10a9763a0f9815098d7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652954"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014099"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -53,8 +53,8 @@ Informace o historii verze REST API Media Services najdete v části [Azure Medi
 
 Následující vlastnosti v2 již nebudou naplněny pomocí historických dat o průběhu úlohy:
 
-* [HistoricalEvents](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
-* [PerfMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
+* [HistoricalEvents](/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
+* [PerfMessage](/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
 
 Chcete-li získat historii úlohy, měli byste použít oznámení úlohy v2 prostřednictvím webhooků nebo zpráv fronty pomocí koncových bodů oznámení. Další informace naleznete v tématech:
 
@@ -81,7 +81,7 @@ Přečtěte si také téma [migrace z Azure Media Indexer a Azure Media Indexer 
 
 Oznamujeme vyřazení *Windows Azure Media Encoder* (WAME) a *Azure Media Encoderch* (ázev) mediálních procesorů. Informace o datech vyřazení najdete v tématu tyto [starší součásti](legacy-components.md) .
 
-Podrobnosti najdete v článku [migrace WAME do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) a [migrace do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
+Podrobnosti najdete v článku [migrace WAME do Media Encoder Standard](./migrate-windows-azure-media-encoder.md) a [migrace do Media Encoder Standard](./migrate-azure-media-encoder.md).
 
 ## <a name="march-2019"></a>Březen 2019
 
@@ -198,7 +198,7 @@ Někteří klienti můžou přijít do problému se značkou opakování v manif
 
 ## <a name="april-2016-release"></a><a id="apr_changes16"></a>Verze z dubna 2016
 ### <a name="media-analytics"></a>Media Analytics
- Media Services představena Media Analytics pro výkonnou analýzu videa. Další informace najdete v tématu [Přehled analýzy Media Services](media-services-analytics-overview.md).
+ Media Services představena Media Analytics pro výkonnou analýzu videa. Další informace najdete v tématu [Přehled analýzy Media Services](./legacy-components.md).
 
 ### <a name="apple-fairplay-preview"></a>Apple FairPlay (Preview)
 Nyní můžete použít Media Services k dynamickému šifrování obsahu HTTP Live Streaming (HLS) pomocí Apple FairPlay. K doručování licencí FairPlay klientům můžete také použít službu doručování licencí Media Services. Další informace najdete v části "použití Azure Media Services k streamování obsahu HLS chráněného technologií Apple FairPlay".
@@ -275,7 +275,7 @@ Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/azure
 ## <a name="july-2015-release"></a><a id="july_changes_15"></a>Verze z července 2015
 * Byla oznámena Obecná dostupnost Media Encoder Standard. Další informace najdete v [tomto blogovém příspěvku](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/).
   
-    Media Encoder Standard používá přednastavení, jak je popsáno v [této části](https://go.microsoft.com/fwlink/?LinkId=618336). Pokud použijete přednastavení pro kódování 4K, Získejte typ rezervované jednotky Premium. Další informace najdete v tématu [škálování v kódování](media-services-scale-media-processing-overview.md).
+    Media Encoder Standard používá přednastavení, jak je popsáno v [této části](./media-services-mes-presets-overview.md). Pokud použijete přednastavení pro kódování 4K, Získejte typ rezervované jednotky Premium. Další informace najdete v tématu [škálování v kódování](media-services-scale-media-processing-overview.md).
 * Živé titulky v reálném čase byly použity s Media Services a Media Player. Další informace najdete v [tomto blogovém příspěvku](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/).
 
 ### <a name="media-services-net-sdk-updates"></a>Aktualizace Media Services .NET SDK

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 9b36f4e292eb4bcae424d463f76e8a69eefd2968
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 97f24537f2fa68f1a9be83e2c9abdc8101edb8d0
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995524"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014541"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Co je Azure synapse Link pro Azure Cosmos DB (Preview)?
 
@@ -116,13 +116,13 @@ Odkaz synapse se nedoporučuje, pokud hledáte tradiční požadavky na datový 
 
 ## <a name="limitations"></a>Omezení
 
-* Pro rozhraní SQL API a rozhraní Azure Cosmos DB API pro MongoDB se podporuje dnes Azure synapse Link pro Azure Cosmos DB. Rozhraní API pro Gremlin a rozhraní API pro tabulky se nepodporuje. Podpora rozhraní API Cassandra je v privátní verzi Preview. Další informace získáte od týmu odkazů Azure synapse na adrese cosmosdbsynapselink@microsoft.com .  
+* Pro rozhraní SQL API a rozhraní Azure Cosmos DB API pro MongoDB se podporuje dnes Azure synapse Link pro Azure Cosmos DB. Rozhraní API pro Gremlin a rozhraní API pro tabulky se nepodporuje. Podpora rozhraní API Cassandra je v privátní verzi Preview. Další informace získáte od [týmu odkazů Azure synapse](mailto:cosmosdbsynapselink@microsoft.com).  
 
 * V současné době se analytické úložiště dá povolit jenom pro nové kontejnery. Pokud chcete použít analytické úložiště pro existující kontejnery, migrujte data z existujících kontejnerů do nových kontejnerů pomocí [nástrojů pro migraci Azure Cosmos DB](cosmosdb-migrationchoices.md). Můžete povolit synapse odkaz na nové a existující účty Azure Cosmos DB.
 
-* Přístup k Azure Cosmos DB analytickému obchodu s synapse bez SQL serveru je v současné době ve verzi gatedd Preview. Pokud chcete požádat o přístup, odešlete e-mailem [Azure Cosmos DB týmu](mailto:cosmosdbsynapselink@microsoft.com).
+* Přístup k Azure Cosmos DB analytickému obchodu s synapse bez SQL serveru je v současné době ve verzi gatedd Preview. Pokud chcete požádat o přístup, pošlete [týmu propojení Azure synapse](mailto:cosmosdbsynapselink@microsoft.com)e-mail.
 
-* V Preview se pro účty databáze s povoleným odkazem synapse nepodporuje zálohování a obnovování kontejnerů. Pokud máte úlohy, které vyžadují funkci zálohování a obnovení, doporučujeme, abyste na tyto účty databáze nepovolili synapse odkaz. 
+* U kontejnerů se zapnutým analytickým úložištěm se v současnosti nepodporuje automatické zálohování a obnovování vašich dat v analytickém úložišti. Když je na databázovém účtu povoleno propojení synapse, Azure Cosmos DB bude pokračovat v automatickém ukládání [záloh](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore) vašich dat do transakčního úložiště (pouze) kontejnerů v naplánovaných intervalech zálohování, jako vždycky. Je důležité si uvědomit, že když se na nový účet obnoví kontejner se zapnutým analytickým úložištěm, kontejner se obnoví jenom v transakčním úložišti a není povolený žádný analytický obchod. 
 
 * Přístup k úložišti Azure Cosmos DB Analytics s zřízeným synapse SQL není momentálně k dispozici.
 

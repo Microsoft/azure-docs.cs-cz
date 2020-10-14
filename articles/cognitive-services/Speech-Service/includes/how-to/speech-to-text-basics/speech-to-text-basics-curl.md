@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/09/2020
 ms.author: v-jawe
-ms.openlocfilehash: 1ec0281145609f9ae06ad07e1ad2cfd2b7f9aba8
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 36d12b29054f736b65af5ac411adbc26d870b982
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940796"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014137"
 ---
 V tomto rychlém startu se dozvíte, jak převést řeč na text pomocí služby Speech a kudrlinkou.
 
@@ -19,7 +19,7 @@ Základní informace o konceptech řeči a textu najdete v článku [Přehled](.
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
-## <a name="convert-text-to-speech"></a>Převod textu na řeč
+## <a name="convert-speech-to-text"></a>Převod řeči na text
 
 Na příkazovém řádku spusťte následující příkaz. Do příkazu bude nutné vložit následující hodnoty.
 - Klíč předplatného služby Speech.

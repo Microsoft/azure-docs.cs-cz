@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 697e5484c007c095201344fb4829a92eb642a6e3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84015498"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014847"
 ---
 # <a name="manage-analysis-services"></a>Správa služby Analysis Services
 Po vytvoření Analysis Servicesho serveru v Azure můžou nastat některé úlohy správy a správy, které potřebujete udělat hned nebo po dobu provozu. Například spusťte zpracování na data aktualizace, řízení, kdo má přístup k modelům na vašem serveru, nebo můžete monitorovat stav svého serveru. Některé úlohy správy lze provádět pouze v Azure Portal, dalších v SQL Server Management Studio (SSMS) a některé úlohy lze provádět v obou.
@@ -30,7 +30,7 @@ Připojení k serveru v Azure je stejné jako připojení k instanci serveru ve 
 ### <a name="download-and-install-ssms"></a>Stažení a instalace SSMS
 Pokud chcete získat nejnovější funkce a využít nejplynulejší prostředí při připojování k serveru Azure Analysis Services, ujistěte se, že používáte nejnovější verzi SSMS. 
 
-[Stáhněte si SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+[Stáhněte si SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
 
 
 ### <a name="to-connect-with-ssms"></a>Připojení pomocí SSMS
@@ -66,4 +66,3 @@ Pokud při připojování pomocí SSMS narazíte na problémy, možná budete mu
 Pokud jste ještě nenainstalovali tabelární model na nový server, je teď dobrý čas. Další informace najdete v tématu [Nasazení do služby Azure Analysis Services](analysis-services-deploy.md).
 
 Pokud jste model nasadili na váš server, jste připraveni se k němu připojit pomocí klienta nebo prohlížeče. Další informace najdete v tématu [získání dat ze serveru Azure Analysis Services](analysis-services-connect.md).
-

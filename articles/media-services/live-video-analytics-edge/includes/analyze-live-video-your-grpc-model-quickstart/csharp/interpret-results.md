@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: 2cf9cde80a46023575a4e0833de5c2c6b90ab10e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fdc7360911e37babdb830b7d67ad7224ea84c774
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88691753"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92038558"
 ---
-Když spustíte graf médií, výsledky z uzlu procesor rozšíření HTTP procházejí uzlem IoT Hub jímky do služby IoT Hub. Zprávy, které vidíte v okně **výstup** , obsahují část tělo a část applicationProperties. Další informace najdete v tématu [Vytvoření a čtení zpráv IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+Když spustíte graf médií, výsledky z uzlu procesor rozšíření HTTP procházejí uzlem IoT Hub jímky do služby IoT Hub. Zprávy, které vidíte v okně **výstup** , obsahují část tělo a část applicationProperties. Další informace najdete v tématu [Vytvoření a čtení zpráv IoT Hub](../../../../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 V následujících zprávách modul Live video Analytics definuje vlastnosti aplikace a obsah těla.
 

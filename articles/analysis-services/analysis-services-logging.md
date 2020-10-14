@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5537079341823275ba521c9d44139a0e0305286
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83701491"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014932"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
 
-Důležitou součástí jakéhokoli řešení Analysis Services je monitorování, jak vaše servery provádějí. Služba Azure Analysis Services je integrovaná s Azure Monitor. Pomocí [Azure Monitorch protokolů prostředků](../azure-monitor/platform/platform-logs-overview.md)můžete protokoly monitorovat a odesílat [Azure Storage](https://azure.microsoft.com/services/storage/), streamovat je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [protokolů Azure monitor](../azure-monitor/azure-monitor-log-hub.md).
+Důležitou součástí jakéhokoli řešení Analysis Services je monitorování, jak vaše servery provádějí. Služba Azure Analysis Services je integrovaná s Azure Monitor. Pomocí [Azure Monitorch protokolů prostředků](../azure-monitor/platform/platform-logs-overview.md)můžete protokoly monitorovat a odesílat [Azure Storage](https://azure.microsoft.com/services/storage/), streamovat je do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a exportovat je do [protokolů Azure monitor](../azure-monitor/overview.md).
 
 ![Protokolování prostředků do protokolů úložiště, Event Hubs nebo Azure Monitor](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -28,7 +28,7 @@ Můžete vybrat kategorie **modul**, **služby**a **metriky** .
 
 ### <a name="engine"></a>Modul
 
-Výběr **modulu** protokoluje všechny [xEvents](https://docs.microsoft.com/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events). Nemůžete vybrat jednotlivé události. 
+Výběr **modulu** protokoluje všechny [xEvents](/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events). Nemůžete vybrat jednotlivé události. 
 
 |Kategorie XEvent |Název události  |
 |---------|---------|
@@ -46,7 +46,7 @@ Výběr **modulu** protokoluje všechny [xEvents](https://docs.microsoft.com/ana
 |Zjišťování     |   Zjistit konec      |
 |Notification (Oznámení)     |    Notification (Oznámení)     |
 |Relace     |  Inicializace relace       |
-|Zámky    |  Ukončení       |
+|Zámky    |  Vzájemné zablokování       |
 |Zpracování dotazů     |   VertiPaq SE – začátek dotazu      |
 |Zpracování dotazů     |   VertiPaq SE – konec dotazu      |
 |Zpracování dotazů     |   VertiPaq SE – shoda mezipaměti dotazů      |
@@ -80,7 +80,7 @@ Kategorie metriky zapisuje stejné [metriky serveru](analysis-services-monitor.m
 
     * **Název:** Zadejte název protokolů, které chcete vytvořit.
 
-    * **Archivujte do účtu úložiště**. Pokud chcete použít tuto možnost, budete potřebovat existující účet úložiště, ke kterému se chcete připojit. Viz [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md). Podle pokynů vytvořte Správce prostředků účet pro obecné účely a pak vyberte svůj účet úložiště tak, že se vrátíte na tuto stránku na portálu. Může trvat několik minut, než se nově vytvořené účty zobrazí v rozevírací nabídce.
+    * **Archivujte do účtu úložiště**. Pokud chcete použít tuto možnost, budete potřebovat existující účet úložiště, ke kterému se chcete připojit. Viz [Vytvoření účtu úložiště](../storage/common/storage-account-create.md). Podle pokynů vytvořte Správce prostředků účet pro obecné účely a pak vyberte svůj účet úložiště tak, že se vrátíte na tuto stránku na portálu. Může trvat několik minut, než se nově vytvořené účty zobrazí v rozevírací nabídce.
     * **Streamování do centra událostí**. Pokud chcete použít tuto možnost, budete potřebovat existující obor názvů centra událostí a centrum událostí, ke kterým se chcete připojit. Další informace najdete v tématu [Vytvoření oboru názvů služby Event Hubs a centra událostí pomocí webu Azure Portal](../event-hubs/event-hubs-create.md). Pak se vraťte na tuto stránku na portálu a vyberte obor názvů a název zásady centra událostí.
     * **Odeslat do Azure monitor (pracovní prostor Log Analytics)**. Pokud chcete tuto možnost použít, buď použijte existující pracovní prostor, nebo na portálu [vytvořte nový prostředek pracovního prostoru](../azure-monitor/learn/quick-create-workspace.md) . Další informace o zobrazení protokolů najdete v části [zobrazení protokolů v Log Analytics pracovním prostoru](#view-logs-in-log-analytics-workspace) v tomto článku.
 
@@ -90,7 +90,7 @@ Kategorie metriky zapisuje stejné [metriky serveru](analysis-services-monitor.m
 
 3. Klikněte na **Uložit**.
 
-    Pokud se zobrazí chyba s informacemi o tom, že se nepovedlo aktualizovat diagnostiku pro \<workspace name> . Předplatné \<subscription id> není zaregistrované pro používání Microsoft. Insights. pomocí pokynů [Azure Diagnostics Poradce při potížích](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) zaregistrujte účet a potom tento postup opakujte.
+    Pokud se zobrazí chyba s informacemi o tom, že se nepovedlo aktualizovat diagnostiku pro \<workspace name> . Předplatné \<subscription id> není zaregistrované pro používání Microsoft. Insights. pomocí pokynů [Azure Diagnostics Poradce při potížích](../azure-monitor/platform/resource-logs.md) zaregistrujte účet a potom tento postup opakujte.
 
     Pokud chcete změnit způsob, jakým se protokoly prostředků ukládají do libovolného bodu v budoucnu, můžete se na tuto stránku vrátit a změnit nastavení.
 
@@ -136,11 +136,11 @@ Tyto parametry můžete kombinovat a povolit tak různé možnosti výstupu.
 
 ### <a name="rest-api"></a>REST API
 
-Zde zjistíte, jak [změnit nastavení diagnostiky pomocí rozhraní REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/). 
+Zde zjistíte, jak [změnit nastavení diagnostiky pomocí rozhraní REST API služby Azure Monitor](/rest/api/monitor/). 
 
 ### <a name="resource-manager-template"></a>Šablona Resource Manageru
 
-Zde zjistíte, jak [povolit nastavení diagnostiky při vytváření prostředku pomocí šablony Resource Manageru](../azure-monitor/platform/diagnostic-settings-template.md). 
+Zde zjistíte, jak [povolit nastavení diagnostiky při vytváření prostředku pomocí šablony Resource Manageru](../azure-monitor/samples/resource-manager-diagnostic-settings.md). 
 
 ## <a name="manage-your-logs"></a>Správa protokolů
 
@@ -328,4 +328,4 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 Přečtěte si další informace o [Azure monitor protokolování prostředků](../azure-monitor/platform/platform-logs-overview.md).
 
-Viz rutina [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) v nápovědě PowerShellu.
+Viz rutina [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) v nápovědě PowerShellu.

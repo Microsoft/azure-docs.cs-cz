@@ -3,19 +3,19 @@ title: Jak používat rozhraní API pro detekci anomálií v datech časových �
 titleSuffix: Azure Cognitive Services
 description: Naučte se detekovat anomálie ve vašich datech buď jako dávku, nebo na streamovaná data.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.author: aahi
-ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: b2cd5e32503953de874ab470ca3f9413d2b37d59
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71840223"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014643"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Postupy: použití rozhraní API pro detekci anomálií v datech časových řad  
 

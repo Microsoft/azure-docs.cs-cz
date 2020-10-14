@@ -3,12 +3,12 @@ title: Analýza živého videa pomocí Počítačové zpracování obrazu pro pr
 description: V tomto kurzu se dozvíte, jak pomocí živé analýzy videí společně s funkcí Počítačové zpracování obrazu prostorová analýza AI z Azure Cognitive Services analyzovat živý kanál videa z (simulované) kamery IP.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: cad96847d6fbf682f1d694b0c8c255b3725e96d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dc89eaddf5cabc3063744dfe2c9f0236c70438c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91824125"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015681"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analýza živého videa pomocí Počítačové zpracování obrazu pro prostorovou analýzu (Preview)
 
@@ -32,7 +32,7 @@ Než začnete, přečtěte si tyto články:
 * [Živá analýza videí na IoT Edge terminologii](terminology.md)
 * [Koncepty Media graphu](media-graph-concept.md)
 * [Nahrávání videa na základě událostí](event-based-video-recording-concept.md)
-* [Kurz: vývoj modulu IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [Kurz: vývoj modulu IoT Edge](../../iot-edge/tutorial-develop-for-linux.md)
 * [Nasazení Live video Analytics na Azure Stack Edge](deploy-azure-stack-edge-how-to.md) 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -55,12 +55,12 @@ Tento diagram znázorňuje způsob, jakým se v tomto kurzu Flow signalizují. [
 
 Uzel MediaGraphCognitiveServicesVisionExtension hraje roli proxy serveru. Převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes **sdílenou paměť** do jiného modulu Edge, který spouští operace AI za koncovým bodem gRPC. V tomto příkladu je tento modul Edge modul pro prostorovou analýzu. Uzel procesoru MediaGraphCognitiveServicesVisionExtension má dvě věci:
 
-* Shromáždí výsledky a publikuje události do uzlu [IoT Hub jímka](media-graph-concept.md#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub). 
+* Shromáždí výsledky a publikuje události do uzlu [IoT Hub jímka](media-graph-concept.md#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](../../iot-edge/iot-edge-glossary.md#iot-edge-hub). 
 * Zachytí také 30 sekundový klip ze zdroje RTSP pomocí [procesoru brány signálu](media-graph-concept.md#signal-gate-processor) a uloží jej jako Media Services prostředek.
 
 ## <a name="create-the-computer-vision-resource"></a>Vytvoření prostředku Počítačové zpracování obrazu
 
-Je potřeba vytvořit prostředek Azure typu Počítačové zpracování obrazu buď v [Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal) nebo prostřednictvím rozhraní příkazového řádku Azure. Až se vaše žádost o přístup ke kontejneru schválí a vaše ID předplatného Azure je zaregistrované, budete moct prostředek vytvořit. Pokud chcete https://aka.ms/csgate Odeslat svůj případ použití a ID vašeho předplatného Azure, klikněte na Přejít.  Prostředek Azure je potřeba vytvořit pomocí stejného předplatného Azure, které je k dispozici na formuláři žádosti o přístup.
+Je potřeba vytvořit prostředek Azure typu Počítačové zpracování obrazu buď v [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) nebo prostřednictvím rozhraní příkazového řádku Azure. Až se vaše žádost o přístup ke kontejneru schválí a vaše ID předplatného Azure je zaregistrované, budete moct prostředek vytvořit. Pokud chcete https://aka.ms/csgate Odeslat svůj případ použití a ID vašeho předplatného Azure, klikněte na Přejít.  Prostředek Azure je potřeba vytvořit pomocí stejného předplatného Azure, které je k dispozici na formuláři žádosti o přístup.
 
 ### <a name="gathering-required-parameters"></a>Shromažďují se požadované parametry.
 
@@ -75,7 +75,7 @@ Klíč se používá ke spuštění kontejneru prostorové analýzy a je k dispo
 
 ## <a name="set-up-azure-stack-edge"></a>Nastavení Azure Stack Edge
 
-Postupujte podle [těchto kroků](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep) a nastavte Azure Stack Edge a pokračujte podle následujících kroků a nasaďte živé video analýzy a moduly prostorové analýzy.
+Postupujte podle [těchto kroků](../../databox-online/azure-stack-edge-gpu-deploy-prep.md) a nastavte Azure Stack Edge a pokračujte podle následujících kroků a nasaďte živé video analýzy a moduly prostorové analýzy.
 
 ## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
 
@@ -136,7 +136,7 @@ V souboru šablony nasazení je třeba věnovat pár věcí:
 1. `IpcMode` v modulu lvaEdge a prostorové analýzy createOptions by měl být stejný a nastavený na Host.
 1. Aby simulátor RTSP fungoval, ujistěte se, že jste nastavili rozsahy svazků. Další informace najdete v tématu [nastavení připojení svazku Docker](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts).
 
-    1. [Připojte se ke sdílené složce SMB](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share) a zkopírujte [ukázkový videosoubor Bulldozer](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) do místní sdílené složky.
+    1. [Připojte se ke sdílené složce SMB](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share) a zkopírujte [ukázkový videosoubor Bulldozer](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) do místní sdílené složky.
     1. Podívejte se, že modul rtspsim má následující konfiguraci:
         
         ```json

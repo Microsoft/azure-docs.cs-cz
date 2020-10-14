@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d114017d5e5dfecfe20afc69849763a87aadd41
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86077367"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015312"
 ---
 # <a name="automation-with-service-principals"></a>Automatizace s využitím instančních objektů
 
@@ -33,8 +33,8 @@ Instanční objekty se dají vytvořit v Azure Portal nebo pomocí PowerShellu. 
 
 Přihlašovací údaje instančního objektu a certifikáty je možné bezpečně ukládat v Azure Automation pro operace sady Runbook. Další informace najdete v následujících tématech:
 
-[Prostředky přihlašovacích údajů v Azure Automation](../automation/automation-credentials.md)   
-[Prostředky certifikátů ve službě Azure Automation](../automation/automation-certificates.md)
+[Prostředky přihlašovacích údajů v Azure Automation](../automation/shared-resources/credentials.md)   
+[Prostředky certifikátů ve službě Azure Automation](../automation/shared-resources/certificates.md)
 
 ## <a name="add-service-principals-to-server-admin-role"></a>Přidání instančních objektů do role správce serveru
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO a ADOMD 
 
-Při připojování v klientských aplikacích a webových aplikacích podporují instalovatelné balíčky [klientských knihoven AMO a ADOMD](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) verze 15.0.2 a vyšší z NuGetu instanční objekty v připojovacích řetězcích pomocí následující syntaxe: `app:AppID` a heslo nebo `cert:thumbprint`. 
+Při připojování v klientských aplikacích a webových aplikacích podporují instalovatelné balíčky [klientských knihoven AMO a ADOMD](/analysis-services/client-libraries?view=azure-analysis-services-current) verze 15.0.2 a vyšší z NuGetu instanční objekty v připojovacích řetězcích pomocí následující syntaxe: `app:AppID` a heslo nebo `cert:thumbprint`. 
 
 V následujícím příkladu se `appID` a `password` používají k provedení operace aktualizace modelové databáze:
 
@@ -109,8 +109,8 @@ db.Model.SaveChanges();
 ```
 
 ## <a name="next-steps"></a>Další kroky
-[Přihlaste se pomocí Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[Přihlaste se pomocí Azure PowerShell](/powershell/azure/authenticate-azureps)   
 [Aktualizace pomocí Logic Apps](analysis-services-refresh-logic-app.md)  
 [Aktualizace s využitím služby Azure Automation](analysis-services-refresh-azure-automation.md)  
 [Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md)  
-[Automatizace úloh Power BI Premium pracovního prostoru a datové sady s instančními objekty](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 
+[Automatizace úloh Power BI Premium pracovního prostoru a datové sady s instančními objekty](/power-bi/admin/service-premium-service-principal)

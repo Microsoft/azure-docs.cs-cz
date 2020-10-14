@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: efdfc1c12191977c0422cda6c52eb9b73c95c55f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87d26e18ff97416ff8cb0eda08f7beb81005c627
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651186"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015698"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -34,7 +34,7 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 ## <a name="known-issues"></a>Známé problémy
 
 > [!NOTE]
-> [Azure Portal](https://portal.azure.com/) můžete použít ke správě [událostí V3 Live](live-events-outputs-concept.md), zobrazení [zdrojů](assets-concept.md) a úloh v3, získání informací o přístupu k rozhraním API a k šifrování obsahu. Pro všechny ostatní úlohy správy (například Správa transformací a úloh) použijte [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
+> [Azure Portal](https://portal.azure.com/) můžete použít ke správě [událostí V3 Live](live-events-outputs-concept.md), zobrazení [zdrojů](assets-concept.md) a úloh v3, získání informací o přístupu k rozhraním API a k šifrování obsahu. Pro všechny ostatní úlohy správy (například Správa transformací a úloh) použijte [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 >
 > Podrobnosti najdete v tématu [omezení Azure Portal pro Media Services V3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
@@ -174,7 +174,7 @@ Další informace najdete v tématu [cloudy a oblasti, ve kterých existuje Medi
 
 Oznamujeme, že vyřadíme nepoužívané procesory *Windows Azure Media Encoder* (WAME) a *Azure Media Encoder* (ázev), které jsou vyřazené. Informace o datech vyřazení najdete v článku tyto [starší součásti](../previous/legacy-components.md) .
 
-Podrobnosti najdete v článku [migrace WAME do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) a [migrace do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
+Podrobnosti najdete v článku [migrace WAME do Media Encoder Standard](../previous/migrate-windows-azure-media-encoder.md) a [migrace do Media Encoder Standard](../previous/migrate-azure-media-encoder.md).
  
 ## <a name="july-2019"></a>Červenec 2019
 

@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: e4c0ee0b1a049a7e82cbd1fac8e261fff5fdf375
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 884b1b85da5b52101ae5a0053003d47260a1134d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269722"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015817"
 ---
 # <a name="media-services-regulatory-compliance"></a>Media Services dodržování předpisů
 
@@ -33,11 +33,11 @@ Služby Media Services pro státní správu jsou kompatibilní s DoD CC SRG IL 2
 
 Recenze Media Services podle 3PAO a JAB není plánována pro 2020.
 
-Přečtěte si další informace o dodržování předpisů služeb Azure ve službě [Azure podle článku FedRAMP a DoD CC SRG audit Scope](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope) .
+Přečtěte si další informace o dodržování předpisů služeb Azure ve službě [Azure podle článku FedRAMP a DoD CC SRG audit Scope](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md) .
 
 ## <a name="azure-compliance-documentation"></a>Dokumentace k dodržování předpisů v Azure
 
-Pokud vaše organizace potřebuje dodržovat zákonné nebo regulativní normy pro globální, státní správu USA, regionální, finanční služby, stav, média a výrobní prostředí, začněte s [dokumentací k dodržování předpisů Azure](https://docs.microsoft.com/azure/compliance/).
+Pokud vaše organizace potřebuje dodržovat zákonné nebo regulativní normy pro globální, státní správu USA, regionální, finanční služby, stav, média a výrobní prostředí, začněte s [dokumentací k dodržování předpisů Azure](../../compliance/index.yml).
 
 Najdete v ní také další prostředky pro dodržování předpisů, jako jsou sestavy auditu, kontrolní seznam pro ochranu osobních údajů a Obecné nařízení o ochraně osobních údajů (GDPR), plány dodržování předpisů, země a oblastní pravidla, implementace a mapování, jakož i dokumenty White Paper a analytiky.
 

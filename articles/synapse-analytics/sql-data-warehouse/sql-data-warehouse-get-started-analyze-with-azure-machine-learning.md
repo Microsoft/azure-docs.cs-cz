@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 9cf65b2fdeb7faa03b950593db86dd32a4ef91a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea4038e88d41a089958d4199e4c5a00f0d2acabd
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86495715"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015562"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analýza dat pomocí Azure Machine Learning
 
@@ -56,7 +56,7 @@ FROM [dbo].[vTargetMail]
 
 Jakmile jsou data v Azure Data Lake Storage k dispozici, úložiště dat v Azure Machine Learning se použijí pro [připojení ke službám úložiště Azure](https://docs.microsoft.com/azure/machine-learning/how-to-access-data). Pomocí následujících kroků vytvořte úložiště dat a odpovídající datovou sadu:
 
-1. Spusťte Azure Machine Learning Studio buď z Azure Portal, nebo se přihlaste v [Azure Machine Learning Studiu](https://ml.azure.com/).
+1. Spusťte Azure Machine Learning Studio buď z Azure Portal nebo se přihlaste v [Azure Machine Learning Studiu](https://ml.azure.com/).
 
 1. V levém podokně v části **Správa** klikněte na **úložiště dat** a pak klikněte na **nové úložiště dat**.
 

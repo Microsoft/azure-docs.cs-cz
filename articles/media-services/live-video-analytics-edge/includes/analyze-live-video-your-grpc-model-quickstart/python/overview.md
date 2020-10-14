@@ -1,17 +1,16 @@
 ---
-ms.openlocfilehash: fa0c2f5bb00122b40fb4f4ea06b7cf55c0248904
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e96975bce5e5d99db4ea78c80c027a95d4b662e3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91025314"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92038587"
 ---
-
 ![Přehled](../../../media/quickstarts/gRPC-extension.svg)
 
-Tento diagram znázorňuje, jak tok signalizuje v tomto rychlém startu. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server RTSP (Real-time streaming Protocol). [Zdrojový uzel RTSP](../../../media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a odešle snímky videa do uzlu [procesoru detekce pohybu](../../../media-graph-concept.md#motion-detection-processor) . Tento procesor rozpozná pohyb a při detekci pozastaví snímky videa do uzlu [procesoru rozšíření gRPC](../../../media-graph-concept.md#grpc-extension-processor) .
+Tento diagram znázorňuje, jak tok signalizuje v tomto rychlém startu. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server protokolu RTSP (Real-Time streaming Protocol). [Zdrojový uzel RTSP](../../../media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a odešle snímky videa do uzlu [procesoru detekce pohybu](../../../media-graph-concept.md#motion-detection-processor) . Tento procesor rozpozná pohyb a při detekci pozastaví snímky videa do uzlu [procesoru rozšíření gRPC](../../../media-graph-concept.md#grpc-extension-processor) .
 
-Uzel rozšíření gRPC hraje roli proxy serveru. Převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes gRPC do jiného modulu Edge, který spouští model AI za koncovým bodem gRPC přes [sdílenou paměť](https://en.wikipedia.org/wiki/Shared_memory). V tomto příkladu je tento modul Edge sestaven pomocí modelu [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) , který dokáže detekovat mnoho typů objektů. Uzel procesoru rozšíření gRPC shromažďuje výsledky detekce a publikuje události do uzlu [IoT Hub jímka](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/media-graph-concept#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub).
+Uzel rozšíření gRPC hraje roli proxy serveru. Převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes gRPC do jiného modulu Edge, který spouští model AI za koncovým bodem gRPC přes [sdílenou paměť](https://en.wikipedia.org/wiki/Shared_memory). V tomto příkladu je tento modul Edge sestaven pomocí modelu [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) , který dokáže detekovat mnoho typů objektů. Uzel procesoru rozšíření gRPC shromažďuje výsledky detekce a publikuje události do uzlu [IoT Hub jímka](../../../media-graph-concept.md#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](../../../../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
 V tomto rychlém startu budete:
 

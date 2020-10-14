@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 17c9797935612c8697d30455e28cc91321b84772
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: f79152dbfa5a0576cd13484f9b3704eaed3901ea
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999674"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015920"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
@@ -24,6 +24,7 @@ Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku n
 ## <a name="october-2020"></a>Říjen 2020
 
 * Podpora Hindština pro Analýza mínění v3. x počínaje verzí modelu `2020-04-01` . 
+* Model verze `2020-09-01` pro koncový bod V3/languages, který přináší zvýšené jazykové rozpoznávání a vylepšení přesnosti.
 
 ## <a name="september-2020"></a>Září 2020
 
@@ -191,9 +192,9 @@ Další typy entit jsou teď dostupné ve službě pro rozpoznávání pojmenova
 
 #### <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
 
-* [Nový koncový bod](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) pro rozpoznávání typů entit osobních informací (jenom v angličtině)
+* [Nový koncový bod](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii) pro rozpoznávání typů entit osobních informací (jenom v angličtině)
 
-* Samostatné koncové body pro [rozpoznávání entit](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) a [propojení entit](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
+* Samostatné koncové body pro [rozpoznávání entit](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral) a [propojení entit](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking).
 
 * [Verze modelu](concepts/model-versioning.md) `2019-10-01` , která zahrnuje:
     * Rozšířené zjišťování a kategorizace entit nalezených v textu. 
@@ -205,7 +206,7 @@ Propojení entit podporuje angličtinu a španělštinu. Podpora jazyků NER se 
 
 #### <a name="sentiment-analysis-v3-public-preview"></a>Verze Public Preview Analýza mínění V3
 
-* [Nový koncový bod](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) pro analýzu mínění.
+* [Nový koncový bod](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Sentiment) pro analýzu mínění.
 * [Verze modelu](concepts/model-versioning.md) `2019-10-01` , která zahrnuje:
 
     * Významná vylepšení přesnosti a podrobností o kategorizaci a bodování textu rozhraní API.

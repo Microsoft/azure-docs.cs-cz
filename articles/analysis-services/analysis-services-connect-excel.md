@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 123e271ae1b83603d599b9ef0381e25b3c963def
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4658a4c05aac7932d8a99c3511f21024f19fbe47
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85361553"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013725"
 ---
 # <a name="connect-with-excel"></a>Propojení s Excelem
 
@@ -42,7 +42,5 @@ Připojení k serveru v Excelu je podporované pomocí získat data v Excelu 201
 
 ## <a name="see-also"></a>Viz také
 
-[Klientské knihovny](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
-[Správa serveru](analysis-services-manage.md)     
-
-
+[Klientské knihovny](/analysis-services/client-libraries?view=azure-analysis-services-current)   
+[Správa serveru](analysis-services-manage.md)

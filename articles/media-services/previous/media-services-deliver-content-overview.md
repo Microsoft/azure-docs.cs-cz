@@ -10,12 +10,12 @@ ms.workload: media
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b636d1cdf2e4b9bd137768e22240d8a47d724a97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 363bb5389eda8336d04b1ff457f8246e89a042d8
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266030"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014381"
 ---
 # <a name="deliver-content-to-customers"></a>Doručování obsahu zákazníkům
 
@@ -69,7 +69,7 @@ Lokátory mají datum vypršení platnosti. Azure Portal nastaví datum vypršen
 > 
 > 
 
-Pokud chcete aktualizovat datum vypršení platnosti lokátoru, použijte rozhraní [REST](/rest/api/media/operations/locator#update_a_locator) API nebo [.NET](https://go.microsoft.com/fwlink/?LinkID=533259). Upozorňujeme, že při aktualizaci data vypršení platnosti lokátoru SAS se změní adresa URL.
+Pokud chcete aktualizovat datum vypršení platnosti lokátoru, použijte rozhraní [REST](/rest/api/media/operations/locator#update_a_locator) API nebo [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client.ilocator). Upozorňujeme, že při aktualizaci data vypršení platnosti lokátoru SAS se změní adresa URL.
 
 Lokátory nejsou určené ke správě řízení přístupu pro jednotlivé uživatele. Pomocí řešení Digital Rights Management (DRM) můžete jednotlivým uživatelům udělit různá přístupová práva. Další informace najdete v tématu [zabezpečení médií](/previous-versions/azure/dn282272(v=azure.100)).
 
@@ -154,7 +154,7 @@ Koncový bod streamování představuje službu streamování, která může dor
 
 ## <a name="known-issues"></a>Známé problémy
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Změny verze manifestu Smooth Streaming
-Před vydáním služby z července 2016 – když byly assety vytvořené pomocí Media Encoder Standard, Media Encoder Premium Workflow nebo dřívější Azure Media Encoder streamované pomocí dynamického balení – vrácený Smooth Streamingový manifest by odpovídal verzi 2,0. Ve verzi 2,0 nejsou fragmenty trvání fragmentů použity jako značky opakování (' r '). Například:
+Před vydáním služby z července 2016 – když byly assety vytvořené pomocí Media Encoder Standard, Media Encoder Premium Workflow nebo dřívější Azure Media Encoder streamované pomocí dynamického balení – vrácený Smooth Streamingový manifest by odpovídal verzi 2,0. Ve verzi 2,0 nejsou fragmenty trvání fragmentů použity jako značky opakování (' r '). Příklad:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -169,7 +169,7 @@ Před vydáním služby z července 2016 – když byly assety vytvořené pomoc
 </SmoothStreamingMedia>
 ```
 
-Ve vydání z července 2016 se vygenerovaný manifest Smooth Streaming v souladu s verzí 2,2 s dobami fragmentace pomocí značek opakování. Například:
+Ve vydání z července 2016 se vygenerovaný manifest Smooth Streaming v souladu s verzí 2,2 s dobami fragmentace pomocí značek opakování. Příklad:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

@@ -8,12 +8,12 @@ ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 10e091ed58146d992d7b9c1f65b8b64f881a41b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93b1e9a2ea052a39e891cf9084b632f434c341df
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400277"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013691"
 ---
 # <a name="connecting-to-servers"></a>Připojení k serverům
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak se připojit k serveru pomocí aplikací pro m
 
 ## <a name="client-libraries"></a>Klientské knihovny
 
-[Získat nejnovější klientské knihovny](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
+[Získat nejnovější klientské knihovny](/analysis-services/client-libraries?view=azure-analysis-services-current)
 
 Všechna připojení k serveru bez ohledu na typ vyžadují aktualizované knihovny AMO, ADOMD.NET a klienta OLEDB pro připojení k serveru Analysis Services a jeho rozhraní. V případě aplikací SSMS, Visual Studio, Excel 2016 a novějších a Power BI jsou nejnovější klientské knihovny nainstalovány nebo aktualizovány pomocí měsíčních vydání. V některých případech je však možné, že aplikace nebude mít nejnovější verzi. Například při zpoždění aktualizace zásad nebo Microsoft 365 aktualizace jsou na odloženém kanálu.
 
@@ -79,7 +79,7 @@ Se staršími verzemi Excelu se uživatelé můžou k serveru Azure Analysis Ser
 
 ## <a name="connect-as-a-linked-server-from-sql-server"></a>Připojit jako propojený server z SQL Server
 
-SQL Server se může připojit k prostředku Azure Analysis Services jako [propojený server](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) zadáním MSOLAP jako zprostředkovatele zdrojů dat. Před konfigurací připojení připojeného serveru nezapomeňte nainstalovat nejnovější [klientskou knihovnu MSOLAP](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (poskytovatele). 
+SQL Server se může připojit k prostředku Azure Analysis Services jako [propojený server](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) zadáním MSOLAP jako zprostředkovatele zdrojů dat. Před konfigurací připojení připojeného serveru nezapomeňte nainstalovat nejnovější [klientskou knihovnu MSOLAP](/analysis-services/client-libraries?view=azure-analysis-services-current) (poskytovatele). 
 
 U připojení k serveru Azure Analysis Services musí být poskytovatel MSOLAP vytvořen mimo SQL Server proces. Při konfiguraci možností propojeného serveru se ujistěte, že **není vybraná**možnost **zakázat zpracování** .
 
@@ -100,5 +100,4 @@ Cannot initialize the data source object of OLE DB provider "MSOLAP" for linked 
 
 [Připojení pomocí Excelu](analysis-services-connect-excel.md)    
 [Připojení pomocí Power BI](analysis-services-connect-pbi.md)   
-[Správa serveru](analysis-services-manage.md)   
-
+[Správa serveru](analysis-services-manage.md)

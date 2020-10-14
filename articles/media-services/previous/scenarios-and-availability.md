@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: eb9d901a32d558f676ba10eaf65b54c51bfbcda8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99604092ea901458062abd6423d74ad8f1f2c8d7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259179"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014405"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
 
@@ -89,10 +89,10 @@ Informace o dostupnosti v datových centrech najdete v části [Dostupnost](#ava
 
 ## <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>Použití Media Analytics k získání prakticky uplatnitelných informací z videí
 
-Media Analytics je kolekce řečových a vizuálních komponent, které organizacím a podnikům umožňují, aby ze svých videosouborů odvodily prakticky využitelné informace. Další informace najdete v článku o [přehledu Azure Media Services Analytics](media-services-analytics-overview.md).
+Media Analytics je kolekce řečových a vizuálních komponent, které organizacím a podnikům umožňují, aby ze svých videosouborů odvodily prakticky využitelné informace. Další informace najdete v článku o [přehledu Azure Media Services Analytics](./legacy-components.md).
 
 1. Nahrajte do prostředku vysoce kvalitní mediální soubor.
-2. Zpracovávejte videa pomocí některé ze služeb Analýzy mediálních služeb popsaných v části [Přehled Analýz mediálních služeb](media-services-analytics-overview.md).
+2. Zpracovávejte videa pomocí některé ze služeb Analýzy mediálních služeb popsaných v části [Přehled Analýz mediálních služeb](./legacy-components.md).
 3. Procesory médií z Media Analytics vytvářejí soubory MP4 nebo soubory JSON. Pokud procesor médií vytvořil soubor MP4, můžete ho progresivně stahovat. Pokud procesor médií vytvořil soubor JSON, můžete ho stáhnout z úložiště objektů blob v Azure.
 
 Informace o dostupnosti v datových centrech najdete v části [Dostupnost](#availability).
@@ -203,7 +203,7 @@ AMS nabízí dva kodéry na vyžádání – **Media Encoder Standard** a **Prac
 
 ### <a name="analytics-media-processors"></a>Analytické procesory médií
 
-Media Analytics je kolekce řečových a vizuálních komponent, které organizacím a podnikům umožňují, aby ze svých videosouborů odvodily prakticky využitelné informace. Další informace najdete v článku o [přehledu Azure Media Services Analytics](media-services-analytics-overview.md).
+Media Analytics je kolekce řečových a vizuálních komponent, které organizacím a podnikům umožňují, aby ze svých videosouborů odvodily prakticky využitelné informace. Další informace najdete v článku o [přehledu Azure Media Services Analytics](./legacy-components.md).
 
 > [!NOTE]
 > Některé procesory pro analýzu médií budou vyřazeny. Data o vyřazení najdete v tématu [starší verze součástí](legacy-components.md) .

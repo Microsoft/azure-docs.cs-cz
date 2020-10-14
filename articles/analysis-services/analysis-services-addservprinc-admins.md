@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ce8f7347e4813e72ede426ab17f09221ab859136
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e751d210ab472d82e4abd613d37069a8c591f52
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015404"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013929"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Přidání instančního objektu k roli správce serveru 
 
@@ -117,5 +117,5 @@ Pak můžete pomocí tohoto ID klienta v kombinaci s ID tenanta přidat spravova
 
 ## <a name="related-information"></a>Související informace
 
-* [Stáhnout SQL Server modul PowerShellu](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
-* [Stáhnout SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
+* [Stáhnout SQL Server modul PowerShellu](/sql/ssms/download-sql-server-ps-module)   
+* [Stáhnout SSMS](/sql/ssms/download-sql-server-management-studio-ssms)

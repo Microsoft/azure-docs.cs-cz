@@ -1,5 +1,5 @@
 ---
-title: Použití koncových bodů Machine Learning v Azure Stream Analytics
+title: Použití koncových bodů Azure Machine Learning Studio (Classic) v Azure Stream Analytics
 description: Tento článek popisuje, jak používat funkce uživatelsky definovaného jazyka počítače v Azure Stream Analytics.
 author: jseb225
 ms.author: jeanb
@@ -7,31 +7,31 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: f54245013b6a57c02120c0e97ecf5f39094148b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bcff14f655385aa467878f21927ac091095c91f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317731"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015511"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Integrace Azure Machine Learning Studio (Classic) v Stream Analytics (Preview)
 Stream Analytics podporuje uživatelsky definované funkce, které volají koncové body Azure Machine Learning Studio (Classic). Podpora REST API pro tuto funkci je podrobně popsána v [knihovně Stream Analytics REST API](https://msdn.microsoft.com/library/azure/dn835031.aspx). Tento článek poskytuje dodatečné informace potřebné k úspěšné implementaci této funkce v Stream Analytics. V [tomto](stream-analytics-machine-learning-integration-tutorial.md)kurzu je také publikovaný a dostupný.
 
 ## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>Přehled: terminologie Azure Machine Learning Studio (Classic)
-Microsoft Azure Machine Learning Studio (Classic) poskytuje nástroj pro spolupráci a přetahování, který můžete použít k sestavení, testování a nasazení prediktivních analytických řešení na vaše data. Tento nástroj se nazývá *Azure Machine Learning Studio (Classic)*. Studio slouží k interakci s Machine Learning prostředky a snadné sestavení, testování a iteraci v návrhu. Níže jsou uvedené prostředky a jejich definice.
+Microsoft Azure Machine Learning Studio (Classic) poskytuje nástroj pro spolupráci a přetahování, který můžete použít k sestavení, testování a nasazení prediktivních analytických řešení na vaše data. Tento nástroj se nazývá *Azure Machine Learning Studio (Classic)*. Studio (Classic) slouží k interakci s prostředky strojového učení a k snadnému sestavování, testování a iteraci v návrhu. Níže jsou uvedené prostředky a jejich definice.
 
-* **Pracovní prostor**: *pracovní prostor* je kontejner, který obsahuje všechny ostatní Machine Learning prostředky společně v kontejneru pro správu a řízení.
+* **Pracovní prostor**: *pracovní prostor* je kontejner, který obsahuje všechny ostatní prostředky strojového učení společně v kontejneru pro správu a řízení.
 * **Experiment**: *experimenty* vytvářejí datové odborníky za účelem využití datových sad a výukového modelu strojového učení.
-* **Koncový bod**: *koncové body* jsou objekt Azure Machine Learning Studio (klasický), který slouží k převzetí funkcí jako vstup, použití zadaného modelu Machine Learning a vrácení výstupu vráceného skóre.
+* **Koncový bod**: *koncové body* jsou objekt Studio (Classic), který slouží k převzetí funkcí jako vstup, použití zadaného modelu Machine Learning a vrácení výstupu vraceného skóre.
 * Služba **bodování**: *Webová služba bodování* je kolekce koncových bodů, jak je uvedeno výše.
 
 Každý koncový bod obsahuje rozhraní API pro spuštění dávky a synchronní spuštění. Stream Analytics používá synchronní spuštění. Konkrétní služba se nazývá [Služba požadavků a odpovědí](../machine-learning/classic/consume-web-services.md) v Azure Machine Learning Studio (Classic).
 
-## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Machine Learning prostředky potřebné pro úlohy Stream Analytics
+## <a name="studio-classic-resources-needed-for-stream-analytics-jobs"></a>Prostředky studia (Classic) potřebné pro úlohy Stream Analytics
 Pro účely Stream Analytics zpracování úloh je pro úspěšné provedení nutné provést i koncový bod požadavek/odpověď, [apikey](https://docs.microsoft.com/azure/machine-learning/studio/consume-web-services)a definici Swagger. Stream Analytics má další koncový bod, který vytvoří adresu URL koncového bodu Swagger, vyhledá rozhraní a vrátí výchozí definici UDF pro uživatele.
 
-## <a name="configure-a-stream-analytics-and-machine-learning-udf-via-rest-api"></a>Konfigurace Stream Analytics a Machine Learning systému souborů UDF prostřednictvím REST API
-Pomocí rozhraní REST API můžete nakonfigurovat úlohu pro volání funkcí jazyka Azure Machine. Kroky jsou následující:
+## <a name="configure-a-stream-analytics-and-studio-classic-udf-via-rest-api"></a>Konfigurace Stream Analytics a studia (Classic) UDF přes REST API
+Pomocí rozhraní REST API můžete nakonfigurovat úlohu, aby volala funkce studia (Classic). Kroky jsou následující:
 
 1. Vytvoření úlohy Stream Analytics
 2. Definování vstupu
@@ -68,7 +68,7 @@ Příklad textu žádosti:
 ```
 
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>Volat koncový bod RetrieveDefaultDefinition pro výchozí systém souborů UDF
-Jakmile se vytvoří kostra systému souborů UDF, je potřeba, aby byla úplná definice UDF. Koncový bod RetrieveDefaultDefinition vám pomůže získat výchozí definici pro skalární funkci, která je svázána s koncovým bodem Azure Machine Learning Studio (Classic). Datová část níže vyžaduje, abyste získali výchozí definici UDF pro skalární funkci, která je vázaná na Azure Machine Learning koncový bod. Neurčuje skutečný koncový bod, protože již byl poskytnut během žádosti o vložení. Stream Analytics volá koncový bod poskytnutý v žádosti, pokud je k dispozici explicitně. V opačném případě používá původně odkazovaný. V tomto případě systém souborů UDF převezme parametr s jedním řetězcem (větu) a vrátí jediný výstup typu String, který označuje popisek "mínění" pro tuto větu.
+Jakmile se vytvoří kostra systému souborů UDF, je potřeba, aby byla úplná definice UDF. Koncový bod RetrieveDefaultDefinition vám pomůže získat výchozí definici pro skalární funkci, která je svázána s koncovým bodem Azure Machine Learning Studio (Classic). Datová část níže vyžaduje, abyste získali výchozí definici UDF pro skalární funkci, která je vázaná na koncový bod studia (Classic). Neurčuje skutečný koncový bod, protože již byl poskytnut během žádosti o vložení. Stream Analytics volá koncový bod poskytnutý v žádosti, pokud je k dispozici explicitně. V opačném případě používá původně odkazovaný. V tomto případě systém souborů UDF převezme parametr s jedním řetězcem (větu) a vrátí jediný výstup typu String, který označuje popisek "mínění" pro tuto větu.
 
 ```
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>

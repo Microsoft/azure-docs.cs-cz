@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 4b7f596d2184d25229cc1a8e496d0d78eaaabdb6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 180490dc79554efa072311e9a2b7f5df348b432b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994675"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014235"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -401,7 +401,7 @@ Každá odeslaná položka nese `itemCount` vlastnost, která ukazuje, kolik pů
 
 Přesunutí stávajících Application Insightsch prostředků z jedné oblasti do druhé není v **současné době podporováno**. Historická data, která jste shromáždili, **nelze migrovat** do nové oblasti. Jedinou částečnou alternativou je:
 
-1. Vytvořte novou značku Application Insights prostředku (v[klasickém](app/create-new-resource.md) [prostředí nebo na základě pracovního prostoru](/app/create-workspace-resource.md)) v nové oblasti.
+1. Vytvořte novou značku Application Insights prostředku (v[klasickém](app/create-new-resource.md) [prostředí nebo na základě pracovního prostoru](/azure/azure-monitor/app/create-workspace-resource)) v nové oblasti.
 2. Znovu vytvořit všechna jedinečná vlastní nastavení specifická pro původní prostředek v novém prostředku.
 3. Upravte aplikaci tak, aby používala [klíč instrumentace](app/create-new-resource.md#copy-the-instrumentation-key) prostředku nové oblasti nebo [připojovací řetězec](app/sdk-connection-string.md).  
 4. Otestujte, abyste potvrdili, že vše pokračuje v práci podle očekávání u nového prostředku Application Insights. 
@@ -414,7 +414,7 @@ Jedinečné vlastní nastavení, která se běžně musí ručně znovu vytvoři
 - Znovu vytvořte výstrahy dostupnosti.
 - Vytvořte znovu všechna vlastní nastavení Role-Based Access Control (RBAC), která jsou nutná pro to, aby vaši uživatelé měli přístup k novému prostředku. 
 - Umožňuje replikovat nastavení zahrnující vzorkování ingestování, uchovávání dat, denní limit a vlastní metriky. Tato nastavení se řídí přes podokno **využití a odhadované náklady** .
-- Veškerá integrace, která spoléhá na klíče rozhraní API, jako jsou [poznámky k verzi](/app/annotations.md), [kanály zabezpečeného řízení metriky](app/live-stream.md#secure-the-control-channel) atd. Budete muset vygenerovat nové klíče rozhraní API a aktualizovat přidruženou integraci. 
+- Veškerá integrace, která spoléhá na klíče rozhraní API, jako jsou [poznámky k verzi](/azure/azure-monitor/app/annotations), [kanály zabezpečeného řízení metriky](app/live-stream.md#secure-the-control-channel) atd. Budete muset vygenerovat nové klíče rozhraní API a aktualizovat přidruženou integraci. 
 - Průběžný export v klasických zdrojích by se musel znovu nakonfigurovat.
 - Nastavení diagnostiky v prostředcích založených na pracovních prostorech by se muselo nakonfigurovat znovu.
 

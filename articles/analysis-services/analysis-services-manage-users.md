@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c44ac820349973240328fbb92dea14668b019a12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 032b63700f2842826de916a8f077975689d56911
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400787"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014898"
 ---
 # <a name="authentication-and-user-permissions"></a>Ověřování a uživatelská oprávnění
 
-Azure Analysis Services používá ke správě identit a ověřování uživatelů Azure Active Directory (Azure AD). Každý uživatel, který vytváří, spravuje nebo připojuje k serveru Azure Analysis Services, musí mít platnou identitu uživatele v [Tenantovi Azure AD](../active-directory/fundamentals/active-directory-administer.md) ve stejném předplatném.
+Azure Analysis Services používá ke správě identit a ověřování uživatelů Azure Active Directory (Azure AD). Každý uživatel, který vytváří, spravuje nebo připojuje k serveru Azure Analysis Services, musí mít platnou identitu uživatele v [Tenantovi Azure AD](../active-directory/fundamentals/active-directory-whatis.md) ve stejném předplatném.
 
-Azure Analysis Services podporuje [spolupráci Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md). Pomocí B2B můžou být uživatelé mimo organizaci pozváni jako uživatelé typu Host v adresáři Azure AD. Hosté můžou být z jiného adresáře tenanta služby Azure AD nebo jakékoli platné e-mailové adresy. Po pozvánce a uživatel přijme pozvánku odeslanou e-mailem z Azure, přidá se do adresáře tenanta identita uživatele. Tyto identity je možné přidat do skupin zabezpečení nebo jako členy role správce serveru nebo databáze.
+Azure Analysis Services podporuje [spolupráci Azure AD B2B](../active-directory/external-identities/what-is-b2b.md). Pomocí B2B můžou být uživatelé mimo organizaci pozváni jako uživatelé typu Host v adresáři Azure AD. Hosté můžou být z jiného adresáře tenanta služby Azure AD nebo jakékoli platné e-mailové adresy. Po pozvánce a uživatel přijme pozvánku odeslanou e-mailem z Azure, přidá se do adresáře tenanta identita uživatele. Tyto identity je možné přidat do skupin zabezpečení nebo jako členy role správce serveru nebo databáze.
 
 ![Azure Analysis Services Architektura ověřování](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
 ## <a name="authentication"></a>Authentication
 
-Všechny klientské aplikace a nástroje používají k připojení k serveru jednu nebo více Analysis Services [klientských knihoven](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (AMO, MSOLAP, ADOMD). 
+Všechny klientské aplikace a nástroje používají k připojení k serveru jednu nebo více Analysis Services [klientských knihoven](/analysis-services/client-libraries?view=azure-analysis-services-current) (AMO, MSOLAP, ADOMD). 
 
 Všechny tři klientské knihovny podporují jak interaktivní tok Azure AD, tak i neinteraktivní metody ověřování. Dvě neinteraktivní metody, heslo služby Active Directory a integrované metody ověřování služby Active Directory, se dají použít v aplikacích, které využívají AMOMD a MSOLAP. Tyto dvě metody nikdy nevedou k místním dialogovým oknům.
 
@@ -34,11 +34,11 @@ V závislosti na klientské aplikaci nebo nástroji, které používáte, se typ
 
 Power BI Desktop, Visual Studio a SSMS podporují univerzální ověřování služby Active Directory, což je interaktivní metoda, která podporuje taky Azure Multi-Factor Authentication (MFA). Azure MFA pomáhá chránit přístup k datům a aplikacím a současně poskytuje jednoduchý proces přihlašování. Zajišťuje silné ověřování s několika možnostmi ověřování (telefonní hovor, textová zpráva, čipové karty s kódem PIN nebo oznámením v mobilní aplikaci). Interaktivní vícefaktorové ověřování pomocí Azure AD může mít za následek automaticky otevírané okno k ověření. **Doporučuje se univerzální ověřování**.
 
-Pokud se přihlašujete k Azure pomocí účtu systému Windows a univerzální ověřování není vybráno nebo není k dispozici (Excel), je požadováno [Active Directory Federation Services (AD FS) (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) . Pomocí federace se uživatelé Azure AD a Microsoft 365 ověřují pomocí místních přihlašovacích údajů a můžou získat přístup k prostředkům Azure.
+Pokud se přihlašujete k Azure pomocí účtu systému Windows a univerzální ověřování není vybráno nebo není k dispozici (Excel), je požadováno [Active Directory Federation Services (AD FS) (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs) . Pomocí federace se uživatelé Azure AD a Microsoft 365 ověřují pomocí místních přihlašovacích údajů a můžou získat přístup k prostředkům Azure.
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 
-Servery Azure Analysis Services podporují připojení ze [SSMS v 17.1](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a vyšší pomocí ověřování systému Windows, ověřování pomocí hesla služby Active Directory a univerzálního ověřování služby Active Directory. Obecně se doporučuje použít univerzální ověřování služby Active Directory z těchto důvodů:
+Servery Azure Analysis Services podporují připojení ze [SSMS v 17.1](/sql/ssms/download-sql-server-management-studio-ssms) a vyšší pomocí ověřování systému Windows, ověřování pomocí hesla služby Active Directory a univerzálního ověřování služby Active Directory. Obecně se doporučuje použít univerzální ověřování služby Active Directory z těchto důvodů:
 
 *  Podporuje interaktivní a neinteraktivní metody ověřování.
 
@@ -81,4 +81,4 @@ Role na této úrovni se vztahují na uživatele nebo účty, které potřebují
 [Správa přístupu k prostředkům pomocí skupin Azure Active Directory](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Správa databázových rolí a uživatelů](analysis-services-database-users.md)  
 [Správa správců serveru](analysis-services-server-admins.md)  
-[Řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md)  
+[Řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md)

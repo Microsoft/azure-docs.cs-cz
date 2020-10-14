@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: d1655b42b57edaeeaaaada802a248f56e0ba1470
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c689c83e50a42885900f62d1a65d0aa75f36f2ec
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801456"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014018"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuální partneři sítě WAN a umístění virtuálních rozbočovačů
 
@@ -40,7 +40,7 @@ Někteří partneři pro připojení můžou automatizovat automatizaci, aby zah
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-Následující partneři jsou plánované s naším plánem v blízké budoucnosti: 128 technologie, Arista, Cisco Systems (Viptela), F5 Networks, Oracle SD-WAN a SharpLink.
+Následující partneři jsou plánované podle našeho plánu na základě seznamu podmínek podepsaného mezi společnostmi, které označují rozsah práce pro automatizaci připojení IPsec mezi partnerským zařízením a Azure Virtual WAN Gateway: 128 technologie, Arista, F5 Networks, Oracle SD-WAN (Talari) a SharpLink.
 
 ## <a name="partners-with-integrated-virtual-hub-offerings"></a>Partneři s integrovanými nabídkami virtuálního centra
 Kromě automatizovaného připojení pobočky k protokolu IPSec můžou někteří partneři nabízet **Síťová virtuální zařízení (síťová virtuální zařízení)** , která se dají integrovat přímo do centra Azure Virtual WAN.  To zákazníkům umožňuje ukončit připojení svých poboček do kompatibilního zařízení třetí strany ve virtuálním centru.  

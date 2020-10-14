@@ -16,12 +16,12 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90b4680c725f3b5b7fcb6b988e52410c572b2cfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f49b951473db4b331bc42de3fb72829270822d5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262395"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014371"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kódování assetu pomocí Media Encoder Standard pomocí .NET
 
@@ -29,7 +29,7 @@ ms.locfileid: "89262395"
 
 Úlohy kódování jsou jednou z nejběžnějších operací zpracování v Media Services. Vytvoříte úlohy kódování pro převod mediálních souborů z jednoho kódování na jiný. Při kódování můžete použít integrovaný kodér médií Media Services. Můžete také použít kodér poskytovaný Media Services partnerem. kodéry třetích stran jsou k dispozici prostřednictvím Azure Marketplace. 
 
-Tento článek ukazuje, jak použít .NET ke kódování prostředků pomocí Media Encoder Standard (status). Media Encoder Standard se konfiguruje pomocí některého z přednastavení kodérů popsaných [tady](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+Tento článek ukazuje, jak použít .NET ke kódování prostředků pomocí Media Encoder Standard (status). Media Encoder Standard se konfiguruje pomocí některého z přednastavení kodérů popsaných [tady](./media-services-mes-presets-overview.md).
 
 Doporučuje se, aby se zdrojové soubory vždycky zakódovat do sady souborů MP4 s adaptivní přenosovou rychlostí, a pak tuto sadu převést na požadovaný formát pomocí [dynamického balení](media-services-dynamic-packaging-overview.md). 
 
@@ -44,7 +44,7 @@ Pokud je váš výstupní prostředek zašifrovaný z úložiště, musíte nako
 [Formáty a kodeky](media-services-media-encoder-standard-formats.md)
 
 ### <a name="mes-presets"></a>Přednastavení MES
-Media Encoder Standard se konfiguruje pomocí některého z přednastavení kodérů popsaných [tady](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+Media Encoder Standard se konfiguruje pomocí některého z přednastavení kodérů popsaných [tady](./media-services-mes-presets-overview.md).
 
 ### <a name="input-and-output-metadata"></a>Vstupní a výstupní metadata
 Při kódování vstupního prostředku (nebo prostředků) pomocí nástroje pro vytváření se systémem získáte výstupní Asset po úspěšném dokončení této úlohy kódování. Výstupní Asset obsahuje video, zvuk, miniatury, manifest atd. na základě použité předvolby kódování.
@@ -215,4 +215,3 @@ namespace MediaEncoderStandardSample
 ## <a name="next-steps"></a>Další kroky
 [Jak generovat miniaturu pomocí Media Encoder Standard s .NET](media-services-dotnet-generate-thumbnail-with-mes.md) 
  [Přehled kódování Media Services](media-services-encode-asset.md)
-

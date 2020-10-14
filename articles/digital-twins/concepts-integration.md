@@ -7,16 +7,18 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7e360c158c7887109684d13f774cbbda1813373e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fcad5798d421939717a6beae01ae9930cfcb117
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729130"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015017"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Integrace digitálních vláken Azure s ostatními službami
 
-Digitální vlákna Azure se obvykle používají společně s jinými službami. Pomocí [**tras událostí**](concepts-route-events.md)dostávají digitální vlákna Azure data z nadřazených služeb, jako jsou [IoT Hub](../iot-hub/about-iot-hub.md) nebo [Logic Apps](../logic-apps/logic-apps-overview.md), které se používají k poskytování telemetrie a oznámení. 
+Digitální vlákna Azure se obvykle používají společně s jinými službami k vytváření flexibilních a propojených řešení, která používají vaše data, a to mnoha různými způsoby.
+
+Pomocí [**tras událostí**](concepts-route-events.md)můžou digitální vlákna Azure přijímat data z nadřazených služeb, jako jsou [IoT Hub](../iot-hub/about-iot-hub.md) nebo [Logic Apps](../logic-apps/logic-apps-overview.md), které se používají k doručování telemetrie a oznámení. 
 
 Digitální vlákna Azure taky můžou směrovat data na služby pro příjem dat, jako jsou [Azure Maps](../azure-maps/about-azure-maps.md) a [Time Series Insights](../time-series-insights/time-series-insights-update-overview.md), pro úložiště, integraci pracovních postupů, analýzy a další. 
 
@@ -24,7 +26,7 @@ Digitální vlákna Azure taky můžou směrovat data na služby pro příjem da
 
 Digitální vlákna Azure je možné řídit pomocí dat a událostí z libovolné služby –[IoT Hub](../iot-hub/about-iot-hub.md), [Logic Apps](../logic-apps/logic-apps-overview.md), vaší vlastní služby a dalších. Díky tomu můžete shromažďovat telemetrii od fyzických zařízení ve vašem prostředí a zpracovávat tato data pomocí grafu digitálních vláken Azure v cloudu.
 
-Digitální vlákna Azure nemají vestavěnou IoT Hub. Můžete použít existující IoT Hub aktuálně v produkčním prostředí, nebo nasadit novou. Získáte tak úplný přístup ke všem funkcím správy zařízení IoT Hub.
+Místo toho, aby se na pozadí nastavila integrovaná IoT Hub, vám digitální vlákna Azure umožní "Přineste si vlastní" IoT Hub pro použití se službou. Můžete použít existující IoT Hub, kterou máte v současnosti v produkčním prostředí, nebo nasadit novou, která se má pro tento účel použít. Získáte tak úplný přístup ke všem funkcím správy zařízení IoT Hub.
 
 K ingestování dat z libovolného zdroje do digitálních vláken Azure použijte [**funkci Azure**](../azure-functions/functions-overview.md). Přečtěte si další informace o tomto modelu v tématu Postupy: ingestování [*telemetrie z IoT Hub*](how-to-ingest-iot-hub-data.md)nebo si to Vyzkoušejte sami v kurzu digitálních vláken Azure [*: připojení kompletního řešení*](tutorial-end-to-end.md). 
 

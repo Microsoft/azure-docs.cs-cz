@@ -1,27 +1,22 @@
 ---
-title: Publikování vzdálené plochy pomocí proxy serveru Aplikace Azure AD | Microsoft Docs
-description: Popisuje, jak nakonfigurovat proxy aplikace pomocí služby RDS.
+title: Publikování vzdálené plochy pomocí Proxy aplikací služby Azure Active Directory
+description: Popisuje, jak nakonfigurovat proxy aplikace pomocí služby Vzdálená plocha (RDS).
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: kenwith
-ms.custom: it-pro
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83d7ed6c937d515520058819636bc23c8de173fd
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89396756"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015272"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování Vzdálené plochy pomocí Proxy aplikací služby Azure AD
 
@@ -101,7 +96,7 @@ Připojte se k nasazení služby Vzdálená plocha jako správce a změňte náz
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
    ```
 
-   **Například:**
+   **Příklad:**
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
@@ -146,6 +141,6 @@ Chcete-li použít předávací ověřování, existují pouze dvě úpravy krok
 2. V [přímém přenosu RDS do proxy aplikace](#direct-rds-traffic-to-application-proxy)vynechejte úplně krok 8.
 
 ## <a name="next-steps"></a>Další kroky
-
-[Povolení vzdáleného přístupu k SharePointu pomocí Azure proxy aplikací služby AD](application-proxy-integrate-with-sharepoint-server.md) 
- [Požadavky na zabezpečení při vzdáleném přístupu k aplikacím pomocí Azure proxy aplikací služby AD](application-proxy-security.md)
+- [Povolení vzdáleného přístupu k SharePointu s využitím Proxy aplikací služby Azure AD](application-proxy-integrate-with-sharepoint-server.md)
+- [Požadavky na zabezpečení při vzdáleném přístupu k aplikacím pomocí Azure Proxy aplikací služby AD](application-proxy-security.md)
+- [Osvědčené postupy pro vyrovnávání zatížení několika aplikačních serverů](application-proxy-high-availability-load-balancing.md#best-practices-for-load-balancing-among-multiple-app-servers)

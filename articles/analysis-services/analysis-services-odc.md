@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 36031006f155f1651845dbce48b6c6ec84397e93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 039783fc10fb08523dc81e13b5f6f456fa8d0c97
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85361417"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014762"
 ---
 # <a name="create-an-office-data-connection-file"></a>Vytvoření souboru s datovým připojením Office
 
-Informace v tomto článku popisují, jak můžete vytvořit soubor datového připojení Office pro připojení k serveru Azure Analysis Services z verze Excel 2016, 16.0.7369.2117 nebo starší nebo Excel 2013. Vyžaduje se i aktualizovaný [poskytovatel MSOLAP. 7](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) .
+Informace v tomto článku popisují, jak můžete vytvořit soubor datového připojení Office pro připojení k serveru Azure Analysis Services z verze Excel 2016, 16.0.7369.2117 nebo starší nebo Excel 2013. Vyžaduje se i aktualizovaný [poskytovatel MSOLAP. 7](/analysis-services/client-libraries?view=azure-analysis-services-current) .
 
 
 1. Níže zkopírujte soubor s ukázkovým připojením a vložte ho do textového editoru. 
@@ -144,6 +144,3 @@ function init() {
 </html>
 
 ```
-
-
-
