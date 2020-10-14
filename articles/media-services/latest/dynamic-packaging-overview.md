@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 797ba00820e7ff9d96868acdfc1dddfff3d21623
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7941d542ca2cab1637b9edaef057f740a9a1b7ef
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598275"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016821"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
@@ -30,7 +30,7 @@ Microsoft Azure Media Services lze použít ke kódování mnoha mediálních fo
 V Media Services představuje [koncový bod streamování](streaming-endpoint-concept.md) (Origin) dynamické (za běhu) balení a službu origining, která může doručovat obsah živě a na vyžádání přímo do aplikace klienta v přehrávači. Používá jeden z běžných protokolů multimediálních datových proudů uvedených v následující části. *Dynamické balení* je funkce, která nabízí standard pro všechny koncové body streamování.
 
 > [!NOTE]
-> Pomocí [Azure Portal](https://portal.azure.com/) můžete spravovat V3 [Live události](live-events-outputs-concept.md), zobrazit [prostředky](assets-concept.md)v3 a získat informace o přístupu k rozhraním API. Pro všechny ostatní úlohy správy (například transformace a úlohy) použijte [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
+> Pomocí [Azure Portal](https://portal.azure.com/) můžete spravovat V3 [Live události](live-events-outputs-concept.md), zobrazit [prostředky](assets-concept.md)v3 a získat informace o přístupu k rozhraním API. Pro všechny ostatní úlohy správy (například transformace a úlohy) použijte [REST API](/rest/api/media/), [CLI](/cli/azure/ams)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>Příprava zdrojových souborů na doručení
 
@@ -88,7 +88,7 @@ Následující kroky ukazují běžný pracovní postup streamování Media Serv
 1. [Nahrajte vstupní soubor](job-input-from-http-how-to.md) , jako je MP4, QuickTime nebo MOV, nebo jiný podporovaný formát souboru. Tento soubor se také označuje jako Mezzanine nebo zdrojový soubor. Seznam podporovaných formátů najdete v tématu [formáty podporované kodérem Standard](media-encoder-standard-formats.md).
 1. [Zakódovat](#encode-to-adaptive-bitrate-mp4s) soubor Mezzanine do sady H. 264/AAC MP4 s adaptivní přenosovou rychlostí.
 
-    Pokud již máte kódované soubory a chcete soubory pouze zkopírovat a streamovat, použijte rozhraní API: [CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) a [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio) . V důsledku toho se vytvoří nový soubor MP4 s manifestem streamování (soubor. ISM).
+    Pokud již máte kódované soubory a chcete soubory pouze zkopírovat a streamovat, použijte rozhraní API: [CopyVideo](/rest/api/media/transforms/createorupdate#copyvideo) a [CopyAudio](/rest/api/media/transforms/createorupdate#copyaudio) . V důsledku toho se vytvoří nový soubor MP4 s manifestem streamování (soubor. ISM).
 1. Publikujte výstupní Asset, který obsahuje sadu MP4 s adaptivní přenosovou rychlostí. Publikujete vytvořením [lokátoru streamování](streaming-locators-concept.md).
 1. Vytvářejte adresy URL, které cílí na různé formáty (HLS, MPEG-POMLČKa a Smooth Streaming). *Koncový bod streamování* by postaral o poskytování správného manifestu a požadavků pro všechny tyto různé formáty.
     

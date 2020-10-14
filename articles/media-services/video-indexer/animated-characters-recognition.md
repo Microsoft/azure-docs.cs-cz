@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d304767cf28c0e9230c93d5b9e7504b03ed25d4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87047486"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018878"
 ---
 # <a name="animated-character-detection-preview"></a>Detekce animovaných postav (Preview)
 
@@ -55,7 +55,7 @@ Vzhledem k tomu, že ve zkušebních účtech je Custom Vision integrace spravov
 
 ### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Připojit účet Custom Vision (jenom placené účty)
 
-Pokud vlastníte Video Indexer placený účet, musíte nejdřív připojit účet Custom Vision. Pokud účet Custom Vision ještě nemáte, vytvořte ho prosím. Další informace najdete v tématu [Custom Vision](../../cognitive-services/custom-vision-service/home.md).
+Pokud vlastníte Video Indexer placený účet, musíte nejdřív připojit účet Custom Vision. Pokud účet Custom Vision ještě nemáte, vytvořte ho prosím. Další informace najdete v tématu [Custom Vision](../../cognitive-services/custom-vision-service/overview.md).
 
 > [!NOTE]
 > Oba účty musí být ve stejné oblasti. Integrace Custom Vision v současnosti není v oblasti Japonsko podporována.
@@ -160,7 +160,7 @@ Pomocí těchto kroků se připojíte Custom Vision účtu k Video Indexer nebo 
 1. Připojte účet Custom Vision.
 
     Pokud vlastníte Video Indexer placený účet, musíte nejdřív připojit účet Custom Vision. <br/>
-    Pokud účet Custom Vision ještě nemáte, vytvořte ho prosím. Další informace najdete v tématu [Custom Vision](../../cognitive-services/custom-vision-service/home.md).
+    Pokud účet Custom Vision ještě nemáte, vytvořte ho prosím. Další informace najdete v tématu [Custom Vision](../../cognitive-services/custom-vision-service/overview.md).
 
     [Připojte účet Custom Vision pomocí rozhraní API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag).
 1. Vytvořte animovaný znakový model.

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e47f82323919f4fec3f28ec2f7698d734ab72ac6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 497765768c208354f6d2b47dbdda8c30aaed8423
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89490118"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016923"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – reference skriptování JSON
 > [!NOTE]
@@ -90,7 +90,7 @@ Následující tabulka popisuje vlastnosti v rámci definice JSON aktivity:
 | typ |Určuje typ aktivity. Různé typy aktivit najdete v částech [datové úložiště](#data-stores) a [aktivity transformace dat](#data-transformation-activities) . |Yes |
 | vztahují |Vstupní tabulky používané aktivitou<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Ne pro aktivity HDInsightStreaming a SqlServerStoredProcedure <br/> <br/> Ano pro všechny ostatní |
 | činnosti |Výstupní tabulky používané aktivitou.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": “outputtable1” } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": “outputtable1” }, { "name": “outputtable2” }  ],` |Yes |
-| linkedServiceName |Název propojené služby používané aktivitou. <br/><br/>Aktivita může vyžadovat zadání propojené služby, která odkazuje na požadované výpočetní prostředí. |Ano pro aktivity HDInsight, aktivity Azure Machine Learning a aktivita uložených procedur <br/><br/>Ne ve všech ostatních případech |
+| linkedServiceName |Název propojené služby používané aktivitou. <br/><br/>Aktivita může vyžadovat zadání propojené služby, která odkazuje na požadované výpočetní prostředí. |Ano pro aktivity HDInsight, aktivity Azure Machine Learning Studio (Classic) a aktivita uložených procedur <br/><br/>Ne ve všech ostatních případech |
 | typeProperties |Vlastnosti v části typeProperties závisí na typu aktivity. |No |
 | policy |Zásady, které ovlivňují chování aktivity za běhu. Pokud není zadaný, použijí se výchozí zásady. |No |
 | scheduler |vlastnost Scheduler slouží k definování požadovaného plánování aktivity. Jeho podvlastnosti jsou stejné jako ty ve [vlastnosti Availability v datové sadě](data-factory-create-datasets.md#dataset-availability). |No |
@@ -337,7 +337,7 @@ Oddíl **Policy** v definici datové sady definuje kritéria nebo podmínku, kte
 | Název zásady | Description | Použito pro | Vyžadováno | Výchozí |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |Ověří, jestli data v **objektu blob Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob |No |Není k dispozici |
-| minimumRows |Ověří, jestli data v **Azure SQL Database** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |No |Není k dispozici |
+| minimumRows |Ověří, jestli data v **Azure SQL Database** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Databáze Azure SQL</li><li>Tabulka Azure</li></ul> |No |Není k dispozici |
 
 **Příklad:**
 
@@ -929,7 +929,7 @@ Pokud kopírujete data do Azure Cosmos DB, nastavte **typ jímky** aktivity kop�
 
 Další informace najdete v článku [konektor Azure Cosmos DB](data-factory-azure-documentdb-connector.md#copy-activity-properties) .
 
-## <a name="azure-sql-database"></a>Azure SQL Database
+## <a name="azure-sql-database"></a>Databáze Azure SQL
 
 ### <a name="linked-service"></a>Propojená služba
 Pro definování propojené služby Azure SQL Database nastavte **typ** propojené služby na **AzureSqlDatabase**a v části **typeProperties** zadejte následující vlastnosti:
@@ -1224,7 +1224,7 @@ Pokud kopírujete data do služby Azure synapse Analytics, nastavte **typ jímky
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. |Příkaz dotazu. |No |
-| allowPolyBase |Označuje, zda použít základ (je-li k dispozici) místo mechanismu BULKINSERT. <br/><br/> **Použití základny je doporučeným způsobem, jak načíst data do synapse Analytics.** |Ano <br/>False (výchozí) |No |
+| allowPolyBase |Označuje, zda použít základ (je-li k dispozici) místo mechanismu BULKINSERT. <br/><br/> **Použití základny je doporučeným způsobem, jak načíst data do synapse Analytics.** |Pravda <br/>False (výchozí) |No |
 | polyBaseSettings |Skupina vlastností, které lze zadat, je-li vlastnost **allowPolybase** nastavena na **hodnotu true**. |&nbsp; |No |
 | rejectValue |Určuje počet nebo procento řádků, které lze odmítnout před tím, než se dotaz nezdařil. <br/><br/>Další informace o možnostech odmítnutí základní třídy najdete v části **argumenty** v tématu [vytvoření externí tabulky (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) . |0 (výchozí), 1, 2,... |No |
 | rejectType |Určuje, zda je možnost rejectValue zadána jako hodnota literálu nebo jako procento. |Hodnota (výchozí), procenta |No |
@@ -1444,7 +1444,7 @@ Pokud chcete definovat datovou sadu tabulky Azure, nastavte **typ** datové sady
 
 | Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| tableName |Název tabulky instance databáze Azure Table, na kterou odkazuje propojená služba |Ano. Když je zadán tableName bez azureTableSourceQuery, zkopírují se všechny záznamy z tabulky do cílového umístění. Pokud je zadána také azureTableSourceQuery, záznamy z tabulky, které splňují dotaz, se zkopírují do cíle. |
+| tableName |Název tabulky instance databáze Azure Table, na kterou odkazuje propojená služba |Yes. Když je zadán tableName bez azureTableSourceQuery, zkopírují se všechny záznamy z tabulky do cílového umístění. Pokud je zadána také azureTableSourceQuery, záznamy z tabulky, které splňují dotaz, se zkopírují do cíle. |
 
 #### <a name="example"></a>Příklad
 
@@ -4824,7 +4824,7 @@ Následující tabulka uvádí výpočetní prostředí podporovaná nástrojem 
 | --- | --- |
 | [Cluster HDInsight na vyžádání](#on-demand-azure-hdinsight-cluster) nebo [vlastní cluster HDInsight](#existing-azure-hdinsight-cluster) |[Vlastní aktivita rozhraní .NET](#net-custom-activity), [aktivita v podregistru](#hdinsight-hive-activity), aktivita [prasete](#hdinsight-pig-activity), aktivita [MapReduce](#hdinsight-mapreduce-activity), aktivita streamování Hadoop, [aktivita Sparku](#hdinsight-spark-activity) |
 | [Azure Batch](#azure-batch) |[Vlastní aktivita .NET](#net-custom-activity) |
-| [Azure Machine Learning](#azure-machine-learning) | [Aktivita spuštění Machine Learning dávky](#machine-learning-batch-execution-activity) [Machine Learning aktivity aktualizovat prostředek](#machine-learning-update-resource-activity) |
+| [Azure Machine Learning Studio (klasický)](#azure-machine-learning-studio-classic) | Aktivita [provedení dávkového zpracování Azure Machine Learning Studio (Classic)](#azure-machine-learning-studio-classic-batch-execution-activity), [Azure Machine Learning Studio (Classic) aktivita aktualizace prostředku](#azure-machine-learning-studio-classic-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[U-SQL Data Lake Analytics](#data-lake-analytics-u-sql-activity) |
 | [Azure SQL Database](#azure-sql-database), [Analýza Azure synapse](#azure-synapse-analytics), [SQL Server](#sql-server-stored-procedure) |[Uložená procedura](#stored-procedure-activity) |
 
@@ -4931,13 +4931,13 @@ Následující tabulka uvádí popis vlastností použitých v definici Azure JS
 }
 ```
 
-## <a name="azure-machine-learning"></a>Azure Machine Learning
-Vytvoříte propojenou službu Azure Machine Learning pro registraci Machine Learning koncového bodu dávkového vyhodnocování s datovou továrnou. Dvě aktivity transformace dat, které mohou běžet v této propojené službě: [Machine Learning aktivity spuštění dávky](#machine-learning-batch-execution-activity) [Machine Learning aktivity aktualizovat prostředek](#machine-learning-update-resource-activity).
+## <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasický)
+Vytvoříte propojenou službu Azure Machine Learning Studio (Classic) pro registraci koncového bodu dávkového vyhodnocování (klasického) studia s datovou továrnou. Dvě aktivity transformace dat, které lze spustit v této propojené službě: [Azure Machine Learning Studio (klasický) aktivita spuštění dávky](#azure-machine-learning-studio-classic-batch-execution-activity), [Azure Machine Learning Studio (Classic) aktivita aktualizace prostředku](#azure-machine-learning-studio-classic-update-resource-activity).
 
 ### <a name="linked-service"></a>Propojená služba
-Následující tabulka uvádí popis vlastností použitých v definici Azure JSON propojené služby Azure Machine Learning.
+Následující tabulka uvádí popis vlastností použitých v definici Azure JSON propojené služby pro Studio (Classic).
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | Typ |Vlastnost Type by měla být nastavená na: **AzureML**. |Yes |
 | mlEndpoint |Adresa URL dávkového vyhodnocování |Yes |
@@ -4965,7 +4965,7 @@ Vytvoříte propojenou službu **Azure Data Lake Analytics** , abyste propojili 
 
 Následující tabulka uvádí popis vlastností použitých v definici JSON propojené služby Azure Data Lake Analytics.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | Typ |Vlastnost Type by měla být nastavená na: **AzureDataLakeAnalytics**. |Yes |
 | accountName |Azure Data Lake Analytics název účtu. |Yes |
@@ -5064,8 +5064,8 @@ Aktivita | Description
 [Aktivita MapReduce služby HDInsight](#hdinsight-mapreduce-activity) | Aktivita MapReduce služby HDInsight v kanálu Data Factory spouští programy MapReduce na vašem clusteru HDInsight založeném na systému Windows nebo Linux na vyžádání.
 [Aktivita Streamování služby HDInsight](#hdinsight-streaming-activity) | Aktivita streamování HDInsight v kanálu Data Factory spouští programy pro streamování Hadoop na vašem clusteru HDInsight založeném na systému Windows/Linux nebo na vyžádání.
 [Aktivita Spark služby HDInsight](#hdinsight-spark-activity) | Aktivita HDInsight Spark v kanálu Data Factory spouští programy Spark ve vlastním clusteru HDInsight.
-[Aktivita Provedení dávky služby Machine Learning](#machine-learning-batch-execution-activity) | Azure Data Factory vám umožní snadno vytvářet kanály, které používají publikovanou webovou službu Azure Machine Learning pro prediktivní analýzy. Pomocí aktivity dávkového spuštění v kanálu Azure Data Factory můžete vyvolat webovou službu Machine Learning a předpovědi data ve službě Batch.
-[Aktivita aktualizace prostředku služby Machine Learning](#machine-learning-update-resource-activity) | Prediktivní modely v Machine Learning experimenty bodování musí být v průběhu času převlakované pomocí nových vstupních datových sad. Až budete s rekurzem hotovi, chcete aktualizovat webovou službu bodování pomocí Machine Learningho modelu. Aktivitu aktualizovat prostředek můžete použít k aktualizaci webové služby pomocí nově vyučeného modelu.
+[Aktivita spuštění dávky Azure Machine Learning Studio (Classic)](#azure-machine-learning-studio-classic-batch-execution-activity) | Azure Data Factory vám umožní snadno vytvářet kanály, které používají publikovanou webovou službu studia (Classic) pro prediktivní analýzy. Pomocí aktivity dávkového spuštění v kanálu Azure Data Factory můžete vyvolat webovou službu studia (Classic), která předpovědi data ve službě Batch.
+[Aktivita aktualizace prostředku Azure Machine Learning Studio (Classic)](#azure-machine-learning-studio-classic-update-resource-activity) | Prediktivní modely v Azure Machine Learning Studio (klasický) experimenty bodování se v průběhu času musí přenášet pomocí nových vstupních datových sad. Až budete s rekurzem hotovi, chcete aktualizovat webovou službu bodování pomocí převýukového modelu Machine Learning. Aktivitu aktualizovat prostředek můžete použít k aktualizaci webové služby pomocí nově vyučeného modelu.
 [Aktivita Uložená procedura](#stored-procedure-activity) | Pomocí aktivity uložená procedura v Data Factoryovém kanálu můžete vyvolat uloženou proceduru v jednom z následujících úložišť dat: Azure SQL Database, Azure synapse Analytics, SQL Server databáze ve vašem podniku nebo virtuálním počítači Azure.
 [Aktivita Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) | Aktivita Data Lake Analytics U-SQL spouští skript U-SQL v clusteru Azure Data Lake Analytics.
 [Vlastní aktivita .NET](#net-custom-activity) | Pokud potřebujete transformovat data způsobem, který není podporován Data Factory, můžete vytvořit vlastní aktivitu s vlastní logikou zpracování dat a použít aktivitu v kanálu. Vlastní aktivitu rozhraní .NET můžete nakonfigurovat tak, aby běžela buď pomocí služby Azure Batch, nebo clusteru Azure HDInsight.
@@ -5346,14 +5346,14 @@ Je třeba počítat s následujícím:
 
 Další informace o aktivitě najdete v článku o [aktivitě Sparku](data-factory-spark.md) .
 
-## <a name="machine-learning-batch-execution-activity"></a>Aktivita Provedení dávky služby Machine Learning
-V definici JSON aktivity spuštění dávky Azure Machine Learning studia můžete zadat následující vlastnosti. Vlastnost Type aktivity musí být: **AzureMLBatchExecution**. Nejprve musíte vytvořit propojenou službu Azure Machine Learning a zadat její název jako hodnotu pro vlastnost **linkedServiceName** . Následující vlastnosti jsou podporovány v části **typeProperties** při nastavení typu aktivity na AzureMLBatchExecution:
+## <a name="azure-machine-learning-studio-classic-batch-execution-activity"></a>Aktivita spuštění dávky Azure Machine Learning Studio (Classic)
+V definici JSON aktivity spuštění dávky Azure Machine Learning Studio (Classic) můžete zadat následující vlastnosti. Vlastnost Type aktivity musí být: **AzureMLBatchExecution**. Nejprve musíte vytvořit propojenou službu studia (Classic) a zadat její název jako hodnotu vlastnosti **linkedServiceName** . Následující vlastnosti jsou podporovány v části **typeProperties** při nastavení typu aktivity na AzureMLBatchExecution:
 
 Vlastnost | Popis | Povinné
 -------- | ----------- | --------
-webServiceInput | Datová sada, která má být předána jako vstup pro webovou službu Azure Machine Learning Studio. Tato datová sada musí být také obsažena ve vstupech aktivity. |Použijte buď webServiceInput nebo webServiceInputs. |
-webServiceInputs | Zadejte datové sady, které mají být předány jako vstupy pro webovou službu Azure Machine Learning Studio. Pokud webová služba používá více vstupů, místo použití vlastnosti webServiceInput použijte vlastnost webServiceInputs. Datové sady, na které odkazuje **webServiceInputs** , musí být zahrnuté i do **vstupů**aktivity. | Použijte buď webServiceInput nebo webServiceInputs. |
-webServiceOutputs | Datové sady, které jsou přiřazeny jako výstupy pro webovou službu Azure Machine Learning Studio. Webová služba vrátí výstupní data v této datové sadě. | Yes |
+webServiceInput | Datová sada, která má být předána jako vstup pro webovou službu Studio (Classic). Tato datová sada musí být také obsažena ve vstupech aktivity. |Použijte buď webServiceInput nebo webServiceInputs. |
+webServiceInputs | Zadejte datové sady, které mají být předány jako vstupy pro webovou službu Studio (Classic). Pokud webová služba používá více vstupů, místo použití vlastnosti webServiceInput použijte vlastnost webServiceInputs. Datové sady, na které odkazuje **webServiceInputs** , musí být zahrnuté i do **vstupů**aktivity. | Použijte buď webServiceInput nebo webServiceInputs. |
+webServiceOutputs | Datové sady, které jsou přiřazeny jako výstupy pro webovou službu Studio (Classic). Webová služba vrátí výstupní data v této datové sadě. | Yes |
 globalParameters | Zadejte hodnoty pro parametry webové služby v této části. | No |
 
 ### <a name="json-example"></a>Příklad JSON
@@ -5397,13 +5397,13 @@ V tomto příkladu má aktivita datovou sadu **MLSqlInput** jako vstup a **MLSql
 }
 ```
 
-V příkladu JSON nasazená Azure Machine Learning webová služba používá modul pro čtení a modul pro zápis ke čtení a zápisu dat z a do Azure SQL Database. Tato webová služba zpřístupňuje následující čtyři parametry: název databázového serveru, název databáze, název uživatelského účtu serveru a heslo uživatelského účtu serveru.
+V příkladu JSON používá webová služba nasazený Studio (Classic) čtenář a modul zapisovače ke čtení a zápisu dat z a do Azure SQL Database. Tato webová služba zpřístupňuje následující čtyři parametry: název databázového serveru, název databáze, název uživatelského účtu serveru a heslo uživatelského účtu serveru.
 
 > [!NOTE]
 > Jako parametry webové služby lze předat pouze vstupy a výstupy aktivity AzureMLBatchExecution. Například ve výše uvedeném fragmentu kódu JSON je MLSqlInput jako vstup aktivity AzureMLBatchExecution, která se předává jako vstup do webové služby prostřednictvím parametru webServiceInput.
 
-## <a name="machine-learning-update-resource-activity"></a>Aktivita aktualizace prostředku služby Machine Learning
-V definici JSON aktivity prostředku aktualizace Azure Machine Learning Studio můžete zadat následující vlastnosti. Vlastnost Type aktivity musí být: **povinná**. Nejprve musíte vytvořit propojenou službu Azure Machine Learning a zadat její název jako hodnotu pro vlastnost **linkedServiceName** . Následující vlastnosti jsou podporovány v části **typeProperties** při nastavení typu aktivity na povinná:
+## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Aktivita aktualizace prostředku Azure Machine Learning Studio (Classic)
+V Azure Machine Learning Studio (Classic) aktualizace definice JSON aktivity prostředku můžete zadat následující vlastnosti. Vlastnost Type aktivity musí být: **povinná**. Nejprve musíte vytvořit propojenou službu studia (Classic) a zadat její název jako hodnotu vlastnosti **linkedServiceName** . Následující vlastnosti jsou podporovány v části **typeProperties** při nastavení typu aktivity na povinná:
 
 Vlastnost | Popis | Povinné
 -------- | ----------- | --------
@@ -5411,7 +5411,7 @@ trainedModelName | Název převýukového modelu. | Yes |
 trainedModelDatasetName | Datová sada ukazující na soubor iLearner vrácený operací retraining. | Yes |
 
 ### <a name="json-example"></a>Příklad JSON
-Kanál má dvě aktivity: **AzureMLBatchExecution** a **povinná**. Aktivita spuštění dávky Azure Machine Learning studia vezme data školení jako vstup a vytvoří soubor iLearner jako výstup. Tato aktivita vyvolá webovou službu školení (zkušební experiment vydaný jako webovou službu) se vstupními školicími daty a přijme soubor ilearner z webové služby. PlaceholderBlob je pouze fiktivní výstupní datová sada, kterou služba Azure Data Factory vyžaduje ke spuštění kanálu.
+Kanál má dvě aktivity: **AzureMLBatchExecution** a **povinná**. Aktivita spuštění dávky studia (Classic) vezme data školení jako vstup a vytvoří soubor iLearner jako výstup. Tato aktivita vyvolá webovou službu školení (zkušební experiment vydaný jako webovou službu) se vstupními školicími daty a přijme soubor ilearner z webové služby. PlaceholderBlob je pouze fiktivní výstupní datová sada, kterou služba Azure Data Factory vyžaduje ke spuštění kanálu.
 
 
 ```json

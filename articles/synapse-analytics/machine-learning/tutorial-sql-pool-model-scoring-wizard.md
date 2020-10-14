@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 14358f60b700e80c17b1dd8259f1d0566a854c43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e92ff75bb6a9757c06de3561a385cbcbb7f75ba
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91543382"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019966"
 ---
 # <a name="tutorial-machine-learning-model-scoring-wizard-for-synapse-sql-pools"></a>Kurz: Průvodce bodování modelu Machine Learning pro synapse fondy SQL
 
@@ -50,7 +50,7 @@ Před spuštěním všech buněk v poznámkovém bloku ověřte, zda je instance
 
 1. Stáhněte si [NYC s popisem taxislužby. ipynb](https://go.microsoft.com/fwlink/?linkid=2144301).
 
-1. V [Azure Machine Learning Studio](https://ml.azure.com)spusťte Azure Machine Learning pracovní prostor.
+1. V [Azure Machine Learning Studiu](https://ml.azure.com)spusťte Azure Machine Learning pracovní prostor.
 
 1. Přejděte na **poznámkové bloky** a klikněte na **Odeslat soubory**. Vyberte "předpověď NYC taxislužby tipy. ipynb", které jste stáhli a nahráli.
    ![Nahrání souboru](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00a.png)

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 10/06/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python
-ms.openlocfilehash: df4b94702d14278a3279c504f52f46b922859db8
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b489f7daebc9232088020948752c3792dca65095
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91822824"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018742"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
@@ -92,6 +92,19 @@ Další informace o tom, jak App Service spouští a vytváří aplikace v Pytho
 > [!NOTE]
 > Vždy používejte relativní cesty ve všech skriptech před a po sestavení, protože kontejner sestavení, ve kterém běží Oryx, se liší od běhového kontejneru, ve kterém je aplikace spuštěná. Nikdy nespoléhá na přesné umístění složky projektu aplikace v rámci kontejneru (například na to, že je umístěn pod položkou *site/wwwroot*).
 
+## <a name="production-settings-for-django-apps"></a>Nastavení produkce pro aplikace Django
+
+V případě produkčního prostředí, jako je Azure App Service, by měly aplikace Django následovat po [kontrolním seznamu nasazení](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/) Django (djangoproject.com).
+
+Následující tabulka popisuje nastavení produkčního prostředí, která jsou relevantní pro Azure. Tato nastavení jsou definovaná v souboru *Setting.py* aplikace.
+
+| Nastavení Django | Pokyny pro Azure |
+| --- | --- |
+| `SECRET_KEY` | Uložte hodnotu do nastavení App Service, jak je popsáno v [nastavení přístup aplikace jako proměnné prostředí](#access-app-settings-as-environment-variables). [Hodnotu můžete v Azure Key Vault Alternativně uložit jako "tajný klíč"](/azure/key-vault/secrets/quick-create-python). |
+| `DEBUG` | Vytvořte `DEBUG` nastavení pro App Service s hodnotou 0 (NEPRAVDA) a pak hodnotu načtěte jako proměnnou prostředí. Ve vašem vývojovém prostředí vytvořte `DEBUG` proměnnou prostředí s hodnotou 1 (true). |
+| `ALLOWED_HOSTS` | V produkčním prostředí vyžaduje Django, abyste do pole settings.py zahrnuli adresu URL aplikace `ALLOWED_HOSTS` . *settings.py* Tuto adresu URL můžete načíst za běhu s kódem, `os.environ['WEBSITE_HOSTNAME']` . App Service automaticky nastaví `WEBSITE_HOSTNAME` proměnnou prostředí na adresu URL aplikace. |
+| `DATABASES` | Definujte nastavení v App Service pro připojení k databázi a načtěte je jako proměnné prostředí pro naplnění [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) slovníku. Hodnoty (zejména uživatelské jméno a heslo) můžete alternativně ukládat jako [Azure Key Vault tajné klíče](/azure/key-vault/secrets/quick-create-python). |
+
 ## <a name="container-characteristics"></a>Vlastnosti kontejneru
 
 Při nasazení do App Service se aplikace Python spouštějí v kontejneru Docker pro Linux, který je definovaný v [úložišti GitHub App Service Pythonu](https://github.com/Azure-App-Service/python). Konfigurace imagí najdete v adresářích, které jsou specifické pro danou verzi.
@@ -109,6 +122,8 @@ Tento kontejner má následující vlastnosti:
 
     Aby bylo možné nainstalovat závislosti, *musí* být soubor *requirements.txt* v kořenu projektu. V opačném případě sestaví proces sestavení zprávu Chyba: "nepovedlo se najít setup.py nebo requirements.txt; Není spuštěná instalace PIP. Pokud k této chybě dojde, ověřte umístění souboru požadavků.
 
+- App Service automaticky definuje proměnnou prostředí s názvem `WEBSITE_HOSTNAME` s adresou URL webové aplikace, jako je například `msdocs-hello-world.azurewebsites.net` . Definuje také `WEBSITE_SITE_NAME` název vaší aplikace, například `msdocs-hello-world` . 
+   
 ## <a name="container-startup-process"></a>Proces spuštění kontejneru
 
 V průběhu spuštění služba App Service v kontejneru Linuxu spustí následující kroky:

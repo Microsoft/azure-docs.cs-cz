@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7da19ddd96c15ff5688d6e153d1859ed8c11ec8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b404d05f512449c99e60c0bfdc93aab22c399ef
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616546"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019014"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Principy dvojitých modelů v digitálních prozdvojeních Azure
 
@@ -57,7 +57,7 @@ Tady jsou některé další doprovodné materiály týkající se rozlišení me
 
 Rozdíl mezi vlastnostmi a telemetrie pro modely digitálních vláken Azure je následující:
 * Očekává se, že **vlastnosti** mají záložní úložiště. To znamená, že můžete kdykoli číst vlastnost a načíst její hodnotu. Pokud je vlastnost zapisovatelná, můžete také uložit hodnotu do vlastnosti.  
-* **Telemetrii** je více podobná jako datový proud událostí. Jedná se o sadu datových zpráv, které mají krátké životnosti. Pokud nenastavíte naslouchání pro událost a akce, které se mají provést, když k ní dojde, neexistuje žádné trasování události v pozdějším čase. Nemůžete se vrátit a později si ho přečíst. 
+* **Telemetrii** je více podobná jako datový proud událostí. Jedná se o sadu datových zpráv, které mají krátké životnosti. Pokud nenastavíte naslouchání pro událost a akce, které se mají provést, když k ní dojde, neexistuje žádné trasování události v pozdějším čase. Nemůžete se k němu vrátit a později si ho přečíst. 
   - V terminologii jazyka C# je telemetrie jako událost jazyka C#. 
   - Ve výrazech IoT je telemetrie obvykle jediná měření odesílaná zařízením.
 

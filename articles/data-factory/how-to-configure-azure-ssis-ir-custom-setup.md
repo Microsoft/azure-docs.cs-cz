@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/28/2020
-ms.openlocfilehash: 4ef569864b27eff7f57aa2b0a922034fa28f587c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: e4708e49ebd45210e381a1b58752bbfa287a9eeb
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405237"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019847"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro Azure-SSIS Integration Runtime
 
@@ -127,7 +127,7 @@ Pokud chcete zřídit nebo znovu nakonfigurovat Azure-SSIS IR pomocí expresníh
 
 #### <a name="running-cmdkey-command"></a>Spuštění příkazu cmdkey
 
-Pokud pro vlastní instalaci Express vyberete typ **příkazu Spustit cmdkey** , můžete na svém Azure-SSIS IR spustit příkaz Windows cmdkey. Provedete to tak, že do textových polí **/Add**, **/User**a **/Pass** zadáte název svého cílového počítače nebo název domény, uživatelské jméno nebo název účtu a heslo nebo klíč účtu. To vám umožní zachovat přihlašovací údaje pro přístup k serverům SQL, sdíleným složkám nebo souborům Azure na vašich Azure-SSIS IR. Například pro přístup k souborům Azure můžete zadat `YourAzureStorageAccountName.file.core.windows.net` , `azure\YourAzureStorageAccountName` a `YourAzureStorageAccountKey` pro **/Add**, **/User**a **/Pass**, v uvedeném pořadí. To se podobá spuštění příkazu Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) na místním počítači.
+Pokud pro vlastní instalaci Express vyberete typ **příkazu Spustit cmdkey** , můžete na svém Azure-SSIS IR spustit příkaz Windows cmdkey. Provedete to tak, že do textových polí **/Add**, **/User**a **/Pass** zadáte název svého cílového počítače nebo název domény, uživatelské jméno nebo název účtu a heslo nebo klíč účtu. To vám umožní zachovat přihlašovací údaje pro přístup k serverům SQL, sdíleným složkám nebo souborům Azure na vašich Azure-SSIS IR. Například pro přístup k souborům Azure můžete zadat `YourAzureStorageAccountName.file.core.windows.net` , `azure\YourAzureStorageAccountName` a `YourAzureStorageAccountKey` pro **/Add**, **/User**a **/Pass**, v uvedeném pořadí. To se podobá spuštění příkazu Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) na místním počítači. Pro nyní je podporována pouze jedna expresní vlastní instalace pro spuštění příkazu cmdkey. Chcete-li spustit více příkazů cmdkey, použijte raději standardní vlastní instalaci.
 
 #### <a name="adding-environment-variables"></a>Přidávání proměnných prostředí
 
@@ -143,7 +143,7 @@ Pokud vyberete možnost **instalovat licencovaný typ součásti** pro aplikaci 
 
    * Pokud vyberete součást **Task Factory pro SentryOne** , můžete na Azure-SSIS IR nainstalovat sadu funkcí [Factory úloh](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) z SentryOne. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **2020.1.3**.
 
-   * Pokud vyberete **OH22'S HEDDA. V/** v součást, můžete nainstalovat [HEDDA. Vstupně-výstupní operace](https://hedda.io/ssis-component/) s daty/čisticí součást z oh22 na vašich Azure-SSIS IR. K tomu je potřeba nejdřív zakoupit službu. Aktuální integrovaná verze je **1.0.14**.
+   * Pokud vyberete **OH22'S HEDDA. V/** v součást, můžete nainstalovat [HEDDA. Vstupně-výstupní operace](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR) s daty/čisticí součást z oh22 na vašich Azure-SSIS IR. K tomu je potřeba nejdřív zakoupit službu. Aktuální integrovaná verze je **1.0.14**.
 
    * Pokud vyberete komponentu **oh22's SQLPhonetics.NET** , můžete nainstalovat komponentu [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) Data Quality/Matching z oh22 na svém Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **1.0.45**.
 
@@ -175,7 +175,7 @@ Při zřizování nebo překonfigurování Azure-SSIS IR vlastními nastaveními
    $AzureSSISName = "[your Azure-SSIS IR name]"
    # Custom setup info: Standard/express custom setups
    $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
-   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|InstallAzurePowerShell|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS|AecorSoft.IntegrationService or leave it empty]" # OPTIONAL to configure an express custom setup without script
+   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|InstallAzurePowerShell|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS|AecorSoft.IntegrationService|CData.Standard|CData.Extended or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
    # Add custom setup parameters if you use standard/express custom setups
    if(![string]::IsNullOrEmpty($SetupScriptContainerSasUri))
@@ -242,6 +242,16 @@ Při zřizování nebo překonfigurování Azure-SSIS IR vlastními nastaveními
            $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
            $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
        }
+       if($ExpressCustomSetup -eq "CData.Standard")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }
+       if($ExpressCustomSetup -eq "CData.Extended")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }    
        # Create an array of one or more express custom setups
        $setups = New-Object System.Collections.ArrayList
        $setups.Add($setup)
@@ -288,6 +298,8 @@ Pokud chcete zobrazit a znovu použít některé ukázky standardních vlastníc
       * Složka *rozhraní .NET FRAMEWORK 3,5* , která obsahuje skript vlastního nastavení (*Main. cmd*) pro instalaci starší verze .NET Framework do každého uzlu Azure-SSIS IR. Tato verze může být vyžadována některými vlastními součástmi.
 
       * Složka *BCP* , která obsahuje skript vlastního nastavení (*Main. cmd*) pro instalaci SQL Server nástrojů příkazového řádku (*MsSqlCmdLnUtils.msi*) do každého uzlu Azure-SSIS IR. Jedním z těchto nástrojů je program hromadného kopírování (*BCP*).
+
+      * Složka *přípon DNS* , která obsahuje skript vlastního nastavení (*Main. cmd*) pro připojení vlastní přípony DNS (například *test.com*) k libovolnému nekvalifikovanému názvu domény s názvem bez přípony a jejich převeďte na plně kvalifikovaný název domény (FQDN), než je použijete v dotazech DNS z vašeho Azure-SSIS IR.
 
       * Složka *aplikace Excel* , která obsahuje skript vlastního nastavení (*Main. cmd*) pro instalaci některých sestavení a knihoven v jazyce C# do každého uzlu Azure-SSIS IR. Můžete je použít v úlohách skriptu k dynamickému čtení a psaní excelových souborů. 
       

@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics integrace s Azure Machine Learning
-description: Tento článek popisuje, jak rychle nastavit jednoduchou úlohu Azure Stream Analytics, která integruje Azure Machine Learning pomocí uživatelsky definované funkce.
+title: Azure Stream Analytics integrace s Azure Machine Learning Studio (Classic)
+description: Tento článek popisuje, jak rychle nastavit jednoduchou úlohu Azure Stream Analytics, která integruje Azure Machine Learning Studio (Classic) pomocí uživatelsky definované funkce.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,16 +8,16 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 26a1208131f1d9d3df7dccd8e27bda37992f043f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 529b1ce8026d9880bbc8caf87ab59148baf92df3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88236645"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019456"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Analýza mínění s využitím Azure Stream Analytics a Azure Machine Learning Studio (Classic)
 
-V tomto článku se dozvíte, jak nastavit jednoduchou úlohu Azure Stream Analytics, která pro analýzu mínění používá Azure Machine Learning Studio (Classic). Pomocí Machine Learning analytického modelu mínění z Cortana Intelligence Gallery můžete analyzovat streamovaná textová data a určit skóre mínění.
+V tomto článku se dozvíte, jak nastavit jednoduchou úlohu Azure Stream Analytics, která pro analýzu mínění používá Azure Machine Learning Studio (Classic). Pomocí analytického modelu mínění (Classic) z Cortana Intelligence Gallery Analyzujte streamovaná textová data a určíte skóre mínění.
 
 > [!TIP]
 > Pro zlepšení výkonu a spolehlivosti doporučujeme použít [Azure Machine Learning UDF](machine-learning-udf.md) místo Azure Machine Learning Studio (Classic) UDF.
@@ -79,31 +79,31 @@ Teď, když jsou ukázková data v objektu blob, můžete povolit model analýzy
 
 2. **V nástroji Studio vyberte otevřít (Classic)**.  
    
-   ![Stream Analytics Machine Learning otevřete Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
+   ![Stream Analytics Azure Machine Learning Studio (Classic), otevřete Studio (Classic).](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
 3. Přihlaste se, abyste mohli přejít k pracovnímu prostoru. Vyberte umístění.
 
 4. V dolní části stránky vyberte **Run (spustit** ). Proces se spustí, což trvá přibližně minutu.
 
-   ![Spustit experiment v Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
+   ![Spustit experiment v studiu (Classic)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
 
 5. Po úspěšném spuštění procesu vyberte v dolní části stránky **nasadit webovou službu** .
 
-   ![nasazení experimentu v Machine Learning Studio jako webové služby](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
+   ![Nasazení experimentu v nástroji Studio (Classic) jako webové služby](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
 
 6. Pokud chcete ověřit, jestli je model mínění Analytics připravený k použití, vyberte tlačítko **test** . Zadejte textové zadání, jako je například "Miluji Microsoft".
 
-   ![testovat experiment v Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
+   ![Test experimentu v studiu (klasický)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test.png)  
 
    Pokud test funguje, zobrazí se výsledek podobný následujícímu příkladu:
 
-   ![výsledky testů v Machine Learning Studio](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
+   ![Výsledky testů v studiu (klasické)](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
 
 7. Ve sloupci **aplikace** vyberte odkaz **sešit aplikace Excel 2010 nebo starší** a stáhněte excelový sešit. Sešit obsahuje klíč rozhraní API a adresu URL, které budete později potřebovat k nastavení Stream Analytics úlohy.
 
-    ![Rychlý přehled Stream Analytics Machine Learning](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
+    ![Stream Analytics Azure Machine Learning Studio (klasický), rychlý přehled](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 
-## <a name="create-a-stream-analytics-job-that-uses-the-machine-learning-model"></a>Vytvoření Stream Analytics úlohy, která používá model Machine Learning
+## <a name="create-a-stream-analytics-job-that-uses-the-studio-classic-model"></a>Vytvoření úlohy Stream Analytics, která používá model studia (Classic)
 
 Nyní můžete vytvořit úlohu Stream Analytics, která přečte vzorový tweety ze souboru CSV v úložišti objektů BLOB.
 
@@ -147,9 +147,9 @@ Přejít na [Azure Portal](https://portal.azure.com) a vytvořit úlohu Stream A
 
 3. Vyberte **Uložit**.
 
-### <a name="add-the-machine-learning-function"></a>Přidání funkce Machine Learning
+### <a name="add-the-studio-classic-function"></a>Přidat funkci studia (Classic)
 
-Dříve jste publikovali Machine Learning model pro webovou službu. Pokud se v tomto scénáři spustí úloha analýzy streamu, pošle Každá ukázka z vstupu do webové služby pro analýzu mínění. Webová služba Machine Learning vrací mínění ( `positive` , `neutral` nebo `negative` ) a pravděpodobnost nesprávného prokladu.
+Dříve jste publikovali model studia (Classic) do webové služby. Pokud se v tomto scénáři spustí úloha analýzy streamu, pošle Každá ukázka z vstupu do webové služby pro analýzu mínění. Webová služba Studio (Classic) vrací mínění ( `positive` , `neutral` nebo `negative` ) a pravděpodobnost, že se na něj klade pozitivní.
 
 V této části definujete funkci v úloze Stream Analysis. Funkci lze vyvolat pro odeslání přípravku do webové služby a získání odpovědi zpět.
 
@@ -169,7 +169,7 @@ V této části definujete funkci v úloze Stream Analysis. Funkci lze vyvolat p
 
 ### <a name="create-a-query-to-transform-the-data"></a>Vytvoření dotazu pro transformaci dat
 
-Stream Analytics používá deklarativní dotaz založený na jazyce SQL k prohlédnutí vstupu a jeho zpracování. V této části vytvoříte dotaz, který načte jednotlivé operace ze vstupu a potom vyvolá funkci Machine Learning pro provedení analýzy mínění. Dotaz pak odešle výsledek do výstupu, který jste definovali (BLOB Storage).
+Stream Analytics používá deklarativní dotaz založený na jazyce SQL k prohlédnutí vstupu a jeho zpracování. V této části vytvoříte dotaz, který načte jednotlivé operace ze vstupu a potom vyvolá funkci studia (Classic), která provede analýzu mínění. Dotaz pak odešle výsledek do výstupu, který jste definovali (BLOB Storage).
 
 1. Vraťte se do přehledu úlohy Stream Analytics.
 
@@ -215,18 +215,18 @@ Nyní můžete spustit úlohu Stream Analytics.
 
 3. Otevřete generovaný soubor CSV. Uvidíte něco jako v následujícím příkladu:  
 
-   ![Stream Analytics Machine Learning, zobrazení CSV](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
+   ![Stream Analytics Azure Machine Learning Studio (klasický), zobrazení CSV](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)  
 
 ### <a name="view-metrics"></a>Zobrazit metriky
 
-Můžete také zobrazit Azure Machine Learning metriky související s funkcí. Následující metriky související s funkcí se zobrazí v okně **monitorování** úlohy přehled:
+Můžete také zobrazit metriky související s funkcí studia (Classic). Následující metriky související s funkcí se zobrazí v okně **monitorování** úlohy přehled:
 
-* **Požadavek funkce** indikuje počet požadavků odeslaných do webové služby Machine Learning.  
-* **Události funkcí** označují počet událostí v žádosti. Ve výchozím nastavení každý požadavek na Machine Learning webové služby obsahuje až 1 000 událostí.
+* **Žádosti o funkce** označují počet požadavků odeslaných do webové služby studia (Classic).  
+* **Události funkcí** označují počet událostí v žádosti. Ve výchozím nastavení každý požadavek na webovou službu studia (Classic) obsahuje až 1 000 událostí.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Integrace REST API a Machine Learning](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
+* [Integrace REST API a Machine Learning Studio (Classic)](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)

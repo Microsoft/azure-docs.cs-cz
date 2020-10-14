@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 49fb77b4efbbecb306a0650cb17097b43e5153ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d53c1c137e8359e3379e2403cf655c1f1dc592f5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309145"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016395"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>Správa verzí modelů v rozhraní API pro analýzu textu
 
@@ -29,7 +29,7 @@ Pomocí následující tabulky můžete zjistit, které verze modelu jsou podpor
 | Koncový bod                        | Podporované verze                                     | nejnovější verze |
 |---------------------------------|--------------------------------------------------------|----------------|
 | `/sentiment`                    | `2019-10-01`, `2020-04-01`                             | `2020-04-01`   |
-| `/languages`                    | `2019-10-01`, `2020-07-01`                             | `2020-07-01`   |
+| `/languages`                    | `2019-10-01`, `2020-07-01`, `2020-09-01`               | `2020-09-01`   |
 | `/entities/linking`             | `2019-10-01`, `2020-02-01`                             | `2020-02-01`   |
 | `/entities/recognition/general` | `2019-10-01`, `2020-02-01`, `2020-04-01`,              | `2020-04-01`   |
 | `/entities/recognition/pii`     | `2019-10-01`, `2020-02-01`, `2020-04-01`,`2020-07-01`  | `2020-07-01`   |
@@ -55,4 +55,4 @@ Podrobnosti o aktualizacích pro tyto modely najdete v části [co je nového](.
 
 * [Přehled analýzy textu](../overview.md)
 * [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Rozpoznávání entit](../how-tos/text-analytics-how-to-entity-linking.md)
+* [rozpoznávání entit,](../how-tos/text-analytics-how-to-entity-linking.md)

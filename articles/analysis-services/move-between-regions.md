@@ -8,12 +8,12 @@ ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f7ecf960ae94fae4d829e73daf051b9062e478d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050357"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018190"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Přesunout Analysis Services do jiné oblasti
 
@@ -71,7 +71,7 @@ Pokud jsou nakonfigurovaná nastavení úložiště, pomocí kroků v části [z
 
 Export šablony pomocí webu Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **všechny prostředky**a potom vyberte Server Analysis Services.
 
@@ -88,7 +88,7 @@ Export šablony pomocí webu Azure Portal:
 
 Export šablony pomocí prostředí PowerShell:
 
-1. Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) a postupujte podle pokynů na obrazovce:
+1. Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) a postupujte podle pokynů na obrazovce:
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -177,7 +177,7 @@ Textový editor slouží k úpravě template.jssouboru, který jste exportovali,
 
 #### <a name="regions"></a>Oblasti
 
-Pokud chcete získat oblasti Azure, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/). Pokud chcete získat oblasti pomocí PowerShellu, spusťte příkaz [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) .
+Pokud chcete získat oblasti Azure, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/). Pokud chcete získat oblasti pomocí PowerShellu, spusťte příkaz [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) .
 
 ```azurepowershell-interactive
    Get-AzLocation | format-table 
@@ -301,4 +301,4 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 ---
 
 > [!NOTE]
-> Po dokončení přesunu oblasti se doporučuje, aby nový cílový server používal kontejner úložiště ve stejné oblasti pro zálohování místo kontejneru úložiště v oblasti zdrojového serveru. 
+> Po dokončení přesunu oblasti se doporučuje, aby nový cílový server používal kontejner úložiště ve stejné oblasti pro zálohování místo kontejneru úložiště v oblasti zdrojového serveru.

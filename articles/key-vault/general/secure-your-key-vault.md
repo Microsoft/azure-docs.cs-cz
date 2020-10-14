@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 9060c00e1523db0671d9698465c8e8fcb6340785
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efbed9ec44bd386a4540c397ca8958fb3ccea807
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842831"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019881"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Zabezpečený přístup k trezoru klíčů
 
@@ -79,7 +79,7 @@ V rámci skupiny prostředků můžete vytvořit Trezor klíčů a spravovat př
 
 Existuje několik předdefinovaných rolí. Pokud předdefinovaná role nevyhovuje vašim potřebám, můžete definovat vlastní roli. Další informace najdete v tématu [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md). 
 
-Musíte mít `Microsoft.Authorization/roleAssignments/write` `Microsoft.Authorization/roleAssignments/delete` oprávnění a, jako je například správce nebo [vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#owner) [přístupu uživatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#user-access-administrator) .
+Musíte mít `Microsoft.Authorization/roleAssignments/write` `Microsoft.Authorization/roleAssignments/delete` oprávnění a, jako je například správce nebo [vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) [přístupu uživatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) .
 
 > [!IMPORTANT]
 > Pokud má uživatel `Contributor` oprávnění k rovině správy trezoru klíčů, uživatel může udělit přístup k rovině dat nastavením zásad přístupu Key Vault. Měli byste přesně řídit, kdo má `Contributor` roli přístup k vašim trezorům klíčů. Ujistěte se, že k vašim trezorům klíčů, klíčům, tajným klíčům a certifikátům mají přístup jenom autorizovaní uživatelé.

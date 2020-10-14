@@ -3,12 +3,12 @@ title: Analýza živého videa pomocí živé analýzy videí v IoT Edge a Azure
 description: Naučte se, jak pomocí Custom Vision vytvořit kontejnerový model, který dokáže detekovat nákladní automobil a používat funkci rozšíření AI pro živé video analýzy v IoT Edge (LVA) k nasazení modelu na hraničních zařízeních pro detekci hraček datových toků z živého streamu videa.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 7989b3636fe953b8110e356506a5867fefd2d8b6
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: e77521765156a13f0675602ffd0b39f78d8957bb
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940170"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016786"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Kurz: Analýza živého videa pomocí živé analýzy videí v IoT Edge a Azure Custom Vision
 
@@ -32,12 +32,12 @@ V tomto kurzu získáte informace o následujících postupech:
 Než začnete, doporučujeme, abyste si přečetli následující články: 
 
 * [Přehled živé analýzy videí na IoT Edge](overview.md)
-* [Přehled služby Azure Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home)
+* [Přehled služby Azure Custom Vision](../../cognitive-services/custom-vision-service/overview.md)
 * [Živá analýza videí na IoT Edge terminologii](terminology.md)
 * [Koncepty Media graphu](media-graph-concept.md)
 * [Analýza živého videa bez nahrávání videa](analyze-live-video-concept.md)
 * [Používání živé analýzy videí pomocí vlastního modelu](use-your-model-quickstart.md)
-* [Kurz: vývoj modulu IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [Kurz: vývoj modulu IoT Edge](../../iot-edge/tutorial-develop-for-linux.md)
 * [Postup úpravy nasazení. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 
 ## <a name="prerequisites"></a>Požadavky
@@ -64,17 +64,17 @@ V tomto kurzu se k simulaci živého streamu používá soubor [videa pro odvoze
 > :::image type="content" source="./media/custom-vision-tutorial/topology-custom-vision.svg" alt-text="Přehled Custom Vision":::
 
 Tento diagram znázorňuje způsob, jakým se v tomto kurzu Flow signalizují. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server protokolu RTSP (Real-Time streaming Protocol). [Zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a pošle snímky videa na uzel [procesoru filtru snímkové frekvence](media-graph-concept.md#frame-rate-filter-processor) . Tento procesor omezuje kmitočet snímků streamu videa, který se dorazí na uzel [procesoru rozšíření http](media-graph-concept.md#http-extension-processor) .
-Uzel rozšíření HTTP hraje roli proxy serveru. Převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes REST do jiného modulu Edge, který spouští model AI za koncovým bodem HTTP. V tomto příkladu je tento hraniční modul modelem automobilového rozpoznávání, sestavený pomocí Custom Vision. Uzel procesoru rozšíření HTTP shromáždí výsledky detekce a publikuje události do uzlu [IoT Hub jímka](media-graph-concept.md#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub).
+Uzel rozšíření HTTP hraje roli proxy serveru. Převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes REST do jiného modulu Edge, který spouští model AI za koncovým bodem HTTP. V tomto příkladu je tento hraniční modul modelem automobilového rozpoznávání, sestavený pomocí Custom Vision. Uzel procesoru rozšíření HTTP shromáždí výsledky detekce a publikuje události do uzlu [IoT Hub jímka](media-graph-concept.md#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
 ## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Sestavení a nasazení modelu detekce Custom Vision hraček 
 
 Jak název Custom Vision navrhuje, můžete ho využít k sestavení vlastního detektoru nebo třídění vlastního objektu v cloudu. Poskytuje jednoduché, snadno použitelné a intuitivní rozhraní k vytváření vlastních modelů visionů, které je možné nasadit v cloudu nebo na hraničních zařízeních prostřednictvím kontejnerů. 
 
-Pro vytvoření rozpoznávání automobilového vozíku doporučujeme, abyste provedli vytváření objektového rozpoznávání pomocí webového portálu v [rychlém startu](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector) pomocí tohoto vlastního záměru.
+Pro vytvoření rozpoznávání automobilového vozíku doporučujeme, abyste provedli vytváření objektového rozpoznávání pomocí webového portálu v [rychlém startu](../../cognitive-services/custom-vision-service/get-started-build-detector.md) pomocí tohoto vlastního záměru.
 
 Další poznámky:
  
-* Pro tento kurz nepoužívejte ukázkové image uvedené v [části požadavky](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#prerequisites)v rychlém startu v článku. Místo toho jsme využili určitou sadu imagí pro sestavování vlastního modelu Vision detektoru hraček. [tyto image](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip) doporučujeme použít, když budete požádáni o [Výběr vašich školicích imagí](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#choose-training-images) v rychlém startu.
+* Pro tento kurz nepoužívejte ukázkové image uvedené v [části požadavky](../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites)v rychlém startu v článku. Místo toho jsme využili určitou sadu imagí pro sestavování vlastního modelu Vision detektoru hraček. [tyto image](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip) doporučujeme použít, když budete požádáni o [Výběr vašich školicích imagí](../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images) v rychlém startu.
 * V části s označením obrázku v rychlém startu nezapomeňte tagovat nákladní automobil, který je vidět na obrázku, pomocí značky – "Delivery nákladní vůz".
 
 Pokud je model připravený podle vaší spokojenosti, můžete ho exportovat do kontejneru Docker pomocí tlačítka exportovat na kartě výkon. Ujistěte se prosím, že jako typ kontejnerové platformy zvolíte Linux. Jedná se o platformu, na které se kontejner spustí. Počítač, na který jste kontejner stáhli, může být buď Windows, nebo Linux. Následující pokyny byly založené na souboru kontejneru staženém na počítač s Windows.
@@ -178,7 +178,7 @@ Další série volání vyčistí prostředky:
     
 ## <a name="interpret-the-results"></a>Interpretace výsledků
 
-Když spustíte graf médií, výsledky z uzlu procesor rozšíření HTTP procházejí uzlem IoT Hub jímky do služby IoT Hub. Zprávy, které vidíte v okně výstup, obsahují část tělo a část applicationProperties. Další informace najdete v tématu [Vytvoření a čtení zpráv IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+Když spustíte graf médií, výsledky z uzlu procesor rozšíření HTTP procházejí uzlem IoT Hub jímky do služby IoT Hub. Zprávy, které vidíte v okně výstup, obsahují část tělo a část applicationProperties. Další informace najdete v tématu [Vytvoření a čtení zpráv IoT Hub](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 V následujících zprávách modul Live video Analytics definuje vlastnosti aplikace a obsah těla.
 
@@ -314,7 +314,6 @@ Pokud máte v úmyslu vyzkoušet ostatní kurzy nebo rychlé starty, měli byste
 Přečtěte si další výzvy pro pokročilé uživatele:
 
 * Místo používání simulátoru RTSP použijte [kameru IP](https://en.wikipedia.org/wiki/IP_camera) , která má podporu pro RTSP. Můžete vyhledat kamery protokolu IP, které podporují protokol RTSP na stránce ONVIF, která je v [souladu](https://www.onvif.org/conformant-products/) s těmito produkty. Vyhledejte zařízení, která jsou v souladu s profily G, S nebo T.
-* Místo virtuálního počítače Azure Linux použijte zařízení AMD64 nebo x64 Linux. Toto zařízení musí být ve stejné síti jako kamera IP. Můžete postupovat podle pokynů v tématu [Instalace modulu runtime Azure IoT Edge v systému Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux). 
+* Místo virtuálního počítače Azure Linux použijte zařízení AMD64 nebo x64 Linux. Toto zařízení musí být ve stejné síti jako kamera IP. Můžete postupovat podle pokynů v tématu [Instalace modulu runtime Azure IoT Edge v systému Linux](../../iot-edge/how-to-install-iot-edge-linux.md). 
 
-Pak zařízení Zaregistrujte v Azure IoT Hub podle pokynů v tématu [nasazení prvního modulu IoT Edge na zařízení s Virtual Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).
-
+Pak zařízení Zaregistrujte v Azure IoT Hub podle pokynů v tématu [nasazení prvního modulu IoT Edge na zařízení s Virtual Linux](../../iot-edge/quickstart-linux.md).

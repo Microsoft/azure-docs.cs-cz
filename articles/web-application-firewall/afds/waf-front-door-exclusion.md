@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/25/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43565e812abcf0b7dbb992ac4d25a62a4d08df2b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77925927"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018640"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Firewall webových aplikací (WAF) se seznamy vyloučení služby front-dveří 
 
@@ -45,6 +45,17 @@ Můžete zadat přesně takovou hlavičku požadavku, tělo, soubor cookie nebo 
 V názvech hlaviček a souborů cookie se nerozlišují malá a velká písmena.
 
 Seznam vyloučení můžete použít pro všechna pravidla v rámci spravované sady pravidel, na pravidla pro konkrétní skupinu pravidel nebo na jedno pravidlo, jak je znázorněno v předchozím příkladu. 
+
+## <a name="define-exclusion-based-on-web-application-firewall-logs"></a>Definování vyloučení na základě protokolů brány firewall webových aplikací
+ [Monitorování a protokolování brány firewall webových aplikací Azure](waf-front-door-monitor.md) zobrazuje odpovídající podrobnosti o blokované žádosti. Pokud hodnota záhlaví, hodnota souboru cookie, hodnota post argumentu nebo hodnota argumentu dotazu vytvoří pro některá pravidla falešně pozitivní hodnotu, můžete tuto část požadavku vyloučit z pravidla. V následující tabulce jsou uvedeny ukázkové hodnoty z protokolů WAF a příslušné podmínky vyloučení.
+
+|matchVariableName z protokolů WAF    |Vyloučení pravidla na portálu|
+|--------|------|
+|CookieValue: SOME_NAME  |Název souboru cookie žádosti se rovná SOME_NAME|
+|HeaderValue: SOME_NAME  |Název záhlaví žádosti se rovná SOME_NAME|
+|PostParamValue: SOME_NAME|  Text žádosti post argumenty s názvem se rovná SOME_NAME|
+|QueryParamValue: SOME_NAME| Argumenty řetězce dotazu s názvem se rovná SOME_NAME|
+
 
 ## <a name="next-steps"></a>Další kroky
 

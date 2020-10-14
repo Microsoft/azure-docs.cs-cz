@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
-ms.openlocfilehash: 8e92c893d97ce9fadfa2d40476631c2b9ba5d177
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: d829ffb9d3a264052e3f688018acd7afa854578e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999263"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018266"
 ---
 # <a name="azure-security-center-data-security"></a>Zabezpečení dat Azure Security Center
 
@@ -57,19 +57,19 @@ Pokud nepoužíváte Azure Defender, můžete taky zakázat shromažďování da
 
 Můžete zadat pracovní prostor a oblast, kde se ukládají data shromážděná z vašich počítačů. Ve výchozím nastavení se data shromážděná z vašich počítačů ukládají do nejbližšího pracovního prostoru, jak je znázorněno v následující tabulce:
 
-| Geografie virtuálního počítače                              | Geografie pracovního prostoru |
-|-------------------------------------|---------------|
-| USA, Brazílie, Jižní Afrika | Česká republika |
-| Canada                              | Kanada        |
-| Evropa (s výjimkou Spojeného království)   | Evropa        |
-| Spojené království                      | Spojené království |
-| Asie (s výjimkou Indie, Japonska, Koreje, ČLR)   | Asie a Tichomoří  |
-| Jižní Korea                              | Asie a Tichomoří  |
-| Indie                               | Indie         |
-| Japonsko                               | Japonsko         |
-| Čína                               | Čína         |
-| Austrálie                           | Austrálie     |
-|||
+| Geografie virtuálního počítače                                      | Geografie pracovního prostoru  |
+|---------------------------------------------|----------------|
+| USA, Brazílie, Jižní Afrika         | Česká republika  |
+| Canada                                      | Kanada         |
+| Evropa (s výjimkou Spojeného království)           | Evropa         |
+| Spojené království                              | Spojené království |
+| Asie (s výjimkou Indie, Japonska, Koreje, ČLR) | Asie a Tichomoří   |
+| Jižní Korea                                       | Asie a Tichomoří   |
+| Indie                                       | Indie          |
+| Japonsko                                       | Japonsko          |
+| Čína                                       | Čína          |
+| Austrálie                                   | Austrálie      |
+|                                             |                |
 
 > [!NOTE]
 > **Azure Defender pro úložiště v** místním úložišti ukládá artefakty podle umístění souvisejícího prostředku Azure. Další informace najdete v [úvodu k Azure Defenderu pro úložiště](defender-for-storage-introduction.md).
@@ -80,18 +80,16 @@ Můžete zadat pracovní prostor a oblast, kde se ukládají data shromážděn�
 Zákazníci mohou získat přístup k Security Center související data z následujících datových proudů:
 
 
-|Datový proud  |Typy dat  |
-|---------|---------|
-|[Protokol aktivit Azure](../azure-monitor/platform/activity-log.md)| Všechny výstrahy zabezpečení, schválené Security Center požadavky na přístup [za běhu](security-center-just-in-time.md) a všechny výstrahy vygenerované [adaptivními ovládacími prvky aplikace](security-center-adaptive-application.md) |
-|[Protokoly Azure Monitor](../azure-monitor/platform/data-platform.md)|Všechny výstrahy zabezpečení|
-|[Azure Resource Graph](../governance/resource-graph/overview.md)|Výstrahy zabezpečení, doporučení zabezpečení, výsledky posouzení ohrožení zabezpečení, informace o bezpečném hodnocení, stav kontrol dodržování předpisů a další.|
-|[Rozhraní REST API služby Azure Security Center](https://docs.microsoft.com/rest/api/securitycenter/)|Výstrahy zabezpečení, doporučení zabezpečení a další. .|
-|||
+| Datový proud                                                                                | Typy dat                                                                                                                                                                                                          |
+|---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Protokol aktivit Azure](../azure-monitor/platform/activity-log.md)                       | Všechny výstrahy zabezpečení, schválené Security Center požadavky na přístup [za běhu](security-center-just-in-time.md) a všechny výstrahy vygenerované [adaptivními ovládacími prvky aplikace](security-center-adaptive-application.md).|
+| [Protokoly Azure Monitor](../azure-monitor/platform/data-platform.md)                      | Všechny výstrahy zabezpečení                                                                                                                                                                                                |
+| [Azure Resource Graph](../governance/resource-graph/overview.md)                      | Výstrahy zabezpečení, doporučení zabezpečení, výsledky posouzení ohrožení zabezpečení, informace o bezpečném hodnocení, stav kontrol dodržování předpisů a další.                                                                       |
+| [Rozhraní REST API služby Azure Security Center](https://docs.microsoft.com/rest/api/securitycenter/) | Výstrahy zabezpečení, doporučení zabezpečení a další.                                                                                                                                                                |
+|                                                                                       |                                                                                                                                                                                                                     |
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto dokumentu jste se dozvěděli informace o způsobu správy a ochrany ve službě Azure Security Center. 
 
-Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
-
-- [Co je Azure Security Center?](security-center-introduction.md)
+Další informace o Azure Security Center najdete v tématu [co je Azure Security Center?](security-center-introduction.md)

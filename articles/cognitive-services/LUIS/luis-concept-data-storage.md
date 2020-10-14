@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.openlocfilehash: b74621f357613bc60457ab4846b58f6f85009401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: 12693fb11556380e62df277be093ce20c02ff372
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541879"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018028"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Ukládání a odebírání dat v Language Understanding (LUIS) Cognitive Services
 LUIS ukládá data zašifrovaná v úložišti dat Azure, která odpovídají oblasti určené klíčem. Tato data jsou uložena po dobu 30 dnů. 
@@ -50,9 +50,14 @@ Pokud nechcete aktivní výukové projevy, můžete [zakázat aktivní učení](
 <a name="accounts"></a>
 
 ## <a name="delete-an-account"></a>Odstranění účtu
-Pokud odstraníte účet, ododstraňují se všechny aplikace spolu s příklady projevy a protokolů. Data se uchovávají po dobu 60 dnů před tím, než se účet trvale odstraní.
+Pokud se vám migrace nemigruje, můžete účet odstranit a všechny vaše aplikace se odstraní spolu s příklady projevy a protokolů. Data se uchovávají po dobu 90 dnů před tím, než se účet trvale odstraní.
 
 Odstranění účtu je k dispozici na stránce **Nastavení** . Na stránce **Nastavení** se dostanete tak, že vyberete název svého účtu v pravém horním navigačním panelu.
+
+## <a name="delete-an-authoring-resource"></a>Odstranění prostředku pro vytváření
+Pokud jste [migrovali na prostředek pro vytváření obsahu](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring), odstraní se samotný prostředek z Azure Portal všechny aplikace přidružené k tomuto prostředku a jejich příklady projevy a protokolů. Data se uchovávají po dobu 90 dnů, než se trvale odstraní.    
+
+Pokud chcete prostředek odstranit, otevřete [Azure Portal](https://ms.portal.azure.com/#home) a vyberte prostředek pro vytváření Luis. Přejděte na kartu **Přehled** a klikněte na tlačítko **Odstranit** v horní části stránky. Pak ověřte, že se prostředek odstranil. 
 
 ## <a name="data-inactivity-as-an-expired-subscription"></a>Neaktivity dat jako předplatného s vypršenou platností
 Pro účely uchovávání a odstranění dat může být neaktivní aplikace LUIS na _uvážení společnosti Microsoft_ považována za předplatné s vypršenou platností. Aplikace se považuje za neaktivní, pokud splňuje následující kritéria za posledních 90 dnů: 

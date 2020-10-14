@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 141649f7620063b58134caaa878162f3a7e767e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2e17e99208d076d05132638b5161a284b73986f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739901"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018623"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s virtuální sítí Azure
 
@@ -149,6 +149,10 @@ Tři poplatky souvisejí s používáním funkce integrace virtuální sítě vy
 * **Náklady na bránu VPN**: pro bránu virtuální sítě, která je potřeba pro síť VPN typu Point-to-site, se účtuje náklady. Další informace najdete v tématu [ceny služby VPN Gateway][VNETPricing].
 
 ## <a name="troubleshooting"></a>Řešení potíží
+
+> [!NOTE]
+> Integrace virtuální sítě se nepodporuje pro scénáře Docker Compose v App Service.
+>
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 

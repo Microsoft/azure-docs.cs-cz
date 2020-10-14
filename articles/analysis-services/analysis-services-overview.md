@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: c6913fee6872d8875e068b2502727c9f42f80401
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 11ab4e0404b7ebc8620cd1eb54edae9bb861e46b
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89594199"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018793"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je Azure Analysis Services?
 
@@ -27,7 +27,7 @@ Azure Analysis Services je plně spravovaná platforma jako služba (PaaS), kter
 
 ## <a name="get-up-and-running-quickly"></a>Rychlé zprovoznění
 
-Na webu Azure Portal můžete [vytvořit server](analysis-services-create-server.md) během několika minut. A pomocí PowerShellu a [šablon](../azure-resource-manager/resource-manager-create-first-template.md) Azure Resource Manageru můžete vytvářet servery s využitím deklarativní šablony. S jedinou šablonou můžete nasadit prostředky serveru společně s dalšími komponentami Azure, jako jsou účty úložiště nebo služba Azure Functions. 
+Na webu Azure Portal můžete [vytvořit server](analysis-services-create-server.md) během několika minut. A pomocí PowerShellu a [šablon](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) Azure Resource Manageru můžete vytvářet servery s využitím deklarativní šablony. S jedinou šablonou můžete nasadit prostředky serveru společně s dalšími komponentami Azure, jako jsou účty úložiště nebo služba Azure Functions. 
 
 **Video:** Podívejte se na video o [automatizaci nasazení](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation), ve kterém se dozvíte více o tom, jak můžete urychlit vytvoření serveru pomocí služby Azure Automation.
 
@@ -88,8 +88,8 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |USA – východ 2     |     S8, S9, S8v2, S9v2   |    1    |
 |USA – středosever     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA – středosever     |     S8v2, S9v2    |    1     |
-|USA – střed     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|USA – střed     |    S8v2, S9v2     |    1     |
+|Střední USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Střední USA     |    S8v2, S9v2     |    1     |
 |Středojižní USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA – středozápad   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA – západ     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
@@ -138,13 +138,13 @@ Celkové náklady závisí na několika faktorech. Například zvolená oblast, 
 
 ## <a name="built-on-sql-server-analysis-services"></a>Vytvořeno na základě SQL Server Analysis Services
 
-Služba Azure Analysis Services je kompatibilní s mnoha skvělými funkcemi, které už jsou ve službě SQL Server Analysis Services Enterprise Edition. Azure Analysis Services podporuje tabulkové modely na [úrovni kompatibility](analysis-services-compat-level.md) 1200 nebo vyšší. Tabulkové modely jsou relační konstrukce modelování (model, tabulky, sloupce) vyjádřené v definicích objektů tabulkových metadat v jazyce TMSL (Tabular Model Scripting Language) a kódu tabulkového objektového modelu (TOM). Podporují se oddíly, perspektivy, zabezpečení na úrovni řádku, obousměrné relace a překlady \* . V Azure Analysis Services *se* nepodporují multidimenzionální modely a doplněk PowerPivot pro SharePoint.
+Služba Azure Analysis Services je kompatibilní s mnoha skvělými funkcemi, které už jsou ve službě SQL Server Analysis Services Enterprise Edition. Azure Analysis Services podporuje tabulkové modely na [úrovni kompatibility](/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services) 1200 nebo vyšší. Tabulkové modely jsou relační konstrukce modelování (model, tabulky, sloupce) vyjádřené v definicích objektů tabulkových metadat v jazyce TMSL (Tabular Model Scripting Language) a kódu tabulkového objektového modelu (TOM). Podporují se oddíly, perspektivy, zabezpečení na úrovni řádku, obousměrné relace a překlady \* . V Azure Analysis Services *se* nepodporují multidimenzionální modely a doplněk PowerPivot pro SharePoint.
 
 Podporují se tabulkové modely v režimu DirectQuery i režimu v paměti. Tabulkové modely režimu v paměti (výchozí) podporují více zdrojů dat. Vzhledem k tomu, že data modelu jsou v režimu v paměti hodně komprimovaná a uložená v mezipaměti, poskytuje tento model nejrychlejší odezvu na dotazy ve velkých objemech dat. Poskytuje také největší flexibilitu pro složité datové sady a dotazy. 
 
 Vytváření oddílů umožňuje přírůstkové načítání, zvyšuje paralelizaci a snižuje využití paměti. Podporují se i další pokročilé funkce modelování dat, jako jsou počítané tabulky a všechny funkce DAX. Modely v paměti se musí aktualizovat (zpracovávat) za účelem aktualizace dat v mezipaměti ze zdrojů dat. Díky podpoře služby Azure Service Principal, bezobslužné operace aktualizace s využitím PowerShellu, možnosti, TMSL a REST nabízí flexibilitu při zajištění aktuálnosti dat modelu v aktuálním stavu. 
 
-Režim DirectQuery* využívá relační databáze back-endu pro ukládání a spouštění dotazů. Jsou podporovány extrémně velké datové sady v jednom SQL Server, SQL Server datového skladu, Azure SQL Database, datových zdrojích Azure synapse Analytics (dříve SQL Data Warehouse), Oracle a Teradata. Datové sady back-endu mohou být větší než dostupná paměť prostředku serveru. Složité scénáře aktualizace datového modelu nejsou potřeba. Existují také určitá omezení, například omezené typy zdrojů dat, omezení vzorců DAX a některé pokročilé funkce modelování dat nejsou podporovány. Než se rozhodnete, co je pro vás nejvhodnější, podívejte se na článek o [režimu DirectQuery](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular).
+Režim DirectQuery* využívá relační databáze back-endu pro ukládání a spouštění dotazů. Jsou podporovány extrémně velké datové sady v jednom SQL Server, SQL Server datového skladu, Azure SQL Database, datových zdrojích Azure synapse Analytics (dříve SQL Data Warehouse), Oracle a Teradata. Datové sady back-endu mohou být větší než dostupná paměť prostředku serveru. Složité scénáře aktualizace datového modelu nejsou potřeba. Existují také určitá omezení, například omezené typy zdrojů dat, omezení vzorců DAX a některé pokročilé funkce modelování dat nejsou podporovány. Než se rozhodnete, co je pro vás nejvhodnější, podívejte se na článek o [režimu DirectQuery](/analysis-services/tabular-models/directquery-mode-ssas-tabular).
 
 \* Dostupnost funkcí závisí na úrovni.
 
@@ -154,16 +154,16 @@ Tabulkové modely ve službě Azure Analysis Services podporují celou řadu zdr
 
 ## <a name="compatibility-level"></a>Úroveň kompatibility
 
-Úroveň kompatibility odkazuje na chování specifické pro vydání v modulu Analysis Services. Azure Analysis Services podporuje tabulkové modely na úrovni kompatibility 1200 nebo vyšší. Další informace najdete v tématu [úroveň kompatibility pro tabelární modely](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services).
+Úroveň kompatibility odkazuje na chování specifické pro vydání v modulu Analysis Services. Azure Analysis Services podporuje tabulkové modely na úrovni kompatibility 1200 nebo vyšší. Další informace najdete v tématu [úroveň kompatibility pro tabelární modely](/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services).
 
 
 ## <a name="your-data-is-secure"></a>Vaše data jsou v bezpečí
 
 Služba Azure Analysis Services poskytuje zabezpečení citlivých dat na více úrovních. Jako služba Azure Analysis Services poskytuje **základní** úroveň útoků DDoS (Distributed Denial of Service), které se automaticky povolují jako součást platformy Azure. Další informace najdete v tématu [přehled Azure DDoS Protection Standard](../virtual-network/ddos-protection-overview.md). 
 
-Na úrovni serveru Analysis Services poskytuje bránu firewall, ověřování Azure, role správce serveru a šifrování na straně serveru. Na úrovni datového modelu, rolích uživatelů, zabezpečení na úrovni řádků a objektů zajišťuje bezpečnost vašich dat a jejich zobrazení pouze uživatelé, kteří jsou určeni k jejich zobrazení.
+Na úrovni serveru Analysis Services poskytuje bránu firewall, ověřování Azure, role správců serveru a šifrování Server-Side. Na úrovni datového modelu, rolích uživatelů, zabezpečení na úrovni řádků a objektů zajišťuje bezpečnost vašich dat a jejich zobrazení pouze uživatelé, kteří jsou určeni k jejich zobrazení.
 
-### <a name="firewall"></a>Firewall
+### <a name="firewall"></a>Brána firewall
 
 Brána firewall služby Azure Analysis Services blokuje všechna připojení klientů kromě IP adres zadaných v pravidlech. Ve výchozím nastavení není ochrana brány firewall pro nové servery povolena. Doporučuje se povolit ochranu brány firewall a pravidla se konfigurují jako součást skriptu zřizování serveru nebo na portálu hned po vytvoření serveru. Pravidla můžete konfigurovat zadáním povolených IP adres jednotlivých klientů nebo jejich rozsahu. Povolit nebo blokovat je možné také připojení (služby) Power BI. Pravidla a bránu firewall můžete konfigurovat na portálu nebo pomocí PowerShellu. Další informace najdete v článku o [konfiguraci brány firewall serveru](analysis-services-qs-firewall.md).
 
@@ -179,7 +179,7 @@ Zabezpečeného přístupu ke zdrojům dat nacházejícím se místně ve vaší
 
 ### <a name="roles"></a>Role
 
-Služba Analysis Services používá [autorizaci na základě rolí](https://docs.microsoft.com/analysis-services/tabular-models/roles-ssas-tabular), která uděluje přístup k serveru operacím, objektům a datům modelové databáze. Všichni uživatelé, kteří přistupují k serveru nebo databázi, tak činí prostřednictvím svého uživatelského účtu Azure AD v rámci přiřazené role. Role správce serveru je na úrovni prostředků serveru. Ve výchozím nastavení se účet použitý při vytváření serveru automaticky zahrne do role správce serveru. Další uživatelské a skupinové účty se přidají pomocí portálu, SSMS nebo PowerShellu.
+Služba Analysis Services používá [autorizaci na základě rolí](/analysis-services/tabular-models/roles-ssas-tabular), která uděluje přístup k serveru operacím, objektům a datům modelové databáze. Všichni uživatelé, kteří přistupují k serveru nebo databázi, tak činí prostřednictvím svého uživatelského účtu Azure AD v rámci přiřazené role. Role správce serveru je na úrovni prostředků serveru. Ve výchozím nastavení se účet použitý při vytváření serveru automaticky zahrne do role správce serveru. Další uživatelské a skupinové účty se přidají pomocí portálu, SSMS nebo PowerShellu.
   
 Koncovým uživatelům (jiným než správcům), kteří se dotazují na data, se udělí přístup prostřednictvím databázových rolí. Databázová role se vytvoří jako samostatný objekt v databázi a použije se pouze na databázi, ve které byla vytvořena. Databázové role jsou definované oprávněními správce, ke čtení a ke čtení a zpracování (v databázi). Uživatelské a skupinové účty se přidají pomocí SSMS nebo PowerShellu.
 
@@ -189,7 +189,7 @@ Tabulkové modely na všech úrovních kompatibility podporují zabezpečení na
 
 ### <a name="object-level-security"></a>Zabezpečení na úrovni objektů 
 
-Tabulkové modely na úrovni kompatibility 1400 podporují zabezpečení na úrovni objektů, které zahrnuje zabezpečení na úrovni tabulek a sloupců. Zabezpečení na úrovni objektů je nastaveno v metadatech založených na formátu JSON v souboru Model.bim pomocí TMSL nebo TOM. Další informace najdete v článku o [zabezpečení na úrovni objektů](https://docs.microsoft.com/analysis-services/tabular-models/object-level-security).
+Tabulkové modely na úrovni kompatibility 1400 podporují zabezpečení na úrovni objektů, které zahrnuje zabezpečení na úrovni tabulek a sloupců. Zabezpečení na úrovni objektů je nastaveno v metadatech založených na formátu JSON v souboru Model.bim pomocí TMSL nebo TOM. Další informace najdete v článku o [zabezpečení na úrovni objektů](/analysis-services/tabular-models/object-level-security).
 
 ### <a name="automation-through-service-principals"></a>Automatizace prostřednictvím instančních objektů
 
@@ -212,7 +212,7 @@ Projekty Microsoft Analysis Services jsou k dispozici jako bezplatný balíček 
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
-Spravujte servery a modelové databáze pomocí aplikace [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Připojte se k vašim serverům v cloudu. Spouštějte skripty jazyka TMSL přímo z okna dotazu XMLA a automatizujte úlohy pomocí skriptů TMSL a PowerShellu. Nové funkce se přidávají rychle – aplikace SSMS se aktualizuje každý měsíc.
+Spravujte servery a modelové databáze pomocí aplikace [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). Připojte se k vašim serverům v cloudu. Spouštějte skripty jazyka TMSL přímo z okna dotazu XMLA a automatizujte úlohy pomocí skriptů TMSL a PowerShellu. Nové funkce se přidávají rychle – aplikace SSMS se aktualizuje každý měsíc.
 
 ### <a name="open-source-tools"></a>Open Source nástroje
 
@@ -224,7 +224,7 @@ Analysis Services má nezářivou komunitu vývojářů, kteří vytvářejí n�
 
 ### <a name="object-model-and-scripting"></a>Objektový model a skriptování
 
-Tabulkové modely nabízejí rychlý vývoj a jsou vysoce přizpůsobitelné. Tabulkové modely zahrnují [tabulkový objektový model](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM) pro popis objektů modelu. Tabulkový objektový model (TOM) je přístupný ve formátu JSON prostřednictvím [jazyka TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) a jazyka DDL AMO v oboru názvů [Microsoft.AnalysisServices.Tabular](/dotnet/api/microsoft.analysisservices.tabular). 
+Tabulkové modely nabízejí rychlý vývoj a jsou vysoce přizpůsobitelné. Tabulkové modely zahrnují [tabulkový objektový model](/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM) pro popis objektů modelu. Tabulkový objektový model (TOM) je přístupný ve formátu JSON prostřednictvím [jazyka TMSL (Tabular Model Scripting Language)](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) a jazyka DDL AMO v oboru názvů [Microsoft.AnalysisServices.Tabular](/dotnet/api/microsoft.analysisservices.tabular). 
 
 ## <a name="supports-the-latest-client-tools"></a>Podporuje nejnovější nástroje klienta
 
@@ -236,21 +236,21 @@ Podporují se všechny moderní nástroje pro zkoumání a vizualizaci dat, jako
 
 Azure Analysis Services je integrovaná s metrikami Azure Monitor a poskytuje velký počet metrik specifických pro prostředky, které vám pomůžou monitorovat výkon a stav serverů. Další informace najdete v tématu [Monitorování metrik serveru](analysis-services-monitor.md). Zaznamenejte metriky s [protokoly platformy prostředků](../azure-monitor/platform/platform-logs-overview.md). Monitorování a posílání protokolů [Azure Storage](https://azure.microsoft.com/services/storage/), jejich streamování do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a jejich export do [protokolů Azure monitor](https://azure.microsoft.com/services/log-analytics/), služby [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Další informace najdete v článku o [nastavení protokolování diagnostiky](analysis-services-logging.md).
 
-Služba Azure Analysis Services také podporuje používání [zobrazení dynamické správy](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services). Zobrazení dynamické správy koordinují na základě syntaxe SQL sady řádků schématu, které vracejí metadata a informace monitorování týkající se instance serveru.
+Služba Azure Analysis Services také podporuje používání [zobrazení dynamické správy](/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services). Zobrazení dynamické správy koordinují na základě syntaxe SQL sady řádků schématu, které vracejí metadata a informace monitorování týkající se instance serveru.
 
 ## <a name="documentation"></a>Dokumentace
 
 Konkrétní dokumentace pro službu Azure Analysis Services je uvedená zde. K vyhledání článků použijte obsah na levé straně obrazovky prohlížeče. 
 
-Vzhledem k tomu, že tabulkové modely v Azure Analysis Services jsou v datových sadách SQL Server Analysis Services a Power BI Premium mnohem stejné jako tabelární modely, existuje rozsáhlá knihovna sdílených dat, koncepčních, procedurálních, vývojářských a referenčních článků v [Analysis Services dokumentaci](https://docs.microsoft.com/analysis-services/?view=azure-analysis-services-current). Články v dokumentaci ke sdílenému Analysis Services ukazují, jestli se vztahují také na Azure Analysis Services na hlavičku pod názvem. Můžete také použít selektor verzí nad obsahem a zobrazit jenom ty články, které se vztahují na platformu, kterou používáte.
+Vzhledem k tomu, že tabulkové modely v Azure Analysis Services jsou v datových sadách SQL Server Analysis Services a Power BI Premium mnohem stejné jako tabelární modely, existuje rozsáhlá knihovna sdílených dat, koncepčních, procedurálních, vývojářských a referenčních článků v [Analysis Services dokumentaci](/analysis-services/?view=azure-analysis-services-current). Články v dokumentaci ke sdílenému Analysis Services ukazují, jestli se vztahují také na Azure Analysis Services na hlavičku pod názvem. Můžete také použít selektor verzí nad obsahem a zobrazit jenom ty články, které se vztahují na platformu, kterou používáte.
 
 ![Sdílená dokumentace](./media/analysis-services-overview/aas-overview-applies-to.png)
 
 ### <a name="contribute"></a>Přispějte!
 
-Analysis Services dokumentace, jako je tento článek, je open source. Další informace o tom, jak můžete přispívat, najdete v [příručce pro přispěvatele docs](https://docs.microsoft.com/contribute/). 
+Analysis Services dokumentace, jako je tento článek, je open source. Další informace o tom, jak můžete přispívat, najdete v [příručce pro přispěvatele docs](/contribute/). 
 
-Dokumentace ke službě Azure Analysis Services používá také [GitHub Issues](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs) (Potíže GitHubu). Můžete poskytnout zpětnou vazbu týkající se produktu nebo dokumentace. Použijte část **Váš názor** v dolní části článku. V dokumentaci ke sdílenému Analysis Services nejsou povolené problémy GitHubu. 
+Dokumentace ke službě Azure Analysis Services používá také [GitHub Issues](/teamblog/a-new-feedback-system-is-coming-to-docs) (Potíže GitHubu). Můžete poskytnout zpětnou vazbu týkající se produktu nebo dokumentace. Použijte část **Váš názor** v dolní části článku. V dokumentaci ke sdílenému Analysis Services nejsou povolené problémy GitHubu. 
 
 ## <a name="blogs"></a>Blogy
 
@@ -269,4 +269,4 @@ Služba Analysis Services má velmi aktivní komunitu uživatelů. Připojte se 
 > [Rychlý start: Vytvoření serveru – portál](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Vytvoření serveru – PowerShell](analysis-services-create-powershell.md)  
+> [Rychlý start: Vytvoření serveru – PowerShell](analysis-services-create-powershell.md)

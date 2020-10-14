@@ -3,12 +3,12 @@ title: Nasazení Live video Analytics na Azure Stack Edge
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit živé video analýzy na Azure Stack hraničních zařízeních.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: b13bb779a5a780b21f2d5d96ed8831ef5c26564d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f33b6fb0f0dc5c5b733a0fcb021e2792ce9c6ec6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935265"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019592"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Nasazení Live video Analytics na Azure Stack Edge
 
@@ -21,27 +21,27 @@ Pro Live video Analytics nasadíme prostřednictvím IoT Hub, ale prostředky Az
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure, ke kterému máte [oprávnění vlastníka](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner).
-* Prostředek [Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep)
+* Předplatné Azure, ke kterému máte [oprávnění vlastníka](../../role-based-access-control/built-in-roles.md#owner).
+* Prostředek [Azure Stack Edge](../../databox-online/azure-stack-edge-gpu-deploy-prep.md)
    
-* [IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
-* [Instanční objekt](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/create-custom-azure-resource-manager-role-how-to#create-service-principal) pro modul Live video Analytics.
+* [IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
+* [Instanční objekt](./create-custom-azure-resource-manager-role-how-to.md#create-service-principal) pro modul Live video Analytics.
 
    Použijte jednu z těchto oblastí, kde je IoT Hub k dispozici: Východní USA 2, Střed USA, Střed USA – sever, Japonsko – východ, Západní USA 2, Středozápadní USA, Kanada – východ, Velká Británie – jih, Francie – střed, Francie – jih, Švýcarsko – sever, Švýcarsko – západ a Japonsko – západ.
 * Účet úložiště
 
     Doporučuje se používat účty úložiště pro obecné účely v2 (GPv2).  
-    Přečtěte si další informace o [účtu úložiště pro obecné účely verze 2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade?tabs=azure-portal).
+    Přečtěte si další informace o [účtu úložiště pro obecné účely verze 2](../../storage/common/storage-account-upgrade.md?tabs=azure-portal).
 * [Visual Studio Code](https://code.visualstudio.com/) ve vývojovém počítači. Ujistěte se, že máte [rozšíření Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * Ujistěte se, že je síť, ke které je připojený váš vývojový počítač, povolená prostřednictvím portu 5671 rozšířený protokol front zpráv. Tato instalace umožňuje, aby nástroje Azure IoT komunikovaly se službou Azure IoT Hub.
 
 ## <a name="configuring-azure-stack-edge-for-using-live-video-analytics"></a>Konfigurace Azure Stack Edge pro používání služby Live video Analytics
 
-Azure Stack Edge je řešení typu hardware jako služba a hraniční výpočetní zařízení s podporou AI s možnostmi přenosu dat v síti. Přečtěte si další informace o [Azure Stack Edge a podrobné pokyny k instalaci](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep). Chcete-li začít, postupujte podle pokynů v následujících odkazech:
+Azure Stack Edge je řešení typu hardware jako služba a hraniční výpočetní zařízení s podporou AI s možnostmi přenosu dat v síti. Přečtěte si další informace o [Azure Stack Edge a podrobné pokyny k instalaci](../../databox-online/azure-stack-edge-deploy-prep.md). Chcete-li začít, postupujte podle pokynů v následujících odkazech:
 
-* [Azure Stack vytváření prostředků Edge/Data Box Gateway](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep)
-* [Instalace a nastavení](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-install)
-* [Připojení a aktivace](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate)
+* [Azure Stack vytváření prostředků Edge/Data Box Gateway](../../databox-online/azure-stack-edge-deploy-prep.md)
+* [Instalace a nastavení](../../databox-online/azure-stack-edge-deploy-install.md)
+* [Připojení a aktivace](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
 
 ### <a name="attach-an-iot-hub-to-azure-stack-edge"></a>Připojení IoT Hub k Azure Stack Edge
 
@@ -80,7 +80,7 @@ Než budete pokračovat, ujistěte se, že:
 
 * Aktivovali jste svůj prostředek Azure Stack Edge.
 * K přístupu k prostředku Azure Stack Edge máte přístup k klientskému systému Windows, na kterém běží PowerShell 5,0 nebo novější.
-* Chcete-li nasadit cluster Kubernetes, je nutné nakonfigurovat Azure Stack hraniční prostředky prostřednictvím [místního webového uživatelského rozhraní](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate#connect-to-the-local-web-ui-setup). 
+* Chcete-li nasadit cluster Kubernetes, je nutné nakonfigurovat Azure Stack hraniční prostředky prostřednictvím [místního webového uživatelského rozhraní](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md#connect-to-the-local-web-ui-setup). 
     
     * Pokud chcete povolit výpočetní výkon, v místním webovém uživatelském rozhraní zařízení, navštivte stránku Compute.
     

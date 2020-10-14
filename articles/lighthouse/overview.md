@@ -3,12 +3,12 @@ title: Co je Azure Lighthouse?
 description: Azure Lighthouse umožňuje poskytovatelům služeb poskytovat spravované služby pro zákazníky s vyšším stupněm automatizace a efektivitou.
 ms.date: 08/19/2020
 ms.topic: overview
-ms.openlocfilehash: 22bec7ec8944a11ce0cfdf51776f1f193a1aedaa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 41fa836321da7cdb42b9a3419bc0bb32963a5849
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89488809"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017859"
 ---
 # <a name="what-is-azure-lighthouse"></a>Co je Azure Lighthouse?
 
@@ -22,7 +22,7 @@ Azure Lighthouse pomáhá efektivně a efektivně sestavovat a doručovat spravo
 
 - **Správa ve velkém měřítku**: zapojení zákazníků a operace životního cyklu pro správu zákaznických prostředků jsou jednodušší a lépe škálovatelné. Existující rozhraní API, nástroje pro správu a pracovní postupy lze použít u delegovaných prostředků bez ohledu na oblasti, ve kterých se nacházejí.
 - **Lepší viditelnost a přesnost pro zákazníky**: zákazníci budou mít lepší přehled o vašich akcích a přesnou kontrolu nad oborem, který je delegovaný pro správu, včetně možnosti odebrat přístup kompletně, i když se vaše IP adresa zachová.
-- **Komplexní a sjednocené nástroje pro platformy**: naše prostředí nástrojů řeší scénáře poskytovatele služby Key, včetně několika modelů licencování, jako jsou EA, CSP a průběžné platby. Nové funkce fungují s existujícími nástroji a rozhraními API, licenčními modely a partnerskými programy, jako je například [program Cloud Solution Provider (CSP)](/partner-center/csp-overview). Služba Azure Lighthouse se dá integrovat do stávajících pracovních postupů a aplikací a vy můžete sledovat svůj dopad na zapojení zákazníků a získat kredit získaný partnery tím, že [propojíte ID partnera](./how-to/partner-earned-credit.md).
+- **Komplexní a sjednocené nástroje pro platformy**: naše prostředí nástrojů řeší scénáře poskytovatele služby Key, včetně několika modelů licencování, jako jsou EA, CSP a průběžné platby. Nové funkce fungují s existujícími nástroji a rozhraními API, licenčními modely a partnerskými programy, jako je například [program Cloud Solution Provider (CSP)](/partner-center/csp-overview). Azure Lighthouse se dá integrovat do stávajících pracovních postupů a aplikací a svůj dopad na zapojení zákazníků můžete sledovat [propojením ID partnera](./how-to/partner-earned-credit.md).
 
 K používání Azure Lighthouse ke správě prostředků Azure se nevztahují žádné další poplatky. Azure Lighthouse může používat libovolný zákazník nebo partner Azure.
 

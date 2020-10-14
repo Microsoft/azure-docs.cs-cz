@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: e64586ced7a619de02ae3a9d6beda35660ca04a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf68bdafbb8b6fde187a2d787bb5464e5ece4cb2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577573"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019150"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Instalace a použití Azure IoT Exploreru
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak:
 
 K použití nástroje Azure IoT Explorer potřebujete:
 
-- Azure IoT Hub. Existuje mnoho způsobů, jak přidat službu IoT Hub k předplatnému Azure, jako je [vytvoření centra IoT pomocí rozhraní příkazového řádku Azure](../iot-hub/iot-hub-create-using-cli.md). K spuštění nástroje Azure IoT Explorer potřebujete připojovací řetězec služby IoT Hub. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Azure IoT Hub. Existuje mnoho způsobů, jak přidat službu IoT Hub k předplatnému Azure, jako je [vytvoření centra IoT pomocí rozhraní příkazového řádku Azure](../iot-hub/iot-hub-create-using-cli.md). K spuštění nástroje Azure IoT Explorer potřebujete připojovací řetězec služby IoT Hub. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 - Zařízení zaregistrované ve službě IoT Hub. K vytváření a správě registrací zařízení v IoT Hub můžete použít Průzkumníka IoT.
 
 ## <a name="install-azure-iot-explorer"></a>Nainstalovat Azure IoT Explorer
@@ -36,7 +36,7 @@ K použití nástroje Azure IoT Explorer potřebujete:
 V [Azure IoT Exploreru](https://github.com/Azure/azure-iot-explorer/releases) Vydáte verze a rozbalte seznam assetů pro nejnovější verzi. Stáhněte a nainstalujte nejnovější verzi aplikace.
 
 >[!Important]
->V Průzkumníku IoT Explorer verze 0.11.0 podporuje jenom verzi IoT technologie Plug and Play GA (od září 2020). Pokud chcete používat funkce, které jsou k dispozici v předchozí verzi Preview – vydání z verze VIII 2019 nainstalujte verzi 0.10. x.
+> Pokud chcete překládat modely z libovolného úložiště založeného na, aktualizujte na verzi 0.13. x. [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models)
 
 ## <a name="use-azure-iot-explorer"></a>Použití Azure IoT Exploreru
 
@@ -136,4 +136,4 @@ Chcete-li zobrazit telemetrii pro vybrané rozhraní, přejít na kartu **teleme
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku se naučíte, jak nainstalovat a používat Azure IoT Explorer k interakci s technologie Plug and Playmi zařízeními IoT. Navržený další krok se naučíte používat [příkazy Azure CLI IoT technologie Plug and Play](./howto-use-iot-pnp-cli.md).
+V tomto článku se naučíte, jak nainstalovat a používat Azure IoT Explorer k interakci s technologie Plug and Playmi zařízeními IoT. Navržený další krok se naučíte, jak [nainstalovat a používat nástroje DTDL Authoring Tools](howto-use-dtdl-authoring-tools.md).

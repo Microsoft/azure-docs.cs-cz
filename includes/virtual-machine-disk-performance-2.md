@@ -5,15 +5,15 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/25/2020
+ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: e5a6dae98e786bf55dc17d8fabe42f84e9927442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5ac97812f973a20f6ee4c2dea34baaeb91203af
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91605902"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016443"
 ---
 ![Dokumentace k Dsv3](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -129,4 +129,21 @@ Metriky, které vám pomůžou diagnostikovat virtuální počítač v/v capping
 - **Procento spotřebované šířky pásma v mezipaměti pro virtuální počítače** – procento vypočítané celkovou propustností disku dokončenou v rámci maximální propustnosti virtuálního počítače v mezipaměti. Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu šířky pásma v mezipaměti virtuálního počítače.
 - **Procento využitých vstupně** -výstupních operací IOPS v mezipaměti – procentuální hodnota vypočítaná celkovým počtem IOPS na virtuálním počítači, která se dokončila v maximálním limitu počtu IOPS virtuálního počítače, který nemá mezipaměť Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu IOPS bez mezipaměti virtuálního počítače.
 - **Procento využité šířky pásma neuložené v mezipaměti** – procentuální hodnota vypočítaná z celkové propustnosti disku na virtuálním počítači, která se dokončila přes maximální propustnost zajištěných virtuálních počítačů. Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu šířky pásma bez mezipaměti virtuálního počítače.
+
+## <a name="storage-io-utilization-metrics-example"></a>Příklad metrik využití v/v úložiště
+Podívejme se na příklad použití těchto nových metrik využití v/v úložiště, které nám pomůžou ladit, kde je v našem systému kritický bod. Nastavení systému je přesně to, co máme v předchozím příkladu, s výjimkou toho, že náš disk s operačním systémem, který jsme připojili, **není** uložený v mezipaměti.
+
+Nastavení:
+- Standard_D8s_v3 
+    - IOPS v mezipaměti: 16 000
+    - Neuložené IOPS s mezipamětí: 12 800
+- Disk s operačním systémem P30 
+    - IOPS: 5 000
+    - Ukládání hostitele do mezipaměti: zakázáno
+- 2 datové disky P30 × 2
+    - IOPS: 5 000
+    - Mezipaměť hostitele: čtení i zápis
+- 2 datové disky P30 × 2
+    - IOPS: 5 000
+    - Ukládání hostitele do mezipaměti: zakázáno
 

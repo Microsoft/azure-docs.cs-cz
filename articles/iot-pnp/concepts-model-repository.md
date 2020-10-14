@@ -1,235 +1,131 @@
 ---
-title: Vysvětlení konceptů úložiště modelu Azure IoT | Microsoft Docs
-description: Jako vývojář řešení nebo odborníky v IT se dozvíte o základních konceptech úložiště modelu Azure IoT.
-author: prashmo
-ms.author: prashmo
-ms.date: 07/24/2020
+title: Vysvětlení konceptů úložiště modelů zařízení | Microsoft Docs
+description: Jako vývojář řešení nebo odborníky v IT se dozvíte o základních konceptech úložiště modelů zařízení.
+author: rido-min
+ms.author: rmpablos
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5d07257d1e23ee792aa996e31a2c28c17bc23d34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78accf9009e532b4f254bf1b96c9fe269815b8af
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715070"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019167"
 ---
-# <a name="azure-iot-model-repository"></a>Úložiště modelů Azure IoT
+# <a name="device-model-repository"></a>Úložiště modelů zařízení
 
-Úložiště modelů Azure IoT umožňuje tvůrcům zařízení spravovat a sdílet modely zařízení IoT Plug and Play. Modely zařízení jsou definice dokumentů JSON LD, které jsou definované pomocí [DTDL (Digital vlákna Modeling Language)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Modely uložené ve službě úložiště modelů se dají sdílet s vývojáři řešení soukromě prostřednictvím řízení přístupu nebo veřejně, aniž by museli k integraci a vývoji cloudového řešení IoT technologie Plug and Play použít jakékoli ověřování.
+Úložiště modelů zařízení (DMR) umožňuje tvůrcům zařízení spravovat a sdílet modely zařízení IoT technologie Plug and Play. Modely zařízení jsou definice dokumentů JSON LD, které jsou definované pomocí [DTDL (Digital vlákna Modeling Language)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
+
+Zařízení DMR definuje vzor pro ukládání rozhraní DTDL ve struktuře složek na základě identifikátoru vlákna (DTMI) zařízení. Rozhraní ve službě DMR můžete vyhledat tak, že převedete DTMI na relativní cestu. Například `dtmi:com:example:Thermostat;1` DTMI překládá na `/dtmi/com/example/thermostat-1.json` .
+
+## <a name="public-device-model-repository"></a>Úložiště modelů veřejných zařízení
+
+Společnost Microsoft je hostitelem veřejné služby DMR s těmito charakteristikami:
+
+- Spravované modely. Microsoft zkontroluje a schválí všechna dostupná rozhraní pomocí pracovního postupu pro ověření žádosti o přijetí změn (GitHub).
+- Neměnnosti.  Po publikování se rozhraní nedá aktualizovat.
+- Technologie Hyper-Scale. Společnost Microsoft poskytuje veškerou potřebnou infrastrukturu pro vytvoření zabezpečeného a vysoce škálovatelného koncového bodu.
+
+## <a name="custom-device-model-repository"></a>Vlastní úložiště modelů zařízení
+
+Pokud chcete vytvořit vlastní soubor DMR, můžete použít stejný vzor protokolu DMR na jakémkoli úložném médiu, jako je místní systém souborů nebo vlastní webové servery HTTP. Můžete načíst modely z vlastního nástroje DMR stejným způsobem jako z veřejné správy DRM pouhým změnou základní adresy URL používané pro přístup ke službě DMR.
 
 > [!NOTE]
-> Tvůrci zařízení se můžou rozhodnout implementovat modely IoT technologie Plug and Play zařízení přímo na zařízení, používat moduly nebo v modulu IoT Edge.
-
-K úložišti modelu můžete přistupovat pomocí:
-
-- Portál [Azure IoT model úložiště](https://aka.ms/iotmodelrepo)
-- [REST API úložiště modelu Azure IoT](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)
-- [Příkazy úložiště modelu IoT Azure CLI](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest&preserve-view=true)
+> Nástroje, které slouží k ověření modelů ve veřejném úložišti DMR, se dají znovu použít ve vlastních úložištích.
 
 ## <a name="public-models"></a>Veřejné modely
 
-Veřejné digitální dostupné modely uložené v úložišti modelu jsou dostupné všem, aby je bylo možné využívat a integrovat do jejich aplikace bez ověřování. Veřejné modely navíc umožňují otevřenému ekosystému zařízení a vývojářům řešení sdílet a znovu používat svoje modely zařízení technologie Plug and Play IoT.
+Veřejné digitální zdvojené modely uložené v úložišti modelu jsou k dispozici všem uživatelům, kteří mají využívat a integrovat do svých aplikací. Veřejné modely umožňují otevřenému systému pro sestavovatele zařízení a vývojářům řešení sdílet a znovu používat svoje modely zařízení technologie Plug and Play IoT.
 
-V části [publikování modelu](#publish-a-model) v části **modely společnosti** najdete pokyny k tomu, jak publikovat model v úložišti modelu, aby byl veřejný.
+V části [publikování modelu](#publish-a-model) najdete pokyny k publikování modelu v úložišti modelu, aby bylo možné ho zveřejnit.
 
-Postup zobrazení veřejného modelu pomocí portálu úložiště modelů:
+Uživatelé můžou procházet, vyhledávat a zobrazovat veřejná rozhraní z oficiálního [úložiště GitHub](https://github.com/Azure/iot-plugandplay-models).
 
-1. Přejít na [portál úložiště modelu Azure IoT](https://aka.ms/iotmodelrepo).
+Všechna rozhraní ve `dtmi` složkách jsou dostupná taky z veřejného koncového bodu. [https://devicemodels.azure.com](https://devicemodels.azure.com)
 
-1. Vyberte možnost **Zobrazit veřejné modely**.
+### <a name="resolve-models"></a>Řešení modelů
 
-    ![Zobrazit veřejné modely](./media/concepts-model-repository/public-models.png)
+Chcete-li programově získat přístup k těmto rozhraním, je nutné převést dtmi na relativní cestu, kterou můžete použít k dotazování veřejného koncového bodu. Následující ukázka kódu ukazuje, jak to provést:
 
-Chcete-li zobrazit veřejný model prostřednictvím REST API, přečtěte si téma [získání modelu](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync) REST API dokumentaci.
+Chcete-li převést DTMI na absolutní cestu, používáme `DtmiToPath` funkci s `IsValidDtmi` :
 
-```csharp
-var httpClient = new HttpClient();
-httpClient.BaseAddress = new Uri("https://repo.azureiotrepository.com");
+```cs
+static string DtmiToPath(string dtmi)
+{
+    if (!IsValidDtmi(dtmi))
+    {
+        return null;
+    }
+    // dtmi:com:example:Thermostat;1 -> dtmi/com/example/thermostat-1.json
+    return $"/{dtmi.ToLowerInvariant().Replace(":", "/").Replace(";", "-")}.json";
+}
 
-var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
+static bool IsValidDtmi(string dtmi)
+{
+    // Regex defined at https://github.com/Azure/digital-twin-model-identifier#validation-regular-expressions
+    Regex rx = new Regex(@"^dtmi:[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?(?::[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?)*;[1-9][0-9]{0,8}$");
+    return rx.IsMatch(dtmi);
+}
 ```
 
-Pokud chcete zobrazit veřejný model pomocí rozhraní příkazového řádku, přečtěte si příkaz Azure CLI [Get model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) .
+Pomocí výsledné cesty a základní adresy URL pro úložiště můžeme rozhraní získat:
 
-## <a name="company-models"></a>Modely společnosti
+```cs
+const string _repositoryEndpoint = "https://devicemodels.azure.com";
 
-Úložiště podnikového modelu je tenant v úložišti modelu Azure IoT, ve kterém může vaše organizace vytvářet a spravovat digitální zdvojené modely vytvořené uživateli v rámci vaší společnosti nebo organizace. Modely společnosti jsou dostupné jenom pro ověřené uživatele vaší společnosti nebo organizace. Správce tenanta úložiště modelu může přiřadit oprávnění a řídit přístup dalších uživatelů společnosti nebo organizace k modelům v úložišti podnikového modelu.
-
-### <a name="set-up-your-company-model-repository"></a>Nastavení úložiště podnikového modelu
-
-Pro přístup k úložišti modelu použijte svůj *pracovní nebo školní účet Azure Active Directory (Azure AD)* . Pokud už má vaše organizace tenant služby Azure AD, můžete použít uživatelské účty a instanční objekty z tohoto tenanta Azure AD.
-
-Informace o tom, jak nastavit tenanta Azure AD a jak vytvořit uživatele nebo instanční objekt v tenantovi Azure AD, najdete v části [Další informace](#additional-information) .
-
-- Pokud jste prvním uživatelem vaší organizace, abyste měli přístup k úložišti modelu nebo se přihlásili na portál, budete mít **Správce klienta** roli. Tato role umožňuje přiřadit role jiným uživatelům v tenantovi úložiště vaší organizace.
-
-- Jiným rolím můžete přiřadit **Správce klienta** , jako jsou **čtení modelů** nebo **vytváření modelů**.
-
-### <a name="understand-access-management"></a>Pochopení správy přístupu
-
-Následující tabulka shrnuje podporované možnosti v úložišti podnikového modelu a jejich přidružená oprávnění:
-
-| Schopnost  | Oprávnění| Description|
-|-------------|-----------|------------|
-|Čtení modelů|Čtení modelů|Ve výchozím nastavení mohou všichni uživatelé v tenantovi společnosti zobrazit své firemní modely. Kromě toho může uživatel zobrazit také soukromé modely, které jim sdílely jiné společnosti.|
-|Správa přístupu|Správa přístupu|Správa přiřazení role uživatele (přidání nebo odebrání) pro ostatní uživatele v organizaci.|
-|Vytváření modelů|Vytváření modelů|Vytvářejte modely v úložišti podnikového modelu.|
-|Publikování modelů|Publikování modelů|Publikujte modely, abyste je mohli zveřejnit pro kohokoli, aby si model viděli.|
-
-Následující tabulka shrnuje podporované role a jejich schopnosti v úložišti modelů, které lze použít pro správu přístupu.
-
-|Role|Schopnost|
-|----|----------|
-|TenantAdministrator|Správa přístupu, čtení modelů|
-|tvůrce|Vytváření modelů, čtení modelů|
-|Publisher|Publikování modelů, čtení modelů|
-
-#### <a name="passing-a-security-token-when-accessing-company-models-with-a-rest-api"></a>Předání tokenu zabezpečení při přístupu k podnikovým modelům pomocí REST API
-
-Když zavoláte rozhraní REST API pro správu podnikových modelů, které jsou soukromé nebo sdílené, musíte pro uživatele nebo instanční objekt ve formátu JWT zadat autorizační token. V části [Další informace](#additional-information) se dozvíte, jak získat token JWT pro uživatele nebo instanční objekt.
-
-Token JWT se musí předat v hlavičce autorizačního protokolu HTTP v rozhraní API při cílení na modely společnosti nebo sdílené modely. Token JWT není potřebný při cílení na veřejné modely.
-
-```csharp
-// sample token
-var authorizationToken = "eyJhbGciOiJIUzI1NiIsInR5cCTI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authorizationToken);
+string dtmiPath = DtmiToPath(dtmi.ToString());
+string fullyQualifiedPath = $"{_repositoryEndpoint}{dtmiPath}";
+string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
 ```
 
-### <a name="view-company-or-shared-models"></a>Zobrazit společnost nebo sdílené modely
+## <a name="publish-a-model"></a>Publikování modelu
 
-Musíte být členem role *Čtenář* tenanta úložiště, jinak se musí model sdílet s vámi, aby bylo možné číst model. Můžete zobrazit seznam nepublikovaných modelů, které s vámi někdo sdíleli, a seznam publikovaných modelů, které s vámi někdo sdílí. Ve výchozím nastavení mohou uživatelé číst své firemní modely, modely, které s nimi sdíleli jiní výrobci, a všechny veřejné modely.
+> [!Important]
+> Abyste mohli odesílat modely do veřejného DMR, musíte mít účet GitHub.
 
-Chcete-li zobrazit společnost nebo sdílený model pomocí portálu:
+1. Rozvětvení veřejného úložiště GitHub: [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models) .
+1. Naklonujte rozvětvené úložiště. Volitelně můžete vytvořit novou větev, abyste zachovali změny izolované od `main` větve.
+1. Přidejte nová rozhraní do `dtmi` složky pomocí konvence složka/filename. Prohlédněte si nástroj [Add-model](#add-model) .
+1. Ověřte modely místně pomocí oddílu [skripty k ověření změn](#validate-files) .
+1. Potvrďte změny místně a vložte je do rozvětvení.
+1. Z větve vytvořte žádost o přijetí změn, která cílí na `main` větev. Viz téma [vytvoření problému nebo dokumentace žádostí o](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request) přijetí změn.
+1. Zkontrolujte [požadavky](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)žádosti o přijetí změn.
 
-1. Přihlaste se k [portálu úložiště modelu Azure IoT](https://aka.ms/iotmodelrepo).
+Žádost o přijetí změn spustí řadu akcí GitHubu, které ověří nová odeslaná rozhraní a zajistěte, aby vaše žádost o přijetí změn splňovala všechny kontroly.
 
-1. Rozbalení **modelů společnosti** – zrušení **publikování** v levém podokně
+Microsoft odpoví na žádost o přijetí změn se všemi kontrolami za tři pracovní dny.
 
-    ![Zobrazit modely společnosti](./media/concepts-model-repository/view-company-models.png)
+### <a name="add-model"></a>přidat model
 
-1. Rozbalte položku **sdílené modely – zrušit publikování** v levém podokně.
+Následující kroky ukazují, jak add-model.js skript vám pomůže přidat nové rozhraní. Tento skript vyžaduje spuštění Node.js:
 
-    ![Zobrazit sdílené modely](./media/concepts-model-repository/view-shared-models.png)
+1. Z příkazového řádku přejděte do místního úložiště Git.
+1. Spuštěním příkazu `npm install`
+1. Spuštěním příkazu `npm run add-model <path-to-file-to-add>`
 
-Chcete-li zobrazit společnost nebo sdílený model pomocí REST API, přečtěte si dokumentaci k [získání modelu](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync) REST API. Informace o tom, jak předat autorizační hlavičku JWT v žádosti HTTP, najdete v tématu [předání tokenu zabezpečení při přístupu k podnikovým modelům pomocí REST API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api) .
+Podívejte se na výstup konzoly pro všechny chybové zprávy.
 
-```csharp
-var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
-```
+### <a name="local-validation"></a>Místní ověřování
 
-Postup zobrazení modelu společnosti nebo sdíleného modelu pomocí rozhraní příkazového řádku najdete v příkazu Azure CLI [Get model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) .
+Stejné kontroly ověřování můžete spustit místně před odesláním žádosti o přijetí změn, abyste mohli pomáhat s diagnostikou problémů předem.
 
-### <a name="manage-roles"></a>Správa rolí
+#### <a name="validate-files"></a>ověřit – soubory
 
-Správce klienta může přiřadit role uživatelům v tenantovi úložiště, aby mohli vytvářet modely privátní pro společnost nebo organizaci, publikovat modely nebo spravovat role pro ostatní uživatele.
+`npm run validate-files <file1.json> <file2.json>` kontroluje, zda cesta k souboru odpovídá očekávané složce a názvům souborů.
 
-Postup přidání uživatele do role tenanta úložiště modelu pomocí portálu:
+#### <a name="validate-ids"></a>ověřit – ID
 
-1. Přihlaste se k [portálu úložiště modelu Azure IoT](https://aka.ms/iotmodelrepo).
+`npm run validate-ids <file1.json> <file2.json>` kontroluje, že všechna ID definovaná v dokumentu používají stejný kořen jako hlavní ID.
 
-1. V levém podokně vyberte **Správa přístupu** a pak vyberte **+ Přidat**. V podokně **Přidat oprávnění** zadejte pracovní adresu uživatele, kterého chcete přidat do role:
+#### <a name="validate-deps"></a>ověřit – DEPS
 
-    ![Přidat pracovní adresu](./media/concepts-model-repository/add-user.png)
+`npm run validate-deps <file1.json> <file2.json>` zkontroluje, jestli jsou všechny závislosti dostupné ve `dtmi` složce.
 
-1. Z rozevíracího seznamu **role** vyberte roli, do které chcete uživatele přidat. Pak vyberte **Uložit**:
+#### <a name="validate-models"></a>ověřit – modely
 
-    ![Zvolit roli](./media/concepts-model-repository/choose-role.png)
-
-### <a name="upload-a-model"></a>Nahrání modelu
-
-Abyste mohli nahrát model do úložiště podnikového modelu, musíte být členem role **Tvůrce** tenanta úložiště.
-
-Tyto modely nejsou publikované a jsou dostupné jenom uživatelům v organizaci ve výchozím nastavení. Můžete také sdílet jeden nebo více nepublikovaných modelů s externími uživateli.
-
-Nahrané modely jsou neměnné.
-
-Identifikátory modelů pro tyto modely musí být globálně jedinečné napříč všemi klienty úložiště pro všechny nahrané modely.
-
-Postup nahrání modelu pomocí portálu:
-
-1. Přihlaste se k [portálu úložiště modelu Azure IoT](https://aka.ms/iotmodelrepo).
-
-1. V levém podokně rozbalte **modely společnosti** a vyberte **vytvořit model**. Pak vyberte **importovat JSON**.
-
-    ![Vytvořit model](./media/concepts-model-repository/create-model.png)
-
-1. Vyberte soubor, který chcete odeslat. Pokud portál úspěšně ověřuje váš model, vyberte **Uložit**.
-
-Pokud chcete nahrát model pomocí REST API, přečtěte si téma Vytvoření rozhraní API [modelu](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdateasync/createorupdateasync) . Informace o tom, jak předat autorizační hlavičku JWT v žádosti HTTP, najdete v tématu [předání tokenu zabezpečení při přístupu k podnikovým modelům pomocí REST API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api) .
-
-```csharp
-var httpContent = new StringContent(jsonLdModel, Encoding.UTF8, "application/json");
-var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-05-01-preview", httpContent).ConfigureAwait(false);
-```
-
-Postup nahrání modelu pomocí rozhraní příkazového řádku najdete v tématu příkaz Azure CLI [Create a model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create&preserve-view=true) .
-
-### <a name="publish-a-model"></a>Publikování modelu
-
-K publikování modelu je třeba splnit následující požadavky:
-
-1. Aby vaše organizace mohla publikovat model, musí být členem programu [Microsoft Partner Network](https://docs.microsoft.com/partner-center/). Informace o vytvoření účtu v Partnerském centru najdete v tématu [Vytvoření účtu v Partnerském centru](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account). Po schválení vašeho účtu můžete publikovat modely. Další informace najdete v [nejčastějších dotazech k Partnerskému centru](https://support.microsoft.com/help/4340639/partner-center-account-faqs).
-
-2. Uživatel musí být členem role *vydavatele* tenanta úložiště.
-
-Modely, které jsou vytvořené a publikované uživateli v rámci vaší organizace, jsou viditelné jako *publikované modely*. Tyto modely jsou veřejné a můžou je najít kdokoli v části **veřejné modely**.
-
-Publikování modelu pomocí portálu:
-
-1. Přihlaste se k [portálu úložiště modelu Azure IoT](https://aka.ms/iotmodelrepo).
-
-2. V levém podokně rozbalte **modely společnosti** a vyberte model, který chcete publikovat. Potom vyberte **Publikovat**.
-
-    ![Publikování modelu](./media/concepts-model-repository/publish-model.png)
-
-> [!NOTE]
-> Pokud se zobrazí oznámení oznamující, že nemáte ID partnera Microsoftu (MPN), postupujte podle pokynů k registraci v oznámení. Další informace najdete v požadavcích na začátku této části.
-
-Postup publikování modelu pomocí REST API naleznete v dokumentaci k [publikování modelu](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdateasync/createorupdateasync) REST API. Zadejte parametr řetězce dotazu `update-metadata=true` pro publikování modelu pomocí REST API. Informace o tom, jak předat autorizační hlavičku JWT v žádosti HTTP, najdete v tématu [předání tokenu zabezpečení při přístupu k podnikovým modelům pomocí REST API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api) .
-
-Pokud chcete publikovat model pomocí rozhraní příkazového řádku, přečtěte si příkaz Azure CLI [publikování modelu](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-publish&preserve-view=true) .
-
-> [!NOTE]
-> Než spustíte testy certifikace, musí být modely publikované v úložišti modelu. Další informace najdete v tématu [jak certifikovat technologie Plug and Play zařízení IoT](howto-certify-device.md).
-
-### <a name="share-a-model"></a>Sdílení modelu
-
-Můžete sdílet firemní modely, které jste vytvořili s uživateli externích organizací. Tímto způsobem můžete spolupracovníkům dovolit zobrazit a vyvíjet řešení pomocí vašich privátních firemních modelů.
-
-Výrobce zařízení může například chtít zachovat modely, které jsou pro společnost nebo organizaci privátní. Můžou mít zákazníky, kteří vyžadují, aby jejich schopnosti zařízení zůstaly důvěrné.
-
-Sdílení modelů napříč společnostmi nebo organizacemi umožňuje zabezpečený přístup k modelům, které nejsou veřejné.
-
-Sdílení modelu společnosti pomocí portálu:
-
-- Pokud jste autorem modelu, jsou při zobrazení modelu v části **modely společnosti** aktivní **sdílená** tlačítka a **sdílená s** tlačítky.
-
-    ![Model sdílení](./media/concepts-model-repository/share-model.png)
-
-- Pokud chcete model sdílet s externím uživatelem, vyberte **sdílet**. V podokně **sdílet model** zadejte e-mailovou adresu externího uživatele a vyberte **Uložit**.
-
-- Chcete-li zobrazit uživatele, se kterými jste model sdíleli, vyberte možnost **sdílet s**.
-
-- Pokud chcete ukončit sdílení modelu s konkrétním uživatelem, vyberte uživatele ze seznamu uživatelů v podokně **sdíleno s** . Po zobrazení výzvy vyberte **Odebrat** a potvrďte volbu.
-
-    ![Ukončit sdílení](./media/concepts-model-repository/stop-sharing.png)
-
-## <a name="additional-information"></a>Další informace
-
-Při práci se službou Azure AD můžete najít následující témata:
-
-- Pokud chcete vytvořit nového tenanta Azure AD, přečtěte si téma [Vytvoření nového tenanta ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant). Většina organizací už bude mít tenanta Azure AD.
-
-- Pokud chcete přidat uživatele nebo uživatele typu Host do tenanta služby Azure AD, přečtěte si téma [Přidání nebo odstranění uživatelů pomocí Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory).
-
-- Pokud chcete přidat instanční objekt k tenantovi služby Azure AD, přečtěte si téma [jak použít portál k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-- Informace o tom, jak získat token JWT z Azure AD, který se má použít při volání rozhraní REST API, najdete v tématu [získání tokenu z Azure AD pro autorizaci žádostí z klientské aplikace](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app).
+Můžete spustit [ukázku ověřování DTDL](https://github.com/Azure-Samples/DTDL-Validator) k místnímu ověření vašich modelů.
 
 ## <a name="next-steps"></a>Další kroky
 

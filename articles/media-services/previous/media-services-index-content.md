@@ -16,12 +16,12 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5665357474b392a413d2b70f9c321b5da3e0bfe5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06bd9f159281a1353ca9474bf0876e99b6d1940a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256442"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018949"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Indexování mediálních souborů pomocí Azure Media Indexer
 
@@ -48,7 +48,7 @@ Pro úlohy indexování můžete zadat více podrobností pomocí konfigurace ú
 
 Můžete také zpracovat více mediálních souborů najednou pomocí souboru manifestu.
 
-Další informace najdete v tématu [předvolba úlohy pro Azure Media Indexer](./media-services-analytics-overview.md).
+Další informace najdete v tématu [předvolba úlohy pro Azure Media Indexer](./legacy-components.md).
 
 ## <a name="index-an-asset"></a>Indexace prostředku
 Následující metoda nahraje mediální soubor jako Asset a vytvoří úlohu, která indexuje Asset.
@@ -161,7 +161,7 @@ Pokud nejsou všechny vstupní mediální soubory úspěšně indexovány, úloh
 ## <a name="index-multiple-files"></a>Indexovat více souborů
 Následující metoda nahraje více mediálních souborů jako Asset a vytvoří úlohu pro indexování všech těchto souborů v dávce.
 
-Vytvoří se soubor manifestu s příponou. lst a nahraje se do assetu. Soubor manifestu obsahuje seznam všech souborů assetů. Další informace najdete v tématu [předvolba úlohy pro Azure Media Indexer](./media-services-analytics-overview.md).
+Vytvoří se soubor manifestu s příponou. lst a nahraje se do assetu. Soubor manifestu obsahuje seznam všech souborů assetů. Další informace najdete v tématu [předvolba úlohy pro Azure Media Indexer](./legacy-components.md).
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -278,6 +278,6 @@ V současné době jsou podporovány anglické a španělské jazyky.
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy
-[Přehled analýzy Azure Media Services](media-services-analytics-overview.md)
+[Přehled analýzy Azure Media Services](./legacy-components.md)
 
-[Indexování mediálních souborů pomocí Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md)
+[Indexování mediálních souborů pomocí Azure Media Indexer 2 Preview](./legacy-components.md)

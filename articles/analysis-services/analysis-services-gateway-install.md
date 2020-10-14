@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed13111584e7e9621ec2ccde16efb3cdf2eef50c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87438969"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016174"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalace a konfigurace místní brány dat
 
@@ -132,7 +132,7 @@ Po instalaci a registraci brány musíte vytvořit prostředek brány v Azure. P
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-K získání brány ResourceID použijte [příkaz Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) . Pak připojte prostředek brány k existujícímu nebo novému serveru zadáním parametru **-GatewayResourceID** v [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) nebo [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver).
+K získání brány ResourceID použijte [příkaz Get-AzResource](/powershell/module/az.resources/get-azresource) . Pak připojte prostředek brány k existujícímu nebo novému serveru zadáním parametru **-GatewayResourceID** v [set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) nebo [New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver).
 
 Postup získání ID prostředku brány:
 

@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 2022a7448767b7ffea7baa70606a7f59e6d93951
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 9531a812d60c6e5a60ff0a0936fafde4a77e5a67
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952012"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017042"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
 
 Pomocí digitálních vláken Azure můžete vytvářet a interagovat s živými modely vašich reálných prostředí. To se provádí modelováním jednotlivých prvků jako **digitálních vláken**a pak je propojíte do **grafu** znalostí, který může reagovat na živé události a dotazování na informace.
 
-V tomto rychlém startu prozkoumáte předem sestavený graf digitálních vláken Azure, který vám pomůže s ukázkovou aplikací nazvanou [**Azure Digital Nevlákens (ADT) Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Průzkumník aplikace ADT umožňuje nahrát scénář, zobrazit vizuální reprezentace vláken a grafů a provádět další aktivity správy prostřednictvím vizuálního prostředí založeného na prohlížeči.
+V tomto rychlém startu prozkoumáte předem sestavený graf digitálních vláken Azure, který vám pomůže s ukázkovou aplikací nazvanou [**Azure Digital Nevlákens (ADT) Explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Průzkumník služby ADT umožňuje nahrát digitální reprezentaci prostředí, zobrazit vizuální obrázky vláken a grafů, které jsou vytvořeny tak, aby představovaly prostředí v digitálních událostech Azure, a provádět další aktivity správy prostřednictvím vizuálního prostředí založeného na prohlížeči.
 
 Rychlý Start obsahuje následující hlavní kroky:
 
@@ -31,7 +31,7 @@ Vzorový graf, se kterým budete pracovat, představuje sestavení se dvěma pod
 
 :::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu budete potřebovat předplatné Azure. Pokud ho ještě nemáte, vytvořte si **[ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** hned teď.
 
@@ -307,7 +307,7 @@ V tomto rychlém startu jste vytvořili instanci digitálních vláken Azure, p�
 Pak jste prozkoumali graf podle...
 1. Použití dotazu k zodpovězení otázky týkající se scénáře.
 2. Úprava vlastnosti u digitálního vlákna.
-    * Spusťte dotaz znovu, abyste viděli, jak se odpověď změnila v důsledku aktualizace.
+3. Spusťte dotaz znovu, abyste viděli, jak se odpověď změnila v důsledku aktualizace.
 
 Účelem tohoto cvičení je Ukázat, jak můžete pomocí grafu digitálních vláken Azure zodpovědět otázky týkající se vašeho prostředí, i když se prostředí stále mění. 
 

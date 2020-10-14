@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 80746d7cef4bb0a70c6bb9eb6ff2e053ea6c7a0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c79586703c49fe37d4d0915f49b69e6aa842083e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91824686"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017518"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriky pro Azure NetApp Files
 
@@ -86,6 +86,9 @@ Azure NetApp Files poskytuje metriky přiděleného úložiště, skutečné vyu
 
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>Metriky replikace svazků
+
+> [!NOTE] 
+> Velikost přenosu v síti (například metrika *celkové přenosové replikace svazku* ) se může lišit od zdrojových nebo cílových svazků replikace mezi oblastmi. Toto chování je výsledkem efektivního replikačního stroje, který slouží k minimalizaci nákladů na přenos v síti.
 
 - *Je stav replikace svazku v pořádku*   
     Podmínka vztahu replikace. Dobrý stav je označený `1` . Stav není v pořádku je označený `0` .

@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 2ba7dc3b0f2bc4f62234c480da0af1061dea1f91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbaaac0095622f14d5bc0033b7787bec8ec2fa2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885558"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018283"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Porovnání funkcí Azure Stream Analytics
 
@@ -23,7 +23,7 @@ Pomocí Azure Stream Analytics můžete vytvářet streamovaná řešení v clou
 ## <a name="cloud-job-features"></a>Funkce cloudové úlohy
 
 
-|Příznak  |Portál  |Visual Studio  |Visual Studio Code  |
+|Funkce  |Portál  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
 |Různé platformy     |Mac</br>Linux</br>Windows         |Windows        |Mac</br>Linux</br>Windows          |
 |Vytváření skriptů     |Yes         |Yes         |Yes         |
@@ -44,7 +44,7 @@ Pomocí Azure Stream Analytics můžete vytvářet streamovaná řešení v clou
 |Funkce vlastního kódu a deserializace jazyka C#|Režim jen pro čtení|Yes|No|
 |JavaScript UDF a UDA     |Yes         |Yes         |Jen ve Windows         |
 |Machine Learning Service     |Yes        |Yes         |No         |
-|Machine Learning Studio     |Ano, ale dotaz se nedá testovat.        |Yes |No         |
+|Azure Machine Learning Studio (klasický)|Ano, ale dotaz se nedá testovat.        |Yes |No         |
 |Úroveň kompatibility     |1,0</br>1,1</br>1,2 (výchozí)         |1,0</br>1,1</br>1,2 (výchozí)           |1,0</br>1,1</br>1,2 (výchozí)           |
 |Integrované funkce detekce anomálií založené na ML     |Yes         |Yes         |Yes         |
 |Předdefinované geoprostorové funkce     |Yes         |Yes         |Yes         |
@@ -53,7 +53,7 @@ Pomocí Azure Stream Analytics můžete vytvářet streamovaná řešení v clou
 
 ## <a name="iot-edge-job-features"></a>Funkce úlohy IoT Edge
 
-|Příznak  |Portál  |Visual Studio  |Visual Studio Code  |
+|Funkce  |Portál  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
 |Vytváření úloh     |Yes         |Yes         |No         |
 |Správa zdrojového kódu     |No         |Yes         |No         |

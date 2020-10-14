@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6df53e3a8d9330c9628e04a1c3ff50534d443ab2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78251898"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019660"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů v rámci zóny dostupnosti pomocí Standard Load Balanceru na webu Azure Portal
 
@@ -39,6 +39,10 @@ Další informace o použití zón dostupnosti s Standard Load Balancer najdete 
 
 K tomuto kurzu také můžete použít [Azure CLI](load-balancer-standard-public-zonal-cli.md).
 
+## <a name="prerequisites"></a>Předpoklady
+
+* Předplatné Azure
+
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
@@ -54,10 +58,10 @@ Standard Load Balancer podporuje jenom standardní veřejnou IP adresu. Když p�
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte *MyResourceGroupZLB* .|
-    | Název                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
-    | Skladová jednotka (SKU)           | Vyberte **Standard**.                          |
+    | SKU           | Vyberte **Standard**.                          |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
     | Název veřejné IP adresy              | Do textového pole zadejte *myPublicIP* .   |
     |Zóna dostupnosti| Vyberte **1**.    |
@@ -228,5 +232,6 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrov
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [Standard Load Balancer](load-balancer-standard-overview.md).
-- [Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
+V dalším článku se dozvíte, jak vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti.
+> [!div class="nextstepaction"]
+> [Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

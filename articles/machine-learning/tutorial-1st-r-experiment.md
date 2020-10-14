@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: fe9b0e9d2e2e46c7c4d04549777a5c27df6bdf18
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: bf89e99842efa726e6ca05a08998c9d058dc02e3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940102"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019371"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Kurz: použití R k vytvoření modelu Machine Learning (Preview)
 
@@ -38,7 +38,7 @@ V tomto kurzu provedete následující úlohy:
 > * Nasazení koncového bodu předpovědi
 > * Testování modelu z R
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
@@ -72,7 +72,7 @@ Naklonujte https://github.com/Azure/azureml-sdk-for-r úložiště GitHub pro ko
 
 1. V RStudio přejděte do adresáře, kam chcete klonovat úložiště, na kartu terminálu a na disk CD.
 
-1. Spuštěním příkazu git clone https://github.com/Azure/azureml-sdk-for-r v terminálu naklonujte úložiště.
+1. Spusťte `git clone https://github.com/Azure/azureml-sdk-for-r` v terminálu a naklonujte úložiště.
 
 1. V RStudio přejděte do složky *Vignettes* naklonované složky *AzureML-SDK-for-r* .  V části *Vignettes*vyberte možnost *výuka a nasazení-First-model. RMD* soubor k vyhledání Vignette používané v tomto kurzu. Další soubory používané pro Vignette jsou umístěné v podsložce s *výukou a nasazením prvního modelu* . Po otevření Vignette nastavte pracovní adresář na umístění souboru prostřednictvím **relace > nastavte pracovní adresář > na umístění zdrojového souboru**. 
 

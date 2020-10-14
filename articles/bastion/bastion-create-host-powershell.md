@@ -1,34 +1,34 @@
 ---
-title: Vytvoření hostitele bastionu pomocí Azure PowerShellu | Microsoft Docs
+title: Vytvoření hostitele bastionu pomocí Azure PowerShell | Microsoft Docs
 description: V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: c62ac014513f3e93a04008af06ef8ffe5008ed2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0e7a66ef7d6947306f1b2ffec54b8e9d12737d7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84744251"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018589"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Vytvoření hostitele Azure bastionu pomocí Azure PowerShell
 
-V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu pomocí prostředí PowerShell. Jakmile ve své virtuální síti zřídíte službu Azure bastionu, bezproblémové prostředí RDP/SSH je dostupné všem virtuálním počítačům ve stejné virtuální síti. Nasazení Azure bastionu je vázané na virtuální síť, ne pro předplatné/účet nebo virtuální počítač.
+V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu pomocí prostředí PowerShell. Po nasazení bastionu se můžete připojit k virtuálnímu počítači přes jeho privátní IP adresu v prohlížeči pomocí Azure Portal. Váš virtuální počítač nepotřebuje veřejnou IP adresu, dalšího klienta nebo speciální software. Nasazení Azure bastionu je vázané na virtuální síť, ne pro předplatné/účet nebo virtuální počítač. Bezproblémové prostředí RDP/SSH je k dispozici všem virtuálním počítačům ve stejné virtuální síti.
 
-Volitelně můžete vytvořit hostitele Azure bastionu pomocí [Azure Portal](bastion-create-host-portal.md).
+Tyto pokyny jsou pro nasazení prostředí PowerShell. Hostitele Azure bastionu můžete vytvořit také pomocí [Azure Portal](tutorial-create-host-portal.md) nebo [Azure CLI](create-host-cli.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
 Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial).
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Vytvoření hostitele bastionu
 
-Tato část vám pomůže vytvořit nový prostředek Azure bastionu pomocí Azure PowerShell.
+Tato část vám pomůže vytvořit nový prostředek Azure bastionu pro vaši virtuální síť pomocí Azure PowerShell.
 
 1. Vytvořte virtuální síť a podsíť Azure bastionu. Podsíť Azure bastionu musíte vytvořit pomocí hodnoty Name **AzureBastionSubnet**. Tato hodnota umožňuje službě Azure zjistit, do které podsítě nasadit prostředky bastionu. To se liší od podsítě brány. Je nutné použít podsíť s alespoň/27 nebo větší podsítí (/27,/26 atd.). Vytvořte **AzureBastionSubnet** bez směrovacích tabulek nebo delegování. Pokud používáte skupiny zabezpečení sítě na **AzureBastionSubnet**, přečtěte si článek [práce s skupin zabezpečení sítě](bastion-nsg.md) .
 
@@ -52,6 +52,6 @@ Tato část vám pomůže vytvořit nový prostředek Azure bastionu pomocí Azu
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace najdete v tématu [bastionu – Nejčastější dotazy](bastion-faq.md) .
-
-* Pokud chcete používat skupiny zabezpečení sítě s podsítí Azure bastionu, přečtěte si téma [práce s skupin zabezpečení sítě](bastion-nsg.md).
+* Připojte se k virtuálnímu počítači.
+   * [Virtuální počítači s Linuxem](bastion-connect-vm-ssh.md)
+   * [Virtuální počítač s Windows](bastion-connect-vm-rdp.md)

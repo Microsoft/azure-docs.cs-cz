@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b8935b9f2c3c598aee7c5d0eb37f21d8114dac42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8cd72d34535ac3a2aec60aa3d2369da34dd7194
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997451"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017399"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory verze 1
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -31,7 +31,7 @@ ms.locfileid: "88997451"
 Existují dva typy aktivit, které můžete použít v kanálu Azure Data Factory.
 
 - [Aktivity přesunu dat](data-factory-data-movement-activities.md) pro přesun dat mezi [podporovanými úložišti dat a úložišti dat jímky](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
-- [Aktivity transformace dat](data-factory-data-transformation-activities.md) pro transformaci dat pomocí výpočetních služeb, jako je Azure HDInsight, Azure Batch a Azure Machine Learning.
+- [Aktivity transformace dat](data-factory-data-transformation-activities.md) pro transformaci dat pomocí výpočetních služeb, jako je Azure HDInsight, Azure Batch a Azure Machine Learning Studio (Classic).
 
 Pokud chcete přesunout data do nebo z úložiště dat, které Data Factory nepodporuje, vytvořte **vlastní aktivitu** s vlastní logikou přesunu dat a použijte aktivitu v kanálu. Podobně pokud chcete transformovat a zpracovávat data způsobem, který není podporován Data Factory, vytvořte vlastní aktivitu s vlastní logikou transformace dat a použijte aktivitu v kanálu.
 
@@ -1025,7 +1025,7 @@ Ukázka [místního prostředí Azure Data Factory](https://github.com/gbrueckl/
 | Ukázka | Co dělá vlastní aktivita |
 | --- | --- |
 | [Stažení dat http](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample). |Stáhne data z koncového bodu HTTP do Azure Blob Storage pomocí vlastní aktivity C# v Data Factory. |
-| [Ukázka Twitteru Analýza mínění](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Vyvolá model Azure Machine Learning Studio a provede mínění analýzy, bodování, předpověď atd. |
+| [Ukázka Twitteru Analýza mínění](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Vyvolá model Azure Machine Learning Studio (Classic) a provede mínění analýzy, bodování, předpověď atd. |
 | [Spusťte skript jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample). |Vyvolá skript R spuštěním RScript.exe v clusteru HDInsight, na kterém už je nainstalovaný jazyk R. |
 | [Aktivita aplikace .NET pro více domén](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Používá různé verze sestavení z těch, které používá spouštěč Data Factory. |
 | [Znovu zpracovat model v Azure Analysis Services](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample) |  Znovu zpracuje model v Azure Analysis Services. |

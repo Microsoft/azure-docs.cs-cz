@@ -3,16 +3,16 @@ title: Výkon disků a virtuálních počítačů
 description: Další informace o tom, jak virtuální počítače a jejich připojené disky fungují v kombinaci pro výkon
 author: albecker1
 ms.author: albecker
-ms.date: 09/25/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 18c07fceb65623c286b31398314e2b6f124955a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88cf9c28a9d325d617f4b049015f0cd238a2fb31
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539982"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016442"
 ---
 # <a name="virtual-machine-and-disk-performance"></a>Výkon disků a virtuálních počítačů
 [!INCLUDE [VM and Disk Performance](../../../includes/virtual-machine-disk-performance.md)]
@@ -21,3 +21,7 @@ ms.locfileid: "91539982"
  U virtuálních počítačů, které mají povolené úložiště úrovně Premium a povolené ukládání do mezipaměti služby Premium Storage, platí dvě odlišná omezení šířky pásma úložiště. Pojďme pokračovat s prohlížením virtuálního počítače s Standard_D8s_v3 jako příkladem. Tady je dokumentace k [Dsv3-Series](../dv3-dsv3-series.md) a na ní Standard_D8s_v3:
 
 [!INCLUDE [VM and Disk Performance](../../../includes/virtual-machine-disk-performance-2.md)]
+
+Pojďme spustit test srovnávacích testů na tomto virtuálním počítači a kombinaci disků, které vytvoří vstupně-výstupní činnost, a můžete se seznámit s postupem testování v/v [Azure v](disks-benchmarks.md)Azure. V nástroji pro srovnávací testy vidíte, že kombinace virtuálních počítačů a disků je schopná dosáhnout 22 800 IOPS:
+
+[!INCLUDE [VM and Disk Performance](../../../includes/virtual-machine-disk-performance-3.md)]

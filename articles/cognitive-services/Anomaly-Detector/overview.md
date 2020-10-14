@@ -3,21 +3,21 @@ title: Co je rozhraní API Detektoru anomálií?
 titleSuffix: Azure Cognitive Services
 description: Pomocí algoritmu rozhraní API pro detekci anomálií můžete pro data časových řad použít detekci anomálií.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 09/22/2020
-ms.author: aahi
+ms.author: mbullwin
 keywords: detekce anomálií, strojové učení, algoritmy
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2e48c189df23ed94cd54e1bc9097b7d9709c9ed3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9b540f2e04ae8533a00f79d05e220d99964d9a34
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319312"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016599"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co je rozhraní API Detektoru anomálií?
 

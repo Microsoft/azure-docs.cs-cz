@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23baa6ed92aa01251b4c7ccf34ef784910a0321f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651748"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019830"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services V2 vs. v3
 
@@ -74,7 +74,7 @@ Tento článek popisuje změny, které byly představeny v Azure Media Services 
 
 Rozhraní V3 API má následující mezery v souvislosti s rozhraním API v2. Uzavírání mezer je nedokončené.
 
-* [Kodér úrovně Premium](../previous/media-services-premium-workflow-encoder-formats.md) a starší [procesory media Analytics](../previous/media-services-analytics-overview.md) (Azure Media Services indexer 2 Preview, Face redigování atd.) nejsou přístupné prostřednictvím v3.<br/>Zákazníci, kteří chtějí migrovat z Media Indexer 1 nebo 2 Preview, můžou hned použít předvolbu AudioAnalyzer v rozhraní V3 API.  Tato nová předvolba obsahuje více funkcí, než je starší Media Indexer 1 nebo 2. 
+* [Kodér úrovně Premium](../previous/media-services-encode-asset.md) a starší [procesory media Analytics](../previous/legacy-components.md) (Azure Media Services indexer 2 Preview, Face redigování atd.) nejsou přístupné prostřednictvím v3.<br/>Zákazníci, kteří chtějí migrovat z Media Indexer 1 nebo 2 Preview, můžou hned použít předvolbu AudioAnalyzer v rozhraní V3 API.  Tato nová předvolba obsahuje více funkcí, než je starší Media Indexer 1 nebo 2. 
 * Mnohé z [pokročilých funkcí Media Encoder standard v](../previous/media-services-advanced-encoding-with-mes.md) rozhraních API v2 v současnosti nejsou v systému V3 k dispozici, například:
   
     * Sešity prostředků

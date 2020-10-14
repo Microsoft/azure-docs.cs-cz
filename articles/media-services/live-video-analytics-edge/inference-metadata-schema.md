@@ -3,12 +3,12 @@ title: Odvození schématu metadat – Azure
 description: V tomto článku se dozvíte o schématu odvozených metadat.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 6239713fc92b75b8ed026a8f04953e92a24c4596
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2de437577dc00692fb98c46fec32bfaa6612dc99
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88691802"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019490"
 ---
 # <a name="inference-metadata-schema"></a>Schéma odvozování metadat 
 
@@ -18,7 +18,7 @@ Každý objekt odvození bez ohledu na použití kontraktu HTTP nebo kontraktu z
 
 ![Objektový model](./media/inference-metadata-schema/object-model.png)
  
-|Definice typu|Popis|
+|Definice typu|Description|
 |---|---|
 |Značka|Značka nebo popisek spojený s výsledkem Alng s označováním, ještě získáte hodnotu spolehlivosti přidruženou ke značce.|
 |Atribut|Další atributy přidružené k výsledku. Můžete přidat nové atributy, které obdržíte z modulu Inferencing, spolu s hodnotou spolehlivosti.|
@@ -29,7 +29,7 @@ Každý objekt odvození bez ohledu na použití kontraktu HTTP nebo kontraktu z
 |Událost|V ukázce byla zjištěna událost. Při zjištění události v ukázce se vrátí název události a vlastnosti specifické pro událost.|
 |Pohybu|V ukázce byl zjištěn pohyb. Při zjištění pohybu v ukázce se vrátí souřadnice obdélníkového ohraničovacího rámečku, kde je pohyb zjištěn.|
 |Text|Vrátí se text přidružený k ukázce spolu s časovým razítkem začátku a konce textu.|
-|Ostatní|Vrátí další obecné informace o datové části.|
+|Jiné|Vrátí další obecné informace o datové části.|
 
 Následující příklad obsahuje jednu událost s některými podporovanými typy odvození:
 
@@ -123,5 +123,5 @@ Následující příklad obsahuje jednu událost s některými podporovanými ty
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kontrakt dat gRPC](grpc-data-contract.md)
-- [Kontrakt dat HTTP](http-data-contract.md)
+- [Kontrakt dat gRPC](./grpc-extension-protocol.md)
+- [Kontrakt dat HTTP](./http-extension-protocol.md)

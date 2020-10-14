@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7323ae611431e1d91fd1a8471914be388fcc4712
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87072034"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019507"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services fragmentované specifikace ingestování MP4 v reálném čase 
 
@@ -39,7 +39,7 @@ Následující diagram znázorňuje architekturu služby živého streamování 
 ![průběh ingestu][image1]
 
 ## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3. Bitstream formát – ISO 14496-12 fragmentovaný MP4
-Formát přenosu pro živé streamování, který je popsaný v tomto dokumentu, je založený na [ISO-14496-12]. Podrobné vysvětlení fragmentovaných formátů a rozšíření MP4 pro soubory videa na vyžádání a ingestování živých streamování najdete v tématu [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).
+Formát přenosu pro živé streamování, který je popsaný v tomto dokumentu, je založený na [ISO-14496-12]. Podrobné vysvětlení fragmentovaných formátů a rozšíření MP4 pro soubory videa na vyžádání a ingestování živých streamování najdete v tématu [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251).
 
 ### <a name="live-ingest-format-definitions"></a>Definice formátu živého příjmu
 Následující seznam popisuje speciální definice formátu, které se vztahují na živé ingestování do Azure Media Services:
@@ -70,7 +70,7 @@ Zde jsou uvedené podrobné požadavky:
 1. Pokud se požadavek HTTP POST ukončí nebo vyprší s chybou TCP před koncem datového proudu, kodér musí vystavit novou žádost POST pomocí nového připojení a postupovat podle předchozích požadavků. Kromě toho kodér musí znovu odeslat předchozí dva fragmenty MP4 pro každou stopu v datovém proudu a pokračovat bez zavedení nekontinuity na časové ose média. Opakované odeslání posledních dvou fragmentů MP4 pro každou stopu zajistí, že nedojde ke ztrátě dat. Jinými slovy, pokud datový proud obsahuje zvuk i video stop a aktuální požadavek POST se nezdaří, kodér se musí znovu připojit a znovu pošle poslední dva fragmenty zvukové stopy, které byly dříve úspěšně odeslány, a poslední dva fragmenty pro stopu videa, které byly dříve úspěšně odeslány, aby se zajistilo, že nedojde ke ztrátě dat. Kodér musí udržovat "dopředné" fragmenty média, které se znovu odesílají při opětovném připojení.
 
 ## <a name="5-timescale"></a>5. Časová osa
-[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) popisuje použití časové osy pro **SmoothStreamingMedia** (oddíl 2.2.2.1), **StreamElement** (oddíl 2.2.2.3), **StreamFragmentElement** (oddíl 2.2.2.6) a **LiveSMIL** (oddíl 2.2.7.3.1). Pokud hodnota časové osy není k dispozici, použije se výchozí hodnota 10 000 000 (10 MHz). I když specifikace formátu Smooth Streaming neblokuje použití jiných hodnot časové osy, většina implementací kodéru používá tuto výchozí hodnotu (10 MHz) pro generování Smooth Streaming ingestování dat. Vzhledem k funkci [dynamického balení médií Azure](./previous/media-services-dynamic-packaging-overview.md) doporučujeme pro streamování videa a 44,1 kHz nebo pro zvukové streamy použít časovou osu 90 – khz nebo 48,1 kHz. Pokud se pro různé datové proudy používají odlišné hodnoty časového měřítka, je nutné odeslat časovou osu na úrovni datového proudu. Další informace najdete v tématu [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
+[[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) popisuje použití časové osy pro **SmoothStreamingMedia** (oddíl 2.2.2.1), **StreamElement** (oddíl 2.2.2.3), **StreamFragmentElement** (oddíl 2.2.2.6) a **LiveSMIL** (oddíl 2.2.7.3.1). Pokud hodnota časové osy není k dispozici, použije se výchozí hodnota 10 000 000 (10 MHz). I když specifikace formátu Smooth Streaming neblokuje použití jiných hodnot časové osy, většina implementací kodéru používá tuto výchozí hodnotu (10 MHz) pro generování Smooth Streaming ingestování dat. Vzhledem k funkci [dynamického balení médií Azure](./previous/media-services-dynamic-packaging-overview.md) doporučujeme pro streamování videa a 44,1 kHz nebo pro zvukové streamy použít časovou osu 90 – khz nebo 48,1 kHz. Pokud se pro různé datové proudy používají odlišné hodnoty časového měřítka, je nutné odeslat časovou osu na úrovni datového proudu. Další informace najdete v tématu [[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251).     
 
 ## <a name="6-definition-of-stream"></a>6. definice "Stream"
 Stream je základní Jednotková operace v reálném ingestování pro vytváření živých prezentací, zpracování převzetí služeb při selhání streamování a scénářů redundance. Stream je definovaný jako jeden jedinečný, fragmentovaný Bitstream MP4, který může obsahovat jednu stopu nebo několik stop. Celá živá prezentace může obsahovat jeden nebo více datových proudů v závislosti na konfiguraci živých kodérů. Následující příklady ilustrují různé možnosti použití datových proudů k vytvoření úplné živé prezentace.
@@ -98,7 +98,7 @@ V této možnosti se zákazník rozhodne rozdělit zvukovou stopu pomocí videa 
 
 ![Streamy – zvukové a video stopy][image4]
 
-### <a name="summary"></a>Shrnutí
+### <a name="summary"></a>Souhrn
 Nejedná se o vyčerpávající seznam všech možných možností ingestování v tomto příkladu. Vzhledem k tomu, že živé ingestování podporuje jakékoliv seskupení skladeb do datových proudů. Zákazníci a technici v kodéru si můžou zvolit vlastní implementace založené na složitosti, kapacitě kodéru a požadavcích na redundanci a převzetí služeb při selhání. Ve většině případů je ale k dispozici pouze jedna zvuková stopa pro celou živou prezentaci. Proto je důležité zajistit healthiness datového proudu ingestování, který obsahuje zvukovou stopu. Toto posouzení často vede k tomu, že se zvukové stopy ukládají do vlastního streamu (jak je uvedeno v možnosti 2), nebo je nanavazuje na video s nejnižší přenosovou rychlostí (jako v možnosti 3). Pro zajištění lepší redundance a odolnosti proti chybám odesílají stejnou zvukovou stopu ve dvou různých datových proudech (možnost 2 s redundantními zvukovými stopami) nebo naváže zvukovou stopu s nejméně dvěma videosoubory s minimální přenosovou rychlostí (možnost 3 se zvukovým úložištěm alespoň dvou streamů videa Media Services).
 
 ## <a name="7-service-failover"></a>7. převzetí služeb při selhání

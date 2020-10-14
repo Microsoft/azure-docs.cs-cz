@@ -1,27 +1,27 @@
 ---
 title: 'Rychlý Start: vytvoření hostitele bastionu z virtuálního počítače a připojení přes privátní IP adresu'
 titleSuffix: Azure Bastion
-description: V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu z virtuálního počítače a bezpečně se připojit pomocí privátní IP adresy.
+description: V tomto článku rychlý Start se dozvíte, jak vytvořit hostitele Azure bastionu z virtuálního počítače a bezpečně se připojit pomocí privátní IP adresy.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: quickstart
 ms.date: 10/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0ff85e6ceb6867db417d8d8202ff3281478e5687
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 6f451e7b115c00bc7b2cf350e00b9f704ab1d29f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996935"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019048"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Rychlý Start: připojení k virtuálnímu počítači pomocí privátní IP adresy a Azure bastionu
 
-Tento článek rychlý Start ukazuje, jak se připojit k virtuálnímu počítači pomocí privátní IP adresy v prohlížeči pomocí Azure bastionu a Azure Portal. Kroky v tomto článku vám pomůžou nasadit bastionu do virtuální sítě z virtuálního počítače a pak se připojit k virtuálnímu počítači. Výhodou pro vytvoření hostitele bastionu pro virtuální síť přímo z virtuálního počítače je to, že mnoho z těchto nastavení je pro vás předem vyplněné.
+Tento článek rychlý Start ukazuje, jak se připojit k virtuálnímu počítači přes prohlížeč pomocí Azure bastionu a Azure Portal. V Azure Portal můžete z virtuálního počítače Azure nasazovat bastionu do vaší virtuální sítě. Po nasazení bastionu se k virtuálnímu počítači můžete připojit přes jeho privátní IP adresu pomocí Azure Portal. Váš virtuální počítač nepotřebuje veřejnou IP adresu ani speciální software. Jednou z výhod vytváření bastionu hostitele pro virtuální síť přímo z virtuálního počítače je to, že mnoho z těchto nastavení je pro vás předem vyplněné.
 
 Po zřízení služby je prostředí RDP/SSH dostupné všem virtuálním počítačům ve stejné virtuální síti. Další informace o Azure bastionu najdete v tématu [co je Azure bastionu?](bastion-overview.md).
 
-## <a name="prerequisites"></a><a name="prereq"></a>Požadovaný
+## <a name="prerequisites"></a><a name="prereq"></a>Požadavky
 
 * Virtuální síť.
 * Virtuální počítač s Windows ve virtuální síti.
@@ -96,7 +96,7 @@ Až budete s virtuální sítí a virtuálními počítači hotovi, odstraňte s
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste pro virtuální síť vytvořili hostitele bastionu a pak jste zabezpečeni připojeni k virtuálnímu počítači prostřednictvím hostitele bastionu.
+V tomto rychlém startu jste pro virtuální síť vytvořili hostitele bastionu a pak jste zabezpečeni připojeni k virtuálnímu počítači prostřednictvím hostitele bastionu. V dalším kroku můžete pokračovat následujícím krokem, pokud se chcete připojit k sadě škálování virtuálního počítače.
 
-* Další informace o Azure bastionu najdete v tématu [co je Azure bastionu?](bastion-overview.md) a [bastionu Nejčastější dotazy](bastion-faq.md).
-* Informace o připojení k sadě škálování virtuálního počítače najdete v tématu [připojení k sadě škálování virtuálního počítače pomocí Azure bastionu](bastion-connect-vm-scale-set.md).
+> [!div class="nextstepaction"]
+> [Připojení k sadě škálování virtuálního počítače pomocí Azure bastionu](bastion-connect-vm-scale-set.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bc17d27837d5b96f06b5172fb019db873418db94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c876e27165eba30b17874eca600ba81be2e9354
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922944"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019426"
 ---
 # <a name="manage-server-administrators"></a>Správa správců serveru
 
@@ -40,13 +40,13 @@ Při přidávání **skupiny zabezpečení**použijte `obj:groupid@tenantid` . V
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-K určení parametru správce při vytváření nového serveru použijte rutinu [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) . <br>
-Pomocí rutiny [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) můžete změnit parametr správce existujícího serveru.
+K určení parametru správce při vytváření nového serveru použijte rutinu [New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) . <br>
+Pomocí rutiny [set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) můžete změnit parametr správce existujícího serveru.
 
 ## <a name="rest-api"></a>REST API
 
-K určení vlastnosti asAdministrator při vytváření nového serveru použijte [Create](https://docs.microsoft.com/rest/api/analysisservices/servers/create) . <br>
-K určení vlastnosti asAdministrator při úpravách stávajícího serveru použijte [Update](https://docs.microsoft.com/rest/api/analysisservices/servers/update) . <br>
+K určení vlastnosti asAdministrator při vytváření nového serveru použijte [Create](/rest/api/analysisservices/servers/create) . <br>
+K určení vlastnosti asAdministrator při úpravách stávajícího serveru použijte [Update](/rest/api/analysisservices/servers/update) . <br>
 
 
 
@@ -54,4 +54,4 @@ K určení vlastnosti asAdministrator při úpravách stávajícího serveru pou
 
 [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md)  
 [Správa databázových rolí a uživatelů](analysis-services-database-users.md)  
-[Řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md)  
+[Řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md)

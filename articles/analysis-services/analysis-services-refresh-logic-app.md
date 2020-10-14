@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: c4908373035b1a3148cd77db513f4e6bd23a50d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a8d434fca7cab4432f38fc64093cf1fe060bd5f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540723"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019082"
 ---
 # <a name="refresh-with-logic-apps"></a>Aktualizace pomocí Logic Apps
 
@@ -74,7 +74,7 @@ Aktivitu HTTP nakonfigurujte následujícím způsobem:
 |**Cílová skupina**     |https://*. asazure. Windows. NET         |
 |**ID klienta**     |Zadejte své hlavní název služby ClientID.         |
 |**Typ přihlašovacích údajů**     |Tajný kód         |
-|**Tajný kód**     |Zadejte tajný klíč hlavního názvu služby.         |
+|**Otázku**     |Zadejte tajný klíč hlavního názvu služby.         |
 
 Příklad:
 
@@ -117,4 +117,4 @@ Uložte aplikaci logiky.
 ## <a name="next-steps"></a>Další kroky
 
 [ukázky](analysis-services-samples.md)  
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[REST API](/rest/api/analysisservices/servers)

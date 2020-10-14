@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: dfd7b3dcc7e27dd1251c35c6272b5aa7f8036006
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc3060c9253b23b97089ea35625aceb26737baba
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88942345"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016991"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Kurz: ukládání Azure Media Servicesch událostí v Azure Log Analytics
 
@@ -43,11 +43,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 > * [Předplatné Azure](how-to-set-azure-subscription.md)
 > * Účet [Media Services](create-account-howto.md) a skupina prostředků.
 > * Instalace [ffmpeg](https://ffmpeg.org/download.html) pro váš operační systém.
-> * Pracovní prostor [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
+> * Pracovní prostor [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md)
 
 ## <a name="subscribe-to-a-media-services-event-with-logic-app"></a>Přihlášení k odběru události Media Services s využitím aplikace logiky
 
-1. Pokud jste tak již neučinili, vytvořte v Azure Portal pracovní prostor [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) . Budete potřebovat ID pracovního prostoru a jeden z klíčů, takže okno prohlížeče zůstane otevřené. Pak otevřete portál na jiné kartě nebo v okně.
+1. Pokud jste tak již neučinili, vytvořte v Azure Portal pracovní prostor [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) . Budete potřebovat ID pracovního prostoru a jeden z klíčů, takže okno prohlížeče zůstane otevřené. Pak otevřete portál na jiné kartě nebo v okně.
 
 1. Přejděte k účtu Azure Media Services a vyberte **události**. Zobrazí se všechny metody přihlášení k odběru Azure Media Servicesch událostí.
     > [!div class="mx-imgBorder"]
@@ -140,7 +140,7 @@ Teď, když jste se přihlásili k odběru událostí, vytvořte akci.
     > [!div class="mx-imgBorder"]
     > ![Ověření textu a kroků funkce](media/tutorial-events-log-analytics/verify-changes-to-json.png)
 
-1. Když prohlížíte všechny prostředky ve skupině prostředků, bude v seznamu uvedena aplikace logiky a dvě konektory rozhraní API Logic Apps, jednu pro události a jednu pro Log Analytics. Další informace o Event Grid systémových tématech najdete v článku [Event Grid systémová témata](https://docs.microsoft.com/azure/event-grid/system-topics).
+1. Když prohlížíte všechny prostředky ve skupině prostředků, bude v seznamu uvedena aplikace logiky a dvě konektory rozhraní API Logic Apps, jednu pro události a jednu pro Log Analytics. Další informace o Event Grid systémových tématech najdete v článku [Event Grid systémová témata](../../event-grid/system-topics.md).
     > [!div class="mx-imgBorder"]
     > ![Zobrazit všechny nové prostředky ve skupině prostředků](media/tutorial-events-log-analytics/contoso-rg-listing.png)
 
@@ -231,4 +231,4 @@ Pokud nechcete dál používat prostředky, které jste vytvořili v tomto kurzu
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete vytvářet různé dotazy a ukládat je. Ty je možné přidat na [řídicí panel Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards).
+Můžete vytvářet různé dotazy a ukládat je. Ty je možné přidat na [řídicí panel Azure](../../azure-monitor/learn/tutorial-logs-dashboards.md).

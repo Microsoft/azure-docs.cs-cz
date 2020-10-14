@@ -5,12 +5,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 description: Popisuje proces migrace z Azure Dev Spaces na přemostění do Kubernetes.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, most na Kubernetes
-ms.openlocfilehash: 2b923e87e1eefe9cb0ba4afc018eed728ee6aaba
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 209776be80f2814dc8e4d347c0eea273017f70ad
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993940"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019932"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrace na Bridge to Kubernetes
 
@@ -80,9 +80,9 @@ Most na Kubernetes má flexibilitu pro práci s aplikacemi spuštěnými v Kuber
 > [!TIP]
 >  [Rozšíření Microsoft Kubernetes][kubernetes-extension] vám umožňuje rychle vyvíjet Kubernetes manifesty pomocí technologie IntelliSense a pomáhá seznámení s Helm grafy.  
 
-### <a name="use-visual-studio-to-transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>Použití sady Visual Studio k přechodu na most na Kubernetes z Azure Dev Spaces
+### <a name="transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>Přechod na přemostění na Kubernetes z Azure Dev Spaces
 
-1. Aktualizujte integrované vývojové prostředí (IDE) sady Visual Studio na verzi 16,7 nebo vyšší a nainstalujte most do rozšíření Kubernetes z [Visual Studio Marketplace][vs-marketplace].
+1. Pokud používáte aplikaci Visual Studio, aktualizujte integrované vývojové prostředí (IDE) sady Visual Studio na verzi 16,7 nebo vyšší a nainstalujte most do rozšíření Kubernetes z [Visual Studio Marketplace][vs-marketplace]. Pokud používáte Visual Studio Code, nainstalujte [most do rozšíření Kubernetes][vsc-marketplace].
 1. Vypněte kontroler Azure Dev Spaces pomocí Azure Portal nebo [Azure dev Spaces CLI][azds-delete].
 1. Použijte [Azure Cloud Shell](https://shell.azure.com). Nebo na Macu, Linux nebo Windows s nainstalovaným bash otevřete příkazový řádek prostředí bash. Ujistěte se, že v prostředí příkazového řádku jsou k dispozici následující nástroje: Azure CLI, Docker, kubectl, kudrlinkou, tar a gunzip.
 1. Vytvořte registr kontejnerů nebo použijte existující. Registr kontejnerů můžete v Azure vytvořit pomocí [Azure Container Registry](../container-registry/index.yml) nebo pomocí [Docker Hub](https://hub.docker.com/).
@@ -109,18 +109,9 @@ Most na Kubernetes má flexibilitu pro práci s aplikacemi spuštěnými v Kuber
 1. Ručně proveďte migraci všech úprav, jako je například nastavení proměnných prostředí, do *azds. yaml* do souboru *Values. yml* vašeho projektu.
 1. volitelné Odeberte `azds.yaml` soubor z projektu.
 1. Znovu nasaďte aplikaci.
-1. Nakonfigurujte most na Kubernetes ve vaší nasazené aplikaci. Další informace o použití mostu na Kubernetes v aplikaci Visual Studio najdete v tématu [použití mostu na Kubernetes][use-btk-vs].
-1. Spusťte ladění v aplikaci Visual Studio pomocí nově vytvořeného mostu pro ladicí profil Kubernetes.
+1. Nakonfigurujte most na Kubernetes ve vaší nasazené aplikaci. Další informace o použití mostu na Kubernetes v aplikaci Visual Studio naleznete v tématu [použití mostu na Kubernetes v aplikaci Visual Studio][use-btk-vs]. VS Code najdete v tématu [použití přemostění na Kubernetes v vs Code][use-btk-vsc].
+1. Spusťte ladění pomocí nově vytvořeného mostu pro Kubernetes profil ladění/spuštění.
 1. Skript můžete spustit znovu podle potřeby pro opětovné nasazení do clusteru.
-
-### <a name="use-visual-studio-code-to-transition-to-bridge-to-kubernetes-from-azure-dev-spaces"></a>Přechod na přemostění na Kubernetes z Azure Dev Spaces pomocí Visual Studio Code
-
-1. Nainstalujte [most do rozšíření Kubernetes][vsc-marketplace].
-1. Vypněte kontroler Azure Dev Spaces pomocí Azure Portal nebo [Azure dev Spaces CLI][azds-delete].
-1. Odeberte `azds.yaml` soubor z projektu.
-1. Znovu nasaďte aplikaci.
-1. Nakonfigurujte most na Kubernetes ve vaší nasazené aplikaci. Další informace o použití mostu na Kubernetes v Visual Studio Code najdete v tématu [použití mostu na Kubernetes][use-btk-vsc].
-1. Spustit ladění v Visual Studio Code pomocí nově vytvořeného mostu do profilu spuštění Kubernetes
 
 ## <a name="team-development-in-a-shared-cluster"></a>Vývoj týmu ve sdíleném clusteru
 

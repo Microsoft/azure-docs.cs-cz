@@ -3,19 +3,19 @@ title: Doporučený uživatelem generovaný obsah pro rozhraní API detektoru an
 titleSuffix: Azure Cognitive Services
 description: Najděte si doporučený obsah a zjistěte, jak si jiní lidé myslí a používají rozhraní API detektoru anomálií.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.author: aahi
-ms.openlocfilehash: 81a2cb7ece775bfaffaf1b1932feb12b2da5f08f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: df526c23460e7146cd630afcb8b29a380c568250
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74012030"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017432"
 ---
 # <a name="featured-user-generated-content-for-the-anomaly-detector-api"></a>Doporučený uživatelem generovaný obsah pro rozhraní API detektoru anomálií
 
