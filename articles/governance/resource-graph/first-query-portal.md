@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: váš první dotaz na portálu'
 description: V tomto rychlém startu budete postupovat podle pokynů ke spuštění prvního dotazu z Azure Portal pomocí Průzkumníka Azure Resource Graph.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4d68366005ad6379669d29fb8264f78d1b8f4972
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b5f5203b3842ebc3edbd97bca1ca3c101f47e397
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88056376"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057378"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu
 
@@ -16,7 +16,7 @@ Výkon Azure Resource graphu je k dispozici přímo v Azure Portal prostřednict
 
 Na konci tohoto rychlého startu použijete Azure Portal a Průzkumník diagramů prostředků ke spuštění prvního dotazu grafu prostředku a připnuté výsledky na řídicí panel.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -51,7 +51,7 @@ Prohlížeč schémat je skvělým způsobem, jak zjistit vlastnosti pro použit
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Vytvoření grafu z dotazu na graf prostředků
 
-Pokud po spuštění posledního dotazu vyberete kartu **grafy** , zobrazí se zpráva, že sada výsledků dotazu není kompatibilní s vizualizací výsečového grafu. Dotazy, které uvádějí výsledky seznamu, se nedají provést v grafu, ale můžou se zadat i dotazy, které poskytují počty prostředků. Pomocí [ukázkového dotazu – počet virtuálních počítačů podle typu operačního systému](./samples/starter.md#count-os)vytvoříme vizualizaci z dotazu na graf prostředků.
+Pokud po spuštění předchozího dotazu vyberete kartu **grafy** , zobrazí se zpráva, že sada výsledků dotazu není kompatibilní s vizualizací výsečového grafu. Dotazy, které uvádějí výsledky seznamu, se nedají provést v grafu, ale můžou se zadat i dotazy, které poskytují počty prostředků. Pomocí [ukázkového dotazu – počet virtuálních počítačů podle typu operačního systému](./samples/starter.md#count-os)vytvoříme vizualizaci z dotazu na graf prostředků.
 
 1. V části pro **dotaz 1** v okně zadejte následující dotaz a vyberte **Spustit dotaz**.
 
@@ -67,7 +67,7 @@ Pokud po spuštění posledního dotazu vyberete kartu **grafy** , zobrazí se z
 
 ## <a name="pin-the-query-visualization-to-a-dashboard"></a>Připnutí vizualizace dotazu na řídicí panel
 
-Když máte výsledky z dotazu, který je možné vizuálně vyfiltrovat, můžete tuto vizualizaci dat připnout k některému z vašich řídicích panelů. Po spuštění dotazu výše použijte následující postup:
+Když máte výsledky z dotazu, který je možné vizuálně vyfiltrovat, můžete tuto vizualizaci dat připnout k některému z vašich řídicích panelů. Po spuštění předchozího dotazu proveďte tyto kroky:
 
 1. Vyberte **Uložit** a zadejte název virtuální počítače podle typu operačního systému. Potom v dolní části pravého podokna vyberte **Save (Uložit** ).
 

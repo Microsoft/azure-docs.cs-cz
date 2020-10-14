@@ -3,17 +3,17 @@ title: Koncepty relací ladění (Preview)
 titleSuffix: Azure Cognitive Search
 description: Relace ladění, ke kterým se dostanete prostřednictvím Azure Portal, poskytuje rozhraní IDE, jako je prostředí, ve kterém můžete identifikovat a opravovat chyby, ověřovat změny a doručovat změny do dovednosti v kanálu pro rozšíření AI. Relace ladění jsou ve verzi Preview.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 941d7f54bcb44653280abe264ff1cffbeae33679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f666cc2f9d11b1e05d11ba266897e6fca3cd287e
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743178"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057616"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Ladění relací v Azure Kognitivní hledání
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 10/14/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0e42c8e22d004b574e65442f0fbdfce1c9bcabd7
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: bca960100ee0c9d7e2a779dc86030fc59949dca5
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939408"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055966"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Konfigurace replikace objektů pro objekty blob bloku
 
@@ -365,7 +365,16 @@ Chcete-li zjistit stav replikace pro objekt BLOB ve zdrojovém účtu v Azure Po
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Není k dispozici
+Chcete-li zjistit stav replikace objektu BLOB ve zdrojovém účtu pomocí prostředí PowerShell, Získejte hodnotu vlastnosti **ReplicationStatus** replikace objektů, jak je znázorněno v následujícím příkladu. Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
+
+```powershell
+$ctxSrc = (Get-AzStorageAccount -ResourceGroupName $rgname `
+    -StorageAccountName $srcAccountName).Context
+$blobSrc = Get-AzStorageBlob -Container $srcContainerName1 `
+    -Context $ctxSrc `
+    -Blob <blob-name>
+$blobSrc.BlobProperties.ObjectReplicationSourceProperties[0].Rules[0].ReplicationStatus
+```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

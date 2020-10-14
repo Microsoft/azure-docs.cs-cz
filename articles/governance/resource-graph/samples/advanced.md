@@ -1,14 +1,14 @@
 ---
 title: Ukázky dotazů pro pokročilé
 description: Pomocí Azure Resource graphu můžete spouštět některé rozšířené dotazy, včetně práce se sloupci, použitými značkami a porovnáním prostředků s regulárními výrazy.
-ms.date: 08/13/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 8463880189a76f299ce5552fff2b7bccddfa8dec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dff4b06cc5cf4385820c7f6251efaae792d9c22d
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89425290"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057140"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Ukázky dotazů v rozšířeném grafu prostředků
 
@@ -34,7 +34,7 @@ Projdeme následující rozšířené dotazy:
 - [Dotaz na podrobnosti sestav přiřazení konfigurace hostů](#query-gcreports)
 - [Najde všechny důvody, proč počítač nesplňuje požadavky na přiřazení konfigurace hostů.](#query-gcmachinedetails)
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
 
 ## <a name="language-support"></a>Podpora jazyků
 
@@ -625,9 +625,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ## <a name="query-details-of-guest-configuration-assignment-reports"></a><a name="query-gcreports"></a>Dotaz na podrobnosti sestav přiřazení konfigurace hostů
 
-Zobrazit sestavu z podrobností z [důvodu přiřazení konfigurace hosta](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)
-V následujícím příkladu dotaz vrátí pouze výsledky, kde je název přiřazení hosta `installed_application_linux` a výstup obsahuje řetězec `Python` k vypsání všech počítačů se systémem Linux, kde je balíček nainstalován, který obsahuje název **Python**.
-Chcete-li zadat dotaz na dodržování předpisů u všech počítačů pro konkrétní přiřazení, odeberte druhou `where` klauzuli.
+Zobrazit sestavu z podrobností z [důvodu přiřazení konfigurace hosta](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) V následujícím příkladu dotaz vrátí pouze výsledky, kde je název přiřazení hosta `installed_application_linux` a výstup obsahuje řetězec `Python` k vypsání všech počítačů se systémem Linux, kde je balíček nainstalován, který obsahuje název **Python**. Chcete-li zadat dotaz na dodržování předpisů u všech počítačů pro konkrétní přiřazení, odeberte druhou `where` klauzuli.
 
 ```kusto
 GuestConfigurationResources
@@ -666,8 +664,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ## <a name="find-all-reasons-a-machine-is-non-compliant-for-guest-configuration-assignments"></a><a name="query-gcmachinedetails"></a>Najde všechny důvody, proč počítač nesplňuje požadavky na přiřazení konfigurace hostů.
 
-Zobrazí všechny [důvody přiřazení konfigurace hostů](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) pro určitý počítač.
-Odeberte první `where` klauzuli, která zahrnuje audity, ve kterých je počítač kompatibilní.
+Zobrazí všechny [důvody přiřazení konfigurace hostů](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) pro určitý počítač. Odeberte první `where` klauzuli, která zahrnuje audity, ve kterých je počítač kompatibilní.
 
 ```kusto
 GuestConfigurationResources

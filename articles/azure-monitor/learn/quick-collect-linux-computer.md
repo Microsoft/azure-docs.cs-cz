@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b856381e8d085c6839effd1de6d9867b214d24ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 04d53dc213d5e992dc79e322b071025bdb447b1b
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020384"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057497"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Rychlý Start: shromáždění dat z počítače se systémem Linux v hybridním prostředí pomocí Azure Monitor
 
@@ -26,7 +26,7 @@ ms.locfileid: "89020384"
 
 Další informace o podporované konfiguraci najdete v tématu [podporované operační systémy](../platform/agents-overview.md#supported-operating-systems) a [Konfigurace brány firewall sítě](../platform/log-analytics-agent.md#network-requirements).
  
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -62,13 +62,11 @@ Před instalací agenta Log Analytics pro Linux potřebujete ID a klíč vašeho
 
 2. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, který jste vytvořili dříve. (Je možné, že jste nastavili název **DefaultLAWorkspace**.)
 
-3. Vybrat **upřesňující nastavení**:
-
-    ![Nabídka Pokročilá nastavení pro Log Analytics v Azure Portal](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png) 
+3. Vyberte **správu agentů**:
  
-4. Vyberte **Připojené zdroje** a pak **Servery s Linuxem**.
+4. Pak vyberte **servery Linux**.
 
-5. Napravo se zobrazí hodnoty **ID pracovního prostoru** a **Primární klíč**. Obě hodnoty zkopírujte a vložte do oblíbeného editoru.
+5. Hodnota napravo od **ID pracovního prostoru** a **primárního klíče**. Obě hodnoty zkopírujte a vložte do oblíbeného editoru.
 
 ## <a name="install-the-agent-for-linux"></a>Instalace agenta pro Linux
 

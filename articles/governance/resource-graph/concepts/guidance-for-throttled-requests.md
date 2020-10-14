@@ -1,15 +1,15 @@
 ---
 title: Pokyny pro omezované požadavky
 description: Naučte se paralelně seskupovat, rozložit, stránkování a dotazovat, abyste se vyhnuli požadavkům, které Azure Resource Graph omezuje.
-ms.date: 08/03/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a8ba991d13b9be221e67f2ff1e393fb01f8a2d4
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006002"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056170"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Doprovodné materiály k omezením požadavků v grafu prostředků Azure
 
@@ -132,7 +132,7 @@ Kvůli způsobu, jakým se vynutilo omezování, doporučujeme dotazy, které se
   |---------------------|-----|------|-------|-------|
   | Časový interval (sekundy) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-Níže je uveden příklad respektování hlaviček omezení při dotazování na graf prostředků Azure:
+Tady je příklad respektování hlaviček omezení při dotazování na graf prostředků Azure:
 
 ```csharp
 while (/* Need to query more? */)
@@ -156,7 +156,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>Paralelní dotazování
 
-I když se seskupování doporučuje po paralelním použití, existují časy, ve kterých se dotazy nedají snadno seskupit. V těchto případech můžete chtít dotazovat se na graf prostředků Azure tak, že paralelním způsobem odešlete více dotazů. Níže je uveden příklad, jak _omezení rychlosti_ na základě hlaviček omezení v takových scénářích:
+I když se seskupování doporučuje po paralelním použití, existují časy, ve kterých se dotazy nedají snadno seskupit. V těchto případech můžete chtít dotazovat se na graf prostředků Azure tak, že paralelním způsobem odešlete více dotazů. Tady je příklad toho, jak se _omezení rychlosti_ na základě hlaviček omezování v takových scénářích:
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
@@ -219,7 +219,7 @@ Vzhledem k tomu, že Azure Resource Graph vrací maximálně 1000 záznamů v je
 
 - Azure CLI/Azure PowerShell
 
-  Při použití rozhraní příkazového řádku Azure CLI nebo Azure PowerShell jsou dotazy do Azure Resource graphu automaticky zastránkováním, aby se načetly maximálně 5000 položek. Výsledky dotazu vrátí kombinovaný seznam záznamů ze všech stránkovaných volání. V takovém případě může jeden stránkovaný dotaz využívat více než jednu kvótu dotazu v závislosti na počtu položek ve výsledku dotazu. Například v příkladu níže může jedno spuštění dotazu spotřebovat až pět kvót dotazu:
+  Při použití rozhraní příkazového řádku Azure CLI nebo Azure PowerShell jsou dotazy do Azure Resource graphu automaticky zastránkováním, aby se načetly maximálně 5000 položek. Výsledky dotazu vrátí kombinovaný seznam záznamů ze všech stránkovaných volání. V takovém případě může jeden stránkovaný dotaz využívat více než jednu kvótu dotazu v závislosti na počtu položek ve výsledku dotazu. Například v následujících příkladech může jeden běh dotazu spotřebovat až pět kvót dotazu:
 
   ```azurecli-interactive
   az graph query -q 'Resources | project id, name, type' --first 5000

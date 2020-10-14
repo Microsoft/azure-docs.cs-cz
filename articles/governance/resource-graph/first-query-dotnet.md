@@ -1,15 +1,15 @@
 ---
 title: 'Rychlý Start: první dotaz .NET Core'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení balíčků NuGet pro graf prostředků pro .NET Core a spuštění prvního dotazu.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0470f100b6323f760bc48af70e8a6c11b94dfb3c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5f825b22712956c0b94531ddb163301167f30f00
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89005866"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057463"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí .NET Core
 
@@ -17,7 +17,7 @@ Prvním krokem při použití Azure Resource graphu je ověření, že jsou nain
 
 Na konci tohoto procesu se balíčky přidají do instalace .NET Core a spustí se první dotaz na diagram prostředku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Objekt služby Azure, včetně _ClientID_ a _clientSecret_. Pokud nemáte instanční objekt pro použití s grafem prostředků nebo chcete vytvořit nový, podívejte se na téma knihovny pro [správu Azure pro ověřování .NET](/dotnet/azure/sdk/authentication#mgmt-auth).

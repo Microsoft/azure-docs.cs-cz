@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ab60cb83e68a0c325ec1e2ac102870493016b57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a48a72aa021a17c59adb86bece66cec966e234bd
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231227"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056136"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Analýza protokolů aktivit Azure AD pomocí protokolů Azure Monitor
 
@@ -100,16 +100,13 @@ Pro svůj dotaz můžete také nastavit výstrahy. Pokud třeba chcete nakonfigu
 
 5. Po nakonfigurování výstrahy vyberte **vytvořit výstrahu** a povolte ji. 
 
-## <a name="install-and-use-pre-built-views-for-azure-ad-activity-logs"></a>Instalace a použití předem připravených zobrazení pro protokoly aktivit Azure AD
+## <a name="use-pre-built-workbooks-for-azure-ad-activity-logs"></a>Používejte předem připravené sešity pro protokoly aktivit Azure AD
 
-Můžete si také stáhnout předem připravené zobrazení Log Analytics pro protokoly aktivit služby Azure AD. Zobrazení poskytují několik sestav, které se týkají běžných scénářů týkajících se událostí auditu a přihlašování. Pomocí postupu popsaného v předchozí části můžete také upozornit na kterékoli z dat, která jsou uvedena v sestavách.
+Sešity obsahují několik sestav, které se týkají běžných scénářů týkajících se auditu, přihlašování a zřizování událostí. Pomocí postupu popsaného v předchozí části můžete také upozornit na kterékoli z dat, která jsou uvedena v sestavách.
 
-* **Události zřizování účtů Azure AD**: Toto zobrazení ukazuje sestavy týkající se aktivity zřizování auditování, jako je počet nových uživatelů, kteří se zřídili a provisionují chyby, počet uživatelů, kteří se aktualizovaly a aktualizují selhání, a počet nezřízených a odpovídajících selhání uživatelů.    
-* **Události přihlášení**: Toto zobrazení ukazuje nejrelevantnější sestavy týkající se monitorování přihlašovacích aktivit, jako jsou například přihlášení podle aplikace, uživatele, zařízení a také souhrnné zobrazení sledování počtu přihlášení v průběhu času.
-* **Uživatel, který provádí souhlas**: Toto zobrazení ukazuje sestavy týkající se souhlasu uživatele, jako je například souhlas udělený uživatelem, přihlášení uživatelů, kteří udělili souhlas, a také přihlášení aplikací pro všechny aplikace založené na souhlasu. 
-
-Naučte se [instalovat a používat zobrazení Log Analytics pro protokoly aktivit Azure AD](howto-install-use-log-analytics-views.md). 
-
+* **Analýza zřizování**: Tento [sešit](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) obsahuje sestavy týkající se aktivity zřizování auditování, jako je počet nových uživatelů, kteří se zřídili a provisionují chyby, počet aktualizovaných uživatelů a selhání aktualizací a počet nezřízených uživatelů a odpovídající selhání.    
+* **Události přihlášení**: Tento sešit obsahuje nejrelevantnější sestavy týkající se monitorování přihlašovacích aktivit, jako jsou například přihlášení podle aplikace, uživatele, zařízení a také souhrnné zobrazení sledování počtu přihlášení v průběhu času.
+* **Přehledy podmíněného přístupu**: přehledy podmíněného přístupu [a vytváření sestav](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-insights-reporting) vám umožní pochopit dopad zásad podmíněného přístupu ve vaší organizaci v průběhu času. 
 
 ## <a name="next-steps"></a>Další kroky
 
