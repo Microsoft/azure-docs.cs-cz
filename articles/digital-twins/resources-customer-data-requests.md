@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 31da6a6b5375571f53cd7b478e957cc350ef591c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60aa6ed3f1b66d88d05751fdee2444120705f8d2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522342"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047688"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Funkce pro žádosti o data zákaznických dat v Azure
 
@@ -35,7 +35,7 @@ Digitální vlákna Azure ukládá [Azure Active Directory](../active-directory/
 
 ## <a name="deleting-customer-data"></a>Odstraňují se zákaznická data
 
-Správci digitálních vláken Azure můžou použít Azure Portal k odstraňování dat souvisejících s uživateli. Je také možné provádět operace odstranění u jednotlivých digitálních vláken pomocí rozhraní REST API služby Azure Digital revláken. Další informace o dostupných rozhraních API najdete v [dokumentaci k rozhraní REST API pro digitální vlákna Azure](https://docs.microsoft.com/rest/api/azure-digitaltwins/).
+Správci digitálních vláken Azure můžou použít Azure Portal k odstraňování dat souvisejících s uživateli. Je také možné provádět operace odstranění u jednotlivých digitálních vláken pomocí rozhraní REST API služby Azure Digital revláken. Další informace o dostupných rozhraních API najdete v [dokumentaci k rozhraní REST API pro digitální vlákna Azure](/rest/api/azure-digitaltwins/).
 
 ## <a name="exporting-customer-data"></a>Export zákaznických dat
 
@@ -45,4 +45,4 @@ Zákaznická data, včetně rolí uživatelů a přiřazení rolí, můžou být
 
 ## <a name="links-to-additional-documentation"></a>Odkazy na další dokumentaci
 
-Úplný seznam rozhraní API služeb digitálních vláken Azure najdete v [dokumentaci rozhraní REST API pro digitální vlákna Azure](https://docs.microsoft.com/rest/api/azure-digitaltwins/).
+Úplný seznam rozhraní API služeb digitálních vláken Azure najdete v [dokumentaci rozhraní REST API pro digitální vlákna Azure](/rest/api/azure-digitaltwins/).

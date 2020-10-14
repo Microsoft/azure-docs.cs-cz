@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 496ca7edfbfb81d8d8838d704b128701a5960e5b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c9e489d58b2c4bee0cd9551d15bfa59c3610d959
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974919"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047195"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Analýza a ověření modelů pomocí knihovny analyzátoru DTDL
 
@@ -20,11 +20,11 @@ ms.locfileid: "91974919"
 
 Abychom to mohli udělat, je k dispozici knihovna pro analýzu DTDL na straně klienta .NET na webu NuGet: [**Microsoft. Azure. DigitalTwins. Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). 
 
-Knihovnu analyzátoru můžete použít přímo v kódu C# nebo pomocí ukázkového projektu Language-nezávislá Code, který je založen na knihovně analyzátoru: [**DTDL validátor**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
+Knihovnu analyzátoru můžete použít přímo v kódu C# nebo pomocí ukázkového projektu Language-nezávislá Code, který je založen na knihovně analyzátoru: [**DTDL validátor**](/samples/azure-samples/dtdl-validator/dtdl-validator).
 
 ## <a name="use-the-dtdl-validator-sample"></a>Použití ukázky validátoru DTDL
 
-[**Validátor DTDL**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) je ukázkový projekt, který umožňuje ověřit modelové dokumenty, aby bylo zajištěno, že DTDL je platný. Je postavená na knihovně analyzátoru .NET a je to Language-nezávislá. Můžete ji získat pomocí tlačítka *Stáhnout ZIP* na ukázkovém odkazu.
+[**Validátor DTDL**](/samples/azure-samples/dtdl-validator/dtdl-validator) je ukázkový projekt, který umožňuje ověřit modelové dokumenty, aby bylo zajištěno, že DTDL je platný. Je postavená na knihovně analyzátoru .NET a je to Language-nezávislá. Můžete ji získat pomocí tlačítka *Stáhnout ZIP* na ukázkovém odkazu.
 
 Zdrojový kód ukazuje příklady použití knihovny analyzátoru. Můžete použít ukázku validátoru jako nástroj příkazového řádku k ověření stromu adresářových souborů DTDL. Poskytuje také interaktivní režim.
 

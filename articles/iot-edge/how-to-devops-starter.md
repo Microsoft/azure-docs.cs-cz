@@ -7,12 +7,12 @@ ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f0f0452854ef7456d1bdf7caf0674fab5bd14557
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d57c1828b9456851d37a65b88eb5f8ea860a80fe
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297126"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045852"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro IoT Edge s využitím Azure DevOps Starter
 
@@ -81,7 +81,7 @@ DevOps Starter vytvořil úložiště Git pro váš projekt v Azure Repos. V té
 
    ![Otevřít module.jsv souboru v Azure Repos](./media/how-to-devops-starter/open-module-json.png)
 
-3. Všimněte si, že tento soubor používá v parametru **Version** [proměnné buildu Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) . Tato konfigurace zajišťuje, že se nová verze modulu vytvoří při každém spuštění nového buildu.
+3. Všimněte si, že tento soubor používá v parametru **Version** [proměnné buildu Azure DevOps](/azure/devops/pipelines/build/variables?view=vsts#build-variables) . Tato konfigurace zajišťuje, že se nová verze modulu vytvoří při každém spuštění nového buildu.
 
 ## <a name="examine-the-cicd-pipeline"></a>Kontrola kanálu CI/CD
 

@@ -1,22 +1,22 @@
 ### YamlMime:Landing
 title: Dokumentace k Azure Dev Spaces
-summary: Azure Dev Spaces je rozšíření AKS, které umožňuje snadno spouštět a ladit kód v kontextu větší aplikace. Umožňuje kompletně otestovat váš kód, využívat zarážky v kódu spuštěném v clusteru a sdílet vývojový cluster mezi členy týmu bez případných rušivých vlivů.
+summary: Služba Azure Dev Spaces je zastaralá a vyřadí se z provozu k 31. říjnu 2023.
 metadata:
   title: Dokumentace k Azure Dev Spaces
-  description: Azure Dev Spaces je rozšíření AKS, které umožňuje snadno spouštět a ladit kód v kontextu větší aplikace. Umožňuje kompletně otestovat váš kód, využívat zarážky v kódu spuštěném v clusteru a sdílet vývojový cluster mezi členy týmu bez případných rušivých vlivů.
+  description: Služba Azure Dev Spaces je zastaralá a vyřadí se z provozu k 31. říjnu 2023.
   services: azure-dev-spaces
   ms.service: azure-dev-spaces
   ms.topic: landing-page
   author: zr-msft
   ms.author: zarhoads
   manager: gwallace
-  ms.date: 09/30/2019
-  ms.openlocfilehash: a3583cf57725acfdc812e44c921842acebbfd0a0
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 10/12/2020
+  ms.openlocfilehash: 47cc21196875e09576b7a8e0a5a8233df294de7d
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91773310"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91965858"
 landingContent:
 - title: Informace o Azure Dev Spaces
   linkLists:

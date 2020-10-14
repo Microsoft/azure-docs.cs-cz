@@ -57,6 +57,8 @@
               href: azure-stack-edge-gpu-kubernetes-rbac.md
             - name: Úlohy Kubernetes
               href: azure-stack-edge-gpu-kubernetes-workload-management.md
+        - name: Zobrazení integrace Key Vaultu
+          href: azure-stack-edge-gpu-activation-key-vault.md
     - name: Postup
       items:
         - name: Nasazení ukázek IoT Edge

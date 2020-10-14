@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9580f1c7a29b19bb926a7079b95cb3ed0b314d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fcfc7a9e632e5db1fb809dba7a938c8641c9ddc
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579771"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048096"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>Co je program zařízení s certifikací Azure?
 
@@ -102,7 +102,7 @@ Pro každé zařízení, které chcete certifikovat, použijte formuláře na po
 
 Tato fáze komunikuje s vaším zařízením a spustí sérii testů, které po zařízení používá DPS pro připojení k IoT Hub. Po dokončení můžete zobrazit sadu souborů protokolu s výsledky testu zařízení.
 
-Certifikační portál obsahuje pokyny, jak se připojit k instanci IoT Hub, která se používá pro testování. Připojení DPS můžete vytvořit prostřednictvím kterékoli z [podporovaných metod ověřování](https://aka.ms/acdAttestation).
+Certifikační portál obsahuje pokyny, jak se připojit k instanci IoT Hub, která se používá pro testování. Připojení DPS můžete vytvořit prostřednictvím kterékoli z [podporovaných metod ověřování](../iot-dps/concepts-service.md#attestation-mechanism).
 
 Tým zařízení s certifikací Azure se může spojit s tvůrcem zařízení a získat další ruční ověření zařízení.
 

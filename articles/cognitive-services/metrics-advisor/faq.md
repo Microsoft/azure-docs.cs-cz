@@ -3,19 +3,19 @@ title: Nejčastější dotazy k metrickým nástrojům
 titleSuffix: Azure Cognitive Services
 description: Nejčastější dotazy týkající se služby Advisor metrik.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.author: aahi
-ms.openlocfilehash: e4a75bdd6147ee2189660c37062c5bec9d55d512
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: 42b23876761afa213b07f07b3a61e125dcf0824b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631731"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046804"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Nejčastější dotazy k metrickým nástrojům
 
