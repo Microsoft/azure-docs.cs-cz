@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 09/23/2020
-ms.openlocfilehash: d16285d6ba21c04e35f4bd5e334ac62ea83b8c87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: 90b0791387e8b4966f8f2c56d3838f54457beef5
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252870"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044032"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videokurzy mapování toku dat
 
@@ -84,6 +84,8 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 [Transformace sloučení](https://youtu.be/VY2tFQJoAXE)
 
 [Transformovat hierarchická data](https://youtu.be/oAEh21NFgWQ)
+
+[Transformace řazení](https://youtu.be/6XvgkbMtws0)
 
 ## <a name="source-and-sink"></a>Zdroj a jímka
 

@@ -3,19 +3,19 @@ title: Graf metriky pro metriky metriky
 titleSuffix: Azure Cognitive Services
 description: Postup konfigurace grafu metrik a vizualizace souvisejících anomálií ve vašich datech.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.author: aahi
-ms.openlocfilehash: 09ea16f07973757b169f21c7c3f909a24651daa4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: bcedef4a1339dacaff3fe841e97f985c42320819
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936727"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043149"
 ---
 # <a name="how-to-build-a-metrics-graph-to-analyze-related-metrics"></a>Postupy: sestavení grafu metrik pro analýzu souvisejících metrik
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 082e05bddd4fe12b279368e44b2d986bd4fa91a7
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 7ff1e2f00b20344fc19d797ed5bafdfbc2113b66
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945324"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044662"
 ---
 # <a name="what-is-azure-digital-twins"></a>Co je služba Azure Digital Twins?
 
@@ -38,13 +38,13 @@ Modely jsou definovány v jazyce podobném formátu JSON, který se nazývá [Di
 * Modely definují sémantické **vztahy** mezi vašimi entitami, abyste mohli připojit své vlákna ke znalostnímu grafu, který odráží jejich interakce. Modely si můžete představit jako podstatná jména v popisu svého světa a vztahy jako slovesa.
 * Můžete také specializovat vlákna pomocí dědičnosti modelu. Jeden model může dědit z jiného modelu.
 
-DTDL se používá pro datové modely v jiných službách Azure IoT, včetně služby [PnP (IoT technologie Plug and Play)](../iot-pnp/overview-iot-plug-and-play.md) a [Time Series Insights (TSI)](../time-series-insights/time-series-insights-update-overview.md). Díky tomu můžete zajistit, aby řešení digitálních vláken Azure bylo propojené a kompatibilní s jinými částmi ekosystému Azure.
+DTDL se používá pro datové modely v jiných službách Azure IoT, včetně služby [PnP (IoT technologie Plug and Play)](../iot-pnp/overview-iot-plug-and-play.md) a [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md). Díky tomu můžete zajistit, aby řešení digitálních vláken Azure bylo propojené a kompatibilní s jinými částmi ekosystému Azure.
 
 ### <a name="live-execution-environment"></a>Prostředí pro spuštění v reálném čase
 
 Digitální modely v rámci digitálních vláken Azure jsou živé a aktuální reprezentace reálného světa. Pomocí vztahů ve vlastních DTDL modelech spojíte vlákna do **živého grafu** představujícího vaše prostředí.
 
-Vizualizaci grafu digitálních vláken Azure můžete zobrazit pomocí ukázkové aplikace v [**Průzkumníkovi digitálních vláken Azure**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/).
+Vizualizaci grafu digitálních vláken Azure můžete zobrazit pomocí ukázkové aplikace v [**Průzkumníkovi digitálních vláken Azure**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/).
 
 Tady je přehled toho, jak vypadá ukázková vizualizace:
 

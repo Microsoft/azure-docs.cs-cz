@@ -7,16 +7,16 @@ ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d61ca10612a0935f8483745d164835d7498280c0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91610071"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042809"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>Implementace IoT technologie Plug and Play na omezených zařízeních
 
-Pokud vyvíjíte pro *omezená zařízení*, můžete použít IoT technologie Plug and Play se sadou [Azure SDK pro integrované klientské knihovny C IoT](https://aka.ms/embeddedcsdk) nebo s [Azure RTO](https://docs.microsoft.com/azure/rtos/overview-rtos). Tento článek obsahuje odkazy a prostředky pro tyto omezené scénáře.
+Pokud vyvíjíte pro *omezená zařízení*, můžete použít IoT technologie Plug and Play se sadou [Azure SDK pro integrované klientské knihovny C IoT](https://aka.ms/embeddedcsdk) nebo s [Azure RTO](/azure/rtos/overview-rtos). Tento článek obsahuje odkazy a prostředky pro tyto omezené scénáře.
 
 ## <a name="use-the-sdk-for-embedded-c"></a>Použití sady SDK pro Embedded C
 
@@ -39,7 +39,7 @@ Sada SDK pro vložené úložiště C obsahuje [několik ukázek](https://github
 
 ## <a name="using-azure-rtos"></a>Používání Azure RTO
 
-Azure RTO zahrnuje odlehčenou vrstvu, která přidává nativní připojení ke cloudovým službám Azure IoT. Tato vrstva poskytuje jednoduchý mechanismus pro připojení omezených zařízení ke službě Azure IoT při použití pokročilých funkcí služby Azure RTO. Další informace najdete v tématu [co je Microsoft Azure RTO](https://docs.microsoft.com/azure/rtos/overview-rtos).
+Azure RTO zahrnuje odlehčenou vrstvu, která přidává nativní připojení ke cloudovým službám Azure IoT. Tato vrstva poskytuje jednoduchý mechanismus pro připojení omezených zařízení ke službě Azure IoT při použití pokročilých funkcí služby Azure RTO. Další informace najdete v tématu [co je Microsoft Azure RTO](/azure/rtos/overview-rtos).
 
 ### <a name="toolchains"></a>Sady nástrojů
 

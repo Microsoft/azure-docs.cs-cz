@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: fd345f0eed5bd7140047b12a3c1a7471872c8bb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 371afbd9380ed1ecf28d0b26e2b4c5cd16ae6317
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270436"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044067"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání v Azure Data Factory
 
@@ -31,7 +31,7 @@ Aktivita vyhledávání načte a vrátí obsah konfiguračního souboru nebo tab
 
 Pro aktivitu vyhledávání jsou podporovány následující zdroje dat. 
 
-Aktivita vyhledávání může vracet až 5000 řádků. Pokud sada výsledků obsahuje víc záznamů, vrátí se prvních 5000 řádků. Výstup aktivity vyhledávání podporuje až přibližně 4 MB velikosti. Pokud velikost překročí limit, aktivita se nezdaří. V současné době je nejdelší doba trvání aktivity vyhledávání před časovým limitem jedna hodina.
+Aktivita vyhledávání může vracet až 5000 řádků. Pokud sada výsledků obsahuje víc záznamů, vrátí se prvních 5000 řádků. Výstup aktivity vyhledávání podporuje až přibližně 4 MB velikosti. Pokud velikost překročí limit, aktivita se nezdaří. V současné době je nejdelší doba trvání aktivity vyhledávání v poli časový limit 24 hodin.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 

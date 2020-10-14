@@ -1,18 +1,18 @@
 ---
 title: Integrace služby Azure Key Vault se službou Azure Policy
 description: Informace o tom, jak integrovat Azure Key Vault s Azure Policy
-author: msmbaldwin
-ms.author: mbaldwin
-ms.date: 01/28/2020
+author: ShaneBala-keyvault
+ms.author: sudbalas
+ms.date: 10/15/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 7ef41516d516ce6498fc8c502a229084acdebfa1
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 6c1ccbfc221970980d5d0b15e82f9f8483c48bce
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875512"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043761"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Integrace služby Azure Key Vault se službou Azure Policy
 
@@ -20,69 +20,152 @@ ms.locfileid: "91875512"
 
 Příklady scénářů použití:
 
-- Chcete zlepšit stav zabezpečení vaší společnosti tím, že implementujete požadavky na minimální velikosti klíčů a maximální doby platnosti certifikátů v trezorech klíčů vaší společnosti, ale nevíte, které týmy budou kompatibilní a které ne. 
+- Chcete zlepšit stav zabezpečení vaší společnosti tím, že implementujete požadavky na minimální velikosti klíčů a maximální doby platnosti certifikátů v trezorech klíčů vaší společnosti, ale nevíte, které týmy budou kompatibilní a které ne.
 - V současné době nemáte řešení pro provádění auditu v rámci vaší organizace nebo provádíte ruční audity vašeho prostředí tím, že požádáte o své dodržování předpisů jednotlivé týmy v rámci vaší organizace. Hledáte způsob, jak automatizovat tuto úlohu, provádět audity v reálném čase a zaručit přesnost auditu.
 - Chcete vyhovět zásadám zabezpečení vaší společnosti a zabránit jednotlivcům v vytváření certifikátů podepsaných svým držitelem, ale nemáte automatizovaný způsob, jak takové vytvoření zablokovat. 
-- Chcete zmírnit některé požadavky na testovací týmy, ale chcete zachovat důkladné kontroly nad produkčním prostředím. Potřebujete jednoduchý automatizovaný způsob, jak oddělit vynucení svých prostředků. 
+- Chcete zmírnit některé požadavky na testovací týmy, ale chcete zachovat důkladné kontroly nad produkčním prostředím. Potřebujete jednoduchý automatizovaný způsob, jak oddělit vynucení svých prostředků.
 - Chcete mít jistotu, že v případě problémů s živým pracovištěm budete moct obnovit vynucení nových zásad. Pro vypnutí vynucování zásady potřebujete řešení jedním kliknutím. 
-- Spoléháte se na řešení třetích stran pro auditování vašeho prostředí a chcete použít interní nabídku Microsoftu. 
+- Spoléháte se na řešení třetích stran pro auditování vašeho prostředí a chcete použít interní nabídku Microsoftu.
 
 ## <a name="types-of-policy-effects-and-guidance"></a>Typy efektů a pokynů pro zásady
 
-**Audit**: když je účinek zásady nastavený na audit, zásada nezpůsobí žádné změny v prostředí. Upozorní vás jenom na součásti, jako jsou certifikáty, které nejsou v souladu s definicemi zásad v rámci zadaného oboru, tak, že tyto komponenty označíte jako nedodržující předpisy na řídicím panelu pro dodržování zásad. Pokud není vybraný žádný efekt zásad, audit je výchozí. 
+**Audit**: když je účinek zásady nastavený na audit, zásada nezpůsobí žádné změny v prostředí. Upozorní vás jenom na součásti, jako jsou certifikáty, které nejsou v souladu s definicemi zásad v rámci zadaného oboru, tak, že tyto komponenty označíte jako nedodržující předpisy na řídicím panelu pro dodržování zásad. Pokud není vybraný žádný efekt zásad, audit je výchozí.
 
 **Odepřít**: Pokud je účinek zásady nastavený na odepřít, zásada bude blokovat vytváření nových komponent, jako jsou certifikáty, a zablokovat nové verze existujících součástí, které neodpovídají definici zásad. Stávající nekompatibilní prostředky v rámci trezoru klíčů nejsou ovlivněny. Možnosti auditu budou i nadále fungovat.
 
 ## <a name="available-built-in-policy-definitions"></a>Dostupné definice zásad "předdefinované"
 
-Key Vault vytvořil sadu zásad, které můžete přiřadit k běžným scénářům pro správu certifikátů. Tyto zásady jsou předdefinované, což znamená, že nevyžadují, abyste napsali vlastní JSON, abyste je povolili a byli k dispozici v Azure Portal, abyste je mohli přiřadit. Můžete si pořád přizpůsobit určité parametry podle potřeb vaší organizace. 
+Key Vault vytvořil sadu zásad, které se dají použít ke správě klíčů, certifikátu a objektů tajných kódů. Tyto zásady jsou předdefinované, což znamená, že nevyžadují, abyste napsali vlastní JSON, abyste je povolili a byli k dispozici v Azure Portal, abyste je mohli přiřadit. Můžete si pořád přizpůsobit určité parametry podle potřeb vaší organizace.
 
-V této části jsou uvedené osm zásad Preview.
+# <a name="certificate-policies"></a>[Zásady certifikátu](#tab/certificates)
 
-### <a name="manage-certificate-validity-period-preview"></a>Správa období platnosti certifikátu (Preview)
+### <a name="certificates-should-have-the-specified-maximum-validity-period-preview"></a>Certifikáty by měly mít zadanou maximální dobu platnosti (Preview).
 
-Tato zásada vám umožní spravovat maximální dobu platnosti certifikátů uložených v trezoru klíčů. Pro omezení maximální doby platnosti vašich certifikátů je dobrým zvykem zabezpečení. Pokud by byl privátní klíč certifikátu napadený bez detekce, použití krátkodobých certifikátů minimalizuje časový rámec pro průběžnou škodu a snižuje hodnotu certifikátu na útočníka. 
+Tato zásada vám umožní spravovat maximální dobu platnosti certifikátů uložených v trezoru klíčů. Pro omezení maximální doby platnosti vašich certifikátů je dobrým zvykem zabezpečení. Pokud by byl privátní klíč certifikátu napadený bez detekce, použití krátkodobých certifikátů minimalizuje časový rámec pro průběžnou škodu a snižuje hodnotu certifikátu na útočníka.
 
-### <a name="manage-allowed-certificate-key-types-preview"></a>Správa povolených typů klíčů certifikátů (Preview)
+### <a name="certificates-should-use-allowed-key-types-preview"></a>Certifikáty by měly používat povolené typy klíčů (Preview)
+
 Tato zásada vám umožní omezit typ certifikátů, které můžou být ve vašem trezoru klíčů. Pomocí této zásady můžete zajistit, že soukromé klíče certifikátu jsou RSA, ECC nebo modul HSM. Můžete si vybrat z následujícího seznamu typů certifikátů, které jsou povolené.
+
 - RSA
 - RSA – HSM
-- ECC 
-- ECC – HSM 
+- ECC
+- ECC – HSM
 
-### <a name="manage-certificate-lifetime-action-triggers-preview"></a>Správa aktivačních událostí akce životnosti certifikátů (Preview)
+### <a name="certificates-should-have-the-specified-lifetime-action-triggers-preview"></a>Certifikáty by měly mít zadané aktivační události doby života (Preview).
 
-Tato zásada vám umožní spravovat akci životního cyklu určenou pro certifikáty, které jsou buď v rámci určitého počtu dní, nebo jste dosáhli určitého procenta použitelnosti svého životního cyklu. 
+Tato zásada vám umožní spravovat akci životního cyklu určenou pro certifikáty, které jsou buď v rámci určitého počtu dní, nebo jste dosáhli určitého procenta použitelnosti svého životního cyklu.
 
-### <a name="manage-certificates-issued-by-an-integrated-ca-preview"></a>Správa certifikátů vydaných integrovanou certifikační autoritou (Preview)
+### <a name="certificates-should-be-issued-by-the-specified-integrated-certificate-authority-preview"></a>Certifikáty by měly být vydány zadanou integrovanou certifikační autoritou (Preview).
 
-Pokud používáte Key Vault integrovanou certifikační autoritu (DigiCert nebo GlobalSign) a chcete, aby uživatelé používali jednoho nebo některé z těchto zprostředkovatelů, můžete pomocí této zásady Auditovat nebo vymáhat výběr. Tato zásada se dá taky použít k auditování nebo odepření vytváření certifikátů podepsaných svým držitelem v trezoru klíčů. 
+Pokud používáte Key Vault integrovanou certifikační autoritu (DigiCert nebo GlobalSign) a chcete, aby uživatelé používali jednoho nebo některé z těchto zprostředkovatelů, můžete pomocí této zásady Auditovat nebo vymáhat výběr. Tato zásada se dá taky použít k auditování nebo odepření vytváření certifikátů podepsaných svým držitelem v trezoru klíčů.
 
-### <a name="manage-certificates-issued-by-an-integrated-ca-preview"></a>Správa certifikátů vydaných integrovanou certifikační autoritou (Preview)
+### <a name="certificates-should-be-issued-by-the-specified-non-integrated-certificate-authority-preview"></a>Certifikáty by měly být vydány zadanou neintegrovanou certifikační autoritou (Preview).
 
-Pokud používáte interní certifikační autoritu nebo certifikační autoritu, která není integrovaná s trezorem klíčů a chcete, aby uživatelé používali certifikační autoritu ze seznamu, který zadáte, můžete tuto zásadu použít k vytvoření seznamu povolených certifikačních autorit podle názvu vystavitele. Tato zásada se dá taky použít k auditování nebo odepření vytváření certifikátů podepsaných svým držitelem v trezoru klíčů. 
+Pokud používáte interní certifikační autoritu nebo certifikační autoritu, která není integrovaná s trezorem klíčů a chcete, aby uživatelé používali certifikační autoritu ze seznamu, který zadáte, můžete tuto zásadu použít k vytvoření seznamu povolených certifikačních autorit podle názvu vystavitele. Tato zásada se dá taky použít k auditování nebo odepření vytváření certifikátů podepsaných svým držitelem v trezoru klíčů.
 
-### <a name="manage-allowed-curve-names-for-elliptic-curve-cryptography-certificates-preview"></a>Spravovat povolené názvy křivek pro certifikáty kryptografie s eliptickou křivkou (Preview)
-Pokud používáte kryptografii s eliptickou křivkou nebo certifikáty ECC, můžete upravit povolený seznam názvů křivek ze seznamu níže. Výchozí možnost povoluje všechny následující názvy křivek. 
+### <a name="certificates-using-elliptic-curve-cryptography-should-have-allowed-curve-names-preview"></a>Certifikáty používající kryptografii eliptické křivky by měly mít povolené názvy křivek (Preview).
+
+Pokud používáte kryptografii s eliptickou křivkou nebo certifikáty ECC, můžete upravit povolený seznam názvů křivek ze seznamu níže. Výchozí možnost povoluje všechny následující názvy křivek.
+
 - P-256
 - P-256
 - P-384
 - P-521
 
-### <a name="manage-minimum-key-size-for-rsa-certificates-preview"></a>Správa minimální velikosti klíče pro certifikáty RSA (Preview)
-Pokud používáte certifikáty RSA, můžete zvolit minimální velikost klíče, kterou musí vaše certifikáty obsahovat. Můžete vybrat jednu z následujících možností v seznamu níže. 
+## <a name="certificates-using-rsa-cryptography-manage-minimum-key-size-for-rsa-certificates-preview"></a>Certifikáty používající kryptografii RSA spravovat minimální velikost klíče pro certifikáty RSA (Preview)
+
+Pokud používáte certifikáty RSA, můžete zvolit minimální velikost klíče, kterou musí vaše certifikáty obsahovat. Můžete vybrat jednu z následujících možností v seznamu níže.
+
 - bit 2048
 - bit 3072
 - bit 4096
 
-### <a name="manage-certificates-that-are-within-a-specified-number-of-days-of-expiration-preview"></a>Spravovat certifikáty, které jsou v zadaném počtu dní vypršení platnosti (Preview)
-Vaše služba se může setkat s výpadkem, pokud se nedostatečně monitorovaný certifikát neotáčí před vypršením jeho platnosti. Tyto zásady jsou důležité pro zajištění, že se budou monitorovat vaše certifikáty uložené v trezoru klíčů. Doporučuje se použít tuto zásadu několikrát s různými mezními hodnotami vypršení platnosti, například při 180, 90, 60 a na 30 dnech prahových hodnot. Tato zásada se dá použít k monitorování a třídění vypršení platnosti certifikátu ve vaší organizaci. 
+## <a name="manage-certificates-that-are-within-a-specified-number-of-days-of-expiration-preview"></a>Spravovat certifikáty, které jsou v zadaném počtu dní vypršení platnosti (Preview)
+
+Vaše služba se může setkat s výpadkem, pokud se nedostatečně monitorovaný certifikát neotáčí před vypršením jeho platnosti. Tyto zásady jsou důležité pro zajištění, že se budou monitorovat vaše certifikáty uložené v trezoru klíčů. Doporučuje se použít tuto zásadu několikrát s různými mezními hodnotami vypršení platnosti, například při 180, 90, 60 a na 30 dnech prahových hodnot. Tato zásada se dá použít k monitorování a třídění vypršení platnosti certifikátu ve vaší organizaci.
+
+# <a name="key-policies"></a>[Zásady klíčů](#tab/keys)
+
+### <a name="keys-should-not-be-active-for-longer-than-the-specified-number-of-days-preview"></a>Klíče by neměly být aktivní po dobu delší, než je zadaný počet dní (Preview).
+
+Pokud se chcete ujistit, že vaše klíče nebyly aktivní po dobu delší, než je zadaný počet dní, můžete pomocí této zásady Auditovat, jak dlouho byl klíč aktivní.
+
+**Pokud má klíč nastavené datum aktivace**, tato zásada vypočítá počet dní, které uplynuly od **data aktivace** klíče k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, klíč bude označen jako nekompatibilní se zásadou.
+
+**Pokud klíč nemá nastavené datum aktivace**, tato zásada vypočítá počet dní, které uplynuly od **data vytvoření** klíče k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, klíč bude označen jako nekompatibilní se zásadou.
+
+### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec-preview"></a>Klíče by měly být zadaného kryptografického typu RSA nebo ES (Preview).
+
+Tato zásada vám umožní omezit typ klíčů, které můžou být ve vašem trezoru klíčů. Pomocí této zásady můžete zajistit, aby byly klíče RSA, ECC nebo v modulu HARDWAROVÉho zabezpečení. Můžete si vybrat z následujícího seznamu typů certifikátů, které jsou povolené.
+
+- RSA
+- RSA – HSM
+- ECC
+- ECC – HSM
+
+### <a name="keys-using-elliptic-curve-cryptography-should-have-the-specified-curve-names-preview"></a>Klíče používající kryptografii eliptické křivky by měly mít zadané názvy křivek (Preview).
+
+Pokud používáte kryptografii s eliptickou křivkou nebo klíče ECC, můžete upravit povolený seznam názvů křivek ze seznamu níže. Výchozí možnost povoluje všechny následující názvy křivek.
+
+- P-256
+- P-256
+- P-384
+- P-521
+
+### <a name="keys-should-have-expirations-dates-set-preview"></a>Klíče by měly mít nastavená data vypršení platnosti (Preview)
+
+Tato zásada Audituje všechny klíče v trezorech klíčů a klíčích příznaků, u kterých není datum vypršení platnosti nastaveno jako nevyhovující. Tyto zásady můžete použít také k blokování vytváření klíčů, které nemají nastavené datum vypršení platnosti.
+
+### <a name="keys-should-have-more-than-the-specified-number-of-days-before-expiration-preview"></a>Klíče by měly mít více než zadaný počet dnů před vypršením platnosti (Preview).
+
+Pokud je klíč příliš blízko k vypršení platnosti, může dojít k výpadku organizace při jeho střídání. Klíče by se měly otočit za zadaný počet dnů před vypršením platnosti a poskytnout tak dostatek času na reakci na selhání. Tato zásada bude auditovat klíče, které se blíží datu vypršení platnosti, a umožní vám nastavit tuto prahovou hodnotu ve dnech. Tyto zásady můžete použít také k tomu, abyste zabránili vytváření nových klíčů, které jsou příliš blízko data vypršení jejich platnosti.
+
+### <a name="keys-should-be-backed-by-a-hardware-security-module-preview"></a>Klíče by měly být zálohovány modulem hardwarového zabezpečení (Preview)
+
+HSM je modul hardwarového zabezpečení, který ukládá klíče. Modul hardwarového zabezpečení (HSM) poskytuje fyzickou vrstvu ochrany pro kryptografické klíče. Kryptografický klíč nemůže opustit fyzický modul HSM, který poskytuje vyšší úroveň zabezpečení než softwarový klíč. Některé organizace mají požadavky na dodržování předpisů, které jsou pověřeny používáním klíčů HSM. Pomocí této zásady můžete auditovat všechny klíče uložené ve vašem trezoru klíčů, který není modul HSM zálohovaný. Tyto zásady můžete použít také k blokování vytváření nových klíčů, které nejsou zálohovány modulem HSM. Tato zásada bude platit pro všechny typy klíčů, RSA a ECC.
+
+### <a name="keys-using-rsa-cryptography-should-have-a-specified-minimum-key-size-preview"></a>Klíče používající kryptografii RSA by měly mít zadanou minimální velikost klíče (Preview).
+
+Použití klíčů RSA s menšími velikostmi klíčů není bezpečný postup pro návrh. Je možné, že budete dodržovat standardy pro audit a certifikace, které využívají minimální velikost klíče. Následující zásady vám umožní nastavit minimální požadavek na velikost klíče v trezoru klíčů. Můžete auditovat klíče, které nesplňují tento minimální požadavek. Tato zásada se dá použít taky k blokování vytváření nových klíčů, které nesplňují požadavek na minimální velikost klíče.
+
+### <a name="keys-should-have-the-specified-maximum-validity-period-preview"></a>Klíč by měl mít zadanou maximální dobu platnosti (Preview).
+
+Požadavky na dodržování předpisů vaší organizace můžete spravovat tak, že zadáte maximální dobu ve dnech, po kterou může klíč platit v trezoru klíčů. Klíče, které jsou platné déle, než je nastavená prahová hodnota, budou označeny jako nevyhovující. Tyto zásady můžete použít také k blokování vytváření nových klíčů, u kterých je nastaveno datum vypršení platnosti delší, než je maximální období platnosti, které zadáte.
+
+# <a name="secret-policies"></a>[Zásady tajného kódu](#tab/secrets)
+
+### <a name="secrets-should-not-be-active-for-longer-than-the-specified-number-of-days-preview"></a>Tajné kódy by neměly být aktivní po dobu delší, než je zadaný počet dní (Preview).
+
+Pokud chcete zajistit, aby vaše tajná data nebyla aktivní déle než zadaný počet dní, můžete pomocí této zásady Auditovat, jak dlouho byl váš tajný klíč aktivní.
+
+**Pokud má váš tajný kód nastavené datum aktivace**, tato zásada vypočítá počet dní, které uplynuly od **data aktivace** tajného kódu k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, bude tajný kód označen jako nekompatibilní se zásadou.
+
+**Pokud váš tajný klíč nemá nastavené datum aktivace**, tato zásada vypočítá počet dní, které uplynuly od **data vytvoření** tajného kódu k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, bude tajný kód označen jako nekompatibilní se zásadou.
+
+### <a name="secrets-should-have-content-type-set-preview"></a>Tajné klíče by měly mít nastaven typ obsahu (Preview)
+
+Libovolný prostý text nebo kódovaný soubor může být uložen jako tajný kód trezoru klíčů. Vaše organizace ale může chtít nastavit různé zásady a omezení rotace v heslech, připojovacích řetězcích nebo certifikátech uložených jako klíče. Značka typu obsahu může uživateli získat informace o tom, co je uloženo v tajných objektech, aniž by bylo nutné číst hodnotu tajného klíče. Pomocí této zásady můžete auditovat tajné kódy, které nemají nastavenou značku typu obsahu. Pomocí této zásady můžete také zabránit vytváření nových tajných klíčů, pokud nemají sadu značek typu obsahu.
+
+### <a name="secrets-should-have-expiration-date-set-preview"></a>V tajných klíčích by mělo být nastaveno datum vypršení platnosti (Preview)
+
+Tato zásada Audituje všechny tajné klíče v trezoru klíčů a označí tajné klíče, u kterých není datum vypršení platnosti nastaveno na nevyhovující. Tyto zásady můžete použít také k blokování vytváření tajných kódů, které nemají nastavené datum vypršení platnosti.
+
+### <a name="secrets-should-have-more-than-the-specified-number-of-days-before-expiration-preview"></a>Tajné kódy by měly mít více než zadaný počet dnů před vypršením platnosti (Preview).
+
+Pokud je tajný kód příliš blízko k vypršení platnosti, může dojít k výpadku organizačního zpoždění při jeho střídání. Tajné kódy by se měly v zadaném počtu dnů před vypršením lhůty otočit, aby se zajistila dostatečná doba reakce na selhání. Tato zásada provede audit tajných tajných kódů, které jsou příliš blízko data vypršení platnosti, a umožňuje nastavit tuto prahovou hodnotu ve dnech. Tyto zásady můžete použít také k tomu, abyste zabránili vytváření nových tajných klíčů, které jsou příliš blízko data vypršení jejich platnosti.
+
+### <a name="secrets-should-have-the-specified-maximum-validity-period-preview"></a>Tajné kódy by měly mít zadanou maximální dobu platnosti (Preview).
+
+Požadavky na dodržování předpisů vaší organizace můžete spravovat tak, že zadáte maximální dobu ve dnech, po kterou je tajný kód platný v trezoru klíčů. Tajné kódy, které jsou platné déle než nastavená prahová hodnota, budou označeny jako nedodržující předpisy. Tyto zásady můžete použít také k blokování vytváření nových tajných klíčů, u kterých je nastaveno datum vypršení platnosti delší, než je maximální období platnosti, které zadáte.
+
+---
 
 ## <a name="example-scenario"></a>Ukázkový scénář
 
 Můžete spravovat Trezor klíčů používaný více týmy, které obsahují certifikáty 100, a chcete se ujistit, že žádný z certifikátů v trezoru klíčů není platný po dobu delší než 2 roky.
 
-1. Přiřadíte zásadu [období platnosti certifikátu spravovat](#manage-certificate-validity-period-preview) , určíte, že maximální doba platnosti certifikátu je 24 měsíců, a nastavte účinek zásady na audit. 
+1. Přiřadíte **certifikát by měl mít zadanou maximální dobu platnosti** , určíte, že maximální doba platnosti certifikátu je 24 měsíců, a nastavte účinek zásady na audit. 
 1. Zobrazíte [sestavu dodržování předpisů na Azure Portal](#view-compliance-results)a zjistíte, že 20 certifikátů nedodržuje předpisy a jsou platné po dobu > 2 roky a zbývající certifikáty jsou v souladu s předpisy. 
 1. Kontaktujte vlastníky těchto certifikátů a sdělte mu nový požadavek na zabezpečení, že certifikáty nemůžou být platné déle než 2 roky. Některé týmy odpověděly a 15 certifikátů byly obnoveny s maximální dobou platnosti 2 roky nebo méně. Jiné týmy nereagují a ve vašem trezoru klíčů stále máte 5 certifikátů, které nedodržují předpisy.
 1. Změníte účinek zásad, které jste přiřadili k "Odepřít". Pět certifikátů, které nedodržují předpisy, se neodvolává a budou dál fungovat. Nedají se ale prodloužit o dobu platnosti, která je delší než 2 roky. 

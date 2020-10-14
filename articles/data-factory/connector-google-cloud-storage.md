@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 24f9b7655398cbd6a2621edb61d67d4fc4edfb52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a916da121c8ffee1729ede6dd700ca4f6872fbf7
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332028"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043489"
 ---
 # <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>Kopírování dat z Google Cloud Storage pomocí Azure Data Factory
 
@@ -34,7 +34,7 @@ Tento konektor Google Cloud Storage se podporuje pro následující činnosti:
 
 Konkrétně tento konektor Google Cloud Storage podporuje kopírování souborů, jako je, nebo k analýze souborů s [podporovanými formáty souborů a kompresními kodeky](supported-file-formats-and-compression-codecs.md). Využívá interoperabilitu kompatibilní s GC S3.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 V účtu úložiště Google Cloud se vyžaduje následující nastavení:
 
@@ -47,7 +47,11 @@ V účtu úložiště Google Cloud se vyžaduje následující nastavení:
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 
-Pokud chcete kopírovat data ze služby Google Cloud Storage, ujistěte se, že máte udělená potřebná oprávnění. Oprávnění definovaná v účtu služby můžou obsahovat `storage.buckets.get` `storage.buckets.list` operace s objekty, nebo `storage.objects.get` .
+Pokud chcete kopírovat data z Google Cloud Storage, ujistěte se, že vám byla udělena následující oprávnění pro operace s objekty: ` storage.objects.get` a ` storage.objects.list` .
+
+Použijete-li k vytváření Data Factory uživatelské rozhraní, ` storage.buckets.list` vyžaduje se pro operace, jako je testování připojení k propojené službě, další oprávnění a procházení z kořenového adresáře. Pokud toto oprávnění nechcete udělit, můžete zvolit možnosti "testovat připojení k cestě k souboru" nebo "Procházet ze zadané cesty" z uživatelského rozhraní.
+
+Úplný seznam rolí úložiště Google Cloud a přidružených oprávnění najdete v tématu [role IAM pro cloudové úložiště](https://cloud.google.com/storage/docs/access-control/iam-roles) na webu Google Cloud.
 
 ## <a name="getting-started"></a>Začínáme
 

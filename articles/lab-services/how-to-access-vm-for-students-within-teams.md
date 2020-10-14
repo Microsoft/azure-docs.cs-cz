@@ -3,12 +3,12 @@ title: Přístup k virtuálnímu počítači (zobrazení student) v Azure Lab z 
 description: Naučte se, jak získat přístup k virtuálnímu počítači (zobrazení studenta) v Azure Lab z týmů.
 ms.topic: article
 ms.date: 10/07/2020
-ms.openlocfilehash: f121486c361b3b4cbf0b79da5dab7ddc5822a075
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 346f4bcd75356b0466b1eea46e1da74aa2c63784
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946695"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043441"
 ---
 # <a name="access-a-vm-student-view-in-azure-lab-from-teams"></a>Přístup k virtuálnímu počítači (zobrazení student) v Azure Lab z týmů
 
@@ -16,7 +16,7 @@ Když se v rámci týmů vytvoří testovací prostředí, můžou uživatelé z
 
 ## <a name="view-labs"></a>Zobrazit cvičení
 
-Pokud je testovací prostředí publikované, studenti uvidí následující a budou se moct připojit k testovacímu prostředí:
+Pokud testovací prostředí ještě není publikované nebo když se po jeho přidání do týmu má spustit synchronizace, podobná zpráva se studentům zobrazí pro studenty. Pokud chcete, aby testovací prostředí bylo ještě Publikováno nebo aby se synchronizace aktivovala po jejich přidání do týmu, podobné zprávy se zobrazí členům týmu.
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/how-to-access-vm-for-students-within-teams/lab.png" alt-text="Azure Lab Services testovací prostředí":::
@@ -31,7 +31,7 @@ Pokud testovací prostředí ještě není publikované nebo když ho budete moc
 Viz následující články:
 
 - [Přehled použití Azure Lab Services v rámci týmů](lab-services-within-teams-overview.md)
-- [Začněte a vytvořte testovací prostředí v rámci týmu.](how-to-get-started-create-lab-within-teams.md)
-- [Správa seznamů uživatelů](how-to-manage-user-lists-within-teams.md)
-- [Správa fondu virtuálních počítačů](how-to-manage-vm-pool-within-teams.md)
-- [Vytvoření plánů](how-to-create-schedules-within-teams.md)
+- [Začněte a vytvořte testovací prostředí v rámci týmů.](how-to-get-started-create-lab-within-teams.md)
+- [Správa seznamů uživatelů testovacího prostředí v rámci týmů](how-to-manage-user-lists-within-teams.md)
+- [Správa fondu virtuálních počítačů v testovacím prostředí v rámci týmů](how-to-manage-vm-pool-within-teams.md)
+- [Vytváření a Správa plánů testovacího prostředí v rámci týmů](how-to-create-schedules-within-teams.md)

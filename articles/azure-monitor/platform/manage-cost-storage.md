@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: c78cfd2a453a082ce3f352504719a7fb8cc2b8ec
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: f8f5d41b7f4df3cd82a388bc24ccc8fa5a9a91f6
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875950"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044101"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
@@ -102,7 +102,7 @@ Předplatná, která měl Log Analytics pracovní prostor nebo prostředek Appli
 
 Využití na samostatné cenové úrovni se účtuje podle povrstveného objemu dat. Je hlášen ve službě **Log Analytics** a měřič se nazývá "Analýza dat". 
 
-Cenové úrovně na jednotlivé uzly se účtují za monitorované virtuální počítače (uzel) na základě členitosti hodin. U každého monitorovaného uzlu má pracovní prostor přiděleno 500 MB dat za den, který se neúčtuje. Toto přidělení je agregované na úrovni pracovního prostoru. Data ingestovaná nad agregovaným denním přidělením dat se účtují za GB jako nadlimitní využití dat. Všimněte si, že na faktuře bude služba **Insight and Analytics** Log Analytics využití, pokud je pracovní prostor v cenové úrovni podle počtu uzlů. Použití je hlášeno na třech měřičích:
+Cenové úrovně na jednotlivé uzly se účtují za monitorované virtuální počítače (uzel) na základě členitosti hodin. U každého monitorovaného uzlu má pracovní prostor přiděleno 500 MB dat za den, který se neúčtuje. Tato alokace se počítá s hodinovou členitou a je agregovaná na úrovni pracovního prostoru každý den. Data ingestovaná nad agregovaným denním přidělením dat se účtují za GB jako nadlimitní využití dat. Všimněte si, že na faktuře bude služba **Insight and Analytics** Log Analytics využití, pokud je pracovní prostor v cenové úrovni podle počtu uzlů. Použití je hlášeno na třech měřičích:
 
 1. Uzel: Toto je využití v počtu monitorovaných uzlů (virtuálních počítačů) v jednotkách uzlu * měsíců.
 2. Nadlimitní využití dat na uzel: Jedná se o počet GB dat, která se převezmou nad agregovaným přidělením dat.
@@ -125,6 +125,10 @@ Další podrobnosti o omezeních cenové úrovně jsou k dispozici v [limitech, 
 
 > [!NOTE]
 > Pokud chcete použít nároky, které pocházejí z nákupu sady OMS E1 Suite, OMS E2 Suite nebo OMS Add-On pro System Center, vyberte cenovou úroveň Log Analytics *na jednotlivých uzlech* .
+
+## <a name="log-analytics-and-security-center"></a>Log Analytics a Security Center
+
+[Azure Security Center](https://docs.microsoft.com/azure/security-center/) fakturace je úzce spjata s Log Analytics fakturace. Security Center poskytuje přidělení 500 MB/uzel/den pro sadu [datových typů zabezpečení](https://docs.microsoft.com/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) a datové typy aktualizace a UpdateSummary, pokud je povolené Update Management řešení neběží v pracovním prostoru nebo cílení řešení. Pokud je pracovní prostor ve starší verzi na cenové úrovni pro jednotlivé uzly, Security Center a Log Analytics alokace se zkombinují a společně se aplikují na všechna fakturovatelná ingestovaná data.  
 
 ## <a name="change-the-data-retention-period"></a>Změna doby uchovávání dat
 
@@ -284,6 +288,24 @@ find where TimeGenerated > ago(24h) project _BilledSize, Computer
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
 
+### <a name="nodes-billed-by-the-legacy-per-node-pricing-tier"></a>Uzly účtované starší verzí na cenové úrovni uzlů
+
+[Starší verze cenové úrovně na úrovni jednotlivých uzlů](#legacy-pricing-tiers) pro uzly s hodinovou členitost a také nepočítají uzly pouze odesílající sadu datových typů zabezpečení. Denní počet uzlů by byl blízko následujícího dotazu:
+
+```kusto
+find where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now()) project Computer, _IsBillable, Type, TimeGenerated
+| where Type !in ("SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent")
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| where _IsBillable == true
+| summarize billableNodesPerHour=dcount(computerName) by bin(TimeGenerated, 1h)
+| summarize billableNodesPerDay = sum(billableNodesPerHour)/24., billableNodeMonthsPerDay = sum(billableNodesPerHour)/24./31.  by day=bin(TimeGenerated, 1d)
+| sort by day asc
+```
+
+Počet jednotek ve vašem vyúčtování je v jednotkách typu počet měsíců, které jsou v dotazu reprezentovány `billableNodeMonthsPerDay` . Pokud má pracovní prostor nainstalované řešení Update Management, přidejte do seznamu klauzule WHERE ve výše uvedeném dotazu datové typy Update a UpdateSummary. V případě, že se používá cílení řešení, které není ve výše uvedeném dotazu zastoupeno, je nakonec něco dalšího složitosti v samotném algoritmu pro účtování. 
+
+
 > [!TIP]
 > Tyto dotazy můžete použít `find` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky **na počítač** , zadejte dotaz na datový typ použití (viz níže).
 
@@ -338,7 +360,7 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000 by Solution, DataType
+| summarize BillableDataGB = sum(Quantity) by Solution, DataType
 | sort by Solution asc, DataType asc
 ```
 

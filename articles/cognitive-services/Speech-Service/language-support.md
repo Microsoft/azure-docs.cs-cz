@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 483c29d4aed4102440b09f26fe6778709836145f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b449913c9d1abbbec84f0ff77f7a1c1bc5321bf
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629824"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048453"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -154,7 +154,7 @@ Další informace o regionální dostupnosti najdete v tématu [oblasti](regions
 | `en-CA` | Angličtina (Kanada) | Female | `en-CA-ClaraNeural` | Obecné |
 | `en-GB` | Angličtina (Spojené království) | Female | `en-GB-LibbyNeural` | Obecné |
 | `en-GB` | Angličtina (Spojené království) | Female | `en-GB-MiaNeural` | Obecné |
-| `en-GB` <sup>Nová</sup> | Angličtina (Spojené království) | Male | `En-GB-RyanNeural` | Obecné |
+| `en-GB` <sup>Nová</sup> | Angličtina (Spojené království) | Male | `en-GB-RyanNeural` | Obecné |
 | `en-IE` <sup>Nová</sup> | Irská angličtina (Irsko) | Female | `en-IE-EmilyNeural` | Obecné |
 | `en-IN` | Angličtina (Indie) | Female | `en-IN-NeerjaNeural` | Obecné |
 | `en-US` | Angličtina (USA) | Female | `en-US-AriaNeural` | Obecné, více dostupných stylů hlasu |
@@ -399,7 +399,7 @@ V následující tabulce najdete podporované jazyky pro různá rozhraní API r
 
 | Národní prostředí | Jazyk | Ověřování závislé na textu | Ověřování nezávislé na textu | Identifikace nezávislá na textu |
 |----|----|----|----|----|
-| cs-CZ | Angličtina (USA) | ano | ano | ano |
+| en-US | Angličtina (USA) | ano | ano | ano |
 |zh-CN    |Čínština (Mandarin, zjednodušená)|    neuvedeno|    ano|    ano|
 |de-DE    |němčina (Německo)    |neuvedeno    |ano    |ano|
 |en-GB    |Angličtina (Spojené království)    |neuvedeno    |ano    |ano|

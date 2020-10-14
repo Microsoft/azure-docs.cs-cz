@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c68cb8cc0ecf759b9af0e313e09663cdbc327917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d50c273e50a7faf2d8c24982fbd39cecdff0bf7f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89067701"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044373"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Jednotky dotazů v digitálních prozdvojeních Azure 
 
-Jednotka pro dotazování digitálních vláken Azure **(qu)** je jednotka výpočtu na vyžádání, která se používá ke spouštění [dotazů digitálních vláken Azure](how-to-query-graph.md) pomocí [rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query). 
+Jednotka pro dotazování digitálních vláken Azure **(qu)** je jednotka výpočtu na vyžádání, která se používá ke spouštění [dotazů digitálních vláken Azure](how-to-query-graph.md) pomocí [rozhraní API pro dotazy](/rest/api/digital-twins/dataplane/query). 
 
 Vyabstrakcí systémové prostředky, jako jsou CPU, IOPS a paměť, které jsou nutné k provádění operací dotazů podporovaných pomocí digitálních vláken Azure, a umožňuje tak sledovat využití v jednotkách dotazů.
 
@@ -28,7 +28,7 @@ Tento článek vysvětluje, jak porozumět jednotkám dotazů a sledovat spotře
 
 ## <a name="find-the-query-unit-consumption-in-azure-digital-twins"></a>Hledání využití jednotky dotazu v digitálních prozdvojeních Azure 
 
-Když spustíte dotaz pomocí [rozhraní API pro dotazování](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query)digitálních vláken Azure, můžete prozkoumat hlavičku odpovědi a sledovat počet QUs, které dotaz spotřeboval. V odpovědi odeslané zpět z digitálních vláken Azure hledejte "dotaz-poplatek". 
+Když spustíte dotaz pomocí [rozhraní API pro dotazování](/rest/api/digital-twins/dataplane/query)digitálních vláken Azure, můžete prozkoumat hlavičku odpovědi a sledovat počet QUs, které dotaz spotřeboval. V odpovědi odeslané zpět z digitálních vláken Azure hledejte "dotaz-poplatek". 
 
 Sady [SDK](how-to-use-apis-sdks.md) pro digitální vlákna Azure umožňují extrakci hlavičky poplatků za dotaz z reakce na stránku. V této části se dozvíte, jak zadávat dotazy na digitální vlákna a jak iterovat na základě stránkované reakce za účelem extrakce hlavičky dotazu. 
 
@@ -68,6 +68,6 @@ await foreach (Page<string> page in asyncPageableResponseWithCharge.AsPages())
 Další informace o dotazování na digitální vlákna Azure najdete tady:
 * [*Koncepty: dotazovací jazyk*](concepts-query-language.md)
 * [*Postupy: dotazování na nevlákenný graf*](how-to-query-graph.md)
-* [Referenční dokumentace k rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/digital-twins/dataplane/query/querytwins)
+* [Referenční dokumentace k rozhraní API pro dotazy](/rest/api/digital-twins/dataplane/query/querytwins)
 
 V referenčních informacích o omezeních souvisejících s dotazy na digitální vlákna Azure můžete najít [*: omezení služby ve verzi Public Preview*](reference-service-limits.md).

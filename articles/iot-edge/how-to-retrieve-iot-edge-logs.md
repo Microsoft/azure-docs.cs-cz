@@ -10,18 +10,18 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: b5d2156707d8a4c308ed577b7407d5eae30edc65
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f5f2a9800d3796d217294e757076d6ff706281d1
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979520"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044194"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Načtení protokolů z nasazení IoT Edge
 
 Načtěte protokoly z nasazení IoT Edge bez potřeby fyzického přístupu nebo přístupu SSH k zařízení pomocí přímých metod, které jsou součástí modulu IoT Edge agent. Přímé metody jsou implementovány v zařízení a je možné je vyvolávat z cloudu. Agent IoT Edge obsahuje přímé metody, které vám pomůžou vzdáleně monitorovat a spravovat vaše IoT Edge zařízení. Přímé metody popsané v tomto článku jsou všeobecně dostupné ve verzi 1.0.10.
 
-Chcete-li získat další informace o přímých metodách, jejich použití a způsobu jejich implementace ve vlastních modulech, přečtěte si téma [pochopení a vyvolání přímých metod z IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods).
+Chcete-li získat další informace o přímých metodách, jejich použití a způsobu jejich implementace ve vlastních modulech, přečtěte si téma [pochopení a vyvolání přímých metod z IoT Hub](../iot-hub/iot-hub-devguide-direct-methods.md).
 
 Názvy těchto přímých metod se zpracovávají bez rozlišení velkých a malých písmen.
 
@@ -67,13 +67,13 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
 |-|-|-|
 | schemaVersion | řetězec | Nastavit na `1.0` |
 | položek | Pole JSON | Pole s `id` a `filter` řazenými kolekcemi členů. |
-| ID | řetězec | Regulární výraz, který poskytuje název modulu. Může odpovídat několika modulům na hraničním zařízení. Očekává se formát [regulárních výrazů .NET](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) . |
+| ID | řetězec | Regulární výraz, který poskytuje název modulu. Může odpovídat několika modulům na hraničním zařízení. Očekává se formát [regulárních výrazů .NET](/dotnet/standard/base-types/regular-expressions) . |
 | filter | Oddíl JSON | Filtry protokolu, které se mají použít pro moduly, které odpovídají `id` regulárnímu výrazu v řazené kolekci členů. |
 | kompatibilní | integer | Počet řádků protokolu v minulosti pro načtení od nejnovějšího. Volitelné. |
 | doby | integer | Jenom od této doby vrátí protokoly, jako je doba trvání (1 d, 90 m, 2 dny 3 hodiny 2 minuty), časové razítko rfc3339 nebo UNIXové časové razítko.  Pokud `tail` `since` jsou zadány oba a, protokoly se načtou pomocí `since` hodnoty jako první. Pak se `tail` hodnota aplikuje na výsledek a vrátí se konečný výsledek. Volitelné. |
 | Vrátí | integer | Vrátí jenom protokoly před určenou dobu, jako rfc3339 časové razítko, časové razítko v systému UNIX nebo doba trvání (1 d, 90 m, 2 dny 3 hodiny 2 minuty). Volitelné. |
 | úroveň protokolování | integer | Filtrovat řádky protokolu menší nebo rovny zadané úrovni protokolu. Řádky protokolu by měly následovat za doporučeným formátem protokolování a používáním standardu [úrovně závažnosti SYSLOG](https://en.wikipedia.org/wiki/Syslog#Severity_level) . Volitelné. |
-| regulární | řetězec | Filtruje řádky protokolu, které mají obsah odpovídající zadanému regulárnímu výrazu pomocí formátu [regulárních výrazů .NET](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) . Volitelné. |
+| regulární | řetězec | Filtruje řádky protokolu, které mají obsah odpovídající zadanému regulárnímu výrazu pomocí formátu [regulárních výrazů .NET](/dotnet/standard/base-types/regular-expressions) . Volitelné. |
 | encoding | řetězec | `gzip` nebo `none`. Výchozí je `none`. |
 | Třída | řetězec | `json` nebo `text`. Výchozí je `text`. |
 
@@ -82,7 +82,7 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
 
 Úspěšné načtení protokolů vrátí **"stav": 200** následovaný datovou částí, která obsahuje protokoly načtené z modulu, filtrované podle nastavení, které zadáte v žádosti.
 
-Například:
+Příklad:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetModuleLogs' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -123,7 +123,7 @@ V Azure Portal volejte metodu s názvem metody `GetModuleLogs` a následující 
 
 ![Vyvolat přímo metodu GetModuleLogs v Azure Portal](./media/how-to-retrieve-iot-edge-logs/invoke-get-module-logs.png)
 
-Výstup rozhraní příkazového řádku (CLI) můžete také přesměrovat na nástroje pro Linux, jako je třeba [gzip](https://en.wikipedia.org/wiki/Gzip), a zpracovat tak komprimovanou odpověď. Například:
+Výstup rozhraní příkazového řádku (CLI) můžete také přesměrovat na nástroje pro Linux, jako je třeba [gzip](https://en.wikipedia.org/wiki/Gzip), a zpracovat tak komprimovanou odpověď. Příklad:
 
 ```azurecli
 az iot hub invoke-module-method \
@@ -166,7 +166,7 @@ Tato metoda přijímá datovou část JSON podobnou **GetModuleLogs**a přidán�
 
 | Název | Typ | Popis |
 |-|-|-|
-| sasURL | řetězec (URI) | [Adresa URL sdíleného přístupového podpisu s přístupem pro zápis do kontejneru Azure Blob Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/). |
+| sasURL | řetězec (URI) | [Adresa URL sdíleného přístupového podpisu s přístupem pro zápis do kontejneru Azure Blob Storage](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer). |
 
 Úspěšná žádost o nahrání protokolů vrátí **"status": 200** následovaný datovou částí s následujícím schématem:
 
@@ -184,7 +184,7 @@ Tato metoda přijímá datovou část JSON podobnou **GetModuleLogs**a přidán�
 | zpráva | řetězec | Zpráva v případě chyby, v opačném případě prázdný řetězec. |
 | correlationId | řetězec   | ID, které se má dotazovat na stav žádosti o nahrání |
 
-Například:
+Příklad:
 
 Následující vyvolání nahraje poslední řádky protokolu 100 ze všech modulů v komprimovaném formátu JSON:
 
@@ -259,7 +259,7 @@ V Azure Portal volejte metodu s názvem metody `UploadModuleLogs` a následujíc
 
 ## <a name="upload-support-bundle-diagnostics"></a>Nahrát podporu diagnostiky sady prostředků
 
-Pomocí metody **UploadSupportBundle** Direct nahrajte do dostupného kontejneru Azure Blob Storage a nahrajte do něj soubor zip IoT Edge protokolů. Tato přímá metoda spustí na [`iotedge support-bundle`](https://docs.microsoft.com/azure/iot-edge/troubleshoot#gather-debug-information-with-support-bundle-command) zařízení IoT Edge příkaz pro získání protokolů.
+Pomocí metody **UploadSupportBundle** Direct nahrajte do dostupného kontejneru Azure Blob Storage a nahrajte do něj soubor zip IoT Edge protokolů. Tato přímá metoda spustí na [`iotedge support-bundle`](./troubleshoot.md#gather-debug-information-with-support-bundle-command) zařízení IoT Edge příkaz pro získání protokolů.
 
 Tato metoda přijímá datovou část JSON s následujícím schématem:
 
@@ -276,7 +276,7 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
 | Název | Typ | Popis |
 |-|-|-|
 | schemaVersion | řetězec | Nastavit na `1.0` |
-| sasURL | řetězec (URI) | [Adresa URL sdíleného přístupového podpisu s přístupem k zápisu do služby Azure Blob Storage Container](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/) |
+| sasURL | řetězec (URI) | [Adresa URL sdíleného přístupového podpisu s přístupem k zápisu do služby Azure Blob Storage Container](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
 | doby | integer | Jenom od této doby vrátí protokoly, jako je doba trvání (1 d, 90 m, 2 dny 3 hodiny 2 minuty), časové razítko rfc3339 nebo UNIXové časové razítko. Volitelné. |
 | Vrátí | integer | Vrátí jenom protokoly před určenou dobu, jako rfc3339 časové razítko, časové razítko v systému UNIX nebo doba trvání (1 d, 90 m, 2 dny 3 hodiny 2 minuty). Volitelné. |
 | edgeRuntimeOnly | boolean | Pokud má hodnotu true, vrátí jenom protokoly z agenta Edge, centra Edge a démona zabezpečení Edge. Výchozí hodnota: false.  Volitelné. |
@@ -300,7 +300,7 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
 | zpráva | řetězec | Zpráva v případě chyby, v opačném případě prázdný řetězec. |
 | correlationId | řetězec   | ID, které se má dotazovat na stav žádosti o nahrání |
 
-Například:
+Příklad:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -358,7 +358,7 @@ Tato metoda přijímá datovou část JSON s následujícím schématem:
 | zpráva | řetězec | Zpráva v případě chyby, v opačném případě prázdný řetězec. |
 | correlationId | řetězec   | ID, které se má dotazovat na stav žádosti o nahrání |
 
-Například:
+Příklad:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetTaskStatus' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \

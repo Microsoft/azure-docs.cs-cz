@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 06/16/2020
-ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 1a8dbbb42a548a8c4e9a1117166aa621e8734208
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803462"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044492"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Běžné problémy při certifikaci imagí virtuálních počítačů pro Azure Marketplace
 
@@ -97,7 +97,7 @@ Stáhněte si [sadu nástrojů Microsoft Certification Toolkit](azure-vm-image-c
 
 V následující tabulce jsou uvedeny testovací případy pro Linux, které sada nástrojů spustí. Ověření testu je uvedeno v popisu.
 
-|Scénář|Testovací případ|Description|
+|Scénář|Testovací případ|Popis|
 |---|---|---|
 |1|Bash historii|Před vytvořením image virtuálního počítače by se měly vymazat soubory historie bash.|
 |2|Verze agenta pro Linux|Je potřeba nainstalovat agenta Azure Linux 2.2.41 nebo novější.|
@@ -125,7 +125,7 @@ V následující tabulce jsou uvedeny běžné chyby, které byly nalezeny při 
 
 V následující tabulce jsou uvedeny testovací případy systému Windows, které sada nástrojů spustí, spolu s popisem ověření testu:
 
-|Scénář |Testovací případy|Description|
+|Scénář |Testovací případy|Popis|
 |---|---|---|---|
 |1|Architektura operačního systému|Azure podporuje jenom 64 operačních systémů.|
 |2|Závislost uživatelského účtu|Spuštění aplikace by nemělo být závislé na účtu správce.|
@@ -372,6 +372,61 @@ Vydavatelé se musí obrátit na podporu [vydavatele na webu Marketplace](https:
    7. Časová osa – datum, do kterého byla tato výjimka požadována 
    8.   Příloha – připojte všechny dokumenty legitimace podle důležitosti. Pro zamčené virtuální počítače připojte testovací sestavu a pro vlastní šablony zadejte vlastní šablonu ARM jako přílohu. Nepovedlo se připojit sestavu pro zamčené virtuální počítače a vlastní šablonu ARM pro vlastní šablony. výsledkem bude odepření žádosti.
 
+## <a name="how-to-address-a-vulnerability-or-exploit-in-a-vm-offer"></a>Řešení chyby zabezpečení nebo zneužití v nabídce virtuálních počítačů
+
+Tyto nejčastější dotazy vám pomůžou při zjištění ohrožení zabezpečení nebo zneužití pomocí jedné z imagí virtuálních počítačů. Tyto nejčastější dotazy se týkají jenom nabídek virtuálních počítačů Azure, které jsou publikované na Azure Marketplace.
+
+> [!NOTE]
+> Nemůžete odebrat poslední image virtuálního počítače z plánu a nemůžete přestat prodávat Poslední plán pro nabídku.
+
+Proveďte některou z následujících akcí:
+
+1. Pokud máte novou image virtuálního počítače, která by nahradila zranitelnou bitovou kopii virtuálního počítače, přečtěte si, [jak poskytnout pevně danou image virtuálního počítače](#how-to-provide-a-fixed-vm-image).
+1. Pokud nemáte novou image virtuálního počítače, která by nahradila jedinou image virtuálního počítače v plánu, a pokud jste s plánem hotovi, můžete [plán přestat prodávat](update-existing-offer.md#stop-selling-an-offer-or-plan).
+1. Pokud v nabídce nehodláte nahradit jedinou image virtuálního počítače, doporučujeme tuto [nabídku přestat prodávat](update-existing-offer.md#stop-selling-an-offer-or-plan).
+
+### <a name="how-to-provide-a-fixed-vm-image"></a>Jak poskytnout pevnou image virtuálního počítače
+
+K poskytnutí pevné image virtuálního počítače, která by nahradila image virtuálního počítače, která má ohrožení zabezpečení nebo zneužití, je nutné provést následující kroky:
+
+1. Zadejte novou image virtuálního počítače pro řešení ohrožení zabezpečení nebo zneužití.
+1. Odeberte image virtuálního počítače, která má oslabení zabezpečení nebo zneužití.
+1. Znovu publikujte nabídku.
+
+#### <a name="provide-a-new-vm-image-to-address-the-security-vulnerability-or-exploit"></a>Zadejte novou image virtuálního počítače pro řešení ohrožení zabezpečení nebo zneužití.
+
+K provedení těchto kroků budete potřebovat připravit technický prostředek pro bitovou kopii virtuálního počítače, kterou chcete přidat. Další informace najdete v tématu [Vytvoření technických prostředků pro Azure Marketplace nabídky virtuálního počítače](create-azure-vm-technical-asset.md) a [Získání identifikátoru URI SAS pro vaši image virtuálního počítače](get-sas-uri.md).
+
+1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
+1. V navigační nabídce vlevo vyberte **obchodní Marketplace**  >  **Přehled**.
+1. Ve sloupci **alias nabídky** vyberte nabídku.
+1. Na kartě **Přehled plánu** ve sloupci **název** vyberte plán, do kterého chcete virtuální počítač přidat.
+1. Na kartě **Technická konfigurace** v části **image virtuálních počítačů**vyberte **+ Přidat image virtuálního počítače**.
+   > [!NOTE]
+   > V jednom okamžiku můžete do plánu přidat jenom jednu image virtuálního počítače. Pokud chcete přidat víc imagí virtuálních počítačů, publikujte první a počkejte, dokud nedosáhne fáze _schvalování Publisher_ před přidáním další image virtuálního počítače.
+1. V zobrazených oknech zadejte novou verzi disku a image virtuálního počítače.
+1. Vyberte **Uložit koncept**.
+1. Pokračujte k další části, abyste odebrali image virtuálního počítače s chybou zabezpečení.
+
+#### <a name="remove-the-vm-image-that-has-the-security-vulnerability-or-exploit"></a>Odebrat image virtuálního počítače, která má ohrožení zabezpečení nebo zneužití
+
+Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
+1. V navigační nabídce vlevo vyberte **obchodní Marketplace**  >  **Přehled**.
+1. Ve sloupci **alias nabídky** vyberte nabídku.
+1. Na kartě **Přehled plánu** ve sloupci **název** vyberte plán s virtuálním počítačem, který chcete odebrat.
+1. Na kartě **Technická konfigurace** v části **image virtuálních počítačů**vedle image virtuálního počítače, kterou chcete odebrat, vyberte **Odebrat image virtuálního počítače**.
+1. V dialogovém okně, které se zobrazí, vyberte **pokračovat**.
+1. Vyberte **Uložit koncept**.
+1. Přejděte k další části a znovu publikujte nabídku.
+
+#### <a name="republish-the-offer"></a>Opětovné publikování nabídky
+
+Po odebrání nebo nahrazení image virtuálního počítače je potřeba tuto nabídku znovu publikovat.
+1. Vyberte možnost **zkontrolovat a publikovat**.
+1. Pokud potřebujete poskytnout certifikačnímu týmu nějaké informace, přidejte ho do pole **poznámky pro certifikaci** .
+1. Vyberte **Publikovat**.
+
+Další informace o procesu publikování najdete v tématu [postup kontroly a publikování nabídky na komerčním webu Marketplace](../review-publish-offer.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 95fd10ab7de4885d3630b5defe4080fe0203b62f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d14ef742c19556a9df2bd193a54bfaa1672d5964
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296973"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044220"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Spuštění Azure IoT Edge v Ubuntu Virtual Machines
 
@@ -50,7 +50,7 @@ Při prvním spuštění nainstaluje virtuální počítač Ubuntu 18,04 LTS [ne
 
     **Uživatelské jméno správce**: uživatelské jméno, které bude poskytovat oprávnění root pro nasazení.
 
-    **Připojovací řetězec zařízení**: [připojovací řetězec zařízení](how-to-register-device.md) pro zařízení, které bylo vytvořeno v rámci zamýšleného [IoT Hub](../iot-hub/about-iot-hub.md).
+    **Připojovací řetězec zařízení**: [připojovací řetězec zařízení](./how-to-manual-provision-symmetric-key.md) pro zařízení, které bylo vytvořeno v rámci zamýšleného [IoT Hub](../iot-hub/about-iot-hub.md).
 
     **Velikost virtuálního**počítače: [Velikost](../cloud-services/cloud-services-sizes-specs.md) virtuálního počítače, který se má nasadit.
 

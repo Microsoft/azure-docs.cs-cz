@@ -3,19 +3,19 @@ title: Diagnostikujte incidenty pomocí Poradce metriky.
 titleSuffix: Azure Cognitive Services
 description: Naučte se diagnostikovat incidenty pomocí Poradce pro metriky a získat podrobná zobrazení anomálií ve vašich datech.
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.author: aahi
-ms.openlocfilehash: fb70745cf7773e8caa91b31048af97e8e626bb91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: mbullwin
+ms.openlocfilehash: d1f792859aa5407cfaceda0e3ed1b5c21ee160f0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597936"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043370"
 ---
 # <a name="how-to-diagnose-an-incident-using-metrics-advisor"></a>Postupy: Diagnostika incidentu pomocí Poradce pro metriky
 

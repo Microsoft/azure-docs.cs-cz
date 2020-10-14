@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 8cbfc374a5964983c43594fef5d97986e51c0d83
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4e4895b227bfc699e94155515e829d0bf33aaf9b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971689"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043047"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Pochopení Azure IoT Edge runtime a jeho architektury
 
@@ -71,7 +71,7 @@ Chcete-li získat zprávu, zaregistrujte zpětné volání, které zpracovává 
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
    ```
 
-Další informace o třídě ModuleClient a jejích metodách komunikace najdete v referenčních informacích k rozhraní API pro preferovaný jazyk sady SDK: [C#](/dotnet/api/microsoft.azure.devices.client.moduleclient), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient), [Java](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)nebo [Node.js](/javascript/api/azure-iot-device/moduleclient).
+Další informace o třídě ModuleClient a jejích metodách komunikace najdete v referenčních informacích k rozhraní API pro preferovaný jazyk sady SDK: [C#](/dotnet/api/microsoft.azure.devices.client.moduleclient), [C](/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient), [Java](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)nebo [Node.js](/javascript/api/azure-iot-device/moduleclient).
 
 Vývojář řešení zodpovídá za zadání pravidel, která určují, jak IoT Edge hub předává zprávy mezi moduly. Pravidla směrování jsou definovaná v cloudu a jsou vložená dolů do IoT Edgeho centra v jeho modulu. Stejná syntaxe pro IoT Hub trasy se používá k definování tras mezi moduly v Azure IoT Edge. Další informace najdete v tématu [Naučte se nasazovat moduly a navázat trasy v IoT Edge](module-composition.md).
 
@@ -126,15 +126,15 @@ Další informace o rozhraní Azure IoT Edge Security Framework najdete v člán
 
 ## <a name="runtime-quality-telemetry"></a>Běhová telemetrie kvality
 
-IoT Edge shromažďuje z modulu runtime hostitele a systémových modulů anonymní telemetrii, aby se zlepšila kvalita produktu. Tyto informace se nazývají běhová telemetrie kvality (RQT). RQT se pravidelně posílá jako zprávy ze zařízení do cloudu, aby je IoT Hub od agenta IoT Edge. Zprávy RQT se nezobrazují v běžné telemetrie zákazníka a nevyužívají žádnou kvótu zpráv.
+IoT Edge shromažďuje anonymní telemetrii z modulu runtime hostitele a systémových modulů za účelem zlepšení kvality produktu. Tyto informace se nazývají běhová telemetrie kvality. Shromážděná telemetrie se pravidelně posílá jako zprávy ze zařízení do cloudu IoT Hub od agenta IoT Edge. Tyto zprávy se nezobrazují v běžné telemetrie zákazníka a nevyužívají žádnou kvótu zpráv.
 
-Úplný seznam metrik shromažďovaných nástrojem edgeAgent a edgeHub je k dispozici v [části dostupné metriky v článku věnovaném metrikám přístupu IoT Edge runtime](how-to-access-built-in-metrics.md#available-metrics). Podmnožina těchto metrik je shromažďována agentem IoT Edge jako součást RQT. Metriky shromážděné jako součást RQT obsahují značku `ms_telemetry` .
+Agent IoT Edge a centrum generují metriky, které můžete shromáždit pro pochopení výkonu zařízení. Podmnožina těchto metrik je shromažďována agentem IoT Edge jako součást telemetrie kvality modulu runtime. Metriky shromážděné pro telemetrii kvality běhu jsou označeny značkou `ms_telemetry` . Informace o všech dostupných metrikách najdete v tématu [přístup k vestavěným metrikám](how-to-access-built-in-metrics.md).
 
-V rámci anonymity se před odesláním odeberou jakékoli osobní nebo organizační informace, jako jsou názvy zařízení a modulů.
+Před nahráním se odeberou jakékoli osobní nebo organizační informace, jako jsou názvy zařízení a modulů, a zajistěte tak anonymní povahu telemetrie kvality modulu runtime.
 
-Výchozí četnost RQT je jedna zpráva odeslaná do IoT Hub každých 24 hodin a místní kolekce podle edgeAgent každou hodinu.
+Agent IoT Edge shromáždí každou hodinu telemetrii a pošle jednu zprávu IoT Hub každých 24 hodin.
 
-Pokud se chcete odhlásit z RQT, existují dva způsoby, jak to provést:
+Pokud se chcete odhlásit z odesílání telemetrie za běhu z vašich zařízení, existují dva způsoby, jak to provést:
 
 * Nastavte `SendRuntimeQualityTelemetry` proměnnou prostředí na `false` pro **edgeAgent**nebo
 * Zrušte volbu v Azure Portal během nasazování.

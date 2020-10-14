@@ -9,12 +9,12 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: e06c3720e180c1dc4fa2f227fd86d15cbbb0ff33
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: a9c33fad6d376c2f568f4eefbb0379486b5c40f3
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91756863"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044764"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Rychlý Start: získání telefonního čísla pomocí Azure Portal
 
@@ -22,7 +22,7 @@ ms.locfileid: "91756863"
 
 Začněte s komunikačními službami Azure pomocí Azure Portal k nákupu telefonního čísla.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Aktivní prostředek služby Communication Services.](../create-communication-resource.md)
@@ -103,14 +103,14 @@ Pokud chcete spravovat telefonní čísla, vyberte v nabídce okno telefonní č
 > [!NOTE]
 > Na této stránce může trvat několik minut, než se zřízené počty zobrazí.
 
-### <a name="customizing-phone-number-plans"></a>Přizpůsobení plánů telefonního čísla
+### <a name="customizing-phone-number-features"></a>Přizpůsobení funkcí telefonního čísla
 Na `Numbers` stránce můžete vybrat telefonní číslo kliknutím na číslo, pro které chcete plán přizpůsobit.
 
 :::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
 Vyberte možnosti ze seznamu dostupných volání a možností SMS a potom kliknutím `Confirm` použijte výběr.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Běžné otázky a problémy:
 

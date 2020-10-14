@@ -3,22 +3,33 @@ title: Začínáme a vytváření Azure Lab Services testovacího prostředí z 
 description: Naučte se, jak začít a vytvořit Azure Lab Services testovací prostředí z týmů.
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: b585196fe61a09697cfa203aaa33f08afae2b427
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 0604e2934ff6b011acfa9dd4a4b25fa58193e69b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946664"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044441"
 ---
 # <a name="get-started-and-create-a-lab-services-lab-from-teams"></a>Začínáme a vytvoření testovacího prostředí testovacích služeb z týmů
 
-Tento článek ukazuje, jak přidat aplikaci Azure Lab Services do týmů. Pak vytvořte testovací prostředí z týmů.
+Tento článek ukazuje, jak přidat aplikaci **Azure Lab Services** do týmu a jak vytvořit testovací prostředí v prostředí MS Teams.
 
-## <a name="add-a-lab-services-app-to-teams"></a>Přidání aplikace testovacích služeb do týmů
+## <a name="prerequisites"></a>Požadované součásti
 
-Testovací služby můžete přidat přímo do kanálů týmů a pak je aplikace k dispozici pro všechny v týmu, které budou používat. Postupujte podle těchto tří kroků:
+V tomto kurzu nastavíte testovací prostředí s virtuálními počítači pro váš tým. Pokud chcete nastavit testovací prostředí v účtu testovacího prostředí, musíte být členem jedné z těchto rolí v účtu testovacího prostředí: vlastník, autor testovacího prostředí nebo Přispěvatel. Účet, který jste použili k vytvoření účtu testovacího prostředí, je automaticky přidán do role vlastníka. K vytvoření testovacího prostředí můžete použít uživatelský účet, který jste použili k vytvoření účtu testovacího prostředí.
 
-1. Přejděte na kanál týmy, kam chcete aplikaci přidat, a výběrem možnosti **+** Přidat kartu kliknutím na "...". v horní části pravého okna. 
+Toto je typický pracovní postup při použití Azure Lab Services v rámci týmů.
+
+1. Uživatel [vytvoří účet testovacího prostředí](tutorial-setup-lab-account.md#create-a-lab-account) na Azure Portal.
+1. [Tvůrce účtu testovacího prostředí přidá další uživatele](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role) do role **testovacího prostředí** . Například autor nebo správce účtu testovacího prostředí přidává pedagogy do role **Tvůrce testovacího prostředí** , aby mohli vytvářet Labs pro své třídy.
+1. Pak pedagogy vytvoří Labs, předem nakonfigurují šablonu virtuálního počítače a publikují testovací prostředí, aby se virtuální počítač zřídil všem členům týmu.
+1. Po publikování testovacího prostředí se virtuální počítač přiřadí všem uživatelům v seznamu členství v týmu při jejich prvním Azure Lab Services přihlášení, a to kliknutím na kartu obsahující **Azure Lab Services** aplikace v rámci týmů (SSO) nebo přístupem na [Web Labs](https://labs.azure.com). Uživatelé pak můžou použít virtuální počítač k tomu, aby mohli pracovat s pracovními a nedokončenými úkoly.
+
+## <a name="add-azure-lab-services-app-as-a-tab-to-a-team"></a>Přidání aplikace Azure Lab Services jako karty týmu
+
+Jako vlastník týmu můžete přidat **Azure Lab Services** aplikaci přímo do kanálů týmů a pak je aplikace k dispozici pro všechny v týmu, aby mohli používat. Postupujte podle následujících tří kroků:
+
+1. Přejděte na kanál týmy, kam chcete aplikaci přidat, a vyberte možnost **+** Přidat kartu. 
 1. V možnostech karty vyhledejte **Azure Lab Services** a přidejte tuto aplikaci. 
 
     > [!NOTE]
@@ -30,33 +41,11 @@ Testovací služby můžete přidat přímo do kanálů týmů a pak je aplikace
     Zobrazí se účty, které jsou ve stejném tenantovi jako týmy a pro které máte oprávnění **vlastníka**, **přispěvatele**nebo **Tvůrce** . 
 
    ![Vítá vás funkce ALS](./media/integrate-with-teams/welcome.png) 
-1. Stiskněte **Uložit** a aplikace se přidá do týmů a karta se přidá do kanálu. 
+1. Stiskněte **Uložit** a karta se přidá do kanálu.
 
     Nyní můžete z kanálu vybrat kartu **Azure Lab Services** a začít spravovat laboratoře, jak je popsáno v následujícím kroku.
 
-    Jakmile jeden člen týmu přidá kartu, zobrazí se pro všechny v kanálu. Všichni uživatelé, kteří mají přístup k aplikaci, získají přístup s jednotným přihlašováním pomocí přihlašovacích údajů, které používají pro Microsoft Teams. Všichni uživatelé, kteří nemají přístup k aplikaci, mohou zobrazit kartu v týmech, ale budou blokovány, dokud jim neudělíte oprávnění k místní aplikaci a Azure Portal publikované verzi aplikace.
-
-## <a name="create-a-classroom-lab"></a>Vytvoření testovacího prostředí v učebně
-
 Po výběru účtu testovacího prostředí budou moci vlastníci týmu vytvářet cvičení pro tým. Celý proces vytvoření testovacího prostředí a všechny úlohy na úrovni testovacího prostředí je možné provádět v rámci týmů. Uživatelé budou mít možnost vytvořit několik testovacích prostředí v rámci stejného týmu a vlastníka týmu, přičemž příslušný přístup na úrovni účtu testovacího prostředí uvidí jenom cvičení spojená s konkrétním týmem.
-
-## <a name="giving-access-to-users-of-the-lab-account"></a>Poskytnutí přístupu uživatelům účtu testovacího prostředí
-
-Přístup k uživatelům na úrovni účtu testovacího prostředí musí být zajištěn na webu [Azure](https://ms.portal.azure.com/) Portal.
-
-1. V Azure Portal přejděte na účet Azure Lab Services. 
-1. Na stránce **účet testovacího prostředí** vyberte **řízení přístupu (IAM)**, vyberte **+ Přidat** na panelu nástrojů a pak na panelu nástrojů vyberte **+ Přidat přiřazení role** . 
-
-    ![Access Control – tlačítko Přidat přiřazení role >](./media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. Na stránce **Přidat přiřazení role** vyberte možnost **Autor testovacího prostředí** pro **role**, vyberte uživatele, kterého chcete přidat do role testovací tvůrci, a vyberte **Uložit**. 
-
-    ![Přidat autora testovacího prostředí](./media/tutorial-setup-lab-account/add-lab-creator.png)
-
-### <a name="creating-classroom-labs"></a>Vytváření prostředí učeben Labs
-
-Proces vytváření testovacích cvičení je stejný, ať už vytváříte cvičení z týmů nebo z [webu služby Lab Services](https://labs.azure.com). 
-
-Podrobnosti o nastavení tohoto článku postup tvorby vytváření návrhových laboratoří: [Správa prostředí učebny v Azure Lab Services](how-to-manage-classroom-labs.md).
 
 ## <a name="deleting-classroom-labs"></a>Odstraňování testovacích cvičení
 
@@ -77,7 +66,8 @@ Při vytvoření testovacího prostředí v rámci týmů se seznam uživatelů 
 Viz také následující články:
 
 - [Přehled použití Azure Lab Services v rámci týmů](lab-services-within-teams-overview.md)
-- [Správa fondu virtuálních počítačů ve službě Lab Services z týmů](how-to-manage-vm-pool-within-teams.md)
-- [Vytváření plánů testovacích služeb z týmů](how-to-create-schedules-within-teams.md)
-- [Přístup k virtuálnímu počítači (zobrazení student) ve službě Lab Services z týmů](how-to-access-vm-for-students-within-teams.md)
+- [Správa seznamů uživatelů testovacího prostředí v rámci týmů](how-to-manage-user-lists-within-teams.md)
+- [Správa fondu virtuálních počítačů v testovacím prostředí v rámci týmů](how-to-manage-vm-pool-within-teams.md)
+- [Vytváření a Správa plánů testovacího prostředí v rámci týmů](how-to-create-schedules-within-teams.md)
+- [Přístup k virtuálnímu počítači v rámci týmů – zobrazení studenta](how-to-access-vm-for-students-within-teams.md)
 

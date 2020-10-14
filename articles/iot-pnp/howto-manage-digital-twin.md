@@ -7,16 +7,16 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a0fa8c1c3d897ce65c70b6097dd323139716b8c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f1c52b764634f8086763aca67dfc32b507d2edd
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613386"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042843"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>Správa IoT technologie Plug and Play digitálních vláken
 
-IoT technologie Plug and Play podporuje **získání digitálního** zdvojených operací a **aktualizaci digitálních** vláken, které umožňují spravovat digitální vlákna. Můžete použít buď [rozhraní REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) , nebo jednu ze [sad SDK služby](libraries-sdks.md).
+IoT technologie Plug and Play podporuje **získání digitálního** zdvojených operací a **aktualizaci digitálních** vláken, které umožňují spravovat digitální vlákna. Můžete použít buď [rozhraní REST API](/rest/api/iothub/service/digitaltwin) , nebo jednu ze [sad SDK služby](libraries-sdks.md).
 
 V době psaní je digitální nevlákenná verze rozhraní API `2020-09-30` .
 
@@ -194,5 +194,5 @@ Aktualizace můžou selhat, pokud se hodnoty hlášené zařízením neshodují 
 Teď, když jste se naučili o digitálních prostředcích, tady je několik dalších prostředků:
 
 - [Interakce se zařízením z vašeho řešení](quickstart-service-node.md)
-- [Digitální zdvojené REST API IoT](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [Digitální zdvojené REST API IoT](/rest/api/iothub/service/digitaltwin)
 - [Průzkumník Azure IoT](howto-use-iot-explorer.md)

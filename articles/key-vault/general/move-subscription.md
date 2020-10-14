@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a06fd55d73c37caaa35797131d2b31817bf90f0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394728"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042401"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Přesunutí Azure Key Vault do jiného předplatného
 
@@ -37,6 +37,9 @@ Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klien
 
 ## <a name="limitations"></a>Omezení
 
+> [!IMPORTANT]
+> **Trezory klíčů použité pro šifrování disku nejde přesunout** . Pokud používáte Trezor klíčů s šifrováním disku pro virtuální počítač, Trezor klíčů nejde přesunout do jiné skupiny prostředků nebo předplatného, když je povolené šifrování disku. Před přesunutím trezoru klíčů do nové skupiny prostředků nebo předplatného je nutné zakázat šifrování disku. 
+
 Některé objekty služby (uživatelé a aplikace) jsou vázány na konkrétního tenanta. Pokud přesunete Trezor klíčů do předplatného jiného tenanta, může se stát, že nebudete moct obnovit přístup k určitému instančnímu objektu. Ujistěte se, že v tenantovi existují všechny základní instanční objekty, u kterých přesouváte Trezor klíčů.
 
 ## <a name="design-considerations"></a>Na co dát pozor při navrhování
@@ -51,7 +54,7 @@ Máte aplikaci připojenou k trezoru klíčů, která vytváří certifikáty pl
 
 Ujistěte se, že přejdete na stránku Azure Policy na Azure Portal a Prohlédněte si přiřazení zásad pro vaše aktuální předplatné a předplatné, na které se přesouváte, a zajistěte, aby nedocházelo k žádnému neshodě.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Přístup na úrovni přispěvatele nebo vyšší pro aktuální předplatné, ve kterém existuje Trezor klíčů.
 * Přístup na úrovni přispěvatele nebo vyšší pro předplatné, ve kterém chcete Trezor klíčů přesunout.

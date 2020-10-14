@@ -7,18 +7,18 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4c84fbb131809c92d597b46d18c53e46b636f8ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6670f654685f8d5cdcaf55d2b1679738a57ecab4
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613471"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042792"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Jak připojit ukázku služby IoT technologie Plug and Play Bridge běžící v systému Linux nebo Windows do IoT Hub
 
 V tomto postupu se dozvíte, jak vytvořit ukázkový adaptér pro Cloud technologie Plug and Play mostu pro službu IoT, připojit ho ke službě IoT Hub a použít nástroj Azure IoT Explorer k zobrazení telemetrie, kterou posílá. IoT technologie Plug and Play most je napsaný v jazyce C a obsahuje sadu SDK pro zařízení Azure IoT pro jazyk C. Na konci tohoto kurzu byste měli být schopni spustit most IoT technologie Plug and Play a zobrazit telemetrii sestav IT v Azure IoT Explorer: :::image type="content" source="media/concepts-iot-pnp-bridge/iot-pnp-bridge-explorer-telemetry.png" alt-text="snímek obrazovky znázorňující Azure IoT Explorer s tabulkou ohlášené telemetrie (vlhkost, teplota) z mostu iot technologie Plug and Play.":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Tento rychlý Start můžete spustit v systému Linux nebo Windows. Příkazy prostředí v tomto průvodci postupy postupují podle konvence pro oddělovače cest v systému Windows `\` , pokud sledujete na Linux, nezapomeňte tyto oddělovače pro použít `/` .
 
@@ -48,7 +48,7 @@ gcc --version
 
 K dokončení tohoto rychlého startu ve Windows nainstalujte do svého místního prostředí Windows následující software:
 
-* [Visual Studio (komunita, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/) – nezapomeňte při [instalaci](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) sady Visual Studio zahrnout **desktopový vývoj s** využitím úlohy C++.
+* [Visual Studio (komunita, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/) – nezapomeňte při [instalaci](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) sady Visual Studio zahrnout **desktopový vývoj s** využitím úlohy C++.
 * [Git](https://git-scm.com/download/).
 * [Cmake](https://cmake.org/download/).
 
@@ -149,7 +149,7 @@ Pro `root-_interface_model_id` pole budete potřebovat zkopírovat ID modelu IoT
 
 Přejděte do složky *pnpbridge* v adresáři úložiště.
 
-Pro Windows spusťte na [Developer Command Prompt pro Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)následující:
+Pro Windows spusťte na [Developer Command Prompt pro Visual Studio](/dotnet/framework/tools/developer-command-prompt-for-vs)následující:
 
 ```cmd
 cd scripts\windows

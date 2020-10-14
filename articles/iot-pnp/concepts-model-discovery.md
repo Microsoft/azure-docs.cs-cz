@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 165f83e0f021d23c26333a294ffe992838bda6b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caaa4499cbed1dce1a858c33a9488650649a5a44
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577709"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042911"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>Použití modelů IoT technologie Plug and Play v řešení IoT
 
@@ -40,10 +40,10 @@ IoT Hub upozorní řešení s ID modelu zařízení jako součást toku připoje
 
 ### <a name="get-device-twin-api"></a>Získat rozhraní API pro vyzdvojené zařízení
 
-Řešení může použít rozhraní API pro [získání](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable&preserve-view=true) nepoužité k načtení ID modelu zařízení IoT technologie Plug and Play.
+Řešení může použít rozhraní API pro [získání](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?preserve-view=true&view=azure-java-stable) nepoužité k načtení ID modelu zařízení IoT technologie Plug and Play.
 
 > [!TIP]
-> Pro moduly a moduly IoT Edge použijte [ModuleClient. getvláken](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?view=azure-java-stable&preserve-view=true).
+> Pro moduly a moduly IoT Edge použijte [ModuleClient. getvláken](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?preserve-view=true&view=azure-java-stable).
 
 V následujícím fragmentu dvojitá reakce zařízení `modelId` obsahuje ID modelu technologie Plug and Play zařízení IoT:
 
@@ -71,7 +71,7 @@ V následujícím fragmentu dvojitá reakce zařízení `modelId` obsahuje ID mo
 
 ### <a name="get-digital-twin-api"></a>Získat digitální dvojitou rozhraní API
 
-Řešení může pomocí rozhraní [Get Digital vláken](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) API načíst ID modelu implementovaného zařízením IoT technologie Plug and Play.
+Řešení může pomocí rozhraní [Get Digital vláken](/rest/api/iothub/service/digitaltwin/getdigitaltwin) API načíst ID modelu implementovaného zařízením IoT technologie Plug and Play.
 
 V následujícím fragmentu digitálního obrazu s dvojitou odezvou `$metadata.$model` obsahuje ID modelu technologie Plug and Play zařízení IoT:
 
@@ -121,7 +121,7 @@ content-encoding:utf-8
 
 Po identifikaci ID modelu pro nové připojení zařízení použijte následující postup:
 
-1. Načtěte definici modelu pomocí ID modelu z úložiště modelu. Další informace najdete v tématu [získání modelů](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync).
+1. Načtěte definici modelu pomocí ID modelu z úložiště modelu. Další informace najdete v tématu [získání modelů](/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync).
 
 1. Pomocí definice modelu připojeného zařízení můžete vytvořit výčet možností zařízení.
 
@@ -144,5 +144,5 @@ Po identifikaci ID modelu pro nové připojení zařízení použijte následuj�
 Teď, když jste se naučili, jak integrovat technologie Plug and Play modelech IoT do řešení IoT, některé z navrhovaných dalších kroků:
 
 - [Interakce se zařízením z vašeho řešení](quickstart-service-node.md)
-- [Digitální zdvojené REST API IoT](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [Digitální zdvojené REST API IoT](/rest/api/iothub/service/digitaltwin)
 - [Průzkumník Azure IoT](howto-use-iot-explorer.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a0ab8f8ff3f2134c205338dfe8e6f2e887a5a053
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 8c698cdf5b26cb1682eec2828922517cf4272275
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949611"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048436"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Správa grafu digitálních vláken pomocí vztahů
 
@@ -247,7 +247,7 @@ Vezměte v úvahu následující tabulku dat s popisem sady digitálních vláke
 | konverzační    | Room21 | Floor02 | obsahuje | … |
 | konverzační    | Room22 | Floor02 | obsahuje | … |
 
-Následující kód používá [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/overview) ke čtení tabulky a k vytvoření grafu s dynamickými podmnožinami digitálních vláken Azure z výsledků.
+Následující kód používá [rozhraní Microsoft Graph API](/graph/overview) ke čtení tabulky a k vytvoření grafu s dynamickými podmnožinami digitálních vláken Azure z výsledků.
 
 ```csharp
 var range = msftGraphClient.Me.Drive.Items["BuildingsWorkbook"].Workbook.Worksheets["Building"].usedRange;

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5b682e371a341c8dbd707652acc60773663326dc
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 4bd1bb93c9ce0f491c5bf1153917491b88d55109
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019116"
+ms.locfileid: "92043710"
 ---
 # <a name="whats-in-the-current-iot-plug-and-play-release"></a>Co je v aktuální verzi technologie Plug and Play IoT
 
@@ -61,7 +61,7 @@ Další informace o knihovnách a sadách SDK najdete v tématu [Microsoft SDK f
 
 ## <a name="rest-apis"></a>Rozhraní REST API
 
-REST API [2020-09-30](https://docs.microsoft.com/rest/api/iothub).
+REST API [2020-09-30](/rest/api/iothub).
 
 Další informace najdete v tématu [Příručka pro vývojáře IoT technologie Plug and Play](concepts-developer-guide-service.md).
 

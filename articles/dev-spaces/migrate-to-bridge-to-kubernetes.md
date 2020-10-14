@@ -5,12 +5,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 description: Popisuje proces migrace z Azure Dev Spaces na přemostění do Kubernetes.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, most na Kubernetes
-ms.openlocfilehash: 209776be80f2814dc8e4d347c0eea273017f70ad
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 008cb90c172d8106115e4424956d82d026dbcee0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019932"
+ms.locfileid: "92044696"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrace na Bridge to Kubernetes
 
@@ -108,7 +108,6 @@ Most na Kubernetes má flexibilitu pro práci s aplikacemi spuštěnými v Kuber
 
 1. Ručně proveďte migraci všech úprav, jako je například nastavení proměnných prostředí, do *azds. yaml* do souboru *Values. yml* vašeho projektu.
 1. volitelné Odeberte `azds.yaml` soubor z projektu.
-1. Znovu nasaďte aplikaci.
 1. Nakonfigurujte most na Kubernetes ve vaší nasazené aplikaci. Další informace o použití mostu na Kubernetes v aplikaci Visual Studio naleznete v tématu [použití mostu na Kubernetes v aplikaci Visual Studio][use-btk-vs]. VS Code najdete v tématu [použití přemostění na Kubernetes v vs Code][use-btk-vsc].
 1. Spusťte ladění pomocí nově vytvořeného mostu pro Kubernetes profil ladění/spuštění.
 1. Skript můžete spustit znovu podle potřeby pro opětovné nasazení do clusteru.

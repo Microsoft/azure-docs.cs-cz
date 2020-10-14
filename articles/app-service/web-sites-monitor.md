@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 888118d227529110c209d7c8d5a3bb79cfcf3a9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 327abb2e67f21c2893fc652b0e30c640980914c2
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88959787"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044526"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorování aplikací v Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované funkce monitorování pro webové aplikace, mobilní aplikace a aplikace API v [Azure Portal](https://portal.azure.com).
@@ -31,7 +31,7 @@ Pokud je aplikace hostována v plánu *Basic*, *Standard*nebo *Premium* , omezen
 
 Kvóty pro bezplatné nebo sdílené aplikace jsou:
 
-| Kvóta | Description |
+| Kvóta | Popis |
 | --- | --- |
 | **PROCESOR (krátký)** | Počet PROCESORů povolených pro tuto aplikaci v intervalu 5 minut. Tato kvóta se resetuje každých pět minut. |
 | **CPU (den)** | Celková velikost procesoru povoleného pro tuto aplikaci za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
@@ -58,7 +58,7 @@ Můžete zvýšit nebo odebrat kvóty z aplikace tím, že upgradujete plán App
 ## <a name="understand-metrics"></a>Principy metrik
 
 > [!NOTE]
-> **Využití systému souborů** je nová metrika, která je globálně nasazená, ale neočekávají se žádná data, pokud vám nebyl udělen přístup k privátní verzi Preview.
+> **Využití systému souborů** je nová metrika, která je globálně nasazená. neočekávají se žádná data, pokud vaše aplikace není hostovaná v App Service Environment.
 > 
 
 > [!IMPORTANT]
