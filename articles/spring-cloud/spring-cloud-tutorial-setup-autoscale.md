@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5ca0c498e9fd03ce6397824465f9e1e006eeccc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4effdbf5fb924b59a540ce16e769633c484c641a
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905391"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091062"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Kurz: nastavení automatického škálování pro aplikace mikroslužeb
 
@@ -20,12 +20,12 @@ ms.locfileid: "90905391"
 
 Automatické škálování je integrovaná funkce Azure jarního cloudu, která pomáhá aplikacím mikroslužeb při změnách na vyžádání vykonat jejich nejlepší výkon. To zahrnuje úpravu počtu virtuálních procesorů, paměti a instancí aplikací. Tento článek popisuje, jak nastavit nastavení automatického škálování pro vaše aplikace pomocí portál Microsoft Azure nebo rozhraní příkazového řádku Azure CLI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li provést tyto postupy, potřebujete:
 
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Nasazená instance služby jarní cloudová služba Azure Pokud chcete začít, postupujte podle pokynů k [rychlému zprovoznění nasazení aplikace přes Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) .
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+* Nasazená instance služby jarní cloudová služba Azure Pokud chcete začít, postupujte podle pokynů k [rychlému zprovoznění nasazení aplikace přes Azure CLI](./spring-cloud-quickstart.md) .
 * V instanci služby už je vytvořená aspoň jedna aplikace.
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>Přejít na stránku automatického škálování v Azure Portal
@@ -70,5 +70,5 @@ Pokud se nacházíte na úrovni Basic a omezujete je na jednu nebo více těchto
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled automatického škálování v Microsoft Azure](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
-* [Automatické škálování monitorování Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)
+* [Přehled automatického škálování v Microsoft Azure](../azure-monitor/platform/autoscale-overview.md)
+* [Automatické škálování monitorování Azure CLI](/cli/azure/monitor/autoscale?preserve-view=true&view=azure-cli-latest)

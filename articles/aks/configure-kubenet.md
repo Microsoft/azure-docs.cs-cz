@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c30b82e44833e413c1576bf64e8fef263c58b246
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bc245fa02f57a433a76a316caac67ed5d884fe9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264605"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072743"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Používání sítě kubenet s vlastními rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -56,7 +56,7 @@ V případě *Azure CNI*každý pod tím obdrží IP adresu v podsíti protokolu
 * Na rozdíl od clusterů Azure CNI nemůže více clusterů kubenet sdílet podsíť.
 * Funkce, **které nejsou podporovány v kubenet** , zahrnují:
    * [Zásady sítě Azure](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy), ale zásady sítě Calico jsou podporované v kubenet.
-   * [Fondy uzlů Windows](windows-node-limitations.md)
+   * [Fondy uzlů Windows](./windows-faq.md)
    * [Doplněk virtuálních uzlů](virtual-nodes-portal.md#known-limitations)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>Dostupnost a vyčerpání IP adres

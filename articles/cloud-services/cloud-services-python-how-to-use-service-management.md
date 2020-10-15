@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: tagore
 ms.custom: devx-track-python
-ms.openlocfilehash: 35d0f77d5f4dde9e156d22e64881ba674189d327
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef155116904ee0d3ecab250a254010e2f7664757
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851507"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073984"
 ---
 # <a name="use-service-management-from-python"></a>Použití správy služeb z Pythonu
 V této příručce se dozvíte, jak programově provádět běžné úlohy správy služeb z Pythonu. Třída **ServiceManagementService** v [sadě Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) podporuje programový přístup k většině funkcí souvisejících se správou služeb, které jsou k dispozici v [Azure Portal][management-portal]. Pomocí této funkce můžete vytvářet, aktualizovat a odstraňovat cloudové služby, nasazení, služby správy dat a virtuální počítače. Tato funkce může být užitečná při sestavování aplikací, které potřebují programový přístup ke správě služeb.
@@ -194,7 +194,7 @@ sms.delete_deployment('myhostedservice', 'v1')
 ```
 
 ## <a name="create-a-storage-service"></a><a name="CreateStorageService"> </a>Vytvoření služby úložiště
-[Služba úložiště](../storage/common/storage-create-storage-account.md) vám poskytne přístup k objektům [BLOB](../storage/blobs/storage-python-how-to-use-blob-storage.md), [tabulkám](../cosmos-db/table-storage-how-to-use-python.md)a [frontám](../storage/queues/storage-python-how-to-use-queue-storage.md)Azure. Pokud chcete vytvořit službu úložiště, budete potřebovat název služby (v rozmezí 3 až 24 malých písmen a jedinečné v rámci Azure). Potřebujete také popis, popisek (až 100 znaků, automaticky kódovaný na base64) a umístění. Následující příklad ukazuje, jak vytvořit službu úložiště zadáním umístění:
+[Služba úložiště](../storage/common/storage-account-create.md) vám poskytne přístup k objektům [BLOB](../storage/blobs/storage-quickstart-blobs-python.md), [tabulkám](../cosmos-db/table-storage-how-to-use-python.md)a [frontám](../storage/queues/storage-python-how-to-use-queue-storage.md)Azure. Pokud chcete vytvořit službu úložiště, budete potřebovat název služby (v rozmezí 3 až 24 malých písmen a jedinečné v rámci Azure). Potřebujete také popis, popisek (až 100 znaků, automaticky kódovaný na base64) a umístění. Následující příklad ukazuje, jak vytvořit službu úložiště zadáním umístění:
 
 ```python
 from azure import *
@@ -446,9 +446,9 @@ sms.create_virtual_machine_deployment(service_name=name,
     vm_image_name = image_name)
 ```
 
-Další informace o tom, jak zachytit virtuální počítač se systémem Linux v modelu nasazení Classic, najdete v tématu [zachycení virtuálního počítače se systémem Linux](../virtual-machines/linux/classic/capture-image-classic.md).
+Další informace o tom, jak zachytit virtuální počítač se systémem Linux v modelu nasazení Classic, najdete v tématu [zachycení virtuálního počítače se systémem Linux](/previous-versions/azure/virtual-machines/linux/classic/capture-image-classic).
 
-Další informace o tom, jak zachytit virtuální počítač s Windows v modelu nasazení Classic, najdete v tématu [zachycení virtuálního počítače s Windows](../virtual-machines/windows/classic/capture-image-classic.md).
+Další informace o tom, jak zachytit virtuální počítač s Windows v modelu nasazení Classic, najdete v tématu [zachycení virtuálního počítače s Windows](/previous-versions/azure/virtual-machines/windows/classic/capture-image-classic).
 
 ## <a name="next-steps"></a><a name="What's Next"> </a>Další kroky
 Teď, když jste se naučili základy správy služeb, můžete získat přístup k [kompletní dokumentaci k rozhraní API pro Azure Python SDK](https://azure-sdk-for-python.readthedocs.org/) a provádět složité úlohy ke správě vaší aplikace v Pythonu.
@@ -474,7 +474,7 @@ Další informace naleznete ve [Středisku pro vývojáře Python](https://azure
 [Delete a virtual machine]: #DeleteVM
 [Next steps]: #NextSteps
 [management-portal]: https://portal.azure.com/
-[svc-mgmt-rest-api]: https://msdn.microsoft.com/library/windowsazure/ee460799.aspx
+[svc-mgmt-rest-api]: /previous-versions/azure/ee460799(v=azure.100)
 
 
 [cloud service]:/azure/cloud-services/

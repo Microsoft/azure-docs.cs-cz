@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: nové přiřazení zásad s REST API'
 description: V tomto rychlém startu použijete REST API k vytvoření přiřazení Azure Policy k identifikaci prostředků, které nedodržují předpisy.
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 04880ef013060bc5ff12618af6a9156295a26a88
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ab05079c5bb319f0808a743a1d668649df51b1b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88136516"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074001"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí REST API
 
@@ -19,11 +19,11 @@ Na konci tohoto procesu úspěšně identifikujete virtuální počítače, kter
 
 REST API slouží k vytváření a správě prostředků Azure. Tato příručka používá REST API k vytvoření přiřazení zásady a identifikaci prostředků, které nedodržují předpisy, v prostředí Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-- Pokud jste to ještě neudělali, nainstalujte [ARMClient](https://github.com/projectkudu/ARMClient). Jedná se o nástroj, který odesílá požadavky HTTP na Azure Resource Manager rozhraní REST API. Alternativně můžete použít funkci vyzkoušet v dokumentaci nebo nástrojů, jako je například rutina [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) v PowerShellu nebo [publikování](https://www.postman.com).
+- Pokud jste to ještě neudělali, nainstalujte [ARMClient](https://github.com/projectkudu/ARMClient). Jedná se o nástroj, který odesílá požadavky HTTP na Azure Resource Manager rozhraní REST API. Pomocí funkce vyzkoušet si ji můžete také použít v dokumentaci nebo nástrojích, jako je rutina [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) nebo [post](https://www.postman.com)prostředí PowerShell.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

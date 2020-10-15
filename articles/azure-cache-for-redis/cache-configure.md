@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: ed371cf230df3070ce1a545895831ae56d320d99
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 22025e7be9a0ff276336511a906055dc31a67230
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000186"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089719"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
 Toto téma popisuje konfigurace dostupné pro instance Redis v mezipaměti Azure. Toto téma také popisuje výchozí konfiguraci serveru Redis pro Azure cache pro instance Redis.
@@ -72,7 +72,7 @@ Kliknutím na **Protokol aktivit** zobrazíte akce provedené v mezipaměti. Pom
 
 ### <a name="access-control-iam"></a>Řízení přístupu (IAM)
 
-Část **řízení přístupu (IAM)** poskytuje podporu řízení přístupu na základě role (RBAC) v Azure Portal. Tato konfigurace pomáhá organizacím splnit požadavky na správu přístupu jednoduše a přesně. Další informace najdete v tématu [řízení přístupu na základě role v Azure Portal](../role-based-access-control/role-assignments-portal.md).
+Část **řízení přístupu (IAM)** poskytuje podporu řízení přístupu na základě rolí Azure (Azure RBAC) v Azure Portal. Tato konfigurace pomáhá organizacím splnit požadavky na správu přístupu jednoduše a přesně. Další informace najdete v tématu [řízení přístupu na základě role Azure v Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="tags"></a>Značky
 
@@ -386,7 +386,7 @@ Nová mezipaměť Azure pro instance Redis je nakonfigurovaná s následujícím
 >
 >
 
-| Nastavení | Výchozí hodnota | Description |
+| Nastavení | Výchozí hodnota | Popis |
 | --- | --- | --- |
 | `databases` |16 |Výchozí počet databází je 16, ale můžete na základě cenové úrovně nakonfigurovat jiné číslo. <sup>1</sup> výchozí databáze je DB 0. pro jednotlivá připojení můžete vybrat jiný, `connection.GetDatabase(dbid)` a to pomocí, kde `dbid` je číslo mezi `0` a `databases - 1` . |
 | `maxclients` |Závisí na cenové úrovni<sup>2</sup> . |Tato hodnota je maximální povolený počet připojených klientů ve stejnou dobu. Po dosažení limitu Redis ukončí všechna nová připojení a vrátí chybu maximální počet klientů, které se dosáhly. |
