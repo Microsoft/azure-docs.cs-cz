@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e22a6028f5b7fa8cf81ddf0e3e2a550859aad0ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b34d5cdd95f44082d05153390209de5145e56d3f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259590"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089566"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Návod: Přidání výměn deklarací identity REST API do vlastních zásad v Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ V tomto scénáři rozšiřujeme data tokenů uživatele integrací s podnikový
 
 Interakci můžete také navrhnout jako technický profil ověřování. To je vhodné, když REST API bude ověřovat data na obrazovce a vracet deklarace identity. Další informace najdete v tématu [Návod: integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C k ověření vstupu uživatele](custom-policy-rest-api-claims-validation.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get-started.md). Měli byste mít pracovní vlastní zásady pro registraci a přihlašování pomocí místních účtů.
 - Naučte se [integrovat REST API výměn deklarací identity do vlastních zásad Azure AD B2C](custom-policy-rest-api-intro.md).
@@ -75,7 +75,7 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
 </ClaimType>
 ```
 
-## <a name="configure-the-restful-api-technical-profile"></a>Konfigurace technického profilu rozhraní RESTful API 
+## <a name="add-the-restful-api-technical-profile"></a>Přidat technický profil rozhraní RESTful API 
 
 [Technický profil RESTful](restful-technical-profile.md) poskytuje podporu pro propojení s vlastní službou RESTful. Azure AD B2C odesílá data do služby RESTful v `InputClaims` kolekci a přijímá data zpátky v `OutputClaims` kolekci. V souboru vyhledejte element **ClaimsProviders** <em>**`TrustFrameworkExtensions.xml`**</em> a přidejte nového zprostředkovatele deklarací identity následujícím způsobem:
 
@@ -87,6 +87,7 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
       <DisplayName>Get user extended profile Azure Function web hook</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
+        <!-- Set the ServiceUrl with your own REST API endpoint -->
         <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/GetProfile?code=your-code</Item>
         <Item Key="SendClaimsIn">Body</Item>
         <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
@@ -107,9 +108,20 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
-```
+``` 
 
 V tomto příkladu se do `userLanguage` služby REST pošle jako `lang` v datové části JSON. Hodnota `userLanguage` deklarace identity obsahuje ID jazyka aktuálního uživatele. Další informace najdete v tématu [překladač deklarací identity](claim-resolver-overview.md).
+
+### <a name="configure-the-restful-api-technical-profile"></a>Konfigurace technického profilu rozhraní RESTful API 
+
+Po nasazení REST API nastavte metadata `REST-ValidateProfile` technického profilu tak, aby odrážela vaše vlastní REST API, včetně:
+
+- **ServiceUrl**. Nastavte adresu URL koncového bodu REST API.
+- **SendClaimsIn**. Určete, jakým způsobem se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful.
+- **AuthenticationType**. Nastavte typ ověřování prováděného zprostředkovatelem deklarací RESTful. 
+- **AllowInsecureAuthInProduction**. V produkčním prostředí nezapomeňte nastavit tato metadata na `true`
+    
+Další konfigurace najdete v článku [metadata RESTful Technical Profile](restful-technical-profile.md#metadata) .
 
 Výše uvedené komentáře `AuthenticationType` a `AllowInsecureAuthInProduction` Určete změny, které byste měli dělat při přesunu do produkčního prostředí. Informace o tom, jak zabezpečit rozhraní API RESTful pro produkční prostředí, najdete v tématu [Secure RESTFUL API](secure-rest-api.md).
 

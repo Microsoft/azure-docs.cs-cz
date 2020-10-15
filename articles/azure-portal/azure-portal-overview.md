@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.topic: overview
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 4aa1ccbd9b605850052e190949542eb014fe90a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 24b249d1098788e518f5eda2d1b0d421d4e5e6bb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84763920"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072386"
 ---
 # <a name="azure-portal-overview"></a>Přehled webu Azure Portal
 
@@ -54,7 +54,7 @@ V **nastavení portálu**se dá změnit jak v nabídce Azure Portal, tak ve výc
 
 ## <a name="getting-around-the-portal"></a>Seznámení s portálem
 
-Je užitečné porozumět základnímu rozložení portálu a způsobu, jak s ním pracovat. Tady zavedeme komponenty uživatelského rozhraní a některá z terminologie, kterou použijeme k poskytnutí pokynů. Podrobnější přehled portálu najdete v lekci kurzu [Navigace na portálu](https://docs.microsoft.com/learn/modules/tour-azure-portal/3-navigate-the-portal).
+Je užitečné porozumět základnímu rozložení portálu a způsobu, jak s ním pracovat. Tady zavedeme komponenty uživatelského rozhraní a některá z terminologie, kterou použijeme k poskytnutí pokynů. Podrobnější přehled portálu najdete v lekci kurzu [Navigace na portálu](/learn/modules/tour-azure-portal/3-navigate-the-portal).
 
 Nabídka Azure Portal a záhlaví stránky jsou globální prvky, které jsou vždy přítomny. Tyto trvalé funkce jsou "prostředí" pro uživatelské rozhraní přidružené ke každé jednotlivé službě nebo funkci a záhlaví poskytuje přístup k globálním ovládacím prvkům. Stránka konfigurace (někdy označovaná jako "okno") pro prostředek může mít také nabídku prostředků, která vám umožní přesouvat se mezi funkcemi.
 
