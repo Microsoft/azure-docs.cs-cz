@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 98b7f9b1ed5e09a1f731e45f8ca2d148a4084986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5346858aa119f11ef34916b24c70c966286ab86
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336152"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089039"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Řešení běžných problémů s jarním cloudem v Azure
 
@@ -68,7 +68,7 @@ Při ladění selhání aplikace Začněte kontrolou stavu spuštění a stavu z
 
 
 
-Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/log-query/get-started-portal.md).
 ::: zone-end
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>V aplikaci dochází k vysokému využití procesoru nebo paměti
@@ -91,7 +91,7 @@ Další informace najdete v tématu [metriky pro jarní cloud Azure](spring-clou
 
 Pokud jsou všechny instance v provozu, můžete přejít na Azure Log Analytics a dotazovat se na protokoly aplikací a zkontrolovat logiku kódu. To vám pomůže zjistit, jestli některý z nich může ovlivnit dělení stupnice. Další informace najdete v tématu [Analýza protokolů a metrik pomocí nastavení diagnostiky](diagnostic-services.md).
 
-Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal). Dotazování protokolů pomocí [dotazovacího jazyka Kusto](https://docs.microsoft.com/azure/kusto/query/)
+Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/log-query/get-started-portal.md). Dotazování protokolů pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/)
 
 ::: zone pivot="programming-language-java"
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Kontrolní seznam pro nasazení aplikace pružiny do jarního cloudu Azure
@@ -113,14 +113,14 @@ Před zprovozněním aplikace se ujistěte, že splňuje následující kritéri
 
 Při nastavování instance služby jarní cloudu Azure pomocí Azure Portal provede vám ověření za vás Azure jaře Cloud.
 
-Ale pokud se pokusíte nastavit instanci služby jarní cloudovou službu Azure pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) nebo [šablony Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/), ověřte, že:
+Ale pokud se pokusíte nastavit instanci služby jarní cloudovou službu Azure pomocí [Azure CLI](/cli/azure/get-started-with-azure-cli) nebo [šablony Azure Resource Manager](../azure-resource-manager/index.yml), ověřte, že:
 
 * Předplatné je aktivní.
 * Toto umístění [podporuje](spring-cloud-faq.md) služba Azure jaře Cloud.
 * Skupina prostředků pro instanci je už vytvořená.
 * Název prostředku odpovídá pravidlu pojmenování. Musí obsahovat jenom malá písmena, číslice a spojovníky. Prvním znakem musí být písmeno. Posledním znakem musí být písmeno nebo číslo. Hodnota musí být v rozmezí 2 až 32 znaků.
 
-Pokud chcete nastavit instanci služby jarní cloudovou službu Azure pomocí šablony Správce prostředků, nejdřív se seznamte s [pochopením struktury a syntaxe šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates).
+Pokud chcete nastavit instanci služby jarní cloudovou službu Azure pomocí šablony Správce prostředků, nejdřív se seznamte s [pochopením struktury a syntaxe šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md).
 
 Název instance služby jarní cloudová služba Azure se použije pro vyžádání názvu subdomény v rámci `azureapps.io` , takže pokud je název v konfliktu s existujícím názvem, instalace selže. Další podrobnosti najdete v protokolech aktivit.
 
@@ -129,7 +129,7 @@ Název instance služby jarní cloudová služba Azure se použije pro vyžádá
 
 Soubor *. zip* pro aplikaci .NET Core Steeltoe nemůžete nahrát pomocí Azure Portal nebo šablony Správce prostředků.
 
-Když nasadíte balíček aplikace pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), rozhraní příkazového řádku Azure se pravidelně dotazuje průběh nasazení a na konci se zobrazí výsledek nasazení.
+Když nasadíte balíček aplikace pomocí rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli), rozhraní příkazového řádku Azure se pravidelně dotazuje průběh nasazení a na konci se zobrazí výsledek nasazení.
 
 Ujistěte se, že je vaše aplikace zabalená ve správném formátu *. zip* . Pokud není zabalen správně, proces přestane reagovat nebo se zobrazí chybová zpráva.
 ::: zone-end
@@ -139,7 +139,7 @@ Ujistěte se, že je vaše aplikace zabalená ve správném formátu *. zip* . P
 
 Balíček/source archivu Java (JAR) nemůžete nahrát pomocí šablony Azure Portal nebo Správce prostředků.
 
-Když nasadíte balíček aplikace pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), rozhraní příkazového řádku Azure se pravidelně dotazuje průběh nasazení a na konci se zobrazí výsledek nasazení.
+Když nasadíte balíček aplikace pomocí rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli), rozhraní příkazového řádku Azure se pravidelně dotazuje průběh nasazení a na konci se zobrazí výsledek nasazení.
 
 Pokud dojde k přerušení dotazování, stále můžete načíst protokoly nasazení pomocí následujícího příkazu:
 
@@ -153,7 +153,7 @@ Ujistěte se, že je vaše aplikace zabalená ve správném [spustitelném form�
 
 Nejde nahrát balíček JAR/source pomocí Azure Portal nebo šablony Správce prostředků.
 
-Když nasadíte balíček aplikace pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), rozhraní příkazového řádku Azure se pravidelně dotazuje průběh nasazení a na konci se zobrazí výsledek nasazení.
+Když nasadíte balíček aplikace pomocí rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli), rozhraní příkazového řádku Azure se pravidelně dotazuje průběh nasazení a na konci se zobrazí výsledek nasazení.
 
 Pokud dojde k přerušení dotazování, stále můžete načíst protokoly sestavení a nasazení pomocí následujícího příkazu:
 
@@ -171,7 +171,7 @@ Pokud migrujete existující jarní cloudové řešení do Azure, ujistěte se, 
 
 Můžete také ověřit protokoly klienta _registru služby_ v Azure Log Analytics. Další informace najdete v tématu [Analýza protokolů a metrik pomocí nastavení diagnostiky](diagnostic-services.md) .
 
-Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal). Dotazování protokolů pomocí [dotazovacího jazyka Kusto](https://docs.microsoft.com/azure/kusto/query/)
+Další informace o Azure Log Analytics najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/log-query/get-started-portal.md). Dotazování protokolů pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/)
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Chci zkontrolovat proměnné prostředí moje aplikace
 
@@ -231,7 +231,7 @@ Zkontrolujte `spring-boot-actuator` , zda je závislost povolena v balíčku apl
 </dependency>
 ```
 
-Pokud se protokoly aplikací můžou archivovat do účtu úložiště, ale neodesílají se do Azure Log Analytics, zkontrolujte, jestli jste [pracovní prostor správně nastavili](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace). Pokud používáte bezplatnou úroveň Azure Log Analytics, mějte na paměti, že úroveň [Free neposkytuje smlouvu o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
+Pokud se protokoly aplikací můžou archivovat do účtu úložiště, ale neodesílají se do Azure Log Analytics, zkontrolujte, jestli jste [pracovní prostor správně nastavili](../azure-monitor/learn/quick-create-workspace.md). Pokud používáte bezplatnou úroveň Azure Log Analytics, mějte na paměti, že úroveň [Free neposkytuje smlouvu o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
 ::: zone-end
 
 ## <a name="next-steps"></a>Další kroky

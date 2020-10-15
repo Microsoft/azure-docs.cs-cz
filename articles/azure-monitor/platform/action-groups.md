@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 7937b412b1eb3f311f0212f19c4eb9fc7782459d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 534e78018d19ff496dc4d2b3b54a3d0b3c46cf0f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327727"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093748"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
@@ -287,7 +287,32 @@ Chcete-li dostávat aktualizace o změnách těchto IP adres, doporučujeme nako
 
 Ve skupině akcí můžete mít omezený počet akcí Webhooku.
 
+### <a name="service-tag"></a>Značka služby
+Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě pro danou akci.
 
+1. V Azure Portal v části služby Azure vyhledejte *skupinu zabezpečení sítě*.
+2. Klikněte na **Přidat** a vytvořte skupinu zabezpečení sítě.
+
+   1. Přidejte název skupiny prostředků a zadejte *Podrobnosti o instanci*.
+   1. Klikněte na tlačítko **Revize + vytvořit** a potom klikněte na tlačítko *vytvořit*.
+   
+   :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="Příklad vytvoření skupiny zabezpečení sítě."border="true":::
+
+3. Přejděte do skupiny prostředků a potom klikněte na *skupinu zabezpečení sítě* , kterou jste vytvořili.
+
+    1. Vyberte *příchozí pravidla zabezpečení*.
+    1. Klikněte na **Přidat**.
+    
+    :::image type="content" source="media/action-groups/action-group-add-service-tag.png" alt-text="Příklad přidání značky služby"border="true":::
+
+4. Otevře se nové okno v pravém podokně.
+    1.  Vybrat zdroj: **značka služby**
+    1.  Značka zdrojové služby: parametr **Action**
+    1.  Klikněte na **Přidat**.
+    
+    :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Příklad přidání značky služby"border="true":::
+
+Použití **značky služby pro službu Action Service** pomáhá minimalizovat složitost častých aktualizací IP adres.
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [chování výstrah SMS](./alerts-sms-behavior.md).  

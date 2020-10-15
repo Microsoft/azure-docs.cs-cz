@@ -12,19 +12,19 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
-ms.openlocfilehash: b77c9cfd6e4d1721839acb9db5469b5f0ac73a48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 014463fb0a5af639ff0da5f8db2805f9796fd928
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561597"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072471"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktura řídicích panelů Azure
 Tento dokument projde strukturu řídicího panelu Azure pomocí následujícího řídicího panelu jako příklad:
 
 ![Ukázkový řídicí panel](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-Vzhledem k tomu, že sdílené [řídicí panely Azure jsou prostředky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), tento řídicí panel je možné ZNÁZORNIT jako JSON.  Následující kód JSON reprezentuje řídicí panel, který je uveden výše.
+Vzhledem k tomu, že sdílené [řídicí panely Azure jsou prostředky](../azure-resource-manager/management/overview.md), tento řídicí panel je možné ZNÁZORNIT jako JSON.  Následující kód JSON reprezentuje řídicí panel, který je uveden výše.
 
 ```json
 
@@ -303,7 +303,7 @@ Název je segmentem ID prostředku, které neobsahuje informace o předplatném,
 Všechny řídicí panely jsou typu __Microsoft. Portal/řídicích panelů__.
 
 ### <a name="the-location-property"></a>Vlastnost Location
-Na rozdíl od jiných prostředků řídicí panely nemají komponentu modulu runtime.  V případě řídicích panelů označuje umístění hlavní geografické umístění, ve kterém je uložený reprezentace JSON řídicího panelu. Hodnota by měla být jeden z kódů umístění, které je možné načíst pomocí [rozhraní API umístění v prostředku předplatných](https://docs.microsoft.com/rest/api/resources/subscriptions).
+Na rozdíl od jiných prostředků řídicí panely nemají komponentu modulu runtime.  V případě řídicích panelů označuje umístění hlavní geografické umístění, ve kterém je uložený reprezentace JSON řídicího panelu. Hodnota by měla být jeden z kódů umístění, které je možné načíst pomocí [rozhraní API umístění v prostředku předplatných](/rest/api/resources/subscriptions).
 
 ### <a name="the-tags-property"></a>Vlastnost značky
 Značky jsou běžnou funkcí prostředků Azure, které umožňují organizovat prostředky pomocí dvojic libovolných hodnot názvů. U řídicích panelů existuje jedna speciální značka s názvem __skrytý – název__. Pokud je tato vlastnost nastavená na řídicím panelu, použije se jako zobrazovaný název řídicího panelu na portálu. ID prostředků Azure nejde přejmenovat, ale značky můžou. Tato značka poskytuje způsob, jak mít renamable zobrazovaný název pro řídicí panel.

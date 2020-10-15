@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a5b4d0591f58d2ce4d3d2e9055c70fdc7118e123
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c879b890f9527ea0eee3d702db6f04a38432aa00
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91326248"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093051"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Rychlý Start: monitorování jarních cloudových aplikací Azure díky protokolům, metrikám a trasování
 
 ::: zone pivot="programming-language-csharp"
-Díky integrované možnosti monitorování v Azure jaře cloudu můžete ladit a monitorovat složité problémy. Jarní cloud Azure integruje Steeltoe [distribuované trasování](https://steeltoe.io/docs/3/tracing/distributed-tracing) s [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)Azure. Tato integrace poskytuje výkonné protokoly, metriky a možnosti distribuované vektorizace z Azure Portal.
+Díky integrované možnosti monitorování v Azure jaře cloudu můžete ladit a monitorovat složité problémy. Jarní cloud Azure integruje Steeltoe [distribuované trasování](https://steeltoe.io/docs/3/tracing/distributed-tracing) s [Application Insights](../azure-monitor/app/app-insights-overview.md)Azure. Tato integrace poskytuje výkonné protokoly, metriky a možnosti distribuované vektorizace z Azure Portal.
 
 Následující postupy vysvětlují, jak používat streamování protokolů, Log Analytics, metriky a distribuované trasování s ukázkovou aplikací, kterou jste nasadili v předchozích rychlých startech.
 
@@ -69,7 +69,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
     
 1. Upravte dotaz tak, aby se odebraly klauzule WHERE, které omezují zobrazení na upozornění a protokoly chyb.
 
-1. Pak vyberte `Run` a zobrazíte protokoly. Další pokyny k zápisu dotazů najdete v tématu [Azure Log Analytics docs](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries) .
+1. Pak vyberte `Run` a zobrazíte protokoly. Další pokyny k zápisu dotazů najdete v tématu [Azure Log Analytics docs](../azure-monitor/log-query/get-started-queries.md) .
 
    [![Dotaz na analýzu protokolů – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
 
@@ -107,7 +107,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-Díky integrované možnosti monitorování v Azure jaře cloudu můžete ladit a monitorovat složité problémy. Jarní cloud Azure integruje [jarní Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) s využitím Azure [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Tato integrace poskytuje výkonné protokoly, metriky a možnosti distribuované vektorizace z Azure Portal. Následující postupy vysvětlují, jak používat streamování protokolů, Log Analytics, metriky a distribuované trasování s nasazenými aplikacemi PiggyMetrics.
+Díky integrované možnosti monitorování v Azure jaře cloudu můžete ladit a monitorovat složité problémy. Jarní cloud Azure integruje [jarní Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) s využitím Azure [Application Insights](../azure-monitor/app/app-insights-overview.md). Tato integrace poskytuje výkonné protokoly, metriky a možnosti distribuované vektorizace z Azure Portal. Následující postupy vysvětlují, jak používat streamování protokolů, Log Analytics, metriky a distribuované trasování s nasazenými aplikacemi PiggyMetrics.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -165,7 +165,7 @@ Postup získání protokolů pomocí Azure Toolkit for IntelliJ:
 
    [![Položka ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) Log Analytics](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
-1. Pak se zobrazí filtrované protokoly. Další pokyny k zápisu dotazů najdete v tématu [Azure Log Analytics docs](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries) .
+1. Pak se zobrazí filtrované protokoly. Další pokyny k zápisu dotazů najdete v tématu [Azure Log Analytics docs](../azure-monitor/log-query/get-started-queries.md) .
 
    [![Dotaz na ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png) analýzu protokolů](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
 

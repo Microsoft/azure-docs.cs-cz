@@ -7,12 +7,12 @@ ms.date: 10/01/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 431ea692ac734a875e27cb8ed4b015155e0e9b91
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7523dd39303a211772dd39eef811f55739336ff0
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042418"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093697"
 ---
 # <a name="iot-plug-and-play-service-developer-guide"></a>Příručka pro vývojáře služby IoT technologie Plug and Play
 
@@ -30,14 +30,14 @@ Sady SDK služby umožňují přístup k informacím o zařízení z řešení, 
 
 - Klient služby IoT Hub. Tato služba zpřístupňuje ID modelu jako vlastnost vlákna zařízení.
 
-- Klient služby digitálního vyzdvojení. Nové digitální vlákna rozhraní API funguje na konstrukcích modelu [DTDL (Digital vlákna Definition Language)](concepts-digital-twin.md) , jako jsou komponenty, vlastnosti a příkazy. Digitální vlákna rozhraní API usnadňují tvůrcům řešení vytváření řešení IoT technologie Plug and Play.
+- Klient digitálního vlákna. Nové digitální vlákna rozhraní API funguje na konstrukcích modelu [DTDL (Digital vlákna Definition Language)](concepts-digital-twin.md) , jako jsou komponenty, vlastnosti a příkazy. Digitální vlákna rozhraní API usnadňují tvůrcům řešení vytváření řešení IoT technologie Plug and Play.
 
-| Platforma | Klient služby IoT Hub | Klient služby digitálního vyzdvojení |
-| -------- | ---------------------- | ---------------------------- |
-| .NET     | [Dokumentace](/dotnet/api/microsoft.azure.devices) <br/> [ukázky](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples)| [ukázky](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
-| Java     | [Dokumentace](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable) <br/> [ukázky](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample)| [ukázky](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
-| Node.js  | [Dokumentace](/javascript/api/azure-iothub/twin?preserve-view=true&view=azure-node-latest) <br/> [Ukázka](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)| [Dokumentace](/javascript/api/azure-iot-digitaltwins-service/?preserve-view=true&view=azure-node-latest) <br/> [Ukázka](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
-| Python   | [Dokumentace](/python/api/azure-iot-hub/azure.iot.hub.iothubregistrymanager?preserve-view=true&view=azure-python) <br/> [Ukázka](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)| [Dokumentace](/python/api/azure-iot-hub/azure.iot.hub.iothubdigitaltwinmanager?preserve-view=true&view=azure-python) <br/> [Ukázka](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
+| Platforma | Dokumentace | ukázky |
+| -------- | ------------- | ------- |
+| .NET     | [Odkaz](/dotnet/api/microsoft.azure.devices) | [Klient služby](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples) </br> [Digital Twins](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
+| Java     | [Odkaz](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable) <br/> | [Klient služby](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample) </br>[Digital Twins](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
+| Node.js  | [Odkaz](/javascript/api/azure-iothub?preserve-view=true&view=azure-node-latest) | [Klient služby](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js) </br> [Digital Twins](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
+| Python   | [Odkaz](/python/api/azure-iot-hub/azure.iot.hub?preserve-view=true&view=azure-python) <br/> | [Klient služby](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py) </br> [Digital Twins](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
 
 ## <a name="iot-hub-service-client-examples"></a>Příklady klienta služby IoT Hub
 
@@ -161,7 +161,7 @@ catch (DeviceNotFoundException)
 }
 ```
 
-## <a name="digital-twin-examples"></a>Digitální vlákna – příklady
+## <a name="iot-hub-digital-twin-examples"></a>Příklady IoT Hub digitálních vláken
 
 Třídu **DigitalTwinClient** použijete k interakci se stavem zařízení pomocí digitálních vláken. Model [DTDL](concepts-digital-twin.md) pro zařízení definuje vlastnosti a příkazy, které zařízení implementuje.
 
@@ -369,43 +369,6 @@ catch (HttpOperationException e)
         Console.WriteLine("Unable to execute command getMaxMinReport on component thermostat1.");
     }
 }
-```
-
-## <a name="rest-api"></a>REST API
-
-Následující příklady používají REST API IoT Hub k interakci s připojeným zařízením IoT technologie Plug and Play. Aktuální verze rozhraní API je `2020-09-30` . Připojí `?api-version=2020-09-30` se k voláním REST PI.
-
-> [!NOTE]
-> Rozhraní API aktuálně nepodporuje vlákna modulu `digitalTwins` .
-
-Pokud se zavolá zařízení termostata `t-123` , zobrazí se všechny vlastnosti všech rozhraní implementovaných vaším zařízením a volání REST API Get:
-
-```REST
-GET /digitalTwins/t-123
-```
-
-Toto volání bude obsahovat vlastnost JSON `$metadata.$model` s ID modelu oznámeným zařízením.
-
-Všechny vlastnosti pro všechna rozhraní jsou k dispozici pomocí `GET /DigitalTwin/{device-id}` šablony REST API, kde `{device-id}` je identifikátor zařízení:
-
-```REST
-GET /digitalTwins/{device-id}
-```
-
-Můžete volat přímo technologie Plug and Play příkazy pro zařízení IoT. Pokud `Thermostat` komponenta v `t-123` zařízení obsahuje `restart` příkaz, můžete ji zavolat voláním REST API post:
-
-```REST
-POST /digitalTwins/t-123/components/Thermostat/commands/restart
-```
-
-Obecně lze příkazy volat pomocí této šablony REST API:
-
-- `device-id`: identifikátor zařízení.
-- `component-name`: název rozhraní z oddílu Implements v modelu schopností zařízení.
-- `command-name`: název příkazu.
-
-```REST
-/digitalTwins/{device-id}/components/{component-name}/commands/{command-name}
 ```
 
 ## <a name="read-device-telemetry"></a>Čtení telemetrie zařízení
