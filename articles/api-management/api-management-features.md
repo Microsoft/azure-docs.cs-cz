@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 262d12e1b0ff74570b44b7794f8b55619a9afa97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eec913237ba978e52bb64fbd4c1f043a9214ffc8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905138"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077843"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Porovnání na základě funkcí API Management vrstev Azure
 
@@ -26,7 +26,7 @@ Každá API Management [cenová úroveň](https://aka.ms/apimpricing) nabízí s
 > [!IMPORTANT]
 > Všimněte si prosím, že úroveň pro vývojáře je určena pro případy neprodukčního použití a hodnocení. Nenabízí smlouvu SLA.
 
-| Příznak                                                                                      | Consumption | Vývojář | Basic | Standard | Premium |
+| Funkce                                                                                      | Využití | Vývojář | Basic | Standard | Premium |
 | -------------------------------------------------------------------------------------------- | ----------- | --------- | ----- | -------- | ------- |
 | Integrace Azure AD<sup>1</sup>                                                             | No          | Yes       | No    | Yes      | Yes     |
 | Podpora Virtual Network (VNet)                                                               | No          | Yes       | No    | No       | Yes     |
@@ -37,7 +37,7 @@ Každá API Management [cenová úroveň](https://aka.ms/apimpricing) nabízí s
 | Integrované analýzy                                                                           | No          | Yes       | Yes   | Yes      | Yes     |
 | [Samoobslužná brána](self-hosted-gateway-overview.md)<sup>3</sup>                           | No          | Yes       | No    | No       | Yes     |
 | [Nastavení TLS](api-management-howto-manage-protocols-ciphers.md)                             | Yes         | Yes       | Yes   | Yes      | Yes     |
-| [Externí mezipaměť](https://aka.ms/apimbyoc)                                                    | Yes         | Yes       | Yes   | Yes      | Yes     |
+| [Externí mezipaměť](./api-management-howto-cache-external.md)                                                    | Yes         | Yes       | Yes   | Yes      | Yes     |
 | [Ověřování certifikátu klienta](api-management-howto-mutual-certificates-for-clients.md) | Yes         | Yes       | Yes   | Yes      | Yes     |
 | [Zálohování a obnovení](api-management-howto-disaster-recovery-backup-restore.md)               | No          | Yes       | Yes   | Yes      | Yes     |
 | [Správa přes Git](api-management-configuration-repository-git.md)                        | No          | Yes       | Yes   | Yes      | Yes     |

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 47fdf445fa11693dd3a998b8c73ac0c3ed8452a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff9093872b2a5e069aef43ae2230b08447eea602
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85389356"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069836"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání deklarací identity a přizpůsobení uživatelského vstupu pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -95,12 +95,12 @@ Chcete-li shromáždit deklaraci identity města během registrace, je nutné ji
    </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
-<ClaimsProvider>
 ```
 
 Pokud chcete po počátečním přihlášení ke federovanému účtu shromáždit deklaraci města, musíte ji přidat jako výstupní deklaraci do `SelfAsserted-Social` technického profilu. Aby mohli uživatelé s místními a federovaným účty později upravovat svoje data profilu, přidejte do technického profilu výstupní deklaraci identity `SelfAsserted-ProfileUpdate` . Tyto technické profily popište v souboru rozšíření. Zadejte celý seznam výstupních deklarací identity pro řízení pořadí deklarací identity na obrazovce. Vyhledejte element **ClaimsProviders** . Přidejte nový ClaimsProviders následujícím způsobem:
 
 ```xml
+<ClaimsProvider>
   <DisplayName>Self Asserted</DisplayName>
   <TechnicalProfiles>
     <!--Federated account first-time sign-in page-->

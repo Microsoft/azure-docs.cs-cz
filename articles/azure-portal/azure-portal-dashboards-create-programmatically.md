@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7fcced1833cb5f4ccb9c2c2fd44dd84a9abb3cb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764039"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077860"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Vytváření řídicích panelů Azure prostřednictvím kódu programu
 
@@ -78,13 +78,13 @@ Pokud chcete tento řídicí panel publikovat pro libovolný virtuální počít
 Existují dva přístupy k rozhraním API, která vytvářejí prostředky v Azure:
 
 * Imperativní rozhraní API vytvářejí jeden prostředek najednou. Další informace najdete v tématu [prostředky](/rest/api/resources/resources).
-* Systém nasazení založený na šablonách, který vytváří více závislých prostředků s jedním voláním rozhraní API. Další informace najdete v tématu  [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md).
+* Systém nasazení založený na šablonách, který vytváří více závislých prostředků s jedním voláním rozhraní API. Další informace najdete v tématu  [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md).
 
 Nasazení založené na šablonách podporuje Parametrizace a šablonování. Tento postup používáme v tomto článku.
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>Programové vytvoření řídicího panelu ze šablony pomocí nasazení šablony
 
-Azure nabízí možnost orchestrovat nasazení více prostředků. Vytvoříte šablonu nasazení, která vyjadřuje sadu prostředků pro nasazení a vztahy mezi nimi.  Formát JSON každého prostředku je stejný, jako kdybyste ho vytvořili jeden po jednom. Rozdílem je, že jazyk šablony přidává několik konceptů, jako jsou proměnné, parametry, základní funkce a další. Tato rozšířená syntaxe je podporována pouze v kontextu nasazení šablony. Nefunguje, pokud se používá s imperativními rozhraními API, která jsou popsaná výše. Další informace najdete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
+Azure nabízí možnost orchestrovat nasazení více prostředků. Vytvoříte šablonu nasazení, která vyjadřuje sadu prostředků pro nasazení a vztahy mezi nimi.  Formát JSON každého prostředku je stejný, jako kdybyste ho vytvořili jeden po jednom. Rozdílem je, že jazyk šablony přidává několik konceptů, jako jsou proměnné, parametry, základní funkce a další. Tato rozšířená syntaxe je podporována pouze v kontextu nasazení šablony. Nefunguje, pokud se používá s imperativními rozhraními API, která jsou popsaná výše. Další informace najdete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md).
 
 Parametrizace by mělo být provedeno pomocí syntaxe parametru šablony.  Nahradíte všechny výskyty ID prostředku, které jsme dříve našli, jak je znázorněno zde.
 
@@ -125,7 +125,7 @@ Deklaruje požadovaná metadata šablony a parametry v horní části šablony J
 Jakmile nakonfigurujete šablonu, nasaďte ji pomocí kterékoli z následujících metod:
 
 * [REST API](/rest/api/resources/deployments)
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [Stránka Azure Portalho nasazení šablony](https://portal.azure.com/#create/Microsoft.Template)
 
