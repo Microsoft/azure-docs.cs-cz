@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: article
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1428a92857f48920c86ed7a3f0719fa42b38b24
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90017468"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072029"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Kurz: Konfigurace zpětného zápisu atributu z Azure AD na Workday
 Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zpětném zápisu atributů z Azure AD do Workday. Aplikace pro zřizování zpětného zápisu do pracovního dne podporuje přiřazení hodnot k následujícím atributům Workday:
@@ -144,16 +144,31 @@ Po dokončení konfigurace aplikace pro zřizování Workday můžete službu z�
 
 1. Na kartě **zřizování** nastavte **stav zřizování** na **zapnuto**.
 
+1. V rozevíracím seznamu **obor** vyberte **synchronizovat všechny uživatele a skupiny**. Pomocí této možnosti přepíše aplikace zpětného zápisu zpátky mapované atributy všech uživatelů ze služby Azure AD do pracovního dne v souladu s pravidly oboru definovanými v **Mappings**  ->  **oboru mapování zdrojového objektu**. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Vybrat obor zpětného zápisu](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
+
+   > [!NOTE]
+   > Aplikace pro zřizování zpětného zápisu do Workday nepodporuje možnost **synchronizovat jenom přiřazené uživatele a skupiny**.
+ 
+
 2. Klikněte na **Uložit**.
 
 3. Tato operace spustí počáteční synchronizaci, což může trvat proměnlivý počet hodin v závislosti na tom, kolik uživatelů se nachází ve zdrojovém adresáři. V indikátoru průběhu můžete sledovat průběh cyklu synchronizace. 
 
-4. Na kartě **protokoly auditu** v Azure Portal můžete kdykoli zjistit, jaké akce služba zřizování provedla. Protokoly auditu vypíše všechny jednotlivé události synchronizace prováděné službou zřizování, například to, kteří uživatelé jsou importováni ze zdroje a exportováni do cílové aplikace.  
+4. V každém okamžiku zkontrolujte kartu **zřizovacích protokolů** v Azure Portal a podívejte se, jaké akce služba zřizování provedla. Protokoly auditu vypíše všechny jednotlivé události synchronizace prováděné službou zřizování, například to, kteří uživatelé jsou importováni ze zdroje a exportováni do cílové aplikace.  
 
 5. Po dokončení počáteční synchronizace bude na kartě **zřizování** napsána Souhrnná sestava, jak je znázorněno níže.
 
      > [!div class="mx-imgBorder"]
      > ![Indikátor průběhu zřizování](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
+
+## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
+
+* Aplikace zpětného zápisu používá předem definovanou hodnotu pro parametry **Communication_Usage_Type_ID** a **Phone_Device_Type_ID**. Pokud váš tenant Workday používá pro tyto atributy jinou hodnotu, operace zpětného zápisu nebude úspěšná. Alternativním řešením je aktualizovat Type_IDs v Workday. 
+* Když je aplikace zpětného zápisu nakonfigurovaná tak, aby aktualizovala sekundární telefonní čísla, nenahradí stávající sekundární telefonní číslo v Workday. Přidá k záznamu pracovního procesu jedno další sekundární telefonní číslo. K tomuto chování neexistuje žádné alternativní řešení. 
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a4d005b3a4712cfff0321e7a16f49c0e882cc9e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a4866db463dcf4ff17b2f7b25806806a700e8fa
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282115"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071638"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Nasazení OPC vlákna do existujícího projektu
 
@@ -33,7 +33,7 @@ Jádrem modulu je identita správce. Správce spravuje vlákna koncového bodu, 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ujistěte se, že máte nainstalované rozšíření PowerShell a [AzureRM prostředí PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) . Pokud jste to ještě neudělali, naklonujte toto úložiště GitHub. V prostředí PowerShell spusťte následující příkazy:
+Ujistěte se, že máte nainstalované rozšíření PowerShell a [AzureRM prostředí PowerShell](/powershell/azure/azurerm/install-azurerm-ps) . Pokud jste to ještě neudělali, naklonujte toto úložiště GitHub. V prostředí PowerShell spusťte následující příkazy:
 
 ```powershell
 git clone --recursive https://github.com/Azure/azure-iiot-components.git

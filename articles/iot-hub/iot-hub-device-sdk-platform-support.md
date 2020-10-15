@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: aef468d919e6f09722045f98c68383785d10b137
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4081fe8ba97ba2dd27680cf5f0fa60abd59e44a9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87423078"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072267"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Podpora platforem sady SDK pro zařízení Azure IoT
 
@@ -60,7 +60,7 @@ Pro každou z uvedených sad SDK Microsoft:
 | Operační systém                  | Compiler                          |
 |---------------------|-----------------------------------|
 | Linux               | Python 2,7. *, 3,5 nebo novější |
-| MacOS High Sierra   | Python 2,7. *, 3,5 nebo novější |
+| macOS High Sierra   | Python 2,7. *, 3,5 nebo novější |
 | Řada Windows 10   | Python 2,7. *, 3,5 nebo novější |
 
 Jenom Python verze 3.5.3 nebo novější podporuje asynchronní rozhraní API, doporučujeme použít verzi 3,7 nebo novější.
@@ -120,7 +120,7 @@ Microsoft spolupracuje s řadou partnerů, aby mohli průběžně rozšiřovat A
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>Připojení k IoT Hub bez sady SDK
 
-Pokud nemůžete použít jednu ze sad SDK pro IoT Hub zařízení, můžete se přímo připojit k IoT Hub pomocí [IoT Hub rozhraní REST API](https://docs.microsoft.com/rest/api/iothub/) z libovolné aplikace, která dokáže odesílat a přijímat požadavky HTTPS a odpovědi.
+Pokud nemůžete použít některou ze sad SDK pro IoT Hub zařízení, můžete se přímo připojit k IoT Hub pomocí podporovaného komunikačního protokolu. Další informace najdete v tématu [vývoj bez sady Azure IoT SDK](iot-hub-devguide-no-sdk.md).
 
 ## <a name="support-and-other-resources"></a>Podpora a další zdroje informací
 

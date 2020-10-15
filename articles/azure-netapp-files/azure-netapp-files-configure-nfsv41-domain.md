@@ -11,14 +11,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: e749f27875612136c50938712fded6a371f8c7ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3c853190d5f63bbe9012727d8b7b7ac91da135f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325619"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072148"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>Konfigurace výchozí domény NFSv4.1 pro Azure NetApp Files
 
@@ -26,11 +26,11 @@ Názvů NFSv4 zavádí koncept domény ověřování. Azure NetApp Files v souč
 
 ## <a name="default-behavior-of-usergroup-mapping"></a>Výchozí chování mapování uživatele nebo skupiny
 
-Výchozí mapování je nastaveno na hodnotu `nobody` uživatel, protože doména názvů NFSv4 je nastavena na hodnotu `localdomain` . Když připojíte Azure NetApp Files svazek NFSv 4.1 jako kořenový adresář, zobrazí se oprávnění k souboru následujícím způsobem:  
+Výchozí mapování je nastaveno na hodnotu `nobody` uživatel, protože doména názvů NFSv4 je ve výchozím nastavení nastavena na hodnotu `localdomain` . Když připojíte Azure NetApp Files svazek NFSv 4.1 jako kořenový adresář, zobrazí se oprávnění k souboru následujícím způsobem:  
 
 ![Výchozí chování mapování uživatele/skupiny pro NFSv 4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
 
-Jak ukazuje výše uvedený příklad, uživatel `file1` by měl mít `root` hodnotu, ale `nobody` ve výchozím nastavení je namapován.  V tomto článku se dozvíte, jak nastavit `file1` uživatele na `root` .  
+Jak ukazuje výše uvedený příklad, uživatel `file1` by měl mít `root` hodnotu, ale `nobody` ve výchozím nastavení je namapován.  V tomto článku se dozvíte, jak nastavit `file1` uživatele na `root` základě změny `idmap Domain` nastavení na `defaultv4iddomain.com` .  
 
 ## <a name="steps"></a>Postup 
 

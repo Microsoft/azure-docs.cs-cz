@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 6446e138df1fe744d70be085d0aecac58e2c1c45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d93a43a44a9ccff4e7918e556b9d759e270d2f42
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255294"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072080"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurace clusteru AKS
 
@@ -176,10 +176,10 @@ Pokud chcete vytvořit fondy uzlů s modulem runtime Moby (Docker), můžete to 
 
 ## <a name="generation-2-virtual-machines-preview"></a>Virtuální počítače generace 2 (Preview)
 
-Azure podporuje [virtuální počítače generace 2 (Gen2) (VM](../virtual-machines/windows/generation-2.md)). Virtuální počítače 2. generace podporují klíčové funkce, které nejsou podporované na virtuálních počítačích generace 1 (Gen1). Mezi tyto funkce patří zvýšené množství paměti, rozšíření Intel software Guard (Intel SGX) a virtualizovaná trvalá paměť (vPMEM).
+Azure podporuje [virtuální počítače generace 2 (Gen2) (VM](../virtual-machines/generation-2.md)). Virtuální počítače 2. generace podporují klíčové funkce, které nejsou podporované na virtuálních počítačích generace 1 (Gen1). Mezi tyto funkce patří zvýšené množství paměti, rozšíření Intel software Guard (Intel SGX) a virtualizovaná trvalá paměť (vPMEM).
 
 Virtuální počítače generace 2 používají novou architekturu na bázi rozhraní UEFI namísto architektury založené na systému BIOS používané virtuálními počítači 1. generace.
-Virtuální počítače Gen2 podporují jenom určité SKU a velikosti. Zkontrolujte [seznam podporovaných velikostí](../virtual-machines/windows/generation-2.md#generation-2-vm-sizes), abyste viděli, jestli vaše SKU podporuje nebo vyžaduje Gen2.
+Virtuální počítače Gen2 podporují jenom určité SKU a velikosti. Zkontrolujte [seznam podporovaných velikostí](../virtual-machines/generation-2.md#generation-2-vm-sizes), abyste viděli, jestli vaše SKU podporuje nebo vyžaduje Gen2.
 
 Kromě toho ne všechny image virtuálních počítačů podporují Gen2, na virtuálních počítačích s AKS Gen2 použije nový [Obrázek AKS Ubuntu 18,04](#os-configuration). Tento obrázek podporuje všechny SKU a velikosti Gen2.
 
