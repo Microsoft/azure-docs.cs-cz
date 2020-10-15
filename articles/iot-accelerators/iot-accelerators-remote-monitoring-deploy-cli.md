@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9dcf19f5318021df5d9fdde777b8786942e33d8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80258290"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072250"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Nasazení akcelerátoru řešení vzdáleného monitorování pomocí rozhraní příkazového řádku
 
@@ -73,12 +73,12 @@ Základní nasazení ve vašem předplatném Azure vytvoří následující slu�
 | 1     | [Virtuální počítač se systémem Linux](https://azure.microsoft.com/services/virtual-machines/) | D1 v2 úrovně Standard  | Hostování mikroslužeb |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – úroveň Standard | Správa zařízení a komunikace |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Ukládání konfiguračních dat, pravidel, upozornění a dalších chladírenských úložišť |  
-| 1     | [Účet služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Úložiště pro kontrolní body virtuálního počítače a streamování |
+| 1     | [Účet služby Azure Storage](../storage/common/storage-introduction.md#types-of-storage-accounts)  | Standard        | Úložiště pro kontrolní body virtuálního počítače a streamování |
 | 1     | [Webová aplikace](https://azure.microsoft.com/services/app-service/web/)        |                 | Hostování front-endové webové aplikace |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Správa identit a zabezpečení uživatelů |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Zobrazení umístění prostředků |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 jednotky              | Povolení analýz v reálném čase |
-| 1     | [Služba Azure Device Provisioning](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Zřizování zařízení ve velkém měřítku |
+| 1     | [Služba Azure Device Provisioning](../iot-dps/index.yml)        |       S1          | Zřizování zařízení ve velkém měřítku |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 jednotka              | Úložiště pro data zpráv a umožnění hloubkové analýzy telemetrie podrobně |
 
 ### <a name="standard"></a>Standard
@@ -94,12 +94,12 @@ Standardní nasazení vytvoří v předplatném Azure následující služby:
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Použití plně spravované služby orchestrace kontejnerů Kubernetes, výchozí nastavení je 3 agenti|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – úroveň Standard | Správa zařízení, příkaz a řízení |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Ukládání konfiguračních dat a telemetrie zařízení, jako jsou pravidla, výstrahy a zprávy |
-| 5     | [Účty Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | 4 pro úložiště virtuálních počítačů a 1 pro kontrolní body streamování |
+| 5     | [Účty Azure Storage](../storage/common/storage-introduction.md#types-of-storage-accounts)    | Standard        | 4 pro úložiště virtuálních počítačů a 1 pro kontrolní body streamování |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | Application Gateway přes TLS |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Správa identit a zabezpečení uživatelů |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Zobrazení umístění prostředků |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 jednotky              | Povolení analýz v reálném čase |
-| 1     | [Služba Azure Device Provisioning](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Zřizování zařízení ve velkém měřítku |
+| 1     | [Služba Azure Device Provisioning](../iot-dps/index.yml)        |       S1          | Zřizování zařízení ve velkém měřítku |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 jednotka              | Úložiště pro data zpráv a umožnění hloubkové analýzy telemetrie podrobně |
 
 > [!NOTE]

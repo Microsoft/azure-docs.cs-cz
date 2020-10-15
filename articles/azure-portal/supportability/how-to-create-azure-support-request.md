@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b44b38e52b50dd7994326f09bebbb775c93c0e2e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851852"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073695"
 ---
 # <a name="create-an-azure-support-request"></a>Vytvoření žádosti o podporu Azure
 
@@ -114,5 +114,5 @@ Další informace najdete na následujících odkazech:
 * [Rozhraní REST API lístku podpory Azure](/rest/api/support)
 * [Pošlete nám svůj názor a návrhy.](https://feedback.azure.com/forums/266794-support-feedback)
 * Zaujmout nás na [Twitteru](https://twitter.com/azuresupport)
-* Získejte pomoc od svých partnerů na stránce s [otázkou Microsoft Q&](https://docs.microsoft.com/answers/products/azure) .
+* Získejte pomoc od svých partnerů na stránce s [otázkou Microsoft Q&](/answers/products/azure) .
 * Další informace najdete v tématu [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq) .

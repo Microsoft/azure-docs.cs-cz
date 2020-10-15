@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3383971b9984e6f565feebc3bdfb968fb77cbe85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fb4d1459584e8dd2b230a424f043ad086f2570d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311098"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089447"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Správa ověřování v Azure Maps
 
@@ -41,7 +41,7 @@ V závislosti na potřebách aplikací existují konkrétní cesty k zabezpečen
 Následující tabulka popisuje běžné scénáře ověřování a autorizace v Azure Maps. Tabulka poskytuje srovnání typů ochrany, které každý scénář nabízí.
 
 > [!IMPORTANT]
-> Microsoft doporučuje implementovat Azure Active Directory (Azure AD) s řízením přístupu na základě role (RBAC) pro produkční aplikace.
+> Microsoft doporučuje implementovat Azure Active Directory (Azure AD) s řízením přístupu na základě role Azure (Azure RBAC) pro produkční aplikace.
 
 | Scénář                                                                                    | Authentication | Autorizace | Úsilí při vývoji | Provozní úsilí |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
@@ -63,10 +63,10 @@ Pokud chcete zobrazit role Azure, které jsou k dispozici pro Azure Maps, přejd
 
 ## <a name="view-role-assignments"></a>Zobrazit přiřazení rolí
 
-Pokud chcete zobrazit uživatele a aplikace, kterým byla udělená RBAC pro Azure Maps, jděte do **Access Control (IAM)**. Vyberte možnost **přiřazení rolí**a potom filtrovat podle **Azure Maps**.
+Chcete-li zobrazit uživatele a aplikace, kterým byl udělen přístup pro Azure Maps, přejděte na **Access Control (IAM)**. Vyberte možnost **přiřazení rolí**a potom filtrovat podle **Azure Maps**.
 
 > [!div class="mx-imgBorder"]
-> ![Zobrazit uživatele a aplikace, kterým byla udělena RBAC](./media/how-to-manage-authentication/how-to-view-amrbac.png)
+> ![Zobrazit uživatele a aplikace, kterým byl udělen přístup](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
 ## <a name="request-tokens-for-azure-maps"></a>Žádosti o tokeny pro Azure Maps
 

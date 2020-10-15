@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: c348b800e9587f13e6ff004317a2aa12efb03394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa863ce556840903d16238d6afef32136ba2b80d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936216"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090841"
 ---
 # <a name="tutorial-configure-security-agents"></a>Kurz: konfigurace agentů zabezpečení
 
@@ -117,8 +117,8 @@ Následující tabulka obsahuje ovladatelné vlastnosti programu Defender pro ag
 
 Výchozí hodnoty jsou k dispozici ve správném schématu v [GitHubu](https\://aka.ms/iot-security-module-default).
 
-| Name| Status | Platné hodnoty| Výchozí hodnoty| Description |
-|----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
+| Name| Status | Platné hodnoty| Výchozí hodnoty| Popis |
+|----------|--------|--|-------|----|
 |highPriorityMessageFrequency|Požadováno: false |Platné hodnoty: doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT7M |Maximální časový interval před odesláním zpráv s vysokou prioritou.|
 |lowPriorityMessageFrequency |Požadováno: false|Platné hodnoty: doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT5H |Maximální doba před odesláním zpráv s nízkou prioritou.|
 |snapshotFrequency |Vyžadovat: false|Platné hodnoty: doba trvání ve formátu ISO 8601 |Výchozí hodnota PT13H |Časový interval pro vytváření snímků stavu zařízení.|
@@ -129,7 +129,7 @@ Výchozí hodnoty jsou k dispozici ve správném schématu v [GitHubu](https\://
 ### <a name="supported-security-events"></a>Podporované události zabezpečení
 
 |Název události| PropertyName | Výchozí hodnota| Událost snímku| Podrobnosti o stavu  |
-|----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
+|----------|-|---------|----|----|
 |Diagnostická událost|eventPriorityDiagnostic| Vypnout| Nepravda| Diagnostické události související s agentem. Tuto událost použijte pro podrobné protokolování.|
 |Chyba konfigurace |eventPriorityConfigurationError |Nízká |Nepravda |Agentovi se nepovedlo analyzovat konfiguraci. Ověřte konfiguraci oproti schématu.|
 |Statistika vyřazených událostí |eventPriorityDroppedEventsStatistics |Nízká |Ano|Statistika událostí souvisejících s agenty |

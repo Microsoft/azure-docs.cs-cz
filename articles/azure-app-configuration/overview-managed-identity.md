@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 270f8d471a95e67939a31357bc1cc056fe8ea4a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82981217"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072794"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Jak používat spravované identity pro konfiguraci aplikací Azure
 
@@ -33,7 +33,7 @@ Pokud chcete nastavit spravovanou identitu pomocí Azure CLI, použijte příkaz
 
 - Použijte [Azure Cloud Shell](../cloud-shell/overview.md) z Azure Portal.
 - Použijte vložený Azure Cloud Shell pomocí tlačítka "vyzkoušet", které je umístěné v pravém horním rohu každého bloku kódu níže.
-- Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2,1 nebo novější).
+- Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi Azure CLI](/cli/azure/install-azure-cli) (2,1 nebo novější).
 
 Následující kroky vás provedou vytvořením úložiště konfigurace aplikace a přiřazením identity pomocí rozhraní příkazového řádku:
 
@@ -66,7 +66,7 @@ Pokud chcete nastavit spravovanou identitu pomocí Azure CLI, použijte příkaz
 
 - Použijte [Azure Cloud Shell](../cloud-shell/overview.md) z Azure Portal.
 - Použijte vložený Azure Cloud Shell pomocí tlačítka "vyzkoušet", které je umístěné v pravém horním rohu každého bloku kódu níže.
-- Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 nebo novější).
+- Pokud upřednostňujete použití místní konzoly CLI, [nainstalujte nejnovější verzi Azure CLI](/cli/azure/install-azure-cli) (2.0.31 nebo novější).
 
 Následující kroky vás provedou vytvořením identity přiřazené uživatelem a úložištěm konfigurace aplikace a přiřazením identity do úložiště pomocí rozhraní příkazového řádku:
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 6d05f5fa20b5deee14b1a2fada389d869d48908a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc5b958813ea1107d98525b6dfc1b0b56c9c5400
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91709083"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091198"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 
@@ -37,7 +37,7 @@ Možnosti konfigurace dostupné v automatizovaném strojovém učení:
 
 Pokud dáváte přednost žádnému způsobu použití kódu, můžete [v Azure Machine Learning Studiu vytvářet i automatizované experimenty strojového učení](how-to-use-automated-ml-for-ml-models.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento článek potřebujete, 
 * Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [vytvoření Azure Machine Learningho pracovního prostoru](how-to-manage-workspace.md).
@@ -222,7 +222,7 @@ U každého automatizovaného experimentu strojového učení se vaše data auto
 
 Při konfiguraci experimentů ve vašem `AutoMLConfig` objektu můžete nastavení povolit nebo zakázat `featurization` . V následující tabulce jsou uvedena přijímaná nastavení pro featurization v [objektu AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
-|Konfigurace Featurization | Description |
+|Konfigurace Featurization | Popis |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Označuje, že v rámci předběžného zpracování se [kroky guardrails a featurization](how-to-configure-auto-features.md#featurization) provádějí automaticky. **Výchozí nastavení**.|
 |`"featurization": 'off'`| Indikuje, že krok featurization se neprovádí automaticky.|
@@ -343,7 +343,7 @@ Bylo &nbsp; &nbsp; dosaženo skóre &nbsp; &nbsp;| Použijte `experiment_exit_sc
 
 Pokud se nacházíte v poznámkovém bloku, můžete zobrazit výsledky školení v widgetu nebo v případě potřeby. Další podrobnosti najdete v tématu [sledování a vyhodnocení modelů](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs) .
 
-Přečtěte si [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md) pro definice a příklady grafů výkonu a metriky, které jsou k dispozici pro jednotlivé spuštění. 
+Přečtěte si téma [vyhodnocení výsledků automatických experimentů strojového učení](how-to-understand-automated-ml.md) pro definice a příklady grafů výkonu a metriky, které jsou k dispozici pro jednotlivé spuštění. 
 
 Chcete-li získat souhrn featurization a pochopit, jaké funkce byly přidány do konkrétního modelu, přečtěte si téma [transparentnost featurization](how-to-configure-auto-features.md#featurization-transparency). 
 

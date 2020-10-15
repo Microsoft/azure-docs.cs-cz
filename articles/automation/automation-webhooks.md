@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db4f49c1b788cd7a55fd6fbbd48f845f2c94d757
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015098"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073525"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Spuštění runbooku z webhooku
 
@@ -89,7 +89,7 @@ Vezměte v úvahu následující strategie:
 
 * Nechat sadu Runbook při přijetí požadavku Webhooku provést nějaké ověření externí podmínky. Představte si třeba sadu Runbook, která je volána GitHubem, kdykoli je nové potvrzení do úložiště GitHub. Runbook se může připojit k GitHubu a ověřit, že před pokračováním došlo k novému potvrzení.
 
-* Azure Automation podporuje značky služby virtuální sítě Azure, konkrétně [GuestAndHybridManagement](../virtual-network/service-tags-overview.md). Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md) a Trigger webhooků z vaší virtuální sítě. Značky služeb lze použít místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby **GuestAndHybridManagement**  v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo zamítnout přenos pro službu Automation. Tato značka služby nepodporuje povolení podrobnějšího řízení tím, že omezí rozsahy IP adres na konkrétní oblast.
+* Azure Automation podporuje značky služby virtuální sítě Azure, konkrétně [GuestAndHybridManagement](../virtual-network/service-tags-overview.md). Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md) a Trigger webhooků z vaší virtuální sítě. Značky služeb lze použít místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby **GuestAndHybridManagement**  v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo zamítnout přenos pro službu Automation. Tato značka služby nepodporuje povolení podrobnějšího řízení tím, že omezí rozsahy IP adres na konkrétní oblast.
 
 ## <a name="create-a-webhook"></a>Vytvoření Webhooku
 
@@ -120,7 +120,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Klient obdrží z požadavku jeden z následujících návratových kódů `POST` .
 
-| Kód | Text | Description |
+| Kód | Text | Popis |
 |:--- |:--- |:--- |
 | 202 |Přijato |Požadavek byl přijat a sada Runbook byla úspěšně zařazena do fronty. |
 | 400 |Chybný požadavek |Žádost nebyla přijata z některého z následujících důvodů: <ul> <li>Platnost Webhooku vypršela.</li> <li>Webhook je zakázaný.</li> <li>Token v adrese URL je neplatný.</li>  </ul> |

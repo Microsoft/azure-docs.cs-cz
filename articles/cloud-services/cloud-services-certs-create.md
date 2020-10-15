@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 08ce69856dd36b6029297109fcb8610b856c8b98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8650b8670c61cab15b26163dd5108145b8509434
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142362"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072420"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Přehled certifikátů pro Azure Cloud Services
 Certifikáty se používají v Azure pro cloudové služby ([certifikáty služeb](#what-are-service-certificates)) a pro ověřování pomocí rozhraní API pro správu ([certifikáty pro správu](#what-are-management-certificates)). Toto téma obsahuje obecný přehled obou typů certifikátů, jak je [vytvořit](#create) a nasadit do Azure.
@@ -76,7 +76,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 > Pokud chcete použít certifikát s IP adresou a nikoli doménou, použijte IP adresu v parametru-DnsName.
 
 
-Pokud chcete tento [certifikát použít s portálem pro správu](../azure-api-management-certs.md), exportujte ho do souboru **. cer** :
+Pokud chcete tento [certifikát použít s portálem pro správu](/previous-versions/azure/azure-api-management-certs), exportujte ho do souboru **. cer** :
 
 ```powershell
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
@@ -91,8 +91,4 @@ Existuje mnoho stránek na internetu, které pokrývají, jak to provést se slu
 ## <a name="next-steps"></a>Další kroky
 [Nahrajte do Azure Portal certifikát služby](cloud-services-configure-ssl-certificate-portal.md).
 
-Nahrajte do Azure Portal [certifikát rozhraní API pro správu](../azure-api-management-certs.md) .
-
-
-
-
+Nahrajte do Azure Portal [certifikát rozhraní API pro správu](/previous-versions/azure/azure-api-management-certs) .

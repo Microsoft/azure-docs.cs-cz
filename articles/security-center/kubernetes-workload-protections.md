@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 500131121640026fd3fda5be9eecb376d2db8f0e
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 38c5df6a05d327e0b057501846e70d1f3c6c4896
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999320"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091147"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Ochrana úloh Kubernetes
 
@@ -39,7 +39,7 @@ Pokud povolíte Azure Defender, Security Center nabízí více funkcí zabezpeč
 |Stanov|Free|
 |Požadované role a oprávnění:|**Vlastník** nebo **Správce zabezpečení** pro úpravu přiřazení<br>**Čtenář** pro zobrazení doporučení|
 |Podporované clustery:|Kubernetes v 1.14 (nebo vyšší) je povinný údaj.<br>Žádný prostředek PodSecurityPolicy (starý model PSP) v clusterech<br>Uzly Windows nejsou podporované.|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -67,21 +67,21 @@ Azure Security Center zahrnuje sadu doporučení, která jsou k dispozici po ins
     > 
     > Pokud nezadáte potřebné parametry pro doporučení, které vyžadují konfiguraci, budou se vaše úlohy zobrazovat v pořádku.
 
-    | Název doporučení                                                                   | Řízení zabezpečení                         | Vyžaduje se konfigurace |
-    |---------------------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | Musí se vymáhat omezení procesoru a paměti kontejneru (Preview).                          | Ochrana aplikací před útoky DDoS | No                     |
-    | Měly by se vyhnout privilegovanému kontejneru (Preview).                                     | Správa přístupu a oprávnění            | No                     |
-    | Neměnné (jen pro čtení) pro kontejnery (Preview) by se mělo vyhovět kořenovým systémem souborů.     | Správa přístupu a oprávnění            | No                     |
-    | Je potřeba zabránit kontejneru s eskalací oprávnění (Preview).                       | Správa přístupu a oprávnění            | No                     |
-    | Spouštění kontejnerů jako kořenový uživatel by se mělo vyhnout (Preview)                           | Správa přístupu a oprávnění            | No                     |
-    | Kontejnery sdílející obory názvů závislé na hostitelích by se měly vyhnout (Preview)              | Správa přístupu a oprávnění            | No                     |
-    | Pro kontejnery (Preview) by se měly vyhovět aspoň privilegované možnosti systému Linux.       | Správa přístupu a oprávnění            | **Ano**                |
-    | Použití ovládacího připojení svazku pod HostPath by se mělo omezit na známý seznam (Preview).    | Správa přístupu a oprávnění            | **Ano**                |
-    | Kontejnery by měly naslouchat jenom povoleným portům (Preview)                              | Omezit neautorizovaný přístup k síti     | **Ano**                |
-    | Služby by měly naslouchat jenom povoleným portům (Preview).                                | Omezit neautorizovaný přístup k síti     | **Ano**                |
-    | Používání hostitelských sítí a portů by mělo být omezené (Preview)                     | Omezit neautorizovaný přístup k síti     | **Ano**                |
-    | Přepsání nebo zákaz kontejneru AppArmor Profile by mělo být omezeno (Preview) | Náprava konfigurací zabezpečení        | **Ano**                |
-    | Image kontejneru by se měly nasadit jenom z důvěryhodných registrů (Preview).            | Napravit ohrožení zabezpečení                | **Ano**                |
+    | Název doporučení                                                         | Řízení zabezpečení                         | Vyžaduje se konfigurace |
+    |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
+    | Měla by se vyhovět omezení procesoru a paměti kontejneru.                          | Ochrana aplikací před útoky DDoS | Ne                     |
+    | Měly by se vyhnout privilegovanému kontejneru                                     | Správa přístupu a oprávnění            | Ne                     |
+    | Neměnné (jen pro čtení) kořenový systém souborů by měl být vynutil pro kontejnery.     | Správa přístupu a oprávnění            | Ne                     |
+    | Je třeba zabránit kontejneru s eskalací oprávnění.                       | Správa přístupu a oprávnění            | Ne                     |
+    | Spuštění kontejnerů jako kořenový uživatel by se mělo vyhnout.                           | Správa přístupu a oprávnění            | Ne                     |
+    | Kontejnery sdílející závislé obory názvů hostitele by se měly vyhnout              | Správa přístupu a oprávnění            | Ne                     |
+    | Pro kontejnery by se měly vyhovět aspoň privilegované možnosti pro Linux.       | Správa přístupu a oprávnění            | **Ano**                |
+    | Použití ovládacího připojení svazku pod HostPath by mělo být omezené na známý seznam.    | Správa přístupu a oprávnění            | **Ano**                |
+    | Kontejnery by měly naslouchat jenom povoleným portům.                              | Omezit neautorizovaný přístup k síti     | **Ano**                |
+    | Služby by měly naslouchat jenom povoleným portům.                                | Omezit neautorizovaný přístup k síti     | **Ano**                |
+    | Používání hostitelských sítí a portů by se mělo omezit.                     | Omezit neautorizovaný přístup k síti     | **Ano**                |
+    | Přepsání nebo zakázání profilu kontejnerů AppArmor by mělo být omezené. | Náprava konfigurací zabezpečení        | **Ano**                |
+    | Image kontejneru by se měly nasadit jenom z důvěryhodných registrů.            | Napravit ohrožení zabezpečení                | **Ano**                |
 
 
 1. Doporučení s parametry se musí přizpůsobit nastavením parametrů:

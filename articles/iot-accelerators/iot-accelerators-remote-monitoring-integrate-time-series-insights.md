@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b6219c82dc23deb467e87a6866839b8eace8b5d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536602"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072641"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrace služby Azure Time Series Insights se vzdáleným monitorováním
 
@@ -126,7 +126,7 @@ Abyste měli jistotu, že všichni uživatelé, kteří mají přístup k řeše
 1. Zvolte **Uložit** a vytvořte přiřazení role. Po chvíli se objektu zabezpečení přiřadí role v zásadách přístupu k datům.
 
 > [!NOTE]
-> Pokud potřebujete udělit dalším uživatelům přístup k aplikaci Time Series Insights Explorer, můžete k [udělení přístupu k datům](../time-series-insights/time-series-insights-data-access.md#grant-data-access)použít tento postup.
+> Pokud potřebujete udělit dalším uživatelům přístup k aplikaci Time Series Insights Explorer, můžete k [udělení přístupu k datům](../time-series-insights/concepts-access-policies.md#grant-data-access)použít tento postup.
 
 ## <a name="configure-azure-stream-analytics"></a>Konfigurace Azure Stream Analytics 
 
@@ -217,7 +217,7 @@ Nakonfigurujte prostředí `basic` nasazení pro aktualizované mikroslužby.
 
 1. Pomocí nejnovější značky si z úložiště GitHubu [Stáhněte nejnovější soubor YAML Docker](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) . 
 
-1. Připojte se k virtuálnímu počítači přes SSH podle postupu popsaného v tématu [jak vytvářet a používat klíče SSH](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
+1. Připojte se k virtuálnímu počítači přes SSH podle postupu popsaného v tématu [jak vytvářet a používat klíče SSH](../virtual-machines/linux/ssh-from-windows.md).
 
 1. Po připojení zadejte `cd /app` .
 
@@ -300,4 +300,4 @@ Konfigurace prostředí `standard` nasazení pro aktualizované mikroslužby vý
 
 * Další informace o tom, jak prozkoumat data a diagnostikovat upozornění v Průzkumníkovi Time Series Insights, najdete v našem kurzu o [provedení analýzy hlavní příčiny](iot-accelerators-remote-monitoring-root-cause-analysis.md).
 
-* Informace o tom, jak prozkoumat a dotazovat data v Průzkumníkovi Time Series Insights, najdete v dokumentaci v [průzkumníkovi Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).
+* Informace o tom, jak prozkoumat a dotazovat data v Průzkumníkovi Time Series Insights, najdete v dokumentaci v [průzkumníkovi Azure Time Series Insights](../time-series-insights/time-series-insights-explorer.md).

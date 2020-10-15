@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 50194341d1d34da4b02558461f532ae64b941b16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1668c7ccad75771a598aaa55f5403f070ea2dff8
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319618"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090212"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>Zabezpečení webové aplikace pomocí přihlášení uživatele
 
@@ -59,7 +59,7 @@ Aby se uživatelé mohli přihlásit, musíte ve službě Azure AD vytvořit web
    * V případě implementace bez AspNetCore nebo jiné najdete další informace v dokumentaci k [získání tokenu pro aplikaci](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token) z Azure AD.
    * Koncový bod zabezpečeného tokenu zodpovídá za vrácení přístupového tokenu pro ověřeného a autorizovaného uživatele pro volání rozhraní REST API Azure Maps.
 
-8. Nakonfigurujte řízení přístupu na základě role Azure pro uživatele nebo skupiny. Viz [udělení přístupu na základě rolí pro uživatele](#grant-role-based-access-for-users-to-azure-maps).
+8. Nakonfigurujte řízení přístupu na základě role v Azure (Azure RBAC) pro uživatele nebo skupiny. Viz [udělení přístupu na základě role pro uživatele](#grant-role-based-access-for-users-to-azure-maps).
 
 9. Nakonfigurujte stránku webové aplikace pomocí Azure Maps Web SDK pro přístup ke koncovému bodu zabezpečeného tokenu. 
 
@@ -94,7 +94,7 @@ var map = new atlas.Map("map", {
     });
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

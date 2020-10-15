@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 8cda46a011ae92f26a15a4e9a918559801ce299c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c90062f1968cc7be5a742a67363f57b9632fdfa
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906873"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090671"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>Java a základní operační systém pro aplikace mikroslužeb Spring
 
@@ -46,7 +46,7 @@ Systémy Azul budou nepřetržitě vyhledávat změny v základních operačníc
     * Ubuntu 20,04 LTS (kontaktní fossa). Aplikace budou dál zůstat na nejnovější verzi LTS Ubuntu.
     * Viz [Ubuntu 20,04 LTS (kontaktní fossa)](http://releases.ubuntu.com/focal/)
 * Jak můžu stáhnout podporovaný běhový modul Java pro místní vývoj? 
-    * Přečtěte si téma [instalace JDK pro Azure a Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+    * Přečtěte si téma [instalace JDK pro Azure a Azure Stack](/azure/developer/java/fundamentals/java-jdk-install)
 * Jak získám podporu pro problémy na úrovni běhového prostředí Java?
     * Otevřete lístek podpory s podporou Azure.
  
@@ -57,4 +57,4 @@ Systémy Azul budou nepřetržitě vyhledávat změny v základních operačníc
 ## <a name="next-steps"></a>Další kroky
 
 * [Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře](spring-cloud-quickstart.md)
-* [Dlouhodobá podpora jazyka Java pro Azure a Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [Dlouhodobá podpora jazyka Java pro Azure a Azure Stack](/azure/developer/java/fundamentals/java-jdk-long-term-support)

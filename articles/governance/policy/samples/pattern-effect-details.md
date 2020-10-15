@@ -1,14 +1,14 @@
 ---
 title: 'Vzor: účinky definice zásady'
 description: Tento model Azure Policy poskytuje příklad použití různých efektů definice zásady.
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 9c7e7689aa837a2dba0992112df3cd36ac9affe6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1da9bd153707db35c07ed3c176542797a694d7a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85565726"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073032"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy – vzor: efekty
 
@@ -24,7 +24,7 @@ Tato definice zásady kontroluje, zda značka definovaná v parametru **TagName*
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="40-50":::
 
-Efekt **úprav** vyžaduje blok **policyRule. then. Details** , který definuje **roleDefinitionIds** a **operace**. Tyto parametry informují Azure Policy, jaké role jsou potřeba k přidání značky a nápravě prostředku a kterou operaci **úprav** provést. V tomto příkladu je **operace** _přidána_ a parametry jsou použity k nastavení značky a její hodnoty.
+Efekt **úprav** vyžaduje blok **policyRule. then. Details** , který definuje **roleDefinitionIds** a **operace**. Tyto parametry informují Azure Policy rolí potřebných k přidání značky a nápravě prostředku a operace **Úpravy** , která se má použít. V tomto příkladu se k nastavení značky a její hodnoty použijí **operace** _Přidání_ a parametry.
 
 ## <a name="sample-2-complex-effect"></a>Ukázka 2: složitý efekt
 

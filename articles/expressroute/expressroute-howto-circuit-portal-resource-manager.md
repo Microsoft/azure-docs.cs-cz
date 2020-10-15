@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: e25ebd181d0017885a24310e3dac3ff30a59a21e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c2e0f7736aa5d6779e4ed7cb3824f6606c121565
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973355"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073134"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>Rychlý Start: vytvoření a úprava okruhu ExpressRoute
 
 V tomto rychlém startu se dozvíte, jak vytvořit okruh ExpressRoute pomocí Azure Portal a modelu nasazení Azure Resource Manager. Můžete také kontrolovat stav, aktualizovat, odstranit nebo zrušit zřízení okruhu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Než začnete s konfigurací, Projděte si [požadavky](expressroute-prerequisites.md) a [pracovní postupy](expressroute-workflows.md) .
@@ -172,7 +172,7 @@ Pokud je stav zřizování poskytovatele služby okruhu ExpressRoute **zřizová
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Okruh ExpressRoute můžete odstranit tak, že vyberete ikonu **Odstranit** . 
+Okruh ExpressRoute můžete odstranit tak, že vyberete ikonu **Odstranit** . Než budete pokračovat, ujistěte se, že stav poskytovatele není *zřízený* .
 
 :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="Vytvoření okruhu ExpressRoute":::
 

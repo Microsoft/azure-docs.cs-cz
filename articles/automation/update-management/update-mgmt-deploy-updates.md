@@ -3,18 +3,18 @@ title: Postup vytvoření nasazení aktualizací pro Azure Automation Update Man
 description: Tento článek popisuje, jak naplánovat nasazení aktualizací a zkontrolovat jejich stav.
 services: automation
 ms.subservice: update-management
-ms.date: 09/16/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: fa5cabd5410f0cbe7382db0289d98bc69d4a01fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5f7d86ff668a151bdf83908c3199d01a0a53246
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294712"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073746"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Jak nasadit aktualizace a zkontrolovat výsledky
 
-Tento článek popisuje, jak naplánovat nasazení aktualizací a zkontrolovat proces po dokončení nasazení. Můžete nakonfigurovat nasazení aktualizace z vybraného virtuálního počítače Azure, z vybraného serveru s povoleným obloukem nebo z účtu Automation ve všech nakonfigurovaných počítačích a serverech. 
+Tento článek popisuje, jak naplánovat nasazení aktualizací a zkontrolovat proces po dokončení nasazení. Můžete nakonfigurovat nasazení aktualizace z vybraného virtuálního počítače Azure, z vybraného serveru s povoleným obloukem nebo z účtu Automation ve všech nakonfigurovaných počítačích a serverech.
 
 V každém scénáři je nasazení, které jste vytvořili, cíleno na vybraný počítač nebo server, nebo v případě vytvoření nasazení z účtu Automation, můžete cílit na jeden nebo více počítačů. Když naplánujete nasazení aktualizace z virtuálního počítače Azure nebo serveru s podporou ARC, postup se shoduje s nasazením z vašeho účtu Automation, a to s těmito výjimkami:
 
@@ -59,7 +59,7 @@ K naplánování nového nasazení aktualizace proveďte následující kroky. V
     > [!NOTE]
     > Tato možnost není dostupná, pokud jste vybrali virtuální počítač Azure nebo server s podporou ARC. Počítač je automaticky zaměřen na plánované nasazení.
 
-6. V rozevírací nabídce **počítače k aktualizaci** vyberte uložené výsledky hledání, importovanou skupinu nebo vyberte **počítače** a vyberte jednotlivé počítače. Pomocí této možnosti můžete zobrazit připravenost agenta Log Analytics pro každý počítač. Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../../azure-monitor/platform/computer-groups.md).
+6. V rozevírací nabídce **počítače k aktualizaci** vyberte uložené výsledky hledání, importovanou skupinu nebo vyberte **počítače** a vyberte jednotlivé počítače. Pomocí této možnosti můžete zobrazit připravenost agenta Log Analytics pro každý počítač. Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../../azure-monitor/platform/computer-groups.md). V plánovaném nasazení aktualizace můžete zahrnout maximálně 500 počítačů.
 
     > [!NOTE]
     > Tato možnost není dostupná, pokud jste vybrali virtuální počítač Azure nebo server s podporou ARC. Počítač je automaticky zaměřen na plánované nasazení.
@@ -89,7 +89,7 @@ K naplánování nového nasazení aktualizace proveďte následující kroky. V
 
     * Časové intervaly pro správu a údržbu určují, kolik aktualizací se instaluje.
     * Update Management neukončí instalaci nových aktualizací, pokud se blíží konec okna údržby.
-    * Update Management neukončí probíhající aktualizace, pokud dojde k překročení časového období údržby.
+    * Update Management neukončí probíhající aktualizace, pokud dojde k překročení časového období údržby. Žádné zbývající aktualizace, které se mají nainstalovat, se nepokusí. Pokud k tomu dojde konzistentně, měli byste znovu vyhodnotit dobu trvání časového intervalu pro správu a údržbu.
     * Pokud dojde k překročení časového intervalu pro správu a údržbu v systému Windows, je často k instalaci aktualizace Service Pack trvat delší dobu.
 
     > [!NOTE]
