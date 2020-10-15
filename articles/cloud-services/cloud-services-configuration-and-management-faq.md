@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 477f38e18f1bee881e4a9df23dd37048f39549be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219c0b90bceb2a123d2e4af21ac7fa1edea58d54
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092741"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070006"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s konfigurací a správou pro Azure Cloud Services: nejčastější dotazy
 
@@ -77,7 +77,7 @@ Tento článek obsahuje nejčastější dotazy týkající se problémů s konfi
 
 ### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>Proč je neúplný řetěz certifikátů pro certifikát TLS/SSL cloudové služby?
     
-Doporučujeme, aby si zákazníci nainstalují úplný řetěz certifikátů (list Certificate, zprostředkující certifikáty a kořenový certifikát) místo jenom na listový certifikát. Když instalujete jenom listový certifikát, spoléháte se na Windows, aby se vytvořil řetěz certifikátů, a to procházením seznamu CTL. Pokud se v Azure nebo při pokusu o ověření certifikátu vyskytnou občasné problémy se sítí nebo službou DNS nebo web Windows Update, může se certifikát považovat za neplatný. Instalací úplného řetězu certifikátů se můžete vyhnout tomuto problému. To, jak to udělat, najdete v blogu [Postup instalace zřetězeného certifikátu SSL](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) .
+Doporučujeme, aby si zákazníci nainstalují úplný řetěz certifikátů (list Certificate, zprostředkující certifikáty a kořenový certifikát) místo jenom na listový certifikát. Když instalujete jenom listový certifikát, spoléháte se na Windows, aby se vytvořil řetěz certifikátů, a to procházením seznamu CTL. Pokud se v Azure nebo při pokusu o ověření certifikátu vyskytnou občasné problémy se sítí nebo službou DNS nebo web Windows Update, může se certifikát považovat za neplatný. Instalací úplného řetězu certifikátů se můžete vyhnout tomuto problému. To, jak to udělat, najdete v blogu [Postup instalace zřetězeného certifikátu SSL](/archive/blogs/azuredevsupport/how-to-install-a-chained-ssl-certificate) .
 
 ### <a name="what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions"></a>Jaký je účel "certifikát šifrování nástrojů Windows Azure pro rozšíření"?
 
@@ -111,11 +111,11 @@ Tuto úlohu můžete automatizovat pomocí spouštěcího skriptu (Batch/cmd/Pow
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>Jaký je účel certifikátu "Microsoft Azure Service Management for MachineKey"?
 
-Tento certifikát se používá k šifrování klíčů počítačů ve webových rolích Azure. Pokud se chcete dozvědět víc, podívejte se na [Tento informační zpravodaj](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731).
+Tento certifikát se používá k šifrování klíčů počítačů ve webových rolích Azure. Pokud se chcete dozvědět víc, podívejte se na [Tento informační zpravodaj](/security-updates/securityadvisories/2018/4092731).
 
 Další informace najdete v následujících článcích:
-- [Jak nakonfigurovat a spustit úlohy po spuštění pro cloudovou službu](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
-- [Běžné úlohy po spuštění cloudové služby](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
+- [Jak nakonfigurovat a spustit úlohy po spuštění pro cloudovou službu](./cloud-services-startup-tasks.md)
+- [Běžné úlohy po spuštění cloudové služby](./cloud-services-startup-tasks-common.md)
 
 ## <a name="monitoring-and-logging"></a>Monitorování a protokolování
 
@@ -139,16 +139,16 @@ Vyčerpali jste kvótu místního úložiště pro zápis do adresáře protokol
 * Zvyšte limit kvóty pro místní prostředky.
 
 Další informace najdete v následujících dokumentech:
-* [Ukládání a zobrazení diagnostických dat v Azure Storage](/azure/storage/common/storage-introduction)
-* [Protokoly IIS zastaví zápis v cloudové službě.](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
+* [Ukládání a zobrazení diagnostických dat v Azure Storage](../storage/common/storage-introduction.md)
+* [Protokoly IIS zastaví zápis v cloudové službě.](/archive/blogs/cie/iis-logs-stops-writing-in-cloud-service)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Návody povolit protokolování WAD pro Cloud Services?
 Můžete povolit protokolování Windows Azure Diagnostics (WAD) pomocí následujících možností:
-1. [Povolit ze sady Visual Studio](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [Povolit prostřednictvím kódu .NET](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
-3. [Povolit prostřednictvím PowerShellu](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
+1. [Povolit ze sady Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+2. [Povolit prostřednictvím kódu .NET](./cloud-services-dotnet-diagnostics.md)
+3. [Povolit prostřednictvím PowerShellu](./cloud-services-diagnostics-powershell.md)
 
-Aby bylo možné získat aktuální nastavení WAD vaší cloudové služby, můžete použít příkaz [Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) PS cmd nebo ho můžete zobrazit přes portál z okna rozšíření Cloud Services-->.
+Aby bylo možné získat aktuální nastavení WAD vaší cloudové služby, můžete použít příkaz [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PS cmd nebo ho můžete zobrazit přes portál z okna rozšíření Cloud Services-->.
 
 
 ## <a name="network-configuration"></a>Konfigurace sítě
@@ -248,7 +248,7 @@ Další podrobnosti o využití vlastní metriky prostřednictvím Application I
 
 Další informace o tom, jak integrovat Azure Diagnostics s Application Insights pro Cloud Services, najdete v tématu [odeslání cloudové služby, virtuálního počítače nebo Service Fabric diagnostických dat do Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 
-Další informace o povolení Application Insights pro Cloud Services najdete v tématu [Application Insights pro Azure Cloud Services](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
+Další informace o povolení Application Insights pro Cloud Services najdete v tématu [Application Insights pro Azure Cloud Services](../azure-monitor/app/cloudservices.md)
 
 Další informace o tom, jak povolit protokolování Azure Diagnostics pro Cloud Services, najdete v tématu [nastavení diagnostiky pro Azure Cloud Services a virtuální počítače](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them) .
 
@@ -313,7 +313,7 @@ Vazbu SNI můžete nakonfigurovat pomocí rutiny prostředí PowerShell **New-we
 New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags
 ```
 
-Jak je popsáno [zde](https://technet.microsoft.com/library/ee790567.aspx), $sslFlags může být jednou z následujících hodnot:
+Jak je popsáno [zde](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee790567(v=technet.10)), $sslFlags může být jednou z následujících hodnot:
 
 |Hodnota|Význam|
 ------|------
@@ -324,7 +324,7 @@ Jak je popsáno [zde](https://technet.microsoft.com/library/ee790567.aspx), $ssl
  
 **Metoda 2: použití kódu**
 
-Vazbu SNI můžete také nakonfigurovat prostřednictvím kódu ve spuštění role, jak je popsáno v tomto [blogovém příspěvku](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/):
+Vazbu SNI můžete také nakonfigurovat prostřednictvím kódu ve spuštění role, jak je popsáno v tomto [blogovém příspěvku](/archive/blogs/jianwu/expose-ssl-service-to-multi-domains-from-the-same-cloud-service):
 
 ```csharp
 //<code snip> 
@@ -356,7 +356,6 @@ Už nasazená cloudová služba se účtuje za výpočetní výkon a úložišt�
 
 Tady je postup, ve kterém můžete snížit svou fakturaci, aniž byste ztratili IP adresu pro vaši službu:
 
-1. Před odstraněním nasazení [si IP adresu vyhradit](../virtual-network/virtual-networks-reserved-public-ip.md) .  Bude se vám účtovat jenom tato IP adresa. Další informace o fakturaci IP adres najdete v tématu [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses/).
+1. Před odstraněním nasazení [si IP adresu vyhradit](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) .  Bude se vám účtovat jenom tato IP adresa. Další informace o fakturaci IP adres najdete v tématu [ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses/).
 2. Odstraňte nasazení. Neodstraňujte xxx.cloudapp.net, abyste ho mohli použít pro budoucnost.
 3. Pokud chcete cloudovou službu znovu nasadit pomocí stejné rezervované IP adresy, kterou jste rezervovali ve vašem předplatném, přečtěte si téma [vyhrazená IP adresa adres Cloud Services a Virtual Machines](https://azure.microsoft.com/blog/reserved-ip-addresses/).
-

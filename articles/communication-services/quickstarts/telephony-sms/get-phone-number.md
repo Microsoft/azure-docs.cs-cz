@@ -9,12 +9,12 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: a9c33fad6d376c2f568f4eefbb0379486b5c40f3
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 49a5fd51a62dd6c90d7b1bac8d99296ddc81287f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044764"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070091"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Rychlý Start: získání telefonního čísla pomocí Azure Portal
 
@@ -22,7 +22,7 @@ ms.locfileid: "92044764"
 
 Začněte s komunikačními službami Azure pomocí Azure Portal k nákupu telefonního čísla.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Aktivní prostředek služby Communication Services.](../create-communication-resource.md)
@@ -45,16 +45,16 @@ Nejdřív budete muset zvolit, kde se má `Country/region` telefonní číslo z�
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
-### <a name="select-a-phone-plan"></a>Vybrat plán pro telefon
+### <a name="select-your-phone-number-features"></a>Výběr funkcí telefonního čísla
 
-Výběr telefonního plánu je rozdělen do dvou kroků: 
+Konfigurace telefonního čísla je rozdělená do dvou kroků: 
 
 1. Výběr [typu čísla](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services)
-2. Výběr [plánu](../../concepts/telephony-sms/plan-solution.md#phone-number-plans-in-azure-communication-services)
+2. Výběr [číselných funkcí](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services)
 
-Nabízíme nyní dva číselné typy: `Geographic` a `Toll-free` . Když vyberete typ čísla, budete mít k dispozici několik plánů, ze kterých si můžete vybrat.
+Můžete vybrat ze dvou typů telefonních čísel: `Geographic` a `Toll-free` . Když vyberete typ čísla, můžete vybrat funkci.
 
-V našem příkladu jsme vybrali `Toll-free` Typ čísla s `Outbound calling` `Inbound and Outbound SMS` plány a.
+V našem příkladu jsme vybrali `Toll-free` Typ čísla s `Outbound calling` `Inbound and Outbound SMS` funkcemi a.
 
 :::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
@@ -74,7 +74,7 @@ Vyberte `Area code` ze seznamu dostupných kódů oblastí a zadejte množství,
 :::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
 > [!NOTE]
-> Dostupnost závisí na typu čísla, umístění a plánu, který jste vybrali.
+> Dostupnost závisí na typu čísla, umístění a funkcích, které jste vybrali.
 > Čísla jsou vyhrazena pro krátkou dobu před vypršením platnosti transakce. Pokud vyprší platnost transakce, bude nutné čísla znovu vybrat.
 
 Chcete-li zobrazit souhrn nákupu a umístit objednávku, klikněte na `Next: Summary` tlačítko v dolní části stránky.
@@ -103,12 +103,14 @@ Pokud chcete spravovat telefonní čísla, vyberte v nabídce okno telefonní č
 > [!NOTE]
 > Na této stránce může trvat několik minut, než se zřízené počty zobrazí.
 
-### <a name="customizing-phone-number-features"></a>Přizpůsobení funkcí telefonního čísla
-Na `Numbers` stránce můžete vybrat telefonní číslo kliknutím na číslo, pro které chcete plán přizpůsobit.
+
+### <a name="customizing-phone-numbers"></a>Přizpůsobení telefonních čísel
+
+Na `Numbers` stránce můžete vybrat telefonní číslo a nakonfigurovat ho.
 
 :::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
-Vyberte možnosti ze seznamu dostupných volání a možností SMS a potom kliknutím `Confirm` použijte výběr.
+Vyberte funkce z dostupných možností a potom kliknutím `Confirm` použijte výběr.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
