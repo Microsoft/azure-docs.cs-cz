@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 19e022073f43548a91fad76cb380a75205237bbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e18193b40bb7c59a21a279f451673dc7d11140e4
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892554"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092898"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Zotavení po havárii v cloudu Azure jaře
 
@@ -50,7 +50,7 @@ Budete potřebovat dvě instance služby jarního cloudu Azure nasazené ve dvou
 
 2. Pokud chcete nastavit vlastní doménu pro tyto dvě existující instance služby, nastavte vlastní doménu pro službu dodržovat [vlastní doménový dokument](spring-cloud-tutorial-custom-domain.md) . Po úspěšném vytvoření se obě instance služby sváže s vlastní doménou: bcdr-test.contoso.com
 
-3. Vytvoření Traffic Manageru a dvou koncových bodů: [vytvořte profil Traffic Manager pomocí Azure Portal](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile).
+3. Vytvoření Traffic Manageru a dvou koncových bodů: [vytvořte profil Traffic Manager pomocí Azure Portal](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 
 Tady je profil Traffic Manageru:
 * Traffic Manager název DNS: `http://asc-bcdr.trafficmanager.net`
@@ -68,4 +68,3 @@ Tady je profil Traffic Manageru:
 ## <a name="next-steps"></a>Další kroky
 
 * [Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře](spring-cloud-quickstart.md)
- 

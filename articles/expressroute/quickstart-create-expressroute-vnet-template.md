@@ -6,15 +6,15 @@ author: duongau
 mnager: kumud
 ms.service: expressroute
 ms.topic: quickstart
-ms.custom: subject-armsq
+ms.custom: subject-armqs
 ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 540d9d5f7ef3815743909a399076c55018f0df40
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 37f0b890cd4942e5dcb47b496d661eb7c54db94d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961847"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093510"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Rychlý Start: vytvoření okruhu ExpressRoute s privátním partnerským vztahem pomocí šablony ARM
 

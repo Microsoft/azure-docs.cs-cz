@@ -2,19 +2,19 @@
 title: Konfigurace Azure Storage bran firewall a virtuálních sítí | Microsoft Docs
 description: Nakonfigurujte vícevrstvé zabezpečení sítě pro svůj účet úložiště pomocí Azure Storage bran firewall a Azure Virtual Network.
 services: storage
-author: tamram
+author: santoshc
 ms.service: storage
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 4d4afd87a16ecb28687d901614e3bbc5d9673fa9
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 7e7a61247c8f449291fb8ec0b91b7513ee75f6c9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874641"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072488"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace bran firewall Azure Storage a virtuálních sítí
 

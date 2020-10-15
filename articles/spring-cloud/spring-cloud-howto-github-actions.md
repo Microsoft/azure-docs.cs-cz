@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9e635d606870d09e9aac82de7da32e074b124159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fd792684150598449deabd14c0e19f266597bd9
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906953"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093969"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure jarní Cloud CI/CD s akcemi GitHubu
 
 Akce GitHubu podporují automatizovaný pracovní postup pro životní cyklus vývoje softwaru. S akcemi GitHubu pro jarní cloud Azure můžete vytvářet pracovní postupy v úložišti pro vytváření, testování, balení, vydávání a nasazování do Azure. 
 
-## <a name="prerequisites"></a>Požadavky
-Tento příklad vyžaduje rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+## <a name="prerequisites"></a>Předpoklady
+Tento příklad vyžaduje rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
 ::: zone pivot="programming-language-csharp"
 ## <a name="set-up-github-repository-and-authenticate"></a>Nastavení úložiště GitHub a ověření
@@ -289,7 +289,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>Nasazení s modulem plug-in Maven
-Další možností je použít [modul plug-in Maven](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart) k nasazení jar a aktualizaci nastavení aplikace. Příkaz `mvn azure-spring-cloud:deploy` je idempotentní a v případě potřeby vytvoří aplikace automaticky. Nemusíte vytvářet odpovídající aplikace předem.
+Další možností je použít [modul plug-in Maven](./spring-cloud-quickstart.md) k nasazení jar a aktualizaci nastavení aplikace. Příkaz `mvn azure-spring-cloud:deploy` je idempotentní a v případě potřeby vytvoří aplikace automaticky. Nemusíte vytvářet odpovídající aplikace předem.
 
 ```
 name: AzureSpringCloud
@@ -340,5 +340,5 @@ Pokud se vaše akce spouští jako chyba, například pokud jste nenastavili př
 ## <a name="next-steps"></a>Další kroky
 
 * [Key Vault pro jarní cloudové akce GitHubu](./spring-cloud-github-actions-key-vault.md)
-* [Azure Active Directory instančních objektů](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az-ad-sp-create-for-rbac)
+* [Azure Active Directory instančních objektů](/cli/azure/ad/sp?preserve-view=true&view=azure-cli-latest#az-ad-sp-create-for-rbac)
 * [Akce GitHubu pro Azure](https://github.com/Azure/actions/)

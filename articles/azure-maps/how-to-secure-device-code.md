@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7e61a881470b206981b65e175c1f7f40b161ebf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e62a5c984afb434b8c47b5ee8c5c66c61485dbfc
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319754"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090433"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>Zabezpečení vstupního omezeného zařízení pomocí služby Azure AD a Azure Maps rozhraní REST API
 
@@ -55,7 +55,7 @@ Vytvořte aplikaci založenou na zařízeních ve službě Azure AD a povolte p�
     > [!div class="mx-imgBorder"]
     > ![Výběr oprávnění rozhraní API pro aplikace](./media/how-to-manage-authentication/select-app-permissions.png)
 
-6. Nakonfigurujte řízení přístupu na základě role Azure pro uživatele nebo skupiny. Přečtěte si téma [udělení přístupu na základě role uživatelům Azure Maps](#grant-role-based-access-for-users-to-azure-maps).
+6. Nakonfigurujte řízení přístupu na základě role v Azure (Azure RBAC) pro uživatele nebo skupiny. Přečtěte si téma [udělení přístupu na základě role uživatelům Azure Maps](#grant-role-based-access-for-users-to-azure-maps).
 
 7. Přidejte kód pro získání toku tokenů do aplikace. Podrobnosti o implementaci najdete v části [tok kódu zařízení](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token#device-code-flow). Při získávání tokenů odkazuje na obor: `user_impersonation` který byl vybrán v předchozích krocích.
 
@@ -110,7 +110,7 @@ Těles
 }
 ```
 
-[!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
+[!INCLUDE [grant role-based access to users](./includes/grant-rbac-users.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

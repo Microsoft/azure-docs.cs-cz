@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 3a6f7bd282dbfc5087c5ddcb066c8e38a478c99f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: bfd9e08387a4de2220ef56afdd0ef79bd837ed4c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018657"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070193"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Kurz – sestavení koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD
 
@@ -747,7 +747,7 @@ Minimální pruh šifrovacích sad TLS 1,2:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>Rozsahy IP adres
-Služba zřizování Azure AD aktuálně funguje pod rozsahy IP adres pro Azureactivedirectory selhala, jak je uvedeno [tady](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all). Rozsahy IP adres uvedené pod značkou Azureactivedirectory selhala můžete přidat, pokud chcete, aby byl do vaší aplikace povolený provoz ze služby zřizování Azure AD. Všimněte si, že budete muset pečlivě zkontrolovat seznam rozsahů IP adres pro vypočítané adresy. Adresa, jako je například ' 40.126.25.32 ', může být reprezentována v seznamu rozsahů IP adres jako ' 40.126.0.0/18 '. Seznam rozsahů IP adres můžete také programově načíst pomocí následujícího [rozhraní API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list).
+Služba zřizování Azure AD aktuálně funguje pod rozsahy IP adres pro Azureactivedirectory selhala, jak je uvedeno [tady](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all). Rozsahy IP adres uvedené pod značkou Azureactivedirectory selhala můžete přidat, pokud chcete, aby byl do vaší aplikace povolený provoz ze služby zřizování Azure AD. Všimněte si, že budete muset pečlivě zkontrolovat seznam rozsahů IP adres pro vypočítané adresy. Adresa, jako je například ' 40.126.25.32 ', může být reprezentována v seznamu rozsahů IP adres jako ' 40.126.0.0/18 '. Seznam rozsahů IP adres můžete také programově načíst pomocí následujícího [rozhraní API](/rest/api/virtualnetwork/servicetags/list).
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Krok 3: Vytvoření koncového bodu SCIM
 

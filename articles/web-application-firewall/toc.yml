@@ -77,6 +77,10 @@
           href: ./afds/waf-front-door-geo-filtering.md
         - name: Nejčastější dotazy
           href: ./afds/waf-faq.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: WAF a Azure Policy
       href: ./shared/waf-azure-policy.md
 - name: Návody
@@ -131,6 +135,8 @@
           href: ./afds/waf-front-door-tutorial-geo-filtering.md
         - name: Monitorování a protokolování
           href: ./afds/waf-front-door-monitor.md
+    - name: Použití Azure Sentinelu s Firewallem webových aplikací
+      href: waf-sentinel.md
     - name: Řešení potíží
       items:
         - name: Application Gateway

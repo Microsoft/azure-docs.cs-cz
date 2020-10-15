@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: e488f2ddc44f1339d648cd6fe6b1aae18b748679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f84201de1f63704fefcf5de4041b95ed8c2122cd
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892653"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094054"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Principy metrik pro jarní cloud Azure
 
@@ -176,12 +176,12 @@ Další informace najdete v tématu [čítače dotnet](/dotnet/core/diagnostics/
 
 * [Rychlý Start: monitorování jarních cloudových aplikací Azure díky protokolům, metrikám a trasování](spring-cloud-quickstart-logs-metrics-tracing.md)
 
-* [Začínáme s Průzkumníkem metrik Azure](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
+* [Začínáme s Průzkumníkem metrik Azure](../azure-monitor/platform/metrics-getting-started.md)
 
-* [Analýza protokolů a metrik pomocí nastavení diagnostiky](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
+* [Analýza protokolů a metrik pomocí nastavení diagnostiky](./diagnostic-services.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Kurz: monitorování jarních cloudových prostředků pomocí výstrah a skupin akcí](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-alerts-action-groups)
+* [Kurz: monitorování jarních cloudových prostředků pomocí výstrah a skupin akcí](./spring-cloud-tutorial-alerts-action-groups.md)
 
-* [Kvóty a plány služeb pro jarní Cloud v Azure](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quotas)
+* [Kvóty a plány služeb pro jarní Cloud v Azure](./spring-cloud-quotas.md)

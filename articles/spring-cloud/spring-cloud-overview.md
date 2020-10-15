@@ -7,18 +7,18 @@ ms.topic: overview
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b03bedd9abbe59ed3bc1b0ec1439aa27af57e6da
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 159851f5b1ca38cc34da785b39229a6a91e1e4dd
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758893"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090688"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Co je Azure Spring Cloud?
 
 Jarní cloud Azure usnadňuje nasazení mikroslužeb založených na jarních aplikacích do Azure s nulovými změnami kódu.  Jarní cloud Azure spravuje infrastrukturu jarních cloudových aplikací, takže se vývojáři můžou soustředit na svůj kód.  Jarní Cloud poskytuje správu životního cyklu pomocí komplexního monitorování a diagnostiky, správy konfigurací, zjišťování služeb, integrace CI/CD, modrého zeleného nasazení a dalších.
 
-Jarní cloud Azure podporuje aplikace v jazyce Java pro [spouštění](https://spring.io/projects/spring-boot) a ASP.NET Core [Steeltoe](https://steeltoe.io/) . Podpora Steeltoe se v tuto chvíli nabízí jako verze Public Preview. Nabídky verze Public Preview vám umožní experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace najdete v tématu [Nejčastější dotazy](https://azure.microsoft.com/support/faq/) nebo soubor a [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Jarní cloud Azure podporuje aplikace v jazyce Java pro [spouštění](https://spring.io/projects/spring-boot) a ASP.NET Core [Steeltoe](https://steeltoe.io/) . Podpora Steeltoe se v tuto chvíli nabízí jako verze Public Preview. Nabídky verze Public Preview vám umožní experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace najdete v tématu [Nejčastější dotazy](https://azure.microsoft.com/support/faq/) nebo soubor a [support Request](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 V rámci ekosystému Azure umožňuje Azure jaře Cloud snadnou vazbu na další služby Azure, včetně úložiště, databází, monitorování a dalších.
 
