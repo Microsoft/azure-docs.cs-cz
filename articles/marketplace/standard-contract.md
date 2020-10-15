@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/20/2020
-ms.openlocfilehash: 3487b5a069b1862ec302a979318ea78722b1433c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3079cb18f7bc88d691081a7970f5833e8b8d6887
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361683"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078183"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Smlouva standard pro komerční tržiště Microsoftu
 
@@ -34,7 +34,7 @@ K dispozici jsou dva druhy změn pro komerční vydavatele na webu Marketplace:
 * Vlastní změny: tyto změny představují zvláštní změny standardní smlouvy, které jsou zaměřené na konkrétní zákazníky jenom prostřednictvím ID tenanta Azure. Vydavatelé můžou zvolit tenanta, na který chtějí cílit. S vlastními podmínkami změny v nákupním toku nabídky se zobrazí pouze zákazníci z tenanta.  Zákazníci musí přijmout podmínky smlouvy Standard a jejich změny, aby mohli používat vaši nabídku.
 
 >[!Note]
->Tyto dva typy změn zásobníků jsou navzájem navzájem. Zákazníci, na které cílíte vlastní změny, získají při nákupu také univerzální změnu standardní smlouvy.
+>Tyto dva typy změn zásobníků jsou navzájem navzájem. Zákazníci, na které cílíte vlastní změny, získají při nákupu také univerzální změnu standardní smlouvy. Změny jsou omezené na 4000 znaků včetně mezer.
 
 Standardní smlouvu pro komerční tržiště společnosti Microsoft můžete využít pro následující typy nabídek: aplikace Azure (šablony řešení a spravované aplikace), Virtual Machines a SaaS.
 

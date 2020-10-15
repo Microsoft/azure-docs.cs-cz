@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: c410ac7f41adb623a7198320a1edced097778569
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64391d7f5a7b1a295be7e404d27e5cbe8c691eb2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73826239"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079084"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Nejčastější dotazy k akcelerátoru řešení vzdáleného monitorování
 
@@ -40,13 +40,13 @@ Další informace najdete v tématu [upgrade mapového klíče pro zobrazení za
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Kde najdu informace o předchozí verzi řešení vzdáleného monitorování?
 
-Předchozí verze akcelerátoru řešení vzdáleného monitorování byla známá jako předkonfigurované řešení vzdáleného monitorování IoT Suite. Archivovanou dokumentaci najdete na adrese [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) .
+Předchozí verze akcelerátoru řešení vzdáleného monitorování byla známá jako předkonfigurované řešení vzdáleného monitorování IoT Suite. Archivovanou dokumentaci najdete na adrese [https://docs.microsoft.com/previous-versions/azure/iot-suite/](/previous-versions/azure/iot-suite/) .
 
 ### <a name="next-steps"></a>Další kroky
 
 Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
 * [Prozkoumejte možnosti akcelerátoru řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md)
-* [Přehled akcelerátoru řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
+* [Přehled akcelerátoru řešení prediktivní údržby](./iot-accelerators-predictive-walkthrough.md)
 * [Nasadit akcelerátor řešení propojené továrny](quickstart-connected-factory-deploy.md)
-* [Zabezpečení IoT od počátku](/azure/iot-fundamentals/iot-security-ground-up)
+* [Zabezpečení IoT od počátku](../iot-fundamentals/iot-security-ground-up.md)

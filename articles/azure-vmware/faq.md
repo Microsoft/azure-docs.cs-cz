@@ -4,12 +4,12 @@ description: Obsahuje odpovědi na některé běžné dotazy týkající se ře�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: bdfe3956d8c715e391270aab6b3c589430c91593
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 8868f86f0cf46ff82e37cd433d7b5bca0d69567d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058025"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078931"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
 
@@ -74,7 +74,7 @@ Ano, pokud je systém, na kterém je nainstalován, má přístup k privátnímu
 Ne, použijte [pokyny poskytované VMware](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) a splní požadavky virtuálních počítačů uvedené v těchto pokynech. 
 
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>Podporuje se VMware HCX na sítích VPN?
-Ne.
+Ne, z důvodu požadavků na šířku pásma a latenci.
 
 #### <a name="can-azure-bastion-be-used-for-connecting-to-avs-vms"></a>Dá se Azure bastionu použít pro připojení k virtuálním počítačům služby AVS?
 Služba Azure bastionu se doporučuje připojit k poli s odkazem, abyste zabránili odhalení řešení Azure VMware na Internet. Azure bastionu se nedá použít pro připojení k virtuálním počítačům řešení VMware Azure, protože se nejedná o objekty Azure IaaS.

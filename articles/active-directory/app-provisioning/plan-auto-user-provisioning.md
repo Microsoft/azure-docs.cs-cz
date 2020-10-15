@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7d05cd394453ff7c3a40b80a4cd6c850b86ee21
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235692"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070363"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Naplánování nasazení automatického zřizování uživatelů
 
@@ -73,7 +73,7 @@ Tento článek používá následující výrazy:
 | Online kurzy| SkillUp online:  [Správa identit](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Naučte se integrovat Azure AD s mnoha aplikacemi SaaS a zabezpečit uživatelům přístup k těmto aplikacím. |
 | Knihy| [Moderní ověřování pomocí Azure Active Directory pro webové aplikace (Referenční příručka pro vývojáře) 1](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Toto je autoritativní podrobně průvodce pro vytváření řešení pro ověřování služby Active Directory pro tato nová prostředí. |
 | Kurzy| Podívejte se na [Seznam kurzů, jak integrovat aplikace SaaS s Azure AD](../saas-apps/tutorial-list.md). |
-| Časté otázky| [Nejčastější dotazy](../app-provisioning/user-provisioning.md) k automatizovanému zřizování uživatelů |
+| Nejčastější dotazy| [Nejčastější dotazy](../app-provisioning/user-provisioning.md) k automatizovanému zřizování uživatelů |
 
 ### <a name="solution-architectures"></a>Architektury řešení
 
@@ -129,7 +129,7 @@ Vezměte v úvahu, že vaše organizace musí určit strategii nasazení zřizov
 
 ### <a name="engage-the-right-stakeholders"></a>Zapojení správných zúčastněných stran
 
-Když projekty technologie selžou, je obvykle z důvodu neshodných očekávání na dopad, výsledky a odpovědnosti. Aby se tyto nástrahy nezobrazovaly, ujistěte se, že [jste připravujete správné zúčastněné strany](https://aka.ms/deploymentplans) a že role účastníka v projektu jsou dobře srozumitelné při dokumentaci zúčastněných stran a jejich vstupu do projektu a accountabilities.
+Když projekty technologie selžou, je obvykle z důvodu neshodných očekávání na dopad, výsledky a odpovědnosti. Aby se tyto nástrahy nezobrazovaly, ujistěte se, že [jste připravujete správné zúčastněné strany](../fundamentals/active-directory-deployment-plans.md) a že role účastníka v projektu jsou dobře srozumitelné při dokumentaci zúčastněných stran a jejich vstupu do projektu a accountabilities.
 
 ### <a name="plan-communications"></a>Plán komunikace
 
@@ -264,7 +264,7 @@ Služba zřizování ukládá stav obou systémů po počátečním cyklu a zvy�
 
 Pomocí [Azure Portal](https://portal.azure.com/) můžete spravovat Automatické zřizování uživatelských účtů a zrušení zajišťování pro aplikace, které ho podporují. Postupujte podle kroků v [návody nastavení automatického zřizování pro aplikaci?](../app-provisioning/user-provisioning.md)
 
-Službu zřizování uživatelů Azure AD je taky možné nakonfigurovat a spravovat pomocí [rozhraní Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview).
+Službu zřizování uživatelů Azure AD je taky možné nakonfigurovat a spravovat pomocí [rozhraní Microsoft Graph API](/graph/api/resources/synchronization-overview).
 
 ## <a name="manage-automatic-user-provisioning"></a>Správa automatického zřizování uživatelů
 
@@ -274,7 +274,7 @@ Teď, když jste nasadili, budete muset řešení spravovat.
 
 Po úspěšném [počátečním cyklu](../app-provisioning/user-provisioning.md)služba zřizování Azure AD spustí přírůstkové aktualizace v intervalech specifických pro každou aplikaci po dobu, kdy dojde k jedné z následujících událostí:
 
-* Služba se ručně zastavila a spustí se nový počáteční cyklus pomocí [Azure Portal](https://portal.azure.com/)nebo pomocí příslušného příkazu [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) .
+* Služba se ručně zastavila a spustí se nový počáteční cyklus pomocí [Azure Portal](https://portal.azure.com/)nebo pomocí příslušného příkazu [Microsoft Graph API](/graph/api/resources/synchronization-overview) .
 
 * Nový počáteční cyklus se spustí změnou mapování atributů nebo filtrováním oborů.
 
@@ -310,7 +310,7 @@ Pokud chcete vyřešit všechny problémy, které se můžou během zřizování
 
 * [Zápis výrazů pro mapování atributů](../app-provisioning/functions-for-customizing-application-data.md)
 
-* [Přehled rozhraní API pro synchronizaci Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [Přehled rozhraní API pro synchronizaci Azure AD](/graph/api/resources/synchronization-overview)
 
 * [Přeskočit odstranění uživatelských účtů, které přesahují rozsah](skip-out-of-scope-deletions.md)
 

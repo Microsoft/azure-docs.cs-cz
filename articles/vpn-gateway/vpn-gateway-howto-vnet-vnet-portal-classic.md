@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9ca190ae9e5679ce7622f89b39507d69d87f5b88
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 4b1007fe89cf455b6af8ebba00f24e8019ad8013
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875537"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078285"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurace připojení typu VNet-to-VNet (Classic)
 
@@ -32,8 +32,6 @@ Tento článek vám pomůže vytvořit připojení brány VPN mezi virtuálními
 >
 
 ![Diagram připojení virtuální sítě k virtuální síti](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
-
-
 
 ## <a name="about-vnet-to-vnet-connections"></a>Informace o propojeních VNet-to-VNet
 
@@ -61,7 +59,7 @@ Virtuální sítě může být vhodné propojit z následujících důvodů:
 
 Další informace o propojeních VNet-to-VNet najdete v části [Aspekty propojení VNet-to-VNet](#faq) na konci tohoto článku.
 
-### <a name="working-with-azure-powershell"></a><a name="powershell"></a>Práce s Azure PowerShell
+## <a name="prerequisites"></a>Požadavky
 
 Portál používáme pro většinu kroků, ale k vytvoření připojení mezi virtuální sítě je potřeba použít PowerShell. Připojení nemůžete vytvořit pomocí Azure Portal. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
@@ -87,7 +85,7 @@ V tomto kroku vytvoříte dvě klasické virtuální sítě. Pokud používáte 
 Název: virtuální sítě testvnet1<br>
 Adresní prostor: 10.11.0.0/16, 10.12.0.0/16 (volitelné)<br>
 Název podsítě: výchozí<br>
-Rozsah adres podsítě: 10.11.0.1/24<br>
+Rozsah adres podsítě: 10.11.0.0/24<br>
 Skupina prostředků: ClassicRG<br>
 Umístění: USA – východ<br>
 GatewaySubnet: 10.11.1.0/27
