@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 4c3e6216c172b0ba1273fea1690c030a05f4c456
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 831fc28711a181d45a8c69e3f46056604b30649e
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83742218"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089464"
 ---
 # <a name="glossary"></a>Glosář
 
@@ -53,7 +53,7 @@ Následující seznam popisuje běžná slova používaná s Azure Maps službam
 
 <a name="azure-location-based-services-lbs"></a>**Azure Location Based Services (kg)**: dřívější název Azure Maps, pokud byl ve verzi Preview.
 
-<a name="azure-active-directory"></a>**Azure Active Directory (Azure AD)**: Azure AD je cloudová služba pro správu identit a přístupu od Microsoftu. Azure Maps integrace služby Azure AD je aktuálně dostupná ve verzi Preview pro všechna Azure Maps API. Azure AD podporuje řízení přístupu na základě role (RBAC), které umožňuje jemně odstupňovaný přístup k Azure Maps prostředkům. Další informace o Azure Maps integraci služby Azure AD najdete v tématu [Azure Maps a Azure AD](azure-maps-authentication.md) a [správa ověřování v Azure Maps](how-to-manage-authentication.md).
+<a name="azure-active-directory"></a>**Azure Active Directory (Azure AD)**: Azure AD je cloudová služba pro správu identit a přístupu od Microsoftu. Azure Maps integrace služby Azure AD je aktuálně dostupná ve verzi Preview pro všechna Azure Maps API. Azure AD podporuje řízení přístupu na základě role Azure (Azure RBAC), které umožňuje jemně odstupňovaný přístup k Azure Maps prostředkům. Další informace o Azure Maps integraci služby Azure AD najdete v tématu [Azure Maps a Azure AD](azure-maps-authentication.md) a [správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 <a name="azure-maps-key"></a>**Klíč Azure Maps**: viz [ověřování sdíleného klíče](#shared-key-authentication).
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1a6a99285e54338b0020aad63fef2944ce3469d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892901"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088665"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Kurz: nasazení jarního cloudu Azure ve službě Azure Virtual Network (vkládání virtuální sítě)
 
@@ -26,8 +26,8 @@ Nasazení umožňuje:
 * Interakce jarního cloudu Azure se systémy v místních datových centrech nebo službách Azure v jiných virtuálních sítích
 * Podpora zákazníků pro řízení příchozí a odchozí síťové komunikace pro jarní cloud Azure
 
-## <a name="prerequisites"></a>Požadavky
-`Microsoft.AppPlatform`Podle pokynů [v tématu registrace poskytovatele prostředků v Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) nebo spuštěním následujícího příkazu AZ CLI je nutné zaregistrovat poskytovatele prostředků služby Azure jaře Cloud:
+## <a name="prerequisites"></a>Předpoklady
+`Microsoft.AppPlatform`Podle pokynů [v tématu registrace poskytovatele prostředků v Azure Portal](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) nebo spuštěním následujícího příkazu AZ CLI je nutné zaregistrovat poskytovatele prostředků služby Azure jaře Cloud:
 
 ```azurecli
 az provider register --namespace Microsoft.AppPlatform

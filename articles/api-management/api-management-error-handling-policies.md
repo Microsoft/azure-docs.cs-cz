@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3b6f90d0aa26b478c0f2fcefac55dcd509da437
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243541"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070941"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Zpracování chyb v zásadách služby API Management
 
@@ -190,4 +190,4 @@ Další informace o práci se zásadami najdete v těchto tématech:
 -   [Zásady v API Management](api-management-howto-policies.md)
 -   [Transformační rozhraní API](transform-api.md)
 -   [Odkaz na zásady](./api-management-policies.md) pro úplný seznam příkazů zásad a jejich nastavení
--   [Ukázky zásad](policy-samples.md)
+-   [Ukázky zásad](./policy-reference.md)

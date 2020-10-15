@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6532747c50311ada4df6a0038bd0e05f4d9ce31
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400702"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089685"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Konfigurace a ověření připojení k virtuální síti nebo k síti VPN
 
@@ -122,7 +122,7 @@ Můžete vytvořit propojení mezi virtuálními sítěmi, které jsou v různý
 
 Pokud chcete nakonfigurovat připojení mezi klasickými virtuálními sítěmi a Správce prostředků virtuální sítí, přečtěte si téma [propojení virtuálních sítí z různých modelů nasazení pomocí Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal).
 
-![Připojení k virtuální síti s Azure Resource Managerm Classic](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
+![Diagram, který zobrazuje připojení klasické virtuální sítě k virtuální síti Azure Resource Manager.](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
 
 Pokud chcete ověřit konfiguraci při připojení klasické virtuální sítě k virtuální síti Azure Resource Manager, postupujte podle těchto pokynů.
 

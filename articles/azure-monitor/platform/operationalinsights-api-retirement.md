@@ -6,15 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: c9a7ba63246f747a132c315e22452ca9c7144448
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: a03b7bd63385b7cc16e4dafb5cd12ccd212dc959
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058178"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089379"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>Vyřazení verze rozhraní API OperationalInsights
-Microsoft poskytuje oznámení alespoň 12 měsíců před vyřazením rozhraní API z důvodu hladkého přechodu na novější/podporovanou verzi. Vydali jsme novou verzi (2020-08-01) pro rozhraní API poskytovatele prostředků **OperationalInsights** a všechny starší verze rozhraní API vyřadíme 31. října 2023. Vzhledem k tomu, že se nové funkce a funkce a optimalizace přidávají jenom k aktuálnímu rozhraní API, měli byste upgradovat na nejnovější verzi rozhraní API co nejdříve.
+Microsoft poskytuje oznámení alespoň 12 měsíců před vyřazením rozhraní API z důvodu hladkého přechodu na novější/podporovanou verzi. Vydali jsme novou verzi (2020-08-01) pro rozhraní API poskytovatele prostředků **OperationalInsights** a všechny starší verze rozhraní API vyřadíme 31. října 2023.
+
+Doporučujeme vám hned začít používat verzi 2020-08-01, abyste získali výhody nových funkcí, jako je například [vyhrazený cluster](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters), [klíče spravované zákazníky](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys), [soukromý odkaz](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security) a [Export dat](https://docs.microsoft.com/azure/azure-monitor/platform/logs-data-export). Nové funkce a funkce a optimalizace se navíc přidávají jenom do aktuálního rozhraní API.
 
 Po 31. října 2023 Azure Monitor už nebude podporovat starší verze rozhraní API než 2020-08-01. Pokud nechcete upgradovat, požadavky odeslané z dřívějších verzí budou nadále obsluhovány službou Azure Monitor do 31. října 2023.
 

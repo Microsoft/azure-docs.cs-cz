@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 1d7196f85f64ed466e99986996832952ffe1d59c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fe6f72b60257a1101765dcb539cc3e0eb1d2346e
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336254"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090042"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře
 
@@ -21,7 +21,7 @@ ms.locfileid: "91336254"
 V tomto rychlém startu se dozvíte, jak nasadit jednoduchou službu Azure jaře Cloud mikroslužeb, která se bude spouštět v Azure.
 
 >[!NOTE]
-> Podpora Steeltoe pro jarní cloud Azure je teď nabízená jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v tématu [Nejčastější dotazy](https://azure.microsoft.com/support/faq/) nebo soubor a [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+> Podpora Steeltoe pro jarní cloud Azure je teď nabízená jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v tématu [Nejčastější dotazy](https://azure.microsoft.com/support/faq/) nebo soubor a [support Request](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 V tomto rychlém startu se dozvíte, jak:
 
@@ -37,7 +37,7 @@ Kód aplikace použitý v tomto rychlém startu je jednoduchá aplikace vytvoře
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Sada .NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Služba pružinového cloudu Azure podporuje .NET Core 3,1 a novější verze.
-* [Azure CLI verze 2.0.67 nebo novější](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+* [Azure CLI verze 2.0.67 nebo novější](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 * [Git](https://git-scm.com/).
 
 ## <a name="install-azure-cli-extension"></a>Instalace rozšíření Azure CLI
@@ -338,10 +338,10 @@ V tomto rychlém startu se dozvíte, jak:
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-* [Nainstalovat JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
+* [Nainstalovat JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
-* Volitelné [Nainstalujte Azure CLI verze 2.0.67 nebo vyšší](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) a rozšíření Azure jaře cloudu pomocí příkazu: `az extension add --name spring-cloud`
-* Volitelné [Instalace Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) a [přihlášení](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
+* Volitelné [Nainstalujte Azure CLI verze 2.0.67 nebo vyšší](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) a rozšíření Azure jaře cloudu pomocí příkazu: `az extension add --name spring-cloud`
+* Volitelné [Instalace Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) a [přihlášení](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="generate-a-spring-cloud-project"></a>Vygenerování jarního cloudového projektu
 
@@ -439,7 +439,7 @@ Následující postup používá modul plug-in IntelliJ pro Azure jaře Cloud k 
     ![Importovat projekt](media/spring-cloud-quickstart-java/intellij-new-project.png)
 
 ### <a name="deploy-the-app"></a>Nasazení aplikace
-Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účtu Azure a vybrat své předplatné.  Podrobnosti o přihlášení najdete v tématu [instalace a přihlášení](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
+Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účtu Azure a vybrat své předplatné.  Podrobnosti o přihlášení najdete v tématu [instalace a přihlášení](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
 1. V Project Exploreru klikněte pravým tlačítkem na projekt a vyberte **Azure**  ->  **Deploy do Azure jaře Cloud**.
 
@@ -448,7 +448,7 @@ Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účt
 1. V poli **název** přijměte název aplikace. **Název** odkazuje na konfiguraci, nikoli na název aplikace. Uživatelé je obvykle nemusí měnit.
 1. V textovém poli **artefaktu** vyberte *hellospring-0.0.1-Snapshot. jar*.
 1. V textovém poli **odběr** ověřte své předplatné.
-1. V textovém poli pole **jarního cloudu** vyberte instanci služby Azure jaře Cloud, kterou jste vytvořili v části [zřízení instance cloudové služby Azure jaře](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance).
+1. V textovém poli pole **jarního cloudu** vyberte instanci služby Azure jaře Cloud, kterou jste vytvořili v části [zřízení instance cloudové služby Azure jaře](./spring-cloud-quickstart-provision-service-instance.md).
 1. Nastavte **veřejný koncový bod** , který se má *Povolit*.
 1. V poli **aplikace:** textové pole vyberte **vytvořit aplikaci...**.
 1. Zadejte *hellospring*a pak klikněte na **OK**.

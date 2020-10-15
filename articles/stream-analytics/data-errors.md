@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48f178a74dea0403ff8926cf34fd64cdd9c6839f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88053146"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071995"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Chyby Azure Stream Analytics dat
 
@@ -211,6 +211,10 @@ V tématu [řešení potíží s Azure Stream Analytics pomocí diagnostických 
 ```
 
 ## <a name="output-data-errors"></a>Chyby výstupních dat
+
+Azure Stream Analytics může identifikovat chyby výstupních dat s požadavkem vstupu/výstupu do výstupní jímky v závislosti na konfiguraci. Například chybějící požadovaný sloupec, například  `PartitionKey` , při použití výstupu tabulky Azure, lze identifikovat bez požadavku na vstupně-výstupní operace. Porušení omezení v SQL Output ale vyžadují vstupně-výstupní požadavek.
+
+Došlo k několika chybám dat, které mohou být zjištěny pouze po volání výstupní jímky, což může zpomalit zpracování. Chcete-li tento problém vyřešit, změňte konfiguraci úlohy nebo dotaz, který způsobuje chybu dat.
 
 ### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
 

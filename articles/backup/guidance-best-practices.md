@@ -3,12 +3,12 @@ title: Doprovodné materiály a osvědčené postupy
 description: Seznamte se s osvědčenými postupy a pokyny pro zálohování cloudových a místních úloh do cloudu.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 522f7d2502a49b912f34f392c52e5046eba8d01f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985513"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092303"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Zálohování cloudových a místních úloh do cloudu
 
@@ -42,13 +42,13 @@ Azure Backup umožňuje ochranu dat pro různé úlohy (místně i v cloudu). Je
 
 * **Škodlivá ochrana proti odstranění –** Chraňte proti náhodným a zlomyslným pokusům o odstranění záloh pomocí obnovitelného odstranění záloh. Odstraněná data zálohy se ukládají 14 dnů zdarma a umožňují obnovení z tohoto stavu.
 
-* **Zabezpečené šifrované zálohy –** Azure Backup zajistí bezpečné uložení zálohovaných dat, a to s využitím integrovaných funkcí zabezpečení platformy Azure, jako je RBAC a šifrování.
+* **Zabezpečené šifrované zálohy –** Azure Backup zajistí bezpečné uložení zálohovaných dat, a to s využitím integrovaných funkcí zabezpečení platformy Azure, jako je Azure RBAC a šifrování.
 
 * **Správa životního cyklu zálohovaných dat –** Azure Backup automaticky vyčistí starší zálohovaná data, aby splňovala zásady uchovávání informací. Data z provozního úložiště můžete také navrstvit do úložiště trezoru.
 
 ### <a name="management-plane"></a>Rovina správy
 
-* **Řízení přístupu** – trezory (Recovery Services a trezory služby Backup) poskytují možnosti správy a jsou přístupné prostřednictvím Azure Portal, centra zálohování, řídicích panelů trezoru, sady SDK, CLI a dokonce rozhraní REST API. Je to také hranice RBAC a poskytuje vám možnost omezit přístup k zálohám jenom na autorizované správce zálohování.
+* **Řízení přístupu** – trezory (Recovery Services a trezory služby Backup) poskytují možnosti správy a jsou přístupné prostřednictvím Azure Portal, centra zálohování, řídicích panelů trezoru, sady SDK, CLI a dokonce rozhraní REST API. Je to také hranice Azure RBAC a poskytuje vám možnost omezit přístup k zálohám jenom na autorizované správce zálohování.
 
 * **Správa zásad** – zásady Azure Backup v rámci jednotlivých úložišť definují, kdy se mají spustit zálohy a jak dlouho je potřeba uchovat. Tyto zásady můžete také spravovat a použít je v několika položkách.
 
@@ -132,7 +132,7 @@ Při vytváření zásad zálohování Vezměte v úvahu následující pokyny:
   * Nelze selektivně odstranit konkrétní body obnovení.
   * Naplánované zálohování nemůžete zcela zakázat a zachovat zdroj dat v chráněném stavu. Minimální častá záloha, kterou můžete pomocí zásad nakonfigurovat, je mít jedno týdenní naplánované zálohování. Alternativou je zastavení ochrany při zachování dat a povolení ochrany pokaždé, když budete chtít provést zálohování, provést zálohování na vyžádání a pak vypnout ochranu, ale zachovejte data záloh. [Další informace najdete tady](backup-azure-manage-vms.md#stop-protecting-a-vm).
 
-## <a name="security-considerations"></a>Důležité informace o zabezpečení
+## <a name="security-considerations"></a>Aspekty zabezpečení
 
 Abychom vám pomohli chránit vaše Zálohovaná data a plnit požadavky na zabezpečení vaší firmy, Azure Backup poskytuje záruku, integritu a zajištění dostupnosti proti úmyslnému útoku a zneužití vašich cenných dat a systémů. Vezměte v úvahu následující pokyny pro zabezpečení Azure Backup řešení:
 

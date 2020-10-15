@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 3ecb2e2022cab80abf6a8692ac8cc3ba54eff1e4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f949d52d4ba461da94153cbbd17ca5fb3eb214d7
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947304"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092082"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>Rychlý Start: konfigurace řešení Azure Defender pro IoT
 
@@ -43,7 +43,7 @@ Po definování všech vztahů prostředků program Defender pro IoT využívá 
 Pokud chcete přidat nový prostředek do řešení IoT, udělejte toto:
 
 1. Otevřete **IoT Hub** v Azure Portal.
-1. V levé nabídce vyberte a otevřete **Nastavení** v části **zabezpečení** a pak vyberte **monitorované prostředky**.
+1. V části **zabezpečení** vyberte **Přehled** a **potom**vyberte **monitorované prostředky**.
 1. Vyberte **Upravit** a vyberte monitorované prostředky, které patří do vašeho řešení IoT.
 1. Klikněte na **Přidat**.
 
