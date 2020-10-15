@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77cea7ebd333b958675438aaeb5e0e2a326a5866
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85920075"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075174"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Běžné úlohy po spuštění cloudové služby
 Tento článek popisuje několik příkladů běžných úloh po spuštění, které můžete chtít provést ve své cloudové službě. Úlohy po spuštění můžete použít k provádění operací před spuštěním role. Operace, které můžete chtít provést, zahrnují instalaci komponenty, registraci komponent modelu COM, nastavení klíčů registru nebo spuštění dlouhotrvajícího procesu. 
@@ -52,7 +52,7 @@ Proměnné můžou použít taky [platnou hodnotu XPath Azure](cloud-services-ro
 
 
 ## <a name="configure-iis-startup-with-appcmdexe"></a>Konfigurace spouštění služby IIS pomocí AppCmd.exe
-Nástroj příkazového řádku [AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) můžete použít ke správě nastavení IIS při spuštění v Azure. *AppCmd.exe* poskytuje pohodlný přístup k nastavení konfigurace pro použití v úlohách po spuštění v Azure, a to prostřednictvím příkazového řádku. Pomocí *AppCmd.exe*můžete přidat, upravit nebo odebrat nastavení webu pro aplikace a weby.
+Nástroj příkazového řádku [AppCmd.exe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) můžete použít ke správě nastavení IIS při spuštění v Azure. *AppCmd.exe* poskytuje pohodlný přístup k nastavení konfigurace pro použití v úlohách po spuštění v Azure, a to prostřednictvím příkazového řádku. Pomocí *AppCmd.exe*můžete přidat, upravit nebo odebrat nastavení webu pro aplikace a weby.
 
 K dispozici je ale několik věcí, které můžete využít při použití *AppCmd.exe* jako úlohy po spuštění:
 
@@ -499,14 +499,14 @@ Přečtěte si další informace o práci s [úkoly](cloud-services-startup-task
 [Vytvořte a nasaďte](cloud-services-how-to-create-deploy-portal.md) balíček cloudové služby.
 
 [ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
-[Úloha]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Prostředí]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[Proměnná]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Koncové body]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
-[LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
-[LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[Úloha]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[Startup]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
+[Runtime]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
+[Prostředí]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
+[Proměnná]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
+[RoleEnvironment]: /previous-versions/azure/reference/ee773173(v=azure.100)
+[Bod]: /previous-versions/azure/reference/gg557552(v=azure.100)#Endpoints
+[LocalStorage]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalStorage
+[LocalResources]: /previous-versions/azure/reference/gg557552(v=azure.100)#LocalResources
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
