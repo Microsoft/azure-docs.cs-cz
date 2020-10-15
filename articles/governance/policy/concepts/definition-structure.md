@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7b6cb1b9e9a57fb3278ec931364bc355258d649d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 84af781ae58ab45b69d71ebdc22fbced910da246
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019949"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074256"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -111,7 +111,7 @@ Následující režim poskytovatele prostředků je plně podporovaný:
 V současné době jsou podporovány následující režimy poskytovatele prostředků ve **verzi Preview**:
 
 - `Microsoft.ContainerService.Data` pro správu pravidel kontroleru přístupu pro [službu Azure Kubernetes](../../../aks/intro-kubernetes.md). Definice používající tento režim poskytovatele prostředků **musí** používat efekt [EnforceRegoPolicy](./effects.md#enforceregopolicy) . Tento režim je _zastaralý_.
-- `Microsoft.KeyVault.Data` pro správu trezorů a certifikátů v [Azure Key Vault](../../../key-vault/general/overview.md).
+- `Microsoft.KeyVault.Data` pro správu trezorů a certifikátů v [Azure Key Vault](../../../key-vault/general/overview.md). Další informace o těchto definicích zásad najdete v tématu věnovaném [integraci Azure Key Vault s Azure Policy](../../../key-vault/general/azure-policy.md).
 
 > [!NOTE]
 > Režimy poskytovatele prostředků podporují jenom integrované definice zásad a nepodporují [výjimky](./exemption-structure.md).
@@ -609,8 +609,20 @@ Následující funkce jsou dostupné jenom v pravidlech zásad:
     "definitionReferenceId": "StorageAccountNetworkACLs"
   }
   ```
-  
-  
+
+
+- `ipRangeContains(range, targetRange)`
+    - **Range**: [required] řetězec-řetězec určující rozsah IP adres.
+    - **targetRange**: [povinný] řetězec – řetězec určující rozsah IP adres.
+
+    Vrátí, zda daný rozsah IP adres obsahuje cílový rozsah IP adres. Prázdné rozsahy nebo kombinování mezi rodinami IP adres není povoleno a vede k selhání vyhodnocení.
+
+    Podporované formáty:
+    - Jedna IP adresa (příklady: `10.0.0.0` , `2001:0DB8::3:FFFE` )
+    - Rozsah CIDR (příklady: `10.0.0.0/24` , `2001:0DB8::/110` )
+    - Rozsah definovaný počátečními a koncovými IP adresami (příklady: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
+
+
 #### <a name="policy-function-example"></a>Příklad funkce zásad
 
 Tato ukázka pravidla zásad používá `resourceGroup` funkci prostředků k získání vlastnosti **názvu** v kombinaci s `concat` funkcí Array a Object k sestavení `like` podmínky, která vynutila název prostředku, aby začínal názvem skupiny prostředků.
@@ -699,7 +711,7 @@ Seznam aliasů se vždycky zvětšuje. Chcete-li zjistit, které aliasy jsou akt
 
 ### <a name="understanding-the--alias"></a>Princip aliasu [*]
 
-Několik dostupných aliasů má verzi, která se zobrazí jako název Normal (normální) a další, která je **\[\*\]** k ní připojená. Příklad:
+Několik dostupných aliasů má verzi, která se zobrazí jako název Normal (normální) a další, která je **\[\*\]** k ní připojená. Například:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`

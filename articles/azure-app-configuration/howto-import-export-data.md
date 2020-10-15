@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 21eba653bcd853db9550d0d3781aacd281884605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e127a11f3821325602a78d46c69b2330bfb8293
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588071"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074613"
 ---
 # <a name="import-or-export-configuration-data"></a>Import nebo export konfiguračních dat
 
 Konfigurace aplikace Azure podporuje operace importu a exportu dat. Tyto operace použijte pro práci s konfiguračními daty v hromadných a výměnných datech mezi úložištěm konfigurace aplikace a projektem kódu. Můžete například nastavit jedno úložiště konfigurace aplikace pro testování a další pro produkční prostředí. Můžete zkopírovat nastavení aplikace mezi nimi, abyste nemuseli zadávat data dvakrát.
 
-Tento článek poskytuje návod pro import a export dat pomocí konfigurace aplikace. Pokud chcete nastavit průběžnou synchronizaci s úložištěm GitHubu, podívejte se na naši [akci GitHubu](https://aka.ms/azconfig-gha1).
+Tento článek poskytuje návod pro import a export dat pomocí konfigurace aplikace. Pokud chcete nastavit průběžnou synchronizaci s úložištěm GitHubu, podívejte se na naši [akci GitHubu](./concept-github-action.md).
 
 ## <a name="import-data"></a>Import dat
 
@@ -65,4 +65,4 @@ Exportujte data buď pomocí [Azure Portal](https://portal.azure.com) , nebo pom
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace ASP.NET Core](./quickstart-aspnet-core-app.md)  
+> [Vytvoření webové aplikace ASP.NET Core](./quickstart-aspnet-core-app.md)

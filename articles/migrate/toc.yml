@@ -52,10 +52,12 @@
           items:
             - name: Možnosti migrace pro virtuální počítače VMware
               href: server-migrate-overview.md
-            - name: Migrace virtuálních počítačů VMware bez agentů
+            - name: Migrace virtuálních počítačů s VMware bez agentů – Azure Portal
               href: tutorial-migrate-vmware.md
             - name: Migrace virtuálních počítačů VMware založená na agentech
               href: tutorial-migrate-vmware-agent.md
+            - name: Migrace virtuálních počítačů s VMware bez agentů – PowerShell
+              href: tutorial-migrate-vmware-powershell.md
         - name: Migrace virtuálních počítačů Hyper-V
           href: tutorial-migrate-hyper-v.md
         - name: Migrace fyzických serverů

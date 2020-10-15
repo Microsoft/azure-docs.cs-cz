@@ -11,12 +11,12 @@ ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: af3eb828e1fd2c4aa14467e5afc18f1b5a0b7fa1
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fecdd65ae0dbf9faeb0e74e6446a9deaf8273106
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047705"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075021"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Strategie načítání dat do fondu Synapse SQL
 
@@ -24,7 +24,7 @@ Tradiční fondy SQL SMP používají pro načítání dat proces extrakce, tran
 
 Použití procesu extrakce, načítání a transformace (ELT) využívá MPP a eliminuje prostředky potřebné pro transformaci dat před jejich načtením.
 
-I když fond SQL podporuje mnoho metod načítání, včetně oblíbených SQL Server možností, jako je [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a [rozhraní SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), nejrychlejší a nejškálovatelný způsob načítání dat je prostřednictvím základních externích tabulek a [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (Preview).
+I když fond SQL podporuje mnoho metod načítání, včetně oblíbených SQL Server možností, jako je [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a [rozhraní SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), nejrychlejší a nejškálovatelný způsob načítání dat je prostřednictvím základních externích tabulek a [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 Pomocí základu a příkazu Kopírovat můžete přistupovat k externím datům uloženým ve službě Azure Blob Storage nebo Azure Data Lake Store prostřednictvím jazyka T-SQL. Pro největší flexibilitu při nasazování doporučujeme použít příkaz COPY.
 

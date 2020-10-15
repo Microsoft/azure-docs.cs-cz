@@ -9,18 +9,18 @@ ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8a35902c198412f6e41c0cf39162836deb5e443
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ebf383c1a904027d3ff5a1864ea9f50e87a5fa8
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280092"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093289"
 ---
 # <a name="list-blobs-with-net"></a>Výpis objektů BLOB pomocí .NET
 
 Při výpisu objektů BLOB z kódu můžete zadat několik možností pro správu způsobu, jakým jsou vráceny výsledky z Azure Storage. Můžete zadat počet výsledků, které se mají vrátit v každé sadě výsledků, a pak načíst následné sady. Můžete zadat předponu pro návrat objektů blob, jejichž názvy začínají daným znakem nebo řetězcem. A můžete vytvořit seznam objektů BLOB ve strukturách s plochým výpisem nebo hierarchicky. Hierarchický výpis vrátí objekty blob, jako kdyby byly uspořádány do složek.
 
-Tento článek ukazuje, jak zobrazit seznam objektů BLOB pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).  
+Tento článek ukazuje, jak zobrazit seznam objektů BLOB pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage).  
 
 ## <a name="understand-blob-listing-options"></a>Vysvětlení možností výpisu objektů BLOB
 
@@ -28,10 +28,10 @@ Pokud chcete zobrazit seznam objektů BLOB v účtu úložiště, zavolejte jedn
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-- [BlobContainerClient. getblobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)
-- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)
+- [BlobContainerClient. getblobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs)
+- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync)
+- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy)
+- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync)
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
@@ -65,7 +65,7 @@ Chcete-li filtrovat seznam objektů blob, zadejte řetězec pro `prefix` paramet
 
 Můžete vracet metadata objektu BLOB s výsledky. 
 
-- Pokud používáte sadu .NET V12 SDK, zadejte hodnotu **metadat** pro výčet [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits?view=azure-dotnet) .
+- Pokud používáte sadu .NET V12 SDK, zadejte hodnotu **metadat** pro výčet [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits) .
 
 - Pokud používáte sadu .NET V11 SDK, zadejte hodnotu **metadat** pro výčet [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) . Azure Storage zahrnuje metadata s vrácenými objekty blob, takže nemusíte v tomto kontextu volat jednu z metod **FetchAttributes** k načtení metadat objektu BLOB.
 
@@ -153,7 +153,7 @@ Když zavoláte operaci výpisu hierarchicky, Azure Storage vrátí virtuální 
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-Chcete-li zobrazit seznam objektů BLOB hierarchicky, zavolejte metodu [BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)nebo [BlobContainerClient. GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet) .
+Chcete-li zobrazit seznam objektů BLOB hierarchicky, zavolejte metodu [BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy)nebo [BlobContainerClient. GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync) .
 
 Následující příklad vypíše seznam objektů BLOB v zadaném kontejneru pomocí hierarchického výpisu, který má zadanou volitelnou velikost segmentu, a zapíše název objektu blob do okna konzoly.
 
