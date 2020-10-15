@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: d532b8aab87840f4b6ad90daedba743597f4fe43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c45d1668ad39e9584a89921f46218ba243978a05
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588054"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078047"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Osvědčené postupy pro konfiguraci aplikací Azure
 
@@ -69,7 +69,7 @@ Lepší možností je použít funkci spravované identity v Azure Active Direct
 Přístup ke konfiguraci aplikací pro webové aplikace nebo funkce můžete zajistit pomocí kterékoli z následujících metod:
 
 * Prostřednictvím Azure Portal do nastavení aplikace App Service zadejte připojovací řetězec do úložiště konfigurace aplikace.
-* Uložte připojovací řetězec do úložiště konfigurace aplikace v Key Vault a [odkázat ho z App Service](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
+* Uložte připojovací řetězec do úložiště konfigurace aplikace v Key Vault a [odkázat ho z App Service](../app-service/app-service-key-vault-references.md).
 * Použijte spravované identity Azure pro přístup k úložišti konfigurace aplikace. Další informace najdete v tématu [integrace se spravovanými identitami Azure](howto-integrate-azure-managed-service-identity.md).
 * Doručovat konfiguraci z konfigurace aplikace do App Service. Konfigurace aplikace poskytuje funkci exportu (v Azure Portal a Azure CLI), která odesílá data přímo do App Service. V této metodě nemusíte vůbec měnit kód aplikace.
 
@@ -85,7 +85,7 @@ Nadměrné požadavky na konfiguraci aplikací můžou mít za následek omezen�
 
 ## <a name="importing-configuration-data-into-app-configuration"></a>Import konfiguračních dat do konfigurace aplikace
 
-Konfigurace aplikací nabízí možnost hromadného [importu](https://aka.ms/azconfig-importexport1) nastavení konfigurace z vašich aktuálních konfiguračních souborů pomocí Azure Portal nebo CLI. Můžete také použít stejné možnosti pro export hodnot z konfigurace aplikace, například mezi souvisejícími obchody. Pokud chcete nastavit průběžnou synchronizaci s úložištěm GitHub, můžete použít naši [akci GitHubu](https://aka.ms/azconfig-gha2) , abyste mohli nadále používat stávající postupy správy zdrojového kódu a přitom získat výhody konfigurace aplikace.
+Konfigurace aplikací nabízí možnost hromadného [importu](./howto-import-export-data.md) nastavení konfigurace z vašich aktuálních konfiguračních souborů pomocí Azure Portal nebo CLI. Můžete také použít stejné možnosti pro export hodnot z konfigurace aplikace, například mezi souvisejícími obchody. Pokud chcete nastavit průběžnou synchronizaci s úložištěm GitHub, můžete použít naši [akci GitHubu](./concept-github-action.md) , abyste mohli nadále používat stávající postupy správy zdrojového kódu a přitom získat výhody konfigurace aplikace.
 
 ## <a name="multi-region-deployment-in-app-configuration"></a>Nasazení ve více oblastech v konfiguraci aplikace
 

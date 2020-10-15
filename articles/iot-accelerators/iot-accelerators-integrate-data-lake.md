@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbd895686b52ae7d1ced00b635d4d33e93c970a7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73889237"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069841"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Integrace řešení vzdáleného monitorování pomocí Azure Data Lake Store
 
@@ -180,4 +180,4 @@ Azure Stream Analytics používá dotazovací jazyk podobný SQL k určení vstu
 
 ## <a name="next-steps"></a>Další kroky
 
-Azure Data Lake Analytics lze použít k provádění analýz velkých objemů dat na vašich Data Lake Store datových sadách. Další informace najdete v [dokumentaci k Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics).
+Azure Data Lake Analytics lze použít k provádění analýz velkých objemů dat na vašich Data Lake Store datových sadách. Další informace najdete v [dokumentaci k Data Lake Analytics](../data-lake-analytics/index.yml).
