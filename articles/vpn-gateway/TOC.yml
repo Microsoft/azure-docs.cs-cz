@@ -1,10 +1,11 @@
-- name: Dokumentace služby VPN Gateway
+- name: Dokumentace ke službě VPN Gateway
   href: index.yml
 - name: Přehled
   items:
     - name: Co je VPN Gateway?
       href: vpn-gateway-about-vpngateways.md
 - name: Kurzy
+  expanded: true
   items:
     - name: Vytvoření a správa služby VPN Gateway
       href: vpn-gateway-tutorial-create-gateway-powershell.md

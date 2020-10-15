@@ -555,6 +555,8 @@
           href: client-images.md
         - name: Stažení existujícího disku
           href: download-vhd.md
+        - name: Spravovaný disk z verze image
+          href: ../managed-disk-from-image-version.md
     - name: Zabezpečení virtuálních počítačů
       items:
         - name: Doporučení
