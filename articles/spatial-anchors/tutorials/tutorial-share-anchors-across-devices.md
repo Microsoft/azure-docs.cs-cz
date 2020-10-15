@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 440d8af17bccaf8d3fcb92f65e5d91ed969aec31
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b29873e161b64c52abbfdf3f2611714f6b012361
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971318"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097282"
 ---
 # <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>Kurz: sdílení prostorových ukotvení napříč relacemi a zařízeními
 
@@ -86,7 +86,7 @@ Vyberte **OK**.
 
 Otevřete Visual Studio Code a pak otevřete projekt ve složce *Sharing\SharingServiceSample* . 
 
-Pokud chcete službu sdílení nasadit prostřednictvím Visual Studio Code, postupujte podle pokynů v tématu <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">publikování ASP.NET Core aplikace do Azure pomocí Visual Studio Code</a>. Začněte v části otevření v Visual Studio Code. Nevytvářejte další projekt ASP.NET, jak je vysvětleno v předchozím kroku, protože již máte projekt k nasazení a publikování: SharingServiceSample.
+Pokud chcete službu sdílení nasadit prostřednictvím Visual Studio Code, postupujte podle pokynů v tématu <a href="/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">publikování ASP.NET Core aplikace do Azure pomocí Visual Studio Code</a>. Začněte v části otevření v Visual Studio Code. Nevytvářejte další projekt ASP.NET, jak je vysvětleno v předchozím kroku, protože již máte projekt k nasazení a publikování: SharingServiceSample.
 
 ---
 
@@ -104,4 +104,3 @@ Můžete vylepšit ASP.NET Core webové aplikace tak, aby používala Azure Cosm
 
 > [!div class="nextstepaction"]
 > [Použití Azure Cosmos DB k ukládání kotev](./tutorial-use-cosmos-db-to-store-anchors.md)
-

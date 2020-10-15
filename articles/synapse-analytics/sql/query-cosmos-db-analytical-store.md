@@ -9,19 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: c326aed172bb8159185829f80d66e8e00496aad2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0cc2c04208c4800a883848896a0f1659e8bf72e9
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057803"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097248"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB pomocí SQL bez serveru v propojení Azure synapse (Preview)
 
 Synapse SQL bez serveru (dříve SQL na vyžádání) umožňuje analyzovat data v kontejnerech Azure Cosmos DB, která jsou povolená pomocí [Azure synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) v téměř reálném čase, aniž by to ovlivnilo výkon transakčních úloh. Nabízí známou syntaxi T-SQL pro dotazování dat z [analytického úložiště](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a integrovaného připojení k široké škále nástrojů pro dotazování BI a ad-hoc, a to prostřednictvím rozhraní T-SQL.
-
-> [!NOTE]
-> Podpora pro dotazování Azure Cosmos DB analytického úložiště bez SQL serveru je v současné době ve verzi ověřované verze Preview. Ve verzi Public Preview se zobrazí stránka [aktualizace služby Azure](https://azure.microsoft.com/updates/?status=nowavailable&category=databases) .
 
 Pro dotazování Azure Cosmos DB je dostupná plocha kompletního [výběru](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) plochy prostřednictvím funkce [OpenRowset](develop-openrowset.md) , včetně většiny [funkcí a operátorů SQL](overview-features.md). Můžete také uložit výsledky dotazu, který čte data z Azure Cosmos DB společně s daty v Azure Blob Storage nebo Azure Data Lake Storage pomocí příkazu [vytvořit externí tabulku jako SELECT](develop-tables-cetas.md#cetas-in-sql-on-demand). V tuto chvíli nemůžete ukládat výsledky dotazů bez SQL serveru, abyste je Azure Cosmos DB pomocí [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand).
 
@@ -262,6 +259,15 @@ Pro dotazování Azure Cosmos DBch účtů typu rozhraní API služby Mongo DB m
 
 - Po funkci **musí** být zadán alias `OPENROWSET` (například `OPENROWSET (...) AS function_alias` ). Vynechání aliasu může způsobit potíže s připojením a koncový bod SQL synapse bez serveru možná nebude dočasně k dispozici. Tento problém bude vyřešen v listopadu 2020.
 - Synapse SQL bez serveru aktuálně nepodporuje [Azure Cosmos DB úplným schématem přesnosti](../../cosmos-db/analytical-store-introduction.md#schema-representation). Synapse SQL bez serveru používejte jenom pro přístup k Cosmos DB dobře definovanému schématu.
+
+Seznam možných chyb a akcí při řešení potíží jsou uvedené v následující tabulce:
+
+| Chyba | Původní příčina |
+| --- | --- |
+| Chyby syntaxe:<br/> – Nesprávná syntaxe v blízkosti položky OpenRowset<br/> - `...` není rozpoznaná možnost HROMADNÉho poskytovatele OPENROWSET.<br/> – Nesprávná syntaxe poblíž textu `...` | Možné hlavní příčiny<br/> -Nepoužívá se jako první parametr ' CosmosDB ',<br/> -Použití řetězcového literálu místo identifikátoru ve třetím parametru<br/> -Nespecifikuje se třetí parametr (název kontejneru). |
+| V připojovacím řetězci CosmosDB došlo k chybě. | – Účet, databáze, klíč není zadaný. <br/> -V připojovacím řetězci existuje možnost, která není rozpoznána.<br/> – Středník `;` je umístěný na konci připojovacího řetězce. |
+| Překlad cesty CosmosDB se nezdařil s chybou "nesprávný účet/název databáze". | Zadaný název účtu nebo název databáze nelze nalézt. |
+| Překlad cesty CosmosDB se nezdařil s chybou: nesprávná tajná hodnota tajného klíče je null nebo prázdná. | Klíč účtu není platný nebo chybí. |
 
 Návrhy a problémy můžete nahlásit na [stránce s názory na Azure synapse](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862).
 

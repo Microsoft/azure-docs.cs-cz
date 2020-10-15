@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 264bb8c66510c90fecf12d2e4e68bd969b4fb474
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1854b8cf65b8747e07fb3d25413432c108b29071
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935790"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096704"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---flexible-server"></a>Přehled provozní kontinuity pomocí Azure Database for PostgreSQL-flexibilního serveru
 
@@ -61,10 +61,10 @@ Níže jsou uvedeny některé neplánované scénáře selhání a proces obnove
 
 | **Scénář** | **Proces obnovení [ne HA]** | **Proces obnovení [HA]** |
 | ---------- | ---------- | ------- |
-| <B>Selhání databázového serveru | Pokud je databázový server mimo provoz, Azure se pokusí restartovat databázový server. Pokud se to nezdaří, databázový server se restartuje na jiném fyzickém uzlu.  <br /> <br /> Doba obnovení (RTO) závisí na různých faktorech, včetně aktivity v době selhání, jako je například Velká transakce a množství obnovení, které se má provést během procesu spuštění databázového serveru. <br /> <br /> Aplikace, které používají databáze PostgreSQL, musí být sestaveny způsobem, který detekuje a znovu Zahozená připojení a neúspěšné transakce. | Pokud se zjistí selhání databázového serveru, server se převezme na pohotovostní server, čímž se sníží prostoje. Další informace najdete na [stránce koncepty vysoké dostupnosti](../concepts-high-availability.md). Očekává se, že RTO bude 60-120s s nulovou ztrátou dat. |
-| <B>Selhání úložiště | Aplikace nevidí žádný dopad na jakékoli problémy související s úložištěm, jako je selhání disku nebo poškození fyzického bloku. Jelikož jsou data uložena ve třech kopiích, kopie dat je obsluhována zbývajícím úložištěm. Poškozený blok dat je automaticky opraven a automaticky se vytvoří nová kopie dat. | U všech vzácných a neobnovitelných chyb, jako je například celé úložiště, je nepřístupný k serveru flexibilní repliky, aby se snížil výpadek. Další informace najdete na [stránce koncepty vysoké dostupnosti](../concepts-high-availability.md). |
+| <B>Selhání databázového serveru | Pokud je databázový server mimo provoz, Azure se pokusí restartovat databázový server. Pokud se to nezdaří, databázový server se restartuje na jiném fyzickém uzlu.  <br /> <br /> Doba obnovení (RTO) závisí na různých faktorech, včetně aktivity v době selhání, jako je například Velká transakce a množství obnovení, které se má provést během procesu spuštění databázového serveru. <br /> <br /> Aplikace, které používají databáze PostgreSQL, musí být sestaveny způsobem, který detekuje a znovu Zahozená připojení a neúspěšné transakce. | Pokud se zjistí selhání databázového serveru, server se převezme na pohotovostní server, čímž se sníží prostoje. Další informace najdete na [stránce koncepty vysoké dostupnosti](./concepts-high-availability.md). Očekává se, že RTO bude 60-120s s nulovou ztrátou dat. |
+| <B>Selhání úložiště | Aplikace nevidí žádný dopad na jakékoli problémy související s úložištěm, jako je selhání disku nebo poškození fyzického bloku. Jelikož jsou data uložena ve třech kopiích, kopie dat je obsluhována zbývajícím úložištěm. Poškozený blok dat je automaticky opraven a automaticky se vytvoří nová kopie dat. | U všech vzácných a neobnovitelných chyb, jako je například celé úložiště, je nepřístupný k serveru flexibilní repliky, aby se snížil výpadek. Další informace najdete na [stránce koncepty vysoké dostupnosti](./concepts-high-availability.md). |
 | <b> Chyby logických/uživatelských uživatelů | Chcete-li provést obnovení z uživatelských chyb, například omylem vyřazených tabulek nebo nesprávně aktualizovaných dat, je nutné provést obnovení k určitému [bodu v čase](https://docs.microsoft.com/azure/postgresql/concepts-backup) (PITR). Při provádění operace obnovení zadáte vlastní bod obnovení, což je čas, který je přímo předtím, než došlo k chybě.<br> <br>  Chcete-li obnovit pouze podmnožinu databází nebo konkrétních tabulek a nikoli všechny databáze na databázovém serveru, můžete obnovit databázový server v nové instanci, exportovat tyto tabulky prostřednictvím [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html)a potom pomocí [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) obnovit tyto tabulky do databáze. | Tyto chyby uživatelů nejsou chráněny s vysokou dostupností, protože všechny změny jsou replikovány do záložní repliky synchronně. K zotavení z takových chyb je nutné provést obnovení k bodu v čase. |
-| <b> Selhání zóny dostupnosti | Chcete-li provést obnovení při selhání na úrovni zóny, můžete provést obnovení k určitému bodu v čase pomocí zálohování a vybrat vlastní bod obnovení s nejnovějším časem obnovení nejnovějších dat. Nový flexibilní Server se nasadí v jiné neovlivněné zóně. Doba potřebná k obnovení závisí na předchozí záloze a na objemu transakčních protokolů, které se mají obnovit. | Flexibilní Server se automaticky převezme na pohotovostní server v rámci 60 120s s nulovou ztrátou dat. Další informace najdete na [stránce koncepty vysoké dostupnosti](../concepts-high-availability.md). | 
+| <b> Selhání zóny dostupnosti | Chcete-li provést obnovení při selhání na úrovni zóny, můžete provést obnovení k určitému bodu v čase pomocí zálohování a vybrat vlastní bod obnovení s nejnovějším časem obnovení nejnovějších dat. Nový flexibilní Server se nasadí v jiné neovlivněné zóně. Doba potřebná k obnovení závisí na předchozí záloze a na objemu transakčních protokolů, které se mají obnovit. | Flexibilní Server se automaticky převezme na pohotovostní server v rámci 60 120s s nulovou ztrátou dat. Další informace najdete na [stránce koncepty vysoké dostupnosti](./concepts-high-availability.md). | 
 | <b> Selhání oblasti | Replika čtení mezi oblastmi a geografické obnovení zálohovacích funkcí se ještě ve verzi Preview nepodporují. | |
 
 

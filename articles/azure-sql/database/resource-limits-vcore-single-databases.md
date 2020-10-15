@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 07/21/2020
-ms.openlocfilehash: 1d9fc9f50ac21e2ea621e26ad2b1fe0f146116de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: d6936d6c72855bc22e3fc9323028fd0b8cd0fb29
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618484"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097571"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Limity prostředků pro jednoúčelové databáze využívající nákupní model založený na virtuálních jádrech
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,7 +42,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Min – max – virtuální jádra|0.5-1|0.5-2|0,5 – 4|0,75-6|1.0-8|
 |Minimální – maximální velikost paměti (GB)|2.02-3|2.05 – 6|2.10 – 12|2.25-18|3.00-24|
 |Minimální prodleva automatického pozastavení (minuty) pro maximum|60-10080|60-10080|60-10080|60-10080|60-10080|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|512|1024|1024|1024|1536|
 |Maximální velikost protokolu (GB)|154|307|307|307|461|
@@ -50,7 +50,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|320|640|1280|1920|2560|
-|Maximální rychlost protokolu (MB/s)|3,8|7,5|15|22,5|30|
+|Maximální rychlost protokolu (MB/s)|4.5|9|18|27|36|
 |Maximální počet souběžných pracovních procesů (požadavků)|75|150|300|450|600|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|
@@ -68,7 +68,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Min – max – virtuální jádra|1,25 – 10|1.50-12|1,75 – 14|2,00-16|
 |Minimální – maximální velikost paměti (GB)|3,75 – 30|4.50 – 36|5,25 – 42|6.00-48|
 |Minimální prodleva automatického pozastavení (minuty) pro maximum|60-10080|60-10080|60-10080|60-10080|
-|Podpora columnstore|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|1536|3072|3072|3072|
 |Maximální velikost protokolu (GB)|461|461|461|922|
@@ -76,7 +76,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|3200|3840|4480|5120|
-|Maximální rychlost protokolu (MB/s)|30|30|30|30|
+|Maximální rychlost protokolu (MB/s)|36|36|36|36|
 |Maximální počet souběžných pracovních procesů (požadavků)|750|900|1050|1200|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|
@@ -94,7 +94,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Min – max – virtuální jádra|2.25-18|2,5 – 20|3–24|4-32|5-40|
 |Minimální – maximální velikost paměti (GB)|6.75-54|7,5 – 60|9-72|12-96|15-120|
 |Minimální prodleva automatického pozastavení (minuty) pro maximum|60-10080|60-10080|60-10080|60-10080|60-10080|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|3072|3072|4 096|4 096|4 096|
 |Maximální velikost protokolu (GB)|922|922|1024|1024|1024|
@@ -102,7 +102,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|5760|6400|7680|10240|12800|
-|Maximální rychlost protokolu (MB/s)|30|30|30|30|30|
+|Maximální rychlost protokolu (MB/s)|36|36|36|36|36|
 |Maximální počet souběžných pracovních procesů (požadavků)|1350|1 500|1800|2400|3000|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|
@@ -123,7 +123,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|1|2|3|4|5|6|
 |Paměť (GB)|7|14|21|28|35|42|
 |[RBPEX](service-tier-hyperscale.md#compute) Hodnota|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (TB)|100 |100 |100 |100 |100 |100|
 |Maximální velikost protokolu (TB)|Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |
@@ -136,7 +136,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
 |Sekundární repliky|0-4|0-4|0-4|0-4|0-4|0-4|
 |Více AZ|N/A|N/A|N/A|N/A|N/A|N/A|
-|Škálování čtení|Yes|Yes|Yes|Yes|Yes|Yes|
+|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|
 |Uchování úložiště záloh|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|
 |||
 
@@ -150,7 +150,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|7|8|9|10|16|24|
 |Paměť (GB)|49|56|63|70|112|159,5|
 |[RBPEX](service-tier-hyperscale.md#compute) Hodnota|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (TB)|100 |100 |100 |100 |100 |100 |
 |Maximální velikost protokolu (TB)|Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |
@@ -163,7 +163,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
 |Sekundární repliky|0-4|0-4|0-4|0-4|0-4|0-4|
 |Více AZ|N/A|N/A|N/A|N/A|N/A|N/A|
-|Škálování čtení|Yes|Yes|Yes|Yes|Yes|Yes|
+|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|
 |Uchování úložiště záloh|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|
 |||
 
@@ -179,7 +179,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|2|4|6|8|10|12|14|
 |Paměť (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |[RBPEX](service-tier-hyperscale.md#compute) Hodnota|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (TB)|100 |100 |100 |100 |100 |100 |100|
 |Maximální velikost protokolu (TB)|Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |
@@ -192,7 +192,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Sekundární repliky|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
 |Více AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|Škálování čtení|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Uchování úložiště záloh|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|
 |||
 
@@ -206,7 +206,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|16|18|20|24|32|40|80|
 |Paměť (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |[RBPEX](service-tier-hyperscale.md#compute) Hodnota|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (TB)|100 |100 |100 |100 |100 |100 |100 |
 |Maximální velikost protokolu (TB)|Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |
@@ -219,7 +219,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Sekundární repliky|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
 |Více AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|Škálování čtení|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Uchování úložiště záloh|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|
 |||
 
@@ -243,7 +243,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Generování výpočtů|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|
 |Virtuální jádra|1|2|3|4|5|6|
 |Paměť (GB)|7|14|21|28|35|42|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|1024|1024|1536|1536|1536|3072|
 |Maximální velikost protokolu (GB)|307|307|461|461|461|922|
@@ -251,7 +251,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|320|640|960|1280|1600|1920|
-|Maximální rychlost protokolu (MB/s)|3,75|7,5|11,25|15|18,75|22,5|
+|Maximální rychlost protokolu (MB/s)|4.5|9|13,5|18|22,5|27|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|1|
@@ -268,7 +268,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Generování výpočtů|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|
 |Virtuální jádra|7|8|9|10|16|24|
 |Paměť (GB)|49|56|63|70|112|159,5|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|3072|3072|3072|3072|4 096|4 096|
 |Maximální velikost protokolu (GB)|922|922|922|922|1229|1229|
@@ -276,7 +276,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)
 |Maximální počet datových IOPS *|2240|2560|2880|3200|5120|7680|
-|Maximální rychlost protokolu (MB/s)|26,3|30|30|30|30|30|
+|Maximální rychlost protokolu (MB/s)|31,5|36|36|36|36|36|
 |Maximální počet souběžných pracovních procesů (požadavků)|1400|1600|1800|2000|3200|4800|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|1|
@@ -295,7 +295,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Generování výpočtů|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuální jádra|2|4|6|8|10|12|14|
 |Paměť (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Maximální velikost protokolu (GB)|307|307|461|461|461|922|922|
@@ -303,7 +303,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|640|1280|1920|2560|3200|3840|4480|
-|Maximální rychlost protokolu (MB/s)|7,5|15|22,5|30|30|30|30|
+|Maximální rychlost protokolu (MB/s)|9|18|27|36|36|36|36|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|1400|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|1|1|
@@ -320,7 +320,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Generování výpočtů|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuální jádra|16|18|20|24|32|40|80|
 |Paměť (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|3072|3072|3072|4 096|4 096|4 096|4 096|
 |Maximální velikost protokolu (GB)|922|922|922|1024|1024|1024|1024|
@@ -328,7 +328,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|5120|5760|6400|7680|10240|12800|12800|
-|Maximální rychlost protokolu (MB/s)|30|30|30|30|30|30|30|
+|Maximální rychlost protokolu (MB/s)|36|36|36|36|36|36|36|
 |Maximální počet souběžných pracovních procesů (požadavků)|1600|1800|2000|2400|3200|4000|8000|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|1|1|
@@ -347,7 +347,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Generování výpočtů|Řada Fsv2|Řada Fsv2|Řada Fsv2|Řada Fsv2|Řada Fsv2|
 |Virtuální jádra|8|10|12|14|16|
 |Paměť (GB)|15,1|18,9|22,7|26,5|30,2|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|1536|
 |Maximální velikost protokolu (GB)|336|336|336|336|512|
@@ -355,7 +355,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|2560|3200|3840|4480|5120|
-|Maximální rychlost protokolu (MB/s)|30|30|30|30|30|
+|Maximální rychlost protokolu (MB/s)|36|36|36|36|36|
 |Maximální počet souběžných pracovních procesů (požadavků)|400|500|600|700|800|
 |Maximální počet souběžných přihlášení|800|1000|1200|1400|1600|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|
@@ -373,7 +373,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Generování výpočtů|Řada Fsv2|Řada Fsv2|Řada Fsv2|Řada Fsv2|Řada Fsv2|Řada Fsv2|
 |Virtuální jádra|18|20|24|32|36|72|
 |Paměť (GB)|34,0|37,8|45,4|60,5|68,0|136,0|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximální velikost dat (GB)|1536|1536|1536|3072|3072|4 096|
 |Maximální velikost protokolu (GB)|512|512|512|1024|1024|1024|
@@ -381,7 +381,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Maximální počet datových IOPS *|5760|6400|7680|10240|11520|23040|
-|Maximální rychlost protokolu (MB/s)|30|30|30|30|30|30|
+|Maximální rychlost protokolu (MB/s)|36|36|36|36|36|36|
 |Maximální počet souběžných pracovních procesů (požadavků)|900|1000|1200|1600|1800|3600|
 |Maximální počet souběžných přihlášení|1800|2000|2400|3200|3600|7200|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
@@ -404,7 +404,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Generování výpočtů|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|
 |Virtuální jádra|1|2|3|4|5|6|
 |Paměť (GB)|7|14|21|28|35|42|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|1|2|3|4|5|6|
 |Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
@@ -417,8 +417,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných přihlášení|200|400|600|800|1000|1200|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|4|4|4|4|4|4|
-|Více AZ|Yes|Yes|Yes|Yes|Yes|Yes|
-|Škálování čtení|Yes|Yes|Yes|Yes|Yes|Yes|
+|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
+|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
@@ -430,7 +430,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Generování výpočtů|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|
 |Virtuální jádra|7|8|9|10|16|24|
 |Paměť (GB)|49|56|63|70|112|159,5|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|7|8|9,5|11|20|36|
 |Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
@@ -443,8 +443,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných přihlášení (požadavků)|1400|1600|1800|2000|3200|4800|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|4|4|4|4|4|4|
-|Více AZ|Yes|Yes|Yes|Yes|Yes|Yes|
-|Škálování čtení|Yes|Yes|Yes|Yes|Yes|Yes|
+|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
+|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
@@ -458,7 +458,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Generování výpočtů|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuální jádra|2|4|6|8|10|12|14|
 |Paměť (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|1,57|3,14|4,71|6,28|8,65|11,02|13,39|
 |Maximální velikost dat (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Maximální velikost protokolu (GB)|307|307|461|461|461|922|922|
@@ -471,8 +471,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných přihlášení|200|400|600|800|1000|1200|1400|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|4|4|4|4|4|4|4|
-|Více AZ|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Škálování čtení|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
+|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
@@ -484,7 +484,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Generování výpočtů|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuální jádra|16|18|20|24|32|40|80|
 |Paměť (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|15.77|18,14|20,51|25,25|37,94|52,23|131,64|
 |Maximální velikost dat (GB)|3072|3072|3072|4 096|4 096|4 096|4 096|
 |Maximální velikost protokolu (GB)|922|922|922|1024|1024|1024|1024|
@@ -497,8 +497,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných přihlášení|1600|1800|2000|2400|3200|4000|8000|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|4|4|4|4|4|4|4|
-|Více AZ|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Škálování čtení|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
+|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
@@ -512,7 +512,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Generování výpočtů|Řada M|Řada M|Řada M|Řada M|Řada M|Řada M|
 |Virtuální jádra|8|10|12|14|16|18|
 |Paměť (GB)|235,4|294,3|353,2|412,0|470,9|529,7|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|64|80|96|112|128|150|
 |Maximální velikost dat (GB)|512|640|768|896|1024|1152|
 |Maximální velikost protokolu (GB)|171|213|256|299|341|384|
@@ -525,8 +525,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných přihlášení|800|1 000|1 200|1 400|1 600|1 800|
 |Maximální počet souběžných relací|30000|30000|30000|30000|30000|30000|
 |Počet replik|4|4|4|4|4|4|
-|Více AZ|No|No|No|No|No|No|
-|Škálování čtení|Yes|Yes|Yes|Yes|Yes|Yes|
+|Více AZ|Ne|Ne|Ne|Ne|Ne|Ne|
+|Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
@@ -541,7 +541,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Generování výpočtů|Řada M|Řada M|Řada M|Řada M|Řada M|
 |Virtuální jádra|20|24|32|64|128|
 |Paměť (GB)|588,6|706,3|941,8|1883,5|3767,0|
-|Podpora columnstore|Yes|Yes|Yes|Yes|Yes|
+|Podpora columnstore|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|172|216|304|704|1768|
 |Maximální velikost dat (GB)|1280|1536|2 048|4 096|4 096|
 |Maximální velikost protokolu (GB)|427|512|683|1024|1024|
@@ -554,8 +554,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných přihlášení|2 000|2 400|3 200|6 400|12 800|
 |Maximální počet souběžných relací|30000|30000|30000|30000|30000|
 |Počet replik|4|4|4|4|4|
-|Více AZ|No|No|No|No|No|
-|Škálování čtení|Yes|Yes|Yes|Yes|Yes|
+|Více AZ|Ne|Ne|Ne|Ne|Ne|
+|Škálování čtení|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \* Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).

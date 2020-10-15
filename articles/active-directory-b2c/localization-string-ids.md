@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/14/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 87d56f32877fbe5b817dab5d9ad98e1f1f71386c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f75fbf286741fcc122332574332a30ad7fa23644
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054742"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096194"
 ---
 # <a name="localization-string-ids"></a>ID řetězců lokalizací
 
@@ -45,7 +45,7 @@ Následující identifikátory se používají pro definici obsahu s ID `api.sig
 | **createaccount_link** | Zaregistrujte se |
 | **divider_title** | NEBO |
 | **cancel_message** | Uživatel zapomněl svoje heslo. |
-| **button_signin** | Přihlásit se |
+| **button_signin** | Přihlášení |
 | **social_intro** | Přihlaste se pomocí účtu sociální sítě. |
   **remember_me** |Zůstat přihlášeni. |
 | **unknown_error** | Máme potíže s přihlášením. Zkuste to později. |
@@ -143,7 +143,7 @@ Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo l
 | **cancel_message** | Uživatel zrušil zadávání informací o vlastním vyhodnocení. |
 | **preloader_alt** | Počkejte prosím |
 | **ver_but_send** | Odeslat ověřovací kód |
-| **alert_yes** | Yes |
+| **alert_yes** | Ano |
 | **error_fieldIncorrect** | Některá pole jsou vyplněna nesprávně. Zkontrolujte prosím své položky a zkuste to znovu. |
 | **jednolet** | Year (Rok) |
 | **verifying_blurb** | Počkejte prosím, než zpracujeme vaše informace. |
@@ -161,7 +161,7 @@ Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo l
 | **ver_incorrect_format** | Nesprávný formát |
 | **ver_but_edit** | Změnit e-mail |
 | **ver_but_verify** | Ověřit kód |
-| **alert_no** | No |
+| **alert_no** | Ne |
 | **ver_info_msg** | Ověřovací kód byl odeslán do vaší doručené pošty. Zkopírujte ho prosím do následujícího pole pro zadání. |
 | **dnu** | Den |
 | **ver_fail_throttled** | Existuje příliš mnoho žádostí o ověření této e-mailové adresy. Chvíli prosím počkejte a pak to zkuste znovu. |
@@ -263,7 +263,7 @@ Níže jsou uvedené identifikátory definice obsahu s ID `api.phonefactor` a [t
 | **invalid_code** | Zadejte prosím kód o 6 číslicích, který jste dostali. |
 | **button_cancel** | Zrušit |
 | **local_number_input_placeholder_text** | Telefonní číslo |
-| **button_retry** | Retry |
+| **button_retry** | Zkusit znovu |
 | **alternative_text** | Nemám svůj telefon |
 | **intro_phone_p** | Pro vás budeme nahrávat následující čísla. Vyberte číslo, na které můžeme telefon ověřit. |
 | **intro_phone** | Pro vás budeme nahrávat následující číslo. Budeme vám telefonicky ověřit. |
@@ -343,7 +343,42 @@ Následující příklad ukazuje použití některých prvků uživatelského ro
 
 ## <a name="verification-display-control-user-interface-elements"></a>Ovládací prvky uživatelského rozhraní pro zobrazení ověření
 
-Níže jsou uvedené identifikátory pro [ovládací prvek zobrazení ověřování](display-control-verification.md) .
+Níže jsou uvedené identifikátory pro [ovládací prvek zobrazení ověřování](display-control-verification.md) s [verzí rozložení stránky](page-layout.md) 2.1.0 nebo vyšší.
+
+| ID | Výchozí hodnota |
+| -- | ------------- |
+|intro_msg| Ověření je nezbytné. Klikněte prosím na tlačítko Odeslat.|
+|success_send_code_msg | Ověřovací kód byl odeslán do vaší doručené pošty. Zkopírujte ho prosím do následujícího pole pro zadání.|
+|failure_send_code_msg | Při ověřování vaší e-mailové adresy máme problémy. Zadejte prosím platnou e-mailovou adresu a zkuste to znovu.|
+|success_verify_code_msg | E-mailová adresa byla ověřena. Nyní můžete pokračovat.|
+|failure_verify_code_msg | Při ověřování vaší e-mailové adresy máme problémy. Zkuste to prosím znovu.|
+|but_send_code | Odeslat ověřovací kód|
+|but_verify_code | Ověřit kód|
+|but_send_new_code | Poslat nový kód|
+|but_change_claims | Změnit e-mail|
+
+### <a name="verification-display-control-example"></a>Příklad ovládacího prvku zobrazení ověření
+
+```xml
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+   <!-- Display control UI elements-->
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="intro_msg">Verification is necessary. Please click Send button.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_send_code_msg">Verification code has been sent to your inbox. Please copy it to the input box below.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_send_code_msg">We are having trouble verifying your email address. Please enter a valid email address and try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="success_verify_code_msg">E-mail address verified. You can now continue.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="failure_verify_code_msg">We are having trouble verifying your email address. Please try again.</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_new_code">Send new code</LocalizedString>
+    <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_change_claims">Change e-mail</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="verification-display-control-user-interface-elements-deprecated"></a>Ovládací prvky uživatelského rozhraní pro zobrazení ověření (zastaralé)
+
+Níže jsou uvedené identifikátory pro [ovládací prvek zobrazení ověřování](display-control-verification.md) s [verzí rozložení stránky](page-layout.md) 2.0.0.
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
@@ -355,7 +390,7 @@ Níže jsou uvedené identifikátory pro [ovládací prvek zobrazení ověřová
 |verification_control_but_verify_code |Ověřit kód |
 |verification_control_code_sent| Ověřovací kód byl odeslán. Zkopírujte ho prosím do následujícího pole pro zadání. |
 
-### <a name="verification-display-control-example"></a>Příklad ovládacího prvku zobrazení ověření
+### <a name="verification-display-control-example-deprecated"></a>Příklad ovládacího prvku zobrazení ověření (zastaralé)
 
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -468,8 +503,8 @@ Níže jsou uvedené identifikátory pro chybové zprávy s [technickým profile
 ```xml
 <LocalizedResources Id="api.localaccountsignup.en">
   <LocalizedStrings>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>

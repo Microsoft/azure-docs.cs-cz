@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b7f9a83a3972ed0a5a635826b40e15c437da16b8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ab414b877bd2d098c6e340267ff579fb58aec9d9
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91540366"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097316"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace pro Xamarin Android pomocí prostorových kotev Azure
 
@@ -37,10 +37,10 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
     - <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a>.
     - <a href="https://git-lfs.github.com/">Git LFS</a>.
   - Pokud používáte macOS:
-    - Aktuální verze <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio pro Mac 8.1 +</a>.
+    - Aktuální verze <a href="/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio pro Mac 8.1 +</a>.
     - <a href="https://git-scm.com/download/mac" target="_blank">Git pro MacOS</a>.
     - <a href="https://git-lfs.github.com/">Git LFS</a>.
-- Na vámi zvolenou platformu je nainstalovaná a spuštěná nejnovější verze Xamarin. Androidu. Průvodce instalací Xamarin. Android najdete v příručkách k [instalaci Xamarin. Android](https://docs.microsoft.com/xamarin/android/get-started/installation/index) .
+- Na vámi zvolenou platformu je nainstalovaná a spuštěná nejnovější verze Xamarin. Androidu. Průvodce instalací Xamarin. Android najdete v příručkách k [instalaci Xamarin. Android](/xamarin/android/get-started/installation/index) .
 - Zařízení s Androidem podporující <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">vývojáře</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore</a> .
   - Počítač může pro komunikaci se zařízením s Androidem vyžadovat další ovladače zařízení. Další informace najdete [tady](https://developer.android.com/studio/run/device.html).
 - Vaše aplikace musí cílit na ARCore **1,8**.

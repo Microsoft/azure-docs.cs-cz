@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1106ec63e79d336b740b444a187244de64c03f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 955e77bc947baed889de24ce34e7acec737164f6
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269569"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097299"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -30,7 +30,7 @@ Přenosem zařízení do Azure AD maximalizujete produktivitu uživatelů díky 
 
 Pokud máte místní prostředí Active Directory (AD) a chcete se připojit k počítačům připojeným k doméně AD do služby Azure AD, můžete to provést pomocí hybridního připojení k Azure AD. Tento článek poskytuje související kroky pro implementaci hybridního připojení k Azure AD ve vašem prostředí. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste obeznámeni se [Seznámkou se správou identit zařízení v Azure Active Directory](./overview.md).
 
@@ -56,7 +56,7 @@ Připojení k hybridní službě Azure AD podporuje širokou škálu zařízení
 
 - Windows 10
 - Windows Server 2016
-  - **Poznámka**: zákazníci s vnitrostátními cloudy Azure vyžadují verzi 1809.
+  - **Poznámka**: zákazníci s vnitrostátními cloudy Azure vyžadují verzi 1803.
 - Windows Server 2019
 
 V případě zařízení s desktopovým operačním systémem Windows je podporovaná verze uvedená v tomto článku [informace o verzi Windows 10](/windows/release-information/). Osvědčeným postupem je, že Microsoft doporučuje upgradovat na nejnovější verzi Windows 10.
@@ -162,7 +162,7 @@ V některých případech se vaše místní uživatelské názvy UPN můžou li�
 
 V následující tabulce najdete podrobné informace o podpoře místních UPN služby AD ve Windows 10 – připojení k hybridní službě Azure AD.
 
-| Typ místního hlavního názvu uživatele služby AD | Typ domény | Verze Windows 10 | Description |
+| Typ místního hlavního názvu uživatele služby AD | Typ domény | Verze Windows 10 | Popis |
 | ----- | ----- | ----- | ----- |
 | Balíček | Federovaní | Z verze 1703 | Obecná dostupnost |
 | Bez směrování | Federovaní | Z verze 1803 | Obecná dostupnost |

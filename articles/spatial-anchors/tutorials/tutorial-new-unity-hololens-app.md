@@ -8,24 +8,24 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ee7a0ca1abedd2f80cd8f5fe66e603315a10966f
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: e94ced70ad17286612328884d03d4d1253b7818b
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939524"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096534"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Kurz: podrobné pokyny k vytvoření nové aplikace Unity pro HoloLens pomocí prostorových kotev Azure
 
 V tomto kurzu se dozvíte, jak vytvořit novou aplikaci Unity pro HoloLens pomocí prostorových kotev Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
 1. Počítač se systémem Windows se sadou <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 +</a> nainstalovaný s úlohou **vývoje Univerzální platforma Windows** a komponentou **Windows 10 SDK (10.0.18362.0 nebo novější)** a <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a>.
 2. [Rozšíření Visual Studio/WinRT v jazyce C++](https://aka.ms/cppwinrt/vsix) pro Visual Studio by se mělo nainstalovat z [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
-3. Zařízení HoloLens s povoleným [vývojářským režimem](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) . Tento článek vyžaduje zařízení HoloLens s [Windows 10 květen 2020 Update](https://docs.microsoft.com/windows/mixed-reality/whats-new/release-notes-may-2020 ). Chcete-li provést aktualizaci na nejnovější verzi na HoloLens, otevřete aplikaci **Nastavení** , pokračujte na **aktualizace & zabezpečení**a pak vyberte tlačítko **Vyhledat aktualizace** .
+3. Zařízení HoloLens s povoleným [vývojářským režimem](/windows/mixed-reality/using-visual-studio) . Tento článek vyžaduje zařízení HoloLens s [Windows 10 květen 2020 Update](/windows/mixed-reality/whats-new/release-notes-may-2020). Chcete-li provést aktualizaci na nejnovější verzi na HoloLens, otevřete aplikaci **Nastavení** , pokračujte na **aktualizace & zabezpečení**a pak vyberte tlačítko **Vyhledat aktualizace** .
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -89,7 +89,7 @@ Musíme nakonfigurovat naši aplikaci Unity pomocí moderního zobrazení, nikol
 Nyní byste měli mít v podokně **projektu** Prefab sphere.
 
 ## <a name="trying-it-out"></a>Vyzkoušení
-Chcete-li otestovat, že vše funguje, sestavte aplikaci v **Unity** a nasaďte ji ze sady **Visual Studio**. Postupujte podle kapitoly 6 ze [ **základních základů pro Mr 100: Začínáme s** kurzem Unity](https://docs.microsoft.com/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) . Měli byste vidět úvodní obrazovku Unity a pak Vymazat displej.
+Chcete-li otestovat, že vše funguje, sestavte aplikaci v **Unity** a nasaďte ji ze sady **Visual Studio**. Postupujte podle kapitoly 6 ze [ **základních základů pro Mr 100: Začínáme s** kurzem Unity](/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) . Měli byste vidět úvodní obrazovku Unity a pak Vymazat displej.
 
 ## <a name="place-an-object-in-the-real-world"></a>Umístit objekt do reálného světa
 Pojďme vytvořit & umístit objekt pomocí vaší aplikace. Otevřete řešení sady Visual Studio, které jsme vytvořili při [nasazení naší aplikace](#trying-it-out).
@@ -208,7 +208,7 @@ Nakonec připojovat všechno dohromady. Do `CreateAndSaveSphere()` metody přide
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-Spusťte aplikaci ze sady **Visual Studio** , a to ještě jednou. Pohybujte kolem své hlavy a potom klepněte v duchu na umístění své koule. Jakmile máme dostatek snímků, koule se změní žlutě a spustí se nahrávání do cloudu. Až se nahrávání dokončí, vaše koule se změní na modrou. V případě potřeby můžete také použít [okno výstup](https://docs.microsoft.com/visualstudio/ide/reference/output-window) při ladění v **aplikaci Visual Studio** a monitorovat zprávy protokolu, které vaše aplikace posílá. Ujistěte se, že jste nasadili `Debug` konfiguraci aplikace ze sady Visual Studio, abyste viděli zprávy protokolu. Můžete sledovat `RecommendedForCreateProgress` , a až se nahrávání dokončí, budete moct zobrazit identifikátor kotvy vrácený z cloudu.
+Spusťte aplikaci ze sady **Visual Studio** , a to ještě jednou. Pohybujte kolem své hlavy a potom klepněte v duchu na umístění své koule. Jakmile máme dostatek snímků, koule se změní žlutě a spustí se nahrávání do cloudu. Až se nahrávání dokončí, vaše koule se změní na modrou. V případě potřeby můžete také použít [okno výstup](/visualstudio/ide/reference/output-window) při ladění v **aplikaci Visual Studio** a monitorovat zprávy protokolu, které vaše aplikace posílá. Ujistěte se, že jste nasadili `Debug` konfiguraci aplikace ze sady Visual Studio, abyste viděli zprávy protokolu. Můžete sledovat `RecommendedForCreateProgress` , a až se nahrávání dokončí, budete moct zobrazit identifikátor kotvy vrácený z cloudu.
 
 > [!NOTE]
 > Pokud se zobrazí "DllNotFoundException –: nejde načíst knihovnu DLL" AzureSpatialAnchors ": zadaný modul se nepovedlo najít.", měli byste řešení **vyčistit** a znovu **sestavit** .
@@ -236,6 +236,6 @@ Nyní umožňuje přidat kód, který vytvoří & umístit zelenou koule po umí
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=234-271)]
 
-A je to! Spusťte aplikaci ze sady **Visual Studio** jednou, abyste si vyzkoušeli celý scénář od konce do konce. Pohybujte kolem zařízení a umístěte svou bílou plochu. Pak pokračujte v přesouvání vašeho hlavního prostředí, dokud se koule nezmění žlutě. Vaše místní kotva se nahraje a vaše koule se zachová modře. Nakonec klepněte na obrazovku, abyste mohli odebrat místní kotvu a začít dotaz na jeho protějšek cloudu. Pokračujte v přesouvání zařízení, dokud se neumístí cloudové ukotvení. Zelená koule by se měla zobrazit ve správném umístění a celý scénář můžete opakovat.
+A to je vše! Spusťte aplikaci ze sady **Visual Studio** jednou, abyste si vyzkoušeli celý scénář od konce do konce. Pohybujte kolem zařízení a umístěte svou bílou plochu. Pak pokračujte v přesouvání vašeho hlavního prostředí, dokud se koule nezmění žlutě. Vaše místní kotva se nahraje a vaše koule se zachová modře. Nakonec klepněte na obrazovku, abyste mohli odebrat místní kotvu a začít dotaz na jeho protějšek cloudu. Pokračujte v přesouvání zařízení, dokud se neumístí cloudové ukotvení. Zelená koule by se měla zobrazit ve správném umístění a celý scénář můžete opakovat.
 
 [!INCLUDE [AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md)]

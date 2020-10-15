@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/10/2019
+ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0920c4e98527640875a236bbea8693bfa8ab0942
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d41af4dc9b40c0c814c83ee27a671fabf191103d
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88926638"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097112"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro [Xamarin](https://docs.microsoft.com/xamarin/get-started/what-is-xamarin), open source platformu pro vytváření moderních a výkonných aplikací pro iOS, Android a Windows pomocí .NET. Pokud chcete, aby název balíčku začal vlastním způsobem, spusťte `Install-Package Microsoft.CognitiveServices.Speech` v konzole NuGet.
 

@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 4e9b9a7fb6e739b3bd288557457d1c152e372e26
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: cbd8c91391cc1e3afe930094f34e5015ea3c3450
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045291"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097520"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrace s Logic Apps s využitím vlastního konektoru
 
@@ -26,7 +26,7 @@ Digitální vlákna Azure momentálně nemají certifikovaný (předem sestaven�
 
 V tomto článku použijete [Azure Portal](https://portal.azure.com) k **Vytvoření vlastního konektoru** , který se dá použít k připojení Logic Apps k instanci digitálních vláken Azure. Pak **vytvoříte aplikaci logiky** , která bude toto připojení používat pro ukázkový scénář, ve kterém události aktivované časovačem automaticky aktualizují dvojitou repliku v instanci digitálních vláken Azure. 
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si ** [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) ** před tím, než začnete.
 Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí tohoto účtu. 
@@ -93,9 +93,9 @@ Přejdete na stránku pro nasazení konektoru. Po dokončení nasazení kliknět
 
 Dále nakonfigurujete konektor, který jste vytvořili pro dosažení digitálních vláken Azure.
 
-Nejdřív Stáhněte si vlastní soubor Swagger pro digitální vlákna Azure, který je upravený tak, aby fungoval s Logic Apps. Stáhněte si ukázku **digitálních Swagger z digitálního vlákna Azure** z [**tohoto odkazu**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) přes tlačítko *Stáhnout soubor zip* . Přejděte do složky Stažené *Azure_Digital_Twins_Custom_Swaggers.zip* a rozbalte ji. 
+Nejdřív Stáhněte si vlastní soubor Swagger pro digitální vlákna Azure, který je upravený tak, aby fungoval s Logic Apps. Stáhněte si ukázku **digitálních Swagger (Logic Apps Connector) Azure** z [**tohoto odkazu a propojte**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) si tlačítko *Stáhnout ZIP* . Přejděte do složky Stažené *Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_.zip* a rozbalte ji. 
 
-Vlastní Swagger pro tento kurz je umístěný ve složce _**Azure_Digital_Twins_Custom_Swaggers \logicapps**_ . Tato složka obsahuje podsložky s názvem *stabilní* a ve *verzi Preview*, obě obsahují různé verze Swagger seřazené podle data. Složka s nejnovějším datem bude obsahovat poslední kopii Swagger. Podle vybrané verze se soubor Swagger jmenuje _**digitaltwins.js**_.
+Vlastní Swagger pro tento kurz je umístěný ve složce _* * Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_\LogicApps **_. Tato složka obsahuje podsložky s názvem *stabilní* a ve *verzi Preview*, obě obsahují různé verze Swagger seřazené podle data. Složka s nejnovějším datem bude obsahovat poslední kopii Swagger. Podle vybrané verze se soubor Swagger jmenuje _** digitaltwins.jsna * * _.
 
 > [!NOTE]
 > Pokud nepracujete s funkcí Preview, obecně se doporučuje použít nejnovější *stabilní* verzi Swagger. Starší verze a verze Preview se ale pořád podporují i ve verzi Preview. 
@@ -108,7 +108,7 @@ Na následující stránce *upravit Logic Apps vlastní konektor* nakonfigurujte
 * **Vlastní konektory**
     - Koncový bod rozhraní API: REST (ponechat výchozí)
     - Režim importu: soubor OpenAPI (ponechat výchozí)
-    - Soubor: Toto je vlastní soubor Swagger, který jste stáhli dříve. Stiskněte tlačítko *importovat*, vyhledejte soubor na počítači (*Azure_Digital_Twins_Custom_Swaggers \logicapps \...\digitaltwins.jszapnutý*) a stiskněte *otevřít*.
+    - Soubor: Toto je vlastní soubor Swagger, který jste stáhli dříve. Stiskněte tlačítko *importovat*, vyhledejte soubor na počítači (*Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_ \LogicApps \...\digitaltwins.jszapnutý*) a stiskněte *otevřít*.
 * **Obecné informace**
     - Ikona: Nahrajte ikonu, kterou se vám líbí.
     - Barva pozadí ikony: pro barvu zadejte hexadecimální kód ve formátu ' #xxxxxx '.

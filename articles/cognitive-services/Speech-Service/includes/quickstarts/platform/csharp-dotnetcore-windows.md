@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/10/2019
+ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: 980bfb7fa6295f98ebc43f6793b76eec26d46012
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4cfbf5ea5de9b8c448af56b186acdc4f3bb6f02e
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88926636"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096942"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro C# .NET Core. Pokud chcete, aby název balíčku začal vlastním způsobem, spusťte `Install-Package Microsoft.CognitiveServices.Speech` v konzole NuGet.
 

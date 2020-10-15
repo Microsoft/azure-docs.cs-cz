@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d61a3dd995efd1f433c2e862c4b7a59d31f79a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a97142e0c512f4f95235ad08c94c852906d3efd8
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660848"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095852"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect a federace
 Služba Azure Active Directory (Azure AD) Connect umožňuje konfigurovat federaci s místními Active Directory Federation Services (AD FS) (AD FS) a Azure AD. Pomocí federačního přihlášení můžete uživatelům povolit, aby se přihlásili ke službám založeným na službě Azure AD pomocí místních hesel – a v podnikové síti bez nutnosti zadávat hesla znovu. Pomocí možnosti federace s AD FS můžete nasadit novou instalaci AD FS nebo můžete zadat existující instalaci v serverové farmě Windows Serveru 2012 R2.
@@ -34,7 +34,7 @@ Toto téma je domovkou pro informace o funkcích týkajících se federace pro A
 | **Možnosti přihlášení uživatele Azure AD Connect** | |
 | [Pochopení možností přihlašování uživatelů](plan-connect-user-signin.md) |Přečtěte si o různých možnostech přihlašování uživatelů a o tom, jak mají vliv na uživatelské prostředí pro přihlašování do Azure. |
 | **Instalace AD FS pomocí Azure AD Connect** | |
-| [Požadavky](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |Projděte si požadavky na úspěšnou AD FS instalaci prostřednictvím Azure AD Connect. |
+| [Požadavky](how-to-connect-install-custom.md#ad-fs-configuration-prerequisites) |Projděte si požadavky na úspěšnou AD FS instalaci prostřednictvím Azure AD Connect. |
 | [Konfigurace farmy AD FS](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) |Nainstalujte novou AD FSovou farmu pomocí Azure AD Connect. |
 | [Federovat se službou Azure AD s použitím alternativního přihlašovacího ID](how-to-connect-fed-management.md#alternateid) | Konfigurace federace pomocí alternativního přihlašovacího ID  |
 | **Úprava konfigurace AD FS** | |
@@ -51,7 +51,7 @@ Toto téma je domovkou pro informace o funkcích týkajících se federace pro A
 | [Upravit pravidla deklarace AD FS](how-to-connect-fed-management.md#modclaims) |Upravte nebo přidejte pravidla deklarace identity v AD FS, která odpovídají konfiguraci Azure AD Connect synchronizace. |
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 * [Federování dvě služby Azure AD s jedním AD FS](how-to-connect-fed-single-adfs-multitenant-federation.md)
 * [Nasazení služby AD FS v Azure](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
 * [Vysoce dostupná nasazení mezi geografickými AD FSy v Azure s využitím Azure Traffic Manager](/windows-server/identity/ad-fs/deployment/active-directory-adfs-in-azure-with-azure-traffic-manager)

@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9592de0bfb53d0ba3f37cf3d34c6cd7ce3d4d65d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 445528b7d4f8d0b50270dfd775f6453252396f4c
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74270283"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097537"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>Jak vytvořit a najít kotvy pomocí prostorových kotev Azure v C++/NDK
 
@@ -32,7 +32,7 @@ Prostorové kotvy Azure umožňují sdílet kotvy na světě mezi různými zař
 - Nahrajte je do cloudu.
 - Najděte a odstraňte cloudové kotvy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto průvodce se ujistěte, že máte následující:
 
@@ -43,7 +43,7 @@ K dokončení tohoto průvodce se ujistěte, že máte následující:
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-Další informace o struktuře [CloudSpatialAnchorSession](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession)
+Další informace o struktuře [CloudSpatialAnchorSession](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession)
 
 ```cpp
     std::shared_ptr<CloudSpatialAnchorSession> cloudSession_;
@@ -53,7 +53,7 @@ Další informace o struktuře [CloudSpatialAnchorSession](https://docs.microsof
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-Další informace o struktuře [SessionConfiguration](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/sessionconfiguration)
+Další informace o struktuře [SessionConfiguration](/cpp/api/spatial-anchors/ndk/sessionconfiguration)
 
 ```cpp
     auto configuration = cloudSession_->Configuration();
@@ -69,7 +69,7 @@ Další informace o struktuře [SessionConfiguration](https://docs.microsoft.com
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-Přečtěte si další informace o delegátu [TokenRequiredDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/tokenrequireddelegate) .
+Přečtěte si další informace o delegátu [TokenRequiredDelegate](/cpp/api/spatial-anchors/ndk/tokenrequireddelegate) .
 
 ```cpp
     auto accessTokenRequiredToken = cloudSession_->TokenRequired([](auto&&, auto&& args) {
@@ -118,7 +118,7 @@ Přečtěte si další informace o delegátu [TokenRequiredDelegate](https://doc
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
-Přečtěte si další informace o metodě [Start](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#start) .
+Přečtěte si další informace o metodě [Start](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#start) .
 
 ```cpp
     cloudSession_->Session(ar_session_);
@@ -127,7 +127,7 @@ Přečtěte si další informace o metodě [Start](https://docs.microsoft.com/cp
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-Další informace o metodě [ProcessFrame](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#processframe)
+Další informace o metodě [ProcessFrame](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#processframe)
 
 ```cpp
     cloudSession_->ProcessFrame(ar_frame_);
@@ -135,7 +135,7 @@ Další informace o metodě [ProcessFrame](https://docs.microsoft.com/cpp/api/sp
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-Přečtěte si další informace o delegátu [SessionUpdatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/sessionupdateddelegate) .
+Přečtěte si další informace o delegátu [SessionUpdatedDelegate](/cpp/api/spatial-anchors/ndk/sessionupdateddelegate) .
 
 ```cpp
     auto sessionUpdatedToken = cloudSession_->SessionUpdated([this](auto&&, auto&& args) {
@@ -151,7 +151,7 @@ Přečtěte si další informace o delegátu [SessionUpdatedDelegate](https://do
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-Další informace o struktuře [CloudSpatialAnchor](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor)
+Další informace o struktuře [CloudSpatialAnchor](/cpp/api/spatial-anchors/ndk/cloudspatialanchor)
 
 ```cpp
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
@@ -203,7 +203,7 @@ Další informace o struktuře [CloudSpatialAnchor](https://docs.microsoft.com/c
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-Další informace o metodě [GetSessionStatusAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#getsessionstatusasync)
+Další informace o metodě [GetSessionStatusAsync](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#getsessionstatusasync)
 
 ```cpp
     cloudSession_->GetSessionStatusAsync([this](Status status, const std::shared_ptr<SessionStatus>& value) {
@@ -220,7 +220,7 @@ Další informace o metodě [GetSessionStatusAsync](https://docs.microsoft.com/c
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-Další informace o metodě [AppProperties](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor#appproperties)
+Další informace o metodě [AppProperties](/cpp/api/spatial-anchors/ndk/cloudspatialanchor#appproperties)
 
 ```cpp
     std::shared_ptr<CloudSpatialAnchor> cloudAnchor = std::make_shared<CloudSpatialAnchor>();
@@ -235,7 +235,7 @@ Další informace o metodě [AppProperties](https://docs.microsoft.com/cpp/api/s
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-Další informace o metodě [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#updateanchorpropertiesasync)
+Další informace o metodě [UpdateAnchorPropertiesAsync](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#updateanchorpropertiesasync)
 
 ```cpp
     std::shared_ptr<CloudSpatialAnchor> anchor = /* locate your anchor */;
@@ -252,7 +252,7 @@ Další informace o metodě [UpdateAnchorPropertiesAsync](https://docs.microsoft
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-Další informace o metodě [GetAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#getanchorpropertiesasync)
+Další informace o metodě [GetAnchorPropertiesAsync](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#getanchorpropertiesasync)
 
 ```cpp
     cloudSession_->GetAnchorPropertiesAsync(R"(anchorId)", [this](Status status, const std::shared_ptr<CloudSpatialAnchor>& anchor) {
@@ -274,7 +274,7 @@ Další informace o metodě [GetAnchorPropertiesAsync](https://docs.microsoft.co
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-Přečtěte si další informace o metodě [vypršení platnosti](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchor#expiration) .
+Přečtěte si další informace o metodě [vypršení platnosti](/cpp/api/spatial-anchors/ndk/cloudspatialanchor#expiration) .
 
 ```cpp
     std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
@@ -285,7 +285,7 @@ Přečtěte si další informace o metodě [vypršení platnosti](https://docs.m
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-Další informace o metodě [CreateWatcher](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#createwatcher)
+Další informace o metodě [CreateWatcher](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#createwatcher)
 
 ```cpp
     auto criteria = std::make_shared<AnchorLocateCriteria>();
@@ -295,7 +295,7 @@ Další informace o metodě [CreateWatcher](https://docs.microsoft.com/cpp/api/s
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-Přečtěte si další informace o delegátu [AnchorLocated](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/anchorlocateddelegate) .
+Přečtěte si další informace o delegátu [AnchorLocated](/cpp/api/spatial-anchors/ndk/anchorlocateddelegate) .
 
 ```cpp
     auto anchorLocatedToken = cloudSession_->AnchorLocated([this](auto&&, auto&& args) {
@@ -323,7 +323,7 @@ Přečtěte si další informace o delegátu [AnchorLocated](https://docs.micros
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-Další informace o metodě [DeleteAnchorAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#deleteanchorasync)
+Další informace o metodě [DeleteAnchorAsync](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#deleteanchorasync)
 
 ```cpp
     cloudSession_->DeleteAnchorAsync(cloudAnchor, [this](Status status) {
@@ -333,7 +333,7 @@ Další informace o metodě [DeleteAnchorAsync](https://docs.microsoft.com/cpp/a
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-Přečtěte si další informace o metodě [stop](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#stop) .
+Přečtěte si další informace o metodě [stop](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#stop) .
 
 ```cpp
     cloudSession_->Stop();
@@ -341,7 +341,7 @@ Přečtěte si další informace o metodě [stop](https://docs.microsoft.com/cpp
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-Přečtěte si další informace o metodě [resetování](https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#reset) .
+Přečtěte si další informace o metodě [resetování](/cpp/api/spatial-anchors/ndk/cloudspatialanchorsession#reset) .
 
 ```cpp
     cloudSession_->Reset();

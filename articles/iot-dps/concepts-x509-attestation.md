@@ -7,16 +7,16 @@ ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 911f819343f675ebe0a2604d912e6e26aa646eb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e06c79b9cbd5643d119974a4ed8628ea1b1cd4f
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90533044"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096755"
 ---
 # <a name="x509-certificate-attestation"></a>Atestace certifikátu X.509
 
-Tento článek obsahuje přehled konceptů, které se týkají při zřizování zařízení pomocí ověřování certifikátů X. 509. Tento článek je relevantní pro všechny osoby zapojené do zprovoznění zařízení připravené k nasazení.
+Tento článek obsahuje přehled konceptů služby Device Provisioning Service (DPS), které se týkají při zřizování zařízení pomocí ověřování certifikátů X. 509. Tento článek je relevantní pro všechny osoby zapojené do zprovoznění zařízení připravené k nasazení.
 
 Certifikáty X. 509 mohou být uloženy v modulu hardwarového zabezpečení HSM.
 
@@ -44,6 +44,12 @@ Kořenový certifikát je certifikát X. 509 podepsaný svým držitelem, který
 
 Zprostředkující certifikát je certifikát X. 509, který je podepsaný kořenovým certifikátem (nebo jiným zprostředkujícím certifikátem s kořenovým certifikátem v řetězci). Poslední zprostředkující certifikát v řetězu se používá k podepsání listového certifikátu. Zprostředkující certifikát se taky může označovat jako certifikát zprostředkující certifikační autority.
 
+##### <a name="why-are-intermediate-certs-useful"></a>Proč jsou zprostředkující certifikáty užitečné?
+Zprostředkující certifikáty jsou používány různými způsoby. Například zprostředkující certifikáty se dají použít k seskupení zařízení podle produktových produktů, zákazníkům, kteří si kupují zařízení, divize společnosti nebo továrny. 
+
+Představte si, že Contoso je velká společnost s vlastní infrastrukturou veřejných klíčů (PKI) pomocí kořenového certifikátu s názvem *ContosoRootCert*. Každá pobočka společnosti Contoso má svůj vlastní zprostředkující certifikát, který je podepsaný nástrojem *ContosoRootCert*. Každá pobočka pak bude používat zprostředkující certifikát k podepsání svých listových certifikátů pro každé zařízení. V tomto scénáři může společnost Contoso použít jednu instanci DPS, kde se *ContosoRootCert* ověřilo při použití [důkazu o vlastnictví](./how-to-verify-certificates.md). Můžou mít skupinu registrací pro každou dceřinou společnost. Tímto způsobem se nemusíte zabývat jednotlivými pobočkami při ověřování certifikátů.
+
+
 ### <a name="end-entity-leaf-certificate"></a>Koncová položka "list" – certifikát
 
 Certifikát listu nebo certifikát koncové entity identifikuje držitele certifikátu. Má kořenový certifikát ve svém řetězu certifikátů a také nula nebo více zprostředkujících certifikátů. Listový certifikát se nepoužívá k podepsání jiných certifikátů. Jednoznačně identifikuje zařízení ve službě zřizování a někdy se označuje jako certifikát zařízení. Při ověřování používá zařízení privátní klíč přidružený k tomuto certifikátu, aby reagoval na důkaz o přípravení ze služby.
@@ -54,12 +60,42 @@ Další informace najdete v tématu [ověřování zařízení podepsaných pomo
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Řízení přístupu zařízení ke službě zřizování pomocí certifikátů X. 509
 
-Služba zřizování zpřístupňuje dva typy záznamů registrace, které můžete použít k řízení přístupu pro zařízení, která používají mechanismus ověřování X. 509:  
+Služba zřizování zpřístupňuje dva typy registrace, které můžete použít k řízení přístupu zařízení pomocí mechanismu ověřování X. 509:  
 
 - [Jednotlivé položky registrace](./concepts-service.md#individual-enrollment) jsou nakonfigurovány s certifikátem zařízení přidruženým k určitému zařízení. Tyto položky řídí registraci pro konkrétní zařízení.
 - Položky [skupiny](./concepts-service.md#enrollment-group) registrací jsou spojené s konkrétním zprostředkujícím nebo kořenovým certifikátem certifikační autority. Tyto položky řídí registraci všech zařízení, která mají daný zprostředkující nebo kořenový certifikát ve svém řetězu certifikátů. 
 
-Když se zařízení připojí ke službě zřizování, služba upřednostní konkrétnější položky registrace přes méně konkrétní položky registrace. To znamená, že pokud pro zařízení existuje individuální registrace, služba zřizování tuto položku použije. Pokud není k dispozici žádná individuální registrace zařízení a skupina registrací pro první zprostředkující certifikát v řetězu certifikátů zařízení existuje, služba tuto položku použije a tak dále, až do kořenového řetězce. Služba použije první příslušnou položku, kterou najde, například:
+#### <a name="dps-device-chain-requirements"></a>Požadavky na řetězec zařízení DPS
+
+Při pokusu o registraci zařízení prostřednictvím DPS pomocí skupiny registrací musí zařízení odeslat řetěz certifikátů z listového certifikátu na certifikát ověřený při pokusůch [o](how-to-verify-certificates.md)přihlášení. V opačném případě se ověřování nezdaří.
+
+Pokud je třeba ověřený jenom kořenový certifikát a do skupiny registrací se zaznamená zprostředkující certifikát, zařízení by mělo z tohoto certifikátu docházet k ověřenému kořenovému certifikátu jako řetěz certifikátů. Tento řetěz certifikátů by zahrnoval jakékoli zprostředkující certifikáty v-mezi. Ověřování se nezdaří, pokud DPS nemůže procházet řetěz certifikátů k ověřenému certifikátu.
+
+Předpokládejme například, že společnost používá pro zařízení následující řetězec zařízení.
+
+![Ukázkový řetěz certifikátů zařízení](./media/concepts-x509-attestation/example-device-cert-chain.png) 
+
+Je ověřený jenom kořenový certifikát a *intermediate2* certifikát se nahraje do skupiny registrací.
+
+![Příklad ověření kořene](./media/concepts-x509-attestation/example-root-verified.png) 
+
+Pokud zařízení během zřizování pošle jenom následující řetězec zařízení, ověřování se nezdaří. Vzhledem k tomu, že DPS nemůže pokus o ověření za předpokladu platnosti certifikátu *intermediate1*
+
+![Příklad neúspěšného řetězu certifikátů](./media/concepts-x509-attestation/example-fail-cert-chain.png) 
+
+Pokud zařízení pošle plný řetěz zařízení, jak je uvedeno během zřizování, pak se může pokusit ověřit zařízení v DPS.
+
+![Ukázkový řetěz certifikátů zařízení](./media/concepts-x509-attestation/example-device-cert-chain.png) 
+
+
+
+
+> [!NOTE]
+> Zprostředkující certifikáty je také možné [ověřit pomocí ověření](how-to-verify-certificates.md)přístupnosti.
+
+
+#### <a name="dps-order-of-operations-with-certificates"></a>Pořadí operací s certifikáty v DPS
+Když se zařízení připojí ke službě zřizování, služba upřednostní konkrétnější položky registrace přes méně konkrétní položky registrace. To znamená, že pokud pro zařízení existuje individuální registrace, služba zřizování tuto položku použije. Pokud není k dispozici žádná individuální registrace zařízení a skupina registrací pro první zprostředkující certifikát v řetězu certifikátů zařízení existuje, služba tuto položku použije a tak dále navýšení řetězu do kořenového adresáře. Služba použije první příslušnou položku, kterou najde, například:
 
 - Pokud je první nalezená položka registrace povolená, služba zřídí zařízení.
 - Pokud je první nalezená položka registrace zakázaná, služba zařízení nezřídí.  

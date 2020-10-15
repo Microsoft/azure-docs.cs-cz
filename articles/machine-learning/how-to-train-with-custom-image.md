@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8239d037d6bd68638998cbb36c47c7dac4bce30d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13a88b327b5ba56b52cd4f08d9c7fae5d653ed38
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537612"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095938"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>Výuka modelu pomocí vlastní image Docker
 
@@ -25,11 +25,11 @@ Ukázkové skripty v tomto článku se používají ke klasifikaci PET imagí vy
 
 I když Azure Machine Learning poskytuje výchozí základní image Docker, můžete k určení konkrétní základní image použít taky Azure Machine Learning prostředí, jako je například jedna ze sady udržovaných [základních imagí Azure ml](https://github.com/Azure/AzureML-Containers) nebo vlastní [Image](how-to-deploy-custom-docker-image.md#create-a-custom-base-image). Vlastní základní image umožňují pečlivě spravovat závislosti a při provádění školicích úloh udržovat užší kontrolu nad verzemi komponent. 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 Spusťte tento kód v jednom z těchto prostředí:
 * Azure Machine Learning výpočetní instance – nepotřebujete žádné soubory ke stažení nebo instalaci
     * Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.
-    * V [úložišti příkladů](https://github.com/Azure/azureml-examples)Azure Machine Learning Najděte dokončený Poznámkový blok tak, že přejdete do tohoto adresáře: **How-to-use-AzureML > ml-Frameworks > fastai > vlak-with-Custom-Docker** 
+    * V úložišti s [příklady](https://github.com/Azure/azureml-examples)Azure Machine Learning Najděte dokončený Poznámkový blok tak, že přejdete do tohoto adresáře: **poznámkové bloky > fastai > vlak-domácích-resnet34. ipynb** 
 
 * Váš vlastní server Jupyter Notebook
     * Vytvořte [konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).

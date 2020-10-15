@@ -3,12 +3,12 @@ title: Odpovědi na časté dotazy
 description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 50cbd1d28ca3f04b8963c58b443765d4280b14ed
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 72a4f805b34ba8a536cd398efd5e6809bd66f0d4
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058076"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096619"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Nejčastější dotazy
 
@@ -57,6 +57,10 @@ Pokud jste už zálohu nakonfigurovali a musíte se přesunout z GRS na LRS, př
 
 - ILR se podporuje pro virtuální počítače Azure zálohované pomocí funkce zálohování virtuálních počítačů Azure. Další informace najdete v tomto [článku](backup-azure-restore-files-from-vm.md).
 - ILR se nepodporuje u online bodů obnovení místních virtuálních počítačů zálohovaných nástrojem Azure Backup Server (MABS) nebo System Center DPM.
+
+### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Jak můžu přesunout data z Recovery Services trezoru do místního prostředí?
+
+Export dat přímo z Recovery Services trezoru do místního prostředí pomocí Data Box není podporován. Data musí být obnovena do účtu úložiště a pak je lze přesunout do místního prostředí prostřednictvím [data box](https://docs.microsoft.com/azure/databox/data-box-overview) nebo [Import/export](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
 
 ## <a name="azure-backup-agent"></a>Agent Azure Backup
 

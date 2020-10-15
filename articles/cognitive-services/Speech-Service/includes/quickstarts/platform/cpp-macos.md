@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/14/2019
+ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: d0f9bc44145f75d7c3b503fffe43042c650025f1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3ad8eb9564c4d8343a0763cc2f6f5061ee602b72
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "75469500"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096976"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro C++ na MacOS 10,13 a novějších verzích.
 

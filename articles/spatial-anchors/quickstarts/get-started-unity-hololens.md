@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 09/29/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c7aa4b90d52ac52a9f879d9e5cc16ec93818b70d
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 143bc89518ff1811ad6789f71fcf7a9267e99f73
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939711"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097435"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace pro HoloLens v Unity, která používá prostorové kotvy Azure
 
@@ -29,12 +29,12 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 - Potřebujete počítač s Windows s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,4 (LTS)</a> a sadou <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> nebo novější. Vaše instalace sady Visual Studio musí zahrnovat úlohu **vývoje Univerzální platforma Windows** a komponentu **Windows 10 SDK (10.0.18362.0 nebo novější)** . Musíte taky nainstalovat <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a> a <a href="https://git-lfs.github.com/">Git LFS</a>.
-- Potřebujete zařízení HoloLens, na kterém je povolený [vývojářský režim](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) . V zařízení musí být nainstalovaná [aktualizace Windows 10 květen 2020](https://docs.microsoft.com/windows/mixed-reality/whats-new/release-notes-may-2020) . Chcete-li provést aktualizaci na nejnovější verzi na HoloLens, otevřete aplikaci **Nastavení** , pokračujte na **aktualizace & zabezpečení**a pak vyberte **Vyhledat aktualizace**.
+- Potřebujete zařízení HoloLens, na kterém je povolený [vývojářský režim](/windows/mixed-reality/using-visual-studio) . V zařízení musí být nainstalovaná [aktualizace Windows 10 květen 2020](/windows/mixed-reality/whats-new/release-notes-may-2020) . Chcete-li provést aktualizaci na nejnovější verzi na HoloLens, otevřete aplikaci **Nastavení** , pokračujte na **aktualizace & zabezpečení**a pak vyberte **Vyhledat aktualizace**.
 - V aplikaci musíte povolit funkci **SpatialPerception** . Toto nastavení je v **nastavení sestavení**  >  **Player Settings**  >  Možnosti nastavení**publikování**přehrávače nastavení  >  **Capabilities**.
 - V aplikaci musíte povolit **virtuální realitu podporovanou** sadou **Windows Mixed reality SDK**. Toto nastavení se nachází v nastavení **sestavení**  >  **přehrávače**nastavení  >  **XR**.
 

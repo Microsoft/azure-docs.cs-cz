@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: rkarlin
-ms.openlocfilehash: ea62592ed155215b14666d0d56e09dbb1a83ed6e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4189cb8628db58343c816535836af82825014b7e
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093459"
+ms.locfileid: "92096313"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender pro architekturu IoT
 
@@ -29,12 +29,19 @@ Tento článek popisuje funkční systém architektury řešení Defender for Io
 Defender pro IoT se připojuje ke cloudu Azure i k místním součástem. Řešení je navržené pro škálovatelnost ve velkých i geograficky distribuovaných prostředích s více vzdálenými umístěními. Toto řešení umožňuje vícevrstvou distribuovanou architekturu podle zemí, oblastí, organizační jednotky nebo zóny. 
 
 Azure Defender pro IoT zahrnuje tyto komponenty: 
-- Azure Defender pro IoT snímače
-- Konzoly pro správu:
-    - Konzola senzorů
-    - Místní Konzola pro správu
-    - portál Azure
-- Embedded Security Agent (modul zabezpečení a Sada IoT SDK)
+
+**Nasazení připojená ke cloudu**
+
+- Azure Defender pro virtuální počítač nebo zařízení se senzorem IoT
+- Azure Portal pro správu cloudu a integraci do Azure Sentinel
+- Místní Konzola pro správu pro správu místních lokalit
+- Vložený Agent zabezpečení (volitelné)
+
+**Nasazení air-gapped (offline)**
+
+- Azure Defender pro virtuální počítač nebo zařízení se senzorem IoT
+- Místní Konzola pro správu pro správu místních lokalit
+
 
 ![Defender pro architekturu IoT](./media/architecture/defender-iot-security-architecture.png)
 

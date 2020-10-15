@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18ee64e6866764e250cfa08a1d4721674bb66e5a
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653634"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097333"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Azure ExpressRoute pro poskytovatele Cloud Solution Provider
 Společnost Microsoft poskytuje pro tradiční prodejce a distributory (poskytovatele Cloud Solution Provider) hyperškálovatelné služby, aby mohli pro vaše zákazníky rychle zřizovat nové služby a řešení bez nutnosti investovat do vývoje těchto nových služeb. Aby měl poskytovatel Cloud Solution Provider (CSP) možnosti spravovat tyto služby přímo, poskytuje společnost Microsoft programy a rozhraní API umožňující poskytovateli CSP spravovat prostředky Microsoft Azure za své zákazníky. Jeden z těchto prostředků je ExpressRoute. ExpressRoute umožňuje poskytovateli CSP připojovat prostředky zákazníků ke službám Azure. ExpressRoute je vysokorychlostní propojení privátních komunikací se službami v Azure. 
@@ -21,7 +21,7 @@ Společnost Microsoft poskytuje pro tradiční prodejce a distributory (poskytov
 ExpressRoute se skládá z páru okruhů pro zajištění vysoké dostupnosti, které jsou připojeny k předplatným jednoho zákazníka a nemohou být sdíleny více zákazníky. Každý okruh by měl být ukončen v různých směrovačích, aby se zajistila vysoká dostupnost.
 
 > [!NOTE]
-> V ExpressRoute se uplatňují omezení šířky pásma a počtu připojení, což znamená, že velké nebo složité implementace budou vyžadovat více okruhů ExpressRoute pro jednoho zákazníka.
+> Existují omezení šířky pásma a počtu možných připojení na každém okruhu ExpressRoute. Pokud je potřeba, aby jeden zákazník překročil tato omezení, bude pro jeho implementaci hybridní sítě vyžadovat několik okruhů ExpressRoute.
 > 
 > 
 
@@ -75,30 +75,30 @@ ExpressRoute podporuje rychlost sítě od 50 MB do 10 GB/s. Díky tomu mohou zá
 ExpressRoute podporuje připojení více virtuálních sítí k jednomu okruhu ExpressRoute, aby se vysokorychlostní připojení lépe využívala. Jeden okruh ExpressRoute může být sdílen více předplatnými Azure, která vlastní tentýž zákazník.
 
 ## <a name="configuring-expressroute"></a>Konfigurace ExpressRoute
-ExpressRoute je možné konfigurovat tak, aby byly podporovány tři typy provozu ([domény směrování](#expressroute-routing-domains)) na jednom okruhu ExpressRoute. Tento provoz je rozdělen na partnerský vztah Microsoftu, veřejný partnerský vztah Azure a privátní partnerský vztah. Můžete zvolit odesílání provozu jednoho nebo všech typů prostřednictvím jednoho okruhu ExpressRoute nebo můžete použít více okruhů ExpressRoute v závislosti na velikosti okruhu ExpressRoute a na izolaci požadované zákazníkem. Stav zabezpečení zákazníka, nemusí umožňovat využívání stejného okruhu pro veřejný i privátní provoz.
+ExpressRoute je možné konfigurovat tak, aby byly podporovány tři typy provozu ([domény směrování](#expressroute-routing-domains)) na jednom okruhu ExpressRoute. Tento provoz se zařadí do privátního partnerského vztahu, partnerského vztahu Microsoftu a veřejného partnerského vztahu (zastaralé). Můžete zvolit odesílání provozu jednoho nebo všech typů prostřednictvím jednoho okruhu ExpressRoute nebo můžete použít více okruhů ExpressRoute v závislosti na velikosti okruhu ExpressRoute a na izolaci požadované zákazníkem. Stav zabezpečení zákazníka, nemusí umožňovat využívání stejného okruhu pro veřejný i privátní provoz.
 
 ### <a name="connect-through-model"></a>Model s nepřímým připojením
-V konfiguraci pro připojení budete odpovědni za veškerou síťovou podporu pro propojení vašich prostředků Datacenter vašich zákazníků s předplatnými hostovanými v Azure. Každý z vašich zákazníků, který chce využívat možnosti Azure, bude potřebovat vlastní připojení ExpressRoute, které budete spravovat vy. Budete používat tytéž metody, které by pro zajištění okruhu ExpressRoute používal zákazník. Postupujte podle stejných kroků uvedených v článku [Pracovní postupy ExpressRoute](expressroute-workflows.md) ohledně zřizování okruhů a stavů okruhů. Pak nakonfigurujte trasy protokolu BGP (Border Gateway Protocol) tak, aby mohl být řízen provoz mezi místní sítí a virtuální sítí Azure.
+V konfiguraci pro připojení budete odpovědni za veškerou síťovou podporu pro připojení prostředků datacentra zákazníka k předplatným hostovaným v Azure. Každý z vašich zákazníků, kteří chtějí využívat možnosti Azure, bude potřebovat své vlastní připojení ExpressRoute, které bude spravovat vámi. Použijete stejné metody, které bude zákazník používat k zajištění povýšení okruhu ExpressRoute. Budete postupovat podle kroků uvedených v článku [pracovní postupy ExpressRoute](expressroute-workflows.md) pro zřizování okruhů a stavy okruhů. Potom nakonfigurujete trasy Border Gateway Protocol (BGP), abyste mohli řídit tok provozu mezi místní sítí a virtuální sítí Azure.
 
 ### <a name="connect-to-model"></a>Model s přímým připojením
-V případě konfigurace s přímým připojením již zákazník má vytvořeno připojení k Azure nebo vytvoří připojení k poskytovateli internetových služeb s cílem propojit ExpressRoute z vlastního datového centra zákazníka přímo s Azure, a nikoli s vaším datovým centrem. Zákazník zahájí proces zřizování podle kroků uvedených výše pro model s nepřímým připojením. Po vytvoření okruhu bude zákazník muset nakonfigurovat místní směrovače tak, aby měly přístup do vaší sítě i do virtuálních sítí Azure.
+V konfiguraci připojení už zákazník má existující připojení k Azure nebo iniciuje připojení k poskytovateli internetových služeb a připojuje ExpressRoute z vlastního datového centra přímo k Azure místo vašeho datacentra. Zákazník zahájí proces zřizování podle kroků uvedených výše pro model s nepřímým připojením. Po vytvoření okruhu bude muset zákazník nakonfigurovat místní směrovače, aby měli přístup k vaší síti i k virtuální sítě Azure.
 
 Můžete být nápomocni při nastavování připojení a konfiguraci tras tak, aby prostředky ve vašich datových centrech mohly komunikovat s prostředky klienta ve vašem datovém centru nebo s prostředky hostovanými v Azure.
 
 ## <a name="expressroute-routing-domains"></a>Domény směrování ExpressRoute
-ExpressRoute nabízí tři domény směrování: veřejnou, privátní partnerský vztah Microsoftu. Každá z domén směrování je nakonfigurovaná se stejnými směrovači v konfiguraci aktivní-aktivní pro zajištění vysoké dostupnosti. Podrobnější informace o doménách směrování ExpressRoute najdete [tady](expressroute-circuit-peerings.md).
+ExpressRoute nabízí dvě domény směrování pro nové okruhy: privátní partnerské vztahy a partnerské vztahy Microsoftu. Každá z domén směrování je nakonfigurovaná se stejnými směrovači v konfiguraci aktivní-aktivní pro zajištění vysoké dostupnosti. Podrobnější informace o doménách směrování ExpressRoute najdete [tady](expressroute-circuit-peerings.md).
 
 Můžete definovat vlastní filtry tras a povolit pouze trasy, které chcete povolit nebo které potřebujete. Další informace a postup při provádění těchto změn najdete v článku [Vytvoření a úprava směrování pro okruh ExpressRoute s použitím prostředí PowerShell](expressroute-howto-routing-classic.md), který obsahuje podrobnější informace o filtrech směrování.
 
 > [!NOTE]
-> Připojení s partnerským vztahem Microsoft nebo veřejným partnerským vztahem musí používat veřejnou IP adresu, kterou vlastní zákazník nebo poskytovatel CSP, a musí dodržovat veškerá definovaná pravidla. Další informace najdete na stránce [Požadavky služby ExpressRoute](expressroute-prerequisites.md).  
+> U partnerského vztahu Microsoftu musí být připojení i přes veřejnou IP adresu, kterou vlastní zákazník nebo CSP, a musí splňovat všechna definovaná pravidla. Další informace najdete na stránce [Požadavky služby ExpressRoute](expressroute-prerequisites.md).  
 > 
 > 
 
 ## <a name="routing"></a>Směrování
 ExpressRoute se připojuje k sítím Azure prostřednictvím brány virtuální sítě Azure. Brány sítě poskytují směrování pro virtuální sítě Azure.
 
-Při vytváření virtuálních sítí Azure se pro virtuální síť vytvoří také výchozí směrovací tabulka, podle které se směruje provoz do podsítí virtuální sítě a z nich. Pokud výchozí směrovací tabulka pro příslušné řešení nedostačuje, je možné vytvořit vlastní trasy pro směrování odchozího provozu do vlastních zařízení nebo blokovat trasy do konkrétních podsítí či externích sítí.
+Při vytváření virtuálních sítí Azure se pro virtuální síť vytvoří také výchozí směrovací tabulka, podle které se směruje provoz do podsítí virtuální sítě a z nich. Pokud výchozí směrovací tabulka není pro řešení dostatečná, můžete vytvořit vlastní trasy pro směrování odchozího provozu do vlastních zařízení nebo zablokovat trasy ke konkrétním podsítím nebo externím sítím.
 
 ### <a name="default-routing"></a>Výchozí směrování
 Výchozí směrovací tabulka obsahuje následující trasy:

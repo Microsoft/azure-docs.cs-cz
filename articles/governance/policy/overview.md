@@ -3,18 +3,20 @@ title: Přehled zásad Azure
 description: Azure Policy je služba v Azure, pomocí které vytváříte, přiřazujete a spravujete definice zásad ve svém prostředí Azure.
 ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 54dce519bfaa8c42afa967fc5c0579f31986aefb
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 8a32e32afb544588bb033cc64ede5ecbe6e2bac2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873910"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097384"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
 Služba Azure Policy pomáhá vynutit standardy organizace a vyhodnotit dodržování předpisů s podporou škálování. Prostřednictvím řídicího panelu pro dodržování předpisů poskytuje agregované zobrazení pro vyhodnocení celkového stavu prostředí s možností přechodu k podrobnostem podle prostředků a členitosti podle zásad. Také pomáhá zajistit, aby byly prostředky v souladu s hromadnou nápravou pro stávající prostředky a automatickou nápravu pro nové prostředky.
 
 Běžné případy použití pro Azure Policy zahrnují implementaci zásad správného řízení pro konzistenci prostředků, dodržování legislativních předpisů, zabezpečení, náklady a správu. Definice zásad pro tyto běžné případy použití jsou už v prostředí Azure dostupné jako předdefinované, které vám pomůžou začít.
+
+Všechna Azure Policyová data a objekty jsou v klidovém stavu šifrované. Další informace najdete v tématu [šifrování dat Azure v klidovém umístění](../../security/fundamentals/encryption-atrest.md).
 
 ## <a name="overview"></a>Přehled
 

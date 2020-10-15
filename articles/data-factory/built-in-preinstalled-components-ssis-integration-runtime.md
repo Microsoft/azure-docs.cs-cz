@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 05/14/2020
-ms.openlocfilehash: 0c3fa3e61f3e35bcd29e923b87ddf68f0860486e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17831f06d4176ae6666bbc7b05a11ee689b842fc
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89483129"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096687"
 ---
 # <a name="built-in-and-preinstalled-components-on-azure-ssis-integration-runtime"></a>Integrované a předinstalované komponenty na Azure-SSIS Integration Runtime
 
@@ -29,7 +29,7 @@ V tomto článku jsou uvedené všechny předdefinované a předem instalované 
 
 | Typ | Název – verze – platforma |
 |------|---------------------------|
-| **Předdefinovaná klienti/ovladače/poskytovatelé** | *Přístup k databázovému stroji 2016 Redistributable* – RTM – x64<br/><br/>*Microsoft Analysis Management Objects* -15.0.1000.81-x64<br/><br/>*Zprostředkovatel Microsoft Analysis Services OLEDB* – 15.0.1000.81-x64<br/><br/>*Microsoft ODBC Driver 13 pro SQL Server* -14.0.900.902-x64<br/><br/>*Microsoft OLEDB Driver 18 pro SQL Server* -18.1.0.0-x64<br/><br/>*Microsoft OLEDB Provider pro DB2* – 6,0 – x64<br/><br/>*SharePoint Online – klientské komponenty SDK* – 15.4711.1001 – x64 |
+| **Předdefinovaná klienti/ovladače/poskytovatelé** | *Přístup k databázovému stroji 2016 Redistributable* – RTM – x64<br/><br/>*Microsoft Analysis Management Objects* -15.0.1000.81-x64<br/><br/>*Zprostředkovatel Microsoft Analysis Services OLEDB* – 15.0.1000.81-x64<br/><br/>*Microsoft SQL Server 2012 Native Client* – 11.4.7462.6-x64<br/><br/>*Microsoft ODBC Driver 13 pro SQL Server* -14.0.900.902-x64<br/><br/>*Microsoft OLEDB Driver 18 pro SQL Server* -18.1.0.0-x64<br/><br/>*Microsoft OLEDB Provider pro DB2* – 6,0 – x64<br/><br/>*SharePoint Online – klientské komponenty SDK* – 15.4711.1001 – x64 |
 
 ## <a name="built-in-and-preinstalled-connection-managers-on-azure-ssis-ir"></a>Předdefinované a předinstalované Správce připojení na Azure-SSIS IR
 

@@ -6,14 +6,14 @@ ms.service: virtual-machines-linux
 ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 10/14/2020
 ms.author: danis
-ms.openlocfilehash: a87c2b571027e0304909e69b252c9e080c4da9c1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 87cb4a233470fadc9cde616790aff0d5cd7b151b
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978624"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096653"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora Cloud-init pro virtuální počítače v Azure
 V tomto článku se dozvíte, jak podpora pro [Cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat virtuální počítač (VM) nebo službu Virtual Machine Scale Sets v době zřizování v Azure. Tyto konfigurace Cloud-init se po prvním spuštění spustí, jakmile se prostředky zřídí v Azure.  
@@ -97,10 +97,10 @@ Tyto image SLES se aktualizovaly, aby se zřídily pomocí Cloud-init, ale byly 
 ### <a name="debian"></a>Debian
 | Vydavatel/verze | Nabídka | SKU | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| Debian (Gen1) |Debian-10 | 10 – cloudinit |Cloud-init-Preview| Ano (jenom náhled) | Ne, ve verzi Preview. |
-| Debian (Gen2) |Debian-10 | 10 – cloudinit – Gen2 |Cloud-init-Preview| Ano (jenom náhled) | Ne, ve verzi Preview. |
-
-
+| Debian (Gen1) |Debian-10 | 10 – cloudinit |Cloud-init-Preview| Ano (Poznámka: Toto je náhled obrázku a **nesmí** se již používat, bude odebrána 1. ledna 2021) | Ne, ve verzi Preview. |
+| Debian (Gen2) |Debian-10 | 10 – cloudinit – Gen2 |Cloud-init-Preview| Ano (Poznámka: Toto je náhled obrázku a **nesmí** se již používat, bude odebrána 1. ledna 2021) | Ne, ve verzi Preview. |
+| Debian (Gen1) |Debian-10 | 10 – cloudinit |10:0.20201013.422| ano | Ano – podpora z verze balíčku: `20.2-2~deb10u1` |
+| Debian (Gen2) |Debian-10 | 10 – cloudinit – Gen2 |0.20201013.422| ano | Ano – podpora z verze balíčku: `20.2-2~deb10u1` |
 
 
 V současné době Azure Stack bude podporovat zřizování imagí s povoleným cloudovým inicializací.

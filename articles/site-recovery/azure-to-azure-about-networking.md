@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: f0a3ac0c81291a1231ef660481d8e31b38c0e212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 622f0d66f2c8a9f7cf0539d14499897acf7b68e6
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631337"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096330"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>O sítích v zotavení po havárii virtuálního počítače Azure
 
@@ -40,13 +40,13 @@ Sítě jsou obvykle chráněné pomocí bran firewall a skupin zabezpečení sí
 >[!IMPORTANT]
 > Použití ověřeného proxy serveru k řízení připojení k síti není v Site Recovery podporováno a replikaci nelze povolit.
 
+>[!NOTE]
+> Pro řízení odchozího připojení by se nemělo provádět filtrování na základě IP adresy.
+> Pro řízení odchozího připojení by se neměly přidávat IP adresy Azure Site Recovery do směrovací tabulky Azure.
 
 ## <a name="outbound-connectivity-for-urls"></a>Odchozí připojení pro adresy URL
 
 Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, povolte tyto adresy URL Site Recovery:
-
->[!NOTE]
-> Pro řízení odchozího připojení by se nemělo provádět filtrování na základě IP adresy.
 
 **Adresa URL** | **Podrobnosti**
 --- | ---
@@ -59,7 +59,7 @@ login.microsoftonline.com | Vyžaduje se pro autorizaci a ověřování adres UR
 
 ## <a name="outbound-connectivity-using-service-tags"></a>Odchozí připojení pomocí značek služeb
 
-Pokud k řízení odchozího připojení používáte NSG, musí být tyto značky služby povolené.
+Při použití NSG k řízení odchozího připojení je potřeba tyto značky služeb povolit.
 
 - Pro účty úložiště ve zdrojové oblasti:
     - Vytvořte pravidlo NSG založené na [značce služby úložiště](../virtual-network/security-overview.md#service-tags) pro zdrojovou oblast.

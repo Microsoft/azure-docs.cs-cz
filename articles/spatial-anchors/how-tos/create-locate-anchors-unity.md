@@ -9,12 +9,12 @@ ms.date: 08/10/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: caa343b0715e3e4b33c45fcc9ba6441533c3d056
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42598b6471ea29c779b1863852169c4a1025e229
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858502"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097452"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Jak vytvořit a najít kotvy pomocí prostorových kotev Azure v Unity
 
@@ -33,7 +33,7 @@ Prostorové kotvy Azure umožňují sdílet kotvy na světě mezi různými zař
 - Nahrajte je do cloudu.
 - Najděte a odstraňte cloudové kotvy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto průvodce se ujistěte, že máte následující:
 
@@ -44,7 +44,7 @@ K dokončení tohoto průvodce se ujistěte, že máte následující:
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-Přečtěte si další informace o třídě [CloudSpatialAnchorSession](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession) .
+Přečtěte si další informace o třídě [CloudSpatialAnchorSession](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession) .
 
 ```csharp
     CloudSpatialAnchorSession cloudSession;
@@ -54,7 +54,7 @@ Přečtěte si další informace o třídě [CloudSpatialAnchorSession](https://
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-Přečtěte si další informace o třídě [SessionConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionconfiguration) .
+Přečtěte si další informace o třídě [SessionConfiguration](/dotnet/api/microsoft.azure.spatialanchors.sessionconfiguration) .
 
 ```csharp
     this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
@@ -68,7 +68,7 @@ Přečtěte si další informace o třídě [SessionConfiguration](https://docs.
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-Přečtěte si další informace o delegátu [TokenRequiredDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.tokenrequireddelegate) .
+Přečtěte si další informace o delegátu [TokenRequiredDelegate](/dotnet/api/microsoft.azure.spatialanchors.tokenrequireddelegate) .
 
 ```csharp
     this.cloudSession.TokenRequired += (object sender, TokenRequiredEventArgs args) =>
@@ -118,7 +118,7 @@ Přečtěte si další informace o delegátu [TokenRequiredDelegate](https://doc
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
-Přečtěte si další informace o metodě [Start](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.start) .
+Přečtěte si další informace o metodě [Start](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.start) .
 
 ```csharp
 #if UNITY_ANDROID || UNITY_IOS
@@ -134,7 +134,7 @@ Přečtěte si další informace o metodě [Start](https://docs.microsoft.com/do
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-Další informace o metodě [ProcessFrame](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe)
+Další informace o metodě [ProcessFrame](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe)
 
 ```csharp
 #if UNITY_ANDROID || UNITY_IOS
@@ -156,7 +156,7 @@ Další informace o metodě [ProcessFrame](https://docs.microsoft.com/dotnet/api
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-Přečtěte si další informace o delegátu [SessionUpdatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionupdateddelegate) .
+Přečtěte si další informace o delegátu [SessionUpdatedDelegate](/dotnet/api/microsoft.azure.spatialanchors.sessionupdateddelegate) .
 
 ```csharp
     this.cloudSession.SessionUpdated += (object sender, SessionUpdatedEventArgs args) =>
@@ -170,7 +170,7 @@ Přečtěte si další informace o delegátu [SessionUpdatedDelegate](https://do
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-Přečtěte si další informace o třídě [CloudSpatialAnchor](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor) .
+Přečtěte si další informace o třídě [CloudSpatialAnchor](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor) .
 
 ```csharp
     // Create a local anchor, perhaps by hit-testing and spawning an object within the scene
@@ -206,7 +206,7 @@ Přečtěte si další informace o třídě [CloudSpatialAnchor](https://docs.mi
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-Další informace o metodě [GetSessionStatusAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getsessionstatusasync)
+Další informace o metodě [GetSessionStatusAsync](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getsessionstatusasync)
 
 ```csharp
     SessionStatus value = await this.cloudSession.GetSessionStatusAsync();
@@ -216,7 +216,7 @@ Další informace o metodě [GetSessionStatusAsync](https://docs.microsoft.com/d
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-Přečtěte si další informace o vlastnosti [AppProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.appproperties) .
+Přečtěte si další informace o vlastnosti [AppProperties](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.appproperties) .
 
 ```csharp
     CloudSpatialAnchor cloudAnchor = new CloudSpatialAnchor() { LocalAnchor = localAnchor };
@@ -227,7 +227,7 @@ Přečtěte si další informace o vlastnosti [AppProperties](https://docs.micro
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-Další informace o metodě [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync)
+Další informace o metodě [UpdateAnchorPropertiesAsync](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync)
 
 ```csharp
     CloudSpatialAnchor anchor = /* locate your anchor */;
@@ -237,7 +237,7 @@ Další informace o metodě [UpdateAnchorPropertiesAsync](https://docs.microsoft
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-Další informace o metodě [GetAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getanchorpropertiesasync)
+Další informace o metodě [GetAnchorPropertiesAsync](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getanchorpropertiesasync)
 
 ```csharp
     var anchor = await cloudSession.GetAnchorPropertiesAsync(@"anchorId");
@@ -250,7 +250,7 @@ Další informace o metodě [GetAnchorPropertiesAsync](https://docs.microsoft.co
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-Přečtěte si další informace o vlastnosti [vypršení platnosti](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.expiration) .
+Přečtěte si další informace o vlastnosti [vypršení platnosti](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.expiration) .
 
 ```csharp
     cloudAnchor.Expiration = DateTimeOffset.Now.AddDays(7);
@@ -258,7 +258,7 @@ Přečtěte si další informace o vlastnosti [vypršení platnosti](https://doc
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-Další informace o metodě [CreateWatcher](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher)
+Další informace o metodě [CreateWatcher](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher)
 
 ```csharp
     AnchorLocateCriteria criteria = new AnchorLocateCriteria();
@@ -268,7 +268,7 @@ Další informace o metodě [CreateWatcher](https://docs.microsoft.com/dotnet/ap
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-Přečtěte si další informace o delegátu [AnchorLocatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocateddelegate) .
+Přečtěte si další informace o delegátu [AnchorLocatedDelegate](/dotnet/api/microsoft.azure.spatialanchors.anchorlocateddelegate) .
 
 ```csharp
     this.cloudSession.AnchorLocated += (object sender, AnchorLocatedEventArgs args) =>
@@ -297,7 +297,7 @@ Přečtěte si další informace o delegátu [AnchorLocatedDelegate](https://doc
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-Další informace o metodě [DeleteAnchorAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync)
+Další informace o metodě [DeleteAnchorAsync](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync)
 
 ```csharp
     await this.cloudSession.DeleteAnchorAsync(cloudAnchor);
@@ -306,7 +306,7 @@ Další informace o metodě [DeleteAnchorAsync](https://docs.microsoft.com/dotne
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-Přečtěte si další informace o metodě [stop](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) .
+Přečtěte si další informace o metodě [stop](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) .
 
 ```csharp
     this.cloudSession.Stop();
@@ -314,7 +314,7 @@ Přečtěte si další informace o metodě [stop](https://docs.microsoft.com/dot
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-Přečtěte si další informace o metodě [resetování](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) .
+Přečtěte si další informace o metodě [resetování](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) .
 
 ```csharp
     this.cloudSession.Reset();
@@ -322,7 +322,7 @@ Přečtěte si další informace o metodě [resetování](https://docs.microsoft
 
 [!INCLUDE [Cleanup](../../../includes/spatial-anchors-create-locate-anchors-cleanup-unity.md)]
 
-Přečtěte si další informace o metodě [Dispose](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.dispose) .
+Přečtěte si další informace o metodě [Dispose](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.dispose) .
 
 ```csharp
     this.cloudSession.Dispose();

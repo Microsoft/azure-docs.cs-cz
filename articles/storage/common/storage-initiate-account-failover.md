@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e39548a923e76fc118dec4158398d02577ec20c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 300b9b6279231079807f8c923570bddab657ff56
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91610054"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095887"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Iniciovat převzetí služeb při selhání účtu úložiště
 
@@ -29,7 +29,7 @@ Tento článek ukazuje, jak iniciovat převzetí služeb při selhání účtu �
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct v účtu úložiště provést převzetí služeb při selhání, ujistěte se, že je váš účet úložiště nakonfigurovaný pro geografickou replikaci. Váš účet úložiště může používat kteroukoli z následujících možností redundance:
 
@@ -45,13 +45,13 @@ Další informace o Azure Storage redundanci najdete v tématu [Azure Storage re
 Pokud chcete iniciovat převzetí služeb při selhání účtu z Azure Portal, postupujte takto:
 
 1. Přejděte na svůj účet úložiště.
-1. V části **Nastavení**vyberte **geografickou replikaci**. Následující obrázek ukazuje stav geografické replikace a převzetí služeb při selhání v účtu úložiště.
+1. V oblasti **Nastavení** vyberte **Geografická replikace**. Následující obrázek ukazuje stav geografické replikace a převzetí služeb při selhání v účtu úložiště.
 
     :::image type="content" source="media/storage-initiate-account-failover/portal-failover-prepare.png" alt-text="Snímek obrazovky znázorňující geografickou replikaci a stav převzetí služeb při selhání":::
 
 1. Ověřte, že je váš účet úložiště nakonfigurovaný pro geograficky redundantní úložiště (GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GRS). Pokud není, vyberte v části **Nastavení** možnost **Konfigurace** a aktualizujte svůj účet na geograficky redundantní.
 1. Vlastnost **čas poslední synchronizace** určuje, jak daleko je sekundární sekundární z primární třídy. **Čas poslední synchronizace** poskytuje odhad rozsahu ztráty dat, ke které dojde po dokončení převzetí služeb při selhání. Další informace o kontrole vlastnosti **Poslední čas synchronizace** najdete v tématu [Kontrola vlastnosti času poslední synchronizace pro účet úložiště](last-sync-time-get.md).
-1. Vyberte **Příprava pro převzetí služeb při selhání**.
+1. Vyberte **Připravit na převzetí služeb při selhání**.
 1. Přečtěte si potvrzovací dialog. Až budete připraveni, potvrďte a zahajte převzetí služeb při selhání zadáním **Ano** .
 
     :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="Snímek obrazovky znázorňující geografickou replikaci a stav převzetí služeb při selhání":::
@@ -107,6 +107,8 @@ az storage account failover \ --name accountName
 Když zahájíte převzetí služeb při selhání účtu úložiště, aktualizují se záznamy DNS pro sekundární koncový bod tak, aby se sekundární koncový bod stal primárním koncovým bodem. Než zahájíte převzetí služeb při selhání, ujistěte se, že rozumíte možnému dopadu účtu úložiště.
 
 Pokud chcete odhadnout rozsah pravděpodobných ztrát dat před tím, než zahájíte převzetí služeb při selhání, podívejte se na vlastnost **čas poslední synchronizace** . Další informace o kontrole vlastnosti **Poslední čas synchronizace** najdete v tématu [Kontrola vlastnosti času poslední synchronizace pro účet úložiště](last-sync-time-get.md).
+
+Doba, po kterou dojde k převzetí služeb při selhání, se může lišit, i když obvykle méně než jedna hodina.
 
 Po převzetí služeb při selhání se Váš typ účtu úložiště automaticky převede na místně redundantní úložiště (LRS) v nové primární oblasti. Pro tento účet můžete znovu povolit geograficky redundantní úložiště (GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GRS). Všimněte si, že při převodu z LRS na GRS nebo RA-GRS se vyskytnou další náklady. Další informace najdete v tématu [Podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/).
 

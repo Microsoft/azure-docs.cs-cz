@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: ae486ac8ddd233487bb10c897a155337aa815fe5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c93704130e150a7ca26144d4895e82756657fae2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611244"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096245"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z úhlové aplikace s jednou stránkou
 
@@ -194,7 +194,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 }
 ```
 
-Dále zadejte mapu chráněných prostředků `MsalModule.forRoot()` jako `protectedResourceMap` a přidejte tyto obory do `consentScopes` :
+Dále zadejte mapu chráněných prostředků `MsalModule.forRoot()` jako `protectedResourceMap` a přidejte tyto obory do `consentScopes` . Adresy URL, které zadáte v kolekci, rozlišují `protectedResourceMap` malá a velká písmena.
 
 ```javascript
 @NgModule({

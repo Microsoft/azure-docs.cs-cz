@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 0eacddfa56e46363c926aa1e8b35865676209577
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: baa8b1f302c0d8a7355f74b686ffedfb45ac22d3
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058484"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096041"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -58,9 +58,9 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `version` | Určuje verzi specifikace SSML, která se používá k interpretaci značek dokumentu. Aktuální verze je 1,0. | Vyžadováno |
-| `xml:lang` | Určuje jazyk kořenového dokumentu. Hodnota může obsahovat malé písmeno, kód jazyka se dvěma písmeny (například `en` ), kód jazyka a zemi/oblast (například `en-US` ). | Vyžadováno |
-| `xmlns` | Určuje identifikátor URI dokumentu, který definuje slovník značek (typy prvků a názvy atributů) dokumentu SSML. Aktuální identifikátor URI je http://www.w3.org/2001/10/synthesis . | Vyžadováno |
+| `version` | Určuje verzi specifikace SSML, která se používá k interpretaci značek dokumentu. Aktuální verze je 1,0. | Povinné |
+| `xml:lang` | Určuje jazyk kořenového dokumentu. Hodnota může obsahovat malé písmeno, kód jazyka se dvěma písmeny (například `en` ), kód jazyka a zemi/oblast (například `en-US` ). | Povinné |
+| `xmlns` | Určuje identifikátor URI dokumentu, který definuje slovník značek (typy prvků a názvy atributů) dokumentu SSML. Aktuální identifikátor URI je http://www.w3.org/2001/10/synthesis . | Povinné |
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>Volba hlasu pro převod textu na řeč
 
@@ -78,7 +78,7 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `name` | Identifikuje hlas používaný pro výstup textu na řeč. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech). | Vyžadováno |
+| `name` | Identifikuje hlas používaný pro výstup textu na řeč. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech). | Povinné |
 
 **Příklad**
 
@@ -101,7 +101,7 @@ V rámci `speak` elementu můžete zadat více hlasů pro výstup textu na řeč
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `name` | Identifikuje hlas používaný pro výstup textu na řeč. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech). | Vyžadováno |
+| `name` | Identifikuje hlas používaný pro výstup textu na řeč. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech). | Povinné |
 
 > [!IMPORTANT]
 > Více hlasů je nekompatibilních s funkcí hranice slova. Aby bylo možné použít více hlasů, je třeba zakázat funkci hranice slova.
@@ -534,7 +534,7 @@ Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci 
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `pitch` | Určuje rozteč účaří pro text. Rozteč můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaný "Hz" (Hz). Například 600 Hz.</li><li>Relativní hodnota vyjádřená jako číslo před "+" nebo "-" a následována "Hz" nebo "St", která určuje velikost pro změnu rozteči. Například: + 80 Hz nebo-2st. "St" značí, že se jednotka změny semitone, což je polovina tónu (poloviční krok) na standardním diatonic škále.</li><li>Konstantní hodnota:<ul><li>x – nízká</li><li>slab</li><li>střední</li><li>high</li><li>x-vysoká</li><li>default</li></ul></li></ul>. | Volitelné |
+| `pitch` | Určuje rozteč účaří pro text. Rozteč můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaný "Hz" (Hz). Například, `<prosody pitch="600Hz">some text</prosody>`.</li><li>Relativní hodnota vyjádřená jako číslo před "+" nebo "-" a následována "Hz" nebo "St", která určuje velikost pro změnu rozteči. Například: `<prosody pitch="+80Hz">some text</prosody>` nebo `<prosody pitch="-2st">some text</prosody>` . "St" značí, že se jednotka změny semitone, což je polovina tónu (poloviční krok) na standardním diatonic škále.</li><li>Konstantní hodnota:<ul><li>x – nízká</li><li>slab</li><li>střední</li><li>high</li><li>x-vysoká</li><li>default</li></ul></li></ul> | Volitelné |
 | `contour` |Obrys teď podporuje hlasy neuronové i Standard. Obrys znázorňuje změny v rozteči. Tyto změny jsou reprezentovány jako pole cílů v určených časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Například: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny sklonu v procentech doby trvání textu. Druhá hodnota určuje velikost, která má zvýšit nebo snížit rozteč, pomocí relativní hodnoty nebo hodnoty výčtu pro rozteč (viz `pitch` ). | Volitelné |
 | `range` | Hodnota, která představuje rozsah roztečí textu. Můžete vyjádřit `range` použití stejných absolutních hodnot, relativních hodnot nebo hodnot výčtu používaných k popisu `pitch` . | Volitelné |
 | `rate` | Určuje míru projevení textu. Můžete vyjádřit `rate` jako:<ul><li>Relativní hodnota vyjádřená jako číslo, které funguje jako násobitel výchozí hodnoty. Například hodnota *1* má za následek nezměněnou sazbu. Výsledkem hodnoty *0,5* je poloviční sazba. Hodnota *3* má za následek cestu k této sazbě.</li><li>Konstantní hodnota:<ul><li>x – pomalé</li><li>pomalé</li><li>střední</li><li>světl</li><li>x – Fast</li><li>default</li></ul></li></ul> | Volitelné |
@@ -617,7 +617,7 @@ Změny v rozteči je možné použít u standardních hlasů na úrovni slova ne
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `interpret-as` | Určuje typ obsahu textu elementu. Seznam typů naleznete v následující tabulce. | Vyžadováno |
+| `interpret-as` | Určuje typ obsahu textu elementu. Seznam typů naleznete v následující tabulce. | Povinné |
 | `format` | Poskytuje další informace o přesném formátování textu elementu pro typy obsahu, které mohou mít dvojznačné formáty. SSML definuje formáty pro typy obsahu, které je používají (viz tabulka níže). | Volitelné |
 | `detail` | Určuje úroveň podrobností, které se mají vymluvené. Tento atribut například může vyžadovat, aby se v modulu Shrnutí řeči vyhodnotily interpunkční znaménka. Nejsou definovány žádné standardní hodnoty pro `detail` . | Volitelné |
 

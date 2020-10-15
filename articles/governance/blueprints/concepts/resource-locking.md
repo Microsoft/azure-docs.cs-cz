@@ -3,12 +3,12 @@ title: Vysvětlení uzamykání prostředků
 description: Přečtěte si o možnostech uzamykání v plánech Azure k ochraně prostředků při přiřazování podrobného plánu.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8ac5c918a3c370b9d8e88800e05f83e585550e3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f69cbfebe203407287392c2433181396b541b2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744011"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92095990"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení uzamykání prostředků v semodrotiskych Azure
 
@@ -39,7 +39,7 @@ Tato míra zabezpečení chrání konzistenci definovaného podrobného plánu a
 
 ### <a name="assign-at-management-group"></a>Přiřadit na skupinu pro správu
 
-Další možností, jak zabránit vlastníkům předplatného odebrání přiřazení podrobného plánu, je přiřazení podrobného plánu ke skupině pro správu. V tomto scénáři mají oprávnění potřebná k odebrání přiřazení podrobného plánu pouze **vlastníci** skupiny pro správu.
+Jedinou možností, jak zabránit vlastníkům předplatného odebrání přiřazení podrobného plánu, je přiřazení podrobného plánu ke skupině pro správu. V tomto scénáři mají oprávnění potřebná k odebrání přiřazení podrobného plánu pouze **vlastníci** skupiny pro správu.
 
 Chcete-li přiřadit podrobný plán ke skupině pro správu namísto předplatného, REST API volání bude vypadat takto:
 

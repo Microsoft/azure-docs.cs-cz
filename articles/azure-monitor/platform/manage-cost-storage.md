@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f8f5d41b7f4df3cd82a388bc24ccc8fa5a9a91f6
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0f71b1e75ecb60a53a004b7bf1bf0bd0c7522cc9
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044101"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096517"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
@@ -46,9 +46,9 @@ Všimněte si také, že některá řešení, jako je [Azure Security Center](ht
 
 ### <a name="log-analytics-dedicated-clusters"></a>Log Analytics vyhrazené clustery
 
-Log Analytics vyhrazené clustery jsou kolekce pracovních prostorů do jednoho spravovaného clusteru Azure Průzkumník dat, který podporuje pokročilé scénáře, jako jsou [klíče spravované zákazníky](customer-managed-keys.md).  Log Analytics vyhrazené clustery používají cenový model rezervace kapacity, který musí být nakonfigurovaný aspoň 1000 GB/měsíc. Tato úroveň kapacity má ve srovnání s cenami za průběžné platby 25% slevu. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb. Rezervace kapacity clusteru má po zvýšení úrovně rezervace 31 dní období závazku. Během období závazku nelze úroveň rezervace kapacity snížit, ale je možné ji kdykoli zvýšit. Když jsou pracovní prostory přidruženy k clusteru, účtování příjmu dat pro tyto pracovní prostory se provádí na úrovni clusteru pomocí nakonfigurované úrovně rezervace kapacity. Přečtěte si další informace o [vytváření clusterů Log Analytics](customer-managed-keys.md#create-cluster-resource) a [jejich přiřazování k pracovním prostorům](customer-managed-keys.md#workspace-association-to-cluster-resource). Informace o cenách rezervací kapacity najdete na [stránce s cenami Azure monitor]( https://azure.microsoft.com/pricing/details/monitor/).  
+Log Analytics vyhrazené clustery jsou kolekce pracovních prostorů do jednoho spravovaného clusteru Azure Průzkumník dat, který podporuje pokročilé scénáře, jako jsou [klíče spravované zákazníky](customer-managed-keys.md).  Log Analytics vyhrazené clustery používají cenový model rezervace kapacity, který musí být nakonfigurovaný aspoň 1000 GB/měsíc. Tato úroveň kapacity má ve srovnání s cenami za průběžné platby 25% slevu. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb. Rezervace kapacity clusteru má po zvýšení úrovně rezervace 31 dní období závazku. Během období závazku nelze úroveň rezervace kapacity snížit, ale je možné ji kdykoli zvýšit. Když jsou pracovní prostory přidruženy k clusteru, účtování příjmu dat pro tyto pracovní prostory se provádí na úrovni clusteru pomocí nakonfigurované úrovně rezervace kapacity. Přečtěte si další informace o [vytváření clusterů Log Analytics](customer-managed-keys.md#create-cluster) a [jejich přiřazování k pracovním prostorům](customer-managed-keys.md#link-workspace-to-cluster). Informace o cenách rezervací kapacity najdete na [stránce s cenami Azure monitor]( https://azure.microsoft.com/pricing/details/monitor/).  
 
-Úroveň rezervace kapacity clusteru je konfigurována prostřednictvím programu programově s Azure Resource Manager pomocí `Capacity` parametru v `Sku` . `Capacity`Hodnota je určena v jednotkách GB a může mít hodnoty 1000 GB/den nebo více v přírůstcích po 100 GB za den. Tato podrobná [Azure monitor klíč spravovaný zákazníkem](customer-managed-keys.md#create-cluster-resource). Pokud váš cluster potřebuje rezervaci nad 2000 GB za den, kontaktujte nás na adrese [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
+Úroveň rezervace kapacity clusteru je konfigurována prostřednictvím programu programově s Azure Resource Manager pomocí `Capacity` parametru v `Sku` . `Capacity`Hodnota je určena v jednotkách GB a může mít hodnoty 1000 GB/den nebo více v přírůstcích po 100 GB za den. Tato podrobná [Azure monitor klíč spravovaný zákazníkem](customer-managed-keys.md#create-cluster). Pokud váš cluster potřebuje rezervaci nad 2000 GB za den, kontaktujte nás na adrese [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
 
 Existují dva režimy fakturace pro použití v clusteru. Tyto parametry mohou být zadány `billingType` parametrem při [konfiguraci clusteru](customer-managed-keys.md#cmk-management). Tyto dva režimy: 
 
