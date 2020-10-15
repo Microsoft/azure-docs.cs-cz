@@ -50,7 +50,7 @@
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
         - name: Azure Defender pro Kubernetes
-          displayName: 'clusters, k8s'
+          displayName: 'clusters, k8s, aks'
           href: defender-for-kubernetes-introduction.md
         - name: Azure Defender pro registry kontejnerů
           displayName: 'ACR, registry, images'
@@ -58,7 +58,7 @@
         - name: Další ochrana před hrozbami
           href: other-threat-protections.md
     - name: Funkce zabezpečení kontejnerů služby Security Center
-      displayName: 'kubernetes, aks, acr, registries'
+      displayName: 'kubernetes, aks, acr, registries, k8s'
       href: container-security.md
     - name: Ceny
       href: security-center-pricing.md
@@ -79,6 +79,8 @@
           href: quickstart-onboard-gcp.md
     - name: Automatizace onboardingu pomocí PowerShellu
       href: security-center-powershell-onboarding.md
+    - name: Povolení služby Security Center pro skupinu pro správu
+      href: onboard-management-group.md
     - name: Konfigurace shromažďování dat
       href: security-center-enable-data-collection.md
     - name: Nastavení e-mailových oznámení
@@ -140,8 +142,6 @@
             - name: Automatizace odpovědí na doporučení
               displayName: workflow
               href: workflow-automation.md
-            - name: Export doporučení
-              href: continuous-export.md
             - name: Vyloučení prostředku z doporučení
               href: exempt-resource.md
     - name: Upozornění Azure Defenderu
@@ -169,17 +169,20 @@
           href: update-regulatory-compliance-packages.md
     - name: Použití Azure Defenderu pro servery
       items:
-        - name: Kontrola ohrožení zabezpečení pro virtuální počítače
+        - name: Kontrola ohrožení zabezpečení
           items:
-            - name: Kontrola virtuálních počítačů s využitím integrovaného řešení VA
-              displayName: 'qualys, vulnerability'
+            - name: Integrované skenery VA pro počítače
+              displayName: 'qualys, vulnerability, arc'
               href: deploy-vulnerability-assessment-vm.md
             - name: Kontrola virtuálních počítačů s využitím integrovaného řešení VA BYOL
               displayName: 'qualys, rapid7, vulnerability'
               href: deploy-vulnerability-assessment-byol-vm.md
-            - name: Kontrola a náprava ohrožení zabezpečení ve vašich virtuálních počítačích
+            - name: Kontrola a náprava ohrožení zabezpečení
               displayName: 'qualys, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
+            - name: Zákaz konkrétních zjištěných ohrožení zabezpečení
+              displayName: 'qualys, rapid7, vulnerability'
+              href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
         - name: Zabezpečené porty pro správu s využitím přístupu k virtuálním počítačům podle potřeby
           items:
             - name: Přehled přístupu k virtuálním počítačům podle potřeby
@@ -213,6 +216,15 @@
     - name: Použití Azure Defenderu pro registry kontejnerů
       displayName: 'ACR, registry, images'
       href: defender-for-container-registries-usage.md
+    - name: Export upozornění a doporučení
+      items:
+        - name: 'Export do SIEM, SOAR nebo ITSM'
+          displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
+          href: export-to-siem.md
+        - name: Export do pracovního prostoru služby Log Analytics nebo do Azure Event Hubu
+          href: continuous-export.md
+        - name: Stažení sestavy CSV se všemi upozorněními
+          href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
     - name: Zpracování upozornění Azure Defenderu
       items:
         - name: Správa výstrah zabezpečení
@@ -226,16 +238,14 @@
           href: security-center-incident.md
         - name: Generování sestav analýzy hrozeb
           href: security-center-threat-report.md
-        - name: Ověření konfigurace výstrah (testovací soubor EICAR)
+        - name: Ověření konfigurace výstrah
+          displayname: 'eicar, Kubernetes, Linux'
           href: security-center-alert-validation.md
         - name: Automatizace odpovědí na výstrahy
           displayName: workflow
           href: workflow-automation.md
-        - name: Export výstrah
-          displayName: continuous
-          href: continuous-export.md
     - name: Ochrana úloh Kubernetes
-      displayName: 'k8s, containers'
+      displayName: 'k8s, containers, aks'
       href: kubernetes-workload-protections.md
     - name: Správa uživatelských dat šetření
       href: security-center-investigation-user-data.md

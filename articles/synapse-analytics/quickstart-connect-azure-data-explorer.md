@@ -5,22 +5,22 @@ services: synapse-analytics
 author: manojraheja
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 10/07/2020
 ms.author: maraheja
 ms.reviewer: jrasnick
-ms.openlocfilehash: 53092f5c49073098f28d2fd06f38391e858b2b9d
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 99ccc2f4d7e3adbba704f784025abfdfa8b96f52
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946385"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090654"
 ---
 # <a name="connect-to-azure-data-explorer-using-synapse-apache-spark"></a>Připojení k Azure Průzkumník dat pomocí synapse Apache Spark
 
 Tento článek popisuje, jak získat přístup k databázím Azure Průzkumník dat ze synapse studia pomocí Apache Spark synapse. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Vytvořte cluster a databázi Azure Průzkumník dat](/azure/data-explorer/create-cluster-database-portal).
 * Existující pracovní prostor synapse nebo vytvořit nový pracovní prostor za tímto [rychlým startem](./quickstart-create-workspace.md) 

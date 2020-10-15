@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 763b9977f756075789b826c2f1e01cd41ac60a73
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836730"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091164"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Přečtěte si o rozdílech mezi Cloud Services a Service Fabric před migrací aplikací.
 Microsoft Azure Service Fabric je cloudová aplikační platforma nové generace pro vysoce škálovatelné a vysoce spolehlivé distribuované aplikace. Zavádí mnoho nových funkcí pro balení, nasazování, upgradování a správu distribuovaných cloudových aplikací. 
@@ -69,7 +69,7 @@ Díky přímé komunikaci můžou vrstvy komunikovat přímo prostřednictvím k
 
 Service Fabric poskytuje mechanismus zjišťování služeb nazvaný Naming Service, který se dá použít k překladu adres koncových bodů služeb. 
 
-![Service Fabric přímá komunikace][6]
+![Diagram, který ukazuje, jak Service Fabric poskytuje mechanismus zjišťování služeb nazvaný Naming Service, který se dá použít k překladu adres koncových bodů služeb.][6]
 
 ### <a name="queues"></a>Fronty
 Běžným komunikačním mechanismem mezi vrstvami v bezstavových prostředích, jako je například Cloud Services, je použití externí fronty úložiště k trvaleí pracovních úloh z jedné úrovně do druhé. Běžným scénářem je webová vrstva, která odesílá úlohy do fronty Azure nebo Service Bus, kde můžou instance rolí pracovních procesů vyřadit z fronty a zpracovat úlohy.

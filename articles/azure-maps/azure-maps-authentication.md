@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4a923fd34391137f2064cb338ea180ae3782f5e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ad4724280039f2820611a621186d8174e9af986
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88036840"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091402"
 ---
 # <a name="authentication-with-azure-maps"></a>Ověřování s využitím Azure Maps
 
@@ -51,7 +51,7 @@ Obecné informace o ověřování ve službě Azure AD najdete v tématu [co je 
 
 ### <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Spravované identity pro prostředky a Azure Maps Azure
 
-[Spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) poskytují služby Azure pomocí automaticky spravovaného objektu zabezpečení založeného na aplikaci, který se může ověřit ve službě Azure AD. Díky řízení přístupu na základě role (RBAC) může být objekt zabezpečení spravované identity autorizovaný pro přístup k Azure Maps službám. Mezi příklady spravovaných identit patří: Azure App Service, Azure Functions a Azure Virtual Machines. Seznam spravovaných identit najdete v tématu [spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
+[Spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) poskytují služby Azure pomocí automaticky spravovaného objektu zabezpečení založeného na aplikaci, který se může ověřit ve službě Azure AD. Díky řízení přístupu na základě role v Azure (Azure RBAC) může být objekt zabezpečení spravované identity autorizovaný pro přístup k Azure Maps službám. Mezi příklady spravovaných identit patří: Azure App Service, Azure Functions a Azure Virtual Machines. Seznam spravovaných identit najdete v tématu [spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
 
 ### <a name="configuring-application-azure-ad-authentication"></a>Konfigurace ověřování Azure AD pro aplikace
 
@@ -82,7 +82,7 @@ Informace o zobrazení ID klienta najdete v tématu [zobrazení podrobností o o
 
 Azure Maps podporuje přístup ke všem objektům zabezpečení pro [řízení přístupu na základě role Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) , včetně: jednotlivých uživatelů Azure AD, skupin, aplikací, prostředků Azure a spravovaných identit Azure. Hlavním typům je udělena sada oprávnění, která se označuje také jako definice role. Definice role poskytuje oprávnění REST API akcí. Použití přístupu na jeden nebo více účtů Azure Maps se označuje jako obor. Při použití objektu zabezpečení, definice role a oboru se vytvoří přiřazení role. 
 
-V dalších částech najdete koncepty a součásti Azure Maps integrace s řízením přístupu na základě role Azure AD. V rámci procesu nastavení účtu Azure Maps je adresář služby Azure AD přidružený k předplatnému Azure, ke kterému se nachází účet Azure Maps. 
+V dalších částech najdete koncepty a součásti Azure Maps integrace se službou Azure RBAC. V rámci procesu nastavení účtu Azure Maps je adresář služby Azure AD přidružený k předplatnému Azure, ke kterému se nachází účet Azure Maps. 
 
 Při konfiguraci služby Azure RBAC zvolíte objekt zabezpečení a použijete ho pro přiřazení role. Další informace o přidání přiřazení rolí na Azure Portal najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
@@ -90,7 +90,7 @@ Při konfiguraci služby Azure RBAC zvolíte objekt zabezpečení a použijete h
 
 Následující typy definic rolí existují k podpoře scénářů aplikací.
 
-| Definice role Azure       | Description                                                                                              |
+| Definice role Azure       | Popis                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Čtečka dat Azure Maps      | Poskytuje přístup k neměnným Azure Maps rozhraní REST API.                                                       |
 | Přispěvatel dat Azure Maps | Poskytuje přístup k proměnlivým rozhraním REST API Azure Maps. Proměnlivost je definována akcemi: Write a DELETE. |
@@ -104,7 +104,7 @@ Některé Azure Maps služby mohou vyžadovat zvýšená oprávnění k provád�
 | tvůrce            | Přispěvatel dat Azure Maps |
 | Prostorové            | Přispěvatel dat Azure Maps |
 
-Informace o zobrazení nastavení RBAC najdete v tématu [Konfigurace RBAC pro Azure Maps](https://aka.ms/amrbac).
+Informace o zobrazení nastavení služby Azure RBAC najdete v tématu [Konfigurace služby Azure RBAC pro Azure Maps](https://aka.ms/amrbac).
 
 #### <a name="custom-role-definitions"></a>Definice vlastních rolí
 
@@ -131,9 +131,9 @@ Přiřazení role ke skupině prostředků může povolit přístup k několika 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o RBAC najdete v tématu.
+Další informace o službě Azure RBAC najdete v tématu.
 > [!div class="nextstepaction"]
-> [Řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/overview)
+> [Řízení přístupu na základě role v Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 Další informace o ověřování aplikace pomocí Azure AD a Azure Maps najdete v tématu.
 > [!div class="nextstepaction"]

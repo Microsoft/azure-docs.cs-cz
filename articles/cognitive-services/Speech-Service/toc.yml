@@ -26,10 +26,6 @@
       href: get-started-speech-to-text.md
     - name: Návody
       items:
-        - name: Rozpoznávání řeči uložené v úložišti objektů blob
-          href: quickstarts/from-blob.md
-        - name: Volba režimu rozpoznávání řeči
-          href: how-to-choose-recognition-mode.md
         - name: Změna zdrojového jazyka rozpoznávání řeči
           href: how-to-specify-source-language.md
         - name: Zlepšení přesnosti s využitím služby Custom Speech
@@ -37,8 +33,6 @@
         - name: Použití komprimovaných formátů zvukového vstupu
           href: how-to-use-codec-compressed-audio-input-streams.md
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
-        - name: Zlepšení přesnosti s využitím seznamů frází
-          href: how-to-phrase-lists.md
         - name: Výběr konkrétního zařízení pro vstup z mikrofonu
           href: how-to-select-audio-input-devices.md
         - name: Použití automatického rozpoznávání zdrojového jazyka
@@ -47,6 +41,8 @@
           href: batch-transcription.md
     - name: Kurzy
       items:
+        - name: Rozpoznávání řeči uložené v úložišti objektů blob
+          href: quickstarts/from-blob.md
         - name: Zlepšení přesnosti s využitím modelů tenantů
           href: tutorial-tenant-model.md
     - name: Přizpůsobení

@@ -10,19 +10,19 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: b25ac36bc0b424a9d6f76b37b532e52dc56e19e3
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0420360b70485e49dc6cd06dbeb19400c0f73ef5
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048215"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070346"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>Plánování telefonie a řešení pro SMS
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 
-Komunikační služby Azure umožňují používat telefonní čísla k provádění hlasových hovorů a posílání zpráv SMS pomocí veřejné telefonní sítě (PSTN). V tomto dokumentu zkontrolujeme typy telefonních čísel, plány a dostupnost oblastí pro plánování telefonního subsystému a řešení SMS pomocí komunikačních služeb.
+Komunikační služby Azure umožňují používat telefonní čísla k provádění hlasových hovorů a posílání zpráv SMS pomocí veřejné telefonní sítě (PSTN). V tomto dokumentu si probereme typ telefonního čísla, možnosti konfigurace a dostupnost oblasti pro plánování telefonního subsystému a řešení SMS pomocí komunikačních služeb.
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -51,19 +51,19 @@ Následující tabulka shrnuje tyto typy telefonních čísel:
 | Toll-Free         | + 1 ( *kód*oblasti bez poplatků) XXX xx xx | USA                      | Volání (odchozí), SMS (příchozí/odchozí)| Přiřazení telefonních čísel k systémům IRV (Interactive Voice Response)/roboty, aplikacím SMS                                        |
 
 
-## <a name="phone-number-plans-in-azure-communication-services"></a>Plány telefonního čísla v komunikačních službách Azure 
+## <a name="phone-number-features-in-azure-communication-services"></a>Funkce telefonního čísla v komunikačních službách Azure 
 
-U většiny telefonních čísel vám umožníme nakonfigurovat sadu plánů "a la carte". Někteří vývojáři potřebují pouze plán odchozího volání; může se jednat o odchozí volání a odchozí plány SMS. Tyto plány je možné vybrat při zapůjčení telefonních čísel v rámci komunikačních služeb Azure.
+U většiny telefonních čísel vám umožníme nakonfigurovat sadu funkcí "a la carte". Tyto funkce se dají vybrat při zapůjčení telefonních čísel v rámci komunikačních služeb Azure.
 
-Plány, které jsou k dispozici, závisí na zemi, ve které pracujete, v případu použití a na typu telefonního čísla, který jste vybrali. Tyto plány se v důsledku zákonných požadavků liší podle zemí. Komunikační služby Azure nabízí následující plány:
+Funkce, které jsou vám k dispozici, závisí na zemi, ve které pracujete, v případu použití a na typu telefonního čísla, který jste vybrali. Tyto funkce se v jednotlivých zemích liší podle zákonných požadavků. Služba Azure Communication Services nabízí následující funkce telefonního čísla:
 
-- **Jednosměrný odchozí SMS** Tento plán vám umožní posílat uživatelům zprávy SMS. Tento plán je vhodný pro scénáře, jako jsou oznámení a výstrahy se dvěma faktory ověřování. 
-- **Obousměrný příchozí a odchozí SMS** Tento plán umožňuje odesílat a přijímat zprávy od uživatelů pomocí telefonních čísel. Tento plán je užitečný ve scénářích služeb zákazníkům.
-- **Jednosměrné odchozí telefonní volání** Tento plán vám umožní volat uživatele a nakonfigurovat ID volajícího pro odchozí volání, která ukládá vaše služba. Tento plán je užitečný ve scénářích služeb zákazníkům a hlasových oznámení.
+- **Jednosměrný odchozí SMS** Tato možnost umožňuje odesílat uživatelům zprávy SMS. To může být užitečné v případě oznámení a scénářů se dvěma faktory ověřování. 
+- **Obousměrný příchozí a odchozí SMS** Tato možnost umožňuje odesílat a přijímat zprávy od uživatelů pomocí telefonních čísel. To může být užitečné ve scénářích služeb zákazníkům.
+- **Jednosměrné odchozí telefonní volání** Tato možnost umožňuje volat uživatele a nakonfigurovat ID volajícího pro odchozí volání, která jsou umístěna ve vaší službě. To může být užitečné ve scénářích služeb zákazníkům a hlasových oznámení.
 
 ## <a name="countryregion-availability"></a>Dostupnost země nebo oblasti
 
-Následující tabulka uvádí, kde můžete získat různé typy telefonních čísel spolu s příchozím a odchozím voláním a s využitím funkcí SMS přidružených k těmto typům telefonních čísel.
+Následující tabulka uvádí, kde můžete získat různé typy telefonních čísel spolu s příchozím a odchozím voláním a funkcemi SMS, které jsou přidružené k těmto typům telefonních čísel.
 
 |Typ čísla| Získat čísla v | Volat na                                        | Přijmout volání z                                    |Odeslat zprávy do       | Přijímat zprávy z |
 |-----------| ------------------ | ---------------------------------------------------  |-------------------------------------------------------|-----------------------|--------|

@@ -2,15 +2,15 @@
 title: Řešení potíží s Azure Automation Update Management
 description: V tomto článku se dozvíte, jak řešit problémy s Azure Automation Update Management.
 services: automation
-ms.date: 09/30/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: c70d164325f536187c5ce99419bb41daaa9b1e88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d6a87d9b420ea394baaa21c87dff457e4c908d0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858400"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070329"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Řešení problémů s Update Managementem
 
@@ -486,6 +486,8 @@ Ověřte, že účet System má oprávnění ke čtení pro složku **C:\Program
 Výchozí časové období údržby pro aktualizace je 120 minut. Časový interval pro správu a údržbu můžete zvýšit na maximálně 6 hodin nebo 360 minut.
 
 ### <a name="resolution"></a>Řešení
+
+Chcete-li zjistit, proč k této chybě došlo během spuštění aktualizace po úspěšném spuštění, [Projděte si výstup úlohy](../update-management/update-mgmt-deploy-updates.md#view-results-of-a-completed-update-deployment) z daného počítače v běhu. Můžete najít konkrétní chybové zprávy z počítačů, které můžete prozkoumat a provádět s nimi akce.  
 
 Upravte všechna neúspěšná naplánovaná nasazení aktualizací a zvyšte časový interval pro správu a údržbu.
 

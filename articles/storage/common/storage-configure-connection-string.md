@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 30e8bd7fda08795ecc1aa78b0d2507e7c915ad0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f2fa6cffd63811df596c8fca80afdc888a0eea9
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087250"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091606"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Nakonfigurování připojovacích řetězců Azure Storage
 
@@ -110,9 +110,10 @@ Hodnoty koncového bodu v připojovacím řetězci slouží k vytvoření identi
 
 Pokud jste namapovali koncový bod úložiště na vlastní doménu a tento koncový bod vynecháte z připojovacího řetězce, nebudete moct tento připojovací řetězec použít pro přístup k datům v této službě z vašeho kódu.
 
+Další informace o konfiguraci vlastní domény pro Azure Storage najdete v tématu [Mapování vlastní domény na koncový bod Azure Blob Storage](../blobs/storage-custom-domain-name.md).
+
 > [!IMPORTANT]
-> Hodnoty koncového bodu služby v připojovacích řetězcích musí být identifikátory URI ve správném formátu, včetně `https://` (doporučeno) nebo `http://` . Vzhledem k tomu, že Azure Storage ještě nepodporuje HTTPS pro vlastní domény, *musíte* zadat `http://` pro jakýkoliv identifikátor URI koncového bodu, který odkazuje na vlastní doménu.
->
+> Hodnoty koncového bodu služby v připojovacích řetězcích musí být identifikátory URI ve správném formátu, včetně `https://` (doporučeno) nebo `http://` .
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Vytvoření připojovacího řetězce s příponou koncového bodu
 

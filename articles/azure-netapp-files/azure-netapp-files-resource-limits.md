@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 9/16/2020
+ms.date: 10/14/2020
 ms.author: b-juche
-ms.openlocfilehash: 0ddb9998c1e1b9b70303aeb4608bc0b53bc103ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6963a1f39534573bca39431febe391e89d462875
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325483"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072777"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Omezení prostředků pro Azure NetApp Files
 
@@ -65,7 +65,7 @@ Služba dynamicky upravuje limit maxfiles pro svazek na základě jeho zřízen�
 |    > 3 TiB, ale <= 4 TiB    |    80 000 000     |
 |    > 4 TiB                 |    100 000 000    |
 
-Pokud jste už pro svazek nastavili aspoň 4 TiB kvót, můžete [žádost o podporu](#limit_increase) iniciovat tak, že zvýšíte maxfiles limit nad 100 000 000.
+Pokud jste už pro svazek nastavili aspoň 4 TiB kvót, můžete [žádost o podporu](#limit_increase) iniciovat tak, že zvýšíte maxfiles limit nad 100 000 000. Pro každý 100 000 000 souborů, které narostete (nebo zlomku), potřebujete zvýšit odpovídající kvótu svazku o 4 TiB.  Pokud například zvýšíte limit maxfiles z 100 000 000 souborů na 200 000 000 souborů (nebo jakékoli číslo v rozsahu), musíte zvýšit kvótu svazku ze 4 TiB na 8 TiB.
 
 ## <a name="request-limit-increase"></a>Zvýšení limitu požadavku <a name="limit_increase"></a> 
 

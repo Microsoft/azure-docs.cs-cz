@@ -1,19 +1,19 @@
 ---
-title: Správa záloh pomocí Role-Based Access Control
-description: Pomocí Access Control na základě rolí můžete spravovat přístup k operacím správy zálohování v trezoru Recovery Services.
+title: Správa záloh pomocí řízení přístupu na základě role v Azure
+description: Řízení přístupu na základě role Azure slouží ke správě přístupu k operacím správy zálohování v trezoru Recovery Services.
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: c24d075dcb9ac36ce741db746d69aa9e61fac39d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dd8d08c4ee79082f47929cf7d453f3f4bbd60ee
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89376124"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090875"
 ---
-# <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Použití Role-Based Access Control ke správě Azure Backup bodů obnovení
+# <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Použití řízení přístupu na základě role Azure ke správě Azure Backup bodů obnovení
 
-Řízení přístupu na základě role Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí řízení přístupu na základě role můžete povinnosti v rámci týmu oddělit a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce.
+Řízení přístupu na základě role Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí Azure RBAC můžete oddělit povinnosti v rámci týmu a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce.
 
 > [!IMPORTANT]
 > Role, které poskytuje Azure Backup, jsou omezené na akce, které se dají provádět v Azure Portal nebo REST API prostřednictvím rutiny PowerShellu nebo Recovery Servicesho prostředí PowerShellu nebo rozhraní příkazového řádku. Akce prováděné v uživatelském rozhraní klienta Azure Backup agenta nebo v uživatelském rozhraní nástroje System Center Data Protection Manager nebo Azure Backup Server uživatelském rozhraní nejsou pod kontrolou těchto rolí.
@@ -77,9 +77,9 @@ Následující tabulka zachycuje akce správy zálohování a odpovídající ro
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Začněte s RBAC v Azure Portal.
+* [Řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Začínáme s Azure RBAC v Azure Portal.
 * Naučte se spravovat přístup pomocí:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [Řešení potíží s Access Control na základě rolí](../role-based-access-control/troubleshooting.md): Získejte návrhy pro řešení běžných problémů.
+* [Řešení potíží s řízením přístupu na základě role v Azure](../role-based-access-control/troubleshooting.md): Získejte návrhy na řešení běžných problémů.

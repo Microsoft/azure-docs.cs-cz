@@ -9,12 +9,12 @@ ms.topic: reference
 caps.latest.revision: 42
 author: tgore03
 ms.author: tagore
-ms.openlocfilehash: dadb50bd0663f47e6a1bf3d58b5187c8b466964d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1896ee8385d1e41feffe7a9f542550ea7f34a8a3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79528366"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072556"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Schéma definice Azure Cloud Services (soubor. csdef)
 Definiční soubor služby definuje model služby pro aplikaci. Soubor obsahuje definice rolí, které jsou k dispozici pro cloudovou službu, určuje koncové body služby a vytváří nastavení konfigurace pro službu. Hodnoty nastavení konfigurace se nastavují v konfiguračním souboru služby, jak je popsáno v tématu [schéma konfigurace cloudové služby (Classic)](/previous-versions/azure/reference/ee758710(v=azure.100)).
@@ -68,4 +68,4 @@ Následující tabulka popisuje atributy `ServiceDefinition` prvku.
 | name                    |Povinná hodnota. Název služby Název musí být v rámci účtu služby jedinečný.|
 | topologyChangeDiscovery | Nepovinný parametr. Určuje typ oznámení o změně topologie. Možné hodnoty:<br /><br /> -   `Blast` – Pošle aktualizaci co nejdřív pro všechny instance rolí. Zvolíte-li možnost, role by měla být schopna zpracovat aktualizaci topologie bez restartování.<br />-   `UpgradeDomainWalk` – Pošle aktualizaci do každé instance role sekvenčním způsobem po úspěšném přijetí aktualizace předchozí instance.|
 | schemaVersion           | Nepovinný parametr. Určuje verzi schématu definice služby. Verze schématu umožňuje sadě Visual Studio vybrat správné nástroje sady SDK, které se mají použít při ověřování schématu, pokud je nainstalovaná více než jedna verze sady SDK vedle sebe.|
-| upgradeDomainCount      | Nepovinný parametr. Určuje počet domén upgradu, ve kterých se přidělují role v této službě. Instance rolí jsou přiděleny k upgradovací doméně při nasazení služby. Další informace najdete v tématu [aktualizace role nebo nasazení cloudové služby](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment), [Správa dostupnosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) a [co je model cloudové služby](https://docs.microsoft.com/azure/cloud-services/cloud-services-model-and-package).<br /><br /> Můžete zadat až 20 upgradovacích domén. Pokud tento parametr nezadáte, výchozí počet domén upgradu je 5.|
+| upgradeDomainCount      | Nepovinný parametr. Určuje počet domén upgradu, ve kterých se přidělují role v této službě. Instance rolí jsou přiděleny k upgradovací doméně při nasazení služby. Další informace najdete v tématu [aktualizace role nebo nasazení cloudové služby](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment), [Správa dostupnosti virtuálních počítačů](../virtual-machines/manage-availability.md) a [co je model cloudové služby](./cloud-services-model-and-package.md).<br /><br /> Můžete zadat až 20 upgradovacích domén. Pokud tento parametr nezadáte, výchozí počet domén upgradu je 5.|

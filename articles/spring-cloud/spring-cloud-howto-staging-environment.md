@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d36c185272b7b67ffb8a21a77cc3a64f22d0df5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72cf5553bec5985ba0310b4a347b0d2c60da6924
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888477"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090705"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Nastavení přípravného prostředí v Azure jaře cloudu
 
@@ -20,9 +20,9 @@ ms.locfileid: "90888477"
 
 Tento článek popisuje, jak nastavit pracovní nasazení pomocí modelu nasazení Blue-zelený ve jarním cloudu Azure. Modré/zelené nasazení je vzor průběžného doručování Azure DevOps, který spoléhá na zachování živé stávající (modré) verze, zatímco probíhá nasazení nové (zelené) verze. V tomto článku se dozvíte, jak umístit toto pracovní nasazení do produkčního prostředí beze změny produkčního nasazení přímo.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-V tomto článku se předpokládá, že jste už nasadili aplikaci PiggyMetrics z našeho [kurzu o spuštění aplikace pro jarní Cloud v Azure](spring-cloud-quickstart-launch-app-portal.md). PiggyMetrics zahrnuje tři aplikace: "brána", "Account-Service" a "auth-Service".  
+V tomto článku se předpokládá, že jste už nasadili aplikaci PiggyMetrics z našeho [kurzu o spuštění aplikace pro jarní Cloud v Azure](./spring-cloud-quickstart.md). PiggyMetrics zahrnuje tři aplikace: "brána", "Account-Service" a "auth-Service".  
 
 Pokud chcete pro tento příklad použít jinou aplikaci, je nutné provést jednoduchou změnu ve veřejné části aplikace.  Tato změna rozlišuje vaše pracovní nasazení od výroby.
 

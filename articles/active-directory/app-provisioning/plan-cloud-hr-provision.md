@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb36366143286c05603a8d14b5ad56ebb6544bda
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706359"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070380"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Plánování aplikace cloudového HR pro Azure Active Directory zřizování uživatelů
 
@@ -31,7 +31,7 @@ Azure AD pomocí této integrace povolí následující pracovní postupy aplika
 - **Zapište zpátky do aplikace cloudového HR:** Napište e-mailové adresy a atributy uživatelského jména z Azure AD zpátky do aplikace Cloude HR.
 
 > [!NOTE]
-> Tento plán nasazení vám ukáže, jak nasadit pracovní postupy vaší aplikace cloudového HR pomocí zřizování uživatelů Azure AD. Informace o tom, jak nasadit Automatické zřizování uživatelů do aplikací SaaS (software jako služba), najdete v tématu [plánování automatického zřizování uživatelů](https://aka.ms/deploymentplans/provisioning).
+> Tento plán nasazení vám ukáže, jak nasadit pracovní postupy vaší aplikace cloudového HR pomocí zřizování uživatelů Azure AD. Informace o tom, jak nasadit Automatické zřizování uživatelů do aplikací SaaS (software jako služba), najdete v tématu [plánování automatického zřizování uživatelů](./plan-auto-user-provisioning.md).
 
 ## <a name="enabled-hr-scenarios"></a>Povolené scénáře pro personální oddělení
 
@@ -96,7 +96,7 @@ Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a j
 | | [Postup nasazení zřizování uživatelů v aktivním adresáři Azure](https://youtu.be/pKzyts6kfrw) |
 | Kurzy | [Seznam kurzů pro integraci aplikací SaaS s Azure AD](../saas-apps/tutorial-list.md) |
 | | [Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
-| Časté otázky | [Automatizované zřizování uživatelů](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| Nejčastější dotazy | [Automatizované zřizování uživatelů](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [Zřizování z Workday do Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>Architektura řešení
@@ -126,7 +126,7 @@ Při určování strategie pro toto nasazení v prostředí zvažte potřeby va�
 
 ### <a name="engage-the-right-stakeholders"></a>Zapojení správných zúčastněných stran
 
-Když projekty technologie selžou, obvykle to vznikne z důvodu neshody očekávání na dopad, výsledky a odpovědnosti. Abyste se vyhnuli těmto nástrah, [Ujistěte se, že jste připraví správné zúčastněné strany](https://aka.ms/deploymentplans). Také se ujistěte, že role účastníků v projektu jsou dobře pochopitelné. Zdokumentujte zúčastněné strany a jejich vstup a accountabilities projektu.
+Když projekty technologie selžou, obvykle to vznikne z důvodu neshody očekávání na dopad, výsledky a odpovědnosti. Abyste se vyhnuli těmto nástrah, [Ujistěte se, že jste připraví správné zúčastněné strany](../fundamentals/active-directory-deployment-plans.md). Také se ujistěte, že role účastníků v projektu jsou dobře pochopitelné. Zdokumentujte zúčastněné strany a jejich vstup a accountabilities projektu.
 
 Zahrňte zástupce z organizace pro personální oddělení, který může poskytovat vstupy na stávající obchodní procesy a identitu pracovního procesu a požadavky na zpracování dat úloh.
 
@@ -378,7 +378,7 @@ Azure AD může poskytovat další poznatky k zřizování uživatelů a provozn
 
 Po úspěšném [počátečním cyklu](../app-provisioning/how-provisioning-works.md#initial-cycle)služba zřizování Azure AD nadále spouští přírůstkové přírůstkové aktualizace po neomezenou dobu v intervalech definovaných v kurzech specifických pro jednotlivé aplikace, dokud nedojde k jedné z následujících událostí:
 
-- Služba se ručně zastavila. Nový počáteční cyklus se spustí pomocí [Azure Portal](https://portal.azure.com/) nebo odpovídajícího příkazu [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) .
+- Služba se ručně zastavila. Nový počáteční cyklus se spustí pomocí [Azure Portal](https://portal.azure.com/) nebo odpovídajícího příkazu [Microsoft Graph API](/graph/api/resources/synchronization-overview) .
 - V důsledku změny mapování atributů nebo filtrů oborů se aktivuje nový počáteční cyklus.
 - Proces zřizování přejde do karantény z důvodu vysoké míry chyb. Zůstane v karanténě po dobu delší než čtyři týdny, kdy je automaticky zakázaná.
 
@@ -416,6 +416,6 @@ Chcete-li vyřešit všechny problémy, které se mohou během zřizování vypn
 ### <a name="next-steps"></a>Další kroky
 
 - [Zápis výrazů pro mapování atributů](functions-for-customizing-application-data.md)
-- [Přehled rozhraní API pro synchronizaci Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Přehled rozhraní API pro synchronizaci Azure AD](/graph/api/resources/synchronization-overview)
 - [Přeskočit odstranění uživatelských účtů, které přesahují rozsah](skip-out-of-scope-deletions.md)
 - [Agent zřizování Azure AD Connect: Historie verzí](provisioning-agent-release-version-history.md)

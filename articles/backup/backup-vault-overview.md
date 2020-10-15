@@ -3,12 +3,12 @@ title: Přehled trezorů služby Backup
 description: Přehled trezorů služby Backup.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 773152212ed831c0083cfdf912f45ece578d079f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c189997ecc4814917182246b35003649d317ac77
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995566"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091283"
 ---
 # <a name="backup-vaults-overview"></a>Přehled trezorů služby Backup
 
@@ -16,7 +16,7 @@ Tento článek popisuje funkce trezoru služby Backup. Trezor záloh je entita �
 
 - **Rozšířené možnosti, které vám pomůžou zabezpečit**zálohovaná data: pomocí trezorů služby Backup Azure Backup poskytuje funkce zabezpečení pro ochranu cloudových záloh. Funkce zabezpečení zajistí, že budete moci zabezpečit zálohy a bezpečně obnovit data, i když dojde k ohrožení produkčního a záložního serveru. [Další informace](backup-azure-security-feature.md)
 
-- **Access Control na základě rolí (RBAC)**: RBAC zajišťuje v Azure jemně odstupňované řízení přístupu. [Azure poskytuje různé předdefinované role](../role-based-access-control/built-in-roles.md)a Azure Backup má tři [předdefinované role pro správu bodů obnovení](backup-rbac-rs-vault.md). Trezory služby Backup jsou kompatibilní s RBAC, což omezuje přístup k nástroji pro zálohování a obnovení na definovanou sadu rolí uživatele. [Další informace](backup-rbac-rs-vault.md)
+- **Řízení přístupu na základě role v Azure (Azure RBAC)**: Azure RBAC zajišťuje v Azure jemně odstupňované řízení přístupu. [Azure poskytuje různé předdefinované role](../role-based-access-control/built-in-roles.md)a Azure Backup má tři [předdefinované role pro správu bodů obnovení](backup-rbac-rs-vault.md). Trezory služby Backup jsou kompatibilní s Azure RBAC, což omezuje přístup k zálohování a obnovení na definovanou sadu rolí uživatele. [Další informace](backup-rbac-rs-vault.md)
 
 ## <a name="storage-settings-in-the-backup-vault"></a>Nastavení úložiště v úložišti záloh
 
