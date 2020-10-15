@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: c3f3aad08266337756038dfa6ac6ff0c9afe093c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: c580dd26c64a27b88b4416e85da101b78782013e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996796"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076976"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Použití adaptivních řízení aplikací k omezení ploch útoků počítačů
 
@@ -159,7 +159,7 @@ Můžete se rozhodnout upravit seznam povolených počítačů pro skupinu poč�
     :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Otevření adaptivních řízení aplikací z řídicího panelu Azure" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
     > [!IMPORTANT]
-    > Možnost **vyhovět** v nastavení režim ochrany typu souboru je ve všech scénářích šedá. V tuto chvíli nejsou k dispozici žádné možnosti vynucování. 
+    > Možnost **vyhovět** v nastavení režim ochrany typu souboru je ve **všech** scénářích šedá. V tuto chvíli nejsou k dispozici žádné možnosti vynucování. 
     >
     > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="Otevření adaptivních řízení aplikací z řídicího panelu Azure":::
 

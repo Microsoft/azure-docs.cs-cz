@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 471aa6e5297f8b68f08567a66e3f07e9688ca57e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84e450a55f9482c3a713943adfcc4d7940ab873f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87002926"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076704"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Správa Cloud Services v Azure Portal
 V **Cloud Services** oblasti Azure Portal můžete:
@@ -83,7 +83,7 @@ Upozorňujeme, že aktualizace operačního systému hosta a operace Service ret
 
 **Účtuje se u své aplikace výpadky? Jak ho mám pokládat?**
 
-Jak je popsáno v předchozí části, prohození nasazení je obvykle rychlé, protože se jedná o změnu konfigurace v nástroji pro vyrovnávání zatížení Azure. V některých případech může trvat 10 nebo více sekund a způsobit selhání při přechodném připojení. Pokud chcete omezit dopad na vaše zákazníky, zvažte implementaci [logiky opakování klienta](../best-practices-retry-general.md).
+Jak je popsáno v předchozí části, prohození nasazení je obvykle rychlé, protože se jedná o změnu konfigurace v nástroji pro vyrovnávání zatížení Azure. V některých případech může trvat 10 nebo více sekund a způsobit selhání při přechodném připojení. Pokud chcete omezit dopad na vaše zákazníky, zvažte implementaci [logiky opakování klienta](/azure/architecture/best-practices/transient-faults).
 
 ## <a name="delete-deployments-and-a-cloud-service"></a>Odstranit nasazení a cloudovou službu
 Než budete moct odstranit cloudovou službu, musíte odstranit všechna existující nasazení.
@@ -124,6 +124,3 @@ Okno **Přehled** má v horní části stavový řádek. Když vyberete pruh, ot
 * Přečtěte si, jak [nasadit cloudovou službu](cloud-services-how-to-create-deploy-portal.md).
 * Nakonfigurujte [vlastní název domény](cloud-services-custom-domain-name-portal.md).
 * Nakonfigurujte [certifikáty TLS/SSL](cloud-services-configure-ssl-certificate-portal.md).
-
-
-
