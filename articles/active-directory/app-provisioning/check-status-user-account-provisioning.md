@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 2de6c07395a559085db237eb1bc7f885998860d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dcbb2567b9a92ea7d806acedb5d1cc6a31a966e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235073"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069802"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: vytváření sestav o automatickém zřizování uživatelských účtů
 
@@ -29,7 +29,7 @@ Tento článek popisuje, jak kontrolovat stav zřizovacích úloh po jejich nast
 Zřizovací konektory se nastavují a konfigurují pomocí [Azure Portal](https://portal.azure.com), a to podle [uvedené dokumentace](../saas-apps/tutorial-list.md) pro podporovanou aplikaci. Po nakonfigurování a spuštění lze úlohy zřizování ohlásit pomocí jedné ze dvou metod:
 
 * **Azure Portal** – Tento článek popisuje, jak načíst informace o sestavě z [Azure Portal](https://portal.azure.com), která poskytuje souhrnnou sestavu zřizování i podrobné protokoly auditu pro danou aplikaci.
-* **Audit API** – Azure Active Directory taky poskytuje rozhraní API pro audit, které umožňuje programové načtení podrobných protokolů auditu zřizování. Dokumentaci specifickou pro použití tohoto rozhraní API najdete v tématu [referenční informace k rozhraní api Azure Active Directory audit](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) . I když tento článek nezahrnuje konkrétně použití rozhraní API, podrobně popisuje typy událostí zřizování, které jsou zaznamenány v protokolu auditu.
+* **Audit API** – Azure Active Directory taky poskytuje rozhraní API pro audit, které umožňuje programové načtení podrobných protokolů auditu zřizování. Dokumentaci specifickou pro použití tohoto rozhraní API najdete v tématu [referenční informace k rozhraní api Azure Active Directory audit](/graph/api/resources/directoryaudit) . I když tento článek nezahrnuje konkrétně použití rozhraní API, podrobně popisuje typy událostí zřizování, které jsou zaznamenány v protokolu auditu.
 
 ### <a name="definitions"></a>Definice
 

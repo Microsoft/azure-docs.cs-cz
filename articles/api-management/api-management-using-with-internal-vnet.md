@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: ac9554ae5ca151a377395d3b16598f7070c87d10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06d114c500722259d02a940633a76d043b83064a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386040"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077486"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Použití služby Azure API Management s interní virtuální sítí
 S Azure Virtual Networks může Azure API Management spravovat rozhraní API, která nejsou přístupná na internetu. K vytvoření připojení je k dispozici řada technologií sítě VPN. API Management lze nasadit ve dvou hlavních režimech v rámci virtuální sítě:
@@ -51,7 +51,7 @@ K provedení kroků popsaných v tomto článku musíte mít:
 + Když je ve virtuální síti nasazená služba API Management, použije se [seznam portů](./api-management-using-with-vnet.md#required-ports) , který je potřeba otevřít. 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>Vytvoření API Management v interní virtuální síti
-Služba API Management v interní virtuální síti je hostovaná za [interním nástrojem pro vyrovnávání zatížení (Classic)](/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). Toto je jediná dostupná možnost a nedá se změnit.
+Služba API Management v interní virtuální síti je hostovaná za [interním nástrojem pro vyrovnávání zatížení (Classic)](/previous-versions/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). Toto je jediná dostupná možnost a nedá se změnit.
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Povolení připojení k virtuální síti pomocí Azure Portal
 
@@ -143,4 +143,4 @@ Další informace najdete v těchto článcích:
 [Create API Management service]: get-started-create-service-instance.md
 [Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues
 
-[ServiceTags]: ../virtual-network/security-overview.md#service-tags
+[ServiceTags]: ../virtual-network/network-security-groups-overview.md#service-tags

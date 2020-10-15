@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 2f83679a39f919e5e9932303731560aedd796233
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b4c02efffb39e88a01c35d3c818930a0f6fd9cf
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052375"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069751"
 ---
 # <a name="known-issues-application-provisioning"></a>Známé problémy: zřizování aplikací
 Známé problémy, které je třeba znát při práci s zřizováním aplikací. Zpětnou vazbu o službě zřizování aplikací na UserVoice najdete v tématu [Azure AD Application zřizování UserVoice](https://aka.ms/appprovisioningfeaturerequest). Úzce sledujeme UserVoice, abychom mohli službu vylepšit. 
@@ -72,7 +72,7 @@ Pokud vytvoříte registraci aplikace, nebude mít odpovídající instanční o
 
 **Interval zřizování je opravený.**
 
-[Čas](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) mezi cykly zřizování není v současné době možné konfigurovat. 
+[Čas](./application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users) mezi cykly zřizování není v současné době možné konfigurovat. 
 
 **Změny, které se nepohybují z cílové aplikace do Azure AD**
 
