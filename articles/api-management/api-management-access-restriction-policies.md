@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 05ca16ad828525f2b09e4adf8f75be4667254614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711a973f13c8e292578703518df4c4302c31eb57
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535181"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071383"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zásady omezení přístupu ke službě API Management
 
-V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
+V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](./api-management-policies.md).
 
 ## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a> Zásady omezení přístupu
 
@@ -63,7 +63,7 @@ Pomocí `check-header` zásady můžete vyhovět, že žádost má určenou HLAV
 | Název         | Popis                                                                                                                                   | Povinné |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | check-Header | Kořenový element.                                                                                                                                 | Yes      |
-| value        | Povolená hodnota hlavičky protokolu HTTP. Je-li zadána více elementů hodnot, je tato kontrolu považována za úspěšnou, pokud je jedna z hodnot shodná. | No       |
+| hodnota        | Povolená hodnota hlavičky protokolu HTTP. Je-li zadána více elementů hodnot, je tato kontrolu považována za úspěšnou, pokud je jedna z hodnot shodná. | No       |
 
 ### <a name="attributes"></a>Atributy
 
@@ -558,4 +558,4 @@ Další informace o práci se zásadami najdete v těchto tématech:
 -   [Zásady v API Management](api-management-howto-policies.md)
 -   [Transformační rozhraní API](transform-api.md)
 -   [Odkaz na zásady](./api-management-policies.md) pro úplný seznam příkazů zásad a jejich nastavení
--   [Ukázky zásad](policy-samples.md)
+-   [Ukázky zásad](./policy-reference.md)
