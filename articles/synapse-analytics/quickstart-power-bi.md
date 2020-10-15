@@ -5,16 +5,16 @@ services: synapse-analytics
 author: jocaplan
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 04/29/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9b4b9da37b753418773141f832f253003ad40014
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f494b9a74d9bae9f8f0496d61875f8073815af5d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91260453"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089855"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>Rychlý Start: propojení pracovního prostoru Power BI k pracovnímu prostoru synapse
 
@@ -49,7 +49,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
 
     ![Zobrazují se nastavení propojené služby Power BI.](media/quickstart-link-powerbi/workspace-link-dialog.png)
 
-6. Klikněte na **Create** (Vytvořit).
+6. Klikněte na **Vytvořit**.
 
 ## <a name="view-power-bi-workspace-in-synapse-studio"></a>Zobrazit Power BI pracovní prostor v synapse studiu
 

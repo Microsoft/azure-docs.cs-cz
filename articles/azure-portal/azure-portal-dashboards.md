@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4241e51f186ea973702562ab27bb7f13a77de57
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764005"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089481"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Vytváření a sdílení řídicích panelů na webu Azure Portal
 
@@ -142,7 +142,7 @@ Pokud chcete použít existující řídicí panel jako šablonu pro nový říd
 
 ## <a name="publish-and-share-a-dashboard"></a>Publikování a sdílení řídicího panelu
 
-Když vytváříte řídicí panel, je ve výchozím nastavení privátní, což znamená, že jste ten, kdo ho uvidí. Aby byly řídicí panely dostupné ostatním uživatelům, můžete je publikovat a sdílet. Další informace najdete v tématu [sdílení řídicích panelů Azure pomocí Role-Based Access Control](azure-portal-dashboard-share-access.md).
+Když vytváříte řídicí panel, je ve výchozím nastavení privátní, což znamená, že jste ten, kdo ho uvidí. Aby byly řídicí panely dostupné ostatním uživatelům, můžete je publikovat a sdílet. Další informace najdete v tématu [sdílení řídicích panelů Azure pomocí řízení přístupu na základě role v Azure](azure-portal-dashboard-share-access.md).
 
 ### <a name="open-a-shared-dashboard"></a>Otevření sdíleného řídicího panelu
 
@@ -178,5 +178,5 @@ K trvalému odstranění privátního nebo sdíleného řídicího panelu použi
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Sdílení řídicích panelů Azure prostřednictvím Řízení přístupu na základě role](azure-portal-dashboard-share-access.md)
+* [Sdílení řídicích panelů Azure pomocí řízení přístupu na základě role v Azure](azure-portal-dashboard-share-access.md)
 * [Vytváření řídicích panelů Azure prostřednictvím kódu programu](azure-portal-dashboards-create-programmatically.md)

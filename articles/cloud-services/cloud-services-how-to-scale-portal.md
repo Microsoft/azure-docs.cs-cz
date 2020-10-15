@@ -7,21 +7,21 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e457742d8a940ff3a1602cc3dcf1b1d77126ac3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86223682"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076670"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Jak nakonfigurovat automatické škálování pro cloudovou službu na portálu
 
 Můžete nastavit podmínky pro roli pracovního procesu cloudové služby, která spouští operaci horizontálního nebo vyvýšení kapacity. Podmínky role můžou být založené na procesoru, disku nebo síťové zátěži role. Můžete také nastavit podmínku na základě fronty zpráv nebo metriky nějakého jiného prostředku Azure přidruženého k vašemu předplatnému.
 
 > [!NOTE]
-> Tento článek se zaměřuje na webové role a role pracovních procesů cloudové služby. Když vytváříte virtuální počítač (Classic) přímo, je hostovaný v cloudové službě. Standardní virtuální počítač můžete škálovat tak, že ho přidružíte ke [skupině dostupnosti](../virtual-machines/windows/classic/configure-availability-classic.md) , a ručně je zapnout nebo vypnout.
+> Tento článek se zaměřuje na webové role a role pracovních procesů cloudové služby. Když vytváříte virtuální počítač (Classic) přímo, je hostovaný v cloudové službě. Standardní virtuální počítač můžete škálovat tak, že ho přidružíte ke [skupině dostupnosti](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic) , a ručně je zapnout nebo vypnout.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 Před konfigurací škálování pro aplikaci byste měli zvážit následující informace:
 
 * Škálování je ovlivněné základní spotřebou.
@@ -105,6 +105,3 @@ Toto nastavení odebere z role automatické škálování a potom můžete nasta
 3. Instance role, na kterou se má škálovat
 
 Po nakonfigurování nastavení škálování vyberte ikonu **Uložit** v horní části.
-
-
-

@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75360306"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075055"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Jak nakonfigurovat a spustit úlohy po spuštění pro cloudovou službu
 Úlohy po spuštění můžete použít k provádění operací před spuštěním role. Operace, které můžete chtít provést, zahrnují instalaci komponenty, registraci komponent modelu COM, nastavení klíčů registru nebo spuštění dlouhotrvajícího procesu.
@@ -154,13 +154,10 @@ Naučte se provádět některé [běžné úlohy po spuštění](cloud-services-
 [Zabalit](cloud-services-model-and-package.md) cloudovou službu.  
 
 [ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
-[Úloha]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Spuštění]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[Modul runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Prostředí]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[Proměnná]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-
-
-
+[Úloha]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[Spuštění]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
+[Modul runtime]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
+[Prostředí]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
+[Proměnná]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
+[RoleInstanceValue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue
+[RoleEnvironment]: /previous-versions/azure/reference/ee773173(v=azure.100)

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 9b7af755c7f0903787bb3798ea1f6877cae180f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20926988d554d562f36587734bd99c34b4731e69
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908304"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088716"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Vytvoření vazby databáze Azure Cosmos DB k aplikaci Azure jaře Cloud
 
@@ -29,7 +29,7 @@ Požadavky:
 
 Azure Cosmos DB má pět různých typů rozhraní API, které podporují vazby. Následující postup ukazuje, jak je použít:
 
-1. Vytvoří účet databáze Azure Cosmos DB. Nápovědu najdete v rychlém startu o [Vytvoření databáze](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) . 
+1. Vytvoří účet databáze Azure Cosmos DB. Nápovědu najdete v rychlém startu o [Vytvoření databáze](../cosmos-db/create-cosmosdb-resources-portal.md) . 
 
 1. Poznamenejte si název vaší databáze. Pro tento postup je název databáze **TestDB**.
 

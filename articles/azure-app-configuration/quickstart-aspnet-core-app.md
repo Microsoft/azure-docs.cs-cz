@@ -9,18 +9,18 @@ ms.custom: devx-track-csharp, contperfq1
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 5fd042b91ede91491590a53abf4dec552fbf6487
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 13283a9531804502b8a8d72e615be955b413658c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91440428"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075837"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace ASP.NET Core s využitím konfigurace aplikace Azure
 
 V tomto rychlém startu použijete Azure App Configuration k centralizaci úložiště a správy nastavení aplikace pro ASP.NET Core aplikaci. ASP.NET Core vytvoří jeden objekt konfigurace založený na hodnotě klíč-hodnota pomocí nastavení z jednoho nebo více zdrojů dat určených aplikací. Tyto zdroje dat jsou známé jako *poskytovatelé konfigurace*. Vzhledem k tomu, že klient .NET Core konfigurace aplikace je implementovaný jako poskytovatel konfigurace, služba se zobrazí jako jiný zdroj dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/dotnet) .
 * [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
@@ -41,7 +41,7 @@ V tomto rychlém startu použijete Azure App Configuration k centralizaci úlož
     | `TestApp:Settings:FontSize`        | *24*                                |
     | `TestApp:Settings:Message`         | *Data z konfigurace aplikace Azure* |
 
-    V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné. Vyberte **Apply** (Použít).
+    V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné. Vyberte **Použít**.
 
 ## <a name="create-an-aspnet-core-web-app"></a>Vytvoření webové aplikace ASP.NET Core
 
@@ -117,7 +117,7 @@ dotnet new mvc --no-https --output TestAppConfig
 
     ---
 
-    V předchozí změně byl [Poskytovatel konfigurace pro konfiguraci aplikace](https://go.microsoft.com/fwlink/?linkid=2074664) zaregistrován s rozhraním .NET Core Configuration API.
+    V předchozí změně byl [Poskytovatel konfigurace pro konfiguraci aplikace](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) zaregistrován s rozhraním .NET Core Configuration API.
 
 ## <a name="read-from-the-app-configuration-store"></a>Čtení z úložiště konfigurace aplikace
 

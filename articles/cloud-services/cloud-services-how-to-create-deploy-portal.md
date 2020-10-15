@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: fca14ed4e3b338f9b49f949af7498dfd49990d3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b42c693943c41176936ac796f4586463e9af917c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142379"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076687"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Jak vytvořit a nasadit cloudovou službu
 Azure Portal poskytuje dva způsoby, jak vytvořit a nasadit cloudovou službu: *rychlé vytvoření* a *vlastní vytvoření*.
@@ -84,13 +84,10 @@ Pokud byl balíček pro nasazení [nakonfigurovaný tak, aby používal certifik
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 
-[TFSTutorialForCloudService]: https://go.microsoft.com/fwlink/?LinkID=251796
+[TFSTutorialForCloudService]: ./cloud-services-choose-me.md
 
 ## <a name="next-steps"></a>Další kroky
 * [Obecná konfigurace cloudové služby](cloud-services-how-to-configure-portal.md)
 * Nakonfigurujte [vlastní název domény](cloud-services-custom-domain-name-portal.md).
 * [Spravujte svou cloudovou službu](cloud-services-how-to-manage-portal.md).
 * Nakonfigurujte [certifikáty TLS/SSL](cloud-services-configure-ssl-certificate-portal.md).
-
-
-

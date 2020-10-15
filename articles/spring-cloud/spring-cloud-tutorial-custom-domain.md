@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 2fc20737ab371135a62d510d9d083e084b592fae
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ea0887dd1d28bb958b27813df7f4c7a221470bac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945766"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088750"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mapování stávající vlastní domény na jarní cloud Azure
 
@@ -22,11 +22,11 @@ Služba DNS (Domain Name Service) je technika pro ukládání názvů síťovýc
 
 Certifikáty šifrují webový provoz. Tyto certifikáty TLS/SSL můžou být uložené v Azure Key Vault. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Aplikace nasazená do jarního cloudu Azure (Další informace najdete v tématu [rychlý Start: spuštění stávající aplikace pro jarní Cloud v Azure pomocí Azure Portal](spring-cloud-quickstart.md), nebo použití existující aplikace).
 * Název domény s přístupem k registru DNS pro poskytovatele domény, jako je GoDaddy.
 * Privátní certifikát (tedy certifikát podepsaný svým držitelem) od poskytovatele třetí strany. Certifikát se musí shodovat s doménou.
-* Nasazená instance [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* Nasazená instance [Azure Key Vault](../key-vault/general/overview.md)
 
 ## <a name="import-certificate"></a>Import certifikátu
 ### <a name="prepare-your-certificate-file-in-pfx-optional"></a>Příprava souboru certifikátu v souboru PFX (volitelné)
@@ -224,7 +224,6 @@ az spring-cloud app update -n <app name> --resource-group <resource group name> 
 Po dokončení operace přejděte na libovolnou adresu URL HTTPS, která odkazuje na vaši aplikaci. Upozorňujeme, že adresy URL HTTP nefungují.
 
 ## <a name="see-also"></a>Viz také
-* [Co je Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-* [Import certifikátu](https://docs.microsoft.com/azure/key-vault/certificate-scenarios#import-a-certificate)
-* [Spusťte svoji jarní cloudovou aplikaci pomocí Azure CLI.](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)
-
+* [Co je Azure Key Vault?](../key-vault/general/overview.md)
+* [Import certifikátu](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)
+* [Spusťte svoji jarní cloudovou aplikaci pomocí Azure CLI.](./spring-cloud-quickstart.md)

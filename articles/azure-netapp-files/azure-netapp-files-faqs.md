@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: aa33106f200b2edb3b710c6b0e08208bd4da8ace
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 4c578f99e22e35871f0c52440c3b73a636ef958b
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932256"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089311"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -80,9 +80,9 @@ Ano, v jedné zásadě exportu systému souborů NFS můžete nakonfigurovat až
 
 Ne, v současné době nemůžete použít skupiny zabezpečení sítě na delegovanou podsíť Azure NetApp Files ani na síťová rozhraní vytvořená službou.
 
-### <a name="can-i-use-azure-iam-with-azure-netapp-files"></a>Můžu použít Azure IAM s Azure NetApp Files?
+### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>Můžu použít Azure RBAC s Azure NetApp Files?
 
-Ano, Azure NetApp Files podporuje funkce RBAC s Azure IAM.
+Ano, Azure NetApp Files podporuje funkce Azure RBAC.
 
 ## <a name="performance-faqs"></a>Nejčastější dotazy k výkonu
 

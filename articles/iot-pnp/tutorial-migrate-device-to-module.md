@@ -1,28 +1,28 @@
 ---
-title: Převedení zařízení IoT technologie Plug and Play na obecný modul | Microsoft Docs
-description: Použijte kód zařízení PnP v C# a převeďte ho na modul.
+title: Připojení obecného modulu IoT technologie Plug and Play Generic Module | Microsoft Docs
+description: Použijte vzorový kód zařízení v C# technologie Plug and Play v obecném modulu.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ccc450242c50f82d4215f6b172f72d8eceab7c52
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 671809b9cdbe72c8f3091b0056897c2342a38b1f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046332"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089158"
 ---
-# <a name="tutorial-how-to-convert-an-iot-plug-and-play-device-to-a-module-c"></a>Kurz: jak převést zařízení technologie Plug and Play IoT na modul (C#)
+# <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Kurz: připojení modulu IoT technologie Plug and Play (C#)
 
-V tomto kurzu se dozvíte, jak převést kód zařízení IoT technologie Plug and Play tak, aby se spouštěl jako obecný modul.
+V tomto kurzu se dozvíte, jak propojit obecný [modul](../iot-hub/iot-hub-devguide-module-twins.md)IoT technologie Plug and Play.
 
 Zařízení je technologie Plug and Play IoT, pokud při připojení ke službě IoT Hub zveřejňuje své ID modelu a implementuje vlastnosti a metody popsané v modelu DTDL (Digital Data Definition Language), který identifikuje ID modelu. Další informace o tom, jak zařízení používají DTDL a ID modelu, najdete v tématu [Příručka pro vývojáře IoT technologie Plug and Play](./concepts-developer-guide-device-csharp.md). Moduly používají identifikátory modelu a modely DTDL stejným způsobem.
 
 V tomto kurzu se dozvíte, jak implementovat modul IoT technologie Plug and Play, v tomto kurzu se dozvíte, jak převést vzorek termostatu pro zařízení C# na obecný modul.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 

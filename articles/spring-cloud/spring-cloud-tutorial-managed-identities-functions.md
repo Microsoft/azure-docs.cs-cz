@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 44268bf1b7805ece8de4a3499a7d53fc851af142
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ea8376307807abff8227d82bb6de7956fa3de99
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91664983"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088529"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>Kurz: použití spravované identity k vyvolání Azure Functions ze jarní cloudové aplikace Azure
 
@@ -20,12 +20,12 @@ V tomto článku se dozvíte, jak vytvořit spravovanou identitu pro aplikaci Az
 Azure Functions i App Services mají integrovanou podporu ověřování Azure Active Directory (Azure AD). Díky použití této integrované funkce ověřování společně se spravovanými identitami pro jarní cloud Azure můžeme vyvolávat služby RESTful s využitím moderní sémantiky OAuth. Tato metoda nevyžaduje uložení tajných kódů v kódu a poskytuje podrobnější ovládací prvky pro řízení přístupu k externím prostředkům. 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
-* [Instalace rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* [Instalace rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](/cli/azure/install-azure-cli)
 * [Nainstalujte Maven 3,0 nebo novější.](https://maven.apache.org/download.cgi)
-* [Nainstalovat verzi Azure Functions Core Tools 3.0.2009 nebo novější](https://docs.microsoft.com/azure/azure-functions/functions-run-local#install-the-azure-functions-core-tools)
+* [Nainstalovat verzi Azure Functions Core Tools 3.0.2009 nebo novější](../azure-functions/functions-run-local.md#install-the-azure-functions-core-tools)
 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
@@ -77,7 +77,7 @@ func init --worker-runtime node
 func new --template HttpTrigger --name HttpTrigger
 ```
 
-Ve výchozím nastavení používají funkce k zabezpečení koncových bodů HTTP ověřování na základě klíčů. Vzhledem k tomu, že povolíme ověřování Azure AD pro zabezpečení přístupu k funkcím, chceme [nastavit úroveň ověřování funkce na anonymní](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger#secure-an-http-endpoint-in-production).
+Ve výchozím nastavení používají funkce k zabezpečení koncových bodů HTTP ověřování na základě klíčů. Vzhledem k tomu, že povolíme ověřování Azure AD pro zabezpečení přístupu k funkcím, chceme [nastavit úroveň ověřování funkce na anonymní](../azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production).
 
 ```json function.json
 {
@@ -124,7 +124,7 @@ az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resour
 
 ## <a name="build-sample-spring-boot-app-to-invoke-the-function"></a>Sestavit ukázkovou aplikaci pro spouštění pružin pro vyvolání funkce
 
-Tato ukázka vyvolá funkci aktivovanou protokolem HTTP, která nejprve požaduje přístupový token z [koncového bodu MSI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) a pomocí tohoto tokenu ověří požadavek HTTP funkce.
+Tato ukázka vyvolá funkci aktivovanou protokolem HTTP, která nejprve požaduje přístupový token z [koncového bodu MSI](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#get-a-token-using-http) a pomocí tohoto tokenu ověří požadavek HTTP funkce.
 
 1. Naklonujte vzorový projekt. 
 
@@ -173,6 +173,6 @@ Tato ukázka vyvolá funkci aktivovanou protokolem HTTP, která nejprve požaduj
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Postup povolení spravované identity přiřazené systémem pro aplikaci Azure jaře Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity)
+* [Postup povolení spravované identity přiřazené systémem pro aplikaci Azure jaře Cloud](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
 * [Další informace o spravovaných identitách pro prostředky Azure](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
-* [Konfigurace klientské aplikace démona pro volání služba-služba](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad#configure-a-daemon-client-application-for-service-to-service-calls)
+* [Konfigurace klientské aplikace démona pro volání služba-služba](../app-service/configure-authentication-provider-aad.md#configure-a-daemon-client-application-for-service-to-service-calls)

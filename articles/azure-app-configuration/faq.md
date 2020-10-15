@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: ef4633953f7ac03737608124309d94e436913794
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99c74547d5f48f57af56af69f47190d80d9cd350
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715442"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074953"
 ---
 # <a name="azure-app-configuration-faq"></a>Nejčastější dotazy ke konfiguraci aplikací Azure
 
@@ -41,15 +41,15 @@ Můžete vytvořit konfigurační hodnoty aplikace, které odkazují na tajné k
 
 ## <a name="does-app-configuration-encrypt-my-data"></a>Šifruje konfigurace aplikace moje data?
 
-Ano. Konfigurace aplikace šifruje všechny hodnoty klíčů, které obsahuje, a šifruje síťovou komunikaci. Názvy klíčů a popisky se používají jako indexy pro načítání konfiguračních dat a nejsou zašifrované.
+Yes. Konfigurace aplikace šifruje všechny hodnoty klíčů, které obsahuje, a šifruje síťovou komunikaci. Názvy klíčů a popisky se používají jako indexy pro načítání konfiguračních dat a nejsou zašifrované.
 
 ## <a name="where-does-data-stored-in-app-configuration-reside"></a>Kde se nachází data uložená v konfiguraci aplikace? 
 
-Zákaznická data uložená v konfiguraci aplikace se nacházejí v oblasti, ve které se vytvořilo úložiště konfigurace aplikace zákazníka. Konfigurace aplikace může kvůli odolnosti dat replikovat data do [spárovaných oblastí](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) , ale nereplikuje ani nepřesouvá zákaznická data mimo jejich geografickou dobu, jak je definovala zaregistrovaná [data v Azure](https://azure.microsoft.com/global-infrastructure/data-residency/). Zákazníci a koncoví uživatelé můžou svoje zákaznická data přesouvat, kopírovat nebo přistupovat z libovolného místa globálně.
+Zákaznická data uložená v konfiguraci aplikace se nacházejí v oblasti, ve které se vytvořilo úložiště konfigurace aplikace zákazníka. Konfigurace aplikace může kvůli odolnosti dat replikovat data do [spárovaných oblastí](../best-practices-availability-paired-regions.md) , ale nereplikuje ani nepřesouvá zákaznická data mimo jejich geografickou dobu, jak je definovala zaregistrovaná [data v Azure](https://azure.microsoft.com/global-infrastructure/data-residency/). Zákazníci a koncoví uživatelé můžou svoje zákaznická data přesouvat, kopírovat nebo přistupovat z libovolného místa globálně.
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Jak se liší konfigurace aplikace od nastavení Azure App Service?
 
-Azure App Service umožňuje definovat nastavení aplikace pro každou instanci App Service. Tato nastavení jsou předána jako proměnné prostředí do kódu aplikace. Pokud chcete, můžete přiřadit nastavení k určitému slotu nasazení. Další informace najdete v tématu [Konfigurace nastavení aplikace](/azure/app-service/configure-common#configure-app-settings).
+Azure App Service umožňuje definovat nastavení aplikace pro každou instanci App Service. Tato nastavení jsou předána jako proměnné prostředí do kódu aplikace. Pokud chcete, můžete přiřadit nastavení k určitému slotu nasazení. Další informace najdete v tématu [Konfigurace nastavení aplikace](../app-service/configure-common.md#configure-app-settings).
 
 Naproti tomu konfigurace aplikací Azure umožňuje definovat nastavení, která se dají sdílet mezi více aplikacemi. To zahrnuje aplikace běžící v App Service i jiné platformy. Kód aplikace přistupuje k těmto nastavením prostřednictvím zprostředkovatelů konfigurace pro .NET a Java, prostřednictvím sady Azure SDK nebo přímo přes rozhraní REST API.
 
