@@ -4,15 +4,15 @@ description: zahrnout soubor
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/08/2020
-ms.author: akjosh
+ms.date: 10/14/2020
+ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: 662afb902c97e164cc24bc664b854db118904210
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5c06d0beeb76193c2b8ddba9413878dbf428819
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89494328"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071774"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem imagí. Galerie sdílených imagí poskytují:
 
@@ -56,19 +56,36 @@ Existují tři parametry pro každou definici obrázku, které jsou používány
 
 Všechny tři z nich mají jedinečné sady hodnot. Formát je podobný jako při současném zadání vydavatele, nabídky a SKU pro [Azure Marketplace imagí](../articles/virtual-machines/windows/cli-ps-findimage.md) v Azure PowerShell získat nejnovější verzi image na webu Marketplace. Každá definice obrázku musí mít jedinečnou sadu těchto hodnot.
 
+Definice imagí musí definovat následující parametry, které určují typy verzí imagí, které můžou obsahovat:
+-   Stav operačního systému – stav operačního systému můžete nastavit na [generalizované nebo specializované](#generalized-and-specialized-images).
+- Operační systém může být buď Windows, nebo Linux.
+
+
+
 Níže jsou uvedené další parametry, které je možné nastavit v definici image, abyste mohli snadněji sledovat své prostředky:
 
-* Stav operačního systému – stav operačního systému můžete nastavit na [generalizované nebo specializované](#generalized-and-specialized-images).
-* Operační systém může být buď Windows, nebo Linux.
-* Popis – použijte popis k poskytnutí podrobnějších informací o tom, proč existuje definice obrázku. Můžete mít například definici image pro front-end Server, ve kterém je aplikace předem nainstalovaná.
-* Smlouva EULA – dá se použít k odkazování na licenční smlouvu s koncovým uživatelem, která je specifická pro definici image.
-* Prohlášení o ochraně osobních údajů a poznámky k verzi – můžete ukládat poznámky k verzi a prohlášení o ochraně osobních údajů ve službě Azure Storage a zadat identifikátor URI pro přístup k nim jako součást definice image.
-* Datum ukončení životnosti – připojte k definici obrázku datum ukončení životnosti, aby bylo možné pomocí automatizace odstranit staré definice imagí.
-* Značka – při vytváření definice obrázku můžete přidat značky. Další informace o značkách najdete v tématu [použití značek k uspořádání prostředků](../articles/azure-resource-manager/management/tag-resources.md) .
-* Minimální a maximální doporučení pro vCPU a paměť – Pokud má vaše image doporučení vCPU a paměti, můžete tyto informace připojit k definici image.
-* Nepovolené typy disků – můžete zadat informace o požadavcích na úložiště pro váš virtuální počítač. Pokud například bitová kopie není vhodná pro disky se standardním pevným diskem, přidáte je do seznamu zakázat.
-* Technologie Hyper-V – můžete určit, jestli se image vytvořila z virtuálního pevného disku Hyper-V s 1. nebo 2. generace.
-* Informace o plánu nákupu pro Image Marketplace – `-PurchasePlanPublisher ` , `-PurchasePlanName` a `-PurchasePlanProduct` . Další informace o nákupních plánech najdete v tématu [Vyhledání obrázků v Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) a [zadání informací o plánu Azure Marketplace nákupu při vytváření obrázků](../articles/virtual-machines/marketplace-images.md).
+- Popis – použijte popis k poskytnutí podrobnějších informací o tom, proč existuje definice obrázku. Můžete mít například definici image pro front-end Server, ve kterém je aplikace předem nainstalovaná.
+- Smlouva EULA – dá se použít k odkazování na licenční smlouvu s koncovým uživatelem, která je specifická pro definici image.
+- Prohlášení o ochraně osobních údajů a poznámky k verzi – můžete ukládat poznámky k verzi a prohlášení o ochraně osobních údajů ve službě Azure Storage a zadat identifikátor URI pro přístup k nim jako součást definice image.
+- Datum ukončení životnosti – připojte k definici obrázku datum ukončení životnosti, aby bylo možné pomocí automatizace odstranit staré definice imagí.
+- Značka – při vytváření definice obrázku můžete přidat značky. Další informace o značkách najdete v tématu [použití značek k uspořádání prostředků](../articles/azure-resource-manager/management/tag-resources.md) .
+- Minimální a maximální doporučení pro vCPU a paměť – Pokud má vaše image doporučení vCPU a paměti, můžete tyto informace připojit k definici image.
+- Nepovolené typy disků – můžete zadat informace o požadavcích na úložiště pro váš virtuální počítač. Pokud například bitová kopie není vhodná pro disky se standardním pevným diskem, přidáte je do seznamu zakázat.
+-   Technologie Hyper-V – určete, jestli se image vytvořila z virtuálního pevného disku Hyper-V generace 1 nebo generace [2](../articles/virtual-machines/generation-2.md) . Výchozí hodnota je 1. generace.
+- Informace o plánu nákupu pro Image Marketplace – `-PurchasePlanPublisher` , `-PurchasePlanName` a `-PurchasePlanProduct` . Další informace o nákupních plánech najdete v tématu [Vyhledání obrázků v Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) a [zadání informací o plánu Azure Marketplace nákupu při vytváření obrázků](../articles/virtual-machines/marketplace-images.md).
+
+
+## <a name="image-versions"></a>Verze bitové kopie
+
+**Verze image** je to, co použijete k vytvoření virtuálního počítače. V případě potřeby můžete mít v prostředí k dispozici více verzí bitové kopie. Když použijete **verzi image** k vytvoření virtuálního počítače, verze image se použije k vytvoření nových disků pro virtuální počítač. Verze bitové kopie lze použít několikrát.
+
+Vlastnosti verze image jsou:
+
+- Číslo verze Používá se jako název verze image. Je vždycky ve formátu: MajorVersion. podverze. patch. Pokud při vytváření virtuálního počítače určíte, že se má použít **nejnovější** , vybere se na základě nejvyšší MajorVersion a potom oddálení a pak se vybere nejnovější obrázek. 
+- Zdrojová. Zdrojem může být virtuální počítač, spravovaný disk, snímek, spravovaná Image nebo jiná verze image. 
+- Vylučte z nejnovějších. Verzi můžete zachovat v používání jako nejnovější verzi image. 
+- Datum konce životnosti. Datum, po kterém se virtuální počítače z této image nedají vytvořit
+
 
 ## <a name="generalized-and-specialized-images"></a>Generalizované a specializované image
 
@@ -146,12 +163,12 @@ Za používání služby Galerie sdílených imagí se neúčtují žádné dal�
 Po vytvoření můžete provést některé změny v prostředcích Galerie imagí. Jsou omezeny na:
  
 Galerie sdílených imagí:
-- Description
+- Popis
 
 Definice Image:
 - Doporučené vCPU
 - Doporučená paměť
-- Description
+- Popis
 - Datum konce životnosti
 
 Verze Image:
@@ -217,7 +234,7 @@ Další informace najdete v tématu **Správa prostředků Galerie** pomocí [Az
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Můžu existující image přesunout do galerie sdílených imagí?
  
-Ano. Existují tři scénáře založené na typech imagí, které máte pravděpodobně k dispozici.
+Yes. Existují tři scénáře založené na typech imagí, které máte pravděpodobně k dispozici.
 
  Scénář 1: Pokud máte spravovanou bitovou kopii, můžete z ní vytvořit definici image a její verzi. Další informace najdete v tématu **migrace ze spravované image na verzi image** pomocí [Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md) nebo [PowerShellu](../articles/virtual-machines/image-version-managed-image-powershell.md).
 

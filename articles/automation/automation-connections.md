@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 39085aa7967ffeac3416b61f32146ac023b46dfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a3cff616f814b8e5209b15f9d3f7439533452ca
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186652"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071757"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Správa připojení v Azure Automation
 
@@ -52,9 +52,9 @@ Rutiny v následující tabulce vytvářejí a spravují připojení automatizac
 
 Interní rutina v následující tabulce se používá pro přístup k připojením ve vašich sadách Runbook a konfiguracích DSC. Tato rutina se dodává s globálním modulem `Orchestrator.AssetManagement.Cmdlets` . Další informace najdete v tématu [interní rutiny](shared-resources/modules.md#internal-cmdlets).
 
-|Interní rutina|Description|
+|Interní rutina|Popis|
 |---|---|
-|`Get-AutomationConnection` | Načte hodnoty různých polí v připojení a vrátí je jako [zatřiďovací tabulku](https://go.microsoft.com/fwlink/?LinkID=324844). Tuto zatřiďovací tabulku pak můžete použít s příslušnými příkazy v konfiguraci sady Runbook nebo DSC.|
+|`Get-AutomationConnection` | Načte hodnoty různých polí v připojení a vrátí je jako [zatřiďovací tabulku](/powershell/module/microsoft.powershell.core/about/about_hash_tables). Tuto zatřiďovací tabulku pak můžete použít s příslušnými příkazy v konfiguraci sady Runbook nebo DSC.|
 
 >[!NOTE]
 >Vyhněte se použití proměnných s `Name` parametrem `Get-AutomationConnection` . Použití proměnných v tomto případě může zkomplikovat zjišťování závislostí mezi sadami Runbook a konfigurací DSC a assety připojení v době návrhu.
@@ -63,7 +63,7 @@ Interní rutina v následující tabulce se používá pro přístup k připojen
 
 Funkce v následující tabulce slouží k přístupu k připojením v sadě Runbook Python 2.
 
-| Funkce | Description |
+| Funkce | Popis |
 |:---|:---|
 | `automationassets.get_automation_connection` | Načte připojení. Vrátí slovník s vlastnostmi připojení. |
 
