@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 8e02a47cd6ae6e4883b5113b07d4049cd723232d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 419de27ad87b113de62dacb0dc384702420afbd6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86250188"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071111"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Postup zabezpečení back-endových služeb s využitím ověřování pomocí klientských certifikátů ve službě Azure API Management
 
 API Management umožňuje zabezpečený přístup k back-endové službě rozhraní API pomocí klientských certifikátů. V této příručce se dozvíte, jak spravovat certifikáty v instanci služby Azure API Management v Azure Portal. Vysvětluje také, jak nakonfigurovat rozhraní API k použití certifikátu pro přístup k back-endové službě.
 
-Informace o správě certifikátů pomocí REST API API Management najdete v tématu věnovaném <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">certifikační entitě Azure API Management REST API</a>.
+Informace o správě certifikátů pomocí REST API API Management najdete v tématu věnovaném <a href="/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">certifikační entitě Azure API Management REST API</a>.
 
 ## <a name="prerequisites"></a><a name="prerequisites"> </a>Požadavky
 

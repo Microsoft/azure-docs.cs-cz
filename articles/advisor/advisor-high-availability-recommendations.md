@@ -3,12 +3,12 @@ title: Vylepšení spolehlivosti aplikace pomocí služby Advisor
 description: Pomocí Azure Advisor můžete zajistit a zlepšit spolehlivost vašich důležitých nasazení v Azure.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 1e256d99f8d78ddff318f963dcb21e9b4537f110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ced690ae735a281fdf8b1c3a020ff8c63ce469b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405186"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078030"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Zlepšení spolehlivosti aplikace pomocí Azure Advisor
 
@@ -44,7 +44,7 @@ Pokud je pro geografické směrování nakonfigurovaný profil Traffic Manager, 
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Použití obnovitelného odstranění v účtu služby Azure Storage k uložení a obnovení dat po náhodném přepsání nebo odstranění
 
-Povolte [obnovitelné odstranění](../storage/blobs/soft-delete-overview.md) na svém účtu úložiště, aby se odstraněné objekty blob přešly do neodstraněného stavu místo trvalého odstranění. Při přepsání dat se vygeneruje obnovitelně odstraněný snímek, do kterého se uloží stav přepsaných dat. Použití obnovitelného odstranění umožňuje obnovení z náhodného odstranění nebo přepsání. Advisor identifikuje účty služby Azure Storage, které nemají povolené obnovitelné odstranění, a navrhuje, abyste je povolili.
+Povolte [obnovitelné odstranění](../storage/blobs/soft-delete-blob-overview.md) na svém účtu úložiště, aby se odstraněné objekty blob přešly do neodstraněného stavu místo trvalého odstranění. Při přepsání dat se vygeneruje obnovitelně odstraněný snímek, do kterého se uloží stav přepsaných dat. Použití obnovitelného odstranění umožňuje obnovení z náhodného odstranění nebo přepsání. Advisor identifikuje účty služby Azure Storage, které nemají povolené obnovitelné odstranění, a navrhuje, abyste je povolili.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurace brány VPN na aktivní – aktivní pro odolnost připojení
 
@@ -80,23 +80,23 @@ Azure Advisor detekuje pravidla upozornění protokolu, která mají v oddílu p
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Konfigurace konzistentního režimu indexování v kolekci Azure Cosmos DB
 
-Konfigurace Azure Cosmos DB kontejnerů pomocí režimu opožděného indexování může ovlivnit aktuálnost výsledků dotazu. Advisor detekuje kontejnery konfigurované tímto způsobem a doporučuje přepnout do konzistentního režimu. [Přečtěte si další informace o indexování zásad v Azure Cosmos DB.](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+Konfigurace Azure Cosmos DB kontejnerů pomocí režimu opožděného indexování může ovlivnit aktuálnost výsledků dotazu. Advisor detekuje kontejnery konfigurované tímto způsobem a doporučuje přepnout do konzistentního režimu. [Přečtěte si další informace o indexování zásad v Azure Cosmos DB.](../cosmos-db/how-to-manage-indexing-policy.md)
 
 ## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>Konfigurace klíče oddílu pro kontejnery Azure Cosmos DB
 
-Azure Advisor identifikuje Azure Cosmos DB nedělené kolekce, které se blíží své zřízené kvótě úložiště. Doporučuje se migrovat tyto kolekce do nových kolekcí s definicí klíče oddílu, aby je bylo možné automaticky škálovat službou. [Přečtěte si další informace o volbě klíče oddílu.](https://aka.ms/cosmosdb/choose-partitionkey)
+Azure Advisor identifikuje Azure Cosmos DB nedělené kolekce, které se blíží své zřízené kvótě úložiště. Doporučuje se migrovat tyto kolekce do nových kolekcí s definicí klíče oddílu, aby je bylo možné automaticky škálovat službou. [Přečtěte si další informace o volbě klíče oddílu.](../cosmos-db/partitioning-overview.md)
 
 ## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Upgrade Azure Cosmos DB .NET SDK na nejnovější verzi z NuGet
 
-Azure Advisor identifikuje Azure Cosmos DB účty, které používají starší verze sady .NET SDK. Doporučuje se upgradovat na nejnovější verzi nástroje NuGet, kde najdete nejnovější opravy, vylepšení výkonu a možnosti funkcí. [Přečtěte si další informace o Azure Cosmos DB .NET SDK.](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor identifikuje Azure Cosmos DB účty, které používají starší verze sady .NET SDK. Doporučuje se upgradovat na nejnovější verzi nástroje NuGet, kde najdete nejnovější opravy, vylepšení výkonu a možnosti funkcí. [Přečtěte si další informace o Azure Cosmos DB .NET SDK.](../cosmos-db/sql-api-sdk-dotnet-standard.md)
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Upgrade sady Azure Cosmos DB Java SDK na nejnovější verzi z Mavenu
 
-Azure Advisor identifikuje účty Azure Cosmos DB, které používají starší verze sady Java SDK. Doporučuje se upgradovat na nejnovější verzi z Maven, kde najdete nejnovější opravy, vylepšení výkonu a možnosti funkcí. [Přečtěte si další informace o Azure Cosmos DB Java SDK.](https://aka.ms/cosmosdb/sql-api-sdk-async-java)
+Azure Advisor identifikuje účty Azure Cosmos DB, které používají starší verze sady Java SDK. Doporučuje se upgradovat na nejnovější verzi z Maven, kde najdete nejnovější opravy, vylepšení výkonu a možnosti funkcí. [Přečtěte si další informace o Azure Cosmos DB Java SDK.](../cosmos-db/sql-api-sdk-java-v4.md)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Upgradovat Azure Cosmos DB Spark Connector na nejnovější verzi z Maven
 
-Azure Advisor identifikuje účty Azure Cosmos DB, které používají starší verze konektoru Azure Cosmos DB Spark. Doporučuje se upgradovat na nejnovější verzi z Maven, kde najdete nejnovější opravy, vylepšení výkonu a možnosti funkcí. [Přečtěte si další informace o konektoru Azure Cosmos DB Spark.](https://aka.ms/cosmosdb/spark-connector)
+Azure Advisor identifikuje účty Azure Cosmos DB, které používají starší verze konektoru Azure Cosmos DB Spark. Doporučuje se upgradovat na nejnovější verzi z Maven, kde najdete nejnovější opravy, vylepšení výkonu a možnosti funkcí. [Přečtěte si další informace o konektoru Azure Cosmos DB Spark.](../cosmos-db/spark-connector.md)
 
 ## <a name="consider-moving-to-kafka-21-on-hdinsight-40"></a>Zvažte přechod na Kafka 2,1 ve službě HDInsight 4,0.
 
@@ -110,10 +110,10 @@ Od 1. července 2020 nebudete moci vytvářet nové clustery Spark pomocí Spark
 Virtuální počítače, které nemají povolenou replikaci do jiné oblasti, nejsou odolné vůči nemožnostem regionálních výpadků. Replikace virtuálních počítačů redukuje nepříznivý dopad na firmu během výpadků v oblasti Azure. Advisor detekuje virtuální počítače, u kterých není replikace povolená, a doporučuje ji povolit. Pokud povolíte replikaci, můžete v případě výpadku rychle vytvořit virtuální počítače ve vzdálené oblasti Azure. [Přečtěte si další informace o replikaci virtuálních počítačů.](../site-recovery/azure-to-azure-quickstart.md)
 
 ## <a name="upgrade-to-the-latest-version-of-the-azure-connected-machine-agent"></a>Upgrade na nejnovější verzi agenta Azure Connected Machine
-[Agent připojeného počítače Azure](https://docs.microsoft.com/azure/azure-arc/servers/manage-agent) se pravidelně aktualizuje s opravami chyb, vylepšeními stability a novými funkcemi. Zjistili jsme prostředky, které nefungují na nejnovější verzi agenta Machine agent, a toto doporučení Advisoru vám pomůže upgradovat agenta na nejnovější verzi, aby se dosáhlo nejlepšího prostředí Azure ARC.
+[Agent připojeného počítače Azure](../azure-arc/servers/manage-agent.md) se pravidelně aktualizuje s opravami chyb, vylepšeními stability a novými funkcemi. Zjistili jsme prostředky, které nefungují na nejnovější verzi agenta Machine agent, a toto doporučení Advisoru vám pomůže upgradovat agenta na nejnovější verzi, aby se dosáhlo nejlepšího prostředí Azure ARC.
 
 ## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>Zajištění integrity webu nepřepisováním názvu hostitele
-Poradce doporučujeme, abyste se vyhnuli přepsání názvu hostitele při konfiguraci Application Gateway. Pokud pro front-end služby Application Gateway budete mít jinou doménu než pro přístup k back-endu, může dojít k poškození souborů cookie nebo adres URL pro přesměrování. Upozorňujeme, že to nemusí platit ve všech situacích a že určité kategorie back-endů (například rozhraní REST API) jsou na to obecně méně citlivé. Ujistěte se, že je back-end schopný si s tím poradit, nebo aktualizujte konfiguraci služby Application Gateway tak, aby se název hostitele pro back-end nemusel přepisovat. Při použití s App Service připojte k webové aplikaci vlastní název domény a vyhněte se použití *názvu hostitele. azurewebsites.NET směrem k back-endu.* [Přečtěte si další informace o vlastní doméně](https://aka.ms/appgw-advisor-usecustomdomain).
+Poradce doporučujeme, abyste se vyhnuli přepsání názvu hostitele při konfiguraci Application Gateway. Pokud pro front-end služby Application Gateway budete mít jinou doménu než pro přístup k back-endu, může dojít k poškození souborů cookie nebo adres URL pro přesměrování. Upozorňujeme, že to nemusí platit ve všech situacích a že určité kategorie back-endů (například rozhraní REST API) jsou na to obecně méně citlivé. Ujistěte se, že je back-end schopný si s tím poradit, nebo aktualizujte konfiguraci služby Application Gateway tak, aby se název hostitele pro back-end nemusel přepisovat. Při použití s App Service připojte k webové aplikaci vlastní název domény a vyhněte se použití *názvu hostitele. azurewebsites.NET směrem k back-endu.* [Přečtěte si další informace o vlastní doméně](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md).
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak získat přístup k doporučením vysoké dostupnosti v Advisoru
 

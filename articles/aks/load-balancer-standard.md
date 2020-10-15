@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 414ae3b2adb60b9442a69e3ebcc8b13b29c67cb7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182118"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070499"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Použití veřejné Standard Load Balancer ve službě Azure Kubernetes (AKS)
 
@@ -322,7 +322,7 @@ Níže je uveden seznam poznámek podporovaných pro služby Kubernetes Services
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` nebo `false`                     | Určete, zda má být Nástroj pro vyrovnávání zatížení interní. Pokud není nastavená, je výchozí nastavení veřejné.
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | Název podsítě                    | Určete podsíť, na kterou má být interní nástroj pro vyrovnávání zatížení vázán. Pokud není nastavená podsíť nakonfigurovaná v konfiguračním souboru cloudu, je nastavená jako výchozí.
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | Název DNS popisku na veřejných IP adresách   | Zadejte název popisku DNS pro **veřejnou** službu. Pokud je nastavené na prázdný řetězec, nebude se používat položka DNS ve veřejné IP adrese.
-| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` nebo `false`                     | Určete, že by měla být služba vystavená pomocí pravidla zabezpečení Azure, které může být sdíleno s jinou službou, zajištěním konkrétního obchodování s pravidly pro zvýšení počtu služeb, které mohou být vystaveny. Tato poznámka spoléhá na funkci [Rozšířená pravidla zabezpečení](../virtual-network/security-overview.md#augmented-security-rules) Azure u skupin zabezpečení sítě. 
+| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` nebo `false`                     | Určete, že by měla být služba vystavená pomocí pravidla zabezpečení Azure, které může být sdíleno s jinou službou, zajištěním konkrétního obchodování s pravidly pro zvýšení počtu služeb, které mohou být vystaveny. Tato poznámka spoléhá na funkci [Rozšířená pravidla zabezpečení](../virtual-network/network-security-groups-overview.md#augmented-security-rules) Azure u skupin zabezpečení sítě. 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | Název skupiny prostředků            | Zadejte skupinu prostředků pro veřejné IP adresy nástroje pro vyrovnávání zatížení, které nejsou ve stejné skupině prostředků jako infrastruktura clusteru (skupina prostředků uzlu).
 | `service.beta.kubernetes.io/azure-allowed-service-tags`           | Seznam povolených značek služby          | Zadejte seznam povolených [značek služby][service-tags] oddělený čárkou.
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | Vypršení časového limitu nečinnosti protokolu TCP v minutách          | Zadejte dobu v minutách, po kterou mají v nástroji pro vyrovnávání zatížení dojít k vypršení časového limitu nečinnosti připojení protokolu TCP. Výchozí a minimální hodnota je 4. Maximální hodnota je 30. Musí být celé číslo.
@@ -426,4 +426,4 @@ Přečtěte si další informace o používání interního Load Balancer pro p�
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
-[service-tags]: ../virtual-network/security-overview.md#service-tags
+[service-tags]: ../virtual-network/network-security-groups-overview.md#service-tags

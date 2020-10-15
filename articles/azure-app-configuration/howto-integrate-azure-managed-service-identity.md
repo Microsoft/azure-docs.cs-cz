@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 02d9407766930f02c70d580112136b50b6036e11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d71f0396f453ceb7113d724b113fe5aacdc60e21
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029859"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078166"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Použití spravovaných identit pro přístup ke službě App Configuration
 
@@ -39,7 +39,7 @@ V tomto článku získáte informace o těchto tématech:
 K dokončení tohoto kurzu potřebujete:
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows).
-* [Azure Cloud Shell nakonfigurovaný](https://docs.microsoft.com/azure/cloud-shell/quickstart).
+* [Azure Cloud Shell nakonfigurovaný](../cloud-shell/quickstart.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -73,7 +73,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 
     ![Přidat spravovanou identitu](./media/add-managed-identity.png)
 
-1. Volitelné: Pokud chcete Key Vault taky udělit přístup, postupujte podle pokynů v části [přiřazení zásady přístupu Key Vault](/azure/key-vault/general/assign-access-policy-portal).
+1. Volitelné: Pokud chcete Key Vault taky udělit přístup, postupujte podle pokynů v části [přiřazení zásady přístupu Key Vault](../key-vault/general/assign-access-policy-portal.md).
 
 ## <a name="use-a-managed-identity"></a>Použití spravované identity
 
@@ -185,7 +185,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     Nyní máte přístup k Key Vault odkazům stejně jako jakýkoli jiný konfigurační klíč aplikace. Poskytovatel konfigurace použije `KeyVaultClient` konfiguraci, kterou jste nakonfigurovali k ověřování, aby Key Vault a načetla hodnotu.
 
 > [!NOTE]
-> `ManagedIdentityCredential` podporuje pouze spravované ověřování identity. Nefunguje v místních prostředích. Pokud chcete spustit kód místně, zvažte použití nástroje `DefaultAzureCredential` , který podporuje také ověřování instančního objektu. Podrobnosti najdete v [odkazu](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) .
+> `ManagedIdentityCredential` podporuje pouze spravované ověřování identity. Nefunguje v místních prostředích. Pokud chcete spustit kód místně, zvažte použití nástroje `DefaultAzureCredential` , který podporuje také ověřování instančního objektu. Podrobnosti najdete v [odkazu](/dotnet/api/azure.identity.defaultazurecredential) .
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
