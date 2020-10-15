@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3110e02c2c4cb8b254e80a55997577db95ba1be0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595984"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075650"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Řešení potíží se zásadami přístupu ke službě Azure Key trezor
 
@@ -52,6 +52,8 @@ Aplikace taky potřebuje alespoň jednu roli správy identit a přístupu (IAM) 
 ### <a name="how-can-i-redeploy-key-vault-with-arm-template-without-deleting-existing-access-policies"></a>Jak můžu znovu nasadit Key Vault se šablonou ARM, aniž byste museli odstraňovat existující zásady přístupu?
 
 V současné době Key Vault opětovné nasazení odstraní všechny zásady přístupu v Key Vault a nahradí je zásadami přístupu v šabloně ARM. Pro zásady přístupu Key Vault neexistuje žádná přírůstková možnost. Pokud chcete zachovat zásady přístupu v Key Vault, potřebujete si přečíst existující zásady přístupu v Key Vault a naplnit šablonu ARM pomocí těchto zásad, abyste se vyhnuli výpadkům v přístupu.
+
+Další možností, která může pomoci pro tento scénář, je použití rolí RBAC jako alternativního přístupu k zásadám přístupu. Pomocí RBAC můžete znovu nasadit Trezor klíčů bez zadání zásad. Toto řešení si můžete přečíst [tady](https://docs.microsoft.com/azure/key-vault/general/rbac-guide).
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>Doporučené kroky pro řešení potíží pro následující typy chyb
 

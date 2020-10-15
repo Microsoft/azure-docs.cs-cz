@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae284a6afa1f2e396aef8177229c344b569be6ec
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83683788"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075667"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Řešení potíží s aplikacemi, které nepodporují protokol TLS 1,2
 Tento článek popisuje, jak povolit starší protokoly TLS (TLS 1,0 a 1,1) a jak používat starší šifrovací sady pro podporu dalších protokolů na webu a rolích pracovních procesů cloudové služby v systému Windows 2019 Server. 
@@ -25,7 +25,7 @@ Tento článek popisuje, jak povolit starší protokoly TLS (TLS 1,0 a 1,1) a ja
 Chápeme, že při provádění kroků k vyřazení TLS 1,0 a TLS 1,1 můžou naši zákazníci potřebovat podporu starších protokolů a šifrovacích sad, dokud je nemůžou naplánovat jejich vyřazení.  I když tyto starší hodnoty nedoporučujeme znovu povolit, poskytujeme pokyny pro pomoc zákazníkům. Zákazníkům doporučujeme, aby před implementací změn uvedených v tomto článku vyhodnotili riziko regrese. 
 
 > [!NOTE]
-> Vydání verze s operačním systémem Host 6 vynutila TLS 1,2 tím, že explicitně zakáže TLS 1,0 a 1,1 a definuje konkrétní sadu šifrovacích sad. Další informace o rodinách hostovaných operačních systémů najdete v článku [novinky pro vydání hostovaného operačního systému](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)
+> Vydání verze s operačním systémem Host 6 vynutila TLS 1,2 tím, že explicitně zakáže TLS 1,0 a 1,1 a definuje konkrétní sadu šifrovacích sad. Další informace o rodinách hostovaných operačních systémů najdete v článku [novinky pro vydání hostovaného operačního systému](./cloud-services-guestos-update-matrix.md#family-6-releases)
 
 
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>Vyřazení podpory pro TLS 1,0, TLS 1,1 a starší šifrovací sady 
@@ -362,4 +362,3 @@ Teď, když jste výše uvedené kroky dokončili, publikujte aktualizaci do st�
 
 [SSLLabs](https://www.ssllabs.com/) můžete použít k ověření stavu TLS koncových bodů. 
 
- 
