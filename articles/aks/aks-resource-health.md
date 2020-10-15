@@ -6,17 +6,17 @@ author: yunjchoi
 ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
-ms.openlocfilehash: f830debafb1a9b6b303ee6af987c7cd4fbf34aea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a409ac944c51d893fc344f82ae83d97559e055ef
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358249"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070652"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>Kontrolovat Resource Health události, které mají vliv na váš cluster AKS (Preview)
 
 
-Při spouštění vašich kontejnerových úloh na AKS chcete zajistit, aby bylo možné řešit problémy a opravovat problémy, jakmile vznikne, aby se minimalizoval dopad na dostupnost vašich úloh. [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview) poskytují přehled o různých událostech stavu, které můžou způsobit, že váš cluster AKS nebude k dispozici.
+Při spouštění vašich kontejnerových úloh na AKS chcete zajistit, aby bylo možné řešit problémy a opravovat problémy, jakmile vznikne, aby se minimalizoval dopad na dostupnost vašich úloh. [Azure Resource Health](../service-health/resource-health-overview.md) poskytují přehled o různých událostech stavu, které můžou způsobit, že váš cluster AKS nebude k dispozici.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -49,7 +49,7 @@ Resource Health přijímá signály pro spravovaný cluster ke zjištění stavu
 
 - **Snížené**: když dojde k problému se stavem, který vyžaduje vaši akci, Resource Health hlásí cluster jako *snížený*.
 
-Další podrobnosti o tom, co každý stav uvádí, najdete v článku [přehled Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview#health-status).
+Další podrobnosti o tom, co každý stav uvádí, najdete v článku [přehled Resource Health](../service-health/resource-health-overview.md#health-status).
 
 ### <a name="view-historical-data"></a>Zobrazit historická data
 
@@ -57,4 +57,4 @@ Můžete si také prohlédnout posledních 30 dní historických Resource Health
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete řešit potíže s clustery pomocí [diagnostiky AKS](https://docs.microsoft.com/azure/aks/concepts-diagnostics), spusťte kontroly clusteru.
+Pokud chcete řešit potíže s clustery pomocí [diagnostiky AKS](./concepts-diagnostics.md), spusťte kontroly clusteru.

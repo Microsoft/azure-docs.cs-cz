@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
-ms.openlocfilehash: e585bc52121943102522f8c44291a4f9453d6214
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e54cd0e3c5b9499a3bc1a499ae4cef62c73160e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318394"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070703"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní stránku do webového uživatelského rozhraní akcelerátoru řešení vzdáleného monitorování
 
@@ -155,7 +155,7 @@ Volitelně můžete připojit místní běžící kopii webového uživatelskéh
 
 1. Nasaďte **základní** instanci akcelerátoru řešení pomocí rozhraní příkazového řádku pro **počítače** . Poznamenejte si název vašeho nasazení a přihlašovací údaje, které jste zadali pro virtuální počítač. Další informace najdete v tématu [nasazení pomocí rozhraní](iot-accelerators-remote-monitoring-deploy-cli.md)příkazového řádku.
 
-1. Pomocí Azure Portal nebo [AZ CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) povolte přístup SSH k virtuálnímu počítači, který je hostitelem mikroslužeb ve vašem řešení. Například:
+1. Pomocí Azure Portal nebo [AZ CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) povolte přístup SSH k virtuálnímu počítači, který je hostitelem mikroslužeb ve vašem řešení. Například:
 
     ```azurecli
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -163,7 +163,7 @@ Volitelně můžete připojit místní běžící kopii webového uživatelskéh
 
     Během testování a vývoje byste měli povolit jenom přístup přes SSH. Pokud povolíte SSH, [měli byste ho znovu deaktivovat, jakmile to bude možné](../security/fundamentals/network-best-practices.md).
 
-1. Pomocí Azure Portal nebo [AZ CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) najděte název a veřejnou IP adresu vašeho virtuálního počítače. Například:
+1. Pomocí Azure Portal nebo [AZ CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) najděte název a veřejnou IP adresu vašeho virtuálního počítače. Například:
 
     ```azurecli
     az resource list --resource-group {your solution name} -o table

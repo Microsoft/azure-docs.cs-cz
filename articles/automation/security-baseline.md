@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a57473a26d5fe809274f14c8767356914e0d4962
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d3f04777983d24d5219c55c5309b7d12c214594
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400513"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070686"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Základní hodnoty zabezpečení Azure pro automatizaci
 
@@ -84,7 +84,7 @@ Přístup k síti pro virtuální počítače s Windows můžete omezit tak, že
 
 * [Postup nasazení Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/threat-protection.md)
+* [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/azure-defender.md)
 
 * [Pochopení Azure Security Center adaptivního posílení zabezpečení sítě](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -150,7 +150,7 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 * [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Ukázky Azure Policy pro sítě](/azure/governance/policy/samples/#network)
+* [Ukázky Azure Policy pro sítě](../governance/policy/samples/built-in-policies.md#network)
 
 * [Vytvoření Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
@@ -520,7 +520,7 @@ Pokud ale použijete hybridní pracovní procesy Runbooku, které jsou zajiště
 
 * [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
 * [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -720,7 +720,7 @@ Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěn�
 
 * [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
 * [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -752,7 +752,7 @@ K dotazování a zjišťování prostředků v rámci předplatných navíc pou�
 
 * [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-* [Azure Policy ukázkové předdefinované pro Azure Automation](./policy-samples.md)
+* [Azure Policy ukázkové předdefinované pro Azure Automation](./policy-reference.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -854,7 +854,7 @@ Adaptivní řízení aplikací je inteligentní, automatizované a ucelené ře�
 
 * [Přehled brány firewall webových aplikací Azure](../web-application-firewall/overview.md)
 
-* [Skupiny zabezpečení sítě](../virtual-network/security-overview.md)
+* [Skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md)
 
 * [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md)
 
@@ -882,7 +882,7 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 
 * [Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy ukázkové předdefinované pro Azure Automation](./policy-samples.md)
+* [Azure Policy ukázkové předdefinované pro Azure Automation](./policy-reference.md)
 
 * [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -920,7 +920,7 @@ Pokud používáte funkci Hybrid Runbook Worker, použijte k údržbě konfigura
 
 * [Nasazení účtu Automation pomocí šablony Azure Resource Manager](./quickstart-create-automation-account-template.md#deploy-the-template)
 
-* [Azure Policy ukázkové předdefinované pro Azure Automation](./policy-samples.md)
+* [Azure Policy ukázkové předdefinované pro Azure Automation](./policy-reference.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -984,7 +984,7 @@ Pokud používáte funkci Hybrid Runbook Worker, ujistěte se, že jste správn�
 
 * [Jak používat aliasy](../governance/policy/concepts/definition-structure.md#aliases)
 
-* [Azure Policy ukázkové předdefinované pro Azure Automation](./policy-samples.md)
+* [Azure Policy ukázkové předdefinované pro Azure Automation](./policy-reference.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1014,7 +1014,7 @@ Pokud používáte funkci Hybrid Runbook Worker, využijte Azure Security Center
 
 * [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy ukázkové předdefinované pro Azure Automation](./policy-samples.md)
+* [Azure Policy ukázkové předdefinované pro Azure Automation](./policy-reference.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
