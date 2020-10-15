@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 10beee563e4a93332cd817ee04c1e74bda6e9c51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54985cbd874f6a8a3dd0db08df3ceb4b53c72cac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210348"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093272"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Použití externích služeb ze služby Azure API Management
 Zásady, které jsou dostupné ve službě Azure API Management, můžou provádět nejrůznější práci založenou čistě na příchozím požadavku, odchozí odpovědi a základní informace o konfiguraci. Je ale možné pracovat s externími službami ze zásad API Management otevírá mnoho dalších příležitostí.
@@ -178,7 +178,7 @@ Prvním krokem při sestavování prostředku řídicího panelu je konfigurace 
 ### <a name="making-the-requests"></a>Vytváření žádostí
 Po vytvoření operace můžete nakonfigurovat zásadu specifickou pro tuto operaci. 
 
-![Operace řídicího panelu](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
+![Snímek obrazovky zobrazující obrazovku oboru zásad](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
 Prvním krokem je extrakce parametrů dotazů z příchozího požadavku, abyste je mohli přeslat do back-endu. V tomto příkladu řídicí panel zobrazuje informace na základě časové prodlevy, a proto má `fromDate` `toDate` parametr a. Tuto zásadu můžete použít `set-variable` k extrakci informací z adresy URL požadavku.
 
