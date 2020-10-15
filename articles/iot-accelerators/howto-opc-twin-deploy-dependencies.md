@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: ae0e18a2dfbce52e50b4a8b58d478a46dff12922
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42024fc506de7befed7c44ebcc410756b6f43a35
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282098"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078982"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>Nasazení závislostí pro místní vývoj
 
@@ -24,7 +24,7 @@ Tento článek vysvětluje, jak nasadit jenom služby platformy Azure, které js
 
 ## <a name="deploy-azure-platform-services"></a>Nasazení služeb platformy Azure
 
-1. Ujistěte se, že máte nainstalované rozšíření PowerShell a [AzureRM prostředí PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) .  Otevřete příkazový řádek nebo terminál a spusťte příkaz:
+1. Ujistěte se, že máte nainstalované rozšíření PowerShell a [AzureRM prostředí PowerShell](/powershell/azure/azurerm/install-azurerm-ps) .  Otevřete příkazový řádek nebo terminál a spusťte příkaz:
 
    ```bash
    git clone https://github.com/Azure/azure-iiot-components

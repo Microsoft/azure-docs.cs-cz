@@ -3,12 +3,12 @@ title: Nasazení horizontu v řešení VMware Azure
 description: Přečtěte si, jak nasadit VMware Horizon do řešení Azure VMware.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: bda4be049e360670cb7038bfbb3070c2a5f262c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f8951c1c346eb15ac981b99a4dbf1541f3e3eed
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729045"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078880"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Nasazení horizontu v řešení VMware Azure 
 
@@ -197,11 +197,14 @@ Pracujte s prodejním týmem VMware EUC a určete náklady na licencování hori
 
 V závislosti na standardní architektuře nasazení se virtuální počítače infrastruktury horizontu skládají z připojovacích serverů, UAGs a správců aplikací a jsou nasazené v Azure Virtual Network zákazníka. Další nativní instance Azure jsou nutné pro podporu služeb vysoké dostupnosti (HA), Microsoft SQL nebo služby Microsoft Active Directory (AD) v Azure. Níže je seznam instancí Azure, které jsou založené na příkladech nasazení 2 000-Desktop. 
 
+>[!NOTE]
+>Aby bylo možné zpracovat selhání, nasaďte další server, než je vyžadováno pro počet připojení (n + 1). Minimální doporučený počet instancí serveru pro připojení, UAG a Správce svazků aplikace je 2 a požadovaný počet bude růst na základě množství uživatelů, které bude prostředí podporovat.  Jeden server pro připojení podporuje maximálně 4 000 relací, i když se jako osvědčený postup doporučuje 2 000. U každého z nich se podporuje až sedm serverů s doporučením celkem 12 000 aktivních relací za sekundu. Nejaktuálnější čísla najdete v [článku znalostní báze VMware – omezení velikosti a doporučení pro změny velikosti VMware Horizon](https://kb.vmware.com/s/article/2150348).
+
 | Součást infrastruktury horizontu | Instance Azure | Potřebný počet instancí (pro 2 000-desktopy)    | Komentář  |
 |----------------------------------|----------------|----------------------------------------------------|----------|
-| Server pro připojení                | D4sv3          | 2       | *Zahrnuje 1 instanci pro HA*             |    
-| UAG                              | F2sv2          | 2       | *Zahrnuje 1 instanci pro HA*             |
-| Správce svazků aplikace              | D4sv3          | 2       | *Zahrnuje 1 instanci pro HA*             |
+| Server pro připojení                | D4sv3          | 2       | *Viz poznámku výše*                         |    
+| UAG                              | F2sv2          | 2       | *Viz poznámku výše*                         |
+| Správce svazků aplikace              | D4sv3          | 2       | *Viz poznámku výše*                         |
 | Cloudový konektor                  | D4sv3          | 1       |                                          |
 | Řadič služby AD                    | D4sv3          | 2       | *Možnost používat službu MSFT AD v Azure* |
 | MS-SQL Database                  | D4sv3          | 2       | *Možnost používat službu SQL v Azure*     |

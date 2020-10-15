@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/14/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 9ed918c841989cb50efa362251d09c0b655b7fc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c36a541c9380596884252efcba4a9c0ca2be33f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89570048"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92082112"
 ---
 | Prostředek | Omezení |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -39,7 +39,7 @@ ms.locfileid: "89570048"
 <sup>2</sup> . Velikost mezipaměti pro jednotky závisí na cenové úrovni. Pokud chcete zobrazit cenové úrovně a jejich omezení škálování, přečtěte si téma [API Management ceny](https://azure.microsoft.com/pricing/details/api-management/).<br/>
 <sup>3</sup> . Připojení se ve fondu a znovu používají, pokud není explicitně Uzavřeno pomocí back-endu.<br/>
 <sup>4</sup> . Toto omezení je na jednotku úrovně Basic, Standard a Premium. Úroveň pro vývojáře je omezená na 1 024. Toto omezení se nevztahuje na úroveň spotřeby.<br/>
-<sup>5</sup> . Toto omezení se vztahuje na úrovně Basic, Standard a Premium. V úrovni spotřeby je velikost dokumentu zásad omezená na 4 KiB.<br/>
+<sup>5</sup> . Toto omezení se vztahuje na úrovně Basic, Standard a Premium. V úrovni spotřeby je velikost dokumentu zásad omezená na 16 KiB.<br/>
 <sup>6</sup> Více vlastních domén je podporováno pouze v úrovni pro vývojáře a úrovně Premium.<br/>
 <sup>7</sup> Certifikáty certifikační autority se v úrovni spotřeby nepodporují.<br/>
 <sup>8</sup> Toto omezení se vztahuje pouze na úroveň spotřeby. V těchto kategoriích neexistují žádná omezení pro jiné úrovně.<br/>

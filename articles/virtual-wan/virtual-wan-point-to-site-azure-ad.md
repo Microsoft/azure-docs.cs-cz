@@ -2,17 +2,17 @@
 title: 'Konfigurace ověřování Azure AD pro připojení VPN uživatele: virtuální síť WAN'
 description: Přečtěte si, jak nakonfigurovat ověřování Azure Active Directory pro uživatele VPN.
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/17/2020
+ms.date: 10/14/2020
 ms.author: alzam
-ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1102e2dafcf1a78bc9c243f27549b13793ec5408
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832514"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079169"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Konfigurace ověřování Azure Active Directory pro uživatele VPN
 
@@ -22,15 +22,14 @@ Tento typ připojení vyžaduje, aby byl na klientském počítači nakonfigurov
 
 V tomto článku získáte informace o těchto tématech:
 
-> [!div class="checklist"]
-> * Vytvoření virtuální sítě WAN
-> * Vytvořit virtuální rozbočovač
-> * Vytvoření konfigurace sítě VPN uživatele
-> * Stažení profilu sítě VPN uživatele virtuální sítě WAN
-> * Použít konfiguraci VPN uživatele na virtuálním rozbočovači
-> * Připojení virtuální sítě k virtuálnímu rozbočovači
-> * Stažení a použití konfigurace klienta VPN uživatele
-> * Zobrazení virtuální sítě WAN
+* Vytvoření virtuální sítě WAN
+* Vytvořit virtuální rozbočovač
+* Vytvoření konfigurace sítě VPN uživatele
+* Stažení profilu sítě VPN uživatele virtuální sítě WAN
+* Použít konfiguraci VPN uživatele na virtuálním rozbočovači
+* Připojení virtuální sítě k virtuálnímu rozbočovači
+* Stažení a použití konfigurace klienta VPN uživatele
+* Zobrazení virtuální sítě WAN
 
 ![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwanp2s.png)
 

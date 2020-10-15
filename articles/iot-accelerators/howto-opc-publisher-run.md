@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6a4b65195488f101d36aaf73956f1422bfccbbf9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d6581a1892ebd74a1adba5c09c0af9d3cf9d43
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282132"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078999"
 ---
 # <a name="run-opc-publisher"></a>Spuštění vydavatele OPC
 
@@ -370,7 +370,7 @@ Zkontrolujte [Docker Hub](https://hub.docker.com/_/microsoft-iotedge-opc-publish
 
 ## <a name="run-as-an-azure-iot-edge-module"></a>Spustit jako modul Azure IoT Edge
 
-Vydavatel OPC je připravený k použití jako modul [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge) . Pokud používáte OPC Publisher jako modul IoT Edge, jediné podporované přenosové protokoly jsou **Amqp_Tcp_Only** a **Mqtt_Tcp_Only**.
+Vydavatel OPC je připravený k použití jako modul [Azure IoT Edge](../iot-edge/index.yml) . Pokud používáte OPC Publisher jako modul IoT Edge, jediné podporované přenosové protokoly jsou **Amqp_Tcp_Only** a **Mqtt_Tcp_Only**.
 
 Pokud chcete přidat vydavatele OPC jako modul do nasazení IoT Edge, v Azure Portal klikněte na nastavení IoT Hub a proveďte následující kroky:
 

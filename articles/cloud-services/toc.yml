@@ -194,7 +194,7 @@
     - name: Postup výuky
       href: /learn/paths/azure-fundamentals/
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
+      href: /answers/topics/azure-cloud-services.html
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: Cenová kalkulačka

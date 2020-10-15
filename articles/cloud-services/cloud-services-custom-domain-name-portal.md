@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 012801d0aada8ee55bb0eb05eaf75caa95878765
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092724"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069921"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurace vlastního názvu domény pro cloudovou službu Azure
 Když vytvoříte cloudovou službu, Azure ji přiřadí subdoménou **cloudapp.NET**. Pokud se například vaše cloudová služba jmenuje "contoso", budou mít vaši uživatelé přístup k vaší aplikaci na adrese URL, jako je `http://contoso.cloudapp.net` . Azure také přiřadí virtuální IP adresu.
@@ -119,7 +119,7 @@ Například následující záznam přepošle veškerý provoz z **contoso.com**
 Tento příklad ukazuje vytvoření záznamu A pro kořenovou doménu. Pokud chcete vytvořit položku se zástupnými znaky pro pokrytí všech subdomén, zadejte jako subdoménu * * * * *.
 
 > [!WARNING]
-> IP adresy v Azure jsou ve výchozím nastavení dynamické. Pravděpodobně budete chtít použít [vyhrazenou IP adresu](../virtual-network/virtual-networks-reserved-public-ip.md) , abyste se ujistili, že se vaše IP adresa nemění.
+> IP adresy v Azure jsou ve výchozím nastavení dynamické. Pravděpodobně budete chtít použít [vyhrazenou IP adresu](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) , abyste se ujistili, že se vaše IP adresa nemění.
 > 
 > 
 
@@ -138,6 +138,3 @@ Tento příklad ukazuje vytvoření záznamu A pro kořenovou doménu. Pokud chc
 [Azure Portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
-
-
-

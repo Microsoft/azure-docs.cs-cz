@@ -2,21 +2,21 @@
 title: 'Azure bastionu: zobrazení relace virtuálního počítače: celá obrazovka'
 description: Naučte se, jak změnit zobrazení virtuálního počítače na celou obrazovku a zpět v prohlížeči pro připojení RDP nebo SSH v Azure bastionu.
 services: bastion
-author: charwen
+author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
-ms.author: charwen
-ms.openlocfilehash: fa795d7b066733aba54f8612bbabecf264a11c70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: cherylmc
+ms.openlocfilehash: 7db85c5e1d5f67c30adf08969c51bb4c57838fb5
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88270287"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079135"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>Změnit na zobrazení na celé obrazovce pro relaci virtuálních počítačů: Azure bastionu
 
-Tento článek vám pomůže změnit zobrazení virtuálního počítače na celou obrazovku a zpět v prohlížeči. Než začnete pracovat s virtuálním počítačem, ujistěte se, že jste postupovali podle pokynů k [Vytvoření hostitele bastionu](bastion-create-host-portal.md). Pak se připojte k virtuálnímu počítači, se kterým chcete pracovat pomocí [protokolu RDP](bastion-connect-vm-rdp.md) nebo [SSH](bastion-connect-vm-ssh.md).
+Tento článek vám pomůže změnit zobrazení virtuálního počítače na celou obrazovku a zpět v prohlížeči. Než začnete pracovat s virtuálním počítačem, ujistěte se, že jste postupovali podle pokynů k [Vytvoření hostitele bastionu](./tutorial-create-host-portal.md). Pak se připojte k virtuálnímu počítači, se kterým chcete pracovat pomocí [protokolu RDP](bastion-connect-vm-rdp.md) nebo [SSH](bastion-connect-vm-ssh.md).
 
 ## <a name="launch-the-clipboard-tool"></a>Spuštění nástroje schránka
 

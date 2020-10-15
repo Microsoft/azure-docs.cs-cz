@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 163f440c9f98a1d53793fddab2590f7345944fda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 7cc19adcc4769baaf34a75ef7217de639d0a357c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87171009"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079033"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL cenové úrovně
 
@@ -21,7 +21,7 @@ Server Azure Database for MySQL můžete vytvořit v jedné ze tří různých c
 |:---|:----------|:--------------------|:---------------------|
 | Generování výpočtů | Gen 4, fin. 5 | Gen 4, fin. 5 | Gen 5 |
 | Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
-| Paměť na vCore | 2 GB | 5 GB | 10 GB |
+| Paměť na vCore | 2 GB | 5 GB | 10 GB |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 16 TB | 5 GB až 16 TB |
 | Doba uchování zálohy databáze | 7 až 35 dní | 7 až 35 dní | 7 až 35 dní |
 
@@ -39,7 +39,7 @@ Po vytvoření serveru se dá v průběhu několika sekund změnit počet virtu�
 
 Výpočetní prostředky se poskytují jako virtuální jádra, což představuje logický procesor základního hardwaru. Čína – východ 1, Čína – sever 1, US DoD – střed a US DoD – východ využití logických procesorů Gen 4, které jsou založené na procesorech Intel E5-2673 V3 (Haswell) 2,4 GHz. Všechny ostatní oblasti využívají logické procesory s Gen 5, které jsou založené na procesorech Intel E5-2673 v4 (Broadwell) 2,3 GHz.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 Úložiště, které zřizujete, je množství úložné kapacity dostupné pro váš server Azure Database for MySQL. Úložiště se používá pro soubory databáze, dočasné soubory, transakční protokoly a protokoly serveru MySQL. Celková velikost úložiště, kterou zřizujete, také definuje kapacitu v/v k dispozici pro váš server.
 
@@ -47,11 +47,11 @@ Výpočetní prostředky se poskytují jako virtuální jádra, což představuj
 |:---|:----------|:--------------------|:---------------------|
 | Typ úložiště | Základní úložiště | Pro obecné účely úložiště | Pro obecné účely úložiště |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 16 TB | 5 GB až 16 TB |
-| Velikost přírůstku úložiště | 1 GB | 1 GB | 1 GB |
+| Velikost přírůstku úložiště | 1 GB | 1 GB | 1 GB |
 | IOPS | Proměnná |3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS |
 
 > [!NOTE]
-> Úložiště až do 16TB a 20 000 IOPS je podporované v následujících oblastech: Východní USA, Východní USA 2, Střed USA, Západní USA, Střed USA – sever, Střed USA – jih, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – jih, Austrálie – východ, Austrálie – jihovýchod, Západní USA 2 a Středozápadní USA.
+> Úložiště až do 16TB a 20 000 IOPS je podporované v následujících oblastech: Východní USA, Východní USA 2, Střed USA, Západní USA, Střed USA – sever, Střed USA – jih, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – jih, Austrálie – východ, Austrálie – jihovýchod, Západní USA 2, Středozápadní USA, Kanada – východ. a Kanada – střed.
 >
 > Všechny ostatní oblasti podporují až 4 TB úložiště a až 6000 vstupně-výstupních operací.
 >

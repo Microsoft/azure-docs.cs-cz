@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1714c1c3c9efb0e78d137ed042420f1c7ba2139f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4394cc4cb21b288215c75e484cb6446f0321158b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330107"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079067"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Výuka modelů pomocí Azure Machine Learning
 
@@ -23,7 +23,7 @@ Azure Machine Learning poskytuje několik způsobů, jak proškolit vaše modely
 
 + [Azure Machine Learning SDK pro Python](#python-sdk): sada Python SDK nabízí několik způsobů výuky modelů, z nichž každá má různé možnosti.
 
-    | Způsob školení | Description |
+    | Způsob školení | Popis |
     | ----- | ----- |
     | [Konfigurace spuštění](#run-configuration) | **Typický způsob, jak naučit modely** , je použít školicí skript a spustit konfiguraci. Konfigurace spuštění poskytuje informace potřebné ke konfiguraci školicího prostředí používaného pro výuku modelu. V konfiguraci spuštění můžete zadat školicí skript, cíl výpočtů a prostředí Azure ML a spustit školicí úlohu. |
     | [Automatizované strojové učení](#automated-machine-learning) | Automatizované Machine Learning umožňuje **výukové modely bez rozsáhlých vědeckých znalostí nebo programování**. Pro lidi s datovou vědy a programováním na pozadí poskytuje způsob, jak ušetřit čas a prostředky díky automatizaci výběru algoritmu a ladění parametrů. Při použití automatizovaného strojového učení se nemusíte starat o definování konfigurace spuštění. |
@@ -118,11 +118,6 @@ Návrhář umožňuje výukové modely pomocí rozhraní přetažení ve webové
 
 + [Co je Návrhář?](concept-designer.md)
 + [Kurz: předpověď ceny automobilu](tutorial-designer-automobile-price-train-score.md)
-+ [Regrese: předpověď ceny](how-to-designer-sample-regression-automobile-price-basic.md)
-+ [Klasifikace: předpověď výnosů](how-to-designer-sample-classification-predict-income.md)
-+ [Klasifikace: předpověď změn, appetencyí a prodejů](how-to-designer-sample-classification-churn.md)
-+ [Klasifikace s vlastním skriptem R: předpověď zpoždění letů](how-to-designer-sample-classification-flight-delay.md)
-+ [Klasifikace textu: Wikipedii sada dat SP 500](how-to-designer-sample-text-classification.md)
 
 ## <a name="many-models-solution-accelerator"></a>Řada akcelerátorů řešení modelů
 

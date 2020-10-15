@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: ebbdd103350e1de36d45ecf84acf15d477fa34db
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 027a816e846996aa7c61a1747327128f9a0feed0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058127"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079203"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -98,8 +98,8 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující
 
 |Problém  |Datum zjištění  |Status  |Datum vyřešení  |
 |---------|---------|---------|---------|
-|[Distribuované transakce se dají provést po odebrání spravované instance ze skupiny důvěryhodných serverů.](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|SEP 2020|Má alternativní řešení||
-|[Po operaci škálování spravované instance se nedají provést distribuované transakce.](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|SEP 2020|Má alternativní řešení||
+|[Distribuované transakce se dají provést po odebrání spravované instance ze skupiny důvěryhodných serverů.](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Říjen 2020|Má alternativní řešení||
+|[Po operaci škálování spravované instance se nedají provést distribuované transakce.](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Říjen 2020|Má alternativní řešení||
 |[Bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) v Azure SQL a `BACKUP` / `RESTORE` příkazu ve spravované instanci se nemůžou pomocí Azure AD spravovat identitu pro ověřování ve službě Azure Storage.|SEP 2020|Má alternativní řešení||
 |[Instanční objekt nemá přístup k Azure AD a integrace](#service-principal-cannot-access-azure-ad-and-akv)|Srpna 2020|Má alternativní řešení||
 |[Obnovení ručního zálohování bez KONTROLNÍho SOUČTu může selhat](#restoring-manual-backup-without-checksum-might-fail)|Květen 2020|Vyřešeno|Červen 2020|

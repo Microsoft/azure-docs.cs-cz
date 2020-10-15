@@ -5,22 +5,22 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 10/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: 851ec86feb5244ff43759a7aef2b80876dcfa734
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: e4f0a3ea85fa479826fe9e666df2b18f8dba7ce3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018538"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079118"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Vytvoření hostitele Azure bastionu pomocí Azure CLI
 
-V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu pomocí Azure CLI. Po nasazení bastionu se můžete připojit k virtuálnímu počítači přes jeho privátní IP adresu v prohlížeči pomocí Azure Portal. Váš virtuální počítač nepotřebuje veřejnou IP adresu, dalšího klienta nebo speciální software. Nasazení Azure bastionu je vázané na virtuální síť, ne pro předplatné/účet nebo virtuální počítač. Bezproblémové prostředí RDP/SSH je k dispozici všem virtuálním počítačům ve stejné virtuální síti.
+V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu pomocí Azure CLI. Jakmile ve své virtuální síti zřídíte službu Azure bastionu, bezproblémové prostředí RDP/SSH je dostupné všem virtuálním počítačům ve stejné virtuální síti. Nasazení Azure bastionu je vázané na virtuální síť, ne pro předplatné/účet nebo virtuální počítač.
 
-Volitelně můžete vytvořit hostitele Azure bastionu pomocí [Azure Portal](tutorial-create-host-portal.md)nebo pomocí [Azure PowerShell](bastion-create-host-powershell.md).
+Volitelně můžete vytvořit hostitele Azure bastionu pomocí [Azure Portal](./tutorial-create-host-portal.md)nebo pomocí [Azure PowerShell](bastion-create-host-powershell.md).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="prerequisites"></a>Požadavky
 
 Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial).
 
@@ -53,7 +53,5 @@ Tato část vám pomůže vytvořit nový prostředek Azure bastionu pomocí Azu
 
 ## <a name="next-steps"></a>Další kroky
 
-* Připojte se k virtuálnímu počítači.
-   * [Virtuální počítači s Linuxem](bastion-connect-vm-ssh.md)
-   * [Virtuální počítač s Windows](bastion-connect-vm-rdp.md)
-
+* Další informace najdete v tématu [bastionu – Nejčastější dotazy](bastion-faq.md) .
+* Pokud chcete používat skupiny zabezpečení sítě s podsítí Azure bastionu, přečtěte si téma [práce s skupin zabezpečení sítě](bastion-nsg.md).

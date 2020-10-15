@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 32e4658af48a0ae3bde08de18cf1d8204878d671
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6054fe5f71f54794d4974a71cdfd61a7959534ff
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91024886"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082177"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Je protokol BGP podporován ve všech SKU služby Azure VPN Gateway?
 Protokol BGP je podporován u všech SKU Azure VPN Gateway s výjimkou úrovně Basic SKU.
@@ -76,7 +76,7 @@ Služby Azure VPN Gateway budou místním zařízením BGP prezentovat následuj
 Podporujeme až 4000 předpon. Pokud počet předpon překročí toto omezení, relace BGP se ukončí.
 
 ### <a name="can-i-advertise-default-route-00000-to-azure-vpn-gateways"></a>Mohu inzerovat výchozí cestu (0.0.0.0/0) do bran Azure VPN Gateway?
-Ano.
+Yes.
 
 Všimněte si, že tato akce vynutí všechny přenosy odchozích dat virtuální sítě směrem k místní lokalitě a zabrání virtuálním počítačům virtuální sítě v přijetí veřejné komunikace přímo z Internetu, jako je RDP nebo SSH z Internetu k virtuálním počítačům.
 
@@ -104,7 +104,10 @@ Pokud máte například dvě redundantní tunely mezi vaší bránou Azure VPN a
 Ano, ale alespoň jedna z bran virtuální sítě musí být v konfiguraci aktivní–aktivní.
 
 ### <a name="can-i-use-bgp-for-s2s-vpn-in-an-expressroutes2s-vpn-coexistence-configuration"></a>Můžu použít protokol BGP pro S2S VPN v konfiguraci koexistence sítě VPN ExpressRoute/S2S?
-Ano. 
+Yes. 
 
 ### <a name="what-should-i-add-to-my-on-premises-vpn-device-for-the-bgp-peering-session"></a>Co je třeba přidat do místního zařízení VPN pro relaci partnerského vztahu protokolu BGP?
 Do zařízení VPN je nutné přidat směrování hostitele IP adresy partnera BGP Azure odkazující na tunel VPN IPsec S2S. Pokud je například IP adresa partnera BGP Azure 10.12.255.30, je nutné přidat směrování hostitele pro adresu 10.12.255.30 s rozhraním nexthop odpovídajícího rozhraní tunelu IPsec ve vašem zařízení VPN.
+
+### <a name="does-the-virtual-network-gateway-support-bidirectional-forwarding-detection-bfd-for-site-to-site-connections-with-bgp"></a>Podporuje Virtual Network Gateway pro připojení Site-to-site s protokolem BGP i zjišťování obousměrného předávání (BFD)?
+Ne. Rozpoznávání obousměrného předávání (BFD) je protokol, který lze použít společně s protokolem BGP ke zjištění rychlejšího výpadku sousedů, než použití standardních udržení protokolu BGP. BFD používá časovače s dalšími sekundami, které jsou navržené pro práci v prostředích LAN, ale ne přes veřejná připojení k Internetu nebo na celé síti. U připojení přes veřejný Internet se některé pakety zpoždění nebo dokonce vyřazené nejsou neobvyklé, takže zavedení těchto agresivních časovačů by vedlo k nestabilitě, která může způsobit nestabilitu těchto tras. Jako alternativu můžete nakonfigurovat místní zařízení s časovači nižšími než s výchozím intervalem 60 – sekundu a časovačem podržením 180-Second pro dobu rychlejší konvergence.

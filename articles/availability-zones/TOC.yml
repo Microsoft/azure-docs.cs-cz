@@ -3,11 +3,11 @@
     - name: Stránka funkce odolnosti Azure
       href: 'https://azure.microsoft.com/features/resiliency'
     - name: Návrh odolných aplikací pro Azure
-      href: 'https://docs.microsoft.com/azure/architecture/resiliency/'
+      href: /azure/architecture/resiliency/
 - name: Vysoká dostupnost
   items:
     - name: Vysoká dostupnost pro aplikace Azure
-      href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+      href: /azure/architecture/resiliency/high-availability-azure-applications
     - name: Oblasti a zóny dostupnosti
       href: az-overview.md
     - name: Dokumentace k zónám dostupnosti
@@ -39,34 +39,34 @@
             - name: Load Balancer úrovně Standard a zóny dostupnosti
               href: ../load-balancer/load-balancer-standard-availability-zones.md
             - name: Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard
-              href: ../load-balancer/load-balancer-get-started-internet-az-portal.md
+              href: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
               items:
                 - name: Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard (PowerShell)
-                  href: ../load-balancer/load-balancer-get-started-internet-az-powershell.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-powershell.md
                 - name: Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard (CLI)
-                  href: ../load-balancer/load-balancer-get-started-internet-az-cli.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
             - name: Vytvoření zónového veřejného Load Balanceru úrovně Standard
-              href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md
+              href: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
               items:
                 - name: Vytvoření zónového veřejného Load Balanceru úrovně Standard (PowerShell)
-                  href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-powershell.md
                 - name: Vytvoření zónového veřejného Load Balanceru úrovně Standard (CLI)
-                  href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
             - name: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti
-              href: ../load-balancer/load-balancer-standard-public-availability-zones-portal.md
+              href: ../load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal.md
               items:
                 - name: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti s využitím Azure (CLI)
-                  href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
+                  href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
         - name: Veřejná IP adresa
           href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: Databáze SQL
           items:
             - name: Zóny dostupnosti pro SQL Database
-              href: ../sql-database/sql-database-high-availability.md#zone-redundant-configuration
+              href: ../azure-sql/database/high-availability-sla.md#zone-redundant-configuration
         - name: Storage
           items:
             - name: Zónově redundantní úložiště
-              href: ../storage/common/storage-redundancy-zrs.md
+              href: ../storage/common/storage-redundancy.md
         - name: Event Hubs
           items:
             - name: Geografické zotavení po havárii služby Event Hubs
@@ -102,11 +102,11 @@
 - name: Zotavení po havárii
   items:
     - name: Použití Azure Site Recovery
-      href: 'https://docs.microsoft.com/azure/site-recovery/'
+      href: ../site-recovery/index.yml
 - name: Azure Backup
   items:
     - name: Použití služby Azure Backup
-      href: 'https://docs.microsoft.com/azure/backup/'
+      href: ../backup/index.yml
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna
