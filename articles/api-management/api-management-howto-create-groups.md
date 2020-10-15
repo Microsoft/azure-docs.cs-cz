@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 517b70d798d8cdd1b361b244111a8b6781286207
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea674981036b4be292329a4b30b43180ed26d642
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851218"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092779"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Vytváření skupin a jejich používání ke správě účtů vývojářů ve službě Azure API Management
 
@@ -38,7 +38,7 @@ Kromě vytváření a správy skupin na portálu vydavatele můžete vytvořit a
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončení úloh v tomto článku: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 
@@ -66,10 +66,10 @@ Teď, když je skupina vytvořená, může být přidružená k produktům a vý
 3. Stiskněte **řízení přístupu**.
 4. Klikněte na **+ Přidat skupinu**.
 
-    ![Přidružení skupiny k produktu](./media/api-management-howto-create-groups/groups002.png)
+    ![Snímek obrazovky, který zvýrazní tlačítko Přidat skupinu.](./media/api-management-howto-create-groups/groups002.png)
 5. Vyberte skupinu, kterou chcete přidat.
 
-    ![Přidružení skupiny k produktu](./media/api-management-howto-create-groups/groups003.png)
+    ![Snímek obrazovky, který zobrazuje vybranou skupinu a zvýrazní tlačítko pro výběr.](./media/api-management-howto-create-groups/groups003.png)
 
     Chcete-li odebrat skupinu z produktu, klikněte na tlačítko **Odstranit**.
 
@@ -90,7 +90,7 @@ V této části se dozvíte, jak přidružit skupiny ke členům.
     ![Přidání člena](./media/api-management-howto-create-groups/groups005.png)
 3. Stiskněte **+ Přidat** a vyberte člena.
 
-    ![Přidání člena](./media/api-management-howto-create-groups/groups006.png)
+    ![Snímek obrazovky, který zvýrazní tlačítko Přidat, vybraného uživatele a tlačítko vybrat.](./media/api-management-howto-create-groups/groups006.png)
 4. Stiskněte **Vybrat**.
 
 Po přidání přidružení mezi vývojářem a skupinou si ho můžete zobrazit na kartě **Uživatelé** .

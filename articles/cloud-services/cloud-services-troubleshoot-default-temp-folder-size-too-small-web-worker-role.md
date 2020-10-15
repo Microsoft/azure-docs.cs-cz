@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 77c4f627668b91c4bc21ad73b3511c1775943229
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d18e174eac30bbcf87010531821a4017efb088ba
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460197"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075106"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Výchozí velikost složky TEMP je pro web nebo roli pracovního procesu cloudové služby moc malá.
 Výchozí dočasný adresář pracovního procesu cloudové služby nebo webové role má maximální velikost 100 MB, která může být v určitém okamžiku plná. Tento článek popisuje, jak se vyhnout nedostatku místa pro dočasný adresář.
@@ -70,8 +70,8 @@ namespace WorkerRole1
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si blog, který popisuje, [jak zvýšit velikost ASP.NET dočasné složky webové role Azure](https://docs.microsoft.com/archive/blogs/kwill/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder).
+Přečtěte si blog, který popisuje, [jak zvýšit velikost ASP.NET dočasné složky webové role Azure](/archive/blogs/kwill/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder).
 
-Podívejte se na další články týkající se [řešení potíží](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview) pro Cloud Services.
+Podívejte se na další články týkající se [řešení potíží](/visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview) pro Cloud Services.
 
-Pokud se chcete dozvědět, jak řešit problémy s rolí cloudové služby pomocí dat diagnostiky počítačů Azure PaaS, podívejte se na [blogovou řadu Kevin Williamson](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
+Pokud se chcete dozvědět, jak řešit problémy s rolí cloudové služby pomocí dat diagnostiky počítačů Azure PaaS, podívejte se na [blogovou řadu Kevin Williamson](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).

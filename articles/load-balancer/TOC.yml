@@ -63,9 +63,12 @@
       href: load-balancer-ha-ports-overview.md
     - name: Několik front-endů
       href: load-balancer-multivip-overview.md
-    - name: Odchozí připojení
+    - name: Odchozí proxy server
       href: load-balancer-outbound-connections.md
     - name: Resetování TCP a časový limit při nečinnosti TCP
+    - name: Pravidla odchozích přenosů
+      href: outbound-rules.md
+    - name: Časový limit resetování při nečinnosti TCP
       href: load-balancer-tcp-reset.md
     - name: Load Balancer úrovně Standard a zóny dostupnosti
       href: load-balancer-standard-availability-zones.md
@@ -79,7 +82,7 @@
       href: backend-pool-management.md
     - name: Standard Load Balancer a Virtual Machine Scale Sets
       href: load-balancer-standard-virtual-machine-scale-sets.md
-- name: Postup
+- name: Postupy
   items:
     - name: Nastavení portálu
       href: manage.md

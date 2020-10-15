@@ -164,10 +164,10 @@
   items:
     - name: Aktualizace Azure
       href: 'https://azure.microsoft.com/updates/?product=storage'
-    - name: Azure Storage na webu Microsoft Q&A
+    - name: Table Storage na webu Microsoft Q&A
       href: 'https://docs.microsoft.com/answers/topics/azure-table-storage.html'
-    - name: Azure Storage na webu Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Table Storage na webu Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-table-storage'
     - name: Ceny služby Table Storage
       href: 'https://azure.microsoft.com/en-us/pricing/details/storage/tables/'
     - name: Cenová kalkulačka Azure

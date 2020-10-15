@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16c0b3e6dc4bd9097312e3a8c43618e66781ef85
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75430791"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092881"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Postup přizpůsobení portálu Azure API Management pro vývojáře pomocí šablon
 
@@ -41,7 +41,7 @@ Existují tři základní způsoby, kterými jde přizpůsobit portál pro vývo
 
 Chcete-li získat přístup k šablonám portálu pro vývojáře, klikněte na ikonu Přizpůsobit na levé straně a zobrazte nabídku vlastní nastavení a klikněte na **šablony**.
 
-![Šablony portálu pro vývojáře][api-management-customize-menu]
+![Snímek obrazovky, který zvýrazní ikonu přizpůsobit, aby se zobrazila nabídka vlastní nastavení][api-management-customize-menu]
 
 Seznam šablony obsahuje několik kategorií šablon pokrývajících různé stránky na portálu pro vývojáře. Každá šablona je odlišná, ale kroky pro jejich úpravu a publikování změn jsou stejné. Chcete-li upravit šablonu, klikněte na název šablony.
 
@@ -145,7 +145,7 @@ Uložené šablony lze publikovat jednotlivě nebo společně. Chcete-li publiko
 
 Kliknutím na **Ano** potvrďte a zpřístupněte šablonu na portálu pro vývojáře.
 
-![Potvrdit publikování][api-management-publish-template-confirm]
+![Snímek obrazovky, který ukazuje, kde vyberte Ano, aby se šablona mohla aktivovat.][api-management-publish-template-confirm]
 
 Pokud chcete publikovat všechny aktuálně nepublikované verze šablon, v seznamu šablon klikněte na **publikovat** . Nepublikované šablony jsou označeny hvězdičkou, která následuje za názvem šablony. V tomto příkladu se zveřejňují **seznam produktů** a šablony **produktu** .
 
@@ -160,11 +160,11 @@ Nově publikované šablony se okamžitě projeví na portálu pro vývojáře.
 ## <a name="to-revert-a-template-to-the-previous-version"></a>Vrácení šablony zpět na předchozí verzi
 Chcete-li obnovit šablonu na předchozí publikovanou verzi, klikněte na tlačítko vrátit v editoru šablon.
 
-![Vrátit šablonu][api-management-revert-template]
+![Snímek obrazovky, který zvýrazní ikonu použitou k vrácení šablony.][api-management-revert-template]
 
 Pro potvrzení klikněte na tlačítko **Ano**.
 
-![Confirm][api-management-revert-template-confirm]
+![Snímek obrazovky, který ukazuje, kde chcete potvrdit změny, pokud vyberete Ano.][api-management-revert-template-confirm]
 
 Dříve publikovaná verze šablony je po dokončení operace vrácení zpět na portálu pro vývojáře živá.
 

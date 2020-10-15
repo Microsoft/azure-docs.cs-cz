@@ -3,12 +3,13 @@ title: Odeslání událostí služby Blob Storage do webového koncového bodu �
 description: Pomocí Azure Event Grid a šablony Azure Resource Manager vytvořte účet úložiště objektů BLOB a přihlaste se k odběru událostí. Odeslat události do Webhooku
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: fc6216142c6bec99cb12bf4e0bdae920f27f1bf2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: subject-armqs
+ms.openlocfilehash: bfaee324f3e46f64fd4ad0d8b7e1240331b56c27
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91598352"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093646"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Rychlý Start: směrování událostí služby Blob Storage do webového koncového bodu pomocí šablony ARM
 
@@ -86,7 +87,7 @@ Pokud už je nepotřebujete, [odstraňte skupinu prostředků](../azure-resource
 
 Další informace o šablonách Azure Resource Manager najdete v následujících článcích:
 
-* [Dokumentace k Azure Resource Manager](../azure-resource-manager/index.yml)
+* [Dokumentace ke službě Azure Resource Manager](../azure-resource-manager/index.yml)
 * [Definice prostředků v šabloně Azure Resource Manageru](/azure/templates/)
-* [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/)
+* [Šablony Azure pro rychlé zprovoznění](https://azure.microsoft.com/resources/templates/)
 * [Šablony Azure Event Grid](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

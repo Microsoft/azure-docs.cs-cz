@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2776b18dc3faded103b49e8ff58a8a0a6dccf144
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74168361"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074460"
 ---
 # <a name="add-an-email-action"></a>Přidat akci e-mailu
 
@@ -166,7 +166,7 @@ Následující kroky ukazují, jak upravit šablonu e-mailu HTML. Můžete např
 
 ## <a name="throttling"></a>Throttling
 
-Akcelerátor řešení vzdáleného monitorování používá aplikaci Outlook k posílání e-mailových oznámení. Outlook omezuje počet e-mailů odeslaných na [30 e-mailů za 1 minutu](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits). E-mailové klienty, kteří obdrží e-maily, mohou také omezit počet přijatých e-mailů za minutu. V případě omezení si Projděte konkrétního e-mailového klienta. Při nastavování e-mailových oznámení pro pravidlo by mělo pravidlo počítat průměrné hodnoty za období nejméně jedné minuty a nepoužívat okamžité hodnoty:
+Akcelerátor řešení vzdáleného monitorování používá aplikaci Outlook k posílání e-mailových oznámení. Outlook omezuje počet e-mailů odeslaných na [30 e-mailů za 1 minutu](/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits). E-mailové klienty, kteří obdrží e-maily, mohou také omezit počet přijatých e-mailů za minutu. V případě omezení si Projděte konkrétního e-mailového klienta. Při nastavování e-mailových oznámení pro pravidlo by mělo pravidlo počítat průměrné hodnoty za období nejméně jedné minuty a nepoužívat okamžité hodnoty:
 
 ![Průměrný výpočet](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 

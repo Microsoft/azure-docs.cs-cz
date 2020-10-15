@@ -3,12 +3,12 @@ title: Přehled trezorů služby Recovery Services
 description: Přehled trezorů Recovery Services.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: cc09c1ffa84bc66e8fe2c48c80b8aea0977762ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab6b27bdc7ac9b01385ed43830d0af5900210d43
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975150"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093663"
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezorů služby Recovery Services
 
@@ -18,7 +18,7 @@ Tento článek popisuje funkce trezoru Recovery Services. Recovery Services trez
 
 - **Centrální monitorování pro vaše hybridní IT prostředí**: Díky trezorům Recovery Services můžete monitorovat nejen [virtuální počítače Azure s IaaS](backup-azure-manage-vms.md) , ale i vaše místní [prostředky](backup-azure-manage-windows-server.md#manage-backup-items) z centrálního portálu. [Další informace](backup-azure-monitoring-built-in-monitor.md)
 
-- **Access Control na základě rolí (RBAC)**: RBAC zajišťuje v Azure jemně odstupňované řízení přístupu. [Azure poskytuje různé předdefinované role](../role-based-access-control/built-in-roles.md)a Azure Backup má tři [předdefinované role pro správu bodů obnovení](backup-rbac-rs-vault.md). Trezory Recovery Services jsou kompatibilní s RBAC, což omezuje přístup k nástroji pro zálohování a obnovení na definovanou sadu rolí uživatele. [Další informace](backup-rbac-rs-vault.md)
+- **Řízení přístupu na základě role v Azure (Azure RBAC)**: Azure RBAC zajišťuje v Azure jemně odstupňované řízení přístupu. [Azure poskytuje různé předdefinované role](../role-based-access-control/built-in-roles.md)a Azure Backup má tři [předdefinované role pro správu bodů obnovení](backup-rbac-rs-vault.md). Trezory Recovery Services jsou kompatibilní s Azure RBAC, což omezuje přístup k zálohování a obnovení na definovanou sadu rolí uživatele. [Další informace](backup-rbac-rs-vault.md)
 
 - **Obnovitelné odstranění**: u obnovitelného odstranění, i když škodlivý objekt actor odstraní zálohu (nebo se zálohovaná data nechtěně odstraní), zálohovaná data se uchovávají po dobu 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Další 14 dní uchovávání zálohových dat ve stavu "obnovitelné odstranění" za vás neúčtují žádné náklady. [Další informace](backup-azure-security-feature-cloud.md).
 
@@ -54,7 +54,7 @@ Azure Advisor poskytuje hodinová [doporučení](../advisor/advisor-high-availab
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Úložiště – podporované a nepodporované scénáře](backup-support-matrix.md#vault-support)
 - [Nejčastější dotazy k trezoru](backup-azure-backup-faq.md)

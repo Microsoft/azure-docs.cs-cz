@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4298518dae9afdf197321073846fa1ab9262ec0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84d0731a67ac47b8b0fc73cb485857458b3febbb
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601380"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093306"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Pochopení zabezpečení pracovních stanic spravovaných Azure
 
@@ -64,7 +64,7 @@ Všichni uživatelé a operátoři využívají zabezpečenou pracovní stanici.
 * Vysoce citlivá pracovní stanice, jako je například platba terminálu SWIFT
 * Obchodní tajemství pro zpracování pracovních stanic
 
-Pro snížení rizika byste měli implementovat zvýšené řízení zabezpečení pro privilegované pracovní stanice, které využívají tyto účty. Další informace najdete v tématu [Průvodce nasazením funkcí Azure Active Directory](../fundamentals/active-directory-deployment-checklist-p2.md), [Microsoft 365 plán](https://aka.ms/o365secroadmap)a [zabezpečení privilegovaného přístupu](https://aka.ms/sparoadmap).
+Pro snížení rizika byste měli implementovat zvýšené řízení zabezpečení pro privilegované pracovní stanice, které využívají tyto účty. Další informace najdete v tématu [Průvodce nasazením funkcí Azure Active Directory](../fundamentals/active-directory-deployment-checklist-p2.md), [Microsoft 365 plán](/microsoft-365/security/office-365-security/security-roadmap)a [zabezpečení privilegovaného přístupu](/windows-server/identity/securing-privileged-access/securing-privileged-access).
 
 ## <a name="why-use-dedicated-workstations"></a>Proč používat vyhrazené pracovní stanice?
 

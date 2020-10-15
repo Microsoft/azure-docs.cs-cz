@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 618e9586e9824e6cea592ff78a1fbd3b991abd83
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 9562cff9fd9ed37cbd4fd94c42acd54e6be3b47c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945392"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094003"
 ---
 # <a name="azure-spring-cloud-faq"></a>Nejčastější dotazy k jarnímu cloudu Azure
 
@@ -54,7 +54,7 @@ Který z nich mám použít a jaká jsou omezení v rámci jednotlivých vrstev?
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Jak můžu sdělit svůj názor a ohlásit problémy?
 
-Pokud narazíte na nějaké problémy se službou Azure Pramenitého cloudu, vytvořte [žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Pokud chcete odeslat žádost o funkci nebo poskytnout zpětnou vazbu, přečtěte si [názory na Azure](https://feedback.azure.com/forums/34192--general-feedback).
+Pokud narazíte na nějaké problémy se službou Azure Pramenitého cloudu, vytvořte [žádost o podporu Azure](../azure-portal/supportability/how-to-create-azure-support-request.md). Pokud chcete odeslat žádost o funkci nebo poskytnout zpětnou vazbu, přečtěte si [názory na Azure](https://feedback.azure.com/forums/34192--general-feedback).
 
 ## <a name="development"></a>Vývoj
 
@@ -70,13 +70,13 @@ Azure jarní Cloud podporuje jazyky Java 8 a 11. Viz [Java Runtime a verze opera
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Kde můžu zobrazit protokoly a metriky cloudových aplikací pro jaře?
 
-Metriky najdete na kartě Přehled aplikace a na kartě [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) .
+Metriky najdete na kartě Přehled aplikace a na kartě [Azure monitor](../azure-monitor/platform/data-platform-metrics.md#interacting-with-azure-monitor-metrics) .
 
-Azure jaře Cloud podporuje Exportování protokolů a metriky aplikace na jaře cloudu do Azure Storage, EventHub a [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries). Název tabulky v Log Analytics je *AppPlatformLogsforSpring*. Další informace o tom, jak ho povolit, najdete v tématu [diagnostické služby](diagnostic-services.md).
+Azure jaře Cloud podporuje Exportování protokolů a metriky aplikace na jaře cloudu do Azure Storage, EventHub a [Log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries). Název tabulky v Log Analytics je *AppPlatformLogsforSpring*. Další informace o tom, jak ho povolit, najdete v tématu [diagnostické služby](diagnostic-services.md).
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Podporuje Azure jaře Cloud distribuované trasování?
 
-Ano. Další informace najdete v tématu [kurz: použití distribuovaného trasování u jarního cloudu Azure](spring-cloud-tutorial-distributed-tracing.md).
+Yes. Další informace najdete v tématu [kurz: použití distribuovaného trasování u jarního cloudu Azure](spring-cloud-tutorial-distributed-tracing.md).
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>Jaké typy prostředků podporuje Service Binding?
@@ -89,7 +89,7 @@ V současné době jsou podporovány tři služby:
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Můžu v rámci svých aplikací zobrazit, přidat nebo přesunout trvalé svazky?
 
-Ano.
+Yes.
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Po odstranění nebo přesunutí instance služby Azure jaře Cloud Service se její prostředky pro rozšíření odstranily/přesunuly i?
 
@@ -106,7 +106,7 @@ Nastavení diagnostiky jarního cloudu můžete odstranit pomocí Azure CLI:
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Které verze Java Runtime jsou podporovány v Azure jaře cloudu?
 
-Azure jarní Cloud podporuje verze Java LTS s nejnovějšími sestaveními. června 2020, Java 8 Build 252 a Java 11 Build 7 se podporují. Přečtěte si téma [instalace JDK pro Azure a Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
+Azure jarní Cloud podporuje verze Java LTS s nejnovějšími sestaveními. června 2020, Java 8 Build 252 a Java 11 Build 7 se podporují. Přečtěte si téma [instalace JDK pro Azure a Azure Stack](/azure/developer/java/fundamentals/java-jdk-install)
 
 ### <a name="who-built-these-java-runtimes"></a>Kdo tyto moduly Runtime Java vytvořil?
 
@@ -118,14 +118,14 @@ LTS a MTS JDK Release mají v případě potřeby čtvrtletní aktualizace zabez
 
 ### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Jak dlouho budou podporované verze Java 8 a Java 11 LTS?
 
-Viz [Dlouhodobá podpora jazyka Java pro Azure a Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support).
+Viz [Dlouhodobá podpora jazyka Java pro Azure a Azure Stack](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * Jazyk Java 8 LTS bude podporován do prosince 2030.
 * Java 11 LTS se bude podporovat až do září 2027.
 
 ### <a name="how-can-i-download-a-supported-java-runtime-for-local-development"></a>Jak můžu stáhnout podporovaný běhový modul Java pro místní vývoj?
 
-Přečtěte si téma [instalace JDK pro Azure a Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
+Přečtěte si téma [instalace JDK pro Azure a Azure Stack](/azure/developer/java/fundamentals/java-jdk-install).
 
 ### <a name="what-is-the-retire-policy-for-older-java-runtimes"></a>Jaké jsou zásady vyřazení pro starší běhové moduly Java?
 
@@ -136,7 +136,7 @@ Veřejné oznámení se odešle do 12 měsíců před vyřazením původní verz
 
 ### <a name="how-can-i-get-support-for-issues-at-the-java-runtime-level"></a>Jak získám podporu pro problémy na úrovni běhového prostředí Java?
 
-Můžete otevřít lístek podpory s podporou Azure.  Podívejte [se, jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Můžete otevřít lístek podpory s podporou Azure.  Podívejte [se, jak vytvořit žádost o podporu Azure](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ### <a name="what-is-the-operation-system-to-run-my-apps"></a>K čemu má operační systém běžet moje aplikace?
 
@@ -151,7 +151,7 @@ Důležité opravy zabezpečení (CVE skóre >= 9) použitelné pro jarní cloud
 ## <a name="deployment"></a>Nasazení
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Podporuje nasazení s modrou zeleným cloudem Azure?
-Ano. Další informace najdete v tématu [Nastavení přípravného prostředí](spring-cloud-howto-staging-environment.md).
+Yes. Další informace najdete v tématu [Nastavení přípravného prostředí](spring-cloud-howto-staging-environment.md).
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Můžu získat přístup k Kubernetes, abyste mohli manipulovat s kontejnery aplikací?
 
@@ -159,7 +159,7 @@ Ne.  Azure jaře Cloud vyabstrakce vývojáře z základní architektury, což v
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Podporuje Azure jaře Cloud vytváření kontejnerů ze zdroje?
 
-Ano. Další informace najdete v tématu [spuštění vaší jarní cloudové aplikace ze zdrojového kódu](spring-cloud-quickstart.md).
+Yes. Další informace najdete v tématu [spuštění vaší jarní cloudové aplikace ze zdrojového kódu](spring-cloud-quickstart.md).
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Podporuje Azure jaře Cloud automatické škálování v instancích aplikací?
 

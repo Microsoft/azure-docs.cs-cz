@@ -8,19 +8,19 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: d368c938e805164b70c7d3a22f9229b5efd89dde
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 29eb99d9e009d58c44be8f9d2e5d9fa01d117092
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045394"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092949"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Rychlý Start: sestavování a nasazování aplikací do jarního cloudu Azure
 
 ::: zone pivot="programming-language-csharp"
 V tomto rychlém startu sestavíte a nasadíte aplikace mikroslužeb do jarního cloudu Azure pomocí Azure CLI.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončete předchozí rychlé starty v této sérii:
 
@@ -162,7 +162,7 @@ K otestování aplikace odešlete požadavek HTTP GET do `solar-system-weather` 
 
 ## <a name="test-the-application"></a>Testování aplikace
 
-Odeslat požadavek GET do `solar-system-weather` aplikace V prohlížeči přejděte na veřejnou adresu URL, která se `/weatherforecast` připojí ke konci. Příklad:
+Odeslat požadavek GET do `solar-system-weather` aplikace V prohlížeči přejděte na veřejnou adresu URL, která se `/weatherforecast` připojí ke konci. Například:
 
 ```
 https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
@@ -185,12 +185,12 @@ Tento dokument vysvětluje, jak vytvářet a nasazovat aplikace mikroslužeb do 
 
 Před nasazením pomocí Azure CLI nebo Maven dokončete příklady, které [zřídí instanci Azure jaře cloudu](spring-cloud-quickstart-provision-service-instance.md) , a [nastavte konfigurační server](spring-cloud-quickstart-setup-config-server.md).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
-* [Nainstalovat JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
+* [Nainstalovat JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
-* Volitelné [Nainstalujte rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) a nainstalujte rozšíření pro jarní cloud Azure pomocí příkazu: `az extension add --name spring-cloud`
-* Volitelné [Nainstalujte Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) a [přihlaste](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) se.
+* Volitelné [Nainstalujte rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) a nainstalujte rozšíření pro jarní cloud Azure pomocí příkazu: `az extension add --name spring-cloud`
+* Volitelné [Nainstalujte Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) a [přihlaste](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) se.
 
 ## <a name="deployment-procedures"></a>Postupy nasazení
 
@@ -304,7 +304,7 @@ Potřebujeme způsob, jak získat přístup k aplikaci přes webový prohlíže�
     ![Importovat projekt](media/spring-cloud-intellij-howto/revision-import-project-1.png)
 
 ### <a name="deploy-gateway-app-to-azure-spring-cloud"></a>Nasazení aplikace brány do jarního cloudu Azure
-Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účtu Azure pomocí Azure Toolkit for IntelliJ a zvolit své předplatné. Podrobnosti o přihlášení najdete v tématu [instalace a přihlášení](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
+Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účtu Azure pomocí Azure Toolkit for IntelliJ a zvolit své předplatné. Podrobnosti o přihlášení najdete v tématu [instalace a přihlášení](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
 1. V Project Exploreru klikněte pravým tlačítkem na projekt a vyberte **Azure**  ->  **Deploy do Azure jaře Cloud**.
 
@@ -313,7 +313,7 @@ Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účt
 1. Do pole **název** přidejte *: Brána* k existujícímu **názvu**.
 1. V textovém poli **artefaktu** vyberte *com. piggymetrics: Gateway: 1.0-Snapshot*.
 1. V textovém poli **odběr** ověřte své předplatné.
-1. V textovém poli pole **jarního cloudu** vyberte instanci služby Azure jaře Cloud, kterou jste vytvořili v části [zřízení instance cloudové služby Azure jaře](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance).
+1. V textovém poli pole **jarního cloudu** vyberte instanci služby Azure jaře Cloud, kterou jste vytvořili v části [zřízení instance cloudové služby Azure jaře](./spring-cloud-quickstart-provision-service-instance.md).
 1. Nastavte **veřejný koncový bod** , který se má *Povolit*.
 1. V poli **aplikace:** textové pole vyberte **vytvořit aplikaci...**.
 1. Zadejte *bránu*a pak klikněte na **OK**.

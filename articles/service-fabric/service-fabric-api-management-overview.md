@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: bbde23dd888d179917f123d00745fb7d0099c2d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cbec0b4b28574bfbe46516de54f1b8a3fad7ce2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259299"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091130"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric se službou Azure API Management – Přehled
 
@@ -29,13 +29,13 @@ Společná architektura Service Fabric používá jednostránkovou webovou aplik
 
 V tomto scénáři slouží Bezstavová webová služba jako brána do aplikace Service Fabric. Tento přístup vyžaduje, abyste napsali webovou službu, která může proxy požadavky HTTP na back-endové služby, jak je znázorněno na následujícím diagramu:
 
-![Service Fabric s Azure API Management topologii – přehled][sf-web-app-stateless-gateway]
+![Diagram, který ukazuje, jak Bezstavová webová služba slouží jako brána v aplikaci Service Fabric.][sf-web-app-stateless-gateway]
 
 Vzhledem k tomu, že aplikace se výrazně mění, udělejte od služby back-end nesčetných brány, které musí představovat rozhraní API. Služba Azure API Management je navržená tak, aby zpracovávala složitá rozhraní API pomocí pravidel směrování, řízení přístupu, omezení četnosti, monitorování, protokolování událostí a ukládání odpovědí do mezipaměti s minimálními nároky na vaši část. Azure API Management podporuje zjišťování služby Service Fabric, rozlišení oddílů a výběr repliky k inteligentnímu směrování požadavků přímo do back-endové služby v Service Fabric, takže nemusíte psát vlastní bezstavovou bránu API. 
 
 V tomto scénáři se webové uživatelské rozhraní pořád obsluhuje prostřednictvím webové služby, zatímco volání HTTP API se spravují a směrují prostřednictvím Azure API Management, jak je znázorněno na následujícím diagramu:
 
-![Service Fabric s Azure API Management topologii – přehled][sf-apim-web-app]
+![Diagram znázorňující, jak se webové uživatelské rozhraní pořád obsluhuje prostřednictvím webové služby, zatímco volání HTTP API se spravují a směrují prostřednictvím Azure API Management.][sf-apim-web-app]
 
 ## <a name="application-scenarios"></a>Scénáře aplikací
 
@@ -51,7 +51,7 @@ V nejjednodušším případě se přenos přepošle na bezstavovou instanci slu
 
 V následujícím scénáři Service Fabric aplikace obsahuje bezstavovou službu s názvem `fabric:/app/fooservice` , která zveřejňuje interní rozhraní HTTP API. Název instance služby je dobře známý a může být pevně zakódovaný přímo v API Management zásady příchozího zpracování. 
 
-![Service Fabric s Azure API Management topologii – přehled][sf-apim-static-stateless]
+![Diagram, který zobrazuje Service Fabric aplikace obsahuje bezstavovou službu, která zveřejňuje interní rozhraní HTTP API.][sf-apim-static-stateless]
 
 ## <a name="send-traffic-to-a-stateful-service"></a>Odeslání provozu do stavové služby
 
@@ -82,7 +82,7 @@ V tomto příkladu je nová Bezstavová instance služby vytvořena pro každéh
   - Požadavek na `/api/users/foo` směrování do instance služby `fabric:/app/users/foo`
   - Požadavek na `/api/users/bar` směrování do instance služby `fabric:/app/users/bar`
 
-![Service Fabric s Azure API Management topologii – přehled][sf-apim-dynamic-stateless]
+![Diagram, který zobrazuje příklad, ve kterém je vytvořena nová Bezstavová instance služby pro každého uživatele aplikace s dynamicky generovaným názvem.][sf-apim-dynamic-stateless]
 
 ## <a name="send-traffic-to-multiple-stateful-services"></a>Odesílání provozu do více stavových služeb
 
@@ -103,7 +103,7 @@ V tomto příkladu se vytvoří nová stavová instance pro každého uživatele
 
 Každá instance služby je také rozdělená pomocí schématu oddílu Int64 se dvěma oddíly a rozsahem klíče, který se rozpíná `Int64.MinValue` na `Int64.MaxValue` . Zásada back-end vypočítá klíč oddílu v tomto rozsahu převodem `id` hodnoty zadané v cestě požadavku URL na 64 celé číslo, i když zde můžete použít libovolný algoritmus, který vypočítá klíč oddílu. 
 
-![Service Fabric s Azure API Management topologii – přehled][sf-apim-dynamic-stateful]
+![Diagram znázorňující, že každá instance služby je také rozdělená pomocí schématu oddílu Int64 se dvěma oddíly a rozsahem klíče, který pokrývá Int64. MinValue do Int64. MaxValue.][sf-apim-dynamic-stateful]
 
 ## <a name="next-steps"></a>Další kroky
 

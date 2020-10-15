@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fe19a1fadd54b7146ccb074d82a68ec259100f2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268549"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093255"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory
 
@@ -35,7 +35,7 @@ Pokud máte místní prostředí Active Directory a chcete připojit svá zaří
 > * Ověření připojených zařízení
 > * Řešení potíží s implementací
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že jste obeznámeni s:
 
@@ -564,11 +564,11 @@ Tady jsou tři způsoby, jak vyhledat a ověřit stav zařízení:
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
 1. V případě, že přejdete na stránku zařízení, použijte [přímý odkaz](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices).
-2. Informace o tom, jak najít zařízení, najdete v tématu [Správa identit zařízení pomocí Azure Portal](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices).
+2. Informace o tom, jak najít zařízení, najdete v tématu [Správa identit zařízení pomocí Azure Portal](./device-management-azure-portal.md#manage-devices).
 3. Pokud **zaregistrovaný** sloupec **čeká na vyřízení**, připojení k hybridní službě Azure AD se nedokončilo. Ve federovaném prostředí se to může stát jenom v případě, že se nepovedlo zaregistrovat a AAD Connect je nakonfigurované k synchronizaci zařízení.
 4. Pokud **zaregistrovaný** sloupec obsahuje **Datum a čas**, připojení k hybridní službě Azure AD se dokončilo.
 
-### <a name="using-powershell"></a>Pomocí prostředí PowerShell
+### <a name="using-powershell"></a>Použití PowerShellu
 
 Ověřte stav registrace zařízení v tenantovi Azure pomocí **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)**. Tato rutina je v [modulu Azure Active Directory PowerShellu](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0).
 

@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f12e5b6b0b2902d69936b9cf2695b7ee21db88e2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75360340"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075038"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Jak aktualizovat cloudovou službu
 
@@ -21,7 +21,7 @@ Aktualizace cloudové služby včetně jejích rolí a hostovaného operačního
 ## <a name="update-an-azure-service"></a>Aktualizace služby Azure
 Azure uspořádá instance rolí do logických seskupení označovaných jako upgradovací domény (UD). Upgradovací domény (UD) jsou logické sady instancí rolí, které se aktualizují jako skupina.  Azure aktualizuje cloudovou službu po jednom UD, což umožňuje instancím v jiné UDs dál obsluhovat provoz.
 
-Výchozí počet domén upgradu je 5. Můžete zadat jiný počet domén upgradu zahrnutím atributu upgradeDomainCount do souboru definice služby (. csdef). Další informace o atributu upgradeDomainCount naleznete v tématu [schéma definice Azure Cloud Services (soubor. csdef)](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file).
+Výchozí počet domén upgradu je 5. Můžete zadat jiný počet domén upgradu zahrnutím atributu upgradeDomainCount do souboru definice služby (. csdef). Další informace o atributu upgradeDomainCount naleznete v tématu [schéma definice Azure Cloud Services (soubor. csdef)](./schema-csdef-file.md).
 
 Při provádění místní aktualizace jedné nebo více rolí ve službě Azure aktualizuje sady instancí rolí v závislosti na upgradovací doméně, do které patří. Azure aktualizuje všechny instance v dané upgradovací doméně – zastavuje je, aktualizuje je, přenáší je online a pak se přesune na další doménu. Když zastavíte jenom instance spuštěné v aktuální upgradovací doméně, Azure zajistí, že dojde k aktualizaci s nejmenším možným dopadem na běžící službu. Další informace najdete v tématu [jak aktualizace pokračuje](#howanupgradeproceeds) dále v tomto článku.
 
@@ -47,18 +47,18 @@ V následující tabulce jsou uvedeny povolené změny služby během aktualizac
 
 | Změny povolené pro hostování, služby a role | Místní aktualizace | Připraveno (prohození VIP) | Odstranit a znovu nasadit |
 | --- | --- | --- | --- |
-| Verze operačního systému |Ano |Ano |Ano |
-| Úroveň důvěryhodnosti .NET |Ano |Ano |Ano |
-| Velikost virtuálního počítače<sup>1</sup> |Ano<sup>2</sup> |Ano |Ano |
-| Nastavení místního úložiště |Zvýšit jenom<sup>2</sup> |Ano |Ano |
-| Přidání nebo odebrání rolí ve službě |Ano |Ano |Ano |
-| Počet instancí konkrétní role |Ano |Ano |Ano |
-| Počet nebo typ koncových bodů pro službu |Ano<sup>2</sup> |No |Ano |
-| Názvy a hodnoty nastavení konfigurace |Ano |Ano |Ano |
-| Hodnoty (ale ne názvy) nastavení konfigurace |Ano |Ano |Ano |
-| Přidat nové certifikáty |Ano |Ano |Ano |
-| Změna existujících certifikátů |Ano |Ano |Ano |
-| Nasadit nový kód |Ano |Ano |Ano |
+| Verze operačního systému |Yes |Yes |Yes |
+| Úroveň důvěryhodnosti .NET |Yes |Yes |Yes |
+| Velikost virtuálního počítače<sup>1</sup> |Ano<sup>2</sup> |Yes |Yes |
+| Nastavení místního úložiště |Zvýšit jenom<sup>2</sup> |Yes |Yes |
+| Přidání nebo odebrání rolí ve službě |Yes |Yes |Yes |
+| Počet instancí konkrétní role |Yes |Yes |Yes |
+| Počet nebo typ koncových bodů pro službu |Ano<sup>2</sup> |No |Yes |
+| Názvy a hodnoty nastavení konfigurace |Yes |Yes |Yes |
+| Hodnoty (ale ne názvy) nastavení konfigurace |Yes |Yes |Yes |
+| Přidat nové certifikáty |Yes |Yes |Yes |
+| Změna existujících certifikátů |Yes |Yes |Yes |
+| Nasadit nový kód |Yes |Yes |Yes |
 
 <sup>1</sup> Změna velikosti omezená na podmnožinu velikostí dostupných pro cloudovou službu.
 
@@ -182,7 +182,4 @@ Následující diagram znázorňuje, jak je služba, která obsahuje dvě role, 
 ## <a name="next-steps"></a>Další kroky
 [Správa Cloud Services](cloud-services-how-to-manage-portal.md)  
 [Jak monitorovat Cloud Services](cloud-services-how-to-monitor.md)  
-[Jak konfigurovat Cloud Services](cloud-services-how-to-configure-portal.md)  
-
-
-
+[Jak konfigurovat Cloud Services](cloud-services-how-to-configure-portal.md)

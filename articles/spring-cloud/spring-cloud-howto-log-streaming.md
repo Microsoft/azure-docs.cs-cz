@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: eaf99f5e92cbb9277f2d4143e14070f1900cdbef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04b03e3857bc5b01c25112f2a0d60c6468ecd42a
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888484"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093918"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Streamování protokolů aplikace Azure Spring Cloudu v reálném čase
 
@@ -20,9 +20,9 @@ ms.locfileid: "90888484"
 
 Azure jaře Cloud umožňuje streamování protokolů v Azure CLI a získat tak řešení potíží v protokolech konzoly aplikací v reálném čase. Můžete také [analyzovat protokoly a metriky pomocí nastavení diagnostiky](./diagnostic-services.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Nainstalujte [rozšíření Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) pro jarní Cloud a minimální verzi 0.2.0.
+* Nainstalujte [rozšíření Azure CLI](/cli/azure/install-azure-cli) pro jarní Cloud a minimální verzi 0.2.0.
 * Instance **jarního cloudu Azure** se spuštěnou aplikací, například [jarní cloudová aplikace](./spring-cloud-quickstart.md).
 
 > [!NOTE]
@@ -92,10 +92,4 @@ az spring-cloud app logs -h
 ## <a name="next-steps"></a>Další kroky
 * [Rychlý Start: monitorování jarních cloudových aplikací Azure díky protokolům, metrikám a trasování](spring-cloud-quickstart-logs-metrics-tracing.md)
 * [Analýza protokolů a metrik pomocí nastavení diagnostiky](./diagnostic-services.md)
-
- 
-
-
-
-
 

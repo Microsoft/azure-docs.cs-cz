@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d3e3c174ad9a3372df084cac9eb67270779298
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563892"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093085"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Plánování nasazení zařízení Azure Active Directory
 
@@ -62,7 +62,7 @@ Při určování strategie pro toto nasazení v prostředí zvažte potřeby va�
 
 ### <a name="engage-the-right-stakeholders"></a>Zapojení správných zúčastněných stran
 
-Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných očekávání na dopad, výsledky a zodpovědnosti. Pokud se chcete těmto nástrah vyhnout, ujistěte se, že jste si [jisti, že jste připravují správné zúčastněné strany](https://aka.ms/deploymentplans) a že role účastníků v projektu jsou dobře pochopitelné. 
+Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných očekávání na dopad, výsledky a zodpovědnosti. Pokud se chcete těmto nástrah vyhnout, ujistěte se, že jste si [jisti, že jste připravují správné zúčastněné strany](../fundamentals/active-directory-deployment-plans.md) a že role účastníků v projektu jsou dobře pochopitelné. 
 
 Pro tento plán přidejte do svého seznamu následující účastníky:
 

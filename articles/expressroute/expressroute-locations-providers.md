@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 201acfacef069dfbdc46342abbe7326a5ec04221
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 96b0123b4e81b4f3402de00e7b6a0adac85d00b8
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013266"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093210"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -82,7 +82,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Atlanta** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | 1 | neuvedeno | 10G, 100G | Equinix, Megaport |
 | **Auckland** | [Vocus Group NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | neuvedeno | 10G | Devoli, Kordia, Megaport, Spark NZ, Vocus skupina NZ |
 | **Bangkok** | [SYSTÉMEM](https://business.ais.co.th/solution/en/azure-expressroute.html) | 2 | neuvedeno | 10G | AIS, UIH |
-| **Berlíně** | [NTT GDC](https://www.e-shelter.de/en/location/berlin-1-data-center) | 1 | Německo – sever | 10G | NTT globální datacentra EMEA|
+| **Berlíně** | [NTT GDC](https://www.e-shelter.de/en/location/berlin-1-data-center) | 1 | Německo – sever | 10G | Equinix, NTT globální datacentra EMEA|
 | **Busan** | [LG CNS](https://www.lgcns.com/En/Service/DataCenter) | 2 | Jižní Korea – jih | neuvedeno | LG CNS |
 | **Canberra** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Austrálie – střed | 10G, 100G | CDC |
 | **Canberra2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Austrálie – střed 2| 10G, 100G | CDC |

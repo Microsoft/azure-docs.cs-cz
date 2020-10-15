@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7080bd98bda5c4280ff7b06b235458bea0e9103c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243235"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093578"
 ---
 # <a name="monitor-published-apis"></a>Monitorování publikovaných rozhraní API
 
@@ -33,7 +33,7 @@ Následující video ukazuje, jak pomocí služby Azure Monitor monitorovat slu�
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
@@ -75,18 +75,18 @@ Konfigurace upozornění:
 
 1. V řádku nabídek poblíž dolního okraje stránky vyberte **výstrahy** .
 
-    ![výstrahy](./media/api-management-azure-monitor/alert-menu-item.png)
+    ![Snímek obrazovky, který zobrazuje výstrahy v nabídce poblíž dolního okraje stránky.](./media/api-management-azure-monitor/alert-menu-item.png)
 
 2. Klikněte na **nové pravidlo výstrahy** pro tuto výstrahu.
 3. Klikněte na **Přidat podmínku**.
 4. V rozevíracím seznamu typ signálu vyberte **metriky** .
 5. Jako signál, který chcete monitorovat, vyberte **neautorizovaný požadavek brány** .
 
-    ![výstrahy](./media/api-management-azure-monitor/signal-type.png)
+    ![Snímek obrazovky, který zvýrazní pole typ signálu a název signálu neautorizovaných žádostí o bránu.](./media/api-management-azure-monitor/signal-type.png)
 
 6. V zobrazení **Konfigurovat logiku signálu** zadejte prahovou hodnotu, po které se má výstraha aktivovat, a klikněte na **Hotovo**.
 
-    ![výstrahy](./media/api-management-azure-monitor/threshold.png)
+    ![Snímek obrazovky, který zobrazuje konfiguraci zobrazení logiky signálů.](./media/api-management-azure-monitor/threshold.png)
 
 7. Vyberte existující skupinu akcí nebo vytvořte novou. V následujícím příkladu se pošle e-mailem správci. 
 
