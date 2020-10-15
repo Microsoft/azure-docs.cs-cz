@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 94f3fd9f9c66082beace47d675539e9f73c21e83
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 9a804bd40635cd039a2c099f98351b2487c554d3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824190"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075531"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace na jaře Boot
 
@@ -20,10 +20,10 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do webové aplika
 
 Knihovny pro správu funkcí pružiny rozšiřuje rámec s kompletní podporou příznaků funkcí. Tyto **knihovny nemají závislost** na žádné knihovně Azure. Bez problémů se integruje s konfigurací aplikací prostřednictvím poskytovatele konfigurace spouštění pružiny.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Podporovaná [sada Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
+* Podporovaná [sada Java Development Kit SDK](/java/azure/jdk) s verzí 8.
 * [Apache Maven](https://maven.apache.org/download.cgi) verze 3,0 nebo vyšší.
 
 ## <a name="create-an-app-configuration-instance"></a>Vytvoření instance konfigurace aplikace
@@ -290,7 +290,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 1. Na portálu konfigurace aplikace vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**:
 
-    | Klíč | Stav |
+    | Klíč | State |
     |---|---|
     | Beta | Zapnout |
 
@@ -304,7 +304,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikací a použili ho ke správě funkcí v rámci webové aplikace ve jarních aplikacích pomocí [knihoven pro správu funkcí](https://go.microsoft.com/fwlink/?linkid=2074664).
+V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikací a použili ho ke správě funkcí v rámci webové aplikace ve jarních aplikacích pomocí [knihoven pro správu funkcí](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration).
 
 * Přečtěte si další informace o [správě funkcí](./concept-feature-management.md).
 * [Správa příznaků funkcí](./manage-feature-flags.md).

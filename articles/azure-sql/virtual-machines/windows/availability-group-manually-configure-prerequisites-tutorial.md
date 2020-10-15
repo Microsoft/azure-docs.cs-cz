@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 278e5feb327c1376b7644050f414f680334d5c50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 812fb35f404092453ad35b2f70c4a5b1697fbfe0
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263228"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075701"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Předpoklady pro vytváření skupin dostupnosti Always On u SQL Server v Azure Virtual Machines
 
@@ -420,6 +420,10 @@ Nyní se můžete připojit k virtuálním počítačům a **Corp.contoso.com**.
 7. Až se zobrazí zpráva "Vítejte ve corp.contoso.com doméně", vyberte **OK**.
 8. Vyberte **Zavřít**a pak v automaticky otevřeném okně vyberte **restartovat** .
 
+## <a name="add-accounts"></a>Přidání účtů
+
+Přidejte účet instalace jako správce na každý virtuální počítač, udělte účtu instalace a místním účtům v rámci služby SQL Server oprávnění a aktualizujte účet služby SQL Server. 
+
 ### <a name="add-the-corpinstall-user-as-an-administrator-on-each-cluster-vm"></a>Přidejte uživatele Corp\Install jako správce na každý virtuální počítač clusteru.
 
 Po restartování každého virtuálního počítače jako člena domény přidejte **CORP\Install** jako člena místní skupiny Administrators.
@@ -438,16 +442,6 @@ Po restartování každého virtuálního počítače jako člena domény přide
 7. Kliknutím na **tlačítko OK** zavřete dialogové okno **Vlastnosti Správce** .
 8. Opakujte předchozí kroky na **SQLServer-1** a **cluster-FSW**.
 
-### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>Nastavit účty služby SQL Server
-
-Na každém virtuálním počítači s SQL Server nastavte účet služby SQL Server. Použijte účty, které jste vytvořili při konfiguraci doménových účtů.
-
-1. Otevřete nástroj **SQL Server Configuration Manager**.
-2. Pravým tlačítkem myši klikněte na službu SQL Server a pak vyberte **vlastnosti**.
-3. Nastavte účet a heslo.
-4. Opakujte tyto kroky na jiném virtuálním počítači SQL Server.  
-
-U SQL Server skupin dostupnosti musí být každý SQL Server virtuální počítač spuštěný jako doménový účet.
 
 ### <a name="create-a-sign-in-on-each-sql-server-vm-for-the-installation-account"></a>Vytvoření přihlášení na každém virtuálním počítači s SQL Server pro účet instalace
 
@@ -467,13 +461,54 @@ Pro konfiguraci skupiny dostupnosti použijte účet instalace (CORP\install). T
 
 1. Zadejte přihlašovací údaje pro síť správce domény.
 
-1. Použijte účet instalace.
+1. Použijte účet instalace (CORP\install).
 
 1. Nastavte přihlášení jako člen pevné role serveru **sysadmin** .
 
 1. Vyberte **OK**.
 
 Předchozí kroky opakujte na druhém virtuálním počítači s SQL Server.
+
+### <a name="configure-system-account-permissions"></a>Konfigurace oprávnění systémového účtu
+
+Chcete-li vytvořit účet pro systémový účet a udělit příslušná oprávnění, proveďte následující kroky u každé instance SQL Server:
+
+1. Vytvořte účet pro `[NT AUTHORITY\SYSTEM]` každou instanci SQL Server. Tento účet vytvoří následující skript:
+
+   ```sql
+   USE [master]
+   GO
+   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
+   GO 
+   ```
+
+1. Pro `[NT AUTHORITY\SYSTEM]` každou instanci SQL Server udělte následující oprávnění:
+
+   - `ALTER ANY AVAILABILITY GROUP`
+   - `CONNECT SQL`
+   - `VIEW SERVER STATE`
+
+   Následující skript udělí tato oprávnění:
+
+   ```sql
+   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
+   GO 
+   ```
+
+### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>Nastavit účty služby SQL Server
+
+Na každém virtuálním počítači s SQL Server nastavte účet služby SQL Server. Použijte účty, které jste vytvořili při konfiguraci doménových účtů.
+
+1. Otevřete nástroj **SQL Server Configuration Manager**.
+2. Pravým tlačítkem myši klikněte na službu SQL Server a pak vyberte **vlastnosti**.
+3. Nastavte účet a heslo.
+4. Opakujte tyto kroky na jiném virtuálním počítači SQL Server.  
+
+U SQL Server skupin dostupnosti musí být každý SQL Server virtuální počítač spuštěný jako doménový účet.
 
 ## <a name="add-failover-clustering-features-to-both-sql-server-vms"></a>Přidání funkcí clusteringu s podporou převzetí služeb při selhání do obou SQL Serverch virtuálních počítačů
 
@@ -524,35 +559,6 @@ Způsob otevření portů závisí na použitém řešení brány firewall. V da
 
 Opakujte tyto kroky na druhém SQL Serverm virtuálním počítači.
 
-## <a name="configure-system-account-permissions"></a>Konfigurace oprávnění systémového účtu
-
-Chcete-li vytvořit účet pro systémový účet a udělit příslušná oprávnění, proveďte následující kroky u každé instance SQL Server:
-
-1. Vytvořte účet pro `[NT AUTHORITY\SYSTEM]` každou instanci SQL Server. Tento účet vytvoří následující skript:
-
-   ```sql
-   USE [master]
-   GO
-   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
-   GO 
-   ```
-
-1. Pro `[NT AUTHORITY\SYSTEM]` každou instanci SQL Server udělte následující oprávnění:
-
-   - `ALTER ANY AVAILABILITY GROUP`
-   - `CONNECT SQL`
-   - `VIEW SERVER STATE`
-
-   Následující skript udělí tato oprávnění:
-
-   ```sql
-   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
-   GO
-   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
-   GO 
-   ```
 
 ## <a name="next-steps"></a>Další kroky
 

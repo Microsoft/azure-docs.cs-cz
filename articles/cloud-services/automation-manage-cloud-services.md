@@ -10,12 +10,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 482fcf7d100a90d9527f510382c5dafb4f67adfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67830f8c00d9f74f62883e0714ffe1c2bbbd6903
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72439070"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075616"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Správa Azure Cloud Services pomocí Azure Automation
 Tato příručka vás seznámí s Azure Automationovou službou a jejím použitím ke zjednodušení správy cloudových služeb Azure.
@@ -39,4 +39,4 @@ Příklady použití Azure Automation ke správě Azure Cloud Services zahrnují
 Teď, když jste se naučili základy Azure Automation a jak se dají použít ke správě cloudových služeb Azure, použijte následující odkazy, kde najdete další informace o Azure Automation.
 
 * [Přehled Azure Automation](../automation/automation-intro.md)
-* [Můj první runbook](../automation/automation-first-runbook-graphical.md)
+* [Můj první runbook](../automation/learn/automation-tutorial-runbook-graphical.md)

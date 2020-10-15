@@ -180,8 +180,10 @@
               href: manage/pay-by-invoice.md
             - name: Vytvoření dalších předplatných
               href: manage/create-subscription.md
-            - name: Programové vytváření předplatných
+            - name: Programové vytváření předplatných y využitím nejnovějšího rozhraní API
               href: manage/programmatically-create-subscription.md
+            - name: Programové vytváření předplatných y využitím rozhraní API ve verzi Preview
+              href: manage/programmatically-create-subscription-preview.md
             - name: Udělení přístupu pro vytváření předplatných EA
               href: manage/grant-access-to-create-subscription.md
             - name: Export informací o předplatném
@@ -338,6 +340,12 @@
               href: reservations/reservation-renew.md?toc=/azure/cost-management-billing/toc.json
     - name: Řešení potíží
       items:
+        - name: Potíže fakturace EA se soubory využití
+          href: manage/troubleshoot-ea-billing-issues-usage-file-pivot-tables.md
+        - name: Potíže fakturace MCA se soubory využití
+          href: manage/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables.md
+        - name: Potíže fakturace CSP se soubory využití
+          href: manage/troubleshoot-csp-billing-issues-usage-file-pivot-tables.md
         - name: Nenalezena žádná předplatná
           href: manage/no-subscriptions-found.md
         - name: Problémy s platbou
