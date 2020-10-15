@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: c9c8aa86aa8a374a33750e306529ef212c9a8bfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012326"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075956"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serializace telemetrie pomocí vyrovnávacích pamětí protokolu
 
@@ -40,7 +40,7 @@ Pokud chcete postupovat podle kroků v tomto průvodci, budete potřebovat:
 * .NET Core. Můžete stáhnout [.NET Core pro Mac, Linux a Windows](https://www.microsoft.com/net/download).
 * Postman. Můžete si stáhnout [pro Mac, Windows nebo Linux](https://www.getpostman.com/apps).
 * [Centrum IoT nasazené ve vašem předplatném Azure](../iot-hub/iot-hub-create-through-portal.md). K dokončení kroků v této příručce potřebujete připojovací řetězec centra IoT. Připojovací řetězec můžete získat z Azure Portal.
-* [Cosmos DB databáze nasazené do předplatného Azure](../cosmos-db/create-sql-api-dotnet.md#create-account) , které používá rozhraní SQL API a která je nakonfigurovaná pro [silnou konzistenci](../cosmos-db/manage-account.md). K dokončení kroků v této příručce potřebujete připojovací řetězec databáze Cosmos DB. Připojovací řetězec můžete získat z Azure Portal.
+* [Cosmos DB databáze nasazené do předplatného Azure](../cosmos-db/create-sql-api-dotnet.md#create-account) , které používá rozhraní SQL API a která je nakonfigurovaná pro [silnou konzistenci](../cosmos-db/how-to-manage-database-account.md). K dokončení kroků v této příručce potřebujete připojovací řetězec databáze Cosmos DB. Připojovací řetězec můžete získat z Azure Portal.
 * [Účet služby Azure Storage nasazený do vašeho předplatného Azure](../storage/common/storage-account-create.md). K dokončení kroků v této příručce potřebujete připojovací řetězec účtu úložiště. Připojovací řetězec můžete získat z Azure Portal.
 
 ## <a name="prepare-your-development-environment"></a>Příprava vývojového prostředí
