@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368c594352b59f7ec6d04b12ca44e0cd492dc907
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779719"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082263"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -517,7 +517,7 @@ Objekt rendereru následující rozhraní API
 // Create a view for a video stream
 renderer.createView()
 ```
-* Dispose Renderer a vše `RendererView` přidružené k tomuto rendereru
+* Dispose Renderer a vše `RendererView` přidružené k tomuto rendereru Má být volána, když jste odebrali všechna přidružená zobrazení z uživatelského rozhraní.
 ```java
 renderer.dispose()
 ```

@@ -166,6 +166,8 @@
               href: how-to-setup-authentication.md
             - name: Správa uživatelů a skupin
               href: how-to-assign-roles.md
+            - name: Použití spravovaných identit pro řízení přístupu
+              href: how-to-use-managed-identities.md
             - name: Použití identity Azure AD v nasazeních AKS
               href: how-to-use-azure-ad-identity.md
         - name: Zabezpečení sítě

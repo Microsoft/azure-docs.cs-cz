@@ -220,6 +220,8 @@
               href: iot-hub-reliability-features-in-sdks.md
             - name: Vývoj pro platformu Android Things
               href: iot-hub-how-to-android-things.md
+        - name: Vývoj bez sady Azure IoT SDK
+          href: iot-hub-devguide-no-sdk.md
         - name: Dotazování na data Avro ze směrování Hubu
           href: iot-hub-query-avro-data.md
         - name: Objednávka stavových událostí připojení zařízení z Event Gridu

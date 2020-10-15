@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 75603593e8c290b6bcb059207858d663ab5c96d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68daec6bb6682d2b488abacb2f79bdfadc4ae628
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460112"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076568"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Řešení potíží s rolemi cloudových služeb, které se nedaří spustit
 Tady jsou některé běžné problémy a řešení týkající se rolí Azure Cloud Services, které se nedaří spustit.
@@ -53,7 +53,7 @@ Zobrazení dalších úplných chyb bez použití funkce Vzdálená plocha:
     ```xml
     <customErrors mode="Off" />
     ```
-4. Uložte soubor.
+4. Soubor uložte.
 5. Znovu zabalit a znovu nasaďte službu.
 
 Po opětovném nasazení služby se zobrazí chybová zpráva s názvem chybějícího sestavení nebo knihovny DLL.
@@ -122,6 +122,6 @@ Chcete-li vyřešit chybějící DLL a chyby sestavení, postupujte podle násle
 Jakmile ověříte, že byly všechny chyby opraveny, můžete službu nasadit bez zaškrtnutí políčka **Povolit IntelliTrace pro role .NET 4** .
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na další články týkající se [řešení potíží](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) pro Cloud Services.
+Podívejte se na další články týkající se [řešení potíží](../index.yml?product=cloud-services&tag=top-support-issue) pro Cloud Services.
 
-Informace o řešení potíží s rolemi cloudové služby pomocí dat diagnostiky počítačů Azure PaaS najdete v tématu [série blogů v Kevin Williamson](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).
+Informace o řešení potíží s rolemi cloudové služby pomocí dat diagnostiky počítačů Azure PaaS najdete v tématu [série blogů v Kevin Williamson](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).

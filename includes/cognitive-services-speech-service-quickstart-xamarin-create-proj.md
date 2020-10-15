@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 35133b64e43ca3814410d7bbf2ac1be9f760b369
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e8837bf7a7196eb5ac86bd7634560c52d1da6c05
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91654391"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92082269"
 ---
 Chcete-li vytvořit projekt sady Visual Studio pro vývoj mobilních aplikací pro různé platformy pomocí Xamarin, budete potřebovat:
 - Nastavení možností vývoje sady Visual Studio.
@@ -50,7 +50,7 @@ Pokud chcete začít, ujistěte se, že jste správně nastavili v sadě Visual 
 
 1. Výběrem možnosti **vytvořit** přejdete do okna **Nový projekt mobilní aplikace Xamarin Forms** .
 
-   ![Snímek obrazovky, který zobrazuje dialogové okno Nový projekt Univerzální platforma Windows v aplikaci Visual Studio.](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-new-xamarin-project.png)
+   ![Snímek obrazovky, který zobrazuje dialogové okno Nový projekt aplikace Xamarin Forms v mobilní aplikaci v aplikaci Visual Studio.](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-new-xamarin-project.png)
 
 1. Vyberte **prázdnou** šablonu.
 
