@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: 15f8e424529513b2932dcb18de941a8fe1867c1d
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: ecdb011310d8aa5bd63e9b9e9679bb525cb4f7b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045444"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074596"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Příklady kanálů & datových sad pro návrháře Azure Machine Learning
 
@@ -67,8 +67,8 @@ Prozkoumejte tyto integrované regresní ukázky.
 
 | Ukázkový název | Popis | 
 | --- | --- |
-| [Regrese – předpověď ceny automobilu (základní)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Předpovědět ceny aut pomocí lineární regrese. |
-| [Regrese – předpověď ceny automobilu (rozšířené)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Předpovědět ceny aut pomocí rozhodovací doménové struktury a dalších zesílených rozhodovacích stromů. Porovnejte modely a Najděte nejlepší algoritmus.
+| [Regrese – předpověď ceny automobilu (základní)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-basic.md) | Předpovědět ceny aut pomocí lineární regrese. |
+| [Regrese – předpověď ceny automobilu (rozšířené)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/regression-automobile-price-prediction-compare-algorithms.md) | Předpovědět ceny aut pomocí rozhodovací doménové struktury a dalších zesílených rozhodovacích stromů. Porovnejte modely a Najděte nejlepší algoritmus.
 
 ## <a name="classification"></a>Classification
 
@@ -76,10 +76,10 @@ Prozkoumejte tyto integrované ukázky klasifikace. Další informace o ukázká
 
 | Ukázkový název | Popis | 
 | --- | --- |
-| [Binární klasifikace s výběrem funkcí – předpověď příjmů](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | Předpovídání výnosů jako vysoké nebo nízké, pomocí rozstředního rozhodovacího stromu se dvěma třídami K výběru funkcí použijte korelaci Pearsonova.
-| [Binární klasifikace s vlastním skriptem Pythonu – předpověď úvěrového rizika](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | Klasifikujte úvěrové aplikace jako vysoké nebo nízké riziko. K vážení dat použijte modul spouštění skriptu Pythonu.
-| [Binární klasifikace – předpověď vztahů se zákazníky](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | Předpověď změn zákazníků pomocí dvou vyrovnaných rozhodovacích stromů se dvěma třídami Pomocí SMOTE můžete vzorkovat data s posunutím.
-| [Klasifikace textu – Wikipedii sada dat SP 500](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | Klasifikujte typy společností z článků Wikipedii s využitím více tříd logistické regrese. |
+| [Binární klasifikace s výběrem funkcí – předpověď příjmů](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-feature-selection-income-prediction.md) | Předpovídání výnosů jako vysoké nebo nízké, pomocí rozstředního rozhodovacího stromu se dvěma třídami K výběru funkcí použijte korelaci Pearsonova.
+| [Binární klasifikace s vlastním skriptem Pythonu – předpověď úvěrového rizika](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-python-credit-prediction.md) | Klasifikujte úvěrové aplikace jako vysoké nebo nízké riziko. K vážení dat použijte modul spouštění skriptu Pythonu.
+| [Binární klasifikace – předpověď vztahů se zákazníky](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/binary-classification-customer-relationship-prediction.md) | Předpověď změn zákazníků pomocí dvou vyrovnaných rozhodovacích stromů se dvěma třídami Pomocí SMOTE můžete vzorkovat data s posunutím.
+| [Klasifikace textu – Wikipedii sada dat SP 500](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/text-classification-wiki.md) | Klasifikujte typy společností z článků Wikipedii s využitím více tříd logistické regrese. |
 | Více tříd – rozpoznávání písmen | Vytvořte soubor se souborem sady binárních klasifikátorů pro klasifikaci psaných písmen. |
 
 ## <a name="computer-vision"></a>Počítačové zpracování obrazu
@@ -104,7 +104,7 @@ Přečtěte si další informace o ukázkách, které předvádějí nástroje a
 | Ukázkový název | Popis | 
 | --- | --- |
 | Binární klasifikace pomocí pro dostupné modelu – předpověď příjmů za dospělé | Pro dostupné je systém strojového učení, který nabízí hranici strojového učení s technikami, jako je online, hashing, allreduce, snižování, learning2search, aktivní a interaktivní učení. Tento příklad ukazuje, jak použít model pro dostupné k sestavení binárního klasifikačního modelu. 
-| [Použití vlastního skriptu R – předpověď zpoždění letů](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) | Pomocí vlastního skriptu jazyka R můžete předpovědět, jestli se plánovaný osobní let bude zpozdit o více než 15 minut.
+| [Použití vlastního skriptu R – předpověď zpoždění letů](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/r-script-flight-delay-prediction.md) | Pomocí vlastního skriptu jazyka R můžete předpovědět, jestli se plánovaný osobní let bude zpozdit o více než 15 minut.
 | Křížové ověření pro předpověď v případě binární klasifikace – pro příjem | Pro vytvoření binárního klasifikátoru pro příjem z dospělého použijte vzájemné ověřování.
 | Důležitost funkce permutací | Použijte funkci permutace důležitost k výpočtu skóre důležitosti pro testovací datovou sadu. 
 | Ladění parametrů pro binární klasifikaci – předpověď příjmů za dospělé | K nalezení optimálních parametrů pro sestavení binárního klasifikátoru použijte parametry ladění modelu. |

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: a8314fed43c8282c536fc6e95e6c3aa877408b09
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f976bf4260e4a677aee5b5ccc4287db3d0b2e40d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91542491"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074290"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Co jsou akcelerátory řešení Azure IoT?
 
@@ -85,7 +85,7 @@ Původní akcelerátory řešení byly napsané v .NET a využívaly architektur
 | Propojená továrna      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | Simulace zařízení      | Mikroslužby | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
-Další informace o architektuře mikroslužeb najdete v tématu [Úvod do referenční architektury Azure IoT](https://docs.microsoft.com/azure/architecture/reference-architectures/iot/).
+Další informace o architektuře mikroslužeb najdete v tématu [Úvod do referenční architektury Azure IoT](/azure/architecture/reference-architectures/iot/).
 
 ## <a name="deployment-options"></a>Možnosti nasazení
 

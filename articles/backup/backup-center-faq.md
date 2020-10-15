@@ -3,12 +3,12 @@ title: Centrum zálohování – Nejčastější dotazy
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se centra zálohování.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: b10a9e73e65cf12c43ce28b429a8f12e0b960a76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e227eb6a14d06791e52ec33e090afdcb01bab61
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995777"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094037"
 ---
 # <a name="backup-center---frequently-asked-questions"></a>Centrum zálohování – Nejčastější dotazy
 
@@ -34,7 +34,7 @@ Ne. Centrum zálohování je připravené z boxu. Pokud ale chcete zobrazit [ses
 
 ### <a name="do-i-need-to-have-any-special-permissions-to-use-backup-center"></a>Musím pro používání služby Backup Center potřebovat nějaká zvláštní oprávnění?
 
-Centrum zálohování, které nepotřebuje žádná nová oprávnění Pokud máte pro prostředky, které spravujete, správnou úroveň přístupu RBAC, můžete pro tyto prostředky použít Centrum zálohování. Pokud například chcete zobrazit informace o zálohování, budete potřebovat přístup **Čtenář** k vašim trezorům. Pokud chcete nakonfigurovat zálohování a provádět další akce související se zálohováním, budete potřebovat role **přispěvatele zálohování** nebo **operátora zálohování** . Přečtěte si další informace o [rolích RBAC pro Azure Backup](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault).
+Centrum zálohování, které nepotřebuje žádná nová oprávnění Pokud máte u prostředků, které spravujete, správnou úroveň přístupu ke službě Azure RBAC, můžete pro tyto prostředky použít službu Backup Center. Pokud například chcete zobrazit informace o zálohování, budete potřebovat přístup **Čtenář** k vašim trezorům. Pokud chcete nakonfigurovat zálohování a provádět další akce související se zálohováním, budete potřebovat role **přispěvatele zálohování** nebo **operátora zálohování** . Přečtěte si další informace o [rolích Azure pro Azure Backup](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault).
 
 ## <a name="pricing"></a>Ceny
 

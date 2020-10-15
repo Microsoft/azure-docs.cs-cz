@@ -1,5 +1,6 @@
 ---
 title: Příručka k migraci ADAL do MSAL pro Android | Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se migrovat aplikaci pro Android Azure Active Directory Authentication Library (ADAL) do knihovny Microsoft Authentication Library (MSAL).
 services: active-directory
 author: mmacy
@@ -9,16 +10,16 @@ ms.subservice: develop
 ms.topic: conceptual
 ms.tgt_pltfrm: Android
 ms.workload: identity
-ms.date: 09/6/2019
+ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: b2a6722cfff392a18629c8bb47fad0ad5ac1a95b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 752e7dae9040059c662a93d9a9d668bac0e8e2d8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965994"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074664"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Příručka k migraci ADAL do MSAL pro Android
 
@@ -31,7 +32,7 @@ ADAL funguje s koncovým bodem Azure Active Directory v 1.0. Knihovna Microsoft 
 Podporovaných
   - Identita organizace (Azure Active Directory)
   - Neorganizační identity, jako jsou Outlook.com, Xbox Live atd.
-  - (Jenom B2C) Federované přihlášení pomocí Google, Facebook, Twitteru a Amazon
+  - (Jenom Azure AD B2C) Federované přihlášení pomocí Google, Facebook, Twitteru a Amazon
 
 - Jsou kompatibilní se standardy:
   - OAuth v 2.0
@@ -67,7 +68,7 @@ V registraci vaší aplikace na portálu se zobrazí karta **oprávnění rozhra
 
 ### <a name="user-consent"></a>Souhlas uživatele
 
-S ADAL a koncovým bodem AAD v1 uživatel získal při prvním použití souhlas uživatele u prostředků, které vlastní. S MSAL a platformou Microsoft identity se dá souhlas vyžádat přírůstkově. Přírůstkové vyjádření souhlasu je užitečné pro oprávnění, která může uživatel zvážit při vysokém oprávnění, nebo může jinak klást otázky, pokud není k dispozici jasné vysvětlení, proč se oprávnění vyžaduje. V ADAL mohla být tato oprávnění způsobena tím, že uživatel přejímá přihlášení do vaší aplikace.
+Pomocí ADAL a koncového bodu Azure AD v1 bylo při prvním použití udělené uživatelské vyjádření souhlasu uživatele s prostředky, které vlastní. S MSAL a platformou Microsoft identity se dá souhlas vyžádat přírůstkově. Přírůstkové vyjádření souhlasu je užitečné pro oprávnění, která může uživatel zvážit při vysokém oprávnění, nebo může jinak klást otázky, pokud není k dispozici jasné vysvětlení, proč se oprávnění vyžaduje. V ADAL mohla být tato oprávnění způsobena tím, že uživatel přejímá přihlášení do vaší aplikace.
 
 > [!TIP]
 > Doporučujeme použití přírůstkového souhlasu ve scénářích, kdy potřebujete poskytnout uživateli další kontext o tom, proč vaše aplikace potřebuje oprávnění.
@@ -229,8 +230,6 @@ public interface SilentAuthenticationCallback {
      */
     void onError(final MsalException exception);
 }
-
-
 ```
 
 ## <a name="migrate-to-the-new-exceptions"></a>Migrovat na nové výjimky
@@ -240,16 +239,27 @@ V MSAL existuje hierarchie výjimek a každá má vlastní sadu souvisejících 
 
 | Výjimka                                        | Popis                                                         |
 |--------------------------------------------------|---------------------------------------------------------------------|
-| `MsalException`                                  | Výchozí vyzkoušená výjimka vyvolaná nástrojem MSAL.                           |
-| `MsalClientException`                            | Vyvolána, pokud se jedná o chybu na straně klienta.                                 |
 | `MsalArgumentException`                          | Vyvoláno, pokud je jeden nebo více argumentů vstupů neplatných.                 |
-| `MsalServiceException`                           | Vyvolána, pokud je chyba na straně serveru.                                 |
-| `MsalUserCancelException`                        | Vyvolána, pokud uživatel zrušil tok ověřování.                |
-| `MsalUiRequiredException`                        | Vyvoláno, pokud token nelze aktualizovat tiše.                    |
+| `MsalClientException`                            | Vyvolána, pokud se jedná o chybu na straně klienta.                                 |
 | `MsalDeclinedScopeException`                     | Vyvoláno, pokud server odmítl jeden nebo více požadovaných oborů. |
+| `MsalException`                                  | Výchozí vyzkoušená výjimka vyvolaná nástrojem MSAL.                           |
 | `MsalIntuneAppProtectionPolicyRequiredException` | Vyvoláno, pokud má prostředek zapnutou zásadu ochrany MAMCA.         |
+| `MsalServiceException`                           | Vyvolána, pokud je chyba na straně serveru.                                 |
+| `MsalUiRequiredException`                        | Vyvoláno, pokud token nelze aktualizovat tiše.                    |
+| `MsalUserCancelException`                        | Vyvolána, pokud uživatel zrušil tok ověřování.                |
 
-### <a name="adalerror-to-msalexception-errorcode"></a>ADALError kód chyby MsalException
+### <a name="adalerror-to-msalexception-translation"></a>ADALError do překladu MsalException
+
+| Pokud jsou tyto chyby zachyceny v ADAL...  | ... zachytit tyto výjimky MSAL:                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| *Žádný ekvivalentní ADALError* | `MsalArgumentException`                          |
+| <ul><li>`ADALError.ANDROIDKEYSTORE_FAILED`<li>`ADALError.AUTH_FAILED_USER_MISMATCH`<li>`ADALError.DECRYPTION_FAILED`<li>`ADALError.DEVELOPER_AUTHORITY_CAN_NOT_BE_VALIDED`<li>`ADALError.EVELOPER_AUTHORITY_IS_NOT_VALID_INSTANCE`<li>`ADALError.DEVELOPER_AUTHORITY_IS_NOT_VALID_URL`<li>`ADALError.DEVICE_CONNECTION_IS_NOT_AVAILABLE`<li>`ADALError.DEVICE_NO_SUCH_ALGORITHM`<li>`ADALError.ENCODING_IS_NOT_SUPPORTED`<li>`ADALError.ENCRYPTION_ERROR`<li>`ADALError.IO_EXCEPTION`<li>`ADALError.JSON_PARSE_ERROR`<li>`ADALError.NO_NETWORK_CONNECTION_POWER_OPTIMIZATION`<li>`ADALError.SOCKET_TIMEOUT_EXCEPTION`</ul> | `MsalClientException`                            |
+| *Žádný ekvivalentní ADALError* | `MsalDeclinedScopeException`                     |
+| <ul><li>`ADALError.APP_PACKAGE_NAME_NOT_FOUND`<li>`ADALError.BROKER_APP_VERIFICATION_FAILED`<li>`ADALError.PACKAGE_NAME_NOT_FOUND`</ul> | `MsalException`                                  |
+| *Žádný ekvivalentní ADALError* | `MsalIntuneAppProtectionPolicyRequiredException` |
+| <ul><li>`ADALError.SERVER_ERROR`<li>`ADALError.SERVER_INVALID_REQUEST`</ul> | `MsalServiceException`                           |
+| <ul><li>`ADALError.AUTH_REFRESH_FAILED_PROMPT_NOT_ALLOWED` | `MsalUiRequiredException`</ul>                        |
+| *Žádný ekvivalentní ADALError* | `MsalUserCancelException`                        |
 
 ### <a name="adal-logging-to-msal-logging"></a>Protokolování ADAL k protokolování MSAL
 

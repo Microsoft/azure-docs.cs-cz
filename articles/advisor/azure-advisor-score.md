@@ -3,12 +3,12 @@ title: Optimalizace úloh Azure pomocí skóre služby Advisor
 description: Využijte skóre služby Advisor pro maximum z Azure
 ms.topic: article
 ms.date: 09/09/2020
-ms.openlocfilehash: 29d8480f501a78c1668b52034f439f998419f9d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4c401a8b532c247806c5fe30728a1f4afd334a4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335615"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074018"
 ---
 # <a name="optimize-azure-workloads-using-advisor-score"></a>Optimalizace úloh Azure pomocí skóre služby Advisor
 
@@ -17,7 +17,7 @@ ms.locfileid: "91335615"
 Azure Advisor poskytuje doporučení pro osvědčené postupy pro vaše úlohy. Tato doporučení jsou přizpůsobená a umožňují vám tyto akce:
 * Zlepšení stav vašich úloh a optimalizace nasazení Azure
 * Proaktivně Zabraňte nejdůležitějším problémům pomocí osvědčených postupů
-* Vyhodnoťte vaše úlohy Azure s pěti pilíři [Microsoft Azure Well-Architected Framework](https://docs.microsoft.com/azure/architecture/framework/)
+* Vyhodnoťte vaše úlohy Azure s pěti pilíři [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/)
 
 Jako základní funkce Advisoru se navrhuje **hodnocení Advisoru** , které vám pomůže dosáhnout těchto cílů efektivně a efektivně. 
 
@@ -56,7 +56,7 @@ Výpočet skóre Advisoru se dá shrnout ve čtyřech krocích:
   * Prostředky s dlouhotrvajícími doporučeními se budou počítat více oproti vašemu skóre.
   * Prostředky, které odložíte nebo zrušíte v poradci, se úplně ze výpočtu skóre odeberou. 
     
-Advisor tento model použije na úrovni kategorie služby Advisor (zabezpečení používá model [zabezpečeného hodnocení](https://docs.microsoft.com/azure/security-center/secure-score-security-controls#introduction-to-secure-score) ), který poskytuje skóre pro každou kategorii a další jednoduchý průměr vytvoří konečné skóre poradce.
+Advisor tento model použije na úrovni kategorie služby Advisor (zabezpečení používá model [zabezpečeného hodnocení](../security-center/secure-score-security-controls.md#introduction-to-secure-score) ), který poskytuje skóre pro každou kategorii a další jednoduchý průměr vytvoří konečné skóre poradce.
 
 
 ## <a name="advisor-score-faq"></a>Nejčastější dotazy k skóre Advisoru

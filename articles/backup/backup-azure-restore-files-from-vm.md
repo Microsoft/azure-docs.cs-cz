@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3f26f761b3d683be71f7f6d900d91dd432ceefc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 654ed7467410743e0db1abc2e51f1304b4f91a5d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292961"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093714"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -376,7 +376,7 @@ Tato funkce byla sestavena pro přístup k datům virtuálních počítačů, an
 
 #### <a name="select-recovery-point-who-can-generate-script"></a>Vybrat bod obnovení (který může vygenerovat skript)
 
-Skript poskytuje přístup k datům virtuálních počítačů, takže je důležité regulovat, kdo ho může vygenerovat na prvním místě. Musíte se přihlásit do Azure Portal a mít k vygenerování skriptu [autorizaci RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) .
+Skript poskytuje přístup k datům virtuálních počítačů, takže je důležité regulovat, kdo ho může vygenerovat na prvním místě. Musíte se přihlásit do Azure Portal a mít [autorizaci Azure RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) pro vygenerování skriptu.
 
 Obnovení souborů vyžaduje stejnou úroveň autorizace, jakou vyžaduje obnovení virtuálních počítačů a obnovení disků. Jinými slovy, data virtuálních počítačů mohou být vygenerována pouze oprávnění uživatelé.
 

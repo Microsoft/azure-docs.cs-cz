@@ -8,16 +8,16 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4fa7ebc71f2bbe6abe6956ad36daaf983e011a94
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 60381d68dc2c1bae5afb2655558e8a35b65c965d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001323"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093952"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 s využitím Xamarin
 
-Začínáme s klientskou knihovnou služby Azure Blob Storage V12 s využitím Xamarin. Azure Blob Storage je řešení úložiště objektů pro cloud od Microsoftu. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Služba Blob Storage je optimalizovaná pro ukládání velkých objemů nestrukturovaných dat.
+Začínáme s klientskou knihovnou služby Azure Blob Storage V12 s využitím Xamarin. Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
 
 Použijte klientskou knihovnu služby Azure Blob Storage V12 s Xamarin na:
 
@@ -157,7 +157,7 @@ protected async override void OnAppearing()
 Následující fragment kódu:
 
 1. Vytvoří `MemoryStream` text.
-1. Nahraje text do objektu BLOB voláním funkce [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) třídy [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) a jejím předáním do souboru FileName a `MemoryStream` textu. Tato metoda vytvoří objekt blob, pokud ještě neexistuje, a přepíše ho, pokud už existoval.
+1. Nahraje text do objektu BLOB voláním funkce [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) třídy [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) a jejím předáním do souboru FileName a `MemoryStream` textu. Tato metoda vytvoří objekt blob, pokud ještě neexistuje, a přepíše ho, pokud už existoval.
 
 Přidejte tento kód do souboru *MainPage.XAML.cs* :
 

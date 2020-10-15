@@ -14,15 +14,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: cba3f47015072f16112ef981d2f59d0c73cb69c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d82b7223c2b392e6b9aebffdc545dc38b38ca2f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142481"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074222"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Řešení potíží s přidělením při nasazení Cloud Services v Azure
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Když nasadíte instance do cloudové služby nebo přidáte nové instance webových nebo pracovních rolí, Microsoft Azure přiděluje výpočetní prostředky. Při provádění těchto operací může občas docházet k chybám, a to ještě před dosažením limitů předplatného Azure. Tento článek vysvětluje příčiny některých běžných selhání přidělení a navrhuje možnou nápravu. Tyto informace mohou být užitečné také při plánování nasazení služeb.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -70,4 +70,4 @@ Tady jsou společné scénáře přidělování, které způsobují připnutí �
      ```
    * Sledujte #2 výše a nezapomeňte zadat novou vyhrazenou IP adresu v CSCFG služby.
 4. Odebrat skupinu vztahů pro nová nasazení – skupiny vztahů už se nedoporučují. Postupujte podle pokynů v kroku 1 výše a nasaďte novou cloudovou službu. Ujistěte se, že cloudová služba není ve skupině vztahů.
-5. Převod na místní Virtual Network – viz [Postup migrace ze skupin vztahů do místní Virtual Network (VNET)](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
+5. Převod na místní Virtual Network – viz [Postup migrace ze skupin vztahů do místní Virtual Network (VNET)](/previous-versions/azure/virtual-network/virtual-networks-migrate-to-regional-vnet).
