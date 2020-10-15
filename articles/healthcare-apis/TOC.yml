@@ -77,7 +77,7 @@
         - name: Konfigurace nastavení databáze
           href: configure-database.md
         - name: Konfigurace klíčů spravovaných zákazníkem
-          href: bring-your-own-key.md
+          href: customer-managed-key.md
         - name: Konfigurace CORS
           href: configure-cross-origin-resource-sharing.md
         - name: Konfigurace exportu
@@ -87,6 +87,8 @@
       items:
         - name: Exportovat data
           href: export-data.md
+        - name: Deidentifikovaný export
+          href: de-identified-export.md
     - name: Vyhledání ID objektů identit
       href: find-identity-object-ids.md
     - name: Povolení protokolování diagnostiky v Azure API for FHIR®

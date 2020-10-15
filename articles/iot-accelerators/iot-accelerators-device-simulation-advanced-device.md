@@ -13,18 +13,18 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 101bd9ce351ea830688fc18affdf21ce527ba43a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3295815be035544d27da52926e5271c2c5551f28
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261426"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076041"
 ---
 # <a name="create-an-advanced-device-model"></a>Vytvoření pokročilého modelu zařízení
 
 Tato příručka popisuje soubory JSON a JavaScript, které definují vlastní model zařízení. Článek obsahuje několik ukázkových definičních souborů modelů zařízení a ukazuje, jak je nahrát do instance simulace zařízení. Můžete vytvářet pokročilé modely zařízení a simulovat tak realističtější chování zařízení pro vaše testování.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -520,4 +520,4 @@ Pokud vaše soubory prošly ověřením, klikněte na **Uložit** a model zaří
 
 ## <a name="next-steps"></a>Další kroky
 
-V této příručce se dozvíte o souborech modelů zařízení používaných v simulaci zařízení a o tom, jak vytvořit pokročilý model zařízení. Dále můžete chtít prozkoumat, jak [použít Time Series Insights k vizualizaci telemetrie odeslané z akcelerátoru řešení pro simulaci zařízení](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights).
+V této příručce se dozvíte o souborech modelů zařízení používaných v simulaci zařízení a o tom, jak vytvořit pokročilý model zařízení. Dále můžete chtít prozkoumat, jak [použít Time Series Insights k vizualizaci telemetrie odeslané z akcelerátoru řešení pro simulaci zařízení](./iot-accelerators-device-simulation-time-series-insights.md).

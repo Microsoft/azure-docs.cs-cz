@@ -6,18 +6,11 @@
     - name: Co je zřizování aplikací?
       href: user-provisioning.md
 - name: Kurzy
+  expanded: true
   items:
-    - name: G Suite
-      href: ../saas-apps/google-apps-provisioning-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: ServiceNow
-      href: ../saas-apps/servicenow-provisioning-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: Amazon Web Services (AWS) – zřizování rolí
-      href: ../saas-apps/amazon-web-service-tutorial.md?context=azure/active-directory/app-provisioning/context/app-provisioning-context#configure-azure-ad-sso
-    - name: Workday
-      href: ../saas-apps/workday-inbound-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: SAP SuccessFactors
-      href: ../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: Všechny integrované aplikace v galerii
+    - name: Vytvoření koncového bodu SCIM a konfigurace zřizování
+      href: use-scim-to-provision-users-and-groups.md
+    - name: Kurzy zřizování konkrétních aplikací
       href: /azure/active-directory/saas-apps
 - name: Koncepty
   expanded: true
@@ -28,17 +21,15 @@
       href: plan-auto-user-provisioning.md
     - name: Plánování nasazení zřizování HR v cloudu
       href: plan-cloud-hr-provision.md
+    - name: Principy protokolování s využitím Azure Monitoru
+      href: application-provisioning-log-analytics.md
 - name: Návody
   expanded: true
   items:
     - name: Konfigurace zřizování pro aplikaci v galerii
       href: configure-automatic-user-provisioning-portal.md
-    - name: Úprava mapování atributů
-      items:
-        - name: Přizpůsobení mapování atributů
-          href: customize-application-attributes.md
-        - name: Zápis výrazů pro mapování atributů
-          href: functions-for-customizing-application-data.md
+    - name: Přizpůsobení mapování atributů
+      href: customize-application-attributes.md
     - name: Zahrnutí nebo vyloučení uživatelů a skupin z rozsahu
       items:
         - name: Vymezení uživatelů nebo skupin pro zřízení
@@ -57,6 +48,8 @@
           href: export-import-provisioning-configuration.md
         - name: Sestavy zřizování
           href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+    - name: Automatizace konfigurace s využitím MS Graphu
+      href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
     - name: Řešení potíží se zřizováním aplikací
       items:
         - name: Známé problémy
@@ -65,26 +58,20 @@
           href: application-provisioning-config-problem.md
         - name: Stav karantény
           href: application-provisioning-quarantine-status.md
-        - name: Problém s autorizací (nepovedlo se uložit přihlašovací údaje správce)
-          href: application-provisioning-config-problem-storage-limit.md
         - name: Uživatelé nejsou zřízení
           href: application-provisioning-config-problem-no-users-provisioned.md
-        - name: Zřízení nesprávných uživatelů
-          href: application-provisioning-config-problem-wrong-users-provisioned.md
         - name: Chybějící atribut zdroje
           href: user-provisioning-sync-attributes-for-mapping.md
         - name: Protokoly zřizování
           href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: Vytvoření koncového bodu SCIM a konfigurace zřizování
-      href: use-scim-to-provision-users-and-groups.md
-    - name: Automatizace konfigurace s využitím MS Graphu
-      href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
 - name: Referenční informace
   items:
     - name: Kompatibilita s protokolem SCIM 2.0
       href: application-provisioning-config-problem-scim-compatibility.md
     - name: Scénáře pro SCIM a Graph
       href: scim-graph-scenarios.md
+    - name: Reference k funkcím pro zápis výrazů pro mapování atributů
+      href: functions-for-customizing-application-data.md
     - name: Zřizování HR v cloudu
       items:
         - name: Integrace SuccessFactors
@@ -93,8 +80,6 @@
           href: sap-successfactors-attribute-reference.md
         - name: Referenční informace k atributu Workday
           href: workday-attribute-reference.md
-    - name: Agent zřizování Azure AD Connect
-      items:
         - name: Historie verzí agenta zřizování
           href: provisioning-agent-release-version-history.md
 - name: Zdroje a prostředky
