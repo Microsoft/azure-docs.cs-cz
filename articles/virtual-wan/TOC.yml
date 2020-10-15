@@ -1,10 +1,11 @@
-- name: Dokumentace k virtuální síti WAN
+- name: Dokumentace ke službě Azure Virtual WAN
   href: index.yml
 - name: Přehled
   items:
     - name: Co je Virtual WAN?
       href: virtual-wan-about.md
 - name: Kurzy
+  expanded: true
   items:
     - name: Vytvoření připojení typu Site-to-Site
       href: virtual-wan-site-to-site-portal.md
