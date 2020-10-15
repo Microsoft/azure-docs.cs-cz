@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 4d077f6b3c84b0279a7a1c99243240192c2b45d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44ebd2d3084ab8df63f2c941e6e924e6f2a86d65
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243711"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071281"
 ---
 # <a name="api-management-authentication-policies"></a>Zásady ověřování ve službě API Management
-V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
+V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](./api-management-policies.md).
 
 ##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a> Zásady ověřování
 
@@ -67,7 +67,7 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 -   **Obory zásad:** všechny rozsahy
 
 ##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a> Ověřování pomocí klientského certifikátu
- Pomocí této `authentication-certificate` zásady můžete ověřit pomocí back-end služby pomocí klientského certifikátu. Certifikát je potřeba nainstalovat nejdřív [do API Management](https://go.microsoft.com/fwlink/?LinkID=511599) a je identifikovaný jeho kryptografickým otiskem.
+ Pomocí této `authentication-certificate` zásady můžete ověřit pomocí back-end služby pomocí klientského certifikátu. Certifikát je potřeba nainstalovat nejdřív [do API Management](./api-management-howto-mutual-certificates.md) a je identifikovaný jeho kryptografickým otiskem.
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
 
@@ -200,4 +200,4 @@ Další informace o práci se zásadami najdete v těchto tématech:
 + [Zásady v API Management](api-management-howto-policies.md)
 + [Transformační rozhraní API](transform-api.md)
 + [Odkaz na zásady](./api-management-policies.md) pro úplný seznam příkazů zásad a jejich nastavení
-+ [Ukázky zásad](policy-samples.md)
++ [Ukázky zásad](./policy-reference.md)

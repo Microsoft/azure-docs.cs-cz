@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 6ac3457a22128f313084ab070a5a61c2d26d4b85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01d50f6228d63801f62ae933a8367f842d89ef97
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87851677"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071366"
 ---
 # <a name="api-management-advanced-policies"></a>Pokročilé zásady služby API Management
 
-V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
+V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](./api-management-policies.md).
 
 ## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a> Rozšířené zásady
 
@@ -867,7 +867,7 @@ Následující příklad ukazuje zásadu sady proměnných v oddílu příchozí
 | Atribut | Popis                                                              | Povinné |
 | --------- | ------------------------------------------------------------------------ | -------- |
 | name      | Název proměnné.                                                | Yes      |
-| value     | Hodnota proměnné. Může to být výraz nebo hodnota literálu. | Yes      |
+| hodnota     | Hodnota proměnné. Může to být výraz nebo hodnota literálu. | Yes      |
 
 ### <a name="usage"></a>Využití
 
@@ -955,7 +955,7 @@ Výrazy používané v `set-variable` zásadách musí vracet jeden z následuj�
 | source    | Řetězcové literály smysluplné pro prohlížeč trasování a určení zdroje zprávy.                                   | Yes      | Není k dispozici     |
 | severity  | Určuje úroveň závažnosti trasování. Povolené hodnoty jsou `verbose` , `information` , `error` (od nejnižší po nejvyšší). | No       | Verbose |
 | name      | Název vlastnosti.                                                                                                     | Yes      | Není k dispozici     |
-| value     | Hodnota vlastnosti                                                                                                    | Yes      | Není k dispozici     |
+| hodnota     | Hodnota vlastnosti                                                                                                    | Yes      | Není k dispozici     |
 
 ### <a name="usage"></a>Využití
 
@@ -1041,4 +1041,4 @@ Další informace o práci se zásadami najdete v těchto tématech:
 -   [Zásady v API Management](api-management-howto-policies.md)
 -   [Výrazy zásad](api-management-policy-expressions.md)
 -   [Odkaz na zásady](./api-management-policies.md) pro úplný seznam příkazů zásad a jejich nastavení
--   [Ukázky zásad](policy-samples.md)
+-   [Ukázky zásad](./policy-reference.md)
