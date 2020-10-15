@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 2a27161ca9a218b1f7c0e3fb51c9935438d9778e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8f57cc16cad4c0b081478932f820c983e4bbdc7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533413"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070023"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s připojením a sítí pro Azure Cloud Services: nejčastější dotazy
 
@@ -40,7 +40,7 @@ Ne, ne pomocí normálního protokolu "/ICMP" příkazu "test". Protokol ICMP ne
 
 Pokud chcete otestovat připojení, doporučujeme, abyste provedli příkaz testování portu. I když Ping.exe používá protokol ICMP, můžete k otestování připojení k určitému portu TCP použít jiné nástroje, například PSPing, nmap a Telnet.
 
-Další informace najdete v tématu [použití příkazů k testování připojení virtuálních počítačů Azure místo ICMP](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/).
+Další informace najdete v tématu [použití příkazů k testování připojení virtuálních počítačů Azure místo ICMP](/archive/blogs/mast/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity).
 
 ## <a name="how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service"></a>Návody zabránit příjmu tisíců přístupů z neznámých IP adres, které by mohly naznačovat škodlivý útok cloudové služby?
 Azure implementuje zabezpečení sítě Multilayer a chrání své služby platforem před distribuovanými útoky DDoS (Denial of-Service). Systém ochrany Azure DDoS je součástí procesu nepřetržitého monitorování Azure, který se průběžně vylepšuje prostřednictvím testování průniku. Tento systém DDoS obrany je navržený tak, aby odolal nejen útokům zvenčí, ale i z jiných tenantů Azure. Další informace najdete v tématu [zabezpečení sítě Azure](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf).
@@ -67,7 +67,7 @@ Použitý distribuční algoritmus je 5-Tuple (zdrojová IP adresa, zdrojový po
 
 Modul pro přepis adresy URL služby IIS se dá použít k přesměrování provozu, který se nachází na výchozí adrese URL cloudové služby (například \* . cloudapp.NET), do nějakého vlastního názvu nebo adresy URL. Vzhledem k tomu, že je modul pro přepis adres URL ve výchozím nastavení povolený a že jeho pravidla jsou nakonfigurovaná v web.config aplikace, je vždycky dostupné na virtuálním počítači bez ohledu na restartování a obnovení imagí. Další informace najdete v tématech:
 
-- [Vytvořit pravidla pro přepsání pro modul URL pro přepis](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
+- [Vytvořit pravidla pro přepsání pro modul URL pro přepis](/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [Odebrat výchozí odkaz](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Jak můžu blokovat nebo zakázat příchozí provoz na výchozí adresu URL mé cloudové služby?

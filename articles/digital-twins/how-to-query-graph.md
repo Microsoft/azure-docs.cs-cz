@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 24229c331d0c7c4b2327e8e609e9d75b6654868f
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 127fd9a9e47a85479018524998e33f44b0a65ba8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931971"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078472"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
@@ -75,6 +75,64 @@ JOIN LightBulb RELATED LightPanel.contains
 WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')  
 AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')  
 AND Room.$dtId IN ['room1', 'room2'] 
+```
+
+### <a name="specify-return-set-with-projections"></a>Zadat návratovou sadu s projekcemi
+
+Pomocí projekce můžete zvolit, které sloupce bude dotaz vracet. 
+
+>[!NOTE]
+>V současné době nejsou složité vlastnosti podporovány. Chcete-li zajistit, aby vlastnosti projekce byly platné, zkombinujte projekce s `IS_PRIMITIVE` kontrolou. 
+
+Tady je příklad dotazu, který pomocí projekce vrací vlákna a vztahy. Následující dotaz projektuje *spotřebitel*, *továrnu* a *hranu* z scénáře, kdy *továrna* s ID *ABC* souvisí s *příjemcem* prostřednictvím vztahu *Factory. Customer.* tento vztah je zobrazený jako *okraj*.
+
+```sql
+SELECT Consumer, Factory, Edge 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+```
+
+Můžete také použít projekci k vrácení vlastnosti vlákna. Následující dotaz projektuje vlastnost *Name* pro *uživatele* , kteří se vztahují k *továrně* s ID *ABC* prostřednictvím vztahu objektu *Factory. Customer*. 
+
+```sql
+SELECT Consumer.name 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Consumer.name)
+```
+
+Můžete také použít projekci a vrátit vlastnost vztahu. Podobně jako v předchozím příkladu následující dotaz projektuje vlastnost *Name* *příjemců* souvisejících s *objektem Factory* s ID *ABC* prostřednictvím vztahu objektu *Factory. Customer.* nyní ale vrátí také dvě vlastnosti vztahu, *Prop1* a *prop2*. Provádí pojmenování *hraničních* vztahů a shromáždění jeho vlastností.  
+
+```sql
+SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
+```
+
+Pomocí aliasů můžete také zjednodušit dotazy pomocí projekce.
+
+Následující dotaz provede stejné operace jako v předchozím příkladu, ale aliasuje názvy vlastností do `consumerName` , `first` `second` a `factoryArea` . 
+ 
+```sql
+SELECT Consumer.name AS consumerName, Edge.prop1 AS first, Edge.prop2 AS second, Factory.area AS factoryArea 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)" 
+```
+
+Zde je podobný dotaz, který se dotazuje stejné sady jako v předchozím příkladu, ale projektuje pouze vlastnost *Consumer.Name* jako `consumerName` a projekty, které tvoří kompletní *objekt pro vytváření* , jako dvojitou hodnotu. 
+
+```sql
+SELECT Consumer.name AS consumerName, Factory 
+FROM DIGITALTWINS Factory 
+JOIN Consumer RELATED Factory.customer Edge 
+WHERE Factory.$dtId = 'ABC' 
+AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) 
 ```
 
 ### <a name="query-by-property"></a>Dotaz podle vlastnosti
@@ -210,7 +268,7 @@ AND Room.$dtId IN ['room1', 'room2']
 
 Můžete **zkombinovat** libovolný z výše uvedených typů dotazu pomocí operátorů kombinace pro zahrnutí více podrobností v jednom dotazu. Tady jsou některé další příklady složených dotazů, které dotazují na více než jeden typ zdvojeného popisovače najednou.
 
-| Description | Dotaz |
+| Popis | Dotaz |
 | --- | --- |
 | Ze zařízení, která jsou v *místnosti 123* , se vrátí zařízení MxChip, která obsluhují roli operátora. | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | Získejte vlákna, která mají relaci s názvem, *obsahuje* další nevlákenný identifikátor *ID1* | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
@@ -230,11 +288,11 @@ Podporovány jsou následující operátory:
 | Porovnání |=,! =, <, >, <=, >= |
 | Contains | V NZA |
 
-### <a name="functions"></a>Funkce
+### <a name="functions"></a>Functions
 
 Podporují se následující funkce kontroly a přetypování typů:
 
-| Funkce | Description |
+| Funkce | Popis |
 | -------- | ----------- |
 | IS_DEFINED | Vrátí logickou hodnotu, která znamená, zda byla vlastnost přiřazena hodnota. To je podporováno pouze v případě, že je hodnota primitivního typu. Primitivní typy zahrnují řetězec, Boolean, Numeric nebo `null` . Hodnoty DateTime, typy objektů a pole nejsou podporovány. |
 | IS_OF_MODEL | Vrátí logickou hodnotu, která označuje, jestli zadaný typ vlákna odpovídá zadanému typu modelu. |
@@ -247,7 +305,7 @@ Podporují se následující funkce kontroly a přetypování typů:
 
 Podporovány jsou následující řetězcové funkce:
 
-| Funkce | Description |
+| Funkce | Popis |
 | -------- | ----------- |
 | STARTSWITH (x, y) | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz začíná druhým. |
 | ENDSWITH (x, y) | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz končí druhým. |

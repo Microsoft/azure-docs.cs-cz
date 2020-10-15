@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: kenwith
-ms.openlocfilehash: e789810240b1a537e8cc3a18351f0b2a066cb4e1
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 159a473b2b164d1f0692864e26f6127d9faf8287
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018861"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069870"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení uživatelského zřizování atributů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -129,7 +129,7 @@ Při úpravách seznamu podporovaných atributů jsou k dispozici následující
 - **Více hodnot?** – Zda atribut podporuje více hodnot.
 - **Přesný případ?** – Zda jsou hodnoty atributů vyhodnocovány způsobem, který rozlišuje velká a malá písmena.
 - **Výraz rozhraní API** – nepoužívejte, pokud k tomu nejste vyzváni v dokumentaci pro konkrétní zřizovací konektor (například Workday).
-- **Odkazovaný atribut objektu** – Pokud se jedná o atribut typu odkazu, pak v této nabídce můžete vybrat tabulku a atribut v cílové aplikaci, která obsahuje hodnotu přidruženou k atributu. Například pokud máte atribut s názvem "Department", jehož uložená hodnota odkazuje na objekt v samostatné tabulce "oddělení", vyberte "Departments.Name". Referenční tabulky a pole primárních ID podporovaná pro danou aplikaci jsou předem nakonfigurované a aktuálně se nedají upravovat pomocí Azure Portal, ale dají se upravit pomocí [rozhraní Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
+- **Odkazovaný atribut objektu** – Pokud se jedná o atribut typu odkazu, pak v této nabídce můžete vybrat tabulku a atribut v cílové aplikaci, která obsahuje hodnotu přidruženou k atributu. Například pokud máte atribut s názvem "Department", jehož uložená hodnota odkazuje na objekt v samostatné tabulce "oddělení", vyberte "Departments.Name". Referenční tabulky a pole primárních ID podporovaná pro danou aplikaci jsou předem nakonfigurované a aktuálně se nedají upravovat pomocí Azure Portal, ale dají se upravit pomocí [rozhraní Microsoft Graph API](/graph/api/resources/synchronization-configure-with-custom-target-attributes).
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Zřízení vlastního rozšíření atributu pro aplikaci vyhovující SCIM
 SCIM RFC definuje základní schéma uživatelů a skupin a zároveň umožňuje rozšíření schématu, aby splňovala potřeby vaší aplikace. Přidání vlastního atributu do aplikace SCIM:

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: article
 ms.workload: identity
-ms.date: 08/05/2020
+ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 5ec06960e695abfa4bf004633b1f171214a5d29a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbd274f6b039ef4492068d939c755ab279c2830a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91286543"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069976"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Kurz: Konfigurace zpětného zápisu atributu z Azure AD do SAP SuccessFactors
 Cílem tohoto kurzu je Ukázat kroky pro atributy zpětného zápisu z Azure AD do SAP SuccessFactors Employee Central. 
@@ -324,13 +324,23 @@ Po dokončení konfigurace aplikace SuccessFactors Provisioning můžete službu
 
 1. Na kartě **zřizování** nastavte **stav zřizování** na **zapnuto**.
 
-2. Klikněte na **Uložit**.
+1. Vyberte **obor**. Můžete vybrat jednu z následujících možností: 
+   * **Synchronizovat všechny uživatele a skupiny**: tuto možnost vyberte, pokud chcete zapisovat zpětně mapované atributy všech uživatelů ze služby Azure AD do SuccessFactors, a to v souladu s pravidly oboru definovanými v části **mapování**  ->  **oboru zdrojového objektu**. 
+   * **Synchronizovat pouze přiřazené uživatele a skupiny**: tuto možnost vyberte, pokud chcete do této aplikace v nabídce **aplikace**  ->  **Spravovat**  ->  **uživatele a skupiny** zapisovat zpět mapované atributy pouze uživatele, které jste přiřadili k této aplikaci. Tito uživatelé také podléhají pravidlům oboru definovaným v oboru **mapování**  ->  **zdrojového objektu**.
 
-3. Tato operace spustí počáteční synchronizaci, což může trvat proměnlivý počet hodin v závislosti na tom, kolik uživatelů je v tenantovi SuccessFactors. V indikátoru průběhu můžete sledovat průběh cyklu synchronizace. 
+   > [!div class="mx-imgBorder"]
+   > ![Vybrat obor zpětného zápisu](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
 
-4. Na kartě **protokoly auditu** v Azure Portal můžete kdykoli zjistit, jaké akce služba zřizování provedla. Protokoly auditu vypíše všechny jednotlivé události synchronizace prováděné službou zřizování, například které uživatele čtou z centrálního zaměstnance a následně se přidají nebo aktualizují ve službě Active Directory. 
+   > [!NOTE]
+   > Aplikace pro zřizování zpětného zápisu SuccessFactors nepodporuje přiřazování skupin. Je podporováno pouze přiřazení uživatele. 
 
-5. Po dokončení počáteční synchronizace bude na kartě **zřizování** napsána Sestava souhrnu auditu, jak je znázorněno níže.
+1. Klikněte na **Uložit**.
+
+1. Tato operace spustí počáteční synchronizaci, což může trvat proměnlivý počet hodin v závislosti na počtu uživatelů v tenantovi Azure AD a oboru definovaném pro operaci. V indikátoru průběhu můžete sledovat průběh cyklu synchronizace. 
+
+1. V každém okamžiku zkontrolujte kartu **zřizovacích protokolů** v Azure Portal a podívejte se, jaké akce služba zřizování provedla. Protokoly zřizování obsahují všechny jednotlivé události synchronizace prováděné službou zřizování. 
+
+1. Po dokončení počáteční synchronizace bude na kartě **zřizování** napsána Sestava souhrnu auditu, jak je znázorněno níže.
 
    > [!div class="mx-imgBorder"]
    > ![Indikátor průběhu zřizování](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)

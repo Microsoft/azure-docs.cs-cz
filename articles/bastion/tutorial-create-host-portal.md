@@ -1,5 +1,5 @@
 ---
-title: 'Vytvoření hostitele Azure bastionu: virtuální počítač s Windows: portál'
+title: 'Kurz: vytvoření hostitele Azure bastionu: virtuální počítač s Windows: portál'
 description: V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu a připojit se k virtuálnímu počítači s Windows.
 services: bastion
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: c5361a777b2fdab20fab70214ddcb3bbf5248acb
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: daf3b6c36b191f52f0d7ac7638ef59695325f541
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015255"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078540"
 ---
 # <a name="tutorial-create-an-azure-bastion-host-and-connect-to-a-windows-vm-through-a-browser"></a>Kurz: vytvoření hostitele Azure bastionu a připojení k virtuálnímu počítači s Windows pomocí prohlížeče
 
@@ -40,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Vytvoření hostitele bastionu
 
@@ -87,4 +87,7 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte prostředky pomocí 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili hostitele bastionu a přidružíte ho k virtuální síti a připojili se k virtuálnímu počítači s Windows. Můžete se rozhodnout použít skupiny zabezpečení sítě ve vaší podsíti Azure bastionu. Postup najdete v tématu [práce s skupin zabezpečení sítě](bastion-nsg.md).
+V tomto kurzu jste vytvořili hostitele bastionu a přidružíte ho k virtuální síti a pak jste se připojili k virtuálnímu počítači s Windows. Můžete se rozhodnout použít skupiny zabezpečení sítě ve vaší podsíti Azure bastionu. Postup najdete v těchto tématech:
+
+> [!div class="nextstepaction"]
+> [Práce se skupinami zabezpečení sítě](bastion-nsg.md)

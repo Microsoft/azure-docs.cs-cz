@@ -10,18 +10,21 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 30c3fa837f84ff318e9a03a8a11ef6259890f4bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1effb62619f9767cc90c99e037445e7a95981460
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653736"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078234"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Migrace na nové verze rozhraní API Azure Time Series Insights Gen2
 
 ## <a name="overview"></a>Přehled
 
-Pokud jste vytvořili prostředí Azure Time Series Insights Gen2, pokud bylo v Public Preview (před 16. července 2020), aktualizujte prosím prostředí TSI, aby používalo nové všeobecně dostupné verze rozhraní API, a to podle postupu popsaného v tomto článku.
+Pokud jste vytvořili prostředí Azure Time Series Insights Gen2, pokud bylo v Public Preview (před 16. července 2020), aktualizujte prosím prostředí TSI, aby používalo nové všeobecně dostupné verze rozhraní API, a to podle postupu popsaného v tomto článku. Tato změna nemá vliv na všechny uživatele, kteří používají verzi Gen1 Azure Time Series Insights.
+
+> [!IMPORTANT]
+> Aktualizace popsané v tomto článku budou upgradovat jenom verze API používané prostředím TSI. Tato změna nesouvisí s novými [pravidly sloučení a uvozovacích znaků JSON,](https://docs.microsoft.com/azure/time-series-insights/concepts-json-flattening-escaping-rules) které jsou představené pro prostředí Gen2.
 
 Nová verze rozhraní API je `2020-07-31` a používá aktualizovanou [syntaxi výrazu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 

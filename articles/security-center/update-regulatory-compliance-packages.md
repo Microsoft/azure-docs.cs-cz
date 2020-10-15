@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 306a4773563b829ecad09a021f6763192e8246f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adac0d460753f24d06bffc72f9b2b38c2a3306d7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445864"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078098"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Přizpůsobení sady standardů na řídicím panelu dodržování předpisů
 
@@ -84,6 +84,31 @@ Následující postup vysvětluje, jak přidat balíček, abyste mohli monitorov
     > Může trvat několik hodin, než se nově přidaný Standard zobrazí na řídicím panelu dodržování předpisů.
 
     [![Řídicí panel dodržování předpisů, který ukazuje starou a novou službu Azure SNS](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark-small.png)](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark.png#lightbox)
+
+
+## <a name="removing-a-standard-from-your-dashboard"></a>Odebrání standardu z řídicího panelu
+
+Pokud některý ze zadaných regulativních standardů není relevantní pro vaši organizaci, je jednoduchý proces, který je jednoduše odebere z uživatelského rozhraní. To vám umožní lépe přizpůsobit řídicí panel dodržování předpisů a soustředit se jenom na standardy, které jsou pro vás vhodné.
+
+Postup odebrání standardu:
+
+1. V nabídce Security Center vyberte **zásady zabezpečení**.
+
+1. Vyberte příslušné předplatné, ze kterého chcete odebrat Standard.
+
+    > [!NOTE]
+    > Můžete odebrat Standard z předplatného, ale ne ze skupiny pro správu. 
+
+    Otevře se stránka zásady zabezpečení. U vybraného předplatného se zobrazí výchozí zásady, oborové a regulativní normy a všechny vlastní iniciativy, které jste vytvořili.
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Odstranění regulativního standardu z řídicího panelu dodržování předpisů v Azure Security Center":::
+
+1. U Standard, který chcete odebrat, vyberte **Zakázat**. Zobrazí se okno pro potvrzení.
+
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Odstranění regulativního standardu z řídicího panelu dodržování předpisů v Azure Security Center":::
+
+1. Vyberte **Ano**. Standard bude odebrán. 
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 881f955014032d18fec447784a879fbf4f0e24fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 875fd40fea315269f7fe72032942c40551a6b144
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91571375"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078965"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>Připojení virtuální sítě mezi klienty k virtuálnímu centru WAN
 
@@ -54,7 +54,7 @@ Aby nadřazené předplatné s virtuálním rozbočovačem mohl upravovat a při
 1. Dále do aktuální relace prostředí PowerShell přidejte předplatné vzdáleného tenanta a nadřazeného tenanta klienta. Spusťte následující příkaz. Pokud jste přihlášeni k nadřazenému, stačí spustit příkaz pro vzdáleného tenanta.
 
    ```azurepowershell-interactive
-   Add-AzAccount “xxxxx-b34a-4df9-9451-4402dcaecc5b”
+   Add-AzAccount "xxxxx-b34a-4df9-9451-4402dcaecc5b"
    ```
 
 1. Ověřte, jestli je přiřazení role úspěšné, přihlášením k Azure PowerShell pomocí nadřazených přihlašovacích údajů a spuštěním následujícího příkazu:
@@ -72,25 +72,25 @@ V následujících krocích přepínáte mezi kontextem těchto dvou odběrů p�
 1. Ujistěte se, že jste v kontextu vzdáleného účtu, a to spuštěním následujícího příkazu:
 
    ```azurepowershell-interactive
-   Select-AzSubscription -SubscriptionId “[remote ID]”
+   Select-AzSubscription -SubscriptionId "[remote ID]"
    ```
 
 1. Vytvořte místní proměnnou pro uložení metadat virtuální sítě, ke které se chcete připojit, do centra.
 
    ```azurepowershell-interactive
-   $remote = Get-AzVirtualNetwork -Name "[v-net name]" -ResourceGroupName "[resource group name]"
+   $remote = Get-AzVirtualNetwork -Name "[vnet name]" -ResourceGroupName "[resource group name]"
    ```
 
 1. Přepněte zpátky na nadřazený účet.
 
    ```azurepowershell-interactive
-   Select-AzSubscription -SubscriptionId “[parent ID]”
+   Select-AzSubscription -SubscriptionId "[parent ID]"
    ```
 
 1. Připojte virtuální síť k centru.
 
    ```azurepowershell-interactive
-   New-AzVirtualHubVnetConnection -ResourceGroupName "[Parent Resource Group Name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $[local variable name]
+   New-AzVirtualHubVnetConnection -ResourceGroupName "[parent resource group name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $[local variable name]
    ```
 
 1. Nové připojení můžete zobrazit buď v PowerShellu, nebo v Azure Portal.

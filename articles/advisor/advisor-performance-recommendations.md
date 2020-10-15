@@ -3,12 +3,12 @@ title: Zlepšení výkonu aplikací Azure pomocí služby Advisor
 description: Využijte doporučení k výkonu v Azure Advisor ke zlepšení rychlosti a odezvy vašich důležitých podnikových aplikací.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 9625bb3b063234e9cadb20aacfcc5ca8a28b35cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44252171a714acec0a9c0e83c9272b2f845560b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405152"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077809"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 
@@ -142,22 +142,22 @@ Instance mezipaměti fungují nejlépe, když neběží s vysokým tlakem pamět
 
 ## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>Přidání oblastí s provozem do účtu Azure Cosmos DB
 
-Advisor detekuje účty Azure Cosmos DB, které mají provoz z oblasti, která není aktuálně nakonfigurovaná. Doporučuje přidání této oblasti. Tím se zlepšuje latence pro žádosti přicházející z této oblasti a v případě výpadků oblastí zajišťuje dostupnost. [Přečtěte si další informace o globální distribuci dat pomocí Azure Cosmos DB.](https://aka.ms/cosmos/globaldistribution)
+Advisor detekuje účty Azure Cosmos DB, které mají provoz z oblasti, která není aktuálně nakonfigurovaná. Doporučuje přidání této oblasti. Tím se zlepšuje latence pro žádosti přicházející z této oblasti a v případě výpadků oblastí zajišťuje dostupnost. [Přečtěte si další informace o globální distribuci dat pomocí Azure Cosmos DB.](../cosmos-db/distribute-data-globally.md)
 
 ## <a name="configure-your-azure-cosmos-db-indexing-policy-by-using-custom-included-or-excluded-paths"></a>Konfigurace zásad indexování Azure Cosmos DB pomocí vlastních zahrnutých nebo vyloučených cest
 
-Advisor identifikuje kontejnery Azure Cosmos DB, které používají výchozí zásady indexování, ale můžou využít vlastní zásady indexování. Toto určení je založené na vzoru úloh. Výchozí zásada indexování indexuje všechny vlastnosti. Vlastní zásada indexování s explicitními zahrnutými nebo vyloučenými cestami, které se používají ve filtrech dotazů, může snížit ru a úložiště spotřebované při indexování. [Přečtěte si další informace o změnách zásad indexování.](https://aka.ms/cosmosdb/modify-index-policy)
+Advisor identifikuje kontejnery Azure Cosmos DB, které používají výchozí zásady indexování, ale můžou využít vlastní zásady indexování. Toto určení je založené na vzoru úloh. Výchozí zásada indexování indexuje všechny vlastnosti. Vlastní zásada indexování s explicitními zahrnutými nebo vyloučenými cestami, které se používají ve filtrech dotazů, může snížit ru a úložiště spotřebované při indexování. [Přečtěte si další informace o změnách zásad indexování.](/azure/cosmos-db/index-policy)
 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Nastavení velikosti stránky dotazu na Azure Cosmos DB (MaxItemCount) na hodnotu-1 
 
-Azure Advisor identifikuje kontejnery Azure Cosmos DB, které používají velikost stránky dotazu 100. Pro rychlejší kontroly doporučuje použití velikosti stránky-1. [Přečtěte si další informace o MaxItemCount.](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+Azure Advisor identifikuje kontejnery Azure Cosmos DB, které používají velikost stránky dotazu 100. Pro rychlejší kontroly doporučuje použití velikosti stránky-1. [Přečtěte si další informace o MaxItemCount.](../cosmos-db/sql-api-query-metrics.md)
 
 ## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>Zvažte použití funkce akcelerovaného zápisu v clusteru HBA pro zlepšení výkonu clusteru.
 Analýza Azure Advisor v systémových protokolech za posledních 7 dnů a zjistí, jestli cluster zjistil následující scénáře:
 1. Vysoká latence z hlediska času synchronizace WAL 
 2. Vysoký počet žádostí o zápis (minimálně 3 intervaly v délce 1 hodiny s více než 1000 žádostí o zápis (prům.)/sekunda/uzel)
 
-Tato zjištění indikují, že cluster trpí vysokou latencí při zapisování. Důvodem může být to, že ve vašem clusteru bude provedeno velké zatížení. Pokud chcete zvýšit výkon clusteru, můžete zvážit použití funkce akcelerovaného zápisu, kterou poskytuje služba Azure HDInsight HBA. Funkce Akcelerované zápisy pro clustery HDInsight Apache HBase připojuje prémiové disky spravované přes SSD ke každému pracovnímu uzlu (RegionServer) místo použití cloudového úložiště. Ve výsledku pak pro aplikace zajišťuje nízkou latenci při zapisování a lepší odolnost. Další informace o této funkci najdete v článku [Další](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)
+Tato zjištění indikují, že cluster trpí vysokou latencí při zapisování. Důvodem může být to, že ve vašem clusteru bude provedeno velké zatížení. Pokud chcete zvýšit výkon clusteru, můžete zvážit použití funkce akcelerovaného zápisu, kterou poskytuje služba Azure HDInsight HBA. Funkce Akcelerované zápisy pro clustery HDInsight Apache HBase připojuje prémiové disky spravované přes SSD ke každému pracovnímu uzlu (RegionServer) místo použití cloudového úložiště. Ve výsledku pak pro aplikace zajišťuje nízkou latenci při zapisování a lepší odolnost. Další informace o této funkci najdete v článku [Další](../hdinsight/hbase/apache-hbase-accelerated-writes.md#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)
 
 ## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>Kontrola mezipaměti Azure Průzkumník dat cache – perioda (zásady) pro lepší výkon (Preview)
 Toto doporučení ukazuje tabulky Azure Data Exploreru s velkým počtem dotazů, které se dívají nazpět před nakonfigurovanou dobu (zásady) uložení v mezipaměti (zobrazí se 10 tabulek s nejvyšším procentem dotazů, které přistupují k datům mimo mezipaměť). Doporučená akce pro zvýšení výkonu clusteru: Omezte dotazy na tuto tabulku na minimální nezbytný časový rozsah (v rámci definovaných zásad). Případně, pokud se vyžadují data z celého časového rozsahu, prodlužte dobu uložení v mezipaměti na doporučenou hodnotu.
@@ -169,11 +169,11 @@ Analýza Advisor indikuje, že váš server MySQL může vydávat zbytečné vst
 Poradce identifikuje skupiny serverů, na kterých nebyla data distribuována, ale zůstává v koordinátorovi. Na základě tohoto doporučení doporučuje poradce, aby Citus výhody distribuce dat na pracovních uzlech pro skupiny serverů. Tím se vylepšit výkon dotazů pomocí prostředku každého uzlu ve skupině serverů. [Další informace](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>Vylepšení uživatelského prostředí a připojení díky nasazení virtuálních počítačů blíže k umístění nasazení virtuálního klienta Windows
-Zjistili jsme, že se vaše virtuální počítače nacházejí v jiné oblasti, než ze které se připojují vaši uživatelé pomocí služby Windows Virtual Desktop, nebo v příliš vzdálené oblasti. To může způsobit delší dobu odezvy připojení a ovlivnit celkové uživatelské prostředí služby WVD. Při vytváření virtuálních počítačů pro fondy hostitelů byste se měli snažit používat oblasti blíže uživatelům. Těsná blízkost zajistí trvalou spokojenost se službou WVD a celkově vyšší kvalitu prostředí. [Další informace o latenci připojení najdete tady](https://docs.microsoft.com/azure/virtual-desktop/connection-latency).
+Zjistili jsme, že se vaše virtuální počítače nacházejí v jiné oblasti, než ze které se připojují vaši uživatelé pomocí služby Windows Virtual Desktop, nebo v příliš vzdálené oblasti. To může způsobit delší dobu odezvy připojení a ovlivnit celkové uživatelské prostředí služby WVD. Při vytváření virtuálních počítačů pro fondy hostitelů byste se měli snažit používat oblasti blíže uživatelům. Těsná blízkost zajistí trvalou spokojenost se službou WVD a celkově vyšší kvalitu prostředí. [Další informace o latenci připojení najdete tady](../virtual-desktop/connection-latency.md).
 
 ## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>Upgrade na nejnovější verzi sady SDK Asistivní čtečky
 V tomto předplatném jsme identifikovali prostředky využívající zastaralé verze sady SDK Asistivní čtečky. Použitím nejnovější verze sady SDK Asistivní čtečky získáte aktualizované funkce zabezpečení, funkce pro zajištění výkonu a rozšířenou sadu funkcí pro přizpůsobení a vylepšení prostředí integrace.
-Přečtěte si další informace o [sadě moderního čtecího zařízení](https://aka.ms/ImmersiveReaderAzureAdvisorSDKLearnMore).
+Přečtěte si další informace o [sadě moderního čtecího zařízení](../cognitive-services/immersive-reader/index.yml).
 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak získat přístup k doporučením k výkonu v Advisoru

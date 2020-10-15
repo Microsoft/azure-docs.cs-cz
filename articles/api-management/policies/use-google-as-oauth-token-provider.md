@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: d606d29d84cd5917c74efe188ae02627ad55d4ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f6c9fe2146414f78e90d6ade1a00045cdf3a04f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75442372"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078013"
 ---
 # <a name="authorize-access-using-google-oauth-token"></a>Autorizace přístupu pomocí tokenu Google OAuth
 
-Tento článek ukazuje ukázku zásad služby Azure API Management, která demonstruje, jak autorizovat přístup k koncovým bodům pomocí Google jako poskytovatele tokenu OAuth. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázku zásad služby Azure API Management, která demonstruje, jak autorizovat přístup k koncovým bodům pomocí Google jako poskytovatele tokenu OAuth. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-reference.md).
 
-## <a name="policy"></a>Zásada
+## <a name="policy"></a>Zásady
 
 Vložte kód do **vstupního** bloku.
 
@@ -35,5 +35,4 @@ Vložte kód do **vstupního** bloku.
 Další informace o zásadách APIM:
 
 + [Zásady transformace](../api-management-transformation-policies.md)
-+ [Ukázky zásad](../policy-samples.md)
-
++ [Ukázky zásad](../policy-reference.md)

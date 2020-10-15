@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 10cbd58807c213418a88b42887cdb76868eac34e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 825e97bfc80695180195fde07eaa1a25ac74b49b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015645"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078149"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
@@ -21,8 +21,7 @@ Rovina ovládacího prvku nebo Server API se nachází v předplatném Azure spr
 
 Privátní cluster je dostupný ve veřejných oblastech, kde [se podporuje AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
 
-* Azure Čína 21Vianet se momentálně nepodporuje.
-* US Gov – Texas se momentálně nepodporuje, protože nepodporuje chybějící podporu privátních odkazů.
+US Gov – Texas se momentálně nepodporuje, protože nepodporuje chybějící podporu privátních odkazů.
 
 ## <a name="prerequisites"></a>Požadavky
 

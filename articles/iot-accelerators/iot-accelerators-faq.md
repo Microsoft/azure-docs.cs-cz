@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: abab80f8c790a170ec30fa228dd86576079a73a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40c1fb314a2dea653740e7f87b5caa14c759fffb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462543"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078217"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Nejčastější dotazy k akcelerátorům řešení IoT
 
@@ -65,7 +65,7 @@ Pokud jste si jisti, že máte předplatné Azure, ověřte mapování tenanta p
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Kde najdu informace o předchozí verzi řešení vzdáleného monitorování?
 
-Předchozí verze akcelerátoru řešení vzdáleného monitorování byla známá jako předkonfigurované řešení vzdáleného monitorování IoT Suite. Archivovanou dokumentaci najdete na adrese [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) .
+Předchozí verze akcelerátoru řešení vzdáleného monitorování byla známá jako předkonfigurované řešení vzdáleného monitorování IoT Suite. Archivovanou dokumentaci najdete na adrese [https://docs.microsoft.com/previous-versions/azure/iot-suite/](/previous-versions/azure/iot-suite/) .
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Je nový akcelerátor řešení dostupný ve stejné geografické oblasti jako stávající řešení?
 
@@ -78,7 +78,7 @@ Ano, nové vzdálené monitorování je k dispozici ve stejných geografických 
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Můžu dál využívat svoje stávající investice do akcelerátorů řešení Azure IoT?
 
-Ano. Jakékoli řešení, které dnes existuje, bude v předplatném Azure fungovat a zdrojový kód zůstane dostupný na GitHubu.
+Yes. Jakékoli řešení, které dnes existuje, bude v předplatném Azure fungovat a zdrojový kód zůstane dostupný na GitHubu.
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Kolik instancí IoT Hub můžu zřídit v předplatném?
 
@@ -101,13 +101,13 @@ V současné době nemůžete vytvořit akcelerátor řešení s [Microsoft Azur
 
 ### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Návody odstranit tenanta Azure AD?
 
-[Postup odstranění tenanta Azure AD](https://docs.microsoft.com/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)najdete v příspěvku na blogu pro Eric Golpe.
+[Postup odstranění tenanta Azure AD](/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)najdete v příspěvku na blogu pro Eric Golpe.
 
 ### <a name="next-steps"></a>Další kroky
 
 Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
 * [Prozkoumejte možnosti akcelerátoru řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md)
-* [Přehled akcelerátoru řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
+* [Přehled akcelerátoru řešení prediktivní údržby](./iot-accelerators-predictive-walkthrough.md)
 * [Nasadit akcelerátor řešení propojené továrny](quickstart-connected-factory-deploy.md)
-* [Zabezpečení IoT od počátku](/azure/iot-fundamentals/iot-security-ground-up)
+* [Zabezpečení IoT od počátku](../iot-fundamentals/iot-security-ground-up.md)
