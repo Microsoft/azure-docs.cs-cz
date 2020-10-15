@@ -3,12 +3,12 @@ title: Vylepšení provozního excellencyu pomocí Poradce
 description: Využijte Azure Advisor k optimalizaci a vyspělosti vaší provozní kvality vašich předplatných Azure.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 036adb7e7d59bd78980c72b210ad41faea277d00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25c470a968f2d31ae1190f765046d593190d697b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258474"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077384"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Dosažení provozní úrovně pomocí Azure Advisor
 
@@ -38,7 +38,7 @@ Pokud váš fond používá zastaralou interní komponentu, odstraňte a znovu v
 
 ## <a name="repair-invalid-log-alert-rules"></a>Opravit neplatná pravidla upozornění protokolu
 
-Azure Advisor detekuje pravidla výstrah, která mají v oddílu podmínky zadány neplatné dotazy. Můžete vytvořit pravidla upozornění protokolu v Azure Monitor a použít je ke spouštění analytických dotazů v zadaných intervalech. Výsledky dotazu určují, jestli je potřeba aktivovat upozornění. Analytické dotazy se můžou v průběhu času stát neplatnými kvůli změnám v odkazovaných prostředcích, tabulkách nebo příkazech. Poradce doporučuje, abyste v pravidle výstrahy opravili dotaz, abyste zabránili jeho automatickému zakázání a zajistili monitorování pokrytí vašich prostředků v Azure. [Přečtěte si další informace o řešení potíží s pravidly výstrah.](https://aka.ms/aa_logalerts_queryrepair)
+Azure Advisor detekuje pravidla výstrah, která mají v oddílu podmínky zadány neplatné dotazy. Můžete vytvořit pravidla upozornění protokolu v Azure Monitor a použít je ke spouštění analytických dotazů v zadaných intervalech. Výsledky dotazu určují, jestli je potřeba aktivovat upozornění. Analytické dotazy se můžou v průběhu času stát neplatnými kvůli změnám v odkazovaných prostředcích, tabulkách nebo příkazech. Poradce doporučuje, abyste v pravidle výstrahy opravili dotaz, abyste zabránili jeho automatickému zakázání a zajistili monitorování pokrytí vašich prostředků v Azure. [Přečtěte si další informace o řešení potíží s pravidly výstrah.](../azure-monitor/platform/alerts-troubleshoot-log.md)
 
 ## <a name="use-azure-policy-recommendations"></a>Použití Azure Policy doporučení
 
@@ -55,7 +55,7 @@ Azure Policy je služba v Azure, kterou můžete použít k vytváření, přiř
 **Povolení *zdědí značku ze skupin prostředků*.** Tyto zásady při vytvoření nebo aktualizaci jakéhokoli prostředku přidají nebo nahradí zadanou značku a hodnotu z nadřazené skupiny prostředků. Stávající prostředky můžete opravit tak, že aktivujete úlohu nápravy.
 
 ## <a name="no-validation-environment-enabled"></a>Není povolené žádné prostředí pro ověřování
-Azure Advisor určuje, že v aktuálním předplatném není povolené prostředí ověřování. Při vytváření fondů hostitelů jste na \" kartě Vlastnosti vybrali možnost Ne \" pro \" prostředí ověřování \" . Aspoň jeden fond hostitelů s povoleným ověřovacím prostředím zajišťuje kontinuitu podnikových služeb prostřednictvím nasazení služby Virtual Desktop systému Windows s dřívější detekcí potenciálních problémů. [Další informace](https://docs.microsoft.com/azure/virtual-desktop/create-validation-host-pool)
+Azure Advisor určuje, že v aktuálním předplatném není povolené prostředí ověřování. Při vytváření fondů hostitelů jste na \" kartě Vlastnosti vybrali možnost Ne \" pro \" prostředí ověřování \" . Aspoň jeden fond hostitelů s povoleným ověřovacím prostředím zajišťuje kontinuitu podnikových služeb prostřednictvím nasazení služby Virtual Desktop systému Windows s dřívější detekcí potenciálních problémů. [Další informace](../virtual-desktop/create-validation-host-pool.md)
 
 ## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>Zajištění produkčního prostředí (ne prostředí pro ověřování) za účelem získání výhod stabilních funkcí
 Azure Advisor zjistí, že je v prostředí ověřování zapnuté příliš mnoho fondů hostitelů. Aby mohla prostředí ověřování nejlépe zajišťovat jejich účel, měli byste mít alespoň jednu, ale nikdy více než polovinu fondů hostitelů v ověřovacím prostředí. Díky povolenému zůstatku mezi fondy hostitelů s povoleným ověřovacím prostředím a s tím, jak je zakázané, budete mít možnost využívat výhody nasazení s více fázemi, které nabízí virtuální plocha Windows s určitými aktualizacemi. Chcete-li tento problém vyřešit, otevřete vlastnosti fondu hostitelů a vyberte možnost \" ne \" vedle \" nastavení prostředí ověřování \" .
