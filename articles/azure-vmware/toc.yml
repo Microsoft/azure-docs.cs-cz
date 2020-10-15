@@ -64,6 +64,8 @@
       href: ./deploy-vm-content-library.md
     - name: Nastavení serveru GitHub Enterprise
       href: github-enterprise-server.md
+    - name: Využití veřejných IP adres
+      href: public-ip-usage.md
     - name: Vytvoření tunelu IPSec
       href: create-ipsec-tunnel.md
     - name: Nativní integrace Azure
@@ -84,8 +86,6 @@
           href: protect-azure-vmware-solution-with-application-gateway.md
         - name: Traffic Manager
           href: deploy-traffic-manager-balance-workloads.md
-        - name: Využití veřejných IP adres
-          href: public-ip-usage.md
     - name: Řešení VMware
       items:
         - name: Nastavení vRealize Operations

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 2a205daeffb659ce0dd5756066d11691a89c166e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 67c701946eedf85176b3d14b09d3e723c4c74285
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91664949"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072114"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Zpracování událostí v komunikačních službách Azure
 
@@ -36,9 +36,9 @@ Komunikační služby Azure emitují následující typy událostí:
 | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | Microsoft. Communication. SMSReceived                         | Publikováno při přijetí zprávy SMS pomocí telefonního čísla přidruženého ke komunikační službě. |
 | Microsoft. Communication. SMSDeliveryReportReceived           | Publikováno při přijetí oznámení o doručení pro SMS odesílané komunikační službou.     |
-| Microsoft. Communication. ChatMessageReceived *                | Publikováno při přijetí zprávy pro uživatele ve vlákně chat, které je členem.        |
-| Microsoft. Communication. ChatMessageEdited *                   | Publikováno při úpravě zprávy ve vlákně konverzace, které je uživatel členem.                |
-| Microsoft. Communication. ChatMessageDeleted *                  | Publikováno při odstranění zprávy ve vlákně konverzace, které je uživatel členem.               |
+| Microsoft. Communication. ChatMessageReceived                | Publikováno při přijetí zprávy pro uživatele ve vlákně chat, které je členem.        |
+| Microsoft. Communication. ChatMessageEdited                   | Publikováno při úpravě zprávy ve vlákně konverzace, které je uživatel členem.                |
+| Microsoft. Communication. ChatMessageDeleted                  | Publikováno při odstranění zprávy ve vlákně konverzace, které je uživatel členem.               |
 | Microsoft. Communication. ChatThreadCreatedWithUser           | Publikováno při přidání uživatele jako člena v době vytváření konverzačního vlákna.           |
 | Microsoft. Communication. ChatThreadWithUserDeleted           | Publikováno při odstranění vlákna konverzace, které je uživatel členem.                           |
 | Microsoft. Communication. ChatThreadPropertiesUpdatedPerUser  | Publikováno, když jsou aktualizovány vlastnosti vlákna chatu, na které je uživatel členem.              |
@@ -47,7 +47,6 @@ Komunikační služby Azure emitují následující typy událostí:
 
 K přihlášení k odběru událostí vygenerovaných vaším prostředkem komunikačních služeb můžete použít Azure Portal nebo Azure CLI. Začněte zpracovávat události tím, že si vyhledáte, [jak zpracovávat události SMS v komunikačních službách](../quickstarts/telephony-sms/handle-sms-events.md) .
 
-* Pokud chcete aktivovat tyto události, ujistěte se, že zadáte "jméno odesílatele" v volání rozhraní API "Odeslat zprávu".
 
 ## <a name="event-subjects"></a>Předměty událostí
 

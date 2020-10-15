@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
-ms.openlocfilehash: 8309b625a590131c5f521335e180967ab2c2667c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d2ac4f1e80c24a750e0e5f8eb22850718594a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91363150"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071026"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Kurz: Hromadná Správa připojených zařízení
 
@@ -31,7 +31,7 @@ V tomto kurzu jste:
 > * Nasaďte konfiguraci do zařízení ve skupině zařízení.
 > * Monitorování nasazení
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 <!--
 If this is going to be a tutorial - we need to split this include into two so that we can accommodate the additional prerequisites:
@@ -59,7 +59,7 @@ Než začnete, potřebujete:
 * Ujistěte se, že [zaváděcí program pro zařízení IoT DevKit je ve verzi 1.4.0 nebo vyšší](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/).
 * Ujistěte se, že sada IoT DevKit SDK má stejnou verzi jako zaváděcí program pro spouštění. Sadu IoT DevKit SDK můžete aktualizovat pomocí Azure IoT Workbench v VS Code. Otevřete paletu příkazů a zadejte **Arduino: Desk Manager**. Další informace najdete v tématu [Příprava vývojového prostředí](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
 
-Musíte taky připojit aspoň jedno zařízení IoT DevKit k akcelerátoru řešení vzdáleného monitorování. Pokud jste nepřipojili zařízení IoT DevKit, přečtěte si téma [připojení MXChip IoT DEVKIT AZ3166 k akcelerátoru řešení vzdáleného monitorování IoT](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md).
+Musíte taky připojit aspoň jedno zařízení IoT DevKit k akcelerátoru řešení vzdáleného monitorování. Pokud jste nepřipojili zařízení IoT DevKit, přečtěte si téma [připojení MXChip IoT DEVKIT AZ3166 k akcelerátoru řešení vzdáleného monitorování IoT](./iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md).
 
 ## <a name="navigate-to-the-dashboard"></a>Přechod na řídicí panel
 
@@ -274,4 +274,4 @@ Na stránce **nasazení** kliknutím na nasazení zobrazte stav svých zařízen
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste si ukázali, jak aktualizovat firmware skupiny zařízení, která jsou připojená k vašemu řešení. K aktualizaci zařízení používá vaše řešení automatickou správu zařízení. Další informace o funkci automatické správy zařízení ve službě IoT Hub vašeho řešení najdete v tématu [Konfigurace a monitorování škálování zařízení IoT pomocí Azure Portal](../iot-hub/iot-hub-auto-device-config.md).
+V tomto kurzu jste si ukázali, jak aktualizovat firmware skupiny zařízení, která jsou připojená k vašemu řešení. K aktualizaci zařízení používá vaše řešení automatickou správu zařízení. Další informace o funkci automatické správy zařízení ve službě IoT Hub vašeho řešení najdete v tématu [Konfigurace a monitorování škálování zařízení IoT pomocí Azure Portal](../iot-hub/iot-hub-automatic-device-management.md).

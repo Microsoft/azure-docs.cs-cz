@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: ed14d4cb79cb5794fa666f1bb96e062d69128d0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a9285ebe2e749f5ac7f248a2703518c8ac237bc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337666"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071672"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Připojení zařízení IoT DevKit k akcelerátoru řešení vzdáleného monitorování
 
@@ -28,7 +28,7 @@ V této příručce se dozvíte, jak spustit ukázkovou aplikaci na zařízení 
 
 K dokončení kroků v tomto kurzu nejdříve proveďte následující úlohy:
 
-* Připravte své DevKit podle kroků v části [připojení IoT DEVKIT AZ3166 do Azure IoT Hub v cloudu](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
+* Připravte své DevKit podle kroků v části [připojení IoT DEVKIT AZ3166 do Azure IoT Hub v cloudu](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md).
 
 ## <a name="open-sample-project"></a>Otevřít ukázkový projekt
 
@@ -128,5 +128,5 @@ Pokud narazíte na nějaké problémy, přečtěte si [Nejčastější dotazy k 
 
 Teď, když jste se naučili připojit zařízení DevKit k akcelerátoru řešení vzdáleného monitorování, je tady několik navrhovaných dalších kroků:
 
-* [Přehled akcelerátorů řešení Azure IoT](https://docs.microsoft.com/azure/iot-accelerators/)
+* [Přehled akcelerátorů řešení Azure IoT](./index.yml)
 * [Přizpůsobení uživatelského rozhraní](iot-accelerators-remote-monitoring-customize.md)

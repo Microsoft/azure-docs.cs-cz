@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: ee690a73907eca3bcd577cf2d983c8abc5409925
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 5de3d61f5b671f5ed6685e6cdee25be951fab69e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743059"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071876"
 ---
 # <a name="what-is-azure-expressroute"></a>Co je Azure ExpressRoute?
 ExpressRoute umožňuje rozmístit vaše místní sítě do cloudu Microsoftu přes soukromé připojení k poskytovateli připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako jsou Microsoft Azure a Microsoft 365.
@@ -36,7 +36,7 @@ Další informace najdete v tématu [ExpressRoute – nejčastější dotazy](ex
 ## <a name="features"></a>Funkce
 
 ### <a name="layer-3-connectivity"></a>Připojení vrstvy 3
-Microsoft používá protokol BGP, standardní protokol dynamického směrování. Pro výměnu tras mezi vaší místní sítí, vašimi instancemi v Azure a veřejnými adresami Microsoftu. S vaší sítí navážeme u různých profilů přenosu několik relací protokolu BGP. Další informace jsou uvedené v tématu [Okruh ExpressRoute a domény směrování](expressroute-circuit-peerings.md).
+Microsoft používá standardní protokol dynamického směrování BGP k výměně tras mezi vaší místní sítí, vašimi instancemi v Azure a veřejnými adresami Microsoftu. S vaší sítí navážeme u různých profilů přenosu několik relací protokolu BGP. Další informace jsou uvedené v tématu [Okruh ExpressRoute a domény směrování](expressroute-circuit-peerings.md).
 
 ### <a name="redundancy"></a>Redundance
 Každý okruh ExpressRoute sestává ze dvou připojení ke dvěma hraničním směrovačům Microsoft Enterprise (směrovači msee) na [umístění ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations) od poskytovatele připojení nebo z hraniční sítě. Microsoft vyžaduje od poskytovatele připojení nebo z hranice vaší sítě ke každému směrovači MSEE duální připojení BGP. Můžete se rozhodnout nenasazovat redundantní zařízení nebo ethernetové okruhy na vaší straně. Poskytovatelé připojení však používají redundantní zařízení k zajištění, že vaše připojení jsou předávána Microsoftu redundantním způsobem. Konfigurace redundantního připojení vrstvy 3 je požadavkem k tomu, aby byla naše smlouva [SLA](https://azure.microsoft.com/support/legal/sla/) platná.
