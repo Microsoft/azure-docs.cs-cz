@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 88255e60593403951db5b984bb9c69b1060a93c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db9ba3efe60af830c0e15310b6127c18130f00b9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540570"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076245"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Použít Time Series Insights k vizualizaci telemetrie odeslané z akcelerátoru řešení pro simulaci zařízení
 
@@ -21,7 +21,7 @@ Akcelerátor řešení pro simulaci zařízení umožňuje generovat telemetrii 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete postupovat podle kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud chcete postupovat podle kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 Postup v tomto průvodci předpokládá, že jste do svého předplatného Azure nasadili akcelerátor řešení pro simulaci zařízení. Pokud jste nenainstalovali akcelerátor řešení, postupujte podle kroků v části [nasazení a spuštění cloudového řešení simulace zařízení](quickstart-device-simulation-deploy.md) .
 
@@ -113,7 +113,7 @@ Vytvořte nový zdroj událostí pro připojení ke službě IoT Hub. Použijte 
 1. Klikněte na **Vytvořit**.
 
 > [!NOTE]
-> [Dalším uživatelům můžete udělit přístup](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) k Průzkumníku Time Series Insights.
+> [Dalším uživatelům můžete udělit přístup](../time-series-insights/concepts-access-policies.md#grant-data-access) k Průzkumníku Time Series Insights.
 
 ## <a name="start-a-simulation"></a>Spustit simulaci
 

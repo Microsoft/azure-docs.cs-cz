@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: f57163b3d17877f7f8c66fa57fc8a0736c6affb7
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: d1dc843ff676429f202c0b9077057d067294f738
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767709"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076160"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace Azure Functions
 
@@ -21,7 +21,7 @@ V tomto rychlém startu vytvoříte implementaci správy funkcí v aplikaci Azur
 
 Knihovny pro správu funkcí .NET rozšíří rozhraní s podporou příznaků funkcí. Tyto knihovny jsou postaveny na systému konfigurace .NET. Integrují s konfigurací aplikace prostřednictvím poskytovatele konfigurace .NET.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) s úlohou **vývoje Azure** .
@@ -133,7 +133,7 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s podporou příznaků f
 
     ![Příznak funkce funkce rychlého startu zakázán](./media/quickstarts/functions-launch-ff-disabled.png)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili.
 
 1. Vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**.
 
@@ -149,7 +149,7 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s podporou příznaků f
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili příznak funkce a použili ho v aplikaci Azure Functions prostřednictvím [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664).
+V tomto rychlém startu jste vytvořili příznak funkce a použili ho v aplikaci Azure Functions prostřednictvím [poskytovatele konfigurace aplikace](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration).
 
 - Přečtěte si další informace o [správě funkcí](./concept-feature-management.md).
 - [Správa příznaků funkcí](./manage-feature-flags.md).

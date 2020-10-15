@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 1b84854688fbdcc017b16698dfebfe54a7210110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5b0c2feb31eab5e39bbebd7108b3ec8504769d4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75422187"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076279"
 ---
 # <a name="authorize-access-based-on-jwt-claims"></a>Autorizace přístupu na základě deklarací JWT
 
-Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak autorizovat přístup ke konkrétním metodám HTTP na rozhraní API na základě deklarací JWT. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak autorizovat přístup ke konkrétním metodám HTTP na rozhraní API na základě deklarací JWT. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-reference.md).
 
-## <a name="policy"></a>Zásada
+## <a name="policy"></a>Zásady
 
 Vložte kód do **vstupního** bloku.
 
@@ -35,5 +35,4 @@ Vložte kód do **vstupního** bloku.
 Další informace o zásadách APIM:
 
 + [Zásady transformace](../api-management-transformation-policies.md)
-+ [Ukázky zásad](../policy-samples.md)
-
++ [Ukázky zásad](../policy-reference.md)

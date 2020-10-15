@@ -3,13 +3,13 @@ title: Zobrazit protokoly řadiče AKS (Azure Kubernetes Service)
 description: Naučte se, jak povolit a zobrazit protokoly pro hlavní uzel Kubernetes ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 01/03/2019
-ms.openlocfilehash: 4d4485848bb81f9b745081bd999b3cd3e8101b41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 79ed9308488725d9be0c839bbd04b6783bbbd85a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299067"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076381"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolení a kontrola protokolů hlavních uzlů Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -30,8 +30,16 @@ Protokoly Azure Monitor jsou v Azure Portal povolené a spravované. Chcete-li p
 1. Vyberte cluster AKS, jako je například *myAKSCluster*, a pak zvolte **Přidání nastavení diagnostiky**.
 1. Zadejte název, třeba *myAKSClusterLogs*, a pak vyberte možnost **odeslání do Log Analytics**.
 1. Vyberte existující pracovní prostor nebo vytvořte nový. Pokud vytváříte pracovní prostor, zadejte název pracovního prostoru, skupinu prostředků a umístění.
-1. V seznamu dostupných protokolů vyberte protokoly, které chcete povolit. V tomto příkladu povolte protokoly *Kube-audit* . Mezi běžné protokoly patří *Kube-apiserver*, *Kube-Controller-Manager*a *Kube-Scheduler*. Shromážděné protokoly můžete vrátit a změnit, jakmile jsou povolené pracovní prostory Log Analytics.
+1. V seznamu dostupných protokolů vyberte protokoly, které chcete povolit. V tomto příkladu povolte protokoly *Kube-audit* a *Kube-audit-admin* . Mezi běžné protokoly patří *Kube-apiserver*, *Kube-Controller-Manager*a *Kube-Scheduler*. Shromážděné protokoly můžete vrátit a změnit, jakmile jsou povolené pracovní prostory Log Analytics.
 1. Až budete připraveni, vyberte **Uložit** a povolte shromažďování vybraných protokolů.
+
+## <a name="log-categories"></a>Kategorie protokolů
+
+Kromě záznamů zapsaných v Kubernetes mají protokoly auditu vašeho projektu také záznamy z AKS.
+
+Protokoly auditu se zaznamenávají do dvou kategorií, *Kube-audit – admin* a *Kube-audit*. Kategorie *Kube-audit* obsahuje všechna data protokolu auditu pro každou událost auditu, včetně *Get*, *list*, *Create*, *Update*, *Delete*, *patch*a *post*.
+
+Kategorie *Kube-audit-admin* je podmnožinou kategorie protokolu *Kube-audit* . *Kube – audit – správce* zkracuje počet protokolů významně tím, že z protokolu vyloučí události *Get* a *list* audit.
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Naplánování testu pod v clusteru AKS
 
@@ -67,7 +75,12 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>Zobrazit shromážděné protokoly
 
-Povolení a zobrazení diagnostických protokolů může trvat několik minut. V Azure Portal přejděte na svůj cluster AKS a na levé straně vyberte **protokoly** . Pokud se zobrazí okno *příklady dotazů* , zavřete ho.
+Povolení a zobrazení diagnostických protokolů může trvat několik minut.
+
+> [!NOTE]
+> Pokud potřebujete všechna data protokolu auditu pro dodržování předpisů nebo jiné účely, shromážděte je a uložte do levného úložiště, jako je BLOB Storage. Ke shromáždění a uložení smysluplné sady dat protokolu auditu pro účely monitorování a upozorňování použijte kategorii protokolu *Kube-audit-admin* .
+
+V Azure Portal přejděte na svůj cluster AKS a na levé straně vyberte **protokoly** . Pokud se zobrazí okno *příklady dotazů* , zavřete ho.
 
 Na levé straně vyberte **protokoly**. Chcete-li zobrazit protokoly *Kube-audit* , zadejte do textového pole následující dotaz:
 
@@ -85,6 +98,24 @@ AzureDiagnostics
 | where log_s contains "nginx"
 | project log_s
 ```
+
+Pokud chcete zobrazit protokoly *Kube-audit-admin* , zadejte do textového pole tento dotaz:
+
+```
+AzureDiagnostics
+| where Category == "kube-audit-admin"
+| project log_s
+```
+
+V tomto příkladu se v dotazu zobrazí všechny úlohy vytváření v *Kube-audit-admin*. Bylo vráceno příliš mnoho výsledků. Chcete-li zobrazit protokoly o NGINX pod vytvořením v předchozím kroku, přidejte do rozsahu dotazu další příkaz *WHERE* *, jak je* znázorněno v následujícím příkladu dotazu.
+
+```
+AzureDiagnostics
+| where Category == "kube-audit-admin"
+| where log_s contains "nginx"
+| project log_s
+```
+
 
 Další informace o tom, jak zadávat dotazy a filtrovat data protokolu, najdete v tématu [zobrazení nebo analýza dat shromážděných pomocí prohledávání protokolů Log Analytics][analyze-log-analytics].
 
