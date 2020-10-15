@@ -10,18 +10,18 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f54b91ab1ea4521c17a3b40c88214f5637ab47a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cf137eae9e026f4854034efe1565dc8f7f0b35d
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021608"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091657"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Client-Side šifrování a Azure Key Vault pro Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Přehled
-[Klientská knihovna Azure Storage pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet) podporuje šifrování dat v rámci klientských aplikací před odesláním do Azure Storage a dešifrování dat při stahování do klienta. Knihovna také podporuje integraci s [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) pro správu klíčů účtu úložiště.
+[Klientská knihovna Azure Storage pro .NET](/dotnet/api/overview/azure/storage) podporuje šifrování dat v rámci klientských aplikací před odesláním do Azure Storage a dešifrování dat při stahování do klienta. Knihovna také podporuje integraci s [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) pro správu klíčů účtu úložiště.
 
 Podrobný kurz, který vás provede procesem šifrování objektů BLOB pomocí šifrování na straně klienta a Azure Key Vault, najdete v tématu [šifrování a dešifrování objektů BLOB v Microsoft Azure Storage pomocí Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md).
 

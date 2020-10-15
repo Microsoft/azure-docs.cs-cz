@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: dc8dffb12dcd205671e2219dbef45ac14f9f7df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c706f38dabbe21e5bafb096bf406e70af0855aa3
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892528"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089974"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Kurz: jak monitorovat prostředky jarní cloudu pomocí výstrah a skupin akcí
 
@@ -113,7 +113,7 @@ Pravidlo je také možné vytvořit pomocí stránky **metriky** :
 V tomto kurzu jste zjistili, jak nastavit výstrahy a skupiny akcí pro aplikaci pro jarní Cloud v Azure. Další informace o skupinách akcí najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Vytváření a správa skupin akcí na webu Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+> [Vytváření a správa skupin akcí na webu Azure Portal](../azure-monitor/platform/action-groups.md)
 
 > [!div class="nextstepaction"]
-> [Chování výstrah SMS ve skupinách akcí](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
+> [Chování výstrah SMS ve skupinách akcí](../azure-monitor/platform/alerts-sms-behavior.md)

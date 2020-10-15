@@ -1,6 +1,6 @@
 ---
-title: Sdílení řídicích panelů Azure Portal pomocí Role-Based Access Control
-description: Tento článek vysvětluje, jak sdílet řídicí panel v Azure Portal pomocí Role-Based Access Control.
+title: Sdílení řídicích panelů Azure Portal pomocí řízení přístupu na základě role v Azure
+description: Tento článek vysvětluje, jak sdílet řídicí panel v Azure Portal pomocí řízení přístupu na základě role v Azure.
 services: azure-portal
 documentationcenter: ''
 author: mgblythe
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 89c2b90b12a4fc16dd48571c00ff46dc62168d42
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: b74cae439ce351a4d720f215679cc0802eebe898
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077877"
+ms.locfileid: "92092201"
 ---
-# <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Sdílení řídicích panelů Azure prostřednictvím Řízení přístupu na základě role
+# <a name="share-azure-dashboards-by-using-azure-role-based-access-control"></a>Sdílení řídicích panelů Azure pomocí řízení přístupu na základě role v Azure
 
 Po nakonfigurování řídicího panelu ho můžete publikovat a sdílet s ostatními uživateli ve vaší organizaci. Ostatním uživatelům umožníte zobrazit váš řídicí panel pomocí [řízení přístupu na základě role Azure (RBAC)](../role-based-access-control/role-assignments-portal.md). Přiřaďte roli uživatele nebo skupiny uživatelů. Tato role definuje, jestli můžou uživatelé zobrazit nebo upravit publikovaný řídicí panel.
 
@@ -33,7 +33,7 @@ Všechny publikované řídicí panely se implementují jako prostředky Azure. 
 
 ## <a name="understanding-access-control-for-dashboards"></a>Principy řízení přístupu pro řídicí panely
 
-Pomocí Role-Based Access Control (RBAC) můžete uživatelům přiřadit role na třech různých úrovních rozsahu:
+Díky řízení přístupu na základě role v Azure (Azure RBAC) můžete uživatelům přiřadit role na třech různých úrovních rozsahu:
 
 * předplatné
 * skupina prostředků

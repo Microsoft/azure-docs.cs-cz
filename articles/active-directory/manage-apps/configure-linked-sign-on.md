@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 67cb8d6bf6dd61fb5ba7aec70a79078cbe2b8b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49191ffc0033559f0668a5330b8c91643dee39d3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597843"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073967"
 ---
 # <a name="understand-linked-sign-on"></a>Principy propojených přihlášení
 
@@ -35,7 +35,7 @@ Mezi běžné scénáře, kde je možnost propojení užitečná, patří:
 
 Pokud chcete rychle vymezit, Projděte si [řadu rychlých startů](view-applications-portal.md) při správě aplikací. V rychlém startu, ve kterém nakonfigurujete jednotné přihlašování, taky najdete **propojenou** možnost. 
 
-Možnost **propojený** neposkytuje funkci přihlašování prostřednictvím služby Azure AD. Možnost jednoduše nastaví umístění, do kterého se budou uživatelé posílat při výběru aplikace v [okně moje aplikace](https://myapps.microsoft.com/) nebo ve spouštěči aplikace Microsoft 365.
+Možnost **propojený** neposkytuje funkci přihlašování prostřednictvím služby Azure AD. Možnost jednoduše nastaví umístění, do kterého se budou uživatelé posílat při výběru aplikace v [okně moje aplikace](https://myapps.microsoft.com/) nebo ve spouštěči aplikace Microsoft 365.  Vzhledem k tomu, že přihlášení neposkytuje funkci přihlašování prostřednictvím služby Azure AD, není podmíněný přístup k dispozici pro aplikace nakonfigurované s propojeným jednotným přihlašováním.
 
 > [!IMPORTANT] 
 > Existují některé scénáře, kdy možnost **jednotného přihlašování** nebude v navigaci pro aplikaci v **podnikových aplikacích**. 

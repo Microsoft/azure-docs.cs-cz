@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 0d00db9909f05028b55505400d0810b00e0114c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4598cb1d54fbbeb09e3bc5f58f0cce949b3c848
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932538"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073797"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
 
@@ -33,7 +33,7 @@ Aplikace slouží jako vývěsní tabule pro inzerci. Uživatelé vytvářejí r
 Aplikace používá [způsob práce zaměřený na fronty](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern), aby vyvážila práci při vytváření miniatur (která je náročná na prostředky procesoru) vůči back-endovému procesu.
 
 ## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternativní architektura: App Service a WebJobs
-Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure. Alternativou je spuštění front-endu v [Azure App Service](/azure/app-service/) a použití funkce [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) pro back-end. Kurz, který používá webové úlohy, najdete v článku [Začínáme se sadou SDK pro Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki). Informace o tom, jak zvolit služby, které nejlépe vyhovují vašemu scénáři, najdete v tématu [porovnání Azure App Service, Cloud Services a virtuálních počítačů](/azure/architecture/guide/technology-choices/compute-decision-tree).
+Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure. Alternativou je spuštění front-endu v [Azure App Service](../app-service/index.yml) a použití funkce [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) pro back-end. Kurz, který používá webové úlohy, najdete v článku [Začínáme se sadou SDK pro Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki). Informace o tom, jak zvolit služby, které nejlépe vyhovují vašemu scénáři, najdete v tématu [porovnání Azure App Service, Cloud Services a virtuálních počítačů](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ## <a name="what-youll-learn"></a>Co se dozvíte
 * Postup zprovoznění počítače pro vývoj na platformě Azure nainstalováním sady Azure SDK.
@@ -169,7 +169,7 @@ V reálné aplikaci byste obvykle vytvořili samostatné účty pro data aplikac
 
 4. V rozevíracím seznamu **Replikace** vyberte **Místně redundantní úložiště**.
 
-    Když má účet úložiště povolenou geografickou replikaci, bude se uložený obsah replikovat do sekundárního datacentra, které zajistí převzetí služeb při selhání v případě významnější havárie v primárním umístění. Geografická replikace může způsobit dodatečné náklady. V případě testovacích a vývojových účtů je zbytečné za geografickou replikaci platit. Další informace naleznete v článku o [vytvoření, správě nebo odstranění účtu úložiště](../storage/common/storage-create-storage-account.md).
+    Když má účet úložiště povolenou geografickou replikaci, bude se uložený obsah replikovat do sekundárního datacentra, které zajistí převzetí služeb při selhání v případě významnější havárie v primárním umístění. Geografická replikace může způsobit dodatečné náklady. V případě testovacích a vývojových účtů je zbytečné za geografickou replikaci platit. Další informace naleznete v článku o [vytvoření, správě nebo odstranění účtu úložiště](../storage/common/storage-account-create.md).
 
 5. V části **Skupina prostředků** klikněte na **Použít existující** a vyberte skupinu prostředků použitou pro cloudovou službu.
 6. V rozevíracím seznamu **Umístění** vyberte stejnou oblast, jakou jste zvolili pro cloudové služby.
@@ -213,7 +213,7 @@ Pro webovou roli a nastavení prostředí cloudové služby pro roli pracovního
     ![Připojovací řetězce](./media/cloud-services-dotnet-get-started/connstrings.png)
 3. V transformačním souboru *Web.Release.config* odstraňte text `{connectionstring}` a na jeho místo vložte připojovací řetězec ADO.NET z portálu Azure Portal.
 4. V připojovacím řetězci, který jste vložili do transformačního souboru*Web.Release.config*, nahraďte text `{your_password_here}` heslem, které jste vytvořili pro novou databázi SQL.
-5. Uložte soubor.  
+5. Soubor uložte.  
 6. Vyberte a zkopírujte připojovací řetězec (bez okolních uvozovek), abyste ho mohli použít v následujících krocích konfigurace projektu role pracovního procesu.
 7. V **Průzkumníku řešení** v části **Role** v projektu cloudové služby klikněte pravým tlačítkem na **ContosoAdsWorker** a potom klikněte na **Vlastnosti**.
 
@@ -290,7 +290,7 @@ Nastavení `<Instances>` určuje počet virtuálních počítačů, na kterých 
 
     ![Krok Nastavení](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
-    Výchozí nastavení na kartě **Upřesnit** jsou pro účely tohoto kurzu vyhovující. Informace o kartě Upřesnit naleznete v článku o [průvodci publikováním aplikace Azure](https://docs.microsoft.com/azure/vs-azure-tools-publish-azure-application-wizard).
+    Výchozí nastavení na kartě **Upřesnit** jsou pro účely tohoto kurzu vyhovující. Informace o kartě Upřesnit naleznete v článku o [průvodci publikováním aplikace Azure](/visualstudio/azure/vs-azure-tools-publish-azure-application-wizard).
 4. V kroku **Souhrn** klikněte na tlačítko **Publikovat**.
 
     ![Krok Souhrn](./media/cloud-services-dotnet-get-started/pubsummary.png)
@@ -776,5 +776,5 @@ Další informace naleznete v následujících zdrojích:
 
 * [Cloudové služby Azure Cloud Services část 1: Úvod](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Jak spravovat Cloud Services](cloud-services-how-to-manage-portal.md)
-* [Azure Storage](https://docs.microsoft.com/azure/storage/)
+* [Azure Storage](../storage/index.yml)
 * [Jak vybrat poskytovatele cloudových služeb](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

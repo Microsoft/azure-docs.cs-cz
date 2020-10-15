@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: c9d4356f5dc0b1eace586b741593b9c718c35caf
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 31e25fb8c67e3d271bc37eb4b0d28c67d94a664f
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945443"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092796"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Příprava aplikace pro nasazení v jarním cloudu Azure
 
@@ -23,7 +23,7 @@ Jarní cloud Azure poskytuje robustní služby pro hostování, monitorování, 
 Tento článek vysvětluje závislosti, konfiguraci a kód, které jsou nutné ke spuštění aplikace .NET Core Steeltoe ve jarním cloudu Azure. Informace o tom, jak nasadit aplikaci do jarního cloudu Azure, najdete v tématu [nasazení první aplikace pro jarní Cloud v Azure](spring-cloud-quickstart.md).
 
 >[!Note]
-> Podpora Steeltoe pro jarní cloud Azure je teď nabízená jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v tématu [Nejčastější dotazy](https://azure.microsoft.com/support/faq/) nebo soubor a [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+> Podpora Steeltoe pro jarní cloud Azure je teď nabízená jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v tématu [Nejčastější dotazy](https://azure.microsoft.com/support/faq/) nebo soubor a [support Request](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ##  <a name="supported-versions"></a>Podporované verze
 
@@ -99,7 +99,7 @@ Tento článek vysvětluje požadované závislosti a jejich přidání do soubo
 
 V Azure jaře cloudu se dají spouštět jenom pružinové a Java aplikace.
 
-Azure jarní Cloud podporuje Java 8 i Java 11. Hostující prostředí obsahuje nejnovější verzi Azul Zulu OpenJDK pro Azure. Další informace o Azul Zulu OpenJDK pro Azure najdete v tématu [instalace JDK](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
+Azure jarní Cloud podporuje Java 8 i Java 11. Hostující prostředí obsahuje nejnovější verzi Azul Zulu OpenJDK pro Azure. Další informace o Azul Zulu OpenJDK pro Azure najdete v tématu [instalace JDK](/azure/developer/java/fundamentals/java-jdk-install).
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Jarní spouštěcí a jarní verze cloudu
 
@@ -305,9 +305,9 @@ Zahrňte `spring-boot-starter-actuator` závislost do oddílu závislosti v soub
  Musíte taky povolit instanci Azure Application Insights, abyste mohli pracovat s instancí cloudové služby Azure na jaře. Informace o tom, jak používat Application Insights s využitím služby Azure Pramenitého cloudu, najdete v [dokumentaci k distribuovanému trasování](spring-cloud-tutorial-distributed-tracing.md).
 
 ## <a name="see-also"></a>Viz také
-* [Analýza protokolů a metrik aplikace](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
-* [Nastavení konfiguračního serveru](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)
-* [Použití distribuovaného trasování u jarního cloudu Azure](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+* [Analýza protokolů a metrik aplikace](./diagnostic-services.md)
+* [Nastavení konfiguračního serveru](./spring-cloud-tutorial-config-server.md)
+* [Použití distribuovaného trasování u jarního cloudu Azure](./spring-cloud-tutorial-distributed-tracing.md)
 * [Průvodce rychlým startem pružiny](https://spring.io/quickstart)
 * [Dokumentace ke jarnímu spuštění](https://spring.io/projects/spring-boot)
 

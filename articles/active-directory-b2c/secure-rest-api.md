@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 206768604c6d08a32c0caaf9b53a1417cfa1344b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adb9bf48800062d2cc6976a88ec48c1993858dec
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385327"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089532"
 ---
 # <a name="secure-your-restful-services"></a>Zabezpečení služeb RESTful 
 
@@ -28,7 +28,7 @@ Přečtěte si, jak integrovat REST API v rámci cesty Azure AD B2C uživatele v
 
 Tento článek vás seznámí s postupem zabezpečení REST API pomocí protokolu HTTP Basic, klientského certifikátu nebo ověřování OAuth2. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky v jednom z následujících pokynů:
 
@@ -312,7 +312,7 @@ Po přidání výše uvedených fragmentů kódu by váš technický profil měl
 
 ### <a name="add-the-oauth2-bearer-token-policy-key"></a>Přidat klíč zásad OAuth2 Bearer tokenu
 
-Vytvořte klíč zásad pro uložení hodnoty nosných tokenů.
+Pokud chcete nakonfigurovat REST API technický profil s nosným tokenem OAuth2, Získejte přístupový token od vlastníka REST API. Pak vytvořte následující kryptografický klíč pro uložení nosného tokenu.
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář Azure AD B2C.

@@ -1,7 +1,7 @@
 ---
 title: Jak zabezpečit jednostránkové aplikaci pomocí neinteraktivního přihlašování
 titleSuffix: Azure Maps
-description: Postup konfigurace jednostránkové aplikace s neinteraktivním řízením přístupu na základě role Azure AD a Azure Maps webové sady SDK.
+description: Postup konfigurace jednostránkové aplikace s neinteraktivním řízením přístupu na základě role Azure (Azure RBAC) a Azure Maps Web SDK
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: e49954065f8a4ec03eb54d7333a3fff34bafb143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 000f6a80a2cee14abc3d954de479dd87b1edf876
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319652"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090246"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Jak zabezpečit jednostránkové aplikaci pomocí neinteraktivního přihlašování
 
@@ -36,7 +36,7 @@ Vytvořte zabezpečenou aplikaci webové služby, která je zodpovědná za ově
 
 3. [Přidejte identitu přiřazenou systémem](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) do funkce Azure, která umožňuje vytvoření instančního objektu pro ověření ve službě Azure AD.  
 
-4. Udělení přístupu na základě rolí pro identitu přiřazenou systému Azure Maps účtu. Podrobnosti najdete v tématu [udělení přístupu na základě role](#grant-role-based-access) .
+4. Udělte účtu Azure Maps přístup na základě rolí pro identitu přiřazenou systémem. Podrobnosti najdete v tématu [udělení přístupu na základě role](#grant-role-based-access) .
 
 5. Napíšete kód pro funkci Azure Functions, který získá Azure Maps přístupové tokeny pomocí identity přiřazené systémem s jedním z podporovaných mechanismů nebo protokolu REST. Viz [získání tokenů pro prostředky Azure](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) .
 

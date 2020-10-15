@@ -8,19 +8,19 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 266e31ae9865c8fb427e06e89cd755e7ff38b27f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61443328"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073865"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Import automatického balíčku pro správu zařízení do akcelerátoru řešení vzdáleného monitorování
 
 Automatická konfigurace správy zařízení definuje změny konfigurace, které se mají nasadit do skupiny zařízení. V tomto článku se předpokládá, že vývojář ve vaší organizaci už vytvořil automatickou konfiguraci správy zařízení. Další informace o tom, jak Vývojář vytvoří konfiguraci, najdete v některém z následujících článků s postupy IoT Hub:
 
-- [Nakonfigurujte a monitorujte zařízení IoT ve velkém měřítku pomocí Azure Portal](../iot-hub/iot-hub-auto-device-config.md)
-- [Konfigurace a monitorování škálování zařízení IoT pomocí Azure CLI](../iot-hub/iot-hub-auto-device-config-cli.md)
+- [Nakonfigurujte a monitorujte zařízení IoT ve velkém měřítku pomocí Azure Portal](../iot-hub/iot-hub-automatic-device-management.md)
+- [Konfigurace a monitorování škálování zařízení IoT pomocí Azure CLI](../iot-hub/iot-hub-automatic-device-management-cli.md)
 
 Vývojář vytvoří a testuje automatickou konfiguraci správy zařízení ve vývojovém prostředí. Až budete připraveni, můžete importovat konfiguraci do akcelerátoru řešení vzdáleného monitorování.
 

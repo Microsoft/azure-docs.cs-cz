@@ -1,81 +1,67 @@
 ---
-title: Vysvětlení automatizovaných výsledků na ML
+title: Vyhodnotit výsledky experimentů AutoML
 titleSuffix: Azure Machine Learning
-description: Naučte se zobrazovat a pochopit grafy a metriky pro každé z automatizovaných běhů strojového učení.
+description: Přečtěte si, jak zobrazit a vyhodnotit grafy a metriky pro každý z automatizovaných testů strojového učení.
 services: machine-learning
 author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 12/05/2019
+ms.date: 10/09/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: a38d65e66debd8e718964efdce27fe42772d8e0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, contperfq2
+ms.openlocfilehash: d27c65938d10f9061961ebb585327bc77d8b2859
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315537"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92092456"
 ---
-# <a name="understand-automated-machine-learning-results"></a>Vysvětlení výsledků automatizovaného strojového učení
+# <a name="evaluate-automated-machine-learning-experiment-results"></a>Vyhodnotit automatizované výsledky experimentování ve strojovém učení
 
+V tomto článku se dozvíte, jak zobrazit a vyhodnotit výsledky automatizovaného strojového učení, AutoML a experimentů. Tyto experimenty se skládají z několika spuštění, kde každé spuštění vytvoří model. Pro usnadnění vyhodnocení každého modelu AutoML automaticky generuje metriky výkonu a grafy specifické pro váš typ experimentu. 
 
-V tomto článku se dozvíte, jak zobrazit a pochopit grafy a metriky pro jednotlivé běhy automatizovaného strojového učení. 
+Například AutoML poskytuje různé grafy pro klasifikace a regresní modely. 
 
-Přečtěte si další informace:
-+ [Metriky a grafy pro modely klasifikace](#classification)
-+ [Metriky a grafy pro regresní modely](#regression)
-+ [Závažnost modelu a důležitost funkcí](#explain-model)
+|Classification|Regrese
+|---|---|
+|<li> [Konfuzní matice](#confusion-matrix) <li>[Přesnost – graf odvolání](#precision-recall-chart) <li> [Provozní charakteristiky přijímače (nebo ROC)](#roc) <li> [Zvednutí křivky](#lift-curve)<li> [Křivka zisků](#gains-curve)<li> [Graf kalibrace](#calibration-plot) | <li> [Předpověď oproti hodnotě true](#pvt) <li> [Histogram zbytků](#histo)|
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Vytvořte experiment pro automatizované spuštění strojového učení, a to buď pomocí sady SDK, nebo v Azure Machine Learning Studiu.
 
     * Použití sady SDK k sestavení [modelu klasifikace](how-to-auto-train-remote.md) nebo [regresního modelu](tutorial-auto-train-models.md)
     * Pomocí nástroje [Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md) můžete vytvořit model klasifikace nebo regrese tím, že nahrajete příslušná data.
 
-## <a name="view-the-run"></a>Zobrazit běh
+## <a name="view-run-results"></a>Zobrazit výsledky spuštění
 
-Po spuštění automatizovaného experimentu machine learningu se v pracovním prostoru Machine Learning dá najít historie běhů. 
+Po dokončení automatizovaného experimentu machine learningu můžete v pracovním prostoru Machine Learning najít historii běhů prostřednictvím služby [Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md). 
 
-1. Přejděte do svého pracovního prostoru.
+V případě experimentů sady SDK můžete stejné výsledky zobrazit během spuštění, když použijete `RunDetails` [widget Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true).
 
-1. V levém panelu pracovního prostoru vyberte **experimenty**.
+Následující kroky a animace ukazují, jak zobrazit historii spuštění a metriky výkonu a grafy konkrétního modelu v studiu.
 
-   ![Snímek nabídky experimentů](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-menu.png)
+![Postup zobrazení historie spuštění a metriky výkonu modelu a grafů](./media/how-to-understand-automated-ml/view-run-metrics-ui.gif)
 
+Zobrazení historie spuštění a metriky výkonu modelu a grafů v studiu: 
+
+1. [Přihlaste se ke studiu](https://ml.azure.com/) a přejděte k pracovnímu prostoru.
+1. V levém panelu pracovního prostoru vyberte možnost **spuštění**.
 1. V seznamu experimentů vyberte tu, kterou chcete prozkoumat.
-
-   [![Seznam experimentů](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
-
 1. V dolní tabulce vyberte **běh**.
+1. Na kartě **modely** vyberte **název algoritmu** pro model, který chcete prozkoumat.
+1. Na kartě **metriky** vyberte metriky a grafy, které chcete pro daný model vyhodnotit. 
 
-   [ ![ Experimentovat za běhu](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png))
 
-1. V části modely vyberte **název algoritmu** pro model, který chcete prozkoumat.
+<a name="classification"></a> 
 
-   [![Experiment model](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
+## <a name="classification-performance-metrics"></a>Metriky výkonu klasifikace
 
-Stejné výsledky se zobrazí také při spuštění při použití `RunDetails` [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true).
-
-## <a name="classification-results"></a><a name="classification"></a> Výsledky klasifikace
-
-Thee následující metriky a grafy jsou k dispozici pro každý model klasifikace, který sestavíte pomocí možností automatizovaného strojového učení Azure Machine Learning
-
-+ [Metriky](#classification-metrics)
-+ [Konfuzní matice](#confusion-matrix)
-+ [Přesnost – graf odvolání](#precision-recall-chart)
-+ [Provozní charakteristiky přijímače (nebo ROC)](#roc)
-+ [Zvednutí křivky](#lift-curve)
-+ [Křivka zisků](#gains-curve)
-+ [Graf kalibrace](#calibration-plot)
-
-### <a name="classification-metrics"></a>Metriky klasifikace
-
-Následující metriky jsou uloženy v každé iteraci spuštění pro úlohu klasifikace.
+Následující tabulka shrnuje metriky výkonu modelu, které AutoML vypočte pro každý model klasifikace vygenerovaný pro váš experiment. 
 
 Metrika|Popis|Výpočet|Další parametry
 --|--|--|--
@@ -104,125 +90,126 @@ weighted_accuracy|Vážená přesnost je přesnost, při které se váha předan
 
 AutoML nerozlišuje mezi binárními a mi metrikami. Stejné metriky ověřování jsou hlášeny, zda má datová sada dvě třídy nebo více než dvě třídy. Některé metriky jsou však určeny pro klasifikaci s více třídami. Při použití na binární datovou sadu tyto metriky nepovažují žádnou třídu za `true` třídu, jak je možné očekávat. Metriky, které jsou jasně určeny pro více tříd, jsou s příponou `micro` , `macro` nebo `weighted` . Mezi příklady patří,,, `average_precision_score` `f1_score` `precision_score` `recall_score` a `AUC` .
 
-Konkrétní příklad usnadňuje zrušení tohoto rozlišení: místo výpočtu odvolání jako `tp / (tp + fn)` je průměrná hodnota vyvrácení ( `micro` , `macro` nebo) ve více třídách `weighted` v obou třídách binární datové sady klasifikace. To je ekvivalentní k výpočtu odvolání pro `true` třídu a `false` třídu samostatně a pak přebírá průměr dvou.
+Například namísto výpočtu odvolání jako `tp / (tp + fn)` je průměrně vyvolaná hodnota ve více třídách ( `micro` , `macro` nebo `weighted` ) v obou třídách binární datové sady klasifikace. To je ekvivalentní k výpočtu odvolání pro `true` třídu a `false` třídu samostatně a pak přebírání průměru dvou.
 
-<a name="confusion-matrix"></a>
+## <a name="confusion-matrix"></a>Konfuzní matice
 
-### <a name="confusion-matrix"></a>Konfuzní matice
+Nejasná matice popisuje výkon klasifikačního modelu. Každý řádek zobrazí v datové sadě instance hodnoty true nebo actual, přičemž každý sloupec představuje instance třídy, která byla předpovězena modelem. 
 
-#### <a name="what-is-a-confusion-matrix"></a>Co je nejasná matice?
-K popisu výkonu modelu klasifikace se používá nejasná matice. Každý řádek zobrazí v datové sadě instance hodnoty true nebo actual, přičemž každý sloupec představuje instance třídy, která byla předpovězena modelem. 
+U každé nejasné matrice zobrazuje automatizovaná paleta frekvence všech předpokládaných popisků (sloupců) porovnaných k hodnotě true Label (řádek). Čím tmavší je barva, tím vyšší je počet v této konkrétní části matice. 
 
-#### <a name="what-does-automated-ml-do-with-the-confusion-matrix"></a>Co dělá automatizovaná paleta s nejasností?
-Pro problémy s klasifikací Azure Machine Learning automaticky poskytuje záměnu pro každý model, který je sestaven. U každé nejasnosti bude v případě automatizované palety zobrazena frekvence všech předpokládaných popisků (sloupců) porovnaných k hodnotě true Label (řádek). Čím tmavší je barva, tím vyšší je počet v této konkrétní části matice. 
+### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
 
-#### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
-Porovnáváme skutečnou hodnotu datové sady s předpovězenými hodnotami, které model poskytl. Z tohoto důvodu mají modely strojového učení vyšší přesnost, pokud model má většinu hodnot po diagonále, což znamená, že model předpovídá správnou hodnotu. Pokud má model nerovnováhu mezi třídou, matice nejasností vám pomůže zjistit, který model byl posunut.
+Nejasná matice porovnává skutečnou hodnotu datové sady s předpovězenými hodnotami, které model poskytl. Z tohoto důvodu mají modely strojového učení vyšší přesnost, pokud model má většinu hodnot po diagonále, což znamená, že model předpovídá správnou hodnotu. V případě, že model má nerovnováhu tříd, vyhledá vyměněný model pomocí matrice.
 
-##### <a name="example-1-a-classification-model-with-poor-accuracy"></a>Příklad 1: klasifikační model s nízkou přesností
+#### <a name="example-1-a-classification-model-with-poor-accuracy"></a>Příklad 1: klasifikační model s nízkou přesností
 ![Klasifikační model s nízkou přesností](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 
-##### <a name="example-2-a-classification-model-with-high-accuracy"></a>Příklad 2: model klasifikace s vysokou přesností 
+#### <a name="example-2-a-classification-model-with-high-accuracy"></a>Příklad 2: model klasifikace s vysokou přesností 
 ![Klasifikační model s vysokou přesností](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix2.png)
 
 ##### <a name="example-3-a-classification-model-with-high-accuracy-and-high-bias-in-model-predictions"></a>Příklad 3: klasifikační model s vysokou přesností a vysokým posunem v modelu předpovědi
 ![Klasifikační model s vysokou přesností a vysokým posunem v modelu předpovědi](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-biased-model.png)
 
 <a name="precision-recall-chart"></a>
-### <a name="precision-recall-chart"></a>Přesnost – graf odvolání
-#### <a name="what-is-a-precision-recall-chart"></a>Co je graf se zavoláním přesnosti?
-Křivka s přesností na odvolání zobrazuje vztah mezi přesností a vrácením z modelu. Pojem přesnost představuje, že schopnost modelu správně popsat všechny instance. Odvolání představuje schopnost klasifikátoru najít všechny instance konkrétního popisku.
 
-#### <a name="what-does-automated-ml-do-with-the-precision-recall-chart"></a>Jak automatizované ML dělá pomocí grafu s přesností na odvolání?
+## <a name="precision-recall-chart"></a>Přesnost – graf odvolání
+
+Křivka s přesností na odvolání zobrazuje vztah mezi přesností a vrácením z modelu. Pojem přesnost představuje možnost, že model bude správně označovat všechny instance. Odvolání představuje schopnost klasifikátoru najít všechny instance konkrétního popisku.
 
 Pomocí tohoto grafu můžete porovnat křivky přesnosti a odvolání pro každý model, abyste zjistili, který model má přijatelný vztah mezi přesností a odvoláním konkrétního obchodního problému. Tento graf znázorňuje průměrnou přesnost v makru – odvolání, průměrnou přesnost při odvolání a vrácení přesnosti přidružené ke všem třídám pro model. 
 
-Makro – průměr vypočítává metriku nezávisle na každé třídě a pak vypočítá průměr a současně zpracuje všechny třídy. Střední hodnota však agreguje příspěvky všech tříd pro výpočet průměru. Mikroprůměr je vhodnější, pokud je v datové sadě přítomna nerovnováha tříd.
+**Makro – průměr** počítá metriku nezávisle na každé třídě a pak bere průměr a současně zpracovává všechny třídy. **Střední** hodnota však agreguje příspěvky všech tříd pro výpočet průměru. Mikroprůměr je vhodnější, pokud je v datové sadě přítomna nerovnováha tříd.
 
-#### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
-V závislosti na cíli podnikového problému se může způsobit, že se křivka s ideální přesností a odvolání může lišit. Některé příklady jsou uvedeny níže.
+### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
+V závislosti na cíli podnikového problému se může způsobit, že se křivka s ideální přesností a odvolání může lišit. 
 
 ##### <a name="example-1-a-classification-model-with-low-precision-and-low-recall"></a>Příklad 1: klasifikační model s nízkou přesností a nízkým navrácením
 ![Klasifikační model s nízkou přesností a nízkým navrácením](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
 
 ##### <a name="example-2-a-classification-model-with-100-precision-and-100-recall"></a>Příklad 2: klasifikační model s ~ 100% přesností a ~ 100% Recalling 
 ![Vysoká přesnost a vrácení modelu klasifikace](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
-<a name="roc"></a>
-### <a name="roc-chart"></a>Graf ROC
 
-#### <a name="what-is-a-roc-chart"></a>Co je graf ROC?
+<a name="roc"></a>
+
+## <a name="roc-chart"></a>Graf ROC
+
 Provozní charakteristika (nebo ROC) přijímače je graf správně klasifikovaných popisků vs. nesprávně klasifikované popisky pro konkrétní model. Křivka ROC může být méně informativní při výuce modelů u datových sad s vysokou nevyrovnanou třídou, protože většina třídy může drowN příspěvek z minoritních tříd.
 
-#### <a name="what-does-automated-ml-do-with-the-roc-chart"></a>K čemu se v grafu ROC používá automatizovaná ML?
 Oblast v grafu ROC můžete vizualizovat jako poměr správně klasifikovaných vzorků. Pokročilý uživatel grafu ROC může nahlížet nad rámec oblasti pod křivkou a získat Intuition pro pravdivé kladné a falešně pozitivní míry jako funkci prahové hodnoty klasifikace nebo hranice rozhodnutí.
 
-#### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
+### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
 Nejlepší model je křivka ROC, která přistupuje k levému hornímu rohu s 100% true a hodnotou 0% falešně pozitivní hodnotou. Náhodný model se zobrazí jako plochý čára od levého dolního rohu k pravému hornímu rohu. Horší než náhodné by byly DIP pod řádkem y = x.
 
-##### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>Příklad 1: klasifikační model s dolními popisky s nízkou hodnotou a horními nepravdivými popisky
+#### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>Příklad 1: klasifikační model s dolními popisky s nízkou hodnotou a horními nepravdivými popisky
 ![Klasifikační model s dolními popisky s nízkou hodnotou a horními nepravdivými popisky](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
 
-##### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>Příklad 2: klasifikační model s horními popisky a popisky s nízkou hodnotou false
+#### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>Příklad 2: klasifikační model s horními popisky a popisky s nízkou hodnotou false
+
 ![klasifikační model s horními popisky s hodnotou true a s dolními falešnými popisky](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
+
+
 <a name="lift-curve"></a>
-### <a name="lift-chart"></a>Nazvednutí grafu
-#### <a name="what-is-a-lift-chart"></a>Co je graf výtahu?
-K vyhodnocení výkonu modelů klasifikace se používají výtahové grafy. Graf výtahu ukazuje, kolikrát je model lépe vykonává v porovnání s náhodným modelem. Díky tomu získáte relativní výkon, který vezme v úvahu skutečnost, že klasifikace je těžší při zvýšení počtu tříd. Náhodný model nesprávně odhadne větší zlomek vzorků z datové sady s deseti třídami v porovnání s datovou sadou se dvěma třídami.
 
-#### <a name="what-does-automated-ml-do-with-the-lift-chart"></a>Co dělá automatizované ML s grafem výtahu?
-Můžete porovnat výtah modelu sestavený automaticky s Azure Machine Learning do směrného plánu, aby bylo možné zobrazit hodnoty pro konkrétní model.
-#### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
+## <a name="lift-chart"></a>Nazvednutí grafu
 
-##### <a name="example-1-a-classification-model-that-does-worse-than-a-random-selection-model"></a>Příklad 1: model klasifikace, který je horší než model náhodného výběru
+Nazvednutí grafů vyhodnotí výkon modelů klasifikace. Graf výtahu ukazuje, kolikrát je model lépe vykonává v porovnání s náhodným modelem. Díky tomu získáte relativní výkon, který vezme v úvahu skutečnost, že klasifikace je těžší při zvýšení počtu tříd. Náhodný model nesprávně předpovídá větší zlomek vzorků z datové sady s deseti třídami v porovnání s datovou sadou se dvěma třídami.
+
+Můžete porovnat výtah modelu sestavený automaticky s Azure Machine Learning do směrného plánu (náhodný model), chcete-li zobrazit hodnotu pro konkrétní model.
+
+### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
+
+Vyšší křivka zvednutí, která je vyšší než váš model, je nad směrným plánem, indikuje lepší výkon modelu. 
+
+#### <a name="example-1-a-classification-model-that-performs-poorly-compared-to-a-random-selection-model"></a>Příklad 1: klasifikační model, který se v porovnání s modelem náhodného výběru provádí špatně
 ![Model klasifikace, který je horší než model náhodného výběru](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
-##### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>Příklad 2: model klasifikace, který provádí lepší, než model náhodného výběru
+
+#### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>Příklad 2: model klasifikace, který provádí lepší, než model náhodného výběru
 ![Model klasifikace, který zajišťuje lepší](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
+
 <a name="gains-curve"></a>
-### <a name="cumulative-gains-chart"></a>Graf kumulativních zisků
-#### <a name="what-is-a-cumulative-gains-chart"></a>Co je kumulativní graf zisků?
 
-Kumulativní graf kurzů vyhodnocuje výkon klasifikačního modelu podle každé části dat. Pro každý percentil sady dat graf znázorňuje, kolik dalších ukázek bylo přesně klasifikováno.
+## <a name="cumulative-gains-chart"></a>Graf kumulativních zisků
 
-#### <a name="what-does-automated-ml-do-with-the-gains-chart"></a>Co dělá automatizované ML s grafem zisků?
-Pomocí grafu kumulativních zisků vám pomůžete vybrat přerušení klasifikace pomocí procenta, které odpovídá požadovanému zisku z modelu. Tyto informace poskytují další způsob, jak si prohlédnout výsledky v doprovodném grafu výtahu.
+Kumulativní graf kurzů vyhodnocuje výkon klasifikačního modelu podle každé části dat. Pro každý percentil sady dat graf znázorňuje, kolik dalších vzorků bylo přesně klasifikovaných v porovnání s modelem, který je vždy nesprávný. Tyto informace poskytují další způsob, jak si prohlédnout výsledky v doprovodném grafu výtahu.
+
+Graf kumulativních zisků vám pomůže vybrat přerušení klasifikace pomocí procenta, které odpovídá požadovanému zisku z modelu. Pokud chcete zobrazit procentuální podíl vzorků, které byly správně klasifikovány na základě každého stupně spolehlivosti, můžete porovnat kumulativní graf nárůstu na účaří (nesprávný model).
 
 #### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
+
+Podobně jako u grafu výtahu je čím vyšší vaše křivka kumulativních zisků nad základní hodnotou, což je lepší model. Kromě toho se povýšení křivky kumulativních zisků nachází v levém horním rohu grafu, což je větší zisk, který váš model dosahuje oproti směrnému plánu. 
+
 ##### <a name="example-1-a-classification-model-with-minimal-gain"></a>Příklad 1: klasifikační model s minimálním ziskem
-![klasifikační model s minimálním ziskem](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
+![klasifikační model s minimálním ziskem](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
 
 ##### <a name="example-2-a-classification-model-with-significant-gain"></a>Příklad 2: klasifikační model s významným ziskem
-![Klasifikační model s významným ziskem](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
-<a name="calibration-plot"></a>
-### <a name="calibration-chart"></a>Graf kalibrace
+![Klasifikační model s významným ziskem](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
 
-#### <a name="what-is-a-calibration-chart"></a>Co je kalibrační graf?
-Graf kalibrace se používá k zobrazení spolehlivosti prediktivního modelu. Zobrazuje vztah mezi předpovězenou pravděpodobností a skutečnou pravděpodobností, kde "pravděpodobnost" představuje pravděpodobnost, že konkrétní instance patří do nějakého popisku.
-#### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>Co dělá automatizovaná ML s kalibračním grafem?
+<a name="calibration-plot"></a>
+
+## <a name="calibration-chart"></a>Graf kalibrace
+
+Graf kalibrace zobrazuje spolehlivost prediktivního modelu. Zobrazuje vztah mezi předpovězenou pravděpodobností a skutečnou pravděpodobností, kde "pravděpodobnost" představuje pravděpodobnost, že konkrétní instance patří do nějakého popisku.
+
 Pro všechny problémy s klasifikací můžete zkontrolovat kalibrační čáru pro střední průměr, průměr makra a každou třídu v daném prediktivním modelu.
 
-Makro – průměr vypočítává metriku nezávisle na každé třídě a pak vypočítá průměr a současně zpracuje všechny třídy. Střední hodnota však agreguje příspěvky všech tříd pro výpočet průměru. 
-#### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
+**Makro – průměr** vypočítá metriku nezávisle na každé třídě a pak vypočítá průměr a zpracuje všechny třídy rovnoměrně. **Střední** hodnota však agreguje příspěvky všech tříd pro výpočet průměru. 
+
+### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
 Dobře kalibrovaný model zarovnává se čárou y = x, kde správně předpovídá pravděpodobnost, že vzorky patří do jednotlivých tříd. Model s nadjistým využitím předpovídání pravděpodobností téměř nula a jedna, zřídka nejisté o třídě jednotlivých vzorků.
 
-
-##### <a name="example-1-a-well-calibrated-model"></a>Příklad 1: dobře kalibrovaný model
+#### <a name="example-1-a-well-calibrated-model"></a>Příklad 1: dobře kalibrovaný model
 ![ dobře kalibrovaný model](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve1.png)
 
-##### <a name="example-2-an-over-confident-model"></a>Příklad 2: model s nadjistým využitím
+#### <a name="example-2-an-over-confident-model"></a>Příklad 2: model s nadjistým využitím
 ![Model s vysokou jistotou](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
 
-## <a name="regression-results"></a><a name="regression"></a> Výsledky regrese
 
-Thee následující metriky a grafy jsou k dispozici pro každý regresní model, který sestavíte pomocí možností automatizovaného strojového učení Azure Machine Learning
+<a name="regression"></a> 
 
-+ [Metriky](#reg-metrics)
-+ [Předpověď oproti hodnotě true](#pvt)
-+ [Histogram zbytků](#histo)
+## <a name="regression-performance-metrics"></a>Metriky výkonu regrese
 
-
-### <a name="regression-metrics"></a><a name="reg-metrics"></a> Regresní metriky
-
-Následující metriky jsou uloženy v každé iteraci spuštění pro úlohu regrese nebo předpovědi.
+Následující tabulka shrnuje metriky výkonu modelu, které AutoML vypočítá pro každou regresi nebo model prognózy, který je vygenerován pro váš experiment. 
 
 |Metrika|Popis|Výpočet|Další parametry
 --|--|--|--|
@@ -238,39 +225,44 @@ normalized_root_mean_squared_error|Normalizovaný základní Průměrná chyba j
 root_mean_squared_log_error|Hodnota původní střední Chyba protokolu je druhá odmocnina očekávaného čtvercového logaritmu chyby.|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Žádné|
 normalized_root_mean_squared_log_error|Normalizovaná chyba na čtvercovém středním významu protokolu je chyba v kořenovém středním významu protokolu dělená rozsahem dat|[Výpočet](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Rozdělit podle rozsahu dat|
 
-### <a name="predicted-vs-true-chart"></a><a name="pvt"></a> Předpokládaný vs. pravdivý graf
-#### <a name="what-is-a-predicted-vs-true-chart"></a>Co je předpokládaný graf vs. true?
-Předpovězené vs. hodnota true zobrazuje vztah mezi předpokládanou hodnotou a korelaci pravdivé hodnoty pro problém regrese. Tento graf lze použít k měření výkonu modelu jako blíže řádku y = x, protože jsou předpovězené hodnoty lepší přesností prediktivního modelu.
+<a name="pvt"></a>
 
-#### <a name="what-does-automated-ml-do-with-the-predicted-vs-true-chart"></a>Co dělá automatizované ML s předpokládaným grafem vs. true?
+## <a name="predicted-vs-true-chart"></a>Předpokládaný vs. pravdivý graf
+
+Předpovězené vs. hodnota true zobrazuje vztah mezi předpokládanou hodnotou a korelaci pravdivé hodnoty pro problém regrese. 
+
 Po každém spuštění můžete zobrazit předpokládaný a pravdivý graf pro každý regresní model. Za účelem ochrany ochrany osobních údajů jsou hodnoty rozdělený dohromady a velikost každé přihrádky se v dolní části oblasti grafu zobrazuje jako pruhový graf. Prediktivní model můžete porovnat s plochým barevným nádechem, na kterém se zobrazují okraje chyb, oproti ideální hodnotě, kde by měl model být.
 
-#### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
-##### <a name="example-1-a-classification-model-with-low-accuracy"></a>Příklad 1: klasifikační model s nízkou přesností
+### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
+Tento graf lze použít k měření výkonu modelu jako blíže řádku y = x, protože jsou předpovězené hodnoty lepší přesností prediktivního modelu.
+
+#### <a name="example-1-a-classification-model-with-low-accuracy"></a>Příklad 1: klasifikační model s nízkou přesností
 ![Regresní model s nízkou přesností v předpovědi](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-##### <a name="example-2-a-regression-model-with-high-accuracy"></a>Příklad 2: regresní model s vysokou přesností 
-[![Regresní model s vysokou přesností ve svém předpovědi](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
+#### <a name="example-2-a-regression-model-with-high-accuracy"></a>Příklad 2: regresní model s vysokou přesností 
+![Regresní model s vysokou přesností ve svém předpovědi](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)
 
+<a name="histo"></a> 
 
+## <a name="histogram-of-residuals-chart"></a>Histogram grafu zbytků
 
-### <a name="histogram-of-residuals-chart"></a><a name="histo"></a> Histogram grafu zbytků
-#### <a name="what-is-a-residuals-chart"></a>Co je graf zbytků?
-Reziduální je rozdíl mezi předpověď a skutečnou hodnotou ( `y_pred - y_true` ). Chcete-li zobrazit marži chyby s nízkou špičkou, histogram zbytku by měl být ve tvaru špičky uprostřed na střed 0. 
-#### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>Co dělá automatizované ML s grafem zbytků?
-Automatizovaná ML automaticky poskytuje graf reziduálního grafu pro zobrazení distribuce chyb v předpovědi.
-#### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
-Dobrým modelem budou obvykle blízko sebe nula.
+Automatizované ML automaticky poskytuje graf reziduálního grafu pro zobrazení distribuce chyb v předpovědi regresního modelu. Reziduální je rozdíl mezi předpověď a skutečnou hodnotou ( `y_pred - y_true` ). 
 
-##### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>Příklad 1: regresní model s posunem v jeho chybách
+### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
+Chcete-li zobrazit marži chyby s nízkou špičkou, histogram zbytku by měl být vytvořen jako křivka špičky na střed nula.
+
+#### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>Příklad 1: regresní model s posunem v jeho chybách
 ![SA regresní model s posunem v jeho chybách](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
 
-##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>Příklad 2: regresní model s větší rovnoměrné distribucí chyb
+#### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>Příklad 2: regresní model s větší rovnoměrné distribucí chyb
 ![Regresní model s větší rovnoměrné distribucí chyb](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
-## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> Závažnost modelu a důležitost funkcí
+<a name="explain-model"></a>
+
+## <a name="model-interpretability-and-feature-importance"></a>Závažnost modelu a důležitost funkcí
 Automatizované ML poskytuje řídicí panel pro vyhodnocení pro vaše běhy na strojovém učení.
-Další informace o povolení funkcí pro interpretaci najdete v tématu [postup](how-to-machine-learning-interpretability-automl.md) při povolování interpretace v rámci automatizovaných experimentů ml.
+
+Další informace o povolení funkcí pro interpretaci najdete v tématu věnovaném [interpretaci: vysvětlení modelů v automatizovaném strojovém učení](how-to-machine-learning-interpretability-automl.md).
 
 > [!NOTE]
 > ForecastTCN model není aktuálně podporován klientem vysvětlení. Tento model nevrátí řídicí panel vysvětlení, pokud je vrácen jako nejlepší model, a nepodporuje spuštění vysvětlení na vyžádání.
@@ -278,4 +270,4 @@ Další informace o povolení funkcí pro interpretaci najdete v tématu [postup
 ## <a name="next-steps"></a>Další kroky
 
 + Přečtěte si další informace o [automatizovaném ml](concept-automated-ml.md) v Azure Machine Learning.
-+ Vyzkoušejte [model automatizovaného Machine Learning vysvětlení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) ukázkových poznámkových bloků.
++ Vyzkoušejte si vzor [automatizovaného strojového učení s vysvětlením](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) ukázkových poznámkových bloků.

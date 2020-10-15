@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: c7fcced1833cb5f4ccb9c2c2fd44dd84a9abb3cb
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7f52bd94a0286ea50d09ab7c77dce339e8a3ebf3
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077860"
+ms.locfileid: "92089362"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Vytváření řídicích panelů Azure prostřednictvím kódu programu
 
@@ -55,7 +55,7 @@ Po nakonfigurování řídicího panelu je dalším krokem publikování řídic
 
 ![sdílení řídicího panelu](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-Po výběru možnosti **sdílet** budete vyzváni k výběru předplatného a skupiny prostředků, do které chcete publikovat. Musíte mít oprávnění k zápisu do předplatného a skupiny prostředků, kterou si zvolíte. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure Portal](../role-based-access-control/role-assignments-portal.md).
+Po výběru možnosti **sdílet** budete vyzváni k výběru předplatného a skupiny prostředků, do které chcete publikovat. Musíte mít oprávnění k zápisu do předplatného a skupiny prostředků, kterou si zvolíte. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí webu Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ![provedení změn pro sdílení a přístup](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 

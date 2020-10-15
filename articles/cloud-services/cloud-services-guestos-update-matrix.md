@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/12/2020
 ms.author: yohaddad
-ms.openlocfilehash: 84b690c13cc96e5f69965305648d94a72199d667
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: b2f66f9d4a96bda323413ac9016f582f5605e6cd
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948965"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073321"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Verze hostovaného operačního systému Azure a tabulka kompatibility SDK
 Poskytuje aktuální informace o nejnovějších vydáních hostovaného operačního systému Azure pro Cloud Services. Tyto informace vám pomohou naplánovat cestu upgradu před zakázáním hostovaného operačního systému. Pokud vaše role nakonfigurujete tak, aby používaly *Automatické* aktualizace HOSTOVANÉHO operačního systému, jak je popsáno v tématu [aktualizace nastavení operačního systému hosta v Azure][Azure Guest OS Update Settings], není důležité tuto stránku číst.
@@ -120,7 +120,7 @@ Hostovaný operační systém v říjnu vydal.
 ###### <a name="october-12-2018"></a>**12. října 2018**
 Hostovaný operační systém v září vydal.
 
-## <a name="releases"></a>Vydání
+## <a name="releases"></a>Verze
 
 ## <a name="family-6-releases"></a>Vydání řady 6
 **Windows Server 2019**
@@ -360,26 +360,26 @@ Pokud ručně aktualizujete hostovaný operační systém, další informace naj
 ## <a name="guest-os-supportability-and-retirement-policy"></a>Podpora hostovaného operačního systému a zásady vyřazení
 Zásady podpory hostovaného operačního systému a zásady vyřazení je vysvětleny [zde][retirepolicy].
 
-[cloud updates]: https://docs.microsoft.com/azure/cloud-services/cloud-services-update-azure-service
+[cloud updates]: ./cloud-services-update-azure-service.md
 [Informační kanál RSS aktualizace operačního systému hosta]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
-[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
+[Install .NET on a Cloud Service Role]: ./cloud-services-dotnet-install-dotnet.md?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure-portal.md
 [ssl3 announcement]: https://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
-[Microsoft Security Advisory 3009008]: https://technet.microsoft.com/library/security/3009008.aspx
+[Microsoft Security Advisory 3009008]: /security-updates/SecurityAdvisories/2015/3009008
 [ssl3-fixit]: https://go.microsoft.com/?linkid=9863266
-[MS14-066]: https://technet.microsoft.com/library/security/ms14-066.aspx
-[MS14-046]: https://technet.microsoft.com/library/security/ms14-046.aspx
-[retire policy sdk]: https://msdn.microsoft.com/library/dn479282.aspx
+[MS14-066]: /security-updates/SecurityBulletins/2014/ms14-066
+[MS14-046]: /security-updates/SecurityBulletins/2014/ms14-046
+[retire policy sdk]: /previous-versions/azure/reference/dn479282(v=azure.100)
 [server and gos]: https://msdn.microsoft.com/library/dn775043.aspx
 [azuresupport]: https://azure.microsoft.com/support/options/
 [net install pkg]: https://www.microsoft.com/download/details.aspx?id=42643
 [msrc]: https://technet.microsoft.com/security/dn440717.aspx
 [update guest os portal]: https://msdn.microsoft.com/library/gg433101.aspx
 [update guest os svc]: https://msdn.microsoft.com/library/gg456324.aspx
-[restarts]: https://docs.microsoft.com/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades
+[restarts]: /archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
-[fix]: https://technet.microsoft.com/library/security/ms17-010.aspx
+[fix]: /security-updates/SecurityBulletins/2017/ms17-010
 [Windows Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=54917
-[aktuálnější]: https://docs.microsoft.com/azure/cloud-services/applications-dont-support-tls-1-2  
+[aktuálnější]: ./applications-dont-support-tls-1-2.md

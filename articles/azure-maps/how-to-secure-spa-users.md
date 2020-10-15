@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 0ba2e23e8121a76ec281b5e411819ee7d450cbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfd38f03601f7c4ebfbb5dde4fd7587e78df9efc
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319686"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090280"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>Zabezpečení jednostránkové aplikace pomocí přihlášení uživatele
 
@@ -67,7 +67,7 @@ Vytvořte webovou aplikaci ve službě Azure AD, aby se uživatelé mohli přihl
         </script>   
     ```
 
-7. Nakonfigurujte řízení přístupu na základě role Azure pro uživatele nebo skupiny. Pokud [chcete povolit RBAC](#grant-role-based-access-for-users-to-azure-maps), přečtěte si následující části.
+7. Nakonfigurujte řízení přístupu na základě role v Azure (Azure RBAC) pro uživatele nebo skupiny. Pokud [chcete povolit Azure RBAC](#grant-role-based-access-for-users-to-azure-maps), přečtěte si následující části.
    
 [!INCLUDE [grant role access to users](./includes/grant-rbac-users.md)]
 

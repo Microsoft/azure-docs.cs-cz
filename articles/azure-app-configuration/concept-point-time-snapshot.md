@@ -8,12 +8,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: cbcfedc091fd111bceffe775cb337c118a87c767
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23f613584638026a2b371849c7d1014b3bb1f136
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601074"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073066"
 ---
 # <a name="point-in-time-snapshot"></a>Snímek k určitému časovému okamžiku
 
@@ -23,7 +23,7 @@ Konfigurace aplikace Azure udržuje záznam změn provedených u klíčových ho
 
 Pomocí Azure Portal nebo CLI můžete načíst minulé hodnoty klíč-hodnota. V Azure CLI použijte `az appconfig revision list` a přidejte vhodné parametry pro načtení požadovaných hodnot.  Zadáním názvu úložiště ( `--name <app-config-store-name>` ) nebo pomocí připojovacího řetězce () zadejte instanci Azure App Configuration `--connection-string <your-connection-string>` . Omezte výstup zadáním určitého bodu v čase ( `--datetime` ) a zadáním maximálního počtu položek, které se mají vrátit ( `--top` ).
 
-Pokud nemáte rozhraní příkazového řádku Azure v místním počítači nainstalováno, můžete volitelně použít [Azure Cloud Shell](/azure/cloud-shell/overview).
+Pokud nemáte rozhraní příkazového řádku Azure v místním počítači nainstalováno, můžete volitelně použít [Azure Cloud Shell](../cloud-shell/overview.md).
 
 Načte všechny zaznamenané změny hodnot vašich klíčů.
 
@@ -58,4 +58,4 @@ az appconfig revision list --name <your-app-config-store-name> --top 10 --fields
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace ASP.NET Core](./quickstart-aspnet-core-app.md)  
+> [Vytvoření webové aplikace ASP.NET Core](./quickstart-aspnet-core-app.md)
