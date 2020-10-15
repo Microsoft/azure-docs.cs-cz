@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: abe7503e7eb73d533ae901af21de001960173fb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7082744bc43baad2e26d09a83907540cf6a1df
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85559413"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92094071"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Spravované identity pro službu Azure Signal Service
 
@@ -65,7 +65,7 @@ Služba signalizace Azure je plně spravovaná služba, takže nemůžete pomoc�
     - [ID prostředku služby Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)
 
     > [!NOTE]
-    > Pokud váš přístupový token ověříte ve vaší službě sami, můžete si vybrat libovolný z formátů prostředků. Stačí se ujistit, že hodnota **prostředku** v nastavení **ověřování** a ověřování jsou konzistentní. Pokud pro rovinu dat používáte řízení přístupu na základě role (RBAC), musíte použít prostředek, který poskytovatel služeb požaduje.
+    > Pokud váš přístupový token ověříte ve vaší službě sami, můžete si vybrat libovolný z formátů prostředků. Stačí se ujistit, že hodnota **prostředku** v nastavení **ověřování** a ověřování jsou konzistentní. Pokud pro rovinu dat používáte řízení přístupu na základě role Azure (Azure RBAC), musíte použít prostředek, který poskytovatel služeb požaduje.
 
 ### <a name="validate-access-tokens"></a>Ověřit přístupové tokeny
 

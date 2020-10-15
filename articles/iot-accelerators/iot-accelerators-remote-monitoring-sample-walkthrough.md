@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9477b11b52431211dc91a0ea6ff0767a9d495be
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80546315"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073593"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Přehled akcelerátorů řešení pro vzdálené monitorování
 
@@ -106,7 +106,7 @@ Služba poskytuje koncový bod RESTful pro operace CRUD pro páry klíč-hodnota
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Nasazení akcelerátorů řešení používá [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) k ukládání pravidel, upozornění, nastavení konfigurace a všech ostatních chladírenských úložišť.
+Nasazení akcelerátorů řešení používá [Azure Cosmos DB](../cosmos-db/index.yml) k ukládání pravidel, upozornění, nastavení konfigurace a všech ostatních chladírenských úložišť.
 
 ### <a name="azure-stream-analytics-manager-microservice"></a>Mikroslužba Azure Stream Analytics Manager
 
@@ -120,11 +120,11 @@ Referenční data skupin zařízení slouží k identifikaci skupiny pravidel, k
 
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) je modul pro zpracování událostí, který umožňuje kontrolovat velké objemy streamování dat ze zařízení.
+[Azure Stream Analytics](../stream-analytics/index.yml) je modul pro zpracování událostí, který umožňuje kontrolovat velké objemy streamování dat ze zařízení.
 
 ### <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
-[Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/) ukládá telemetrii ze zařízení připojených k akcelerátoru řešení. Umožňuje také vizualizaci a dotazování telemetrie zařízení ve webovém uživatelském rozhraní řešení.
+[Azure Time Series Insights](../time-series-insights/index.yml) ukládá telemetrii ze zařízení připojených k akcelerátoru řešení. Umožňuje také vizualizaci a dotazování telemetrie zařízení ve webovém uživatelském rozhraní řešení.
 
 ### <a name="configuration-microservice"></a>Konfigurace mikroslužeb
 
@@ -136,7 +136,7 @@ Referenční data skupin zařízení slouží k identifikaci skupiny pravidel, k
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Nasazení akcelerátorů řešení používají [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) jako poskytovatele OpenID Connect. Azure Active Directory ukládá informace o uživateli a poskytuje certifikáty k ověření podpisů tokenu JWT.
+Nasazení akcelerátorů řešení používají [Azure Active Directory](../active-directory/index.yml) jako poskytovatele OpenID Connect. Azure Active Directory ukládá informace o uživateli a poskytuje certifikáty k ověření podpisů tokenu JWT.
 
 ## <a name="presentation"></a>Zobrazení
 

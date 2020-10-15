@@ -8,19 +8,19 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: df59d944a15e22e9884b0d177deedb9968ea1aef
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 6bdf008c13a1466ec47134c303902a1f9d19545b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994990"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072760"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
 Key Vault umožňuje zabezpečený přístup k citlivým informacím v rámci svých aplikací:
 
 - Klíče, tajné klíče a certifikáty jsou chráněné bez nutnosti psát kód sami a vy je snadno budete moct použít z vašich aplikací.
-- Můžete mít zákazníky, kteří si můžou vlastnit a spravovat vlastní klíče, tajné klíče a certifikáty, abyste se mohli soustředit na poskytování základních softwarových funkcí. Tímto způsobem vaše aplikace nebudou vlastnit odpovědnost ani potenciální odpovědnost za klíče tenanta vašich zákazníků, tajné klíče a certifikáty.
+- Zákazníkům umožníte vlastnit a spravovat vlastní klíče, tajné klíče a certifikáty, abyste se mohli soustředit na poskytování základních softwarových funkcí. Tímto způsobem vaše aplikace nebudou vlastnit odpovědnost ani potenciální odpovědnost za klíče tenanta vašich zákazníků, tajné klíče a certifikáty.
 - Vaše aplikace může používat klíče pro podepisování a šifrování. zatím udržuje správu klíčů externí z vaší aplikace. Další informace o klíčích najdete v tématu [o klíčích](../keys/about-keys.md) .
 - Můžete spravovat přihlašovací údaje, jako jsou hesla, přístupové klíče, tokeny SAS, které je ukládají Key Vault jako tajné klíče, viz [o tajných](../secrets/about-secrets.md) klíčích.
 - Správa certifikátů. Další informace najdete v tématu [o certifikátech](../certificates/about-certificates.md) .

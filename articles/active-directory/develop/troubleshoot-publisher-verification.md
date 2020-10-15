@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 3c5084ff770f27438c85b7bc57cef0145182abb4
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 4a66db34adb4eb751abc741964b740b3b6f48c69
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873145"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073729"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Řešení potíží s ověřením vydavatele
 Pokud se vám nedaří dokončit proces nebo došlo k neočekávanému chování při [ověřování vydavatele](publisher-verification-overview.md), měli byste začít následujícím způsobem, pokud obdržíte chyby nebo neočekávané chování: 
@@ -33,7 +33,7 @@ Pokud se vám nedaří dokončit proces nebo došlo k neočekávanému chování
 ## <a name="common-issues"></a>Běžné problémy
 Níže jsou uvedeny některé běžné problémy, ke kterým může dojít během procesu. 
 
-- **Nevím, Microsoft Partner Network ID (MPN ID), nebo neznáte, že je primárním kontaktem na účet** 
+- **Nevím, Microsoft Partner Network ID (MPN ID), nebo nevíte, kdo je primárním kontaktem pro tento účet.** 
     1. Přejít na [stránku registrace MPN](https://partner.microsoft.com/dashboard/account/v3/enrollment/joinnow/basicpartnernetwork/new)
     1. Přihlaste se pomocí uživatelského účtu v primárním tenantovi Azure AD organizace. 
     1. Pokud účet MPN již existuje, bude rozpoznán a bude přidán k účtu. 

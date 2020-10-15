@@ -310,10 +310,10 @@
       href: 'https://azure.microsoft.com/updates/?category=storage'
     - name: Poznámky k verzi Synchronizace souborů Azure
       href: storage-files-release-notes.md
-    - name: Azure Storage na webu Microsoft Q&A
+    - name: Azure Files na webu Microsoft Q&A
       href: 'https://docs.microsoft.com/answers/topics/azure-files.html'
-    - name: Azure Storage na webu Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Azure Files na webu Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-files'
     - name: Ceny služby Azure Files
       href: 'https://azure.microsoft.com/pricing/details/storage/files/'
     - name: Cenová kalkulačka Azure

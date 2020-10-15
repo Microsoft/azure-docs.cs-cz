@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: c930636f9af45edc66670c3f757333fef8e8756e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6de03969a22c5b699fdfd2be17a6ba65905d23e6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458820"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073389"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Oznámení o vyřazení hostovaného operačního systému řady 1 z provozu
 Vyřazení řady operačních systémů 1 bylo poprvé oznámeno 1. června 2013.
@@ -23,7 +23,7 @@ Vyřazení řady operačních systémů 1 bylo poprvé oznámeno 1. června 2013
 
 **3. listopadu 2014** Rozšířená podpora pro rodinu hostovaného operačního systému 1 skončila a je plně vyřazená. Budou to mít vliv na všechny služby, které jsou pořád v rodině 1. Tyto služby můžeme kdykoli zastavit. Není zaručena žádná záruka, že vaše služby budou nadále spuštěny, dokud je ručně NEUPGRADUJTE sami.
 
-Pokud máte další otázky, přejděte na [stránku s dotazem na Microsoft Q&pro Cloud Services](https://docs.microsoft.com/answers/topics/azure-cloud-services.html) nebo se [obraťte na podporu Azure](https://azure.microsoft.com/support/options/).
+Pokud máte další otázky, přejděte na [stránku s dotazem na Microsoft Q&pro Cloud Services](/answers/topics/azure-cloud-services.html) nebo se [obraťte na podporu Azure](https://azure.microsoft.com/support/options/).
 
 ## <a name="are-you-affected"></a>Jste to ovlivnili?
 Vaše Cloud Services jsou ovlivněny, pokud platí některá z následujících možností:
@@ -32,7 +32,7 @@ Vaše Cloud Services jsou ovlivněny, pokud platí některá z následujících 
 2. V souboru ServiceConfiguration. cscfg pro vaši cloudovou službu nemáte hodnotu pro osFamily explicitně zadanou. V současné době používá systém v tomto případě výchozí hodnotu "1".
 3. Azure Portal uvádí hodnotu vaší řady hostovaných operačních systémů jako Windows Server 2008.
 
-Pokud chcete zjistit, které z vašich cloudových služeb běží na kterých řadě operačních systémů, můžete spustit následující skript v Azure PowerShell, ale musíte nejdřív [nastavit Azure PowerShell](/powershell/azure/) . Další informace o skriptu najdete v tématu [řada hostovaných operačních systémů Azure 1 konec životnosti: červen 2014](https://docs.microsoft.com/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014).
+Pokud chcete zjistit, které z vašich cloudových služeb běží na kterých řadě operačních systémů, můžete spustit následující skript v Azure PowerShell, ale musíte nejdřív [nastavit Azure PowerShell](/powershell/azure/) . Další informace o skriptu najdete v tématu [řada hostovaných operačních systémů Azure 1 konec životnosti: červen 2014](/archive/blogs/ryberry/azure-guest-os-family-1-end-of-life-june-2014).
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
