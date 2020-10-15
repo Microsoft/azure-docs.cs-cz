@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4fb64a2ea55744d66b203ef4d901f22ae4695e1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d27537f017707e937303dd0c08a589db28aac6ef
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630419"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071434"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Zálohování a obnovení pro skupiny serverů PostgreSQL s podporou rozšíření Azure ARC
 
@@ -82,7 +82,12 @@ azdata arc postgres server create -n postgres01 --workers 2 --storage-class-back
 
 ## <a name="take-manual-full-backup"></a>Provedení ručního úplného zálohování
 
+
 Dále proveďte ruční úplnou zálohu.
+
+> [!CAUTION]
+> **Jenom pro uživatele služby Azure Kubernetes Service (AKS):** máme vědět, že máte problém s pořizováním záloh skupiny serverů hostované ve službě Azure Kubernetes Service (AKS). Na opravu už pracujeme. Dokud nebude aktualizace nasazena v budoucí verzi nebo aktualizaci, před provedením zálohování je nutné odstranit lusky skupin serverů. Pro každý z lusků skupiny serverů (po spuštění **kubectl získat lusky \<namespace name> **) odstraňte jejich odstranění spuštěním **kubectl Delete pod \<server group pod name> -n \<namespace name> **. Neodstraňujte lusky, které nejsou součástí skupiny serverů. Odstranění lusků neumísťuje vaše data na riziko. Počkejte, dokud nebudou všechny lusky zpátky online a ve stavu = SPUŠTĚNo před provedením zálohování. Stav pod je k dispozici ve výstupu příkazu kubectl Get lusks výše.
+
 
 Pokud chcete vytvořit úplnou zálohu všech složek dat a protokolů vaší skupiny serverů, spusťte následující příkaz:
 

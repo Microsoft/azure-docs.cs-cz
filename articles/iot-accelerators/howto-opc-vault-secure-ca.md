@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 01213cd4d04783d0d877b4565493f06fa3718f8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f54467c03a67797d52ac499ca9ba455c0f75e240
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399631"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071451"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>Bezpečně spusťte službu Správa certifikátů trezoru OPC.
 
@@ -97,7 +97,7 @@ Všechny systémy je potřeba průběžně monitorovat a aktualizovat s nejnově
 Přihlaste se k odběru nebo implementujte příslušné monitorování zabezpečení. Například se přihlaste k odběru řešení centrálního monitorování (například Azure Security Center nebo Microsoft 365 monitorování) a nakonfigurujte ho tak, aby bylo zajištěno, že se události zabezpečení přenáší do řešení monitorování.
 
 > [!IMPORTANT]
-> Ve výchozím nastavení je služba trezoru OPC nasazená s [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) jako řešení monitorování. Důrazně doporučujeme přidat řešení zabezpečení, jako je [Azure Security Center](https://azure.microsoft.com/services/security-center/) .
+> Ve výchozím nastavení je služba trezoru OPC nasazená s [Azure Application Insights](../azure-monitor/app/devops.md) jako řešení monitorování. Důrazně doporučujeme přidat řešení zabezpečení, jako je [Azure Security Center](https://azure.microsoft.com/services/security-center/) .
 
 ### <a name="assess-the-security-of-open-source-software-components"></a>Posouzení zabezpečení Open Source softwarových komponent
 
@@ -145,7 +145,7 @@ Poskytněte vyčerpávající sadu všech certifikátů vydaných za posledních
 
 ### <a name="document-the-standard-operating-procedure-for-securely-deleting-cryptographic-keys"></a>Zdokumentujte standardní provozní proceduru pro bezpečné odstranění kryptografických klíčů.
 
-Během životnosti certifikační autority může odstraňování klíčů probíhat jenom zřídka. Důvodem je, že žádný uživatel nemá přiřazenou oprávnění k odstranění Key Vault certifikátu a proč nejsou k dispozici žádná rozhraní API k odstranění certifikátu certifikační autority vystavitele. Ruční standardní provozní proceduru pro bezpečné odstranění kryptografických klíčů certifikační autority je k dispozici jenom přímým přístupem k Key Vault v Azure Portal. Můžete také odstranit skupinu certifikátů v Key Vault. Chcete-li zajistit okamžité odstranění, zakažte funkci [Key Vaultho obnovitelného odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) .
+Během životnosti certifikační autority může odstraňování klíčů probíhat jenom zřídka. Důvodem je, že žádný uživatel nemá přiřazenou oprávnění k odstranění Key Vault certifikátu a proč nejsou k dispozici žádná rozhraní API k odstranění certifikátu certifikační autority vystavitele. Ruční standardní provozní proceduru pro bezpečné odstranění kryptografických klíčů certifikační autority je k dispozici jenom přímým přístupem k Key Vault v Azure Portal. Můžete také odstranit skupinu certifikátů v Key Vault. Chcete-li zajistit okamžité odstranění, zakažte funkci [Key Vaultho obnovitelného odstranění](../key-vault/general/soft-delete-overview.md) .
 
 ## <a name="certificates"></a>Certifikáty
 

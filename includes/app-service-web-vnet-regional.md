@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: 9259e3d3e41a5ba4986fbef48e745210f80e6093
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54f80310f274b757d118f34542c1aa2e838ca7b9
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255234"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082146"
 ---
 Použití místní integrace virtuální sítě umožňuje aplikacím přístup k těmto akcím:
 
@@ -36,7 +36,8 @@ Ve výchozím nastavení vaše aplikace směruje jenom RFC1918 provoz do vaší 
 1. Vyberte **OK**.
 1. Vyberte **Uložit**.
 
-Pokud budete směrovat veškerý odchozí provoz do vaší virtuální sítě, bude se jednat o skupin zabezpečení sítě a udr, které se vztahují k vaší podsíti integrace. Při směrování veškerého odchozího provozu do virtuální sítě jsou vaše odchozí adresy stále výstupními adresami, které jsou uvedené ve vlastnostech vaší aplikace, pokud nezadáte trasy k odeslání provozu jinde.
+> [!NOTE]
+> Pokud budete směrovat veškerý odchozí provoz do vaší virtuální sítě, bude se jednat o skupin zabezpečení sítě a udr, které se vztahují k vaší podsíti integrace. Při směrování veškerého odchozího provozu do virtuální sítě jsou vaše odchozí adresy stále výstupními adresami, které jsou uvedené ve vlastnostech vaší aplikace, pokud nezadáte trasy k odeslání provozu jinde.
 
 Při použití integrace virtuální sítě s virtuální sítě ve stejné oblasti je potřeba mít určitá omezení:
 
