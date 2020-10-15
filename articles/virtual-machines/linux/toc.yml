@@ -493,6 +493,8 @@
                   items:
                     - name: Generalizovaná
                       href: ../vm-generalized-image-version-cli.md
+                    - name: Specializovaná
+                      href: ../vm-specialized-image-version-cli.md
                 - name: Aktualizace prostředků imagí
                   href: ../update-image-resources-cli.md
                 - name: Registrace aplikace pro sdílení
@@ -577,6 +579,8 @@
           href: build-image-with-packer.md
         - name: Stažení existujícího disku
           href: download-vhd.md
+        - name: Spravovaný disk z verze image
+          href: ../managed-disk-from-image-version.md
     - name: Zabezpečení virtuálních počítačů
       items:
         - name: Doporučení
@@ -736,7 +740,7 @@
           items:
             - name: Přehled
               href: ../maintenance-control.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: CLI
+            - name: Rozhraní příkazového řádku
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json

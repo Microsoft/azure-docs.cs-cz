@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: fa66f17c6f96ac7f70188c5a28c0b180ed2f03e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c189411b13baf2497f0752c15550dd419f88f754
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906877"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088597"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Použití řídicího panelu pro dělení na okruhy pomocí Azure jarního cloudu
 
@@ -42,7 +42,7 @@ mvn clean package -D skipTests -f recommendation-service/pom.xml
 mvn clean package -D skipTests -f hystrix-turbine/pom.xml
 ```
 ## <a name="provision-your-azure-spring-cloud-instance"></a>Zřízení instance Azure jaře cloudu
-Použijte postup a v [Azure CLI zřiďte instanci služby](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli).
+Použijte postup a v [Azure CLI zřiďte instanci služby](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud).
 
 ## <a name="deploy-your-applications-to-azure-spring-cloud"></a>Nasazení vašich aplikací do jarního cloudu Azure
 Tyto aplikace nepoužívají **konfigurační server**, takže není nutné nastavovat **konfigurační server** pro jarní cloud Azure.  Vytvořte a nasaďte následujícím způsobem:
@@ -82,6 +82,6 @@ Datové proudy metrik hystrix jsou také přístupné z `test-endpoint` . Jako b
 Jako webová aplikace by měl řídicí panel hystrix pracovat `test-endpoint` . Pokud nefunguje správně, může dojít k dvěma důvodům: první, při použití `test-endpoint` změny základní adresy URL z `/ to /<APP-NAME>/<DEPLOYMENT-NAME>` , nebo za sekundu používá webová aplikace absolutní cestu pro statický prostředek. Chcete-li ho využít `test-endpoint` , budete možná muset ručně upravit <base> v front-endové soubory.
 
 ## <a name="next-steps"></a>Další kroky
-* [Zřízení instance služby v Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli)
-* [Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
+* [Zřízení instance služby v Azure CLI](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)
+* [Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure](./spring-cloud-tutorial-prepare-app-deployment.md)
 ::: zone-end

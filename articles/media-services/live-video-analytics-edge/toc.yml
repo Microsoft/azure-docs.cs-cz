@@ -115,3 +115,5 @@
       href: faq.md
     - name: Připravenost na produkční prostředí a osvědčené postupy
       href: production-readiness.md
+    - name: Zásady transparentnosti a zodpovědné umělé inteligence
+      href: 'https://azure.microsoft.com/resources/transparency-note-live-video-analytics-lva/'

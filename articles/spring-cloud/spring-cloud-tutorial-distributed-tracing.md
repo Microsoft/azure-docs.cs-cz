@@ -8,21 +8,21 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 97926d5bdf3123ae50714d36ad0234872f67aa96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30eb19e418292e74989be81d94ed684c917f6971
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908299"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088631"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Použití distribuovaného trasování u jarního cloudu Azure
 
-Pomocí nástrojů pro distribuované trasování v Azure jarním cloudu můžete snadno ladit a monitorovat složité problémy. Jarní cloud Azure integruje [jarní Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) s využitím Azure [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Tato integrace poskytuje výkonnou schopnost distribuované vektorizace z Azure Portal.
+Pomocí nástrojů pro distribuované trasování v Azure jarním cloudu můžete snadno ladit a monitorovat složité problémy. Jarní cloud Azure integruje [jarní Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) s využitím Azure [Application Insights](../azure-monitor/app/app-insights-overview.md). Tato integrace poskytuje výkonnou schopnost distribuované vektorizace z Azure Portal.
 
 ::: zone pivot="programming-language-csharp"
 V tomto článku se dozvíte, jak povolit aplikaci .NET Core Steeltoe k použití distribuovaného trasování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli postupovat podle těchto postupů, potřebujete aplikaci Steeltoe, která je už [připravená pro nasazení do služby Azure jaře Cloud](spring-cloud-tutorial-prepare-app-deployment.md).
 
@@ -84,7 +84,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Zobrazte mapy závislostí pro vaše aplikace mikroslužeb.
 > * Vyhledávejte data trasování pomocí různých filtrů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle těchto pokynů, potřebujete službu pružinové cloudové služby Azure, která je už zřízená a spuštěná. Dokončete průvodce [nasazením prvního jarního cloudu aplikace na platformě Azure](spring-cloud-quickstart.md) , abyste zřídili a spustili službu jarní cloudu Azure.
 
@@ -144,15 +144,15 @@ Pokud jste už sestavili a nasadili aplikaci, můžete upravit vzorkovací frekv
 
 ## <a name="view-the-application-map"></a>Zobrazit mapu aplikace
 
-Vraťte se na stránku **distribuované trasování** a vyberte **Zobrazit mapu aplikací**. Zkontrolujte vizuální znázornění nastavení aplikace a monitorování. Informace o použití mapy aplikace najdete v tématu [Mapa aplikace: třídění distribuovaných aplikací](https://docs.microsoft.com/azure/azure-monitor/app/app-map).
+Vraťte se na stránku **distribuované trasování** a vyberte **Zobrazit mapu aplikací**. Zkontrolujte vizuální znázornění nastavení aplikace a monitorování. Informace o použití mapy aplikace najdete v tématu [Mapa aplikace: třídění distribuovaných aplikací](../azure-monitor/app/app-map.md).
 
 ## <a name="use-search"></a>Použití vyhledávání
 
-Použijte funkci Search k dotazování na jiné konkrétní položky telemetrie. Na stránce **distribuované trasování** vyberte **Hledat**. Další informace o tom, jak používat funkci hledání, najdete v tématu [Použití vyhledávání v Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search).
+Použijte funkci Search k dotazování na jiné konkrétní položky telemetrie. Na stránce **distribuované trasování** vyberte **Hledat**. Další informace o tom, jak používat funkci hledání, najdete v tématu [Použití vyhledávání v Application Insights](../azure-monitor/app/diagnostic-search.md).
 
 ## <a name="use-application-insights"></a>Použít Application Insights
 
-Application Insights poskytuje kromě funkcí mapa aplikace a funkce hledání i možnosti monitorování. Vyhledejte v Azure Portal název vaší aplikace a poté otevřete Application Insights stránku, kde najdete informace o monitorování. Další informace o tom, jak tyto nástroje používat, najdete v [Azure Monitorch dotazech protokolu](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
+Application Insights poskytuje kromě funkcí mapa aplikace a funkce hledání i možnosti monitorování. Vyhledejte v Azure Portal název vaší aplikace a poté otevřete Application Insights stránku, kde najdete informace o monitorování. Další informace o tom, jak tyto nástroje používat, najdete v [Azure Monitorch dotazech protokolu](/azure/data-explorer/kusto/query/).
 
 ## <a name="disable-application-insights"></a>Zakázat Application Insights
 

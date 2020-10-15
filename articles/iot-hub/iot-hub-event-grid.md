@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: c1dc3b5fe4eecea42baf7073b9c806eea1648cff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1e47c61977d0bc5d03f8cdb87393ed2014e736
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056162"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072301"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reakce na události IoT Hub pomocí Event Grid k aktivaci akcí
 
@@ -73,6 +73,8 @@ Následující příklad ukazuje schéma události připojené k zařízení:
   "metadataVersion": "1"
 }]
 ```
+
+
 
 ### <a name="device-telemetry-schema"></a>Schéma telemetrie zařízení
 
@@ -163,6 +165,10 @@ Následující příklad ukazuje schéma události vytvoření zařízení:
   "metadataVersion": "1"
 }]
 ```
+
+
+> [!WARNING]
+> *Vlákna* , která jsou přidružená k události vytvoření zařízení, je výchozí konfigurace a *neměla* by se spoléhat na skutečné `authenticationType` a jiné vlastnosti zařízení v nově vytvořeném zařízení. V případě `authenticationType` a dalších vlastností zařízení v nově vytvořeném zařízení použijte rozhraní API Správce registrace poskytované v sadách Azure IoT SDK.
 
 Podrobný popis jednotlivých vlastností najdete v tématu [Azure Event Grid schéma událostí pro IoT Hub](../event-grid/event-schema-iot-hub.md).
 

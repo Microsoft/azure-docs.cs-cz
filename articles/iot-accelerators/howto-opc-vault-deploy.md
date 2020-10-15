@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 365cb0912d84f0664b2a5432cd54cd553df62466
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98dc9345d2c8b392fd094458b612857d6d454739
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282019"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071485"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Sestavení a nasazení služby správy certifikátů úložiště OPC
 
@@ -31,7 +31,7 @@ Tento článek vysvětluje, jak nasadit službu správy certifikátů trezoru OP
 
 V současné době je operace sestavení a nasazení omezená na Windows.
 Ukázky jsou napsané pro C# .NET Standard, které potřebujete k vytvoření služby a ukázek pro nasazení.
-Všechny nástroje, které potřebujete pro .NET Standard, jsou dodávány s nástroji .NET Core. Viz Začínáme [s .NET Core](https://docs.microsoft.com/dotnet/articles/core/getting-started).
+Všechny nástroje, které potřebujete pro .NET Standard, jsou dodávány s nástroji .NET Core. Viz Začínáme [s .NET Core](/dotnet/articles/core/getting-started).
 
 1. [Nainstalujte .NET Core 2.1 +][dotnet-install].
 2. [Nainstalovat Docker][docker-url] (volitelné, jenom pokud je vyžadováno místní sestavení Docker).
