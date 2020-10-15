@@ -1,14 +1,14 @@
 ---
 title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá agenta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
-ms.date: 08/07/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: d396403f23df1e0c48ea66e0c2a23866f790d3c5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e941938fce09e8729856322a5b6572b46a3714be
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974715"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075480"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -18,8 +18,7 @@ Azure Policy můžou auditovat nastavení v počítači, a to pro počítače b�
 - Konfigurace nebo přítomnost aplikací
 - Nastavení prostředí
 
-Většina zásad konfigurace hosta Azure Policy momentálně pouze audituje nastavení uvnitř počítače.
-Neaplikují konfigurace. Výjimkou je jedna integrovaná zásada, na [kterou se odkazuje níže](#applying-configurations-using-guest-configuration).
+V současné době většina Azure Policy definice zásad konfigurace hostů jenom auditovat nastavení v rámci počítače. Neaplikují konfigurace. Výjimkou je jedna integrovaná zásada, na [kterou se odkazuje níže](#applying-configurations-using-guest-configuration).
 
 ## <a name="enable-guest-configuration"></a>Povolit konfiguraci hosta
 
@@ -59,20 +58,19 @@ Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí 
 
 ## <a name="supported-client-types"></a>Podporované typy klientů
 
-Zásady konfigurace hosta jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici v Azure Marketplace, jsou vyloučené, pokud není agent konfigurace hosta kompatibilní.
-Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
+Definice zásad konfigurace hostů jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici v Azure Marketplace, jsou vyloučené, pokud není agent konfigurace hosta kompatibilní. Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
 
-|Publisher|Název|Verze|
+|Publisher|Name|Verze|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 a novější|
 |Credativ|Debian|8 a novější|
 |Partnerský vztah Microsoftu|Windows Server|2012 a novější|
-|Partnerský vztah Microsoftu|Klient Windows|Windows 10|
+|Partnerský vztah Microsoftu|Klient Windows|Windows 10|
 |OpenLogic|CentOS|7,3 a novější|
 |Red Hat|Red Hat Enterprise Linux|7,4 – 7,8|
 |SUSE|SLES|12. SP3 – SP5|
 
-Vlastní image virtuálních počítačů jsou podporovány zásadami konfigurace hosta, pokud se jedná o jeden z operačních systémů uvedených v tabulce výše.
+Definice zásad konfigurace hosta podporuje vlastní image virtuálních počítačů, pokud se jedná o jeden z operačních systémů uvedených v tabulce výše.
 
 ## <a name="network-requirements"></a>Požadavky sítě
 
@@ -86,7 +84,7 @@ Virtuální počítače, které používají virtuální sítě pro komunikaci, 
 
 ### <a name="communicate-over-private-link-in-azure"></a>Komunikace prostřednictvím privátního propojení v Azure
 
-Virtuální počítače můžou používat [privátní propojení](../../../private-link/private-link-overview.md) ke komunikaci se službou konfigurace hosta. `EnablePrivateNeworkGC` `TRUE` Chcete-li povolit tuto funkci, použijte značku s názvem a hodnotou. Značku lze použít před nebo po použití zásad konfigurace hosta pro daný počítač.
+Virtuální počítače můžou používat [privátní propojení](../../../private-link/private-link-overview.md) ke komunikaci se službou konfigurace hosta. `EnablePrivateNeworkGC` `TRUE` Chcete-li povolit tuto funkci, použijte značku s názvem a hodnotou. Značku lze použít před nebo po použití definic zásad konfigurace hosta pro daný počítač.
 
 Provoz se směruje pomocí [virtuální veřejné IP adresy](../../../virtual-network/what-is-ip-address-168-63-129-16.md) Azure a vytvoří zabezpečený a ověřený kanál s prostředky platformy Azure.
 
@@ -111,9 +109,9 @@ Pokud má počítač nyní uživatelsky přiřazenou identitu systému, platí n
 
 ## <a name="guest-configuration-definition-requirements"></a>Požadavky na definici konfigurace hosta
 
-Zásady konfigurace hostů používají **AuditIfNotExists** efekt. Po přiřazení definice služba back-end automaticky zpracuje životní cyklus všech požadavků v `Microsoft.GuestConfiguration` poskytovateli prostředků Azure.
+Definice zásad konfigurace hostů používají efekt **AuditIfNotExists** . Po přiřazení definice služba back-end automaticky zpracuje životní cyklus všech požadavků v `Microsoft.GuestConfiguration` poskytovateli prostředků Azure.
 
-Zásady **AuditIfNotExists** nevrátí výsledky dodržování předpisů, dokud nebudou všechny požadavky splněny v počítači. Službu jsou popsané v části [požadavky na nasazení pro virtuální počítače Azure](#deploy-requirements-for-azure-virtual-machines)
+Definice zásad **AuditIfNotExists** nevrátí výsledky dodržování předpisů, dokud nebudou všechny požadavky splněny v počítači. Požadavky jsou popsané v části [požadavky na nasazení pro virtuální počítače Azure](#deploy-requirements-for-azure-virtual-machines)
 
 > [!IMPORTANT]
 > V předchozí verzi konfigurace hosta se vyžadovala iniciativa ke kombinování definicí **DeployIfNoteExists** a **AuditIfNotExists** . Definice **DeployIfNotExists** se už nevyžadují. Definice a intiaitives jsou označeny, `[Deprecated]` ale existující přiřazení budou fungovat i nadále. Informace najdete v blogovém příspěvku: [důležitá změna vydaná pro zásady auditu konfigurace hostů](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316) .
@@ -138,15 +136,15 @@ Pouze definice _, které časové pásmo v počítačích se systémem Windows_ 
 Při přiřazování definic, které začínají na _Konfigurovat_, musíte také přiřadit _předpoklady nasazení definice a povolit zásadu konfigurace hosta na virtuálních počítačích s Windows_. V případě, že se rozhodnete, můžete tyto definice kombinovat v iniciativě.
 
 > [!NOTE]
-> Integrovaná zásada časového pásma je jediná definice, která podporuje konfiguraci nastavení v počítačích a vlastní zásady, které konfigurují nastavení v počítačích nejsou podporované.
+> Integrovaná zásada časového pásma je jediná definice, která podporuje konfiguraci nastavení v počítačích a definice vlastních zásad, které konfigurují nastavení v počítačích nejsou podporované.
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Přiřazování zásad do počítačů mimo Azure
 
-Zásady auditu, které jsou k dispozici pro konfiguraci hosta, zahrnují typ prostředku **Microsoft. HybridCompute/počítače** . Všechny počítače připojené ke [službě Azure ARC pro servery](../../../azure-arc/servers/overview.md) , které jsou v oboru přiřazení zásad, jsou automaticky zahrnuté.
+Definice zásad auditu, které jsou k dispozici pro konfiguraci hosta, zahrnují typ prostředku **Microsoft. HybridCompute/počítače** . Všechny počítače připojené ke [službě Azure ARC pro servery](../../../azure-arc/servers/overview.md) , které jsou v oboru přiřazení zásad, jsou automaticky zahrnuté.
 
 ### <a name="multiple-assignments"></a>Více přiřazení
 
-Zásady konfigurace hosta momentálně podporují přiřazování stejného přiřazení hostů jenom jednou pro každý počítač, a to i v případě, že přiřazení zásady používá jiné parametry.
+Definice zásad konfigurace hostů momentálně podporují přiřazování stejného přiřazení hostů jenom jednou pro každý počítač, a to i v případě, že přiřazení zásady používá jiné parametry.
 
 ## <a name="client-log-files"></a>Soubory protokolů klienta
 

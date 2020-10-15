@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 06/19/2020
 ms.author: alkohli
 ms.openlocfilehash: 526b3ad89e128d264b5d14d8cc87d9a81d431a9c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86210397"
 ---
 Než začnete s kopírováním dat:
 
-1. Stáhněte si *protokol kopírování*. Na stránce **připojit a kopírovat** vyberte **Kopírovat protokol**. Po zobrazení výzvy uložte protokol do systému. 
+1. Stáhněte si *protokol kopírování*. Na stránce **Připojit a kopírovat** vyberte **Zkopírovat protokol**. Po zobrazení výzvy uložte protokol ve vašem systému. 
 
-    ![Stáhnout protokol kopírování 1](../articles/databox/media/data-box-deploy-export-copy-data/download-copy-log-1.png)
+    ![Stažení protokolu kopírování 1](../articles/databox/media/data-box-deploy-export-copy-data/download-copy-log-1.png)
 
   
-    Opakujte postup pro stažení *podrobného protokolu*. 
+    Zopakujte tyto kroky a stáhněte *podrobný protokol*. 
 
-2. Přečtěte si *podrobný protokol*. *Podrobný protokol* obsahuje seznam všech souborů, které byly úspěšně exportovány z Azure Storage účtu. Protokol také obsahuje velikost souboru a výpočet kontrolního součtu.
+2. Projděte si *podrobný protokol*. *Podrobný protokol* obsahuje seznam všech souborů úspěšně vyexportovaných z účtu Azure Storage. Tento protokol obsahuje také velikosti souborů a výpočty kontrolního součtu.
 
     ```powershell
     <File CloudFormat="BlockBlob" Path="validblobdata/test1.2.3.4" Size="1024" crc64="7573843669953104266">
@@ -52,9 +52,9 @@ Než začnete s kopírováním dat:
     </File>
     ``````
 
-3. Přečtěte si *protokol kopírování* pro všechny chyby. Tento protokol označuje soubory, které nebylo možné zkopírovat z důvodu chyb.
+3. Projděte si *protokol kopírování* a hledejte případné chyby. Tento protokol indikuje soubory, které nebylo možné kvůli chybám zkopírovat.
 
-    Tady je ukázkový výstup protokolu kopírování, pokud nedošlo k chybám a všechny soubory se zkopírovaly během kopírování dat z Azure do zařízení Data Box.
+    Tady je ukázkový výstup protokolu kopírování, když nedošlo k žádným chybám a během kopírování dat z Azure do zařízení Data Box se zkopírovaly všechny soubory.
 
     ```powershell
     <CopyLog Summary="Summary">
@@ -63,7 +63,7 @@ Než začnete s kopírováním dat:
       <FilesErrored>0</FilesErrored>
     </CopyLog>
     ``` 
-    Tady je ukázkový výstup, když protokol kopírování obsahuje chyby a některé soubory se nepovedlo zkopírovat z Azure.
+    Tady je ukázkový výstup, když protokol kopírování obsahuje chyby a některé soubory se z Azure nepovedlo zkopírovat.
 
     ```powershell
     <ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/wastorage.v140.3.0.2.nupkg">
@@ -88,7 +88,7 @@ Než začnete s kopírováním dat:
     </CopyLog>    
     ```
 
-    K exportu těchto souborů máte následující možnosti: 
+    Pro export těchto souborů máte následující možnosti: 
 
-    - Soubory, které se nedají zkopírovat přes síť, můžete přenést. 
-    - Pokud byla velikost dat větší než použitelná kapacita zařízení, pak dojde k částečnému kopírování a všechny soubory, které nebyly zkopírovány, jsou uvedeny v tomto protokolu. Tento protokol můžete použít jako vstupní XML k vytvoření nového pořadí Data Box a pak tyto soubory zkopírovat.
+    - Soubory, které se nedaly zkopírovat přes síť, můžete přenést. 
+    - Pokud velikost dat přesahuje použitelnou kapacitu zařízení, dojde k částečnému kopírování a všechny soubory, které se nezkopírují, jsou uvedené v tomto protokolu. Tento protokol můžete použít jako vstupní XML k vytvoření nové objednávky Data Boxu a potom tyto soubory zkopírovat.
