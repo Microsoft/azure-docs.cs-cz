@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 1f335640eb37f51857fa295298d0a3ca91f2a370
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd45a393081d52985d99fac7ea5dccc5bd2a2712
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714980"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079220"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Seznámení se základními Azure Storage službami
 
@@ -173,8 +173,7 @@ K prostředkům v účtu úložiště můžete přistupovat pomocí libovolného
 - [Rutiny Azure CLI pro Azure Storage](https://docs.microsoft.com/cli/azure/storage)
 - [Nástroj příkazového řádku AzCopy](https://aka.ms/downloadazcopy)
 - [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
-- [Nástroje pro Azure Storage klienta](../storage-explorers.md)
-- [Azure Developer Tools](https://azure.microsoft.com/tools/)
+- [Šablony Azure Resource Manager pro Azure Storage](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)
 
 ## <a name="next-steps"></a>Další kroky
 

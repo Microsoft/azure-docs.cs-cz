@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 883cf48fd38d79544d08a68f2c18fc2d2efb4706
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ac7d99f4a47711f9974d30d877a3237eec15443
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776285"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078829"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spouštění runbooků ve službě Azure Automation
 
@@ -71,7 +71,7 @@ Vaše Runbooky musí zahrnovat logiku pro práci s [prostředky](/rest/api/resou
 
 ## <a name="security"></a>Zabezpečení
 
-Azure Automation používá [Azure Security Center (ASC)](../security-center/security-center-intro.md) k zajištění zabezpečení pro vaše prostředky a detekci kompromisů v systémech Linux. Zabezpečení je zajištěno napříč vašimi úlohami, bez ohledu na to, jestli jsou prostředky v Azure, nebo ne. Informace najdete [v tématu Úvod do ověřování v Azure Automation](automation-security-overview.md).
+Azure Automation používá [Azure Security Center (ASC)](../security-center/security-center-introduction.md) k zajištění zabezpečení pro vaše prostředky a detekci kompromisů v systémech Linux. Zabezpečení je zajištěno napříč vašimi úlohami, bez ohledu na to, jestli jsou prostředky v Azure, nebo ne. Informace najdete [v tématu Úvod do ověřování v Azure Automation](automation-security-overview.md).
 
 ASC umisťuje omezení pro uživatele, kteří můžou na virtuálním počítači spouštět libovolné skripty, buď podepsané, nebo bez znaménka. Pokud jste uživatel s kořenovým přístupem k VIRTUÁLNÍmu počítači, musíte počítač explicitně nakonfigurovat pomocí digitálního podpisu nebo ho vypnout. V opačném případě můžete spustit skript, který bude po vytvoření účtu Automation používat aktualizace operačního systému a povolit příslušné funkce.
 

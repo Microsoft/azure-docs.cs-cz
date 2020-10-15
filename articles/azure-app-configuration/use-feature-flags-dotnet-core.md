@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f863ca855ca36603085ed96b5aa17d277ae00516
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8ad2558c664d1a8b577f01b707200d416d5348a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317306"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078897"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Kurz: používání příznaků funkcí v aplikaci ASP.NET Core
 
@@ -27,7 +27,7 @@ Knihovny pro správu funkcí .NET Core poskytují podporu idiomatickou pro imple
 
 Knihovny správy funkcí také spravují životní cykly příznaků funkcí na pozadí. Například knihovny aktualizace knihoven a příznak cache nebo zaručují, že stav příznaku by měl být během volání žádosti neměnný. Kromě toho knihovna ASP.NET Core nabízí předem připravené integrace, včetně akcí kontroleru MVC, zobrazení, tras a middlewaru.
 
-[Příznaky funkce přidat ASP.NET Core aplikace v rychlém](./quickstart-feature-flag-aspnet-core.md) startu zobrazují několik způsobů přidávání příznaků funkcí do aplikace ASP.NET Core. V tomto kurzu se tyto metody vysvětlují podrobněji. Úplný odkaz najdete v [dokumentaci ke správě funkcí ASP.NET Core](https://go.microsoft.com/fwlink/?linkid=2091410).
+[Příznaky funkce přidat ASP.NET Core aplikace v rychlém](./quickstart-feature-flag-aspnet-core.md) startu zobrazují několik způsobů přidávání příznaků funkcí do aplikace ASP.NET Core. V tomto kurzu se tyto metody vysvětlují podrobněji. Úplný odkaz najdete v [dokumentaci ke správě funkcí ASP.NET Core](/dotnet/api/microsoft.featuremanagement).
 
 V tomto kurzu se naučíte, jak:
 
@@ -301,6 +301,6 @@ app.UseForFeature(featureName, appBuilder => {
 
 V tomto kurzu jste zjistili, jak implementovat příznaky funkcí do aplikace ASP.NET Core pomocí `Microsoft.FeatureManagement` knihoven. Další informace o podpoře správy funkcí v ASP.NET Core a konfiguraci aplikací najdete v následujících zdrojích informací:
 
-* [Ukázkový kód příznaku funkce ASP.NET Core](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
-* [Dokumentace k Microsoft. FeatureManagement](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
+* [Ukázkový kód příznaku funkce ASP.NET Core](./quickstart-feature-flag-aspnet-core.md)
+* [Dokumentace k Microsoft. FeatureManagement](/dotnet/api/microsoft.featuremanagement)
 * [Správa příznaků funkcí](./manage-feature-flags.md)

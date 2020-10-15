@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: tagore
-ms.openlocfilehash: 3b4028a09f69acd5d7a6579b4610785ed32e227d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39843ad83830a72b5d6b01cc00ecd65269c02e12
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77469523"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078591"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Shromažďování čítačů výkonu pro cloudovou službu Azure
 
@@ -70,7 +70,7 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 \Processor(*)\C3 Transitions/sec
 ```
 
-Tyto cesty k jednotlivým čítačům lze přidat do diagnostického rozhraní používaného vaší cloudovou službou. Další informace o tom, jak je vytvořena cesta k čítači výkonu, najdete v tématu [Určení cesty čítače](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85)).
+Tyto cesty k jednotlivým čítačům lze přidat do diagnostického rozhraní používaného vaší cloudovou službou. Další informace o tom, jak je vytvořena cesta k čítači výkonu, najdete v tématu [Určení cesty čítače](/windows/win32/perfctrs/specifying-a-counter-path).
 
 ## <a name="collect-a-performance-counter"></a>Shromáždění čítače výkonu
 
@@ -290,8 +290,5 @@ Jak je uvedeno výše, čítače výkonu, které chcete shromáždit, jsou defin
 
 - [Application Insights pro Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Čítače výkonu systému v Application Insights](../azure-monitor/app/performance-counters.md)
-- [Zadání cesty k čítači](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
+- [Zadání cesty k čítači](/windows/win32/perfctrs/specifying-a-counter-path)
 - [Azure Diagnostics schématu – čítače výkonu](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
-
-
-

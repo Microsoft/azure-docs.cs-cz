@@ -7,12 +7,12 @@ ms.service: azure-supportability
 ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: 87533b2e0c1397d0b8b2e9a89450a80a75c5e348
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fccde344a06d39bd4bb8e3178444ec20677e2f50
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763818"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078506"
 ---
 # <a name="region-or-sku-unavailable"></a>Oblast nebo skladová položka není k dispozici
 
@@ -80,7 +80,7 @@ Pokud nemůžete najít vhodnou oblast nebo SKU, vytvořte [žádost o podporu](
 
 ## <a name="send-us-your-suggestions"></a>Pošlete nám svoje návrhy
 
-Vždycky jsme si otevřeli názory a návrhy! Pošlete nám svoje [návrhy](https://feedback.azure.com/forums/266794-support-feedback). Kromě toho můžete s námi spolupracovat na [Twitteru](https://twitter.com/azuresupport) nebo na [stránce s dotazem na Microsoft Q&](https://docs.microsoft.com/answers/products/azure).
+Vždycky jsme si otevřeli názory a návrhy! Pošlete nám svoje [návrhy](https://feedback.azure.com/forums/266794-support-feedback). Kromě toho můžete s námi spolupracovat na [Twitteru](https://twitter.com/azuresupport) nebo na [stránce s dotazem na Microsoft Q&](/answers/products/azure).
 
 ## <a name="learn-more"></a>Další informace
 

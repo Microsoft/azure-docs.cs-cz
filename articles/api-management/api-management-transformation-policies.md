@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 0182c3aa9095ad6f7bf3d8d86f115517e9efb020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3097f7b0b6b69dc470877d4951efbcbd3c7482b1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86249599"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078489"
 ---
 # <a name="api-management-transformation-policies"></a>Zásady transformace ve službě API Management
-V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
+V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](./api-management-policies.md).
 
 ##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a> Zásady transformace
 
@@ -513,7 +513,7 @@ OriginalUrl.
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
 |Set – hlavička|Kořenový element.|Yes|
-|value|Určuje hodnotu hlavičky, která se má nastavit. Pro více hlaviček se stejným názvem přidejte další `value` prvky.|No|
+|hodnota|Určuje hodnotu hlavičky, která se má nastavit. Pro více hlaviček se stejným názvem přidejte další `value` prvky.|No|
 
 ### <a name="properties"></a>Vlastnosti
 
@@ -568,7 +568,7 @@ OriginalUrl.
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
 |Set – dotaz-parametr|Kořenový element.|Yes|
-|value|Určuje hodnotu parametru dotazu, která se má nastavit. Pro více parametrů dotazu se stejným názvem přidejte další `value` prvky.|Yes|
+|hodnota|Určuje hodnotu parametru dotazu, která se má nastavit. Pro více parametrů dotazu se stejným názvem přidejte další `value` prvky.|Yes|
 
 ### <a name="properties"></a>Vlastnosti
 
@@ -732,4 +732,4 @@ Další informace najdete v následujících tématech:
 
 + [Zásady v API Management](api-management-howto-policies.md)
 + [Odkaz na zásady](./api-management-policies.md) pro úplný seznam příkazů zásad a jejich nastavení
-+ [Ukázky zásad](policy-samples.md)
++ [Ukázky zásad](./policy-reference.md)
