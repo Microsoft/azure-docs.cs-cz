@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 617128640c4f4ae4ce5ac32803e459a9a3eb448f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cb3d8f39d83e27755b1e8982dfe3b807c431413
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706462"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069717"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Povolení automatického zřizování uživatelů pro aplikaci s více klienty
 
@@ -111,7 +111,7 @@ Kompilátor SAML používá informace o deklaracích identity v tokenu SAML k vy
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Povolení jednotného přihlašování pro aplikaci](../manage-apps/isv-sso-content.md)
+* [Povolení jednotného přihlašování pro aplikaci](../develop/v2-howto-app-gallery-listing.md)
 
 * [Odesláním seznamu aplikací](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) a partnera s Microsoftem můžete vytvořit dokumentaci na webu Microsoftu.
 

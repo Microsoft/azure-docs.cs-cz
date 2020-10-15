@@ -1,14 +1,14 @@
 ---
 title: Azure Policy rozšíření pro Visual Studio Code
 description: Přečtěte si, jak pomocí rozšíření Azure Policy Visual Studio Code vyhledat Azure Resource Manager aliasy.
-ms.date: 06/16/2020
+ms.date: 10/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 9b3f27492bee5301e22e83ebf9734afa3de43897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea05ffab9c57c50e451008a1ec7c534afbedf282
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89648324"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077928"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Použít rozšíření Azure Policy pro Visual Studio Code
 
@@ -25,7 +25,7 @@ Azure Policy rozšíření pro Visual Studio Code lze nainstalovat na všechny p
 
 K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 - [Visual Studio Code](https://code.visualstudio.com).
 
 ## <a name="install-azure-policy-extension"></a>Nainstalovat rozšíření Azure Policy
@@ -82,7 +82,7 @@ Při prvním přihlášení se rozšíření Azure Policy načte jenom výchozí
 
    - Paleta příkazů: 
 
-     V řádku nabídek přejděte na **Zobrazit**  >  **paleta příkazů**a zadejte **Azure: Vyberte odběry**.
+     V řádku nabídek přejděte na **Zobrazit** > **paleta příkazů**a zadejte **Azure: Vyberte odběry**.
 
    - Zápatí okna
 

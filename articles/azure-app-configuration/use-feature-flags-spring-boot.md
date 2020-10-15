@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 83c437cb613e3dad04dee17f0f67040532066c3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dcf85add4e1c9f1d701c4ce4a122c8d6b31382a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326592"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077826"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Kurz: používání příznaků funkcí v aplikaci pro jarní spuštění
 
@@ -185,5 +185,5 @@ public String getOldFeature() {
 
 V tomto kurzu jste zjistili, jak implementovat příznaky funkcí ve vaší aplikaci pro spouštění pružiny pomocí `spring-cloud-azure-feature-management-web` knihoven. Další informace o podpoře správy funkcí v konfiguraci jarního spuštění a aplikace najdete v následujících zdrojích informací:
 
-* [Vzorový kód příznaku funkce pro spuštění pružiny](/azure/azure-app-configuration/quickstart-feature-flag-spring-boot)
+* [Vzorový kód příznaku funkce pro spuštění pružiny](./quickstart-feature-flag-spring-boot.md)
 * [Správa příznaků funkcí](./manage-feature-flags.md)

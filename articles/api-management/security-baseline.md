@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4db7727558d0b7f4c26aba3ffa823bebb07862f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6b94c30f00765164385987ed0ea9b201044f248
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713778"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077435"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Základní hodnoty zabezpečení Azure pro API Management
 
@@ -100,7 +100,7 @@ K odepření komunikace se známými škodlivými nebo nepoužívanými internet
 
 * [Postup konfigurace Azure DDoS Protection úrovně Standard](../virtual-network/manage-ddos-protection.md)
 
-* [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/threat-protection.md)
+* [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/azure-defender.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -588,7 +588,7 @@ Pomocí zásad můžete nakonfigurovat rozšířené monitorování pomocí API 
 
 * [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
 * [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -774,7 +774,7 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 
 * [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
 * [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -838,7 +838,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 * [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/index.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1114,7 +1114,7 @@ Spravované identity lze použít k získání certifikátů z Azure Key Vault p
 
 Povolí Soft-Delete v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
-* [Postup povolení Soft-Delete v Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Postup povolení Soft-Delete v Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: nelze použít
 
